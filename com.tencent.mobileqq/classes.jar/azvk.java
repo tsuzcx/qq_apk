@@ -1,269 +1,354 @@
-import android.content.Context;
-import android.os.SystemClock;
-import android.support.v4.app.FragmentActivity;
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup;
-import com.tencent.common.app.AppInterface;
+import BOSSStrategyCenter.tAdvDesc;
+import NS_MOBILE_QBOSS_PROTO.MobileQbossAdvRsp;
+import android.os.Bundle;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.ChatFragment;
-import com.tencent.mobileqq.activity.aio.ForwardUtils;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.Conversation;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.microapp.sdk.MiniAppLauncher;
-import com.tencent.mobileqq.structmsg.AbsShareMsg;
-import com.tencent.mobileqq.structmsg.StructMsgForGeneralShare;
-import com.tencent.mobileqq.structmsg.StructMsgForGeneralShare.5.1;
-import com.tencent.mobileqq.structmsg.StructMsgForGeneralShare.5.2;
-import com.tencent.mobileqq.structmsg.widget.TextViewWrapLayout;
+import com.tencent.mobileqq.mini.entry.MiniAppPrePullManager;
 import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
 import mqq.os.MqqHandler;
-import org.json.JSONException;
-import org.json.JSONObject;
 
-public final class azvk
-  implements View.OnClickListener
+public class azvk
+  implements bmet
 {
-  long a;
+  private static volatile azvk a;
   
-  public void onClick(View paramView)
+  public static azvk a()
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.d(StructMsgForGeneralShare.access$000(), 4, "geneal struct msg onclick start ........");
-    }
-    if (SystemClock.uptimeMillis() - this.a < 1000L) {}
-    label1538:
-    label1673:
-    for (;;)
+    if (a == null) {}
+    try
     {
-      return;
-      this.a = SystemClock.uptimeMillis();
-      View localView = paramView.findViewById(2131377139);
-      if (localView != null)
+      if (a == null) {
+        a = new azvk();
+      }
+      return a;
+    }
+    finally {}
+  }
+  
+  private void a(MobileQbossAdvRsp paramMobileQbossAdvRsp, String paramString, QQAppInterface paramQQAppInterface)
+  {
+    QLog.i("QzoneQbossHelper", 1, "coversation getQbossSuccess requestType = " + paramString);
+    if (paramMobileQbossAdvRsp != null)
+    {
+      paramString = paramMobileQbossAdvRsp.map_next_query_ts;
+      if (paramString != null)
       {
-        Object localObject1 = localView.getTag(2131377139);
-        if ((localObject1 != null) && (StructMsgForGeneralShare.class.isInstance(localObject1)))
+        paramString = (Long)paramString.get(Integer.valueOf(2741));
+        if (paramString != null) {
+          alay.a().a(paramString.longValue(), 2741);
+        }
+      }
+      paramMobileQbossAdvRsp = paramMobileQbossAdvRsp.mapAdv;
+      if (paramMobileQbossAdvRsp != null)
+      {
+        paramMobileQbossAdvRsp = (ArrayList)paramMobileQbossAdvRsp.get(Integer.valueOf(2741));
+        if ((paramMobileQbossAdvRsp != null) && (paramMobileQbossAdvRsp.size() > 0)) {
+          a(paramMobileQbossAdvRsp);
+        }
+      }
+    }
+    for (int i = 1;; i = 0)
+    {
+      if ((i == 0) && (paramQQAppInterface != null))
+      {
+        paramMobileQbossAdvRsp = paramQQAppInterface.getHandler(Conversation.class);
+        if (paramMobileQbossAdvRsp != null) {
+          paramMobileQbossAdvRsp.sendEmptyMessage(1063);
+        }
+      }
+      return;
+    }
+  }
+  
+  private void a(alaw paramalaw)
+  {
+    QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+    if (localQQAppInterface == null) {}
+    do
+    {
+      alaw localalaw;
+      do
+      {
+        return;
+        localalaw = alay.a().a(localQQAppInterface.getAccount());
+      } while ((paramalaw == null) || (paramalaw.a == null) || (localalaw == null) || (localalaw.a == null) || (paramalaw.a.pattern_id == localalaw.a.pattern_id));
+      paramalaw = localQQAppInterface.getHandler(Conversation.class);
+    } while (paramalaw == null);
+    QLog.e("QzoneQbossHelper", 1, "checkIfNeedRemoveBanner remove");
+    paramalaw.sendEmptyMessage(1063);
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, long paramLong)
+  {
+    ArrayList localArrayList;
+    HashMap localHashMap;
+    try
+    {
+      Object localObject1 = azvf.a(BaseApplicationImpl.getContext(), paramLong);
+      localArrayList = new ArrayList();
+      if ((localObject1 != null) && (((List)localObject1).size() > 0))
+      {
+        if ((azvf.a == null) || (azvf.a.size() == 0))
         {
-          StructMsgForGeneralShare localStructMsgForGeneralShare = (StructMsgForGeneralShare)localObject1;
-          localObject1 = paramView.getTag();
-          Object localObject2;
-          Context localContext;
-          ChatFragment localChatFragment;
-          if (localObject1 != null) {
-            if ((localObject1 instanceof agcx))
-            {
-              localObject2 = (agcx)localObject1;
-              localContext = paramView.getContext();
-              localChatFragment = ((FragmentActivity)localContext).getChatFragment();
-              if (localChatFragment == null) {
-                break label235;
-              }
-              localObject1 = localChatFragment.a();
-            }
-          }
-          for (;;)
+          localHashMap = azvf.a(BaseApplicationImpl.getApplication(), paramLong + "");
+          localObject1 = ((List)localObject1).iterator();
+        }
+      }
+      else {
+        while (((Iterator)localObject1).hasNext())
+        {
+          Object localObject2 = (String)((Iterator)localObject1).next();
+          if (localHashMap.containsKey(localObject2))
           {
-            for (;;)
+            localObject2 = (azvg)localHashMap.get(localObject2);
+            if (((azvg)localObject2).b())
             {
-              if (localObject1 == null) {
-                break label1673;
-              }
-              if (!"micro_app".equals(localStructMsgForGeneralShare.mMsg_A_ActionData)) {
-                break label266;
-              }
-              try
-              {
-                localObject1 = new JSONObject(localStructMsgForGeneralShare.mMsgActionData);
-                paramView = ((JSONObject)localObject1).optString("appId");
-                localObject1 = ((JSONObject)localObject1).optString("entryPath");
-                if (TextUtils.isEmpty(paramView)) {
-                  break;
-                }
-                MiniAppLauncher.launchMiniApp(localContext, paramView, localStructMsgForGeneralShare, (String)localObject1);
-                return;
-              }
-              catch (Throwable paramView)
-              {
-                paramView.printStackTrace();
-                return;
-              }
+              localArrayList.add(localObject2);
+              QLog.i("QSplash@QbossSplashNetService", 1, "checkNeedDowloadAndDowload aid =" + ((azvg)localObject2).jdField_b_of_type_JavaLangString + "UIN" + paramLong % 10000L);
             }
-            if (paramView.getTag(2131377136) == null) {
-              break;
-            }
-            do
+            if ((((azvg)localObject2).jdField_b_of_type_Int == 3) || (((azvg)localObject2).jdField_b_of_type_Int == 2))
             {
-              localObject2 = null;
-              break;
-            } while (paramView.getTag(2131377136) != null);
-            return;
-            label235:
-            localObject1 = BaseApplicationImpl.getApplication().getRuntime();
-            if ((localObject1 != null) && ((localObject1 instanceof QQAppInterface)))
-            {
-              localObject1 = (QQAppInterface)localObject1;
+              MiniAppPrePullManager.getInstance().prePullAppinfoByLink(((azvg)localObject2).f, false, null);
               continue;
-              label266:
-              AbsShareMsg.doReport((QQAppInterface)localObject1, localStructMsgForGeneralShare);
-              amrz.a((QQAppInterface)localObject1, 0, 4, localStructMsgForGeneralShare.message);
-              if ((localStructMsgForGeneralShare != null) && (localStructMsgForGeneralShare.message != null) && ("1".equals(localStructMsgForGeneralShare.message.getExtInfoFromExtStr("is_AdArrive_Msg")))) {}
-              try
-              {
-                Object localObject3 = new JSONObject();
-                ((JSONObject)localObject3).put("puin", localStructMsgForGeneralShare.message.frienduin);
-                ((JSONObject)localObject3).put("type", localStructMsgForGeneralShare.index_type);
-                ((JSONObject)localObject3).put("index", localStructMsgForGeneralShare.index);
-                ((JSONObject)localObject3).put("name", localStructMsgForGeneralShare.index_name);
-                ((JSONObject)localObject3).put("net", String.valueOf(ndd.a()));
-                ((JSONObject)localObject3).put("mobile_imei", bdgk.a());
-                ((JSONObject)localObject3).put("obj", "");
-                ((JSONObject)localObject3).put("gdt_cli_data", localStructMsgForGeneralShare.message.getExtInfoFromExtStr("gdt_msgClick"));
-                ((JSONObject)localObject3).put("view_id", localStructMsgForGeneralShare.message.getExtInfoFromExtStr("gdt_view_id"));
-                swj.a((AppInterface)localObject1, localStructMsgForGeneralShare.message.selfuin, ((JSONObject)localObject3).toString(), "" + localStructMsgForGeneralShare.msgId);
-                Object localObject4 = (ntw)((QQAppInterface)localObject1).getManager(88);
-                localObject3 = (nup)((QQAppInterface)localObject1).a(88);
-                if ((localStructMsgForGeneralShare.message != null) && (localObject4 != null) && (localObject3 != null) && (((ntw)localObject4).a(localStructMsgForGeneralShare.message.senderuin)))
-                {
-                  localObject4 = localStructMsgForGeneralShare.message;
-                  if (TextUtils.isEmpty(localStructMsgForGeneralShare.index))
-                  {
-                    i = 0;
-                    ((nup)localObject3).a(false, (MessageRecord)localObject4, i, localStructMsgForGeneralShare.mMsgUrl);
-                  }
-                }
-                else
-                {
-                  if (localStructMsgForGeneralShare.msgId > 0L)
-                  {
-                    azqs.b((QQAppInterface)localObject1, "P_CliOper", "Pb_account_lifeservice", localStructMsgForGeneralShare.uin, "mp_msg_msgpic_click", "aio_morpic_click", 0, 0, "", "", Long.toString(localStructMsgForGeneralShare.msgId), "");
-                    ThreadManager.getSubThreadHandler().postDelayed(new StructMsgForGeneralShare.5.1(this, localStructMsgForGeneralShare, (QQAppInterface)localObject1), 0L);
-                  }
-                  if (QLog.isDevelopLevel()) {
-                    QLog.d(StructMsgForGeneralShare.access$000(), 4, "geneal struct msg onclick middle ........");
-                  }
-                  if ((localObject2 != null) && (((agcx)localObject2).a != null)) {
-                    ndq.a((QQAppInterface)localObject1, "", "click", localStructMsgForGeneralShare.mSourceAppid, localStructMsgForGeneralShare.mMsgServiceID, ndq.a(((agcx)localObject2).a.jdField_a_of_type_Int));
-                  }
-                  if (localStructMsgForGeneralShare.uinType != 0) {
-                    break label1538;
-                  }
-                  i = 0;
-                  localObject3 = localStructMsgForGeneralShare.mMsgUrl;
-                  if (TextUtils.isEmpty(localStructMsgForGeneralShare.mMsgUrl)) {
-                    break label1666;
-                  }
-                  j = localStructMsgForGeneralShare.mMsgUrl.indexOf("article_id=");
-                  if (j <= 0) {
-                    break label1666;
-                  }
-                  localObject4 = localStructMsgForGeneralShare.mMsgUrl.substring("article_id=".length() + j);
-                  j = ((String)localObject4).indexOf("&");
-                  if (j < 0) {
-                    break label1666;
-                  }
-                  localObject3 = ((String)localObject4).substring(0, j);
-                  azqs.b((QQAppInterface)localObject1, "CliOper", "", "", "0X800567A", "0X800567A", 0, 0, localStructMsgForGeneralShare.mMsgServiceID + "", "", "", "");
-                  if (localStructMsgForGeneralShare.uinType != 1008) {
-                    break label1573;
-                  }
-                  j = 2;
-                  azqs.b((QQAppInterface)localObject1, "CliOper", "", "", "0X8004B5C", "0X8004B5C", j, 0, "", String.valueOf(i), (String)localObject3, localStructMsgForGeneralShare.source_puin);
-                  azqs.b(null, "dc00898", "", "", "0X800A630", "0X800A630", 0, 0, "1", ForwardUtils.b(localStructMsgForGeneralShare.uinType), localStructMsgForGeneralShare.mContentTitle, "");
-                  if (QLog.isColorLevel()) {
-                    QLog.d(StructMsgForGeneralShare.access$000(), 2, new Object[] { "图文分享内容点击=", "0X800A630", ", mContentTitle=" + localStructMsgForGeneralShare.mContentTitle, ", uinType=", ForwardUtils.b(localStructMsgForGeneralShare.uinType) });
-                  }
-                  if ((localView instanceof ViewGroup))
-                  {
-                    localObject3 = ((ViewGroup)localView).getChildAt(0);
-                    if ((localObject3 != null) && ((localObject3 instanceof TextViewWrapLayout)))
-                    {
-                      localObject3 = ((View)localObject3).getTag(StructMsgForGeneralShare.access$200());
-                      if ((localObject3 != null) && ((localObject3 instanceof azxl))) {
-                        azqs.b((QQAppInterface)localObject1, "dc00898", "", "", "0X8007C38", "0X8007C38", 0, 0, ((azxl)localObject3).k + "", "", "", "");
-                      }
-                    }
-                  }
-                  if ((localObject2 != null) && (localStructMsgForGeneralShare.hasFlag(16)))
-                  {
-                    if (QLog.isDevelopLevel()) {
-                      QLog.d("PortalManager", 4, "qiang hong bao lala ......struct msg click report.........");
-                    }
-                    ThreadManager.post(new StructMsgForGeneralShare.5.2(this, (agcx)localObject2, (QQAppInterface)localObject1), 2, null, false);
-                  }
-                  if ((localStructMsgForGeneralShare != null) && (localObject2 != null) && (((agcx)localObject2).a != null) && ((((agcx)localObject2).a.jdField_a_of_type_Int == 1025) || (((agcx)localObject2).a.jdField_a_of_type_Int == 0)) && (!TextUtils.isEmpty(localStructMsgForGeneralShare.mMsgAction)) && (nbp.b(((agcx)localObject2).a.jdField_a_of_type_JavaLangString)) && ((localStructMsgForGeneralShare.mMsgServiceID != 92) || (localStructMsgForGeneralShare.message == null))) {}
-                }
-                try
-                {
-                  if (QLog.isColorLevel()) {
-                    QLog.d(StructMsgForGeneralShare.access$000(), 2, String.format("click qidian bulk msg, taskId: %d", new Object[] { Integer.valueOf(Integer.parseInt(localStructMsgForGeneralShare.mQidianBulkTaskId)) }));
-                  }
-                  if (!localStructMsgForGeneralShare.mQidianBulkTaskId.equals("0"))
-                  {
-                    localObject2 = new JSONObject();
-                    ((JSONObject)localObject2).put("action", "click");
-                    ((JSONObject)localObject2).put("fromUin", localStructMsgForGeneralShare.message.frienduin);
-                    ((JSONObject)localObject2).put("toUin", ((QQAppInterface)localObject1).getCurrentAccountUin());
-                    ((JSONObject)localObject2).put("taskID", localStructMsgForGeneralShare.mQidianBulkTaskId);
-                    ((JSONObject)localObject2).put("clickURL", localStructMsgForGeneralShare.mMsgUrl);
-                    ((JSONObject)localObject2).put("timestamp", String.valueOf(System.currentTimeMillis() / 1000L));
-                    ((bfzp)((QQAppInterface)localObject1).a(85)).a(((JSONObject)localObject2).toString(), localStructMsgForGeneralShare.message.frienduin, "", 10009, 0);
-                  }
-                }
-                catch (Exception localException)
-                {
-                  label1425:
-                  break label1425;
-                }
-                ((bfyh)((QQAppInterface)localObject1).getManager(165)).a(localStructMsgForGeneralShare.mMsgAction, localStructMsgForGeneralShare.mMsg_A_ActionData, localStructMsgForGeneralShare.mMsgActionData, localStructMsgForGeneralShare.mMsgUrl, 0, "");
-                if (localChatFragment != null)
-                {
-                  localObject2 = localChatFragment.a();
-                  if ((localObject2 instanceof agti)) {
-                    ((agti)localObject2).a.b();
-                  }
-                }
-                StructMsgForGeneralShare.onClickEvent((QQAppInterface)localObject1, localContext, localStructMsgForGeneralShare, paramView, new azvp((QQAppInterface)localObject1, paramView, localStructMsgForGeneralShare));
-                return;
-              }
-              catch (JSONException localJSONException)
-              {
-                for (;;)
-                {
-                  int j;
-                  localJSONException.printStackTrace();
-                  continue;
-                  int i = Integer.parseInt(localStructMsgForGeneralShare.index);
-                  continue;
-                  if (localStructMsgForGeneralShare.uinType == 1)
-                  {
-                    i = 1;
-                  }
-                  else if (localStructMsgForGeneralShare.uinType == 3000)
-                  {
-                    i = 2;
-                  }
-                  else
-                  {
-                    i = 3;
-                    continue;
-                    label1573:
-                    j = 1;
-                    continue;
-                    if ((localStructMsgForGeneralShare != null) && (localObject2 != null) && (((agcx)localObject2).a != null) && (!TextUtils.isEmpty(localStructMsgForGeneralShare.mMsgAction)) && (((agcx)localObject2).a.jdField_a_of_type_Int == 1024)) {
-                      ((bfyh)((QQAppInterface)localObject1).getManager(165)).a(localStructMsgForGeneralShare.mMsgAction, localStructMsgForGeneralShare.mMsg_A_ActionData, localStructMsgForGeneralShare.mMsgActionData, localStructMsgForGeneralShare.mMsgUrl, 1, "");
-                    }
-                  }
-                }
-              }
+              return;
             }
-            localObject1 = null;
           }
         }
       }
     }
+    catch (Exception paramQQAppInterface)
+    {
+      QLog.e("QSplash@QbossSplashNetService", 1, paramQQAppInterface, new Object[0]);
+    }
+    do
+    {
+      localHashMap = azvf.a;
+      break;
+    } while ((localArrayList == null) || (localArrayList.size() <= 0));
+    azvc.a(paramQQAppInterface, localArrayList);
+  }
+  
+  private void a(ArrayList<tAdvDesc> paramArrayList)
+  {
+    if ((paramArrayList != null) && (paramArrayList.size() > 0))
+    {
+      paramArrayList = (tAdvDesc)paramArrayList.get(0);
+      if (paramArrayList != null)
+      {
+        QLog.i("QzoneQbossHelper", 4, "handleQbossBannerData data = " + paramArrayList.res_data);
+        paramArrayList = alaw.a(paramArrayList);
+        a(paramArrayList);
+        alay.a().a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), paramArrayList);
+      }
+    }
+    else
+    {
+      return;
+    }
+    QLog.e("QzoneQbossHelper", 1, "handleQbossBannerData data = null");
+  }
+  
+  private void b(MobileQbossAdvRsp paramMobileQbossAdvRsp, QQAppInterface paramQQAppInterface)
+  {
+    if (paramMobileQbossAdvRsp != null) {}
+    try
+    {
+      Object localObject = paramMobileQbossAdvRsp.map_next_query_ts;
+      if (localObject != null)
+      {
+        localObject = (Long)((Map)localObject).get(Integer.valueOf(2783));
+        if (localObject != null) {
+          alay.a().a(((Long)localObject).longValue(), 2783);
+        }
+      }
+      paramMobileQbossAdvRsp = paramMobileQbossAdvRsp.mapAdv;
+      if ((paramMobileQbossAdvRsp != null) && (paramQQAppInterface != null))
+      {
+        paramMobileQbossAdvRsp = (ArrayList)paramMobileQbossAdvRsp.get(Integer.valueOf(2783));
+        azuy.a().a(paramMobileQbossAdvRsp, paramQQAppInterface);
+      }
+      return;
+    }
+    catch (Exception paramMobileQbossAdvRsp)
+    {
+      QLog.e("QSplash@QbossSplashNetService", 1, "handleQbossPreDownloadRsp exception", paramMobileQbossAdvRsp);
+    }
+  }
+  
+  public void a(int paramInt, String paramString1, String paramString2, ArrayList<Integer> paramArrayList)
+  {
+    if ((paramArrayList == null) || (paramArrayList.size() == 0)) {}
+    do
+    {
+      do
+      {
+        do
+        {
+          return;
+        } while (!paramArrayList.contains(Integer.valueOf(2741)));
+        QLog.i("QzoneQbossHelper", 1, "getQbossFail msg = " + paramString1 + " requestType = " + paramString2);
+        paramString1 = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+      } while (paramString1 == null);
+      paramString1 = paramString1.getHandler(Conversation.class);
+    } while (paramString1 == null);
+    paramString1.sendEmptyMessage(1063);
+  }
+  
+  public void a(MobileQbossAdvRsp paramMobileQbossAdvRsp, QQAppInterface paramQQAppInterface)
+  {
+    if (paramMobileQbossAdvRsp != null) {}
+    for (;;)
+    {
+      try
+      {
+        Object localObject = paramMobileQbossAdvRsp.map_next_query_ts;
+        if (localObject != null)
+        {
+          localObject = (Long)((Map)localObject).get(Integer.valueOf(2742));
+          if (localObject != null) {
+            alay.a().a(((Long)localObject).longValue(), 2742);
+          }
+        }
+        paramMobileQbossAdvRsp = paramMobileQbossAdvRsp.mapAdv;
+        if ((paramMobileQbossAdvRsp != null) && (paramQQAppInterface != null))
+        {
+          paramMobileQbossAdvRsp = (ArrayList)paramMobileQbossAdvRsp.get(Integer.valueOf(2742));
+          localObject = paramQQAppInterface.getAccount();
+          if ((paramMobileQbossAdvRsp != null) && (paramMobileQbossAdvRsp.size() > 0))
+          {
+            QLog.i("QSplash@QbossSplashNetService", 1, "handleQbossSplashRsp appid =2742");
+            azvb.a(paramMobileQbossAdvRsp, paramQQAppInterface, (String)localObject);
+            i = 1;
+            if ((i == 0) && (paramQQAppInterface != null))
+            {
+              paramMobileQbossAdvRsp = paramQQAppInterface.getAccount();
+              QLog.i("QSplash@QbossSplashNetService", 1, "handleQbossSplashRsp cleardata");
+              azvf.a(BaseApplicationImpl.getContext(), azvf.a(paramMobileQbossAdvRsp), false);
+              azvf.b(BaseApplicationImpl.getContext(), azvf.a(paramMobileQbossAdvRsp));
+            }
+            return;
+          }
+        }
+      }
+      catch (Exception paramMobileQbossAdvRsp)
+      {
+        QLog.e("QSplash@QbossSplashNetService", 1, "handleQbossSplashRsp exception" + paramMobileQbossAdvRsp.toString());
+        return;
+      }
+      int i = 0;
+    }
+  }
+  
+  public void a(Bundle paramBundle, String paramString, QQAppInterface paramQQAppInterface)
+  {
+    QLog.i("QSplash@QbossSplashNetService", 1, "getQbossSuccess requestType = " + paramString);
+    try
+    {
+      ArrayList localArrayList = paramBundle.getIntegerArrayList("appid");
+      if ((localArrayList != null) && (localArrayList.size() > 0))
+      {
+        paramBundle = paramBundle.getSerializable("data");
+        if ((paramBundle != null) && ((paramBundle instanceof MobileQbossAdvRsp)))
+        {
+          paramBundle = (MobileQbossAdvRsp)paramBundle;
+          if (localArrayList.contains(Integer.valueOf(2741))) {
+            a(paramBundle, paramString, paramQQAppInterface);
+          }
+          if (localArrayList.contains(Integer.valueOf(2742))) {
+            a(paramBundle, paramQQAppInterface);
+          }
+          if (localArrayList.contains(Integer.valueOf(2783))) {
+            b(paramBundle, paramQQAppInterface);
+          }
+        }
+        else
+        {
+          a(-1, "rsp is not MobileQbossAdvRsp", paramString, localArrayList);
+          return;
+        }
+      }
+    }
+    catch (Exception paramBundle)
+    {
+      QLog.e("QzoneQbossHelper", 1, paramBundle, new Object[0]);
+    }
+  }
+  
+  public void a(String paramString, ArrayList<Integer> paramArrayList)
+  {
+    if (paramArrayList != null) {
+      QLog.i("QSplash@QbossSplashNetService", 1, "sendRequestQboss requestType = " + paramString + " contain id = " + paramArrayList.toString());
+    }
+    bmex.a().a(paramArrayList, this, paramString);
+  }
+  
+  public void a(String paramString, MqqHandler paramMqqHandler)
+  {
+    try
+    {
+      QLog.i("QSplash@QbossSplashNetService", 1, "sendQbossRequest  minigame preload ");
+      Object localObject = new ArrayList();
+      boolean bool2 = alay.a().a(2741);
+      if ((bool2) && (!"qboss_banner_net_change".equals(paramString))) {
+        ((ArrayList)localObject).add(Integer.valueOf(2741));
+      }
+      boolean bool1;
+      if (bmqa.m(BaseApplicationImpl.getApplication().getRuntime()))
+      {
+        bool1 = alay.a().a(2742);
+        if (!bool1) {
+          break label274;
+        }
+        ((ArrayList)localObject).add(Integer.valueOf(2742));
+      }
+      for (;;)
+      {
+        boolean bool3 = alay.a().a(2783);
+        if (bool3) {
+          ((ArrayList)localObject).add(Integer.valueOf(2783));
+        }
+        if (((ArrayList)localObject).size() != 0) {
+          a(paramString, (ArrayList)localObject);
+        }
+        if ("qboss_banner_login".equals(paramString))
+        {
+          localObject = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+          if (localObject != null)
+          {
+            if (!bool1)
+            {
+              QLog.i("QSplash@QbossSplashNetService", 1, "sendQbossRequest checkNeedDowloadAndDowload ");
+              a((QQAppInterface)localObject, azvf.a(((QQAppInterface)localObject).getAccount()));
+            }
+            if (!bool3)
+            {
+              QLog.i("QSplash@QbossSplashNetService", 1, "sendQbossRequest QbossPreDownloadManager.checkPreDownloadResStatus ");
+              azuy.a().a((QQAppInterface)localObject);
+            }
+          }
+        }
+        if ((bool2) || (!"qboss_banner_pull_refresh".equals(paramString))) {
+          break;
+        }
+        paramMqqHandler.sendEmptyMessage(1063);
+        return;
+        QLog.i("QSplash@QbossSplashNetService", 1, "关闭了频控");
+        ((ArrayList)localObject).add(Integer.valueOf(2742));
+        bool1 = false;
+      }
+    }
+    catch (Exception paramString)
+    {
+      QLog.e("QzoneQbossHelper", 1, paramString, new Object[0]);
+      return;
+    }
+    label274:
   }
 }
 

@@ -1,91 +1,78 @@
-import android.app.Activity;
-import android.text.TextUtils;
 import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.mobileqq.shortvideo.PtvTemplateManager.PtvTemplateInfo;
-import java.util.ArrayList;
-import org.json.JSONObject;
+import java.io.ByteArrayOutputStream;
+import java.io.ObjectOutputStream;
 
-class blrb
-  implements blrf
+public class blrb
 {
-  blrb(blra paramblra) {}
+  private ByteArrayOutputStream jdField_a_of_type_JavaIoByteArrayOutputStream = new ByteArrayOutputStream();
+  private ObjectOutputStream jdField_a_of_type_JavaIoObjectOutputStream = new ObjectOutputStream(this.jdField_a_of_type_JavaIoByteArrayOutputStream);
   
   public void a(int paramInt)
   {
-    blra.a(this.a).h();
-    if (QLog.isColorLevel()) {
-      QLog.i("QIMPtvTemplateManager", 2, "PtvTemplateAdapter onItemClicked position: " + paramInt);
-    }
-    if ((paramInt < 0) || (paramInt >= this.a.jdField_a_of_type_JavaUtilArrayList.size())) {}
-    PtvTemplateManager.PtvTemplateInfo localPtvTemplateInfo;
-    do
+    this.jdField_a_of_type_JavaIoObjectOutputStream.writeInt(paramInt);
+  }
+  
+  public void a(Object paramObject)
+  {
+    this.jdField_a_of_type_JavaIoObjectOutputStream.writeObject(paramObject);
+  }
+  
+  public void a(String paramString)
+  {
+    a(paramString, "");
+  }
+  
+  public void a(String paramString1, String paramString2)
+  {
+    if (paramString1 == null)
     {
+      this.jdField_a_of_type_JavaIoObjectOutputStream.writeUTF(paramString2);
       return;
-      localPtvTemplateInfo = (PtvTemplateManager.PtvTemplateInfo)this.a.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
-    } while (localPtvTemplateInfo == null);
-    if (localPtvTemplateInfo.isWsBanner())
-    {
-      xsx.a(this.a.jdField_a_of_type_AndroidContentContext, localPtvTemplateInfo);
-      return;
     }
-    if (blra.a(this.a) == paramInt)
-    {
-      blra.jdField_c_of_type_Boolean = true;
-      blra.a(this.a, paramInt);
-      blra.jdField_c_of_type_Int = paramInt;
-      blra.jdField_b_of_type_Int = localPtvTemplateInfo.categoryId;
-      blra.jdField_b_of_type_JavaLangString = localPtvTemplateInfo.id;
-    }
+    this.jdField_a_of_type_JavaIoObjectOutputStream.writeUTF(paramString1);
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_JavaIoObjectOutputStream.writeBoolean(paramBoolean);
+  }
+  
+  public byte[] a()
+  {
     try
     {
-      localJSONObject = new JSONObject();
-      if (TextUtils.isEmpty(blra.jdField_b_of_type_JavaLangString)) {
-        break label418;
-      }
-      if (!"0".equals(blra.jdField_b_of_type_JavaLangString)) {
-        break label393;
-      }
-    }
-    catch (Exception localException)
-    {
-      for (;;)
+      this.jdField_a_of_type_JavaIoObjectOutputStream.close();
+      try
       {
-        JSONObject localJSONObject;
-        label175:
-        Object localObject;
-        QLog.d("Q.videostory.capture", 1, "report failed");
-        continue;
-        String str = "empty";
+        label7:
+        arrayOfByte1 = this.jdField_a_of_type_JavaIoByteArrayOutputStream.toByteArray();
       }
-    }
-    localJSONObject.put("lens_id", localObject);
-    if (blra.jdField_b_of_type_Int != 0) {}
-    for (localObject = Integer.valueOf(blra.jdField_b_of_type_Int);; localObject = "empty")
-    {
-      localJSONObject.put("lens_tab", localObject);
-      localJSONObject.put("id_pos", blra.jdField_c_of_type_Int);
-      zaj.a("mystatus_shoot", "lens_select", 0, 0, new String[] { "", String.valueOf(ajpx.a), localJSONObject.toString() });
-      QLog.d("Q.videostory.capture", 1, "change material result:" + localJSONObject.toString());
-      ((blwl)blqr.a(14)).a(localPtvTemplateInfo.id, 3);
-      if (!localPtvTemplateInfo.id.equals("0"))
+      catch (Exception localException1)
       {
-        blra.jdField_b_of_type_Boolean = true;
-        if (!blra.jdField_c_of_type_Boolean) {
-          blra.jdField_a_of_type_Boolean = false;
+        for (;;)
+        {
+          try
+          {
+            byte[] arrayOfByte1;
+            this.jdField_a_of_type_JavaIoByteArrayOutputStream.close();
+            return arrayOfByte1;
+          }
+          catch (Exception localException3)
+          {
+            byte[] arrayOfByte2;
+            return arrayOfByte2;
+          }
+          localException1 = localException1;
+          if (QLog.isColorLevel()) {
+            QLog.d("Q.msg.qqwalletmsg", 2, "flushDataAndCloseStream toByteArray Exception", localException1);
+          }
+          arrayOfByte2 = null;
         }
-        this.a.jdField_a_of_type_Bnpl.a(localPtvTemplateInfo, 111);
       }
-      this.a.a(null);
-      if (!localPtvTemplateInfo.usable) {
-        bnfi.a("", "0X8006A1A");
-      }
-      ((blrx)blqr.a(5)).a(this.a.d, (Activity)this.a.jdField_a_of_type_AndroidContentContext);
-      return;
-      blra.jdField_c_of_type_Boolean = false;
-      break;
-      label393:
-      localObject = blra.jdField_b_of_type_JavaLangString;
-      break label175;
+    }
+    catch (Exception localException2)
+    {
+      break label7;
     }
   }
 }

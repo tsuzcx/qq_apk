@@ -1,211 +1,147 @@
-import android.content.Context;
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.graphics.Paint.FontMetricsInt;
-import android.graphics.Rect;
-import android.graphics.drawable.Drawable;
-import android.graphics.drawable.Drawable.Callback;
-import android.text.style.ImageSpan;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
+import android.graphics.Color;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.view.PagerAdapter;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.RelativeLayout;
+import android.widget.RelativeLayout.LayoutParams;
+import android.widget.TextView;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.gamecenter.fragment.QQGamePubAccountFragment;
+import com.tencent.mobileqq.gamecenter.view.GameArkView;
+import com.tencent.mobileqq.gamecenter.view.MoreMsgHeaderView;
+import com.tencent.mobileqq.gamecenter.view.QQGamePubViewpager;
 import com.tencent.qphone.base.util.QLog;
-import mqq.util.WeakReference;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class ausv
-  extends ImageSpan
+  extends PagerAdapter
 {
-  private int jdField_a_of_type_Int;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private URLDrawable jdField_a_of_type_ComTencentImageURLDrawable;
-  private String jdField_a_of_type_JavaLangString;
-  private WeakReference<Drawable.Callback> jdField_a_of_type_MqqUtilWeakReference;
+  private ausv(QQGamePubAccountFragment paramQQGamePubAccountFragment) {}
   
-  public ausv(Context paramContext, int paramInt1, String paramString, int paramInt2, Drawable.Callback paramCallback)
+  private void a(RelativeLayout paramRelativeLayout, MessageRecord paramMessageRecord)
   {
-    super(paramContext, paramInt1, 0);
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Int = paramInt2;
-    if (paramCallback != null) {
-      this.jdField_a_of_type_MqqUtilWeakReference = new WeakReference(paramCallback);
-    }
-  }
-  
-  public ausv(Context paramContext, int paramInt, String paramString, Drawable.Callback paramCallback)
-  {
-    this(paramContext, paramInt, paramString, 0, paramCallback);
-  }
-  
-  public void draw(Canvas paramCanvas, CharSequence paramCharSequence, int paramInt1, int paramInt2, float paramFloat, int paramInt3, int paramInt4, int paramInt5, Paint paramPaint)
-  {
-    paramCharSequence = getDrawable();
-    if (paramCharSequence == null) {
-      return;
-    }
-    if ((paramCharSequence instanceof URLDrawable))
+    if (paramMessageRecord != null)
     {
-      paramInt2 = 0;
-      paramInt1 = 0;
-      if (((URLDrawable)paramCharSequence).getStatus() == 1)
+      TextView localTextView = new TextView(this.a.getActivity());
+      localTextView.setTextColor(-1);
+      localTextView.setTextSize(1, 10.0F);
+      localTextView.setBackgroundColor(Color.parseColor("#4D000000"));
+      localTextView.setText(bgsu.a(this.a.getActivity(), 3, paramMessageRecord.time * 1000L));
+      localTextView.setPadding(12, 0, 12, 0);
+      localTextView.setId(2131378693);
+      RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)localTextView.getLayoutParams();
+      paramMessageRecord = localLayoutParams;
+      if (localLayoutParams == null) {
+        paramMessageRecord = new RelativeLayout.LayoutParams(-2, afur.a(15.0F, this.a.getResources()));
+      }
+      localTextView.setGravity(17);
+      paramMessageRecord.addRule(14);
+      paramMessageRecord.addRule(10);
+      localTextView.bringToFront();
+      paramRelativeLayout.addView(localTextView, paramMessageRecord);
+    }
+  }
+  
+  public auuq a(int paramInt)
+  {
+    if (QQGamePubAccountFragment.a(this.a).isEmpty())
+    {
+      synchronized (QQGamePubAccountFragment.b)
       {
-        paramInt4 = paramCharSequence.getIntrinsicWidth();
-        i = paramCharSequence.getIntrinsicHeight();
-        paramInt1 = i;
-        paramInt2 = paramInt4;
-        if (i > this.jdField_a_of_type_Int)
+        if ((QQGamePubAccountFragment.a(this.a) != null) && (QQGamePubAccountFragment.a(this.a).size() > 0))
         {
-          paramInt1 = i;
-          paramInt2 = paramInt4;
-          if (this.jdField_a_of_type_Int > 0)
+          Iterator localIterator = QQGamePubAccountFragment.a(this.a).iterator();
+          if (localIterator.hasNext())
           {
-            paramInt2 = paramInt4 * this.jdField_a_of_type_Int / i;
-            paramInt1 = this.jdField_a_of_type_Int;
+            auuq localauuq = auvc.a((MessageRecord)localIterator.next(), this.a.getActivity());
+            QQGamePubAccountFragment.a(this.a).add(localauuq);
           }
         }
-        paramPaint = this.jdField_a_of_type_ComTencentImageURLDrawable;
-        if (paramInt2 <= 0) {
-          break label221;
-        }
-        paramInt4 = paramInt2;
-        if (paramInt1 <= 0) {
-          break label227;
-        }
+      }
+      if ((this.a.isAdded()) && (this.a.getActivity() != null) && (!this.a.getActivity().isFinishing())) {
+        QQGamePubAccountFragment.a(this.a).add(new MoreMsgHeaderView(this.a.getActivity()));
       }
     }
-    label221:
-    label227:
-    for (int i = paramInt1;; i = 0)
-    {
-      paramPaint.setBounds(0, 0, paramInt4, i);
-      if (QLog.isColorLevel()) {
-        QLog.i("UrlBottomImageSpan", 2, "draw status:" + ((URLDrawable)paramCharSequence).getStatus() + " width:" + paramInt2 + " height:" + paramInt1);
-      }
-      paramCanvas.save();
-      paramCanvas.translate(paramFloat, (paramInt5 - paramInt3 - paramCharSequence.getBounds().bottom) / 2 + paramInt3);
-      paramCharSequence.draw(paramCanvas);
-      paramCanvas.restore();
-      return;
-      paramInt4 = 0;
-      break;
+    if (paramInt < QQGamePubAccountFragment.a(this.a).size()) {
+      return (auuq)QQGamePubAccountFragment.a(this.a).get(paramInt);
     }
+    return null;
   }
   
-  public Drawable getDrawable()
+  public void destroyItem(ViewGroup paramViewGroup, int paramInt, Object paramObject)
   {
-    if (this.jdField_a_of_type_ComTencentImageURLDrawable != null) {
-      return this.jdField_a_of_type_ComTencentImageURLDrawable;
-    }
-    if (this.jdField_a_of_type_JavaLangString != null)
-    {
-      Object localObject1 = URLDrawable.URLDrawableOptions.obtain();
-      for (;;)
-      {
-        try
-        {
-          this.jdField_a_of_type_ComTencentImageURLDrawable = URLDrawable.getDrawable(this.jdField_a_of_type_JavaLangString, (URLDrawable.URLDrawableOptions)localObject1);
-          if (this.jdField_a_of_type_MqqUtilWeakReference != null)
-          {
-            localObject1 = (Drawable.Callback)this.jdField_a_of_type_MqqUtilWeakReference.get();
-            if (localObject1 != null) {
-              this.jdField_a_of_type_ComTencentImageURLDrawable.setCallback((Drawable.Callback)localObject1);
-            }
-            this.jdField_a_of_type_ComTencentImageURLDrawable.setURLDrawableListener(new ausw(this));
-            if (QLog.isColorLevel())
-            {
-              StringBuilder localStringBuilder = new StringBuilder().append("getDrawable. first get url:").append(this.jdField_a_of_type_JavaLangString).append("  cb:");
-              if (localObject1 == null) {
-                break label180;
-              }
-              bool = true;
-              QLog.i("UrlBottomImageSpan", 2, bool);
-            }
-            return this.jdField_a_of_type_ComTencentImageURLDrawable;
-          }
-        }
-        catch (Throwable localThrowable)
-        {
-          this.jdField_a_of_type_ComTencentImageURLDrawable = null;
-          QLog.e("UrlBottomImageSpan", 2, "getDrawable error: " + localThrowable.getMessage());
-          return super.getDrawable();
-        }
-        Object localObject2 = null;
-        continue;
-        label180:
-        boolean bool = false;
-      }
-    }
-    return super.getDrawable();
+    paramViewGroup.removeView((View)paramObject);
   }
   
-  public int getSize(Paint paramPaint, CharSequence paramCharSequence, int paramInt1, int paramInt2, Paint.FontMetricsInt paramFontMetricsInt)
+  public int getCount()
   {
-    paramInt2 = 0;
-    paramCharSequence = getDrawable();
-    if (paramCharSequence == null) {
-      return 0;
-    }
-    int i;
-    int j;
-    if (((paramCharSequence instanceof URLDrawable)) && (((URLDrawable)paramCharSequence).getStatus() == 1))
+    return QQGamePubAccountFragment.a(this.a).size() + 1;
+  }
+  
+  public int getItemPosition(Object paramObject)
+  {
+    return -2;
+  }
+  
+  public Object instantiateItem(ViewGroup paramViewGroup, int paramInt)
+  {
+    QLog.d("QQGamePubAccountFragment", 4, "---->instantiateItem");
+    if (paramInt < QQGamePubAccountFragment.a(this.a).size()) {}
+    RelativeLayout localRelativeLayout;
+    for (MessageRecord localMessageRecord = (MessageRecord)QQGamePubAccountFragment.a(this.a).get(paramInt);; localMessageRecord = null)
     {
-      i = paramCharSequence.getIntrinsicWidth();
-      j = paramCharSequence.getIntrinsicHeight();
-      paramInt2 = j;
-      paramInt1 = i;
-      if (j > this.jdField_a_of_type_Int)
+      auuq localauuq = a(paramInt);
+      if (localauuq == null)
       {
-        paramInt2 = j;
-        paramInt1 = i;
-        if (this.jdField_a_of_type_Int > 0)
+        QLog.d("QQGamePubAccountFragment", 4, "headView is null");
+        return null;
+      }
+      localRelativeLayout = new RelativeLayout(paramViewGroup.getContext());
+      if (((View)localauuq).getParent() != null) {
+        ((ViewGroup)((View)localauuq).getParent()).removeView((View)localauuq);
+      }
+      RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, -2);
+      localLayoutParams.addRule(13, ((View)localauuq).getId());
+      localRelativeLayout.addView((View)localauuq, localLayoutParams);
+      a(localRelativeLayout, localMessageRecord);
+      paramViewGroup.addView(localRelativeLayout, localLayoutParams);
+      int i = QQGamePubAccountFragment.a(this.a).getCurrentItem();
+      localauuq.a(localMessageRecord, this.a.getActivity());
+      if (paramInt != i) {
+        break;
+      }
+      try
+      {
+        QQGamePubAccountFragment.a(this.a, localauuq);
+        if (this.a.a(QQGamePubAccountFragment.a(this.a)))
         {
-          paramInt1 = i * this.jdField_a_of_type_Int / j;
-          paramInt2 = this.jdField_a_of_type_Int;
+          ((GameArkView)QQGamePubAccountFragment.a(this.a)).setPrePause(false);
+          autb.a().a((GameArkView)QQGamePubAccountFragment.a(this.a));
+        }
+        else
+        {
+          autb.a().a(null);
         }
       }
-      URLDrawable localURLDrawable = this.jdField_a_of_type_ComTencentImageURLDrawable;
-      if (paramInt1 > 0)
+      catch (Throwable paramViewGroup)
       {
-        i = paramInt1;
-        if (paramInt2 <= 0) {
-          break label293;
-        }
-        j = paramInt2;
-        label113:
-        localURLDrawable.setBounds(0, 0, i, j);
+        QLog.d("QQGamePubAccountFragment", 4, "--->instantiateItem init video ark fail:" + paramViewGroup.getMessage());
       }
     }
-    for (;;)
-    {
-      paramCharSequence = paramCharSequence.getBounds();
-      if (paramFontMetricsInt != null)
-      {
-        paramPaint = paramPaint.getFontMetricsInt();
-        j = paramPaint.bottom - paramPaint.top;
-        int k = paramCharSequence.bottom - paramCharSequence.top;
-        i = k / 2 - j / 4;
-        k /= 2;
-        j = j / 4 + k;
-        paramFontMetricsInt.ascent = (-j);
-        paramFontMetricsInt.top = (-j);
-        paramFontMetricsInt.bottom = i;
-        paramFontMetricsInt.descent = i;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.i("UrlBottomImageSpan", 2, "getSize size:" + paramCharSequence.right + " width:" + paramInt1 + " height:" + paramInt2 + " imageUrl:" + this.jdField_a_of_type_JavaLangString);
-      }
-      return paramCharSequence.right;
-      i = 0;
-      break;
-      label293:
-      j = 0;
-      break label113;
-      paramInt1 = 0;
-    }
+    return localRelativeLayout;
+  }
+  
+  public boolean isViewFromObject(View paramView, Object paramObject)
+  {
+    return paramView == paramObject;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     ausv
  * JD-Core Version:    0.7.0.1
  */

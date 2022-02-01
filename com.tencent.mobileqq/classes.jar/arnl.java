@@ -1,27 +1,50 @@
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
-import com.tencent.mobileqq.widget.share.ShareActionSheet;
-import com.tencent.mobileqq.widget.share.ShareActionSheet.OnItemClickListener;
+import android.content.Context;
+import com.tencent.beacon.event.UserAction;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qqlive.module.videoreport.dtreport.api.IDTReport;
+import java.util.Map;
+import kotlin.Metadata;
+import org.jetbrains.annotations.Nullable;
 
-class arnl
-  implements ShareActionSheet.OnItemClickListener
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/dt/QQDtReporter;", "Lcom/tencent/qqlive/module/videoreport/dtreport/api/IDTReport;", "()V", "dtEvent", "", "obj", "", "eventKey", "", "params", "", "isImmediatelyUpload", "appkey", "Companion", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class arnl
+  implements IDTReport
 {
-  arnl(arnb paramarnb) {}
+  private static volatile arnl a;
+  public static final arnm a;
   
-  public void onItemClick(ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem, ShareActionSheet paramShareActionSheet)
+  static
   {
-    if (paramActionSheetItem == null) {}
-    do
+    jdField_a_of_type_Arnm = new arnm(null);
+  }
+  
+  @Nullable
+  public static final arnl b()
+  {
+    return jdField_a_of_type_Arnm.a();
+  }
+  
+  public boolean dtEvent(@Nullable Object paramObject, @Nullable String paramString, @Nullable Map<String, String> paramMap, boolean paramBoolean)
+  {
+    if (paramString == null) {
+      return false;
+    }
+    UserAction.onDTUserAction((Context)BaseApplication.context, paramString, true, -1L, -1L, paramMap, paramBoolean, paramBoolean);
+    return true;
+  }
+  
+  public boolean dtEvent(@Nullable Object paramObject, @Nullable String paramString1, @Nullable Map<String, String> paramMap, boolean paramBoolean, @Nullable String paramString2)
+  {
+    if (paramString1 == null) {
+      return false;
+    }
+    if (paramString2 == null)
     {
-      return;
-      arnb.a(this.a).dismiss();
-      if (paramActionSheetItem.listener != null)
-      {
-        paramActionSheetItem.listener.onClick(null);
-        return;
-      }
-    } while (this.a.a == null);
-    this.a.a.a(paramActionSheetItem);
+      dtEvent(paramObject, paramString1, paramMap, paramBoolean);
+      return false;
+    }
+    UserAction.onDTUserActionToTunnel((Context)BaseApplication.context, paramString2, paramString1, paramMap, paramBoolean, paramBoolean);
+    return false;
   }
 }
 

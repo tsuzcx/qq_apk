@@ -1,19 +1,25 @@
+import com.tencent.mobileqq.persistence.notColumn;
+
 public class oms
 {
+  @notColumn
   public int a;
-  public String a;
+  @notColumn
+  public long a;
+  @notColumn
+  public boolean a;
+  @notColumn
   public int b;
-  public String b;
+  @notColumn
+  public boolean b;
+  @notColumn
   public int c;
-  public String c;
-  public int d;
-  public String d;
-  public int e;
-  public String e;
+  @notColumn
+  public boolean c;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     oms
  * JD-Core Version:    0.7.0.1
  */

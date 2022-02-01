@@ -1,44 +1,23 @@
-import com.tencent.mobileqq.utils.SecUtil;
-import java.io.IOException;
+import android.view.GestureDetector;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
 
 class axoq
-  implements baug
+  implements View.OnTouchListener
 {
-  public void onResp(bavf parambavf)
-  {
-    Object localObject = (axot)parambavf.jdField_a_of_type_Bave.a();
-    lek.c("CaptureVideoFilterManager", "download file call back. file = " + ((axot)localObject).a);
-    if (parambavf.jdField_a_of_type_Int != 0)
-    {
-      lek.c("CaptureVideoFilterManager", "download file faild. errcode = " + parambavf.b);
-      return;
-    }
-    if (!((axot)localObject).b.equalsIgnoreCase(SecUtil.getFileMd5(parambavf.jdField_a_of_type_Bave.c)))
-    {
-      lek.c("CaptureVideoFilterManager", "download file faild : md5 is not match.");
-      bdhb.d(parambavf.jdField_a_of_type_Bave.c);
-      return;
-    }
-    lek.c("CaptureVideoFilterManager", "download file successed.");
-    try
-    {
-      localObject = axom.a();
-      bdhb.a(parambavf.jdField_a_of_type_Bave.c, (String)localObject, false);
-      bdhb.d(parambavf.jdField_a_of_type_Bave.c);
-      return;
-    }
-    catch (IOException parambavf)
-    {
-      parambavf.printStackTrace();
-      lek.c("CaptureVideoFilterManager", "BEAUTY_ZIP unzip file faild.");
-    }
-  }
+  axoq(axop paramaxop) {}
   
-  public void onUpdateProgeress(bave parambave, long paramLong1, long paramLong2) {}
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  {
+    this.a.c();
+    axop.a(this.a).onTouchEvent(paramMotionEvent);
+    return true;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     axoq
  * JD-Core Version:    0.7.0.1
  */

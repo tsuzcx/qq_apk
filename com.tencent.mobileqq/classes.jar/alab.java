@@ -1,48 +1,22 @@
-import android.content.Context;
-import com.tencent.mobileqq.apollo.cmgame.CmGameStartChecker.StartCheckParam;
-import com.tencent.mobileqq.apollo.debug.CmGameDebugView;
-import com.tencent.mobileqq.apollo.process.ui.framework.CmGameFloatView;
-import com.tencent.mobileqq.apollo.process.ui.framework.CmGameGuideView;
-import com.tencent.mobileqq.apollo.process.ui.framework.FrameworkView;
-import com.tencent.mobileqq.apollo.process.ui.framework.QzoneGameFloatView;
+import android.os.Message;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import mqq.os.MqqHandler;
 
-public class alab
+class alab
+  implements View.OnClickListener
 {
-  public static FrameworkView a(Context paramContext, akyg paramakyg, bhtd parambhtd, akun paramakun, CmGameStartChecker.StartCheckParam paramStartCheckParam)
-  {
-    switch (paramStartCheckParam.src)
-    {
-    default: 
-      if (paramStartCheckParam.mGameType == 5) {
-        paramContext = new QzoneGameFloatView(paramContext, paramStartCheckParam);
-      }
-      break;
-    }
-    for (;;)
-    {
-      paramContext.a(paramakyg, parambhtd, paramakun, paramStartCheckParam);
-      return paramContext;
-      paramContext = new QzoneGameFloatView(paramContext, paramStartCheckParam);
-      continue;
-      paramContext = new CmGameFloatView(paramContext, paramStartCheckParam);
-    }
-  }
+  alab(akyh paramakyh, int paramInt1, int paramInt2, String paramString, int paramInt3) {}
   
-  public static FrameworkView a(Context paramContext, akyg paramakyg, bhtd parambhtd, CmGameStartChecker.StartCheckParam paramStartCheckParam, int paramInt)
+  public void onClick(View paramView)
   {
-    switch (paramInt)
-    {
-    default: 
-      paramContext = new CmGameGuideView(paramContext, paramStartCheckParam);
-    }
-    for (;;)
-    {
-      paramContext.a(paramakyg, parambhtd, null, paramStartCheckParam);
-      return paramContext;
-      paramContext = new CmGameGuideView(paramContext, paramStartCheckParam);
-      continue;
-      paramContext = new CmGameDebugView(paramContext, paramStartCheckParam);
-    }
+    anvs.a(this.jdField_a_of_type_Int, this.b, this.jdField_a_of_type_JavaLangString, this.c, akyh.a(this.jdField_a_of_type_Akyh));
+    bcst.b(null, "CliOper", "", "", "theme", "0X8007233", 0, 0, String.valueOf(this.c), "", "", "");
+    akyh.a(this.jdField_a_of_type_Akyh).obtainMessage(16).sendToTarget();
+    bcst.a(akyh.a(this.jdField_a_of_type_Akyh).app, "dc00898", "", "", "0X8009EE2", "0X8009EE2", 15, 0, "", "", "", "");
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

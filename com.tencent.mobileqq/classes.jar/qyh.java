@@ -1,59 +1,26 @@
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.readinjoy.model.ReadInJoyUserInfoModule;
-import com.tencent.biz.pubaccount.readinjoy.struct.ReadInJoyUserInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.KandianUrlImageView;
-import com.tencent.qphone.base.util.QLog;
-import java.net.MalformedURLException;
-import java.net.URL;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.ImageView;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentSocialOperation;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentSocialOperation.1.1;
 
 public class qyh
+  implements Animation.AnimationListener
 {
-  public static void a(long paramLong, KandianUrlImageView paramKandianUrlImageView)
+  public qyh(ComponentSocialOperation paramComponentSocialOperation) {}
+  
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    ReadInJoyUserInfo localReadInJoyUserInfo = ReadInJoyUserInfoModule.a(paramLong, new qyi(paramLong, paramKandianUrlImageView));
-    if (localReadInJoyUserInfo != null) {
-      b(localReadInJoyUserInfo, paramKandianUrlImageView);
-    }
+    this.a.a.post(new ComponentSocialOperation.1.1(this));
   }
   
-  private static void b(ReadInJoyUserInfo paramReadInJoyUserInfo, KandianUrlImageView paramKandianUrlImageView)
-  {
-    if (paramReadInJoyUserInfo == null) {
-      QLog.d("ReadInJoyVIconHelper", 2, "[setVIconWithUserInfo], userInfo is null.");
-    }
-    do
-    {
-      do
-      {
-        return;
-      } while (paramKandianUrlImageView == null);
-      if (QLog.isColorLevel()) {
-        QLog.i("ReadInJoyVIconHelper", 2, "[refreshVIcon], userInfo = " + paramReadInJoyUserInfo);
-      }
-      try
-      {
-        if (!TextUtils.isEmpty(paramReadInJoyUserInfo.smallIconUrl))
-        {
-          paramKandianUrlImageView.setImageResource(2130841378);
-          paramKandianUrlImageView.setVisibility(0);
-          paramKandianUrlImageView.a(new URL(paramReadInJoyUserInfo.smallIconUrl));
-          return;
-        }
-      }
-      catch (MalformedURLException paramReadInJoyUserInfo)
-      {
-        QLog.e("ReadInJoyVIconHelper", 1, "[refreshVIcon], e = " + paramReadInJoyUserInfo);
-        return;
-      }
-    } while (TextUtils.isEmpty(paramReadInJoyUserInfo.largeIconUrl));
-    paramKandianUrlImageView.setImageResource(2130841378);
-    paramKandianUrlImageView.setVisibility(0);
-    paramKandianUrlImageView.a(new URL(paramReadInJoyUserInfo.largeIconUrl));
-  }
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     qyh
  * JD-Core Version:    0.7.0.1
  */

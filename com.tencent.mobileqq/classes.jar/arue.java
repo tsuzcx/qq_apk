@@ -1,30 +1,30 @@
 import android.os.Bundle;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.emosm.web.MessengerService;
 
-public class arue
+class arue
+  implements bgzq<aueb>
 {
-  public long a;
-  public long b;
+  arue(arti paramarti, int paramInt, anuk paramanuk, QQAppInterface paramQQAppInterface, Bundle paramBundle, MessengerService paramMessengerService) {}
   
-  public arue(long paramLong1, long paramLong2)
+  public void a(aueb paramaueb, Object paramObject)
   {
-    this.a = paramLong1;
-    this.b = paramLong2;
-  }
-  
-  public static arue a(Bundle paramBundle)
-  {
-    if (paramBundle == null) {
-      return null;
+    paramObject = new Bundle();
+    paramObject.putInt("id", this.jdField_a_of_type_Int);
+    if ((paramaueb != null) || (this.jdField_a_of_type_Int == 0))
+    {
+      paramObject.putInt("result", 0);
+      this.jdField_a_of_type_Anuk.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), this.jdField_a_of_type_Int);
     }
-    return new arue(paramBundle.getLong("RPARAM_RECV_SIZE"), paramBundle.getLong("RPARAM_TRANS_SIZE"));
-  }
-  
-  public Bundle a()
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putLong("RPARAM_RECV_SIZE", this.a);
-    localBundle.putLong("RPARAM_TRANS_SIZE", this.b);
-    return localBundle;
+    for (;;)
+    {
+      this.jdField_a_of_type_AndroidOsBundle.putBundle("response", paramObject);
+      this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.a(this.jdField_a_of_type_AndroidOsBundle);
+      return;
+      bgzu.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "individual_v2_colorscreen_set_fail", "0", "", Integer.toString(this.jdField_a_of_type_Int), null, null, 0.0F, 0.0F);
+      bgzt.a("individual_v2_colorscreen_set_fail", "id:" + this.jdField_a_of_type_Int);
+      paramObject.putInt("result", 1);
+    }
   }
 }
 

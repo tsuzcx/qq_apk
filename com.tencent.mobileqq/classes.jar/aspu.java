@@ -1,49 +1,31 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.ViewParent;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.bubble.ChatXListView;
-import com.tencent.mobileqq.emoticon.EmojiStickerManager;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import android.view.Window;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.FrameLayout;
+import com.tencent.mobileqq.facetoface.Face2FaceAddFriendActivity;
 
 class aspu
-  implements apry
+  implements Animation.AnimationListener
 {
   aspu(aspt paramaspt) {}
   
-  public void a(View paramView)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    String str = bdtg.a("aioEmojiStickerDetail");
-    ViewParent localViewParent = paramView.getParent();
-    if (localViewParent != null)
+    this.a.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity.a.removeView(this.a.jdField_a_of_type_AndroidViewView);
+    this.a.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity.getWindow().setBackgroundDrawable(null);
+    Face2FaceAddFriendActivity.a(this.a.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity);
+    this.a.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity.n = true;
+    if (asql.a >= asql.b)
     {
-      localViewParent = localViewParent.getParent();
-      if ((localViewParent instanceof ChatXListView)) {
-        EmojiStickerManager.k = ((ChatXListView)localViewParent).getPositionForView(paramView);
-      }
-    }
-    paramView = new Intent(this.a.a.getApp(), QQBrowserActivity.class);
-    paramView.setFlags(268435456);
-    paramView.putExtra("vasUsePreWebview", true);
-    VasWebviewUtil.openQQBrowserWithoutAD(this.a.a.getApp(), str, -1L, paramView, false, -1);
-    int i;
-    if (EmojiStickerManager.a().a == 0) {
-      i = 1;
-    }
-    for (;;)
-    {
-      VasWebviewUtil.reportCommercialDrainage(this.a.a.c(), "Stick", "ClickDetail", String.valueOf(i), 0, 0, 0, "", "", "", "", "", "", "", 0, 0, 0, 0);
+      this.a.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity.a(asql.a, asql.b);
       return;
-      if (EmojiStickerManager.a().a == 1) {
-        i = 2;
-      } else if (EmojiStickerManager.a().a == 3000) {
-        i = 3;
-      } else {
-        i = -1;
-      }
     }
+    this.a.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity.a(asql.a, 0L);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

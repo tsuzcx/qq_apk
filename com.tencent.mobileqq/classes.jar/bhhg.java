@@ -1,21 +1,17 @@
-import com.tencent.qqmini.sdk.launcher.shell.BaselibLoader.BaselibContent;
-import com.tencent.qqmini.sdk.launcher.shell.BaselibLoader.OnLoadBaselibListener;
-
-class bhhg
-  implements BaselibLoader.OnLoadBaselibListener
+public class bhhg
 {
-  bhhg(bhhd parambhhd) {}
+  public int a;
+  public long a;
   
-  public void onResult(int paramInt, String paramString, BaselibLoader.BaselibContent paramBaselibContent)
+  public bhhg()
   {
-    if ((paramInt == 0) && (paramBaselibContent != null)) {
-      this.a.a(paramBaselibContent.waServiceJsStr, paramBaselibContent.waServicePath);
-    }
+    this.jdField_a_of_type_Int = 1000277;
+    this.jdField_a_of_type_Long = -1L;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bhhg
  * JD-Core Version:    0.7.0.1
  */

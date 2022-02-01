@@ -1,90 +1,69 @@
-public class mtb
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+
+final class mtb
+  implements bdvw
 {
-  public int a;
-  private String jdField_a_of_type_JavaLangString = "";
-  private boolean jdField_a_of_type_Boolean = true;
-  private int jdField_b_of_type_Int;
-  private String jdField_b_of_type_JavaLangString;
-  private boolean jdField_b_of_type_Boolean = true;
-  private int jdField_c_of_type_Int;
-  private boolean jdField_c_of_type_Boolean;
+  mtb(mtd parammtd) {}
   
-  public mtb(int paramInt1, String paramString, int paramInt2)
+  public void onResp(bdwt parambdwt)
   {
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_b_of_type_Int = paramInt1;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_c_of_type_Int = paramInt2;
+    if (parambdwt.jdField_a_of_type_Int == 3) {
+      if (QLog.isColorLevel()) {
+        QLog.i("ScoreManager", 1, "Download init. url = " + ((bdvs)parambdwt.jdField_a_of_type_Bdws).a);
+      }
+    }
+    do
+    {
+      for (;;)
+      {
+        return;
+        if (parambdwt.jdField_a_of_type_Int == 0)
+        {
+          File localFile = new File(((bdvs)parambdwt.jdField_a_of_type_Bdws).c);
+          String str = azby.a(localFile.getAbsolutePath());
+          if ((TextUtils.isEmpty(str)) || (!str.equalsIgnoreCase(this.a.b)))
+          {
+            if (!QLog.isColorLevel()) {
+              break;
+            }
+            QLog.i("ScoreManager", 1, "Download end. MD5 check error. url = " + ((bdvs)parambdwt.jdField_a_of_type_Bdws).a + ", fileName = " + localFile.getAbsolutePath() + ", fileMD5 = " + str);
+            return;
+          }
+          try
+          {
+            parambdwt = new File(this.a.c);
+            apcr.a(this.a.c, parambdwt.getParentFile().getAbsolutePath() + File.separator);
+            if (QLog.isColorLevel()) {
+              QLog.i("ScoreManager", 1, "onDownloadComplete  path : " + parambdwt.getParentFile().getAbsolutePath());
+            }
+            if (QLog.isColorLevel())
+            {
+              QLog.i("ScoreManager", 1, "qav_score_good : " + mrs.a("qav_score_good.jpg") + ", qav_score_normal : " + mrs.a("qav_score_normal.jpg") + ", qav_score_bad : " + mrs.a("qav_score_bad.jpg"));
+              return;
+            }
+          }
+          catch (Exception parambdwt)
+          {
+            new File(this.a.c).delete();
+          }
+        }
+      }
+    } while (!QLog.isColorLevel());
+    QLog.i("ScoreManager", 1, "Download end. uncompressZip error.");
   }
   
-  public int a()
+  public void onUpdateProgeress(bdws parambdws, long paramLong1, long paramLong2)
   {
-    return this.jdField_b_of_type_Int;
-  }
-  
-  public String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public void a(int paramInt)
-  {
-    this.jdField_c_of_type_Int = paramInt;
-  }
-  
-  public void a(String paramString)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  public int b()
-  {
-    return this.jdField_c_of_type_Int;
-  }
-  
-  public String b()
-  {
-    return this.jdField_b_of_type_JavaLangString;
-  }
-  
-  public void b(String paramString)
-  {
-    this.jdField_b_of_type_JavaLangString = paramString;
-  }
-  
-  public void b(boolean paramBoolean)
-  {
-    this.jdField_c_of_type_Boolean = paramBoolean;
-  }
-  
-  public boolean b()
-  {
-    return this.jdField_c_of_type_Boolean;
-  }
-  
-  public void c(boolean paramBoolean)
-  {
-    this.jdField_b_of_type_Boolean = paramBoolean;
-  }
-  
-  public boolean c()
-  {
-    return this.jdField_b_of_type_Boolean;
+    if (QLog.isColorLevel()) {
+      QLog.d("ScoreManager", 2, "onUpdateProgeress. url = " + ((bdvs)parambdws).a + ", total size = " + paramLong2 + ", cur downloaded size = " + paramLong1);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     mtb
  * JD-Core Version:    0.7.0.1
  */

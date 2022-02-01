@@ -34,54 +34,88 @@ public final class Code128Reader
   
   static
   {
-    int[] arrayOfInt1 = { 2, 2, 2, 1, 2, 2 };
-    int[] arrayOfInt2 = { 1, 3, 1, 2, 2, 2 };
-    int[] arrayOfInt3 = { 1, 2, 2, 2, 1, 3 };
-    int[] arrayOfInt4 = { 2, 3, 1, 2, 1, 2 };
-    int[] arrayOfInt5 = { 1, 2, 3, 1, 2, 2 };
-    int[] arrayOfInt6 = { 1, 2, 3, 2, 2, 1 };
-    int[] arrayOfInt7 = { 2, 2, 1, 1, 3, 2 };
-    int[] arrayOfInt8 = { 2, 2, 1, 2, 3, 1 };
-    int[] arrayOfInt9 = { 2, 2, 3, 1, 1, 2 };
-    int[] arrayOfInt10 = { 3, 1, 1, 2, 2, 2 };
-    int[] arrayOfInt11 = { 2, 1, 2, 1, 2, 3 };
-    int[] arrayOfInt12 = { 2, 1, 2, 3, 2, 1 };
-    int[] arrayOfInt13 = { 2, 3, 2, 1, 2, 1 };
-    int[] arrayOfInt14 = { 1, 1, 1, 3, 2, 3 };
-    int[] arrayOfInt15 = { 2, 3, 1, 3, 1, 1 };
-    int[] arrayOfInt16 = { 1, 1, 2, 3, 3, 1 };
-    int[] arrayOfInt17 = { 1, 1, 3, 1, 2, 3 };
-    int[] arrayOfInt18 = { 1, 3, 3, 1, 2, 1 };
-    int[] arrayOfInt19 = { 2, 1, 1, 3, 3, 1 };
-    int[] arrayOfInt20 = { 2, 1, 3, 1, 1, 3 };
-    int[] arrayOfInt21 = { 3, 1, 1, 1, 2, 3 };
-    int[] arrayOfInt22 = { 3, 1, 2, 1, 1, 3 };
-    int[] arrayOfInt23 = { 3, 1, 2, 3, 1, 1 };
-    int[] arrayOfInt24 = { 1, 1, 1, 2, 2, 4 };
-    int[] arrayOfInt25 = { 1, 1, 1, 4, 2, 2 };
-    int[] arrayOfInt26 = { 1, 4, 1, 1, 2, 2 };
-    int[] arrayOfInt27 = { 1, 4, 1, 2, 2, 1 };
-    int[] arrayOfInt28 = { 1, 1, 2, 2, 1, 4 };
-    int[] arrayOfInt29 = { 1, 4, 2, 1, 1, 2 };
-    int[] arrayOfInt30 = { 1, 4, 2, 2, 1, 1 };
-    int[] arrayOfInt31 = { 2, 2, 1, 1, 1, 4 };
-    int[] arrayOfInt32 = { 1, 3, 4, 1, 1, 1 };
-    int[] arrayOfInt33 = { 1, 1, 1, 2, 4, 2 };
-    int[] arrayOfInt34 = { 1, 2, 1, 1, 4, 2 };
-    int[] arrayOfInt35 = { 1, 2, 1, 2, 4, 1 };
-    int[] arrayOfInt36 = { 1, 2, 4, 1, 1, 2 };
-    int[] arrayOfInt37 = { 4, 1, 1, 2, 1, 2 };
-    int[] arrayOfInt38 = { 4, 2, 1, 2, 1, 1 };
-    int[] arrayOfInt39 = { 2, 1, 4, 1, 2, 1 };
-    int[] arrayOfInt40 = { 1, 1, 1, 1, 4, 3 };
-    int[] arrayOfInt41 = { 1, 3, 1, 1, 4, 1 };
-    int[] arrayOfInt42 = { 1, 1, 4, 1, 1, 3 };
-    int[] arrayOfInt43 = { 1, 1, 3, 1, 4, 1 };
-    int[] arrayOfInt44 = { 3, 1, 1, 1, 4, 1 };
-    int[] arrayOfInt45 = { 2, 1, 1, 4, 1, 2 };
-    int[] arrayOfInt46 = { 2, 1, 1, 2, 1, 4 };
-    int[] arrayOfInt47 = { 2, 3, 3, 1, 1, 1, 2 };
-    CODE_PATTERNS = new int[][] { { 2, 1, 2, 2, 2, 2 }, arrayOfInt1, { 2, 2, 2, 2, 2, 1 }, { 1, 2, 1, 2, 2, 3 }, { 1, 2, 1, 3, 2, 2 }, arrayOfInt2, arrayOfInt3, { 1, 2, 2, 3, 1, 2 }, { 1, 3, 2, 2, 1, 2 }, { 2, 2, 1, 2, 1, 3 }, { 2, 2, 1, 3, 1, 2 }, arrayOfInt4, { 1, 1, 2, 2, 3, 2 }, { 1, 2, 2, 1, 3, 2 }, { 1, 2, 2, 2, 3, 1 }, { 1, 1, 3, 2, 2, 2 }, arrayOfInt5, arrayOfInt6, { 2, 2, 3, 2, 1, 1 }, arrayOfInt7, arrayOfInt8, { 2, 1, 3, 2, 1, 2 }, arrayOfInt9, { 3, 1, 2, 1, 3, 1 }, arrayOfInt10, { 3, 2, 1, 1, 2, 2 }, { 3, 2, 1, 2, 2, 1 }, { 3, 1, 2, 2, 1, 2 }, { 3, 2, 2, 1, 1, 2 }, { 3, 2, 2, 2, 1, 1 }, arrayOfInt11, arrayOfInt12, arrayOfInt13, arrayOfInt14, { 1, 3, 1, 1, 2, 3 }, { 1, 3, 1, 3, 2, 1 }, { 1, 1, 2, 3, 1, 3 }, { 1, 3, 2, 1, 1, 3 }, { 1, 3, 2, 3, 1, 1 }, { 2, 1, 1, 3, 1, 3 }, { 2, 3, 1, 1, 1, 3 }, arrayOfInt15, { 1, 1, 2, 1, 3, 3 }, arrayOfInt16, { 1, 3, 2, 1, 3, 1 }, arrayOfInt17, { 1, 1, 3, 3, 2, 1 }, arrayOfInt18, { 3, 1, 3, 1, 2, 1 }, arrayOfInt19, { 2, 3, 1, 1, 3, 1 }, arrayOfInt20, { 2, 1, 3, 3, 1, 1 }, { 2, 1, 3, 1, 3, 1 }, arrayOfInt21, { 3, 1, 1, 3, 2, 1 }, { 3, 3, 1, 1, 2, 1 }, arrayOfInt22, arrayOfInt23, { 3, 3, 2, 1, 1, 1 }, { 3, 1, 4, 1, 1, 1 }, { 2, 2, 1, 4, 1, 1 }, { 4, 3, 1, 1, 1, 1 }, arrayOfInt24, arrayOfInt25, { 1, 2, 1, 1, 2, 4 }, { 1, 2, 1, 4, 2, 1 }, arrayOfInt26, arrayOfInt27, arrayOfInt28, { 1, 1, 2, 4, 1, 2 }, { 1, 2, 2, 1, 1, 4 }, { 1, 2, 2, 4, 1, 1 }, arrayOfInt29, arrayOfInt30, { 2, 4, 1, 2, 1, 1 }, arrayOfInt31, { 4, 1, 3, 1, 1, 1 }, { 2, 4, 1, 1, 1, 2 }, arrayOfInt32, arrayOfInt33, arrayOfInt34, arrayOfInt35, { 1, 1, 4, 2, 1, 2 }, arrayOfInt36, { 1, 2, 4, 2, 1, 1 }, arrayOfInt37, { 4, 2, 1, 1, 1, 2 }, arrayOfInt38, { 2, 1, 2, 1, 4, 1 }, arrayOfInt39, { 4, 1, 2, 1, 2, 1 }, arrayOfInt40, { 1, 1, 1, 3, 4, 1 }, arrayOfInt41, arrayOfInt42, { 1, 1, 4, 3, 1, 1 }, { 4, 1, 1, 1, 1, 3 }, { 4, 1, 1, 3, 1, 1 }, arrayOfInt43, { 1, 1, 4, 1, 3, 1 }, arrayOfInt44, { 4, 1, 1, 1, 3, 1 }, arrayOfInt45, arrayOfInt46, { 2, 1, 1, 2, 3, 2 }, arrayOfInt47 };
+    int[] arrayOfInt1 = { 2, 1, 2, 2, 2, 2 };
+    int[] arrayOfInt2 = { 1, 2, 1, 2, 2, 3 };
+    int[] arrayOfInt3 = { 1, 2, 1, 3, 2, 2 };
+    int[] arrayOfInt4 = { 1, 3, 1, 2, 2, 2 };
+    int[] arrayOfInt5 = { 1, 2, 2, 2, 1, 3 };
+    int[] arrayOfInt6 = { 1, 3, 2, 2, 1, 2 };
+    int[] arrayOfInt7 = { 2, 2, 1, 2, 1, 3 };
+    int[] arrayOfInt8 = { 2, 2, 1, 3, 1, 2 };
+    int[] arrayOfInt9 = { 2, 3, 1, 2, 1, 2 };
+    int[] arrayOfInt10 = { 1, 1, 2, 2, 3, 2 };
+    int[] arrayOfInt11 = { 1, 2, 2, 1, 3, 2 };
+    int[] arrayOfInt12 = { 1, 2, 2, 2, 3, 1 };
+    int[] arrayOfInt13 = { 1, 1, 3, 2, 2, 2 };
+    int[] arrayOfInt14 = { 1, 2, 3, 1, 2, 2 };
+    int[] arrayOfInt15 = { 2, 2, 3, 2, 1, 1 };
+    int[] arrayOfInt16 = { 2, 2, 1, 1, 3, 2 };
+    int[] arrayOfInt17 = { 2, 2, 1, 2, 3, 1 };
+    int[] arrayOfInt18 = { 2, 1, 3, 2, 1, 2 };
+    int[] arrayOfInt19 = { 2, 2, 3, 1, 1, 2 };
+    int[] arrayOfInt20 = { 3, 1, 2, 1, 3, 1 };
+    int[] arrayOfInt21 = { 3, 1, 1, 2, 2, 2 };
+    int[] arrayOfInt22 = { 2, 1, 2, 1, 2, 3 };
+    int[] arrayOfInt23 = { 2, 1, 2, 3, 2, 1 };
+    int[] arrayOfInt24 = { 2, 3, 2, 1, 2, 1 };
+    int[] arrayOfInt25 = { 1, 3, 1, 1, 2, 3 };
+    int[] arrayOfInt26 = { 1, 3, 1, 3, 2, 1 };
+    int[] arrayOfInt27 = { 1, 3, 2, 3, 1, 1 };
+    int[] arrayOfInt28 = { 2, 1, 1, 3, 1, 3 };
+    int[] arrayOfInt29 = { 2, 3, 1, 1, 1, 3 };
+    int[] arrayOfInt30 = { 2, 3, 1, 3, 1, 1 };
+    int[] arrayOfInt31 = { 1, 1, 2, 3, 3, 1 };
+    int[] arrayOfInt32 = { 1, 3, 2, 1, 3, 1 };
+    int[] arrayOfInt33 = { 1, 1, 3, 1, 2, 3 };
+    int[] arrayOfInt34 = { 1, 1, 3, 3, 2, 1 };
+    int[] arrayOfInt35 = { 1, 3, 3, 1, 2, 1 };
+    int[] arrayOfInt36 = { 3, 1, 3, 1, 2, 1 };
+    int[] arrayOfInt37 = { 2, 1, 1, 3, 3, 1 };
+    int[] arrayOfInt38 = { 2, 3, 1, 1, 3, 1 };
+    int[] arrayOfInt39 = { 2, 1, 3, 1, 1, 3 };
+    int[] arrayOfInt40 = { 2, 1, 3, 3, 1, 1 };
+    int[] arrayOfInt41 = { 2, 1, 3, 1, 3, 1 };
+    int[] arrayOfInt42 = { 3, 1, 1, 1, 2, 3 };
+    int[] arrayOfInt43 = { 3, 1, 1, 3, 2, 1 };
+    int[] arrayOfInt44 = { 3, 3, 1, 1, 2, 1 };
+    int[] arrayOfInt45 = { 3, 1, 2, 1, 1, 3 };
+    int[] arrayOfInt46 = { 3, 1, 2, 3, 1, 1 };
+    int[] arrayOfInt47 = { 3, 1, 4, 1, 1, 1 };
+    int[] arrayOfInt48 = { 4, 3, 1, 1, 1, 1 };
+    int[] arrayOfInt49 = { 1, 1, 1, 2, 2, 4 };
+    int[] arrayOfInt50 = { 1, 1, 1, 4, 2, 2 };
+    int[] arrayOfInt51 = { 1, 2, 1, 4, 2, 1 };
+    int[] arrayOfInt52 = { 1, 4, 1, 1, 2, 2 };
+    int[] arrayOfInt53 = { 1, 4, 1, 2, 2, 1 };
+    int[] arrayOfInt54 = { 1, 1, 2, 2, 1, 4 };
+    int[] arrayOfInt55 = { 1, 2, 2, 1, 1, 4 };
+    int[] arrayOfInt56 = { 1, 4, 2, 1, 1, 2 };
+    int[] arrayOfInt57 = { 2, 2, 1, 1, 1, 4 };
+    int[] arrayOfInt58 = { 2, 4, 1, 1, 1, 2 };
+    int[] arrayOfInt59 = { 1, 3, 4, 1, 1, 1 };
+    int[] arrayOfInt60 = { 1, 1, 1, 2, 4, 2 };
+    int[] arrayOfInt61 = { 1, 2, 1, 1, 4, 2 };
+    int[] arrayOfInt62 = { 1, 2, 1, 2, 4, 1 };
+    int[] arrayOfInt63 = { 1, 2, 4, 1, 1, 2 };
+    int[] arrayOfInt64 = { 1, 2, 4, 2, 1, 1 };
+    int[] arrayOfInt65 = { 4, 1, 1, 2, 1, 2 };
+    int[] arrayOfInt66 = { 4, 2, 1, 1, 1, 2 };
+    int[] arrayOfInt67 = { 4, 2, 1, 2, 1, 1 };
+    int[] arrayOfInt68 = { 2, 1, 2, 1, 4, 1 };
+    int[] arrayOfInt69 = { 2, 1, 4, 1, 2, 1 };
+    int[] arrayOfInt70 = { 4, 1, 2, 1, 2, 1 };
+    int[] arrayOfInt71 = { 1, 1, 1, 1, 4, 3 };
+    int[] arrayOfInt72 = { 1, 3, 1, 1, 4, 1 };
+    int[] arrayOfInt73 = { 1, 1, 4, 1, 1, 3 };
+    int[] arrayOfInt74 = { 1, 1, 4, 3, 1, 1 };
+    int[] arrayOfInt75 = { 4, 1, 1, 1, 1, 3 };
+    int[] arrayOfInt76 = { 4, 1, 1, 3, 1, 1 };
+    int[] arrayOfInt77 = { 1, 1, 4, 1, 3, 1 };
+    int[] arrayOfInt78 = { 4, 1, 1, 1, 3, 1 };
+    int[] arrayOfInt79 = { 2, 1, 1, 4, 1, 2 };
+    int[] arrayOfInt80 = { 2, 1, 1, 2, 3, 2 };
+    int[] arrayOfInt81 = { 2, 3, 3, 1, 1, 1, 2 };
+    CODE_PATTERNS = new int[][] { arrayOfInt1, { 2, 2, 2, 1, 2, 2 }, { 2, 2, 2, 2, 2, 1 }, arrayOfInt2, arrayOfInt3, arrayOfInt4, arrayOfInt5, { 1, 2, 2, 3, 1, 2 }, arrayOfInt6, arrayOfInt7, arrayOfInt8, arrayOfInt9, arrayOfInt10, arrayOfInt11, arrayOfInt12, arrayOfInt13, arrayOfInt14, { 1, 2, 3, 2, 2, 1 }, arrayOfInt15, arrayOfInt16, arrayOfInt17, arrayOfInt18, arrayOfInt19, arrayOfInt20, arrayOfInt21, { 3, 2, 1, 1, 2, 2 }, { 3, 2, 1, 2, 2, 1 }, { 3, 1, 2, 2, 1, 2 }, { 3, 2, 2, 1, 1, 2 }, { 3, 2, 2, 2, 1, 1 }, arrayOfInt22, arrayOfInt23, arrayOfInt24, { 1, 1, 1, 3, 2, 3 }, arrayOfInt25, arrayOfInt26, { 1, 1, 2, 3, 1, 3 }, { 1, 3, 2, 1, 1, 3 }, arrayOfInt27, arrayOfInt28, arrayOfInt29, arrayOfInt30, { 1, 1, 2, 1, 3, 3 }, arrayOfInt31, arrayOfInt32, arrayOfInt33, arrayOfInt34, arrayOfInt35, arrayOfInt36, arrayOfInt37, arrayOfInt38, arrayOfInt39, arrayOfInt40, arrayOfInt41, arrayOfInt42, arrayOfInt43, arrayOfInt44, arrayOfInt45, arrayOfInt46, { 3, 3, 2, 1, 1, 1 }, arrayOfInt47, { 2, 2, 1, 4, 1, 1 }, arrayOfInt48, arrayOfInt49, arrayOfInt50, { 1, 2, 1, 1, 2, 4 }, arrayOfInt51, arrayOfInt52, arrayOfInt53, arrayOfInt54, { 1, 1, 2, 4, 1, 2 }, arrayOfInt55, { 1, 2, 2, 4, 1, 1 }, arrayOfInt56, { 1, 4, 2, 2, 1, 1 }, { 2, 4, 1, 2, 1, 1 }, arrayOfInt57, { 4, 1, 3, 1, 1, 1 }, arrayOfInt58, arrayOfInt59, arrayOfInt60, arrayOfInt61, arrayOfInt62, { 1, 1, 4, 2, 1, 2 }, arrayOfInt63, arrayOfInt64, arrayOfInt65, arrayOfInt66, arrayOfInt67, arrayOfInt68, arrayOfInt69, arrayOfInt70, arrayOfInt71, { 1, 1, 1, 3, 4, 1 }, arrayOfInt72, arrayOfInt73, arrayOfInt74, arrayOfInt75, arrayOfInt76, { 1, 1, 3, 1, 4, 1 }, arrayOfInt77, { 3, 1, 1, 1, 4, 1 }, arrayOfInt78, arrayOfInt79, { 2, 1, 1, 2, 1, 4 }, arrayOfInt80, arrayOfInt81 };
   }
   
   private static int decodeCode(BitArray paramBitArray, int[] paramArrayOfInt, int paramInt)
@@ -708,7 +742,7 @@ public final class Code128Reader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.zxing.oned.Code128Reader
  * JD-Core Version:    0.7.0.1
  */

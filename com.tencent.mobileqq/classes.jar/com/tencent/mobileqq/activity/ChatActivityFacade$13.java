@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import aupa;
+import awwg;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.ChatMessage;
@@ -17,12 +17,12 @@ public final class ChatActivityFacade$13
     {
       if (this.jdField_a_of_type_Boolean)
       {
-        ((aupa)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(166)).a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataChatMessage, false);
+        ((awwg)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(166)).a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataChatMessage, false);
         return;
       }
       if (this.b)
       {
-        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(this.jdField_a_of_type_ComTencentMobileqqDataChatMessage);
+        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().c(this.jdField_a_of_type_ComTencentMobileqqDataChatMessage);
         return;
       }
     }
@@ -36,7 +36,7 @@ public final class ChatActivityFacade$13
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ChatActivityFacade.13
  * JD-Core Version:    0.7.0.1
  */

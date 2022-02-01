@@ -1,52 +1,30 @@
-import android.content.Context;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.TextView;
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.KandianUrlImageView;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.pubaccount.readinjoy.comment.handler.bean.SimpleCommentData;
+import kotlin.Metadata;
+import kotlin.jvm.internal.Intrinsics;
+import org.jetbrains.annotations.NotNull;
 
-public class pdv
-  extends pdu
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/comment/handler/bean/SimpleCommentData$CREATOR;", "Landroid/os/Parcelable$Creator;", "Lcom/tencent/biz/pubaccount/readinjoy/comment/handler/bean/SimpleCommentData;", "()V", "RIJ_SHANGHAI_PHP", "", "createFromParcel", "parcel", "Landroid/os/Parcel;", "newArray", "", "size", "(I)[Lcom/tencent/biz/pubaccount/readinjoy/comment/handler/bean/SimpleCommentData;", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class pdv
+  implements Parcelable.Creator<SimpleCommentData>
 {
-  public TextView a;
-  public BaseArticleInfo a;
-  public KandianUrlImageView a;
-  public TextView b;
-  public BaseArticleInfo b;
-  public KandianUrlImageView b;
-  public TextView c;
-  public TextView d;
-  public TextView e;
-  public TextView f;
-  public TextView g;
-  public TextView h;
-  
-  public pdv(Context paramContext, pdj parampdj)
+  @NotNull
+  public SimpleCommentData a(@NotNull Parcel paramParcel)
   {
-    super(paramContext, parampdj);
+    Intrinsics.checkParameterIsNotNull(paramParcel, "parcel");
+    return new SimpleCommentData(paramParcel);
   }
   
-  public View a(int paramInt, ViewGroup paramViewGroup)
+  @NotNull
+  public SimpleCommentData[] a(int paramInt)
   {
-    paramViewGroup = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131560203, paramViewGroup, false);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView = ((KandianUrlImageView)paramViewGroup.findViewById(2131367303));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramViewGroup.findViewById(2131369378));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramViewGroup.findViewById(2131369381));
-    this.c = ((TextView)paramViewGroup.findViewById(2131369358));
-    this.d = ((TextView)paramViewGroup.findViewById(2131369377));
-    this.jdField_b_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView = ((KandianUrlImageView)paramViewGroup.findViewById(2131367306));
-    this.e = ((TextView)paramViewGroup.findViewById(2131375826));
-    this.f = ((TextView)paramViewGroup.findViewById(2131375830));
-    this.g = ((TextView)paramViewGroup.findViewById(2131375807));
-    this.h = ((TextView)paramViewGroup.findViewById(2131375825));
-    paramViewGroup.setTag(this);
-    return paramViewGroup;
+    return new SimpleCommentData[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     pdv
  * JD-Core Version:    0.7.0.1
  */

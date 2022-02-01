@@ -1,63 +1,34 @@
-import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.Canvas;
-import android.graphics.Matrix;
-import android.graphics.drawable.BitmapDrawable;
-import android.view.View;
-import android.view.View.MeasureSpec;
-import android.view.ViewGroup;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.FrameLayout;
-import android.widget.FrameLayout.LayoutParams;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.widget.PollContainerLayout;
-import com.tencent.common.app.BaseApplicationImpl;
-import java.io.File;
-import java.net.URI;
+import com.tencent.biz.qqcircle.comment.QCircleCommentItemView;
+import com.tencent.biz.qqcircle.widgets.QCircleCommentPraiseLayout;
 
-class vin
-  implements wec
+public class vin
+  implements vvu
 {
-  vin(vim paramvim, uxk paramuxk) {}
+  public vin(QCircleCommentItemView paramQCircleCommentItemView) {}
   
-  public void a(String paramString, Bitmap paramBitmap)
+  public void a(boolean paramBoolean)
   {
-    paramString = BaseApplicationImpl.getContext();
-    Object localObject = new PollContainerLayout(paramString);
-    ((PollContainerLayout)localObject).a(this.jdField_a_of_type_Uxk, -1, null);
-    FrameLayout localFrameLayout = new FrameLayout(paramString);
-    localFrameLayout.setBackgroundDrawable(new BitmapDrawable(paramString.getResources(), paramBitmap));
-    localFrameLayout.setLayoutParams(new ViewGroup.LayoutParams(paramBitmap.getWidth(), paramBitmap.getHeight()));
-    localFrameLayout.addView((View)localObject, new FrameLayout.LayoutParams(-1, -1));
-    localFrameLayout.measure(View.MeasureSpec.makeMeasureSpec(paramBitmap.getWidth(), 1073741824), View.MeasureSpec.makeMeasureSpec(paramBitmap.getHeight(), 1073741824));
-    localFrameLayout.layout(0, 0, paramBitmap.getWidth(), paramBitmap.getHeight());
-    ((PollContainerLayout)localObject).a(this.jdField_a_of_type_Uxk, -1, null);
-    localObject = Bitmap.createBitmap(paramBitmap.getWidth(), paramBitmap.getHeight(), paramBitmap.getConfig());
-    Canvas localCanvas = new Canvas((Bitmap)localObject);
-    localCanvas.drawBitmap(paramBitmap, new Matrix(), null);
-    localFrameLayout.draw(localCanvas);
-    paramString = paramString.getCacheDir().getAbsolutePath() + "/" + System.currentTimeMillis() + ".png";
-    if (xqw.a((Bitmap)localObject, paramString)) {
-      this.jdField_a_of_type_Vim.a("result", new File(paramString).toURI().toString());
-    }
-    for (;;)
+    aaga localaaga;
+    QCircleCommentPraiseLayout localQCircleCommentPraiseLayout;
+    if (QCircleCommentItemView.a(this.a) != null)
     {
-      ((Bitmap)localObject).recycle();
-      vim.a(this.jdField_a_of_type_Vim, true);
-      return;
-      this.jdField_a_of_type_Vim.a("result", this.jdField_a_of_type_Vim.a.mVideoThumbnailUrl);
+      localaaga = QCircleCommentItemView.a(this.a);
+      localQCircleCommentPraiseLayout = QCircleCommentItemView.a(this.a);
+      if (!paramBoolean) {
+        break label58;
+      }
     }
-  }
-  
-  public void a(String paramString, Throwable paramThrowable)
-  {
-    this.jdField_a_of_type_Vim.a("result", this.jdField_a_of_type_Vim.a.mVideoThumbnailUrl);
-    vim.b(this.jdField_a_of_type_Vim, true);
+    label58:
+    for (int i = 14;; i = 15)
+    {
+      localaaga.a(localQCircleCommentPraiseLayout, i, QCircleCommentItemView.a(this.a), QCircleCommentItemView.a(this.a));
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     vin
  * JD-Core Version:    0.7.0.1
  */

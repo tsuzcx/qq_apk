@@ -1,23 +1,17 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.armap.POIInfo;
-
-public final class anss
-  implements Parcelable.Creator<POIInfo>
+class anss
+  implements lxe
 {
-  public POIInfo a(Parcel paramParcel)
-  {
-    return new POIInfo(paramParcel);
-  }
+  anss(ansp paramansp) {}
   
-  public POIInfo[] a(int paramInt)
+  public void a(lxd paramlxd)
   {
-    return new POIInfo[paramInt];
+    paramlxd.a(this.a.a);
+    paramlxd.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     anss
  * JD-Core Version:    0.7.0.1
  */

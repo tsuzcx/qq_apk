@@ -1,19 +1,10 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-
-class avid
-  implements View.OnClickListener
+public abstract interface avid
 {
-  avid(avhf paramavhf) {}
-  
-  public void onClick(View paramView)
-  {
-    this.a.d(paramView);
-  }
+  public abstract void a(boolean paramBoolean);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     avid
  * JD-Core Version:    0.7.0.1
  */

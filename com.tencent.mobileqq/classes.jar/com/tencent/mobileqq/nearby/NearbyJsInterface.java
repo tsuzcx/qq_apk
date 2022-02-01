@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.nearby;
 
-import alxp;
+import aanz;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.BroadcastReceiver;
@@ -18,39 +18,37 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
 import android.view.Window;
-import apml;
-import aprh;
-import asfu;
-import autz;
-import auuf;
-import auuh;
-import auvc;
-import auvd;
-import auve;
-import auvf;
-import auvi;
-import auvj;
-import auvk;
-import auvl;
-import auvm;
-import auwq;
-import auxb;
-import avbh;
-import avtq;
-import avtz;
-import bdaf;
-import bdbl;
-import bdcx;
-import bddf;
-import bddg;
-import bdep;
-import bdfr;
-import bdhj;
-import bdin;
-import beej;
-import befl;
-import begz;
-import bhtb;
+import anqv;
+import aoci;
+import aodb;
+import arph;
+import arui;
+import axbl;
+import axbr;
+import axbu;
+import axcp;
+import axcq;
+import axcr;
+import axcs;
+import axcv;
+import axcw;
+import axcx;
+import axcy;
+import axcz;
+import axdz;
+import axek;
+import axiq;
+import aybf;
+import aybo;
+import bggf;
+import bghy;
+import bghz;
+import bgjq;
+import bgku;
+import bgmo;
+import bhll;
+import bhmn;
+import bhod;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.common.config.AppSetting;
@@ -75,10 +73,10 @@ import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 import com.tencent.mobileqq.webprocess.WebAccelerateHelper;
-import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.RedTypeInfo;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.util.VersionUtils;
 import com.tencent.widget.immersive.ImmersiveUtils;
 import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
@@ -86,37 +84,38 @@ import java.util.HashMap;
 import mqq.app.AppRuntime;
 import mqq.app.MobileQQ;
 import mqq.app.NewIntent;
-import mzx;
-import ndd;
+import niq;
+import nlw;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import tencent.im.oidb.cmd0x8c1.oidb_0x8c1.ReqBody;
 import tencent.im.oidb.cmd0x8c1.oidb_0x8c1.UserDeviceInfo;
 import tencent.im.oidb.oidb_sso.OIDBSSOPkg;
-import yqz;
 
 public class NearbyJsInterface
-  extends befl
-  implements bdbl
+  extends bhmn
+  implements aoci
 {
   private int jdField_a_of_type_Int;
-  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new auvc(this);
+  public aanz a;
+  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new axcp(this);
   public Context a;
-  private auvm jdField_a_of_type_Auvm;
-  bdaf jdField_a_of_type_Bdaf = null;
+  private axcz jdField_a_of_type_Axcz;
+  bggf jdField_a_of_type_Bggf = null;
   private String jdField_a_of_type_JavaLangString = "";
-  public HashMap<String, auvl> a;
-  public yqz a;
-  private BroadcastReceiver jdField_b_of_type_AndroidContentBroadcastReceiver = new auvd(this);
+  public HashMap<String, axcy> a;
+  private BroadcastReceiver jdField_b_of_type_AndroidContentBroadcastReceiver = new axcq(this);
   private String jdField_b_of_type_JavaLangString = "";
   private String c;
   private String d;
-  private String e = "";
+  private String e;
   private String f = "";
+  private String g = "";
   
   public NearbyJsInterface()
   {
+    this.jdField_c_of_type_JavaLangString = "";
     this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
     a();
   }
@@ -135,7 +134,7 @@ public class NearbyJsInterface
     {
       localJSONObject.put("before", paramInt1);
       localJSONObject.put("after", paramInt2);
-      callJs(this.f, new String[] { localJSONObject.toString() });
+      callJs(this.g, new String[] { localJSONObject.toString() });
       return;
     }
     catch (JSONException localJSONException)
@@ -147,15 +146,15 @@ public class NearbyJsInterface
     }
   }
   
-  private void a(auvl paramauvl)
+  private void a(axcy paramaxcy)
   {
     if (QLog.isColorLevel()) {
       QLog.d("NearbyJsInterface", 2, "openNearbyAio, from = " + this.jdField_a_of_type_Int);
     }
     Activity localActivity = this.mRuntime.a();
     Intent localIntent = new Intent(localActivity, ChatActivity.class);
-    localIntent.putExtra("PREVIOUS_UIN", paramauvl.jdField_a_of_type_JavaLangString);
-    localIntent.putExtra("uin", paramauvl.jdField_a_of_type_JavaLangString);
+    localIntent.putExtra("PREVIOUS_UIN", paramaxcy.jdField_a_of_type_JavaLangString);
+    localIntent.putExtra("uin", paramaxcy.jdField_a_of_type_JavaLangString);
     if (this.jdField_a_of_type_Int == 1) {}
     for (int i = 10002;; i = 1001)
     {
@@ -172,30 +171,159 @@ public class NearbyJsInterface
     BaseApplicationImpl.getApplication().unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
   }
   
+  /* Error */
   public void clearFilterList(String paramString)
   {
-    Object localObject = (NearbyAppInterface)BaseApplicationImpl.getApplication().getRuntime().getAppRuntime("module_nearby");
-    Activity localActivity = this.mRuntime.a();
-    if (QLog.isColorLevel()) {
-      QLog.d("NearbyJsInterface", 2, "clearFilterList: param=" + paramString + ", app=" + localObject + ", activity=" + localActivity);
-    }
-    if ((localObject != null) && ((localActivity instanceof BaseActivity)))
-    {
-      paramString = (BaseActivity)localActivity;
-      if ((bdin.d(BaseApplication.getContext())) && (!paramString.isFinishing()))
-      {
-        asfu.a((NearbyAppInterface)localObject);
-        localObject = new Intent(paramString, NearbyActivity.class);
-        ((Intent)localObject).setFlags(67108864);
-        ((Intent)localObject).putExtra("key_from_location", true);
-        paramString.startActivity((Intent)localObject);
-      }
-    }
-    else
-    {
-      return;
-    }
-    QQToast.a(BaseApplication.getContext(), 1, paramString.getString(2131694766), 0).b(paramString.getTitleBarHeight());
+    // Byte code:
+    //   0: invokestatic 80	com/tencent/common/app/BaseApplicationImpl:getApplication	()Lcom/tencent/common/app/BaseApplicationImpl;
+    //   3: invokevirtual 198	com/tencent/common/app/BaseApplicationImpl:getRuntime	()Lmqq/app/AppRuntime;
+    //   6: ldc 200
+    //   8: invokevirtual 206	mqq/app/AppRuntime:getAppRuntime	(Ljava/lang/String;)Lmqq/app/AppRuntime;
+    //   11: checkcast 208	com/tencent/mobileqq/nearby/NearbyAppInterface
+    //   14: astore 5
+    //   16: new 89	org/json/JSONObject
+    //   19: dup
+    //   20: aload_1
+    //   21: invokespecial 210	org/json/JSONObject:<init>	(Ljava/lang/String;)V
+    //   24: astore_3
+    //   25: aload_3
+    //   26: ldc 212
+    //   28: invokevirtual 216	org/json/JSONObject:optInt	(Ljava/lang/String;)I
+    //   31: istore_2
+    //   32: iload_2
+    //   33: iconst_1
+    //   34: if_icmpne +122 -> 156
+    //   37: iconst_1
+    //   38: istore_2
+    //   39: aload_3
+    //   40: ldc 218
+    //   42: invokevirtual 222	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   45: pop
+    //   46: aload_0
+    //   47: getfield 142	com/tencent/mobileqq/nearby/NearbyJsInterface:mRuntime	Lbhod;
+    //   50: invokevirtual 147	bhod:a	()Landroid/app/Activity;
+    //   53: astore_3
+    //   54: invokestatic 131	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   57: ifeq +47 -> 104
+    //   60: ldc 110
+    //   62: iconst_2
+    //   63: new 112	java/lang/StringBuilder
+    //   66: dup
+    //   67: invokespecial 113	java/lang/StringBuilder:<init>	()V
+    //   70: ldc 224
+    //   72: invokevirtual 119	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   75: aload_1
+    //   76: invokevirtual 119	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   79: ldc 226
+    //   81: invokevirtual 119	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   84: aload 5
+    //   86: invokevirtual 229	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   89: ldc 231
+    //   91: invokevirtual 119	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   94: aload_3
+    //   95: invokevirtual 229	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   98: invokevirtual 121	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   101: invokestatic 138	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   104: aload 5
+    //   106: ifnull +49 -> 155
+    //   109: aload_3
+    //   110: instanceof 233
+    //   113: ifeq +42 -> 155
+    //   116: aload_3
+    //   117: checkcast 233	com/tencent/mobileqq/app/BaseActivity
+    //   120: astore_1
+    //   121: iload_2
+    //   122: ifeq +77 -> 199
+    //   125: aload_1
+    //   126: invokevirtual 236	com/tencent/mobileqq/app/BaseActivity:isFinishing	()Z
+    //   129: ifne +70 -> 199
+    //   132: aload 5
+    //   134: iconst_3
+    //   135: invokevirtual 239	com/tencent/mobileqq/nearby/NearbyAppInterface:a	(I)Lanii;
+    //   138: checkcast 241	anqv
+    //   141: astore_1
+    //   142: aload_1
+    //   143: ifnull +7 -> 150
+    //   146: aload_1
+    //   147: invokevirtual 242	anqv:a	()V
+    //   150: aload 5
+    //   152: invokestatic 247	aumh:a	(Lcom/tencent/mobileqq/nearby/NearbyAppInterface;)V
+    //   155: return
+    //   156: iconst_0
+    //   157: istore_2
+    //   158: goto -119 -> 39
+    //   161: astore 4
+    //   163: aconst_null
+    //   164: astore_3
+    //   165: ldc 110
+    //   167: iconst_2
+    //   168: new 112	java/lang/StringBuilder
+    //   171: dup
+    //   172: invokespecial 113	java/lang/StringBuilder:<init>	()V
+    //   175: ldc 249
+    //   177: invokevirtual 119	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   180: aload 4
+    //   182: invokevirtual 120	org/json/JSONException:toString	()Ljava/lang/String;
+    //   185: invokevirtual 119	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   188: invokevirtual 121	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   191: invokestatic 126	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   194: iconst_0
+    //   195: istore_2
+    //   196: goto -157 -> 39
+    //   199: invokestatic 255	com/tencent/qphone/base/util/BaseApplication:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
+    //   202: invokestatic 260	bgnt:d	(Landroid/content/Context;)Z
+    //   205: ifeq +49 -> 254
+    //   208: aload_1
+    //   209: invokevirtual 236	com/tencent/mobileqq/app/BaseActivity:isFinishing	()Z
+    //   212: ifne +42 -> 254
+    //   215: aload 5
+    //   217: invokestatic 247	aumh:a	(Lcom/tencent/mobileqq/nearby/NearbyAppInterface;)V
+    //   220: new 149	android/content/Intent
+    //   223: dup
+    //   224: aload_1
+    //   225: ldc_w 262
+    //   228: invokespecial 154	android/content/Intent:<init>	(Landroid/content/Context;Ljava/lang/Class;)V
+    //   231: astore_3
+    //   232: aload_3
+    //   233: ldc 173
+    //   235: invokevirtual 265	android/content/Intent:setFlags	(I)Landroid/content/Intent;
+    //   238: pop
+    //   239: aload_3
+    //   240: ldc_w 267
+    //   243: iconst_1
+    //   244: invokevirtual 270	android/content/Intent:putExtra	(Ljava/lang/String;Z)Landroid/content/Intent;
+    //   247: pop
+    //   248: aload_1
+    //   249: aload_3
+    //   250: invokevirtual 271	com/tencent/mobileqq/app/BaseActivity:startActivity	(Landroid/content/Intent;)V
+    //   253: return
+    //   254: invokestatic 255	com/tencent/qphone/base/util/BaseApplication:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
+    //   257: iconst_1
+    //   258: aload_1
+    //   259: ldc_w 272
+    //   262: invokevirtual 276	com/tencent/mobileqq/app/BaseActivity:getString	(I)Ljava/lang/String;
+    //   265: iconst_0
+    //   266: invokestatic 281	com/tencent/mobileqq/widget/QQToast:a	(Landroid/content/Context;ILjava/lang/CharSequence;I)Lcom/tencent/mobileqq/widget/QQToast;
+    //   269: aload_1
+    //   270: invokevirtual 285	com/tencent/mobileqq/app/BaseActivity:getTitleBarHeight	()I
+    //   273: invokevirtual 288	com/tencent/mobileqq/widget/QQToast:b	(I)Landroid/widget/Toast;
+    //   276: pop
+    //   277: return
+    //   278: astore 4
+    //   280: goto -115 -> 165
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	283	0	this	NearbyJsInterface
+    //   0	283	1	paramString	String
+    //   31	165	2	i	int
+    //   24	226	3	localObject	Object
+    //   161	20	4	localJSONException1	JSONException
+    //   278	1	4	localJSONException2	JSONException
+    //   14	202	5	localNearbyAppInterface	NearbyAppInterface
+    // Exception table:
+    //   from	to	target	type
+    //   16	25	161	org/json/JSONException
+    //   25	32	278	org/json/JSONException
   }
   
   public void clearUnReadRedTouch(String paramString)
@@ -206,7 +334,7 @@ public class NearbyJsInterface
     try
     {
       int i = new JSONObject(paramString).optInt("appid");
-      ((avbh)((NearbyAppInterface)BaseApplicationImpl.getApplication().getRuntime().getAppRuntime("module_nearby")).getManager(214)).a(i);
+      ((axiq)((NearbyAppInterface)BaseApplicationImpl.getApplication().getRuntime().getAppRuntime("module_nearby")).getManager(214)).a(i);
       return;
     }
     catch (Exception paramString)
@@ -244,7 +372,7 @@ public class NearbyJsInterface
     try
     {
       paramString = new JSONObject(paramString);
-      this.jdField_c_of_type_JavaLangString = paramString.optString("callback");
+      this.jdField_d_of_type_JavaLangString = paramString.optString("callback");
       String str = paramString.optString("tinyid");
       int i = paramString.optInt("isSuperLove");
       this.jdField_a_of_type_Int = paramString.optInt("from");
@@ -259,17 +387,17 @@ public class NearbyJsInterface
   
   public void editSchool(String paramString)
   {
-    if (this.jdField_a_of_type_Yqz == null)
+    if (this.jdField_a_of_type_Aanz == null)
     {
-      this.jdField_a_of_type_Yqz = yqz.a();
-      this.jdField_a_of_type_Yqz.a();
+      this.jdField_a_of_type_Aanz = aanz.a();
+      this.jdField_a_of_type_Aanz.a();
     }
     try
     {
       paramString = new JSONObject(paramString);
       String str = paramString.optString("schoolName");
       int i = paramString.optInt("isValid");
-      this.jdField_a_of_type_Yqz.c(str, i);
+      this.jdField_a_of_type_Aanz.c(str, i);
       return;
     }
     catch (JSONException paramString)
@@ -281,7 +409,7 @@ public class NearbyJsInterface
   
   public void filterList(String paramString)
   {
-    alxp localalxp = (alxp)((NearbyAppInterface)BaseApplicationImpl.getApplication().getRuntime().getAppRuntime("module_nearby")).a(3);
+    anqv localanqv = (anqv)((NearbyAppInterface)BaseApplicationImpl.getApplication().getRuntime().getAppRuntime("module_nearby")).a(3);
     if (QLog.isColorLevel()) {
       QLog.d("NearbyJsInterface", 2, "save filterList: params=" + paramString);
     }
@@ -309,7 +437,7 @@ public class NearbyJsInterface
         String str1 = ((JSONObject)localObject).optString("strProvince");
         String str2 = ((JSONObject)localObject).optString("strCity");
         localObject = ((JSONObject)localObject).optString("callback");
-        localalxp.a(i, j, k, m, n, i1, i2, i3, i4, paramString, str1, str2);
+        localanqv.a(i, j, k, m, n, i1, i2, i3, i4, paramString, str1, str2);
         if (!TextUtils.isEmpty((CharSequence)localObject))
         {
           callJs((String)localObject, new String[] { "" });
@@ -327,7 +455,7 @@ public class NearbyJsInterface
   
   public void followUser(String paramString)
   {
-    Object localObject = new NewIntent(this.mRuntime.a().getApplication().getApplicationContext(), mzx.class);
+    Object localObject = new NewIntent(this.mRuntime.a().getApplication().getApplicationContext(), niq.class);
     ((NewIntent)localObject).putExtra("cmd", "MQUpdateSvc_com_qq_buluo.web.follow_user");
     WebSsoBody.WebSsoRequestBody localWebSsoRequestBody = new WebSsoBody.WebSsoRequestBody();
     localWebSsoRequestBody.type.set(0);
@@ -337,7 +465,7 @@ public class NearbyJsInterface
       localJSONObject.remove("callback");
       localWebSsoRequestBody.data.set(localJSONObject.toString());
       ((NewIntent)localObject).putExtra("data", localWebSsoRequestBody.toByteArray());
-      ((NewIntent)localObject).setObserver(new auvj(this, paramString));
+      ((NewIntent)localObject).setObserver(new axcw(this, paramString));
       this.mRuntime.a().startServlet((NewIntent)localObject);
       return;
     }
@@ -349,8 +477,8 @@ public class NearbyJsInterface
         {
           localObject = new Bundle();
           ((Bundle)localObject).putString("targetuin", new JSONObject(paramString).getString("targetuin"));
-          paramString = apml.a("ipc_should_refresh_cardinfo", "", 0, (Bundle)localObject);
-          aprh.a().a(paramString);
+          paramString = arph.a("ipc_should_refresh_cardinfo", "", 0, (Bundle)localObject);
+          arui.a().a(paramString);
           return;
         }
         catch (Exception paramString)
@@ -384,18 +512,18 @@ public class NearbyJsInterface
             {
               localObject1 = ((NearbyHybridFragment)localObject2).a();
               localObject2 = new JSONObject();
-              ((JSONObject)localObject2).put("sex", ((auuh)localObject1).jdField_a_of_type_Int);
-              ((JSONObject)localObject2).put("time", ((auuh)localObject1).jdField_b_of_type_Int);
-              ((JSONObject)localObject2).put("age", ((auuh)localObject1).jdField_c_of_type_Int);
-              ((JSONObject)localObject2).put("interest", ((auuh)localObject1).jdField_d_of_type_Int);
-              ((JSONObject)localObject2).put("profession", ((auuh)localObject1).f);
+              ((JSONObject)localObject2).put("sex", ((axbu)localObject1).jdField_a_of_type_Int);
+              ((JSONObject)localObject2).put("time", ((axbu)localObject1).jdField_b_of_type_Int);
+              ((JSONObject)localObject2).put("age", ((axbu)localObject1).jdField_c_of_type_Int);
+              ((JSONObject)localObject2).put("interest", ((axbu)localObject1).jdField_d_of_type_Int);
+              ((JSONObject)localObject2).put("profession", ((axbu)localObject1).f);
               ((JSONObject)localObject2).put("country", localObject1.jdField_d_of_type_ArrayOfJavaLangString[0]);
               ((JSONObject)localObject2).put("province", localObject1.jdField_d_of_type_ArrayOfJavaLangString[1]);
               ((JSONObject)localObject2).put("city", localObject1.jdField_d_of_type_ArrayOfJavaLangString[2]);
-              ((JSONObject)localObject2).put("contellation", ((auuh)localObject1).e);
-              ((JSONObject)localObject2).put("strCountry", ((auuh)localObject1).jdField_b_of_type_JavaLangString);
-              ((JSONObject)localObject2).put("strProvince", ((auuh)localObject1).jdField_c_of_type_JavaLangString);
-              ((JSONObject)localObject2).put("strCity", ((auuh)localObject1).jdField_d_of_type_JavaLangString);
+              ((JSONObject)localObject2).put("contellation", ((axbu)localObject1).e);
+              ((JSONObject)localObject2).put("strCountry", ((axbu)localObject1).jdField_b_of_type_JavaLangString);
+              ((JSONObject)localObject2).put("strProvince", ((axbu)localObject1).jdField_c_of_type_JavaLangString);
+              ((JSONObject)localObject2).put("strCity", ((axbu)localObject1).jdField_d_of_type_JavaLangString);
               localObject1 = ((JSONObject)localObject2).toString();
             }
           }
@@ -423,22 +551,22 @@ public class NearbyJsInterface
     Object localObject = "";
     try
     {
-      auuh localauuh = auuh.a(this.mRuntime.a().getCurrentAccountUin());
-      if (localauuh != null)
+      axbu localaxbu = axbu.a(this.mRuntime.a().getCurrentAccountUin());
+      if (localaxbu != null)
       {
         localObject = new JSONObject();
-        ((JSONObject)localObject).put("sex", localauuh.jdField_a_of_type_Int);
-        ((JSONObject)localObject).put("time", localauuh.jdField_b_of_type_Int);
-        ((JSONObject)localObject).put("age", localauuh.jdField_c_of_type_Int);
-        ((JSONObject)localObject).put("interest", localauuh.jdField_d_of_type_Int);
-        ((JSONObject)localObject).put("profession", localauuh.f);
-        ((JSONObject)localObject).put("country", localauuh.jdField_d_of_type_ArrayOfJavaLangString[0]);
-        ((JSONObject)localObject).put("province", localauuh.jdField_d_of_type_ArrayOfJavaLangString[1]);
-        ((JSONObject)localObject).put("city", localauuh.jdField_d_of_type_ArrayOfJavaLangString[2]);
-        ((JSONObject)localObject).put("contellation", localauuh.e);
-        ((JSONObject)localObject).put("strCountry", localauuh.jdField_b_of_type_JavaLangString);
-        ((JSONObject)localObject).put("strProvince", localauuh.jdField_c_of_type_JavaLangString);
-        ((JSONObject)localObject).put("strCity", localauuh.jdField_d_of_type_JavaLangString);
+        ((JSONObject)localObject).put("sex", localaxbu.jdField_a_of_type_Int);
+        ((JSONObject)localObject).put("time", localaxbu.jdField_b_of_type_Int);
+        ((JSONObject)localObject).put("age", localaxbu.jdField_c_of_type_Int);
+        ((JSONObject)localObject).put("interest", localaxbu.jdField_d_of_type_Int);
+        ((JSONObject)localObject).put("profession", localaxbu.f);
+        ((JSONObject)localObject).put("country", localaxbu.jdField_d_of_type_ArrayOfJavaLangString[0]);
+        ((JSONObject)localObject).put("province", localaxbu.jdField_d_of_type_ArrayOfJavaLangString[1]);
+        ((JSONObject)localObject).put("city", localaxbu.jdField_d_of_type_ArrayOfJavaLangString[2]);
+        ((JSONObject)localObject).put("contellation", localaxbu.e);
+        ((JSONObject)localObject).put("strCountry", localaxbu.jdField_b_of_type_JavaLangString);
+        ((JSONObject)localObject).put("strProvince", localaxbu.jdField_c_of_type_JavaLangString);
+        ((JSONObject)localObject).put("strCity", localaxbu.jdField_d_of_type_JavaLangString);
         localObject = ((JSONObject)localObject).toString();
       }
       if (QLog.isColorLevel()) {
@@ -459,7 +587,7 @@ public class NearbyJsInterface
     String str = "";
     try
     {
-      this.jdField_c_of_type_JavaLangString = new JSONObject(paramString).optString("callback");
+      this.jdField_d_of_type_JavaLangString = new JSONObject(paramString).optString("callback");
       SosoInterface.SosoLbsInfo localSosoLbsInfo = SosoInterface.a();
       if (localSosoLbsInfo != null)
       {
@@ -471,9 +599,9 @@ public class NearbyJsInterface
         paramString = SosoInterface.a();
       }
       if (paramString != null) {
-        str = auuf.a(paramString);
+        str = axbr.a(paramString);
       }
-      callJs(this.jdField_c_of_type_JavaLangString, new String[] { str });
+      callJs(this.jdField_d_of_type_JavaLangString, new String[] { str });
       return;
     }
     catch (JSONException paramString)
@@ -484,10 +612,10 @@ public class NearbyJsInterface
   
   public void getMatchPeople(String paramString, int paramInt)
   {
-    auvl localauvl = (auvl)this.jdField_a_of_type_JavaUtilHashMap.get(String.valueOf(paramString));
-    if ((localauvl != null) && (!TextUtils.isEmpty(localauvl.jdField_a_of_type_JavaLangString)) && (!localauvl.jdField_a_of_type_JavaLangString.equals("0")))
+    axcy localaxcy = (axcy)this.jdField_a_of_type_JavaUtilHashMap.get(String.valueOf(paramString));
+    if ((localaxcy != null) && (!TextUtils.isEmpty(localaxcy.jdField_a_of_type_JavaLangString)) && (!localaxcy.jdField_a_of_type_JavaLangString.equals("0")))
     {
-      a(localauvl);
+      a(localaxcy);
       return;
     }
     getMatchPeopleInfo(paramString, true, paramInt);
@@ -495,10 +623,10 @@ public class NearbyJsInterface
   
   public void getMatchPeopleInfo(String paramString, boolean paramBoolean, int paramInt)
   {
-    if (this.jdField_a_of_type_Yqz == null)
+    if (this.jdField_a_of_type_Aanz == null)
     {
-      this.jdField_a_of_type_Yqz = yqz.a();
-      this.jdField_a_of_type_Yqz.a();
+      this.jdField_a_of_type_Aanz = aanz.a();
+      this.jdField_a_of_type_Aanz.a();
     }
     Object localObject1 = new oidb_0x8c1.ReqBody();
     Object localObject2 = new oidb_0x8c1.UserDeviceInfo();
@@ -514,10 +642,10 @@ public class NearbyJsInterface
       ((oidb_sso.OIDBSSOPkg)localObject2).uint32_command.set(2241);
       ((oidb_sso.OIDBSSOPkg)localObject2).uint32_service_type.set(1);
       ((oidb_sso.OIDBSSOPkg)localObject2).bytes_bodybuffer.set(ByteStringMicro.copyFrom(((oidb_0x8c1.ReqBody)localObject1).toByteArray()));
-      localObject1 = new NewIntent(BaseApplication.getContext(), mzx.class);
+      localObject1 = new NewIntent(BaseApplication.getContext(), niq.class);
       ((NewIntent)localObject1).putExtra("cmd", "OidbSvc.0x8c1_1");
       ((NewIntent)localObject1).putExtra("data", ((oidb_sso.OIDBSSOPkg)localObject2).toByteArray());
-      ((NewIntent)localObject1).setObserver(new auvi(this, paramString, paramBoolean));
+      ((NewIntent)localObject1).setObserver(new axcv(this, paramString, paramBoolean));
       this.mRuntime.a().startServlet((NewIntent)localObject1);
       return;
     }
@@ -544,26 +672,26 @@ public class NearbyJsInterface
       try
       {
         Object localObject1 = new JSONObject(paramString);
-        this.jdField_d_of_type_JavaLangString = ((JSONObject)localObject1).optString("callback");
+        this.e = ((JSONObject)localObject1).optString("callback");
         paramString = (NearbyAppInterface)BaseApplicationImpl.getApplication().getRuntime().getAppRuntime("module_nearby");
         localObject1 = ((JSONObject)localObject1).optString("tinyid");
-        localObject2 = bdhj.c();
+        localObject2 = bgmo.c();
         if (TextUtils.isEmpty((CharSequence)localObject1)) {
           continue;
         }
-        this.jdField_a_of_type_Bdaf = new bdcx(paramString, 32, 202, String.valueOf(Long.parseLong((String)localObject1)), (byte)1, 3, true, (Drawable)localObject2, (Drawable)localObject2, this, false);
-        localObject2 = this.jdField_a_of_type_Bdaf.a();
+        this.jdField_a_of_type_Bggf = new aodb(paramString, 32, 202, String.valueOf(Long.parseLong((String)localObject1)), (byte)1, 3, true, (Drawable)localObject2, (Drawable)localObject2, this, false);
+        localObject2 = this.jdField_a_of_type_Bggf.b();
         paramString = new ByteArrayOutputStream(1024);
         localObject1 = new StringBuilder("data:image/jpeg;base64,");
         if (localObject2 == null) {
           continue;
         }
         ((Bitmap)localObject2).compress(Bitmap.CompressFormat.PNG, 100, paramString);
-        ((StringBuilder)localObject1).append(bdfr.encodeToString(paramString.toByteArray(), 2));
+        ((StringBuilder)localObject1).append(bgku.encodeToString(paramString.toByteArray(), 2));
         localObject2 = new JSONObject();
         ((JSONObject)localObject2).put("ret", 0);
         ((JSONObject)localObject2).put("data", localObject1);
-        callJs(this.jdField_d_of_type_JavaLangString, new String[] { ((JSONObject)localObject2).toString() });
+        callJs(this.e, new String[] { ((JSONObject)localObject2).toString() });
       }
       catch (Exception paramString)
       {
@@ -573,13 +701,13 @@ public class NearbyJsInterface
         }
         QLog.d("NearbyJsInterface", 2, "getNearbyPeopleAvatar failed:" + paramString);
         return;
-        callJs(this.jdField_d_of_type_JavaLangString, new String[] { "{\"ret\":1}" });
+        callJs(this.e, new String[] { "{\"ret\":1}" });
         continue;
       }
       paramString.flush();
       paramString.close();
       return;
-      this.jdField_a_of_type_Bdaf = new bdcx(paramString, 32, 200, this.mRuntime.a().getCurrentAccountUin(), (byte)1, 3, true, (Drawable)localObject2, (Drawable)localObject2, this, false);
+      this.jdField_a_of_type_Bggf = new aodb(paramString, 32, 200, this.mRuntime.a().getCurrentAccountUin(), (byte)1, 3, true, (Drawable)localObject2, (Drawable)localObject2, this, false);
     }
   }
   
@@ -588,8 +716,8 @@ public class NearbyJsInterface
     try
     {
       Object localObject = BaseApplicationImpl.getApplication().getRuntime();
-      String str = avtz.a(((AppRuntime)localObject).getAccount());
-      avtz.b(((AppRuntime)localObject).getAccount(), "");
+      String str = aybo.a(((AppRuntime)localObject).getAccount());
+      aybo.b(((AppRuntime)localObject).getAccount(), "");
       QLog.d("NearbyPublishMenuHelper", 1, "getPicBase64, params=" + paramString + ", picBase64.len=" + str.length());
       localObject = new JSONArray();
       ((JSONArray)localObject).put(new JSONObject(str));
@@ -622,7 +750,7 @@ public class NearbyJsInterface
         if ((i <= 0) || (TextUtils.isEmpty(paramString))) {
           return;
         }
-        localRedTypeInfo = ((avbh)((NearbyAppInterface)BaseApplicationImpl.getApplication().getRuntime().getAppRuntime("module_nearby")).getManager(214)).b(i);
+        localRedTypeInfo = ((axiq)((NearbyAppInterface)BaseApplicationImpl.getApplication().getRuntime().getAppRuntime("module_nearby")).getManager(214)).b(i);
         localJSONObject = new JSONObject();
         if (localRedTypeInfo == null) {
           continue;
@@ -696,18 +824,18 @@ public class NearbyJsInterface
             if (localObject2 != null)
             {
               localObject2 = ((NowLiveFragment)localObject2).a;
-              localJSONObject.put("mTimeBeforeLoadUrl", ((beej)localObject2).getmTimeBeforeLoadUrl());
-              localJSONObject.put("mStartLoadUrlMilliTimeStamp", ((beej)localObject2).mStartLoadUrlMilliTimeStamp);
+              localJSONObject.put("mTimeBeforeLoadUrl", ((bhll)localObject2).getmTimeBeforeLoadUrl());
+              localJSONObject.put("mStartLoadUrlMilliTimeStamp", ((bhll)localObject2).mStartLoadUrlMilliTimeStamp);
               localJSONObject.put("mNowOnCreateTime", localNearbyActivity.c);
               localJSONObject.put("mNowViewInflateTime", localNearbyActivity.d);
               localJSONObject.put("mInitTime", localNearbyActivity.e);
               localJSONObject.put("mInitWebViewTime", localNearbyActivity.f);
-              localJSONObject.put("isMainPageUseLocalFile", ((beej)localObject2).isMainPageUseLocalFile());
-              localJSONObject.put("mPerfFirstLoadTag", ((beej)localObject2).ismPerfFirstLoadTag());
+              localJSONObject.put("isMainPageUseLocalFile", ((bhll)localObject2).isMainPageUseLocalFile());
+              localJSONObject.put("mPerfFirstLoadTag", ((bhll)localObject2).ismPerfFirstLoadTag());
               localJSONObject.put("isWebViewCache", WebAccelerateHelper.isWebViewCache);
-              localJSONObject.put("OpenUrlAfterCheckOfflineTime", ((beej)localObject2).getOpenUrlAfterCheckOfflineTime());
-              localJSONObject.put("ReadIndexFromOfflineTime", ((beej)localObject2).getReadIndexFromOfflineTime());
-              localJSONObject.put("IsReloadUrl", ((beej)localObject2).getIsReloadUrl());
+              localJSONObject.put("OpenUrlAfterCheckOfflineTime", ((bhll)localObject2).getOpenUrlAfterCheckOfflineTime());
+              localJSONObject.put("ReadIndexFromOfflineTime", ((bhll)localObject2).getReadIndexFromOfflineTime());
+              localJSONObject.put("IsReloadUrl", ((bhll)localObject2).getIsReloadUrl());
             }
           }
           catch (Exception localException)
@@ -804,10 +932,10 @@ public class NearbyJsInterface
     {
       localObject1 = ((NearbyActivity)localObject1).a();
       if (localObject1 == null) {
-        break label209;
+        break label208;
       }
     }
-    label209:
+    label208:
     for (int i = ((NearbyHybridFragment)localObject1).a();; i = 0) {
       try
       {
@@ -874,8 +1002,8 @@ public class NearbyJsInterface
     }
     i = paramString.optInt("scene");
     str = paramString.optString("subapp");
-    paramString = new bddg().a(paramString.optString("text_evidence")).b(paramString.optString("img_evidence")).d(paramString.optString("video_evidence")).c(paramString.optString("url_evidence")).e(paramString.optString("file_evidence")).f(paramString.optString("audio_evidence")).g(paramString.optString("user_input_param")).a();
-    bddf.a((BaseActivity)this.mRuntime.a(), l1, "0", null, i, str, paramString);
+    paramString = new bghz().a(paramString.optString("text_evidence")).b(paramString.optString("img_evidence")).d(paramString.optString("video_evidence")).c(paramString.optString("url_evidence")).e(paramString.optString("file_evidence")).f(paramString.optString("audio_evidence")).g(paramString.optString("user_input_param")).a();
+    bghy.a((BaseActivity)this.mRuntime.a(), l1, "0", null, i, str, paramString);
   }
   
   public void onActivityResult(Intent paramIntent, byte paramByte, int paramInt)
@@ -884,7 +1012,7 @@ public class NearbyJsInterface
     if (QLog.isColorLevel()) {
       QLog.d("NearbyJsInterface", 2, "onActivityResult, intent=" + paramIntent + ", requestCode=" + paramByte + ", resultCode=" + paramInt);
     }
-    if ((paramByte == 100) && (!TextUtils.isEmpty(this.e)))
+    if ((paramByte == 100) && (!TextUtils.isEmpty(this.f)))
     {
       try
       {
@@ -894,11 +1022,11 @@ public class NearbyJsInterface
         }
         for (;;)
         {
-          callJs(this.e, new String[] { paramIntent.toString() });
+          callJs(this.f, new String[] { paramIntent.toString() });
           if (QLog.isColorLevel()) {
-            QLog.d("NearbyJsInterface", 2, "callJs, mBindPhoneCallback=" + this.e + ", ret=" + paramIntent);
+            QLog.d("NearbyJsInterface", 2, "callJs, mBindPhoneCallback=" + this.f + ", ret=" + paramIntent);
           }
-          this.e = "";
+          this.f = "";
           return;
           paramIntent.put("retcode", 1);
         }
@@ -906,7 +1034,7 @@ public class NearbyJsInterface
       }
       catch (Exception paramIntent)
       {
-        this.e = "";
+        this.f = "";
         if (!QLog.isColorLevel()) {
           return;
         }
@@ -944,14 +1072,14 @@ public class NearbyJsInterface
   
   public void onDestroy()
   {
-    if (this.jdField_a_of_type_Yqz != null) {
-      this.jdField_a_of_type_Yqz.b();
+    if (this.jdField_a_of_type_Aanz != null) {
+      this.jdField_a_of_type_Aanz.b();
     }
     if (this.jdField_b_of_type_AndroidContentBroadcastReceiver != null) {
       BaseApplicationImpl.getApplication().unregisterReceiver(this.jdField_b_of_type_AndroidContentBroadcastReceiver);
     }
-    if (this.jdField_a_of_type_Auvm != null) {
-      AppNetConnInfo.unregisterNetEventHandler(this.jdField_a_of_type_Auvm);
+    if (this.jdField_a_of_type_Axcz != null) {
+      AppNetConnInfo.unregisterNetEventHandler(this.jdField_a_of_type_Axcz);
     }
     b();
     super.onDestroy();
@@ -962,24 +1090,24 @@ public class NearbyJsInterface
     if ((paramInt1 == 0) && (paramInt2 == 1)) {
       try
       {
-        Object localObject = this.jdField_a_of_type_Bdaf.a();
+        Object localObject = this.jdField_a_of_type_Bggf.b();
         ByteArrayOutputStream localByteArrayOutputStream = new ByteArrayOutputStream(1024);
         StringBuilder localStringBuilder = new StringBuilder("data:image/jpeg;base64,");
         if (localObject != null)
         {
           ((Bitmap)localObject).compress(Bitmap.CompressFormat.JPEG, 80, localByteArrayOutputStream);
-          localStringBuilder.append(bdfr.encodeToString(localByteArrayOutputStream.toByteArray(), 2));
+          localStringBuilder.append(bgku.encodeToString(localByteArrayOutputStream.toByteArray(), 2));
           localObject = new JSONObject();
           ((JSONObject)localObject).put("ret", 0);
           ((JSONObject)localObject).put("data", localStringBuilder);
-          callJs(this.jdField_d_of_type_JavaLangString, new String[] { ((JSONObject)localObject).toString() });
+          callJs(this.e, new String[] { ((JSONObject)localObject).toString() });
         }
         for (;;)
         {
           localByteArrayOutputStream.flush();
           localByteArrayOutputStream.close();
           return;
-          callJs(this.jdField_d_of_type_JavaLangString, new String[] { "{\"ret\":1}" });
+          callJs(this.e, new String[] { "{\"ret\":1}" });
         }
         return;
       }
@@ -999,8 +1127,8 @@ public class NearbyJsInterface
     }
     try
     {
-      this.e = new JSONObject(paramString).optString("callback");
-      if (!TextUtils.isEmpty(this.e))
+      this.f = new JSONObject(paramString).optString("callback");
+      if (!TextUtils.isEmpty(this.f))
       {
         paramString = new Intent(this.mRuntime.a(), BindNumberActivity.class);
         paramString.putExtra("kSrouce", 20);
@@ -1039,20 +1167,20 @@ public class NearbyJsInterface
       Object localObject = new JSONObject(paramString);
       paramString = ((JSONObject)localObject).optString("tinyid");
       this.jdField_a_of_type_Int = ((JSONObject)localObject).optInt("from");
-      localObject = (auvl)this.jdField_a_of_type_JavaUtilHashMap.get(String.valueOf(paramString));
-      if ((localObject != null) && (!TextUtils.isEmpty(((auvl)localObject).jdField_a_of_type_JavaLangString)) && (!((auvl)localObject).jdField_a_of_type_JavaLangString.equals("0")))
+      localObject = (axcy)this.jdField_a_of_type_JavaUtilHashMap.get(String.valueOf(paramString));
+      if ((localObject != null) && (!TextUtils.isEmpty(((axcy)localObject).jdField_a_of_type_JavaLangString)) && (!((axcy)localObject).jdField_a_of_type_JavaLangString.equals("0")))
       {
-        a((auvl)localObject);
+        a((axcy)localObject);
         return;
       }
-      if (this.jdField_a_of_type_Yqz == null)
+      if (this.jdField_a_of_type_Aanz == null)
       {
-        this.jdField_a_of_type_Yqz = yqz.a();
-        this.jdField_a_of_type_Yqz.a();
+        this.jdField_a_of_type_Aanz = aanz.a();
+        this.jdField_a_of_type_Aanz.a();
       }
       localObject = new ArrayList();
       ((ArrayList)localObject).add(paramString);
-      this.jdField_a_of_type_Yqz.a((ArrayList)localObject, new auve(this));
+      this.jdField_a_of_type_Aanz.a((ArrayList)localObject, new axcr(this));
       return;
     }
     catch (JSONException paramString)
@@ -1088,7 +1216,7 @@ public class NearbyJsInterface
   public void openProfileCard(String paramString)
   {
     NearbyAppInterface localNearbyAppInterface = (NearbyAppInterface)BaseApplicationImpl.getApplication().getRuntime().getAppRuntime("module_nearby");
-    Object localObject1 = (alxp)localNearbyAppInterface.a(3);
+    Object localObject1 = (anqv)localNearbyAppInterface.a(3);
     for (;;)
     {
       try
@@ -1099,6 +1227,10 @@ public class NearbyJsInterface
         j = ((JSONObject)localObject2).optInt("from");
         l = ((JSONObject)localObject2).optLong("now_id", 0L);
         k = ((JSONObject)localObject2).optInt("now_user_type", 0);
+        localObject3 = ((JSONObject)localObject2).optString("callback");
+        if (!TextUtils.isEmpty((CharSequence)localObject3)) {
+          this.jdField_c_of_type_JavaLangString = ((String)localObject3);
+        }
       }
       catch (Exception paramString)
       {
@@ -1135,8 +1267,8 @@ public class NearbyJsInterface
       {
         localObject3 = new Bundle();
         ((Bundle)localObject3).putString("targetuin", new JSONObject(paramString).getString("targetuin"));
-        paramString = apml.a("ipc_should_refresh_cardinfo", "", 0, (Bundle)localObject3);
-        aprh.a().a(paramString);
+        paramString = arph.a("ipc_should_refresh_cardinfo", "", 0, (Bundle)localObject3);
+        arui.a().a(paramString);
         localObject3 = ((JSONObject)localObject2).optString("tinnyid");
         paramString = new StringBuffer();
         if (j != 0) {
@@ -1160,8 +1292,8 @@ public class NearbyJsInterface
           QLog.i("NearbyJsInterface", 2, "openProfileCard, jumpUrl=" + paramString);
           continue;
           l = Long.parseLong((String)localObject1);
-          paramString = new auvk(this, (String)localObject1, j);
-          alxp.a(localNearbyAppInterface, new long[] { l }, paramString);
+          paramString = new axcx(this, (String)localObject1, j);
+          anqv.a(localNearbyAppInterface, new long[] { l }, paramString);
           return;
         }
       }
@@ -1209,9 +1341,9 @@ public class NearbyJsInterface
       try
       {
         k = paramString.optInt("age");
-        paramString = yqz.a();
+        paramString = aanz.a();
         paramString.a();
-        paramString.c(new auvf(this, paramString, j, i, k));
+        paramString.c(new axcs(this, paramString, j, i, k));
         return;
       }
       catch (JSONException paramString)
@@ -1248,8 +1380,8 @@ public class NearbyJsInterface
       {
         localBundle = new Bundle();
         localBundle.putString("video_url", paramString);
-        paramString = apml.a("ipc_cmd_preload_video", "", 0, localBundle);
-        aprh.a().a(paramString);
+        paramString = arph.a("ipc_cmd_preload_video", "", 0, localBundle);
+        arui.a().a(paramString);
         return;
       }
       catch (Exception paramString)
@@ -1264,12 +1396,12 @@ public class NearbyJsInterface
   {
     try
     {
-      this.f = new JSONObject(paramString).optString("callback");
-      a(-1, ndd.a());
-      if (this.jdField_a_of_type_Auvm == null)
+      this.g = new JSONObject(paramString).optString("callback");
+      a(-1, nlw.a());
+      if (this.jdField_a_of_type_Axcz == null)
       {
-        this.jdField_a_of_type_Auvm = new auvm(this);
-        AppNetConnInfo.registerNetChangeReceiver(BaseApplicationImpl.getContext(), this.jdField_a_of_type_Auvm);
+        this.jdField_a_of_type_Axcz = new axcz(this);
+        AppNetConnInfo.registerNetChangeReceiver(BaseApplicationImpl.getContext(), this.jdField_a_of_type_Axcz);
         return;
       }
       if (QLog.isColorLevel())
@@ -1340,11 +1472,11 @@ public class NearbyJsInterface
       try
       {
         paramString = new JSONObject(paramString);
-        localObject = auwq.b();
+        localObject = axdz.b();
         if (TextUtils.isEmpty((CharSequence)localObject))
         {
           paramString = paramString.toString();
-          auwq.e(paramString);
+          axdz.f(paramString);
           if (QLog.isColorLevel()) {
             QLog.d("NearbyJsInterface", 2, "setLiveTabWebViewUrlParam:" + paramString);
           }
@@ -1355,7 +1487,7 @@ public class NearbyJsInterface
       {
         try
         {
-          Object localObject = auwq.a(new JSONObject((String)localObject), paramString);
+          Object localObject = axdz.a(new JSONObject((String)localObject), paramString);
           paramString = (String)localObject;
         }
         catch (JSONException localJSONException) {}
@@ -1397,8 +1529,8 @@ public class NearbyJsInterface
         {
           paramString = new Bundle();
           paramString.putBoolean("isOn", false);
-          paramString = apml.a("ipc_cmd_nearby_setting_change", null, 0, paramString);
-          aprh.a().a(paramString);
+          paramString = arph.a("ipc_cmd_nearby_setting_change", null, 0, paramString);
+          arui.a().a(paramString);
         }
       }
       localEditor.apply();
@@ -1465,7 +1597,7 @@ public class NearbyJsInterface
       i = j;
       callJs(paramString, new String[] { i + "}" });
       if (QLog.isColorLevel()) {
-        QLog.d("NearbyJsInterface", 2, "isKITKAT=" + bhtb.i() + ", enableForMiUI=" + ImmersiveUtils.d + ", isMIUI=" + bdep.b() + ", isFlyme=" + bdep.d() + ", SDK_INT=" + Build.VERSION.SDK_INT);
+        QLog.d("NearbyJsInterface", 2, "isKITKAT=" + VersionUtils.isKITKAT() + ", enableForMiUI=" + ImmersiveUtils.d + ", isMIUI=" + bgjq.b() + ", isFlyme=" + bgjq.d() + ", SDK_INT=" + Build.VERSION.SDK_INT);
       }
       return;
       bool1 = false;
@@ -1527,11 +1659,11 @@ public class NearbyJsInterface
       try
       {
         paramString = new JSONObject(paramString);
-        localObject = auwq.a();
+        localObject = axdz.a();
         if (TextUtils.isEmpty((CharSequence)localObject))
         {
           paramString = paramString.toString();
-          auwq.d(paramString);
+          axdz.e(paramString);
           if (QLog.isColorLevel()) {
             QLog.d("NearbyJsInterface", 2, "setNearbyTabUrlParams:" + paramString);
           }
@@ -1542,7 +1674,7 @@ public class NearbyJsInterface
       {
         try
         {
-          Object localObject = auwq.a(new JSONObject((String)localObject), paramString);
+          Object localObject = axdz.a(new JSONObject((String)localObject), paramString);
           paramString = (String)localObject;
         }
         catch (JSONException localJSONException) {}
@@ -1559,7 +1691,7 @@ public class NearbyJsInterface
   public void setVideoEnterVisibility(String paramString)
   {
     if (QLog.isColorLevel()) {
-      QLog.i("NearbyJsInterface", 2, "setVideoEnterVisibility\tstep1:" + paramString);
+      QLog.i("NearbyJsInterface", 2, "setVideoEnterVisibility    step1:" + paramString);
     }
     String str = null;
     Object localObject = str;
@@ -1573,12 +1705,12 @@ public class NearbyJsInterface
     if (localObject != null)
     {
       if (QLog.isColorLevel()) {
-        QLog.i("NearbyJsInterface", 2, "setVideoEnterVisibility\tstep2 activity not null");
+        QLog.i("NearbyJsInterface", 2, "setVideoEnterVisibility    step2 activity not null");
       }
       localObject = ((NearbyActivity)localObject).a();
       if (localObject != null) {
         if (QLog.isColorLevel()) {
-          QLog.i("NearbyJsInterface", 2, "setVideoEnterVisibility\tstep3 fragment not null");
+          QLog.i("NearbyJsInterface", 2, "setVideoEnterVisibility    step3 fragment not null");
         }
       }
     }
@@ -1593,12 +1725,12 @@ public class NearbyJsInterface
       {
         ((NearbyHybridFragment)localObject).a(bool, j, str);
         if (QLog.isColorLevel()) {
-          QLog.i("NearbyJsInterface", 2, "setVideoEnterVisibility\tstep4 set success");
+          QLog.i("NearbyJsInterface", 2, "setVideoEnterVisibility    step4 set success");
         }
         paramString = paramString.optJSONArray("menu");
         if (paramString != null)
         {
-          auwq.a(BaseApplicationImpl.getApplication().getRuntime().getAccount(), "key_nearby_publish_menu", paramString.toString());
+          axdz.a(BaseApplicationImpl.getApplication().getRuntime().getAccount(), "key_nearby_publish_menu", paramString.toString());
           if (QLog.isColorLevel()) {
             QLog.d("NearbyJsInterface", 2, "menuItem=" + paramString);
           }
@@ -1634,7 +1766,7 @@ public class NearbyJsInterface
       QLog.d("NearbyJsInterface", 2, "shootAvatar");
     }
     NearbyAppInterface localNearbyAppInterface = (NearbyAppInterface)BaseApplicationImpl.getApplication().getRuntime().getAppRuntime("module_nearby");
-    auxb.a(this.mRuntime.a(), localNearbyAppInterface, 1);
+    axek.a(this.mRuntime.a(), localNearbyAppInterface, 1);
   }
   
   public void showFilterAndExitSheet()
@@ -1690,13 +1822,13 @@ public class NearbyJsInterface
       QLog.e("NearbyJsInterface", 1, "showGuideDownloadView: there is no alert_config");
       return;
     }
-    paramString = autz.a((Context)localObject, localJSONObject);
+    paramString = axbl.a((Context)localObject, localJSONObject);
     if (paramString != null)
     {
       paramString.f = (localJSONObject.optInt("source") + "");
-      localObject = new avtq((Context)localObject);
-      ((avtq)localObject).a(paramString);
-      ((avtq)localObject).show();
+      localObject = new aybf((Context)localObject);
+      ((aybf)localObject).a(paramString);
+      ((aybf)localObject).show();
     }
   }
   
@@ -1723,8 +1855,8 @@ public class NearbyJsInterface
       }
       for (;;)
       {
-        paramString = apml.a("ipc_should_refresh_cardinfo", "", 0, localBundle);
-        aprh.a().a(paramString);
+        paramString = arph.a("ipc_should_refresh_cardinfo", "", 0, localBundle);
+        arui.a().a(paramString);
         return;
         if (!TextUtils.isEmpty((CharSequence)localObject)) {
           localBundle.putString("tinyid", (String)localObject);
@@ -1740,7 +1872,7 @@ public class NearbyJsInterface
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.NearbyJsInterface
  * JD-Core Version:    0.7.0.1
  */

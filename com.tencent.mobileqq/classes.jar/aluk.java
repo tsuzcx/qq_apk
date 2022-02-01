@@ -1,29 +1,25 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import tencent.im.oidb.cmd0x8e4.oidb_0x8e4.RspBody;
+import com.tencent.mobileqq.data.CommonlyUsedTroop;
+import java.util.Comparator;
 
-class aluk
-  implements bemh<oidb_0x8e4.RspBody>
+public class aluk
+  implements Comparator<CommonlyUsedTroop>
 {
-  aluk(aluj paramaluj) {}
+  protected aluk(aluh paramaluh) {}
   
-  public void a(int paramInt, oidb_0x8e4.RspBody paramRspBody)
+  public int a(CommonlyUsedTroop paramCommonlyUsedTroop1, CommonlyUsedTroop paramCommonlyUsedTroop2)
   {
-    if (paramInt == 0)
-    {
-      paramRspBody = paramRspBody.string_invite_id.get().toStringUtf8();
-      if (!TextUtils.isEmpty(paramRspBody))
-      {
-        com.tencent.mobileqq.nearby.gameroom.GameRoomInviteActivity.a = paramRspBody;
-        auxp.a().a(0, paramRspBody, 0L, null);
-      }
+    if (paramCommonlyUsedTroop1.addedTimestamp < paramCommonlyUsedTroop2.addedTimestamp) {
+      return 1;
     }
+    if (paramCommonlyUsedTroop1.addedTimestamp > paramCommonlyUsedTroop2.addedTimestamp) {
+      return -1;
+    }
+    return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aluk
  * JD-Core Version:    0.7.0.1
  */

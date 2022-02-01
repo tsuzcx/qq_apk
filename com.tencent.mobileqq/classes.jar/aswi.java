@@ -1,55 +1,24 @@
-import android.support.annotation.NonNull;
-import android.support.v7.widget.RecyclerView.Adapter;
-import android.support.v7.widget.RecyclerView.AdapterDataObserver;
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.ViewGroup;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.mobileqq.filemanager.activity.fileassistant.FileAssistantActivity;
 
 public class aswi
-  extends RecyclerView.Adapter
+  extends Handler
 {
-  private RecyclerView.Adapter jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$Adapter;
-  private RecyclerView.AdapterDataObserver jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$AdapterDataObserver = new aswj(this);
-  astu jdField_a_of_type_Astu;
-  
-  public aswi(@NonNull RecyclerView.Adapter paramAdapter, astu paramastu)
+  public aswi(FileAssistantActivity paramFileAssistantActivity, Looper paramLooper)
   {
-    this.jdField_a_of_type_Astu = paramastu;
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$Adapter = paramAdapter;
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$Adapter.registerAdapterDataObserver(this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$AdapterDataObserver);
+    super(paramLooper);
   }
   
-  public int getItemCount()
+  public void handleMessage(Message paramMessage)
   {
-    if (this.jdField_a_of_type_Astu == null) {
-      return this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$Adapter.getItemCount();
-    }
-    return this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$Adapter.getItemCount() + 1;
-  }
-  
-  public int getItemViewType(int paramInt)
-  {
-    if ((this.jdField_a_of_type_Astu != null) && (paramInt == getItemCount() - 1)) {
-      return 2147483647;
-    }
-    return super.getItemViewType(paramInt);
-  }
-  
-  public void onBindViewHolder(RecyclerView.ViewHolder paramViewHolder, int paramInt)
-  {
-    if ((this.jdField_a_of_type_Astu != null) && (paramInt == getItemCount() - 1))
+    switch (paramMessage.what)
     {
-      this.jdField_a_of_type_Astu.a(paramViewHolder, paramInt);
+    default: 
       return;
     }
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$Adapter.onBindViewHolder(paramViewHolder, paramInt);
-  }
-  
-  public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup paramViewGroup, int paramInt)
-  {
-    if ((this.jdField_a_of_type_Astu != null) && (2147483647 == paramInt)) {
-      return this.jdField_a_of_type_Astu.a(paramViewGroup, paramInt);
-    }
-    return this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$Adapter.onCreateViewHolder(paramViewGroup, paramInt);
+    FileAssistantActivity.f(this.a);
   }
 }
 

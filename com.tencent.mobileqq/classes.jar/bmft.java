@@ -1,27 +1,70 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.ptv.BaseButton;
-import dov.com.qq.im.ptv.LightWeightCaptureButtonCornerLayout;
+import android.graphics.drawable.Drawable;
+import android.text.Editable;
+import android.text.TextUtils;
+import android.widget.EditText;
 
-public class bmft
-  extends AnimatorListenerAdapter
+final class bmft
+  implements arxd
 {
-  public bmft(LightWeightCaptureButtonCornerLayout paramLightWeightCaptureButtonCornerLayout) {}
+  bmft(EditText paramEditText) {}
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public void a(arxg paramarxg)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("CameraCaptureLayout", 2, "rollBackDeleteAnimatorToActiveCorner deleteView 190ms all end ScaleX:" + this.a.b.getScaleX() + " ScaleY:" + this.a.b.getScaleY());
+    if ((paramarxg == null) || (this.a == null)) {}
+    int i;
+    int j;
+    do
+    {
+      do
+      {
+        return;
+      } while (!(paramarxg instanceof asdb));
+      i = this.a.getSelectionStart();
+      j = this.a.getSelectionEnd();
+    } while ((i < 0) || (j < 0) || (j < i) || (this.a == null) || (this.a.getEditableText() == null));
+    this.a.getEditableText().replace(i, j, bdol.b(((asdb)paramarxg).a));
+  }
+  
+  public void a(arxg paramarxg1, arxg paramarxg2, Drawable paramDrawable) {}
+  
+  public boolean a(arxg paramarxg)
+  {
+    return true;
+  }
+  
+  public void b()
+  {
+    if (this.a == null) {}
+    for (;;)
+    {
+      return;
+      if (this.a.getSelectionStart() != 0) {
+        try
+        {
+          Editable localEditable = this.a.getText();
+          int i = this.a.getSelectionStart();
+          int j = TextUtils.getOffsetBefore(this.a.getText(), i);
+          if (i != j)
+          {
+            localEditable.delete(Math.min(i, j), Math.max(i, j));
+            return;
+          }
+        }
+        catch (Exception localException)
+        {
+          localException.printStackTrace();
+        }
+      }
     }
   }
   
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("CameraCaptureLayout", 2, "rollBackDeleteAnimatorToActiveCorner deleteView begin");
-    }
-  }
+  public void b(arxg paramarxg) {}
+  
+  public void c() {}
+  
+  public void d() {}
+  
+  public void setting() {}
 }
 
 

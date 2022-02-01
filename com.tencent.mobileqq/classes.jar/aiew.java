@@ -1,15 +1,19 @@
-public class aiew
-  implements ajih
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
+class aiew
+  implements View.OnClickListener
 {
-  public void a(int paramInt) {}
+  aiew(aidp paramaidp, RelativeLayout paramRelativeLayout, LinearLayout paramLinearLayout) {}
   
-  public void a(int paramInt, float paramFloat) {}
-  
-  public void a(int paramInt1, int paramInt2) {}
-  
-  public void a(int paramInt, boolean paramBoolean) {}
-  
-  public void b(int paramInt1, int paramInt2) {}
+  public void onClick(View paramView)
+  {
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout.removeView(this.jdField_a_of_type_AndroidWidgetLinearLayout);
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

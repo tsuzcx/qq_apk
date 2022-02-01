@@ -1,26 +1,15 @@
-import com.tencent.biz.pubaccount.readinjoy.view.widget.ReadInJoyDynamicGridView;
+import kotlin.Metadata;
 
-public class siu
-  implements siv
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/video/player/wrapper/IPlayerPreloader$Listener;", "", "onPreloadFailed", "", "onPreloadSuccess", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public abstract interface siu
 {
-  private int jdField_a_of_type_Int;
-  private int b;
+  public abstract void a();
   
-  public siu(ReadInJoyDynamicGridView paramReadInJoyDynamicGridView, int paramInt1, int paramInt2)
-  {
-    this.b = paramInt1;
-    this.jdField_a_of_type_Int = paramInt2;
-  }
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    ReadInJoyDynamicGridView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReadInJoyDynamicGridView, ReadInJoyDynamicGridView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReadInJoyDynamicGridView) + this.jdField_a_of_type_Int);
-    ReadInJoyDynamicGridView.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReadInJoyDynamicGridView, ReadInJoyDynamicGridView.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReadInJoyDynamicGridView) + this.b);
-  }
+  public abstract void b();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     siu
  * JD-Core Version:    0.7.0.1
  */

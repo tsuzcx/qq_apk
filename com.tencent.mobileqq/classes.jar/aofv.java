@@ -1,19 +1,10 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.colornote.swipeback.SwipePostTableLayout;
-
-public class aofv
-  implements DialogInterface.OnClickListener
+public abstract interface aofv
 {
-  public aofv(SwipePostTableLayout paramSwipePostTableLayout) {}
+  public abstract void a(String paramString1, String paramString2, boolean paramBoolean1, int paramInt, boolean paramBoolean2, boolean paramBoolean3);
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    if (SwipePostTableLayout.a(this.a).isShowing()) {
-      SwipePostTableLayout.a(this.a).dismiss();
-    }
-    aofm.a(this.a.a, true);
-  }
+  public abstract void b(int paramInt, boolean paramBoolean, Object paramObject);
+  
+  public abstract void c(int paramInt, boolean paramBoolean, Object paramObject);
 }
 
 

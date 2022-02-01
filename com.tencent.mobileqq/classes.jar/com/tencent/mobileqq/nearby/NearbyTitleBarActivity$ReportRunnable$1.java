@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.nearby;
 
-import aips;
-import auwq;
-import auwz;
-import azri;
+import akgm;
+import axdz;
+import axei;
+import bctj;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
@@ -17,28 +17,28 @@ class NearbyTitleBarActivity$ReportRunnable$1
   {
     try
     {
-      auwq.c(this.this$0.jdField_a_of_type_JavaLangString);
+      axdz.d(this.this$0.jdField_a_of_type_JavaLangString);
       long l1 = this.this$0.jdField_a_of_type_Long - this.this$0.c;
       long l2 = this.this$0.d - this.this$0.c;
       long l3 = this.this$0.jdField_b_of_type_Long;
       long l4 = this.this$0.c;
       HashMap localHashMap = new HashMap();
-      localHashMap.put("param_DeviceType", aips.a() + "");
+      localHashMap.put("param_DeviceType", akgm.a() + "");
       localHashMap.put("param_PreloadType", this.this$0.jdField_b_of_type_Int + "");
       if ((l1 > 0L) && (l1 < 60000L) && (l2 > 0L) && (l2 < 60000L))
       {
         if (this.this$0.jdField_a_of_type_Int != 0) {
           break label261;
         }
-        azri.a(BaseApplicationImpl.getContext()).a(this.this$0.jdField_a_of_type_JavaLangString, "actEnterNearbyActCost", false, l2, l1, localHashMap, "");
+        bctj.a(BaseApplicationImpl.getContext()).a(this.this$0.jdField_a_of_type_JavaLangString, "actEnterNearbyActCost", false, l2, l1, localHashMap, "");
       }
       while (QLog.isColorLevel())
       {
-        auwz.a("NearbyProcessPerf", new Object[] { Integer.valueOf(this.this$0.jdField_a_of_type_Int), Long.valueOf(l1), Long.valueOf(l2), Long.valueOf(l3 - l4), Integer.valueOf(this.this$0.jdField_b_of_type_Int) });
+        axei.a("NearbyProcessPerf", new Object[] { Integer.valueOf(this.this$0.jdField_a_of_type_Int), Long.valueOf(l1), Long.valueOf(l2), Long.valueOf(l3 - l4), Integer.valueOf(this.this$0.jdField_b_of_type_Int) });
         return;
         label261:
         if (this.this$0.jdField_a_of_type_Int == 1) {
-          azri.a(BaseApplicationImpl.getContext()).a(this.this$0.jdField_a_of_type_JavaLangString, "actEnterNearbyActCost", true, l2, l1, localHashMap, "");
+          bctj.a(BaseApplicationImpl.getContext()).a(this.this$0.jdField_a_of_type_JavaLangString, "actEnterNearbyActCost", true, l2, l1, localHashMap, "");
         }
       }
       return;
@@ -51,7 +51,7 @@ class NearbyTitleBarActivity$ReportRunnable$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.NearbyTitleBarActivity.ReportRunnable.1
  * JD-Core Version:    0.7.0.1
  */

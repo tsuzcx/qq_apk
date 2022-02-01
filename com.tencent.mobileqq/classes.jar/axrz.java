@@ -1,45 +1,27 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
+import android.app.Dialog;
 import android.view.View;
-import com.tencent.mobileqq.richmedia.capture.view.ProviderContainerView;
-import java.util.Iterator;
-import java.util.List;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class axrz
-  implements Animator.AnimatorListener
+  implements View.OnClickListener
 {
-  public axrz(ProviderContainerView paramProviderContainerView) {}
+  public axrz(NearbyPeopleProfileActivity paramNearbyPeopleProfileActivity) {}
   
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
+  public void onClick(View paramView)
   {
-    this.a.c.setVisibility(8);
-    paramAnimator = ProviderContainerView.a(this.a);
-    if (paramAnimator != null) {
-      paramAnimator.a();
-    }
-    if (ProviderContainerView.a(this.a) != null)
+    if ((this.a.b != null) && (!this.a.isFinishing()))
     {
-      paramAnimator = ProviderContainerView.a(this.a).iterator();
-      while (paramAnimator.hasNext()) {
-        ((axsb)paramAnimator.next()).a();
-      }
+      this.a.b.dismiss();
+      this.a.b = null;
     }
-  }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    if (ProviderContainerView.a(this.a) != null) {
-      ProviderContainerView.a(this.a).b();
-    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     axrz
  * JD-Core Version:    0.7.0.1
  */

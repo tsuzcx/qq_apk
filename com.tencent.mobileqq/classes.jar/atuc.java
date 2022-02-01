@@ -1,19 +1,19 @@
-import android.view.View;
-import android.widget.ImageView;
-
-class atuc
+public class atuc
 {
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  String jdField_a_of_type_JavaLangString;
-  
-  public atuc(View paramView)
-  {
-    this.a = ((ImageView)atua.a(paramView, 2131369819));
-  }
+  public int a;
+  public long a;
+  public String a;
+  public byte[] a;
+  public long b;
+  public String b;
+  public byte[] b;
+  public long c;
+  public byte[] c;
+  public long d;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     atuc
  * JD-Core Version:    0.7.0.1
  */

@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.ar;
 
-import amxm;
+import aowd;
 
 public class ArResourceManager$1
   implements Runnable
 {
-  public ArResourceManager$1(amxm paramamxm) {}
+  public ArResourceManager$1(aowd paramaowd) {}
   
   public void run()
   {
@@ -16,7 +16,7 @@ public class ArResourceManager$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.ArResourceManager.1
  * JD-Core Version:    0.7.0.1
  */

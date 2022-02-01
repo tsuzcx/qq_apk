@@ -1,22 +1,26 @@
-public class azed
+import android.view.View;
+import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelGalleryActivity;
+import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelInfo;
+
+class azed
+  implements bkhw
 {
-  public volatile int a = 0;
-  public int b;
-  public int c = 0;
-  public int d;
+  azed(azeb paramazeb, PersonalityLabelInfo paramPersonalityLabelInfo, bkho parambkho) {}
   
-  public String a()
+  public void OnClick(View paramView, int paramInt)
   {
-    switch (this.a)
+    switch (paramInt)
     {
-    default: 
-      return "UNKNOWN_STATUS";
-    case 0: 
-      return "CONFIG_REQUEST_OK";
-    case 1: 
-      return "CONFIG_START_SERVLET";
     }
-    return "CONFIG_SEND_REQ";
+    for (;;)
+    {
+      this.jdField_a_of_type_Bkho.e();
+      return;
+      azeb.a(this.jdField_a_of_type_Azeb, this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPersonalityLabelInfo);
+      continue;
+      PersonalityLabelGalleryActivity.a(this.jdField_a_of_type_Azeb.a, this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPersonalityLabelInfo.id);
+      this.jdField_a_of_type_Azeb.a(this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPersonalityLabelInfo);
+    }
   }
 }
 

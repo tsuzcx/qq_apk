@@ -1,6 +1,6 @@
-public abstract interface arcx
+public class arcx
 {
-  public abstract String b();
+  public static String a = "true";
 }
 
 

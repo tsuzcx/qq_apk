@@ -1,25 +1,146 @@
-import com.tencent.device.msg.activities.DeviceMsgSettingActivity;
-import mqq.app.QQPermissionCallback;
+import android.app.Activity;
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+import com.tencent.biz.qqcircle.fragments.QCircleBlockContainer;
+import com.tencent.biz.qqcircle.widgets.QCircleStatusView;
+import java.util.ArrayList;
+import java.util.List;
 
 public class zxi
-  implements QQPermissionCallback
+  extends zxj
 {
-  public zxi(DeviceMsgSettingActivity paramDeviceMsgSettingActivity) {}
+  private final int jdField_a_of_type_Int;
+  private QCircleBlockContainer jdField_a_of_type_ComTencentBizQqcircleFragmentsQCircleBlockContainer;
+  protected final ArrayList<zxu> a;
+  private int b;
+  private int c;
   
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public zxi()
   {
-    bdgm.b(this.a);
-    this.a.finish();
+    this(0);
   }
   
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public zxi(int paramInt)
   {
-    DeviceMsgSettingActivity.a(this.a);
+    this(paramInt, null);
+  }
+  
+  public zxi(int paramInt, List<zxu> paramList)
+  {
+    this(paramInt, paramList, 3, 1);
+  }
+  
+  public zxi(int paramInt1, List<zxu> paramList, int paramInt2, int paramInt3)
+  {
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    if (paramList != null) {
+      this.jdField_a_of_type_JavaUtilArrayList.addAll(paramList);
+    }
+    this.c = paramInt2;
+    this.b = paramInt3;
+    this.jdField_a_of_type_Int = paramInt1;
+  }
+  
+  public QCircleBlockContainer a()
+  {
+    return this.jdField_a_of_type_ComTencentBizQqcircleFragmentsQCircleBlockContainer;
+  }
+  
+  public QCircleStatusView a()
+  {
+    if (this.jdField_a_of_type_ComTencentBizQqcircleFragmentsQCircleBlockContainer != null) {
+      return (QCircleStatusView)this.jdField_a_of_type_ComTencentBizQqcircleFragmentsQCircleBlockContainer.a();
+    }
+    return null;
+  }
+  
+  public String a()
+  {
+    return "BlockPart";
+  }
+  
+  public ArrayList<zxu> a()
+  {
+    return this.jdField_a_of_type_JavaUtilArrayList;
+  }
+  
+  public void a(int paramInt1, int paramInt2, Intent paramIntent)
+  {
+    if ((a() != null) && (a().a() != null)) {
+      a().a().a(paramInt1, paramInt2, paramIntent);
+    }
+  }
+  
+  protected void a(View paramView)
+  {
+    super.a(paramView);
+    if (this.jdField_a_of_type_Int != 0) {
+      this.jdField_a_of_type_ComTencentBizQqcircleFragmentsQCircleBlockContainer = ((QCircleBlockContainer)paramView.findViewById(this.jdField_a_of_type_Int));
+    }
+    if (this.jdField_a_of_type_ComTencentBizQqcircleFragmentsQCircleBlockContainer == null) {
+      this.jdField_a_of_type_ComTencentBizQqcircleFragmentsQCircleBlockContainer = new QCircleBlockContainer(paramView.getContext());
+    }
+    this.jdField_a_of_type_ComTencentBizQqcircleFragmentsQCircleBlockContainer.setLayoutManagerType(this.c, this.b);
+    this.jdField_a_of_type_ComTencentBizQqcircleFragmentsQCircleBlockContainer.setBlockWrapper(this);
+    this.jdField_a_of_type_ComTencentBizQqcircleFragmentsQCircleBlockContainer.setParentFragment(a());
+    this.jdField_a_of_type_ComTencentBizQqcircleFragmentsQCircleBlockContainer.a(this.jdField_a_of_type_JavaUtilArrayList);
+    this.jdField_a_of_type_ComTencentBizQqcircleFragmentsQCircleBlockContainer.c();
+  }
+  
+  public boolean a()
+  {
+    if ((this.jdField_a_of_type_ComTencentBizQqcircleFragmentsQCircleBlockContainer != null) && (this.jdField_a_of_type_ComTencentBizQqcircleFragmentsQCircleBlockContainer.a())) {
+      return true;
+    }
+    return super.a();
+  }
+  
+  public void onActivityCreated(Activity paramActivity, Bundle paramBundle) {}
+  
+  public void onActivityDestroyed(Activity paramActivity)
+  {
+    if ((a() != null) && (a().a() != null)) {
+      a().a().onActivityDestroyed(paramActivity);
+    }
+    if (a() != null) {
+      a().b();
+    }
+  }
+  
+  public void onActivityPaused(Activity paramActivity)
+  {
+    if ((a() != null) && (a().a() != null)) {
+      a().a().onActivityPaused(paramActivity);
+    }
+  }
+  
+  public void onActivityResumed(Activity paramActivity)
+  {
+    if ((a() != null) && (a().a() != null)) {
+      a().a().onActivityResumed(paramActivity);
+    }
+  }
+  
+  public void onActivitySaveInstanceState(Activity paramActivity, Bundle paramBundle) {}
+  
+  public void onActivityStarted(Activity paramActivity)
+  {
+    if ((a() != null) && (a().a() != null)) {
+      a().a().onActivityStarted(paramActivity);
+    }
+  }
+  
+  public void onActivityStopped(Activity paramActivity)
+  {
+    if ((a() != null) && (a().a() != null)) {
+      a().a().onActivityStopped(paramActivity);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     zxi
  * JD-Core Version:    0.7.0.1
  */

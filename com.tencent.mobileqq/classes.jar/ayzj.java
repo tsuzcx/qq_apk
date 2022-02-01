@@ -1,49 +1,54 @@
-import android.util.SparseArray;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 
-public class ayzj
-  extends azai
+public abstract class ayzj
+  extends aqkz<ayzl>
 {
-  public int a;
-  public long a;
-  private SparseArray<Object> a;
-  public boolean a;
-  public int b;
-  public long b;
-  public boolean b;
-  public long c;
-  public boolean c;
-  public long d;
-  public boolean d;
-  public boolean e;
-  public boolean f;
-  public boolean g = true;
-  public boolean h;
-  public boolean i;
+  abstract int a();
   
-  public ayzj(long paramLong1, long paramLong2, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4)
+  @NonNull
+  public ayzl a(int paramInt)
   {
-    this.jdField_a_of_type_Long = paramLong1;
-    this.e = paramLong2;
-    this.jdField_a_of_type_Boolean = paramBoolean1;
-    this.b = paramBoolean2;
-    this.c = paramBoolean3;
-    this.d = paramBoolean4;
+    return new ayzl();
   }
   
-  public Object a(int paramInt)
+  @Nullable
+  public ayzl a(aqlg[] paramArrayOfaqlg)
   {
-    if (this.jdField_a_of_type_AndroidUtilSparseArray != null) {
-      return this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
+    ayzl localayzl = new ayzl();
+    if ((paramArrayOfaqlg != null) && (paramArrayOfaqlg.length > 0) && (paramArrayOfaqlg[0] != null)) {
+      ayzl.a(localayzl, paramArrayOfaqlg[0].a);
     }
-    return null;
+    return localayzl;
   }
   
-  public void a(int paramInt, Object paramObject)
+  public void a(ayzl paramayzl) {}
+  
+  public Class<ayzl> clazz()
   {
-    if (this.jdField_a_of_type_AndroidUtilSparseArray == null) {
-      this.jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
-    }
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(paramInt, paramObject);
+    return ayzl.class;
+  }
+  
+  public boolean isNeedCompressed()
+  {
+    return true;
+  }
+  
+  public boolean isNeedStoreLargeFile()
+  {
+    return false;
+  }
+  
+  public int migrateOldVersion()
+  {
+    return 0;
+  }
+  
+  public void onReqFailed(int paramInt) {}
+  
+  public int type()
+  {
+    return a();
   }
 }
 

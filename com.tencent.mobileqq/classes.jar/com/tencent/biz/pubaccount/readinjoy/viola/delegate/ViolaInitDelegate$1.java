@@ -1,21 +1,21 @@
 package com.tencent.biz.pubaccount.readinjoy.viola.delegate;
 
 import android.view.ViewGroup;
-import snl;
+import tmk;
 
 public class ViolaInitDelegate$1
   implements Runnable
 {
-  public ViolaInitDelegate$1(snl paramsnl) {}
+  public ViolaInitDelegate$1(tmk paramtmk) {}
   
   public void run()
   {
-    snl.a(this.this$0).addView(snl.a(this.this$0));
+    tmk.a(this.this$0).addView(tmk.a(this.this$0));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.viola.delegate.ViolaInitDelegate.1
  * JD-Core Version:    0.7.0.1
  */

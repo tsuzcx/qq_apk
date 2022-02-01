@@ -1,30 +1,12 @@
-import android.graphics.Bitmap;
-import com.tencent.qphone.base.util.QLog;
-import java.net.URL;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
 
 class bazd
-  implements bazg
+  implements DialogInterface.OnCancelListener
 {
-  bazd(bazc parambazc) {}
+  bazd(bayw parambayw) {}
   
-  public Bitmap getBitmap(URL paramURL)
-  {
-    String str = paramURL.getPath();
-    try
-    {
-      Bitmap localBitmap = bazc.a(this.a, str);
-      paramURL = localBitmap;
-      if (localBitmap == null) {
-        paramURL = bazc.b(this.a, str);
-      }
-      return paramURL;
-    }
-    catch (Throwable paramURL)
-    {
-      QLog.e("VIdeoThumbDownloader", 2, "getBitmap", paramURL);
-    }
-    return null;
-  }
+  public void onCancel(DialogInterface paramDialogInterface) {}
 }
 
 

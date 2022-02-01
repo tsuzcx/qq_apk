@@ -1,98 +1,25 @@
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.preference.PreferenceManager;
+import android.content.Intent;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.troop.homework.entry.ui.PublishHomeWorkFragment;
+import cooperation.troop_homework.jsp.TroopHWJsPlugin;
+import mqq.app.QQPermissionCallback;
 
 public class bfac
+  implements QQPermissionCallback
 {
-  public static int a(Context paramContext, String paramString)
+  public bfac(PublishHomeWorkFragment paramPublishHomeWorkFragment, int paramInt) {}
+  
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    return PreferenceManager.getDefaultSharedPreferences(paramContext).getInt("kwsjt_" + paramString, -1);
+    bglp.b(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkEntryUiPublishHomeWorkFragment.getActivity());
   }
   
-  public static long a(Context paramContext, String paramString)
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    return PreferenceManager.getDefaultSharedPreferences(paramContext).getLong("kwslcdt_" + paramString, -1L);
-  }
-  
-  public static String a(Context paramContext)
-  {
-    return PreferenceManager.getDefaultSharedPreferences(paramContext).getString("kwsbddbw", null);
-  }
-  
-  public static String a(Context paramContext, String paramString)
-  {
-    return PreferenceManager.getDefaultSharedPreferences(paramContext).getString("kwsg_" + paramString, "");
-  }
-  
-  public static void a(Context paramContext, String paramString)
-  {
-    paramContext = PreferenceManager.getDefaultSharedPreferences(paramContext).edit();
-    paramContext.putString("kwsbddbw", paramString);
-    paramContext.apply();
-  }
-  
-  public static void a(Context paramContext, String paramString, int paramInt)
-  {
-    paramContext = PreferenceManager.getDefaultSharedPreferences(paramContext).edit();
-    paramContext.putInt("kwscdf_" + paramString, paramInt);
-    paramContext.apply();
-  }
-  
-  public static void a(Context paramContext, String paramString1, int paramInt, String paramString2)
-  {
-    paramContext = PreferenceManager.getDefaultSharedPreferences(paramContext).edit();
-    paramContext.putInt("kwsjt_" + paramString1, paramInt);
-    paramContext.putString("kwsjhu_" + paramString1, paramString2);
-    paramContext.apply();
-  }
-  
-  public static void a(Context paramContext, String paramString, long paramLong)
-  {
-    paramContext = PreferenceManager.getDefaultSharedPreferences(paramContext).edit();
-    paramContext.putLong("kwslcdt_" + paramString, paramLong);
-    paramContext.apply();
-  }
-  
-  public static void a(Context paramContext, String paramString1, String paramString2)
-  {
-    paramContext = PreferenceManager.getDefaultSharedPreferences(paramContext).edit();
-    paramContext.putString("kwsg_" + paramString1, paramString2);
-    paramContext.apply();
-  }
-  
-  public static int b(Context paramContext, String paramString)
-  {
-    return PreferenceManager.getDefaultSharedPreferences(paramContext).getInt("kwscdf_" + paramString, 24);
-  }
-  
-  public static long b(Context paramContext, String paramString)
-  {
-    return PreferenceManager.getDefaultSharedPreferences(paramContext).getLong("kwslftjt_" + paramString, -1L);
-  }
-  
-  public static String b(Context paramContext, String paramString)
-  {
-    return PreferenceManager.getDefaultSharedPreferences(paramContext).getString("kwsjhu_" + paramString, null);
-  }
-  
-  public static void b(Context paramContext, String paramString, long paramLong)
-  {
-    paramContext = PreferenceManager.getDefaultSharedPreferences(paramContext).edit();
-    paramContext.putLong("kwslftjt_" + paramString, paramLong);
-    paramContext.apply();
-  }
-  
-  public static long c(Context paramContext, String paramString)
-  {
-    return PreferenceManager.getDefaultSharedPreferences(paramContext).getLong("kwsrgrt_" + paramString, -1L);
-  }
-  
-  public static void c(Context paramContext, String paramString, long paramLong)
-  {
-    paramContext = PreferenceManager.getDefaultSharedPreferences(paramContext).edit();
-    paramContext.putLong("kwsrgrt_" + paramString, paramLong);
-    paramContext.apply();
+    paramArrayOfString = TroopHWJsPlugin.a(10 - this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkEntryUiPublishHomeWorkFragment.getActivity(), this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkEntryUiPublishHomeWorkFragment.a.getCurrentAccountUin());
+    paramArrayOfString.putExtra("HomeWorkConstants:homework_request_code_key", 259);
+    this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkEntryUiPublishHomeWorkFragment.startActivityForResult(paramArrayOfString, 259);
+    bkft.a(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkEntryUiPublishHomeWorkFragment.getActivity());
   }
 }
 

@@ -2,6 +2,7 @@ package com.tencent.ad.tangram.canvas.views;
 
 import android.support.annotation.Keep;
 import android.view.View;
+import com.tencent.ad.tangram.util.AdUIUtils;
 import java.lang.ref.WeakReference;
 
 @Keep
@@ -15,7 +16,7 @@ public class AdViewStatus
   private float percentageResume = 0.0F;
   private int statusForActivity;
   private WeakReference<View> view;
-  private boolean visible;
+  public boolean visible;
   
   public AdViewStatus(WeakReference<View> paramWeakReference, WeakReference<AdViewStatus.Listener> paramWeakReference1)
   {
@@ -83,7 +84,7 @@ public class AdViewStatus
       {
         if (this.view.get() != null)
         {
-          if (a.getPercentageOfGlobalVisibleRect((View)this.view.get()) > this.percentageResume) {}
+          if (AdUIUtils.getPercentageOfGlobalVisibleRect((View)this.view.get()) > this.percentageResume) {}
           for (boolean bool1 = true;; bool1 = false)
           {
             this.visible = bool1;
@@ -101,7 +102,7 @@ public class AdViewStatus
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.ad.tangram.canvas.views.AdViewStatus
  * JD-Core Version:    0.7.0.1
  */

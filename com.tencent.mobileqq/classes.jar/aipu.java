@@ -1,23 +1,16 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.TroopInfo;
-import mqq.observer.AccountObserver;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.bless.BlessSelectMemberActivity;
 
-class aipu
-  extends AccountObserver
+public final class aipu
+  implements DialogInterface.OnClickListener
 {
-  aipu(aipt paramaipt) {}
+  public aipu(Context paramContext) {}
   
-  public void onUpdateSKey(String paramString1, String paramString2)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramString1 == null)
-    {
-      aipt.b(this.a, null);
-      aipt.a(this.a, null);
-      this.a.b();
-      return;
-    }
-    this.a.a(aipt.a(this.a), this.a.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.troopcode, paramString1, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
-    aipt.a(this.a, null);
+    ((BlessSelectMemberActivity)this.a).f();
   }
 }
 

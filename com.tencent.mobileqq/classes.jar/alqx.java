@@ -1,33 +1,20 @@
-import android.content.Intent;
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.app.DataMigrationService;
+import com.tencent.mobileqq.activity.selectable.TextPreviewMenu;
+import java.util.List;
 
 public class alqx
-  extends Handler
+  extends bdop
 {
-  public alqx(DataMigrationService paramDataMigrationService) {}
+  public alqx(TextPreviewMenu paramTextPreviewMenu) {}
   
-  public void handleMessage(Message paramMessage)
+  protected void a(boolean paramBoolean, List<String> paramList)
   {
-    int i = paramMessage.arg1;
-    paramMessage = (Intent)paramMessage.obj;
-    if (paramMessage == null)
-    {
-      this.a.stopSelf(i);
-      return;
-    }
-    if ("com.tencent.mobileqq.action.MIGRATION_DATA".equals(paramMessage.getAction()))
-    {
-      DataMigrationService.a(this.a, paramMessage, i);
-      return;
-    }
-    this.a.stopSelf(i);
+    TextPreviewMenu.b(this.a);
+    TextPreviewMenu.a(this.a, paramList);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     alqx
  * JD-Core Version:    0.7.0.1
  */

@@ -1,22 +1,9 @@
-import com.tencent.ark.ark.VariantWrapper;
+import com.tencent.common.app.AppInterface;
+import java.util.List;
 
-class anik
-  implements anjw
+public abstract interface anik
 {
-  anik(anii paramanii, long paramLong) {}
-  
-  public void a(long paramLong)
-  {
-    ark.VariantWrapper localVariantWrapper = this.jdField_a_of_type_Anii.a.a(paramLong);
-    if (localVariantWrapper != null) {
-      localVariantWrapper.Reset();
-    }
-  }
-  
-  public void a(boolean paramBoolean, float paramFloat1, float paramFloat2, float paramFloat3)
-  {
-    anif.a(this.jdField_a_of_type_Anii.a, this.jdField_a_of_type_Long, paramBoolean, "Orientation", paramFloat1, paramFloat2, paramFloat3);
-  }
+  public abstract List<String> a(AppInterface paramAppInterface);
 }
 
 

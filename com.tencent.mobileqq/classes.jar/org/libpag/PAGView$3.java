@@ -9,12 +9,14 @@ class PAGView$3
   
   public void run()
   {
-    PAGView.access$400(this.this$0).start();
+    if (PAGView.access$500(this.this$0)) {
+      PAGView.access$600(this.this$0).start();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     org.libpag.PAGView.3
  * JD-Core Version:    0.7.0.1
  */

@@ -1,10 +1,20 @@
-public class ayyq
+import java.util.ArrayList;
+
+public abstract interface ayyq
 {
-  public Object a;
-  public boolean a;
-  public Object b;
+  public abstract void a(int paramInt);
   
-  public ayyq(ayyp paramayyp) {}
+  public abstract void a(int paramInt, ayxy paramayxy);
+  
+  public abstract void a(int paramInt, ArrayList<ayxy> paramArrayList);
+  
+  public abstract void a_(int paramInt, boolean paramBoolean);
+  
+  public abstract void b(int paramInt, ayxy paramayxy);
+  
+  public abstract void c(int paramInt, ayxy paramayxy);
+  
+  public abstract void d(int paramInt, ayxy paramayxy);
 }
 
 

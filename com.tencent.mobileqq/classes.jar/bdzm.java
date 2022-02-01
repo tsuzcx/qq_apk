@@ -1,6 +1,37 @@
-public abstract interface bdzm
+import android.os.Handler;
+import android.os.Looper;
+import java.util.ArrayList;
+
+public class bdzm
+  extends Handler
 {
-  public abstract void a(int paramInt);
+  private ArrayList<Class<?>> filterList = new ArrayList();
+  
+  public bdzm()
+  {
+    this.filterList.clear();
+  }
+  
+  public bdzm(Looper paramLooper)
+  {
+    super(paramLooper);
+    this.filterList.clear();
+  }
+  
+  public void addFilter(Class<?>... paramVarArgs)
+  {
+    int i = 0;
+    while (i < paramVarArgs.length)
+    {
+      this.filterList.add(paramVarArgs[i]);
+      i += 1;
+    }
+  }
+  
+  public ArrayList<Class<?>> getFilter()
+  {
+    return this.filterList;
+  }
 }
 
 

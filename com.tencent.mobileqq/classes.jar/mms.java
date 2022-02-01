@@ -1,52 +1,60 @@
+import android.os.Handler;
+import android.widget.ImageView;
 import com.tencent.av.VideoController;
-import com.tencent.av.ui.QavPanel;
-import com.tencent.av.ui.VideoInviteActivity;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.av.business.manager.filter.FilterItem;
+import com.tencent.av.ui.funchat.filter.EffectFilterPanel;
+import com.tencent.mobileqq.utils.AudioHelper;
+import com.tencent.qphone.base.util.QLog;
 
 public class mms
-  implements mkg
+  implements mmx
 {
-  public mms(VideoInviteActivity paramVideoInviteActivity, long paramLong, boolean paramBoolean) {}
+  mmx jdField_a_of_type_Mmx;
   
-  public void a()
+  public mms(EffectFilterPanel paramEffectFilterPanel, mmx parammmx)
   {
-    if (this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.a != null)
-    {
-      this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.a.setViewEnable(2131372756, false);
-      this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.a.setViewEnable(2131362956, false);
-      this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.a.setViewEnable(2131362968, false);
-      this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.a.setViewEnable(2131362967, false);
-    }
+    a(parammmx);
   }
   
-  public void b()
+  public void a(long paramLong, int paramInt, String paramString)
   {
-    if (this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.i)
-    {
-      this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.a().a(this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.c, 1, true);
-      long l = mto.a(this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.c);
-      this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.a().a(this.jdField_a_of_type_Long, 3, l);
-      this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.h = true;
-      this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.a().a(this.jdField_a_of_type_Long, l, 1);
-      this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.e = true;
-      this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.finish();
+    if (AudioHelper.f()) {
+      QLog.w("EffectFilterPanel", 1, "OnItemSelected, id[" + paramInt + "], name[" + paramString + "], seq[" + paramLong + "], Visibility[" + EffectFilterPanel.a(this.jdField_a_of_type_ComTencentAvUiFunchatFilterEffectFilterPanel).getVisibility() + "], mlistener[" + this.jdField_a_of_type_Mmx + "]");
     }
-    for (;;)
+    if (EffectFilterPanel.a(this.jdField_a_of_type_ComTencentAvUiFunchatFilterEffectFilterPanel).getVisibility() == 0)
     {
-      this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.overridePendingTransition(0, 2130772165);
-      return;
-      this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.a().a(this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.c, 1, false);
-      this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.a().a(this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.c, 248);
-      this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.a().b(248);
-      if (this.jdField_a_of_type_Boolean) {
-        this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.a().b(this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.c, 1);
+      EffectFilterPanel.a(this.jdField_a_of_type_ComTencentAvUiFunchatFilterEffectFilterPanel).removeCallbacks(EffectFilterPanel.a(this.jdField_a_of_type_ComTencentAvUiFunchatFilterEffectFilterPanel));
+      EffectFilterPanel.a(this.jdField_a_of_type_ComTencentAvUiFunchatFilterEffectFilterPanel).clearAnimation();
+      EffectFilterPanel.a(this.jdField_a_of_type_ComTencentAvUiFunchatFilterEffectFilterPanel).setVisibility(8);
+    }
+    paramString = (FilterItem)EffectFilterPanel.a(this.jdField_a_of_type_ComTencentAvUiFunchatFilterEffectFilterPanel).a(paramString);
+    EffectFilterPanel.a(this.jdField_a_of_type_ComTencentAvUiFunchatFilterEffectFilterPanel).a(paramLong, paramString);
+    if (paramString != null)
+    {
+      if (!paramString.isUsable()) {
+        EffectFilterPanel.a(this.jdField_a_of_type_ComTencentAvUiFunchatFilterEffectFilterPanel).a(paramLong, paramString);
       }
-      this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.finish();
+      bcsl.c(paramString.getId());
+      if ((paramString.getId() != null) && (paramString.getId().compareToIgnoreCase("MANHUA") == 0)) {
+        EffectFilterPanel.a(this.jdField_a_of_type_ComTencentAvUiFunchatFilterEffectFilterPanel).a().f(51, paramString.getId());
+      }
     }
+    else
+    {
+      return;
+    }
+    EffectFilterPanel.a(this.jdField_a_of_type_ComTencentAvUiFunchatFilterEffectFilterPanel).a().f(0, paramString.getId());
+  }
+  
+  public void a(mmx parammmx)
+  {
+    this.jdField_a_of_type_Mmx = parammmx;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     mms
  * JD-Core Version:    0.7.0.1
  */

@@ -1,16 +1,9 @@
-import com.tencent.mobileqq.colornote.data.ColorNote;
-import com.tencent.mobileqq.colornote.settings.ColorNoteSettingFragment;
-import java.util.Comparator;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
 
-public class aoei
-  implements Comparator<ColorNote>
+public abstract interface aoei
 {
-  public aoei(ColorNoteSettingFragment paramColorNoteSettingFragment) {}
-  
-  public int a(ColorNote paramColorNote1, ColorNote paramColorNote2)
-  {
-    return -(int)(paramColorNote1.getTime() - paramColorNote2.getTime());
-  }
+  public abstract boolean a(String paramString, ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject);
 }
 
 

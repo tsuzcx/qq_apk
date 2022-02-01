@@ -1,45 +1,44 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.bubble.BubbleDiyEntity;
-import com.tencent.mobileqq.emosm.web.MessengerService;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import com.tencent.mobileqq.activity.photo.album.NewPhotoPreviewActivity;
+import com.tencent.mobileqq.activity.photo.album.PhotoCommonBaseData;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.ark.image.PhotoPreviewLogicArk.1.1;
 import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.ArrayList;
+import java.util.Locale;
 
-class aprc
-  implements alpg
+public class aprc
+  implements View.OnClickListener
 {
-  aprc(apqh paramapqh, Bundle paramBundle1, MessengerService paramMessengerService, Bundle paramBundle2) {}
+  aprc(aprb paramaprb) {}
   
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  public void onClick(View paramView)
   {
-    if ((paramBoolean) && (paramObject != null)) {}
-    try
+    ((NewPhotoPreviewActivity)this.a.mActivity).sendBtn.setClickable(false);
+    if (aprb.a(this.a).selectedPhotoList.size() > 0)
     {
-      if ((paramObject instanceof List))
+      if (QLog.isColorLevel())
       {
-        paramObject = (List)paramObject;
-        if (!paramObject.isEmpty())
+        StringBuilder localStringBuilder = new StringBuilder(aprb.b(this.a).selectedPhotoList.size() * 128);
+        int i = 0;
+        while (i < aprb.c(this.a).selectedPhotoList.size())
         {
-          this.jdField_a_of_type_AndroidOsBundle.putString("diyText", ((BubbleDiyEntity)paramObject.get(0)).diyText);
-          this.jdField_a_of_type_AndroidOsBundle.putString("isDiy", "1");
-          this.jdField_a_of_type_AndroidOsBundle.putString("tl", ((BubbleDiyEntity)paramObject.get(0)).topLeftId);
-          this.jdField_a_of_type_AndroidOsBundle.putString("tr", ((BubbleDiyEntity)paramObject.get(0)).topRightId);
-          this.jdField_a_of_type_AndroidOsBundle.putString("bl", ((BubbleDiyEntity)paramObject.get(0)).bottomLeftId);
-          this.jdField_a_of_type_AndroidOsBundle.putString("br", ((BubbleDiyEntity)paramObject.get(0)).bottomRightId);
+          localStringBuilder.append(String.format(Locale.CHINA, "choose image[%d],path=%s \r\n", new Object[] { Integer.valueOf(i), aprb.d(this.a).selectedPhotoList.get(i) }));
+          i += 1;
         }
+        QLog.d("PhotoPreviewLogicArk", 2, localStringBuilder.toString());
       }
-      for (;;)
-      {
-        this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.a(this.b);
-        return;
-        this.jdField_a_of_type_AndroidOsBundle.putString("diyText", "");
-      }
-      return;
+      ThreadManagerV2.executeOnSubThread(new PhotoPreviewLogicArk.1.1(this));
     }
-    catch (Exception paramObject)
+    for (;;)
     {
-      if (QLog.isColorLevel()) {
-        QLog.e("Q.emoji.web.MessengerService", 2, paramObject.getMessage());
-      }
+      ((NewPhotoPreviewActivity)this.a.mActivity).finish();
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      apqv.a().a("callbackArk", null, null);
     }
   }
 }

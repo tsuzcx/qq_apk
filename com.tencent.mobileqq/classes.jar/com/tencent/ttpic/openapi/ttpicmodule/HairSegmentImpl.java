@@ -2,6 +2,8 @@ package com.tencent.ttpic.openapi.ttpicmodule;
 
 import android.graphics.Bitmap;
 import android.graphics.PointF;
+import com.tencent.aekit.openrender.util.AEProfiler;
+import com.tencent.aekit.plugin.core.AEDetectorType;
 import com.tencent.ttpic.baseutils.bitmap.BitmapUtils;
 import com.tencent.ttpic.openapi.PTFaceAttr;
 import com.tencent.ttpic.openapi.PTHairAttr;
@@ -19,7 +21,6 @@ public class HairSegmentImpl
   private float angle = 0.0F;
   private int faceBright = 0;
   private int faceNumber = 0;
-  private PTHairAttr hairAttr = new PTHairAttr();
   private int hairBright = 0;
   private PointF[] hairRect = { new PointF(0.0F, 0.0F), new PointF(0.0F, 1.0F), new PointF(1.0F, 0.0F), new PointF(1.0F, 1.0F) };
   private PointF jawPoint = new PointF(0.0F, 0.0F);
@@ -29,14 +30,15 @@ public class HairSegmentImpl
   
   private PTHairAttr genSegAttr(Bitmap paramBitmap, int paramInt1, int paramInt2, PointF[] paramArrayOfPointF1, PointF[] paramArrayOfPointF2, float paramFloat)
   {
-    this.hairAttr.setMaskBitmap(paramBitmap);
-    this.hairAttr.setMaskFrame(null);
-    this.hairAttr.setFaceBright(paramInt1);
-    this.hairAttr.setHairBright(paramInt2);
-    this.hairAttr.setHairRect(paramArrayOfPointF1);
-    this.hairAttr.setMaskYYAnchor(paramArrayOfPointF2);
-    this.hairAttr.setMaterialCrop(paramFloat);
-    return this.hairAttr;
+    PTHairAttr localPTHairAttr = new PTHairAttr();
+    localPTHairAttr.setMaskBitmap(paramBitmap);
+    localPTHairAttr.setMaskFrame(null);
+    localPTHairAttr.setFaceBright(paramInt1);
+    localPTHairAttr.setHairBright(paramInt2);
+    localPTHairAttr.setHairRect(paramArrayOfPointF1);
+    localPTHairAttr.setMaskYYAnchor(paramArrayOfPointF2);
+    localPTHairAttr.setMaterialCrop(paramFloat);
+    return localPTHairAttr;
   }
   
   private PointF rotateCoordinate(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, float paramFloat5)
@@ -300,18 +302,21 @@ public class HairSegmentImpl
   {
     if ((PTHairSegmenter.HAIR_SEGMENT.isFunctionReady()) && (BitmapUtils.isLegal(paramBitmap)))
     {
+      AEProfiler.getInstance().start(AEDetectorType.HAIR_SEGMENT.value);
       this.outBitmap = PTHairSegmenter.HAIR_SEGMENT.forward(paramBitmap, (-paramInt3 + 360) % 360);
       if (this.outBitmap != null) {
         setHairRectAndColor(paramBitmap, this.outBitmap, paramPTFaceAttr, paramInt1, paramInt2);
       }
       paramBitmap.recycle();
+      long l = AEProfiler.getInstance().end(AEDetectorType.HAIR_SEGMENT.value);
+      AEProfiler.getInstance().add(1, AEDetectorType.HAIR_SEGMENT.value, l);
     }
     return genSegAttr(this.outBitmap, this.faceBright, this.hairBright, this.hairRect, this.maskYYAnchor, this.materialCrop);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.openapi.ttpicmodule.HairSegmentImpl
  * JD-Core Version:    0.7.0.1
  */

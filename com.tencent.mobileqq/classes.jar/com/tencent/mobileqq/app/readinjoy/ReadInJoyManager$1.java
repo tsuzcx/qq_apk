@@ -4,7 +4,7 @@ import android.content.ContentResolver;
 import android.content.ContentValues;
 import android.net.Uri;
 import android.net.Uri.Builder;
-import bkcc;
+import bmqm;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.qphone.base.util.BaseApplication;
@@ -28,7 +28,7 @@ class ReadInJoyManager$1
     label495:
     while (localIterator.hasNext())
     {
-      bkcc localbkcc = (bkcc)localIterator.next();
+      bmqm localbmqm = (bmqm)localIterator.next();
       Object localObject2 = new HashSet(ReadInJoyManager.a(this.this$0).keySet()).iterator();
       while (((Iterator)localObject2).hasNext())
       {
@@ -38,37 +38,37 @@ class ReadInJoyManager$1
           ReadInJoyManager.a(this.this$0).remove(Integer.valueOf(i));
         }
       }
-      if (!ReadInJoyManager.a(this.this$0).containsValue(Integer.valueOf(localbkcc.jdField_b_of_type_Int)))
+      if (!ReadInJoyManager.a(this.this$0).containsValue(Integer.valueOf(localbmqm.jdField_b_of_type_Int)))
       {
-        ReadInJoyManager.a(this.this$0).put(Integer.valueOf(localbkcc.a), Integer.valueOf(localbkcc.jdField_b_of_type_Int));
+        ReadInJoyManager.a(this.this$0).put(Integer.valueOf(localbmqm.a), Integer.valueOf(localbmqm.jdField_b_of_type_Int));
         long l = ReadInJoyManager.a(this.this$0);
-        if ((localbkcc.c == 10) || (localbkcc.c == 11) || (localbkcc.c == 12) || (localbkcc.c == 999999)) {
-          if (ReadInJoyManager.a(this.this$0, (Uri)localObject1, localbkcc, l)) {
+        if ((localbmqm.c == 10) || (localbmqm.c == 11) || (localbmqm.c == 12) || (localbmqm.c == 999999)) {
+          if (ReadInJoyManager.a(this.this$0, (Uri)localObject1, localbmqm, l)) {
             ReadInJoyManager.a(this.this$0);
           }
         }
         for (;;)
         {
-          if (localbkcc.c == 999999) {
+          if (localbmqm.c == 999999) {
             break label495;
           }
           break;
           ContentValues localContentValues;
-          if (localbkcc.c == 14)
+          if (localbmqm.c == 14)
           {
-            localObject2 = String.format("%s = '%s' and %s = %d", new Object[] { "commentID", localbkcc.jdField_b_of_type_JavaLangString, "notifyType", Integer.valueOf(11) });
+            localObject2 = String.format("%s = '%s' and %s = %d", new Object[] { "commentID", localbmqm.jdField_b_of_type_JavaLangString, "notifyType", Integer.valueOf(11) });
             localContentValues = new ContentValues();
             localContentValues.put("isDelete", Integer.valueOf(1));
             ReadInJoyManager.a(this.this$0).getApp().getContentResolver().update((Uri)localObject1, localContentValues, (String)localObject2, null);
-            ReadInJoyManager.a(this.this$0, (Uri)localObject1, localbkcc, l);
+            ReadInJoyManager.a(this.this$0, (Uri)localObject1, localbmqm, l);
           }
-          else if (localbkcc.c == 13)
+          else if (localbmqm.c == 13)
           {
-            localObject2 = String.format("%s = %s and %s = %d", new Object[] { "feedsID", Long.toString(localbkcc.jdField_b_of_type_Long), "notifyType", Integer.valueOf(10) });
+            localObject2 = String.format("%s = %s and %s = %d", new Object[] { "feedsID", Long.toString(localbmqm.jdField_b_of_type_Long), "notifyType", Integer.valueOf(10) });
             localContentValues = new ContentValues();
             localContentValues.put("isDelete", Integer.valueOf(1));
             ReadInJoyManager.a(this.this$0).getApp().getContentResolver().update((Uri)localObject1, localContentValues, (String)localObject2, null);
-            ReadInJoyManager.a(this.this$0, (Uri)localObject1, localbkcc, l);
+            ReadInJoyManager.a(this.this$0, (Uri)localObject1, localbmqm, l);
           }
         }
       }
@@ -78,7 +78,7 @@ class ReadInJoyManager$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.app.readinjoy.ReadInJoyManager.1
  * JD-Core Version:    0.7.0.1
  */

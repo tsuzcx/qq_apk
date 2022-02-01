@@ -1,7 +1,10 @@
 package com.tencent.pts.ui.vnode;
 
 import android.content.Context;
+import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.StateListDrawable;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
@@ -12,12 +15,16 @@ import com.tencent.pts.core.PTSAppInstance;
 import com.tencent.pts.core.PTSAppInstance.PTSLiteAppInstance;
 import com.tencent.pts.core.lite.PTSLiteItemViewManager;
 import com.tencent.pts.ui.PTSNodeAttribute;
+import com.tencent.pts.ui.PTSNodeFactory;
 import com.tencent.pts.ui.PTSNodeInfo;
 import com.tencent.pts.ui.PTSNodeStyle;
 import com.tencent.pts.ui.view.IView;
 import com.tencent.pts.utils.PTSLog;
+import com.tencent.pts.utils.PTSReportUtil;
 import com.tencent.pts.utils.PTSTimeCostUtil;
 import com.tencent.pts.utils.PTSValueConvertUtil;
+import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -28,19 +35,35 @@ import java.util.Set;
 public abstract class PTSNodeVirtual<T extends View>
 {
   protected final String TAG = getClass().getSimpleName();
+  private int backgroundColor = 16777215;
   private PTSAppInstance mAppInstance;
-  private List<PTSNodeVirtual> mChildren;
+  protected List<PTSNodeVirtual> mChildren;
   private PTSNodeInfo mNodeInfo;
   private PTSNodeVirtual mParent;
   private T mView;
   private String mViewID;
+  private ColorDrawable normalDrawable;
   private View.OnClickListener onClickListener;
+  private int[] padding = new int[4];
+  private ColorDrawable pressDrawable;
+  private Integer ptsOnPressBackgroundColor;
+  private Integer ptsOnPressColor;
+  private String ptsOnPressSrc;
   private boolean reusable = true;
+  private StateListDrawable stateListDrawable;
   
-  public PTSNodeVirtual(PTSAppInstance paramPTSAppInstance)
+  protected PTSNodeVirtual(PTSAppInstance paramPTSAppInstance)
   {
+    if (paramPTSAppInstance == null) {
+      return;
+    }
     this.mAppInstance = paramPTSAppInstance;
-    this.mView = initView();
+    View localView = initView(paramPTSAppInstance.getContext());
+    paramPTSAppInstance = localView;
+    if (localView == null) {
+      paramPTSAppInstance = initView();
+    }
+    this.mView = paramPTSAppInstance;
   }
   
   private void applyLayout()
@@ -81,6 +104,13 @@ public abstract class PTSNodeVirtual<T extends View>
   }
   
   private void bindExposeEvent() {}
+  
+  private void bindExtra(PTSNodeInfo paramPTSNodeInfo)
+  {
+    if (paramPTSNodeInfo != null) {
+      setContent(paramPTSNodeInfo.getContent());
+    }
+  }
   
   private void bindStyle(PTSNodeStyle paramPTSNodeStyle)
   {
@@ -123,7 +153,7 @@ public abstract class PTSNodeVirtual<T extends View>
           continue;
         }
         int i = localHashMap.size();
-        Object localObject3 = new String[i];
+        localObject3 = new String[i];
         Object localObject4 = new String[i];
         Iterator localIterator = localHashMap.entrySet().iterator();
         i = 0;
@@ -159,13 +189,74 @@ public abstract class PTSNodeVirtual<T extends View>
         break;
       }
       str1 = localPTSNodeInfo.getAttributes().getEventPtsOnTap();
-      localObject2 = ((PTSAppInstance.PTSLiteAppInstance)this.mAppInstance).getLiteItemViewManager();
+      localObject2 = ((PTSAppInstance.PTSLiteAppInstance)this.mAppInstance).getLiteEventListener();
+      Object localObject3 = ((PTSAppInstance.PTSLiteAppInstance)this.mAppInstance).getLiteItemViewManager();
+      if (localObject3 != null)
+      {
+        ((PTSLiteItemViewManager)localObject3).triggerLiteEvent(1, str1, localHashMap, getView());
+        return;
+      }
       if (localObject2 == null) {
         break;
       }
-      ((PTSLiteItemViewManager)localObject2).triggerLiteEvent(1, str1, localHashMap, getView());
+      ((PTSAppInstance.PTSLiteAppInstance)this.mAppInstance).triggerLiteEvent(1, str1, localHashMap, getView());
       return;
     }
+  }
+  
+  private T initView()
+  {
+    Object localObject = PTSNodeFactory.getNodeViewConstructor(getClass());
+    if (localObject == null)
+    {
+      String str3 = "[initView] no viewConstructor, className = " + getClass().getName();
+      PTSLog.e(this.TAG, str3);
+      if (PTSLog.isDebug()) {
+        throw new IllegalArgumentException(str3);
+      }
+    }
+    try
+    {
+      localObject = (View)((Constructor)localObject).newInstance(new Object[] { this });
+      return localObject;
+    }
+    catch (InvocationTargetException localInvocationTargetException)
+    {
+      String str1 = "[initView] invocationTargetException, className = " + getClass().getName() + ", e = " + localInvocationTargetException + ", stackTraceString = " + Log.getStackTraceString(localInvocationTargetException);
+      PTSReportUtil.reportEvent(this.TAG, str1, 1);
+      PTSLog.e(this.TAG, str1);
+      if (PTSLog.isDebug()) {
+        throw new IllegalArgumentException(str1);
+      }
+      return null;
+    }
+    catch (Exception localException)
+    {
+      String str2 = "[initView] exception, className = " + getClass().getName() + ", e = " + localException + ", stackTraceString = " + Log.getStackTraceString(localException);
+      PTSLog.e(this.TAG, str2);
+      PTSReportUtil.reportEvent(this.TAG, str2, 1);
+      if (PTSLog.isDebug()) {
+        throw new IllegalArgumentException(str2);
+      }
+    }
+    return null;
+  }
+  
+  private final void reset()
+  {
+    View localView = getView();
+    this.backgroundColor = 16777215;
+    if (!isContainer()) {
+      this.padding = new int[] { 0, 0, 0, 0 };
+    }
+    setViewID("");
+    if (localView.hasOnClickListeners()) {
+      localView.setOnClickListener(null);
+    }
+    this.ptsOnPressSrc = null;
+    this.ptsOnPressColor = null;
+    this.ptsOnPressBackgroundColor = null;
+    resetAll();
   }
   
   private void setAttributes(String paramString, Object paramObject)
@@ -186,15 +277,44 @@ public abstract class PTSNodeVirtual<T extends View>
     bindExposeEvent();
   }
   
-  private void setParent(PTSNodeVirtual paramPTSNodeVirtual)
+  private void updatePtsOnPressBackgroundColor()
   {
-    this.mParent = paramPTSNodeVirtual;
+    Integer localInteger = getPtsOnPressBackgroundColor();
+    if (localInteger == null) {
+      return;
+    }
+    if (this.stateListDrawable == null)
+    {
+      this.stateListDrawable = new StateListDrawable();
+      this.normalDrawable = new ColorDrawable(getBackgroundColor());
+      this.pressDrawable = new ColorDrawable(localInteger.intValue());
+      StateListDrawable localStateListDrawable = this.stateListDrawable;
+      ColorDrawable localColorDrawable = this.pressDrawable;
+      localStateListDrawable.addState(new int[] { 16842919 }, localColorDrawable);
+      localStateListDrawable = this.stateListDrawable;
+      localColorDrawable = this.normalDrawable;
+      localStateListDrawable.addState(new int[0], localColorDrawable);
+    }
+    this.normalDrawable.setColor(getBackgroundColor());
+    this.pressDrawable.setColor(localInteger.intValue());
+    getView().setBackgroundDrawable(this.stateListDrawable);
   }
   
   public void addChild(PTSNodeVirtual paramPTSNodeVirtual)
   {
-    if ((isLeafNode()) || (!(this.mView instanceof ViewGroup))) {
-      throw new IllegalStateException("can not add child for leaf node, or mView is not ViewGroup, nodeInfo = \n" + this.mNodeInfo.toString());
+    if ((isLeafNode()) || (!(this.mView instanceof ViewGroup)))
+    {
+      StringBuilder localStringBuilder = new StringBuilder().append("[addChild] failed, can not add child for leaf node, or mView is not ViewGroup, nodeInfo = \n");
+      if (this.mNodeInfo != null) {}
+      for (paramPTSNodeVirtual = this.mNodeInfo.toString();; paramPTSNodeVirtual = "")
+      {
+        paramPTSNodeVirtual = paramPTSNodeVirtual;
+        PTSLog.e(this.TAG, paramPTSNodeVirtual);
+        if (!PTSLog.isDebug()) {
+          break;
+        }
+        throw new IllegalArgumentException(paramPTSNodeVirtual);
+      }
     }
     if (this.mChildren == null) {
       this.mChildren = new ArrayList();
@@ -209,8 +329,6 @@ public abstract class PTSNodeVirtual<T extends View>
     ((ViewGroup)this.mView).addView(paramPTSNodeVirtual.getView());
   }
   
-  protected void bindExtra(PTSNodeInfo paramPTSNodeInfo) {}
-  
   public final void bindNodeInfo(PTSNodeInfo paramPTSNodeInfo)
   {
     if (paramPTSNodeInfo != null)
@@ -222,6 +340,7 @@ public abstract class PTSNodeVirtual<T extends View>
       bindAttributes(paramPTSNodeInfo.getAttributes());
       bindExtra(paramPTSNodeInfo);
       applyLayout();
+      onParseValueFinished();
       if ((getView() instanceof IView)) {
         ((IView)getView()).onBindNodeInfo(paramPTSNodeInfo);
       }
@@ -232,6 +351,11 @@ public abstract class PTSNodeVirtual<T extends View>
   public PTSAppInstance getAppInstance()
   {
     return this.mAppInstance;
+  }
+  
+  public int getBackgroundColor()
+  {
+    return this.backgroundColor;
   }
   
   public List<PTSNodeVirtual> getChildren()
@@ -277,6 +401,21 @@ public abstract class PTSNodeVirtual<T extends View>
     return this.mParent;
   }
   
+  public Integer getPtsOnPressBackgroundColor()
+  {
+    return this.ptsOnPressBackgroundColor;
+  }
+  
+  public Integer getPtsOnPressColor()
+  {
+    return this.ptsOnPressColor;
+  }
+  
+  public String getPtsOnPressSrc()
+  {
+    return this.ptsOnPressSrc;
+  }
+  
   public boolean getReusable()
   {
     return this.reusable;
@@ -315,11 +454,14 @@ public abstract class PTSNodeVirtual<T extends View>
     this.mView.setVisibility(8);
   }
   
-  public abstract T initView();
+  protected T initView(Context paramContext)
+  {
+    return null;
+  }
   
   public boolean isContainer()
   {
-    return this instanceof PTSNodeContainer;
+    return getView() instanceof ViewGroup;
   }
   
   public boolean isLeafNode()
@@ -332,10 +474,29 @@ public abstract class PTSNodeVirtual<T extends View>
     return getVisibility() == 0;
   }
   
+  protected void onParseValueFinished()
+  {
+    View localView = getView();
+    localView.setBackgroundColor(this.backgroundColor);
+    localView.setPadding(this.padding[0], this.padding[1], this.padding[2], this.padding[3]);
+    updatePtsOnPressBackgroundColor();
+  }
+  
   public void removeChild(PTSNodeVirtual paramPTSNodeVirtual)
   {
-    if ((isLeafNode()) || (!(this.mView instanceof ViewGroup))) {
-      throw new IllegalStateException("can not remove child for leaf node, or mView is not ViewGroup.");
+    if ((isLeafNode()) || (!(this.mView instanceof ViewGroup)))
+    {
+      StringBuilder localStringBuilder = new StringBuilder().append("[remove] failed, can not remove child for leaf node, or mView is not ViewGroup, nodeInfo = \n");
+      if (this.mNodeInfo != null) {}
+      for (paramPTSNodeVirtual = this.mNodeInfo.toString();; paramPTSNodeVirtual = "")
+      {
+        paramPTSNodeVirtual = paramPTSNodeVirtual;
+        PTSLog.e(this.TAG, paramPTSNodeVirtual);
+        if (!PTSLog.isDebug()) {
+          break;
+        }
+        throw new IllegalArgumentException(paramPTSNodeVirtual);
+      }
     }
     if ((this.mChildren == null) || (paramPTSNodeVirtual == null)) {
       return;
@@ -345,21 +506,7 @@ public abstract class PTSNodeVirtual<T extends View>
     ((ViewGroup)this.mView).removeView(paramPTSNodeVirtual.getView());
   }
   
-  public final void reset()
-  {
-    View localView = getView();
-    localView.setBackgroundColor(0);
-    if (!isContainer()) {
-      localView.setPadding(0, 0, 0, 0);
-    }
-    setViewID("");
-    if (localView.hasOnClickListeners()) {
-      localView.setOnClickListener(null);
-    }
-    resetAll();
-  }
-  
-  public abstract void resetAll();
+  protected void resetAll() {}
   
   protected boolean setAttribute(String paramString, Object paramObject)
   {
@@ -368,6 +515,26 @@ public abstract class PTSNodeVirtual<T extends View>
       this.mViewID = PTSValueConvertUtil.getString(paramObject);
       return true;
     }
+    if ("pts:on-pressed-color".equalsIgnoreCase(paramString))
+    {
+      this.ptsOnPressColor = Integer.valueOf(PTSValueConvertUtil.getColor(paramObject));
+      return true;
+    }
+    if ("pts:on-pressed-background-color".equalsIgnoreCase(paramString))
+    {
+      this.ptsOnPressBackgroundColor = Integer.valueOf(PTSValueConvertUtil.getColor(paramObject));
+      return true;
+    }
+    if ("pts:on-pressed-src".equalsIgnoreCase(paramString))
+    {
+      this.ptsOnPressSrc = PTSValueConvertUtil.getString(paramObject);
+      return true;
+    }
+    return false;
+  }
+  
+  protected boolean setContent(String paramString)
+  {
     return false;
   }
   
@@ -378,6 +545,11 @@ public abstract class PTSNodeVirtual<T extends View>
     }
   }
   
+  protected void setParent(PTSNodeVirtual paramPTSNodeVirtual)
+  {
+    this.mParent = paramPTSNodeVirtual;
+  }
+  
   public void setReusable(boolean paramBoolean)
   {
     this.reusable = paramBoolean;
@@ -385,10 +557,9 @@ public abstract class PTSNodeVirtual<T extends View>
   
   protected boolean setStyle(String paramString, Object paramObject)
   {
-    View localView = getView();
     if ("background-color".equalsIgnoreCase(paramString))
     {
-      localView.setBackgroundColor(PTSValueConvertUtil.getColor(paramObject));
+      this.backgroundColor = PTSValueConvertUtil.getColor(paramObject);
       return true;
     }
     if ("padding".equalsIgnoreCase(paramString))
@@ -396,8 +567,7 @@ public abstract class PTSNodeVirtual<T extends View>
       if (isContainer()) {
         return false;
       }
-      paramString = this.mNodeInfo.getStyle().getPadding();
-      localView.setPadding(paramString[0], paramString[1], paramString[2], paramString[3]);
+      this.padding = this.mNodeInfo.getStyle().getPadding();
       return true;
     }
     return false;
@@ -412,12 +582,10 @@ public abstract class PTSNodeVirtual<T extends View>
   {
     this.mView.setVisibility(0);
   }
-  
-  public void update() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.pts.ui.vnode.PTSNodeVirtual
  * JD-Core Version:    0.7.0.1
  */

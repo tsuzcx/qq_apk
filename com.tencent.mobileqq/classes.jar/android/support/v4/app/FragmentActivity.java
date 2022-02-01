@@ -1,5 +1,6 @@
 package android.support.v4.app;
 
+import Override;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
@@ -17,12 +18,14 @@ import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import com.tencent.mobileqq.activity.ChatFragment;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.io.FileDescriptor;
 import java.io.PrintWriter;
 import java.util.ArrayList;
@@ -232,6 +235,14 @@ public class FragmentActivity
       continue;
       paramView = "android";
     }
+  }
+  
+  @Override
+  public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
+  {
+    boolean bool = super.dispatchTouchEvent(paramMotionEvent);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool);
+    return bool;
   }
   
   public void doOnActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
@@ -550,6 +561,13 @@ public class FragmentActivity
     }
   }
   
+  @Override
+  public void onConfigurationChanged(Configuration paramConfiguration)
+  {
+    super.onConfigurationChanged(paramConfiguration);
+    EventCollector.getInstance().onActivityConfigurationChanged(this, paramConfiguration);
+  }
+  
   public boolean onCreatePanelMenu(int paramInt, Menu paramMenu)
   {
     if (paramInt == 0)
@@ -611,24 +629,24 @@ public class FragmentActivity
     int i;
     if (paramContext == null)
     {
-      paramString = Fragment.instantiate(this, str1);
-      paramString.mFromLayout = true;
+      paramContext = Fragment.instantiate(this, str1);
+      paramContext.mFromLayout = true;
       if (j != 0)
       {
         i = j;
-        paramString.mFragmentId = i;
-        paramString.mContainerId = 0;
-        paramString.mTag = str2;
-        paramString.mInLayout = true;
-        paramString.mFragmentManager = this.mFragments;
-        paramString.onInflate(this, paramAttributeSet, paramString.mSavedFragmentState);
-        this.mFragments.addFragment(paramString, true);
+        paramContext.mFragmentId = i;
+        paramContext.mContainerId = 0;
+        paramContext.mTag = str2;
+        paramContext.mInLayout = true;
+        paramContext.mFragmentManager = this.mFragments;
+        paramContext.onInflate(this, paramAttributeSet, paramContext.mSavedFragmentState);
+        this.mFragments.addFragment(paramContext, true);
       }
     }
     for (;;)
     {
-      if (paramString.mView != null) {
-        break label467;
+      if (paramContext.mView != null) {
+        break label465;
       }
       throw new IllegalStateException("Fragment " + str1 + " did not create a view.");
       i = 0;
@@ -641,16 +659,15 @@ public class FragmentActivity
         paramContext.onInflate(this, paramAttributeSet, paramContext.mSavedFragmentState);
       }
       this.mFragments.moveToState(paramContext);
-      paramString = paramContext;
     }
-    label467:
+    label465:
     if (j != 0) {
-      paramString.mView.setId(j);
+      paramContext.mView.setId(j);
     }
-    if (paramString.mView.getTag() == null) {
-      paramString.mView.setTag(str2);
+    if (paramContext.mView.getTag() == null) {
+      paramContext.mView.setTag(str2);
     }
-    return paramString.mView;
+    return paramContext.mView;
   }
   
   public void onLowMemory()

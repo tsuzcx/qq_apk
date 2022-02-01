@@ -1,64 +1,63 @@
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.text.TextUtils;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import cooperation.comic.VipComicJumpActivity;
 
-class blam
-  implements baug
+public class blam
+  extends BroadcastReceiver
 {
-  private blab jdField_a_of_type_Blab;
-  private blan jdField_a_of_type_Blan;
   private String jdField_a_of_type_JavaLangString;
+  private String b;
   
-  public blam(blab paramblab, String paramString, blan paramblan)
-  {
-    this.jdField_a_of_type_Blab = paramblab;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Blan = paramblan;
-  }
+  public blam(VipComicJumpActivity paramVipComicJumpActivity) {}
   
-  public void onResp(bavf parambavf)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    long l2 = 0L;
-    if (QLog.isColorLevel()) {
-      QLog.i(blal.a(), 2, "onResp url: " + this.jdField_a_of_type_Blab.jdField_d_of_type_JavaLangString + " resultcode: " + parambavf.c);
-    }
-    if ((this.jdField_a_of_type_Blab instanceof blah)) {
-      bkuf.a((blah)this.jdField_a_of_type_Blab);
-    }
-    for (this.jdField_a_of_type_Blab.jdField_d_of_type_Boolean = true;; this.jdField_a_of_type_Blab.jdField_d_of_type_Boolean = bkzy.a(this.jdField_a_of_type_Blab))
-    {
-      this.jdField_a_of_type_Blab.jdField_e_of_type_Boolean = false;
-      if (this.jdField_a_of_type_Blan != null) {
-        this.jdField_a_of_type_Blan.a(this.jdField_a_of_type_Blab, this.jdField_a_of_type_Blab.jdField_d_of_type_Boolean);
+    this.jdField_a_of_type_JavaLangString = paramIntent.getStringExtra("pluginsdk_pluginLocation");
+    paramContext = paramIntent.getStringExtra("pluginsdk_launchReceiver");
+    String str = paramIntent.getAction();
+    if (((!TextUtils.isEmpty(str)) && ("com.tencent.mobileqq.PreLoadComicProcess".equals(str))) || ((paramContext != null) && (paramContext.equals("com.qqcomic.app.VipPreloadComicProcess")))) {
+      if (!this.jdField_a_of_type_CooperationComicVipComicJumpActivity.b)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("QQComicDebug", 2, "do handle launch activity in receiver.");
+        }
+        this.jdField_a_of_type_CooperationComicVipComicJumpActivity.jdField_a_of_type_Bkgm.removeMessages(1000);
+        this.jdField_a_of_type_CooperationComicVipComicJumpActivity.b = true;
+        this.jdField_a_of_type_CooperationComicVipComicJumpActivity.c = false;
+        this.jdField_a_of_type_CooperationComicVipComicJumpActivity.c(this.jdField_a_of_type_CooperationComicVipComicJumpActivity.jdField_a_of_type_Blak);
       }
-      if (parambavf.b == 0) {
+    }
+    while ((this.jdField_a_of_type_JavaLangString == null) || (!this.jdField_a_of_type_JavaLangString.equalsIgnoreCase("comic_plugin.apk")))
+    {
+      do
+      {
+        return;
+      } while (!QLog.isColorLevel());
+      QLog.d("QQComicDebug", 2, "skip handle launch activity in receiver.");
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("VipComicJumpActivity", 2, "LaunchCompletedObserver.onReceive: " + this.jdField_a_of_type_JavaLangString);
+    }
+    this.b = paramIntent.getStringExtra("pluginsdk_extraInfo");
+    if ((this.b != null) && ("success".equals(this.b))) {
+      this.jdField_a_of_type_CooperationComicVipComicJumpActivity.a(this.jdField_a_of_type_CooperationComicVipComicJumpActivity.jdField_a_of_type_Blak, 0);
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_CooperationComicVipComicJumpActivity.finish();
+      if (!QLog.isColorLevel()) {
         break;
       }
-      bliu.a().a(this.jdField_a_of_type_Blab.jdField_a_of_type_JavaLangString, parambavf.b, parambavf.h, 0L, this.jdField_a_of_type_Blab.jdField_e_of_type_JavaLangString);
+      QLog.d("QQComicDebug", 2, "launch activity finish, leave jump activity.");
       return;
-    }
-    if ((parambavf.b == 0) && (!this.jdField_a_of_type_Blab.jdField_d_of_type_Boolean))
-    {
-      bliu.a().a(this.jdField_a_of_type_Blab.jdField_a_of_type_JavaLangString, 1111, parambavf.h, 0L, this.jdField_a_of_type_Blab.jdField_e_of_type_JavaLangString);
-      return;
-    }
-    File localFile = new File(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Blab.f);
-    long l1 = l2;
-    if (localFile.exists())
-    {
-      l1 = l2;
-      if (localFile.isFile()) {
-        l1 = localFile.length();
+      this.jdField_a_of_type_CooperationComicVipComicJumpActivity.a(this.jdField_a_of_type_CooperationComicVipComicJumpActivity.jdField_a_of_type_Blak, -2);
+      if (QLog.isColorLevel()) {
+        QLog.d("VipComicJumpActivity", 2, "LaunchCompletedObserver.onReceive mExtraInfo: " + this.b);
       }
-    }
-    bliu.a().a(this.jdField_a_of_type_Blab.jdField_a_of_type_JavaLangString, parambavf.b, parambavf.h, l1, this.jdField_a_of_type_Blab.jdField_e_of_type_JavaLangString);
-  }
-  
-  public void onUpdateProgeress(bave parambave, long paramLong1, long paramLong2)
-  {
-    this.jdField_a_of_type_Blab.b = paramLong2;
-    this.jdField_a_of_type_Blab.jdField_e_of_type_Int = ((int)(100L * paramLong1 / paramLong2));
-    if (this.jdField_a_of_type_Blan != null) {
-      this.jdField_a_of_type_Blan.a(this.jdField_a_of_type_Blab, this.jdField_a_of_type_Blab.jdField_e_of_type_Int);
     }
   }
 }

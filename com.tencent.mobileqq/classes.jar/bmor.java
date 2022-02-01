@@ -1,33 +1,207 @@
 import android.app.Activity;
-import android.content.Context;
-import android.content.DialogInterface.OnDismissListener;
 import android.content.Intent;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.view.View;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.webview.swift.JsBridgeListener;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
-public abstract interface bmor
+public class bmor
+  extends bmmk
 {
-  @NonNull
-  public abstract Context a();
+  private String a;
   
-  public abstract Intent a(bnaz parambnaz);
+  public bmor()
+  {
+    this.jdField_a_of_type_JavaLangString = bmor.class.getSimpleName();
+  }
   
-  @NonNull
-  public abstract View a();
+  private void a(bhod parambhod, String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {}
+    for (;;)
+    {
+      return;
+      try
+      {
+        if (new JSONObject(paramString).getInt("result") == 1)
+        {
+          bcbv.a(0, parambhod.a().getLongAccountUin());
+          return;
+        }
+      }
+      catch (Throwable parambhod)
+      {
+        QLog.e(this.jdField_a_of_type_JavaLangString, 1, "handleCancellationStatus... e:", parambhod);
+      }
+    }
+  }
   
-  public abstract void a(int paramInt1, @Nullable Intent paramIntent, int paramInt2, int paramInt3);
+  private void a(String paramString)
+  {
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime.a();
+    if ((localObject == null) || (((Activity)localObject).isFinishing()) || (TextUtils.isEmpty(paramString))) {}
+    do
+    {
+      do
+      {
+        return;
+        localObject = ((Activity)localObject).getIntent();
+      } while (localObject == null);
+      localObject = ((Intent)localObject).getExtras();
+    } while (localObject == null);
+    localObject = bmos.a((Bundle)localObject);
+    this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.callJs(paramString, new String[] { localObject });
+  }
   
-  public abstract void a(int paramInt1, @Nullable Intent paramIntent, int paramInt2, int paramInt3, boolean paramBoolean);
+  private void a(String paramString1, String paramString2)
+  {
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime.a();
+    if ((localObject == null) || (((Activity)localObject).isFinishing())) {}
+    Intent localIntent;
+    do
+    {
+      return;
+      localIntent = new Intent();
+      localIntent.putExtras(bmos.b(localIntent.getExtras(), paramString1));
+      ((Activity)localObject).setResult(-1, localIntent);
+    } while (TextUtils.isEmpty(paramString2));
+    localObject = localIntent.getStringExtra("key_parse_json_status");
+    paramString1 = "{\"ret\":0, \"msg\":\"sucess\"}";
+    if (!TextUtils.isEmpty((CharSequence)localObject)) {
+      paramString1 = "{\"ret\":-1, \"msg\":\"" + (String)localObject + "\"}";
+    }
+    this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.callJs(paramString2, new String[] { paramString1 });
+  }
   
-  public abstract void a(CharSequence paramCharSequence, boolean paramBoolean, long paramLong);
+  private void b(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      return;
+    }
+    try
+    {
+      paramString = new JSONObject(paramString);
+      String str1 = paramString.getString("type");
+      String str2 = paramString.getString("value");
+      long l = paramString.getLong("uin");
+      paramString.getString("callback");
+      bmfd.a().a().a(str1, str2, l);
+      return;
+    }
+    catch (Throwable paramString)
+    {
+      QLog.e(this.jdField_a_of_type_JavaLangString, 1, "error process friend setting json string.", paramString);
+    }
+  }
   
-  public abstract void a(CharSequence paramCharSequence, boolean paramBoolean, long paramLong, DialogInterface.OnDismissListener paramOnDismissListener);
+  private void b(String paramString1, String paramString2)
+  {
+    paramString1 = this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime.a();
+    if ((paramString1 == null) || (paramString1.isFinishing()) || (TextUtils.isEmpty(paramString2))) {}
+    do
+    {
+      do
+      {
+        return;
+        paramString1 = paramString1.getIntent();
+      } while (paramString1 == null);
+      paramString1 = paramString1.getExtras();
+    } while (paramString1 == null);
+    paramString1 = bmos.b(paramString1);
+    this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.callJs(paramString2, new String[] { paramString1 });
+  }
   
-  public abstract void b();
+  private void c(String paramString1, String paramString2)
+  {
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime.a();
+    if ((localObject == null) || (((Activity)localObject).isFinishing())) {}
+    Intent localIntent;
+    do
+    {
+      return;
+      localIntent = new Intent();
+      localIntent.putExtras(bmos.a(localIntent.getExtras(), paramString1));
+      ((Activity)localObject).setResult(-1, localIntent);
+    } while (TextUtils.isEmpty(paramString2));
+    localObject = localIntent.getStringExtra("key_parse_json_status");
+    paramString1 = "{\"ret\":0, \"msg\":\"sucess\"}";
+    if (!TextUtils.isEmpty((CharSequence)localObject)) {
+      paramString1 = "{\"ret\":-1, \"msg\":\"" + (String)localObject + "\"}";
+    }
+    this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.callJs(paramString2, new String[] { paramString1 });
+  }
   
-  @Nullable
-  public abstract Activity getActivity();
+  public boolean a(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  {
+    if ((!paramString2.equals("Qzone")) || (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin == null) || (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime == null)) {
+      return false;
+    }
+    if ((paramString3.equals("getUgcSetting")) && (paramVarArgs != null) && (paramVarArgs.length >= 1)) {
+      try
+      {
+        a(new JSONObject(paramVarArgs[0]).optString("callback"));
+        return true;
+      }
+      catch (Exception paramJsBridgeListener)
+      {
+        paramJsBridgeListener.printStackTrace();
+        return true;
+      }
+    }
+    if ((paramString3.equals("setUgcSetting")) && (paramVarArgs != null) && (paramVarArgs.length >= 1)) {
+      try
+      {
+        paramJsBridgeListener = new JSONObject(paramVarArgs[0]);
+        c(paramVarArgs[0], paramJsBridgeListener.optString("callback"));
+        return true;
+      }
+      catch (Exception paramJsBridgeListener)
+      {
+        paramJsBridgeListener.printStackTrace();
+        return true;
+      }
+    }
+    if ((paramString3.equals("getLiveUgcSetting")) && (paramVarArgs != null) && (paramVarArgs.length >= 1)) {
+      try
+      {
+        paramJsBridgeListener = new JSONObject(paramVarArgs[0]);
+        b(paramVarArgs[0], paramJsBridgeListener.optString("callback"));
+        return true;
+      }
+      catch (Exception paramJsBridgeListener)
+      {
+        paramJsBridgeListener.printStackTrace();
+        return true;
+      }
+    }
+    if ((paramString3.equals("setLiveUgcSetting")) && (paramVarArgs != null) && (paramVarArgs.length >= 1)) {
+      try
+      {
+        paramJsBridgeListener = new JSONObject(paramVarArgs[0]);
+        a(paramVarArgs[0], paramJsBridgeListener.optString("callback"));
+        return true;
+      }
+      catch (Exception paramJsBridgeListener)
+      {
+        paramJsBridgeListener.printStackTrace();
+        return true;
+      }
+    }
+    if ((paramString3.equals("UpdateFriendSetting")) && (paramVarArgs != null) && (paramVarArgs.length >= 1))
+    {
+      b(paramVarArgs[0]);
+      return true;
+    }
+    if ((paramString3.equals("reopenQzone")) && (paramVarArgs != null) && (paramVarArgs.length >= 1))
+    {
+      a(this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime, paramVarArgs[0]);
+      return true;
+    }
+    return false;
+  }
 }
 
 

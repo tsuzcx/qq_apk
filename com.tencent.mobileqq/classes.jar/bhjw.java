@@ -1,28 +1,20 @@
-import android.widget.NumberPicker;
-import android.widget.NumberPicker.OnValueChangeListener;
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnCompletionListener;
+import android.widget.VideoView;
 
-class bhjw
-  implements NumberPicker.OnValueChangeListener
+final class bhjw
+  implements MediaPlayer.OnCompletionListener
 {
-  private int jdField_a_of_type_Int;
+  bhjw(VideoView paramVideoView) {}
   
-  public bhjw(bhjv parambhjv, int paramInt)
+  public void onCompletion(MediaPlayer paramMediaPlayer)
   {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void onValueChange(NumberPicker paramNumberPicker, int paramInt1, int paramInt2)
-  {
-    if ((bhjv.a(this.jdField_a_of_type_Bhjv) != null) && (bhjv.a(this.jdField_a_of_type_Bhjv).length > this.jdField_a_of_type_Int))
-    {
-      bhjv.a(this.jdField_a_of_type_Bhjv)[this.jdField_a_of_type_Int] = paramInt2;
-      bhjv.a(this.jdField_a_of_type_Bhjv).onValChange(this.jdField_a_of_type_Int, paramInt2);
-    }
+    this.a.start();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bhjw
  * JD-Core Version:    0.7.0.1
  */

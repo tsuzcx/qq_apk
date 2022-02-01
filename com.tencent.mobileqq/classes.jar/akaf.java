@@ -1,18 +1,29 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
-import java.util.ArrayList;
+import android.app.Activity;
+import android.content.Intent;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.activity.miniaio.MiniMsgTabFragment;
 
-public class akaf
-  implements DialogInterface.OnClickListener
+class akaf
+  implements Animation.AnimationListener
 {
-  public akaf(SelectMemberActivity paramSelectMemberActivity, ArrayList paramArrayList) {}
+  akaf(akae paramakae, Activity paramActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.a(this.jdField_a_of_type_JavaUtilArrayList);
-    paramDialogInterface.dismiss();
+    if ((this.jdField_a_of_type_Akae.a.a.getCount() == 1) && (!MiniMsgTabFragment.b(this.jdField_a_of_type_Akae.a)))
+    {
+      paramAnimation = MiniMsgTabFragment.a(this.jdField_a_of_type_Akae.a);
+      paramAnimation.putExtra("miniAppID", MiniMsgTabFragment.a(this.jdField_a_of_type_Akae.a));
+      paramAnimation.putExtra("clickID", -1);
+      this.jdField_a_of_type_AndroidAppActivity.setResult(-1, paramAnimation);
+      this.jdField_a_of_type_AndroidAppActivity.finish();
+    }
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

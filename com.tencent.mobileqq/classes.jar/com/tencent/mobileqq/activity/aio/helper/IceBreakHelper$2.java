@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.activity.aio.helper;
 
-import affb;
+import agmb;
 
 public class IceBreakHelper$2
   implements Runnable
 {
-  public IceBreakHelper$2(affb paramaffb) {}
+  public IceBreakHelper$2(agmb paramagmb) {}
   
   public void run()
   {
@@ -14,7 +14,7 @@ public class IceBreakHelper$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.helper.IceBreakHelper.2
  * JD-Core Version:    0.7.0.1
  */

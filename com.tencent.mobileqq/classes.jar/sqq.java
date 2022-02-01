@@ -1,21 +1,22 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.viola.videonew.VVideoView;
+import android.content.Intent;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup;
 
-class sqq
-  extends AnimatorListenerAdapter
+public class sqq
+  extends pue
 {
-  sqq(sqo paramsqo, VVideoView paramVVideoView, View paramView) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
+  public sqq(ReadInJoyListViewGroup paramReadInJoyListViewGroup, String paramString, int paramInt1, int paramInt2, Intent paramIntent)
   {
-    sqo.a(this.jdField_a_of_type_Sqo, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaVideonewVVideoView, this.jdField_a_of_type_AndroidViewView);
+    super(paramString);
+  }
+  
+  public void a(ptx paramptx)
+  {
+    paramptx.a(this.jdField_a_of_type_Int, this.b, this.jdField_a_of_type_AndroidContentIntent);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     sqq
  * JD-Core Version:    0.7.0.1
  */

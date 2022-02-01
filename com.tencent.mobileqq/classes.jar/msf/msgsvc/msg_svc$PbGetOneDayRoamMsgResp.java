@@ -23,7 +23,7 @@ public final class msg_svc$PbGetOneDayRoamMsgResp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     msf.msgsvc.msg_svc.PbGetOneDayRoamMsgResp
  * JD-Core Version:    0.7.0.1
  */

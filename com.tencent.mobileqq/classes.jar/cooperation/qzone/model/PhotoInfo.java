@@ -1,24 +1,24 @@
 package cooperation.qzone.model;
 
 import NS_FASHION_FEEDS_TAG_PROTO.TagInfo;
+import abgb;
 import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import bjla;
-import bjum;
+import blzj;
+import bmiw;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import mqq.util.WeakReference;
-import zjd;
 
 public class PhotoInfo
-  extends zjd
+  extends abgb
   implements Parcelable
 {
-  public static final Parcelable.Creator<PhotoInfo> CREATOR = new bjla();
+  public static final Parcelable.Creator<PhotoInfo> CREATOR = new blzj();
   public static int l;
   public static int m;
   public static int n;
@@ -180,7 +180,7 @@ public class PhotoInfo
   
   public boolean b()
   {
-    if (!bjum.a().b()) {}
+    if (!bmiw.a().b()) {}
     while ((this.jdField_i_of_type_Int != 32) && (this.jdField_i_of_type_Int != 16)) {
       return false;
     }
@@ -344,7 +344,7 @@ public class PhotoInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.qzone.model.PhotoInfo
  * JD-Core Version:    0.7.0.1
  */

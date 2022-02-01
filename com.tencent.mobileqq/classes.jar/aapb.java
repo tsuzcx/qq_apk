@@ -1,52 +1,39 @@
-import android.app.Activity;
-import com.tencent.gdtad.api.motivevideo.GdtDemoMvFragment;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.biz.troop.VideoCombineHelper.2;
 import com.tencent.qphone.base.util.QLog;
 
 public class aapb
-  implements aane
+  extends aapz
 {
-  private Activity jdField_a_of_type_AndroidAppActivity;
-  
-  public aapb(GdtDemoMvFragment paramGdtDemoMvFragment, Activity paramActivity)
+  public aapb(VideoCombineHelper.2 param2)
   {
-    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
+    super(param2.this$0);
   }
   
-  private long a(com.tencent.gdtad.api.GdtAd paramGdtAd)
+  public void a(aapy paramaapy)
   {
-    if ((paramGdtAd != null) && (paramGdtAd.getAd() != null)) {
-      return paramGdtAd.getAd().getAId();
+    if ((paramaapy instanceof aapt)) {
+      this.a.jdField_a_of_type_Aapi.a("", false, "download failed! msg = " + paramaapy.d);
     }
-    return -2147483648L;
+    do
+    {
+      return;
+      if ((paramaapy instanceof aapl))
+      {
+        this.a.jdField_a_of_type_Aapi.a("", false, "combine failed! msg = " + paramaapy.d);
+        return;
+      }
+    } while (!(paramaapy instanceof aapw));
+    this.a.jdField_a_of_type_Aapi.a("", false, "sending failed! msg = " + paramaapy.d);
   }
   
-  public void a(com.tencent.gdtad.api.GdtAd paramGdtAd)
+  public void b(aapy paramaapy)
   {
-    GdtDemoMvFragment.a(this.jdField_a_of_type_ComTencentGdtadApiMotivevideoGdtDemoMvFragment, paramGdtAd);
-    QQToast.a(this.jdField_a_of_type_AndroidAppActivity, "demo数据构造成功", 0).a();
-    QLog.i("GdtMotiveVideoAd", 1, String.format("onAdLoaded %d", new Object[] { Long.valueOf(a(paramGdtAd)) }));
-    aana.a().a(paramGdtAd.getAd());
-  }
-  
-  public void a(com.tencent.gdtad.api.GdtAd paramGdtAd, aand paramaand)
-  {
-    QLog.e("GdtMotiveVideoAd", 1, "onAdFailedToLoad " + paramaand.a());
-  }
-  
-  public void b(com.tencent.gdtad.api.GdtAd paramGdtAd)
-  {
-    QLog.i("GdtMotiveVideoAd", 1, String.format("onAdImpression %d", new Object[] { Long.valueOf(a(paramGdtAd)) }));
-  }
-  
-  public void c(com.tencent.gdtad.api.GdtAd paramGdtAd)
-  {
-    QLog.i("GdtMotiveVideoAd", 1, String.format("onAdClicked %d", new Object[] { Long.valueOf(a(paramGdtAd)) }));
-  }
-  
-  public void d(com.tencent.gdtad.api.GdtAd paramGdtAd)
-  {
-    QLog.i("GdtMotiveVideoAd", 1, String.format("onAdClosed %d", new Object[] { Long.valueOf(a(paramGdtAd)) }));
+    if ((paramaapy instanceof aapw))
+    {
+      paramaapy = paramaapy.a();
+      this.a.jdField_a_of_type_Aapi.a(paramaapy.e, true, "seding success");
+      QLog.d(".troop.trace_video_combine", 2, "totalTime = " + (System.currentTimeMillis() - this.a.jdField_a_of_type_Long));
+    }
   }
 }
 

@@ -1,95 +1,91 @@
-import com.tencent.biz.pubaccount.readinjoy.proteus.view.impl.NativeGridImageView;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
-import com.tencent.qphone.base.util.QLog;
-import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
+import android.content.Context;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
+import android.net.wifi.WifiInfo;
+import android.net.wifi.WifiManager;
+import java.net.Inet4Address;
+import java.net.InetAddress;
+import java.net.NetworkInterface;
+import java.net.SocketException;
+import java.util.Enumeration;
 
 public class ptj
 {
-  private List<rxv> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private List<URL> b = new ArrayList();
-  
-  public ptj(NativeGridImageView paramNativeGridImageView, ArticleInfo paramArticleInfo)
+  public static String a()
   {
-    int i;
-    if ((paramArticleInfo != null) && (paramArticleInfo.mSocialFeedInfo != null) && (paramArticleInfo.mSocialFeedInfo.a != null) && (paramArticleInfo.mSocialFeedInfo.a.a != null) && (paramArticleInfo.mSocialFeedInfo.a.a.size() > 0))
+    try
     {
-      paramArticleInfo = paramArticleInfo.mSocialFeedInfo.a.a;
-      i = 0;
+      InetAddress localInetAddress;
+      do
+      {
+        localObject = NetworkInterface.getNetworkInterfaces();
+        Enumeration localEnumeration;
+        while (!localEnumeration.hasMoreElements())
+        {
+          if (!((Enumeration)localObject).hasMoreElements()) {
+            break;
+          }
+          localEnumeration = ((NetworkInterface)((Enumeration)localObject).nextElement()).getInetAddresses();
+        }
+        localInetAddress = (InetAddress)localEnumeration.nextElement();
+      } while ((localInetAddress.isLoopbackAddress()) || (!(localInetAddress instanceof Inet4Address)));
+      Object localObject = localInetAddress.getHostAddress();
+      return localObject;
     }
-    for (;;)
+    catch (SocketException localSocketException) {}
+    return "0.0.0.0";
+  }
+  
+  protected static String a(int paramInt)
+  {
+    return (paramInt & 0xFF) + "." + (paramInt >> 8 & 0xFF) + "." + (paramInt >> 16 & 0xFF) + "." + (paramInt >> 24 & 0xFF);
+  }
+  
+  public static String a(Context paramContext)
+  {
+    Object localObject = ((ConnectivityManager)paramContext.getSystemService("connectivity")).getActiveNetworkInfo();
+    if ((localObject != null) && (((NetworkInfo)localObject).isConnected()))
     {
-      if (i < paramArticleInfo.size()) {}
+      if (((NetworkInfo)localObject).getType() != 0) {
+        break label104;
+      }
       try
       {
-        int j = this.jdField_a_of_type_JavaUtilList.size();
-        if (j >= 9)
+        InetAddress localInetAddress;
+        do
         {
-          if (this.jdField_a_of_type_JavaUtilList.size() == 1) {
-            ((rxv)this.jdField_a_of_type_JavaUtilList.get(0)).a(true);
-          }
-          return;
-        }
-        if ((((qms)paramArticleInfo.get(i)).jdField_b_of_type_JavaLangString != null) || (((qms)paramArticleInfo.get(i)).jdField_c_of_type_JavaLangString != null))
-        {
-          Object localObject;
-          label255:
-          int k;
-          if (((qms)paramArticleInfo.get(i)).jdField_b_of_type_JavaLangString != null)
+          paramContext = NetworkInterface.getNetworkInterfaces();
+          while (!((Enumeration)localObject).hasMoreElements())
           {
-            paramNativeGridImageView = ((qms)paramArticleInfo.get(i)).jdField_b_of_type_JavaLangString;
-            localObject = new URL(paramNativeGridImageView);
-            if (((qms)paramArticleInfo.get(i)).jdField_c_of_type_JavaLangString == null) {
-              break label374;
+            if (!paramContext.hasMoreElements()) {
+              break;
             }
-            paramNativeGridImageView = ((qms)paramArticleInfo.get(i)).jdField_c_of_type_JavaLangString;
-            paramNativeGridImageView = new URL(paramNativeGridImageView);
-            this.b.add(localObject);
-            localObject = this.jdField_a_of_type_JavaUtilList;
-            j = ((qms)paramArticleInfo.get(i)).a;
-            k = ((qms)paramArticleInfo.get(i)).jdField_b_of_type_Int;
-            if (((qms)paramArticleInfo.get(i)).jdField_c_of_type_Int != 1) {
-              break label391;
-            }
+            localObject = ((NetworkInterface)paramContext.nextElement()).getInetAddresses();
           }
-          label391:
-          for (boolean bool = true;; bool = false)
-          {
-            ((List)localObject).add(new rxv(j, k, paramNativeGridImageView, bool));
-            break label410;
-            paramNativeGridImageView = ((qms)paramArticleInfo.get(i)).jdField_c_of_type_JavaLangString;
-            break;
-            label374:
-            paramNativeGridImageView = ((qms)paramArticleInfo.get(i)).jdField_b_of_type_JavaLangString;
-            break label255;
-          }
-        }
+          localInetAddress = (InetAddress)((Enumeration)localObject).nextElement();
+        } while ((localInetAddress.isLoopbackAddress()) || (!(localInetAddress instanceof Inet4Address)));
+        paramContext = localInetAddress.getHostAddress();
+        return paramContext;
       }
-      catch (Exception paramNativeGridImageView)
+      catch (SocketException paramContext)
       {
-        paramNativeGridImageView.printStackTrace();
-        QLog.d("Proteus.NativeGridImageView", 1, "GridImageModel exception.");
-        label410:
-        i += 1;
+        paramContext.printStackTrace();
       }
     }
-  }
-  
-  public List<rxv> a()
-  {
-    return this.jdField_a_of_type_JavaUtilList;
-  }
-  
-  public List<URL> b()
-  {
-    return this.b;
+    label104:
+    do
+    {
+      return null;
+      if (((NetworkInfo)localObject).getType() == 1) {
+        return a(((WifiManager)paramContext.getSystemService("wifi")).getConnectionInfo().getIpAddress());
+      }
+    } while (((NetworkInfo)localObject).getType() != 9);
+    return a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     ptj
  * JD-Core Version:    0.7.0.1
  */

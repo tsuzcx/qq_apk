@@ -28,7 +28,7 @@ class QQLSActivity$15
         }
         QQLSActivity.a(this.this$0, 1);
       }
-      QQLSActivity.a(this.this$0, AnimationUtils.loadAnimation(this.this$0, 2130772226));
+      QQLSActivity.a(this.this$0, AnimationUtils.loadAnimation(this.this$0, 2130772235));
       QQLSActivity.a(this.this$0).setFillAfter(true);
       if (QLog.isColorLevel()) {
         QLog.d("QQLSActivity", 2, "registerScreenListener");
@@ -47,7 +47,7 @@ class QQLSActivity$15
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.QQLSActivity.15
  * JD-Core Version:    0.7.0.1
  */

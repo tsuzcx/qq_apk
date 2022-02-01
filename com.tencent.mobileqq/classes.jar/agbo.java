@@ -1,16 +1,44 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.mobileqq.activity.aio.item.SixCombolEffectView;
+import android.graphics.Matrix;
+import android.view.animation.Animation;
+import android.view.animation.Transformation;
 
-public class agbo
-  implements ValueAnimator.AnimatorUpdateListener
+class agbo
+  extends Animation
 {
-  public agbo(SixCombolEffectView paramSixCombolEffectView, agbz paramagbz) {}
+  private float jdField_a_of_type_Float;
+  private float b;
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  agbo(agbk paramagbk) {}
+  
+  protected void applyTransformation(float paramFloat, Transformation paramTransformation)
   {
-    this.jdField_a_of_type_Agbz.b = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemSixCombolEffectView.invalidate();
+    float f2 = 1.5F;
+    float f1 = 0.0F;
+    if (paramFloat < this.jdField_a_of_type_Agbk.jdField_a_of_type_Float * 5.0F) {
+      paramFloat = f2;
+    }
+    for (;;)
+    {
+      paramTransformation.setAlpha(f1);
+      paramTransformation.getMatrix().setScale(paramFloat, paramFloat, this.jdField_a_of_type_Float, this.b);
+      return;
+      if (paramFloat < 13.0F * this.jdField_a_of_type_Agbk.jdField_a_of_type_Float)
+      {
+        f1 = 0.5F - (paramFloat - this.jdField_a_of_type_Agbk.jdField_a_of_type_Float * 5.0F) / (this.jdField_a_of_type_Agbk.jdField_a_of_type_Float * 8.0F) * 0.5F;
+        paramFloat = 1.5F + (paramFloat - this.jdField_a_of_type_Agbk.jdField_a_of_type_Float * 5.0F) / (this.jdField_a_of_type_Agbk.jdField_a_of_type_Float * 8.0F) * 0.5F;
+      }
+      else
+      {
+        paramFloat = 2.0F;
+      }
+    }
+  }
+  
+  public void initialize(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    super.initialize(paramInt1, paramInt2, paramInt3, paramInt4);
+    this.jdField_a_of_type_Float = (paramInt1 * 0.5F);
+    this.b = (paramInt2 * 0.5F);
   }
 }
 

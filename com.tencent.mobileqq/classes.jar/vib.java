@@ -1,25 +1,19 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspWatchVideo;
-import com.tencent.mobileqq.pb.PBUInt32Field;
+import feedcloud.FeedCloudMeta.StFeed;
+import feedcloud.FeedCloudRead.StGetCommentListRsp;
 
-public class vib
-  extends uro
+class vib
+  implements zxa<FeedCloudRead.StGetCommentListRsp>
 {
-  public int b;
+  vib(vhu paramvhu, int paramInt, FeedCloudMeta.StFeed paramStFeed, boolean paramBoolean) {}
   
-  public vib(qqstory_service.RspWatchVideo paramRspWatchVideo)
+  public void a(boolean paramBoolean, long paramLong, String paramString, FeedCloudRead.StGetCommentListRsp paramStGetCommentListRsp)
   {
-    super(paramRspWatchVideo.result);
-    this.b = paramRspWatchVideo.unread_count.get();
-  }
-  
-  public String toString()
-  {
-    return "WatchVideoResponse{unReadCount=" + this.b + '}';
+    vhu.a(this.jdField_a_of_type_Vhu, this.jdField_a_of_type_Int, paramBoolean, paramLong, paramString, paramStGetCommentListRsp, this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed, this.jdField_a_of_type_Boolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     vib
  * JD-Core Version:    0.7.0.1
  */

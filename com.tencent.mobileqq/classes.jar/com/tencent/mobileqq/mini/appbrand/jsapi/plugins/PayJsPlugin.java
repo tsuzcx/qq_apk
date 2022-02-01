@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.mini.appbrand.jsapi.plugins;
 
+import NS_COMM.COMM.Entry;
 import NS_COMM.COMM.StCommonExt;
-import alud;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -11,28 +11,41 @@ import android.os.Handler;
 import android.os.Looper;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
-import bflr;
+import android.webkit.URLUtil;
+import anni;
+import bita;
 import com.tencent.mobileqq.activity.PayBridgeActivity;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.activity.QQTranslucentBrowserActivity;
 import com.tencent.mobileqq.mini.MiniAppInterface;
+import com.tencent.mobileqq.mini.apkg.ApkgInfo;
 import com.tencent.mobileqq.mini.apkg.MiniAppConfig;
 import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
 import com.tencent.mobileqq.mini.app.AppLoaderFactory;
 import com.tencent.mobileqq.mini.app.BaseAppLoaderManager;
 import com.tencent.mobileqq.mini.appbrand.BaseAppBrandRuntime;
+import com.tencent.mobileqq.mini.appbrand.ui.MiniAppWebviewFragment;
 import com.tencent.mobileqq.mini.appbrand.utils.AppBrandTask;
+import com.tencent.mobileqq.mini.appbrand.utils.MiniAppFileManager;
 import com.tencent.mobileqq.mini.appbrand.utils.MiniLog;
 import com.tencent.mobileqq.mini.reuse.MiniAppCmdUtil;
 import com.tencent.mobileqq.mini.sdk.BridgeInfo;
+import com.tencent.mobileqq.mini.sdk.LaunchParam;
 import com.tencent.mobileqq.mini.sdk.MiniAppController;
 import com.tencent.mobileqq.mini.webview.JsRuntime;
 import com.tencent.mobileqq.minigame.manager.GameInfoManager;
 import com.tencent.mobileqq.minigame.manager.GameRuntimeLoader;
 import com.tencent.mobileqq.minigame.manager.GameRuntimeLoaderManager;
 import com.tencent.mobileqq.minigame.ui.GameActivity;
+import com.tencent.mobileqq.minigame.utils.GameWnsUtils;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import common.config.service.QzoneConfig;
+import java.io.File;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 import org.json.JSONException;
@@ -154,6 +167,94 @@ public class PayJsPlugin
     }
   }
   
+  private void handlePayByFriend(String paramString1, String paramString2, JsRuntime paramJsRuntime, int paramInt)
+  {
+    int i;
+    try
+    {
+      paramJsRuntime = new JSONObject(paramString1);
+      localObject2 = paramJsRuntime.getString("prepayId");
+      i = paramJsRuntime.optInt("setEnv", 0);
+      paramString1 = paramJsRuntime.optString("title");
+      localObject1 = paramJsRuntime.optString("imageUrl");
+      paramJsRuntime = paramString1;
+      if (TextUtils.isEmpty(paramString1)) {
+        paramJsRuntime = GameWnsUtils.defaultPayShareTitle();
+      }
+      paramString1 = (String)localObject1;
+      if (TextUtils.isEmpty((CharSequence)localObject1)) {
+        paramString1 = GameWnsUtils.defaultPayShareImg();
+      }
+      localObject1 = new COMM.StCommonExt();
+      COMM.Entry localEntry = new COMM.Entry();
+      localEntry.key.set("prepay_id");
+      localEntry.value.set((String)localObject2);
+      ((COMM.StCommonExt)localObject1).mapInfo.get().add(localEntry);
+      localObject2 = new COMM.Entry();
+      ((COMM.Entry)localObject2).key.set("set_env");
+      ((COMM.Entry)localObject2).value.set(i + "");
+      ((COMM.StCommonExt)localObject1).mapInfo.get().add(localObject2);
+      if (URLUtil.isHttpUrl(paramString1)) {
+        break label439;
+      }
+      if (!URLUtil.isHttpsUrl(paramString1)) {
+        break label445;
+      }
+    }
+    catch (JSONException paramString1)
+    {
+      Object localObject2;
+      Object localObject1;
+      QLog.e("PayJsPlugin", 1, paramString2 + " error.", paramString1);
+      handleNativeResponseFail(paramInt, paramString2, null, "");
+      return;
+    }
+    if ((this.jsPluginEngine != null) && (this.jsPluginEngine.appBrandRuntime != null) && (!TextUtils.isEmpty(paramString1)) && (new File(MiniAppFileManager.getInstance().getAbsolutePath(paramString1)).exists())) {}
+    for (int j = 1;; j = 0)
+    {
+      if ((isMiniGameRuntime()) && (getGameBrandRuntime() != null))
+      {
+        getGameBrandRuntime().shareEvent = paramString2;
+        getGameBrandRuntime().shareCallbackId = paramInt;
+      }
+      if (i == 0) {
+        if (j != 0)
+        {
+          localObject2 = MiniAppFileManager.getInstance().getAbsolutePath(paramString1);
+          this.jsPluginEngine.appBrandRuntime.startShare(paramJsRuntime, (String)localObject2, "", "", "", "", null, null, 13, 0, "", 4, (COMM.StCommonExt)localObject1, new PayJsPlugin.6(this, paramInt, paramString2));
+        }
+      }
+      for (;;)
+      {
+        this.jsPluginEngine.appBrandRuntime.startShare(paramJsRuntime, paramString1, "", "", "", "", null, null, 13, 0, "", 4, (COMM.StCommonExt)localObject1, new PayJsPlugin.7(this, paramInt, paramString2));
+        return;
+        paramString1 = GameWnsUtils.defaultPayShareImg();
+      }
+      label439:
+      i = 1;
+      break;
+      label445:
+      i = 0;
+      break;
+    }
+  }
+  
+  private void handlePayCoinByH5(String paramString1, String paramString2, JsRuntime paramJsRuntime, int paramInt)
+  {
+    try
+    {
+      paramString1 = new JSONObject(paramString1);
+      String str = paramString1.getString("offerId");
+      MiniAppCmdUtil.getInstance().checkOfferId(this.jsPluginEngine.appBrandRuntime.appId, str, null, new PayJsPlugin.5(this, paramString1, paramJsRuntime, paramString2, paramInt));
+      return;
+    }
+    catch (JSONException paramString1)
+    {
+      QLog.e("PayJsPlugin", 1, paramString2 + " error.", paramString1);
+      handleNativeResponseFail(paramInt, paramString2, null, "");
+    }
+  }
+  
   private void handleQQPay(Activity paramActivity, String paramString1, String paramString2, JSONObject paramJSONObject, int paramInt)
   {
     String str1 = paramJSONObject.optString("prepayId", "");
@@ -181,6 +282,107 @@ public class PayJsPlugin
       }
       return;
       paramString1 = paramJSONObject;
+    }
+  }
+  
+  private void handleWxPayment(String paramString1, String paramString2, JsRuntime paramJsRuntime, int paramInt)
+  {
+    Object localObject;
+    try
+    {
+      localObject = new JSONObject(paramString2);
+      paramString2 = ((JSONObject)localObject).optString("url");
+      localObject = ((JSONObject)localObject).optString("referer");
+      QLog.i("PayJsPlugin", 2, "handleWxPayment, url=" + paramString2);
+      if ((TextUtils.isEmpty(paramString2)) || (TextUtils.isEmpty((CharSequence)localObject)))
+      {
+        handleNativeResponseFail(paramInt, paramString1, null, "url or referer is empty, please check!");
+        QLog.i("PayJsPlugin", 1, "handleWxPayment, url=" + paramString2 + ", referer=" + (String)localObject);
+        return;
+      }
+      if ((!URLUtil.isHttpsUrl(paramString2)) && (!URLUtil.isHttpUrl(paramString2)))
+      {
+        handleNativeResponseFail(paramInt, paramString1, null, "url is not http url, please check!");
+        QLog.i("PayJsPlugin", 1, "handleWxPayment, url=" + paramString2);
+        return;
+      }
+    }
+    catch (Exception paramString2)
+    {
+      QLog.i("PayJsPlugin", 1, "handleWxPayment error", paramString2);
+      handleNativeResponseFail(paramInt, paramString1, null, "");
+      return;
+    }
+    String str = this.jsPluginEngine.appBrandRuntime.appId;
+    MiniAppCmdUtil.getInstance().checkWxPayUrl(str, paramString2, new PayJsPlugin.8(this, paramString2, (String)localObject, paramJsRuntime, paramString1, paramInt));
+  }
+  
+  private String processPayByH5Param(JSONObject paramJSONObject)
+  {
+    String str2 = QzoneConfig.getInstance().getConfig("qqminiapp", "mini_game_pay_by_h5_url", "https://h5.qzone.qq.com/miniapp/act/midasPay?offerId={offerId}&prepayId={prepayId}&starCurrency={starCurrency}&setEnv={setEnv}&appid={appid}&zoneId={zoneId}&buyQuantity={buyQuantity}&isCanChange={isCanChange}&currencyType={currencyType}&platform={platform}&remark={remark}&numberVisible={numberVisible}&other={other}&acctType={acctType}&firstRefer={firstRefer}&firstVia={firstVia}&refer={refer}&via={via}&_proxy=1&_wv=17301504&_wwv=1");
+    if (((this.jsPluginEngine.getActivityContext() instanceof GameActivity)) && (((GameActivity)this.jsPluginEngine.getActivityContext()).getIsOrientationLandscape())) {
+      str2 = QzoneConfig.getInstance().getConfig("qqminiapp", "mini_game_pay_by_h5_url_landscape", "https://h5.qzone.qq.com/miniapp/act/midasPay?offerId={offerId}&prepayId={prepayId}&starCurrency={starCurrency}&setEnv={setEnv}&appid={appid}&zoneId={zoneId}&buyQuantity={buyQuantity}&isCanChange={isCanChange}&currencyType={currencyType}&platform={platform}&remark={remark}&numberVisible={numberVisible}&other={other}&acctType={acctType}&firstRefer={firstRefer}&firstVia={firstVia}&refer={refer}&via={via}&_proxy=1&_wv=17303552&_wwv=1");
+    }
+    for (;;)
+    {
+      Object localObject2 = "";
+      String str1 = "";
+      Object localObject1 = localObject2;
+      if (this.jsPluginEngine != null)
+      {
+        localObject1 = localObject2;
+        if (this.jsPluginEngine.appBrandRuntime != null)
+        {
+          localObject1 = localObject2;
+          if (this.jsPluginEngine.appBrandRuntime.getApkgInfo() != null)
+          {
+            localObject1 = localObject2;
+            if (this.jsPluginEngine.appBrandRuntime.getApkgInfo().appConfig != null)
+            {
+              localObject1 = localObject2;
+              if (this.jsPluginEngine.appBrandRuntime.getApkgInfo().appConfig.launchParam != null) {
+                localObject1 = String.valueOf(this.jsPluginEngine.appBrandRuntime.getApkgInfo().appConfig.launchParam.scene);
+              }
+            }
+          }
+        }
+      }
+      localObject2 = this.jsPluginEngine.getAppInfo();
+      if (localObject2 != null) {
+        str1 = ((MiniAppInfo)localObject2).via;
+      }
+      String str8 = paramJSONObject.optString("prepayId", "");
+      int i = paramJSONObject.optInt("starCurrency");
+      String str9 = paramJSONObject.optString("offerId", "");
+      String str10 = paramJSONObject.optString("zoneId", "");
+      String str11 = paramJSONObject.optString("acctType", "");
+      int j = paramJSONObject.optInt("saveValue");
+      boolean bool1 = paramJSONObject.optBoolean("isCanChange");
+      String str5 = paramJSONObject.optString("currencyType", "");
+      String str6 = paramJSONObject.optString("platform", "");
+      String str7 = paramJSONObject.optString("remark", "");
+      paramJSONObject.optString("aid", "");
+      boolean bool2 = paramJSONObject.optBoolean("numberVisible");
+      localObject2 = paramJSONObject.optString("other", "");
+      int k = paramJSONObject.optInt("setEnv");
+      String str3 = paramJSONObject.optString("firstRefer", "");
+      String str4 = paramJSONObject.optString("firstVia", "");
+      str2 = str2.replace("{prepayId}", str8).replace("{starCurrency}", i + "").replace("{offerId}", str9).replace("{setEnv}", k + "").replace("{appid}", getAppId()).replace("{acctType}", str11).replace("{zoneId}", str10).replace("{buyQuantity}", j + "");
+      if (bool1)
+      {
+        paramJSONObject = "1";
+        str2 = str2.replace("{isCanChange}", paramJSONObject).replace("{currencyType}", str5).replace("{platform}", str6).replace("{remark}", str7);
+        if (!bool2) {
+          break label592;
+        }
+      }
+      label592:
+      for (paramJSONObject = "1";; paramJSONObject = "0")
+      {
+        return str2.replace("{numberVisible}", paramJSONObject).replace("{other}", (CharSequence)localObject2).replace("{firstRefer}", str3).replace("{firstVia}", str4).replace("{refer}", (CharSequence)localObject1).replace("{via}", str1);
+        paramJSONObject = "0";
+        break;
+      }
     }
   }
   
@@ -223,6 +425,25 @@ public class PayJsPlugin
     }
   }
   
+  private void startPayBrowser(Activity paramActivity, String paramString1, String paramString2, JsRuntime paramJsRuntime, String paramString3, int paramInt)
+  {
+    Intent localIntent = new Intent(paramActivity, QQBrowserActivity.class);
+    localIntent.putExtra("url", paramString1);
+    paramString1 = new Bundle();
+    paramString1.putBoolean("hide_more_button", true);
+    paramString1.putBoolean("keyForForceCloseAfterJump", true);
+    localIntent.putExtra("big_brother_source_key", "biz_src_miniapp");
+    localIntent.putExtra("fragmentClass", MiniAppWebviewFragment.class);
+    localIntent.putExtras(paramString1);
+    paramString1 = new HashMap();
+    paramString1.put("Referer", paramString2);
+    localIntent.putExtra("key_header", paramString1);
+    MiniAppController.getInstance().setActivityResultListener(new PayJsPlugin.9(this, paramInt, paramJsRuntime, paramString3));
+    if (paramActivity != null) {
+      paramActivity.startActivityForResult(localIntent, 3005);
+    }
+  }
+  
   private void startPayBrowserActivity(Activity paramActivity, String paramString1, JsRuntime paramJsRuntime, String paramString2, int paramInt, JSONObject paramJSONObject)
   {
     paramJSONObject = new Intent(paramActivity, QQTranslucentBrowserActivity.class);
@@ -235,7 +456,7 @@ public class PayJsPlugin
     if (paramString1 != null) {}
     for (paramString1 = paramString1.getGameInfoManager().getMiniAppConfig();; paramString1 = null)
     {
-      MiniAppController.getInstance().setActivityResultListener(new PayJsPlugin.5(this, paramInt, paramString1, paramJsRuntime, paramString2));
+      MiniAppController.getInstance().setActivityResultListener(new PayJsPlugin.10(this, paramInt, paramString1, paramJsRuntime, paramString2));
       paramActivity.startActivityForResult(paramJSONObject, 3003);
       return;
     }
@@ -282,206 +503,213 @@ public class PayJsPlugin
           QLog.e("PayJsPlugin", 1, paramString1 + " error,", paramString2);
           handleNativeResponseFail(paramInt, paramString1, null, "");
         }
-        continue;
       }
-      int i;
-      int j;
-      int k;
-      int m;
-      if ("consumeStarCurrency".equals(paramString1))
+      else
       {
-        try
-        {
-          paramString2 = new JSONObject(paramString2);
-          paramJsRuntime = paramString2.optString("prepayId");
-          i = paramString2.optInt("starCurrency");
-          j = paramString2.optInt("balanceAmount");
-          k = paramString2.optInt("topupAmount");
-          m = paramString2.optInt("payChannel");
-          int n = paramString2.optInt("setEnv", 0);
-          invokeMidasConsume(this.jsPluginEngine.appBrandRuntime.appId, paramJsRuntime, i, j, k, m, null, paramString1, paramInt, n);
-        }
-        catch (JSONException paramString2)
-        {
-          QLog.e("PayJsPlugin", 1, "consumestarcurrency error = ", paramString2);
-          paramString2 = new JSONObject();
-          try
-          {
-            paramString2.put("resultCode", 1000);
-            handleNativeResponseFail(paramInt, paramString1, paramString2, alud.a(2131708302));
-          }
-          catch (JSONException paramString1)
-          {
-            QLog.e("PayJsPlugin", 1, "handleNativeResponse error = ", paramString1);
-          }
-        }
-        continue;
-      }
-      if ("queryStarCurrency".equals(paramString1))
-      {
-        try
-        {
-          paramString2 = new JSONObject(paramString2);
-          paramJsRuntime = paramString2.optString("prepayId");
-          i = paramString2.optInt("starCurrency");
-          j = paramString2.optInt("setEnv", 0);
-          this.miniGameAutoConsume = false;
-          invokeMidasQuery(paramJsRuntime, this.jsPluginEngine.appBrandRuntime.appId, i, null, paramString1, paramInt, j);
-        }
-        catch (JSONException paramString2)
-        {
-          QLog.e("PayJsPlugin", 1, "querystarcurrency error = ", paramString2);
-          paramString2 = new JSONObject();
-          try
-          {
-            paramString2.put("resultCode", 1000);
-            handleNativeResponseFail(paramInt, paramString1, null, alud.a(2131708300));
-          }
-          catch (JSONException paramString1)
-          {
-            QLog.e("PayJsPlugin", 1, "handleNativeResponse error = ", paramString1);
-          }
-        }
-        continue;
-      }
-      String str;
-      if (("rechargeStarCurrency".equals(paramString1)) || ("rechargeAndConsumeStarCurrency".equals(paramString1)))
-      {
-        if ("rechargeAndConsumeStarCurrency".equals(paramString1)) {
-          this.miniGameAutoConsume = true;
-        }
-        for (;;)
+        int i;
+        int j;
+        int k;
+        int m;
+        if ("consumeStarCurrency".equals(paramString1))
         {
           try
           {
-            localObject = new JSONObject(paramString2);
-            str = ((JSONObject)localObject).optString("prepayId", null);
-            i = ((JSONObject)localObject).optInt("balanceAmount", -1);
-            j = ((JSONObject)localObject).optInt("topupAmount", -1);
-            k = ((JSONObject)localObject).optInt("starCurrency", -1);
-            m = ((JSONObject)localObject).optInt("setEnv", 0);
-            paramJsRuntime = ((JSONObject)localObject).optString("aid", "");
-            paramString2 = paramJsRuntime;
-            if (!TextUtils.isEmpty(paramJsRuntime))
+            paramString2 = new JSONObject(paramString2);
+            paramJsRuntime = paramString2.optString("prepayId");
+            i = paramString2.optInt("starCurrency");
+            j = paramString2.optInt("balanceAmount");
+            k = paramString2.optInt("topupAmount");
+            m = paramString2.optInt("payChannel");
+            int n = paramString2.optInt("setEnv", 0);
+            invokeMidasConsume(this.jsPluginEngine.appBrandRuntime.appId, paramJsRuntime, i, j, k, m, null, paramString1, paramInt, n);
+          }
+          catch (JSONException paramString2)
+          {
+            QLog.e("PayJsPlugin", 1, "consumestarcurrency error = ", paramString2);
+            paramString2 = new JSONObject();
+            try
             {
-              paramString2 = paramJsRuntime;
-              if (paramJsRuntime.contains("{appid}")) {
-                paramString2 = paramJsRuntime.replace("{appid}", this.jsPluginEngine.appBrandRuntime.appId);
-              }
+              paramString2.put("resultCode", 1000);
+              handleNativeResponseFail(paramInt, paramString1, paramString2, anni.a(2131706679));
             }
-            ((JSONObject)localObject).put("userId", AppLoaderFactory.getAppLoaderManager().getMiniAppInterface().getCurrentAccountUin());
-            ((JSONObject)localObject).put("aid", paramString2);
-            ((JSONObject)localObject).put("comeForm", 9);
-            ((JSONObject)localObject).put("setMidasEnv", m);
-            if ((this.jsPluginEngine.getActivityContext() instanceof GameActivity))
+            catch (JSONException paramString1)
             {
-              paramString2 = GameRuntimeLoaderManager.g().getBindRuntimeLoader(this.jsPluginEngine.appBrandRuntime.activity);
-              if (paramString2 == null) {
-                break label1137;
-              }
-              paramString2 = paramString2.getGameInfoManager().getMiniAppConfig();
-              if ((paramString2 != null) && (paramString2.config != null))
-              {
-                paramString2 = this.jsPluginEngine.appBrandRuntime.appId + "_" + paramString2.config.verType;
-                paramJsRuntime = bflr.b(paramString2);
-                AppLoaderFactory.getAppLoaderManager().getMiniAppInterface().getApp().getSharedPreferences("keyMiniGamePayEnv", 4).edit().putString("keyMiniGamePayEnvAppidVertype", paramJsRuntime).commit();
-                ((JSONObject)localObject).put("miniAppVertypeStr", paramString2);
-              }
+              QLog.e("PayJsPlugin", 1, "handleNativeResponse error = ", paramString1);
             }
-            paramJsRuntime = String.valueOf(paramInt);
-            paramString2 = paramJsRuntime;
-            if (i != -1)
+          }
+        }
+        else if ("queryStarCurrency".equals(paramString1))
+        {
+          try
+          {
+            paramString2 = new JSONObject(paramString2);
+            paramJsRuntime = paramString2.optString("prepayId");
+            i = paramString2.optInt("starCurrency");
+            j = paramString2.optInt("setEnv", 0);
+            this.miniGameAutoConsume = false;
+            invokeMidasQuery(paramJsRuntime, this.jsPluginEngine.appBrandRuntime.appId, i, null, paramString1, paramInt, j);
+          }
+          catch (JSONException paramString2)
+          {
+            QLog.e("PayJsPlugin", 1, "querystarcurrency error = ", paramString2);
+            paramString2 = new JSONObject();
+            try
             {
-              paramString2 = paramJsRuntime;
-              if (j != -1)
+              paramString2.put("resultCode", 1000);
+              handleNativeResponseFail(paramInt, paramString1, null, anni.a(2131706677));
+            }
+            catch (JSONException paramString1)
+            {
+              QLog.e("PayJsPlugin", 1, "handleNativeResponse error = ", paramString1);
+            }
+          }
+        }
+        else
+        {
+          if (("rechargeStarCurrency".equals(paramString1)) || ("rechargeAndConsumeStarCurrency".equals(paramString1)))
+          {
+            if ("rechargeAndConsumeStarCurrency".equals(paramString1)) {
+              this.miniGameAutoConsume = true;
+            }
+            for (;;)
+            {
+              try
               {
+                localObject = new JSONObject(paramString2);
+                String str = ((JSONObject)localObject).optString("prepayId", null);
+                i = ((JSONObject)localObject).optInt("balanceAmount", -1);
+                j = ((JSONObject)localObject).optInt("topupAmount", -1);
+                k = ((JSONObject)localObject).optInt("starCurrency", -1);
+                m = ((JSONObject)localObject).optInt("setEnv", 0);
+                paramJsRuntime = ((JSONObject)localObject).optString("aid", "");
                 paramString2 = paramJsRuntime;
-                if (k != -1)
+                if (!TextUtils.isEmpty(paramJsRuntime))
                 {
-                  paramString2 = new JSONObject();
-                  paramString2.put("appId", this.jsPluginEngine.appBrandRuntime.appId);
-                  paramString2.put("prepayId", str);
-                  paramString2.put("balanceAmount", i);
-                  paramString2.put("topupAmount", j);
-                  paramString2.put("starCurrency", k);
-                  paramString2.put("seq", paramInt);
-                  paramString2.put("setEnv", m);
-                  paramString2 = paramString2.toString();
+                  paramString2 = paramJsRuntime;
+                  if (paramJsRuntime.contains("{appid}")) {
+                    paramString2 = paramJsRuntime.replace("{appid}", this.jsPluginEngine.appBrandRuntime.appId);
+                  }
                 }
+                ((JSONObject)localObject).put("userId", AppLoaderFactory.getAppLoaderManager().getMiniAppInterface().getCurrentAccountUin());
+                ((JSONObject)localObject).put("aid", paramString2);
+                ((JSONObject)localObject).put("comeForm", 9);
+                ((JSONObject)localObject).put("setMidasEnv", m);
+                if ((this.jsPluginEngine.getActivityContext() instanceof GameActivity))
+                {
+                  paramString2 = GameRuntimeLoaderManager.g().getBindRuntimeLoader(this.jsPluginEngine.appBrandRuntime.activity);
+                  if (paramString2 == null) {
+                    break label1137;
+                  }
+                  paramString2 = paramString2.getGameInfoManager().getMiniAppConfig();
+                  if ((paramString2 != null) && (paramString2.config != null))
+                  {
+                    paramString2 = this.jsPluginEngine.appBrandRuntime.appId + "_" + paramString2.config.verType;
+                    paramJsRuntime = bita.b(paramString2);
+                    AppLoaderFactory.getAppLoaderManager().getMiniAppInterface().getApp().getSharedPreferences("keyMiniGamePayEnv", 4).edit().putString("keyMiniGamePayEnvAppidVertype", paramJsRuntime).commit();
+                    ((JSONObject)localObject).put("miniAppVertypeStr", paramString2);
+                  }
+                }
+                paramJsRuntime = String.valueOf(paramInt);
+                paramString2 = paramJsRuntime;
+                if (i != -1)
+                {
+                  paramString2 = paramJsRuntime;
+                  if (j != -1)
+                  {
+                    paramString2 = paramJsRuntime;
+                    if (k != -1)
+                    {
+                      paramString2 = new JSONObject();
+                      paramString2.put("appId", this.jsPluginEngine.appBrandRuntime.appId);
+                      paramString2.put("prepayId", str);
+                      paramString2.put("balanceAmount", i);
+                      paramString2.put("topupAmount", j);
+                      paramString2.put("starCurrency", k);
+                      paramString2.put("seq", paramInt);
+                      paramString2.put("setEnv", m);
+                      paramString2 = paramString2.toString();
+                    }
+                  }
+                }
+                handleRechargeGame(this.jsPluginEngine.getActivityContext(), paramString1, ((JSONObject)localObject).toString(), paramString2, paramInt, this.miniGameAutoConsume);
+              }
+              catch (JSONException paramString1)
+              {
+                QLog.e("PayJsPlugin", 1, "API_RECHARGE_STAR_CURRENCY JSONException ", paramString1);
+              }
+              break;
+              label1137:
+              paramString2 = null;
+            }
+          }
+          if ("requestMidasGoodsPay".equals(paramString1))
+          {
+            try
+            {
+              paramString2 = new JSONObject(paramString2);
+              paramString2.put("userId", AppLoaderFactory.getAppLoaderManager().getMiniAppInterface().getCurrentAccountUin());
+              handleMidasGoodsPay(this.jsPluginEngine.getActivityContext(), paramString1, paramString2, paramInt);
+            }
+            catch (JSONException paramString2)
+            {
+              QLog.e("PayJsPlugin", 1, paramString1 + " error.", paramString2);
+              handleNativeResponseFail(paramInt, paramString1, null, "");
+            }
+          }
+          else if ("requestMidasMonthCardPay".equals(paramString1))
+          {
+            try
+            {
+              paramString2 = new JSONObject(paramString2);
+              paramString2.put("userId", AppLoaderFactory.getAppLoaderManager().getMiniAppInterface().getCurrentAccountUin());
+              handleMidasMonthCardPay(this.jsPluginEngine.getActivityContext(), paramString1, paramString2.toString(), paramInt);
+            }
+            catch (JSONException paramString1)
+            {
+              paramString1.printStackTrace();
+            }
+          }
+          else if ("requestMidasPaymentByH5".equals(paramString1))
+          {
+            try
+            {
+              paramString2 = new JSONObject(paramString2);
+              localObject = processPayByH5Param(paramString2);
+              startPayBrowserActivity(this.jsPluginEngine.getActivityContext(), (String)localObject, paramJsRuntime, paramString1, paramInt, paramString2);
+            }
+            catch (JSONException paramString1)
+            {
+              paramString1.printStackTrace();
+            }
+          }
+          else if ("checkH5PayStatus".equals(paramString1))
+          {
+            paramString2 = new JSONObject();
+            try
+            {
+              paramString2.put("resultCode", QzoneConfig.getInstance().getConfig("qqminiapp", "mini_game_pay_by_h5", 0));
+              handleNativeResponseOk(paramInt, paramString1, paramString2);
+            }
+            catch (JSONException paramJsRuntime)
+            {
+              for (;;)
+              {
+                paramJsRuntime.printStackTrace();
               }
             }
-            handleRechargeGame(this.jsPluginEngine.getActivityContext(), paramString1, ((JSONObject)localObject).toString(), paramString2, paramInt, this.miniGameAutoConsume);
           }
-          catch (JSONException paramString1)
+          else if ("requestFriendPayment".equals(paramString1))
           {
-            QLog.e("PayJsPlugin", 1, "API_RECHARGE_STAR_CURRENCY JSONException ", paramString1);
+            handlePayByFriend(paramString2, paramString1, paramJsRuntime, paramInt);
           }
-          break;
-          label1137:
-          paramString2 = null;
-        }
-      }
-      if ("requestMidasGoodsPay".equals(paramString1))
-      {
-        try
-        {
-          paramString2 = new JSONObject(paramString2);
-          paramString2.put("userId", AppLoaderFactory.getAppLoaderManager().getMiniAppInterface().getCurrentAccountUin());
-          handleMidasGoodsPay(this.jsPluginEngine.getActivityContext(), paramString1, paramString2, paramInt);
-        }
-        catch (JSONException paramString2)
-        {
-          QLog.e("PayJsPlugin", 1, paramString1 + " error.", paramString2);
-          handleNativeResponseFail(paramInt, paramString1, null, "");
-        }
-        continue;
-      }
-      if ("requestMidasMonthCardPay".equals(paramString1))
-      {
-        try
-        {
-          paramString2 = new JSONObject(paramString2);
-          paramString2.put("userId", AppLoaderFactory.getAppLoaderManager().getMiniAppInterface().getCurrentAccountUin());
-          handleMidasMonthCardPay(this.jsPluginEngine.getActivityContext(), paramString1, paramString2.toString(), paramInt);
-        }
-        catch (JSONException paramString1)
-        {
-          paramString1.printStackTrace();
-        }
-        continue;
-      }
-      if ("requestMidasPaymentByH5".equals(paramString1))
-      {
-        try
-        {
-          paramString2 = new JSONObject(paramString2);
-          localObject = paramString2.optString("prepayId");
-          i = paramString2.optInt("starCurrency");
-          j = paramString2.optInt("setEnv", 0);
-          str = paramString2.optString("offerId", "1450023163");
-          localObject = QzoneConfig.getInstance().getConfig("qqminiapp", "mini_game_pay_by_h5_url", "https://h5.qzone.qq.com/miniapp/act/midasPay?offerId={offerId}&prepayId={prepayId}&starCurrency={starCurrency}&setEnv={setEnv}&appid={appid}&_proxy=1&_wv=17301504").replace("{offerId}", str).replace("{prepayId}", (CharSequence)localObject).replace("{starCurrency}", i + "").replace("{setEnv}", j + "").replace("{appid}", getAppId());
-          startPayBrowserActivity(this.jsPluginEngine.getActivityContext(), (String)localObject, paramJsRuntime, paramString1, paramInt, paramString2);
-        }
-        catch (JSONException paramString1)
-        {
-          paramString1.printStackTrace();
-        }
-        continue;
-      }
-      if (!"checkH5PayStatus".equals(paramString1)) {
-        continue;
-      }
-      paramString2 = new JSONObject();
-      try
-      {
-        paramString2.put("resultCode", QzoneConfig.getInstance().getConfig("qqminiapp", "mini_game_pay_by_h5", 1));
-        handleNativeResponseOk(paramInt, paramString1, paramString2);
-      }
-      catch (JSONException paramJsRuntime)
-      {
-        for (;;)
-        {
-          paramJsRuntime.printStackTrace();
+          else if ("requestWxPayment".equals(paramString1))
+          {
+            handleWxPayment(paramString1, paramString2, paramJsRuntime, paramInt);
+          }
+          else if ("requestMidasCoinPaymentByH5".equals(paramString1))
+          {
+            handlePayCoinByH5(paramString2, paramString1, paramJsRuntime, paramInt);
+          }
         }
       }
     }
@@ -489,7 +717,7 @@ public class PayJsPlugin
   
   public void handleRechargeGame(Activity paramActivity, String paramString1, String paramString2, String paramString3, int paramInt, boolean paramBoolean)
   {
-    AppBrandTask.runTaskOnUiThread(new PayJsPlugin.6(this, paramString3, paramString2, paramBoolean, paramInt, paramString1, paramActivity));
+    AppBrandTask.runTaskOnUiThread(new PayJsPlugin.11(this, paramString3, paramString2, paramBoolean, paramInt, paramString1, paramActivity));
   }
   
   public void invokeMidasConsume(String paramString1, String paramString2, int paramInt1, int paramInt2, int paramInt3, int paramInt4, COMM.StCommonExt paramStCommonExt, String paramString3, int paramInt5, int paramInt6)
@@ -501,7 +729,7 @@ public class PayJsPlugin
       try
       {
         paramString1.put("resultCode", -4);
-        paramString1.put("resultMsg", alud.a(2131708299));
+        paramString1.put("resultMsg", anni.a(2131706676));
         handleNativeResponseFail(paramInt5, paramString3, paramString1, "");
         return;
       }
@@ -511,7 +739,7 @@ public class PayJsPlugin
         return;
       }
     }
-    MiniAppCmdUtil.getInstance().getMidasConsumeResult(paramString1, paramString2, paramInt1, paramInt2, paramInt3, paramInt4, paramInt6, paramStCommonExt, new PayJsPlugin.8(this, paramInt5, paramString3));
+    MiniAppCmdUtil.getInstance().getMidasConsumeResult(paramString1, paramString2, paramInt1, paramInt2, paramInt3, paramInt4, paramInt6, paramStCommonExt, new PayJsPlugin.13(this, paramInt5, paramString3));
   }
   
   public void invokeMidasQuery(String paramString1, String paramString2, int paramInt1, COMM.StCommonExt paramStCommonExt, String paramString3, int paramInt2, int paramInt3)
@@ -523,7 +751,7 @@ public class PayJsPlugin
       try
       {
         paramString1.put("resultCode", 1000);
-        handleNativeResponseFail(paramInt2, paramString3, null, alud.a(2131708301));
+        handleNativeResponseFail(paramInt2, paramString3, null, anni.a(2131706678));
         return;
       }
       catch (JSONException paramString1)
@@ -532,7 +760,7 @@ public class PayJsPlugin
         return;
       }
     }
-    MiniAppCmdUtil.getInstance().getMidasQueryResult(paramString1, paramString2, paramInt1, paramInt3, paramStCommonExt, new PayJsPlugin.7(this, paramInt2, paramString3));
+    MiniAppCmdUtil.getInstance().getMidasQueryResult(paramString1, paramString2, paramInt1, paramInt3, paramStCommonExt, new PayJsPlugin.12(this, paramInt2, paramString3));
   }
   
   public void onCreate(BaseJsPluginEngine paramBaseJsPluginEngine)
@@ -558,7 +786,7 @@ public class PayJsPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.appbrand.jsapi.plugins.PayJsPlugin
  * JD-Core Version:    0.7.0.1
  */

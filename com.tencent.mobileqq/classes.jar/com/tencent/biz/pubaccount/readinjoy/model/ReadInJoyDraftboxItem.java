@@ -3,14 +3,14 @@ package com.tencent.biz.pubaccount.readinjoy.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import awge;
-import pgl;
+import com.tencent.mobileqq.persistence.Entity;
+import pxv;
 
 public class ReadInJoyDraftboxItem
-  extends awge
+  extends Entity
   implements Parcelable
 {
-  public static final Parcelable.Creator<ReadInJoyDraftboxItem> CREATOR = new pgl();
+  public static final Parcelable.Creator<ReadInJoyDraftboxItem> CREATOR = new pxv();
   public static final int DEFAULT_DRAFTID = -1;
   public static final String TABLE_NAME = ReadInJoyDraftboxItem.class.getSimpleName();
   public static final int TYPE_ANSWER = 2;

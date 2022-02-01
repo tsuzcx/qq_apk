@@ -27,20 +27,20 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
 import javax.annotation.Nullable;
-import umc;
-import uvx;
-import uwa;
-import vpn;
-import vsi;
-import vtt;
-import vza;
-import vzb;
-import vzc;
-import wxe;
-import xqq;
+import wfo;
+import wpj;
+import wpm;
+import xiy;
+import xlt;
+import xne;
+import xsl;
+import xsm;
+import xsn;
+import yqp;
+import zkb;
 
 public abstract class AbsVideoInfoWidget
-  extends vsi
+  extends xlt
   implements IEventReceiver
 {
   protected Dialog a;
@@ -48,8 +48,8 @@ public abstract class AbsVideoInfoWidget
   protected AbsVideoInfoWidget.ProgressView a;
   protected Map<Subscriber, String> a;
   @Nullable
-  public vtt a;
-  public vzc a;
+  public xne a;
+  public xsn a;
   public final String b;
   public boolean b;
   protected boolean c;
@@ -71,26 +71,26 @@ public abstract class AbsVideoInfoWidget
     this.jdField_b_of_type_JavaLangString = ("Q.qqstory.player.videoinfowidget." + a());
   }
   
-  private final void a(vtt paramvtt)
+  private final void a(xne paramxne)
   {
-    if ((paramvtt == null) || (!paramvtt.c()))
+    if ((paramxne == null) || (!paramxne.c()))
     {
-      this.jdField_a_of_type_Vtt = null;
+      this.jdField_a_of_type_Xne = null;
       k();
       return;
     }
-    this.jdField_a_of_type_Vtt = paramvtt;
-    StoryVideoItem localStoryVideoItem = ((uvx)uwa.a(5)).b(paramvtt.a);
+    this.jdField_a_of_type_Xne = paramxne;
+    StoryVideoItem localStoryVideoItem = ((wpj)wpm.a(5)).b(paramxne.a);
     if ((localStoryVideoItem == null) || (localStoryVideoItem.mErrorCode != 0))
     {
       k();
       return;
     }
-    if (a(paramvtt, localStoryVideoItem))
+    if (a(paramxne, localStoryVideoItem))
     {
       h();
       j();
-      a(paramvtt, localStoryVideoItem);
+      a(paramxne, localStoryVideoItem);
       return;
     }
     k();
@@ -99,13 +99,13 @@ public abstract class AbsVideoInfoWidget
   private final void d()
   {
     this.jdField_b_of_type_Boolean = true;
-    vzb localvzb = new vzb(this);
+    xsm localxsm = new xsm(this);
     this.jdField_a_of_type_JavaUtilMap.clear();
-    this.jdField_a_of_type_JavaUtilMap.put(localvzb, "");
-    umc.a().registerSubscriber("", localvzb);
-    this.jdField_a_of_type_Vzc = new vzc(this);
-    a(this.jdField_a_of_type_Vzc);
-    wxe.b(this.jdField_b_of_type_JavaLangString, "onWidgetCreate!");
+    this.jdField_a_of_type_JavaUtilMap.put(localxsm, "");
+    wfo.a().registerSubscriber("", localxsm);
+    this.jdField_a_of_type_Xsn = new xsn(this);
+    a(this.jdField_a_of_type_Xsn);
+    yqp.b(this.jdField_b_of_type_JavaLangString, "onWidgetCreate!");
   }
   
   private final void e()
@@ -119,13 +119,13 @@ public abstract class AbsVideoInfoWidget
     while (localIterator.hasNext())
     {
       Subscriber localSubscriber = (Subscriber)((Map.Entry)localIterator.next()).getKey();
-      umc.a().unRegisterSubscriber(localSubscriber);
+      wfo.a().unRegisterSubscriber(localSubscriber);
     }
     this.jdField_a_of_type_JavaUtilMap.clear();
-    if (this.jdField_a_of_type_Vzc != null) {
-      b(this.jdField_a_of_type_Vzc);
+    if (this.jdField_a_of_type_Xsn != null) {
+      b(this.jdField_a_of_type_Xsn);
     }
-    wxe.b(this.jdField_b_of_type_JavaLangString, "onWidgetDestroy!");
+    yqp.b(this.jdField_b_of_type_JavaLangString, "onWidgetDestroy!");
   }
   
   public final View a(ViewGroup paramViewGroup)
@@ -135,21 +135,21 @@ public abstract class AbsVideoInfoWidget
   
   public abstract String a();
   
-  public final void a(int paramInt, vpn paramvpn, @NonNull ArrayList<vtt> paramArrayList)
+  public final void a(int paramInt, xiy paramxiy, @NonNull ArrayList<xne> paramArrayList)
   {
     boolean bool = this.jdField_a_of_type_Boolean;
-    super.a(paramInt, paramvpn, paramArrayList);
+    super.a(paramInt, paramxiy, paramArrayList);
     if (!bool) {
       d();
     }
     paramInt = ((StoryPlayerGroupHolder)a()).b;
     if ((paramInt >= this.jdField_a_of_type_JavaUtilList.size()) || (paramInt < 0))
     {
-      wxe.d(this.jdField_b_of_type_JavaLangString, "Position error , bind data error, current position = %d , size = %d", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(this.jdField_a_of_type_JavaUtilList.size()) });
+      yqp.d(this.jdField_b_of_type_JavaLangString, "Position error , bind data error, current position = %d , size = %d", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(this.jdField_a_of_type_JavaUtilList.size()) });
       i();
       return;
     }
-    a((vtt)this.jdField_a_of_type_JavaUtilList.get(paramInt));
+    a((xne)this.jdField_a_of_type_JavaUtilList.get(paramInt));
   }
   
   protected abstract void a(View paramView);
@@ -173,9 +173,9 @@ public abstract class AbsVideoInfoWidget
   
   protected abstract void a(@NonNull Map<Subscriber, String> paramMap);
   
-  protected abstract void a(@NonNull vtt paramvtt, @NonNull StoryVideoItem paramStoryVideoItem);
+  protected abstract void a(@NonNull xne paramxne, @NonNull StoryVideoItem paramStoryVideoItem);
   
-  protected abstract boolean a(@NonNull vtt paramvtt, @NonNull StoryVideoItem paramStoryVideoItem);
+  protected abstract boolean a(@NonNull xne paramxne, @NonNull StoryVideoItem paramStoryVideoItem);
   
   protected abstract int b();
   
@@ -186,9 +186,9 @@ public abstract class AbsVideoInfoWidget
   
   public final String b()
   {
-    if (this.jdField_a_of_type_Vtt != null)
+    if (this.jdField_a_of_type_Xne != null)
     {
-      VideoListFeedItem localVideoListFeedItem = this.jdField_a_of_type_Vtt.a();
+      VideoListFeedItem localVideoListFeedItem = this.jdField_a_of_type_Xne.a();
       if ((localVideoListFeedItem != null) && ((localVideoListFeedItem instanceof ShareGroupFeedItem))) {
         return ((ShareGroupFeedItem)localVideoListFeedItem).getOwner().getUnionId();
       }
@@ -200,7 +200,7 @@ public abstract class AbsVideoInfoWidget
   {
     super.b();
     StoryPlayerGroupHolder localStoryPlayerGroupHolder = (StoryPlayerGroupHolder)a();
-    localStoryPlayerGroupHolder.a.a(new vza(this, localStoryPlayerGroupHolder));
+    localStoryPlayerGroupHolder.a.a(new xsl(this, localStoryPlayerGroupHolder));
   }
   
   public final int c()
@@ -237,7 +237,7 @@ public abstract class AbsVideoInfoWidget
         Object localObject = (Map.Entry)localIterator.next();
         Subscriber localSubscriber = (Subscriber)((Map.Entry)localObject).getKey();
         localObject = (String)((Map.Entry)localObject).getValue();
-        umc.a().registerSubscriber((String)localObject, localSubscriber);
+        wfo.a().registerSubscriber((String)localObject, localSubscriber);
       }
       this.jdField_a_of_type_JavaUtilMap.putAll(localHashMap);
       if (!this.d)
@@ -245,7 +245,7 @@ public abstract class AbsVideoInfoWidget
         this.d = true;
         if (b() != -1)
         {
-          xqq.a(this.jdField_a_of_type_AndroidViewView instanceof ViewGroup);
+          zkb.a(this.jdField_a_of_type_AndroidViewView instanceof ViewGroup);
           LayoutInflater.from(this.jdField_a_of_type_AndroidViewView.getContext()).inflate(b(), (ViewGroup)this.jdField_a_of_type_AndroidViewView, true);
         }
         a(this.jdField_a_of_type_AndroidViewView);
@@ -255,7 +255,7 @@ public abstract class AbsVideoInfoWidget
   
   public final void i()
   {
-    a(this.jdField_a_of_type_Vtt);
+    a(this.jdField_a_of_type_Xne);
   }
   
   public final boolean isValidate()
@@ -281,7 +281,7 @@ public abstract class AbsVideoInfoWidget
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.playerwidget.AbsVideoInfoWidget
  * JD-Core Version:    0.7.0.1
  */

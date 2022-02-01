@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.filemanager.activity.recentfile;
 
 import android.content.Context;
-import aqni;
-import aqqv;
-import aqqx;
-import arsq;
-import arsu;
-import arth;
+import asti;
+import asxx;
+import asxz;
+import atwn;
+import atwr;
+import atxd;
 import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
 import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 import com.tencent.qphone.base.util.QLog;
@@ -19,7 +19,7 @@ import java.util.List;
 public class QfileRecentAppFileTabView
   extends QfileBaseRecentFileTabView
 {
-  private arsq a;
+  private atwn a;
   
   public QfileRecentAppFileTabView(Context paramContext)
   {
@@ -38,21 +38,21 @@ public class QfileRecentAppFileTabView
   private void k()
   {
     if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.c()) {
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.a().I();
+      this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.a().G();
     }
-    while (this.jdField_a_of_type_Arsq != null)
+    while (this.jdField_a_of_type_Atwn != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.a(this.jdField_a_of_type_Arsq);
+      this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.a(this.jdField_a_of_type_Atwn);
       return;
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.a().N();
+      this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.a().L();
     }
-    this.jdField_a_of_type_Arsq = new aqqv(this);
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.a(this.jdField_a_of_type_Arsq);
+    this.jdField_a_of_type_Atwn = new asxx(this);
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.a(this.jdField_a_of_type_Atwn);
   }
   
-  protected aqni a()
+  protected asti a()
   {
-    return new aqqx(a(), this.jdField_a_of_type_JavaUtilLinkedHashMap, a(), this.jdField_a_of_type_AndroidViewView$OnClickListener, this.jdField_b_of_type_AndroidViewView$OnClickListener, this.jdField_a_of_type_AndroidViewView$OnLongClickListener, this.c);
+    return new asxz(a(), this.jdField_a_of_type_JavaUtilLinkedHashMap, a(), this.jdField_a_of_type_AndroidViewView$OnClickListener, this.jdField_b_of_type_AndroidViewView$OnClickListener, this.jdField_a_of_type_AndroidViewView$OnLongClickListener, this.c);
   }
   
   protected void a()
@@ -64,7 +64,7 @@ public class QfileRecentAppFileTabView
       FileManagerEntity localFileManagerEntity = (FileManagerEntity)localIterator.next();
       if ((!localFileManagerEntity.bDelInFM) && (localFileManagerEntity.nFileType == 5))
       {
-        String str = arth.a(localFileManagerEntity.srvTime);
+        String str = atxd.a(localFileManagerEntity.srvTime);
         if (!this.jdField_a_of_type_JavaUtilLinkedHashMap.containsKey(str)) {
           this.jdField_a_of_type_JavaUtilLinkedHashMap.put(str, new ArrayList());
         }
@@ -93,7 +93,7 @@ public class QfileRecentAppFileTabView
   
   protected boolean b(FileManagerEntity paramFileManagerEntity)
   {
-    Object localObject = arth.a(paramFileManagerEntity.srvTime);
+    Object localObject = atxd.a(paramFileManagerEntity.srvTime);
     if (!this.jdField_a_of_type_JavaUtilLinkedHashMap.containsKey(localObject))
     {
       QLog.e(jdField_a_of_type_JavaLangString, 1, "delRecentFileRecords, fileEntities find, but recentRecords not find!");
@@ -134,7 +134,7 @@ public class QfileRecentAppFileTabView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.activity.recentfile.QfileRecentAppFileTabView
  * JD-Core Version:    0.7.0.1
  */

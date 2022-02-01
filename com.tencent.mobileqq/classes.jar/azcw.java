@@ -1,10 +1,19 @@
-import com.tencent.mobileqq.shortvideo.PtvTemplateManager.PtvTemplateInfo;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.profile.CustomCoverFragment;
 
-public abstract interface azcw
+public class azcw
+  implements DialogInterface.OnCancelListener
 {
-  public abstract void a(PtvTemplateManager.PtvTemplateInfo paramPtvTemplateInfo, int paramInt);
+  public azcw(CustomCoverFragment paramCustomCoverFragment) {}
   
-  public abstract void a(PtvTemplateManager.PtvTemplateInfo paramPtvTemplateInfo, boolean paramBoolean);
+  public void onCancel(DialogInterface paramDialogInterface)
+  {
+    if (this.a.getActivity() != null) {
+      this.a.getActivity().finish();
+    }
+  }
 }
 
 

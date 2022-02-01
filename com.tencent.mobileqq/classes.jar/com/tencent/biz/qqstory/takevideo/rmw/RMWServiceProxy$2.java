@@ -1,11 +1,11 @@
 package com.tencent.biz.qqstory.takevideo.rmw;
 
-import xly;
+import zfj;
 
 public class RMWServiceProxy$2
   implements Runnable
 {
-  public RMWServiceProxy$2(xly paramxly) {}
+  public RMWServiceProxy$2(zfj paramzfj) {}
   
   public void run()
   {
@@ -14,7 +14,7 @@ public class RMWServiceProxy$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.qqstory.takevideo.rmw.RMWServiceProxy.2
  * JD-Core Version:    0.7.0.1
  */

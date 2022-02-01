@@ -1,18 +1,23 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.ar.aidl.ARCommonConfigInfo;
+import java.io.File;
 
-public final class amyy
-  implements Parcelable.Creator<ARCommonConfigInfo>
+class amyy
+  implements amxk
 {
-  public ARCommonConfigInfo a(Parcel paramParcel)
-  {
-    return new ARCommonConfigInfo(paramParcel);
-  }
+  amyy(amyl paramamyl, File paramFile, String paramString) {}
   
-  public ARCommonConfigInfo[] a(int paramInt)
+  public void onDownLoadFinish(boolean paramBoolean, String paramString, int paramInt1, int[] paramArrayOfInt, int paramInt2)
   {
-    return new ARCommonConfigInfo[paramInt];
+    if (paramBoolean)
+    {
+      if (this.jdField_a_of_type_JavaIoFile.exists())
+      {
+        this.jdField_a_of_type_Amyl.a(this.jdField_a_of_type_JavaLangString, 0, paramInt2 + anni.a(2131699316));
+        return;
+      }
+      this.jdField_a_of_type_Amyl.a(this.jdField_a_of_type_JavaLangString, 2, paramInt2 + anni.a(2131699292));
+      return;
+    }
+    this.jdField_a_of_type_Amyl.a(this.jdField_a_of_type_JavaLangString, 2, paramInt2 + anni.a(2131699313));
   }
 }
 

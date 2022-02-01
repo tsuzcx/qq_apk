@@ -1,18 +1,16 @@
-import android.content.Context;
-import android.widget.ScrollView;
-import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
+import android.app.Activity;
+import android.view.View;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class agwb
-  extends ScrollView
+class agwb
+  implements atwb
 {
-  public agwb(TroopChatPie paramTroopChatPie, Context paramContext)
-  {
-    super(paramContext);
-  }
+  agwb(agup paramagup) {}
   
-  public void setOverScrollMode(int paramInt)
+  public void onClick(View paramView)
   {
-    super.setOverScrollMode(2);
+    atvo.b((Activity)this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.d);
   }
 }
 

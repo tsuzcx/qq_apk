@@ -20,6 +20,8 @@ public final class enum_extendinfo_key_define
   public static final int _enum_num_event_header_tag_uin = 11;
   public static final int _enum_num_event_header_title = 10;
   public static final int _enum_num_event_header_url = 19;
+  public static final int _enum_num_kuolie_hot_tag = 21;
+  public static final int _enum_num_mid_autumn_count = 20;
   public static final int _enum_num_search4famous_hasmore = 4;
   public static final int _enum_num_search4fri_hasmore = 3;
   public static final int _enum_num_search4self_hasmore = 2;

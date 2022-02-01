@@ -31,9 +31,9 @@ public class QFileListPullMoreLayout
   public QFileListPullMoreLayout(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext);
-    ((LayoutInflater)paramContext.getSystemService("layout_inflater")).inflate(2131560441, this);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131373108));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131373109));
+    ((LayoutInflater)paramContext.getSystemService("layout_inflater")).inflate(2131560596, this);
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131373734));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131373735));
     this.jdField_a_of_type_AndroidContentContext = paramContext;
   }
   
@@ -89,7 +89,7 @@ public class QFileListPullMoreLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.widget.QFileListPullMoreLayout
  * JD-Core Version:    0.7.0.1
  */

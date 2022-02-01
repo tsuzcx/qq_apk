@@ -1,52 +1,89 @@
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.PublicAccountHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
+import android.text.TextUtils;
+import com.tencent.mobileqq.vas.VasQuickUpdateManager;
+import com.tencent.mobileqq.vas.VasQuickUpdateManager.CallBacker;
 import com.tencent.qphone.base.util.QLog;
+import java.util.Vector;
 
-class aguo
-  extends ampt
+public class aguo
+  extends VasQuickUpdateManager.CallBacker
 {
-  aguo(agti paramagti, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString)
-  {
-    super(paramInt, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString);
-  }
+  public aguo(agtx paramagtx) {}
   
-  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  public void callback(long paramLong, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, VasQuickUpdateManager paramVasQuickUpdateManager)
   {
-    double d3 = 0.0D;
+    int i = 1;
     String str;
-    if ((paramSosoLbsInfo != null) && (paramSosoLbsInfo.a != null) && (paramSosoLbsInfo.a.jdField_b_of_type_JavaLangString != null))
+    if (paramLong == 21L)
     {
-      str = paramSosoLbsInfo.a.jdField_b_of_type_JavaLangString;
-      if ((paramSosoLbsInfo == null) || (paramSosoLbsInfo.a == null)) {
-        break label211;
+      paramString3 = "";
+      paramString2 = Integer.valueOf(0);
+      if (!paramString1.startsWith("poke.item.effect.")) {
+        break label245;
       }
+      str = paramString1.substring("poke.item.effect.".length(), paramString1.length());
+      paramVasQuickUpdateManager = Integer.valueOf(str);
+      paramString2 = paramVasQuickUpdateManager;
+      paramString3 = str;
+      if (!aheh.c.contains(paramVasQuickUpdateManager)) {
+        break label337;
+      }
+      aheh.c.remove(paramVasQuickUpdateManager);
+      paramString3 = str;
+      paramString2 = paramVasQuickUpdateManager;
+      paramInt2 = 1;
     }
-    label211:
-    for (double d1 = paramSosoLbsInfo.a.a;; d1 = 0.0D)
+    for (;;)
     {
-      double d2 = d3;
-      if (paramSosoLbsInfo != null)
+      if ((!TextUtils.isEmpty(paramString3)) && (paramInt2 != 0) && (!aheh.c.contains(paramString2)) && (!aheh.c.contains(paramString2)))
       {
-        d2 = d3;
-        if (paramSosoLbsInfo.a != null) {
-          d2 = paramSosoLbsInfo.a.jdField_b_of_type_Double;
+        if (aheh.a("bubble", paramString2.intValue())) {
+          break label318;
+        }
+        paramInt2 = 1;
+        label142:
+        if (aheh.a("/normal.png", paramString2.intValue())) {
+          break label324;
+        }
+        label155:
+        boolean bool = aheh.b.contains(paramString2);
+        paramString3 = this.a.a;
+        if ((paramInt2 == 0) || (i == 0) || (!bool)) {
+          break label330;
         }
       }
-      if (QLog.isColorLevel()) {
-        QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "onLocationUpdate() latitude=" + d1 + " longitude=" + d2 + ", address=" + str);
+      label318:
+      label324:
+      label330:
+      for (paramString2 = anni.a(2131704070);; paramString2 = "")
+      {
+        bgtl.a(paramString3, paramString2);
+        if (QLog.isColorLevel()) {
+          QLog.d("GivingHeart", 2, "vas poke download id: " + paramString1 + " , errorcode: " + paramInt1);
+        }
+        return;
+        label245:
+        if (!paramString1.startsWith("poke.item.res.")) {
+          break label337;
+        }
+        str = paramString1.substring("poke.item.res.".length(), paramString1.length());
+        paramVasQuickUpdateManager = Integer.valueOf(str);
+        paramString2 = paramVasQuickUpdateManager;
+        paramString3 = str;
+        if (!aheh.d.contains(paramVasQuickUpdateManager)) {
+          break label337;
+        }
+        aheh.d.remove(paramVasQuickUpdateManager);
+        paramString3 = str;
+        paramString2 = paramVasQuickUpdateManager;
+        paramInt2 = 1;
+        break;
+        paramInt2 = 0;
+        break label142;
+        i = 0;
+        break label155;
       }
-      if (this.a.jdField_a_of_type_ComTencentMobileqqAppPublicAccountHandler == null) {
-        this.a.jdField_a_of_type_ComTencentMobileqqAppPublicAccountHandler = ((PublicAccountHandler)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(11));
-      }
-      if (this.a.jdField_a_of_type_ComTencentMobileqqAppPublicAccountHandler != null) {
-        this.a.jdField_a_of_type_ComTencentMobileqqAppPublicAccountHandler.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, d1, d2, str);
-      }
-      return;
-      str = "";
-      break;
+      label337:
+      paramInt2 = 0;
     }
   }
 }

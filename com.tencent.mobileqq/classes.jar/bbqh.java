@@ -1,28 +1,16 @@
-import android.view.GestureDetector.SimpleOnGestureListener;
-import android.view.MotionEvent;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class bbqh
-  extends GestureDetector.SimpleOnGestureListener
+  implements View.OnClickListener
 {
-  bbqh(bbqg parambbqg) {}
+  bbqh(bbqg parambbqg, bbmg parambbmg) {}
   
-  public boolean onFling(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
+  public void onClick(View paramView)
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.d("ScrollTest", 4, "velocityY = " + paramFloat2);
-    }
-    if (paramFloat2 < -10.0F) {}
-    for (;;)
-    {
-      return false;
-      if (paramFloat2 <= 10.0F) {}
-    }
-  }
-  
-  public boolean onScroll(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
-  {
-    return false;
+    this.jdField_a_of_type_Bbmg.b(paramView);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

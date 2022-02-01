@@ -1,31 +1,33 @@
-import android.view.ViewGroup;
-import com.tencent.biz.pubaccount.weishi_new.verticalvideo.WSVerticalPageFragment;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
+import java.lang.ref.WeakReference;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public abstract class tmw<T>
-  extends biej<T>
+class tmw
+  implements DialogInterface.OnCancelListener
 {
-  public WSVerticalPageFragment a;
-  public T a;
-  public tcl<T> a;
+  tmw(tmt paramtmt, String paramString) {}
   
-  public tmw(ViewGroup paramViewGroup, int paramInt, WSVerticalPageFragment paramWSVerticalPageFragment)
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    super(paramViewGroup, paramInt);
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment = paramWSVerticalPageFragment;
-    this.jdField_a_of_type_Tcl = a();
-  }
-  
-  public abstract tcl<T> a();
-  
-  public void a(T paramT)
-  {
-    super.a(paramT);
-    this.jdField_a_of_type_JavaLangObject = paramT;
+    paramDialogInterface = new JSONObject();
+    try
+    {
+      paramDialogInterface.put("index", tmt.a(this.jdField_a_of_type_Tmt));
+      paramDialogInterface.put("type", 1);
+      if (tmt.a(this.jdField_a_of_type_Tmt) != null) {
+        ((BridgeModule)tmt.a(this.jdField_a_of_type_Tmt).get()).invokeCallJS(this.jdField_a_of_type_JavaLangString, paramDialogInterface);
+      }
+      return;
+    }
+    catch (JSONException paramDialogInterface) {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     tmw
  * JD-Core Version:    0.7.0.1
  */

@@ -38,6 +38,7 @@ import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
 import com.skin.util.SkinEngineInitBridge;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import com.tencent.theme.SkinEngine;
 import com.tencent.theme.SkinnableActivityProcesser;
 import com.tencent.theme.SkinnableActivityProcesser.Callback;
@@ -406,6 +407,7 @@ public class BasePluginActivity
   
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
+    boolean bool;
     if (reflectHasAndIsNull(this, "mWindow", Activity.class))
     {
       if (paramMotionEvent.getAction() == 0) {
@@ -413,11 +415,17 @@ public class BasePluginActivity
       }
       Window localWindow = getWindow();
       if ((localWindow != null) && (localWindow.superDispatchTouchEvent(paramMotionEvent))) {
-        return true;
+        bool = true;
       }
-      return onTouchEvent(paramMotionEvent);
     }
-    return super.dispatchTouchEvent(paramMotionEvent);
+    for (;;)
+    {
+      EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool);
+      return bool;
+      bool = onTouchEvent(paramMotionEvent);
+      continue;
+      bool = super.dispatchTouchEvent(paramMotionEvent);
+    }
   }
   
   public View findViewById(int paramInt)
@@ -725,9 +733,14 @@ public class BasePluginActivity
     try
     {
       super.onConfigurationChanged(paramConfiguration);
+      label5:
+      EventCollector.getInstance().onActivityConfigurationChanged(this, paramConfiguration);
       return;
     }
-    catch (Exception paramConfiguration) {}
+    catch (Exception localException)
+    {
+      break label5;
+    }
   }
   
   /* Error */
@@ -743,7 +756,7 @@ public class BasePluginActivity
     //   12: putfield 225	com/tencent/mobileqq/pluginsdk/BasePluginActivity:mActivity	Landroid/app/Activity;
     //   15: aload_0
     //   16: getfield 225	com/tencent/mobileqq/pluginsdk/BasePluginActivity:mActivity	Landroid/app/Activity;
-    //   19: invokevirtual 552	android/app/Activity:getWindow	()Landroid/view/Window;
+    //   19: invokevirtual 562	android/app/Activity:getWindow	()Landroid/view/Window;
     //   22: astore_2
     //   23: getstatic 441	android/os/Build$VERSION:SDK_INT	I
     //   26: bipush 26
@@ -752,48 +765,48 @@ public class BasePluginActivity
     //   32: ldc 227
     //   34: ldc_w 445
     //   37: aload_2
-    //   38: invokestatic 635	com/tencent/mobileqq/pluginsdk/BasePluginActivity:setProperty	(Ljava/lang/Object;Ljava/lang/Class;Ljava/lang/String;Ljava/lang/Object;)V
+    //   38: invokestatic 649	com/tencent/mobileqq/pluginsdk/BasePluginActivity:setProperty	(Ljava/lang/Object;Ljava/lang/Class;Ljava/lang/String;Ljava/lang/Object;)V
     //   41: aload_0
     //   42: aload_0
     //   43: getfield 66	com/tencent/mobileqq/pluginsdk/BasePluginActivity:mConfig	Lcom/tencent/mobileqq/pluginsdk/BasePluginActivity$PluginConfig;
-    //   46: invokevirtual 637	com/tencent/mobileqq/pluginsdk/BasePluginActivity:onConfig	(Lcom/tencent/mobileqq/pluginsdk/BasePluginActivity$PluginConfig;)V
+    //   46: invokevirtual 651	com/tencent/mobileqq/pluginsdk/BasePluginActivity:onConfig	(Lcom/tencent/mobileqq/pluginsdk/BasePluginActivity$PluginConfig;)V
     //   49: aload_0
-    //   50: getfield 639	com/tencent/mobileqq/pluginsdk/BasePluginActivity:processer	Lcom/tencent/theme/SkinnableActivityProcesser;
+    //   50: getfield 653	com/tencent/mobileqq/pluginsdk/BasePluginActivity:processer	Lcom/tencent/theme/SkinnableActivityProcesser;
     //   53: ifnonnull +16 -> 69
     //   56: aload_0
-    //   57: new 641	com/tencent/theme/SkinnableActivityProcesser
+    //   57: new 655	com/tencent/theme/SkinnableActivityProcesser
     //   60: dup
     //   61: aload_0
     //   62: aload_0
-    //   63: invokespecial 644	com/tencent/theme/SkinnableActivityProcesser:<init>	(Landroid/app/Activity;Lcom/tencent/theme/SkinnableActivityProcesser$Callback;)V
-    //   66: putfield 639	com/tencent/mobileqq/pluginsdk/BasePluginActivity:processer	Lcom/tencent/theme/SkinnableActivityProcesser;
+    //   63: invokespecial 658	com/tencent/theme/SkinnableActivityProcesser:<init>	(Landroid/app/Activity;Lcom/tencent/theme/SkinnableActivityProcesser$Callback;)V
+    //   66: putfield 653	com/tencent/mobileqq/pluginsdk/BasePluginActivity:processer	Lcom/tencent/theme/SkinnableActivityProcesser;
     //   69: aload_0
-    //   70: invokestatic 650	com/tencent/mobileqq/pluginsdk/PluginStatic:add	(Lcom/tencent/mobileqq/pluginsdk/IPluginActivity;)V
+    //   70: invokestatic 664	com/tencent/mobileqq/pluginsdk/PluginStatic:add	(Lcom/tencent/mobileqq/pluginsdk/IPluginActivity;)V
     //   73: aload_0
     //   74: aload_1
-    //   75: invokespecial 651	mqq/app/BaseActivity:onCreate	(Landroid/os/Bundle;)V
+    //   75: invokespecial 665	mqq/app/BaseActivity:onCreate	(Landroid/os/Bundle;)V
     //   78: aload_0
-    //   79: invokevirtual 655	com/tencent/mobileqq/pluginsdk/BasePluginActivity:getIntent	()Landroid/content/Intent;
-    //   82: ldc_w 657
+    //   79: invokevirtual 669	com/tencent/mobileqq/pluginsdk/BasePluginActivity:getIntent	()Landroid/content/Intent;
+    //   82: ldc_w 671
     //   85: iconst_0
-    //   86: invokevirtual 573	android/content/Intent:getBooleanExtra	(Ljava/lang/String;Z)Z
+    //   86: invokevirtual 583	android/content/Intent:getBooleanExtra	(Ljava/lang/String;Z)Z
     //   89: ifeq +12 -> 101
     //   92: aload_0
     //   93: aload_0
     //   94: getfield 270	com/tencent/mobileqq/pluginsdk/BasePluginActivity:mOutActivity	Landroid/app/Activity;
     //   97: aload_0
-    //   98: invokevirtual 661	com/tencent/mobileqq/pluginsdk/BasePluginActivity:readyPluginInterface	(Landroid/content/Context;Lcom/tencent/mobileqq/pluginsdk/PluginInterfaceHelper$OnPluginInterfaceLoadedListener;)V
+    //   98: invokevirtual 675	com/tencent/mobileqq/pluginsdk/BasePluginActivity:readyPluginInterface	(Landroid/content/Context;Lcom/tencent/mobileqq/pluginsdk/PluginInterfaceHelper$OnPluginInterfaceLoadedListener;)V
     //   101: return
     //   102: astore_2
     //   103: ldc 237
     //   105: iconst_1
-    //   106: ldc_w 663
+    //   106: ldc_w 677
     //   109: aload_2
-    //   110: invokestatic 669	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   110: invokestatic 683	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   113: goto -72 -> 41
     //   116: aload_0
     //   117: aload_1
-    //   118: invokespecial 651	mqq/app/BaseActivity:onCreate	(Landroid/os/Bundle;)V
+    //   118: invokespecial 665	mqq/app/BaseActivity:onCreate	(Landroid/os/Bundle;)V
     //   121: aload_0
     //   122: aload_0
     //   123: putfield 225	com/tencent/mobileqq/pluginsdk/BasePluginActivity:mActivity	Landroid/app/Activity;

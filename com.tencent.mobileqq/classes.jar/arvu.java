@@ -1,24 +1,35 @@
-import android.content.Intent;
-import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
-import com.tencent.mobileqq.filemanager.widget.SendBottomBar;
-import java.util.ArrayList;
+import android.os.Bundle;
+import com.tencent.mobileqq.data.EmoticonPackage;
+import com.tencent.qphone.base.util.QLog;
 
 class arvu
-  implements arrh
+  extends arvd
 {
   arvu(arvt paramarvt) {}
   
-  public void a()
+  public void a(EmoticonPackage paramEmoticonPackage, int paramInt, Bundle paramBundle)
   {
-    ArrayList localArrayList = new ArrayList();
-    localArrayList.addAll(arbs.a());
-    Intent localIntent = new Intent();
-    localIntent.putParcelableArrayListExtra("sFilesSelected", localArrayList);
-    SendBottomBar.a(this.a.a).setResult(-1, localIntent);
-    SendBottomBar.a(this.a.a).finish();
+    super.a(paramEmoticonPackage, paramInt, paramBundle);
+    if ((paramEmoticonPackage != null) && (paramInt == 0))
+    {
+      paramBundle = paramBundle.getBundle("jsonReqParams");
+      if (paramBundle != null)
+      {
+        paramInt = paramBundle.getInt(arvt.jdField_a_of_type_JavaLangString);
+        paramBundle = paramBundle.getString(arvt.b);
+        if (QLog.isColorLevel()) {
+          QLog.d("SogouEmoji", 2, "func onEmojiJsonBack begins, taskId:" + paramInt + ",packId:" + paramEmoticonPackage.epId);
+        }
+        boolean bool = this.a.jdField_a_of_type_Arvy.a(paramInt);
+        if (bool) {
+          this.a.a(paramEmoticonPackage.epId, paramBundle, false);
+        }
+        if (QLog.isColorLevel()) {
+          QLog.d("SogouEmoji", 2, "func onEmojiJsonBack ends, isTaskExist:" + bool);
+        }
+      }
+    }
   }
-  
-  public void b() {}
 }
 
 

@@ -1,12 +1,14 @@
-import com.tencent.qqmini.sdk.core.widget.NavigationBar;
+import android.widget.TextView;
 
-public abstract interface bgra
+class bgra
 {
-  public abstract void a(NavigationBar paramNavigationBar);
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  
+  private bgra(bgqu parambgqu) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bgra
  * JD-Core Version:    0.7.0.1
  */

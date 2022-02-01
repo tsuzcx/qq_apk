@@ -1,28 +1,26 @@
-import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils.15.1;
-import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils.15.2;
-import com.tencent.mobileqq.app.BaseActivity;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import android.widget.ListView;
+import com.tencent.biz.pubaccount.readinjoy.ad.view.GiftPkgSelectDialog.1.1;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public final class orv
-  implements biab
+public class orv
+  implements AdapterView.OnItemClickListener
 {
-  orv(BaseActivity paramBaseActivity) {}
+  orv(oru paramoru) {}
   
-  public void a(biaa parambiaa)
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    switch (parambiaa.a)
-    {
-    default: 
-      return;
-    case 0: 
-      rvv.a(this.a, new ReadInJoyUtils.15.1(this));
-      return;
-    }
-    rvv.a(this.a, new ReadInJoyUtils.15.2(this));
+    oru.a(this.a, paramInt);
+    oru.a(this.a).notifyDataSetChanged();
+    oru.a(this.a).postDelayed(new GiftPkgSelectDialog.1.1(this, paramInt), 100L);
+    EventCollector.getInstance().onItemClick(paramAdapterView, paramView, paramInt, paramLong);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     orv
  * JD-Core Version:    0.7.0.1
  */

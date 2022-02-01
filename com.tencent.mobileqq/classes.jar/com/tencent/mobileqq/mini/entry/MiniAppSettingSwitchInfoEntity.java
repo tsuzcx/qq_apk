@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.mini.entry;
 
-import awge;
-import awhs;
+import com.tencent.mobileqq.persistence.Entity;
+import com.tencent.mobileqq.persistence.unique;
 
 public class MiniAppSettingSwitchInfoEntity
-  extends awge
+  extends Entity
 {
   public static final String TAG = "MiniAppSettingSwitchInfoEntity";
-  @awhs
+  @unique
   public String key;
   public String subTitle;
   public String title;
@@ -32,7 +32,7 @@ public class MiniAppSettingSwitchInfoEntity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.entry.MiniAppSettingSwitchInfoEntity
  * JD-Core Version:    0.7.0.1
  */

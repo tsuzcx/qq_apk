@@ -11,24 +11,23 @@ class VideoView$4
   
   public void run()
   {
-    try
+    synchronized (this.this$0)
     {
-      VideoView.a(this.this$0, TVK_SDKMgr.getProxyFactory());
-      if (VideoView.a(this.this$0) != null)
+      VideoView.access$602(this.this$0, TVK_SDKMgr.getProxyFactory());
+      if (VideoView.access$600(this.this$0) != null)
       {
-        VideoView.a(this.this$0, VideoView.a(this.this$0));
-        VideoView.a(this.this$0, VideoView.a(this.this$0).createMediaPlayer(VideoView.a(this.this$0), VideoView.b(this.this$0)));
-        if (VideoView.a(this.this$0) != null)
+        VideoView.access$702(this.this$0, VideoView.access$800(this.this$0));
+        VideoView.access$902(this.this$0, VideoView.access$600(this.this$0).createMediaPlayer(VideoView.access$1000(this.this$0), VideoView.access$700(this.this$0)));
+        if (VideoView.access$900(this.this$0) != null)
         {
-          VideoView.a(this.this$0).updatePlayerVideoView(VideoView.b(this.this$0));
-          VideoView.a(this.this$0, false);
-          VideoView.d(this.this$0);
+          VideoView.access$900(this.this$0).updatePlayerVideoView(VideoView.access$700(this.this$0));
+          VideoView.access$1100(this.this$0, false);
+          VideoView.access$1200(this.this$0);
           this.a.run();
         }
       }
       return;
     }
-    finally {}
   }
 }
 

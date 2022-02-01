@@ -1,29 +1,9 @@
-import android.view.View;
-import android.view.View.OnFocusChangeListener;
-import android.widget.EditText;
-import com.tencent.mobileqq.activity.qwallet.fragment.LingHbFragment;
-import com.tencent.mobileqq.activity.qwallet.redpacket.draw.ChooseItemView;
-import com.tencent.qphone.base.util.QLog;
+import android.widget.TextView;
 
 public class aiyf
-  implements View.OnFocusChangeListener
+  extends aiyk
 {
-  public aiyf(LingHbFragment paramLingHbFragment) {}
-  
-  public void onFocusChange(View paramView, boolean paramBoolean)
-  {
-    if (paramBoolean) {
-      LingHbFragment.a(this.a).a(this.a.c.getText().toString(), false);
-    }
-    for (;;)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("LingHbFragment", 2, "onFocusChange:" + paramBoolean);
-      }
-      return;
-      LingHbFragment.a(this.a).a();
-    }
-  }
+  public TextView a;
 }
 
 

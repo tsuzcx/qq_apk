@@ -1,9 +1,6 @@
-import java.io.File;
-
-public class bkpc
+public abstract interface bkpc
 {
-  public static final String a = bkpi.b + File.separator + "gif";
-  public static final String b = a + File.separator + "gifPreview";
+  public abstract String a(int paramInt);
 }
 
 

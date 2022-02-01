@@ -8,9 +8,9 @@ import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.MotionEvent;
-import bdnn;
-import bkgp;
-import bkgq;
+import bgsp;
+import bmvi;
+import bmvj;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.ditto.DittoAreaView;
@@ -172,7 +172,7 @@ public class DesktopDittoAreaView
                 localObject6 = localJSONObject.optString("reserves2");
                 localObject5 = localJSONObject.optString("reserves3");
                 str3 = localJSONObject.optString("reserves4");
-                if (!bdnn.a((String)localObject1)) {
+                if (!bgsp.a((String)localObject1)) {
                   continue;
                 }
                 localObject1 = new MiniAppExposureManager.CardModuleExposureData("desktop", str1, str2, (String)localObject6, (String)localObject5, str3);
@@ -272,22 +272,22 @@ public class DesktopDittoAreaView
         }
         for (;;)
         {
-          localObject3 = new bkgq();
+          localObject3 = new bmvj();
           localObject4 = BaseApplicationImpl.getApplication().getRuntime();
           paramDittoArea = "";
           if (localObject4 != null) {
             paramDittoArea = ((AppRuntime)localObject4).getAccount();
           }
           long l = NetConnInfoCenter.getServerTimeMillis() / 1000L;
-          ((bkgq)localObject3).b = (paramDittoArea + "_" + l);
-          ((bkgq)localObject3).jdField_a_of_type_Int = 1;
-          ((bkgq)localObject3).jdField_e_of_type_JavaLangString = ((String)localObject1);
-          ((bkgq)localObject3).f = ((String)localObject2);
-          ((bkgq)localObject3).g = paramString;
-          ((bkgq)localObject3).d = 102;
-          ((bkgq)localObject3).jdField_e_of_type_Int = 1;
-          ((bkgq)localObject3).jdField_a_of_type_Long = l;
-          bkgp.a().a((bkgq)localObject3);
+          ((bmvj)localObject3).b = (paramDittoArea + "_" + l);
+          ((bmvj)localObject3).jdField_a_of_type_Int = 1;
+          ((bmvj)localObject3).jdField_e_of_type_JavaLangString = ((String)localObject1);
+          ((bmvj)localObject3).f = ((String)localObject2);
+          ((bmvj)localObject3).g = paramString;
+          ((bmvj)localObject3).d = 102;
+          ((bmvj)localObject3).jdField_e_of_type_Int = 1;
+          ((bmvj)localObject3).jdField_a_of_type_Long = l;
+          bmvi.a().a((bmvj)localObject3);
           if (!paramMotionEvent.has("appId")) {
             break label493;
           }
@@ -457,7 +457,7 @@ public class DesktopDittoAreaView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.entry.desktop.widget.DesktopDittoAreaView
  * JD-Core Version:    0.7.0.1
  */

@@ -1,15 +1,18 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.TroopAssisSettingActivity;
-import com.tencent.widget.ExpandableListView;
+import android.app.Dialog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.DiscussionInfoCardActivity;
 
-public class aebq
-  implements bhwx
+class aebq
+  implements DialogInterface.OnClickListener
 {
-  public aebq(TroopAssisSettingActivity paramTroopAssisSettingActivity) {}
+  aebq(aebp paramaebp) {}
   
-  public boolean a(ExpandableListView paramExpandableListView, View paramView, int paramInt, long paramLong)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return true;
+    if ((this.a.a.a != null) && (this.a.a.a.isShowing()) && (this.a.a.a.getWindow() != null)) {
+      this.a.a.a.dismiss();
+    }
   }
 }
 

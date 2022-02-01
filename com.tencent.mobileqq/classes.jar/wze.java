@@ -1,20 +1,29 @@
-import android.os.Handler;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspProfileStoryFeedIdList;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.FeedSeqInfo;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
-class wze
-  implements axpu
+public class wze
+  extends wkz
 {
-  wze(wzb paramwzb) {}
+  public List<yib> a = new ArrayList();
   
-  public void a()
+  public wze(qqstory_service.RspProfileStoryFeedIdList paramRspProfileStoryFeedIdList)
   {
-    this.a.jdField_a_of_type_Boolean = false;
-    this.a.jdField_a_of_type_AndroidOsHandler.postDelayed(this.a.jdField_a_of_type_JavaLangRunnable, 10000L);
-    ((xet)uwa.a(8)).a(xrm.a(this.a.jdField_a_of_type_Xan.a), this.a.jdField_a_of_type_Xfg);
+    super(paramRspProfileStoryFeedIdList.result, paramRspProfileStoryFeedIdList.is_end, paramRspProfileStoryFeedIdList.next_cookie);
+    paramRspProfileStoryFeedIdList = paramRspProfileStoryFeedIdList.feed_seq_info_list.get().iterator();
+    while (paramRspProfileStoryFeedIdList.hasNext())
+    {
+      qqstory_struct.FeedSeqInfo localFeedSeqInfo = (qqstory_struct.FeedSeqInfo)paramRspProfileStoryFeedIdList.next();
+      this.a.add(new yib(localFeedSeqInfo));
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     wze
  * JD-Core Version:    0.7.0.1
  */

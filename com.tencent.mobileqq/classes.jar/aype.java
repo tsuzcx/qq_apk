@@ -1,78 +1,159 @@
-import android.content.Context;
-import android.content.Intent;
-import android.view.View;
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
-import com.tencent.mobileqq.activity.selectmember.TroopAddFrdsInnerFrame;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.TroopMemberInfo;
+import com.tencent.mobileqq.data.AutoReplyText;
+import mqq.app.AppRuntime.Status;
 
 public class aype
-  extends aymq
 {
-  TroopMemberInfo jdField_a_of_type_ComTencentMobileqqDataTroopMemberInfo;
-  String jdField_a_of_type_JavaLangString;
-  
-  public aype(QQAppInterface paramQQAppInterface, int paramInt, TroopMemberInfo paramTroopMemberInfo, String paramString)
+  public static void a(QQAppInterface paramQQAppInterface)
   {
-    super(paramQQAppInterface, paramInt, paramTroopMemberInfo);
-    this.jdField_a_of_type_ComTencentMobileqqDataTroopMemberInfo = paramTroopMemberInfo;
-    this.jdField_a_of_type_JavaLangString = paramString;
+    if (paramQQAppInterface != null) {
+      bcst.b(paramQQAppInterface, "dc00898", "", "", "0X8009DDA", "0X8009DDA", 0, 0, "", "", "", "");
+    }
   }
   
-  public void a(View paramView)
+  public static void a(QQAppInterface paramQQAppInterface, AppRuntime.Status paramStatus, long paramLong)
   {
-    Context localContext = paramView.getContext();
-    if ((paramView.getId() == 2131375716) && (this.b == 23)) {
-      TroopAddFrdsInnerFrame.a(localContext, this.jdField_a_of_type_ComTencentMobileqqDataTroopMemberInfo, this.jdField_a_of_type_JavaLangString, false);
+    int i;
+    if ((paramQQAppInterface != null) && (paramStatus != null)) {
+      switch (aypf.a[paramStatus.ordinal()])
+      {
+      default: 
+        i = 0;
+      }
     }
-    while (this.b != 23) {
+    for (;;)
+    {
+      int j = i;
+      if (i == 1)
+      {
+        j = i;
+        if (paramLong > 0L) {
+          j = (int)paramLong;
+        }
+      }
+      if (j != 0) {
+        bcst.b(paramQQAppInterface, "dc00898", "", "", "0X8009DDB", "0X8009DDB", j, 0, "", "", "", "");
+      }
       return;
+      i = 1;
+      continue;
+      i = 2;
+      continue;
+      i = 3;
+      continue;
+      i = 4;
+      continue;
+      i = 5;
+      continue;
+      i = 6;
     }
-    Intent localIntent = new Intent(localContext, FriendProfileCardActivity.class);
-    localIntent.putExtra("troopUin", this.jdField_a_of_type_ComTencentMobileqqDataTroopMemberInfo.troopuin);
-    localIntent.putExtra("memberUin", this.jdField_a_of_type_ComTencentMobileqqDataTroopMemberInfo.memberuin);
-    localIntent.putExtra("fromFlag", 1);
-    localIntent.putExtra("selfSet_leftViewText", paramView.getContext().getString(2131721076));
-    localIntent.putExtra("custom_leftbackbutton_name", paramView.getContext().getString(2131690623));
-    awrt.a(localContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localIntent, 9);
   }
   
-  public CharSequence c()
+  public static void a(QQAppInterface paramQQAppInterface, AppRuntime.Status paramStatus, long paramLong, AutoReplyText paramAutoReplyText)
   {
-    alto localalto = (alto)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(51);
-    if (localalto.b(this.jdField_a_of_type_ComTencentMobileqqDataTroopMemberInfo.memberuin)) {
-      return alud.a(2131715647);
+    if ((paramQQAppInterface != null) && (paramAutoReplyText != null) && (aypc.a(paramStatus)))
+    {
+      int i = 1;
+      if (paramAutoReplyText.getTextId() == 2147483647) {
+        i = 2;
+      }
+      bcst.b(paramQQAppInterface, "dc00898", "", "", "0X8009DDC", "0X8009DDC", i, 0, "", "", "", "");
     }
-    if (localalto.a(this.jdField_a_of_type_ComTencentMobileqqDataTroopMemberInfo.memberuin, false)) {
-      return alud.a(2131715648);
-    }
-    return null;
   }
   
-  public String c()
+  public static void a(QQAppInterface paramQQAppInterface, boolean paramBoolean)
   {
-    return bdgc.h(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataTroopMemberInfo.troopuin, this.jdField_a_of_type_ComTencentMobileqqDataTroopMemberInfo.memberuin);
-  }
-  
-  public CharSequence d()
-  {
-    return null;
-  }
-  
-  public String d()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqDataTroopMemberInfo.commonFrdCnt <= 0) {
-      return "";
+    String str1;
+    if (paramQQAppInterface != null)
+    {
+      if (!paramBoolean) {
+        break label41;
+      }
+      str1 = "0X8009DDE";
+      if (!paramBoolean) {
+        break label47;
+      }
     }
-    return this.jdField_a_of_type_ComTencentMobileqqDataTroopMemberInfo.commonFrdCnt + alud.a(2131715649);
+    label41:
+    label47:
+    for (String str2 = "0X8009DDE";; str2 = "0X8009DDF")
+    {
+      bcst.b(paramQQAppInterface, "dc00898", "", "", str1, str2, 0, 0, "", "", "", "");
+      return;
+      str1 = "0X8009DDF";
+      break;
+    }
   }
   
-  public int f()
+  public static void a(AppRuntime.Status paramStatus, long paramLong)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqDataTroopMemberInfo.commonFrdCnt < 0) {
-      return 0;
+    int i = -1;
+    switch (aypf.a[paramStatus.ordinal()])
+    {
     }
-    return this.jdField_a_of_type_ComTencentMobileqqDataTroopMemberInfo.commonFrdCnt;
+    for (;;)
+    {
+      int j = i;
+      if (i == 1)
+      {
+        j = i;
+        if (paramLong > 0L) {
+          j = (int)paramLong;
+        }
+      }
+      aypy.a("0X800AF3D", j);
+      return;
+      i = 1;
+      continue;
+      i = 2;
+      continue;
+      i = 3;
+      continue;
+      i = 4;
+      continue;
+      i = 5;
+      continue;
+      i = 6;
+    }
+  }
+  
+  public static void b(QQAppInterface paramQQAppInterface)
+  {
+    if (paramQQAppInterface != null) {
+      bcst.b(paramQQAppInterface, "dc00898", "", "", "0X8009DDD", "0X8009DDD", 0, 0, "", "", "", "");
+    }
+  }
+  
+  public static void b(QQAppInterface paramQQAppInterface, AppRuntime.Status paramStatus, long paramLong)
+  {
+    int i = -1;
+    switch (aypf.a[paramStatus.ordinal()])
+    {
+    }
+    for (;;)
+    {
+      int j = i;
+      if (i == 1)
+      {
+        j = i;
+        if (paramLong > 0L) {
+          j = (int)paramLong;
+        }
+      }
+      bcst.b(paramQQAppInterface, "dc00898", "", "", "0X8009DE0", "0X8009DE0", j, 0, "", "", "", "");
+      return;
+      i = 1;
+      continue;
+      i = 2;
+      continue;
+      i = 3;
+      continue;
+      i = 4;
+      continue;
+      i = 5;
+      continue;
+      i = 6;
+    }
   }
 }
 

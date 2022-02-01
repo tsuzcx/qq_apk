@@ -1,6 +1,15 @@
+import android.view.View.OnClickListener;
+import android.widget.TextView;
+
 public abstract interface asuv
 {
-  public abstract void a(int paramInt);
+  public abstract View.OnClickListener a(TextView paramTextView);
+  
+  public abstract boolean a();
+  
+  public abstract boolean b();
+  
+  public abstract boolean c();
 }
 
 

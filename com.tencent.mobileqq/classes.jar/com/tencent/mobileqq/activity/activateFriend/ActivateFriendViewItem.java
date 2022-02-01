@@ -36,11 +36,11 @@ public class ActivateFriendViewItem
   
   private void a(Context paramContext, boolean paramBoolean1, boolean paramBoolean2)
   {
-    LayoutInflater.from(paramContext).inflate(2131560791, this, true);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131367819));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131371901));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131370977));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131363295));
+    LayoutInflater.from(paramContext).inflate(2131560995, this, true);
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131368138));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131372473));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131371539));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131363485));
     if (!paramBoolean2)
     {
       this.jdField_a_of_type_AndroidWidgetTextView.setHorizontallyScrolling(false);
@@ -48,7 +48,7 @@ public class ActivateFriendViewItem
     }
     if (!paramBoolean1)
     {
-      paramContext = findViewById(2131367556).getBackground();
+      paramContext = findViewById(2131367868).getBackground();
       if ((paramContext != null) && ((paramContext instanceof GradientDrawable))) {
         ((GradientDrawable)paramContext).setColor(-1);
       }
@@ -82,7 +82,7 @@ public class ActivateFriendViewItem
   {
     this.jdField_a_of_type_Boolean = paramBoolean;
     if (this.jdField_a_of_type_Boolean) {
-      this.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130844340);
+      this.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130844734);
     }
     for (;;)
     {
@@ -93,7 +93,7 @@ public class ActivateFriendViewItem
       }
       setContentDescription(str1);
       return;
-      this.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130844342);
+      this.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130844736);
     }
   }
   
@@ -114,7 +114,7 @@ public class ActivateFriendViewItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.activateFriend.ActivateFriendViewItem
  * JD-Core Version:    0.7.0.1
  */

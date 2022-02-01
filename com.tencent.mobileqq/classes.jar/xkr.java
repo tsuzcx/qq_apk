@@ -1,96 +1,52 @@
-import android.content.Context;
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.AbsListView.LayoutParams;
-import android.widget.RelativeLayout;
-import android.widget.RelativeLayout.LayoutParams;
-import com.tencent.biz.qqstory.app.QQStoryContext;
-import com.tencent.mobileqq.theme.ThemeUtil;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.storyHome.model.CommentLikeFeedItem;
 
 public class xkr
-  extends xku
+  extends wfr<xko, wmr>
 {
-  private final int b;
-  private boolean c;
-  private boolean d;
-  
-  public xkr(Context paramContext, String paramString, int paramInt)
+  public xkr(xko paramxko)
   {
-    super(paramContext, paramString, -1);
-    int i = paramInt;
-    if (paramInt < 0) {
-      i = 0;
+    super(paramxko);
+  }
+  
+  public void a(@NonNull xko paramxko, @NonNull wmr paramwmr)
+  {
+    if ((paramwmr.jdField_a_of_type_Int == 2) || (!paramwmr.jdField_a_of_type_JavaLangString.equals(xko.a(paramxko))) || (xko.a(paramxko) == null) || (xko.a(paramxko).jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem == null)) {
+      yqp.b(this.TAG, "ignore this feed info change event. %s.", paramwmr.toString());
     }
-    this.b = i;
-  }
-  
-  public int a()
-  {
-    return 1;
-  }
-  
-  public int a(int paramInt)
-  {
-    return 4;
-  }
-  
-  public View a(int paramInt, ViewGroup paramViewGroup)
-  {
-    paramViewGroup = new RelativeLayout(this.a);
-    paramViewGroup.setLayoutParams(new AbsListView.LayoutParams(-1, this.b));
-    paramViewGroup.setBackgroundResource(2130849535);
-    paramInt = -2170912;
-    QQStoryContext.a();
-    if (ThemeUtil.isNowThemeIsNight(QQStoryContext.a(), false, null)) {
-      paramInt = -16444373;
-    }
-    View localView = new View(this.a);
-    Object localObject = new RelativeLayout.LayoutParams(-1, xsm.a(this.a, 1.0F));
-    ((RelativeLayout.LayoutParams)localObject).addRule(10);
-    localView.setLayoutParams((ViewGroup.LayoutParams)localObject);
-    localView.setBackgroundColor(paramInt);
-    localObject = new View(this.a);
-    RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, xsm.a(this.a, 1.0F));
-    localLayoutParams.addRule(12);
-    ((View)localObject).setLayoutParams(localLayoutParams);
-    ((View)localObject).setBackgroundColor(paramInt);
-    paramViewGroup.addView(localView);
-    paramViewGroup.addView((View)localObject);
-    return paramViewGroup;
-  }
-  
-  public void a(int paramInt) {}
-  
-  public void a(int paramInt, View paramView)
-  {
-    View localView = ((ViewGroup)paramView).getChildAt(0);
-    paramView = ((ViewGroup)paramView).getChildAt(1);
-    if (this.c) {
-      localView.setVisibility(0);
-    }
-    while (this.d)
+    xkx localxkx;
+    do
     {
-      paramView.setVisibility(0);
       return;
-      localView.setVisibility(4);
-    }
-    paramView.setVisibility(4);
+      yqp.a(this.TAG, "receive feed info change event. %s.", paramwmr.toString());
+      localxkx = paramxko.a();
+      switch (paramwmr.b)
+      {
+      default: 
+        return;
+      }
+      if (paramwmr.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem != null)
+      {
+        xko.a(paramxko).jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.mCommentCount = paramwmr.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.mCommentCount;
+        xko.a(paramxko).jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.mFriendCommentCount = paramwmr.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.mFriendCommentCount;
+        xko.a(paramxko).jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.mFanCommentCount = paramwmr.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.mFanCommentCount;
+      }
+      xko.a(paramxko).a(paramwmr.c);
+    } while (localxkx == null);
+    localxkx.a(xko.a(paramxko), paramwmr.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess());
   }
   
-  public void a(boolean paramBoolean) {}
-  
-  public void a(boolean paramBoolean1, boolean paramBoolean2)
+  public Class acceptEventClass()
   {
-    this.c = paramBoolean1;
-    this.d = paramBoolean2;
+    return wmr.class;
   }
   
-  public void b(boolean paramBoolean) {}
+  public void b(@NonNull xko paramxko, @NonNull wmr paramwmr) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     xkr
  * JD-Core Version:    0.7.0.1
  */

@@ -1,50 +1,33 @@
-import com.tencent.mobileqq.filemanager.settings.FMSettings.4;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.CustomEmotionData;
+import com.tencent.mobileqq.emotionintegrate.AIOEmotionFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class arqy
-  implements arqw
+class arqy
+  implements View.OnClickListener
 {
-  public arqy(FMSettings.4 param4) {}
+  arqy(arqx paramarqx, Dialog paramDialog) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    synchronized (this.a.this$0)
-    {
-      arqx localarqx2 = this.a.this$0;
-      localarqx2.jdField_a_of_type_Int += 1;
-      arqx.a(1, "onMovedOver,count[" + this.a.this$0.jdField_a_of_type_Int + "],total[" + this.a.jdField_a_of_type_Int + "]");
-      if (this.a.this$0.jdField_a_of_type_Int == this.a.jdField_a_of_type_Int)
-      {
-        arqx.a(1, "moveFileToDefaultPath,move over!");
-        this.a.jdField_a_of_type_Arqw.a();
-      }
-      return;
-    }
+    this.jdField_a_of_type_AndroidAppDialog.dismiss();
+    arro localarro = (arro)this.jdField_a_of_type_Arqx.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(149);
+    CustomEmotionData localCustomEmotionData = this.jdField_a_of_type_Arqx.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData;
+    asaz localasaz = new asaz();
+    localasaz.c = 4;
+    localasaz.e = localarro.a(localCustomEmotionData);
+    localasaz.jdField_d_of_type_Int = 2;
+    localasaz.jdField_d_of_type_JavaLangString = localCustomEmotionData.eId;
+    localasaz.f = localCustomEmotionData.url;
+    localasaz.h = localCustomEmotionData.RomaingType;
+    localasaz.jdField_g_of_type_Int = localCustomEmotionData.emoId;
+    localasaz.jdField_g_of_type_JavaLangString = localCustomEmotionData.resid;
+    AIOEmotionFragment.a(this.jdField_a_of_type_Arqx.jdField_a_of_type_AndroidContentContext, localasaz, null);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
-  
-  public void a(int paramInt)
-  {
-    synchronized (this.a.this$0)
-    {
-      arqx localarqx2 = this.a.this$0;
-      localarqx2.jdField_a_of_type_Int += 1;
-      arqx.a(1, "onMoveFail,count[" + this.a.this$0.jdField_a_of_type_Int + "],total[" + this.a.jdField_a_of_type_Int + "]");
-      if (this.a.this$0.jdField_a_of_type_Int == this.a.jdField_a_of_type_Int)
-      {
-        arqx.a(1, "moveFileToDefaultPath,move over!");
-        this.a.jdField_a_of_type_Arqw.a(16);
-      }
-      return;
-    }
-  }
-  
-  public void a(long paramLong1, long paramLong2)
-  {
-    arqx localarqx = this.a.this$0;
-    localarqx.jdField_a_of_type_Long += paramLong1;
-    this.a.jdField_a_of_type_Arqw.a(this.a.this$0.jdField_a_of_type_Long, this.a.this$0.b);
-  }
-  
-  public void a(String paramString1, String paramString2) {}
 }
 
 

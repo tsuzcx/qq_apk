@@ -1,15 +1,16 @@
-import com.tencent.mobileqq.activity.Conversation;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import com.tencent.gdtad.views.form.framework.GdtFormTableView;
+import com.tencent.gdtad.views.form.framework.GdtFormTableView.1.1;
 
 public class acsv
-  implements babe
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public acsv(Conversation paramConversation) {}
+  public acsv(GdtFormTableView paramGdtFormTableView) {}
   
-  public void a(boolean paramBoolean)
+  public void onGlobalLayout()
   {
-    if (this.a.a != null) {
-      this.a.a.b();
-    }
+    this.a.a(-1);
+    this.a.post(new GdtFormTableView.1.1(this));
   }
 }
 

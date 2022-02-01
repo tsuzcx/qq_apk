@@ -1,158 +1,111 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
+import android.content.Context;
+import android.view.View;
+import android.widget.ImageView;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.inputstatus.InputStatusPushManager.1;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.data.MessageForTroopFile;
+import com.tencent.mobileqq.troop.utils.TroopFileTransferManager;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import mqq.manager.Manager;
 
 public class asyu
-  implements Manager
+  extends asyr
 {
-  private static final String jdField_a_of_type_JavaLangString = asyu.class.getSimpleName();
-  private Handler jdField_a_of_type_AndroidOsHandler;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private Runnable jdField_a_of_type_JavaLangRunnable = new InputStatusPushManager.1(this);
-  private WeakReference<BaseChatPie> jdField_a_of_type_JavaLangRefWeakReference;
-  
-  public asyu(QQAppInterface paramQQAppInterface)
+  public asyu(QQAppInterface paramQQAppInterface, Context paramContext)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    super(paramQQAppInterface, paramContext);
   }
   
-  private Handler a()
+  protected ImageView a(afwr paramafwr)
   {
-    if (this.jdField_a_of_type_AndroidOsHandler == null) {
-      this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
+    if (paramafwr == null) {}
+    while (!(paramafwr instanceof ahfe)) {
+      return null;
     }
-    return this.jdField_a_of_type_AndroidOsHandler;
+    return ((ahfe)paramafwr).a;
   }
   
-  private asyq a()
+  protected void a(afwr paramafwr, ImageView paramImageView)
   {
-    if (this.jdField_a_of_type_JavaLangRefWeakReference.get() != null) {
-      return (asyq)((BaseChatPie)this.jdField_a_of_type_JavaLangRefWeakReference.get()).a(16);
+    if (paramafwr == null) {}
+    while (!(paramafwr instanceof ahfe)) {
+      return;
     }
-    return null;
+    ((ahfe)paramafwr).a = paramImageView;
   }
   
-  private boolean a()
+  protected void a(View paramView, afwr paramafwr, ChatMessage paramChatMessage, int paramInt)
   {
-    if ((this.jdField_a_of_type_JavaLangRefWeakReference != null) && ((this.jdField_a_of_type_JavaLangRefWeakReference.get() instanceof agse))) {
-      return c();
-    }
-    return b();
-  }
-  
-  private boolean b()
-  {
-    try
+    if (paramChatMessage == null) {}
+    do
     {
-      asyo localasyo = (asyo)aoks.a().a(445);
-      if (localasyo != null)
+      do
       {
-        boolean bool = localasyo.a;
-        return bool;
-      }
-    }
-    catch (Exception localException)
-    {
-      QLog.e(jdField_a_of_type_JavaLangString, 1, localException, new Object[0]);
-    }
-    return false;
+        do
+        {
+          do
+          {
+            do
+            {
+              return;
+              QLog.i("TroopFileBubblePauseHandler", 1, "handlePauseClick: type[" + paramInt + "]");
+            } while (paramInt == -1);
+            paramafwr = (MessageForTroopFile)paramChatMessage;
+            paramView = TroopFileTransferManager.a(this.a, Long.parseLong(paramChatMessage.frienduin));
+          } while (paramView == null);
+          paramafwr = bfsj.a(this.a, paramafwr);
+        } while (paramafwr == null);
+        if (paramInt != 0) {
+          break;
+        }
+      } while ((paramafwr.b != 0) && (paramafwr.b != 1));
+      bcst.b(this.a, "dc00898", "", "", "0X800A7F1", "0X800A7F1", 2, 0, "", "", "", "");
+      paramView.a(paramafwr.a);
+      return;
+    } while ((paramInt != 1) || (paramafwr.b != 2));
+    bcst.b(this.a, "dc00898", "", "", "0X800A7F2", "0X800A7F2", 2, 0, "", "", "", "");
+    a(new asyv(this, paramChatMessage.frienduin, paramafwr));
   }
   
-  private boolean c()
+  protected boolean a(ChatMessage paramChatMessage)
   {
-    try
+    if (paramChatMessage == null) {}
+    do
     {
-      asyo localasyo = (asyo)aoks.a().a(445);
-      if (localasyo != null)
+      do
       {
-        boolean bool = localasyo.b;
-        return bool;
+        do
+        {
+          return false;
+        } while (!(paramChatMessage instanceof MessageForTroopFile));
+        paramChatMessage = (MessageForTroopFile)paramChatMessage;
+        paramChatMessage = bfsj.a(this.a, paramChatMessage);
+      } while (paramChatMessage == null);
+      if (QLog.isColorLevel()) {
+        QLog.i("TroopFileBubblePauseHandler", 1, "needShowPauseIcon: current file status[" + paramChatMessage.b + "]");
       }
-    }
-    catch (Exception localException)
-    {
-      QLog.e(jdField_a_of_type_JavaLangString, 1, localException, new Object[0]);
-    }
+    } while ((paramChatMessage.b != 0) && (paramChatMessage.b != 1));
     return true;
   }
   
-  void a()
+  protected boolean b(ChatMessage paramChatMessage)
   {
-    a().removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
-  }
-  
-  public void a(long paramLong1, long paramLong2, long paramLong3, int paramInt1, int paramInt2, int paramInt3, String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i(jdField_a_of_type_JavaLangString, 2, "receive fromUin =" + paramLong1 + "，toUin，timeStamp =" + paramLong3 + "，interval =" + paramInt1 + "，showTime =" + paramInt2 + "，eventType = " + paramInt3 + "，statusText =" + paramString);
-    }
-    String str1;
-    boolean bool;
-    if ((this.jdField_a_of_type_JavaLangRefWeakReference != null) && (this.jdField_a_of_type_JavaLangRefWeakReference.get() != null) && (a()))
+    if (paramChatMessage == null) {}
+    do
     {
-      a().removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
-      if (a() != null)
+      do
       {
-        a().a = (paramInt1 * 1000);
-        a().b = paramLong3;
-      }
-      str1 = ((BaseChatPie)this.jdField_a_of_type_JavaLangRefWeakReference.get()).jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString;
-      String str2 = ((BaseChatPie)this.jdField_a_of_type_JavaLangRefWeakReference.get()).jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
-      if ((TextUtils.equals(str1, String.valueOf(paramLong1))) && (TextUtils.equals(str2, String.valueOf(paramLong2))))
-      {
-        if (paramInt3 == 2) {
-          break label284;
-        }
-        bool = true;
-        if (!bool) {
-          break label300;
-        }
-        str1 = paramString;
-        if (TextUtils.isEmpty(paramString))
+        do
         {
-          if (paramInt3 != 1) {
-            break label290;
-          }
-          str1 = alud.a(2131706181);
-        }
-        label246:
-        a().postDelayed(this.jdField_a_of_type_JavaLangRunnable, paramInt2 * 1000);
+          return false;
+        } while (!(paramChatMessage instanceof MessageForTroopFile));
+        paramChatMessage = (MessageForTroopFile)paramChatMessage;
+        paramChatMessage = bfsj.a(this.a, paramChatMessage);
+      } while (paramChatMessage == null);
+      if (QLog.isColorLevel()) {
+        QLog.i("TroopFileBubblePauseHandler", 1, "needShowResumeIcon: current file status[" + paramChatMessage.b + "]");
       }
-    }
-    for (;;)
-    {
-      if (a() != null) {
-        a().a(bool, str1);
-      }
-      return;
-      label284:
-      bool = false;
-      break;
-      label290:
-      str1 = alud.a(2131706182);
-      break label246;
-      label300:
-      str1 = "";
-    }
-  }
-  
-  public void a(BaseChatPie paramBaseChatPie)
-  {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramBaseChatPie);
-  }
-  
-  public void onDestroy()
-  {
-    if (this.jdField_a_of_type_AndroidOsHandler != null) {
-      this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
-    }
+    } while ((paramChatMessage.b != 3) && (paramChatMessage.b != 2));
+    return true;
   }
 }
 

@@ -1,21 +1,27 @@
-import com.tencent.biz.qqstory.playvideo.MyVideoVisiblePersonPageView;
-import com.tencent.widget.AbsListView;
+import android.content.Context;
+import android.support.v7.widget.LinearLayoutManager;
 
-public class vmt
-  implements bhtv
+class vmt
+  extends LinearLayoutManager
 {
-  public vmt(MyVideoVisiblePersonPageView paramMyVideoVisiblePersonPageView) {}
-  
-  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
+  vmt(vms paramvms, Context paramContext, int paramInt, boolean paramBoolean)
   {
-    this.a.b = paramInt1;
+    super(paramContext, paramInt, paramBoolean);
   }
   
-  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt) {}
+  public boolean canScrollHorizontally()
+  {
+    return false;
+  }
+  
+  public boolean canScrollVertically()
+  {
+    return false;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     vmt
  * JD-Core Version:    0.7.0.1
  */

@@ -1,39 +1,78 @@
-import android.os.Bundle;
-import com.tencent.biz.qqstory.database.CommentEntry;
-import com.tencent.mobileqq.pb.MessageMicro;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.BaseApplication;
-import java.util.concurrent.atomic.AtomicBoolean;
+import android.app.Activity;
+import android.content.Context;
+import android.content.res.Resources;
+import com.tencent.common.app.BaseApplicationImpl;
 
-class wjz
-  implements uud
+public class wjz
 {
-  wjz(wjw paramwjw, CommentEntry paramCommentEntry, boolean paramBoolean) {}
-  
-  public void a(int paramInt, Bundle paramBundle)
+  public static int a(int paramInt)
   {
-    a(-1, alud.a(2131714802));
+    return BaseApplicationImpl.getApplication().getResources().getInteger(paramInt);
   }
   
-  public void a(int paramInt, String paramString)
+  public static Boolean a(int paramInt)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry.status = 0;
-    QQToast.a(BaseApplication.getContext(), 1, alud.a(2131714799), 0).a();
-    wxe.e("Q.qqstory.detail.StoryDetailPresenter", "delete comment failed. errorCode = %d, errorMsg=%s.", new Object[] { Integer.valueOf(paramInt), paramString });
+    return Boolean.valueOf(BaseApplicationImpl.getApplication().getResources().getBoolean(paramInt));
   }
   
-  public void a(MessageMicro paramMessageMicro)
+  public static <T> T a(Class<T> paramClass, Object... paramVarArgs)
   {
-    if (!wjw.a(this.jdField_a_of_type_Wjw).get()) {
-      wjw.a(this.jdField_a_of_type_Wjw, this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry, this.jdField_a_of_type_Boolean);
-    }
+    return wkm.a(paramClass, paramVarArgs);
   }
   
-  public void a(boolean paramBoolean, Bundle paramBundle) {}
+  public static String a(int paramInt)
+  {
+    return BaseApplicationImpl.getApplication().getResources().getString(paramInt);
+  }
+  
+  public static String a(int paramInt, Object... paramVarArgs)
+  {
+    return BaseApplicationImpl.getApplication().getResources().getString(paramInt, paramVarArgs);
+  }
+  
+  public static String a(String paramString)
+  {
+    return paramString;
+  }
+  
+  public static <T extends Activity> wki<T> a(Class<? extends wki<T>> paramClass, Class<wki<T>> paramClass1, Object... paramVarArgs)
+  {
+    return (wki)wkm.a(paramClass, paramClass1, paramVarArgs);
+  }
+  
+  public static zpa a(Context paramContext, int paramInt)
+  {
+    return wkp.a(paramContext, paramInt);
+  }
+  
+  public static void a(Context paramContext, int paramInt, long paramLong)
+  {
+    wks.a(paramContext, paramInt, paramLong);
+  }
+  
+  public static void a(Context paramContext, int paramInt, String paramString)
+  {
+    wks.a(paramContext, paramInt, paramString);
+  }
+  
+  public static void a(Object paramObject)
+  {
+    wkq.a(paramObject);
+  }
+  
+  public static boolean a()
+  {
+    return wkr.a();
+  }
+  
+  public static String[] a(int paramInt)
+  {
+    return BaseApplicationImpl.getApplication().getResources().getStringArray(paramInt);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     wjz
  * JD-Core Version:    0.7.0.1
  */

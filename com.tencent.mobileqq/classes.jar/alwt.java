@@ -1,34 +1,35 @@
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity;
 
 public class alwt
+  implements DialogInterface.OnClickListener
 {
-  public int a;
-  public FromServiceMsg a;
-  public ToServiceMsg a;
-  public Object a;
-  public boolean a;
+  public alwt(ShortVideoPreviewActivity paramShortVideoPreviewActivity) {}
   
-  public alwt(int paramInt, ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg = paramToServiceMsg;
-    this.jdField_a_of_type_ComTencentQphoneBaseRemoteFromServiceMsg = paramFromServiceMsg;
-    this.jdField_a_of_type_JavaLangObject = paramObject;
-  }
-  
-  public alwt(int paramInt, ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject, boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg = paramToServiceMsg;
-    this.jdField_a_of_type_ComTencentQphoneBaseRemoteFromServiceMsg = paramFromServiceMsg;
-    this.jdField_a_of_type_JavaLangObject = paramObject;
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    Object localObject = ShortVideoPreviewActivity.a(this.a);
+    paramDialogInterface = ((Intent)localObject).getStringExtra("PhotoConst.INIT_ACTIVITY_CLASS_NAME");
+    localObject = ((Intent)localObject).getStringExtra("PhotoConst.INIT_ACTIVITY_PACKAGE_NAME");
+    Intent localIntent = new Intent();
+    localIntent.setClassName((String)localObject, paramDialogInterface);
+    localIntent.addFlags(603979776);
+    localIntent.putExtra("file_send_path", this.a.c);
+    localIntent.putExtra("file_send_size", this.a.a);
+    localIntent.putExtra("file_send_duration", this.a.jdField_b_of_type_Long);
+    localIntent.putExtra("file_source", this.a.jdField_b_of_type_JavaLangString);
+    this.a.startActivity(localIntent);
+    ShortVideoPreviewActivity.a(this.a);
+    localObject = new Intent("key_video_select_confirm_ok_click");
+    ((Intent)localObject).putExtra("className", paramDialogInterface);
+    this.a.sendBroadcast((Intent)localObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     alwt
  * JD-Core Version:    0.7.0.1
  */

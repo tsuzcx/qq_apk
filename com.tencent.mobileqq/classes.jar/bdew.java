@@ -1,223 +1,55 @@
-import android.os.SystemClock;
-import android.widget.ListAdapter;
-import com.tencent.mobileqq.bubble.ChatXListView;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.data.MessageForShortVideo;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import java.util.HashSet;
-
 public class bdew
+  extends bdes
 {
-  private static bdew jdField_a_of_type_Bdew = new bdew();
-  private HashMap<String, HashSet<Long>> jdField_a_of_type_JavaUtilHashMap;
-  private HashSet<Object> jdField_a_of_type_JavaUtilHashSet;
-  private HashMap<Object, MessageForShortVideo> jdField_b_of_type_JavaUtilHashMap;
-  private HashSet<Object> jdField_b_of_type_JavaUtilHashSet;
+  private float d;
+  private float e;
+  private float f;
+  private float g;
   
-  public static bdew a()
+  public bdew(int paramInt, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
   {
-    return jdField_a_of_type_Bdew;
+    super(paramInt, 1, 0);
+    this.d = paramFloat1;
+    this.e = paramFloat2;
+    this.f = paramFloat3;
+    this.g = paramFloat4;
   }
   
-  public MessageForShortVideo a(Object paramObject)
+  protected void a(int paramInt, float paramFloat)
   {
-    if ((paramObject != null) && (this.jdField_b_of_type_JavaUtilHashMap != null)) {
-      return (MessageForShortVideo)this.jdField_b_of_type_JavaUtilHashMap.get(paramObject);
-    }
-    return null;
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_JavaUtilHashMap != null)
+    this.a = (this.d + (this.f - this.d) * paramFloat);
+    this.b = (this.e + (this.g - this.e) * paramFloat);
+    if (this.f - this.d > 0.0F)
     {
-      this.jdField_a_of_type_JavaUtilHashMap.clear();
-      this.jdField_a_of_type_JavaUtilHashMap = null;
+      if (this.a >= this.f) {
+        this.a = this.f;
+      }
+      if (this.g - this.e <= 0.0F) {
+        break label162;
+      }
+      if (this.b >= this.g) {
+        this.b = this.g;
+      }
     }
-    if (this.jdField_a_of_type_JavaUtilHashSet != null)
-    {
-      this.jdField_a_of_type_JavaUtilHashSet.clear();
-      this.jdField_a_of_type_JavaUtilHashSet = null;
-    }
-    if (this.jdField_b_of_type_JavaUtilHashSet != null)
-    {
-      this.jdField_b_of_type_JavaUtilHashSet.clear();
-      this.jdField_b_of_type_JavaUtilHashSet = null;
-    }
-    if (this.jdField_b_of_type_JavaUtilHashMap != null)
-    {
-      this.jdField_b_of_type_JavaUtilHashMap.clear();
-      this.jdField_b_of_type_JavaUtilHashMap = null;
-    }
-  }
-  
-  public void a(long paramLong, String paramString)
-  {
-    if (paramLong == 0L) {
-      return;
-    }
-    if (this.jdField_a_of_type_JavaUtilHashMap == null) {
-      this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
-    }
-    HashSet localHashSet2 = (HashSet)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
-    HashSet localHashSet1 = localHashSet2;
-    if (localHashSet2 == null)
-    {
-      localHashSet1 = new HashSet();
-      this.jdField_a_of_type_JavaUtilHashMap.put(paramString, localHashSet1);
-    }
-    localHashSet1.add(Long.valueOf(paramLong));
-  }
-  
-  public void a(ChatXListView paramChatXListView)
-  {
-    if ((this.jdField_a_of_type_JavaUtilHashSet == null) || (this.jdField_a_of_type_JavaUtilHashSet.size() == 0)) {
-      return;
-    }
-    long l1 = SystemClock.uptimeMillis();
-    HashSet localHashSet = new HashSet();
-    int i = paramChatXListView.getFirstVisiblePosition();
-    int k = paramChatXListView.getLastVisiblePosition();
-    int j = paramChatXListView.getHeaderViewsCount();
-    if (i > j) {}
     for (;;)
     {
-      if ((i < j) || (i > k)) {
-        break label147;
-      }
-      try
+      if (paramInt >= this.c)
       {
-        ChatMessage localChatMessage = (ChatMessage)paramChatXListView.getAdapter().getItem(i);
-        if ((localChatMessage != null) && ((localChatMessage instanceof MessageForShortVideo)))
-        {
-          long l2 = localChatMessage.uniseq;
-          if (this.jdField_a_of_type_JavaUtilHashSet.contains(Long.valueOf(l2))) {
-            localHashSet.add(Long.valueOf(l2));
-          }
-        }
+        this.a = this.f;
+        this.b = this.g;
       }
-      catch (IndexOutOfBoundsException localIndexOutOfBoundsException)
-      {
-        for (;;)
-        {
-          localIndexOutOfBoundsException.printStackTrace();
-        }
-      }
-      i += 1;
-      continue;
-      i = j;
-    }
-    label147:
-    this.jdField_a_of_type_JavaUtilHashSet = localHashSet;
-    QLog.d("ShortVideoUtils", 2, "markVisibleView cost time: " + (SystemClock.uptimeMillis() - l1));
-  }
-  
-  public void a(MessageRecord paramMessageRecord, String paramString)
-  {
-    if (paramMessageRecord == null) {
+      super.a(paramInt, paramFloat);
       return;
-    }
-    if (this.jdField_a_of_type_JavaUtilHashMap == null) {
-      this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
-    }
-    HashSet localHashSet2 = (HashSet)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
-    HashSet localHashSet1 = localHashSet2;
-    if (localHashSet2 == null)
-    {
-      localHashSet1 = new HashSet();
-      this.jdField_a_of_type_JavaUtilHashMap.put(paramString, localHashSet1);
-    }
-    localHashSet1.add(Long.valueOf(paramMessageRecord.uniseq));
-  }
-  
-  public void a(Object paramObject)
-  {
-    if (paramObject == null) {
-      return;
-    }
-    if (this.jdField_b_of_type_JavaUtilHashSet == null) {
-      this.jdField_b_of_type_JavaUtilHashSet = new HashSet();
-    }
-    this.jdField_b_of_type_JavaUtilHashSet.add(paramObject);
-  }
-  
-  public void a(Object paramObject, MessageForShortVideo paramMessageForShortVideo)
-  {
-    if ((paramObject != null) && (paramMessageForShortVideo != null))
-    {
-      if (this.jdField_b_of_type_JavaUtilHashMap == null) {
-        this.jdField_b_of_type_JavaUtilHashMap = new HashMap();
+      if (this.a > this.f) {
+        break;
       }
-      this.jdField_b_of_type_JavaUtilHashMap.put(paramObject, paramMessageForShortVideo);
-    }
-  }
-  
-  public void a(Object paramObject, boolean paramBoolean)
-  {
-    if (paramObject == null) {
-      return;
-    }
-    if (this.jdField_a_of_type_JavaUtilHashSet == null) {
-      this.jdField_a_of_type_JavaUtilHashSet = new HashSet();
-    }
-    if (paramBoolean)
-    {
-      this.jdField_a_of_type_JavaUtilHashSet.add(paramObject);
-      return;
-    }
-    this.jdField_a_of_type_JavaUtilHashSet.remove(paramObject);
-  }
-  
-  public boolean a(long paramLong, String paramString)
-  {
-    if (this.jdField_a_of_type_JavaUtilHashMap != null)
-    {
-      paramString = (HashSet)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
-      if (paramString == null) {}
-    }
-    for (boolean bool = paramString.contains(Long.valueOf(paramLong));; bool = false)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("AIOSingleReporter", 2, "hasReported(): uniseq=" + paramLong + " result = " + bool);
+      this.a = this.f;
+      break;
+      label162:
+      if (this.b <= this.g) {
+        this.b = this.g;
       }
-      return bool;
     }
-  }
-  
-  public boolean a(MessageRecord paramMessageRecord, String paramString)
-  {
-    if (this.jdField_a_of_type_JavaUtilHashMap != null)
-    {
-      paramString = (HashSet)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
-      if (paramString == null) {}
-    }
-    for (boolean bool = paramString.contains(Long.valueOf(paramMessageRecord.uniseq));; bool = false)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("AIOSingleReporter", 2, "hasReported(): mr.uniseq=" + paramMessageRecord.uniseq + " result = " + bool);
-      }
-      return bool;
-    }
-  }
-  
-  public boolean a(Object paramObject)
-  {
-    boolean bool = false;
-    if (this.jdField_a_of_type_JavaUtilHashSet != null) {
-      bool = this.jdField_a_of_type_JavaUtilHashSet.contains(paramObject);
-    }
-    return bool;
-  }
-  
-  public boolean b(Object paramObject)
-  {
-    boolean bool = false;
-    if (this.jdField_b_of_type_JavaUtilHashSet != null) {
-      bool = this.jdField_b_of_type_JavaUtilHashSet.contains(paramObject);
-    }
-    return bool;
   }
 }
 

@@ -7,7 +7,7 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
-import bdoo;
+import bgtn;
 
 public class DragLinearLayout
   extends RelativeLayout
@@ -52,8 +52,8 @@ public class DragLinearLayout
   
   private void initScreenConfig()
   {
-    this.screenWidth = bdoo.a();
-    this.screenHeight = bdoo.b();
+    this.screenWidth = bgtn.a();
+    this.screenHeight = bgtn.b();
   }
   
   public int getStatusBarHeight()
@@ -144,7 +144,7 @@ public class DragLinearLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.minigame.widget.DragLinearLayout
  * JD-Core Version:    0.7.0.1
  */

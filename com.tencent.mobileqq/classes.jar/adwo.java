@@ -1,24 +1,25 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.os.MessageQueue.IdleHandler;
 import android.view.View;
-import android.widget.RelativeLayout.LayoutParams;
-import com.tencent.mobileqq.activity.SelectedAndSearchBar;
+import com.tencent.mobileqq.activity.ChatSettingForTroop;
+import com.tencent.widget.XListView;
 
-public class adwo
-  implements ValueAnimator.AnimatorUpdateListener
+class adwo
+  implements MessageQueue.IdleHandler
 {
-  public adwo(SelectedAndSearchBar paramSelectedAndSearchBar, RelativeLayout.LayoutParams paramLayoutParams) {}
+  adwo(adwn paramadwn) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public boolean queueIdle()
   {
-    int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams.topMargin = i;
-    SelectedAndSearchBar.a(this.jdField_a_of_type_ComTencentMobileqqActivitySelectedAndSearchBar).setLayoutParams(this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams);
+    View localView = this.a.a.jdField_a_of_type_ArrayOfAndroidViewView[40];
+    int i = localView.getTop();
+    int j = (this.a.a.jdField_a_of_type_ComTencentWidgetXListView.getHeight() - localView.getHeight()) / 2;
+    this.a.a.jdField_a_of_type_ComTencentWidgetXListView.smoothScrollBy(i - j, 1000);
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adwo
  * JD-Core Version:    0.7.0.1
  */

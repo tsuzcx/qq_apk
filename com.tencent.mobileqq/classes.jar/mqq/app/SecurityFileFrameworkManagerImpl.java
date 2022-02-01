@@ -78,84 +78,83 @@ public class SecurityFileFrameworkManagerImpl
   private File generateOrGetUINFile()
   {
     Object localObject1 = MsfServiceSdk.get().getDeviceToken(this.mApp.getAccount());
-    Object localObject4 = this.mApp.getApplication().getSharedPreferences("SecurityFileFrameworkManagerImpl", 4);
-    Object localObject3 = ((SharedPreferences)localObject4).getString(this.mApp.getAccount(), null);
+    SharedPreferences localSharedPreferences = this.mApp.getApplication().getSharedPreferences("SecurityFileFrameworkManagerImpl", 4);
+    Object localObject2 = localSharedPreferences.getString(this.mApp.getAccount(), null);
     if (QLog.isColorLevel()) {
-      QLog.d("SecurityFileFrameworkManagerImpl", 2, new Object[] { "Current UIN=", this.mApp.getAccount(), "msfDeviceToken=", localObject1, " spDeviceToken=", localObject3 });
+      QLog.d("SecurityFileFrameworkManagerImpl", 2, new Object[] { "Current UIN=", this.mApp.getAccount(), "msfDeviceToken=", localObject1, " spDeviceToken=", localObject2 });
     }
-    boolean bool1 = ((SharedPreferences)localObject4).getBoolean("UIN_IS_FIRST_" + this.mApp.getAccount(), true);
+    boolean bool1 = localSharedPreferences.getBoolean("UIN_IS_FIRST_" + this.mApp.getAccount(), true);
     String str;
     if (TextUtils.isEmpty((CharSequence)localObject1)) {
-      if (TextUtils.isEmpty((CharSequence)localObject3))
+      if (TextUtils.isEmpty((CharSequence)localObject2))
       {
         localObject1 = this.mApp.getAccount();
-        localObject3 = this.mApp.getAccount();
-        localObject3 = sRootFile.listFiles(new SecurityFileFrameworkManagerImpl.2(this, (String)localObject3));
+        localObject2 = this.mApp.getAccount();
+        localObject2 = sRootFile.listFiles(new SecurityFileFrameworkManagerImpl.2(this, (String)localObject2));
         str = generateEncryptUIN(this.mApp.getAccount(), (String)localObject1, sRootFile.getName().replace("NoRename#", ""));
-        if (localObject3 != null) {
-          break label1303;
+        if (localObject2 != null) {
+          break label851;
         }
         QLog.d("SecurityFileFrameworkManagerImpl", 1, "sRootFile.listFiles = null");
         reportToRDM(0L, 10L, null);
       }
     }
-    label253:
-    Object localObject2;
-    label1289:
-    label1300:
-    label1303:
-    for (localObject1 = new File[0];; localObject2 = localObject3)
+    label851:
+    for (localObject1 = new File[0];; localObject1 = localObject2)
     {
       int j = localObject1.length;
       int i = 0;
-      boolean bool3 = false;
       boolean bool2 = false;
-      if (i < j)
-      {
-        localObject3 = localObject1[i];
-        if (!((File)localObject3).getName().equals(this.mApp.getAccount())) {
-          break label1300;
-        }
-        bool2 = true;
-      }
+      boolean bool3 = false;
       for (;;)
       {
-        if (((File)localObject3).getName().equals(str)) {
-          bool3 = true;
-        }
-        i += 1;
-        break label253;
-        bool1 = false;
-        localObject1 = localObject3;
-        break;
-        if (TextUtils.isEmpty((CharSequence)localObject3))
+        if (i < j)
         {
-          bool1 = true;
-          ((SharedPreferences)localObject4).edit().putString(this.mApp.getAccount(), (String)localObject1).commit();
+          localObject2 = localObject1[i];
+          if (((File)localObject2).getName().equals(this.mApp.getAccount())) {
+            bool3 = true;
+          }
+          if (((File)localObject2).getName().equals(str)) {
+            bool2 = true;
+          }
+          i += 1;
+          continue;
+          bool1 = false;
+          localObject1 = localObject2;
+          break;
+          if (TextUtils.isEmpty((CharSequence)localObject2))
+          {
+            bool1 = true;
+            localSharedPreferences.edit().putString(this.mApp.getAccount(), (String)localObject1).commit();
+            break;
+          }
+          bool1 = false;
+          if (!((String)localObject1).equals(localObject2))
+          {
+            QLog.d("SecurityFileFrameworkManagerImpl", 1, new Object[] { "Token Don't Match: msfDeviceToken=", localObject1, " spDeviceToken=", localObject2 });
+            localSharedPreferences.edit().putString(this.mApp.getAccount(), (String)localObject1).commit();
+            reportToRDM(0L, 5L, null);
+          }
           break;
         }
-        bool1 = false;
-        if (!((String)localObject1).equals(localObject3))
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("SecurityFileFrameworkManagerImpl", 2, new Object[] { "hasEncryptUinDir=", Boolean.valueOf(bool2), " encryptUIN=", str });
+      }
+      if (bool2)
+      {
+        if (bool1)
         {
-          QLog.d("SecurityFileFrameworkManagerImpl", 1, new Object[] { "Token Don't Match: msfDeviceToken=", localObject1, " spDeviceToken=", localObject3 });
-          ((SharedPreferences)localObject4).edit().putString(this.mApp.getAccount(), (String)localObject1).commit();
-          reportToRDM(0L, 5L, null);
+          localSharedPreferences.edit().putBoolean("UIN_IS_FIRST_" + this.mApp.getAccount(), false).commit();
+          reportToRDM(0L, 6L, null);
         }
-        break;
+        localObject1 = new File(sRootFile + File.separator + str);
+      }
+      do
+      {
+        return localObject1;
         if (QLog.isColorLevel()) {
-          QLog.d("SecurityFileFrameworkManagerImpl", 2, new Object[] { "hasEncryptUinDir=", Boolean.valueOf(bool3), " encryptUIN=", str });
-        }
-        if (bool3)
-        {
-          if (bool1)
-          {
-            ((SharedPreferences)localObject4).edit().putBoolean("UIN_IS_FIRST_" + this.mApp.getAccount(), false).commit();
-            reportToRDM(0L, 6L, null);
-          }
-          return new File(sRootFile + File.separator + str);
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d("SecurityFileFrameworkManagerImpl", 2, new Object[] { "isFirst=", Boolean.valueOf(bool1), " hasUINDir=", Boolean.valueOf(bool2) });
+          QLog.d("SecurityFileFrameworkManagerImpl", 2, new Object[] { "isFirst=", Boolean.valueOf(bool1), " hasUINDir=", Boolean.valueOf(bool3) });
         }
         if (bool1)
         {
@@ -163,94 +162,23 @@ public class SecurityFileFrameworkManagerImpl
           if (!((File)localObject1).exists()) {
             ((File)localObject1).mkdirs();
           }
-          ((SharedPreferences)localObject4).edit().putBoolean("UIN_IS_FIRST_" + this.mApp.getAccount(), false).commit();
+          localSharedPreferences.edit().putBoolean("UIN_IS_FIRST_" + this.mApp.getAccount(), false).commit();
           return localObject1;
         }
-        for (;;)
-        {
-          try
-          {
-            localObject1 = (ActivityManager)this.mApp.getApplication().getSystemService("activity");
-            if (localObject1 == null) {
-              continue;
-            }
-            localObject1 = ((ActivityManager)localObject1).getRunningAppProcesses();
-            i = 0;
-            if (i >= ((List)localObject1).size()) {
-              continue;
-            }
-            bool1 = "com.tencent.mobileqq:tool".equals(((ActivityManager.RunningAppProcessInfo)((List)localObject1).get(i)).processName);
-            if (!bool1) {
-              continue;
-            }
-            i = 1;
-          }
-          catch (Exception localException)
-          {
-            long l1;
-            long l2;
-            QLog.d("SecurityFileFrameworkManagerImpl", 1, localException.toString());
-            reportToRDM(0L, 7L, null);
-            i = 0;
-            continue;
-            reportToRDM(0L, 11L, localException);
-            continue;
-            localObject3 = new HashMap();
-            ((HashMap)localObject3).put("tempFilePath", localException.getAbsolutePath());
-            reportToRDM(0L, 2L, (HashMap)localObject3);
-            QLog.d("SecurityFileFrameworkManagerImpl", 1, new Object[] { "hasUINDir & rename fail return=", localException.getAbsolutePath() });
-            return localException;
-          }
-          if (!bool2) {
-            break label1208;
-          }
-          localObject1 = new File(sRootFile.getAbsolutePath() + File.separator + this.mApp.getAccount());
-          localObject3 = new File(sRootFile.getAbsolutePath() + File.separator + str);
-          if (!((File)localObject1).exists()) {
-            break label1289;
-          }
-          if (i != 0) {
-            break label1148;
-          }
-          localObject4 = ((File)localObject1).list();
-          l1 = -1L;
-          if (localObject4 != null) {
-            l1 = localObject4.length;
-          }
-          if (!((File)localObject1).renameTo((File)localObject3)) {
-            continue;
-          }
-          localObject1 = ((File)localObject3).list();
-          l2 = -1L;
-          if (localObject1 != null) {
-            l2 = localObject1.length;
-          }
-          localObject1 = new HashMap();
-          ((HashMap)localObject1).put("fileSumBeforeRename", "" + l1);
-          ((HashMap)localObject1).put("fileSumAfterRename", "" + l2);
-          if (l1 != l2) {
-            continue;
-          }
-          reportToRDM(0L, 1L, (HashMap)localObject1);
-          return localObject3;
-          i += 1;
+        if (!bool3) {
+          break;
         }
-        label1148:
-        localObject3 = new HashMap();
-        ((HashMap)localObject3).put("tempFilePath", localException.getAbsolutePath());
-        reportToRDM(0L, 3L, (HashMap)localObject3);
-        QLog.d("SecurityFileFrameworkManagerImpl", 1, new Object[] { "containThirdProcess return=", localException.getAbsolutePath() });
-        return localException;
-        label1208:
-        localObject2 = new File(sRootFile.getAbsolutePath() + File.separator + str);
-        ((File)localObject2).mkdirs();
-        localObject3 = new HashMap();
-        ((HashMap)localObject3).put("toFile", ((File)localObject2).getAbsolutePath());
-        reportToRDM(0L, 4L, (HashMap)localObject3);
-        return localObject2;
-        reportToRDM(0L, 8L, null);
-        return null;
-      }
+        localObject2 = renameAndGetDir(str, isContainThirdProcess());
+        localObject1 = localObject2;
+      } while (localObject2 != null);
+      reportToRDM(0L, 8L, null);
+      return null;
+      localObject1 = new File(sRootFile.getAbsolutePath() + File.separator + str);
+      ((File)localObject1).mkdirs();
+      localObject2 = new HashMap();
+      ((HashMap)localObject2).put("toFile", ((File)localObject1).getAbsolutePath());
+      reportToRDM(0L, 4L, (HashMap)localObject2);
+      return localObject1;
     }
   }
   
@@ -414,6 +342,83 @@ public class SecurityFileFrameworkManagerImpl
       }
       QLog.d("SecurityFileFrameworkManagerImpl", 1, new Object[] { "FileKey exist, File no exist, dir create fail, path=", ((File)localObject).getAbsoluteFile() });
       return false;
+    }
+  }
+  
+  private boolean isContainThirdProcess()
+  {
+    try
+    {
+      Object localObject = (ActivityManager)this.mApp.getApplication().getSystemService("activity");
+      if (localObject != null)
+      {
+        localObject = ((ActivityManager)localObject).getRunningAppProcesses();
+        int i = 0;
+        while (i < ((List)localObject).size())
+        {
+          boolean bool = "com.tencent.mobileqq:tool".equals(((ActivityManager.RunningAppProcessInfo)((List)localObject).get(i)).processName);
+          if (bool) {
+            return true;
+          }
+          i += 1;
+        }
+      }
+      return false;
+    }
+    catch (Exception localException)
+    {
+      QLog.d("SecurityFileFrameworkManagerImpl", 1, localException.toString());
+      reportToRDM(0L, 7L, null);
+    }
+  }
+  
+  private File renameAndGetDir(String paramString, boolean paramBoolean)
+  {
+    long l2 = -1L;
+    Object localObject = new File(sRootFile.getAbsolutePath() + File.separator + this.mApp.getAccount());
+    paramString = new File(sRootFile.getAbsolutePath() + File.separator + paramString);
+    String[] arrayOfString;
+    if (((File)localObject).exists()) {
+      if (!paramBoolean)
+      {
+        arrayOfString = ((File)localObject).list();
+        if (arrayOfString == null) {
+          break label353;
+        }
+      }
+    }
+    label353:
+    for (long l1 = arrayOfString.length;; l1 = -1L)
+    {
+      if (((File)localObject).renameTo(paramString))
+      {
+        localObject = paramString.list();
+        if (localObject != null) {
+          l2 = localObject.length;
+        }
+        localObject = new HashMap();
+        ((HashMap)localObject).put("fileSumBeforeRename", "" + l1);
+        ((HashMap)localObject).put("fileSumAfterRename", "" + l2);
+        if (l1 == l2) {
+          reportToRDM(0L, 1L, (HashMap)localObject);
+        }
+        for (;;)
+        {
+          return paramString;
+          reportToRDM(0L, 11L, (HashMap)localObject);
+        }
+      }
+      paramString = new HashMap();
+      paramString.put("tempFilePath", ((File)localObject).getAbsolutePath());
+      reportToRDM(0L, 2L, paramString);
+      QLog.d("SecurityFileFrameworkManagerImpl", 1, new Object[] { "hasUINDir & rename fail return=", ((File)localObject).getAbsolutePath() });
+      return localObject;
+      paramString = new HashMap();
+      paramString.put("tempFilePath", ((File)localObject).getAbsolutePath());
+      reportToRDM(0L, 3L, paramString);
+      QLog.d("SecurityFileFrameworkManagerImpl", 1, new Object[] { "containThirdProcess return=", ((File)localObject).getAbsolutePath() });
+      return localObject;
+      return null;
     }
   }
   

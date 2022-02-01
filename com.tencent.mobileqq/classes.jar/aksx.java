@@ -1,24 +1,19 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.apollo.debug.CmGameDebugView;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.qwallet.emoj.EmojiGifHelper.OnConvertListener;
+import eipc.EIPCResult;
 
-public class aksx
-  implements Animation.AnimationListener
+class aksx
+  implements EmojiGifHelper.OnConvertListener
 {
-  public aksx(CmGameDebugView paramCmGameDebugView) {}
+  aksx(akss paramakss, int paramInt) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onConvertResult(boolean paramBoolean, String paramString)
   {
-    CmGameDebugView.a(this.a).setVisibility(8);
-    CmGameDebugView.b(this.a).setVisibility(8);
-    CmGameDebugView.a(this.a).clearAnimation();
+    Bundle localBundle = new Bundle();
+    localBundle.putBoolean("res", paramBoolean);
+    localBundle.putString("path", paramString);
+    this.jdField_a_of_type_Akss.callbackResult(this.jdField_a_of_type_Int, EIPCResult.createSuccessResult(localBundle));
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

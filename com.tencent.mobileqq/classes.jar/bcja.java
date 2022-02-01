@@ -1,18 +1,24 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.troop.troopCard.VisitorTroopCardFragment;
+import android.os.Message;
+import com.tencent.mobileqq.shortvideo.mediadevice.CameraProxy.WaitDoneBundle.1;
 
 public class bcja
-  implements View.OnClickListener
 {
-  public bcja(VisitorTroopCardFragment paramVisitorTroopCardFragment, Dialog paramDialog) {}
+  public final Object a;
+  public final Runnable a;
   
-  public void onClick(View paramView)
+  bcja()
   {
-    if ((this.jdField_a_of_type_AndroidAppDialog.isShowing()) && (this.jdField_a_of_type_AndroidAppDialog.getWindow() != null)) {
-      this.jdField_a_of_type_AndroidAppDialog.dismiss();
+    this.jdField_a_of_type_JavaLangObject = new Object();
+    this.jdField_a_of_type_JavaLangRunnable = new CameraProxy.WaitDoneBundle.1(this);
+  }
+  
+  static void a(Message paramMessage)
+  {
+    if (paramMessage == null) {}
+    while (!(paramMessage.obj instanceof bcja)) {
+      return;
     }
+    ((bcja)paramMessage.obj).jdField_a_of_type_JavaLangRunnable.run();
   }
 }
 

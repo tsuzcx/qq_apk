@@ -1,335 +1,61 @@
-import android.app.Activity;
-import android.content.BroadcastReceiver;
 import android.content.Intent;
-import android.content.IntentFilter;
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.CustomWebView;
-import com.tencent.mobileqq.webview.swift.JsBridgeListener;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqmini.sdk.launcher.core.proxy.AsyncResult;
+import com.tencent.qqmini.sdk.launcher.shell.IActivityResultListener;
+import com.tencent.qqmini.sdk.launcher.shell.IActivityResultManager;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class bjwz
-  extends bjxz
+class bjwz
+  implements IActivityResultListener
 {
-  private BroadcastReceiver a;
+  bjwz(bjww parambjww, AsyncResult paramAsyncResult, IActivityResultManager paramIActivityResultManager) {}
   
-  public bjwz()
+  public boolean doOnActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    this.jdField_a_of_type_AndroidContentBroadcastReceiver = new bjxa(this);
-  }
-  
-  private void a(int paramInt)
-  {
-    switch (paramInt)
+    QLog.d("MiniAppProxyImpl", 2, "doOnActivityResult requestCode=" + paramInt1 + ",resultCode=" + paramInt2 + ",data=" + paramIntent);
+    if (paramInt1 == 3)
     {
-    case 5: 
-    default: 
-      return;
-    case 1: 
-      e();
-      return;
-    case 2: 
-      b();
-      return;
-    case 3: 
-      c();
-      return;
-    case 4: 
-      d();
-      return;
-    }
-    f();
-  }
-  
-  private void g()
-  {
-    try
-    {
-      IntentFilter localIntentFilter = new IntentFilter("com.tencent.qq.syncSecretShuoshuoMsg");
-      this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime.a().registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, localIntentFilter);
-      return;
-    }
-    catch (Exception localException)
-    {
-      QLog.w("QZonePublishSecretShuoShuoH5Plugin", 1, "registerMsgReceiver----", localException);
-    }
-  }
-  
-  public void a()
-  {
-    try
-    {
-      this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime.a().unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
-      return;
-    }
-    catch (Exception localException)
-    {
-      QLog.e("QZonePublishSecretShuoShuoH5Plugin", 1, localException, new Object[0]);
-    }
-  }
-  
-  public void a(Intent paramIntent, byte paramByte, int paramInt)
-  {
-    super.a(paramIntent, paramByte, paramInt);
-    switch (paramByte)
-    {
-    default: 
-      return;
-    }
-    if (paramInt == -1)
-    {
-      bjgt.a().a(paramIntent, 0);
-      return;
-    }
-    f();
-  }
-  
-  public void a(WebViewPlugin paramWebViewPlugin)
-  {
-    super.a(paramWebViewPlugin);
-    g();
-  }
-  
-  public void a(String paramString, long paramLong)
-  {
-    if (TextUtils.isEmpty(paramString)) {
-      QLog.e("QZonePublishSecretShuoShuoH5Plugin", 1, "callback is null");
-    }
-    for (;;)
-    {
-      return;
-      Object localObject = new JSONObject();
+      String str1;
+      String str2;
+      double d1;
+      double d2;
+      if ((paramInt2 == -1) && (paramIntent != null))
+      {
+        str1 = paramIntent.getStringExtra("name");
+        str2 = paramIntent.getStringExtra("address");
+        d1 = paramIntent.getIntExtra("latitude", 0) / 1000000.0D;
+        d2 = paramIntent.getIntExtra("longitude", 0) / 1000000.0D;
+        if (QLog.isColorLevel()) {
+          QLog.d("MiniAppProxyImpl", 2, "doOnActivityResult name=" + str1 + ",address=" + str2 + ",latitude=" + d1 + ",longitude=" + d2);
+        }
+        paramIntent = new JSONObject();
+      }
       try
       {
-        ((JSONObject)localObject).put("ret", 0);
-        ((JSONObject)localObject).put("voiceTime", paramLong);
-        localObject = ((JSONObject)localObject).toString();
-        if ((this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin != null) && (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime != null) && (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime.a() != null))
-        {
-          this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime.a().callJs(paramString, new String[] { localObject });
-          return;
-        }
-      }
-      catch (Exception paramString)
-      {
-        QLog.e("QZonePublishSecretShuoShuoH5Plugin", 1, paramString.getMessage());
-      }
-    }
-  }
-  
-  public void a(String paramString1, String paramString2)
-  {
-    if (TextUtils.isEmpty(paramString1)) {
-      QLog.e("QZonePublishSecretShuoShuoH5Plugin", 1, "callback is null");
-    }
-    for (;;)
-    {
-      return;
-      JSONObject localJSONObject = new JSONObject();
-      try
-      {
-        localJSONObject.put("ret", 0);
-        localJSONObject.put("voiceData", paramString2);
-        localJSONObject.put("voiceFormat", "amr");
-        paramString2 = localJSONObject.toString();
-        if ((this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin != null) && (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime != null) && (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime.a() != null))
-        {
-          this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime.a().callJs(paramString1, new String[] { paramString2 });
-          return;
-        }
-      }
-      catch (Exception paramString1)
-      {
-        QLog.e("QZonePublishSecretShuoShuoH5Plugin", 1, paramString1.getMessage());
-      }
-    }
-  }
-  
-  public boolean a(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
-  {
-    int k = 0;
-    int j = 0;
-    if ((!paramString2.equals("Qzone")) || (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin == null) || (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime == null)) {}
-    do
-    {
-      return false;
-      if (paramString3.equalsIgnoreCase("updateFeedsAndPopup"))
-      {
-        paramJsBridgeListener = this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime.a();
-        if ((paramJsBridgeListener instanceof bjyi)) {
-          ((bjyi)paramJsBridgeListener).aL();
-        }
+        paramIntent.put("name", str1);
+        paramIntent.put("address", str2);
+        paramIntent.put("latitude", d1);
+        paramIntent.put("longitude", d2);
+        this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAsyncResult.onReceiveResult(true, paramIntent);
+        this.jdField_a_of_type_ComTencentQqminiSdkLauncherShellIActivityResultManager.removeActivityResultListener(this);
         return true;
       }
-      if (paramString3.equalsIgnoreCase("editTitleButtons"))
+      catch (JSONException paramIntent)
       {
-        paramJsBridgeListener = this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime.a();
-        if ((paramJsBridgeListener instanceof bjyi)) {
-          ((bjyi)paramJsBridgeListener).aM();
-        }
-        return true;
-      }
-      if (paramString3.equalsIgnoreCase("getMoodVoiceRecordTime"))
-      {
-        paramString1 = "";
-        try
+        for (;;)
         {
-          paramString2 = new JSONObject(paramVarArgs[0]);
-          paramJsBridgeListener = paramString1;
-          if (paramString2 != null) {
-            paramJsBridgeListener = paramString2.optString("callback");
-          }
-        }
-        catch (JSONException paramJsBridgeListener)
-        {
-          for (;;)
-          {
-            paramJsBridgeListener.printStackTrace();
-            paramJsBridgeListener = paramString1;
-          }
-        }
-        bjgt.a().a(paramJsBridgeListener, this);
-        return true;
-      }
-      int i;
-      if (paramString3.equalsIgnoreCase("playMoodVoice"))
-      {
-        paramString1 = "";
-        paramJsBridgeListener = paramString1;
-        try
-        {
-          paramString2 = new JSONObject(paramVarArgs[0]);
-          i = j;
-          paramJsBridgeListener = paramString1;
-          if (paramString2 != null)
-          {
-            paramJsBridgeListener = paramString1;
-            paramString1 = paramString2.optString("callback");
-            paramJsBridgeListener = paramString1;
-            i = paramString2.optInt("voiceID");
-            paramJsBridgeListener = paramString1;
-          }
-        }
-        catch (JSONException paramString1)
-        {
-          for (;;)
-          {
-            paramString1.printStackTrace();
-            i = j;
-          }
-        }
-        bjgt.a().a(paramJsBridgeListener, i, this);
-        return true;
-      }
-      if (paramString3.equalsIgnoreCase("getMoodVoiceData"))
-      {
-        paramString1 = "";
-        paramJsBridgeListener = paramString1;
-        try
-        {
-          paramString2 = new JSONObject(paramVarArgs[0]);
-          i = k;
-          paramJsBridgeListener = paramString1;
-          if (paramString2 != null)
-          {
-            paramJsBridgeListener = paramString1;
-            paramString1 = paramString2.optString("callback");
-            paramJsBridgeListener = paramString1;
-            i = paramString2.optInt("voiceID");
-            paramJsBridgeListener = paramString1;
-          }
-        }
-        catch (JSONException paramString1)
-        {
-          for (;;)
-          {
-            paramString1.printStackTrace();
-            i = k;
-          }
-        }
-        bjgt.a().b(paramJsBridgeListener, i, this);
-        return true;
-      }
-      if (paramString3.equalsIgnoreCase("stopPlayingMoodVoice"))
-      {
-        bjgt.a().d();
-        return true;
-      }
-    } while (!paramString3.equalsIgnoreCase("didPublishMoodVoice"));
-    paramJsBridgeListener = this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime.a();
-    if ((paramJsBridgeListener instanceof bjxc)) {
-      ((bjxc)paramJsBridgeListener).b();
-    }
-    return true;
-  }
-  
-  public void b()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin != null) {
-      this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.callJs("window.secret.onRightButtonClick()");
-    }
-  }
-  
-  public void b(String paramString, long paramLong)
-  {
-    if (TextUtils.isEmpty(paramString)) {
-      QLog.e("QZonePublishSecretShuoShuoH5Plugin", 1, "callback is null");
-    }
-    for (;;)
-    {
-      return;
-      Object localObject = new JSONObject();
-      try
-      {
-        ((JSONObject)localObject).put("ret", 0);
-        ((JSONObject)localObject).put("voiceTime", paramLong);
-        localObject = ((JSONObject)localObject).toString();
-        if ((this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin != null) && (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime != null) && (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime.a() != null))
-        {
-          this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime.a().callJs(paramString, new String[] { localObject });
-          return;
+          QLog.e("MiniAppProxyImpl", 1, " error, ", paramIntent);
+          this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAsyncResult.onReceiveResult(false, new JSONObject());
         }
       }
-      catch (Exception paramString)
-      {
-        QLog.e("QZonePublishSecretShuoShuoH5Plugin", 1, paramString.getMessage());
-      }
     }
-  }
-  
-  public void c()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin != null) {
-      this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.callJs("window.secret.onEditLeftButtonClick()");
-    }
-  }
-  
-  public void d()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin != null) {
-      this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.callJs("window.secret.onEditRightButtonClick()");
-    }
-  }
-  
-  public void e()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin != null) {
-      this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.callJs("window.QZMoodVoiceJSInterface.onRecordDone()");
-    }
-  }
-  
-  public void f()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin != null) {
-      this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.callJs("try { window.QZMoodVoiceJSInterface.onRecordCancel() } catch (error) {}");
-    }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bjwz
  * JD-Core Version:    0.7.0.1
  */

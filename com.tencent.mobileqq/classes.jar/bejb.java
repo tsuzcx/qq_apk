@@ -1,73 +1,24 @@
-import android.text.TextUtils;
-import java.util.ArrayList;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.troop.activity.TroopAvatarWallPreviewActivity;
+import com.tencent.mobileqq.troop.activity.TroopAvatarWallPreviewActivity.5.1;
 
 public class bejb
+  implements Animation.AnimationListener
 {
-  public static final ArrayList<String> a()
-  {
-    ArrayList localArrayList = new ArrayList();
-    for (;;)
-    {
-      try
-      {
-        Object localObject = (aosm)aoks.a().a(361);
-        if ((localObject != null) && (!TextUtils.isEmpty(((aosm)localObject).d)))
-        {
-          localObject = ((aosm)localObject).d;
-          localObject = ((String)localObject).split(";");
-          int j = localObject.length;
-          int i = 0;
-          if (i < j)
-          {
-            localArrayList.add(localObject[i]);
-            i += 1;
-            continue;
-          }
-          return localArrayList;
-        }
-      }
-      catch (Throwable localThrowable) {}
-      String str = "QQ";
-    }
-  }
+  public bejb(TroopAvatarWallPreviewActivity paramTroopAvatarWallPreviewActivity) {}
   
-  public static final boolean a(int paramInt, boolean paramBoolean)
-  {
-    aosm localaosm = (aosm)aoks.a().a(361);
-    if (localaosm != null) {}
-    switch (paramInt)
-    {
-    default: 
-      return paramBoolean;
-    case 1: 
-      return localaosm.jdField_a_of_type_Boolean;
-    case 2: 
-      return localaosm.jdField_b_of_type_Boolean;
-    }
-    return localaosm.jdField_c_of_type_Boolean;
-  }
+  public void onAnimationEnd(Animation paramAnimation) {}
   
-  public static final boolean b(int paramInt, boolean paramBoolean)
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation)
   {
-    aosm localaosm = (aosm)aoks.a().a(361);
-    if (localaosm != null) {
-      switch (paramInt)
-      {
-      }
+    if (this.a.b == null) {
+      return;
     }
-    do
-    {
-      do
-      {
-        do
-        {
-          return paramBoolean;
-        } while (Math.random() >= Float.valueOf(localaosm.jdField_a_of_type_JavaLangString).floatValue());
-        return true;
-      } while (Math.random() >= Float.valueOf(localaosm.jdField_b_of_type_JavaLangString).floatValue());
-      return true;
-    } while (Math.random() >= Float.valueOf(localaosm.jdField_c_of_type_JavaLangString).floatValue());
-    return true;
+    this.a.b.post(new TroopAvatarWallPreviewActivity.5.1(this));
   }
 }
 

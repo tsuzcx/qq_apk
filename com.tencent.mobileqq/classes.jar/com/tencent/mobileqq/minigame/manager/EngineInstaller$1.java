@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.minigame.manager;
 
-import alud;
+import anni;
 import com.tencent.mobileqq.mini.report.MiniProgramReportHelper;
 import com.tencent.mobileqq.mini.report.MiniReportManager;
 import com.tencent.mobileqq.mini.sdk.BaseLibInfo;
@@ -35,7 +35,7 @@ class EngineInstaller$1
     if (paramFloat - this.lastProgress > 0.05F)
     {
       this.lastProgress = paramFloat;
-      EngineInstaller.access$100(this.this$0, paramFloat, alud.a(2131704526) + String.format(Locale.getDefault(), "%.1f", new Object[] { Float.valueOf(100.0F * paramFloat) }) + "%");
+      EngineInstaller.access$100(this.this$0, paramFloat, anni.a(2131702923) + String.format(Locale.getDefault(), "%.1f", new Object[] { Float.valueOf(100.0F * paramFloat) }) + "%");
       QLog.i("EngineInstaller", 1, "[MiniEng]onDownloadProgress, progress=" + paramFloat);
     }
   }
@@ -48,7 +48,7 @@ class EngineInstaller$1
     if ((paramString1.length() == this.val$engineFileSize) || (this.val$engineFileSize < 0L))
     {
       QLog.i("EngineInstaller", 1, "[MiniEng] onDownloadSucceed length is match " + this.val$engineFileSize);
-      EngineInstaller.access$100(this.this$0, 1.0F, alud.a(2131704527));
+      EngineInstaller.access$100(this.this$0, 1.0F, anni.a(2131702924));
       if (this.val$info.baseLibType == 2)
       {
         MiniReportManager.reportEventType(MiniProgramReportHelper.miniAppConfigForPreload(), 5, "1");
@@ -75,7 +75,7 @@ class EngineInstaller$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.minigame.manager.EngineInstaller.1
  * JD-Core Version:    0.7.0.1
  */

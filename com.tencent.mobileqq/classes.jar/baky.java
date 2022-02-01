@@ -1,8 +1,15 @@
-public abstract interface baky
+import com.tencent.theme.SkinData;
+
+public class baky
 {
-  public abstract int getCloudFileType();
+  public SkinData a;
+  public String a;
   
-  public abstract boolean isClickable();
+  public baky(String paramString, SkinData paramSkinData)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_ComTencentThemeSkinData = paramSkinData;
+  }
 }
 
 

@@ -1,8 +1,6 @@
-public class bcop
+public abstract interface bcop
 {
-  public int a;
-  public String a;
-  public String b;
+  public abstract void a(int paramInt);
 }
 
 

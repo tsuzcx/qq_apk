@@ -1,21 +1,27 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.qidian.QidianProfileCardActivity;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.view.animation.ScaleAnimation;
+import android.widget.TextView;
 
-public class bfyz
-  implements View.OnClickListener
+class bfyz
+  implements Animation.AnimationListener
 {
-  public bfyz(QidianProfileCardActivity paramQidianProfileCardActivity) {}
+  bfyz(bfyy parambfyy) {}
   
-  public void onClick(View paramView)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    bddf.a(this.a, this.a.jdField_a_of_type_AndroidWidgetImageView, this.a.jdField_a_of_type_Awqt.a.a);
+    paramAnimation = new ScaleAnimation(1.1F, 1.0F, 1.1F, 1.0F, 1, 0.5F, 1, 0.5F);
+    paramAnimation.setDuration(100L);
+    this.a.a.startAnimation(paramAnimation);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bfyz
  * JD-Core Version:    0.7.0.1
  */

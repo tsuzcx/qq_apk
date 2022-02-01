@@ -5,7 +5,7 @@ import android.text.TextUtils;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public final class fg
+final class fg
 {
   public static final fg a = new fg();
   public String b;

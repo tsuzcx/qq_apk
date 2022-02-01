@@ -43,10 +43,12 @@ public class VImage2
   private static final String WEB_BASE64_PREFIX_JPEG = "data:image/jpeg;base64,";
   private static final String WEB_BASE64_PREFIX_JPG = "data:image/jpg;base64,";
   private static final String WEB_BASE64_PREFIX_PNG = "data:image/png;base64,";
+  private static ImageCacheManager cacheManager;
   private boolean mHasSetPlaceHolder;
   private String mImageUrl;
   private VImage2.NullDrawableChecker mNullDrawableChecker;
   private String mPlaceHolderUrl;
+  private boolean useCacheWrap;
   
   public VImage2(ViolaInstance paramViolaInstance, DomObject paramDomObject, VComponentContainer paramVComponentContainer)
   {
@@ -65,6 +67,13 @@ public class VImage2
       return;
     }
     localView.post(new VImage2.1(this, localView, paramBoolean, paramString));
+  }
+  
+  private static void ensureImageCacheManager()
+  {
+    if (cacheManager == null) {
+      cacheManager = new ImageCacheManager();
+    }
   }
   
   private boolean isAutoSize()
@@ -131,11 +140,16 @@ public class VImage2
   private void nowRequest(int paramInt1, int paramInt2, boolean paramBoolean, String paramString)
   {
     VImageView2 localVImageView2 = (VImageView2)getHostView();
-    VComponentAdapter localVComponentAdapter = ViolaSDKManager.getInstance().getComponentAdapter();
-    if ((localVImageView2 == null) || (localVComponentAdapter == null)) {
+    if (tryRecordRequestImage(paramString, paramInt1, paramInt2, paramBoolean)) {}
+    VComponentAdapter localVComponentAdapter;
+    do
+    {
       return;
+      localVComponentAdapter = ViolaSDKManager.getInstance().getComponentAdapter();
+    } while ((localVImageView2 == null) || (localVComponentAdapter == null));
+    if ((!paramBoolean) || (!useCacheWrap())) {
+      localVImageView2.setImageDrawable(null);
     }
-    localVImageView2.setImageDrawable(null);
     boolean bool = isNeedRealImageSize();
     if (isBase64(paramString))
     {
@@ -382,6 +396,16 @@ public class VImage2
     }
   }
   
+  private boolean tryRecordRequestImage(String paramString, int paramInt1, int paramInt2, boolean paramBoolean)
+  {
+    if ((paramBoolean) || (!useCacheWrap())) {}
+    while (this.mHost == null) {
+      return false;
+    }
+    ensureImageCacheManager();
+    return cacheManager.recordRequest((VImageView2)this.mHost, paramString, paramInt1, paramInt2, getBlurRadius(), this.mDomObj.getStyle());
+  }
+  
   public int getBlurRadius()
   {
     if (this.mDomObj == null) {
@@ -448,14 +472,22 @@ public class VImage2
   
   protected VImageView2 initComponentHostView(@NonNull Context paramContext)
   {
+    boolean bool = true;
     paramContext = new VImageView2(paramContext);
     paramContext.bindComponent(this);
+    paramContext.initBorderInfo(this.mDomObj);
     paramContext.setScaleType(ImageView.ScaleType.FIT_XY);
     if (Build.VERSION.SDK_INT >= 16) {
       paramContext.setCropToPadding(true);
     }
     this.mNullDrawableChecker = new VImage2.NullDrawableChecker(this);
-    return paramContext;
+    if ((this.mDomObj != null) && (ViolaUtils.getBoolean(this.mDomObj.getAttributes().get("cacheWrap")))) {}
+    for (;;)
+    {
+      this.useCacheWrap = bool;
+      return paramContext;
+      bool = false;
+    }
   }
   
   public boolean isGif()
@@ -463,11 +495,28 @@ public class VImage2
     return false;
   }
   
+  public void onActivityDestroy()
+  {
+    if ((cacheManager != null) && (useCacheWrap())) {
+      cacheManager.clear();
+    }
+  }
+  
   public void onCancel()
   {
     ViolaLogUtils.e("VImage2", "onCancel, hashCode: " + hashCode() + ", url: " + this.mImageUrl);
     this.mImageUrl = null;
     removeCheckMsg();
+    tryRemoveCache();
+  }
+  
+  public void onDrawableLoadFinish(String paramString, Drawable paramDrawable, ImageCacheManager.ImageCacheKey paramImageCacheKey)
+  {
+    if (TextUtils.isEmpty(paramString)) {}
+    while (paramString.equals(this.mPlaceHolderUrl)) {
+      return;
+    }
+    onGetDrawable(paramImageCacheKey, paramDrawable);
   }
   
   public void onError()
@@ -476,6 +525,21 @@ public class VImage2
     ViolaLogUtils.e("VImage2", "onError, hashCode: " + hashCode() + ", url: " + this.mImageUrl);
     this.mImageUrl = null;
     removeCheckMsg();
+    tryRemoveCache();
+  }
+  
+  public void onGetDrawable(ImageCacheManager.ImageCacheKey paramImageCacheKey, Drawable paramDrawable)
+  {
+    if ((!useCacheWrap()) || (paramImageCacheKey == null)) {
+      return;
+    }
+    ensureImageCacheManager();
+    cacheManager.onGetDrawable(paramImageCacheKey, paramDrawable);
+  }
+  
+  public void onRecycler()
+  {
+    tryRemoveCache();
   }
   
   public void onSuccess(Object paramObject, String paramString, Bundle paramBundle)
@@ -499,7 +563,8 @@ public class VImage2
         break;
       }
     }
-    ViolaLogUtils.d("VImage2", "url has change, hashCode: " + hashCode() + ", requestUrl: " + paramString + ", imageUrl: " + this.mImageUrl + ", placeHolder: " + this.mPlaceHolderUrl);
+    tryRemoveCache();
+    ViolaLogUtils.e("VImage2", "url has change, hashCode: " + hashCode() + ", requestUrl: " + paramString + ", imageUrl: " + this.mImageUrl + ", placeHolder: " + this.mPlaceHolderUrl);
   }
   
   public boolean resetAttr(String paramString)
@@ -523,6 +588,14 @@ public class VImage2
     this.mImageUrl = null;
     this.mPlaceHolderUrl = null;
     this.mHasSetPlaceHolder = false;
+    this.useCacheWrap = false;
+  }
+  
+  public void resetComponent(DomObject paramDomObject)
+  {
+    if (this.mHost != null) {
+      ((VImageView2)this.mHost).initBorderInfo(paramDomObject);
+    }
   }
   
   @VComponentProp(name="alphaAnim")
@@ -587,6 +660,11 @@ public class VImage2
     if (getHostView() != null) {
       ((VImageView2)getHostView()).setBorderWidth(paramFloat);
     }
+  }
+  
+  public void setHasSetPlaceHolder(boolean paramBoolean)
+  {
+    this.mHasSetPlaceHolder = paramBoolean;
   }
   
   @VComponentProp(name="placeholder")
@@ -702,10 +780,24 @@ public class VImage2
       i = 0;
     }
   }
+  
+  public void tryRemoveCache()
+  {
+    if ((useCacheWrap()) && (this.mHost != null))
+    {
+      ensureImageCacheManager();
+      cacheManager.removeCache(((VImageView2)this.mHost).getCacheKey());
+    }
+  }
+  
+  public boolean useCacheWrap()
+  {
+    return (getInstance() != null) && (getInstance().isSupportNativeVue());
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.viola.ui.component.image.VImage2
  * JD-Core Version:    0.7.0.1
  */

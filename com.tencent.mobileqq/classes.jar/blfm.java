@@ -1,23 +1,16 @@
-import android.support.annotation.Nullable;
-import android.view.View;
+import android.content.Context;
+import com.tencent.qphone.base.util.QLog;
 
-class blfm
-  implements bmeo<Boolean>
+final class blfm
+  implements blfo
 {
-  blfm(blfj paramblfj) {}
-  
-  public void a(@Nullable Boolean paramBoolean)
+  public void a(boolean paramBoolean, Context paramContext, blfq paramblfq)
   {
-    if (paramBoolean == null) {}
-    while (!blfj.b(this.a)) {
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("plugin_tag", 2, "launchPluginService onPluginReady." + paramBoolean);
     }
-    View localView = blfj.a(this.a);
-    if ((paramBoolean.booleanValue()) && (blfj.b(this.a))) {}
-    for (int i = 0;; i = 4)
-    {
-      localView.setVisibility(i);
-      return;
+    if (paramBoolean) {
+      blfh.f(paramContext, paramblfq);
     }
   }
 }

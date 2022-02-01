@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.widget.qqfloatingscreen.videoview;
 
 import android.media.MediaPlayer;
-import beyq;
+import bifo;
 import com.tencent.mobileqq.widget.qqfloatingscreen.listener.IVideoOuterStatusListener;
 
 class VideoTextureView$6
@@ -34,7 +34,7 @@ class VideoTextureView$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.widget.qqfloatingscreen.videoview.VideoTextureView.6
  * JD-Core Version:    0.7.0.1
  */

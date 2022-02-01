@@ -1,29 +1,34 @@
 import android.os.Handler;
-import android.os.Looper;
 import android.os.Message;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.aio.audiopanel.RecordSoundPanel;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.mobileqq.activity.QQSettingCleanActivity;
 
 public class aeyj
   extends Handler
 {
-  public aeyj(RecordSoundPanel paramRecordSoundPanel, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public aeyj(QQSettingCleanActivity paramQQSettingCleanActivity) {}
   
   public void handleMessage(Message paramMessage)
   {
     switch (paramMessage.what)
     {
-    default: 
-      return;
     }
-    this.a.a.j(1);
-    this.a.b();
-    QQToast.a(this.a.a.a(), this.a.a.a().getString(2131698860), 1).a();
+    do
+    {
+      return;
+      if (!this.a.isFinishing())
+      {
+        this.a.a.a(this.a.getString(2131690709));
+        this.a.a.d(2130849667);
+        this.a.a.b(false);
+      }
+      sendEmptyMessageDelayed(1, 1000L);
+      return;
+    } while ((this.a.a == null) || (!this.a.a.isShowing()));
+    this.a.a.cancel();
+    this.a.a.a(this.a.getString(2131690711));
+    this.a.a.c(true);
+    this.a.a.a(false);
+    this.a.a.b(true);
   }
 }
 

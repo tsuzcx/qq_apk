@@ -1,15 +1,21 @@
-import com.tencent.mobileqq.activity.aio.anim.friendship.impl.boat.FriendShipWaveView;
+import com.tencent.mobileqq.activity.QQLSActivity;
+import com.tencent.mobileqq.data.ChatMessage;
+import java.util.Comparator;
 
-class aexa
-  implements badp
+public class aexa
+  implements Comparator<ChatMessage>
 {
-  aexa(aewx paramaewx) {}
+  public aexa(QQLSActivity paramQQLSActivity) {}
   
-  public void a()
+  public int a(ChatMessage paramChatMessage1, ChatMessage paramChatMessage2)
   {
-    badv localbadv = new badv(3000, 360, 0);
-    localbadv.a = true;
-    this.a.a.f.a(new bado[] { localbadv });
+    if (paramChatMessage1.time == paramChatMessage2.time) {
+      return 0;
+    }
+    if (paramChatMessage1.time > paramChatMessage2.time) {
+      return 1;
+    }
+    return -1;
   }
 }
 

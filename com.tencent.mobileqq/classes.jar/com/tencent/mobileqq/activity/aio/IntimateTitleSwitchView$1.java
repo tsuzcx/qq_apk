@@ -7,14 +7,14 @@ class IntimateTitleSwitchView$1
   
   public void run()
   {
-    if (this.this$0.c) {
+    if (this.this$0.a) {
       IntimateTitleSwitchView.a(this.this$0);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.IntimateTitleSwitchView.1
  * JD-Core Version:    0.7.0.1
  */

@@ -1,10 +1,36 @@
-public abstract interface bdpc
+import org.json.JSONException;
+import org.json.JSONObject;
+
+public class bdpc
 {
-  public abstract void a(int paramInt1, String paramString, int paramInt2);
+  public int a;
+  public String a;
+  private JSONObject a;
   
-  public abstract void a(String paramString, int paramInt1, int paramInt2);
+  public bdpc(int paramInt, String paramString)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
   
-  public abstract void b(String paramString, int paramInt1, int paramInt2);
+  public String a()
+  {
+    JSONObject localJSONObject = new JSONObject();
+    try
+    {
+      localJSONObject.put("result", this.jdField_a_of_type_Int);
+      localJSONObject.put("message", this.jdField_a_of_type_JavaLangString);
+      localJSONObject.put("data", this.jdField_a_of_type_OrgJsonJSONObject);
+      return localJSONObject.toString();
+    }
+    catch (JSONException localJSONException)
+    {
+      for (;;)
+      {
+        localJSONException.printStackTrace();
+      }
+    }
+  }
 }
 
 

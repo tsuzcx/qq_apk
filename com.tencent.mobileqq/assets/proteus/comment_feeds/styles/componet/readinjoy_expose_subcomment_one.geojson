@@ -6,7 +6,7 @@
     "height":{
         "type":"wrap_content"
     },
-    "width":{ 
+    "width":{
         "type":"match_parent"
     },
     "attributes":{
@@ -23,13 +23,12 @@
     },
     "subviews":[
         {
-            "margin_top":"12",
-            "margin_bottom":"12",
-            "margin_left":"9",
-            "margin_right":"9",
+            "margin_top":"10",
+            "margin_left":"12",
+            "margin_right":"12",
+            "margin_bottom":"10",
             "view_type":"QQRIJRichTextView",
             "view_id":"id_comment_expose_subcomment_one",
-            "align_parent_center_vertical": "YES",
             "height":{
                 "type":"wrap_content"
             },
@@ -40,6 +39,9 @@
                 "setFontSizeString:":"15",
                 "setCommentModel:":"$subcomment_one"
             }
+        },
+        {
+            "$includeComponet": "componet/RIJ_author_like_sub_one.geojson"
         }
     ]
 }

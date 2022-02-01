@@ -1,13 +1,9 @@
 package com.tencent.mobileqq.app;
 
-import ajjj;
-import alos;
-import alot;
-import alpg;
-import alsf;
-import alvw;
-import alwk;
-import amck;
+import Override;
+import abev;
+import adcc;
+import albs;
 import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
 import android.app.Activity;
@@ -34,19 +30,26 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnSystemUiVisibilityChangeListener;
 import android.view.Window;
-import aqbd;
-import atzx;
-import azmk;
-import azqs;
-import azri;
-import azsa;
-import bdtz;
-import bhsr;
+import anhx;
+import anhy;
+import anil;
+import anll;
+import anpe;
+import anuu;
+import asfr;
+import awhg;
+import bcnj;
+import bcrp;
+import bcst;
+import bctj;
+import bcuc;
+import bgzc;
+import bkgb;
 import com.tencent.biz.pubaccount.readinjoy.engine.KandianMergeManager;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.common.config.AppSetting;
-import com.tencent.mfsdk.LeakInspector.LeakInspector;
+import com.tencent.mfsdk.MagnifierSDK;
 import com.tencent.mobileqq.activity.GesturePWDUnlockActivity;
 import com.tencent.mobileqq.activity.InstallActivity;
 import com.tencent.mobileqq.activity.JumpActivity;
@@ -71,6 +74,7 @@ import com.tencent.mobileqq.theme.ThemeUtil;
 import com.tencent.mobileqq.webview.swift.WebViewFragment;
 import com.tencent.mqq.shared_file_accessor.SharedPreferencesProxyManager;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import com.tencent.theme.SkinnableActivityProcesser;
 import com.tencent.theme.SkinnableActivityProcesser.Callback;
 import com.tencent.widget.immersive.ImmersiveUtils;
@@ -107,7 +111,7 @@ public class BaseActivity
   public static ArrayList<String> sActivityRoute = new ArrayList();
   private static boolean sSensorReady;
   public static BaseActivity sTopActivity;
-  private static amck shakeListener;
+  private static anuu shakeListener;
   public QQAppInterface app;
   private String className = getClass().getSimpleName();
   protected long currentActivityStayTime;
@@ -117,7 +121,7 @@ public class BaseActivity
   public boolean mCanLock = true;
   private ClassLoader mClassLoader;
   public boolean mCurrentActivityShakeFlag = true;
-  private EIPCResultCallback mEIPCResultCallback = new alos(this);
+  private EIPCResultCallback mEIPCResultCallback = new anhx(this);
   protected FlingHandler mFlingHandler;
   protected boolean mIsAttachedToWindow;
   protected boolean mIsStatusBarVisibilityNeedGone;
@@ -200,6 +204,72 @@ public class BaseActivity
     }
   }
   
+  private void resumeNFC()
+  {
+    String str = BridgeHelper.a(getActivity(), getCurrentAccountUin()).a("buscard_registerNFC");
+    if ((TextUtils.isEmpty(str)) || ("true".equals(str))) {}
+    try
+    {
+      if (this.mNFCResumeRunnable != null) {
+        ThreadManager.getSubThreadHandler().removeCallbacks(this.mNFCResumeRunnable);
+      }
+      this.mNFCResumeRunnable = new BaseActivity.4(this);
+      ThreadManager.getSubThreadHandler().post(this.mNFCResumeRunnable);
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      while (!QLog.isDevelopLevel()) {}
+      QLog.i("qqBaseActivity", 4, "registerNFCEvent failed");
+    }
+  }
+  
+  private void resumeStartUnlockIfNeeded()
+  {
+    String str = getCurrentAccountUin();
+    if (((!mAppForground) || (("com.tencent.mobileqq".equals(BaseApplicationImpl.processName)) && (!isUnLockSuccess))) && (this.mCanLock) && (str != null) && (GesturePWDUtils.getJumpLock(getActivity(), str)) && (!(getActivity() instanceof GesturePWDUnlockActivity)) && (!(getActivity() instanceof InstallActivity)) && (!(getActivity() instanceof UserguideActivity)) && (!(getActivity() instanceof JumpActivity)) && (!(getActivity() instanceof qfileJumpActivity)) && (!(getActivity() instanceof QfavJumpActivity)) && (!(getActivity() instanceof LoginActivity)) && (!(getActivity() instanceof QlinkBridgeActivity)) && (!(getActivity() instanceof QlinkShareJumpActivity))) {
+      startUnlockActivity();
+    }
+    for (;;)
+    {
+      if ((!mAppForground) && (!(this instanceof JumpActivity)))
+      {
+        mAppForground = true;
+        GesturePWDUtils.setAppForground(getActivity(), mAppForground);
+      }
+      this.mStopFlag = 0;
+      this.mCanLock = true;
+      return;
+      if ((!mAppForground) && (this.mCanLock)) {
+        checkUnlockForSpecial();
+      } else if ((!mAppForground) && (!this.mCanLock)) {
+        isUnLockSuccess = true;
+      }
+    }
+  }
+  
+  private void resumeStatusBar()
+  {
+    this.mIsStatusBarVisibilityNeedGone = false;
+    if ((!isNeedInterruptDoMulitWindow()) && (this.mIsAttachedToWindow) && (isInMultiWindow()))
+    {
+      boolean bool = isNeedStatusBarGone();
+      if ((this.mSystemBarComp != null) && (this.mSystemBarComp.isStatusBarVisible == bool)) {
+        if (!bool) {
+          break label75;
+        }
+      }
+    }
+    label75:
+    for (int i = 2;; i = 0)
+    {
+      this.mSystemBarComp.setStatusBarVisible(i, 0);
+      this.mStatusBarVisibility = i;
+      doInMultiWindowModeStatusBarVisibilityChange(i);
+      return;
+    }
+  }
+  
   private void startActivityForResult(Intent paramIntent, int paramInt1, int paramInt2)
   {
     boolean bool = paramIntent.getBooleanExtra("key_gesture_showgesture_valid", true);
@@ -272,26 +342,52 @@ public class BaseActivity
     super.startActivityForResult(paramIntent, paramInt1);
   }
   
-  public void addObserver(alpg paramalpg)
+  private boolean tryLoadDataIfInSafeMode(QQAppInterface paramQQAppInterface)
   {
-    AppInterface localAppInterface = getAppInterface();
-    if (localAppInterface != null) {
-      localAppInterface.addObserver(paramalpg);
+    if (!abev.a(BaseApplicationImpl.sApplication)) {
+      return false;
+    }
+    try
+    {
+      QLog.e("qqBaseActivity", 2, "prepare try preload Database");
+      paramQQAppInterface.a();
+      QLog.e("qqBaseActivity", 2, "try preload getRecentUserProxy finish");
+      return true;
+    }
+    catch (Throwable paramQQAppInterface)
+    {
+      for (;;)
+      {
+        try
+        {
+          QLog.e("qqBaseActivity", 2, "try preload fail", paramQQAppInterface);
+          bcrp.a(paramQQAppInterface, "");
+        }
+        catch (Throwable paramQQAppInterface) {}
+      }
     }
   }
   
-  public void addObserver(alpg paramalpg, boolean paramBoolean)
+  public void addObserver(anil paramanil)
   {
     AppInterface localAppInterface = getAppInterface();
     if (localAppInterface != null) {
-      localAppInterface.addObserver(paramalpg, paramBoolean);
+      localAppInterface.addObserver(paramanil);
+    }
+  }
+  
+  public void addObserver(anil paramanil, boolean paramBoolean)
+  {
+    AppInterface localAppInterface = getAppInterface();
+    if (localAppInterface != null) {
+      localAppInterface.addObserver(paramanil, paramBoolean);
     }
   }
   
   public void adjustSimpleStatusBar()
   {
     boolean bool1 = false;
-    if (azmk.b())
+    if (bcnj.b())
     {
       bool2 = ThemeUtil.isNowThemeIsNight(this.app, false, null);
       if ((ImmersiveUtils.isSupporImmersive() != 0) && (ImmersiveUtils.c())) {
@@ -334,8 +430,10 @@ public class BaseActivity
   
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
-    azqs.a(paramMotionEvent);
-    return super.dispatchTouchEvent(paramMotionEvent);
+    bcst.a(paramMotionEvent);
+    boolean bool = super.dispatchTouchEvent(paramMotionEvent);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool);
+    return bool;
   }
   
   @SuppressLint({"SdCardPath"})
@@ -379,7 +477,7 @@ public class BaseActivity
   {
     super.doOnCreate(paramBundle);
     int i = Build.VERSION.SDK_INT;
-    azri.a(this).a(this);
+    bctj.a(this).a(this);
     setImmersiveStatus();
     replaceActivityHandler();
     if (themeChangeRightNow()) {
@@ -415,11 +513,11 @@ public class BaseActivity
       else
       {
         setOnMultiScreenChangeListener();
-        bhsr.a(this.app, this);
+        bkgb.a(this.app, this);
         if (isNeedMiniMsg()) {
           this.mMiniMsgUser = new MiniMsgUser(this, getMiniMsgUserParam());
         }
-        azmk.a(this.mSystemBarComp, getWindow());
+        bcnj.a(this.mSystemBarComp, getWindow());
         return false;
       }
     }
@@ -443,7 +541,7 @@ public class BaseActivity
       }
       super.doOnDestroy();
       sActivityRoute.remove(getActivityName());
-      azri.a(this).d(this);
+      bctj.a(this).d(this);
       if (this.processer != null) {
         this.processer.destory();
       }
@@ -464,14 +562,11 @@ public class BaseActivity
       if (localAppInterface != null) {
         localAppInterface.removeHandler(getClass());
       }
-      if ((alwk.a().a > 0.0F) && (BaseApplicationImpl.sImageCache != null)) {
+      if ((MagnifierSDK.a().a().a > 0.0F) && (BaseApplicationImpl.sImageCache != null)) {
         BaseApplicationImpl.sImageCache.releaseLargeCache();
       }
       if (sTopActivity == this) {
         sTopActivity = null;
-      }
-      if (1 == BaseApplicationImpl.sProcessId) {
-        LeakInspector.a(this);
       }
       if ((isNeedMiniMsg()) && (this.mMiniMsgUser != null)) {
         this.mMiniMsgUser.destroy();
@@ -490,9 +585,9 @@ public class BaseActivity
   public void doOnNewIntent(Intent paramIntent)
   {
     super.doOnNewIntent(paramIntent);
-    alvw.b(this);
+    anpe.b(this);
     if (26 <= Build.VERSION.SDK_INT) {
-      alsf.a(this, true, false);
+      anll.a(this, true, false);
     }
     if (paramIntent != null) {
       ActivityLifecycle.onNewIntent(getActivity(), paramIntent);
@@ -502,7 +597,7 @@ public class BaseActivity
   public void doOnPause()
   {
     super.doOnPause();
-    azri.a(this).c(this);
+    bctj.a(this).c(this);
     Object localObject = sTopActivity;
     if ((this.currentActivityStayTime != 0L) && (localObject != null) && (UnifiedMonitor.a().whetherReportThisTime(8))) {
       UnifiedMonitor.a().addEvent(8, localObject.getClass().getName(), (int)(SystemClock.uptimeMillis() - this.currentActivityStayTime), 0, null);
@@ -549,118 +644,61 @@ public class BaseActivity
   @TargetApi(9)
   public void doOnResume()
   {
-    i = 2;
     super.doOnResume();
     sTopActivity = this;
-    azri.a(this).b(this);
+    bctj.a(this).b(this);
     this.currentActivityStayTime = SystemClock.uptimeMillis();
     if (this.mSystemBarComp != null)
     {
       this.mSystemBarComp.init();
       setOnMultiScreenChangeListener();
     }
-    Object localObject;
-    if ((this instanceof NotificationActivity))
+    if ((this instanceof NotificationActivity)) {}
+    for (;;)
     {
-      if (aqbd.a == true) {
-        aqbd.a().b();
+      if (asfr.a == true) {
+        asfr.a().b();
       }
       ThreadManager.excute(new BaseActivity.3(this), 64, null, true);
       mAppForground = GesturePWDUtils.getAppForground(getActivity());
       if (QLog.isColorLevel())
       {
-        localObject = new StringBuilder(256);
-        ((StringBuilder)localObject).append("[");
-        ((StringBuilder)localObject).append(hashCode());
-        ((StringBuilder)localObject).append("]");
-        ((StringBuilder)localObject).append(this.className);
-        ((StringBuilder)localObject).append(" onResume .mAppForground = ");
-        ((StringBuilder)localObject).append(mAppForground);
-        ((StringBuilder)localObject).append(",mCanLock=");
-        ((StringBuilder)localObject).append(this.mCanLock);
-        ((StringBuilder)localObject).append(" HeapAlloc=");
-        ((StringBuilder)localObject).append(Runtime.getRuntime().totalMemory() / 1024L);
-        ((StringBuilder)localObject).append(" KB HeapFree=");
-        ((StringBuilder)localObject).append(Runtime.getRuntime().freeMemory() / 1024L);
-        ((StringBuilder)localObject).append(" KB HeapMax=");
-        ((StringBuilder)localObject).append(Runtime.getRuntime().maxMemory() / 1024L);
-        ((StringBuilder)localObject).append(" KB");
-        QLog.d("qqBaseActivity", 2, ((StringBuilder)localObject).toString());
+        StringBuilder localStringBuilder = new StringBuilder(256);
+        localStringBuilder.append("[");
+        localStringBuilder.append(hashCode());
+        localStringBuilder.append("]");
+        localStringBuilder.append(this.className);
+        localStringBuilder.append(" onResume .mAppForground = ");
+        localStringBuilder.append(mAppForground);
+        localStringBuilder.append(",mCanLock=");
+        localStringBuilder.append(this.mCanLock);
+        localStringBuilder.append(" HeapAlloc=");
+        localStringBuilder.append(Runtime.getRuntime().totalMemory() / 1024L);
+        localStringBuilder.append(" KB HeapFree=");
+        localStringBuilder.append(Runtime.getRuntime().freeMemory() / 1024L);
+        localStringBuilder.append(" KB HeapMax=");
+        localStringBuilder.append(Runtime.getRuntime().maxMemory() / 1024L);
+        localStringBuilder.append(" KB");
+        QLog.d("qqBaseActivity", 2, localStringBuilder.toString());
       }
       if (mAppBackgroundTime > 0L) {
-        azsa.a(SystemClock.elapsedRealtime() - mAppBackgroundTime);
+        bcuc.a(SystemClock.elapsedRealtime() - mAppBackgroundTime);
       }
       mAppBackgroundTime = 0L;
-      localObject = getCurrentAccountUin();
-      if (((mAppForground) && ((!"com.tencent.mobileqq".equals(BaseApplicationImpl.processName)) || (isUnLockSuccess))) || (!this.mCanLock) || (localObject == null) || (!GesturePWDUtils.getJumpLock(getActivity(), (String)localObject)) || ((getActivity() instanceof GesturePWDUnlockActivity)) || ((getActivity() instanceof InstallActivity)) || ((getActivity() instanceof UserguideActivity)) || ((getActivity() instanceof JumpActivity)) || ((getActivity() instanceof qfileJumpActivity)) || ((getActivity() instanceof QfavJumpActivity)) || ((getActivity() instanceof LoginActivity)) || ((getActivity() instanceof QlinkBridgeActivity)) || ((getActivity() instanceof QlinkShareJumpActivity))) {
-        break label677;
-      }
-      startUnlockActivity();
-    }
-    for (;;)
-    {
-      if ((!mAppForground) && (!(this instanceof JumpActivity)))
-      {
-        mAppForground = true;
-        GesturePWDUtils.setAppForground(getActivity(), mAppForground);
-      }
-      this.mStopFlag = 0;
-      this.mCanLock = true;
+      resumeStartUnlockIfNeeded();
       if (GuardManager.a != null) {
         GuardManager.a.b(1, getPreProcess());
       }
-      localObject = BridgeHelper.a(getActivity(), getCurrentAccountUin()).a("buscard_registerNFC");
-      if ((TextUtils.isEmpty((CharSequence)localObject)) || ("true".equals(localObject))) {}
-      try
-      {
-        if (this.mNFCResumeRunnable != null) {
-          ThreadManager.getSubThreadHandler().removeCallbacks(this.mNFCResumeRunnable);
-        }
-        this.mNFCResumeRunnable = new BaseActivity.4(this);
-        ThreadManager.getSubThreadHandler().post(this.mNFCResumeRunnable);
-      }
-      catch (Throwable localThrowable)
-      {
-        for (;;)
-        {
-          boolean bool;
-          if (QLog.isDevelopLevel())
-          {
-            QLog.i("qqBaseActivity", 4, "registerNFCEvent failed");
-            continue;
-            i = 0;
-          }
-        }
-      }
-      this.mIsStatusBarVisibilityNeedGone = false;
-      if ((!isNeedInterruptDoMulitWindow()) && (this.mIsAttachedToWindow) && (isInMultiWindow()))
-      {
-        bool = isNeedStatusBarGone();
-        if ((this.mSystemBarComp != null) && (this.mSystemBarComp.isStatusBarVisible == bool))
-        {
-          if (!bool) {
-            break label736;
-          }
-          this.mSystemBarComp.setStatusBarVisible(i, 0);
-          this.mStatusBarVisibility = i;
-          doInMultiWindowModeStatusBarVisibilityChange(i);
-        }
-      }
+      resumeNFC();
+      resumeStatusBar();
       if ((isNeedMiniMsg()) && (this.mMiniMsgUser != null)) {
         this.mMiniMsgUser.onForeground();
       }
       if (Build.VERSION.SDK_INT < 23) {
-        azmk.a(this.mSystemBarComp, getWindow());
+        bcnj.a(this.mSystemBarComp, getWindow());
       }
       return;
-      aqbd.a().a();
-      break;
-      label677:
-      if ((!mAppForground) && (this.mCanLock)) {
-        checkUnlockForSpecial();
-      } else if ((!mAppForground) && (!this.mCanLock)) {
-        isUnLockSuccess = true;
-      }
+      asfr.a().a();
     }
   }
   
@@ -674,7 +712,7 @@ public class BaseActivity
     if ((isWrapContent()) && (this.mFlingHandler != null)) {
       this.mFlingHandler.onStart();
     }
-    atzx.a(getIntent());
+    awhg.a(getIntent());
   }
   
   public void doOnStop()
@@ -766,7 +804,7 @@ public class BaseActivity
       if (QLog.isColorLevel()) {
         QLog.d("notification", 2, "BaseActivity doOnWindowFocusChanged removeNotification");
       }
-      this.app.i();
+      this.app.j();
       continue;
       label315:
       if (this.runnableRemoveNotification != null)
@@ -875,7 +913,7 @@ public class BaseActivity
   
   public int getTitleBarHeight()
   {
-    return getResources().getDimensionPixelSize(2131298914);
+    return getResources().getDimensionPixelSize(2131298998);
   }
   
   @TargetApi(24)
@@ -970,6 +1008,13 @@ public class BaseActivity
     return false;
   }
   
+  @Override
+  public void onConfigurationChanged(Configuration paramConfiguration)
+  {
+    super.onConfigurationChanged(paramConfiguration);
+    EventCollector.getInstance().onActivityConfigurationChanged(this, paramConfiguration);
+  }
+  
   @TargetApi(24)
   public void onMultiWindowModeChanged(boolean paramBoolean)
   {
@@ -977,8 +1022,8 @@ public class BaseActivity
     {
       if ((paramBoolean) && (Build.VERSION.SDK_INT >= 24))
       {
-        azqs.a(this.app, "dc00898", "", "", "0X800859D", "0X800859D", 0, 0, "", "", "", "");
-        azri.a(this).a(null, "MulitScreenMode", paramBoolean, 0L, 0L, null, null);
+        bcst.a(this.app, "dc00898", "", "", "0X800859D", "0X800859D", 0, 0, "", "", "", "");
+        bctj.a(this).a(null, "MulitScreenMode", paramBoolean, 0L, 0L, null, null);
       }
       if (QLog.isDevelopLevel()) {
         QLog.i("qqBaseActivity", 4, "fight..onMultiWindowModeChanged " + getActivityName());
@@ -993,15 +1038,15 @@ public class BaseActivity
       if (!ThemeUtil.isDefaultOrDIYTheme(false)) {
         break label43;
       }
-      this.mSystemBarComp.setStatusBarDrawable(getResources().getDrawable(2130845746));
+      this.mSystemBarComp.setStatusBarDrawable(getResources().getDrawable(2130846162));
     }
     for (;;)
     {
-      azmk.a(this.mSystemBarComp, getWindow());
+      bcnj.a(this.mSystemBarComp, getWindow());
       return;
       label43:
       this.mSystemBarComp.setStatusBarDrawable(null);
-      this.mSystemBarComp.setStatusBarColor(getResources().getColor(2131166959));
+      this.mSystemBarComp.setStatusBarColor(getResources().getColor(2131167042));
     }
   }
   
@@ -1012,7 +1057,7 @@ public class BaseActivity
     QIPCClientHelper.getInstance().getClient().callServer("MiniMsgIPCServer", "cmd_proc_backgound", paramBundle, this.mEIPCResultCallback);
   }
   
-  public void onProcessForeGround(Bundle paramBundle)
+  protected void onProcessForeGround(Bundle paramBundle)
   {
     if (QLog.isDevelopLevel()) {
       QLog.i("MiniMsgIPCServer", 4, "onProcessForeGround" + paramBundle.toString());
@@ -1033,15 +1078,22 @@ public class BaseActivity
     if ((paramAppRuntime != null) && ((paramAppRuntime instanceof QQAppInterface)) && (!TextUtils.isEmpty(paramAppRuntime.getAccount())))
     {
       QQAppInterface localQQAppInterface = (QQAppInterface)paramAppRuntime;
-      if (paramAppRuntime.isLogin()) {
-        return ajjj.a().a(localQQAppInterface, BaseApplicationImpl.sApplication, paramBoolean, false);
+      if (paramAppRuntime.isLogin())
+      {
+        if (tryLoadDataIfInSafeMode(localQQAppInterface)) {
+          return false;
+        }
+        return albs.a().a(localQQAppInterface, BaseApplicationImpl.sApplication, paramBoolean, false);
       }
       if (QLog.isColorLevel()) {
         QLog.d("LoadData", 2, new Object[] { "Preload not login account: ", paramAppRuntime.getAccount() });
       }
       try
       {
-        paramBoolean = ajjj.a().a(localQQAppInterface, BaseApplicationImpl.sApplication, paramBoolean, false);
+        if (tryLoadDataIfInSafeMode(localQQAppInterface)) {
+          return false;
+        }
+        paramBoolean = albs.a().a(localQQAppInterface, BaseApplicationImpl.sApplication, paramBoolean, false);
         return paramBoolean;
       }
       catch (Throwable paramAppRuntime)
@@ -1057,11 +1109,11 @@ public class BaseActivity
   
   public void receiveScreenOff() {}
   
-  public void removeObserver(alpg paramalpg)
+  public void removeObserver(anil paramanil)
   {
     AppInterface localAppInterface = getAppInterface();
     if (localAppInterface != null) {
-      localAppInterface.removeObserver(paramalpg);
+      localAppInterface.removeObserver(paramanil);
     }
   }
   
@@ -1085,14 +1137,14 @@ public class BaseActivity
       getWindow().addFlags(67108864);
       if (this.mActNeedImmersive)
       {
-        int i = getResources().getColor(2131166959);
+        int i = getResources().getColor(2131167042);
         if (this.mSystemBarComp == null)
         {
           this.mSystemBarComp = new SystemBarCompact(this, true, i);
           if (!ThemeUtil.isDefaultOrDIYTheme(false)) {
             break label99;
           }
-          this.mSystemBarComp.setStatusDrawable(getResources().getDrawable(2130845746));
+          this.mSystemBarComp.setStatusDrawable(getResources().getDrawable(2130846162));
         }
       }
     }
@@ -1124,7 +1176,7 @@ public class BaseActivity
   
   protected String setLastActivityName()
   {
-    return getString(2131690623);
+    return getString(2131690563);
   }
   
   @TargetApi(11)
@@ -1138,13 +1190,13 @@ public class BaseActivity
         return;
         if (Build.VERSION.SDK_INT >= 21)
         {
-          alot localalot = new alot(this);
+          anhy localanhy = new anhy(this);
           try
           {
             View localView = getWindow().getDecorView();
-            localView.setOnSystemUiVisibilityChangeListener(localalot);
+            localView.setOnSystemUiVisibilityChangeListener(localanhy);
             if (localView.getSystemUiVisibility() != 0) {
-              localalot.onSystemUiVisibilityChange(localView.getSystemUiVisibility());
+              localanhy.onSystemUiVisibilityChange(localView.getSystemUiVisibility());
             }
             if (QLog.isDevelopLevel())
             {
@@ -1162,40 +1214,40 @@ public class BaseActivity
   public void setStatusBarBlue()
   {
     if ((ThemeUtil.isDefaultOrDIYTheme(false)) && (this.mSystemBarComp != null)) {
-      this.mSystemBarComp.setStatusBarDrawable(getResources().getDrawable(2130845746));
+      this.mSystemBarComp.setStatusBarDrawable(getResources().getDrawable(2130846162));
     }
   }
   
   public void startActivity(Intent paramIntent)
   {
-    JumpActivity.a(paramIntent);
+    JumpActivity.g(paramIntent);
     JumpActivity.a(this, paramIntent);
     access$501(this, paramIntent);
   }
   
   public void startActivity(Intent paramIntent, Bundle paramBundle)
   {
-    JumpActivity.a(paramIntent);
+    JumpActivity.g(paramIntent);
     JumpActivity.a(this, paramIntent);
     access$601(this, paramIntent, paramBundle);
   }
   
   public void startActivityForResult(Intent paramIntent, int paramInt)
   {
-    JumpActivity.a(paramIntent);
+    JumpActivity.g(paramIntent);
     JumpActivity.a(this, paramIntent);
     startActivityForResult(paramIntent, paramInt, 2);
   }
   
   public void startActivityForResult(Intent paramIntent, int paramInt, Bundle paramBundle)
   {
-    JumpActivity.a(paramIntent);
+    JumpActivity.g(paramIntent);
     JumpActivity.a(this, paramIntent);
     Object localObject;
     if (this.app != null)
     {
-      localObject = (bdtz)this.app.getManager(150);
-      if ((localObject == null) || (!((bdtz)localObject).a(paramIntent, this.app, this))) {}
+      localObject = (bgzc)this.app.getManager(150);
+      if ((localObject == null) || (!((bgzc)localObject).a(paramIntent, this.app, this))) {}
     }
     else
     {
@@ -1205,8 +1257,8 @@ public class BaseActivity
         if (!(this instanceof QQBrowserActivity)) {
           break;
         }
-        localObject = ((QQBrowserActivity)this).b();
-      } while ((localObject != null) && (((WebViewFragment)localObject).a != null) && (((WebViewFragment)localObject).a.a != null) && (((WebViewFragment)localObject).a.a.a(paramIntent, this)));
+        localObject = ((QQBrowserActivity)this).a();
+      } while ((localObject != null) && (((WebViewFragment)localObject).browserApp != null) && (((WebViewFragment)localObject).browserApp.a != null) && (((WebViewFragment)localObject).browserApp.a.a(paramIntent, this)));
     }
     try
     {

@@ -1,18 +1,26 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.activity.aio.intimate.IntimateScoreCardView;
 
-class agob
-  implements View.OnClickListener
+public class agob
+  implements Animator.AnimatorListener
 {
-  agob(agnn paramagnn) {}
+  public agob(IntimateScoreCardView paramIntimateScoreCardView) {}
   
-  public void onClick(View paramView)
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    aepi.n = true;
-    azqs.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "Two_call", "Clk_aio_right", 0, 0, String.valueOf(0), "", "", "");
-    aetu.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, true, null, this.a);
-    azqs.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "Qidian", "", "0X8008FEB", "qidianMasterVideo", 1, 1, 0, "2", "0", "", "");
+    onAnimationEnd(paramAnimator);
   }
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    IntimateScoreCardView.a(this.a).setAlpha(1.0F);
+  }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

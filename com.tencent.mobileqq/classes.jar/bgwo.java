@@ -1,29 +1,21 @@
-import android.content.DialogInterface.OnClickListener;
-
-class bgwo
+public class bgwo
 {
-  private final int jdField_a_of_type_Int;
-  private final DialogInterface.OnClickListener jdField_a_of_type_AndroidContentDialogInterface$OnClickListener;
+  public int a;
+  public String a;
+  public int b;
+  public String b;
   
-  bgwo(int paramInt, DialogInterface.OnClickListener paramOnClickListener)
+  public bgwo(int paramInt1, String paramString1, int paramInt2, String paramString2)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener = paramOnClickListener;
-  }
-  
-  int a()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public DialogInterface.OnClickListener a()
-  {
-    return this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_b_of_type_Int = paramInt2;
+    this.jdField_b_of_type_JavaLangString = paramString2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bgwo
  * JD-Core Version:    0.7.0.1
  */

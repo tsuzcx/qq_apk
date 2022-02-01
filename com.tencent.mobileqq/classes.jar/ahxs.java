@@ -1,17 +1,102 @@
-import android.content.DialogInterface.OnClickListener;
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.HotChatManager;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.utils.SendMessageHandler;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
-class ahxs
-  implements View.OnClickListener
+public class ahxs
+  extends anqd
 {
-  ahxs(ahxp paramahxp, DialogInterface.OnClickListener paramOnClickListener) {}
+  public ahxs(ahxp paramahxp) {}
   
-  public void onClick(View paramView)
+  protected void a(String paramString1, int paramInt1, int paramInt2, SendMessageHandler paramSendMessageHandler, long paramLong1, long paramLong2, String paramString2)
   {
-    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
-      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_Ahxp, 2);
+    if ((paramString1 == null) || (!paramString1.equals(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString)) || (paramInt1 != this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "onUpdateSendMsgError exception uin " + paramString1 + " type " + paramInt1 + " uniseq " + paramLong2);
+      }
+      return;
     }
+    if (QLog.isColorLevel()) {
+      QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "onUpdateSendMsgError uin " + paramString1 + " type " + paramInt1 + " uniseq " + paramLong2);
+    }
+    paramSendMessageHandler = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(true);
+    if ((paramSendMessageHandler.b(paramString1)) && (!TextUtils.isEmpty(paramString2)))
+    {
+      annq.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramSendMessageHandler.a(paramString1), paramString2, true);
+      if ((paramInt2 == 112) || (paramInt2 == 113))
+      {
+        anob.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramString1, 6);
+        anob.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      }
+    }
+    this.a.f(196608);
+  }
+  
+  protected void a(boolean paramBoolean, String paramString, long paramLong)
+  {
+    a(paramBoolean, paramString, paramLong, null);
+  }
+  
+  protected void a(boolean paramBoolean, String paramString, long paramLong, anqa paramanqa)
+  {
+    if ((paramString == null) || (paramString.length() == 0)) {}
+    while (!paramString.equals(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString)) {
+      return;
+    }
+    this.a.t = true;
+    this.a.a(262144, paramanqa, paramLong);
+  }
+  
+  public void a(boolean paramBoolean1, List<MessageRecord> paramList, boolean paramBoolean2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(this.a.jdField_a_of_type_JavaLangString + ".troop.revoked_troop_msg", 2, "isSuccess:" + paramBoolean1);
+    }
+    if (!paramBoolean1) {
+      return;
+    }
+    if ((paramList != null) && (!paramList.isEmpty()))
+    {
+      Object localObject = (MessageRecord)paramList.get(0);
+      if (this.a.jdField_a_of_type_Beqr != null)
+      {
+        int i = this.a.jdField_a_of_type_Beqr.b();
+        if (i != -1)
+        {
+          bfiv localbfiv = (bfiv)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(363);
+          long l = localbfiv.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString);
+          if (((MessageRecord)localObject).uniseq == l) {
+            localbfiv.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, i);
+          }
+          this.a.jdField_a_of_type_Beqr.a(((MessageRecord)localObject).uniseq);
+          if (QLog.isColorLevel())
+          {
+            localObject = new StringBuilder("onMsgRevokeNotice==>");
+            ((StringBuilder)localObject).append("navigateType:").append(i).append("|navigaeSeq:").append(l);
+            QLog.d(this.a.jdField_a_of_type_JavaLangString + ".troop.special_msg", 2, ((StringBuilder)localObject).toString());
+          }
+        }
+      }
+    }
+    super.a(paramBoolean1, paramList, paramBoolean2);
+  }
+  
+  public void b(String paramString)
+  {
+    if (QLog.isDevelopLevel()) {
+      QLog.d("MsgSend", 4, "delay 100ms, starting upadte ui");
+    }
+    this.a.f(131072);
+  }
+  
+  protected void c(boolean paramBoolean, String paramString)
+  {
+    this.a.f(65536);
   }
 }
 

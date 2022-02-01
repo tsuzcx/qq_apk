@@ -1,18 +1,17 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.aio.stickerbubble.StickerBubbleListView;
+import android.widget.BaseAdapter;
+import com.tencent.mobileqq.data.ChatMessage;
 
-public class agxq
-  implements agxs
+class agxq
+  extends ahbl
 {
-  public agxq(StickerBubbleListView paramStickerBubbleListView, int[] paramArrayOfInt) {}
-  
-  public void a(View paramView)
+  agxq(agwz paramagwz)
   {
-    if ((paramView.getTag() instanceof Integer))
-    {
-      paramView = (Integer)paramView.getTag();
-      this.jdField_a_of_type_ArrayOfInt[0] = paramView.intValue();
-    }
+    super(paramagwz, null);
+  }
+  
+  protected afxi a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
+  {
+    return new ahlc(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
   }
 }
 

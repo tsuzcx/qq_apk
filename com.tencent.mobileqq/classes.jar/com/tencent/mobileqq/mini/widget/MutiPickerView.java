@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.mini.widget;
 
-import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
@@ -18,11 +17,13 @@ import android.widget.LinearLayout.LayoutParams;
 import android.widget.NumberPicker;
 import android.widget.TextView;
 import com.tencent.mobileqq.mini.util.ColorUtils;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.qqlive.module.videoreport.inject.dialog.ReportDialog;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 
 public class MutiPickerView
-  extends Dialog
+  extends ReportDialog
   implements DialogInterface.OnCancelListener, View.OnClickListener
 {
   private TextView mCancelTextView;
@@ -35,13 +36,13 @@ public class MutiPickerView
   
   public MutiPickerView(@NonNull Context paramContext)
   {
-    super(paramContext, 2131755367);
+    super(paramContext, 2131755379);
     initView(paramContext);
   }
   
   private void initView(Context paramContext)
   {
-    paramContext = LayoutInflater.from(paramContext).inflate(2131559370, null);
+    paramContext = LayoutInflater.from(paramContext).inflate(2131559486, null);
     setContentView(paramContext);
     Window localWindow = getWindow();
     if (localWindow != null)
@@ -53,10 +54,10 @@ public class MutiPickerView
       localWindow.setAttributes(localLayoutParams);
       localWindow.setGravity(80);
     }
-    this.mMutiPickerContainer = ((LinearLayout)paramContext.findViewById(2131370922));
-    this.mCancelTextView = ((TextView)paramContext.findViewById(2131370923));
+    this.mMutiPickerContainer = ((LinearLayout)paramContext.findViewById(2131371487));
+    this.mCancelTextView = ((TextView)paramContext.findViewById(2131371488));
     this.mCancelTextView.setOnClickListener(this);
-    this.mConfirmTextView = ((TextView)paramContext.findViewById(2131370924));
+    this.mConfirmTextView = ((TextView)paramContext.findViewById(2131371489));
     this.mConfirmTextView.setOnClickListener(this);
     setOnCancelListener(this);
   }
@@ -124,20 +125,25 @@ public class MutiPickerView
   
   public void onClick(View paramView)
   {
-    if (paramView.getId() == 2131370923)
+    if (paramView.getId() == 2131371488)
     {
       if (this.mOnConfirmListener != null) {
         this.mOnConfirmListener.onValCancel();
       }
       dismissDlg();
     }
-    while (paramView.getId() != 2131370924) {
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
+      if (paramView.getId() == 2131371489)
+      {
+        if (this.mOnConfirmListener != null) {
+          this.mOnConfirmListener.onValConfirm(this.mResult);
+        }
+        dismissDlg();
+      }
     }
-    if (this.mOnConfirmListener != null) {
-      this.mOnConfirmListener.onValConfirm(this.mResult);
-    }
-    dismissDlg();
   }
   
   public void setCurrentIndex(int[] paramArrayOfInt)
@@ -221,7 +227,7 @@ public class MutiPickerView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.widget.MutiPickerView
  * JD-Core Version:    0.7.0.1
  */

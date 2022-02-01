@@ -2,7 +2,6 @@ package com.tencent.mm.vfs;
 
 import android.os.ParcelFileDescriptor;
 import com.tencent.qphone.base.util.QLog;
-import java.io.Closeable;
 import java.io.IOException;
 
 final class VFSNativeAPI
@@ -61,12 +60,12 @@ final class VFSNativeAPI
         {
           localObject2 = localObject1;
           QLog.e("VFS.VFSNativeAPI", 1, "Failed to open file descriptor for file: " + paramString, localIOException);
-          VFSUtils.closeQuietly((Closeable)localObject1);
+          VFSUtils.closeQuietly((ParcelFileDescriptor)localObject1);
         }
       }
       finally
       {
-        VFSUtils.closeQuietly((Closeable)localObject2);
+        VFSUtils.closeQuietly((ParcelFileDescriptor)localObject2);
       }
     }
     return -1;

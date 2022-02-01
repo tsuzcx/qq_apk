@@ -1,13 +1,48 @@
-import android.content.DialogInterface;
+import com.tencent.mobileqq.activity.contacts.publicaccount.PublicAccountFragment;
+import com.tencent.mobileqq.data.PublicAccountInfo;
+import com.tencent.qphone.base.util.QLog;
 
-class ajkj
-  extends bdgx
+public class ajkj
+  extends anry
 {
-  ajkj(ajkg paramajkg) {}
+  public ajkj(PublicAccountFragment paramPublicAccountFragment) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onFollowPublicAccount(int paramInt, PublicAccountInfo paramPublicAccountInfo)
   {
-    paramDialogInterface.dismiss();
+    if (QLog.isColorLevel()) {
+      QLog.d("Contacts.PublicAccountFragment", 2, "onFollowPublicAccount errCode: " + paramInt);
+    }
+    if (paramInt == 0) {
+      this.a.i();
+    }
+  }
+  
+  public void onUnfollowPublicAccount(int paramInt, PublicAccountInfo paramPublicAccountInfo)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("Contacts.PublicAccountFragment", 2, "onUnfollowPublicAccount errCode: " + paramInt);
+    }
+    if (paramInt == 0) {
+      this.a.i();
+    }
+  }
+  
+  public void onUpdateUserFollowList(int paramInt, boolean paramBoolean)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("Contacts.PublicAccountFragment", 2, "onUpdateUserFollowList errCode: " + paramInt + " isFinish:" + paramBoolean);
+    }
+    if (paramBoolean)
+    {
+      if (PublicAccountFragment.a(this.a))
+      {
+        if (PublicAccountFragment.a(this.a) != null) {
+          PublicAccountFragment.b(this.a).a(this.a.b(), true, null);
+        }
+        PublicAccountFragment.a(this.a, false);
+      }
+      this.a.i();
+    }
   }
 }
 

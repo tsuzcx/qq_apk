@@ -1,21 +1,21 @@
 package dov.com.qq.im.ae.camera.ui;
 
-import axpe;
-import bkto;
+import banf;
+import bnip;
 
 public class FilterPagerViewStubHolder$2
   implements Runnable
 {
-  public FilterPagerViewStubHolder$2(bkto parambkto, axpe paramaxpe) {}
+  public FilterPagerViewStubHolder$2(bnip parambnip, banf parambanf) {}
   
   public void run()
   {
-    this.a.a(bkto.a(this.this$0));
+    this.a.a(bnip.a(this.this$0));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     dov.com.qq.im.ae.camera.ui.FilterPagerViewStubHolder.2
  * JD-Core Version:    0.7.0.1
  */

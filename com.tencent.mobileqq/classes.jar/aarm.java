@@ -1,37 +1,43 @@
 import android.os.Bundle;
-import org.json.JSONObject;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import tencent.im.oidb.cmd0x6d6.oidb_0x6d6.ResendRspBody;
+import tencent.im.oidb.cmd0x6d6.oidb_0x6d6.RspBody;
 
-class aarm
-  implements yrb
+public abstract class aarm
+  extends niv
 {
-  aarm(aarl paramaarl, aarb paramaarb, String paramString, String[] paramArrayOfString, yqz paramyqz) {}
-  
-  public void callback(Bundle paramBundle)
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    String str1 = paramBundle.getString("phone");
-    String str2 = paramBundle.getString("name");
-    String str3 = paramBundle.getString("city");
-    String str4 = paramBundle.getString("area");
-    paramBundle = new JSONObject();
-    try
+    b(paramInt, paramArrayOfByte, paramBundle);
+  }
+  
+  public abstract void a(boolean paramBoolean, int paramInt, oidb_0x6d6.ResendRspBody paramResendRspBody, Bundle paramBundle);
+  
+  protected void b(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  {
+    if (paramInt != 0)
     {
-      paramBundle.put("phone", str1);
-      paramBundle.put("name", str2);
-      paramBundle.put("city", str3);
-      paramBundle.put("area", str4);
-      paramBundle = paramBundle.toString();
-      aase.a("GdtGetUserInfoHandler", "handleJsCallRequest() called with: webPlugin = [" + this.jdField_a_of_type_Aarb + "], callback = [" + this.jdField_a_of_type_JavaLangString + "], args = [" + this.jdField_a_of_type_ArrayOfJavaLangString + "], result = [" + paramBundle + "]");
-      this.jdField_a_of_type_Aarb.callJs(this.jdField_a_of_type_JavaLangString, new String[] { paramBundle });
-      this.jdField_a_of_type_Yqz.b();
+      a(false, paramInt, null, paramBundle);
       return;
     }
-    catch (Exception localException)
+    oidb_0x6d6.RspBody localRspBody = new oidb_0x6d6.RspBody();
+    try
     {
-      for (;;)
+      localRspBody.mergeFrom(paramArrayOfByte);
+      paramArrayOfByte = (oidb_0x6d6.ResendRspBody)localRspBody.resend_file_rsp.get();
+      if (paramArrayOfByte.int32_ret_code.has())
       {
-        aase.d("GdtGetUserInfoHandler", localException.toString());
+        a(true, 0, paramArrayOfByte, paramBundle);
+        return;
       }
     }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      a(false, -1, null, paramBundle);
+      return;
+    }
+    a(false, -1, null, paramBundle);
   }
 }
 

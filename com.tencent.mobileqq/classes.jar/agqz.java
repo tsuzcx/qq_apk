@@ -1,15 +1,20 @@
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnTouchListener;
+import android.view.View.OnClickListener;
+import com.tencent.ark.ArkViewModel;
+import com.tencent.mobileqq.activity.aio.item.ArkAppView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class agqz
-  implements View.OnTouchListener
+public class agqz
+  implements View.OnClickListener
 {
-  agqz(agqq paramagqq) {}
+  public agqz(ArkAppView paramArkAppView, ArkViewModel paramArkViewModel) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onClick(View paramView)
   {
-    return true;
+    if (this.jdField_a_of_type_ComTencentArkArkViewModel != null) {
+      this.jdField_a_of_type_ComTencentArkArkViewModel.reinitArkContainer();
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

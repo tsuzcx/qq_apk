@@ -1,57 +1,45 @@
-import ColorNick.QC.GroupNickEmoji;
-import ColorNick.QC.GroupNickItem;
-import ColorNick.QC.readItemInfoRsp;
-import android.os.Handler;
-import com.tencent.mobileqq.activity.EditInfoActivity;
-import java.util.ArrayList;
-import java.util.Iterator;
+import android.os.Bundle;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.data.RecentUser;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import java.util.Map;
+import tencent.im.oidb.cmd0x6ef.oidb_cmd0x6ef.RspBody;
 
-public class acvp
-  extends amcd
+class acvp
+  extends niv
 {
-  public acvp(EditInfoActivity paramEditInfoActivity) {}
-  
-  public void a(boolean paramBoolean, Object paramObject)
+  acvp(acvo paramacvo, boolean paramBoolean, bepr parambepr, long paramLong1, long paramLong2, RecentUser paramRecentUser, String paramString, MessageRecord paramMessageRecord, Map paramMap)
   {
-    Object localObject1;
-    if ((paramBoolean) && ((paramObject instanceof readItemInfoRsp)))
+    super(paramBoolean);
+  }
+  
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  {
+    if ((paramInt != 0) || (paramArrayOfByte == null)) {}
+    for (;;)
     {
-      paramObject = (readItemInfoRsp)paramObject;
-      EditInfoActivity.a(this.a, paramObject.index);
-      localObject1 = paramObject.urlprefix;
-      Iterator localIterator;
-      Object localObject2;
-      if ((paramObject.emojilist != null) && (paramObject.emojilist.size() > 0) && (EditInfoActivity.a(this.a).size() == 0))
-      {
-        localIterator = paramObject.emojilist.iterator();
-        while (localIterator.hasNext())
-        {
-          localObject2 = (GroupNickEmoji)localIterator.next();
-          EditInfoActivity.a(this.a).add(Integer.valueOf(((GroupNickEmoji)localObject2).itemid));
-        }
-        this.a.a.sendEmptyMessage(260);
-      }
-      if ((paramObject.itemlist != null) && (paramObject.itemlist.size() > 0))
-      {
-        localIterator = paramObject.itemlist.iterator();
-        while (localIterator.hasNext())
-        {
-          localObject2 = (GroupNickItem)localIterator.next();
-          String str = (String)localObject1 + ((GroupNickItem)localObject2).url;
-          localObject2 = new bdro(3, null, ((GroupNickItem)localObject2).itemid, str);
-          EditInfoActivity.b(this.a).add(localObject2);
-        }
-        localObject1 = this.a;
-        if (paramObject.left != 1) {
-          break label257;
-        }
-      }
-    }
-    label257:
-    for (paramBoolean = true;; paramBoolean = false)
-    {
-      EditInfoActivity.a((EditInfoActivity)localObject1, paramBoolean);
       return;
+      try
+      {
+        paramBundle = new oidb_cmd0x6ef.RspBody();
+        paramBundle.mergeFrom(paramArrayOfByte);
+        if ((paramBundle.is_create.get() == 1) || (paramBundle.is_join.get() == 1))
+        {
+          this.jdField_a_of_type_Bepr.a.a(21, this.jdField_a_of_type_Long, this.b);
+          if (21 >= this.jdField_a_of_type_ComTencentMobileqqDataRecentUser.msgType)
+          {
+            this.jdField_a_of_type_ComTencentMobileqqDataRecentUser.msgType = 21;
+            this.jdField_a_of_type_ComTencentMobileqqDataRecentUser.msg = bfiu.a(this.jdField_a_of_type_Acvo.a, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Bepr, this.jdField_a_of_type_ComTencentMobileqqDataRecentUser.msg, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, true);
+            this.jdField_a_of_type_JavaUtilMap.put(acwh.a(this.jdField_a_of_type_JavaLangString, 1), this.jdField_a_of_type_ComTencentMobileqqDataRecentUser);
+            return;
+          }
+        }
+      }
+      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+      {
+        paramArrayOfByte.printStackTrace();
+      }
     }
   }
 }

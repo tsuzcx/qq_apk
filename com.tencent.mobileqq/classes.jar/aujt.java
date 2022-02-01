@@ -1,66 +1,41 @@
-import com.tencent.mobileqq.activity.BaseChatPie;
-import java.util.List;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserDelegationActivity;
+import com.tencent.mobileqq.forward.ForwardSdkBaseOption;
+import com.tencent.mobileqq.structmsg.AbsShareMsg;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class aujt
-  implements auqa
+  implements View.OnClickListener
 {
-  aujt(aujr paramaujr, aupt paramaupt, auqc paramauqc, List paramList) {}
+  aujt(aujs paramaujs) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Aupt.a(new auju(this));
-    this.jdField_a_of_type_Aupt.show();
-  }
-  
-  public void a(aupy paramaupy)
-  {
-    if ((paramaupy != null) && (aujr.a(this.jdField_a_of_type_Aujr) != null) && (aujr.a(this.jdField_a_of_type_Aujr).v())) {
-      switch (paramaupy.a)
-      {
-      }
-    }
+    if (this.a.a.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg == null) {}
     for (;;)
     {
-      if (this.jdField_a_of_type_Aupt.isShowing()) {
-        this.jdField_a_of_type_Aupt.dismiss();
-      }
-      if (aujr.a(this.jdField_a_of_type_Aujr) != null) {
-        aujr.a(this.jdField_a_of_type_Aujr).a(false, null, false);
-      }
-      this.jdField_a_of_type_Auqc.b();
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
-      aupz.a(aujr.a(this.jdField_a_of_type_Aujr));
-      continue;
-      aupz.b(aujr.a(this.jdField_a_of_type_Aujr));
-      continue;
-      aupz.c(aujr.a(this.jdField_a_of_type_Aujr));
+      String str = this.a.a.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg.mMsgUrl.trim();
+      if (QLog.isColorLevel()) {
+        QLog.e("ForwardOption.ForwardSdkBaseOption", 2, "gotoWeb " + str);
+      }
+      Intent localIntent = new Intent(this.a.a.jdField_a_of_type_AndroidAppActivity, QQBrowserDelegationActivity.class);
+      localIntent.putExtra("param_force_internal_browser", true);
+      localIntent.putExtra("reqType", 7);
+      localIntent.putExtra("hide_more_button", true);
+      localIntent.putExtra("url", str);
+      afsd.a(this.a.a.jdField_a_of_type_AndroidAppActivity, localIntent, str);
+      this.a.a.E();
     }
-  }
-  
-  public void a(aupy paramaupy, int paramInt)
-  {
-    this.jdField_a_of_type_Aupt.a(paramInt);
-  }
-  
-  public void b()
-  {
-    if (this.jdField_a_of_type_Aupt.isShowing()) {
-      this.jdField_a_of_type_Aupt.dismiss();
-    }
-    if (aujr.a(this.jdField_a_of_type_Aujr) != null) {
-      aujr.a(this.jdField_a_of_type_Aujr).a(false, null, false);
-    }
-    this.jdField_a_of_type_Auqc.b();
-  }
-  
-  public void c()
-  {
-    this.jdField_a_of_type_Auqc.a(aujr.a(this.jdField_a_of_type_Aujr), this.jdField_a_of_type_JavaUtilList);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aujt
  * JD-Core Version:    0.7.0.1
  */

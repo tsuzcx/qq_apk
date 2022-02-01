@@ -1,194 +1,133 @@
-import android.support.annotation.NonNull;
-import com.tencent.commonsdk.pool.ByteArrayPool;
-import java.io.FilterOutputStream;
-import java.io.IOException;
-import java.io.OutputStream;
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
+import com.tencent.gdtad.aditem.GdtAd;
+import com.tencent.gdtad.aditem.GdtHandler.Options;
+import com.tencent.mobileqq.mini.appbrand.jsapi.PluginConst.AdConst;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqmini.proxyimpl.AdProxyImpl;
+import com.tencent.qqmini.sdk.launcher.core.proxy.AdProxy.AbsInterstitialAdView;
+import com.tencent.qqmini.sdk.launcher.core.proxy.AdProxy.InterstitialADLisener;
+import java.lang.ref.WeakReference;
+import org.json.JSONObject;
+import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo;
 
 public class bjvj
-  extends FilterOutputStream
+  extends AdProxy.AbsInterstitialAdView
 {
-  private static final Object jdField_a_of_type_JavaLangObject = new Object();
-  private static bjvj jdField_b_of_type_Bjvj;
-  private static int c;
-  protected int a;
-  private bjvj jdField_a_of_type_Bjvj;
-  private boolean jdField_a_of_type_Boolean;
-  protected byte[] a;
-  private final int jdField_b_of_type_Int = 4;
+  int jdField_a_of_type_Int = 53;
+  acly jdField_a_of_type_Acly;
+  AdProxy.InterstitialADLisener jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAdProxy$InterstitialADLisener;
+  String jdField_a_of_type_JavaLangString;
+  WeakReference<Activity> jdField_a_of_type_JavaLangRefWeakReference;
+  int jdField_b_of_type_Int;
+  String jdField_b_of_type_JavaLangString;
+  int jdField_c_of_type_Int;
+  String jdField_c_of_type_JavaLangString;
+  String d;
+  String e;
+  String f;
+  String g;
+  String h;
   
-  private bjvj(@NonNull OutputStream paramOutputStream)
+  public bjvj(AdProxyImpl paramAdProxyImpl, Activity paramActivity, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8, AdProxy.InterstitialADLisener paramInterstitialADLisener)
   {
-    this(paramOutputStream, 8192);
+    super(paramAdProxyImpl);
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramActivity);
+    this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAdProxy$InterstitialADLisener = paramInterstitialADLisener;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_b_of_type_JavaLangString = paramString2;
+    this.jdField_c_of_type_JavaLangString = paramString3;
+    this.jdField_b_of_type_Int = paramInt1;
+    this.jdField_c_of_type_Int = paramInt2;
+    this.d = paramString4;
+    this.e = paramString5;
+    this.f = paramString6;
+    this.g = paramString7;
+    this.h = paramString8;
   }
   
-  private bjvj(@NonNull OutputStream paramOutputStream, int paramInt)
+  private GdtHandler.Options a(JSONObject paramJSONObject)
   {
-    super(paramOutputStream);
-    this.jdField_a_of_type_ArrayOfByte = ByteArrayPool.getGenericInstance().getBuf(paramInt);
-    this.jdField_a_of_type_Boolean = true;
+    Object localObject = (qq_ad_get.QQAdGetRsp.AdInfo)qq_ad_get.QQAdGetRsp.AdInfo.class.cast(acqx.a(new qq_ad_get.QQAdGetRsp.AdInfo(), paramJSONObject));
+    paramJSONObject = new GdtHandler.Options();
+    paramJSONObject.jdField_a_of_type_ComTencentGdtadAditemGdtAd = new GdtAd((qq_ad_get.QQAdGetRsp.AdInfo)localObject);
+    paramJSONObject.jdField_a_of_type_Boolean = true;
+    paramJSONObject.b = true;
+    localObject = new Bundle();
+    ((Bundle)localObject).putString("big_brother_ref_source_key", "biz_src_miniapp");
+    paramJSONObject.jdField_a_of_type_AndroidOsBundle = ((Bundle)localObject);
+    return paramJSONObject;
   }
   
-  public static bjvj a(@NonNull OutputStream paramOutputStream)
+  public void destroy()
   {
-    bjvj localbjvj = null;
-    synchronized (jdField_a_of_type_JavaLangObject)
+    this.jdField_a_of_type_Acly = null;
+    this.jdField_a_of_type_JavaLangRefWeakReference = null;
+    this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAdProxy$InterstitialADLisener = null;
+  }
+  
+  public void loadAD()
+  {
+    Object localObject;
+    if (this.jdField_a_of_type_JavaLangRefWeakReference != null)
     {
-      if (jdField_b_of_type_Bjvj != null)
-      {
-        localbjvj = jdField_b_of_type_Bjvj;
-        jdField_b_of_type_Bjvj = localbjvj.jdField_a_of_type_Bjvj;
-        localbjvj.jdField_a_of_type_Bjvj = null;
-        c -= 1;
+      localObject = (Activity)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      if (localObject != null) {
+        break label91;
       }
-      if (localbjvj != null)
-      {
-        localbjvj.out = paramOutputStream;
-        localbjvj.jdField_a_of_type_Boolean = true;
-        return localbjvj;
+      localObject = new StringBuilder().append("loadAD, act is null, ");
+      if (this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAdProxy$InterstitialADLisener == null) {
+        break label86;
       }
     }
-    return new bjvj(paramOutputStream);
-  }
-  
-  private void a()
-  {
-    c();
-    synchronized (jdField_a_of_type_JavaLangObject)
+    label86:
+    for (boolean bool = true;; bool = false)
     {
-      if (c < 4)
-      {
-        this.jdField_a_of_type_Bjvj = jdField_b_of_type_Bjvj;
-        jdField_b_of_type_Bjvj = this;
-        c += 1;
+      QLog.e("AdProxyImpl", 1, bool);
+      if (this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAdProxy$InterstitialADLisener != null) {
+        this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAdProxy$InterstitialADLisener.onError(1003, PluginConst.AdConst.ERROR_MSG_INNER_ERROR);
       }
       return;
+      localObject = null;
+      break;
     }
+    label91:
+    this.jdField_a_of_type_ComTencentQqminiProxyimplAdProxyImpl.requestAdInfo((Context)localObject, this.jdField_c_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.jdField_c_of_type_Int, this.d, this.e, this.f, this.g, this.h, 1, new bjvk(this, (Activity)localObject));
   }
   
-  public static void a(int paramInt1, int paramInt2, int paramInt3)
-  {
-    if (((paramInt2 | paramInt3) < 0) || (paramInt2 > paramInt1) || (paramInt1 - paramInt2 < paramInt3)) {
-      throw new IndexOutOfBoundsException("length=" + paramInt1 + "; regionStart=" + paramInt2 + "; regionLength=" + paramInt3);
-    }
-  }
-  
-  private void b()
-  {
-    if (!this.jdField_a_of_type_Boolean) {
-      throw new IOException("BufferedOutputStream is closed");
-    }
-  }
-  
-  private void c()
-  {
-    this.jdField_a_of_type_Int = 0;
-    this.out = null;
-    this.jdField_a_of_type_Boolean = false;
-  }
-  
-  private void d()
-  {
-    if (this.jdField_a_of_type_Int > 0)
-    {
-      this.out.write(this.jdField_a_of_type_ArrayOfByte, 0, this.jdField_a_of_type_Int);
-      this.jdField_a_of_type_Int = 0;
-    }
-  }
-  
-  public void close()
+  public void onClose(Activity paramActivity, int paramInt, Intent paramIntent)
   {
     try
     {
-      boolean bool = this.jdField_a_of_type_Boolean;
-      if (bool) {
-        break label14;
+      if ((this.jdField_a_of_type_Acly != null) && (paramActivity != null)) {
+        this.jdField_a_of_type_Acly.a(paramActivity, paramInt, paramIntent);
       }
+      return;
     }
-    finally
+    catch (Exception paramActivity)
     {
-      try
-      {
-        for (;;)
-        {
-          label14:
-          super.close();
-          a();
-        }
-      }
-      finally
-      {
-        a();
-      }
-      localObject1 = finally;
+      QLog.e("AdProxyImpl", 1, "onClose", paramActivity);
     }
   }
   
-  public void flush()
+  public boolean show(Activity paramActivity)
   {
-    try
+    if ((this.jdField_a_of_type_Acly != null) && (paramActivity != null))
     {
-      b();
-      d();
-      this.out.flush();
-      return;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
-  }
-  
-  public void write(int paramInt)
-  {
-    try
-    {
-      b();
-      if (this.jdField_a_of_type_Int == this.jdField_a_of_type_ArrayOfByte.length)
-      {
-        this.out.write(this.jdField_a_of_type_ArrayOfByte, 0, this.jdField_a_of_type_Int);
-        this.jdField_a_of_type_Int = 0;
+      boolean bool = this.jdField_a_of_type_Acly.a(paramActivity);
+      if ((bool) && (this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAdProxy$InterstitialADLisener != null)) {
+        this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAdProxy$InterstitialADLisener.onShow();
       }
-      byte[] arrayOfByte = this.jdField_a_of_type_ArrayOfByte;
-      int i = this.jdField_a_of_type_Int;
-      this.jdField_a_of_type_Int = (i + 1);
-      arrayOfByte[i] = ((byte)paramInt);
-      return;
+      return bool;
     }
-    finally {}
-  }
-  
-  public void write(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
-  {
-    try
-    {
-      b();
-      if (paramArrayOfByte == null) {
-        throw new NullPointerException("buffer == null");
-      }
-    }
-    finally {}
-    byte[] arrayOfByte = this.jdField_a_of_type_ArrayOfByte;
-    if (paramInt2 >= arrayOfByte.length)
-    {
-      d();
-      this.out.write(paramArrayOfByte, paramInt1, paramInt2);
-    }
-    for (;;)
-    {
-      return;
-      a(paramArrayOfByte.length, paramInt1, paramInt2);
-      if (paramInt2 > arrayOfByte.length - this.jdField_a_of_type_Int) {
-        d();
-      }
-      System.arraycopy(paramArrayOfByte, paramInt1, arrayOfByte, this.jdField_a_of_type_Int, paramInt2);
-      this.jdField_a_of_type_Int += paramInt2;
-    }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bjvj
  * JD-Core Version:    0.7.0.1
  */

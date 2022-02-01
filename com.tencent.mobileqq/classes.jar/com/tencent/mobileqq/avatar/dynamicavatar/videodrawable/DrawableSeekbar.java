@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.avatar.dynamicavatar.videodrawable;
 
-import alud;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
@@ -14,7 +13,8 @@ import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
-import anuw;
+import anni;
+import apvb;
 
 public class DrawableSeekbar
   extends LinearLayout
@@ -22,7 +22,7 @@ public class DrawableSeekbar
 {
   int jdField_a_of_type_Int;
   ImageView jdField_a_of_type_AndroidWidgetImageView;
-  anuw jdField_a_of_type_Anuw;
+  apvb jdField_a_of_type_Apvb;
   boolean jdField_a_of_type_Boolean = false;
   int b;
   int c;
@@ -53,7 +53,7 @@ public class DrawableSeekbar
     this.jdField_a_of_type_AndroidWidgetImageView.setClickable(true);
     this.jdField_a_of_type_AndroidWidgetImageView.setOnTouchListener(this);
     this.jdField_a_of_type_AndroidWidgetImageView.setScaleType(ImageView.ScaleType.FIT_XY);
-    this.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(alud.a(2131703922));
+    this.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(anni.a(2131702319));
   }
   
   private void b()
@@ -108,8 +108,8 @@ public class DrawableSeekbar
         getParent().requestDisallowInterceptTouchEvent(true);
         this.jdField_a_of_type_Int = ((int)paramMotionEvent.getRawX());
         this.b = ((int)paramMotionEvent.getRawY());
-        if (this.jdField_a_of_type_Anuw != null) {
-          this.jdField_a_of_type_Anuw.a();
+        if (this.jdField_a_of_type_Apvb != null) {
+          this.jdField_a_of_type_Apvb.a();
         }
       }
     case 2: 
@@ -132,12 +132,12 @@ public class DrawableSeekbar
         k = getWidth();
         j = k - paramView.getWidth();
       }
-      if (this.jdField_a_of_type_Anuw != null)
+      if (this.jdField_a_of_type_Apvb != null)
       {
         i = this.d;
         this.d = ((int)(j / (getWidth() - paramView.getWidth()) * this.c));
         if (i != this.d) {
-          this.jdField_a_of_type_Anuw.a(this.d);
+          this.jdField_a_of_type_Apvb.a(this.d);
         }
       }
       paramView.layout(j, paramView.getTop(), k, paramView.getBottom());
@@ -147,10 +147,10 @@ public class DrawableSeekbar
       break;
       getParent().requestDisallowInterceptTouchEvent(false);
       this.jdField_a_of_type_Boolean = false;
-      if (this.jdField_a_of_type_Anuw == null) {
+      if (this.jdField_a_of_type_Apvb == null) {
         break;
       }
-      this.jdField_a_of_type_Anuw.b();
+      this.jdField_a_of_type_Apvb.b();
       break;
       j = i;
     }
@@ -161,9 +161,9 @@ public class DrawableSeekbar
     this.c = paramInt;
   }
   
-  public void setOnProgressChangedListener(anuw paramanuw)
+  public void setOnProgressChangedListener(apvb paramapvb)
   {
-    this.jdField_a_of_type_Anuw = paramanuw;
+    this.jdField_a_of_type_Apvb = paramapvb;
   }
   
   public void setProgress(int paramInt)
@@ -202,7 +202,7 @@ public class DrawableSeekbar
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.avatar.dynamicavatar.videodrawable.DrawableSeekbar
  * JD-Core Version:    0.7.0.1
  */

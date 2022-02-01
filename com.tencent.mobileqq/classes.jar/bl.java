@@ -1,17 +1,17 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
 import com.dataline.activities.LiteActivity;
+import mqq.app.QQPermissionCallback;
 
 public class bl
-  implements DialogInterface.OnClickListener
+  implements QQPermissionCallback
 {
   public bl(LiteActivity paramLiteActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    LiteActivity.a(this.a, false);
-    this.a.finish();
+    bglp.b(this.a);
   }
+  
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt) {}
 }
 
 

@@ -1,75 +1,114 @@
-import UserGrowth.stSimpleMetaFeed;
-import android.os.Handler;
-import android.support.annotation.NonNull;
-import com.tencent.biz.pubaccount.weishi_new.WSHomeFragment;
-import com.tribe.async.dispatch.QQUIEventReceiver;
-import cooperation.qzone.util.QZLog;
+import android.graphics.Bitmap;
+import com.tencent.qphone.base.util.QLog;
 
 public class tds
-  extends QQUIEventReceiver<tdn, ygc>
 {
-  private int a;
+  tdz<Bitmap> a;
   
-  tds(@NonNull tdn paramtdn, int paramInt)
+  public tds(Bitmap paramBitmap, tea<Bitmap> paramtea)
   {
-    super(paramtdn);
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void a(@NonNull tdn paramtdn, @NonNull ygc paramygc)
-  {
-    tlo.d("comment", "onEvent,commentEvent.mEventAction:" + paramygc.jdField_a_of_type_Int + ",WSHomeFragment.mCurrentPageIndex:" + WSHomeFragment.jdField_a_of_type_Int + ",mCurrentPageIndex:" + paramtdn.jdField_a_of_type_Int);
-    if (WSHomeFragment.jdField_a_of_type_Int != paramtdn.jdField_a_of_type_Int) {
-      tlo.d("comment", "commentPresenter 's hashCode:" + paramtdn.hashCode() + ", 页面不对,不响应!");
+    this.a = new tdz(paramBitmap, paramtea);
+    if (QLog.isColorLevel()) {
+      ted.a(toString(), "onCreate", true);
     }
-    do
-    {
-      return;
-      tlo.c("comment", "commentPresenter 's hashCode:" + paramtdn.hashCode() + ", 页面正确,开始响应~");
-      switch (paramygc.jdField_a_of_type_Int)
-      {
-      case 3: 
-      case 5: 
-      default: 
-        return;
-      case 1: 
-        paramtdn.a();
-        return;
-      case 2: 
-        tdn.a(paramtdn);
-        return;
-      case 4: 
-        if ((paramygc.jdField_a_of_type_JavaLangObject instanceof Object[]))
-        {
-          paramygc = (Object[])paramygc.jdField_a_of_type_JavaLangObject;
-          int i = ((Integer)paramygc[0]).intValue();
-          paramtdn.a(i);
-          paramygc = (stSimpleMetaFeed)((tmv)paramygc[1]).a();
-          tlo.c("comment", "setCurrentFeed , feedId:" + paramygc.id + ", position:" + i + ",feed desc:" + paramygc.feed_desc);
-          paramtdn.a(paramygc);
-        }
-        QZLog.w(this.TAG, "event page change, position:" + tdn.a(paramtdn) + " feedId:" + tdn.b(paramtdn));
-        tdn.a(paramtdn, null);
-        tdn.a(paramtdn, "");
-        tdn.c(paramtdn, 0L);
-        tdn.a(paramtdn, false);
-      }
-    } while (!tdn.e(paramtdn));
-    tdn.a(paramtdn).a().removeMessages(11);
-    paramygc = tdn.a(paramtdn).a().obtainMessage(11);
-    tdn.a(paramtdn).a().sendMessageDelayed(paramygc, 20L);
-    return;
-    paramtdn.a((Object[])paramygc.jdField_a_of_type_JavaLangObject);
   }
   
-  public Class acceptEventClass()
+  public tds(tdz<Bitmap> paramtdz)
   {
-    return ygc.class;
+    paramtdz.a();
+    this.a = paramtdz;
+    if (QLog.isColorLevel()) {
+      ted.a(toString(), "createFromClone", true);
+    }
+  }
+  
+  public Bitmap a()
+  {
+    if (this.a != null) {
+      return (Bitmap)this.a.a();
+    }
+    bcst.b(null, "dc01160", "", "", "0X80098F1", "0X80098F1", 0, 1, null, null, "", "");
+    return null;
+  }
+  
+  public tds a()
+  {
+    try
+    {
+      if (QLog.isColorLevel()) {
+        ted.a(toString(), "clone", true);
+      }
+      tds localtds = new tds(this.a);
+      return localtds;
+    }
+    finally {}
+  }
+  
+  /* Error */
+  public void a()
+  {
+    // Byte code:
+    //   0: aload_0
+    //   1: monitorenter
+    //   2: aload_0
+    //   3: getfield 19	tds:a	Ltdz;
+    //   6: ifnull +34 -> 40
+    //   9: invokestatic 25	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   12: ifeq +13 -> 25
+    //   15: aload_0
+    //   16: invokevirtual 29	tds:toString	()Ljava/lang/String;
+    //   19: ldc 70
+    //   21: iconst_1
+    //   22: invokestatic 36	ted:a	(Ljava/lang/String;Ljava/lang/String;Z)V
+    //   25: aload_0
+    //   26: getfield 19	tds:a	Ltdz;
+    //   29: invokevirtual 72	tdz:b	()V
+    //   32: aload_0
+    //   33: aconst_null
+    //   34: putfield 19	tds:a	Ltdz;
+    //   37: aload_0
+    //   38: monitorexit
+    //   39: return
+    //   40: aload_0
+    //   41: invokevirtual 29	tds:toString	()Ljava/lang/String;
+    //   44: ldc 74
+    //   46: invokestatic 77	ted:a	(Ljava/lang/String;Ljava/lang/String;)V
+    //   49: goto -12 -> 37
+    //   52: astore_1
+    //   53: aload_0
+    //   54: monitorexit
+    //   55: aload_1
+    //   56: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	57	0	this	tds
+    //   52	4	1	localObject	Object
+    // Exception table:
+    //   from	to	target	type
+    //   2	25	52	finally
+    //   25	37	52	finally
+    //   37	39	52	finally
+    //   40	49	52	finally
+    //   53	55	52	finally
+  }
+  
+  public boolean a()
+  {
+    return this.a != null;
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder().append("zimage.closeable@").append(hashCode()).append("_bitmap@");
+    if ((this.a != null) && (this.a.a() != null)) {}
+    for (Integer localInteger = Integer.valueOf(((Bitmap)this.a.a()).hashCode());; localInteger = null) {
+      return localInteger;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     tds
  * JD-Core Version:    0.7.0.1
  */

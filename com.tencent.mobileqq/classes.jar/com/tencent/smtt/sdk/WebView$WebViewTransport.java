@@ -2,7 +2,7 @@ package com.tencent.smtt.sdk;
 
 public class WebView$WebViewTransport
 {
-  private WebView mWebview;
+  private WebView b;
   
   public WebView$WebViewTransport(WebView paramWebView) {}
   
@@ -10,7 +10,7 @@ public class WebView$WebViewTransport
   {
     try
     {
-      WebView localWebView = this.mWebview;
+      WebView localWebView = this.b;
       return localWebView;
     }
     finally
@@ -24,7 +24,7 @@ public class WebView$WebViewTransport
   {
     try
     {
-      this.mWebview = paramWebView;
+      this.b = paramWebView;
       return;
     }
     finally
@@ -36,7 +36,7 @@ public class WebView$WebViewTransport
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.smtt.sdk.WebView.WebViewTransport
  * JD-Core Version:    0.7.0.1
  */

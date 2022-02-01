@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.activity;
 
-import advj;
-import advk;
-import advl;
-import advm;
-import advn;
-import advo;
-import advp;
-import advq;
+import afbt;
+import afbu;
+import afbv;
+import afbw;
+import afbx;
+import afby;
+import afbz;
+import afca;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -16,18 +16,19 @@ import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.Window;
-import aqbd;
-import azqs;
-import bdgm;
-import bdin;
-import bdjz;
-import bdne;
-import beec;
+import asfr;
+import bcst;
+import bglp;
+import bgnt;
+import bgpa;
+import bgsg;
+import bhle;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.fragment.PublicBaseFragment;
+import com.tencent.mobileqq.mini.sdk.MiniAppLauncher;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.inject.fragment.V4FragmentCollector;
 import mqq.observer.WtloginObserver;
 import oicq.wlogin_sdk.devicelock.DevlockInfo;
 import org.json.JSONObject;
@@ -36,11 +37,12 @@ public class RiskHintDlgFragment
   extends PublicBaseFragment
 {
   public String a;
-  WtloginObserver jdField_a_of_type_MqqObserverWtloginObserver = new advq(this);
+  WtloginObserver jdField_a_of_type_MqqObserverWtloginObserver = new afca(this);
   public DevlockInfo a;
   private boolean jdField_a_of_type_Boolean = true;
   public String b;
   public String c;
+  String d;
   
   public RiskHintDlgFragment()
   {
@@ -62,7 +64,7 @@ public class RiskHintDlgFragment
   void a()
   {
     String str = getActivity().app.getCurrentAccountUin();
-    int i = aqbd.a().a(getActivity().app, str, this.jdField_a_of_type_MqqObserverWtloginObserver);
+    int i = asfr.a().a(getActivity().app, str, this.jdField_a_of_type_MqqObserverWtloginObserver);
     if (i != 0)
     {
       if (QLog.isColorLevel()) {
@@ -70,7 +72,7 @@ public class RiskHintDlgFragment
       }
       this.jdField_a_of_type_OicqWlogin_sdkDevicelockDevlockInfo = null;
     }
-    str = bdne.j(getActivity(), getActivity().app.getCurrentAccountUin());
+    str = bgsg.j(getActivity(), getActivity().app.getCurrentAccountUin());
     if (!TextUtils.isEmpty(str)) {}
     try
     {
@@ -93,10 +95,10 @@ public class RiskHintDlgFragment
     if ("1".equals(paramString)) {
       if (this.jdField_a_of_type_OicqWlogin_sdkDevicelockDevlockInfo == null)
       {
-        if (bdin.d(getActivity())) {
+        if (bgnt.d(getActivity())) {
           break label137;
         }
-        QQToast.a(getActivity(), getString(2131692398), 0).b(getActivity().getTitleBarHeight());
+        QQToast.a(getActivity(), getString(2131691985), 0).b(getActivity().getTitleBarHeight());
       }
     }
     label137:
@@ -115,7 +117,7 @@ public class RiskHintDlgFragment
       }
       for (;;)
       {
-        azqs.b(getActivity().app, "dc00898", "", "", "0X800AAA5", "0X800AAA5", 0, 0, "", "", "", "");
+        bcst.b(getActivity().app, "dc00898", "", "", "0X800AAA5", "0X800AAA5", 0, 0, "", "", "", "");
         a();
         if (getActivity() == null) {
           break;
@@ -151,16 +153,27 @@ public class RiskHintDlgFragment
           b();
         }
       }
+      if (MiniAppLauncher.isMiniAppUrl(paramString))
+      {
+        bcst.b(getActivity().app, "dc00898", "", "", "0X800AAA4", "0X800AAA4", 0, 0, "", "", "", "");
+        MiniAppLauncher.startMiniApp(getActivity(), paramString, 4010, null);
+        return;
+      }
       if ((!TextUtils.isEmpty(paramString)) && ((paramString.startsWith("http")) || (paramString.startsWith("https"))))
       {
+        bcst.b(getActivity().app, "dc00898", "", "", "0X800AAA4", "0X800AAA4", 0, 0, "", "", "", "");
+        if (MiniAppLauncher.isMiniAppUrl(this.d))
+        {
+          MiniAppLauncher.startMiniApp(getActivity(), this.d, 4010, null);
+          return;
+        }
         Intent localIntent = new Intent(getActivity(), QQBrowserActivity.class);
         localIntent.putExtra("url", paramString);
         localIntent.putExtra("from_risk_hint", true);
         getActivity().startActivity(localIntent);
-        azqs.b(getActivity().app, "dc00898", "", "", "0X800AAA4", "0X800AAA4", 0, 0, "", "", "", "");
         return;
       }
-      azqs.b(getActivity().app, "dc00898", "", "", "0X800AAA6", "0X800AAA6", 0, 0, "", "", "", "");
+      bcst.b(getActivity().app, "dc00898", "", "", "0X800AAA6", "0X800AAA6", 0, 0, "", "", "", "");
     } while (getActivity() == null);
     getActivity().finish();
   }
@@ -169,8 +182,8 @@ public class RiskHintDlgFragment
   {
     try
     {
-      paramString1 = bdgm.a(getActivity(), 0, paramString1, paramString2, paramString3, paramString4, new advj(this), new advk(this));
-      paramString1.setOnDismissListener(new advl(this));
+      paramString1 = bglp.a(getActivity(), 0, paramString1, paramString2, paramString3, paramString4, new afbt(this), new afbu(this));
+      paramString1.setOnDismissListener(new afbv(this));
       paramString1.show();
       return;
     }
@@ -185,8 +198,8 @@ public class RiskHintDlgFragment
   {
     try
     {
-      paramString1 = bdgm.a(getActivity(), 0, paramString1, paramString2, paramString3, paramString4, paramString5, new advm(this), new advn(this), new advo(this));
-      paramString1.setOnDismissListener(new advp(this));
+      paramString1 = bglp.a(getActivity(), 0, paramString1, paramString2, paramString3, paramString4, paramString5, new afbw(this), new afbx(this), new afby(this));
+      paramString1.setOnDismissListener(new afbz(this));
       paramString1.show();
       return;
     }
@@ -200,7 +213,6 @@ public class RiskHintDlgFragment
   public void initWindowStyleAndAnimation(Activity paramActivity)
   {
     super.initWindowStyleAndAnimation(paramActivity);
-    paramActivity.getWindow().setFlags(1024, 1024);
     paramActivity.overridePendingTransition(0, 0);
   }
   
@@ -216,15 +228,18 @@ public class RiskHintDlgFragment
     this.jdField_a_of_type_JavaLangString = localBundle.getString("btnAction1", "");
     this.b = localBundle.getString("btnAction2", "");
     this.c = localBundle.getString("btnAction3", "");
+    this.d = localBundle.getString("miniAction", "");
     if (l == 1062L) {
       a(str1, str2, str3, str4);
     }
     for (;;)
     {
       a();
-      beec.b(2);
-      azqs.b(getActivity().app, "dc00898", "", "", "0X800AAA3", "0X800AAA3", 0, 0, "", "", "", "");
-      return super.onCreateView(paramLayoutInflater, paramViewGroup, paramBundle);
+      bhle.b(2);
+      bcst.b(getActivity().app, "dc00898", "", "", "0X800AAA3", "0X800AAA3", 0, 0, "", "", "", "");
+      paramLayoutInflater = super.onCreateView(paramLayoutInflater, paramViewGroup, paramBundle);
+      V4FragmentCollector.onV4FragmentViewCreated(this, paramLayoutInflater);
+      return paramLayoutInflater;
       if (l == 1063L)
       {
         a(str1, str2, str3, str4, str5);
@@ -241,7 +256,7 @@ public class RiskHintDlgFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.RiskHintDlgFragment
  * JD-Core Version:    0.7.0.1
  */

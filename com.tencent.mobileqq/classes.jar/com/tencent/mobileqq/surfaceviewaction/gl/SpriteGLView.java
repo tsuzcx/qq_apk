@@ -10,14 +10,14 @@ import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 import android.view.View;
 import android.widget.FrameLayout;
-import badg;
-import badm;
-import bael;
-import baeq;
-import baer;
-import baes;
-import baet;
-import baeu;
+import bdek;
+import bdeq;
+import bdfp;
+import bdfu;
+import bdfv;
+import bdfw;
+import bdfx;
+import bdfy;
 import com.tencent.mobileqq.R.styleable;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
@@ -28,15 +28,15 @@ import java.util.List;
 
 public class SpriteGLView
   extends FrameLayout
-  implements badm<baeq>
+  implements bdeq<bdfu>
 {
   private int jdField_a_of_type_Int = 0;
   private long jdField_a_of_type_Long;
   protected View a;
-  private baet jdField_a_of_type_Baet;
+  private bdfx jdField_a_of_type_Bdfx;
   private final Object jdField_a_of_type_JavaLangObject = new Object();
   private final LinkedList<Integer> jdField_a_of_type_JavaUtilLinkedList = new LinkedList();
-  private final List<badg> jdField_a_of_type_JavaUtilList = Collections.synchronizedList(new ArrayList());
+  private final List<bdek> jdField_a_of_type_JavaUtilList = Collections.synchronizedList(new ArrayList());
   public boolean a;
   private final Object jdField_b_of_type_JavaLangObject = new Object();
   private List<Runnable> jdField_b_of_type_JavaUtilList = new LinkedList();
@@ -89,7 +89,7 @@ public class SpriteGLView
       ((GLSurfaceView)localObject).setEGLContextClientVersion(2);
       ((GLSurfaceView)localObject).getHolder().setFormat(-3);
       ((GLSurfaceView)localObject).setEGLConfigChooser(8, 8, 8, 8, 16, 0);
-      ((GLSurfaceView)localObject).setRenderer(new baeu(this, null));
+      ((GLSurfaceView)localObject).setRenderer(new bdfy(this, null));
       ((GLSurfaceView)localObject).setZOrderOnTop(true);
     }
     for (;;)
@@ -99,7 +99,7 @@ public class SpriteGLView
       localObject = a(getContext());
       this.jdField_a_of_type_AndroidViewView = ((View)localObject);
       addView((View)localObject, -1, -1);
-      ((GLTextureView)localObject).setRenderer(new baeu(this, null));
+      ((GLTextureView)localObject).setRenderer(new bdfy(this, null));
     }
   }
   
@@ -108,7 +108,7 @@ public class SpriteGLView
     return new GLTextureView(paramContext);
   }
   
-  public List<badg> a()
+  public List<bdek> a()
   {
     return this.jdField_a_of_type_JavaUtilList;
   }
@@ -140,38 +140,38 @@ public class SpriteGLView
     }
   }
   
-  public void a(int paramInt, baeq parambaeq)
+  public void a(int paramInt, bdfu parambdfu)
   {
     synchronized (this.jdField_a_of_type_JavaUtilList)
     {
-      if (!this.jdField_a_of_type_JavaUtilList.contains(parambaeq)) {
-        this.jdField_a_of_type_JavaUtilList.add(paramInt, parambaeq);
+      if (!this.jdField_a_of_type_JavaUtilList.contains(parambdfu)) {
+        this.jdField_a_of_type_JavaUtilList.add(paramInt, parambdfu);
       }
       return;
     }
   }
   
-  public void a(bael parambael)
+  public void a(bdfp parambdfp)
   {
     if ((this.jdField_a_of_type_AndroidViewView instanceof GLTextureView)) {
-      ((GLTextureView)this.jdField_a_of_type_AndroidViewView).a(parambael);
+      ((GLTextureView)this.jdField_a_of_type_AndroidViewView).a(parambdfp);
     }
   }
   
-  public void a(baeq parambaeq)
+  public void a(bdfu parambdfu)
   {
     synchronized (this.jdField_a_of_type_JavaUtilList)
     {
-      if (!this.jdField_a_of_type_JavaUtilList.contains(parambaeq)) {
-        this.jdField_a_of_type_JavaUtilList.add(parambaeq);
+      if (!this.jdField_a_of_type_JavaUtilList.contains(parambdfu)) {
+        this.jdField_a_of_type_JavaUtilList.add(parambdfu);
       }
       return;
     }
   }
   
-  public void a(baes parambaes)
+  public void a(bdfw parambdfw)
   {
-    a(parambaes);
+    a(parambdfw);
   }
   
   public void a(Runnable paramRunnable)
@@ -197,19 +197,19 @@ public class SpriteGLView
     }
   }
   
-  public void b(bael parambael)
+  public void b(bdfp parambdfp)
   {
     if ((this.jdField_a_of_type_AndroidViewView instanceof GLTextureView)) {
-      ((GLTextureView)this.jdField_a_of_type_AndroidViewView).b(parambael);
+      ((GLTextureView)this.jdField_a_of_type_AndroidViewView).b(parambdfp);
     }
   }
   
-  public void b(baeq parambaeq)
+  public void b(bdfu parambdfu)
   {
-    if (parambaeq.a()) {
-      parambaeq.a();
+    if (parambdfu.a()) {
+      parambdfu.a();
     }
-    this.jdField_a_of_type_JavaUtilList.remove(parambaeq);
+    this.jdField_a_of_type_JavaUtilList.remove(parambdfu);
   }
   
   public void b(Runnable paramRunnable)
@@ -223,8 +223,8 @@ public class SpriteGLView
   
   public int c()
   {
-    if (this.jdField_a_of_type_Baet != null) {
-      return this.jdField_a_of_type_Baet.a();
+    if (this.jdField_a_of_type_Bdfx != null) {
+      return this.jdField_a_of_type_Bdfx.a();
     }
     return (int)(System.currentTimeMillis() - this.jdField_a_of_type_Long);
   }
@@ -249,8 +249,8 @@ public class SpriteGLView
     while (i < j)
     {
       Object localObject = arrayOfObject[i];
-      if ((localObject instanceof baeq)) {
-        ((baeq)localObject).b();
+      if ((localObject instanceof bdfu)) {
+        ((bdfu)localObject).b();
       }
       i += 1;
     }
@@ -267,8 +267,8 @@ public class SpriteGLView
     while (i < j)
     {
       Object localObject = arrayOfObject[i];
-      if ((localObject instanceof baeq)) {
-        ((baeq)localObject).c();
+      if ((localObject instanceof bdfu)) {
+        ((bdfu)localObject).c();
       }
       i += 1;
     }
@@ -295,7 +295,7 @@ public class SpriteGLView
   {
     Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
     while (localIterator.hasNext()) {
-      ((baeq)localIterator.next()).aM_();
+      ((bdfu)localIterator.next()).aK_();
     }
   }
   
@@ -311,7 +311,7 @@ public class SpriteGLView
     int i = arrayOfObject.length - 1;
     while (i >= 0)
     {
-      if (((arrayOfObject[i] instanceof baer)) && (((baer)arrayOfObject[i]).a(paramMotionEvent, getWidth(), getHeight()))) {
+      if (((arrayOfObject[i] instanceof bdfv)) && (((bdfv)arrayOfObject[i]).a(paramMotionEvent, getWidth(), getHeight()))) {
         return true;
       }
       i -= 1;
@@ -347,14 +347,14 @@ public class SpriteGLView
     this.jdField_c_of_type_Boolean = paramBoolean;
   }
   
-  public void setVideoTimeGetter(baet parambaet)
+  public void setVideoTimeGetter(bdfx parambdfx)
   {
-    this.jdField_a_of_type_Baet = parambaet;
+    this.jdField_a_of_type_Bdfx = parambdfx;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.surfaceviewaction.gl.SpriteGLView
  * JD-Core Version:    0.7.0.1
  */

@@ -1,39 +1,16 @@
-public class blfr
-  extends bmes
+import android.content.Context;
+
+final class blfr
 {
-  private bmen<Boolean> a = new bmen();
-  private bmen<Boolean> b = new bmen();
-  private bmen<Boolean> c = new bmen();
+  Context jdField_a_of_type_AndroidContentContext;
+  blfo jdField_a_of_type_Blfo;
+  blfq jdField_a_of_type_Blfq;
   
-  public bmen<Boolean> a()
+  blfr(Context paramContext, blfq paramblfq, blfo paramblfo)
   {
-    return this.a;
-  }
-  
-  public boolean a()
-  {
-    if (this.b.a() != null) {
-      return ((Boolean)this.b.a()).booleanValue();
-    }
-    return false;
-  }
-  
-  public bmen<Boolean> b()
-  {
-    return this.b;
-  }
-  
-  public boolean b()
-  {
-    if (this.c.a() != null) {
-      return ((Boolean)this.c.a()).booleanValue();
-    }
-    return false;
-  }
-  
-  public bmen<Boolean> c()
-  {
-    return this.c;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_Blfq = paramblfq;
+    this.jdField_a_of_type_Blfo = paramblfo;
   }
 }
 

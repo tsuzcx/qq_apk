@@ -1,30 +1,17 @@
-import android.content.Context;
-import com.tencent.mobileqq.activity.aio.doodle.DoodlePanel;
-import com.tencent.mobileqq.widget.QQToast;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.RecommendFriendActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class afac
-  implements aezs
+  implements View.OnClickListener
 {
-  public afac(DoodlePanel paramDoodlePanel) {}
+  public afac(RecommendFriendActivity paramRecommendFriendActivity) {}
   
-  public void a(int paramInt)
+  public void onClick(View paramView)
   {
-    DoodlePanel.a(this.a);
-  }
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    if (paramInt1 == 2)
-    {
-      if (!DoodlePanel.a(this.a))
-      {
-        DoodlePanel.a(this.a, true);
-        afad localafad = new afad(this);
-        bdgm.a(this.a.getContext(), 230, null, this.a.getContext().getString(2131689945), null, this.a.getContext().getString(2131689934), localafad, null).show();
-      }
-      return;
-    }
-    QQToast.a(this.a.getContext(), this.a.getContext().getString(2131689937), 0).a();
+    this.a.finish();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

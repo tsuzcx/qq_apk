@@ -1,34 +1,46 @@
-import android.content.Intent;
+import android.app.Activity;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.BaseActivity;
-import cooperation.comic.VipComicJumpActivity;
-import org.json.JSONObject;
+import com.tencent.mobileqq.app.FrameHelperActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-class ajhb
-  implements View.OnClickListener
+public abstract class ajhb
+  implements ajic
 {
-  ajhb(ajgb paramajgb, String paramString) {}
+  protected Activity a;
   
-  public void onClick(View paramView)
+  public ajhb(Activity paramActivity)
   {
-    paramView = new JSONObject();
-    try
+    this.a = paramActivity;
+  }
+  
+  public Activity a()
+  {
+    return this.a;
+  }
+  
+  public void a(View paramView) {}
+  
+  public void a(QQAppInterface paramQQAppInterface) {}
+  
+  public void b() {}
+  
+  public void b(boolean paramBoolean) {}
+  
+  public void c() {}
+  
+  public void c(boolean paramBoolean)
+  {
+    if (!paramBoolean) {}
+    for (paramBoolean = true;; paramBoolean = false)
     {
-      paramView.put("from", "20");
-      label17:
-      Intent localIntent = new Intent(ajgb.a(this.jdField_a_of_type_Ajgb), VipComicJumpActivity.class);
-      localIntent.putExtra("options", paramView.toString());
-      ajgb.a(this.jdField_a_of_type_Ajgb).startActivity(localIntent);
-      binc.a(ajgb.a(this.jdField_a_of_type_Ajgb).getAppInterface(), "100007", "2", "40040", this.jdField_a_of_type_JavaLangString, new String[0]);
-      azqs.a(ajgb.a(this.jdField_a_of_type_Ajgb).app, "dc00898", "", "", "0X8009EE3", "0X8009EE3", 2, 0, "", "", "", "");
+      FrameHelperActivity.c(paramBoolean);
       return;
     }
-    catch (Exception localException)
-    {
-      break label17;
-    }
   }
+  
+  public void d() {}
+  
+  public void e() {}
 }
 
 

@@ -1,86 +1,38 @@
-import com.tencent.mobileqq.activity.BaseChatPie;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.SubAccountBindActivity;
+import com.tencent.mobileqq.activity.SubLoginActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class afgc
-  implements affa
+  implements View.OnClickListener
 {
-  private int jdField_a_of_type_Int = 0;
-  private BaseChatPie jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie;
+  public afgc(SubAccountBindActivity paramSubAccountBindActivity) {}
   
-  public afgc(BaseChatPie paramBaseChatPie)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie = paramBaseChatPie;
-  }
-  
-  public String a()
-  {
-    String str = null;
-    if (this.jdField_a_of_type_Int == 1) {
-      str = alud.a(2131714667);
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("SpecWordEmotionThinkHelper", 2, " getSpecKeyWord:  mSpecWordType=" + this.jdField_a_of_type_Int);
-    }
-    return str;
-  }
-  
-  public void a()
-  {
-    b();
-  }
-  
-  public void a(int paramInt)
-  {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    }
-    b();
-  }
-  
-  public void a(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
+  public void onClick(View paramView)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("SpecWordEmotionThinkHelper", 2, " beforeTextChanged:  start=" + paramInt1 + " after=" + paramInt3 + " count=" + paramInt2);
+      QLog.d("Q.subaccount.SubAccountBindActivity", 2, "onAddAccountClick.onClick:add account");
     }
-    if ((paramInt2 > paramInt3) || (paramInt3 == 0)) {
-      b();
-    }
-  }
-  
-  public boolean a()
-  {
-    boolean bool = true;
-    if (this.jdField_a_of_type_Int == 1) {}
-    for (;;)
+    Object localObject = (bdeh)this.a.app.getManager(61);
+    if (localObject != null) {}
+    for (int i = ((bdeh)localObject).a();; i = 0)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("SpecWordEmotionThinkHelper", 2, " needSendMixMsg:  mSpecWordType=" + this.jdField_a_of_type_Int);
+      if (i < 2)
+      {
+        localObject = new Intent(this.a, SubLoginActivity.class);
+        ((Intent)localObject).putExtra("fromWhere", this.a.b);
+        this.a.startActivity((Intent)localObject);
       }
-      return bool;
-      bool = false;
-    }
-  }
-  
-  public int[] a()
-  {
-    return new int[] { 11, 16 };
-  }
-  
-  public void b()
-  {
-    this.jdField_a_of_type_Int = 0;
-    if (QLog.isColorLevel()) {
-      QLog.d("SpecWordEmotionThinkHelper", 2, " clearSpecWordType");
-    }
-  }
-  
-  public void b(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-    if (QLog.isColorLevel()) {
-      QLog.d("SpecWordEmotionThinkHelper", 2, " setSpecWordType:  mSpecWordType=" + this.jdField_a_of_type_Int);
+      for (;;)
+      {
+        EventCollector.getInstance().onViewClicked(paramView);
+        return;
+        bddy.a(this.a.app, this.a);
+      }
     }
   }
 }

@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.extendfriend.wiget;
 
-import aqfx;
-import aqiv;
+import aslb;
+import asoo;
 import com.tencent.mobileqq.dinifly.LottieComposition.Factory;
 import com.tencent.qphone.base.util.QLog;
 import java.io.BufferedInputStream;
@@ -15,11 +15,11 @@ public class MatchingView$1
   
   public void run()
   {
-    Object localObject = aqfx.a("expend_match_ellipisis.json");
+    Object localObject = aslb.a("expend_match_ellipisis.json");
     try
     {
       localObject = new BufferedInputStream(new FileInputStream((String)localObject));
-      LottieComposition.Factory.fromInputStream(this.this$0.getContext(), (InputStream)localObject, new aqiv(this));
+      LottieComposition.Factory.fromInputStream(this.this$0.getContext(), (InputStream)localObject, new asoo(this));
       return;
     }
     catch (Exception localException)
@@ -30,7 +30,7 @@ public class MatchingView$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.extendfriend.wiget.MatchingView.1
  * JD-Core Version:    0.7.0.1
  */

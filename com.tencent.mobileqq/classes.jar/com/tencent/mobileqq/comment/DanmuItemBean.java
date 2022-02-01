@@ -3,14 +3,14 @@ package com.tencent.mobileqq.comment;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import aogk;
-import bdeu;
+import aqgu;
+import bgjw;
 import com.tencent.qphone.base.util.QLog;
 
 public class DanmuItemBean
   implements Parcelable
 {
-  public static final Parcelable.Creator<DanmuItemBean> CREATOR = new aogk();
+  public static final Parcelable.Creator<DanmuItemBean> CREATOR = new aqgu();
   public int a;
   public long a;
   public String a;
@@ -48,7 +48,7 @@ public class DanmuItemBean
   
   public String toString()
   {
-    return "DanmuItemBean{commentUin=" + this.jdField_a_of_type_Long + ", commentSeq=" + this.jdField_b_of_type_Long + ", createTime=" + this.d + ", location=" + this.jdField_c_of_type_Long + ", content=" + bdeu.a(this.jdField_a_of_type_JavaLangString) + ", nickName='" + this.jdField_b_of_type_JavaLangString + ", createTime=" + this.d + ", anonymousFlag=" + this.jdField_a_of_type_Boolean + ", anonymousNick=" + this.jdField_c_of_type_JavaLangString + ", anonymousHeadPortrait=" + this.jdField_a_of_type_Int + '}';
+    return "DanmuItemBean{commentUin=" + this.jdField_a_of_type_Long + ", commentSeq=" + this.jdField_b_of_type_Long + ", createTime=" + this.d + ", location=" + this.jdField_c_of_type_Long + ", content=" + bgjw.a(this.jdField_a_of_type_JavaLangString) + ", nickName='" + this.jdField_b_of_type_JavaLangString + ", createTime=" + this.d + ", anonymousFlag=" + this.jdField_a_of_type_Boolean + ", anonymousNick=" + this.jdField_c_of_type_JavaLangString + ", anonymousHeadPortrait=" + this.jdField_a_of_type_Int + '}';
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
@@ -79,7 +79,7 @@ public class DanmuItemBean
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.comment.DanmuItemBean
  * JD-Core Version:    0.7.0.1
  */

@@ -1,27 +1,8 @@
-import android.content.Context;
-import com.tencent.mobileqq.app.QQAppInterface;
-
 public abstract interface ayso
 {
-  public abstract aysq a();
+  public abstract void a(int paramInt);
   
-  public abstract String a();
-  
-  public abstract void a(aysp paramaysp);
-  
-  public abstract void a(QQAppInterface paramQQAppInterface, Context paramContext, int paramInt, String paramString1, String paramString2, String paramString3);
-  
-  public abstract void a(String paramString1, String paramString2, String paramString3);
-  
-  public abstract int b();
-  
-  public abstract void b();
-  
-  public abstract int c();
-  
-  public abstract void c();
-  
-  public abstract void d();
+  public abstract void a(aysk paramaysk, Double paramDouble, boolean paramBoolean);
 }
 
 

@@ -1,18 +1,19 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForDeviceSingleStruct;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.TroopMemberListActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class aflm
-  implements arrh
+public class aflm
+  implements View.OnClickListener
 {
-  aflm(afll paramafll, MessageForDeviceSingleStruct paramMessageForDeviceSingleStruct) {}
+  public aflm(TroopMemberListActivity paramTroopMemberListActivity) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    ((zxz)this.jdField_a_of_type_Afll.a.a.a(49)).a().a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeviceSingleStruct);
-    aflk.a(this.jdField_a_of_type_Afll.a, this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeviceSingleStruct);
+    this.a.g();
+    new bcsy(this.a.app).a("dc00899").b("Grp_online").c("mber_list").d("clk_more").a(new String[] { this.a.b }).a();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
-  
-  public void b() {}
 }
 
 

@@ -29,6 +29,7 @@ public class GameBrandRuntime
   public String shareEvent;
   public String shareJson;
   public String shareOpenid;
+  public boolean showRestart = true;
   public boolean withShareQQ;
   public boolean withShareQzone;
   public boolean withShareTicket;
@@ -94,7 +95,7 @@ public class GameBrandRuntime
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.minigame.jsapi.GameBrandRuntime
  * JD-Core Version:    0.7.0.1
  */

@@ -1,18 +1,19 @@
 package com.tencent.turingfd.sdk.xq;
 
-public class volatile$do
+public final class volatile$do
 {
-  public continue oc;
-  public int pc = 0;
+  public long fg;
+  public long gg;
+  public long hg;
   
-  public volatile$do(continue paramcontinue)
+  public volatile build()
   {
-    this.oc = paramcontinue;
+    return new volatile(this);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.turingfd.sdk.xq.volatile.do
  * JD-Core Version:    0.7.0.1
  */

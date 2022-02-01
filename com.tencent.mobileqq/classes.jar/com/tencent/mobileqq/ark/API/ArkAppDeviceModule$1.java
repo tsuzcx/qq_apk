@@ -1,29 +1,29 @@
 package com.tencent.mobileqq.ark.API;
 
-import anif;
-import anih;
+import apgu;
+import apgw;
 import java.util.HashMap;
 
 public class ArkAppDeviceModule$1
-  extends HashMap<String, anih>
+  extends HashMap<String, apgw>
 {
-  public ArkAppDeviceModule$1(anif paramanif)
+  public ArkAppDeviceModule$1(apgu paramapgu)
   {
-    put("GetModelName", anif.a(this.this$0));
-    put("GetScreenWidth", anif.a(this.this$0));
-    put("GetScreenHeight", anif.a(this.this$0));
-    put("GetPixelRatio", anif.a(this.this$0));
-    put("GetConnectionType", anif.a(this.this$0));
-    put("AttachEvent", anif.a(this.this$0));
-    put("DetachEvent", anif.a(this.this$0));
-    put("ScanCode", anif.a(this.this$0));
-    put("GetIdentifier", anif.a(this.this$0));
-    put("GetCurrentPosition", anif.a(this.this$0));
+    put("GetModelName", apgu.a(this.this$0));
+    put("GetScreenWidth", apgu.a(this.this$0));
+    put("GetScreenHeight", apgu.a(this.this$0));
+    put("GetPixelRatio", apgu.a(this.this$0));
+    put("GetConnectionType", apgu.a(this.this$0));
+    put("AttachEvent", apgu.a(this.this$0));
+    put("DetachEvent", apgu.a(this.this$0));
+    put("ScanCode", apgu.a(this.this$0));
+    put("GetIdentifier", apgu.a(this.this$0));
+    put("GetCurrentPosition", apgu.a(this.this$0));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ark.API.ArkAppDeviceModule.1
  * JD-Core Version:    0.7.0.1
  */

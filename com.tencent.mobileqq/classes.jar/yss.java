@@ -1,29 +1,17 @@
-import com.tencent.qphone.base.util.QLog;
-
 class yss
-  extends xtb
+  extends bcdu
 {
-  yss(ysm paramysm, ysw paramysw) {}
+  yss(ysm paramysm) {}
   
-  public void onFailure(String paramString)
+  public void a()
   {
-    QLog.w(".troop.VideoCombineHelper", 1, "concatMediaByTs change ts onSuccess: " + paramString);
-    this.jdField_a_of_type_Ysw.onFailure(paramString);
-  }
-  
-  public void onSuccess(String paramString)
-  {
-    if (QLog.isColorLevel())
-    {
-      QLog.w(".troop.trace_video_combine", 2, "concatMediaByTs change ts onSuccess: " + paramString);
-      QLog.d(".troop.trace_video_combine", 2, "convertToTsTime = " + (System.currentTimeMillis() - this.jdField_a_of_type_Ysm.a.a));
-    }
-    this.jdField_a_of_type_Ysm.a.a = System.currentTimeMillis();
+    yqp.c("Q.qqstory.publish.edit.StoryDoodle", "DoodleInfoLoadObserver, onLoadSucc");
+    this.a.Z_();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     yss
  * JD-Core Version:    0.7.0.1
  */

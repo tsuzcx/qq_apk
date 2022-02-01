@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.forward;
 
 import android.app.Activity;
-import bayu;
+import bdzx;
 import com.tencent.image.URLDrawable;
 
 class ForwardShortVideoOption$3
@@ -11,13 +11,13 @@ class ForwardShortVideoOption$3
   
   public void run()
   {
-    bayu.a(this.a, null, false);
+    bdzx.a(this.a, null, false);
     this.this$0.a.runOnUiThread(new ForwardShortVideoOption.3.1(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.forward.ForwardShortVideoOption.3
  * JD-Core Version:    0.7.0.1
  */

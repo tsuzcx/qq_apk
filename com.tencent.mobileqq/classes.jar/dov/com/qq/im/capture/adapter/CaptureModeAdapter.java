@@ -6,9 +6,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import blqu;
-import blqv;
-import blqw;
+import bojy;
+import bojz;
+import boka;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,8 +17,8 @@ public class CaptureModeAdapter
 {
   private int jdField_a_of_type_Int;
   private Context jdField_a_of_type_AndroidContentContext;
-  private blqw jdField_a_of_type_Blqw;
-  private List<blqv> jdField_a_of_type_JavaUtilList;
+  private boka jdField_a_of_type_Boka;
+  private List<bojz> jdField_a_of_type_JavaUtilList;
   private int jdField_b_of_type_Int = a(-1, 0.6F);
   private List<TextView> jdField_b_of_type_JavaUtilList = new ArrayList();
   
@@ -39,7 +39,7 @@ public class CaptureModeAdapter
       int i = 0;
       while (i < this.jdField_a_of_type_JavaUtilList.size())
       {
-        if (((blqv)this.jdField_a_of_type_JavaUtilList.get(i)).jdField_a_of_type_Int == paramInt) {
+        if (((bojz)this.jdField_a_of_type_JavaUtilList.get(i)).jdField_a_of_type_Int == paramInt) {
           return i;
         }
         i += 1;
@@ -95,24 +95,24 @@ public class CaptureModeAdapter
     localTextView.setTextColor(this.jdField_b_of_type_Int);
   }
   
-  public void a(blqw paramblqw)
+  public void a(boka paramboka)
   {
-    this.jdField_a_of_type_Blqw = paramblqw;
+    this.jdField_a_of_type_Boka = paramboka;
   }
   
-  public void a(List<blqv> paramList, int paramInt)
+  public void a(List<bojz> paramList, int paramInt)
   {
     this.jdField_a_of_type_JavaUtilList = paramList;
     int i = 0;
     if (i < paramList.size())
     {
-      blqv localblqv = (blqv)paramList.get(i);
-      TextView localTextView = (TextView)LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131560733, null);
-      localTextView.setText(localblqv.a());
+      bojz localbojz = (bojz)paramList.get(i);
+      TextView localTextView = (TextView)LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131560938, null);
+      localTextView.setText(localbojz.a());
       localTextView.setTag(Integer.valueOf(i));
-      localTextView.setContentDescription(localblqv.b());
-      localTextView.setOnClickListener(new blqu(this));
-      if (localblqv.a() != paramInt) {
+      localTextView.setContentDescription(localbojz.b());
+      localTextView.setOnClickListener(new bojy(this));
+      if (localbojz.a() != paramInt) {
         localTextView.setTextColor(this.jdField_b_of_type_Int);
       }
       for (;;)
@@ -161,7 +161,7 @@ public class CaptureModeAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     dov.com.qq.im.capture.adapter.CaptureModeAdapter
  * JD-Core Version:    0.7.0.1
  */

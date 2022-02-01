@@ -1,43 +1,26 @@
-import android.view.SurfaceHolder;
-import android.view.SurfaceHolder.Callback;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity;
+import com.tencent.mobileqq.activity.phone.SettingActivity2;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
 
-public class akef
-  implements SurfaceHolder.Callback
+class akef
+  extends aywi
 {
-  public akef(ShortVideoPreviewActivity paramShortVideoPreviewActivity) {}
+  akef(akee paramakee) {}
   
-  public void surfaceChanged(SurfaceHolder paramSurfaceHolder, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void surfaceCreated(SurfaceHolder paramSurfaceHolder)
+  protected void d(boolean paramBoolean)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("ShortVideoPreviewActivity", 2, "surfaceCreated: mSavedCurPosition:" + this.a.g + ",mSavedPlayState : " + this.a.a(this.a.h));
+      QLog.i("SettingActivity2", 2, "onDisableMobileMatch suc[" + paramBoolean + "]");
     }
-    if ((this.a.h == 1) && (this.a.g > 0))
+    this.a.a.a.b();
+    this.a.a.a.app.unRegistObserver(this);
+    if (paramBoolean)
     {
-      this.a.a(this.a.g);
-      this.a.g = 0;
-      this.a.h = 0;
+      this.a.a.a.a();
+      this.a.a.a.setResult(-1);
       return;
     }
-    this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-  }
-  
-  public void surfaceDestroyed(SurfaceHolder paramSurfaceHolder)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ShortVideoPreviewActivity", 2, "surfaceDestroyed ");
-    }
-    if (this.a.jdField_a_of_type_Bdzk != null) {
-      this.a.jdField_a_of_type_Bdzk.c();
-    }
-    if (this.a.jdField_a_of_type_MqqOsMqqHandler != null) {
-      this.a.jdField_a_of_type_MqqOsMqqHandler.removeCallbacks(this.a.jdField_a_of_type_JavaLangRunnable);
-    }
+    this.a.a.a.a(1, anni.a(2131712622));
   }
 }
 

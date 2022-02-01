@@ -1,13 +1,12 @@
 package com.tencent.mobileqq.activity.chathistory;
 
-import abti;
-import ahei;
-import ahej;
-import ahek;
-import ahel;
-import ahen;
-import aheo;
-import alud;
+import acwh;
+import aiqv;
+import aiqw;
+import aiqx;
+import aiqy;
+import aira;
+import airb;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.os.Handler.Callback;
@@ -19,15 +18,14 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import awgf;
-import awgg;
-import azqs;
-import azvd;
-import bamb;
-import bamp;
-import bdgc;
-import bdrv;
-import bhsl;
+import anni;
+import bcst;
+import bcwd;
+import bdnf;
+import bdnt;
+import bglf;
+import bgwv;
+import bkfv;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -37,7 +35,9 @@ import com.tencent.mobileqq.data.MessageForMarketFace;
 import com.tencent.mobileqq.data.MessageForMixedMsg;
 import com.tencent.mobileqq.data.MessageForPic;
 import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.data.QQEntityManagerFactory;
 import com.tencent.mobileqq.fragment.IphoneTitleBarFragment;
+import com.tencent.mobileqq.persistence.EntityManager;
 import com.tencent.mobileqq.structmsg.AbsStructMsg;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.XListView;
@@ -53,8 +53,8 @@ public class TroopMemberHistoryFragment
 {
   public static final String a;
   private long jdField_a_of_type_Long = 9223372036854775807L;
-  public aheo a;
-  Handler.Callback jdField_a_of_type_AndroidOsHandler$Callback = new ahek(this);
+  public airb a;
+  Handler.Callback jdField_a_of_type_AndroidOsHandler$Callback = new aiqx(this);
   public View.OnClickListener a;
   public View a;
   public TextView a;
@@ -62,7 +62,7 @@ public class TroopMemberHistoryFragment
   public QQAppInterface a;
   XListView jdField_a_of_type_ComTencentWidgetXListView;
   ArrayList<String> jdField_a_of_type_JavaUtilArrayList;
-  MqqHandler jdField_a_of_type_MqqOsMqqHandler = new bhsl(this.jdField_a_of_type_AndroidOsHandler$Callback);
+  MqqHandler jdField_a_of_type_MqqOsMqqHandler = new bkfv(this.jdField_a_of_type_AndroidOsHandler$Callback);
   public boolean a;
   public String b;
   boolean b;
@@ -79,7 +79,7 @@ public class TroopMemberHistoryFragment
   {
     this.jdField_a_of_type_Boolean = false;
     this.jdField_c_of_type_Boolean = false;
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = new ahel(this);
+    this.jdField_a_of_type_AndroidViewView$OnClickListener = new aiqy(this);
   }
   
   private void a(Bundle paramBundle)
@@ -112,15 +112,15 @@ public class TroopMemberHistoryFragment
     b();
   }
   
-  public List<ahen> a()
+  public List<aira> a()
   {
     boolean bool = false;
     if (this.jdField_c_of_type_Boolean) {
       return null;
     }
-    Object localObject3 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory().createEntityManager();
+    Object localObject3 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().createEntityManager();
     Object localObject4 = MessageRecord.getTableName(this.jdField_b_of_type_JavaLangString, 1);
-    Object localObject1 = abti.b();
+    Object localObject1 = acwh.b();
     if ((this.jdField_c_of_type_JavaLangString.equals("0")) && (this.jdField_a_of_type_JavaUtilArrayList != null) && (this.jdField_a_of_type_JavaUtilArrayList.size() > 0))
     {
       localObject2 = new StringBuilder();
@@ -138,8 +138,8 @@ public class TroopMemberHistoryFragment
     }
     for (;;)
     {
-      localObject1 = ((awgf)localObject3).a(MessageRecord.class, (String)localObject4, false, (String)localObject1, (String[])localObject2, null, null, "shmsgseq DESC", String.valueOf(50));
-      ((awgf)localObject3).a();
+      localObject1 = ((EntityManager)localObject3).query(MessageRecord.class, (String)localObject4, false, (String)localObject1, (String[])localObject2, null, null, "shmsgseq DESC", String.valueOf(50));
+      ((EntityManager)localObject3).close();
       if ((localObject1 != null) && (!((List)localObject1).isEmpty())) {
         break label264;
       }
@@ -165,7 +165,7 @@ public class TroopMemberHistoryFragment
       switch (((MessageRecord)localObject4).msgtype)
       {
       default: 
-        localObject1 = alud.a(2131716010);
+        localObject1 = anni.a(2131714291);
       }
     }
     for (;;)
@@ -173,9 +173,9 @@ public class TroopMemberHistoryFragment
       if (this.jdField_a_of_type_Long > ((MessageRecord)localObject4).shmsgseq) {
         this.jdField_a_of_type_Long = ((MessageRecord)localObject4).shmsgseq;
       }
-      ((List)localObject2).add(new ahen(this, ((MessageRecord)localObject4).senderuin, ((MessageRecord)localObject4).time, (CharSequence)localObject1, ((MessageRecord)localObject4).shmsgseq, (MessageRecord)localObject4));
+      ((List)localObject2).add(new aira(this, ((MessageRecord)localObject4).senderuin, ((MessageRecord)localObject4).time, (CharSequence)localObject1, ((MessageRecord)localObject4).shmsgseq, (MessageRecord)localObject4));
       break;
-      localObject1 = bdrv.a(((MessageRecord)localObject4).msg, (MessageRecord)localObject4, 32, 13);
+      localObject1 = bgwv.a(((MessageRecord)localObject4).msg, (MessageRecord)localObject4, 32, 13);
       continue;
       if ((localObject4 instanceof MessageForPic))
       {
@@ -183,43 +183,43 @@ public class TroopMemberHistoryFragment
       }
       else
       {
-        localObject1 = BaseApplicationImpl.getApplication().getString(2131693474);
+        localObject1 = BaseApplicationImpl.getApplication().getString(2131692942);
         continue;
-        localObject1 = BaseApplicationImpl.getApplication().getString(2131691352);
+        localObject1 = BaseApplicationImpl.getApplication().getString(2131691134);
         continue;
-        localObject1 = BaseApplicationImpl.getApplication().getString(2131691354);
+        localObject1 = BaseApplicationImpl.getApplication().getString(2131691135);
         continue;
         localObject1 = new MessageForMixedMsg();
         ((MessageForMixedMsg)localObject1).msgData = ((MessageRecord)localObject4).msgData;
         ((MessageForMixedMsg)localObject1).parse();
         if (((MessageForMixedMsg)localObject1).msg == null) {}
-        for (localObject1 = alud.a(2131715981);; localObject1 = new bamp(((MessageForMixedMsg)localObject1).msg, 13, 32, 1)) {
+        for (localObject1 = anni.a(2131714262);; localObject1 = new bdnt(((MessageForMixedMsg)localObject1).msg, 13, 32, 1)) {
           break;
         }
         if ((localObject4 instanceof MessageForMarketFace))
         {
           localObject1 = ((MessageForMarketFace)localObject4).mMarkFaceMessage;
           if ((localObject1 != null) && (!TextUtils.isEmpty(((MarkFaceMessage)localObject1).faceName))) {}
-          for (localObject1 = "[" + ((MarkFaceMessage)localObject1).faceName + "]";; localObject1 = BaseApplicationImpl.getApplication().getResources().getString(2131692099)) {
+          for (localObject1 = "[" + ((MarkFaceMessage)localObject1).faceName + "]";; localObject1 = BaseApplicationImpl.getApplication().getResources().getString(2131691739)) {
             break;
           }
         }
-        localObject1 = BaseApplicationImpl.getApplication().getResources().getString(2131692099);
+        localObject1 = BaseApplicationImpl.getApplication().getResources().getString(2131691739);
         continue;
-        localObject1 = BaseApplicationImpl.getApplication().getString(2131692474);
+        localObject1 = BaseApplicationImpl.getApplication().getString(2131692058);
         continue;
         try
         {
-          localObject1 = azvd.a(((MessageRecord)localObject4).msgData);
+          localObject1 = bcwd.a(((MessageRecord)localObject4).msgData);
           if (localObject1 == null) {
-            localObject1 = alud.a(2131715952);
+            localObject1 = anni.a(2131714233);
           } else {
             localObject1 = ((AbsStructMsg)localObject1).mMsgBrief;
           }
         }
         catch (Exception localException)
         {
-          String str = alud.a(2131715944);
+          String str = anni.a(2131714225);
         }
         continue;
         return localObject2;
@@ -229,26 +229,26 @@ public class TroopMemberHistoryFragment
   
   protected void a()
   {
-    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)this.mContentView.findViewById(2131370028));
-    this.jdField_a_of_type_AndroidViewView = this.mContentView.findViewById(2131365735);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.mContentView.findViewById(2131377620));
-    this.jdField_a_of_type_AndroidViewView.findViewById(2131377824).setVisibility(8);
-    this.jdField_a_of_type_Aheo = new aheo(this, getActivity());
-    this.d = bdgc.h(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_b_of_type_JavaLangString, this.jdField_c_of_type_JavaLangString);
-    this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_Aheo);
-    this.jdField_a_of_type_ComTencentWidgetXListView.setOnTouchListener(new ahei(this));
-    this.jdField_a_of_type_ComTencentWidgetXListView.setOnScrollListener(new ahej(this));
+    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)this.mContentView.findViewById(2131370471));
+    this.jdField_a_of_type_AndroidViewView = this.mContentView.findViewById(2131365977);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.mContentView.findViewById(2131378459));
+    this.jdField_a_of_type_AndroidViewView.findViewById(2131378665).setVisibility(8);
+    this.jdField_a_of_type_Airb = new airb(this, getActivity());
+    this.d = bglf.h(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_b_of_type_JavaLangString, this.jdField_c_of_type_JavaLangString);
+    this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_Airb);
+    this.jdField_a_of_type_ComTencentWidgetXListView.setOnTouchListener(new aiqv(this));
+    this.jdField_a_of_type_ComTencentWidgetXListView.setOnScrollListener(new aiqw(this));
     if ((this.jdField_c_of_type_JavaLangString.equals("0")) && (this.jdField_a_of_type_JavaUtilArrayList != null)) {
-      setTitle(alud.a(2131715962));
+      setTitle(anni.a(2131714243));
     }
     for (;;)
     {
-      azqs.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "Grp_chatRecord", "", "chatRecor_mber", "res_exp", 0, 0, this.jdField_b_of_type_JavaLangString, "", "", "");
+      bcst.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "Grp_chatRecord", "", "chatRecor_mber", "res_exp", 0, 0, this.jdField_b_of_type_JavaLangString, "", "", "");
       return;
       if (this.d != null)
       {
         SpannableStringBuilder localSpannableStringBuilder = new SpannableStringBuilder();
-        localSpannableStringBuilder.append(new bamb(this.d, 32).a()).append("的发言");
+        localSpannableStringBuilder.append(new bdnf(this.d, 32).a()).append("的发言");
         setTitle(localSpannableStringBuilder);
       }
     }
@@ -269,7 +269,7 @@ public class TroopMemberHistoryFragment
       ThreadManager.post(this.jdField_a_of_type_ComTencentMobileqqActivityChathistoryTroopMemberHistoryFragment$LoadMsgThread, 8, null, true);
       return;
     } while (!this.jdField_b_of_type_Boolean);
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(2131698021);
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(2131696867);
     this.jdField_a_of_type_AndroidViewView.setVisibility(0);
   }
   
@@ -297,7 +297,7 @@ public class TroopMemberHistoryFragment
   
   public int getContentLayoutId()
   {
-    return 2131560417;
+    return 2131560572;
   }
   
   public void onClick(View paramView) {}
@@ -312,7 +312,7 @@ public class TroopMemberHistoryFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.chathistory.TroopMemberHistoryFragment
  * JD-Core Version:    0.7.0.1
  */

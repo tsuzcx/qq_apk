@@ -1,34 +1,27 @@
 import android.app.Activity;
-import android.content.Context;
-import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import android.net.Uri;
 
-public abstract interface bglv
+final class bglv
+  implements DialogInterface.OnClickListener
 {
-  public abstract int a();
+  bglv(Activity paramActivity) {}
   
-  public abstract int a(byte[] paramArrayOfByte, int paramInt1, int paramInt2);
-  
-  public abstract Activity a();
-  
-  public abstract Context a();
-  
-  public abstract MiniAppInfo a();
-  
-  public abstract <T> T a(bgmc<T> parambgmc);
-  
-  public abstract String a();
-  
-  public abstract boolean a();
-  
-  public abstract byte[] a(int paramInt);
-  
-  public abstract boolean b();
-  
-  public abstract boolean c();
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    if (paramInt == 1)
+    {
+      paramDialogInterface = new Intent("android.settings.APPLICATION_DETAILS_SETTINGS");
+      paramDialogInterface.setData(Uri.fromParts("package", this.a.getPackageName(), null));
+      this.a.startActivity(paramDialogInterface);
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bglv
  * JD-Core Version:    0.7.0.1
  */

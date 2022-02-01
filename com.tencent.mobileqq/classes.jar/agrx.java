@@ -1,17 +1,18 @@
+import android.view.View;
+import android.widget.TextView;
+import com.tencent.image.URLImageView;
+
 class agrx
-  implements ywq
+  extends afuv
 {
-  agrx(agrn paramagrn) {}
+  URLImageView jdField_a_of_type_ComTencentImageURLImageView;
+  View jdField_b_of_type_AndroidViewView;
+  TextView jdField_b_of_type_AndroidWidgetTextView;
+  View jdField_c_of_type_AndroidViewView;
+  TextView jdField_c_of_type_AndroidWidgetTextView;
+  View d;
   
-  public void a()
-  {
-    this.a.a.a(false, false, 4);
-  }
-  
-  public void b()
-  {
-    this.a.a.a();
-  }
+  agrx(agrw paramagrw) {}
 }
 
 

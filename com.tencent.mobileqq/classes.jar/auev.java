@@ -1,63 +1,49 @@
-import android.annotation.TargetApi;
-import android.graphics.Bitmap;
-import android.graphics.Bitmap.Config;
-import android.opengl.GLES20;
-import android.opengl.GLES31;
-import android.util.Log;
-import java.nio.ByteBuffer;
+import android.content.Context;
+import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.view.LayoutInflater;
+import android.view.View;
+import io.flutter.embedding.android.SplashScreen;
 
 public class auev
+  implements SplashScreen
 {
-  @TargetApi(18)
-  public static int a(int paramInt1, int paramInt2)
+  private auew a;
+  
+  public auev(auew paramauew)
   {
-    int[] arrayOfInt = new int[1];
-    GLES31.glGenTextures(1, arrayOfInt, 0);
-    GLES31.glBindTexture(3553, arrayOfInt[0]);
-    GLES31.glTexStorage2D(3553, 1, 32856, paramInt1, paramInt2);
-    GLES31.glTexParameteri(3553, 10242, 33071);
-    GLES31.glTexParameteri(3553, 10243, 33071);
-    GLES31.glTexParameteri(3553, 10241, 9728);
-    GLES31.glTexParameteri(3553, 10240, 9728);
-    a("glTexParameter");
-    return arrayOfInt[0];
+    this.a = paramauew;
   }
   
-  public static Bitmap a(int paramInt1, int paramInt2, int paramInt3)
+  @Nullable
+  public View createSplashView(@NonNull Context paramContext, @Nullable Bundle paramBundle)
   {
-    ByteBuffer localByteBuffer = a(paramInt1, paramInt2, paramInt3);
-    Bitmap localBitmap = Bitmap.createBitmap(paramInt2, paramInt3, Bitmap.Config.ARGB_8888);
-    localBitmap.copyPixelsFromBuffer(localByteBuffer);
-    return localBitmap;
+    return LayoutInflater.from(paramContext).inflate(2131560913, null);
   }
   
-  private static ByteBuffer a(int paramInt1, int paramInt2, int paramInt3)
+  public boolean doesSplashViewRememberItsTransition()
   {
-    int[] arrayOfInt1 = new int[1];
-    int[] arrayOfInt2 = new int[1];
-    GLES20.glGetIntegerv(36006, arrayOfInt2, 0);
-    GLES20.glGenFramebuffers(1, arrayOfInt1, 0);
-    GLES20.glBindFramebuffer(36160, arrayOfInt1[0]);
-    GLES20.glFramebufferTexture2D(36160, 36064, 3553, paramInt1, 0);
-    ByteBuffer localByteBuffer = ByteBuffer.allocate(paramInt2 * paramInt3 * 4);
-    GLES20.glReadPixels(0, 0, paramInt2, paramInt3, 6408, 5121, localByteBuffer);
-    GLES20.glFinish();
-    GLES20.glBindFramebuffer(36160, arrayOfInt2[0]);
-    GLES20.glDeleteFramebuffers(1, arrayOfInt1, 0);
-    return localByteBuffer;
+    return false;
   }
   
-  public static void a(String paramString)
+  @Nullable
+  public Bundle saveSplashScreenState()
   {
-    int i = GLES20.glGetError();
-    if (i != 0) {
-      Log.e("GlUtil", paramString + ": glError 0x" + Integer.toHexString(i));
+    return null;
+  }
+  
+  public void transitionToFlutter(@NonNull Runnable paramRunnable)
+  {
+    paramRunnable.run();
+    if (this.a != null) {
+      this.a.b();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     auev
  * JD-Core Version:    0.7.0.1
  */

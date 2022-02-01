@@ -1,29 +1,28 @@
-public class thp
+import android.view.animation.Animation;
+import com.tencent.mobileqq.widget.QQToast;
+import java.util.ArrayList;
+import java.util.List;
+
+class thp
+  extends bkfi
 {
-  public int a;
-  public String a;
-  public int b;
-  public String b;
-  public int c;
-  public String c;
-  public int d;
-  public String d;
-  public int e;
-  public String e;
-  public String f;
-  public String g;
+  thp(tho paramtho) {}
   
-  public int a()
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if ((this.a > 0) && (this.b > 0) && (this.b / this.a > 1.33F)) {
-      return 2;
+    super.onAnimationEnd(paramAnimation);
+    if (thn.a(this.a.a) != null)
+    {
+      paramAnimation = new ArrayList();
+      paramAnimation.add(thn.a(this.a.a));
+      thn.a(this.a.a).a(paramAnimation, thn.a(this.a.a));
+      QQToast.a(this.a.a.a, 2, 2131717024, 0).a();
     }
-    return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     thp
  * JD-Core Version:    0.7.0.1
  */

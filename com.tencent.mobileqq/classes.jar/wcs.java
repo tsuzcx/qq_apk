@@ -1,25 +1,13 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.biz.qqstory.settings.QGSettingFragment;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import java.util.List;
 
-public class wcs
-  implements CompoundButton.OnCheckedChangeListener
+public abstract interface wcs
 {
-  public wcs(QGSettingFragment paramQGSettingFragment) {}
-  
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
-  {
-    if (paramBoolean)
-    {
-      QGSettingFragment.a(true);
-      return;
-    }
-    QGSettingFragment.a(false);
-  }
+  public abstract void a(ErrorMessage paramErrorMessage, List<String> paramList);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     wcs
  * JD-Core Version:    0.7.0.1
  */

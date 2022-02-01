@@ -1,18 +1,35 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import dov.com.qq.im.capture.data.LockedCategory;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qzone.QZoneNavigateToQQTransparentFragment;
 
-public final class blss
-  implements Parcelable.Creator<LockedCategory>
+public class blss
+  implements asms
 {
-  public LockedCategory a(Parcel paramParcel)
+  public blss(QZoneNavigateToQQTransparentFragment paramQZoneNavigateToQQTransparentFragment, FragmentActivity paramFragmentActivity) {}
+  
+  public void a()
   {
-    return new LockedCategory(paramParcel);
+    QZoneNavigateToQQTransparentFragment.a(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity);
   }
   
-  public LockedCategory[] a(int paramInt)
+  public void a(int paramInt)
   {
-    return new LockedCategory[paramInt];
+    if (this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity == null)
+    {
+      QLog.d("QZoneNavigateToQQTransparentFragment", 1, "sendMsgDirectly()-> showToast() activity is null just return");
+      return;
+    }
+    QZoneNavigateToQQTransparentFragment.a(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getString(paramInt));
+  }
+  
+  public void a(String paramString1, String paramString2)
+  {
+    QZoneNavigateToQQTransparentFragment.a(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, paramString1, paramString2);
+  }
+  
+  public void a(boolean paramBoolean, int paramInt, String paramString1, String paramString2)
+  {
+    QZoneNavigateToQQTransparentFragment.a(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, paramBoolean, paramInt, paramString1, paramString2);
   }
 }
 

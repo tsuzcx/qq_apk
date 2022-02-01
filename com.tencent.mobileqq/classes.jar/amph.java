@@ -1,32 +1,20 @@
-public class amph
-  implements alpg
+import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
+
+class amph
+  implements EIPCResultCallback
 {
-  public void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt) {}
+  amph(ampb paramampb) {}
   
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  public void onCallback(EIPCResult paramEIPCResult)
   {
-    switch (paramInt)
-    {
-    }
-    do
-    {
-      do
-      {
-        return;
-      } while (paramObject == null);
-      if (!paramBoolean) {
-        break;
-      }
-      paramObject = (Object[])paramObject;
-    } while (paramObject.length < 2);
-    a(true, ((Boolean)paramObject[0]).booleanValue(), ((Integer)paramObject[1]).intValue());
-    return;
-    a(false, false, -1);
+    QLog.i("cmgame_process.CmGameServerQIPCModule", 1, "CmShow onDressChanged send!");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amph
  * JD-Core Version:    0.7.0.1
  */

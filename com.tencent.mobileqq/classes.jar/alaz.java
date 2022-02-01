@@ -1,134 +1,59 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.apollo.aioChannel.ApolloCmdChannel;
-import com.tencent.mobileqq.apollo.script.SpriteCommFunc.1;
-import com.tencent.mobileqq.apollo.script.SpriteCommFunc.2;
-import com.tencent.mobileqq.apollo.script.SpriteUIHandler;
+import com.tencent.component.network.downloader.DownloadResult;
+import com.tencent.component.network.downloader.DownloadResult.Status;
+import com.tencent.component.network.downloader.Downloader.DownloadListener;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Set;
-import org.json.JSONObject;
+import java.lang.ref.WeakReference;
 
-public class alaz
+class alaz
+  implements Downloader.DownloadListener
 {
-  private static final Set<String> a = new SpriteCommFunc.1();
+  private volatile int jdField_a_of_type_Int;
+  private alaw jdField_a_of_type_Alaw;
+  private WeakReference<QQAppInterface> jdField_a_of_type_JavaLangRefWeakReference;
+  private volatile int b;
+  private int c;
   
-  public static void a(long paramLong, QQAppInterface paramQQAppInterface, String paramString)
+  public alaz(alay paramalay, QQAppInterface paramQQAppInterface, alaw paramalaw, int paramInt)
+  {
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramQQAppInterface);
+    this.jdField_a_of_type_Alaw = paramalaw;
+    this.c = paramInt;
+    this.jdField_a_of_type_Int = 0;
+    this.b = 0;
+  }
+  
+  public void onDownloadCanceled(String paramString) {}
+  
+  public void onDownloadFailed(String paramString, DownloadResult paramDownloadResult)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("cmshow_scripted_SpriteCommFunc", 2, new Object[] { "[stopTaskByMsg], msgId", Long.valueOf(paramLong), ",from:", paramString });
+      QLog.i("QbossADBannerConfigManager", 2, "diy data download fail url = " + paramString);
     }
-    if (!albi.c(paramQQAppInterface)) {}
-    do
-    {
-      do
-      {
-        return;
-        paramQQAppInterface = albi.a(paramQQAppInterface);
-      } while (paramQQAppInterface == null);
-      paramQQAppInterface = paramQQAppInterface.a();
-    } while (paramQQAppInterface == null);
-    paramString = paramQQAppInterface.a(paramLong);
-    if (paramString == null)
-    {
-      QLog.w("cmshow_scripted_SpriteCommFunc", 2, "task NOT exist, msgId:" + paramLong);
-      return;
+    this.b += 1;
+    alay.a(this.jdField_a_of_type_Alay, this.jdField_a_of_type_Alaw, paramString, false);
+    if (this.jdField_a_of_type_Alaw != null) {
+      bmev.a().a(2741, this.jdField_a_of_type_Alaw.c, 101, "qboss download resources fail mErrCode = " + paramDownloadResult.getStatus().httpStatus + " resUrl = " + paramString);
     }
-    ThreadManager.post(new SpriteCommFunc.2(paramQQAppInterface, paramString), 5, null, true);
+    paramString = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (this.b + this.jdField_a_of_type_Int == this.c) {
+      alay.a(this.jdField_a_of_type_Alay, paramString);
+    }
   }
   
-  public static void a(QQAppInterface paramQQAppInterface, String paramString)
+  public void onDownloadProgress(String paramString, long paramLong, float paramFloat) {}
+  
+  public void onDownloadSucceed(String paramString, DownloadResult paramDownloadResult)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("cmshow_scripted_SpriteCommFunc", 2, new Object[] { "[stopAllTask]", ",from:", paramString });
+      QLog.i("QbossADBannerConfigManager", 2, "banner resources download success url = " + paramString);
     }
-    if (!albi.c(paramQQAppInterface)) {
-      return;
+    this.jdField_a_of_type_Int += 1;
+    alay.a(this.jdField_a_of_type_Alay, this.jdField_a_of_type_Alaw, paramString, true);
+    paramString = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (this.jdField_a_of_type_Int == this.c) {
+      alay.b(this.jdField_a_of_type_Alay, paramString);
     }
-    try
-    {
-      paramString = new JSONObject();
-      paramString.put("type", 0);
-      paramQQAppInterface = albi.a(paramQQAppInterface);
-      if ((paramQQAppInterface == null) || (paramQQAppInterface.a() == null))
-      {
-        QLog.e("cmshow_scripted_SpriteCommFunc", 1, "[stopAllTask], spriteContext or getSurfaceView is null.");
-        return;
-      }
-    }
-    catch (Throwable paramQQAppInterface)
-    {
-      QLog.e("cmshow_scripted_SpriteCommFunc", 1, "[stopAllTask],", paramQQAppInterface);
-      return;
-    }
-    ApolloCmdChannel.getChannel(paramQQAppInterface.a()).callbackFromRequest(paramQQAppInterface.a().getLuaState(), 0, "sc.stop_all_task.local", paramString.toString());
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface, String paramString, boolean paramBoolean)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("cmshow_scripted_SpriteCommFunc", 2, new Object[] { "[showOrHideSprite]", ",from:", paramString });
-    }
-    if (!albi.c(paramQQAppInterface)) {}
-    do
-    {
-      albf localalbf;
-      do
-      {
-        do
-        {
-          return;
-        } while (!a.contains(paramString));
-        localalbf = albi.a(paramQQAppInterface);
-      } while (localalbf == null);
-      alba localalba = albi.a(paramQQAppInterface);
-      if (localalba != null) {
-        localalba.a(paramString, paramBoolean);
-      }
-      if (albi.a(paramQQAppInterface))
-      {
-        QLog.i("cmshow_scripted_SpriteCommFunc", 1, "showOrHideSprite double should hide");
-        return;
-      }
-      paramQQAppInterface = localalbf.a();
-    } while (paramQQAppInterface == null);
-    paramQQAppInterface.a(paramBoolean, false, paramString);
-  }
-  
-  public static boolean a(QQAppInterface paramQQAppInterface)
-  {
-    boolean bool1 = albi.b(paramQQAppInterface);
-    boolean bool2 = albi.a(paramQQAppInterface);
-    return (bool1) || (bool2);
-  }
-  
-  public static boolean a(QQAppInterface paramQQAppInterface, String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("cmshow_scripted_SpriteCommFunc", 2, new Object[] { "[isSpriteActive]", ",from:", paramString });
-    }
-    if (!albi.c(paramQQAppInterface)) {}
-    do
-    {
-      do
-      {
-        return false;
-        paramQQAppInterface = albi.a(paramQQAppInterface);
-      } while (paramQQAppInterface == null);
-      paramQQAppInterface = paramQQAppInterface.a();
-    } while (paramQQAppInterface == null);
-    return paramQQAppInterface.a();
-  }
-  
-  public static boolean b(QQAppInterface paramQQAppInterface, String paramString)
-  {
-    if ((TextUtils.isEmpty(paramString)) || (paramQQAppInterface == null)) {}
-    do
-    {
-      return false;
-      paramQQAppInterface = albi.a(paramQQAppInterface);
-    } while ((paramQQAppInterface == null) || (!paramQQAppInterface.a(paramString)));
-    return true;
   }
 }
 

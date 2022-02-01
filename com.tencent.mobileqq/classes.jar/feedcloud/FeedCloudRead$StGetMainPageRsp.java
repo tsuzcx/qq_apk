@@ -20,6 +20,7 @@ public final class FeedCloudRead$StGetMainPageRsp
   public final PBUInt32Field feedCount = PBField.initUInt32(0);
   public final PBUInt32Field followCount = PBField.initUInt32(0);
   public final PBUInt32Field isFinish = PBField.initUInt32(0);
+  public final PBStringField pmBeginShow = PBField.initString("");
   public FeedCloudMeta.StShare share = new FeedCloudMeta.StShare();
   public FeedCloudMeta.StUser user = new FeedCloudMeta.StUser();
   public final PBRepeatMessageField<FeedCloudMeta.StFeed> vecFeed = PBField.initRepeatMessage(FeedCloudMeta.StFeed.class);
@@ -27,12 +28,12 @@ public final class FeedCloudRead$StGetMainPageRsp
   static
   {
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 24, 32, 40, 50, 56, 66, 74, 82 }, new String[] { "extInfo", "user", "feedCount", "fansCount", "followCount", "vecFeed", "isFinish", "share", "feedAttchInfo", "busiRspData" }, new Object[] { null, null, Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), null, Integer.valueOf(0), null, "", localByteStringMicro }, StGetMainPageRsp.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 24, 32, 40, 50, 56, 66, 74, 82, 90 }, new String[] { "extInfo", "user", "feedCount", "fansCount", "followCount", "vecFeed", "isFinish", "share", "feedAttchInfo", "busiRspData", "pmBeginShow" }, new Object[] { null, null, Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), null, Integer.valueOf(0), null, "", localByteStringMicro, "" }, StGetMainPageRsp.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     feedcloud.FeedCloudRead.StGetMainPageRsp
  * JD-Core Version:    0.7.0.1
  */

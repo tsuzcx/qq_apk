@@ -1,23 +1,19 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.pubaccount.readinjoy.view.RecommendFeedsDiandianEntranceManager.ExtraInfo;
+import android.text.style.ClickableSpan;
+import android.view.View;
 
-public final class rxk
-  implements Parcelable.Creator<RecommendFeedsDiandianEntranceManager.ExtraInfo>
+class rxk
+  extends ClickableSpan
 {
-  public RecommendFeedsDiandianEntranceManager.ExtraInfo a(Parcel paramParcel)
-  {
-    return new RecommendFeedsDiandianEntranceManager.ExtraInfo(paramParcel);
-  }
+  rxk(rxg paramrxg) {}
   
-  public RecommendFeedsDiandianEntranceManager.ExtraInfo[] a(int paramInt)
+  public void onClick(View paramView)
   {
-    return new RecommendFeedsDiandianEntranceManager.ExtraInfo[paramInt];
+    rwy.j(this.a.a, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     rxk
  * JD-Core Version:    0.7.0.1
  */

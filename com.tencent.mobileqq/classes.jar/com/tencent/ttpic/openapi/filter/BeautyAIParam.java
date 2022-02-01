@@ -15,21 +15,19 @@ public class BeautyAIParam
   {
     float[] arrayOfFloat1 = { 0.3F, 0.0F, 0.0F, 0.0F, 0.7F, 0.0F, 0.0F, 0.0F, 0.6F, 0.0F };
     float[] arrayOfFloat2 = { 0.3F, 0.0F, 0.0F, 0.0F, 0.7F, 0.0F, 0.0F, 0.0F, 0.6F, 0.0F };
-    float[] arrayOfFloat3 = { 0.3F, 0.0F, 0.0F, 0.0F, 0.7F, 0.0F, 0.0F, 0.0F, 0.6F, 0.0F };
-    float[] arrayOfFloat4 = { 0.3F, 0.0F, 0.0F, 0.0F, 0.7F, 0.0F, 0.0F, 0.0F, 0.6F, 0.0F };
-    float[] arrayOfFloat5 = { 0.3F, 0.0F, 0.0F, 0.0F, 0.7F, 0.0F, 0.0F, 0.0F, 0.6F, 0.0F };
-    beautyAITableClose = new float[][] { arrayOfFloat1, arrayOfFloat2, arrayOfFloat3, arrayOfFloat4, { 0.3F, 0.0F, 0.0F, 0.0F, 0.7F, 0.0F, 0.0F, 0.0F, 0.6F, 0.0F }, arrayOfFloat5, { 0.3F, 0.0F, 0.0F, 0.0F, 0.7F, 0.0F, 0.0F, 0.0F, 0.6F, 0.0F } };
+    beautyAITableClose = new float[][] { { 0.3F, 0.0F, 0.0F, 0.0F, 0.7F, 0.0F, 0.0F, 0.0F, 0.6F, 0.0F }, { 0.3F, 0.0F, 0.0F, 0.0F, 0.7F, 0.0F, 0.0F, 0.0F, 0.6F, 0.0F }, { 0.3F, 0.0F, 0.0F, 0.0F, 0.7F, 0.0F, 0.0F, 0.0F, 0.6F, 0.0F }, { 0.3F, 0.0F, 0.0F, 0.0F, 0.7F, 0.0F, 0.0F, 0.0F, 0.6F, 0.0F }, arrayOfFloat1, { 0.3F, 0.0F, 0.0F, 0.0F, 0.7F, 0.0F, 0.0F, 0.0F, 0.6F, 0.0F }, arrayOfFloat2 };
   }
   
   public BeautyAIParam()
   {
-    float[] arrayOfFloat1 = { 1.0F, 1.0F, 1.0F, 1.0F, 1.0F, 0.0F, 0.0F, 0.0F, 0.9F, 1.0F };
-    float[] arrayOfFloat2 = { 1.0F, 1.0F, 1.0F, 1.0F, 1.0F, 0.0F, 0.29F, 0.29F, 0.9F, 1.0F };
-    this.beautyAIMaxTable = new float[][] { { 0.5F, 0.5F, 0.5F, 0.5F, 1.0F, 0.0F, 0.0F, 0.0F, 0.5F, 0.0F }, { 1.0F, 1.0F, 1.0F, 1.0F, 1.0F, 0.0F, 0.0F, 0.0F, 0.7F, 0.0F }, { 1.0F, 1.0F, 1.0F, 1.0F, 1.0F, 0.0F, 0.0F, 0.0F, 0.7F, 0.0F }, { 1.0F, 1.0F, 1.0F, 1.0F, 1.0F, 0.71F, 0.57F, 0.71F, 0.8F, 0.0F }, arrayOfFloat1, arrayOfFloat2, { 1.0F, 1.0F, 1.0F, 1.0F, 1.0F, 1.0F, 1.0F, 1.0F, 1.0F, 1.0F } };
+    float[] arrayOfFloat1 = { 0.5F, 0.5F, 0.5F, 0.5F, 1.0F, 0.0F, 0.0F, 0.0F, 0.5F, 0.0F };
+    float[] arrayOfFloat2 = { 1.0F, 1.0F, 1.0F, 1.0F, 1.0F, 0.0F, 0.0F, 0.0F, 0.7F, 0.0F };
+    float[] arrayOfFloat3 = { 1.0F, 1.0F, 1.0F, 1.0F, 1.0F, 0.71F, 0.57F, 0.71F, 0.8F, 0.0F };
+    float[] arrayOfFloat4 = { 1.0F, 1.0F, 1.0F, 1.0F, 1.0F, 0.0F, 0.0F, 0.0F, 0.9F, 1.0F };
+    float[] arrayOfFloat5 = { 1.0F, 1.0F, 1.0F, 1.0F, 1.0F, 1.0F, 1.0F, 1.0F, 1.0F, 1.0F };
+    this.beautyAIMaxTable = new float[][] { arrayOfFloat1, { 1.0F, 1.0F, 1.0F, 1.0F, 1.0F, 0.0F, 0.0F, 0.0F, 0.7F, 0.0F }, arrayOfFloat2, arrayOfFloat3, arrayOfFloat4, { 1.0F, 1.0F, 1.0F, 1.0F, 1.0F, 0.0F, 0.29F, 0.29F, 0.9F, 1.0F }, arrayOfFloat5 };
     this.beautyGeneral = new float[] { 0.3F, 0.4F, 0.3F, 0.16F, 0.7F, 0.7F, 0.7F, 0.7F, 0.6F, 0.0F };
-    arrayOfFloat1 = new float[] { 1.0F, 1.0F, 1.0F, 1.0F, 1.0F, 0.0F, 0.0F, 0.0F, 1.0F, 0.0F };
-    arrayOfFloat2 = new float[] { 1.0F, 1.0F, 1.0F, 1.0F, 1.0F, 0.0F, 0.0F, 0.0F, 1.0F, 0.0F };
-    this.beautyAIMaxTableClose = new float[][] { arrayOfFloat1, { 1.0F, 1.0F, 1.0F, 1.0F, 1.0F, 0.0F, 0.0F, 0.0F, 1.0F, 0.0F }, { 1.0F, 1.0F, 1.0F, 1.0F, 1.0F, 0.0F, 0.0F, 0.0F, 1.0F, 0.0F }, { 1.0F, 1.0F, 1.0F, 1.0F, 1.0F, 0.0F, 0.0F, 0.0F, 1.0F, 0.0F }, { 1.0F, 1.0F, 1.0F, 1.0F, 1.0F, 0.0F, 0.0F, 0.0F, 1.0F, 0.0F }, arrayOfFloat2, { 1.0F, 1.0F, 1.0F, 1.0F, 1.0F, 0.0F, 0.0F, 0.0F, 1.0F, 0.0F } };
+    this.beautyAIMaxTableClose = new float[][] { { 1.0F, 1.0F, 1.0F, 1.0F, 1.0F, 0.0F, 0.0F, 0.0F, 1.0F, 0.0F }, { 1.0F, 1.0F, 1.0F, 1.0F, 1.0F, 0.0F, 0.0F, 0.0F, 1.0F, 0.0F }, { 1.0F, 1.0F, 1.0F, 1.0F, 1.0F, 0.0F, 0.0F, 0.0F, 1.0F, 0.0F }, { 1.0F, 1.0F, 1.0F, 1.0F, 1.0F, 0.0F, 0.0F, 0.0F, 1.0F, 0.0F }, { 1.0F, 1.0F, 1.0F, 1.0F, 1.0F, 0.0F, 0.0F, 0.0F, 1.0F, 0.0F }, { 1.0F, 1.0F, 1.0F, 1.0F, 1.0F, 0.0F, 0.0F, 0.0F, 1.0F, 0.0F }, { 1.0F, 1.0F, 1.0F, 1.0F, 1.0F, 0.0F, 0.0F, 0.0F, 1.0F, 0.0F } };
     this.beautyGeneralClose = new float[] { 0.3F, 0.0F, 0.0F, 0.0F, 0.7F, 0.7F, 0.7F, 0.7F, 0.6F, 0.0F };
     this.personType = 0;
   }
@@ -151,7 +149,7 @@ public class BeautyAIParam
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.openapi.filter.BeautyAIParam
  * JD-Core Version:    0.7.0.1
  */

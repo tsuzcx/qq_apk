@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.colornote.anim;
 
-import aepi;
+import afur;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.ColorFilter;
@@ -8,30 +8,26 @@ import android.graphics.Paint;
 import android.graphics.drawable.Drawable;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import aocj;
+import aqcn;
+import aqcq;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.List;
 
 public class MusicDanceDrawable
   extends Drawable
-  implements Runnable
+  implements aqcn, Runnable
 {
   private static List<Double>[] jdField_a_of_type_ArrayOfJavaUtilList;
   private int jdField_a_of_type_Int;
   private Paint jdField_a_of_type_AndroidGraphicsPaint;
-  private List<aocj> jdField_a_of_type_JavaUtilList;
+  private List<aqcq> jdField_a_of_type_JavaUtilList;
   private boolean jdField_a_of_type_Boolean;
   private int b;
   private int c;
   private int d;
   private int e;
   private int f;
-  
-  public void a()
-  {
-    this.jdField_a_of_type_Boolean = false;
-  }
   
   public void a(int paramInt)
   {
@@ -64,7 +60,7 @@ public class MusicDanceDrawable
   
   public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    this.jdField_a_of_type_JavaUtilList.add(new aocj(this, paramInt1, paramInt2, paramInt3, paramInt4, null));
+    this.jdField_a_of_type_JavaUtilList.add(new aqcq(this, paramInt1, paramInt2, paramInt3, paramInt4, null));
   }
   
   public void a(Context paramContext, int paramInt1, int paramInt2)
@@ -81,7 +77,7 @@ public class MusicDanceDrawable
     this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
     this.jdField_a_of_type_AndroidGraphicsPaint.setColor(paramInt3);
     this.b = paramInt2;
-    this.c = aepi.a(2.0F, paramContext.getResources());
+    this.c = afur.a(2.0F, paramContext.getResources());
     if (this.c < 0) {}
     paramInt3 = (paramInt1 - this.c * 2) / 3;
     paramInt1 = 0;
@@ -98,9 +94,9 @@ public class MusicDanceDrawable
     int i = 0;
     while (i < this.jdField_a_of_type_JavaUtilList.size())
     {
-      aocj localaocj = (aocj)this.jdField_a_of_type_JavaUtilList.get(i);
-      paramCanvas.drawRect(this.jdField_a_of_type_Int, this.b - aocj.a(localaocj), this.jdField_a_of_type_Int + aocj.b(localaocj), this.b, this.jdField_a_of_type_AndroidGraphicsPaint);
-      this.jdField_a_of_type_Int += aocj.b(localaocj) + this.c;
+      aqcq localaqcq = (aqcq)this.jdField_a_of_type_JavaUtilList.get(i);
+      paramCanvas.drawRect(this.jdField_a_of_type_Int, this.b - aqcq.a(localaqcq), this.jdField_a_of_type_Int + aqcq.b(localaqcq), this.b, this.jdField_a_of_type_AndroidGraphicsPaint);
+      this.jdField_a_of_type_Int += aqcq.b(localaqcq) + this.c;
       i += 1;
     }
   }
@@ -128,8 +124,8 @@ public class MusicDanceDrawable
       while (i < this.jdField_a_of_type_JavaUtilList.size())
       {
         double d1 = ((Double)jdField_a_of_type_ArrayOfJavaUtilList[i].get(this.f)).doubleValue();
-        aocj localaocj = (aocj)this.jdField_a_of_type_JavaUtilList.get(i);
-        localaocj.a((int)(d1 * aocj.c(localaocj)));
+        aqcq localaqcq = (aqcq)this.jdField_a_of_type_JavaUtilList.get(i);
+        localaqcq.a((int)(d1 * aqcq.c(localaqcq)));
         i += 1;
       }
       scheduleSelf(this, 50L);
@@ -144,10 +140,15 @@ public class MusicDanceDrawable
   public void setAlpha(int paramInt) {}
   
   public void setColorFilter(@Nullable ColorFilter paramColorFilter) {}
+  
+  public void stop()
+  {
+    this.jdField_a_of_type_Boolean = false;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.colornote.anim.MusicDanceDrawable
  * JD-Core Version:    0.7.0.1
  */

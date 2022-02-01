@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.mini.reuse;
 
 import android.text.TextUtils;
-import bdgk;
+import bgln;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.component.network.DownloaderFactory;
 import com.tencent.component.network.downloader.DownloadRequest;
@@ -75,6 +75,18 @@ public class MiniappDownloadUtil
       i = 0;
       break;
     }
+  }
+  
+  private Downloader.DownloadMode getDownloadMode()
+  {
+    int i = GameWnsUtils.getDownloaderMode();
+    if (i == Downloader.DownloadMode.RangeMode.ordinal()) {
+      return Downloader.DownloadMode.RangeMode;
+    }
+    if (i == Downloader.DownloadMode.OkHttpMode.ordinal()) {
+      return Downloader.DownloadMode.OkHttpMode;
+    }
+    return Downloader.DownloadMode.StrictMode;
   }
   
   public static MiniappDownloadUtil getInstance()
@@ -200,6 +212,18 @@ public class MiniappDownloadUtil
     getInstance();
   }
   
+  private boolean rangeDownloadEnvEnable()
+  {
+    List localList = getRangeModePerfLevel();
+    if ((localList != null) && (!localList.contains(Integer.valueOf(bgln.f())))) {}
+    do
+    {
+      return false;
+      localList = getRangeModeNetworkLevel();
+    } while ((localList != null) && (!localList.contains(Integer.valueOf(NetworkState.g().getNetworkType()))));
+    return true;
+  }
+  
   public void abort(String paramString)
   {
     this.resumableDownloader.abort(paramString, null);
@@ -209,11 +233,11 @@ public class MiniappDownloadUtil
   {
     if (NetworkUtils.isNetworkUrl(paramString1))
     {
-      paramDownloadListener = new MiniappDownloadUtil.ProgressResampleDownloadListener(paramDownloadListener, gDownloadProgressStep);
       paramString1 = new DownloadRequest(paramString1, new String[] { paramString2 }, false, paramDownloadListener);
       paramString1.mode = paramDownloadMode;
       paramString1.onResponseDataListener = paramOnResponseDataListener;
       paramString1.rangeNumber = paramInt;
+      paramString1.progressCallbackStep = gDownloadProgressStep;
       paramString1.addParam("Accept-Encoding", "gzip, deflate");
       paramString1.setFileSizeForRangeMode(paramLong);
       if (paramJSONObject != null)
@@ -247,6 +271,24 @@ public class MiniappDownloadUtil
     return downloadApkg(paramMiniAppConfig, paramBoolean1, paramString1, paramString2, paramBoolean2, paramDownloadListener, paramDownloadMode, -1, 0L, paramJSONObject, null);
   }
   
+  public Downloader.DownloadMode getDownloadMode(String paramString)
+  {
+    Downloader.DownloadMode localDownloadMode2 = getDownloadMode();
+    Downloader.DownloadMode localDownloadMode1 = localDownloadMode2;
+    if (localDownloadMode2 == Downloader.DownloadMode.RangeMode) {
+      if (isUrlSupportRange(paramString))
+      {
+        localDownloadMode1 = localDownloadMode2;
+        if (rangeDownloadEnvEnable()) {}
+      }
+      else
+      {
+        localDownloadMode1 = Downloader.DownloadMode.StrictMode;
+      }
+    }
+    return localDownloadMode1;
+  }
+  
   public int getRangeNumber(long paramLong)
   {
     long l = GameWnsUtils.getRangeSize();
@@ -270,40 +312,28 @@ public class MiniappDownloadUtil
     }
   }
   
+  public boolean needPreConnect()
+  {
+    Downloader.DownloadMode localDownloadMode = getDownloadMode();
+    if (localDownloadMode == Downloader.DownloadMode.OkHttpMode) {
+      return true;
+    }
+    if (localDownloadMode == Downloader.DownloadMode.RangeMode) {
+      return rangeDownloadEnvEnable();
+    }
+    return false;
+  }
+  
   public void preConnectHost(ArrayList<String> paramArrayList)
   {
     if (this.resumableDownloader != null) {
       this.resumableDownloader.preConnectHost(paramArrayList);
     }
   }
-  
-  public boolean rangeDownloadEnable()
-  {
-    if (!GameWnsUtils.isDownloadOnRangeModeEnable()) {}
-    List localList;
-    do
-    {
-      do
-      {
-        return false;
-        localList = getRangeModePerfLevel();
-      } while ((localList != null) && (!localList.contains(Integer.valueOf(bdgk.f()))));
-      localList = getRangeModeNetworkLevel();
-    } while ((localList != null) && (!localList.contains(Integer.valueOf(NetworkState.g().getNetworkType()))));
-    return true;
-  }
-  
-  public boolean shouldDownloadOnRangeMode(String paramString)
-  {
-    if (!isUrlSupportRange(paramString)) {
-      return false;
-    }
-    return rangeDownloadEnable();
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.reuse.MiniappDownloadUtil
  * JD-Core Version:    0.7.0.1
  */

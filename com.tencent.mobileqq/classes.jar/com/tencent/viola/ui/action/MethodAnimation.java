@@ -16,6 +16,7 @@ import android.view.View;
 import android.view.ViewGroup.LayoutParams;
 import android.view.animation.Interpolator;
 import com.tencent.viola.core.ViolaInstance;
+import com.tencent.viola.core.ViolaSDKManager;
 import com.tencent.viola.ui.animation.AnimationBean;
 import com.tencent.viola.ui.animation.AnimationBean.Style;
 import com.tencent.viola.ui.animation.AnimationModule.AnimationHolder;
@@ -119,7 +120,7 @@ public class MethodAnimation
   private Animator.AnimatorListener createAnimatorListener(ViolaInstance paramViolaInstance, @Nullable String paramString, VComponent paramVComponent, VComponent.AnimationInfo paramAnimationInfo)
   {
     if (!TextUtils.isEmpty(paramString)) {
-      return new MethodAnimation.1(this, paramViolaInstance, paramVComponent, paramAnimationInfo, paramString);
+      return new MethodAnimation.2(this, paramViolaInstance, paramVComponent, paramAnimationInfo, paramString);
     }
     return null;
   }
@@ -141,7 +142,7 @@ public class MethodAnimation
         }
         try
         {
-          localObject = new SingleFunctionParser(this.mAnimationBean.timingFunction, new MethodAnimation.2(this)).parse("cubic-bezier");
+          localObject = new SingleFunctionParser(this.mAnimationBean.timingFunction, new MethodAnimation.3(this)).parse("cubic-bezier");
           if ((localObject != null) && (((List)localObject).size() == 4))
           {
             localObject = PathInterpolatorCompat.create(((Float)((List)localObject).get(0)).floatValue(), ((Float)((List)localObject).get(1)).floatValue(), ((Float)((List)localObject).get(2)).floatValue(), ((Float)((List)localObject).get(3)).floatValue());
@@ -191,6 +192,30 @@ public class MethodAnimation
     return null;
   }
   
+  private void dealStartAnim(VComponent paramVComponent, ViolaInstance paramViolaInstance)
+  {
+    ObjectAnimator localObjectAnimator = createAnimator(paramVComponent, paramViolaInstance.getInstanceViewPortWidth());
+    VComponent.AnimationInfo localAnimationInfo = new VComponent.AnimationInfo(localObjectAnimator, this.mAnimationBean);
+    if (localObjectAnimator != null)
+    {
+      paramViolaInstance = createAnimatorListener(paramViolaInstance, this.callback, paramVComponent, localAnimationInfo);
+      if (Build.VERSION.SDK_INT < 18) {
+        paramVComponent.getHostView().setLayerType(2, null);
+      }
+      Interpolator localInterpolator = createTimeInterpolator();
+      if (paramViolaInstance != null) {
+        localObjectAnimator.addListener(paramViolaInstance);
+      }
+      if (localInterpolator != null) {
+        localObjectAnimator.setInterpolator(localInterpolator);
+      }
+      paramVComponent.getHostView().setCameraDistance(this.mAnimationBean.styles.getCameraDistance());
+      paramVComponent.addAnimationInfo(localAnimationInfo);
+      localObjectAnimator.setDuration(this.mAnimationBean.duration);
+      localObjectAnimator.start();
+    }
+  }
+  
   private void startAnimation(@NonNull ViolaInstance paramViolaInstance, @Nullable VComponent paramVComponent)
   {
     if (paramVComponent != null)
@@ -203,38 +228,22 @@ public class MethodAnimation
       }
       paramVComponent.postAnimation(new AnimationModule.AnimationHolder(this.mAnimationBean, this.callback));
     }
-    for (;;)
-    {
+    label49:
+    while (this.mAnimationBean == null) {
       return;
-      label49:
-      if (this.mAnimationBean != null) {
-        try
-        {
-          ObjectAnimator localObjectAnimator = createAnimator(paramVComponent, paramViolaInstance.getInstanceViewPortWidth());
-          VComponent.AnimationInfo localAnimationInfo = new VComponent.AnimationInfo(localObjectAnimator, this.mAnimationBean);
-          if (localObjectAnimator != null)
-          {
-            paramViolaInstance = createAnimatorListener(paramViolaInstance, this.callback, paramVComponent, localAnimationInfo);
-            if (Build.VERSION.SDK_INT < 18) {
-              paramVComponent.getHostView().setLayerType(2, null);
-            }
-            Interpolator localInterpolator = createTimeInterpolator();
-            if (paramViolaInstance != null) {
-              localObjectAnimator.addListener(paramViolaInstance);
-            }
-            if (localInterpolator != null) {
-              localObjectAnimator.setInterpolator(localInterpolator);
-            }
-            paramVComponent.getHostView().setCameraDistance(this.mAnimationBean.styles.getCameraDistance());
-            paramVComponent.addAnimationInfo(localAnimationInfo);
-            localObjectAnimator.setDuration(this.mAnimationBean.duration);
-            localObjectAnimator.start();
-            return;
-          }
-        }
-        catch (RuntimeException paramViolaInstance) {}
-      }
     }
+    try
+    {
+      if (this.mAnimationBean.topIndex)
+      {
+        ViolaUtils.bringIndexToRootView(paramVComponent, paramViolaInstance.getRootComp());
+        ViolaSDKManager.getInstance().postOnUiThread(new MethodAnimation.1(this, paramVComponent, paramViolaInstance));
+        return;
+      }
+      dealStartAnim(paramVComponent, paramViolaInstance);
+      return;
+    }
+    catch (RuntimeException paramViolaInstance) {}
   }
   
   public void executeDom(DOMActionContext paramDOMActionContext)
@@ -278,7 +287,7 @@ public class MethodAnimation
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.viola.ui.action.MethodAnimation
  * JD-Core Version:    0.7.0.1
  */

@@ -27,9 +27,9 @@ public class ProgressView
   
   private void a(Context paramContext)
   {
-    LayoutInflater.from(paramContext).inflate(2131561654, this);
-    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)findViewById(2131372332));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131377606));
+    LayoutInflater.from(paramContext).inflate(2131559567, this);
+    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)findViewById(2131372465));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131372466));
   }
   
   public void setProgressText(CharSequence paramCharSequence)
@@ -45,7 +45,7 @@ public class ProgressView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     dov.com.qq.im.aeeditor.view.ProgressView
  * JD-Core Version:    0.7.0.1
  */

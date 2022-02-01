@@ -1,24 +1,31 @@
 package com.tencent.mobileqq.minigame.ui;
 
-import com.tencent.mobileqq.minigame.utils.VConsoleLogManager;
+import com.tencent.mobileqq.mini.report.MiniProgramLpReportDC04239;
+import com.tencent.mobileqq.mini.widget.MiniLoadingAdLayout.OnDismissListener;
+import com.tencent.mobileqq.minigame.manager.GameRuntimeLoader;
+import com.tencent.mobileqq.triton.sdk.ITTEngine;
 
 class GameActivity$14
-  implements Runnable
+  implements MiniLoadingAdLayout.OnDismissListener
 {
   GameActivity$14(GameActivity paramGameActivity) {}
   
-  public void run()
+  public void onDismiss(boolean paramBoolean)
   {
-    if (!GameActivity.access$2500(this.this$0))
-    {
-      GameActivity.access$2600(this.this$0);
-      GameActivity.access$2800(this.this$0).updateVconsoleView(GameActivity.access$2700(this.this$0), GameActivity.access$1600(this.this$0), false);
+    if (paramBoolean) {
+      MiniProgramLpReportDC04239.reportMiniAppEvent(this.this$0.mGameAppConfig, MiniProgramLpReportDC04239.getAppType(this.this$0.mGameAppConfig), null, "ad", "ad_loading", "skip", null);
     }
+    GameActivity.access$2900(this.this$0, 3);
+    ITTEngine localITTEngine = GameActivity.access$1500(this.this$0).getGameEngine();
+    if (localITTEngine != null) {
+      localITTEngine.onResume();
+    }
+    GameActivity.access$3000(this.this$0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.minigame.ui.GameActivity.14
  * JD-Core Version:    0.7.0.1
  */

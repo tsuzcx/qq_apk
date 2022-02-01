@@ -1,27 +1,28 @@
-import com.tencent.mobileqq.data.TroopFeedItem;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.ark.ArkViewImplement;
+import com.tencent.ark.ArkViewModel;
+import com.tencent.mobileqq.search.rich.ArkAppView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public abstract class bbro
+class bbro
+  implements View.OnClickListener
 {
-  public TroopFeedItem a(JSONObject paramJSONObject)
+  bbro(bbrn parambbrn) {}
+  
+  public void onClick(View paramView)
   {
-    TroopFeedItem localTroopFeedItem = new TroopFeedItem();
-    try
-    {
-      localTroopFeedItem.id = paramJSONObject.getString("feed_id");
-      localTroopFeedItem.feedTime = paramJSONObject.getString("mod_time");
-      localTroopFeedItem.tag = paramJSONObject.getString("tag");
-      if (paramJSONObject.has("pub_uin")) {
-        localTroopFeedItem.publishUin = paramJSONObject.getString("pub_uin");
-      }
-      return localTroopFeedItem;
+    ArkViewModel localArkViewModel = null;
+    if (bbrn.a(this.a) != null) {
+      localArkViewModel = bbrn.a(this.a).mViewImpl.getViewModel();
     }
-    catch (JSONException paramJSONObject)
+    if (localArkViewModel == null) {}
+    for (;;)
     {
-      paramJSONObject.printStackTrace();
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      localArkViewModel.reinitArkContainer();
     }
-    return localTroopFeedItem;
   }
 }
 

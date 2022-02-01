@@ -1,17 +1,21 @@
-import java.util.List;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.biz.pubaccount.readinjoy.proteus.view.polymeric.ProteusRecycleView;
+import com.tencent.biz.pubaccount.readinjoy.proteus.view.polymeric.SideBarView;
 
 public class qlv
-  implements Cloneable
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public int a;
-  public long a;
-  public List<Long> a;
-  public int b;
-  public long b;
+  public qlv(ProteusRecycleView paramProteusRecycleView) {}
+  
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  {
+    this.a.setPadding(0, 0, (int)ProteusRecycleView.a(this.a).a(), 0);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     qlv
  * JD-Core Version:    0.7.0.1
  */

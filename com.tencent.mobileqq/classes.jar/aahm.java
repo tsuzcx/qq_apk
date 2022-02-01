@@ -1,17 +1,15 @@
-import android.view.View;
-import android.widget.FrameLayout;
-import com.tencent.biz.ui.TouchWebView.OnScrollChangedListener;
-import com.tencent.gamecenter.common.util.GameCenterAPIJavaScript;
+import NS_CERTIFIED_ACCOUNT_READ.CertifiedAccountRead.StGetMainPageRsp;
+import com.tencent.biz.subscribe.fragments.SubscribePersonalDetailFragment;
 
 public class aahm
-  implements TouchWebView.OnScrollChangedListener
+  implements zzq<Object>
 {
-  public aahm(GameCenterAPIJavaScript paramGameCenterAPIJavaScript) {}
+  public aahm(SubscribePersonalDetailFragment paramSubscribePersonalDetailFragment, zxa paramzxa) {}
   
-  public void onScrollChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4, View paramView)
+  public void a(Object... paramVarArgs)
   {
-    if (GameCenterAPIJavaScript.access$000(this.a) != null) {
-      GameCenterAPIJavaScript.access$000(this.a).scrollBy(0, paramInt2 - paramInt4);
+    if ((paramVarArgs != null) && (paramVarArgs.length == 4)) {
+      this.jdField_a_of_type_Zxa.onReceive(((Boolean)paramVarArgs[0]).booleanValue(), ((Long)paramVarArgs[1]).longValue(), (String)paramVarArgs[2], (CertifiedAccountRead.StGetMainPageRsp)paramVarArgs[3]);
     }
   }
 }

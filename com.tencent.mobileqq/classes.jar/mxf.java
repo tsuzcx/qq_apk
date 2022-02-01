@@ -1,45 +1,33 @@
-import java.util.HashMap;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import com.tencent.avgame.floatwindow.CommonGameFloatWindowLayout;
 
-public class mxf
+class mxf
+  implements Animator.AnimatorListener
 {
-  public int a;
-  public String a;
-  public HashMap<String, String> a;
-  public mxg a;
-  public int b;
-  public int c = 60000;
+  mxf(mxb parammxb, int paramInt1, int paramInt2) {}
   
-  public mxf()
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    this.jdField_a_of_type_Int = 3;
-    this.jdField_b_of_type_Int = 5000;
+    mxb.a(this.jdField_a_of_type_Mxb).a(this.jdField_a_of_type_Int, this.b);
+    mxb.a(this.jdField_a_of_type_Mxb).d();
+    mxb.a(this.jdField_a_of_type_Mxb, null);
   }
   
-  public String toString()
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("mUrl = ").append(this.jdField_a_of_type_JavaLangString);
-    localStringBuilder.append(",mConnectionTimeout = ").append(this.jdField_b_of_type_Int);
-    localStringBuilder.append(",mSocketTimeout = ").append(this.c);
-    if (this.jdField_a_of_type_Mxg != null)
-    {
-      localStringBuilder.append(",mResult.mIsSucc = ").append(this.jdField_a_of_type_Mxg.jdField_a_of_type_Boolean);
-      localStringBuilder.append(",mResult.mFileLength = ").append(this.jdField_a_of_type_Mxg.jdField_a_of_type_Long);
-      localStringBuilder.append(",mResult.mErrCode = ").append(this.jdField_a_of_type_Mxg.jdField_a_of_type_Int);
-      localStringBuilder.append(",mResult.mErrStr = ").append(this.jdField_a_of_type_Mxg.jdField_a_of_type_JavaLangString);
-      localStringBuilder.append(",mResult.mTryCount = ").append(this.jdField_a_of_type_Mxg.jdField_b_of_type_Int);
-      localStringBuilder.append(",mResult.mCostTime = ").append(this.jdField_a_of_type_Mxg.jdField_b_of_type_Long).append("ms");
-    }
-    for (;;)
-    {
-      return localStringBuilder.toString();
-      localStringBuilder.append(",mResult = null");
-    }
+    mxb.a(this.jdField_a_of_type_Mxb).a(this.jdField_a_of_type_Int, this.b);
+    mxb.a(this.jdField_a_of_type_Mxb).d();
+    mxb.a(this.jdField_a_of_type_Mxb, null);
   }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     mxf
  * JD-Core Version:    0.7.0.1
  */

@@ -1,11 +1,18 @@
-import java.util.List;
+import android.widget.BaseAdapter;
+import com.tencent.mobileqq.data.ChatMessage;
 
-public class agzb
+class agzb
+  extends ahbl
 {
-  public String a;
-  public List<? extends agxz> a;
-  public String b;
-  public List<? extends agxz> b;
+  agzb(agwz paramagwz)
+  {
+    super(paramagwz, null);
+  }
+  
+  protected afxi a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
+  {
+    return new ahdf(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
+  }
 }
 
 

@@ -1,12 +1,16 @@
-import android.widget.CheckBox;
-import android.widget.TextView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.aio.helper.AIOLongShotHelper;
 
 public class agkb
+  implements DialogInterface.OnClickListener
 {
-  CheckBox jdField_a_of_type_AndroidWidgetCheckBox;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
+  public agkb(AIOLongShotHelper paramAIOLongShotHelper) {}
   
-  public agkb(agjx paramagjx) {}
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    paramDialogInterface.dismiss();
+  }
 }
 
 

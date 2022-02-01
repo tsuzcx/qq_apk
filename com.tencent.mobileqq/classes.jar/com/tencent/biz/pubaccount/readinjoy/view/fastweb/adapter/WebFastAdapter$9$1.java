@@ -3,7 +3,7 @@ package com.tencent.biz.pubaccount.readinjoy.view.fastweb.adapter;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import rzv;
+import sxt;
 
 class WebFastAdapter$9$1
   implements Runnable
@@ -12,18 +12,18 @@ class WebFastAdapter$9$1
   
   public void run()
   {
-    Intent localIntent = rzv.a(this.a.this$0).getPackageManager().getLaunchIntentForPackage("com.tencent.reading");
+    Intent localIntent = sxt.a(this.a.this$0).getPackageManager().getLaunchIntentForPackage("com.tencent.reading");
     if (localIntent != null)
     {
       localIntent.setFlags(268435456);
       localIntent.putExtra("big_brother_source_key", "biz_src_kandian_read");
-      rzv.a(this.a.this$0).startActivity(localIntent);
+      sxt.a(this.a.this$0).startActivity(localIntent);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.fastweb.adapter.WebFastAdapter.9.1
  * JD-Core Version:    0.7.0.1
  */

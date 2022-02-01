@@ -3,7 +3,7 @@ package com.tencent.mobileqq.mini.servlet;
 import NS_MINI_INTERFACE.INTERFACE.StGetFormIdRsp;
 import android.content.Intent;
 import android.os.Bundle;
-import bdpd;
+import bguc;
 import com.tencent.mobileqq.pb.PBStringField;
 import mqq.app.Packet;
 
@@ -35,14 +35,14 @@ public class MiniAppGetFormIdServlet
       localObject = new byte[4];
     }
     paramPacket.setSSOCommand("LightAppSvc.mini_app_userapp.GetFormId");
-    paramPacket.putSendData(bdpd.a((byte[])localObject));
+    paramPacket.putSendData(bguc.a((byte[])localObject));
     paramPacket.setTimeout(paramIntent.getLongExtra("timeout", 30000L));
     super.onSend(paramIntent, paramPacket);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.servlet.MiniAppGetFormIdServlet
  * JD-Core Version:    0.7.0.1
  */

@@ -1,33 +1,23 @@
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.AdData;
 
-class sxv
-  implements rln
+public final class sxv
+  implements Parcelable.Creator<AdData>
 {
-  sxv(sxe paramsxe) {}
-  
-  public void a(String paramString1, int paramInt, String paramString2)
+  public AdData a(Parcel paramParcel)
   {
-    JSONObject localJSONObject = new JSONObject();
-    try
-    {
-      localJSONObject.put("video_vid", paramString1);
-      localJSONObject.put("retCode", paramInt);
-      this.a.callJs(paramString2, new String[] { localJSONObject.toString() });
-      return;
-    }
-    catch (JSONException paramString1)
-    {
-      for (;;)
-      {
-        paramString1.printStackTrace();
-      }
-    }
+    return new AdData(paramParcel);
+  }
+  
+  public AdData[] a(int paramInt)
+  {
+    return new AdData[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     sxv
  * JD-Core Version:    0.7.0.1
  */

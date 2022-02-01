@@ -1,6 +1,5 @@
 package com.tencent.thumbplayer.core.decoder;
 
-import android.media.MediaCodec;
 import android.media.MediaCodec.BufferInfo;
 import android.media.MediaCrypto;
 import android.media.MediaFormat;
@@ -10,6 +9,7 @@ import android.support.annotation.RequiresApi;
 import android.view.Surface;
 import com.tencent.thumbplayer.core.common.TPNativeLog;
 import com.tencent.thumbplayer.core.common.TPSystemInfo;
+import com.tencent.tmediacodec.TMediaCodec;
 
 @RequiresApi(api=16)
 public class TPMediaCodecVideoDecoder
@@ -31,7 +31,12 @@ public class TPMediaCodecVideoDecoder
   private int mVideoHeight = 0;
   private int mVideoWidth = 0;
   
-  void configCodec(@NonNull MediaCodec paramMediaCodec)
+  public TPMediaCodecVideoDecoder(int paramInt)
+  {
+    super(paramInt);
+  }
+  
+  void configCodec(@NonNull TMediaCodec paramTMediaCodec)
   {
     MediaFormat localMediaFormat = MediaFormat.createVideoFormat(this.mMimeType, this.mVideoWidth, this.mVideoHeight);
     if (Build.VERSION.SDK_INT > 22) {
@@ -40,8 +45,8 @@ public class TPMediaCodecVideoDecoder
     if (TPSystemInfo.getDeviceName().equalsIgnoreCase("vivo X5L")) {
       localMediaFormat.setInteger("max-input-size", this.mVideoWidth * this.mVideoHeight);
     }
-    paramMediaCodec.configure(localMediaFormat, this.mSurface, this.mMediaCrypto, 0);
-    paramMediaCodec.setVideoScalingMode(1);
+    paramTMediaCodec.configure(localMediaFormat, this.mSurface, this.mMediaCrypto, 0);
+    paramTMediaCodec.setVideoScalingMode(1);
   }
   
   String getLogTag()
@@ -72,7 +77,7 @@ public class TPMediaCodecVideoDecoder
   
   void processMediaCodecException(Exception paramException) {}
   
-  void processOutputBuffer(@NonNull MediaCodec paramMediaCodec, int paramInt, @NonNull MediaCodec.BufferInfo paramBufferInfo, @NonNull TPFrameInfo paramTPFrameInfo)
+  void processOutputBuffer(@NonNull TMediaCodec paramTMediaCodec, int paramInt, @NonNull MediaCodec.BufferInfo paramBufferInfo, @NonNull TPFrameInfo paramTPFrameInfo)
   {
     paramTPFrameInfo.width = this.mVideoWidth;
     paramTPFrameInfo.height = this.mVideoHeight;
@@ -82,10 +87,10 @@ public class TPMediaCodecVideoDecoder
     paramTPFrameInfo.cropBottom = this.mCropBottom;
   }
   
-  void processOutputConfigData(@NonNull MediaCodec paramMediaCodec, int paramInt, @NonNull MediaCodec.BufferInfo paramBufferInfo, @NonNull TPFrameInfo paramTPFrameInfo)
+  void processOutputConfigData(@NonNull TMediaCodec paramTMediaCodec, int paramInt, @NonNull MediaCodec.BufferInfo paramBufferInfo, @NonNull TPFrameInfo paramTPFrameInfo)
   {
     paramTPFrameInfo.errCode = 0;
-    processOutputBuffer(paramMediaCodec, paramInt, paramBufferInfo, paramTPFrameInfo);
+    processOutputBuffer(paramTMediaCodec, paramInt, paramBufferInfo, paramTPFrameInfo);
   }
   
   void processOutputFormatChanged(@NonNull MediaFormat paramMediaFormat)
@@ -107,6 +112,11 @@ public class TPMediaCodecVideoDecoder
     }
   }
   
+  public int setOperateRate(float paramFloat)
+  {
+    return super.setOperateRate(paramFloat);
+  }
+  
   public int setOutputSurface(Surface paramSurface)
   {
     return super.setOutputSurface(paramSurface);
@@ -124,7 +134,7 @@ public class TPMediaCodecVideoDecoder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.thumbplayer.core.decoder.TPMediaCodecVideoDecoder
  * JD-Core Version:    0.7.0.1
  */

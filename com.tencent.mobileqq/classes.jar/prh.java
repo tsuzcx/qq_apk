@@ -1,30 +1,18 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import android.widget.ImageView;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoySelfFragment;
 
-class prh
-  implements Animator.AnimatorListener
+public class prh
+  implements prw
 {
-  prh(prf paramprf) {}
+  public prh(ReadInJoySelfFragment paramReadInJoySelfFragment) {}
   
-  public void onAnimationCancel(Animator paramAnimator)
+  public void a()
   {
-    prf.a(this.a).setSelected(this.a.isSelected());
+    ReadInJoySelfFragment.m(this.a);
   }
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    prf.a(this.a, false);
-    prf.a(this.a).setSelected(this.a.isSelected());
-  }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     prh
  * JD-Core Version:    0.7.0.1
  */

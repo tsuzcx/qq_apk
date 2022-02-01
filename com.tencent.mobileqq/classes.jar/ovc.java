@@ -1,14 +1,10 @@
-import java.util.HashMap;
-
-public class ovc
+public abstract interface ovc
 {
-  public String a;
-  public HashMap<String, String> a;
-  public String b;
+  public abstract void a(ovf paramovf);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     ovc
  * JD-Core Version:    0.7.0.1
  */

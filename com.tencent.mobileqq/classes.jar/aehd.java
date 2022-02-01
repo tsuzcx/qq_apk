@@ -1,35 +1,27 @@
-import android.os.Handler;
-import android.os.Message;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.TroopRequestActivity;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.FriendProfileCardActivity;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.activity.phone.GuideBindPhoneActivity;
 import com.tencent.mobileqq.widget.QQToast;
 
-public class aehd
-  extends Handler
+class aehd
+  implements akdi
 {
-  public aehd(TroopRequestActivity paramTroopRequestActivity) {}
+  aehd(aegy paramaegy) {}
   
-  public void handleMessage(Message paramMessage)
+  public void a(Context paramContext, boolean paramBoolean)
   {
-    switch (paramMessage.what)
+    if (paramBoolean)
     {
-    default: 
-      return;
-    case 0: 
-      this.a.i();
-      QQToast.a(this.a, this.a.getString(2131719768), 0).b(this.a.getTitleBarHeight());
-      this.a.finish();
-      return;
-    case 1: 
-      this.a.a(true);
-      this.a.i();
-      QQToast.a(this.a, this.a.getString(2131719755), 0).b(this.a.getTitleBarHeight());
+      QQToast.a(this.a.a.getApplicationContext(), 1, anni.a(2131703681), 0).a();
       return;
     }
-    paramMessage = (String)paramMessage.obj;
-    this.a.o.setText(paramMessage + "");
-    this.a.o.setContentDescription(paramMessage + "");
-    this.a.o.setVisibility(0);
+    paramContext = new Intent(this.a.a, GuideBindPhoneActivity.class);
+    paramContext.putExtra("fromKeyForContactBind", 5);
+    paramContext.putExtra("key_contact_name", this.a.a.a.a.k);
+    paramContext.putExtra("key_contact_phone", this.a.a.a.a.a);
+    this.a.a.startActivity(paramContext);
   }
 }
 

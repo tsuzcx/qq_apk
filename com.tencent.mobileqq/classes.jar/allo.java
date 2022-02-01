@@ -1,31 +1,26 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.richmedia.capture.data.FilterDesc;
+import java.util.concurrent.atomic.AtomicInteger;
 
 class allo
-  implements View.OnClickListener
+  implements bdvw
 {
-  allo(alln paramalln) {}
+  allo(alll paramalll) {}
   
-  public void onClick(View paramView)
+  public void onResp(bdwt parambdwt)
   {
-    if (alln.a(this.a) != null)
+    FilterDesc localFilterDesc = (FilterDesc)parambdwt.jdField_a_of_type_Bdws.a();
+    if (parambdwt.jdField_a_of_type_Int != 0)
     {
-      if (alln.a(this.a).a != 1036) {
-        break label62;
-      }
-      ((aknx)alln.a(this.a).a.getManager(153)).a().c(alln.a(this.a).c());
-    }
-    label62:
-    do
-    {
+      lbc.c("VideoFilterTools", "download IconFile failed. errorCode: " + parambdwt.b + ", errorMsg: " + parambdwt.jdField_a_of_type_JavaLangString + ", file: " + localFilterDesc.iconurl);
       return;
-      paramView = (aknt)alln.a(this.a).getManager(211);
-    } while (paramView == null);
-    paramView.e();
+    }
+    if ((alll.a(this.a).decrementAndGet() == 0) && (alll.a(this.a) != null)) {
+      alll.a(this.a).a(true);
+    }
+    lbc.c("VideoFilterTools", "download iconFile success. file: " + localFilterDesc.iconurl);
   }
+  
+  public void onUpdateProgeress(bdws parambdws, long paramLong1, long paramLong2) {}
 }
 
 

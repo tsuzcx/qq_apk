@@ -1,42 +1,33 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.activity.aio.audiopanel.CommonRecordSoundPanel;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.utils.QQRecorder;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQMapActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class aexy
-  extends Handler
+  implements View.OnClickListener
 {
-  public aexy(CommonRecordSoundPanel paramCommonRecordSoundPanel, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public aexy(QQMapActivity paramQQMapActivity) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onClick(View paramView)
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    case 16711687: 
-      this.a.b(102);
-      return;
-    case 16711686: 
-      if (QLog.isColorLevel()) {
-        QLog.d("QQRecorder", 2, "QQRecorder stop() is called,time is:" + System.currentTimeMillis());
-      }
-      CommonRecordSoundPanel.a(this.a).c();
-      bdfi.b(2131230744, false);
-      this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(16711686);
-      bdfi.a(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, false);
-      return;
+    if (this.a.l) {
+      this.a.w();
     }
-    this.a.b(1);
-    this.a.b();
-    QQToast.a(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getString(2131698860), 1).a();
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      if ("group_activity".equals(this.a.o))
+      {
+        this.a.k();
+      }
+      else
+      {
+        this.a.setResult(-1, this.a.a());
+        this.a.finish();
+        this.a.d();
+      }
+    }
   }
 }
 

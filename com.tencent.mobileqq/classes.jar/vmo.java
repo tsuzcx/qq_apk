@@ -1,62 +1,56 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.biz.qqstory.playvideo.FollowCaptureLauncher;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import android.content.Context;
+import android.view.View;
+import com.tencent.biz.qqcircle.widgets.QCircleAsyncTextView;
+import com.tencent.biz.qqcircle.widgets.QCircleFollowView;
+import feedcloud.FeedCloudMeta.StNotice;
+import feedcloud.FeedCloudMeta.StOperation;
+import feedcloud.FeedCloudMeta.StUser;
 
 public class vmo
-  extends Handler
+  extends vmh
 {
-  WeakReference<FollowCaptureLauncher> a;
+  private QCircleFollowView a;
   
-  public vmo(FollowCaptureLauncher paramFollowCaptureLauncher)
+  public vmo(int paramInt)
   {
-    this.a = new WeakReference(paramFollowCaptureLauncher);
+    super(paramInt);
   }
   
-  public void handleMessage(Message paramMessage)
+  protected String a()
   {
-    int i = 0;
-    FollowCaptureLauncher localFollowCaptureLauncher = (FollowCaptureLauncher)this.a.get();
-    if (localFollowCaptureLauncher == null) {}
-    for (;;)
+    return "QCircleFollowMessagePresenter";
+  }
+  
+  void a()
+  {
+    if (this.jdField_a_of_type_AndroidViewView$OnClickListener != null)
     {
-      return;
-      switch (paramMessage.what)
-      {
+      if (this.jdField_a_of_type_AndroidViewView != null) {
+        this.jdField_a_of_type_AndroidViewView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
       }
-      while (i != 0)
-      {
-        FollowCaptureLauncher.f(localFollowCaptureLauncher);
-        return;
-        FollowCaptureLauncher.b(localFollowCaptureLauncher);
-        continue;
-        FollowCaptureLauncher.a(localFollowCaptureLauncher, (String)paramMessage.obj);
-        i = 1;
-        continue;
-        FollowCaptureLauncher.c(localFollowCaptureLauncher);
-        i = 1;
-        continue;
-        FollowCaptureLauncher.d(localFollowCaptureLauncher);
-        i = 1;
-        continue;
-        FollowCaptureLauncher.b(localFollowCaptureLauncher, (String)paramMessage.obj);
-        i = 1;
-        continue;
-        if (QLog.isColorLevel()) {
-          QLog.d("FollowCaptureLauncher", 2, new Object[] { "showFollowCaptureError, ", Integer.valueOf(paramMessage.what) });
-        }
-        wxj.a("FollowLaunchEvent", false, System.currentTimeMillis() - FollowCaptureLauncher.a(localFollowCaptureLauncher), new String[] { String.valueOf(paramMessage.what) });
-        FollowCaptureLauncher.e(localFollowCaptureLauncher);
-        continue;
-        localFollowCaptureLauncher.a();
+      if (this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleAsyncTextView != null) {
+        this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleAsyncTextView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
       }
+    }
+  }
+  
+  void b(Context paramContext, View paramView)
+  {
+    this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFollowView = ((QCircleFollowView)paramView.findViewById(2131373802));
+    this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFollowView.setFollowStateChangeListener(new vmp(this));
+  }
+  
+  void b(FeedCloudMeta.StNotice paramStNotice, int paramInt)
+  {
+    paramStNotice = (FeedCloudMeta.StUser)paramStNotice.operation.opUser.get();
+    if (paramStNotice != null) {
+      this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFollowView.setUserData(paramStNotice);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     vmo
  * JD-Core Version:    0.7.0.1
  */

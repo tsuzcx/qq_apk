@@ -1,23 +1,61 @@
-import android.graphics.Bitmap;
-import com.tencent.gdtad.util.GdtSmartBlur;
-import com.tencent.image.DownloadParams;
-import com.tencent.image.DownloadParams.DecodeHandler;
+import android.graphics.ColorFilter;
+import android.graphics.drawable.Drawable;
+import android.view.MotionEvent;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.aio.BaseBubbleBuilder;
 
-final class bcze
-  implements DownloadParams.DecodeHandler
+class bcze
+  implements afwq
 {
-  public Bitmap run(DownloadParams paramDownloadParams, Bitmap paramBitmap)
+  int jdField_a_of_type_Int;
+  View jdField_a_of_type_AndroidViewView;
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  boolean jdField_a_of_type_Boolean;
+  TextView b;
+  
+  private void a(boolean paramBoolean)
   {
-    if (paramBitmap != null)
-    {
-      paramDownloadParams = paramDownloadParams.tag;
-      if ((GdtSmartBlur.a().a) && ((paramDownloadParams instanceof int[])) && (((int[])paramDownloadParams).length == 1))
-      {
-        int i = ((int[])(int[])paramDownloadParams)[0];
-        GdtSmartBlur.a().a(paramBitmap, i);
+    Drawable localDrawable = this.a.getBackground();
+    if (localDrawable != null) {
+      if (!paramBoolean) {
+        break label28;
       }
     }
-    return paramBitmap;
+    label28:
+    for (ColorFilter localColorFilter = null;; localColorFilter = BaseBubbleBuilder.a)
+    {
+      localDrawable.setColorFilter(localColorFilter);
+      localDrawable.invalidateSelf();
+      return;
+    }
+  }
+  
+  public void a(View paramView, MotionEvent paramMotionEvent)
+  {
+    switch (paramMotionEvent.getAction())
+    {
+    case 2: 
+    default: 
+    case 1: 
+    case 3: 
+      do
+      {
+        return;
+        paramView = this.a.getBackground();
+      } while (paramView == null);
+      paramView.setColorFilter(null);
+      paramView.invalidateSelf();
+      return;
+    }
+    a(false);
+  }
+  
+  public void a(View paramView, boolean paramBoolean)
+  {
+    a(paramBoolean);
   }
 }
 

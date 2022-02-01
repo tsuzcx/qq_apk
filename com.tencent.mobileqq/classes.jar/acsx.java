@@ -1,40 +1,13 @@
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.applets.data.AppletsAccountInfo;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.ad.tangram.net.AdHttp.Params;
 
-public class acsx
-  extends amrv
+class acsx
+  extends AdHttp.Params
 {
-  private WeakReference<Conversation> a;
+  public int a = -2147483648;
   
-  public acsx(Conversation paramConversation)
+  public boolean isSuccess()
   {
-    this.a = new WeakReference(paramConversation);
-  }
-  
-  protected void onGetAppletsDetail(boolean paramBoolean, List<AppletsAccountInfo> paramList)
-  {
-    if ((paramBoolean) && (paramList != null))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("AppletsObserver", 2, "onGetAppletsDetail:  isSuccess: " + paramBoolean + ", data.size = " + paramList.size());
-      }
-      Conversation localConversation = (Conversation)this.a.get();
-      if (localConversation != null)
-      {
-        paramList = paramList.iterator();
-        while (paramList.hasNext())
-        {
-          AppletsAccountInfo localAppletsAccountInfo = (AppletsAccountInfo)paramList.next();
-          if (localAppletsAccountInfo != null) {
-            localConversation.a(9, localAppletsAccountInfo.uin, 1038);
-          }
-        }
-      }
-    }
+    return (super.isSuccess()) && (this.responseData != null);
   }
 }
 

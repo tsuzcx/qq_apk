@@ -1,55 +1,90 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebArticleInfo;
-import com.tencent.mobileqq.colornote.data.ColorNote;
+import android.os.Bundle;
+import com.tencent.mobileqq.qipc.QIPCClientHelper;
+import com.tencent.mobileqq.qipc.QIPCModule;
+import eipc.EIPCClient;
+import eipc.EIPCResult;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+import java.util.Vector;
 
 public class rzl
-  implements aocf
 {
-  public rzl(FastWebActivity paramFastWebActivity) {}
+  private static rzl jdField_a_of_type_Rzl;
+  private QIPCModule jdField_a_of_type_ComTencentMobileqqQipcQIPCModule = new rzm(this, "Module_VideoFeedsIPCServer");
+  private List<rzn> jdField_a_of_type_JavaUtilList = new Vector();
+  private Set<String> jdField_a_of_type_JavaUtilSet = new HashSet();
   
-  public ColorNote getColorNote()
+  private rzl()
   {
-    String str2 = "";
-    String str1 = str2;
-    if (FastWebActivity.a(this.a) != null)
+    QIPCClientHelper.getInstance().register(this.jdField_a_of_type_ComTencentMobileqqQipcQIPCModule);
+    a();
+  }
+  
+  public static rzl a()
+  {
+    if (jdField_a_of_type_Rzl == null) {}
+    try
     {
-      str1 = str2;
-      if (FastWebActivity.a(this.a).g != null) {
-        str1 = FastWebActivity.a(this.a).g;
-      }
+      jdField_a_of_type_Rzl = new rzl();
+      return jdField_a_of_type_Rzl;
     }
-    aocl localaocl = new aocl().a(16908290);
-    StringBuilder localStringBuilder = new StringBuilder().append("mainFeeds:");
-    if (FastWebActivity.a(this.a) == null)
-    {
-      str2 = "";
-      localaocl = localaocl.a(str2);
-      if (FastWebActivity.a(this.a) != null) {
-        break label164;
-      }
-      str2 = "";
-      label108:
-      localaocl = localaocl.b(str2);
-      if (FastWebActivity.a(this.a) != null) {
-        break label178;
-      }
+    finally {}
+  }
+  
+  private void a()
+  {
+    this.jdField_a_of_type_JavaUtilSet.add("CMD_SHORTVIDEO_REQUEST_MANUAL_DOWNLOAD");
+    this.jdField_a_of_type_JavaUtilSet.add("CMD_SHORTVIDEO_REQUEST_CLEAR");
+    this.jdField_a_of_type_JavaUtilSet.add("CMD_SHORTVIDEO_UPDATE_MSG_BY_UNISEQ");
+    this.jdField_a_of_type_JavaUtilSet.add("CMD_HANDLE_FORWARD_DATA");
+    this.jdField_a_of_type_JavaUtilSet.add("CMD_INIT_READINJOY_MANAGER");
+    this.jdField_a_of_type_JavaUtilSet.add("CMD_FOLLOW_PUB_ACCOUNT");
+    this.jdField_a_of_type_JavaUtilSet.add("CMD_VOLUMECONTROL_INSTANCE_SHOULDMUTEINVIDEOFEEDS_SET");
+    this.jdField_a_of_type_JavaUtilSet.add("CMD_COMFIRM_VIDEO_PLAY_NEED_ALERT_IN_XG");
+    this.jdField_a_of_type_JavaUtilSet.add("CMD_NETWORK_CHANGE");
+    this.jdField_a_of_type_JavaUtilSet.add("CMD_IGNORE_VOLUME_CHANGE");
+    this.jdField_a_of_type_JavaUtilSet.add("CMD_CANCEL_IGNORE_VOLUME_CHANGE");
+    this.jdField_a_of_type_JavaUtilSet.add("CMD_CAMERA_CAPTURE_SO_DOWNLOAD");
+    this.jdField_a_of_type_JavaUtilSet.add("CMD_GET_NICK_NAME_BY_UIN_CANCLE");
+    this.jdField_a_of_type_JavaUtilSet.add("CMD_REPORT_START_TIME");
+    this.jdField_a_of_type_JavaUtilSet.add("CMD_SET_VIDEO_LATEST_BRIGHTNESS");
+  }
+  
+  public Bundle a(String paramString, Bundle paramBundle)
+  {
+    if (this.jdField_a_of_type_JavaUtilSet.contains(paramString)) {
+      QIPCClientHelper.getInstance().getClient().callServer("Module_VideoFeedsIPCServer", paramString, paramBundle, null);
     }
-    label164:
-    label178:
-    for (str2 = "";; str2 = FastWebActivity.a(this.a).mSubscribeName)
+    do
     {
-      return localaocl.c(str2).d(str1).a(FastWebActivity.a(this.a)).a();
-      str2 = FastWebActivity.a(this.a).innerUniqueID;
-      break;
-      str2 = FastWebActivity.a(this.a).mTitle;
-      break label108;
+      return null;
+      paramString = QIPCClientHelper.getInstance().getClient().callServer("Module_VideoFeedsIPCServer", paramString, paramBundle);
+    } while ((paramString == null) || (!paramString.isSuccess()));
+    return paramString.data;
+  }
+  
+  public void a(rzn paramrzn)
+  {
+    synchronized (this.jdField_a_of_type_JavaUtilList)
+    {
+      this.jdField_a_of_type_JavaUtilList.add(paramrzn);
+      return;
+    }
+  }
+  
+  public void b(rzn paramrzn)
+  {
+    synchronized (this.jdField_a_of_type_JavaUtilList)
+    {
+      this.jdField_a_of_type_JavaUtilList.remove(paramrzn);
+      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     rzl
  * JD-Core Version:    0.7.0.1
  */

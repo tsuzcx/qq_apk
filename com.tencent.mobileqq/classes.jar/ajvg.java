@@ -1,10 +1,9 @@
+import android.view.MotionEvent;
+import android.view.View;
+
 public abstract interface ajvg
 {
-  public abstract void a();
-  
-  public abstract void a(int paramInt1, int paramInt2);
-  
-  public abstract void a(int paramInt1, int paramInt2, String paramString);
+  public abstract boolean a(View paramView, MotionEvent paramMotionEvent);
 }
 
 

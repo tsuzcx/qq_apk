@@ -1,162 +1,97 @@
 import android.content.Intent;
-import android.content.res.Resources;
-import android.graphics.BitmapFactory.Options;
-import android.os.Bundle;
+import android.text.Editable;
 import android.text.TextUtils;
-import android.view.View;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
-import com.tencent.mobileqq.activity.photo.MediaScanner;
-import com.tencent.mobileqq.activity.photo.album.AbstractPhotoListActivity.PhotoListAdapter;
-import com.tencent.mobileqq.activity.photo.album.NewPhotoListActivity;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.widget.AdapterView;
-import java.util.ArrayList;
+import android.widget.EditText;
+import com.tencent.biz.lebasearch.SearchProtocol.WordItem;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.activity.contact.addcontact.ClassificationSearchActivity;
+import com.tencent.mobileqq.activity.contact.addcontact.SearchBaseFragment;
+import java.util.Iterator;
+import java.util.List;
 
 public class airx
-  extends aira
+  implements ssu
 {
-  airx(NewPhotoListActivity paramNewPhotoListActivity)
-  {
-    super(paramNewPhotoListActivity);
-  }
+  public airx(ClassificationSearchActivity paramClassificationSearchActivity) {}
   
-  private void a(LocalMediaInfo paramLocalMediaInfo)
+  public void a(String paramString)
   {
-    Object localObject;
-    if ((paramLocalMediaInfo == null) || (TextUtils.isEmpty(paramLocalMediaInfo.path)) || (this.mActivity == null) || (this.mActivity == null) || (((NewPhotoListActivity)this.mActivity).getIntent() == null))
+    SearchProtocol.WordItem localWordItem;
+    if (paramString != null)
     {
-      localObject = new StringBuilder().append("data error: ");
-      if (paramLocalMediaInfo == null)
+      Iterator localIterator = this.a.b.iterator();
+      do
       {
-        paramLocalMediaInfo = "";
-        bljn.d("PhotoListLogicAECamera", paramLocalMediaInfo);
-      }
+        if (!localIterator.hasNext()) {
+          break;
+        }
+        localWordItem = (SearchProtocol.WordItem)localIterator.next();
+      } while (!paramString.equals(localWordItem.word));
     }
-    do
+    for (;;)
     {
-      return;
-      paramLocalMediaInfo = paramLocalMediaInfo.path;
-      break;
-      g();
-      if (!blat.a(((NewPhotoListActivity)this.mActivity).getIntent()))
+      if ((localWordItem != null) && (localWordItem.type == 2))
       {
-        ((NewPhotoListActivity)this.mActivity).cancleProgressDailog();
-        localObject = new Bundle();
-        ((Bundle)localObject).putString("KEY_PIC_TO_VIDEO_LOCAL_PIC_PATH", paramLocalMediaInfo.path);
-        ((Bundle)localObject).putBoolean("VIDEO_STORY_PHOTO_LIST_TO_EDIT", true);
-        ((NewPhotoListActivity)this.mActivity).getIntent().putExtra("VIDEO_STORY_MEDIA_TYPE", 101);
-        a(paramLocalMediaInfo, (Bundle)localObject);
-        return;
-      }
-      localObject = zak.a().a(paramLocalMediaInfo.path, "2");
-    } while (TextUtils.isEmpty((CharSequence)localObject));
-    BitmapFactory.Options localOptions = new BitmapFactory.Options();
-    localOptions.inJustDecodeBounds = true;
-    bdal.a(paramLocalMediaInfo.path, localOptions);
-    int i = azkz.a;
-    float f = localOptions.outWidth / localOptions.outHeight;
-    int k = axpm.a(i);
-    int m = axpm.a((int)(k / f));
-    int j = k;
-    i = m;
-    if (m > bnnq.a)
-    {
-      j = axpm.a((int)(k * bnnq.a / m));
-      i = bnnq.a;
-    }
-    zak.a().a(paramLocalMediaInfo.path, (String)localObject, "2", j, i, false, 0, new aisb(this, (String)localObject, paramLocalMediaInfo));
-  }
-  
-  private void a(LocalMediaInfo paramLocalMediaInfo, Bundle paramBundle)
-  {
-    if ((this.mActivity == null) || (this.mActivity == null) || (((NewPhotoListActivity)this.mActivity).getIntent() == null)) {}
-    while (paramLocalMediaInfo == null) {
-      return;
-    }
-    int i = ((NewPhotoListActivity)this.mActivity).getIntent().getIntExtra("entrance_type", 120);
-    bnfr.a(this.mActivity, paramLocalMediaInfo.path, paramLocalMediaInfo, 0, (int)paramLocalMediaInfo.mDuration, i, 10023, 0, null, null, false, 11, 14, paramBundle);
-  }
-  
-  private void g()
-  {
-    if ((this.mActivity != null) && (this.mActivity != null) && (((NewPhotoListActivity)this.mActivity).getIntent() != null)) {
-      ((NewPhotoListActivity)this.mActivity).getIntent().putExtra("key_from_pic_choose", true);
-    }
-  }
-  
-  public void caseSingleModeImage(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
-  {
-    if ((this.mActivity == null) || (this.mActivity == null))
-    {
-      bljn.d("PhotoListLogicAECamera", "mActivity is null");
-      return;
-    }
-    paramAdapterView = ((NewPhotoListActivity)this.mActivity).photoListAdapter.getItem(paramInt);
-    ((NewPhotoListActivity)this.mActivity).showProgressDialog();
-    MediaScanner.getInstance(BaseApplicationImpl.getContext()).queryMediaInfoAsync(new airy(this), paramAdapterView);
-  }
-  
-  public void caseVideo(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
-  {
-    if ((this.mActivity == null) || (this.mActivity == null))
-    {
-      bljn.d("PhotoListLogicAECamera", "mActivity is null.");
-      return;
-    }
-    if (!bdeu.a())
-    {
-      QQToast.a(this.mActivity, ((NewPhotoListActivity)this.mActivity).getResources().getString(2131719547), 0).a();
-      return;
-    }
-    paramAdapterView = ((NewPhotoListActivity)this.mActivity).photoListAdapter.getItem(paramInt);
-    if (paramAdapterView == null)
-    {
-      bljn.d("PhotoListLogicAECamera", "photoInfo is null.");
-      return;
-    }
-    paramView = ((NewPhotoListActivity)this.mActivity).getIntent();
-    paramView.putExtra("file_send_path", paramAdapterView.path);
-    paramView.putExtra("PhotoConst.IS_VIDEO_SELECTED", true);
-    paramView.putExtra("PhotoConst.VIDEO_SIZE", paramAdapterView.fileSize);
-    paramView.putExtra("file_send_duration", paramAdapterView.mDuration);
-    paramView.putExtra("file_width", paramAdapterView.mediaWidth);
-    paramView.putExtra("file_height", paramAdapterView.mediaHeight);
-    paramView.putExtra("media_info", paramAdapterView);
-    paramView.putExtra("key_from_pic_choose", true);
-    ArrayList localArrayList = new ArrayList();
-    localArrayList.add(paramAdapterView.path);
-    ((NewPhotoListActivity)this.mActivity).showProgressDialog();
-    g();
-    MediaScanner.getInstance(BaseApplicationImpl.getContext()).queryMediaInfoAsync(new airz(this, paramView, localArrayList), paramAdapterView);
-  }
-  
-  public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
-  {
-    int j = 0;
-    if (((paramInt1 == 10023) || (paramInt1 == 2)) && (paramInt2 == -1))
-    {
-      if ((this.mActivity != null) && (this.mActivity != null))
-      {
-        ((NewPhotoListActivity)this.mActivity).setResult(paramInt2, paramIntent);
-        ((NewPhotoListActivity)this.mActivity).finish();
-      }
-    }
-    else if (paramInt1 == 10023)
-    {
-      int i = j;
-      if (paramIntent != null)
-      {
-        i = j;
-        if (paramIntent.getBooleanExtra("key_edit_to_photo_list", false)) {
-          i = 1;
+        paramString = new Intent(this.a, QQBrowserActivity.class);
+        paramString.putExtra("hide_operation_bar", true);
+        paramString.putExtra("url", localWordItem.jumpUrl);
+        paramString.putExtra("articalChannelId", 14);
+        this.a.startActivity(paramString);
+        if (localWordItem != null)
+        {
+          paramString = "";
+          if (this.a.f != ClassificationSearchActivity.jdField_a_of_type_Int) {
+            break label333;
+          }
+          paramString = "kan";
         }
       }
-      if (i != 0) {
-        ((NewPhotoListActivity)this.mActivity).finish();
+      for (;;)
+      {
+        if (localWordItem.type != 2) {
+          break label352;
+        }
+        oat.a(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8006818", "0X8006818", 0, 0, localWordItem.word, localWordItem.jumpUrl, paramString, "");
+        return;
+        if (this.a.f == ClassificationSearchActivity.jdField_a_of_type_Int)
+        {
+          this.a.jdField_a_of_type_AndroidWidgetEditText.setText(paramString);
+          if (!TextUtils.isEmpty(paramString.trim()))
+          {
+            this.a.jdField_a_of_type_AndroidWidgetEditText.setSelection(this.a.jdField_a_of_type_AndroidWidgetEditText.getText().length());
+            ClassificationSearchActivity.a(this.a, paramString);
+          }
+        }
+        for (;;)
+        {
+          if ((this.a.f == ClassificationSearchActivity.d) || (TextUtils.isEmpty(paramString.trim()))) {
+            break label331;
+          }
+          this.a.a(paramString);
+          break;
+          if (this.a.f == ClassificationSearchActivity.d)
+          {
+            this.a.jdField_a_of_type_AndroidWidgetEditText.setText(paramString);
+            this.a.jdField_a_of_type_AndroidWidgetEditText.setSelection(paramString.length());
+            ClassificationSearchActivity.a(this.a, paramString);
+          }
+          else
+          {
+            this.a.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactSearchBaseFragment.a(paramString, false);
+          }
+        }
+        label331:
+        break;
+        label333:
+        if (this.a.f == ClassificationSearchActivity.d) {
+          paramString = "quan";
+        }
       }
+      label352:
+      oat.a(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8006818", "0X8006818", 0, 0, localWordItem.word, "0", paramString, "");
+      return;
+      localWordItem = null;
     }
-    super.onActivityResult(paramInt1, paramInt2, paramIntent);
   }
 }
 

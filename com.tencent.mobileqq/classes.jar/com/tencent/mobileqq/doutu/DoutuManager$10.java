@@ -1,23 +1,23 @@
 package com.tencent.mobileqq.doutu;
 
-import apjy;
-import awgf;
+import armt;
+import com.tencent.mobileqq.persistence.EntityManager;
 
 public class DoutuManager$10
   implements Runnable
 {
-  public DoutuManager$10(apjy paramapjy) {}
+  public DoutuManager$10(armt paramarmt) {}
   
   public void run()
   {
-    if (apjy.a(this.this$0) != null) {
-      apjy.a(this.this$0).a(DoutuData.class);
+    if (armt.a(this.this$0) != null) {
+      armt.a(this.this$0).drop(DoutuData.class);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.doutu.DoutuManager.10
  * JD-Core Version:    0.7.0.1
  */

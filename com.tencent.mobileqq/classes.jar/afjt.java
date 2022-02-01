@@ -1,6 +1,18 @@
-public abstract interface afjt
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.TroopInfoActivity;
+
+public class afjt
+  implements DialogInterface.OnClickListener
 {
-  public abstract boolean a(int paramInt);
+  public afjt(TroopInfoActivity paramTroopInfoActivity, boolean paramBoolean) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    if (this.jdField_a_of_type_Boolean) {
+      bcst.b(null, "dc00898", "", "", "qq_vip", "0X800A57F", 2, 0, "", "", "", "");
+    }
+  }
 }
 
 

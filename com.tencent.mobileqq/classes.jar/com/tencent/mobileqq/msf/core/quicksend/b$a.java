@@ -17,20 +17,20 @@ class b$a
   public void run()
   {
     if (this.b == null) {
-      QLog.d(b.b(this.a), 1, "req null, return.");
+      QLog.d("MSF.C.QuickSendManager", 1, "req null, return.");
     }
     for (;;)
     {
       return;
       try
       {
-        if ((b.c(this.a).quicksender != null) && (b.c(this.a).quicksender.b(this.b))) {
-          b.c(this.a).quicksender.f.b(this.b);
+        if ((b.b(this.a).quicksender != null) && (b.b(this.a).quicksender.b(this.b))) {
+          b.b(this.a).quicksender.f.b(this.b);
         }
         this.a.a(this.b);
         a locala = QuickSendStrategy.getStragegyArgs(this.b.getQuickSendStrategy());
         if ((com.tencent.mobileqq.msf.core.a.a.bp()) && (locala != null) && (locala.d)) {
-          this.a.c();
+          this.a.a(com.tencent.mobileqq.msf.core.a.a.G());
         }
         if ((!com.tencent.mobileqq.msf.core.a.a.aH()) || (!this.b.getServiceCmd().equals("MessageSvc.PbSendMsg"))) {
           continue;

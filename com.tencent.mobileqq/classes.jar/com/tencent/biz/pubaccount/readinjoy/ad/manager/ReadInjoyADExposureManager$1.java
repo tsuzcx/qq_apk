@@ -1,17 +1,17 @@
 package com.tencent.biz.pubaccount.readinjoy.ad.manager;
 
-import nnv;
-import ocq;
-import owy;
+import nwv;
+import ooi;
+import pmh;
 
 public class ReadInjoyADExposureManager$1
   implements Runnable
 {
-  public ReadInjoyADExposureManager$1(ocq paramocq, int paramInt, nnv paramnnv) {}
+  public ReadInjoyADExposureManager$1(ooi paramooi, int paramInt, nwv paramnwv) {}
   
   public void run()
   {
-    owy.a().a(this.jdField_a_of_type_Int, 4, 0, 10000, this.jdField_a_of_type_Nnv);
+    pmh.a().a(this.jdField_a_of_type_Int, 4, 0, 10000, this.jdField_a_of_type_Nwv);
   }
 }
 

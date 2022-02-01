@@ -1,22 +1,34 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.data.MessageForPic;
+import com.tencent.mobileqq.activity.VisitorsActivity;
+import com.tencent.mobileqq.utils.VipUtils;
+import com.tencent.qphone.base.util.QLog;
+import java.util.concurrent.atomic.AtomicBoolean;
 
-final class afrr
-  implements afug
+public class afrr
+  extends anun
 {
-  public int a(QQAppInterface paramQQAppInterface, ChatMessage paramChatMessage)
+  public afrr(VisitorsActivity paramVisitorsActivity) {}
+  
+  public void a()
   {
-    if (((MessageForPic)paramChatMessage).isMixed) {
-      return 24;
+    if (QLog.isColorLevel()) {
+      QLog.d("VisitorsActivity", 2, "onVipStatusChanged: ");
     }
-    if (alul.a(paramChatMessage)) {
-      return 42;
+    if ((this.a.app != null) && (VipUtils.b(this.a.app)))
+    {
+      this.a.a(true);
+      this.a.b(true);
+      if (VisitorsActivity.b(this.a).compareAndSet(true, false))
+      {
+        if (VisitorsActivity.a(this.a).get())
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d("VisitorsActivity", 2, "onVipStatusChanged: showDialog");
+          }
+          bglp.a(this.a, 232, null, anni.a(2131715488), null, anni.a(2131715485), new afrs(this), null).show();
+        }
+        this.a.removeObserver(VisitorsActivity.a(this.a));
+      }
     }
-    if (alse.a(paramChatMessage)) {
-      return 66;
-    }
-    return 1;
   }
 }
 

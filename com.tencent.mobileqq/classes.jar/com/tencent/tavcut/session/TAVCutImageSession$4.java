@@ -21,12 +21,12 @@ class TAVCutImageSession$4
     if (localTAVCutImageView != null) {
       ((StickerController)this.this$0.stickerControllers.get(this.val$index)).setStickerContainer(localTAVCutImageView);
     }
-    this.val$stickerController.restoreSticker(new ArrayList(((MediaModel)this.this$0.mediaModels.get(this.val$index)).getMediaEffectModel().getStickerModelList()));
+    this.val$finalStickerController.restoreSticker(new ArrayList(((MediaModel)this.this$0.mediaModels.get(this.val$index)).getMediaEffectModel().getStickerModelList()));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tavcut.session.TAVCutImageSession.4
  * JD-Core Version:    0.7.0.1
  */

@@ -1,131 +1,168 @@
-import android.app.Activity;
-import android.content.res.Resources;
-import android.os.Build.VERSION;
-import android.util.DisplayMetrics;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.FrameLayout.LayoutParams;
-import android.widget.ImageView;
-import android.widget.SeekBar;
-import android.widget.SeekBar.OnSeekBarChangeListener;
-import android.widget.TextView;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.filemanager.fileviewer.viewer.MusicFileViewer.1;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.earlydownload.xmldata.MiniScanDecodeSoData;
+import com.tencent.mobileqq.earlydownload.xmldata.MiniScanDetectModeData;
+import com.tencent.mobileqq.earlydownload.xmldata.XmlData;
 import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
 public class arof
-  extends arod
+  extends arnz
 {
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private SeekBar jdField_a_of_type_AndroidWidgetSeekBar;
-  private TextView d;
-  private TextView e;
-  private TextView f;
-  private TextView g;
-  private TextView h;
+  private int a;
+  private boolean d;
   
-  public arof(Activity paramActivity)
+  public arof(QQAppInterface paramQQAppInterface)
   {
-    super(paramActivity);
+    super("qq.android.minidetect.model_v8.2.0", paramQQAppInterface);
+  }
+  
+  public int a()
+  {
+    return 10085;
+  }
+  
+  public Class<? extends XmlData> a()
+  {
+    return MiniScanDetectModeData.class;
+  }
+  
+  public String a()
+  {
+    return "MiniScanDetectModeData";
   }
   
   public void a()
   {
-    QLog.i("FileBrowserViewBase", 4, "FileBrowserViewBase: MusicFileViewer initFileView");
-    if (this.jdField_a_of_type_AndroidViewView == null)
+    if (QLog.isColorLevel()) {
+      QLog.d("MiniRecog.MiniScanDetectModelsDownloadHandler", 2, "restoreState");
+    }
+    a().loadState = 0;
+    a().Version = 0;
+    arnn.a(a(), new String[0]);
+  }
+  
+  public void a(long paramLong1, long paramLong2)
+  {
+    super.a(paramLong1, paramLong2);
+    this.a = ((int)(100L * paramLong1 / paramLong2));
+    apdf.a(2, this.a);
+    if (QLog.isColorLevel()) {
+      QLog.d("MiniRecog.MiniScanDetectModelsDownloadHandler", 2, "download progress: " + this.a);
+    }
+  }
+  
+  public void a(XmlData paramXmlData, boolean paramBoolean, int paramInt, String paramString)
+  {
+    if (!paramBoolean)
     {
-      this.jdField_a_of_type_AndroidViewView = ((LayoutInflater)BaseApplicationImpl.getContext().getSystemService("layout_inflater")).inflate(2131560695, this.jdField_a_of_type_AndroidViewViewGroup, false);
-      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131370917));
-      this.d = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131371395));
-      this.g = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131366313));
-      this.jdField_a_of_type_AndroidWidgetSeekBar = ((SeekBar)this.jdField_a_of_type_AndroidViewView.findViewById(2131372109));
-      this.f = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131362548));
-      this.e = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131372217));
-      this.h = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131366309));
-      if (Build.VERSION.SDK_INT >= 21) {
-        this.jdField_a_of_type_AndroidWidgetSeekBar.setSplitTrack(false);
+      a();
+      apdf.a(2, false);
+    }
+    super.a(paramXmlData, paramBoolean, paramInt, paramString);
+    if (QLog.isColorLevel()) {
+      QLog.d("MiniRecog.MiniScanDetectModelsDownloadHandler", 2, "download finish: " + paramBoolean);
+    }
+  }
+  
+  public void a(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("MiniRecog.MiniScanDetectModelsDownloadHandler", 2, "download success: " + paramString);
+    }
+    if (apdi.a(paramString) != 0)
+    {
+      a();
+      apdf.a(2, false);
+    }
+    for (;;)
+    {
+      super.a(paramString);
+      return;
+      apdf.a(2, true);
+    }
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    Object localObject = a();
+    if ((paramBoolean) && ((localObject instanceof MiniScanDecodeSoData)))
+    {
+      localObject = (MiniScanDecodeSoData)localObject;
+      if (QLog.isColorLevel()) {
+        QLog.i("MiniRecog.MiniScanDetectModelsDownloadHandler", 2, String.format("restartDownload block_user_download=%b", new Object[] { Boolean.valueOf(((MiniScanDecodeSoData)localObject).block_user_download) }));
       }
+      if (!((MiniScanDecodeSoData)localObject).block_user_download) {}
+    }
+    do
+    {
+      return;
+      if (!this.d) {
+        this.d = paramBoolean;
+      }
+      super.a(paramBoolean);
+    } while (!QLog.isColorLevel());
+    QLog.d("MiniRecog.MiniScanDetectModelsDownloadHandler", 2, "restartDownload userClick=" + paramBoolean);
+  }
+  
+  public boolean a()
+  {
+    return true;
+  }
+  
+  public String b()
+  {
+    return "prd";
+  }
+  
+  public void b(XmlData paramXmlData)
+  {
+    super.b(paramXmlData);
+    if (QLog.isColorLevel()) {
+      QLog.d("MiniRecog.MiniScanDetectModelsDownloadHandler", 2, "download begin");
     }
   }
   
-  public void a(SeekBar.OnSeekBarChangeListener paramOnSeekBarChangeListener)
+  public boolean b()
   {
-    if (paramOnSeekBarChangeListener != null) {
-      this.jdField_a_of_type_AndroidWidgetSeekBar.setOnSeekBarChangeListener(paramOnSeekBarChangeListener);
+    if (this.d)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("MiniRecog.MiniScanDetectModelsDownloadHandler", 2, "isNetValid2Download by user ");
+      }
+      return true;
     }
-  }
-  
-  public void b(View.OnClickListener paramOnClickListener)
-  {
-    if (paramOnClickListener != null) {
-      this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(paramOnClickListener);
+    if (QLog.isColorLevel()) {
+      QLog.d("MiniRecog.MiniScanDetectModelsDownloadHandler", 2, "isNetValid2Download by startup ");
     }
+    return super.b();
   }
   
   public void c()
   {
-    if (alsf.a() > 17.0F)
+    boolean bool = atwl.a(new File(apdi.a()));
+    if (QLog.isColorLevel()) {
+      QLog.d("MiniRecog.MiniScanDetectModelsDownloadHandler", 2, "deleteUnZipFile ret: " + bool);
+    }
+  }
+  
+  public boolean e()
+  {
+    if (!this.d)
     {
-      float f1 = this.jdField_a_of_type_AndroidAppActivity.getResources().getDisplayMetrics().density;
-      FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams((int)(150.0F * f1), (int)(f1 * 150.0F));
-      this.jdField_a_of_type_AndroidWidgetImageView.setLayoutParams(localLayoutParams);
+      if (BaseActivity.mAppForground) {}
+      for (boolean bool = false;; bool = true)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("MiniRecog.MiniScanDetectModelsDownloadHandler", 2, "downloadResource later " + bool);
+        }
+        if (!bool) {
+          break;
+        }
+        return false;
+      }
     }
-  }
-  
-  public void c(int paramInt)
-  {
-    this.jdField_a_of_type_AndroidWidgetSeekBar.setProgress(paramInt);
-  }
-  
-  public void c(String paramString)
-  {
-    this.f.setText(paramString);
-  }
-  
-  public void c(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_AndroidWidgetSeekBar.setEnabled(paramBoolean);
-  }
-  
-  public void d(int paramInt)
-  {
-    if (paramInt > 0) {
-      this.jdField_a_of_type_AndroidWidgetSeekBar.setMax(paramInt);
-    }
-  }
-  
-  public void d(String paramString)
-  {
-    this.e.setText(paramString);
-  }
-  
-  public void d(boolean paramBoolean)
-  {
-    if (paramBoolean)
-    {
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130843929);
-      this.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(this.jdField_a_of_type_AndroidAppActivity.getString(2131691182));
-      return;
-    }
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130843930);
-    this.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(this.jdField_a_of_type_AndroidAppActivity.getString(2131691184));
-  }
-  
-  public void e(String paramString)
-  {
-    if (this.g.getMeasuredWidth() <= 0)
-    {
-      this.g.post(new MusicFileViewer.1(this, paramString));
-      return;
-    }
-    this.g.setText(arrr.a(paramString, false, this.g.getMeasuredWidth(), this.g.getPaint(), 2));
-  }
-  
-  public void f(String paramString)
-  {
-    this.h.setText(paramString);
+    return super.e();
   }
 }
 

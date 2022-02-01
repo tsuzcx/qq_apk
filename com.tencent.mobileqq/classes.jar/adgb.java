@@ -1,13 +1,25 @@
-import com.tencent.mobileqq.activity.Leba;
+import android.support.annotation.NonNull;
+import org.json.JSONObject;
 
 public class adgb
-  extends avvb
+  extends adee
 {
-  public adgb(Leba paramLeba) {}
-  
-  protected void a(Object paramObject)
+  public boolean a(int paramInt, String paramString, JSONObject paramJSONObject, @NonNull adea paramadea)
   {
-    Leba.c(this.a);
+    switch (paramInt)
+    {
+    default: 
+      return false;
+    case 31: 
+      adhh.a(paramadea, null);
+    }
+    for (;;)
+    {
+      return true;
+      adhh.a(paramadea, null);
+      continue;
+      adhh.a(paramadea, null);
+    }
   }
 }
 

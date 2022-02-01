@@ -472,6 +472,12 @@ public class NowLive
     killPluginProcess();
   }
   
+  public static void updateFreeFlow(boolean paramBoolean)
+  {
+    setFreeFlow(paramBoolean);
+    sEntry.updateFreeFlow(paramBoolean);
+  }
+  
   public static void updateLoginData(LoginData paramLoginData)
   {
     sEntry.updateLoginData(paramLoginData, false);
@@ -484,7 +490,7 @@ public class NowLive
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.intervideo.nowproxy.NowLive
  * JD-Core Version:    0.7.0.1
  */

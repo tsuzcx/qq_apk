@@ -1,21 +1,22 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.richstatus.RichStatus;
-import com.tencent.mobileqq.richstatus.SignTextEditFragment;
+import android.app.PendingIntent;
+import kotlin.Metadata;
+import kotlin.jvm.internal.Intrinsics;
+import org.jetbrains.annotations.NotNull;
 
-public class aycf
-  implements DialogInterface.OnClickListener
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/notification/modularize/business/FallbackJumpScheme;", "Lcom/tencent/mobileqq/notification/modularize/BaseJumpScheme;", "()V", "customJumpIntent", "Landroid/app/PendingIntent;", "pushComponent", "Lcom/tencent/mobileqq/notification/modularize/PushComponent;", "needCustomJump", "", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class aycf
+  extends aybw
 {
-  public aycf(SignTextEditFragment paramSignTextEditFragment) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  @NotNull
+  protected PendingIntent a(@NotNull ayca paramayca)
   {
-    paramDialogInterface.dismiss();
-    paramDialogInterface = new RichStatus(null);
-    paramDialogInterface.copyFrom(this.a.a);
-    this.a.b.obtainMessage(6, paramDialogInterface).sendToTarget();
+    Intrinsics.checkParameterIsNotNull(paramayca, "pushComponent");
+    return c(paramayca);
+  }
+  
+  protected boolean a()
+  {
+    return true;
   }
 }
 

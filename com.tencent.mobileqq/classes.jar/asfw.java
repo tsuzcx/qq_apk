@@ -1,23 +1,23 @@
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.widget.TextView;
-import com.tencent.mobileqq.fragment.MsgBackupSettingFragment;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnKeyListener;
+import android.view.KeyEvent;
+import com.tencent.mobileqq.app.BaseActivity;
 
-public class asfw
-  implements TextWatcher
+final class asfw
+  implements DialogInterface.OnKeyListener
 {
-  public asfw(MsgBackupSettingFragment paramMsgBackupSettingFragment, TextView paramTextView1, TextView paramTextView2) {}
+  asfw(BaseActivity paramBaseActivity) {}
   
-  public void afterTextChanged(Editable paramEditable)
+  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
   {
-    paramEditable = paramEditable.toString();
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(String.format(MsgBackupSettingFragment.a(this.jdField_a_of_type_ComTencentMobileqqFragmentMsgBackupSettingFragment), new Object[] { paramEditable }));
-    this.b.setText(String.format(MsgBackupSettingFragment.b(this.jdField_a_of_type_ComTencentMobileqqFragmentMsgBackupSettingFragment), new Object[] { paramEditable }));
+    if (paramInt == 4)
+    {
+      paramDialogInterface.dismiss();
+      this.a.finish();
+      return true;
+    }
+    return false;
   }
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

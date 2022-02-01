@@ -1,58 +1,140 @@
-import com.tencent.open.downloadnew.DownloadInfo;
-import com.tencent.open.export.js.VipDownloadInterface;
-import java.util.List;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.content.Context;
+import android.content.Intent;
+import android.content.res.Resources;
+import android.text.TextUtils;
+import android.text.style.ClickableSpan;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.widget.TextView;
+import com.etrump.mixlayout.ETTextView;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.troop.utils.SchoolTroopKeywordManager.SchoolTroopHighlightSpan.1;
+import com.tencent.qphone.base.util.QLog;
+import java.text.MessageFormat;
 
 public class bfqe
-  implements bfor
+  extends ClickableSpan
+  implements bkhw
 {
-  public bfqe(VipDownloadInterface paramVipDownloadInterface, String paramString) {}
+  private final Context jdField_a_of_type_AndroidContentContext;
+  private final bfqd jdField_a_of_type_Bfqd;
+  private bkho jdField_a_of_type_Bkho;
+  private final QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   
-  public void a(int paramInt, String paramString)
+  public bfqe(QQAppInterface paramQQAppInterface, Context paramContext, bfqd parambfqd)
   {
-    bflp.e(this.jdField_a_of_type_ComTencentOpenExportJsVipDownloadInterface.jdField_a_of_type_JavaLangString, "getQueryDownloadAction ERROR");
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_Bfqd = parambfqd;
+    a("Grp_edu", "", "Grp_AIO", "GuideWords_Show", 0, 0);
   }
   
-  public void a(List<DownloadInfo> paramList)
+  private void a()
   {
-    bflp.c(this.jdField_a_of_type_ComTencentOpenExportJsVipDownloadInterface.jdField_a_of_type_JavaLangString, "getQueryDownloadAction onResult = " + paramList.size());
-    JSONArray localJSONArray = new JSONArray();
-    int j = paramList.size();
-    int i = 0;
+    if ((this.jdField_a_of_type_Bkho != null) && (this.jdField_a_of_type_Bkho.isShowing())) {
+      this.jdField_a_of_type_Bkho.dismiss();
+    }
+    this.jdField_a_of_type_Bkho = ((bkho)bkif.a(this.jdField_a_of_type_AndroidContentContext, null));
+    Object localObject2 = this.jdField_a_of_type_Bfqd.b();
+    Object localObject1 = localObject2;
+    if (((String)localObject2).length() > 10) {
+      localObject1 = ((String)localObject2).substring(0, 5) + "…" + ((String)localObject2).substring(((String)localObject2).length() - 5, ((String)localObject2).length());
+    }
+    localObject1 = MessageFormat.format(bfqc.a()[this.jdField_a_of_type_Bfqd.jdField_b_of_type_Int], new Object[] { localObject1 });
+    localObject2 = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131558440, null);
+    ((View)localObject2).setBackgroundDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130837572));
+    ((View)localObject2).setOnClickListener(new bfqf(this));
+    TextView localTextView = (TextView)((View)localObject2).findViewById(2131361984);
+    localTextView.setVisibility(0);
+    localTextView.setText((CharSequence)localObject1);
+    localTextView.setContentDescription((CharSequence)localObject1);
+    localTextView.setGravity(17);
+    localTextView.setPadding(zlx.a(this.jdField_a_of_type_AndroidContentContext, 10.0F), 0, zlx.a(this.jdField_a_of_type_AndroidContentContext, 10.0F), 0);
+    this.jdField_a_of_type_Bkho.b((View)localObject2);
+    this.jdField_a_of_type_Bkho.c(bfqc.b()[this.jdField_a_of_type_Bfqd.jdField_b_of_type_Int]);
+    this.jdField_a_of_type_Bkho.d(anni.a(2131712339));
+    this.jdField_a_of_type_Bkho.a(this);
+    this.jdField_a_of_type_Bkho.show();
+  }
+  
+  private void a(String paramString1, String paramString2, String paramString3, String paramString4, int paramInt1, int paramInt2)
+  {
+    ThreadManager.excute(new SchoolTroopKeywordManager.SchoolTroopHighlightSpan.1(this, paramString1, paramString2, paramString3, paramString4, paramInt1, paramInt2), 32, null, true);
+  }
+  
+  public void OnClick(View paramView, int paramInt)
+  {
+    Object localObject;
+    bfti localbfti;
+    if (paramInt == 0)
+    {
+      localObject = null;
+      localbfti = bfti.a();
+      if (this.jdField_a_of_type_Bfqd.jdField_b_of_type_Int != 1) {
+        break label201;
+      }
+      paramView = localbfti.a("troop_homework_create_notice");
+    }
     for (;;)
     {
-      if (i < j)
+      if (!TextUtils.isEmpty(paramView))
       {
-        JSONObject localJSONObject = new JSONObject();
-        DownloadInfo localDownloadInfo = (DownloadInfo)paramList.get(i);
-        try
-        {
-          localJSONObject.put("appid", localDownloadInfo.jdField_c_of_type_JavaLangString);
-          localJSONObject.put("pro", localDownloadInfo.f);
-          localJSONObject.put("state", localDownloadInfo.a());
-          localJSONObject.put("ismyapp", localDownloadInfo.jdField_c_of_type_Int);
-          localJSONArray.put(localJSONObject);
-          i += 1;
+        localObject = new bftj();
+        ((bftj)localObject).a = this.jdField_a_of_type_Bfqd.a;
+        ((bftj)localObject).c = "aio_keyword";
+        ((bftj)localObject).h = this.jdField_a_of_type_Bfqd.jdField_b_of_type_JavaLangString;
+        ((bftj)localObject).i = this.jdField_a_of_type_Bfqd.b();
+        paramView = localbfti.a(paramView, (bftj)localObject);
+        if (QLog.isDevelopLevel()) {
+          QLog.i(bfqc.a, 2, "do action '" + this.jdField_a_of_type_Bfqd.jdField_b_of_type_Int + "', open url: " + paramView);
         }
-        catch (JSONException localJSONException)
+        localObject = new Intent(this.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
+        ((Intent)localObject).putExtra("url", paramView);
+        this.jdField_a_of_type_AndroidContentContext.startActivity((Intent)localObject);
+      }
+      a("Grp_edu", "", "Grp_AIO", "GuideActionsheet_Clk", 0, 0);
+      if (this.jdField_a_of_type_Bkho != null) {
+        this.jdField_a_of_type_Bkho.dismiss();
+      }
+      return;
+      label201:
+      if (this.jdField_a_of_type_Bfqd.jdField_b_of_type_Int == 2)
+      {
+        paramView = localbfti.a("troop_create_homework");
+      }
+      else
+      {
+        paramView = (View)localObject;
+        if (QLog.isColorLevel())
         {
-          for (;;)
-          {
-            localJSONException.printStackTrace();
-          }
+          QLog.e(bfqc.a, 2, "I don't know this action '" + this.jdField_a_of_type_Bfqd.jdField_b_of_type_Int + "'");
+          paramView = (View)localObject;
         }
       }
     }
-    paramList = "javascript:if (typeof(QzoneApp) === 'object' && typeof(QzoneApp.fire) === 'function') { QzoneApp.fire('interface.getQueryDownloadAction',{\"guid\": " + this.jdField_a_of_type_JavaLangString + ", \"r\" : 0, \"data\":" + localJSONArray.toString() + "});}void(0);";
-    bflp.c(this.jdField_a_of_type_ComTencentOpenExportJsVipDownloadInterface.jdField_a_of_type_JavaLangString, "querySucess : " + paramList);
-    this.jdField_a_of_type_ComTencentOpenExportJsVipDownloadInterface.a(paramList);
+  }
+  
+  public void onClick(View paramView)
+  {
+    if (bgkw.a)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e(bfqc.a, 2, "SchoolTroopHighlightSpan onCLick is invoked by LongClick misstake");
+      }
+      return;
+    }
+    if ((paramView instanceof ETTextView)) {
+      ((ETTextView)paramView).mHasClickedArkSpan = true;
+    }
+    a();
+    a("Grp_edu", "", "Grp_AIO", "GuideWords_Clk", 0, 0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bfqe
  * JD-Core Version:    0.7.0.1
  */

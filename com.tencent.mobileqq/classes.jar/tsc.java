@@ -1,101 +1,25 @@
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.ViewStub;
-import android.widget.FrameLayout;
-import android.widget.FrameLayout.LayoutParams;
-import android.widget.ImageView;
-import com.tencent.biz.qqcircle.widgets.QCircleCertifiedDialogView;
+import android.app.Activity;
+import com.tencent.biz.pubaccount.readinjoy.viola.videonew.VVideoView;
+import com.tencent.viola.core.ViolaInstance;
 
 public class tsc
-  extends tvv
+  extends trr
+  implements trk
 {
-  private ViewStub jdField_a_of_type_AndroidViewViewStub;
-  private FrameLayout jdField_a_of_type_AndroidWidgetFrameLayout;
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private QCircleCertifiedDialogView jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleCertifiedDialogView;
-  private tsa jdField_a_of_type_Tsa;
-  private boolean jdField_a_of_type_Boolean;
-  
-  private void a()
+  public tsc(Activity paramActivity, trf paramtrf, VVideoView paramVVideoView, ViolaInstance paramViolaInstance)
   {
-    if (this.jdField_a_of_type_AndroidWidgetFrameLayout != null)
-    {
-      this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(new tsd(this));
-      if (this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleCertifiedDialogView != null) {
-        break label98;
-      }
-      this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleCertifiedDialogView = new QCircleCertifiedDialogView(a());
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleCertifiedDialogView.setCertifiedListener(new tse(this));
-      FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(-2, -2);
-      localLayoutParams.gravity = 17;
-      this.jdField_a_of_type_AndroidWidgetFrameLayout.addView(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleCertifiedDialogView, localLayoutParams);
-      this.jdField_a_of_type_AndroidWidgetFrameLayout.setVisibility(0);
-      return;
-      label98:
-      if (this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleCertifiedDialogView.getParent() != null) {
-        ((ViewGroup)this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleCertifiedDialogView.getParent()).removeView(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleCertifiedDialogView);
-      }
-    }
+    super(paramActivity, paramtrf, paramVVideoView, paramViolaInstance);
   }
   
-  private void a(String paramString)
-  {
-    tqs.a(a(), paramString);
-    if (this.jdField_a_of_type_Boolean) {
-      b();
-    }
-  }
+  public void I_() {}
   
-  private void b()
-  {
-    if ((this.jdField_a_of_type_AndroidWidgetFrameLayout != null) && (this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleCertifiedDialogView != null))
-    {
-      this.jdField_a_of_type_AndroidWidgetFrameLayout.removeView(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleCertifiedDialogView);
-      this.jdField_a_of_type_AndroidWidgetFrameLayout.setVisibility(8);
-    }
-  }
+  public void J_() {}
   
-  public String a()
-  {
-    return "QCircleCertifiedPart";
-  }
-  
-  protected void a(View paramView)
-  {
-    super.a(paramView);
-    this.jdField_a_of_type_AndroidViewViewStub = ((ViewStub)paramView.findViewById(2131373150));
-    if (this.jdField_a_of_type_AndroidViewViewStub != null)
-    {
-      paramView = this.jdField_a_of_type_AndroidViewViewStub.inflate();
-      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131373162));
-      this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)paramView.findViewById(2131373161));
-      this.jdField_a_of_type_AndroidWidgetFrameLayout.setVisibility(8);
-    }
-  }
-  
-  public void a(String paramString, Object paramObject)
-  {
-    super.a(paramString, paramObject);
-    if ("tag_cetrified_part_show".equals(paramString)) {
-      a();
-    }
-    while (!"tag_cetrified_part_show_gone".equals(paramString)) {
-      return;
-    }
-    b();
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
+  public void K_() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     tsc
  * JD-Core Version:    0.7.0.1
  */

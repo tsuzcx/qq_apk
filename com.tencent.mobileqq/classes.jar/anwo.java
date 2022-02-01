@@ -1,509 +1,404 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.NinePatch;
-import android.graphics.Rect;
-import android.graphics.drawable.Drawable;
-import android.graphics.drawable.Drawable.ConstantState;
-import android.graphics.drawable.StateListDrawable;
-import android.support.v4.util.MQLruCache;
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.MeasureSpec;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.bubble.BubbleManager;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.os.Bundle;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.util.Pair;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
+import tencent.im.oidb.cmd0xb36.oidb_cmd0xb36.ReqBody;
+import tencent.im.oidb.oidb_sso.OIDBSSOPkg;
 
 public class anwo
 {
-  public double a;
-  public int a;
-  public NinePatch a;
-  public anwp a;
-  @Deprecated
-  public anxu a;
-  public String a;
-  public HashMap<String, anxt> a;
-  public List<Pair<anwp, anwp>> a;
-  public boolean a;
-  public String[] a;
-  public int b;
-  public NinePatch b;
-  public anwp b;
-  public String b;
-  public HashMap<String, String> b;
-  List<View> b;
-  public boolean b;
-  public String[] b;
-  public int c;
-  public String c;
-  List<View> c;
-  public int d;
-  public String d;
-  public int e;
-  public String e;
-  public int f;
-  public String f;
-  private int g;
-  private int h;
+  public static String a;
   
-  public anwo(int paramInt)
+  static
   {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_b_of_type_JavaLangString = "";
-    this.jdField_c_of_type_JavaLangString = "";
-    this.jdField_d_of_type_JavaLangString = "";
-    this.jdField_e_of_type_JavaLangString = "";
-    this.jdField_a_of_type_JavaUtilHashMap = new HashMap(4);
-    this.jdField_b_of_type_JavaUtilList = new ArrayList();
-    this.jdField_c_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_Int = paramInt;
+    jdField_a_of_type_JavaLangString = "OidbSvc.0xb36_1";
   }
   
-  public anwo(int paramInt1, int paramInt2, int paramInt3)
+  /* Error */
+  public static void a(anwd paramanwd, ToServiceMsg paramToServiceMsg, com.tencent.qphone.base.remote.FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_b_of_type_JavaLangString = "";
-    this.jdField_c_of_type_JavaLangString = "";
-    this.jdField_d_of_type_JavaLangString = "";
-    this.jdField_e_of_type_JavaLangString = "";
-    this.jdField_a_of_type_JavaUtilHashMap = new HashMap(4);
-    this.jdField_b_of_type_JavaUtilList = new ArrayList();
-    this.jdField_c_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_Int = paramInt1;
-    this.g = paramInt2;
-    this.h = paramInt3;
+    // Byte code:
+    //   0: aload_1
+    //   1: getfield 22	com/tencent/qphone/base/remote/ToServiceMsg:extraData	Landroid/os/Bundle;
+    //   4: ldc 24
+    //   6: invokevirtual 30	android/os/Bundle:getString	(Ljava/lang/String;)Ljava/lang/String;
+    //   9: astore_1
+    //   10: invokestatic 36	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   13: ifeq +28 -> 41
+    //   16: ldc 38
+    //   18: iconst_2
+    //   19: new 40	java/lang/StringBuilder
+    //   22: dup
+    //   23: invokespecial 43	java/lang/StringBuilder:<init>	()V
+    //   26: ldc 45
+    //   28: invokevirtual 49	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   31: aload_1
+    //   32: invokevirtual 49	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   35: invokevirtual 53	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   38: invokestatic 57	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   41: aload_2
+    //   42: invokevirtual 62	com/tencent/qphone/base/remote/FromServiceMsg:isSuccess	()Z
+    //   45: ifne +47 -> 92
+    //   48: ldc 38
+    //   50: iconst_1
+    //   51: iconst_3
+    //   52: anewarray 4	java/lang/Object
+    //   55: dup
+    //   56: iconst_0
+    //   57: ldc 64
+    //   59: aastore
+    //   60: dup
+    //   61: iconst_1
+    //   62: aload_2
+    //   63: invokevirtual 67	com/tencent/qphone/base/remote/FromServiceMsg:getBusinessFailMsg	()Ljava/lang/String;
+    //   66: aastore
+    //   67: dup
+    //   68: iconst_2
+    //   69: aload_2
+    //   70: invokevirtual 68	com/tencent/qphone/base/remote/FromServiceMsg:toString	()Ljava/lang/String;
+    //   73: aastore
+    //   74: invokestatic 72	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;I[Ljava/lang/Object;)V
+    //   77: aload_0
+    //   78: iconst_1
+    //   79: iconst_0
+    //   80: iconst_1
+    //   81: anewarray 4	java/lang/Object
+    //   84: dup
+    //   85: iconst_0
+    //   86: aload_1
+    //   87: aastore
+    //   88: invokevirtual 78	anwd:notifyUI	(IZLjava/lang/Object;)V
+    //   91: return
+    //   92: new 80	tencent/im/oidb/oidb_sso$OIDBSSOPkg
+    //   95: dup
+    //   96: invokespecial 81	tencent/im/oidb/oidb_sso$OIDBSSOPkg:<init>	()V
+    //   99: astore_2
+    //   100: aload_2
+    //   101: aload_3
+    //   102: checkcast 83	[B
+    //   105: checkcast 83	[B
+    //   108: invokevirtual 87	tencent/im/oidb/oidb_sso$OIDBSSOPkg:mergeFrom	([B)Lcom/tencent/mobileqq/pb/MessageMicro;
+    //   111: checkcast 80	tencent/im/oidb/oidb_sso$OIDBSSOPkg
+    //   114: astore_2
+    //   115: new 89	tencent/im/oidb/cmd0xb36/oidb_cmd0xb36$RspBody
+    //   118: dup
+    //   119: invokespecial 90	tencent/im/oidb/cmd0xb36/oidb_cmd0xb36$RspBody:<init>	()V
+    //   122: astore_3
+    //   123: aload_3
+    //   124: aload_2
+    //   125: getfield 94	tencent/im/oidb/oidb_sso$OIDBSSOPkg:bytes_bodybuffer	Lcom/tencent/mobileqq/pb/PBBytesField;
+    //   128: invokevirtual 100	com/tencent/mobileqq/pb/PBBytesField:get	()Lcom/tencent/mobileqq/pb/ByteStringMicro;
+    //   131: invokevirtual 106	com/tencent/mobileqq/pb/ByteStringMicro:toByteArray	()[B
+    //   134: invokevirtual 107	tencent/im/oidb/cmd0xb36/oidb_cmd0xb36$RspBody:mergeFrom	([B)Lcom/tencent/mobileqq/pb/MessageMicro;
+    //   137: pop
+    //   138: aload_0
+    //   139: getfield 111	anwd:app	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   142: bipush 52
+    //   144: invokevirtual 117	com/tencent/mobileqq/app/QQAppInterface:getManager	(I)Lmqq/manager/Manager;
+    //   147: checkcast 119	com/tencent/mobileqq/app/TroopManager
+    //   150: aload_3
+    //   151: invokevirtual 122	com/tencent/mobileqq/app/TroopManager:a	(Ltencent/im/oidb/cmd0xb36/oidb_cmd0xb36$RspBody;)V
+    //   154: aload_0
+    //   155: iconst_1
+    //   156: iconst_1
+    //   157: iconst_1
+    //   158: anewarray 4	java/lang/Object
+    //   161: dup
+    //   162: iconst_0
+    //   163: aload_1
+    //   164: aastore
+    //   165: invokevirtual 78	anwd:notifyUI	(IZLjava/lang/Object;)V
+    //   168: return
+    //   169: astore_2
+    //   170: ldc 38
+    //   172: iconst_1
+    //   173: ldc 124
+    //   175: aload_2
+    //   176: invokestatic 127	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   179: aload_0
+    //   180: iconst_1
+    //   181: iconst_0
+    //   182: iconst_1
+    //   183: anewarray 4	java/lang/Object
+    //   186: dup
+    //   187: iconst_0
+    //   188: aload_1
+    //   189: aastore
+    //   190: invokevirtual 78	anwd:notifyUI	(IZLjava/lang/Object;)V
+    //   193: return
+    //   194: astore_2
+    //   195: invokestatic 36	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   198: ifeq -44 -> 154
+    //   201: ldc 38
+    //   203: iconst_2
+    //   204: ldc 129
+    //   206: aload_2
+    //   207: invokestatic 131	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   210: goto -56 -> 154
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	213	0	paramanwd	anwd
+    //   0	213	1	paramToServiceMsg	ToServiceMsg
+    //   0	213	2	paramFromServiceMsg	com.tencent.qphone.base.remote.FromServiceMsg
+    //   0	213	3	paramObject	Object
+    // Exception table:
+    //   from	to	target	type
+    //   100	115	169	java/lang/Exception
+    //   123	154	194	java/lang/Exception
   }
   
-  public anwo(int paramInt1, String paramString1, String paramString2, String paramString3, String paramString4, anxu paramanxu, int paramInt2, int paramInt3, int paramInt4, boolean paramBoolean1, boolean paramBoolean2, double paramDouble, String[] paramArrayOfString, anwp paramanwp1, int paramInt5, int paramInt6, anwp paramanwp2, List<Pair<anwp, anwp>> paramList, HashMap<String, String> paramHashMap)
-  {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_b_of_type_JavaLangString = "";
-    this.jdField_c_of_type_JavaLangString = "";
-    this.jdField_d_of_type_JavaLangString = "";
-    this.jdField_e_of_type_JavaLangString = "";
-    this.jdField_a_of_type_JavaUtilHashMap = new HashMap(4);
-    this.jdField_b_of_type_JavaUtilList = new ArrayList();
-    this.jdField_c_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_d_of_type_JavaLangString = paramString3;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    this.jdField_e_of_type_JavaLangString = paramString4;
-    this.jdField_a_of_type_Anxu = paramanxu;
-    this.jdField_b_of_type_Int = paramInt2;
-    this.jdField_c_of_type_Int = paramInt3;
-    this.jdField_d_of_type_Int = paramInt4;
-    this.jdField_a_of_type_Boolean = paramBoolean1;
-    this.jdField_b_of_type_Boolean = paramBoolean2;
-    this.jdField_a_of_type_Double = paramDouble;
-    this.jdField_e_of_type_Int = paramInt5;
-    this.jdField_f_of_type_Int = paramInt6;
-    this.jdField_b_of_type_ArrayOfJavaLangString = paramArrayOfString;
-    paramString1 = paramList;
-    if (paramList == null) {
-      paramString1 = new ArrayList();
-    }
-    this.jdField_a_of_type_JavaUtilList = paramString1;
-    this.jdField_a_of_type_Anwp = paramanwp1;
-    this.jdField_b_of_type_Anwp = paramanwp2;
-    paramString1 = paramHashMap;
-    if (paramHashMap == null) {
-      paramString1 = new HashMap();
-    }
-    this.jdField_b_of_type_JavaUtilHashMap = paramString1;
-  }
-  
-  private Drawable a(Context paramContext, int paramInt1, boolean paramBoolean1, boolean paramBoolean2, int paramInt2, int paramInt3)
-  {
-    StringBuffer localStringBuffer = new StringBuffer();
-    localStringBuffer.append("bubbleinfo_").append(paramInt1).append("_bg_").append(paramBoolean1).append("_").append(paramBoolean2);
-    Object localObject = (Pair)BaseApplicationImpl.sImageCache.get(localStringBuffer.toString());
-    if ((localObject != null) && (((Pair)localObject).first != null)) {
-      paramContext = ((Drawable.ConstantState)((Pair)localObject).first).newDrawable(paramContext.getResources());
-    }
-    do
-    {
-      return paramContext;
-      Drawable localDrawable = paramContext.getResources().getDrawable(paramInt2);
-      paramContext = paramContext.getResources().getDrawable(paramInt3);
-      localObject = new StateListDrawable();
-      if (localDrawable != null) {
-        ((StateListDrawable)localObject).addState(new int[] { 16842919, 16842910 }, localDrawable);
-      }
-      if (paramContext != null)
-      {
-        ((StateListDrawable)localObject).addState(new int[] { 16842910 }, paramContext);
-        ((StateListDrawable)localObject).addState(new int[] { -16842910 }, paramContext);
-      }
-      paramInt1 = bdeb.a(localDrawable) + bdeb.a(paramContext);
-      paramContext = (Context)localObject;
-    } while (paramInt1 <= 0);
-    BaseApplicationImpl.sImageCache.put(localStringBuffer.toString(), new Pair(((StateListDrawable)localObject).getConstantState(), Integer.valueOf(paramInt1)));
-    return localObject;
-  }
-  
-  private Pair<anwp, anwp> a(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {
-      return null;
-    }
-    Pair localPair;
-    if (this.jdField_a_of_type_JavaUtilList != null)
-    {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-      do
-      {
-        if (!localIterator.hasNext()) {
-          break;
-        }
-        localPair = (Pair)localIterator.next();
-      } while (!paramString.equals(((anwp)localPair.first).jdField_b_of_type_JavaLangString));
-    }
-    for (paramString = localPair;; paramString = null) {
-      return paramString;
-    }
-  }
-  
-  public Drawable a(QQAppInterface paramQQAppInterface, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, View paramView, String paramString, int paramInt)
+  public static void a(anwd paramanwd, String paramString, int paramInt)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("BubbleInfo", 2, "getBubbleDrawable, bubbleId=" + this.jdField_a_of_type_Int + ", isUser=" + paramBoolean1 + ", needVipBubble=" + paramBoolean2 + ", useAnimationBg=" + paramBoolean3 + ", senderUin=" + paramString);
+      QLog.d(".troop.survey", 2, "send_oidb_0xb36, troopUin = " + paramString);
     }
-    Object localObject2 = null;
-    Object localObject1 = localObject2;
-    boolean bool;
-    if (paramBoolean2)
+    Object localObject = new oidb_cmd0xb36.ReqBody();
+    try
     {
-      if ((TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) || (TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString))) {
-        break label650;
-      }
-      localObject2 = new anyh(paramQQAppInterface.getApp().getResources(), this.jdField_a_of_type_AndroidGraphicsNinePatch, this.jdField_b_of_type_AndroidGraphicsNinePatch, this.jdField_a_of_type_Int);
-      if (paramBoolean1) {
-        break label644;
-      }
-      bool = true;
-      ((anyh)localObject2).a(bool, paramBoolean3);
-      if (QLog.isColorLevel()) {
-        QLog.d("BubbleInfo", 2, "getBubbleDrawable, bubbleId=" + this.jdField_a_of_type_Int + ", vipBubbleDrawable=" + localObject2);
-      }
-      localObject1 = localObject2;
-      if (!BubbleManager.jdField_a_of_type_Boolean)
-      {
-        localObject1 = localObject2;
-        if (this.jdField_a_of_type_Int != 0)
-        {
-          BubbleManager.jdField_a_of_type_Boolean = true;
-          localObject1 = localObject2;
-        }
-      }
-    }
-    label221:
-    label235:
-    Object localObject3;
-    if (localObject1 == null) {
-      if (paramBoolean1)
-      {
-        localObject2 = "bubblebg://default_mine";
-        if (BaseApplicationImpl.sImageCache == null) {
-          break label860;
-        }
-        localObject3 = (Drawable.ConstantState)BaseApplicationImpl.sImageCache.get(localObject2);
-        if (localObject3 == null) {
-          break label860;
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d("BubbleInfo", 2, "getBubbleDrawable, get Default from imageCache, key=" + (String)localObject2 + ", bubbleId=" + this.jdField_a_of_type_Int);
-        }
-        localObject1 = ((Drawable.ConstantState)localObject3).newDrawable();
-      }
-    }
-    label339:
-    label728:
-    label860:
-    for (;;)
-    {
-      localObject2 = localObject1;
-      int i;
-      if (localObject1 == null)
-      {
-        localObject2 = paramQQAppInterface.getApp().getResources();
-        if (!paramBoolean1) {
-          break label720;
-        }
-        i = 2130849439;
-        localObject1 = ((Resources)localObject2).getDrawable(i);
-        if (!paramBoolean1) {
-          break label728;
-        }
-        i = 2130849438;
-        label357:
-        localObject2 = ((Resources)localObject2).getDrawable(i);
-        localObject3 = new StateListDrawable();
-        ((StateListDrawable)localObject3).addState(new int[] { 16842919 }, (Drawable)localObject1);
-        ((StateListDrawable)localObject3).addState(new int[] { 16842910 }, (Drawable)localObject2);
-        localObject2 = localObject3;
-        if (BaseApplicationImpl.sImageCache != null)
-        {
-          if (!paramBoolean1) {
-            break label736;
-          }
-          localObject1 = "bubblebg://default_mine";
-          if (QLog.isColorLevel()) {
-            QLog.d("BubbleInfo", 2, "getBubbleDrawable, put default bubble to imageCache, key=" + (String)localObject1 + ", bubbleId=" + this.jdField_a_of_type_Int);
-          }
-          BaseApplicationImpl.sImageCache.put(localObject1, ((StateListDrawable)localObject3).getConstantState());
-          localObject2 = localObject3;
-        }
-      }
-      int j;
-      if (((localObject2 instanceof anyh)) && (!TextUtils.isEmpty(this.jdField_e_of_type_JavaLangString)))
-      {
-        if ((this.jdField_a_of_type_Anxu == null) || (paramView == null)) {
-          break label832;
-        }
-        j = paramView.getWidth();
-        if (this.jdField_a_of_type_Anxu.jdField_c_of_type_Int == 0) {
-          ((anyh)localObject2).a(true, this.jdField_e_of_type_JavaLangString, this.jdField_a_of_type_Anxu.jdField_a_of_type_ArrayOfInt, this.jdField_a_of_type_Anxu.jdField_a_of_type_JavaLangString);
-        }
-      }
-      else if (((localObject2 instanceof anyh)) && (paramBoolean2) && (!paramBoolean3) && (paramInt > 0))
-      {
-        paramString = paramString + "_" + paramInt;
-        localObject1 = (anyh)localObject2;
-        if (paramBoolean1) {
-          break label855;
-        }
-      }
-      for (paramBoolean1 = true;; paramBoolean1 = false)
-      {
-        ((anyh)localObject1).a(paramQQAppInterface, paramString, paramBoolean1);
-        a(paramView, (Drawable)localObject2);
-        return localObject2;
-        bool = false;
-        break;
-        if (this.jdField_a_of_type_Int != 100000)
-        {
-          localObject1 = localObject2;
-          if (this.jdField_a_of_type_Int != 100001) {
-            break label221;
-          }
-        }
-        if (paramBoolean1) {}
-        for (localObject1 = null;; localObject1 = a(paramQQAppInterface.getApp(), this.jdField_a_of_type_Int, paramBoolean1, paramBoolean3, this.g, this.h)) {
-          break;
-        }
-        localObject2 = "bubblebg://default_friend";
-        break label235;
-        i = 2130849263;
-        break label339;
-        i = 2130849262;
-        break label357;
-        label736:
-        localObject1 = "bubblebg://default_friend";
-        break label424;
-        i = j;
-        if (j == 0)
-        {
-          paramView.measure(View.MeasureSpec.makeMeasureSpec(0, 0), View.MeasureSpec.makeMeasureSpec(0, 0));
-          i = paramView.getMeasuredWidth();
-        }
-        if (i > this.jdField_a_of_type_Anxu.jdField_c_of_type_Int)
-        {
-          ((anyh)localObject2).a(true, this.jdField_e_of_type_JavaLangString, this.jdField_a_of_type_Anxu.jdField_a_of_type_ArrayOfInt, this.jdField_a_of_type_Anxu.jdField_a_of_type_JavaLangString);
-          break label562;
-        }
-        ((anyh)localObject2).a(false, null, null, null);
-        break label562;
-        if (!(localObject2 instanceof anyh)) {
-          break label562;
-        }
-        ((anyh)localObject2).a(false, null, null, null);
-        break label562;
-      }
-    }
-  }
-  
-  public Drawable a(QQAppInterface paramQQAppInterface, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, View paramView, boolean paramBoolean4)
-  {
-    anxu localanxu = this.jdField_a_of_type_Anxu;
-    if (!paramBoolean4) {
-      this.jdField_a_of_type_Anxu = null;
-    }
-    paramQQAppInterface = a(paramQQAppInterface, paramBoolean1, paramBoolean2, paramBoolean3, paramView, "", 0);
-    this.jdField_a_of_type_Anxu = localanxu;
-    return paramQQAppInterface;
-  }
-  
-  public Pair<anwp, anwp> a(QQAppInterface paramQQAppInterface, int paramInt)
-  {
-    Object localObject3 = null;
-    Object localObject1;
-    if (paramQQAppInterface != null)
-    {
-      localObject1 = (BubbleManager)paramQQAppInterface.getManager(44);
-      localObject2 = localObject3;
-      if (localObject1 != null)
-      {
-        localObject2 = ((BubbleManager)localObject1).a(this.jdField_a_of_type_Int, true);
-        if (localObject2 != null) {
-          break label53;
-        }
-        localObject2 = localObject3;
-      }
-    }
-    label53:
-    label102:
-    do
-    {
-      do
-      {
-        return localObject2;
-        localObject1 = null;
-        break;
-        switch (paramInt)
-        {
-        case 4: 
-        case 5: 
-        default: 
-          paramQQAppInterface = null;
-          localObject2 = localObject3;
-        }
-      } while (TextUtils.isEmpty(paramQQAppInterface));
-      localObject2 = a(paramQQAppInterface);
-      localObject1 = ((BubbleManager)localObject1).a(this.jdField_a_of_type_Int, paramQQAppInterface, (Pair)localObject2);
-      localObject2 = localObject1;
-    } while (!QLog.isDevelopLevel());
-    Object localObject2 = new StringBuilder().append("getAttrs|key=").append(paramQQAppInterface).append(", animAttrs=");
-    if (localObject1 == null) {}
-    for (paramQQAppInterface = "null";; paramQQAppInterface = "first:" + ((Pair)localObject1).first + ",second:" + ((Pair)localObject1).second)
-    {
-      QLog.w("BubbleInfo", 4, paramQQAppInterface);
-      return localObject1;
-      if (((anwl)localObject2).a == null) {
-        break;
-      }
-      paramQQAppInterface = ((anwl)localObject2).a.jdField_b_of_type_JavaLangString;
-      break label102;
-      if (((anwl)localObject2).b == null) {
-        break;
-      }
-      paramQQAppInterface = ((anwl)localObject2).b.jdField_b_of_type_JavaLangString;
-      break label102;
-      paramQQAppInterface = "width";
-      if (((anwl)localObject2).c == null) {
-        break label102;
-      }
-      paramQQAppInterface = ((anwl)localObject2).c.jdField_b_of_type_JavaLangString;
-      break label102;
-      if ((this.jdField_b_of_type_JavaUtilHashMap == null) || (this.jdField_b_of_type_JavaUtilHashMap.size() <= 0) || (this.jdField_f_of_type_JavaLangString == null)) {
-        break;
-      }
-      paramQQAppInterface = (String)this.jdField_b_of_type_JavaUtilHashMap.get(this.jdField_f_of_type_JavaLangString);
-      break label102;
-      if (((anwl)localObject2).d == null) {
-        break;
-      }
-      paramQQAppInterface = ((anwl)localObject2).d.jdField_b_of_type_JavaLangString;
-      break label102;
-      if (((anwl)localObject2).e == null) {
-        break;
-      }
-      paramQQAppInterface = ((anwl)localObject2).e.jdField_b_of_type_JavaLangString;
-      break label102;
-    }
-  }
-  
-  public String a(String paramString)
-  {
-    if ((this.jdField_b_of_type_ArrayOfJavaLangString != null) && (!TextUtils.isEmpty(paramString)))
-    {
-      String[] arrayOfString = this.jdField_b_of_type_ArrayOfJavaLangString;
-      int j = arrayOfString.length;
-      int i = 0;
-      while (i < j)
-      {
-        String str = arrayOfString[i];
-        if (paramString.indexOf(str.toLowerCase()) != -1)
-        {
-          this.jdField_f_of_type_JavaLangString = str;
-          return str;
-        }
-        i += 1;
-      }
-    }
-    return null;
-  }
-  
-  public void a()
-  {
-    synchronized (this.jdField_b_of_type_JavaUtilList)
-    {
-      this.jdField_b_of_type_JavaUtilList.clear();
-    }
-    synchronized (this.jdField_c_of_type_JavaUtilList)
-    {
-      this.jdField_c_of_type_JavaUtilList.clear();
-      return;
-      localObject1 = finally;
-      throw localObject1;
-    }
-  }
-  
-  public void a(View paramView, Drawable paramDrawable)
-  {
-    if ((paramDrawable == null) || (paramView == null)) {
+      long l = Long.parseLong(paramString);
+      ((oidb_cmd0xb36.ReqBody)localObject).group_id.set(l);
+      ((oidb_cmd0xb36.ReqBody)localObject).red_point_num.set(paramInt);
+      oidb_sso.OIDBSSOPkg localOIDBSSOPkg = new oidb_sso.OIDBSSOPkg();
+      localOIDBSSOPkg.uint32_command.set(2870);
+      localOIDBSSOPkg.uint32_service_type.set(1);
+      localOIDBSSOPkg.bytes_bodybuffer.set(ByteStringMicro.copyFrom(((oidb_cmd0xb36.ReqBody)localObject).toByteArray()));
+      localObject = paramanwd.createToServiceMsg(jdField_a_of_type_JavaLangString);
+      ((ToServiceMsg)localObject).putWupBuffer(localOIDBSSOPkg.toByteArray());
+      ((ToServiceMsg)localObject).extraData.putString("troopUin", paramString);
+      paramanwd.sendPbReq((ToServiceMsg)localObject);
       return;
     }
-    Rect localRect = new Rect();
-    paramDrawable.getPadding(localRect);
-    int i = paramView.getPaddingTop();
-    int j = localRect.top;
-    int k = paramView.getPaddingLeft();
-    int m = localRect.left;
-    int n = paramView.getPaddingRight();
-    int i1 = localRect.right;
-    int i2 = paramView.getPaddingBottom();
-    int i3 = localRect.bottom;
-    paramView.setBackgroundDrawable(paramDrawable);
-    paramView.setPadding(k + m, i + j, n + i1, i3 + i2);
-  }
-  
-  public void a(View arg1, View paramView2)
-  {
-    synchronized (this.jdField_b_of_type_JavaUtilList)
+    catch (NumberFormatException paramanwd)
     {
-      this.jdField_b_of_type_JavaUtilList.remove(???);
-    }
-    synchronized (this.jdField_c_of_type_JavaUtilList)
-    {
-      this.jdField_c_of_type_JavaUtilList.remove(paramView2);
-      return;
-      ??? = finally;
-      throw ???;
+      QLog.e(".troop.survey", 1, "send_oidb_0xb36 error! ", paramanwd);
     }
   }
   
-  public boolean a()
+  /* Error */
+  public static boolean a(anwd paramanwd, bgat parambgat, tencent.im.s2c.msgtype0x210.submsgtype0x26.submsgtype0x26.MsgBody.SubCmd0x1UpdateAppUnreadNum paramSubCmd0x1UpdateAppUnreadNum, int paramInt)
   {
-    return (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString));
-  }
-  
-  public boolean a(int paramInt)
-  {
-    return (this.jdField_e_of_type_Int > 0) && (this.jdField_f_of_type_Int > this.jdField_e_of_type_Int) && (paramInt >= this.jdField_e_of_type_Int) && (paramInt <= this.jdField_f_of_type_Int);
-  }
-  
-  public String toString()
-  {
-    return "BubbleInfo [bubbleId=" + this.jdField_a_of_type_Int + ",aioUserBgNorResPath=" + this.jdField_a_of_type_JavaLangString + ",aioUserPicNorResPath=" + this.jdField_b_of_type_JavaLangString + ",bubbleThumbnailResPath=" + this.jdField_d_of_type_JavaLangString + ",bubbleChartletResPath=" + this.jdField_e_of_type_JavaLangString + ", mTextColor=" + this.jdField_b_of_type_Int + ", mKeyWords=" + Arrays.toString(this.jdField_b_of_type_ArrayOfJavaLangString) + ", currKeyWord=" + this.jdField_f_of_type_JavaLangString + ", mBubbleHeightBegin=" + this.jdField_e_of_type_Int + ", mBubbleHeightEnd=" + this.jdField_f_of_type_Int + ", pttAttrs=" + this.jdField_a_of_type_Anwp + ", heightAttrs=" + this.jdField_b_of_type_Anwp + ", keywordAttrs=" + this.jdField_a_of_type_JavaUtilList + ", keyWorsAnimMap=" + this.jdField_b_of_type_JavaUtilHashMap + "]";
+    // Byte code:
+    //   0: aload_1
+    //   1: getfield 207	bgat:jdField_a_of_type_Long	J
+    //   4: ldc2_w 208
+    //   7: lcmp
+    //   8: ifeq +5 -> 13
+    //   11: iconst_0
+    //   12: ireturn
+    //   13: invokestatic 36	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   16: ifeq +70 -> 86
+    //   19: ldc 38
+    //   21: iconst_2
+    //   22: bipush 8
+    //   24: anewarray 4	java/lang/Object
+    //   27: dup
+    //   28: iconst_0
+    //   29: ldc 211
+    //   31: aastore
+    //   32: dup
+    //   33: iconst_1
+    //   34: aload_1
+    //   35: getfield 212	bgat:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   38: aastore
+    //   39: dup
+    //   40: iconst_2
+    //   41: ldc 214
+    //   43: aastore
+    //   44: dup
+    //   45: iconst_3
+    //   46: aload_1
+    //   47: getfield 218	bgat:b	I
+    //   50: invokestatic 224	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   53: aastore
+    //   54: dup
+    //   55: iconst_4
+    //   56: ldc 226
+    //   58: aastore
+    //   59: dup
+    //   60: iconst_5
+    //   61: aload_1
+    //   62: getfield 228	bgat:jdField_a_of_type_Int	I
+    //   65: invokestatic 224	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   68: aastore
+    //   69: dup
+    //   70: bipush 6
+    //   72: ldc 230
+    //   74: aastore
+    //   75: dup
+    //   76: bipush 7
+    //   78: iload_3
+    //   79: invokestatic 224	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   82: aastore
+    //   83: invokestatic 232	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;I[Ljava/lang/Object;)V
+    //   86: aload_2
+    //   87: ifnull +118 -> 205
+    //   90: aload_2
+    //   91: getfield 238	tencent/im/s2c/msgtype0x210/submsgtype0x26/submsgtype0x26$MsgBody$SubCmd0x1UpdateAppUnreadNum:msg_app_tip_notify	Ltencent/im/s2c/msgtype0x210/submsgtype0x26/submsgtype0x26$AppTipNotify;
+    //   94: invokevirtual 243	tencent/im/s2c/msgtype0x210/submsgtype0x26/submsgtype0x26$AppTipNotify:has	()Z
+    //   97: ifeq +108 -> 205
+    //   100: aload_2
+    //   101: getfield 238	tencent/im/s2c/msgtype0x210/submsgtype0x26/submsgtype0x26$MsgBody$SubCmd0x1UpdateAppUnreadNum:msg_app_tip_notify	Ltencent/im/s2c/msgtype0x210/submsgtype0x26/submsgtype0x26$AppTipNotify;
+    //   104: getfield 246	tencent/im/s2c/msgtype0x210/submsgtype0x26/submsgtype0x26$AppTipNotify:bytes_text	Lcom/tencent/mobileqq/pb/PBBytesField;
+    //   107: invokevirtual 100	com/tencent/mobileqq/pb/PBBytesField:get	()Lcom/tencent/mobileqq/pb/ByteStringMicro;
+    //   110: invokevirtual 249	com/tencent/mobileqq/pb/ByteStringMicro:toStringUtf8	()Ljava/lang/String;
+    //   113: astore_2
+    //   114: aload_2
+    //   115: invokestatic 255	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   118: ifne +87 -> 205
+    //   121: invokestatic 36	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   124: ifeq +35 -> 159
+    //   127: ldc 38
+    //   129: iconst_2
+    //   130: iconst_4
+    //   131: anewarray 4	java/lang/Object
+    //   134: dup
+    //   135: iconst_0
+    //   136: ldc 211
+    //   138: aastore
+    //   139: dup
+    //   140: iconst_1
+    //   141: aload_1
+    //   142: getfield 212	bgat:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   145: aastore
+    //   146: dup
+    //   147: iconst_2
+    //   148: ldc_w 257
+    //   151: aastore
+    //   152: dup
+    //   153: iconst_3
+    //   154: aload_2
+    //   155: aastore
+    //   156: invokestatic 232	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;I[Ljava/lang/Object;)V
+    //   159: new 259	org/json/JSONObject
+    //   162: dup
+    //   163: aload_2
+    //   164: invokespecial 262	org/json/JSONObject:<init>	(Ljava/lang/String;)V
+    //   167: astore 4
+    //   169: ldc_w 264
+    //   172: ldc_w 266
+    //   175: aload 4
+    //   177: invokevirtual 267	org/json/JSONObject:toString	()Ljava/lang/String;
+    //   180: ldc_w 269
+    //   183: invokestatic 274	com/tencent/mobileqq/ark/ArkAppCenter:a	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Z
+    //   186: pop
+    //   187: ldc_w 276
+    //   190: ldc_w 266
+    //   193: aload 4
+    //   195: invokevirtual 267	org/json/JSONObject:toString	()Ljava/lang/String;
+    //   198: ldc_w 269
+    //   201: invokestatic 274	com/tencent/mobileqq/ark/ArkAppCenter:a	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Z
+    //   204: pop
+    //   205: iload_3
+    //   206: iconst_2
+    //   207: if_icmpeq +10 -> 217
+    //   210: aload_1
+    //   211: getfield 218	bgat:b	I
+    //   214: ifeq +82 -> 296
+    //   217: aload_0
+    //   218: aload_1
+    //   219: getfield 212	bgat:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   222: aload_1
+    //   223: getfield 218	bgat:b	I
+    //   226: invokestatic 278	anwo:a	(Lanwd;Ljava/lang/String;I)V
+    //   229: iconst_1
+    //   230: ireturn
+    //   231: astore 5
+    //   233: ldc 38
+    //   235: iconst_2
+    //   236: ldc_w 280
+    //   239: aload 5
+    //   241: invokestatic 127	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   244: goto -57 -> 187
+    //   247: astore 4
+    //   249: ldc 38
+    //   251: iconst_2
+    //   252: new 40	java/lang/StringBuilder
+    //   255: dup
+    //   256: invokespecial 43	java/lang/StringBuilder:<init>	()V
+    //   259: ldc_w 282
+    //   262: invokevirtual 49	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   265: aload_2
+    //   266: invokevirtual 49	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   269: invokevirtual 53	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   272: aload 4
+    //   274: invokestatic 127	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   277: goto -72 -> 205
+    //   280: astore 4
+    //   282: ldc 38
+    //   284: iconst_2
+    //   285: ldc_w 280
+    //   288: aload 4
+    //   290: invokestatic 127	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   293: goto -88 -> 205
+    //   296: invokestatic 36	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   299: ifeq -70 -> 229
+    //   302: ldc 38
+    //   304: iconst_2
+    //   305: bipush 8
+    //   307: anewarray 4	java/lang/Object
+    //   310: dup
+    //   311: iconst_0
+    //   312: ldc 211
+    //   314: aastore
+    //   315: dup
+    //   316: iconst_1
+    //   317: aload_1
+    //   318: getfield 212	bgat:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   321: aastore
+    //   322: dup
+    //   323: iconst_2
+    //   324: ldc 214
+    //   326: aastore
+    //   327: dup
+    //   328: iconst_3
+    //   329: aload_1
+    //   330: getfield 218	bgat:b	I
+    //   333: invokestatic 224	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   336: aastore
+    //   337: dup
+    //   338: iconst_4
+    //   339: ldc 226
+    //   341: aastore
+    //   342: dup
+    //   343: iconst_5
+    //   344: aload_1
+    //   345: getfield 228	bgat:jdField_a_of_type_Int	I
+    //   348: invokestatic 224	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   351: aastore
+    //   352: dup
+    //   353: bipush 6
+    //   355: ldc_w 284
+    //   358: aastore
+    //   359: dup
+    //   360: bipush 7
+    //   362: iload_3
+    //   363: invokestatic 224	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   366: aastore
+    //   367: invokestatic 232	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;I[Ljava/lang/Object;)V
+    //   370: goto -141 -> 229
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	373	0	paramanwd	anwd
+    //   0	373	1	parambgat	bgat
+    //   0	373	2	paramSubCmd0x1UpdateAppUnreadNum	tencent.im.s2c.msgtype0x210.submsgtype0x26.submsgtype0x26.MsgBody.SubCmd0x1UpdateAppUnreadNum
+    //   0	373	3	paramInt	int
+    //   167	27	4	localJSONObject	org.json.JSONObject
+    //   247	26	4	localJSONException	org.json.JSONException
+    //   280	9	4	localUnsatisfiedLinkError1	java.lang.UnsatisfiedLinkError
+    //   231	9	5	localUnsatisfiedLinkError2	java.lang.UnsatisfiedLinkError
+    // Exception table:
+    //   from	to	target	type
+    //   169	187	231	java/lang/UnsatisfiedLinkError
+    //   121	159	247	org/json/JSONException
+    //   159	169	247	org/json/JSONException
+    //   169	187	247	org/json/JSONException
+    //   187	205	247	org/json/JSONException
+    //   233	244	247	org/json/JSONException
+    //   282	293	247	org/json/JSONException
+    //   187	205	280	java/lang/UnsatisfiedLinkError
   }
 }
 

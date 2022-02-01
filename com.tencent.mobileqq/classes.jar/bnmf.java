@@ -1,29 +1,38 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import dov.com.tencent.mobileqq.richmedia.capture.view.DragAnimationMgr;
-import dov.com.tencent.mobileqq.richmedia.capture.view.DragAnimationMgr.DragViewIcon;
+import android.view.ViewGroup;
+import android.widget.SeekBar;
+import android.widget.SeekBar.OnSeekBarChangeListener;
+import android.widget.TextView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import dov.com.qq.im.ae.camera.ui.panel.AEBeautyProviderView;
 
 public class bnmf
-  extends AnimatorListenerAdapter
+  implements SeekBar.OnSeekBarChangeListener
 {
-  public bnmf(DragAnimationMgr paramDragAnimationMgr, DragAnimationMgr.DragViewIcon paramDragViewIcon) {}
+  public bnmf(AEBeautyProviderView paramAEBeautyProviderView) {}
   
-  public void onAnimationCancel(Animator paramAnimator)
+  public void onProgressChanged(SeekBar paramSeekBar, int paramInt, boolean paramBoolean)
   {
-    this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewDragAnimationMgr$DragViewIcon.b = false;
-    DragAnimationMgr.a(this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewDragAnimationMgr);
-    if (DragAnimationMgr.a(this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewDragAnimationMgr) != null) {
-      DragAnimationMgr.a(this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewDragAnimationMgr).b();
+    if (AEBeautyProviderView.a(this.a) != null)
+    {
+      AEBeautyProviderView.a(this.a).a(paramInt);
+      this.a.a.setText("+" + String.format("%.1f", new Object[] { Float.valueOf(paramInt / 10.0F) }));
     }
   }
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public void onStartTrackingTouch(SeekBar paramSeekBar)
   {
-    this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewDragAnimationMgr$DragViewIcon.b = false;
-    DragAnimationMgr.a(this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewDragAnimationMgr);
-    if (DragAnimationMgr.a(this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewDragAnimationMgr) != null) {
-      DragAnimationMgr.a(this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewDragAnimationMgr).b();
+    AEBeautyProviderView.a(this.a, AEBeautyProviderView.a(this.a), AEBeautyProviderView.b(this.a));
+  }
+  
+  public void onStopTrackingTouch(SeekBar paramSeekBar)
+  {
+    if ((AEBeautyProviderView.c(this.a) != null) && ((AEBeautyProviderView.c(this.a) instanceof ViewGroup))) {
+      ((ViewGroup)AEBeautyProviderView.c(this.a)).setMotionEventSplittingEnabled(true);
     }
+    AEBeautyProviderView.a(this.a, paramSeekBar.getProgress());
+    bnyl.a().d(paramSeekBar.getProgress());
+    AEBeautyProviderView.b(this.a, AEBeautyProviderView.a(this.a), AEBeautyProviderView.b(this.a));
+    EventCollector.getInstance().onStopTrackingTouch(paramSeekBar);
   }
 }
 

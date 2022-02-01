@@ -1,24 +1,19 @@
-import com.tencent.mobileqq.activity.selectmember.TroopDiscussionTroop;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.pendant.AvatarPendantActivity;
+import mqq.app.QQPermissionCallback;
 
 public class akbn
-  extends alog
+  implements QQPermissionCallback
 {
-  public akbn(TroopDiscussionTroop paramTroopDiscussionTroop) {}
+  public akbn(AvatarPendantActivity paramAvatarPendantActivity) {}
   
-  protected void a(int paramInt)
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    switch (paramInt)
-    {
-    }
-    do
-    {
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d("TroopDiscussionTroop", 2, "onCacheInited " + paramInt);
-      }
-    } while (TroopDiscussionTroop.a(this.a) == null);
-    TroopDiscussionTroop.a(this.a).c();
+    bglp.a(this.a, paramArrayOfString, paramArrayOfInt);
+  }
+  
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    AvatarPendantActivity.e(this.a);
   }
 }
 

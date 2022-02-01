@@ -1,9 +1,13 @@
-import android.app.Dialog;
-import android.view.View;
+import com.tencent.mobileqq.activity.selectmember.ResultRecord;
+import java.util.ArrayList;
 
 public abstract interface beoy
 {
-  public abstract void a(Dialog paramDialog, View paramView, boolean paramBoolean);
+  public abstract ArrayList<ResultRecord> a();
+  
+  public abstract void a();
+  
+  public abstract ArrayList<String> b();
 }
 
 

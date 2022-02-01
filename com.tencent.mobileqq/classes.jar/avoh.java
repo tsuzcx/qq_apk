@@ -1,30 +1,22 @@
-import android.widget.EditText;
-import com.tencent.mobileqq.conditionsearch.widget.IphonePickerView;
-
 class avoh
-  implements aoil
+  extends ayeu
 {
-  avoh(avnl paramavnl, IphonePickerView paramIphonePickerView, bhuf parambhuf) {}
+  avoh(avog paramavog, avep paramavep) {}
   
-  public void a()
+  public void a(String paramString1, int paramInt, String paramString2)
   {
-    if ((this.jdField_a_of_type_Bhuf != null) && (this.jdField_a_of_type_Bhuf.isShowing()))
-    {
-      avnl.a(this.jdField_a_of_type_Avnl, this.jdField_a_of_type_Avnl.h, false);
-      this.jdField_a_of_type_Bhuf.dismiss();
-    }
+    bcst.a(null, "dc00898", "", "", "0X800B0EB", "0X800B0EB", 0, 0, "", "", "", "");
+    avog.a(this.jdField_a_of_type_Avog, this.jdField_a_of_type_Avep);
   }
   
-  public void a(int paramInt1, int paramInt2)
+  public void a(boolean paramBoolean, String paramString)
   {
-    paramInt1 = this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.a(0);
-    this.jdField_a_of_type_Avnl.h.setTag(Byte.valueOf((byte)(paramInt1 + 1)));
-    this.jdField_a_of_type_Avnl.h.setText(avnl.b(this.jdField_a_of_type_Avnl).a(0, paramInt1));
+    avog.a(this.jdField_a_of_type_Avog, this.jdField_a_of_type_Avep);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     avoh
  * JD-Core Version:    0.7.0.1
  */

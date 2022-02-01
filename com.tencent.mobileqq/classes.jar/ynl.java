@@ -1,28 +1,14 @@
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
-import com.tencent.biz.subscribe.videoplayer.VideoPlayerView;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import java.util.HashMap;
+import android.view.View;
+import com.tencent.biz.qqstory.model.item.QQUserUIItem;
+import com.tencent.biz.qqstory.storyHome.model.VideoListFeedItem;
 
-public class ynl
-  implements yqb
+public abstract interface ynl
 {
-  public ynl(VideoPlayerView paramVideoPlayerView) {}
-  
-  public void a(boolean paramBoolean, CertifiedAccountMeta.StFeed paramStFeed)
-  {
-    if (VideoPlayerView.a(this.a) != null)
-    {
-      zaj.a(VideoPlayerView.a(this.a).poster.id.get(), "auth_video", "half_follow", 0, 0, new String[] { "", "", VideoPlayerView.a(this.a).id.get(), VideoPlayerView.a(this.a).title.get() });
-      VideoPlayerView.a(this.a).poster.followState.set(1);
-      VideoPlayerView.a(this.a).put(VideoPlayerView.a(this.a).poster.id.get(), Boolean.valueOf(true));
-    }
-  }
+  public abstract void a(View paramView, VideoListFeedItem paramVideoListFeedItem, QQUserUIItem paramQQUserUIItem, int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     ynl
  * JD-Core Version:    0.7.0.1
  */

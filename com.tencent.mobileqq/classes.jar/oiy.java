@@ -1,14 +1,28 @@
-import com.tencent.biz.qqstory.database.PublishVideoEntry;
+import android.view.GestureDetector.SimpleOnGestureListener;
+import android.view.MotionEvent;
+import java.lang.ref.WeakReference;
 
-public abstract interface oiy
+public class oiy
+  extends GestureDetector.SimpleOnGestureListener
 {
-  public abstract void a(PublishVideoEntry paramPublishVideoEntry, int paramInt, String paramString);
+  private WeakReference<ogd> a;
   
-  public abstract void a(PublishVideoEntry paramPublishVideoEntry, String paramString);
+  public oiy(ogd paramogd)
+  {
+    this.a = new WeakReference(paramogd);
+  }
+  
+  public boolean onDoubleTap(MotionEvent paramMotionEvent)
+  {
+    if ((this.a != null) && (this.a.get() != null)) {
+      ((ogd)this.a.get()).a(true);
+    }
+    return false;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     oiy
  * JD-Core Version:    0.7.0.1
  */

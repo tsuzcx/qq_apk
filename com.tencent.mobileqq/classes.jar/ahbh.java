@@ -1,25 +1,17 @@
-import mqq.os.MqqHandler;
+import android.widget.BaseAdapter;
+import com.tencent.mobileqq.data.ChatMessage;
 
 class ahbh
-  implements apjw
+  extends ahbl
 {
-  ahbh(ahbf paramahbf, MqqHandler paramMqqHandler) {}
-  
-  public void a(int paramInt)
+  ahbh(agwz paramagwz)
   {
-    switch (paramInt)
-    {
-    }
-    do
-    {
-      do
-      {
-        return;
-      } while (this.jdField_a_of_type_MqqOsMqqHandler == null);
-      this.jdField_a_of_type_MqqOsMqqHandler.removeMessages(84);
-      return;
-    } while (this.jdField_a_of_type_MqqOsMqqHandler == null);
-    this.jdField_a_of_type_MqqOsMqqHandler.sendEmptyMessageDelayed(84, 10000L);
+    super(paramagwz, null);
+  }
+  
+  protected afxi a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
+  {
+    return new ahnf(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner);
   }
 }
 

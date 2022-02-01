@@ -1,11 +1,7 @@
-class aqwy
-  implements aqxc
-{
-  aqwy(aqwt paramaqwt) {}
-}
+public class aqwy {}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aqwy
  * JD-Core Version:    0.7.0.1
  */

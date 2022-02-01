@@ -1,43 +1,34 @@
-import android.content.BroadcastReceiver;
 import android.content.Context;
-import android.content.Intent;
+import android.text.Editable;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.EditText;
+import com.tencent.biz.pubaccount.readinjoy.widgets.LimitWordCountEditText;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class ttj
-  extends BroadcastReceiver
+public class ttj
+  implements View.OnClickListener
 {
-  private ttj(ttg paramttg) {}
+  public ttj(LimitWordCountEditText paramLimitWordCountEditText) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public final void onClick(View paramView)
   {
-    int i;
-    int j;
-    if ("action_update_native_auth_info".equals(paramIntent.getAction()))
+    if (!LimitWordCountEditText.a(this.a).hasFocus())
     {
-      i = paramIntent.getIntExtra("type", 1);
-      j = paramIntent.getIntExtra("status", 0);
-      paramContext = paramIntent.getStringExtra("tagName");
-      if (i != 2) {
-        break label59;
-      }
-      i = tra.a(j);
-      tra.a(tqg.a(), i, paramContext);
+      LimitWordCountEditText.a(this.a).requestFocus();
+      LimitWordCountEditText.a(this.a).setSelection(LimitWordCountEditText.a(this.a).getText().length());
     }
-    for (;;)
-    {
-      tqg.c();
-      return;
-      label59:
-      if (i == 3)
-      {
-        i = tra.a(j);
-        tra.a(tqg.b(), i, paramContext);
-      }
+    InputMethodManager localInputMethodManager = (InputMethodManager)this.a.getContext().getSystemService("input_method");
+    if (localInputMethodManager != null) {
+      localInputMethodManager.showSoftInput(LimitWordCountEditText.a(this.a), 2);
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     ttj
  * JD-Core Version:    0.7.0.1
  */

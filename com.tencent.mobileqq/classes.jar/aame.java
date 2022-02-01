@@ -1,21 +1,20 @@
-import android.content.Context;
+import android.support.v4.view.ViewPager;
 import android.view.View;
-import com.tencent.ad.tangram.image.AdImageViewAdapter;
-import com.tencent.ad.tangram.image.AdImageViewAdapter.Params;
-import com.tencent.gdtad.views.image.GdtGifImageView;
-import java.lang.ref.WeakReference;
+import android.view.View.OnClickListener;
+import com.tencent.biz.subscribe.widget.relativevideo.ServiceFolderFollowPBHeadView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class aame
-  implements AdImageViewAdapter
+  implements View.OnClickListener
 {
-  public View buildImageView(AdImageViewAdapter.Params paramParams)
+  public aame(ServiceFolderFollowPBHeadView paramServiceFolderFollowPBHeadView) {}
+  
+  public void onClick(View paramView)
   {
-    if ((paramParams != null) && (paramParams.isValid()))
-    {
-      WeakReference localWeakReference = new WeakReference(new aamf(this, paramParams));
-      return new GdtGifImageView((Context)paramParams.context.get(), paramParams.url, paramParams.guassianUrl, localWeakReference);
+    if (ServiceFolderFollowPBHeadView.a(this.a) != null) {
+      ServiceFolderFollowPBHeadView.a(this.a).setCurrentItem(1, true);
     }
-    return null;
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

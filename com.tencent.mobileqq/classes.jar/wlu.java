@@ -1,75 +1,47 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.model.item.QQUserUIItem;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tribe.async.dispatch.Dispatcher;
-import com.tribe.async.dispatch.IEventReceiver;
-import java.util.concurrent.atomic.AtomicBoolean;
+import android.os.Bundle;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspAddFeedComment;
 
 public class wlu
-  implements IEventReceiver
+  extends wno
 {
-  private int jdField_a_of_type_Int = -1;
-  private altm jdField_a_of_type_Altm = new wlv(this);
-  public QQUserUIItem a;
-  public String a;
-  private AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
-  private wlw jdField_a_of_type_Wlw;
-  private wlx jdField_a_of_type_Wlx;
-  private wly jdField_a_of_type_Wly;
-  private wlz jdField_a_of_type_Wlz;
-  private wma jdField_a_of_type_Wma;
-  private int b = -1;
+  qqstory_service.RspAddFeedComment jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_service$RspAddFeedComment;
+  wnp jdField_a_of_type_Wnp;
   
-  public wlu(String paramString, @NonNull wlz paramwlz)
+  public wlu(qqstory_service.RspAddFeedComment paramRspAddFeedComment, wnp paramwnp)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Wlz = paramwlz;
+    super(paramRspAddFeedComment.result);
+    this.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_service$RspAddFeedComment = paramRspAddFeedComment;
+    this.jdField_a_of_type_Wnp = paramwnp;
+  }
+  
+  public wlu(wnp paramwnp)
+  {
+    this.jdField_a_of_type_Wnp = paramwnp;
   }
   
   public void a()
   {
-    this.jdField_a_of_type_Wma = new wma(this);
-    umc.a().registerSubscriber(this.jdField_a_of_type_Wma);
-    vls.a().addObserver(this.jdField_a_of_type_Altm);
-    this.jdField_a_of_type_Wlw = new wlw(this);
-    umc.a().registerSubscriber(this.jdField_a_of_type_Wlw);
-    this.jdField_a_of_type_Wlx = new wlx(this);
-    umc.a().registerSubscriber(this.jdField_a_of_type_Wlx);
-    this.jdField_a_of_type_Wly = new wly(this);
-    umc.a().registerSubscriber(this.jdField_a_of_type_Wly);
+    this.jdField_a_of_type_Wnp.a(this.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_service$RspAddFeedComment);
   }
   
-  public void a(boolean paramBoolean)
+  public void a(int paramInt, Bundle paramBundle)
   {
-    wxe.b("Q.qqstory.memories.MemoriesProfilePresenter", "request refresh user info data. from cache : %s.", Boolean.valueOf(paramBoolean));
-    if (paramBoolean)
-    {
-      this.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem = ((uwm)uwa.a(2)).b(this.jdField_a_of_type_JavaLangString);
-      wxe.a("Q.qqstory.memories.MemoriesProfilePresenter", "get user info from cache: %s.", this.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem);
-      return;
-    }
-    wxe.a("Q.qqstory.memories.MemoriesProfilePresenter", "request user info by uid: %s.", this.jdField_a_of_type_JavaLangString);
-    new vdj().a(1, new uxh("", this.jdField_a_of_type_JavaLangString), String.valueOf(hashCode()), true, true);
+    this.jdField_a_of_type_Wnp.a(paramInt, paramBundle);
   }
   
-  public void b()
+  public void a(int paramInt, String paramString)
   {
-    umc.a().unRegisterSubscriber(this.jdField_a_of_type_Wma);
-    vls.a().removeObserver(this.jdField_a_of_type_Altm);
-    umc.a().unRegisterSubscriber(this.jdField_a_of_type_Wlw);
-    umc.a().unRegisterSubscriber(this.jdField_a_of_type_Wlx);
-    umc.a().unRegisterSubscriber(this.jdField_a_of_type_Wly);
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
+    this.jdField_a_of_type_Wnp.a(paramInt, paramString);
   }
   
-  public boolean isValidate()
+  public void a(boolean paramBoolean, Bundle paramBundle)
   {
-    return !this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get();
+    this.jdField_a_of_type_Wnp.a(paramBoolean, paramBundle);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     wlu
  * JD-Core Version:    0.7.0.1
  */

@@ -1,21 +1,16 @@
-import java.lang.ref.WeakReference;
-
-final class wrr
-  implements wtb
+public class wrr
+  extends weu
 {
-  wrr(WeakReference paramWeakReference) {}
+  public final String a;
   
-  public void a(String paramString)
+  public wrr(String paramString)
   {
-    paramString = (wrt)this.a.get();
-    if (paramString != null) {
-      paramString.a(Integer.valueOf(((Integer)((uvt)uwa.a(10)).b("qqstory_i_am_vip", Integer.valueOf(-1))).intValue()));
-    }
+    this.a = paramString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     wrr
  * JD-Core Version:    0.7.0.1
  */

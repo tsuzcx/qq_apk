@@ -1,14 +1,8 @@
-public class alec
+import android.view.View;
+
+public abstract interface alec
 {
-  public int a;
-  public int b;
-  public int c;
-  
-  public alec(int paramInt1, int paramInt2)
-  {
-    this.a = paramInt1;
-    this.b = paramInt2;
-  }
+  public abstract void a(float paramFloat1, float paramFloat2, int paramInt, View paramView);
 }
 
 

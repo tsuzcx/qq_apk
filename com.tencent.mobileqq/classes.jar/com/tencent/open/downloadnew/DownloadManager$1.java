@@ -1,18 +1,18 @@
 package com.tencent.open.downloadnew;
 
-import bfok;
-import bfox;
+import bivr;
+import biwe;
 
 public class DownloadManager$1
   implements Runnable
 {
-  public DownloadManager$1(bfok parambfok) {}
+  public DownloadManager$1(bivr parambivr) {}
   
   public void run()
   {
     if (!this.this$0.a)
     {
-      if (!bfox.a().b()) {
+      if (!biwe.a().b()) {
         this.this$0.a(true);
       }
       this.this$0.a = true;
@@ -21,7 +21,7 @@ public class DownloadManager$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.open.downloadnew.DownloadManager.1
  * JD-Core Version:    0.7.0.1
  */

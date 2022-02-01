@@ -1,6 +1,6 @@
 package com.tencent.biz.qqcircle.events;
 
-import com.tencent.biz.subscribe.event.SimpleBaseEvent;
+import com.tencent.biz.richframework.eventbus.SimpleBaseEvent;
 
 public class QCirclePraiseUpdateEvent
   extends SimpleBaseEvent
@@ -18,7 +18,7 @@ public class QCirclePraiseUpdateEvent
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.qqcircle.events.QCirclePraiseUpdateEvent
  * JD-Core Version:    0.7.0.1
  */

@@ -5,15 +5,16 @@ import android.content.Context;
 import android.content.res.Resources;
 import android.view.Window;
 import android.widget.TextView;
+import com.tencent.qqlive.module.videoreport.inject.dialog.ReportDialog;
 import cooperation.qzone.util.QZLog;
 
 public class JsErrorGuard$LoadingDialog
-  extends Dialog
+  extends ReportDialog
 {
   JsErrorGuard$LoadingDialog(Context paramContext)
   {
-    super(paramContext, 2131755657);
-    setContentView(2131562045);
+    super(paramContext, 2131755676);
+    setContentView(2131562279);
     getWindow().setFlags(1024, 2048);
   }
   
@@ -42,7 +43,7 @@ public class JsErrorGuard$LoadingDialog
   
   public void setTitle(String paramString)
   {
-    ((TextView)findViewById(2131377938)).setText(paramString);
+    ((TextView)findViewById(2131378776)).setText(paramString);
   }
   
   public void show()
@@ -60,7 +61,7 @@ public class JsErrorGuard$LoadingDialog
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.appbrand.JsErrorGuard.LoadingDialog
  * JD-Core Version:    0.7.0.1
  */

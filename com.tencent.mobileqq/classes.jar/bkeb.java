@@ -1,108 +1,390 @@
-import android.content.res.Resources;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.DecelerateInterpolator;
-import android.view.animation.TranslateAnimation;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager;
-import com.tencent.mobileqq.activity.recent.cur.DragFrameLayout;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.vip.pb.TianShuAccess.AdItem;
-import cooperation.vip.pb.TianShuAccess.MapEntry;
+import com.tencent.sharp.jni.AudioDeviceInterface;
+import com.tencent.sharp.jni.TraeAudioManager;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Iterator;
-import java.util.List;
+import java.util.Map.Entry;
+import java.util.Set;
+import java.util.concurrent.locks.ReentrantLock;
 
 public class bkeb
 {
-  private View jdField_a_of_type_AndroidViewView;
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private final Conversation jdField_a_of_type_ComTencentMobileqqActivityConversation;
-  private DragFrameLayout jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragFrameLayout;
-  private TianShuAccess.AdItem jdField_a_of_type_CooperationVipPbTianShuAccess$AdItem;
-  private View b;
+  String jdField_a_of_type_JavaLangString = "DEVICE_NONE";
+  HashMap<String, bkec> jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  ReentrantLock jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock = new ReentrantLock();
+  boolean jdField_a_of_type_Boolean = false;
+  String b = "DEVICE_NONE";
+  String c = "DEVICE_NONE";
+  String d = "unknow";
   
-  public bkeb(Conversation paramConversation)
+  public bkeb(TraeAudioManager paramTraeAudioManager) {}
+  
+  public int a()
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityConversation = paramConversation;
-    a();
+    this.jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock.lock();
+    int i = this.jdField_a_of_type_JavaUtilHashMap.size();
+    this.jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock.unlock();
+    return i;
   }
   
-  private void a()
+  public int a(String paramString)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragFrameLayout = ((DragFrameLayout)this.jdField_a_of_type_ComTencentMobileqqActivityConversation.a().findViewById(2131364774));
-    this.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_ComTencentMobileqqActivityConversation.a().getLayoutInflater().inflate(2131558613, this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragFrameLayout, false);
-    this.b = this.jdField_a_of_type_AndroidViewView.findViewById(2131377833);
-    this.jdField_a_of_type_AndroidViewView.findViewById(2131377828).setBackgroundColor(this.jdField_a_of_type_ComTencentMobileqqActivityConversation.a().getColor(2131165457));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131377829));
-    this.jdField_a_of_type_AndroidViewView.setOnTouchListener(new bkec(this));
-    ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131377830)).setOnClickListener(new bked(this));
+    this.jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock.lock();
+    paramString = (bkec)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
+    if (paramString != null) {}
+    for (int i = paramString.a();; i = -1)
+    {
+      this.jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock.unlock();
+      return i;
+    }
   }
   
-  private void b()
+  public String a()
   {
-    bjcf.a(this.jdField_a_of_type_AndroidViewView);
+    return this.d;
   }
   
-  private static void b(View paramView)
+  public String a(int paramInt)
   {
-    TranslateAnimation localTranslateAnimation = new TranslateAnimation(2, 0.0F, 2, 0.0F, 2, -1.0F, 2, 0.0F);
-    localTranslateAnimation.setInterpolator(new DecelerateInterpolator());
-    localTranslateAnimation.setDuration(300L);
-    paramView.startAnimation(localTranslateAnimation);
+    this.jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock.lock();
+    Object localObject = this.jdField_a_of_type_JavaUtilHashMap.entrySet().iterator();
+    int i = 0;
+    Map.Entry localEntry;
+    if (((Iterator)localObject).hasNext())
+    {
+      localEntry = (Map.Entry)((Iterator)localObject).next();
+      if (i != paramInt) {}
+    }
+    for (localObject = (bkec)localEntry.getValue();; localObject = null)
+    {
+      if (localObject != null) {}
+      for (localObject = ((bkec)localObject).a();; localObject = "DEVICE_NONE")
+      {
+        this.jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock.unlock();
+        return localObject;
+        i += 1;
+        break;
+      }
+    }
   }
   
-  public void a(TianShuAccess.AdItem paramAdItem)
+  public String a(String paramString)
   {
     Object localObject1 = null;
-    if (paramAdItem == null)
+    this.jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock.lock();
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilHashMap.entrySet().iterator();
+    while (localIterator.hasNext())
     {
-      QLog.e("TianshuBigInsertPage", 2, "showLayer with null ");
+      Object localObject2 = (Map.Entry)localIterator.next();
+      ((Map.Entry)localObject2).getKey();
+      ((Map.Entry)localObject2).getValue();
+      bkec localbkec = (bkec)((Map.Entry)localObject2).getValue();
+      if ((localbkec != null) && (localbkec.a()) && (!localbkec.a().equals(paramString)))
+      {
+        if (localObject1 == null) {
+          localObject2 = localbkec;
+        }
+        for (;;)
+        {
+          localObject1 = localObject2;
+          break;
+          localObject2 = localbkec;
+          if (localbkec.a() < localObject1.a()) {
+            localObject2 = localObject1;
+          }
+        }
+      }
+    }
+    this.jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock.unlock();
+    if (localObject1 != null) {
+      return localObject1.a();
+    }
+    return "DEVICE_SPEAKERPHONE";
+  }
+  
+  public ArrayList<String> a()
+  {
+    new ArrayList();
+    this.jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock.lock();
+    ArrayList localArrayList = b();
+    this.jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock.unlock();
+    return localArrayList;
+  }
+  
+  public HashMap<String, Object> a()
+  {
+    HashMap localHashMap = new HashMap();
+    this.jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock.lock();
+    localHashMap.put("EXTRA_DATA_AVAILABLEDEVICE_LIST", b());
+    localHashMap.put("EXTRA_DATA_CONNECTEDDEVICE", f());
+    localHashMap.put("EXTRA_DATA_PREV_CONNECTEDDEVICE", g());
+    this.jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock.unlock();
+    return localHashMap;
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock.lock();
+    this.jdField_a_of_type_JavaUtilHashMap.clear();
+    this.jdField_a_of_type_JavaLangString = "DEVICE_NONE";
+    this.b = "DEVICE_NONE";
+    this.c = "DEVICE_NONE";
+    this.jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock.unlock();
+  }
+  
+  public void a(String paramString)
+  {
+    if (paramString == null)
+    {
+      this.d = "unknow";
       return;
     }
-    this.jdField_a_of_type_CooperationVipPbTianShuAccess$AdItem = paramAdItem;
-    Iterator localIterator = this.jdField_a_of_type_CooperationVipPbTianShuAccess$AdItem.argList.get().iterator();
-    paramAdItem = null;
-    Object localObject2;
-    if (localIterator.hasNext())
+    if (paramString.isEmpty())
     {
-      localObject2 = (TianShuAccess.MapEntry)localIterator.next();
-      if (((TianShuAccess.MapEntry)localObject2).key.get().equals("image"))
-      {
-        localObject2 = ((TianShuAccess.MapEntry)localObject2).value.get();
-        paramAdItem = (TianShuAccess.AdItem)localObject1;
-        localObject1 = localObject2;
-      }
+      this.d = "unknow";
+      return;
     }
-    for (;;)
+    this.d = paramString;
+  }
+  
+  public boolean a()
+  {
+    this.jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock.lock();
+    boolean bool = this.jdField_a_of_type_Boolean;
+    this.jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock.unlock();
+    return bool;
+  }
+  
+  public boolean a(String paramString)
+  {
+    AudioDeviceInterface.LogTraceEntry(" strConfigs:" + paramString);
+    if ((paramString == null) || (paramString.length() <= 0)) {}
+    do
     {
-      localObject2 = localObject1;
-      localObject1 = paramAdItem;
-      paramAdItem = (TianShuAccess.AdItem)localObject2;
-      break;
-      if (((TianShuAccess.MapEntry)localObject2).key.get().equals("url"))
+      String str;
+      do
       {
-        localObject2 = ((TianShuAccess.MapEntry)localObject2).value.get();
-        localObject1 = paramAdItem;
-        paramAdItem = (TianShuAccess.AdItem)localObject2;
-        continue;
+        return false;
+        str = paramString.replace("\n", "").replace("\r", "");
+      } while ((str == null) || (str.length() <= 0));
+      paramString = str;
+      if (str.indexOf(";") < 0) {
+        paramString = str + ";";
+      }
+      paramString = paramString.split(";");
+    } while ((paramString == null) || (1 > paramString.length));
+    this.jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock.lock();
+    int i = 0;
+    while (i < paramString.length)
+    {
+      a(paramString[i], i);
+      i += 1;
+    }
+    this.jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock.unlock();
+    this.jdField_a_of_type_ComTencentSharpJniTraeAudioManager.a();
+    return true;
+  }
+  
+  boolean a(String paramString, int paramInt)
+  {
+    AudioDeviceInterface.LogTraceEntry(" devName:" + paramString + " priority:" + paramInt);
+    bkec localbkec = new bkec(this);
+    if (localbkec.a(paramString, paramInt)) {
+      if (this.jdField_a_of_type_JavaUtilHashMap.containsKey(paramString)) {
         if (QLog.isColorLevel()) {
-          QLog.d("TianshuBigInsertPage", 2, "showHongbaoLayer | imgUrl is: " + paramAdItem + " actionUrl: " + (String)localObject1);
+          QLog.e("TraeAudioManager", 2, "err dev exist!");
         }
-        this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(new bkee(this, (String)localObject1));
-        PreloadManager.a().c(paramAdItem, new bkef(this));
-      }
-      else
-      {
-        localObject2 = paramAdItem;
-        paramAdItem = (TianShuAccess.AdItem)localObject1;
-        localObject1 = localObject2;
       }
     }
+    while (!QLog.isColorLevel())
+    {
+      return false;
+      this.jdField_a_of_type_JavaUtilHashMap.put(paramString, localbkec);
+      this.jdField_a_of_type_Boolean = true;
+      if (QLog.isColorLevel()) {
+        QLog.w("TraeAudioManager", 2, " n" + a() + " 0:" + a(0));
+      }
+      AudioDeviceInterface.LogTraceExit();
+      return true;
+    }
+    QLog.e("TraeAudioManager", 2, " err dev init!");
+    return false;
+  }
+  
+  public boolean a(String paramString, boolean paramBoolean)
+  {
+    this.jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock.lock();
+    Object localObject = (bkec)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
+    if ((localObject != null) && (((bkec)localObject).a() != paramBoolean))
+    {
+      ((bkec)localObject).a(paramBoolean);
+      ((bkec)localObject).b(paramBoolean);
+      this.jdField_a_of_type_Boolean = true;
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder().append(" ++setVisible:").append(paramString);
+        if (!paramBoolean) {
+          break label101;
+        }
+        paramString = " Y";
+        QLog.w("TraeAudioManager", 2, paramString);
+      }
+    }
+    for (paramBoolean = true;; paramBoolean = false)
+    {
+      this.jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock.unlock();
+      return paramBoolean;
+      label101:
+      paramString = " N";
+      break;
+    }
+  }
+  
+  public String b()
+  {
+    Object localObject1 = null;
+    this.jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock.lock();
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilHashMap.entrySet().iterator();
+    while (localIterator.hasNext())
+    {
+      Object localObject2 = (Map.Entry)localIterator.next();
+      ((Map.Entry)localObject2).getKey();
+      ((Map.Entry)localObject2).getValue();
+      bkec localbkec = (bkec)((Map.Entry)localObject2).getValue();
+      if ((localbkec != null) && (localbkec.a()) && (localbkec.b()))
+      {
+        if (localObject1 == null) {
+          localObject2 = localbkec;
+        }
+        for (;;)
+        {
+          localObject1 = localObject2;
+          break;
+          localObject2 = localbkec;
+          if (localbkec.a() < localObject1.a()) {
+            localObject2 = localObject1;
+          }
+        }
+      }
+    }
+    this.jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock.unlock();
+    if (localObject1 != null) {
+      return localObject1.a();
+    }
+    return "DEVICE_SPEAKERPHONE";
+  }
+  
+  ArrayList<String> b()
+  {
+    ArrayList localArrayList = new ArrayList();
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilHashMap.entrySet().iterator();
+    while (localIterator.hasNext())
+    {
+      bkec localbkec = (bkec)((Map.Entry)localIterator.next()).getValue();
+      if ((localbkec != null) && (localbkec.a()) && (localbkec.b())) {
+        localArrayList.add(localbkec.a());
+      }
+    }
+    return localArrayList;
+  }
+  
+  public void b()
+  {
+    this.jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock.lock();
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock.unlock();
+  }
+  
+  public boolean b(String paramString)
+  {
+    this.jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock.lock();
+    paramString = (bkec)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
+    if (paramString != null) {}
+    for (boolean bool = paramString.a();; bool = false)
+    {
+      this.jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock.unlock();
+      return bool;
+    }
+  }
+  
+  public String c()
+  {
+    this.jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock.lock();
+    Object localObject = (bkec)this.jdField_a_of_type_JavaUtilHashMap.get(this.c);
+    if ((localObject != null) && (((bkec)localObject).a())) {}
+    for (localObject = this.c;; localObject = null)
+    {
+      this.jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock.unlock();
+      return localObject;
+    }
+  }
+  
+  public boolean c(String paramString)
+  {
+    this.jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock.lock();
+    bkec localbkec = (bkec)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
+    if ((localbkec != null) && (localbkec.a())) {
+      this.c = paramString;
+    }
+    for (boolean bool = true;; bool = false)
+    {
+      this.jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock.unlock();
+      return bool;
+    }
+  }
+  
+  public String d()
+  {
+    this.jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock.lock();
+    String str = f();
+    this.jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock.unlock();
+    return str;
+  }
+  
+  public boolean d(String paramString)
+  {
+    this.jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock.lock();
+    bkec localbkec = (bkec)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
+    if ((localbkec != null) && (localbkec.a()))
+    {
+      if ((this.b != null) && (!this.b.equals(paramString))) {
+        this.jdField_a_of_type_JavaLangString = this.b;
+      }
+      this.b = paramString;
+      this.c = "";
+    }
+    for (boolean bool = true;; bool = false)
+    {
+      this.jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock.unlock();
+      return bool;
+    }
+  }
+  
+  public String e()
+  {
+    this.jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock.lock();
+    String str = g();
+    this.jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock.unlock();
+    return str;
+  }
+  
+  String f()
+  {
+    bkec localbkec = (bkec)this.jdField_a_of_type_JavaUtilHashMap.get(this.b);
+    if ((localbkec != null) && (localbkec.a())) {
+      return this.b;
+    }
+    return "DEVICE_NONE";
+  }
+  
+  String g()
+  {
+    bkec localbkec = (bkec)this.jdField_a_of_type_JavaUtilHashMap.get(this.jdField_a_of_type_JavaLangString);
+    if ((localbkec != null) && (localbkec.a())) {
+      return this.jdField_a_of_type_JavaLangString;
+    }
+    return "DEVICE_NONE";
   }
 }
 

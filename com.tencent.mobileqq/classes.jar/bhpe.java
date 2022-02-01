@@ -1,39 +1,22 @@
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
+import android.content.Intent;
+import com.tencent.mobileqq.webview.swift.component.SwiftBrowserCookieMonster;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.MobileQQ;
+import mqq.app.TicketManagerListener;
 
-class bhpe
-  implements bhoy
+public class bhpe
+  implements TicketManagerListener
 {
-  bhpe(bhpd parambhpd) {}
-  
-  public void a(int paramInt1, int paramInt2)
+  public void onTicketRefreshed()
   {
-    if (paramInt1 == 1) {
-      synchronized (bhpd.a(this.a))
-      {
-        Object localObject2 = (List)bhpd.a(this.a).get(Integer.valueOf(paramInt2));
-        if (localObject2 != null)
-        {
-          bhpd.a(this.a).remove(Integer.valueOf(paramInt2));
-          bhpd.a(this.a);
-        }
-        if (localObject2 != null)
-        {
-          ??? = ((List)localObject2).iterator();
-          if (((Iterator)???).hasNext())
-          {
-            localObject2 = (bhpf)((Iterator)???).next();
-            bhpd.a(this.a).a(((bhpf)localObject2).jdField_a_of_type_Int, ((bhpf)localObject2).b, ((bhpf)localObject2).c, new Object[] { ((bhpf)localObject2).jdField_a_of_type_ArrayOfByte }, null);
-          }
-        }
-      }
-    }
+    QLog.i("SwiftBrowserCookieMonster", 1, "TicketManager invoke onTicketRefreshed");
+    SwiftBrowserCookieMonster.d();
+    SwiftBrowserCookieMonster.b(MobileQQ.sMobileQQ.waitAppRuntime(null), new Intent());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bhpe
  * JD-Core Version:    0.7.0.1
  */

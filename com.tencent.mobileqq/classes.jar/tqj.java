@@ -1,74 +1,78 @@
-import android.os.Build.VERSION;
+import android.os.Bundle;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.bridge.NowLiveBridgeInvokeHandler.preload.1;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.bridge.NowLiveBridgeInvokeHandler.register.1;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.bridge.NowLiveBridgeInvokeHandler.register.2;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
-import com.tencent.mobileqq.pb.PBInt64Field;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
-import feedcloud.FeedCloudMeta.StGPSV2;
+import kotlin.Metadata;
+import kotlin.TypeCastException;
+import kotlin.jvm.functions.Function2;
+import kotlin.jvm.internal.Intrinsics;
+import mqq.app.AppRuntime;
+import org.jetbrains.annotations.NotNull;
+import org.json.JSONObject;
 
-public class tqj
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/viola/modules/bridge/NowLiveBridgeInvokeHandler;", "Lcom/tencent/biz/pubaccount/readinjoy/viola/modules/bridge/AbsBridgeInvokeHandler;", "module", "Lcom/tencent/biz/pubaccount/readinjoy/viola/modules/BridgeModule;", "(Lcom/tencent/biz/pubaccount/readinjoy/viola/modules/BridgeModule;)V", "nameSpace", "", "openRoom", "", "param", "Lorg/json/JSONObject;", "callback", "preload", "register", "Companion", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class tqj
+  extends tpt
 {
-  private static volatile tqj jdField_a_of_type_Tqj;
-  private FeedCloudMeta.StGPSV2 jdField_a_of_type_FeedcloudFeedCloudMeta$StGPSV2 = new FeedCloudMeta.StGPSV2();
-  private boolean jdField_a_of_type_Boolean;
+  public static final tqk a = new tqk(null);
   
-  public static tqj a()
+  public tqj(@NotNull BridgeModule paramBridgeModule)
   {
-    if (jdField_a_of_type_Tqj == null) {}
-    try
+    super(paramBridgeModule);
+  }
+  
+  private final void a(JSONObject paramJSONObject, String paramString)
+  {
+    if (paramJSONObject != null)
     {
-      if (jdField_a_of_type_Tqj == null) {
-        jdField_a_of_type_Tqj = new tqj();
+      paramString = paramJSONObject.optString("params");
+      Intrinsics.checkExpressionValueIsNotNull(paramString, "jsonObject.optString(\"params\")");
+      paramJSONObject = new Bundle();
+      paramJSONObject.putInt("jumpType", 1);
+      paramJSONObject.putString("roomid", paramString);
+      paramJSONObject.putString("fromid", "violaCall");
+      if (QLog.isColorLevel()) {
+        QLog.e(BridgeModule.TAG, 2, "nowlive openRoom  roomid = " + paramString);
       }
-      return jdField_a_of_type_Tqj;
+      paramString = BaseApplicationImpl.getApplication();
+      Intrinsics.checkExpressionValueIsNotNull(paramString, "BaseApplicationImpl.getApplication()");
+      paramString = paramString.getRuntime();
+      if ((paramString instanceof QQAppInterface))
+      {
+        paramString = paramString.getManager(306);
+        if (paramString == null) {
+          throw new TypeCastException("null cannot be cast to non-null type com.tencent.mobileqq.intervideo.now.dynamic.DynamicNowManager");
+        }
+        ((avju)paramString).a(paramJSONObject);
+      }
     }
-    finally {}
   }
   
-  private void a(SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  private final void b(JSONObject paramJSONObject, String paramString)
   {
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_FeedcloudFeedCloudMeta$StGPSV2.lat.set(Double.valueOf(paramSosoLbsInfo.a.a * 1000000.0D).intValue());
-    this.jdField_a_of_type_FeedcloudFeedCloudMeta$StGPSV2.lon.set(Double.valueOf(paramSosoLbsInfo.a.b * 1000000.0D).intValue());
+    ThreadManager.post((Runnable)NowLiveBridgeInvokeHandler.preload.1.a, 8, null, true);
   }
   
-  public FeedCloudMeta.StGPSV2 a()
+  @NotNull
+  public String a()
   {
-    if (this.jdField_a_of_type_Boolean) {
-      return this.jdField_a_of_type_FeedcloudFeedCloudMeta$StGPSV2;
-    }
-    return null;
+    return "nowlive";
   }
   
   public void a()
   {
-    this.jdField_a_of_type_Boolean = false;
-    if (a())
-    {
-      SosoInterface.SosoLbsInfo localSosoLbsInfo = ampk.a("qqcircle");
-      if ((localSosoLbsInfo != null) && (localSosoLbsInfo.a != null))
-      {
-        a(localSosoLbsInfo);
-        QLog.d("QCircleGpsHelper", 2, "preGetLocation get GpsInfo from cache");
-      }
-    }
-    else
-    {
-      return;
-    }
-    QLog.d("QCircleGpsHelper", 2, "preGetLocation get GpsInfo from request");
-    ampk.a(new tqk(this, "qqcircle", true));
-  }
-  
-  public boolean a()
-  {
-    return (Build.VERSION.SDK_INT < 23) || (BaseApplicationImpl.getContext().checkSelfPermission("android.permission.ACCESS_FINE_LOCATION") == 0);
+    a("openRoom", (Function2)new NowLiveBridgeInvokeHandler.register.1((tqj)this));
+    a("preload", (Function2)new NowLiveBridgeInvokeHandler.register.2((tqj)this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     tqj
  * JD-Core Version:    0.7.0.1
  */

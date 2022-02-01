@@ -1,63 +1,58 @@
-import java.util.Iterator;
-import java.util.concurrent.CopyOnWriteArrayList;
+import android.content.Context;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.List;
 
 public class zbo
+  extends zbl<zbf>
+  implements View.OnClickListener
 {
-  private static final zbq jdField_a_of_type_Zbq = new zbq(null);
-  private CopyOnWriteArrayList<zbg> jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList = new CopyOnWriteArrayList();
-  private boolean jdField_a_of_type_Boolean;
-  
-  public static zbo a()
+  public zbo(Context paramContext)
   {
-    return (zbo)jdField_a_of_type_Zbq.getInstance();
+    super(paramContext);
   }
   
-  public void a()
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    if (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList != null)
+    if (this.jdField_a_of_type_Zbc == null)
     {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
-      while (localIterator.hasNext()) {
-        ((zbg)localIterator.next()).b();
-      }
+      localObject = paramView;
+      EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
+      return localObject;
+    }
+    if (paramView == null) {}
+    for (Object localObject = new zbp(this.jdField_a_of_type_AndroidContentContext, paramViewGroup.getWidth(), ((zbf)this.jdField_a_of_type_Zbc).a(), ((zbf)this.jdField_a_of_type_Zbc).a(), this);; localObject = (zbp)paramView)
+    {
+      ((zbp)localObject).a((zbf)this.jdField_a_of_type_Zbc, paramInt, getCount());
+      break;
     }
   }
   
-  public void a(long paramLong)
+  public void onClick(View paramView)
   {
-    if ((this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList != null) && (!this.jdField_a_of_type_Boolean))
+    int i = ((Integer)paramView.getTag(2131378270)).intValue();
+    zbg localzbg = (zbg)((zbf)this.jdField_a_of_type_Zbc).a.get(i);
+    ImageView localImageView = (ImageView)paramView;
+    Boolean localBoolean = (Boolean)localImageView.getTag(2131378248);
+    if ((localBoolean != null) && (localBoolean.booleanValue()))
     {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
-      while (localIterator.hasNext()) {
-        ((zbg)localIterator.next()).a(paramLong);
-      }
+      localzbg.a = localImageView.getDrawable();
+      this.jdField_a_of_type_Zbe.a(localzbg);
     }
-  }
-  
-  public void a(zbg paramzbg)
-  {
-    this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.add(paramzbg);
-  }
-  
-  public void b()
-  {
-    if (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList != null)
+    for (;;)
     {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
-      while (localIterator.hasNext()) {
-        ((zbg)localIterator.next()).a();
-      }
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      yqp.b("LocationFaceAdapter", "ImageView drawable has not been downloaded.");
     }
-  }
-  
-  public void b(zbg paramzbg)
-  {
-    this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.remove(paramzbg);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     zbo
  * JD-Core Version:    0.7.0.1
  */

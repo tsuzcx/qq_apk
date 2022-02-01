@@ -1,38 +1,31 @@
-import com.tencent.mobileqq.apollo.view.ApolloLottieAnim;
-import com.tencent.mobileqq.dinifly.DiniFlyAnimationView;
-import com.tencent.mobileqq.dinifly.LottieComposition;
-import com.tencent.mobileqq.dinifly.OnCompositionLoadedListener;
+import com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
 import com.tencent.qphone.base.util.QLog;
 
 public class almc
-  implements OnCompositionLoadedListener
+  extends almg
 {
-  public almc(ApolloLottieAnim paramApolloLottieAnim, DiniFlyAnimationView paramDiniFlyAnimationView, boolean paramBoolean) {}
-  
-  public void onCompositionLoaded(LottieComposition paramLottieComposition)
+  public void a()
   {
-    if (paramLottieComposition == null) {
-      if (QLog.isColorLevel()) {
-        QLog.d("ApolloLottieAnim", 2, "composition is null ,return");
-      }
+    RMVideoStateMgr.a().a.p();
+    if (QLog.isColorLevel()) {
+      QLog.d("RMVideoIdleState", 2, "[@] initState end");
     }
-    do
-    {
-      return;
-      if (!ApolloLottieAnim.a(this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloLottieAnim)) {
-        break;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.d("ApolloLottieAnim", 2, "anim is destroy ,return");
-    return;
-    this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.setComposition(paramLottieComposition);
-    this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.setImageAssetDelegate(new almd(this));
-    if (this.jdField_a_of_type_Boolean)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.setVisibility(0);
-      this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.playAnimation();
+  }
+  
+  public boolean a()
+  {
+    RMVideoStateMgr.a().a("RMVideoIdleState");
+    return true;
+  }
+  
+  public void b()
+  {
+    RMVideoStateMgr localRMVideoStateMgr = RMVideoStateMgr.a();
+    if (QLog.isColorLevel()) {
+      QLog.d("RMVideoIdleState", 2, "[@] realDeleteVideoSegment ...");
     }
-    ApolloLottieAnim.a(this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloLottieAnim, true);
+    localRMVideoStateMgr.a.a(100);
+    localRMVideoStateMgr.a(3);
   }
 }
 

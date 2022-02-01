@@ -1,16 +1,25 @@
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleView;
-import java.util.List;
+import com.tencent.mobileqq.pb.PBEnumField;
+import com.tencent.mobileqq.pb.PBStringField;
+import cooperation.vip.pb.vac_adv_get.DropList;
 
 public class bmtz
-  implements bmrl
 {
-  public bmtz(DoodleLayout paramDoodleLayout) {}
+  public int a;
+  public String a;
+  public String b;
+  public String c;
   
-  public void a(List<bmri> paramList, DoodleView paramDoodleView)
+  public static bmtz a(vac_adv_get.DropList paramDropList)
   {
-    paramList.add(this.a.jdField_a_of_type_Bmre);
-    paramList.add(this.a.jdField_a_of_type_Bmqq);
+    if (paramDropList == null) {
+      return null;
+    }
+    bmtz localbmtz = new bmtz();
+    localbmtz.jdField_a_of_type_Int = paramDropList.action_type.get();
+    localbmtz.b = paramDropList.optext.get();
+    localbmtz.jdField_a_of_type_JavaLangString = paramDropList.iconurl.get();
+    localbmtz.c = paramDropList.jumpurl.get();
+    return localbmtz;
   }
 }
 

@@ -1,13 +1,12 @@
-public class nnx
+public abstract interface nnx
 {
-  public boolean a = true;
-  public boolean b;
-  public boolean c = true;
-  public boolean d;
+  public abstract void a();
+  
+  public abstract void a(String paramString);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     nnx
  * JD-Core Version:    0.7.0.1
  */

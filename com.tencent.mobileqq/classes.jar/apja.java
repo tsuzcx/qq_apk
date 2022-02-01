@@ -1,82 +1,21 @@
-import android.content.res.ColorStateList;
-import android.text.TextPaint;
-import android.text.style.ClickableSpan;
-import android.view.View;
-import android.view.View.OnClickListener;
-import mqq.util.WeakReference;
+import com.tencent.ark.ark.VariantWrapper;
 
-public class apja
-  extends ClickableSpan
-  implements ashy
+class apja
+  implements agqo
 {
-  private ColorStateList jdField_a_of_type_AndroidContentResColorStateList;
-  private WeakReference<View.OnClickListener> jdField_a_of_type_MqqUtilWeakReference;
-  private boolean jdField_a_of_type_Boolean;
-  private ColorStateList b;
+  apja(apix paramapix, long paramLong) {}
   
-  public apja(View.OnClickListener paramOnClickListener, int paramInt)
+  public void a()
   {
-    this(paramOnClickListener, ColorStateList.valueOf(paramInt), null);
-  }
-  
-  public apja(View.OnClickListener paramOnClickListener, ColorStateList paramColorStateList)
-  {
-    this(paramOnClickListener, paramColorStateList, null);
-  }
-  
-  public apja(View.OnClickListener paramOnClickListener, ColorStateList paramColorStateList1, ColorStateList paramColorStateList2)
-  {
-    this.jdField_a_of_type_MqqUtilWeakReference = new WeakReference(paramOnClickListener);
-    this.jdField_a_of_type_AndroidContentResColorStateList = paramColorStateList1;
-    this.b = paramColorStateList2;
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public void onClick(View paramView)
-  {
-    if (this.jdField_a_of_type_MqqUtilWeakReference != null)
-    {
-      View.OnClickListener localOnClickListener = (View.OnClickListener)this.jdField_a_of_type_MqqUtilWeakReference.get();
-      if (localOnClickListener != null) {
-        localOnClickListener.onClick(paramView);
-      }
+    ark.VariantWrapper localVariantWrapper = this.jdField_a_of_type_Apix.a(this.jdField_a_of_type_Long);
+    if (localVariantWrapper != null) {
+      localVariantWrapper.Reset();
     }
   }
   
-  public void updateDrawState(TextPaint paramTextPaint)
+  public void a(boolean paramBoolean, double paramDouble1, double paramDouble2)
   {
-    super.updateDrawState(paramTextPaint);
-    paramTextPaint.setUnderlineText(false);
-    if (this.jdField_a_of_type_AndroidContentResColorStateList != null) {
-      if (this.jdField_a_of_type_Boolean)
-      {
-        i = this.jdField_a_of_type_AndroidContentResColorStateList.getColorForState(new int[] { 16842919 }, 0);
-        paramTextPaint.setColor(i);
-        label46:
-        if (this.b == null) {
-          break label122;
-        }
-        if (!this.jdField_a_of_type_Boolean) {
-          break label107;
-        }
-      }
-    }
-    label107:
-    for (int i = this.b.getColorForState(new int[] { 16842919 }, 0);; i = this.b.getColorForState(new int[0], 0))
-    {
-      paramTextPaint.bgColor = i;
-      return;
-      i = this.jdField_a_of_type_AndroidContentResColorStateList.getColorForState(new int[0], 0);
-      break;
-      paramTextPaint.setColor(-16777216);
-      break label46;
-    }
-    label122:
-    paramTextPaint.bgColor = 0;
+    this.jdField_a_of_type_Apix.a(this.jdField_a_of_type_Long, paramBoolean, paramDouble1, paramDouble2);
   }
 }
 

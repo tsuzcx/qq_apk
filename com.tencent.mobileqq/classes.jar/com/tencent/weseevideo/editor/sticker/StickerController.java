@@ -3,9 +3,11 @@ package com.tencent.weseevideo.editor.sticker;
 import android.content.Context;
 import android.os.Handler;
 import android.os.Looper;
+import android.text.TextUtils;
 import android.util.Pair;
 import android.view.ViewGroup;
 import com.tencent.tavcut.bean.TextEditorData;
+import com.tencent.tavcut.session.callback.StickerLyricCallback;
 import com.tencent.tavcut.session.callback.StickerOperationCallback;
 import com.tencent.tavcut.session.callback.StickerStateCallback;
 import com.tencent.tavcut.session.config.StickerEditViewIconConfig;
@@ -17,18 +19,27 @@ import com.tencent.tavsticker.core.TAVStickerEditView;
 import com.tencent.tavsticker.exception.StickerInitializationException;
 import com.tencent.tavsticker.log.TLog;
 import com.tencent.tavsticker.model.TAVSticker;
+import com.tencent.tavsticker.model.TAVStickerMode;
 import com.tencent.tavsticker.model.TAVStickerOperationMode;
+import com.tencent.tavsticker.model.TAVStickerSolidItem;
 import com.tencent.tavsticker.model.TAVStickerTextItem;
+import com.tencent.tavsticker.utils.CollectionUtil;
 import com.tencent.weseevideo.composition.VideoRenderChainManager.IStickerContextInterface;
+import com.tencent.weseevideo.composition.effectnode.VideoEffectType;
 import com.tencent.weseevideo.editor.sticker.dispatcher.IStickerEventListener;
 import com.tencent.weseevideo.editor.sticker.dispatcher.StickerEventDispatcher;
+import com.tencent.weseevideo.editor.sticker.model.TAVStickerExKt;
+import com.tencent.weseevideo.editor.sticker.music.WSLyricSticker;
 import com.tencent.weseevideo.editor.sticker.view.WsStickerContentView;
+import com.tencent.weseevideo.editor.sticker.view.WsStickerEditView;
 import com.tencent.weseevideo.editor.utils.HandlerUtils;
 import com.tencent.weseevideo.model.effect.StickerModel;
+import com.tencent.weseevideo.model.effect.SubtitleModel;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.CountDownLatch;
 import org.jetbrains.annotations.Nullable;
@@ -44,6 +55,7 @@ public class StickerController
   private WsStickerContentView stickerContentView;
   private TAVStickerContext stickerContext;
   private StickerEditViewIconConfig stickerEditViewIconConfig;
+  private StickerLyricCallback stickerLyricCallback;
   private StickerOperationCallback stickerOperationCallback;
   private StickerStateCallback stickerStateCallback;
   
@@ -99,6 +111,29 @@ public class StickerController
     paramTAVStickerContext.removeSticker(paramTAVSticker);
   }
   
+  private List<TAVSticker> findStickerByType(int paramInt)
+  {
+    ArrayList localArrayList = new ArrayList();
+    if (getStickerContext() == null) {
+      return localArrayList;
+    }
+    synchronized (getStickerContext().getStickers())
+    {
+      if (getStickerContext().getStickers() == null) {
+        return localArrayList;
+      }
+      Iterator localIterator = getStickerContext().getStickers().iterator();
+      while (localIterator.hasNext())
+      {
+        TAVSticker localTAVSticker = (TAVSticker)localIterator.next();
+        if ((localTAVSticker != null) && (paramInt == VideoEffectType.TYPE_SUBTITLE.value) && ("sticker_lyric".equals(TAVStickerExKt.getExtraStickerType(localTAVSticker)))) {
+          localArrayList.add(localTAVSticker);
+        }
+      }
+    }
+    return localList1;
+  }
+  
   private void init()
   {
     this.operations = new HashSet();
@@ -110,13 +145,10 @@ public class StickerController
   
   public void addSticker(TAVSticker paramTAVSticker)
   {
-    if (this.stickerContext == null) {
-      return;
-    }
     Pair localPair = calcStickerCenterPosition(paramTAVSticker.getCenterX(), paramTAVSticker.getCenterY());
     paramTAVSticker.setCenterX(((Float)localPair.first).floatValue());
     paramTAVSticker.setCenterY(((Float)localPair.second).floatValue());
-    HandlerUtils.getMainHandler().post(new StickerController.3(this, paramTAVSticker));
+    HandlerUtils.getMainHandler().post(new StickerController.4(this, paramTAVSticker));
   }
   
   public void alignStickers(long paramLong) {}
@@ -134,7 +166,7 @@ public class StickerController
       return localTAVStickerContext;
     }
     CountDownLatch localCountDownLatch = new CountDownLatch(1);
-    HandlerUtils.getMainHandler().post(new StickerController.4(this, localTAVStickerContext, localCountDownLatch));
+    HandlerUtils.getMainHandler().post(new StickerController.5(this, localTAVStickerContext, localCountDownLatch));
     try
     {
       localCountDownLatch.await();
@@ -149,6 +181,11 @@ public class StickerController
     {
       localCountDownLatch.countDown();
     }
+  }
+  
+  public void deleteLyricSticker()
+  {
+    HandlerUtils.getMainHandler().post(new StickerController.3(this));
   }
   
   public void destroy()
@@ -193,7 +230,7 @@ public class StickerController
     TLog.d(TAG, "onStickerDataChanged -> operationMode : $operationMode, centerX : $centerX, cneterY : $centerY, scale : $scale, rotate : $rotate");
     if ((this.dataChangedCount == 0) && (this.operations.contains(paramTAVStickerOperationMode)))
     {
-      HandlerUtils.getMainHandler().postDelayed(new StickerController.5(this), 10L);
+      HandlerUtils.getMainHandler().postDelayed(new StickerController.6(this), 10L);
       this.dataChangedCount += 1;
     }
     this.operationMode = paramTAVStickerOperationMode;
@@ -252,12 +289,58 @@ public class StickerController
     }
   }
   
+  public SubtitleModel saveLyricSticker()
+  {
+    Object localObject2 = null;
+    Object localObject3 = findStickerByType(VideoEffectType.TYPE_SUBTITLE.value);
+    Object localObject1 = localObject2;
+    if (localObject3 != null)
+    {
+      localObject3 = ((List)localObject3).iterator();
+      localObject1 = localObject2;
+      if (((Iterator)localObject3).hasNext()) {
+        localObject1 = WSLyricSticker.dumpToSubtitleModel((TAVSticker)((Iterator)localObject3).next());
+      }
+    }
+    return localObject1;
+  }
+  
+  public void setLyricProcess(long paramLong)
+  {
+    if ((this.stickerContentView != null) && (this.stickerContentView.getStickerEditView() != null))
+    {
+      TAVSticker localTAVSticker = this.stickerContentView.getStickerEditView().getSticker();
+      if ((this.stickerContentView.getStickerEditView().getMode() == TAVStickerMode.ACTIVE) && (this.stickerContentView.getStickerEditView().getVisibility() == 0) && (localTAVSticker != null))
+      {
+        double d = localTAVSticker.computeProgress(paramLong);
+        this.stickerContentView.getStickerEditView().setProgress(d);
+        this.stickerContentView.getStickerEditView().flush();
+      }
+    }
+  }
+  
+  public void setLyricStartTime(int paramInt)
+  {
+    if ((this.stickerContentView != null) && (this.stickerContentView.getStickerEditView() != null))
+    {
+      TAVSticker localTAVSticker = this.stickerContentView.getStickerEditView().getSticker();
+      if (("sticker_lyric".equals(TAVStickerExKt.getExtraStickerType(localTAVSticker))) && (this.stickerContentView.getStickerEditView().getVisibility() == 0) && (localTAVSticker != null) && ((localTAVSticker instanceof WSLyricSticker))) {
+        ((WSLyricSticker)localTAVSticker).updateMusicStartTime(paramInt);
+      }
+    }
+  }
+  
   public void setStickerContainer(ViewGroup paramViewGroup)
   {
     paramViewGroup.removeView(this.stickerContentView);
     if (this.stickerContext != null) {
       this.stickerContext.setStickerContainer(paramViewGroup);
     }
+  }
+  
+  public void setStickerLyricCallback(StickerLyricCallback paramStickerLyricCallback)
+  {
+    this.stickerLyricCallback = paramStickerLyricCallback;
   }
   
   public void setStickerOperationCallback(StickerOperationCallback paramStickerOperationCallback)
@@ -273,55 +356,82 @@ public class StickerController
   public TAVSticker updateTextSticker(TextEditorData paramTextEditorData)
   {
     Object localObject1;
-    try
+    for (;;)
     {
-      localObject1 = this.stickerContext.getStickers().iterator();
-      while (((Iterator)localObject1).hasNext())
+      Object localObject2;
+      try
       {
-        Object localObject2 = (TAVSticker)((Iterator)localObject1).next();
-        if (((TAVSticker)localObject2).getStickerId().equals(paramTextEditorData.getStickerId()))
+        localObject1 = this.stickerContext.getStickers().iterator();
+        if (((Iterator)localObject1).hasNext())
         {
+          localObject2 = (TAVSticker)((Iterator)localObject1).next();
+          if (!((TAVSticker)localObject2).getStickerId().equals(paramTextEditorData.getUniqueID())) {
+            continue;
+          }
           this.stickerContext.removeSticker((TAVSticker)localObject2);
           localObject1 = new TAVSticker();
-          ((TAVSticker)localObject1).setStickerId(paramTextEditorData.getStickerId());
-          ((TAVSticker)localObject1).setFilePath(((TAVSticker)localObject2).getFilePath());
-          ((TAVSticker)localObject1).setAssetFilePath(((TAVSticker)localObject2).getAssetFilePath());
-          ((TAVSticker)localObject1).setLayerIndex(((TAVSticker)localObject2).getLayerIndex());
-          ((TAVSticker)localObject1).setScale(((TAVSticker)localObject2).getScale());
-          ((TAVSticker)localObject1).setRotate(((TAVSticker)localObject2).getRotate());
-          ((TAVSticker)localObject1).setCenterX(((TAVSticker)localObject2).getCenterX());
-          ((TAVSticker)localObject1).setCenterY(((TAVSticker)localObject2).getCenterY());
-          ((TAVSticker)localObject1).setEditable(((TAVSticker)localObject2).isEditable());
-          ((TAVSticker)localObject1).setMinScale(((TAVSticker)localObject2).getMinScale());
-          ((TAVSticker)localObject1).setMaxScale(((TAVSticker)localObject2).getMaxScale());
-          ((TAVSticker)localObject1).setTimeRange(((TAVSticker)localObject2).getTimeRange());
-          localObject2 = ((TAVSticker)localObject2).getStickerTextItems().iterator();
-          while (((Iterator)localObject2).hasNext())
+          ((TAVSticker)localObject1).setStickerId(paramTextEditorData.getUniqueID());
+          ((TAVSticker)localObject1).setExtras(paramTextEditorData.getItemID());
+          if (!TextUtils.isEmpty(paramTextEditorData.getPagFilePath()))
           {
-            TAVStickerTextItem localTAVStickerTextItem = (TAVStickerTextItem)((Iterator)localObject2).next();
-            ((TAVSticker)localObject1).getStickerTextItems().add(localTAVStickerTextItem);
+            ((TAVSticker)localObject1).setFilePath(paramTextEditorData.getPagFilePath());
+            ((TAVSticker)localObject1).setAssetFilePath(null);
+            ((TAVSticker)localObject1).setLayerIndex(((TAVSticker)localObject2).getLayerIndex());
+            ((TAVSticker)localObject1).setScale(((TAVSticker)localObject2).getScale());
+            ((TAVSticker)localObject1).setRotate(((TAVSticker)localObject2).getRotate());
+            ((TAVSticker)localObject1).setCenterX(((TAVSticker)localObject2).getCenterX());
+            ((TAVSticker)localObject1).setCenterY(((TAVSticker)localObject2).getCenterY());
+            ((TAVSticker)localObject1).setEditable(((TAVSticker)localObject2).isEditable());
+            ((TAVSticker)localObject1).setMinScale(((TAVSticker)localObject2).getMinScale());
+            ((TAVSticker)localObject1).setMaxScale(((TAVSticker)localObject2).getMaxScale());
+            ((TAVSticker)localObject1).setTimeRange(((TAVSticker)localObject2).getTimeRange());
+            ((TAVSticker)localObject1).init();
+            localObject2 = ((TAVSticker)localObject1).getStickerSolidItems();
+            if (CollectionUtil.isEmptyList((List)localObject2)) {
+              break;
+            }
+            localObject2 = ((List)localObject2).iterator();
+            if (!((Iterator)localObject2).hasNext()) {
+              break;
+            }
+            TAVStickerSolidItem localTAVStickerSolidItem = (TAVStickerSolidItem)((Iterator)localObject2).next();
+            if (!paramTextEditorData.getColorList().containsKey(localTAVStickerSolidItem.getLayerName())) {
+              continue;
+            }
+            localTAVStickerSolidItem.setColor(((Integer)paramTextEditorData.getColorList().get(localTAVStickerSolidItem.getLayerName())).intValue());
+            continue;
           }
         }
+        else
+        {
+          return null;
+        }
       }
-      return null;
-    }
-    catch (StickerInitializationException paramTextEditorData)
-    {
-      Logger.e(paramTextEditorData);
+      catch (StickerInitializationException paramTextEditorData)
+      {
+        Logger.e(paramTextEditorData);
+      }
+      ((TAVSticker)localObject1).setFilePath(((TAVSticker)localObject2).getFilePath());
+      ((TAVSticker)localObject1).setAssetFilePath(((TAVSticker)localObject2).getAssetFilePath());
     }
     if (!((TAVSticker)localObject1).getStickerTextItems().isEmpty())
     {
       ((TAVStickerTextItem)((TAVSticker)localObject1).getStickerTextItems().get(0)).setText(paramTextEditorData.getContent());
       ((TAVStickerTextItem)((TAVSticker)localObject1).getStickerTextItems().get(0)).setTextColor(paramTextEditorData.getTextColor());
+      ((TAVStickerTextItem)((TAVSticker)localObject1).getStickerTextItems().get(0)).setFontPath(paramTextEditorData.getFontPath());
     }
-    ((TAVSticker)localObject1).init();
+    ((TAVSticker)localObject1).updateTextData();
+    ((TAVSticker)localObject1).updateImageData();
+    if (this.stickerOperationCallback != null) {
+      this.stickerOperationCallback.onUpdateTextStickerDone(((TAVSticker)localObject1).getStickerId());
+    }
     this.stickerContext.loadSticker((TAVSticker)localObject1);
     return localObject1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.weseevideo.editor.sticker.StickerController
  * JD-Core Version:    0.7.0.1
  */

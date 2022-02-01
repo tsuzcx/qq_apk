@@ -1,32 +1,41 @@
-import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.view.View;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import java.util.Map;
 
-public abstract interface xby
+public class xby
+  extends xdt
 {
-  @NonNull
-  public abstract Context a();
+  StoryVideoItem a;
+  public xxm a;
   
-  public abstract Intent a(xlb paramxlb);
+  public xby(StoryVideoItem paramStoryVideoItem)
+  {
+    this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem = paramStoryVideoItem;
+  }
   
-  @NonNull
-  public abstract View a();
+  public void a()
+  {
+    if (this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem == null)
+    {
+      yqp.c(this.b, "Error: ", new IllegalStateException("这里VideoItem为空, 临时保护, 可能存在逻辑异常"));
+      b(false);
+      return;
+    }
+    wqw localwqw = this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.getPollLayout();
+    if (localwqw != null)
+    {
+      this.jdField_a_of_type_Xxm = new xxj();
+      this.jdField_a_of_type_Xxm.a(this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVideoThumbnailUrl, 0, 0, new xbz(this, localwqw));
+      return;
+    }
+    a("result", this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVideoThumbnailUrl);
+    b(true);
+  }
   
-  public abstract void a(int paramInt1, @Nullable Intent paramIntent, int paramInt2, int paramInt3);
-  
-  public abstract void a(CharSequence paramCharSequence, boolean paramBoolean, long paramLong);
-  
-  public abstract void b();
-  
-  @Nullable
-  public abstract Activity getActivity();
+  protected void a(Map<String, Object> paramMap) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     xby
  * JD-Core Version:    0.7.0.1
  */

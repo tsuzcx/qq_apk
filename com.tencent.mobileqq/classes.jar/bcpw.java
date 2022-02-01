@@ -1,12 +1,27 @@
-public class bcpw
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.imcore.proxy.IMCoreAppRuntime;
+import com.tencent.mobileqq.imcore.proxy.RecentRoute.ContactUtilsProxy.Proxy;
+
+public final class bcpw
+  implements RecentRoute.ContactUtilsProxy.Proxy
 {
-  public int a;
-  public long a;
-  public String a;
-  public int b;
-  public int c;
-  public int d;
-  public int e;
+  public String getBuddyName(IMCoreAppRuntime paramIMCoreAppRuntime, String paramString, boolean paramBoolean)
+  {
+    String str = paramString;
+    if ((paramIMCoreAppRuntime instanceof QQAppInterface)) {
+      str = bglf.b((QQAppInterface)paramIMCoreAppRuntime, paramString, true);
+    }
+    return str;
+  }
+  
+  public String getTroopName(IMCoreAppRuntime paramIMCoreAppRuntime, String paramString, boolean paramBoolean)
+  {
+    String str = paramString;
+    if ((paramIMCoreAppRuntime instanceof QQAppInterface)) {
+      str = bglf.a((QQAppInterface)paramIMCoreAppRuntime, paramString, true);
+    }
+    return str;
+  }
 }
 
 

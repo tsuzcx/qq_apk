@@ -1,144 +1,33 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import java.io.IOException;
-import org.apache.http.Header;
-import org.apache.http.HttpEntity;
-import org.apache.http.HttpResponse;
-import org.apache.http.StatusLine;
-import org.apache.http.client.HttpResponseException;
-import org.apache.http.entity.BufferedHttpEntity;
-import org.apache.http.util.EntityUtils;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.av.VideoController;
+import com.tencent.av.app.VideoAppInterface;
 
 public class lcl
+  implements DialogInterface.OnClickListener
 {
-  private Handler a;
+  public lcl(VideoController paramVideoController, boolean paramBoolean1, boolean paramBoolean2) {}
   
-  public lcl()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (Looper.myLooper() != null) {
-      this.a = new lcm(this);
-    }
-  }
-  
-  protected Message a(int paramInt, Object paramObject)
-  {
-    if (this.a != null) {
-      return this.a.obtainMessage(paramInt, paramObject);
-    }
-    Message localMessage = Message.obtain();
-    localMessage.what = paramInt;
-    localMessage.obj = paramObject;
-    return localMessage;
-  }
-  
-  public void a() {}
-  
-  public void a(int paramInt, Header[] paramArrayOfHeader, String paramString) {}
-  
-  protected void a(Message paramMessage)
-  {
-    switch (paramMessage.what)
+    if (!this.jdField_a_of_type_Boolean)
     {
-    default: 
-      return;
-    case 0: 
-      paramMessage = (Object[])paramMessage.obj;
-      c(((Integer)paramMessage[0]).intValue(), (Header[])paramMessage[1], (String)paramMessage[2]);
-      return;
-    case 1: 
-      paramMessage = (Object[])paramMessage.obj;
-      c((Throwable)paramMessage[0], (String)paramMessage[1]);
-      return;
-    case 2: 
-      a();
-      return;
-    }
-    b();
-  }
-  
-  public void a(Throwable paramThrowable, String paramString) {}
-  
-  public void a(Throwable paramThrowable, byte[] paramArrayOfByte)
-  {
-    b(a(1, new Object[] { paramThrowable, paramArrayOfByte }));
-  }
-  
-  public void a(HttpResponse paramHttpResponse)
-  {
-    Object localObject3 = null;
-    StatusLine localStatusLine = paramHttpResponse.getStatusLine();
-    try
-    {
-      HttpEntity localHttpEntity = paramHttpResponse.getEntity();
-      localObject1 = localObject3;
-      if (localHttpEntity != null) {
-        localObject1 = EntityUtils.toString(new BufferedHttpEntity(localHttpEntity), "UTF-8");
+      paramInt = this.jdField_a_of_type_ComTencentAvVideoController.f();
+      this.jdField_a_of_type_ComTencentAvVideoController.a("onHowling_click", this.jdField_a_of_type_ComTencentAvVideoController.jdField_a_of_type_Long, true, false, -1);
+      this.jdField_a_of_type_ComTencentAvVideoController.a(-1L, paramInt, this.jdField_a_of_type_ComTencentAvVideoController.f());
+      if (this.jdField_a_of_type_ComTencentAvVideoController.jdField_a_of_type_ComTencentAvAppVideoAppInterface != null) {
+        this.jdField_a_of_type_ComTencentAvVideoController.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(new Object[] { Integer.valueOf(108) });
       }
     }
-    catch (IOException localIOException)
-    {
-      Object localObject2;
-      for (;;)
-      {
-        Object localObject1;
-        b(localIOException, (String)null);
-        localObject2 = localObject3;
-      }
-      b(localStatusLine.getStatusCode(), paramHttpResponse.getAllHeaders(), localObject2);
+    if (this.b) {
+      this.jdField_a_of_type_ComTencentAvVideoController.jdField_a_of_type_Mts.d();
     }
-    if (localStatusLine.getStatusCode() >= 300)
-    {
-      b(new HttpResponseException(localStatusLine.getStatusCode(), localStatusLine.getReasonPhrase()), (String)localObject1);
-      return;
-    }
-  }
-  
-  public void b() {}
-  
-  protected void b(int paramInt, Header[] paramArrayOfHeader, String paramString)
-  {
-    b(a(0, new Object[] { new Integer(paramInt), paramArrayOfHeader, paramString }));
-  }
-  
-  protected void b(Message paramMessage)
-  {
-    if (this.a != null)
-    {
-      this.a.sendMessage(paramMessage);
-      return;
-    }
-    a(paramMessage);
-  }
-  
-  public void b(Throwable paramThrowable, String paramString)
-  {
-    b(a(1, new Object[] { paramThrowable, paramString }));
-  }
-  
-  public void c()
-  {
-    b(a(2, null));
-  }
-  
-  protected void c(int paramInt, Header[] paramArrayOfHeader, String paramString)
-  {
-    a(paramInt, paramArrayOfHeader, paramString);
-  }
-  
-  protected void c(Throwable paramThrowable, String paramString)
-  {
-    a(paramThrowable, paramString);
-  }
-  
-  public void d()
-  {
-    b(a(3, null));
+    bcst.b(null, "CliOper", "", "", "0x8006993", "0x8006993", 0, 0, "", "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     lcl
  * JD-Core Version:    0.7.0.1
  */

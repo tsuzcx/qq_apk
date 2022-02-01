@@ -4,9 +4,9 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Message;
-import apon;
-import apoo;
-import apqh;
+import arro;
+import arrp;
+import arti;
 import com.tencent.mobileqq.activity.ChatActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.CustomEmotionBase;
@@ -22,7 +22,7 @@ import org.json.JSONObject;
 public class MessengerService$IncomingHandler$15
   extends IPicDownloadListener
 {
-  public MessengerService$IncomingHandler$15(apqh paramapqh, Bundle paramBundle, apon paramapon, MessengerService paramMessengerService, QQAppInterface paramQQAppInterface) {}
+  public MessengerService$IncomingHandler$15(arti paramarti, Bundle paramBundle, arro paramarro, MessengerService paramMessengerService, QQAppInterface paramQQAppInterface) {}
   
   public void onDone(List<CustomEmotionData> paramList1, List<CustomEmotionData> paramList2)
   {
@@ -82,14 +82,14 @@ public class MessengerService$IncomingHandler$15
       if (paramList2 != null) {
         paramList2.obtainMessage(10).sendToTarget();
       }
-      paramList2 = (apoo)this.val$qqApp.getManager(103);
+      paramList2 = (arrp)this.val$qqApp.getManager(103);
     } while ((paramList2 == null) || (paramList1 == null) || (paramList1.isEmpty()));
     paramList2.b(paramList1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.emosm.web.MessengerService.IncomingHandler.15
  * JD-Core Version:    0.7.0.1
  */

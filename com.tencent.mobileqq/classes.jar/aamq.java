@@ -1,64 +1,47 @@
-import android.app.Activity;
-import android.content.Context;
-import com.tencent.ad.tangram.AdError;
-import com.tencent.ad.tangram.canvas.views.canvas.AdCanvasData;
-import com.tencent.ad.tangram.canvas.views.canvas.AdCanvasDataBuilderV2;
-import com.tencent.ad.tangram.videoceiling.AdVideoCeilingAdapter;
-import com.tencent.ad.tangram.videoceiling.AdVideoCeilingAdapter.Params;
-import com.tencent.gdtad.aditem.GdtAd;
-import com.tencent.gdtad.jsbridge.GdtVideoCeilingFragmentForJS;
-import com.tencent.gdtad.views.video.GdtVideoData;
-import com.tencent.gdtad.views.videoceiling.GdtBaseVideoCeilingFragment;
-import com.tencent.gdtad.views.videoceiling.GdtVideoCeilingData;
-import java.lang.ref.WeakReference;
+import android.content.res.ColorStateList;
+import android.text.TextPaint;
+import android.text.TextUtils;
+import android.text.style.ClickableSpan;
+import android.view.View;
 
-public final class aamq
-  implements AdVideoCeilingAdapter
+public class aamq
+  extends ClickableSpan
 {
-  public AdError show(AdVideoCeilingAdapter.Params paramParams)
+  private int jdField_a_of_type_Int;
+  private aamr jdField_a_of_type_Aamr;
+  private ColorStateList jdField_a_of_type_AndroidContentResColorStateList;
+  private String jdField_a_of_type_JavaLangString;
+  
+  public aamq(String paramString, int paramInt, aamr paramaamr)
   {
-    if ((paramParams == null) || (!paramParams.isValid()) || (!(paramParams.ad instanceof GdtAd)))
-    {
-      aase.d("GdtVideoCeilingAdapter", "show error");
-      return new AdError(4);
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_Aamr = paramaamr;
+  }
+  
+  public aamq(String paramString, ColorStateList paramColorStateList, aamr paramaamr)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_AndroidContentResColorStateList = paramColorStateList;
+    this.jdField_a_of_type_Aamr = paramaamr;
+  }
+  
+  public void onClick(View paramView)
+  {
+    if ((!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (this.jdField_a_of_type_Aamr != null)) {
+      this.jdField_a_of_type_Aamr.a(this.jdField_a_of_type_JavaLangString);
     }
-    Object localObject = new GdtVideoData();
-    ((GdtVideoData)localObject).setUrl(paramParams.videoUrl);
-    ((GdtVideoData)localObject).setStartPositionMillis(paramParams.videoStartPositionMillis);
-    ((GdtVideoData)localObject).setLoop(paramParams.videoLoop);
-    ((GdtVideoData)localObject).setDirectPlay(paramParams.videoPlayForced);
-    GdtVideoCeilingData localGdtVideoCeilingData = new GdtVideoCeilingData();
-    localGdtVideoCeilingData.setAd((GdtAd)GdtAd.class.cast(paramParams.ad));
-    localGdtVideoCeilingData.setWebUrl(paramParams.webUrl);
-    localGdtVideoCeilingData.setVideoData((GdtVideoData)localObject);
-    switch (paramParams.style)
-    {
-    default: 
-      return new AdError(4);
-    case 1: 
-      localGdtVideoCeilingData.setStyle(1);
+  }
+  
+  public void updateDrawState(TextPaint paramTextPaint)
+  {
+    if (this.jdField_a_of_type_Int > 0) {
+      paramTextPaint.setColor(this.jdField_a_of_type_Int);
     }
-    while (!localGdtVideoCeilingData.isValid())
-    {
-      aase.d("GdtVideoCeilingAdapter", "show error");
-      return new AdError(4);
-      localGdtVideoCeilingData.setStyle(2);
-      continue;
-      localGdtVideoCeilingData.setStyle(3);
-      continue;
-      localObject = AdCanvasDataBuilderV2.build((Context)paramParams.activity.get(), paramParams.ad, paramParams.autodownload);
-      if ((localObject == null) || (!((AdCanvasData)localObject).isValid()))
-      {
-        localGdtVideoCeilingData.setStyle(1);
-      }
-      else
-      {
-        localGdtVideoCeilingData.setCanvasData((AdCanvasData)localObject);
-        localGdtVideoCeilingData.setStyle(4);
-      }
+    if (this.jdField_a_of_type_AndroidContentResColorStateList != null) {
+      paramTextPaint.setColor(this.jdField_a_of_type_AndroidContentResColorStateList.getColorForState(paramTextPaint.drawableState, 0));
     }
-    GdtBaseVideoCeilingFragment.a((Activity)paramParams.activity.get(), GdtVideoCeilingFragmentForJS.class, localGdtVideoCeilingData, paramParams.extrasForIntent);
-    return new AdError(0);
+    paramTextPaint.setUnderlineText(false);
   }
 }
 

@@ -1,18 +1,23 @@
+import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.aio.photo.PhotoListPanel;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.apollo.utils.ApolloUtil;
+import com.tencent.mobileqq.utils.VipUtils;
 
-public class agkz
+class agkz
   implements DialogInterface.OnClickListener
 {
-  public agkz(PhotoListPanel paramPhotoListPanel) {}
+  agkz(agky paramagky, String paramString, int paramInt) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("PhotoListPanel", 2, "cancel shortvideo_mobile_send_confirm dialog");
-    }
+    paramDialogInterface = new Intent(agky.a(this.jdField_a_of_type_Agky), QQBrowserActivity.class);
+    paramDialogInterface.putExtra("url", this.jdField_a_of_type_JavaLangString);
+    agky.a(this.jdField_a_of_type_Agky).startActivity(paramDialogInterface);
+    VipUtils.a(agky.a(this.jdField_a_of_type_Agky), "cmshow", "Apollo", "activity_alert_view", ApolloUtil.b(agky.a(this.jdField_a_of_type_Agky).jdField_a_of_type_Int), 0, new String[] { "" + this.jdField_a_of_type_Int, "1" });
   }
 }
 

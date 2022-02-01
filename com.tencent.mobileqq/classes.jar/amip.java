@@ -1,29 +1,10 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.app.automator.step.RegisterProxy;
-
-public class amip
-  extends Handler
+public abstract interface amip
 {
-  public amip(RegisterProxy paramRegisterProxy, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    }
-    RegisterProxy.a(this.a, false);
-  }
+  public abstract void a(int[] paramArrayOfInt, int paramInt1, int paramInt2, int paramInt3, long paramLong);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amip
  * JD-Core Version:    0.7.0.1
  */

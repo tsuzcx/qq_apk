@@ -1,22 +1,36 @@
-public class bnkq
+import android.content.Context;
+import android.graphics.PointF;
+import android.support.annotation.Nullable;
+import android.support.v7.widget.LinearSmoothScroller;
+import android.view.View;
+
+class bnkq
+  extends LinearSmoothScroller
 {
-  public int a;
-  public String a;
-  public boolean a;
-  public int b;
-  public String b;
-  public boolean b;
-  public String c;
-  public boolean c;
-  public String d;
-  public boolean d;
-  public String e;
-  public String f;
-  public String g;
-  
-  public String toString()
+  public bnkq(bnkp parambnkp, Context paramContext)
   {
-    return "danceScoreRate : " + this.jdField_a_of_type_JavaLangString + "\ndanceScore : " + this.jdField_a_of_type_Int + "\nptvCategory : " + this.jdField_b_of_type_JavaLangString + "\nptvId : " + this.jdField_c_of_type_JavaLangString + " \nactivityType : " + this.jdField_d_of_type_JavaLangString + "\nactivityId : " + this.e + "\noverPercent : " + this.f + "\nuseSpecialShare : " + this.jdField_a_of_type_Boolean + "\nshareWebUrl : " + this.g + "\nisShookHead : " + this.jdField_b_of_type_Boolean + "\nisRandomFortune : " + this.jdField_c_of_type_Boolean + "\nisFoolsDay : " + this.jdField_d_of_type_Boolean + "\nshookHeadCount : " + this.jdField_b_of_type_Int;
+    super(paramContext);
+  }
+  
+  public int calculateDxToMakeVisible(View paramView, int paramInt)
+  {
+    return bnkp.a(this.a).a(-this.a.g);
+  }
+  
+  public int calculateDyToMakeVisible(View paramView, int paramInt)
+  {
+    return bnkp.a(this.a).b(-this.a.g);
+  }
+  
+  public int calculateTimeForScrolling(int paramInt)
+  {
+    return (int)(Math.max(0.01F, Math.min(Math.abs(paramInt), this.a.d) / this.a.d) * bnkp.a(this.a));
+  }
+  
+  @Nullable
+  public PointF computeScrollVectorForPosition(int paramInt)
+  {
+    return new PointF(bnkp.a(this.a).a(this.a.g), bnkp.a(this.a).b(this.a.g));
   }
 }
 

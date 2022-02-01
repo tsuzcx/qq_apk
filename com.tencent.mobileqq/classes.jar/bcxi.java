@@ -1,24 +1,58 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import android.os.Handler;
-import com.tencent.mobileqq.trooppiceffects.view.ShakePicView;
-import com.tencent.mobileqq.trooppiceffects.view.ShakePicView.1.1;
+import android.content.Context;
+import android.os.Bundle;
+import android.text.TextUtils;
+import android.view.View;
+import java.io.ObjectInput;
+import java.io.ObjectOutput;
+import org.xmlpull.v1.XmlSerializer;
 
 public class bcxi
-  implements Animator.AnimatorListener
+  extends bcvs
 {
-  public bcxi(ShakePicView paramShakePicView) {}
+  public int o;
   
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
+  public bcxi()
   {
-    this.a.a.postDelayed(new ShakePicView.1.1(this), 160L);
+    this.a = "voice";
   }
   
-  public void onAnimationRepeat(Animator paramAnimator) {}
+  public View a(Context paramContext, View paramView, Bundle paramBundle)
+  {
+    return null;
+  }
   
-  public void onAnimationStart(Animator paramAnimator) {}
+  public String a()
+  {
+    return null;
+  }
+  
+  public void a(ObjectInput paramObjectInput)
+  {
+    super.a(paramObjectInput);
+    this.o = paramObjectInput.readInt();
+  }
+  
+  public void a(ObjectOutput paramObjectOutput)
+  {
+    super.a(paramObjectOutput);
+    paramObjectOutput.writeInt(this.o);
+  }
+  
+  public void a(XmlSerializer paramXmlSerializer)
+  {
+    paramXmlSerializer.startTag(null, "voice");
+    paramXmlSerializer.attribute(null, "length", String.valueOf(this.o));
+    paramXmlSerializer.endTag(null, "voice");
+  }
+  
+  public boolean a(bcxj parambcxj)
+  {
+    parambcxj = parambcxj.a("length");
+    if (!TextUtils.isEmpty(parambcxj)) {
+      this.o = Integer.parseInt(parambcxj);
+    }
+    return true;
+  }
 }
 
 

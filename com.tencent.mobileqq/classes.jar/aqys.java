@@ -1,34 +1,55 @@
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
 class aqys
-  extends aqyt
+  implements DialogInterface.OnClickListener
 {
-  public aqys(aqyp paramaqyp)
-  {
-    super(paramaqyp);
-  }
+  aqys(aqyo paramaqyo, Runnable paramRunnable, boolean paramBoolean1, String paramString, boolean paramBoolean2) {}
   
-  protected String a()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return "StateAcceptByPCWhenToOffFailed";
-  }
-  
-  protected void a()
-  {
-    if (this.jdField_a_of_type_Aqyp.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity == null)
+    paramDialogInterface.dismiss();
+    this.jdField_a_of_type_JavaLangRunnable.run();
+    Object localObject;
+    if (this.jdField_a_of_type_Boolean)
     {
-      QLog.e("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Aqyp.jdField_a_of_type_Long + "]. recvOnLineFile entity is null");
-      return;
+      paramDialogInterface = "0X800AE6B";
+      localObject = this.jdField_a_of_type_JavaLangString;
+      if (!this.b) {
+        break label99;
+      }
+      str = "size";
+      label41:
+      aqyo.a(paramDialogInterface, (String)localObject, str);
+      localObject = blyl.a();
+      if (!this.jdField_a_of_type_Boolean) {
+        break label105;
+      }
+      paramDialogInterface = "2";
+      label63:
+      if (!this.jdField_a_of_type_Boolean) {
+        break label111;
+      }
     }
-    aqyp.b(this.jdField_a_of_type_Aqyp, 11, 5);
-    aqyp.c(this.jdField_a_of_type_Aqyp, 11, 5);
-    QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Aqyp.jdField_a_of_type_Long + "] state change :(" + this.jdField_a_of_type_Aqyt.a() + "->StateAcceptByPC)");
-    this.jdField_a_of_type_Aqyt = new aqyq(this.jdField_a_of_type_Aqyp);
+    label99:
+    label105:
+    label111:
+    for (String str = "2";; str = "1")
+    {
+      ((blyl)localObject).a("Later", "4", "platform898", paramDialogInterface, str, 102, 1, System.currentTimeMillis());
+      return;
+      paramDialogInterface = "0X800AE65";
+      break;
+      str = "full";
+      break label41;
+      paramDialogInterface = "3";
+      break label63;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aqys
  * JD-Core Version:    0.7.0.1
  */

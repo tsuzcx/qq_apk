@@ -1,15 +1,21 @@
-import android.app.Activity;
-import android.os.Bundle;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public abstract interface uqw<T extends Activity>
+class uqw
+  implements View.OnClickListener
 {
-  public abstract void a(T paramT);
+  uqw(uqv paramuqv) {}
   
-  public abstract void a(T paramT, Bundle paramBundle);
+  public void onClick(View paramView)
+  {
+    uqv.a(this.a);
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     uqw
  * JD-Core Version:    0.7.0.1
  */

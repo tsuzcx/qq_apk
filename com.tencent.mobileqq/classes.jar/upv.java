@@ -1,99 +1,42 @@
 import android.text.TextUtils;
-import com.tencent.biz.qqstory.app.QQStoryContext;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import java.io.IOException;
-import java.net.URLEncoder;
-import org.apache.http.HttpResponse;
-import org.apache.http.StatusLine;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.widget.ImageView;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
 
-public class upv
-  extends upy
+final class upv
+  implements URLDrawable.URLDrawableListener
 {
-  public int a;
-  public String a;
-  public String b;
-  public String c;
-  public String d;
+  upv(String paramString1, ImageView paramImageView, String paramString2) {}
   
-  public upv(String paramString)
+  public void onLoadCanceled(URLDrawable paramURLDrawable)
   {
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_JavaLangString = paramString;
+    upe.a("815", "onLoadCanceled - " + this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130841680);
   }
   
-  private ErrorMessage a()
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
   {
-    Object localObject = String.format("https://cgi.connect.qq.com/qqconnectopen/get_urlinfoForQQV2?url=%2$s&uin=%1$s", new Object[] { QQStoryContext.a().a(), URLEncoder.encode(this.jdField_a_of_type_JavaLangString) });
-    long l = System.currentTimeMillis();
-    localObject = ndd.a(QQStoryContext.a().a(), (String)localObject, null, "GET", null, null, 5000, 5000);
-    if ((localObject != null) && (((HttpResponse)localObject).getStatusLine().getStatusCode() == 200))
-    {
-      localObject = ndd.a((HttpResponse)localObject);
-      wxe.a("Q.qqstory.publish.upload.LinkRichObject", "http resp %s", localObject);
-      localObject = new JSONObject((String)localObject);
-      this.jdField_a_of_type_Int = Integer.parseInt(((JSONObject)localObject).getString("ret"));
-      if (this.jdField_a_of_type_Int != 0) {
-        return new ErrorMessage(96000002, "server error code:" + this.jdField_a_of_type_Int);
-      }
-    }
-    else
-    {
-      wxe.d("Q.qqstory.publish.upload.LinkRichObject", "");
-      if (localObject != null) {}
-      for (localObject = "http code:" + ((HttpResponse)localObject).getStatusLine();; localObject = "response is null") {
-        return new ErrorMessage(96000003, (String)localObject);
-      }
-    }
-    String str = ((JSONObject)localObject).getString("title");
-    if ((!TextUtils.isEmpty(str)) && (TextUtils.isEmpty(this.b))) {
-      this.b = str;
-    }
-    str = ((JSONObject)localObject).getString("abstract");
-    if ((!TextUtils.isEmpty(str)) && (TextUtils.isEmpty(this.c))) {
-      this.c = str;
-    }
-    localObject = ((JSONObject)localObject).getString("thumbUrl");
-    if ((!TextUtils.isEmpty((CharSequence)localObject)) && (TextUtils.isEmpty(this.d))) {
-      this.d = ((String)localObject);
-    }
-    wxe.d("Q.qqstory.publish.upload.LinkRichObject", "request take time %dms", new Object[] { Long.valueOf(System.currentTimeMillis() - l) });
-    return new ErrorMessage();
+    upe.a("815", "onLoadFialed - " + this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130841680);
   }
   
-  protected void a()
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt)
   {
-    try
-    {
-      if (a().isSuccess())
-      {
-        b();
-        notifyResult(new ErrorMessage());
-        return;
-      }
-    }
-    catch (JSONException localJSONException)
-    {
-      wxe.c("Q.qqstory.publish.upload.LinkRichObject", "parse url ", localJSONException);
-      new ErrorMessage(96000001, localJSONException.getMessage());
-      b();
-      notifyResult(new ErrorMessage());
-      return;
-    }
-    catch (IOException localIOException)
-    {
-      for (;;)
-      {
-        wxe.c("Q.qqstory.publish.upload.LinkRichObject", "parse url ", localIOException);
-        new ErrorMessage(96000000, localIOException.getMessage());
-      }
+    upe.a("815", "onLoadProgressed - " + this.jdField_a_of_type_JavaLangString);
+  }
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  {
+    upe.a("815", "onLoadSuccessed - " + this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(paramURLDrawable);
+    if (TextUtils.equals(this.jdField_a_of_type_JavaLangString, "banner")) {
+      uha.b(2, this.b);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     upv
  * JD-Core Version:    0.7.0.1
  */

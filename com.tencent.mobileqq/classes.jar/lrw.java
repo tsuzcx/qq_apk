@@ -1,219 +1,260 @@
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.text.TextUtils;
-import com.tencent.av.business.manager.EffectConfigBase;
-import java.io.File;
-import org.json.JSONException;
-import org.json.JSONObject;
+import java.util.List;
 
 public class lrw
 {
-  private static float jdField_a_of_type_Float = -1.0F;
-  private static int jdField_a_of_type_Int;
-  private static final String jdField_a_of_type_JavaLangString = len.h() + "SKINCOLOR" + File.separator;
+  private float A;
+  private float jdField_a_of_type_Float;
+  private int jdField_a_of_type_Int = 0;
+  private long jdField_a_of_type_Long;
+  private lrl jdField_a_of_type_Lrl;
+  private lrx jdField_a_of_type_Lrx;
+  private boolean jdField_a_of_type_Boolean = false;
+  private float jdField_b_of_type_Float;
+  private int jdField_b_of_type_Int = 1000;
+  private boolean jdField_b_of_type_Boolean;
+  private float jdField_c_of_type_Float;
+  private boolean jdField_c_of_type_Boolean;
+  private float jdField_d_of_type_Float;
+  private boolean jdField_d_of_type_Boolean;
+  private float jdField_e_of_type_Float;
+  private boolean jdField_e_of_type_Boolean;
+  private float f;
+  private float g;
+  private float h;
+  private float i;
+  private float j = 1.0F;
+  private float k = 1.0F;
+  private float l;
+  private float m = 1.0F;
+  private float n = 1.0F;
+  private float o = 1.0F;
+  private float p = 1.0F;
+  private float q;
+  private float r;
+  private float s;
+  private float t;
+  private float u;
+  private float v;
+  private float w;
+  private float x;
+  private float y;
+  private float z;
   
-  public static float a()
+  public float a()
   {
-    if (jdField_a_of_type_Float != -1.0F) {
-      return jdField_a_of_type_Float;
+    return this.jdField_c_of_type_Float;
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_Long = -1L;
+  }
+  
+  public void a(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
+  {
+    this.jdField_d_of_type_Boolean = true;
+    this.m = paramFloat1;
+    this.q = paramFloat1;
+    this.n = paramFloat2;
+    this.r = paramFloat2;
+    this.o = paramFloat3;
+    this.p = paramFloat4;
+  }
+  
+  public void a(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, float paramFloat5, float paramFloat6)
+  {
+    this.jdField_b_of_type_Boolean = true;
+    this.jdField_a_of_type_Float = paramFloat1;
+    this.jdField_c_of_type_Float = paramFloat1;
+    this.jdField_d_of_type_Float = paramFloat2;
+    this.f = paramFloat2;
+    this.g = paramFloat3;
+    this.i = paramFloat3;
+    this.jdField_b_of_type_Float = paramFloat4;
+    this.jdField_e_of_type_Float = paramFloat5;
+    this.h = paramFloat6;
+  }
+  
+  public void a(int paramInt)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public void a(lrl paramlrl)
+  {
+    this.jdField_a_of_type_Lrl = paramlrl;
+  }
+  
+  public void a(lrx paramlrx)
+  {
+    this.jdField_a_of_type_Lrx = paramlrx;
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_b_of_type_Boolean;
+  }
+  
+  public boolean a(long paramLong)
+  {
+    if (this.jdField_a_of_type_Boolean)
+    {
+      b();
+      return this.jdField_a_of_type_Boolean;
+    }
+    if (this.jdField_a_of_type_Long == -1L) {
+      this.jdField_a_of_type_Long = paramLong;
+    }
+    long l1 = paramLong - this.jdField_a_of_type_Long;
+    if (l1 == 0L) {
+      return false;
+    }
+    paramLong = l1;
+    if (l1 >= this.jdField_b_of_type_Int)
+    {
+      paramLong = this.jdField_b_of_type_Int;
+      this.jdField_a_of_type_Boolean = true;
+      b();
+    }
+    float f1;
+    if (this.jdField_a_of_type_Int == 0) {
+      f1 = (float)paramLong * 1.0F / this.jdField_b_of_type_Int;
     }
     for (;;)
     {
-      try
+      if (this.jdField_b_of_type_Boolean)
       {
-        lrf locallrf = lrf.a();
-        if (locallrf == null) {
-          continue;
-        }
-        jdField_a_of_type_Float = locallrf.a();
-        lek.c("EffectBeautyTools", "mBeautyRatio:" + jdField_a_of_type_Float);
+        this.jdField_c_of_type_Float = (this.jdField_a_of_type_Float + (this.jdField_b_of_type_Float - this.jdField_a_of_type_Float) * f1);
+        this.f = (this.jdField_d_of_type_Float + (this.jdField_e_of_type_Float - this.jdField_d_of_type_Float) * f1);
+        this.i = (this.g + (this.h - this.g) * f1);
       }
-      catch (Exception localException)
+      if (this.jdField_d_of_type_Boolean)
       {
-        lek.c("EffectBeautyTools", "getNewBeautyRatio Exception:" + localException);
-        jdField_a_of_type_Float = 1.0F;
-        continue;
+        this.q = (this.m + (this.o - this.m) * f1);
+        this.r = (this.n + (this.p - this.n) * f1);
       }
-      return jdField_a_of_type_Float;
-      jdField_a_of_type_Float = 1.0F;
-    }
-  }
-  
-  private static lry a(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString))
-    {
-      lek.c("EffectBeautyTools", "parseConfig|content is empty.");
-      return null;
-    }
-    for (;;)
-    {
-      try
+      if (this.jdField_e_of_type_Boolean)
       {
-        localJSONObject = new JSONObject(paramString).getJSONObject("skinColorFilter");
+        this.y = (this.s + (this.t - this.s) * f1);
+        this.z = (this.u + (this.v - this.u) * f1);
+        this.A = (this.w + (this.x - this.w) * f1);
       }
-      catch (JSONException localJSONException3)
-      {
-        JSONObject localJSONObject;
-        int i;
-        String str1;
-        String str2;
-        locallry = null;
-        continue;
-      }
-      try
-      {
-        i = Integer.valueOf(localJSONObject.getString("filterid")).intValue();
-        str1 = localJSONObject.getString("resurl");
-        str2 = localJSONObject.getString("md5");
-        locallry = new lry(i, str1, str2);
-        try
-        {
-          lek.c("EffectBeautyTools", "parseConfig:" + i + "|" + str1 + "|" + str2);
-          return locallry;
-        }
-        catch (JSONException localJSONException1) {}
-      }
-      catch (JSONException localJSONException4)
-      {
-        locallry = null;
-        continue;
-      }
-      try
-      {
-        localJSONException1.printStackTrace();
-        lek.c("EffectBeautyTools", "parseConfig failed. info = " + localJSONObject);
-        return locallry;
-      }
-      catch (JSONException localJSONException2)
-      {
-        localJSONException2.printStackTrace();
-        lek.c("EffectBeautyTools", "parseConfig|parse failed.context = " + paramString);
-        return locallry;
-      }
-    }
-  }
-  
-  private static void a()
-  {
-    SharedPreferences.Editor localEditor = EffectConfigBase.a(180, EffectConfigBase.c).edit();
-    localEditor.putInt("qav_effect_beauty_config_first_launch", 1);
-    localEditor.commit();
-  }
-  
-  public static void a(Context paramContext)
-  {
-    try
-    {
-      if (b())
-      {
-        a();
-        if (new File(jdField_a_of_type_JavaLangString).exists()) {
-          bdhb.a(jdField_a_of_type_JavaLangString);
-        }
-      }
-      paramContext = a(EffectConfigBase.b(180, EffectConfigBase.c));
-      if ((paramContext != null) && (!TextUtils.isEmpty(paramContext.jdField_a_of_type_JavaLangString)))
-      {
-        Object localObject = new File(jdField_a_of_type_JavaLangString + "params.json");
-        lek.c("EffectBeautyTools", "preDownloadResource :" + ((File)localObject).exists());
-        if (!((File)localObject).exists())
-        {
-          localObject = new baub();
-          ((baub)localObject).jdField_a_of_type_Baug = new lrx();
-          ((baub)localObject).jdField_a_of_type_JavaLangString = paramContext.jdField_a_of_type_JavaLangString;
-          ((baub)localObject).jdField_a_of_type_Int = 0;
-          ((baub)localObject).c = (len.h() + "skin_color.zip");
-          ((baub)localObject).a(paramContext);
-          lel.a().a((bave)localObject);
-        }
-      }
-      return;
-    }
-    catch (Exception paramContext) {}
-  }
-  
-  public static void a(Context paramContext, String paramString, int paramInt, boolean paramBoolean)
-  {
-    a(paramContext, paramString, EffectConfigBase.b(180, EffectConfigBase.c));
-    EffectConfigBase.a(180, EffectConfigBase.c, paramInt, paramString);
-    if (paramBoolean) {
-      a(paramContext);
-    }
-  }
-  
-  private static void a(Context paramContext, String paramString1, String paramString2)
-  {
-    Object localObject = null;
-    if (!TextUtils.isEmpty(paramString1)) {}
-    for (paramContext = a(paramString1);; paramContext = null)
-    {
-      paramString1 = localObject;
-      if (!TextUtils.isEmpty(paramString2)) {
-        paramString1 = a(paramString2);
-      }
-      if (paramContext == null) {
-        bdhb.a(jdField_a_of_type_JavaLangString);
-      }
-      while ((paramString1 == null) || (paramContext.b.equals(paramString1.b))) {
-        return;
-      }
-      bdhb.a(jdField_a_of_type_JavaLangString);
-      return;
-    }
-  }
-  
-  public static boolean a()
-  {
-    if (jdField_a_of_type_Int != 0) {
-      return jdField_a_of_type_Int == 2;
-    }
-    for (;;)
-    {
-      try
-      {
-        lrf locallrf = lrf.a();
-        if ((locallrf == null) || (!locallrf.a()) || (!c())) {
-          continue;
-        }
-        jdField_a_of_type_Int = 2;
-        lek.c("EffectBeautyTools", "mIsSupportFlag:" + jdField_a_of_type_Int);
-      }
-      catch (Exception localException)
-      {
-        lek.c("EffectBeautyTools", "isSupportNewBeauty Exception:" + localException);
-        jdField_a_of_type_Int = 1;
-        continue;
-      }
-      if (jdField_a_of_type_Int == 2) {
+      if (!this.jdField_c_of_type_Boolean) {
         break;
       }
-      return false;
-      jdField_a_of_type_Int = 1;
+      float f2 = this.j;
+      this.l = (f1 * (this.k - this.j) + f2);
+      break;
+      if (this.jdField_a_of_type_Int == 1)
+      {
+        f1 = (float)paramLong;
+        f1 = (float)paramLong * (1.0F * f1) / this.jdField_b_of_type_Int / this.jdField_b_of_type_Int;
+      }
+      else if (this.jdField_a_of_type_Int == 2)
+      {
+        l1 = this.jdField_b_of_type_Int;
+        if (paramLong == 0L)
+        {
+          f1 = 0.0F;
+        }
+        else
+        {
+          f1 = (float)paramLong * 1.0F * (float)paramLong / (float)l1 / (float)l1;
+          f1 = ((float)l1 * 2.0F / (float)paramLong - 1.0F) * f1;
+        }
+      }
+      else
+      {
+        f1 = 1.0F;
+      }
     }
   }
   
-  private static boolean b()
+  public float b()
   {
-    boolean bool = false;
-    int i = EffectConfigBase.a(180, EffectConfigBase.c).getInt("qav_effect_beauty_config_first_launch", 0);
-    lek.c("EffectBeautyTools", "getIsFirstLauncher:" + i);
-    if (i == 0) {
-      bool = true;
-    }
-    return bool;
+    return this.f;
   }
   
-  private static boolean c()
+  public void b()
   {
-    int i = EffectConfigBase.c(180, EffectConfigBase.c);
-    return (new File(jdField_a_of_type_JavaLangString + "params.json").exists()) && (i != 0);
+    if (this.jdField_a_of_type_Lrl != null) {}
+    synchronized (this.jdField_a_of_type_Lrl.a())
+    {
+      this.jdField_a_of_type_Lrl.a().remove(this);
+      if (this.jdField_a_of_type_Lrx != null)
+      {
+        this.jdField_a_of_type_Lrx.a();
+        this.jdField_a_of_type_Lrx = null;
+      }
+      return;
+    }
+  }
+  
+  public void b(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, float paramFloat5, float paramFloat6)
+  {
+    this.jdField_e_of_type_Boolean = true;
+    this.s = paramFloat1;
+    this.y = paramFloat1;
+    this.t = paramFloat2;
+    this.u = paramFloat3;
+    this.z = paramFloat3;
+    this.v = paramFloat4;
+    this.w = paramFloat5;
+    this.A = paramFloat5;
+    this.x = paramFloat6;
+  }
+  
+  public void b(int paramInt)
+  {
+    this.jdField_b_of_type_Int = Math.abs(paramInt);
+    if (this.jdField_b_of_type_Int == 0) {
+      this.jdField_b_of_type_Int = 1;
+    }
+  }
+  
+  public boolean b()
+  {
+    return this.jdField_d_of_type_Boolean;
+  }
+  
+  public float c()
+  {
+    return this.i;
+  }
+  
+  public boolean c()
+  {
+    return this.jdField_e_of_type_Boolean;
+  }
+  
+  public float d()
+  {
+    return this.q;
+  }
+  
+  public float e()
+  {
+    return this.r;
+  }
+  
+  public float f()
+  {
+    return this.y;
+  }
+  
+  public float g()
+  {
+    return this.z;
+  }
+  
+  public float h()
+  {
+    return this.A;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     lrw
  * JD-Core Version:    0.7.0.1
  */

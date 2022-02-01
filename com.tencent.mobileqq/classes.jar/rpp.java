@@ -1,50 +1,26 @@
-import android.view.View;
-import android.view.animation.Interpolator;
-import com.tencent.biz.pubaccount.readinjoy.view.DailyTitleBarSwitcher;
-import com.tencent.widget.AbsListView;
+import com.tencent.biz.pubaccount.readinjoy.struct.UgcVideo;
+import org.jetbrains.annotations.NotNull;
 
-public class rpp
-  implements bhtv
+public final class rpp
+  extends oub
 {
-  public rpp(DailyTitleBarSwitcher paramDailyTitleBarSwitcher) {}
+  @NotNull
+  private UgcVideo a;
   
-  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
+  public rpp(@NotNull UgcVideo paramUgcVideo)
   {
-    if ((paramInt1 <= 1) && (this.a.getVisibility() == 0))
-    {
-      paramAbsListView = paramAbsListView.getChildAt(0);
-      if (paramAbsListView != null)
-      {
-        paramInt1 = paramAbsListView.getHeight();
-        paramInt2 = paramAbsListView.getTop();
-        if ((paramInt1 != 0) && (paramInt2 != 0))
-        {
-          float f = paramInt2 * -1.0F / paramInt1;
-          DailyTitleBarSwitcher.a(this.a, DailyTitleBarSwitcher.a(this.a).getInterpolation(f));
-          return;
-        }
-        DailyTitleBarSwitcher.a(this.a, 0.0F);
-        return;
-      }
-      DailyTitleBarSwitcher.a(this.a, 0.0F);
-      return;
-    }
-    DailyTitleBarSwitcher.a(this.a, 1.0F);
+    this.a = paramUgcVideo;
   }
   
-  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
+  @NotNull
+  public final UgcVideo a()
   {
-    if (paramInt == 0)
-    {
-      this.a.setLayerType(0, null);
-      return;
-    }
-    this.a.setLayerType(2, null);
+    return this.a;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     rpp
  * JD-Core Version:    0.7.0.1
  */

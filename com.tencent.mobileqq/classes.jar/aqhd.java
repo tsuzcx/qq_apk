@@ -1,13 +1,14 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-
-final class aqhd
-  implements DialogInterface.OnClickListener
+class aqhd
+  implements arfg
 {
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  aqhd(aqhb paramaqhb) {}
+  
+  public long a()
   {
-    azqs.b(null, "dc00898", "", "", "0X800ADA8", "0X800ADA8", 2, 0, "", "", "", "");
-    paramDialogInterface.dismiss();
+    if (aqhb.a(this.a) != null) {
+      return aqhb.a(this.a).a();
+    }
+    return 0L;
   }
 }
 

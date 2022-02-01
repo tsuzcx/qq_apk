@@ -1,430 +1,244 @@
-import android.graphics.RectF;
-import com.tencent.mobileqq.ar.arcloud.pb.JDSearch.JdSearchDetail;
-import com.tencent.mobileqq.ar.arcloud.pb.JDSearch.JdSearchRsp;
-import com.tencent.mobileqq.ar.arcloud.pb.JDSearch.JdSkuItem;
-import com.tencent.mobileqq.ar.arcloud.pb.JDSearch.Rectangle;
-import com.tencent.mobileqq.pb.PBFloatField;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBStringField;
-import java.util.Iterator;
+import android.app.Activity;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import android.text.TextUtils;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.apollo.process.data.CmGameInitParams;
+import com.tencent.mobileqq.apollo.utils.ApolloGameInvitation.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.utils.VipUtils;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.lang.ref.WeakReference;
+import java.util.ArrayList;
 import java.util.List;
+import org.json.JSONObject;
 
 public class anct
-  extends anaz
-  implements anbb
+  implements DialogInterface.OnDismissListener, AdapterView.OnItemClickListener, bkhw
 {
-  public static final String a;
-  public int a;
-  public long a;
-  public ancw a;
-  public ancz a;
-  public anda[] a;
-  public int b;
-  public String b;
-  public int c;
-  public String c;
-  public String d;
-  public String e = "";
+  private long jdField_a_of_type_Long;
+  private angn jdField_a_of_type_Angn;
+  private String jdField_a_of_type_JavaLangString;
+  private WeakReference<Activity> jdField_a_of_type_JavaLangRefWeakReference;
+  private String jdField_b_of_type_JavaLangString;
+  private WeakReference<AppInterface> jdField_b_of_type_JavaLangRefWeakReference;
+  private WeakReference<bkho> c;
   
-  static
+  public anct(AppInterface paramAppInterface, Activity paramActivity)
   {
-    jdField_a_of_type_JavaLangString = alud.a(2131701112);
-  }
-  
-  public anct()
-  {
-    super(2, 0);
-    this.jdField_a_of_type_Int = -1;
-  }
-  
-  public static ancw a(JDSearch.JdSearchRsp paramJdSearchRsp)
-  {
-    int j = -1;
-    float f2 = 0.0F;
-    ancw localancw = new ancw();
-    int i;
-    Object localObject1;
-    label57:
-    label106:
-    Object localObject2;
-    label132:
-    label158:
-    float f1;
-    label212:
-    label243:
-    ancv localancv;
-    if (paramJdSearchRsp.jd_search_errorcode.has())
+    try
     {
-      i = paramJdSearchRsp.jd_search_errorcode.get();
-      localancw.jdField_a_of_type_Int = i;
-      if (!paramJdSearchRsp.jd_search_errormsg.has()) {
-        break label633;
-      }
-      localObject1 = paramJdSearchRsp.jd_search_errormsg.get();
-      localancw.jdField_a_of_type_JavaLangString = ((String)localObject1);
-      if (!paramJdSearchRsp.jd_search_detail.has()) {
-        break label707;
-      }
-      localObject1 = (JDSearch.JdSearchDetail)paramJdSearchRsp.jd_search_detail.get();
-      if (!((JDSearch.JdSearchDetail)localObject1).errorcode.has()) {
-        break label640;
-      }
-      i = ((JDSearch.JdSearchDetail)localObject1).errorcode.get();
-      localancw.jdField_b_of_type_Int = i;
-      if (!((JDSearch.JdSearchDetail)localObject1).errormsg.has()) {
-        break label645;
-      }
-      paramJdSearchRsp = ((JDSearch.JdSearchDetail)localObject1).errormsg.get();
-      localancw.jdField_b_of_type_JavaLangString = paramJdSearchRsp;
-      if (!((JDSearch.JdSearchDetail)localObject1).jd_more_url.has()) {
-        break label651;
-      }
-      paramJdSearchRsp = ((JDSearch.JdSearchDetail)localObject1).jd_more_url.get();
-      localancw.d = paramJdSearchRsp;
-      if (((JDSearch.JdSearchDetail)localObject1).rectangle.has())
-      {
-        paramJdSearchRsp = (JDSearch.Rectangle)((JDSearch.JdSearchDetail)localObject1).rectangle.get();
-        localObject2 = localancw.jdField_a_of_type_AndroidGraphicsRectF;
-        if (!paramJdSearchRsp.left.has()) {
-          break label657;
-        }
-        f1 = paramJdSearchRsp.left.get();
-        ((RectF)localObject2).left = f1;
-        localObject2 = localancw.jdField_a_of_type_AndroidGraphicsRectF;
-        if (!paramJdSearchRsp.top.has()) {
-          break label662;
-        }
-        f1 = paramJdSearchRsp.top.get();
-        ((RectF)localObject2).top = f1;
-        localObject2 = localancw.jdField_a_of_type_AndroidGraphicsRectF;
-        if (!paramJdSearchRsp.right.has()) {
-          break label667;
-        }
-        f1 = paramJdSearchRsp.right.get();
-        label274:
-        ((RectF)localObject2).right = f1;
-        localObject2 = localancw.jdField_a_of_type_AndroidGraphicsRectF;
-        f1 = f2;
-        if (paramJdSearchRsp.bottom.has()) {
-          f1 = paramJdSearchRsp.bottom.get();
-        }
-        ((RectF)localObject2).bottom = f1;
-        i = j;
-        if (paramJdSearchRsp.is_user_rectangle.has()) {
-          i = paramJdSearchRsp.is_user_rectangle.get();
-        }
-        localancw.c = i;
-      }
-      if (!((JDSearch.JdSearchDetail)localObject1).jd_sku_item.has()) {
-        break label672;
-      }
-      paramJdSearchRsp = ((JDSearch.JdSearchDetail)localObject1).jd_sku_item.get();
-      label360:
-      if ((paramJdSearchRsp != null) && (!paramJdSearchRsp.isEmpty())) {
-        localancw.jdField_a_of_type_ArrayOfAncv = new ancv[paramJdSearchRsp.size()];
-      }
-      if ((paramJdSearchRsp == null) || (paramJdSearchRsp.size() <= 0)) {
-        break label707;
-      }
-      localObject1 = paramJdSearchRsp.iterator();
-      i = 0;
-      label410:
-      if (!((Iterator)localObject1).hasNext()) {
-        break label707;
-      }
-      localObject2 = (JDSearch.JdSkuItem)((Iterator)localObject1).next();
-      localancw.jdField_a_of_type_ArrayOfAncv[i] = new ancv();
-      localancv = localancw.jdField_a_of_type_ArrayOfAncv[i];
-      if (!((JDSearch.JdSkuItem)localObject2).detail_url.has()) {
-        break label677;
-      }
-      paramJdSearchRsp = ((JDSearch.JdSkuItem)localObject2).detail_url.get();
-      label475:
-      localancv.jdField_a_of_type_JavaLangString = paramJdSearchRsp;
-      localancv = localancw.jdField_a_of_type_ArrayOfAncv[i];
-      if (!((JDSearch.JdSkuItem)localObject2).image_url.has()) {
-        break label683;
-      }
-      paramJdSearchRsp = ((JDSearch.JdSkuItem)localObject2).image_url.get();
-      label510:
-      localancv.jdField_b_of_type_JavaLangString = paramJdSearchRsp;
-      localancv = localancw.jdField_a_of_type_ArrayOfAncv[i];
-      if (!((JDSearch.JdSkuItem)localObject2).sku_id.has()) {
-        break label689;
-      }
-      paramJdSearchRsp = ((JDSearch.JdSkuItem)localObject2).sku_id.get();
-      label545:
-      localancv.c = paramJdSearchRsp;
-      localancv = localancw.jdField_a_of_type_ArrayOfAncv[i];
-      if (!((JDSearch.JdSkuItem)localObject2).sku_name.has()) {
-        break label695;
-      }
-      paramJdSearchRsp = ((JDSearch.JdSkuItem)localObject2).sku_name.get();
-      label580:
-      localancv.d = paramJdSearchRsp;
-      localancv = localancw.jdField_a_of_type_ArrayOfAncv[i];
-      if (!((JDSearch.JdSkuItem)localObject2).sku_price.has()) {
-        break label701;
-      }
+      this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramActivity);
+      this.jdField_b_of_type_JavaLangRefWeakReference = new WeakReference(paramAppInterface);
+      this.jdField_a_of_type_JavaLangString = "";
+      return;
     }
-    label640:
-    label645:
-    label651:
-    label657:
-    label662:
-    label667:
-    label672:
-    label677:
-    label683:
-    label689:
-    label695:
-    label701:
-    for (paramJdSearchRsp = ((JDSearch.JdSkuItem)localObject2).sku_price.get();; paramJdSearchRsp = "")
+    catch (Throwable paramAppInterface)
     {
-      localancv.e = paramJdSearchRsp;
-      i += 1;
-      break label410;
-      i = -1;
-      break;
-      label633:
-      localObject1 = "";
-      break label57;
-      i = -1;
-      break label106;
-      paramJdSearchRsp = "";
-      break label132;
-      paramJdSearchRsp = "";
-      break label158;
-      f1 = 0.0F;
-      break label212;
-      f1 = 0.0F;
-      break label243;
-      f1 = 0.0F;
-      break label274;
-      paramJdSearchRsp = null;
-      break label360;
-      paramJdSearchRsp = "";
-      break label475;
-      paramJdSearchRsp = "";
-      break label510;
-      paramJdSearchRsp = "";
-      break label545;
-      paramJdSearchRsp = "";
-      break label580;
+      QLog.i("ApolloGameInvitation", 1, "[ApolloGameInvitation], errInfo->" + paramAppInterface.getMessage());
     }
-    label707:
-    return localancw;
   }
   
-  private ancy a()
+  private void a(int paramInt1, int paramInt2)
   {
-    boolean bool2 = false;
-    if (c())
+    if (this.jdField_a_of_type_Angn != null)
     {
-      ancy localancy = new ancy();
-      andb localandb = a();
-      if (localandb == null) {
-        return null;
-      }
-      if (this.jdField_a_of_type_Ancz != null)
-      {
-        localancy.jdField_a_of_type_AndroidGraphicsRectF = new RectF(this.jdField_a_of_type_Ancz.jdField_a_of_type_Int, this.jdField_a_of_type_Ancz.c, this.jdField_a_of_type_Ancz.jdField_b_of_type_Int, this.jdField_a_of_type_Ancz.d);
-        if (!localandb.jdField_b_of_type_Boolean) {
-          break label127;
-        }
-        localancy.jdField_a_of_type_JavaLangString = localandb.jdField_a_of_type_JavaLangString;
-        localancy.jdField_a_of_type_Boolean = false;
-        localancy.jdField_a_of_type_Double = localandb.jdField_a_of_type_Double;
-      }
-      for (;;)
-      {
-        return localancy;
-        localancy.jdField_a_of_type_AndroidGraphicsRectF = new RectF();
-        break;
-        label127:
-        localancy.jdField_a_of_type_JavaLangString = localandb.jdField_a_of_type_Ancx.jdField_a_of_type_JavaLangString;
-        boolean bool1 = bool2;
-        if (localandb.jdField_a_of_type_ArrayOfByte != null)
-        {
-          bool1 = bool2;
-          if (localandb.jdField_a_of_type_ArrayOfByte.length > 20) {
-            bool1 = true;
-          }
-        }
-        localancy.jdField_a_of_type_Boolean = bool1;
-        localancy.jdField_a_of_type_Double = localandb.jdField_a_of_type_Double;
-        localancy.jdField_a_of_type_ArrayOfByte = localandb.jdField_a_of_type_ArrayOfByte;
-        localancy.jdField_b_of_type_JavaLangString = localandb.d;
-        localancy.c = localandb.e;
-        localancy.d = localandb.f;
-        localancy.jdField_b_of_type_Boolean = localandb.jdField_a_of_type_Boolean;
+      amrk localamrk = ampj.a(this.jdField_a_of_type_Angn.jdField_a_of_type_Int);
+      if (localamrk != null) {
+        localamrk.a(paramInt1, paramInt2, 0, "");
       }
     }
-    return null;
   }
   
-  private andb a()
+  public void OnClick(View paramView, int paramInt)
   {
-    Object localObject1 = null;
-    Object localObject2 = null;
-    if (!c()) {}
-    do
-    {
-      do
-      {
-        return localObject2;
-        int i = 0;
-        while (i < this.jdField_a_of_type_ArrayOfAnda.length)
-        {
-          int j = 0;
-          while ((this.jdField_a_of_type_ArrayOfAnda[i].jdField_a_of_type_ArrayOfAndb != null) && (j < this.jdField_a_of_type_ArrayOfAnda[i].jdField_a_of_type_ArrayOfAndb.length))
-          {
-            if (localObject1 != null)
-            {
-              localObject2 = localObject1;
-              if (this.jdField_a_of_type_ArrayOfAnda[i].jdField_a_of_type_ArrayOfAndb[j].jdField_a_of_type_Double >= ((andb)localObject1).jdField_a_of_type_Double) {}
-            }
-            else
-            {
-              localObject2 = this.jdField_a_of_type_ArrayOfAnda[i].jdField_a_of_type_ArrayOfAndb[i];
-            }
-            j += 1;
-            localObject1 = localObject2;
-          }
-          i += 1;
-        }
-        localObject2 = localObject1;
-      } while (localObject1 != null);
-      localObject2 = localObject1;
-    } while (this.jdField_a_of_type_ArrayOfAnda.length != 1);
-    localObject1 = new andb();
-    ((andb)localObject1).jdField_b_of_type_Boolean = true;
-    ((andb)localObject1).jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ArrayOfAnda[0].jdField_a_of_type_JavaLangString;
-    ((andb)localObject1).jdField_a_of_type_Double = this.jdField_a_of_type_ArrayOfAnda[0].jdField_a_of_type_Double;
-    ((andb)localObject1).jdField_b_of_type_JavaLangString = this.jdField_a_of_type_ArrayOfAnda[0].jdField_a_of_type_JavaLangString;
-    ((andb)localObject1).c = 0;
-    ((andb)localObject1).g = "";
-    return localObject1;
+    d();
   }
   
-  public int a()
+  public angn a(String paramString)
   {
-    if (!a()) {
-      return -1;
+    if (QLog.isColorLevel()) {
+      QLog.d("cmgame.sendmsg", 2, new Object[] { "[getGameMsgInfo], params:", paramString, ",app:", this.jdField_b_of_type_JavaLangRefWeakReference });
     }
-    if (c())
-    {
-      andb localandb = a();
-      if ((localandb != null) && (localandb.jdField_a_of_type_ArrayOfByte != null) && (localandb.jdField_a_of_type_ArrayOfByte.length > 20)) {
-        return 1;
-      }
+    if ((TextUtils.isEmpty(paramString)) || (this.jdField_b_of_type_JavaLangRefWeakReference == null)) {
+      paramString = null;
     }
-    return 0;
-  }
-  
-  public ancu a()
-  {
-    ancu localancu = new ancu();
-    localancu.jdField_a_of_type_Boolean = true;
-    localancu.jdField_a_of_type_Ancw = this.jdField_a_of_type_Ancw;
-    localancu.jdField_a_of_type_Ancy = a();
-    localancu.c = false;
-    return localancu;
-  }
-  
-  public String a()
-  {
-    andb localandb = a();
-    if (localandb == null) {
-      return "";
-    }
-    return localandb.g;
-  }
-  
-  public boolean a()
-  {
-    return c();
-  }
-  
-  public boolean a(anct paramanct)
-  {
-    if (paramanct == null) {}
-    andb localandb;
-    do
-    {
-      return false;
-      paramanct = paramanct.a();
-      localandb = a();
-    } while ((paramanct == null) || (localandb == null) || (!paramanct.jdField_a_of_type_JavaLangString.equalsIgnoreCase(localandb.jdField_a_of_type_JavaLangString)));
-    return true;
-  }
-  
-  public byte[] a()
-  {
-    ancy localancy = a();
-    if ((localancy != null) && (localancy.jdField_a_of_type_Boolean)) {
-      return localancy.jdField_a_of_type_ArrayOfByte;
-    }
-    return null;
-  }
-  
-  public boolean b()
-  {
-    return (this.jdField_a_of_type_Int == 0) && (this.jdField_a_of_type_Ancw != null) && (this.jdField_a_of_type_Ancw.jdField_a_of_type_Int == 0) && (this.jdField_a_of_type_Ancw.jdField_b_of_type_Int == 0) && (this.jdField_a_of_type_Ancw.jdField_a_of_type_ArrayOfAncv != null) && (this.jdField_a_of_type_Ancw.jdField_a_of_type_ArrayOfAncv.length > 0);
-  }
-  
-  public boolean c()
-  {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (this.jdField_a_of_type_Int == 0)
-    {
-      bool1 = bool2;
-      if (this.jdField_b_of_type_Int == 0)
-      {
-        bool1 = bool2;
-        if (this.jdField_a_of_type_ArrayOfAnda != null)
-        {
-          bool1 = bool2;
-          if (this.jdField_a_of_type_ArrayOfAnda.length > 0)
-          {
-            bool1 = bool2;
-            if (!this.jdField_a_of_type_ArrayOfAnda[0].jdField_a_of_type_JavaLangString.equalsIgnoreCase(jdField_a_of_type_JavaLangString)) {
-              bool1 = true;
-            }
-          }
-        }
-      }
-    }
-    return bool1;
-  }
-  
-  public boolean d()
-  {
-    boolean bool = true;
-    andb localandb = a();
-    if (localandb == null) {
-      return false;
-    }
-    if (localandb.c == 1) {}
     for (;;)
     {
-      return bool;
-      bool = false;
+      return paramString;
+      if ((AppInterface)this.jdField_b_of_type_JavaLangRefWeakReference.get() == null) {
+        return null;
+      }
+      try
+      {
+        angn localangn = new angn();
+        paramString = new JSONObject(paramString);
+        int i = paramString.optInt("gameId");
+        long l = paramString.optLong("roomId");
+        int j = paramString.optInt("gameMode");
+        int k = paramString.optInt("activityId");
+        Object localObject = ampj.a(i);
+        if (localObject != null)
+        {
+          ((amrk)localObject).jdField_b_of_type_Int = k;
+          localObject = ((amrk)localObject).a();
+          if (localObject != null)
+          {
+            localangn.jdField_b_of_type_JavaLangString = ((CmGameInitParams)localObject).mChineseName;
+            localangn.jdField_b_of_type_Int = ((CmGameInitParams)localObject).mActionId;
+          }
+        }
+        if (0L == l) {
+          QLog.w("cmgame.sendmsg", 1, "[getGameMsgInfo] roomId is invalid. gameId:" + i + ",gameMode:" + j);
+        }
+        localangn.jdField_c_of_type_Int = j;
+        localangn.jdField_a_of_type_Long = l;
+        localangn.jdField_a_of_type_Int = i;
+        localangn.d = 3;
+        localObject = amrr.a();
+        if ((localObject != null) && (((amrr)localObject).a != null) && (0L != l)) {
+          ((amrr)localObject).a.roomId = l;
+        }
+        localObject = paramString.optString("extendInfo");
+        JSONObject localJSONObject = new JSONObject();
+        paramString = localangn;
+        if (!TextUtils.isEmpty((CharSequence)localObject))
+        {
+          localJSONObject.put("extendInfo", localObject);
+          if (((String)localObject).length() >= 500)
+          {
+            QLog.w("cmgame.sendmsg", 1, "[getGameMsgInfo],extendInfo is too long, extendInfo:" + (String)localObject);
+            return null;
+          }
+          localangn.jdField_c_of_type_JavaLangString = localJSONObject.toString();
+          return localangn;
+        }
+      }
+      catch (Throwable paramString)
+      {
+        QLog.e("ApolloGameInvitation", 1, paramString, new Object[0]);
+      }
+    }
+    return null;
+  }
+  
+  public void a()
+  {
+    bkic localbkic = null;
+    ArrayList localArrayList = new ArrayList();
+    localArrayList.add(bkic.a(0));
+    localArrayList.add(bkic.a(2));
+    if (this.jdField_a_of_type_JavaLangRefWeakReference != null) {}
+    for (Object localObject = (Activity)this.jdField_a_of_type_JavaLangRefWeakReference.get();; localObject = null)
+    {
+      if (localObject != null)
+      {
+        localbkic = new bkic((Context)localObject);
+        localbkic.a(localArrayList);
+      }
+      if (((this.c == null) || (this.c.get() == null)) && (localObject != null)) {
+        this.c = new WeakReference(bkic.a((Context)localObject, localbkic, this, this, this, false));
+      }
+      if ((this.c != null) && (this.c.get() != null))
+      {
+        localObject = (bkho)this.c.get();
+        if ((localObject != null) && (!((bkho)localObject).isShowing()))
+        {
+          ((bkho)localObject).setOnDismissListener(this);
+          ((bkho)localObject).show();
+        }
+      }
+      return;
     }
   }
   
-  public String toString()
+  public void a(angn paramangn)
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    if (c()) {
-      localStringBuilder.append("\n {migObjectClassifyResult:" + this.jdField_a_of_type_ArrayOfAnda[0].toString() + "} \n");
+    this.jdField_a_of_type_Angn = paramangn;
+  }
+  
+  public void a(String paramString)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  public void b()
+  {
+    if (this.jdField_a_of_type_JavaLangRefWeakReference == null) {}
+    Activity localActivity;
+    do
+    {
+      return;
+      localActivity = (Activity)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    } while (localActivity == null);
+    ancm.a(this.jdField_a_of_type_Angn, localActivity, 1);
+  }
+  
+  public void c()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ApolloGameInvitation", 2, "[inviteWechatFriend]");
     }
-    if (b()) {
-      localStringBuilder.append("\n {jdSearchResult:" + this.jdField_a_of_type_Ancw.toString() + "}\n");
+    if (this.jdField_a_of_type_Angn == null)
+    {
+      QLog.e("ApolloGameInvitation", 1, "fail to invite wxFriend, mGameMsg is null.");
+      return;
     }
-    return localStringBuilder.toString();
+    ThreadManager.post(new ApolloGameInvitation.1(this), 5, null, true);
+  }
+  
+  public void d()
+  {
+    if ((this.c != null) && (this.c.get() != null))
+    {
+      bkho localbkho = (bkho)this.c.get();
+      if (localbkho != null) {
+        localbkho.dismiss();
+      }
+    }
+  }
+  
+  public void onDismiss(DialogInterface paramDialogInterface) {}
+  
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  {
+    long l = System.currentTimeMillis();
+    if (l - this.jdField_a_of_type_Long < 1000L) {}
+    label165:
+    for (;;)
+    {
+      EventCollector.getInstance().onItemClick(paramAdapterView, paramView, paramInt, paramLong);
+      return;
+      this.jdField_a_of_type_Long = l;
+      d();
+      if (paramLong == 2L)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("ApolloGameInvitation", 2, "ActionSheetAdapter.CHANNEL_WX_FRIEND is clicked.");
+        }
+        c();
+      }
+      for (int i = 1;; i = 0)
+      {
+        if ((this.jdField_b_of_type_JavaLangRefWeakReference == null) || (this.jdField_a_of_type_Angn == null) || ((AppInterface)this.jdField_b_of_type_JavaLangRefWeakReference.get() == null)) {
+          break label165;
+        }
+        VipUtils.a(null, "cmshow", "Apollo", "invite_chose", i, 0, new String[] { Integer.toString(this.jdField_a_of_type_Angn.jdField_a_of_type_Int) });
+        break;
+        if (paramLong == 0L)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d("ApolloGameInvitation", 2, "ActionSheetAdapter.CHANNEL_QQ is clicked.");
+          }
+          b();
+        }
+      }
+    }
   }
 }
 

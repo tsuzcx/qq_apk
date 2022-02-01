@@ -1,24 +1,17 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Card;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import android.hardware.Camera.ShutterCallback;
+import android.os.Handler;
+import com.tencent.mobileqq.camera.CameraManagerImpl.ShutterCallbackForward.1;
 
-class aqbf
-  implements alpg
+public class aqbf
+  implements Camera.ShutterCallback
 {
-  aqbf(aqbe paramaqbe, String paramString, int paramInt1, int paramInt2) {}
+  private final Handler jdField_a_of_type_AndroidOsHandler;
+  private final aqav jdField_a_of_type_Aqav;
+  private final aqaw jdField_a_of_type_Aqaw;
   
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  public void onShutter()
   {
-    if (paramBoolean)
-    {
-      paramObject = (alto)this.jdField_a_of_type_Aqbe.app.getManager(51);
-      Card localCard = paramObject.c(this.jdField_a_of_type_JavaLangString);
-      localCard.clothesId = this.jdField_a_of_type_Int;
-      localCard.fontId = this.b;
-      localCard.updateTime = NetConnInfoCenter.getServerTimeMillis();
-      paramObject.a(localCard);
-      this.jdField_a_of_type_Aqbe.notifyUI(1, paramBoolean, null);
-    }
+    this.jdField_a_of_type_AndroidOsHandler.post(new CameraManagerImpl.ShutterCallbackForward.1(this));
   }
 }
 

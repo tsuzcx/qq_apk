@@ -1,35 +1,16 @@
-import com.qq.taf.jce.HexUtil;
-import java.util.ArrayList;
+import com.tencent.mobileqq.richstatus.SignatureHistoryFragment;
 
-public class bbca
-  extends bbbz
+class bbca
+  implements bbde
 {
-  public int a;
-  public String a;
-  public ArrayList<bawy> a;
-  public byte[] a;
-  public String b;
-  public ArrayList<bawy> b;
-  public byte[] b;
-  public String c;
+  bbca(bbbv parambbbv) {}
   
-  public bbca()
+  public void a(String paramString)
   {
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_b_of_type_JavaUtilArrayList = new ArrayList();
-  }
-  
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(super.toString());
-    localStringBuilder.append(" mUkey:");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
-    localStringBuilder.append(" mIpList:").append(this.jdField_a_of_type_JavaUtilArrayList.toString());
-    localStringBuilder.append(" mIpv6List:").append(this.jdField_b_of_type_JavaUtilArrayList.toString());
-    localStringBuilder.append(" md5:").append(HexUtil.bytes2HexStr(this.jdField_a_of_type_ArrayOfByte));
-    localStringBuilder.append(" aesKey:").append(HexUtil.bytes2HexStr(this.jdField_b_of_type_ArrayOfByte));
-    return localStringBuilder.toString();
+    if (SignatureHistoryFragment.b(this.a.a)) {
+      return;
+    }
+    SignatureHistoryFragment.a(this.a.a, paramString);
   }
 }
 

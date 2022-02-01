@@ -1,18 +1,14 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.ArkFullScreenAppActivity;
+import com.tencent.gamecenter.activities.GameCenterActivity.GameCenterFragment;
+import com.tencent.qphone.base.util.QLog;
 
 public class acec
-  implements View.OnClickListener
+  implements acez
 {
-  public acec(ArkFullScreenAppActivity paramArkFullScreenAppActivity) {}
+  public acec(GameCenterActivity.GameCenterFragment paramGameCenterFragment) {}
   
-  public void onClick(View paramView)
+  public void a(int paramInt, String paramString)
   {
-    if (ArkFullScreenAppActivity.a(this.a) != null) {
-      anoe.a(this.a.app, "FullScreenClickOper", ArkFullScreenAppActivity.a(this.a).a, null, anoe.c, 0, 0);
-    }
-    this.a.a();
+    QLog.i("GameCenterFragment", 1, "removeShotMask code=" + paramInt);
   }
 }
 

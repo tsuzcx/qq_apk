@@ -1,22 +1,10 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.nearby.gameroom.RecentUserInvitePanel;
-
-public class auzr
-  implements View.OnClickListener
+public abstract interface auzr
 {
-  public auzr(RecentUserInvitePanel paramRecentUserInvitePanel) {}
-  
-  public void onClick(View paramView)
-  {
-    if (this.a.a != null) {
-      this.a.a.a(paramView);
-    }
-  }
+  public abstract void a(boolean paramBoolean);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     auzr
  * JD-Core Version:    0.7.0.1
  */

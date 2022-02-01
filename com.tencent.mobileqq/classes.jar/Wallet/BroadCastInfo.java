@@ -11,23 +11,11 @@ public final class BroadCastInfo
   public String billno = "";
   public String hbIdiom = "";
   public String hbIdiomLastPY = "";
+  public String hbPoemRule = "";
   public int idiomSeq;
   public long idiomUin;
   public int isFinished;
   public int subchannel;
-  
-  public BroadCastInfo() {}
-  
-  public BroadCastInfo(String paramString1, int paramInt1, String paramString2, long paramLong, int paramInt2, String paramString3, int paramInt3)
-  {
-    this.hbIdiom = paramString1;
-    this.idiomSeq = paramInt1;
-    this.billno = paramString2;
-    this.idiomUin = paramLong;
-    this.isFinished = paramInt2;
-    this.hbIdiomLastPY = paramString3;
-    this.subchannel = paramInt3;
-  }
   
   public void readFrom(JceInputStream paramJceInputStream)
   {
@@ -38,6 +26,7 @@ public final class BroadCastInfo
     this.isFinished = paramJceInputStream.read(this.isFinished, 4, false);
     this.hbIdiomLastPY = paramJceInputStream.readString(5, false);
     this.subchannel = paramJceInputStream.read(this.subchannel, 6, false);
+    this.hbPoemRule = paramJceInputStream.readString(7, false);
   }
   
   public void writeTo(JceOutputStream paramJceOutputStream)
@@ -55,6 +44,9 @@ public final class BroadCastInfo
       paramJceOutputStream.write(this.hbIdiomLastPY, 5);
     }
     paramJceOutputStream.write(this.subchannel, 6);
+    if (this.hbPoemRule != null) {
+      paramJceOutputStream.write(this.hbPoemRule, 7);
+    }
   }
 }
 

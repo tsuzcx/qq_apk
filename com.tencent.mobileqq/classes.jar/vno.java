@@ -1,21 +1,47 @@
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.AnimationParam;
-import com.tribe.async.dispatch.Dispatcher.Event;
+import android.arch.lifecycle.Observer;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqcircle.fragments.person.QCirclePersonalDetailFragment;
+import com.tencent.qphone.base.util.QLog;
+import feedcloud.FeedCloudRead.StGetMainPageRsp;
+import java.util.ArrayList;
+import java.util.Arrays;
 
 public class vno
-  implements Dispatcher.Event
+  implements Observer<vup<FeedCloudRead.StGetMainPageRsp>>
 {
-  public final AnimationParam a;
-  public final String a;
+  public vno(QCirclePersonalDetailFragment paramQCirclePersonalDetailFragment) {}
   
-  public vno(AnimationParam paramAnimationParam, String paramString)
+  public void a(@Nullable vup<FeedCloudRead.StGetMainPageRsp> paramvup)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetAnimationParam = paramAnimationParam;
-    this.jdField_a_of_type_JavaLangString = paramString;
+    if (paramvup != null) {
+      QLog.d("QCirclePersonalDetailFragment", 1, "Observe StGetMainPageRsp state:" + paramvup.a());
+    }
+    try
+    {
+      QLog.d("QCirclePersonalDetailFragment", 1, "personDetail uiStateData is" + paramvup.a());
+      if ((paramvup != null) && ((paramvup.a() == 2) || (paramvup.a() == 3)))
+      {
+        if (this.a.a != null)
+        {
+          QLog.e("QCirclePersonalDetailFragment", 1, "personDetail mPersonalDetailHeaderAdapter is not null");
+          this.a.a.setDatas(new ArrayList(Arrays.asList(new FeedCloudRead.StGetMainPageRsp[] { (FeedCloudRead.StGetMainPageRsp)paramvup.a() })));
+          this.a.a.notifyLoadingComplete(true);
+          return;
+        }
+        QLog.e("QCirclePersonalDetailFragment", 1, "personDetail mPersonalDetailHeaderAdapter is null");
+        return;
+      }
+    }
+    catch (Exception paramvup)
+    {
+      paramvup.printStackTrace();
+      QLog.e("QCirclePersonalDetailFragment", 1, "personDetail setData error" + paramvup.getMessage());
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     vno
  * JD-Core Version:    0.7.0.1
  */

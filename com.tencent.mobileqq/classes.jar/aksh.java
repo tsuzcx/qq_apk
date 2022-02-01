@@ -1,76 +1,144 @@
-import android.content.Intent;
 import android.os.Bundle;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import android.os.ResultReceiver;
 import android.text.TextUtils;
-import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.qwallet.preload.DownloadParam;
+import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.PathResult;
+import com.tencent.mobileqq.activity.qwallet.preload.PreloadManagerProxy.1;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.qipc.QIPCClientHelper;
 import com.tencent.qphone.base.util.QLog;
-import mqq.app.MSFServlet;
-import mqq.app.Packet;
+import eipc.EIPCClient;
+import eipc.EIPCResult;
+import mqq.app.AppRuntime;
 
 public class aksh
-  extends MSFServlet
+  extends aksg
 {
-  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
+  private static volatile aksh a;
+  
+  private aksh(AppRuntime paramAppRuntime)
   {
-    long l = 0L;
-    if (QLog.isColorLevel())
+    super(paramAppRuntime);
+    aksp.a().a();
+  }
+  
+  public static aksh a()
+  {
+    return a(BaseApplicationImpl.getApplication().peekAppRuntime());
+  }
+  
+  @Deprecated
+  public static aksh a(AppRuntime paramAppRuntime)
+  {
+    if (jdField_a_of_type_Aksh == null) {}
+    try
     {
-      l = System.currentTimeMillis();
-      QLog.d("apollo_cmGame_CmGameServlet", 2, "onReceive cmd=" + paramIntent.getStringExtra("cmd") + ",success=" + paramFromServiceMsg.isSuccess() + ", retCode=" + paramFromServiceMsg.getResultCode());
+      if (jdField_a_of_type_Aksh == null) {
+        jdField_a_of_type_Aksh = new aksh(paramAppRuntime);
+      }
+      return jdField_a_of_type_Aksh;
     }
-    byte[] arrayOfByte;
-    if (paramFromServiceMsg.isSuccess())
+    finally {}
+  }
+  
+  public static ResultReceiver a(ResultReceiver paramResultReceiver)
+  {
+    if (paramResultReceiver == null) {
+      return null;
+    }
+    Parcel localParcel = Parcel.obtain();
+    paramResultReceiver.writeToParcel(localParcel, 0);
+    localParcel.setDataPosition(0);
+    paramResultReceiver = (ResultReceiver)ResultReceiver.CREATOR.createFromParcel(localParcel);
+    localParcel.recycle();
+    return paramResultReceiver;
+  }
+  
+  private void a(String paramString1, Bundle paramBundle, aksa paramaksa, String paramString2)
+  {
+    paramBundle.putParcelable("receiver", a(new PreloadManagerProxy.1(this, null, paramaksa, paramString2)));
+    if (paramString1.equals("downloadModule")) {
+      QIPCClientHelper.getInstance().callServer("QWalletIPCModule", "downloadModule", paramBundle, null);
+    }
+    while (!paramString1.equals("downloadRes")) {
+      return;
+    }
+    QIPCClientHelper.getInstance().callServer("QWalletIPCModule", "downloadRes", paramBundle, null);
+  }
+  
+  public void a(DownloadParam paramDownloadParam, akse paramakse)
+  {
+    if ((paramDownloadParam == null) || (TextUtils.isEmpty(paramDownloadParam.url))) {}
+    do
     {
-      int i = paramFromServiceMsg.getWupBuffer().length - 4;
-      arrayOfByte = new byte[i];
-      bdqa.a(arrayOfByte, 0, paramFromServiceMsg.getWupBuffer(), 4, i);
+      return;
+      if (!(this.jdField_a_of_type_MqqAppAppRuntime instanceof QQAppInterface))
+      {
+        Bundle localBundle = new Bundle();
+        localBundle.putInt("method_type", 1);
+        localBundle.putSerializable("download_params", paramDownloadParam);
+        QIPCClientHelper.getInstance().callServer("QWalletIPCModule", "preloadCommon", localBundle, new aksj(this, paramakse, paramDownloadParam));
+        return;
+      }
+    } while (paramakse == null);
+    paramakse.onResult(1, PreloadManager.PathResult.getFailRes(paramDownloadParam.url));
+  }
+  
+  public void a(String paramString, ResultReceiver paramResultReceiver)
+  {
+    if (paramResultReceiver == null) {
+      return;
     }
-    for (;;)
+    if (!(this.jdField_a_of_type_MqqAppAppRuntime instanceof QQAppInterface))
     {
       Bundle localBundle = new Bundle();
-      localBundle.putInt("extra_result_code", paramFromServiceMsg.getResultCode());
-      localBundle.putString("cmd", paramIntent.getStringExtra("cmd"));
-      localBundle.putSerializable("serializable", paramIntent.getSerializableExtra("serializable"));
-      localBundle.putString("key1", paramIntent.getStringExtra("key1"));
-      localBundle.putString("key2", paramIntent.getStringExtra("key2"));
-      localBundle.putString("key3", paramIntent.getStringExtra("key3"));
-      localBundle.putString("key4", paramIntent.getStringExtra("key4"));
-      localBundle.putByteArray("data", arrayOfByte);
-      notifyObserver(paramIntent, 0, paramFromServiceMsg.isSuccess(), localBundle, null);
-      if (QLog.isColorLevel()) {
-        QLog.d("apollo_cmGame_CmGameServlet", 2, "onReceive exit|cost: " + (System.currentTimeMillis() - l));
-      }
+      localBundle.putString("id", paramString);
+      QIPCClientHelper.getInstance().callServer("QWalletIPCModule", "getFilePathByResID", localBundle, new aksi(this, paramResultReceiver));
       return;
-      arrayOfByte = null;
+    }
+    paramResultReceiver.send(0, null);
+  }
+  
+  @Deprecated
+  public void a(String paramString1, String paramString2, aksa paramaksa)
+  {
+    if (!(this.jdField_a_of_type_MqqAppAppRuntime instanceof QQAppInterface))
+    {
+      Bundle localBundle = new Bundle();
+      localBundle.putString("id", paramString1);
+      localBundle.putString("config_str", paramString2);
+      a("downloadModule", localBundle, paramaksa, paramString1);
     }
   }
   
-  public void onSend(Intent paramIntent, Packet paramPacket)
+  public String d(String paramString)
   {
-    String str = paramIntent.getStringExtra("cmd");
-    byte[] arrayOfByte = paramIntent.getByteArrayExtra("data");
-    long l = paramIntent.getLongExtra("timeout", 30000L);
-    if (!TextUtils.isEmpty(str))
-    {
-      paramPacket.setSSOCommand(str);
-      paramPacket.setTimeout(l);
-      if (arrayOfByte == null) {
-        break label117;
-      }
-      paramIntent = new byte[arrayOfByte.length + 4];
-      bdqa.a(paramIntent, 0, arrayOfByte.length + 4);
-      bdqa.a(paramIntent, 4, arrayOfByte, arrayOfByte.length);
-      paramPacket.putSendData(paramIntent);
+    Object localObject2 = null;
+    Object localObject1;
+    if ((this.jdField_a_of_type_MqqAppAppRuntime instanceof QQAppInterface)) {
+      localObject1 = localObject2;
     }
     for (;;)
     {
       if (QLog.isColorLevel()) {
-        QLog.d("apollo_cmGame_CmGameServlet", 2, "onSend exit cmd=" + str);
+        QLog.d("PreloadManagerProxy", 2, "getVideoResPathByID:" + paramString + "|" + (String)localObject1);
       }
-      return;
-      label117:
-      paramIntent = new byte[4];
-      bdqa.a(paramIntent, 0, 4L);
-      paramPacket.putSendData(paramIntent);
+      return localObject1;
+      localObject1 = new Bundle();
+      ((Bundle)localObject1).putString("mid", paramString);
+      aksp.a().a();
+      EIPCResult localEIPCResult = QIPCClientHelper.getInstance().getClient().callServer("QWalletIPCModule", "getVideoResPathByMID", (Bundle)localObject1);
+      localObject1 = localObject2;
+      if (localEIPCResult != null)
+      {
+        localObject1 = localObject2;
+        if (localEIPCResult.isSuccess()) {
+          localObject1 = localEIPCResult.data.getString("path");
+        }
+      }
     }
   }
 }

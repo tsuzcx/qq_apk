@@ -1,19 +1,16 @@
 package com.tencent.mobileqq.app;
 
-import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.widget.QQToast;
 
 class QQAppInterface$22
   implements Runnable
 {
-  QQAppInterface$22(QQAppInterface paramQQAppInterface, StringBuilder paramStringBuilder) {}
+  QQAppInterface$22(QQAppInterface paramQQAppInterface) {}
   
   public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("QQAppInterface", 2, "isCallTabShow needupdate,result=" + this.a);
-    }
-    SettingCloneUtil.writeValue(this.this$0.getApplication(), this.this$0.getCurrentAccountUin(), null, "qqsetting_calltab_show_key", this.a.toString());
+    QQToast.a(QQAppInterface.j(this.this$0).getApplicationContext(), 2131690388, 5000).a();
   }
 }
 

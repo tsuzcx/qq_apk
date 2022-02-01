@@ -4,10 +4,11 @@ import android.graphics.Bitmap;
 import android.graphics.Matrix;
 import android.graphics.PointF;
 import com.tencent.aekit.openrender.util.AEProfiler;
+import com.tencent.aekit.plugin.core.AEDetectorType;
 import com.tencent.aekit.plugin.core.AIActionCounter;
 import com.tencent.aekit.plugin.core.PTHandAttr;
 import com.tencent.ttpic.baseutils.bitmap.BitmapUtils;
-import com.tencent.ttpic.openapi.initializer.RapidNetGestureInitializer;
+import com.tencent.ttpic.openapi.initializer.TNNGestureInitializer;
 import com.tencent.ttpic.openapi.manager.FeatureManager.Features;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -188,21 +189,21 @@ public class AEHandDetectImpl
         this.width = ((int)(((Bitmap)localObject2).getWidth() / paramFloat));
         this.height = ((int)(((Bitmap)localObject2).getHeight() / paramFloat));
         BitmapUtils.recycle(paramBitmap);
-        AEProfiler.getInstance().start("GYKEYPOINTS");
+        AEProfiler.getInstance().start(AEDetectorType.HAND.value);
         if (this.frameCount % 2L != 0L) {
-          break label250;
+          break label262;
         }
         bool = true;
         if (!this.needDetectBonePoint) {
-          break label299;
+          break label311;
         }
         localObject1 = AEHandDetector.HAND_DETECTOR.retrieveGestureInfo((Bitmap)localObject2, bool);
         paramBitmap = (Bitmap)localObject1;
         if (localObject1.length != 48) {
-          break label402;
+          break label414;
         }
         if (!bool) {
-          break label256;
+          break label268;
         }
         this.lastHandType = Float.valueOf(localObject1[46]).intValue();
         this.lastConfidence = localObject1[47];
@@ -210,19 +211,19 @@ public class AEHandDetectImpl
         paramBitmap = (Bitmap)localObject1;
       }
     }
-    label256:
-    label402:
+    label262:
+    label268:
+    label414:
     for (;;)
     {
-      long l2 = AEProfiler.getInstance().end("GYKEYPOINTS");
-      AEProfiler.getInstance().add(1, "GYKEYPOINTS", l2);
+      long l2 = AEProfiler.getInstance().end(AEDetectorType.HAND.value);
+      AEProfiler.getInstance().add(1, AEDetectorType.HAND.value, l2);
       BitmapUtils.recycle((Bitmap)localObject2);
       this.frameCount += 1L;
       localObject1 = paramBitmap;
       this.handAttr = genHandAttr(this.needDetectBonePoint, (float[])localObject1, paramFloat, paramInt);
       this.handAttr.setGestureTime(System.currentTimeMillis() - l1);
       return this.handAttr;
-      label250:
       bool = false;
       break;
       paramBitmap = (Bitmap)localObject1;
@@ -232,7 +233,7 @@ public class AEHandDetectImpl
         localObject1[47] = this.lastConfidence;
         paramBitmap = (Bitmap)localObject1;
         continue;
-        label299:
+        label311:
         localObject1 = AEHandDetector.HAND_DETECTOR.retrieveGestureBoxAndType((Bitmap)localObject2, bool);
         paramBitmap = (Bitmap)localObject1;
         if (localObject1.length == 7) {
@@ -270,7 +271,7 @@ public class AEHandDetectImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.openai.ttpicmodule.AEHandDetectImpl
  * JD-Core Version:    0.7.0.1
  */

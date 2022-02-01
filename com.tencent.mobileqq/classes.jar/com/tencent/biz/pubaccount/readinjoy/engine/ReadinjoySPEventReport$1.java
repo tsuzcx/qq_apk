@@ -1,11 +1,11 @@
 package com.tencent.biz.pubaccount.readinjoy.engine;
 
-import oxp;
+import pmy;
 
 public class ReadinjoySPEventReport$1
   implements Runnable
 {
-  public ReadinjoySPEventReport$1(oxp paramoxp) {}
+  public ReadinjoySPEventReport$1(pmy parampmy) {}
   
   public void run()
   {

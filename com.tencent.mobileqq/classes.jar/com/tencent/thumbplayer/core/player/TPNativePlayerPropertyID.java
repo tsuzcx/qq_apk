@@ -6,6 +6,7 @@ public class TPNativePlayerPropertyID
   public static int LONG_AUDIO_CHANNEL_NUM;
   public static int LONG_AUDIO_CODEC_ID;
   public static int LONG_AUDIO_PROFILE;
+  public static int LONG_PLAYER_MEM_ADDR;
   public static int LONG_VIDEO_BIT_RATE;
   public static int LONG_VIDEO_CODEC_ID;
   public static int LONG_VIDEO_FRAME_RATE = 206;
@@ -16,6 +17,7 @@ public class TPNativePlayerPropertyID
   
   static
   {
+    LONG_PLAYER_MEM_ADDR = 1;
     LONG_AUDIO_CODEC_ID = 100;
     LONG_AUDIO_BIT_RATE = 101;
     LONG_AUDIO_PROFILE = 102;
@@ -29,7 +31,7 @@ public class TPNativePlayerPropertyID
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.thumbplayer.core.player.TPNativePlayerPropertyID
  * JD-Core Version:    0.7.0.1
  */

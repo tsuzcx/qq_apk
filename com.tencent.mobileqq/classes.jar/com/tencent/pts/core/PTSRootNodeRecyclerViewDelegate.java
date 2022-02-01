@@ -39,6 +39,11 @@ public class PTSRootNodeRecyclerViewDelegate
     return true;
   }
   
+  public View getRootView()
+  {
+    return this.mRecyclerView;
+  }
+  
   public boolean insert(PTSNodeInfo paramPTSNodeInfo, int paramInt)
   {
     PTSLog.d("PTSRootNodeRecyclerViewDelegate", "[insert] insertIndex = " + paramInt + ", nodeInfo = " + paramPTSNodeInfo);
@@ -102,7 +107,7 @@ public class PTSRootNodeRecyclerViewDelegate
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.pts.core.PTSRootNodeRecyclerViewDelegate
  * JD-Core Version:    0.7.0.1
  */

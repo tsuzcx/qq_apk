@@ -1,10 +1,14 @@
-public abstract interface bdvh
+import com.tencent.mobileqq.highway.api.ITransCallbackForReport;
+
+class bdvh
+  implements ITransCallbackForReport
 {
-  public abstract void a();
+  bdvh(bdvf parambdvf) {}
   
-  public abstract void b();
-  
-  public abstract void c();
+  public void onFailed(int paramInt, String paramString1, String paramString2)
+  {
+    this.a.a("actRichMediaNetMonitor_pttUp", false, paramInt, paramString1, paramString2, this.a.c, this.a.l, null);
+  }
 }
 
 

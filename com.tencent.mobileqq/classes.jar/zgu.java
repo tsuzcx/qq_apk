@@ -1,53 +1,43 @@
-import android.content.Context;
-import android.content.Intent;
-import android.content.res.Resources;
-import android.view.View;
-import android.webkit.URLUtil;
-import com.tencent.biz.pubaccount.PublicAccountBrowser;
+import com.tencent.qphone.base.util.QLog;
 
-public class zgu
-  extends bamp
+class zgu
+  implements batv
 {
-  public String a;
-  public String b;
+  zgu(zgt paramzgt) {}
   
-  public zgu(CharSequence paramCharSequence, int paramInt)
-  {
-    super(paramCharSequence, paramInt);
-  }
+  public void a() {}
   
-  protected void a(View paramView, String paramString)
+  public void a(String paramString)
   {
-    Context localContext = paramView.getContext();
-    Intent localIntent = new Intent(localContext, PublicAccountBrowser.class);
-    localIntent.putExtra("uin", this.a);
-    int i = paramString.lastIndexOf("#");
-    if (i > 0) {}
-    for (paramView = paramString.substring(i);; paramView = null)
+    synchronized (zgt.a(this.a))
     {
-      String str2 = URLUtil.guessUrl(paramString);
-      String str1 = str2;
-      if (paramView != null) {
-        str1 = str2 + paramView;
+      zgt.a(this.a, true);
+      if (QLog.isColorLevel()) {
+        QLog.d(zgt.a, 2, "onEncodeFinish, filePath= " + paramString);
       }
-      localIntent.putExtra("url", str1);
-      localIntent.putExtra("assignBackText", localContext.getResources().getString(2131690623));
-      localIntent.putExtra("puin", this.b);
-      localIntent.putExtra("key_isReadModeEnabled", true);
-      localIntent.putExtra("fromAio", true);
-      localIntent.putExtra("fromPublicAccount", true);
-      localIntent.putExtra("articalChannelId", 1);
-      localIntent.putExtra("big_brother_source_key", syb.b(this.b));
-      syb.a(localIntent, paramString);
-      localContext.startActivity(localIntent);
-      azqs.b(null, "P_CliOper", "Pb_account_lifeservice", "", "aio_msg_url", "aio_url_clickqq", 0, 1, 0, str1, "", "", "");
+      zgt.a(this.a).notifyAll();
       return;
     }
   }
+  
+  public void a_(int paramInt, Throwable arg2)
+  {
+    synchronized (zgt.a(this.a))
+    {
+      zgt.b(this.a, true);
+      if (QLog.isColorLevel()) {
+        QLog.d(zgt.a, 2, "onEncodeError, errorCode= " + paramInt);
+      }
+      zgt.a(this.a).notifyAll();
+      return;
+    }
+  }
+  
+  public void b() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     zgu
  * JD-Core Version:    0.7.0.1
  */

@@ -15,7 +15,7 @@ public final class recheck_flag_info$RecheckFlagItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     tencent.im.oidb.recheck_flag_info.recheck_flag_info.RecheckFlagItem
  * JD-Core Version:    0.7.0.1
  */

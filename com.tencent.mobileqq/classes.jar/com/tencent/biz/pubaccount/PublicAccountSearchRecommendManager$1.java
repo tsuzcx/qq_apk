@@ -7,15 +7,15 @@ import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.Iterator;
 import mqq.app.MobileQQ;
-import nru;
-import nry;
+import oau;
+import oay;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
 public class PublicAccountSearchRecommendManager$1
   implements Runnable
 {
-  public PublicAccountSearchRecommendManager$1(nru paramnru, QQAppInterface paramQQAppInterface) {}
+  public PublicAccountSearchRecommendManager$1(oau paramoau, QQAppInterface paramQQAppInterface) {}
   
   public void run()
   {
@@ -24,14 +24,14 @@ public class PublicAccountSearchRecommendManager$1
       try
       {
         localObject1 = new JSONArray();
-        localObject2 = nru.a(this.this$0).iterator();
+        localObject2 = oau.a(this.this$0).iterator();
         while (((Iterator)localObject2).hasNext())
         {
-          nry localnry = (nry)((Iterator)localObject2).next();
+          oay localoay = (oay)((Iterator)localObject2).next();
           JSONObject localJSONObject = new JSONObject();
-          localJSONObject.put("uin", localnry.jdField_a_of_type_JavaLangString);
-          localJSONObject.put("name", localnry.b);
-          localJSONObject.put("isPA", localnry.jdField_a_of_type_Boolean);
+          localJSONObject.put("uin", localoay.jdField_a_of_type_JavaLangString);
+          localJSONObject.put("name", localoay.b);
+          localJSONObject.put("isPA", localoay.jdField_a_of_type_Boolean);
           ((JSONArray)localObject1).put(localJSONObject);
           continue;
           return;
@@ -40,20 +40,20 @@ public class PublicAccountSearchRecommendManager$1
       catch (Exception localException)
       {
         if (QLog.isColorLevel()) {
-          QLog.d(nru.b(this.this$0), 2, "saveRecommendListToLocal->error:" + localException);
+          QLog.d(oau.b(this.this$0), 2, "saveRecommendListToLocal->error:" + localException);
         }
         localException.printStackTrace();
       }
     }
     Object localObject2 = new JSONObject();
-    ((JSONObject)localObject2).put("recommend_title", nru.a(this.this$0));
-    ((JSONObject)localObject2).put("recommend_cache_time", nru.a(this.this$0));
-    ((JSONObject)localObject2).put("recommend_fetch_time", nru.b(this.this$0));
-    ((JSONObject)localObject2).put("recommend_is_forbidden", nru.a(this.this$0));
+    ((JSONObject)localObject2).put("recommend_title", oau.a(this.this$0));
+    ((JSONObject)localObject2).put("recommend_cache_time", oau.a(this.this$0));
+    ((JSONObject)localObject2).put("recommend_fetch_time", oau.b(this.this$0));
+    ((JSONObject)localObject2).put("recommend_is_forbidden", oau.a(this.this$0));
     ((JSONObject)localObject2).put("recommend_content_list", localObject1);
     Object localObject1 = ((JSONObject)localObject2).toString();
     if (QLog.isColorLevel()) {
-      QLog.d(nru.b(this.this$0), 2, "saveRecommendListToLocal->json:" + (String)localObject1);
+      QLog.d(oau.b(this.this$0), 2, "saveRecommendListToLocal->json:" + (String)localObject1);
     }
     SharedPreferences.Editor localEditor = localException.edit();
     localEditor.putString("public_account_search_recommend", (String)localObject1);

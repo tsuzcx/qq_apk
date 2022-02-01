@@ -1,50 +1,27 @@
-import android.content.Intent;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import mqq.app.MSFServlet;
-import mqq.app.Packet;
+import android.content.Context;
+import android.graphics.drawable.Drawable;
+import android.text.Editable;
+import android.widget.EditText;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class arxc
-  extends MSFServlet
+  extends arxg
 {
-  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
+  public static int b = 165;
+  public int a;
+  
+  public Drawable a(Context paramContext, float paramFloat)
   {
-    if (paramIntent != null)
-    {
-      paramIntent = (ToServiceMsg)paramIntent.getParcelableExtra(ToServiceMsg.class.getSimpleName());
-      paramFromServiceMsg.attributes.put(FromServiceMsg.class.getSimpleName(), paramIntent);
-    }
-    for (;;)
-    {
-      arxd localarxd = (arxd)arwv.a().a("sso_channel");
-      if (localarxd == null) {
-        break;
-      }
-      localarxd.a(paramIntent, paramFromServiceMsg);
-      return;
-      paramIntent = new ToServiceMsg("", paramFromServiceMsg.getUin(), paramFromServiceMsg.getServiceCmd());
-    }
-    QLog.d("QFlutterFlutterServlet", 1, "ssoChannel is null");
+    return arvj.a(this.a);
   }
   
-  public void onSend(Intent paramIntent, Packet paramPacket)
+  public void a(QQAppInterface paramQQAppInterface, Context paramContext, EditText paramEditText, SessionInfo paramSessionInfo)
   {
-    if (paramIntent != null)
-    {
-      paramIntent = (ToServiceMsg)paramIntent.getParcelableExtra(ToServiceMsg.class.getSimpleName());
-      if (paramIntent != null)
-      {
-        paramPacket.setSSOCommand(paramIntent.getServiceCmd());
-        paramPacket.putSendData(paramIntent.getWupBuffer());
-        paramPacket.setTimeout(paramIntent.getTimeout());
-        paramPacket.setAttributes(paramIntent.getAttributes());
-        if (!paramIntent.isNeedCallback()) {
-          paramPacket.setNoResponse();
-        }
-      }
-    }
+    int i = paramEditText.getSelectionStart();
+    int j = paramEditText.getSelectionEnd();
+    paramEditText.getEditableText().replace(i, j, bdol.a(this.a));
+    paramEditText.requestFocus();
   }
 }
 

@@ -16,13 +16,16 @@ public final class AdError
   public static final int ERROR_CRASH = 15;
   public static final int ERROR_DEVICE_UNSUPPORTED = 10;
   public static final int ERROR_GET_LAUNCH_INTENT_FOR_PACKAGE = 203;
+  public static final int ERROR_HALF_SCREEN_PAGE_UNSUPPORTED = 306;
   public static final int ERROR_INTERNAL = 1;
   public static final int ERROR_INVALID_PARAMS = 4;
   public static final int ERROR_LOAD_LIBRARY = 6;
   public static final int ERROR_NETWORK = 3;
   public static final int ERROR_NETWORK_ON_MAIN_THREAD = 8;
   public static final int ERROR_NO_CACHE = 7;
+  public static final int ERROR_NO_CANVAS_JSON = 104;
   public static final int ERROR_NO_FILL = 101;
+  public static final int ERROR_NO_OFFLINE = 105;
   public static final int ERROR_QQ_MINI_PROGRAM_UNSUPPORTED = 304;
   public static final int ERROR_RESOLVE_ACTIVITY = 204;
   public static final int ERROR_SERVER = 5;
@@ -62,7 +65,7 @@ public final class AdError
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.ad.tangram.AdError
  * JD-Core Version:    0.7.0.1
  */

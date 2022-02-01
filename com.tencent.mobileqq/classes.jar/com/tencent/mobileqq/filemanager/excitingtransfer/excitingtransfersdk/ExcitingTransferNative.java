@@ -54,6 +54,8 @@ public class ExcitingTransferNative
   
   public static native long getDownloadPieceSize();
   
+  public static native String getMediaFileIdCrc(long paramLong);
+  
   public static native void init(IExcitingTransferEngineCallback paramIExcitingTransferEngineCallback);
   
   public static native boolean isXTFDownloadEnable();
@@ -82,7 +84,7 @@ public class ExcitingTransferNative
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.excitingtransfer.excitingtransfersdk.ExcitingTransferNative
  * JD-Core Version:    0.7.0.1
  */

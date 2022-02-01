@@ -9,39 +9,144 @@ import NS_MINI_AD.MiniAppAd.Location;
 import NS_MINI_AD.MiniAppAd.PositionExt;
 import NS_MINI_AD.MiniAppAd.PositionInfo;
 import NS_MINI_AD.MiniAppAd.ShareInfo;
+import NS_MINI_AD.MiniAppAd.SpecifiedAdsItem;
 import NS_MINI_AD.MiniAppAd.StGetAdReq;
 import NS_MINI_AD.MiniAppAd.UserInfo;
 import NS_MINI_INTERFACE.INTERFACE.DeviceInfo;
 import NS_MINI_INTERFACE.INTERFACE.Location;
-import aatd;
-import aate;
-import aatf;
+import acqx;
+import acqy;
+import acrx;
+import acry;
+import acrz;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.text.TextUtils;
-import bdgk;
-import bflr;
+import bgln;
+import bita;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.gdtad.aditem.GdtAd;
 import com.tencent.mobileqq.pb.MessageMicro;
+import com.tencent.mobileqq.pb.PBEnumField;
 import com.tencent.mobileqq.pb.PBInt32Field;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Iterator;
+import java.util.List;
 import mqq.app.AppRuntime;
+import org.json.JSONObject;
 import tencent.gdt.qq_ad_get.QQAdGet.DeviceInfo;
 import tencent.gdt.qq_ad_get.QQAdGet.DeviceInfo.Location;
+import tencent.gdt.qq_ad_get.QQAdGetRsp;
+import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo;
+import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo.ExpParam;
+import tencent.gdt.qq_ad_get.QQAdGetRsp.PosAdInfo;
 
 public class AdUtils
 {
+  public static final int AD_EXPOSURE_EXP_ID = 95807;
   public static final String AD_GDT_COOKIE_PRE = "gdt_cookie";
   public static final int DEVICE_ORIENTATION_LANDSCAPE = 90;
   public static final int DEVICE_ORIENTATION_PORTRAIT = 0;
   public static final String MINI_BUSINESS_ID = "e8d69a";
+  private static final String TAG = "AdUtils";
+  
+  public static List<GdtAd> convertJson2GdtAds(String paramString)
+  {
+    localObject2 = new ArrayList();
+    try
+    {
+      paramString = ((qq_ad_get.QQAdGetRsp)qq_ad_get.QQAdGetRsp.class.cast(acqx.a(new qq_ad_get.QQAdGetRsp(), new JSONObject(paramString)))).pos_ads_info.get();
+      if ((paramString == null) || (paramString.isEmpty()))
+      {
+        acqy.d("AdUtils", "convertJson2GdtAds() posAdInfos.isEmpty");
+        return null;
+      }
+      if (localObject2 != null) {
+        ((List)localObject2).clear();
+      }
+      Iterator localIterator1 = paramString.iterator();
+      for (;;)
+      {
+        paramString = (String)localObject2;
+        try
+        {
+          if (!localIterator1.hasNext()) {
+            break label226;
+          }
+          paramString = (String)localObject2;
+          List localList = ((qq_ad_get.QQAdGetRsp.PosAdInfo)localIterator1.next()).ads_info.get();
+          if (localList != null)
+          {
+            paramString = (String)localObject2;
+            if (!localList.isEmpty()) {
+              break label147;
+            }
+          }
+          paramString = (String)localObject2;
+          acqy.d("AdUtils", "convertJson2GdtAds() adInfos.isEmpty");
+        }
+        catch (Exception localException1) {}
+      }
+    }
+    catch (Exception localException2)
+    {
+      for (;;)
+      {
+        Iterator localIterator2;
+        Object localObject1;
+        paramString = (String)localObject2;
+      }
+    }
+    acqy.d("AdUtils", "convertJson2GdtAds", localException1);
+    return paramString;
+    label147:
+    paramString = (String)localObject2;
+    localIterator2 = localException1.iterator();
+    for (localObject1 = localObject2;; localObject1 = localObject2)
+    {
+      localObject2 = localObject1;
+      paramString = localObject1;
+      if (!localIterator2.hasNext()) {
+        break;
+      }
+      paramString = localObject1;
+      qq_ad_get.QQAdGetRsp.AdInfo localAdInfo = (qq_ad_get.QQAdGetRsp.AdInfo)localIterator2.next();
+      localObject2 = localObject1;
+      if (localObject1 == null)
+      {
+        paramString = localObject1;
+        localObject2 = new ArrayList();
+      }
+      paramString = (String)localObject2;
+      ((List)localObject2).add(new GdtAd(localAdInfo));
+    }
+    label226:
+    if (localObject2 != null)
+    {
+      paramString = (String)localObject2;
+      acqy.a("AdUtils", "convertJson2GdtAds() result = [" + Arrays.toString(((List)localObject2).toArray()) + "]");
+    }
+    return localObject2;
+  }
   
   public static MiniAppAd.StGetAdReq createAdRequest(Context paramContext, long paramLong, String paramString1, String paramString2, int paramInt1, int paramInt2, int paramInt3, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7)
+  {
+    return createAdRequest(paramContext, paramLong, paramString1, paramString2, paramInt1, paramInt2, paramInt3, paramString3, paramString4, paramString5, paramString6, paramString7, 1);
+  }
+  
+  public static MiniAppAd.StGetAdReq createAdRequest(Context paramContext, long paramLong, String paramString1, String paramString2, int paramInt1, int paramInt2, int paramInt3, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, int paramInt4)
+  {
+    return createAdRequest(paramContext, paramLong, paramString1, paramString2, paramInt1, paramInt2, paramInt3, paramString3, paramString4, paramString5, paramString6, paramString7, paramInt4, 0, null);
+  }
+  
+  public static MiniAppAd.StGetAdReq createAdRequest(Context paramContext, long paramLong, String paramString1, String paramString2, int paramInt1, int paramInt2, int paramInt3, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, int paramInt4, int paramInt5, List<MiniAppAd.SpecifiedAdsItem> paramList)
   {
     MiniAppAd.UserInfo localUserInfo = new MiniAppAd.UserInfo();
     localUserInfo.qq.set(paramLong);
@@ -52,43 +157,50 @@ public class AdUtils
     paramString1.share_rate.set(paramInt1);
     ((MiniAppAd.PositionExt)localObject).share_info.set(paramString1);
     ((MiniAppAd.PositionExt)localObject).deep_link_version.set(1, true);
-    localPositionInfo.ad_count.set(1, true);
+    if (paramInt5 != 0)
+    {
+      ((MiniAppAd.PositionExt)localObject).get_ad_type.set(paramInt5, true);
+      if ((paramInt5 == 2) && (paramList != null) && (paramList.size() > 0)) {
+        ((MiniAppAd.PositionExt)localObject).specified_ads.addAll(paramList);
+      }
+    }
+    localPositionInfo.ad_count.set(paramInt4, true);
     localPositionInfo.pos_ext.set((MessageMicro)localObject, true);
     paramContext = getDeviceInfo(paramContext, paramInt3);
     paramString1 = new MiniAppAd.ContextInfo();
-    localObject = new MiniAppAd.DebugInfo();
-    MiniAppAd.StGetAdReq localStGetAdReq = new MiniAppAd.StGetAdReq();
-    localStGetAdReq.user_info.set(localUserInfo);
-    localStGetAdReq.position_info.add(localPositionInfo);
-    localStGetAdReq.device_info.set(paramContext);
-    localStGetAdReq.context_info.set(paramString1);
-    localStGetAdReq.debug_info.set((MessageMicro)localObject);
-    localStGetAdReq.appid.set(paramString2);
-    localStGetAdReq.ad_type.set(paramInt2);
-    localStGetAdReq.gdt_cookie.set(paramString3);
-    localStGetAdReq.extInfo.mapInfo.add(newEntry("queryData", paramString4));
-    localStGetAdReq.extInfo.mapInfo.add(newEntry("reportData", paramString5));
-    localStGetAdReq.extInfo.mapInfo.add(newEntry("refer", paramString6));
-    localStGetAdReq.extInfo.mapInfo.add(newEntry("via", paramString7));
-    return localStGetAdReq;
+    paramList = new MiniAppAd.DebugInfo();
+    localObject = new MiniAppAd.StGetAdReq();
+    ((MiniAppAd.StGetAdReq)localObject).user_info.set(localUserInfo);
+    ((MiniAppAd.StGetAdReq)localObject).position_info.add(localPositionInfo);
+    ((MiniAppAd.StGetAdReq)localObject).device_info.set(paramContext);
+    ((MiniAppAd.StGetAdReq)localObject).context_info.set(paramString1);
+    ((MiniAppAd.StGetAdReq)localObject).debug_info.set(paramList);
+    ((MiniAppAd.StGetAdReq)localObject).appid.set(paramString2);
+    ((MiniAppAd.StGetAdReq)localObject).ad_type.set(paramInt2);
+    ((MiniAppAd.StGetAdReq)localObject).gdt_cookie.set(paramString3);
+    ((MiniAppAd.StGetAdReq)localObject).extInfo.mapInfo.add(newEntry("queryData", paramString4));
+    ((MiniAppAd.StGetAdReq)localObject).extInfo.mapInfo.add(newEntry("reportData", paramString5));
+    ((MiniAppAd.StGetAdReq)localObject).extInfo.mapInfo.add(newEntry("refer", paramString6));
+    ((MiniAppAd.StGetAdReq)localObject).extInfo.mapInfo.add(newEntry("via", paramString7));
+    return localObject;
   }
   
   public static MiniAppAd.DeviceInfo getDeviceInfo(Context paramContext, int paramInt)
   {
-    Object localObject1 = new aate();
-    ((aate)localObject1).a = "e8d69a";
+    Object localObject1 = new acry();
+    ((acry)localObject1).a = "e8d69a";
     long l = System.currentTimeMillis();
-    localObject1 = aatd.a(paramContext, (aate)localObject1);
+    localObject1 = acrx.a(paramContext, (acry)localObject1);
     boolean bool;
-    label75:
+    label77:
     MiniAppAd.DeviceInfo localDeviceInfo;
     Object localObject3;
     if (localObject1 != null)
     {
-      localObject1 = ((aatf)localObject1).a;
+      localObject1 = ((acrz)localObject1).a;
       localObject2 = new StringBuilder().append("get deviceInfo cost：").append(System.currentTimeMillis() - l).append(", result = ");
       if (localObject1 == null) {
-        break label693;
+        break label695;
       }
       bool = true;
       QLog.i("AdUtils", 2, bool);
@@ -119,35 +231,35 @@ public class AdUtils
         if (((qq_ad_get.QQAdGet.DeviceInfo)localObject1).client_ipv4.has()) {
           localDeviceInfo.client_ipv4.set(((qq_ad_get.QQAdGet.DeviceInfo)localObject1).client_ipv4.get());
         }
-        localObject3 = bdgk.a();
+        localObject3 = bgln.a();
         PBStringField localPBStringField = localDeviceInfo.android_imei;
         localObject2 = localObject3;
         if (TextUtils.isEmpty((CharSequence)localObject3)) {
           localObject2 = "";
         }
         localPBStringField.set((String)localObject2);
-        localObject2 = bdgk.f();
+        localObject2 = bgln.f();
         if (!TextUtils.isEmpty((CharSequence)localObject2))
         {
           localDeviceInfo.android_id.set((String)localObject2);
-          localObject2 = bflr.d((String)localObject2);
+          localObject2 = bita.d((String)localObject2);
           localObject3 = localDeviceInfo.md5_android_id;
           if (!TextUtils.isEmpty((CharSequence)localObject2)) {
-            break label699;
+            break label701;
           }
         }
       }
     }
-    label693:
-    label699:
+    label695:
+    label701:
     for (Object localObject2 = "";; localObject2 = ((String)localObject2).toLowerCase())
     {
       ((PBStringField)localObject3).set((String)localObject2);
-      paramContext = bdgk.d(paramContext);
+      paramContext = bgln.d(paramContext);
       if (!TextUtils.isEmpty(paramContext))
       {
         localDeviceInfo.mac.set(paramContext);
-        localObject2 = bflr.d(paramContext.replace(":", "").toUpperCase()).toLowerCase();
+        localObject2 = bita.d(paramContext.replace(":", "").toUpperCase()).toLowerCase();
         localObject3 = localDeviceInfo.md5_mac;
         paramContext = (Context)localObject2;
         if (TextUtils.isEmpty((CharSequence)localObject2)) {
@@ -160,20 +272,20 @@ public class AdUtils
       localObject1 = null;
       break;
       bool = false;
-      break label75;
+      break label77;
     }
   }
   
   public static INTERFACE.DeviceInfo getDeviceInfo(Context paramContext)
   {
-    Object localObject1 = new aate();
-    ((aate)localObject1).a = "e8d69a";
-    localObject1 = aatd.a(paramContext, (aate)localObject1);
+    Object localObject1 = new acry();
+    ((acry)localObject1).a = "e8d69a";
+    localObject1 = acrx.a(paramContext, (acry)localObject1);
     INTERFACE.DeviceInfo localDeviceInfo;
     Object localObject3;
     if (localObject1 != null)
     {
-      localObject1 = ((aatf)localObject1).a;
+      localObject1 = ((acrz)localObject1).a;
       localDeviceInfo = new INTERFACE.DeviceInfo();
       if (localObject1 != null)
       {
@@ -201,18 +313,18 @@ public class AdUtils
         if (((qq_ad_get.QQAdGet.DeviceInfo)localObject1).client_ipv4.has()) {
           localDeviceInfo.client_ipv4.set(((qq_ad_get.QQAdGet.DeviceInfo)localObject1).client_ipv4.get());
         }
-        localObject3 = bdgk.a();
+        localObject3 = bgln.a();
         PBStringField localPBStringField = localDeviceInfo.android_imei;
         localObject2 = localObject3;
         if (TextUtils.isEmpty((CharSequence)localObject3)) {
           localObject2 = "";
         }
         localPBStringField.set((String)localObject2);
-        localObject2 = bdgk.f();
+        localObject2 = bgln.f();
         if (!TextUtils.isEmpty((CharSequence)localObject2))
         {
           localDeviceInfo.android_id.set((String)localObject2);
-          localObject2 = bflr.d((String)localObject2);
+          localObject2 = bita.d((String)localObject2);
           localObject3 = localDeviceInfo.md5_android_id;
           if (!TextUtils.isEmpty((CharSequence)localObject2)) {
             break label584;
@@ -224,11 +336,11 @@ public class AdUtils
     for (Object localObject2 = "";; localObject2 = ((String)localObject2).toLowerCase())
     {
       ((PBStringField)localObject3).set((String)localObject2);
-      paramContext = bdgk.d(paramContext);
+      paramContext = bgln.d(paramContext);
       if (!TextUtils.isEmpty(paramContext))
       {
         localDeviceInfo.mac.set(paramContext);
-        localObject2 = bflr.d(paramContext.replace(":", "").toUpperCase()).toLowerCase();
+        localObject2 = bita.d(paramContext.replace(":", "").toUpperCase()).toLowerCase();
         localObject3 = localDeviceInfo.md5_mac;
         paramContext = (Context)localObject2;
         if (TextUtils.isEmpty((CharSequence)localObject2)) {
@@ -254,6 +366,44 @@ public class AdUtils
     return StorageUtil.getPreference().getString(str, "");
   }
   
+  public static boolean isHitReport50ViewAndOneSecond(GdtAd paramGdtAd)
+  {
+    bool2 = false;
+    bool1 = bool2;
+    if (paramGdtAd != null) {}
+    for (;;)
+    {
+      try
+      {
+        paramGdtAd = paramGdtAd.getExpMap();
+        i = 0;
+        if (i >= paramGdtAd.size()) {
+          continue;
+        }
+        if (((qq_ad_get.QQAdGetRsp.AdInfo.ExpParam)paramGdtAd.get(i)).key.get() != 95807) {
+          continue;
+        }
+        bool1 = ((qq_ad_get.QQAdGetRsp.AdInfo.ExpParam)paramGdtAd.get(i)).value.get().equals("1");
+        if (!bool1) {
+          continue;
+        }
+        bool1 = true;
+      }
+      catch (Throwable paramGdtAd)
+      {
+        int i;
+        QLog.e("AdUtils", 1, "exp_map error" + paramGdtAd);
+        bool1 = bool2;
+        continue;
+        bool1 = false;
+        continue;
+      }
+      QLog.i("AdUtils", 1, "bannerad hit=" + bool1);
+      return bool1;
+      i += 1;
+    }
+  }
+  
   public static COMM.Entry newEntry(String paramString1, String paramString2)
   {
     COMM.Entry localEntry = new COMM.Entry();
@@ -274,7 +424,7 @@ public class AdUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.util.AdUtils
  * JD-Core Version:    0.7.0.1
  */

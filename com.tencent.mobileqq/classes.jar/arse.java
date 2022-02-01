@@ -1,8 +1,27 @@
-import android.graphics.Bitmap;
+import android.database.DataSetObserver;
+import com.tencent.mobileqq.emosm.view.DragSortListView;
 
-public abstract interface arse
+public class arse
+  extends DataSetObserver
 {
-  public abstract void a(Bitmap paramBitmap);
+  public arse(DragSortListView paramDragSortListView) {}
+  
+  private void a()
+  {
+    if (this.a.g == 4) {
+      this.a.a();
+    }
+  }
+  
+  public void onChanged()
+  {
+    a();
+  }
+  
+  public void onInvalidated()
+  {
+    a();
+  }
 }
 
 

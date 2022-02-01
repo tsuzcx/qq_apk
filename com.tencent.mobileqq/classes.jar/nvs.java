@@ -1,28 +1,37 @@
-import android.content.Context;
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.AccountDetailActivity;
+import com.tencent.biz.pubaccount.Advertisement.view.VideoCoverView;
 
-class nvs
-  implements View.OnClickListener
+public class nvs
+  implements atve
 {
-  nvs(nvp paramnvp) {}
+  public nvs(VideoCoverView paramVideoCoverView) {}
   
-  public void onClick(View paramView)
+  public void a()
   {
-    paramView = paramView.getContext();
-    Intent localIntent = new Intent(paramView, AccountDetailActivity.class);
-    localIntent.putExtra("uin", String.valueOf(3434959637L));
-    localIntent.putExtra("uintype", 1008);
-    localIntent.putExtra("source", 121);
-    paramView.startActivity(localIntent);
-    nrt.a(null, "", "0X8009941", "0X8009941", 0, 0, "", "", "", "", false);
+    com.tencent.biz.pubaccount.Advertisement.fragment.VideoCoverFragment.a = true;
+    com.tencent.biz.pubaccount.Advertisement.fragment.VideoCoverFragment.b = true;
+    if (this.a.jdField_a_of_type_Int == 5) {
+      this.a.d();
+    }
+    for (;;)
+    {
+      nuv.a().a(VideoCoverView.a(this.a).a.c, this.a.jdField_a_of_type_JavaLangString, true);
+      return;
+      this.a.b(VideoCoverView.a(this.a));
+    }
+  }
+  
+  public void b()
+  {
+    this.a.jdField_a_of_type_Int = 6;
+    com.tencent.biz.pubaccount.Advertisement.fragment.VideoCoverFragment.a = false;
+    com.tencent.biz.pubaccount.Advertisement.fragment.VideoCoverFragment.b = true;
+    this.a.g();
+    nuv.a().a(VideoCoverView.a(this.a).a.c, this.a.jdField_a_of_type_JavaLangString, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     nvs
  * JD-Core Version:    0.7.0.1
  */

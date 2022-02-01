@@ -1,51 +1,22 @@
-import android.view.GestureDetector.SimpleOnGestureListener;
-import android.view.MotionEvent;
-import android.view.View;
-import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionListView;
+import android.content.Intent;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
 
-class tor
-  extends GestureDetector.SimpleOnGestureListener
+public class tor
+  extends tou
 {
-  private tor(toi paramtoi) {}
-  
-  public boolean onDoubleTap(MotionEvent paramMotionEvent)
+  public tor(BridgeModule paramBridgeModule)
   {
-    com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionMainActivity.a = true;
-    toi.b(this.a);
-    return false;
+    super(paramBridgeModule);
   }
   
-  public boolean onDoubleTapEvent(MotionEvent paramMotionEvent)
+  public void a(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    return super.onDoubleTapEvent(paramMotionEvent);
-  }
-  
-  public boolean onDown(MotionEvent paramMotionEvent)
-  {
-    return false;
-  }
-  
-  public boolean onFling(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
-  {
-    return super.onFling(paramMotionEvent1, paramMotionEvent2, paramFloat1, paramFloat2);
-  }
-  
-  public void onShowPress(MotionEvent paramMotionEvent)
-  {
-    super.onShowPress(paramMotionEvent);
-  }
-  
-  public boolean onSingleTapConfirmed(MotionEvent paramMotionEvent)
-  {
-    if ((!(toi.a(this.a).getTag() instanceof top)) || (((toi.a(this.a).getTag() instanceof top)) && (!toi.a(this.a).a(toi.a(this.a)).booleanValue()))) {
-      toi.c(this.a);
-    }
-    return false;
+    BridgeModule.access$500(this.a, paramIntent);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     tor
  * JD-Core Version:    0.7.0.1
  */

@@ -4,7 +4,7 @@ import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.Handler;
 import com.tencent.qphone.base.util.QLog;
-import ndd;
+import nlw;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -23,7 +23,7 @@ class CodeMaskManager$1
     Object localObject = "https://qm.qq.com/cgi-bin/tpl?v=1&os=a&resx=" + this.jdField_a_of_type_Int + "&resy=" + this.b + "&t=" + this.c + "&" + "mType" + "=" + "qb_qrcode";
     try
     {
-      String str = ndd.a(this.this$0.jdField_a_of_type_AndroidAppActivity, (String)localObject, "GET", null, null);
+      String str = nlw.a(this.this$0.jdField_a_of_type_AndroidAppActivity, (String)localObject, "GET", null, null);
       if (QLog.isColorLevel()) {
         QLog.d("QRHttpUtil", 2, "open :" + (String)localObject + ", result: " + str);
       }
@@ -54,7 +54,7 @@ class CodeMaskManager$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.qrcode.CodeMaskManager.1
  * JD-Core Version:    0.7.0.1
  */

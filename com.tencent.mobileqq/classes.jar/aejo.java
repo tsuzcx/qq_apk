@@ -1,22 +1,22 @@
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.widget.EditText;
-import com.tencent.mobileqq.activity.TroopTransferActivity;
+import android.text.TextUtils;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.GesturePWDUnlockActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class aejo
-  implements TextWatcher
+  extends anmu
 {
-  private aejo(TroopTransferActivity paramTroopTransferActivity) {}
+  public aejo(GesturePWDUnlockActivity paramGesturePWDUnlockActivity) {}
   
-  public void afterTextChanged(Editable paramEditable)
+  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
   {
-    paramEditable = this.a.a.getText().toString().trim();
-    this.a.a(paramEditable);
+    if ((!paramBoolean) || (TextUtils.isEmpty(paramString)) || (!paramString.equals(this.a.app.getCurrentAccountUin()))) {}
+    while (this.a.a == null) {
+      return;
+    }
+    paramString = this.a.app.a(this.a.app.getCurrentAccountUin(), (byte)3, false);
+    this.a.a.setImageBitmap(paramString);
   }
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

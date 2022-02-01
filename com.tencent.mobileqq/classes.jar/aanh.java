@@ -1,61 +1,25 @@
-import android.content.Context;
-import com.tencent.gdtad.api.adbox.GdtAdBoxData;
+import com.tencent.biz.tribe.TribeVideoPlugin;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.superplayer.api.ISuperPlayer;
+import com.tencent.superplayer.api.ISuperPlayer.OnVideoPreparedListener;
 
 public class aanh
+  implements ISuperPlayer.OnVideoPreparedListener
 {
-  private aanj jdField_a_of_type_Aanj;
-  private aanq jdField_a_of_type_Aanq;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private GdtAdBoxData jdField_a_of_type_ComTencentGdtadApiAdboxGdtAdBoxData;
+  public aanh(TribeVideoPlugin paramTribeVideoPlugin, aanp paramaanp) {}
   
-  public static aani a(Context paramContext)
+  public void onVideoPrepared(ISuperPlayer paramISuperPlayer)
   {
-    return new aani(paramContext);
-  }
-  
-  public GdtAdBoxData a()
-  {
-    return this.jdField_a_of_type_ComTencentGdtadApiAdboxGdtAdBoxData;
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_Aanj = new aanp(this.jdField_a_of_type_AndroidContentContext);
-    this.jdField_a_of_type_Aanj.a(this);
-    this.jdField_a_of_type_Aanj.show();
-  }
-  
-  void a(aanq paramaanq)
-  {
-    this.jdField_a_of_type_Aanq = paramaanq;
-  }
-  
-  void a(Context paramContext)
-  {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-  }
-  
-  void a(GdtAdBoxData paramGdtAdBoxData)
-  {
-    this.jdField_a_of_type_ComTencentGdtadApiAdboxGdtAdBoxData = paramGdtAdBoxData;
-  }
-  
-  public void b()
-  {
-    if ((this.jdField_a_of_type_Aanj != null) && (this.jdField_a_of_type_Aanj.isShowing()))
-    {
-      this.jdField_a_of_type_Aanj.dismiss();
-      this.jdField_a_of_type_Aanj = null;
+    if (paramISuperPlayer.getCurrentPositionMs() == 0L) {
+      bcst.b(null, "dc00899", "BizTechReport", ((BaseActivity)TribeVideoPlugin.a(this.jdField_a_of_type_ComTencentBizTribeTribeVideoPlugin)).getCurrentAccountUin(), "tribe_video", "video_prepared_time", 0, 0, Long.toString(System.currentTimeMillis() - aanp.a(this.jdField_a_of_type_Aanp)), Integer.toString(bgnt.b(TribeVideoPlugin.a(this.jdField_a_of_type_ComTencentBizTribeTribeVideoPlugin))), "", "");
     }
-    this.jdField_a_of_type_Aanq = null;
-    this.jdField_a_of_type_ComTencentGdtadApiAdboxGdtAdBoxData = null;
-    this.jdField_a_of_type_AndroidContentContext = null;
-  }
-  
-  public void c()
-  {
-    if (this.jdField_a_of_type_Aanq != null) {
-      this.jdField_a_of_type_Aanq.onDismiss();
+    if (TribeVideoPlugin.a(this.jdField_a_of_type_ComTencentBizTribeTribeVideoPlugin) != null)
+    {
+      TribeVideoPlugin.a(this.jdField_a_of_type_ComTencentBizTribeTribeVideoPlugin).removeMessages(5, aanp.a(this.jdField_a_of_type_Aanp));
+      paramISuperPlayer = TribeVideoPlugin.a(this.jdField_a_of_type_ComTencentBizTribeTribeVideoPlugin).obtainMessage();
+      paramISuperPlayer.obj = aanp.a(this.jdField_a_of_type_Aanp);
+      paramISuperPlayer.what = 5;
+      TribeVideoPlugin.a(this.jdField_a_of_type_ComTencentBizTribeTribeVideoPlugin).sendMessage(paramISuperPlayer);
     }
   }
 }

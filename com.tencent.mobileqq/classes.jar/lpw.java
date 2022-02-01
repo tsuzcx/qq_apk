@@ -1,26 +1,21 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.os.Build.VERSION;
-import com.tencent.av.gaudio.GaInviteActivity;
-import com.tencent.mobileqq.activity.ChatActivityUtils;
-
 public class lpw
-  implements DialogInterface.OnClickListener
+  implements lpv
 {
-  public lpw(GaInviteActivity paramGaInviteActivity) {}
+  public void a(lpu paramlpu) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public boolean a(lpu paramlpu)
   {
-    if (this.a.isFinishing()) {}
-    while (((Build.VERSION.SDK_INT >= 17) && (this.a.isDestroyed())) || (paramInt == 1)) {
-      return;
-    }
-    ChatActivityUtils.a(this.a, true, new lpx(this));
+    return false;
+  }
+  
+  public boolean b(lpu paramlpu)
+  {
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     lpw
  * JD-Core Version:    0.7.0.1
  */

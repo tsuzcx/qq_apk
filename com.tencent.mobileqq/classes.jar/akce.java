@@ -1,21 +1,24 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.selectmember.TroopMemberListInnerFrame;
-import com.tencent.mobileqq.activity.selectmember.TroopMemberListInnerFrame.7.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.data.TroopMemberInfo;
-import java.util.List;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.phone.BindNumberActivity;
 
 public class akce
-  extends ameq
+  implements DialogInterface.OnClickListener
 {
-  public akce(TroopMemberListInnerFrame paramTroopMemberListInnerFrame) {}
+  public akce(BindNumberActivity paramBindNumberActivity) {}
   
-  protected void a(String paramString, boolean paramBoolean, List<TroopMemberInfo> paramList, int paramInt1, long paramLong, int paramInt2)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((!TextUtils.isEmpty(this.a.b)) && (!this.a.b.equals(paramString))) {
-      return;
+    BindNumberActivity.a(this.a);
+    paramDialogInterface.dismiss();
+    paramDialogInterface = this.a.getIntent();
+    if (paramDialogInterface.getBooleanExtra("kFPhoneChange", false)) {
+      this.a.a("CliOper", "0X8005DE9", 1);
     }
-    ThreadManager.post(new TroopMemberListInnerFrame.7.1(this, paramList), 5, null, true);
+    if (paramDialogInterface.getBooleanExtra("kUnityOther", false)) {
+      this.a.a("CliOper", "0X8005DE9", 2);
+    }
   }
 }
 

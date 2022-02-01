@@ -1,6 +1,18 @@
-public abstract interface blco
+import com.tencent.TMG.sdk.AVAudioCtrl.EnableSpeakerCompleteCallback;
+import com.tencent.qphone.base.util.QLog;
+
+class blco
+  extends AVAudioCtrl.EnableSpeakerCompleteCallback
 {
-  public abstract void a();
+  blco(blck paramblck) {}
+  
+  public void onComplete(boolean paramBoolean, int paramInt)
+  {
+    QLog.d("AVEngineWalper", 1, "StartOpenSpeaker.OnComplete. bOpen = " + paramBoolean + ", result = " + paramInt);
+    if (this.a.a != null) {
+      this.a.a.b(paramBoolean, paramInt);
+    }
+  }
 }
 
 

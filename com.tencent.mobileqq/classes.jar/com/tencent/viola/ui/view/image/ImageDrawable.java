@@ -19,6 +19,7 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.widget.ImageView.ScaleType;
 import com.tencent.viola.core.ViolaSDKManager;
+import com.tencent.viola.utils.ViolaLogUtils;
 import com.tencent.viola.utils.ViolaUtils;
 
 public class ImageDrawable
@@ -101,11 +102,27 @@ public class ImageDrawable
   
   private static Bitmap createScaleBitmapForBlur(Drawable paramDrawable, int paramInt1, int paramInt2, ImageView.ScaleType paramScaleType, int paramInt3)
   {
+    int i = 40;
     paramDrawable = drawableToBitmap(paramDrawable, paramInt1, paramInt2, paramScaleType);
-    if ((paramDrawable != null) && (paramInt1 != 0) && (paramInt2 != 0)) {
-      return Bitmap.createScaledBitmap(paramDrawable, paramInt1 / paramInt3, paramInt2 / paramInt3, false);
+    if ((paramDrawable != null) && (paramInt1 != 0) && (paramInt2 != 0))
+    {
+      int j = paramInt1 / paramInt3;
+      paramInt2 /= paramInt3;
+      paramInt1 = j;
+      if (j == 0) {
+        paramInt1 = 40;
+      }
+      if (paramInt2 != 0) {
+        break label63;
+      }
+      paramInt2 = i;
     }
-    return null;
+    label63:
+    for (;;)
+    {
+      return Bitmap.createScaledBitmap(paramDrawable, paramInt1, paramInt2, false);
+      return null;
+    }
   }
   
   @NonNull
@@ -198,11 +215,23 @@ public class ImageDrawable
   
   private static void internalBlurImage(Drawable paramDrawable, ImageView.ScaleType paramScaleType, String paramString, int paramInt1, int paramInt2, int paramInt3, int paramInt4, ImageDrawable.OnImageDrawableListener paramOnImageDrawableListener)
   {
-    paramDrawable = createScaleBitmapForBlur(paramDrawable, paramInt1, paramInt2, paramScaleType, paramInt4);
-    if (paramDrawable != null)
+    try
     {
-      ViolaUtils.fastblur(paramDrawable, paramInt3);
-      ViolaSDKManager.getInstance().postOnUiThread(new ImageDrawable.4(paramOnImageDrawableListener, paramDrawable, paramString));
+      paramScaleType = createScaleBitmapForBlur(paramDrawable, paramInt1, paramInt2, paramScaleType, paramInt4);
+      if (paramScaleType != null)
+      {
+        ViolaUtils.fastblur(paramScaleType, paramInt3);
+        ViolaSDKManager.getInstance().postOnUiThread(new ImageDrawable.4(paramOnImageDrawableListener, paramScaleType, paramString));
+      }
+      return;
+    }
+    catch (Throwable paramScaleType)
+    {
+      do
+      {
+        ViolaLogUtils.e("ImageDrawable", paramScaleType.getMessage());
+      } while (paramOnImageDrawableListener == null);
+      paramOnImageDrawableListener.getDrawable(paramDrawable, paramString);
     }
   }
   
@@ -214,15 +243,25 @@ public class ImageDrawable
   
   private static void internalRoundImageAndBlur(Drawable paramDrawable, ImageView.ScaleType paramScaleType, String paramString, int paramInt1, int paramInt2, int paramInt3, int paramInt4, ImageDrawable.OnImageDrawableListener paramOnImageDrawableListener)
   {
-    Object localObject = null;
-    Bitmap localBitmap = createScaleBitmapForBlur(paramDrawable, paramInt2, paramInt3, paramScaleType, paramInt4);
-    paramDrawable = localObject;
-    if (localBitmap != null)
+    ImageDrawable localImageDrawable = null;
+    try
     {
-      ViolaUtils.fastblur(localBitmap, paramInt1);
-      paramDrawable = createFromBitmap(localBitmap, paramScaleType, paramInt2, paramInt3);
+      Bitmap localBitmap = createScaleBitmapForBlur(paramDrawable, paramInt2, paramInt3, paramScaleType, paramInt4);
+      if (localBitmap != null)
+      {
+        ViolaUtils.fastblur(localBitmap, paramInt1);
+        localImageDrawable = createFromBitmap(localBitmap, paramScaleType, paramInt2, paramInt3);
+      }
+      ViolaSDKManager.getInstance().postOnUiThread(new ImageDrawable.6(paramOnImageDrawableListener, localImageDrawable, paramString));
+      return;
     }
-    ViolaSDKManager.getInstance().postOnUiThread(new ImageDrawable.6(paramOnImageDrawableListener, paramDrawable, paramString));
+    catch (Throwable paramScaleType)
+    {
+      if (paramOnImageDrawableListener != null) {
+        paramOnImageDrawableListener.getDrawable(paramDrawable, paramString);
+      }
+      ViolaLogUtils.e("ImageDrawable", paramScaleType.getMessage());
+    }
   }
   
   public static boolean isMainThread()
@@ -301,7 +340,7 @@ public class ImageDrawable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.viola.ui.view.image.ImageDrawable
  * JD-Core Version:    0.7.0.1
  */

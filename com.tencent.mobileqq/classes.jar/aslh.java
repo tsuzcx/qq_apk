@@ -1,39 +1,28 @@
-import android.os.Handler;
-import android.os.Message;
-
-class aslh
-  extends Handler
+public class aslh
+  extends asle
 {
-  aslh(aslg paramaslg) {}
-  
-  public void handleMessage(Message paramMessage)
+  public aslh(asld paramasld, askk paramaskk)
   {
-    super.handleMessage(paramMessage);
-    switch (paramMessage.what)
+    super(paramasld, paramaskk);
+    this.jdField_a_of_type_Int = 0;
+  }
+  
+  public void a(int paramInt)
+  {
+    super.a(paramInt);
+    this.jdField_a_of_type_Askk.a();
+  }
+  
+  public boolean a(int paramInt1, int paramInt2)
+  {
+    super.a(paramInt1, paramInt2);
+    switch (paramInt1)
     {
-    case 5: 
     default: 
-      return;
-    case 0: 
-      this.a.a();
-      return;
-    case 1: 
-      aslg.a(this.a);
-      return;
-    case 6: 
-      aslg.b(this.a);
-      return;
-    case 2: 
-      aslg.c(this.a);
-      return;
-    case 3: 
-      aslg.d(this.a);
-      return;
-    case 4: 
-      aslg.e(this.a);
-      return;
+      return false;
     }
-    aslg.f(this.a);
+    this.jdField_a_of_type_Asld.a(2, paramInt2);
+    return true;
   }
 }
 

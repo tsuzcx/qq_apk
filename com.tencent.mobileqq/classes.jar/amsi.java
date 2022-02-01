@@ -1,8 +1,40 @@
-import android.view.MotionEvent;
+import com.tencent.qphone.base.util.QLog;
 
-public abstract interface amsi
+class amsi
+  extends bhhe
 {
-  public abstract void a(MotionEvent paramMotionEvent, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4);
+  amsi(amsg paramamsg) {}
+  
+  public void onDone(bhhf parambhhf)
+  {
+    super.onDone(parambhhf);
+    QLog.i("cmgame_process.CmGameRscDownloader", 2, "[onDone], status:" + parambhhf.a());
+  }
+  
+  public void onDoneFile(bhhf parambhhf)
+  {
+    if ((parambhhf == null) || (amsg.a(this.a) == null)) {
+      return;
+    }
+    if (parambhhf.a() != 3)
+    {
+      amsg.a(this.a, 2);
+      if (amsg.a(this.a) != null) {
+        amsg.a(this.a).c(-1005, amsg.a(this.a).jdField_b_of_type_JavaLangString);
+      }
+      QLog.e("cmgame_process.CmGameRscDownloader", 1, "downLoad game res fail retCode: " + parambhhf.a());
+      return;
+    }
+    amsg.a(this.a);
+  }
+  
+  public void onProgress(bhhf parambhhf)
+  {
+    int i = (int)parambhhf.a;
+    if (amsg.a(this.a) != null) {
+      amsg.a(this.a).a(i, amsg.a(this.a).jdField_b_of_type_Int, amsg.a(this.a).jdField_b_of_type_JavaLangString);
+    }
+  }
 }
 
 

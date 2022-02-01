@@ -22,13 +22,13 @@ import android.graphics.Typeface;
 import android.os.Build.VERSION;
 import android.view.MotionEvent;
 import android.view.View;
-import bdnn;
+import bgsp;
 import com.tencent.mobileqq.app.ThreadManagerV2;
-import com.tencent.mobileqq.microapp.apkg.f;
+import com.tencent.mobileqq.microapp.a.c;
+import com.tencent.mobileqq.microapp.appbrand.b.b;
 import com.tencent.mobileqq.microapp.appbrand.page.PageWebview;
 import com.tencent.mobileqq.microapp.appbrand.page.ServiceWebview;
 import com.tencent.mobileqq.microapp.appbrand.page.WebviewContainer;
-import com.tencent.mobileqq.microapp.appbrand.utils.b;
 import com.tencent.mobileqq.microapp.util.DisplayUtil;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
@@ -53,7 +53,7 @@ public class CanvasView
   private float k;
   private JSONObject l;
   private WebviewContainer m;
-  private f n;
+  private c n;
   private JSONArray o;
   private float p;
   private String q;
@@ -63,12 +63,12 @@ public class CanvasView
   private float u;
   private int v;
   
-  public CanvasView(Context paramContext, WebviewContainer paramWebviewContainer, f paramf, String paramString, int paramInt, boolean paramBoolean)
+  public CanvasView(Context paramContext, WebviewContainer paramWebviewContainer, c paramc, String paramString, int paramInt, boolean paramBoolean)
   {
     super(paramContext);
     this.k = DisplayUtil.getDensity(paramContext);
     this.m = paramWebviewContainer;
-    this.n = paramf;
+    this.n = paramc;
     this.e = new Paint(1);
     this.d.add(this.e);
     this.f = new Paint(1);
@@ -112,7 +112,7 @@ public class CanvasView
     return localStringBuilder.toString();
   }
   
-  private void a(Canvas paramCanvas, JSONArray paramJSONArray, f paramf)
+  private void a(Canvas paramCanvas, JSONArray paramJSONArray, c paramc)
   {
     if (paramJSONArray == null) {
       return;
@@ -135,20 +135,20 @@ public class CanvasView
       }
       localObject2 = ((JSONArray)localObject3).optString(0);
       localObject1 = localObject2;
-      if (!bdnn.a((String)localObject2))
+      if (!bgsp.a((String)localObject2))
       {
         if (!((String)localObject2).startsWith("wxfile")) {
           break label327;
         }
-        localObject1 = b.a().d((String)localObject2);
+        localObject1 = b.a().c((String)localObject2);
       }
       label135:
       if (QLog.isColorLevel()) {
         QLog.i("drawCanvas", 2, "dataPath: " + (String)localObject1);
       }
-      if (!bdnn.a((String)localObject1))
+      if (!bgsp.a((String)localObject1))
       {
-        localObject1 = com.tencent.mobileqq.microapp.b.a.i((String)localObject1);
+        localObject1 = c.q((String)localObject1);
         if (localObject1 != null)
         {
           localObject2 = new RectF();
@@ -166,7 +166,7 @@ public class CanvasView
       break label8;
       break;
       label327:
-      localObject1 = paramf.j((String)localObject2);
+      localObject1 = paramc.j((String)localObject2);
       break label135;
       label338:
       Object localObject4;
@@ -502,7 +502,7 @@ public class CanvasView
     {
       paramCanvas.drawColor(0, PorterDuff.Mode.CLEAR);
       this.o = new JSONArray();
-      this.o = com.tencent.mobileqq.microapp.b.a.a(this.o, paramJSONArray);
+      this.o = c.a(this.o, paramJSONArray);
       a(paramCanvas, paramJSONArray, this.n);
       return;
     }
@@ -732,7 +732,7 @@ public class CanvasView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.microapp.widget.CanvasView
  * JD-Core Version:    0.7.0.1
  */

@@ -1,18 +1,41 @@
-import java.util.HashMap;
+import android.content.Intent;
+import android.os.Bundle;
 
-public class blld
+public abstract interface blld
 {
-  private HashMap<String, bllj> a = new HashMap();
+  public abstract int a();
   
-  public bllj a(String paramString)
-  {
-    return (bllj)this.a.get(paramString);
-  }
+  public abstract Intent a();
   
-  public void a(String paramString, bllj parambllj)
-  {
-    this.a.put(paramString, parambllj);
-  }
+  public abstract void a();
+  
+  public abstract void a(Bundle paramBundle);
+  
+  public abstract void b();
+  
+  public abstract void c();
+  
+  public abstract void d();
+  
+  public abstract void e();
+  
+  public abstract void f();
+  
+  public abstract void g();
+  
+  public abstract void h();
+  
+  public abstract void i();
+  
+  public abstract void j();
+  
+  public abstract void k();
+  
+  public abstract void l();
+  
+  public abstract void m();
+  
+  public abstract void n();
 }
 
 

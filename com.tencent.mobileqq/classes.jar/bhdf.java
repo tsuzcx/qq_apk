@@ -1,74 +1,28 @@
-import NS_COMM.COMM.StCommonExt;
-import NS_MINI_INTERFACE.INTERFACE.StGetNAppForJumpReq;
-import NS_MINI_INTERFACE.INTERFACE.StGetNAppForJumpRsp;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.qqmini.sdk.log.QMLog;
-import org.json.JSONObject;
+import com.tencent.mobileqq.vas.VasExtensionHandler;
+import com.tencent.mobileqq.vas.VasQuickUpdateManager.QueryItemVersionCallback;
+import java.lang.ref.WeakReference;
 
-public class bhdf
-  extends bhdw
+public abstract interface bhdf
 {
-  private INTERFACE.StGetNAppForJumpReq a = new INTERFACE.StGetNAppForJumpReq();
+  public abstract void cancelDwonloadItem(long paramLong, String paramString);
   
-  public bhdf(COMM.StCommonExt paramStCommonExt, String paramString1, String paramString2, String paramString3, int paramInt)
-  {
-    this.a.android_pkg_name.set(paramString3);
-    this.a.mini_appid.set(paramString1);
-    this.a.native_appid.set(paramString2);
-    this.a.scene.set(paramInt);
-    if (paramStCommonExt != null) {
-      this.a.extInfo.set(paramStCommonExt);
-    }
-  }
+  public abstract void downloadGatherItem(long paramLong, String paramString1, String[] paramArrayOfString, String paramString2);
   
-  protected String a()
-  {
-    return "mini_user_info";
-  }
+  public abstract void downloadItem(long paramLong, String paramString1, String paramString2);
   
-  public JSONObject a(byte[] paramArrayOfByte)
-  {
-    if (paramArrayOfByte == null) {
-      return null;
-    }
-    INTERFACE.StGetNAppForJumpRsp localStGetNAppForJumpRsp = new INTERFACE.StGetNAppForJumpRsp();
-    try
-    {
-      localStGetNAppForJumpRsp.mergeFrom(a(paramArrayOfByte));
-      if (localStGetNAppForJumpRsp != null)
-      {
-        paramArrayOfByte = new JSONObject();
-        paramArrayOfByte.put("packageName", localStGetNAppForJumpRsp.android_pkg.get());
-        paramArrayOfByte.put("nativeAppId", localStGetNAppForJumpRsp.native_appid.get());
-        paramArrayOfByte.put("downloadUrl", localStGetNAppForJumpRsp.android_donwload_url.get());
-        paramArrayOfByte.put("appName", localStGetNAppForJumpRsp.appName.get());
-        paramArrayOfByte.put("onlyOpen", localStGetNAppForJumpRsp.onlyOpen.get());
-        return paramArrayOfByte;
-      }
-      QMLog.d("GetAppInfoByIdRequest", "onResponse fail.rsp = null");
-      return null;
-    }
-    catch (Exception paramArrayOfByte)
-    {
-      QMLog.d("GetAppInfoByIdRequest", "onResponse fail." + paramArrayOfByte);
-    }
-    return null;
-  }
+  public abstract void onDestory();
   
-  protected byte[] a()
-  {
-    return this.a.toByteArray();
-  }
+  public abstract void onPbMsgRecv(int paramInt, String paramString1, String paramString2);
   
-  protected String b()
-  {
-    return "GetNAppForJump";
-  }
+  public abstract void queryItemVersion(int paramInt, String paramString, boolean paramBoolean, VasQuickUpdateManager.QueryItemVersionCallback paramQueryItemVersionCallback);
+  
+  public abstract void setWeakHandler(WeakReference<VasExtensionHandler> paramWeakReference);
+  
+  public abstract void startUpdateAllItem();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bhdf
  * JD-Core Version:    0.7.0.1
  */

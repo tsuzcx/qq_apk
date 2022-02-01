@@ -1,21 +1,28 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.mobileqq.nearby.widget.AutoScrollImageView;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Process;
+import com.tencent.mobileqq.listentogether.ListenTogetherManager;
+import com.tencent.qphone.base.util.QLog;
 
 public class avth
-  implements ValueAnimator.AnimatorUpdateListener
+  extends BroadcastReceiver
 {
-  public avth(AutoScrollImageView paramAutoScrollImageView) {}
+  public avth(ListenTogetherManager paramListenTogetherManager) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    AutoScrollImageView.a(this.a, ((Integer)paramValueAnimator.getAnimatedValue()).intValue());
-    this.a.invalidate();
+    if (paramIntent == null) {}
+    while (paramIntent.getIntExtra("pid", Process.myPid()) != Process.myPid()) {
+      return;
+    }
+    QLog.i("ListenTogether.Manager", 1, "onThemeChange.");
+    ListenTogetherManager.c(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     avth
  * JD-Core Version:    0.7.0.1
  */

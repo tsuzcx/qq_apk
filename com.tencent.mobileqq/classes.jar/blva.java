@@ -1,289 +1,220 @@
-import android.app.Activity;
-import android.graphics.drawable.Drawable;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
+import android.util.Pair;
+import cooperation.qzone.util.QZLog;
+import java.io.Closeable;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.nio.ByteBuffer;
+import java.nio.ByteOrder;
+import java.nio.channels.FileChannel;
+import java.nio.charset.Charset;
+import java.util.HashMap;
+import java.util.Map;
 
 public class blva
-  extends blrs
-  implements URLDrawable.URLDrawableListener
+  implements Closeable
 {
-  private final float jdField_a_of_type_Float;
-  bmwc jdField_a_of_type_Bmwc;
-  URLDrawable jdField_a_of_type_ComTencentImageURLDrawable;
-  String jdField_a_of_type_JavaLangString;
-  private final float jdField_b_of_type_Float;
-  private final String jdField_b_of_type_JavaLangString;
-  private final float c;
-  int d = 0;
-  int e = 2;
+  public blvc a;
+  private final FileInputStream jdField_a_of_type_JavaIoFileInputStream;
+  private final Map<String, blve> jdField_a_of_type_JavaUtilMap = new HashMap();
+  public blvd[] a;
+  public blve[] a;
   
-  public blva(bmwc parambmwc, String paramString1, String paramString2, float paramFloat1, float paramFloat2, float paramFloat3)
+  public blva(File paramFile)
   {
-    super(null);
-    this.jdField_b_of_type_JavaLangString = paramString1;
-    this.jdField_a_of_type_JavaLangString = paramString2;
-    this.jdField_a_of_type_Bmwc = parambmwc;
-    this.jdField_a_of_type_Float = paramFloat1;
-    this.jdField_b_of_type_Float = paramFloat2;
-    this.c = paramFloat3;
-    if (QLog.isColorLevel()) {
-      QLog.d("QCombo.LPaster", 2, "create id=" + paramString1 + " name=" + paramString2);
+    this.jdField_a_of_type_JavaIoFileInputStream = new FileInputStream(paramFile);
+    Object localObject = this.jdField_a_of_type_JavaIoFileInputStream.getChannel();
+    this.jdField_a_of_type_Blvc = new blvc((FileChannel)localObject, null);
+    ByteBuffer localByteBuffer = ByteBuffer.allocate(128);
+    localByteBuffer.limit(this.jdField_a_of_type_Blvc.d);
+    if (this.jdField_a_of_type_Blvc.a[5] == 1) {}
+    for (paramFile = ByteOrder.LITTLE_ENDIAN;; paramFile = ByteOrder.BIG_ENDIAN)
+    {
+      localByteBuffer.order(paramFile);
+      ((FileChannel)localObject).position(this.jdField_a_of_type_Blvc.b);
+      this.jdField_a_of_type_ArrayOfBlvd = new blvd[this.jdField_a_of_type_Blvc.e];
+      i = 0;
+      while (i < this.jdField_a_of_type_ArrayOfBlvd.length)
+      {
+        a((FileChannel)localObject, localByteBuffer, "failed to read phdr.");
+        this.jdField_a_of_type_ArrayOfBlvd[i] = new blvd(localByteBuffer, this.jdField_a_of_type_Blvc.a[4], null);
+        i += 1;
+      }
+    }
+    ((FileChannel)localObject).position(this.jdField_a_of_type_Blvc.c);
+    localByteBuffer.limit(this.jdField_a_of_type_Blvc.f);
+    this.jdField_a_of_type_ArrayOfBlve = new blve[this.jdField_a_of_type_Blvc.g];
+    int i = 0;
+    while (i < this.jdField_a_of_type_ArrayOfBlve.length)
+    {
+      a((FileChannel)localObject, localByteBuffer, "failed to read shdr.");
+      this.jdField_a_of_type_ArrayOfBlve[i] = new blve(localByteBuffer, this.jdField_a_of_type_Blvc.a[4], null);
+      i += 1;
+    }
+    if (this.jdField_a_of_type_Blvc.h > 0)
+    {
+      paramFile = a(this.jdField_a_of_type_ArrayOfBlve[this.jdField_a_of_type_Blvc.h]);
+      localObject = this.jdField_a_of_type_ArrayOfBlve;
+      int k = localObject.length;
+      i = j;
+      while (i < k)
+      {
+        localByteBuffer = localObject[i];
+        paramFile.position(localByteBuffer.jdField_a_of_type_Int);
+        localByteBuffer.jdField_a_of_type_JavaLangString = a(paramFile);
+        this.jdField_a_of_type_JavaUtilMap.put(localByteBuffer.jdField_a_of_type_JavaLangString, localByteBuffer);
+        i += 1;
+      }
     }
   }
   
-  private URLDrawable a()
+  public static Pair<Integer, Throwable> a(File paramFile)
   {
-    URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-    localURLDrawableOptions.mFailedDrawable = bayu.a;
-    localURLDrawableOptions.mLoadingDrawable = bayu.a;
-    localURLDrawableOptions.mUseAutoScaleParams = false;
-    bmwd localbmwd = this.jdField_a_of_type_Bmwc.a(this.jdField_a_of_type_JavaLangString);
-    if (localbmwd != null) {
-      return URLDrawable.getDrawable(localbmwd.d, localURLDrawableOptions);
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("QCombo.LPaster", 2, "createUrlDrawable no item =" + this.jdField_a_of_type_JavaLangString);
-    }
-    return null;
-  }
-  
-  public float a()
-  {
-    return 1.0F;
-  }
-  
-  public int a()
-  {
+    int i = 0;
     for (;;)
     {
       try
       {
-        if (this.jdField_a_of_type_ComTencentImageURLDrawable == null) {
-          this.jdField_a_of_type_ComTencentImageURLDrawable = a();
-        }
-        if (this.jdField_a_of_type_ComTencentImageURLDrawable == null) {
-          break label129;
-        }
-        if (this.e != 3)
-        {
-          bmwd localbmwd = this.jdField_a_of_type_Bmwc.a(this.jdField_a_of_type_JavaLangString);
-          if (localbmwd == null) {
-            break label92;
-          }
-          if (baqn.a(localbmwd.d) == null) {
-            this.e = 2;
-          }
-        }
-        else
-        {
-          int i = this.e;
-          return i;
-        }
-        this.e = 3;
-        this.jdField_a_of_type_ComTencentImageURLDrawable.startDownload();
-        continue;
-        if (!QLog.isColorLevel()) {
+        paramFile = new blva(paramFile);
+        if (paramFile == null) {}
+      }
+      catch (IOException paramFile)
+      {
+        Object localObject1 = paramFile.getMessage();
+        if (localObject1 == null) {
           continue;
         }
+        if (!((String)localObject1).startsWith("bad elf magic")) {
+          continue;
+        }
+        i = -1;
+        localObject1 = new Pair(Integer.valueOf(i), paramFile);
+        paramFile = (File)localObject1;
+        if (0 == 0) {
+          continue;
+        }
+        try
+        {
+          throw new NullPointerException();
+        }
+        catch (IOException paramFile)
+        {
+          QZLog.e("ShareElfFile", "", paramFile);
+          return localObject1;
+        }
+        if (!((String)localObject1).startsWith("bad elf class")) {
+          continue;
+        }
+        i = -2;
+        continue;
+        if (!((String)localObject1).startsWith("bad elf data encoding")) {
+          continue;
+        }
+        i = -3;
+        continue;
+        if (!((String)localObject1).startsWith("failed to read rest part of ehdr")) {
+          continue;
+        }
+        i = -4;
+        continue;
+        if (!((String)localObject1).startsWith("bad elf version")) {
+          continue;
+        }
+        i = -5;
+        continue;
+        if (!((String)localObject1).startsWith("Unexpected elf class")) {
+          continue;
+        }
+        i = -6;
+        continue;
+        if (!((String)localObject1).startsWith("failed to read phdr")) {
+          continue;
+        }
+        i = -7;
+        continue;
+        boolean bool = ((String)localObject1).startsWith("failed to read shdr");
+        if (!bool) {
+          continue;
+        }
+        i = -8;
+        continue;
+        i = -1000;
+        continue;
       }
-      finally {}
-      label92:
-      QLog.d("QCombo.LPaster", 2, "getState no item =" + this.jdField_a_of_type_JavaLangString);
-      continue;
-      label129:
-      this.e = 2;
-    }
-  }
-  
-  public int a(Activity paramActivity, int paramInt)
-  {
-    paramActivity = blzf.a().a(paramInt);
-    if (paramActivity != null)
-    {
-      a(this.jdField_a_of_type_Bmwc, this.jdField_a_of_type_JavaLangString, bnsm.a, bnsm.b, this.jdField_a_of_type_Float, this.jdField_b_of_type_Float, this.c, paramActivity.a());
-      if (QLog.isColorLevel()) {
-        QLog.d("QCombo.LPaster", 2, "apply id=" + this.jdField_b_of_type_JavaLangString + " name=" + this.jdField_a_of_type_JavaLangString + " state=" + this.e);
-      }
-    }
-    return 0;
-  }
-  
-  public void a(Activity paramActivity, int paramInt)
-  {
-    paramActivity = this.jdField_a_of_type_Bmwc.a(this.jdField_a_of_type_JavaLangString);
-    if (paramActivity != null)
-    {
-      DoodleLayout localDoodleLayout = blzf.a().a(paramInt);
-      if (localDoodleLayout != null) {
-        localDoodleLayout.a().a(this.jdField_a_of_type_Bmwc.jdField_b_of_type_JavaLangString, paramActivity.c);
-      }
-    }
-    for (;;)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("QCombo.LPaster", 2, "apply id=" + this.jdField_b_of_type_JavaLangString + " name=" + this.jdField_a_of_type_JavaLangString + " state=" + this.e);
-      }
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d("QCombo.LPaster", 2, "unApply no item =" + this.jdField_a_of_type_JavaLangString);
-      }
-    }
-  }
-  
-  public void a(bmwc parambmwc, String paramString, int paramInt1, int paramInt2, float paramFloat1, float paramFloat2, float paramFloat3, blsr paramblsr)
-  {
-    if (paramblsr == null) {
-      if (QLog.isColorLevel()) {
-        QLog.d("QCombo.LPaster", 2, "try apply but no listener");
-      }
-    }
-    do
-    {
-      return;
-      parambmwc = this.jdField_a_of_type_ComTencentImageURLDrawable;
-      if (parambmwc == null) {
-        break;
-      }
-      parambmwc.setBounds(0, 0, parambmwc.getIntrinsicWidth(), parambmwc.getIntrinsicHeight());
-      paramString = this.jdField_a_of_type_Bmwc.a(this.jdField_a_of_type_JavaLangString);
-      if (paramString != null)
+      finally
       {
-        paramString.a = parambmwc;
-        paramblsr.a(paramString, paramInt1 * paramFloat1, paramInt2 * paramFloat2, paramFloat3, this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataSegmentKeeper);
-        return;
+        if (0 == 0) {
+          break label232;
+        }
       }
-    } while (!QLog.isColorLevel());
-    QLog.d("QCombo.LPaster", 2, "applyLocationPaster no item =" + this.jdField_a_of_type_JavaLangString);
-    return;
-    wxe.e("QCombo.LPaster", "can create drawable from urldrawable:" + this.jdField_a_of_type_ComTencentImageURLDrawable);
+      try
+      {
+        paramFile.close();
+        paramFile = new Pair(Integer.valueOf(0), null);
+        return paramFile;
+      }
+      catch (IOException paramFile)
+      {
+        QZLog.e("ShareElfFile", "", paramFile);
+      }
+    }
+    try
+    {
+      throw new NullPointerException();
+      label232:
+      throw localObject2;
+    }
+    catch (IOException paramFile)
+    {
+      for (;;)
+      {
+        QZLog.e("ShareElfFile", "", paramFile);
+      }
+    }
   }
   
-  /* Error */
-  public int b()
+  public static String a(ByteBuffer paramByteBuffer)
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_0
-    //   3: getfield 109	blva:jdField_a_of_type_ComTencentImageURLDrawable	Lcom/tencent/image/URLDrawable;
-    //   6: ifnonnull +11 -> 17
-    //   9: aload_0
-    //   10: aload_0
-    //   11: invokespecial 111	blva:a	()Lcom/tencent/image/URLDrawable;
-    //   14: putfield 109	blva:jdField_a_of_type_ComTencentImageURLDrawable	Lcom/tencent/image/URLDrawable;
-    //   17: aload_0
-    //   18: getfield 109	blva:jdField_a_of_type_ComTencentImageURLDrawable	Lcom/tencent/image/URLDrawable;
-    //   21: ifnull +86 -> 107
-    //   24: aload_0
-    //   25: getfield 109	blva:jdField_a_of_type_ComTencentImageURLDrawable	Lcom/tencent/image/URLDrawable;
-    //   28: invokevirtual 197	com/tencent/image/URLDrawable:getStatus	()I
-    //   31: iconst_1
-    //   32: if_icmpne +84 -> 116
-    //   35: aload_0
-    //   36: iconst_3
-    //   37: putfield 25	blva:e	I
-    //   40: aload_0
-    //   41: bipush 100
-    //   43: putfield 23	blva:d	I
-    //   46: invokestatic 43	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   49: ifeq +58 -> 107
-    //   52: ldc 45
-    //   54: iconst_2
-    //   55: new 47	java/lang/StringBuilder
-    //   58: dup
-    //   59: invokespecial 50	java/lang/StringBuilder:<init>	()V
-    //   62: ldc 199
-    //   64: invokevirtual 56	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   67: aload_0
-    //   68: getfield 27	blva:jdField_b_of_type_JavaLangString	Ljava/lang/String;
-    //   71: invokevirtual 56	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   74: ldc 58
-    //   76: invokevirtual 56	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   79: aload_0
-    //   80: getfield 29	blva:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   83: invokevirtual 56	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   86: ldc 201
-    //   88: invokevirtual 56	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   91: aload_0
-    //   92: getfield 109	blva:jdField_a_of_type_ComTencentImageURLDrawable	Lcom/tencent/image/URLDrawable;
-    //   95: invokevirtual 197	com/tencent/image/URLDrawable:getStatus	()I
-    //   98: invokevirtual 151	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   101: invokevirtual 62	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   104: invokestatic 65	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   107: aload_0
-    //   108: getfield 25	blva:e	I
-    //   111: istore_1
-    //   112: aload_0
-    //   113: monitorexit
-    //   114: iload_1
-    //   115: ireturn
-    //   116: aload_0
-    //   117: getfield 109	blva:jdField_a_of_type_ComTencentImageURLDrawable	Lcom/tencent/image/URLDrawable;
-    //   120: invokevirtual 119	com/tencent/image/URLDrawable:startDownload	()V
-    //   123: aload_0
-    //   124: getfield 109	blva:jdField_a_of_type_ComTencentImageURLDrawable	Lcom/tencent/image/URLDrawable;
-    //   127: aload_0
-    //   128: invokevirtual 205	com/tencent/image/URLDrawable:setURLDrawableListener	(Lcom/tencent/image/URLDrawable$URLDrawableListener;)V
-    //   131: aload_0
-    //   132: iconst_1
-    //   133: putfield 25	blva:e	I
-    //   136: aload_0
-    //   137: iconst_0
-    //   138: putfield 23	blva:d	I
-    //   141: aload_0
-    //   142: invokevirtual 207	blva:a	()V
-    //   145: goto -99 -> 46
-    //   148: astore_2
-    //   149: aload_0
-    //   150: monitorexit
-    //   151: aload_2
-    //   152: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	153	0	this	blva
-    //   111	4	1	i	int
-    //   148	4	2	localObject	Object
-    // Exception table:
-    //   from	to	target	type
-    //   2	17	148	finally
-    //   17	46	148	finally
-    //   46	107	148	finally
-    //   107	112	148	finally
-    //   116	145	148	finally
+    byte[] arrayOfByte = paramByteBuffer.array();
+    int i = paramByteBuffer.position();
+    while ((paramByteBuffer.hasRemaining()) && (arrayOfByte[paramByteBuffer.position()] != 0)) {
+      paramByteBuffer.position(paramByteBuffer.position() + 1);
+    }
+    paramByteBuffer.position(paramByteBuffer.position() + 1);
+    return new String(arrayOfByte, i, paramByteBuffer.position() - i - 1, Charset.forName("ASCII"));
   }
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable)
+  public static void a(FileChannel paramFileChannel, ByteBuffer paramByteBuffer, String paramString)
   {
-    this.d = 0;
-    this.e = 2;
+    paramByteBuffer.rewind();
+    int i = paramFileChannel.read(paramByteBuffer);
+    if (i != paramByteBuffer.limit()) {
+      throw new IOException(paramString + " Rest bytes insufficient, expect to read " + paramByteBuffer.limit() + " bytes but only " + i + " bytes were read.");
+    }
+    paramByteBuffer.flip();
   }
   
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
+  private static void b(int paramInt1, int paramInt2, int paramInt3, String paramString)
   {
-    this.d = 0;
-    this.e = 2;
-    a(4);
+    if ((paramInt1 < paramInt2) || (paramInt1 > paramInt3)) {
+      throw new IOException(paramString);
+    }
   }
   
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt)
+  public ByteBuffer a(blve paramblve)
   {
-    this.d = paramInt;
-    this.e = 1;
+    ByteBuffer localByteBuffer = ByteBuffer.allocate((int)paramblve.d);
+    this.jdField_a_of_type_JavaIoFileInputStream.getChannel().position(paramblve.c);
+    a(this.jdField_a_of_type_JavaIoFileInputStream.getChannel(), localByteBuffer, "failed to read section: " + paramblve.jdField_a_of_type_JavaLangString);
+    return localByteBuffer;
   }
   
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  public void close()
   {
-    this.d = 100;
-    this.e = 3;
-    b();
-  }
-  
-  public String toString()
-  {
-    return "LP@" + this.jdField_b_of_type_JavaLangString + "@" + this.jdField_a_of_type_JavaLangString + "@" + hashCode();
+    this.jdField_a_of_type_JavaIoFileInputStream.close();
+    this.jdField_a_of_type_JavaUtilMap.clear();
+    this.jdField_a_of_type_ArrayOfBlvd = null;
+    this.jdField_a_of_type_ArrayOfBlve = null;
   }
 }
 

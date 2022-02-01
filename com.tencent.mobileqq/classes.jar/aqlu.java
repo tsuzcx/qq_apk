@@ -1,97 +1,248 @@
-import android.os.Bundle;
-import android.os.Looper;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.filemanager.activity.FilePreviewActivity;
-import com.tencent.mobileqq.filemanager.widget.FileWebView;
+import android.content.Context;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.config.QStorageInstantiateException;
+import com.tencent.mobileqq.config.QStorageSafeDeleteException;
 import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.io.IOException;
+import java.io.Serializable;
+import java.util.concurrent.ConcurrentHashMap;
+import mqq.app.AppRuntime;
+import mqq.app.MobileQQ;
 
-public class aqlu
-  implements aqlx
+public final class aqlu
 {
-  public aqlu(FilePreviewActivity paramFilePreviewActivity) {}
+  public static ConcurrentHashMap<String, aqlu> a;
+  private static final String[] jdField_a_of_type_ArrayOfJavaLangString = { "flashchat" };
+  Context jdField_a_of_type_AndroidContentContext;
+  File jdField_a_of_type_JavaIoFile;
+  String jdField_a_of_type_JavaLangString;
+  String b;
   
-  public void a(boolean paramBoolean, String paramString1, String paramString2, long paramLong, String paramString3, String paramString4, String paramString5, String paramString6, Bundle paramBundle)
+  static
   {
-    if (this.a.c) {}
-    do
+    jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
+  }
+  
+  private aqlu(Context paramContext, String paramString1, String paramString2)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.b = paramString2;
+    paramContext = new File(this.jdField_a_of_type_AndroidContentContext.getFilesDir().getAbsolutePath() + File.separator + this.b + File.separator + "qstorage" + File.separator + "objs");
+    if (!paramContext.exists()) {
+      paramContext.mkdirs();
+    }
+    this.jdField_a_of_type_JavaIoFile = paramContext;
+  }
+  
+  public static <T extends aqlb<Y>, Y> T a(Y paramY, Class<T> paramClass)
+  {
+    aqlb localaqlb = (aqlb)aqlk.a(paramClass);
+    try
     {
-      return;
-      if (this.a.jdField_a_of_type_Arca != null) {
-        this.a.jdField_a_of_type_Arca.jdField_f_of_type_Long = System.currentTimeMillis();
-      }
-      this.a.c = true;
-      if (!paramBoolean)
+      localaqlb.a(paramY);
+      return localaqlb;
+    }
+    catch (Exception paramY)
+    {
+      aqln.a().a(paramClass, paramY);
+      throw new QStorageInstantiateException("readJsonOrXml exception too much", paramY);
+    }
+  }
+  
+  public static aqlu a(String paramString)
+  {
+    if (!a(paramString)) {
+      QLog.d("QStorage", 1, "buildQStorage notRegister " + paramString);
+    }
+    Object localObject = (aqlu)jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
+    if (localObject == null) {
+      synchronized (jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap)
       {
-        if ((paramString3 != null) && (paramString3.length() > 0)) {
-          this.a.jdField_b_of_type_AndroidWidgetTextView.setText(paramString3);
-        }
-        for (;;)
+        aqlu localaqlu = (aqlu)jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
+        localObject = localaqlu;
+        if (localaqlu == null)
         {
-          this.a.jdField_b_of_type_AndroidWidgetLinearLayout.setVisibility(0);
-          this.a.jdField_b_of_type_AndroidWidgetLinearLayout.setOnClickListener(null);
-          this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-          this.a.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
-          this.a.jdField_f_of_type_Boolean = true;
-          this.a.stopTitleProgress();
-          if (this.a.jdField_a_of_type_Arca != null)
-          {
-            this.a.jdField_a_of_type_Arca.jdField_a_of_type_Boolean = false;
-            this.a.jdField_a_of_type_Arca.jdField_c_of_type_Long = (this.a.jdField_a_of_type_Arca.jdField_f_of_type_Long - this.a.jdField_a_of_type_Arca.jdField_e_of_type_Long);
-            this.a.jdField_a_of_type_Arca.jdField_e_of_type_JavaLangString = String.valueOf(paramLong);
-            this.a.jdField_a_of_type_Arca.i = paramString3;
-            this.a.jdField_a_of_type_Arca.jdField_d_of_type_JavaLangString = paramString6;
-            this.a.jdField_a_of_type_Arca.jdField_d_of_type_Long = (System.currentTimeMillis() - this.a.jdField_a_of_type_Arca.jdField_a_of_type_Long);
-            this.a.jdField_a_of_type_Arca.a();
-          }
-          if (!QLog.isColorLevel()) {
-            break;
-          }
-          QLog.e("<FileAssistant>FilePreviewActivity", 2, "OnCSReplay[false],retMsg[" + paramString3 + "]");
-          return;
-          this.a.jdField_b_of_type_AndroidWidgetTextView.setText(alud.a(2131704959));
+          localObject = new aqlu(BaseApplicationImpl.getContext(), paramString, MobileQQ.sMobileQQ.waitAppRuntime(null).getAccount());
+          jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString, localObject);
+        }
+        return localObject;
+      }
+    }
+    return localObject;
+  }
+  
+  private static boolean a(String paramString)
+  {
+    boolean bool2 = false;
+    String[] arrayOfString = jdField_a_of_type_ArrayOfJavaLangString;
+    int j = arrayOfString.length;
+    int i = 0;
+    for (;;)
+    {
+      boolean bool1 = bool2;
+      if (i < j)
+      {
+        if (TextUtils.equals(arrayOfString[i], paramString)) {
+          bool1 = true;
         }
       }
-      this.a.h = paramString1;
-      this.a.i = paramString2;
-      this.a.jdField_f_of_type_JavaLangString = paramString4;
-      this.a.g = paramString5;
-      this.a.jdField_b_of_type_JavaLangString = ("http://" + paramString1 + ":" + paramString2 + "/ftn_doc_previewer/" + this.a.j);
-      this.a.k = paramString6;
-      if (this.a.jdField_a_of_type_Arca != null)
-      {
-        this.a.jdField_a_of_type_Arca.jdField_a_of_type_Boolean = true;
-        this.a.jdField_a_of_type_Arca.g = paramString4;
-        this.a.jdField_a_of_type_Arca.i = "";
-        this.a.jdField_a_of_type_Arca.jdField_f_of_type_Long = System.currentTimeMillis();
-        this.a.jdField_a_of_type_Arca.jdField_c_of_type_Long = (this.a.jdField_a_of_type_Arca.jdField_f_of_type_Long - this.a.jdField_a_of_type_Arca.jdField_e_of_type_Long);
-        this.a.jdField_a_of_type_Arca.jdField_c_of_type_JavaLangString = paramString1;
-        this.a.jdField_a_of_type_Arca.jdField_f_of_type_JavaLangString = this.a.jdField_b_of_type_JavaLangString;
-        this.a.jdField_a_of_type_Arca.jdField_d_of_type_JavaLangString = paramString6;
-        this.a.jdField_a_of_type_Arca.jdField_d_of_type_Long = (System.currentTimeMillis() - this.a.jdField_a_of_type_Arca.jdField_a_of_type_Long);
-        this.a.jdField_a_of_type_Arca.a();
+      else {
+        return bool1;
       }
-      if (this.a.jdField_b_of_type_JavaLangString == null)
+      i += 1;
+    }
+  }
+  
+  public File a(String paramString1, String paramString2)
+  {
+    return new File(this.jdField_a_of_type_JavaIoFile, paramString1 + paramString2);
+  }
+  
+  public <T extends Serializable> T a(String paramString, Class<T> paramClass, int paramInt)
+  {
+    File localFile = a(paramString, ".serial");
+    return (Serializable)a(localFile, "", paramClass, paramInt, new aqlw(this, localFile, paramString));
+  }
+  
+  public <JavaBean, Param> JavaBean a(File paramFile, Param paramParam, Class<JavaBean> paramClass, int paramInt, aqla<JavaBean, Param> paramaqla)
+  {
+    Object localObject = null;
+    if (paramFile != null) {}
+    String str2;
+    for (;;)
+    {
+      try
       {
-        if (QLog.isColorLevel()) {
-          QLog.e("<FileAssistant>FilePreviewActivity", 2, "mPreviewUrl is null ,threadid[" + Thread.currentThread().getId() + "], mainId[" + Looper.getMainLooper().getThread().getId() + "]");
+        String str1 = paramFile.getCanonicalPath();
+        if ((paramInt == 1) || (str1 == null) || (!aqlh.a().a(this.jdField_a_of_type_JavaLangString, this.b, str1)) || (paramFile.exists())) {
+          break;
         }
-        this.a.finish();
-        return;
+        throw new QStorageSafeDeleteException();
       }
-      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetFileWebView.loadUrl(this.a.jdField_b_of_type_JavaLangString);
+      catch (IOException localIOException)
+      {
+        str2 = null;
+        continue;
+      }
+      str2 = null;
+    }
+    try
+    {
+      paramParam = paramaqla.a(paramFile, paramParam);
+      paramFile = paramParam;
+    }
+    catch (Exception paramParam)
+    {
+      for (;;)
+      {
+        aqln.a().a(paramaqla, paramFile, paramParam);
+        QLog.d("QStorage", 1, "readFile " + paramFile.getAbsolutePath(), paramParam);
+        paramFile = localObject;
+        continue;
+        paramParam = paramFile;
+        if (str2 != null)
+        {
+          aqlh.a().a(this.jdField_a_of_type_JavaLangString, this.b, str2);
+          paramParam = paramFile;
+        }
+      }
+    }
+    if (paramFile == null)
+    {
+      paramParam = aqlk.a(paramClass);
+      if (paramParam != null) {
+        return paramParam;
+      }
       if (QLog.isColorLevel()) {
-        QLog.i("<FileAssistant>FilePreviewActivity", 2, "time[" + System.currentTimeMillis() + "]OnCSReplay mWebView.loadUrl(" + this.a.jdField_b_of_type_JavaLangString + ")");
+        QLog.d("QStorage", 2, "readFile ");
       }
-    } while (this.a.jdField_a_of_type_Arca == null);
-    this.a.jdField_a_of_type_Arca.jdField_e_of_type_Long = System.currentTimeMillis();
-    this.a.jdField_a_of_type_Arca.l = "2";
+      throw new QStorageInstantiateException("readSerializable exception too much", new NullPointerException());
+    }
+    return paramParam;
+  }
+  
+  /* Error */
+  public <DATA> void a(File paramFile, DATA paramDATA, aqla<String, DATA> paramaqla)
+  {
+    // Byte code:
+    //   0: aload_3
+    //   1: aload_1
+    //   2: aload_2
+    //   3: invokeinterface 201 3 0
+    //   8: pop
+    //   9: aload_1
+    //   10: ifnull +49 -> 59
+    //   13: aload_1
+    //   14: invokevirtual 72	java/io/File:exists	()Z
+    //   17: istore 4
+    //   19: iload 4
+    //   21: ifeq +38 -> 59
+    //   24: aload_1
+    //   25: invokevirtual 185	java/io/File:getCanonicalPath	()Ljava/lang/String;
+    //   28: astore_2
+    //   29: invokestatic 190	aqlh:a	()Laqlh;
+    //   32: aload_0
+    //   33: getfield 32	aqlu:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   36: aload_0
+    //   37: getfield 36	aqlu:b	Ljava/lang/String;
+    //   40: aload_2
+    //   41: invokevirtual 224	aqlh:b	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+    //   44: invokestatic 190	aqlh:a	()Laqlh;
+    //   47: aload_0
+    //   48: getfield 32	aqlu:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   51: aload_0
+    //   52: getfield 36	aqlu:b	Ljava/lang/String;
+    //   55: aload_2
+    //   56: invokevirtual 220	aqlh:a	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+    //   59: return
+    //   60: astore_2
+    //   61: ldc 113
+    //   63: iconst_1
+    //   64: new 40	java/lang/StringBuilder
+    //   67: dup
+    //   68: invokespecial 41	java/lang/StringBuilder:<init>	()V
+    //   71: ldc 226
+    //   73: invokevirtual 55	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   76: aload_1
+    //   77: invokevirtual 51	java/io/File:getAbsolutePath	()Ljava/lang/String;
+    //   80: invokevirtual 55	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   83: invokevirtual 65	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   86: aload_2
+    //   87: invokestatic 217	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   90: invokestatic 95	aqln:a	()Laqln;
+    //   93: aload_3
+    //   94: aload_1
+    //   95: aload_2
+    //   96: invokevirtual 214	aqln:a	(Laqla;Ljava/io/File;Ljava/lang/Exception;)V
+    //   99: return
+    //   100: astore_1
+    //   101: return
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	102	0	this	aqlu
+    //   0	102	1	paramFile	File
+    //   0	102	2	paramDATA	DATA
+    //   0	102	3	paramaqla	aqla<String, DATA>
+    //   17	3	4	bool	boolean
+    // Exception table:
+    //   from	to	target	type
+    //   0	9	60	java/lang/Exception
+    //   13	19	60	java/lang/Exception
+    //   24	59	60	java/lang/Exception
+    //   24	59	100	java/io/IOException
+  }
+  
+  public <T extends Serializable> void a(String paramString, T paramT)
+  {
+    a(a(paramString, ".serial"), paramT, new aqlv(this, paramString, paramT));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aqlu
  * JD-Core Version:    0.7.0.1
  */

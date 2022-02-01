@@ -1,16 +1,14 @@
-import java.util.List;
+import android.view.View;
+import android.view.View.OnClickListener;
+import kotlin.Metadata;
 
-class aytl
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"}, k=3, mv={1, 1, 16})
+final class aytl
+  implements View.OnClickListener
 {
-  String jdField_a_of_type_JavaLangString;
-  List<aynq> jdField_a_of_type_JavaUtilList;
+  public static final aytl a = new aytl();
   
-  public aytl(String paramString, List<aynq> paramList)
-  {
-    this.jdField_a_of_type_JavaLangString = paramList;
-    Object localObject;
-    this.jdField_a_of_type_JavaUtilList = localObject;
-  }
+  public final void onClick(View paramView) {}
 }
 
 

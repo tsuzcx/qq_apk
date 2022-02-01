@@ -4,28 +4,28 @@ import android.graphics.Bitmap;
 import android.graphics.Bitmap.Config;
 import android.graphics.BitmapFactory;
 import android.graphics.BitmapFactory.Options;
-import bnht;
-import bnhu;
-import bnqj;
+import bpyw;
+import bpyx;
+import bqgx;
 import java.io.File;
 
 public class RMVideoSwitchCameraPicMgr
 {
-  private bnht jdField_a_of_type_Bnht = new bnht(this, null);
-  bnhu jdField_a_of_type_Bnhu = null;
+  private bpyw jdField_a_of_type_Bpyw = new bpyw(this, null);
+  bpyx jdField_a_of_type_Bpyx = null;
   
   private String a()
   {
     String str = "shortvideo_cover_pic";
-    if (this.jdField_a_of_type_Bnht.b) {
+    if (this.jdField_a_of_type_Bpyw.b) {
       str = "ptv_cover_pic";
     }
-    return bnqj.a + File.separator + str + ".jpg";
+    return bqgx.a + File.separator + str + ".jpg";
   }
   
   private String b()
   {
-    return bnqj.a + File.separator + "player_cover_pic" + ".jpg";
+    return bqgx.a + File.separator + "player_cover_pic" + ".jpg";
   }
   
   private native Bitmap getPreprocessBitmap(int[] paramArrayOfInt);
@@ -52,7 +52,7 @@ public class RMVideoSwitchCameraPicMgr
   public Bitmap a(boolean paramBoolean)
   {
     Object localObject = null;
-    this.jdField_a_of_type_Bnht.b = paramBoolean;
+    this.jdField_a_of_type_Bpyw.b = paramBoolean;
     String str = a();
     if (new File(str).exists())
     {
@@ -71,7 +71,7 @@ public class RMVideoSwitchCameraPicMgr
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     dov.com.tencent.mobileqq.activity.richmedia.state.RMVideoSwitchCameraPicMgr
  * JD-Core Version:    0.7.0.1
  */

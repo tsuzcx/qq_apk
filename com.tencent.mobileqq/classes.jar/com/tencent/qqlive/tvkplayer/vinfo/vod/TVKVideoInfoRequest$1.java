@@ -12,7 +12,7 @@ class TVKVideoInfoRequest$1
   
   public void OnVInfoFailure(String paramString1, String paramString2, int paramInt)
   {
-    TVKVideoInfoRequest.access$100(this.this$0).onFailure(TVKVideoInfoRequest.access$000(this.this$0), paramString2, paramInt, null);
+    TVKVideoInfoRequest.access$100(this.this$0).onFailure(TVKVideoInfoRequest.access$000(this.this$0), 101, paramString2, paramInt, null);
   }
   
   public void OnVInfoSuccess(String paramString1, String paramString2, Document paramDocument)
@@ -22,7 +22,7 @@ class TVKVideoInfoRequest$1
     if (TVKVideoInfoRequest.access$300(this.this$0).getEm() > 0)
     {
       int i = TVKVideoInfoRequest.access$300(this.this$0).getEm() + 1300000;
-      TVKVideoInfoRequest.access$100(this.this$0).onFailure(TVKVideoInfoRequest.access$000(this.this$0), String.format("%d;%d.%d", new Object[] { Integer.valueOf(101), Integer.valueOf(i), Integer.valueOf(TVKVideoInfoRequest.access$300(this.this$0).getExem()) }), i, paramString2);
+      TVKVideoInfoRequest.access$100(this.this$0).onFailure(TVKVideoInfoRequest.access$000(this.this$0), 101, String.format("%d;%d.%d", new Object[] { Integer.valueOf(101), Integer.valueOf(i), Integer.valueOf(TVKVideoInfoRequest.access$300(this.this$0).getExem()) }), i, paramString2);
       return;
     }
     if ((TVKVideoInfoRequest.access$300(this.this$0).getDltype() == 1) && (TVKVideoInfoRequest.access$300(this.this$0).getClipCount() > 1) && (TVKVideoInfoRequest.access$300(this.this$0).getSt() != 8))
@@ -38,7 +38,7 @@ class TVKVideoInfoRequest$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqlive.tvkplayer.vinfo.vod.TVKVideoInfoRequest.1
  * JD-Core Version:    0.7.0.1
  */

@@ -1,14 +1,15 @@
 package com.tencent.mobileqq.activity.main;
 
-import aggx;
-import aiez;
-import alwk;
+import adcc;
+import ahqr;
+import ajvr;
 import android.content.res.Resources;
 import android.support.v4.util.MQLruCache;
 import android.util.DisplayMetrics;
-import aupg;
-import azsj;
+import awwm;
+import bcuh;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mfsdk.MagnifierSDK;
 import com.tencent.mobileqq.activity.SplashActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.widget.QQToast;
@@ -17,7 +18,7 @@ import com.tencent.qphone.base.util.QLog;
 public class MainAssistObserver$2
   implements Runnable
 {
-  public MainAssistObserver$2(aiez paramaiez) {}
+  public MainAssistObserver$2(ajvr paramajvr) {}
   
   public void run()
   {
@@ -28,15 +29,15 @@ public class MainAssistObserver$2
     }
     try
     {
-      aggx.a(localQQAppInterface);
-      aupg.a().a(localQQAppInterface);
+      ahqr.a(localQQAppInterface);
+      awwm.a().a(localQQAppInterface);
       localObject = BaseApplicationImpl.sApplication.getResources().getDisplayMetrics();
       int i = ((DisplayMetrics)localObject).widthPixels;
       int j = ((DisplayMetrics)localObject).heightPixels;
       localObject = BaseApplicationImpl.sImageCache;
-      float f = alwk.a().a;
+      float f = MagnifierSDK.a().a().a;
       ((MQLruCache)localObject).setLargeSize((int)(j * i * 4 * f));
-      localQQAppInterface.E();
+      localQQAppInterface.F();
       QQToast.a(true);
       QQAppInterface.a().a();
       return;
@@ -52,7 +53,7 @@ public class MainAssistObserver$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.main.MainAssistObserver.2
  * JD-Core Version:    0.7.0.1
  */

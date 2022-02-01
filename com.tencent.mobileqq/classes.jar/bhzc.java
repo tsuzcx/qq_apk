@@ -1,22 +1,21 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.widget.NegativeChildrenLayout;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import com.tencent.mobileqq.widget.ParticipleView;
 
 public class bhzc
-  implements View.OnClickListener
+  extends AnimatorListenerAdapter
 {
-  public bhzc(NegativeChildrenLayout paramNegativeChildrenLayout) {}
+  public bhzc(ParticipleView paramParticipleView) {}
   
-  public void onClick(View paramView)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    if (this.a.a != null) {
-      this.a.a.a(paramView);
-    }
+    ParticipleView.a(this.a, 1.0F);
+    this.a.invalidate();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bhzc
  * JD-Core Version:    0.7.0.1
  */

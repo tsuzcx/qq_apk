@@ -6,10 +6,12 @@ public class TagItem
 {
   public double duringTime = (0.0D / 0.0D);
   public double eventTime = (0.0D / 0.0D);
+  public long eventTimeMills = 9223372036854775807L;
   public String extraInfo = "";
   public long ioBytes = 9223372036854775807L;
   public long ioCount = 9223372036854775807L;
   public boolean isSlow = false;
+  public TagItem lastTagItem = null;
   public long netFlowPackets = 9223372036854775807L;
   public long netFlowRecvBytes = 9223372036854775807L;
   public long netFlowSendBytes = 9223372036854775807L;
@@ -17,11 +19,12 @@ public class TagItem
   public String stage = "";
   public String subStage = "";
   public long tagId = 9223372036854775807L;
+  public String tagKey = "";
   public int type = -1;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.tencent.qapmsdk.resource.meta.TagItem
  * JD-Core Version:    0.7.0.1
  */

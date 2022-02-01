@@ -1,40 +1,56 @@
-import android.app.Activity;
-import android.content.Context;
-import android.os.Build.VERSION;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
-import com.tencent.common.app.BaseApplicationImpl;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Handler.Callback;
+import android.os.Looper;
+import android.os.Message;
 
-class pmv
-  implements ViewBase.OnClickListener
+public class pmv
+  implements Handler.Callback
 {
-  pmv(pms parampms, Container paramContainer) {}
+  private final Handler jdField_a_of_type_AndroidOsHandler;
+  private final pmw jdField_a_of_type_Pmw;
+  private boolean jdField_a_of_type_Boolean = true;
+  private boolean b;
   
-  public void onClick(ViewBase paramViewBase)
+  public pmv(pmw parampmw)
   {
-    paramViewBase = BaseApplicationImpl.getContext();
-    int i;
-    if ((Build.VERSION.SDK_INT >= 23) && (paramViewBase != null)) {
-      if (paramViewBase.checkSelfPermission("android.permission.RECORD_AUDIO") == 0) {
-        i = 1;
-      }
-    }
-    for (;;)
+    this.jdField_a_of_type_Pmw = parampmw;
+    this.jdField_a_of_type_AndroidOsHandler = new bkgm(Looper.getMainLooper(), this);
+  }
+  
+  public void a(Bundle paramBundle)
+  {
+    this.b = false;
+    do
     {
-      if ((i == 0) && (pid.a() == 1) && ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getContext() instanceof Activity))) {
-        pms.a(this.jdField_a_of_type_Pms, (Activity)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getContext());
+      while (!this.b) {
+        switch (this.jdField_a_of_type_Pmw.a(paramBundle))
+        {
+        }
       }
       return;
-      i = 0;
-      continue;
-      i = 1;
+    } while (!this.jdField_a_of_type_Boolean);
+    Message localMessage = this.jdField_a_of_type_AndroidOsHandler.obtainMessage(1);
+    localMessage.setData(paramBundle);
+    this.jdField_a_of_type_AndroidOsHandler.sendMessage(localMessage);
+  }
+  
+  public boolean handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    default: 
+      return false;
     }
+    if (!this.b) {
+      a(paramMessage.getData());
+    }
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     pmv
  * JD-Core Version:    0.7.0.1
  */

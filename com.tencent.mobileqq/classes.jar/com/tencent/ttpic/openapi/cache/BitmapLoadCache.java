@@ -12,6 +12,7 @@ import android.util.DisplayMetrics;
 import android.util.Log;
 import com.tencent.aekit.api.standard.AEModule;
 import com.tencent.ttpic.baseutils.bitmap.BitmapUtils;
+import com.tencent.ttpic.baseutils.log.LogUtils;
 import com.tencent.ttpic.baseutils.thread.HandlerThreadManager;
 import com.tencent.ttpic.openapi.config.MediaConfig;
 import java.util.ArrayList;
@@ -151,16 +152,21 @@ public class BitmapLoadCache
   
   private Bitmap getTempBitmap()
   {
-    Object localObject2 = null;
-    Object localObject1 = localObject2;
-    if (this.mCanUseBitmaps != null)
+    if ((this.mCanUseBitmaps != null) && (this.mCanUseBitmaps.size() > 0)) {}
+    for (;;)
     {
-      localObject1 = localObject2;
-      if (this.mCanUseBitmaps.size() > 0) {
-        localObject1 = (Bitmap)this.mCanUseBitmaps.remove(0);
+      try
+      {
+        Bitmap localBitmap = (Bitmap)this.mCanUseBitmaps.remove(0);
+        return localBitmap;
       }
+      catch (Exception localException)
+      {
+        LogUtils.e(this.TAG, "getTempBitmap() exception:" + localException.getMessage());
+        return null;
+      }
+      Object localObject = null;
     }
-    return localObject1;
   }
   
   private Bitmap getTmpBitmapFromLoadCaches()
@@ -439,7 +445,7 @@ public class BitmapLoadCache
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.openapi.cache.BitmapLoadCache
  * JD-Core Version:    0.7.0.1
  */

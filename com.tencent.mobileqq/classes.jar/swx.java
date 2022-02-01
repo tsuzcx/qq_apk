@@ -1,58 +1,35 @@
-import com.tencent.image.URLDrawableHandler;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.redpacket.RIJRedPacketManager;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity.36;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class swx
-  implements URLDrawableHandler
+class swx
+  implements View.OnClickListener
 {
-  private URLDrawableHandler jdField_a_of_type_ComTencentImageURLDrawableHandler;
-  private sww jdField_a_of_type_Sww;
+  swx(sww paramsww) {}
   
-  public swx(URLDrawableHandler paramURLDrawableHandler, sww paramsww)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentImageURLDrawableHandler = paramURLDrawableHandler;
-    this.jdField_a_of_type_Sww = paramsww;
-  }
-  
-  public sww a()
-  {
-    return this.jdField_a_of_type_Sww;
-  }
-  
-  public void doCancel()
-  {
-    this.jdField_a_of_type_ComTencentImageURLDrawableHandler.doCancel();
-  }
-  
-  public boolean isCancelled()
-  {
-    return this.jdField_a_of_type_ComTencentImageURLDrawableHandler.isCancelled();
-  }
-  
-  public void onFileDownloadFailed(int paramInt)
-  {
-    this.jdField_a_of_type_Sww.a(false, paramInt);
-    this.jdField_a_of_type_ComTencentImageURLDrawableHandler.onFileDownloadFailed(paramInt);
-  }
-  
-  public void onFileDownloadStarted()
-  {
-    this.jdField_a_of_type_Sww.b();
-    this.jdField_a_of_type_ComTencentImageURLDrawableHandler.onFileDownloadStarted();
-  }
-  
-  public void onFileDownloadSucceed(long paramLong)
-  {
-    this.jdField_a_of_type_Sww.a(true, 0);
-    this.jdField_a_of_type_ComTencentImageURLDrawableHandler.onFileDownloadSucceed(paramLong);
-  }
-  
-  public void publishProgress(int paramInt)
-  {
-    this.jdField_a_of_type_ComTencentImageURLDrawableHandler.publishProgress(paramInt);
+    RIJRedPacketManager.a().a(this.a.a.this$0, 5, FastWebActivity.b(this.a.a.this$0), this.a.a.this$0.a.innerUniqueID, new swy(this), false, null);
+    phi localphi1 = new phi();
+    phi localphi2 = localphi1.a("rowkey", this.a.a.this$0.a.innerUniqueID).a("content_type", Integer.valueOf(2));
+    if (bgnt.h(BaseApplicationImpl.getContext())) {}
+    for (int i = 2;; i = 1)
+    {
+      localphi2.a("network_type", Integer.valueOf(i)).a("os", Integer.valueOf(1)).a("imei", pha.h());
+      oat.a("0X800ABBA", localphi1.a());
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     swx
  * JD-Core Version:    0.7.0.1
  */

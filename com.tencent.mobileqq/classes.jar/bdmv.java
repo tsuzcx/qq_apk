@@ -1,19 +1,21 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.utils.ShareActionSheetBuilder;
+import android.view.KeyEvent;
+import android.widget.TextView;
+import android.widget.TextView.OnEditorActionListener;
 
-public class bdmv
-  implements View.OnClickListener
+class bdmv
+  implements TextView.OnEditorActionListener
 {
-  public bdmv(ShareActionSheetBuilder paramShareActionSheetBuilder) {}
+  bdmv(bdmq parambdmq) {}
   
-  public void onClick(View paramView)
+  public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
   {
-    if (this.a.a.isShowing())
+    if ((paramInt == 3) || ((paramKeyEvent != null) && (paramKeyEvent.getKeyCode() == 66)))
     {
-      this.a.a.cancel();
-      this.a.a.dismiss();
+      bkft.b(this.a.a);
+      this.a.d();
+      return true;
     }
+    return false;
   }
 }
 

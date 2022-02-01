@@ -1,21 +1,21 @@
 package com.tencent.mobileqq.ark.API;
 
-import aniz;
-import anjf;
+import aphi;
+import apho;
 
 public class ArkAppDownloadModule$4$1
   implements Runnable
 {
-  public ArkAppDownloadModule$4$1(anjf paramanjf) {}
+  public ArkAppDownloadModule$4$1(apho paramapho) {}
   
   public void run()
   {
-    aniz.a(this.a.jdField_a_of_type_Aniz, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_Double, this.a.jdField_a_of_type_CooperationWadlIpcWadlParams);
+    aphi.a(this.a.jdField_a_of_type_Aphi, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_Double, this.a.jdField_a_of_type_CooperationWadlIpcWadlParams);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ark.API.ArkAppDownloadModule.4.1
  * JD-Core Version:    0.7.0.1
  */

@@ -1,50 +1,101 @@
-import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
+import android.support.annotation.RequiresApi;
+import android.support.v4.app.FragmentActivity;
+import android.text.TextUtils;
+import android.view.LayoutInflater;
 import android.view.View;
-import com.etrump.mixlayout.ETTextView;
-import com.tencent.mobileqq.activity.aio.item.ChatThumbView;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForReplyText;
-import com.tencent.mobileqq.data.MessageForReplyText.SourceMsgInfo;
-import com.tencent.mobileqq.data.MessageForText;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.widget.BubbleImageView;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.data.IntimateInfo.MutualMarkInfo;
+import com.tencent.mobileqq.data.IntimateInfo.PrefetchMutualMarkInfo;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.List;
 
-final class afzj
-  implements afzt
+public class afzj
+  extends BaseAdapter
 {
-  afzj(ETTextView paramETTextView1, ETTextView paramETTextView2, MessageForReplyText.SourceMsgInfo paramSourceMsgInfo, BubbleImageView paramBubbleImageView, int paramInt, String paramString, MessageRecord paramMessageRecord, Context paramContext) {}
+  private int jdField_a_of_type_Int;
+  private List<IntimateInfo.MutualMarkInfo> jdField_a_of_type_JavaUtilList;
   
-  public void a(Context paramContext, QQAppInterface paramQQAppInterface, View paramView, MessageRecord paramMessageRecord1, MessageRecord paramMessageRecord2, String paramString)
+  private afzj(afyw paramafyw) {}
+  
+  public IntimateInfo.MutualMarkInfo a(int paramInt)
   {
-    if ((paramView instanceof ChatThumbView))
+    return (IntimateInfo.MutualMarkInfo)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+  }
+  
+  public void a(List<IntimateInfo.MutualMarkInfo> paramList)
+  {
+    this.jdField_a_of_type_JavaUtilList = paramList;
+    if (this.jdField_a_of_type_Int == 0)
     {
-      if (paramMessageRecord2 == null) {
-        break label154;
-      }
-      if ((!(paramMessageRecord2 instanceof MessageForText)) || (((MessageForText)paramMessageRecord2).msg == null)) {
-        break label84;
-      }
-      afzh.a(this.jdField_a_of_type_ComEtrumpMixlayoutETTextView, this.b, 1, this.jdField_a_of_type_ComTencentMobileqqDataMessageForReplyText$SourceMsgInfo.mSourceMsgText, paramMessageRecord2);
-      QLog.e("ReplyTextItemBuilder", 1, "returned text msg error!" + this.jdField_a_of_type_ComTencentMobileqqDataMessageForReplyText$SourceMsgInfo.mSourceMsgText);
-    }
-    label84:
-    do
-    {
-      return;
-      if (((paramMessageRecord1 instanceof MessageForReplyText)) && (((MessageForReplyText)paramMessageRecord1).getSourceMessage() != null)) {
-        ((MessageForReplyText)paramMessageRecord1).setSourceMessageRecord(paramMessageRecord2);
-      }
-      afzh.a(paramMessageRecord2, this.jdField_a_of_type_ComTencentMobileqqDataMessageForReplyText$SourceMsgInfo, this.jdField_a_of_type_ComTencentMobileqqWidgetBubbleImageView, this.jdField_a_of_type_ComEtrumpMixlayoutETTextView, this.b, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, this.jdField_a_of_type_AndroidContentContext, paramQQAppInterface, paramString);
-      return;
+      this.jdField_a_of_type_Int = ((bgtn.a() - bgtn.a(40.0F) - 80) / bgtn.a(50.0F));
       if (QLog.isColorLevel()) {
-        QLog.w("ReplyTextItemBuilder", 2, "processReplyMsg:source msg has been deleted.");
+        QLog.d("intimate_relationship", 2, "friend mark max count: " + this.jdField_a_of_type_Int);
       }
-    } while (this.jdField_a_of_type_ComTencentMobileqqWidgetBubbleImageView == null);
-    label154:
-    this.jdField_a_of_type_ComTencentMobileqqWidgetBubbleImageView.setVisibility(0);
-    afzh.a(this.jdField_a_of_type_AndroidContentContext, paramQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqWidgetBubbleImageView, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, null);
-    afzh.a(this.jdField_a_of_type_ComEtrumpMixlayoutETTextView, this.b, 1, this.jdField_a_of_type_ComTencentMobileqqDataMessageForReplyText$SourceMsgInfo.mSourceMsgText, null);
+      if (this.jdField_a_of_type_Int <= 0) {
+        this.jdField_a_of_type_Int = 6;
+      }
+    }
+    notifyDataSetChanged();
+  }
+  
+  public int getCount()
+  {
+    if (this.jdField_a_of_type_JavaUtilList == null) {
+      return 0;
+    }
+    if (this.jdField_a_of_type_JavaUtilList.size() > this.jdField_a_of_type_Int) {
+      return this.jdField_a_of_type_Int;
+    }
+    return this.jdField_a_of_type_JavaUtilList.size();
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  @RequiresApi(api=16)
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    if (paramView == null) {
+      paramView = LayoutInflater.from(this.jdField_a_of_type_Afyw.jdField_a_of_type_AndroidContentContext).inflate(2131559273, null);
+    }
+    for (;;)
+    {
+      ImageView localImageView = (ImageView)paramView.findViewById(2131367195);
+      RelativeLayout localRelativeLayout = (RelativeLayout)paramView;
+      Object localObject = a(paramInt);
+      if ((localObject instanceof IntimateInfo.PrefetchMutualMarkInfo))
+      {
+        localObject = (IntimateInfo.PrefetchMutualMarkInfo)localObject;
+        afyw.a(this.jdField_a_of_type_Afyw, (IntimateInfo.PrefetchMutualMarkInfo)localObject);
+      }
+      for (;;)
+      {
+        EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
+        return paramView;
+        if (TextUtils.isEmpty(((IntimateInfo.MutualMarkInfo)localObject).icon_static_url)) {
+          break;
+        }
+        ColorDrawable localColorDrawable = new ColorDrawable(0);
+        this.jdField_a_of_type_Afyw.a(localImageView, ((IntimateInfo.MutualMarkInfo)localObject).icon_static_url, localColorDrawable);
+        localRelativeLayout.setBackgroundDrawable(this.jdField_a_of_type_Afyw.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getResources().getDrawable(2130840420));
+      }
+      int i = awzn.a(this.jdField_a_of_type_Afyw.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Afyw.jdField_a_of_type_JavaLangString, ((IntimateInfo.MutualMarkInfo)localObject).type, ((IntimateInfo.MutualMarkInfo)localObject).level);
+      if (i != 0) {}
+      for (localObject = new awzv(this.jdField_a_of_type_Afyw.jdField_a_of_type_AndroidContentContext, i);; localObject = null)
+      {
+        localImageView.setImageDrawable((Drawable)localObject);
+        break;
+      }
+    }
   }
 }
 

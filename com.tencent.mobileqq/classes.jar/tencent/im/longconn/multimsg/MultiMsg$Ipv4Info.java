@@ -15,7 +15,7 @@ public final class MultiMsg$Ipv4Info
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     tencent.im.longconn.multimsg.MultiMsg.Ipv4Info
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,6 @@
 package cooperation.qzone;
 
-import bjoa;
+import bmcj;
 import com.tencent.mobileqq.pluginsdk.PluginBaseInfo;
 import com.tencent.qphone.base.util.QLog;
 
@@ -26,7 +26,7 @@ class QZoneLiveVideoDownLoadActivtyV2$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.qzone.QZoneLiveVideoDownLoadActivtyV2.1
  * JD-Core Version:    0.7.0.1
  */

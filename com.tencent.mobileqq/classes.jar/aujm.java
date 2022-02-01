@@ -1,20 +1,29 @@
-import android.support.annotation.NonNull;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.forward.ForwardSdkBaseOption;
+import com.tencent.qphone.base.util.QLog;
 
 public class aujm
+  implements DialogInterface.OnClickListener
 {
-  public int a;
-  public int b;
-  public int c;
+  public aujm(ForwardSdkBaseOption paramForwardSdkBaseOption) {}
   
-  @NonNull
-  public String toString()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return "[errorCode = " + this.a + ", fileType = " + this.b + ", fileTrivial = " + this.c + "]";
+    try
+    {
+      paramDialogInterface.dismiss();
+      return;
+    }
+    catch (Exception paramDialogInterface)
+    {
+      QLog.d("ForwardOption.ForwardSdkBaseOption", 1, "handleSDForImageShare dismiss Exception:", paramDialogInterface);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aujm
  * JD-Core Version:    0.7.0.1
  */

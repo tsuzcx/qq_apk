@@ -1,20 +1,49 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.nearby.NearbyJsInterface;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.mobileqq.gamecenter.view.ScrollTextView;
+import java.lang.ref.WeakReference;
 
 public class auvf
-  implements yrb
+  extends Handler
 {
-  public auvf(NearbyJsInterface paramNearbyJsInterface, yqz paramyqz, int paramInt1, int paramInt2, int paramInt3) {}
+  private WeakReference<ScrollTextView> a;
   
-  public void callback(Bundle paramBundle)
+  public auvf(ScrollTextView paramScrollTextView)
   {
-    paramBundle = paramBundle.getString("nearbyVideoConfig");
-    this.jdField_a_of_type_Yqz.b(new auvg(this, paramBundle));
+    super(Looper.getMainLooper());
+    this.a = new WeakReference(paramScrollTextView);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    ScrollTextView localScrollTextView = (ScrollTextView)this.a.get();
+    if (localScrollTextView == null)
+    {
+      removeCallbacksAndMessages(null);
+      return;
+    }
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    }
+    if (ScrollTextView.a(localScrollTextView) != null)
+    {
+      localScrollTextView.b();
+      ScrollTextView.a(localScrollTextView);
+      if (ScrollTextView.b(localScrollTextView) >= ScrollTextView.a(localScrollTextView).length) {
+        ScrollTextView.a(localScrollTextView, 0);
+      }
+      localScrollTextView.setText(ScrollTextView.a(localScrollTextView)[ScrollTextView.b(localScrollTextView)]);
+    }
+    removeMessages(9001);
+    sendEmptyMessageDelayed(9001, ScrollTextView.a(localScrollTextView));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     auvf
  * JD-Core Version:    0.7.0.1
  */

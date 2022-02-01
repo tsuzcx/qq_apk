@@ -1,23 +1,23 @@
-import android.support.v7.widget.StaggeredGridLayoutManager;
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyPicWaterFallFragment;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInjoyXRecyclerView;
-
 public class ozr
-  extends StaggeredGridLayoutManager
 {
-  public ozr(ReadInJoyPicWaterFallFragment paramReadInJoyPicWaterFallFragment, int paramInt1, int paramInt2)
-  {
-    super(paramInt1, paramInt2);
-  }
+  public int a;
+  public boolean a = true;
+  public int b;
+  public boolean b = true;
+  public int c;
+  public boolean c = true;
+  public int d;
+  public boolean d;
   
-  public boolean canScrollVertically()
+  public ozr()
   {
-    return (this.a.a.e) && (super.canScrollVertically());
+    this.jdField_d_of_type_Boolean = true;
+    this.jdField_d_of_type_Int = 1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     ozr
  * JD-Core Version:    0.7.0.1
  */

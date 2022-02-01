@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.bubble;
 
 import android.text.TextUtils;
-import anwm;
-import awgf;
-import awgg;
+import apwr;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.QQEntityManagerFactory;
+import com.tencent.mobileqq.persistence.EntityManager;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Iterator;
 import java.util.List;
@@ -13,11 +13,11 @@ import java.util.Map;
 public class BubbleDiyFetcher$2
   implements Runnable
 {
-  public BubbleDiyFetcher$2(anwm paramanwm, QQAppInterface paramQQAppInterface) {}
+  public BubbleDiyFetcher$2(apwr paramapwr, QQAppInterface paramQQAppInterface) {}
   
   public void run()
   {
-    List localList = this.a.getEntityManagerFactory().createEntityManager().a(BubbleDiyEntity.class, true, null, null, null, null, null, " 20 ");
+    List localList = this.a.a().createEntityManager().query(BubbleDiyEntity.class, true, null, null, null, null, null, " 20 ");
     if ((localList != null) && (localList.size() > 0))
     {
       Iterator localIterator = localList.iterator();
@@ -38,7 +38,7 @@ public class BubbleDiyFetcher$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.bubble.BubbleDiyFetcher.2
  * JD-Core Version:    0.7.0.1
  */

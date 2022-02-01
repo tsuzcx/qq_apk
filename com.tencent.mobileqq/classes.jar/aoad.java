@@ -1,47 +1,33 @@
-import android.annotation.TargetApi;
-import android.view.View;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.automator.Automator;
+import com.tencent.mobileqq.app.automator.step.GetNearbyRecommender;
+import com.tencent.mobileqq.data.Card;
+import com.tencent.qphone.base.util.QLog;
 
-@TargetApi(11)
-final class aoad
+public class aoad
+  extends aniz
 {
-  static void a(View paramView, float paramFloat)
-  {
-    paramView.setPivotX(paramFloat);
-  }
+  public aoad(GetNearbyRecommender paramGetNearbyRecommender) {}
   
-  static void b(View paramView, float paramFloat)
+  protected void onGetDetailInfo(boolean paramBoolean, String paramString, Card paramCard)
   {
-    paramView.setPivotY(paramFloat);
-  }
-  
-  static void c(View paramView, float paramFloat)
-  {
-    paramView.setAlpha(paramFloat);
-  }
-  
-  static void d(View paramView, float paramFloat)
-  {
-    paramView.setScaleX(paramFloat);
-  }
-  
-  static void e(View paramView, float paramFloat)
-  {
-    paramView.setScaleY(paramFloat);
-  }
-  
-  static void f(View paramView, float paramFloat)
-  {
-    paramView.setTranslationY(paramFloat);
-  }
-  
-  static void g(View paramView, float paramFloat)
-  {
-    paramView.setX(paramFloat);
+    if (QLog.isColorLevel()) {
+      QLog.d("QQInitHandler", 2, "GetNearbyRecommender onGetDetailInfo|uin=" + paramString);
+    }
+    if (!this.a.a.app.getCurrentAccountUin().equals(paramString)) {
+      return;
+    }
+    if (!paramBoolean)
+    {
+      this.a.a(7);
+      return;
+    }
+    this.a.a(6);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aoad
  * JD-Core Version:    0.7.0.1
  */

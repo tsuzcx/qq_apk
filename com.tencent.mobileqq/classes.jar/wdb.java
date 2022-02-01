@@ -1,77 +1,66 @@
-import com.tencent.biz.qqstory.settings.QQStoryShieldActivity;
-import com.tencent.biz.qqstory.settings.QQStoryUserInfo;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.widget.Switch;
+import com.tencent.biz.qqstory.model.item.AddressItem;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map.Entry;
+import java.util.Set;
 
 public class wdb
-  extends ulw
+  extends wda<wdi>
 {
-  public wdb(QQStoryShieldActivity paramQQStoryShieldActivity) {}
-  
-  public void a(boolean paramBoolean, QQStoryUserInfo paramQQStoryUserInfo)
+  public String a(AddressItem paramAddressItem)
   {
-    boolean bool = true;
-    QQStoryShieldActivity.a(this.a);
-    Switch localSwitch;
-    if ((paramBoolean) && (paramQQStoryUserInfo != null))
-    {
-      this.a.jdField_a_of_type_ComTencentWidgetSwitch.setOnCheckedChangeListener(null);
-      this.a.b.setOnCheckedChangeListener(null);
-      localSwitch = this.a.jdField_a_of_type_ComTencentWidgetSwitch;
-      if (paramQQStoryUserInfo.isAllowed != 1) {
-        break label119;
-      }
-      paramBoolean = true;
-      localSwitch.setChecked(paramBoolean);
-      localSwitch = this.a.b;
-      if (paramQQStoryUserInfo.isInterested != 1) {
-        break label124;
-      }
-    }
-    label119:
-    label124:
-    for (paramBoolean = bool;; paramBoolean = false)
-    {
-      localSwitch.setChecked(paramBoolean);
-      this.a.jdField_a_of_type_ComTencentWidgetSwitch.setOnCheckedChangeListener(this.a);
-      this.a.b.setOnCheckedChangeListener(this.a);
-      return;
-      paramBoolean = false;
-      break;
-    }
+    return "city:" + paramAddressItem.city + " district:" + paramAddressItem.district + " building:" + paramAddressItem.building;
   }
   
-  public void a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
+  protected List<wcl> a(List<wcm> paramList)
   {
-    boolean bool = true;
-    paramBoolean2 = true;
-    this.a.jdField_a_of_type_Beub.b();
-    if (paramBoolean1) {
-      return;
-    }
-    QQToast.a(this.a, 2131695134, 0).b(this.a.getTitleBarHeight());
-    if (paramBoolean3)
+    Object localObject1 = new HashMap();
+    paramList = paramList.iterator();
+    Object localObject2;
+    while (paramList.hasNext())
     {
-      localSwitch = this.a.jdField_a_of_type_ComTencentWidgetSwitch;
-      if (!this.a.jdField_a_of_type_ComTencentWidgetSwitch.isChecked()) {}
-      for (paramBoolean1 = paramBoolean2;; paramBoolean1 = false)
+      localObject2 = (wcm)paramList.next();
+      Object localObject3 = ((wcm)localObject2).jdField_a_of_type_ComTencentBizQqstoryModelItemAddressItem;
+      if (localObject3 != null)
       {
-        localSwitch.setChecked(paramBoolean1);
-        return;
+        localObject3 = a((AddressItem)localObject3);
+        if (((HashMap)localObject1).containsKey(localObject3))
+        {
+          ((List)((HashMap)localObject1).get(localObject3)).add(localObject2);
+        }
+        else
+        {
+          ArrayList localArrayList = new ArrayList();
+          localArrayList.add(localObject2);
+          ((HashMap)localObject1).put(localObject3, localArrayList);
+        }
+      }
+      else
+      {
+        yqp.a("Q.qqstory.recommendAlbum.logic.AbstractSplitStrategy", "handleSplit pic poi is null picPath=%s", ((wcm)localObject2).jdField_a_of_type_JavaLangString);
       }
     }
-    Switch localSwitch = this.a.b;
-    if (!this.a.b.isChecked()) {}
-    for (paramBoolean1 = bool;; paramBoolean1 = false)
+    paramList = new ArrayList();
+    localObject1 = ((HashMap)localObject1).entrySet().iterator();
+    while (((Iterator)localObject1).hasNext())
     {
-      localSwitch.setChecked(paramBoolean1);
-      return;
+      localObject2 = (List)((Map.Entry)((Iterator)localObject1).next()).getValue();
+      if (((List)localObject2).size() >= a().b)
+      {
+        localObject2 = new wcl(a().a, (List)localObject2);
+        ((wcl)localObject2).a(this.a);
+        ((wcl)localObject2).a(a());
+        paramList.add(localObject2);
+      }
     }
+    return paramList;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     wdb
  * JD-Core Version:    0.7.0.1
  */

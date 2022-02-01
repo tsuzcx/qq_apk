@@ -1,35 +1,31 @@
-import android.widget.ImageView;
-import com.tencent.biz.pubaccount.readinjoy.redpacket.widget.RIJRedPacketProgressView;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsGuideView;
 
 public class ryw
-  implements qfp
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public ryw(FastWebActivity paramFastWebActivity) {}
+  private ryw(VideoFeedsGuideView paramVideoFeedsGuideView) {}
   
-  public void a(boolean paramBoolean, String paramString)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    FastWebActivity.e(this.a, paramBoolean);
-    if (paramBoolean)
+    if (VideoFeedsGuideView.a(this.a) == 1)
     {
-      FastWebActivity.a(this.a, paramString);
-      if (FastWebActivity.a(this.a).getVisibility() == 0) {
-        break label55;
-      }
-      FastWebActivity.a(this.a).setImageResource(2130848937);
+      VideoFeedsGuideView.a(this.a, ((Integer)paramValueAnimator.getAnimatedValue()).intValue());
+      VideoFeedsGuideView.b(this.a, VideoFeedsGuideView.b(this.a) + VideoFeedsGuideView.c(this.a));
     }
     for (;;)
     {
-      FastWebActivity.h(this.a);
+      this.a.invalidate();
       return;
-      label55:
-      FastWebActivity.a(this.a).setImageResource(2130848991);
+      VideoFeedsGuideView.c(this.a, ((Integer)paramValueAnimator.getAnimatedValue()).intValue());
+      VideoFeedsGuideView.d(this.a, VideoFeedsGuideView.b(this.a) + VideoFeedsGuideView.d(this.a));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     ryw
  * JD-Core Version:    0.7.0.1
  */

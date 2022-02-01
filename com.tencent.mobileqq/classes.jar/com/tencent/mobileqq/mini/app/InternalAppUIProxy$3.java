@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.mini.app;
 
-import alud;
 import android.os.Handler;
 import android.os.Message;
+import anni;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.BaseApplication;
@@ -22,13 +22,13 @@ class InternalAppUIProxy$3
       QQToast.a(localBaseApplication, 1, str, 1).a();
       InternalAppUIProxy.access$100(this.this$0).postDelayed(new InternalAppUIProxy.3.1(this), 1000L);
       return;
-      str = alud.a(2131706195);
+      str = anni.a(2131704596);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.app.InternalAppUIProxy.3
  * JD-Core Version:    0.7.0.1
  */

@@ -1,30 +1,60 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.TranslateAnimation;
-import com.tencent.biz.pubaccount.readinjoy.ReadInJoyNaviController.1;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyNavigationGridview;
+import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
+import com.tencent.qphone.base.util.QLog;
 
-public class nxg
-  extends bhry
+class nxg
+  implements INetInfoHandler
 {
-  public nxg(ReadInJoyNaviController.1 param1, View paramView) {}
+  nxg(nxe paramnxe) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onNetMobile2None()
   {
-    paramAnimation = new TranslateAnimation(0.0F, 0.0F, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyReadInJoyNaviController$1.this$0.e, 0.0F);
-    paramAnimation.setDuration(30L);
-    paramAnimation.setAnimationListener(new nxh(this));
-    this.jdField_a_of_type_AndroidViewView.startAnimation(paramAnimation);
+    if (QLog.isColorLevel()) {
+      QLog.d("AdModuleBase", 2, "onNetMobile2None");
+    }
+    nxe.b(this.a);
   }
   
-  public void onAnimationStart(Animation paramAnimation)
+  public void onNetMobile2Wifi(String paramString)
   {
-    nxf.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyReadInJoyNaviController$1.this$0).setAlpha(1.0F);
+    if (QLog.isColorLevel()) {
+      QLog.d("AdModuleBase", 2, "onNetMobile2Wifi");
+    }
+  }
+  
+  public void onNetNone2Mobile(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("AdModuleBase", 2, "onNetNone2Mobile");
+    }
+    nxe.b(this.a);
+  }
+  
+  public void onNetNone2Wifi(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("AdModuleBase", 2, "onNetNone2Wifi");
+    }
+  }
+  
+  public void onNetWifi2Mobile(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("AdModuleBase", 2, "onNetWifi2Mobile");
+    }
+    nxe.b(this.a);
+  }
+  
+  public void onNetWifi2None()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("AdModuleBase", 2, "onNetWifi2None");
+    }
+    nxe.b(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     nxg
  * JD-Core Version:    0.7.0.1
  */

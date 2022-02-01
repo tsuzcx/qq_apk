@@ -1,16 +1,35 @@
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.troop.utils.TroopFileTransferManager;
+import tencent.im.cs.group_file_common.group_file_common.FileInfo;
+
 public class bfsa
+  extends aarg
 {
-  public String a;
-  public String b;
+  public bfsa(TroopFileTransferManager paramTroopFileTransferManager) {}
   
-  public void a(String paramString)
+  protected void a(boolean paramBoolean, int paramInt, group_file_common.FileInfo paramFileInfo)
   {
-    this.b = paramString;
+    if ((paramBoolean) && (paramFileInfo != null))
+    {
+      String str = paramFileInfo.str_file_id.get();
+      Object localObject = str;
+      if (!str.startsWith("/")) {
+        localObject = "/" + str;
+      }
+      localObject = this.a.a().a((String)localObject);
+      if (localObject != null)
+      {
+        ((besl)localObject).a = paramFileInfo.uint32_bus_id.get();
+        ((besl)localObject).c = paramFileInfo.uint32_dead_time.get();
+      }
+      this.a.a().d((besl)localObject);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bfsa
  * JD-Core Version:    0.7.0.1
  */

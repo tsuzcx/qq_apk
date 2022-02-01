@@ -1,48 +1,39 @@
-import android.os.Binder;
-import android.os.IBinder;
-import android.os.IInterface;
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import cooperation.qappcenter.remote.RecvMsg;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.os.Bundle;
+import com.tencent.open.appstore.dl.DownloadManagerV2.19;
+import com.tencent.open.downloadnew.DownloadInfo;
 
-public abstract class bisd
-  extends Binder
-  implements bisc
+public class bisd
+  implements DialogInterface.OnClickListener
 {
-  public static bisc a(IBinder paramIBinder)
-  {
-    if (paramIBinder == null) {
-      return null;
-    }
-    IInterface localIInterface = paramIBinder.queryLocalInterface("cooperation.qappcenter.remote.IActionListener");
-    if ((localIInterface != null) && ((localIInterface instanceof bisc))) {
-      return (bisc)localIInterface;
-    }
-    return new bise(paramIBinder);
-  }
+  public bisd(DownloadManagerV2.19 param19) {}
   
-  public boolean onTransact(int paramInt1, Parcel paramParcel1, Parcel paramParcel2, int paramInt2)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    switch (paramInt1)
+    try
     {
-    default: 
-      return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
-    case 1598968902: 
-      paramParcel2.writeString("cooperation.qappcenter.remote.IActionListener");
-      return true;
+      paramDialogInterface.dismiss();
+      label6:
+      paramDialogInterface = this.a.jdField_a_of_type_AndroidOsBundle.getString(bivp.b);
+      String str1 = this.a.jdField_a_of_type_AndroidOsBundle.getString(bivp.j);
+      String str2 = this.a.jdField_a_of_type_AndroidOsBundle.getString(bivp.f);
+      String str3 = this.a.jdField_a_of_type_AndroidOsBundle.getString(bivp.i);
+      String str4 = this.a.jdField_a_of_type_AndroidOsBundle.getString(bivp.l);
+      boolean bool = this.a.jdField_a_of_type_AndroidOsBundle.getBoolean(bivp.y, true);
+      paramDialogInterface = new DownloadInfo(paramDialogInterface, str1.trim(), str2, str4, str3, null, this.a.jdField_a_of_type_JavaLangString, bool);
+      this.a.this$0.a(10, paramDialogInterface);
+      return;
     }
-    paramParcel1.enforceInterface("cooperation.qappcenter.remote.IActionListener");
-    if (paramParcel1.readInt() != 0) {}
-    for (paramParcel1 = (RecvMsg)RecvMsg.CREATOR.createFromParcel(paramParcel1);; paramParcel1 = null)
+    catch (Exception paramDialogInterface)
     {
-      a(paramParcel1);
-      return true;
+      break label6;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bisd
  * JD-Core Version:    0.7.0.1
  */

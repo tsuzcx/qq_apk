@@ -1,55 +1,16 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.EmoticonResp;
-import com.tencent.mobileqq.emotionintegrate.AIOEmotionFragment;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import com.tencent.image.URLDrawable;
+import com.tencent.mobileqq.businessCard.activity.CardPicGalleryActivity;
 
 public class apzv
-  extends alrq
+  implements bkhw
 {
-  public apzv(AIOEmotionFragment paramAIOEmotionFragment) {}
+  public apzv(CardPicGalleryActivity paramCardPicGalleryActivity, URLDrawable paramURLDrawable, bkho parambkho) {}
   
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  public void OnClick(View paramView, int paramInt)
   {
-    switch (paramInt)
-    {
-    }
-    EmoticonResp localEmoticonResp;
-    int i;
-    label134:
-    QQAppInterface localQQAppInterface;
-    do
-    {
-      do
-      {
-        return;
-      } while (paramObject == null);
-      localEmoticonResp = (EmoticonResp)paramObject;
-      if (paramBoolean)
-      {
-        i = localEmoticonResp.delEpId;
-        if ((localEmoticonResp.keySeq == null) || (localEmoticonResp.keySeq.equals(""))) {
-          paramObject = alud.a(2131700404);
-        }
-      }
-      for (;;)
-      {
-        if (!TextUtils.isEmpty(localEmoticonResp.emoticonId)) {
-          break label134;
-        }
-        if (!QLog.isColorLevel()) {
-          break;
-        }
-        QLog.d("AIOEmotionFragment", 2, "auth type emoticon id is null");
-        return;
-        paramObject = localEmoticonResp.keySeq;
-        continue;
-        i = -404;
-        paramObject = alud.a(2131700405);
-      }
-      localQQAppInterface = this.a.a();
-    } while (localQQAppInterface == null);
-    ((aufn)localQQAppInterface.getManager(14)).a(String.valueOf(localEmoticonResp.epId), localEmoticonResp.emoticonId, new apzw(this, paramInt, localQQAppInterface, i, paramObject));
+    this.jdField_a_of_type_ComTencentMobileqqBusinessCardActivityCardPicGalleryActivity.a(paramInt, this.jdField_a_of_type_ComTencentImageURLDrawable);
+    this.jdField_a_of_type_Bkho.dismiss();
   }
 }
 

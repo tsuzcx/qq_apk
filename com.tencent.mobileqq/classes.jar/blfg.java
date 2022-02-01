@@ -1,8 +1,9 @@
-public abstract interface blfg
+import java.util.concurrent.Executor;
+import java.util.concurrent.Executors;
+
+public class blfg
 {
-  public abstract void a();
-  
-  public abstract void a(String paramString);
+  static final Executor a = ;
 }
 
 

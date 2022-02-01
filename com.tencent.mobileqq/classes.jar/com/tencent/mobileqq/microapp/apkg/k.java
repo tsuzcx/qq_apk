@@ -1,23 +1,56 @@
 package com.tencent.mobileqq.microapp.apkg;
 
-final class k
-  implements g.c
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.List;
+
+public final class k
+  implements Cloneable
 {
-  k(g paramg, g.d paramd, long paramLong) {}
+  public int a;
+  public int b;
+  public int c;
+  public String d;
+  public String e;
+  public List f;
   
-  public void a(f paramf)
+  public k a()
   {
-    if (paramf == null)
+    try
     {
-      g.a(this.c, this.a, 1, null, "apkg info parse error");
-      return;
+      localk1 = (k)super.clone();
+      try
+      {
+        localk1.f = new LinkedList();
+        Iterator localIterator = this.f.iterator();
+        for (;;)
+        {
+          Object localObject = localk1;
+          if (!localIterator.hasNext()) {
+            break;
+          }
+          localObject = (k.a)localIterator.next();
+          localk1.f.add(((k.a)localObject).a());
+        }
+        localThrowable1.printStackTrace();
+      }
+      catch (Throwable localThrowable1) {}
     }
-    g.a(this.c, this.a, 0, paramf, "Apkg init succ :" + (System.currentTimeMillis() - this.b));
+    catch (Throwable localThrowable2)
+    {
+      for (;;)
+      {
+        k localk2;
+        k localk1 = null;
+      }
+    }
+    localk2 = localk1;
+    return localk2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.microapp.apkg.k
  * JD-Core Version:    0.7.0.1
  */

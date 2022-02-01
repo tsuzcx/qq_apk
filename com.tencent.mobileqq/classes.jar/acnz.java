@@ -1,36 +1,19 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import java.util.ArrayList;
-import java.util.List;
+import android.app.Activity;
+import android.app.Application;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
 
 class acnz
-  implements arrh
+  implements DialogInterface.OnDismissListener
 {
-  acnz(acnx paramacnx, FileManagerEntity paramFileManagerEntity) {}
+  acnz(acnw paramacnw) {}
   
-  public void a()
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.getCloudType() == 0) {
-      this.jdField_a_of_type_Acnx.a.a.a().b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId);
-    }
-    alqo localalqo;
-    ArrayList localArrayList;
-    do
-    {
-      return;
-      if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.getCloudType() != 6) {
-        break;
-      }
-      localalqo = (alqo)this.jdField_a_of_type_Acnx.a.a.a(8);
-      localArrayList = new ArrayList();
-      localArrayList.add(Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.uniseq));
-    } while (localalqo.a(localArrayList));
-    arri.a(2131692746);
-    return;
-    this.jdField_a_of_type_Acnx.a.a.a().a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId);
+    acnw.a(this.a).setIntent(acnw.a(this.a));
+    acnw.a(this.a).getApplication().unregisterActivityLifecycleCallbacks(acnw.a(this.a));
+    acnw.a(this.a).o();
   }
-  
-  public void b() {}
 }
 
 

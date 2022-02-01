@@ -1,33 +1,41 @@
-import com.tencent.biz.qqcircle.widgets.QCirclePushAsyncTextView;
-import com.tencent.mobileqq.pb.PBStringField;
-import feedcloud.FeedCloudMeta.StUser;
+import org.json.JSONObject;
 
-class ugi
-  implements uew
+public class ugi
+  extends uga
 {
-  ugi(uge paramuge, String paramString) {}
+  public long a;
+  public boolean a;
   
-  public void a()
+  public ugi(JSONObject paramJSONObject)
   {
-    tzs.a("", this.jdField_a_of_type_Uge.a(), this.jdField_a_of_type_Uge.a, 43);
-    tqs.a(uge.a(this.jdField_a_of_type_Uge).getContext(), this.jdField_a_of_type_JavaLangString);
+    super(paramJSONObject);
   }
   
-  public void a(FeedCloudMeta.StUser paramStUser)
+  public static ugi a(JSONObject paramJSONObject)
   {
-    tzs.a(paramStUser.id.get(), this.jdField_a_of_type_Uge.a(), this.jdField_a_of_type_Uge.a, 41);
-    tqs.a(paramStUser);
+    return new ugi(paramJSONObject);
   }
   
-  public void b()
+  public void a(JSONObject paramJSONObject)
   {
-    tzs.a("", this.jdField_a_of_type_Uge.a(), this.jdField_a_of_type_Uge.a, 42);
-    tqs.a(uge.a(this.jdField_a_of_type_Uge).getContext(), this.jdField_a_of_type_JavaLangString);
+    if (paramJSONObject != null)
+    {
+      this.jdField_a_of_type_Boolean = paramJSONObject.optBoolean("isPreloadVideoPlugin");
+      this.jdField_a_of_type_Long = paramJSONObject.optLong("queryPluginTimeInterval");
+      return;
+    }
+    this.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_Long = 3600L;
+  }
+  
+  public String toString()
+  {
+    return "WeSeeVideoPluginConfigInfo{mIsPreloadPluginInWsRecommend=" + this.jdField_a_of_type_Boolean + ", mQueryPluginTimeInterval=" + this.jdField_a_of_type_Long + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     ugi
  * JD-Core Version:    0.7.0.1
  */

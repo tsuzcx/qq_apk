@@ -1,29 +1,20 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.TextView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.teamworkforgroup.GroupTeamWorkListActivity;
 
-class bdln
-  implements View.OnClickListener
+public class bdln
+  implements DialogInterface.OnClickListener
 {
-  bdln(bdll parambdll) {}
+  public bdln(GroupTeamWorkListActivity paramGroupTeamWorkListActivity) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramView == this.a.a) {
-      return;
-    }
-    if (this.a.a != null) {
-      this.a.a.findViewById(2131369520).setVisibility(8);
-    }
-    TextView localTextView = (TextView)paramView.findViewById(2131369521);
-    this.a.a(localTextView.getText().toString());
-    paramView.findViewById(2131369520).setVisibility(0);
-    this.a.a = paramView;
+    GroupTeamWorkListActivity.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bdln
  * JD-Core Version:    0.7.0.1
  */

@@ -1,21 +1,70 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.TroopInfoActivity;
-import com.tencent.mobileqq.troopinfo.TroopInfoData;
+import android.os.Handler;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.EditInfoActivity;
+import com.tencent.mobileqq.activity.EditInfoActivity.15.3;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
 
 public class aedf
-  implements View.OnClickListener
+  extends bgzm
 {
-  public aedf(TroopInfoActivity paramTroopInfoActivity, Dialog paramDialog, long paramLong1, int paramInt, long paramLong2, long paramLong3, String paramString) {}
+  public aedf(EditInfoActivity paramEditInfoActivity) {}
   
-  public void onClick(View paramView)
+  protected void onSetColorNick(boolean paramBoolean, int paramInt, String paramString)
   {
-    if ((this.jdField_a_of_type_AndroidAppDialog != null) && (this.jdField_a_of_type_AndroidAppDialog.isShowing()) && (this.jdField_a_of_type_AndroidAppDialog.getWindow() != null)) {
-      this.jdField_a_of_type_AndroidAppDialog.dismiss();
+    if (paramBoolean)
+    {
+      VasWebviewUtil.reportCommercialDrainage(this.a.app.c(), "group_nickname", "set", "", 1, 0, 0, "", "", "");
+      this.a.c(true);
+      paramString = (anwd)this.a.app.a(20);
+      try
+      {
+        paramString.a(Long.parseLong(this.a.e), Long.parseLong(this.a.f));
+        return;
+      }
+      catch (Exception paramString)
+      {
+        this.a.b(false);
+        return;
+      }
     }
-    this.jdField_a_of_type_ComTencentMobileqqActivityTroopInfoActivity.finish();
-    this.jdField_a_of_type_ComTencentMobileqqActivityTroopInfoActivity.jdField_a_of_type_Amdu.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqActivityTroopInfoActivity.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopName, this.jdField_a_of_type_ComTencentMobileqqActivityTroopInfoActivity.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.dwGroupClassExt, this.jdField_a_of_type_ComTencentMobileqqActivityTroopInfoActivity.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopTags, this.jdField_a_of_type_Int, this.b, this.c, this.jdField_a_of_type_ComTencentMobileqqActivityTroopInfoActivity.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.mPoiId, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityTroopInfoActivity.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.mRichFingerMemo);
+    this.a.b(false);
+    String str;
+    if (paramInt == 1282)
+    {
+      VasWebviewUtil.reportCommercialDrainage(this.a.app.c(), "group_nickname", "group_nickname_9", "", 1, 0, 0, "", "", "");
+      paramString = anni.a(2131702425);
+      str = anni.a(2131702419);
+      try
+      {
+        bglp.a(this.a, 230, paramString, str, anni.a(2131702412), anni.a(2131702416), new aedg(this), new aedh(this)).show();
+        return;
+      }
+      catch (Exception paramString)
+      {
+        QLog.e("EditInfoActivity", 1, "onSetColorNick", paramString);
+        return;
+      }
+    }
+    if (1283 == paramInt)
+    {
+      QQToast.a(this.a, 1, anni.a(2131702415), 0).b(this.a.getTitleBarHeight());
+      return;
+    }
+    if (1793 == paramInt)
+    {
+      EditInfoActivity localEditInfoActivity = this.a;
+      str = paramString;
+      if (TextUtils.isEmpty(paramString)) {
+        str = this.a.getString(2131693019);
+      }
+      QQToast.a(localEditInfoActivity, 1, str, 0).b(this.a.getTitleBarHeight());
+      return;
+    }
+    QQToast.a(this.a, 1, 2131693726, 0).b(this.a.getTitleBarHeight());
+    this.a.a.postDelayed(new EditInfoActivity.15.3(this), 1500L);
   }
 }
 

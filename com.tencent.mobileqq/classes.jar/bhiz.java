@@ -1,23 +1,29 @@
-import org.json.JSONArray;
+import android.os.Looper;
+import android.widget.Button;
+import android.widget.FrameLayout;
+import com.tencent.mobileqq.vip.lianghao.RegisterLHAssistant.2;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Locale;
 
 public class bhiz
+  implements bhje
 {
-  public JSONArray a;
-  public boolean a;
-  public boolean b;
+  public bhiz(RegisterLHAssistant.2 param2) {}
   
-  public bhiz() {}
-  
-  public bhiz(boolean paramBoolean1, JSONArray paramJSONArray, boolean paramBoolean2)
+  public void a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean1;
-    this.jdField_a_of_type_OrgJsonJSONArray = paramJSONArray;
-    this.b = paramBoolean2;
+    if (QLog.isDevelopLevel()) {
+      QLog.i(bhix.a, 4, String.format(Locale.getDefault(), "checkVipQQStatus, needShow: %s", new Object[] { Boolean.valueOf(paramBoolean) }));
+    }
+    bhix.a(this.a.this$0, paramBoolean);
+    if ((bhix.a(this.a.this$0)) && (bhix.a(this.a.this$0).isEnabled()) && (Thread.currentThread() == Looper.getMainLooper().getThread()) && (bhix.a(this.a.this$0).getVisibility() == 8)) {
+      this.a.this$0.b(true);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bhiz
  * JD-Core Version:    0.7.0.1
  */

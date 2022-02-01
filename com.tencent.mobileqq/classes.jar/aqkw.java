@@ -1,40 +1,18 @@
-public abstract class aqkw
+class aqkw
 {
-  public int a = 1;
-  public String e;
+  public byte a;
+  public String a;
+  public byte b;
+  public String b = "";
   
-  public aqkw(int paramInt, String paramString)
+  aqkw(aqkv paramaqkv)
   {
-    this.a = paramInt;
-    this.e = paramString;
-  }
-  
-  public boolean equals(Object paramObject)
-  {
-    if ((paramObject instanceof aqkw))
-    {
-      paramObject = (aqkw)paramObject;
-      if (this.e == null) {
-        if ((this.a != paramObject.a) || (paramObject.e != null)) {}
-      }
-      while ((this.a == paramObject.a) && (this.e.equals(paramObject.e)))
-      {
-        return true;
-        return false;
-      }
-      return false;
-    }
-    return false;
-  }
-  
-  public String toString()
-  {
-    return this.e;
+    this.jdField_a_of_type_JavaLangString = "";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aqkw
  * JD-Core Version:    0.7.0.1
  */

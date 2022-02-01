@@ -121,7 +121,8 @@ public class PlayerUtil
   {
     if (paramPlayer != null)
     {
-      stopAndResetPlayer(paramPlayer);
+      paramPlayer.stop();
+      paramPlayer.reset();
       paramPlayer.release();
     }
   }
@@ -170,6 +171,15 @@ public class PlayerUtil
   private boolean isSupportedAudioSamplingRate(int paramInt)
   {
     return AudioRecord.getMinBufferSize(paramInt, 16, 2) > 0;
+  }
+  
+  public static void pauseAndSeekToOrigin(PlayerUtil.Player paramPlayer)
+  {
+    if (paramPlayer != null)
+    {
+      paramPlayer.pause();
+      paramPlayer.seekTo(0);
+    }
   }
   
   private static void preparePlayer(PlayerUtil.Player paramPlayer, boolean paramBoolean)
@@ -223,15 +233,6 @@ public class PlayerUtil
     }
   }
   
-  public static void stopAndResetPlayer(PlayerUtil.Player paramPlayer)
-  {
-    if (paramPlayer != null)
-    {
-      paramPlayer.stop();
-      paramPlayer.release();
-    }
-  }
-  
   public static void stopPlayer(PlayerUtil.Player paramPlayer)
   {
     if (paramPlayer != null) {
@@ -241,7 +242,7 @@ public class PlayerUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.baseutils.audio.PlayerUtil
  * JD-Core Version:    0.7.0.1
  */

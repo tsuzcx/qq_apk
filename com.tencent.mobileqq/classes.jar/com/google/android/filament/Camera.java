@@ -17,6 +17,8 @@ public class Camera
   
   private static native float nGetCullingFar(long paramLong);
   
+  private static native void nGetCullingProjectionMatrix(long paramLong, double[] paramArrayOfDouble);
+  
   private static native void nGetForwardVector(long paramLong, float[] paramArrayOfFloat);
   
   private static native void nGetLeftVector(long paramLong, float[] paramArrayOfFloat);
@@ -64,6 +66,15 @@ public class Camera
   public float getCullingFar()
   {
     return nGetCullingFar(getNativeObject());
+  }
+  
+  @NonNull
+  @Size(min=16L)
+  public double[] getCullingProjectionMatrix(@Nullable @Size(min=16L) double[] paramArrayOfDouble)
+  {
+    paramArrayOfDouble = Asserts.assertMat4d(paramArrayOfDouble);
+    nGetCullingProjectionMatrix(getNativeObject(), paramArrayOfDouble);
+    return paramArrayOfDouble;
   }
   
   @NonNull
@@ -196,7 +207,7 @@ public class Camera
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.google.android.filament.Camera
  * JD-Core Version:    0.7.0.1
  */

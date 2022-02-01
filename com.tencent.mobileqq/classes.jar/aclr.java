@@ -1,27 +1,28 @@
-import android.content.Intent;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.activity.ChatFragment;
-import com.tencent.mobileqq.statistics.thread.SuspendThreadManager;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.TextView;
+import com.tencent.gdtad.api.banner.rectangle.GdtBannerViewWithRectangleStyle;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class aclr
+  implements View.OnClickListener
 {
-  public aclr(ChatFragment paramChatFragment) {}
+  public aclr(GdtBannerViewWithRectangleStyle paramGdtBannerViewWithRectangleStyle) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    if ((ChatFragment.b()) && (this.a.jdField_a_of_type_Boolean))
+    int i = 8;
+    if (!GdtBannerViewWithRectangleStyle.a(this.a)) {
+      acqy.d("GdtBannerContainerView", "optionsContainerOnClickListener.OnClickListener error");
+    }
+    for (;;)
     {
-      bdnm.b("AIO_Start_cost", null);
-      SuspendThreadManager.a().c();
-      bdnm.a("AIO_onDrawView", "AIO_SysMsgCost");
-      ChatFragment.a(this.a);
-      if (this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getIntent().getIntExtra("uintype", -1) == 1008)
-      {
-        String str = this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getIntent().getStringExtra("uin");
-        bdiu.a("pubAcc_aio_open", null, str);
-        bdiu.a("pubAcc_structMsg_display", null, str);
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      if (GdtBannerViewWithRectangleStyle.a(this.a).getVisibility() == 8) {
+        i = 0;
       }
-      ChatFragment.a(false);
+      GdtBannerViewWithRectangleStyle.a(this.a).setVisibility(i);
     }
   }
 }

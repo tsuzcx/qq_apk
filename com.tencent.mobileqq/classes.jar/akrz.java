@@ -1,112 +1,54 @@
-import java.util.ArrayList;
-import java.util.List;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager;
+import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.8.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import java.lang.ref.WeakReference;
+import java.util.LinkedList;
 
-public abstract class akrz<T>
+public class akrz
+  extends Handler
 {
-  protected final List<aksc> a = new ArrayList();
+  private LinkedList<aksb> jdField_a_of_type_JavaUtilLinkedList = new LinkedList();
+  private boolean jdField_a_of_type_Boolean;
   
-  public void a(boolean paramBoolean)
+  public akrz(PreloadManager paramPreloadManager, Looper paramLooper)
   {
-    try
+    super(paramLooper);
+  }
+  
+  private void a()
+  {
+    WeakReference localWeakReference = new WeakReference(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadManager);
+    aksb localaksb = (aksb)this.jdField_a_of_type_JavaUtilLinkedList.getFirst();
+    this.jdField_a_of_type_JavaUtilLinkedList.removeFirst();
+    ThreadManager.excute(new PreloadManager.8.1(this, localWeakReference, localaksb), 64, null, false);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadManager.jdField_a_of_type_Boolean) {}
+    do
     {
-      this.a.clear();
+      return;
+      switch (paramMessage.what)
+      {
+      default: 
+        return;
+      case 1: 
+        this.jdField_a_of_type_JavaUtilLinkedList.addLast((aksb)paramMessage.obj);
+      }
+    } while (this.jdField_a_of_type_Boolean);
+    this.jdField_a_of_type_Boolean = true;
+    sendEmptyMessage(2);
+    return;
+    if (this.jdField_a_of_type_JavaUtilLinkedList.size() > 0)
+    {
+      a();
       return;
     }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
-  }
-  
-  /* Error */
-  public boolean a()
-  {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_0
-    //   3: getfield 17	akrz:a	Ljava/util/List;
-    //   6: invokeinterface 28 1 0
-    //   11: istore_1
-    //   12: iload_1
-    //   13: ifne +9 -> 22
-    //   16: iconst_1
-    //   17: istore_1
-    //   18: aload_0
-    //   19: monitorexit
-    //   20: iload_1
-    //   21: ireturn
-    //   22: iconst_0
-    //   23: istore_1
-    //   24: goto -6 -> 18
-    //   27: astore_2
-    //   28: aload_0
-    //   29: monitorexit
-    //   30: aload_2
-    //   31: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	32	0	this	akrz
-    //   11	13	1	bool	boolean
-    //   27	4	2	localObject	Object
-    // Exception table:
-    //   from	to	target	type
-    //   2	12	27	finally
-  }
-  
-  public boolean a(aksc paramaksc)
-  {
-    try
-    {
-      boolean bool = this.a.remove(paramaksc);
-      return bool;
-    }
-    finally
-    {
-      paramaksc = finally;
-      throw paramaksc;
-    }
-  }
-  
-  public abstract boolean a(T paramT, float paramFloat);
-  
-  /* Error */
-  public boolean a(List<aksc> paramList)
-  {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_1
-    //   3: ifnull +27 -> 30
-    //   6: aload_1
-    //   7: invokeinterface 28 1 0
-    //   12: ifne +18 -> 30
-    //   15: aload_0
-    //   16: getfield 17	akrz:a	Ljava/util/List;
-    //   19: aload_1
-    //   20: invokeinterface 39 2 0
-    //   25: istore_2
-    //   26: aload_0
-    //   27: monitorexit
-    //   28: iload_2
-    //   29: ireturn
-    //   30: iconst_0
-    //   31: istore_2
-    //   32: goto -6 -> 26
-    //   35: astore_1
-    //   36: aload_0
-    //   37: monitorexit
-    //   38: aload_1
-    //   39: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	40	0	this	akrz
-    //   0	40	1	paramList	List<aksc>
-    //   25	7	2	bool	boolean
-    // Exception table:
-    //   from	to	target	type
-    //   6	26	35	finally
+    this.jdField_a_of_type_Boolean = false;
   }
 }
 

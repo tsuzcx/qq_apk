@@ -1,58 +1,23 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.mobileqq.richmedia.capture.view.CameraCaptureButtonLayout;
-import java.util.concurrent.atomic.AtomicBoolean;
+import android.support.v7.widget.RecyclerView;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class bnlv
-  extends Handler
+class bnlv
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public bnlv(CameraCaptureButtonLayout paramCameraCaptureButtonLayout) {}
+  bnlv(bnls parambnls) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    super.handleMessage(paramMessage);
-    if (QLog.isColorLevel()) {
-      QLog.i("CameraCaptureLayout", 2, "handleMessage what:" + paramMessage.what + ", shortVideoShot:" + this.a.a.get());
-    }
-    switch (paramMessage.what)
+    RecyclerView localRecyclerView = bnls.b(this.a);
+    if (paramBoolean) {}
+    for (int i = 0;; i = 8)
     {
-    default: 
-    case 1: 
-    case 2: 
-    case 3: 
-    case 4: 
-    case 5: 
-      do
-      {
-        do
-        {
-          do
-          {
-            return;
-            CameraCaptureButtonLayout.c(this.a);
-            return;
-          } while (CameraCaptureButtonLayout.a(this.a) == null);
-          CameraCaptureButtonLayout.a(this.a).b();
-          return;
-        } while (!this.a.a.get());
-        if (CameraCaptureButtonLayout.a(this.a) != null) {
-          CameraCaptureButtonLayout.a(this.a).c();
-        }
-        this.a.a.set(false);
-        CameraCaptureButtonLayout.d(this.a);
-        return;
-        if (CameraCaptureButtonLayout.a(this.a) != null) {
-          CameraCaptureButtonLayout.a(this.a).a();
-        }
-        CameraCaptureButtonLayout.d(this.a);
-        return;
-      } while (!this.a.a.get());
-      CameraCaptureButtonLayout.e(this.a);
-      CameraCaptureButtonLayout.a(this.a).sendEmptyMessageDelayed(5, 50L);
+      localRecyclerView.setVisibility(i);
+      EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
       return;
     }
-    this.a.b();
   }
 }
 

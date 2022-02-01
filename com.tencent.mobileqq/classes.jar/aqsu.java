@@ -1,53 +1,82 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.config.business.QuickAuthorityConfBean.1;
 import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.concurrent.ConcurrentHashMap;
+import org.json.JSONObject;
 
-class aqsu
-  extends aqtd
+public class aqsu
 {
-  protected long a;
-  protected String a;
-  protected String b;
-  protected String c;
-  protected String d;
-  protected String e;
-  protected String f;
-  protected String g;
+  public int a;
+  public ConcurrentHashMap<String, String> a;
+  public int b;
+  public int c = 1;
+  public int d;
+  public int e;
   
-  public aqsu(aqsf paramaqsf, MessageRecord paramMessageRecord)
+  public aqsu()
   {
-    super(paramaqsf);
-    this.jdField_a_of_type_JavaLangString = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardFileName");
-    this.jdField_a_of_type_Long = Long.parseLong(paramMessageRecord.getExtInfoFromExtStr("_m_ForwardSize"));
-    this.b = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardUuid");
-    this.c = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardMd5");
-    this.d = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardReceiverUin");
-    this.e = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardImgWidth");
-    this.f = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardImgHeight");
-    this.g = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardStatusPaused");
+    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap(10);
   }
   
-  void a(String paramString, int paramInt) {}
-  
-  void a(String paramString, int paramInt, aqtc paramaqtc)
+  public static aqsu a(String paramString)
   {
-    if ("1".equals(this.g))
+    aqsu localaqsu = new aqsu();
+    if (paramString == null) {
+      return localaqsu;
+    }
+    try
+    {
+      paramString = new JSONObject(paramString);
+      localaqsu.jdField_a_of_type_Int = paramString.optInt("kCheckSignatureSwitch", 0);
+      localaqsu.b = paramString.optInt("kDisableChooseSwitch", 0);
+      localaqsu.c = paramString.optInt("kShowKickDialog", 1);
+      localaqsu.d = paramString.optInt("kFDHookSwitch", 0);
+      localaqsu.e = paramString.optInt("kWtloginPowTest", 0);
+      paramString = paramString.optJSONObject("kSignatureList");
+      if (paramString != null)
+      {
+        Iterator localIterator = paramString.keys();
+        while (localIterator.hasNext())
+        {
+          String str1 = (String)localIterator.next();
+          String str2 = paramString.optString(str1);
+          if (!TextUtils.isEmpty(str2))
+          {
+            localaqsu.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(str1, str2);
+            if (QLog.isColorLevel()) {
+              QLog.d("QuickAuthorityConfProcessor", 2, new Object[] { "package: ", str1, " signature:", str2 });
+            }
+          }
+        }
+      }
+      QLog.d("QuickAuthorityConfProcessor", 2, "confBean = " + localaqsu.toString());
+    }
+    catch (Exception paramString)
     {
       if (QLog.isColorLevel()) {
-        QLog.i("FileMultiMsgManager<FileAssistant>", 1, "start Disc2TroopTaskExcuter:" + this.jdField_a_of_type_JavaLangString + " faild, file is upload paused");
+        QLog.e("QuickAuthorityConfProcessor", 1, new Object[] { "parse e:", paramString.toString() });
       }
-      paramaqtc.a(aqsf.a(this.jdField_a_of_type_Long, false), false);
-      return;
+      return null;
     }
-    if ((this.b == null) || (this.b.length() == 0))
+    if (localaqsu.e == 1) {}
+    for (boolean bool = true;; bool = false)
     {
-      if (QLog.isColorLevel()) {
-        QLog.e("FileMultiMsgManager<FileAssistant>", 1, this.jdField_a_of_type_JavaLangString + " Disc2TroopTaskExcuter send faild uuid is null");
-      }
-      paramaqtc.a(aqsf.a(this.jdField_a_of_type_Long, true), false);
-      return;
+      ThreadManagerV2.executeOnSubThread(new QuickAuthorityConfBean.1(bool));
+      return localaqsu;
     }
-    aqsf.a(this.jdField_a_of_type_Aqsf).a().a().a(paramString, paramInt, this.d, 102, this.b, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Long, this.c, new aqsv(this, paramString, paramaqtc));
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder(20);
+    localStringBuilder.append("kCheckSignatureSwitch:").append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(" kDisableChooseSwitch:").append(this.b);
+    localStringBuilder.append(" signatureMaps:").append(this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.size());
+    localStringBuilder.append(" fdSwitch:").append(this.d);
+    localStringBuilder.append(" wtloginPowTest:").append(this.e);
+    return localStringBuilder.toString();
   }
 }
 

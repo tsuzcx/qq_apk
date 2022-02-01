@@ -1,6 +1,21 @@
-public abstract interface afbv
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.activity.RiskHintDlgFragment;
+
+public class afbv
+  implements DialogInterface.OnDismissListener
 {
-  public abstract void a();
+  public afbv(RiskHintDlgFragment paramRiskHintDlgFragment) {}
+  
+  public void onDismiss(DialogInterface paramDialogInterface)
+  {
+    if (this.a.getActivity() != null)
+    {
+      this.a.getActivity().finish();
+      this.a.getActivity().overridePendingTransition(0, 0);
+    }
+  }
 }
 
 

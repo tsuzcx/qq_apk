@@ -1,49 +1,26 @@
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentLastRead;
-import com.tencent.biz.pubaccount.readinjoy.skin.RefreshData;
-import org.json.JSONException;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class qeu
+class qeu
   implements View.OnClickListener
 {
-  public qeu(ComponentLastRead paramComponentLastRead) {}
+  qeu(qet paramqet, Container paramContainer, pxk parampxk, int paramInt) {}
   
   public void onClick(View paramView)
   {
-    szp.a(false);
-    paramView = new orz();
-    paramView.h().b().e().a(this.a.a.jdField_a_of_type_Pgd.e()).f().g().d();
-    if (this.a.a.jdField_a_of_type_Pgd.e() == 0) {}
-    for (;;)
-    {
-      try
-      {
-        RefreshData localRefreshData = qiu.b(this.a.getContext(), 0);
-        if ((localRefreshData == null) || (!localRefreshData.isAD)) {
-          continue;
-        }
-        i = 1;
-        paramView.a("ad_page", i);
-      }
-      catch (JSONException localJSONException)
-      {
-        int i;
-        localJSONException.printStackTrace();
-        continue;
-      }
-      nrt.a(null, "CliOper", "", "", "0X80066FD", "0X80066FD", 0, 0, bkbq.a("default_feeds_proteus_offline_bid"), "", "", paramView.a(), false);
-      if (this.a.a.jdField_a_of_type_Pxt != null) {
-        this.a.a.jdField_a_of_type_Pxt.a(this.a, null);
-      }
-      return;
-      i = 0;
+    qet.a(this.jdField_a_of_type_Qet, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getContext(), this.jdField_a_of_type_Pxk, this.jdField_a_of_type_Int);
+    if (QLog.isColorLevel()) {
+      QLog.d("PgcProteusItem", 2, "click bottom bar for jumping to gallery articleinfo = " + this.jdField_a_of_type_Pxk.a() + " position = " + this.jdField_a_of_type_Int);
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     qeu
  * JD-Core Version:    0.7.0.1
  */

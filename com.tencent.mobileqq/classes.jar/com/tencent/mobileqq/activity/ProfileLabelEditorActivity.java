@@ -1,28 +1,31 @@
 package com.tencent.mobileqq.activity;
 
-import adoj;
-import adok;
-import adol;
-import adom;
-import adon;
-import adop;
-import alpk;
-import alpq;
-import alto;
+import Override;
+import aeuq;
+import aeur;
+import aeus;
+import aeut;
+import aeuu;
+import aeuw;
 import android.content.Context;
+import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
+import android.view.MotionEvent;
 import android.view.Window;
 import android.widget.GridView;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
-import awvn;
-import azqs;
-import bdgm;
-import bdhb;
-import bdjz;
+import anip;
+import aniz;
+import anmw;
+import azjr;
+import bcst;
+import bglp;
+import bgmg;
+import bgpa;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -33,6 +36,7 @@ import com.tencent.mobileqq.profile.ProfileLabelTypeInfo;
 import com.tencent.mobileqq.profile.view.ProfileLabelPanel;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.IOException;
@@ -50,13 +54,13 @@ public class ProfileLabelEditorActivity
   extends IphoneTitleBarActivity
 {
   public float a;
-  public adop a;
-  private alpq a;
+  public aeuw a;
   public Context a;
   public GridView a;
   public LinearLayout a;
   public TextView a;
-  public awvn a;
+  private aniz a;
+  public azjr a;
   public Card a;
   public ProfileLabelPanel a;
   public List<ProfileLabelInfo> a;
@@ -67,7 +71,7 @@ public class ProfileLabelEditorActivity
   public ProfileLabelEditorActivity()
   {
     this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_Alpq = new adoj(this);
+    this.jdField_a_of_type_Aniz = new aeuq(this);
   }
   
   /* Error */
@@ -217,7 +221,7 @@ public class ProfileLabelEditorActivity
   
   private List<ProfileLabelInfo> a(String paramString)
   {
-    this.jdField_a_of_type_ComTencentMobileqqDataCard = ((alto)this.app.getManager(51)).b(paramString);
+    this.jdField_a_of_type_ComTencentMobileqqDataCard = ((anmw)this.app.getManager(51)).b(paramString);
     if (this.jdField_a_of_type_ComTencentMobileqqDataCard != null)
     {
       this.jdField_a_of_type_JavaUtilList = this.jdField_a_of_type_ComTencentMobileqqDataCard.getLabelList();
@@ -296,14 +300,14 @@ public class ProfileLabelEditorActivity
     {
       if (this.jdField_a_of_type_Boolean)
       {
-        b(2131720597);
+        b(2131718396);
         return;
       }
       if (QLog.isColorLevel()) {
         QLog.d("ProfileLabelEditorActivity", 2, "saveEdit save labes num = " + this.jdField_a_of_type_JavaUtilList.size());
       }
       this.jdField_a_of_type_Boolean = true;
-      ((alpk)this.app.a(2)).a(this.jdField_a_of_type_JavaUtilList);
+      ((anip)this.app.a(2)).a(this.jdField_a_of_type_JavaUtilList);
       return;
     }
     finish();
@@ -313,8 +317,8 @@ public class ProfileLabelEditorActivity
   {
     if (this.jdField_a_of_type_JavaUtilList != null)
     {
-      this.jdField_a_of_type_Adop = new adop(this, this.jdField_a_of_type_JavaUtilList);
-      this.jdField_a_of_type_AndroidWidgetGridView.setAdapter(this.jdField_a_of_type_Adop);
+      this.jdField_a_of_type_Aeuw = new aeuw(this, this.jdField_a_of_type_JavaUtilList);
+      this.jdField_a_of_type_AndroidWidgetGridView.setAdapter(this.jdField_a_of_type_Aeuw);
       a(this.jdField_a_of_type_JavaUtilList.size());
     }
     Object localObject = new File(BaseApplicationImpl.getApplication().getFilesDir(), "labelList");
@@ -324,7 +328,7 @@ public class ProfileLabelEditorActivity
     for (;;)
     {
       return;
-      localObject = new ByteArrayInputStream(bdhb.a((File)localObject));
+      localObject = new ByteArrayInputStream(bgmg.a((File)localObject));
       try
       {
         ObjectInputStream localObjectInputStream = new ObjectInputStream((InputStream)localObject);
@@ -373,7 +377,7 @@ public class ProfileLabelEditorActivity
   
   private void c(List<ProfileLabelTypeInfo> paramList)
   {
-    this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileLabelPanel = new ProfileLabelPanel(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Awvn, paramList, new adol(this));
+    this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileLabelPanel = new ProfileLabelPanel(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Azjr, paramList, new aeus(this));
     paramList = new LinearLayout.LayoutParams(-1, (int)(202.0F * this.jdField_a_of_type_Float));
     this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileLabelPanel, paramList);
   }
@@ -424,13 +428,13 @@ public class ProfileLabelEditorActivity
   
   public void a()
   {
-    super.setContentView(2131559455);
+    super.setContentView(2131559586);
     getWindow().setBackgroundDrawable(null);
-    super.setTitle(getString(2131720594));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131376034));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(2131377407));
-    this.jdField_a_of_type_AndroidWidgetGridView = ((GridView)this.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(2131377404));
-    setRightButton(2131719310, new adok(this));
+    super.setTitle(getString(2131718394));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131376788));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(2131378231));
+    this.jdField_a_of_type_AndroidWidgetGridView = ((GridView)this.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(2131378228));
+    setRightButton(2131717397, new aeur(this));
     enableRightHighlight(true);
   }
   
@@ -439,7 +443,7 @@ public class ProfileLabelEditorActivity
     if (paramInt > 7) {
       return;
     }
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(getString(2131720593) + " (" + paramInt + "/" + 7 + ")");
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(getString(2131718393) + " (" + paramInt + "/" + 7 + ")");
   }
   
   public void a(ProfileLabelInfo paramProfileLabelInfo, List<ProfileLabelInfo> paramList)
@@ -452,7 +456,7 @@ public class ProfileLabelEditorActivity
         if (((ProfileLabelInfo)paramList.get(i)).labelId.equals(paramProfileLabelInfo.labelId))
         {
           paramList.remove(i);
-          azqs.b(this.app, "CliOper", "", "", "card_mall", "0X80066C7", 0, 0, "2", "", "", "");
+          bcst.b(this.app, "CliOper", "", "", "card_mall", "0X80066C7", 0, 0, "2", "", "", "");
         }
         i += 1;
       }
@@ -487,29 +491,37 @@ public class ProfileLabelEditorActivity
   
   public void b(int paramInt)
   {
-    QQToast.a(this.jdField_a_of_type_AndroidContentContext, paramInt, 1).b(getResources().getDimensionPixelSize(2131298914));
+    QQToast.a(this.jdField_a_of_type_AndroidContentContext, paramInt, 1).b(getResources().getDimensionPixelSize(2131298998));
+  }
+  
+  @Override
+  public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
+  {
+    boolean bool = super.dispatchTouchEvent(paramMotionEvent);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool);
+    return bool;
   }
   
   public boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    addObserver(this.jdField_a_of_type_Alpq);
+    addObserver(this.jdField_a_of_type_Aniz);
     this.jdField_a_of_type_AndroidContentContext = this;
     this.jdField_a_of_type_Float = getResources().getDisplayMetrics().density;
-    this.jdField_a_of_type_Awvn = new awvn();
+    this.jdField_a_of_type_Azjr = new azjr();
     getResources();
     a();
     c();
-    azqs.b(this.app, "CliOper", "", "", "card_mall", "0X80066C8", 0, 0, "", "", "", "");
+    bcst.b(this.app, "CliOper", "", "", "card_mall", "0X80066C8", 0, 0, "", "", "", "");
     return true;
   }
   
   public void doOnDestroy()
   {
     super.doOnDestroy();
-    this.app.removeObserver(this.jdField_a_of_type_Alpq);
-    this.jdField_a_of_type_Awvn.a();
-    this.jdField_a_of_type_Awvn = null;
+    this.app.removeObserver(this.jdField_a_of_type_Aniz);
+    this.jdField_a_of_type_Azjr.a();
+    this.jdField_a_of_type_Azjr = null;
   }
   
   public boolean isWrapContent()
@@ -521,16 +533,23 @@ public class ProfileLabelEditorActivity
   {
     if (a())
     {
-      bdgm.a(this, 230).setMessage(getString(2131720592)).setPositiveButton(2131721503, new adon(this)).setNegativeButton(2131694806, new adom(this)).show();
+      bglp.a(this, 230).setMessage(getString(2131718392)).setPositiveButton(2131719210, new aeuu(this)).setNegativeButton(2131693977, new aeut(this)).show();
       return true;
     }
     finish();
     return false;
   }
+  
+  @Override
+  public void onConfigurationChanged(Configuration paramConfiguration)
+  {
+    super.onConfigurationChanged(paramConfiguration);
+    EventCollector.getInstance().onActivityConfigurationChanged(this, paramConfiguration);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ProfileLabelEditorActivity
  * JD-Core Version:    0.7.0.1
  */

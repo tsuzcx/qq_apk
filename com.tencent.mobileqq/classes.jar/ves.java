@@ -1,58 +1,74 @@
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.database.CommentEntry;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspBatchFeedComment;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.FeedCommentInfo;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.StoryVideoCommentInfo;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import android.content.Context;
+import com.tencent.biz.qqcircle.bizparts.danmaku.core.PhotoDanmakuDrawer;
+import java.util.concurrent.BlockingQueue;
+import java.util.concurrent.LinkedBlockingQueue;
 
 public class ves
-  extends uro
 {
-  public List<vet> a;
-  public List<wop> b = new ArrayList(0);
+  private final PhotoDanmakuDrawer jdField_a_of_type_ComTencentBizQqcircleBizpartsDanmakuCorePhotoDanmakuDrawer;
+  private final BlockingQueue<vex> jdField_a_of_type_JavaUtilConcurrentBlockingQueue;
+  private final vel jdField_a_of_type_Vel;
+  private final vey jdField_a_of_type_Vey;
+  private final vfa jdField_a_of_type_Vfa;
+  private final BlockingQueue<vex> b;
   
-  public ves(ErrorMessage paramErrorMessage)
+  public ves(Context paramContext, vfa paramvfa, int paramInt)
   {
-    super(paramErrorMessage.errorCode, paramErrorMessage.errorMsg);
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.jdField_a_of_type_Vfa = paramvfa;
+    this.jdField_a_of_type_Vel = vel.a(paramContext, 1, paramInt);
+    this.jdField_a_of_type_ComTencentBizQqcircleBizpartsDanmakuCorePhotoDanmakuDrawer = new PhotoDanmakuDrawer(paramContext, null);
+    this.jdField_a_of_type_Vey = new vey(this.jdField_a_of_type_Vel.d);
+    this.jdField_a_of_type_JavaUtilConcurrentBlockingQueue = new LinkedBlockingQueue();
+    this.b = new LinkedBlockingQueue();
   }
   
-  public ves(qqstory_service.RspBatchFeedComment paramRspBatchFeedComment)
+  public vex a(int paramInt)
   {
-    super(paramRspBatchFeedComment.result);
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    paramRspBatchFeedComment = paramRspBatchFeedComment.feed_comment_info_list.get().iterator();
-    while (paramRspBatchFeedComment.hasNext())
+    Object localObject = null;
+    switch (paramInt)
     {
-      Object localObject = (qqstory_struct.FeedCommentInfo)paramRspBatchFeedComment.next();
-      vet localvet = new vet();
-      localvet.jdField_a_of_type_JavaLangString = ((qqstory_struct.FeedCommentInfo)localObject).feed_id.get().toStringUtf8();
-      localvet.jdField_a_of_type_Int = ((qqstory_struct.FeedCommentInfo)localObject).comment_total_num.get();
-      localvet.jdField_b_of_type_JavaLangString = ((qqstory_struct.FeedCommentInfo)localObject).next_cookie.get().toStringUtf8();
-      localvet.jdField_b_of_type_Int = ((qqstory_struct.FeedCommentInfo)localObject).is_end.get();
-      if (localvet.jdField_b_of_type_Int != 1) {
-        this.b.add(new wop(localvet.jdField_a_of_type_JavaLangString, 1, ((qqstory_struct.FeedCommentInfo)localObject).next_cookie.get().toStringUtf8()));
-      }
-      localObject = ((qqstory_struct.FeedCommentInfo)localObject).comment_list.get().iterator();
-      while (((Iterator)localObject).hasNext())
-      {
-        CommentEntry localCommentEntry = CommentEntry.convertFrom((qqstory_struct.StoryVideoCommentInfo)((Iterator)localObject).next());
-        localCommentEntry.feedId = localvet.jdField_a_of_type_JavaLangString;
-        localvet.jdField_a_of_type_JavaUtilList.add(localCommentEntry);
-      }
-      this.jdField_a_of_type_JavaUtilList.add(localvet);
     }
+    vex localvex;
+    do
+    {
+      return localObject;
+      localvex = (vex)this.jdField_a_of_type_JavaUtilConcurrentBlockingQueue.poll();
+      localObject = localvex;
+    } while (localvex != null);
+    return new vfb(this.jdField_a_of_type_Vel, this.jdField_a_of_type_Vey.a(), this.jdField_a_of_type_Vfa);
+  }
+  
+  public vex a(int paramInt1, long paramLong, String paramString, CharSequence paramCharSequence, int paramInt2, float paramFloat, int paramInt3)
+  {
+    vex localvex = a(paramInt1);
+    if (localvex != null)
+    {
+      localvex.a(paramLong);
+      localvex.c(paramString);
+      localvex.a(paramCharSequence);
+      localvex.d(paramFloat);
+      localvex.d(paramInt3);
+      localvex.a(paramInt2);
+    }
+    return localvex;
+  }
+  
+  public vex a(vex paramvex)
+  {
+    switch (paramvex.a())
+    {
+    }
+    do
+    {
+      return paramvex;
+    } while (paramvex.a());
+    paramvex.b(this.jdField_a_of_type_ComTencentBizQqcircleBizpartsDanmakuCorePhotoDanmakuDrawer);
+    return paramvex;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     ves
  * JD-Core Version:    0.7.0.1
  */

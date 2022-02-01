@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import bety;
+import biau;
 
 class LoginVerifyCodeActivity$5
   implements Runnable
@@ -11,8 +11,8 @@ class LoginVerifyCodeActivity$5
     {
       if ((LoginVerifyCodeActivity.a(this.this$0) == null) && (!this.this$0.isFinishing()))
       {
-        LoginVerifyCodeActivity.a(this.this$0, new bety(this.this$0.getActivity(), this.this$0.getTitleBarHeight()));
-        LoginVerifyCodeActivity.a(this.this$0).c(2131695090);
+        LoginVerifyCodeActivity.a(this.this$0, new biau(this.this$0.getActivity(), this.this$0.getTitleBarHeight()));
+        LoginVerifyCodeActivity.a(this.this$0).c(2131694158);
       }
       if ((LoginVerifyCodeActivity.a(this.this$0) != null) && (!LoginVerifyCodeActivity.a(this.this$0).isShowing())) {
         LoginVerifyCodeActivity.a(this.this$0).show();
@@ -30,7 +30,7 @@ class LoginVerifyCodeActivity$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.LoginVerifyCodeActivity.5
  * JD-Core Version:    0.7.0.1
  */

@@ -1,18 +1,8 @@
-import android.graphics.Bitmap;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.activity.aio.photo.AIOImageData;
 
-class ahry
-  extends ameq
+public abstract interface ahry
 {
-  ahry(ahrs paramahrs) {}
-  
-  protected void a(boolean paramBoolean1, boolean paramBoolean2, String paramString)
-  {
-    Bitmap localBitmap = this.a.a.a(113, paramString, false, 0);
-    if (localBitmap != null) {
-      ahrs.a(this.a, paramString, localBitmap);
-    }
-  }
+  public abstract void a(AIOImageData paramAIOImageData, boolean paramBoolean);
 }
 
 

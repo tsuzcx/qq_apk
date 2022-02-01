@@ -1,17 +1,18 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.apollo.aioChannel.ApolloCmdChannel;
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
+import com.tencent.mobileqq.data.MessageRecord;
 
-final class akxw
-  implements EIPCResultCallback
+public class akxw
 {
-  akxw(long paramLong) {}
+  public long a;
+  public MessageRecord a;
+  public String a;
+  public byte[] a;
   
-  public void onCallback(EIPCResult paramEIPCResult)
+  public akxw(MessageRecord paramMessageRecord, long paramLong, byte[] paramArrayOfByte, String paramString)
   {
-    paramEIPCResult = paramEIPCResult.data.getString("respData");
-    akwd.a().callbackFromRequest(this.a, 0, "cs.check_pubAccount_state.local", paramEIPCResult);
+    this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord = paramMessageRecord;
+    this.jdField_a_of_type_Long = paramLong;
+    this.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
 }
 

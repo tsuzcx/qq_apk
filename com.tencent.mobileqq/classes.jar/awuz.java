@@ -1,47 +1,51 @@
-import android.support.v4.view.ViewPager.OnPageChangeListener;
-import com.tencent.mobileqq.profile.view.PhotoViewForShopping;
-import com.tencent.mobileqq.profile.view.VipScaledViewPager;
+import android.os.SystemClock;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import com.tencent.mobileqq.multiaio.widget.MultiAIOBaseViewPager;
+import com.tencent.mobileqq.multicard.MultiCardPageIndicator;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class awuz
-  implements ViewPager.OnPageChangeListener
+  implements View.OnClickListener
 {
-  boolean jdField_a_of_type_Boolean = false;
-  boolean b = false;
+  public awuz(MultiCardPageIndicator paramMultiCardPageIndicator) {}
   
-  public awuz(PhotoViewForShopping paramPhotoViewForShopping) {}
-  
-  public void onPageScrollStateChanged(int paramInt)
+  public void onClick(View paramView)
   {
-    if (paramInt == 1)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqProfileViewPhotoViewForShopping.a.b();
-      this.jdField_a_of_type_Boolean = true;
+    if (QLog.isColorLevel()) {
+      QLog.d("TabPageIndicator", 2, "onClick() called with: view = [" + paramView + "]");
     }
-    if (paramInt == 2) {
-      this.b = true;
-    }
-    if (paramInt == 0)
+    MultiCardPageIndicator.a(this.a, SystemClock.uptimeMillis());
+    Object localObject = paramView.getTag();
+    if ((localObject instanceof awvc)) {}
+    for (localObject = (awvc)localObject;; localObject = null)
     {
-      if (this.b)
+      if (localObject == null) {}
+      for (;;)
       {
-        this.b = false;
-        this.jdField_a_of_type_ComTencentMobileqqProfileViewPhotoViewForShopping.a.a();
-      }
-      if (this.jdField_a_of_type_Boolean)
-      {
-        this.jdField_a_of_type_ComTencentMobileqqProfileViewPhotoViewForShopping.a.a();
-        this.jdField_a_of_type_Boolean = false;
+        EventCollector.getInstance().onViewClicked(paramView);
+        return;
+        int i = MultiCardPageIndicator.a(this.a).a();
+        int j = ((awvc)localObject).jdField_a_of_type_Int;
+        this.a.setCurrentItem(j);
+        bcst.b(null, "dc00898", "", "", "0X800A216", "0X800A216", 0, 0, "", "", "", "");
+        ((awvc)localObject).jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+        MultiCardPageIndicator.a(this.a).setCurrentItem(j);
+        if ((i == j) && (MultiCardPageIndicator.a(this.a) != null)) {
+          MultiCardPageIndicator.a(this.a).a(j);
+        }
+        if (MultiCardPageIndicator.a(this.a) != null) {
+          MultiCardPageIndicator.a(this.a).a(j);
+        }
       }
     }
   }
-  
-  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2) {}
-  
-  public void onPageSelected(int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     awuz
  * JD-Core Version:    0.7.0.1
  */

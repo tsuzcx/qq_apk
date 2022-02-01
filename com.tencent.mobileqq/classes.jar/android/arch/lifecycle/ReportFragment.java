@@ -9,7 +9,7 @@ import android.support.annotation.RestrictTo;
 
 @RestrictTo({android.support.annotation.RestrictTo.Scope.LIBRARY_GROUP})
 public class ReportFragment
-  extends Fragment
+  extends com.tencent.qqlive.module.videoreport.inject.fragment.ReportFragment
 {
   private static final String REPORT_FRAGMENT_TAG = "android.arch.lifecycle.LifecycleDispatcher.report_fragment_tag";
   private ReportFragment.ActivityInitializationListener mProcessListener;

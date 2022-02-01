@@ -1,19 +1,13 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.troop.homework.recite.ui.ReciteRecordLayout;
+import com.tencent.qphone.base.util.QLog;
 
-public class bcch
-  implements DialogInterface.OnClickListener
+class bcch
+  implements acez
 {
-  public bcch(ReciteRecordLayout paramReciteRecordLayout) {}
+  bcch(bccg parambccg, int paramInt) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(int paramInt, String paramString)
   {
-    this.a.c();
-    if (ReciteRecordLayout.a(this.a) != null) {
-      ReciteRecordLayout.a(this.a).e();
-    }
-    paramDialogInterface.dismiss();
+    QLog.i("GameCenterManagerImp", 1, "on push code=" + paramInt + " cmd=" + this.jdField_a_of_type_Int);
   }
 }
 

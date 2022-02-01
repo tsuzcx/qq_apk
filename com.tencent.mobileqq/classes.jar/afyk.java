@@ -1,20 +1,18 @@
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
+import android.os.Looper;
+import android.os.Message;
 
-public class afyk
-  extends aeqi
+class afyk
+  extends bdzm
 {
-  public ImageView a;
-  public RelativeLayout a;
-  public TextView a;
-  public RelativeLayout b;
-  public TextView b;
-  public View c;
-  public TextView c;
+  afyk(afyj paramafyj, Looper paramLooper)
+  {
+    super(paramLooper);
+  }
   
-  public afyk(afyg paramafyg) {}
+  public void handleMessage(Message paramMessage)
+  {
+    this.a.a(paramMessage);
+  }
 }
 
 

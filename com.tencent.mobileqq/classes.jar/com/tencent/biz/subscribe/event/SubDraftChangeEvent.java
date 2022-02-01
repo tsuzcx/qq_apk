@@ -1,5 +1,7 @@
 package com.tencent.biz.subscribe.event;
 
+import com.tencent.biz.richframework.eventbus.SimpleBaseEvent;
+
 public class SubDraftChangeEvent
   extends SimpleBaseEvent
 {
@@ -28,7 +30,7 @@ public class SubDraftChangeEvent
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.subscribe.event.SubDraftChangeEvent
  * JD-Core Version:    0.7.0.1
  */

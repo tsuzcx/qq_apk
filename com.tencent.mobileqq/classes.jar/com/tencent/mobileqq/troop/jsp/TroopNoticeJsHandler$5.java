@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.troop.jsp;
 
-import bcgq;
+import bfhe;
 import org.json.JSONArray;
 import org.json.JSONException;
 
 public class TroopNoticeJsHandler$5
   implements Runnable
 {
-  public TroopNoticeJsHandler$5(bcgq parambcgq, String paramString) {}
+  public TroopNoticeJsHandler$5(bfhe parambfhe, String paramString) {}
   
   public void run()
   {
@@ -32,7 +32,7 @@ public class TroopNoticeJsHandler$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.troop.jsp.TroopNoticeJsHandler.5
  * JD-Core Version:    0.7.0.1
  */

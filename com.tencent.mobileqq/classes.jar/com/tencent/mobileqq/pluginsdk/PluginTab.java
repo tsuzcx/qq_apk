@@ -1,13 +1,16 @@
 package com.tencent.mobileqq.pluginsdk;
 
+import Override;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.TabHost.OnTabChangeListener;
 import android.widget.TabHost.TabContentFactory;
 import android.widget.TabHost.TabSpec;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class PluginTab
   extends PluginActivity
@@ -76,6 +79,14 @@ public class PluginTab
     return null;
   }
   
+  @Override
+  public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
+  {
+    boolean bool = super.dispatchTouchEvent(paramMotionEvent);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool);
+    return bool;
+  }
+  
   protected IPluginActivity getActivityByTag(String paramString)
   {
     Object localObject2 = null;
@@ -124,14 +135,15 @@ public class PluginTab
     int i = 0;
     while (i < j)
     {
-      paramConfiguration = this.mPluginTabHost.getTabAt(i);
-      if (paramConfiguration != null)
+      Object localObject = this.mPluginTabHost.getTabAt(i);
+      if (localObject != null)
       {
-        paramConfiguration = this.mPluginTabHost.getPluginInfo(paramConfiguration.getTag());
-        if ((paramConfiguration == null) || (paramConfiguration.mActivity == null)) {}
+        localObject = this.mPluginTabHost.getPluginInfo(((TabHost.TabSpec)localObject).getTag());
+        if ((localObject == null) || (((PluginTabHost.TabSpecPluginInfo)localObject).mActivity == null)) {}
       }
       i += 1;
     }
+    EventCollector.getInstance().onActivityConfigurationChanged(this, paramConfiguration);
   }
   
   public void onDestroy()

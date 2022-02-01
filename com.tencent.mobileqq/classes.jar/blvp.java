@@ -1,21 +1,18 @@
-import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.capture.paster.QIMInformationPasterManager.2;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import cooperation.qzone.album.QzonePhotoInfo;
 
-public class blvp
-  implements blvr
+public final class blvp
+  implements Parcelable.Creator<QzonePhotoInfo>
 {
-  public blvp(QIMInformationPasterManager.2 param2) {}
-  
-  public void a(float paramFloat, String paramString, int paramInt) {}
-  
-  public void a(boolean paramBoolean, String paramString, bmvz parambmvz)
+  public QzonePhotoInfo a(Parcel paramParcel)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QIMInformationPasterManager", 2, "isSucess:" + paramBoolean + " url:" + paramString + " item:" + parambmvz);
-    }
-    if (parambmvz.a() != null) {
-      parambmvz.a().a(paramBoolean);
-    }
+    return new QzonePhotoInfo(paramParcel);
+  }
+  
+  public QzonePhotoInfo[] a(int paramInt)
+  {
+    return new QzonePhotoInfo[paramInt];
   }
 }
 

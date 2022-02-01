@@ -1,20 +1,19 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-
 class avll
-  implements DialogInterface.OnClickListener
+  extends avln
 {
-  avll(avkt paramavkt) {}
+  avll(avlk paramavlk) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(boolean paramBoolean, int paramInt, long paramLong, String paramString1, String paramString2)
   {
-    this.a.d(true);
-    azqs.b(null, "dc00899", "grp_lbs", "", "data_like", "clk_entry", 0, 0, "", "", "", "");
+    super.a(paramBoolean, paramInt, paramLong, paramString1, paramString2);
+    if (paramBoolean) {
+      this.a.a(paramInt, paramLong, paramString1);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     avll
  * JD-Core Version:    0.7.0.1
  */

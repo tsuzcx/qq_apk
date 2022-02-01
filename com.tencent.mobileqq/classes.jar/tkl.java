@@ -1,20 +1,17 @@
-import NS_KING_INTERFACE.stPostFeedCommentReq;
-import NS_KING_INTERFACE.stPostFeedCommentRsp;
-import NS_KING_SOCIALIZE_META.stMetaComment;
-import UserGrowth.stSimpleMetaFeed;
-
-public class tkl
-  extends thb<stPostFeedCommentRsp>
+class tkl
 {
-  public tkl(stSimpleMetaFeed paramstSimpleMetaFeed, stMetaComment paramstMetaComment)
+  final int jdField_a_of_type_Int;
+  final int b;
+  
+  public tkl(tkk paramtkk, int paramInt1, int paramInt2)
   {
-    super("PostFeedComment");
-    this.a = new stPostFeedCommentReq(paramstSimpleMetaFeed.id, paramstMetaComment);
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     tkl
  * JD-Core Version:    0.7.0.1
  */

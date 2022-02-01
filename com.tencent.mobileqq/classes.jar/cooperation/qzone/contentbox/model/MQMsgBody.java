@@ -14,6 +14,8 @@ public class MQMsgBody
 {
   public static final String TAG = "QZoneMsgManager.MQMsgBody";
   public String content = "";
+  public String contentIcon = "";
+  public String coverPicUrl = "";
   public int mediaType;
   public ArrayList<MQPhotoCell> photolist;
   public String title = "";
@@ -130,6 +132,8 @@ public class MQMsgBody
       localMQMsgBody.content = paramJSONObject.optString("content");
       localMQMsgBody.photolist = a(paramJSONObject.optJSONArray("photolist"));
       localMQMsgBody.vecUserAvatar = b(paramJSONObject.optJSONArray("vecUserAvatar"));
+      localMQMsgBody.coverPicUrl = paramJSONObject.optString("coverPicUrl");
+      localMQMsgBody.contentIcon = paramJSONObject.optString("contentIcon");
       return localMQMsgBody;
     }
     catch (Exception paramJSONObject)
@@ -147,6 +151,8 @@ public class MQMsgBody
     localMQMsgBody.content = paramMsgBody.content;
     localMQMsgBody.photolist = a(paramMsgBody.vecPhotos);
     localMQMsgBody.vecUserAvatar = paramMsgBody.vecUserAvatar;
+    localMQMsgBody.coverPicUrl = paramMsgBody.coverPicUrl;
+    localMQMsgBody.contentIcon = paramMsgBody.contentIcon;
     return localMQMsgBody;
   }
   
@@ -160,6 +166,8 @@ public class MQMsgBody
       localJSONObject.put("content", this.content);
       localJSONObject.put("photolist", b(this.photolist));
       localJSONObject.put("vecUserAvatar", a(this.vecUserAvatar));
+      localJSONObject.put("coverPicUrl", this.coverPicUrl);
+      localJSONObject.put("contentIcon", this.contentIcon);
       return localJSONObject;
     }
     catch (Exception localException)
@@ -171,7 +179,7 @@ public class MQMsgBody
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.qzone.contentbox.model.MQMsgBody
  * JD-Core Version:    0.7.0.1
  */

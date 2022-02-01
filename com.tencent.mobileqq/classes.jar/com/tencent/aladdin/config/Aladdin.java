@@ -106,6 +106,11 @@ public class Aladdin
     }
   }
   
+  public static int[] getConfigIdList()
+  {
+    return withUserId(sUserId).getConfigIdList();
+  }
+  
   public static String getCurrentUserId()
   {
     return sUserId;
@@ -168,7 +173,7 @@ public class Aladdin
       sRequestHandler = Aladdin.InitParams.access$700(paramInitParams);
       sAppVersion = Aladdin.InitParams.access$800(paramInitParams);
       sLogger = Aladdin.InitParams.access$900(paramInitParams);
-      Log.i("Aladdin", "initialize: GitHash=59c97ae");
+      Log.i("Aladdin", "initialize: GitHash=4a875d8");
       DeviceInfoUtils.initDisplayParams(Aladdin.InitParams.access$200(paramInitParams));
       return;
       ROOT_DIR = Aladdin.InitParams.access$200(paramInitParams).getFilesDir().getAbsolutePath() + File.separator + "aladdin_configs";
@@ -243,7 +248,7 @@ public class Aladdin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.aladdin.config.Aladdin
  * JD-Core Version:    0.7.0.1
  */

@@ -1,20 +1,34 @@
-import android.view.View;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import java.util.List;
 
-public abstract interface xvt
+public class xvt
+  extends wfr<xvr, wwl>
 {
-  public abstract void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6);
+  public xvt(xvr paramxvr)
+  {
+    super(paramxvr);
+  }
   
-  public abstract void a(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6);
+  public void a(@NonNull xvr paramxvr, @NonNull wwl paramwwl)
+  {
+    if ((xvr.a(paramxvr) != null) && (paramwwl.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess()) && (paramwwl.jdField_a_of_type_JavaUtilList.contains(xvr.a(paramxvr).a)))
+    {
+      yqp.a("WeiShiFlowBannerVideoInfoController", "GetStoryTagInfoReceiver receive tag info change event. %s", paramwwl.b.toString());
+      paramxvr.a.i();
+    }
+  }
   
-  public abstract boolean a();
+  public Class acceptEventClass()
+  {
+    return wwl.class;
+  }
   
-  public abstract boolean b();
-  
-  public abstract boolean c();
+  public void b(@NonNull xvr paramxvr, @NonNull wwl paramwwl) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     xvt
  * JD-Core Version:    0.7.0.1
  */

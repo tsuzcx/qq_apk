@@ -8,18 +8,20 @@ import java.util.Arrays;
 import java.util.Locale;
 import kotlin.Metadata;
 import kotlin.Unit;
+import kotlin.jvm.JvmField;
 import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/qapmsdk/common/logger/Logger;", "Lcom/tencent/qapmsdk/common/logger/ILoger;", "()V", "DEFAULT_PROXY", "Lcom/tencent/qapmsdk/common/logger/ILogProxy;", "TAG", "", "debug", "", "getDebug", "()Z", "setDebug", "(Z)V", "intLevel", "", "getIntLevel", "()I", "setIntLevel", "(I)V", "level", "Lcom/tencent/qapmsdk/common/logger/LogState;", "logLevel", "getLogLevel", "()Lcom/tencent/qapmsdk/common/logger/LogState;", "setLogLevel", "(Lcom/tencent/qapmsdk/common/logger/LogState;)V", "value", "logProxy", "getLogProxy", "()Lcom/tencent/qapmsdk/common/logger/ILogProxy;", "setLogProxy", "(Lcom/tencent/qapmsdk/common/logger/ILogProxy;)V", "logTimeFormatter", "Ljava/text/SimpleDateFormat;", "d", "", "args", "", "([Ljava/lang/String;)V", "e", "exception", "tag", "msg", "", "getThrowableMessage", "i", "resetLogLevel", "v", "w", "DefaultLogProxy", "common_release"}, k=1, mv={1, 1, 15})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/qapmsdk/common/logger/Logger;", "Lcom/tencent/qapmsdk/common/logger/ILoger;", "()V", "DEFAULT_PROXY", "Lcom/tencent/qapmsdk/common/logger/ILogProxy;", "TAG", "", "debug", "", "intLevel", "", "getIntLevel", "()I", "setIntLevel", "(I)V", "level", "Lcom/tencent/qapmsdk/common/logger/LogState;", "logLevel", "getLogLevel", "()Lcom/tencent/qapmsdk/common/logger/LogState;", "setLogLevel", "(Lcom/tencent/qapmsdk/common/logger/LogState;)V", "value", "logProxy", "getLogProxy", "()Lcom/tencent/qapmsdk/common/logger/ILogProxy;", "setLogProxy", "(Lcom/tencent/qapmsdk/common/logger/ILogProxy;)V", "logTimeFormatter", "Ljava/text/SimpleDateFormat;", "d", "", "args", "", "([Ljava/lang/String;)V", "e", "exception", "tag", "msg", "throwable", "", "getThrowableMessage", "i", "resetLogLevel", "v", "w", "DefaultLogProxy", "common_release"}, k=1, mv={1, 1, 15})
 public final class Logger
   implements ILoger
 {
   private static final ILogProxy DEFAULT_PROXY;
   public static final Logger INSTANCE = new Logger();
   private static final String TAG = "QAPM_common_Logger";
-  private static boolean debug;
+  @JvmField
+  public static boolean debug;
   private static int intLevel = LogState.OFF.getValue();
   @NotNull
   private static LogState logLevel = LogState.OFF;
@@ -73,11 +75,6 @@ public final class Logger
       return;
     }
     e(new String[] { paramString, getThrowableMessage(paramThrowable) });
-  }
-  
-  public final boolean getDebug()
-  {
-    return debug;
   }
   
   public final int getIntLevel()
@@ -135,11 +132,6 @@ public final class Logger
     }
   }
   
-  public final void setDebug(boolean paramBoolean)
-  {
-    debug = paramBoolean;
-  }
-  
   public final void setIntLevel(int paramInt)
   {
     intLevel = paramInt;
@@ -188,7 +180,7 @@ public final class Logger
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.tencent.qapmsdk.common.logger.Logger
  * JD-Core Version:    0.7.0.1
  */

@@ -1,13 +1,28 @@
-import dov.com.qq.im.aeeditor.module.edit.AEEditorCommonEditFragment;
+import android.content.ComponentName;
+import android.content.ServiceConnection;
+import android.os.IBinder;
+import cooperation.qqindividuality.ipc.QQIndividualityRemoteProxy.2.1;
 
 public class blmm
-  implements blky
+  implements ServiceConnection
 {
-  public blmm(AEEditorCommonEditFragment paramAEEditorCommonEditFragment) {}
+  blmm(blml paramblml) {}
   
-  public void a()
+  public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
   {
-    this.a.e();
+    this.a.jdField_a_of_type_Blmb = blmc.a(paramIBinder);
+    if (this.a.jdField_a_of_type_Blmb != null)
+    {
+      paramComponentName = new QQIndividualityRemoteProxy.2.1(this);
+      paramComponentName.setName("QfavRemoteProxyForQQ.remoteProxyCallThread");
+      paramComponentName.start();
+    }
+  }
+  
+  public void onServiceDisconnected(ComponentName paramComponentName)
+  {
+    this.a.jdField_a_of_type_Blmb = null;
+    this.a.jdField_a_of_type_Boolean = false;
   }
 }
 

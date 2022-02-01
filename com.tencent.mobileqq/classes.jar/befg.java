@@ -1,233 +1,58 @@
-import android.graphics.Color;
 import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.vas.VasQuickUpdateManager;
-import com.tencent.mobileqq.webview.WebViewTitleStyle;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import java.util.Map;
-import mqq.app.AppRuntime;
-import org.json.JSONArray;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 import org.json.JSONObject;
+import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo;
+import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo.DisplayInfo;
+import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo.DisplayInfo.BasicInfo;
 
 public class befg
+  extends befe
 {
-  private static befg a;
-  public Map<String, WebViewTitleStyle> a;
-  public boolean a;
+  public int a;
+  public qq_ad_get.QQAdGetRsp.AdInfo a;
+  public int b;
+  public boolean b;
+  public String d;
+  public String e;
+  public String f;
+  public String g;
+  public String h;
+  public String i;
   
-  private befg()
+  public befg(JSONObject paramJSONObject)
   {
-    this.jdField_a_of_type_JavaUtilMap = new HashMap();
-  }
-  
-  private int a(String paramString)
-  {
-    int j = -1;
-    int i = j;
-    if (!TextUtils.isEmpty(paramString))
-    {
-      if (!paramString.startsWith("0x")) {
-        break label86;
-      }
-      paramString = paramString.substring(2);
+    this.jdField_a_of_type_TencentGdtQq_ad_get$QQAdGetRsp$AdInfo = ((qq_ad_get.QQAdGetRsp.AdInfo)qq_ad_get.QQAdGetRsp.AdInfo.class.cast(acqx.a(new qq_ad_get.QQAdGetRsp.AdInfo(), paramJSONObject)));
+    this.jdField_a_of_type_Int = paramJSONObject.optInt("product_type");
+    JSONObject localJSONObject1 = paramJSONObject.optJSONObject("display_info");
+    JSONObject localJSONObject2 = localJSONObject1.optJSONObject("basic_info");
+    this.b = localJSONObject2.optString("img");
+    this.f = localJSONObject2.optString("txt");
+    localJSONObject2 = localJSONObject1.optJSONObject("video_info");
+    this.jdField_a_of_type_JavaLangString = localJSONObject2.optString("video_url");
+    if ((this.jdField_a_of_type_JavaLangString != null) && (this.jdField_a_of_type_JavaLangString.startsWith("https"))) {
+      this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString.replaceFirst("https", "http");
     }
-    label86:
-    for (;;)
-    {
-      String str = paramString;
-      try
-      {
-        if (!paramString.startsWith("#")) {
-          str = "#" + paramString;
-        }
-        i = Color.parseColor(str);
+    this.jdField_a_of_type_Long = (localJSONObject2.optInt("media_duration") * 1000);
+    if (this.jdField_a_of_type_TencentGdtQq_ad_get$QQAdGetRsp$AdInfo != null) {
+      if (this.jdField_a_of_type_TencentGdtQq_ad_get$QQAdGetRsp$AdInfo.display_info.basic_info.pic_width.get() / this.jdField_a_of_type_TencentGdtQq_ad_get$QQAdGetRsp$AdInfo.display_info.basic_info.pic_height.get() <= 0.75F) {
+        break label293;
       }
-      catch (NumberFormatException paramString)
-      {
-        do
-        {
-          i = j;
-        } while (!QLog.isDevelopLevel());
-        QLog.d("WebViewTitleStyleHelper", 4, "Illegal param _wvNb");
-        return -1;
-      }
-      return i;
     }
-  }
-  
-  public static befg a()
-  {
-    if (jdField_a_of_type_Befg == null) {}
-    try
+    label293:
+    for (boolean bool = true;; bool = false)
     {
-      if (jdField_a_of_type_Befg == null) {
-        jdField_a_of_type_Befg = new befg();
+      this.jdField_a_of_type_Boolean = bool;
+      localJSONObject1 = localJSONObject1.optJSONObject("advertiser_info");
+      this.d = localJSONObject1.optString("corporate_image_name");
+      this.e = localJSONObject1.optString("corporate_logo");
+      localJSONObject1 = paramJSONObject.optJSONObject("report_info");
+      this.h = localJSONObject1.optString("negative_feedback_url");
+      if (!TextUtils.isEmpty(this.h)) {
+        this.h = this.h.replace("__ACT_TYPE__", "2001");
       }
-      return jdField_a_of_type_Befg;
-    }
-    finally {}
-  }
-  
-  public void a(AppRuntime paramAppRuntime)
-  {
-    if (paramAppRuntime == null) {}
-    for (;;)
-    {
+      this.i = localJSONObject1.optString("exposure_url");
+      this.g = paramJSONObject.optJSONObject("app_info").optString("app_package_name");
       return;
-      try
-      {
-        this.jdField_a_of_type_JavaUtilMap.clear();
-        boolean bool = paramAppRuntime instanceof QQAppInterface;
-        try
-        {
-          localObject = VasQuickUpdateManager.getJSONFromLocal(paramAppRuntime, "vipData_app_webviewNavStyle.json", bool, null);
-          if (localObject != null) {
-            break label75;
-          }
-          if (!QLog.isColorLevel()) {
-            continue;
-          }
-          QLog.d("WebViewTitleStyleHelper", 2, "parseJson file not exists");
-        }
-        catch (Exception paramAppRuntime)
-        {
-          QLog.e("WebViewTitleStyleHelper", 1, "parseJson exception e = ", paramAppRuntime);
-        }
-        continue;
-      }
-      finally {}
-      label75:
-      this.jdField_a_of_type_Boolean = true;
-      Object localObject = ((JSONObject)localObject).optJSONArray("webViewStyleList");
-      if ((localObject != null) && (((JSONArray)localObject).length() > 0))
-      {
-        int j = ((JSONArray)localObject).length();
-        int i = 0;
-        while (i < j)
-        {
-          JSONObject localJSONObject = ((JSONArray)localObject).getJSONObject(i);
-          if (a(paramAppRuntime, localJSONObject))
-          {
-            String str = localJSONObject.optString("domain", "");
-            if (!TextUtils.isEmpty(str))
-            {
-              WebViewTitleStyle localWebViewTitleStyle = new WebViewTitleStyle();
-              localWebViewTitleStyle.b = a(localJSONObject.optString("statusColor", ""));
-              localWebViewTitleStyle.c = a(localJSONObject.optString("bgColor", ""));
-              localWebViewTitleStyle.d = a(localJSONObject.optString("titleColor", ""));
-              localWebViewTitleStyle.e = a(localJSONObject.optString("iconColor", ""));
-              this.jdField_a_of_type_JavaUtilMap.put(str, localWebViewTitleStyle);
-            }
-          }
-          i += 1;
-        }
-      }
-    }
-  }
-  
-  public boolean a(AppRuntime paramAppRuntime, JSONObject paramJSONObject)
-  {
-    bool3 = false;
-    bool1 = false;
-    boolean bool2 = true;
-    if ((paramAppRuntime == null) || (paramJSONObject == null))
-    {
-      QLog.e("WebViewTitleStyleHelper", 1, "isConfigValid app = null || config = null");
-      bool2 = bool1;
-      return bool2;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("WebViewTitleStyleHelper", 2, "isConfigValid config = " + paramJSONObject.toString());
-    }
-    try
-    {
-      i = paramJSONObject.optInt("platformId");
-      if (i != 0)
-      {
-        bool1 = bool3;
-        if (i != 2) {
-          break label287;
-        }
-      }
-      if (!paramJSONObject.has("minVersion")) {
-        break label416;
-      }
-      str = paramJSONObject.getString("minVersion");
-      if ((TextUtils.isEmpty(str)) || (bdtd.a(str, "8.3.5.4555"))) {
-        break label416;
-      }
-      i = 0;
-    }
-    catch (Exception paramAppRuntime)
-    {
-      for (;;)
-      {
-        String str;
-        int j;
-        int k;
-        long l1;
-        long l2;
-        long l3;
-        label287:
-        label326:
-        label367:
-        QLog.e("WebViewTitleStyleHelper", 1, "isConfigValid exception", paramAppRuntime);
-        bool1 = bool3;
-        continue;
-        int i = 1;
-        continue;
-        bool1 = false;
-      }
-    }
-    j = i;
-    if (i != 0)
-    {
-      j = i;
-      if (paramJSONObject.has("maxVersion"))
-      {
-        str = paramJSONObject.getString("maxVersion");
-        j = i;
-        if (!TextUtils.isEmpty(str))
-        {
-          j = i;
-          if (!bdtd.a("8.3.5.4555", str)) {
-            j = 0;
-          }
-        }
-      }
-    }
-    bool1 = bool3;
-    if (j != 0)
-    {
-      paramAppRuntime = paramAppRuntime.getAccount();
-      i = paramJSONObject.optInt("startIndex");
-      j = paramJSONObject.optInt("endIndex");
-      if (i < j) {
-        break label367;
-      }
-      k = paramAppRuntime.length();
-      if ((k < i) || (k < j)) {
-        break label326;
-      }
-      l1 = Long.parseLong(paramAppRuntime.substring(k - i, k - j + 1));
-      l2 = paramJSONObject.optLong("min");
-      l3 = paramJSONObject.optLong("max");
-      if ((l1 < l2) || (l1 > l3)) {
-        break label421;
-      }
-    }
-    for (bool1 = bool2;; bool1 = bool3)
-    {
-      bool2 = bool1;
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.d("WebViewTitleStyleHelper", 2, "isConfigValid valid = " + bool1);
-      return bool1;
-      QLog.e("WebViewTitleStyleHelper", 1, "parseJson, index config error, uin length=" + k + ", config=" + paramJSONObject.toString());
-      break label421;
-      QLog.e("WebViewTitleStyleHelper", 1, "parseJson, startIndex < endIndex, element=" + paramJSONObject);
     }
   }
 }

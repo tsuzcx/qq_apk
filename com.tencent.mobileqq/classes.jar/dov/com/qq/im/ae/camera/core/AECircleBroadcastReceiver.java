@@ -5,26 +5,27 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
-import bksu;
-import bljn;
+import bnht;
+import bnpt;
+import bnzb;
 
 public class AECircleBroadcastReceiver
   extends BroadcastReceiver
 {
-  private bksu jdField_a_of_type_Bksu;
+  private bnht jdField_a_of_type_Bnht;
   private boolean jdField_a_of_type_Boolean;
   
-  public AECircleBroadcastReceiver(bksu parambksu)
+  public AECircleBroadcastReceiver(bnht parambnht)
   {
-    this.jdField_a_of_type_Bksu = parambksu;
+    this.jdField_a_of_type_Bnht = parambnht;
   }
   
   private IntentFilter a()
   {
     IntentFilter localIntentFilter = new IntentFilter();
     localIntentFilter.addAction("tencent.av.v2q.StartVideoChat");
-    localIntentFilter.addAction("new_qq_android_native_short_filter_");
-    localIntentFilter.addAction("new_qq_android_native_ptu_res_");
+    localIntentFilter.addAction(bnpt.jdField_b_of_type_Bnpt.jdField_b_of_type_JavaLangString);
+    localIntentFilter.addAction(bnpt.c.jdField_b_of_type_JavaLangString);
     return localIntentFilter;
   }
   
@@ -50,16 +51,16 @@ public class AECircleBroadcastReceiver
   {
     paramContext = paramIntent.getAction();
     paramIntent = paramIntent.getStringExtra("ae_camera_res_downloadfinish_path");
-    if (("new_qq_android_native_short_filter_".equals(paramContext)) && (this.jdField_a_of_type_Bksu != null))
+    if ((bnpt.jdField_b_of_type_Bnpt.jdField_b_of_type_JavaLangString.equals(paramContext)) && (this.jdField_a_of_type_Bnht != null))
     {
-      this.jdField_a_of_type_Bksu.a(paramIntent);
-      bljn.a("AECircleBroadcastReceiver", "[onReceive]");
+      this.jdField_a_of_type_Bnht.a(paramIntent);
+      bnzb.a("AECircleBroadcastReceiver", "[onReceive]");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     dov.com.qq.im.ae.camera.core.AECircleBroadcastReceiver
  * JD-Core Version:    0.7.0.1
  */

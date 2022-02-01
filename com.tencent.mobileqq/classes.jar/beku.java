@@ -1,26 +1,90 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import android.view.View;
-import android.view.ViewPropertyAnimator;
-import com.tencent.mobileqq.webview.webso.WebSoService.12;
+import android.os.Build.VERSION;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.troop.activity.TroopBarReplyActivity;
+import com.tencent.mobileqq.troop.widget.PublishItemContainer;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
 public class beku
-  implements Animator.AnimatorListener
+  extends Handler
 {
-  public beku(WebSoService.12 param12, ViewPropertyAnimator paramViewPropertyAnimator) {}
+  public beku(TroopBarReplyActivity paramTroopBarReplyActivity) {}
   
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
+  public void handleMessage(Message paramMessage)
   {
-    this.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService$12.jdField_a_of_type_AndroidViewView.setBackgroundDrawable(this.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService$12.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
-    this.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService$12.jdField_a_of_type_AndroidViewView.setVisibility(8);
-    this.jdField_a_of_type_AndroidViewViewPropertyAnimator.setListener(null);
+    if (this.a.isFinishing()) {}
+    do
+    {
+      do
+      {
+        do
+        {
+          do
+          {
+            return;
+            switch (paramMessage.what)
+            {
+            case 1002: 
+            case 1007: 
+            default: 
+              return;
+            case 1001: 
+              this.a.a(false);
+              if ((this.a.jdField_a_of_type_Biau != null) && (this.a.jdField_a_of_type_Biau.isShowing())) {
+                this.a.jdField_a_of_type_Biau.dismiss();
+              }
+              QQToast.a(this.a, 2131695569, 1).b(this.a.getTitleBarHeight());
+            }
+          } while (!(paramMessage.obj instanceof String));
+          paramMessage = (String)paramMessage.obj;
+          try
+          {
+            this.a.jdField_a_of_type_JavaUtilArrayList.remove(paramMessage);
+            return;
+          }
+          catch (UnsupportedOperationException paramMessage) {}
+        } while (!QLog.isColorLevel());
+        QLog.d("TroopBar", 2, paramMessage.toString());
+        return;
+        if ((this.a.jdField_a_of_type_Biau != null) && (this.a.jdField_a_of_type_Biau.isShowing())) {
+          this.a.jdField_a_of_type_Biau.dismiss();
+        }
+        this.a.a(false);
+        this.a.a();
+        return;
+        if ((paramMessage.arg1 == 1) && (this.a.jdField_a_of_type_ComTencentMobileqqTroopDataAudioInfo != null)) {
+          this.a.jdField_a_of_type_ComTencentMobileqqTroopDataAudioInfo.url = ((String)paramMessage.obj);
+        }
+      } while ((this.a.jdField_a_of_type_Biau == null) || (!this.a.jdField_a_of_type_Biau.isShowing()));
+      this.a.a();
+      return;
+      this.a.a(false);
+      if ((this.a.jdField_a_of_type_Biau != null) && (this.a.jdField_a_of_type_Biau.isShowing())) {
+        this.a.jdField_a_of_type_Biau.dismiss();
+      }
+      QQToast.a(this.a, 2131695547, 1).b(this.a.getTitleBarHeight());
+      return;
+      if ((paramMessage.obj instanceof String))
+      {
+        this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetPublishItemContainer.a((String)paramMessage.obj);
+        this.a.jdField_a_of_type_ComTencentMobileqqTroopDataAudioInfo = null;
+        return;
+      }
+      this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetPublishItemContainer.a(this.a.jdField_a_of_type_JavaUtilArrayList);
+    } while (this.a.jdField_a_of_type_JavaUtilArrayList.size() <= 0);
+    this.a.jdField_a_of_type_ComTencentMobileqqTroopDataAudioInfo = null;
+    return;
+    this.a.jdField_a_of_type_JavaUtilArrayList.clear();
+    this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetPublishItemContainer.a();
+    if ((Build.VERSION.SDK_INT >= 23) && (this.a.checkSelfPermission("android.permission.RECORD_AUDIO") != 0))
+    {
+      this.a.requestPermissions(new bekv(this), 1, new String[] { "android.permission.RECORD_AUDIO" });
+      return;
+    }
+    TroopBarReplyActivity.a(this.a, 4);
   }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

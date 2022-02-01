@@ -1,12 +1,13 @@
 package com.tencent.open.agent;
 
-import alud;
+import Override;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.content.pm.Signature;
 import android.content.res.ColorStateList;
+import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.os.Build;
@@ -17,33 +18,35 @@ import android.os.Looper;
 import android.os.Message;
 import android.text.TextUtils;
 import android.util.DisplayMetrics;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewTreeObserver;
 import android.widget.Button;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import azqs;
-import bdhe;
-import bdin;
-import bety;
-import bfbk;
-import bfbm;
-import bfgr;
-import bfgs;
-import bfgt;
-import bfgu;
-import bfgv;
-import bfgw;
-import bfgx;
-import bfgy;
-import bfhz;
-import bfii;
-import bfiw;
-import bfmb;
-import bfmn;
-import bfnz;
-import bfqw;
+import anni;
+import aukw;
+import bcst;
+import bgmj;
+import bgnt;
+import biau;
+import biik;
+import biip;
+import binw;
+import binx;
+import biny;
+import binz;
+import bioa;
+import biob;
+import bioc;
+import biod;
+import bipi;
+import bipr;
+import biqf;
+import bitk;
+import bitw;
+import bivh;
 import com.tencent.biz.qrcode.activity.QRLoginAuthActivity;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.GesturePWDUnlockActivity;
@@ -54,11 +57,13 @@ import com.tencent.mobileqq.pb.PBEnumField;
 import com.tencent.mobileqq.pb.PBInt64Field;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.open.model.AccountManage;
 import com.tencent.open.widget.MaxHeightScrollView;
 import com.tencent.protofile.getappinfo.GetAppInfoProto.GetAppinfoRequest;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqconnect.wtlogin.Login;
 import com.tencent.qqconnect.wtlogin.OpenSDKAppInterface;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import com.tencent.widget.immersive.ImmersiveTitleBar2;
 import com.tencent.widget.immersive.ImmersiveUtils;
 import java.net.MalformedURLException;
@@ -69,6 +74,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Locale;
 import mqq.app.AppRuntime;
+import mqq.app.MobileQQ;
 import mqq.app.NewIntent;
 import mqq.manager.TicketManager;
 import mqq.manager.WtloginManager;
@@ -79,11 +85,12 @@ import oicq.wlogin_sdk.sharemem.WloginSimpleInfo;
 
 public class QuickLoginAuthorityActivity
   extends BaseActivity
-  implements View.OnClickListener, bfmn
+  implements View.OnClickListener, bitw
 {
   protected static final String[] a;
   protected float a;
   private int jdField_a_of_type_Int;
+  private long jdField_a_of_type_Long;
   protected SharedPreferences a;
   public Bundle a;
   public Handler a;
@@ -91,23 +98,22 @@ public class QuickLoginAuthorityActivity
   protected Button a;
   protected RelativeLayout a;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
-  protected bety a;
+  protected biau a;
   public CardContainer a;
   private MaxHeightScrollView jdField_a_of_type_ComTencentOpenWidgetMaxHeightScrollView;
-  public OpenSDKAppInterface a;
   private ImmersiveTitleBar2 jdField_a_of_type_ComTencentWidgetImmersiveImmersiveTitleBar2;
   public String a;
   protected List<String> a;
   public WtloginManager a;
   protected SSOAccountObserver a;
-  private WtloginObserver jdField_a_of_type_MqqObserverWtloginObserver = new bfgt(this);
+  private WtloginObserver jdField_a_of_type_MqqObserverWtloginObserver = new biny(this);
   protected boolean a;
   public byte[] a;
   public Handler b;
   protected View b;
   private TextView jdField_b_of_type_AndroidWidgetTextView;
   public String b;
-  private WtloginObserver jdField_b_of_type_MqqObserverWtloginObserver = new bfgu(this);
+  private WtloginObserver jdField_b_of_type_MqqObserverWtloginObserver = new binz(this);
   private boolean jdField_b_of_type_Boolean;
   private byte[] jdField_b_of_type_ArrayOfByte;
   private TextView jdField_c_of_type_AndroidWidgetTextView;
@@ -124,9 +130,9 @@ public class QuickLoginAuthorityActivity
   
   public QuickLoginAuthorityActivity()
   {
-    this.jdField_a_of_type_MqqObserverSSOAccountObserver = new bfgr(this);
-    this.jdField_a_of_type_AndroidOsHandler = new bfgx(this, ThreadManager.getSubThreadLooper());
-    this.jdField_b_of_type_AndroidOsHandler = new bfgy(this, Looper.getMainLooper());
+    this.jdField_a_of_type_MqqObserverSSOAccountObserver = new binw(this);
+    this.jdField_a_of_type_AndroidOsHandler = new bioc(this, ThreadManager.getSubThreadLooper());
+    this.jdField_b_of_type_AndroidOsHandler = new biod(this, Looper.getMainLooper());
   }
   
   private int a()
@@ -168,6 +174,13 @@ public class QuickLoginAuthorityActivity
     return localBundle;
   }
   
+  private OpenSDKAppInterface a()
+  {
+    OpenSDKAppInterface localOpenSDKAppInterface = (OpenSDKAppInterface)MobileQQ.sMobileQQ.waitAppRuntime(null);
+    QLog.d("Q.quicklogin.QuickLoginAuthorityActivity", 1, "waitAppRuntime app=" + localOpenSDKAppInterface.hashCode());
+    return localOpenSDKAppInterface;
+  }
+  
   private int b()
   {
     QLog.i("Q.quicklogin.QuickLoginAuthorityActivity", 1, "-->getAppidByWtlogin()");
@@ -184,14 +197,14 @@ public class QuickLoginAuthorityActivity
   
   private void i()
   {
-    this.jdField_a_of_type_ComTencentWidgetImmersiveImmersiveTitleBar2 = ((ImmersiveTitleBar2)this.jdField_a_of_type_ComTencentOpenAgentCardContainer.findViewById(2131378030));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_ComTencentOpenAgentCardContainer.findViewById(2131368624));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_ComTencentOpenAgentCardContainer.findViewById(2131368670));
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_ComTencentOpenAgentCardContainer.findViewById(2131368655));
+    this.jdField_a_of_type_ComTencentWidgetImmersiveImmersiveTitleBar2 = ((ImmersiveTitleBar2)this.jdField_a_of_type_ComTencentOpenAgentCardContainer.findViewById(2131378874));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_ComTencentOpenAgentCardContainer.findViewById(2131368947));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_ComTencentOpenAgentCardContainer.findViewById(2131368994));
+    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_ComTencentOpenAgentCardContainer.findViewById(2131368979));
     this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
     this.jdField_c_of_type_AndroidWidgetTextView.setOnClickListener(this);
-    this.jdField_b_of_type_AndroidWidgetTextView.setText(2131695045);
-    this.jdField_c_of_type_AndroidWidgetTextView.setText(2131690648);
+    this.jdField_b_of_type_AndroidWidgetTextView.setText(2131694125);
+    this.jdField_c_of_type_AndroidWidgetTextView.setText(2131690582);
     this.jdField_a_of_type_ComTencentWidgetImmersiveImmersiveTitleBar2.a(0);
   }
   
@@ -201,7 +214,7 @@ public class QuickLoginAuthorityActivity
     for (int i = 4;; i = 0)
     {
       this.jdField_a_of_type_AndroidContentSharedPreferences = super.getSharedPreferences("accountList", i);
-      this.jdField_a_of_type_MqqManagerWtloginManager = ((WtloginManager)this.jdField_a_of_type_ComTencentQqconnectWtloginOpenSDKAppInterface.getManager(1));
+      this.jdField_a_of_type_MqqManagerWtloginManager = ((WtloginManager)a().getManager(1));
       d();
       return;
     }
@@ -221,7 +234,7 @@ public class QuickLoginAuthorityActivity
     if (this.jdField_b_of_type_Boolean) {}
     try
     {
-      paramString1 = bfhz.a();
+      paramString1 = bipi.a();
       paramString2 = this.jdField_a_of_type_JavaLangString;
       if (paramInt != 0) {
         break label206;
@@ -232,10 +245,10 @@ public class QuickLoginAuthorityActivity
     {
       try
       {
-        if ((TextUtils.isEmpty(this.jdField_a_of_type_ComTencentQqconnectWtloginOpenSDKAppInterface.getAccount())) || (this.jdField_a_of_type_JavaLangString.equals(this.jdField_a_of_type_ComTencentQqconnectWtloginOpenSDKAppInterface.getAccount()))) {
+        if ((TextUtils.isEmpty(a().getAccount())) || (this.jdField_a_of_type_JavaLangString.equals(a().getAccount()))) {
           break label205;
         }
-        paramString1 = bfhz.a();
+        paramString1 = bipi.a();
         paramString2 = this.jdField_a_of_type_JavaLangString;
         if (paramInt != 0) {
           break label227;
@@ -262,6 +275,7 @@ public class QuickLoginAuthorityActivity
   
   public void a(long paramLong, String paramString)
   {
+    this.jdField_a_of_type_Long = paramLong;
     QLog.i("Q.quicklogin.QuickLoginAuthorityActivity", 1, "getAppInfo appid =" + paramLong + ",comfrom =" + paramString);
     GetAppInfoProto.GetAppinfoRequest localGetAppinfoRequest = new GetAppInfoProto.GetAppinfoRequest();
     localGetAppinfoRequest.client_id.set(paramLong);
@@ -270,19 +284,19 @@ public class QuickLoginAuthorityActivity
     for (paramString = "";; paramString = Build.VERSION.RELEASE)
     {
       localGetAppinfoRequest.os.set(paramString);
-      localGetAppinfoRequest.qqv.set(bfbm.a().d());
+      localGetAppinfoRequest.qqv.set(biip.a().d());
       localGetAppinfoRequest.setHasFlag(true);
-      paramString = bfii.a(this);
+      paramString = bipr.a(this);
       if (!TextUtils.isEmpty(paramString)) {
         localGetAppinfoRequest.appUniqueIdentifier.set(paramString);
       }
       localGetAppinfoRequest.referer.set(1);
-      paramString = new NewIntent(BaseApplicationImpl.getContext(), bfiw.class);
+      paramString = new NewIntent(BaseApplicationImpl.getContext(), biqf.class);
       paramString.setWithouLogin(true);
       paramString.putExtra("uin", this.jdField_a_of_type_JavaLangString);
       paramString.putExtra("data", localGetAppinfoRequest.toByteArray());
       paramString.putExtra("cmd", "ConnAuthSvr.get_app_info");
-      paramString.setObserver(new bfgs(this));
+      paramString.setObserver(new binx(this));
       super.getAppRuntime().startServlet(paramString);
       return;
     }
@@ -304,19 +318,24 @@ public class QuickLoginAuthorityActivity
   
   public void a(String paramString)
   {
-    QLog.i("Q.quicklogin.QuickLoginAuthorityActivity", 1, "-->showLoginActivity--uin = *" + bfii.a(paramString) + ",mIsPtloginAction=" + this.jdField_a_of_type_Boolean);
+    QLog.i("Q.quicklogin.QuickLoginAuthorityActivity", 1, "-->showLoginActivity--uin = *" + bipr.a(paramString) + ",mIsPtloginAction=" + this.jdField_a_of_type_Boolean + ", mThirdAppId=" + this.jdField_a_of_type_Long);
     Intent localIntent = new Intent(this, Login.class);
     if (paramString != null) {
       localIntent.putExtra("param_uin", paramString);
     }
-    if (this.jdField_a_of_type_Boolean) {
+    if (this.jdField_a_of_type_Boolean)
+    {
       localIntent.putExtra("key_req_src", 3);
+      localIntent.putExtra("appid", Long.toString(this.jdField_a_of_type_Long));
     }
     for (;;)
     {
       super.startActivityForResult(localIntent, 1);
       return;
       localIntent.putExtra("key_req_src", 2);
+      if (this.jdField_a_of_type_AndroidOsBundle != null) {
+        localIntent.putExtra("appid", Long.toString(this.jdField_a_of_type_AndroidOsBundle.getLong("dstAppid", 0L)));
+      }
     }
   }
   
@@ -343,7 +362,7 @@ public class QuickLoginAuthorityActivity
   
   public void a(String paramString, boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_MqqManagerWtloginManager.IsUserHaveA1(paramString, 16L))
+    if (bipr.b(this.jdField_a_of_type_MqqManagerWtloginManager, paramString))
     {
       if (QLog.isColorLevel()) {
         QLog.d("Q.quicklogin.SwitchAccountActivity", 2, "-->login--has aone");
@@ -477,8 +496,8 @@ public class QuickLoginAuthorityActivity
       return;
     }
     QLog.i("Q.quicklogin.QuickLoginAuthorityActivity", 1, "updateViews()");
-    String str = ((TicketManager)this.jdField_a_of_type_ComTencentQqconnectWtloginOpenSDKAppInterface.getManager(2)).getSkey(this.jdField_a_of_type_JavaLangString);
-    bfmb.a().a(this, this.jdField_a_of_type_JavaLangString, str, this.jdField_a_of_type_ComTencentQqconnectWtloginOpenSDKAppInterface.b(this.jdField_a_of_type_JavaLangString), this);
+    String str = ((TicketManager)a().getManager(2)).getSkey(this.jdField_a_of_type_JavaLangString);
+    bitk.a().a(this, this.jdField_a_of_type_JavaLangString, str, a().b(this.jdField_a_of_type_JavaLangString), this);
   }
   
   /* Error */
@@ -489,29 +508,29 @@ public class QuickLoginAuthorityActivity
     //   1: invokestatic 249	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   4: ifne +13 -> 17
     //   7: aload_1
-    //   8: ldc_w 392
-    //   11: invokevirtual 408	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   8: ldc_w 416
+    //   11: invokevirtual 432	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   14: ifeq +13 -> 27
     //   17: ldc 173
     //   19: iconst_1
-    //   20: ldc_w 752
-    //   23: invokestatic 754	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   20: ldc_w 786
+    //   23: invokestatic 788	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   26: return
-    //   27: new 756	oicq/wlogin_sdk/sharemem/WloginSimpleInfo
+    //   27: new 790	oicq/wlogin_sdk/sharemem/WloginSimpleInfo
     //   30: dup
-    //   31: invokespecial 757	oicq/wlogin_sdk/sharemem/WloginSimpleInfo:<init>	()V
+    //   31: invokespecial 791	oicq/wlogin_sdk/sharemem/WloginSimpleInfo:<init>	()V
     //   34: astore 4
     //   36: aload_0
     //   37: getfield 217	com/tencent/open/agent/QuickLoginAuthorityActivity:jdField_a_of_type_MqqManagerWtloginManager	Lmqq/manager/WtloginManager;
     //   40: aload_1
     //   41: aload 4
-    //   43: invokeinterface 761 3 0
+    //   43: invokeinterface 795 3 0
     //   48: pop
     //   49: new 40	java/lang/String
     //   52: dup
     //   53: aload 4
-    //   55: getfield 764	oicq/wlogin_sdk/sharemem/WloginSimpleInfo:_nick	[B
-    //   58: invokespecial 767	java/lang/String:<init>	([B)V
+    //   55: getfield 798	oicq/wlogin_sdk/sharemem/WloginSimpleInfo:_nick	[B
+    //   58: invokespecial 801	java/lang/String:<init>	([B)V
     //   61: astore 5
     //   63: aload 5
     //   65: astore 4
@@ -524,77 +543,77 @@ public class QuickLoginAuthorityActivity
     //   79: invokestatic 249	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   82: ifne +927 -> 1009
     //   85: aload_0
-    //   86: getfield 329	com/tencent/open/agent/QuickLoginAuthorityActivity:jdField_a_of_type_ComTencentQqconnectWtloginOpenSDKAppInterface	Lcom/tencent/qqconnect/wtlogin/OpenSDKAppInterface;
+    //   86: invokespecial 303	com/tencent/open/agent/QuickLoginAuthorityActivity:a	()Lcom/tencent/qqconnect/wtlogin/OpenSDKAppInterface;
     //   89: aload_1
-    //   90: ldc_w 768
+    //   90: ldc_w 802
     //   93: aload_0
-    //   94: getfield 770	com/tencent/open/agent/QuickLoginAuthorityActivity:jdField_a_of_type_Float	F
+    //   94: getfield 804	com/tencent/open/agent/QuickLoginAuthorityActivity:jdField_a_of_type_Float	F
     //   97: fmul
     //   98: f2i
     //   99: iconst_1
-    //   100: invokevirtual 773	com/tencent/qqconnect/wtlogin/OpenSDKAppInterface:a	(Ljava/lang/String;IZ)Landroid/graphics/Bitmap;
+    //   100: invokevirtual 807	com/tencent/qqconnect/wtlogin/OpenSDKAppInterface:a	(Ljava/lang/String;IZ)Landroid/graphics/Bitmap;
     //   103: astore 5
     //   105: aload_0
-    //   106: getfield 280	com/tencent/open/agent/QuickLoginAuthorityActivity:jdField_a_of_type_ComTencentOpenAgentCardContainer	Lcom/tencent/open/agent/CardContainer;
+    //   106: getfield 318	com/tencent/open/agent/QuickLoginAuthorityActivity:jdField_a_of_type_ComTencentOpenAgentCardContainer	Lcom/tencent/open/agent/CardContainer;
     //   109: aload_1
     //   110: aload 4
     //   112: aload 5
     //   114: iconst_1
-    //   115: invokevirtual 776	com/tencent/open/agent/CardContainer:a	(Ljava/lang/String;Ljava/lang/String;Landroid/graphics/Bitmap;Z)V
+    //   115: invokevirtual 810	com/tencent/open/agent/CardContainer:a	(Ljava/lang/String;Ljava/lang/String;Landroid/graphics/Bitmap;Z)V
     //   118: aload 5
     //   120: ifnull +33 -> 153
-    //   123: invokestatic 782	android/os/Message:obtain	()Landroid/os/Message;
+    //   123: invokestatic 816	android/os/Message:obtain	()Landroid/os/Message;
     //   126: astore 4
     //   128: aload 4
     //   130: sipush 1000
-    //   133: putfield 785	android/os/Message:what	I
+    //   133: putfield 819	android/os/Message:what	I
     //   136: aload 4
     //   138: aload 5
-    //   140: putfield 789	android/os/Message:obj	Ljava/lang/Object;
+    //   140: putfield 823	android/os/Message:obj	Ljava/lang/Object;
     //   143: aload_0
     //   144: getfield 160	com/tencent/open/agent/QuickLoginAuthorityActivity:jdField_a_of_type_AndroidOsHandler	Landroid/os/Handler;
     //   147: aload 4
-    //   149: invokevirtual 795	android/os/Handler:sendMessage	(Landroid/os/Message;)Z
+    //   149: invokevirtual 829	android/os/Handler:sendMessage	(Landroid/os/Message;)Z
     //   152: pop
     //   153: aload_0
-    //   154: getfield 544	com/tencent/open/agent/QuickLoginAuthorityActivity:jdField_a_of_type_Boolean	Z
+    //   154: getfield 570	com/tencent/open/agent/QuickLoginAuthorityActivity:jdField_a_of_type_Boolean	Z
     //   157: ifeq +35 -> 192
     //   160: aload_0
-    //   161: invokevirtual 799	com/tencent/open/agent/QuickLoginAuthorityActivity:getResources	()Landroid/content/res/Resources;
-    //   164: ldc_w 800
-    //   167: invokevirtual 804	android/content/res/Resources:getString	(I)Ljava/lang/String;
+    //   161: invokevirtual 833	com/tencent/open/agent/QuickLoginAuthorityActivity:getResources	()Landroid/content/res/Resources;
+    //   164: ldc_w 834
+    //   167: invokevirtual 838	android/content/res/Resources:getString	(I)Ljava/lang/String;
     //   170: astore 4
     //   172: aload_0
-    //   173: getfield 280	com/tencent/open/agent/QuickLoginAuthorityActivity:jdField_a_of_type_ComTencentOpenAgentCardContainer	Lcom/tencent/open/agent/CardContainer;
+    //   173: getfield 318	com/tencent/open/agent/QuickLoginAuthorityActivity:jdField_a_of_type_ComTencentOpenAgentCardContainer	Lcom/tencent/open/agent/CardContainer;
     //   176: aload 4
     //   178: aconst_null
-    //   179: invokevirtual 806	com/tencent/open/agent/CardContainer:a	(Ljava/lang/String;Landroid/graphics/Bitmap;)V
+    //   179: invokevirtual 840	com/tencent/open/agent/CardContainer:a	(Ljava/lang/String;Landroid/graphics/Bitmap;)V
     //   182: aload_0
-    //   183: getfield 280	com/tencent/open/agent/QuickLoginAuthorityActivity:jdField_a_of_type_ComTencentOpenAgentCardContainer	Lcom/tencent/open/agent/CardContainer;
-    //   186: ldc_w 808
-    //   189: invokevirtual 811	com/tencent/open/agent/CardContainer:setAppType	(Ljava/lang/String;)V
+    //   183: getfield 318	com/tencent/open/agent/QuickLoginAuthorityActivity:jdField_a_of_type_ComTencentOpenAgentCardContainer	Lcom/tencent/open/agent/CardContainer;
+    //   186: ldc_w 842
+    //   189: invokevirtual 845	com/tencent/open/agent/CardContainer:setAppType	(Ljava/lang/String;)V
     //   192: aload_0
     //   193: getfield 183	com/tencent/open/agent/QuickLoginAuthorityActivity:jdField_a_of_type_AndroidOsBundle	Landroid/os/Bundle;
-    //   196: ldc_w 646
+    //   196: ldc_w 684
     //   199: invokevirtual 191	android/os/Bundle:getString	(Ljava/lang/String;)Ljava/lang/String;
     //   202: astore 6
-    //   204: ldc_w 394
+    //   204: ldc_w 418
     //   207: astore 7
     //   209: aload 7
     //   211: astore 5
     //   213: aload_0
-    //   214: getfield 544	com/tencent/open/agent/QuickLoginAuthorityActivity:jdField_a_of_type_Boolean	Z
+    //   214: getfield 570	com/tencent/open/agent/QuickLoginAuthorityActivity:jdField_a_of_type_Boolean	Z
     //   217: ifeq +452 -> 669
     //   220: aload_0
     //   221: aload_0
     //   222: getfield 183	com/tencent/open/agent/QuickLoginAuthorityActivity:jdField_a_of_type_AndroidOsBundle	Landroid/os/Bundle;
-    //   225: ldc_w 631
+    //   225: ldc_w 669
     //   228: invokevirtual 191	android/os/Bundle:getString	(Ljava/lang/String;)Ljava/lang/String;
-    //   231: invokespecial 813	com/tencent/open/agent/QuickLoginAuthorityActivity:a	(Ljava/lang/String;)Landroid/os/Bundle;
+    //   231: invokespecial 847	com/tencent/open/agent/QuickLoginAuthorityActivity:a	(Ljava/lang/String;)Landroid/os/Bundle;
     //   234: astore 8
     //   236: aload_0
     //   237: getfield 183	com/tencent/open/agent/QuickLoginAuthorityActivity:jdField_a_of_type_AndroidOsBundle	Landroid/os/Bundle;
-    //   240: ldc_w 815
+    //   240: ldc_w 849
     //   243: invokevirtual 191	android/os/Bundle:getString	(Ljava/lang/String;)Ljava/lang/String;
     //   246: astore 5
     //   248: aload 5
@@ -603,7 +622,7 @@ public class QuickLoginAuthorityActivity
     //   254: invokestatic 249	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   257: ifeq +13 -> 270
     //   260: aload 8
-    //   262: ldc_w 817
+    //   262: ldc_w 851
     //   265: invokevirtual 191	android/os/Bundle:getString	(Ljava/lang/String;)Ljava/lang/String;
     //   268: astore 4
     //   270: aload 4
@@ -622,15 +641,15 @@ public class QuickLoginAuthorityActivity
     //   300: astore 5
     //   302: aload_0
     //   303: iconst_1
-    //   304: putfield 269	com/tencent/open/agent/QuickLoginAuthorityActivity:jdField_d_of_type_Boolean	Z
+    //   304: putfield 307	com/tencent/open/agent/QuickLoginAuthorityActivity:jdField_d_of_type_Boolean	Z
     //   307: aload_0
-    //   308: getfield 280	com/tencent/open/agent/QuickLoginAuthorityActivity:jdField_a_of_type_ComTencentOpenAgentCardContainer	Lcom/tencent/open/agent/CardContainer;
+    //   308: getfield 318	com/tencent/open/agent/QuickLoginAuthorityActivity:jdField_a_of_type_ComTencentOpenAgentCardContainer	Lcom/tencent/open/agent/CardContainer;
     //   311: aload 5
     //   313: aconst_null
-    //   314: invokevirtual 806	com/tencent/open/agent/CardContainer:a	(Ljava/lang/String;Landroid/graphics/Bitmap;)V
+    //   314: invokevirtual 840	com/tencent/open/agent/CardContainer:a	(Ljava/lang/String;Landroid/graphics/Bitmap;)V
     //   317: aload_0
     //   318: getfield 183	com/tencent/open/agent/QuickLoginAuthorityActivity:jdField_a_of_type_AndroidOsBundle	Landroid/os/Bundle;
-    //   321: ldc_w 819
+    //   321: ldc_w 853
     //   324: invokevirtual 191	android/os/Bundle:getString	(Ljava/lang/String;)Ljava/lang/String;
     //   327: astore 4
     //   329: aload 4
@@ -639,7 +658,7 @@ public class QuickLoginAuthorityActivity
     //   335: invokestatic 249	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   338: ifeq +13 -> 351
     //   341: aload 8
-    //   343: ldc_w 821
+    //   343: ldc_w 855
     //   346: invokevirtual 191	android/os/Bundle:getString	(Ljava/lang/String;)Ljava/lang/String;
     //   349: astore 5
     //   351: aload 5
@@ -675,27 +694,27 @@ public class QuickLoginAuthorityActivity
     //   417: aload 7
     //   419: astore 5
     //   421: aload 8
-    //   423: ldc_w 823
+    //   423: ldc_w 857
     //   426: invokevirtual 191	android/os/Bundle:getString	(Ljava/lang/String;)Ljava/lang/String;
     //   429: ifnull +240 -> 669
     //   432: aload 8
-    //   434: ldc_w 823
-    //   437: ldc_w 394
-    //   440: invokevirtual 826	android/os/Bundle:getString	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    //   434: ldc_w 857
+    //   437: ldc_w 418
+    //   440: invokevirtual 860	android/os/Bundle:getString	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
     //   443: astore 7
     //   445: aload 7
-    //   447: ldc_w 828
-    //   450: invokevirtual 408	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   447: ldc_w 862
+    //   450: invokevirtual 432	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   453: ifeq +197 -> 650
     //   456: aload_0
     //   457: iconst_1
-    //   458: putfield 269	com/tencent/open/agent/QuickLoginAuthorityActivity:jdField_d_of_type_Boolean	Z
+    //   458: putfield 307	com/tencent/open/agent/QuickLoginAuthorityActivity:jdField_d_of_type_Boolean	Z
     //   461: aload_0
-    //   462: getfield 280	com/tencent/open/agent/QuickLoginAuthorityActivity:jdField_a_of_type_ComTencentOpenAgentCardContainer	Lcom/tencent/open/agent/CardContainer;
-    //   465: ldc_w 830
+    //   462: getfield 318	com/tencent/open/agent/QuickLoginAuthorityActivity:jdField_a_of_type_ComTencentOpenAgentCardContainer	Lcom/tencent/open/agent/CardContainer;
+    //   465: ldc_w 864
     //   468: aconst_null
-    //   469: invokevirtual 806	com/tencent/open/agent/CardContainer:a	(Ljava/lang/String;Landroid/graphics/Bitmap;)V
-    //   472: ldc_w 832
+    //   469: invokevirtual 840	com/tencent/open/agent/CardContainer:a	(Ljava/lang/String;Landroid/graphics/Bitmap;)V
+    //   472: ldc_w 866
     //   475: astore 5
     //   477: aload 7
     //   479: astore 4
@@ -703,89 +722,89 @@ public class QuickLoginAuthorityActivity
     //   483: invokestatic 249	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   486: ifeq +227 -> 713
     //   489: aload 4
-    //   491: ldc_w 834
-    //   494: invokevirtual 408	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   491: ldc_w 868
+    //   494: invokevirtual 432	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   497: ifeq +115 -> 612
     //   500: aload_0
     //   501: getfield 183	com/tencent/open/agent/QuickLoginAuthorityActivity:jdField_a_of_type_AndroidOsBundle	Landroid/os/Bundle;
-    //   504: ldc_w 631
+    //   504: ldc_w 669
     //   507: invokevirtual 191	android/os/Bundle:getString	(Ljava/lang/String;)Ljava/lang/String;
-    //   510: invokestatic 839	java/net/URLDecoder:decode	(Ljava/lang/String;)Ljava/lang/String;
+    //   510: invokestatic 873	java/net/URLDecoder:decode	(Ljava/lang/String;)Ljava/lang/String;
     //   513: astore_1
     //   514: aload_0
     //   515: aload_1
-    //   516: invokespecial 813	com/tencent/open/agent/QuickLoginAuthorityActivity:a	(Ljava/lang/String;)Landroid/os/Bundle;
-    //   519: ldc_w 840
-    //   522: ldc_w 842
-    //   525: invokevirtual 826	android/os/Bundle:getString	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
-    //   528: invokestatic 848	java/lang/Long:valueOf	(Ljava/lang/String;)Ljava/lang/Long;
-    //   531: invokevirtual 852	java/lang/Long:longValue	()J
+    //   516: invokespecial 847	com/tencent/open/agent/QuickLoginAuthorityActivity:a	(Ljava/lang/String;)Landroid/os/Bundle;
+    //   519: ldc_w 874
+    //   522: ldc_w 876
+    //   525: invokevirtual 860	android/os/Bundle:getString	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    //   528: invokestatic 880	java/lang/Long:valueOf	(Ljava/lang/String;)Ljava/lang/Long;
+    //   531: invokevirtual 884	java/lang/Long:longValue	()J
     //   534: lstore_2
-    //   535: invokestatic 563	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   535: invokestatic 604	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   538: ifeq +39 -> 577
     //   541: ldc 173
     //   543: iconst_2
-    //   544: new 373	java/lang/StringBuilder
+    //   544: new 280	java/lang/StringBuilder
     //   547: dup
-    //   548: invokespecial 374	java/lang/StringBuilder:<init>	()V
-    //   551: ldc_w 854
-    //   554: invokevirtual 380	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   548: invokespecial 281	java/lang/StringBuilder:<init>	()V
+    //   551: ldc_w 886
+    //   554: invokevirtual 287	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   557: aload_1
-    //   558: invokevirtual 380	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   561: ldc_w 856
-    //   564: invokevirtual 380	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   558: invokevirtual 287	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   561: ldc_w 888
+    //   564: invokevirtual 287	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   567: lload_2
-    //   568: invokevirtual 423	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   571: invokevirtual 383	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   574: invokestatic 569	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   568: invokevirtual 449	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   571: invokevirtual 298	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   574: invokestatic 300	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   577: aload_0
     //   578: lload_2
-    //   579: ldc_w 808
-    //   582: invokevirtual 858	com/tencent/open/agent/QuickLoginAuthorityActivity:a	(JLjava/lang/String;)V
-    //   585: invokestatic 782	android/os/Message:obtain	()Landroid/os/Message;
+    //   579: ldc_w 842
+    //   582: invokevirtual 890	com/tencent/open/agent/QuickLoginAuthorityActivity:a	(JLjava/lang/String;)V
+    //   585: invokestatic 816	android/os/Message:obtain	()Landroid/os/Message;
     //   588: astore_1
     //   589: aload_1
     //   590: sipush 1004
-    //   593: putfield 785	android/os/Message:what	I
+    //   593: putfield 819	android/os/Message:what	I
     //   596: aload_1
-    //   597: ldc_w 808
-    //   600: putfield 789	android/os/Message:obj	Ljava/lang/Object;
+    //   597: ldc_w 842
+    //   600: putfield 823	android/os/Message:obj	Ljava/lang/Object;
     //   603: aload_0
     //   604: getfield 170	com/tencent/open/agent/QuickLoginAuthorityActivity:jdField_b_of_type_AndroidOsHandler	Landroid/os/Handler;
     //   607: aload_1
-    //   608: invokevirtual 795	android/os/Handler:sendMessage	(Landroid/os/Message;)Z
+    //   608: invokevirtual 829	android/os/Handler:sendMessage	(Landroid/os/Message;)Z
     //   611: pop
     //   612: ldc 173
     //   614: iconst_1
     //   615: iconst_4
-    //   616: anewarray 666	java/lang/Object
+    //   616: anewarray 289	java/lang/Object
     //   619: dup
     //   620: iconst_0
-    //   621: ldc_w 860
+    //   621: ldc_w 892
     //   624: aastore
     //   625: dup
     //   626: iconst_1
     //   627: aload_0
-    //   628: getfield 544	com/tencent/open/agent/QuickLoginAuthorityActivity:jdField_a_of_type_Boolean	Z
-    //   631: invokestatic 865	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
+    //   628: getfield 570	com/tencent/open/agent/QuickLoginAuthorityActivity:jdField_a_of_type_Boolean	Z
+    //   631: invokestatic 897	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
     //   634: aastore
     //   635: dup
     //   636: iconst_2
-    //   637: ldc_w 867
+    //   637: ldc_w 899
     //   640: aastore
     //   641: dup
     //   642: iconst_3
     //   643: aload 4
     //   645: aastore
-    //   646: invokestatic 673	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;I[Ljava/lang/Object;)V
+    //   646: invokestatic 707	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;I[Ljava/lang/Object;)V
     //   649: return
     //   650: aload 4
     //   652: astore 6
     //   654: aload 7
     //   656: astore 5
     //   658: aload 7
-    //   660: ldc_w 834
-    //   663: invokevirtual 408	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   660: ldc_w 868
+    //   663: invokevirtual 432	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   666: ifeq +3 -> 669
     //   669: aload 5
     //   671: astore 4
@@ -795,109 +814,109 @@ public class QuickLoginAuthorityActivity
     //   680: astore_1
     //   681: ldc 173
     //   683: iconst_1
-    //   684: new 373	java/lang/StringBuilder
+    //   684: new 280	java/lang/StringBuilder
     //   687: dup
-    //   688: invokespecial 374	java/lang/StringBuilder:<init>	()V
-    //   691: ldc_w 869
-    //   694: invokevirtual 380	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   688: invokespecial 281	java/lang/StringBuilder:<init>	()V
+    //   691: ldc_w 901
+    //   694: invokevirtual 287	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   697: aload_1
-    //   698: invokevirtual 872	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   701: invokevirtual 380	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   704: invokevirtual 383	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   707: invokestatic 754	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   698: invokevirtual 904	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   701: invokevirtual 287	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   704: invokevirtual 298	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   707: invokestatic 788	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   710: goto -98 -> 612
     //   713: aload 5
     //   715: aload_1
-    //   716: invokestatic 876	java/lang/Long:parseLong	(Ljava/lang/String;)J
-    //   719: invokestatic 879	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   722: invokevirtual 852	java/lang/Long:longValue	()J
-    //   725: invokestatic 885	oicq/wlogin_sdk/request/WtloginHelper:GetFastLoginUrl	(Ljava/lang/String;J)Loicq/wlogin_sdk/request/WFastLoginInfo;
+    //   716: invokestatic 908	java/lang/Long:parseLong	(Ljava/lang/String;)J
+    //   719: invokestatic 911	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   722: invokevirtual 884	java/lang/Long:longValue	()J
+    //   725: invokestatic 917	oicq/wlogin_sdk/request/WtloginHelper:GetFastLoginUrl	(Ljava/lang/String;J)Loicq/wlogin_sdk/request/WFastLoginInfo;
     //   728: astore 4
     //   730: aload 4
     //   732: ifnonnull +30 -> 762
     //   735: ldc 173
     //   737: iconst_1
-    //   738: ldc_w 887
-    //   741: invokestatic 754	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   738: ldc_w 919
+    //   741: invokestatic 788	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   744: return
     //   745: astore_1
     //   746: ldc 173
     //   748: iconst_1
-    //   749: ldc_w 889
+    //   749: ldc_w 921
     //   752: aload_1
-    //   753: invokestatic 415	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   753: invokestatic 439	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   756: aconst_null
     //   757: astore 4
     //   759: goto -29 -> 730
     //   762: ldc 173
     //   764: iconst_1
     //   765: iconst_5
-    //   766: anewarray 666	java/lang/Object
+    //   766: anewarray 289	java/lang/Object
     //   769: dup
     //   770: iconst_0
-    //   771: ldc_w 891
+    //   771: ldc_w 923
     //   774: aastore
     //   775: dup
     //   776: iconst_1
     //   777: aload_0
-    //   778: getfield 544	com/tencent/open/agent/QuickLoginAuthorityActivity:jdField_a_of_type_Boolean	Z
-    //   781: invokestatic 865	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
+    //   778: getfield 570	com/tencent/open/agent/QuickLoginAuthorityActivity:jdField_a_of_type_Boolean	Z
+    //   781: invokestatic 897	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
     //   784: aastore
     //   785: dup
     //   786: iconst_2
-    //   787: ldc_w 893
+    //   787: ldc_w 925
     //   790: aastore
     //   791: dup
     //   792: iconst_3
-    //   793: new 373	java/lang/StringBuilder
+    //   793: new 280	java/lang/StringBuilder
     //   796: dup
-    //   797: invokespecial 374	java/lang/StringBuilder:<init>	()V
+    //   797: invokespecial 281	java/lang/StringBuilder:<init>	()V
     //   800: aload 4
-    //   802: getfield 898	oicq/wlogin_sdk/request/WFastLoginInfo:iconUrl	Ljava/lang/String;
-    //   805: invokevirtual 380	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   808: ldc_w 900
-    //   811: invokevirtual 380	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   814: invokevirtual 383	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   802: getfield 930	oicq/wlogin_sdk/request/WFastLoginInfo:iconUrl	Ljava/lang/String;
+    //   805: invokevirtual 287	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   808: ldc_w 932
+    //   811: invokevirtual 287	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   814: invokevirtual 298	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   817: aastore
     //   818: dup
     //   819: iconst_4
     //   820: aload 4
-    //   822: getfield 903	oicq/wlogin_sdk/request/WFastLoginInfo:adUrl	Ljava/lang/String;
+    //   822: getfield 935	oicq/wlogin_sdk/request/WFastLoginInfo:adUrl	Ljava/lang/String;
     //   825: aastore
-    //   826: invokestatic 673	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;I[Ljava/lang/Object;)V
+    //   826: invokestatic 707	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;I[Ljava/lang/Object;)V
     //   829: aload 4
-    //   831: getfield 898	oicq/wlogin_sdk/request/WFastLoginInfo:iconUrl	Ljava/lang/String;
+    //   831: getfield 930	oicq/wlogin_sdk/request/WFastLoginInfo:iconUrl	Ljava/lang/String;
     //   834: invokestatic 249	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   837: ifne +37 -> 874
     //   840: aload_0
     //   841: iconst_1
-    //   842: putfield 276	com/tencent/open/agent/QuickLoginAuthorityActivity:jdField_c_of_type_Boolean	Z
-    //   845: invokestatic 782	android/os/Message:obtain	()Landroid/os/Message;
+    //   842: putfield 314	com/tencent/open/agent/QuickLoginAuthorityActivity:jdField_c_of_type_Boolean	Z
+    //   845: invokestatic 816	android/os/Message:obtain	()Landroid/os/Message;
     //   848: astore_1
     //   849: aload_1
     //   850: sipush 1001
-    //   853: putfield 785	android/os/Message:what	I
+    //   853: putfield 819	android/os/Message:what	I
     //   856: aload_1
     //   857: aload 4
-    //   859: getfield 898	oicq/wlogin_sdk/request/WFastLoginInfo:iconUrl	Ljava/lang/String;
-    //   862: putfield 789	android/os/Message:obj	Ljava/lang/Object;
+    //   859: getfield 930	oicq/wlogin_sdk/request/WFastLoginInfo:iconUrl	Ljava/lang/String;
+    //   862: putfield 823	android/os/Message:obj	Ljava/lang/Object;
     //   865: aload_0
     //   866: getfield 160	com/tencent/open/agent/QuickLoginAuthorityActivity:jdField_a_of_type_AndroidOsHandler	Landroid/os/Handler;
     //   869: aload_1
-    //   870: invokevirtual 795	android/os/Handler:sendMessage	(Landroid/os/Message;)Z
+    //   870: invokevirtual 829	android/os/Handler:sendMessage	(Landroid/os/Message;)Z
     //   873: pop
     //   874: aload_0
-    //   875: getfield 544	com/tencent/open/agent/QuickLoginAuthorityActivity:jdField_a_of_type_Boolean	Z
+    //   875: getfield 570	com/tencent/open/agent/QuickLoginAuthorityActivity:jdField_a_of_type_Boolean	Z
     //   878: ifne +70 -> 948
-    //   881: ldc_w 394
+    //   881: ldc_w 418
     //   884: astore 7
     //   886: aload_0
-    //   887: invokespecial 904	com/tencent/mobileqq/app/BaseActivity:getPackageManager	()Landroid/content/pm/PackageManager;
+    //   887: invokespecial 936	com/tencent/mobileqq/app/BaseActivity:getPackageManager	()Landroid/content/pm/PackageManager;
     //   890: astore_1
     //   891: aload_1
     //   892: aload 5
     //   894: iconst_0
-    //   895: invokevirtual 908	android/content/pm/PackageManager:getApplicationInfo	(Ljava/lang/String;I)Landroid/content/pm/ApplicationInfo;
+    //   895: invokevirtual 940	android/content/pm/PackageManager:getApplicationInfo	(Ljava/lang/String;I)Landroid/content/pm/ApplicationInfo;
     //   898: astore 6
     //   900: aload_1
     //   901: astore 5
@@ -909,7 +928,7 @@ public class QuickLoginAuthorityActivity
     //   911: ifnull +14 -> 925
     //   914: aload 5
     //   916: aload_1
-    //   917: invokevirtual 912	android/content/pm/PackageManager:getApplicationLabel	(Landroid/content/pm/ApplicationInfo;)Ljava/lang/CharSequence;
+    //   917: invokevirtual 944	android/content/pm/PackageManager:getApplicationLabel	(Landroid/content/pm/ApplicationInfo;)Ljava/lang/CharSequence;
     //   920: checkcast 40	java/lang/String
     //   923: astore 6
     //   925: aload 6
@@ -917,32 +936,32 @@ public class QuickLoginAuthorityActivity
     //   930: ifne +18 -> 948
     //   933: aload_0
     //   934: iconst_1
-    //   935: putfield 269	com/tencent/open/agent/QuickLoginAuthorityActivity:jdField_d_of_type_Boolean	Z
+    //   935: putfield 307	com/tencent/open/agent/QuickLoginAuthorityActivity:jdField_d_of_type_Boolean	Z
     //   938: aload_0
-    //   939: getfield 280	com/tencent/open/agent/QuickLoginAuthorityActivity:jdField_a_of_type_ComTencentOpenAgentCardContainer	Lcom/tencent/open/agent/CardContainer;
+    //   939: getfield 318	com/tencent/open/agent/QuickLoginAuthorityActivity:jdField_a_of_type_ComTencentOpenAgentCardContainer	Lcom/tencent/open/agent/CardContainer;
     //   942: aload 6
     //   944: aconst_null
-    //   945: invokevirtual 806	com/tencent/open/agent/CardContainer:a	(Ljava/lang/String;Landroid/graphics/Bitmap;)V
+    //   945: invokevirtual 840	com/tencent/open/agent/CardContainer:a	(Ljava/lang/String;Landroid/graphics/Bitmap;)V
     //   948: aload 4
-    //   950: getfield 903	oicq/wlogin_sdk/request/WFastLoginInfo:adUrl	Ljava/lang/String;
+    //   950: getfield 935	oicq/wlogin_sdk/request/WFastLoginInfo:adUrl	Ljava/lang/String;
     //   953: invokestatic 249	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   956: ifne -930 -> 26
-    //   959: new 914	java/lang/StringBuffer
+    //   959: new 946	java/lang/StringBuffer
     //   962: dup
     //   963: aload 4
-    //   965: getfield 903	oicq/wlogin_sdk/request/WFastLoginInfo:adUrl	Ljava/lang/String;
-    //   968: invokespecial 915	java/lang/StringBuffer:<init>	(Ljava/lang/String;)V
+    //   965: getfield 935	oicq/wlogin_sdk/request/WFastLoginInfo:adUrl	Ljava/lang/String;
+    //   968: invokespecial 947	java/lang/StringBuffer:<init>	(Ljava/lang/String;)V
     //   971: astore_1
     //   972: aload_0
-    //   973: getfield 280	com/tencent/open/agent/QuickLoginAuthorityActivity:jdField_a_of_type_ComTencentOpenAgentCardContainer	Lcom/tencent/open/agent/CardContainer;
+    //   973: getfield 318	com/tencent/open/agent/QuickLoginAuthorityActivity:jdField_a_of_type_ComTencentOpenAgentCardContainer	Lcom/tencent/open/agent/CardContainer;
     //   976: aconst_null
     //   977: aload_1
     //   978: iconst_0
     //   979: iconst_4
-    //   980: ldc_w 917
-    //   983: invokevirtual 921	java/lang/StringBuffer:replace	(IILjava/lang/String;)Ljava/lang/StringBuffer;
-    //   986: invokevirtual 922	java/lang/StringBuffer:toString	()Ljava/lang/String;
-    //   989: invokevirtual 926	com/tencent/open/agent/CardContainer:setAdImageByURL	(Lcom/tencent/mobileqq/widget/AnyScaleTypeImageView;Ljava/lang/String;)V
+    //   980: ldc_w 949
+    //   983: invokevirtual 953	java/lang/StringBuffer:replace	(IILjava/lang/String;)Ljava/lang/StringBuffer;
+    //   986: invokevirtual 954	java/lang/StringBuffer:toString	()Ljava/lang/String;
+    //   989: invokevirtual 958	com/tencent/open/agent/CardContainer:setAdImageByURL	(Lcom/tencent/mobileqq/widget/AnyScaleTypeImageView;Ljava/lang/String;)V
     //   992: return
     //   993: astore_1
     //   994: aconst_null
@@ -1045,7 +1064,7 @@ public class QuickLoginAuthorityActivity
   
   protected void d()
   {
-    if (this.jdField_a_of_type_ComTencentQqconnectWtloginOpenSDKAppInterface == null)
+    if (a() == null)
     {
       c();
       return;
@@ -1062,7 +1081,7 @@ public class QuickLoginAuthorityActivity
     {
       boolean bool;
       if (this.jdField_a_of_type_Boolean) {
-        if (!this.jdField_a_of_type_MqqManagerWtloginManager.IsNeedLoginWithPasswd(this.jdField_a_of_type_JavaLangString, 16)) {
+        if (!bipr.a(this.jdField_a_of_type_MqqManagerWtloginManager, this.jdField_a_of_type_JavaLangString)) {
           bool = true;
         }
       }
@@ -1075,10 +1094,10 @@ public class QuickLoginAuthorityActivity
         return;
         bool = false;
         continue;
-        bool = this.jdField_a_of_type_MqqManagerWtloginManager.IsUserHaveA1(this.jdField_a_of_type_JavaLangString, 16L);
+        bool = bipr.b(this.jdField_a_of_type_MqqManagerWtloginManager, this.jdField_a_of_type_JavaLangString);
       }
       c();
-      QQToast.a(BaseApplicationImpl.getContext(), 2131695070, 0).b(getResources().getDimensionPixelSize(2131298914));
+      QQToast.a(BaseApplicationImpl.getContext(), 2131694146, 0).b(getResources().getDimensionPixelSize(2131298998));
       return;
     }
     c();
@@ -1086,10 +1105,10 @@ public class QuickLoginAuthorityActivity
   
   protected void d(String paramString)
   {
-    bfnz.a(paramString);
+    bivh.a(paramString);
     WloginSimpleInfo localWloginSimpleInfo = new WloginSimpleInfo();
     this.jdField_a_of_type_MqqManagerWtloginManager.GetBasicUserInfo(paramString, localWloginSimpleInfo);
-    paramString = "" + this.jdField_a_of_type_ComTencentQqconnectWtloginOpenSDKAppInterface.a(this.jdField_a_of_type_MqqManagerWtloginManager, paramString);
+    paramString = "" + a().a(this.jdField_a_of_type_MqqManagerWtloginManager, paramString);
     this.jdField_a_of_type_JavaLangString = paramString;
     boolean bool;
     if (this.jdField_a_of_type_JavaUtilList.contains(paramString))
@@ -1119,6 +1138,14 @@ public class QuickLoginAuthorityActivity
       bool = false;
       break;
     }
+  }
+  
+  @Override
+  public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
+  {
+    boolean bool = super.dispatchTouchEvent(paramMotionEvent);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool);
+    return bool;
   }
   
   public boolean doOnCreate(Bundle paramBundle)
@@ -1155,7 +1182,7 @@ public class QuickLoginAuthorityActivity
     if (this.jdField_b_of_type_Boolean) {}
     try
     {
-      bfhz.a().a(this.jdField_a_of_type_JavaLangString, "", "", "1", "9", "0", true);
+      bipi.a().a(this.jdField_a_of_type_JavaLangString, "", "", "1", "9", "0", true);
     }
     catch (Exception localException1)
     {
@@ -1163,8 +1190,8 @@ public class QuickLoginAuthorityActivity
       {
         for (;;)
         {
-          if ((!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentQqconnectWtloginOpenSDKAppInterface.getAccount())) && (!this.jdField_a_of_type_JavaLangString.equals(this.jdField_a_of_type_ComTencentQqconnectWtloginOpenSDKAppInterface.getAccount()))) {
-            bfhz.a().a(this.jdField_a_of_type_JavaLangString, "", "", "1", "10", "0", true);
+          if ((!TextUtils.isEmpty(a().getAccount())) && (!this.jdField_a_of_type_JavaLangString.equals(a().getAccount()))) {
+            bipi.a().a(this.jdField_a_of_type_JavaLangString, "", "", "1", "10", "0", true);
           }
           new QuickLoginAuthorityActivity.9(this).start();
           QLog.i("Q.quicklogin.QuickLoginAuthorityActivity", 1, "setPtloginSdkResult:");
@@ -1185,10 +1212,10 @@ public class QuickLoginAuthorityActivity
   
   protected void e(String paramString)
   {
-    bfnz.a(paramString);
+    bivh.a(paramString);
     WloginSimpleInfo localWloginSimpleInfo = new WloginSimpleInfo();
     this.jdField_a_of_type_MqqManagerWtloginManager.GetBasicUserInfo(paramString, localWloginSimpleInfo);
-    paramString = "" + this.jdField_a_of_type_ComTencentQqconnectWtloginOpenSDKAppInterface.a(this.jdField_a_of_type_MqqManagerWtloginManager, paramString);
+    paramString = "" + a().a(this.jdField_a_of_type_MqqManagerWtloginManager, paramString);
     this.jdField_a_of_type_JavaLangString = paramString;
     boolean bool;
     if (this.jdField_a_of_type_JavaUtilList.contains(paramString))
@@ -1222,10 +1249,10 @@ public class QuickLoginAuthorityActivity
   
   public void f()
   {
-    if ((!super.isFinishing()) && (this.jdField_a_of_type_Bety != null) && (this.jdField_a_of_type_Bety.isShowing())) {}
+    if ((!super.isFinishing()) && (this.jdField_a_of_type_Biau != null) && (this.jdField_a_of_type_Biau.isShowing())) {}
     try
     {
-      this.jdField_a_of_type_Bety.dismiss();
+      this.jdField_a_of_type_Biau.dismiss();
       return;
     }
     catch (Exception localException)
@@ -1236,45 +1263,64 @@ public class QuickLoginAuthorityActivity
   
   protected void g()
   {
-    this.jdField_a_of_type_Bety.a(super.getString(2131695062));
-    if (!this.jdField_a_of_type_Bety.isShowing()) {
-      this.jdField_a_of_type_Bety.show();
+    this.jdField_a_of_type_Biau.a(super.getString(2131694140));
+    if (!this.jdField_a_of_type_Biau.isShowing()) {
+      this.jdField_a_of_type_Biau.show();
     }
-    QLog.i("Q.quicklogin.QuickLoginAuthorityActivity", 2, "-->doAuthorize()");
+    QLog.i("Q.quicklogin.QuickLoginAuthorityActivity", 1, "-->doAuthorize()");
     if (this.jdField_a_of_type_Boolean)
     {
+      localObject1 = new Bundle();
+      localObject2 = (TicketManager)a().getManager(2);
+      if ((localObject2 != null) && (TextUtils.isEmpty(((TicketManager)localObject2).getStweb(this.jdField_a_of_type_JavaLangString))))
+      {
+        ((Bundle)localObject1).putByteArray("connect_data", bipr.a(Long.toString(this.jdField_a_of_type_Long)));
+        ((Bundle)localObject1).putLong("dwSrcAppid", 1600001540L);
+        ((Bundle)localObject1).putLong("dwDstAppid", 1600001540L);
+      }
       if ((this.jdField_a_of_type_AndroidOsBundle.containsKey("qrcode")) && (this.jdField_a_of_type_AndroidOsBundle.containsKey("schemacallback"))) {
-        if (this.jdField_a_of_type_JavaLangString.equals(this.jdField_a_of_type_ComTencentQqconnectWtloginOpenSDKAppInterface.getAccount())) {
+        if (this.jdField_a_of_type_JavaLangString.equals(a().getAccount()))
+        {
+          QLog.d("Q.quicklogin.QuickLoginAuthorityActivity", 1, "-->doAuthorize verifyQRCode");
           a();
         }
       }
       while (!this.jdField_a_of_type_AndroidOsBundle.containsKey("p"))
       {
         return;
-        this.jdField_a_of_type_ComTencentQqconnectWtloginOpenSDKAppInterface.ssoGetTicketNoPasswd(this.jdField_a_of_type_JavaLangString, 32, this.jdField_a_of_type_MqqObserverSSOAccountObserver);
+        aukw.a("qrcode_ssoGetTicketNoPasswd", 0L);
+        a().ssoGetTicketNoPasswd(this.jdField_a_of_type_JavaLangString, 32, this.jdField_a_of_type_MqqObserverSSOAccountObserver, (Bundle)localObject1);
+        QLog.d("Q.quicklogin.QuickLoginAuthorityActivity", 1, "-->doAuthorize URL_PARAM_QRCODE");
         return;
       }
-      this.jdField_a_of_type_ComTencentQqconnectWtloginOpenSDKAppInterface.ssoGetTicketNoPasswd(this.jdField_a_of_type_JavaLangString, 32, this.jdField_a_of_type_MqqObserverSSOAccountObserver);
+      QLog.d("Q.quicklogin.QuickLoginAuthorityActivity", 1, "-->doAuthorize URL_PARAM_PATH");
+      a().ssoGetTicketNoPasswd(this.jdField_a_of_type_JavaLangString, 32, this.jdField_a_of_type_MqqObserverSSOAccountObserver, (Bundle)localObject1);
       return;
     }
     long l1 = this.jdField_a_of_type_AndroidOsBundle.getLong("dstSsoVer", 0L);
     long l2 = this.jdField_a_of_type_AndroidOsBundle.getLong("subDstAppid", 0L);
     long l3 = this.jdField_a_of_type_AndroidOsBundle.getLong("dstAppid", 0L);
-    byte[] arrayOfByte1 = this.jdField_a_of_type_AndroidOsBundle.getByteArray("dstAppVer");
-    byte[] arrayOfByte2 = this.jdField_a_of_type_MqqManagerWtloginManager.getPkgSigFromApkName(this, this.jdField_d_of_type_JavaLangString);
+    Object localObject1 = this.jdField_a_of_type_AndroidOsBundle.getByteArray("dstAppVer");
+    Object localObject2 = this.jdField_a_of_type_MqqManagerWtloginManager.getPkgSigFromApkName(this, this.jdField_d_of_type_JavaLangString);
     if (QLog.isColorLevel())
     {
       QLog.d("Q.quicklogin.QuickLoginAuthorityActivity", 2, "mSrcPackageName: " + this.jdField_d_of_type_JavaLangString);
-      String str = bdhe.a(arrayOfByte2);
-      QLog.d("Q.quicklogin.QuickLoginAuthorityActivity", 2, "dstAppSign: " + str);
+      localObject3 = bgmj.a((byte[])localObject2);
+      QLog.d("Q.quicklogin.QuickLoginAuthorityActivity", 2, "dstAppSign: " + (String)localObject3);
     }
-    this.jdField_a_of_type_ComTencentQqconnectWtloginOpenSDKAppInterface.ssoGetA1WithA1(this.jdField_a_of_type_JavaLangString, this.jdField_d_of_type_JavaLangString.getBytes(), l1, l3, l2, arrayOfByte1, arrayOfByte2, this.jdField_a_of_type_MqqObserverSSOAccountObserver);
+    Object localObject3 = new Bundle();
+    if (!this.jdField_a_of_type_MqqManagerWtloginManager.IsUserHaveA1(this.jdField_a_of_type_JavaLangString, 16L))
+    {
+      ((Bundle)localObject3).putLong("dwSrcAppid", 1600001540L);
+      ((Bundle)localObject3).putLong("dwSubSrcAppid", 1600001540L);
+    }
+    a().ssoGetA1WithA1(this.jdField_a_of_type_JavaLangString, this.jdField_d_of_type_JavaLangString.getBytes(), l1, l3, l2, (byte[])localObject1, (byte[])localObject2, this.jdField_a_of_type_MqqObserverSSOAccountObserver, (Bundle)localObject3);
   }
   
   public void h()
   {
-    int i = getResources().getColor(2131167194);
-    ColorStateList localColorStateList = getResources().getColorStateList(2131165865);
+    int i = getResources().getColor(2131167279);
+    ColorStateList localColorStateList = getResources().getColorStateList(2131165920);
     if (this.jdField_b_of_type_AndroidWidgetTextView != null)
     {
       this.jdField_b_of_type_AndroidWidgetTextView.setTextColor(i);
@@ -1366,62 +1412,63 @@ public class QuickLoginAuthorityActivity
     QLog.d("Q.quicklogin.QuickLoginAuthorityActivity", 1, "onBackPressed mIsPtloginAction=" + this.jdField_a_of_type_Boolean);
     a(null);
     if (this.jdField_a_of_type_Boolean) {
-      bfbk.a();
+      biik.c();
     }
   }
   
   public void onClick(View paramView)
   {
     if (this.jdField_a_of_type_MqqManagerWtloginManager == null) {}
-    label267:
-    label274:
-    do
+    for (;;)
     {
-      do
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      if (paramView == this.jdField_c_of_type_AndroidWidgetTextView)
       {
-        return;
-        if (paramView != this.jdField_c_of_type_AndroidWidgetTextView) {
-          break;
-        }
         QLog.i("Q.quicklogin.QuickLoginAuthorityActivity", 1, "onClick cancel mIsPtloginAction=" + this.jdField_a_of_type_Boolean);
         a(null);
-      } while (!this.jdField_a_of_type_Boolean);
-      bfbk.a();
-      return;
-      if (paramView == this.jdField_a_of_type_AndroidWidgetButton)
+        if (this.jdField_a_of_type_Boolean) {
+          biik.c();
+        }
+      }
+      else if (paramView == this.jdField_a_of_type_AndroidWidgetButton)
       {
-        String str3 = "2";
+        String str4 = "2";
+        String str1;
         if (this.jdField_d_of_type_Boolean)
         {
-          paramView = "1";
+          str1 = "1";
+          label94:
           if (!this.jdField_c_of_type_Boolean) {
-            break label267;
+            break label281;
           }
         }
-        for (String str1 = "1";; str1 = "2")
+        label281:
+        for (String str2 = "1";; str2 = "2")
         {
-          String str2 = str3;
-          if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentQqconnectWtloginOpenSDKAppInterface.getAccount()))
+          String str3 = str4;
+          if (!TextUtils.isEmpty(a().getAccount()))
           {
-            str2 = str3;
-            if (!this.jdField_a_of_type_JavaLangString.equals(this.jdField_a_of_type_ComTencentQqconnectWtloginOpenSDKAppInterface.getAccount())) {
-              str2 = "1";
+            str3 = str4;
+            if (!this.jdField_a_of_type_JavaLangString.equals(a().getAccount())) {
+              str3 = "1";
             }
           }
-          azqs.b(null, "dc00898", "", "", "0X800A7BE", "0X800A7BE", this.jdField_a_of_type_Int, 0, str2, paramView, str1, "");
-          QLog.d("Q.quicklogin.QuickLoginAuthorityActivity", 1, new Object[] { "report-dc00898-0X800A7BE-fromType=", Integer.valueOf(this.jdField_a_of_type_Int), ",changeaccount=", str2, ", hasGetName=", paramView, ", hasGetIcon=", str1 });
-          if (bdin.g(this)) {
-            break label274;
+          bcst.b(null, "dc00898", "", "", "0X800A7BE", "0X800A7BE", this.jdField_a_of_type_Int, 0, str3, str1, str2, "");
+          QLog.d("Q.quicklogin.QuickLoginAuthorityActivity", 1, new Object[] { "report-dc00898-0X800A7BE-fromType=", Integer.valueOf(this.jdField_a_of_type_Int), ",changeaccount=", str3, ", hasGetName=", str1, ", hasGetIcon=", str2 });
+          if (bgnt.g(this)) {
+            break label289;
           }
           f();
-          this.jdField_a_of_type_ComTencentQqconnectWtloginOpenSDKAppInterface.a(this, getResources().getString(2131695065));
-          return;
-          paramView = "2";
+          a().a(this, getResources().getString(2131694142));
           break;
+          str1 = "2";
+          break label94;
         }
+        label289:
         boolean bool;
         if (this.jdField_a_of_type_Boolean) {
-          if (!this.jdField_a_of_type_MqqManagerWtloginManager.IsNeedLoginWithPasswd(this.jdField_a_of_type_JavaLangString, 16)) {
+          if (!bipr.a(this.jdField_a_of_type_MqqManagerWtloginManager, this.jdField_a_of_type_JavaLangString)) {
             bool = true;
           }
         }
@@ -1429,46 +1476,59 @@ public class QuickLoginAuthorityActivity
         {
           QLog.i("Q.quicklogin.QuickLoginAuthorityActivity", 1, "onClick login have");
           if (!bool) {
-            break;
+            break label352;
           }
           g();
-          return;
+          break;
           bool = false;
           continue;
-          bool = this.jdField_a_of_type_MqqManagerWtloginManager.IsUserHaveA1(this.jdField_a_of_type_JavaLangString, 16L);
+          bool = bipr.b(this.jdField_a_of_type_MqqManagerWtloginManager, this.jdField_a_of_type_JavaLangString);
         }
+        label352:
         c();
-        QQToast.a(BaseApplicationImpl.getContext(), 2131695070, 0).b(super.getResources().getDimensionPixelSize(2131298914));
-        return;
+        QQToast.a(BaseApplicationImpl.getContext(), 2131694146, 0).b(super.getResources().getDimensionPixelSize(2131298998));
       }
-      switch (paramView.getId())
+      else
       {
-      default: 
-        return;
+        switch (paramView.getId())
+        {
+        default: 
+          break;
+        case 2131363015: 
+          a(this.jdField_a_of_type_JavaLangString);
+          if (this.jdField_a_of_type_ComTencentOpenAgentCardContainer != null) {
+            this.jdField_a_of_type_ComTencentOpenAgentCardContainer.b();
+          }
+          break;
+        }
       }
-      a(this.jdField_a_of_type_JavaLangString);
-    } while (this.jdField_a_of_type_ComTencentOpenAgentCardContainer == null);
-    this.jdField_a_of_type_ComTencentOpenAgentCardContainer.b();
+    }
+  }
+  
+  @Override
+  public void onConfigurationChanged(Configuration paramConfiguration)
+  {
+    super.onConfigurationChanged(paramConfiguration);
+    EventCollector.getInstance().onActivityConfigurationChanged(this, paramConfiguration);
   }
   
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    this.jdField_a_of_type_ComTencentQqconnectWtloginOpenSDKAppInterface = ((OpenSDKAppInterface)super.getAppRuntime());
     if (paramBundle != null)
     {
       QLog.i("Q.quicklogin.QuickLoginAuthorityActivity", 1, "onCreate return for savedInstanceState is not null");
       a(null);
     }
     String str1;
-    label688:
-    label713:
+    label677:
+    label702:
     do
     {
       return;
       if (!a())
       {
-        QQToast.a(BaseApplicationImpl.getContext(), alud.a(2131711631), 0).a();
+        QQToast.a(BaseApplicationImpl.getContext(), anni.a(2131710009), 0).a();
         a(null);
         return;
       }
@@ -1480,38 +1540,38 @@ public class QuickLoginAuthorityActivity
       StringBuilder localStringBuilder = new StringBuilder("onCreate()=> mFromSdkLoginAuthority=");
       localStringBuilder.append(this.jdField_b_of_type_Boolean).append("\n schemacallback=").append(str1).append("\n packageName=").append(str2).append("\n action=").append(paramBundle).append("\n urlPraram=").append(str3);
       QLog.i("Q.quicklogin.QuickLoginAuthorityActivity", 1, localStringBuilder.toString());
-      super.setContentView(2131559532);
-      this.jdField_a_of_type_ComTencentOpenAgentCardContainer = ((CardContainer)super.findViewById(2131364011));
+      super.setContentView(2131559668);
+      this.jdField_a_of_type_ComTencentOpenAgentCardContainer = ((CardContainer)super.findViewById(2131364212));
       i();
-      this.jdField_a_of_type_AndroidViewView = findViewById(2131376034);
-      this.jdField_b_of_type_AndroidViewView = findViewById(2131363552);
-      this.jdField_a_of_type_AndroidWidgetButton = ((Button)super.findViewById(2131371400));
+      this.jdField_a_of_type_AndroidViewView = findViewById(2131376788);
+      this.jdField_b_of_type_AndroidViewView = findViewById(2131363750);
+      this.jdField_a_of_type_AndroidWidgetButton = ((Button)super.findViewById(2131371971));
       this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)super.findViewById(2131362904));
+      this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)super.findViewById(2131363017));
       this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
       this.jdField_a_of_type_Float = super.getResources().getDisplayMetrics().density;
-      this.jdField_a_of_type_ComTencentOpenWidgetMaxHeightScrollView = ((MaxHeightScrollView)findViewById(2131364012));
-      this.jdField_a_of_type_ComTencentOpenWidgetMaxHeightScrollView.getViewTreeObserver().addOnGlobalLayoutListener(new bfgv(this));
+      this.jdField_a_of_type_ComTencentOpenWidgetMaxHeightScrollView = ((MaxHeightScrollView)findViewById(2131364213));
+      this.jdField_a_of_type_ComTencentOpenWidgetMaxHeightScrollView.getViewTreeObserver().addOnGlobalLayoutListener(new bioa(this));
       if (this.jdField_b_of_type_Boolean)
       {
-        this.jdField_a_of_type_Bety = new bety(this, 0, 2131561239, 17);
-        this.jdField_a_of_type_Bety.a(-1);
+        this.jdField_a_of_type_Biau = new biau(this, 0, 2131561463, 17);
+        this.jdField_a_of_type_Biau.a(-1);
         this.jdField_a_of_type_Int = 1;
         if (TextUtils.isEmpty(str2)) {
-          break label688;
+          break label677;
         }
       }
       for (this.jdField_a_of_type_Int = 3;; this.jdField_a_of_type_Int = 2) {
         do
         {
-          azqs.b(null, "dc00898", "", "", "0X800A7BC", "0X800A7BC", this.jdField_a_of_type_Int, 0, "", "", "", "");
+          bcst.b(null, "dc00898", "", "", "0X800A7BC", "0X800A7BC", this.jdField_a_of_type_Int, 0, "", "", "", "");
           QLog.i("Q.quicklogin.QuickLoginAuthorityActivity", 1, "report-dc00898-0X800A7BC-fromType=" + this.jdField_a_of_type_Int);
-          this.jdField_a_of_type_ComTencentOpenAgentCardContainer.setChangeAccountListener(new bfgw(this));
-          this.jdField_a_of_type_Bety.setCanceledOnTouchOutside(false);
-          bfqw.a().a();
-          this.jdField_a_of_type_JavaUtilList = bfnz.a();
-          if (this.jdField_a_of_type_ComTencentQqconnectWtloginOpenSDKAppInterface.isLogin()) {
-            this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentQqconnectWtloginOpenSDKAppInterface.getAccount();
+          this.jdField_a_of_type_ComTencentOpenAgentCardContainer.setChangeAccountListener(new biob(this));
+          this.jdField_a_of_type_Biau.setCanceledOnTouchOutside(false);
+          AccountManage.a().a();
+          this.jdField_a_of_type_JavaUtilList = bivh.a();
+          if (a().isLogin()) {
+            this.jdField_a_of_type_JavaLangString = a().getAccount();
           }
           if ((this.jdField_a_of_type_JavaLangString == null) && (this.jdField_a_of_type_JavaUtilList != null)) {
             this.jdField_a_of_type_JavaLangString = ((String)this.jdField_a_of_type_JavaUtilList.get(0));
@@ -1522,7 +1582,7 @@ public class QuickLoginAuthorityActivity
           }
           paramBundle = super.getAppRuntime().getAccount();
           if ((!GesturePWDUtils.getJumpLock(this, paramBundle)) || (GesturePWDUtils.getAppForground(this))) {
-            break label713;
+            break label702;
           }
           QLog.i("Q.quicklogin.QuickLoginAuthorityActivity", 1, "-->onCreate--has gesture password, will start unlock activity");
           this.jdField_c_of_type_JavaLangString = paramBundle;
@@ -1533,7 +1593,7 @@ public class QuickLoginAuthorityActivity
           if (isChild()) {}
           for (paramBundle = getParent();; paramBundle = this)
           {
-            this.jdField_a_of_type_Bety = new bety(paramBundle, super.getTitleBarHeight());
+            this.jdField_a_of_type_Biau = new biau(paramBundle, super.getTitleBarHeight());
             break;
           }
         } while ((TextUtils.isEmpty(str1)) || (!str1.contains("weixin://")));
@@ -1553,7 +1613,7 @@ public class QuickLoginAuthorityActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.open.agent.QuickLoginAuthorityActivity
  * JD-Core Version:    0.7.0.1
  */

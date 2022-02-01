@@ -1,22 +1,33 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.H5MagicPlayerActivity;
-import com.tencent.mobileqq.data.Emoticon;
+import com.tencent.qphone.base.util.QLog;
 
 public class adef
-  implements View.OnClickListener
 {
-  public adef(H5MagicPlayerActivity paramH5MagicPlayerActivity) {}
-  
-  public void onClick(View paramView)
+  public static adee a(Class<? extends adee> paramClass, aded paramaded)
   {
-    H5MagicPlayerActivity.a(this.a);
-    if ((this.a.d.equals(this.a.c)) && (this.a.a != null))
-    {
-      azqs.b(null, "CliOper", "", "", "MbFasong", "MbGuanbi", 0, 0, this.a.a.epId, "", "", "");
-      return;
+    if (paramClass == adfe.class) {
+      paramClass = new adfe();
     }
-    azqs.b(null, "CliOper", "", "", "MbJieshou", "MbZhudongGuanbi", 0, 0, this.a.a.epId, "", "", "");
+    for (;;)
+    {
+      if (paramClass != null) {
+        paramClass.a(paramaded);
+      }
+      return paramClass;
+      if (paramClass == adfk.class) {
+        paramClass = new adfk();
+      } else {
+        try
+        {
+          adee localadee = (adee)paramClass.newInstance();
+          paramClass = localadee;
+        }
+        catch (Exception localException)
+        {
+          QLog.e("DoraemonOpenAPI.moduleFactory", 1, "newInstance error module=" + paramClass, localException);
+          paramClass = null;
+        }
+      }
+    }
   }
 }
 

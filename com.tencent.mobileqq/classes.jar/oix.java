@@ -1,37 +1,40 @@
-import com.tencent.biz.qqstory.database.PublishVideoEntry;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyFeedsActivity;
+import com.tencent.biz.pubaccount.readinjoy.engine.KandianMergeManager;
+import com.tencent.mobileqq.app.QQAppInterface;
+import java.util.Map;
 
-class oix
-  implements upk
+public class oix
+  extends pmn
 {
-  oix(oiw paramoiw, long paramLong, PublishVideoEntry paramPublishVideoEntry) {}
+  public oix(ReadInJoyFeedsActivity paramReadInJoyFeedsActivity) {}
   
-  public void a(int paramInt, String paramString1, String paramString2)
+  public void a(int paramInt1, int paramInt2)
   {
-    long l1 = System.currentTimeMillis();
-    if (QLog.isColorLevel())
+    if (ReadInJoyFeedsActivity.a(this.a) == 1)
     {
-      long l2 = (l1 - this.jdField_a_of_type_Long) / 1000L;
-      l1 = this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.videoDuration;
-      if (this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.isLocalPublish) {
-        l1 = this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.videoRangeEnd - this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.videoRangeStart;
-      }
-      QLog.d("Q.readinjoy.videocapture.ReadInJoyVideoCompositeManager", 2, "CameraCaptureMerge: duration: " + l1 + ", time cost: " + l2 + "s");
-    }
-    if (paramInt == 0)
-    {
-      oiw.a(this.jdField_a_of_type_Oiw, this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry, paramString2);
+      ((KandianMergeManager)this.a.app.getManager(162)).b(1);
       return;
     }
-    if (QLog.isColorLevel()) {
-      QLog.e("Q.readinjoy.videocapture.ReadInJoyVideoCompositeManager", 2, new Object[] { "doCompositeCameraCaptureVideo: errorcode=%s, errorMsg=%s", Integer.valueOf(paramInt), paramString1 });
+    ReadInJoyFeedsActivity.b(this.a, paramInt1);
+    ((ofx)this.a.a.get(Integer.valueOf(ReadInJoyFeedsActivity.a(this.a)))).i();
+  }
+  
+  public void b(int paramInt)
+  {
+    this.a.a(paramInt);
+  }
+  
+  public void c(int paramInt)
+  {
+    ReadInJoyFeedsActivity.a(this.a, paramInt);
+    if ((paramInt > 0) && (ReadInJoyFeedsActivity.a(this.a) == 0)) {
+      ((ofx)this.a.a.get(Integer.valueOf(ReadInJoyFeedsActivity.a(this.a)))).i();
     }
-    oiw.a(this.jdField_a_of_type_Oiw, this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry, paramInt, paramString1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     oix
  * JD-Core Version:    0.7.0.1
  */

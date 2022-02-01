@@ -1,41 +1,101 @@
-import android.graphics.PointF;
-import com.tencent.mobileqq.widget.QQToast;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleView;
+import android.app.Activity;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.CustomWebView;
+import com.tencent.mobileqq.webview.swift.JsBridgeListener;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qzone.thread.QzoneBaseThread;
+import cooperation.qzone.thread.QzoneHandlerThreadFactory;
+import cooperation.qzone.webviewplugin.QZoneDNSAnalyzeJsPlugin.1;
+import cooperation.qzone.webviewplugin.QZoneDNSAnalyzeJsPlugin.2;
+import java.util.Map;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class bmkx
-  implements bmqc
+  extends bmmk
 {
-  public bmkx(bmkv parambmkv) {}
-  
-  public void a(int paramInt)
+  private void a(WebViewPlugin paramWebViewPlugin, String[] paramArrayOfString)
   {
-    QQToast.a(bmkv.a(this.a), "最多可以圈10个好友哦", 0).a();
-  }
-  
-  public void a(bmqb parambmqb)
-  {
-    if (parambmqb.a == 0)
+    if ((paramArrayOfString == null) || (paramArrayOfString.length == 0)) {}
+    do
     {
-      f1 = parambmqb.b.x;
-      f2 = parambmqb.s;
-      f3 = -parambmqb.u;
-      if (f1 + f2 + f3 >= parambmqb.u / 2.0F)
+      return;
+      paramWebViewPlugin = paramWebViewPlugin.mRuntime.a();
+    } while ((paramWebViewPlugin == null) || (paramWebViewPlugin.isFinishing()));
+    try
+    {
+      paramArrayOfString = new JSONObject(paramArrayOfString[0]);
+      paramWebViewPlugin = paramArrayOfString.optString("host");
+      paramArrayOfString = paramArrayOfString.optString("callback");
+      if (TextUtils.isEmpty(paramArrayOfString))
       {
-        bmkv.a(this.a).a(1, f3 + parambmqb.s);
+        QLog.e("QZoneDNSAnalyzeJsPlugin", 1, "callback is empty.");
         return;
       }
-      wxe.c("Q.qqstory.publish.edit.EditVideoAtDoodleController", "at label can not be reversed because it will be beyond layer.");
-      return;
     }
-    float f1 = parambmqb.b.x;
-    float f2 = parambmqb.s;
-    float f3 = parambmqb.u;
-    if (f1 + f2 + f3 <= bmkv.a(this.a).getWidth() - parambmqb.u / 2.0F)
+    catch (JSONException paramWebViewPlugin)
     {
-      bmkv.a(this.a).a(0, f3 + parambmqb.s);
+      paramWebViewPlugin.printStackTrace();
       return;
     }
-    wxe.c("Q.qqstory.publish.edit.EditVideoAtDoodleController", "at label can not be reversed because it will be beyond layer.");
+    if (TextUtils.isEmpty(paramWebViewPlugin))
+    {
+      QLog.e("QZoneDNSAnalyzeJsPlugin", 1, "host is empty.");
+      return;
+    }
+    QzoneHandlerThreadFactory.getHandlerThread("BackGround_HandlerThread").post(new QZoneDNSAnalyzeJsPlugin.1(this, paramWebViewPlugin, paramArrayOfString));
+  }
+  
+  private void a(String paramString1, int paramInt, String paramString2)
+  {
+    if (TextUtils.isEmpty(paramString1)) {
+      QLog.e("QZoneDNSAnalyzeJsPlugin", 1, "callback is null");
+    }
+    for (;;)
+    {
+      return;
+      JSONObject localJSONObject = new JSONObject();
+      try
+      {
+        localJSONObject.put("ret", paramInt);
+        localJSONObject.put("host_ip", paramString2);
+        paramString2 = localJSONObject.toString();
+        if ((this.a != null) && (this.a.mRuntime != null) && (this.a.mRuntime.a() != null))
+        {
+          this.a.mRuntime.a().callJs(paramString1, new String[] { paramString2 });
+          return;
+        }
+      }
+      catch (Exception paramString1)
+      {
+        QLog.e("QZoneDNSAnalyzeJsPlugin", 1, paramString1.getMessage());
+      }
+    }
+  }
+  
+  public boolean a(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  {
+    if ((!paramString2.equals("Qzone")) || (this.a == null) || (this.a.mRuntime == null)) {}
+    while (!paramString3.equalsIgnoreCase("getHostIpAddress")) {
+      return false;
+    }
+    a(this.a, paramVarArgs);
+    return true;
+  }
+  
+  public boolean a(String paramString, long paramLong, Map<String, Object> paramMap)
+  {
+    if ((paramLong == 8589934595L) && (paramMap != null))
+    {
+      paramString = paramMap.get("errorCode");
+      if ((paramString != null) && ((paramString instanceof Integer)))
+      {
+        int i = ((Integer)paramString).intValue();
+        QzoneHandlerThreadFactory.getHandlerThread("BackGround_HandlerThread").post(new QZoneDNSAnalyzeJsPlugin.2(this, i));
+      }
+    }
+    return false;
   }
 }
 

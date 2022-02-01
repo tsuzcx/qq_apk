@@ -1,42 +1,31 @@
-import com.tencent.biz.videostory.video.FrameVideoHelper;
-import com.tencent.biz.videostory.video.FrameVideoHelper.FrameBuffer;
-import java.util.ArrayList;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.common.app.BaseApplicationImpl;
+import mqq.app.AppRuntime;
+import org.json.JSONObject;
 
-public final class blok
-  implements zao
+class blok
+  extends blpb
 {
-  public blok(FrameVideoHelper paramFrameVideoHelper, zao paramzao) {}
+  blok(bloi parambloi) {}
   
-  public void a(boolean paramBoolean, ArrayList<FrameVideoHelper.FrameBuffer> paramArrayList, long paramLong)
+  public void a(blpa paramblpa)
   {
-    bljn.b("AEEditorMusicHelper", "[extractFrameForSmartMusic], onResult(), isSuccess=" + paramBoolean + ", dataArray=" + paramArrayList + ", frameSize=" + paramLong);
-    int i;
-    if (this.jdField_a_of_type_ComTencentBizVideostoryVideoFrameVideoHelper != null)
-    {
-      StringBuilder localStringBuilder = new StringBuilder().append("[extractFrameForSmartMusic], executeTime=").append(this.jdField_a_of_type_ComTencentBizVideostoryVideoFrameVideoHelper.a()).append(", frameCount=");
-      if (paramArrayList == null)
-      {
-        i = 0;
-        bljn.a("AEEditorMusicHelper", i + ", size=" + this.jdField_a_of_type_ComTencentBizVideostoryVideoFrameVideoHelper.b() + "KB");
-      }
+    paramblpa = paramblpa.a();
+    if (paramblpa == null) {
+      blpu.a("ReaderTabConfigDataHelper", "Response json is null");
     }
-    else if (this.jdField_a_of_type_Zao != null)
+    do
     {
-      if (paramArrayList != null) {
-        break label169;
-      }
-    }
-    label169:
-    for (paramArrayList = null;; paramArrayList = new ArrayList(paramArrayList))
-    {
-      this.jdField_a_of_type_Zao.a(paramBoolean, paramArrayList, paramLong);
-      if (this.jdField_a_of_type_ComTencentBizVideostoryVideoFrameVideoHelper != null) {
-        this.jdField_a_of_type_ComTencentBizVideostoryVideoFrameVideoHelper.a();
-      }
       return;
-      i = paramArrayList.size();
-      break;
-    }
+      if (paramblpa.length() == 0)
+      {
+        blpu.a("ReaderTabConfigDataHelper", "后台数据异常");
+        return;
+      }
+    } while (!bloi.a(this.a, paramblpa, false));
+    bloi.a(this.a).getSharedPreferences("CGI_RESPONSE", 0).edit().putString("SP_TAB_CONFIG_DATA" + BaseApplicationImpl.getApplication().getRuntime().getAccount(), paramblpa.toString()).apply();
   }
 }
 

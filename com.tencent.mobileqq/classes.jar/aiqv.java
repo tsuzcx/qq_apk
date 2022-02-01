@@ -1,19 +1,16 @@
-import NS_MOBILE_PHOTO.get_albumlist_num_rsp;
-import android.os.Bundle;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.photo.album.NewPhotoListActivity;
-import mqq.app.AppRuntime;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.activity.chathistory.TroopMemberHistoryFragment;
 
 public class aiqv
-  extends avvd
+  implements View.OnTouchListener
 {
-  protected void c(boolean paramBoolean, Bundle paramBundle)
+  public aiqv(TroopMemberHistoryFragment paramTroopMemberHistoryFragment) {}
+  
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    paramBundle = paramBundle.getSerializable("data");
-    if ((paramBoolean) && ((paramBundle instanceof get_albumlist_num_rsp))) {
-      aiqy.getInstance().a = ((get_albumlist_num_rsp)paramBundle).album_num;
-    }
-    BaseApplicationImpl.getApplication().getRuntime().unRegistObserver(NewPhotoListActivity.a);
+    return (paramMotionEvent.getAction() == 2) && ((this.a.a == null) || (this.a.a.getCount() == 0));
   }
 }
 

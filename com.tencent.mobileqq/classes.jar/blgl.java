@@ -1,26 +1,13 @@
-import android.support.v4.view.ViewPager.SimpleOnPageChangeListener;
-import com.tencent.image.ApngImage;
-import dov.com.qq.im.ae.play.AEPlayShowTabView;
+import android.app.ProgressDialog;
+import android.content.Context;
 
-class blgl
-  extends ViewPager.SimpleOnPageChangeListener
+public class blgl
 {
-  blgl(blgj paramblgj) {}
-  
-  public void onPageScrollStateChanged(int paramInt)
-  {
-    if (paramInt == 0)
-    {
-      ApngImage.resumeAll();
-      return;
-    }
-    ApngImage.pauseAll();
-  }
-  
-  public void onPageSelected(int paramInt)
-  {
-    blgj.a(this.a).a(paramInt);
-  }
+  public ProgressDialog a;
+  public Context a;
+  public blfo a;
+  public blfq a;
+  public boolean a = true;
 }
 
 

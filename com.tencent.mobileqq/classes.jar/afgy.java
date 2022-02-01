@@ -1,41 +1,20 @@
-import android.view.View;
-import android.widget.LinearLayout;
-import com.tencent.mobileqq.data.IntimateInfo.MemoryDayInfo;
+import android.view.KeyEvent;
+import android.widget.TextView;
+import android.widget.TextView.OnEditorActionListener;
+import com.tencent.biz.pubaccount.CustomWebView;
+import com.tencent.mobileqq.activity.TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment;
 
-class afgy
-  implements afhb
+public class afgy
+  implements TextView.OnEditorActionListener
 {
-  afgy(afgx paramafgx) {}
+  public afgy(TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment paramTeamWorkDocEditBrowserFragment) {}
   
-  public void a(View paramView, IntimateInfo.MemoryDayInfo paramMemoryDayInfo)
+  public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
   {
-    int j;
-    int i;
-    if (afgx.a(this.a) != null)
-    {
-      j = afgx.a(this.a).getChildCount();
-      if (j > 0) {
-        i = 0;
-      }
+    if ((paramInt == 1) || ((paramKeyEvent != null) && (66 == paramKeyEvent.getKeyCode()) && (paramKeyEvent.getAction() == 0))) {
+      TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment.a(this.a).callJs("onTabKeyDown()");
     }
-    for (;;)
-    {
-      if (i < j)
-      {
-        paramView = afgx.a(this.a).getChildAt(i).getTag();
-        if (((paramView instanceof IntimateInfo.MemoryDayInfo)) && (((IntimateInfo.MemoryDayInfo)paramView).dateType == paramMemoryDayInfo.dateType)) {
-          afgx.a(this.a).removeViewAt(i);
-        }
-      }
-      else
-      {
-        if (afgx.a(this.a).getChildCount() <= 0) {
-          afgx.a(this.a).setVisibility(8);
-        }
-        return;
-      }
-      i += 1;
-    }
+    return false;
   }
 }
 

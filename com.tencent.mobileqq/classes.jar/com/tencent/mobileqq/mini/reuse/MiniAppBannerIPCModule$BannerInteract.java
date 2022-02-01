@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.mini.reuse;
 
-import ajhw;
-import azqs;
+import alaf;
+import bcst;
 import com.tencent.mobileqq.mini.apkg.MiniAppConfig;
 import com.tencent.mobileqq.mini.sdk.MiniAppController;
 
 class MiniAppBannerIPCModule$BannerInteract
-  implements ajhw
+  implements alaf
 {
   private MiniAppConfig mAppConfig;
   
@@ -22,7 +22,7 @@ class MiniAppBannerIPCModule$BannerInteract
   
   public void onClose()
   {
-    azqs.a(MiniAppBannerIPCModule.access$300(), "dc00898", "", "", "0X800A124", "0X800A124", 4, 0, "", "", "", "");
+    bcst.a(MiniAppBannerIPCModule.access$300(), "dc00898", "", "", "0X800A124", "0X800A124", 4, 0, "", "", "", "");
   }
   
   public void onEnter()
@@ -31,14 +31,14 @@ class MiniAppBannerIPCModule$BannerInteract
       this.mAppConfig.launchParam.scene = 2056;
     }
     MiniAppController.startApp(null, this.mAppConfig, null);
-    azqs.a(MiniAppBannerIPCModule.access$300(), "dc00898", "", "", "0X800A123", "0X800A123", 4, 0, "", "", "", "");
+    bcst.a(MiniAppBannerIPCModule.access$300(), "dc00898", "", "", "0X800A123", "0X800A123", 4, 0, "", "", "", "");
   }
   
   public void onOverride() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.reuse.MiniAppBannerIPCModule.BannerInteract
  * JD-Core Version:    0.7.0.1
  */

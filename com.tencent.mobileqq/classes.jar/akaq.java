@@ -1,40 +1,44 @@
-import android.content.BroadcastReceiver;
 import android.content.Context;
-import android.content.Intent;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 
 public class akaq
-  extends BroadcastReceiver
 {
-  public akaq(SelectMemberActivity paramSelectMemberActivity) {}
-  
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public static akaj a(Context paramContext, SessionInfo paramSessionInfo, QQAppInterface paramQQAppInterface)
   {
-    paramContext = paramIntent.getAction();
-    if ((TextUtils.isEmpty(paramIntent.getPackage())) || (!paramIntent.getPackage().equals(this.a.app.getApp().getPackageName()))) {
-      if (QLog.isColorLevel()) {
-        QLog.d("SelectMemberActivity", 2, "receive broadcast from wrong package:" + paramIntent.getPackage() + ",action:" + paramContext);
-      }
+    int i = paramSessionInfo.a;
+    Object localObject = null;
+    if (paramSessionInfo.f == 3) {
+      paramSessionInfo = new akat(paramContext, paramSessionInfo, paramQQAppInterface);
     }
-    int i;
-    int j;
     do
     {
-      do
+      return paramSessionInfo;
+      switch (i)
       {
-        return;
-      } while (!paramContext.equals("tencent.av.v2q.StopVideoChat"));
-      i = paramIntent.getIntExtra("stopReason", 0);
-      j = paramIntent.getIntExtra("stopReason3rd", -1);
-    } while (((i != 0) && (j != 1)) || ((this.a.d != 11) && (this.a.d != 36)));
-    if (QLog.isColorLevel()) {
-      QLog.d("SelectMemberActivity", 2, "ACTION_STOP_VIDEO_CHAT");
+      default: 
+        paramContext = localObject;
+        paramSessionInfo = paramContext;
+      }
+    } while (!QLog.isColorLevel());
+    paramQQAppInterface = new StringBuilder().append("getChatPie uinType = ").append(i).append(" miniPie ");
+    if (paramContext == null) {}
+    for (paramSessionInfo = "null";; paramSessionInfo = Integer.valueOf(paramContext.hashCode()))
+    {
+      QLog.i("MiniPieFactory", 2, paramSessionInfo);
+      return paramContext;
+      paramContext = new akar(paramContext, paramSessionInfo, paramQQAppInterface);
+      break;
+      paramContext = new akas(paramContext, paramSessionInfo, paramQQAppInterface);
+      break;
+      paramContext = new akaw(paramContext, paramSessionInfo, paramQQAppInterface);
+      break;
+      paramContext = new akav(paramContext, paramSessionInfo, paramQQAppInterface);
+      break;
+      paramContext = new akau(paramContext, paramSessionInfo, paramQQAppInterface);
+      break;
     }
-    this.a.finish();
   }
 }
 

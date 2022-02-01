@@ -1,84 +1,143 @@
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
+import java.io.FileOutputStream;
 
 class lpf
-  implements baug
 {
-  lpf(lpe paramlpe, String paramString, loy paramloy, int paramInt) {}
+  private int jdField_a_of_type_Int;
+  private FileOutputStream jdField_a_of_type_JavaIoFileOutputStream;
+  private String jdField_a_of_type_JavaLangString;
+  private int jdField_b_of_type_Int;
+  private String jdField_b_of_type_JavaLangString;
+  private int c;
+  private int d;
   
-  public void onResp(bavf parambavf)
+  public lpf(String paramString)
   {
-    baub localbaub = (baub)parambavf.jdField_a_of_type_Bave;
-    if (this.jdField_a_of_type_Lpe.jdField_a_of_type_Baub == localbaub) {
-      this.jdField_a_of_type_Lpe.jdField_a_of_type_Baub = null;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.i("QavGPDownloadManager", 2, String.format("onResp, Url[%s], mResult[%s], mHttpCode[%s], md5[%s]", new Object[] { localbaub.jdField_a_of_type_JavaLangString, Integer.valueOf(parambavf.jdField_a_of_type_Int), Integer.valueOf(parambavf.c), this.jdField_a_of_type_JavaLangString }));
-    }
-    int i;
-    if (parambavf.jdField_a_of_type_Int == 0)
-    {
-      parambavf = new File(localbaub.c);
-      if (parambavf.exists())
-      {
-        try
-        {
-          String str = parambavf.getParent();
-          bdhb.a(localbaub.c, str, false);
-          QLog.d("QavGPDownloadManager", 1, String.format("downloadRes, 下载成功了. path[%s]", new Object[] { str }));
-          lpd.a(this.jdField_a_of_type_Loy);
-          i = 1;
-        }
-        catch (Exception localException)
-        {
-          for (;;)
-          {
-            localException.printStackTrace();
-            i = 0;
-          }
-          lpd.a(-1);
-          return;
-        }
-        parambavf.delete();
-      }
-    }
-    for (;;)
-    {
-      if (i != 0)
-      {
-        lpd.a(100 / this.jdField_a_of_type_Lpe.jdField_a_of_type_Int + this.jdField_a_of_type_Lpe.b);
-        parambavf = this.jdField_a_of_type_Lpe;
-        parambavf.b += 100 / this.jdField_a_of_type_Lpe.jdField_a_of_type_Int;
-        if (!this.jdField_a_of_type_Lpe.a(this.jdField_a_of_type_Loy, this.jdField_a_of_type_Int - 1)) {
-          this.jdField_a_of_type_Lpe.jdField_a_of_type_Boolean = false;
-        }
-        return;
-      }
-      i = 0;
-    }
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_b_of_type_JavaLangString = null;
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_b_of_type_Int = 0;
+    this.d = 0;
+    this.c = 0;
   }
   
-  public void onUpdateProgeress(bave parambave, long paramLong1, long paramLong2)
+  private void b()
   {
-    int i;
-    if (paramLong2 == 0L) {
-      i = 0;
-    }
-    for (;;)
+    if (this.jdField_a_of_type_JavaIoFileOutputStream != null) {}
+    try
     {
-      lpd.a(i / this.jdField_a_of_type_Lpe.jdField_a_of_type_Int + this.jdField_a_of_type_Lpe.b);
+      this.jdField_a_of_type_JavaIoFileOutputStream.flush();
+      try
+      {
+        this.jdField_a_of_type_JavaIoFileOutputStream.close();
+        this.jdField_a_of_type_JavaIoFileOutputStream = null;
+        return;
+      }
+      catch (Throwable localThrowable1)
+      {
+        for (;;)
+        {
+          if (QLog.isDevelopLevel()) {
+            QLog.i("FilterProcessTest", 4, "DebugFile-save close fail path: " + this.jdField_b_of_type_JavaLangString, localThrowable1);
+          }
+        }
+      }
+      try
+      {
+        this.jdField_a_of_type_JavaIoFileOutputStream.close();
+        this.jdField_a_of_type_JavaIoFileOutputStream = null;
+        throw localObject;
+      }
+      catch (Throwable localThrowable4)
+      {
+        for (;;)
+        {
+          if (QLog.isDevelopLevel()) {
+            QLog.i("FilterProcessTest", 4, "DebugFile-save close fail path: " + this.jdField_b_of_type_JavaLangString, localThrowable4);
+          }
+        }
+      }
+    }
+    catch (Throwable localThrowable2)
+    {
+      localThrowable2 = localThrowable2;
+      if (QLog.isDevelopLevel()) {
+        QLog.i("FilterProcessTest", 4, "DebugFile-save flush fail path: " + this.jdField_b_of_type_JavaLangString, localThrowable2);
+      }
+      try
+      {
+        this.jdField_a_of_type_JavaIoFileOutputStream.close();
+        this.jdField_a_of_type_JavaIoFileOutputStream = null;
+        return;
+      }
+      catch (Throwable localThrowable3)
+      {
+        for (;;)
+        {
+          if (QLog.isDevelopLevel()) {
+            QLog.i("FilterProcessTest", 4, "DebugFile-save close fail path: " + this.jdField_b_of_type_JavaLangString, localThrowable3);
+          }
+        }
+      }
+    }
+    finally {}
+  }
+  
+  public void a()
+  {
+    if (QLog.isDevelopLevel()) {
+      QLog.i("FilterProcessTest", 4, String.format("DebugFile-end size[%s, %s], fmt[%s], frame[%s], path[%s]", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int), Integer.valueOf(this.jdField_b_of_type_Int), Integer.valueOf(this.c), Integer.valueOf(this.d), this.jdField_b_of_type_JavaLangString }));
+    }
+    b();
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_b_of_type_Int = 0;
+    this.d = 0;
+    this.c = 0;
+  }
+  
+  public void a(byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3)
+  {
+    if ((paramArrayOfByte == null) || (paramInt2 == 0) || (paramInt3 == 0)) {
       return;
-      if (paramLong1 >= paramLong2) {
-        i = 99;
-      } else {
-        i = (int)((float)paramLong1 * 100.0F / (float)paramLong2);
+    }
+    if ((this.jdField_a_of_type_JavaIoFileOutputStream == null) || (this.jdField_a_of_type_Int != paramInt2) || (this.jdField_b_of_type_Int != paramInt3) || (this.c != paramInt1))
+    {
+      if (QLog.isDevelopLevel()) {
+        QLog.i("FilterProcessTest", 4, String.format("DebugFile-save pre_size[%s,%s], cur_size[%s,%s], pre_fmt[%s], cur_fmt[%s], count[%s]", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int), Integer.valueOf(this.jdField_b_of_type_Int), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Integer.valueOf(this.c), Integer.valueOf(paramInt1), Integer.valueOf(this.d) }));
+      }
+      b();
+      this.jdField_b_of_type_JavaLangString = (this.jdField_a_of_type_JavaLangString + "_" + lpe.a(paramInt2, paramInt3, paramInt1) + ".yuv");
+      File localFile = new File(this.jdField_b_of_type_JavaLangString);
+      if ((localFile.exists()) && (localFile.isFile()) && (!localFile.delete()) && (QLog.isDevelopLevel())) {
+        QLog.i("FilterProcessTest", 4, "DebugFile-save del fail path: " + this.jdField_b_of_type_JavaLangString);
+      }
+    }
+    try
+    {
+      this.jdField_a_of_type_JavaIoFileOutputStream = new FileOutputStream(this.jdField_b_of_type_JavaLangString);
+      this.jdField_a_of_type_Int = paramInt2;
+      this.jdField_b_of_type_Int = paramInt3;
+      this.d = 0;
+      this.c = paramInt1;
+      this.d += 1;
+      lpe.a(this.jdField_a_of_type_JavaIoFileOutputStream, paramArrayOfByte);
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      for (;;)
+      {
+        if (QLog.isDevelopLevel()) {
+          QLog.i("FilterProcessTest", 4, "DebugFile-save create FileOutputStream fail path: " + this.jdField_b_of_type_JavaLangString);
+        }
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     lpf
  * JD-Core Version:    0.7.0.1
  */

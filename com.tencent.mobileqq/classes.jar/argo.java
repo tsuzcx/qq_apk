@@ -1,41 +1,83 @@
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.smtt.sdk.TbsReaderView.ReaderCallback;
+import android.content.res.Resources;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.Paint.FontMetrics;
+import android.graphics.PorterDuff.Mode;
+import android.graphics.PorterDuffXfermode;
+import android.graphics.Rect;
+import android.text.TextPaint;
+import android.util.DisplayMetrics;
+import java.util.HashMap;
+import java.util.Map;
 
-class argo
-  implements TbsReaderView.ReaderCallback
+public class argo
 {
-  argo(argj paramargj, argp paramargp) {}
+  private static int jdField_a_of_type_Int;
+  public static Paint a;
+  private static final Rect jdField_a_of_type_AndroidGraphicsRect = new Rect();
+  private static final TextPaint jdField_a_of_type_AndroidTextTextPaint = new TextPaint();
+  private static final Map<Float, Float> jdField_a_of_type_JavaUtilMap = new HashMap();
+  public static Paint b;
+  private static final Map<Float, Float> b;
+  private static final Map<Float, Float> c;
   
-  public void onCallBackAction(Integer paramInteger, Object paramObject1, Object paramObject2)
+  static
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("LocalTbsViewManager<FileAssistant>", 1, "recv actionType[" + paramInteger + "]");
-    }
-    if (paramInteger.intValue() == 5012)
+    jdField_b_of_type_JavaUtilMap = new HashMap();
+    c = new HashMap();
+    jdField_a_of_type_AndroidGraphicsPaint = new Paint();
+    jdField_a_of_type_AndroidGraphicsPaint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.CLEAR));
+  }
+  
+  public static float a(float paramFloat)
+  {
+    jdField_a_of_type_AndroidTextTextPaint.setTextSize(paramFloat);
+    Float localFloat = (Float)jdField_a_of_type_JavaUtilMap.get(Float.valueOf(paramFloat));
+    Object localObject = localFloat;
+    if (localFloat == null)
     {
-      int i = ((Integer)paramObject1).intValue();
-      if (QLog.isColorLevel()) {
-        QLog.i("LocalTbsViewManager<FileAssistant>", 1, "err Code[" + i + "]");
-      }
-      if (i != 0) {
-        break label129;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("zivonchen", 2, "canOpenFile return ok 1-------");
-      }
-      if (this.jdField_a_of_type_Argp != null) {
-        this.jdField_a_of_type_Argp.b(true);
-      }
+      localObject = jdField_a_of_type_AndroidTextTextPaint.getFontMetrics();
+      float f1 = ((Paint.FontMetrics)localObject).descent;
+      float f2 = ((Paint.FontMetrics)localObject).ascent;
+      localObject = Float.valueOf(((Paint.FontMetrics)localObject).leading + (f1 - f2));
+      jdField_a_of_type_JavaUtilMap.put(Float.valueOf(paramFloat), localObject);
     }
-    label129:
-    do
+    return ((Float)localObject).floatValue();
+  }
+  
+  public static float a(float paramFloat, String paramString)
+  {
+    jdField_a_of_type_AndroidTextTextPaint.setTextSize(paramFloat);
+    return a(jdField_a_of_type_AndroidTextTextPaint, paramString);
+  }
+  
+  public static float a(Paint paramPaint, String paramString)
+  {
+    return paramPaint.measureText(paramString);
+  }
+  
+  public static float a(arfm paramarfm)
+  {
+    return a(paramarfm.c()) + arew.a().c() * 2 + paramarfm.d() * 2.0F + paramarfm.e() * 2.0F;
+  }
+  
+  public static void a(Canvas paramCanvas)
+  {
+    paramCanvas.drawColor(0, PorterDuff.Mode.CLEAR);
+  }
+  
+  public static void a(Canvas paramCanvas, String paramString)
+  {
+    if (jdField_b_of_type_AndroidGraphicsPaint == null)
     {
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d("zivonchen", 2, "canOpenFile return ok 2-------");
-      }
-    } while (this.jdField_a_of_type_Argp == null);
-    this.jdField_a_of_type_Argp.b(false);
+      jdField_b_of_type_AndroidGraphicsPaint = new Paint();
+      jdField_b_of_type_AndroidGraphicsPaint.setColor(-256);
+      Object localObject = ardw.a().a().a().getDisplayMetrics();
+      jdField_b_of_type_AndroidGraphicsPaint.setTextSize(((DisplayMetrics)localObject).density * 12.5F);
+      localObject = jdField_b_of_type_AndroidGraphicsPaint.getFontMetrics();
+      jdField_a_of_type_Int = (int)Math.ceil(((Paint.FontMetrics)localObject).descent - ((Paint.FontMetrics)localObject).ascent);
+    }
+    paramCanvas.drawText(paramString, 10.0F, paramCanvas.getHeight() - jdField_a_of_type_Int, jdField_b_of_type_AndroidGraphicsPaint);
   }
 }
 

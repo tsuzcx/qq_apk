@@ -1,29 +1,50 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import java.lang.ref.WeakReference;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
-class aqxt
-  implements DialogInterface.OnClickListener
+public class aqxt
 {
-  aqxt(aqxo paramaqxo) {}
+  private int a = 1;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  @NonNull
+  public static aqxt a()
   {
-    if (this.a.jdField_a_of_type_Arit != null) {
-      this.a.jdField_a_of_type_Arit.a(false);
-    }
-    if (this.a.jdField_a_of_type_JavaLangRefWeakReference != null)
+    return new aqxt();
+  }
+  
+  @NonNull
+  public static aqxt a(@Nullable String paramString)
+  {
+    aqxt localaqxt = new aqxt();
+    try
     {
-      paramDialogInterface = (aqxm)this.a.jdField_a_of_type_JavaLangRefWeakReference.get();
-      if (paramDialogInterface != null) {
-        paramDialogInterface.aG_();
+      if (!TextUtils.isEmpty(paramString)) {
+        localaqxt.a = new JSONObject(paramString).getInt("use_apm");
+      }
+      if (QLog.isColorLevel()) {
+        QLog.e("QVIP.SDK.ConfigProcessor", 1, " : " + localaqxt.toString());
+      }
+      return localaqxt;
+    }
+    catch (Exception paramString)
+    {
+      for (;;)
+      {
+        QLog.e("QVIP.SDK.ConfigProcessor", 1, "json parse error:" + paramString);
       }
     }
+  }
+  
+  public String toString()
+  {
+    return "QVipPerfLevelConfig{use_apm=" + this.a + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aqxt
  * JD-Core Version:    0.7.0.1
  */

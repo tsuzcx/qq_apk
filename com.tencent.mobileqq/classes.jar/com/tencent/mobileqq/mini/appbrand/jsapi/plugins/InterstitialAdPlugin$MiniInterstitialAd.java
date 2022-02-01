@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.mini.appbrand.jsapi.plugins;
 
 import NS_MINI_AD.MiniAppAd.StGetAdReq;
-import aaon;
-import aasd;
+import acly;
+import acqx;
 import android.app.Activity;
 import android.content.res.Configuration;
 import android.content.res.Resources;
@@ -36,7 +36,7 @@ class InterstitialAdPlugin$MiniInterstitialAd
   private static final String COMP_ID = "compId";
   private static final String OPERATION_TYPE = "type";
   private static final String TAG = "[minigame] MiniInterstitialAd";
-  private aaon adInterstitial;
+  private acly adInterstitial;
   private String adUnitId;
   private int appInterstitialId;
   private BaseJsPluginEngine jsPluginEngine;
@@ -99,23 +99,23 @@ class InterstitialAdPlugin$MiniInterstitialAd
     {
       bool = ((GameActivity)this.jsPluginEngine.activityContext).getIsOrientationLandscape();
       if (!bool) {
-        break label537;
+        break label538;
       }
       i = 90;
       QLog.i("[minigame] MiniInterstitialAd", 1, "handle initAdParam appId = " + (String)localObject2 + "， deviceOrient = " + i);
       localApkgInfo = this.jsPluginEngine.appBrandRuntime.getApkgInfo();
       if ((localApkgInfo == null) || (!localApkgInfo.isEngineTypeMiniApp())) {
-        break label542;
+        break label543;
       }
       j = 0;
       label212:
       if (j != 0) {
-        break label547;
+        break label548;
       }
     }
-    label537:
-    label542:
-    label547:
+    label538:
+    label543:
+    label548:
     for (int j = 10;; j = 11)
     {
       Object localObject3 = "";
@@ -169,7 +169,7 @@ class InterstitialAdPlugin$MiniInterstitialAd
       }
       str1 = AdUtils.getSpAdGdtCookie(j);
       int k = QzoneConfig.getInstance().getConfig("QZoneSetting", "MiniGameShareRate", 53);
-      localObject1 = AdUtils.createAdRequest(this.jsPluginEngine.activityContext, Long.parseLong(str3), this.adUnitId, (String)localObject2, k, j, i, str1, (String)localObject1, (String)localObject4, (String)localObject3, (String)localObject5);
+      localObject1 = AdUtils.createAdRequest(this.jsPluginEngine.activityContext, Long.parseLong(str3), this.adUnitId, (String)localObject2, k, j, i, str1, (String)localObject1, (String)localObject4, (String)localObject3, (String)localObject5, 1);
       QLog.i("[minigame] MiniInterstitialAd", 1, "generateAdReq account= " + str3 + " adUnitId=" + this.adUnitId);
       return localObject1;
       bool = isOrientationLandscape();
@@ -183,7 +183,7 @@ class InterstitialAdPlugin$MiniInterstitialAd
   
   private GdtHandler.Options getClickOption(JSONObject paramJSONObject)
   {
-    Object localObject = (qq_ad_get.QQAdGetRsp.AdInfo)qq_ad_get.QQAdGetRsp.AdInfo.class.cast(aasd.a(new qq_ad_get.QQAdGetRsp.AdInfo(), paramJSONObject));
+    Object localObject = (qq_ad_get.QQAdGetRsp.AdInfo)qq_ad_get.QQAdGetRsp.AdInfo.class.cast(acqx.a(new qq_ad_get.QQAdGetRsp.AdInfo(), paramJSONObject));
     paramJSONObject = new GdtHandler.Options();
     paramJSONObject.jdField_a_of_type_ComTencentGdtadAditemGdtAd = new GdtAd((qq_ad_get.QQAdGetRsp.AdInfo)localObject);
     paramJSONObject.jdField_a_of_type_Boolean = true;
@@ -297,7 +297,7 @@ class InterstitialAdPlugin$MiniInterstitialAd
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.appbrand.jsapi.plugins.InterstitialAdPlugin.MiniInterstitialAd
  * JD-Core Version:    0.7.0.1
  */

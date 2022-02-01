@@ -1,20 +1,16 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.apollo.game.ApolloWebGameActivity;
+import java.util.Comparator;
 
-public class akui
-  implements DialogInterface.OnClickListener
+class akui
+  implements Comparator<akuj>
 {
-  public akui(ApolloWebGameActivity paramApolloWebGameActivity) {}
+  akui(akuh paramakuh) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public int a(akuj paramakuj1, akuj paramakuj2)
   {
-    paramDialogInterface = new Intent(this.a, QQBrowserActivity.class);
-    paramDialogInterface.putExtra("url", aliu.Y);
-    this.a.startActivity(paramDialogInterface);
-    ApolloWebGameActivity.a(this.a);
+    if (paramakuj2.a - paramakuj1.a > 0.0F) {
+      return 1;
+    }
+    return -1;
   }
 }
 

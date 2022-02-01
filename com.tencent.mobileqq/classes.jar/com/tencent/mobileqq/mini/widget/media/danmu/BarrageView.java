@@ -11,7 +11,7 @@ import android.view.animation.Animation.AnimationListener;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import bdoo;
+import bgtn;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
@@ -75,7 +75,7 @@ public class BarrageView
   
   private Animation createBarrageAnim(int paramInt, Animation.AnimationListener paramAnimationListener)
   {
-    Animation localAnimation = AnimationHelper.createTranslateAnim(getContext(), paramInt, -bdoo.a());
+    Animation localAnimation = AnimationHelper.createTranslateAnim(getContext(), paramInt, -bgtn.a());
     localAnimation.setAnimationListener(paramAnimationListener);
     localAnimation.setDuration(3000L);
     return localAnimation;
@@ -224,7 +224,7 @@ public class BarrageView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.widget.media.danmu.BarrageView
  * JD-Core Version:    0.7.0.1
  */

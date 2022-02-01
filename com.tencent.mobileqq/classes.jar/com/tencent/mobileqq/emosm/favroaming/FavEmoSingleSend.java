@@ -1,13 +1,14 @@
 package com.tencent.mobileqq.emosm.favroaming;
 
-import alsb;
-import apom;
-import apon;
-import apoo;
-import awkh;
-import awki;
-import bayk;
-import blqh;
+import anlh;
+import arrn;
+import arro;
+import arrp;
+import arze;
+import ayyt;
+import ayyu;
+import bdzn;
+import bojl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.automator.AsyncStep;
 import com.tencent.mobileqq.data.CustomEmotionData;
@@ -18,12 +19,12 @@ import tencent.im.msg.im_msg_body.RichText;
 
 public class FavEmoSingleSend
   extends AsyncStep
-  implements awkh
+  implements ayyt
 {
-  private alsb jdField_a_of_type_Alsb;
-  private apon jdField_a_of_type_Apon;
-  private apoo jdField_a_of_type_Apoo;
-  private bayk jdField_a_of_type_Bayk;
+  private anlh jdField_a_of_type_Anlh;
+  private arro jdField_a_of_type_Arro;
+  private arrp jdField_a_of_type_Arrp;
+  private bdzn jdField_a_of_type_Bdzn;
   private CustomEmotionData jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData;
   private final Object jdField_a_of_type_JavaLangObject = new Object();
   private Timer jdField_a_of_type_JavaUtilTimer;
@@ -34,17 +35,14 @@ public class FavEmoSingleSend
   {
     this.b = paramBoolean;
     this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData = paramCustomEmotionData;
-    paramCustomEmotionData = (QQAppInterface)blqh.a();
-    this.jdField_a_of_type_Apoo = ((apoo)paramCustomEmotionData.getManager(103));
-    this.jdField_a_of_type_Apon = ((apon)paramCustomEmotionData.getManager(149));
-    this.jdField_a_of_type_Alsb = ((alsb)paramCustomEmotionData.a(72));
+    a();
   }
   
   public int a()
   {
     QLog.d("FavEmoSingleSend", 1, new Object[] { "doStep, isResend: ", Boolean.valueOf(this.b), " ", this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData });
-    this.jdField_a_of_type_Bayk = this.jdField_a_of_type_Apoo.b(this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData, this);
-    if (this.jdField_a_of_type_Bayk == null)
+    this.jdField_a_of_type_Bdzn = this.jdField_a_of_type_Arrp.b(this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData, this);
+    if (this.jdField_a_of_type_Bdzn == null)
     {
       QLog.d("FavEmoSingleSend", 1, "doStep, network not support");
       a("failed", 0, 3, 0);
@@ -73,7 +71,15 @@ public class FavEmoSingleSend
     return null;
   }
   
-  public void a(awki paramawki) {}
+  public void a()
+  {
+    QQAppInterface localQQAppInterface = (QQAppInterface)bojl.a();
+    this.jdField_a_of_type_Arrp = ((arrp)localQQAppInterface.getManager(103));
+    this.jdField_a_of_type_Arro = ((arro)localQQAppInterface.getManager(149));
+    this.jdField_a_of_type_Anlh = ((anlh)localQQAppInterface.a(72));
+  }
+  
+  public void a(ayyu paramayyu) {}
   
   public void a(String paramString, int paramInt1, int paramInt2, int paramInt3)
   {
@@ -82,15 +88,15 @@ public class FavEmoSingleSend
     {
       this.jdField_a_of_type_Boolean = bool;
       this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData.RomaingType = paramString;
-      this.jdField_a_of_type_Apon.b(this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData);
-      this.jdField_a_of_type_Apon.a();
-      this.jdField_a_of_type_Alsb.notifyUI(2, true, Integer.valueOf(paramInt1));
-      apom.a(this.jdField_a_of_type_Boolean, paramInt2, paramInt3);
+      this.jdField_a_of_type_Arro.b(this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData);
+      this.jdField_a_of_type_Arro.a();
+      this.jdField_a_of_type_Anlh.notifyUI(2, true, Integer.valueOf(paramInt1));
+      arrn.a(this.jdField_a_of_type_Boolean, paramInt2, paramInt3);
       return;
     }
   }
   
-  public void b(awki arg1)
+  public void b(ayyu arg1)
   {
     int j = 7;
     if (QLog.isColorLevel()) {
@@ -100,6 +106,7 @@ public class FavEmoSingleSend
     {
       QLog.e("FavEmoSingleSend", 1, "uploadCameraEmoList success");
       a("isUpdate", 0, 0, 0);
+      arze.a(null, 3, ???.d, null);
     }
     for (;;)
     {
@@ -130,7 +137,7 @@ public class FavEmoSingleSend
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.emosm.favroaming.FavEmoSingleSend
  * JD-Core Version:    0.7.0.1
  */

@@ -9,12 +9,10 @@ public final class RuntimeConfig
   public static final RuntimeConfig.Companion Companion = new RuntimeConfig.Companion(null);
   @JvmField
   public static volatile int globalMonitorCount;
-  @JvmField
-  public static volatile boolean resouceMonitorPublicMode;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.tencent.qapmsdk.base.config.RuntimeConfig
  * JD-Core Version:    0.7.0.1
  */

@@ -1,25 +1,28 @@
-import android.os.Bundle;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.TroopMemberListActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.activity.FriendProfileCardActivity;
 
 public class aegl
-  implements View.OnClickListener
+  implements asms
 {
-  public aegl(TroopMemberListActivity paramTroopMemberListActivity) {}
+  public aegl(FriendProfileCardActivity paramFriendProfileCardActivity) {}
   
-  public void onClick(View paramView)
+  public void a()
   {
-    paramView = new Bundle();
-    paramView.putString(bdun.e, alud.a(2131716001));
-    paramView.putString(bdun.f, "CJCLUBT");
-    paramView.putString(bdun.d, "1450000516");
-    paramView.putInt(bdun.b, 3);
-    paramView.putString(bdun.i, "https://h5.vip.qq.com/proxy/domain/imgcache.qq.com/club/platform/lib/pay/wv_proxy.html?_wv=524289&_fv=0&aid=" + "mvip.pt.vipsite.tqtips_chengyuan");
-    paramView.putString(bdun.g, "svip");
-    paramView.putString(bdun.a, this.a.app.getCurrentAccountUin());
-    bdun.a(this.a.app, this.a, paramView);
+    asml.a(this.a);
+  }
+  
+  public void a(int paramInt)
+  {
+    asml.a(this.a, this.a.getString(paramInt));
+  }
+  
+  public void a(String paramString1, String paramString2)
+  {
+    asml.a(this.a, paramString1, paramString2);
+  }
+  
+  public void a(boolean paramBoolean, int paramInt, String paramString1, String paramString2)
+  {
+    asml.a(this.a, paramBoolean, paramInt, paramString1, paramString2);
   }
 }
 

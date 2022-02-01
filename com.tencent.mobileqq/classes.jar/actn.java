@@ -1,17 +1,13 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.DevlockQuickLoginActivity;
+import com.tencent.gdtad.views.video.GdtVideoCommonView;
 
-class actn
-  implements DialogInterface.OnClickListener
+public class actn
+  implements acpj
 {
-  actn(actm paramactm) {}
+  public actn(GdtVideoCommonView paramGdtVideoCommonView) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(Object... paramVarArgs)
   {
-    this.a.a.a();
-    DevlockQuickLoginActivity.b(this.a.a);
-    DevlockQuickLoginActivity.b(this.a.a, 0, 2130772001);
+    GdtVideoCommonView.a(this.a);
   }
 }
 

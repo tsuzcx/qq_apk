@@ -1,33 +1,22 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.ImageView;
-import android.widget.ProgressBar;
-import com.tencent.mobileqq.magicface.drawable.PngFrameManager.1;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class atxo
-  implements View.OnClickListener
+class atxo
+  implements DialogInterface.OnClickListener
 {
-  public atxo(PngFrameManager.1 param1) {}
+  atxo(atxk paramatxk) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.a.a.jdField_a_of_type_Afvu.jdField_a_of_type_AndroidWidgetProgressBar.getVisibility() == 0) {}
-    do
-    {
-      do
-      {
-        return;
-      } while (this.a.a.jdField_a_of_type_Afvu.jdField_a_of_type_AndroidWidgetImageView.getVisibility() != 0);
-      this.a.a.jdField_a_of_type_Boolean = true;
-      this.a.a.jdField_a_of_type_Afvu.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(0);
-      this.a.this$0.e(this.a.a);
-    } while (this.a.a.jdField_a_of_type_Atxr == null);
-    this.a.a.jdField_a_of_type_Atxr.a(this.a.a.jdField_a_of_type_Afvu);
+    if (paramInt == 1) {
+      this.a.c();
+    }
+    paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     atxo
  * JD-Core Version:    0.7.0.1
  */

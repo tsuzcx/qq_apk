@@ -1,95 +1,79 @@
 package com.tencent.mobileqq.msf.service;
 
-import android.app.ActivityManager;
-import android.app.ActivityManager.RunningAppProcessInfo;
-import android.os.Build;
-import android.os.Build.VERSION;
-import android.os.Process;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import com.tencent.mobileqq.msf.core.MsfCore;
-import com.tencent.mobileqq.msf.core.c.k;
+import com.tencent.mobileqq.msf.core.s;
 import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Set;
+import java.util.Map;
 
 final class p
   extends Thread
 {
+  p(long paramLong1, long paramLong2) {}
+  
   public void run()
   {
-    boolean bool = false;
-    for (;;)
+    Object localObject = new HashMap();
+    ((HashMap)localObject).put("msfCoreCost", "" + (this.a - MsfService.serviceInitStart));
+    com.tencent.mobileqq.msf.core.c.k localk;
+    if (MsfService.core.statReporter != null)
     {
-      int i;
-      try
+      localk = MsfService.core.statReporter;
+      if (this.b <= 2000L) {
+        break label159;
+      }
+    }
+    int i;
+    label159:
+    for (boolean bool = false;; bool = true)
+    {
+      localk.a("msfInitCost", bool, this.b, 0L, (Map)localObject, false, false);
+      s.c();
+      localObject = BaseApplication.getContext().getSharedPreferences("crashcontrol", 4);
+      j = ((SharedPreferences)localObject).getInt("countRecvKillMsf", 0);
+      if (j <= 0) {
+        break label185;
+      }
+      if (MsfService.core.statReporter == null) {
+        break;
+      }
+      i = 0;
+      while (i < j)
       {
-        Thread.sleep(3000L);
-        HashMap localHashMap = new HashMap();
-        Object localObject1 = ((ActivityManager)BaseApplication.getContext().getSystemService("activity")).getRunningAppProcesses();
-        int j = Process.myPid();
-        localObject1 = ((List)localObject1).iterator();
-        if (!((Iterator)localObject1).hasNext()) {
-          break label417;
-        }
-        Object localObject2 = (ActivityManager.RunningAppProcessInfo)((Iterator)localObject1).next();
-        if (QLog.isColorLevel()) {
-          QLog.d("MSF.S.MsfService", 1, "process info: " + ((ActivityManager.RunningAppProcessInfo)localObject2).processName + " " + ((ActivityManager.RunningAppProcessInfo)localObject2).pid + " " + ((ActivityManager.RunningAppProcessInfo)localObject2).uid);
-        }
-        if (!((ActivityManager.RunningAppProcessInfo)localObject2).processName.equals("com.tencent.mobileqq")) {
-          continue;
-        }
-        i = ((ActivityManager.RunningAppProcessInfo)localObject2).pid;
-        localHashMap.clear();
-        localHashMap.put("DEVICE", Build.DEVICE);
-        localHashMap.put("PRODUCT", Build.PRODUCT);
-        localHashMap.put("MANUFACTURER", Build.MANUFACTURER);
-        localHashMap.put("MODEL", Build.MODEL);
-        localHashMap.put("RELEASE", Build.VERSION.RELEASE);
-        localHashMap.put("FROM", MsfService.access$000());
-        if (j < i)
+        MsfService.core.statReporter.a("countRecvKillMsf", true, 0L, 0L, null, false, false);
+        i += 1;
+      }
+    }
+    ((SharedPreferences)localObject).edit().putInt("countRecvKillMsf", 0).commit();
+    label185:
+    int j = ((SharedPreferences)localObject).getInt("countMsfRealExit", 0);
+    if (j > 0)
+    {
+      if (MsfService.core.statReporter != null)
+      {
+        i = 0;
+        while (i < j)
         {
-          localHashMap.put("WAY", "Daemon");
-          if (MsfService.core.statReporter == null) {
-            break label389;
-          }
-          localObject1 = MsfService.core.statReporter;
-          if (j < i) {
-            bool = true;
-          }
-          ((k)localObject1).a("msfstartway", bool, 0L, 0L, localHashMap, false, false);
-          if (!QLog.isColorLevel()) {
-            break label406;
-          }
-          localObject1 = localHashMap.keySet().iterator();
-          if (!((Iterator)localObject1).hasNext()) {
-            break label406;
-          }
-          localObject2 = (String)((Iterator)localObject1).next();
-          QLog.d("MSF.S.MsfService", 1, "upload map: " + (String)localObject2 + ":" + (String)localHashMap.get(localObject2));
-          continue;
+          MsfService.core.statReporter.a("countMsfRealExit", true, 0L, 0L, null, false, false);
+          i += 1;
         }
-        localThrowable.put("WAY", "QQ");
       }
-      catch (Throwable localThrowable)
+      ((SharedPreferences)localObject).edit().putInt("countMsfRealExit", 0).commit();
+    }
+    try
+    {
+      Thread.sleep(5000L);
+      k.b();
+      k.a();
+      return;
+    }
+    catch (InterruptedException localInterruptedException)
+    {
+      for (;;)
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("MSF.S.MsfService", 1, "upload start way fail : InterruptedException!");
-        }
-        return;
-      }
-      continue;
-      label389:
-      if (QLog.isColorLevel())
-      {
-        QLog.d("MSF.S.MsfService", 1, "upload start way fail: RDM NULL!");
-        continue;
-        label406:
-        j.a(MsfService.core.statReporter, false);
-        return;
-        label417:
-        i = 2147483647;
+        localInterruptedException.printStackTrace();
       }
     }
   }

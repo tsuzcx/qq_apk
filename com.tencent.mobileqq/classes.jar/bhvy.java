@@ -1,23 +1,45 @@
+import android.view.MotionEvent;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import com.tencent.widget.DynamicGridView;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.widget.CustomedTabWidget;
 
 public class bhvy
-  implements AdapterView.OnItemClickListener
+  implements View.OnTouchListener
 {
-  public bhvy(DynamicGridView paramDynamicGridView) {}
+  public bhvy(CustomedTabWidget paramCustomedTabWidget) {}
   
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if ((!this.a.a()) && (this.a.isEnabled()) && (DynamicGridView.a(this.a) != null)) {
-      DynamicGridView.a(this.a).onItemClick(paramAdapterView, paramView, paramInt, paramLong);
+    if (paramMotionEvent.getAction() == 0)
+    {
+      i = 0;
+      if (i < this.a.getChildCount())
+      {
+        if (this.a.getChildAt(i) != paramView) {
+          break label57;
+        }
+        this.a.jdField_a_of_type_Int = i;
+        this.a.jdField_a_of_type_Boolean = true;
+        this.a.invalidate();
+      }
     }
+    label57:
+    while (paramMotionEvent.getAction() != 1) {
+      for (;;)
+      {
+        int i;
+        return false;
+        i += 1;
+      }
+    }
+    this.a.jdField_a_of_type_Boolean = false;
+    this.a.invalidate();
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bhvy
  * JD-Core Version:    0.7.0.1
  */

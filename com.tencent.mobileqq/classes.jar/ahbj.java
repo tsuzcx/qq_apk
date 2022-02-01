@@ -1,14 +1,18 @@
-import android.os.MessageQueue.IdleHandler;
+import android.widget.BaseAdapter;
+import com.tencent.mobileqq.activity.aio.item.ScribbleItemBuilder;
+import com.tencent.mobileqq.data.ChatMessage;
 
 class ahbj
-  implements MessageQueue.IdleHandler
+  extends ahbl
 {
-  ahbj(ahbf paramahbf) {}
-  
-  public boolean queueIdle()
+  ahbj(agwz paramagwz)
   {
-    this.a.b();
-    return false;
+    super(paramagwz, null);
+  }
+  
+  protected afxi a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
+  {
+    return new ScribbleItemBuilder(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner);
   }
 }
 

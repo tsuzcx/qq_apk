@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.webview.swift.component;
 
-import amrm;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -9,15 +8,16 @@ import android.os.Build.VERSION;
 import android.os.Looper;
 import android.support.v4.util.LruCache;
 import android.text.TextUtils;
-import bdgk;
-import bdhe;
-import behv;
-import behw;
-import behx;
-import behy;
-import behz;
-import beia;
-import bejn;
+import aoqd;
+import bgln;
+import bgmj;
+import bhoz;
+import bhpa;
+import bhpb;
+import bhpc;
+import bhpd;
+import bhpe;
+import bhqr;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -47,14 +47,14 @@ import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.concurrent.atomic.AtomicInteger;
 import mqq.app.AppRuntime;
 import mqq.manager.TicketManager;
-import myl;
-import ndq;
+import nhe;
+import nmj;
 import oicq.wlogin_sdk.request.Ticket;
 
 public class SwiftBrowserCookieMonster
 {
   private static final LruCache<String, SwiftBrowserCookieMonster> jdField_a_of_type_AndroidSupportV4UtilLruCache = new LruCache(8);
-  public static volatile beia a;
+  public static volatile bhpe a;
   public static volatile String a;
   public static final AtomicInteger a;
   private static final byte[] jdField_a_of_type_ArrayOfByte = new byte[0];
@@ -63,8 +63,8 @@ public class SwiftBrowserCookieMonster
   public static volatile String d;
   public static volatile String e;
   long jdField_a_of_type_Long = 0L;
-  final ConcurrentHashMap<String, CopyOnWriteArrayList<behz>> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
-  public final myl a;
+  final ConcurrentHashMap<String, CopyOnWriteArrayList<bhpd>> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
+  public final nhe a;
   public volatile boolean a;
   final AtomicInteger jdField_b_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(1);
   boolean jdField_b_of_type_Boolean = false;
@@ -87,7 +87,7 @@ public class SwiftBrowserCookieMonster
     if (jdField_a_of_type_AndroidSupportV4UtilLruCache.size() == 0) {
       CookieSyncManager.createInstance(BaseApplicationImpl.getApplication().getApplicationContext());
     }
-    this.jdField_a_of_type_Myl = myl.a();
+    this.jdField_a_of_type_Nhe = nhe.a();
     jdField_a_of_type_AndroidSupportV4UtilLruCache.put(paramString, this);
     e();
   }
@@ -219,9 +219,9 @@ public class SwiftBrowserCookieMonster
     paramStringBuilder.append(paramString2).append(paramString3);
   }
   
-  static void a(List<String> paramList, bejn parambejn)
+  static void a(List<String> paramList, bhqr parambhqr)
   {
-    ThreadManager.post(new SwiftBrowserCookieMonster.5(paramList, parambejn), 5, null, false);
+    ThreadManager.post(new SwiftBrowserCookieMonster.5(paramList, parambhqr), 5, null, false);
   }
   
   public static void a(AppRuntime arg0)
@@ -301,21 +301,21 @@ public class SwiftBrowserCookieMonster
         }
         if (TextUtils.isEmpty(paramIntent))
         {
-          paramIntent = myl.a();
+          paramIntent = nhe.a();
           TicketManager localTicketManager = (TicketManager)paramAppRuntime.getManager(2);
           String str = paramAppRuntime.getAccount();
           Object localObject1 = paramIntent.a("pt4_token");
           paramIntent = paramAppRuntime.getAppRuntime("modular_web");
           if ((paramIntent instanceof AppInterface))
           {
-            Object localObject2 = new bejn((AppInterface)paramIntent);
-            paramIntent = ((bejn)localObject2).a("p_skey");
+            Object localObject2 = new bhqr((AppInterface)paramIntent);
+            paramIntent = ((bhqr)localObject2).a("p_skey");
             if ((paramIntent != null) && (paramIntent.size() > 0))
             {
               if (QLog.isColorLevel()) {
                 QLog.i("SwiftBrowserCookieMonster", 2, "p_skey top hosts: " + TextUtils.join(", ", paramIntent));
               }
-              a(paramIntent, (bejn)localObject2);
+              a(paramIntent, (bhqr)localObject2);
               if (localObject1 == null) {
                 break label551;
               }
@@ -364,7 +364,7 @@ public class SwiftBrowserCookieMonster
             if (QLog.isColorLevel()) {
               QLog.i("SwiftBrowserCookieMonster", 2, "now preGetPskey and pt4Token: " + TextUtils.join(",", (Object[])localObject2));
             }
-            localTicketManager.GetPskey(str, 16L, (String[])localObject2, new behw());
+            localTicketManager.GetPskey(str, 16L, (String[])localObject2, new bhpa());
             if (QLog.isColorLevel()) {
               QLog.d("SwiftBrowserCookieMonster", 2, "Batch load pt4_token when process preload");
             }
@@ -415,22 +415,22 @@ public class SwiftBrowserCookieMonster
   {
     if (paramString1.equalsIgnoreCase("https://aq.qq.com/"))
     {
-      paramCookiesMap.addCookie(paramString1, a("dvid1", bdhe.a(NetConnInfoCenter.GUID), paramString2, true));
-      paramString2 = bdgk.a();
+      paramCookiesMap.addCookie(paramString1, a("dvid1", bgmj.a(NetConnInfoCenter.GUID), paramString2, true));
+      paramString2 = bgln.a();
       if (!TextUtils.isEmpty(paramString2)) {
-        paramCookiesMap.addCookie(paramString1, a("dvid5", bdhe.a(NetConnInfoCenter.GUID), paramString2, true));
+        paramCookiesMap.addCookie(paramString1, a("dvid5", bgmj.a(NetConnInfoCenter.GUID), paramString2, true));
       }
-      paramString2 = bdgk.b();
+      paramString2 = bgln.b();
       if (!TextUtils.isEmpty(paramString2)) {
-        paramCookiesMap.addCookie(paramString1, a("dvid4", bdhe.a(NetConnInfoCenter.GUID), Md5Utils.getMD5(paramString2), true));
+        paramCookiesMap.addCookie(paramString1, a("dvid4", bgmj.a(NetConnInfoCenter.GUID), Md5Utils.getMD5(paramString2), true));
       }
-      paramString2 = bdgk.c(BaseApplication.getContext());
+      paramString2 = bgln.c(BaseApplication.getContext());
       if (!TextUtils.isEmpty(paramString2)) {
-        paramCookiesMap.addCookie(paramString1, a("dvid2", bdhe.a(NetConnInfoCenter.GUID), Md5Utils.getMD5(paramString2), true));
+        paramCookiesMap.addCookie(paramString1, a("dvid2", bgmj.a(NetConnInfoCenter.GUID), Md5Utils.getMD5(paramString2), true));
       }
-      paramString2 = bdgk.b(BaseApplication.getContext());
+      paramString2 = bgln.b(BaseApplication.getContext());
       if (!TextUtils.isEmpty(paramString2)) {
-        paramCookiesMap.addCookie(paramString1, a("dvid3", bdhe.a(NetConnInfoCenter.GUID), Md5Utils.getMD5(paramString2), true));
+        paramCookiesMap.addCookie(paramString1, a("dvid3", bgmj.a(NetConnInfoCenter.GUID), Md5Utils.getMD5(paramString2), true));
       }
       return true;
     }
@@ -483,8 +483,8 @@ public class SwiftBrowserCookieMonster
       long l1 = System.currentTimeMillis();
       String str1 = paramAppRuntime.getAccount();
       String str2 = String.format("(%d)%s", new Object[] { Integer.valueOf(134217728), paramString });
-      behy localbehy = new behy(paramString, l1);
-      localObject = ((TicketManager)localObject).GetPskey(str1, 16L, new String[] { str2 }, localbehy);
+      bhpc localbhpc = new bhpc(paramString, l1);
+      localObject = ((TicketManager)localObject).GetPskey(str1, 16L, new String[] { str2 }, localbhpc);
       if (localObject == null) {
         break label258;
       }
@@ -494,14 +494,14 @@ public class SwiftBrowserCookieMonster
     {
       paramAppRuntime = paramAppRuntime.getAppRuntime("modular_web");
       if ((paramAppRuntime instanceof AppInterface)) {
-        new bejn((AppInterface)paramAppRuntime).a(paramString, "pt4_token");
+        new bhqr((AppInterface)paramAppRuntime).a(paramString, "pt4_token");
       }
       if (QLog.isColorLevel())
       {
         if (TextUtils.isEmpty((CharSequence)localObject)) {
           break label223;
         }
-        QLog.d("SwiftBrowserCookieMonster", 2, "Get pt4_token cache success for " + paramString + ", token is: " + ndq.c(new StringBuilder().append("pt4_token=").append((String)localObject).toString(), new String[0]));
+        QLog.d("SwiftBrowserCookieMonster", 2, "Get pt4_token cache success for " + paramString + ", token is: " + nmj.c(new StringBuilder().append("pt4_token=").append((String)localObject).toString(), new String[0]));
       }
       while (localObject != null)
       {
@@ -516,7 +516,7 @@ public class SwiftBrowserCookieMonster
   
   public static void b(AppRuntime paramAppRuntime, Intent paramIntent)
   {
-    ThreadManager.postImmediately(new SwiftBrowserCookieMonster.6(paramAppRuntime, paramIntent), new behx(), false);
+    ThreadManager.postImmediately(new SwiftBrowserCookieMonster.6(paramAppRuntime, paramIntent), new bhpb(), false);
   }
   
   public static boolean b()
@@ -589,14 +589,14 @@ public class SwiftBrowserCookieMonster
     //   74: aload_1
     //   75: iconst_0
     //   76: anewarray 112	java/lang/String
-    //   79: invokestatic 494	ndq:c	(Ljava/lang/String;[Ljava/lang/String;)Ljava/lang/String;
+    //   79: invokestatic 494	nmj:c	(Ljava/lang/String;[Ljava/lang/String;)Ljava/lang/String;
     //   82: invokevirtual 126	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   85: ldc_w 559
     //   88: invokevirtual 126	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   91: aload_0
     //   92: iconst_0
     //   93: anewarray 112	java/lang/String
-    //   96: invokestatic 561	ndq:b	(Ljava/lang/String;[Ljava/lang/String;)Ljava/lang/String;
+    //   96: invokestatic 561	nmj:b	(Ljava/lang/String;[Ljava/lang/String;)Ljava/lang/String;
     //   99: invokevirtual 126	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   102: invokevirtual 130	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   105: invokestatic 176	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
@@ -637,7 +637,7 @@ public class SwiftBrowserCookieMonster
     //   178: aload_0
     //   179: iconst_0
     //   180: anewarray 112	java/lang/String
-    //   183: invokestatic 561	ndq:b	(Ljava/lang/String;[Ljava/lang/String;)Ljava/lang/String;
+    //   183: invokestatic 561	nmj:b	(Ljava/lang/String;[Ljava/lang/String;)Ljava/lang/String;
     //   186: invokevirtual 126	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   189: ldc_w 574
     //   192: invokevirtual 126	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
@@ -655,7 +655,7 @@ public class SwiftBrowserCookieMonster
     //   220: aload_0
     //   221: iconst_0
     //   222: anewarray 112	java/lang/String
-    //   225: invokestatic 561	ndq:b	(Ljava/lang/String;[Ljava/lang/String;)Ljava/lang/String;
+    //   225: invokestatic 561	nmj:b	(Ljava/lang/String;[Ljava/lang/String;)Ljava/lang/String;
     //   228: invokevirtual 126	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   231: ldc_w 574
     //   234: invokevirtual 126	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
@@ -687,13 +687,13 @@ public class SwiftBrowserCookieMonster
     e = "";
     jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.set(1);
     jdField_a_of_type_AndroidSupportV4UtilLruCache.evictAll();
-    jdField_a_of_type_Beia = null;
+    jdField_a_of_type_Bhpe = null;
     QLog.i("SwiftBrowserCookieMonster", 1, "resetAllKeyAndCache");
   }
   
   static void e()
   {
-    if (jdField_a_of_type_Beia == null) {
+    if (jdField_a_of_type_Bhpe == null) {
       ThreadManager.postImmediately(new SwiftBrowserCookieMonster.9(), null, false);
     }
   }
@@ -758,7 +758,7 @@ public class SwiftBrowserCookieMonster
       localObject = "ssl.";
       label131:
       localObject = localStringBuilder.append((String)localObject).append("ptlogin2.qq.com/jump?clientuin=").append(paramAppRuntime.getAccount()).append("&clientkey=").append(d).append("&keyindex=19&pt_mq=");
-      if (!paramString.startsWith("http://s.p.qq.com")) {
+      if (!paramString.startsWith("https://s.p.qq.com")) {
         break label237;
       }
     }
@@ -795,7 +795,7 @@ public class SwiftBrowserCookieMonster
       String str = ((TicketManager)paramAppRuntime.getManager(2)).getPskey(paramAppRuntime.getAccount(), paramString);
       paramAppRuntime = paramAppRuntime.getAppRuntime("modular_web");
       if ((paramAppRuntime instanceof AppInterface)) {
-        new bejn((AppInterface)paramAppRuntime).a(paramString, "p_skey");
+        new bhqr((AppInterface)paramAppRuntime).a(paramString, "p_skey");
       }
       if (QLog.isColorLevel())
       {
@@ -803,7 +803,7 @@ public class SwiftBrowserCookieMonster
           break label142;
         }
         paramAppRuntime = new StringBuilder();
-        paramAppRuntime.append("Get p_skey success for ").append(paramString).append(ndq.c(" p_skey=" + str, new String[0]));
+        paramAppRuntime.append("Get p_skey success for ").append(paramString).append(nmj.c(" p_skey=" + str, new String[0]));
         QLog.d("SwiftBrowserCookieMonster", 2, paramAppRuntime.toString());
       }
       while (str != null)
@@ -824,17 +824,17 @@ public class SwiftBrowserCookieMonster
     this.jdField_a_of_type_Long = 0L;
   }
   
-  public void a(behz parambehz)
+  public void a(bhpd parambhpd)
   {
-    if (parambehz != null)
+    if (parambhpd != null)
     {
       Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.keySet().iterator();
       while (localIterator.hasNext())
       {
         Object localObject = (String)localIterator.next();
         localObject = (CopyOnWriteArrayList)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(localObject);
-        if (((CopyOnWriteArrayList)localObject).contains(parambehz)) {
-          ((CopyOnWriteArrayList)localObject).remove(parambehz);
+        if (((CopyOnWriteArrayList)localObject).contains(parambhpd)) {
+          ((CopyOnWriteArrayList)localObject).remove(parambhpd);
         }
       }
     }
@@ -842,7 +842,7 @@ public class SwiftBrowserCookieMonster
   
   void a(SwiftBrowserCookieMonster.CookiesMap paramCookiesMap)
   {
-    String str = amrm.a(BaseApplicationImpl.getContext(), "key_local_cache", "0");
+    String str = aoqd.a(BaseApplicationImpl.getContext(), "key_local_cache", "0");
     if ("0".equals(str)) {
       QLog.e("SwiftBrowserCookieMonster", 1, "addLocaleIdCookie, localeIdStr = 0");
     }
@@ -921,7 +921,7 @@ public class SwiftBrowserCookieMonster
     {
       paramAppRuntime = a("ptlogin2.qq.com", true);
       paramCookiesMap.addCookie(paramAppRuntime, a("superuin", str1, "ptlogin2.qq.com", false));
-      Iterator localIterator = this.jdField_a_of_type_Myl.a("skey").iterator();
+      Iterator localIterator = this.jdField_a_of_type_Nhe.a("skey").iterator();
       String str2;
       while (localIterator.hasNext())
       {
@@ -929,7 +929,7 @@ public class SwiftBrowserCookieMonster
         paramAppRuntime = a(str2, true);
         paramCookiesMap.addCookie(paramAppRuntime, a("uin", str1, str2, false));
       }
-      localIterator = this.jdField_a_of_type_Myl.a("pskey").iterator();
+      localIterator = this.jdField_a_of_type_Nhe.a("pskey").iterator();
       while (localIterator.hasNext())
       {
         str2 = (String)localIterator.next();
@@ -981,7 +981,7 @@ public class SwiftBrowserCookieMonster
     return bool2;
   }
   
-  public boolean a(String paramString, behz parambehz, AppRuntime paramAppRuntime, Intent paramIntent)
+  public boolean a(String paramString, bhpd parambhpd, AppRuntime paramAppRuntime, Intent paramIntent)
   {
     Object localObject1;
     Object localObject2;
@@ -991,7 +991,7 @@ public class SwiftBrowserCookieMonster
       {
         localObject1 = BaseApplicationImpl.getApplication().getRuntime();
         localObject1 = a(paramString, (AppRuntime)localObject1);
-        if (parambehz == null) {
+        if (parambhpd == null) {
           break label326;
         }
         if (this.jdField_a_of_type_Long > 0L)
@@ -1000,12 +1000,12 @@ public class SwiftBrowserCookieMonster
           QLog.e("SwiftBrowserCookieMonster", 1, "some cookie goes wrong, errorCode: " + this.jdField_a_of_type_Long);
         }
         localObject2 = CookieManager.getInstance().getCookie(paramString);
-        if (((TextUtils.isEmpty((CharSequence)localObject2)) || (!((String)localObject2).contains("skey="))) && ((!this.jdField_a_of_type_Myl.a(paramString)) && (!a((String)localObject2)))) {
+        if (((TextUtils.isEmpty((CharSequence)localObject2)) || (!((String)localObject2).contains("skey="))) && ((!this.jdField_a_of_type_Nhe.a(paramString)) && (!a((String)localObject2)))) {
           break label180;
         }
         QLog.e("SwiftBrowserCookieMonster", 1, "some cookie goes wrong, retry set cookie: " + (String)localObject2 + "");
         a();
-        a(paramString, parambehz, paramAppRuntime, paramIntent);
+        a(paramString, parambhpd, paramAppRuntime, paramIntent);
       }
       for (;;)
       {
@@ -1016,22 +1016,22 @@ public class SwiftBrowserCookieMonster
         if ((this.jdField_b_of_type_Boolean) || (this.jdField_a_of_type_Long > 0L))
         {
           if (this.jdField_b_of_type_Boolean) {
-            QLog.i("SwiftBrowserCookieMonster", 1, "cookie is wrong, need do jump ptlogin! " + ndq.b((String)localObject1, new String[0]));
+            QLog.i("SwiftBrowserCookieMonster", 1, "cookie is wrong, need do jump ptlogin! " + nmj.b((String)localObject1, new String[0]));
           }
-          parambehz.a((String)localObject1, null, this.jdField_a_of_type_Long);
+          parambhpd.onSetCookiesFinished((String)localObject1, null, this.jdField_a_of_type_Long);
           b();
         }
         else
         {
           if (QLog.isColorLevel()) {
-            QLog.i("SwiftBrowserCookieMonster", 2, "hit cookie cache, just call onSetCookiesFinished " + ndq.b((String)localObject1, new String[0]) + ", errorCode: " + this.jdField_a_of_type_Long);
+            QLog.i("SwiftBrowserCookieMonster", 2, "hit cookie cache, just call onSetCookiesFinished " + nmj.b((String)localObject1, new String[0]) + ", errorCode: " + this.jdField_a_of_type_Long);
           }
-          parambehz.a((String)localObject1, null, this.jdField_a_of_type_Long);
+          parambhpd.onSetCookiesFinished((String)localObject1, null, this.jdField_a_of_type_Long);
         }
       }
     }
     label326:
-    if (parambehz != null)
+    if (parambhpd != null)
     {
       localObject2 = (CopyOnWriteArrayList)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
       localObject1 = localObject2;
@@ -1040,14 +1040,14 @@ public class SwiftBrowserCookieMonster
         localObject1 = new CopyOnWriteArrayList();
         this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString, localObject1);
       }
-      if (!((CopyOnWriteArrayList)localObject1).contains(parambehz)) {
-        ((CopyOnWriteArrayList)localObject1).add(parambehz);
+      if (!((CopyOnWriteArrayList)localObject1).contains(parambhpd)) {
+        ((CopyOnWriteArrayList)localObject1).add(parambhpd);
       }
       if (QLog.isColorLevel()) {
-        QLog.i("SwiftBrowserCookieMonster", 2, "now add callback for " + ndq.b(paramString, new String[0]));
+        QLog.i("SwiftBrowserCookieMonster", 2, "now add callback for " + nmj.b(paramString, new String[0]));
       }
     }
-    ndq.a("Web_qqbrowser_check_and_set_cookies");
+    nmj.a("Web_qqbrowser_check_and_set_cookies");
     paramString = new SwiftBrowserCookieMonster.1(this, paramAppRuntime, paramIntent);
     if (this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicInteger.compareAndSet(1, 2))
     {
@@ -1055,7 +1055,7 @@ public class SwiftBrowserCookieMonster
       if (QLog.isColorLevel()) {
         QLog.i("SwiftBrowserCookieMonster", 2, "post thread to set all cookies");
       }
-      ThreadManager.postImmediately(paramString, new behv(this), false);
+      ThreadManager.postImmediately(paramString, new bhoz(this), false);
     }
     return true;
   }
@@ -1069,7 +1069,7 @@ public class SwiftBrowserCookieMonster
   
   void b(SwiftBrowserCookieMonster.CookiesMap paramCookiesMap)
   {
-    Iterator localIterator = this.jdField_a_of_type_Myl.a("skey").iterator();
+    Iterator localIterator = this.jdField_a_of_type_Nhe.a("skey").iterator();
     while (localIterator.hasNext())
     {
       String str = (String)localIterator.next();
@@ -1083,7 +1083,7 @@ public class SwiftBrowserCookieMonster
       paramCookiesMap.addCookie(this.l, a("a2", "", this.h, true));
     }
     if (QLog.isColorLevel()) {
-      QLog.d("SwiftBrowserCookieMonster", 2, ndq.b(this.l, new String[0]) + " forbidden login state, remove all login key");
+      QLog.d("SwiftBrowserCookieMonster", 2, nmj.b(this.l, new String[0]) + " forbidden login state, remove all login key");
     }
   }
   
@@ -1165,7 +1165,7 @@ public class SwiftBrowserCookieMonster
       if (!QLog.isColorLevel()) {
         break label87;
       }
-      QLog.d("SwiftBrowserCookieMonster", 1, this.k + ndq.c(new StringBuilder().append(" p_skey=").append(this.f).toString(), new String[0]));
+      QLog.d("SwiftBrowserCookieMonster", 1, this.k + nmj.c(new StringBuilder().append(" p_skey=").append(this.f).toString(), new String[0]));
       break label87;
       paramAppRuntime = "success";
       break label154;
@@ -1225,7 +1225,7 @@ public class SwiftBrowserCookieMonster
         if (TextUtils.isEmpty(jdField_a_of_type_JavaLangString)) {
           break label494;
         }
-        QLog.i("SwiftBrowserCookieMonster", 1, ndq.c("skey=" + jdField_a_of_type_JavaLangString, new String[0]));
+        QLog.i("SwiftBrowserCookieMonster", 1, nmj.c("skey=" + jdField_a_of_type_JavaLangString, new String[0]));
         localObject1 = localTicketManager.GetLocalTicket(str, 4096);
         if (localObject1 != null) {
           QLog.i("SwiftBrowserCookieMonster", 1, "last refresh skey time: " + ((Ticket)localObject1)._create_time);
@@ -1306,7 +1306,7 @@ public class SwiftBrowserCookieMonster
                   }
                   bool1 = true;
                   break label257;
-                  localObject1 = this.jdField_a_of_type_Myl.d(this.l);
+                  localObject1 = this.jdField_a_of_type_Nhe.d(this.l);
                   if (TextUtils.isEmpty((CharSequence)localObject1)) {
                     break label1394;
                   }
@@ -1347,7 +1347,7 @@ public class SwiftBrowserCookieMonster
                   }
                   bool2 = true;
                   break label292;
-                  localObject1 = this.jdField_a_of_type_Myl.e(this.l);
+                  localObject1 = this.jdField_a_of_type_Nhe.e(this.l);
                   if (TextUtils.isEmpty((CharSequence)localObject1)) {
                     break label1388;
                   }
@@ -1379,7 +1379,7 @@ public class SwiftBrowserCookieMonster
                   {
                     if (TextUtils.isEmpty(this.f))
                     {
-                      this.f = localTicketManager.getPskey(str, this.jdField_a_of_type_Myl.d(this.l));
+                      this.f = localTicketManager.getPskey(str, this.jdField_a_of_type_Nhe.d(this.l));
                       localStringBuilder = new StringBuilder().append("getCookie4WebSo: pSkey is miss and fetch result is ");
                       if (!TextUtils.isEmpty(this.f)) {
                         break label1038;
@@ -1410,7 +1410,7 @@ public class SwiftBrowserCookieMonster
                       if (TextUtils.isEmpty(jdField_a_of_type_JavaLangString)) {
                         break label1238;
                       }
-                      QLog.i("SwiftBrowserCookieMonster", 1, ndq.c("skey=" + jdField_a_of_type_JavaLangString, new String[0]));
+                      QLog.i("SwiftBrowserCookieMonster", 1, nmj.c("skey=" + jdField_a_of_type_JavaLangString, new String[0]));
                     }
                     for (;;)
                     {
@@ -1430,7 +1430,7 @@ public class SwiftBrowserCookieMonster
                   {
                     if (TextUtils.isEmpty(this.g))
                     {
-                      this.g = b(paramAppRuntime, this.jdField_a_of_type_Myl.e(this.l));
+                      this.g = b(paramAppRuntime, this.jdField_a_of_type_Nhe.e(this.l));
                       localStringBuilder = new StringBuilder().append("getCookie4WebSo: pt4Token is miss and fetch result is ");
                       if (!TextUtils.isEmpty(this.g)) {
                         break label1356;
@@ -1472,56 +1472,56 @@ public class SwiftBrowserCookieMonster
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_0
-    //   3: getfield 976	com/tencent/mobileqq/webview/swift/component/SwiftBrowserCookieMonster:jdField_a_of_type_Boolean	Z
+    //   3: getfield 977	com/tencent/mobileqq/webview/swift/component/SwiftBrowserCookieMonster:jdField_a_of_type_Boolean	Z
     //   6: ifne +46 -> 52
     //   9: aload_0
     //   10: getfield 61	com/tencent/mobileqq/webview/swift/component/SwiftBrowserCookieMonster:l	Ljava/lang/String;
-    //   13: ldc_w 978
+    //   13: ldc_w 979
     //   16: invokevirtual 635	java/lang/String:startsWith	(Ljava/lang/String;)Z
     //   19: ifeq +36 -> 55
     //   22: aload_0
-    //   23: ldc_w 980
-    //   26: putfield 982	com/tencent/mobileqq/webview/swift/component/SwiftBrowserCookieMonster:j	Ljava/lang/String;
+    //   23: ldc_w 981
+    //   26: putfield 983	com/tencent/mobileqq/webview/swift/component/SwiftBrowserCookieMonster:j	Ljava/lang/String;
     //   29: aload_0
     //   30: ldc 217
     //   32: putfield 614	com/tencent/mobileqq/webview/swift/component/SwiftBrowserCookieMonster:i	Ljava/lang/String;
     //   35: aload_0
     //   36: ldc 217
-    //   38: putfield 860	com/tencent/mobileqq/webview/swift/component/SwiftBrowserCookieMonster:h	Ljava/lang/String;
+    //   38: putfield 861	com/tencent/mobileqq/webview/swift/component/SwiftBrowserCookieMonster:h	Ljava/lang/String;
     //   41: aload_0
     //   42: ldc 217
     //   44: putfield 612	com/tencent/mobileqq/webview/swift/component/SwiftBrowserCookieMonster:k	Ljava/lang/String;
     //   47: aload_0
     //   48: iconst_1
-    //   49: putfield 976	com/tencent/mobileqq/webview/swift/component/SwiftBrowserCookieMonster:jdField_a_of_type_Boolean	Z
+    //   49: putfield 977	com/tencent/mobileqq/webview/swift/component/SwiftBrowserCookieMonster:jdField_a_of_type_Boolean	Z
     //   52: aload_0
     //   53: monitorexit
     //   54: return
     //   55: aload_0
     //   56: aload_0
     //   57: getfield 61	com/tencent/mobileqq/webview/swift/component/SwiftBrowserCookieMonster:l	Ljava/lang/String;
-    //   60: invokestatic 983	ndq:b	(Ljava/lang/String;)Ljava/lang/String;
-    //   63: putfield 982	com/tencent/mobileqq/webview/swift/component/SwiftBrowserCookieMonster:j	Ljava/lang/String;
+    //   60: invokestatic 984	nmj:b	(Ljava/lang/String;)Ljava/lang/String;
+    //   63: putfield 983	com/tencent/mobileqq/webview/swift/component/SwiftBrowserCookieMonster:j	Ljava/lang/String;
     //   66: aload_0
     //   67: aload_0
-    //   68: getfield 88	com/tencent/mobileqq/webview/swift/component/SwiftBrowserCookieMonster:jdField_a_of_type_Myl	Lmyl;
+    //   68: getfield 88	com/tencent/mobileqq/webview/swift/component/SwiftBrowserCookieMonster:jdField_a_of_type_Nhe	Lnhe;
     //   71: aload_0
     //   72: getfield 61	com/tencent/mobileqq/webview/swift/component/SwiftBrowserCookieMonster:l	Ljava/lang/String;
-    //   75: invokevirtual 985	myl:f	(Ljava/lang/String;)Ljava/lang/String;
-    //   78: putfield 860	com/tencent/mobileqq/webview/swift/component/SwiftBrowserCookieMonster:h	Ljava/lang/String;
+    //   75: invokevirtual 986	nhe:f	(Ljava/lang/String;)Ljava/lang/String;
+    //   78: putfield 861	com/tencent/mobileqq/webview/swift/component/SwiftBrowserCookieMonster:h	Ljava/lang/String;
     //   81: aload_0
     //   82: aload_0
-    //   83: getfield 88	com/tencent/mobileqq/webview/swift/component/SwiftBrowserCookieMonster:jdField_a_of_type_Myl	Lmyl;
+    //   83: getfield 88	com/tencent/mobileqq/webview/swift/component/SwiftBrowserCookieMonster:jdField_a_of_type_Nhe	Lnhe;
     //   86: aload_0
     //   87: getfield 61	com/tencent/mobileqq/webview/swift/component/SwiftBrowserCookieMonster:l	Ljava/lang/String;
-    //   90: invokevirtual 960	myl:d	(Ljava/lang/String;)Ljava/lang/String;
+    //   90: invokevirtual 961	nhe:d	(Ljava/lang/String;)Ljava/lang/String;
     //   93: putfield 612	com/tencent/mobileqq/webview/swift/component/SwiftBrowserCookieMonster:k	Ljava/lang/String;
     //   96: aload_0
     //   97: aload_0
-    //   98: getfield 88	com/tencent/mobileqq/webview/swift/component/SwiftBrowserCookieMonster:jdField_a_of_type_Myl	Lmyl;
+    //   98: getfield 88	com/tencent/mobileqq/webview/swift/component/SwiftBrowserCookieMonster:jdField_a_of_type_Nhe	Lnhe;
     //   101: aload_0
     //   102: getfield 61	com/tencent/mobileqq/webview/swift/component/SwiftBrowserCookieMonster:l	Ljava/lang/String;
-    //   105: invokevirtual 970	myl:e	(Ljava/lang/String;)Ljava/lang/String;
+    //   105: invokevirtual 971	nhe:e	(Ljava/lang/String;)Ljava/lang/String;
     //   108: putfield 614	com/tencent/mobileqq/webview/swift/component/SwiftBrowserCookieMonster:i	Ljava/lang/String;
     //   111: invokestatic 169	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   114: ifeq -67 -> 47
@@ -1530,25 +1530,25 @@ public class SwiftBrowserCookieMonster
     //   120: new 117	java/lang/StringBuilder
     //   123: dup
     //   124: invokespecial 131	java/lang/StringBuilder:<init>	()V
-    //   127: ldc_w 987
+    //   127: ldc_w 988
     //   130: invokevirtual 126	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   133: aload_0
-    //   134: getfield 982	com/tencent/mobileqq/webview/swift/component/SwiftBrowserCookieMonster:j	Ljava/lang/String;
+    //   134: getfield 983	com/tencent/mobileqq/webview/swift/component/SwiftBrowserCookieMonster:j	Ljava/lang/String;
     //   137: invokevirtual 126	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   140: ldc_w 989
+    //   140: ldc_w 990
     //   143: invokevirtual 126	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   146: aload_0
     //   147: getfield 612	com/tencent/mobileqq/webview/swift/component/SwiftBrowserCookieMonster:k	Ljava/lang/String;
     //   150: invokevirtual 126	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   153: ldc_w 991
+    //   153: ldc_w 992
     //   156: invokevirtual 126	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   159: aload_0
     //   160: getfield 614	com/tencent/mobileqq/webview/swift/component/SwiftBrowserCookieMonster:i	Ljava/lang/String;
     //   163: invokevirtual 126	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   166: ldc_w 993
+    //   166: ldc_w 994
     //   169: invokevirtual 126	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   172: aload_0
-    //   173: getfield 860	com/tencent/mobileqq/webview/swift/component/SwiftBrowserCookieMonster:h	Ljava/lang/String;
+    //   173: getfield 861	com/tencent/mobileqq/webview/swift/component/SwiftBrowserCookieMonster:h	Ljava/lang/String;
     //   176: invokevirtual 126	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   179: invokevirtual 130	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   182: invokestatic 176	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
@@ -1616,7 +1616,7 @@ public class SwiftBrowserCookieMonster
       if (TextUtils.isEmpty(jdField_a_of_type_JavaLangString)) {
         break label389;
       }
-      paramAppRuntime = this.jdField_a_of_type_Myl.a("skey").iterator();
+      paramAppRuntime = this.jdField_a_of_type_Nhe.a("skey").iterator();
       while (paramAppRuntime.hasNext())
       {
         String str = (String)paramAppRuntime.next();
@@ -1647,7 +1647,7 @@ public class SwiftBrowserCookieMonster
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.webview.swift.component.SwiftBrowserCookieMonster
  * JD-Core Version:    0.7.0.1
  */

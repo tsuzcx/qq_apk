@@ -10,6 +10,7 @@ import com.tencent.ttpic.openapi.PTFaceAttr;
 import com.tencent.ttpic.openapi.PTFaceAttr.PTExpression;
 import com.tencent.ttpic.openapi.model.FaceActionCounter;
 import com.tencent.ttpic.util.youtu.EmotionDetector;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
@@ -32,14 +33,24 @@ public class PTEmotionDetector
     }
     int i = paramAIParam.getWidth();
     int j = paramAIParam.getHeight();
+    boolean bool2 = false;
+    Object localObject = paramAIParam.getModuleParam(getModuleType());
+    boolean bool1 = bool2;
+    if (localObject != null)
+    {
+      bool1 = bool2;
+      if (((Map)localObject).containsKey("expressionDetectForEveryFace")) {
+        bool1 = ((Boolean)((Map)localObject).get("expressionDetectForEveryFace")).booleanValue();
+      }
+    }
     if (paramAIParam.getScale(getModuleType()) != null) {}
-    for (Float localFloat = paramAIParam.getScale(getModuleType());; localFloat = Float.valueOf(1.0F))
+    for (localObject = paramAIParam.getScale(getModuleType());; localObject = Float.valueOf(1.0F))
     {
       paramAIParam = (PTFaceAttr)paramAIParam.getAIAttr().getRealtimeData(AEDetectorType.FACE.value);
       if (paramAIParam == null) {
         return EmotionUtil.getDefaultEmotionAttr();
       }
-      this.mPTEmotionAttr = ((PTEmotionAttr)EMOTION_DETECTOR.getEmotionDetector().detectSmile(paramAIInput.getBytes(localFloat.floatValue()), (int)(i * localFloat.floatValue()), (int)(j * localFloat.floatValue()), EmotionUtil.genEmotionInfo(paramAIParam, localFloat.floatValue())));
+      this.mPTEmotionAttr = ((PTEmotionAttr)EMOTION_DETECTOR.getEmotionDetector().detectSmile(paramAIInput.getBytes(((Float)localObject).floatValue()), (int)(i * ((Float)localObject).floatValue()), (int)(j * ((Float)localObject).floatValue()), EmotionUtil.genEmotionInfo(paramAIParam, ((Float)localObject).floatValue()), bool1));
       return this.mPTEmotionAttr;
     }
   }
@@ -68,11 +79,6 @@ public class PTEmotionDetector
   
   public void onModuleUninstall() {}
   
-  public boolean reInit()
-  {
-    return EMOTION_DETECTOR.init();
-  }
-  
   public void updateAIAttr(AIAttr paramAIAttr)
   {
     if (this.mPTEmotionAttr == null) {}
@@ -84,9 +90,24 @@ public class PTEmotionDetector
         return;
         paramAIAttr = (PTFaceAttr)paramAIAttr.getRealtimeData(AEDetectorType.FACE.value);
       } while ((paramAIAttr == null) || (!this.mPTEmotionAttr.isSmile()));
-      Set localSet = paramAIAttr.getTriggeredExpression();
-      localSet.add(Integer.valueOf(PTFaceAttr.PTExpression.SMILE.value));
-      paramAIAttr.setTriggeredExpression(localSet);
+      Object localObject = paramAIAttr.getTriggeredExpression();
+      ((Set)localObject).add(Integer.valueOf(PTFaceAttr.PTExpression.SMILE.value));
+      paramAIAttr.setTriggeredExpression((Set)localObject);
+      localObject = paramAIAttr.getExpressions();
+      List localList = this.mPTEmotionAttr.getIsSmiles();
+      if ((localObject != null) && (localList != null))
+      {
+        int i = 0;
+        while (i < localList.size())
+        {
+          boolean bool = ((Boolean)localList.get(i)).booleanValue();
+          Set localSet = (Set)((List)localObject).get(i);
+          if ((bool) && (localSet != null)) {
+            localSet.add(Integer.valueOf(PTFaceAttr.PTExpression.SMILE.value));
+          }
+          i += 1;
+        }
+      }
       l = System.currentTimeMillis();
       paramAIAttr = (FaceActionCounter)paramAIAttr.getFaceActionCounter().get(Integer.valueOf(PTFaceAttr.PTExpression.SMILE.value));
     } while ((paramAIAttr == null) || (l - paramAIAttr.updateTime <= 1000L));
@@ -96,7 +117,7 @@ public class PTEmotionDetector
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.openapi.ttpicmodule.PTEmotionDetector
  * JD-Core Version:    0.7.0.1
  */

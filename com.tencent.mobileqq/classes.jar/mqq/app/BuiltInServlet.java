@@ -34,7 +34,9 @@ import mqq.observer.SSOAccountObserver;
 import mqq.observer.ServerConfigObserver;
 import mqq.observer.SubAccountObserver;
 import oicq.wlogin_sdk.request.WFastLoginInfo;
+import oicq.wlogin_sdk.request.WUserSigInfo;
 import oicq.wlogin_sdk.request.WtloginMsfListener;
+import oicq.wlogin_sdk.tlv_type.tlv_t;
 import oicq.wlogin_sdk.tools.ErrMsg;
 import protocol.KQQConfig.GetResourceRespV2;
 
@@ -43,6 +45,26 @@ public class BuiltInServlet
   implements Constants.Action
 {
   private boolean isRegist;
+  
+  private void addOpenSdkExtra(Intent paramIntent, ToServiceMsg paramToServiceMsg)
+  {
+    if (!"com.tencent.mobileqq:openSdk".equals(paramIntent.getStringExtra("process"))) {}
+    for (;;)
+    {
+      return;
+      paramIntent = paramIntent.getBundleExtra("extra");
+      if (paramIntent != null)
+      {
+        Iterator localIterator = paramIntent.keySet().iterator();
+        while (localIterator.hasNext())
+        {
+          String str = (String)localIterator.next();
+          paramToServiceMsg.addAttribute(str, paramIntent.get(str));
+          QLog.d("BuiltInServlet", 1, "BuiltInServlet --> key=" + str + ", value=" + paramIntent.get(str));
+        }
+      }
+    }
+  }
   
   static boolean isQQUin(String paramString)
   {
@@ -71,17 +93,18 @@ public class BuiltInServlet
       i = paramIntent.getIntExtra("action", 0);
     }
     Bundle localBundle = new Bundle();
-    Object localObject9;
+    Object localObject10;
     int j;
     Object localObject1;
     label310:
-    Object localObject5;
+    Object localObject6;
     label333:
-    long l3;
+    label1260:
+    Object localObject2;
     long l1;
     long l2;
-    Object localObject8;
-    Object localObject6;
+    Object localObject9;
+    Object localObject7;
     switch (i)
     {
     default: 
@@ -92,42 +115,42 @@ public class BuiltInServlet
       do
       {
         return;
-        Object localObject7 = paramFromServiceMsg.getUin();
+        Object localObject8 = paramFromServiceMsg.getUin();
         i = paramFromServiceMsg.getBusinessFailCode();
-        localObject9 = paramFromServiceMsg.getBusinessFailMsg();
+        localObject10 = paramFromServiceMsg.getBusinessFailMsg();
         j = ((Integer)paramFromServiceMsg.getAttribute("ret")).intValue();
         if (!paramFromServiceMsg.getAttributes().containsKey("resp_verify_image")) {
-          break label5636;
+          break label5691;
         }
         localObject1 = (byte[])paramFromServiceMsg.getAttribute("resp_verify_image");
         if (!paramFromServiceMsg.getAttributes().containsKey("resp_verify_msg")) {
-          break label5630;
+          break label5685;
         }
-        localObject5 = (String)paramFromServiceMsg.getAttribute("resp_verify_msg");
-        localBundle.putString("uin", (String)localObject7);
+        localObject6 = (String)paramFromServiceMsg.getAttribute("resp_verify_msg");
+        localBundle.putString("uin", (String)localObject8);
         localBundle.putInt("resultCode", i);
-        localBundle.putString("errorMsg", (String)localObject9);
+        localBundle.putString("errorMsg", (String)localObject10);
         localBundle.putInt("ret", j);
-        localBundle.putString("notice", (String)localObject5);
+        localBundle.putString("notice", (String)localObject6);
         localBundle.putByteArray("image", (byte[])localObject1);
         notifyObserver(paramIntent, 2205, paramFromServiceMsg.isSuccess(), localBundle, AccountObserver.class);
         return;
-        localObject5 = paramFromServiceMsg.getUin();
+        localObject6 = paramFromServiceMsg.getUin();
         i = paramFromServiceMsg.getBusinessFailCode();
-        localObject7 = paramFromServiceMsg.getBusinessFailMsg();
-        localObject9 = (String)paramFromServiceMsg.getAttribute("userAccount");
-        Object localObject10 = (byte[])paramFromServiceMsg.getAttribute("userInput");
+        localObject8 = paramFromServiceMsg.getBusinessFailMsg();
+        localObject10 = (String)paramFromServiceMsg.getAttribute("userAccount");
+        Object localObject11 = (byte[])paramFromServiceMsg.getAttribute("userInput");
         j = ((Integer)paramFromServiceMsg.getAttribute("ret")).intValue();
         ErrMsg localErrMsg = (ErrMsg)paramFromServiceMsg.getAttribute("lastError");
         localObject1 = null;
         if (paramFromServiceMsg.getAttributes().containsKey("image_buf")) {
           localObject1 = (byte[])paramFromServiceMsg.getAttribute("image_buf");
         }
-        localBundle.putString("uin", (String)localObject5);
+        localBundle.putString("uin", (String)localObject6);
         localBundle.putInt("resultCode", i);
-        localBundle.putString("errorMsg", (String)localObject7);
-        localBundle.putString("userAccount", (String)localObject9);
-        localBundle.putByteArray("userInput", (byte[])localObject10);
+        localBundle.putString("errorMsg", (String)localObject8);
+        localBundle.putString("userAccount", (String)localObject10);
+        localBundle.putByteArray("userInput", (byte[])localObject11);
         localBundle.putInt("ret", j);
         localBundle.putParcelable("lastError", localErrMsg);
         localBundle.putByteArray("image", (byte[])localObject1);
@@ -135,18 +158,18 @@ public class BuiltInServlet
         return;
         localObject1 = paramFromServiceMsg.getUin();
         i = paramFromServiceMsg.getBusinessFailCode();
-        localObject5 = paramFromServiceMsg.getBusinessFailMsg();
-        localObject7 = (String)paramFromServiceMsg.getAttribute("userAccount");
-        localObject9 = (byte[])paramFromServiceMsg.getAttribute("pictureData");
+        localObject6 = paramFromServiceMsg.getBusinessFailMsg();
+        localObject8 = (String)paramFromServiceMsg.getAttribute("userAccount");
+        localObject10 = (byte[])paramFromServiceMsg.getAttribute("pictureData");
         j = ((Integer)paramFromServiceMsg.getAttribute("ret")).intValue();
-        localObject10 = (ErrMsg)paramFromServiceMsg.getAttribute("lastError");
+        localObject11 = (ErrMsg)paramFromServiceMsg.getAttribute("lastError");
         localBundle.putString("uin", (String)localObject1);
         localBundle.putInt("resultCode", i);
-        localBundle.putString("errorMsg", (String)localObject5);
-        localBundle.putString("userAccount", (String)localObject7);
-        localBundle.putByteArray("pictureData", (byte[])localObject9);
+        localBundle.putString("errorMsg", (String)localObject6);
+        localBundle.putString("userAccount", (String)localObject8);
+        localBundle.putByteArray("pictureData", (byte[])localObject10);
         localBundle.putInt("ret", j);
-        localBundle.putParcelable("lastError", (Parcelable)localObject10);
+        localBundle.putParcelable("lastError", (Parcelable)localObject11);
         notifyObserver(paramIntent, 2207, paramFromServiceMsg.isSuccess(), localBundle, AccountObserver.class);
         return;
         if (QLog.isColorLevel()) {
@@ -156,56 +179,74 @@ public class BuiltInServlet
         localBundle.putString("uin", paramFromServiceMsg.getUin());
         localBundle.putString("alias", paramIntent.getStringExtra("account"));
         localBundle.putString("error", paramFromServiceMsg.getBusinessFailMsg());
-        localObject7 = paramFromServiceMsg.getAttribute("resp_login_url");
-        localObject5 = "";
-        localObject1 = localObject5;
-        if (localObject7 != null)
+        localObject8 = paramFromServiceMsg.getAttribute("resp_login_url");
+        localObject6 = "";
+        localObject1 = localObject6;
+        if (localObject8 != null)
         {
-          localObject1 = localObject5;
-          if ((localObject7 instanceof String)) {
-            localObject1 = (String)localObject7;
+          localObject1 = localObject6;
+          if ((localObject8 instanceof String)) {
+            localObject1 = (String)localObject8;
           }
         }
-        localObject5 = paramFromServiceMsg.getAttribute("resp_logini_ret");
+        localObject6 = paramFromServiceMsg.getAttribute("resp_logini_ret");
         j = 0;
         i = j;
-        if (localObject5 != null)
+        if (localObject6 != null)
         {
           i = j;
-          if ((localObject5 instanceof Integer)) {
-            i = ((Integer)localObject5).intValue();
+          if ((localObject6 instanceof Integer)) {
+            i = ((Integer)localObject6).intValue();
           }
         }
-        localObject9 = paramFromServiceMsg.getAttribute("resp_login_lhsig");
-        localObject7 = null;
-        localObject5 = localObject7;
-        if (localObject9 != null)
+        localObject10 = paramFromServiceMsg.getAttribute("resp_login_lhsig");
+        localObject8 = null;
+        localObject6 = localObject8;
+        if (localObject10 != null)
         {
-          localObject5 = localObject7;
-          if ((localObject9 instanceof byte[])) {
-            localObject5 = (byte[])localObject9;
+          localObject6 = localObject8;
+          if ((localObject10 instanceof byte[])) {
+            localObject6 = (byte[])localObject10;
           }
         }
         try
         {
-          localObject7 = (ErrMsg)paramFromServiceMsg.getAttribute("lastError");
-          if (localObject7 != null) {
-            localBundle.putInt("errorver", ((ErrMsg)localObject7).getVersion());
+          localObject8 = (ErrMsg)paramFromServiceMsg.getAttribute("lastError");
+          if (localObject8 != null) {
+            localBundle.putInt("errorver", ((ErrMsg)localObject8).getVersion());
           }
         }
-        catch (Exception localException12)
+        catch (Exception localException13)
         {
           for (;;)
           {
-            QLog.e("mqq", 1, "getAttribute error:" + localException12.getMessage());
+            QLog.e("mqq", 1, "getAttribute error:" + localException13.getMessage());
             continue;
             MsfSdkUtils.updateSimpleAccountNotCreate(paramFromServiceMsg.getUin(), false);
+            try
+            {
+              localObject1 = (WUserSigInfo)paramFromServiceMsg.getAttribute("userSigInfo");
+              if ((localObject1 != null) && (((WUserSigInfo)localObject1).loginResultTLVMap != null) && (((WUserSigInfo)localObject1).loginResultTLVMap.get(Integer.valueOf(1347)) != null))
+              {
+                localObject1 = ((tlv_t)((WUserSigInfo)localObject1).loginResultTLVMap.get(Integer.valueOf(1347))).get_data();
+                if (localObject1 != null) {
+                  break label1260;
+                }
+              }
+              QLog.d("ACTION_LOGIN", 1, "ignore tlv543Bytes");
+            }
+            catch (Exception localException1)
+            {
+              QLog.e("ACTION_LOGIN", 1, "getAttribute userSignInfo error:" + localException1.getMessage());
+            }
+            continue;
+            localBundle.putByteArray("tlverror", localException1);
           }
         }
         localBundle.putString("errorurl", (String)localObject1);
         localBundle.putInt("loginret", i);
         localBundle.putInt("code", paramFromServiceMsg.getResultCode());
-        localBundle.putByteArray("lhsig", (byte[])localObject5);
+        localBundle.putByteArray("lhsig", (byte[])localObject6);
         if (!paramFromServiceMsg.isSuccess()) {
           break;
         }
@@ -231,24 +272,24 @@ public class BuiltInServlet
       if (paramFromServiceMsg.isSuccess())
       {
         MsfSdkUtils.addLoginSimpleAccount(paramFromServiceMsg.getUin(), true);
-        localObject1 = paramIntent.getStringExtra("subaccount");
-        if (!TextUtils.isEmpty((CharSequence)localObject1)) {
-          getAppRuntime().getApplication().setProperty(Constants.PropertiesKey.uinDisplayName.toString() + paramFromServiceMsg.getUin(), (String)localObject1);
+        localObject2 = paramIntent.getStringExtra("subaccount");
+        if (!TextUtils.isEmpty((CharSequence)localObject2)) {
+          getAppRuntime().getApplication().setProperty(Constants.PropertiesKey.uinDisplayName.toString() + paramFromServiceMsg.getUin(), (String)localObject2);
         }
       }
       for (;;)
       {
-        localObject1 = (String)paramFromServiceMsg.getAttribute("mainaccount");
-        localBundle.putString("submainaccount", (String)localObject1);
-        localObject5 = getAppRuntime().getApplication().getFirstSimpleAccount();
-        l3 = System.currentTimeMillis();
+        localObject2 = (String)paramFromServiceMsg.getAttribute("mainaccount");
+        localBundle.putString("submainaccount", (String)localObject2);
+        localObject6 = getAppRuntime().getApplication().getFirstSimpleAccount();
+        long l3 = System.currentTimeMillis();
         l1 = l3;
-        if (localObject5 != null) {
+        if (localObject6 != null) {
           l2 = l3;
         }
         try
         {
-          long l4 = getAppRuntime().getApplication().string2Long(getAppRuntime().getApplication().getProperty(((SimpleAccount)localObject5).getUin() + Constants.Key._logintime));
+          long l4 = getAppRuntime().getApplication().string2Long(getAppRuntime().getApplication().getProperty(((SimpleAccount)localObject6).getUin() + Constants.Key._logintime));
           l1 = l3;
           if (l3 <= l4)
           {
@@ -263,19 +304,19 @@ public class BuiltInServlet
             }
           }
         }
-        catch (Exception localException11)
+        catch (Exception localException12)
         {
           for (;;)
           {
-            localException11.printStackTrace();
+            localException12.printStackTrace();
             l1 = l2;
           }
         }
         if (paramFromServiceMsg.getUin() != null) {
           getAppRuntime().getApplication().setProperty(paramFromServiceMsg.getUin() + Constants.Key._logintime, String.valueOf(l1));
         }
-        if (localObject1 != null) {
-          getAppRuntime().getApplication().setProperty((String)localObject1 + Constants.Key._logintime, String.valueOf(l1 + 1L));
+        if (localObject2 != null) {
+          getAppRuntime().getApplication().setProperty((String)localObject2 + Constants.Key._logintime, String.valueOf(l1 + 1L));
         }
         getAppRuntime().getApplication().setSortAccountList(MsfSdkUtils.getLoginedAccountList());
         if (QLog.isColorLevel()) {
@@ -298,9 +339,9 @@ public class BuiltInServlet
         localBundle.putByteArray("st_temp", (byte[])paramFromServiceMsg.getAttribute("st_temp"));
         localBundle.putByteArray("st_temp_key", (byte[])paramFromServiceMsg.getAttribute("st_temp_key"));
       }
-      localObject1 = paramFromServiceMsg.getAttribute("ret");
-      if ((localObject1 != null) && ((localObject1 instanceof Integer))) {
-        localBundle.putInt("ret", ((Integer)localObject1).intValue());
+      localObject2 = paramFromServiceMsg.getAttribute("ret");
+      if ((localObject2 != null) && ((localObject2 instanceof Integer))) {
+        localBundle.putInt("ret", ((Integer)localObject2).intValue());
       }
       for (;;)
       {
@@ -330,9 +371,9 @@ public class BuiltInServlet
       }
       localBundle.putInt("code", paramFromServiceMsg.getResultCode());
       localBundle.putParcelable("errMsg", (Parcelable)paramFromServiceMsg.getAttribute("errMsg"));
-      localObject1 = paramFromServiceMsg.getAttribute("ret");
-      if ((localObject1 != null) && ((localObject1 instanceof Integer))) {
-        localBundle.putInt("ret", ((Integer)localObject1).intValue());
+      localObject2 = paramFromServiceMsg.getAttribute("ret");
+      if ((localObject2 != null) && ((localObject2 instanceof Integer))) {
+        localBundle.putInt("ret", ((Integer)localObject2).intValue());
       }
       for (;;)
       {
@@ -345,30 +386,30 @@ public class BuiltInServlet
       localBundle.putString("ssoAccount", (String)paramFromServiceMsg.getAttribute("userAccount"));
       if (paramFromServiceMsg.isSuccess())
       {
-        localObject1 = paramFromServiceMsg.getAttribute("dwSrcAppid");
-        if ((localObject1 != null) && ((localObject1 instanceof Long))) {
-          localBundle.putLong("dwSrcAppid", ((Long)localObject1).longValue());
+        localObject2 = paramFromServiceMsg.getAttribute("dwSrcAppid");
+        if ((localObject2 != null) && ((localObject2 instanceof Long))) {
+          localBundle.putLong("dwSrcAppid", ((Long)localObject2).longValue());
         }
-        localObject1 = paramFromServiceMsg.getAttribute("dwMainSigMap");
-        if ((localObject1 != null) && ((localObject1 instanceof Integer))) {
-          localBundle.putInt("dwMainSigMap", ((Integer)localObject1).intValue());
+        localObject2 = paramFromServiceMsg.getAttribute("dwMainSigMap");
+        if ((localObject2 != null) && ((localObject2 instanceof Integer))) {
+          localBundle.putInt("dwMainSigMap", ((Integer)localObject2).intValue());
         }
-        localObject1 = paramFromServiceMsg.getAttribute("dwSubSrcAppid");
-        if ((localObject1 != null) && ((localObject1 instanceof Long))) {
-          localBundle.putLong("dwSubSrcAppid", ((Long)localObject1).longValue());
+        localObject2 = paramFromServiceMsg.getAttribute("dwSubSrcAppid");
+        if ((localObject2 != null) && ((localObject2 instanceof Long))) {
+          localBundle.putLong("dwSubSrcAppid", ((Long)localObject2).longValue());
         }
         localBundle.putByteArray("dstAppName", (byte[])paramFromServiceMsg.getAttribute("dstAppName"));
-        localObject1 = paramFromServiceMsg.getAttribute("dwDstSsoVer");
-        if ((localObject1 != null) && ((localObject1 instanceof Long))) {
-          localBundle.putLong("dwDstSsoVer", ((Long)localObject1).longValue());
+        localObject2 = paramFromServiceMsg.getAttribute("dwDstSsoVer");
+        if ((localObject2 != null) && ((localObject2 instanceof Long))) {
+          localBundle.putLong("dwDstSsoVer", ((Long)localObject2).longValue());
         }
-        localObject1 = paramFromServiceMsg.getAttribute("dwDstAppid");
-        if ((localObject1 != null) && ((localObject1 instanceof Long))) {
-          localBundle.putLong("dwDstAppid", ((Long)localObject1).longValue());
+        localObject2 = paramFromServiceMsg.getAttribute("dwDstAppid");
+        if ((localObject2 != null) && ((localObject2 instanceof Long))) {
+          localBundle.putLong("dwDstAppid", ((Long)localObject2).longValue());
         }
-        localObject1 = paramFromServiceMsg.getAttribute("dwSubDstAppid");
-        if ((localObject1 != null) && ((localObject1 instanceof Long))) {
-          localBundle.putLong("dwSubDstAppid", ((Long)localObject1).longValue());
+        localObject2 = paramFromServiceMsg.getAttribute("dwSubDstAppid");
+        if ((localObject2 != null) && ((localObject2 instanceof Long))) {
+          localBundle.putLong("dwSubDstAppid", ((Long)localObject2).longValue());
         }
         localBundle.putParcelable("userSigInfo", (Parcelable)paramFromServiceMsg.getAttribute("userSigInfo"));
         localBundle.putParcelable("fastLoginInfo", (Parcelable)paramFromServiceMsg.getAttribute("fastLoginInfo"));
@@ -378,9 +419,9 @@ public class BuiltInServlet
       }
       localBundle.putInt("code", paramFromServiceMsg.getResultCode());
       localBundle.putParcelable("errMsg", (Parcelable)paramFromServiceMsg.getAttribute("errMsg"));
-      localObject1 = paramFromServiceMsg.getAttribute("ret");
-      if ((localObject1 != null) && ((localObject1 instanceof Integer))) {
-        localBundle.putInt("ret", ((Integer)localObject1).intValue());
+      localObject2 = paramFromServiceMsg.getAttribute("ret");
+      if ((localObject2 != null) && ((localObject2 instanceof Integer))) {
+        localBundle.putInt("ret", ((Integer)localObject2).intValue());
       }
       for (;;)
       {
@@ -389,59 +430,59 @@ public class BuiltInServlet
         localBundle.putInt("ret", -1);
       }
     case 1037: 
-      localObject9 = (String)paramFromServiceMsg.getAttribute("MSF.getKey");
-      localObject8 = paramFromServiceMsg.getUin();
-      localObject6 = null;
-      localObject1 = localObject6;
-      if (localObject9 != null)
+      localObject10 = (String)paramFromServiceMsg.getAttribute("MSF.getKey");
+      localObject9 = paramFromServiceMsg.getUin();
+      localObject7 = null;
+      localObject2 = localObject7;
+      if (localObject10 != null)
       {
-        localObject1 = ((String)localObject9).split(";");
-        if (localObject1 == null) {
-          break label5624;
+        localObject2 = ((String)localObject10).split(";");
+        if (localObject2 == null) {
+          break label5679;
         }
       }
       break;
     }
     for (;;)
     {
-      Object localObject2;
+      Object localObject3;
       try
       {
-        if (localObject1.length <= 0) {
-          break label5624;
+        if (localObject2.length <= 0) {
+          break label5679;
         }
         i = 0;
-        if (i >= localObject1.length) {
-          break label5624;
+        if (i >= localObject2.length) {
+          break label5679;
         }
-        localObject9 = localObject1[i];
-        if ((localObject9 == null) || (((String)localObject9).length() == 0) || (!((String)localObject9).startsWith("UIN=" + (String)localObject8 + ","))) {
-          break label5642;
+        localObject10 = localObject2[i];
+        if ((localObject10 == null) || (((String)localObject10).length() == 0) || (!((String)localObject10).startsWith("UIN=" + (String)localObject9 + ","))) {
+          break label5697;
         }
-        j = ((String)localObject9).indexOf("A2=");
+        j = ((String)localObject10).indexOf("A2=");
         if (j < 0) {
-          break label5642;
+          break label5697;
         }
-        localObject9 = ((String)localObject9).substring(j);
-        if ((localObject9 == null) || (((String)localObject9).length() == 0)) {
-          break label5642;
+        localObject10 = ((String)localObject10).substring(j);
+        if ((localObject10 == null) || (((String)localObject10).length() == 0)) {
+          break label5697;
         }
-        localObject9 = ((String)localObject9).split(",");
-        if ((localObject9 == null) || (localObject9.length <= 0) || (localObject9[0] == null) || (localObject9[0].length() <= "A2=".length() + 1)) {
-          break label5642;
+        localObject10 = ((String)localObject10).split(",");
+        if ((localObject10 == null) || (localObject10.length <= 0) || (localObject10[0] == null) || (localObject10[0].length() <= "A2=".length() + 1)) {
+          break label5697;
         }
-        localObject1 = localObject9[0].substring("A2=".length());
+        localObject2 = localObject10[0].substring("A2=".length());
       }
-      catch (Exception localException1)
+      catch (Exception localException2)
       {
-        localException1.printStackTrace();
-        localObject2 = localObject6;
+        localException2.printStackTrace();
+        localObject3 = localObject7;
         continue;
       }
-      localBundle.putString("uin", (String)localObject8);
+      localBundle.putString("uin", (String)localObject9);
       localBundle.putString("error", paramFromServiceMsg.getBusinessFailMsg());
       localBundle.putInt("code", paramFromServiceMsg.getResultCode());
-      localBundle.putString("subaccountA2", (String)localObject1);
+      localBundle.putString("subaccountA2", (String)localObject2);
       localBundle.putString("mainaccount", (String)paramFromServiceMsg.getAttribute("mainaccount"));
       notifyObserver(paramIntent, 1037, paramFromServiceMsg.isSuccess(), localBundle, SubAccountObserver.class);
       return;
@@ -453,40 +494,40 @@ public class BuiltInServlet
       getAppRuntime().getOnlineStatus();
       l1 = 0L;
       boolean bool2;
-      label3006:
+      label3147:
       boolean bool3;
-      label3018:
+      label3159:
       boolean bool1;
       if (paramFromServiceMsg.isSuccess()) {
         if ("push.register".equals(paramFromServiceMsg.getServiceCmd())) {
           if ((paramFromServiceMsg.getWupBuffer() != null) && (paramFromServiceMsg.getWupBuffer().length > 0))
           {
-            localObject6 = (SvcRespRegister)decodePacket(paramFromServiceMsg.getWupBuffer(), "SvcRespRegister", new SvcRespRegister());
-            if ((localObject6 != null) && (((SvcRespRegister)localObject6).cReplyCode == 0)) {
-              if (((SvcRespRegister)localObject6).bUpdateFlag == 1)
+            localObject7 = (SvcRespRegister)decodePacket(paramFromServiceMsg.getWupBuffer(), "SvcRespRegister", new SvcRespRegister());
+            if ((localObject7 != null) && (((SvcRespRegister)localObject7).cReplyCode == 0)) {
+              if (((SvcRespRegister)localObject7).bUpdateFlag == 1)
               {
                 bool2 = true;
-                if (((SvcRespRegister)localObject6).bLargeSeqUpdate != 1) {
-                  break label3500;
+                if (((SvcRespRegister)localObject7).bLargeSeqUpdate != 1) {
+                  break label3527;
                 }
                 bool3 = true;
-                i = ((SvcRespRegister)localObject6).iStatus;
-                l1 = ((SvcRespRegister)localObject6).timeStamp;
-                localObject2 = AppRuntime.Status.build(i);
-                l2 = ((SvcRespRegister)localObject6).uExtOnlineStatus;
-                if (localObject2 != null) {
-                  break label5615;
+                i = ((SvcRespRegister)localObject7).iStatus;
+                l1 = ((SvcRespRegister)localObject7).timeStamp;
+                localObject3 = AppRuntime.Status.build(i);
+                l2 = ((SvcRespRegister)localObject7).uExtOnlineStatus;
+                if (localObject3 != null) {
+                  break label5670;
                 }
                 QLog.d("mqq", 1, String.format("invalid iStatus: %s", new Object[] { Integer.valueOf(i) }));
                 if (!paramFromServiceMsg.attributes.containsKey("attr_online_status")) {
-                  break label3506;
+                  break label3533;
                 }
                 i = ((Integer)paramFromServiceMsg.getAttribute("attr_online_status")).intValue();
                 paramFromServiceMsg = AppRuntime.Status.build(i);
                 QLog.d("mqq", 1, String.format("update iStatus: %s", new Object[] { Integer.valueOf(i) }));
-                label3127:
+                label3270:
                 if (paramFromServiceMsg != null) {
-                  break label5609;
+                  break label5664;
                 }
                 paramFromServiceMsg = (AppRuntime.Status)paramIntent.getSerializableExtra("old");
                 QLog.e("mqq", 1, "register.push onlineStatus == null");
@@ -498,60 +539,49 @@ public class BuiltInServlet
       }
       for (;;)
       {
-        l3 = l2;
         boolean bool4 = bool3;
         bool3 = bool2;
-        l2 = l1;
         bool2 = bool4;
-        l1 = l3;
         for (;;)
         {
           bool4 = paramIntent.getBooleanExtra("isUserSet", false);
-          localObject2 = getAppRuntime().getOnlineStatus();
-          l3 = getAppRuntime().getExtOnlineStatus();
+          getAppRuntime().getOnlineStatus();
+          getAppRuntime().getExtOnlineStatus();
           getAppRuntime().setOnlineStatus(paramFromServiceMsg);
-          if (l1 != -1L) {
-            getAppRuntime().setExtOnlineStatus(l1);
+          if (l2 != -1L) {
+            getAppRuntime().setExtOnlineStatus(l2);
           }
           localBundle.putSerializable("onlineStatus", paramFromServiceMsg);
-          localBundle.putLong("extOnlineStatus", l1);
+          localBundle.putLong("extOnlineStatus", l2);
           localBundle.putBoolean("isChanged", bool3);
-          localBundle.putLong("timeStamp", l2);
+          localBundle.putLong("timeStamp", l1);
           localBundle.putBoolean("isLargeChanged", bool2);
           localBundle.putBoolean("isUserSet", bool4);
           notifyObserver(paramIntent, 1002, bool1, localBundle, AccountObserver.class);
-          if (QLog.isColorLevel()) {
-            QLog.d("mqq", 2, String.format("register.push, isSuc = %s, onlineStatus = %s, isUserSet = %s, isChanged = %s, timeStamp = %s, isLargeChanged = %s, iStatus = %s, extStatus = %s", new Object[] { Boolean.valueOf(bool1), paramFromServiceMsg, Boolean.valueOf(bool4), Boolean.valueOf(bool3), Long.valueOf(l2), Boolean.valueOf(bool2), Integer.valueOf(i), Long.valueOf(l1) }));
-          }
-          if ((paramFromServiceMsg != AppRuntime.Status.online) || (l1 != 1000L) || ((localObject2 == paramFromServiceMsg) && (l3 == l1))) {
-            break;
-          }
-          l2 = getAppRuntime().getApplication().getSharedPreferences(getAppRuntime().getAccount(), 0).getInt("GetFrdListReq_seq", 0);
-          getAppRuntime().sendOnlineStatusWithExt(paramFromServiceMsg, false, l2, false, l1);
           if (!QLog.isColorLevel()) {
             break;
           }
-          QLog.d("mqq", 2, new Object[] { "register reset battery status largeSeq:", Long.valueOf(l2) });
+          QLog.d("mqq", 2, String.format("register.push, isSuc = %s, onlineStatus = %s, isUserSet = %s, isChanged = %s, timeStamp = %s, isLargeChanged = %s, iStatus = %s, extStatus = %s", new Object[] { Boolean.valueOf(bool1), paramFromServiceMsg, Boolean.valueOf(bool4), Boolean.valueOf(bool3), Long.valueOf(l1), Boolean.valueOf(bool2), Integer.valueOf(i), Long.valueOf(l2) }));
           return;
           bool2 = false;
-          break label3006;
-          label3500:
+          break label3147;
+          label3527:
           bool3 = false;
-          break label3018;
-          label3506:
+          break label3159;
+          label3533:
           QLog.d("mqq", 1, String.format("don't containsKey attr_online_status", new Object[0]));
-          paramFromServiceMsg = (FromServiceMsg)localObject2;
-          break label3127;
+          paramFromServiceMsg = (FromServiceMsg)localObject3;
+          break label3270;
           paramFromServiceMsg = (AppRuntime.Status)paramIntent.getSerializableExtra("old");
-          if (localObject6 != null)
+          if (localObject7 != null)
           {
-            i = ((SvcRespRegister)localObject6).cReplyCode;
-            label3550:
-            if (localObject6 != null) {
-              break label3613;
+            i = ((SvcRespRegister)localObject7).cReplyCode;
+            label3578:
+            if (localObject7 != null) {
+              break label3642;
             }
           }
-          label3613:
+          label3642:
           for (bool1 = true;; bool1 = false)
           {
             QLog.d("mqq", 1, String.format("register.push resp is null [%s], cReplyCode: [%s]", new Object[] { Boolean.valueOf(bool1), Integer.valueOf(i) }));
@@ -562,33 +592,33 @@ public class BuiltInServlet
             l2 = -1L;
             break;
             i = -1;
-            break label3550;
+            break label3578;
           }
           paramFromServiceMsg = (AppRuntime.Status)paramIntent.getSerializableExtra("onlineStatus");
           QLog.d("mqq", 1, "register.push return empty packet! status: " + paramFromServiceMsg);
-          bool2 = false;
+          l2 = -1L;
           bool3 = false;
+          l1 = 0L;
           i = 0;
+          bool2 = false;
           bool1 = true;
-          l2 = 0L;
-          l1 = -1L;
           continue;
           paramFromServiceMsg = AppRuntime.Status.offline;
-          bool2 = false;
+          l2 = -1L;
           bool3 = false;
+          l1 = 0L;
           i = 0;
+          bool2 = false;
           bool1 = true;
-          l2 = 0L;
-          l1 = -1L;
           continue;
           paramFromServiceMsg = (AppRuntime.Status)paramIntent.getSerializableExtra("old");
           QLog.d("mqq", 1, "register.push fail!");
-          bool2 = false;
+          l2 = -1L;
           bool3 = false;
+          l1 = 0L;
           i = 0;
+          bool2 = false;
           bool1 = false;
-          l2 = 0L;
-          l1 = -1L;
         }
         localBundle.putByteArray("promptInfo", (byte[])paramFromServiceMsg.getAttribute("resp_register_promptinfo", new byte[0]));
         if (paramFromServiceMsg.isSuccess()) {}
@@ -601,11 +631,11 @@ public class BuiltInServlet
           notifyObserver(paramIntent, i, paramFromServiceMsg.isSuccess(), localBundle, AccountObserver.class);
           return;
         }
-        catch (Exception localException2)
+        catch (Exception localException3)
         {
           for (;;)
           {
-            localException2.printStackTrace();
+            localException3.printStackTrace();
           }
         }
         localBundle.putByteArray("promptInfo", (byte[])paramFromServiceMsg.getAttribute("resp_register_promptinfo", new byte[0]));
@@ -624,28 +654,28 @@ public class BuiltInServlet
             notifyObserver(paramIntent, i, paramFromServiceMsg.isSuccess(), localBundle, AccountObserver.class);
             return;
           }
-          catch (Exception localException3)
+          catch (Exception localException4)
           {
-            localException3.printStackTrace();
+            localException4.printStackTrace();
             continue;
           }
           if (paramFromServiceMsg.getBusinessFailCode() == 3001)
           {
-            Object localObject3 = paramFromServiceMsg.getBusinessFailMsg();
-            if (!TextUtils.isEmpty((CharSequence)localObject3)) {
+            Object localObject4 = paramFromServiceMsg.getBusinessFailMsg();
+            if (!TextUtils.isEmpty((CharSequence)localObject4)) {
               try
               {
-                j = Integer.valueOf((String)localObject3).intValue();
-                localObject3 = (byte[])paramFromServiceMsg.getAttribute("to_register_cr_mobile", new byte[0]);
+                j = Integer.valueOf((String)localObject4).intValue();
+                localObject4 = (byte[])paramFromServiceMsg.getAttribute("to_register_cr_mobile", new byte[0]);
                 localBundle.putInt("code", j);
-                localBundle.putByteArray("mobile", (byte[])localObject3);
+                localBundle.putByteArray("mobile", (byte[])localObject4);
                 if (paramIntent.hasExtra("inviteCode")) {
                   localBundle.putString("inviteCode", paramIntent.getStringExtra("inviteCode"));
                 }
               }
-              catch (Exception localException4)
+              catch (Exception localException5)
               {
-                localException4.printStackTrace();
+                localException5.printStackTrace();
               }
             }
           }
@@ -665,11 +695,11 @@ public class BuiltInServlet
           notifyObserver(paramIntent, i, paramFromServiceMsg.isSuccess(), localBundle, AccountObserver.class);
           return;
         }
-        catch (Exception localException5)
+        catch (Exception localException6)
         {
           for (;;)
           {
-            localException5.printStackTrace();
+            localException6.printStackTrace();
           }
         }
         localBundle.putByteArray("promptInfo", (byte[])paramFromServiceMsg.getAttribute("resp_register_promptinfo", new byte[0]));
@@ -690,11 +720,11 @@ public class BuiltInServlet
             localBundle.putString("bind_qq_face_url", str1);
           }
         }
-        catch (Exception localException6)
+        catch (Exception localException7)
         {
           for (;;)
           {
-            localException6.printStackTrace();
+            localException7.printStackTrace();
           }
         }
         notifyObserver(paramIntent, i, paramFromServiceMsg.isSuccess(), localBundle, AccountObserver.class);
@@ -707,24 +737,24 @@ public class BuiltInServlet
           k = ((Integer)paramFromServiceMsg.getAttribute("resp_register_shNextResendTime", Integer.valueOf(-1))).intValue();
           m = ((Integer)paramFromServiceMsg.getAttribute("resp_register_shTotalTimeOver", Integer.valueOf(-1))).intValue();
           String str2 = (String)paramFromServiceMsg.getAttribute("res_register_errmsg", "");
-          localObject6 = (String)paramFromServiceMsg.getAttribute("resp_register_uin", "");
-          localObject8 = (String)paramFromServiceMsg.getAttribute("resp_register_nick", "");
-          localObject9 = (String)paramFromServiceMsg.getAttribute("resp_register_picture_url", "");
+          localObject7 = (String)paramFromServiceMsg.getAttribute("resp_register_uin", "");
+          localObject9 = (String)paramFromServiceMsg.getAttribute("resp_register_nick", "");
+          localObject10 = (String)paramFromServiceMsg.getAttribute("resp_register_picture_url", "");
           localBundle.putInt("code", j);
           localBundle.putInt("next_chk_time", k);
           localBundle.putInt("total_time_over", m);
           localBundle.putString("errmsg", str2);
-          localBundle.putString("uin", (String)localObject6);
-          localBundle.putString("nick", (String)localObject8);
-          localBundle.putString("faceUrl", (String)localObject9);
+          localBundle.putString("uin", (String)localObject7);
+          localBundle.putString("nick", (String)localObject9);
+          localBundle.putString("faceUrl", (String)localObject10);
           notifyObserver(paramIntent, i, paramFromServiceMsg.isSuccess(), localBundle, AccountObserver.class);
           return;
         }
-        catch (Exception localException7)
+        catch (Exception localException8)
         {
           for (;;)
           {
-            localException7.printStackTrace();
+            localException8.printStackTrace();
           }
         }
         localBundle.putByteArray("promptInfo_error", (byte[])paramFromServiceMsg.getAttribute("resp_register_promptinfo", new byte[0]));
@@ -735,25 +765,27 @@ public class BuiltInServlet
           {
             j = ((Integer)paramFromServiceMsg.getAttribute("resp_register_resultcode", Integer.valueOf(-1))).intValue();
             byte[] arrayOfByte2 = (byte[])paramFromServiceMsg.getAttribute("resp_register_contactssig", new byte[0]);
-            localObject6 = (String)paramFromServiceMsg.getAttribute("resp_register_uin", "");
-            localObject8 = (byte[])paramFromServiceMsg.getAttribute("resp_register_lh_sig", null);
-            if ((localObject8 != null) && (localObject8.length > 0))
+            localObject7 = (String)paramFromServiceMsg.getAttribute("resp_register_uin", "");
+            localObject9 = (byte[])paramFromServiceMsg.getAttribute("resp_register_lh_sig", null);
+            localObject10 = (byte[])paramFromServiceMsg.getAttribute("resp_register_supersig", null);
+            if ((localObject9 != null) && (localObject9.length > 0))
             {
-              localBundle.putByteArray("lhsig", (byte[])localObject8);
+              localBundle.putByteArray("lhsig", (byte[])localObject9);
               if (QLog.isColorLevel()) {
-                QLog.d("wtLogin_LiangHao", 2, "builtInServlet|LiangHao_lhsig= " + new String((byte[])localObject8));
+                QLog.d("wtLogin_LiangHao", 2, "builtInServlet|LiangHao_lhsig= " + new String((byte[])localObject9));
               }
             }
+            localBundle.putByteArray("resp_register_supersig", (byte[])localObject10);
             localBundle.putInt("code", j);
             localBundle.putByteArray("promptInfo", arrayOfByte2);
-            localBundle.putString("uin", (String)localObject6);
+            localBundle.putString("uin", (String)localObject7);
             if (QLog.isColorLevel()) {
-              QLog.d("wtLogin_LiangHao", 2, "builtInServlet|onReceive code= " + j + ",uin=" + (String)localObject6);
+              QLog.d("wtLogin_LiangHao", 2, "builtInServlet|onReceive code= " + j + ",uin=" + (String)localObject7);
             }
           }
-          catch (Exception localException8)
+          catch (Exception localException9)
           {
-            localException8.printStackTrace();
+            localException9.printStackTrace();
             continue;
           }
           if (!TextUtils.isEmpty(paramIntent.getStringExtra("lhuin"))) {
@@ -773,11 +805,11 @@ public class BuiltInServlet
           notifyObserver(paramIntent, i, paramFromServiceMsg.isSuccess(), localBundle, AccountObserver.class);
           return;
         }
-        catch (Exception localException9)
+        catch (Exception localException10)
         {
           for (;;)
           {
-            localException9.printStackTrace();
+            localException10.printStackTrace();
           }
         }
         localBundle.putByteArray("promptInfo_error", (byte[])paramFromServiceMsg.getAttribute("resp_register_promptinfo", new byte[0]));
@@ -786,18 +818,18 @@ public class BuiltInServlet
         {
           j = ((Integer)paramFromServiceMsg.getAttribute("resp_register_resultcode", Integer.valueOf(-1))).intValue();
           String str3 = (String)paramFromServiceMsg.getAttribute("resp_register_uin", "");
-          localObject6 = (String)paramFromServiceMsg.getAttribute("to_register_cr_mobile", "");
+          localObject7 = (String)paramFromServiceMsg.getAttribute("to_register_cr_mobile", "");
           localBundle.putInt("code", j);
           localBundle.putString("uin", str3);
-          localBundle.putString("phone", (String)localObject6);
+          localBundle.putString("phone", (String)localObject7);
           notifyObserver(paramIntent, i, paramFromServiceMsg.isSuccess(), localBundle, AccountObserver.class);
           return;
         }
-        catch (Exception localException10)
+        catch (Exception localException11)
         {
           for (;;)
           {
-            localException10.printStackTrace();
+            localException11.printStackTrace();
           }
         }
         notifyObserver(paramIntent, 1007, paramFromServiceMsg.isSuccess(), null, AccountObserver.class);
@@ -808,27 +840,27 @@ public class BuiltInServlet
         localBundle.putString("key", (String)paramFromServiceMsg.getAttribute(paramFromServiceMsg.getServiceCmd()));
         notifyObserver(paramIntent, i, paramFromServiceMsg.isSuccess(), localBundle, AccountObserver.class);
         return;
-        localObject4 = paramIntent.getStringExtra("uin");
-        localObject6 = paramIntent.getStringExtra("cmd");
+        localObject5 = paramIntent.getStringExtra("uin");
+        localObject7 = paramIntent.getStringExtra("cmd");
         l1 = paramIntent.getLongExtra("wtsdkseq", -1L);
         paramIntent = ByteBuffer.wrap(paramFromServiceMsg.getWupBuffer());
         paramIntent.order(ByteOrder.BIG_ENDIAN);
         i = paramIntent.getInt();
-        localObject8 = new byte[i - 4];
-        paramIntent.get((byte[])localObject8, 0, i - 4);
+        localObject9 = new byte[i - 4];
+        paramIntent.get((byte[])localObject9, 0, i - 4);
         if (paramFromServiceMsg.isSuccess())
         {
-          WtloginMsfListener.onAsyncReceive((String)localObject4, (String)localObject6, l1, (byte[])localObject8);
+          WtloginMsfListener.onAsyncReceive((String)localObject5, (String)localObject7, l1, (byte[])localObject9);
           return;
         }
-        WtloginMsfListener.onAsyncReceiveFail((String)localObject4, (String)localObject6, l1, paramFromServiceMsg.getBusinessFailCode());
+        WtloginMsfListener.onAsyncReceiveFail((String)localObject5, (String)localObject7, l1, paramFromServiceMsg.getBusinessFailCode());
         return;
         if (paramFromServiceMsg.isSuccess())
         {
-          localObject4 = new UniPacket(true);
-          ((UniPacket)localObject4).setEncodeName("utf-8");
-          ((UniPacket)localObject4).decode(paramFromServiceMsg.getWupBuffer());
-          localBundle.putSerializable("jce", (GetResourceRespV2)((UniPacket)localObject4).getByClass("GetResourceRespV2", new GetResourceRespV2()));
+          localObject5 = new UniPacket(true);
+          ((UniPacket)localObject5).setEncodeName("utf-8");
+          ((UniPacket)localObject5).decode(paramFromServiceMsg.getWupBuffer());
+          localBundle.putSerializable("jce", (GetResourceRespV2)((UniPacket)localObject5).getByClass("GetResourceRespV2", new GetResourceRespV2()));
         }
         localBundle.putInt("iPluginType", paramIntent.getIntExtra("iPluginType", 64));
         notifyObserver(paramIntent, 1018, paramFromServiceMsg.isSuccess(), localBundle, ServerConfigObserver.class);
@@ -840,32 +872,32 @@ public class BuiltInServlet
         }
         ((TicketManager)getAppRuntime().getManager(2)).setAlterTicket(paramFromServiceMsg);
         return;
-        localObject4 = paramFromServiceMsg.getUin();
-        localObject6 = (byte[])paramFromServiceMsg.getAttributes().get("da2");
-        localBundle.putString("account", (String)localObject4);
-        localBundle.putString("da2", new String((byte[])localObject6));
+        localObject5 = paramFromServiceMsg.getUin();
+        localObject7 = (byte[])paramFromServiceMsg.getAttributes().get("da2");
+        localBundle.putString("account", (String)localObject5);
+        localBundle.putString("da2", new String((byte[])localObject7));
         notifyObserver(paramIntent, 1046, paramFromServiceMsg.isSuccess(), localBundle, AccountObserver.class);
         return;
         localBundle.putString("msf_con_erro", (String)paramFromServiceMsg.getAttribute("msf_con_erro", ""));
         notifyObserver(paramIntent, 2201, paramFromServiceMsg.isSuccess(), localBundle, CheckConErroObserver.class);
         return;
-        label5609:
+        label5664:
         bool1 = true;
         continue;
-        label5615:
+        label5670:
         bool1 = true;
-        paramFromServiceMsg = (FromServiceMsg)localObject4;
+        paramFromServiceMsg = (FromServiceMsg)localObject5;
       }
-      label5624:
-      Object localObject4 = null;
+      label5679:
+      Object localObject5 = null;
       continue;
-      label5630:
-      localObject6 = null;
+      label5685:
+      localObject7 = null;
       break label333;
-      label5636:
-      localObject4 = null;
+      label5691:
+      localObject5 = null;
       break label310;
-      label5642:
+      label5697:
       i += 1;
     }
   }
@@ -915,8 +947,9 @@ public class BuiltInServlet
   public void service(Intent paramIntent)
   {
     super.service(paramIntent);
-    Object localObject2;
     Object localObject3;
+    int j;
+    int i;
     boolean bool;
     switch (paramIntent.getIntExtra("action", 0))
     {
@@ -970,8 +1003,10 @@ public class BuiltInServlet
                 if (isQQUin((String)localObject1)) {}
                 for (localObject1 = getAppRuntime().getService().msfSub.getLoginMsg((String)localObject1, (byte[])localObject2);; localObject1 = getAppRuntime().getService().msfSub.getChangeUinAndLoginMsg((String)localObject1, (byte[])localObject2))
                 {
+                  localObject2 = paramIntent.getByteArrayExtra("resp_register_supersig");
                   ((ToServiceMsg)localObject1).setIsSupportRetry(true);
                   ((ToServiceMsg)localObject1).setTimeout(40000L);
+                  ((ToServiceMsg)localObject1).addAttribute("resp_register_supersig", localObject2);
                   sendToMSF(paramIntent, (ToServiceMsg)localObject1);
                   return;
                 }
@@ -1006,6 +1041,7 @@ public class BuiltInServlet
                   ((ToServiceMsg)localObject1).addAttribute("from_where", "ssoAccountAction");
                   ((ToServiceMsg)localObject1).addAttribute("targetTicket", Integer.valueOf(paramIntent.getIntExtra("targetTicket", 4096)));
                   ((ToServiceMsg)localObject1).addAttribute("process", localObject2);
+                  addOpenSdkExtra(paramIntent, (ToServiceMsg)localObject1);
                   sendToMSF(paramIntent, (ToServiceMsg)localObject1);
                   return;
                 }
@@ -1040,6 +1076,7 @@ public class BuiltInServlet
                     QLog.d("builtInservert", 2, "ACTION_GET_TICKET_NO_PASSWD from_where is no null");
                   }
                 }
+                addOpenSdkExtra(paramIntent, (ToServiceMsg)localObject3);
                 ((ToServiceMsg)localObject3).setTimeout(40000L);
                 sendToMSF(paramIntent, (ToServiceMsg)localObject3);
                 return;
@@ -1058,6 +1095,11 @@ public class BuiltInServlet
                 ((ToServiceMsg)localObject4).addAttribute("dstAppVer", localObject2);
                 ((ToServiceMsg)localObject4).addAttribute("dstAppSign", localObject3);
                 ((ToServiceMsg)localObject4).addAttribute("fastLoginInfo", new WFastLoginInfo());
+                localObject1 = paramIntent.getStringExtra("process");
+                if (!TextUtils.isEmpty((CharSequence)localObject1)) {
+                  ((ToServiceMsg)localObject4).addAttribute("process", localObject1);
+                }
+                addOpenSdkExtra(paramIntent, (ToServiceMsg)localObject4);
                 ((ToServiceMsg)localObject4).setTimeout(40000L);
                 sendToMSF(paramIntent, (ToServiceMsg)localObject4);
                 return;
@@ -1125,14 +1167,14 @@ public class BuiltInServlet
                   ((PushRegisterInfo)localObject2).iLargeSeq = paramIntent.getLongExtra("K_SEQ", 0L);
                   ((PushRegisterInfo)localObject2).uin = getAppRuntime().getAccount();
                   if (localObject3 != AppRuntime.Status.offline) {
-                    break label1900;
+                    break label1970;
                   }
                   localObject1 = getAppRuntime().getService().msfSub.getUnRegisterPushMsg((PushRegisterInfo)localObject2);
                   if (QLog.isColorLevel()) {
                     QLog.d("Q.contacts.", 2, "BuiltInServlet.ACTION_REGIST_MESSAGE_PUSH " + localObject3 + ", " + ((PushRegisterInfo)localObject2).timeStamp + ", " + ((PushRegisterInfo)localObject2).iLargeSeq + ", isUserSet: " + bool);
                   }
                   if (!bool) {
-                    break label1920;
+                    break label1990;
                   }
                   ((ToServiceMsg)localObject1).getAttributes().put("regPushReason", RegPushReason.setOnlineStatus);
                 }
@@ -1143,7 +1185,7 @@ public class BuiltInServlet
                   b = 0;
                   break;
                   localObject1 = getAppRuntime().getService().msfSub.getRegisterPushMsg((PushRegisterInfo)localObject2);
-                  break label1794;
+                  break label1864;
                   ((ToServiceMsg)localObject1).getAttributes().put("regPushReason", RegPushReason.appRegister);
                 }
                 j = paramIntent.getIntExtra("appid", 0);
@@ -1200,14 +1242,14 @@ public class BuiltInServlet
                 ((HashMap)localObject5).put("wifi_mac", localObject1);
                 localObject5 = ((ToServiceMsg)localObject4).getAttributes();
                 if (localObject3 != null) {
-                  break label2524;
+                  break label2594;
                 }
                 localObject1 = "";
                 ((HashMap)localObject5).put("os_language", localObject1);
                 ((ToServiceMsg)localObject4).getAttributes().put("qq_language", Integer.valueOf(i));
                 localObject3 = ((ToServiceMsg)localObject4).getAttributes();
                 if (localObject2 != null) {
-                  break label2531;
+                  break label2601;
                 }
               }
               for (localObject1 = "";; localObject1 = localObject2)
@@ -1217,7 +1259,7 @@ public class BuiltInServlet
                 return;
                 break;
                 localObject1 = localObject3;
-                break label2459;
+                break label2529;
               }
               sendToMSF(paramIntent, getAppRuntime().getService().msfSub.getRegisterSendReSendSmsMsg());
               return;
@@ -1401,24 +1443,26 @@ public class BuiltInServlet
       sendToMSF(paramIntent, (ToServiceMsg)localObject1);
       return;
     case 2212: 
-      label1794:
-      label1900:
+      label1864:
+      label2529:
       localObject1 = new ToServiceMsg(MsfServiceSdk.get().getMsfServiceName(), "0", "");
-      label1920:
-      label2459:
-      label2524:
-      label2531:
+      label1970:
+      label1990:
       i = paramIntent.getIntExtra("localeId", 0);
+      label2594:
+      label2601:
       ((ToServiceMsg)localObject1).getAttributes().put("localeId", Integer.valueOf(i));
       ((ToServiceMsg)localObject1).setMsfCommand(MsfCommand.msf_update_locale_id);
       ((ToServiceMsg)localObject1).setNeedCallback(false);
       sendToMSF(paramIntent, (ToServiceMsg)localObject1);
       return;
     }
-    int i = paramIntent.getIntExtra("batteryCapacity", 0);
-    int j = paramIntent.getIntExtra("powerConnect", -1);
-    Object localObject1 = getAppRuntime().getService().msfSub.updateBatterStatusMsg("0", i, j);
-    ((ToServiceMsg)localObject1).setTimeout(10000L);
+    Object localObject1 = new ToServiceMsg(MsfServiceSdk.get().getMsfServiceName(), "0", "cmd_update_manager_config");
+    ((ToServiceMsg)localObject1).setMsfCommand(MsfCommand.msfUpdateManagerConfig);
+    ((ToServiceMsg)localObject1).setTimeout(30000L);
+    ((ToServiceMsg)localObject1).setNeedCallback(false);
+    Object localObject2 = paramIntent.getStringExtra("manager_config");
+    ((ToServiceMsg)localObject1).getAttributes().put("manager_config", localObject2);
     sendToMSF(paramIntent, (ToServiceMsg)localObject1);
   }
 }

@@ -1,16 +1,23 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.TroopLowCreditLevelNotifyActivity;
+import com.tencent.mobileqq.activity.EmosmActivity;
+import com.tencent.mobileqq.data.EmoticonPackage;
 
-class aeee
-  implements DialogInterface.OnClickListener
+public class aeee
+  extends arvc
 {
-  aeee(aeec paramaeec) {}
+  public aeee(EmosmActivity paramEmosmActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(EmoticonPackage paramEmoticonPackage, int paramInt) {}
+  
+  public void a(EmoticonPackage paramEmoticonPackage, int paramInt1, int paramInt2)
   {
-    this.a.a.finish();
+    if ((paramEmoticonPackage == null) || (paramInt1 != 2) || (paramInt2 != 0)) {}
+    while (this.a.jdField_a_of_type_JavaUtilArrayList == null) {
+      return;
+    }
+    this.a.runOnUiThread(this.a.jdField_a_of_type_JavaLangRunnable);
   }
+  
+  public void b(EmoticonPackage paramEmoticonPackage, int paramInt1, int paramInt2) {}
 }
 
 

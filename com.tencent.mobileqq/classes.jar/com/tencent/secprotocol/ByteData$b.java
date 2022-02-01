@@ -1,0 +1,53 @@
+package com.tencent.secprotocol;
+
+import a.a.a.a.b;
+import a.a.a.b.e;
+import a.a.a.b.f;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+public class ByteData$b
+  implements Runnable
+{
+  public ByteData$b(ByteData paramByteData, String paramString, long paramLong) {}
+  
+  public void run()
+  {
+    try
+    {
+      e locale = new e();
+      JSONObject localJSONObject2 = new JSONObject();
+      JSONObject localJSONObject3 = b.a(11, 1, this.a, ByteData.access$000(this.c));
+      JSONObject localJSONObject1 = new JSONObject();
+      try
+      {
+        localJSONObject1.put(f.a(24), 1);
+        localJSONObject1.put(f.a(26), "");
+        localJSONObject1.put(f.a(25), "");
+        localJSONObject2.put(f.a(19), localJSONObject3);
+        localJSONObject2.put(f.a(20), localJSONObject1);
+        ByteData.access$200(this.c, 165, 11, 0, localJSONObject2.toString(), new ByteData.b.a(this, locale));
+        return;
+      }
+      catch (JSONException localJSONException)
+      {
+        for (;;)
+        {
+          localJSONException.printStackTrace();
+          Object localObject = null;
+        }
+      }
+      return;
+    }
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
+    }
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+ * Qualified Name:     com.tencent.secprotocol.ByteData.b
+ * JD-Core Version:    0.7.0.1
+ */

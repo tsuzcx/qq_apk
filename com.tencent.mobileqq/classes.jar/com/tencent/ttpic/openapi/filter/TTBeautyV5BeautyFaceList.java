@@ -12,7 +12,6 @@ import com.tencent.filter.BaseFilter;
 import com.tencent.ttpic.baseutils.bitmap.BitmapUtils;
 import com.tencent.ttpic.baseutils.io.FileUtils;
 import com.tencent.ttpic.facedetect.FaceStatus;
-import com.tencent.ttpic.filter.SkinColorAndContrastFilter;
 import com.tencent.ttpic.openapi.cache.VideoMemoryManager;
 import com.tencent.ttpic.openapi.factory.TTPicFilterFactoryLocal;
 import com.tencent.ttpic.openapi.util.VideoMaterialUtil;
@@ -209,7 +208,7 @@ public class TTBeautyV5BeautyFaceList
     int i = 0;
     while (i < paramArrayOfFloat.length)
     {
-      arrayOfFloat[i] = Float.parseFloat(paramArrayOfFloat[i].toString());
+      arrayOfFloat[i] = paramArrayOfFloat[i].floatValue();
       i += 1;
     }
     return arrayOfFloat;
@@ -644,7 +643,7 @@ public class TTBeautyV5BeautyFaceList
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.openapi.filter.TTBeautyV5BeautyFaceList
  * JD-Core Version:    0.7.0.1
  */

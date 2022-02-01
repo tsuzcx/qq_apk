@@ -1,17 +1,23 @@
 package com.tencent.biz.pubaccount.readinjoy;
 
-import java.util.Map;
-import nwu;
-import pag;
+import bmqa;
+import oat;
+import ogp;
+import pha;
 
 public class ReadInJoyChannelWaterFallViewController$2
   implements Runnable
 {
-  public ReadInJoyChannelWaterFallViewController$2(nwu paramnwu, Map paramMap1, boolean paramBoolean, Map paramMap2, String paramString) {}
+  public ReadInJoyChannelWaterFallViewController$2(ogp paramogp) {}
   
   public void run()
   {
-    this.this$0.a.a(this.jdField_a_of_type_JavaUtilMap, this.jdField_a_of_type_Boolean, this.b, this.jdField_a_of_type_JavaLangString);
+    if (ogp.a(this.this$0) == 40677)
+    {
+      oat.a(null, "CliOper", "", "", "0X8009295", "0X8009295", 0, 0, bmqa.a("default_feeds_proteus_offline_bid"), "", "", pha.b(ogp.a(this.this$0)), false);
+      return;
+    }
+    oat.a(null, "CliOper", "", "", "0X80066F9", "0X80066F9", 0, 0, bmqa.a("default_feeds_proteus_offline_bid"), "", "", pha.b(ogp.a(this.this$0)), false);
   }
 }
 

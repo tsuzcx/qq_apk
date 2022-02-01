@@ -1,19 +1,15 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
-import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie.28.1;
-import mqq.os.MqqHandler;
+import android.view.View;
 
-public class agvz
-  implements naz
+class agvz
+  implements atwb
 {
-  public agvz(TroopChatPie paramTroopChatPie) {}
+  agvz(agup paramagup) {}
   
-  public void a(String paramString1, String paramString2)
+  public void onClick(View paramView)
   {
-    if ((!TextUtils.isEmpty(paramString1)) && (paramString1.equals(this.a.a.a))) {
-      TroopChatPie.k(this.a).post(new TroopChatPie.28.1(this, paramString2));
-    }
+    paramView = atgz.a();
+    atvo.c(this.a.a, paramView);
+    atvm.a("0X8007FA2");
   }
 }
 

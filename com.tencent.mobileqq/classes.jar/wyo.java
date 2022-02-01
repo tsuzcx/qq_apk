@@ -1,51 +1,45 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.takevideo.EditPicSave.2.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tribe.async.reactive.SimpleObserver;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqGetBlackList;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspGetBlackList;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBytesField;
 
 public class wyo
-  extends SimpleObserver<xlb>
+  extends wlf<xam>
 {
-  wyo(wym paramwym) {}
+  public static final String a = wjz.a("StorySvc.get_user_black_status");
+  public String b;
   
-  public void a(xlb paramxlb)
+  public String a()
   {
-    super.onNext(paramxlb);
-    this.a.a(40);
-    paramxlb = paramxlb.a.b;
-    wxe.b("EditPicSave", "picPath = " + paramxlb);
-    if (this.a.jdField_a_of_type_Xby.getActivity() != null)
+    return a;
+  }
+  
+  public wla a(byte[] paramArrayOfByte)
+  {
+    qqstory_service.RspGetBlackList localRspGetBlackList = new qqstory_service.RspGetBlackList();
+    try
     {
-      ThreadManager.post(new EditPicSave.2.1(this, paramxlb), 5, this.a.jdField_a_of_type_ComTencentMobileqqAppThreadExcutor$IThreadListener, true);
-      this.a.jdField_a_of_type_Int = 40;
-      this.a.jdField_a_of_type_Boolean = false;
-      this.a.b = 10;
-      this.a.f();
+      localRspGetBlackList.mergeFrom(paramArrayOfByte);
+      return new xam(localRspGetBlackList);
     }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      paramArrayOfByte.printStackTrace();
+    }
+    return null;
   }
   
-  public void onCancel()
+  protected byte[] a()
   {
-    super.onCancel();
-    wxe.d("EditPicSave", "saveVideo cancel !");
-    this.a.jdField_a_of_type_Xan.a(0);
-    this.a.g();
-    QQToast.a(this.a.jdField_a_of_type_Xby.a(), alud.a(2131704083), 0).a();
-  }
-  
-  public void onError(@NonNull Error paramError)
-  {
-    super.onError(paramError);
-    wxe.e("EditPicSave", "saveVideo error ：" + paramError);
-    this.a.jdField_a_of_type_Xan.a(0);
-    QQToast.a(this.a.jdField_a_of_type_Xby.a(), 1, alud.a(2131704084) + paramError, 0).a();
-    this.a.g();
+    qqstory_service.ReqGetBlackList localReqGetBlackList = new qqstory_service.ReqGetBlackList();
+    localReqGetBlackList.union_id.set(ByteStringMicro.copyFromUtf8(this.b));
+    return localReqGetBlackList.toByteArray();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     wyo
  * JD-Core Version:    0.7.0.1
  */

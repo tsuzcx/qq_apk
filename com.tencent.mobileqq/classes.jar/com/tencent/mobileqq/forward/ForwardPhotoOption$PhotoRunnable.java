@@ -2,7 +2,7 @@ package com.tencent.mobileqq.forward;
 
 import android.app.Activity;
 import android.content.Context;
-import bkny;
+import bncl;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
 
@@ -22,13 +22,13 @@ class ForwardPhotoOption$PhotoRunnable
       QLog.d("ForwardOption.ForwardPhotoOption", 2, "preload peak");
     }
     if (((this.a.get() instanceof Activity)) && (!((Activity)this.a.get()).isFinishing())) {
-      bkny.a((Context)this.a.get());
+      bncl.a((Context)this.a.get());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.forward.ForwardPhotoOption.PhotoRunnable
  * JD-Core Version:    0.7.0.1
  */

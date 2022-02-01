@@ -1,54 +1,47 @@
-import android.view.View;
-import android.widget.Adapter;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import android.widget.EditText;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.nearby.now.model.Comments.Comment;
-import com.tencent.mobileqq.nearby.now.view.ShortVideoCommentsView;
+import android.app.Activity;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.AuthDevVerifyCodeActivity;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
+import tencent.im.oidb.oidb_0x87a.RspBody;
 
-public class avet
-  implements AdapterView.OnItemClickListener
+final class avet
+  extends ayeu
 {
-  public avet(ShortVideoCommentsView paramShortVideoCommentsView) {}
+  avet(Activity paramActivity, String paramString, Runnable paramRunnable) {}
   
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void a(String paramString1, int paramInt, String paramString2)
   {
-    ShortVideoCommentsView.a(this.a, (Comments.Comment)paramAdapterView.getAdapter().getItem(paramInt));
-    if (ShortVideoCommentsView.a(this.a) == null) {
-      return;
-    }
-    paramLong = this.a.a.getLongAccountUin();
-    if (ShortVideoCommentsView.a(this.a).c == paramLong)
-    {
-      this.a.a(alud.a(2131714474));
-      ShortVideoCommentsView.a(this.a, null);
-      return;
-    }
-    paramAdapterView = new StringBuilder();
-    paramAdapterView.append("回复 ");
-    if (ShortVideoCommentsView.a(this.a).b.length() >= 6)
-    {
-      paramAdapterView.append(ShortVideoCommentsView.a(this.a).b.substring(0, 5));
-      paramAdapterView.append("...");
+    QLog.e("FaceLoginHelper", 1, new Object[] { "cmd : ", paramString1, " code : ", Integer.valueOf(paramInt), " message : ", paramString2 });
+    if (paramInt == 89) {
+      QQToast.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_AndroidAppActivity.getString(2131698000), 0).a();
     }
     for (;;)
     {
-      ShortVideoCommentsView.a(this.a).setText("");
-      ShortVideoCommentsView.a(this.a).setHint(paramAdapterView);
-      if (!ShortVideoCommentsView.f(this.a)) {
-        break;
+      if (this.jdField_a_of_type_JavaLangRunnable != null) {
+        this.jdField_a_of_type_JavaLangRunnable.run();
       }
-      this.a.l();
       return;
-      paramAdapterView.append(ShortVideoCommentsView.a(this.a).b);
+      QQToast.a(this.jdField_a_of_type_AndroidAppActivity, paramString2, 0).a();
     }
-    ShortVideoCommentsView.a(this.a, 1);
+  }
+  
+  public void a(oidb_0x87a.RspBody paramRspBody)
+  {
+    Intent localIntent = new Intent(this.jdField_a_of_type_AndroidAppActivity, AuthDevVerifyCodeActivity.class);
+    localIntent.putExtra("k_from", "f_SetFaceData");
+    if (this.jdField_a_of_type_JavaLangString == null) {}
+    for (paramRspBody = "";; paramRspBody = this.jdField_a_of_type_JavaLangString)
+    {
+      localIntent.putExtra("phone_num", paramRspBody);
+      this.jdField_a_of_type_AndroidAppActivity.startActivityForResult(localIntent, 11);
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     avet
  * JD-Core Version:    0.7.0.1
  */

@@ -22,7 +22,7 @@ public final class VipFontUpdate$TFontMd5CheckReq$TMd5Info
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.pb.vipfontupdate.VipFontUpdate.TFontMd5CheckReq.TMd5Info
  * JD-Core Version:    0.7.0.1
  */

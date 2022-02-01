@@ -1,21 +1,21 @@
 package com.tencent.biz.qqstory.newshare.job;
 
-import viu;
-import wdl;
+import xcg;
+import xww;
 
 public class ShareGroupAvatarSaveFileJob$1
   implements Runnable
 {
-  public ShareGroupAvatarSaveFileJob$1(viu paramviu, wdl paramwdl) {}
+  public ShareGroupAvatarSaveFileJob$1(xcg paramxcg, xww paramxww) {}
   
   public void run()
   {
-    viu.a(this.this$0, viu.a(this.this$0, this.a));
+    xcg.a(this.this$0, xcg.a(this.this$0, this.a));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.qqstory.newshare.job.ShareGroupAvatarSaveFileJob.1
  * JD-Core Version:    0.7.0.1
  */

@@ -1,29 +1,45 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.device.file.DeviceFileHandler;
+import android.os.Bundle;
+import mqq.observer.BusinessObserver;
+import org.json.JSONObject;
 
-public class zvd
-  extends Handler
+final class zvd
+  implements BusinessObserver
 {
-  public zvd(DeviceFileHandler paramDeviceFileHandler, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  zvd(zru paramzru) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    switch (paramMessage.what)
+    if ((paramBoolean) && (paramBundle != null)) {}
+    for (paramBundle = paramBundle.getString("result");; paramBundle = null)
     {
-    default: 
+      try
+      {
+        paramBundle = new JSONObject(paramBundle);
+        if (paramBundle.getInt("r") != 0) {
+          continue;
+        }
+        paramBundle = paramBundle.getString("url");
+        if (paramBundle != null)
+        {
+          this.a.a(true, paramBundle);
+          return;
+        }
+      }
+      catch (Exception paramBundle)
+      {
+        for (;;)
+        {
+          paramBundle = null;
+        }
+      }
+      this.a.a(false, null);
       return;
     }
-    this.a.notifyUI(103, true, paramMessage.obj);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     zvd
  * JD-Core Version:    0.7.0.1
  */

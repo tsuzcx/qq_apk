@@ -1,21 +1,21 @@
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.database.corrupt.DBFixConfigActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import mqq.app.AppRuntime;
+import mqq.app.MobileQQ;
 
 public class ariw
-  extends ariu
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public ariw(arhz paramarhz)
-  {
-    super(paramarhz);
-  }
+  public ariw(DBFixConfigActivity paramDBFixConfigActivity, AppRuntime paramAppRuntime) {}
   
-  public boolean a(String paramString)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    FileManagerEntity localFileManagerEntity = this.a.a();
-    if (localFileManagerEntity == null) {}
-    while ((localFileManagerEntity.strTroopFilePath == null) || (!localFileManagerEntity.strTroopFilePath.equalsIgnoreCase(paramString))) {
-      return false;
-    }
-    return true;
+    this.jdField_a_of_type_MqqAppAppRuntime.getApplication().getSharedPreferences(aohq.a, 0).edit().putBoolean(aohq.c, paramBoolean).commit();
+    EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
   }
 }
 

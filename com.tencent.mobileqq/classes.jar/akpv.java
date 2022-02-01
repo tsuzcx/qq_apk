@@ -1,18 +1,14 @@
+import android.widget.Button;
+import com.tencent.mobileqq.activity.qwallet.fragment.QzoneHbFragment;
+
 public class akpv
+  extends akqb
 {
-  public int a;
-  public float[] a;
-  public int[] a;
-  public float[] b;
-  public int[] b;
+  public akpv(QzoneHbFragment paramQzoneHbFragment) {}
   
-  public akpv()
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
   {
-    this.jdField_a_of_type_ArrayOfFloat = new float[4];
-    this.jdField_b_of_type_ArrayOfFloat = new float[4];
-    this.jdField_a_of_type_ArrayOfInt = new int[4];
-    this.jdField_b_of_type_ArrayOfInt = new int[4];
-    this.jdField_a_of_type_Int = 0;
+    QzoneHbFragment.a(this.a).setEnabled(QzoneHbFragment.a(this.a));
   }
 }
 

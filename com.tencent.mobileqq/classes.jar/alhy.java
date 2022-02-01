@@ -1,55 +1,53 @@
-import android.os.Bundle;
-import com.tencent.qphone.base.util.QLog;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.Button;
+import com.tencent.mobileqq.activity.richmedia.FlowCameraActivity2;
 
 public class alhy
+  implements View.OnTouchListener
 {
-  public static void a(String paramString, Bundle paramBundle)
+  public alhy(FlowCameraActivity2 paramFlowCameraActivity2) {}
+  
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (paramBundle == null) {}
-    int i;
+    int i = paramMotionEvent.getAction();
+    paramMotionEvent.getX();
+    float f = paramMotionEvent.getY();
+    if (i == 0) {
+      this.a.jdField_b_of_type_AndroidWidgetButton.setText(null);
+    }
     do
     {
-      String str;
-      for (;;)
+      return false;
+      if (i == 2)
       {
-        return;
-        try
+        if (f < this.a.jdField_b_of_type_Int * -1)
         {
-          if (alht.a())
-          {
-            i = paramBundle.getInt("featureId");
-            str = paramBundle.getString("featureKey");
-            if ("action_begin_trace".equals(paramString))
-            {
-              alht.a().a(i, str, paramBundle);
-              return;
-            }
-          }
+          this.a.a(false, false);
+          return true;
         }
-        catch (Exception paramString)
-        {
-          QLog.e("TraceReport", 1, paramString, new Object[0]);
-          return;
-        }
+        this.a.a(true, false);
+        return true;
       }
-      if ("action_end_trace".equals(paramString))
+      if (i == 3)
       {
-        alht.a().b(i, str, paramBundle);
-        return;
+        this.a.a(false, true);
+        return false;
       }
-      if ("action_report_span".equals(paramString))
-      {
-        alht.a().c(i, str, paramBundle);
-        return;
-      }
-      if ("action_update_trace".equals(paramString))
-      {
-        alht.a().a(i, paramBundle);
-        return;
-      }
-    } while (!"action_enable_trace".equals(paramString));
-    boolean bool = paramBundle.getBoolean("enable");
-    alht.a().a(i, bool);
+    } while (i != 1);
+    if (f < this.a.jdField_b_of_type_Int * -1)
+    {
+      this.a.k = false;
+      this.a.a(false, true);
+    }
+    for (;;)
+    {
+      this.a.jdField_b_of_type_AndroidWidgetButton.setText(2131692284);
+      return false;
+      this.a.k = true;
+      this.a.a(true, true);
+    }
   }
 }
 

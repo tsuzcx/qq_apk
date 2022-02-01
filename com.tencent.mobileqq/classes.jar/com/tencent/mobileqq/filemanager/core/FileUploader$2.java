@@ -1,23 +1,23 @@
 package com.tencent.mobileqq.filemanager.core;
 
-import aqxe;
+import atdm;
 
 public class FileUploader$2
   implements Runnable
 {
-  public FileUploader$2(aqxe paramaqxe) {}
+  public FileUploader$2(atdm paramatdm) {}
   
   public void run()
   {
-    if (aqxe.a(this.this$0)) {
+    if (atdm.a(this.this$0)) {
       return;
     }
-    aqxe.a(this.this$0, aqxe.a(this.this$0));
+    atdm.a(this.this$0, atdm.a(this.this$0));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.core.FileUploader.2
  * JD-Core Version:    0.7.0.1
  */

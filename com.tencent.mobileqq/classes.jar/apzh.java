@@ -1,49 +1,18 @@
-import android.content.Context;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.businessCard.activity.BusinessCardEditActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class apzh
-  extends apzi
+  implements View.OnClickListener
 {
-  private int c = 4;
-  private int d = 27;
+  public apzh(BusinessCardEditActivity paramBusinessCardEditActivity) {}
   
-  public apzh(Context paramContext, apuc paramapuc, int paramInt, boolean paramBoolean)
+  public void onClick(View paramView)
   {
-    super(paramContext, paramapuc, paramInt);
-    a(paramBoolean);
-  }
-  
-  private int a(int[] paramArrayOfInt)
-  {
-    return (paramArrayOfInt.length + this.d - 1) / this.d;
-  }
-  
-  private void a(boolean paramBoolean)
-  {
-    if (paramBoolean)
-    {
-      this.c = 5;
-      this.d = 34;
-      return;
-    }
-    this.c = 4;
-    this.d = 27;
-  }
-  
-  public void a()
-  {
-    super.a();
-  }
-  
-  public int b()
-  {
-    return a(this.jdField_a_of_type_ArrayOfInt);
-  }
-  
-  protected void c()
-  {
-    if (this.jdField_a_of_type_Apui != null) {
-      this.jdField_a_of_type_Apui.a(this.c, 7);
-    }
+    int i = ((Integer)paramView.getTag()).intValue();
+    this.a.a(i);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

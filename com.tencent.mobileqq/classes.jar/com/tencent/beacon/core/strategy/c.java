@@ -1,532 +1,386 @@
 package com.tencent.beacon.core.strategy;
 
-import android.content.Context;
-import com.tencent.beacon.core.d.b;
-import com.tencent.beacon.core.d.i;
+import android.util.SparseArray;
+import com.tencent.beacon.core.e.d;
+import java.util.Map;
 
-public final class c
-  implements Runnable
+public class c
+  implements a
 {
-  private static long b = 0L;
-  public boolean a = false;
-  private Context c = null;
+  private static volatile c a;
+  public boolean b = false;
+  private String c = "";
+  private int d = 360;
+  private int e = 100;
+  private SparseArray<b> f = null;
+  private Map<String, String> g = null;
+  private boolean h = true;
   
-  public c(Context paramContext)
+  private c()
   {
-    this.c = paramContext;
+    this.f.put(1, new b(1));
+    this.f.put(2, new b(2));
+    this.f.put(3, new b(3));
   }
   
-  private static long a()
+  public static c g()
   {
+    if (a == null) {}
     try
     {
-      long l = b;
-      return l;
+      if (a == null) {
+        a = new c();
+      }
+      return a;
     }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
+    finally {}
   }
   
-  public static void a(long paramLong)
+  public String a(int paramInt)
   {
-    try
-    {
-      b = paramLong;
-      return;
+    b localb = b(paramInt);
+    if (localb == null) {
+      return "";
     }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
-  }
-  
-  private static boolean a(Context paramContext, String paramString)
-  {
-    try
-    {
-      paramContext = com.tencent.beacon.core.a.c.a(paramContext);
-      int i = Integer.parseInt(paramContext.a("querytimes", "0"));
-      if (!i.a().equals(paramString)) {
-        i = 0;
-      }
-      if (i <= a.a().f())
-      {
-        paramContext.a().a("querytimes", String.valueOf(i + 1)).b();
-        return false;
-      }
-      bool = true;
-      b.c("[strategy] set init times failed! ", new Object[0]);
-    }
-    catch (Exception paramContext)
-    {
-      try
-      {
-        b.e("[strategy] sdk init max times", new Object[0]);
-        return true;
-      }
-      catch (Exception paramContext)
-      {
-        boolean bool;
-        break label75;
-      }
-      paramContext = paramContext;
-      bool = false;
-    }
-    label75:
-    return bool;
+    return localb.d();
   }
   
   /* Error */
-  private void b()
+  public String a(String paramString)
   {
     // Byte code:
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_0
-    //   3: getfield 23	com/tencent/beacon/core/strategy/c:c	Landroid/content/Context;
-    //   6: invokestatic 101	com/tencent/beacon/core/strategy/b:a	(Landroid/content/Context;)Lcom/tencent/beacon/core/strategy/e;
-    //   9: astore 7
-    //   11: aload 7
-    //   13: ifnull +66 -> 79
-    //   16: aload 7
-    //   18: getfield 106	com/tencent/beacon/core/strategy/e:b	I
-    //   21: bipush 101
-    //   23: if_icmpne +56 -> 79
-    //   26: aload 7
-    //   28: getfield 109	com/tencent/beacon/core/strategy/e:c	[B
-    //   31: astore 8
-    //   33: aload 8
-    //   35: ifnull +44 -> 79
-    //   38: aload_0
-    //   39: getfield 23	com/tencent/beacon/core/strategy/c:c	Landroid/content/Context;
-    //   42: invokestatic 115	com/tencent/beacon/core/strategy/StrategyQueryModule:getInstance	(Landroid/content/Context;)Lcom/tencent/beacon/core/strategy/StrategyQueryModule;
-    //   45: invokevirtual 119	com/tencent/beacon/core/strategy/StrategyQueryModule:getStrategyHandler	()Lcom/tencent/beacon/core/c/g;
-    //   48: astore 8
-    //   50: aload 8
-    //   52: ifnull +27 -> 79
-    //   55: aload 8
-    //   57: bipush 101
-    //   59: aload 7
-    //   61: getfield 109	com/tencent/beacon/core/strategy/e:c	[B
-    //   64: iconst_0
-    //   65: invokeinterface 124 4 0
-    //   70: ldc 126
-    //   72: iconst_0
-    //   73: anewarray 4	java/lang/Object
-    //   76: invokestatic 88	com/tencent/beacon/core/d/b:e	(Ljava/lang/String;[Ljava/lang/Object;)V
-    //   79: aload_0
-    //   80: getfield 23	com/tencent/beacon/core/strategy/c:c	Landroid/content/Context;
-    //   83: invokestatic 115	com/tencent/beacon/core/strategy/StrategyQueryModule:getInstance	(Landroid/content/Context;)Lcom/tencent/beacon/core/strategy/StrategyQueryModule;
-    //   86: astore 8
-    //   88: aload 8
-    //   90: invokevirtual 129	com/tencent/beacon/core/strategy/StrategyQueryModule:getCurrentQueryStep	()I
-    //   93: ifne +182 -> 275
-    //   96: ldc 131
-    //   98: iconst_0
-    //   99: anewarray 4	java/lang/Object
-    //   102: invokestatic 88	com/tencent/beacon/core/d/b:e	(Ljava/lang/String;[Ljava/lang/Object;)V
-    //   105: aload 8
-    //   107: iconst_1
-    //   108: invokevirtual 135	com/tencent/beacon/core/strategy/StrategyQueryModule:setCurrentQueryStep	(I)V
-    //   111: aload_0
-    //   112: getfield 23	com/tencent/beacon/core/strategy/c:c	Landroid/content/Context;
-    //   115: invokestatic 140	com/tencent/beacon/core/b/a:b	(Landroid/content/Context;)Z
-    //   118: istore_2
-    //   119: ldc 142
-    //   121: iconst_1
-    //   122: anewarray 4	java/lang/Object
-    //   125: dup
-    //   126: iconst_0
-    //   127: iload_2
-    //   128: invokestatic 147	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
-    //   131: aastore
-    //   132: invokestatic 88	com/tencent/beacon/core/d/b:e	(Ljava/lang/String;[Ljava/lang/Object;)V
-    //   135: iload_2
-    //   136: ifeq +109 -> 245
-    //   139: ldc 149
-    //   141: iconst_1
-    //   142: anewarray 4	java/lang/Object
-    //   145: dup
-    //   146: iconst_0
-    //   147: aload_0
-    //   148: getfield 23	com/tencent/beacon/core/strategy/c:c	Landroid/content/Context;
-    //   151: aload_0
-    //   152: getfield 23	com/tencent/beacon/core/strategy/c:c	Landroid/content/Context;
-    //   155: invokestatic 154	com/tencent/beacon/core/b/b:a	(Landroid/content/Context;)Lcom/tencent/beacon/core/b/b;
-    //   158: invokevirtual 156	com/tencent/beacon/core/b/b:b	()Ljava/lang/String;
-    //   161: aconst_null
-    //   162: invokestatic 161	com/tencent/beacon/core/a/a/b:a	(Landroid/content/Context;Ljava/lang/String;[I)I
-    //   165: invokestatic 164	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   168: aastore
-    //   169: invokestatic 88	com/tencent/beacon/core/d/b:e	(Ljava/lang/String;[Ljava/lang/Object;)V
-    //   172: aload 8
-    //   174: monitorenter
-    //   175: aload 8
-    //   177: iconst_1
-    //   178: invokevirtual 168	com/tencent/beacon/core/strategy/StrategyQueryModule:setAppFirstRun	(Z)V
-    //   181: aload 8
-    //   183: monitorexit
-    //   184: getstatic 174	com/tencent/beacon/event/UserAction:beaconModules	Ljava/util/List;
-    //   187: invokeinterface 180 1 0
-    //   192: astore 7
-    //   194: aload 7
-    //   196: invokeinterface 186 1 0
-    //   201: ifeq +74 -> 275
-    //   204: aload 7
-    //   206: invokeinterface 190 1 0
-    //   211: checkcast 192	com/tencent/beacon/core/b
-    //   214: invokevirtual 195	com/tencent/beacon/core/b:onAppFirstRun	()V
-    //   217: goto -23 -> 194
-    //   220: astore 7
-    //   222: aload_0
-    //   223: monitorexit
-    //   224: aload 7
-    //   226: athrow
-    //   227: astore 7
-    //   229: aload 7
-    //   231: invokestatic 198	com/tencent/beacon/core/d/b:a	(Ljava/lang/Throwable;)V
-    //   234: goto -155 -> 79
-    //   237: astore 7
-    //   239: aload 8
-    //   241: monitorexit
-    //   242: aload 7
-    //   244: athrow
-    //   245: invokestatic 200	com/tencent/beacon/core/strategy/c:a	()J
-    //   248: lstore_3
-    //   249: lload_3
-    //   250: lconst_0
-    //   251: lcmp
-    //   252: ifle +23 -> 275
-    //   255: ldc 202
-    //   257: iconst_1
-    //   258: anewarray 4	java/lang/Object
-    //   261: dup
-    //   262: iconst_0
-    //   263: lload_3
-    //   264: invokestatic 207	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   267: aastore
-    //   268: invokestatic 88	com/tencent/beacon/core/d/b:e	(Ljava/lang/String;[Ljava/lang/Object;)V
-    //   271: lload_3
-    //   272: invokestatic 212	java/lang/Thread:sleep	(J)V
-    //   275: ldc 214
-    //   277: iconst_0
-    //   278: anewarray 4	java/lang/Object
-    //   281: invokestatic 88	com/tencent/beacon/core/d/b:e	(Ljava/lang/String;[Ljava/lang/Object;)V
-    //   284: aload 8
-    //   286: iconst_2
-    //   287: invokevirtual 135	com/tencent/beacon/core/strategy/StrategyQueryModule:setCurrentQueryStep	(I)V
-    //   290: aload 8
-    //   292: aload 8
-    //   294: invokevirtual 217	com/tencent/beacon/core/strategy/StrategyQueryModule:getCommonQueryTime	()I
-    //   297: iconst_1
-    //   298: iadd
-    //   299: invokevirtual 220	com/tencent/beacon/core/strategy/StrategyQueryModule:setCommonQueryTime	(I)V
-    //   302: getstatic 174	com/tencent/beacon/event/UserAction:beaconModules	Ljava/util/List;
-    //   305: invokeinterface 180 1 0
-    //   310: astore 7
-    //   312: aload 7
-    //   314: invokeinterface 186 1 0
-    //   319: ifeq +29 -> 348
-    //   322: aload 7
-    //   324: invokeinterface 190 1 0
-    //   329: checkcast 192	com/tencent/beacon/core/b
-    //   332: invokevirtual 223	com/tencent/beacon/core/b:onStrategyQueryStarted	()V
-    //   335: goto -23 -> 312
-    //   338: astore 7
-    //   340: aload 7
-    //   342: invokestatic 198	com/tencent/beacon/core/d/b:a	(Ljava/lang/Throwable;)V
-    //   345: goto -70 -> 275
-    //   348: invokestatic 64	com/tencent/beacon/core/strategy/a:a	()Lcom/tencent/beacon/core/strategy/a;
-    //   351: invokevirtual 226	com/tencent/beacon/core/strategy/a:g	()Z
-    //   354: ifne +214 -> 568
-    //   357: invokestatic 230	com/tencent/beacon/core/strategy/StrategyQueryModule:getMyUpload	()Lcom/tencent/beacon/core/c/h;
-    //   360: astore 7
-    //   362: iconst_0
-    //   363: istore_1
-    //   364: aload 7
-    //   366: ifnonnull +36 -> 402
-    //   369: iload_1
-    //   370: iconst_1
-    //   371: iadd
-    //   372: istore_1
-    //   373: iload_1
-    //   374: iconst_5
-    //   375: if_icmpge +27 -> 402
-    //   378: ldc2_w 231
-    //   381: invokestatic 212	java/lang/Thread:sleep	(J)V
-    //   384: invokestatic 230	com/tencent/beacon/core/strategy/StrategyQueryModule:getMyUpload	()Lcom/tencent/beacon/core/c/h;
-    //   387: astore 7
-    //   389: goto -25 -> 364
-    //   392: astore 7
-    //   394: aload 7
-    //   396: invokestatic 198	com/tencent/beacon/core/d/b:a	(Ljava/lang/Throwable;)V
-    //   399: goto -15 -> 384
-    //   402: aload 7
-    //   404: ifnull +300 -> 704
-    //   407: aload_0
-    //   408: getfield 23	com/tencent/beacon/core/strategy/c:c	Landroid/content/Context;
-    //   411: invokestatic 35	com/tencent/beacon/core/a/c:a	(Landroid/content/Context;)Lcom/tencent/beacon/core/a/c;
-    //   414: astore 10
-    //   416: aload 10
-    //   418: ldc 234
-    //   420: ldc 236
-    //   422: invokevirtual 42	com/tencent/beacon/core/a/c:a	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
-    //   425: astore 9
-    //   427: invokestatic 53	com/tencent/beacon/core/d/i:a	()Ljava/lang/String;
-    //   430: aload 9
-    //   432: invokevirtual 59	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   435: ifne +19 -> 454
-    //   438: aload 10
-    //   440: invokevirtual 71	com/tencent/beacon/core/a/c:a	()Lcom/tencent/beacon/core/a/c;
-    //   443: ldc 234
-    //   445: invokestatic 53	com/tencent/beacon/core/d/i:a	()Ljava/lang/String;
-    //   448: invokevirtual 78	com/tencent/beacon/core/a/c:a	(Ljava/lang/String;Ljava/lang/Object;)Lcom/tencent/beacon/core/a/c;
-    //   451: invokevirtual 80	com/tencent/beacon/core/a/c:b	()V
-    //   454: aload_0
-    //   455: getfield 23	com/tencent/beacon/core/strategy/c:c	Landroid/content/Context;
-    //   458: aload 9
-    //   460: invokestatic 238	com/tencent/beacon/core/strategy/c:a	(Landroid/content/Context;Ljava/lang/String;)Z
-    //   463: istore_2
-    //   464: aload_0
-    //   465: getfield 23	com/tencent/beacon/core/strategy/c:c	Landroid/content/Context;
-    //   468: astore 11
-    //   470: invokestatic 243	com/tencent/beacon/core/event/EventStrategyBean:getInstance	()Lcom/tencent/beacon/core/event/EventStrategyBean;
-    //   473: astore 10
-    //   475: aload 10
-    //   477: invokevirtual 246	com/tencent/beacon/core/event/EventStrategyBean:isStrategyQuerySuccessDaxMax	()Z
-    //   480: ifeq +347 -> 827
-    //   483: aload 11
-    //   485: invokestatic 35	com/tencent/beacon/core/a/c:a	(Landroid/content/Context;)Lcom/tencent/beacon/core/a/c;
-    //   488: astore 11
-    //   490: invokestatic 251	java/lang/System:currentTimeMillis	()J
-    //   493: lstore_3
-    //   494: lload_3
-    //   495: ldc2_w 252
-    //   498: ldiv
-    //   499: ldc2_w 254
-    //   502: ladd
-    //   503: ldc2_w 256
-    //   506: lrem
-    //   507: lstore 5
-    //   509: lload 5
-    //   511: lconst_0
-    //   512: lcmp
-    //   513: iflt +107 -> 620
-    //   516: lload 5
-    //   518: ldc2_w 258
-    //   521: lcmp
-    //   522: ifgt +98 -> 620
-    //   525: lload_3
-    //   526: aload 11
-    //   528: ldc_w 261
-    //   531: invokevirtual 264	com/tencent/beacon/core/a/c:b	(Ljava/lang/String;)J
-    //   534: lsub
-    //   535: ldc2_w 265
-    //   538: lcmp
-    //   539: ifgt +81 -> 620
-    //   542: iconst_1
-    //   543: istore_1
-    //   544: goto +272 -> 816
-    //   547: ldc_w 268
-    //   550: iconst_0
-    //   551: anewarray 4	java/lang/Object
-    //   554: invokestatic 92	com/tencent/beacon/core/d/b:c	(Ljava/lang/String;[Ljava/lang/Object;)V
-    //   557: aload_0
-    //   558: getfield 23	com/tencent/beacon/core/strategy/c:c	Landroid/content/Context;
-    //   561: invokestatic 115	com/tencent/beacon/core/strategy/StrategyQueryModule:getInstance	(Landroid/content/Context;)Lcom/tencent/beacon/core/strategy/StrategyQueryModule;
-    //   564: iconst_1
-    //   565: invokevirtual 271	com/tencent/beacon/core/strategy/StrategyQueryModule:setAtLeastAComQuerySuccess	(Z)V
-    //   568: ldc_w 273
-    //   571: iconst_0
-    //   572: anewarray 4	java/lang/Object
-    //   575: invokestatic 276	com/tencent/beacon/core/d/b:h	(Ljava/lang/String;[Ljava/lang/Object;)V
-    //   578: aload 8
-    //   580: iconst_3
-    //   581: invokevirtual 135	com/tencent/beacon/core/strategy/StrategyQueryModule:setCurrentQueryStep	(I)V
-    //   584: getstatic 174	com/tencent/beacon/event/UserAction:beaconModules	Ljava/util/List;
-    //   587: invokeinterface 180 1 0
-    //   592: astore 7
-    //   594: aload 7
-    //   596: invokeinterface 186 1 0
-    //   601: ifeq +116 -> 717
-    //   604: aload 7
-    //   606: invokeinterface 190 1 0
-    //   611: checkcast 192	com/tencent/beacon/core/b
-    //   614: invokevirtual 279	com/tencent/beacon/core/b:onStrategyQueryFinished	()V
-    //   617: goto -23 -> 594
-    //   620: invokestatic 53	com/tencent/beacon/core/d/i:a	()Ljava/lang/String;
-    //   623: aload 9
-    //   625: invokevirtual 59	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   628: ifeq +24 -> 652
-    //   631: aload 11
-    //   633: ldc_w 281
-    //   636: invokevirtual 283	com/tencent/beacon/core/a/c:a	(Ljava/lang/String;)I
-    //   639: aload 10
-    //   641: invokevirtual 286	com/tencent/beacon/core/event/EventStrategyBean:getStrategyQuerySuccessDayMaxTimes	()I
-    //   644: if_icmplt +183 -> 827
-    //   647: iconst_1
-    //   648: istore_1
-    //   649: goto +167 -> 816
-    //   652: aload 11
-    //   654: invokevirtual 71	com/tencent/beacon/core/a/c:a	()Lcom/tencent/beacon/core/a/c;
-    //   657: ldc_w 281
-    //   660: iconst_0
-    //   661: invokestatic 164	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   664: invokevirtual 78	com/tencent/beacon/core/a/c:a	(Ljava/lang/String;Ljava/lang/Object;)Lcom/tencent/beacon/core/a/c;
-    //   667: invokevirtual 80	com/tencent/beacon/core/a/c:b	()V
-    //   670: goto +157 -> 827
-    //   673: aload 7
-    //   675: new 288	com/tencent/beacon/core/c/c
-    //   678: dup
-    //   679: aload_0
-    //   680: getfield 23	com/tencent/beacon/core/strategy/c:c	Landroid/content/Context;
-    //   683: aload_0
-    //   684: getfield 23	com/tencent/beacon/core/strategy/c:c	Landroid/content/Context;
-    //   687: invokestatic 154	com/tencent/beacon/core/b/b:a	(Landroid/content/Context;)Lcom/tencent/beacon/core/b/b;
-    //   690: invokevirtual 156	com/tencent/beacon/core/b/b:b	()Ljava/lang/String;
-    //   693: invokespecial 291	com/tencent/beacon/core/c/c:<init>	(Landroid/content/Context;Ljava/lang/String;)V
-    //   696: invokeinterface 296 2 0
-    //   701: goto -133 -> 568
-    //   704: ldc_w 298
-    //   707: iconst_0
-    //   708: anewarray 4	java/lang/Object
-    //   711: invokestatic 276	com/tencent/beacon/core/d/b:h	(Ljava/lang/String;[Ljava/lang/Object;)V
-    //   714: goto -146 -> 568
-    //   717: aload_0
-    //   718: getfield 23	com/tencent/beacon/core/strategy/c:c	Landroid/content/Context;
-    //   721: invokestatic 115	com/tencent/beacon/core/strategy/StrategyQueryModule:getInstance	(Landroid/content/Context;)Lcom/tencent/beacon/core/strategy/StrategyQueryModule;
-    //   724: invokevirtual 301	com/tencent/beacon/core/strategy/StrategyQueryModule:getStrategy	()Lcom/tencent/beacon/core/strategy/a;
-    //   727: astore 7
-    //   729: aload 7
-    //   731: ifnonnull +16 -> 747
-    //   734: ldc_w 303
-    //   737: iconst_0
-    //   738: anewarray 4	java/lang/Object
-    //   741: invokestatic 306	com/tencent/beacon/core/d/b:d	(Ljava/lang/String;[Ljava/lang/Object;)V
-    //   744: aload_0
-    //   745: monitorexit
-    //   746: return
-    //   747: aload 7
-    //   749: invokevirtual 308	com/tencent/beacon/core/strategy/a:c	()I
-    //   752: ldc_w 309
-    //   755: imul
-    //   756: i2l
-    //   757: lstore_3
-    //   758: lload_3
-    //   759: lconst_0
-    //   760: lcmp
-    //   761: ifle +42 -> 803
-    //   764: invokestatic 314	com/tencent/beacon/core/a/b:b	()Lcom/tencent/beacon/core/a/b;
-    //   767: aload_0
-    //   768: lload_3
-    //   769: invokevirtual 317	com/tencent/beacon/core/a/b:a	(Ljava/lang/Runnable;J)V
-    //   772: ldc_w 319
-    //   775: iconst_1
-    //   776: anewarray 4	java/lang/Object
-    //   779: dup
-    //   780: iconst_0
-    //   781: lload_3
-    //   782: invokestatic 207	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   785: aastore
-    //   786: invokestatic 276	com/tencent/beacon/core/d/b:h	(Ljava/lang/String;[Ljava/lang/Object;)V
-    //   789: aload_0
-    //   790: getfield 23	com/tencent/beacon/core/strategy/c:c	Landroid/content/Context;
-    //   793: invokestatic 115	com/tencent/beacon/core/strategy/StrategyQueryModule:getInstance	(Landroid/content/Context;)Lcom/tencent/beacon/core/strategy/StrategyQueryModule;
-    //   796: iconst_4
-    //   797: invokevirtual 135	com/tencent/beacon/core/strategy/StrategyQueryModule:setCurrentQueryStep	(I)V
-    //   800: goto -56 -> 744
-    //   803: ldc_w 321
-    //   806: iconst_0
-    //   807: anewarray 4	java/lang/Object
-    //   810: invokestatic 276	com/tencent/beacon/core/d/b:h	(Ljava/lang/String;[Ljava/lang/Object;)V
-    //   813: goto -69 -> 744
-    //   816: iload_2
-    //   817: ifne -270 -> 547
-    //   820: iload_1
-    //   821: ifeq -148 -> 673
-    //   824: goto -277 -> 547
-    //   827: iconst_0
-    //   828: istore_1
-    //   829: goto -13 -> 816
+    //   3: getfield 40	com/tencent/beacon/core/strategy/c:g	Ljava/util/Map;
+    //   6: astore_2
+    //   7: aload_2
+    //   8: ifnull +18 -> 26
+    //   11: aload_2
+    //   12: aload_1
+    //   13: invokeinterface 73 2 0
+    //   18: checkcast 75	java/lang/String
+    //   21: astore_1
+    //   22: aload_0
+    //   23: monitorexit
+    //   24: aload_1
+    //   25: areturn
+    //   26: aconst_null
+    //   27: astore_1
+    //   28: goto -6 -> 22
+    //   31: astore_1
+    //   32: aload_0
+    //   33: monitorexit
+    //   34: aload_1
+    //   35: athrow
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	832	0	this	c
-    //   363	466	1	i	int
-    //   118	699	2	bool	boolean
-    //   248	534	3	l1	long
-    //   507	10	5	l2	long
-    //   9	196	7	localObject1	Object
-    //   220	5	7	localObject2	Object
-    //   227	3	7	localThrowable	java.lang.Throwable
-    //   237	6	7	localObject3	Object
-    //   310	13	7	localIterator	java.util.Iterator
-    //   338	3	7	localInterruptedException1	java.lang.InterruptedException
-    //   360	28	7	localh	com.tencent.beacon.core.c.h
-    //   392	11	7	localInterruptedException2	java.lang.InterruptedException
-    //   592	156	7	localObject4	Object
-    //   31	548	8	localObject5	Object
-    //   425	199	9	str	String
-    //   414	226	10	localObject6	Object
-    //   468	185	11	localObject7	Object
+    //   0	36	0	this	c
+    //   0	36	1	paramString	String
+    //   6	6	2	localMap	Map
     // Exception table:
     //   from	to	target	type
-    //   2	11	220	finally
-    //   16	33	220	finally
-    //   38	50	220	finally
-    //   55	79	220	finally
-    //   79	135	220	finally
-    //   139	175	220	finally
-    //   184	194	220	finally
-    //   194	217	220	finally
-    //   229	234	220	finally
-    //   242	245	220	finally
-    //   245	249	220	finally
-    //   255	271	220	finally
-    //   271	275	220	finally
-    //   275	312	220	finally
-    //   312	335	220	finally
-    //   340	345	220	finally
-    //   348	362	220	finally
-    //   378	384	220	finally
-    //   384	389	220	finally
-    //   394	399	220	finally
-    //   407	454	220	finally
-    //   454	509	220	finally
-    //   525	542	220	finally
-    //   547	568	220	finally
-    //   568	594	220	finally
-    //   594	617	220	finally
-    //   620	647	220	finally
-    //   652	670	220	finally
-    //   673	701	220	finally
-    //   704	714	220	finally
-    //   717	729	220	finally
-    //   734	744	220	finally
-    //   747	758	220	finally
-    //   764	800	220	finally
-    //   803	813	220	finally
-    //   38	50	227	java/lang/Throwable
-    //   55	79	227	java/lang/Throwable
-    //   175	184	237	finally
-    //   239	242	237	finally
-    //   271	275	338	java/lang/InterruptedException
-    //   378	384	392	java/lang/InterruptedException
+    //   2	7	31	finally
+    //   11	22	31	finally
   }
   
-  public final void run()
+  public void a(String paramString1, String paramString2)
   {
-    this.a = true;
-    b();
-    this.a = false;
+    try
+    {
+      this.b = true;
+      a(false);
+      this.c = com.tencent.beacon.core.c.a.b.a(paramString1);
+      d.a("[strategy] set strategy url to %s by api.", new Object[] { this.c });
+      paramString1 = (b)h().get(1);
+      if (paramString1 != null)
+      {
+        paramString1.c = com.tencent.beacon.core.c.a.b.a(paramString2);
+        d.a("[strategy] set user event url to %s by api.", new Object[] { paramString1.c });
+      }
+      return;
+    }
+    finally {}
+  }
+  
+  public void a(Map<String, String> paramMap)
+  {
+    try
+    {
+      this.g = paramMap;
+      return;
+    }
+    finally
+    {
+      paramMap = finally;
+      throw paramMap;
+    }
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    d.a("[net] -> change to http mode.", new Object[0]);
+    this.h = paramBoolean;
+  }
+  
+  public boolean a()
+  {
+    return this.h;
+  }
+  
+  public int b()
+  {
+    Object localObject = (b)h().get(1);
+    if (localObject != null)
+    {
+      localObject = ((b)localObject).a();
+      if (localObject != null)
+      {
+        localObject = (String)((Map)localObject).get("socketPort");
+        if (localObject != null) {
+          return Integer.valueOf((String)localObject).intValue();
+        }
+      }
+    }
+    return 8081;
+  }
+  
+  /* Error */
+  public b b(int paramInt)
+  {
+    // Byte code:
+    //   0: aload_0
+    //   1: monitorenter
+    //   2: aload_0
+    //   3: getfield 38	com/tencent/beacon/core/strategy/c:f	Landroid/util/SparseArray;
+    //   6: astore_2
+    //   7: aload_2
+    //   8: ifnull +16 -> 24
+    //   11: aload_2
+    //   12: iload_1
+    //   13: invokevirtual 96	android/util/SparseArray:get	(I)Ljava/lang/Object;
+    //   16: checkcast 49	com/tencent/beacon/core/strategy/b
+    //   19: astore_2
+    //   20: aload_0
+    //   21: monitorexit
+    //   22: aload_2
+    //   23: areturn
+    //   24: aconst_null
+    //   25: astore_2
+    //   26: goto -6 -> 20
+    //   29: astore_2
+    //   30: aload_0
+    //   31: monitorexit
+    //   32: aload_2
+    //   33: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	34	0	this	c
+    //   0	34	1	paramInt	int
+    //   6	20	2	localObject1	Object
+    //   29	4	2	localObject2	Object
+    // Exception table:
+    //   from	to	target	type
+    //   2	7	29	finally
+    //   11	20	29	finally
+  }
+  
+  public String b(String paramString)
+  {
+    Object localObject = (b)h().get(1);
+    if (localObject != null)
+    {
+      localObject = ((b)localObject).a();
+      if (localObject != null) {
+        return (String)((Map)localObject).get(paramString);
+      }
+    }
+    return null;
+  }
+  
+  public String c()
+  {
+    String str = com.tencent.beacon.core.c.a.b.a(g().a() ^ true, this.c);
+    d.a("[net] module strategy url: %s", new Object[] { str });
+    return str;
+  }
+  
+  public void c(int paramInt)
+  {
+    this.d = paramInt;
+  }
+  
+  public void c(String paramString)
+  {
+    if (this.b)
+    {
+      d.i("[strategy] url has defined by api, don't change.", new Object[0]);
+      return;
+    }
+    this.c = paramString;
+  }
+  
+  public boolean d()
+  {
+    String str = b("stopTest");
+    if (str != null) {
+      return "y".equals(str);
+    }
+    return false;
+  }
+  
+  public Map<String, String> e()
+  {
+    try
+    {
+      Map localMap = this.g;
+      return localMap;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
+  }
+  
+  /* Error */
+  public SparseArray<b> f()
+  {
+    // Byte code:
+    //   0: aload_0
+    //   1: monitorenter
+    //   2: aload_0
+    //   3: getfield 38	com/tencent/beacon/core/strategy/c:f	Landroid/util/SparseArray;
+    //   6: ifnull +22 -> 28
+    //   9: new 148	com/tencent/beacon/core/e/h
+    //   12: dup
+    //   13: invokespecial 149	com/tencent/beacon/core/e/h:<init>	()V
+    //   16: aload_0
+    //   17: getfield 38	com/tencent/beacon/core/strategy/c:f	Landroid/util/SparseArray;
+    //   20: invokevirtual 152	com/tencent/beacon/core/e/h:a	(Landroid/util/SparseArray;)Landroid/util/SparseArray;
+    //   23: astore_1
+    //   24: aload_0
+    //   25: monitorexit
+    //   26: aload_1
+    //   27: areturn
+    //   28: aconst_null
+    //   29: astore_1
+    //   30: goto -6 -> 24
+    //   33: astore_1
+    //   34: aload_0
+    //   35: monitorexit
+    //   36: aload_1
+    //   37: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	38	0	this	c
+    //   23	7	1	localSparseArray	SparseArray
+    //   33	4	1	localObject	Object
+    // Exception table:
+    //   from	to	target	type
+    //   2	24	33	finally
+  }
+  
+  public SparseArray<b> h()
+  {
+    return this.f;
+  }
+  
+  public int i()
+  {
+    return this.d;
+  }
+  
+  public int j()
+  {
+    Object localObject = this.g;
+    if (localObject != null)
+    {
+      localObject = (String)((Map)localObject).get("maxStrategyQueryOneDay");
+      if ((localObject != null) && (!((String)localObject).trim().equals("")))
+      {
+        int i = this.e;
+        try
+        {
+          int j = Integer.valueOf((String)localObject).intValue();
+          return j;
+        }
+        catch (Exception localException)
+        {
+          return i;
+        }
+      }
+    }
+    return this.e;
+  }
+  
+  /* Error */
+  public boolean k()
+  {
+    // Byte code:
+    //   0: aload_0
+    //   1: monitorenter
+    //   2: aload_0
+    //   3: getfield 40	com/tencent/beacon/core/strategy/c:g	Ljava/util/Map;
+    //   6: astore_3
+    //   7: aload_3
+    //   8: ifnull +47 -> 55
+    //   11: aload_3
+    //   12: ldc 164
+    //   14: invokeinterface 73 2 0
+    //   19: checkcast 75	java/lang/String
+    //   22: astore_3
+    //   23: aload_3
+    //   24: ifnull +31 -> 55
+    //   27: ldc 141
+    //   29: aload_3
+    //   30: invokevirtual 168	java/lang/String:equalsIgnoreCase	(Ljava/lang/String;)Z
+    //   33: ifeq +22 -> 55
+    //   36: invokestatic 174	java/util/Calendar:getInstance	()Ljava/util/Calendar;
+    //   39: bipush 11
+    //   41: invokevirtual 177	java/util/Calendar:get	(I)I
+    //   44: istore_1
+    //   45: iload_1
+    //   46: ifne +9 -> 55
+    //   49: iconst_1
+    //   50: istore_2
+    //   51: aload_0
+    //   52: monitorexit
+    //   53: iload_2
+    //   54: ireturn
+    //   55: iconst_0
+    //   56: istore_2
+    //   57: goto -6 -> 51
+    //   60: astore_3
+    //   61: aload_0
+    //   62: monitorexit
+    //   63: aload_3
+    //   64: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	65	0	this	c
+    //   44	2	1	i	int
+    //   50	7	2	bool	boolean
+    //   6	24	3	localObject1	Object
+    //   60	4	3	localObject2	Object
+    // Exception table:
+    //   from	to	target	type
+    //   2	7	60	finally
+    //   11	23	60	finally
+    //   27	45	60	finally
+  }
+  
+  public void l()
+  {
+    String str = b("isSocketOnOff");
+    if ((str != null) && ("n".equals(str))) {
+      a(false);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.tencent.beacon.core.strategy.c
  * JD-Core Version:    0.7.0.1
  */

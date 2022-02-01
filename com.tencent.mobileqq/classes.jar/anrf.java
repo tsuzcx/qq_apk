@@ -1,35 +1,25 @@
-import android.os.Bundle;
-import com.tencent.ark.open.delegate.IArkDelegateNetCallback;
-import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
+import android.content.Intent;
+import com.dataline.activities.PrinterActivity;
+import com.tencent.mobileqq.app.BaseActivity;
+import java.util.ArrayList;
 
 class anrf
-  implements EIPCResultCallback
+  implements atve
 {
-  anrf(anre paramanre, String paramString1, String paramString2, IArkDelegateNetCallback paramIArkDelegateNetCallback, int paramInt) {}
+  anrf(anrd paramanrd, BaseActivity paramBaseActivity, String paramString) {}
   
-  public void onCallback(EIPCResult paramEIPCResult)
+  public void a()
   {
-    QLog.d("ArkApp.ArkMultiProcUtil", 1, new Object[] { "ArkMultiProc.sendAppMsg cmd=", this.jdField_a_of_type_JavaLangString, ", msg=", this.b, ", ipc call back code=", Integer.valueOf(paramEIPCResult.code) });
-    switch (paramEIPCResult.code)
-    {
-    }
-    do
-    {
-      do
-      {
-        return;
-      } while (this.jdField_a_of_type_ComTencentArkOpenDelegateIArkDelegateNetCallback == null);
-      this.jdField_a_of_type_ComTencentArkOpenDelegateIArkDelegateNetCallback.onUpdate(this.jdField_a_of_type_Int, false, null);
-      return;
-      paramEIPCResult = paramEIPCResult.data;
-    } while ((paramEIPCResult == null) || (this.jdField_a_of_type_ComTencentArkOpenDelegateIArkDelegateNetCallback == null));
-    int i = paramEIPCResult.getInt("type");
-    boolean bool = paramEIPCResult.getBoolean("sucess");
-    paramEIPCResult = paramEIPCResult.getString("data");
-    this.jdField_a_of_type_ComTencentArkOpenDelegateIArkDelegateNetCallback.onUpdate(i, bool, paramEIPCResult);
+    Intent localIntent = new Intent(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, PrinterActivity.class);
+    localIntent.putExtra(bgkb.h, 55);
+    ArrayList localArrayList = new ArrayList();
+    localArrayList.add(this.jdField_a_of_type_JavaLangString);
+    localIntent.putStringArrayListExtra("PhotoConst.PHOTO_PATHS", localArrayList);
+    this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.startActivity(localIntent);
+    bcst.b(this.jdField_a_of_type_Anrd.a, "CliOper", "", "", "0X8004059", "0X8004059", 0, 0, "", "", "", "");
   }
+  
+  public void b() {}
 }
 
 

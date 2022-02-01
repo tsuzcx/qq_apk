@@ -1,6 +1,12 @@
-public abstract interface ajwa
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+
+class ajwa
+  implements DialogInterface.OnDismissListener
 {
-  public abstract void a(float paramFloat1, float paramFloat2, float paramFloat3);
+  ajwa(ajvx paramajvx) {}
+  
+  public void onDismiss(DialogInterface paramDialogInterface) {}
 }
 
 

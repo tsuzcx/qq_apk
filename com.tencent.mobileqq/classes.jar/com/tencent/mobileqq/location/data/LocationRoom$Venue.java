@@ -5,7 +5,7 @@ import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import atpr;
+import avwq;
 import com.tencent.lbssearch.httpresponse.Poi;
 import com.tencent.lbssearch.object.result.SearchResultObject.SearchResultData;
 import com.tencent.lbssearch.object.result.SuggestionResultObject.SuggestionData;
@@ -19,7 +19,7 @@ import java.lang.ref.SoftReference;
 public class LocationRoom$Venue
   implements Parcelable
 {
-  public static final Parcelable.Creator<Venue> CREATOR = new atpr();
+  public static final Parcelable.Creator<Venue> CREATOR = new avwq();
   public LatLng a;
   public String a;
   public SoftReference<Marker> a;
@@ -107,7 +107,7 @@ public class LocationRoom$Venue
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.location.data.LocationRoom.Venue
  * JD-Core Version:    0.7.0.1
  */

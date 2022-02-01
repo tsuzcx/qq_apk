@@ -7,9 +7,9 @@ import android.view.View;
 import android.view.ViewTreeObserver;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
-import blqh;
-import bmmv;
-import bmnj;
+import bojl;
+import bpeb;
+import bpep;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.BaseApplication;
@@ -17,7 +17,7 @@ import com.tencent.qphone.base.util.BaseApplication;
 public class EditVideoInteractFace$1
   implements Runnable
 {
-  public EditVideoInteractFace$1(bmmv parambmmv) {}
+  public EditVideoInteractFace$1(bpeb parambpeb) {}
   
   public void run()
   {
@@ -27,16 +27,16 @@ public class EditVideoInteractFace$1
       try
       {
         Object localObject = BaseApplicationImpl.getContext().getSharedPreferences("EditVideoInteractFace", 0);
-        String str = blqh.a().getCurrentAccountUin();
+        String str = bojl.a().getCurrentAccountUin();
         int i = ((SharedPreferences)localObject).getInt(str, 0);
         if (i >= 3) {
           return;
         }
         this.this$0.a.a(44);
-        bmmv.a(this.this$0, LayoutInflater.from(this.this$0.a()).inflate(2131561440, null));
-        bmmv.a(this.this$0).findViewById(2131380094).setOnClickListener(this.this$0);
-        bmmv.a(this.this$0).findViewById(2131375216).setOnClickListener(this.this$0);
-        RelativeLayout localRelativeLayout = (RelativeLayout)this.this$0.a(2131363822);
+        bpeb.a(this.this$0, LayoutInflater.from(this.this$0.a()).inflate(2131561676, null));
+        bpeb.a(this.this$0).findViewById(2131381055).setOnClickListener(this.this$0);
+        bpeb.a(this.this$0).findViewById(2131375942).setOnClickListener(this.this$0);
+        RelativeLayout localRelativeLayout = (RelativeLayout)this.this$0.a(2131364028);
         localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
         if (this.this$0.a.a == null) {
           break label268;
@@ -45,9 +45,9 @@ public class EditVideoInteractFace$1
         {
           localLayoutParams.bottomMargin = this.this$0.a.a.getHeight();
           localLayoutParams.addRule(12, -1);
-          localRelativeLayout.addView(bmmv.a(this.this$0), localLayoutParams);
-          bmmv.a(this.this$0, true);
-          bmmv.a(this.this$0).getViewTreeObserver().addOnGlobalLayoutListener(this.this$0);
+          localRelativeLayout.addView(bpeb.a(this.this$0), localLayoutParams);
+          bpeb.a(this.this$0, true);
+          bpeb.a(this.this$0).getViewTreeObserver().addOnGlobalLayoutListener(this.this$0);
           localObject = ((SharedPreferences)localObject).edit();
           ((SharedPreferences.Editor)localObject).putInt(str, i + 1);
           ((SharedPreferences.Editor)localObject).commit();
@@ -62,13 +62,13 @@ public class EditVideoInteractFace$1
       localLayoutParams.addRule(12, -1);
       continue;
       label268:
-      localLayoutParams.addRule(2, 2131363824);
+      localLayoutParams.addRule(2, 2131364030);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     dov.com.tencent.biz.qqstory.takevideo.EditVideoInteractFace.1
  * JD-Core Version:    0.7.0.1
  */

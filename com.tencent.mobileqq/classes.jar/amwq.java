@@ -1,204 +1,194 @@
-import android.util.Xml;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.apollo.cmgame.CmGameStartChecker.StartCheckParam;
+import com.tencent.mobileqq.apollo.lightGame.CmGameLoadingView;
+import com.tencent.mobileqq.apollo.process.data.CmGameInitParams;
+import com.tencent.mobileqq.apollo.store.ApolloGameActivity;
+import com.tencent.mobileqq.data.ApolloGameData;
 import com.tencent.qphone.base.util.QLog;
-import java.io.ByteArrayInputStream;
-import java.io.File;
-import java.io.IOException;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map.Entry;
-import java.util.Set;
-import org.xmlpull.v1.XmlPullParser;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class amwq
+  extends amlo
 {
-  public static int a(String paramString)
+  public amwq(ApolloGameActivity paramApolloGameActivity, AppInterface paramAppInterface)
   {
-    try
-    {
-      int i = amxe.a("arcloud", "v8.2.0.1", amxe.b("arcloud", "v8.2.0.1", "arcloud"), paramString);
-      return i;
-    }
-    finally
-    {
-      paramString = finally;
-      throw paramString;
-    }
+    super(paramAppInterface, false);
   }
   
-  public static int a(String paramString1, String paramString2)
+  public void onDownloadConfirm(CmGameStartChecker.StartCheckParam paramStartCheckParam, amlp paramamlp, long paramLong)
   {
-    int i = -5;
-    for (;;)
+    if (ApolloGameActivity.a(this.a)) {}
+    do
     {
-      try
+      do
       {
-        QLog.i("AREngine_ArCloudNativeSoLoader", 2, "doOnDownloadSuccess. soResFilename = " + paramString1 + ", soResMd5FromConfig = " + paramString2);
-        amxe.a("arcloud", "v8.2.0.1", "arcloud", paramString2);
-        paramString2 = amxe.a("arcloud", "v8.2.0.1", paramString2);
-        try
+        do
         {
-          amxa.a(paramString1, paramString2);
-          localObject1 = paramString2 + File.separator + "md5_config.xml";
-          localObject2 = new File((String)localObject1);
-          if (!((File)localObject2).exists()) {
-            break label587;
-          }
-          new HashMap();
-        }
-        catch (IOException localIOException)
-        {
-          Object localObject1;
-          Object localObject2;
-          Object localObject3;
-          String str;
-          i = -6;
-          bdhb.a(paramString2, false);
-          paramString2 = new File(paramString1);
-          if (paramString2.exists()) {
-            paramString2.delete();
-          }
-          QLog.i("AREngine_ArCloudNativeSoLoader", 2, "doOnDownloadSuccess. unzip failed. result = " + -6 + ", soResFilename = " + paramString1);
-          continue;
-        }
-      }
-      finally {}
-      try
-      {
-        localObject1 = a(bdhb.b((File)localObject2));
-        if (((HashMap)localObject1).size() <= 0) {
-          break label557;
-        }
-        paramString1 = ((HashMap)localObject1).entrySet().iterator();
-        if (!paramString1.hasNext()) {
-          break label628;
-        }
-        localObject2 = (Map.Entry)paramString1.next();
-        localObject3 = (String)((Map.Entry)localObject2).getKey();
-        localObject1 = paramString2 + File.separator + (String)localObject3 + ".so";
-        amxe.a("arcloud", "v8.2.0.1", (String)localObject3, (String)((Map.Entry)localObject2).getValue());
-        localObject3 = new File((String)localObject1);
-        QLog.i("AREngine_ArCloudNativeSoLoader", 2, "doOnDownloadSuccess. soFilename = " + (String)localObject1);
-        if (!((File)localObject3).exists()) {
-          break label516;
-        }
-        str = awni.a((String)localObject1);
-        localObject2 = (String)((Map.Entry)localObject2).getValue();
-        if (((String)localObject2).equalsIgnoreCase(str)) {
-          continue;
-        }
-        ((File)localObject3).delete();
-        QLog.i("AREngine_ArCloudNativeSoLoader", 2, "doOnDownloadSuccess. check md5 failed. result = " + -3 + ", filename = " + (String)localObject1 + ", md5FromCalc = " + str + ", md5FromConfig = " + (String)localObject2);
-        i = -3;
-      }
-      catch (IOException paramString2)
-      {
-        QLog.i("AREngine_ArCloudNativeSoLoader", 2, "doOnDownloadSuccess. parse xml failed. result = " + -5 + ", soResFilename = " + paramString1);
-        continue;
-      }
-      catch (OutOfMemoryError paramString2)
-      {
-        QLog.i("AREngine_ArCloudNativeSoLoader", 2, "doOnDownloadSuccess. parse xml failed. result = " + -5 + ", soResFilename = " + paramString1);
-        continue;
-        QLog.i("AREngine_ArCloudNativeSoLoader", 2, "doOnDownloadSuccess. so file not exist. result = " + -2 + ", filename = " + localIOException);
-        i = -2;
-        continue;
-        i = -1;
-        QLog.i("AREngine_ArCloudNativeSoLoader", 2, "doOnDownloadSuccess. sSoMd5ListFromConfig.size() == 0. result = " + -1);
-        continue;
-      }
-      return i;
-      label516:
-      label557:
-      label587:
-      QLog.i("AREngine_ArCloudNativeSoLoader", 2, "doOnDownloadSuccess. so file not exist. result = " + -2 + ", configFilename = " + localIOException);
-      i = -2;
-      continue;
-      label628:
-      QLog.i("AREngine_ArCloudNativeSoLoader", 2, "doOnDownloadSuccess. result = " + 0);
-      i = 0;
-    }
-  }
-  
-  public static String a()
-  {
-    return "libARCloud";
-  }
-  
-  private static HashMap<String, String> a(String paramString)
-  {
-    HashMap localHashMap = new HashMap();
-    for (;;)
-    {
-      try
-      {
-        localXmlPullParser = Xml.newPullParser();
-        localXmlPullParser.setInput(new ByteArrayInputStream(paramString.getBytes()), "UTF-8");
-        i = localXmlPullParser.getEventType();
-      }
-      catch (Exception localException)
-      {
-        XmlPullParser localXmlPullParser;
-        QLog.e("AREngine_ArCloudNativeSoLoader", 2, "parseSoMd5FromXmlConfig failed. error = " + localException.getMessage() + ", xmlConfigContent = " + paramString);
-        return localHashMap;
-      }
-      int i = localXmlPullParser.next();
-      break label178;
-      str = localXmlPullParser.getName();
-      if (str.equalsIgnoreCase("libARCloud"))
-      {
-        localHashMap.put("libARCloud", localXmlPullParser.nextText());
-      }
-      else if (str.equalsIgnoreCase("libARCloud_64"))
-      {
-        localHashMap.put("libARCloud_64", localException.nextText());
-        label178:
-        while (i == 1)
-        {
-          String str;
-          QLog.d("AREngine_ArCloudNativeSoLoader", 2, "parseSoMd5FromXmlConfig successfully. soMd5List = " + localHashMap);
-          return localHashMap;
-        }
-        switch (i)
-        {
-        }
-      }
-    }
-  }
-  
-  public static boolean a()
-  {
-    return new File(amxe.a("arcloud", "v8.2.0.1", amxe.b("arcloud", "v8.2.0.1", "arcloud")) + File.separator + a() + ".so").exists();
-  }
-  
-  public static boolean a(String paramString)
-  {
-    boolean bool1 = false;
-    for (;;)
-    {
-      try
-      {
-        String str = amxe.a("arcloud", "v8.2.0.1", amxe.b("arcloud", "v8.2.0.1", "arcloud")) + File.separator + paramString + ".so";
-        Object localObject = new File(str);
-        if (QLog.isColorLevel()) {
-          QLog.d("AREngine_ArCloudNativeSoLoader", 2, "isSoFileExist soFile=" + str + ", exist=" + ((File)localObject).exists());
-        }
-        if (((File)localObject).exists())
-        {
-          paramString = amxe.b("arcloud", "v8.2.0.1", paramString);
-          localObject = awni.a(str);
-          boolean bool2 = paramString.equalsIgnoreCase((String)localObject);
-          if (bool2)
+          do
           {
-            bool1 = true;
-            return bool1;
+            return;
+            if ((paramStartCheckParam != null) && (paramStartCheckParam.game != null)) {
+              break;
+            }
+          } while (!QLog.isColorLevel());
+          QLog.d(this.a.b, 2, "onDownloadConfirm mStartCheckParam == null || mStartCheckParam.game == null");
+          return;
+          if ((ApolloGameActivity.a(this.a) == null) || (paramStartCheckParam.requestCode == ApolloGameActivity.a(this.a).requestCode)) {
+            break;
           }
-          QLog.i("AREngine_ArCloudNativeSoLoader", 2, "isSoFileExist. check md5 failed. soFilename = " + str + ", md5FromConfig = " + paramString + ", md5FromCalc = " + (String)localObject);
-          continue;
+        } while (!QLog.isColorLevel());
+        QLog.d(this.a.b, 2, "onDownloadConfirm startCheckParam.requestCode != mStartCheckParam.requestCode");
+        return;
+        if (paramLong > 0L) {
+          break;
         }
-        QLog.i("AREngine_ArCloudNativeSoLoader", 2, "isSoFileExist. so not exist. soFilename = " + str);
+        QLog.d(this.a.b, 2, new Object[] { "[onDownloadConfirm] packageSize is invalid, packageSize=", Long.valueOf(paramLong) });
+      } while (paramamlp == null);
+      paramamlp.a(paramStartCheckParam);
+      return;
+      if ((ApolloGameActivity.a(this.a) != null) && (ApolloGameActivity.a(this.a).statMap != null)) {
+        ApolloGameActivity.a(this.a).statMap.put("download_confirm", Long.valueOf(1L));
       }
-      finally {}
+    } while (ApolloGameActivity.a(this.a) == null);
+    ApolloGameActivity.a(this.a).a(paramStartCheckParam, paramamlp, paramLong);
+  }
+  
+  public void onDownloadGameResDown(CmGameStartChecker.StartCheckParam paramStartCheckParam)
+  {
+    super.onDownloadGameResDown(paramStartCheckParam);
+    if ((ApolloGameActivity.a(this.a) != null) && (ApolloGameActivity.a(this.a).statMap != null)) {
+      ApolloGameActivity.a(this.a).statMap.put("download_game_res", Long.valueOf(1L));
     }
+  }
+  
+  public void onDownloadGameResFail(CmGameStartChecker.StartCheckParam paramStartCheckParam)
+  {
+    QLog.d(this.a.b, 1, "[onDownloadGameResFail]");
+    onGameFailed(paramStartCheckParam, -12L);
+  }
+  
+  public void onDownloadGameResProgress(CmGameStartChecker.StartCheckParam paramStartCheckParam, int paramInt)
+  {
+    if (ApolloGameActivity.a(this.a) != null) {
+      ApolloGameActivity.a(this.a).a(paramStartCheckParam, paramInt);
+    }
+  }
+  
+  public void onGameCheckFinish(long paramLong, CmGameStartChecker.StartCheckParam paramStartCheckParam, CmGameInitParams paramCmGameInitParams)
+  {
+    if (ApolloGameActivity.a(this.a)) {}
+    do
+    {
+      return;
+      QLog.d(this.a.b, 1, new Object[] { "[onCheckGameFinish] resultCode=", Long.valueOf(paramLong) });
+      if (paramStartCheckParam == null)
+      {
+        QLog.e(this.a.b, 1, "onCheckGameFinish mStartCheckParam == null");
+        return;
+      }
+      if (paramLong != 0L)
+      {
+        onGameFailed(paramStartCheckParam, paramLong);
+        return;
+      }
+    } while (ApolloGameActivity.a(this.a) == null);
+    ApolloGameActivity.a(this.a).a(paramLong, paramStartCheckParam);
+  }
+  
+  public void onGameCheckRetry(int paramInt)
+  {
+    if (ApolloGameActivity.a(this.a)) {}
+    while (ApolloGameActivity.a(this.a) == null) {
+      return;
+    }
+    ApolloGameActivity.a(this.a).a(paramInt, ApolloGameActivity.a(this.a));
+  }
+  
+  public void onGameFailed(CmGameStartChecker.StartCheckParam paramStartCheckParam, long paramLong)
+  {
+    if (ApolloGameActivity.a(this.a) != null) {
+      ApolloGameActivity.a(this.a).b(paramStartCheckParam, paramLong);
+    }
+  }
+  
+  public void onGameLifeTipShow(CmGameStartChecker.StartCheckParam paramStartCheckParam)
+  {
+    if (ApolloGameActivity.a(this.a)) {
+      return;
+    }
+    if (QLog.isColorLevel())
+    {
+      if (paramStartCheckParam != null) {
+        break label43;
+      }
+      QLog.d(this.a.b, 2, "showGameLifeTip mStartCheckParam is null");
+    }
+    for (;;)
+    {
+      onGameFailed(paramStartCheckParam, -1L);
+      return;
+      label43:
+      QLog.d(this.a.b, 2, new Object[] { "showGameLifeTip mStartCheckParam:", paramStartCheckParam });
+    }
+  }
+  
+  public void onGetGameData(CmGameStartChecker.StartCheckParam paramStartCheckParam)
+  {
+    super.onGetGameData(paramStartCheckParam);
+    if ((paramStartCheckParam == null) || (paramStartCheckParam.game == null)) {
+      QLog.e(this.a.b, 1, "onGetGameData startCheckParam == null or game is null");
+    }
+    do
+    {
+      return;
+      ApolloGameActivity.a(this.a).game = paramStartCheckParam.game;
+      if (ApolloGameActivity.a(this.a) != null) {
+        ApolloGameActivity.a(this.a).a(ApolloGameActivity.a(this.a));
+      }
+    } while (ApolloGameActivity.a(this.a) == null);
+    ApolloGameActivity.a(this.a).b(paramStartCheckParam);
+  }
+  
+  public void onVerifyGameFinish(long paramLong, CmGameStartChecker.StartCheckParam paramStartCheckParam, CmGameInitParams paramCmGameInitParams)
+  {
+    if (ApolloGameActivity.a(this.a)) {}
+    do
+    {
+      do
+      {
+        return;
+        QLog.d(this.a.b, 1, new Object[] { "[onVerifyGameFinish] resultCode=", Long.valueOf(paramLong) });
+        if (paramStartCheckParam != null) {
+          break;
+        }
+      } while (!QLog.isColorLevel());
+      QLog.d(this.a.b, 2, "onVerifyGameFinish mStartCheckParam == null");
+      return;
+      if ((ApolloGameActivity.a(this.a) == null) || (paramStartCheckParam.requestCode == ApolloGameActivity.a(this.a).requestCode)) {
+        break;
+      }
+    } while (!QLog.isColorLevel());
+    QLog.d(this.a.b, 2, "onVerifyGameFinish startCheckParam.requestCode != mStartCheckParam.requestCode");
+    return;
+    if (ApolloGameActivity.a(this.a) != null) {
+      ApolloGameActivity.a(this.a).a(paramStartCheckParam, paramLong);
+    }
+    if (paramLong != 0L)
+    {
+      onGameFailed(paramStartCheckParam, paramLong);
+      return;
+    }
+    if (paramCmGameInitParams != null)
+    {
+      paramCmGameInitParams.appId = ApolloGameActivity.a(this.a).game.appId;
+      paramCmGameInitParams.commFlag = ApolloGameActivity.a(this.a).commFlag;
+      paramCmGameInitParams.rpUrl = ApolloGameActivity.a(this.a).rpUrl;
+      paramCmGameInitParams.rpIconUrl = ApolloGameActivity.a(this.a).rpIconUrl;
+    }
+    if (paramCmGameInitParams != null) {
+      paramCmGameInitParams.accessTokenRet = 0;
+    }
+    this.a.a(paramCmGameInitParams);
   }
 }
 

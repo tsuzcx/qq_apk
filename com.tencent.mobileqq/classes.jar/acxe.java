@@ -1,27 +1,12 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.ForwardFriendListActivity;
+import com.tencent.mobileqq.data.ConversationInfo;
 
-public class acxe
-  implements DialogInterface.OnClickListener
+public abstract interface acxe
 {
-  public acxe(ForwardFriendListActivity paramForwardFriendListActivity) {}
+  public abstract int a(StringBuilder paramStringBuilder);
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    paramDialogInterface = ForwardFriendListActivity.a(this.a).getInputValue();
-    if (!TextUtils.isEmpty(paramDialogInterface))
-    {
-      ForwardFriendListActivity.a(this.a, ForwardFriendListActivity.a(this.a).getEditText());
-      Intent localIntent = new Intent();
-      localIntent.putExtras(this.a.getIntent().getExtras());
-      localIntent.putExtra("extra_choose_friend_name", paramDialogInterface);
-      this.a.setResult(-1, localIntent);
-      this.a.finish();
-    }
-  }
+  public abstract boolean a(ConversationInfo paramConversationInfo);
+  
+  public abstract boolean a(ConversationInfo paramConversationInfo, boolean[] paramArrayOfBoolean);
 }
 
 

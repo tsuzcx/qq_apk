@@ -1,25 +1,25 @@
-import mqq.os.MqqHandler;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.ark.API.ArkAppYYBDownloadModule.7;
 
-class apkb
-  implements apjw
+public class apkb
+  implements DialogInterface.OnClickListener
 {
-  apkb(apjy paramapjy, MqqHandler paramMqqHandler) {}
+  public apkb(ArkAppYYBDownloadModule.7 param7) {}
   
-  public void a(int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    switch (paramInt)
+    try
     {
-    }
-    do
-    {
-      do
-      {
-        return;
-      } while (this.jdField_a_of_type_MqqOsMqqHandler == null);
-      this.jdField_a_of_type_MqqOsMqqHandler.removeMessages(80);
+      paramDialogInterface.dismiss();
+      label6:
+      bisa.a().a(10, this.a.a);
       return;
-    } while (this.jdField_a_of_type_MqqOsMqqHandler == null);
-    this.jdField_a_of_type_MqqOsMqqHandler.sendEmptyMessageDelayed(80, 5000L);
+    }
+    catch (Exception paramDialogInterface)
+    {
+      break label6;
+    }
   }
 }
 

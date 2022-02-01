@@ -1,11 +1,11 @@
 package dov.com.qq.im.ptv;
 
-import bmfm;
+import bows;
 
 public class LightWeightCameraCaptureUnit$11
   implements Runnable
 {
-  public LightWeightCameraCaptureUnit$11(bmfm parambmfm, LWMotionEvent paramLWMotionEvent) {}
+  public LightWeightCameraCaptureUnit$11(bows parambows, LWMotionEvent paramLWMotionEvent) {}
   
   public void run()
   {
@@ -14,7 +14,7 @@ public class LightWeightCameraCaptureUnit$11
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     dov.com.qq.im.ptv.LightWeightCameraCaptureUnit.11
  * JD-Core Version:    0.7.0.1
  */

@@ -1,14 +1,27 @@
 public class arqh
 {
-  public int a;
-  public long a;
-  public String a;
-  public byte[] a;
-  public long b;
-  public String b;
-  public byte[] b;
-  public long c;
-  public long d;
+  public static int a = 300;
+  
+  public static String a(String paramString)
+  {
+    if (bgsp.a(paramString)) {
+      return "";
+    }
+    paramString = paramString.split("_");
+    if (paramString.length > 2) {
+      return paramString[1];
+    }
+    return "";
+  }
+  
+  public static String a(String paramString1, String paramString2)
+  {
+    if ((bgsp.a(paramString1)) || (bgsp.a(paramString2))) {
+      return "";
+    }
+    paramString2 = bisz.a(paramString2);
+    return anhk.bm + paramString2 + paramString1;
+  }
 }
 
 

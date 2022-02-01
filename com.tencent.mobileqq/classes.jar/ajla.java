@@ -1,37 +1,12 @@
-import com.tencent.mobileqq.activity.recent.RecentBaseData;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-
-public class ajla
+class ajla
+  implements bdci
 {
-  private BaseActivity a;
-  public QQAppInterface a;
+  ajla(ajkz paramajkz) {}
   
-  public ajla(QQAppInterface paramQQAppInterface, BaseActivity paramBaseActivity)
+  public void a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity = paramBaseActivity;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-  }
-  
-  public void a(RecentBaseData paramRecentBaseData, boolean paramBoolean)
-  {
-    if (paramRecentBaseData == null) {
-      return;
-    }
-    auam.a().b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBoolean);
-    QQAppInterface localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-    String str = paramRecentBaseData.a();
-    if (paramBoolean) {}
-    for (paramRecentBaseData = "1";; paramRecentBaseData = "0")
-    {
-      azqs.b(localQQAppInterface, "P_CliOper", "Grp_msg", "", "Msglist", "Clk_top_right", 0, 0, str, "4", paramRecentBaseData, "");
-      return;
-    }
-  }
-  
-  public void a(QQAppInterface paramQQAppInterface)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    paramBoolean = this.a.a();
+    this.a.d(paramBoolean);
   }
 }
 

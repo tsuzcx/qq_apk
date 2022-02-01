@@ -1,16 +1,33 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.bless.BlessSelectMemberActivity;
+import android.os.SystemClock;
+import android.view.View;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageForMixedMsg;
 
-public class ahdd
-  implements DialogInterface.OnClickListener
+class ahdd
+  implements bkhw
 {
-  public ahdd(BlessSelectMemberActivity paramBlessSelectMemberActivity) {}
+  ahdd(ahda paramahda, MessageForMixedMsg paramMessageForMixedMsg, bkho parambkho) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void OnClick(View paramView, int paramInt)
   {
-    paramDialogInterface.dismiss();
-    BlessSelectMemberActivity.a(this.a, null);
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Bkho.dismiss();
+      long l;
+      do
+      {
+        return;
+        l = SystemClock.uptimeMillis();
+      } while (l - this.jdField_a_of_type_Ahda.c < 500L);
+      this.jdField_a_of_type_Ahda.c = l;
+      paramView = (awmg)this.jdField_a_of_type_Ahda.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(174);
+      this.jdField_a_of_type_Ahda.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(this.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg.frienduin, this.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg.istroop, this.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg.uniseq);
+      paramView.a(this.jdField_a_of_type_Ahda.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg, true);
+    }
   }
 }
 

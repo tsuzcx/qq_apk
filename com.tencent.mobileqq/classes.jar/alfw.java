@@ -1,38 +1,26 @@
-import com.tencent.common.app.AppInterface;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import org.json.JSONObject;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.view.Window;
+import android.view.inputmethod.InputMethodManager;
+import com.tencent.mobileqq.activity.registerGuideLogin.LoginView;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.qphone.base.util.QLog;
 
-class alfw
+public class alfw
+  implements View.OnTouchListener
 {
-  public int a;
-  public String a;
-  public final List<alfx> a;
+  public alfw(LoginView paramLoginView) {}
   
-  public alfw()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-  }
-  
-  public JSONObject a(String paramString, AppInterface paramAppInterface)
-  {
-    if ((this.jdField_a_of_type_JavaUtilList == null) || (paramAppInterface == null)) {
-      return null;
+    if (QLog.isColorLevel()) {
+      QLog.d("LoginActivity.LoginView", 2, "mScrollRootView.setOnTouch action=" + paramMotionEvent.getAction() + " im:" + LoginView.a(this.a));
     }
-    JSONObject localJSONObject = new JSONObject();
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext()) {
-      ((alfx)localIterator.next()).a(paramString, localJSONObject, paramAppInterface);
+    if ((paramMotionEvent.getAction() == 1) && (LoginView.a(this.a) != null)) {
+      LoginView.a(this.a).hideSoftInputFromWindow(this.a.a.getWindow().getDecorView().getWindowToken(), 0);
     }
-    return localJSONObject;
-  }
-  
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("mClientId:").append(this.jdField_a_of_type_Int).append(" mCmdSSOName:").append(this.jdField_a_of_type_JavaLangString).append(" mParameters:").append(this.jdField_a_of_type_JavaUtilList);
-    return localStringBuilder.toString();
+    return true;
   }
 }
 

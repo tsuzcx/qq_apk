@@ -1,36 +1,19 @@
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.forward.ForwardMultServerShare.2;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
-import java.util.Map;
-import tencent.im.msg.im_msg_body.RichText;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.mobileqq.emoticonview.EmotionSearchPanel;
 
 public class asar
-  implements awkh
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public asar(ForwardMultServerShare.2 param2) {}
+  public asar(EmotionSearchPanel paramEmotionSearchPanel, int paramInt1, int paramInt2, int paramInt3) {}
   
-  public MessageRecord a(im_msg_body.RichText paramRichText)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    return null;
-  }
-  
-  public void a(awki paramawki)
-  {
-    if (paramawki != null) {
-      QLog.d(asap.a(), 1, "requestImageShare updateMsg info =" + paramawki);
-    }
-  }
-  
-  public void b(awki paramawki)
-  {
-    this.a.jdField_a_of_type_JavaUtilMap.put(this.a.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberResultRecord, paramawki);
-    QLog.d(asap.a(), 1, new Object[] { "requestImageShare onSend result =", paramawki, ", isTimeOut=", Boolean.valueOf(asap.a(this.a.this$0)) });
-    if (this.a.jdField_a_of_type_JavaUtilMap.size() == asap.a(this.a.this$0).size())
-    {
-      aseh.b("KEY_STAGE_2_UPLOAD_IMAGE_MULT");
-      asap.a(this.a.this$0, this.a.jdField_a_of_type_JavaUtilMap);
-    }
+    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    int i = (int)(this.jdField_a_of_type_Int + this.b * f);
+    EmotionSearchPanel.a(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmotionSearchPanel, i);
+    EmotionSearchPanel.b(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmotionSearchPanel, (int)(this.c * f));
+    EmotionSearchPanel.a(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmotionSearchPanel, f);
   }
 }
 

@@ -32,11 +32,11 @@ public class TPDownloadProxyClient
     return 0;
   }
   
-  public String getClipPlayUrl(int paramInt1, int paramInt2)
+  public String getClipPlayUrl(int paramInt1, int paramInt2, int paramInt3)
   {
     try
     {
-      String str = this.downloadProxyAidl.getClipPlayUrl(paramInt1, paramInt2, 1);
+      String str = this.downloadProxyAidl.getClipPlayUrl(paramInt1, paramInt2, paramInt3);
       return str;
     }
     catch (Throwable localThrowable)
@@ -60,11 +60,11 @@ public class TPDownloadProxyClient
     return null;
   }
   
-  public String getPlayUrl(int paramInt)
+  public String getPlayUrl(int paramInt1, int paramInt2)
   {
     try
     {
-      String str = this.downloadProxyAidl.getPlayUrl(paramInt, 1);
+      String str = this.downloadProxyAidl.getPlayUrl(paramInt1, paramInt2);
       return str;
     }
     catch (Throwable localThrowable)
@@ -138,6 +138,19 @@ public class TPDownloadProxyClient
       TPDLProxyLog.e("TPDownloadProxyClient", 0, "tpdlnative", "resumeDownload failed, error:" + localThrowable.toString());
     }
     return -1;
+  }
+  
+  public void setBusinessDownloadStrategy(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
+  {
+    try
+    {
+      this.downloadProxyAidl.setBusinessDownloadStrategy(paramInt1, paramInt2, paramInt3, paramInt4, paramInt5);
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      TPDLProxyLog.e("TPDownloadProxyClient", 0, "tpdlnative", "setBusinessDownloadStrategy failed, error:" + localThrowable.toString());
+    }
   }
   
   public boolean setClipInfo(int paramInt1, int paramInt2, String paramString, TPDownloadParam paramTPDownloadParam)
@@ -305,7 +318,7 @@ public class TPDownloadProxyClient
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.thumbplayer.core.downloadproxy.client.TPDownloadProxyClient
  * JD-Core Version:    0.7.0.1
  */

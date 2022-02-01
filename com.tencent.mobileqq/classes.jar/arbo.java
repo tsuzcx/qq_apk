@@ -1,83 +1,315 @@
-import android.content.Context;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.Button;
-import com.tencent.mobileqq.widget.ShaderAnimLayout;
+import android.text.TextUtils;
+import android.util.SparseArray;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.StringTokenizer;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 public class arbo
-  extends BaseAdapter
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener;
-  private berd jdField_a_of_type_Berd;
-  private Object jdField_a_of_type_JavaLangObject;
+  private double jdField_a_of_type_Double;
+  private int jdField_a_of_type_Int;
+  private SparseArray<arbp> jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
+  private String jdField_a_of_type_JavaLangString = "";
+  private List<arbq> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private Map<String, String> jdField_a_of_type_JavaUtilMap = new HashMap();
+  private boolean jdField_a_of_type_Boolean;
+  private int jdField_b_of_type_Int;
+  private String jdField_b_of_type_JavaLangString = "";
+  private Map<String, arbp> jdField_b_of_type_JavaUtilMap = new HashMap();
+  private int jdField_c_of_type_Int;
+  private String jdField_c_of_type_JavaLangString = "";
+  private Map<String, String> jdField_c_of_type_JavaUtilMap = new HashMap();
+  private int jdField_d_of_type_Int;
+  private String jdField_d_of_type_JavaLangString = "";
+  private int jdField_e_of_type_Int;
+  private String jdField_e_of_type_JavaLangString = "";
+  private int jdField_f_of_type_Int;
+  private String jdField_f_of_type_JavaLangString = "";
   
-  public arbo(Context paramContext, View.OnClickListener paramOnClickListener)
+  public static arbo a(aqlg[] paramArrayOfaqlg)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = paramOnClickListener;
-  }
-  
-  public void a(berd paramberd)
-  {
-    this.jdField_a_of_type_Berd = paramberd;
-  }
-  
-  public void a(Object paramObject)
-  {
-    this.jdField_a_of_type_JavaLangObject = paramObject;
-  }
-  
-  public boolean a(int paramInt, View paramView, ShaderAnimLayout paramShaderAnimLayout, Button paramButton, Object paramObject)
-  {
-    boolean bool = false;
-    if (paramShaderAnimLayout != null)
+    if ((paramArrayOfaqlg == null) || (paramArrayOfaqlg.length <= 0)) {
+      return null;
+    }
+    Object localObject1 = paramArrayOfaqlg[0].jdField_a_of_type_JavaLangString;
+    paramArrayOfaqlg = new arbo();
+    if (TextUtils.isEmpty((CharSequence)localObject1))
     {
-      if ((this.jdField_a_of_type_JavaLangObject != null) && (this.jdField_a_of_type_JavaLangObject.equals(paramObject)))
+      if (QLog.isColorLevel()) {
+        QLog.d("TencentDocTipsConfigBean", 2, "updateConfig json parse faild");
+      }
+      return paramArrayOfaqlg;
+    }
+    JSONObject localJSONObject2;
+    Object localObject2;
+    Object localObject3;
+    Object localObject4;
+    Object localObject5;
+    String str1;
+    try
+    {
+      localObject1 = new JSONObject((String)localObject1);
+      localJSONObject2 = ((JSONObject)localObject1).optJSONObject("File");
+      paramArrayOfaqlg.jdField_a_of_type_Int = localJSONObject2.optInt("maxCount");
+      paramArrayOfaqlg.jdField_b_of_type_Int = localJSONObject2.optInt("insertDur");
+      localObject2 = localJSONObject2.optJSONObject("fileType");
+      localObject3 = new StringBuilder();
+      localObject4 = ((JSONObject)localObject2).keys();
+      localObject5 = new StringBuilder();
+      while (((Iterator)localObject4).hasNext())
       {
-        bool = true;
-        paramShaderAnimLayout.a();
-        if (this.jdField_a_of_type_Berd != null) {
-          this.jdField_a_of_type_Berd.setMotionView(paramView, paramInt);
-        }
-        paramButton.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-        paramButton.setTag(Integer.valueOf(paramInt));
+        str1 = (String)((Iterator)localObject4).next();
+        ((StringBuilder)localObject3).append(str1).append("|");
+        String str2 = ((JSONObject)localObject2).getString(str1);
+        paramArrayOfaqlg.jdField_a_of_type_JavaUtilMap.put("fileType_" + str1, str2);
+        ((StringBuilder)localObject5).append(str2).append("|");
+        arbp localarbp = new arbp();
+        localarbp.jdField_b_of_type_ArrayOfJavaLangString = a(str2);
+        paramArrayOfaqlg.jdField_b_of_type_JavaUtilMap.put(str1, localarbp);
+        continue;
+        return paramArrayOfaqlg;
       }
     }
-    else {
-      return bool;
+    catch (Exception localException)
+    {
+      QLog.e("TencentDocTipsConfigBean", 2, localException.toString());
+      localException.printStackTrace();
     }
-    paramShaderAnimLayout.d();
-    paramButton.setOnClickListener(null);
-    paramButton.setTag(null);
-    return false;
+    JSONObject localJSONObject1;
+    do
+    {
+      if (((StringBuilder)localObject5).length() > 0) {
+        ((StringBuilder)localObject5).deleteCharAt(((StringBuilder)localObject5).length() - 1);
+      }
+      if (((StringBuilder)localObject3).length() > 0) {
+        ((StringBuilder)localObject3).deleteCharAt(((StringBuilder)localObject3).length() - 1);
+      }
+      paramArrayOfaqlg.jdField_c_of_type_JavaLangString = ((StringBuilder)localObject3).toString();
+      paramArrayOfaqlg.jdField_d_of_type_JavaLangString = ((StringBuilder)localObject5).toString();
+      localObject2 = localJSONObject2.optJSONObject("Similarity");
+      paramArrayOfaqlg.jdField_c_of_type_Int = ((JSONObject)localObject2).optInt("durTime");
+      paramArrayOfaqlg.jdField_d_of_type_Int = ((JSONObject)localObject2).optInt("maxQuery");
+      paramArrayOfaqlg.jdField_a_of_type_Double = ((JSONObject)localObject2).getDouble("Percentage");
+      paramArrayOfaqlg.jdField_a_of_type_JavaLangString = ((JSONObject)localObject2).optString("Tips");
+      paramArrayOfaqlg.jdField_b_of_type_JavaLangString = ((JSONObject)localObject2).optString("Link");
+      localJSONObject2 = localJSONObject2.optJSONObject("KeyWords");
+      localObject2 = paramArrayOfaqlg.jdField_b_of_type_JavaUtilMap.keySet().iterator();
+      if (((Iterator)localObject2).hasNext())
+      {
+        localObject3 = (String)((Iterator)localObject2).next();
+        localObject4 = localJSONObject2.optJSONObject((String)localObject3);
+        localObject5 = (arbp)paramArrayOfaqlg.jdField_b_of_type_JavaUtilMap.get(localObject3);
+        str1 = ((JSONObject)localObject4).optString("key");
+        ((arbp)localObject5).jdField_a_of_type_ArrayOfJavaLangString = a(str1);
+        if (paramArrayOfaqlg.jdField_e_of_type_Int == 1) {
+          ((arbp)localObject5).jdField_a_of_type_JavaLangString = ((JSONObject)localObject4).optString("Tips1");
+        }
+        for (((arbp)localObject5).jdField_b_of_type_JavaLangString = ((JSONObject)localObject4).optString("Link1");; ((arbp)localObject5).jdField_b_of_type_JavaLangString = ((JSONObject)localObject4).optString("Link0"))
+        {
+          paramArrayOfaqlg.jdField_b_of_type_JavaUtilMap.put(localObject3, localObject5);
+          paramArrayOfaqlg.jdField_c_of_type_JavaUtilMap.put("key_str_key_words" + (String)localObject3, str1);
+          paramArrayOfaqlg.jdField_c_of_type_JavaUtilMap.put("key_str_key_tips" + (String)localObject3, ((arbp)localObject5).jdField_a_of_type_JavaLangString);
+          paramArrayOfaqlg.jdField_c_of_type_JavaUtilMap.put("key_str_key_link" + (String)localObject3, ((arbp)localObject5).jdField_b_of_type_JavaLangString);
+          break;
+          ((arbp)localObject5).jdField_a_of_type_JavaLangString = ((JSONObject)localObject4).optString("Tips0");
+        }
+      }
+      localJSONObject1 = localException.optJSONObject("Text");
+    } while (localJSONObject1 == null);
+    paramArrayOfaqlg.jdField_e_of_type_JavaLangString = localJSONObject1.toString();
+    if (localJSONObject1.optInt("textSwitch", 0) == 1) {}
+    for (boolean bool = true;; bool = false)
+    {
+      paramArrayOfaqlg.jdField_a_of_type_Boolean = bool;
+      a(localJSONObject1, paramArrayOfaqlg);
+      break;
+    }
   }
   
-  public int getCount()
+  private static void a(JSONObject paramJSONObject, arbo paramarbo)
   {
-    return 0;
+    JSONArray localJSONArray = paramJSONObject.optJSONArray("template_list");
+    int i = 0;
+    if (i < localJSONArray.length())
+    {
+      int k = localJSONArray.getJSONObject(i).optInt("template_type", -1);
+      arbp localarbp = new arbp();
+      paramarbo.jdField_f_of_type_Int = paramJSONObject.optInt("containKeyword");
+      if (paramarbo.jdField_f_of_type_Int == 1) {
+        localarbp.jdField_a_of_type_JavaLangString = paramJSONObject.optString("Tips1");
+      }
+      for (localarbp.jdField_b_of_type_JavaLangString = paramJSONObject.optString("Link1");; localarbp.jdField_b_of_type_JavaLangString = paramJSONObject.optString("Link0"))
+      {
+        int j = k;
+        if (k == -1) {
+          j = i;
+        }
+        paramarbo.jdField_a_of_type_AndroidUtilSparseArray.put(j, localarbp);
+        i += 1;
+        break;
+        localarbp.jdField_a_of_type_JavaLangString = paramJSONObject.optString("Tips0");
+      }
+    }
   }
   
-  public Object getItem(int paramInt)
+  private static String[] a(String paramString)
   {
-    return null;
+    int i = 0;
+    StringTokenizer localStringTokenizer = new StringTokenizer(paramString, "|");
+    if (!localStringTokenizer.hasMoreTokens())
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("TencentDocTipsConfigBean", 1, "split String faild :" + paramString);
+      }
+      return new String[0];
+    }
+    paramString = new String[localStringTokenizer.countTokens()];
+    while (localStringTokenizer.hasMoreTokens())
+    {
+      paramString[i] = localStringTokenizer.nextToken();
+      i += 1;
+    }
+    return paramString;
   }
   
-  public long getItemId(int paramInt)
+  public double a()
   {
-    return 0L;
+    return this.jdField_a_of_type_Double;
   }
   
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  public int a()
   {
-    return null;
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public SparseArray<arbp> a()
+  {
+    return this.jdField_a_of_type_AndroidUtilSparseArray;
+  }
+  
+  public String a()
+  {
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public List<arbq> a()
+  {
+    return this.jdField_a_of_type_JavaUtilList;
+  }
+  
+  public Map<String, arbp> a()
+  {
+    return this.jdField_b_of_type_JavaUtilMap;
+  }
+  
+  public void a(JSONObject paramJSONObject)
+  {
+    Object localObject;
+    if (paramJSONObject == null)
+    {
+      localObject = "";
+      this.jdField_f_of_type_JavaLangString = ((String)localObject);
+      if (paramJSONObject != null) {
+        break label33;
+      }
+      this.jdField_a_of_type_Boolean = false;
+    }
+    for (;;)
+    {
+      return;
+      localObject = paramJSONObject.toString();
+      break;
+      try
+      {
+        label33:
+        localObject = paramJSONObject.optJSONArray("template_list");
+        if (paramJSONObject.optInt("retcode", -1) != 0)
+        {
+          this.jdField_a_of_type_Boolean = false;
+          return;
+        }
+      }
+      catch (Exception paramJSONObject)
+      {
+        QLog.e("TencentDocTipsConfigBean", 2, paramJSONObject.toString());
+        return;
+      }
+      if (localObject != null)
+      {
+        int i = 0;
+        while (i < ((JSONArray)localObject).length())
+        {
+          paramJSONObject = ((JSONArray)localObject).getJSONObject(i);
+          int k = paramJSONObject.optInt("template_type", -1);
+          if (paramJSONObject.optJSONArray("infos") != null)
+          {
+            paramJSONObject = paramJSONObject.optJSONArray("infos");
+            int j = 0;
+            while (j < paramJSONObject.length())
+            {
+              JSONObject localJSONObject = paramJSONObject.getJSONObject(j);
+              arbq localarbq = new arbq();
+              localarbq.jdField_a_of_type_JavaLangString = localJSONObject.optString("template_name");
+              localarbq.jdField_a_of_type_Int = localJSONObject.optInt("template_id", -1);
+              if (localarbq.jdField_a_of_type_Int == -1) {
+                QLog.d("TencentDocTipsConfigBean", 2, "template has no id");
+              }
+              localarbq.jdField_b_of_type_Int = k;
+              this.jdField_a_of_type_JavaUtilList.add(localarbq);
+              j += 1;
+            }
+          }
+          i += 1;
+        }
+      }
+    }
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Boolean;
+  }
+  
+  public int b()
+  {
+    return this.jdField_b_of_type_Int;
+  }
+  
+  public String b()
+  {
+    return this.jdField_b_of_type_JavaLangString;
+  }
+  
+  public int c()
+  {
+    return this.jdField_c_of_type_Int;
+  }
+  
+  public String c()
+  {
+    return this.jdField_d_of_type_JavaLangString;
+  }
+  
+  public String d()
+  {
+    return this.jdField_e_of_type_JavaLangString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     arbo
  * JD-Core Version:    0.7.0.1
  */

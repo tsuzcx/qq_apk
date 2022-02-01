@@ -1,14 +1,23 @@
-public abstract interface bccp
+import com.tencent.mobileqq.servlet.LoginVerifyServlet.4;
+import com.tencent.qphone.base.util.QLog;
+import java.net.URL;
+import javax.net.ssl.HostnameVerifier;
+import javax.net.ssl.HttpsURLConnection;
+import javax.net.ssl.SSLSession;
+
+public class bccp
+  implements HostnameVerifier
 {
-  public abstract void a(String paramString, double paramDouble);
+  public bccp(LoginVerifyServlet.4 param4, URL paramURL) {}
   
-  public abstract void a(String paramString1, String paramString2, double paramDouble1, double paramDouble2, boolean paramBoolean);
-  
-  public abstract void d();
-  
-  public abstract void e();
-  
-  public abstract void f();
+  public boolean verify(String paramString, SSLSession paramSSLSession)
+  {
+    boolean bool = HttpsURLConnection.getDefaultHostnameVerifier().verify(this.jdField_a_of_type_JavaNetURL.getHost(), paramSSLSession);
+    if (!bool) {
+      QLog.d("LoginVerifyServlet", 1, new Object[] { "OpenVirtual.HostnameVerifier.host:", this.jdField_a_of_type_JavaNetURL.getHost(), ",address:", paramSSLSession.getPeerHost(), ",isverify:", Boolean.valueOf(bool) });
+    }
+    return bool;
+  }
 }
 
 

@@ -1,114 +1,33 @@
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.ImageView;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.businessCard.activity.CardPicGalleryActivity;
-import java.util.ArrayList;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.mobileqq.app.automator.Automator;
+import com.tencent.mobileqq.app.automator.step.CheckPublicAccount;
+import com.tencent.qphone.base.util.QLog;
 
 public class anzm
-  extends BaseAdapter
+  extends anry
 {
-  public anzm(CardPicGalleryActivity paramCardPicGalleryActivity) {}
+  private anzm(CheckPublicAccount paramCheckPublicAccount) {}
   
-  public String a(int paramInt)
+  public void onUpdateUserFollowList(int paramInt, boolean paramBoolean)
   {
-    if ((this.a.jdField_a_of_type_JavaUtilArrayList != null) && (paramInt < this.a.jdField_a_of_type_JavaUtilArrayList.size()) && (paramInt >= 0)) {
-      return (String)this.a.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
+    if (QLog.isColorLevel()) {
+      QLog.d("QQInitHandler", 2, "PublicAccount onUpdateUserFollowList:" + paramBoolean + " " + paramInt);
     }
-    return null;
-  }
-  
-  public int getCount()
-  {
-    if (this.a.jdField_a_of_type_JavaUtilArrayList != null) {
-      return this.a.jdField_a_of_type_JavaUtilArrayList.size();
-    }
-    return 0;
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return 0L;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    Object localObject;
-    if (paramView == null)
+    if ((paramBoolean) && (paramInt == 0))
     {
-      paramView = this.a.getLayoutInflater().inflate(2131560867, null);
-      paramViewGroup = new anzw();
-      paramViewGroup.a = ((URLImageView)paramView.findViewById(2131364001));
-      paramView.setTag(paramViewGroup);
-      localObject = a(paramInt);
-      if ((this.a.jdField_a_of_type_Int != 0) && (this.a.jdField_a_of_type_AndroidGraphicsDrawableDrawable == null)) {
-        this.a.jdField_a_of_type_AndroidGraphicsDrawableDrawable = this.a.getResources().getDrawable(this.a.jdField_a_of_type_Int);
-      }
-      if (localObject == null) {}
+      this.a.a.a.edit().putBoolean("isPublicAccountListOK", true).commit();
+      this.a.a(7);
     }
-    else
-    {
-      for (;;)
-      {
-        try
-        {
-          localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-          if (this.a.jdField_a_of_type_AndroidGraphicsDrawableDrawable == null) {
-            continue;
-          }
-          localObject = URLDrawable.getDrawable((String)localObject, this.a.jdField_a_of_type_AndroidGraphicsDrawableDrawable, this.a.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
-          paramViewGroup.a.setImageDrawable((Drawable)localObject);
-        }
-        catch (Exception paramViewGroup)
-        {
-          URLDrawable.URLDrawableOptions localURLDrawableOptions;
-          paramViewGroup.printStackTrace();
-          continue;
-          this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-          return paramView;
-        }
-        if ((this.a.d != 1) || (this.a.jdField_a_of_type_Boolean)) {
-          continue;
-        }
-        this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-        return paramView;
-        paramViewGroup = (anzw)paramView.getTag();
-        break;
-        localObject = URLDrawable.getDrawable((String)localObject, localURLDrawableOptions);
-      }
+    while (paramInt == 0) {
+      return;
     }
-    try
-    {
-      if (this.a.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null)
-      {
-        localObject = URLDrawable.getDrawable("http://aaa", this.a.jdField_a_of_type_AndroidGraphicsDrawableDrawable, this.a.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
-        paramViewGroup.a.setImageDrawable((Drawable)localObject);
-      }
-      for (;;)
-      {
-        this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-        return paramView;
-        paramViewGroup.a.setImageDrawable(null);
-      }
-    }
-    catch (Exception paramViewGroup)
-    {
-      for (;;)
-      {
-        paramViewGroup.printStackTrace();
-      }
-    }
+    this.a.a(6);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     anzm
  * JD-Core Version:    0.7.0.1
  */

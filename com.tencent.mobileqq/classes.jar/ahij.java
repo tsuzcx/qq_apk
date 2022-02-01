@@ -1,19 +1,60 @@
 import android.text.TextUtils;
-import com.tencent.mobileqq.activity.contact.addcontact.SearchContactsFragment;
+import android.view.View;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.item.ShortVideoRealItemBuilder;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageForShortVideo;
+import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Map;
 
 public class ahij
-  implements ahkc
+  implements bkhw
 {
-  public ahij(SearchContactsFragment paramSearchContactsFragment) {}
+  public ahij(ShortVideoRealItemBuilder paramShortVideoRealItemBuilder, MessageForShortVideo paramMessageForShortVideo, ahin paramahin, bkho parambkho) {}
   
-  public void a(String paramString)
+  public void OnClick(View paramView, int paramInt)
   {
-    this.a.jdField_a_of_type_Boolean = true;
-    this.a.jdField_a_of_type_Int = 80000001;
-    if (!TextUtils.isEmpty(paramString))
+    switch (paramInt)
     {
-      azqs.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "add_page", "", "search_grp", "clk_history", 0, 0, "", "", paramString, "");
-      this.a.a(paramString, false);
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Bkho.dismiss();
+      return;
+      if ((this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.uiOperatorFlag == 1) && (this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.videoFileStatus == 1004)) {
+        ShortVideoUtils.c("0X800A7F0", this.jdField_a_of_type_ComTencentMobileqqActivityAioItemShortVideoRealItemBuilder.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
+      }
+      if (this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.uiOperatorFlag == 2)
+      {
+        this.jdField_a_of_type_ComTencentMobileqqActivityAioItemShortVideoRealItemBuilder.b(this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo, this.jdField_a_of_type_Ahin);
+      }
+      else if ((this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.uiOperatorFlag == 1) && (this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.md5 == null))
+      {
+        if (!ShortVideoRealItemBuilder.d())
+        {
+          ShortVideoRealItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemShortVideoRealItemBuilder, this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo, this.jdField_a_of_type_Ahin, true, true);
+        }
+        else if (!ShortVideoRealItemBuilder.a().containsKey(Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.uniseq)))
+        {
+          ShortVideoRealItemBuilder.a().put(Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.uniseq), this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo);
+          if (QLog.isColorLevel()) {
+            QLog.i("ShortVideoRealItemBuilder", 2, "messageMap size:" + ShortVideoRealItemBuilder.a().size() + ", [" + this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.uniseq + "] added, mEncoding:" + ShortVideoRealItemBuilder.d());
+          }
+        }
+      }
+      else if ((!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.md5)) && (this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.videoFileStatus == 1004) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioItemShortVideoRealItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().c(this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.frienduin, this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.uniseq)))
+      {
+        ShortVideoRealItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemShortVideoRealItemBuilder);
+        if (QLog.isColorLevel()) {
+          QLog.i("ShortVideoRealItemBuilder", 2, "onErrorIconClick resumeSending!");
+        }
+      }
+      else
+      {
+        this.jdField_a_of_type_ComTencentMobileqqActivityAioItemShortVideoRealItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo, this.jdField_a_of_type_Ahin);
+        ShortVideoRealItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemShortVideoRealItemBuilder);
+      }
     }
   }
 }

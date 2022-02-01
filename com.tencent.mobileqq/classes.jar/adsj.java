@@ -1,16 +1,10 @@
-import com.tencent.mobileqq.activity.QQSettingMe;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class adsj
-  implements aybp
+public final class adsj
+  implements DialogInterface.OnClickListener
 {
-  public adsj(QQSettingMe paramQQSettingMe) {}
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    if ((this.a.c) && (paramInt1 == 102) && (paramInt2 == 300)) {
-      this.a.z();
-    }
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

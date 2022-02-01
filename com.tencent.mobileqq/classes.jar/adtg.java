@@ -1,15 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.activity.QQTranslucentBrowserActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.ChatHistory;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class adtg
-  implements DialogInterface.OnDismissListener
+  implements View.OnClickListener
 {
-  public adtg(QQTranslucentBrowserActivity paramQQTranslucentBrowserActivity) {}
+  public adtg(ChatHistory paramChatHistory) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void onClick(View paramView)
   {
-    this.a.finish();
+    this.a.k();
+    bcst.b(this.a.app, "CliOper", "", "", "0X800568E", "0X800568E", this.a.k, 0, "", "", "", "");
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

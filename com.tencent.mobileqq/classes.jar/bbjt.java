@@ -1,21 +1,23 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.troop.activity.TroopBarPublishLocationSelectActivity;
-import com.tencent.widget.XListView;
+import android.view.ViewGroup;
+import com.tencent.mobileqq.search.fragment.FunctionSearchFragment;
+import com.tencent.widget.ListView;
 
 public class bbjt
-  extends Handler
+  extends bbip<bbmy, bbvg>
 {
-  public bbjt(TroopBarPublishLocationSelectActivity paramTroopBarPublishLocationSelectActivity) {}
-  
-  public void handleMessage(Message paramMessage)
+  public bbjt(FunctionSearchFragment paramFunctionSearchFragment, ListView paramListView, aobu paramaobu)
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    }
-    this.a.a.springBackOverScrollHeaderView();
+    super(paramListView, paramaobu);
+  }
+  
+  protected bbps<bbmy, bbvg> a(int paramInt)
+  {
+    return new bboz(this.jdField_a_of_type_Aobu, 268435456);
+  }
+  
+  protected bbvh a(int paramInt, ViewGroup paramViewGroup)
+  {
+    return new bbwo(paramViewGroup, 268435456);
   }
 }
 

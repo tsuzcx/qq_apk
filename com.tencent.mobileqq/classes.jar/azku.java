@@ -1,8 +1,16 @@
-import java.util.concurrent.atomic.AtomicInteger;
+import android.os.Handler.Callback;
+import android.os.Message;
 
-public class azku
+class azku
+  implements Handler.Callback
 {
-  public AtomicInteger a = new AtomicInteger(0);
+  azku(azks paramazks) {}
+  
+  public boolean handleMessage(Message paramMessage)
+  {
+    this.a.b(paramMessage);
+    return true;
+  }
 }
 
 

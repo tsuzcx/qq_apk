@@ -1,95 +1,49 @@
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Card;
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendEditFragment;
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendProfileEditFragment;
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendProfileEditFragment.ExtendFriendInfo;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.colornote.data.ColorNote;
 import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class aqdp
-  extends aqbl
+  implements aqdf
 {
-  public aqdp(ExtendFriendEditFragment paramExtendFriendEditFragment) {}
+  private Bundle a;
   
-  protected void a(boolean paramBoolean, int paramInt)
+  public aqdp() {}
+  
+  public aqdp(Bundle paramBundle)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ExtendFriendProfileEdit", 2, String.format("ExtendFriendEditFragment onUpdateCampusCertificateStatus isSuccess=%s scene=%s", new Object[] { Boolean.valueOf(paramBoolean), Integer.valueOf(paramInt) }));
-    }
-    if ((paramBoolean) && (paramInt == 2) && (this.a.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendProfileEditFragment != null))
-    {
-      aqbg localaqbg = (aqbg)this.a.getActivity().app.getManager(264);
-      this.a.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendProfileEditFragment$ExtendFriendInfo.jdField_a_of_type_Long = localaqbg.c();
-      this.a.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendProfileEditFragment.b(this.a.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendProfileEditFragment$ExtendFriendInfo);
-    }
+    this.a = paramBundle;
   }
   
-  protected void a(boolean paramBoolean, aqcx paramaqcx, int paramInt)
+  public void a(Context paramContext, ColorNote paramColorNote)
   {
-    if ((paramBoolean) && (paramaqcx != null)) {
-      this.a.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendProfileEditFragment.a(ExtendFriendEditFragment.a(this.a).app, paramaqcx);
-    }
-  }
-  
-  protected void a(boolean paramBoolean, Card paramCard)
-  {
-    super.a(paramBoolean, paramCard);
-    if (paramBoolean)
+    Intent localIntent = new Intent(paramContext, QQBrowserActivity.class);
+    localIntent.putExtra("big_brother_source_key", "biz_src_jc_floatwin");
+    localIntent.putExtra("url", paramColorNote.getSubType());
+    if (paramColorNote.getReserve() != null) {}
+    try
     {
-      this.a.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendProfileEditFragment$ExtendFriendInfo = new ExtendFriendProfileEditFragment.ExtendFriendInfo(paramCard);
-      if ((TextUtils.isEmpty(this.a.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendProfileEditFragment$ExtendFriendInfo.jdField_a_of_type_JavaLangString)) && (TextUtils.isEmpty(this.a.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendProfileEditFragment$ExtendFriendInfo.b)))
-      {
-        ExtendFriendEditFragment.a(this.a, true);
-        this.a.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendProfileEditFragment.a(this.a.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendProfileEditFragment$ExtendFriendInfo);
+      localIntent.putExtra("key_scroll_y", new JSONObject(new String(paramColorNote.getReserve())).getInt("key_scroll_y"));
+      localIntent.putExtra("subType", paramColorNote.mSubType);
+      localIntent.addFlags(268435456);
+      if (this.a != null) {
+        localIntent.putExtra("isFromFavourite", this.a.getBoolean("isFromFavourite", false));
       }
-    }
-    for (;;)
-    {
-      ExtendFriendEditFragment.a(this.a).dismiss();
-      return;
-      ExtendFriendEditFragment.a(this.a, false);
-      break;
-      QQToast.a(ExtendFriendEditFragment.a(this.a), "获取校园扩列信息失败", 0).a();
-    }
-  }
-  
-  protected void a(boolean paramBoolean, Object paramObject)
-  {
-    if ((paramBoolean) && ((paramObject instanceof Bundle)))
-    {
-      paramObject = (Bundle)paramObject;
-      String str1 = paramObject.getString("name");
-      String str2 = paramObject.getString("schoolid");
-      int i = paramObject.getInt("category");
-      int j = paramObject.getInt("idx");
-      if ((this.a.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendProfileEditFragment$ExtendFriendInfo != null) && (this.a.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendProfileEditFragment != null))
-      {
-        this.a.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendProfileEditFragment$ExtendFriendInfo.d = str1;
-        this.a.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendProfileEditFragment$ExtendFriendInfo.c = str2;
-        this.a.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendProfileEditFragment$ExtendFriendInfo.h = i;
-        this.a.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendProfileEditFragment$ExtendFriendInfo.jdField_a_of_type_Long = -1L;
-        this.a.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendProfileEditFragment$ExtendFriendInfo.g = j;
-        this.a.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendProfileEditFragment.b(this.a.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendProfileEditFragment$ExtendFriendInfo);
-      }
-    }
-  }
-  
-  protected void b(boolean paramBoolean)
-  {
-    super.b(paramBoolean);
-    if (paramBoolean)
-    {
-      ExtendFriendEditFragment.a(this.a).dismiss();
-      ExtendFriendEditFragment.a(this.a).setResult(8193);
-      if (ExtendFriendEditFragment.a(this.a) != null) {
-        ExtendFriendEditFragment.a(this.a).finish();
-      }
+      paramContext.startActivity(localIntent);
+      tcc.b(paramColorNote);
       return;
     }
-    ExtendFriendEditFragment.a(this.a).dismiss();
+    catch (JSONException localJSONException)
+    {
+      for (;;)
+      {
+        QLog.e("WebLauncher", 1, localJSONException, new Object[0]);
+      }
+    }
   }
 }
 

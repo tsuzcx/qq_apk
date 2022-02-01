@@ -1,28 +1,35 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.widget.TextView;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.qphone.base.util.QLog;
+import java.io.IOException;
+import java.io.InputStream;
 
 class auxx
-  extends BroadcastReceiver
+  implements DialogInterface.OnClickListener
 {
-  auxx(auxs paramauxs) {}
+  auxx(auxw paramauxw, InputStream paramInputStream) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    int i = paramIntent.getIntExtra("SmallScreenState", 0);
-    if (i == 3) {
-      this.a.a.setVisibility(4);
-    }
-    while ((i != 2) && (i != 0)) {
+    try
+    {
+      this.jdField_a_of_type_JavaIoInputStream.close();
+      auxw.a(this.jdField_a_of_type_Auxw).finish();
       return;
     }
-    this.a.a.setVisibility(0);
+    catch (IOException paramDialogInterface)
+    {
+      for (;;)
+      {
+        QLog.e("UriParserPathHelper", 1, "system share.exception.e=", paramDialogInterface);
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     auxx
  * JD-Core Version:    0.7.0.1
  */

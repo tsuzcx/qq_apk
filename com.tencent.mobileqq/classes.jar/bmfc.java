@@ -1,18 +1,18 @@
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
-import dov.com.qq.im.poi.PoiInfo;
+import cooperation.qzone.remote.SendMsg;
 
 public final class bmfc
-  implements Parcelable.Creator<PoiInfo>
+  implements Parcelable.Creator<SendMsg>
 {
-  public PoiInfo a(Parcel paramParcel)
+  public SendMsg a(Parcel paramParcel)
   {
-    return new PoiInfo(paramParcel, null);
+    return new SendMsg(paramParcel);
   }
   
-  public PoiInfo[] a(int paramInt)
+  public SendMsg[] a(int paramInt)
   {
-    return new PoiInfo[paramInt];
+    return new SendMsg[paramInt];
   }
 }
 

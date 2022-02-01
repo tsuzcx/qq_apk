@@ -1,16 +1,27 @@
-import com.tencent.mobileqq.activity.aio.doodle.DoodleMsgLayout;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import android.widget.Toast;
+import com.tencent.mobileqq.activity.QuickLoginActivity;
+import com.tencent.mobileqq.mqsafeedit.libsafeedit;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.ArrayList;
+import java.util.HashMap;
+import mqq.app.AppRuntime;
 
 public class aezv
+  implements AdapterView.OnItemClickListener
 {
-  public int a;
-  public String a;
-  public boolean a;
-  public boolean b = false;
-  public boolean c;
+  public aezv(QuickLoginActivity paramQuickLoginActivity) {}
   
-  public aezv(DoodleMsgLayout paramDoodleMsgLayout)
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    this.jdField_a_of_type_Boolean = false;
+    String str = (String)((HashMap)this.a.a.get(paramInt)).get("qq");
+    libsafeedit.getLoginLegal((String)((HashMap)this.a.a.get(paramInt)).get("password"));
+    byte[] arrayOfByte = libsafeedit.byteSafeEditTextToMD5(Boolean.valueOf(true));
+    this.a.getAppRuntime().login(str, arrayOfByte, QuickLoginActivity.a(this.a));
+    Toast.makeText(this.a.getApplicationContext(), "logining...", 0).show();
+    EventCollector.getInstance().onItemClick(paramAdapterView, paramView, paramInt, paramLong);
   }
 }
 

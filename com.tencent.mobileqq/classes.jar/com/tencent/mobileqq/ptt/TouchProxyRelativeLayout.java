@@ -4,12 +4,12 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.widget.RelativeLayout;
-import awya;
+import aztp;
 
 public class TouchProxyRelativeLayout
   extends RelativeLayout
 {
-  public awya a;
+  public aztp a;
   
   public TouchProxyRelativeLayout(Context paramContext)
   {
@@ -28,10 +28,10 @@ public class TouchProxyRelativeLayout
   
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
-    awya localawya = this.a;
+    aztp localaztp = this.a;
     boolean bool1 = false;
-    if (localawya != null) {
-      bool1 = localawya.a(paramMotionEvent);
+    if (localaztp != null) {
+      bool1 = localaztp.a(paramMotionEvent);
     }
     boolean bool2 = bool1;
     if (!bool1) {
@@ -42,7 +42,7 @@ public class TouchProxyRelativeLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.ptt.TouchProxyRelativeLayout
  * JD-Core Version:    0.7.0.1
  */

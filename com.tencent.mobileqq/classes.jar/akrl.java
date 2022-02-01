@@ -1,29 +1,32 @@
-import android.content.Context;
-import com.tencent.mobileqq.activity.recent.RecentBaseData;
-import com.tencent.mobileqq.apollo.activity.HotChatCenterFragment;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.widget.XListView;
-import java.util.List;
+import android.widget.EditText;
 
 public class akrl
-  extends ajit
+  extends akqs
 {
-  public akrl(HotChatCenterFragment paramHotChatCenterFragment, Context paramContext, QQAppInterface paramQQAppInterface, XListView paramXListView, ajim paramajim, int paramInt)
+  public akrl(EditText paramEditText)
   {
-    super(paramContext, paramQQAppInterface, paramXListView, paramajim, paramInt);
+    super(paramEditText);
   }
   
-  public void a(RecentBaseData paramRecentBaseData, String paramString)
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
   {
-    this.jdField_a_of_type_ComTencentMobileqqApolloActivityHotChatCenterFragment.a(paramRecentBaseData, paramString);
-  }
-  
-  public void b(RecentBaseData paramRecentBaseData, String paramString)
-  {
-    if (this.jdField_a_of_type_JavaUtilList != null)
+    paramInt1 = 1;
+    paramCharSequence = paramCharSequence.toString();
+    if (paramCharSequence.startsWith("0"))
     {
-      this.jdField_a_of_type_JavaUtilList.remove(paramRecentBaseData);
-      notifyDataSetChanged();
+      paramInt2 = blqo.a(paramCharSequence, 1);
+      if (paramInt2 != 0) {
+        break label53;
+      }
+    }
+    for (;;)
+    {
+      paramCharSequence = String.valueOf(paramInt1);
+      this.a.setText(paramCharSequence);
+      this.a.setSelection(paramCharSequence.length());
+      return;
+      label53:
+      paramInt1 = paramInt2;
     }
   }
 }

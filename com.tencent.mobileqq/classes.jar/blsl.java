@@ -1,7 +1,16 @@
-class blsl
-  extends alpq
+import android.os.Handler;
+import android.os.Message;
+import cooperation.qzone.QZoneLiveVideoBaseDownLoadActivty;
+
+public class blsl
+  extends Handler
 {
-  blsl(blsj paramblsj) {}
+  public blsl(QZoneLiveVideoBaseDownLoadActivty paramQZoneLiveVideoBaseDownLoadActivty) {}
+  
+  public void handleMessage(Message paramMessage)
+  {
+    this.a.a(this.a.a, paramMessage);
+  }
 }
 
 

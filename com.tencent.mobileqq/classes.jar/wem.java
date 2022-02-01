@@ -1,43 +1,27 @@
 import android.support.annotation.NonNull;
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.shareGroup.infocard.QQStoryShareGroupProfileActivity;
-import com.tencent.biz.qqstory.shareGroup.model.ShareGroupItem;
-import com.tencent.qphone.base.util.QLog;
-import com.tribe.async.dispatch.QQUIEventReceiver;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.album.view.AlbumGalleryCapturePart.7.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.SimpleJob;
+import mqq.os.MqqHandler;
 
 public class wem
-  extends QQUIEventReceiver<QQStoryShareGroupProfileActivity, vcv>
+  extends SimpleJob<Void>
 {
-  public wem(@NonNull QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity)
-  {
-    super(paramQQStoryShareGroupProfileActivity);
-  }
+  wem(wef paramwef) {}
   
-  public void a(@NonNull QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity, @NonNull vcv paramvcv)
+  protected Void a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
   {
-    if (!TextUtils.equals(paramQQStoryShareGroupProfileActivity.jdField_a_of_type_JavaLangString, paramvcv.jdField_a_of_type_JavaLangString)) {
-      return;
-    }
-    if ((paramvcv.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess()) && (paramvcv.jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupItem != null))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("Q.qqstory.shareGroup.QQStoryShareGroupProfileActivity", 2, "update sharegroup info: " + paramvcv.jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupItem.toString());
-      }
-      QQStoryShareGroupProfileActivity.a(paramQQStoryShareGroupProfileActivity, paramvcv.jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupItem);
-      return;
-    }
-    QQStoryShareGroupProfileActivity.a(paramQQStoryShareGroupProfileActivity, paramvcv);
-  }
-  
-  public Class acceptEventClass()
-  {
-    return vcv.class;
+    paramJobContext = (wca)wpm.a(30);
+    paramVarArgs = paramJobContext.b();
+    ThreadManager.getUIHandler().post(new AlbumGalleryCapturePart.7.1(this, paramVarArgs, paramJobContext));
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     wem
  * JD-Core Version:    0.7.0.1
  */

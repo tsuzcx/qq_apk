@@ -1,39 +1,42 @@
-import java.util.ArrayList;
-import java.util.Comparator;
+import android.content.Context;
+import android.content.Intent;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 
-class aojo
-  implements Comparator<aojp>
+public class aojo
+  extends aojs
 {
-  aojo(aojk paramaojk, boolean paramBoolean, ArrayList paramArrayList) {}
-  
-  public int a(aojp paramaojp1, aojp paramaojp2)
+  public aojo(QQAppInterface paramQQAppInterface, Context paramContext)
   {
-    int i = -1;
-    if (paramaojp1.jdField_a_of_type_Int > paramaojp2.jdField_a_of_type_Int) {}
-    do
+    super(paramQQAppInterface, paramContext);
+  }
+  
+  public boolean a()
+  {
+    try
     {
-      return 1;
-      if (paramaojp1.jdField_a_of_type_Int < paramaojp2.jdField_a_of_type_Int) {
-        return -1;
-      }
-      if ((paramaojp1.jdField_a_of_type_Boolean) && (!paramaojp2.jdField_a_of_type_Boolean))
+      String str = c((String)this.jdField_a_of_type_JavaUtilHashMap.get("url"));
+      if ((TextUtils.isEmpty((CharSequence)this.jdField_a_of_type_JavaUtilHashMap.get("appid"))) || (TextUtils.isEmpty((CharSequence)this.jdField_a_of_type_JavaUtilHashMap.get("openid"))))
       {
-        if (this.jdField_a_of_type_Boolean) {}
-        for (;;)
-        {
-          return i;
-          i = 1;
-        }
+        QLog.e("IdentifierWebJumpAction", 1, "identification with illegal params");
+        return true;
       }
-      if ((paramaojp1.jdField_a_of_type_Boolean) || (!paramaojp2.jdField_a_of_type_Boolean)) {
-        break;
-      }
-    } while (this.jdField_a_of_type_Boolean);
-    return -1;
-    if ((this.jdField_a_of_type_JavaUtilArrayList.size() > 3) && (Math.abs(paramaojp1.jdField_a_of_type_Float - paramaojp2.jdField_a_of_type_Float) > 3.0F)) {
-      return Float.compare(paramaojp1.jdField_a_of_type_Float, paramaojp2.jdField_a_of_type_Float);
+      bcst.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X80097E8", "0X80097E8", 0, 0, "", "", (String)this.jdField_a_of_type_JavaUtilHashMap.get("appid"), "");
+      avez.a();
+      Intent localIntent = new Intent(this.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
+      localIntent.putExtra("url", str);
+      this.jdField_a_of_type_AndroidContentContext.startActivity(localIntent);
+      return true;
     }
-    return 0;
+    catch (Exception localException)
+    {
+      QLog.e("IdentifierWebJumpAction", 1, "doAction error: " + localException.getMessage());
+      a("IdentifierWebJumpAction");
+    }
+    return false;
   }
 }
 

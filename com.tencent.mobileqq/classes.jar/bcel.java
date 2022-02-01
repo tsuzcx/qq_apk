@@ -1,219 +1,89 @@
-import android.graphics.Bitmap;
-import android.media.MediaMetadataRetriever;
-import android.media.ThumbnailUtils;
-import com.tencent.image.URLDrawable;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.troop.homework.xmediaeditor.XMediaEditor;
-import com.tencent.mobileqq.troop.homework.xmediaeditor.model.VideoInfo.GenerateVideoPosterSegment.1;
-import com.tencent.qphone.base.util.QLog;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.JobSegment;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.common.app.AppInterface;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.shortvideo.ShortVideoResourceManager.SVConfigItem;
+import com.tencent.mobileqq.shortvideo.VideoEnvironment;
 import java.io.File;
-import java.lang.ref.WeakReference;
-import mqq.os.MqqHandler;
 
 public class bcel
-  extends JobSegment<bcej, bcej>
 {
-  private int jdField_a_of_type_Int;
-  private WeakReference<XMediaEditor> jdField_a_of_type_JavaLangRefWeakReference;
-  private boolean jdField_a_of_type_Boolean;
-  
-  public bcel(XMediaEditor paramXMediaEditor, int paramInt)
+  public static String a()
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramXMediaEditor);
-    this.jdField_a_of_type_Int = paramInt;
+    String str = BaseApplicationImpl.getApplication().getSharedPreferences("other_res_short_video_mgr_sp", 4).getString("other_res_sv_md5_version_soname_key", "other_res000_0");
+    boolean bool = bcdq.a(str, 1);
+    VideoEnvironment.a("ShortVideoOtherResourceMgr", "getCurrentPendantUnzipPath success=" + bool + ",md5Version=" + str, null);
+    if (bool) {
+      return str;
+    }
+    return "other_res000_0";
   }
   
-  protected void a(JobContext paramJobContext, bcej parambcej)
+  static boolean a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("GenerateVideoPosterSegment", 2, new Object[] { "GenerateVideoPosterSegment start. info status=", Integer.valueOf(parambcej.g) });
+    return true;
+  }
+  
+  static boolean a(AppInterface paramAppInterface, ShortVideoResourceManager.SVConfigItem paramSVConfigItem)
+  {
+    return false;
+  }
+  
+  static boolean a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, int paramInt)
+  {
+    paramQQAppInterface = b();
+    paramQQAppInterface = paramQQAppInterface + paramString1 + File.separator;
+    File localFile = new File(paramQQAppInterface);
+    if (localFile.exists()) {
+      if ((a().equals(paramString1)) && (bcdq.a(paramQQAppInterface, "other_res_config_file"))) {
+        VideoEnvironment.a("ShortVideoOtherResourceMgr", "uncompressPendantZip:[checkUnzipFileListSizeIsOK]success=true", null);
+      }
     }
-    String str2 = bced.b();
-    MediaMetadataRetriever localMediaMetadataRetriever = new MediaMetadataRetriever();
-    String str1 = null;
-    Bitmap localBitmap1 = null;
-    Object localObject5 = null;
-    Object localObject3 = localObject5;
-    Object localObject4 = str1;
-    Object localObject1 = localBitmap1;
     for (;;)
     {
+      return false;
+      bgmg.a(paramQQAppInterface);
+      VideoEnvironment.a("ShortVideoOtherResourceMgr", "uncompressPendantZip:[deleteDirectory|already exists]unzipPath=" + paramQQAppInterface, null);
+      boolean bool = localFile.mkdirs();
+      VideoEnvironment.a("ShortVideoOtherResourceMgr", "uncompressPendantZip:[exists]mkOK=" + bool, null);
       try
       {
-        localMediaMetadataRetriever.setDataSource(parambcej.f);
-        localObject3 = localObject5;
-        localObject4 = str1;
-        localObject1 = localBitmap1;
-        localBitmap2 = localMediaMetadataRetriever.getFrameAtTime(-1L);
-        if (localBitmap2 == null)
+        bgmg.a(paramString2, paramQQAppInterface, false);
+        bool = bcdq.a(paramQQAppInterface, "other_res_config_file");
+        VideoEnvironment.a("ShortVideoOtherResourceMgr", "uncompressPendantZip:checkUnzipFileListSizeIsOK success=" + bool, null);
+        if (bool)
         {
-          localObject3 = localObject5;
-          localObject4 = str1;
-          localObject1 = localBitmap1;
-          notifyError(new Error("-201"));
-        }
-      }
-      catch (Exception paramJobContext)
-      {
-        Bitmap localBitmap2;
-        int[] arrayOfInt;
-        localObject1 = localObject3;
-        QLog.e("GenerateVideoPosterSegment", 1, "error retrieve video info" + paramJobContext.getMessage());
-        localObject1 = localObject3;
-        notifyError(new Error("-201"));
-        try
-        {
-          localMediaMetadataRetriever.release();
-          if (localObject3 == null) {
+          bool = a(paramString1);
+          VideoEnvironment.a("ShortVideoOtherResourceMgr", "uncompressPendantZip:checkUnzipFileListSizeIsOK saveOK=" + bool, null);
+          if (bool) {
             continue;
           }
-          ((Bitmap)localObject3).recycle();
-          return;
-        }
-        catch (RuntimeException paramJobContext)
-        {
-          return;
+          bool = a(paramString1);
+          VideoEnvironment.a("ShortVideoOtherResourceMgr", "uncompressPendantZip:checkUnzipFileListSizeIsOK[two]saveOK=" + bool, null);
+          return false;
         }
       }
-      catch (OutOfMemoryError localOutOfMemoryError)
+      catch (Exception paramQQAppInterface)
       {
-        localObject2 = localObject4;
-        QLog.e("GenerateVideoPosterSegment", 1, "GenerateVideoPosterSegment error. OutOfMemoryError");
-        localObject2 = localObject4;
-        URLDrawable.clearMemoryCache();
-        localObject2 = localObject4;
-        System.gc();
-        localObject2 = localObject4;
-        if (!this.jdField_a_of_type_Boolean)
-        {
-          localObject2 = localObject4;
-          this.jdField_a_of_type_Boolean = true;
-          localObject2 = localObject4;
-          a(paramJobContext, parambcej);
-          try
-          {
-            localMediaMetadataRetriever.release();
-            if (localObject4 == null) {
-              continue;
-            }
-            ((Bitmap)localObject4).recycle();
-            return;
-          }
-          catch (RuntimeException paramJobContext)
-          {
-            return;
-          }
-        }
-        localObject2 = localObject4;
-        notifyError(new Error("-1"));
-        continue;
-      }
-      finally
-      {
-        try
-        {
-          Object localObject2;
-          localMediaMetadataRetriever.release();
-          if (localObject2 != null) {
-            localObject2.recycle();
-          }
-        }
-        catch (RuntimeException parambcej)
-        {
-          continue;
-        }
-      }
-      try
-      {
-        localMediaMetadataRetriever.release();
-        if (0 != 0) {
-          throw new NullPointerException();
-        }
-        return;
-      }
-      catch (RuntimeException paramJobContext) {}
-      localObject3 = localObject5;
-      localObject4 = str1;
-      localObject1 = localBitmap1;
-      arrayOfInt = bcfa.a(this.jdField_a_of_type_Int, 200, 300, parambcej.jdField_a_of_type_Int, parambcej.b);
-      localObject3 = localObject5;
-      localObject4 = str1;
-      localObject1 = localBitmap1;
-      localBitmap1 = ThumbnailUtils.extractThumbnail(localBitmap2, arrayOfInt[0], arrayOfInt[1]);
-      if (localBitmap1 == null)
-      {
-        localObject3 = localBitmap1;
-        localObject4 = localBitmap1;
-        localObject1 = localBitmap1;
-        notifyError(new Error("-201"));
-        try
-        {
-          localMediaMetadataRetriever.release();
-          if (localBitmap1 == null) {
-            continue;
-          }
-          localBitmap1.recycle();
-          return;
-        }
-        catch (RuntimeException paramJobContext) {}
-      }
-      else
-      {
-        localObject3 = localBitmap1;
-        localObject4 = localBitmap1;
-        localObject1 = localBitmap1;
-        str1 = bdzf.a(str2 + "videoThumb_" + System.currentTimeMillis() + ".jpg");
-        localObject3 = localBitmap1;
-        localObject4 = localBitmap1;
-        localObject1 = localBitmap1;
-        bdhj.a(localBitmap1, new File(str1));
-        localObject3 = localBitmap1;
-        localObject4 = localBitmap1;
-        localObject1 = localBitmap1;
-        parambcej.c = str1;
-        localObject3 = localBitmap1;
-        localObject4 = localBitmap1;
-        localObject1 = localBitmap1;
-        ThreadManager.getUIHandler().post(new VideoInfo.GenerateVideoPosterSegment.1(this, parambcej, str1));
-        localObject3 = localBitmap1;
-        localObject4 = localBitmap1;
-        localObject1 = localBitmap1;
-        if (!isCanceled())
-        {
-          localObject3 = localBitmap1;
-          localObject4 = localBitmap1;
-          localObject1 = localBitmap1;
-          if (QLog.isColorLevel())
-          {
-            localObject3 = localBitmap1;
-            localObject4 = localBitmap1;
-            localObject1 = localBitmap1;
-            QLog.d("GenerateVideoPosterSegment", 2, new Object[] { "GenerateVideoPosterSegment notifyResult. info status=", Integer.valueOf(parambcej.g) });
-          }
-          localObject3 = localBitmap1;
-          localObject4 = localBitmap1;
-          localObject1 = localBitmap1;
-          notifyResult(parambcej);
-        }
-        try
-        {
-          localMediaMetadataRetriever.release();
-          if (localBitmap1 != null)
-          {
-            localBitmap1.recycle();
-            return;
-          }
-        }
-        catch (RuntimeException paramJobContext) {}
+        paramQQAppInterface.printStackTrace();
+        return true;
       }
     }
+    return true;
   }
   
-  public void onCancel()
+  private static boolean a(String paramString)
   {
-    notifyError(new Error("c_2000"));
+    SharedPreferences.Editor localEditor = BaseApplicationImpl.getApplication().getSharedPreferences("other_res_short_video_mgr_sp", 4).edit();
+    localEditor.putString("other_res_sv_md5_version_soname_key", paramString);
+    return localEditor.commit();
+  }
+  
+  public static String b()
+  {
+    String str = bcls.a();
+    return str + "other_res_cache" + File.separator;
   }
 }
 

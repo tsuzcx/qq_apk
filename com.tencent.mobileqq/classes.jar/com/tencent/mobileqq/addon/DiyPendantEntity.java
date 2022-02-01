@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.addon;
 
-import awge;
-import awhp;
-import awhs;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.persistence.Entity;
+import com.tencent.mobileqq.persistence.notColumn;
+import com.tencent.mobileqq.persistence.unique;
 import com.tencent.pb.pendant.DiyAddonUser.UserStickerInfo;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -16,14 +16,14 @@ import java.util.Iterator;
 import java.util.List;
 
 public class DiyPendantEntity
-  extends awge
+  extends Entity
 {
   public int borderId;
   public int diyId;
-  @awhp
+  @notColumn
   public ArrayList<DiyPendantSticker> stickerList;
   public byte[] stickers;
-  @awhs
+  @unique
   public String uinAndDiyId;
   public long updateTs;
   
@@ -78,7 +78,7 @@ public class DiyPendantEntity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.addon.DiyPendantEntity
  * JD-Core Version:    0.7.0.1
  */

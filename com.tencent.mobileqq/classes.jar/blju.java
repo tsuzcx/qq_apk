@@ -1,43 +1,14 @@
-import android.content.Context;
-import android.graphics.Color;
-import android.widget.FrameLayout;
-import android.widget.TextView;
+import com.tencent.mobileqq.data.ChatMessage;
 
 public class blju
-  extends FrameLayout
 {
-  private int jdField_a_of_type_Int = Color.parseColor("#BABABA");
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private int b = -1;
+  public ChatMessage a;
+  public String a;
   
-  public blju(Context paramContext)
+  public blju(ChatMessage paramChatMessage, String paramString)
   {
-    super(paramContext);
-    a(paramContext);
-  }
-  
-  private void a(Context paramContext)
-  {
-    this.jdField_a_of_type_AndroidWidgetTextView = new TextView(paramContext);
-    this.jdField_a_of_type_AndroidWidgetTextView.setGravity(1);
-    this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(1, 15.0F);
-    addView(this.jdField_a_of_type_AndroidWidgetTextView);
-  }
-  
-  public TextView a()
-  {
-    return this.jdField_a_of_type_AndroidWidgetTextView;
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    TextView localTextView = this.jdField_a_of_type_AndroidWidgetTextView;
-    if (paramBoolean) {}
-    for (int i = this.b;; i = this.jdField_a_of_type_Int)
-    {
-      localTextView.setTextColor(i);
-      return;
-    }
+    this.jdField_a_of_type_ComTencentMobileqqDataChatMessage = paramChatMessage;
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
 }
 

@@ -1,43 +1,53 @@
-import android.text.TextUtils;
-import android.util.Log;
-import java.io.File;
+import com.tencent.widget.AbsListView;
+import com.tencent.widget.GestureSelectGridView;
 
-class bkkw
-  implements bkle
+public class bkkw
+  implements bkhe
 {
-  bkkw(bkks parambkks, bklf parambklf, int paramInt) {}
+  public bkkw(GestureSelectGridView paramGestureSelectGridView) {}
   
-  public void a(String paramString, long paramLong, float paramFloat)
+  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
   {
-    bkkq localbkkq = new bkkq();
-    localbkkq.c = paramString;
-    localbkkq.jdField_a_of_type_Int = 2;
-    localbkkq.jdField_b_of_type_Long = (paramFloat);
-    localbkkq.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_Bklf.a(paramString, this.jdField_a_of_type_Int, localbkkq, false);
+    if (this.a.jdField_a_of_type_Boolean)
+    {
+      int i = paramInt1 + paramInt2;
+      if ((!this.a.jdField_b_of_type_Boolean) || (Math.abs(i - this.a.c) < 3) || (Math.abs(i - this.a.c) > 5)) {
+        break label161;
+      }
+      if (this.a.c + 3 <= paramInt3 - 1) {
+        break label140;
+      }
+      this.a.c = (paramInt3 - 1);
+      this.a.jdField_a_of_type_Bkkx.a(this.a.jdField_b_of_type_Int, this.a.c);
+    }
+    label140:
+    GestureSelectGridView localGestureSelectGridView;
+    label161:
+    while ((this.a.jdField_b_of_type_Boolean) || (Math.abs(paramInt1 - this.a.c) < 3) || (Math.abs(paramInt1 - this.a.c) > 5)) {
+      for (;;)
+      {
+        if (this.a.jdField_a_of_type_Bkhe != null) {
+          this.a.jdField_a_of_type_Bkhe.onScroll(paramAbsListView, paramInt1, paramInt2, paramInt3);
+        }
+        return;
+        localGestureSelectGridView = this.a;
+        localGestureSelectGridView.c += 3;
+      }
+    }
+    if (this.a.c - 3 < 0) {}
+    for (this.a.c = 0;; localGestureSelectGridView.c -= 3)
+    {
+      this.a.jdField_a_of_type_Bkkx.a(this.a.jdField_b_of_type_Int, this.a.c);
+      break;
+      localGestureSelectGridView = this.a;
+    }
   }
   
-  public void a(String paramString1, String paramString2, boolean paramBoolean, String paramString3, int paramInt)
+  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
   {
-    Log.e("WyDownloader", "download finish:" + paramString1 + " successed:" + paramBoolean + "errorCode:" + paramInt);
-    if ((paramBoolean) && (paramString1 != null) && (!TextUtils.isEmpty(paramString2)) && (new File(paramString2).exists())) {}
-    bkkq localbkkq;
-    for (int i = 1;; i = 0)
-    {
-      localbkkq = new bkkq();
-      localbkkq.jdField_b_of_type_JavaLangString = paramString2;
-      localbkkq.c = paramString1;
-      localbkkq.jdField_b_of_type_Int = paramInt;
-      localbkkq.jdField_a_of_type_JavaLangString = paramString3;
-      if (i == 0) {
-        break;
-      }
-      localbkkq.jdField_a_of_type_Int = 4;
-      this.jdField_a_of_type_Bklf.a(paramString1, this.jdField_a_of_type_Int, localbkkq, true);
-      return;
+    if (this.a.jdField_a_of_type_Bkhe != null) {
+      this.a.jdField_a_of_type_Bkhe.onScrollStateChanged(paramAbsListView, paramInt);
     }
-    localbkkq.jdField_a_of_type_Int = 5;
-    this.jdField_a_of_type_Bklf.a(paramString1, this.jdField_a_of_type_Int, localbkkq, true);
   }
 }
 

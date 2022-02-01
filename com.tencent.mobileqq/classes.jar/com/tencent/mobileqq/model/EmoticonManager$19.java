@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.model;
 
 import android.text.TextUtils;
-import aufn;
+import awmr;
 import com.tencent.mobileqq.data.RecentEmotion;
 import com.tencent.qphone.base.util.QLog;
 import java.util.List;
@@ -11,7 +11,7 @@ import java.util.concurrent.CopyOnWriteArrayList;
 public class EmoticonManager$19
   implements Runnable
 {
-  public EmoticonManager$19(aufn paramaufn, RecentEmotion paramRecentEmotion) {}
+  public EmoticonManager$19(awmr paramawmr, RecentEmotion paramRecentEmotion) {}
   
   public void run()
   {
@@ -28,7 +28,7 @@ public class EmoticonManager$19
       return;
     }
     RecentEmotion localRecentEmotion = this.a;
-    CopyOnWriteArrayList localCopyOnWriteArrayList = aufn.a(this.this$0, str);
+    CopyOnWriteArrayList localCopyOnWriteArrayList = awmr.a(this.this$0, str);
     if (localCopyOnWriteArrayList != null)
     {
       int i = localCopyOnWriteArrayList.indexOf(this.a);
@@ -53,7 +53,7 @@ public class EmoticonManager$19
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.model.EmoticonManager.19
  * JD-Core Version:    0.7.0.1
  */

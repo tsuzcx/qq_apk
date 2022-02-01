@@ -1,55 +1,58 @@
-import android.animation.ValueAnimator;
-import android.graphics.Canvas;
-import android.graphics.PointF;
-import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.playvideo.entrance.HomeFeedPlayInfo;
+import java.util.Iterator;
+import java.util.List;
 
-public abstract class xiq
+public class xiq
+  extends xil<HomeFeedPlayInfo>
 {
-  public ValueAnimator a;
-  public PointF a;
-  public boolean b = true;
-  public boolean c;
-  public boolean d;
-  public int e;
-  public boolean e;
-  public boolean f;
-  public float j = 1.0F;
-  public float k;
-  public float l;
-  public float m;
-  public float n;
-  public float o;
-  public float p = 1.0F;
+  private int a;
+  public yif b = new yif();
   
-  public xiq(@NonNull PointF paramPointF, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, float paramFloat5, float paramFloat6, boolean paramBoolean)
+  public xiq(HomeFeedPlayInfo paramHomeFeedPlayInfo)
   {
-    this.a = new PointF(paramPointF.x, paramPointF.y);
-    this.j = paramFloat1;
-    this.k = paramFloat2;
-    this.l = paramFloat3;
-    this.m = paramFloat4;
-    this.n = paramFloat5;
-    this.o = paramFloat6;
-    this.b = paramBoolean;
+    super(paramHomeFeedPlayInfo);
+    paramHomeFeedPlayInfo = (yij)wpm.a(11);
+    if (paramHomeFeedPlayInfo.b != null) {
+      this.b = paramHomeFeedPlayInfo.b;
+    }
   }
   
-  public xiq(xiq paramxiq, float paramFloat)
+  public yib a(String paramString)
   {
-    this.a = new PointF(paramxiq.a.x * paramFloat, paramxiq.a.y * paramFloat);
-    paramxiq.j *= paramFloat;
-    this.k = paramxiq.k;
-    paramxiq.l *= paramFloat;
-    paramxiq.m *= paramFloat;
-    this.n = paramxiq.n;
-    this.o = paramxiq.o;
-    this.b = paramxiq.b;
+    Iterator localIterator = this.b.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext())
+    {
+      yib localyib = (yib)localIterator.next();
+      if (localyib.a.equals(paramString)) {
+        return localyib;
+      }
+    }
+    return null;
   }
   
-  public void a(Canvas paramCanvas) {}
+  public void a(boolean paramBoolean, int paramInt, xjd paramxjd)
+  {
+    Object localObject1 = this.b.jdField_a_of_type_JavaUtilList;
+    if ((paramBoolean) && (((List)localObject1).size() > 0))
+    {
+      localObject2 = b((List)localObject1);
+      paramxjd.a(new ErrorMessage(), (List)localObject2, this.b.jdField_a_of_type_Boolean);
+      yqp.a("Q.qqstory.player.data.HomeFeedPlayPageLoader", "return cache data size %d", Integer.valueOf(((List)localObject1).size()));
+      return;
+    }
+    localObject1 = (yij)wpm.a(11);
+    Object localObject2 = new wzm();
+    ((wzm)localObject2).a = ((yij)localObject1).a;
+    ((wzm)localObject2).b = this.b.a();
+    yqp.a("Q.qqstory.player.data.HomeFeedPlayPageLoader", "start request next feed id list with cookie %s", ((wzm)localObject2).b);
+    this.a = 0;
+    wlb.a().a((wlf)localObject2, new xir(this, paramxjd));
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     xiq
  * JD-Core Version:    0.7.0.1
  */

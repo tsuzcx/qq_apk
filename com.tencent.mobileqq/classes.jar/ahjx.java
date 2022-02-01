@@ -1,31 +1,46 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import android.view.View;
+import com.tencent.mobileqq.activity.aio.item.StructingMsgItemBuilder;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.data.MessageForStructing;
 
 public class ahjx
+  implements bkhw
 {
-  public int a;
-  public String a;
-  public String b;
+  public ahjx(StructingMsgItemBuilder paramStructingMsgItemBuilder, boolean paramBoolean, ChatMessage paramChatMessage, bkho parambkho) {}
   
-  public boolean a()
+  public void OnClick(View paramView, int paramInt)
   {
-    return this.jdField_a_of_type_Int != 1;
-  }
-  
-  public boolean equals(@Nullable Object paramObject)
-  {
-    if ((paramObject instanceof ahjx))
-    {
-      paramObject = (ahjx)paramObject;
-      return this.jdField_a_of_type_JavaLangString.equals(paramObject.jdField_a_of_type_JavaLangString);
+    if (this.jdField_a_of_type_Boolean) {
+      if ((this.jdField_a_of_type_ComTencentMobileqqDataChatMessage instanceof MessageForStructing)) {
+        new bdjb(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a((MessageForStructing)this.jdField_a_of_type_ComTencentMobileqqDataChatMessage, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
+      }
     }
-    return super.equals(paramObject);
-  }
-  
-  @NonNull
-  public String toString()
-  {
-    return "Face2FaceFriendInfo uin:" + this.jdField_a_of_type_JavaLangString + " nick:" + this.b + " type:" + this.jdField_a_of_type_Int;
+    for (;;)
+    {
+      this.jdField_a_of_type_Bkho.cancel();
+      return;
+      String str1;
+      String str2;
+      try
+      {
+        paramInt = Integer.parseInt(this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.getExtInfoFromExtStr("peerType"));
+        paramView = this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.getExtInfoFromExtStr("filePath");
+        str1 = this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.getExtInfoFromExtStr("peerUin");
+        str2 = this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.getExtInfoFromExtStr("strSendUin");
+        if (1 != paramInt) {
+          break label133;
+        }
+        this.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(paramView, str1);
+      }
+      catch (Exception paramView)
+      {
+        paramView.printStackTrace();
+      }
+      continue;
+      label133:
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(paramView, str2, str1, paramInt, true);
+    }
   }
 }
 

@@ -1,25 +1,84 @@
+import java.util.ArrayList;
+
 public class auqp
 {
   public int a;
-  public long a;
   public String a;
-  public boolean a;
-  public int b;
+  public ArrayList<auqq> a;
+  private boolean a;
+  public int b = -1;
   public int c;
+  public int d;
   
-  public auqp(long paramLong, int paramInt1, int paramInt2, int paramInt3, String paramString, boolean paramBoolean)
+  private int a(auqq paramauqq1, auqq paramauqq2)
   {
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
-    this.c = paramInt3;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    int i = Math.abs(paramauqq2.jdField_a_of_type_Int - paramauqq1.jdField_a_of_type_Int);
+    int j = Math.abs(paramauqq2.b - paramauqq1.b);
+    return (int)Math.ceil(Math.sqrt(i * i + j * j));
+  }
+  
+  public int a()
+  {
+    if ((this.jdField_a_of_type_JavaUtilArrayList == null) || (this.jdField_a_of_type_JavaUtilArrayList.size() < 2)) {
+      return 0;
+    }
+    auqq localauqq1 = (auqq)this.jdField_a_of_type_JavaUtilArrayList.get(0);
+    auqq localauqq2 = (auqq)this.jdField_a_of_type_JavaUtilArrayList.get(1);
+    int i = localauqq2.jdField_a_of_type_Int - localauqq1.jdField_a_of_type_Int;
+    int j = localauqq2.b - localauqq1.b;
+    double d1 = Math.sqrt(i * i + j * j);
+    float f = (float)(Math.asin(j / d1) / 3.141592653589793D * 180.0D);
+    if (localauqq2.jdField_a_of_type_Int < localauqq1.jdField_a_of_type_Int) {
+      if (f > 0.0F) {
+        f = 180.0F - f;
+      }
+    }
+    for (;;)
+    {
+      return Math.round(f);
+      f = -(180.0F + f);
+    }
+  }
+  
+  public void a(float paramFloat)
+  {
+    if (!this.jdField_a_of_type_Boolean)
+    {
+      int i = 0;
+      while (i < this.jdField_a_of_type_JavaUtilArrayList.size())
+      {
+        ((auqq)this.jdField_a_of_type_JavaUtilArrayList.get(i)).jdField_a_of_type_Int = ((int)(((auqq)this.jdField_a_of_type_JavaUtilArrayList.get(i)).jdField_a_of_type_Int * paramFloat));
+        ((auqq)this.jdField_a_of_type_JavaUtilArrayList.get(i)).b = ((int)(((auqq)this.jdField_a_of_type_JavaUtilArrayList.get(i)).b * paramFloat));
+        i += 1;
+      }
+      this.jdField_a_of_type_Boolean = true;
+    }
+  }
+  
+  public int b()
+  {
+    if ((this.jdField_a_of_type_JavaUtilArrayList == null) || (this.jdField_a_of_type_JavaUtilArrayList.size() < 4)) {
+      return 0;
+    }
+    return a((auqq)this.jdField_a_of_type_JavaUtilArrayList.get(0), (auqq)this.jdField_a_of_type_JavaUtilArrayList.get(2));
+  }
+  
+  public int c()
+  {
+    if ((this.jdField_a_of_type_JavaUtilArrayList == null) || (this.jdField_a_of_type_JavaUtilArrayList.size() < 4)) {
+      return 0;
+    }
+    return a((auqq)this.jdField_a_of_type_JavaUtilArrayList.get(0), (auqq)this.jdField_a_of_type_JavaUtilArrayList.get(3));
+  }
+  
+  public String toString()
+  {
+    return "PicOcrResult{text='" + this.jdField_a_of_type_JavaLangString + '\'' + ", confidence=" + this.jdField_a_of_type_Int + ", coorPoints=" + this.jdField_a_of_type_JavaUtilArrayList + ", arc=" + a() + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     auqp
  * JD-Core Version:    0.7.0.1
  */

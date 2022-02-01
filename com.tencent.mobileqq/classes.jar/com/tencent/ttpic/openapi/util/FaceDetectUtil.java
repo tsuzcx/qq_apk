@@ -87,7 +87,7 @@ public class FaceDetectUtil
     paramBitmap = new Frame(0, i, paramBitmap.getWidth(), paramBitmap.getHeight());
     PTFaceDetector localPTFaceDetector = new PTFaceDetector();
     localPTFaceDetector.init(true);
-    PTFaceAttr localPTFaceAttr = localPTFaceDetector.detectFrame(paramBitmap, System.currentTimeMillis(), 0, false, paramDouble, 0.0F, true, null);
+    PTFaceAttr localPTFaceAttr = localPTFaceDetector.detectFrame(paramBitmap, System.currentTimeMillis(), 0, false, paramDouble, 0.0F, true, false, null);
     paramBitmap.clear();
     RendererUtils.clearTexture(i);
     localPTFaceDetector.destroy();
@@ -330,7 +330,7 @@ public class FaceDetectUtil
       ((FaceInfo)localObject3).denseFaceModel = null;
       ((FaceInfo)localObject3).transform = null;
       ((FaceInfo)localObject3).expressionWeights = null;
-      ((FaceInfo)localObject3).gender = GenderType.DEFAULT.value;
+      ((FaceInfo)localObject3).gender = GenderType.FEMALE.value;
       localArrayList.add(localObject3);
     }
     Object localObject7 = new ArrayList();
@@ -640,7 +640,7 @@ public class FaceDetectUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.openapi.util.FaceDetectUtil
  * JD-Core Version:    0.7.0.1
  */

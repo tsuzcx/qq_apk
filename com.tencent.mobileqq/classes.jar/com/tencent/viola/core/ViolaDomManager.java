@@ -116,6 +116,21 @@ public class ViolaDomManager
     }
   }
   
+  public void forceNvBatch()
+  {
+    throwIfNotDomThread();
+    Iterator localIterator = this.mDomContextImpMap.entrySet().iterator();
+    while (localIterator.hasNext())
+    {
+      DOMActionContextImpl localDOMActionContextImpl = (DOMActionContextImpl)((Map.Entry)localIterator.next()).getValue();
+      if (localDOMActionContextImpl != null)
+      {
+        localDOMActionContextImpl.markDirty();
+        localDOMActionContextImpl.nvBatch();
+      }
+    }
+  }
+  
   public DOMActionContext getDomContext(String paramString)
   {
     return (DOMActionContext)this.mDomContextImpMap.get(paramString);
@@ -233,7 +248,7 @@ public class ViolaDomManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.viola.core.ViolaDomManager
  * JD-Core Version:    0.7.0.1
  */

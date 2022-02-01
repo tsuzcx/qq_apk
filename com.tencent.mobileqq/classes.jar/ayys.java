@@ -1,30 +1,15 @@
-import com.qq.jce.wup.UniPacket;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
-
-public class ayys
-  extends zhu
+public abstract class ayys
+  implements ayyq
 {
-  private static String[] jdField_a_of_type_ArrayOfJavaLangString = { "QQServiceDiscussSvc" };
-  private ayyp jdField_a_of_type_Ayyp = new ayyp();
-  private ayyr jdField_a_of_type_Ayyr = new ayyr();
+  public final void a(int paramInt, ayxy paramayxy) {}
   
-  public Object a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
-  {
-    return this.jdField_a_of_type_Ayyp.a(paramToServiceMsg, paramFromServiceMsg);
-  }
+  public final void a_(int paramInt, boolean paramBoolean) {}
   
-  public void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg) {}
+  public final void b(int paramInt, ayxy paramayxy) {}
   
-  public boolean a(ToServiceMsg paramToServiceMsg, UniPacket paramUniPacket)
-  {
-    return this.jdField_a_of_type_Ayyr.a(paramToServiceMsg, paramUniPacket);
-  }
+  public final void c(int paramInt, ayxy paramayxy) {}
   
-  public String[] a()
-  {
-    return jdField_a_of_type_ArrayOfJavaLangString;
-  }
+  public final void d(int paramInt, ayxy paramayxy) {}
 }
 
 

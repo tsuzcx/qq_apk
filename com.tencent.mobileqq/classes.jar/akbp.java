@@ -1,13 +1,22 @@
-import com.tencent.mobileqq.activity.selectmember.TroopDiscussionTroop;
+import android.os.Build.VERSION;
+import com.tencent.mobileqq.activity.pendant.AvatarPendantActivity;
+import com.tencent.widget.AbsListView;
 
 public class akbp
-  extends alwx
+  extends akbu
 {
-  public akbp(TroopDiscussionTroop paramTroopDiscussionTroop) {}
-  
-  protected void a()
+  public akbp(AvatarPendantActivity paramAvatarPendantActivity)
   {
-    this.a.c();
+    super(paramAvatarPendantActivity);
+  }
+  
+  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
+  {
+    if (this.a.e == AvatarPendantActivity.d) {}
+    while (Build.VERSION.SDK_INT < 14) {
+      return;
+    }
+    this.a.b();
   }
 }
 

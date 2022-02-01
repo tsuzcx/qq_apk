@@ -4,56 +4,88 @@ import android.graphics.Point;
 import android.graphics.Rect;
 import android.view.View;
 import android.view.ViewGroup;
-import com.tencent.richmediabrowser.view.page.Gallery;
 
 public class AnimationUtils
 {
   private static final float HEIGHER_IMGE_FACTOR = 1.5F;
   
-  public static Rect getAnimationEndDstRect(int paramInt1, int paramInt2, int paramInt3, int paramInt4, Object paramObject)
+  public static float getAIOImageScale(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    return getAnimationEndDstRect(paramInt1, paramInt2, paramInt3, paramInt4, true, paramObject);
+    float f2 = 1.0F;
+    if ((paramInt1 == 0) || (paramInt2 == 0)) {
+      return 1.0F;
+    }
+    int i = paramInt2 * paramInt3 / paramInt1;
+    float f1;
+    if ((isLongPhoto(paramInt1, paramInt2)) && (paramInt1 <= paramInt3))
+    {
+      f1 = f2;
+      if (paramInt2 <= paramInt4) {}
+    }
+    else
+    {
+      if ((paramInt1 >= 135) || (paramInt2 >= 135)) {
+        break label69;
+      }
+      f1 = f2;
+    }
+    for (;;)
+    {
+      return Math.min(f1, 2.0F);
+      label69:
+      if (paramInt4 >= i) {
+        f1 = paramInt3 / paramInt1;
+      } else {
+        f1 = paramInt4 / paramInt2;
+      }
+    }
   }
   
-  public static Rect getAnimationEndDstRect(int paramInt1, int paramInt2, int paramInt3, int paramInt4, boolean paramBoolean, Object paramObject)
+  public static Rect getAnimationEndDstRect(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    float f = Gallery.getAIOImageScale(paramInt1, paramInt2, paramInt3, paramInt4, paramObject);
+    return getAnimationEndDstRect(paramInt1, paramInt2, paramInt3, paramInt4, true);
+  }
+  
+  public static Rect getAnimationEndDstRect(int paramInt1, int paramInt2, int paramInt3, int paramInt4, boolean paramBoolean)
+  {
+    float f = getAIOImageScale(paramInt1, paramInt2, paramInt3, paramInt4);
     int i;
+    label63:
+    label75:
+    Rect localRect;
     if (paramInt2 >= paramInt1 * 3)
     {
       i = 1;
       if ((i == 0) || ((paramInt1 <= paramInt3) && (paramInt2 <= paramInt4)) || ((paramInt1 < 135) && (paramInt2 < 135))) {
-        break label119;
+        break label115;
       }
-      f = Math.min(paramInt3 / paramInt1, Gallery.MAX_SCALE_DEFAULT);
+      f = Math.min(paramInt3 / paramInt1, 2.0F);
       i = 49;
-      label67:
       if ((paramBoolean) || (f <= 1.0F)) {
-        break label126;
+        break label122;
       }
-      label79:
-      paramObject = new Rect(0, 0, paramInt1, paramInt2);
+      localRect = new Rect(0, 0, paramInt1, paramInt2);
       if (i != 49) {
-        break label143;
+        break label139;
       }
-      paramObject.offset((paramInt3 - paramInt1) / 2, 0);
+      localRect.offset((paramInt3 - paramInt1) / 2, 0);
     }
-    label119:
-    label126:
+    label115:
+    label122:
     while (i != 17)
     {
-      return paramObject;
+      return localRect;
       i = 0;
       break;
       i = 17;
-      break label67;
+      break label63;
       paramInt1 = (int)(paramInt1 * f);
       paramInt2 = (int)(f * paramInt2);
-      break label79;
+      break label75;
     }
-    label143:
-    paramObject.offset((paramInt3 - paramInt1) / 2, (paramInt4 - paramInt2) / 2);
-    return paramObject;
+    label139:
+    localRect.offset((paramInt3 - paramInt1) / 2, (paramInt4 - paramInt2) / 2);
+    return localRect;
   }
   
   public static float getScale(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
@@ -105,10 +137,15 @@ public class AnimationUtils
     }
     return false;
   }
+  
+  public static boolean isLongPhoto(long paramLong1, long paramLong2)
+  {
+    return (paramLong1 >= 3L * paramLong2) || (paramLong2 >= 3L * paramLong1);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.richmediabrowser.animation.AnimationUtils
  * JD-Core Version:    0.7.0.1
  */

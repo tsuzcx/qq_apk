@@ -1,6 +1,7 @@
 package com.tencent.mobileqq.shortvideo.ptvfilter.gesture;
 
 import android.graphics.PointF;
+import com.tencent.aekit.openrender.UniformParam.Float2fParam;
 import com.tencent.aekit.openrender.UniformParam.IntParam;
 import com.tencent.aekit.openrender.internal.VideoFilterBase;
 import com.tencent.mobileqq.shortvideo.gesture.GestureKeyInfo;
@@ -119,6 +120,8 @@ public class GestureFilterManager
   {
     addParam(new UniformParam.IntParam("texNeedTransform", -1));
     addParam(new UniformParam.IntParam("blendMode", 1));
+    addParam(new UniformParam.Float2fParam("displacement", 0.0F, 0.0F));
+    addParam(new UniformParam.IntParam("displacementEnableLut", 0));
   }
   
   public String printControllerInfo()
@@ -335,7 +338,7 @@ public class GestureFilterManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.ptvfilter.gesture.GestureFilterManager
  * JD-Core Version:    0.7.0.1
  */

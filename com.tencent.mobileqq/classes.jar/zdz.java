@@ -1,32 +1,35 @@
-import com.tencent.biz.webviewplugin.NewerGuidePlugin;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.QQPermissionCallback;
+import android.support.annotation.NonNull;
+import com.tencent.mobileqq.data.Friends;
 
 public class zdz
-  implements QQPermissionCallback
 {
-  public zdz(NewerGuidePlugin paramNewerGuidePlugin, BaseActivity paramBaseActivity) {}
+  @NonNull
+  protected final Friends a;
+  protected boolean a;
   
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public zdz(@NonNull Friends paramFriends)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("NewerGuidePlugin", 2, "handleSetAvatar deny permissions");
-    }
-    bdjz.showPermissionSettingDialog(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, alud.a(2131707822));
+    this.jdField_a_of_type_ComTencentMobileqqDataFriends = paramFriends;
   }
   
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public String a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("NewerGuidePlugin", 2, "handleSetAvatar grant permissions");
+    return this.jdField_a_of_type_ComTencentMobileqqDataFriends.uin;
+  }
+  
+  public void a()
+  {
+    if (!this.jdField_a_of_type_Boolean) {}
+    for (boolean bool = true;; bool = false)
+    {
+      this.jdField_a_of_type_Boolean = bool;
+      return;
     }
-    NewerGuidePlugin.a(this.jdField_a_of_type_ComTencentBizWebviewpluginNewerGuidePlugin);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     zdz
  * JD-Core Version:    0.7.0.1
  */

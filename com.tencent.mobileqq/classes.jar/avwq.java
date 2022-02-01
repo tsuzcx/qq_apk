@@ -1,41 +1,23 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.ocr.OCRResultFragmentNew;
-import com.tencent.mobileqq.ocr.TranslateFragment;
-import mqq.util.WeakReference;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.location.data.LocationRoom.Venue;
 
-public class avwq
-  implements bers
+public final class avwq
+  implements Parcelable.Creator<LocationRoom.Venue>
 {
-  public avwq(OCRResultFragmentNew paramOCRResultFragmentNew) {}
-  
-  public void a()
+  public LocationRoom.Venue a(Parcel paramParcel)
   {
-    OCRResultFragmentNew.a(this.a, 0);
+    return new LocationRoom.Venue(paramParcel);
   }
   
-  public void a(String paramString)
+  public LocationRoom.Venue[] a(int paramInt)
   {
-    banj.a(paramString, "OCR_Participle_copy");
-  }
-  
-  public void b(String paramString)
-  {
-    avvq.a(OCRResultFragmentNew.a(this.a), paramString);
-  }
-  
-  public void c(String paramString)
-  {
-    banj.a(OCRResultFragmentNew.a(this.a), (QQAppInterface)OCRResultFragmentNew.a(this.a).get(), paramString);
-  }
-  
-  public void d(String paramString)
-  {
-    TranslateFragment.a(OCRResultFragmentNew.a(this.a), paramString);
+    return new LocationRoom.Venue[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     avwq
  * JD-Core Version:    0.7.0.1
  */

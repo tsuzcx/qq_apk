@@ -1,16 +1,21 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
+import java.util.List;
 
-public class pbr
+class pbr
+  extends pcm
 {
-  public int a;
-  public AdvertisementInfo a;
-  public int b;
-  public int c;
-  public int d;
+  pbr(pbe parampbe, boolean paramBoolean, List paramList)
+  {
+    super(parampbe, null);
+  }
+  
+  void a(pcp parampcp)
+  {
+    parampcp.onCommentListLoad(1, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_JavaUtilList, pbe.d(this.jdField_a_of_type_Pbe), 2, 2);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     pbr
  * JD-Core Version:    0.7.0.1
  */

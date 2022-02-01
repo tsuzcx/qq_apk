@@ -1,22 +1,19 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.contact.addcontact.TroopView;
-import com.tencent.mobileqq.activity.contacts.view.ContactsViewPager;
-import com.tencent.qphone.base.util.QLog;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import com.tencent.mobileqq.activity.aio.item.SixCombolEffectView;
 
 public class ahir
-  implements ahfl
+  implements Animator.AnimatorListener
 {
-  public ahir(TroopView paramTroopView) {}
+  public ahir(SixCombolEffectView paramSixCombolEffectView) {}
   
-  public void a(View paramView, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("addContacts.TroopView", 2, "AddContactTroopClassifyAdapter.onItemClickListener onItemClick. position:" + paramInt);
-    }
-    TroopView.a(this.a, TroopView.a(this.a).getCurrentItem());
-    TroopView.b(this.a, paramInt);
-    TroopView.a(this.a).setCurrentItem(paramInt, false);
-  }
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator) {}
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

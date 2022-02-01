@@ -1,17 +1,15 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.ark.ArkAppCenter;
-
-class anqa
-  implements DialogInterface.OnDismissListener
+public class anqa
 {
-  anqa(anpz paramanpz, bhuf parambhuf) {}
-  
-  public void onDismiss(DialogInterface paramDialogInterface)
-  {
-    this.jdField_a_of_type_Bhuf.dismiss();
-    ArkAppCenter.c("ArkApp.DebugOnlineActivity", String.format("ClearApp actionsheet is closed", new Object[0]));
-  }
+  public int a;
+  public long a;
+  public String a;
+  public boolean a;
+  public long b;
+  public boolean b;
+  public long c;
+  public boolean c;
+  public long d;
+  public long e;
 }
 
 

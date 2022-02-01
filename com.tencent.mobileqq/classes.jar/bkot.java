@@ -1,18 +1,9 @@
-import com.tencent.ttpic.openapi.initializer.PtuToolsInitializer;
-import com.tencent.ttpic.openapi.manager.FeatureManager.Features;
-import com.tencent.ttpic.util.Coffee;
-import com.tencent.ttpic.util.DecryptListener;
+import android.view.View;
 
-final class bkot
-  implements DecryptListener
+public class bkot
 {
-  public byte[] decrypt(byte[] paramArrayOfByte)
-  {
-    if (!FeatureManager.Features.PTU_TOOLS.isFunctionReady()) {
-      return paramArrayOfByte;
-    }
-    return Coffee.drink(paramArrayOfByte, Coffee.getDefaultSign());
-  }
+  public bkou[] a;
+  public View g;
 }
 
 

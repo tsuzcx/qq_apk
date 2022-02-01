@@ -1,50 +1,10 @@
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tribe.async.async.JobSegment;
-import java.util.List;
-
-public class wpo
-  extends wos<wpn>
+class wpo
 {
-  public wpo(@Nullable wow paramwow)
-  {
-    super(paramwow);
-  }
-  
-  protected JobSegment<wov, wpn> a()
-  {
-    return new wpi();
-  }
-  
-  protected JobSegment<Integer, wov> a(wou paramwou)
-  {
-    return new wpp(paramwou, this.a);
-  }
-  
-  protected wpn a()
-  {
-    woy localwoy = (woy)uwa.a(11);
-    List localList = localwoy.a();
-    wpn localwpn = new wpn(new ErrorMessage());
-    localwpn.jdField_b_of_type_JavaUtilList = localwoy.b(localList);
-    localwpn.jdField_b_of_type_Boolean = true;
-    localwpn.a = localwpn.jdField_b_of_type_JavaUtilList.isEmpty();
-    return localwpn;
-  }
-  
-  protected wpn a(ErrorMessage paramErrorMessage)
-  {
-    return new wpn(paramErrorMessage);
-  }
-  
-  protected void a(List<String> paramList, boolean paramBoolean)
-  {
-    ((woy)uwa.a(11)).a(paramList, paramBoolean);
-  }
+  public static final wpm a = new wpm(null);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     wpo
  * JD-Core Version:    0.7.0.1
  */

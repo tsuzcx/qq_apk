@@ -1,45 +1,20 @@
-import org.json.JSONObject;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.qqstory.takevideo.music.EditVideoMusicDialog;
 
-class zdp
-  implements biab
+public class zdp
+  implements DialogInterface.OnClickListener
 {
-  zdp(zdj paramzdj, String paramString) {}
+  public zdp(EditVideoMusicDialog paramEditVideoMusicDialog) {}
   
-  public void a(biaa parambiaa)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    JSONObject localJSONObject = new JSONObject();
-    switch (parambiaa.a)
-    {
-    default: 
-      return;
-    case 0: 
-      try
-      {
-        localJSONObject.put("index", 0);
-        this.jdField_a_of_type_Zdj.callJs(this.jdField_a_of_type_JavaLangString, new String[] { localJSONObject.toString() });
-        return;
-      }
-      catch (Exception parambiaa)
-      {
-        parambiaa.printStackTrace();
-        return;
-      }
-    }
-    try
-    {
-      localJSONObject.put("index", 1);
-      this.jdField_a_of_type_Zdj.callJs(this.jdField_a_of_type_JavaLangString, new String[] { localJSONObject.toString() });
-      return;
-    }
-    catch (Exception parambiaa)
-    {
-      parambiaa.printStackTrace();
-    }
+    paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     zdp
  * JD-Core Version:    0.7.0.1
  */

@@ -1,59 +1,98 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.highway.transaction.Transaction;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mfsdk.MagnifierSDK;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.startup.step.RecordTracer;
+import com.tencent.qphone.base.util.QLog;
 
 public class bcui
-  extends bcuj
+  extends bcuh
 {
-  public bcui(bcug parambcug, int paramInt)
+  private static bcui jdField_a_of_type_Bcui;
+  private boolean jdField_a_of_type_Boolean;
+  
+  public static bcui a()
   {
-    super(parambcug, paramInt);
+    if (jdField_a_of_type_Bcui != null) {
+      return jdField_a_of_type_Bcui;
+    }
+    try
+    {
+      if (jdField_a_of_type_Bcui == null) {
+        jdField_a_of_type_Bcui = new bcui();
+      }
+      bcui localbcui = jdField_a_of_type_Bcui;
+      return localbcui;
+    }
+    finally {}
   }
   
   public void a()
   {
-    if (a(this.jdField_a_of_type_Bcug.a)) {
-      return;
+    if ((BaseApplicationImpl.sProcessId != 4) && (BaseApplicationImpl.sProcessId != 1) && (bcbv.a(BaseApplicationImpl.sProcessId, BaseApplicationImpl.processName))) {}
+    for (;;)
+    {
+      try
+      {
+        QLog.d("RecordTracer", 1, "SDK Init, processId:" + BaseApplicationImpl.sProcessId + ", processName:" + BaseApplicationImpl.processName);
+        RecordTracer.a().step();
+        Object localObject = MagnifierSDK.a().a().a().split("\\|");
+        if ((localObject.length < 11) || (TextUtils.isEmpty(localObject[10]))) {
+          break label173;
+        }
+        localObject = localObject[10];
+        bcuf.a().a((String)localObject);
+        return;
+      }
+      catch (Exception localException)
+      {
+        localException.printStackTrace();
+        continue;
+      }
+      if (QLog.isColorLevel())
+      {
+        QLog.i("RecordTracer", 2, "not init, processId:" + BaseApplicationImpl.sProcessId + ", processName:" + BaseApplicationImpl.processName);
+        continue;
+        label173:
+        String str = "0.1;0.0002;10;5;10;5;2;0;500;1";
+      }
     }
-    e();
   }
   
   public void b()
   {
     if (this.jdField_a_of_type_Boolean) {
-      c();
+      return;
     }
+    this.jdField_a_of_type_Boolean = true;
+    Object localObject = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+    if (localObject != null)
+    {
+      localObject = (beba)((QQAppInterface)localObject).getManager(233);
+      if (localObject != null) {
+        ((beba)localObject).c();
+      }
+    }
+    bcuf.a().a();
   }
   
   public void c()
   {
-    boolean bool = true;
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("isVideo", 0);
-    if (this.b != null)
+    this.jdField_a_of_type_Boolean = false;
+    bcuf.a().b();
+    Object localObject = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+    if (localObject != null)
     {
-      localBundle.putInt("result", 1);
-      localBundle.putString("url", this.b);
-    }
-    for (;;)
-    {
-      bcuh.a().a(bool, this.jdField_a_of_type_Int, localBundle);
-      return;
-      localBundle.putInt("result", 0);
-      localBundle.putString("error", "");
-      bool = false;
-    }
-  }
-  
-  public void d()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqHighwayTransactionTransaction != null) {
-      this.jdField_a_of_type_ComTencentMobileqqHighwayTransactionTransaction.cancelTransaction();
+      localObject = (beba)((QQAppInterface)localObject).getManager(233);
+      if (localObject != null) {
+        ((beba)localObject).b();
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bcui
  * JD-Core Version:    0.7.0.1
  */

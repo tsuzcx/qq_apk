@@ -1,80 +1,318 @@
-import android.app.Activity;
-import android.os.Bundle;
-import com.tencent.biz.pubaccount.VideoInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.VideoColumnInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
 import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.List;
 
-public class rnj
-  implements rnf
+public class rnj<C, T, A>
+  implements Cloneable
 {
   private int jdField_a_of_type_Int;
-  private Activity jdField_a_of_type_AndroidAppActivity;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private String jdField_a_of_type_JavaLangString;
-  private ArrayList<VideoInfo> jdField_a_of_type_JavaUtilArrayList;
-  private HashSet<String> jdField_a_of_type_JavaUtilHashSet = new HashSet();
-  private AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
-  private ntb jdField_a_of_type_Ntb;
-  private rnl jdField_a_of_type_Rnl;
-  private rnn jdField_a_of_type_Rnn;
-  private byte[] jdField_a_of_type_ArrayOfByte;
-  private int jdField_b_of_type_Int;
-  private String jdField_b_of_type_JavaLangString;
+  private long jdField_a_of_type_Long = 0L;
+  private List<C> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private final rnk<C, T, A> jdField_a_of_type_Rnk;
+  private long[] jdField_a_of_type_ArrayOfLong;
   
-  public rnj(Activity paramActivity, ArrayList<VideoInfo> paramArrayList, int paramInt, Bundle paramBundle, rnn paramrnn)
+  public rnj(rnk<C, T, A> paramrnk)
   {
-    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
-    this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
-    this.jdField_a_of_type_Rnn = paramrnn;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_b_of_type_JavaLangString = paramBundle.getString("VIDEO_COMMON_DATA");
-    this.jdField_a_of_type_ArrayOfByte = paramBundle.getByteArray("VIDEO_BUSINESS_INFO");
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = ((QQAppInterface)ors.a());
-    this.jdField_a_of_type_Rnl = new rnl(this, null);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Rnl);
+    this.jdField_a_of_type_Rnk = paramrnk;
   }
   
-  public void a()
+  private void a(int paramInt)
   {
-    if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) {
-      return;
-    }
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
-    if (this.jdField_a_of_type_Ntb == null) {
-      this.jdField_a_of_type_Ntb = ((ntb)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(90));
-    }
-    Object localObject2 = this.jdField_a_of_type_Rnn.a();
-    Object localObject1 = localObject2;
-    if (localObject2 == null) {
-      localObject1 = new VideoInfo();
-    }
-    if (((VideoInfo)localObject1).a != null) {}
-    for (int i = ((VideoInfo)localObject1).a.jdField_a_of_type_Int;; i = 0)
+    if (paramInt < 64)
     {
-      localObject2 = new ArrayList(this.jdField_a_of_type_Rnn.a());
-      this.jdField_a_of_type_Ntb.a(this.jdField_a_of_type_Rnl, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getLongAccountUin(), (VideoInfo)localObject1, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaUtilArrayList, ((VideoInfo)localObject1).i, -1L, true, i, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, null, this.jdField_b_of_type_Int, null, this.jdField_a_of_type_ArrayOfByte, 1, 1, (ArrayList)localObject2);
+      this.jdField_a_of_type_Long = (1L << paramInt | this.jdField_a_of_type_Long);
+      return;
+    }
+    int i = paramInt / 64 - 1;
+    if (this.jdField_a_of_type_ArrayOfLong == null) {
+      this.jdField_a_of_type_ArrayOfLong = new long[this.jdField_a_of_type_JavaUtilList.size() / 64];
+    }
+    for (;;)
+    {
+      long[] arrayOfLong = this.jdField_a_of_type_ArrayOfLong;
+      arrayOfLong[i] = (1L << paramInt % 64 | arrayOfLong[i]);
+      return;
+      if (this.jdField_a_of_type_ArrayOfLong.length < i)
+      {
+        arrayOfLong = new long[this.jdField_a_of_type_JavaUtilList.size() / 64];
+        System.arraycopy(this.jdField_a_of_type_ArrayOfLong, 0, arrayOfLong, 0, this.jdField_a_of_type_ArrayOfLong.length);
+        this.jdField_a_of_type_ArrayOfLong = arrayOfLong;
+      }
+    }
+  }
+  
+  private void a(int paramInt, long paramLong)
+  {
+    long l = -9223372036854775808L;
+    int i = paramInt + 64 - 1;
+    while (i >= paramInt)
+    {
+      if ((paramLong & l) != 0L) {
+        this.jdField_a_of_type_JavaUtilList.remove(i);
+      }
+      l >>>= 1;
+      i -= 1;
+    }
+  }
+  
+  private void a(T paramT, int paramInt1, A paramA, int paramInt2)
+  {
+    if (paramInt2 < 0)
+    {
+      b(paramT, paramInt1, paramA);
+      return;
+    }
+    long l = this.jdField_a_of_type_ArrayOfLong[paramInt2];
+    int i = (paramInt2 + 1) * 64;
+    int j = Math.min(this.jdField_a_of_type_JavaUtilList.size(), i + 64);
+    a(paramT, paramInt1, paramA, paramInt2 - 1);
+    a(paramT, paramInt1, paramA, i, j, l);
+  }
+  
+  private void a(T paramT, int paramInt1, A paramA, int paramInt2, int paramInt3, long paramLong)
+  {
+    long l = 1L;
+    while (paramInt2 < paramInt3)
+    {
+      if ((paramLong & l) == 0L) {
+        this.jdField_a_of_type_Rnk.a(this.jdField_a_of_type_JavaUtilList.get(paramInt2), paramT, paramInt1, paramA);
+      }
+      l <<= 1;
+      paramInt2 += 1;
+    }
+  }
+  
+  private boolean a(int paramInt)
+  {
+    if (paramInt < 64) {
+      if ((1L << paramInt & this.jdField_a_of_type_Long) == 0L) {}
+    }
+    int i;
+    do
+    {
+      return true;
+      return false;
+      if (this.jdField_a_of_type_ArrayOfLong == null) {
+        return false;
+      }
+      i = paramInt / 64 - 1;
+      if (i >= this.jdField_a_of_type_ArrayOfLong.length) {
+        return false;
+      }
+    } while ((this.jdField_a_of_type_ArrayOfLong[i] & 1L << paramInt % 64) != 0L);
+    return false;
+  }
+  
+  private void b(T paramT, int paramInt, A paramA)
+  {
+    a(paramT, paramInt, paramA, 0, Math.min(64, this.jdField_a_of_type_JavaUtilList.size()), this.jdField_a_of_type_Long);
+  }
+  
+  private void c(T paramT, int paramInt, A paramA)
+  {
+    int j = this.jdField_a_of_type_JavaUtilList.size();
+    if (this.jdField_a_of_type_ArrayOfLong == null) {}
+    for (int i = -1;; i = this.jdField_a_of_type_ArrayOfLong.length - 1)
+    {
+      a(paramT, paramInt, paramA, i);
+      a(paramT, paramInt, paramA, (i + 2) * 64, j, 0L);
       return;
     }
   }
   
-  public void a(int paramInt)
+  /* Error */
+  public rnj<C, T, A> a()
   {
-    if (paramInt >= this.jdField_a_of_type_JavaUtilArrayList.size() - 5) {
-      a();
+    // Byte code:
+    //   0: aload_0
+    //   1: monitorenter
+    //   2: aload_0
+    //   3: invokespecial 90	java/lang/Object:clone	()Ljava/lang/Object;
+    //   6: checkcast 2	rnj
+    //   9: astore_3
+    //   10: aload_3
+    //   11: lconst_0
+    //   12: putfield 27	rnj:jdField_a_of_type_Long	J
+    //   15: aload_3
+    //   16: aconst_null
+    //   17: putfield 35	rnj:jdField_a_of_type_ArrayOfLong	[J
+    //   20: aload_3
+    //   21: iconst_0
+    //   22: putfield 92	rnj:jdField_a_of_type_Int	I
+    //   25: aload_3
+    //   26: new 22	java/util/ArrayList
+    //   29: dup
+    //   30: invokespecial 23	java/util/ArrayList:<init>	()V
+    //   33: putfield 25	rnj:jdField_a_of_type_JavaUtilList	Ljava/util/List;
+    //   36: aload_0
+    //   37: getfield 25	rnj:jdField_a_of_type_JavaUtilList	Ljava/util/List;
+    //   40: invokeinterface 41 1 0
+    //   45: istore_2
+    //   46: iconst_0
+    //   47: istore_1
+    //   48: aload_3
+    //   49: astore 4
+    //   51: iload_1
+    //   52: iload_2
+    //   53: if_icmpge +50 -> 103
+    //   56: aload_0
+    //   57: iload_1
+    //   58: invokespecial 94	rnj:a	(I)Z
+    //   61: ifne +23 -> 84
+    //   64: aload_3
+    //   65: getfield 25	rnj:jdField_a_of_type_JavaUtilList	Ljava/util/List;
+    //   68: aload_0
+    //   69: getfield 25	rnj:jdField_a_of_type_JavaUtilList	Ljava/util/List;
+    //   72: iload_1
+    //   73: invokeinterface 74 2 0
+    //   78: invokeinterface 98 2 0
+    //   83: pop
+    //   84: iload_1
+    //   85: iconst_1
+    //   86: iadd
+    //   87: istore_1
+    //   88: goto -40 -> 48
+    //   91: astore 4
+    //   93: aconst_null
+    //   94: astore_3
+    //   95: aload 4
+    //   97: invokevirtual 101	java/lang/CloneNotSupportedException:printStackTrace	()V
+    //   100: aload_3
+    //   101: astore 4
+    //   103: aload_0
+    //   104: monitorexit
+    //   105: aload 4
+    //   107: areturn
+    //   108: astore_3
+    //   109: aload_0
+    //   110: monitorexit
+    //   111: aload_3
+    //   112: athrow
+    //   113: astore 4
+    //   115: goto -20 -> 95
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	118	0	this	rnj
+    //   47	41	1	i	int
+    //   45	9	2	j	int
+    //   9	92	3	localrnj1	rnj
+    //   108	4	3	localObject	Object
+    //   49	1	4	localrnj2	rnj
+    //   91	5	4	localCloneNotSupportedException1	java.lang.CloneNotSupportedException
+    //   101	5	4	localrnj3	rnj
+    //   113	1	4	localCloneNotSupportedException2	java.lang.CloneNotSupportedException
+    // Exception table:
+    //   from	to	target	type
+    //   2	10	91	java/lang/CloneNotSupportedException
+    //   2	10	108	finally
+    //   10	46	108	finally
+    //   56	84	108	finally
+    //   95	100	108	finally
+    //   10	46	113	java/lang/CloneNotSupportedException
+    //   56	84	113	java/lang/CloneNotSupportedException
+  }
+  
+  public void a(C paramC)
+  {
+    if (paramC == null) {
+      try
+      {
+        throw new IllegalArgumentException("callback cannot be null");
+      }
+      finally {}
+    }
+    int i = this.jdField_a_of_type_JavaUtilList.lastIndexOf(paramC);
+    if ((i < 0) || (a(i))) {
+      this.jdField_a_of_type_JavaUtilList.add(paramC);
     }
   }
   
-  public void b()
+  public void a(T paramT, int paramInt, A paramA)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Rnl);
+    for (;;)
+    {
+      try
+      {
+        this.jdField_a_of_type_Int += 1;
+        c(paramT, paramInt, paramA);
+        this.jdField_a_of_type_Int -= 1;
+        if (this.jdField_a_of_type_Int == 0)
+        {
+          if (this.jdField_a_of_type_ArrayOfLong != null)
+          {
+            paramInt = this.jdField_a_of_type_ArrayOfLong.length - 1;
+            if (paramInt >= 0)
+            {
+              long l = this.jdField_a_of_type_ArrayOfLong[paramInt];
+              if (l == 0L) {
+                break label123;
+              }
+              a((paramInt + 1) * 64, l);
+              this.jdField_a_of_type_ArrayOfLong[paramInt] = 0L;
+              break label123;
+            }
+          }
+          if (this.jdField_a_of_type_Long != 0L)
+          {
+            a(0, this.jdField_a_of_type_Long);
+            this.jdField_a_of_type_Long = 0L;
+          }
+        }
+        return;
+      }
+      finally {}
+      label123:
+      paramInt -= 1;
+    }
+  }
+  
+  /* Error */
+  public void b(C paramC)
+  {
+    // Byte code:
+    //   0: aload_0
+    //   1: monitorenter
+    //   2: aload_0
+    //   3: getfield 92	rnj:jdField_a_of_type_Int	I
+    //   6: ifne +17 -> 23
+    //   9: aload_0
+    //   10: getfield 25	rnj:jdField_a_of_type_JavaUtilList	Ljava/util/List;
+    //   13: aload_1
+    //   14: invokeinterface 121 2 0
+    //   19: pop
+    //   20: aload_0
+    //   21: monitorexit
+    //   22: return
+    //   23: aload_0
+    //   24: getfield 25	rnj:jdField_a_of_type_JavaUtilList	Ljava/util/List;
+    //   27: aload_1
+    //   28: invokeinterface 114 2 0
+    //   33: istore_2
+    //   34: iload_2
+    //   35: iflt -15 -> 20
+    //   38: aload_0
+    //   39: iload_2
+    //   40: invokespecial 123	rnj:a	(I)V
+    //   43: goto -23 -> 20
+    //   46: astore_1
+    //   47: aload_0
+    //   48: monitorexit
+    //   49: aload_1
+    //   50: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	51	0	this	rnj
+    //   0	51	1	paramC	C
+    //   33	7	2	i	int
+    // Exception table:
+    //   from	to	target	type
+    //   2	20	46	finally
+    //   23	34	46	finally
+    //   38	43	46	finally
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     rnj
  * JD-Core Version:    0.7.0.1
  */

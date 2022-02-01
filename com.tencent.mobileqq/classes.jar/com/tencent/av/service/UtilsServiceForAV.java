@@ -6,13 +6,13 @@ import android.os.PowerManager;
 import android.os.PowerManager.WakeLock;
 import com.tencent.av.app.VideoAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import mal;
+import lxj;
 import mqq.app.AppService;
 
 public class UtilsServiceForAV
   extends AppService
 {
-  final IBinder jdField_a_of_type_AndroidOsIBinder = new mal(this);
+  final IBinder jdField_a_of_type_AndroidOsIBinder = new lxj(this);
   PowerManager.WakeLock jdField_a_of_type_AndroidOsPowerManager$WakeLock = null;
   VideoAppInterface jdField_a_of_type_ComTencentAvAppVideoAppInterface = null;
   
@@ -109,7 +109,7 @@ public class UtilsServiceForAV
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.av.service.UtilsServiceForAV
  * JD-Core Version:    0.7.0.1
  */

@@ -1,34 +1,54 @@
-import android.graphics.Rect;
-import java.util.Arrays;
+import android.support.annotation.NonNull;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
+import com.tencent.qphone.base.util.QLog;
+import java.nio.ByteBuffer;
+import tencent.im.troop.homework.ReqSend1V1Msg;
+import tencent.im.troop.homework.RspSend1V1Msg;
 
 public class anwp
 {
-  public int a;
-  public Rect a;
-  public anwi a;
-  public String a;
-  public boolean a;
-  public String[] a;
-  public int b;
-  public String b;
-  public boolean b;
-  public int c = 50;
-  public int d = -1;
-  public int e = 1;
-  
-  public anwp()
+  public static void a(anwd paramanwd, ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
-    this.jdField_b_of_type_Int = 1;
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_AndroidGraphicsRect = new Rect();
-    this.jdField_b_of_type_Boolean = true;
-    this.jdField_a_of_type_ArrayOfJavaLangString = new String[0];
-    this.jdField_a_of_type_JavaLangString = "";
+    homework.RspSend1V1Msg localRspSend1V1Msg = new homework.RspSend1V1Msg();
+    homework.ReqSend1V1Msg localReqSend1V1Msg = new homework.ReqSend1V1Msg();
+    if ((!paramFromServiceMsg.isSuccess()) || (paramObject == null))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d(".troop.troopManagerTroopHandler", 2, new Object[] { "handleTroopBulkSendMessageRespond failed, no response, error=", paramFromServiceMsg.getBusinessFailMsg() });
+      }
+      paramanwd.notifyUI(121, false, new Object[] { null, null });
+      return;
+    }
+    try
+    {
+      localRspSend1V1Msg.mergeFrom((byte[])paramObject);
+      paramToServiceMsg = ByteBuffer.wrap(paramToServiceMsg.getWupBuffer());
+      paramFromServiceMsg = new byte[paramToServiceMsg.getInt() - 4];
+      paramToServiceMsg.get(paramFromServiceMsg);
+      localReqSend1V1Msg.mergeFrom(paramFromServiceMsg);
+      if (QLog.isColorLevel()) {
+        QLog.d(".troop.troopManagerTroopHandler", 2, new Object[] { "handleTroopBulkSendMessageRespond, ", zlb.a(localRspSend1V1Msg) });
+      }
+      paramanwd.notifyUI(121, true, new Object[] { localRspSend1V1Msg, localReqSend1V1Msg });
+      return;
+    }
+    catch (InvalidProtocolBufferMicroException paramToServiceMsg)
+    {
+      QLog.e(".troop.troopManagerTroopHandler", 2, "handleTroopBulkSendMessageRespond", paramToServiceMsg);
+      paramanwd.notifyUI(121, false, new Object[] { null, null });
+    }
   }
   
-  public String toString()
+  public static void a(@NonNull anwd paramanwd, @NonNull homework.ReqSend1V1Msg paramReqSend1V1Msg)
   {
-    return "CommonAttrs [key=" + this.jdField_b_of_type_JavaLangString + ", mRect=" + this.jdField_a_of_type_AndroidGraphicsRect + ", count=" + this.jdField_a_of_type_Int + ", duration=" + this.c + ", align=" + this.d + ", mBigImgPath=" + this.jdField_a_of_type_JavaLangString + ", repeatCount=" + this.jdField_b_of_type_Int + ", mAnimationPath=" + Arrays.toString(this.jdField_a_of_type_ArrayOfJavaLangString) + "]";
+    if (QLog.isColorLevel()) {
+      QLog.i(".troop.troopManagerTroopHandler", 2, "sendTroopBulkSendMessageRequest");
+    }
+    ToServiceMsg localToServiceMsg = paramanwd.createToServiceMsg("HwSvc.send_msg");
+    localToServiceMsg.putWupBuffer(paramReqSend1V1Msg.toByteArray());
+    paramanwd.a(localToServiceMsg);
   }
 }
 

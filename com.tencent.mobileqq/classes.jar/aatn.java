@@ -1,6 +1,30 @@
-public abstract interface aatn
+import android.view.ActionMode;
+import android.view.ActionMode.Callback;
+import android.view.Menu;
+import android.view.MenuItem;
+import com.tencent.biz.troopgift.TroopGiftPanel;
+
+class aatn
+  implements ActionMode.Callback
 {
-  public abstract void a(aato paramaato);
+  aatn(aatm paramaatm, TroopGiftPanel paramTroopGiftPanel) {}
+  
+  public boolean onActionItemClicked(ActionMode paramActionMode, MenuItem paramMenuItem)
+  {
+    return false;
+  }
+  
+  public boolean onCreateActionMode(ActionMode paramActionMode, Menu paramMenu)
+  {
+    return false;
+  }
+  
+  public void onDestroyActionMode(ActionMode paramActionMode) {}
+  
+  public boolean onPrepareActionMode(ActionMode paramActionMode, Menu paramMenu)
+  {
+    return false;
+  }
 }
 
 

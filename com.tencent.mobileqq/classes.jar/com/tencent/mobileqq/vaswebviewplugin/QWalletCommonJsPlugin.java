@@ -2,7 +2,6 @@ package com.tencent.mobileqq.vaswebviewplugin;
 
 import Wallet.AuthCodeItem;
 import Wallet.AuthCodeRsp;
-import alud;
 import android.app.Activity;
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -19,12 +18,13 @@ import android.os.ResultReceiver;
 import android.os.SystemClock;
 import android.provider.ContactsContract.Contacts;
 import android.text.TextUtils;
-import apmh;
-import apml;
-import aprh;
-import bdic;
-import begz;
-import bjco;
+import anni;
+import arpd;
+import arph;
+import arui;
+import bgnh;
+import bhod;
+import blqx;
 import com.tencent.biz.pubaccount.CustomWebView;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
@@ -33,7 +33,6 @@ import com.tencent.mobileqq.activity.PayBridgeActivity;
 import com.tencent.mobileqq.activity.qwallet.TransactionActivity;
 import com.tencent.mobileqq.activity.qwallet.redpacket.IRedPacket;
 import com.tencent.mobileqq.activity.qwallet.redpacket.RedPacketManager;
-import com.tencent.mobileqq.microapp.appbrand.utils.MiniLogManager;
 import com.tencent.mobileqq.microapp.sdk.MiniAppLauncher;
 import com.tencent.mobileqq.webview.swift.JsBridgeListener;
 import com.tencent.qphone.base.util.QLog;
@@ -66,6 +65,8 @@ public class QWalletCommonJsPlugin
   private static final int SKIN_STATUS_CLOSE = 0;
   private static final int SKIN_STATUS_OPEN = 1;
   static final String TAG = "QWalletCommonJsPlugin";
+  public static final int VIEW_UPDATE_BID_QQSHOP_TAB = 25;
+  public static final int VIEW_UPDATE_VID_QQSHOP_TAB = 1;
   static String mListid = "";
   static String mParamForGarpHb = "";
   private final String EMOJI_USER_CHARGE_RESULT = "qw_charge_emojiPayResultOk";
@@ -127,7 +128,7 @@ public class QWalletCommonJsPlugin
     try
     {
       Object localObject2 = new JSONObject(paramString);
-      paramString = ((JSONObject)localObject2).optString("title", alud.a(2131711820));
+      paramString = ((JSONObject)localObject2).optString("title", anni.a(2131710199));
       int i = ((JSONObject)localObject2).optInt("type", 1);
       this.mCallback = ((JSONObject)localObject2).optString("callback");
       if ((i & 0x1) == 0) {}
@@ -191,29 +192,29 @@ public class QWalletCommonJsPlugin
     //   13: aconst_null
     //   14: astore_3
     //   15: aload_0
-    //   16: getfield 212	com/tencent/mobileqq/vaswebviewplugin/QWalletCommonJsPlugin:mContext	Landroid/content/Context;
+    //   16: getfield 215	com/tencent/mobileqq/vaswebviewplugin/QWalletCommonJsPlugin:mContext	Landroid/content/Context;
     //   19: ifnonnull +5 -> 24
     //   22: aconst_null
     //   23: areturn
-    //   24: new 249	org/json/JSONObject
+    //   24: new 252	org/json/JSONObject
     //   27: dup
-    //   28: invokespecial 351	org/json/JSONObject:<init>	()V
+    //   28: invokespecial 354	org/json/JSONObject:<init>	()V
     //   31: astore 8
-    //   33: new 353	org/json/JSONArray
+    //   33: new 356	org/json/JSONArray
     //   36: dup
-    //   37: invokespecial 354	org/json/JSONArray:<init>	()V
+    //   37: invokespecial 357	org/json/JSONArray:<init>	()V
     //   40: astore 9
-    //   42: getstatic 360	android/provider/ContactsContract$Contacts:CONTENT_URI	Landroid/net/Uri;
+    //   42: getstatic 363	android/provider/ContactsContract$Contacts:CONTENT_URI	Landroid/net/Uri;
     //   45: astore 5
     //   47: aload_0
-    //   48: getfield 212	com/tencent/mobileqq/vaswebviewplugin/QWalletCommonJsPlugin:mContext	Landroid/content/Context;
-    //   51: invokevirtual 366	android/content/Context:getContentResolver	()Landroid/content/ContentResolver;
+    //   48: getfield 215	com/tencent/mobileqq/vaswebviewplugin/QWalletCommonJsPlugin:mContext	Landroid/content/Context;
+    //   51: invokevirtual 369	android/content/Context:getContentResolver	()Landroid/content/ContentResolver;
     //   54: aload 5
     //   56: aconst_null
     //   57: aconst_null
     //   58: aconst_null
     //   59: aconst_null
-    //   60: invokevirtual 372	android/content/ContentResolver:query	(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
+    //   60: invokevirtual 375	android/content/ContentResolver:query	(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
     //   63: astore 5
     //   65: aload 6
     //   67: astore 4
@@ -224,7 +225,7 @@ public class QWalletCommonJsPlugin
     //   78: aload 7
     //   80: astore_1
     //   81: aload 5
-    //   83: invokeinterface 378 1 0
+    //   83: invokeinterface 381 1 0
     //   88: ifeq +74 -> 162
     //   91: aload_3
     //   92: astore 4
@@ -234,16 +235,16 @@ public class QWalletCommonJsPlugin
     //   99: astore_2
     //   100: aload 5
     //   102: aload 5
-    //   104: ldc_w 380
-    //   107: invokeinterface 384 2 0
-    //   112: invokeinterface 387 2 0
+    //   104: ldc_w 383
+    //   107: invokeinterface 387 2 0
+    //   112: invokeinterface 390 2 0
     //   117: astore_3
     //   118: aload 4
     //   120: astore_1
     //   121: aload 4
     //   123: astore_2
     //   124: aload_3
-    //   125: invokestatic 244	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   125: invokestatic 247	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   128: ifeq +94 -> 222
     //   131: aload 4
     //   133: astore_3
@@ -258,7 +259,7 @@ public class QWalletCommonJsPlugin
     //   147: aload_3
     //   148: astore_2
     //   149: aload 5
-    //   151: invokeinterface 390 1 0
+    //   151: invokeinterface 393 1 0
     //   156: ifne -62 -> 94
     //   159: aload_3
     //   160: astore 4
@@ -267,27 +268,27 @@ public class QWalletCommonJsPlugin
     //   165: aload 4
     //   167: astore_2
     //   168: aload 8
-    //   170: ldc_w 392
+    //   170: ldc_w 395
     //   173: aload 9
-    //   175: invokevirtual 396	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+    //   175: invokevirtual 399	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
     //   178: pop
     //   179: aload 4
     //   181: astore_1
     //   182: aload 4
     //   184: astore_2
     //   185: aload 8
-    //   187: ldc_w 398
+    //   187: ldc_w 401
     //   190: iconst_0
-    //   191: invokevirtual 401	org/json/JSONObject:put	(Ljava/lang/String;I)Lorg/json/JSONObject;
+    //   191: invokevirtual 404	org/json/JSONObject:put	(Ljava/lang/String;I)Lorg/json/JSONObject;
     //   194: pop
     //   195: aload 5
     //   197: ifnull +10 -> 207
     //   200: aload 5
-    //   202: invokeinterface 404 1 0
+    //   202: invokeinterface 407 1 0
     //   207: aload 4
     //   209: ifnull +10 -> 219
     //   212: aload 4
-    //   214: invokeinterface 404 1 0
+    //   214: invokeinterface 407 1 0
     //   219: aload 8
     //   221: areturn
     //   222: aload 4
@@ -296,7 +297,7 @@ public class QWalletCommonJsPlugin
     //   227: astore_2
     //   228: aload_0
     //   229: aload_3
-    //   230: invokevirtual 407	com/tencent/mobileqq/vaswebviewplugin/QWalletCommonJsPlugin:trimPhoneName	(Ljava/lang/String;)Ljava/lang/String;
+    //   230: invokevirtual 410	com/tencent/mobileqq/vaswebviewplugin/QWalletCommonJsPlugin:trimPhoneName	(Ljava/lang/String;)Ljava/lang/String;
     //   233: astore 6
     //   235: aload 4
     //   237: astore_3
@@ -306,9 +307,9 @@ public class QWalletCommonJsPlugin
     //   243: astore_2
     //   244: aload 5
     //   246: aload 5
-    //   248: ldc_w 409
-    //   251: invokeinterface 384 2 0
-    //   256: invokeinterface 413 2 0
+    //   248: ldc_w 412
+    //   251: invokeinterface 387 2 0
+    //   256: invokeinterface 416 2 0
     //   261: ifle -127 -> 134
     //   264: aload 4
     //   266: astore_1
@@ -316,30 +317,30 @@ public class QWalletCommonJsPlugin
     //   269: astore_2
     //   270: aload 5
     //   272: aload 5
-    //   274: ldc_w 415
-    //   277: invokeinterface 384 2 0
-    //   282: invokeinterface 387 2 0
+    //   274: ldc_w 418
+    //   277: invokeinterface 387 2 0
+    //   282: invokeinterface 390 2 0
     //   287: astore_3
     //   288: aload 4
     //   290: astore_1
     //   291: aload 4
     //   293: astore_2
     //   294: aload_0
-    //   295: getfield 212	com/tencent/mobileqq/vaswebviewplugin/QWalletCommonJsPlugin:mContext	Landroid/content/Context;
-    //   298: invokevirtual 366	android/content/Context:getContentResolver	()Landroid/content/ContentResolver;
-    //   301: getstatic 418	android/provider/ContactsContract$CommonDataKinds$Phone:CONTENT_URI	Landroid/net/Uri;
+    //   295: getfield 215	com/tencent/mobileqq/vaswebviewplugin/QWalletCommonJsPlugin:mContext	Landroid/content/Context;
+    //   298: invokevirtual 369	android/content/Context:getContentResolver	()Landroid/content/ContentResolver;
+    //   301: getstatic 421	android/provider/ContactsContract$CommonDataKinds$Phone:CONTENT_URI	Landroid/net/Uri;
     //   304: aconst_null
-    //   305: new 420	java/lang/StringBuilder
+    //   305: new 423	java/lang/StringBuilder
     //   308: dup
-    //   309: invokespecial 421	java/lang/StringBuilder:<init>	()V
-    //   312: ldc_w 423
-    //   315: invokevirtual 427	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   309: invokespecial 424	java/lang/StringBuilder:<init>	()V
+    //   312: ldc_w 426
+    //   315: invokevirtual 430	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   318: aload_3
-    //   319: invokevirtual 427	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   322: invokevirtual 431	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   319: invokevirtual 430	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   322: invokevirtual 434	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   325: aconst_null
     //   326: aconst_null
-    //   327: invokevirtual 372	android/content/ContentResolver:query	(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
+    //   327: invokevirtual 375	android/content/ContentResolver:query	(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
     //   330: astore 4
     //   332: aload 4
     //   334: ifnull +77 -> 411
@@ -348,7 +349,7 @@ public class QWalletCommonJsPlugin
     //   340: aload 4
     //   342: astore_2
     //   343: aload 4
-    //   345: invokeinterface 378 1 0
+    //   345: invokeinterface 381 1 0
     //   350: ifeq +61 -> 411
     //   353: aload 4
     //   355: astore_1
@@ -356,16 +357,16 @@ public class QWalletCommonJsPlugin
     //   358: astore_2
     //   359: aload 4
     //   361: aload 4
-    //   363: ldc_w 433
-    //   366: invokeinterface 384 2 0
-    //   371: invokeinterface 387 2 0
+    //   363: ldc_w 436
+    //   366: invokeinterface 387 2 0
+    //   371: invokeinterface 390 2 0
     //   376: astore_3
     //   377: aload 4
     //   379: astore_1
     //   380: aload 4
     //   382: astore_2
     //   383: aload_3
-    //   384: invokestatic 244	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   384: invokestatic 247	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   387: ifeq +111 -> 498
     //   390: aload 4
     //   392: ifnull +19 -> 411
@@ -374,7 +375,7 @@ public class QWalletCommonJsPlugin
     //   398: aload 4
     //   400: astore_2
     //   401: aload 4
-    //   403: invokeinterface 390 1 0
+    //   403: invokeinterface 393 1 0
     //   408: ifne -55 -> 353
     //   411: aload 4
     //   413: astore_3
@@ -385,7 +386,7 @@ public class QWalletCommonJsPlugin
     //   422: aload 4
     //   424: astore_2
     //   425: aload 4
-    //   427: invokeinterface 404 1 0
+    //   427: invokeinterface 407 1 0
     //   432: aload 4
     //   434: astore_3
     //   435: goto -301 -> 134
@@ -393,29 +394,29 @@ public class QWalletCommonJsPlugin
     //   439: aload 5
     //   441: astore_2
     //   442: aload_3
-    //   443: invokevirtual 434	java/lang/Exception:printStackTrace	()V
+    //   443: invokevirtual 437	java/lang/Exception:printStackTrace	()V
     //   446: aload 8
-    //   448: ldc_w 392
+    //   448: ldc_w 395
     //   451: aload 9
-    //   453: invokevirtual 396	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+    //   453: invokevirtual 399	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
     //   456: pop
     //   457: aload 8
-    //   459: ldc_w 398
+    //   459: ldc_w 401
     //   462: iconst_m1
-    //   463: invokevirtual 401	org/json/JSONObject:put	(Ljava/lang/String;I)Lorg/json/JSONObject;
+    //   463: invokevirtual 404	org/json/JSONObject:put	(Ljava/lang/String;I)Lorg/json/JSONObject;
     //   466: pop
     //   467: aload_2
     //   468: ifnull +9 -> 477
     //   471: aload_2
-    //   472: invokeinterface 404 1 0
+    //   472: invokeinterface 407 1 0
     //   477: aload_1
     //   478: ifnull -259 -> 219
     //   481: aload_1
-    //   482: invokeinterface 404 1 0
+    //   482: invokeinterface 407 1 0
     //   487: goto -268 -> 219
     //   490: astore_1
     //   491: aload_1
-    //   492: invokevirtual 434	java/lang/Exception:printStackTrace	()V
+    //   492: invokevirtual 437	java/lang/Exception:printStackTrace	()V
     //   495: goto -276 -> 219
     //   498: aload 4
     //   500: astore_1
@@ -423,33 +424,33 @@ public class QWalletCommonJsPlugin
     //   503: astore_2
     //   504: aload_0
     //   505: aload_3
-    //   506: invokevirtual 437	com/tencent/mobileqq/vaswebviewplugin/QWalletCommonJsPlugin:trimPhoneNumPre	(Ljava/lang/String;)Ljava/lang/String;
+    //   506: invokevirtual 440	com/tencent/mobileqq/vaswebviewplugin/QWalletCommonJsPlugin:trimPhoneNumPre	(Ljava/lang/String;)Ljava/lang/String;
     //   509: astore_3
     //   510: aload 4
     //   512: astore_1
     //   513: aload 4
     //   515: astore_2
-    //   516: new 249	org/json/JSONObject
+    //   516: new 252	org/json/JSONObject
     //   519: dup
-    //   520: invokespecial 351	org/json/JSONObject:<init>	()V
+    //   520: invokespecial 354	org/json/JSONObject:<init>	()V
     //   523: astore 7
     //   525: aload 4
     //   527: astore_1
     //   528: aload 4
     //   530: astore_2
     //   531: aload 7
-    //   533: ldc_w 439
+    //   533: ldc_w 442
     //   536: aload 6
-    //   538: invokevirtual 396	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+    //   538: invokevirtual 399	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
     //   541: pop
     //   542: aload 4
     //   544: astore_1
     //   545: aload 4
     //   547: astore_2
     //   548: aload 7
-    //   550: ldc_w 441
+    //   550: ldc_w 444
     //   553: aload_3
-    //   554: invokevirtual 396	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+    //   554: invokevirtual 399	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
     //   557: pop
     //   558: aload 4
     //   560: astore_1
@@ -457,7 +458,7 @@ public class QWalletCommonJsPlugin
     //   563: astore_2
     //   564: aload 9
     //   566: aload 7
-    //   568: invokevirtual 444	org/json/JSONArray:put	(Ljava/lang/Object;)Lorg/json/JSONArray;
+    //   568: invokevirtual 447	org/json/JSONArray:put	(Ljava/lang/Object;)Lorg/json/JSONArray;
     //   571: pop
     //   572: goto -182 -> 390
     //   575: astore_3
@@ -468,24 +469,24 @@ public class QWalletCommonJsPlugin
     //   580: aload 5
     //   582: ifnull +10 -> 592
     //   585: aload 5
-    //   587: invokeinterface 404 1 0
+    //   587: invokeinterface 407 1 0
     //   592: aload_1
     //   593: ifnull +9 -> 602
     //   596: aload_1
-    //   597: invokeinterface 404 1 0
+    //   597: invokeinterface 407 1 0
     //   602: aload_2
     //   603: athrow
     //   604: astore_1
     //   605: aload_1
-    //   606: invokevirtual 434	java/lang/Exception:printStackTrace	()V
+    //   606: invokevirtual 437	java/lang/Exception:printStackTrace	()V
     //   609: goto -402 -> 207
     //   612: astore_1
     //   613: aload_1
-    //   614: invokevirtual 434	java/lang/Exception:printStackTrace	()V
+    //   614: invokevirtual 437	java/lang/Exception:printStackTrace	()V
     //   617: goto -398 -> 219
     //   620: astore_3
     //   621: aload_3
-    //   622: invokevirtual 342	org/json/JSONException:printStackTrace	()V
+    //   622: invokevirtual 345	org/json/JSONException:printStackTrace	()V
     //   625: goto -158 -> 467
     //   628: astore_3
     //   629: aload_2
@@ -495,15 +496,15 @@ public class QWalletCommonJsPlugin
     //   634: goto -54 -> 580
     //   637: astore_2
     //   638: aload_2
-    //   639: invokevirtual 434	java/lang/Exception:printStackTrace	()V
+    //   639: invokevirtual 437	java/lang/Exception:printStackTrace	()V
     //   642: goto -165 -> 477
     //   645: astore_3
     //   646: aload_3
-    //   647: invokevirtual 434	java/lang/Exception:printStackTrace	()V
+    //   647: invokevirtual 437	java/lang/Exception:printStackTrace	()V
     //   650: goto -58 -> 592
     //   653: astore_1
     //   654: aload_1
-    //   655: invokevirtual 434	java/lang/Exception:printStackTrace	()V
+    //   655: invokevirtual 437	java/lang/Exception:printStackTrace	()V
     //   658: goto -56 -> 602
     //   661: astore_2
     //   662: aconst_null
@@ -710,69 +711,69 @@ public class QWalletCommonJsPlugin
     //   3: astore 4
     //   5: aconst_null
     //   6: astore 6
-    //   8: new 249	org/json/JSONObject
+    //   8: new 252	org/json/JSONObject
     //   11: dup
-    //   12: invokespecial 351	org/json/JSONObject:<init>	()V
+    //   12: invokespecial 354	org/json/JSONObject:<init>	()V
     //   15: astore 7
-    //   17: getstatic 360	android/provider/ContactsContract$Contacts:CONTENT_URI	Landroid/net/Uri;
+    //   17: getstatic 363	android/provider/ContactsContract$Contacts:CONTENT_URI	Landroid/net/Uri;
     //   20: astore_3
     //   21: aload_0
-    //   22: getfield 212	com/tencent/mobileqq/vaswebviewplugin/QWalletCommonJsPlugin:mContext	Landroid/content/Context;
-    //   25: invokevirtual 366	android/content/Context:getContentResolver	()Landroid/content/ContentResolver;
+    //   22: getfield 215	com/tencent/mobileqq/vaswebviewplugin/QWalletCommonJsPlugin:mContext	Landroid/content/Context;
+    //   25: invokevirtual 369	android/content/Context:getContentResolver	()Landroid/content/ContentResolver;
     //   28: aload_3
     //   29: aconst_null
-    //   30: ldc_w 576
+    //   30: ldc_w 579
     //   33: iconst_1
-    //   34: anewarray 344	java/lang/String
+    //   34: anewarray 347	java/lang/String
     //   37: dup
     //   38: iconst_0
     //   39: aload_1
     //   40: aastore
     //   41: aconst_null
-    //   42: invokevirtual 372	android/content/ContentResolver:query	(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
+    //   42: invokevirtual 375	android/content/ContentResolver:query	(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
     //   45: astore_3
     //   46: aload_3
     //   47: astore_2
     //   48: aload_2
-    //   49: invokeinterface 378 1 0
+    //   49: invokeinterface 381 1 0
     //   54: ifeq +410 -> 464
     //   57: aload_0
     //   58: aload_2
     //   59: aload_2
-    //   60: ldc_w 380
-    //   63: invokeinterface 384 2 0
-    //   68: invokeinterface 387 2 0
-    //   73: invokevirtual 407	com/tencent/mobileqq/vaswebviewplugin/QWalletCommonJsPlugin:trimPhoneName	(Ljava/lang/String;)Ljava/lang/String;
+    //   60: ldc_w 383
+    //   63: invokeinterface 387 2 0
+    //   68: invokeinterface 390 2 0
+    //   73: invokevirtual 410	com/tencent/mobileqq/vaswebviewplugin/QWalletCommonJsPlugin:trimPhoneName	(Ljava/lang/String;)Ljava/lang/String;
     //   76: astore_3
     //   77: aload_2
     //   78: aload_2
-    //   79: ldc_w 409
-    //   82: invokeinterface 384 2 0
-    //   87: invokeinterface 413 2 0
+    //   79: ldc_w 412
+    //   82: invokeinterface 387 2 0
+    //   87: invokeinterface 416 2 0
     //   92: ifle +367 -> 459
     //   95: aload_0
-    //   96: getfield 212	com/tencent/mobileqq/vaswebviewplugin/QWalletCommonJsPlugin:mContext	Landroid/content/Context;
-    //   99: invokevirtual 366	android/content/Context:getContentResolver	()Landroid/content/ContentResolver;
-    //   102: getstatic 418	android/provider/ContactsContract$CommonDataKinds$Phone:CONTENT_URI	Landroid/net/Uri;
+    //   96: getfield 215	com/tencent/mobileqq/vaswebviewplugin/QWalletCommonJsPlugin:mContext	Landroid/content/Context;
+    //   99: invokevirtual 369	android/content/Context:getContentResolver	()Landroid/content/ContentResolver;
+    //   102: getstatic 421	android/provider/ContactsContract$CommonDataKinds$Phone:CONTENT_URI	Landroid/net/Uri;
     //   105: aconst_null
-    //   106: new 420	java/lang/StringBuilder
+    //   106: new 423	java/lang/StringBuilder
     //   109: dup
-    //   110: invokespecial 421	java/lang/StringBuilder:<init>	()V
-    //   113: ldc_w 423
-    //   116: invokevirtual 427	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   110: invokespecial 424	java/lang/StringBuilder:<init>	()V
+    //   113: ldc_w 426
+    //   116: invokevirtual 430	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   119: aload_1
-    //   120: invokevirtual 427	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   123: invokevirtual 431	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   120: invokevirtual 430	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   123: invokevirtual 434	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   126: aconst_null
     //   127: aconst_null
-    //   128: invokevirtual 372	android/content/ContentResolver:query	(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
+    //   128: invokevirtual 375	android/content/ContentResolver:query	(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
     //   131: astore_1
     //   132: aload_1
     //   133: astore 5
     //   135: aload_1
     //   136: astore 4
     //   138: aload_1
-    //   139: invokeinterface 378 1 0
+    //   139: invokeinterface 381 1 0
     //   144: ifeq +312 -> 456
     //   147: aload_1
     //   148: astore 5
@@ -781,109 +782,109 @@ public class QWalletCommonJsPlugin
     //   153: aload_0
     //   154: aload_1
     //   155: aload_1
-    //   156: ldc_w 433
-    //   159: invokeinterface 384 2 0
-    //   164: invokeinterface 387 2 0
-    //   169: invokevirtual 437	com/tencent/mobileqq/vaswebviewplugin/QWalletCommonJsPlugin:trimPhoneNumPre	(Ljava/lang/String;)Ljava/lang/String;
+    //   156: ldc_w 436
+    //   159: invokeinterface 387 2 0
+    //   164: invokeinterface 390 2 0
+    //   169: invokevirtual 440	com/tencent/mobileqq/vaswebviewplugin/QWalletCommonJsPlugin:trimPhoneNumPre	(Ljava/lang/String;)Ljava/lang/String;
     //   172: astore 6
     //   174: aload_1
     //   175: astore 5
     //   177: aload_1
     //   178: astore 4
     //   180: aload 6
-    //   182: invokestatic 244	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   182: invokestatic 247	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   185: ifne +65 -> 250
     //   188: aload_1
     //   189: astore 5
     //   191: aload_1
     //   192: astore 4
     //   194: aload_3
-    //   195: invokestatic 244	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   195: invokestatic 247	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   198: ifne +52 -> 250
     //   201: aload_1
     //   202: astore 5
     //   204: aload_1
     //   205: astore 4
     //   207: aload 7
-    //   209: ldc_w 398
+    //   209: ldc_w 401
     //   212: iconst_0
-    //   213: invokevirtual 401	org/json/JSONObject:put	(Ljava/lang/String;I)Lorg/json/JSONObject;
+    //   213: invokevirtual 404	org/json/JSONObject:put	(Ljava/lang/String;I)Lorg/json/JSONObject;
     //   216: pop
     //   217: aload_1
     //   218: astore 5
     //   220: aload_1
     //   221: astore 4
     //   223: aload 7
-    //   225: ldc_w 439
+    //   225: ldc_w 442
     //   228: aload_3
-    //   229: invokevirtual 396	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+    //   229: invokevirtual 399	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
     //   232: pop
     //   233: aload_1
     //   234: astore 5
     //   236: aload_1
     //   237: astore 4
     //   239: aload 7
-    //   241: ldc_w 441
+    //   241: ldc_w 444
     //   244: aload 6
-    //   246: invokevirtual 396	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+    //   246: invokevirtual 399	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
     //   249: pop
     //   250: aload_2
     //   251: ifnull +9 -> 260
     //   254: aload_2
-    //   255: invokeinterface 404 1 0
+    //   255: invokeinterface 407 1 0
     //   260: aload_1
     //   261: ifnull +9 -> 270
     //   264: aload_1
-    //   265: invokeinterface 404 1 0
+    //   265: invokeinterface 407 1 0
     //   270: aload 7
     //   272: areturn
     //   273: astore_2
     //   274: aload_2
-    //   275: invokevirtual 434	java/lang/Exception:printStackTrace	()V
+    //   275: invokevirtual 437	java/lang/Exception:printStackTrace	()V
     //   278: goto -18 -> 260
     //   281: astore_1
     //   282: aload_1
-    //   283: invokevirtual 434	java/lang/Exception:printStackTrace	()V
+    //   283: invokevirtual 437	java/lang/Exception:printStackTrace	()V
     //   286: aload 7
     //   288: areturn
     //   289: astore_3
     //   290: aconst_null
     //   291: astore_1
     //   292: aload_3
-    //   293: invokevirtual 434	java/lang/Exception:printStackTrace	()V
+    //   293: invokevirtual 437	java/lang/Exception:printStackTrace	()V
     //   296: aload 7
-    //   298: ldc_w 398
+    //   298: ldc_w 401
     //   301: iconst_m1
-    //   302: invokevirtual 401	org/json/JSONObject:put	(Ljava/lang/String;I)Lorg/json/JSONObject;
+    //   302: invokevirtual 404	org/json/JSONObject:put	(Ljava/lang/String;I)Lorg/json/JSONObject;
     //   305: pop
     //   306: aload 7
-    //   308: ldc_w 439
-    //   311: ldc 74
-    //   313: invokevirtual 396	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+    //   308: ldc_w 442
+    //   311: ldc 77
+    //   313: invokevirtual 399	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
     //   316: pop
     //   317: aload 7
-    //   319: ldc_w 441
-    //   322: ldc 74
-    //   324: invokevirtual 396	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+    //   319: ldc_w 444
+    //   322: ldc 77
+    //   324: invokevirtual 399	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
     //   327: pop
     //   328: aload_2
     //   329: ifnull +9 -> 338
     //   332: aload_2
-    //   333: invokeinterface 404 1 0
+    //   333: invokeinterface 407 1 0
     //   338: aload_1
     //   339: ifnull -69 -> 270
     //   342: aload_1
-    //   343: invokeinterface 404 1 0
+    //   343: invokeinterface 407 1 0
     //   348: aload 7
     //   350: areturn
     //   351: astore_1
     //   352: aload_1
-    //   353: invokevirtual 434	java/lang/Exception:printStackTrace	()V
+    //   353: invokevirtual 437	java/lang/Exception:printStackTrace	()V
     //   356: aload 7
     //   358: areturn
     //   359: astore_3
     //   360: aload_3
-    //   361: invokevirtual 342	org/json/JSONException:printStackTrace	()V
+    //   361: invokevirtual 345	org/json/JSONException:printStackTrace	()V
     //   364: goto -36 -> 328
     //   367: astore 4
     //   369: aload_1
@@ -893,24 +894,24 @@ public class QWalletCommonJsPlugin
     //   374: aload_2
     //   375: ifnull +9 -> 384
     //   378: aload_2
-    //   379: invokeinterface 404 1 0
+    //   379: invokeinterface 407 1 0
     //   384: aload_3
     //   385: ifnull +9 -> 394
     //   388: aload_3
-    //   389: invokeinterface 404 1 0
+    //   389: invokeinterface 407 1 0
     //   394: aload_1
     //   395: athrow
     //   396: astore_2
     //   397: aload_2
-    //   398: invokevirtual 434	java/lang/Exception:printStackTrace	()V
+    //   398: invokevirtual 437	java/lang/Exception:printStackTrace	()V
     //   401: goto -63 -> 338
     //   404: astore_2
     //   405: aload_2
-    //   406: invokevirtual 434	java/lang/Exception:printStackTrace	()V
+    //   406: invokevirtual 437	java/lang/Exception:printStackTrace	()V
     //   409: goto -25 -> 384
     //   412: astore_2
     //   413: aload_2
-    //   414: invokevirtual 434	java/lang/Exception:printStackTrace	()V
+    //   414: invokevirtual 437	java/lang/Exception:printStackTrace	()V
     //   417: goto -23 -> 394
     //   420: astore_1
     //   421: aconst_null
@@ -1003,27 +1004,19 @@ public class QWalletCommonJsPlugin
       try
       {
         paramString = new JSONObject(paramString);
-        paramInt1 = paramString.optInt("action");
-        JSONObject localJSONObject;
-        if (paramInt1 == 1)
+        if (paramString.optInt("action") == 1)
         {
-          String str = paramString.optString("mini_appid");
-          localJSONObject = new JSONObject();
-          if (!MiniAppLauncher.launchMiniApp(this.mContext, str, 1201)) {
-            break label108;
+          paramString = paramString.optString("mini_appid");
+          JSONObject localJSONObject = new JSONObject();
+          if (MiniAppLauncher.launchMiniApp(this.mContext, paramString, 1201)) {
+            localJSONObject.put("result_code", 0);
           }
-          localJSONObject.put("result_code", 0);
-        }
-        for (;;)
-        {
-          doCallback(localJSONObject.toString());
-          if (paramInt1 != 2) {
-            break;
+          for (;;)
+          {
+            doCallback(localJSONObject.toString());
+            return;
+            localJSONObject.put("result_code", 1);
           }
-          MiniLogManager.compressAndUploadLog(paramString.optString("mini_appid"), paramString.optInt("mini_version"));
-          return;
-          label108:
-          localJSONObject.put("result_code", 1);
         }
         return;
       }
@@ -1087,7 +1080,7 @@ public class QWalletCommonJsPlugin
     if (this.mContext == null) {
       return false;
     }
-    return bdic.f(this.mContext);
+    return bgnh.f(this.mContext);
   }
   
   private void notifyViewUpdate(String paramString1, String paramString2)
@@ -1104,7 +1097,7 @@ public class QWalletCommonJsPlugin
         j = paramString1.optInt("viewid");
         str = paramString1.optString("extstr");
         if ((i != 2) && (i != 4)) {
-          break label744;
+          break label732;
         }
         handleSkin(str, i, j);
         paramString1 = new Intent("action_notify_view_update");
@@ -1139,7 +1132,7 @@ public class QWalletCommonJsPlugin
               localObject1 = new JSONObject(str);
               paramString1 = ((JSONObject)localObject1).optString("listid");
               localObject1 = ((JSONObject)localObject1).optString("feedsid");
-              localObject2 = bjco.a().b(paramString1);
+              localObject2 = blqx.a().b(paramString1);
               paramString1 = paramString2;
               if (!TextUtils.isEmpty((CharSequence)localObject1))
               {
@@ -1191,7 +1184,7 @@ public class QWalletCommonJsPlugin
               break label633;
             }
             mListid = paramString1;
-            mParamForGarpHb = bjco.a().b(paramString1);
+            mParamForGarpHb = blqx.a().b(paramString1);
             if (QLog.isColorLevel()) {
               QLog.d("QWalletCommonJsPlugin", 2, "paramForGarpHb paramForGarpHb:" + mParamForGarpHb);
             }
@@ -1230,10 +1223,10 @@ public class QWalletCommonJsPlugin
         {
           handleMiniApp(str, i, j);
         }
-        else if (((i != 21) || (j != 1)) && ((i != 22) || (j != 1)) && ((i != 23) || (j != 1)) && (i == 24) && (j == 1))
+        else if (((i != 21) || (j != 1)) && ((i != 22) || (j != 1)) && (i == 25) && (j == 1))
         {
           continue;
-          label744:
+          label732:
           if (i == 3) {
             if (j == 1) {}
           }
@@ -1276,8 +1269,8 @@ public class QWalletCommonJsPlugin
   {
     Bundle localBundle = new Bundle();
     localBundle.putLong("appId", this.mAuthCodeAppId);
-    localBundle = apml.a("qwallet_getAuthCode", this.mCallback, this.mOnRemoteResp.key, localBundle);
-    aprh.a().a(localBundle);
+    localBundle = arph.a("qwallet_getAuthCode", this.mCallback, this.mOnRemoteResp.key, localBundle);
+    arui.a().a(localBundle);
   }
   
   protected void doAuthCodeCallback(String paramString, AuthCodeItem paramAuthCodeItem)
@@ -1753,7 +1746,7 @@ public class QWalletCommonJsPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.vaswebviewplugin.QWalletCommonJsPlugin
  * JD-Core Version:    0.7.0.1
  */

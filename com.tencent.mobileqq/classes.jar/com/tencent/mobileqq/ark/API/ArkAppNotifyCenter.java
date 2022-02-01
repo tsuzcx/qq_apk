@@ -1,22 +1,17 @@
 package com.tencent.mobileqq.ark.API;
 
-import aeqo;
 import android.content.Context;
 import android.content.IntentFilter;
-import android.graphics.Rect;
 import android.media.AudioManager;
-import android.view.View;
-import ankv;
-import ankx;
-import anky;
-import ankz;
-import bdnn;
-import bhxm;
+import apis;
+import apiu;
+import apiv;
+import apiw;
+import bgsp;
 import com.tencent.ark.ark;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.bubble.ChatXListView;
 import com.tencent.mobileqq.data.ArkAppMessage;
 import com.tencent.mobileqq.data.ChatMessage;
 import com.tencent.mobileqq.data.MessageForArkApp;
@@ -35,16 +30,16 @@ public class ArkAppNotifyCenter
   public static final String TAG = "ark.ArkAppNotifyCenter";
   public static ArkAppNotifyCenter.ArkClickListener arkClickListener;
   private static int callbackId;
-  private static HashMap<String, ankx> notifyRegs = new HashMap();
-  private static ankz receiver;
+  private static HashMap<String, apiu> notifyRegs = new HashMap();
+  private static apiw receiver;
   
   static
   {
     callbackId = -1;
-    Object localObject = new anky();
+    Object localObject = new apiv();
     notifyRegs.put("com.tencent.troopapp", localObject);
     notifyRegs.put("com.tencent.test.troopapp", localObject);
-    localObject = new ankv();
+    localObject = new apis();
     notifyRegs.put("com.tencent.yundong", localObject);
     notifyRegs.put("com.tencent.gdt.gouwu", localObject);
     notifyRegs.put("com.tencent.gdt.label", localObject);
@@ -55,6 +50,10 @@ public class ArkAppNotifyCenter
     notifyRegs.put("com.tencent.tangram.test", localObject);
     notifyRegs.put("com.tencent.weather", localObject);
     notifyRegs.put("com.tencent.pcg.qzone.qqcps", localObject);
+    notifyRegs.put("com.tencent.qqcomic.care", localObject);
+    notifyRegs.put("com.tencent.carecomic.normal", localObject);
+    notifyRegs.put("com.tencent.carecomic.update", localObject);
+    notifyRegs.put("com.tencent.cmshow.mp", localObject);
   }
   
   private static void callbackMuteStatus(String paramString)
@@ -94,7 +93,7 @@ public class ArkAppNotifyCenter
   private static ChatMessage getAdArkItemIndexInAIO(List<ChatMessage> paramList, String paramString)
   {
     ChatMessage localChatMessage;
-    if ((paramList == null) || (paramList.isEmpty()) || (bdnn.a(paramString)))
+    if ((paramList == null) || (paramList.isEmpty()) || (bgsp.a(paramString)))
     {
       localChatMessage = null;
       return localChatMessage;
@@ -115,7 +114,7 @@ public class ArkAppNotifyCenter
           if (localObject != null)
           {
             localObject = ((ArkAppMessage)localObject).metaList;
-            if (bdnn.a((String)localObject)) {}
+            if (bgsp.a((String)localObject)) {}
           }
         }
         try
@@ -148,31 +147,12 @@ public class ArkAppNotifyCenter
     return null;
   }
   
-  private static View getViewByPosition(ChatMessage paramChatMessage, ChatXListView paramChatXListView)
-  {
-    int i = ((aeqo)((bhxm)paramChatXListView.getAdapter()).getWrappedAdapter()).a(paramChatMessage) + paramChatXListView.getHeaderViewsCount();
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.msg.delmsg", 2, "pos is:" + i);
-    }
-    if (i < 0) {
-      return null;
-    }
-    return paramChatXListView.getChildAt(i - paramChatXListView.getFirstVisiblePosition());
-  }
-  
-  private static Rect getVisibilityRect(View paramView)
-  {
-    Rect localRect = new Rect();
-    paramView.getGlobalVisibleRect(localRect);
-    return localRect;
-  }
-  
   public static boolean notify(String paramString1, String paramString2, String paramString3)
   {
-    ankx localankx = (ankx)notifyRegs.get(paramString1);
-    if (localankx != null)
+    apiu localapiu = (apiu)notifyRegs.get(paramString1);
+    if (localapiu != null)
     {
-      ThreadManager.getSubThreadHandler().post(new ArkAppNotifyCenter.1(localankx, paramString1, paramString2, paramString3));
+      ThreadManager.getSubThreadHandler().post(new ArkAppNotifyCenter.1(localapiu, paramString1, paramString2, paramString3));
       return true;
     }
     return false;
@@ -181,7 +161,7 @@ public class ArkAppNotifyCenter
   public static void registVolumnReceiver()
   {
     if (receiver == null) {
-      receiver = new ankz(null);
+      receiver = new apiw(null);
     }
     IntentFilter localIntentFilter = new IntentFilter();
     localIntentFilter.addAction("android.media.VOLUME_CHANGED_ACTION");
@@ -191,7 +171,7 @@ public class ArkAppNotifyCenter
     BaseApplicationImpl.getApplication().getBaseContext().registerReceiver(receiver, localIntentFilter);
   }
   
-  public static void setNotify(String paramString, WeakReference<ankx> paramWeakReference)
+  public static void setNotify(String paramString, WeakReference<apiu> paramWeakReference)
   {
     if ((paramWeakReference != null) && (paramWeakReference.get() != null))
     {
@@ -212,7 +192,7 @@ public class ArkAppNotifyCenter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ark.API.ArkAppNotifyCenter
  * JD-Core Version:    0.7.0.1
  */

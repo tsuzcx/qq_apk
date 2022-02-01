@@ -1,24 +1,17 @@
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
+import android.widget.TextView;
 
-public class avyq
-  extends avyn
+class avyq
 {
-  public View a(int paramInt, View paramView, ViewGroup paramViewGroup, avyj paramavyj, avyl paramavyl)
-  {
-    paramViewGroup = paramViewGroup.getContext();
-    if ((paramView != null) && (((avyl)paramView.getTag()).a == paramavyl.a)) {
-      return paramView;
-    }
-    paramView = LayoutInflater.from(paramViewGroup).inflate(2131559667, null);
-    paramView.setTag(paramavyl);
-    return paramView;
-  }
+  View a;
+  public TextView a;
+  View jdField_b_of_type_AndroidViewView;
+  TextView jdField_b_of_type_AndroidWidgetTextView;
+  public View c;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     avyq
  * JD-Core Version:    0.7.0.1
  */

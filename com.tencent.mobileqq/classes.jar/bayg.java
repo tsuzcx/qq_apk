@@ -1,118 +1,141 @@
+import android.app.Activity;
 import android.content.Intent;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.transfile.TransFileController.1;
-import com.tencent.mobileqq.transfile.TransFileController.1.1.1;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import mqq.os.MqqHandler;
-import tencent.im.msg.im_msg_body.RichText;
+import android.text.TextUtils;
+import com.tencent.mobileqq.richmediabrowser.model.AIOFileVideoData;
+import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.mobileqq.widget.share.ShareActionSheet;
+import com.tencent.mobileqq.widget.share.ShareActionSheet.OnItemClickListener;
+import com.tencent.richmediabrowser.core.RichMediaBrowserManager;
+import com.tencent.richmediabrowser.presenter.IProvider;
 
-public class bayg
-  implements awkh
+class bayg
+  implements ShareActionSheet.OnItemClickListener
 {
-  public bayg(TransFileController.1 param1, boolean paramBoolean, String paramString) {}
+  bayg(bayd parambayd, AIOFileVideoData paramAIOFileVideoData) {}
   
-  public MessageRecord a(im_msg_body.RichText paramRichText)
+  public void onItemClick(ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem, ShareActionSheet paramShareActionSheet)
   {
-    return null;
-  }
-  
-  public void a(awki paramawki) {}
-  
-  public void b(awki paramawki)
-  {
-    int j = 0;
-    Object localObject;
-    boolean bool;
-    if (QLog.isColorLevel())
-    {
-      localObject = new StringBuilder().append(" onSend result is null ? ");
-      if (paramawki != null) {
-        break label70;
-      }
-      bool = true;
-      localObject = ((StringBuilder)localObject).append(bool).append(" result is: ");
-      if (paramawki != null) {
-        break label76;
-      }
-    }
-    label70:
-    label76:
-    for (int i = -99;; i = paramawki.a)
-    {
-      QLog.i("NearbyPeoplePhotoUploadProcessor", 2, i);
-      if (paramawki != null) {
-        break label84;
-      }
+    if (paramActionSheetItem == null) {
       return;
-      bool = false;
-      break;
     }
-    label84:
-    if (paramawki.a == 0)
+    this.jdField_a_of_type_Bayd.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheet.dismiss();
+    int i;
+    switch (paramActionSheetItem.action)
     {
-      bool = true;
-      label94:
-      localObject = (alpk)this.jdField_a_of_type_ComTencentMobileqqTransfileTransFileController$1.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(2);
-      if (localObject == null) {
-        break label226;
-      }
-      ((alpk)localObject).a(bool, this.jdField_a_of_type_ComTencentMobileqqTransfileTransFileController$1.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), 0);
-      if (bool) {
-        break label233;
-      }
-      bddf.a("TransferRequest.onSend", paramawki.b, paramawki.toString());
-      if (!"FROM_MINI_APP".equals(this.jdField_a_of_type_JavaLangString)) {
-        break label394;
-      }
-      if (!bool) {
-        break label396;
-      }
+    default: 
+      i = -1;
+    }
+    for (;;)
+    {
+      bcst.b(null, "dc00898", "", "", "0X8009EFA", "0X8009EFA", i, 0, "", "", "", "");
+      return;
+      int j = 1;
       i = j;
-      if (!bool) {
-        break label403;
+      if (bayd.a(this.jdField_a_of_type_Bayd))
+      {
+        paramActionSheetItem = RichMediaBrowserManager.getInstance().getProvider().getForwardData(this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserModelAIOFileVideoData.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserModelAIOFileVideoData.jdField_a_of_type_Int, 0);
+        if (this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserModelAIOFileVideoData.jdField_b_of_type_Int == 1) {}
+        for (boolean bool = true;; bool = false)
+        {
+          baxo.a(this.jdField_a_of_type_Bayd.mContext, paramActionSheetItem, bool);
+          i = j;
+          break;
+        }
+        if (!bayd.a(this.jdField_a_of_type_Bayd)) {
+          break;
+        }
+        paramActionSheetItem = RichMediaBrowserManager.getInstance().getProvider().getForwardData(this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserModelAIOFileVideoData.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserModelAIOFileVideoData.jdField_a_of_type_Int, 0);
+        if (this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserModelAIOFileVideoData.jdField_b_of_type_Int == 1) {}
+        for (bool = true;; bool = false)
+        {
+          baxo.a(this.jdField_a_of_type_Bayd.mContext, paramActionSheetItem, bool);
+          i = -1;
+          break;
+        }
+        i = paramActionSheetItem.uinType;
+        paramActionSheetItem = paramActionSheetItem.uin;
+        if (bayd.a(this.jdField_a_of_type_Bayd))
+        {
+          paramShareActionSheet = RichMediaBrowserManager.getInstance().getProvider().getForwardData(this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserModelAIOFileVideoData.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserModelAIOFileVideoData.jdField_a_of_type_Int, 0);
+          if (this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserModelAIOFileVideoData.jdField_b_of_type_Int != 1) {
+            break label385;
+          }
+        }
+        label385:
+        for (bool = true;; bool = false)
+        {
+          baxo.a(this.jdField_a_of_type_Bayd.mContext, paramShareActionSheet, bool, paramActionSheetItem, i);
+          i = -1;
+          break;
+        }
+        if (!bayd.a(this.jdField_a_of_type_Bayd)) {
+          break;
+        }
+        RichMediaBrowserManager.getInstance().getProvider().sendFileToPC(this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserModelAIOFileVideoData.jdField_a_of_type_Long);
+        bcst.b(null, "dc00898", "", "", "0X800A60E", "0X800A60E", 0, 0, "", "", "", "");
+        QQToast.a(this.jdField_a_of_type_Bayd.mContext, 2, this.jdField_a_of_type_Bayd.mContext.getString(2131692396), 0).a();
+        i = -1;
+        continue;
+        j = 5;
+        i = j;
+        if (bayd.a(this.jdField_a_of_type_Bayd))
+        {
+          RichMediaBrowserManager.getInstance().getProvider().saveToWeiyun(this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserModelAIOFileVideoData.jdField_a_of_type_Long);
+          QQToast.a(this.jdField_a_of_type_Bayd.mContext, this.jdField_a_of_type_Bayd.mContext.getString(2131692439), 0).a();
+          i = j;
+          continue;
+          i = 2;
+          bayd.a(this.jdField_a_of_type_Bayd, this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserModelAIOFileVideoData);
+          continue;
+          j = 3;
+          i = j;
+          if (bayd.a(this.jdField_a_of_type_Bayd))
+          {
+            RichMediaBrowserManager.getInstance().getProvider().favorite(this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserModelAIOFileVideoData.jdField_a_of_type_Long);
+            i = j;
+            continue;
+            paramShareActionSheet = bawe.a().a();
+            paramActionSheetItem = paramShareActionSheet;
+            if (TextUtils.isEmpty(paramShareActionSheet)) {
+              paramActionSheetItem = bawe.a().c();
+            }
+            baxp.a(this.jdField_a_of_type_Bayd.mContext, bawe.a().a(), bawe.a().c(), paramActionSheetItem, this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserModelAIOFileVideoData.jdField_b_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserModelAIOFileVideoData.d, this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserModelAIOFileVideoData.jdField_b_of_type_Int, false);
+            i = 6;
+            continue;
+            paramActionSheetItem = paramActionSheetItem.argus;
+            paramShareActionSheet = new Intent();
+            paramShareActionSheet.putExtra("preResult", paramActionSheetItem);
+            if (bgnr.a(this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserModelAIOFileVideoData.f)) {}
+            for (paramActionSheetItem = bawe.a().d();; paramActionSheetItem = bawe.a().c())
+            {
+              baxp.a(this.jdField_a_of_type_Bayd.mContext, this.jdField_a_of_type_Bayd.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserModelAIOFileVideoData.e, true, paramActionSheetItem, null, null, this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserModelAIOFileVideoData.h, 1, bawe.a().d(), bawe.a().c(), paramShareActionSheet);
+              bcst.b(null, "dc00898", "", "", "0X800AD47", "0X800AD47", bayd.a(this.jdField_a_of_type_Bayd, this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserModelAIOFileVideoData.e), 0, "", "", "", "");
+              i = 8;
+              break;
+            }
+            paramActionSheetItem = paramActionSheetItem.argus;
+            paramShareActionSheet = new Intent();
+            paramShareActionSheet.putExtra("preResult", paramActionSheetItem);
+            if (bgnr.a(this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserModelAIOFileVideoData.f)) {}
+            for (paramActionSheetItem = bawe.a().d();; paramActionSheetItem = bawe.a().c())
+            {
+              baxp.a(this.jdField_a_of_type_Bayd.mContext, this.jdField_a_of_type_Bayd.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserModelAIOFileVideoData.e, true, paramActionSheetItem, null, null, this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserModelAIOFileVideoData.h, 2, bawe.a().d(), bawe.a().c(), paramShareActionSheet);
+              bcst.b(null, "dc00898", "", "", "0X800AD48", "0X800AD48", bayd.a(this.jdField_a_of_type_Bayd, this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserModelAIOFileVideoData.e), 0, "", "", "", "");
+              i = 9;
+              break;
+            }
+            i = 7;
+            atvo.a(this.jdField_a_of_type_Bayd.mContext, this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserModelAIOFileVideoData.c);
+          }
+        }
       }
-    }
-    label133:
-    label151:
-    label170:
-    for (paramawki = "ok";; paramawki = "upload failed")
-    {
-      this.jdField_a_of_type_ComTencentMobileqqTransfileTransFileController$1.jdField_a_of_type_AndroidContentIntent.putExtra("param_result_code", i);
-      this.jdField_a_of_type_ComTencentMobileqqTransfileTransFileController$1.jdField_a_of_type_AndroidContentIntent.putExtra("param_result_desc", paramawki);
-      alpx.a().a(this.jdField_a_of_type_ComTencentMobileqqTransfileTransFileController$1.jdField_a_of_type_AndroidContentIntent);
-      return;
-      bool = false;
-      break label94;
-      label226:
-      bddf.a(null);
-      break label133;
-      label233:
-      if (((Integer)auwq.a(this.jdField_a_of_type_ComTencentMobileqqTransfileTransFileController$1.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), "qq_avatar_type", Integer.valueOf(-1))).intValue() != 1) {
-        auwq.a(this.jdField_a_of_type_ComTencentMobileqqTransfileTransFileController$1.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), "qq_avatar_type", Integer.valueOf(1));
-      }
-      if (this.jdField_a_of_type_Boolean) {
-        ThreadManager.getUIHandler().post(new TransFileController.1.1.1(this));
-      }
-      if (bdne.af(this.jdField_a_of_type_ComTencentMobileqqTransfileTransFileController$1.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), this.jdField_a_of_type_ComTencentMobileqqTransfileTransFileController$1.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()) == 2) {
-        break label151;
-      }
-      paramawki = (alpk)this.jdField_a_of_type_ComTencentMobileqqTransfileTransFileController$1.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(2);
-      localObject = new ArrayList();
-      ((ArrayList)localObject).add(Integer.valueOf(42104));
-      paramawki.a(this.jdField_a_of_type_ComTencentMobileqqTransfileTransFileController$1.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), this.jdField_a_of_type_ComTencentMobileqqTransfileTransFileController$1.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), 0, (ArrayList)localObject);
-      break label151;
-      break;
-      i = -10002;
-      break label170;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bayg
  * JD-Core Version:    0.7.0.1
  */

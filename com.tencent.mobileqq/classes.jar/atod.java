@@ -1,63 +1,37 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.listentogether.lyrics.FloatIconLayout;
-import com.tencent.mobileqq.listentogether.lyrics.FloatTextLayout;
 import com.tencent.qphone.base.util.QLog;
 
 class atod
-  extends BroadcastReceiver
+  implements atve
 {
-  atod(atnw paramatnw) {}
+  atod(atoc paramatoc) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void a()
   {
-    paramContext = paramIntent.getAction();
-    paramIntent = paramIntent.getStringExtra("process_name");
-    if (QLog.isColorLevel()) {
-      QLog.d("LyricsController", 2, "onReceive action: " + paramContext + "  process_name:" + paramIntent);
-    }
-    int i;
-    if ((paramIntent != null) && (paramIntent.contains("openSdk")))
-    {
-      i = 1;
-      if (!"mqq.intent.action.QQ_BACKGROUND".equals(paramContext)) {
-        break label246;
+    int i = this.a.a.g();
+    if (this.a.a.f() == 6000) {
+      if (i == 0) {
+        if (this.a.a.h() == 2) {
+          atny.c(this.a.a);
+        }
       }
-      if ((this.a.b) && (this.a.jdField_a_of_type_ComTencentMobileqqListentogetherLyricsFloatTextLayout != null) && (this.a.jdField_a_of_type_ComTencentMobileqqListentogetherLyricsFloatIconLayout != null) && (this.a.jdField_a_of_type_Atnu.jdField_h_of_type_Boolean))
-      {
-        this.a.jdField_a_of_type_ComTencentMobileqqListentogetherLyricsFloatTextLayout.a.setAlign(this.a.jdField_a_of_type_Atnu.a);
-        this.a.jdField_a_of_type_ComTencentMobileqqListentogetherLyricsFloatTextLayout.a(this.a.jdField_a_of_type_Atnu.g, this.a.jdField_a_of_type_ComTencentMobileqqListentogetherLyricsFloatTextLayout.g());
-        this.a.jdField_a_of_type_ComTencentMobileqqListentogetherLyricsFloatIconLayout.a(this.a.jdField_a_of_type_Atnu.jdField_h_of_type_Int, this.a.jdField_a_of_type_ComTencentMobileqqListentogetherLyricsFloatIconLayout.g());
-        this.a.jdField_a_of_type_Atnu.jdField_h_of_type_Boolean = false;
+    }
+    for (;;)
+    {
+      if (this.a.a.a != null) {
+        this.a.a.a.d();
       }
-      this.a.a(false);
-      this.a.jdField_a_of_type_Boolean = false;
-      atnw.a(this.a, false);
-    }
-    label246:
-    while (!"mqq.intent.action.QQ_FOREGROUND".equals(paramContext))
-    {
       return;
-      i = 0;
-      break;
+      atny.a(this.a.a);
+      continue;
+      atny.c(this.a.a);
+      continue;
+      if (QLog.isColorLevel()) {
+        QLog.i("DatalineFileModel<FileAssistant>", 2, "DatalineFileModel doStartDownload : error, this file is not from dataline");
+      }
     }
-    if (i == 0)
-    {
-      this.a.jdField_a_of_type_Boolean = true;
-      this.a.a(true);
-      atnw.a(this.a, false);
-      return;
-    }
-    if (this.a.b)
-    {
-      atnw.a(this.a, true);
-      return;
-    }
-    this.a.jdField_a_of_type_Boolean = true;
-    this.a.jdField_a_of_type_Atnu.f = true;
-    atnw.a(this.a, false);
   }
+  
+  public void b() {}
 }
 
 

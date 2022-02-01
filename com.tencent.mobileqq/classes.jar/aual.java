@@ -1,109 +1,104 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
+import android.os.Bundle;
 import android.text.TextUtils;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.qipc.QIPCModule;
+import com.tencent.mobileqq.qipc.QIPCServerHelper;
 import com.tencent.qphone.base.util.QLog;
-import mqq.manager.Manager;
+import eipc.EIPCResult;
+import java.util.concurrent.ConcurrentHashMap;
 
-public class aual
-  implements Manager
+class aual
+  extends QIPCModule
 {
-  public static String a;
-  private QQAppInterface a;
-  public boolean a;
-  public String b;
-  public String c;
-  public String d;
-  
-  static
+  public aual(auak paramauak, String paramString)
   {
-    jdField_a_of_type_JavaLangString = "TimUpgradeHongdianManager";
+    super(paramString);
   }
   
-  public aual(QQAppInterface paramQQAppInterface)
+  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-  }
-  
-  public void a()
-  {
-    try
+    bisy.c("WeiyunDownloadServiceIPC", "onCall action|" + paramString + " params|" + paramBundle + " callbackId|" + paramInt);
+    Object localObject;
+    QQAppInterface localQQAppInterface;
+    if (paramBundle == null)
     {
-      SharedPreferences.Editor localEditor = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getSharedPreferences("tim_upgrade_hongdian_pre_" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c(), 0).edit();
-      localEditor.putBoolean("tim_upgrade_hongdian_switch", false);
-      localEditor.putString("tim_upgrade_hongdian_title", null);
-      localEditor.putString("tim_upgrade_hongdian_sub_title", null);
-      localEditor.putString("tim_upgrade_hongdian_url", null);
-      if (QLog.isColorLevel()) {
-        QLog.d(jdField_a_of_type_JavaLangString, 2, "clearHondianSP done");
+      localObject = null;
+      if (!TextUtils.isEmpty((CharSequence)localObject)) {
+        auak.a = (String)localObject;
       }
-      return;
-    }
-    catch (Exception localException)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.e(jdField_a_of_type_JavaLangString, 2, "clearHondianSP " + localException.toString());
-    }
-  }
-  
-  public boolean a()
-  {
-    long l1 = System.currentTimeMillis();
-    for (;;)
-    {
-      try
+      if (!TextUtils.isEmpty(paramString))
       {
-        SharedPreferences localSharedPreferences = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getSharedPreferences("tim_upgrade_hongdian_pre_" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c(), 0);
-        this.jdField_a_of_type_Boolean = localSharedPreferences.getBoolean("tim_upgrade_hongdian_switch", false);
-        this.b = localSharedPreferences.getString("tim_upgrade_hongdian_title", null);
-        this.c = localSharedPreferences.getString("tim_upgrade_hongdian_sub_title", null);
-        this.d = localSharedPreferences.getString("tim_upgrade_hongdian_url", null);
-        long l2 = System.currentTimeMillis();
-        boolean bool2;
-        if ((!TextUtils.isEmpty(this.b)) && (!TextUtils.isEmpty(this.c)))
-        {
-          bool1 = TextUtils.isEmpty(this.d);
-          if (!bool1)
-          {
-            bool1 = true;
-            bool2 = bool1;
-          }
+        localQQAppInterface = auak.a(this.a);
+        if (localQQAppInterface != null) {
+          break label103;
         }
-        boolean bool1 = false;
-      }
-      catch (Exception localException1)
-      {
-        try
-        {
-          if (QLog.isColorLevel())
-          {
-            QLog.i(jdField_a_of_type_JavaLangString, 2, "checkIfShowTimHongdian , switchKey = " + this.jdField_a_of_type_Boolean + ", mTitle = " + this.b + ", mSubTitle =" + this.c + ", url=" + this.d + ", sp time cost = " + (l2 - l1) + ", ifShow= " + bool1);
-            bool2 = bool1;
-          }
-          return bool2;
-        }
-        catch (Exception localException2)
-        {
-          continue;
-        }
-        localException1 = localException1;
-        bool1 = false;
-        bool2 = bool1;
-        if (QLog.isColorLevel())
-        {
-          QLog.e(jdField_a_of_type_JavaLangString, 2, "checkIfShowTimHongdian " + localException1.toString());
-          return bool1;
-        }
+        bisy.c("WeiyunDownloadServiceIPC", "onCall action but appInterface is null");
       }
     }
+    label103:
+    do
+    {
+      do
+      {
+        return null;
+        localObject = paramBundle.getString("process");
+        break;
+        if (((!"WeiyunDownloadServiceIPC_Action__Download".equals(paramString)) && (!"WeiyunDownloadServiceIPC_Action__Resume".equals(paramString))) || (paramBundle == null)) {
+          break label394;
+        }
+        if (QLog.isColorLevel()) {
+          QLog.d("WeiyunDownloadServiceIPC", 2, "AIDL : start weiyunDownload");
+        }
+        localObject = (String)paramBundle.get("file_id");
+        if (TextUtils.isEmpty((CharSequence)localObject))
+        {
+          bisy.c("WeiyunDownloadServiceIPC", "onCall action but file_id is null");
+          return null;
+        }
+        FileManagerEntity localFileManagerEntity = localQQAppInterface.a().c((String)localObject);
+        localObject = localFileManagerEntity;
+        if (localFileManagerEntity != null) {
+          break label213;
+        }
+      } while ("WeiyunDownloadServiceIPC_Action__Resume".equals(paramString));
+      localObject = atvo.a(paramBundle);
+      localQQAppInterface.a().b((FileManagerEntity)localObject);
+      paramString = (String)paramBundle.get("downloadId");
+      ((FileManagerEntity)localObject).nOpType = 50;
+      ((FileManagerEntity)localObject).cloudType = 2;
+      ((FileManagerEntity)localObject).miniAppDownloadId = paramString;
+      auak.a(this.a).put(paramString, Long.valueOf(((FileManagerEntity)localObject).nSessionId));
+      if (atvo.b(((FileManagerEntity)localObject).getFilePath()))
+      {
+        paramString = new Bundle();
+        paramString.putString("taskId", ((FileManagerEntity)localObject).miniAppDownloadId);
+        paramString.putString("filePath", ((FileManagerEntity)localObject).getFilePath());
+        QIPCServerHelper.getInstance().callClient(auak.a, "Module_WeiyunDownloadClient", "WeiyunDownloadClientIPC_Action__Suc", paramString, null);
+        paramString = new Bundle();
+        paramString.putString("taskId", ((FileManagerEntity)localObject).miniAppDownloadId);
+        paramString.putInt("retCode", 1);
+        paramString.putString("retMsg", "");
+        QIPCServerHelper.getInstance().callClient(auak.a, "Module_WeiyunDownloadClient", "WeiyunDownloadClientIPC_Action__Complete", paramString, null);
+        return null;
+      }
+      localQQAppInterface.a().a((FileManagerEntity)localObject);
+      localQQAppInterface.a().a(((FileManagerEntity)localObject).nSessionId);
+      return null;
+    } while (((!"WeiyunDownloadServiceIPC_Action__Cancel".equals(paramString)) && (!"WeiyunDownloadServiceIPC_Action__Pause".equals(paramString))) || (paramBundle == null));
+    label213:
+    if (QLog.isColorLevel()) {
+      QLog.d("WeiyunDownloadServiceIPC", 2, "AIDL : end weiyunDownload");
+    }
+    label394:
+    paramString = paramBundle.getString("downloadId");
+    localQQAppInterface.a().a(((Long)auak.a(this.a).get(paramString)).longValue());
+    return null;
   }
-  
-  public void onDestroy() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aual
  * JD-Core Version:    0.7.0.1
  */

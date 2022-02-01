@@ -1,16 +1,20 @@
-import android.support.v4.view.AccessibilityDelegateCompat;
-import android.support.v4.view.accessibility.AccessibilityNodeInfoCompat;
-import android.view.View;
+import android.app.Activity;
+import com.tencent.mobileqq.activity.ContactBindedActivity;
+import com.tencent.mobileqq.activity.fling.FlingGestureHandler;
 
-class adyh
-  extends AccessibilityDelegateCompat
+public class adyh
+  extends FlingGestureHandler
 {
-  adyh(adyg paramadyg) {}
-  
-  public void onInitializeAccessibilityNodeInfo(View paramView, AccessibilityNodeInfoCompat paramAccessibilityNodeInfoCompat)
+  public adyh(ContactBindedActivity paramContactBindedActivity, Activity paramActivity)
   {
-    super.onInitializeAccessibilityNodeInfo(paramView, paramAccessibilityNodeInfoCompat);
-    paramAccessibilityNodeInfoCompat.setSelected(true);
+    super(paramActivity);
+  }
+  
+  public void flingLToR()
+  {
+    if (!this.a.a) {
+      super.flingLToR();
+    }
   }
 }
 

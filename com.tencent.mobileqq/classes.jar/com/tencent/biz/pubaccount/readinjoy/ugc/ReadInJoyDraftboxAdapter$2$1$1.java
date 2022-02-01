@@ -1,12 +1,12 @@
 package com.tencent.biz.pubaccount.readinjoy.ugc;
 
-import alud;
 import android.content.Context;
+import anni;
 import com.tencent.mobileqq.widget.QQToast;
 import java.util.List;
-import nrt;
-import qpi;
-import qpk;
+import oat;
+import rkf;
+import rkh;
 
 class ReadInJoyDraftboxAdapter$2$1$1
   implements Runnable
@@ -15,16 +15,16 @@ class ReadInJoyDraftboxAdapter$2$1$1
   
   public void run()
   {
-    Context localContext = qpi.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcReadInJoyDraftboxAdapter$2$1.a.jdField_a_of_type_Qpi);
+    Context localContext = rkf.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcReadInJoyDraftboxAdapter$2$1.a.jdField_a_of_type_Rkf);
     if (this.jdField_a_of_type_Boolean) {}
-    for (String str = alud.a(2131713335);; str = alud.a(2131713196))
+    for (String str = anni.a(2131711714);; str = anni.a(2131711575))
     {
       QQToast.a(localContext, 2, str, 1).a();
       if (this.jdField_a_of_type_Boolean)
       {
-        nrt.a(null, "", "0X80096E0", "0X80096E0", 0, 0, qpi.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcReadInJoyDraftboxAdapter$2$1.a.jdField_a_of_type_Qpi, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcReadInJoyDraftboxAdapter$2$1.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelReadInJoyDraftboxItem) + "", "", "", "", false);
-        qpi.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcReadInJoyDraftboxAdapter$2$1.a.jdField_a_of_type_Qpi).remove(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcReadInJoyDraftboxAdapter$2$1.a.jdField_a_of_type_Int);
-        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcReadInJoyDraftboxAdapter$2$1.a.jdField_a_of_type_Qpi.notifyDataSetChanged();
+        oat.a(null, "", "0X80096E0", "0X80096E0", 0, 0, rkf.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcReadInJoyDraftboxAdapter$2$1.a.jdField_a_of_type_Rkf, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcReadInJoyDraftboxAdapter$2$1.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelReadInJoyDraftboxItem) + "", "", "", "", false);
+        rkf.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcReadInJoyDraftboxAdapter$2$1.a.jdField_a_of_type_Rkf).remove(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcReadInJoyDraftboxAdapter$2$1.a.jdField_a_of_type_Int);
+        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcReadInJoyDraftboxAdapter$2$1.a.jdField_a_of_type_Rkf.notifyDataSetChanged();
       }
       return;
     }

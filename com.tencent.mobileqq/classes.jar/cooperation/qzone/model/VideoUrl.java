@@ -3,12 +3,12 @@ package cooperation.qzone.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import bjlh;
+import blzq;
 
 public class VideoUrl
   implements Parcelable
 {
-  public static final Parcelable.Creator<VideoUrl> CREATOR = new bjlh();
+  public static final Parcelable.Creator<VideoUrl> CREATOR = new blzq();
   public int a;
   public String a;
   public int b;
@@ -40,7 +40,7 @@ public class VideoUrl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.qzone.model.VideoUrl
  * JD-Core Version:    0.7.0.1
  */

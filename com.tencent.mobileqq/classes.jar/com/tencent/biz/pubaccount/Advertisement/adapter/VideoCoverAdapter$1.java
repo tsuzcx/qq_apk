@@ -2,7 +2,7 @@ package com.tencent.biz.pubaccount.Advertisement.adapter;
 
 import com.tencent.biz.pubaccount.Advertisement.view.VideoCoverView;
 import java.util.ArrayList;
-import nlp;
+import num;
 
 public class VideoCoverAdapter$1
   implements Runnable
@@ -12,13 +12,13 @@ public class VideoCoverAdapter$1
   public void run()
   {
     if ((VideoCoverAdapter.a(this.this$0) == null) || (VideoCoverAdapter.a(this.this$0).size() == 0)) {}
-    nlp localnlp;
+    num localnum;
     do
     {
       return;
-      localnlp = (nlp)VideoCoverAdapter.a(this.this$0).get(0);
-    } while ((localnlp == null) || (localnlp.a == null));
-    localnlp.a.a(VideoCoverAdapter.a(this.this$0));
+      localnum = (num)VideoCoverAdapter.a(this.this$0).get(0);
+    } while ((localnum == null) || (localnum.a == null));
+    localnum.a.a(VideoCoverAdapter.a(this.this$0));
   }
 }
 

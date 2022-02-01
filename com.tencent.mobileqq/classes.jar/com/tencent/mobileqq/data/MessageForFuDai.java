@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.data;
 
-import afky;
-import apes;
-import apet;
+import agso;
+import arhp;
+import arhq;
 import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
 import com.tencent.qphone.base.util.QLog;
 
 public class MessageForFuDai
   extends ChatMessage
-  implements afky
+  implements agso
 {
   private static final String TAG = "MessageForFuDai";
   public String aioTails = "";
@@ -27,7 +27,7 @@ public class MessageForFuDai
   
   protected void doParse()
   {
-    apes.a(this.msgData, this);
+    arhp.a(this.msgData, this);
   }
   
   public int getState()
@@ -78,7 +78,7 @@ public class MessageForFuDai
   
   public void prewrite()
   {
-    this.msgData = apet.a(this);
+    this.msgData = arhq.a(this);
   }
   
   public String toString()

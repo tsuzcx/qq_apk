@@ -1,22 +1,25 @@
 package com.tencent.mobileqq.mini.out.activity;
 
-import alud;
+import Override;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import bdgk;
-import bdjz;
-import betx;
-import bhtv;
+import anni;
+import bgln;
+import bgpa;
+import biat;
+import bkhe;
 import com.tencent.common.app.AppInterface;
 import com.tencent.map.lib.basemap.data.GeoPoint;
 import com.tencent.mobileqq.app.BaseActivity;
@@ -33,6 +36,7 @@ import com.tencent.proto.lbsshare.LBSShare.LocationReq;
 import com.tencent.proto.lbsshare.LBSShare.POI;
 import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import com.tencent.tencentmap.mapsdk.maps.CameraUpdateFactory;
 import com.tencent.tencentmap.mapsdk.maps.TencentMap;
 import com.tencent.tencentmap.mapsdk.maps.UiSettings;
@@ -46,7 +50,7 @@ import mqq.app.NewIntent;
 
 public class MapActivity
   extends BaseActivity
-  implements View.OnClickListener, betx
+  implements View.OnClickListener, biat
 {
   public static final String KEY_TYPE = "key_type";
   public static final String TAG = "MapActivity";
@@ -55,13 +59,13 @@ public class MapActivity
   private final int PAGE_SIZE = 10;
   AppInterface app;
   CommonObserver commonObserver = new MapActivity.3(this);
-  bdjz dialog;
+  bgpa dialog;
   LatLng fromLatLng;
   boolean isSearching;
   private int lastLatitude;
   private int lastLongitude;
   TextView leftBtnView;
-  protected bhtv mOnSearchScrollListener = new MapActivity.5(this);
+  protected bkhe mOnSearchScrollListener = new MapActivity.5(this);
   TencentMap map;
   MapHelper mapHelper;
   QQMapView mapView;
@@ -111,7 +115,7 @@ public class MapActivity
     localLocationReq.page.set(this.poiAdapter.nextBegin);
     localLocationReq.count.set(10);
     localLocationReq.requireMyLbs.set(0);
-    String str = bdgk.a();
+    String str = bgln.a();
     Object localObject = str;
     if (str == null) {
       localObject = "";
@@ -149,11 +153,19 @@ public class MapActivity
     }
   }
   
+  @Override
+  public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
+  {
+    boolean bool = super.dispatchTouchEvent(paramMotionEvent);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool);
+    return bool;
+  }
+  
   public boolean doOnCreate(Bundle paramBundle)
   {
     Object localObject1 = null;
     super.doOnCreate(paramBundle);
-    paramBundle = LayoutInflater.from(this).inflate(2131561799, null);
+    paramBundle = LayoutInflater.from(this).inflate(2131562042, null);
     if (ImmersiveUtils.isSupporImmersive() == 1)
     {
       paramBundle.setFitsSystemWindows(true);
@@ -161,26 +173,26 @@ public class MapActivity
     }
     super.setContentView(paramBundle);
     this.app = getAppInterface();
-    this.dialog = new bdjz(this, 2131755801);
-    this.dialog.setContentView(2131558942);
+    this.dialog = new bgpa(this, 2131755823);
+    this.dialog.setContentView(2131559009);
     this.dialog.setCanceledOnTouchOutside(false);
     this.mapHelper = new MapHelper(this);
     Intent localIntent = getIntent();
     this.type = localIntent.getIntExtra("key_type", 0);
-    this.titleView = ((TextView)findViewById(2131368670));
-    this.leftBtnView = ((TextView)findViewById(2131368624));
-    this.rightBtnView = ((TextView)findViewById(2131368656));
-    this.mapView = ((QQMapView)findViewById(2131370049));
-    this.mapView.setContentDescription(getString(2131695393));
+    this.titleView = ((TextView)findViewById(2131368994));
+    this.leftBtnView = ((TextView)findViewById(2131368947));
+    this.rightBtnView = ((TextView)findViewById(2131368980));
+    this.mapView = ((QQMapView)findViewById(2131370492));
+    this.mapView.setContentDescription(getString(2131694361));
     this.mapView.getMap().getUiSettings().setLogoPosition(0);
     this.mapView.getMap().getUiSettings().setScaleViewEnabled(false);
     this.mapView.setObserver(this);
     this.map = this.mapView.getMap();
-    this.poiLocationView = ((ImageView)findViewById(2131372153));
-    this.pinView = ((ImageView)findViewById(2131372050));
-    this.poiLayout = ((RelativeLayout)findViewById(2131372147));
-    this.routeLayout = findViewById(2131376078);
-    this.routeBtn = ((Button)findViewById(2131376074));
+    this.poiLocationView = ((ImageView)findViewById(2131372731));
+    this.pinView = ((ImageView)findViewById(2131372621));
+    this.poiLayout = ((RelativeLayout)findViewById(2131372725));
+    this.routeLayout = findViewById(2131376834);
+    this.routeBtn = ((Button)findViewById(2131376830));
     this.routeBtn.setOnClickListener(this);
     this.leftBtnView.setOnClickListener(this);
     this.rightBtnView.setOnClickListener(this);
@@ -188,7 +200,7 @@ public class MapActivity
     this.poiLocationView.setOnClickListener(this);
     try
     {
-      paramBundle = BitmapFactory.decodeResource(getResources(), 2130847202);
+      paramBundle = BitmapFactory.decodeResource(getResources(), 2130847661);
     }
     catch (OutOfMemoryError paramBundle)
     {
@@ -202,7 +214,7 @@ public class MapActivity
     }
     try
     {
-      localObject2 = BitmapFactory.decodeResource(getResources(), 2130842036);
+      localObject2 = BitmapFactory.decodeResource(getResources(), 2130842345);
       localObject1 = localObject2;
     }
     catch (OutOfMemoryError localOutOfMemoryError)
@@ -213,7 +225,7 @@ public class MapActivity
     this.map.moveCamera(CameraUpdateFactory.zoomTo(i));
     if (this.type == 1)
     {
-      this.leftBtnView.setText(alud.a(2131706845));
+      this.leftBtnView.setText(anni.a(2131705236));
       this.routeLayout.setVisibility(0);
       this.targetLatLng = new LatLng(localIntent.getDoubleExtra("latitude", 0.0D), localIntent.getDoubleExtra("longitude", 0.0D));
       this.map.moveCamera(CameraUpdateFactory.newLatLng(this.targetLatLng));
@@ -223,8 +235,8 @@ public class MapActivity
       this.map.addMarker((MarkerOptions)localObject1);
       this.targetName = localIntent.getStringExtra("name");
       paramBundle = localIntent.getStringExtra("address");
-      localObject1 = (TextView)this.routeLayout.findViewById(2131362136);
-      localObject2 = (TextView)this.routeLayout.findViewById(2131365139);
+      localObject1 = (TextView)this.routeLayout.findViewById(2131362198);
+      localObject2 = (TextView)this.routeLayout.findViewById(2131365378);
       ((TextView)localObject1).setText(this.targetName);
       ((TextView)localObject2).setText(paramBundle);
       location(false);
@@ -232,15 +244,15 @@ public class MapActivity
     while (this.type != 2) {
       return true;
     }
-    this.noResultView = ((TextView)findViewById(2131371205));
+    this.noResultView = ((TextView)findViewById(2131371769));
     this.poiAdapter = new POIAdapter(this);
-    this.poiListView = ((XListView)findViewById(2131376220));
+    this.poiListView = ((XListView)findViewById(2131376990));
     this.poiListView.setAdapter(this.poiAdapter);
     this.poiListView.setOnScrollListener(this.mOnSearchScrollListener);
     this.poiListView.setOnItemClickListener(new MapActivity.1(this));
-    this.leftBtnView.setText(alud.a(2131706842));
+    this.leftBtnView.setText(anni.a(2131705233));
     this.rightBtnView.setVisibility(0);
-    this.rightBtnView.setText(alud.a(2131706838));
+    this.rightBtnView.setText(anni.a(2131705229));
     this.poiLayout.setVisibility(0);
     this.pinView.setVisibility(0);
     if (localObject1 != null)
@@ -275,36 +287,47 @@ public class MapActivity
   
   public void onClick(View paramView)
   {
-    if (paramView.getId() == 2131368624) {
+    if (paramView.getId() == 2131368947) {
       finish();
     }
-    do
+    for (;;)
     {
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
-      if (paramView.getId() == 2131372153)
+      if (paramView.getId() == 2131372731)
       {
         location(true);
-        return;
       }
-      if (paramView.getId() == 2131376074)
+      else if (paramView.getId() == 2131376830)
       {
         this.mapHelper.showActionSheet(this.fromLatLng, this.targetLatLng, null, this.targetName);
-        return;
       }
-    } while (paramView.getId() != 2131368656);
-    paramView = this.poiAdapter.getItem(this.poiAdapter.selectPos);
-    if (paramView == null)
-    {
-      QQToast.a(this, 0, alud.a(2131706844), 1).b(getResources().getDimensionPixelSize(2131298914));
-      return;
+      else if (paramView.getId() == 2131368980)
+      {
+        LBSShare.POI localPOI = this.poiAdapter.getItem(this.poiAdapter.selectPos);
+        if (localPOI == null)
+        {
+          QQToast.a(this, 0, anni.a(2131705235), 1).b(getResources().getDimensionPixelSize(2131298998));
+        }
+        else
+        {
+          Intent localIntent = new Intent();
+          localIntent.putExtra("name", localPOI.name.get());
+          localIntent.putExtra("address", localPOI.addr.get());
+          localIntent.putExtra("latitude", localPOI.lat.get());
+          localIntent.putExtra("longitude", localPOI.lng.get());
+          setResult(-1, localIntent);
+          finish();
+        }
+      }
     }
-    Intent localIntent = new Intent();
-    localIntent.putExtra("name", paramView.name.get());
-    localIntent.putExtra("address", paramView.addr.get());
-    localIntent.putExtra("latitude", paramView.lat.get());
-    localIntent.putExtra("longitude", paramView.lng.get());
-    setResult(-1, localIntent);
-    finish();
+  }
+  
+  @Override
+  public void onConfigurationChanged(Configuration paramConfiguration)
+  {
+    super.onConfigurationChanged(paramConfiguration);
+    EventCollector.getInstance().onActivityConfigurationChanged(this, paramConfiguration);
   }
   
   public void onMapScrollEnd(GeoPoint paramGeoPoint)
@@ -322,7 +345,7 @@ public class MapActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.out.activity.MapActivity
  * JD-Core Version:    0.7.0.1
  */

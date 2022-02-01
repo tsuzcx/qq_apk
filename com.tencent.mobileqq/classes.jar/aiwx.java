@@ -1,15 +1,20 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.qwallet.TransactionActivity;
+import android.os.Message;
+import com.tencent.mobileqq.activity.contact.addfriendverifi.NewFriendVerifyBlockedListFragment;
+import mqq.os.MqqHandler;
 
 public class aiwx
-  implements DialogInterface.OnClickListener
+  extends MqqHandler
 {
-  public aiwx(TransactionActivity paramTransactionActivity) {}
+  public aiwx(NewFriendVerifyBlockedListFragment paramNewFriendVerifyBlockedListFragment) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void handleMessage(Message paramMessage)
   {
-    paramDialogInterface.dismiss();
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    }
+    NewFriendVerifyBlockedListFragment.a(this.a);
   }
 }
 

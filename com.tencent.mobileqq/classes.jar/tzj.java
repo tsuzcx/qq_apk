@@ -1,31 +1,33 @@
-import com.tencent.biz.qqcircle.requests.QCircleGetMainPageRequest;
-import com.tencent.biz.videostory.network.VSNetworkHelper;
-import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public class tzj
-  extends yka
+class tzj
+  implements sgo
 {
-  private String a;
+  tzj(tym paramtym) {}
   
-  public tzj(String paramString)
+  public void a(String paramString1, int paramInt, String paramString2)
   {
-    this.a = paramString;
-  }
-  
-  public void a() {}
-  
-  public void a(ykg paramykg)
-  {
-    QCircleGetMainPageRequest localQCircleGetMainPageRequest = new QCircleGetMainPageRequest(this.a, null);
-    paramykg = new tzk(this, localQCircleGetMainPageRequest, paramykg);
-    localQCircleGetMainPageRequest.setEnableCache(true);
-    VSNetworkHelper.a().a(localQCircleGetMainPageRequest, paramykg);
-    QLog.d("QCirclePersonalDetailPreLoaderTask", 1, "QCirclePersonalDetailPreLoaderTask->sendQCircleRequest: CmdName:" + localQCircleGetMainPageRequest.getCmdName() + "| TraceId:" + localQCircleGetMainPageRequest.getTraceId() + " | SeqId:" + localQCircleGetMainPageRequest.getCurrentSeq());
+    JSONObject localJSONObject = new JSONObject();
+    try
+    {
+      localJSONObject.put("video_vid", paramString1);
+      localJSONObject.put("retCode", paramInt);
+      this.a.callJs(paramString2, new String[] { localJSONObject.toString() });
+      return;
+    }
+    catch (JSONException paramString1)
+    {
+      for (;;)
+      {
+        paramString1.printStackTrace();
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     tzj
  * JD-Core Version:    0.7.0.1
  */

@@ -1,25 +1,28 @@
-import android.animation.Animator;
-import android.animation.AnimatorSet;
-import android.animation.ObjectAnimator;
-import android.view.View;
+import com.tencent.ark.ArkViewImplement.LoadCallback;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.utils.QQCustomArkDialogForAio.2.1;
+import java.lang.ref.WeakReference;
+import mqq.os.MqqHandler;
 
 public class bgox
+  implements ArkViewImplement.LoadCallback
 {
-  public static void a(View paramView, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
+  bgox(bgov parambgov) {}
+  
+  public void onLoadFailed(int paramInt1, int paramInt2, String paramString, boolean paramBoolean)
   {
-    ObjectAnimator localObjectAnimator1 = ObjectAnimator.ofFloat(paramView, "translationY", new float[] { paramFloat1, paramFloat2 });
-    ObjectAnimator localObjectAnimator2 = ObjectAnimator.ofFloat(paramView, "scaleX", new float[] { paramFloat3, paramFloat4 });
-    paramView = ObjectAnimator.ofFloat(paramView, "scaleY", new float[] { paramFloat3, paramFloat4 });
-    AnimatorSet localAnimatorSet = new AnimatorSet();
-    localAnimatorSet.setDuration(100L);
-    localAnimatorSet.playTogether(new Animator[] { localObjectAnimator1, localObjectAnimator2, paramView });
-    localAnimatorSet.addListener(new bgoy());
-    localAnimatorSet.start();
+    onLoadState(paramInt1);
+  }
+  
+  public void onLoadState(int paramInt)
+  {
+    WeakReference localWeakReference = new WeakReference(this.a);
+    ThreadManager.getUIHandler().post(new QQCustomArkDialogForAio.2.1(this, localWeakReference, paramInt));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bgox
  * JD-Core Version:    0.7.0.1
  */

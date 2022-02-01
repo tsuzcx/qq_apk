@@ -1,18 +1,29 @@
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.IBuilder;
+import com.tencent.qphone.base.util.QLog;
 
-public class ofs
-  implements ViewBase.IBuilder
+class ofs
+  extends pmn
 {
-  public ViewBase build(VafContext paramVafContext)
+  ofs(ofk paramofk) {}
+  
+  public void a(boolean paramBoolean)
   {
-    return new ofn(paramVafContext);
+    QLog.i("DailyHeaderViewController", 1, "[onDailyDynamicHeaderDataUpdated] " + paramBoolean);
+    if (!paramBoolean)
+    {
+      if ((ofk.a(this.a) == -1) || (ofk.a(this.a) == 0))
+      {
+        ofk.a(this.a, 0);
+        return;
+      }
+      ofk.a(this.a, 4);
+      return;
+    }
+    ofk.a(this.a, 1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     ofs
  * JD-Core Version:    0.7.0.1
  */

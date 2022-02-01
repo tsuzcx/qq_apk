@@ -1,20 +1,20 @@
 package com.tencent.biz.qqstory.takevideo.slideshow;
 
-import bhsw;
+import bkgg;
 import com.tencent.qphone.base.util.QLog;
-import xmo;
+import zfz;
 
 public class SlideProgressNotifier$RefreshProgressThread
   extends Thread
 {
   int jdField_a_of_type_Int;
-  xmo jdField_a_of_type_Xmo;
+  zfz jdField_a_of_type_Zfz;
   boolean jdField_a_of_type_Boolean = false;
   int b;
   int c;
   int d;
   
-  public SlideProgressNotifier$RefreshProgressThread(int paramInt1, int paramInt2, int paramInt3, xmo paramxmo)
+  public SlideProgressNotifier$RefreshProgressThread(int paramInt1, int paramInt2, int paramInt3, zfz paramzfz)
   {
     this.jdField_a_of_type_Int = paramInt1;
     this.b = paramInt2;
@@ -22,7 +22,7 @@ public class SlideProgressNotifier$RefreshProgressThread
     for (this.c = (paramInt1 / (paramInt2 - paramInt3));; this.c = 100)
     {
       this.d = paramInt3;
-      this.jdField_a_of_type_Xmo = paramxmo;
+      this.jdField_a_of_type_Zfz = paramzfz;
       return;
     }
   }
@@ -30,7 +30,7 @@ public class SlideProgressNotifier$RefreshProgressThread
   public void a()
   {
     if (QLog.isColorLevel()) {
-      QLog.d("QQProgressNotifier", 2, "cancel progress update thread, stack trace : " + bhsw.a(new RuntimeException()));
+      QLog.d("QQProgressNotifier", 2, "cancel progress update thread, stack trace : " + bkgg.a(new RuntimeException()));
     }
     this.jdField_a_of_type_Boolean = true;
   }
@@ -45,9 +45,9 @@ public class SlideProgressNotifier$RefreshProgressThread
     while (!this.jdField_a_of_type_Boolean) {
       if (this.d < this.b)
       {
-        if (this.jdField_a_of_type_Xmo != null)
+        if (this.jdField_a_of_type_Zfz != null)
         {
-          this.jdField_a_of_type_Xmo.a(this.d);
+          this.jdField_a_of_type_Zfz.a(this.d);
           this.d += 1;
           try
           {
@@ -62,8 +62,8 @@ public class SlideProgressNotifier$RefreshProgressThread
       else
       {
         this.d = this.b;
-        if (this.jdField_a_of_type_Xmo != null) {
-          this.jdField_a_of_type_Xmo.a(this.d);
+        if (this.jdField_a_of_type_Zfz != null) {
+          this.jdField_a_of_type_Zfz.a(this.d);
         }
         this.jdField_a_of_type_Boolean = true;
       }
@@ -72,7 +72,7 @@ public class SlideProgressNotifier$RefreshProgressThread
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.qqstory.takevideo.slideshow.SlideProgressNotifier.RefreshProgressThread
  * JD-Core Version:    0.7.0.1
  */

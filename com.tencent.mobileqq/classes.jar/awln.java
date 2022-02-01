@@ -1,14 +1,23 @@
-public final class awln
-  extends awky
+import android.os.Bundle;
+import android.text.TextUtils;
+
+public abstract class awln
 {
-  protected int c()
+  public static int a(String paramString)
   {
-    return 512;
+    if ((!TextUtils.isEmpty(paramString)) && (paramString.startsWith("ak:"))) {
+      return 1;
+    }
+    return 0;
   }
+  
+  public abstract void a(String paramString1, String paramString2, Object paramObject);
+  
+  protected abstract boolean a(Bundle paramBundle);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     awln
  * JD-Core Version:    0.7.0.1
  */

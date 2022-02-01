@@ -1,49 +1,96 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.aio.item.CustomFrameAnimationDrawable;
-import com.tencent.mobileqq.activity.aio.item.UnlimitedBladeWorks;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class aggc
-  implements Animator.AnimatorListener
 {
-  private aggc(UnlimitedBladeWorks paramUnlimitedBladeWorks) {}
+  private long jdField_a_of_type_Long;
+  private aggv jdField_a_of_type_Aggv = new aggv();
+  private ArrayList<aghm> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
+  public long a()
   {
-    if (UnlimitedBladeWorks.a(this.a).a)
-    {
-      if (UnlimitedBladeWorks.a(this.a) != 2.0D) {
-        break label55;
-      }
-      UnlimitedBladeWorks.a(this.a);
-      UnlimitedBladeWorks.a(this.a, 5);
-    }
-    for (;;)
-    {
-      UnlimitedBladeWorks.a(this.a).setImageDrawable(null);
-      return;
-      label55:
-      UnlimitedBladeWorks.b(this.a).setImageDrawable(UnlimitedBladeWorks.a(this.a));
-      UnlimitedBladeWorks.a(this.a).a(UnlimitedBladeWorks.a(this.a));
-      UnlimitedBladeWorks.a(this.a).a(new aggd(this));
-      UnlimitedBladeWorks.a(this.a).c();
-      UnlimitedBladeWorks.a(this.a, 1);
-    }
+    return this.jdField_a_of_type_Long;
   }
   
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator)
+  public aggv a()
   {
-    if (UnlimitedBladeWorks.a(this.a))
+    return this.jdField_a_of_type_Aggv;
+  }
+  
+  public String a()
+  {
+    if (!this.jdField_a_of_type_JavaUtilArrayList.isEmpty())
     {
-      UnlimitedBladeWorks.a(this.a).setImageDrawable(UnlimitedBladeWorks.a(this.a));
+      aghm localaghm = (aghm)this.jdField_a_of_type_JavaUtilArrayList.get(0);
+      if (localaghm != null)
+      {
+        if (localaghm.a > 0) {
+          return String.valueOf(localaghm.a());
+        }
+        return String.valueOf(localaghm.b());
+      }
+    }
+    return "";
+  }
+  
+  public ArrayList<aghm> a()
+  {
+    return this.jdField_a_of_type_JavaUtilArrayList;
+  }
+  
+  public void a(long paramLong)
+  {
+    this.jdField_a_of_type_Long = paramLong;
+  }
+  
+  public void a(aghm paramaghm, boolean paramBoolean1, boolean paramBoolean2)
+  {
+    if (paramaghm == null) {}
+    do
+    {
+      return;
+      if (paramBoolean1) {
+        this.jdField_a_of_type_Aggv.a(paramaghm);
+      }
+      this.jdField_a_of_type_JavaUtilArrayList.add(paramaghm);
+    } while (!paramBoolean2);
+    this.jdField_a_of_type_Long += paramaghm.a();
+  }
+  
+  public void a(List<aghm> paramList, boolean paramBoolean1, boolean paramBoolean2)
+  {
+    long l;
+    if (paramList != null)
+    {
+      l = 0L;
+      if ((paramBoolean1) || (paramBoolean2))
+      {
+        Iterator localIterator = paramList.iterator();
+        l = 0L;
+        if (localIterator.hasNext())
+        {
+          aghm localaghm = (aghm)localIterator.next();
+          if (paramBoolean1) {
+            this.jdField_a_of_type_Aggv.a(localaghm);
+          }
+          if (!paramBoolean2) {
+            break label103;
+          }
+          l = localaghm.a() + l;
+        }
+      }
+    }
+    label103:
+    for (;;)
+    {
+      break;
+      this.jdField_a_of_type_JavaUtilArrayList.addAll(paramList);
+      if (paramBoolean2) {
+        this.jdField_a_of_type_Long = (l + this.jdField_a_of_type_Long);
+      }
       return;
     }
-    UnlimitedBladeWorks.a(this.a).setImageBitmap(UnlimitedBladeWorks.a(this.a));
   }
 }
 

@@ -1,7 +1,6 @@
 package com.tencent.mobileqq.statistics;
 
-import alsf;
-import alvw;
+import abes;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.app.Application.ActivityLifecycleCallbacks;
@@ -13,8 +12,10 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.Fragment.IFragmentAttachCallback;
 import android.support.v4.app.Fragment.IFragmentLifecycleCallback;
 import android.support.v4.app.FragmentActivity;
-import azrw;
-import bdnn;
+import anll;
+import anpe;
+import bcty;
+import bgsp;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mfsdk.MagnifierSDK;
 import com.tencent.mobileqq.activity.ChatFragment;
@@ -28,7 +29,6 @@ import java.util.Collection;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.List;
-import zhv;
 
 @TargetApi(14)
 public final class UEC
@@ -204,7 +204,7 @@ public final class UEC
   private String b(String paramString)
   {
     String str;
-    if (bdnn.a(paramString)) {
+    if (bgsp.a(paramString)) {
       str = "null";
     }
     int i;
@@ -241,7 +241,7 @@ public final class UEC
   private String c(String paramString)
   {
     String str;
-    if (bdnn.a(paramString)) {
+    if (bgsp.a(paramString)) {
       str = "null";
     }
     int i;
@@ -284,7 +284,7 @@ public final class UEC
         }
       }
       paramObject.f = paramString3;
-      paramObject.e = "8.3.5";
+      paramObject.e = "8.4.1";
       this.jdField_a_of_type_JavaUtilLinkedHashMap.put(paramString1, paramObject);
     }
     for (paramString1 = paramObject;; paramString1 = paramObject)
@@ -332,7 +332,7 @@ public final class UEC
       localUECItem1.jdField_a_of_type_Long = (SystemClock.uptimeMillis() - localUECItem1.jdField_b_of_type_Long + localUECItem1.jdField_a_of_type_Long);
       localUECItem1.jdField_b_of_type_Long = 0L;
       if (a(paramObject)) {
-        MagnifierSDK.b(paramString2);
+        MagnifierSDK.a().b(paramString2);
       }
     }
   }
@@ -361,15 +361,20 @@ public final class UEC
         localObject = (QQAppInterface)BaseApplicationImpl.sApplication.getRuntime();
         if (localObject != null)
         {
-          azrw localazrw = (azrw)((QQAppInterface)localObject).getManager(134);
-          if (localazrw != null) {
-            localazrw.a(paramArrayList);
+          bcty localbcty = (bcty)((QQAppInterface)localObject).getManager(134);
+          if (localbcty != null) {
+            localbcty.a(paramArrayList);
           }
         }
       } while (localObject == null);
-      localObject = (azrw)((QQAppInterface)localObject).getManager(158);
+      localObject = (bcty)((QQAppInterface)localObject).getManager(158);
     } while (localObject == null);
-    ((azrw)localObject).a(paramArrayList);
+    ((bcty)localObject).a(paramArrayList);
+  }
+  
+  public boolean a()
+  {
+    return (this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_Int > 0);
   }
   
   public void b(String paramString1, int paramInt, String paramString2, Object paramObject)
@@ -383,8 +388,13 @@ public final class UEC
     localUECItem1.jdField_b_of_type_Int += 1;
     localUECItem1.jdField_b_of_type_Long = SystemClock.uptimeMillis();
     if (a(paramObject)) {
-      MagnifierSDK.a(paramString2);
+      MagnifierSDK.a().a(paramString2);
     }
+  }
+  
+  public boolean b()
+  {
+    return (this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_Int <= 0);
   }
   
   public void onActivityCreated(Activity paramActivity, Bundle paramBundle)
@@ -448,7 +458,7 @@ public final class UEC
     String str = c(paramActivity);
     a((String)localObject, paramActivity.hashCode(), str, paramActivity);
     if (Build.VERSION.SDK_INT >= 23) {
-      zhv.b(paramActivity);
+      abes.b(paramActivity);
     }
   }
   
@@ -462,7 +472,7 @@ public final class UEC
     String str = c(paramActivity);
     b((String)localObject, paramActivity.hashCode(), str, paramActivity);
     if (Build.VERSION.SDK_INT >= 23) {
-      zhv.a(paramActivity);
+      abes.a(paramActivity);
     }
   }
   
@@ -475,9 +485,9 @@ public final class UEC
       ((Application.ActivityLifecycleCallbacks)localIterator.next()).onActivityStarted(paramActivity);
     }
     this.jdField_a_of_type_Int += 1;
-    alvw.b(paramActivity);
+    anpe.b(paramActivity);
     if (Build.VERSION.SDK_INT >= 26) {
-      alsf.a(paramActivity, true, false);
+      anll.a(paramActivity, true, false);
     }
   }
   

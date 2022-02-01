@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.shortvideo;
 
-import azcp;
-import azdi;
-import azej;
-import bayf;
-import bayk;
+import bcdo;
+import bceh;
+import bcfj;
+import bdzi;
+import bdzn;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.MessageForShortVideo;
 import com.tencent.mobileqq.data.MessageRecord;
@@ -16,10 +16,10 @@ public class BaseShortVideoOprerator$MultiForwardShortVideoTask
   implements Runnable
 {
   public int a;
-  public ArrayList<azdi> a;
-  public ArrayList<azej> b;
+  public ArrayList<bceh> a;
+  public ArrayList<bcfj> b;
   
-  public BaseShortVideoOprerator$MultiForwardShortVideoTask(ArrayList<azdi> paramArrayList)
+  public BaseShortVideoOprerator$MultiForwardShortVideoTask(ArrayList<bceh> paramArrayList)
   {
     this.jdField_a_of_type_Int = 0;
     Object localObject;
@@ -37,7 +37,7 @@ public class BaseShortVideoOprerator$MultiForwardShortVideoTask
         Iterator localIterator = this.b.iterator();
         if (localIterator.hasNext())
         {
-          if (((azej)localIterator.next()).jdField_a_of_type_Int == -2) {
+          if (((bcfj)localIterator.next()).jdField_a_of_type_Int == -2) {
             i += 1;
           }
         }
@@ -57,7 +57,7 @@ public class BaseShortVideoOprerator$MultiForwardShortVideoTask
     int i;
     int j;
     label105:
-    azdi localazdi;
+    bceh localbceh;
     Object localObject;
     if (this.jdField_a_of_type_Int + BaseShortVideoOprerator.d < this.jdField_a_of_type_JavaUtilArrayList.size())
     {
@@ -69,11 +69,11 @@ public class BaseShortVideoOprerator$MultiForwardShortVideoTask
       if (j >= i) {
         break label456;
       }
-      localazdi = (azdi)this.jdField_a_of_type_JavaUtilArrayList.get(j);
-      if (localazdi.jdField_a_of_type_JavaLangObject == null) {
+      localbceh = (bceh)this.jdField_a_of_type_JavaUtilArrayList.get(j);
+      if (localbceh.jdField_a_of_type_JavaLangObject == null) {
         break label178;
       }
-      localObject = (MessageForShortVideo)localazdi.jdField_a_of_type_JavaLangObject;
+      localObject = (MessageForShortVideo)localbceh.jdField_a_of_type_JavaLangObject;
       label141:
       if (localObject != null) {
         break label192;
@@ -89,27 +89,27 @@ public class BaseShortVideoOprerator$MultiForwardShortVideoTask
       i = this.jdField_a_of_type_JavaUtilArrayList.size();
       break;
       label178:
-      localObject = this.this$0.a(localazdi);
+      localObject = this.this$0.a(localbceh);
       break label141;
       label192:
       this.this$0.jdField_a_of_type_ComTencentMobileqqDataMessageRecord = ((MessageRecord)localObject);
       long l = System.currentTimeMillis();
-      bayk localbayk = new bayk();
-      localbayk.jdField_b_of_type_JavaLangString = ((MessageRecord)localObject).selfuin;
-      localbayk.c = ((MessageRecord)localObject).frienduin;
-      localbayk.jdField_a_of_type_Int = ((MessageRecord)localObject).istroop;
-      localbayk.jdField_b_of_type_Int = 20;
-      localbayk.jdField_a_of_type_JavaLangObject = localazdi;
-      localbayk.jdField_a_of_type_Long = ((MessageRecord)localObject).uniseq;
-      localbayk.jdField_a_of_type_Boolean = true;
-      localbayk.e = 1010;
-      localbayk.f = localazdi.e;
-      localbayk.i = (localazdi.h + "QQ_&_MoblieQQ_&_QQ" + localazdi.i + "QQ_&_MoblieQQ_&_QQ" + localazdi.j + "QQ_&_MoblieQQ_&_QQ" + localazdi.g);
-      localbayk.jdField_a_of_type_Awkh = new azcp(this, j);
-      localbayk.jdField_a_of_type_ComTencentMobileqqDataMessageRecord = this.this$0.jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
-      this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(localbayk);
+      bdzn localbdzn = new bdzn();
+      localbdzn.jdField_b_of_type_JavaLangString = ((MessageRecord)localObject).selfuin;
+      localbdzn.c = ((MessageRecord)localObject).frienduin;
+      localbdzn.jdField_a_of_type_Int = ((MessageRecord)localObject).istroop;
+      localbdzn.jdField_b_of_type_Int = 20;
+      localbdzn.jdField_a_of_type_JavaLangObject = localbceh;
+      localbdzn.jdField_a_of_type_Long = ((MessageRecord)localObject).uniseq;
+      localbdzn.jdField_a_of_type_Boolean = true;
+      localbdzn.e = 1010;
+      localbdzn.f = localbceh.e;
+      localbdzn.i = (localbceh.h + "QQ_&_MoblieQQ_&_QQ" + localbceh.i + "QQ_&_MoblieQQ_&_QQ" + localbceh.j + "QQ_&_MoblieQQ_&_QQ" + localbceh.g);
+      localbdzn.jdField_a_of_type_Ayyt = new bcdo(this, j);
+      localbdzn.jdField_a_of_type_ComTencentMobileqqDataMessageRecord = this.this$0.jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
+      this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(localbdzn);
       if (QLog.isColorLevel()) {
-        QLog.d("BaseShortVideoOprerator", 2, "MultiForwardShortVideo req" + j + ": " + localbayk.toString() + " ,cost:" + (System.currentTimeMillis() - l));
+        QLog.d("BaseShortVideoOprerator", 2, "MultiForwardShortVideo req" + j + ": " + localbdzn.toString() + " ,cost:" + (System.currentTimeMillis() - l));
       }
     }
     label456:
@@ -131,10 +131,10 @@ public class BaseShortVideoOprerator$MultiForwardShortVideoTask
     Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
     while (localIterator.hasNext())
     {
-      Object localObject = (azdi)localIterator.next();
-      localObject = new azej();
-      ((azej)localObject).jdField_a_of_type_Int = -2;
-      ((azej)localObject).jdField_a_of_type_Azdx = this.this$0.jdField_a_of_type_Azdx;
+      Object localObject = (bceh)localIterator.next();
+      localObject = new bcfj();
+      ((bcfj)localObject).jdField_a_of_type_Int = -2;
+      ((bcfj)localObject).jdField_a_of_type_Bcev = this.this$0.jdField_a_of_type_Bcev;
       this.b.add(localObject);
     }
     a();
@@ -142,7 +142,7 @@ public class BaseShortVideoOprerator$MultiForwardShortVideoTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.BaseShortVideoOprerator.MultiForwardShortVideoTask
  * JD-Core Version:    0.7.0.1
  */

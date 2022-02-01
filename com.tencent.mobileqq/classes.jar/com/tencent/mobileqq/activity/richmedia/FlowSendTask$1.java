@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.richmedia;
 
-import ajqd;
-import azig;
+import alit;
+import bcjg;
 import com.tencent.maxvideo.mediadevice.AVCodec;
 import com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
 import com.tencent.qphone.base.util.QLog;
@@ -10,7 +10,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
 public class FlowSendTask$1
   implements Runnable
 {
-  public FlowSendTask$1(ajqd paramajqd) {}
+  public FlowSendTask$1(alit paramalit) {}
   
   public void run()
   {
@@ -19,7 +19,7 @@ public class FlowSendTask$1
       if (QLog.isColorLevel()) {
         QLog.d(this.this$0.jdField_k_of_type_JavaLangString, 2, "FlowSendTask(): isPTV:" + this.this$0.d + ", mVideoFileDir:" + this.this$0.jdField_a_of_type_JavaLangString + ",is to call AVideoCodec.recordSubmit()");
       }
-      azig.a().a().recordSubmit();
+      bcjg.a().a().recordSubmit();
       return;
     }
     catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
@@ -44,7 +44,7 @@ public class FlowSendTask$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.richmedia.FlowSendTask.1
  * JD-Core Version:    0.7.0.1
  */

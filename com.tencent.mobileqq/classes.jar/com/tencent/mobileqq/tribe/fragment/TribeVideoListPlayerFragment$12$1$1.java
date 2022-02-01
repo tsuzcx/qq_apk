@@ -1,8 +1,7 @@
 package com.tencent.mobileqq.tribe.fragment;
 
-import alud;
-import bbcx;
-import com.tencent.mobileqq.widget.QQToast;
+import android.view.View;
+import bedy;
 
 class TribeVideoListPlayerFragment$12$1$1
   implements Runnable
@@ -11,12 +10,13 @@ class TribeVideoListPlayerFragment$12$1$1
   
   public void run()
   {
-    QQToast.a(this.a.a.a.getActivity(), 2, alud.a(2131715511), 1).a();
+    this.a.a.a.f();
+    ((View)this.a.a.a.a).setAlpha(1.0F);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.tribe.fragment.TribeVideoListPlayerFragment.12.1.1
  * JD-Core Version:    0.7.0.1
  */

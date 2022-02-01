@@ -1,27 +1,65 @@
-import android.support.annotation.NonNull;
-import com.tribe.async.dispatch.QQUIEventReceiver;
+import android.text.TextUtils;
+import android.view.ViewGroup;
+import com.tencent.biz.qqstory.app.QQStoryContext;
+import com.tencent.biz.qqstory.msgTabNode.roundwithdashdemo2018.widgets.StoryMsgNodeFrameLayout;
 
 public class wuz
-  extends QQUIEventReceiver<wub, uwk>
+  extends wva
 {
-  public wuz(@NonNull wub paramwub)
+  public wuz(ViewGroup paramViewGroup)
   {
-    super(paramwub);
+    super(paramViewGroup, 2131561744);
   }
   
-  public void a(@NonNull wub paramwub, @NonNull uwk paramuwk)
+  private void c(wrs paramwrs)
   {
-    paramwub.i();
+    paramwrs.d = false;
+    wsl.a(QQStoryContext.a()).a(paramwrs);
+    wta localwta = new wta();
+    localwta.jdField_b_of_type_JavaLangString = paramwrs.jdField_a_of_type_JavaLangString;
+    localwta.c = paramwrs.jdField_a_of_type_Int;
+    localwta.d = 4;
+    localwta.jdField_b_of_type_Long = paramwrs.e;
+    wlb.a().a(localwta, null);
   }
   
-  public Class acceptEventClass()
+  public void a(wrs paramwrs)
   {
-    return uwk.class;
+    super.a(paramwrs);
+    if (!TextUtils.isEmpty(paramwrs.g)) {
+      c(paramwrs.g);
+    }
+    if (!TextUtils.isEmpty(paramwrs.j))
+    {
+      localStoryMsgNodeFrameLayout = this.a;
+      if (TextUtils.isEmpty(paramwrs.c)) {}
+      for (str = anni.a(2131705729);; str = paramwrs.c)
+      {
+        localStoryMsgNodeFrameLayout.setNodeName(str, paramwrs.j);
+        if (paramwrs.d) {
+          c(paramwrs);
+        }
+        return;
+      }
+    }
+    StoryMsgNodeFrameLayout localStoryMsgNodeFrameLayout = this.a;
+    if (TextUtils.isEmpty(paramwrs.c)) {}
+    for (String str = anni.a(2131705728);; str = paramwrs.c)
+    {
+      localStoryMsgNodeFrameLayout.setNodeName(str, 0);
+      break;
+    }
+  }
+  
+  protected void b(wrs paramwrs)
+  {
+    this.a.setDisplayState(6);
+    this.a.a(paramwrs);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     wuz
  * JD-Core Version:    0.7.0.1
  */

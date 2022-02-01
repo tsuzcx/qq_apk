@@ -1,32 +1,43 @@
-import com.tencent.image.URLDrawable;
-import com.tencent.mobileqq.hotpic.HotVideoData;
+import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
+import com.tencent.mobileqq.filemanager.activity.cloudfile.QfileBaseCloudFileTabView;
+import com.tencent.mobileqq.filemanager.activity.cloudfile.QfileCloudFileTabView;
 import com.tencent.qphone.base.util.QLog;
 
-class asuo
-  implements asvh
+public class asuo
+  extends atwn
 {
-  asuo(asun paramasun, HotVideoData paramHotVideoData, asuq paramasuq, URLDrawable paramURLDrawable) {}
+  public asuo(QfileCloudFileTabView paramQfileCloudFileTabView) {}
   
-  public void a(asvi paramasvi)
+  public void a()
   {
-    if (paramasvi.jdField_a_of_type_Boolean)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqHotpicHotVideoData.url = paramasvi.a();
-      if (this.jdField_a_of_type_Asuq.a() == this.jdField_a_of_type_ComTencentMobileqqHotpicHotVideoData)
-      {
-        this.jdField_a_of_type_Asuq.a(this.jdField_a_of_type_ComTencentImageURLDrawable);
-        this.jdField_a_of_type_ComTencentImageURLDrawable.setAutoDownload(true);
-        this.jdField_a_of_type_ComTencentImageURLDrawable.restartDownload();
-      }
+    this.a.a.a().a();
+  }
+  
+  public void b()
+  {
+    this.a.a.a().h();
+  }
+  
+  public void c()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.e(QfileBaseCloudFileTabView.b, 2, "wy saveto wy?" + atvo.a());
     }
-    do
-    {
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d("HotPicManagerHotPicPageView", 2, "onFileDownloadFailed:" + this.jdField_a_of_type_ComTencentMobileqqHotpicHotVideoData.picIndex + " GetUrlFailed msg:" + paramasvi.jdField_a_of_type_JavaLangString);
-      }
-    } while (this.jdField_a_of_type_Asuq.a() != this.jdField_a_of_type_ComTencentMobileqqHotpicHotVideoData);
-    this.jdField_a_of_type_Asuq.a(-10);
+  }
+  
+  public void d()
+  {
+    this.a.a.a().i();
+  }
+  
+  public void e()
+  {
+    this.a.a.a().j();
+  }
+  
+  public void f()
+  {
+    this.a.a.a().C();
   }
 }
 

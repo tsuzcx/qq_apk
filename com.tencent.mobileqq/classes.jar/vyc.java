@@ -1,77 +1,43 @@
 import android.os.Handler;
-import android.os.Message;
-import android.util.Log;
-import com.tencent.biz.qqstory.playvideo.player.mediaplayer.MediaPlayer;
+import com.tencent.biz.qqcircle.requests.QCircleDoRecommendRequest;
+import com.tencent.biz.qqcircle.widgets.QCircleRecommendImageView;
+import com.tencent.biz.qqcircle.widgets.QCircleRecommendImageView.6.1;
+import com.tencent.biz.richframework.network.VSNetworkHelper;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.qphone.base.util.QLog;
 
 public class vyc
-  extends Handler
+  implements aaux
 {
-  private vyc(MediaPlayer paramMediaPlayer) {}
+  public vyc(QCircleRecommendImageView paramQCircleRecommendImageView) {}
   
-  public void handleMessage(Message paramMessage)
+  public void a()
   {
-    switch (paramMessage.what)
+    QCircleRecommendImageView.a(this.a, 0);
+    if (!nmd.a(this.a.getContext()))
     {
-    default: 
-    case 1: 
-    case 4: 
-    case 2: 
-    case 5: 
-      do
-      {
-        do
-        {
-          do
-          {
-            return;
-            Log.d("Story-MediaPlayer", "onPrepared");
-          } while (this.a.jdField_a_of_type_Vyn == null);
-          this.a.jdField_a_of_type_Vyn.a_(this.a);
-          return;
-          Log.d("Story-MediaPlayer", "onSeekComplete");
-        } while (this.a.jdField_a_of_type_Vyo == null);
-        this.a.jdField_a_of_type_Vyo.a(this.a);
-        return;
-        Log.d("Story-MediaPlayer", "onPlaybackComplete");
-        if (this.a.jdField_a_of_type_Vyk != null) {
-          this.a.jdField_a_of_type_Vyk.a(this.a);
-        }
-        this.a.c(false);
-        return;
-        Log.d("Story-MediaPlayer", "onVideoSizeChanged");
-      } while (this.a.jdField_a_of_type_Vyq == null);
-      this.a.jdField_a_of_type_Vyq.a(this.a, paramMessage.arg1, paramMessage.arg2);
-      return;
-    case 100: 
-      Log.e("Story-MediaPlayer", "Error (" + paramMessage.arg1 + "," + paramMessage.arg2 + ")");
-      if (this.a.jdField_a_of_type_Vyl == null) {
-        break;
-      }
+      QCircleRecommendImageView.b(this.a, QCircleRecommendImageView.a(this.a));
+      ThreadManagerV2.getUIHandlerV2().post(new QCircleRecommendImageView.6.1(this));
     }
-    for (boolean bool = this.a.jdField_a_of_type_Vyl.a(this.a, paramMessage.arg1, paramMessage.arg2);; bool = false)
-    {
-      if ((this.a.jdField_a_of_type_Vyk != null) && (!bool)) {
-        this.a.jdField_a_of_type_Vyk.a(this.a);
-      }
-      this.a.c(false);
-      return;
-      Log.d("Story-MediaPlayer", "onInfo");
-      if (this.a.jdField_a_of_type_Vym == null) {
-        break;
-      }
-      this.a.jdField_a_of_type_Vym.a_(this.a, paramMessage.arg1, paramMessage.arg2);
-      return;
-      if (this.a.jdField_a_of_type_Vyj != null) {
-        this.a.jdField_a_of_type_Vyj.a(this.a, paramMessage.arg1);
-      }
-      this.a.e = paramMessage.arg1;
+    while ((QCircleRecommendImageView.a(this.a) == null) || (QCircleRecommendImageView.a(this.a) == null)) {
       return;
     }
+    int i = QCircleRecommendImageView.b(this.a) - QCircleRecommendImageView.a(this.a);
+    if (i <= 0)
+    {
+      QLog.d(QCircleRecommendImageView.a(this.a), 1, "addPushTimes" + i + "merge request");
+      QCircleRecommendImageView.b(this.a, QCircleRecommendImageView.a(this.a));
+      return;
+    }
+    QCircleRecommendImageView.a(this.a, i);
+    QLog.d(QCircleRecommendImageView.a(this.a), 1, "QCircleDoRecommendRequest add push " + i);
+    QCircleDoRecommendRequest localQCircleDoRecommendRequest = new QCircleDoRecommendRequest(QCircleRecommendImageView.a(this.a), i, QCircleRecommendImageView.a(this.a), 0);
+    VSNetworkHelper.a().a(this.a.getContext(), localQCircleDoRecommendRequest, new vyd(this, localQCircleDoRecommendRequest));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     vyc
  * JD-Core Version:    0.7.0.1
  */

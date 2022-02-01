@@ -1,100 +1,107 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.graphics.Rect;
-import android.graphics.drawable.Drawable;
-import android.os.Build.VERSION;
-import android.view.View;
-import com.tencent.biz.widgets.ViewFinderView.1;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.TagInfoBase;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.TagItem;
+import com.tencent.biz.qqstory.takevideo.tag.TagItemEntry;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class zhp
-  extends View
 {
-  protected double a;
-  int jdField_a_of_type_Int = 0;
-  long jdField_a_of_type_Long;
-  Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint(1);
-  Rect jdField_a_of_type_AndroidGraphicsRect;
-  Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130842864);
-  boolean jdField_a_of_type_Boolean = false;
-  int jdField_b_of_type_Int = 0;
-  Drawable jdField_b_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130842881);
-  protected int c;
-  protected int d = this.jdField_b_of_type_AndroidGraphicsDrawableDrawable.getIntrinsicHeight();
+  public final int a;
+  public final String a;
+  public final zhq a;
   
-  public zhp(Context paramContext)
+  public zhp(qqstory_struct.TagItem paramTagItem)
   {
-    super(paramContext);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(1275068416);
+    this.jdField_a_of_type_Zhq = new zhq((qqstory_struct.TagInfoBase)paramTagItem.base_info.get());
+    this.jdField_a_of_type_Int = paramTagItem.join_count.get();
+    this.jdField_a_of_type_JavaLangString = paramTagItem.wording.get();
   }
   
-  public void a()
+  public zhp(TagItemEntry paramTagItemEntry)
   {
-    if (!this.jdField_a_of_type_Boolean)
+    this.jdField_a_of_type_Zhq = new zhq(paramTagItemEntry.id, paramTagItemEntry.name, paramTagItemEntry.desc, paramTagItemEntry.type);
+    this.jdField_a_of_type_Int = paramTagItemEntry.joinCount;
+    this.jdField_a_of_type_JavaLangString = paramTagItemEntry.wording;
+  }
+  
+  public zhp(zhq paramzhq, int paramInt, String paramString)
+  {
+    this.jdField_a_of_type_Zhq = paramzhq;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  public TagItemEntry a()
+  {
+    TagItemEntry localTagItemEntry = new TagItemEntry();
+    localTagItemEntry.id = this.jdField_a_of_type_Zhq.jdField_a_of_type_Long;
+    localTagItemEntry.name = this.jdField_a_of_type_Zhq.jdField_a_of_type_JavaLangString;
+    localTagItemEntry.desc = this.jdField_a_of_type_Zhq.b;
+    localTagItemEntry.type = this.jdField_a_of_type_Zhq.jdField_a_of_type_Int;
+    localTagItemEntry.joinCount = this.jdField_a_of_type_Int;
+    localTagItemEntry.wording = this.jdField_a_of_type_JavaLangString;
+    return localTagItemEntry;
+  }
+  
+  public String a()
+  {
+    Object localObject = new JSONObject();
+    try
     {
-      this.jdField_a_of_type_Long = System.currentTimeMillis();
-      this.jdField_a_of_type_Boolean = true;
-      invalidate();
+      if (this.jdField_a_of_type_Zhq == null) {
+        return null;
+      }
+      ((JSONObject)localObject).put("tag_id", this.jdField_a_of_type_Zhq.jdField_a_of_type_Long);
+      ((JSONObject)localObject).put("tag_name", this.jdField_a_of_type_Zhq.jdField_a_of_type_JavaLangString);
+      ((JSONObject)localObject).put("tag_desc", this.jdField_a_of_type_Zhq.b);
+      ((JSONObject)localObject).put("tag_type", this.jdField_a_of_type_Zhq.jdField_a_of_type_Int);
+      ((JSONObject)localObject).put("join_count", this.jdField_a_of_type_Int);
+      ((JSONObject)localObject).put("wording", this.jdField_a_of_type_JavaLangString);
+      ((JSONObject)localObject).put("one_page", 1);
+      ((JSONObject)localObject).put("src_type", "web");
+      ((JSONObject)localObject).put("version", 1);
+      localObject = ((JSONObject)localObject).toString();
+      return localObject;
     }
+    catch (JSONException localJSONException) {}
+    return null;
   }
   
-  public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public boolean equals(Object paramObject)
   {
-    Rect localRect = new Rect(paramInt1, paramInt2, paramInt3, paramInt4);
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setBounds(localRect);
-    this.c = (paramInt4 - paramInt2 - this.d);
-    this.jdField_a_of_type_Double = (this.c / 5000.0D);
-    this.jdField_a_of_type_AndroidGraphicsRect = localRect;
-    invalidate();
-  }
-  
-  public void b()
-  {
-    this.jdField_a_of_type_Boolean = false;
-  }
-  
-  protected void onDraw(Canvas paramCanvas)
-  {
-    Rect localRect = this.jdField_a_of_type_AndroidGraphicsRect;
-    if ((localRect == null) || (localRect.width() == 0) || (localRect.height() == 0)) {
-      paramCanvas.drawRect(0.0F, 0.0F, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.jdField_a_of_type_AndroidGraphicsPaint);
-    }
+    if (this == paramObject) {}
     do
     {
-      return;
-      paramCanvas.drawRect(0.0F, 0.0F, this.jdField_a_of_type_Int, localRect.top, this.jdField_a_of_type_AndroidGraphicsPaint);
-      paramCanvas.drawRect(0.0F, localRect.top, localRect.left, localRect.bottom, this.jdField_a_of_type_AndroidGraphicsPaint);
-      paramCanvas.drawRect(localRect.right, localRect.top, this.jdField_a_of_type_Int, localRect.bottom, this.jdField_a_of_type_AndroidGraphicsPaint);
-      paramCanvas.drawRect(0.0F, localRect.bottom, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.jdField_a_of_type_AndroidGraphicsPaint);
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.draw(paramCanvas);
-    } while (!this.jdField_a_of_type_Boolean);
-    int i = (int)((System.currentTimeMillis() - this.jdField_a_of_type_Long) * this.jdField_a_of_type_Double) % this.c;
-    this.jdField_b_of_type_AndroidGraphicsDrawableDrawable.setBounds(localRect.left, localRect.top + i, localRect.right, i + localRect.top + this.d);
-    this.jdField_b_of_type_AndroidGraphicsDrawableDrawable.draw(paramCanvas);
-    postInvalidateDelayed(20L, localRect.left, localRect.top, localRect.right, localRect.bottom);
+      return true;
+      if ((paramObject == null) || (getClass() != paramObject.getClass())) {
+        return false;
+      }
+      paramObject = (zhp)paramObject;
+      if (this.jdField_a_of_type_Zhq != null) {
+        return this.jdField_a_of_type_Zhq.equals(paramObject.jdField_a_of_type_Zhq);
+      }
+    } while (paramObject.jdField_a_of_type_Zhq == null);
+    return false;
   }
   
-  protected void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public int hashCode()
   {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_Int = paramInt2;
-    invalidate();
-  }
-  
-  public void postInvalidateDelayed(long paramLong, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
-  {
-    if (Build.VERSION.SDK_INT >= 14)
-    {
-      super.postInvalidateDelayed(paramLong, paramInt1, paramInt2, paramInt3, paramInt4);
-      return;
+    if (this.jdField_a_of_type_Zhq != null) {
+      return this.jdField_a_of_type_Zhq.hashCode();
     }
-    postDelayed(new ViewFinderView.1(this, paramInt1, paramInt2, paramInt3, paramInt4), paramLong);
+    return 0;
+  }
+  
+  public String toString()
+  {
+    return "TagItem{tagInfo=" + this.jdField_a_of_type_Zhq + ", joinCount=" + this.jdField_a_of_type_Int + ", wording='" + this.jdField_a_of_type_JavaLangString + '\'' + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     zhp
  * JD-Core Version:    0.7.0.1
  */

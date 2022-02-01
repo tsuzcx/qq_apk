@@ -2,29 +2,29 @@ package com.tencent.biz.qqstory.storyHome.qqstorylist.view.segment;
 
 import com.tencent.mobileqq.app.ThreadManager;
 import mqq.os.MqqHandler;
-import wvg;
-import wvk;
-import wvl;
-import wxe;
+import yor;
+import yov;
+import yow;
+import yqp;
 
 public class LocalVideoPushSegment$1
   implements Runnable
 {
-  public LocalVideoPushSegment$1(wvg paramwvg) {}
+  public LocalVideoPushSegment$1(yor paramyor) {}
   
   public void run()
   {
-    wxe.b("Q.qqstory.home.LocalVideoPushSegment", "loadAlbumOrPhoto..");
-    Object localObject = wvg.a(this.this$0);
+    yqp.b("Q.qqstory.home.LocalVideoPushSegment", "loadAlbumOrPhoto..");
+    Object localObject = yor.a(this.this$0);
     if (localObject != null)
     {
-      ThreadManager.getUIHandler().post(new LocalVideoPushSegment.1.1(this, (wvk)localObject));
+      ThreadManager.getUIHandler().post(new LocalVideoPushSegment.1.1(this, (yov)localObject));
       return;
     }
-    localObject = wvg.a(this.this$0);
+    localObject = yor.a(this.this$0);
     if (localObject != null)
     {
-      ThreadManager.getUIHandler().post(new LocalVideoPushSegment.1.2(this, (wvl)localObject));
+      ThreadManager.getUIHandler().post(new LocalVideoPushSegment.1.2(this, (yow)localObject));
       return;
     }
     ThreadManager.getUIHandler().post(new LocalVideoPushSegment.1.3(this));
@@ -32,7 +32,7 @@ public class LocalVideoPushSegment$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.qqstory.storyHome.qqstorylist.view.segment.LocalVideoPushSegment.1
  * JD-Core Version:    0.7.0.1
  */

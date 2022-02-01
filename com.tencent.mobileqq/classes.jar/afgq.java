@@ -1,18 +1,19 @@
-class afgq
-  implements bcro
+import android.text.Editable;
+import android.view.View;
+import android.view.View.OnFocusChangeListener;
+import com.tencent.mobileqq.activity.SubLoginActivity;
+import com.tencent.mobileqq.widget.ClearableEditText;
+
+public class afgq
+  implements View.OnFocusChangeListener
 {
-  afgq(afgn paramafgn, String paramString) {}
+  public afgq(SubLoginActivity paramSubLoginActivity) {}
   
-  public void a(boolean paramBoolean, String paramString)
+  public void onFocusChange(View paramView, boolean paramBoolean)
   {
-    if ((paramBoolean) && (this.jdField_a_of_type_JavaLangString.equals(paramString)))
-    {
-      ((agnj)afgn.a(this.jdField_a_of_type_Afgn)).X = true;
-      this.jdField_a_of_type_Afgn.a(true);
-      return;
+    if (true == paramBoolean) {
+      SubLoginActivity.a(this.a).setSelection(SubLoginActivity.a(this.a).getText().length());
     }
-    ((agnj)afgn.a(this.jdField_a_of_type_Afgn)).X = false;
-    this.jdField_a_of_type_Afgn.a(false);
   }
 }
 

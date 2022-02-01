@@ -1,21 +1,21 @@
 package cooperation.qzone.plugin;
 
-import bjop;
-import bjoq;
+import bmcy;
+import bmcz;
 
 public class QZoneConnectProcessor$1
   implements Runnable
 {
-  public QZoneConnectProcessor$1(bjop parambjop, bjoq parambjoq) {}
+  public QZoneConnectProcessor$1(bmcy parambmcy, bmcz parambmcz) {}
   
   public void run()
   {
-    bjop.a(this.this$0, this.a);
+    bmcy.a(this.this$0, this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.qzone.plugin.QZoneConnectProcessor.1
  * JD-Core Version:    0.7.0.1
  */

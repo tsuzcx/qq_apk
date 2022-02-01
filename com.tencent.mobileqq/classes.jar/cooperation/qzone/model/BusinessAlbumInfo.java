@@ -7,14 +7,14 @@ import android.content.res.Resources;
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
 import android.text.TextUtils;
-import bjko;
-import bjkp;
+import blyx;
+import blyy;
 import com.tencent.qphone.base.util.BaseApplication;
 
 public class BusinessAlbumInfo
   extends BaseBusinessAlbumInfo
 {
-  public static final Parcelable.Creator<BusinessAlbumInfo> CREATOR = new bjko();
+  public static final Parcelable.Creator<BusinessAlbumInfo> CREATOR = new blyx();
   
   private BusinessAlbumInfo(Parcel paramParcel)
   {
@@ -154,17 +154,17 @@ public class BusinessAlbumInfo
     while (i == 0)
     {
       return null;
-      i = 2131718336;
+      i = 2131716495;
       continue;
-      i = 2131718337;
+      i = 2131716496;
       continue;
-      i = 2131718083;
+      i = 2131716243;
       continue;
-      i = 2131718081;
+      i = 2131716241;
       continue;
-      i = 2131718086;
+      i = 2131716246;
       continue;
-      i = 2131718082;
+      i = 2131716242;
     }
     return BaseApplication.getContext().getResources().getString(i);
   }
@@ -185,7 +185,7 @@ public class BusinessAlbumInfo
   
   public String c()
   {
-    return bjkp.a(this.jdField_b_of_type_Int);
+    return blyy.a(this.jdField_b_of_type_Int);
   }
   
   public int describeContents()
@@ -227,7 +227,7 @@ public class BusinessAlbumInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.qzone.model.BusinessAlbumInfo
  * JD-Core Version:    0.7.0.1
  */

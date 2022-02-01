@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<com.tencent.widget.SegmentedControlView android:orientation="horizontal" android:id="@id/dt7" android:layout_width="wrap_content" android:layout_height="wrap_content" android:divider="@null" android:checkedButton="@id/dth" android:layout_centerInParent="true" android:dividerPadding="0.0dip" tencent:firstButtonBackground="@drawable/b2x" tencent:lastButtonBackground="@drawable/b2y" tencent:middleButtonBackground="@null" tencent:uniqueButtonBackground="@null"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tencent="http://schemas.android.com/apk/res-auto">
-    <com.tencent.mobileqq.troop.widget.RedDotRadioButton android:textSize="14.0dip" android:gravity="center" android:id="@id/dth" android:background="@null" android:layout_width="60.0dip" android:layout_height="30.0dip" android:button="@null" android:text="@string/rfe" style="@style/j4" />
-    <com.tencent.mobileqq.troop.widget.RedDotRadioButton android:textSize="14.0dip" android:gravity="center" android:id="@id/dti" android:background="@null" android:layout_width="60.0dip" android:layout_height="30.0dip" android:button="@null" android:text="@string/avx" style="@style/j4" />
-</com.tencent.widget.SegmentedControlView>

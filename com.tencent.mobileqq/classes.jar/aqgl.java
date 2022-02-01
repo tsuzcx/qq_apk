@@ -1,18 +1,38 @@
-import android.graphics.drawable.Drawable;
-
-public abstract interface aqgl
+public class aqgl
 {
-  public abstract void setLastUpdatedLabel(CharSequence paramCharSequence);
+  int jdField_a_of_type_Int;
+  long jdField_a_of_type_Long;
+  boolean jdField_a_of_type_Boolean;
+  long b;
+  long c;
+  long d;
   
-  public abstract void setLoadingDrawable(Drawable paramDrawable);
+  public aqgl(long paramLong1, long paramLong2, int paramInt, boolean paramBoolean)
+  {
+    this.b = paramLong1;
+    this.jdField_a_of_type_Long = paramLong2;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
   
-  public abstract void setPullLabel(CharSequence paramCharSequence);
-  
-  public abstract void setRefreshResultLabel(CharSequence paramCharSequence);
-  
-  public abstract void setRefreshingLabel(CharSequence paramCharSequence);
-  
-  public abstract void setReleaseLabel(CharSequence paramCharSequence);
+  public boolean equals(Object paramObject)
+  {
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if ((paramObject instanceof aqgl))
+    {
+      paramObject = (aqgl)paramObject;
+      bool1 = bool2;
+      if (paramObject.jdField_a_of_type_Long == this.jdField_a_of_type_Long)
+      {
+        bool1 = bool2;
+        if (paramObject.b == this.b) {
+          bool1 = true;
+        }
+      }
+    }
+    return bool1;
+  }
 }
 
 

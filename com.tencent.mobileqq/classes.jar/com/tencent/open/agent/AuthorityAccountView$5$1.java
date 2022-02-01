@@ -12,25 +12,27 @@ class AuthorityAccountView$5$1
   
   public void run()
   {
-    if (this.jdField_a_of_type_AndroidGraphicsBitmap != null) {
-      this.jdField_a_of_type_ComTencentOpenAgentAuthorityAccountView$5.a.setImageBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap);
-    }
-    do
+    if (this.jdField_a_of_type_AndroidGraphicsBitmap != null)
     {
+      QLog.d("AuthorityAccountView", 1, "-->updateAccountFace success uin");
+      this.jdField_a_of_type_ComTencentOpenAgentAuthorityAccountView$5.a.setImageBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap);
       return;
-      try
-      {
-        this.jdField_a_of_type_ComTencentOpenAgentAuthorityAccountView$5.a.setImageBitmap(BitmapFactory.decodeResource(this.jdField_a_of_type_ComTencentOpenAgentAuthorityAccountView$5.this$0.getResources(), 2130840392));
-        return;
-      }
-      catch (OutOfMemoryError localOutOfMemoryError) {}
-    } while (!QLog.isColorLevel());
-    QLog.d("AuthorityAccountView", 2, "-->updateAccountFace oom");
+    }
+    try
+    {
+      QLog.d("AuthorityAccountView", 1, "-->updateAccountFace use default uin");
+      this.jdField_a_of_type_ComTencentOpenAgentAuthorityAccountView$5.a.setImageBitmap(BitmapFactory.decodeResource(this.jdField_a_of_type_ComTencentOpenAgentAuthorityAccountView$5.this$0.getResources(), 2130840578));
+      return;
+    }
+    catch (OutOfMemoryError localOutOfMemoryError)
+    {
+      QLog.e("AuthorityAccountView", 1, "-->updateAccountFace oom");
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.open.agent.AuthorityAccountView.5.1
  * JD-Core Version:    0.7.0.1
  */

@@ -1,57 +1,47 @@
-import android.content.res.Resources;
-import android.os.Build.VERSION;
-import android.os.Handler;
-import android.os.Looper;
-import com.tencent.common.app.BaseApplicationImpl;
-import java.lang.reflect.Field;
+import android.graphics.PointF;
 
 public class apbd
-  implements apbc
 {
-  private Handler a;
+  public int a;
+  public String a;
+  public boolean a;
+  public PointF[] a;
+  public int b;
+  public int c;
+  public int d = -1;
   
-  public Resources a()
+  public apbd()
   {
-    return BaseApplicationImpl.getApplication().getResources();
+    this.jdField_a_of_type_Int = -1;
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_a_of_type_ArrayOfAndroidGraphicsPointF = new PointF[1000];
+    a();
   }
   
-  public Handler a()
+  public apbd(int paramInt)
   {
-    if (this.a == null) {
-      this.a = new Handler(Looper.getMainLooper());
+    this.jdField_a_of_type_Int = -1;
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_a_of_type_ArrayOfAndroidGraphicsPointF = new PointF[paramInt];
+    a();
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_a_of_type_Int = -1;
+    this.jdField_a_of_type_JavaLangString = "";
+    this.b = 0;
+    this.c = 0;
+    this.d = -1;
+  }
+  
+  public String toString()
+  {
+    if (this.b > 0) {}
+    for (String str = "(" + (int)this.jdField_a_of_type_ArrayOfAndroidGraphicsPointF[(this.b - 1)].x + "," + (int)this.jdField_a_of_type_ArrayOfAndroidGraphicsPointF[(this.b - 1)].y + ")";; str = "(-1,-1)") {
+      return "ARGestureResult{, state = " + this.jdField_a_of_type_Int + ", type = " + this.jdField_a_of_type_JavaLangString + ", pointCnt = " + this.b + ", newPoint(x,y) = " + str + ", mode = " + this.d + '}';
     }
-    return this.a;
-  }
-  
-  public Object a(Class<?> paramClass, String paramString, Object paramObject)
-  {
-    try
-    {
-      paramClass = paramClass.getDeclaredField(paramString);
-      paramClass.setAccessible(true);
-      paramClass = paramClass.get(paramObject);
-      return paramClass;
-    }
-    catch (Exception paramClass)
-    {
-      paramClass.printStackTrace();
-    }
-    return null;
-  }
-  
-  public boolean a()
-  {
-    return false;
-  }
-  
-  public boolean b()
-  {
-    return Build.VERSION.SDK_INT >= 26;
-  }
-  
-  public boolean c()
-  {
-    return Build.VERSION.SDK_INT >= 11;
   }
 }
 

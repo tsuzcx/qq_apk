@@ -1,8 +1,8 @@
-class azkp
+public abstract interface azkp
 {
-  public int a = -1;
-  public boolean a;
-  public int b;
+  public abstract void a(Object paramObject);
+  
+  public abstract void b(Object paramObject);
 }
 
 

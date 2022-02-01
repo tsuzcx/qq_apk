@@ -16,7 +16,7 @@ class CaptureQmcfSoDownloadFragment$5
     }
     if (!this.jdField_a_of_type_Boolean)
     {
-      QQToast.a(BaseApplicationImpl.getContext(), 2131719278, 0).a();
+      QQToast.a(BaseApplicationImpl.getContext(), 2131717374, 0).a();
       CaptureQmcfSoDownloadFragment.a(this.this$0, -1);
       return;
     }
@@ -26,7 +26,7 @@ class CaptureQmcfSoDownloadFragment$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     dov.com.tencent.mobileqq.richmedia.capture.fragment.CaptureQmcfSoDownloadFragment.5
  * JD-Core Version:    0.7.0.1
  */

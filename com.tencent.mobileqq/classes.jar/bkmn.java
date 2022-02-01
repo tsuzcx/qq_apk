@@ -1,20 +1,19 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.widget.NegativeChildrenLayout;
 
-final class bkmn
-  implements DialogInterface.OnClickListener
+public class bkmn
+  implements View.OnClickListener
 {
-  bkmn(int paramInt, Activity paramActivity) {}
+  public bkmn(NegativeChildrenLayout paramNegativeChildrenLayout) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    if (bkmm.b(this.jdField_a_of_type_Int))
-    {
-      bkmm.a(this.jdField_a_of_type_AndroidAppActivity, null, false);
-      return;
+    if (this.a.a != null) {
+      this.a.a.a(paramView);
     }
-    bkmm.b(this.jdField_a_of_type_AndroidAppActivity, "mvip.n.a.zcwy_popup", false);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

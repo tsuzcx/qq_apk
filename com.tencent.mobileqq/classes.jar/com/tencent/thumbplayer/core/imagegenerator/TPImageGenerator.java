@@ -1,5 +1,6 @@
 package com.tencent.thumbplayer.core.imagegenerator;
 
+import com.tencent.thumbplayer.core.common.TPNativeLibraryLoader;
 import java.util.Map;
 
 public class TPImageGenerator
@@ -8,23 +9,27 @@ public class TPImageGenerator
   private int mFd = -1;
   private Map<String, String> mHttpHeader = null;
   private boolean mInited = false;
+  private boolean mIsLibLoaded = false;
   private long mNativeContext = 0L;
   private String mUrl = null;
   
   public TPImageGenerator(int paramInt, ITPImageGeneratorCallback paramITPImageGeneratorCallback)
   {
+    loadLibrary();
     this.mFd = paramInt;
     this.mCallback = paramITPImageGeneratorCallback;
   }
   
   public TPImageGenerator(String paramString, ITPImageGeneratorCallback paramITPImageGeneratorCallback)
   {
+    loadLibrary();
     this.mUrl = paramString;
     this.mCallback = paramITPImageGeneratorCallback;
   }
   
   public TPImageGenerator(String paramString, Map<String, String> paramMap, ITPImageGeneratorCallback paramITPImageGeneratorCallback)
   {
+    loadLibrary();
     this.mUrl = paramString;
     this.mHttpHeader = paramMap;
     this.mCallback = paramITPImageGeneratorCallback;
@@ -42,8 +47,26 @@ public class TPImageGenerator
   
   private native void _release();
   
+  private void loadLibrary()
+  {
+    try
+    {
+      TPNativeLibraryLoader.loadLibIfNeeded(null);
+      this.mIsLibLoaded = true;
+      return;
+    }
+    catch (UnsupportedOperationException localUnsupportedOperationException)
+    {
+      localUnsupportedOperationException.printStackTrace();
+      this.mIsLibLoaded = false;
+    }
+  }
+  
   public void cancelAllImageGenerations()
   {
+    if (!this.mIsLibLoaded) {
+      throw new UnsupportedOperationException("Failed to load native library");
+    }
     if (!this.mInited) {
       return;
     }
@@ -52,6 +75,9 @@ public class TPImageGenerator
   
   public void generateImageAsyncAtTime(long paramLong1, long paramLong2, TPImageGeneratorParams paramTPImageGeneratorParams)
   {
+    if (!this.mIsLibLoaded) {
+      throw new UnsupportedOperationException("Failed to load native library");
+    }
     if (!this.mInited) {
       throw new IllegalStateException("Failed to generate image at time " + paramLong1 + " due to invalid state.");
     }
@@ -60,6 +86,9 @@ public class TPImageGenerator
   
   public void generateImagesAsyncForTimes(long[] paramArrayOfLong, long paramLong, TPImageGeneratorParams paramTPImageGeneratorParams)
   {
+    if (!this.mIsLibLoaded) {
+      throw new UnsupportedOperationException("Failed to load native library");
+    }
     if (!this.mInited) {
       throw new IllegalStateException("Failed to generate images due to invalid state.");
     }
@@ -68,6 +97,9 @@ public class TPImageGenerator
   
   public void init()
   {
+    if (!this.mIsLibLoaded) {
+      throw new UnsupportedOperationException("Failed to load native library");
+    }
     if (this.mInited) {
       throw new IllegalStateException("Failed to init due to invalid state.");
     }
@@ -85,6 +117,9 @@ public class TPImageGenerator
   
   public void unInit()
   {
+    if (!this.mIsLibLoaded) {
+      throw new UnsupportedOperationException("Failed to load native library");
+    }
     if (!this.mInited) {
       return;
     }
@@ -94,7 +129,7 @@ public class TPImageGenerator
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.thumbplayer.core.imagegenerator.TPImageGenerator
  * JD-Core Version:    0.7.0.1
  */

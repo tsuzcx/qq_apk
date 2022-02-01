@@ -1,14 +1,18 @@
 package com.tencent.mobileqq.activity.aio.photo;
 
+import Override;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
-import azmk;
+import android.view.MotionEvent;
+import bcnj;
 import com.tencent.common.app.AppInterface;
 import com.tencent.image.AbstractGifImage;
 import com.tencent.image.NativeVideoImage;
 import com.tencent.mobileqq.app.PeakAppInterface;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class PeakFragmentActivity
   extends FragmentActivity
@@ -20,7 +24,15 @@ public class PeakFragmentActivity
   
   protected void adjustStatusBar()
   {
-    azmk.a(this.mSystemBarComp, getWindow());
+    bcnj.a(this.mSystemBarComp, getWindow());
+  }
+  
+  @Override
+  public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
+  {
+    boolean bool = super.dispatchTouchEvent(paramMotionEvent);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool);
+    return bool;
   }
   
   public boolean doOnCreate(Bundle paramBundle)
@@ -68,10 +80,17 @@ public class PeakFragmentActivity
     }
     return i;
   }
+  
+  @Override
+  public void onConfigurationChanged(Configuration paramConfiguration)
+  {
+    super.onConfigurationChanged(paramConfiguration);
+    EventCollector.getInstance().onActivityConfigurationChanged(this, paramConfiguration);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.photo.PeakFragmentActivity
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.lyric.widget;
 
-import atxe;
+import awen;
 
 public class LyricViewController$8
   implements Runnable
@@ -14,7 +14,7 @@ public class LyricViewController$8
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.lyric.widget.LyricViewController.8
  * JD-Core Version:    0.7.0.1
  */

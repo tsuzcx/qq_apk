@@ -1,20 +1,31 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.app.TroopManager;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.data.PhoneContactAdd;
+import com.tencent.mobileqq.data.QIMNotifyAddFriend;
+import tencent.mobileim.structmsg.structmsg.StructMsg;
 
-public final class amee
-  implements DialogInterface.OnClickListener
+public class amee
+  extends bkot
 {
-  public amee(TroopManager paramTroopManager, String paramString) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqAppTroopManager.a(this.jdField_a_of_type_JavaLangString, Boolean.valueOf(false));
-  }
+  public int a;
+  public long a;
+  public Button a;
+  public ImageView a;
+  public TextView a;
+  public PhoneContactAdd a;
+  public QIMNotifyAddFriend a;
+  public String a;
+  public structmsg.StructMsg a;
+  public long b;
+  public TextView b;
+  public TextView c;
+  public TextView d;
+  public TextView e;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amee
  * JD-Core Version:    0.7.0.1
  */

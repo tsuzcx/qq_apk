@@ -1,6 +1,6 @@
 package io.flutter.embedding.engine.plugins.shim;
 
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 import io.flutter.embedding.engine.plugins.FlutterPlugin;
 import io.flutter.embedding.engine.plugins.FlutterPlugin.FlutterPluginBinding;
 import io.flutter.embedding.engine.plugins.activity.ActivityAware;
@@ -51,6 +51,7 @@ class ShimPluginRegistry$ShimRegistrarAggregate
     while (localIterator.hasNext()) {
       ((ShimRegistrar)localIterator.next()).onDetachedFromActivity();
     }
+    this.activityPluginBinding = null;
   }
   
   public void onDetachedFromActivityForConfigChanges()
@@ -69,10 +70,12 @@ class ShimPluginRegistry$ShimRegistrarAggregate
       ((ShimRegistrar)localIterator.next()).onDetachedFromEngine(paramFlutterPluginBinding);
     }
     this.flutterPluginBinding = null;
+    this.activityPluginBinding = null;
   }
   
   public void onReattachedToActivityForConfigChanges(@NonNull ActivityPluginBinding paramActivityPluginBinding)
   {
+    this.activityPluginBinding = paramActivityPluginBinding;
     Iterator localIterator = this.shimRegistrars.iterator();
     while (localIterator.hasNext()) {
       ((ShimRegistrar)localIterator.next()).onReattachedToActivityForConfigChanges(paramActivityPluginBinding);
@@ -81,7 +84,7 @@ class ShimPluginRegistry$ShimRegistrarAggregate
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     io.flutter.embedding.engine.plugins.shim.ShimPluginRegistry.ShimRegistrarAggregate
  * JD-Core Version:    0.7.0.1
  */

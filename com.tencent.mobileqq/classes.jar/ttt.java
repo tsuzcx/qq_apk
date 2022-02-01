@@ -1,21 +1,22 @@
-import android.arch.lifecycle.Observer;
-import android.support.annotation.Nullable;
-import feedcloud.FeedCloudMeta.StFeed;
-import java.util.List;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.serviceAccountFolder.ServiceAccountFolderActivityNew;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class ttt
-  implements Observer<ubz<List<FeedCloudMeta.StFeed>>>
+public class ttt
+  implements View.OnClickListener
 {
-  ttt(ttr paramttr) {}
+  public ttt(ServiceAccountFolderActivityNew paramServiceAccountFolderActivityNew) {}
   
-  public void a(@Nullable ubz<List<FeedCloudMeta.StFeed>> paramubz)
+  public void onClick(View paramView)
   {
-    ttr.b(this.a, paramubz);
+    this.a.doOnBackPressed();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     ttt
  * JD-Core Version:    0.7.0.1
  */

@@ -1,35 +1,32 @@
-import cooperation.qzone.LocalMultiProcConfig;
-import cooperation.qzone.networkedmodule.ModuleDownloadListener;
-import cooperation.qzone.util.QZLog;
-import cooperation.vip.ar.util.VipARUtils.3;
+import com.tencent.tar.jni.ScanFeatureFilterView;
 
-public class bkfb
-  implements ModuleDownloadListener
+public final class bkfb
 {
-  public bkfb(VipARUtils.3 param3) {}
+  public float a;
+  public int a;
+  public long a;
+  public boolean a;
+  public float b;
+  public int b;
+  public long b;
+  public boolean b;
   
-  public void onDownloadCanceled(String paramString)
+  public float a(int paramInt, long paramLong)
   {
-    QZLog.i("VipARUtils", 4, new Object[] { "onDownloadCanceled ", paramString });
-  }
-  
-  public void onDownloadFailed(String paramString)
-  {
-    QZLog.i("VipARUtils", 4, new Object[] { "onDownloadFailed ", paramString });
-  }
-  
-  public void onDownloadProgress(String paramString, float paramFloat)
-  {
-    QZLog.i("VipARUtils", 4, new Object[] { "moduleId = ", paramString, " progress = ", Float.valueOf(paramFloat) });
-  }
-  
-  public void onDownloadSucceed(String paramString)
-  {
-    if (!paramString.equals("vip_tar_engine.jar")) {
-      return;
+    if (paramLong < this.jdField_b_of_type_Long) {
+      return 0.0F;
     }
-    QZLog.i("VipARUtils", 4, new Object[] { "url = ", bkey.a(), " onDownloadSucceed = ", bkey.b() });
-    LocalMultiProcConfig.putString("VipARUtils_JAR_md5", bkey.b());
+    if (paramLong - this.jdField_b_of_type_Long > paramInt) {
+      this.jdField_a_of_type_Boolean = true;
+    }
+    return (float)(paramLong - this.jdField_b_of_type_Long) / paramInt % 1.0F;
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_Long = ScanFeatureFilterView.a();
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_b_of_type_Boolean = false;
   }
 }
 

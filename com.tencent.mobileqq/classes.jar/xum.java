@@ -1,22 +1,21 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.biz.qqstory.view.NeoVideoRecordButton;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
+import java.util.concurrent.atomic.AtomicBoolean;
 
-public class xum
-  implements ValueAnimator.AnimatorUpdateListener
+class xum
+  implements bkhy
 {
-  public xum(NeoVideoRecordButton paramNeoVideoRecordButton) {}
+  xum(xui paramxui, AtomicBoolean paramAtomicBoolean, VideoViewVideoHolder paramVideoViewVideoHolder) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void onDismiss()
   {
-    this.a.c.a(((Integer)paramValueAnimator.getAnimatedValue("radius")).intValue(), 0.0F);
-    this.a.c.e = ((Integer)paramValueAnimator.getAnimatedValue("color")).intValue();
-    NeoVideoRecordButton.a(this.a);
+    if ((!this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) && (this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder != null)) {
+      this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.c(false);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     xum
  * JD-Core Version:    0.7.0.1
  */

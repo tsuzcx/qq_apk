@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.qwallet;
 
-import aivi;
+import akmg;
 import android.content.BroadcastReceiver;
 import android.content.IntentFilter;
 import android.os.Bundle;
@@ -10,15 +10,15 @@ import com.tencent.mobileqq.activity.QQTranslucentBrowserActivity.QQTranslucentB
 public class QWalletFullWindowActivity$QWalletFullWindowFragment
   extends QQTranslucentBrowserActivity.QQTranslucentBrowserFragment
 {
-  BroadcastReceiver a = new aivi(this);
+  BroadcastReceiver a = new akmg(this);
   
-  public int a(Bundle paramBundle)
+  public int doCreateLoopStep_Final(Bundle paramBundle)
   {
     IntentFilter localIntentFilter = new IntentFilter();
     localIntentFilter.addAction("action_close_camera");
     localIntentFilter.addAction("cn.abel.action.broadcast");
     BaseApplicationImpl.getApplication().registerReceiver(this.a, localIntentFilter);
-    return super.a(paramBundle);
+    return super.doCreateLoopStep_Final(paramBundle);
   }
   
   public void onDestroy()
@@ -38,7 +38,7 @@ public class QWalletFullWindowActivity$QWalletFullWindowFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.qwallet.QWalletFullWindowActivity.QWalletFullWindowFragment
  * JD-Core Version:    0.7.0.1
  */

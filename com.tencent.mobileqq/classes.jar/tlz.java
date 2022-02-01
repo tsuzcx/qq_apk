@@ -1,25 +1,18 @@
-import com.tencent.biz.pubaccount.weishi_new.util.WeishiUtils.4;
+import java.io.InputStream;
+import java.net.HttpURLConnection;
+import javax.annotation.Nullable;
 
-public class tlz
-  implements sfe
+public abstract interface tlz
 {
-  public tlz(WeishiUtils.4 param4) {}
+  public abstract InputStream a(@Nullable InputStream paramInputStream);
   
-  public void a(sfg paramsfg, int paramInt) {}
+  public abstract void a();
   
-  public void a(sfg paramsfg, Throwable paramThrowable)
-  {
-    tlo.b("PreloadCoverImgLog", "onFail request = " + paramsfg);
-  }
-  
-  public void a(sfg paramsfg, sfc paramsfc)
-  {
-    tlo.b("PreloadCoverImgLog", "onSuccess request = " + paramsfg);
-  }
+  public abstract void a(HttpURLConnection paramHttpURLConnection, @Nullable String paramString);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     tlz
  * JD-Core Version:    0.7.0.1
  */

@@ -1,25 +1,37 @@
-import com.tencent.mobileqq.app.FrameFragment;
-import com.tencent.mobileqq.widget.QQTabHost;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.activity.SelectedAndSearchBar;
+import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
 
 public class alsp
-  implements beuc
+  implements View.OnTouchListener
 {
-  public alsp(FrameFragment paramFrameFragment) {}
+  float jdField_a_of_type_Float = 0.0F;
+  float b = 0.0F;
   
-  public void a(int paramInt1, int paramInt2, QQTabHost paramQQTabHost)
+  public alsp(SelectMemberActivity paramSelectMemberActivity) {}
+  
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (paramInt1 == paramInt2)
+    int i = paramMotionEvent.getAction();
+    if (i == 0)
     {
-      paramQQTabHost = this.a.b();
-      if (paramQQTabHost != null) {
-        paramQQTabHost.d();
+      this.jdField_a_of_type_Float = paramMotionEvent.getRawX();
+      this.b = paramMotionEvent.getRawY();
+    }
+    for (;;)
+    {
+      return false;
+      if ((i == 2) && ((paramMotionEvent.getRawX() - this.jdField_a_of_type_Float > 10.0F) || (paramMotionEvent.getRawY() - this.b > 10.0F))) {
+        this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.a.b();
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     alsp
  * JD-Core Version:    0.7.0.1
  */

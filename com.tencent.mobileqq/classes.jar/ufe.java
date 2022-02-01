@@ -1,43 +1,33 @@
-import android.os.Handler;
-import com.tencent.biz.qqcircle.requests.QCircleDoRecommendRequest;
-import com.tencent.biz.qqcircle.widgets.QCircleRecommendImageView;
-import com.tencent.biz.qqcircle.widgets.QCircleRecommendImageView.6.1;
-import com.tencent.biz.videostory.network.VSNetworkHelper;
-import com.tencent.mobileqq.app.ThreadManagerV2;
-import com.tencent.qphone.base.util.QLog;
+import NS_KING_INTERFACE.stPostCommentDingRsp;
+import UserGrowth.stSimpleMetaComment;
+import com.tribe.async.dispatch.Dispatcher;
 
-public class ufe
-  implements yxu
+class ufe
+  implements ujj
 {
-  public ufe(QCircleRecommendImageView paramQCircleRecommendImageView) {}
+  ufe(uez paramuez, stSimpleMetaComment paramstSimpleMetaComment) {}
   
-  public void a()
+  public void a(uju paramuju)
   {
-    QCircleRecommendImageView.a(this.a, 0);
-    if (!ndk.a(this.a.getContext()))
+    if ((paramuju.jdField_a_of_type_JavaLangObject instanceof stPostCommentDingRsp))
     {
-      QCircleRecommendImageView.b(this.a, QCircleRecommendImageView.a(this.a));
-      ThreadManagerV2.getUIHandlerV2().post(new QCircleRecommendImageView.6.1(this));
+      stPostCommentDingRsp localstPostCommentDingRsp = (stPostCommentDingRsp)paramuju.jdField_a_of_type_JavaLangObject;
+      if (this.jdField_a_of_type_UserGrowthStSimpleMetaComment.isDing == 1) {
+        upe.d(uez.a(), "点赞成功,nothing is " + localstPostCommentDingRsp.nothing);
+      }
+      for (;;)
+      {
+        wfo.a().dispatch(this.jdField_a_of_type_Uez.a(new Object[] { Integer.valueOf(7), Integer.valueOf(paramuju.b), paramuju.jdField_a_of_type_JavaLangString, localstPostCommentDingRsp }));
+        return;
+        upe.d(uez.a(), "取消点赞成功,nothing is " + localstPostCommentDingRsp.nothing);
+      }
     }
-    while ((QCircleRecommendImageView.a(this.a) == null) || (QCircleRecommendImageView.a(this.a) == null)) {
-      return;
-    }
-    int i = QCircleRecommendImageView.b(this.a) - QCircleRecommendImageView.a(this.a);
-    if (i <= 0)
-    {
-      QLog.d("QCircleRecommend_", 1, "addPushTimes" + i + "merge request");
-      QCircleRecommendImageView.b(this.a, QCircleRecommendImageView.a(this.a));
-      return;
-    }
-    QCircleRecommendImageView.a(this.a, i);
-    QLog.d("QCircleRecommend_", 1, "QCircleDoRecommendRequest add push " + i);
-    QCircleDoRecommendRequest localQCircleDoRecommendRequest = new QCircleDoRecommendRequest(QCircleRecommendImageView.a(this.a), i, QCircleRecommendImageView.a(this.a));
-    VSNetworkHelper.a().a(this.a.getContext(), localQCircleDoRecommendRequest, new uff(this, localQCircleDoRecommendRequest));
+    upe.d(uez.a(), "评论点赞失败new！");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     ufe
  * JD-Core Version:    0.7.0.1
  */

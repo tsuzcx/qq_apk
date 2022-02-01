@@ -5,6 +5,7 @@ import android.app.ActivityManager.TaskDescription;
 import android.content.ClipData;
 import android.content.ClipData.Item;
 import android.content.ClipboardManager;
+import android.graphics.Rect;
 import android.os.Build.VERSION;
 import android.view.View;
 import android.view.Window;
@@ -16,6 +17,7 @@ import io.flutter.embedding.engine.systemchannels.PlatformChannel.PlatformMessag
 import io.flutter.embedding.engine.systemchannels.PlatformChannel.SoundType;
 import io.flutter.embedding.engine.systemchannels.PlatformChannel.SystemChromeStyle;
 import io.flutter.embedding.engine.systemchannels.PlatformChannel.SystemUiOverlay;
+import java.util.ArrayList;
 import java.util.List;
 
 public class PlatformPlugin
@@ -43,6 +45,14 @@ public class PlatformPlugin
     }
     if ((paramClipboardContentFormat == null) || (paramClipboardContentFormat == PlatformChannel.ClipboardContentFormat.PLAIN_TEXT)) {
       return localClipData.getItemAt(0).coerceToText(this.activity);
+    }
+    return null;
+  }
+  
+  private List<Rect> getSystemGestureExclusionRects()
+  {
+    if (Build.VERSION.SDK_INT >= 29) {
+      return this.activity.getWindow().getDecorView().getSystemGestureExclusionRects();
     }
     return null;
   }
@@ -178,6 +188,14 @@ public class PlatformPlugin
     }
   }
   
+  private void setSystemGestureExclusionRects(ArrayList<Rect> paramArrayList)
+  {
+    if (Build.VERSION.SDK_INT < 29) {
+      return;
+    }
+    this.activity.getWindow().getDecorView().setSystemGestureExclusionRects(paramArrayList);
+  }
+  
   private void vibrateHapticFeedback(PlatformChannel.HapticFeedbackType paramHapticFeedbackType)
   {
     View localView = this.activity.getWindow().getDecorView();
@@ -216,7 +234,7 @@ public class PlatformPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     io.flutter.plugin.platform.PlatformPlugin
  * JD-Core Version:    0.7.0.1
  */

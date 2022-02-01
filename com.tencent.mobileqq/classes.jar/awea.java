@@ -1,32 +1,17 @@
-import android.annotation.SuppressLint;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.onlinestatus.AutoReplyEditActivity;
+import android.os.Handler;
+import android.os.Looper;
 
-public class awea
-  implements View.OnTouchListener
+final class awea
+  extends awej<Handler, Void>
 {
-  public awea(AutoReplyEditActivity paramAutoReplyEditActivity) {}
-  
-  @SuppressLint({"ClickableViewAccessibility"})
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  protected Handler a(Void paramVoid)
   {
-    switch (paramMotionEvent.getAction())
-    {
-    }
-    for (;;)
-    {
-      return false;
-      paramView.setAlpha(0.5F);
-      continue;
-      paramView.setAlpha(1.0F);
-    }
+    return new Handler(Looper.getMainLooper());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     awea
  * JD-Core Version:    0.7.0.1
  */

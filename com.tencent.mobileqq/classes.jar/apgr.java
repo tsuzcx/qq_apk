@@ -1,18 +1,12 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.datareportviewer.DataReportSettingFragment;
-
 public class apgr
-  implements CompoundButton.OnCheckedChangeListener
 {
-  public apgr(DataReportSettingFragment paramDataReportSettingFragment) {}
+  public int a;
+  public String a;
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public apgr(int paramInt, String paramString)
   {
-    if (!paramBoolean) {
-      aphn.a().a();
-    }
-    aphn.a = paramBoolean;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
 }
 

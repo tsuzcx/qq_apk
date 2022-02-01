@@ -1,117 +1,75 @@
-import android.view.MotionEvent;
-import android.view.View;
+import android.graphics.Bitmap;
+import android.graphics.drawable.ColorDrawable;
+import android.support.annotation.NonNull;
+import com.tencent.image.RegionDrawable;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.HashSet;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class xxj
-  implements xxh
+  implements xxm
 {
-  protected int a = 1;
+  private final HashSet<URLDrawable> jdField_a_of_type_JavaUtilHashSet = new HashSet();
+  private final ConcurrentHashMap<String, HashSet<xxn>> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
   
-  public void a(int paramInt)
+  private Bitmap a(@NonNull URLDrawable paramURLDrawable, int paramInt1, int paramInt2)
   {
-    this.a = paramInt;
-  }
-  
-  public void a(View paramView, float paramFloat)
-  {
-    if (this.a == 1)
+    Object localObject = paramURLDrawable.getCurrDrawable();
+    if ((localObject instanceof RegionDrawable))
     {
-      paramView.setTranslationY(paramFloat);
-      return;
-    }
-    paramView.setTranslationX(paramFloat);
-  }
-  
-  public void a(View paramView, float paramFloat, MotionEvent paramMotionEvent)
-  {
-    if (this.a == 1)
-    {
-      paramView.setTranslationY(paramFloat);
-      paramMotionEvent.offsetLocation(0.0F, paramFloat - paramMotionEvent.getY(0));
-      return;
-    }
-    paramView.setTranslationX(paramFloat);
-    paramMotionEvent.offsetLocation(paramFloat - paramMotionEvent.getX(0), 0.0F);
-  }
-  
-  public void a(View paramView, xxe paramxxe)
-  {
-    if (this.a == 1)
-    {
-      paramxxe.jdField_a_of_type_AndroidUtilProperty = View.TRANSLATION_Y;
-      paramxxe.jdField_a_of_type_Float = paramView.getTranslationY();
-      paramxxe.b = paramView.getHeight();
-      return;
-    }
-    paramxxe.jdField_a_of_type_AndroidUtilProperty = View.TRANSLATION_X;
-    paramxxe.jdField_a_of_type_Float = paramView.getTranslationX();
-    paramxxe.b = paramView.getWidth();
-  }
-  
-  public boolean a(View paramView)
-  {
-    if (this.a == 1) {
-      if (paramView.canScrollVertically(-1)) {}
-    }
-    while (!paramView.canScrollHorizontally(-1))
-    {
-      return true;
-      return false;
-    }
-    return false;
-  }
-  
-  public boolean a(View paramView, xxk paramxxk, MotionEvent paramMotionEvent)
-  {
-    boolean bool2 = false;
-    boolean bool1 = false;
-    if (paramMotionEvent.getHistorySize() == 0) {}
-    float f1;
-    float f2;
-    do
-    {
-      return false;
-      f1 = paramMotionEvent.getY(0) - paramMotionEvent.getHistoricalY(0, 0);
-      f2 = paramMotionEvent.getX(0) - paramMotionEvent.getHistoricalX(0, 0);
-      if (this.a != 1) {
-        break;
-      }
-    } while (Math.abs(f1) < Math.abs(f2));
-    paramxxk.jdField_a_of_type_Float = paramView.getTranslationY();
-    paramxxk.b = f1;
-    if (paramxxk.b > 0.0F) {
-      bool1 = true;
-    }
-    for (paramxxk.jdField_a_of_type_Boolean = bool1;; paramxxk.jdField_a_of_type_Boolean = bool1)
-    {
-      return true;
-      if (Math.abs(f2) < Math.abs(f1)) {
-        break;
-      }
-      paramxxk.jdField_a_of_type_Float = paramView.getTranslationX();
-      paramxxk.b = f2;
-      bool1 = bool2;
-      if (paramxxk.b > 0.0F) {
-        bool1 = true;
+      localObject = ((RegionDrawable)localObject).getBitmap();
+      if (localObject != null) {
+        return localObject;
       }
     }
+    return bgmo.a(paramURLDrawable, paramInt1, paramInt2);
   }
   
-  public boolean b(View paramView)
+  public void a(String paramString, int paramInt1, int paramInt2, xxn paramxxn)
   {
-    if (this.a == 1) {
-      if (paramView.canScrollVertically(1)) {}
-    }
-    while (!paramView.canScrollHorizontally(1))
+    Object localObject = URLDrawable.URLDrawableOptions.obtain();
+    ((URLDrawable.URLDrawableOptions)localObject).mFailedDrawable = new ColorDrawable(1073741824);
+    ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = ((URLDrawable.URLDrawableOptions)localObject).mFailedDrawable;
+    try
     {
-      return true;
-      return false;
+      URL localURL = new URL(paramString);
+      localObject = URLDrawable.getDrawable(localURL, (URLDrawable.URLDrawableOptions)localObject);
+      ((URLDrawable)localObject).setURLDrawableListener(new xxk(this, paramString, paramInt1, paramInt2, (URLDrawable)localObject));
+      ((URLDrawable)localObject).setAutoDownload(true);
+      if (((URLDrawable)localObject).getStatus() != 1) {
+        break label177;
+      }
+      yqp.a("story.icon.ShareGroupIconManager", "download url success directly. %s", paramString);
+      localObject = a((URLDrawable)localObject, paramInt1, paramInt2);
+      if (localObject != null)
+      {
+        paramxxn.a(paramString, (Bitmap)localObject);
+        return;
+      }
     }
-    return false;
+    catch (MalformedURLException localMalformedURLException)
+    {
+      yqp.d("story.icon.ShareGroupIconManager", localMalformedURLException, "can not download url. %s", new Object[] { paramString });
+      paramxxn.a(paramString, new Throwable("getBitmapFromDrawable failed"));
+      return;
+    }
+    yqp.e("story.icon.ShareGroupIconManager", "download url success directly. but OOM occur !");
+    paramxxn.a(paramString, new Throwable("getBitmapFromDrawable failed"));
+    return;
+    label177:
+    yqp.a("story.icon.ShareGroupIconManager", "download url pending. %s", paramString);
+    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.putIfAbsent(paramString, new HashSet());
+    ((HashSet)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString)).add(paramxxn);
+    this.jdField_a_of_type_JavaUtilHashSet.add(localMalformedURLException);
+    localMalformedURLException.startDownload();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     xxj
  * JD-Core Version:    0.7.0.1
  */

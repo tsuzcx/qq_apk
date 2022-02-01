@@ -1,24 +1,12 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.widget.TextView;
-import com.tencent.biz.videostory.widget.easylyric.SingleLyricView;
-
-public class zbm
-  extends AnimatorListenerAdapter
+public abstract interface zbm
 {
-  public zbm(SingleLyricView paramSingleLyricView) {}
+  public abstract int a();
   
-  public void onAnimationCancel(Animator paramAnimator)
-  {
-    super.onAnimationCancel(paramAnimator);
-    if (SingleLyricView.a(this.a) != null) {
-      SingleLyricView.a(this.a).setAlpha(1.0F);
-    }
-  }
+  public abstract zbc a(int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     zbm
  * JD-Core Version:    0.7.0.1
  */

@@ -1,10 +1,10 @@
 public abstract interface binl
 {
-  public abstract void a(boolean paramBoolean, int paramInt1, int paramInt2);
+  public abstract void a();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     binl
  * JD-Core Version:    0.7.0.1
  */

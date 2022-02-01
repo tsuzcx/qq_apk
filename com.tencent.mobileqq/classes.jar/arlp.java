@@ -1,85 +1,18 @@
-import android.content.Context;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ChatMessage;
+import android.os.Message;
+import mqq.os.MqqHandler;
 
-public abstract class arlp
-  extends arlv
+class arlp
+  implements azhn
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  arlp(arlo paramarlo, int paramInt) {}
   
-  public arlp(QQAppInterface paramQQAppInterface, Context paramContext)
+  public void a(int paramInt1, azhm paramazhm, int paramInt2, String paramString)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-  }
-  
-  protected abstract int a();
-  
-  protected abstract long a();
-  
-  public SessionInfo a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
-  }
-  
-  public ChatMessage a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqDataChatMessage;
-  }
-  
-  protected abstract String a();
-  
-  public void a(SessionInfo paramSessionInfo)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = paramSessionInfo;
-  }
-  
-  public void a(ChatMessage paramChatMessage)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqDataChatMessage = paramChatMessage;
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  protected abstract String b();
-  
-  public void b(boolean paramBoolean)
-  {
-    this.b = paramBoolean;
-  }
-  
-  public boolean b()
-  {
-    String str = a();
-    long l = a();
-    if (bdhb.b(b())) {
-      return false;
+    if (this.jdField_a_of_type_Arlo.a.hasMessages(0))
+    {
+      this.jdField_a_of_type_Arlo.a.removeMessages(0);
+      this.jdField_a_of_type_Arlo.a.obtainMessage(0, this.jdField_a_of_type_Int, 0).sendToTarget();
     }
-    int i = a();
-    if ((i == 2) || ((this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a == 1) && (i == 8))) {
-      return false;
-    }
-    if (arrr.a(str) != 2) {
-      return false;
-    }
-    if (!arrr.a()) {
-      return false;
-    }
-    if ((!TextUtils.isEmpty(str)) && (l > 0L) && (l > ((aqud)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(317)).a(bckt.a(str)).b)) {
-      return true;
-    }
-    return l > 1048576L;
   }
 }
 

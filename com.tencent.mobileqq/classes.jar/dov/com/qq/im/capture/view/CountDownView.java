@@ -9,8 +9,8 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import blzy;
-import blzz;
+import botc;
+import botd;
 import com.tencent.ttpic.baseutils.audio.PlayerUtil;
 import com.tencent.ttpic.baseutils.audio.PlayerUtil.Player;
 import com.tencent.ttpic.baseutils.log.LogUtils;
@@ -21,10 +21,10 @@ public class CountDownView
 {
   private static final String jdField_a_of_type_JavaLangString = CountDownView.class.getSimpleName();
   private int jdField_a_of_type_Int;
-  private Handler jdField_a_of_type_AndroidOsHandler = new blzy(this);
+  private Handler jdField_a_of_type_AndroidOsHandler = new botc(this);
   private Animation jdField_a_of_type_AndroidViewAnimationAnimation;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private blzz jdField_a_of_type_Blzz;
+  private botd jdField_a_of_type_Botd;
   private PlayerUtil.Player jdField_a_of_type_ComTencentTtpicBaseutilsAudioPlayerUtil$Player;
   private AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(true);
   private boolean jdField_a_of_type_Boolean;
@@ -33,7 +33,7 @@ public class CountDownView
   public CountDownView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_AndroidViewAnimationAnimation = AnimationUtils.loadAnimation(paramContext, 2130772007);
+    this.jdField_a_of_type_AndroidViewAnimationAnimation = AnimationUtils.loadAnimation(paramContext, 2130772008);
   }
   
   private void a(int paramInt)
@@ -42,8 +42,8 @@ public class CountDownView
     if (paramInt == 0)
     {
       setVisibility(4);
-      if (this.jdField_a_of_type_Blzz != null) {
-        this.jdField_a_of_type_Blzz.b();
+      if (this.jdField_a_of_type_Botd != null) {
+        this.jdField_a_of_type_Botd.b();
       }
       return;
     }
@@ -87,8 +87,8 @@ public class CountDownView
       this.jdField_a_of_type_Int = 0;
       this.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
       setVisibility(4);
-      if (this.jdField_a_of_type_Blzz != null) {
-        this.jdField_a_of_type_Blzz.a();
+      if (this.jdField_a_of_type_Botd != null) {
+        this.jdField_a_of_type_Botd.a();
       }
     }
   }
@@ -108,17 +108,17 @@ public class CountDownView
   protected void onFinishInflate()
   {
     super.onFinishInflate();
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131375633));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131376358));
   }
   
-  public void setCountDownListener(blzz paramblzz)
+  public void setCountDownListener(botd parambotd)
   {
-    this.jdField_a_of_type_Blzz = paramblzz;
+    this.jdField_a_of_type_Botd = parambotd;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     dov.com.qq.im.capture.view.CountDownView
  * JD-Core Version:    0.7.0.1
  */

@@ -1,160 +1,539 @@
 import android.content.Context;
-import android.content.res.Resources;
-import android.text.TextUtils;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.RelativeLayout.LayoutParams;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.ad.materialdownload.AdMaterialResManager.2;
+import com.tencent.biz.pubaccount.readinjoy.ad.materialdownload.AdMaterialResManager.3;
+import com.tencent.biz.pubaccount.readinjoy.ad.materialdownload.AdMaterialResManager.5;
+import com.tencent.biz.pubaccount.readinjoy.ad.materialdownload.MaterialData;
+import com.tencent.biz.pubaccount.readinjoy.skin.BaseResData;
+import com.tencent.common.app.AppInterface;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.mobileqq.persistence.EntityManager;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashSet;
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map.Entry;
 import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.CopyOnWriteArrayList;
+import mqq.app.MainService;
 import org.json.JSONObject;
 
 public class oon
-  implements ooe
+  extends rcu
 {
-  private int jdField_a_of_type_Int = 10;
-  private ArticleInfo jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo;
-  private String jdField_a_of_type_JavaLangString = "GuideHelper";
-  private Set<String> jdField_a_of_type_JavaUtilSet = new HashSet();
-  private boolean jdField_a_of_type_Boolean;
-  private int jdField_b_of_type_Int;
-  private String jdField_b_of_type_JavaLangString;
+  private String jdField_a_of_type_JavaLangString = "adMaterial";
+  private List<MaterialData> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private CopyOnWriteArrayList<MaterialData> jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList = new CopyOnWriteArrayList();
+  private oom jdField_a_of_type_Oom = new ooo(this);
+  private ConcurrentHashMap<String, MaterialData> b = new ConcurrentHashMap();
   
-  private void a(String paramString, ArticleInfo paramArticleInfo)
+  public oon(AppInterface paramAppInterface)
   {
-    orz localorz = new orz();
-    localorz.i().b("wording", "" + otd.a());
-    olt.a(paramString, paramArticleInfo, localorz);
+    super(paramAppInterface);
   }
   
-  public View a(ViewGroup paramViewGroup, View paramView, Context paramContext, omt paramomt)
+  private Long a(MaterialData paramMaterialData)
   {
-    if (!a(paramomt)) {
-      return paramView;
+    paramMaterialData = this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.query(MaterialData.class, MaterialData.class.getSimpleName(), true, "id=?", new String[] { String.valueOf(paramMaterialData.id) }, null, null, null, null);
+    if ((paramMaterialData != null) && (paramMaterialData.size() == 1)) {
+      return Long.valueOf(((MaterialData)paramMaterialData.get(0)).getId());
     }
-    if ((!TextUtils.isEmpty(paramomt.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.innerUniqueID)) && (!this.jdField_a_of_type_JavaUtilSet.contains(paramomt.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.innerUniqueID)))
-    {
-      a("0X8009FE9", paramomt.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo);
-      this.jdField_a_of_type_JavaUtilSet.add(paramomt.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.innerUniqueID);
-    }
-    this.jdField_a_of_type_Boolean = true;
-    RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)paramViewGroup.getLayoutParams();
-    if (localLayoutParams.bottomMargin >= 0) {
-      localLayoutParams.setMargins(localLayoutParams.leftMargin, localLayoutParams.topMargin, localLayoutParams.rightMargin, paramViewGroup.getContext().getResources().getDimensionPixelOffset(2131298626));
-    }
-    paramViewGroup.setLayoutParams(localLayoutParams);
-    if (paramView != null) {}
-    for (;;)
-    {
-      paramView.setOnClickListener(new ooo(this, paramomt, paramContext));
-      return paramView;
-      paramView = LayoutInflater.from(paramContext).inflate(2131560146, null);
-    }
+    return Long.valueOf(-1L);
   }
   
-  public void a(int paramInt)
+  private List<MaterialData> a()
   {
-    QLog.d(this.jdField_a_of_type_JavaLangString, 1, "showGuidePagerNum : " + paramInt);
-    this.jdField_a_of_type_Int = paramInt;
+    return this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.query(MaterialData.class);
   }
   
-  public void a(ArticleInfo paramArticleInfo)
+  private List<MaterialData> a(int paramInt)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo = paramArticleInfo;
-  }
-  
-  public void a(String paramString)
-  {
-    QLog.d(this.jdField_a_of_type_JavaLangString, 1, "extraInfo : " + paramString);
-    if (TextUtils.isEmpty(paramString)) {
-      return;
+    long l = NetConnInfoCenter.getServerTime();
+    String str = this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin();
+    if (paramInt == -1) {
+      return this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.query(MaterialData.class, MaterialData.class.getSimpleName(), true, "uin=? and end_time>? and isReady=?", new String[] { str, String.valueOf(l), String.valueOf(1) }, null, null, null, null);
     }
+    return this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.query(MaterialData.class, MaterialData.class.getSimpleName(), true, "uin=? and end_time>? and isReady=? and ad_type=?", new String[] { str, String.valueOf(l), String.valueOf(1), String.valueOf(paramInt) }, null, null, null, null);
+  }
+  
+  private ConcurrentHashMap<String, MaterialData> a()
+  {
+    Object localObject2 = new ArrayList();
     try
     {
-      this.jdField_b_of_type_JavaLangString = new JSONObject(paramString).getString("app_schema");
-      QLog.d(this.jdField_a_of_type_JavaLangString, 1, "scheme : " + this.jdField_b_of_type_JavaLangString);
-      return;
+      localObject1 = a(-1);
+      if (localObject1 == null) {
+        break label109;
+      }
+      localObject2 = new ConcurrentHashMap();
+      localObject1 = ((List)localObject1).iterator();
+      while (((Iterator)localObject1).hasNext())
+      {
+        MaterialData localMaterialData = (MaterialData)((Iterator)localObject1).next();
+        ((ConcurrentHashMap)localObject2).put(localMaterialData.id, localMaterialData);
+      }
     }
-    catch (Exception paramString)
+    catch (Exception localException)
     {
-      QLog.d(this.jdField_a_of_type_JavaLangString, 1, "setGuideExtraInfo : ", paramString);
-    }
-  }
-  
-  public void a(boolean paramBoolean, ViewGroup paramViewGroup)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.jdField_b_of_type_Int = 0;
-    if (paramViewGroup == null) {
-      return;
-    }
-    RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)paramViewGroup.getLayoutParams();
-    if (!paramBoolean) {
-      localLayoutParams.setMargins(localLayoutParams.leftMargin, localLayoutParams.topMargin, localLayoutParams.rightMargin, paramViewGroup.getContext().getResources().getDimensionPixelOffset(2131298624));
-    }
-    paramViewGroup.setLayoutParams(localLayoutParams);
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  public boolean a(List<omt> paramList)
-  {
-    int i = this.jdField_b_of_type_Int;
-    if ((!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) && (i > this.jdField_a_of_type_Int) && (paramList != null))
-    {
-      omt localomt = new omt(6, null, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo);
-      Iterator localIterator = paramList.iterator();
-      while (localIterator.hasNext()) {
-        if (((omt)localIterator.next()).jdField_a_of_type_Int == 6) {
-          localIterator.remove();
+      for (;;)
+      {
+        Object localObject1 = localObject2;
+        if (QLog.isColorLevel())
+        {
+          QLog.d("AdMaterialResManager", 2, "getMaterialDataList query  failed " + QLog.getStackTraceString(localException));
+          localObject1 = localObject2;
         }
       }
-      paramList.add(localomt);
-      QLog.d(this.jdField_a_of_type_JavaLangString, 1, "addGuidePager : " + i + "  articleInfo :" + this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo);
-      return true;
     }
+    return localObject2;
+    label109:
+    return new ConcurrentHashMap();
+  }
+  
+  public static oon a(QQAppInterface paramQQAppInterface)
+  {
+    return (oon)paramQQAppInterface.getManager(337);
+  }
+  
+  private void a(MaterialData paramMaterialData)
+  {
+    try
+    {
+      if (this.b != null) {
+        this.b.remove(paramMaterialData.id);
+      }
+      bgmg.a(paramMaterialData.res_path, false);
+      this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.delete(MaterialData.class.getSimpleName(), "id=? ", new String[] { String.valueOf(paramMaterialData.id) });
+      return;
+    }
+    catch (Exception paramMaterialData)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.d("AdMaterialResManager", 2, "clearExpireData failed " + QLog.getStackTraceString(paramMaterialData));
+    }
+  }
+  
+  public static void a(MaterialData paramMaterialData, boolean paramBoolean, String paramString)
+  {
+    a(paramMaterialData, paramBoolean, paramString, null, "resource_download_key");
+  }
+  
+  public static void a(MaterialData paramMaterialData, boolean paramBoolean, String paramString1, String paramString2)
+  {
+    a(paramMaterialData, paramBoolean, paramString1, paramString2, "resource_fetch_key");
+  }
+  
+  private static void a(MaterialData paramMaterialData, boolean paramBoolean, String paramString1, String paramString2, String paramString3)
+  {
+    int i = 1;
+    QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+    if (localQQAppInterface == null) {
+      return;
+    }
+    if (paramBoolean) {}
+    for (;;)
+    {
+      try
+      {
+        JSONObject localJSONObject = new JSONObject();
+        localJSONObject.put("result", i);
+        localJSONObject.put("reason", paramString1);
+        localJSONObject.put("os", "Android");
+        if ((!paramString3.equals("resource_fetch_key")) && (paramMaterialData != null))
+        {
+          localJSONObject.put("adId", paramMaterialData.adid);
+          localJSONObject.put("adSource", paramMaterialData.ad_source);
+          localJSONObject.put("resUrl", paramMaterialData.url);
+          localJSONObject.put("resMD5", paramMaterialData.res_md5);
+          localJSONObject.put("version", paramMaterialData.res_version);
+          localJSONObject.put("type", paramMaterialData.ad_type);
+          localJSONObject.put("startTime", paramMaterialData.start_time);
+          localJSONObject.put("endTime", paramMaterialData.end_time);
+          localJSONObject.put("delivery_effect", paramMaterialData.delivery_effect);
+        }
+        if (paramString2 != null) {
+          localJSONObject.put("content", paramString2);
+        }
+        bcrt.a(localQQAppInterface, "sendtdbank|b_pcg_ffc_game_dev_qq_kandian_commercial|ad_resource_statistics_report", paramString3 + "|" + localJSONObject.toString(), true);
+        return;
+      }
+      catch (Exception paramMaterialData)
+      {
+        return;
+      }
+      i = 0;
+    }
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface)
+  {
+    boolean bool = true;
+    if (paramQQAppInterface == null) {}
+    do
+    {
+      return;
+      if ((NetConnInfoCenter.getServerTime() - bgsg.i(paramQQAppInterface.getApp(), paramQQAppInterface.c()) > ook.a) || (oqr.a().f()) || (MainService.isDebugVersion))
+      {
+        ThreadManagerV2.excute(new AdMaterialResManager.5(paramQQAppInterface), 128, null, true);
+        return;
+      }
+    } while (!QLog.isColorLevel());
+    StringBuilder localStringBuilder = new StringBuilder().append("previewMode: ").append(oqr.a().f()).append(" Aladdin: ").append(oqr.e()).append("   interval:");
+    if (NetConnInfoCenter.getServerTime() - bgsg.i(paramQQAppInterface.getApp(), paramQQAppInterface.c()) > ook.a) {}
+    for (;;)
+    {
+      QLog.i("AdMaterialResManager", 2, bool);
+      return;
+      bool = false;
+    }
+  }
+  
+  private void a(String paramString)
+  {
+    ThreadManagerV2.excute(new AdMaterialResManager.3(this, paramString), 64, null, true);
+  }
+  
+  private void a(ArrayList<MaterialData> paramArrayList)
+  {
+    if ((paramArrayList != null) && (paramArrayList.size() != 0))
+    {
+      b(paramArrayList);
+      a(paramArrayList);
+      this.jdField_a_of_type_JavaUtilList = b();
+      if (this.jdField_a_of_type_JavaUtilList == null) {
+        break label86;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("AdMaterialResManager", 2, "ad_material need download num =  " + this.jdField_a_of_type_JavaUtilList.size());
+      }
+      a(this.jdField_a_of_type_JavaUtilList);
+    }
+    label86:
+    while (!QLog.isColorLevel()) {
+      return;
+    }
+    QLog.d("AdMaterialResManager", 2, "ad_material are already downloaded ");
+  }
+  
+  private boolean a(ArrayList<MaterialData> paramArrayList)
+  {
+    for (;;)
+    {
+      MaterialData localMaterialData;
+      try
+      {
+        paramArrayList = paramArrayList.iterator();
+        if (!paramArrayList.hasNext()) {
+          break;
+        }
+        localMaterialData = (MaterialData)paramArrayList.next();
+        long l = a(localMaterialData).longValue();
+        if (l != -1L)
+        {
+          localMaterialData.setId(l);
+          localMaterialData.setStatus(1001);
+          if (!QLog.isColorLevel()) {
+            continue;
+          }
+          QLog.d("AdMaterialResManager", 4, "[insert new] already had set data adid = " + localMaterialData.adid);
+          continue;
+        }
+        if (!QLog.isColorLevel()) {
+          break label170;
+        }
+      }
+      catch (Exception paramArrayList)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("AdMaterialResManager", 2, "[insert new]  failed " + QLog.getStackTraceString(paramArrayList));
+        }
+        return false;
+      }
+      QLog.d("AdMaterialResManager", 4, "[insert new] data adid =  " + localMaterialData.adid);
+      label170:
+      this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.persistOrReplace(localMaterialData);
+    }
+    return true;
+  }
+  
+  private List<MaterialData> b()
+  {
+    ArrayList localArrayList = new ArrayList();
+    try
+    {
+      long l = NetConnInfoCenter.getServerTime();
+      Object localObject = this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin();
+      localObject = this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.query(MaterialData.class, MaterialData.class.getSimpleName(), true, "uin=? and end_time>? and isReady=?", new String[] { localObject, String.valueOf(l), String.valueOf(0) }, null, null, null, null);
+      return localObject;
+    }
+    catch (Exception localException)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("AdMaterialResManager", 2, "getMaterialDataList query  failed " + QLog.getStackTraceString(localException));
+      }
+    }
+    return localArrayList;
+  }
+  
+  private void b(MaterialData paramMaterialData)
+  {
+    paramMaterialData.res_path = "";
+    paramMaterialData.isReady = false;
+    this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.update(paramMaterialData);
+  }
+  
+  public static void b(MaterialData paramMaterialData, boolean paramBoolean, String paramString)
+  {
+    a(paramMaterialData, paramBoolean, paramString, null, "resource_use_key");
+  }
+  
+  private void b(ArrayList<MaterialData> paramArrayList)
+  {
+    c();
+    ArrayList localArrayList = new ArrayList();
+    Object localObject = a();
+    if ((localObject == null) || (((List)localObject).size() == 0)) {
+      return;
+    }
+    Iterator localIterator1 = ((List)localObject).iterator();
+    if (localIterator1.hasNext())
+    {
+      localObject = (MaterialData)localIterator1.next();
+      Iterator localIterator2 = paramArrayList.iterator();
+      label72:
+      if (localIterator2.hasNext())
+      {
+        MaterialData localMaterialData = (MaterialData)localIterator2.next();
+        if ((!((MaterialData)localObject).id.equals(localMaterialData.id)) || ((((MaterialData)localObject).res_md5.equals(localMaterialData.res_md5)) && (((MaterialData)localObject).res_version == localMaterialData.res_version))) {
+          break label233;
+        }
+        if (QLog.isColorLevel()) {
+          QLog.d("AdMaterialResManager", 2, "not the same res_version or md5 update material data ,id =  " + ((MaterialData)localObject).id);
+        }
+        long l = ((MaterialData)localObject).getId();
+        localObject = ((MaterialData)localObject).res_path;
+        localMaterialData.setId(l);
+        localMaterialData.setStatus(1001);
+        localMaterialData.res_path = ((String)localObject);
+        localArrayList.add(localMaterialData);
+        localObject = localMaterialData;
+      }
+    }
+    label233:
+    for (;;)
+    {
+      break label72;
+      break;
+      b(localArrayList);
+      return;
+    }
+  }
+  
+  private void b(List<MaterialData> paramList)
+  {
+    if (paramList != null) {
+      try
+      {
+        if (paramList.size() != 0)
+        {
+          paramList = paramList.iterator();
+          while (paramList.hasNext())
+          {
+            MaterialData localMaterialData = (MaterialData)paramList.next();
+            bgmg.a(localMaterialData.res_path, false);
+            localMaterialData.res_path = "";
+            if (this.b != null) {
+              this.b.put(localMaterialData.id, localMaterialData);
+            }
+            if ((!this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.update(localMaterialData)) && (QLog.isColorLevel())) {
+              QLog.d("AdMaterialResManager", 2, "updateDataByList failed data id =  " + localMaterialData.id);
+            }
+          }
+        }
+        return;
+      }
+      catch (Exception paramList)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("AdMaterialResManager", 2, "updateDataByList failed " + QLog.getStackTraceString(paramList));
+        }
+      }
+    }
+  }
+  
+  private List<MaterialData> c()
+  {
+    ArrayList localArrayList = new ArrayList();
+    try
+    {
+      long l = NetConnInfoCenter.getServerTime();
+      List localList = this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.query(MaterialData.class, MaterialData.class.getSimpleName(), true, "uin=? and end_time<?", new String[] { this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin(), String.valueOf(l) }, null, null, null, null);
+      return localList;
+    }
+    catch (Exception localException)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("AdMaterialResManager", 2, "getMaterialDataList query  failed " + QLog.getStackTraceString(localException));
+      }
+    }
+    return localArrayList;
+  }
+  
+  private void c()
+  {
+    Object localObject = c();
+    if ((localObject != null) && (((List)localObject).size() != 0))
+    {
+      localObject = ((List)localObject).iterator();
+      while (((Iterator)localObject).hasNext()) {
+        a((MaterialData)((Iterator)localObject).next());
+      }
+    }
+  }
+  
+  private void c(MaterialData paramMaterialData)
+  {
+    a(this.jdField_a_of_type_JavaLangString, paramMaterialData, 1);
+  }
+  
+  public String a(String paramString1, String paramString2)
+  {
+    paramString1 = paramString1 + "_" + paramString2;
+    if ((this.b != null) && (this.b.get(paramString1) != null))
+    {
+      paramString1 = (MaterialData)this.b.get(paramString1);
+      if (paramString1 != null)
+      {
+        if (bgmg.a(paramString1.res_path)) {
+          return paramString1.res_path;
+        }
+        b(paramString1);
+      }
+    }
+    return "";
+  }
+  
+  public CopyOnWriteArrayList<MaterialData> a(int paramInt)
+  {
+    this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.clear();
+    Iterator localIterator = this.b.entrySet().iterator();
+    while (localIterator.hasNext())
+    {
+      Map.Entry localEntry = (Map.Entry)localIterator.next();
+      if (((MaterialData)localEntry.getValue()).ad_type == paramInt) {
+        if (bgmg.a(((MaterialData)localEntry.getValue()).res_path)) {
+          this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.add(localEntry.getValue());
+        } else {
+          b((MaterialData)localEntry.getValue());
+        }
+      }
+    }
+    return this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList;
+  }
+  
+  public void a()
+  {
+    if ((this.jdField_a_of_type_ComTencentCommonAppAppInterface != null) && (this.jdField_a_of_type_Oom != null))
+    {
+      this.jdField_a_of_type_ComTencentCommonAppAppInterface.addObserver(this.jdField_a_of_type_Oom);
+      ThreadManagerV2.excute(new AdMaterialResManager.2(this), 32, null, true);
+    }
+  }
+  
+  public void a(Context paramContext, String paramString, BaseResData paramBaseResData) {}
+  
+  public void a(String paramString, BaseResData paramBaseResData)
+  {
+    paramBaseResData.isReady = true;
+    paramBaseResData.business = paramString;
+    if ((paramBaseResData instanceof MaterialData))
+    {
+      ((MaterialData)paramBaseResData).res_path = b(paramString, paramBaseResData.id);
+      if (bgmg.a(((MaterialData)paramBaseResData).res_path)) {
+        break label93;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("AdMaterialResManager", 2, "download finish update db material res_path file not exist  id = " + paramBaseResData.id);
+      }
+      a((MaterialData)paramBaseResData, false, "res_path file not exist");
+    }
+    label93:
+    do
+    {
+      do
+      {
+        return;
+        a((MaterialData)paramBaseResData, true, "no error");
+        paramBaseResData.setStatus(1001);
+        if (!this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.update(paramBaseResData)) {
+          break;
+        }
+        if (QLog.isColorLevel()) {
+          QLog.d("AdMaterialResManager", 2, "download finish update db material id = " + paramBaseResData.id);
+        }
+      } while (this.b == null);
+      this.b.put(paramBaseResData.id, (MaterialData)paramBaseResData);
+      return;
+    } while (!QLog.isColorLevel());
+    QLog.d("AdMaterialResManager", 2, "download finish update db material failed  id = " + paramBaseResData.id);
+  }
+  
+  public void a(String paramString1, String paramString2)
+  {
+    paramString1 = paramString1 + "_" + paramString2;
+    if ((this.b != null) && (this.b.get(paramString1) != null))
+    {
+      paramString2 = (MaterialData)this.b.get(paramString1);
+      bgmg.a(paramString2.res_path, false);
+      b(paramString2);
+      this.b.put(paramString1, paramString2);
+      if (QLog.isColorLevel()) {
+        QLog.d("AdMaterialResManager", 2, "deleteDirById success id = " + paramString1);
+      }
+    }
+    while (!QLog.isColorLevel()) {
+      return;
+    }
+    QLog.d("AdMaterialResManager", 2, "deleteDirById failed id = " + paramString1);
+  }
+  
+  public void a(List<MaterialData> paramList)
+  {
+    if ((paramList != null) && (paramList.size() != 0))
+    {
+      paramList = paramList.iterator();
+      while (paramList.hasNext()) {
+        c((MaterialData)paramList.next());
+      }
+    }
+  }
+  
+  public boolean a(String paramString, BaseResData paramBaseResData)
+  {
     return false;
   }
   
-  public boolean a(omt paramomt)
+  public void b(String paramString, BaseResData paramBaseResData) {}
+  
+  public boolean b(String paramString, BaseResData paramBaseResData)
   {
-    return (paramomt != null) && (paramomt.jdField_a_of_type_Int == 6);
+    return false;
   }
   
-  public void onCommentCreate(boolean paramBoolean, omt paramomt, List<omt> paramList, int paramInt) {}
-  
-  public void onCommentCreate(boolean paramBoolean1, omt paramomt, boolean paramBoolean2, List<omt> paramList, int paramInt) {}
-  
-  public void onCommentDelete(int paramInt1, boolean paramBoolean, omt paramomt, int paramInt2) {}
-  
-  public void onCommentLikeOrDislike(boolean paramBoolean, String paramString, int paramInt1, int paramInt2) {}
-  
-  public void onCommentListLoad(int paramInt1, boolean paramBoolean1, List<omt> paramList, boolean paramBoolean2, int paramInt2, int paramInt3)
+  public void onDestroy()
   {
-    this.jdField_b_of_type_Int = 1;
-    a(paramList);
+    if (this.jdField_a_of_type_Oom != null) {
+      this.jdField_a_of_type_ComTencentCommonAppAppInterface.removeObserver(this.jdField_a_of_type_Oom);
+    }
+    super.onDestroy();
   }
-  
-  public void onCommentLoadMore(int paramInt1, boolean paramBoolean1, List<omt> paramList, boolean paramBoolean2, int paramInt2)
-  {
-    this.jdField_b_of_type_Int += 1;
-    a(paramList);
-  }
-  
-  public void onCommentReply(boolean paramBoolean, omt paramomt) {}
-  
-  public void onCommentStateError(int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     oon
  * JD-Core Version:    0.7.0.1
  */

@@ -1,27 +1,23 @@
-import GROUP.MessageRemindRsp;
+import android.app.Activity;
+import android.view.View;
+import com.tencent.mobileqq.activity.ChatActivityUtils;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.TroopManager;
-import com.tencent.qphone.base.util.QLog;
 
-public class agvn
-  extends amcd
+class agvn
+  implements bkhw
 {
-  public agvn(TroopChatPie paramTroopChatPie) {}
+  agvn(agvj paramagvj, bkho parambkho) {}
   
-  public void a(boolean paramBoolean, MessageRemindRsp paramMessageRemindRsp)
+  public void OnClick(View paramView, int paramInt)
   {
-    if (paramBoolean)
+    this.jdField_a_of_type_Bkho.dismiss();
+    switch (paramInt)
     {
-      if (QLog.isColorLevel()) {
-        QLog.e("vip_pretty." + this.a.jdField_a_of_type_JavaLangString, 2, "SVIPObserver.onGetBigTroopExpiredInfo, troopUin: " + this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString + " iFreezedType=" + paramMessageRemindRsp.iFreezedType + " iLhGroupExpiredTime=" + paramMessageRemindRsp.iLhGroupExpiredTime + " iGroupType=" + paramMessageRemindRsp.iGroupType);
-      }
-      ((TroopManager)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(52)).a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, paramMessageRemindRsp);
-      TroopManager.a(paramMessageRemindRsp, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_AndroidContentContext, this.a, TroopChatPie.b(this.a));
+    default: 
       return;
     }
-    QLog.e("vip_pretty." + this.a.jdField_a_of_type_JavaLangString, 2, String.format("SVIPObserver.onGetBigTroopExpiredInfo, troopUin: %s, isSuccess: false", new Object[] { this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString }));
+    ChatActivityUtils.a(this.jdField_a_of_type_Agvj.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (Activity)this.jdField_a_of_type_Agvj.a.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Agvj.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, this.jdField_a_of_type_Agvj.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, true, true, null, null);
+    bcst.b(this.jdField_a_of_type_Agvj.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8005976", "0X8005976", 0, 0, "", "", "", "");
   }
 }
 

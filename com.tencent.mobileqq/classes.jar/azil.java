@@ -1,21 +1,22 @@
-final class azil
-  extends azio
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import com.tencent.mobileqq.profile.stickynote.publish.ui.StickyNotePublishFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
+public class azil
+  implements View.OnClickListener
 {
-  public double a(int paramInt1, int paramInt2)
+  public azil(StickyNotePublishFragment paramStickyNotePublishFragment) {}
+  
+  public void onClick(View paramView)
   {
-    double d2 = paramInt1 / (paramInt1 + paramInt2);
-    double d3 = paramInt2 / (paramInt1 + paramInt2);
-    double d1 = 0.0D;
-    if (paramInt1 > 0)
-    {
-      d1 = -d2;
-      d1 = 0.0D + Math.log(d2) * d1;
-    }
-    d2 = d1;
-    if (paramInt2 > 0) {
-      d2 = d1 + -d3 * Math.log(d3);
-    }
-    return d2 / Math.log(2.0D);
+    this.a.a(0);
+    this.a.b(false);
+    StickyNotePublishFragment.a(this.a).setImageResource(2130844814);
+    StickyNotePublishFragment.a(this.a).setContentDescription(this.a.getActivity().getString(2131690185));
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

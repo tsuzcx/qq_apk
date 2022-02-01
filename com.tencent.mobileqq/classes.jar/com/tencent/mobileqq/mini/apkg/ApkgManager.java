@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.mini.apkg;
 
-import alud;
 import android.content.SharedPreferences;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
+import anni;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.component.network.downloader.Downloader.DownloadMode;
 import com.tencent.mobileqq.app.ThreadManagerV2;
@@ -21,7 +21,7 @@ import com.tencent.mobileqq.mini.utils.WxapkgUnpacker;
 import com.tencent.mobileqq.minigame.utils.GameWnsUtils;
 import com.tencent.qphone.base.util.MD5;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqmini.sdk.utils.MD5Utils;
+import com.tencent.qqmini.sdk.launcher.utils.MD5Utils;
 import java.io.File;
 import java.net.URL;
 import java.util.Iterator;
@@ -328,7 +328,7 @@ public class ApkgManager
       paramOnGetApkgInfoListener.onGetApkgInfo(paramString1, 0, "");
       return;
     }
-    paramOnGetApkgInfoListener.onGetApkgInfo(null, 3, alud.a(2131700669));
+    paramOnGetApkgInfoListener.onGetApkgInfo(null, 3, anni.a(2131699095));
   }
   
   private void onInitApkgInfo(ApkgManager.OnInitApkgListener paramOnInitApkgListener, int paramInt, ApkgInfo paramApkgInfo, String paramString)
@@ -354,18 +354,16 @@ public class ApkgManager
     {
       this.subRoot = "";
       str1 = paramApkgInfo.appConfig.config.downloadUrl;
-      if (QLog.isColorLevel()) {
-        QLog.d("ApkgManager", 1, "downloadSubPack | downPage=" + paramString + "; subPackDownloadUrl=" + str1);
-      }
+      QLog.d("ApkgManager", 1, "downloadSubPack | downPage=" + paramString + "; subPackDownloadUrl=" + str1);
       if (!TextUtils.isEmpty(str1)) {
-        break label136;
+        break label130;
       }
       QLog.e("ApkgManager", 1, "subPackDownloadUrl is null, return.");
       if (paramOnInitApkgListener != null) {
         paramOnInitApkgListener.onInitApkgInfo(1, paramApkgInfo, null);
       }
     }
-    label136:
+    label130:
     do
     {
       return;
@@ -373,12 +371,12 @@ public class ApkgManager
       str1 = getSubPkgDownloadUrl(paramApkgInfo, this.subRoot);
       break;
       if (("/__APP__/".equals(paramString)) || (!new File(str2, this.subRoot).exists())) {
-        break label178;
+        break label172;
       }
     } while (paramOnInitApkgListener == null);
     paramOnInitApkgListener.onInitApkgInfo(0, paramApkgInfo, null);
     return;
-    label178:
+    label172:
     if (!TextUtils.isEmpty(str1))
     {
       str2 = PATH_WXAPKG_ROOT + paramApkgInfo.appConfig.config.appId + '_' + paramApkgInfo.appConfig.config.version + ".qapkg";
@@ -457,7 +455,7 @@ public class ApkgManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.apkg.ApkgManager
  * JD-Core Version:    0.7.0.1
  */

@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.app;
 
-import alxa;
 import android.database.SQLException;
 import android.os.SystemClock;
 import android.util.Pair;
-import awgg;
-import awgn;
+import anqg;
+import ayvj;
 import com.tencent.mobileqq.app.proxy.ProxyManager;
 import com.tencent.mobileqq.data.ChatMessage;
 import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.data.QQEntityManagerFactory;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -17,14 +17,14 @@ import java.util.List;
 public class MessageRoamManager$2
   implements Runnable
 {
-  public MessageRoamManager$2(alxa paramalxa, String paramString1, String paramString2, String paramString3, Pair paramPair, long paramLong) {}
+  public MessageRoamManager$2(anqg paramanqg, String paramString1, String paramString2, String paramString3, Pair paramPair, long paramLong) {}
   
   public void run()
   {
     if (QLog.isColorLevel()) {}
     for (long l1 = SystemClock.uptimeMillis();; l1 = 0L)
     {
-      this.this$0.a.a().d();
+      this.this$0.a.a().transSaveToDatabase();
       Object localObject2;
       try
       {
@@ -42,7 +42,7 @@ public class MessageRoamManager$2
       {
         for (;;)
         {
-          List localList2 = ((awgn)this.this$0.a.getEntityManagerFactory().createMessageRecordEntityManager()).a(MessageRecord.class, this.jdField_a_of_type_JavaLangString, false, this.c, null, null, null, null, null);
+          List localList2 = ((ayvj)this.this$0.a.a().createMessageRecordEntityManager()).query(MessageRecord.class, this.jdField_a_of_type_JavaLangString, false, this.c, null, null, null, null, null);
         }
       }
       catch (Exception localException)
@@ -83,7 +83,7 @@ public class MessageRoamManager$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.app.MessageRoamManager.2
  * JD-Core Version:    0.7.0.1
  */

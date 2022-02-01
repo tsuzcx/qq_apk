@@ -1,56 +1,103 @@
-import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import com.tencent.qphone.base.util.QLog;
-import java.util.UUID;
 
-class aqvf
-  extends aqvc
+public class aqvf
+  extends aqkz<aqvd>
 {
-  private long jdField_a_of_type_Long;
-  private Bundle jdField_a_of_type_AndroidOsBundle;
-  private aqva jdField_a_of_type_Aqva;
-  private bbxs jdField_a_of_type_Bbxs = new aqvg(this);
-  private String jdField_a_of_type_JavaLangString;
-  private UUID jdField_a_of_type_JavaUtilUUID;
-  private boolean jdField_a_of_type_Boolean;
-  private long jdField_b_of_type_Long;
-  private String jdField_b_of_type_JavaLangString;
-  
-  private aqvf(aque paramaque, String paramString1, String paramString2)
+  public static aqvd a()
   {
-    super(paramaque);
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    this.jdField_a_of_type_AndroidOsBundle = new Bundle();
-    this.jdField_a_of_type_AndroidOsBundle.putString("_m_ForwardFileName", this.jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_AndroidOsBundle.putString("_m_ForwardFilePath", this.jdField_b_of_type_JavaLangString);
-    QLog.d("FileMultiMsgManager<FileAssistant>", 1, "TroopUploadTaskExcuter begin filename " + this.jdField_a_of_type_JavaLangString);
+    aqvd localaqvd2 = (aqvd)aqlk.a().a(583);
+    aqvd localaqvd1 = localaqvd2;
+    if (localaqvd2 == null) {
+      localaqvd1 = new aqvd();
+    }
+    return localaqvd1;
   }
   
-  void a(String paramString, int paramInt)
+  @NonNull
+  public aqvd a(int paramInt)
   {
-    QLog.d("FileMultiMsgManager<FileAssistant>", 1, "TroopUploadTaskExcuter stopped WorkerId[" + this.jdField_a_of_type_JavaUtilUUID + "] filename " + this.jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_Boolean = true;
-    bbxo.a().a(this.jdField_a_of_type_JavaUtilUUID, null);
+    if (QLog.isColorLevel()) {
+      QLog.e("ExtendFriendBannerProcessor", 2, "migrateOldOrDefaultContent ");
+    }
+    return new aqvd();
   }
   
-  void a(String paramString, int paramInt, aqva paramaqva)
+  @Nullable
+  public aqvd a(aqlg[] paramArrayOfaqlg)
   {
-    if (paramaqva == null)
+    if (QLog.isColorLevel()) {
+      QLog.d("ExtendFriendBannerProcessor", 2, "onParsed start");
+    }
+    if ((paramArrayOfaqlg != null) && (paramArrayOfaqlg.length > 0))
     {
-      QLog.e("FileMultiMsgManager<FileAssistant>", 1, "TroopUploadTaskExcuter run but callback is null filename " + this.jdField_a_of_type_JavaLangString);
+      if (QLog.isColorLevel()) {
+        QLog.d("ExtendFriendBannerProcessor", 2, "onParsed " + paramArrayOfaqlg.length);
+      }
+      return aqvd.a(paramArrayOfaqlg[0]);
+    }
+    return null;
+  }
+  
+  public void a(aqvd paramaqvd)
+  {
+    StringBuilder localStringBuilder;
+    if (QLog.isColorLevel())
+    {
+      localStringBuilder = new StringBuilder().append("onUpdate ");
+      if (paramaqvd == null) {
+        break label43;
+      }
+    }
+    label43:
+    for (paramaqvd = paramaqvd.toString();; paramaqvd = " empty")
+    {
+      QLog.d("ExtendFriendBannerProcessor", 2, paramaqvd);
       return;
     }
-    this.jdField_a_of_type_Aqva = paramaqva;
-    this.jdField_b_of_type_Long = Long.parseLong(paramString);
-    this.jdField_a_of_type_AndroidOsBundle.putString("_m_ForwardReceiverUin", String.valueOf(this.jdField_b_of_type_Long));
-    this.jdField_a_of_type_JavaUtilUUID = UUID.randomUUID();
-    QLog.d("FileMultiMsgManager<FileAssistant>", 1, "TroopUploadTaskExcuter run WorkerId[" + this.jdField_a_of_type_JavaUtilUUID + "] filename " + this.jdField_a_of_type_JavaLangString);
-    bbxo.a().a(this.jdField_a_of_type_JavaUtilUUID, this.jdField_b_of_type_Long, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_Bbxs);
+  }
+  
+  public Class<aqvd> clazz()
+  {
+    return aqvd.class;
+  }
+  
+  public boolean isNeedCompressed()
+  {
+    return true;
+  }
+  
+  public boolean isNeedStoreLargeFile()
+  {
+    return false;
+  }
+  
+  public boolean isNeedUpgradeReset()
+  {
+    return true;
+  }
+  
+  public int migrateOldVersion()
+  {
+    return 0;
+  }
+  
+  public void onReqFailed(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.e("ExtendFriendBannerProcessor", 2, "onReqFailed " + paramInt);
+    }
+  }
+  
+  public int type()
+  {
+    return 583;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aqvf
  * JD-Core Version:    0.7.0.1
  */

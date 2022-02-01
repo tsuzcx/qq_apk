@@ -13,26 +13,29 @@ public final class MixPackage
   static Map<Integer, byte[]> cache_mixMap;
   public Map<Integer, byte[]> mixMap = null;
   
-  public final void readFrom(a parama)
+  protected Object clone()
+  {
+    return super.clone();
+  }
+  
+  public void readFrom(a parama)
   {
     if (cache_mixMap == null)
     {
       cache_mixMap = new HashMap();
-      byte[] arrayOfByte = (byte[])new byte[1];
-      ((byte[])arrayOfByte)[0] = 0;
-      cache_mixMap.put(Integer.valueOf(0), arrayOfByte);
+      cache_mixMap.put(Integer.valueOf(0), new byte[] { 0 });
     }
     this.mixMap = ((Map)parama.a(cache_mixMap, 0, true));
   }
   
-  public final void writeTo(b paramb)
+  public void writeTo(b paramb)
   {
     paramb.a(this.mixMap, 0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.tencent.beacon.core.protocol.common.MixPackage
  * JD-Core Version:    0.7.0.1
  */

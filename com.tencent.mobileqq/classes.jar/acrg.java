@@ -1,6 +1,11 @@
+import com.tencent.gdtad.statistics.GdtReporter;
+
 public class acrg
 {
-  public boolean a;
+  public static void a(String paramString)
+  {
+    GdtReporter.doCgiReport(paramString);
+  }
 }
 
 

@@ -1,20 +1,43 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.activity.TroopAssisSettingActivity;
+import com.tencent.mobileqq.activity.DiscussionInfoCardActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.DiscussionInfo;
+import com.tencent.mobileqq.data.Friends;
+import com.tencent.qphone.base.util.QLog;
 
 public class aebo
-  implements CompoundButton.OnCheckedChangeListener
+  extends anmu
 {
-  public aebo(TroopAssisSettingActivity paramTroopAssisSettingActivity) {}
+  public aebo(DiscussionInfoCardActivity paramDiscussionInfoCardActivity) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  protected void onSetComment(boolean paramBoolean, String paramString1, String paramString2, byte paramByte)
   {
-    switch (paramCompoundButton.getId())
+    if (paramBoolean)
     {
-    default: 
+      this.a.a();
+      DiscussionInfoCardActivity.a(this.a, DiscussionInfoCardActivity.b(this.a));
+      DiscussionInfoCardActivity.a(this.a).notifyDataSetChanged();
+    }
+    while ((this.a.jdField_a_of_type_Biau == null) || (!this.a.jdField_a_of_type_Biau.isShowing()) || (this.a.isFinishing())) {
       return;
     }
-    auam.a().a(this.a.app, paramBoolean);
+    this.a.jdField_a_of_type_Biau.dismiss();
+  }
+  
+  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
+  {
+    if (paramBoolean) {
+      if ((this.a.jdField_a_of_type_ComTencentMobileqqDataDiscussionInfo != null) && (this.a.jdField_a_of_type_ComTencentMobileqqDataDiscussionInfo.ownerUin != null))
+      {
+        paramString = ((anmw)this.a.app.getManager(51)).e(this.a.jdField_a_of_type_ComTencentMobileqqDataDiscussionInfo.ownerUin + "");
+        if (paramString != null) {
+          this.a.d = paramString.name;
+        }
+      }
+    }
+    while (!QLog.isColorLevel()) {
+      return;
+    }
+    QLog.d("DiscussionInfoCardActivity", 2, "onUpdateFriendInfo get owner name failed");
   }
 }
 

@@ -1,34 +1,14 @@
-import android.app.Activity;
-import android.view.View;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.content.Context;
+import android.widget.LinearLayout;
+import com.tencent.mobileqq.data.MessageRecord;
 
-public abstract interface ahoe
+public class ahoe
+  implements ahor
 {
-  public abstract Activity a();
-  
-  public abstract View a();
-  
-  public abstract aryv a();
-  
-  public abstract bhsl a();
-  
-  public abstract QQAppInterface a();
-  
-  public abstract void a(int paramInt, boolean paramBoolean);
-  
-  public abstract void a(Runnable paramRunnable);
-  
-  public abstract void a(String paramString);
-  
-  public abstract boolean a();
-  
-  public abstract View b();
-  
-  public abstract boolean b();
-  
-  public abstract View c();
-  
-  public abstract View d();
+  public void a(agup paramagup, MessageRecord paramMessageRecord, agwc paramagwc, afzq paramafzq, String paramString, LinearLayout paramLinearLayout, Context paramContext)
+  {
+    paramagup.b(paramagwc, paramString);
+  }
 }
 
 

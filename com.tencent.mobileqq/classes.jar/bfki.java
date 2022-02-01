@@ -1,22 +1,13 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.open.appstore.component.CommonTitleBar;
-
-public class bfki
-  implements View.OnClickListener
+public abstract class bfki
+  implements bfkh
 {
-  public bfki(CommonTitleBar paramCommonTitleBar) {}
+  public abstract void a(Object paramObject);
   
-  public void onClick(View paramView)
-  {
-    if (CommonTitleBar.a(this.a) != null) {
-      CommonTitleBar.a(this.a).a();
-    }
-  }
+  public abstract void b(Object paramObject);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bfki
  * JD-Core Version:    0.7.0.1
  */

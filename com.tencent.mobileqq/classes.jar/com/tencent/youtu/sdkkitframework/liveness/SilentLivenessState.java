@@ -487,7 +487,7 @@ public class SilentLivenessState
       }
     }
     if (!this.isLoadResourceOnline) {
-      YTUtils.loadLibrary("YTFaceTrackPro2");
+      YTUtils.loadLibrary("YTFaceTrackPro");
     }
     paramString = YtFSM.getInstance().getContext().currentCamera.getParameters().getPreviewSize();
     this.cameraRotateState = YtFSM.getInstance().getContext().currentRotateState;
@@ -605,7 +605,7 @@ public class SilentLivenessState
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.youtu.sdkkitframework.liveness.SilentLivenessState
  * JD-Core Version:    0.7.0.1
  */

@@ -1,7 +1,31 @@
-public class bedq
-  implements alpg
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.widget.ListView;
+
+class bedq
+  implements Animator.AnimatorListener
 {
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject) {}
+  bedq(bedo parambedo) {}
+  
+  public void onAnimationCancel(Animator paramAnimator)
+  {
+    bedo.a(this.a).setPadding(bggq.a(bedo.a(this.a).getContext(), 8.0F), -bedo.a(this.a), 0, 0);
+    bedo.a(this.a, false);
+  }
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    bedo.a(this.a).setPadding(bggq.a(bedo.a(this.a).getContext(), 8.0F), 0, 0, 0);
+    bedo.a(this.a, false);
+  }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    bedo.a(this.a).setPadding(bggq.a(bedo.a(this.a).getContext(), 8.0F), -bedo.a(this.a), 0, 0);
+    bedo.a(this.a, true);
+  }
 }
 
 

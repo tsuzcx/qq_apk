@@ -1,28 +1,22 @@
-import com.tencent.mobileqq.activity.TroopAssistantActivity;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.activity.DiscussionInfoCardActivity;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class aebv
-  extends ameq
+  extends anif
 {
-  public aebv(TroopAssistantActivity paramTroopAssistantActivity) {}
+  public aebv(DiscussionInfoCardActivity paramDiscussionInfoCardActivity) {}
   
-  protected void a(int paramInt1, int paramInt2, String paramString)
+  protected void a(boolean paramBoolean, int paramInt, String paramString1, String paramString2, Boolean paramBoolean1)
   {
-    if (paramInt1 == 6) {
-      if (paramInt2 == 0) {
-        this.a.a.sendEmptyMessage(1);
+    this.a.e();
+    if (paramBoolean)
+    {
+      if (paramBoolean1.booleanValue()) {
+        DiscussionInfoCardActivity.e(this.a);
       }
-    }
-    while ((paramInt1 != 2) || (paramInt2 != 0)) {
       return;
     }
-    auam.a().b(paramString, this.a.app);
-    this.a.c();
-  }
-  
-  protected void b(String paramString)
-  {
-    this.a.c();
+    QQToast.a(this.a, paramInt, 0).b(this.a.getTitleBarHeight());
   }
 }
 

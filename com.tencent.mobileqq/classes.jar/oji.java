@@ -1,25 +1,23 @@
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.readinjoy.comment.CommentInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.ReadInJoyUserInfo;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyNewFeedsActivity.2;
+import com.tencent.qphone.base.util.QLog;
 
-public final class oji
-  implements pgr
+public class oji
+  implements nkl
 {
-  public oji(CommentInfo paramCommentInfo) {}
+  public oji(ReadInJoyNewFeedsActivity.2 param2) {}
   
-  public void a(String paramString, ReadInJoyUserInfo paramReadInJoyUserInfo)
+  public void loaded(String paramString, int paramInt)
   {
-    if ((TextUtils.isEmpty(paramString)) || (!paramString.equalsIgnoreCase(this.a.authorUin)) || (paramReadInJoyUserInfo == null)) {
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadInJoyNewFeedsActivity", 2, "load 3256 html web resource finish");
     }
-    this.a.authorNickName = paramReadInJoyUserInfo.nick;
   }
   
-  public void a(String paramString1, String paramString2) {}
+  public void progress(int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     oji
  * JD-Core Version:    0.7.0.1
  */

@@ -1,21 +1,48 @@
-import android.os.Handler;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.activity.history.ChatHistoryTroopFileFragment;
-import com.tencent.mobileqq.activity.history.ChatHistoryTroopFileFragment.9.1;
-import com.tencent.mobileqq.app.ThreadManagerV2;
+import android.view.View;
 
-public class aibj
-  extends yuc
+class aibj
+  implements bkhw
 {
-  public aibj(ChatHistoryTroopFileFragment paramChatHistoryTroopFileFragment) {}
+  aibj(aiay paramaiay, boolean paramBoolean, bkho parambkho) {}
   
-  public void a(boolean paramBoolean, long paramLong1, long paramLong2, int paramInt)
+  public void OnClick(View paramView, int paramInt)
   {
-    if ((this.a.getActivity() == null) || (this.a.getActivity().isFinishing())) {}
-    while (!paramBoolean) {
-      return;
+    switch (paramInt)
+    {
     }
-    ThreadManagerV2.getUIHandlerV2().post(new ChatHistoryTroopFileFragment.9.1(this, paramLong1, paramLong2));
+    for (;;)
+    {
+      try
+      {
+        this.jdField_a_of_type_Bkho.dismiss();
+        return;
+      }
+      catch (Exception paramView)
+      {
+        paramView.printStackTrace();
+      }
+      if (this.jdField_a_of_type_Boolean)
+      {
+        this.jdField_a_of_type_Aiay.bA();
+      }
+      else
+      {
+        this.jdField_a_of_type_Aiay.by();
+        continue;
+        if (this.jdField_a_of_type_Boolean)
+        {
+          this.jdField_a_of_type_Aiay.by();
+        }
+        else
+        {
+          this.jdField_a_of_type_Aiay.bx();
+          continue;
+          if (this.jdField_a_of_type_Boolean) {
+            this.jdField_a_of_type_Aiay.bx();
+          }
+        }
+      }
+    }
   }
 }
 

@@ -1,89 +1,64 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import android.content.Context;
+import android.os.Looper;
+import android.view.LayoutInflater;
+import android.widget.FrameLayout;
+import android.widget.RelativeLayout;
+import android.widget.RelativeLayout.LayoutParams;
+import android.widget.TextView;
 import com.tencent.qphone.base.util.QLog;
 
 public class aose
-  extends aokh<aosd>
 {
-  @NonNull
-  public static aosd a()
+  private Context jdField_a_of_type_AndroidContentContext;
+  private FrameLayout jdField_a_of_type_AndroidWidgetFrameLayout;
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private volatile boolean jdField_a_of_type_Boolean;
+  
+  public aose(Context paramContext)
   {
-    aosd localaosd2 = (aosd)aoks.a().a(435);
-    aosd localaosd1 = localaosd2;
-    if (localaosd2 == null) {
-      localaosd1 = new aosd();
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    a();
+  }
+  
+  private void a()
+  {
+    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131561039, null));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidWidgetFrameLayout.findViewById(2131381276));
+  }
+  
+  public void a(RelativeLayout paramRelativeLayout)
+  {
+    QLog.d("ARTransferPromotionUIContainer", 2, "attachToRootViewGroup");
+    if (this.jdField_a_of_type_Boolean) {
+      return;
     }
-    return localaosd1;
+    RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, -2);
+    localLayoutParams.addRule(12);
+    localLayoutParams.bottomMargin = afur.a(57.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
+    paramRelativeLayout.addView(this.jdField_a_of_type_AndroidWidgetFrameLayout, localLayoutParams);
+    this.jdField_a_of_type_Boolean = true;
   }
   
-  public int a()
+  public void a(String paramString)
   {
-    return 435;
+    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(paramString);
   }
   
-  @NonNull
-  public aosd a(int paramInt)
+  public void b(RelativeLayout paramRelativeLayout)
   {
-    return new aosd();
-  }
-  
-  @Nullable
-  public aosd a(aoko[] paramArrayOfaoko)
-  {
-    Object localObject2 = null;
-    Object localObject1 = localObject2;
-    if (paramArrayOfaoko != null)
-    {
-      localObject1 = localObject2;
-      if (paramArrayOfaoko.length > 0) {
-        localObject1 = aosd.a(paramArrayOfaoko);
-      }
+    QLog.d("ARTransferPromotionUIContainer", 2, "disattachFromRootViewGroup");
+    if (!this.jdField_a_of_type_Boolean) {}
+    while (Thread.currentThread() != Looper.getMainLooper().getThread()) {
+      return;
     }
-    return localObject1;
-  }
-  
-  public Class<aosd> a()
-  {
-    return aosd.class;
-  }
-  
-  public void a(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("TroopUrlConfProcessor", 2, "onReqFailed " + paramInt);
-    }
-  }
-  
-  public void a(aosd paramaosd)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("TroopUrlConfProcessor", 2, "onUpdate " + paramaosd.toString());
-    }
-  }
-  
-  public boolean a()
-  {
-    return true;
-  }
-  
-  public int b()
-  {
-    return 0;
-  }
-  
-  public boolean b()
-  {
-    return false;
-  }
-  
-  public boolean c()
-  {
-    return true;
+    paramRelativeLayout.removeView(this.jdField_a_of_type_AndroidWidgetFrameLayout);
+    this.jdField_a_of_type_Boolean = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aose
  * JD-Core Version:    0.7.0.1
  */

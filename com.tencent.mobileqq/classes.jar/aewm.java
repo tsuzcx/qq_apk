@@ -1,14 +1,16 @@
-import com.tencent.mobileqq.dinifly.LottieComposition;
-import com.tencent.mobileqq.dinifly.OnCompositionLoadedListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.QQIdentiferActivity;
 
-class aewm
-  implements OnCompositionLoadedListener
+public class aewm
+  implements DialogInterface.OnClickListener
 {
-  aewm(aewi paramaewi) {}
+  public aewm(QQIdentiferActivity paramQQIdentiferActivity) {}
   
-  public void onCompositionLoaded(LottieComposition paramLottieComposition)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    aewi.a(this.a, paramLottieComposition);
+    paramDialogInterface.dismiss();
+    this.a.finish();
   }
 }
 

@@ -1,29 +1,17 @@
-import android.os.Build.VERSION;
-import android.os.Process;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.profilecard.base.view.AbsProfileHeaderView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class azmx
+  implements View.OnClickListener
 {
-  private static Boolean a;
+  public azmx(AbsProfileHeaderView paramAbsProfileHeaderView, azfe paramazfe) {}
   
-  public static boolean a()
+  public void onClick(View paramView)
   {
-    if (a == null)
-    {
-      if (Build.VERSION.SDK_INT >= 21) {
-        break label28;
-      }
-      a = Boolean.valueOf(false);
-    }
-    for (;;)
-    {
-      return a.booleanValue();
-      label28:
-      if (Build.VERSION.SDK_INT >= 23) {
-        a = Boolean.valueOf(Process.is64Bit());
-      } else {
-        a = Boolean.valueOf(false);
-      }
-    }
+    AbsProfileHeaderView.a(this.jdField_a_of_type_ComTencentMobileqqProfilecardBaseViewAbsProfileHeaderView, this.jdField_a_of_type_Azfe);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

@@ -1,8 +1,19 @@
-public abstract interface arxq
+import android.content.Context;
+import android.widget.RadioButton;
+import com.tencent.mobileqq.emoticonview.EmoticonPagerRadioGroup;
+
+public class arxq
+  extends RadioButton
 {
-  public abstract void a(int paramInt);
+  public arxq(EmoticonPagerRadioGroup paramEmoticonPagerRadioGroup, Context paramContext)
+  {
+    super(paramContext);
+  }
   
-  public abstract void a(boolean paramBoolean1, String paramString, boolean paramBoolean2, boolean paramBoolean3);
+  public boolean performClick()
+  {
+    return true;
+  }
 }
 
 

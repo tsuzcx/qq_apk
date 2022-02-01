@@ -1,45 +1,30 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.redtouch.RedTouch;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Map;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.data.ForwardFileInfo;
 
 class atla
-  implements View.OnClickListener
+  implements atve
 {
   atla(atkz paramatkz) {}
   
-  public void onClick(View paramView)
+  public void a()
   {
-    int i = ((Integer)paramView.getTag(-1)).intValue();
-    aozs localaozs = (aozs)atkz.a(this.a).getItem(i);
-    if (localaozs == null) {
-      QLog.i("Q.lebatab.LebaListController", 1, "item == null ");
+    QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.sApplication.getRuntime();
+    localQQAppInterface.a().a(this.a.jdField_a_of_type_JavaLangString, null, localQQAppInterface.getAccount(), 0, false);
+    atvo.a(this.a.jdField_a_of_type_JavaLangString);
+    atvf.d(BaseActivity.sTopActivity.getString(2131692439));
+    if (this.a.jdField_a_of_type_Atmk != null) {
+      this.a.jdField_a_of_type_Atmk.a(1);
     }
-    Map localMap;
-    do
+    if (this.a.jdField_a_of_type_Atmk.c())
     {
-      return;
-      localMap = atkz.a(this.a).a();
-    } while (atkz.a(this.a) == null);
-    atli localatli = new atli();
-    localatli.jdField_a_of_type_Boolean = false;
-    localatli.jdField_a_of_type_Long = localaozs.jdField_a_of_type_Long;
-    Integer localInteger = null;
-    if (localMap != null) {
-      localInteger = (Integer)localMap.get(Long.valueOf(localaozs.jdField_a_of_type_Long));
-    }
-    if (localInteger == null) {}
-    for (i = 0;; i = localInteger.intValue())
-    {
-      localatli.jdField_a_of_type_Int = i;
-      if ((paramView instanceof RedTouch)) {
-        localatli.b = atlk.a((RedTouch)paramView);
-      }
-      atkz.a(this.a).a(paramView, localaozs, localatli);
-      return;
+      long l = this.a.jdField_a_of_type_Atmk.a().b();
+      atvo.a(this.a.jdField_a_of_type_Atmk.a(), l);
     }
   }
+  
+  public void b() {}
 }
 
 

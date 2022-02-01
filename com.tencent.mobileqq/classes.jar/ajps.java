@@ -1,32 +1,24 @@
-import android.os.MessageQueue.IdleHandler;
-import android.widget.Button;
-import com.tencent.mobileqq.activity.richmedia.FlowCameraActivity2;
-import com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
-import com.tencent.mobileqq.activity.richmedia.view.CameraGLSurfaceView;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.activity.history.ChatHistoryC2CAllFragment;
+import java.lang.ref.WeakReference;
 
 public class ajps
-  implements MessageQueue.IdleHandler
+  implements DialogInterface.OnCancelListener
 {
-  public ajps(FlowCameraActivity2 paramFlowCameraActivity2) {}
+  private final WeakReference<ChatHistoryC2CAllFragment> a;
   
-  public boolean queueIdle()
+  public ajps(ChatHistoryC2CAllFragment paramChatHistoryC2CAllFragment)
   {
-    if (azhf.d(azhf.b)) {
-      this.a.b(true);
-    }
-    for (;;)
-    {
-      if ((this.a.f) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewCameraGLSurfaceView != null)) {
-        this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewCameraGLSurfaceView.onResume();
-      }
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.a();
-      this.a.c.setEnabled(false);
-      if (QLog.isColorLevel()) {
-        QLog.i("PEAK_CAMERA", 2, "Added camera view.");
-      }
-      return false;
-      this.a.i();
+    this.a = new WeakReference(paramChatHistoryC2CAllFragment);
+  }
+  
+  public void onCancel(DialogInterface paramDialogInterface)
+  {
+    ChatHistoryC2CAllFragment localChatHistoryC2CAllFragment = (ChatHistoryC2CAllFragment)this.a.get();
+    if ((localChatHistoryC2CAllFragment != null) && (localChatHistoryC2CAllFragment.getActivity() != null) && (!localChatHistoryC2CAllFragment.getActivity().isFinishing())) {
+      paramDialogInterface.dismiss();
     }
   }
 }

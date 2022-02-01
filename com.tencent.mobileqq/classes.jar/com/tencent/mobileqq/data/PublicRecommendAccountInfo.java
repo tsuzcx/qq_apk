@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.data;
 
-import awge;
-import awhs;
 import com.tencent.mobileqq.mp.publicaccount_recommend.BusinessRecommend;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.persistence.Entity;
+import com.tencent.mobileqq.persistence.unique;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
 public class PublicRecommendAccountInfo
-  extends awge
+  extends Entity
 {
   private static final String TAG = "PublicRecommendAccountInfo";
   public int accountflag = -1;
@@ -23,7 +23,7 @@ public class PublicRecommendAccountInfo
   public int mFilter;
   public String mIconLinkAddr;
   public String mIsVerified;
-  @awhs
+  @unique
   public int mListid;
   public String mPublicaccount;
   public String mPublicdesc;
@@ -103,7 +103,7 @@ public class PublicRecommendAccountInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.data.PublicRecommendAccountInfo
  * JD-Core Version:    0.7.0.1
  */

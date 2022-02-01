@@ -1,135 +1,96 @@
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.FriendListHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.proxy.ProxyManager;
-import com.tencent.mobileqq.colornote.data.ColorNote;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
+import com.tencent.qphone.base.util.QLog;
+import java.nio.ByteBuffer;
+import tencent.im.oidb.oidb_sso.OIDBSSOPkg;
 
 public class aoee
+  extends aods
 {
-  public static final int[] a = { 17039360, 17104896, 16908289, 16908292 };
-  
-  public static aoeq a(int paramInt)
+  public aoee(QQAppInterface paramQQAppInterface, FriendListHandler paramFriendListHandler)
   {
-    switch (paramInt)
-    {
-    default: 
-      return null;
-    case 16908292: 
-      return new aoel();
-    case 17104896: 
-      return new aoem();
-    case 17039360: 
-      return new arin();
-    }
-    return new aoen();
+    super(paramQQAppInterface, paramFriendListHandler);
   }
   
-  public static List<ColorNote> a(int paramInt)
+  private int a(ToServiceMsg paramToServiceMsg)
   {
-    List localList1 = b(paramInt);
-    List localList2 = c(0);
-    if (localList1 == null) {
-      return null;
-    }
-    if ((localList2 == null) || (localList2.size() == 0)) {
-      return localList1;
-    }
-    ArrayList localArrayList = new ArrayList();
-    Iterator localIterator1 = localList1.iterator();
-    while (localIterator1.hasNext())
+    int i = 0;
+    try
     {
-      ColorNote localColorNote = (ColorNote)localIterator1.next();
-      Iterator localIterator2 = localList2.iterator();
-      while (localIterator2.hasNext()) {
-        if (aocr.a(localColorNote, (ColorNote)localIterator2.next())) {
-          localArrayList.add(localColorNote);
+      Object localObject = ByteBuffer.wrap(paramToServiceMsg.getWupBuffer());
+      paramToServiceMsg = new byte[((ByteBuffer)localObject).getInt() - 4];
+      ((ByteBuffer)localObject).get(paramToServiceMsg);
+      localObject = new oidb_sso.OIDBSSOPkg();
+      ((oidb_sso.OIDBSSOPkg)localObject).mergeFrom(paramToServiceMsg);
+      int j = ((oidb_sso.OIDBSSOPkg)localObject).uint32_service_type.get();
+      i = j;
+    }
+    catch (Exception paramToServiceMsg)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.d("FriendListHandler.BaseHandlerReceiver", 2, "getServiceTypeFromToServiceMsg error:" + paramToServiceMsg.getMessage());
+    }
+    return i;
+    return 0;
+  }
+  
+  private void c(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  {
+    int i = a(paramToServiceMsg);
+    Bundle localBundle = new Bundle();
+    localBundle.putLong("uin", paramToServiceMsg.extraData.getLong("uin"));
+    if (i == 147) {}
+    for (i = 72;; i = 71)
+    {
+      if ((paramObject == null) || (!paramFromServiceMsg.isSuccess()))
+      {
+        a(i, false, localBundle);
+        return;
+      }
+      try
+      {
+        paramToServiceMsg = new oidb_sso.OIDBSSOPkg();
+        paramToServiceMsg.mergeFrom((byte[])paramObject);
+        if ((paramToServiceMsg.uint32_result.has()) && (paramToServiceMsg.uint32_result.get() == 0))
+        {
+          paramToServiceMsg = ByteBuffer.wrap(paramToServiceMsg.bytes_bodybuffer.get().toByteArray());
+          long l = paramToServiceMsg.getInt();
+          paramToServiceMsg.getShort();
+          paramFromServiceMsg = new byte[4];
+          paramToServiceMsg.get(paramFromServiceMsg);
+          l = bgjw.a(paramFromServiceMsg, 0);
+          int j = paramToServiceMsg.get();
+          localBundle.putLong("uin", l);
+          localBundle.putInt("safety_flag", j & 0x1F);
+          a(i, true, localBundle);
+          return;
         }
       }
-    }
-    localList1.removeAll(localArrayList);
-    return localList1;
-  }
-  
-  public static List<ColorNote> a(List<ColorNote> paramList)
-  {
-    Object localObject = paramList;
-    if (paramList != null)
-    {
-      localObject = paramList;
-      if (paramList.size() > 3) {
-        localObject = paramList.subList(0, 3);
-      }
-    }
-    return localObject;
-  }
-  
-  static List<ColorNote> a(List<ColorNote> paramList, int paramInt)
-  {
-    ArrayList localArrayList = new ArrayList();
-    paramList = paramList.iterator();
-    while (paramList.hasNext())
-    {
-      ColorNote localColorNote = (ColorNote)paramList.next();
-      if (localColorNote.getServiceType() == paramInt) {
-        localArrayList.add(0, localColorNote);
-      }
-    }
-    return localArrayList;
-  }
-  
-  public static void a(ColorNote paramColorNote)
-  {
-    if ((paramColorNote == null) || (TextUtils.isEmpty(paramColorNote.getMainTitle()))) {
-      return;
-    }
-    paramColorNote = aocr.c(paramColorNote);
-    paramColorNote.setType(2);
-    aobx localaobx = new aobx();
-    localaobx.a(paramColorNote.getServiceType(), paramColorNote.getSubType(), 2);
-    localaobx.a(new aoef(localaobx, paramColorNote));
-    a(paramColorNote.getServiceType());
-  }
-  
-  private static void a(List<ColorNote> paramList)
-  {
-    if ((paramList != null) && (paramList.size() >= 20))
-    {
-      aobx localaobx = new aobx();
-      int i = 9;
-      while (i < paramList.size())
+      catch (Exception paramToServiceMsg)
       {
-        ColorNote localColorNote = (ColorNote)paramList.get(i);
-        localaobx.a(localColorNote.getServiceType(), localColorNote.getSubType(), 2);
-        i += 1;
+        if (QLog.isColorLevel()) {
+          QLog.d("FriendListHandler.BaseHandlerReceiver", 2, "handle_oidb_0x476 error:" + paramToServiceMsg.getMessage());
+        }
+        a(i, false, localBundle);
+        return;
       }
     }
   }
   
-  public static boolean a(int paramInt)
+  public boolean a(String paramString)
   {
-    if (BaseApplicationImpl.sProcessId == 1)
-    {
-      List localList = b(paramInt);
-      if ((localList != null) && (localList.size() > 20)) {
-        a(localList);
-      }
-      return true;
-    }
-    aoca.a(paramInt);
-    return true;
+    return ("OidbSvc.0x476_146".equals(paramString)) || ("OidbSvc.0x476_147".equals(paramString));
   }
   
-  public static List<ColorNote> b(int paramInt)
+  public void b(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
-    return a(c(2), paramInt);
-  }
-  
-  public static List<ColorNote> c(int paramInt)
-  {
-    return ((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).a().a().a(false, paramInt);
+    c(paramToServiceMsg, paramFromServiceMsg, paramObject);
   }
 }
 

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.qwallet.preload;
 
-import ajan;
+import aksg;
 import com.tencent.util.Pair;
 import java.io.Serializable;
 import java.util.List;
@@ -19,10 +19,11 @@ public class DownloadParam
   public String md5ForChecked = "";
   public long md5Time;
   public String url;
+  public boolean useQWalletConfig;
   
   public void standardlize()
   {
-    if (ajan.b) {
+    if (aksg.b) {
       this.filePos = 1;
     }
   }
@@ -34,7 +35,7 @@ public class DownloadParam
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.qwallet.preload.DownloadParam
  * JD-Core Version:    0.7.0.1
  */

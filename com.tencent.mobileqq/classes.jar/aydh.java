@@ -1,20 +1,20 @@
-import android.text.Editable;
-import android.text.Editable.Factory;
-import android.text.TextPaint;
-import android.widget.EditText;
-import com.tencent.mobileqq.richstatus.SignatureHistoryFragment;
+import android.view.View;
+import com.tencent.mobileqq.data.MessageForStructing;
+import com.tencent.mobileqq.now.message.MessageReceivingAdapter;
+import com.tencent.mobileqq.structmsg.StructMsgForGeneralShare;
 
 public class aydh
-  extends Editable.Factory
+  extends aydl
 {
-  public aydh(SignatureHistoryFragment paramSignatureHistoryFragment) {}
+  public aydh(MessageReceivingAdapter paramMessageReceivingAdapter, int paramInt, MessageForStructing paramMessageForStructing, StructMsgForGeneralShare paramStructMsgForGeneralShare) {}
   
-  public Editable newEditable(CharSequence paramCharSequence)
+  public boolean onClick(View paramView)
   {
-    if ((paramCharSequence instanceof bamz)) {
-      return (Editable)paramCharSequence;
+    ayej.b(this.jdField_a_of_type_Int + 1, aydg.b(this.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing), "1");
+    if (MessageReceivingAdapter.a(this.jdField_a_of_type_ComTencentMobileqqNowMessageMessageReceivingAdapter, paramView, this.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing, this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForGeneralShare)) {
+      return true;
     }
-    return new bamz(paramCharSequence, 3, (int)(SignatureHistoryFragment.a(this.a).getTextSize() / SignatureHistoryFragment.a(this.a).getPaint().density));
+    return super.onClick(paramView);
   }
 }
 

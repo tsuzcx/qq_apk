@@ -1,66 +1,57 @@
-import android.support.annotation.NonNull;
-import android.text.TextUtils;
-import com.tribe.async.dispatch.QQUIEventReceiver;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqBatchGetVideoInfo;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspBatchGetVideoInfo;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBRepeatField;
 import java.util.Iterator;
 import java.util.List;
 
-class wzk
-  extends QQUIEventReceiver<wzb, xfe>
+public class wzk
+  extends wlf<xba>
 {
-  public wzk(@NonNull wzb paramwzb)
+  private final String a;
+  public List<String> a;
+  
+  public wzk()
   {
-    super(paramwzb);
+    this.jdField_a_of_type_JavaLangString = wjz.a("StoryGroupSvc.datacard_batch_get_video_info");
   }
   
-  public void a(@NonNull wzb paramwzb, @NonNull xfe paramxfe)
+  public String a()
   {
-    wzl localwzl = paramwzb.jdField_a_of_type_Wzl;
-    int i = paramxfe.jdField_a_of_type_Int;
-    paramxfe = paramxfe.jdField_a_of_type_JavaUtilList;
-    paramwzb = paramwzb.jdField_a_of_type_Xhu;
-    if (localwzl != null)
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public wla a(byte[] paramArrayOfByte)
+  {
+    qqstory_service.RspBatchGetVideoInfo localRspBatchGetVideoInfo = new qqstory_service.RspBatchGetVideoInfo();
+    try
     {
-      if (i != 0)
-      {
-        wxe.b(this.TAG, "DoodleEmojiPoiPostersReceiver, location failed.");
-        paramwzb.jdField_a_of_type_Boolean = false;
-        localwzl.a(paramwzb);
-        wxk.a("0X80076CD");
-        wxk.b("0X80075E2");
-        return;
-      }
-      wxe.b(this.TAG, "DoodleEmojiPoiPostersReceiver, location success.");
-      paramwzb.jdField_a_of_type_JavaUtilList.clear();
-      paramxfe = paramxfe.iterator();
-      while (paramxfe.hasNext())
-      {
-        uxf localuxf = (uxf)paramxfe.next();
-        if ((TextUtils.isEmpty(localuxf.d)) || (TextUtils.isEmpty(localuxf.a)) || (TextUtils.isEmpty(localuxf.b))) {
-          wxe.d(this.TAG, "find illegal content : url=%s, name=%s, des=%s", new Object[] { localuxf.d, localuxf.a, localuxf.b });
-        }
-        xhv localxhv = new xhv();
-        localxhv.d = localuxf.d;
-        localxhv.b = localuxf.a;
-        localxhv.c = localuxf.b;
-        localxhv.a = localuxf.c;
-        localxhv.e = localuxf.e;
-        paramwzb.jdField_a_of_type_JavaUtilList.add(localxhv);
-      }
-      paramwzb.jdField_a_of_type_Boolean = false;
-      localwzl.a(paramwzb);
-      return;
+      localRspBatchGetVideoInfo.mergeFrom(paramArrayOfByte);
+      return new xba(localRspBatchGetVideoInfo);
     }
-    wxe.b(this.TAG, "DoodleEmojiPoiPostersReceiver adapter is null");
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      yqp.b("Q.qqstory.shareGroup:GetShareGroupVideoInfoRequest", a(), paramArrayOfByte);
+    }
+    return null;
   }
   
-  public Class acceptEventClass()
+  protected byte[] a()
   {
-    return xfe.class;
+    qqstory_service.ReqBatchGetVideoInfo localReqBatchGetVideoInfo = new qqstory_service.ReqBatchGetVideoInfo();
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext())
+    {
+      String str = (String)localIterator.next();
+      localReqBatchGetVideoInfo.story_id_list.add(ByteStringMicro.copyFromUtf8(str));
+    }
+    return localReqBatchGetVideoInfo.toByteArray();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     wzk
  * JD-Core Version:    0.7.0.1
  */

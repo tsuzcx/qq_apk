@@ -1,21 +1,23 @@
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
-import org.json.JSONObject;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseAdapter.47.1;
 
 public class soo
-  implements View.OnClickListener
+  implements Animation.AnimationListener
 {
-  public soo(BridgeModule paramBridgeModule, String paramString) {}
-  
-  public void onClick(View paramView)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule.invokeCallJS(this.jdField_a_of_type_JavaLangString, new JSONObject());
+    this.a.post(new ReadInJoyBaseAdapter.47.1(this));
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     soo
  * JD-Core Version:    0.7.0.1
  */

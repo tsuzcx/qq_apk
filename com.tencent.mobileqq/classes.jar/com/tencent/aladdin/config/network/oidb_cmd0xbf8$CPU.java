@@ -16,7 +16,7 @@ public final class oidb_cmd0xbf8$CPU
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.aladdin.config.network.oidb_cmd0xbf8.CPU
  * JD-Core Version:    0.7.0.1
  */

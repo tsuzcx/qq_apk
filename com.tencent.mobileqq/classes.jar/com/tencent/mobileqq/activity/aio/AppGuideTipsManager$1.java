@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.activity.aio;
 
-import aepn;
+import afvq;
 import android.text.TextUtils;
-import awgf;
 import com.tencent.mobileqq.data.AppGuideTipsConfig;
+import com.tencent.mobileqq.persistence.EntityManager;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.Map;
@@ -11,14 +11,14 @@ import java.util.Map;
 public class AppGuideTipsManager$1
   implements Runnable
 {
-  public AppGuideTipsManager$1(aepn paramaepn) {}
+  public AppGuideTipsManager$1(afvq paramafvq) {}
   
   public void run()
   {
-    aepn.a(this.this$0);
+    afvq.a(this.this$0);
     this.this$0.c();
-    aepn.a(this.this$0).clear();
-    ArrayList localArrayList = (ArrayList)aepn.a(this.this$0).a(AppGuideTipsConfig.class, AppGuideTipsConfig.class.getSimpleName(), false, null, null, null, null, null, null);
+    afvq.a(this.this$0).clear();
+    ArrayList localArrayList = (ArrayList)afvq.a(this.this$0).query(AppGuideTipsConfig.class, AppGuideTipsConfig.class.getSimpleName(), false, null, null, null, null, null, null);
     if ((localArrayList == null) || (localArrayList.size() <= 0)) {}
     for (;;)
     {
@@ -51,15 +51,15 @@ public class AppGuideTipsManager$1
         label174:
         j += 1;
         break label137;
-        aepn.a(this.this$0).put(localAppGuideTipsConfig.tipsType, localAppGuideTipsConfig);
+        afvq.a(this.this$0).put(localAppGuideTipsConfig.tipsType, localAppGuideTipsConfig);
         i += 1;
         break label71;
-        aepn.a(this.this$0, true);
+        afvq.a(this.this$0, true);
         this.this$0.b();
         if (!QLog.isColorLevel()) {
           continue;
         }
-        QLog.d(aepn.a, 2, "loadConfig, mTipsMap size=" + aepn.a(this.this$0).size());
+        QLog.d(afvq.a, 2, "loadConfig, mTipsMap size=" + afvq.a(this.this$0).size());
         return;
       }
       catch (Exception localException)
@@ -71,7 +71,7 @@ public class AppGuideTipsManager$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.AppGuideTipsManager.1
  * JD-Core Version:    0.7.0.1
  */

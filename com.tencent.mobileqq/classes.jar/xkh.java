@@ -1,35 +1,48 @@
-import android.content.Context;
-import android.text.TextUtils;
-import java.util.ArrayList;
-import java.util.Iterator;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.qqstory.playvideo.floatdialog.CommentFloatDialog.2.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import mqq.os.MqqHandler;
 
 public class xkh
+  implements View.OnClickListener
 {
-  public static xkl a(Context paramContext, String paramString)
+  xkh(xkf paramxkf) {}
+  
+  public void onClick(View paramView)
   {
-    paramContext = xkl.a(paramContext);
-    if (paramContext != null)
+    String str1;
+    if ((xkf.a(this.a) != null) && (xkf.a(this.a).a()))
     {
-      paramContext = paramContext.iterator();
-      while (paramContext.hasNext())
-      {
-        xkl localxkl = (xkl)paramContext.next();
-        if (TextUtils.equals(paramString, localxkl.a)) {
-          return localxkl;
-        }
+      xkf.a(this.a).c();
+      ThreadManager.getUIHandler().postDelayed(new CommentFloatDialog.2.1(this), 200L);
+      if (!this.a.a()) {
+        break label116;
+      }
+      str1 = "2";
+      label64:
+      if (!this.a.b()) {
+        break label122;
       }
     }
-    return null;
-  }
-  
-  public static boolean a(Context paramContext)
-  {
-    return !TextUtils.isEmpty(bdea.a(paramContext, "qqstory_savedMusicList"));
+    label116:
+    label122:
+    for (String str2 = "2";; str2 = "1")
+    {
+      yqu.a("play_video", "close_reply", 0, 1, new String[] { str1, str2 });
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      this.a.a();
+      break;
+      str1 = "1";
+      break label64;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     xkh
  * JD-Core Version:    0.7.0.1
  */

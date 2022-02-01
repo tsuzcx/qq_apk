@@ -1,25 +1,19 @@
-import android.content.res.Resources;
-import android.text.TextPaint;
-import android.text.style.ClickableSpan;
-import android.view.View;
-import com.tencent.mobileqq.activity.SoundAndVibrateActivity;
-import com.tencent.mobileqq.utils.VipUtils;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.Conversation;
 
 public class adyt
-  extends ClickableSpan
+  implements DialogInterface.OnClickListener
 {
-  public adyt(SoundAndVibrateActivity paramSoundAndVibrateActivity) {}
+  public adyt(Conversation paramConversation) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    SoundAndVibrateActivity.a(this.a);
-    VipUtils.a(this.a.app, "Vip_SpecialCare", "0X80049EE", "0X80049EE", 0, 1, null);
-  }
-  
-  public void updateDrawState(TextPaint paramTextPaint)
-  {
-    paramTextPaint.setUnderlineText(false);
-    paramTextPaint.setColor(this.a.getResources().getColor(2131166911));
+    if (paramDialogInterface == Conversation.a(this.a)) {
+      Conversation.a(this.a, null);
+    }
+    bcst.b(this.a.a, "CliOper", "", "", "0X800815E", "0X800815E", 0, 0, "", "", "", "");
+    bcst.b(this.a.a, "CliOper", "", "", "0X8008656", "0X8008656", 0, 0, "", "", "", "");
   }
 }
 

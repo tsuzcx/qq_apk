@@ -17,12 +17,13 @@ import android.view.animation.Interpolator;
 import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
 import androidx.annotation.Nullable;
-import uao;
-import uap;
-import uaq;
-import uas;
-import uat;
-import uau;
+import com.tencent.qphone.base.util.QLog;
+import vst;
+import vsu;
+import vsv;
+import vsx;
+import vsy;
+import vsz;
 
 public class QCircleTransitionImageView
   extends ImageView
@@ -35,11 +36,11 @@ public class QCircleTransitionImageView
   private RectF jdField_a_of_type_AndroidGraphicsRectF = new RectF();
   private ImageView.ScaleType jdField_a_of_type_AndroidWidgetImageView$ScaleType;
   private QCircleTransitionImageView.Transform jdField_a_of_type_ComTencentBizQqcircleTransitionQCircleTransitionImageView$Transform = new QCircleTransitionImageView.Transform(this);
-  private uaq jdField_a_of_type_Uaq;
-  private uau jdField_a_of_type_Uau;
+  private vsv jdField_a_of_type_Vsv;
+  private vsz jdField_a_of_type_Vsz;
   private boolean jdField_a_of_type_Boolean;
   private float jdField_b_of_type_Float;
-  private int jdField_b_of_type_Int = 500;
+  private int jdField_b_of_type_Int;
   private Matrix jdField_b_of_type_AndroidGraphicsMatrix = new Matrix();
   private PointF jdField_b_of_type_AndroidGraphicsPointF = new PointF();
   private RectF jdField_b_of_type_AndroidGraphicsRectF = new RectF();
@@ -50,7 +51,6 @@ public class QCircleTransitionImageView
   private PointF jdField_c_of_type_AndroidGraphicsPointF = new PointF();
   private RectF jdField_c_of_type_AndroidGraphicsRectF = new RectF();
   private boolean jdField_c_of_type_Boolean;
-  private int jdField_d_of_type_Int;
   private Matrix jdField_d_of_type_AndroidGraphicsMatrix = new Matrix();
   private RectF jdField_d_of_type_AndroidGraphicsRectF;
   private boolean jdField_d_of_type_Boolean;
@@ -89,6 +89,37 @@ public class QCircleTransitionImageView
     return j;
   }
   
+  public static vsv a(Matrix paramMatrix, ImageView paramImageView)
+  {
+    if (paramImageView == null) {
+      return null;
+    }
+    Object localObject1 = new int[2];
+    a(paramImageView, (int[])localObject1);
+    Object localObject3 = paramImageView.getDrawable();
+    Object localObject2 = paramImageView.getImageMatrix();
+    int i = a((Drawable)localObject3);
+    int j = b((Drawable)localObject3);
+    localObject3 = new RectF(0.0F, 0.0F, i, j);
+    ((Matrix)localObject2).mapRect((RectF)localObject3);
+    RectF localRectF1 = new RectF(localObject1[0] + ((RectF)localObject3).left, localObject1[1] + ((RectF)localObject3).top, localObject1[0] + ((RectF)localObject3).right, localObject1[1] + ((RectF)localObject3).bottom);
+    RectF localRectF2 = new RectF(0.0F, 0.0F, paramImageView.getWidth(), paramImageView.getHeight());
+    RectF localRectF3 = new RectF((RectF)localObject3);
+    localObject2 = new vsv(localRectF1, (RectF)localObject3, localRectF2, localRectF3, new PointF(localRectF2.width() / 2.0F, localRectF2.height() / 2.0F), 1.0F, paramImageView.getScaleType());
+    localObject1 = localObject2;
+    if (paramMatrix != null)
+    {
+      QLog.d("QCircleTransitionImageView", 1, "getOriginalShowImageInfo:" + ((vsv)localObject2).toString());
+      paramMatrix.mapRect((RectF)localObject3);
+      paramMatrix.mapRect(localRectF1);
+      paramMatrix.mapRect(localRectF2);
+      paramMatrix.mapRect(localRectF3);
+      localObject1 = new vsv(localRectF1, (RectF)localObject3, localRectF2, localRectF3, new PointF(localRectF2.width() / 2.0F, localRectF2.height() / 2.0F), 1.0F, paramImageView.getScaleType());
+    }
+    QLog.d("QCircleTransitionImageView", 1, "getCurrentShowImageInfo:" + ((vsv)localObject1).toString());
+    return localObject1;
+  }
+  
   private void a()
   {
     super.setScaleType(ImageView.ScaleType.MATRIX);
@@ -98,21 +129,28 @@ public class QCircleTransitionImageView
     this.jdField_a_of_type_Int = 340;
   }
   
-  private static void a(View paramView, int[] paramArrayOfInt)
+  public static void a(View paramView, int[] paramArrayOfInt)
   {
+    if (paramView == null) {
+      return;
+    }
     paramArrayOfInt[0] += paramView.getLeft();
     paramArrayOfInt[1] += paramView.getTop();
-    for (paramView = paramView.getParent(); (paramView instanceof View); paramView = paramView.getParent())
+    for (paramView = paramView.getParent();; paramView = paramView.getParent())
     {
+      if (!(paramView instanceof View)) {
+        break label105;
+      }
       paramView = (View)paramView;
       if (paramView.getId() == 16908290) {
-        return;
+        break;
       }
       paramArrayOfInt[0] -= paramView.getScrollX();
       paramArrayOfInt[1] -= paramView.getScrollY();
       paramArrayOfInt[0] += paramView.getLeft();
       paramArrayOfInt[1] += paramView.getTop();
     }
+    label105:
     paramArrayOfInt[0] = ((int)(paramArrayOfInt[0] + 0.5F));
     paramArrayOfInt[1] = ((int)(paramArrayOfInt[1] + 0.5F));
   }
@@ -146,10 +184,14 @@ public class QCircleTransitionImageView
     this.jdField_a_of_type_AndroidGraphicsMatrix.reset();
     this.jdField_b_of_type_AndroidGraphicsMatrix.reset();
     Drawable localDrawable = getDrawable();
-    int i = getWidth();
-    int j = getHeight();
-    int k = a(localDrawable);
-    int m = b(localDrawable);
+    int i = getPaddingLeft();
+    int m = getPaddingRight();
+    int j = getPaddingTop();
+    int k = getPaddingBottom();
+    i = getWidth() - i - m;
+    j = getHeight() - j - k;
+    k = a(localDrawable);
+    m = b(localDrawable);
     this.jdField_b_of_type_AndroidGraphicsRectF.set(0.0F, 0.0F, k, m);
     int n = (i - k) / 2;
     int i1 = (j - m) / 2;
@@ -159,31 +201,27 @@ public class QCircleTransitionImageView
       if (m > j) {
         f2 = j / m;
       }
-      if (f1 < f2)
+      f1 = Math.min(f1, f2);
+      this.jdField_a_of_type_AndroidGraphicsMatrix.reset();
+      this.jdField_a_of_type_AndroidGraphicsMatrix.postTranslate(n, i1);
+      this.jdField_a_of_type_AndroidGraphicsMatrix.postScale(f1, f1, this.jdField_a_of_type_AndroidGraphicsPointF.x, this.jdField_a_of_type_AndroidGraphicsPointF.y);
+      this.jdField_a_of_type_AndroidGraphicsMatrix.mapRect(this.jdField_b_of_type_AndroidGraphicsRectF);
+      this.jdField_b_of_type_Float = (this.jdField_b_of_type_AndroidGraphicsRectF.width() / 2.0F);
+      this.jdField_c_of_type_Float = (this.jdField_b_of_type_AndroidGraphicsRectF.height() / 2.0F);
+      this.jdField_b_of_type_AndroidGraphicsPointF.set(this.jdField_a_of_type_AndroidGraphicsPointF);
+      this.jdField_c_of_type_AndroidGraphicsPointF.set(this.jdField_b_of_type_AndroidGraphicsPointF);
+      k();
+      switch (vss.a[this.jdField_a_of_type_AndroidWidgetImageView$ScaleType.ordinal()])
       {
-        this.jdField_a_of_type_AndroidGraphicsMatrix.reset();
-        this.jdField_a_of_type_AndroidGraphicsMatrix.postTranslate(n, i1);
-        this.jdField_a_of_type_AndroidGraphicsMatrix.postScale(f1, f1, this.jdField_a_of_type_AndroidGraphicsPointF.x, this.jdField_a_of_type_AndroidGraphicsPointF.y);
-        this.jdField_a_of_type_AndroidGraphicsMatrix.mapRect(this.jdField_b_of_type_AndroidGraphicsRectF);
-        this.jdField_b_of_type_Float = (this.jdField_b_of_type_AndroidGraphicsRectF.width() / 2.0F);
-        this.jdField_c_of_type_Float = (this.jdField_b_of_type_AndroidGraphicsRectF.height() / 2.0F);
-        this.jdField_b_of_type_AndroidGraphicsPointF.set(this.jdField_a_of_type_AndroidGraphicsPointF);
-        this.jdField_c_of_type_AndroidGraphicsPointF.set(this.jdField_b_of_type_AndroidGraphicsPointF);
-        k();
-        switch (uan.a[this.jdField_a_of_type_AndroidWidgetImageView$ScaleType.ordinal()])
-        {
-        }
       }
       for (;;)
       {
         this.jdField_c_of_type_Boolean = true;
-        if ((this.jdField_a_of_type_Uaq != null) && (System.currentTimeMillis() - this.jdField_a_of_type_Long < this.jdField_b_of_type_Int)) {
-          a(this.jdField_a_of_type_Uaq, this.jdField_a_of_type_Uau);
+        if ((this.jdField_a_of_type_Vsv != null) && (System.currentTimeMillis() - this.jdField_a_of_type_Long < 500L)) {
+          a(this.jdField_a_of_type_Vsv, this.jdField_a_of_type_Vsz);
         }
-        this.jdField_a_of_type_Uaq = null;
+        this.jdField_a_of_type_Vsv = null;
         return;
-        f1 = f2;
-        break;
         c();
         continue;
         d();
@@ -296,14 +334,14 @@ public class QCircleTransitionImageView
     this.jdField_b_of_type_AndroidGraphicsMatrix.postTranslate(0.0F, f1);
     k();
     j();
-    this.jdField_d_of_type_Int = ((int)(f1 + this.jdField_d_of_type_Int));
+    this.jdField_c_of_type_Int = ((int)(f1 + this.jdField_c_of_type_Int));
   }
   
   private void h()
   {
     f();
     float f1 = this.jdField_a_of_type_AndroidGraphicsRectF.bottom - this.jdField_c_of_type_AndroidGraphicsRectF.bottom;
-    this.jdField_d_of_type_Int = ((int)(this.jdField_d_of_type_Int + f1));
+    this.jdField_c_of_type_Int = ((int)(this.jdField_c_of_type_Int + f1));
     this.jdField_b_of_type_AndroidGraphicsMatrix.postTranslate(0.0F, f1);
     k();
     j();
@@ -329,8 +367,8 @@ public class QCircleTransitionImageView
     this.jdField_b_of_type_Float = (this.jdField_b_of_type_AndroidGraphicsRectF.width() / 2.0F);
     this.jdField_c_of_type_Float = (this.jdField_b_of_type_AndroidGraphicsRectF.height() / 2.0F);
     this.jdField_a_of_type_Float = 1.0F;
+    this.jdField_b_of_type_Int = 0;
     this.jdField_c_of_type_Int = 0;
-    this.jdField_d_of_type_Int = 0;
     this.jdField_b_of_type_AndroidGraphicsMatrix.reset();
   }
   
@@ -364,81 +402,166 @@ public class QCircleTransitionImageView
     this.jdField_b_of_type_AndroidGraphicsMatrix.reset();
     k();
     this.jdField_a_of_type_Float = 1.0F;
+    this.jdField_b_of_type_Int = 0;
     this.jdField_c_of_type_Int = 0;
-    this.jdField_d_of_type_Int = 0;
   }
   
-  public uaq a()
+  public vsv a()
   {
     RectF localRectF = new RectF();
     int[] arrayOfInt = new int[2];
     a(this, arrayOfInt);
     localRectF.set(arrayOfInt[0] + this.jdField_c_of_type_AndroidGraphicsRectF.left, arrayOfInt[1] + this.jdField_c_of_type_AndroidGraphicsRectF.top, arrayOfInt[0] + this.jdField_c_of_type_AndroidGraphicsRectF.right, arrayOfInt[1] + this.jdField_c_of_type_AndroidGraphicsRectF.bottom);
-    return new uaq(localRectF, this.jdField_c_of_type_AndroidGraphicsRectF, this.jdField_a_of_type_AndroidGraphicsRectF, this.jdField_b_of_type_AndroidGraphicsRectF, this.jdField_a_of_type_AndroidGraphicsPointF, this.jdField_a_of_type_Float, this.jdField_a_of_type_AndroidWidgetImageView$ScaleType);
+    return new vsv(localRectF, this.jdField_c_of_type_AndroidGraphicsRectF, this.jdField_a_of_type_AndroidGraphicsRectF, this.jdField_b_of_type_AndroidGraphicsRectF, this.jdField_a_of_type_AndroidGraphicsPointF, this.jdField_a_of_type_Float, this.jdField_a_of_type_AndroidWidgetImageView$ScaleType);
   }
   
-  public void a(uaq paramuaq, uau paramuau)
+  public void a(vsv paramvsv)
+  {
+    l();
+    j();
+    vsv localvsv = a();
+    float f1 = Math.min(paramvsv.jdField_b_of_type_AndroidGraphicsRectF.width() / localvsv.jdField_b_of_type_AndroidGraphicsRectF.width(), paramvsv.jdField_b_of_type_AndroidGraphicsRectF.height() / localvsv.jdField_b_of_type_AndroidGraphicsRectF.height());
+    float f2 = paramvsv.jdField_a_of_type_AndroidGraphicsRectF.left + paramvsv.jdField_a_of_type_AndroidGraphicsRectF.width() / 2.0F;
+    float f3 = paramvsv.jdField_a_of_type_AndroidGraphicsRectF.top + paramvsv.jdField_a_of_type_AndroidGraphicsRectF.height() / 2.0F;
+    float f4 = localvsv.jdField_a_of_type_AndroidGraphicsRectF.left;
+    float f5 = localvsv.jdField_a_of_type_AndroidGraphicsRectF.width() / 2.0F;
+    float f6 = localvsv.jdField_a_of_type_AndroidGraphicsRectF.top;
+    float f7 = localvsv.jdField_a_of_type_AndroidGraphicsRectF.height() / 2.0F;
+    this.jdField_b_of_type_AndroidGraphicsMatrix.reset();
+    this.jdField_b_of_type_AndroidGraphicsMatrix.postTranslate(f2 - (f4 + f5), f3 - (f7 + f6));
+    this.jdField_b_of_type_AndroidGraphicsMatrix.postScale(f1, f1, f2, f3);
+    k();
+    this.jdField_b_of_type_AndroidGraphicsPointF.set(f2, f3);
+    this.jdField_c_of_type_AndroidGraphicsPointF.set(f2, f3);
+    this.jdField_c_of_type_AndroidGraphicsRectF = paramvsv.jdField_b_of_type_AndroidGraphicsRectF;
+    this.jdField_a_of_type_AndroidGraphicsRectF = paramvsv.jdField_c_of_type_AndroidGraphicsRectF;
+    this.jdField_b_of_type_AndroidGraphicsRectF = paramvsv.jdField_d_of_type_AndroidGraphicsRectF;
+    this.jdField_a_of_type_AndroidGraphicsPointF = paramvsv.jdField_a_of_type_AndroidGraphicsPointF;
+    this.jdField_a_of_type_Float = paramvsv.jdField_a_of_type_Float;
+    this.jdField_a_of_type_AndroidWidgetImageView$ScaleType = paramvsv.jdField_a_of_type_AndroidWidgetImageView$ScaleType;
+    this.jdField_a_of_type_AndroidGraphicsMatrix.set(this.jdField_c_of_type_AndroidGraphicsMatrix);
+    this.jdField_b_of_type_Float = (this.jdField_b_of_type_AndroidGraphicsRectF.width() / 2.0F);
+    this.jdField_c_of_type_Float = (this.jdField_b_of_type_AndroidGraphicsRectF.height() / 2.0F);
+  }
+  
+  public void a(vsv paramvsv, vsz paramvsz)
   {
     if (this.jdField_c_of_type_Boolean)
     {
       l();
-      uaq localuaq = a();
-      float f1 = paramuaq.jdField_b_of_type_AndroidGraphicsRectF.width() / localuaq.jdField_b_of_type_AndroidGraphicsRectF.width();
-      float f2 = paramuaq.jdField_b_of_type_AndroidGraphicsRectF.height() / localuaq.jdField_b_of_type_AndroidGraphicsRectF.height();
-      if (f1 < f2)
+      vsv localvsv = a();
+      float f1 = Math.min(paramvsv.jdField_b_of_type_AndroidGraphicsRectF.width() / localvsv.jdField_b_of_type_AndroidGraphicsRectF.width(), paramvsv.jdField_b_of_type_AndroidGraphicsRectF.height() / localvsv.jdField_b_of_type_AndroidGraphicsRectF.height());
+      float f2 = paramvsv.jdField_a_of_type_AndroidGraphicsRectF.left + paramvsv.jdField_a_of_type_AndroidGraphicsRectF.width() / 2.0F;
+      float f3 = paramvsv.jdField_a_of_type_AndroidGraphicsRectF.top + paramvsv.jdField_a_of_type_AndroidGraphicsRectF.height() / 2.0F;
+      float f4 = localvsv.jdField_a_of_type_AndroidGraphicsRectF.left + localvsv.jdField_a_of_type_AndroidGraphicsRectF.width() / 2.0F;
+      float f5 = localvsv.jdField_a_of_type_AndroidGraphicsRectF.top + localvsv.jdField_a_of_type_AndroidGraphicsRectF.height() / 2.0F;
+      this.jdField_b_of_type_AndroidGraphicsMatrix.reset();
+      this.jdField_b_of_type_AndroidGraphicsMatrix.postTranslate(f2 - f4, f3 - f5);
+      this.jdField_b_of_type_AndroidGraphicsMatrix.postScale(f1, f1, f2, f3);
+      k();
+      this.jdField_b_of_type_AndroidGraphicsPointF.set(f2, f3);
+      this.jdField_c_of_type_AndroidGraphicsPointF.set(f2, f3);
+      this.jdField_a_of_type_ComTencentBizQqcircleTransitionQCircleTransitionImageView$Transform.a(0, 0, (int)(f4 - f2), (int)(f5 - f3));
+      this.jdField_a_of_type_ComTencentBizQqcircleTransitionQCircleTransitionImageView$Transform.a(f1, 1.0F);
+      QLog.d("QCircleTransitionImageView", 4, "animaFrom from imageInfo:" + paramvsv.toString() + " to imageInfo:" + localvsv.toString() + " translate x:" + (f2 - f4) + " translate y:" + (f3 - f5) + " scale" + f1);
+      if ((paramvsv.jdField_c_of_type_AndroidGraphicsRectF.width() < paramvsv.jdField_b_of_type_AndroidGraphicsRectF.width()) || (paramvsv.jdField_c_of_type_AndroidGraphicsRectF.height() < paramvsv.jdField_b_of_type_AndroidGraphicsRectF.height()))
       {
-        f2 = paramuaq.jdField_a_of_type_AndroidGraphicsRectF.left + paramuaq.jdField_a_of_type_AndroidGraphicsRectF.width() / 2.0F;
-        float f3 = paramuaq.jdField_a_of_type_AndroidGraphicsRectF.top + paramuaq.jdField_a_of_type_AndroidGraphicsRectF.height() / 2.0F;
-        float f4 = localuaq.jdField_a_of_type_AndroidGraphicsRectF.left + localuaq.jdField_a_of_type_AndroidGraphicsRectF.width() / 2.0F;
-        float f5 = localuaq.jdField_a_of_type_AndroidGraphicsRectF.top;
-        f5 = localuaq.jdField_a_of_type_AndroidGraphicsRectF.height() / 2.0F + f5;
-        this.jdField_b_of_type_AndroidGraphicsMatrix.reset();
-        this.jdField_b_of_type_AndroidGraphicsMatrix.postTranslate(f2 - f4, f3 - f5);
-        this.jdField_b_of_type_AndroidGraphicsMatrix.postScale(f1, f1, f2, f3);
-        k();
-        this.jdField_b_of_type_AndroidGraphicsPointF.set(f2, f3);
-        this.jdField_c_of_type_AndroidGraphicsPointF.set(f2, f3);
-        this.jdField_a_of_type_ComTencentBizQqcircleTransitionQCircleTransitionImageView$Transform.a(0, 0, (int)-(f2 - f4), (int)-(f3 - f5));
-        this.jdField_a_of_type_ComTencentBizQqcircleTransitionQCircleTransitionImageView$Transform.a(f1, 1.0F);
-        if ((paramuaq.jdField_c_of_type_AndroidGraphicsRectF.width() < paramuaq.jdField_b_of_type_AndroidGraphicsRectF.width()) || (paramuaq.jdField_c_of_type_AndroidGraphicsRectF.height() < paramuaq.jdField_b_of_type_AndroidGraphicsRectF.height()))
-        {
-          f2 = paramuaq.jdField_c_of_type_AndroidGraphicsRectF.width() / paramuaq.jdField_b_of_type_AndroidGraphicsRectF.width();
-          f3 = paramuaq.jdField_c_of_type_AndroidGraphicsRectF.height() / paramuaq.jdField_b_of_type_AndroidGraphicsRectF.height();
-          f1 = f2;
-          if (f2 > 1.0F) {
-            f1 = 1.0F;
-          }
-          f2 = f3;
-          if (f3 > 1.0F) {
-            f2 = 1.0F;
-          }
-          if (paramuaq.jdField_a_of_type_AndroidWidgetImageView$ScaleType != ImageView.ScaleType.FIT_START) {
-            break label461;
-          }
-          paramuaq = new uat(this);
+        f2 = paramvsv.jdField_c_of_type_AndroidGraphicsRectF.width() / paramvsv.jdField_b_of_type_AndroidGraphicsRectF.width();
+        f3 = paramvsv.jdField_c_of_type_AndroidGraphicsRectF.height() / paramvsv.jdField_b_of_type_AndroidGraphicsRectF.height();
+        QLog.d("QCircleTransitionImageView", 1, new Object[] { "animaFrom source clipX:", Float.valueOf(f2), ",clipY:", Float.valueOf(f3) });
+        f1 = f2;
+        if (f2 > 1.0F) {
+          f1 = 1.0F;
         }
+        f2 = f3;
+        if (f3 > 1.0F) {
+          f2 = 1.0F;
+        }
+        QLog.d("QCircleTransitionImageView", 1, new Object[] { "animaFrom result clipX:", Float.valueOf(f1), ",clipY:", Float.valueOf(f2) });
+        if (paramvsv.jdField_a_of_type_AndroidWidgetImageView$ScaleType != ImageView.ScaleType.FIT_START) {
+          break label641;
+        }
+        paramvsv = new vsy(this);
       }
       for (;;)
       {
-        this.jdField_a_of_type_ComTencentBizQqcircleTransitionQCircleTransitionImageView$Transform.a(f1, f2, 1.0F - f1, 1.0F - f2, this.jdField_a_of_type_Int / 3, paramuaq);
-        this.jdField_d_of_type_AndroidGraphicsMatrix.setScale(f1, f2, (this.jdField_c_of_type_AndroidGraphicsRectF.left + this.jdField_c_of_type_AndroidGraphicsRectF.right) / 2.0F, paramuaq.a());
+        this.jdField_a_of_type_ComTencentBizQqcircleTransitionQCircleTransitionImageView$Transform.a(f1, f2, 1.0F - f1, 1.0F - f2, this.jdField_a_of_type_Int / 3, paramvsv);
+        this.jdField_d_of_type_AndroidGraphicsMatrix.setScale(f1, f2, (this.jdField_c_of_type_AndroidGraphicsRectF.left + this.jdField_c_of_type_AndroidGraphicsRectF.right) / 2.0F, paramvsv.a());
         this.jdField_d_of_type_AndroidGraphicsMatrix.mapRect(this.jdField_a_of_type_ComTencentBizQqcircleTransitionQCircleTransitionImageView$Transform.jdField_a_of_type_AndroidGraphicsRectF, this.jdField_c_of_type_AndroidGraphicsRectF);
         this.jdField_d_of_type_AndroidGraphicsRectF = this.jdField_a_of_type_ComTencentBizQqcircleTransitionQCircleTransitionImageView$Transform.jdField_a_of_type_AndroidGraphicsRectF;
-        this.jdField_a_of_type_Uau = paramuau;
+        QLog.d("QCircleTransitionImageView", 1, new Object[] { "animaFrom mImgRect:", this.jdField_c_of_type_AndroidGraphicsRectF.toString(), ",mClip:", this.jdField_d_of_type_AndroidGraphicsRectF.toString() });
+        this.jdField_a_of_type_Vsz = paramvsz;
         this.jdField_a_of_type_ComTencentBizQqcircleTransitionQCircleTransitionImageView$Transform.a();
         return;
-        f1 = f2;
-        break;
-        label461:
-        if (paramuaq.jdField_a_of_type_AndroidWidgetImageView$ScaleType == ImageView.ScaleType.FIT_END) {
-          paramuaq = new uap(this);
+        label641:
+        if (paramvsv.jdField_a_of_type_AndroidWidgetImageView$ScaleType == ImageView.ScaleType.FIT_END) {
+          paramvsv = new vsu(this);
         } else {
-          paramuaq = new uas(this);
+          paramvsv = new vsx(this);
         }
       }
     }
-    this.jdField_a_of_type_Uaq = paramuaq;
+    this.jdField_a_of_type_Vsv = paramvsv;
     this.jdField_a_of_type_Long = System.currentTimeMillis();
+  }
+  
+  public void b(vsv paramvsv, vsz paramvsz)
+  {
+    float f2 = 1.0F;
+    float f1;
+    float f3;
+    if (this.jdField_c_of_type_Boolean)
+    {
+      this.jdField_a_of_type_ComTencentBizQqcircleTransitionQCircleTransitionImageView$Transform.b();
+      this.jdField_b_of_type_Int = 0;
+      this.jdField_c_of_type_Int = 0;
+      vsv localvsv = a();
+      f1 = Math.min(paramvsv.jdField_b_of_type_AndroidGraphicsRectF.width() / localvsv.jdField_b_of_type_AndroidGraphicsRectF.width(), paramvsv.jdField_b_of_type_AndroidGraphicsRectF.height() / localvsv.jdField_b_of_type_AndroidGraphicsRectF.height());
+      f3 = localvsv.jdField_a_of_type_AndroidGraphicsRectF.left + localvsv.jdField_a_of_type_AndroidGraphicsRectF.width() / 2.0F;
+      float f4 = localvsv.jdField_a_of_type_AndroidGraphicsRectF.top + localvsv.jdField_a_of_type_AndroidGraphicsRectF.height() / 2.0F;
+      float f5 = paramvsv.jdField_a_of_type_AndroidGraphicsRectF.left + paramvsv.jdField_a_of_type_AndroidGraphicsRectF.width() / 2.0F;
+      float f6 = paramvsv.jdField_a_of_type_AndroidGraphicsRectF.top + paramvsv.jdField_a_of_type_AndroidGraphicsRectF.height() / 2.0F;
+      this.jdField_b_of_type_AndroidGraphicsMatrix.reset();
+      this.jdField_b_of_type_AndroidGraphicsPointF.set(f3, f4);
+      this.jdField_c_of_type_AndroidGraphicsPointF.set(f3, f4);
+      this.jdField_a_of_type_ComTencentBizQqcircleTransitionQCircleTransitionImageView$Transform.a(0, 0, (int)(f5 - f3), (int)(f6 - f4));
+      this.jdField_a_of_type_ComTencentBizQqcircleTransitionQCircleTransitionImageView$Transform.a(1.0F, f1);
+      QLog.d("QCircleTransitionImageView", 4, "animaTo from imageInfo:" + localvsv.toString() + " to imageInfo:" + paramvsv.toString() + " translate x:" + (int)(f5 - f3) + " translate y:" + (int)(f6 - f4) + " scale" + f1);
+      if ((paramvsv.jdField_c_of_type_AndroidGraphicsRectF.width() < paramvsv.jdField_b_of_type_AndroidGraphicsRectF.width()) || (paramvsv.jdField_c_of_type_AndroidGraphicsRectF.height() < paramvsv.jdField_b_of_type_AndroidGraphicsRectF.height()))
+      {
+        f4 = paramvsv.jdField_c_of_type_AndroidGraphicsRectF.width() / paramvsv.jdField_b_of_type_AndroidGraphicsRectF.width();
+        f3 = paramvsv.jdField_c_of_type_AndroidGraphicsRectF.height() / paramvsv.jdField_b_of_type_AndroidGraphicsRectF.height();
+        QLog.d("QCircleTransitionImageView", 1, new Object[] { "animaTo source clipX:", Float.valueOf(f4), ",clipY:", Float.valueOf(f3) });
+        f1 = f4;
+        if (f4 > 1.0F) {
+          f1 = 1.0F;
+        }
+        if (f3 <= 1.0F) {
+          break label511;
+        }
+        QLog.d("QCircleTransitionImageView", 1, new Object[] { "animaTo result clipX:", Float.valueOf(f1), ",clipY:", Float.valueOf(f2) });
+        if (paramvsv.jdField_a_of_type_AndroidWidgetImageView$ScaleType != ImageView.ScaleType.FIT_START) {
+          break label518;
+        }
+        paramvsv = new vsy(this);
+      }
+    }
+    for (;;)
+    {
+      postDelayed(new QCircleTransitionImageView.1(this, f1, f2, paramvsv), this.jdField_a_of_type_Int / 2);
+      this.jdField_a_of_type_Vsz = paramvsz;
+      this.jdField_a_of_type_ComTencentBizQqcircleTransitionQCircleTransitionImageView$Transform.a();
+      return;
+      label511:
+      f2 = f3;
+      break;
+      label518:
+      if (paramvsv.jdField_a_of_type_AndroidWidgetImageView$ScaleType == ImageView.ScaleType.FIT_END) {
+        paramvsv = new vsu(this);
+      } else {
+        paramvsv = new vsx(this);
+      }
+    }
   }
   
   public void draw(Canvas paramCanvas)
@@ -560,6 +683,8 @@ public class QCircleTransitionImageView
   protected void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onSizeChanged(paramInt1, paramInt2, paramInt3, paramInt4);
+    paramInt1 = paramInt1 - getPaddingLeft() - getPaddingRight();
+    paramInt2 = paramInt2 - getPaddingTop() - getPaddingBottom();
     this.jdField_a_of_type_AndroidGraphicsRectF.set(0.0F, 0.0F, paramInt1, paramInt2);
     this.jdField_a_of_type_AndroidGraphicsPointF.set(paramInt1 / 2, paramInt2 / 2);
     if (!this.jdField_b_of_type_Boolean)
@@ -643,7 +768,7 @@ public class QCircleTransitionImageView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.qqcircle.transition.QCircleTransitionImageView
  * JD-Core Version:    0.7.0.1
  */

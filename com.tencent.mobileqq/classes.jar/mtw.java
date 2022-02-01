@@ -1,51 +1,110 @@
-import android.text.TextPaint;
+import android.content.Context;
+import android.support.annotation.NonNull;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class mtw
+class mtw
+  extends BaseAdapter
 {
-  public static float a(String paramString, TextPaint paramTextPaint)
+  private int jdField_a_of_type_Int;
+  private Context jdField_a_of_type_AndroidContentContext;
+  mty jdField_a_of_type_Mty;
+  private String[] jdField_a_of_type_ArrayOfJavaLangString;
+  
+  mtw(Context paramContext, @NonNull mty parammty)
   {
-    return paramTextPaint.measureText(paramString);
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_a_of_type_Mty = parammty;
+    this.jdField_a_of_type_ArrayOfJavaLangString = parammty.a();
   }
   
-  public static float a(StringBuilder paramStringBuilder, String paramString, TextPaint paramTextPaint, float paramFloat)
+  public void a(int paramInt)
   {
-    float f1;
-    if (paramString == null)
-    {
-      f1 = paramFloat;
-      return f1;
+    this.jdField_a_of_type_Int = paramInt;
+    notifyDataSetChanged();
+  }
+  
+  public void a(Context paramContext, @NonNull mty parammty)
+  {
+    if (paramContext != null) {
+      this.jdField_a_of_type_AndroidContentContext = paramContext;
     }
-    paramString = paramString.toCharArray();
+    this.jdField_a_of_type_ArrayOfJavaLangString = parammty.a();
+    this.jdField_a_of_type_Mty = parammty;
+    notifyDataSetInvalidated();
+  }
+  
+  public void a(String paramString)
+  {
+    int j = getCount();
     int i = 0;
     for (;;)
     {
-      f1 = paramFloat;
-      if (i >= paramString.length) {
-        break;
+      if (i < j)
+      {
+        mtz localmtz = (mtz)getItem(i);
+        if ((localmtz != null) && (localmtz.jdField_a_of_type_JavaLangString != null) && (localmtz.jdField_a_of_type_JavaLangString.equals(paramString))) {
+          a(i);
+        }
       }
-      float f2 = paramTextPaint.measureText(paramString, i, 1);
-      f1 = paramFloat;
-      if (f2 >= paramFloat) {
-        break;
+      else
+      {
+        return;
       }
-      paramFloat -= f2;
-      paramStringBuilder.append(paramString[i]);
       i += 1;
     }
   }
   
-  public static float b(StringBuilder paramStringBuilder, String paramString, TextPaint paramTextPaint, float paramFloat)
+  public int getCount()
   {
-    float f = paramTextPaint.measureText("...");
-    if (f > a(paramStringBuilder, paramString, paramTextPaint, paramFloat - f)) {
-      paramStringBuilder.append("...");
+    if (this.jdField_a_of_type_Mty != null) {
+      return this.jdField_a_of_type_Mty.a();
     }
-    return f;
+    return 0;
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    return this.jdField_a_of_type_Mty.a(this.jdField_a_of_type_ArrayOfJavaLangString[paramInt]);
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    Object localObject = (mtz)getItem(paramInt);
+    if (localObject != null) {
+      if (paramView == null)
+      {
+        paramView = new mtx(this.jdField_a_of_type_AndroidContentContext, ((mtz)localObject).jdField_a_of_type_Int, ((mtz)localObject).b);
+        localObject = (mtx)paramView;
+        if (paramInt != this.jdField_a_of_type_Int) {
+          break label117;
+        }
+      }
+    }
+    label117:
+    for (boolean bool = true;; bool = false)
+    {
+      ((mtx)localObject).a(bool);
+      EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
+      return paramView;
+      ((mtx)paramView).a(((mtz)localObject).b);
+      paramView.setContentDescription(((mtz)localObject).b);
+      ((mtx)paramView).a(((mtz)localObject).jdField_a_of_type_Int);
+      break;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     mtw
  * JD-Core Version:    0.7.0.1
  */

@@ -1,14 +1,17 @@
-public abstract interface bnea
+import android.arch.lifecycle.Observer;
+import android.support.annotation.Nullable;
+
+class bnea
+  implements Observer<bnuq>
 {
-  public abstract void a(int paramInt);
+  bnea(bndy parambndy) {}
   
-  public abstract void a(int paramInt, String paramString, boolean paramBoolean1, boolean paramBoolean2);
-  
-  public abstract void b(int paramInt);
-  
-  public abstract void c(int paramInt);
-  
-  public abstract void d(int paramInt);
+  public void a(@Nullable bnuq parambnuq)
+  {
+    if (parambnuq != null) {
+      bndy.a(this.a, parambnuq.a, parambnuq.b);
+    }
+  }
 }
 
 

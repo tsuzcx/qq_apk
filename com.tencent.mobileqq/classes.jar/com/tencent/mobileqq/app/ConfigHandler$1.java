@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.app;
 
-import alqf;
-import bdhz;
+import anjo;
+import bgne;
 import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
 import com.tencent.mobileqq.utils.HttpDownloadUtil;
 import com.tencent.qphone.base.util.QLog;
@@ -11,7 +11,7 @@ import mqq.app.MobileQQ;
 public class ConfigHandler$1
   implements Runnable
 {
-  public ConfigHandler$1(alqf paramalqf, String paramString, long paramLong) {}
+  public ConfigHandler$1(anjo paramanjo, String paramString, long paramLong) {}
   
   public void run()
   {
@@ -23,15 +23,15 @@ public class ConfigHandler$1
     }
     if (i == 0)
     {
-      bdhz.a().a(this.this$0.app, this.jdField_a_of_type_Long, localFile.getAbsolutePath());
+      bgne.a().a(this.this$0.app, this.jdField_a_of_type_Long, localFile.getAbsolutePath());
       return;
     }
-    bdhz.a().a(this.this$0.app.getApplication());
+    bgne.a().a(this.this$0.app.getApplication());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.app.ConfigHandler.1
  * JD-Core Version:    0.7.0.1
  */

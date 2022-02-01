@@ -1,13 +1,17 @@
 package cooperation.vip.ar;
 
+import Override;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Build.VERSION;
 import android.os.Bundle;
+import android.view.MotionEvent;
 import android.view.ViewGroup;
 import android.widget.Toast;
-import bkel;
-import bkey;
+import bmsv;
+import bmti;
 import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import mqq.app.AppActivity;
 import mqq.app.QQPermissionCallback;
 import mqq.os.MqqHandler;
@@ -17,7 +21,7 @@ public class VipARShowActivity
   implements QQPermissionCallback
 {
   private ViewGroup jdField_a_of_type_AndroidViewViewGroup;
-  private bkel jdField_a_of_type_Bkel;
+  private bmsv jdField_a_of_type_Bmsv;
   
   private void a()
   {
@@ -39,22 +43,30 @@ public class VipARShowActivity
   private void b()
   {
     if ("value_refer_aio".equalsIgnoreCase(getIntent().getStringExtra("key_refer"))) {
-      bkey.a("ar_aio_click", "1");
+      bmti.a("ar_aio_click", "1");
     }
   }
   
   private void c()
   {
-    this.jdField_a_of_type_Bkel = new bkel(this, this.jdField_a_of_type_AndroidViewViewGroup);
-    this.jdField_a_of_type_Bkel.a();
+    this.jdField_a_of_type_Bmsv = new bmsv(this, this.jdField_a_of_type_AndroidViewViewGroup);
+    this.jdField_a_of_type_Bmsv.a();
     Intent localIntent = getIntent();
-    this.jdField_a_of_type_Bkel.a(localIntent.getStringExtra("modelResUrl"), localIntent.getStringExtra("modelResMd5"));
+    this.jdField_a_of_type_Bmsv.a(localIntent.getStringExtra("modelResUrl"), localIntent.getStringExtra("modelResMd5"));
   }
   
   public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    Toast.makeText(this, 2131696114, 0).show();
+    Toast.makeText(this, 2131694994, 0).show();
     ThreadManager.getUIHandler().postDelayed(new VipARShowActivity.1(this), 2000L);
+  }
+  
+  @Override
+  public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
+  {
+    boolean bool = super.dispatchTouchEvent(paramMotionEvent);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool);
+    return bool;
   }
   
   public boolean doOnCreate(Bundle paramBundle)
@@ -62,8 +74,8 @@ public class VipARShowActivity
     super.doOnCreate(paramBundle);
     a();
     b();
-    setContentView(2131558459);
-    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)findViewById(2131362746));
+    setContentView(2131558465);
+    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)findViewById(2131362858));
     c();
     return true;
   }
@@ -71,43 +83,50 @@ public class VipARShowActivity
   public void doOnDestroy()
   {
     super.doOnDestroy();
-    if (this.jdField_a_of_type_Bkel != null) {
-      this.jdField_a_of_type_Bkel.f();
+    if (this.jdField_a_of_type_Bmsv != null) {
+      this.jdField_a_of_type_Bmsv.f();
     }
   }
   
   public void doOnPause()
   {
     super.doOnPause();
-    if (this.jdField_a_of_type_Bkel != null) {
-      this.jdField_a_of_type_Bkel.c();
+    if (this.jdField_a_of_type_Bmsv != null) {
+      this.jdField_a_of_type_Bmsv.c();
     }
   }
   
   public void doOnResume()
   {
     super.doOnResume();
-    if (this.jdField_a_of_type_Bkel != null) {
-      this.jdField_a_of_type_Bkel.d();
+    if (this.jdField_a_of_type_Bmsv != null) {
+      this.jdField_a_of_type_Bmsv.d();
     }
   }
   
   public void doOnStop()
   {
     super.doOnStop();
-    if (this.jdField_a_of_type_Bkel != null) {
-      this.jdField_a_of_type_Bkel.e();
+    if (this.jdField_a_of_type_Bmsv != null) {
+      this.jdField_a_of_type_Bmsv.e();
     }
   }
   
   public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    this.jdField_a_of_type_Bkel.b();
+    this.jdField_a_of_type_Bmsv.b();
+  }
+  
+  @Override
+  public void onConfigurationChanged(Configuration paramConfiguration)
+  {
+    super.onConfigurationChanged(paramConfiguration);
+    EventCollector.getInstance().onActivityConfigurationChanged(this, paramConfiguration);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.vip.ar.VipARShowActivity
  * JD-Core Version:    0.7.0.1
  */

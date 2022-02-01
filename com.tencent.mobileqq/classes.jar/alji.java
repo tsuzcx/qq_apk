@@ -1,15 +1,17 @@
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-final class alji
-  implements aled
+public class alji
+  implements CompoundButton.OnCheckedChangeListener
 {
-  alji(aljk paramaljk, int paramInt, QQAppInterface paramQQAppInterface, String paramString1, String paramString2, aksm paramaksm, int[] paramArrayOfInt) {}
+  public alji(NewFlowCameraActivity paramNewFlowCameraActivity) {}
   
-  public void onDownLoadFinish(boolean paramBoolean, String paramString, int paramInt1, int[] paramArrayOfInt, int paramInt2)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_Aljk != null) {
-      this.jdField_a_of_type_Aljk.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramString, this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_Aksm.jdField_a_of_type_Int, this.jdField_a_of_type_ArrayOfInt, 22);
-    }
+    NewFlowCameraActivity.a(this.a, paramBoolean);
+    EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
   }
 }
 

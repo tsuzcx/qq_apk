@@ -1,12 +1,13 @@
-import com.tencent.aekit.openrender.internal.Frame;
-
-public abstract interface blem
+public class blem
 {
-  public abstract void a();
+  public String a;
+  public String b;
   
-  public abstract void a(Frame paramFrame);
-  
-  public abstract void b();
+  public blem(String paramString1, String paramString2)
+  {
+    this.a = paramString1;
+    this.b = paramString2;
+  }
 }
 
 

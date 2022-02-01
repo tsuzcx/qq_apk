@@ -1,25 +1,21 @@
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import com.tencent.aladdin.config.utils.SpUtils.IAladdinSpOperator;
 
-class pib
-  implements php<BEAN>
+final class pib
+  implements SpUtils.IAladdinSpOperator
 {
-  pib(pia parampia) {}
-  
-  public void a(boolean paramBoolean, List<BEAN> paramList, int paramInt1, Boolean paramBoolean1, int paramInt2, String paramString)
+  public <T> T getSpValue(String paramString, T paramT, boolean paramBoolean)
   {
-    if (paramBoolean)
-    {
-      pia.a(this.a, paramBoolean1.booleanValue(), paramInt1, paramList);
-      return;
-    }
-    QLog.i("ListPresenter", 2, "loadFirstPage error, errorCode=" + paramInt2 + ", errorMsg= " + paramString);
-    pia.a(this.a, paramBoolean1.booleanValue(), paramList, paramInt2, paramString);
+    return bmqa.a(paramString, paramT, paramBoolean);
+  }
+  
+  public <T> void updateSpValue(String paramString, T paramT, boolean paramBoolean)
+  {
+    bmqa.a(paramString, paramT, paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     pib
  * JD-Core Version:    0.7.0.1
  */

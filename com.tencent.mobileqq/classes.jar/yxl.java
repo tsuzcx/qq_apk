@@ -1,23 +1,16 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.ui.PopupMenu.1.1;
+import android.graphics.PointF;
 
-public class yxl
-  implements View.OnClickListener
+public abstract interface yxl
 {
-  yxl(yxk paramyxk, String paramString, int paramInt) {}
+  public abstract void a(zcb paramzcb);
   
-  public void onClick(View paramView)
-  {
-    if (this.jdField_a_of_type_Yxk.a != null) {
-      this.jdField_a_of_type_Yxk.a.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, 2);
-    }
-    paramView.post(new PopupMenu.1.1(this));
-  }
+  public abstract void a(zcb paramzcb, int paramInt1, int paramInt2);
+  
+  public abstract void a(boolean paramBoolean1, float paramFloat, int paramInt1, int paramInt2, PointF paramPointF, boolean paramBoolean2, int paramInt3);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     yxl
  * JD-Core Version:    0.7.0.1
  */

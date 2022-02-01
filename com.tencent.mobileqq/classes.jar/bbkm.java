@@ -1,55 +1,56 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.troop.activity.TroopBarReplyActivity;
-import com.tencent.mobileqq.troop.widget.PublishItemContainer;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.persistence.fts.FTSEntity;
+import java.util.ArrayList;
 
-public class bbkm
-  implements View.OnClickListener
+public abstract class bbkm
+  extends bbmz
 {
-  public bbkm(TroopBarReplyActivity paramTroopBarReplyActivity) {}
+  protected QQAppInterface a;
+  protected FTSEntity a;
+  protected CharSequence a;
+  protected String a;
+  protected ArrayList<String> a;
+  protected CharSequence b;
+  protected CharSequence c;
+  private CharSequence d;
   
-  public void onClick(View paramView)
+  public bbkm(QQAppInterface paramQQAppInterface, String paramString, ArrayList<String> paramArrayList, FTSEntity paramFTSEntity)
   {
-    switch (((aett)paramView.getTag()).a)
-    {
-    }
-    do
-    {
-      do
-      {
-        return;
-        TroopBarReplyActivity.b(this.a);
-        return;
-        TroopBarReplyActivity.c(this.a);
-        return;
-        TroopBarReplyActivity.d(this.a);
-        return;
-        if (this.a.k)
-        {
-          bcmc.a(this.a.m, this.a.n, "Clk_music", this.a.o, "", "", "");
-          bcmc.b("reply_page_new", "Clk_music", this.a.o, "", "", "");
-        }
-      } while (this.a.a(4));
-      if ((this.a.a.a() != 0) && (this.a.a.a() != 3))
-      {
-        this.a.a(3);
-        return;
-      }
-      this.a.b(4);
-      return;
-      if (this.a.k)
-      {
-        bcmc.a(this.a.m, this.a.n, "Clk_video", this.a.o, "", "", "");
-        bcmc.b("reply_page_new", "Clk_video", this.a.o, "", "", "");
-      }
-    } while (this.a.a(8));
-    if ((this.a.a.a() != 0) && (this.a.a.a() != 4))
-    {
-      this.a.a(7);
-      return;
-    }
-    this.a.b(3);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
+    this.jdField_a_of_type_ComTencentMobileqqPersistenceFtsFTSEntity = paramFTSEntity;
   }
+  
+  public String a()
+  {
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public boolean a()
+  {
+    return false;
+  }
+  
+  public CharSequence b()
+  {
+    if (this.d == null) {
+      this.d = bbup.a(this.jdField_a_of_type_ComTencentMobileqqPersistenceFtsFTSEntity.mContent, this.jdField_a_of_type_ComTencentMobileqqPersistenceFtsFTSEntity.mProximityStart, this.jdField_a_of_type_JavaUtilArrayList);
+    }
+    return this.d;
+  }
+  
+  public int c()
+  {
+    return 1;
+  }
+  
+  public CharSequence d()
+  {
+    return null;
+  }
+  
+  public abstract CharSequence e();
 }
 
 

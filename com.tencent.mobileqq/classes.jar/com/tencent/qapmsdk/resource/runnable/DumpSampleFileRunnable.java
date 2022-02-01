@@ -30,20 +30,25 @@ import org.json.JSONObject;
 public class DumpSampleFileRunnable
   implements Runnable
 {
+  private static final String FILE_TEMPLATE_NAME = "APM_Resource_" + BaseInfo.userMeta.appId + "_";
   private static final int MIN_RESOURCE_ITEM = 10;
   private static final int MIN_TEMPERATURE = -100;
   private static final String TAG = "QAPM_resource_DumpSampleFileRunnable";
   private static final int TIME_TOLERANCE = 5000;
-  private static volatile Iterator<File> fileIterator = null;
-  private static final String fileTemplateName = "APM_Resource_" + BaseInfo.userMeta.appId + "_";
+  private static volatile Iterator<File> fileIterator;
   @Nullable
   private static volatile DumpSampleFileRunnable instance = null;
   private boolean canReport = false;
   @NonNull
-  private SimpleDateFormat dateFormat = new SimpleDateFormat("yyyyMMddhhmmss", Locale.CHINA);
+  private SimpleDateFormat dateFormat = null;
   private long lastDumpFileTime = 0L;
   @Nullable
   private String processName;
+  
+  static
+  {
+    fileIterator = null;
+  }
   
   private DumpSampleFileRunnable()
   {
@@ -219,7 +224,15 @@ public class DumpSampleFileRunnable
   
   private void flushFile(String paramString, @NonNull JSONObject paramJSONObject)
   {
-    FileUtil.writeFile(FileUtil.getRootPath() + "/" + paramString, paramJSONObject.toString(), false);
+    try
+    {
+      FileUtil.writeFile(FileUtil.getRootPath() + "/" + paramString, paramJSONObject.toString(), false);
+      return;
+    }
+    catch (OutOfMemoryError paramString)
+    {
+      Logger.INSTANCE.exception("QAPM_resource_DumpSampleFileRunnable", paramString);
+    }
   }
   
   @Nullable
@@ -238,7 +251,7 @@ public class DumpSampleFileRunnable
   
   private void reportDumpFile()
   {
-    ArrayList localArrayList = FileUtil.getFiles(FileUtil.getRootPath(), fileTemplateName + ".*");
+    ArrayList localArrayList = FileUtil.getFiles(FileUtil.getRootPath(), FILE_TEMPLATE_NAME + ".*");
     if ((localArrayList == null) || (localArrayList.size() == 0))
     {
       this.canReport = false;
@@ -297,8 +310,11 @@ public class DumpSampleFileRunnable
     while ((ResourceMonitor.manualTagItems.size() < 10) && (ResourceMonitor.immediatePerfItems.size() < 10)) {
       return;
     }
+    if (this.dateFormat == null) {
+      this.dateFormat = new SimpleDateFormat("yyyyMMddhhmmss", Locale.CHINA);
+    }
     this.lastDumpFileTime = l;
-    Object localObject = fileTemplateName + this.dateFormat.format(new Date());
+    Object localObject = FILE_TEMPLATE_NAME + this.dateFormat.format(new Date());
     Vector localVector1 = (Vector)ResourceMonitor.immediatePerfItems.clone();
     Vector localVector2 = (Vector)ResourceMonitor.manualTagItems.clone();
     ResourceMonitor.immediatePerfItems.clear();
@@ -334,7 +350,7 @@ public class DumpSampleFileRunnable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.tencent.qapmsdk.resource.runnable.DumpSampleFileRunnable
  * JD-Core Version:    0.7.0.1
  */

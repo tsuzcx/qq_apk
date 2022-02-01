@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.microapp.out.plugins;
 
-import ajkg;
+import alcp;
 import android.app.Activity;
 import android.content.BroadcastReceiver;
 import android.content.Intent;
@@ -11,7 +11,6 @@ import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.microapp.MiniAppInterface;
 import com.tencent.mobileqq.microapp.R.string;
 import com.tencent.mobileqq.microapp.app.a.a;
-import com.tencent.mobileqq.microapp.out.activity.PermissionSettingFragment;
 import com.tencent.mobileqq.microapp.sdk.MiniAppController;
 import com.tencent.mobileqq.microapp.sdk.OutBaseJsPlugin;
 import java.util.HashSet;
@@ -79,10 +78,10 @@ public class OtherJsPlugin
       }
       catch (JSONException localJSONException)
       {
-        if (com.tencent.mobileqq.microapp.appbrand.utils.c.b(paramString2)) {
-          com.tencent.mobileqq.microapp.appbrand.utils.c.a("OtherJsPlugin", 2, paramString2, localJSONException, new Object[0]);
+        if (com.tencent.mobileqq.microapp.appbrand.b.c.b(paramString2)) {
+          com.tencent.mobileqq.microapp.appbrand.b.c.a("OtherJsPlugin", 2, paramString2, localJSONException, new Object[0]);
         }
-        paramString2 = com.tencent.mobileqq.microapp.b.a.b(paramString1, null);
+        paramString2 = com.tencent.mobileqq.microapp.a.c.b(paramString1, null);
         if (paramString2 == null) {}
       }
       for (;;)
@@ -95,7 +94,7 @@ public class OtherJsPlugin
         i = 0;
         break label108;
         localJSONException.put("authSetting", localJSONArray);
-        Object localObject2 = com.tencent.mobileqq.microapp.b.a.a(paramString1, localJSONException);
+        Object localObject2 = com.tencent.mobileqq.microapp.a.c.a(paramString1, localJSONException);
         if (localObject2 != null) {}
         for (localObject2 = ((JSONObject)localObject2).toString(); !TextUtils.isEmpty((CharSequence)localObject2); localObject2 = "")
         {
@@ -108,14 +107,11 @@ public class OtherJsPlugin
     }
   }
   
-  private void openSettingActivity(Activity paramActivity, String paramString)
-  {
-    PermissionSettingFragment.launchForResult(paramActivity, paramString, 5);
-  }
+  private void openSettingActivity(Activity paramActivity, String paramString) {}
   
   public void enterQRCode(BaseActivity paramBaseActivity)
   {
-    if (!ajkg.a(paramBaseActivity)) {
+    if (!alcp.a(paramBaseActivity)) {
       return;
     }
     Intent localIntent = new Intent(paramBaseActivity, ScannerActivity.class);
@@ -159,7 +155,7 @@ public class OtherJsPlugin
       return super.handleNativeRequest(paramActivity, paramString1, paramString2, paramString3, paramInt);
       if ("getSetting".equals(paramString2))
       {
-        com.tencent.mobileqq.microapp.appbrand.utils.a.a(new c(this, paramString2, paramString1, paramInt));
+        com.tencent.mobileqq.microapp.appbrand.b.a.a(new c(this, paramString2, paramString1, paramInt));
       }
       else if ("scanCode".equals(paramString2))
       {
@@ -171,7 +167,7 @@ public class OtherJsPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.microapp.out.plugins.OtherJsPlugin
  * JD-Core Version:    0.7.0.1
  */

@@ -1,23 +1,24 @@
+import VACDReport.ReportRsp;
 import android.os.Bundle;
-import com.tencent.qphone.base.util.QLog;
 import mqq.observer.BusinessObserver;
 
-final class akwf
+class akwf
   implements BusinessObserver
 {
+  akwf(akwd paramakwd) {}
+  
   public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    try
+    switch (paramInt)
     {
-      paramInt = paramBundle.getInt("extra_result_code");
-      if (QLog.isColorLevel()) {
-        QLog.d("cmgame_process.CmGameUtil", 1, new Object[] { "[reportGameData] retCode=", Integer.valueOf(paramInt) });
-      }
+    default: 
       return;
     }
-    catch (Exception paramBundle)
+    if (paramBundle.containsKey("rsp")) {}
+    for (paramBundle = ((ReportRsp)paramBundle.getSerializable("rsp")).headers;; paramBundle = null)
     {
-      QLog.e("cmgame_process.CmGameUtil", 1, "[reportGameData] onReceive, exception=", paramBundle);
+      akwd.a(this.a, paramBundle);
+      return;
     }
   }
 }

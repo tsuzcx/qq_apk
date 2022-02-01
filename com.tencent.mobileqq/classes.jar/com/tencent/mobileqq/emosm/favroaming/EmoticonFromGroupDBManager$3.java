@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.emosm.favroaming;
 
-import apob;
-import awgf;
-import awgh;
+import arrc;
 import com.tencent.mobileqq.data.EmoticonFromGroupEntity;
+import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.mobileqq.persistence.EntityTransaction;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Iterator;
 import java.util.List;
@@ -11,7 +11,7 @@ import java.util.List;
 public class EmoticonFromGroupDBManager$3
   implements Runnable
 {
-  public EmoticonFromGroupDBManager$3(apob paramapob, int paramInt, List paramList) {}
+  public EmoticonFromGroupDBManager$3(arrc paramarrc, int paramInt, List paramList) {}
   
   public void run()
   {
@@ -29,19 +29,19 @@ public class EmoticonFromGroupDBManager$3
     {
       try
       {
-        localawgh = this.this$0.a.a();
-        localObject1 = localawgh;
-        localObject3 = localawgh;
-        localawgh.a();
-        localObject1 = localawgh;
-        localObject3 = localawgh;
+        localEntityTransaction = this.this$0.a.getTransaction();
+        localObject1 = localEntityTransaction;
+        localObject3 = localEntityTransaction;
+        localEntityTransaction.begin();
+        localObject1 = localEntityTransaction;
+        localObject3 = localEntityTransaction;
         switch (this.jdField_a_of_type_Int)
         {
         }
       }
       catch (Exception localException)
       {
-        awgh localawgh;
+        EntityTransaction localEntityTransaction;
         localObject3 = localObject1;
         if (!QLog.isColorLevel()) {
           continue;
@@ -51,7 +51,7 @@ public class EmoticonFromGroupDBManager$3
         if (localObject1 == null) {
           continue;
         }
-        localObject1.b();
+        localObject1.end();
         continue;
         localObject1 = localException;
         localObject3 = localException;
@@ -66,7 +66,7 @@ public class EmoticonFromGroupDBManager$3
         EmoticonFromGroupEntity localEmoticonFromGroupEntity = (EmoticonFromGroupEntity)localIterator.next();
         localObject1 = localException;
         localObject3 = localException;
-        if (this.this$0.a.b(localEmoticonFromGroupEntity)) {
+        if (this.this$0.a.remove(localEmoticonFromGroupEntity)) {
           continue;
         }
         localObject1 = localException;
@@ -89,38 +89,38 @@ public class EmoticonFromGroupDBManager$3
         if (localObject3 == null) {
           continue;
         }
-        localObject3.b();
+        localObject3.end();
       }
-      localObject1 = localawgh;
-      localObject3 = localawgh;
-      localawgh.c();
-      if (localawgh != null) {
-        localawgh.b();
+      localObject1 = localEntityTransaction;
+      localObject3 = localEntityTransaction;
+      localEntityTransaction.commit();
+      if (localEntityTransaction != null) {
+        localEntityTransaction.end();
       }
       if (QLog.isColorLevel()) {
         QLog.i("EmoticonFromGroup_DBManager", 2, "db operation end.");
       }
       return;
-      localObject1 = localawgh;
-      localObject3 = localawgh;
+      localObject1 = localEntityTransaction;
+      localObject3 = localEntityTransaction;
       localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-      localObject1 = localawgh;
-      localObject3 = localawgh;
+      localObject1 = localEntityTransaction;
+      localObject3 = localEntityTransaction;
       if (localIterator.hasNext())
       {
-        localObject1 = localawgh;
-        localObject3 = localawgh;
+        localObject1 = localEntityTransaction;
+        localObject3 = localEntityTransaction;
         localEmoticonFromGroupEntity = (EmoticonFromGroupEntity)localIterator.next();
-        localObject1 = localawgh;
-        localObject3 = localawgh;
+        localObject1 = localEntityTransaction;
+        localObject3 = localEntityTransaction;
         if (!this.this$0.a(localEmoticonFromGroupEntity))
         {
-          localObject1 = localawgh;
-          localObject3 = localawgh;
+          localObject1 = localEntityTransaction;
+          localObject3 = localEntityTransaction;
           if (QLog.isColorLevel())
           {
-            localObject1 = localawgh;
-            localObject3 = localawgh;
+            localObject1 = localEntityTransaction;
+            localObject3 = localEntityTransaction;
             QLog.e("EmoticonFromGroup_DBManager.dberror", 2, "updateEntity error, e.md5=" + localEmoticonFromGroupEntity.md5);
           }
         }
@@ -130,7 +130,7 @@ public class EmoticonFromGroupDBManager$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.emosm.favroaming.EmoticonFromGroupDBManager.3
  * JD-Core Version:    0.7.0.1
  */

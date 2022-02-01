@@ -1,14 +1,18 @@
-import com.tencent.mobileqq.activity.photo.QzonePhotoPreviewActivity;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.bless.BlessActivity;
 
 public class aiou
+  extends BroadcastReceiver
 {
-  float jdField_a_of_type_Float;
-  String jdField_a_of_type_JavaLangString;
+  public aiou(BlessActivity paramBlessActivity) {}
   
-  public aiou(QzonePhotoPreviewActivity paramQzonePhotoPreviewActivity, String paramString, float paramFloat)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Float = paramFloat;
+    if ("tencent.av.v2q.StartVideoChat".equals(paramIntent.getAction())) {
+      BlessActivity.a(this.a, true);
+    }
   }
 }
 

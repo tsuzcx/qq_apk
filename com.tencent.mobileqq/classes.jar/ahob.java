@@ -1,23 +1,11 @@
-import android.support.annotation.NonNull;
+import android.widget.TextView;
 
-public class ahob
+class ahob
+  extends afwr
 {
-  public int a;
-  public int b;
-  public int c;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
   
-  public ahob(int paramInt1, int paramInt2, int paramInt3)
-  {
-    this.a = paramInt1;
-    this.b = paramInt2;
-    this.c = paramInt3;
-  }
-  
-  @NonNull
-  public String toString()
-  {
-    return "TabLayoutStatus{, tabId=" + this.a + ", scrollPos=" + this.b + ", scrollTop='" + this.c + '\'' + '}';
-  }
+  ahob(ahny paramahny) {}
 }
 
 

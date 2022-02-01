@@ -1,44 +1,31 @@
-import android.os.Message;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import java.lang.ref.WeakReference;
+import java.util.Iterator;
+import java.util.concurrent.CopyOnWriteArrayList;
 
-class avoc
-  extends bayj
+final class avoc
+  extends BroadcastReceiver
 {
-  avoc(avnl paramavnl) {}
-  
-  public void handleMessage(Message paramMessage)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    bass localbass = (bass)paramMessage.obj;
-    switch (paramMessage.what)
+    if ((avob.a != null) && (avob.a.size() > 0))
     {
-    case 1004: 
-    default: 
-    case 1003: 
-      do
+      Iterator localIterator = avob.a.iterator();
+      while (localIterator.hasNext())
       {
-        do
-        {
-          return;
-        } while (localbass.b != 8);
-        if (QLog.isColorLevel()) {
-          QLog.i("Q.nearby_people_card.upload_local_photo", 2, "Q.nearby_people_card..mPicUploadHandler.handleMessage(), upload success. photo_id = " + bavb.a);
+        avob localavob = (avob)((WeakReference)localIterator.next()).get();
+        if (localavob != null) {
+          localavob.a(paramContext, paramIntent);
         }
-      } while (avnl.a(this.a) == null);
-      avnl.a(this.a).a = bavb.a;
-      avnl.d(this.a);
-      return;
+      }
     }
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.nearby_people_card.upload_local_photo", 2, "Q.nearby_people_card..mPicUploadHandler.handleMessage(), upload fail.");
-    }
-    this.a.a.a();
-    this.a.a.b(alud.a(2131707691));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     avoc
  * JD-Core Version:    0.7.0.1
  */

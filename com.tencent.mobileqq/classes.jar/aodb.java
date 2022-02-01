@@ -1,68 +1,85 @@
-import android.content.Context;
-import android.os.Bundle;
-import com.tencent.mobileqq.colornote.data.ColorNote;
+import android.graphics.Bitmap;
+import android.graphics.drawable.Drawable;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.app.face.FaceDecodeTask;
+import com.tencent.mobileqq.app.face.FaceInfo;
+import com.tencent.mobileqq.nearby.NearbyAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 public class aodb
-  implements aocw
+  extends aoch
 {
-  public void a(Context paramContext, ColorNote paramColorNote)
+  aocw jdField_a_of_type_Aocw = null;
+  NearbyAppInterface jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface;
+  
+  public aodb(AppInterface paramAppInterface, int paramInt1, int paramInt2, String paramString, byte paramByte, int paramInt3, boolean paramBoolean1, Drawable paramDrawable1, Drawable paramDrawable2, aoci paramaoci, boolean paramBoolean2)
   {
-    Object localObject1 = paramColorNote.getSubType();
-    if (((String)localObject1).startsWith("qzone_detail")) {}
-    do
+    super(paramAppInterface, paramInt1, paramInt2, paramString, paramByte, paramInt3, 100, paramBoolean1, paramDrawable1, paramDrawable2, paramaoci, paramBoolean2);
+    this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface = ((NearbyAppInterface)paramAppInterface);
+  }
+  
+  protected Bitmap a()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqAppFaceFaceInfo == null) {
+      return null;
+    }
+    String str = FaceInfo.a(this.jdField_a_of_type_ComTencentMobileqqAppFaceFaceInfo.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqAppFaceFaceInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqAppFaceFaceInfo.b, this.jdField_a_of_type_ComTencentMobileqqAppFaceFaceInfo.c);
+    return ((aocs)this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface.getManager(216)).a(str);
+  }
+  
+  protected Bitmap a(boolean paramBoolean)
+  {
+    return a();
+  }
+  
+  protected void a()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.qqhead.NearByFaceDrawable", 2, "onNeedDownload.faceInfo=" + this.jdField_a_of_type_ComTencentMobileqqAppFaceFaceInfo);
+    }
+    Bitmap localBitmap = a();
+    if (localBitmap != null)
     {
-      try
-      {
-        Object localObject2 = new JSONObject(new String(paramColorNote.getReserve()));
-        int i = ((JSONObject)localObject2).getInt("appid");
-        paramColorNote = ((JSONObject)localObject2).getString("cellid");
-        localObject1 = ((JSONObject)localObject2).getString("subid");
-        long l = ((JSONObject)localObject2).getLong("uin");
-        ((JSONObject)localObject2).getString("source");
-        boolean bool = ((JSONObject)localObject2).getBoolean("mIsFromKuolie");
-        String str = ((JSONObject)localObject2).getString("mainTitle");
-        localObject2 = ((JSONObject)localObject2).getString("subType");
-        Bundle localBundle = new Bundle();
-        localBundle.putBoolean("req_from_kuolie", bool);
-        localBundle.putString("mainTitle", str);
-        localBundle.putString("subType", (String)localObject2);
-        bjdt.a(paramContext, bjea.a(), Long.valueOf(l).toString(), i + "", paramColorNote, (String)localObject1, 0, localBundle, true, true);
-        return;
+      if (QLog.isColorLevel()) {
+        QLog.i("Q.qqhead.NearByFaceDrawable", 2, "onNeedDownload.faceInfo=" + this.jdField_a_of_type_ComTencentMobileqqAppFaceFaceInfo + ",bitmap is already in cache...");
       }
-      catch (JSONException paramContext)
-      {
-        QLog.e("QZoneLauncher", 1, paramContext, new Object[0]);
-        return;
-      }
-      if (((String)localObject1).startsWith("qzone_userhome")) {
-        try
-        {
-          paramColorNote = new JSONObject(new String(paramColorNote.getReserve())).getString("visitUin");
-          bjdt.a(paramContext, bjea.a(), paramColorNote, 0, 0, 0, null, null, true);
-          return;
-        }
-        catch (JSONException paramContext)
-        {
-          QLog.e("QZoneLauncher", 1, paramContext, new Object[0]);
-          return;
-        }
-      }
-    } while (!((String)localObject1).startsWith("qzone_famous_userhome"));
-    try
-    {
-      localObject1 = new JSONObject(new String(paramColorNote.getReserve()));
-      paramColorNote = ((JSONObject)localObject1).getString("visitUin");
-      localObject1 = ((JSONObject)localObject1).getString("webviewUrl");
-      bjdt.a(paramContext, bjea.a(), paramColorNote, 0, 0, null, (String)localObject1, true);
+      a(this.jdField_a_of_type_ComTencentMobileqqAppFaceFaceInfo, localBitmap);
       return;
     }
-    catch (JSONException paramContext)
+    if (this.jdField_a_of_type_Aocw == null)
     {
-      QLog.e("QZoneLauncher", 1, paramContext, new Object[0]);
+      this.jdField_a_of_type_Aocw = new aodc(this);
+      this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface.addObserver(this.jdField_a_of_type_Aocw);
     }
+    ((aocq)this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface.a(4)).a(this.jdField_a_of_type_ComTencentMobileqqAppFaceFaceInfo);
+  }
+  
+  protected void a(AppInterface paramAppInterface)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface = ((NearbyAppInterface)paramAppInterface);
+  }
+  
+  protected boolean a()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.qqhead.NearByFaceDrawable", 2, "requestDecode.faceInfo=" + this.jdField_a_of_type_ComTencentMobileqqAppFaceFaceInfo);
+    }
+    if (this.jdField_a_of_type_ComTencentMobileqqAppFaceFaceInfo == null) {
+      return false;
+    }
+    FaceDecodeTask.a(FaceDecodeTask.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface, this.jdField_a_of_type_ComTencentMobileqqAppFaceFaceInfo, this));
+    return true;
+  }
+  
+  public void b()
+  {
+    if ((this.jdField_a_of_type_Aocw != null) && (this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface != null))
+    {
+      this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface.removeObserver(this.jdField_a_of_type_Aocw);
+      this.jdField_a_of_type_Aocw = null;
+    }
+    this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface = null;
+    super.b();
   }
 }
 

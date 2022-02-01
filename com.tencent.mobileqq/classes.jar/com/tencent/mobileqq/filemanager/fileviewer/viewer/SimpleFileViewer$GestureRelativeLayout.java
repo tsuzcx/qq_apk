@@ -5,7 +5,7 @@ import android.util.AttributeSet;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.widget.RelativeLayout;
-import arom;
+import atst;
 
 public class SimpleFileViewer$GestureRelativeLayout
   extends RelativeLayout
@@ -20,7 +20,7 @@ public class SimpleFileViewer$GestureRelativeLayout
   public SimpleFileViewer$GestureRelativeLayout(SimpleFileViewer paramSimpleFileViewer, Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_AndroidViewGestureDetector = new GestureDetector(paramContext, new arom(this, null));
+    this.jdField_a_of_type_AndroidViewGestureDetector = new GestureDetector(paramContext, new atst(this, null));
   }
   
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
@@ -33,7 +33,7 @@ public class SimpleFileViewer$GestureRelativeLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.fileviewer.viewer.SimpleFileViewer.GestureRelativeLayout
  * JD-Core Version:    0.7.0.1
  */

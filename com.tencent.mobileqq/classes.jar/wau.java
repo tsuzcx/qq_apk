@@ -1,21 +1,19 @@
-import android.app.Activity;
-import android.content.Intent;
+import com.tencent.qphone.base.util.QLog;
 
-public class wau
-  extends vtg
+class wau
+  extends voy
 {
-  public wau(wat paramwat) {}
+  wau(wat paramwat) {}
   
-  public void a(int paramInt1, int paramInt2, Intent paramIntent)
+  public void a(int paramInt, vou paramvou)
   {
-    if ((paramInt1 == 66666) && (paramInt2 == -1)) {
-      this.a.a.b().finish();
-    }
+    super.a(paramInt, paramvou);
+    QLog.d("QCircleTimeLineFeedItemView1", 4, "state callback:" + paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     wau
  * JD-Core Version:    0.7.0.1
  */

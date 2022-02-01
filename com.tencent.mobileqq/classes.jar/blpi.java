@@ -1,75 +1,37 @@
-import android.content.Context;
-import com.tencent.tavcut.bean.TextEditorData;
-import com.tencent.tavcut.bean.TextItem;
-import com.tencent.tavcut.session.TAVCutImageSession;
-import com.tencent.tavcut.session.TAVCutSession;
-import com.tencent.tavcut.session.TAVCutVideoSession;
-import com.tencent.weseevideo.model.effect.StickerModel;
-import java.util.ArrayList;
+import com.tencent.shadow.dynamic.host.PluginManagerUpdater;
+import java.io.File;
+import java.util.concurrent.Future;
 
 public class blpi
+  implements PluginManagerUpdater
 {
-  private blpb jdField_a_of_type_Blpb;
-  private blpm jdField_a_of_type_Blpm;
+  private avgo jdField_a_of_type_Avgo;
+  private File jdField_a_of_type_JavaIoFile;
   
-  private void a()
+  public blpi(avgo paramavgo, File paramFile)
   {
-    if (this.jdField_a_of_type_Blpb != null) {
-      this.jdField_a_of_type_Blpb.setOnDismissListener(new blpl(this));
-    }
+    this.jdField_a_of_type_Avgo = paramavgo;
+    this.jdField_a_of_type_JavaIoFile = paramFile;
   }
   
-  private void a(TAVCutSession paramTAVCutSession, int paramInt1, String paramString, int paramInt2)
+  public File getLatest()
   {
-    ArrayList localArrayList = new ArrayList();
-    TextItem localTextItem = new TextItem();
-    localTextItem.text = paramString;
-    localTextItem.textColor = paramInt1;
-    localArrayList.add(localTextItem);
-    paramString = new StickerModel();
-    paramString.setAssetFilePath("ae_editor_text_main.pag");
-    paramString.setCenterX(0.5F);
-    paramString.setCenterY(0.6F);
-    paramString.setScale(0.5F);
-    paramString.setMaxScale(1.0F);
-    paramString.setMinScale(0.2F);
-    paramString.setTextItems(localArrayList);
-    if ((paramTAVCutSession instanceof TAVCutImageSession))
-    {
-      ((TAVCutImageSession)paramTAVCutSession).addSticker(paramInt2, paramString);
-      return;
-    }
-    ((TAVCutVideoSession)paramTAVCutSession).addSticker(paramString);
+    return this.jdField_a_of_type_JavaIoFile;
   }
   
-  public void a(Context paramContext, TextEditorData paramTextEditorData, TAVCutSession paramTAVCutSession)
+  public Future isAvailable(File paramFile)
   {
-    if ((this.jdField_a_of_type_Blpb != null) && (this.jdField_a_of_type_Blpb.isShowing())) {
-      return;
-    }
-    this.jdField_a_of_type_Blpb = new blpb(paramContext, 2131755011, new blpj(this, paramTextEditorData, paramTAVCutSession));
-    a();
-    paramContext = new blph();
-    paramContext.a(paramTextEditorData.getTextColor());
-    paramContext.a(paramTextEditorData.getContent());
-    this.jdField_a_of_type_Blpb.a("default_sticker_id", paramContext);
-    this.jdField_a_of_type_Blpb.show();
+    return this.jdField_a_of_type_Avgo.isAvailable(paramFile);
   }
   
-  public void a(Context paramContext, TAVCutSession paramTAVCutSession, int paramInt)
+  public Future update()
   {
-    if ((this.jdField_a_of_type_Blpb != null) && (this.jdField_a_of_type_Blpb.isShowing())) {
-      return;
-    }
-    this.jdField_a_of_type_Blpb = new blpb(paramContext, 2131755011, new blpk(this, paramTAVCutSession, paramInt));
-    a();
-    this.jdField_a_of_type_Blpb.show();
-    bliu.a().j();
+    return this.jdField_a_of_type_Avgo.update();
   }
   
-  public void a(blpm paramblpm)
+  public boolean wasUpdating()
   {
-    this.jdField_a_of_type_Blpm = paramblpm;
+    return false;
   }
 }
 

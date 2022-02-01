@@ -1,14 +1,16 @@
-import com.tencent.mobileqq.jsp.UiApiPlugin;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class atjf
-  implements yxr
+class atjf
+  implements View.OnClickListener
 {
-  public atjf(UiApiPlugin paramUiApiPlugin) {}
+  atjf(atje paramatje, bbmy parambbmy) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    this.a.dispatchJsEvent("qbrowserPullDown", null, null);
-    this.a.h = true;
+    this.jdField_a_of_type_Bbmy.a(paramView);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

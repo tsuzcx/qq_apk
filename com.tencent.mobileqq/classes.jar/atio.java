@@ -1,31 +1,20 @@
-import com.tencent.mobileqq.webview.swift.JsBridgeListener;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.view.inputmethod.InputMethodManager;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.filemanager.data.search.selector.FileSelectorSearchGroupFragment;
+import com.tencent.qphone.base.util.BaseApplication;
 
 public class atio
-  extends WebViewPlugin
+  implements View.OnTouchListener
 {
-  private final yqz a = yqz.a();
+  public atio(FileSelectorSearchGroupFragment paramFileSelectorSearchGroupFragment) {}
   
-  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (("studyroom".equals(paramString2)) && ("predownload".equals(paramString3)))
-    {
-      this.a.k();
-      return true;
-    }
-    return super.handleJsRequest(paramJsBridgeListener, paramString1, paramString2, paramString3, paramVarArgs);
-  }
-  
-  public void onCreate()
-  {
-    super.onCreate();
-    this.a.a();
-  }
-  
-  public void onDestroy()
-  {
-    super.onDestroy();
-    this.a.b();
+    ((InputMethodManager)BaseApplicationImpl.getContext().getSystemService("input_method")).hideSoftInputFromWindow(paramView.getWindowToken(), 0);
+    return false;
   }
 }
 

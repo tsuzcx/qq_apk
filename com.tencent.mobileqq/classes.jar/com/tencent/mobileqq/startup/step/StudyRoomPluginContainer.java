@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.startup.step;
 
-import aszd;
+import avgw;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.shadow.core.common.LoggerFactory;
 import com.tencent.shadow.dynamic.host.DynamicRuntime;
@@ -13,7 +13,7 @@ public class StudyRoomPluginContainer
   {
     try
     {
-      LoggerFactory.setILoggerFactory(aszd.a());
+      LoggerFactory.setILoggerFactory(avgw.a());
       label6:
       BaseApplicationImpl.getApplication().registerActivityLifecycleCallbacks(PluginProcessService.getActivityHolder());
       DynamicRuntime.recoveryRuntime(BaseApplicationImpl.getContext());
@@ -28,7 +28,7 @@ public class StudyRoomPluginContainer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.startup.step.StudyRoomPluginContainer
  * JD-Core Version:    0.7.0.1
  */

@@ -1,25 +1,12 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsLikeAnimate.LikeExplosionView;
+import java.net.URL;
 
-public class reu
-  extends AnimatorListenerAdapter
+public abstract interface reu
 {
-  public reu(VideoFeedsLikeAnimate.LikeExplosionView paramLikeExplosionView) {}
-  
-  public void onAnimationCancel(Animator paramAnimator)
-  {
-    VideoFeedsLikeAnimate.LikeExplosionView.a(this.a);
-  }
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    VideoFeedsLikeAnimate.LikeExplosionView.a(this.a);
-  }
+  public abstract URL a(URL paramURL);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     reu
  * JD-Core Version:    0.7.0.1
  */

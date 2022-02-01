@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.app;
 
-import alpy;
+import anjh;
 import com.tencent.qphone.base.util.QLog;
 
 public class ConditionSearchManager$4
   implements Runnable
 {
-  public ConditionSearchManager$4(alpy paramalpy) {}
+  public ConditionSearchManager$4(anjh paramanjh) {}
   
   public void run()
   {
@@ -25,7 +25,7 @@ public class ConditionSearchManager$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.app.ConditionSearchManager.4
  * JD-Core Version:    0.7.0.1
  */

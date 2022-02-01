@@ -1,52 +1,35 @@
-import android.content.res.ColorStateList;
-import android.text.TextPaint;
+import android.support.annotation.NonNull;
 import android.text.TextUtils;
-import android.text.style.ClickableSpan;
-import android.view.View;
+import com.tencent.biz.qqstory.model.item.QQUserUIItem;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
 public class yps
-  extends ClickableSpan
+  extends QQUIEventReceiver<ypb, wwx>
 {
-  private int jdField_a_of_type_Int;
-  private ColorStateList jdField_a_of_type_AndroidContentResColorStateList;
-  private String jdField_a_of_type_JavaLangString;
-  private ypt jdField_a_of_type_Ypt;
-  
-  public yps(String paramString, int paramInt, ypt paramypt)
+  public yps(@NonNull ypb paramypb)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Ypt = paramypt;
+    super(paramypb);
   }
   
-  public yps(String paramString, ColorStateList paramColorStateList, ypt paramypt)
+  public void a(@NonNull ypb paramypb, @NonNull wwx paramwwx)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_AndroidContentResColorStateList = paramColorStateList;
-    this.jdField_a_of_type_Ypt = paramypt;
+    if ((paramwwx == null) || (paramwwx.a == null) || (TextUtils.isEmpty(paramwwx.a.headUrl))) {
+      yqp.c(this.TAG, "GetUserInfoHandler return headUrl is null!", new IllegalStateException());
+    }
+    while (!paramwwx.a.isMe()) {
+      return;
+    }
+    ypb.b(paramypb);
   }
   
-  public void onClick(View paramView)
+  public Class acceptEventClass()
   {
-    if ((!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (this.jdField_a_of_type_Ypt != null)) {
-      this.jdField_a_of_type_Ypt.a(this.jdField_a_of_type_JavaLangString);
-    }
-  }
-  
-  public void updateDrawState(TextPaint paramTextPaint)
-  {
-    if (this.jdField_a_of_type_Int > 0) {
-      paramTextPaint.setColor(this.jdField_a_of_type_Int);
-    }
-    if (this.jdField_a_of_type_AndroidContentResColorStateList != null) {
-      paramTextPaint.setColor(this.jdField_a_of_type_AndroidContentResColorStateList.getColorForState(paramTextPaint.drawableState, 0));
-    }
-    paramTextPaint.setUnderlineText(false);
+    return wwx.class;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     yps
  * JD-Core Version:    0.7.0.1
  */

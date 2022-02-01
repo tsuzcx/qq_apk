@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.mini.app;
 
-import aofp;
+import aqga;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.mini.appbrand.ui.InternalAppBrandUI;
 import com.tencent.mobileqq.mini.util.AnimUtil;
 
 class AppUIProxy$1
-  implements aofp
+  implements aqga
 {
   AppUIProxy$1(AppUIProxy paramAppUIProxy, BaseActivity paramBaseActivity) {}
   
@@ -27,7 +27,7 @@ class AppUIProxy$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.app.AppUIProxy.1
  * JD-Core Version:    0.7.0.1
  */

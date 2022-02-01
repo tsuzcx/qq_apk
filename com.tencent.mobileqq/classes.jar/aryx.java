@@ -1,59 +1,132 @@
-import android.app.Activity;
-import android.app.PendingIntent;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import android.net.Uri;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.content.Context;
+import android.util.SparseArray;
+import android.view.View;
+import com.tencent.mobileqq.emoticonview.EmoticonLinearLayout;
 import com.tencent.qphone.base.util.QLog;
 
-class aryx
-  implements DialogInterface.OnClickListener
+public abstract class aryx
+  extends arzg
 {
-  aryx(aryv paramaryv) {}
+  private static aryz a;
+  public int a;
+  protected Context a;
+  protected SparseArray<View> a;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public aryx(Context paramContext, int paramInt1, int paramInt2)
+  {
+    super(paramInt1);
+    if (paramContext == null) {
+      throw new IllegalArgumentException("Context MUST NOT be null!!!");
+    }
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_Int = paramInt2;
+    this.jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
+  }
+  
+  private boolean a(int paramInt)
   {
     switch (paramInt)
     {
     default: 
-    case -2: 
+      return false;
+    }
+    return true;
+  }
+  
+  public static void b()
+  {
+    if (jdField_a_of_type_Aryz != null)
+    {
+      jdField_a_of_type_Aryz.a();
+      jdField_a_of_type_Aryz = null;
+    }
+  }
+  
+  protected abstract int a(int paramInt);
+  
+  protected View a(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("EmoticonPanelViewBinder", 2, " createEmoticonPanelView, type=" + paramInt);
+    }
+    long l = System.currentTimeMillis();
+    Object localObject;
+    switch (paramInt)
+    {
+    default: 
+      localObject = null;
+    }
+    for (;;)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("EmoticonPanelViewBinder", 2, "[Performance] createEmoticonPanelView, type=" + paramInt + ",duration=" + (System.currentTimeMillis() - l));
+      }
+      return localObject;
+      localObject = new EmoticonLinearLayout(this.jdField_a_of_type_AndroidContentContext, null);
+      ((EmoticonLinearLayout)localObject).setPanelViewType(paramInt);
+    }
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_AndroidContentContext = null;
+    if (this.jdField_a_of_type_AndroidUtilSparseArray != null) {
+      this.jdField_a_of_type_AndroidUtilSparseArray.clear();
+    }
+  }
+  
+  public void a(int paramInt)
+  {
+    if (this.jdField_a_of_type_AndroidUtilSparseArray == null) {}
+    View localView;
+    do
+    {
       do
       {
-        return;
-        if (this.a.c) {
-          bfhz.a().a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), "", String.valueOf(this.a.jdField_a_of_type_Long), "1000", "51", "0", false);
-        }
-        this.a.a(true);
-        this.a.jdField_a_of_type_AndroidAppActivity.setResult(1);
-        this.a.jdField_a_of_type_AndroidAppActivity.finish();
-      } while (!QLog.isColorLevel());
-      QLog.i("ForwardOption.ForwardBaseOption", 2, "-->showQfavResultDialog--onClick--back call");
-      return;
-    }
-    if (this.a.c) {
-      bfhz.a().a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), "", String.valueOf(this.a.jdField_a_of_type_Long), "1000", "52", "0", false);
-    }
+        do
+        {
+          return;
+          localView = (View)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
+        } while (localView == null);
+        this.jdField_a_of_type_AndroidUtilSparseArray.remove(paramInt);
+        paramInt = a(paramInt);
+      } while (!a(paramInt));
+      if (jdField_a_of_type_Aryz == null) {
+        jdField_a_of_type_Aryz = new aryz();
+      }
+    } while (jdField_a_of_type_Aryz.a(paramInt, localView));
+  }
+  
+  protected abstract void a(View paramView, int paramInt);
+  
+  public View b(int paramInt)
+  {
     if (QLog.isColorLevel()) {
-      QLog.i("ForwardOption.ForwardBaseOption", 2, "-->showQfavResultDialog--onClick--send call");
+      QLog.d("EmoticonPanelViewBinder", 2, "getEmoticonPanelView, pageIndex=" + paramInt + ",viewBinder=" + this);
     }
-    paramDialogInterface = new Intent();
-    paramDialogInterface.setData(Uri.parse(String.format("tencent%1$d://tauth.qq.com/?#action=%2$s&result=complete&response={\"ret\":0}", new Object[] { Long.valueOf(this.a.jdField_a_of_type_Long), "shareToQQ" })));
-    paramDialogInterface.setPackage(this.a.jdField_a_of_type_AndroidAppActivity.getIntent().getStringExtra("pkg_name"));
-    paramDialogInterface = PendingIntent.getActivity(this.a.jdField_a_of_type_AndroidAppActivity, 0, paramDialogInterface, 268435456);
-    Intent localIntent = new Intent();
-    localIntent.putExtra("is_share_flag", true);
-    if (this.a.jdField_a_of_type_Long > 0L) {
-      localIntent.putExtra("activity_finish_run_pendingIntent", paramDialogInterface);
+    int i = a(paramInt);
+    View localView1 = null;
+    if (jdField_a_of_type_Aryz != null) {
+      localView1 = jdField_a_of_type_Aryz.a(i);
     }
-    bivc.a(this.a.jdField_a_of_type_AndroidAppActivity, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), localIntent, -1, true);
-    bivo.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 5, 0);
-    this.a.jdField_a_of_type_AndroidAppActivity.setResult(1);
+    View localView2 = localView1;
+    if (localView1 == null) {
+      localView2 = a(i);
+    }
+    if (localView2 != null)
+    {
+      if (this.jdField_a_of_type_AndroidUtilSparseArray == null) {
+        this.jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
+      }
+      this.jdField_a_of_type_AndroidUtilSparseArray.put(paramInt, localView2);
+      a(localView2, paramInt);
+    }
+    return localView2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aryx
  * JD-Core Version:    0.7.0.1
  */

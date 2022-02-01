@@ -1,24 +1,20 @@
-import java.io.File;
-import java.util.Comparator;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.open.appcommon.js.AppInterface.2;
 
-public final class biqk
-  implements Comparator<File>
+public class biqk
+  implements DialogInterface.OnDismissListener
 {
-  public int a(File paramFile1, File paramFile2)
+  public biqk(AppInterface.2 param2) {}
+  
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    long l = paramFile1.length() - paramFile2.length();
-    if (l > 0L) {
-      return 1;
-    }
-    if (l == 0L) {
-      return 0;
-    }
-    return -1;
+    this.a.this$0.tipDialog = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     biqk
  * JD-Core Version:    0.7.0.1
  */

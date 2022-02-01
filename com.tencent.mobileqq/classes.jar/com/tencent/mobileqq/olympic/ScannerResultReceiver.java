@@ -3,7 +3,7 @@ package com.tencent.mobileqq.olympic;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.ResultReceiver;
-import awci;
+import ayma;
 import com.tencent.mobileqq.ocr.activity.ScanBaseActivity;
 import com.tencent.mobileqq.olympic.activity.OlympicToolBaseActivity;
 
@@ -20,7 +20,7 @@ public class ScannerResultReceiver
   
   public void a(ScanBaseActivity paramScanBaseActivity)
   {
-    awci.b("ScannerResultReceiver", new Object[] { "setActivity activity:", paramScanBaseActivity, this });
+    ayma.b("ScannerResultReceiver", new Object[] { "setActivity activity:", paramScanBaseActivity, this });
     this.jdField_a_of_type_ComTencentMobileqqOcrActivityScanBaseActivity = paramScanBaseActivity;
   }
   
@@ -31,7 +31,7 @@ public class ScannerResultReceiver
   
   protected void onReceiveResult(int paramInt, Bundle paramBundle)
   {
-    awci.b("ScannerResultReceiver", new Object[] { "mResultReceiver.onReceiveResult, resultCode=", Integer.valueOf(paramInt), this });
+    ayma.b("ScannerResultReceiver", new Object[] { "mResultReceiver.onReceiveResult, resultCode=", Integer.valueOf(paramInt), this });
     if (paramInt == 0)
     {
       if ((this.jdField_a_of_type_ComTencentMobileqqOcrActivityScanBaseActivity != null) && (this.jdField_a_of_type_ComTencentMobileqqOcrActivityScanBaseActivity.a)) {
@@ -45,7 +45,7 @@ public class ScannerResultReceiver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.olympic.ScannerResultReceiver
  * JD-Core Version:    0.7.0.1
  */

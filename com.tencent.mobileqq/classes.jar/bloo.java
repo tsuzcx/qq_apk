@@ -1,8 +1,19 @@
-import android.support.annotation.NonNull;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import cooperation.qqreader.js.JsCallParams;
 
-public abstract interface bloo
+public final class bloo
+  implements Parcelable.Creator<JsCallParams>
 {
-  public abstract void a(@NonNull bloh parambloh, boolean paramBoolean, @NonNull String paramString);
+  public JsCallParams a(Parcel paramParcel)
+  {
+    return new JsCallParams(paramParcel, null);
+  }
+  
+  public JsCallParams[] a(int paramInt)
+  {
+    return new JsCallParams[paramInt];
+  }
 }
 
 

@@ -1,10 +1,31 @@
-import android.text.SpannableString;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class bdsa
+  implements View.OnClickListener
 {
-  int jdField_a_of_type_Int;
-  SpannableString jdField_a_of_type_AndroidTextSpannableString;
-  int b;
+  bdsa(bdry parambdry) {}
+  
+  public void onClick(View paramView)
+  {
+    switch (((bdrj)paramView.getTag()).b)
+    {
+    }
+    for (;;)
+    {
+      this.a.dismiss();
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      this.a.d();
+      continue;
+      this.a.e();
+      continue;
+      this.a.f();
+      continue;
+      this.a.g();
+    }
+  }
 }
 
 

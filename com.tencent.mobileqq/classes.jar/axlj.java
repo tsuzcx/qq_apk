@@ -1,25 +1,42 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
+import android.graphics.Bitmap;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.wxapi.WXShareHelper;
 
-public class axlj
-  extends RecyclerView.ViewHolder
+final class axlj
+  implements URLDrawable.URLDrawableListener
 {
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private String jdField_a_of_type_JavaLangString;
+  axlj(String paramString1, axlm paramaxlm, String paramString2, String paramString3, String paramString4, QQAppInterface paramQQAppInterface) {}
   
-  private axlj(View paramView)
+  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
+  
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
   {
-    super(paramView);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131378896));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131368796));
+    paramURLDrawable = bggl.b(BaseApplicationImpl.getApplication().getResources(), 2130845311);
+    WXShareHelper.a().a(new axll(this));
+    WXShareHelper.a().a(this.jdField_a_of_type_JavaLangString, this.b, paramURLDrawable, this.c, this.d);
+    new axlq().h("video").i("playpage_fw_suc").a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+  }
+  
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  {
+    Bitmap localBitmap = axla.a(paramURLDrawable);
+    paramURLDrawable = localBitmap;
+    if (localBitmap == null) {
+      paramURLDrawable = bggl.b(BaseApplicationImpl.getApplication().getResources(), 2130845311);
+    }
+    WXShareHelper.a().a(new axlk(this));
+    WXShareHelper.a().a(this.jdField_a_of_type_JavaLangString, this.b, paramURLDrawable, this.c, this.d);
+    new axlq().h("video").i("playpage_fw_suc").a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     axlj
  * JD-Core Version:    0.7.0.1
  */

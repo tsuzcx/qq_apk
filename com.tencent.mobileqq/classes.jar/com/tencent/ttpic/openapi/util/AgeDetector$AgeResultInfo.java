@@ -100,6 +100,11 @@ class AgeDetector$AgeResultInfo
     return this.detectTimes < 5;
   }
   
+  public void setAgeResult(int paramInt)
+  {
+    this.ageResult = paramInt;
+  }
+  
   public void updateAge(int paramInt)
   {
     if (this.detectTimes < 5)
@@ -116,7 +121,7 @@ class AgeDetector$AgeResultInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.openapi.util.AgeDetector.AgeResultInfo
  * JD-Core Version:    0.7.0.1
  */

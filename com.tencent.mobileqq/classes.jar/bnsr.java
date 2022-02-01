@@ -1,67 +1,21 @@
-import java.util.concurrent.atomic.AtomicInteger;
+import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
 
-public class bnsr
+class bnsr
+  implements EIPCResultCallback
 {
-  private static float[] jdField_a_of_type_ArrayOfFloat = { 1.0F, 0.0F, 0.0F, 0.0F, 0.0F, 1.0F, 0.0F, 0.0F, 0.0F, 0.0F, 1.0F, 0.0F, 0.0F, 0.0F, 0.0F, 1.0F };
-  public int a;
-  public bnss a;
-  private bnst jdField_a_of_type_Bnst;
-  private AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger;
-  private AtomicInteger b;
+  bnsr(bnsi parambnsi) {}
   
-  public int a()
+  public void onCallback(EIPCResult paramEIPCResult)
   {
-    return this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.getAndAdd(0);
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_Bnst != null)
+    QLog.d("AEGIFChunkPreviewFragment", 4, "QIPC_ACTION_EMO_CREATE_GIF_AND_UPLOAD onCallback");
+    if (paramEIPCResult.code == 0)
     {
-      this.jdField_a_of_type_Bnst.a();
+      QLog.d("AEGIFChunkPreviewFragment", 4, "QIPC_ACTION_EMO_CREATE_GIF_AND_UPLOAD eipcResult.code == 0");
       return;
     }
-    b();
-  }
-  
-  public void a(int paramInt, Object paramObject, boolean paramBoolean)
-  {
-    boolean bool = true;
-    bnss localbnss = this.jdField_a_of_type_Bnss;
-    if (paramInt == 1) {}
-    for (;;)
-    {
-      localbnss.jdField_a_of_type_Boolean = bool;
-      this.jdField_a_of_type_Bnss.jdField_a_of_type_JavaLangObject = paramObject;
-      this.jdField_a_of_type_Bnss.b = paramBoolean;
-      return;
-      bool = false;
-    }
-  }
-  
-  public int b()
-  {
-    return this.b.getAndSet(1);
-  }
-  
-  public void b()
-  {
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.getAndSet(0);
-  }
-  
-  public int c()
-  {
-    return this.b.getAndAdd(0);
-  }
-  
-  public void c()
-  {
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.getAndSet(1);
-  }
-  
-  public void d()
-  {
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.getAndSet(2);
+    QLog.d("AEGIFChunkPreviewFragment", 4, new Object[] { "QIPC_ACTION_EMO_CREATE_GIF_AND_UPLOAD eipcResult.code != 0, eipcResult.code == ", Integer.valueOf(paramEIPCResult.code), ", msg = ", paramEIPCResult.e.getMessage() });
   }
 }
 

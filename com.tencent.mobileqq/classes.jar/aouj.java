@@ -1,88 +1,117 @@
-import android.content.Context;
-import android.text.SpannableString;
-import android.text.TextUtils;
-import java.util.Arrays;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Iterator;
+import java.util.Random;
 
 public class aouj
+  extends aouc
 {
-  private final String jdField_a_of_type_JavaLangString;
-  public final boolean a;
-  private final String[] jdField_a_of_type_ArrayOfJavaLangString;
-  private final String jdField_b_of_type_JavaLangString;
-  private final String[] jdField_b_of_type_ArrayOfJavaLangString;
-  private final String c;
-  private final String d;
+  public Boolean a;
+  public ArrayList<aorz> a;
+  public Boolean b;
+  public String b;
+  public String c;
+  public int d = 3;
+  public int e = 1;
   
-  public aouj()
+  public aouj(String paramString1, int paramInt1, int paramInt2, int paramInt3, float paramFloat1, float paramFloat2, float paramFloat3, String paramString2, String paramString3, ArrayList<aorz> paramArrayList, Boolean paramBoolean1, Boolean paramBoolean2, int paramInt4, int paramInt5)
   {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_b_of_type_JavaLangString = null;
-    this.jdField_a_of_type_ArrayOfJavaLangString = null;
-    this.jdField_b_of_type_ArrayOfJavaLangString = null;
-    this.c = null;
-    this.d = null;
-  }
-  
-  public aouj(String paramString1, boolean paramBoolean, String paramString2, String[] paramArrayOfString1, String[] paramArrayOfString2)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    super(paramString1, paramInt1, 2, paramInt3, paramFloat1, paramFloat2, paramFloat3);
+    this.jdField_a_of_type_JavaLangBoolean = Boolean.valueOf(false);
+    this.jdField_b_of_type_JavaLangBoolean = Boolean.valueOf(false);
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    this.jdField_b_of_type_JavaLangString = "";
+    this.jdField_a_of_type_JavaLangBoolean = paramBoolean1;
+    this.jdField_b_of_type_JavaLangBoolean = paramBoolean2;
+    this.e = paramInt4;
+    this.d = paramInt5;
+    this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
     this.jdField_b_of_type_JavaLangString = paramString2;
-    this.jdField_a_of_type_ArrayOfJavaLangString = paramArrayOfString1;
-    this.jdField_b_of_type_ArrayOfJavaLangString = paramArrayOfString2;
-    if ("AIO".equals(paramString1))
-    {
-      this.c = "0X800A647";
-      this.d = "0X800A648";
-      return;
-    }
-    if ("group".equals(paramString1))
-    {
-      this.c = "0X800A649";
-      this.d = "0X800A64A";
-      return;
-    }
-    if ("download".equals(paramString1))
-    {
-      this.c = "0X800A64B";
-      this.d = "0X800A64C";
-      return;
-    }
-    this.c = null;
-    this.d = null;
+    this.jdField_c_of_type_JavaLangString = paramString3;
   }
   
-  public SpannableString a(Context paramContext, CharSequence paramCharSequence)
+  public aorz a()
   {
-    paramCharSequence = paramCharSequence + this.jdField_b_of_type_JavaLangString;
-    SpannableString localSpannableString = new SpannableString(paramCharSequence);
-    int i = 0;
-    if (i < this.jdField_a_of_type_ArrayOfJavaLangString.length)
+    QLog.i("ARTransferResourceInfo", 2, "getTriggleUrlFromRandFunction");
+    if (this.jdField_a_of_type_JavaUtilArrayList.isEmpty()) {
+      return null;
+    }
+    ArrayList localArrayList = new ArrayList();
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    while (localIterator.hasNext())
     {
-      String str1 = this.jdField_a_of_type_ArrayOfJavaLangString[i];
-      String str2 = this.jdField_b_of_type_ArrayOfJavaLangString[i];
-      if ((TextUtils.isEmpty(str1)) || (TextUtils.isEmpty(str2))) {}
-      for (;;)
-      {
-        i += 1;
-        break;
-        int j = paramCharSequence.indexOf(this.jdField_a_of_type_ArrayOfJavaLangString[i]);
-        localSpannableString.setSpan(new aouk(this, str2, paramContext), j, str1.length() + j, 33);
+      aorz localaorz = (aorz)localIterator.next();
+      if (localaorz.b == 3) {
+        localArrayList.add(localaorz);
       }
     }
-    azqs.b(null, "dc00898", "", "", this.c, this.c, 2, 0, "", "", "", "");
-    return localSpannableString;
+    if (localArrayList.isEmpty()) {
+      return null;
+    }
+    return (aorz)localArrayList.get(new Random().nextInt(localArrayList.size()));
   }
   
-  public String toString()
+  public aorz a(int paramInt)
   {
-    return "Item{enable=" + this.jdField_a_of_type_Boolean + ", content='" + this.jdField_b_of_type_JavaLangString + '\'' + ", keyWords=" + Arrays.toString(this.jdField_a_of_type_ArrayOfJavaLangString) + ", actionUrls=" + Arrays.toString(this.jdField_b_of_type_ArrayOfJavaLangString) + '}';
+    QLog.i("ARTransferResourceInfo", 2, "getTriggleUrlFromClickOperation");
+    if (this.jdField_a_of_type_JavaUtilArrayList.isEmpty()) {
+      return null;
+    }
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    while (localIterator.hasNext())
+    {
+      aorz localaorz = (aorz)localIterator.next();
+      if ((paramInt <= localaorz.d) && (paramInt >= localaorz.jdField_c_of_type_Int) && (localaorz.b == 1)) {
+        return localaorz;
+      }
+    }
+    return null;
+  }
+  
+  public String a()
+  {
+    if ((this.jdField_a_of_type_JavaUtilArrayList.isEmpty()) || (this.jdField_a_of_type_JavaUtilArrayList.size() > 1)) {
+      return null;
+    }
+    return ((aorz)this.jdField_a_of_type_JavaUtilArrayList.get(0)).jdField_c_of_type_JavaLangString;
+  }
+  
+  public boolean a(int paramInt)
+  {
+    if (this.jdField_a_of_type_JavaUtilArrayList.isEmpty()) {
+      return false;
+    }
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    while (localIterator.hasNext()) {
+      if (((aorz)localIterator.next()).b == paramInt) {
+        return true;
+      }
+    }
+    return false;
+  }
+  
+  public aorz b()
+  {
+    QLog.i("ARTransferResourceInfo", 2, "getTriggleUrlFromTime");
+    if (this.jdField_a_of_type_JavaUtilArrayList.isEmpty()) {
+      return null;
+    }
+    int i = Calendar.getInstance().get(11);
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    while (localIterator.hasNext())
+    {
+      aorz localaorz = (aorz)localIterator.next();
+      if ((i < localaorz.d) && (i >= localaorz.jdField_c_of_type_Int) && (localaorz.b == 2)) {
+        return localaorz;
+      }
+    }
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aouj
  * JD-Core Version:    0.7.0.1
  */

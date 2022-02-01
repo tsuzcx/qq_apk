@@ -1,26 +1,16 @@
+import android.widget.CheckBox;
+import com.tencent.mobileqq.activity.selectmember.DiscussionMemberListInnerFrame;
+
 public class alrs
-  implements alpg
+  extends afnj
 {
-  protected void a(boolean paramBoolean, Object paramObject) {}
+  public CheckBox a;
   
-  protected void b(boolean paramBoolean, Object paramObject) {}
-  
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
-  {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    case 1: 
-      a(paramBoolean, paramObject);
-      return;
-    }
-    b(paramBoolean, paramObject);
-  }
+  private alrs(DiscussionMemberListInnerFrame paramDiscussionMemberListInnerFrame) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     alrs
  * JD-Core Version:    0.7.0.1
  */

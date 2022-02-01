@@ -3,7 +3,9 @@ package com.tencent.qapmsdk.memory;
 import android.support.annotation.Nullable;
 import com.tencent.qapmsdk.base.listener.IInspectorListener;
 import com.tencent.qapmsdk.common.util.InspectUUID;
+import java.util.ArrayList;
 import java.util.List;
+import org.jetbrains.annotations.NotNull;
 
 class MemoryLeakMonitor$1
   implements IInspectorListener
@@ -19,6 +21,8 @@ class MemoryLeakMonitor$1
   
   public void onFinishDump(boolean paramBoolean, String paramString1, String paramString2) {}
   
+  public void onHprofDumped(@NotNull String paramString) {}
+  
   public boolean onLeaked(InspectUUID paramInspectUUID)
   {
     return true;
@@ -27,12 +31,12 @@ class MemoryLeakMonitor$1
   @Nullable
   public List<String> onPrepareDump(String paramString)
   {
-    return null;
+    return new ArrayList();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.tencent.qapmsdk.memory.MemoryLeakMonitor.1
  * JD-Core Version:    0.7.0.1
  */

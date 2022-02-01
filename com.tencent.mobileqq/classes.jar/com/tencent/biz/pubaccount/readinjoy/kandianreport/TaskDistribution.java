@@ -6,8 +6,8 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import org.json.JSONObject;
-import syb;
 import tencent.im.oidb.cmd0x80a.oidb_cmd0x80a.AttributeList;
+import tzo;
 
 public class TaskDistribution
 {
@@ -43,13 +43,11 @@ public class TaskDistribution
   public static void report(String paramString)
   {
     paramString = getAttrList(paramString);
-    TaskManager.getInstance();
-    syb.a(80, TaskManager.scriptVersion, paramString);
+    tzo.a(80, TaskManager.scriptVersion, paramString);
   }
   
   public static void test()
   {
-    TaskManager.getInstance();
     TaskManager.scriptVersion = 1;
   }
 }

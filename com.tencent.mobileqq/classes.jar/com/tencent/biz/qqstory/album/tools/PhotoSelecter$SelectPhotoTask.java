@@ -7,10 +7,10 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
-import ukg;
-import ukh;
-import uki;
-import wxe;
+import wds;
+import wdt;
+import wdu;
+import yqp;
 
 public class PhotoSelecter$SelectPhotoTask
   implements Runnable
@@ -18,8 +18,8 @@ public class PhotoSelecter$SelectPhotoTask
   int jdField_a_of_type_Int;
   long jdField_a_of_type_Long;
   Context jdField_a_of_type_AndroidContentContext;
-  List<ukh> jdField_a_of_type_JavaUtilList;
-  ukg jdField_a_of_type_Ukg;
+  List<wdt> jdField_a_of_type_JavaUtilList;
+  wds jdField_a_of_type_Wds;
   long b;
   
   public void run()
@@ -66,7 +66,7 @@ public class PhotoSelecter$SelectPhotoTask
       localObject1 = new ArrayList();
       localObject2 = localArrayList.iterator();
       while (((Iterator)localObject2).hasNext()) {
-        ((ArrayList)localObject1).add(((ukh)((Iterator)localObject2).next()).jdField_a_of_type_Uja);
+        ((ArrayList)localObject1).add(((wdt)((Iterator)localObject2).next()).jdField_a_of_type_Wcm);
       }
     }
     Object localObject3;
@@ -75,7 +75,7 @@ public class PhotoSelecter$SelectPhotoTask
       localObject1 = PhotoSelecter.a;
       localObject3 = new StringBuilder().append("round = ");
       k = i + 1;
-      wxe.b((String)localObject1, i);
+      yqp.b((String)localObject1, i);
       j = 0;
       i = k;
     }
@@ -87,8 +87,8 @@ public class PhotoSelecter$SelectPhotoTask
         if (!((Iterator)localObject3).hasNext()) {
           break;
         }
-        localObject1 = (ukh)((Iterator)localObject3).next();
-      } while (((ukh)localObject1).jdField_a_of_type_Int != 1);
+        localObject1 = (wdt)((Iterator)localObject3).next();
+      } while (((wdt)localObject1).jdField_a_of_type_Int != 1);
       for (;;)
       {
         if (localObject1 == null)
@@ -100,7 +100,7 @@ public class PhotoSelecter$SelectPhotoTask
         }
         if (localArrayList.size() == 0)
         {
-          ((ukh)localObject1).jdField_a_of_type_Int = 2;
+          ((wdt)localObject1).jdField_a_of_type_Int = 2;
           localArrayList.add(localObject1);
           label410:
           j += 1;
@@ -109,15 +109,15 @@ public class PhotoSelecter$SelectPhotoTask
         localObject3 = localArrayList.iterator();
         while (((Iterator)localObject3).hasNext())
         {
-          Bitmap localBitmap1 = ((ukh)((Iterator)localObject3).next()).a(this.jdField_a_of_type_AndroidContentContext);
-          Bitmap localBitmap2 = ((ukh)localObject1).a(this.jdField_a_of_type_AndroidContentContext);
+          Bitmap localBitmap1 = ((wdt)((Iterator)localObject3).next()).a(this.jdField_a_of_type_AndroidContentContext);
+          Bitmap localBitmap2 = ((wdt)localObject1).a(this.jdField_a_of_type_AndroidContentContext);
           long l1 = System.currentTimeMillis();
-          double d = uki.a(localBitmap1, localBitmap2);
+          double d = wdu.a(localBitmap1, localBitmap2);
           long l2 = this.jdField_a_of_type_Long;
           this.jdField_a_of_type_Long = (System.currentTimeMillis() - l1 + l2);
           this.b += 1L;
           if (d >= 0.7D) {
-            ((ukh)localObject1).jdField_a_of_type_Int = 3;
+            ((wdt)localObject1).jdField_a_of_type_Int = 3;
           }
         }
         for (k = 1;; k = 0)
@@ -127,12 +127,12 @@ public class PhotoSelecter$SelectPhotoTask
             j += 1;
             break;
           }
-          ((ukh)localObject1).jdField_a_of_type_Int = 2;
+          ((wdt)localObject1).jdField_a_of_type_Int = 2;
           localArrayList.add(localObject1);
           break label410;
-          wxe.b(PhotoSelecter.a, "compare total time = " + this.jdField_a_of_type_Long + " compareTimes = " + this.b);
-          wxe.b(PhotoSelecter.a, "single compare time = " + this.jdField_a_of_type_Long / this.b);
-          this.jdField_a_of_type_Ukg.a((ArrayList)localObject1);
+          yqp.b(PhotoSelecter.a, "compare total time = " + this.jdField_a_of_type_Long + " compareTimes = " + this.b);
+          yqp.b(PhotoSelecter.a, "single compare time = " + this.jdField_a_of_type_Long / this.b);
+          this.jdField_a_of_type_Wds.a((ArrayList)localObject1);
           return;
         }
         localObject1 = null;
@@ -142,7 +142,7 @@ public class PhotoSelecter$SelectPhotoTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.qqstory.album.tools.PhotoSelecter.SelectPhotoTask
  * JD-Core Version:    0.7.0.1
  */

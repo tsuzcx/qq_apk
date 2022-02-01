@@ -1,18 +1,41 @@
-import android.graphics.drawable.Drawable;
+import android.support.annotation.NonNull;
 
 public class bedm
+  implements bedl
 {
   public int a;
-  public Drawable a;
   public String a;
-  public String b;
+  public boolean a;
   
-  public bedm(int paramInt, String paramString1, String paramString2, Drawable paramDrawable)
+  public bedm()
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramDrawable;
+    this.jdField_a_of_type_JavaLangString = "";
+  }
+  
+  public int a()
+  {
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public String a()
+  {
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Boolean;
+  }
+  
+  @NonNull
+  public String toString()
+  {
+    if (this.jdField_a_of_type_JavaLangString == null) {
+      this.jdField_a_of_type_JavaLangString = "";
+    }
+    StringBuilder localStringBuilder = new StringBuilder(128);
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString).append(":").append(this.jdField_a_of_type_Int);
+    return localStringBuilder.toString();
   }
 }
 

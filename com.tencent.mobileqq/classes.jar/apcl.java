@@ -1,6 +1,8 @@
 public abstract interface apcl
 {
-  public abstract apck a(int paramInt);
+  public abstract void a(long paramLong1, long paramLong2);
+  
+  public abstract void a(boolean paramBoolean, apcm paramapcm);
 }
 
 

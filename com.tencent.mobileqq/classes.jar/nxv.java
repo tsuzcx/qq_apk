@@ -1,48 +1,20 @@
-import android.content.Context;
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import java.lang.ref.WeakReference;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnShowListener;
+import android.view.Window;
 
-final class nxv
-  implements anvo
+class nxv
+  implements DialogInterface.OnShowListener
 {
-  nxv(WeakReference paramWeakReference, boolean paramBoolean, String paramString1, String paramString2) {}
+  nxv(nxr paramnxr) {}
   
-  public void a(int paramInt1, int paramInt2)
+  public void onShow(DialogInterface paramDialogInterface)
   {
-    int i = 1;
-    if (nxu.a() == paramInt1)
-    {
-      anwc.a().a(paramInt1);
-      nxu.a(-1);
-      if ((2 != paramInt2) && (1 != paramInt2)) {
-        break label123;
-      }
-    }
-    label123:
-    for (paramInt1 = 1;; paramInt1 = 0)
-    {
-      Context localContext = (Context)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-      Object localObject = localContext;
-      if (localContext == null) {
-        localObject = BaseApplicationImpl.getContext();
-      }
-      if ((-1 == paramInt2) && (this.jdField_a_of_type_Boolean) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (localObject != null)) {
-        ors.e((Context)localObject, this.jdField_a_of_type_JavaLangString);
-      }
-      localObject = this.b;
-      if (this.jdField_a_of_type_Boolean) {}
-      for (paramInt2 = i;; paramInt2 = 0)
-      {
-        ors.a((String)localObject, paramInt1, paramInt2);
-        return;
-      }
-    }
+    nxr.a(this.a).getWindow().clearFlags(8);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     nxv
  * JD-Core Version:    0.7.0.1
  */

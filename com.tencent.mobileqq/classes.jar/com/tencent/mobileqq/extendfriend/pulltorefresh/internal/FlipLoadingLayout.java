@@ -11,13 +11,13 @@ import android.view.animation.RotateAnimation;
 import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
 import android.widget.ProgressBar;
-import aqgu;
+import aslz;
 import com.tencent.mobileqq.extendfriend.pulltorefresh.PullToRefreshBase.Mode;
 import com.tencent.mobileqq.extendfriend.pulltorefresh.PullToRefreshBase.Orientation;
 
 @SuppressLint({"ViewConstructor"})
 public class FlipLoadingLayout
-  extends aqgu
+  extends aslz
 {
   private final Animation a;
   private final Animation b;
@@ -42,7 +42,7 @@ public class FlipLoadingLayout
   
   private float a()
   {
-    switch (aqgt.a[this.jdField_a_of_type_ComTencentMobileqqExtendfriendPulltorefreshPullToRefreshBase$Mode.ordinal()])
+    switch (asly.a[this.jdField_a_of_type_ComTencentMobileqqExtendfriendPulltorefreshPullToRefreshBase$Mode.ordinal()])
     {
     }
     do
@@ -77,7 +77,7 @@ public class FlipLoadingLayout
   
   public int b()
   {
-    return 2130839250;
+    return 2130839428;
   }
   
   public void b(float paramFloat) {}
@@ -110,7 +110,7 @@ public class FlipLoadingLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.extendfriend.pulltorefresh.internal.FlipLoadingLayout
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,8 @@
+import android.view.View;
+
 public abstract interface aleg
 {
-  public abstract void a(boolean paramBoolean, int paramInt);
+  public abstract void a(View paramView, int paramInt);
 }
 
 

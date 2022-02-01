@@ -1,32 +1,16 @@
-import android.graphics.Bitmap;
-import android.support.v7.widget.RecyclerView;
-import android.text.TextUtils;
-import android.widget.ImageView;
+import android.content.Context;
+import android.widget.BaseAdapter;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.anim.AIOAnimationConatiner;
+import com.tencent.mobileqq.activity.aio.item.StructingMsgItemBuilder;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-class ahji
-  implements bdbc
+public class ahji
+  extends StructingMsgItemBuilder
 {
-  ahji(ahjh paramahjh) {}
-  
-  public void onDecodeTaskCompleted(int paramInt1, int paramInt2, String paramString, Bitmap paramBitmap)
+  public ahji(QQAppInterface paramQQAppInterface, BaseAdapter paramBaseAdapter, Context paramContext, SessionInfo paramSessionInfo, AIOAnimationConatiner paramAIOAnimationConatiner)
   {
-    if ((paramBitmap != null) && (!TextUtils.isEmpty(paramString)))
-    {
-      paramInt2 = ahjh.a(this.a).getChildCount();
-      paramInt1 = 0;
-      while (paramInt1 < paramInt2)
-      {
-        Object localObject = ahjh.a(this.a).getChildViewHolder(ahjh.a(this.a).getChildAt(paramInt1));
-        if ((localObject instanceof ahjj))
-        {
-          localObject = (ahjj)localObject;
-          if (((ahjj)localObject).jdField_a_of_type_JavaLangString.equals(paramString)) {
-            ((ahjj)localObject).jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(paramBitmap);
-          }
-        }
-        paramInt1 += 1;
-      }
-    }
+    super(paramQQAppInterface, paramBaseAdapter, paramContext, paramSessionInfo, paramAIOAnimationConatiner);
   }
 }
 

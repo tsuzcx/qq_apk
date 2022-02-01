@@ -31,9 +31,9 @@ public class VideoGestureLayout
   
   private void init(Context paramContext)
   {
-    LayoutInflater.from(paramContext).inflate(2131559318, this);
-    this.iv_center = ((ImageView)findViewById(2131368728));
-    this.pb = ((ProgressBar)findViewById(2131371658));
+    LayoutInflater.from(paramContext).inflate(2131559414, this);
+    this.iv_center = ((ImageView)findViewById(2131369065));
+    this.pb = ((ProgressBar)findViewById(2131372231));
     this.mHideRunnable = new VideoGestureLayout.HideRunnable(this, null);
     setVisibility(8);
   }
@@ -63,7 +63,7 @@ public class VideoGestureLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.widget.media.VideoGestureLayout
  * JD-Core Version:    0.7.0.1
  */

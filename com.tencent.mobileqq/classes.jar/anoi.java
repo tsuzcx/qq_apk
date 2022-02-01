@@ -1,18 +1,60 @@
+import com.tencent.qphone.base.util.QLog;
+import oicq.wlogin_sdk.tools.MD5;
+import org.json.JSONObject;
+
 public class anoi
 {
-  public String a;
-  public boolean a;
-  public String b;
-  public boolean b;
-  public String c;
+  String a;
+  String b;
+  String c;
   
-  public anoi() {}
-  
-  public anoi(String paramString1, String paramString2, String paramString3)
+  public static anoi a(String paramString)
   {
-    this.a = paramString1;
-    this.b = paramString2;
-    this.c = paramString3;
+    if ((paramString == null) || (paramString.length() == 0)) {
+      paramString = null;
+    }
+    for (;;)
+    {
+      return paramString;
+      try
+      {
+        anoi localanoi = new anoi();
+        paramString = new JSONObject(paramString);
+        localanoi.a = paramString.getString("url");
+        if (localanoi.a != null)
+        {
+          localanoi.a = localanoi.a.trim();
+          localanoi.c = MD5.toMD5(localanoi.a);
+        }
+        localanoi.b = paramString.getString("md5");
+        if (localanoi.b != null) {
+          localanoi.b = localanoi.b.trim();
+        }
+        paramString = localanoi;
+        if (QLog.isDevelopLevel())
+        {
+          axei.a("HotchatSCMng", "parse ConfigData", new Object[] { localanoi });
+          return localanoi;
+        }
+      }
+      catch (Exception paramString)
+      {
+        paramString.printStackTrace();
+        return null;
+      }
+      catch (Throwable paramString)
+      {
+        paramString.printStackTrace();
+      }
+    }
+    return null;
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder(100);
+    localStringBuilder.append("[url:").append(this.a).append(",").append("md5:").append(this.b).append("]");
+    return localStringBuilder.toString();
   }
 }
 

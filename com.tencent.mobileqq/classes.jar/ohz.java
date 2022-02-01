@@ -1,20 +1,24 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.biu.ReadInJoyDeliverBiuActivity;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyBaseDeliverActivity;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyBaseDeliverActivity.11.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import mqq.os.MqqHandler;
 
 public class ohz
-  implements View.OnClickListener
+  implements bkhy
 {
-  public ohz(ReadInJoyDeliverBiuActivity paramReadInJoyDeliverBiuActivity) {}
+  public ohz(ReadInJoyBaseDeliverActivity paramReadInJoyBaseDeliverActivity) {}
   
-  public void onClick(View paramView)
+  public void onDismiss()
   {
-    this.a.a();
+    if ((!this.a.a) && (this.a.j != -1)) {
+      ThreadManager.getUIHandler().postDelayed(new ReadInJoyBaseDeliverActivity.11.1(this), 300L);
+    }
+    this.a.a = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     ohz
  * JD-Core Version:    0.7.0.1
  */

@@ -1,16 +1,14 @@
-public abstract interface rpc
+public class rpc
+  extends pmn
 {
-  public abstract void a();
-  
-  public abstract void a(boolean paramBoolean);
-  
-  public abstract void b();
-  
-  public abstract void c();
+  public void o()
+  {
+    super.o();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     rpc
  * JD-Core Version:    0.7.0.1
  */

@@ -1,110 +1,57 @@
-import java.math.RoundingMode;
-import java.text.NumberFormat;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Locale;
-import java.util.Set;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.os.Bundle;
+import com.tencent.biz.pubaccount.readinjoy.redpacket.RIJRedPacketManager;
+import com.tencent.common.app.AppInterface;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.pb.PBBoolField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.qphone.base.util.QLog;
+import org.jetbrains.annotations.NotNull;
+import tencent.im.oidb.cmd0xe1a.cmd0xe1a.ReqBody;
+import tencent.im.oidb.cmd0xe1a.cmd0xe1a.RspBody;
 
 public class rag
+  implements qzz
 {
-  public static HashMap<Integer, Long> a = new HashMap();
-  public static HashMap<Integer, ArrayList<rah>> b = new HashMap();
+  private static String a = "RIJRedPacketModel";
   
-  public static JSONArray a()
+  private void a(byte[] paramArrayOfByte, @NotNull raa paramraa)
   {
     try
     {
-      a();
-      JSONArray localJSONArray1 = new JSONArray();
-      Iterator localIterator = b.keySet().iterator();
-      NumberFormat localNumberFormat = NumberFormat.getInstance(Locale.US);
-      localNumberFormat.setMaximumFractionDigits(2);
-      localNumberFormat.setMinimumFractionDigits(2);
-      localNumberFormat.setRoundingMode(RoundingMode.HALF_UP);
-      localNumberFormat.setGroupingUsed(false);
-      while (localIterator.hasNext())
-      {
-        Object localObject = (Integer)localIterator.next();
-        localObject = ((ArrayList)b.get(localObject)).iterator();
-        while (((Iterator)localObject).hasNext())
-        {
-          rah localrah = (rah)((Iterator)localObject).next();
-          JSONObject localJSONObject = new JSONObject();
-          try
-          {
-            localJSONObject.put("downloadTime", new Float(localNumberFormat.format(Math.round(localrah.jdField_a_of_type_Float * 100.0F) / 100.0F)));
-            localJSONObject.put("speedList", localrah.b);
-            localJSONArray1.put(localJSONObject);
-          }
-          catch (JSONException localJSONException)
-          {
-            localJSONException.printStackTrace();
-          }
-        }
-      }
-    }
-    finally {}
-    return localJSONArray2;
-  }
-  
-  public static void a()
-  {
-    Iterator localIterator = a.keySet().iterator();
-    long l = System.currentTimeMillis();
-    while (localIterator.hasNext())
-    {
-      Integer localInteger = (Integer)localIterator.next();
-      if (((Long)a.get(localInteger)).longValue() < l - 60000L)
-      {
-        b.remove(localInteger);
-        localIterator.remove();
-      }
-    }
-  }
-  
-  public static void a(int paramInt, long paramLong)
-  {
-    if (paramLong == 0L) {
+      cmd0xe1a.RspBody localRspBody = new cmd0xe1a.RspBody();
+      localRspBody.mergeFrom(paramArrayOfByte);
+      boolean bool1 = localRspBody.have_red_packet.get();
+      boolean bool2 = localRspBody.opened_red_packet.get();
+      paramArrayOfByte = localRspBody.wording.get();
+      paramraa.a(0, bool2, paramArrayOfByte, localRspBody.wording2.get(), bool1);
+      QLog.i(a, 1, "yyy_0xe1a haveRedPacket = " + bool1 + " haveOpen " + bool2 + " wording1 " + paramArrayOfByte);
       return;
     }
-    for (;;)
+    catch (Exception paramArrayOfByte)
     {
-      long l;
-      try
-      {
-        l = System.currentTimeMillis();
-        a.put(Integer.valueOf(paramInt), Long.valueOf(l));
-        if (b.get(Integer.valueOf(paramInt)) != null)
-        {
-          ArrayList localArrayList1 = (ArrayList)b.get(Integer.valueOf(paramInt));
-          localrah1 = (rah)localArrayList1.get(0);
-          rah localrah2 = new rah();
-          localrah2.b = paramLong;
-          localrah2.jdField_a_of_type_Long = l;
-          localrah2.jdField_a_of_type_Float = ((float)(l - localrah1.jdField_a_of_type_Long) / 1000.0F);
-          localArrayList1.add(localrah2);
-          b.put(Integer.valueOf(paramInt), localArrayList1);
-          a();
-          return;
-        }
+      if (QLog.isColorLevel()) {
+        QLog.i(a, 2, QLog.getStackTraceString(paramArrayOfByte));
       }
-      finally {}
-      ArrayList localArrayList2 = new ArrayList();
-      rah localrah1 = new rah();
-      localrah1.b = paramLong;
-      localrah1.jdField_a_of_type_Long = l;
-      localrah1.jdField_a_of_type_Float = 0.0F;
-      localArrayList2.add(localrah1);
+      paramraa.a(-1, false, "", "", false);
     }
+  }
+  
+  public void a(int paramInt, String paramString1, String paramString2, @NotNull rab paramrab)
+  {
+    RIJRedPacketManager.a().a(paramInt, paramString1, paramString2, new rai(this, paramrab));
+  }
+  
+  public void a(@NotNull raa paramraa)
+  {
+    cmd0xe1a.ReqBody localReqBody = new cmd0xe1a.ReqBody();
+    localReqBody.nothing.set("nothing");
+    localReqBody.nothing.setHasFlag(true);
+    nir.a((AppInterface)BaseApplicationImpl.getApplication().getRuntime(), new rah(this, paramraa), localReqBody.toByteArray(), "OidbSvc.0xe1a", 3610, 1, new Bundle(), 5000L);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     rag
  * JD-Core Version:    0.7.0.1
  */

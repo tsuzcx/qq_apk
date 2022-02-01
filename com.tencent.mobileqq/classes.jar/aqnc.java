@@ -1,34 +1,35 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.filemanager.activity.UniformDownloadActivity;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
-public class aqnc
-  implements View.OnClickListener
+class aqnc
+  extends aqnd
 {
-  public aqnc(UniformDownloadActivity paramUniformDownloadActivity) {}
+  private int a;
   
-  public void onClick(View paramView)
+  public aqnc(int paramInt)
   {
-    if (this.a.a != null)
+    this.a = paramInt;
+  }
+  
+  public Object a(Object paramObject)
+  {
+    if (paramObject == null) {}
+    do
     {
-      this.a.a.dismiss();
-      this.a.a = null;
-    }
-    if (UniformDownloadActivity.a(this.a)) {
-      bfnj.a().a(UniformDownloadActivity.a(this.a), "1", "ANDROIDQQ.POPUP.YYBDOWNAPP", "3009", false);
-    }
-    for (;;)
-    {
-      this.a.finish();
-      this.a.overridePendingTransition(0, 0);
-      return;
-      bfnj.a().a(UniformDownloadActivity.a(this.a), "1", "ANDROIDQQ.POPUP.YYBDOWNAPP", "3006", false);
-    }
+      return null;
+      paramObject = (ArrayList)paramObject;
+      if (!(paramObject instanceof ArrayList))
+      {
+        QLog.e("ArkMsgReplyConfigMgr", 1, "getElement instance wrong");
+        return null;
+      }
+    } while ((this.a < 0) || (this.a >= paramObject.size()));
+    return paramObject.get(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aqnc
  * JD-Core Version:    0.7.0.1
  */

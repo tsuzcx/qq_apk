@@ -1,80 +1,30 @@
-import android.view.View;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.automator.Automator;
+import com.tencent.mobileqq.app.automator.step.GetJoinedHotChatListStep;
 
-public final class aoac
+public class aoac
+  extends annz
 {
-  public static void a(View paramView, float paramFloat)
-  {
-    if (aoab.a)
-    {
-      aoab.a(paramView).a(paramFloat);
-      return;
-    }
-    aoad.c(paramView, paramFloat);
-  }
+  private aoac(GetJoinedHotChatListStep paramGetJoinedHotChatListStep) {}
   
-  public static void b(View paramView, float paramFloat)
+  protected void a(int paramInt)
   {
-    if (aoab.a)
+    if (GetJoinedHotChatListStep.a(this.a) != null)
     {
-      aoab.a(paramView).d(paramFloat);
+      this.a.a.app.removeObserver(GetJoinedHotChatListStep.a(this.a));
+      GetJoinedHotChatListStep.a(this.a, null);
+    }
+    if (paramInt == 0)
+    {
+      this.a.a(7);
       return;
     }
-    aoad.d(paramView, paramFloat);
-  }
-  
-  public static void c(View paramView, float paramFloat)
-  {
-    if (aoab.a)
-    {
-      aoab.a(paramView).e(paramFloat);
-      return;
-    }
-    aoad.e(paramView, paramFloat);
-  }
-  
-  public static void d(View paramView, float paramFloat)
-  {
-    if (aoab.a)
-    {
-      aoab.a(paramView).b(paramFloat);
-      return;
-    }
-    aoad.a(paramView, paramFloat);
-  }
-  
-  public static void e(View paramView, float paramFloat)
-  {
-    if (aoab.a)
-    {
-      aoab.a(paramView).c(paramFloat);
-      return;
-    }
-    aoad.b(paramView, paramFloat);
-  }
-  
-  public static void f(View paramView, float paramFloat)
-  {
-    if (aoab.a)
-    {
-      aoab.a(paramView).g(paramFloat);
-      return;
-    }
-    aoad.f(paramView, paramFloat);
-  }
-  
-  public static void g(View paramView, float paramFloat)
-  {
-    if (aoab.a)
-    {
-      aoab.a(paramView).h(paramFloat);
-      return;
-    }
-    aoad.g(paramView, paramFloat);
+    this.a.a(6);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aoac
  * JD-Core Version:    0.7.0.1
  */

@@ -24,7 +24,7 @@ public final class group_activity_info$ReqBody
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.troop.group_activity_info.ReqBody
  * JD-Core Version:    0.7.0.1
  */

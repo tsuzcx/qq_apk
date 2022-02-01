@@ -1,8 +1,43 @@
-public abstract interface adif
+import com.tencent.mobileqq.activity.AccountManageActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.util.Pair;
+import java.util.ArrayList;
+
+public class adif
+  extends anqd
 {
-  public abstract void a();
+  public adif(AccountManageActivity paramAccountManageActivity) {}
   
-  public abstract void b();
+  public void a(boolean paramBoolean, String paramString, bdei parambdei)
+  {
+    if (this.a.isFinishing()) {}
+    bddy localbddy;
+    do
+    {
+      for (;;)
+      {
+        return;
+        AccountManageActivity.a(this.a, false);
+        localbddy = (bddy)this.a.app.getManager(62);
+        if (parambdei.a != 1) {
+          break;
+        }
+        if ((this.a.isResume()) && (bddy.a(this.a.app, "sub.uin.all")))
+        {
+          paramString = localbddy.a("sub.uin.all");
+          int j = paramString.size();
+          int i = 0;
+          while (i < j)
+          {
+            parambdei = (Pair)paramString.get(i);
+            localbddy.a(this.a.app, this.a, parambdei, new adig(this, localbddy, parambdei));
+            i += 1;
+          }
+        }
+      }
+    } while (!this.a.isResume());
+    localbddy.a(paramString, 1, true);
+  }
 }
 
 

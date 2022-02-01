@@ -1,22 +1,297 @@
-import android.graphics.drawable.Drawable;
+import android.content.SharedPreferences;
+import android.os.Environment;
+import android.text.TextUtils;
+import com.tencent.common.app.AppInterface;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.image.Utils;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.avatar.dynamicavatar.DynamicAvatarDownloadManager.2;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.concurrent.ConcurrentHashMap;
+import mqq.util.WeakReference;
 
-public abstract interface apuc
+public class apuc
 {
-  public abstract void a(apuf paramapuf);
+  private static File jdField_a_of_type_JavaIoFile;
+  public int a;
+  public long a;
+  private AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface;
+  private ArrayList<WeakReference<apue>> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  private ConcurrentHashMap<String, bdws> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
   
-  public abstract void a(apuf paramapuf1, apuf paramapuf2, Drawable paramDrawable);
+  static
+  {
+    if ("mounted".equals(Environment.getExternalStorageState())) {}
+    for (File localFile = new File(anhk.bL);; localFile = BaseApplicationImpl.getApplication().getCacheDir())
+    {
+      jdField_a_of_type_JavaIoFile = new File(localFile, "_dynamic");
+      return;
+    }
+  }
   
-  public abstract boolean a(apuf paramapuf);
+  public apuc(AppInterface paramAppInterface)
+  {
+    this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
+    c();
+  }
   
-  public abstract void b();
+  public static File a(String paramString)
+  {
+    paramString = a(paramString);
+    return new File(jdField_a_of_type_JavaIoFile, paramString);
+  }
   
-  public abstract void b(apuf paramapuf);
+  public static String a(String paramString)
+  {
+    return "cache_" + Utils.Crc64String(paramString) + ".mp4";
+  }
   
-  public abstract void c();
+  private boolean a()
+  {
+    long l = System.currentTimeMillis();
+    if ((l - this.jdField_a_of_type_Long > 86400000L) || (l - this.jdField_a_of_type_Long < 0L)) {
+      return true;
+    }
+    if (this.jdField_a_of_type_ComTencentCommonAppAppInterface != null)
+    {
+      apub localapub = ((apul)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getManager(180)).a();
+      if (this.jdField_a_of_type_Int + 1 > localapub.b)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.i("Q.dynamicAvatar", 2, "isLoadCountSatisfy not satisfy.");
+        }
+        return false;
+      }
+      return true;
+    }
+    return true;
+  }
   
-  public abstract void d();
+  public static String b(String paramString)
+  {
+    return a(paramString).getAbsolutePath();
+  }
   
-  public abstract void setting();
+  public static boolean b(String paramString)
+  {
+    if (!TextUtils.isEmpty(paramString))
+    {
+      paramString = a(paramString);
+      if ((paramString.exists()) && (paramString.isFile())) {
+        return true;
+      }
+    }
+    return false;
+  }
+  
+  private void c()
+  {
+    Object localObject = BaseApplicationImpl.getApplication().getSharedPreferences("dynamic_avatar", 4).getString("dynamic_load_count_one_day", "");
+    if (!TextUtils.isEmpty((CharSequence)localObject))
+    {
+      localObject = ((String)localObject).split("#");
+      if ((localObject == null) || (localObject.length != 2)) {}
+    }
+    try
+    {
+      this.jdField_a_of_type_Long = Long.valueOf(localObject[0]).longValue();
+      this.jdField_a_of_type_Int = Integer.valueOf(localObject[1]).intValue();
+      return;
+    }
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
+    }
+  }
+  
+  private boolean c(String paramString)
+  {
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (!bgnt.h(BaseApplicationImpl.getContext()))
+    {
+      bool1 = bool2;
+      if (!a())
+      {
+        synchronized (this.jdField_a_of_type_JavaUtilArrayList)
+        {
+          if (!this.jdField_a_of_type_JavaUtilArrayList.isEmpty())
+          {
+            Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+            while (localIterator.hasNext())
+            {
+              WeakReference localWeakReference = (WeakReference)localIterator.next();
+              if ((localWeakReference != null) && (localWeakReference.get() != null)) {
+                ((apue)localWeakReference.get()).a(paramString, false, false);
+              }
+            }
+          }
+        }
+        bool1 = true;
+      }
+    }
+    return bool1;
+  }
+  
+  private void d()
+  {
+    this.jdField_a_of_type_Int += 1;
+    long l = System.currentTimeMillis();
+    if (System.currentTimeMillis() - this.jdField_a_of_type_Long >= 86400000L)
+    {
+      this.jdField_a_of_type_Long = System.currentTimeMillis();
+      this.jdField_a_of_type_Int = 0;
+    }
+    ThreadManager.executeOnFileThread(new DynamicAvatarDownloadManager.2(this, l));
+  }
+  
+  private boolean d(String paramString)
+  {
+    ??? = a(paramString);
+    if ((??? != null) && (((File)???).exists()) && (((File)???).isFile()))
+    {
+      synchronized (this.jdField_a_of_type_JavaUtilArrayList)
+      {
+        if (!this.jdField_a_of_type_JavaUtilArrayList.isEmpty())
+        {
+          Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+          while (localIterator.hasNext())
+          {
+            WeakReference localWeakReference = (WeakReference)localIterator.next();
+            if ((localWeakReference != null) && (localWeakReference.get() != null)) {
+              ((apue)localWeakReference.get()).a(paramString, true, true);
+            }
+          }
+        }
+      }
+      return true;
+    }
+    return false;
+  }
+  
+  public final void a()
+  {
+    Object localObject = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.values();
+    if ((localObject == null) || (((Collection)localObject).isEmpty())) {
+      return;
+    }
+    localObject = ((Collection)localObject).iterator();
+    while (((Iterator)localObject).hasNext())
+    {
+      bdws localbdws = (bdws)((Iterator)localObject).next();
+      if ((localbdws != null) && (this.jdField_a_of_type_ComTencentCommonAppAppInterface != null)) {
+        this.jdField_a_of_type_ComTencentCommonAppAppInterface.getNetEngine(0).b(localbdws);
+      }
+    }
+    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
+  }
+  
+  public void a(apue paramapue)
+  {
+    for (;;)
+    {
+      synchronized (this.jdField_a_of_type_JavaUtilArrayList)
+      {
+        Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+        if (localIterator.hasNext())
+        {
+          WeakReference localWeakReference = (WeakReference)localIterator.next();
+          if ((localWeakReference == null) || (localWeakReference.get() == null) || (localWeakReference.get() != paramapue)) {
+            continue;
+          }
+          i = 1;
+          if (i == 0) {
+            this.jdField_a_of_type_JavaUtilArrayList.add(new WeakReference(paramapue));
+          }
+          return;
+        }
+      }
+      int i = 0;
+    }
+  }
+  
+  public final void a(ArrayList<String> paramArrayList)
+  {
+    if ((paramArrayList == null) || (paramArrayList.isEmpty())) {}
+    for (;;)
+    {
+      return;
+      paramArrayList = paramArrayList.iterator();
+      while (paramArrayList.hasNext())
+      {
+        String str = (String)paramArrayList.next();
+        if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(str))
+        {
+          bdws localbdws = (bdws)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(str);
+          if ((localbdws != null) && (this.jdField_a_of_type_ComTencentCommonAppAppInterface != null)) {
+            this.jdField_a_of_type_ComTencentCommonAppAppInterface.getNetEngine(0).b(localbdws);
+          }
+          this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(str);
+        }
+      }
+    }
+  }
+  
+  public boolean a(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {}
+    bdvs localbdvs;
+    do
+    {
+      do
+      {
+        do
+        {
+          return false;
+          if (d(paramString)) {
+            return true;
+          }
+        } while (c(paramString));
+        if (!this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(paramString)) {
+          break;
+        }
+      } while (!QLog.isColorLevel());
+      QLog.i("Q.dynamicAvatar", 2, "url:" + paramString + " has contains");
+      return false;
+      localbdvs = new bdvs();
+      localbdvs.jdField_a_of_type_Bdvw = new apud(this);
+      localbdvs.jdField_a_of_type_JavaLangString = paramString;
+      localbdvs.jdField_a_of_type_Int = 0;
+      localbdvs.c = a(paramString).getPath();
+      localbdvs.b = 1;
+    } while (this.jdField_a_of_type_ComTencentCommonAppAppInterface == null);
+    this.jdField_a_of_type_ComTencentCommonAppAppInterface.getNetEngine(0).a(localbdvs);
+    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString, localbdvs);
+    QLog.i("Q.dynamicAvatar", 2, "startDownloadDynamicAvatar, url: " + paramString + ", uin:" + this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin());
+    return false;
+  }
+  
+  public void b()
+  {
+    a();
+    this.jdField_a_of_type_JavaUtilArrayList.clear();
+    this.jdField_a_of_type_ComTencentCommonAppAppInterface = null;
+  }
+  
+  public void b(apue paramapue)
+  {
+    synchronized (this.jdField_a_of_type_JavaUtilArrayList)
+    {
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+      while (localIterator.hasNext())
+      {
+        WeakReference localWeakReference = (WeakReference)localIterator.next();
+        if ((localWeakReference != null) && (localWeakReference.get() != null) && (localWeakReference.get() == paramapue)) {
+          localIterator.remove();
+        }
+      }
+      return;
+    }
+  }
 }
 
 

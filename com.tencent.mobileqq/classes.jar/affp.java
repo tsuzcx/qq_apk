@@ -1,19 +1,19 @@
-import com.tencent.mobileqq.activity.BaseChatPie;
-import mqq.app.QQPermissionCallback;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.QQSettingCleanActivity;
+import com.tencent.mobileqq.activity.SpaceLowNoticeActiviy;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-class affp
-  implements QQPermissionCallback
+public class affp
+  implements DialogInterface.OnClickListener
 {
-  affp(affo paramaffo) {}
+  public affp(SpaceLowNoticeActiviy paramSpaceLowNoticeActiviy) {}
   
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    bdgm.b(affo.a(this.a).a);
-  }
-  
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    this.a.b();
+    QQSettingCleanActivity.a(this.a);
+    bcst.b(this.a.app, "dc00898", "", "", "0X8007546", "0X8007546", 0, 0, this.a.app.getCurrentAccountUin(), "", "", "");
+    this.a.finish();
   }
 }
 

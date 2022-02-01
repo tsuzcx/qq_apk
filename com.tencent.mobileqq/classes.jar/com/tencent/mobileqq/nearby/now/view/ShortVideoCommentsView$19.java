@@ -1,31 +1,31 @@
 package com.tencent.mobileqq.nearby.now.view;
 
 import android.text.TextUtils;
-import auul;
-import aveg;
-import azqx;
+import axby;
+import axlq;
+import bcsy;
 
 class ShortVideoCommentsView$19
   implements Runnable
 {
-  ShortVideoCommentsView$19(ShortVideoCommentsView paramShortVideoCommentsView, auul paramauul) {}
+  ShortVideoCommentsView$19(ShortVideoCommentsView paramShortVideoCommentsView, axby paramaxby) {}
   
   public void run()
   {
-    azqx localazqx = new azqx(this.this$0.a).a("dc00899").b("grp_lbs").c("video").d("playpage_com_suc").e(aveg.d);
+    bcsy localbcsy = new bcsy(this.this$0.a).a("dc00899").b("grp_lbs").c("video").d("playpage_com_suc").e(axlq.d);
     int i = this.a.b();
-    String str2 = aveg.a;
-    if (TextUtils.equals(aveg.a, "2")) {}
-    for (String str1 = aveg.c;; str1 = "")
+    String str2 = axlq.a;
+    if (TextUtils.equals(axlq.a, "2")) {}
+    for (String str1 = axlq.c;; str1 = "")
     {
-      localazqx.a(new String[] { "", String.valueOf(i), str2, str1 }).a();
+      localbcsy.a(new String[] { "", String.valueOf(i), str2, str1 }).a();
       return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.now.view.ShortVideoCommentsView.19
  * JD-Core Version:    0.7.0.1
  */

@@ -1,20 +1,61 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.text.TextUtils;
-import android.widget.AutoCompleteTextView;
-import com.tencent.mobileqq.activity.registerGuideLogin.LoginView;
+import android.app.Activity;
+import com.tencent.qphone.base.util.QLog;
+import mqq.os.MqqHandler;
+import org.json.JSONObject;
 
-public class ajny
-  implements DialogInterface.OnClickListener
+class ajny
+  implements adea
 {
-  public ajny(LoginView paramLoginView) {}
+  ajny(ajnk paramajnk, String paramString) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onComplete()
   {
-    paramDialogInterface = this.a.a.getText().toString();
-    if (!TextUtils.isEmpty(paramDialogInterface)) {
-      this.a.b(paramDialogInterface);
+    QLog.d("SDKEmotionSettingManager", 1, "check api, onComplete");
+  }
+  
+  public void onFailure(int paramInt, String paramString)
+  {
+    QLog.d("SDKEmotionSettingManager", 1, new Object[] { "check api, onFailure, code=", Integer.valueOf(paramInt), ", msg=", paramString });
+    if ((ajnk.a(this.jdField_a_of_type_Ajnk).isFinishing()) || (this.jdField_a_of_type_Ajnk.b))
+    {
+      QLog.d("SDKEmotionSettingManager", 1, "check api, acitivty finish or timeout");
+      return;
     }
+    this.jdField_a_of_type_Ajnk.c();
+    if (ajnk.a(this.jdField_a_of_type_Ajnk) != null) {
+      ajnk.a(this.jdField_a_of_type_Ajnk).removeCallbacks(ajnk.a(this.jdField_a_of_type_Ajnk));
+    }
+    this.jdField_a_of_type_Ajnk.a(anni.a(2131712373), this.jdField_a_of_type_JavaLangString);
+  }
+  
+  public void onPermission(int paramInt)
+  {
+    QLog.d("SDKEmotionSettingManager", 1, new Object[] { "check api, onPermission, code=", Integer.valueOf(paramInt) });
+    if ((ajnk.a(this.jdField_a_of_type_Ajnk).isFinishing()) || (this.jdField_a_of_type_Ajnk.b)) {
+      return;
+    }
+    this.jdField_a_of_type_Ajnk.c();
+    if (ajnk.a(this.jdField_a_of_type_Ajnk) != null) {
+      ajnk.a(this.jdField_a_of_type_Ajnk).removeCallbacks(ajnk.a(this.jdField_a_of_type_Ajnk));
+    }
+    this.jdField_a_of_type_Ajnk.a(anni.a(2131712374), this.jdField_a_of_type_JavaLangString);
+  }
+  
+  public void onSuccess(JSONObject paramJSONObject)
+  {
+    QLog.d("SDKEmotionSettingManager", 1, "check api, onSuccess");
+    if ((ajnk.a(this.jdField_a_of_type_Ajnk).isFinishing()) || (this.jdField_a_of_type_Ajnk.b)) {
+      return;
+    }
+    if (ajnk.a(this.jdField_a_of_type_Ajnk) != null) {
+      ajnk.a(this.jdField_a_of_type_Ajnk).removeCallbacks(ajnk.a(this.jdField_a_of_type_Ajnk));
+    }
+    ajnk.b(this.jdField_a_of_type_Ajnk);
+  }
+  
+  public void onTrigger(JSONObject paramJSONObject)
+  {
+    QLog.d("SDKEmotionSettingManager", 1, "check api, onTrigger");
   }
 }
 

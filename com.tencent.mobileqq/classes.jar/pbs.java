@@ -1,83 +1,21 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInjoyIMAXAdFragment;
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInjoyIMAXAdFragment.ProgressUIHandler.1;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import java.lang.ref.WeakReference;
+import java.util.List;
 
-public class pbs
-  extends Handler
+class pbs
+  extends pcm
 {
-  WeakReference<ReadInjoyIMAXAdFragment> a;
-  
-  public pbs(Looper paramLooper, ReadInjoyIMAXAdFragment paramReadInjoyIMAXAdFragment)
+  pbs(pbe parampbe, boolean paramBoolean1, List paramList, boolean paramBoolean2)
   {
-    super(paramLooper);
-    this.a = new WeakReference(paramReadInjoyIMAXAdFragment);
+    super(parampbe, null);
   }
   
-  public void handleMessage(Message paramMessage)
+  void a(pcp parampcp)
   {
-    ReadInjoyIMAXAdFragment localReadInjoyIMAXAdFragment = (ReadInjoyIMAXAdFragment)this.a.get();
-    if (localReadInjoyIMAXAdFragment == null) {
-      return;
-    }
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    }
-    long l1;
-    if (ReadInjoyIMAXAdFragment.a(localReadInjoyIMAXAdFragment) != null)
-    {
-      l1 = ReadInjoyIMAXAdFragment.a(localReadInjoyIMAXAdFragment).getCurrentPostion();
-      long l2 = ReadInjoyIMAXAdFragment.a(localReadInjoyIMAXAdFragment).getDuration();
-      if (l1 >= l2 - 300L)
-      {
-        ReadInjoyIMAXAdFragment.b(localReadInjoyIMAXAdFragment, true);
-        int i = (int)(l2 - l1);
-        if (QLog.isColorLevel()) {
-          QLog.d("ReadInjoyIMAXAdFragment", 2, "onVideoEndSoon: pos=" + l1 + ", duration=" + l2 + ", remainDuration=" + i + ", mHasCallEndingSoon=" + ReadInjoyIMAXAdFragment.c(localReadInjoyIMAXAdFragment));
-        }
-        if (!ReadInjoyIMAXAdFragment.c(localReadInjoyIMAXAdFragment))
-        {
-          ReadInjoyIMAXAdFragment.c(localReadInjoyIMAXAdFragment, true);
-          if (QLog.isColorLevel()) {
-            QLog.d("ReadInjoyIMAXAdFragment", 2, "onVideoEndSoon: !!!");
-          }
-          ReadInjoyIMAXAdFragment.d(localReadInjoyIMAXAdFragment);
-        }
-        ReadInjoyIMAXAdFragment.a(localReadInjoyIMAXAdFragment, l1);
-      }
-    }
-    for (;;)
-    {
-      ReadInjoyIMAXAdFragment.a(localReadInjoyIMAXAdFragment).sendEmptyMessageDelayed(-2, 100);
-      return;
-      if ((l1 > 500L) || (l1 < 0L) || (!ReadInjoyIMAXAdFragment.d(localReadInjoyIMAXAdFragment))) {
-        break;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("ReadInjoyIMAXAdFragment", 2, "onVideoReplayOnLoop: pos=" + l1);
-      }
-      ReadInjoyIMAXAdFragment.c(localReadInjoyIMAXAdFragment, false);
-      ReadInjoyIMAXAdFragment.b(localReadInjoyIMAXAdFragment, false);
-      if (ReadInjoyIMAXAdFragment.a(localReadInjoyIMAXAdFragment) == null) {
-        break;
-      }
-      ReadInjoyIMAXAdFragment.a(localReadInjoyIMAXAdFragment).pause();
-      ReadInjoyIMAXAdFragment.a(localReadInjoyIMAXAdFragment).post(new ReadInjoyIMAXAdFragment.ProgressUIHandler.1(this));
-      break;
-      ReadInjoyIMAXAdFragment.f(localReadInjoyIMAXAdFragment, ReadInjoyIMAXAdFragment.f(localReadInjoyIMAXAdFragment) + 100);
-      ReadInjoyIMAXAdFragment.a(localReadInjoyIMAXAdFragment, ReadInjoyIMAXAdFragment.f(localReadInjoyIMAXAdFragment));
-    }
+    parampcp.onCommentLoadMore(1, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_JavaUtilList, this.b, 2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     pbs
  * JD-Core Version:    0.7.0.1
  */

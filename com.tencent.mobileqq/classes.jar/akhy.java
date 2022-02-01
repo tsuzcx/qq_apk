@@ -1,64 +1,27 @@
-import QQService.EVIPSPEC;
-import com.tencent.mobileqq.data.Friends;
-import java.util.Comparator;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.widget.Button;
+import com.tencent.mobileqq.activity.photo.album.NewPhotoListActivity;
+import com.tencent.qphone.base.util.QLog;
 
 class akhy
-  implements Comparator<akmm>
+  implements DialogInterface.OnClickListener
 {
-  public int a(akmm paramakmm1, akmm paramakmm2)
-  {
-    paramakmm1 = (Friends)paramakmm1.a;
-    paramakmm2 = (Friends)paramakmm2.a;
-    int i = a(paramakmm1);
-    int j = a(paramakmm2);
-    if (i == j) {
-      return alqj.a(paramakmm1.mComparePartInt, paramakmm1.mCompareSpell, paramakmm2.mComparePartInt, paramakmm2.mCompareSpell);
-    }
-    return i - j;
-  }
+  akhy(akhu paramakhu) {}
   
-  public int a(Friends paramFriends)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    int i = 16384;
-    int k = bdgc.a(paramFriends.detalStatusFlag, paramFriends.iTermType);
-    int j;
-    if ((k != 6) && (k != 0))
-    {
-      j = 65536;
-      label32:
-      if (!azmk.b()) {
-        break label100;
-      }
+    if (QLog.isColorLevel()) {
+      QLog.i("PhotoListActivity", 2, "cancel shortvideo_mobile_send_confirm dialog");
     }
-    for (;;)
-    {
-      switch (k)
-      {
-      case 5: 
-      case 6: 
-      default: 
-        return j | i | (int)paramFriends.getLastLoginType();
-        j = 131072;
-        break label32;
-        label100:
-        if (paramFriends.isServiceEnabled(EVIPSPEC.E_SP_SUPERVIP)) {
-          i = 4096;
-        } else if (paramFriends.isServiceEnabled(EVIPSPEC.E_SP_QQVIP)) {
-          i = 8192;
-        } else if (paramFriends.isServiceEnabled(EVIPSPEC.E_SP_SUPERQQ)) {
-          i = 12288;
-        }
-        break;
-      }
+    if (((NewPhotoListActivity)this.a.mActivity).sendBtn != null) {
+      ((NewPhotoListActivity)this.a.mActivity).sendBtn.setClickable(true);
     }
-    return j | i | 0x1;
-    return j | i | 0x2;
-    return j | i | 0x3;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     akhy
  * JD-Core Version:    0.7.0.1
  */

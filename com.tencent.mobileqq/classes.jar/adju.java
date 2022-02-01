@@ -1,20 +1,20 @@
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.NotificationActivity;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.activity.AddFriendVerifyActivity;
 
 public class adju
-  implements DialogInterface.OnClickListener
+  implements DialogInterface.OnDismissListener
 {
-  public adju(NotificationActivity paramNotificationActivity) {}
+  public adju(AddFriendVerifyActivity paramAddFriendVerifyActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    this.a.finish();
+    this.a.a = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adju
  * JD-Core Version:    0.7.0.1
  */

@@ -3,12 +3,12 @@ package com.tencent.mobileqq.data;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import apeh;
+import arhe;
 
 public class IPSiteModel$Video
   implements Parcelable
 {
-  public static final Parcelable.Creator<Video> CREATOR = new apeh();
+  public static final Parcelable.Creator<Video> CREATOR = new arhe();
   public String buttonDesc;
   public String content;
   public String cover;

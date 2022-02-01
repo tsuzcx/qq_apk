@@ -1,29 +1,28 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.troop.widget.AvatarWallViewPager;
-import com.tencent.mobileqq.troop.widget.AvatarWallViewPager.RollViewPager;
-import com.tencent.mobileqq.troop.widget.AvatarWallViewPagerAdapter;
+import com.google.gson.Gson;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.tfm.metrics.api.MetricsLogBean;
+import com.tencent.tfm.metrics.api.Reporter;
+import java.util.HashMap;
+import mqq.app.AppRuntime;
 
 public class bcqo
-  extends Handler
+  implements Reporter
 {
-  public bcqo(AvatarWallViewPager paramAvatarWallViewPager, Looper paramLooper)
+  private bctj jdField_a_of_type_Bctj;
+  private Gson jdField_a_of_type_ComGoogleGsonGson = new Gson();
+  private String jdField_a_of_type_JavaLangString;
+  
+  public bcqo(BaseApplicationImpl paramBaseApplicationImpl)
   {
-    super(paramLooper);
+    this.jdField_a_of_type_Bctj = bctj.a(paramBaseApplicationImpl);
+    this.jdField_a_of_type_JavaLangString = paramBaseApplicationImpl.getRuntime().getAccount();
   }
   
-  public void handleMessage(Message paramMessage)
+  public void report(MetricsLogBean paramMetricsLogBean)
   {
-    if ((AvatarWallViewPager.a(this.a)) || (!AvatarWallViewPager.b(this.a))) {}
-    while (this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallViewPagerAdapter.getCount() <= 1) {
-      return;
-    }
-    paramMessage = this.a;
-    paramMessage.b += 1;
-    this.a.b %= this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallViewPagerAdapter.getCount();
-    this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallViewPager$RollViewPager.setCurrentItem(this.a.b, true);
-    this.a.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(this.a.jdField_a_of_type_AndroidOsHandler.obtainMessage(), 4000L);
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("monitor", this.jdField_a_of_type_ComGoogleGsonGson.toJson(paramMetricsLogBean) + ";");
+    this.jdField_a_of_type_Bctj.a(this.jdField_a_of_type_JavaLangString, "rqd_tfm_metrics", true, 0L, 0L, localHashMap, null);
   }
 }
 

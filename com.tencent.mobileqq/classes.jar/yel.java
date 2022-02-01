@@ -1,36 +1,92 @@
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.OnScrollListener;
-import android.support.v7.widget.StaggeredGridLayoutManager;
+import android.content.Context;
+import android.text.SpannableStringBuilder;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.TextView;
+import com.tencent.biz.qqstory.storyHome.detail.view.StoryDetailListView;
+import java.util.List;
 
-class yel
-  extends RecyclerView.OnScrollListener
+public class yel
+  extends zpa<ycb>
 {
-  yel(yei paramyei) {}
+  public static final String KEY = "DetailLikeListSegment";
+  private ybl jdField_a_of_type_Ybl;
+  private ycb jdField_a_of_type_Ycb;
+  private yeb jdField_a_of_type_Yeb = new yeb(2);
+  private yec jdField_a_of_type_Yec = new yec();
+  private boolean b;
   
-  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
+  public yel(Context paramContext)
   {
-    super.onScrollStateChanged(paramRecyclerView, paramInt);
-    if ((this.a.a instanceof StaggeredGridLayoutManager))
+    super(paramContext);
+  }
+  
+  public void T_()
+  {
+    if (((StoryDetailListView)a()).a())
     {
-      paramRecyclerView = (StaggeredGridLayoutManager)this.a.a;
-      int[] arrayOfInt = new int[paramRecyclerView.getColumnCountForAccessibility(null, null)];
-      paramRecyclerView.findFirstVisibleItemPositions(arrayOfInt);
-      if ((this.a.getLocalPosition(arrayOfInt[0]) <= 0) && (!yei.b(this.a)))
-      {
-        yei.a(this.a, true);
-        paramRecyclerView.invalidateSpanAssignments();
-      }
-      if (arrayOfInt[0] > 2) {
-        yei.a(this.a, false);
-      }
+      this.jdField_a_of_type_Boolean = true;
+      return;
+    }
+    this.jdField_a_of_type_Boolean = false;
+  }
+  
+  public int a()
+  {
+    if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_Ycb != null) && (this.jdField_a_of_type_Ycb.b(this.b).size() > 0)) {
+      return 1;
+    }
+    return 0;
+  }
+  
+  public View a(int paramInt, ynb paramynb, ViewGroup paramViewGroup)
+  {
+    paramViewGroup = (TextView)paramynb.a(2131369833);
+    SpannableStringBuilder localSpannableStringBuilder = yci.a(this.jdField_a_of_type_Ycb.a, this.jdField_a_of_type_Ycb.b(this.b), this.jdField_a_of_type_Yeb);
+    if (localSpannableStringBuilder.length() == 0)
+    {
+      paramViewGroup.setVisibility(8);
+      return paramynb.a();
+    }
+    if ((this.jdField_a_of_type_Ycb.b(this.b) >= 30) && (this.jdField_a_of_type_Ycb.b(this.b) > this.jdField_a_of_type_Ycb.b(this.b).size())) {
+      localSpannableStringBuilder.append(String.format("等%s人赞了", new Object[] { zlx.a(this.jdField_a_of_type_Ycb.b(this.b)) }));
+    }
+    for (;;)
+    {
+      paramViewGroup.setVisibility(0);
+      paramViewGroup.setText(localSpannableStringBuilder);
+      paramViewGroup.setOnTouchListener(this.jdField_a_of_type_Yec);
+      break;
+      localSpannableStringBuilder.append("赞了");
     }
   }
   
-  public void onScrolled(RecyclerView paramRecyclerView, int paramInt1, int paramInt2) {}
+  public String a()
+  {
+    return "DetailLikeListSegment";
+  }
+  
+  public ynb a(int paramInt, ViewGroup paramViewGroup)
+  {
+    return new ynb(LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131561663, paramViewGroup, false));
+  }
+  
+  public void a(ybl paramybl)
+  {
+    this.jdField_a_of_type_Ybl = paramybl;
+    this.jdField_a_of_type_Yeb.a(paramybl);
+  }
+  
+  public void a(ycb paramycb, boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Ycb = paramycb;
+    this.b = paramBoolean;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     yel
  * JD-Core Version:    0.7.0.1
  */

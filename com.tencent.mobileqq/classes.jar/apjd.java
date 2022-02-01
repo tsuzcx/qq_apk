@@ -1,29 +1,21 @@
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.util.Pair;
+import android.text.TextUtils;
+import java.util.HashMap;
 
-public final class apjd
+class apjd
+  implements aplk
 {
-  public static apje a(QQAppInterface paramQQAppInterface)
-  {
-    paramQQAppInterface = new apje();
-    aoxr localaoxr = aoxs.a();
-    paramQQAppInterface.jdField_a_of_type_Boolean = localaoxr.a();
-    paramQQAppInterface.jdField_a_of_type_JavaLangString = localaoxr.a();
-    paramQQAppInterface.b = localaoxr.b();
-    paramQQAppInterface.jdField_a_of_type_Int = localaoxr.a();
-    paramQQAppInterface.c = localaoxr.c();
-    if (QLog.isColorLevel()) {
-      QLog.d("TencentDocEntryUtils", 2, "getGrayTipsInfo " + paramQQAppInterface.toString());
-    }
-    return paramQQAppInterface;
-  }
+  apjd(apix paramapix, long paramLong) {}
   
-  public static Pair<Boolean, Integer> a(AppInterface paramAppInterface)
+  public void a(String paramString1, long paramLong, String paramString2, String paramString3)
   {
-    paramAppInterface = aoxc.a();
-    return new Pair(Boolean.valueOf(paramAppInterface.a()), Integer.valueOf(paramAppInterface.a()));
+    if ((paramLong > 0L) && (!TextUtils.isEmpty(paramString2)) && (!TextUtils.isEmpty(paramString3)))
+    {
+      paramString1 = this.jdField_a_of_type_Apix.a + "_" + paramLong + "_" + paramString1;
+      apix.a(this.jdField_a_of_type_Apix).put(paramString1, paramString2);
+      apix.b(this.jdField_a_of_type_Apix).put(paramString1, paramString3);
+      apix.c(this.jdField_a_of_type_Apix).put(this.jdField_a_of_type_Apix.a, String.valueOf(paramLong));
+    }
+    apix.a(this.jdField_a_of_type_Apix, paramString2, paramString3, this.jdField_a_of_type_Long);
   }
 }
 

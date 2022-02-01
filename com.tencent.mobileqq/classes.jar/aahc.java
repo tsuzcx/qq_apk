@@ -1,18 +1,17 @@
-import com.tencent.gamecenter.activities.GameCenterActivity.GameCenterFragment;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.smtt.sdk.WebView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.subscribe.fragments.SubscribeMultiPicFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class aahc
-  implements aahz
+  implements View.OnClickListener
 {
-  public aahc(GameCenterActivity.GameCenterFragment paramGameCenterFragment, WebView paramWebView) {}
+  public aahc(SubscribeMultiPicFragment paramSubscribeMultiPicFragment) {}
   
-  public void a(int paramInt, String paramString)
+  public void onClick(View paramView)
   {
-    QLog.i("GameCenterFragment", 1, "addShot res code=" + paramInt);
-    if (paramInt == 304) {
-      aahx.a().a(this.jdField_a_of_type_ComTencentSmttSdkWebView);
-    }
+    this.a.onBackEvent();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

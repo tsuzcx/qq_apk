@@ -1,15 +1,14 @@
 package com.tencent.mobileqq.activity.qwallet.fragment;
 
-import aixs;
-import aiyb;
-import aiyc;
-import aiyd;
-import aiye;
-import aiyf;
-import aiyl;
-import aizd;
-import ajeu;
-import alud;
+import akpd;
+import akpq;
+import akpr;
+import akps;
+import akpt;
+import akpu;
+import akqa;
+import akqv;
+import akww;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.text.TextUtils;
@@ -20,13 +19,15 @@ import android.widget.EditText;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import bjcf;
+import anni;
+import blqo;
 import com.tencent.mobileqq.activity.qwallet.SendHbActivity;
 import com.tencent.mobileqq.activity.qwallet.redpacket.draw.ChooseItemView;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -51,16 +52,16 @@ public class LingHbFragment
     do
     {
       return;
-      i = bjcf.a(this.jdField_a_of_type_AndroidWidgetEditText.getText().toString(), 1);
-      str1 = bjcf.a(String.valueOf(bjcf.a(this.b.getText().toString())));
+      i = blqo.a(this.jdField_a_of_type_AndroidWidgetEditText.getText().toString(), 1);
+      str1 = blqo.a(String.valueOf(blqo.a(this.b.getText().toString())));
       if (TextUtils.isEmpty(str1))
       {
-        QQToast.a(getActivity(), 2131693361, 0).a();
+        QQToast.a(getActivity(), 2131692852, 0).a();
         return;
       }
       str2 = c();
     } while (TextUtils.isEmpty(str2));
-    combineUploadData(this.jdField_a_of_type_Bjcn, this.channel, i, str1, "hongbao.wrap.go");
+    combineUploadData(this.jdField_a_of_type_Blqw, this.channel, i, str1, "hongbao.wrap.go");
     Map localMap = this.mActivity.a();
     localMap.put("channel", String.valueOf(this.channel));
     localMap.put("type", "1");
@@ -72,25 +73,25 @@ public class LingHbFragment
   
   public int a()
   {
-    return 2131561721;
+    return 2131561959;
   }
   
   protected String a()
   {
     if (32 == this.channel) {
-      return alud.a(2131706498);
+      return anni.a(2131704909);
     }
-    return alud.a(2131706497);
+    return anni.a(2131704908);
   }
   
   public void a()
   {
     super.a();
     c();
-    this.jdField_a_of_type_AndroidViewView.setOnClickListener(new aiyb(this));
-    this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketDrawChooseItemView.a(this.jdField_a_of_type_JavaUtilList, new aiyc(this), new aiyd(this), new aiye(this));
+    this.jdField_a_of_type_AndroidViewView.setOnClickListener(new akpq(this));
+    this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketDrawChooseItemView.a(this.jdField_a_of_type_JavaUtilList, true, new akpr(this), new akps(this), new akpt(this));
     this.c.setFocusable(true);
-    this.c.setOnFocusChangeListener(new aiyf(this));
+    this.c.setOnFocusChangeListener(new akpu(this));
     this.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketDrawChooseItemView);
     RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketDrawChooseItemView.getLayoutParams();
     localLayoutParams.width = -1;
@@ -102,11 +103,11 @@ public class LingHbFragment
     super.a(paramBundle);
     QLog.i("LingHbFragment", 2, "init view...");
     this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketDrawChooseItemView = new ChooseItemView(this.mActivity);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131369213));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131369604));
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
     this.c.addTextChangedListener(this.jdField_a_of_type_AndroidTextTextWatcher);
     if (this.channel == 65536) {
-      ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131378835)).setText(2131693365);
+      ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131379712)).setText(2131692856);
     }
   }
   
@@ -128,15 +129,15 @@ public class LingHbFragment
     String str1 = b();
     if (65536 == this.channel)
     {
-      if (aizd.a(str1) < 4)
+      if (akqv.a(str1) < 4)
       {
-        QQToast.a(getActivity(), 2131697592, 0).a();
+        QQToast.a(getActivity(), 2131696421, 0).a();
         return null;
       }
-      String str2 = aizd.a(str1);
+      String str2 = akqv.a(str1);
       if (str2.length() > 0)
       {
-        QQToast.a(getActivity(), String.format(getString(2131697590), new Object[] { Character.valueOf(str2.charAt(0)) }), 0).a();
+        QQToast.a(getActivity(), String.format(getString(2131696419), new Object[] { Character.valueOf(str2.charAt(0)) }), 0).a();
         return null;
       }
     }
@@ -145,7 +146,7 @@ public class LingHbFragment
   
   public void c()
   {
-    Object localObject = ((aixs)getActivity().app.getManager(245)).a("hb_recommend");
+    Object localObject = ((akpd)getActivity().app.getManager(245)).a("hb_recommend");
     for (;;)
     {
       int i;
@@ -171,8 +172,8 @@ public class LingHbFragment
             if (localJSONObject == null) {
               break label315;
             }
-            long l2 = ajeu.a(localJSONObject.optString("begintime"), -1L);
-            long l3 = ajeu.a(localJSONObject.optString("endtime"), 9223372036854775807L);
+            long l2 = akww.a(localJSONObject.optString("begintime"), -1L);
+            long l3 = akww.a(localJSONObject.optString("endtime"), 9223372036854775807L);
             if ((l1 < l2) || (l1 > l3)) {
               break label315;
             }
@@ -211,10 +212,13 @@ public class LingHbFragment
   {
     switch (paramView.getId())
     {
-    default: 
-      return;
     }
-    d();
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      d();
+    }
   }
   
   public void setUserVisibleHint(boolean paramBoolean)
@@ -227,7 +231,7 @@ public class LingHbFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.qwallet.fragment.LingHbFragment
  * JD-Core Version:    0.7.0.1
  */

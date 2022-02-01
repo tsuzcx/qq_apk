@@ -1,20 +1,27 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.data.MessageForDeviceFile;
+import com.tencent.mobileqq.activity.VerifyPhoneNumActivity;
+import com.tencent.qphone.base.util.QLog;
+import mqq.observer.WtloginObserver;
+import oicq.wlogin_sdk.tools.ErrMsg;
 
-final class afqp
-  implements afug
+public class afqp
+  extends WtloginObserver
 {
-  public int a(QQAppInterface paramQQAppInterface, ChatMessage paramChatMessage)
+  public afqp(VerifyPhoneNumActivity paramVerifyPhoneNumActivity) {}
+  
+  public void OnGetStViaSMSVerifyLogin(String paramString, long paramLong1, int paramInt1, long paramLong2, int paramInt2, byte[] paramArrayOfByte, ErrMsg paramErrMsg)
   {
-    paramQQAppInterface = (MessageForDeviceFile)paramChatMessage;
-    if (paramQQAppInterface.nFileMsgType == 2) {
-      return 36;
+    if (QLog.isColorLevel())
+    {
+      QLog.d("VerifyPhoneNumActivity", 2, "OnGetStViaSMSVerifyLogin  userAccount = " + paramString + " ret=" + paramInt2);
+      if (paramErrMsg != null) {
+        QLog.d("VerifyPhoneNumActivity", 2, "OnGetStViaSMSVerifyLogin  errMsg = " + paramErrMsg.getMessage());
+      }
     }
-    if (paramQQAppInterface.nFileMsgType == 1) {
-      return 37;
+    if (paramInt2 == 0) {
+      return;
     }
-    return -1;
+    VerifyPhoneNumActivity.a(this.a);
+    VerifyPhoneNumActivity.b(this.a);
   }
 }
 

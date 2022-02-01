@@ -1,19 +1,55 @@
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoySettingActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-class ojr
-  implements ViewBase.OnClickListener
+public class ojr
+  implements CompoundButton.OnCheckedChangeListener
 {
-  ojr(ojn paramojn) {}
+  public ojr(ReadInJoySettingActivity paramReadInJoySettingActivity) {}
   
-  public void onClick(ViewBase paramViewBase)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    ((ola)this.a.jdField_a_of_type_Omg).a(this.a.jdField_a_of_type_Omt, ojm.a(this.a.jdField_a_of_type_Omt, 1));
+    int j = 1;
+    int i;
+    if (paramBoolean) {
+      i = 0;
+    }
+    for (;;)
+    {
+      uaq.a(i);
+      JSONObject localJSONObject = new JSONObject();
+      if (paramBoolean) {
+        i = j;
+      }
+      try
+      {
+        for (;;)
+        {
+          localJSONObject.put("click_opt", i);
+          oat.a(null, "", "0X800A80B", "0X800A80B", 0, 0, "", "", "", localJSONObject.toString(), false);
+          EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
+          return;
+          i = 1;
+          break;
+          i = 2;
+        }
+      }
+      catch (JSONException localJSONException)
+      {
+        for (;;)
+        {
+          localJSONException.printStackTrace();
+        }
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     ojr
  * JD-Core Version:    0.7.0.1
  */

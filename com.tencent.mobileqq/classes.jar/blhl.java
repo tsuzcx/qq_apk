@@ -1,17 +1,24 @@
-import dov.com.qq.im.ae.play.AEVideoShelfPreviewFragment;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
 
-public class blhl
-  implements betp
+class blhl
+  extends BroadcastReceiver
 {
-  public blhl(AEVideoShelfPreviewFragment paramAEVideoShelfPreviewFragment) {}
+  blhl(blhj paramblhj) {}
   
-  public void a(betn parambetn) {}
-  
-  public void a(betn parambetn, int paramInt1, int paramInt2) {}
+  public void onReceive(Context paramContext, Intent paramIntent)
+  {
+    if (("com.tencent.qlink.finishworkingdlg".equalsIgnoreCase(paramIntent.getAction())) && (blhj.a(this.a) != null))
+    {
+      blhj.a(this.a).dismiss();
+      blhj.a(this.a, null);
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     blhl
  * JD-Core Version:    0.7.0.1
  */

@@ -1,36 +1,15 @@
-import com.tencent.mobileqq.transfile.ProtoReqManager;
-import java.util.ArrayList;
-import java.util.List;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.richstatus.SignatureEditFragment;
 
 public class bbax
+  implements DialogInterface.OnClickListener
 {
-  public int a;
-  bavq jdField_a_of_type_Bavq;
-  bbbm jdField_a_of_type_Bbbm = new bbbm();
-  public bbce a;
-  public ProtoReqManager a;
-  public String a;
-  public List<bbbi> a;
-  public byte[] a;
+  public bbax(SignatureEditFragment paramSignatureEditFragment) {}
   
-  public bbax()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-  }
-  
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    int i = 0;
-    while (i < this.jdField_a_of_type_JavaUtilList.size())
-    {
-      localStringBuilder.append("index:");
-      localStringBuilder.append(i);
-      localStringBuilder.append(" ");
-      localStringBuilder.append(((bbbi)this.jdField_a_of_type_JavaUtilList.get(i)).toString());
-      i += 1;
-    }
-    return localStringBuilder.toString();
+    paramDialogInterface.dismiss();
   }
 }
 

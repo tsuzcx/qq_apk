@@ -1,17 +1,26 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.conditionsearch.LocationSelectActivity;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.preference.PreferenceManager;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class aohv
-  extends Handler
+class aohv
+  implements View.OnClickListener
 {
-  public aohv(LocationSelectActivity paramLocationSelectActivity) {}
+  aohv(aoht paramaoht) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onClick(View paramView)
   {
-    if (paramMessage.what == 1000) {
-      this.a.a(((Boolean)((java.lang.Object[])(java.lang.Object[])paramMessage.obj)[0]).booleanValue(), (String[])((java.lang.Object[])(java.lang.Object[])paramMessage.obj)[1]);
-    }
+    bcst.b(null, "CliOper", "", "", "0X8006B16", "0X8006B16", 0, 0, "", "", "", "");
+    bcst.b(null, "dc00898", "", "", "0X8009AC9", "0X8009AC9", 0, 0, "", "", "", "");
+    Object localObject = PreferenceManager.getDefaultSharedPreferences(aoht.a(this.a));
+    int i = ((SharedPreferences)localObject).getInt("push_msg_notify_cancle", 0);
+    localObject = ((SharedPreferences)localObject).edit();
+    ((SharedPreferences.Editor)localObject).putInt("push_msg_notify_cancle", i + 1);
+    ((SharedPreferences.Editor)localObject).commit();
+    this.a.dismiss();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

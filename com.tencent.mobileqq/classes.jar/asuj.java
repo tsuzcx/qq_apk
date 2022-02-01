@@ -1,20 +1,14 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.hotpic.HotPicPageView.4.2;
-import com.tencent.qphone.base.util.QLog;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import com.tencent.mobileqq.filemanager.activity.cloudfile.QfileBaseCloudFileTabView;
 
 public class asuj
-  implements DialogInterface.OnClickListener
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public asuj(HotPicPageView.4.2 param2) {}
+  public asuj(QfileBaseCloudFileTabView paramQfileBaseCloudFileTabView) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onGlobalLayout()
   {
-    this.a.a.jdField_a_of_type_ComTencentMobileqqHotpicHotPicPageView.d = false;
-    if (this.a.a.jdField_a_of_type_Asuq.a == 1) {
-      this.a.a.jdField_a_of_type_Asuq.a(0);
-    }
-    QLog.d("HotPicManagerHotPicPageView", 2, "user click button");
+    this.a.ax_();
   }
 }
 

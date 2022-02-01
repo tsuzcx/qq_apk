@@ -1,47 +1,28 @@
 package com.tencent.mobileqq.mini.appbrand.ui;
 
-import android.os.Bundle;
-import android.os.Handler;
-import com.tencent.mobileqq.mini.apkg.ApkgInfo;
-import com.tencent.mobileqq.mini.apkg.MiniAppConfig;
-import com.tencent.mobileqq.mini.appbrand.utils.AppBrandTask;
-import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
-import java.util.ArrayList;
+import android.widget.TextView;
+import bkjh;
+import com.tencent.mobileqq.dinifly.DiniFlyAnimationView;
 
 class CapsuleButton$4
-  implements EIPCResultCallback
+  implements Runnable
 {
-  CapsuleButton$4(CapsuleButton paramCapsuleButton, ApkgInfo paramApkgInfo) {}
+  CapsuleButton$4(CapsuleButton paramCapsuleButton) {}
   
-  public void onCallback(EIPCResult paramEIPCResult)
+  public void run()
   {
-    CapsuleButton.access$100(this.this$0).removeCallbacksAndMessages(Integer.valueOf(1000));
-    if (paramEIPCResult != null)
+    if ((CapsuleButton.access$400() > 0) && (CapsuleButton.access$500(this.this$0) != null) && (!CapsuleButton.access$500(this.this$0).isAnimating()))
     {
-      QLog.d("CapsuleButton", 1, "onMoreClick onCallback code : " + paramEIPCResult.code);
-      if (paramEIPCResult.code == 0)
-      {
-        paramEIPCResult = paramEIPCResult.data;
-        int i = paramEIPCResult.getInt("topType");
-        paramEIPCResult = paramEIPCResult.getIntegerArrayList("backHomeSceneList");
-        if ((paramEIPCResult != null) && (paramEIPCResult.size() > 0))
-        {
-          CapsuleButton.access$200(this.this$0).clear();
-          CapsuleButton.access$200(this.this$0).addAll(paramEIPCResult);
-        }
-        if (this.val$apkgInfo != null) {
-          this.val$apkgInfo.appConfig.config.topType = i;
-        }
-      }
+      CapsuleButton.access$600(this.this$0).setVisibility(0);
+      bkjh.a(CapsuleButton.access$600(this.this$0), 7, CapsuleButton.access$400(), 0);
+      return;
     }
-    AppBrandTask.runTaskOnUiThread(new CapsuleButton.4.1(this));
+    CapsuleButton.access$600(this.this$0).setVisibility(8);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.appbrand.ui.CapsuleButton.4
  * JD-Core Version:    0.7.0.1
  */

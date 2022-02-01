@@ -2,20 +2,20 @@ package com.tencent.biz.pubaccount.readinjoy.video;
 
 import android.content.Context;
 import java.lang.ref.WeakReference;
-import rha;
+import sby;
 
 public class VideoFeedsResourceLoader$1
   implements Runnable
 {
-  public VideoFeedsResourceLoader$1(rha paramrha, WeakReference paramWeakReference) {}
+  public VideoFeedsResourceLoader$1(sby paramsby, WeakReference paramWeakReference) {}
   
   public void run()
   {
     Context localContext = (Context)this.a.get();
     if (localContext != null)
     {
-      rha.a(localContext, 2130842749);
-      rha.a(localContext, 2130842603);
+      sby.a(localContext, 2130843091);
+      sby.a(localContext, 2130842932);
     }
   }
 }

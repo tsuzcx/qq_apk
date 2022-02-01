@@ -7,19 +7,21 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import ashu;
-import beub;
+import auoj;
+import biax;
 import com.tencent.mobileqq.activity.NearbyActivity;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.inject.fragment.ReportV4Fragment;
+import com.tencent.qqlive.module.videoreport.inject.fragment.V4FragmentCollector;
 
 public class BaseFragment
-  extends Fragment
+  extends ReportV4Fragment
 {
   protected int a;
   protected View a;
-  public ashu a;
-  protected beub a;
+  public auoj a;
+  protected biax a;
   public IphoneTitleBarActivity a;
   protected boolean a;
   protected boolean b;
@@ -39,7 +41,7 @@ public class BaseFragment
     return false;
   }
   
-  public void aR_()
+  public void aP_()
   {
     c();
     onHiddenChanged(false);
@@ -51,7 +53,7 @@ public class BaseFragment
   public void c()
   {
     if ((getActivity() instanceof NearbyActivity)) {
-      ((NearbyActivity)getActivity()).a(this.jdField_a_of_type_Ashu);
+      ((NearbyActivity)getActivity()).a(this.jdField_a_of_type_Auoj);
     }
   }
   
@@ -77,8 +79,8 @@ public class BaseFragment
     if (QLog.isColorLevel()) {
       QLog.d("Fragment", 2, "onAttach() " + getClass().getSimpleName() + " " + hashCode());
     }
-    if (this.jdField_a_of_type_Ashu == null) {
-      this.jdField_a_of_type_Ashu = new ashu(this);
+    if (this.jdField_a_of_type_Auoj == null) {
+      this.jdField_a_of_type_Auoj = new auoj(this);
     }
     this.jdField_a_of_type_ComTencentMobileqqAppIphoneTitleBarActivity = ((IphoneTitleBarActivity)getActivity());
     this.jdField_a_of_type_Boolean = true;
@@ -97,7 +99,9 @@ public class BaseFragment
     if (QLog.isColorLevel()) {
       QLog.d("Fragment", 2, "onCreateView() " + getClass().getSimpleName() + " " + hashCode());
     }
-    return super.onCreateView(paramLayoutInflater, paramViewGroup, paramBundle);
+    paramLayoutInflater = super.onCreateView(paramLayoutInflater, paramViewGroup, paramBundle);
+    V4FragmentCollector.onV4FragmentViewCreated(this, paramLayoutInflater);
+    return paramLayoutInflater;
   }
   
   public void onDestroy()
@@ -115,8 +119,8 @@ public class BaseFragment
     if (QLog.isColorLevel()) {
       QLog.d("Fragment", 2, "onDestroyView() " + getClass().getSimpleName() + " " + hashCode());
     }
-    if (this.jdField_a_of_type_Beub != null) {
-      this.jdField_a_of_type_Beub.b();
+    if (this.jdField_a_of_type_Biax != null) {
+      this.jdField_a_of_type_Biax.b();
     }
     if (this.jdField_a_of_type_AndroidViewView != null)
     {
@@ -186,7 +190,7 @@ public class BaseFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.fragment.BaseFragment
  * JD-Core Version:    0.7.0.1
  */

@@ -1,80 +1,93 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.ImageView;
-import com.tencent.biz.qrcode.activity.QRDisplayActivity;
+import com.tencent.biz.qqstory.app.QQStoryContext;
+import com.tencent.biz.qqstory.database.ShareGroupEntry;
+import com.tencent.biz.qqstory.shareGroup.model.ShareGroupItem;
+import com.tencent.mobileqq.persistence.Entity;
+import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.mobileqq.persistence.EntityManagerFactory;
+import java.util.HashMap;
+import java.util.List;
 
 public class xzh
-  implements View.OnTouchListener
+  implements wou
 {
-  public xzh(QRDisplayActivity paramQRDisplayActivity) {}
+  protected HashMap<String, String> a;
+  private wew<String, ShareGroupItem> a;
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public xzh()
   {
-    switch (paramView.getId())
-    {
-    }
-    for (;;)
-    {
-      return false;
-      if (paramMotionEvent.getAction() == 0)
-      {
-        this.a.b.setImageResource(2130846531);
-      }
-      else if ((paramMotionEvent.getAction() == 1) || (paramMotionEvent.getAction() == 3))
-      {
-        this.a.b.setImageResource(2130846530);
-      }
-      else if (paramMotionEvent.getAction() == 2)
-      {
-        int i = (int)paramMotionEvent.getRawX();
-        int j = (int)paramMotionEvent.getRawY();
-        if (!QRDisplayActivity.a(paramView, i, j))
-        {
-          this.a.b.setImageResource(2130846530);
-          continue;
-          if (paramMotionEvent.getAction() == 0)
-          {
-            this.a.c.setImageResource(2130846533);
-          }
-          else if ((paramMotionEvent.getAction() == 1) || (paramMotionEvent.getAction() == 3))
-          {
-            this.a.c.setImageResource(2130846532);
-          }
-          else if (paramMotionEvent.getAction() == 2)
-          {
-            i = (int)paramMotionEvent.getRawX();
-            j = (int)paramMotionEvent.getRawY();
-            if (!QRDisplayActivity.a(paramView, i, j))
-            {
-              this.a.c.setImageResource(2130846532);
-              continue;
-              if (paramMotionEvent.getAction() == 0)
-              {
-                this.a.d.setImageResource(2130846554);
-              }
-              else if ((paramMotionEvent.getAction() == 1) || (paramMotionEvent.getAction() == 3))
-              {
-                this.a.d.setImageResource(2130846553);
-              }
-              else if (paramMotionEvent.getAction() == 2)
-              {
-                i = (int)paramMotionEvent.getRawX();
-                j = (int)paramMotionEvent.getRawY();
-                if (!QRDisplayActivity.a(paramView, i, j)) {
-                  this.a.d.setImageResource(2130846553);
-                }
-              }
-            }
-          }
-        }
-      }
-    }
+    this.jdField_a_of_type_Wew = new wew(300);
+    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
   }
+  
+  private QQStoryContext a()
+  {
+    return QQStoryContext.a();
+  }
+  
+  public static List<? extends Entity> a(EntityManager paramEntityManager, Class<? extends Entity> paramClass, String paramString1, String paramString2, String[] paramArrayOfString)
+  {
+    return paramEntityManager.query(paramClass, paramString1, false, paramString2, paramArrayOfString, null, null, null, null, null);
+  }
+  
+  public static boolean a(ShareGroupItem paramShareGroupItem)
+  {
+    if (paramShareGroupItem == null) {
+      return false;
+    }
+    long l = paramShareGroupItem.groupUin;
+    return awhv.a().a(QQStoryContext.a(), String.valueOf(l));
+  }
+  
+  public ShareGroupItem a(ShareGroupItem paramShareGroupItem)
+  {
+    paramShareGroupItem = (ShareGroupItem)this.jdField_a_of_type_Wew.a(paramShareGroupItem.shareGroupId, paramShareGroupItem);
+    ShareGroupEntry localShareGroupEntry = paramShareGroupItem.convertTo();
+    a().a().createEntityManager().persistOrReplace(localShareGroupEntry);
+    return paramShareGroupItem;
+  }
+  
+  public ShareGroupItem a(String paramString)
+  {
+    zkb.a(paramString);
+    Object localObject = (ShareGroupItem)this.jdField_a_of_type_Wew.a(paramString);
+    if (localObject != null)
+    {
+      yqp.d("Q.qqstory.discover.ShareGroupManager", "read sg cc:%s, unionId:" + ((ShareGroupItem)localObject).headerUnionIdList, new Object[] { ((ShareGroupItem)localObject).shareGroupId });
+      return localObject;
+    }
+    localObject = a(a().a().createEntityManager(), ShareGroupEntry.class, ShareGroupEntry.class.getSimpleName(), ShareGroupEntry.getShareGroupSelectionNoArg(), new String[] { paramString });
+    if ((localObject == null) || (((List)localObject).size() == 0))
+    {
+      yqp.d("Q.qqstory.discover.ShareGroupManager", "find not find share group:%s", new Object[] { paramString });
+      return null;
+    }
+    localObject = new ShareGroupItem((ShareGroupEntry)((List)localObject).get(0));
+    return (ShareGroupItem)this.jdField_a_of_type_Wew.a(paramString, (wev)localObject);
+  }
+  
+  public void a() {}
+  
+  public ShareGroupItem b(String paramString)
+  {
+    ShareGroupItem localShareGroupItem2 = a(paramString);
+    ShareGroupItem localShareGroupItem1 = localShareGroupItem2;
+    if (localShareGroupItem2 == null)
+    {
+      localShareGroupItem1 = new ShareGroupItem();
+      localShareGroupItem1.shareGroupId = paramString;
+      localShareGroupItem1.name = paramString;
+      localShareGroupItem1.ownerUnionId = QQStoryContext.a().b();
+      localShareGroupItem1.assertItem();
+      yqp.d("Q.qqstory.discover.ShareGroupManager", "create one fake groupItem:%s", new Object[] { localShareGroupItem1 });
+    }
+    return localShareGroupItem1;
+  }
+  
+  public void b() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     xzh
  * JD-Core Version:    0.7.0.1
  */

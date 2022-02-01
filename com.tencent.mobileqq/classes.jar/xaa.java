@@ -1,26 +1,62 @@
-import android.graphics.Bitmap;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqTranslateToken;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspTranslateToken;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.util.QLog;
 
-class xaa
-  extends xcs
+public class xaa
+  extends wlf
 {
-  public Bitmap a;
-  public Bitmap b;
+  public static final String a = wjz.a("StorySvc.translate_share_parameters_to_token");
+  public String b;
+  public int c;
+  public String c;
   
-  public xaa(int paramInt, Bitmap paramBitmap1, Bitmap paramBitmap2, Bitmap paramBitmap3)
+  public String a()
   {
-    super(paramInt, paramBitmap1);
-    this.b = paramBitmap2;
-    this.a = paramBitmap3;
+    return a;
   }
   
-  public xaa(xcs paramxcs, Bitmap paramBitmap1, Bitmap paramBitmap2)
+  public wla a(byte[] paramArrayOfByte)
   {
-    this(paramxcs.jdField_c_of_type_Int, paramxcs.jdField_c_of_type_AndroidGraphicsBitmap, paramBitmap1, paramBitmap2);
+    qqstory_service.RspTranslateToken localRspTranslateToken = new qqstory_service.RspTranslateToken();
+    try
+    {
+      localRspTranslateToken.mergeFrom(paramArrayOfByte);
+      return new xab(localRspTranslateToken);
+    }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      for (;;)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.w("Q.qqstory.share.trans.req", 2, "decode failed", paramArrayOfByte);
+        }
+      }
+    }
+  }
+  
+  protected byte[] a()
+  {
+    qqstory_service.ReqTranslateToken localReqTranslateToken = new qqstory_service.ReqTranslateToken();
+    localReqTranslateToken.src_buffer.set(ByteStringMicro.copyFromUtf8(this.b));
+    localReqTranslateToken.type.set(this.jdField_c_of_type_Int);
+    if ((this.jdField_c_of_type_Int == 1) && (this.jdField_c_of_type_JavaLangString != null)) {
+      localReqTranslateToken.feed_id.set(ByteStringMicro.copyFromUtf8(this.jdField_c_of_type_JavaLangString));
+    }
+    return localReqTranslateToken.toByteArray();
+  }
+  
+  public String toString()
+  {
+    return "StoryShareTranslateTokenRequest{feedId='" + this.jdField_c_of_type_JavaLangString + '\'' + ", srcBuffer='" + this.b + '\'' + ", type=" + this.jdField_c_of_type_Int + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     xaa
  * JD-Core Version:    0.7.0.1
  */

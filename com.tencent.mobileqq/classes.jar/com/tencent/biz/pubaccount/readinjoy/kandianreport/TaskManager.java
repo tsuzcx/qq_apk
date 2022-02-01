@@ -4,9 +4,9 @@ import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
 import android.os.Build;
 import android.text.TextUtils;
-import bdgk;
-import bdhb;
-import bkbq;
+import bgln;
+import bgmg;
+import bmqa;
 import com.tencent.aladdin.config.Aladdin;
 import com.tencent.aladdin.config.AladdinConfig;
 import com.tencent.biz.pubaccount.readinjoy.featurecompute.JSContext;
@@ -25,12 +25,12 @@ import java.util.Iterator;
 import java.util.List;
 import mqq.app.AppRuntime;
 import mqq.os.MqqHandler;
-import ncb;
-import ndl;
-import nrt;
+import nku;
+import nme;
+import oat;
 import org.json.JSONArray;
 import org.json.JSONObject;
-import ors;
+import pha;
 
 public class TaskManager
 {
@@ -62,7 +62,7 @@ public class TaskManager
     try
     {
       isConfigureOn = getConfigOn();
-      SCRIPT_ROOT_PATH = ncb.a("3412") + "3412";
+      SCRIPT_ROOT_PATH = nku.a("3412") + "3412";
       JSSCRIPT_EXTRACTION_DIR = SCRIPT_ROOT_PATH + "/extraction";
       JSSCRIPT_PROCESS_DIR = SCRIPT_ROOT_PATH + "/process";
       JSSCRIPT_DISTRIBUTION_DIR = SCRIPT_ROOT_PATH + "/distribution";
@@ -81,7 +81,7 @@ public class TaskManager
     ThreadManager.getFileThreadHandler().post(new TaskManager.2(this));
   }
   
-  private void addConfigItem(ArrayList<Task.CONFIG_ITEM> paramArrayList, JSONObject paramJSONObject)
+  private void addConfigItem(ArrayList<Task.ConfigItem> paramArrayList, JSONObject paramJSONObject)
   {
     int j = 0;
     String str1 = paramJSONObject.optString("id");
@@ -89,9 +89,9 @@ public class TaskManager
     Object localObject2 = paramJSONObject.optJSONArray("output");
     Object localObject1 = paramJSONObject.optJSONArray("check");
     paramJSONObject = paramJSONObject.optJSONArray("args");
-    Task.CONFIG_ITEM localCONFIG_ITEM = new Task.CONFIG_ITEM();
-    localCONFIG_ITEM.id = str1;
-    localCONFIG_ITEM.value = str2;
+    Task.ConfigItem localConfigItem = new Task.ConfigItem();
+    localConfigItem.id = str1;
+    localConfigItem.value = str2;
     int i;
     if (localObject2 != null)
     {
@@ -99,7 +99,7 @@ public class TaskManager
       while (i < ((JSONArray)localObject2).length())
       {
         str1 = (String)((JSONArray)localObject2).opt(i);
-        localCONFIG_ITEM.output.add(str1);
+        localConfigItem.output.add(str1);
         i += 1;
       }
     }
@@ -109,7 +109,7 @@ public class TaskManager
       while (i < ((JSONArray)localObject1).length())
       {
         localObject2 = (String)((JSONArray)localObject1).opt(i);
-        localCONFIG_ITEM.check.add(localObject2);
+        localConfigItem.check.add(localObject2);
         i += 1;
       }
     }
@@ -119,11 +119,11 @@ public class TaskManager
       while (i < paramJSONObject.length())
       {
         localObject1 = (String)paramJSONObject.opt(i);
-        localCONFIG_ITEM.args.add(localObject1);
+        localConfigItem.args.add(localObject1);
         i += 1;
       }
     }
-    paramArrayList.add(localCONFIG_ITEM);
+    paramArrayList.add(localConfigItem);
   }
   
   public static String compress(String paramString)
@@ -213,27 +213,27 @@ public class TaskManager
     return str2 + "]";
   }
   
-  private ArrayList<String> getArgsByValue(ArrayList<Task.CONFIG_ITEM> paramArrayList, String paramString)
+  private ArrayList<String> getArgsByValue(ArrayList<Task.ConfigItem> paramArrayList, String paramString)
   {
     paramArrayList = paramArrayList.iterator();
     while (paramArrayList.hasNext())
     {
-      Task.CONFIG_ITEM localCONFIG_ITEM = (Task.CONFIG_ITEM)paramArrayList.next();
-      if (localCONFIG_ITEM.value.equals(paramString)) {
-        return localCONFIG_ITEM.args;
+      Task.ConfigItem localConfigItem = (Task.ConfigItem)paramArrayList.next();
+      if (localConfigItem.value.equals(paramString)) {
+        return localConfigItem.args;
       }
     }
     return null;
   }
   
-  private ArrayList<String> getCheckByValue(ArrayList<Task.CONFIG_ITEM> paramArrayList, String paramString)
+  private ArrayList<String> getCheckByValue(ArrayList<Task.ConfigItem> paramArrayList, String paramString)
   {
     paramArrayList = paramArrayList.iterator();
     while (paramArrayList.hasNext())
     {
-      Task.CONFIG_ITEM localCONFIG_ITEM = (Task.CONFIG_ITEM)paramArrayList.next();
-      if (localCONFIG_ITEM.value.equals(paramString)) {
-        return localCONFIG_ITEM.check;
+      Task.ConfigItem localConfigItem = (Task.ConfigItem)paramArrayList.next();
+      if (localConfigItem.value.equals(paramString)) {
+        return localConfigItem.check;
       }
     }
     return null;
@@ -251,7 +251,7 @@ public class TaskManager
   
   public static boolean getConfigOn()
   {
-    return ((Integer)bkbq.a("kandianreport_ON", Integer.valueOf(0))).intValue() == 1;
+    return ((Integer)bmqa.a("kandianreport_ON", Integer.valueOf(0))).intValue() == 1;
   }
   
   public static TaskManager getInstance()
@@ -261,47 +261,47 @@ public class TaskManager
   
   private String getMmapUtilsName(String paramString)
   {
-    String str = ors.a().getAccount();
+    String str = pha.a().getAccount();
     return str + "_" + paramString;
   }
   
-  private ArrayList<String> getOutputByValue(ArrayList<Task.CONFIG_ITEM> paramArrayList, String paramString)
+  private ArrayList<String> getOutputByValue(ArrayList<Task.ConfigItem> paramArrayList, String paramString)
   {
     paramArrayList = paramArrayList.iterator();
     while (paramArrayList.hasNext())
     {
-      Task.CONFIG_ITEM localCONFIG_ITEM = (Task.CONFIG_ITEM)paramArrayList.next();
-      if (localCONFIG_ITEM.value.equals(paramString)) {
-        return localCONFIG_ITEM.output;
+      Task.ConfigItem localConfigItem = (Task.ConfigItem)paramArrayList.next();
+      if (localConfigItem.value.equals(paramString)) {
+        return localConfigItem.output;
       }
     }
     return null;
   }
   
-  private Task.CONFIG_ITEM[] getTasksById(ArrayList<Task.CONFIG_ITEM> paramArrayList, ArrayList<String> paramArrayList1)
+  private Task.ConfigItem[] getTasksById(ArrayList<Task.ConfigItem> paramArrayList, ArrayList<String> paramArrayList1)
   {
     if ((paramArrayList1 != null) && (paramArrayList1.size() > 0))
     {
-      Task.CONFIG_ITEM[] arrayOfCONFIG_ITEM = new Task.CONFIG_ITEM[paramArrayList1.size()];
+      Task.ConfigItem[] arrayOfConfigItem = new Task.ConfigItem[paramArrayList1.size()];
       int i = 0;
       while (i < paramArrayList1.size())
       {
         Iterator localIterator = paramArrayList.iterator();
         while (localIterator.hasNext())
         {
-          Task.CONFIG_ITEM localCONFIG_ITEM = (Task.CONFIG_ITEM)localIterator.next();
-          if (localCONFIG_ITEM.id.equals(paramArrayList1.get(i))) {
-            arrayOfCONFIG_ITEM[i] = localCONFIG_ITEM;
+          Task.ConfigItem localConfigItem = (Task.ConfigItem)localIterator.next();
+          if (localConfigItem.id.equals(paramArrayList1.get(i))) {
+            arrayOfConfigItem[i] = localConfigItem;
           }
         }
         i += 1;
       }
-      return arrayOfCONFIG_ITEM;
+      return arrayOfConfigItem;
     }
     return null;
   }
   
-  private String[] getValueById(ArrayList<Task.CONFIG_ITEM> paramArrayList, ArrayList<String> paramArrayList1)
+  private String[] getValueById(ArrayList<Task.ConfigItem> paramArrayList, ArrayList<String> paramArrayList1)
   {
     if ((paramArrayList1 != null) && (paramArrayList1.size() > 0))
     {
@@ -312,9 +312,9 @@ public class TaskManager
         Iterator localIterator = paramArrayList.iterator();
         while (localIterator.hasNext())
         {
-          Task.CONFIG_ITEM localCONFIG_ITEM = (Task.CONFIG_ITEM)localIterator.next();
-          if (localCONFIG_ITEM.id.equals(paramArrayList1.get(i))) {
-            arrayOfString[i] = localCONFIG_ITEM.value;
+          Task.ConfigItem localConfigItem = (Task.ConfigItem)localIterator.next();
+          if (localConfigItem.id.equals(paramArrayList1.get(i))) {
+            arrayOfString[i] = localConfigItem.value;
           }
         }
         i += 1;
@@ -356,7 +356,7 @@ public class TaskManager
     return localJSONObject1.toString();
   }
   
-  private void importJs(Task paramTask, ArrayList<Task.CONFIG_ITEM> paramArrayList, int paramInt)
+  private void importJs(Task paramTask, ArrayList<Task.ConfigItem> paramArrayList, int paramInt)
   {
     JSContext localJSContext = paramTask.jsContext;
     String str;
@@ -373,13 +373,13 @@ public class TaskManager
           if (!paramArrayList.hasNext()) {
             break label279;
           }
-          Object localObject1 = (Task.CONFIG_ITEM)paramArrayList.next();
-          Object localObject2 = str + "/" + ((Task.CONFIG_ITEM)localObject1).value + ".js";
+          Object localObject1 = (Task.ConfigItem)paramArrayList.next();
+          Object localObject2 = str + "/" + ((Task.ConfigItem)localObject1).value + ".js";
           localObject1 = new File((String)localObject2);
           if (((File)localObject1).exists())
           {
             localObject2 = new StringBuffer();
-            localObject1 = bdhb.b((File)localObject1);
+            localObject1 = bgmg.b((File)localObject1);
             if (localJSContext == null) {
               continue;
             }
@@ -448,13 +448,13 @@ public class TaskManager
   
   private boolean isTaskAvailable(Task paramTask)
   {
-    int i = ((Integer)bkbq.a("kandianreport.taskmanager" + paramTask.id, Integer.valueOf(0))).intValue();
+    int i = ((Integer)bmqa.a("kandianreport.taskmanager" + paramTask.id, Integer.valueOf(0))).intValue();
     return (i != Task.STATUS_FAIL) && (i != Task.STATUS_QUIT);
   }
   
   private Task readTaskConfigFile(File paramFile)
   {
-    return readTaskConfigJson(bdhb.a(paramFile));
+    return readTaskConfigJson(bgmg.a(paramFile));
   }
   
   private Task readTaskConfigJson(String paramString)
@@ -526,7 +526,7 @@ public class TaskManager
   private void readTasksFromConfigFile()
   {
     QLog.d("kandianreport.taskmanager", 1, "readTasksFromConfigFile...");
-    if (bdhb.a(TASK_CONFIG_DIR))
+    if (bgmg.a(TASK_CONFIG_DIR))
     {
       Object localObject1 = new File(TASK_CONFIG_DIR).listFiles();
       this.taskList.clear();
@@ -607,10 +607,10 @@ public class TaskManager
     paramString1.put("version", scriptVersion + "");
     paramString1.put("so_version", KandianReportSoLoader.getSoVersion() + "");
     paramString1.put("phone", Build.MODEL);
-    paramString1.put("sys_version", bdgk.e());
-    paramString1.put("qq_version", bdgk.c());
+    paramString1.put("sys_version", bgln.e());
+    paramString1.put("qq_version", bgln.c());
     paramString1.put("appid", AppSetting.a() + "");
-    nrt.a(null, "", "0X800982F", "0X800982F", 0, 0, "", "", "", paramString1.toString(), false);
+    oat.a(null, "", "0X800982F", "0X800982F", 0, 0, "", "", "", paramString1.toString(), false);
   }
   
   private void startTask(Task paramTask)
@@ -634,7 +634,7 @@ public class TaskManager
       if (isStarted) {
         return;
       }
-      if (bdhb.a(SCRIPT_ROOT_PATH)) {
+      if (bgmg.a(SCRIPT_ROOT_PATH)) {
         break label124;
       }
       QLog.d("kandianreport.taskmanager", 1, "startTasksIfExist: offline root dir is null");
@@ -648,7 +648,7 @@ public class TaskManager
         return;
         try
         {
-          if (ndl.a(SCRIPT_ROOT_PATH, "3412")) {
+          if (nme.a(SCRIPT_ROOT_PATH, "3412")) {
             continue;
           }
           KandianReportSoLoader.logAndReport("startTasksIfExist: verification failed");
@@ -755,7 +755,7 @@ public class TaskManager
     return null;
   }
   
-  public Task.CONFIG_ITEM[] getNextScript(JSContext paramJSContext, String paramString)
+  public Task.ConfigItem[] getNextScript(JSContext paramJSContext, String paramString)
   {
     if (paramJSContext == null) {}
     do
@@ -786,7 +786,7 @@ public class TaskManager
   {
     QLog.d("kandianreport.taskmanager", 2, "mark task fail " + paramTask.id);
     paramTask.status = Task.STATUS_FAIL;
-    bkbq.a("kandianreport.taskmanager" + paramTask.id, Integer.valueOf(Task.STATUS_FAIL));
+    bmqa.a("kandianreport.taskmanager" + paramTask.id, Integer.valueOf(Task.STATUS_FAIL));
   }
   
   public void qlog(int paramInt, String paramString)
@@ -807,7 +807,7 @@ public class TaskManager
           initTask(localTask);
           startTask(localTask);
           localTask.status = Task.STATUS_ACCEPT;
-          bkbq.a("kandianreport.taskmanager" + paramString, Integer.valueOf(Task.STATUS_ACCEPT));
+          bmqa.a("kandianreport.taskmanager" + paramString, Integer.valueOf(Task.STATUS_ACCEPT));
         }
         catch (Exception localException)
         {
@@ -840,7 +840,7 @@ public class TaskManager
   public void restore()
   {
     QLog.d("kandianreport.taskmanager", 1, "restore");
-    bkbq.a("kandianreport_ON", Integer.valueOf(1));
+    bmqa.a("kandianreport_ON", Integer.valueOf(1));
   }
   
   public void startAllTasks()

@@ -1,26 +1,63 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
+import android.app.Activity;
+import android.content.Intent;
+import android.text.TextUtils;
+import com.tencent.biz.coupon.CouponActivity;
+import com.tencent.mobileqq.webview.swift.JsBridgeListener;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
 
-class nmm
-  extends Handler
+public class nmm
+  extends WebViewPlugin
 {
-  nmm(nml paramnml, Looper paramLooper)
+  public nmm()
   {
-    super(paramLooper);
+    this.mPluginNameSpace = "coupon";
   }
   
-  public void handleMessage(Message paramMessage)
+  public void a(String paramString)
   {
-    if (this.a.jdField_a_of_type_Boolean) {
+    Activity localActivity = this.mRuntime.a();
+    int i;
+    if ((localActivity instanceof CouponActivity))
+    {
+      localObject = (CouponActivity)localActivity;
+      i = ((CouponActivity)localObject).a;
+      if ((i & 0x8) != 0)
+      {
+        paramString = new Intent();
+        paramString.putExtra("toPage", 2);
+        ((CouponActivity)localObject).setResult(-1, paramString);
+        ((CouponActivity)localObject).superFinish();
+      }
+    }
+    else
+    {
       return;
     }
-    this.a.a(this.a.jdField_a_of_type_Int, this.a.c);
+    Object localObject = new Intent(localActivity, CouponActivity.class);
+    ((Intent)localObject).putExtra("from", (i | 0xA) & 0xE);
+    if (!TextUtils.isEmpty(paramString)) {
+      ((Intent)localObject).putExtra("jsonParams", paramString);
+    }
+    localActivity.startActivity((Intent)localObject);
+  }
+  
+  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  {
+    if ("coupon".equals(paramString2))
+    {
+      if (("goToCouponHomePage".equals(paramString3)) && (paramVarArgs.length == 1))
+      {
+        a(paramVarArgs[0]);
+        paramJsBridgeListener.a(null);
+      }
+      return true;
+    }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     nmm
  * JD-Core Version:    0.7.0.1
  */

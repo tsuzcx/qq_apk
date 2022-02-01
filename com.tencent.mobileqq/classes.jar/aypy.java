@@ -1,43 +1,29 @@
-import android.content.Context;
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.AddFriendLogicActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
+import kotlin.Metadata;
+import kotlin.jvm.JvmOverloads;
+import kotlin.jvm.internal.Intrinsics;
+import org.jetbrains.annotations.NotNull;
 
-class aypy
-  implements View.OnClickListener
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"to898", "", "tValue", "", "from", "", "revFlag1", "AQQLiteApp_release"}, k=2, mv={1, 1, 16})
+public final class aypy
 {
-  aypy(aypv paramaypv, ayms paramayms) {}
-  
-  public void onClick(View paramView)
+  @JvmOverloads
+  public static final void a(@NotNull String paramString)
   {
-    if (this.jdField_a_of_type_Ayms.l == 1)
-    {
-      azqs.b(null, "dc00898", "", "", "0X800A33B", "0X800A33B", 0, 0, "", "", "", "");
-      azqs.b(null, "dc00898", "", "", "0X800A33B", "0X800A33B", 2, 0, "", "", "", "");
-    }
-    Object localObject;
-    for (;;)
-    {
-      localObject = (alto)aypv.a(this.jdField_a_of_type_Aypv).getManager(51);
-      if ((((alto)localObject).b(this.jdField_a_of_type_Ayms.b)) || (((alto)localObject).d(this.jdField_a_of_type_Ayms.b))) {
-        break;
-      }
-      localObject = AddFriendLogicActivity.a(paramView.getContext(), 1, this.jdField_a_of_type_Ayms.b, null, 3020, 3, this.jdField_a_of_type_Ayms.c, null, null, paramView.getContext().getString(2131689628), null);
-      paramView.getContext().startActivity((Intent)localObject);
-      return;
-      azqs.b(null, "dc00898", "", "", "0X800A33B", "0X800A33B", 0, 0, "", "", "", "");
-      azqs.b(null, "dc00898", "", "", "0X800A33B", "0X800A33B", 1, 0, "", "", "", "");
-    }
-    if (((alto)localObject).b(this.jdField_a_of_type_Ayms.b))
-    {
-      this.jdField_a_of_type_Ayms.k = 2;
-      aypv.a(this.jdField_a_of_type_Aypv).notifyDataSetChanged();
-      return;
-    }
-    this.jdField_a_of_type_Ayms.k = 1;
-    aypv.a(this.jdField_a_of_type_Aypv).notifyDataSetChanged();
+    a(paramString, 0, null, 6, null);
+  }
+  
+  @JvmOverloads
+  public static final void a(@NotNull String paramString, int paramInt)
+  {
+    a(paramString, paramInt, null, 4, null);
+  }
+  
+  @JvmOverloads
+  public static final void a(@NotNull String paramString1, int paramInt, @NotNull String paramString2)
+  {
+    Intrinsics.checkParameterIsNotNull(paramString1, "tValue");
+    Intrinsics.checkParameterIsNotNull(paramString2, "revFlag1");
+    bcst.b(null, "dc00898", "", "", paramString1, paramString1, paramInt, 0, paramString2, "", "", "");
   }
 }
 

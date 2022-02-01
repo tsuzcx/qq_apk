@@ -1,8 +1,15 @@
-import dov.com.qq.im.capture.data.QIMFilterCategoryItem;
+import dov.com.qq.im.ae.camera.core.AECameraGLSurfaceView.12.2;
 
-public abstract interface bnhh
+public class bnhh
+  implements banv
 {
-  public abstract void a(int paramInt, QIMFilterCategoryItem paramQIMFilterCategoryItem);
+  public bnhh(AECameraGLSurfaceView.12.2 param2) {}
+  
+  public void a()
+  {
+    bnzb.b("AECameraGLSurfaceView", "updateWMProps onGetLocation");
+    bnnx.a().a();
+  }
 }
 
 

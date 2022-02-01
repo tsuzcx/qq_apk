@@ -1,47 +1,33 @@
-import android.content.Context;
-import com.tencent.qqmini.sdk.log.QMLog;
-import com.tencent.qqmini.sdk.runtime.core.page.AppBrandPageContainer;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
+import com.tencent.mobileqq.vas.watchword.VasWatchWord.shareWatchWord.1.1;
+import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
+import kotlin.Metadata;
 
-@bglp(a="PageCreateTask")
-public class bhen
-  extends bhlw
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "it", "Leipc/EIPCResult;", "kotlin.jvm.PlatformType", "onCallback"}, k=3, mv={1, 1, 16})
+public final class bhen
+  implements EIPCResultCallback
 {
-  public bhen(Context paramContext, bgun parambgun)
-  {
-    super(paramContext, parambgun);
-  }
+  bhen(String paramString1, String paramString2) {}
   
-  public void a()
+  public final void onCallback(EIPCResult paramEIPCResult)
   {
-    if (a().getRuntime() == null)
-    {
-      QMLog.w("ServiceInitTask", "runtime is null!");
-      c();
-      return;
+    int i = paramEIPCResult.data.getInt("ret");
+    String str = paramEIPCResult.data.getString("sharemsg");
+    if (QLog.isColorLevel()) {
+      QLog.d("VasWatchWord", 2, "bid:" + this.a + " id:" + this.b + ", ret:" + paramEIPCResult.data.getInt("ret") + ", shareMsg:" + str);
     }
-    bglx localbglx = a().getRuntime().a();
-    if (!(localbglx instanceof AppBrandPageContainer))
-    {
-      QMLog.w("ServiceInitTask", "PageContainer type is incorrect! page=" + localbglx);
-      c();
-      return;
-    }
-    try
-    {
-      ((AppBrandPageContainer)localbglx).a(null);
-      c();
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      QMLog.e("ServiceInitTask", "pageContainer init exception!", localThrowable);
-      a(10, "Page创建失败");
+    if (i == 0) {
+      new Handler(Looper.getMainLooper()).post((Runnable)new VasWatchWord.shareWatchWord.1.1(str));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bhen
  * JD-Core Version:    0.7.0.1
  */

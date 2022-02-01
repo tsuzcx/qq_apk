@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.gamecenter.message;
 
-import awge;
 import com.tencent.mobileqq.persistence.ConflictClause;
+import com.tencent.mobileqq.persistence.Entity;
 import com.tencent.mobileqq.persistence.uniqueConstraints;
 
 @uniqueConstraints(clause=ConflictClause.FAIL, columnNames="fromTinyId,toTinyId")
 public class UinToTinyId
-  extends awge
+  extends Entity
 {
   private static final String TABLE_NAME = "friendUin_tinyId";
   public String extString;
@@ -27,7 +27,7 @@ public class UinToTinyId
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.gamecenter.message.UinToTinyId
  * JD-Core Version:    0.7.0.1
  */

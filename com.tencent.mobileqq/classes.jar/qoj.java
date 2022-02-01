@@ -1,14 +1,30 @@
-import java.util.List;
+import com.tencent.biz.pubaccount.readinjoy.pts.loader.PTSEngineLoader.3;
+import com.tencent.qphone.base.util.QLog;
 
-public abstract interface qoj<T>
+public class qoj
+  extends qon
 {
-  public abstract List<T> a(int paramInt1, int paramInt2);
+  public qoj(PTSEngineLoader.3 param3) {}
   
-  public abstract void a(List<T> paramList, boolean paramBoolean);
+  public void loaded(String paramString, int paramInt)
+  {
+    super.loaded(paramString, paramInt);
+    QLog.i("PTSEngineLoader", 1, "[updatePTSEngine], asyncBack code = " + paramInt + ", param = " + paramString);
+    if ((paramInt == 0) && (paramString == null))
+    {
+      QLog.i("PTSEngineLoader", 1, "[updatePTSEngine], handleDownloadPTSEngine, download succeed.");
+      qoi.c(this.a.this$0);
+    }
+  }
+  
+  public void progress(int paramInt)
+  {
+    super.progress(paramInt);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     qoj
  * JD-Core Version:    0.7.0.1
  */

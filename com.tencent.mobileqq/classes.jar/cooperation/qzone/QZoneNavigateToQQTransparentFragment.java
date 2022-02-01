@@ -8,17 +8,17 @@ import android.support.v4.app.FragmentActivity;
 import android.text.TextUtils;
 import android.util.Base64;
 import android.view.Window;
-import aqbg;
-import aqhg;
-import aqhi;
-import bdgm;
-import bdjz;
-import bjem;
-import bjen;
-import bjeo;
-import bjep;
-import bjeq;
-import bjer;
+import asfu;
+import asmj;
+import asml;
+import bglp;
+import bgpa;
+import blss;
+import blst;
+import blsu;
+import blsv;
+import blsw;
+import blsx;
 import com.tencent.mobileqq.activity.ChatActivity;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.fragment.PublicBaseFragment;
@@ -30,6 +30,8 @@ import mqq.os.MqqHandler;
 public class QZoneNavigateToQQTransparentFragment
   extends PublicBaseFragment
 {
+  private boolean a;
+  
   public static void a(FragmentActivity paramFragmentActivity, String paramString1, String paramString2)
   {
     if (paramFragmentActivity == null) {
@@ -52,9 +54,9 @@ public class QZoneNavigateToQQTransparentFragment
       QLog.d("QZoneNavigateToQQTransparentFragment", 1, "showCampusVerifyDialog() activity is null or is not onResume() just return");
       return;
     }
-    bdjz localbdjz = bdgm.a(paramFragmentActivity, 230);
-    localbdjz.setOnDismissListener(new bjen(paramFragmentActivity));
-    localbdjz.setMessage(paramFragmentActivity.getString(2131699358)).setNegativeButton(paramFragmentActivity.getString(2131699356), new bjep()).setPositiveButton(paramFragmentActivity.getString(2131699357), new bjeo(paramBoolean, paramFragmentActivity, paramInt, paramString1, paramString2)).show();
+    bgpa localbgpa = bglp.a(paramFragmentActivity, 230);
+    localbgpa.setOnDismissListener(new blst(paramFragmentActivity));
+    localbgpa.setMessage(paramFragmentActivity.getString(2131697974)).setNegativeButton(paramFragmentActivity.getString(2131697972), new blsv()).setPositiveButton(paramFragmentActivity.getString(2131697973), new blsu(paramBoolean, paramFragmentActivity, paramInt, paramString1, paramString2)).show();
   }
   
   private static void b(FragmentActivity paramFragmentActivity)
@@ -64,9 +66,9 @@ public class QZoneNavigateToQQTransparentFragment
       QLog.d("QZoneNavigateToQQTransparentFragment", 1, "showMatchCountDialog() activity is null or is not onResume() just return");
       return;
     }
-    bdjz localbdjz = bdgm.a(paramFragmentActivity, 230);
-    localbdjz.setOnDismissListener(new bjeq(paramFragmentActivity));
-    localbdjz.setMessage(paramFragmentActivity.getString(2131699360)).setPositiveButton(paramFragmentActivity.getString(2131699359), new bjer()).show();
+    bgpa localbgpa = bglp.a(paramFragmentActivity, 230);
+    localbgpa.setOnDismissListener(new blsw(paramFragmentActivity));
+    localbgpa.setMessage(paramFragmentActivity.getString(2131697976)).setPositiveButton(paramFragmentActivity.getString(2131697975), new blsx()).show();
   }
   
   private static void b(FragmentActivity paramFragmentActivity, String paramString)
@@ -114,10 +116,10 @@ public class QZoneNavigateToQQTransparentFragment
       try
       {
         localObject = Base64.decode(str4, 0);
-        aqhi.a(localFragmentActivity.app).a(localFragmentActivity.app, String.valueOf(l), str3, (byte[])localObject, new bjem(this, localFragmentActivity));
+        asml.a(localFragmentActivity.app).a(localFragmentActivity.app, String.valueOf(l), str3, (byte[])localObject, 1, new blss(this, localFragmentActivity));
         localObject = localBundle.getString("extend_friend_campus_algorithm_id");
-        str2 = localBundle.getString("extend_friend_campus_current_tab", aqbg.a);
-        aqhg.a().a(1, String.valueOf(l), "", "0", (String)localObject, str2);
+        str2 = localBundle.getString("extend_friend_campus_current_tab", asfu.a);
+        asmj.a().a(1, String.valueOf(l), "", "0", (String)localObject, str2);
         return;
       }
       catch (Throwable localThrowable)
@@ -154,7 +156,6 @@ public class QZoneNavigateToQQTransparentFragment
     if (paramBundle != null) {
       paramBundle.getWindow().setBackgroundDrawable(new ColorDrawable(0));
     }
-    a();
   }
   
   public boolean onBackEvent()
@@ -165,10 +166,20 @@ public class QZoneNavigateToQQTransparentFragment
     }
     return super.onBackEvent();
   }
+  
+  public void onResume()
+  {
+    super.onResume();
+    if (!this.a)
+    {
+      this.a = true;
+      a();
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.qzone.QZoneNavigateToQQTransparentFragment
  * JD-Core Version:    0.7.0.1
  */

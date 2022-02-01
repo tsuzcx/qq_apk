@@ -1,30 +1,91 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.emosm.web.MessengerService;
+import android.util.DisplayMetrics;
+import com.tencent.ark.ArkEnvironmentManager;
+import com.tencent.ark.ark;
+import com.tencent.ark.ark.ApplicationCallback;
+import com.tencent.ark.open.delegate.ArkDelegateManager;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.ark.ArkAppCenter;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.AppRuntime;
+import mqq.app.MobileQQ;
 
-class aprd
-  implements bdup<arwr>
+public class aprd
 {
-  aprd(apqh paramapqh, int paramInt, amca paramamca, QQAppInterface paramQQAppInterface, Bundle paramBundle, MessengerService paramMessengerService) {}
+  protected static final ark.ApplicationCallback a = new apro();
   
-  public void a(arwr paramarwr, Object paramObject)
+  public static void a()
   {
-    paramObject = new Bundle();
-    paramObject.putInt("id", this.jdField_a_of_type_Int);
-    if ((paramarwr != null) || (this.jdField_a_of_type_Int == 0))
+    String str3 = apom.a().a();
+    String str1 = "";
+    Object localObject = str1;
+    String str2 = str3;
+    if (1 != BaseApplicationImpl.sProcessId)
     {
-      paramObject.putInt("result", 0);
-      this.jdField_a_of_type_Amca.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), this.jdField_a_of_type_Int);
+      str2 = MobileQQ.getMobileQQ().getQQProcessName();
+      localObject = str1;
+      if (str2 != null)
+      {
+        int i = str2.lastIndexOf(':');
+        localObject = str1;
+        if (i > -1) {
+          localObject = "_" + str2.substring(i + 1);
+        }
+      }
+      str2 = str3 + (String)localObject;
     }
-    for (;;)
+    ArkDelegateManager.getInstance().init(str2, (String)localObject, "8.4.1", BaseApplicationImpl.getContext());
+    localObject = BaseApplicationImpl.getApplication().getRuntime();
+    ArkEnvironmentManager.getInstance().setCurrentUin(((AppRuntime)localObject).getAccount());
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (apom.a() != null)
     {
-      this.jdField_a_of_type_AndroidOsBundle.putBundle("response", paramObject);
-      this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.a(this.jdField_a_of_type_AndroidOsBundle);
+      bool1 = bool2;
+      if (apom.a().a() == 1) {
+        bool1 = true;
+      }
+    }
+    ArkEnvironmentManager.getInstance().setEnv(bool1);
+    ArkDelegateManager.getInstance().setSetupDelegate(new apri());
+    ArkDelegateManager.getInstance().setNetDelegate(new aprj());
+    ArkDelegateManager.getInstance().setInputCallback(new aprp(null));
+    ArkDelegateManager.getInstance().setApplicationCallback(a);
+  }
+  
+  public static void a(boolean paramBoolean)
+  {
+    Object localObject1 = ArkEnvironmentManager.getInstance();
+    if (!ArkAppCenter.a) {}
+    try
+    {
+      if (!ArkAppCenter.a)
+      {
+        ((ArkEnvironmentManager)localObject1).setThreadCreator(new apre());
+        ((ArkEnvironmentManager)localObject1).setLogCallback(new aprf());
+        ((ArkEnvironmentManager)localObject1).setLibraryLoader(new aprg());
+        ((ArkEnvironmentManager)localObject1).setDebugFlag(false);
+        ((ArkEnvironmentManager)localObject1).setProfilingLogFlag(true);
+        ((ArkEnvironmentManager)localObject1).setDataReport(new aprh());
+        ArkAppCenter.a = true;
+      }
+      if ((paramBoolean) && (!ArkAppCenter.b))
+      {
+        ((ArkEnvironmentManager)localObject1).loadLibrary();
+        if (ArkAppCenter.b)
+        {
+          if (BaseApplicationImpl.getContext() != null)
+          {
+            localObject1 = apoh.a;
+            ark.arkSetScreenSize(((DisplayMetrics)localObject1).widthPixels / ((DisplayMetrics)localObject1).density, ((DisplayMetrics)localObject1).heightPixels / ((DisplayMetrics)localObject1).density);
+          }
+          ArkEnvironmentManager.getInstance().setSingleThreadMode(true);
+          ArkEnvironmentManager.getInstance().setThreadMode();
+          QLog.i("ArkApp.ArkMultiProcUtil", 1, "setupArkEnvironment, https=true, multithreads=true");
+        }
+      }
       return;
-      bdut.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "individual_v2_colorscreen_set_fail", "0", "", Integer.toString(this.jdField_a_of_type_Int), null, null, 0.0F, 0.0F);
-      bdus.a("individual_v2_colorscreen_set_fail", "id:" + this.jdField_a_of_type_Int);
-      paramObject.putInt("result", 1);
     }
+    finally {}
   }
 }
 

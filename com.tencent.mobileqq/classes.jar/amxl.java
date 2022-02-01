@@ -1,38 +1,9 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
-public class amxl
-  extends bazx
+public abstract interface amxl
+  extends amxk
 {
-  amxi jdField_a_of_type_Amxi;
-  amxk jdField_a_of_type_Amxk;
-  
-  public amxl(QQAppInterface paramQQAppInterface, amxk paramamxk, amxi paramamxi)
-  {
-    super(paramQQAppInterface, paramamxk.b);
-    this.jdField_a_of_type_Amxk = paramamxk;
-    this.jdField_a_of_type_Amxi = paramamxi;
-  }
-  
-  protected void realCancel()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ArConfig_ArResourceDownload", 2, "DownloadTask realCancel");
-    }
-  }
-  
-  protected void realStart()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ArConfig_ArResourceDownload", 2, "DownloadTask realStart");
-    }
-    amxi.a(this.jdField_a_of_type_Amxi, this.jdField_a_of_type_Amxk);
-  }
-  
-  public String toString()
-  {
-    return "[DownloadTask] mInfo=" + this.jdField_a_of_type_Amxk + ", mDownloader=" + this.jdField_a_of_type_Amxi;
-  }
+  public abstract void a(boolean paramBoolean, String paramString, List<amxj> paramList);
 }
 
 

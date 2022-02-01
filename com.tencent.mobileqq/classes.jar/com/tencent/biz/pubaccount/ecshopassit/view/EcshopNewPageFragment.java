@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.res.Resources;
 import android.os.Bundle;
+import android.os.SystemClock;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -14,56 +15,77 @@ import android.view.View;
 import android.widget.ImageView;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.fragment.IphoneTitleBarFragment;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.theme.ThemeUtil;
 import com.tencent.mobileqq.widget.navbar.NavBarCommon;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.immersive.ImmersiveUtils;
+import java.util.ArrayList;
 import java.util.HashSet;
-import nur;
-import nvc;
-import nvd;
-import nvg;
-import nvh;
-import nvi;
-import nvk;
+import odt;
+import odx;
+import oem;
+import oen;
+import oet;
+import oev;
+import oez;
+import ofa;
+import ofb;
+import ofc;
+import ofe;
+import tencent.im.oidb.qqshop.qq_ad.QQAdGet;
 
 public class EcshopNewPageFragment
   extends IphoneTitleBarFragment
 {
   private int jdField_a_of_type_Int;
   private long jdField_a_of_type_Long;
-  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new nvh(this);
+  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new ofb(this);
   private SparseArray<EcshopTabFragment> jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
   private CustomTabView jdField_a_of_type_ComTencentBizPubaccountEcshopassitViewCustomTabView;
   private EcshopTabFragment jdField_a_of_type_ComTencentBizPubaccountEcshopassitViewEcshopTabFragment;
   private String jdField_a_of_type_JavaLangString;
   private HashSet<Integer> jdField_a_of_type_JavaUtilHashSet = new HashSet();
-  private boolean jdField_a_of_type_Boolean;
+  public boolean a;
+  private boolean b;
+  private boolean c;
+  private boolean d;
   
   private void a()
   {
-    this.vg.setTitle(getResources().getString(2131692016));
-    this.vg.setRightImage(getResources().getDrawable(2130849577));
-    ((ImageView)this.vg.findViewById(2131368979)).setImageResource(2130850061);
-    this.vg.setOnItemSelectListener(new nvg(this));
-    if (ThemeUtil.isNowThemeIsNight(BaseApplicationImpl.getApplication().getRuntime(), false, null))
+    Object localObject = oet.a();
+    if ((localObject != null) && (!((ArrayList)localObject).isEmpty()))
     {
-      ImmersiveUtils.a(true, getActivity().getWindow());
-      this.mContentView.findViewById(2131371169).setVisibility(0);
-      this.vg.setBackgroundColor(-16777216);
+      if (this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitViewCustomTabView != null) {
+        this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitViewCustomTabView.a((ArrayList)localObject);
+      }
       return;
     }
-    this.mContentView.findViewById(2131371169).setVisibility(8);
+    localObject = new qq_ad.QQAdGet();
+    if (this.b) {
+      ((qq_ad.QQAdGet)localObject).trigger_type.set(12);
+    }
+    for (;;)
+    {
+      odt.a(((qq_ad.QQAdGet)localObject).toByteArray(), "SQQShopAdSdkSvr.getAd", new oez(this));
+      return;
+      ((qq_ad.QQAdGet)localObject).trigger_type.set(8);
+    }
   }
   
   private void a(Intent paramIntent)
   {
-    if (paramIntent != null) {
-      this.jdField_a_of_type_Int = paramIntent.getIntExtra("tab_id", 1);
-    }
-    for (this.jdField_a_of_type_JavaLangString = paramIntent.getStringExtra("jump_url");; this.jdField_a_of_type_JavaLangString = getArguments().getString("jump_url", ""))
+    if (paramIntent != null)
     {
+      this.jdField_a_of_type_Int = paramIntent.getIntExtra("tab_id", 1);
+      this.jdField_a_of_type_JavaLangString = paramIntent.getStringExtra("jump_url");
+      this.b = paramIntent.getBooleanExtra("req_qgg_title", true);
+    }
+    for (this.d = paramIntent.getBooleanExtra("req_qgg_hide_tab", false);; this.d = getArguments().getBoolean("req_qgg_hide_tab", false))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("Ecshop_EcshopNewPageFragment", 2, this.jdField_a_of_type_JavaLangString);
+      }
       if (this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitViewCustomTabView != null) {
         this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitViewCustomTabView.a(this.jdField_a_of_type_Int);
       }
@@ -81,18 +103,25 @@ public class EcshopNewPageFragment
       }
       return;
       this.jdField_a_of_type_Int = getArguments().getInt("tab_id");
+      this.jdField_a_of_type_JavaLangString = getArguments().getString("jump_url", "");
+      this.b = getArguments().getBoolean("req_qgg_title", true);
     }
   }
   
   private void a(View paramView)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitViewCustomTabView = ((CustomTabView)paramView.findViewById(2131364962));
-    if (nvd.a(nvc.a(), 0, this.jdField_a_of_type_Int))
+    this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitViewCustomTabView = ((CustomTabView)paramView.findViewById(2131365196));
+    if (oen.a(oem.a(), 0, this.jdField_a_of_type_Int))
     {
-      this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitViewCustomTabView.setVisibility(0);
-      this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitViewCustomTabView.a(nvc.a());
-      this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitViewCustomTabView.a(this.jdField_a_of_type_Int);
-      return;
+      paramView = this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitViewCustomTabView;
+      if (this.d) {}
+      for (int i = 8;; i = 0)
+      {
+        paramView.setVisibility(i);
+        this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitViewCustomTabView.a(oem.a());
+        this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitViewCustomTabView.a(this.jdField_a_of_type_Int);
+        return;
+      }
     }
     this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitViewCustomTabView.setVisibility(8);
   }
@@ -102,7 +131,7 @@ public class EcshopNewPageFragment
     FragmentTransaction localFragmentTransaction = getChildFragmentManager().beginTransaction();
     if (this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitViewEcshopTabFragment == null) {
       if (!paramEcshopTabFragment.isAdded()) {
-        localFragmentTransaction.add(2131364777, paramEcshopTabFragment).commitAllowingStateLoss();
+        localFragmentTransaction.add(2131365005, paramEcshopTabFragment).commitAllowingStateLoss();
       }
     }
     for (;;)
@@ -113,7 +142,7 @@ public class EcshopNewPageFragment
       continue;
       if (!this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitViewEcshopTabFragment.a(paramEcshopTabFragment)) {
         if (!paramEcshopTabFragment.isAdded()) {
-          localFragmentTransaction.hide(this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitViewEcshopTabFragment).add(2131364777, paramEcshopTabFragment).commitAllowingStateLoss();
+          localFragmentTransaction.hide(this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitViewEcshopTabFragment).add(2131365005, paramEcshopTabFragment).commitAllowingStateLoss();
         } else {
           localFragmentTransaction.hide(this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitViewEcshopTabFragment).show(paramEcshopTabFragment).commitAllowingStateLoss();
         }
@@ -121,16 +150,47 @@ public class EcshopNewPageFragment
     }
   }
   
+  private void a(ArrayList<odx> paramArrayList)
+  {
+    oet.a(paramArrayList);
+    if (QLog.isColorLevel()) {
+      QLog.i("Ecshop_EcshopNewPageFragment", 2, "[onResponseRedpoint]");
+    }
+    if (this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitViewCustomTabView != null) {
+      this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitViewCustomTabView.a(paramArrayList);
+    }
+  }
+  
+  private void b()
+  {
+    this.vg.setTitle(getResources().getString(2131691674));
+    this.vg.setRightImage(getResources().getDrawable(2130850128));
+    ((ImageView)this.vg.findViewById(2131369362)).setImageResource(2130850653);
+    this.vg.setOnItemSelectListener(new ofa(this));
+    if (ThemeUtil.isNowThemeIsNight(BaseApplicationImpl.getApplication().getRuntime(), false, null))
+    {
+      ImmersiveUtils.a(true, getActivity().getWindow());
+      this.mContentView.findViewById(2131371728).setVisibility(0);
+      this.vg.setBackgroundColor(-16777216);
+    }
+    for (;;)
+    {
+      a(this.mContentView);
+      return;
+      this.mContentView.findViewById(2131371728).setVisibility(8);
+    }
+  }
+  
   public int getContentLayoutId()
   {
-    return 2131561699;
+    return 2131561935;
   }
   
   public void init(Bundle paramBundle)
   {
     super.init(paramBundle);
+    b();
     a();
-    a(this.mContentView);
   }
   
   public void initWindowStyleAndAnimation(Activity paramActivity)
@@ -152,15 +212,18 @@ public class EcshopNewPageFragment
   public void onCreate(Bundle paramBundle)
   {
     if (QLog.isColorLevel()) {
-      QLog.i("EcshopNewPageFragment", 2, "[onCreate]");
+      QLog.i("Ecshop_EcshopNewPageFragment", 2, "[onCreate]");
     }
     super.onCreate(paramBundle);
     try
     {
-      if ((!this.jdField_a_of_type_Boolean) && (getActivity() != null))
+      if ((!this.c) && (getActivity() != null))
       {
-        getActivity().registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, new IntentFilter("com.tencent.biz.pubaccount.ecshop.tabpage.finish"));
-        this.jdField_a_of_type_Boolean = true;
+        paramBundle = new IntentFilter();
+        paramBundle.addAction("com.tencent.biz.pubaccount.ecshop.tabpage.finish");
+        paramBundle.addAction("action_notify_view_update");
+        getActivity().registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, paramBundle);
+        this.c = true;
       }
       a(null);
       return;
@@ -169,14 +232,14 @@ public class EcshopNewPageFragment
     {
       for (;;)
       {
-        QLog.e("EcshopNewPageFragment", 1, "[onCreate] regist exitreceiver fail " + paramBundle);
+        QLog.e("Ecshop_EcshopNewPageFragment", 1, "[onCreate] regist exitreceiver fail " + paramBundle);
       }
     }
   }
   
   public void onDestroy()
   {
-    QLog.i("EcshopNewPageFragment", 2, "[onDestroy]");
+    QLog.i("Ecshop_EcshopNewPageFragment", 2, "[onDestroy]");
     super.onDestroy();
     if ((this.jdField_a_of_type_AndroidUtilSparseArray != null) && (this.jdField_a_of_type_AndroidUtilSparseArray.size() > 0))
     {
@@ -193,17 +256,25 @@ public class EcshopNewPageFragment
     if ((this.jdField_a_of_type_AndroidUtilSparseArray != null) && (this.jdField_a_of_type_AndroidUtilSparseArray.size() > 0)) {
       this.jdField_a_of_type_AndroidUtilSparseArray.clear();
     }
-    nvk.a().a(null, "");
+    ofe.a().a(null, "");
     try
     {
-      if ((this.jdField_a_of_type_Boolean) && (getActivity() != null))
+      if ((this.c) && (getActivity() != null))
       {
         getActivity().unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
-        this.jdField_a_of_type_Boolean = false;
+        this.c = false;
       }
       return;
     }
     catch (Throwable localThrowable) {}
+  }
+  
+  public void onDestroyView()
+  {
+    super.onDestroyView();
+    if (this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitViewCustomTabView != null) {
+      this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitViewCustomTabView.a();
+    }
   }
   
   public void onNewIntent(Intent paramIntent)
@@ -215,19 +286,28 @@ public class EcshopNewPageFragment
   public void onPause()
   {
     super.onPause();
-    QLog.i("parsons", 2, " EcshopNewPageFragment [onPause] mCurrentTabId: " + this.jdField_a_of_type_Int);
+    if (QLog.isColorLevel()) {
+      QLog.i("Ecshop_EcshopNewPageFragment", 2, " EcshopNewPageFragment [onPause] mCurrentTabId: " + this.jdField_a_of_type_Int + "isJumpToThirdPage: " + this.jdField_a_of_type_Boolean);
+    }
     EcshopTabFragment localEcshopTabFragment = (EcshopTabFragment)this.jdField_a_of_type_AndroidUtilSparseArray.get(this.jdField_a_of_type_Int);
     if ((localEcshopTabFragment != null) && (localEcshopTabFragment.a != null)) {
       localEcshopTabFragment.a.b();
     }
-    nur.a(null, "gouwu.aio.stay", this.jdField_a_of_type_Int + "", NetConnInfoCenter.getServerTimeMillis() + "", NetConnInfoCenter.getServerTimeMillis() - this.jdField_a_of_type_Long + "");
+    if (this.jdField_a_of_type_Boolean) {
+      return;
+    }
+    oev.a(null, "gouwu.aio.stay", this.jdField_a_of_type_Int + "", SystemClock.elapsedRealtime() + "", SystemClock.elapsedRealtime() - this.jdField_a_of_type_Long + "");
+    oev.b(null, "gouwu_aio_stay", this.jdField_a_of_type_Int + "", SystemClock.elapsedRealtime() + "", SystemClock.elapsedRealtime() - this.jdField_a_of_type_Long + "");
   }
   
   public void onResume()
   {
     super.onResume();
-    QLog.i("EcshopNewPageFragment", 2, " EcshopNewPageFragment [onResume] mCurrentTabId: " + this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_Long = NetConnInfoCenter.getServerTimeMillis();
+    QLog.i("Ecshop_EcshopNewPageFragment", 2, " EcshopNewPageFragment [onResume] mCurrentTabId: " + this.jdField_a_of_type_Int);
+    if (!this.jdField_a_of_type_Boolean) {
+      this.jdField_a_of_type_Long = SystemClock.elapsedRealtime();
+    }
+    this.jdField_a_of_type_Boolean = false;
     EcshopTabFragment localEcshopTabFragment = (EcshopTabFragment)this.jdField_a_of_type_AndroidUtilSparseArray.get(this.jdField_a_of_type_Int);
     if ((localEcshopTabFragment != null) && (localEcshopTabFragment.a != null)) {
       localEcshopTabFragment.a.a();

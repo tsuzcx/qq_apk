@@ -1,58 +1,38 @@
-import android.content.Context;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView.Recycler;
-import android.support.v7.widget.RecyclerView.State;
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsRecyclerView;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.viola.adapter.ILogAdapter;
 
 public class tme
-  extends LinearLayoutManager
+  implements ILogAdapter
 {
-  private VideoFeedsRecyclerView a;
-  
-  public tme(Context paramContext, VideoFeedsRecyclerView paramVideoFeedsRecyclerView, int paramInt, boolean paramBoolean)
+  public void callLog(String paramString1, int paramInt, String paramString2)
   {
-    super(paramContext, paramInt, paramBoolean);
-    this.a = paramVideoFeedsRecyclerView;
-  }
-  
-  private boolean a(View paramView)
-  {
-    if (paramView == null) {}
-    int i;
-    int j;
+    switch (paramInt)
+    {
+    default: 
+      if (QLog.isColorLevel()) {
+        QLog.d(paramString1, 2, paramString2);
+      }
+      break;
+    }
     do
     {
-      return false;
-      i = this.a.getChildViewHolder(paramView).getLayoutPosition();
-      j = this.a.b();
-    } while ((j < 0) || ((i != j + 1) && (i != j - 1)));
-    return true;
+      do
+      {
+        return;
+        QLog.e(paramString1, 2, paramString2);
+        return;
+      } while (!QLog.isColorLevel());
+      QLog.i(paramString1, 2, paramString2);
+      return;
+    } while (!QLog.isColorLevel());
+    QLog.w(paramString1, 2, paramString2);
   }
   
-  public int getExtraLayoutSpace(RecyclerView.State paramState)
-  {
-    return super.getExtraLayoutSpace(paramState) + 200;
-  }
-  
-  public void removeAndRecycleView(View paramView, RecyclerView.Recycler paramRecycler)
-  {
-    if (!a(paramView)) {
-      super.removeAndRecycleView(paramView, paramRecycler);
-    }
-  }
-  
-  public void removeAndRecycleViewAt(int paramInt, RecyclerView.Recycler paramRecycler)
-  {
-    if (!a(getChildAt(paramInt))) {
-      super.removeAndRecycleViewAt(paramInt, paramRecycler);
-    }
-  }
+  public void onJSError(String paramString) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     tme
  * JD-Core Version:    0.7.0.1
  */

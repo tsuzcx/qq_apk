@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.troop.homework.entry.ui;
 
 import android.widget.EditText;
-import bhsj;
+import bkft;
 import com.tencent.qphone.base.util.QLog;
 
 class SubmitHomeWorkFragment$6
@@ -16,13 +16,13 @@ class SubmitHomeWorkFragment$6
       QLog.d("SubmitHomeWorkFragment", 2, "弹起键盘");
     }
     if (localEditText != null) {
-      bhsj.a(localEditText);
+      bkft.a(localEditText);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.troop.homework.entry.ui.SubmitHomeWorkFragment.6
  * JD-Core Version:    0.7.0.1
  */

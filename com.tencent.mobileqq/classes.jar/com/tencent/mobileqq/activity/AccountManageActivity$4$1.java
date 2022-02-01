@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.activity;
 
-import acbg;
+import adio;
 
 public class AccountManageActivity$4$1
   implements Runnable
 {
-  public AccountManageActivity$4$1(acbg paramacbg) {}
+  public AccountManageActivity$4$1(adio paramadio) {}
   
   public void run()
   {

@@ -2,13 +2,18 @@ package com.tencent.ttpic.openapi.filter;
 
 import android.graphics.PointF;
 import com.tencent.aekit.api.standard.AEModule;
+import com.tencent.aekit.openrender.internal.AEFilterI;
 import com.tencent.aekit.openrender.internal.Frame;
+import com.tencent.aekit.plugin.core.AIAttr;
 import com.tencent.filter.BaseFilter;
 import com.tencent.ttpic.baseutils.collection.CollectionUtils;
 import com.tencent.ttpic.baseutils.fps.BenchUtil;
 import com.tencent.ttpic.baseutils.log.LogUtils;
 import com.tencent.ttpic.facedetect.FaceStatus;
+import com.tencent.ttpic.model.FaceBeautyItem;
+import com.tencent.ttpic.openapi.PTDetectInfo;
 import com.tencent.ttpic.openapi.PTDetectInfo.Builder;
+import com.tencent.ttpic.openapi.PTFaceAttr;
 import com.tencent.ttpic.openapi.config.BeautyRealConfig;
 import com.tencent.ttpic.openapi.config.BeautyRealConfig.TYPE;
 import com.tencent.ttpic.openapi.model.DistortParam;
@@ -21,6 +26,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class BeautyTransformList
+  implements AEFilterI
 {
   private static int FACE_CACHE_LEN = 10;
   private static final int MAX_TRANSFORMED_FACES = 5;
@@ -28,9 +34,11 @@ public class BeautyTransformList
   private int Basic3level;
   private final int MAX_COUNT = 6;
   private int age = 0;
+  private PTFaceAttr faceAttr;
   private int faceShortenLevel;
   private float femalePercent = 1.0F;
   private boolean isFemale = true;
+  private FaceBeautyItem item;
   private TransformFilter mBasic3 = null;
   private BeautyAIParam mBeautyAIParam = new BeautyAIParam();
   private BeautyParam mBeautyParam;
@@ -232,6 +240,14 @@ public class BeautyTransformList
     }
   }
   
+  public Frame RenderProcess(Frame paramFrame)
+  {
+    if (this.faceAttr == null) {
+      return paramFrame;
+    }
+    return process(paramFrame, this.faceAttr.getAllFacePoints(), this.faceAttr.getFaceStatusList(), this.faceAttr.getFaceDetectScale(), this.faceAttr.getAllFaceAngles(), 0.0F, false);
+  }
+  
   public void clear()
   {
     this.transFrame.clear();
@@ -244,6 +260,11 @@ public class BeautyTransformList
   public BeautyParam getBeautyParam()
   {
     return this.mBeautyParam;
+  }
+  
+  public FaceBeautyItem getFaceBeautyItem()
+  {
+    return this.item;
   }
   
   public float getFemalePercent()
@@ -361,9 +382,21 @@ public class BeautyTransformList
     this.faceShortenLevel = paramInt2;
   }
   
+  public void setFaceBeautyItem(FaceBeautyItem paramFaceBeautyItem)
+  {
+    this.item = paramFaceBeautyItem;
+  }
+  
   public void setFemale(boolean paramBoolean)
   {
     this.isFemale = paramBoolean;
+  }
+  
+  public void setNeedReCaculateFace(boolean paramBoolean)
+  {
+    this.mVFaceEyeNose.setNeedReCaculateFace(paramBoolean);
+    this.mChinThinShorten.setNeedReCaculateFace(paramBoolean);
+    this.mBasic3.setNeedReCaculateFace(paramBoolean);
   }
   
   public void setRenderMode(int paramInt)
@@ -377,37 +410,49 @@ public class BeautyTransformList
   {
     updatePeopleList(paramList, paramList2);
     paramList = getFaceInfo();
-    paramList2 = paramList.faces;
-    List localList1 = paramList.facesAngles;
-    List localList2 = paramList.countList;
-    paramList = paramFrame;
-    if (!CollectionUtils.isEmpty(paramList2))
+    List localList1 = paramList.faces;
+    List localList2 = paramList.facesAngles;
+    List localList3 = paramList.countList;
+    int i;
+    if (this.faceAttr != null)
     {
-      int i = 0;
+      paramList = this.faceAttr.getTransformFacePoints();
+      paramList2 = paramFrame;
+      if (!CollectionUtils.isEmpty(localList1)) {
+        i = 0;
+      }
+    }
+    else
+    {
       for (;;)
       {
-        paramList = paramFrame;
-        if (i >= Math.min(paramList2.size(), 5)) {
-          break;
+        paramList2 = paramFrame;
+        if (i >= Math.min(localList1.size(), 5)) {
+          break label587;
         }
-        List localList3 = (List)paramList2.get(i);
+        List localList4 = (List)localList1.get(i);
         boolean bool;
+        label128:
+        int j;
+        label156:
+        label375:
+        TransformFilter localTransformFilter;
+        PTDetectInfo.Builder localBuilder;
         if ((paramList1 != null) && (paramList1.size() > i))
         {
-          if (((FaceStatus)paramList1.get(i)).gender != 1) {
-            break label495;
-          }
-          bool = true;
-          this.isFemale = bool;
-          if (!BeautyAIParam.needAIBeautyValid()) {
-            break label501;
+          if (((FaceStatus)paramList1.get(i)).gender == 1)
+          {
+            bool = true;
+            this.isFemale = bool;
+            if (!BeautyAIParam.needAIBeautyValid()) {
+              break label566;
+            }
+            j = ((FaceStatus)paramList1.get(i)).age;
+            this.age = j;
           }
         }
-        label495:
-        label501:
-        for (int j = ((FaceStatus)paramList1.get(i)).age;; j = 0)
+        else
         {
-          this.age = j;
           this.mBeautyAIParam.setBeautyParam(this.isFemale, this.age, paramBoolean);
           if (AEModule.isEnableDefaultBasic3())
           {
@@ -415,28 +460,44 @@ public class BeautyTransformList
             setBeautyParam(BeautyRealConfig.TYPE.NOSE.value, BeautyRealUtil.getDistortParam(this.mBeautyParamValue.getDistortList(BeautyRealConfig.TYPE.NOSE), Math.round(this.mBeautyAIParam.getRealValue(BeautyAIParam.AI_TYPE.NOSE, this.noseLevel / 100.0F) * 100.0F), BeautyRealConfig.TYPE.NOSE.value));
             setBeautyParam(BeautyRealConfig.TYPE.FACE_SHORTEN.value, BeautyRealUtil.getDistortParam(this.mBeautyParamValue.getDistortList(BeautyRealConfig.TYPE.FACE_SHORTEN), Math.round(this.mBeautyAIParam.getRealValue(BeautyAIParam.AI_TYPE.FACE_SHORTEN, this.faceShortenLevel / 100.0F) * 100.0F), BeautyRealConfig.TYPE.FACE_SHORTEN.value));
           }
-          float[] arrayOfFloat = (float[])localList1.get(i);
+          float[] arrayOfFloat = (float[])localList2.get(i);
           Iterator localIterator = this.mFilters.iterator();
-          while (localIterator.hasNext())
-          {
-            paramList = (TransformFilter)localIterator.next();
-            BenchUtil.benchStart("[BeautyTransformList] updatePreview");
-            paramList.updateStrength(1.0F - my_smoothstep(0.4F, 1.0F, ((Integer)localList2.get(i)).intValue() / 6.0F));
-            paramList.updatePreview(new PTDetectInfo.Builder().facePoints(localList3).faceAngles(arrayOfFloat).phoneAngle(paramFloat).build());
-            BenchUtil.benchEnd("[BeautyTransformList] updatePreview");
-            BenchUtil.benchStart("[BeautyTransformList] renderProcessBySwitchFbo");
-            paramList = paramList.RenderProcess(paramFrame.getTextureId(), paramFrame.width, paramFrame.height);
-            paramFrame.unlock();
-            BenchUtil.benchEnd("[BeautyTransformList] renderProcessBySwitchFbo");
-            paramFrame = paramList;
+          if (!localIterator.hasNext()) {
+            break label578;
           }
-          bool = false;
-          break;
+          localTransformFilter = (TransformFilter)localIterator.next();
+          BenchUtil.benchStart("[BeautyTransformList] updatePreview");
+          localTransformFilter.updateStrength(1.0F - my_smoothstep(0.4F, 1.0F, ((Integer)localList3.get(i)).intValue() / 6.0F));
+          localBuilder = new PTDetectInfo.Builder().facePoints(localList4).faceAngles(arrayOfFloat).phoneAngle(paramFloat);
+          if ((paramList == null) || (paramList.size() <= i)) {
+            break label572;
+          }
         }
+        label566:
+        label572:
+        for (paramList2 = (List)paramList.get(i);; paramList2 = null)
+        {
+          localTransformFilter.updatePreview(localBuilder.transformPoints(paramList2).build());
+          BenchUtil.benchEnd("[BeautyTransformList] updatePreview");
+          BenchUtil.benchStart("[BeautyTransformList] renderProcessBySwitchFbo");
+          paramList2 = localTransformFilter.RenderProcess(paramFrame.getTextureId(), paramFrame.width, paramFrame.height);
+          paramFrame.unlock();
+          BenchUtil.benchEnd("[BeautyTransformList] renderProcessBySwitchFbo");
+          paramFrame = paramList2;
+          break label375;
+          paramList = null;
+          break;
+          bool = false;
+          break label128;
+          j = 0;
+          break label156;
+        }
+        label578:
         i += 1;
       }
     }
-    return paramList;
+    label587:
+    return paramList2;
   }
   
   public void updateFaceFeature(List<List<PointF>> paramList)
@@ -472,6 +533,21 @@ public class BeautyTransformList
     this.malePercent = paramFloat;
   }
   
+  public void updatePreview(Object paramObject)
+  {
+    if ((paramObject instanceof PTDetectInfo))
+    {
+      paramObject = (PTDetectInfo)paramObject;
+      if (paramObject.aiAttr != null) {
+        this.faceAttr = ((PTFaceAttr)paramObject.aiAttr.getFaceAttr());
+      }
+    }
+    while (!(paramObject instanceof PTFaceAttr)) {
+      return;
+    }
+    this.faceAttr = ((PTFaceAttr)paramObject);
+  }
+  
   public void updateVideoSize(int paramInt1, int paramInt2, double paramDouble)
   {
     if (this.mVFaceEyeNose != null) {
@@ -487,7 +563,7 @@ public class BeautyTransformList
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.openapi.filter.BeautyTransformList
  * JD-Core Version:    0.7.0.1
  */

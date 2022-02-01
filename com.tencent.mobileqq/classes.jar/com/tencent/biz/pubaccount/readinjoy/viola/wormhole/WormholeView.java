@@ -9,7 +9,7 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.TextView;
-import srp;
+import tte;
 
 public class WormholeView
   extends FrameLayout
@@ -17,7 +17,7 @@ public class WormholeView
   private View jdField_a_of_type_AndroidViewView;
   private ViewGroup jdField_a_of_type_AndroidViewViewGroup;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private srp jdField_a_of_type_Srp;
+  private tte jdField_a_of_type_Tte;
   private boolean jdField_a_of_type_Boolean;
   
   public WormholeView(@NonNull Context paramContext)
@@ -40,8 +40,8 @@ public class WormholeView
     if (!this.jdField_a_of_type_Boolean)
     {
       this.jdField_a_of_type_Boolean = true;
-      if (this.jdField_a_of_type_Srp != null) {
-        this.jdField_a_of_type_Srp.a(this);
+      if (this.jdField_a_of_type_Tte != null) {
+        this.jdField_a_of_type_Tte.a(this);
       }
     }
   }
@@ -51,8 +51,8 @@ public class WormholeView
     if (this.jdField_a_of_type_Boolean)
     {
       this.jdField_a_of_type_Boolean = false;
-      if (this.jdField_a_of_type_Srp != null) {
-        this.jdField_a_of_type_Srp.b(this);
+      if (this.jdField_a_of_type_Tte != null) {
+        this.jdField_a_of_type_Tte.b(this);
       }
     }
   }
@@ -64,9 +64,9 @@ public class WormholeView
   
   public void a()
   {
-    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)findViewById(2131380289));
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131380291);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131380290));
+    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)findViewById(2131381277));
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131381279);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131381278));
   }
   
   public void b()
@@ -116,9 +116,9 @@ public class WormholeView
     f();
   }
   
-  public void setLifeListener(srp paramsrp)
+  public void setLifeListener(tte paramtte)
   {
-    this.jdField_a_of_type_Srp = paramsrp;
+    this.jdField_a_of_type_Tte = paramtte;
   }
   
   public void setOnErrorViewClickListener(View.OnClickListener paramOnClickListener)
@@ -131,7 +131,7 @@ public class WormholeView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.viola.wormhole.WormholeView
  * JD-Core Version:    0.7.0.1
  */

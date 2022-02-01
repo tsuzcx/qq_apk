@@ -1,17 +1,20 @@
-import com.tencent.biz.pubaccount.util.ShareUtils.ShareImageUtils.2;
+import android.content.Context;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.ProteusItemData;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
 
-public class tag
-  implements aznz
+class tag
+  implements tal
 {
-  public tag(ShareImageUtils.2 param2) {}
+  tag(szv paramszv) {}
   
-  public void a() {}
-  
-  public void b() {}
+  public void a(ViewBase paramViewBase, Context paramContext, ProteusItemData paramProteusItemData)
+  {
+    tax.a(paramProteusItemData.b, paramProteusItemData.a);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     tag
  * JD-Core Version:    0.7.0.1
  */

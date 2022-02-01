@@ -1,16 +1,21 @@
-public abstract interface aree
+class aree
+  implements argj<aren>
 {
-  public abstract long a(bavf parambavf, areb paramareb);
+  aree(ared paramared) {}
   
-  public abstract void a(long paramLong1, long paramLong2);
-  
-  public abstract void a(areb paramareb);
-  
-  public abstract void a(boolean paramBoolean, areb paramareb);
-  
-  public abstract byte[] a(byte[] paramArrayOfByte, long paramLong, areb paramareb);
-  
-  public abstract void b(areb paramareb);
+  public int a(aren paramaren, long paramLong)
+  {
+    if (paramaren == null) {}
+    do
+    {
+      return -1;
+      paramLong = paramaren.d() - paramLong;
+      if (paramLong == 0L) {
+        return 0;
+      }
+    } while (paramLong <= 0L);
+    return 1;
+  }
 }
 
 

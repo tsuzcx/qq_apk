@@ -2,7 +2,7 @@ package com.tencent.biz.pubaccount.readinjoy.video;
 
 import android.os.Handler;
 import com.tencent.biz.pubaccount.VideoInfo;
-import rdm;
+import ryx;
 
 class VideoFeedsRecommendFragment$CheckAccountFollowedRunnable
   implements Runnable
@@ -16,9 +16,9 @@ class VideoFeedsRecommendFragment$CheckAccountFollowedRunnable
   
   private boolean a(VideoInfo paramVideoInfo, boolean paramBoolean)
   {
-    if ((paramVideoInfo.j != null) && (paramVideoInfo.j.equals(this.a.j)) && (!paramVideoInfo.c) && (paramVideoInfo.o != paramBoolean))
+    if ((paramVideoInfo.j != null) && (paramVideoInfo.j.equals(this.a.j)) && (!paramVideoInfo.c) && (paramVideoInfo.q != paramBoolean))
     {
-      paramVideoInfo.o = paramBoolean;
+      paramVideoInfo.q = paramBoolean;
       return true;
     }
     return false;
@@ -28,7 +28,7 @@ class VideoFeedsRecommendFragment$CheckAccountFollowedRunnable
   {
     try
     {
-      boolean bool = rdm.a(VideoFeedsRecommendFragment.a(this.this$0), Long.valueOf(this.a.j).longValue());
+      boolean bool = ryx.a(VideoFeedsRecommendFragment.a(this.this$0), Long.valueOf(this.a.j).longValue());
       if (VideoFeedsRecommendFragment.a(this.this$0) == null) {
         return;
       }

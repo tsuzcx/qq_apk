@@ -1,15 +1,46 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.GesturePWDCreateActivity;
+import com.tencent.qapmsdk.base.listener.IMemoryCellingListener;
+import com.tencent.qapmsdk.memory.DumpMemInfoHandler;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.List;
+import org.jetbrains.annotations.NotNull;
 
 public class addj
-  implements View.OnClickListener
+  implements IMemoryCellingListener
 {
-  public addj(GesturePWDCreateActivity paramGesturePWDCreateActivity) {}
+  static void a(long paramLong) {}
   
-  public void onClick(View paramView)
+  public void onBeforeUploadJson()
   {
-    this.a.finish();
+    QLog.i("QAPM_QQ_Impl", 1, "Celling onBeforeUploadJson");
+  }
+  
+  public boolean onCanDump(long paramLong)
+  {
+    a(paramLong);
+    return false;
+  }
+  
+  public void onFinishDump(boolean paramBoolean, @NotNull String paramString1, @NotNull String paramString2) {}
+  
+  public void onHprofDumped(@NotNull String paramString) {}
+  
+  public void onLowMemory(long paramLong)
+  {
+    addc.a().a(paramLong);
+  }
+  
+  @NotNull
+  public List<String> onPrepareDump(@NotNull String paramString)
+  {
+    ArrayList localArrayList = new ArrayList();
+    paramString = DumpMemInfoHandler.generateHprof(paramString);
+    boolean bool = ((Boolean)paramString[0]).booleanValue();
+    if ((bool) && (paramString[1] != null)) {
+      localArrayList.add((String)paramString[1]);
+    }
+    QLog.i("QAPM_QQ_Impl", 1, "Celling onBeforeDump " + bool);
+    return localArrayList;
   }
 }
 

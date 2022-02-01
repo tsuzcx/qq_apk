@@ -1,20 +1,34 @@
-import java.util.Comparator;
-import java.util.Map.Entry;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.device.msg.data.MessageForDevShortVideo;
+import com.tencent.mobileqq.data.MessageForShortVideo;
 
-final class abvd
-  implements Comparator
+public final class abvd
+  implements Parcelable.Creator<MessageForShortVideo>
 {
-  public int compare(Object paramObject1, Object paramObject2)
+  public MessageForDevShortVideo a(Parcel paramParcel)
   {
-    int i = ((Integer)((Map.Entry)paramObject1).getValue()).intValue();
-    int j = ((Integer)((Map.Entry)paramObject2).getValue()).intValue();
-    if (i == j) {
-      return 0;
-    }
-    if (i < j) {
-      return 2;
-    }
-    return -1;
+    MessageForDevShortVideo localMessageForDevShortVideo = new MessageForDevShortVideo();
+    localMessageForDevShortVideo.uuid = paramParcel.readString();
+    localMessageForDevShortVideo.md5 = paramParcel.readString();
+    localMessageForDevShortVideo.videoFileName = paramParcel.readString();
+    localMessageForDevShortVideo.videoFileSize = paramParcel.readInt();
+    localMessageForDevShortVideo.videoFileFormat = paramParcel.readInt();
+    localMessageForDevShortVideo.videoFileTime = paramParcel.readInt();
+    localMessageForDevShortVideo.thumbWidth = paramParcel.readInt();
+    localMessageForDevShortVideo.thumbHeight = paramParcel.readInt();
+    localMessageForDevShortVideo.videoFileStatus = paramParcel.readInt();
+    localMessageForDevShortVideo.videoFileProgress = paramParcel.readInt();
+    localMessageForDevShortVideo.fileType = paramParcel.readInt();
+    localMessageForDevShortVideo.thumbMD5 = paramParcel.readString();
+    localMessageForDevShortVideo.fileSource = paramParcel.readString();
+    localMessageForDevShortVideo.lastModified = paramParcel.readLong();
+    return localMessageForDevShortVideo;
+  }
+  
+  public MessageForDevShortVideo[] a(int paramInt)
+  {
+    return new MessageForDevShortVideo[paramInt];
   }
 }
 

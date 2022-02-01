@@ -1,24 +1,29 @@
 package com.tencent.mobileqq.minigame.manager;
 
-import android.content.DialogInterface;
+import android.app.Activity;
 import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import bgpa;
+import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
+import com.tencent.mobileqq.mini.report.MiniProgramLpReportDC04239;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 final class GameCloseManager$1
-  implements DialogInterface.OnClickListener
+  implements View.OnClickListener
 {
-  GameCloseManager$1(DialogInterface.OnClickListener paramOnClickListener) {}
+  GameCloseManager$1(MiniAppInfo paramMiniAppInfo, bgpa parambgpa, DialogInterface.OnClickListener paramOnClickListener, Activity paramActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    paramDialogInterface.dismiss();
-    if (this.val$onIKnowOnClickListener != null) {
-      this.val$onIKnowOnClickListener.onClick(paramDialogInterface, paramInt);
-    }
+    GameCloseManager.access$000(this.val$appInfo, this.val$qqCustomDialog, 0, this.val$closeListener, this.val$gameActivity, true);
+    MiniProgramLpReportDC04239.reportAsync("minigame_popup", "icon", "click", this.val$appInfo.appId);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.minigame.manager.GameCloseManager.1
  * JD-Core Version:    0.7.0.1
  */

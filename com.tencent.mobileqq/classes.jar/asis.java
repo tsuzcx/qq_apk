@@ -1,21 +1,15 @@
-import NS_MINI_APP_MISC.MISC.StAppPlayingInfo;
-import NS_MINI_INTERFACE.INTERFACE.StApiAppInfo;
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.mini.sdk.MiniAppLauncher;
-import com.tencent.mobileqq.pb.PBStringField;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendEditFragment;
 
-class asis
-  implements View.OnClickListener
+public class asis
+  implements DialogInterface.OnClickListener
 {
-  asis(asir paramasir, MISC.StAppPlayingInfo paramStAppPlayingInfo) {}
+  public asis(ExtendFriendEditFragment paramExtendFriendEditFragment) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((this.jdField_a_of_type_NS_MINI_APP_MISCMISC$StAppPlayingInfo.appMetaInfo != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_NS_MINI_APP_MISCMISC$StAppPlayingInfo.appMetaInfo.appId.get())) && (paramView != null)) {
-      MiniAppLauncher.launchMiniAppById(paramView.getContext(), this.jdField_a_of_type_NS_MINI_APP_MISCMISC$StAppPlayingInfo.appMetaInfo.appId.get(), null, null, null, null, asir.a(this.jdField_a_of_type_Asir));
-    }
+    paramDialogInterface.dismiss();
   }
 }
 

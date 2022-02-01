@@ -1,38 +1,36 @@
-import android.text.TextUtils;
-import com.tencent.aladdin.config.handlers.AladdinConfigHandler;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Set;
+import android.app.Activity;
+import android.widget.RelativeLayout;
+import android.widget.RelativeLayout.LayoutParams;
+import com.tencent.mobileqq.mini.util.SoftKeyboardStateHelper.SoftKeyboardStateListener;
 
-public class osx
-  implements AladdinConfigHandler
+class osx
+  implements SoftKeyboardStateHelper.SoftKeyboardStateListener
 {
-  public boolean onReceiveConfig(int paramInt1, int paramInt2, String paramString)
+  osx(ost paramost, RelativeLayout.LayoutParams paramLayoutParams) {}
+  
+  public void onSoftKeyboardClosed()
   {
-    QLog.d("AdFeedsProteusBidConfigHandler", 1, "[onReceiveConfig] " + paramString);
-    paramString = osq.a(paramString);
-    Iterator localIterator = paramString.keySet().iterator();
-    while (localIterator.hasNext())
+    if (System.currentTimeMillis() - ost.a(this.jdField_a_of_type_Ost) > 500L)
     {
-      String str1 = (String)localIterator.next();
-      String str2 = (String)paramString.get(str1);
-      QLog.d("AdFeedsProteusBidConfigHandler", 2, "[onReceiveConfig] key=" + str1 + ", value=" + str2);
-      if (TextUtils.equals(str1, "commercialAd_feeds")) {
-        bkbq.a("ad_feeds_proteus_offline_bid", str2);
-      }
+      this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams.topMargin = afur.a(140.5F, ost.a(this.jdField_a_of_type_Ost).getResources());
+      ost.a(this.jdField_a_of_type_Ost).setLayoutParams(this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams);
+      ost.b(this.jdField_a_of_type_Ost, System.currentTimeMillis());
     }
-    return true;
   }
   
-  public void onWipeConfig(int paramInt)
+  public void onSoftKeyboardOpened(int paramInt)
   {
-    bkbq.a("ad_feeds_proteus_offline_bid", "0");
+    if (System.currentTimeMillis() - ost.a(this.jdField_a_of_type_Ost) > 500L)
+    {
+      this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams.topMargin = afur.a(40.0F, ost.a(this.jdField_a_of_type_Ost).getResources());
+      ost.a(this.jdField_a_of_type_Ost).setLayoutParams(this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams);
+      ost.b(this.jdField_a_of_type_Ost, System.currentTimeMillis());
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     osx
  * JD-Core Version:    0.7.0.1
  */

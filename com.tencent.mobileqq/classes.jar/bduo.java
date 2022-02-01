@@ -1,71 +1,39 @@
-import java.util.ArrayList;
-import java.util.Iterator;
-import mqq.manager.Manager;
+import android.os.Message;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class bduo<V>
-  implements Manager
+class bduo
+  extends bdzm
 {
-  private final ArrayList<bduq<V>> a = new ArrayList();
+  bduo(bdun parambdun) {}
   
-  public static <E> bdup<E> a(bdup<E> parambdup)
+  public void handleMessage(Message paramMessage)
   {
-    return new bdur(parambdup);
-  }
-  
-  public void a(String arg1, bdup<V> parambdup, Object paramObject)
-  {
-    if (parambdup != null)
+    int i = paramMessage.what;
+    bduk localbduk = (bduk)paramMessage.obj;
+    if ((i == 2002) || ((bdun.a(this.a).equals(localbduk.p)) && (localbduk.b == 1) && (i != 2002)))
     {
-      parambdup = new bduq(parambdup, paramObject, ???);
-      synchronized (this.a)
-      {
-        this.a.add(parambdup);
+      if ((localbduk.r == null) || (!localbduk.r.equals(bdun.b(this.a)))) {
         return;
       }
+      switch (i)
+      {
+      }
     }
-  }
-  
-  public void a(String paramString, V paramV)
-  {
-    if (paramString == null) {
-      return;
-    }
-    ArrayList localArrayList = new ArrayList();
     for (;;)
     {
-      int i;
-      synchronized (this.a)
-      {
-        i = this.a.size() - 1;
-        if (i >= 0)
-        {
-          bduq localbduq = (bduq)this.a.get(i);
-          if (paramString.equals(localbduq.jdField_a_of_type_JavaLangString))
-          {
-            this.a.remove(i);
-            localArrayList.add(localbduq);
-          }
-        }
-        else
-        {
-          paramString = localArrayList.iterator();
-          if (!paramString.hasNext()) {
-            break;
-          }
-          ??? = (bduq)paramString.next();
-          ((bduq)???).jdField_a_of_type_Bdup.a(paramV, ((bduq)???).jdField_a_of_type_JavaLangObject);
-        }
-      }
-      i -= 1;
-    }
-  }
-  
-  public void onDestroy()
-  {
-    synchronized (this.a)
-    {
-      this.a.clear();
+      super.handleMessage(paramMessage);
       return;
+      bdun.a(this.a);
+      continue;
+      if (bgmg.b(bdun.c(this.a)))
+      {
+        bdun.a(this.a).a().b(this);
+        bdun.b(this.a);
+      }
+      else
+      {
+        bdun.a(this.a);
+      }
     }
   }
 }

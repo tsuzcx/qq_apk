@@ -1,62 +1,47 @@
-import android.app.Activity;
-import android.widget.ImageView;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.widget.navbar.NavBarAIO;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Collections;
-import java.util.List;
+import android.hardware.camera2.CameraDevice;
+import android.hardware.camera2.CameraDevice.StateCallback;
+import android.support.annotation.NonNull;
+import com.tencent.mobileqq.shortvideo.camera2.Camera2Control;
+import java.util.concurrent.Semaphore;
 
-final class bcgh
-  implements bcgf
+public class bcgh
+  extends CameraDevice.StateCallback
 {
-  bcgh(NavBarAIO paramNavBarAIO, ImageView paramImageView1, ImageView paramImageView2, boolean paramBoolean, QQAppInterface paramQQAppInterface, String paramString, Activity paramActivity) {}
+  public bcgh(Camera2Control paramCamera2Control, long paramLong) {}
   
-  public void a(List<bcgk> paramList)
+  public void onDisconnected(@NonNull CameraDevice paramCameraDevice)
   {
-    if ((paramList == null) || (paramList.isEmpty()))
-    {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetNavbarNavBarAIO.setTitleIconLeft(0, 0);
-      this.jdField_a_of_type_AndroidWidgetImageView.setOnTouchListener(null);
-      this.b.setOnTouchListener(null);
-      return;
+    bcgu.a(2, "[Camera2]openCamera2 onDisconnected!");
+    Camera2Control.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoCamera2Camera2Control, false);
+    Camera2Control.b(this.jdField_a_of_type_ComTencentMobileqqShortvideoCamera2Camera2Control, false);
+    paramCameraDevice.close();
+    Camera2Control.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoCamera2Camera2Control, null);
+    Camera2Control.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoCamera2Camera2Control).release();
+    if (this.jdField_a_of_type_ComTencentMobileqqShortvideoCamera2Camera2Control.a != null) {
+      this.jdField_a_of_type_ComTencentMobileqqShortvideoCamera2Camera2Control.a.a(-105);
     }
-    if (paramList.size() > 1) {
-      Collections.sort(paramList, new bcgi(this));
+  }
+  
+  public void onError(@NonNull CameraDevice paramCameraDevice, int paramInt)
+  {
+    bcgu.a(2, "[Camera2]openCamera2 onError, error:" + paramInt);
+    Camera2Control.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoCamera2Camera2Control, false);
+    Camera2Control.b(this.jdField_a_of_type_ComTencentMobileqqShortvideoCamera2Camera2Control, false);
+    paramCameraDevice.close();
+    Camera2Control.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoCamera2Camera2Control, null);
+    Camera2Control.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoCamera2Camera2Control).release();
+    if (this.jdField_a_of_type_ComTencentMobileqqShortvideoCamera2Camera2Control.a != null) {
+      this.jdField_a_of_type_ComTencentMobileqqShortvideoCamera2Camera2Control.a.a(-102);
     }
-    autj localautj = bcgg.a((bcgk)paramList.get(0));
-    if (paramList.size() > 1)
-    {
-      paramList = bcgg.a((bcgk)paramList.get(1));
-      label99:
-      bcgj localbcgj = new bcgj(this);
-      if (localautj == null) {
-        break label203;
-      }
-      this.jdField_a_of_type_AndroidWidgetImageView.setTag(localautj);
-      this.jdField_a_of_type_AndroidWidgetImageView.setOnTouchListener(localbcgj);
-      label128:
-      if (paramList == null) {
-        break label214;
-      }
-      this.b.setTag(paramList);
-      this.b.setOnTouchListener(localbcgj);
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetNavbarNavBarAIO.setTitleIconLeftForMutualMark(localautj, paramList);
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.d("TroopHonor.utils", 2, "updateAIOTitleTroopHonorInteractiveIcon one:" + localautj + " two:" + paramList);
-      return;
-      paramList = null;
-      break label99;
-      label203:
-      this.jdField_a_of_type_AndroidWidgetImageView.setOnTouchListener(null);
-      break label128;
-      label214:
-      this.b.setOnTouchListener(null);
-    }
+  }
+  
+  public void onOpened(@NonNull CameraDevice paramCameraDevice)
+  {
+    bcgu.a(1, "[Camera2]openCamera2 onOpen, cost:" + (System.currentTimeMillis() - this.jdField_a_of_type_Long));
+    Camera2Control.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoCamera2Camera2Control, paramCameraDevice);
+    Camera2Control.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoCamera2Camera2Control, true);
+    Camera2Control.b(this.jdField_a_of_type_ComTencentMobileqqShortvideoCamera2Camera2Control, false);
+    Camera2Control.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoCamera2Camera2Control).release();
   }
 }
 

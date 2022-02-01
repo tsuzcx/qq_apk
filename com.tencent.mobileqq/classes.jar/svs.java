@@ -1,26 +1,41 @@
-import android.os.Build.VERSION;
-import android.view.View;
-import android.view.View.OnSystemUiVisibilityChangeListener;
-import android.view.Window;
+import java.net.URL;
 
-class svs
-  implements View.OnSystemUiVisibilityChangeListener
+public class svs
 {
-  svs(svp paramsvp) {}
+  private final int jdField_a_of_type_Int;
+  private String jdField_a_of_type_JavaLangString;
+  private final URL jdField_a_of_type_JavaNetURL;
+  private final boolean jdField_a_of_type_Boolean;
+  private final int jdField_b_of_type_Int;
+  private boolean jdField_b_of_type_Boolean;
+  private boolean c;
   
-  public void onSystemUiVisibilityChange(int paramInt)
+  public svs(int paramInt1, int paramInt2, URL paramURL, boolean paramBoolean)
   {
-    if (Build.VERSION.SDK_INT >= 19) {}
-    for (paramInt = 5894;; paramInt = 1799)
-    {
-      svl.a(this.a.a).getWindow().getDecorView().setSystemUiVisibility(paramInt);
-      return;
-    }
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_b_of_type_Int = paramInt2;
+    this.jdField_a_of_type_JavaNetURL = paramURL;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public void a(String paramString)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.jdField_b_of_type_Boolean = paramBoolean;
+  }
+  
+  public void b(boolean paramBoolean)
+  {
+    this.c = paramBoolean;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     svs
  * JD-Core Version:    0.7.0.1
  */

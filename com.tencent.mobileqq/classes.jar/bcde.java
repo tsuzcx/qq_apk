@@ -1,67 +1,94 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.BaseApplication;
-import java.util.Collections;
-import java.util.List;
+import NS_MOBILE_EXTRA.mobile_get_qzone_public_msg_rsp;
+import android.content.Intent;
+import android.os.Bundle;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
+import java.util.Map;
+import mqq.app.AppRuntime;
+import mqq.app.MSFServlet;
+import mqq.app.MobileQQ;
+import mqq.app.Packet;
 
 public class bcde
+  extends MSFServlet
 {
-  public static String a(List<Integer> paramList)
+  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
   {
-    int j = 0;
-    int k = paramList.size();
-    Collections.sort(paramList);
-    if (k == 1) {
-      return String.format(alud.a(2131706080), new Object[] { Integer.valueOf(((Integer)paramList.get(0)).intValue() + 1) });
-    }
-    int i = 0;
-    if (i < k - 1) {
-      if (((Integer)paramList.get(i)).intValue() + 1 == ((Integer)paramList.get(i + 1)).intValue()) {}
-    }
-    for (i = 0;; i = 1)
+    if (paramFromServiceMsg != null) {}
+    for (;;)
     {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("第");
-      if (i != 0) {
-        localStringBuilder.append(((Integer)paramList.get(0)).intValue() + 1).append("-").append(((Integer)paramList.get(k - 1)).intValue() + 1).append("段");
-      }
-      for (;;)
+      try
       {
-        return localStringBuilder.toString();
-        i += 1;
-        break;
-        while ((j < k) && (j < 3))
+        if (paramFromServiceMsg.getResultCode() == 1000)
         {
-          localStringBuilder.append(((Integer)paramList.get(j)).intValue() + 1);
-          if ((j + 1 < k) && (j + 1 < 3)) {
-            localStringBuilder.append("、");
+          paramFromServiceMsg = blrj.a(paramFromServiceMsg.getWupBuffer(), new int[1]);
+          if (paramFromServiceMsg != null)
+          {
+            if ((getAppRuntime() != null) && (getAppRuntime().getApplication() != null))
+            {
+              MobileQQ localMobileQQ = getAppRuntime().getApplication();
+              if ((paramFromServiceMsg.map_ext == null) || (!"1".equals(paramFromServiceMsg.map_ext.get("show_feeds")))) {
+                break label260;
+              }
+              bool = true;
+              if (paramFromServiceMsg.map_ext == null)
+              {
+                paramIntent = null;
+                blvu.a(localMobileQQ, bool, paramIntent);
+              }
+            }
+            else
+            {
+              paramIntent = new Bundle();
+              paramIntent.putSerializable("data", paramFromServiceMsg);
+              notifyObserver(null, 1004, true, paramIntent, ayev.class);
+              return;
+            }
+            paramIntent = (String)paramFromServiceMsg.map_ext.get("title_name");
+            continue;
           }
-          j += 1;
-        }
-        if (k > 3) {
-          localStringBuilder.append("等").append(k).append("段");
-        } else {
-          localStringBuilder.append("段");
+          if (QLog.isColorLevel()) {
+            QLog.d("QzonePublicMsgServlet", 2, "inform QzonePublicMsgServlet isSuccess false");
+          }
+          notifyObserver(null, 1004, false, new Bundle(), ayev.class);
+          return;
         }
       }
-    }
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface, boolean paramBoolean)
-  {
-    if (paramQQAppInterface == null) {
+      catch (Throwable paramIntent)
+      {
+        QLog.e("QzonePublicMsgServlet", 1, paramIntent + "onReceive error");
+        notifyObserver(null, 1004, false, new Bundle(), ayev.class);
+        return;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("QzonePublicMsgServlet", 2, "inform QzonePublicMsgServlet resultcode fail.");
+      }
+      notifyObserver(null, 1004, false, new Bundle(), ayev.class);
+      if (paramFromServiceMsg != null) {}
       return;
+      label260:
+      boolean bool = false;
     }
-    paramQQAppInterface.getApp().getSharedPreferences("homework_troop_config" + paramQQAppInterface.c(), 0).edit().putBoolean("ReciteGuideTipShow", paramBoolean).commit();
   }
   
-  public static boolean a(QQAppInterface paramQQAppInterface)
+  public void onSend(Intent paramIntent, Packet paramPacket)
   {
-    if (paramQQAppInterface == null) {
-      return false;
+    long l = paramIntent.getLongExtra("key_uin", 0L);
+    paramIntent = paramIntent.getStringExtra("has_photo");
+    Object localObject = new HashMap();
+    ((Map)localObject).put("has_photo", paramIntent);
+    blrj localblrj = new blrj(l, (Map)localObject);
+    localObject = localblrj.encode();
+    paramIntent = (Intent)localObject;
+    if (localObject == null)
+    {
+      QLog.e("NotifyQZoneServer", 1, "onSend request encode result is null.cmd=" + localblrj.uniKey());
+      paramIntent = new byte[4];
     }
-    return paramQQAppInterface.getApp().getSharedPreferences("homework_troop_config" + paramQQAppInterface.c(), 0).getBoolean("ReciteGuideTipShow", false);
+    paramPacket.setTimeout(30000L);
+    paramPacket.setSSOCommand("SQQzoneSvc." + localblrj.uniKey());
+    paramPacket.putSendData(paramIntent);
   }
 }
 

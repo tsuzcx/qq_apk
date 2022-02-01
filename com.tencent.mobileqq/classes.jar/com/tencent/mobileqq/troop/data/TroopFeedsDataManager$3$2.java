@@ -2,9 +2,9 @@ package com.tencent.mobileqq.troop.data;
 
 import android.os.Handler;
 import android.os.Message;
-import bbrl;
-import bbru;
-import bbrw;
+import berw;
+import besf;
+import besh;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 import java.util.LinkedHashMap;
@@ -14,11 +14,11 @@ import org.json.JSONObject;
 public class TroopFeedsDataManager$3$2
   implements Runnable
 {
-  public TroopFeedsDataManager$3$2(bbrw parambbrw, JSONObject paramJSONObject) {}
+  public TroopFeedsDataManager$3$2(besh parambesh, JSONObject paramJSONObject) {}
   
   public void run()
   {
-    Object localObject1 = bbrl.a(this.jdField_a_of_type_OrgJsonJSONObject, "" + this.jdField_a_of_type_Bbrw.a.jdField_a_of_type_JavaLangLong, this.jdField_a_of_type_Bbrw.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+    Object localObject1 = berw.a(this.jdField_a_of_type_OrgJsonJSONObject, "" + this.jdField_a_of_type_Besh.a.jdField_a_of_type_JavaLangLong, this.jdField_a_of_type_Besh.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
     List localList = (List)localObject1[0];
     localObject1 = (List)localObject1[1];
     if ((localList == null) || (localObject1 == null)) {
@@ -29,7 +29,7 @@ public class TroopFeedsDataManager$3$2
     while (i >= 0)
     {
       String str = (String)localList.get(i);
-      if (!this.jdField_a_of_type_Bbrw.a.jdField_a_of_type_JavaUtilLinkedHashMap.containsKey(str)) {
+      if (!this.jdField_a_of_type_Besh.a.jdField_a_of_type_JavaUtilLinkedHashMap.containsKey(str)) {
         localList.remove(str);
       }
       i -= 1;
@@ -37,15 +37,15 @@ public class TroopFeedsDataManager$3$2
     if (QLog.isColorLevel()) {
       QLog.d("TroopFeedsDataManager.troop.notification_center.auto_pull_down", 2, "cgi callback ids, beforeFilter:" + (String)localObject2 + "|afterFilter ids:" + localList.toString());
     }
-    this.jdField_a_of_type_Bbrw.a.jdField_a_of_type_JavaUtilLinkedHashMap.clear();
-    localObject2 = this.jdField_a_of_type_Bbrw.a.jdField_a_of_type_AndroidOsHandler.obtainMessage(4);
-    ((Message)localObject2).obj = this.jdField_a_of_type_Bbrw.a.a(localList, (List)localObject1);
-    this.jdField_a_of_type_Bbrw.a.jdField_a_of_type_AndroidOsHandler.sendMessage((Message)localObject2);
+    this.jdField_a_of_type_Besh.a.jdField_a_of_type_JavaUtilLinkedHashMap.clear();
+    localObject2 = this.jdField_a_of_type_Besh.a.jdField_a_of_type_AndroidOsHandler.obtainMessage(4);
+    ((Message)localObject2).obj = this.jdField_a_of_type_Besh.a.a(localList, (List)localObject1);
+    this.jdField_a_of_type_Besh.a.jdField_a_of_type_AndroidOsHandler.sendMessage((Message)localObject2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.troop.data.TroopFeedsDataManager.3.2
  * JD-Core Version:    0.7.0.1
  */

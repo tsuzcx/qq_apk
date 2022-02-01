@@ -1,46 +1,50 @@
+import com.tencent.common.app.AppInterface;
+import mqq.manager.Manager;
+
 public class bdwr
-  extends bdwi
+  implements Manager
 {
-  public static final bdwr a;
-  private int a;
+  public bdvu a;
+  public bdvu b;
   
-  static
+  public bdvu a(bguy parambguy)
   {
-    jdField_a_of_type_Bdwr = new bdwr();
-  }
-  
-  public void a(bdts parambdts)
-  {
-    int i = this.jdField_a_of_type_Int;
-    this.jdField_a_of_type_Int = (i + 1);
-    if (i < 2) {
-      download(null, 0, parambdts, false);
+    if (this.b == null) {}
+    try
+    {
+      parambguy = new bgut(parambguy, 32);
+      parambguy.a();
+      this.b = new bdwv(parambguy, true);
+      return this.b;
     }
+    finally {}
   }
   
-  public long getBID()
+  public bdvu a(AppInterface paramAppInterface, int paramInt)
   {
-    return 3L;
+    if (paramInt == 0)
+    {
+      if (this.a == null) {}
+      try
+      {
+        if (this.a == null) {
+          this.a = new bdwv(paramAppInterface.getHttpCommunicatort(), false);
+        }
+        return this.a;
+      }
+      finally {}
+    }
+    return null;
   }
   
-  protected String getRootDir()
+  public void onDestroy()
   {
-    return "tintconfig";
-  }
-  
-  public String getScid(int paramInt)
-  {
-    return getScidPrefix();
-  }
-  
-  protected String getScidPrefix()
-  {
-    return "theme_mapping_config_android";
-  }
-  
-  protected boolean isZip_KeepZip()
-  {
-    return false;
+    if (this.a != null) {
+      ((bdwv)this.a).a();
+    }
+    if (this.b != null) {
+      ((bdwv)this.b).a();
+    }
   }
 }
 

@@ -1,23 +1,20 @@
-import com.tencent.biz.pubaccount.readinjoy.ugc.coverselect.CoverSelectTabFragment;
-import com.tencent.biz.pubaccount.readinjoy.view.widget.ViewPagerCompat;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.struct.DislikeInfo;
+import java.util.ArrayList;
 
-public class qqy
-  implements skj
+class qqy
+  implements bkln
 {
-  public qqy(CoverSelectTabFragment paramCoverSelectTabFragment) {}
+  qqy(qqt paramqqt) {}
   
-  public void a(sko paramsko)
+  public void a(View paramView, int paramInt, ArrayList<DislikeInfo> paramArrayList, Object paramObject)
   {
-    CoverSelectTabFragment.a(this.a).setCurrentItem(paramsko.a());
+    qqt.a(this.a, (pxk)this.a.a, paramInt, paramArrayList, paramObject);
   }
-  
-  public void b(sko paramsko) {}
-  
-  public void c(sko paramsko) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     qqy
  * JD-Core Version:    0.7.0.1
  */

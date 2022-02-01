@@ -1,20 +1,27 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import java.lang.ref.WeakReference;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.activity.phone.NewStyleCountryActivity;
 
 public class akdo
-  implements DialogInterface.OnClickListener
+  implements Animation.AnimationListener
 {
-  public akdo(ShortVideoPlayActivity paramShortVideoPlayActivity) {}
+  public akdo(NewStyleCountryActivity paramNewStyleCountryActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if ((this.a.a != null) && (this.a.a.get() != null)) {
-      ((TVK_IMediaPlayer)this.a.a.get()).pauseDownload();
+    if (!this.a.isFinishing())
+    {
+      this.a.jdField_a_of_type_Akdu.show();
+      this.a.b.setAnimation(null);
+      this.a.jdField_a_of_type_AndroidViewView.setVisibility(8);
+      NewStyleCountryActivity.a(this.a).setVisibility(8);
     }
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

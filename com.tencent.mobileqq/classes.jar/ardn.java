@@ -1,6 +1,22 @@
-public abstract interface ardn
+import android.text.Editable;
+import android.text.TextUtils;
+import android.text.TextWatcher;
+
+class ardn
+  implements TextWatcher
 {
-  public abstract void a();
+  ardn(ardm paramardm) {}
+  
+  public void afterTextChanged(Editable paramEditable) {}
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
+  {
+    if (!TextUtils.isEmpty(paramCharSequence)) {
+      this.a.a();
+    }
+  }
 }
 
 

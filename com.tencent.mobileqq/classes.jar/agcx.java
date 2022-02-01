@@ -1,16 +1,35 @@
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.customviews.MessageProgressTextView;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory.Options;
+import com.tencent.mobileqq.dinifly.ImageAssetDelegate;
+import com.tencent.mobileqq.dinifly.LottieImageAsset;
+import com.tencent.qphone.base.util.QLog;
 
-public class agcx
-  extends aeqi
+class agcx
+  implements ImageAssetDelegate
 {
-  public RelativeLayout a;
-  public SessionInfo a;
-  public MessageProgressTextView a;
-  public boolean a;
-  public RelativeLayout b;
-  public RelativeLayout c;
+  agcx(agcu paramagcu) {}
+  
+  public Bitmap fetchBitmap(LottieImageAsset paramLottieImageAsset)
+  {
+    BitmapFactory.Options localOptions = new BitmapFactory.Options();
+    localOptions.inScaled = true;
+    localOptions.inDensity = 320;
+    try
+    {
+      paramLottieImageAsset = bgmo.a(agcu.a(this.a) + "images/" + paramLottieImageAsset.getFileName(), localOptions);
+      return paramLottieImageAsset;
+    }
+    catch (Exception paramLottieImageAsset)
+    {
+      QLog.e("LottieAnimDirector", 1, "Delegate decode bitmap error");
+      return null;
+    }
+    catch (OutOfMemoryError paramLottieImageAsset)
+    {
+      QLog.e("LottieAnimDirector", 1, "Delegate decode bitmap OOM");
+    }
+    return null;
+  }
 }
 
 

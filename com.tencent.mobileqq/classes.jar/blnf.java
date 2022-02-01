@@ -1,15 +1,30 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import dov.com.qq.im.aeeditor.module.edit.AEEditorVideoEditFragment;
+import android.os.Handler.Callback;
+import android.os.Message;
+import mqq.observer.WtloginObserver;
+import oicq.wlogin_sdk.request.WUserSigInfo;
+import oicq.wlogin_sdk.tools.ErrMsg;
 
-public class blnf
-  implements DialogInterface.OnClickListener
+public final class blnf
+  extends WtloginObserver
 {
-  public blnf(AEEditorVideoEditFragment paramAEEditorVideoEditFragment) {}
+  public blnf(Handler.Callback paramCallback) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void OnException(String paramString, int paramInt)
   {
-    this.a.a().a(this.a.getActivity());
+    paramString = Message.obtain();
+    paramString.what = 1001;
+    if (this.a != null) {
+      this.a.handleMessage(paramString);
+    }
+  }
+  
+  public void OnGetStWithoutPasswd(String paramString, long paramLong1, long paramLong2, int paramInt1, long paramLong3, WUserSigInfo paramWUserSigInfo, int paramInt2, ErrMsg paramErrMsg)
+  {
+    paramString = Message.obtain();
+    paramString.what = 1000;
+    if (this.a != null) {
+      this.a.handleMessage(paramString);
+    }
   }
 }
 

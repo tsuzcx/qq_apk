@@ -1,23 +1,18 @@
-import android.content.Intent;
-import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
-import com.tencent.mobileqq.activity.photo.MediaScanner.OnMediaInfoScannerListener;
-import com.tencent.mobileqq.activity.photo.PhotoUtils;
-import com.tencent.mobileqq.activity.photo.album.NewPhotoListActivity;
-import java.util.ArrayList;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.contact.addcontact.SearchBaseActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class aisz
-  implements MediaScanner.OnMediaInfoScannerListener
+public class aisz
+  implements View.OnClickListener
 {
-  aisz(aisy paramaisy, Intent paramIntent, ArrayList paramArrayList) {}
+  public aisz(SearchBaseActivity paramSearchBaseActivity) {}
   
-  public void onMediaInfoChanged(LocalMediaInfo paramLocalMediaInfo, boolean paramBoolean)
+  public void onClick(View paramView)
   {
-    ((NewPhotoListActivity)this.jdField_a_of_type_Aisy.mActivity).cancleProgressDailog();
-    if (bnfr.a(this.jdField_a_of_type_Aisy.mActivity, paramLocalMediaInfo))
-    {
-      this.jdField_a_of_type_AndroidContentIntent.putExtra("media_info", paramLocalMediaInfo);
-      PhotoUtils.a(this.jdField_a_of_type_Aisy.mActivity, this.jdField_a_of_type_AndroidContentIntent, this.jdField_a_of_type_JavaUtilArrayList, 2, true);
-    }
+    this.a.setResult(1);
+    this.a.finish();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

@@ -1,8 +1,11 @@
-public class befn
+import android.content.DialogInterface;
+
+final class befn
+  extends bgmc
 {
-  public static befo a(bejh parambejh)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return new befo(parambejh);
+    paramDialogInterface.dismiss();
   }
 }
 

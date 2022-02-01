@@ -1,31 +1,16 @@
-import android.view.View;
-import com.tencent.mobileqq.scribble.ScribbleResMgr;
-import java.lang.ref.WeakReference;
-
-public class aygs
+public abstract interface aygs
 {
-  int jdField_a_of_type_Int;
-  WeakReference<View> jdField_a_of_type_JavaLangRefWeakReference;
-  int b;
-  public WeakReference<aygt> b;
+  public abstract void a();
   
-  public aygs(ScribbleResMgr paramScribbleResMgr, int paramInt1, int paramInt2, View paramView, aygt paramaygt)
-  {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramView);
-    this.jdField_b_of_type_JavaLangRefWeakReference = new WeakReference(paramaygt);
-    this.jdField_b_of_type_Int = paramInt1;
-    this.jdField_a_of_type_Int = paramInt2;
-  }
+  public abstract void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4);
   
-  public View a()
-  {
-    return (View)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-  }
+  public abstract void a(String paramString);
   
-  public aygt a()
-  {
-    return (aygt)this.jdField_b_of_type_JavaLangRefWeakReference.get();
-  }
+  public abstract void a(boolean paramBoolean);
+  
+  public abstract void b(boolean paramBoolean);
+  
+  public abstract void c(boolean paramBoolean);
 }
 
 

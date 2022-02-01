@@ -1,24 +1,20 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.av.VideoController;
-import com.tencent.av.ui.MultiVideoCtrlLayerUIBase;
+import android.app.Activity;
+import com.tencent.qphone.base.util.QLog;
 
 class mig
-  implements View.OnClickListener
+  implements zuj
 {
-  mig(mie parammie) {}
+  mig(mif parammif, Activity paramActivity, long paramLong) {}
   
-  public void onClick(View paramView)
+  public void a()
   {
-    if (this.a.a.a != null) {
-      this.a.a.a.j();
-    }
-    azqs.b(null, "CliOper", "", "", "0X8005DF3", "0X8005DF3", 0, 0, "", "", "", "");
+    this.jdField_a_of_type_Mif.b(this.jdField_a_of_type_AndroidAppActivity);
+    QLog.d("QavSharpnessSVIPHelper", 2, "launchQQPayFunction time end: " + (System.currentTimeMillis() - this.jdField_a_of_type_Long));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     mig
  * JD-Core Version:    0.7.0.1
  */

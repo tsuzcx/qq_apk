@@ -1,25 +1,41 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.text.TextUtils;
 import android.view.View;
-import android.widget.FrameLayout.LayoutParams;
-import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelGalleryActivity;
+import com.tencent.mobileqq.msgbackup.fragment.MsgBackupPCConfirmFragment;
 
 public class awpl
-  implements ValueAnimator.AnimatorUpdateListener
+  implements biea
 {
-  public awpl(PersonalityLabelGalleryActivity paramPersonalityLabelGalleryActivity, ValueAnimator paramValueAnimator, View paramView) {}
+  public awpl(MsgBackupPCConfirmFragment paramMsgBackupPCConfirmFragment) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void onItemSelect(View paramView, int paramInt)
   {
-    int i = ((Integer)this.jdField_a_of_type_AndroidAnimationValueAnimator.getAnimatedValue()).intValue();
-    paramValueAnimator = (FrameLayout.LayoutParams)this.jdField_a_of_type_AndroidViewView.getLayoutParams();
-    paramValueAnimator.height = i;
-    this.jdField_a_of_type_AndroidViewView.setLayoutParams(paramValueAnimator);
+    if ((paramInt == 1) || (paramInt == 2))
+    {
+      awqu.a("MsgBackupMsgBackupPCConfirmFragment", "click cancel btn bizType = %d, pcHandler %b", new Object[] { Integer.valueOf(this.a.b), Boolean.valueOf(awnr.c) });
+      awql.a().c();
+      if (!TextUtils.isEmpty(this.a.a)) {
+        break label93;
+      }
+      this.a.a(this.a.getActivity());
+      if (this.a.b != 2) {
+        break label104;
+      }
+      awqs.a("0X800A282");
+    }
+    label93:
+    label104:
+    while (!awnr.c)
+    {
+      return;
+      this.a.onBackEvent();
+      break;
+    }
+    awqs.a("0X800A266", 4);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     awpl
  * JD-Core Version:    0.7.0.1
  */

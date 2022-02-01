@@ -1,258 +1,132 @@
-import android.os.Bundle;
-import android.text.TextUtils;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.os.Handler;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ExtensionInfo;
-import com.tencent.mobileqq.data.Friends;
-import com.tencent.mobileqq.graytip.MessageForUniteGrayTip;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.gamecenter.data.FeedsItemData.TopCardInfo;
+import com.tencent.mobileqq.gamecenter.fragment.QQGamePubAccountFragment;
+import com.tencent.mobileqq.gamecenter.fragment.QQGamePubAccountFragment.1.1;
+import com.tencent.mobileqq.gamecenter.view.QQGamePubViewpager;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Iterator;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+import java.util.List;
+import java.util.Map;
+import org.json.JSONObject;
 
 public class ausm
+  extends bgzm
 {
-  public static int a(long paramLong1, long paramLong2)
-  {
-    if ((paramLong1 > 0L) && (paramLong2 >= 0L)) {
-      return auss.a(paramLong1, paramLong2);
-    }
-    return 0;
-  }
+  public ausm(QQGamePubAccountFragment paramQQGamePubAccountFragment) {}
   
-  public static int a(aers paramaers)
+  protected void onGetGameCenterPubAccountFeeds(boolean paramBoolean, Object paramObject)
   {
-    long l1 = paramaers.a();
-    long l2 = paramaers.b();
-    if (l1 == 17L)
+    super.onGetGameCenterPubAccountFeeds(paramBoolean, paramObject);
+    Object localObject2;
+    long l;
+    Object localObject1;
+    String str1;
+    if ((paramBoolean) && (paramObject != null))
     {
-      if (paramaers.a()) {
-        return 999;
-      }
-      return 0;
-    }
-    return a(l1, l2);
-  }
-  
-  public static ArrayList<auso> a(QQAppInterface paramQQAppInterface, String paramString, StringBuilder paramStringBuilder)
-  {
-    Object localObject = Pattern.compile("#(name|icon)_(\\d+)").matcher(paramStringBuilder);
-    ArrayList localArrayList = new ArrayList();
-    auso localauso;
-    int i;
-    if (((Matcher)localObject).find())
-    {
-      localauso = new auso();
-      localauso.jdField_a_of_type_JavaLangString = ((Matcher)localObject).group();
-      localauso.jdField_b_of_type_Int = ((Matcher)localObject).start();
-      localauso.jdField_b_of_type_JavaLangString = ((Matcher)localObject).group(2);
-      if (localauso.a()) {}
-      for (i = 2;; i = 1)
+      localObject2 = (Object[])paramObject;
+      l = ((Long)localObject2[0]).longValue();
+      localObject1 = (String)localObject2[5];
+      str1 = (String)localObject2[6];
+      paramBoolean = ((Boolean)localObject2[1]).booleanValue();
+      paramObject = (List)localObject2[2];
+      JSONObject localJSONObject = (JSONObject)localObject2[3];
+      if (localJSONObject != null)
       {
-        localauso.jdField_a_of_type_Int = i;
-        localArrayList.add(localauso);
-        break;
+        auuc.a = localJSONObject.optInt("video_count");
+        auuc.b = localJSONObject.optInt("video_time") * 1000;
+        auuc.c = localJSONObject.optInt("layer_duration") * 1000;
+        SharedPreferences localSharedPreferences = BaseApplicationImpl.getApplication().getSharedPreferences("game_center_sp", 0);
+        String str2 = "sp_key_game_center_feeds_float_condition" + QQGamePubAccountFragment.a(this.a).getCurrentAccountUin();
+        localSharedPreferences.edit().putString(str2, localJSONObject.toString()).commit();
       }
-    }
-    localObject = Pattern.compile("\\(([^\\(]+?)\\)\\[([^\\)]+?)\\]").matcher(paramStringBuilder);
-    while (((Matcher)localObject).find())
-    {
-      localauso = new auso();
-      localauso.jdField_a_of_type_Int = 3;
-      localauso.jdField_a_of_type_JavaLangString = ((Matcher)localObject).group();
-      localauso.jdField_b_of_type_Int = ((Matcher)localObject).start();
-      localauso.jdField_c_of_type_JavaLangString = ((Matcher)localObject).group(1);
-      localauso.jdField_d_of_type_JavaLangString = ((Matcher)localObject).group(2);
-      localArrayList.add(localauso);
-    }
-    localObject = Pattern.compile("#image_url\\{([^\\)]+?)\\}").matcher(paramStringBuilder);
-    while (((Matcher)localObject).find())
-    {
-      localauso = new auso();
-      localauso.jdField_a_of_type_Int = 4;
-      localauso.jdField_a_of_type_JavaLangString = ((Matcher)localObject).group();
-      localauso.jdField_b_of_type_Int = ((Matcher)localObject).start();
-      localauso.jdField_d_of_type_JavaLangString = ((Matcher)localObject).group(1);
-      localauso.jdField_c_of_type_JavaLangString = localauso.jdField_a_of_type_JavaLangString;
-      localArrayList.add(localauso);
-    }
-    Collections.sort(localArrayList, new ausn());
-    localObject = localArrayList.iterator();
-    while (((Iterator)localObject).hasNext())
-    {
-      localauso = (auso)((Iterator)localObject).next();
-      if (!TextUtils.isEmpty(localauso.jdField_a_of_type_JavaLangString))
-      {
-        i = paramStringBuilder.indexOf(localauso.jdField_a_of_type_JavaLangString);
-        int j = localauso.jdField_a_of_type_JavaLangString.length() + i;
-        if ((i >= 0) && (j <= paramStringBuilder.length()))
+      localObject2 = (FeedsItemData.TopCardInfo)localObject2[4];
+      if (paramBoolean) {
+        if (paramObject.size() == 0)
         {
-          switch (localauso.jdField_a_of_type_Int)
-          {
-          }
-          for (;;)
-          {
-            if (localauso.jdField_c_of_type_JavaLangString == null) {
-              localauso.jdField_c_of_type_JavaLangString = localauso.jdField_a_of_type_JavaLangString;
-            }
-            localauso.jdField_c_of_type_Int = i;
-            localauso.jdField_d_of_type_Int = (localauso.jdField_c_of_type_JavaLangString.length() + i);
-            paramStringBuilder.replace(i, j, localauso.jdField_c_of_type_JavaLangString);
-            break;
-            localauso.jdField_c_of_type_JavaLangString = aush.a(paramQQAppInterface, localauso.jdField_b_of_type_JavaLangString);
-            continue;
-            localauso.jdField_c_of_type_JavaLangString = aush.a(paramQQAppInterface, paramString, localauso.jdField_b_of_type_JavaLangString);
-          }
+          aceh.a(ampj.a(), "769", "205353", str1, "76901", "1", "160", new String[] { localObject1, "", "20" });
+          QQGamePubAccountFragment.a(this.a).a(false, false);
         }
-      }
-    }
-    return localArrayList;
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface, Friends paramFriends, ExtensionInfo paramExtensionInfo, aers paramaers, amlj paramamlj)
-  {
-    int i = 2097153;
-    aeru localaeru = paramaers.a();
-    if (QLog.isColorLevel()) {
-      QLog.i("MutualMarkGrayTipsHelper", 2, "checkAndInsertGrayTips grayInfo:" + localaeru + " onlinePush:" + paramamlj.a);
-    }
-    int j;
-    if ((localaeru != null) && (localaeru.a()))
-    {
-      j = 0;
-      paramamlj = paramaers.jdField_b_of_type_JavaLangString + "_" + paramaers.jdField_a_of_type_Int + "_" + paramamlj.b + "_" + localaeru.jdField_a_of_type_Long;
-      switch (paramaers.jdField_a_of_type_Int)
-      {
-      default: 
-        i = 2097155;
       }
     }
     for (;;)
     {
-      a(paramQQAppInterface, paramFriends, paramExtensionInfo, paramaers, localaeru.jdField_a_of_type_JavaLangString, -5040, i, j, paramamlj);
+      QQGamePubAccountFragment.a(this.a, false);
       return;
-      j = a(paramaers);
-      continue;
-      i = 2097154;
-      continue;
-      if ((paramaers.jdField_a_of_type_Aerv == null) || (paramaers.jdField_b_of_type_Aerv == null)) {
+      localObject1 = (List)QQGamePubAccountFragment.a(this.a).get(Long.valueOf(l));
+      if ((localObject1 != null) && (((List)localObject1).size() > 0))
+      {
+        ((List)localObject1).addAll(paramObject);
+        QQGamePubAccountFragment.a(this.a).put(Long.valueOf(l), localObject1);
+      }
+      for (;;)
+      {
+        i = QQGamePubAccountFragment.a(this.a).getCurrentItem();
+        if ((QQGamePubAccountFragment.a(this.a) == null) || (i >= QQGamePubAccountFragment.a(this.a).size()) || (((MessageRecord)QQGamePubAccountFragment.a(this.a).get(i)).uniseq != l)) {
+          break;
+        }
+        QQGamePubAccountFragment.a(this.a).c();
+        QQGamePubAccountFragment.a(this.a).a(paramObject);
         break;
+        QQGamePubAccountFragment.a(this.a).put(Long.valueOf(l), paramObject);
       }
-      if (paramaers.jdField_a_of_type_Aerv.a() > paramaers.jdField_b_of_type_Aerv.a())
-      {
-        i = 2097154;
-      }
-      else
-      {
-        if (paramaers.jdField_a_of_type_Aerv.a() >= paramaers.jdField_b_of_type_Aerv.a()) {
-          break;
-        }
-        j = a(paramaers);
-      }
-    }
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface, Friends paramFriends, ExtensionInfo paramExtensionInfo, aers paramaers, String paramString1, int paramInt1, int paramInt2, int paramInt3, String paramString2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("MutualMarkGrayTipsHelper", 2, "insertGrayTips friendUin:" + paramaers.jdField_b_of_type_JavaLangString + " grayType:" + paramInt1 + " grayID:" + paramInt2 + " subType:" + paramInt3 + " grayTipKey:" + paramString2 + " _grayTipTemplate:" + paramString1);
-    }
-    if (TextUtils.isEmpty(paramString1)) {
-      return;
-    }
-    Object localObject = paramString1;
-    if (paramString1.contains("#nick")) {
-      localObject = paramString1.replaceAll("#nick", bdgc.m(paramQQAppInterface, paramaers.jdField_b_of_type_JavaLangString));
-    }
-    localObject = new StringBuilder((String)localObject);
-    autd.a(paramQQAppInterface, paramFriends, paramExtensionInfo, paramaers, (StringBuilder)localObject);
-    paramString1 = a(paramQQAppInterface, paramaers.jdField_b_of_type_JavaLangString, (StringBuilder)localObject);
-    localObject = ((StringBuilder)localObject).toString();
-    aspy localaspy = new aspy(paramaers.jdField_b_of_type_JavaLangString, paramaers.jdField_b_of_type_JavaLangString, (String)localObject, 0, paramInt1, paramInt2, ayzl.a());
-    MessageForUniteGrayTip localMessageForUniteGrayTip = new MessageForUniteGrayTip();
-    localMessageForUniteGrayTip.hasRead = 0;
-    localMessageForUniteGrayTip.subType = paramInt3;
-    localMessageForUniteGrayTip.initGrayTipMsg(paramQQAppInterface, localaspy);
-    localMessageForUniteGrayTip.tipParam.jdField_d_of_type_JavaLangString = paramString2;
-    if (paramInt3 == 998) {
-      localMessageForUniteGrayTip.caidanAnimUrl = paramaers.a();
-    }
-    for (;;)
-    {
-      a(paramQQAppInterface, (String)localObject, localaspy, paramString1);
-      localMessageForUniteGrayTip.saveExtInfoToExtStr("mutualmark_id", auss.a(paramaers.a(), paramaers.b()));
-      autd.a(paramQQAppInterface, paramFriends, paramExtensionInfo, paramaers, (String)localObject, localaspy, paramString1);
-      aspz.a(paramQQAppInterface, localMessageForUniteGrayTip);
-      ausg.a(paramQQAppInterface, localMessageForUniteGrayTip, localMessageForUniteGrayTip.tipParam.jdField_b_of_type_Int);
-      return;
-      if (paramInt3 == 999)
-      {
-        localMessageForUniteGrayTip.caidanAnimUrl = paramaers.b();
-        localMessageForUniteGrayTip.caidanAnimUrlMd5 = paramaers.c();
-      }
-    }
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface, String paramString, aspy paramaspy, ArrayList<auso> paramArrayList)
-  {
-    if ((paramArrayList == null) || (paramArrayList.isEmpty())) {}
-    for (;;)
-    {
-      return;
-      paramQQAppInterface = paramArrayList.iterator();
-      while (paramQQAppInterface.hasNext())
-      {
-        paramString = (auso)paramQQAppInterface.next();
-        if (QLog.isColorLevel()) {
-          QLog.d("MutualMarkGrayTipsHelper", 2, "handleHighlightInfo item=" + paramString);
-        }
-        switch (paramString.jdField_a_of_type_Int)
+      QQGamePubAccountFragment.b(this.a).put(Long.valueOf(l), localObject2);
+      int i = QQGamePubAccountFragment.a(this.a).getCurrentItem();
+      if (paramObject.size() == 0) {
+        if (localObject2 == null)
         {
-        default: 
-          break;
-        case 1: 
-          if (!TextUtils.isEmpty(paramString.jdField_c_of_type_JavaLangString))
-          {
-            paramArrayList = new Bundle();
-            paramArrayList.putInt("key_action", 11);
-            paramArrayList.putString("key_action_DATA", paramString.jdField_c_of_type_JavaLangString);
-            paramaspy.a(paramString.jdField_c_of_type_Int, paramString.jdField_d_of_type_Int, paramArrayList);
-          }
-          break;
-        case 2: 
-          if (!TextUtils.isEmpty(paramString.jdField_c_of_type_JavaLangString))
-          {
-            paramArrayList = new Bundle();
-            paramArrayList.putString("image_resource", paramString.jdField_c_of_type_JavaLangString);
-            paramaspy.a(paramString.jdField_c_of_type_Int, paramString.jdField_d_of_type_Int, paramArrayList);
-          }
-          break;
-        case 3: 
-          if (!TextUtils.isEmpty(paramString.jdField_c_of_type_JavaLangString))
-          {
-            paramArrayList = new Bundle();
-            paramArrayList.putInt("key_action", 1);
-            paramArrayList.putString("key_action_DATA", paramString.jdField_d_of_type_JavaLangString);
-            paramaspy.a(paramString.jdField_c_of_type_Int, paramString.jdField_d_of_type_Int, paramArrayList);
-          }
-          break;
-        case 4: 
-          if (!TextUtils.isEmpty(paramString.jdField_c_of_type_JavaLangString))
-          {
-            paramArrayList = new Bundle();
-            paramArrayList.putString("image_resource", paramString.jdField_c_of_type_JavaLangString);
-            paramaspy.a(paramString.jdField_c_of_type_Int, paramString.jdField_d_of_type_Int, paramArrayList);
-          }
+          this.a.a(true);
+          label495:
+          QQGamePubAccountFragment.a(this.a).a(false, false);
+          QQGamePubAccountFragment.c(this.a).put(Long.valueOf(l), auud.b);
+          aceh.a(ampj.a(), "769", "205353", str1, "76901", "1", "160", new String[] { localObject1, "", "20" });
+        }
+      }
+      for (;;)
+      {
+        QQGamePubAccountFragment.a(this.a).put(Long.valueOf(l), paramObject);
+        if ((QQGamePubAccountFragment.a(this.a) == null) || (i >= QQGamePubAccountFragment.a(this.a).size()) || (((MessageRecord)QQGamePubAccountFragment.a(this.a).get(i)).uniseq != l)) {
           break;
         }
+        QQGamePubAccountFragment.a(this.a).a(paramObject, (FeedsItemData.TopCardInfo)localObject2);
+        ThreadManagerV2.getUIHandlerV2().post(new QQGamePubAccountFragment.1.1(this, (FeedsItemData.TopCardInfo)localObject2));
+        break;
+        this.a.a(false);
+        break label495;
+        QQGamePubAccountFragment.c(this.a).put(Long.valueOf(l), auud.a);
+        QQGamePubAccountFragment.a(this.a).a(false, false);
+      }
+      if (paramObject != null)
+      {
+        localObject1 = (Object[])paramObject;
+        l = ((Long)localObject1[0]).longValue();
+        paramObject = (String)localObject1[5];
+        localObject1 = (String)localObject1[6];
+        aceh.a(ampj.a(), "769", "205353", (String)localObject1, "76901", "1", "160", new String[] { paramObject, "", "20" });
+        QLog.e("QQGamePubAccountFragment", 1, "[onGetGameCenterPubAccountFeeds] get feeds fail.");
+        i = QQGamePubAccountFragment.a(this.a).getCurrentItem();
+        if ((i < QQGamePubAccountFragment.a(this.a).size()) && (((MessageRecord)QQGamePubAccountFragment.a(this.a).get(i)).uniseq == l))
+        {
+          QQGamePubAccountFragment.a(this.a).a(false, false);
+          QQGamePubAccountFragment.c(this.a).put(Long.valueOf(l), auud.b);
+          this.a.a(false);
+        }
+      }
+      if (this.a.getActivity() != null) {
+        QQToast.a(this.a.getActivity(), anni.a(2131709071), 0).a();
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     ausm
  * JD-Core Version:    0.7.0.1
  */

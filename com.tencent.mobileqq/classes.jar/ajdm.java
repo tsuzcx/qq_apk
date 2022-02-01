@@ -1,18 +1,31 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.qwallet.redpacket.draw.DrawRedpacketPannelPreviewFragment;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import com.tencent.mobileqq.widget.ShaderAnimLayout;
+import tencent.mobileim.structmsg.structmsg.StructMsg;
 
 public class ajdm
-  implements DialogInterface.OnClickListener
 {
-  public ajdm(DrawRedpacketPannelPreviewFragment paramDrawRedpacketPannelPreviewFragment) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    if ((DrawRedpacketPannelPreviewFragment.a(this.a) != null) && (DrawRedpacketPannelPreviewFragment.a(this.a).isShowing())) {
-      DrawRedpacketPannelPreviewFragment.a(this.a).dismiss();
-    }
-  }
+  public int a;
+  public long a;
+  public Button a;
+  public ImageView a;
+  public LinearLayout a;
+  public TextView a;
+  public ShaderAnimLayout a;
+  public String a;
+  public structmsg.StructMsg a;
+  public int b;
+  public long b;
+  public ImageView b;
+  public LinearLayout b;
+  public TextView b;
+  public String b;
+  public long c;
+  public TextView c;
+  public String c = "";
+  public TextView d;
 }
 
 

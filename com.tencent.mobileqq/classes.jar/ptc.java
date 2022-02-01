@@ -1,28 +1,35 @@
-import android.content.res.Resources;
-import android.text.SpannableString;
-import android.widget.TextView;
-import com.tencent.biz.pubaccount.readinjoy.proteus.view.impl.NativeAwesomeCommentView;
-import com.tencent.image.URLDrawable.DownloadListener;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import com.tencent.biz.pubaccount.readinjoy.gifvideo.base.video.VideoView;
+import com.tencent.qphone.base.util.QLog;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class ptc
-  implements URLDrawable.DownloadListener
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public ptc(NativeAwesomeCommentView paramNativeAwesomeCommentView, SpannableString paramSpannableString) {}
+  public ptc(VideoView paramVideoView) {}
   
-  public void onFileDownloadFailed(int paramInt)
+  public void onGlobalLayout()
   {
-    ywx localywx = new ywx(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeAwesomeCommentView.getResources().getDrawable(2130842372));
-    this.jdField_a_of_type_AndroidTextSpannableString.setSpan(localywx, 0, 1, 17);
-    NativeAwesomeCommentView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeAwesomeCommentView).setText(this.jdField_a_of_type_AndroidTextSpannableString);
+    if ((VideoView.access$400(this.a) == VideoView.PLAYMODE_AUTO) && (!this.a.needInterceptGlobalLayoutChanged))
+    {
+      if ((this.a.isShown()) && (VideoView.access$500(this.a).get() != 3))
+      {
+        VideoView.access$500(this.a).set(3);
+        QLog.d("gifvideo.VideoView", 1, "show to play");
+        this.a.startPlay();
+      }
+      if ((!this.a.isShown()) && (VideoView.access$500(this.a).get() != 5))
+      {
+        VideoView.access$500(this.a).set(5);
+        QLog.d("gifvideo.VideoView", 1, "unshow to stop");
+        this.a.stop();
+      }
+    }
   }
-  
-  public void onFileDownloadStarted() {}
-  
-  public void onFileDownloadSucceed(long paramLong) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     ptc
  * JD-Core Version:    0.7.0.1
  */

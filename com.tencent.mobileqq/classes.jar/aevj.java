@@ -1,8 +1,19 @@
-public abstract interface aevj
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.PublicAccountListActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
+public class aevj
+  implements View.OnClickListener
 {
-  public abstract void a();
+  public aevj(PublicAccountListActivity paramPublicAccountListActivity) {}
   
-  public abstract void b();
+  public void onClick(View paramView)
+  {
+    this.a.a.cancel();
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

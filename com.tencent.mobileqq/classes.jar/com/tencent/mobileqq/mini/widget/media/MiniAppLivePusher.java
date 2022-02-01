@@ -2,7 +2,6 @@ package com.tencent.mobileqq.mini.widget.media;
 
 import android.app.Activity;
 import android.content.Context;
-import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.support.annotation.NonNull;
@@ -12,8 +11,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.FrameLayout.LayoutParams;
-import bdnn;
-import bjue;
+import bgsp;
+import bmio;
 import com.tencent.component.network.downloader.Downloader.DownloadMode;
 import com.tencent.mobileqq.mini.appbrand.utils.MiniAppFileManager;
 import com.tencent.mobileqq.mini.reuse.MiniappDownloadUtil;
@@ -24,8 +23,6 @@ import com.tencent.mobileqq.mini.webview.JsRuntime;
 import com.tencent.mobileqq.mini.widget.media.live.TXLivePusherJSAdapter;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
-import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicInteger;
 import org.json.JSONException;
@@ -52,7 +49,6 @@ public class MiniAppLivePusher
   private TXLivePusherJSAdapter livePusherJSAdapter;
   private boolean needToStopDownloadBGM;
   private FrameLayout pusherContainer;
-  private ArrayList<String> pusherKeyList;
   private View rootView;
   public JsRuntime serviceWebview;
   private Runnable stopDumpRunnable = new MiniAppLivePusher.1(this);
@@ -72,109 +68,20 @@ public class MiniAppLivePusher
     setUpView(paramContext);
   }
   
-  private Bundle adaptJsonToBundle(JSONObject paramJSONObject)
-  {
-    Bundle localBundle = new Bundle();
-    if (paramJSONObject == null) {
-      return localBundle;
-    }
-    if (this.pusherKeyList == null)
-    {
-      QLog.e("MiniAppLivePusher", 1, "adaptJsonToBundle - pusherKeyList is null");
-      return localBundle;
-    }
-    Iterator localIterator = this.pusherKeyList.iterator();
-    while (localIterator.hasNext())
-    {
-      String str = (String)localIterator.next();
-      if ((str.equalsIgnoreCase("pushUrl")) || (str.equalsIgnoreCase("orientation")) || (str.equalsIgnoreCase("backgroundImage")) || (str.equalsIgnoreCase("audioQuality")) || (str.equalsIgnoreCase("watermarkImage")) || (str.equalsIgnoreCase("audioVolumeType")) || (str.equalsIgnoreCase("localMirror")) || (str.equalsIgnoreCase("devicePosition"))) {
-        try
-        {
-          localBundle.putString(str, paramJSONObject.getString(str));
-        }
-        catch (JSONException localJSONException1) {}
-      } else if ((localJSONException1.equalsIgnoreCase("mode")) || (localJSONException1.equalsIgnoreCase("focusMode")) || (localJSONException1.equalsIgnoreCase("beauty")) || (localJSONException1.equalsIgnoreCase("whiteness")) || (localJSONException1.equalsIgnoreCase("aspect")) || (localJSONException1.equalsIgnoreCase("videoWidth")) || (localJSONException1.equalsIgnoreCase("videoHeight")) || (localJSONException1.equalsIgnoreCase("audioReverbType")) || (localJSONException1.equalsIgnoreCase("minBitrate")) || (localJSONException1.equalsIgnoreCase("maxBitrate"))) {
-        try
-        {
-          localBundle.putInt(localJSONException1, paramJSONObject.getInt(localJSONException1));
-        }
-        catch (JSONException localJSONException2) {}
-      } else if ((localJSONException2.equalsIgnoreCase("hide")) || (localJSONException2.equalsIgnoreCase("autopush")) || (localJSONException2.equalsIgnoreCase("muted")) || (localJSONException2.equalsIgnoreCase("enableCamera")) || (localJSONException2.equalsIgnoreCase("enableMic")) || (localJSONException2.equalsIgnoreCase("enableAGC")) || (localJSONException2.equalsIgnoreCase("enableANS")) || (localJSONException2.equalsIgnoreCase("backgroundMute")) || (localJSONException2.equalsIgnoreCase("zoom")) || (localJSONException2.equalsIgnoreCase("needEvent")) || (localJSONException2.equalsIgnoreCase("needBGMEvent")) || (localJSONException2.equalsIgnoreCase("debug")) || (localJSONException2.equalsIgnoreCase("mirror")) || (localJSONException2.equalsIgnoreCase("remoteMirror")) || (localJSONException2.equalsIgnoreCase("enableEarMonitor"))) {
-        try
-        {
-          localBundle.putBoolean(localJSONException2, paramJSONObject.getBoolean(localJSONException2));
-        }
-        catch (JSONException localJSONException3) {}
-      } else if ((localJSONException3.equalsIgnoreCase("watermarkLeft")) || (localJSONException3.equalsIgnoreCase("watermarkTop")) || (localJSONException3.equalsIgnoreCase("watermarkWidth"))) {
-        try
-        {
-          localBundle.putDouble(localJSONException3, paramJSONObject.getDouble(localJSONException3));
-        }
-        catch (JSONException localJSONException4) {}
-      }
-    }
-    return localBundle;
-  }
-  
   private void initPusher(JSONObject paramJSONObject)
   {
     if ((QLog.isColorLevel()) && (paramJSONObject != null)) {
       QLog.d("MiniAppLivePusher", 1, "initLivePusher params = " + paramJSONObject.toString());
     }
-    initPusherKeyList();
     this.livePusherJSAdapter = new TXLivePusherJSAdapter(getContext());
-    this.livePusherJSAdapter.initLivePusher(this.tXCloudVideoView, adaptJsonToBundle(paramJSONObject));
+    this.livePusherJSAdapter.initLivePusher(this.tXCloudVideoView, paramJSONObject);
     this.livePusherJSAdapter.setBGMNotifyListener(new MiniAppLivePusher.2(this));
     this.livePusherJSAdapter.setPushListener(new MiniAppLivePusher.3(this));
   }
   
-  private void initPusherKeyList()
-  {
-    if (this.pusherKeyList == null)
-    {
-      this.pusherKeyList = new ArrayList();
-      this.pusherKeyList.add("pushUrl");
-      this.pusherKeyList.add("mode");
-      this.pusherKeyList.add("hide");
-      this.pusherKeyList.add("autopush");
-      this.pusherKeyList.add("muted");
-      this.pusherKeyList.add("enableCamera");
-      this.pusherKeyList.add("enableMic");
-      this.pusherKeyList.add("enableAGC");
-      this.pusherKeyList.add("enableANS");
-      this.pusherKeyList.add("audioVolumeType");
-      this.pusherKeyList.add("audioReverbType");
-      this.pusherKeyList.add("devicePosition");
-      this.pusherKeyList.add("focusMode");
-      this.pusherKeyList.add("orientation");
-      this.pusherKeyList.add("beauty");
-      this.pusherKeyList.add("whiteness");
-      this.pusherKeyList.add("aspect");
-      this.pusherKeyList.add("videoWidth");
-      this.pusherKeyList.add("videoHeight");
-      this.pusherKeyList.add("minBitrate");
-      this.pusherKeyList.add("maxBitrate");
-      this.pusherKeyList.add("audioQuality");
-      this.pusherKeyList.add("backgroundImage");
-      this.pusherKeyList.add("backgroundMute");
-      this.pusherKeyList.add("zoom");
-      this.pusherKeyList.add("needEvent");
-      this.pusherKeyList.add("needBGMEvent");
-      this.pusherKeyList.add("watermarkImage");
-      this.pusherKeyList.add("watermarkLeft");
-      this.pusherKeyList.add("watermarkTop");
-      this.pusherKeyList.add("watermarkWidth");
-      this.pusherKeyList.add("debug");
-      this.pusherKeyList.add("mirror");
-      this.pusherKeyList.add("remoteMirror");
-      this.pusherKeyList.add("localMirror");
-      this.pusherKeyList.add("enableEarMonitor");
-    }
-  }
-  
   private void initPusherView()
   {
-    this.tXCloudVideoView = bjue.a("com.tencent.rtmp.ui.TXCloudVideoView", bjue.a(new Class[] { Context.class }), new Object[] { getContext() });
+    this.tXCloudVideoView = bmio.a("com.tencent.rtmp.ui.TXCloudVideoView", bmio.a(new Class[] { Context.class }), new Object[] { getContext() });
     if (this.tXCloudVideoView == null)
     {
       QLog.e("MiniAppLivePusher", 1, "tXCloudVideoView is null?! ");
@@ -194,28 +101,28 @@ public class MiniAppLivePusher
   private static void saveJpeg(android.graphics.Bitmap paramBitmap, java.io.File paramFile)
   {
     // Byte code:
-    //   0: new 391	java/io/BufferedOutputStream
+    //   0: new 243	java/io/BufferedOutputStream
     //   3: dup
-    //   4: new 393	java/io/FileOutputStream
+    //   4: new 245	java/io/FileOutputStream
     //   7: dup
     //   8: aload_1
-    //   9: invokespecial 396	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
-    //   12: invokespecial 399	java/io/BufferedOutputStream:<init>	(Ljava/io/OutputStream;)V
+    //   9: invokespecial 248	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
+    //   12: invokespecial 251	java/io/BufferedOutputStream:<init>	(Ljava/io/OutputStream;)V
     //   15: astore_1
     //   16: aload_0
-    //   17: getstatic 405	android/graphics/Bitmap$CompressFormat:JPEG	Landroid/graphics/Bitmap$CompressFormat;
+    //   17: getstatic 257	android/graphics/Bitmap$CompressFormat:JPEG	Landroid/graphics/Bitmap$CompressFormat;
     //   20: bipush 100
     //   22: bipush 100
-    //   24: invokestatic 411	java/lang/Math:min	(II)I
+    //   24: invokestatic 263	java/lang/Math:min	(II)I
     //   27: aload_1
-    //   28: invokevirtual 417	android/graphics/Bitmap:compress	(Landroid/graphics/Bitmap$CompressFormat;ILjava/io/OutputStream;)Z
+    //   28: invokevirtual 269	android/graphics/Bitmap:compress	(Landroid/graphics/Bitmap$CompressFormat;ILjava/io/OutputStream;)Z
     //   31: pop
     //   32: aload_1
-    //   33: invokevirtual 420	java/io/BufferedOutputStream:flush	()V
+    //   33: invokevirtual 272	java/io/BufferedOutputStream:flush	()V
     //   36: aload_1
     //   37: ifnull +7 -> 44
     //   40: aload_1
-    //   41: invokevirtual 423	java/io/BufferedOutputStream:close	()V
+    //   41: invokevirtual 275	java/io/BufferedOutputStream:close	()V
     //   44: return
     //   45: astore_0
     //   46: aconst_null
@@ -223,7 +130,7 @@ public class MiniAppLivePusher
     //   48: aload_1
     //   49: ifnull +7 -> 56
     //   52: aload_1
-    //   53: invokevirtual 423	java/io/BufferedOutputStream:close	()V
+    //   53: invokevirtual 275	java/io/BufferedOutputStream:close	()V
     //   56: aload_0
     //   57: athrow
     //   58: astore_0
@@ -252,8 +159,8 @@ public class MiniAppLivePusher
     this.hasSetUp = true;
     setTag("MiniAppLivePusher");
     this.context = paramContext;
-    this.rootView = LayoutInflater.from(paramContext).inflate(2131559307, null);
-    this.pusherContainer = ((FrameLayout)this.rootView.findViewById(2131372514));
+    this.rootView = LayoutInflater.from(paramContext).inflate(2131559396, null);
+    this.pusherContainer = ((FrameLayout)this.rootView.findViewById(2131373124));
     addView(this.rootView);
   }
   
@@ -426,7 +333,7 @@ public class MiniAppLivePusher
       paramString = new JSONObject();
       try
       {
-        if (!bdnn.a(this.tempAudioFilePath))
+        if (!bgsp.a(this.tempAudioFilePath))
         {
           paramString.put("tempFilePath", this.tempAudioFilePath);
           this.tempAudioFilePath = null;
@@ -480,13 +387,13 @@ public class MiniAppLivePusher
       QLog.d("MiniAppLivePusher", 2, "updateLivePusherSetting params = " + paramJSONObject.toString());
     }
     if (this.livePusherJSAdapter != null) {
-      this.livePusherJSAdapter.updateLivePusher(adaptJsonToBundle(paramJSONObject));
+      this.livePusherJSAdapter.updateLivePusher(paramJSONObject);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.widget.media.MiniAppLivePusher
  * JD-Core Version:    0.7.0.1
  */

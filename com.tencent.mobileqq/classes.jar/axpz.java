@@ -1,56 +1,68 @@
-import android.content.Context;
-import android.hardware.SensorManager;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import com.tencent.mobileqq.nearby.now.view.widget.StartLiveTopicLabelListView;
+import com.tencent.mobileqq.nearby.now.view.widget.TopicViewItem;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.List;
 
 public class axpz
+  extends BaseAdapter
 {
-  private SensorManager jdField_a_of_type_AndroidHardwareSensorManager;
-  private axqb jdField_a_of_type_Axqb;
-  private axqc jdField_a_of_type_Axqc;
-  private boolean jdField_a_of_type_Boolean;
+  public axpz(StartLiveTopicLabelListView paramStartLiveTopicLabelListView) {}
   
-  public static axpz a()
+  public int getCount()
   {
-    return axqd.a();
-  }
-  
-  public int a(Context paramContext, axqc paramaxqc)
-  {
-    QLog.d("MicroMsg.LightSensor", 1, "SensorShower start");
-    if (this.jdField_a_of_type_Boolean)
-    {
-      QLog.d("MicroMsg.LightSensor", 1, "[SensorShower.start] light sensor has started");
-      return 2;
-    }
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_AndroidHardwareSensorManager = ((SensorManager)paramContext.getApplicationContext().getSystemService("sensor"));
-    paramContext = this.jdField_a_of_type_AndroidHardwareSensorManager.getDefaultSensor(5);
-    if (paramContext != null)
-    {
-      this.jdField_a_of_type_Axqb = new axqb(this, null);
-      this.jdField_a_of_type_AndroidHardwareSensorManager.registerListener(this.jdField_a_of_type_Axqb, paramContext, 3);
-      this.jdField_a_of_type_Axqc = paramaxqc;
+    if ((StartLiveTopicLabelListView.a(this.a) == null) || (StartLiveTopicLabelListView.a(this.a).size() == 0)) {
       return 0;
     }
-    QLog.e("MicroMsg.LightSensor", 1, "[SensorShower.start] System do not have lightSensor");
-    return 1;
+    return StartLiveTopicLabelListView.a(this.a).size();
   }
   
-  public void a()
+  public Object getItem(int paramInt)
   {
-    QLog.d("MicroMsg.LightSensor", 1, "sensorshower stop");
-    if ((!this.jdField_a_of_type_Boolean) || (this.jdField_a_of_type_AndroidHardwareSensorManager == null))
+    return null;
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return 0L;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    Object localObject;
+    if (paramView == null)
     {
-      QLog.d("MicroMsg.LightSensor", 1, "sensorshower stop mHasStarted is false or mSensorShower is null");
-      return;
+      paramView = new axqc(this.a, null);
+      localObject = new TopicViewItem(StartLiveTopicLabelListView.a(this.a));
+      ((View)localObject).setTag(paramView);
+      paramView.a = ((String)StartLiveTopicLabelListView.a(this.a).get(paramInt));
+      if (!anni.a(2131713042).equals(paramView.a)) {
+        break label162;
+      }
+      ((View)localObject).setBackgroundResource(StartLiveTopicLabelListView.a(this.a));
+      ((TopicViewItem)localObject).setTextColor(StartLiveTopicLabelListView.b(this.a));
     }
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_AndroidHardwareSensorManager.unregisterListener(this.jdField_a_of_type_Axqb);
+    for (;;)
+    {
+      ((View)localObject).setOnClickListener(new axqa(this));
+      ((TopicViewItem)localObject).setText(paramView.a);
+      EventCollector.getInstance().onListGetView(paramInt, (View)localObject, paramViewGroup, getItemId(paramInt));
+      return localObject;
+      axqc localaxqc = (axqc)paramView.getTag();
+      localObject = paramView;
+      paramView = localaxqc;
+      break;
+      label162:
+      ((View)localObject).setBackgroundResource(StartLiveTopicLabelListView.c(this.a));
+      ((TopicViewItem)localObject).setTextColor(StartLiveTopicLabelListView.d(this.a));
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     axpz
  * JD-Core Version:    0.7.0.1
  */

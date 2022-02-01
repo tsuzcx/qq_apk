@@ -1,63 +1,81 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.activity.ChatSettingForTroop;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.troopinfo.TroopInfoData;
+import android.app.Activity;
+import android.content.Intent;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.ad.tangram.statistics.AdReporterForAnalysis;
+import com.tencent.gdtad.aditem.GdtHandler;
+import com.tencent.gdtad.aditem.GdtHandler.Options;
+import com.tencent.gdtad.api.interstitial.GdtInterstitialFragment;
+import com.tencent.gdtad.api.interstitial.GdtInterstitialParams;
+import org.json.JSONObject;
 
-public class acqi
-  implements CompoundButton.OnCheckedChangeListener
+class acqi
+  implements acqj
 {
-  public acqi(ChatSettingForTroop paramChatSettingForTroop) {}
-  
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  private int a(int paramInt)
   {
-    if (((Boolean)paramCompoundButton.getTag()).booleanValue()) {
-      paramCompoundButton.setTag(Boolean.FALSE);
+    if (paramInt == 0) {
+      return 1;
     }
-    label20:
-    int i;
-    do
+    if (paramInt == 1) {
+      return 0;
+    }
+    if (paramInt == 2) {
+      return 8;
+    }
+    return -2147483648;
+  }
+  
+  public boolean a(acpp paramacpp, String paramString, String... paramVarArgs)
+  {
+    Object localObject = null;
+    if (paramacpp != null) {}
+    GdtHandler.Options localOptions;
+    for (Activity localActivity = paramacpp.a();; localActivity = null)
     {
-      do
+      localOptions = new GdtHandler.Options();
+      boolean bool = GdtHandler.a(localOptions, paramVarArgs[0]);
+      if ((paramacpp != null) && (localActivity != null) && (bool)) {
+        break;
+      }
+      acqy.d("GdtInterstitialJsCallHandler", "handleJsCallRequest error");
+      return true;
+    }
+    for (;;)
+    {
+      try
       {
-        break label20;
-        do
+        paramVarArgs = new JSONObject(paramVarArgs[0]);
+        acqy.b("GdtInterstitialJsCallHandler", paramVarArgs.toString());
+        int i = a(paramVarArgs.getJSONObject("options").optInt("orientation"));
+        paramVarArgs = paramacpp.a().getIntent();
+        if (TextUtils.isEmpty(paramVarArgs.getStringExtra("big_brother_ref_source_key")))
         {
-          return;
-        } while (this.a.jdField_a_of_type_ComTencentMobileqqDataTroopInfo == null);
-        i = this.a.app.b(this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin);
-      } while (i == -1);
-      if (!paramBoolean) {
-        break;
+          paramVarArgs = paramVarArgs.getStringExtra("big_brother_source_key");
+          localOptions.jdField_a_of_type_AndroidOsBundle = new Bundle();
+          localOptions.jdField_a_of_type_AndroidOsBundle.putString("big_brother_ref_source_key", paramVarArgs);
+          acqy.b("GdtInterstitialJsCallHandler", String.format("handleJsCallRequest Source.KEY_REF_ID:%s", new Object[] { paramVarArgs }));
+          paramVarArgs = new GdtInterstitialParams();
+          paramVarArgs.jdField_a_of_type_ComTencentGdtadAditemGdtHandler$Options = localOptions;
+          paramVarArgs.jdField_a_of_type_Int = i;
+          paramVarArgs.jdField_a_of_type_Boolean = true;
+          i = GdtInterstitialFragment.a(localActivity, paramVarArgs);
+          paramacpp.callJs(paramString, null);
+          acrl.a(localActivity, paramVarArgs, i);
+          paramString = localObject;
+          if (paramacpp != null) {
+            paramString = paramacpp.a();
+          }
+          AdReporterForAnalysis.reportForJSBridgeInvoked(localActivity, true, "showInterstitial", paramString, localOptions.jdField_a_of_type_ComTencentGdtadAditemGdtAd);
+          return true;
+        }
       }
-    } while (i != 1);
-    ChatSettingForTroop.a(this.a, 4);
-    label74:
-    if (ChatSettingForTroop.a(this.a) != null) {
-      ChatSettingForTroop.d(this.a);
-    }
-    QQAppInterface localQQAppInterface = this.a.app;
-    if (paramBoolean)
-    {
-      paramCompoundButton = "msg_open";
-      label107:
-      azqs.b(localQQAppInterface, "dc00899", "Grp_msg", "", "Grp_data", paramCompoundButton, 0, 0, this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin, "", "", "");
-      if (!paramBoolean) {
-        break label209;
+      catch (Throwable paramacpp)
+      {
+        acqy.d("GdtInterstitialJsCallHandler", "handleJsCallRequest error", paramacpp);
+        return true;
       }
-    }
-    label209:
-    for (paramCompoundButton = "msg_open";; paramCompoundButton = "msg_close")
-    {
-      bdes.a("Grp_msg", "grpData_admin", paramCompoundButton, 0, 0, new String[] { this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin, bdes.a(this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData) });
-      return;
-      if (i == 1) {
-        break;
-      }
-      ChatSettingForTroop.a(this.a, 1);
-      break label74;
-      paramCompoundButton = "msg_close";
-      break label107;
+      paramVarArgs = paramVarArgs.getStringExtra("big_brother_ref_source_key");
     }
   }
 }

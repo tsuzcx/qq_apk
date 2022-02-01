@@ -25,14 +25,14 @@ final class l
     for (;;)
     {
       this.a = SystemClock.elapsedRealtime();
-      synchronized (k.l())
+      synchronized (k.n())
       {
         try
         {
           if (QLog.isColorLevel()) {
             QLog.d("MSF.C.StatReport", 2, "try wait to report");
           }
-          k.l().wait(5000L);
+          k.n().wait(5000L);
         }
         catch (InterruptedException localInterruptedException)
         {
@@ -45,14 +45,14 @@ final class l
         if (this.b - this.a <= 6000L) {
           break label241;
         }
-        ??? = k.m().entrySet().iterator();
+        ??? = k.o().entrySet().iterator();
         for (;;)
         {
           if (((Iterator)???).hasNext()) {
             try
             {
               Map.Entry localEntry = (Map.Entry)((Iterator)???).next();
-              if ((localEntry != null) && (this.b - ((Long)localEntry.getKey()).longValue() > k.n())) {
+              if ((localEntry != null) && (this.b - ((Long)localEntry.getKey()).longValue() > k.p())) {
                 ((Iterator)???).remove();
               }
             }
@@ -63,7 +63,7 @@ final class l
           }
         }
       }
-      k.m().put(Long.valueOf(this.a), Long.valueOf(this.b));
+      k.o().put(Long.valueOf(this.a), Long.valueOf(this.b));
       k.b(true);
       if (QLog.isColorLevel())
       {

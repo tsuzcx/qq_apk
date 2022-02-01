@@ -6,8 +6,8 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.RecyclerView.LayoutParams;
 import android.util.AttributeSet;
-import bewr;
-import bews;
+import bidp;
+import bidq;
 import com.tencent.mobileqq.R.styleable;
 import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.qphone.base.util.QLog;
@@ -19,8 +19,8 @@ public class DatePickerView
 {
   protected Context a;
   private TypedArray a;
-  protected bewr a;
-  protected bews a;
+  protected bidp a;
+  protected bidq a;
   
   public DatePickerView(Context paramContext)
   {
@@ -45,10 +45,10 @@ public class DatePickerView
   
   public void a(int paramInt1, int paramInt2, ArrayList<MessageRecord> paramArrayList)
   {
-    if (this.jdField_a_of_type_Bews != null)
+    if (this.jdField_a_of_type_Bidq != null)
     {
-      this.jdField_a_of_type_Bews.a(paramInt1, paramInt2, paramArrayList);
-      this.jdField_a_of_type_Bews.notifyDataSetChanged();
+      this.jdField_a_of_type_Bidq.a(paramInt1, paramInt2, paramArrayList);
+      this.jdField_a_of_type_Bidq.notifyDataSetChanged();
     }
     if (QLog.isColorLevel())
     {
@@ -71,20 +71,20 @@ public class DatePickerView
     setFadingEdgeLength(0);
   }
   
-  public void setController(bewr parambewr)
+  public void setController(bidp parambidp)
   {
-    this.jdField_a_of_type_Bewr = parambewr;
-    if (this.jdField_a_of_type_Bews == null) {
-      this.jdField_a_of_type_Bews = new bews(getContext(), parambewr, this.jdField_a_of_type_AndroidContentResTypedArray);
+    this.jdField_a_of_type_Bidp = parambidp;
+    if (this.jdField_a_of_type_Bidq == null) {
+      this.jdField_a_of_type_Bidq = new bidq(getContext(), parambidp, this.jdField_a_of_type_AndroidContentResTypedArray);
     }
-    this.jdField_a_of_type_Bews.notifyDataSetChanged();
-    setAdapter(this.jdField_a_of_type_Bews);
-    scrollToPosition(this.jdField_a_of_type_Bews.getItemCount() - 1);
+    this.jdField_a_of_type_Bidq.notifyDataSetChanged();
+    setAdapter(this.jdField_a_of_type_Bidq);
+    scrollToPosition(this.jdField_a_of_type_Bidq.getItemCount() - 1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.widget.datepicker.DatePickerView
  * JD-Core Version:    0.7.0.1
  */

@@ -1,318 +1,345 @@
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
+import android.content.res.Resources;
+import android.net.Uri;
+import android.os.Bundle;
 import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.extendfriend.ExtendFriendResourceDownloader.4;
+import android.util.DisplayMetrics;
+import android.view.ViewGroup;
+import com.tencent.mobileqq.activity.SplashActivity;
+import com.tencent.mobileqq.webview.swift.JsBridgeListener;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.util.HashMap;
-import java.util.Set;
-import java.util.concurrent.locks.Lock;
-import java.util.concurrent.locks.ReentrantLock;
-import mqq.os.MqqHandler;
+import java.util.Locale;
+import java.util.Map;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class aqbm
+  extends WebViewPlugin
 {
-  private aqbr jdField_a_of_type_Aqbr;
-  private bbaa jdField_a_of_type_Bbaa;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private String jdField_a_of_type_JavaLangString;
-  private HashMap<String, aqbk> jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  private Lock jdField_a_of_type_JavaUtilConcurrentLocksLock = new ReentrantLock();
-  private String b;
-  
-  public aqbm(QQAppInterface paramQQAppInterface)
+  public aqbm()
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) {
-      this.jdField_a_of_type_Bbaa = ((bbaa)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(193));
-    }
+    this.mPluginNameSpace = "campus_circle";
   }
   
-  public static String a()
+  public boolean a(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
   {
-    return String.format("%s/res", new Object[] { b() });
-  }
-  
-  private String a(String paramString)
-  {
-    return String.format("%s/%s.zip", new Object[] { b(), paramString });
-  }
-  
-  private void a(String paramString)
-  {
-    paramString = new File(paramString);
-    if (paramString.exists()) {
-      paramString.delete();
-    }
-  }
-  
-  private boolean a(aqbk paramaqbk)
-  {
-    boolean bool3 = false;
-    boolean bool2 = false;
-    boolean bool1 = bool3;
-    if (paramaqbk != null)
+    paramString2 = (bhql)super.getBrowserComponent(2);
+    int i1;
+    int k;
+    int i;
+    int j;
+    int m;
+    if (paramString2 != null)
     {
-      bool1 = bool3;
-      if (paramaqbk.a()) {
-        this.jdField_a_of_type_JavaUtilConcurrentLocksLock.lock();
-      }
-    }
-    try
-    {
-      bool3 = this.jdField_a_of_type_JavaUtilHashMap.containsKey(paramaqbk.jdField_a_of_type_JavaLangString);
-      bool1 = bool2;
-      if (bool3) {
-        bool1 = true;
-      }
-      return bool1;
-    }
-    finally
-    {
-      this.jdField_a_of_type_JavaUtilConcurrentLocksLock.unlock();
-    }
-  }
-  
-  private boolean a(String paramString1, String paramString2)
-  {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (new File(paramString1).exists())
-    {
-      paramString1 = awni.a(paramString1);
-      bool1 = bool2;
-      if (paramString2 != null)
+      paramString3 = paramString2.d.getContext().getResources();
+      i1 = (int)(30.0F * paramString3.getDisplayMetrics().density);
+      int i2 = 0;
+      k = 0;
+      paramString1 = "";
+      int n = 10;
+      i = n;
+      paramJsBridgeListener = paramString1;
+      j = k;
+      if (paramVarArgs != null)
       {
-        bool1 = bool2;
-        if (paramString2.equalsIgnoreCase(paramString1)) {
-          bool1 = true;
+        i = n;
+        paramJsBridgeListener = paramString1;
+        j = k;
+        if (paramVarArgs.length > 0)
+        {
+          k = n;
+          m = i2;
         }
       }
-    }
-    return bool1;
-  }
-  
-  private static String b()
-  {
-    Object localObject1 = null;
-    Object localObject2 = BaseApplicationImpl.sApplication.getFilesDir();
-    if (localObject2 != null)
-    {
-      localObject2 = ((File)localObject2).getAbsolutePath() + "/pddata/prd/ef_res";
-      File localFile = new File((String)localObject2);
-      localObject1 = localObject2;
-      if (!localFile.exists())
+      try
       {
-        localFile.mkdirs();
-        localObject1 = localObject2;
+        paramJsBridgeListener = new JSONObject(paramVarArgs[0]);
+        k = n;
+        m = i2;
+        j = paramJsBridgeListener.optInt("iconIndex");
+        k = n;
+        m = j;
+        i = paramJsBridgeListener.optInt("iconPad");
+        k = i;
+        m = j;
+        paramJsBridgeListener = paramJsBridgeListener.optString("iconRes");
+      }
+      catch (Exception paramVarArgs)
+      {
+        for (;;)
+        {
+          i = k;
+          paramJsBridgeListener = paramString1;
+          j = m;
+          if (QLog.isColorLevel())
+          {
+            QLog.d("CampusCirclePlugin", 2, "getRedPoint exception", paramVarArgs);
+            i = k;
+            paramJsBridgeListener = paramString1;
+            j = m;
+            continue;
+            if ("arrow_down".equals(paramJsBridgeListener))
+            {
+              paramJsBridgeListener = paramString3.getDrawable(2130844940);
+            }
+            else if ("none".equals(paramJsBridgeListener))
+            {
+              paramJsBridgeListener = null;
+            }
+            else
+            {
+              paramJsBridgeListener = null;
+              continue;
+              k = j;
+              if (j < 0)
+              {
+                k = 0;
+                continue;
+                j = i;
+                if (i > i1) {
+                  j = i1;
+                }
+              }
+            }
+          }
+        }
+      }
+      if ("arrow_up".equals(paramJsBridgeListener))
+      {
+        paramJsBridgeListener = paramString3.getDrawable(2130844941);
+        if (j <= 3) {
+          break label278;
+        }
+        k = 3;
+        if (i >= 0) {
+          break label293;
+        }
+        j = 0;
+        paramString2.a.a(k, paramJsBridgeListener, j);
+        return true;
       }
     }
-    return localObject1;
-  }
-  
-  private void b(aqbk paramaqbk)
-  {
-    c(paramaqbk);
-    ThreadManager.getSubThreadHandler().post(new ExtendFriendResourceDownloader.4(this, paramaqbk));
-  }
-  
-  private boolean b()
-  {
-    boolean bool = false;
-    if (!TextUtils.isEmpty(this.b)) {
-      bool = a(a(this.b), this.b);
-    }
-    return bool;
-  }
-  
-  private boolean b(aqbk paramaqbk)
-  {
-    return (paramaqbk != null) && (paramaqbk.a()) && (aqfx.a.contains(paramaqbk.jdField_a_of_type_JavaLangString));
-  }
-  
-  private boolean b(String paramString1, String paramString2)
-  {
-    try
-    {
-      amxa.a(paramString1, paramString2);
-      return true;
-    }
-    catch (Exception paramString1)
-    {
-      QLog.e("ExtendFriendResourceDownloader", 1, "unzipResource fail.", paramString1);
-    }
+    label278:
+    label293:
     return false;
   }
   
-  private void c(aqbk paramaqbk)
+  public boolean b(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
   {
-    if ((paramaqbk != null) && (paramaqbk.a())) {
-      this.jdField_a_of_type_JavaUtilConcurrentLocksLock.lock();
+    paramString1 = "";
+    paramJsBridgeListener = paramString1;
+    if (paramVarArgs != null)
+    {
+      paramJsBridgeListener = paramString1;
+      if (paramVarArgs.length <= 0) {}
     }
     try
     {
-      this.jdField_a_of_type_JavaUtilHashMap.put(paramaqbk.jdField_a_of_type_JavaLangString, paramaqbk);
-      return;
-    }
-    finally
-    {
-      this.jdField_a_of_type_JavaUtilConcurrentLocksLock.unlock();
-    }
-  }
-  
-  private boolean c()
-  {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (!TextUtils.isEmpty(this.b))
-    {
-      bool1 = bool2;
-      if (aqhh.a()) {
-        bool1 = true;
+      paramJsBridgeListener = new JSONObject(paramVarArgs[0]).optString("callback");
+      if (QLog.isColorLevel()) {
+        QLog.d("CampusCirclePlugin", 2, "getRedPoint callback=" + paramJsBridgeListener);
+      }
+      if (TextUtils.isEmpty(paramJsBridgeListener)) {
+        return true;
       }
     }
-    return bool1;
-  }
-  
-  private void d(aqbk paramaqbk)
-  {
-    if ((paramaqbk != null) && (paramaqbk.a())) {
-      this.jdField_a_of_type_JavaUtilConcurrentLocksLock.lock();
-    }
-    try
+    catch (Exception paramString2)
     {
-      this.jdField_a_of_type_JavaUtilHashMap.remove(paramaqbk.jdField_a_of_type_JavaLangString);
-      return;
-    }
-    finally
-    {
-      this.jdField_a_of_type_JavaUtilConcurrentLocksLock.unlock();
-    }
-  }
-  
-  public void a()
-  {
-    int i = 1;
-    if ((TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) || (TextUtils.isEmpty(this.b))) {
-      QLog.e("ExtendFriendResourceDownloader", 1, "downloadResource invalid parameters.");
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("ExtendFriendResourceDownloader", 2, String.format("checkResourceReady download=%s unzipped=%s", new Object[] { this.jdField_a_of_type_JavaLangString, this.b }));
-    }
-    Object localObject1 = a(this.b);
-    if (!a((String)localObject1, this.b))
-    {
-      a((String)localObject1);
-      if (this.jdField_a_of_type_Bbaa != null)
+      for (;;)
       {
-        localObject2 = new baub();
-        ((baub)localObject2).jdField_a_of_type_Baug = new aqbn(this);
-        ((baub)localObject2).jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
-        ((baub)localObject2).jdField_a_of_type_Int = 0;
-        ((baub)localObject2).c = ((String)localObject1);
-        ((baub)localObject2).e = 0;
-        ((baub)localObject2).jdField_a_of_type_Bauf = new aqbo(this);
-        localObject2 = new bazy(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.b, new aqbp(this), (baub)localObject2);
-        this.jdField_a_of_type_Bbaa.a(10073, "prd", this.b, 0, this.jdField_a_of_type_JavaLangString, (String)localObject1, 2, 0, false, (bazx)localObject2);
+        paramJsBridgeListener = paramString1;
+        if (QLog.isColorLevel())
+        {
+          QLog.d("CampusCirclePlugin", 2, "getRedPoint exception", paramString2);
+          paramJsBridgeListener = paramString1;
+        }
+      }
+      paramString1 = new JSONObject();
+      paramString2 = aqbk.a().a();
+      bool = false;
+      j = 1;
+      i = 0;
+      l = 0L;
+      if (paramString2 == null) {
+        break label277;
       }
     }
-    while (c())
-    {
-      Object localObject2;
-      return;
-    }
-    boolean bool3 = b((String)localObject1, a());
-    boolean bool2 = c();
-    if (QLog.isColorLevel()) {
-      QLog.d("ExtendFriendResourceDownloader", 2, String.format("downloadResource unzip result=%s unzipped=%s", new Object[] { Boolean.valueOf(bool3), Boolean.valueOf(bool2) }));
-    }
-    boolean bool1;
-    if (this.jdField_a_of_type_Aqbr != null)
-    {
-      localObject1 = this.jdField_a_of_type_Aqbr;
-      if ((bool3) && (bool2))
-      {
-        bool1 = true;
-        ((aqbr)localObject1).a(bool1);
-      }
-    }
-    else
-    {
-      localObject1 = aqhg.a();
-      if ((!bool3) || (!bool2)) {
-        break label347;
-      }
-      bool1 = true;
-      label330:
-      if (bool2) {
-        break label352;
-      }
-    }
+    boolean bool = paramString2.getBoolean("hasRedTouch", false);
+    int j = paramString2.getInt("type", 1);
+    int i = paramString2.getInt("count", 0);
+    long l = paramString2.getLong("seq", 0L);
+    int k = paramString2.getInt("code");
     for (;;)
     {
-      ((aqhg)localObject1).b(bool1, i);
-      return;
-      bool1 = false;
-      break;
-      label347:
-      bool1 = false;
-      break label330;
-      label352:
-      i = 0;
+      try
+      {
+        paramString1.put("code", k);
+        if (!bool) {
+          continue;
+        }
+        k = 1;
+        paramString1.put("hasRedTouch", k);
+        paramString1.put("type", j);
+        paramString1.put("count", i);
+        paramString1.put("seq", l);
+      }
+      catch (JSONException paramString2)
+      {
+        label277:
+        if (!QLog.isColorLevel()) {
+          continue;
+        }
+        QLog.e("CampusCirclePlugin", 2, paramString2, new Object[] { "getRedPoint, exception" });
+        continue;
+      }
+      paramString1 = paramString1.toString();
+      if (QLog.isColorLevel()) {
+        QLog.d("CampusCirclePlugin", 2, "getRedPoint, json=" + paramString1);
+      }
+      callJs(paramJsBridgeListener, new String[] { paramString1 });
+      return true;
+      k = -1;
+      continue;
+      k = 0;
     }
   }
   
-  public void a(aqbk paramaqbk)
+  public boolean c(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
   {
-    if (paramaqbk == null)
+    long l2 = -1L;
+    long l1 = l2;
+    if (paramVarArgs != null)
     {
-      QLog.e("ExtendFriendResourceDownloader", 2, "Limitchatres resInfo is null");
-      return;
+      l1 = l2;
+      if (paramVarArgs.length <= 0) {}
     }
-    if (!paramaqbk.a())
+    try
     {
-      QLog.e("ExtendFriendResourceDownloader", 2, "Limitchatres resInfo is not effect");
-      return;
+      l1 = new JSONObject(paramVarArgs[0]).optLong("seq", -1L);
+      if (QLog.isColorLevel()) {
+        QLog.d("CampusCirclePlugin", 2, "getRedPoint seq=" + l1);
+      }
+      if (l1 < 0L) {
+        return true;
+      }
     }
-    if (!a(paramaqbk))
+    catch (Exception paramJsBridgeListener)
     {
-      b(paramaqbk);
-      return;
+      for (;;)
+      {
+        l1 = l2;
+        if (QLog.isColorLevel())
+        {
+          QLog.d("CampusCirclePlugin", 2, "getRedPoint exception", paramJsBridgeListener);
+          l1 = l2;
+        }
+      }
+      aqbk.a().a(l1);
     }
-    QLog.i("ExtendFriendResourceDownloader", 2, "Limitchatres is downloading" + paramaqbk.jdField_a_of_type_JavaLangString);
+    return true;
   }
   
-  public void a(aqbr paramaqbr)
+  public boolean d(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
   {
-    this.jdField_a_of_type_Aqbr = paramaqbr;
+    if ((paramVarArgs != null) && (paramVarArgs.length > 0)) {}
+    try
+    {
+      paramJsBridgeListener = new JSONObject(paramVarArgs[0]);
+      long l = paramJsBridgeListener.getLong("schoolId");
+      paramJsBridgeListener = paramJsBridgeListener.getString("schoolName");
+      paramString1 = this.mRuntime.a();
+      if (paramString1 != null)
+      {
+        paramString2 = new Intent();
+        paramString2.putExtra("campus_school_id", l);
+        paramString2.putExtra("campus_school", paramJsBridgeListener);
+        paramString1.setResult(-1, paramString2);
+        paramString1.finish();
+      }
+      if (QLog.isColorLevel()) {
+        QLog.i("CampusCirclePlugin", 2, String.format(Locale.getDefault(), "onSearchSchoolResult schoolId: %d schoolName: %s activity: %s", new Object[] { Long.valueOf(l), paramJsBridgeListener, paramString1 }));
+      }
+    }
+    catch (Exception paramJsBridgeListener)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.d("CampusCirclePlugin", 2, "onSearchSchoolResult exception", paramJsBridgeListener);
+    }
+    return false;
+    return false;
   }
   
-  public void a(String paramString1, String paramString2)
+  public boolean handleEvent(String paramString, long paramLong, Map<String, Object> paramMap)
+  {
+    boolean bool2 = super.handleEvent(paramString, paramLong, paramMap);
+    boolean bool3;
+    if (paramLong == 8589934598L)
+    {
+      if (this.mRuntime.a().getIntent().getIntExtra("uintype", -1) == 1030) {
+        bool3 = false;
+      }
+      try
+      {
+        paramString = Uri.parse(this.mRuntime.a().getIntent().getStringExtra("url"));
+        bool1 = bool3;
+        if (paramString != null)
+        {
+          bool1 = bool3;
+          if (paramString.isHierarchical()) {
+            bool1 = "1".equals(paramString.getQueryParameter("__iscomic"));
+          }
+        }
+      }
+      catch (Exception paramString)
+      {
+        for (;;)
+        {
+          bool1 = bool3;
+        }
+      }
+      if (bool1) {
+        return bool2;
+      }
+      paramString = new Intent(this.mRuntime.a(), SplashActivity.class);
+      paramString.putExtra("fragment_id", 1);
+      paramString.putExtra("main_tab_id", 4);
+      paramString.setFlags(603979776);
+      paramString.putExtra("from", "campus_notice");
+      this.mRuntime.a().startActivity(paramString);
+      if (QLog.isDevelopLevel()) {
+        QLog.i("CampusNoticeManager", 4, "EVENT_BEFORE_ACTIVITY_FINISH");
+      }
+    }
+    for (boolean bool1 = true;; bool1 = bool2) {
+      return bool1;
+    }
+  }
+  
+  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("ExtendFriendResourceDownloader", 2, String.format("setDownloadInfo url=%s md5=%s", new Object[] { paramString1, paramString2 }));
+      QLog.d("CampusCirclePlugin", 2, String.format(Locale.getDefault(), "handleJsRequest url: %s pkgName; %s method: %s, args: %s", new Object[] { paramString1, paramString2, paramString3, paramVarArgs }));
     }
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
-  }
-  
-  public boolean a()
-  {
-    boolean bool1 = b();
-    boolean bool2 = c();
-    if (QLog.isColorLevel()) {
-      QLog.d("ExtendFriendResourceDownloader", 2, String.format("checkResourceReady download=%s unzipped=%s", new Object[] { Boolean.valueOf(bool1), Boolean.valueOf(bool2) }));
+    if ("campus_circle".equals(paramString2))
+    {
+      if ("getRedPoint".equals(paramString3)) {
+        return b(paramJsBridgeListener, paramString1, paramString2, paramString3, paramVarArgs);
+      }
+      if ("reportRedPoint".equals(paramString3)) {
+        return c(paramJsBridgeListener, paramString1, paramString2, paramString3, paramVarArgs);
+      }
+      if ("setTitleIcon".equals(paramString3)) {
+        return a(paramJsBridgeListener, paramString1, paramString2, paramString3, paramVarArgs);
+      }
+      if ("onSearchSchoolResult".equals(paramString3)) {
+        return d(paramJsBridgeListener, paramString1, paramString2, paramString3, paramVarArgs);
+      }
+      return super.handleJsRequest(paramJsBridgeListener, paramString1, paramString2, paramString3, paramVarArgs);
     }
-    return (bool1) && (bool2);
-  }
-  
-  public void b()
-  {
-    if ((this.jdField_a_of_type_Bbaa != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))) {
-      this.jdField_a_of_type_Bbaa.a(this.jdField_a_of_type_JavaLangString);
-    }
+    return super.handleJsRequest(paramJsBridgeListener, paramString1, paramString2, paramString3, paramVarArgs);
   }
 }
 

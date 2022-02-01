@@ -1,32 +1,67 @@
 package com.tencent.mobileqq.minigame.ui;
 
-import ayvr;
-import com.tencent.mobileqq.mini.util.DisplayUtil;
-import com.tencent.mobileqq.minigame.jsapi.widgets.KeyboardLayout;
+import ackn;
+import acko;
+import com.tencent.ad.tangram.util.AdExposureChecker;
+import com.tencent.gdtad.api.GdtAd;
+import com.tencent.mobileqq.mini.util.AdUtils;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
 class GameActivity$37
-  implements ayvr
+  implements acko
 {
   GameActivity$37(GameActivity paramGameActivity) {}
   
-  public void onSoftKeyboardClosed()
+  public void onAdClicked(GdtAd paramGdtAd)
   {
-    if ((GameActivity.access$5500(this.this$0) != null) && (GameActivity.access$5500(this.this$0).getVisibility() == 0)) {
-      GameActivity.access$5500(this.this$0).setVisibility(8);
+    QLog.i("[minigame] GameActivity", 1, "bannerad onAdClicked");
+    if ((paramGdtAd != null) && (paramGdtAd.getAd() != null) && (AdUtils.isHitReport50ViewAndOneSecond(paramGdtAd.getAd())))
+    {
+      AdExposureChecker.onClick(this.this$0, paramGdtAd.getAd(), new WeakReference(this.this$0.mAdExposureCheckerCallback));
+      return;
     }
-    DisplayUtil.setActivityFullScreen(this.this$0);
+    QLog.i("[minigame] GameActivity", 1, "ad null");
   }
   
-  public void onSoftKeyboardOpened(int paramInt)
+  public void onAdClosed(GdtAd paramGdtAd)
   {
-    if ((GameActivity.access$5500(this.this$0) != null) && (GameActivity.access$5500(this.this$0).getVisibility() == 0)) {
-      GameActivity.access$5500(this.this$0).setPaddingBottom(paramInt);
+    QLog.i("[minigame] GameActivity", 1, "bannerad onAdClosed");
+  }
+  
+  public void onAdFailedToLoad(GdtAd paramGdtAd, ackn paramackn)
+  {
+    int i;
+    if (paramackn != null)
+    {
+      i = paramackn.a();
+      if (paramackn == null) {
+        break label58;
+      }
     }
+    label58:
+    for (paramGdtAd = paramackn.a();; paramGdtAd = "")
+    {
+      QLog.i("[minigame] GameActivity", 1, "bannerad onAdFailedToLoad code=" + i + ", msg=" + paramGdtAd);
+      return;
+      i = -1;
+      break;
+    }
+  }
+  
+  public void onAdImpression(GdtAd paramGdtAd)
+  {
+    QLog.i("[minigame] GameActivity", 1, "bannerad onAdImpression");
+  }
+  
+  public void onAdLoaded(GdtAd paramGdtAd)
+  {
+    QLog.i("[minigame] GameActivity", 1, "bannerad onAdLoaded");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.minigame.ui.GameActivity.37
  * JD-Core Version:    0.7.0.1
  */

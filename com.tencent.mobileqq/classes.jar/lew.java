@@ -1,22 +1,18 @@
-public class lew
+import android.os.IBinder.DeathRecipient;
+
+class lew
+  implements IBinder.DeathRecipient
 {
-  public int a;
-  public String a;
+  lew(lev paramlev) {}
   
-  public lew()
+  public void binderDied()
   {
-    this.jdField_a_of_type_JavaLangString = "";
-  }
-  
-  public void a(int paramInt, String paramString)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangString = paramString;
+    lbc.d("QQServiceProxy", "QQServiceForAV mobileQQ process exited!");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     lew
  * JD-Core Version:    0.7.0.1
  */

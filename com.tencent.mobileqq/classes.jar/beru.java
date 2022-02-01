@@ -1,16 +1,17 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.mobileqq.widget.ParticipleView;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import org.json.JSONObject;
 
-public class beru
-  implements ValueAnimator.AnimatorUpdateListener
+class beru
+  implements bfpo
 {
-  public beru(ParticipleView paramParticipleView) {}
+  beru(bert parambert, bfrd parambfrd, int paramInt) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void a(JSONObject paramJSONObject, int paramInt, Bundle paramBundle)
   {
-    ParticipleView.a(this.a, ((Float)paramValueAnimator.getAnimatedValue()).floatValue());
-    this.a.invalidate();
+    if ((paramJSONObject != null) && (paramJSONObject.optInt("retcode", -1) == 0)) {
+      this.jdField_a_of_type_Bfrd.a(this.jdField_a_of_type_Bert.a.a.a, 0, this.jdField_a_of_type_Int);
+    }
   }
 }
 

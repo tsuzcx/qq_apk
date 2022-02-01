@@ -1,39 +1,34 @@
-import com.tencent.biz.qqstory.database.PublishVideoEntry;
-import com.tencent.qphone.base.util.QLog;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import java.util.List;
 
-final class xtp
-  extends xtb
+public class xtp
+  extends wfr<xto, wwl>
 {
-  xtp(xtb paramxtb, PublishVideoEntry paramPublishVideoEntry) {}
-  
-  public void onFailure(String paramString)
+  public xtp(xto paramxto)
   {
-    if (QLog.isColorLevel()) {
-      QLog.e("Q.qqstory.ffmpeg.FFmpegCmd", 2, paramString);
+    super(paramxto);
+  }
+  
+  public void a(@NonNull xto paramxto, @NonNull wwl paramwwl)
+  {
+    if ((xto.a(paramxto) != null) && (paramwwl.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess()) && (paramwwl.jdField_a_of_type_JavaUtilList.contains(xto.a(paramxto).a)))
+    {
+      yqp.a("CaptureTogetherBannerVideoInfoController", "GetStoryTagInfoReceiver receive tag info change event. %s", paramwwl.b.toString());
+      paramxto.a.i();
     }
-    this.jdField_a_of_type_Xtb.onFailure(paramString);
-    if ((this.jdField_a_of_type_Xtb instanceof upi)) {
-      ((upi)this.jdField_a_of_type_Xtb).a(941004);
-    }
-    QLog.w("Q.qqstory.ffmpeg.FFmpegCmd", 1, "[vs_publish_flow] | fakeid:" + this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.fakeVid + " getAudioFromMp4 failed message：" + paramString);
   }
   
-  public void onStart()
+  public Class acceptEventClass()
   {
-    super.onStart();
-    QLog.i("Q.qqstory.ffmpeg.FFmpegCmd", 1, "[vs_publish_flow] | fakeid:" + this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.fakeVid + " getAudioFromMp4 start");
+    return wwl.class;
   }
   
-  public void onSuccess(String paramString)
-  {
-    long l1 = System.currentTimeMillis();
-    long l2 = this.b;
-    QLog.i("Q.qqstory.ffmpeg.FFmpegCmd", 1, "[vs_publish_flow] | fakeid:" + this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.fakeVid + " getAudioFromMp4 success cost：" + String.valueOf(l1 - l2) + "ms\n");
-  }
+  public void b(@NonNull xto paramxto, @NonNull wwl paramwwl) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     xtp
  * JD-Core Version:    0.7.0.1
  */

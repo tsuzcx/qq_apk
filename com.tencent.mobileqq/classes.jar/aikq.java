@@ -1,37 +1,38 @@
-import QC.CommonRsp;
-import QC.FaceRsp;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.activity.pendant.AvatarPendantActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import com.tencent.mobileqq.data.MessageForStructing;
+import com.tencent.mobileqq.structmsg.AbsStructMsg;
 
 public class aikq
-  extends amcd
+  implements aiko
 {
-  public aikq(AvatarPendantActivity paramAvatarPendantActivity) {}
-  
-  public void a(boolean paramBoolean, FaceRsp paramFaceRsp)
+  public void a(MessageForStructing paramMessageForStructing, afwr paramafwr, View paramView, boolean paramBoolean)
   {
-    if (paramFaceRsp != null)
+    if (!paramMessageForStructing.structingMsg.hasFlag(4))
     {
-      int i = paramFaceRsp.authRet;
-      localObject = "null";
-      if (paramFaceRsp.stRet != null) {
-        localObject = "ret:" + paramFaceRsp.stRet.ret + " auth:" + paramFaceRsp.authRet + " url:" + paramFaceRsp.url;
+      if (paramMessageForStructing.isSend()) {
+        if (paramBoolean) {
+          i = 2130849994;
+        }
       }
-      QLog.d("AvatarPendantActivity", 2, "onSetFace: " + paramBoolean + "," + (String)localObject);
-      if (i == 0) {
-        this.a.r = 0;
+      for (;;)
+      {
+        afur.a(paramafwr.a, i);
+        return;
+        i = 2130849995;
+        continue;
+        if (paramBoolean) {
+          i = 2130849818;
+        } else {
+          i = 2130849819;
+        }
       }
     }
-    else
+    if (paramBoolean) {}
+    for (int i = 2130838316;; i = 2130838300)
     {
+      paramView.setBackgroundResource(i);
       return;
     }
-    this.a.r = 1;
-    Object localObject = new Intent(this.a, QQBrowserActivity.class);
-    ((Intent)localObject).putExtra("url", paramFaceRsp.url);
-    this.a.startActivity((Intent)localObject);
   }
 }
 

@@ -1,40 +1,374 @@
 import android.content.Context;
-import android.opengl.GLES20;
+import android.content.res.Resources;
+import android.text.TextUtils;
+import android.util.DisplayMetrics;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.LinearLayout.LayoutParams;
+import android.widget.RelativeLayout;
+import android.widget.RelativeLayout.LayoutParams;
+import android.widget.TextView;
+import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.apollo.view.ApolloLinearLayout;
+import com.tencent.mobileqq.apollo.view.ApolloPanelListAdapter.1;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ApolloActionData;
+import com.tencent.mobileqq.redtouch.RedTouch;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.widget.XPanelContainer;
+import java.util.List;
 
 public class angr
+  extends BaseAdapter
 {
-  public static int a(String paramString1, Context paramContext, int paramInt, String paramString2)
+  private static int d;
+  private static int e;
+  private static int f;
+  private static int g;
+  private int jdField_a_of_type_Int = -1;
+  private Context jdField_a_of_type_AndroidContentContext;
+  private BaseChatPie jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie;
+  private SessionInfo jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private List<anff> jdField_a_of_type_JavaUtilList;
+  private int b;
+  private int c;
+  
+  public angr(QQAppInterface paramQQAppInterface, Context paramContext)
   {
-    int i = 0;
-    paramInt = GLES20.glCreateShader(paramInt);
-    GLES20.glShaderSource(paramInt, paramString2);
-    GLES20.glCompileShader(paramInt);
-    paramContext = new int[1];
-    GLES20.glGetShaderiv(paramInt, 35713, paramContext, 0);
-    if (paramContext[0] == 0)
+    this.jdField_b_of_type_Int = 4;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+  }
+  
+  private void a(ApolloLinearLayout paramApolloLinearLayout, int paramInt)
+  {
+    if (paramApolloLinearLayout == null) {
+      return;
+    }
+    paramApolloLinearLayout.a();
+    paramApolloLinearLayout.setSessionInfo(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
+    paramApolloLinearLayout.setCallback(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie);
+    paramApolloLinearLayout = (LinearLayout)paramApolloLinearLayout.getChildAt(0);
+    Object localObject1 = (LinearLayout.LayoutParams)paramApolloLinearLayout.getLayoutParams();
+    if (localObject1 != null)
     {
-      QLog.e(paramString1, 1, "Error compiling shader: " + GLES20.glGetShaderInfoLog(paramInt));
-      GLES20.glDeleteShader(paramInt);
-      paramInt = i;
+      if (paramInt == 0)
+      {
+        if (this.c == 4) {
+          break label1109;
+        }
+        ((LinearLayout.LayoutParams)localObject1).topMargin = afur.a(16.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
+        label77:
+        ((LinearLayout.LayoutParams)localObject1).bottomMargin = 0;
+      }
+      if (paramInt == getCount() - 1) {
+        ((LinearLayout.LayoutParams)localObject1).bottomMargin = afur.a(16.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
+      }
+      if ((paramInt > 0) && (paramInt < getCount() - 1))
+      {
+        ((LinearLayout.LayoutParams)localObject1).topMargin = afur.a(10.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
+        ((LinearLayout.LayoutParams)localObject1).bottomMargin = 0;
+      }
+    }
+    int k = this.jdField_b_of_type_Int;
+    int i = 0;
+    label156:
+    anfh localanfh;
+    int m;
+    Object localObject2;
+    label360:
+    int j;
+    label470:
+    float f1;
+    label521:
+    int n;
+    if (i < this.jdField_b_of_type_Int)
+    {
+      localObject1 = paramApolloLinearLayout.getChildAt(i);
+      localanfh = (anfh)((View)localObject1).getTag();
+      m = paramInt * k + i;
+      if (m >= this.jdField_a_of_type_JavaUtilList.size()) {
+        break label1481;
+      }
+      ((View)localObject1).setVisibility(0);
+      ApolloActionData localApolloActionData = ((anff)this.jdField_a_of_type_JavaUtilList.get(m)).a;
+      localanfh.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+      localanfh.jdField_a_of_type_Anff = ((anff)this.jdField_a_of_type_JavaUtilList.get(m));
+      if (this.c == 4) {
+        localanfh.jdField_a_of_type_AndroidWidgetRelativeLayout.setBackgroundResource(2130838587);
+      }
+      if (localanfh.jdField_a_of_type_Anff.jdField_b_of_type_Int != 1) {
+        break label1118;
+      }
+      if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)
+      {
+        localObject2 = new RedTouch(this.jdField_a_of_type_AndroidContentContext, localanfh.jdField_a_of_type_AndroidWidgetImageView).a(5).a();
+        ((RedTouch)localObject2).a(((baif)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(36)).a("103100.103200"));
+        localanfh.jdField_a_of_type_AndroidWidgetImageView.setBackgroundResource(2130838589);
+        localanfh.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouch = ((RedTouch)localObject2);
+      }
+      localanfh.jdField_a_of_type_AndroidWidgetTextView.setText(localApolloActionData.actionName);
+      if (this.c != 4) {
+        localanfh.jdField_a_of_type_Anff.c = 0;
+      }
+      if ((this.c != 2) && (!TextUtils.isEmpty(localApolloActionData.iconUrl)))
+      {
+        localanfh.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable(amwz.a(String.valueOf(localApolloActionData.iconUrl.hashCode()), null, localApolloActionData.iconUrl, true));
+        localanfh.jdField_a_of_type_ComTencentImageURLImageView.setVisibility(0);
+      }
+      if (TextUtils.isEmpty(localanfh.jdField_a_of_type_Anff.jdField_b_of_type_JavaLangString)) {
+        break label1412;
+      }
+      if (XPanelContainer.d != 0) {
+        break label1189;
+      }
+      j = 1;
+      localanfh.jdField_c_of_type_AndroidWidgetTextView.setVisibility(0);
+      localanfh.jdField_c_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
+      localanfh.e.setVisibility(0);
+      localanfh.jdField_c_of_type_AndroidWidgetTextView.setText(localanfh.jdField_a_of_type_Anff.jdField_b_of_type_JavaLangString);
+      if (j == 0) {
+        break label1195;
+      }
+      f1 = 3.0F;
+      n = afur.a(f1, this.jdField_a_of_type_AndroidContentContext.getResources());
+      localObject2 = (RelativeLayout.LayoutParams)localanfh.jdField_c_of_type_AndroidWidgetRelativeLayout.getLayoutParams();
+      ((RelativeLayout.LayoutParams)localObject2).topMargin = n;
+      ((RelativeLayout.LayoutParams)localObject2).width = (ApolloLinearLayout.e - n * 2);
+      localanfh.jdField_c_of_type_AndroidWidgetTextView.setMaxHeight(ApolloLinearLayout.e - n * 3);
+      localObject2 = (RelativeLayout.LayoutParams)localanfh.jdField_c_of_type_AndroidWidgetTextView.getLayoutParams();
+      if (j == 0) {
+        break label1202;
+      }
+      f1 = 2.0F;
+      label603:
+      ((RelativeLayout.LayoutParams)localObject2).topMargin = afur.a(f1, this.jdField_a_of_type_AndroidContentContext.getResources());
+      localanfh.e.setBackgroundResource(2130838426);
+      if (localanfh.jdField_a_of_type_Anff.d != 1) {
+        break label1267;
+      }
+      if (j == 0) {
+        break label1209;
+      }
+      localanfh.jdField_c_of_type_AndroidWidgetTextView.setTextSize(8.0F);
+      if (f == 0) {
+        f = amlh.a(localanfh.jdField_c_of_type_AndroidWidgetTextView.getPaint());
+      }
+      ((RelativeLayout.LayoutParams)localObject2).width = f;
+      label684:
+      localanfh.jdField_c_of_type_AndroidWidgetTextView.setTextColor(-4473925);
+      localanfh.jdField_c_of_type_AndroidWidgetRelativeLayout.setBackgroundDrawable(null);
+      localObject2 = localanfh.jdField_c_of_type_AndroidWidgetRelativeLayout;
+      if (j == 0) {
+        break label1405;
+      }
+      f1 = 3.0F;
+      label719:
+      ((RelativeLayout)localObject2).setPadding(0, 0, 0, afur.a(f1, this.jdField_a_of_type_AndroidContentContext.getResources()));
+      localanfh.jdField_c_of_type_AndroidWidgetTextView.setMaxLines(3);
+      label747:
+      ApolloLinearLayout.setApolloActionIcon(localanfh.jdField_a_of_type_Anff.g, localanfh.jdField_a_of_type_Anff.a, localanfh);
+      if ((localApolloActionData.personNum == 1) && ((this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int == 1) || (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int == 3000))) {
+        localanfh.jdField_c_of_type_AndroidWidgetImageView.setVisibility(0);
+      }
+      localObject2 = (RelativeLayout)localObject1;
+      if ((this.jdField_a_of_type_Int == -1) || (this.jdField_a_of_type_Int != m)) {
+        break label1454;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("ApolloPanelListAdapter", 2, new Object[] { "[updateView] highlight item, start animation, mHighlightItemIndex=", Integer.valueOf(this.jdField_a_of_type_Int), ", name=", localApolloActionData.actionName, ",id=", Integer.valueOf(localApolloActionData.actionId) });
+      }
+      if (localanfh.jdField_a_of_type_AndroidViewView != null)
+      {
+        ((RelativeLayout)localObject2).removeView(localanfh.jdField_a_of_type_AndroidViewView);
+        localanfh.jdField_a_of_type_AndroidViewView = null;
+      }
+      Object localObject3 = new RelativeLayout.LayoutParams(-1, -1);
+      ((RelativeLayout.LayoutParams)localObject3).addRule(5, 2131363109);
+      ((RelativeLayout.LayoutParams)localObject3).addRule(7, 2131363109);
+      ((RelativeLayout.LayoutParams)localObject3).addRule(6, 2131363109);
+      ((RelativeLayout.LayoutParams)localObject3).addRule(8, 2131363109);
+      RelativeLayout localRelativeLayout = new RelativeLayout(this.jdField_a_of_type_AndroidContentContext);
+      localRelativeLayout.setId(2131362724);
+      localRelativeLayout.setBackgroundDrawable(null);
+      ((RelativeLayout)localObject2).addView(localRelativeLayout, (ViewGroup.LayoutParams)localObject3);
+      localanfh.jdField_a_of_type_AndroidViewView = localRelativeLayout;
+      localObject3 = new ImageView(this.jdField_a_of_type_AndroidContentContext);
+      ((ImageView)localObject3).setImageResource(2130838584);
+      ((ImageView)localObject3).setVisibility(8);
+      localRelativeLayout.addView((View)localObject3, new RelativeLayout.LayoutParams(-1, -1));
+      ((ImageView)localObject3).postDelayed(new ApolloPanelListAdapter.1(this, (ImageView)localObject3, localRelativeLayout, (RelativeLayout)localObject2, localanfh), 200L);
+      this.jdField_a_of_type_Int = -1;
+      label1090:
+      ((View)localObject1).setContentDescription(localApolloActionData.actionName);
     }
     for (;;)
     {
-      if (paramInt == 0) {}
-      return paramInt;
+      i += 1;
+      break label156;
+      break;
+      label1109:
+      ((LinearLayout.LayoutParams)localObject1).topMargin = 0;
+      break label77;
+      label1118:
+      if (localanfh.jdField_a_of_type_Anff.jdField_b_of_type_Int == 2)
+      {
+        localanfh.jdField_a_of_type_AndroidWidgetImageView.setBackgroundResource(2130838556);
+        break label360;
+      }
+      localanfh.jdField_a_of_type_AndroidWidgetImageView.setBackgroundDrawable(((anff)this.jdField_a_of_type_JavaUtilList.get(m)).a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidContentContext.getResources().getDisplayMetrics().density));
+      break label360;
+      label1189:
+      j = 0;
+      break label470;
+      label1195:
+      f1 = 5.0F;
+      break label521;
+      label1202:
+      f1 = 5.0F;
+      break label603;
+      label1209:
+      localanfh.jdField_c_of_type_AndroidWidgetTextView.setMaxHeight(ApolloLinearLayout.e - n * 2);
+      localanfh.jdField_c_of_type_AndroidWidgetTextView.setTextSize(12.0F);
+      if (d == 0) {
+        d = amlh.a(localanfh.jdField_c_of_type_AndroidWidgetTextView.getPaint());
+      }
+      ((RelativeLayout.LayoutParams)localObject2).width = d;
+      break label684;
+      label1267:
+      if (j != 0)
+      {
+        localanfh.jdField_c_of_type_AndroidWidgetTextView.setTextSize(7.0F);
+        if (g == 0) {
+          g = amlh.a(localanfh.jdField_c_of_type_AndroidWidgetTextView.getPaint());
+        }
+        ((RelativeLayout.LayoutParams)localObject2).width = g;
+        localObject2 = localanfh.jdField_c_of_type_AndroidWidgetTextView;
+        if (j == 0) {
+          break label1399;
+        }
+      }
+      label1311:
+      label1399:
+      for (f1 = 7.0F;; f1 = 10.0F)
+      {
+        ((TextView)localObject2).setTextSize(f1);
+        localanfh.jdField_c_of_type_AndroidWidgetTextView.setTextColor(-8947849);
+        localanfh.jdField_c_of_type_AndroidWidgetRelativeLayout.setBackgroundResource(2130838427);
+        break;
+        localanfh.jdField_c_of_type_AndroidWidgetTextView.setTextSize(10.0F);
+        if (e == 0) {
+          e = amlh.a(localanfh.jdField_c_of_type_AndroidWidgetTextView.getPaint());
+        }
+        ((RelativeLayout.LayoutParams)localObject2).width = e;
+        break label1311;
+      }
+      label1405:
+      f1 = 9.0F;
+      break label719;
+      label1412:
+      localanfh.e.setBackgroundDrawable(null);
+      localanfh.jdField_c_of_type_AndroidWidgetTextView.setVisibility(8);
+      localanfh.jdField_c_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
+      localanfh.e.setVisibility(8);
+      break label747;
+      label1454:
+      if (localanfh.jdField_a_of_type_AndroidViewView == null) {
+        break label1090;
+      }
+      ((RelativeLayout)localObject2).removeView(localanfh.jdField_a_of_type_AndroidViewView);
+      localanfh.jdField_a_of_type_AndroidViewView = null;
+      break label1090;
+      label1481:
+      ((View)localObject1).setContentDescription(null);
+      ((View)localObject1).setOnClickListener(null);
+      ((View)localObject1).setVisibility(4);
     }
   }
   
-  public static void a(String paramString1, String paramString2)
+  public void a(int paramInt)
   {
+    this.c = paramInt;
+  }
+  
+  public void a(BaseChatPie paramBaseChatPie)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie = paramBaseChatPie;
+  }
+  
+  public void a(SessionInfo paramSessionInfo)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = paramSessionInfo;
+  }
+  
+  protected void a(List<anff> paramList)
+  {
+    this.jdField_a_of_type_JavaUtilList = paramList;
+  }
+  
+  public void b(int paramInt)
+  {
+    this.jdField_b_of_type_Int = paramInt;
+  }
+  
+  public void c(int paramInt)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public int getCount()
+  {
+    int i = 0;
+    if (this.jdField_a_of_type_JavaUtilList != null)
+    {
+      int j = this.jdField_a_of_type_JavaUtilList.size() / this.jdField_b_of_type_Int;
+      i = j;
+      if (this.jdField_a_of_type_JavaUtilList.size() % this.jdField_b_of_type_Int != 0) {
+        i = j + 1;
+      }
+    }
+    return i;
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    return null;
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public int getItemViewType(int paramInt)
+  {
+    return 1;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    if (paramView == null) {
+      paramView = new ApolloLinearLayout(this.jdField_a_of_type_AndroidContentContext, null, this.c, this.jdField_b_of_type_Int, 1);
+    }
     for (;;)
     {
-      int i = GLES20.glGetError();
-      if (i == 0) {
-        break;
-      }
-      QLog.e(paramString1, 1, paramString2 + ": glError " + i);
+      a((ApolloLinearLayout)paramView, paramInt);
+      EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
+      return paramView;
     }
+  }
+  
+  public int getViewTypeCount()
+  {
+    return 1;
   }
 }
 

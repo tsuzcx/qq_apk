@@ -1,22 +1,17 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.ark.ArkDispatchTask;
-import com.tencent.mobileqq.ark.ArkAiAppPanel.4.1;
-import com.tencent.mobileqq.ark.ArkAppCenter;
-import java.util.ArrayList;
+import android.os.Handler;
+import com.tencent.mobileqq.app.FrameHelperActivity;
 
 public class anmd
-  implements View.OnClickListener
+  extends audo
 {
-  anmd(anma paramanma) {}
+  public anmd(FrameHelperActivity paramFrameHelperActivity) {}
   
-  public void onClick(View paramView)
+  public void a()
   {
-    if ((anma.a(this.a) == null) || (anma.a(this.a).size() <= 0) || (anma.a(this.a) >= anma.a(this.a).size()) || (anma.a(this.a).get(anma.a(this.a)) == null)) {
-      return;
+    if (this.a.a.hasMessages(17)) {
+      this.a.a.removeMessages(17);
     }
-    paramView = ((afih)anma.a(this.a).get(anma.a(this.a))).getAppName();
-    ArkAppCenter.a().post(paramView, new ArkAiAppPanel.4.1(this, paramView));
+    this.a.a.sendEmptyMessage(17);
   }
 }
 

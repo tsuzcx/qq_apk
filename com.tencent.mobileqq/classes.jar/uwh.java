@@ -1,22 +1,27 @@
-import com.tencent.image.URLDrawable;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.ImageView;
+import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionMainActivity;
 
 public class uwh
-  implements uvj
+  implements Animation.AnimationListener
 {
-  public void a(int paramInt)
+  public uwh(PublicAccountImageCollectionMainActivity paramPublicAccountImageCollectionMainActivity) {}
+  
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    switch (paramInt)
-    {
-    case 0: 
-    default: 
-      return;
-    }
-    URLDrawable.clearMemoryCache();
+    paramAnimation = (ImageView)this.a.findViewById(2131380357);
+    ImageView localImageView = (ImageView)this.a.findViewById(2131380358);
+    PublicAccountImageCollectionMainActivity.a(this.a, localImageView, paramAnimation, 100L, 240L);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     uwh
  * JD-Core Version:    0.7.0.1
  */

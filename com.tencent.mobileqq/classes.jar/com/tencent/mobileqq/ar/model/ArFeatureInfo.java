@@ -3,12 +3,12 @@ package com.tencent.mobileqq.ar.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import anfo;
+import apef;
 
 public class ArFeatureInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<ArFeatureInfo> CREATOR = new anfo();
+  public static final Parcelable.Creator<ArFeatureInfo> CREATOR = new apef();
   public long a;
   public String a;
   public String b;
@@ -54,7 +54,7 @@ public class ArFeatureInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.model.ArFeatureInfo
  * JD-Core Version:    0.7.0.1
  */

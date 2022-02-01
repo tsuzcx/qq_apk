@@ -1,15 +1,16 @@
-import com.tencent.mobileqq.activity.selectable.TextPreviewMenu;
-import java.util.List;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class ajyh
-  extends banl
+class ajyh
+  implements View.OnClickListener
 {
-  public ajyh(TextPreviewMenu paramTextPreviewMenu) {}
+  ajyh(ajye paramajye) {}
   
-  protected void a(boolean paramBoolean, List<String> paramList)
+  public void onClick(View paramView)
   {
-    TextPreviewMenu.b(this.a);
-    TextPreviewMenu.a(this.a, paramList);
+    this.a.dismiss();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

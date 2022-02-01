@@ -40,7 +40,7 @@ public class VSmartView
     if (paramRecyclerView == null) {
       return;
     }
-    VSmartView.RecyclerViewWrapper localRecyclerViewWrapper = new VSmartView.RecyclerViewWrapper(this, null);
+    VSmartView.RecyclerViewWrapper localRecyclerViewWrapper = new VSmartView.RecyclerViewWrapper(null);
     localRecyclerViewWrapper.recyclerView = paramRecyclerView;
     localRecyclerViewWrapper.ignoreScrollEvent = paramBoolean;
     paramRecyclerView.setOnTouchListener(this);
@@ -88,7 +88,7 @@ public class VSmartView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.viola.ui.view.VSmartView
  * JD-Core Version:    0.7.0.1
  */

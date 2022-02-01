@@ -1,27 +1,27 @@
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnCompletionListener;
-import com.tencent.mobileqq.activity.aio.MediaPlayerManager;
-import com.tencent.mobileqq.data.MessageForPtt;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.PermisionPrivacyActivity;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class aetf
-  implements MediaPlayer.OnCompletionListener
+  implements View.OnClickListener
 {
-  public aetf(MediaPlayerManager paramMediaPlayerManager) {}
+  public aetf(PermisionPrivacyActivity paramPermisionPrivacyActivity, SharedPreferences paramSharedPreferences, boolean paramBoolean) {}
   
-  public void onCompletion(MediaPlayer paramMediaPlayer)
+  public void onClick(View paramView)
   {
-    if (paramMediaPlayer != null) {
-      paramMediaPlayer.release();
-    }
-    bdfi.a = null;
-    if ((MediaPlayerManager.a(this.a) != null) && ((MediaPlayerManager.a(this.a) instanceof MessageForPtt))) {
-      ((MessageForPtt)MediaPlayerManager.a(this.a)).playProgress = 0.0F;
-    }
-    if ((MediaPlayerManager.a(this.a) != null) && (MediaPlayerManager.a(this.a))) {
-      return;
-    }
-    MediaPlayerManager.a(this.a, null);
-    this.a.e();
+    String str = bgyg.a("gameIconSetupH5Url");
+    Intent localIntent = new Intent(this.jdField_a_of_type_ComTencentMobileqqActivityPermisionPrivacyActivity.app.getApp(), QQBrowserActivity.class);
+    localIntent.setFlags(268435456);
+    localIntent.putExtra("vasUsePreWebview", true);
+    VasWebviewUtil.openQQBrowserWithoutAD(this.jdField_a_of_type_ComTencentMobileqqActivityPermisionPrivacyActivity.app.getApp(), str, -1L, localIntent, false, -1);
+    bcst.b(this.jdField_a_of_type_ComTencentMobileqqActivityPermisionPrivacyActivity.app, "CliOper", "", "", "Setting_tab", "0X8009C07", 0, 0, "", "", "", "");
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

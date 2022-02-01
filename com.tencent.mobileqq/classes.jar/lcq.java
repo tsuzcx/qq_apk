@@ -1,30 +1,109 @@
-import android.content.Context;
-import com.rookery.translate.AITranslator;
-import com.rookery.translate.AITranslator.TranslatorType;
-import com.rookery.translate.type.Language;
-import com.rookery.translate.type.TranslateError;
-import java.util.List;
+import com.tencent.av.VideoController;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.av.core.VcControllerImpl;
+import com.tencent.mobileqq.utils.AudioHelper;
+import com.tencent.qphone.base.util.QLog;
 
 public class lcq
-  implements ldq
+  implements msc
 {
-  public lcq(AITranslator paramAITranslator, String paramString1, long paramLong, Context paramContext, agdn paramagdn, String paramString2, Language paramLanguage, ldp paramldp, List paramList1, List paramList2, int paramInt, AITranslator.TranslatorType paramTranslatorType) {}
-  
-  public void a(TranslateError paramTranslateError, Long paramLong)
+  public lcq(VideoController paramVideoController)
   {
-    AITranslator.a(this.jdField_a_of_type_ComRookeryTranslateAITranslator).remove(this.jdField_a_of_type_JavaLangString);
-    AITranslator.a(this.jdField_a_of_type_ComRookeryTranslateAITranslator, this.jdField_a_of_type_Long, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Agdn, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_JavaUtilList, this.jdField_b_of_type_JavaUtilList, this.jdField_a_of_type_ComRookeryTranslateTypeLanguage, this.jdField_a_of_type_Ldp, this.jdField_a_of_type_Int, this.jdField_a_of_type_ComRookeryTranslateAITranslator$TranslatorType, paramTranslateError, paramLong);
+    if (QLog.isColorLevel()) {
+      QLog.d(VideoController.jdField_a_of_type_JavaLangString, 2, "new QQPhoneStatusListener");
+    }
   }
   
-  public void a(List<Language> paramList, List<String> paramList1, Long paramLong)
+  public void a(boolean paramBoolean)
   {
-    AITranslator.a(this.jdField_a_of_type_ComRookeryTranslateAITranslator).remove(this.jdField_a_of_type_JavaLangString);
-    AITranslator.a(this.jdField_a_of_type_ComRookeryTranslateAITranslator, this.jdField_a_of_type_Long, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Agdn, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_ComRookeryTranslateTypeLanguage, this.jdField_a_of_type_Ldp, 0, AITranslator.TranslatorType.MS, paramList, paramList1, this.jdField_a_of_type_JavaUtilList, paramLong);
+    ley localley = this.a.a();
+    boolean bool2 = localley.T;
+    long l = AudioHelper.b();
+    boolean bool1;
+    if (QLog.isColorLevel())
+    {
+      String str = VideoController.jdField_a_of_type_JavaLangString;
+      StringBuilder localStringBuilder = new StringBuilder().append("onCallStateChanged, isCalling[").append(localley.b).append("->").append(paramBoolean).append("], mVcCtrl[");
+      if (this.a.jdField_a_of_type_ComTencentAvCoreVcControllerImpl != null)
+      {
+        bool1 = true;
+        QLog.w(str, 1, bool1 + "], sessionInfo state[" + localley.jdField_g_of_type_Int + "], isPeerOnPhone[" + bool2 + "], seq[" + l + "]");
+      }
+    }
+    else
+    {
+      if (this.a.jdField_a_of_type_ComTencentAvCoreVcControllerImpl != null) {
+        break label147;
+      }
+    }
+    for (;;)
+    {
+      return;
+      bool1 = false;
+      break;
+      label147:
+      if (paramBoolean) {
+        switch (localley.jdField_g_of_type_Int)
+        {
+        }
+      }
+      while (!bool2)
+      {
+        this.a.a(true, paramBoolean);
+        return;
+        this.a.a(localley.d, 218);
+        this.a.b(218);
+        this.a.b(localley.d, 0);
+        continue;
+        this.a.jdField_a_of_type_ComTencentAvCoreVcControllerImpl.rejectVideo(localley.d, this.a.c(), 65535);
+        this.a.a(localley.d, 219);
+        this.a.b(219);
+        this.a.b(localley.d, 1);
+        continue;
+        this.a.a(l, 3, Long.valueOf(localley.d).longValue());
+        if (QLog.isColorLevel())
+        {
+          QLog.e(VideoController.jdField_a_of_type_JavaLangString, 2, "Reject Video Request when chating");
+          continue;
+          this.a.a(true);
+          continue;
+          this.a.a(l, this.a.m, this.a.d);
+          this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(new Object[] { Integer.valueOf(67), Long.valueOf(this.a.d), Integer.valueOf(3) });
+          continue;
+          this.a.a(mue.b(localley.j), localley.jdField_g_of_type_Long, 86);
+          this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(new Object[] { Integer.valueOf(66), Long.valueOf(localley.jdField_g_of_type_Long) });
+          continue;
+          switch (localley.jdField_g_of_type_Int)
+          {
+          case 2: 
+          case 5: 
+          case 6: 
+          case 7: 
+          case 8: 
+          default: 
+            break;
+          case 3: 
+          case 4: 
+          case 9: 
+          case 10: 
+            this.a.a(false);
+          }
+        }
+      }
+    }
+  }
+  
+  protected void finalize()
+  {
+    super.finalize();
+    if (QLog.isColorLevel()) {
+      QLog.d(VideoController.jdField_a_of_type_JavaLangString, 2, "finalize QQPhoneStatusListener");
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     lcq
  * JD-Core Version:    0.7.0.1
  */

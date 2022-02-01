@@ -1,307 +1,109 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.os.Handler;
-import android.os.Looper;
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.troop.utils.TroopFileError.1;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import mqq.app.MobileQQ;
+import android.annotation.TargetApi;
+import android.opengl.EGL14;
+import android.opengl.EGLConfig;
+import android.opengl.EGLContext;
+import android.opengl.EGLDisplay;
+import android.opengl.EGLSurface;
+import android.util.Log;
+import android.view.Surface;
+import java.lang.reflect.Method;
 
+@TargetApi(18)
 public class bcmp
 {
-  public static WeakReference<bcmt> a = new WeakReference(null);
+  EGLContext jdField_a_of_type_AndroidOpenglEGLContext;
+  EGLDisplay jdField_a_of_type_AndroidOpenglEGLDisplay;
+  EGLSurface jdField_a_of_type_AndroidOpenglEGLSurface;
+  Surface jdField_a_of_type_AndroidViewSurface;
   
-  private static String a(QQAppInterface paramQQAppInterface, int paramInt)
+  public bcmp(Surface paramSurface)
   {
-    return paramQQAppInterface.getApplication().getResources().getString(paramInt);
-  }
-  
-  private static String a(QQAppInterface paramQQAppInterface, int paramInt, Object... paramVarArgs)
-  {
-    return String.format(a(paramQQAppInterface, paramInt), paramVarArgs);
-  }
-  
-  private static void a(Context paramContext, long paramLong)
-  {
-    bcmq localbcmq = new bcmq(paramLong);
-    bdgm.a(paramContext, 230, paramContext.getResources().getString(2131698040), paramContext.getResources().getString(2131698041), 2131698093, 2131697727, localbcmq, localbcmq).show();
-  }
-  
-  public static void a(Context paramContext, String paramString)
-  {
-    a(paramContext, paramString, 0);
-  }
-  
-  public static void a(Context paramContext, String paramString, int paramInt)
-  {
-    if (TextUtils.isEmpty(paramString)) {
-      return;
+    if (paramSurface == null) {
+      throw new NullPointerException();
     }
-    int i;
+    this.jdField_a_of_type_AndroidViewSurface = paramSurface;
+    a();
+  }
+  
+  void a()
+  {
+    this.jdField_a_of_type_AndroidOpenglEGLDisplay = EGL14.eglGetDisplay(0);
+    if (this.jdField_a_of_type_AndroidOpenglEGLDisplay == EGL14.EGL_NO_DISPLAY) {
+      throw new RuntimeException("unable to get EGL14 display");
+    }
+    Object localObject = new int[2];
+    if (!EGL14.eglInitialize(this.jdField_a_of_type_AndroidOpenglEGLDisplay, (int[])localObject, 0, (int[])localObject, 1))
+    {
+      this.jdField_a_of_type_AndroidOpenglEGLDisplay = null;
+      throw new RuntimeException("unable to initialize EGL14");
+    }
+    localObject = new EGLConfig[1];
+    int[] arrayOfInt = new int[1];
+    EGLDisplay localEGLDisplay = this.jdField_a_of_type_AndroidOpenglEGLDisplay;
+    int i = localObject.length;
+    if (!EGL14.eglChooseConfig(localEGLDisplay, new int[] { 12324, 8, 12323, 8, 12322, 8, 12352, 4, 12610, 1, 12344 }, 0, (EGLConfig[])localObject, 0, i, arrayOfInt, 0)) {
+      throw new RuntimeException("unable to find RGB888+recordable ES2 EGL config");
+    }
+    this.jdField_a_of_type_AndroidOpenglEGLContext = EGL14.eglCreateContext(this.jdField_a_of_type_AndroidOpenglEGLDisplay, localObject[0], EGL14.EGL_NO_CONTEXT, new int[] { 12440, 2, 12344 }, 0);
+    a("eglCreateContext");
+    if (this.jdField_a_of_type_AndroidOpenglEGLContext == null) {
+      throw new RuntimeException("null context");
+    }
+    this.jdField_a_of_type_AndroidOpenglEGLSurface = EGL14.eglCreateWindowSurface(this.jdField_a_of_type_AndroidOpenglEGLDisplay, localObject[0], this.jdField_a_of_type_AndroidViewSurface, new int[] { 12344 }, 0);
+    a("eglCreateWindowSurface");
+    if (this.jdField_a_of_type_AndroidOpenglEGLSurface == null) {
+      throw new RuntimeException("surface was null");
+    }
+  }
+  
+  public void a(long paramLong)
+  {
     try
     {
-      i = paramContext.getResources().getDimensionPixelSize(2131298914);
-      if (Looper.getMainLooper() != Looper.myLooper())
-      {
-        new Handler(Looper.getMainLooper()).post(new TroopFileError.1(paramContext, paramInt, paramString, i));
-        return;
-      }
-    }
-    catch (Exception paramContext)
-    {
-      QLog.e("TroopFileError", 1, "showTipsToast error!", paramContext);
+      Class.forName("android.opengl.EGLExt").getDeclaredMethod("eglPresentationTimeANDROID", new Class[] { EGLDisplay.class, EGLSurface.class, Long.TYPE }).invoke(null, new Object[] { this.jdField_a_of_type_AndroidOpenglEGLDisplay, this.jdField_a_of_type_AndroidOpenglEGLSurface, Long.valueOf(paramLong) });
       return;
     }
-    QQToast.a(paramContext, paramInt, paramString, 0).b(i);
+    catch (Exception localException) {}
   }
   
-  public static void a(bcmr parambcmr, long paramLong, QQAppInterface paramQQAppInterface, Context paramContext)
+  void a(String paramString)
   {
-    if ((parambcmr == null) || (paramContext == null)) {
-      return;
-    }
-    if (!TextUtils.isEmpty(parambcmr.jdField_b_of_type_JavaLangString))
+    for (int i = 0;; i = 1)
     {
-      a(paramContext, parambcmr.jdField_b_of_type_JavaLangString, 1);
-      return;
-    }
-    String str = bcnt.a(parambcmr.jdField_a_of_type_JavaLangString);
-    int i;
-    switch (parambcmr.jdField_a_of_type_Int)
-    {
-    default: 
-      str = null;
-      i = 0;
-    }
-    for (;;)
-    {
-      if ((parambcmr.jdField_a_of_type_Int != 602) && (parambcmr.jdField_a_of_type_Int != 604) && (parambcmr.jdField_a_of_type_Int != 605)) {
-        break label1264;
-      }
-      if (BaseActivity.sTopActivity == null) {
+      int j = EGL14.eglGetError();
+      if (j == 12288) {
         break;
       }
-      bkjy.a(paramQQAppInterface, BaseActivity.sTopActivity, BaseActivity.sTopActivity.getTitleBarHeight());
-      return;
-      str = a(paramQQAppInterface, 2131698117);
-      i = 0;
-      continue;
-      str = a(paramQQAppInterface, 2131698042);
-      i = 0;
-      continue;
-      a(paramContext, paramLong);
-      str = null;
-      i = 0;
-      continue;
-      str = a(paramQQAppInterface, 2131698207, new Object[] { str });
-      i = 0;
-      continue;
-      str = a(paramQQAppInterface, 2131698205, new Object[] { str });
-      i = 0;
-      continue;
-      str = a(paramQQAppInterface, 2131698206);
-      i = 0;
-      continue;
-      str = a(paramQQAppInterface, 2131698204);
-      i = 1;
-      continue;
-      str = a(paramQQAppInterface, 2131698208);
-      i = 2;
-      continue;
-      str = a(paramQQAppInterface, 2131697743, new Object[] { str });
-      i = 0;
-      continue;
-      str = a(paramQQAppInterface, 2131697741);
-      i = 0;
-      continue;
-      str = a(paramQQAppInterface, 2131697742);
-      i = 1;
-      continue;
-      str = a(paramQQAppInterface, 2131698200);
-      i = 1;
-      continue;
-      str = a(paramQQAppInterface, 2131698228);
-      azqs.b(paramQQAppInterface, "P_CliOper", "Grp_files", "", "power", "nopower_upload", 0, 0, String.format("%d", new Object[] { Long.valueOf(paramLong) }), "2", "", "");
-      i = 0;
-      continue;
-      str = a(paramQQAppInterface, 2131698226, new Object[] { str });
-      i = 0;
-      continue;
-      str = a(paramQQAppInterface, 2131698221, new Object[] { str });
-      i = 0;
-      continue;
-      str = a(paramQQAppInterface, 2131698164, new Object[] { str });
-      i = 0;
-      continue;
-      str = a(paramQQAppInterface, 2131698223, new Object[] { str });
-      i = 0;
-      continue;
-      str = a(paramQQAppInterface, 2131698222, new Object[] { str });
-      i = 0;
-      continue;
-      str = a(paramQQAppInterface, 2131698117);
-      i = 1;
-      continue;
-      str = a(paramQQAppInterface, 2131697799);
-      i = 1;
-      continue;
-      str = a(paramQQAppInterface, 2131697800);
-      i = 0;
-      continue;
-      str = a(paramQQAppInterface, 2131697760);
-      i = 1;
-      continue;
-      str = a(paramQQAppInterface, 2131697756);
-      i = 1;
-      continue;
-      str = a(paramQQAppInterface, 2131697758, new Object[] { str });
-      i = 1;
-      continue;
-      str = a(paramQQAppInterface, 2131697759, new Object[] { str });
-      i = 1;
-      continue;
-      str = a(paramQQAppInterface, 2131697757, new Object[] { str });
-      i = 0;
-      continue;
-      if (bbsb.a(parambcmr.jdField_b_of_type_Int))
-      {
-        str = a(paramQQAppInterface, 2131698220, new Object[] { str });
-        i = 1;
-      }
-      else
-      {
-        str = a(paramQQAppInterface, 2131697755, new Object[] { str });
-        i = 1;
-        continue;
-        str = a(paramQQAppInterface, 2131698200);
-        i = 1;
-        continue;
-        str = a(paramQQAppInterface, 2131697813);
-        i = 0;
-        continue;
-        str = a(paramQQAppInterface, 2131697814);
-        i = 0;
-        continue;
-        str = a(paramQQAppInterface, 2131697817);
-        i = 2;
-        continue;
-        str = a(paramQQAppInterface, 2131697818);
-        i = 1;
-        continue;
-        str = parambcmr.jdField_b_of_type_JavaLangString;
-        i = 0;
-        continue;
-        str = a(paramQQAppInterface, 2131697819);
-        i = 1;
-        continue;
-        str = a(paramQQAppInterface, 2131697821);
-        i = 0;
-        continue;
-        str = a(paramQQAppInterface, 2131697820);
-        i = 0;
-        continue;
-        str = a(paramQQAppInterface, 2131697822);
-        i = 1;
-        continue;
-        if (!TextUtils.isEmpty(parambcmr.jdField_b_of_type_JavaLangString))
-        {
-          str = parambcmr.jdField_b_of_type_JavaLangString;
-          i = 0;
-        }
-        else
-        {
-          str = a(paramQQAppInterface, 2131697823);
-          i = 0;
-          continue;
-          str = a(paramQQAppInterface, 2131697816);
-          i = 2;
-          continue;
-          str = a(paramQQAppInterface, 2131697815);
-          i = 0;
-        }
-      }
+      Log.e("InputSurface", paramString + ": EGL error: 0x" + Integer.toHexString(j));
     }
-    label1264:
-    if ((parambcmr.jdField_a_of_type_Int == 601) || (parambcmr.jdField_a_of_type_Int == 605) || (parambcmr.jdField_a_of_type_Int == 802) || (parambcmr.jdField_a_of_type_Int == 604) || (parambcmr.jdField_a_of_type_Int == 702))
-    {
-      a(paramQQAppInterface, paramContext, str, i);
-      return;
+    if (i != 0) {
+      throw new RuntimeException("EGL error encountered (see log)");
     }
-    a(paramContext, str, i);
   }
   
-  public static void a(QQAppInterface paramQQAppInterface, long paramLong, int paramInt)
+  public boolean a()
   {
-    a(paramQQAppInterface, paramLong, 7, paramInt);
+    return EGL14.eglSwapBuffers(this.jdField_a_of_type_AndroidOpenglEGLDisplay, this.jdField_a_of_type_AndroidOpenglEGLSurface);
   }
   
-  public static void a(QQAppInterface paramQQAppInterface, long paramLong, int paramInt1, int paramInt2)
+  public void b()
   {
-    a(paramQQAppInterface, paramLong, null, paramInt1, paramInt2);
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface, long paramLong, String paramString, int paramInt1, int paramInt2)
-  {
-    if ((paramQQAppInterface == null) || (paramInt2 == 0)) {}
-    do
-    {
-      return;
-      if (QLog.isColorLevel())
-      {
-        StringBuilder localStringBuilder = new StringBuilder("reportSimpleError==> troopUin:");
-        localStringBuilder.append(paramLong).append(",filename:").append(paramString).append(",status:").append(paramInt1).append(",errorCode:").append(paramInt2);
-        QLog.e("TroopFileError", 2, localStringBuilder.toString());
-      }
-      paramQQAppInterface = (aloz)paramQQAppInterface.a(22);
-    } while (paramQQAppInterface == null);
-    paramQQAppInterface.b(new bcmr(paramString, paramLong, paramInt1, paramInt2));
-  }
-  
-  private static void a(QQAppInterface paramQQAppInterface, Context paramContext, String paramString, int paramInt)
-  {
-    if (bkjc.a())
-    {
-      if (bkjc.b()) {
-        bkjc.a(paramQQAppInterface);
-      }
+    if (EGL14.eglGetCurrentContext().equals(this.jdField_a_of_type_AndroidOpenglEGLContext)) {
+      EGL14.eglMakeCurrent(this.jdField_a_of_type_AndroidOpenglEGLDisplay, EGL14.EGL_NO_SURFACE, EGL14.EGL_NO_SURFACE, EGL14.EGL_NO_CONTEXT);
     }
-    else {
-      return;
-    }
-    a(paramContext, paramString, paramInt);
+    EGL14.eglDestroySurface(this.jdField_a_of_type_AndroidOpenglEGLDisplay, this.jdField_a_of_type_AndroidOpenglEGLSurface);
+    EGL14.eglDestroyContext(this.jdField_a_of_type_AndroidOpenglEGLDisplay, this.jdField_a_of_type_AndroidOpenglEGLContext);
+    this.jdField_a_of_type_AndroidViewSurface.release();
+    this.jdField_a_of_type_AndroidOpenglEGLDisplay = null;
+    this.jdField_a_of_type_AndroidOpenglEGLContext = null;
+    this.jdField_a_of_type_AndroidOpenglEGLSurface = null;
+    this.jdField_a_of_type_AndroidViewSurface = null;
   }
   
-  public static void a(QQAppInterface paramQQAppInterface, bcmr parambcmr)
+  public void c()
   {
-    if ((paramQQAppInterface == null) || (parambcmr == null) || (parambcmr.jdField_a_of_type_Int == 0)) {}
-    do
-    {
-      return;
-      paramQQAppInterface = (aloz)paramQQAppInterface.a(22);
-    } while (paramQQAppInterface == null);
-    paramQQAppInterface.b(parambcmr);
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface, bcmt parambcmt)
-  {
-    if ((a != null) && (a.get() != null))
-    {
-      paramQQAppInterface.removeObserver((alpg)a.get());
-      a = null;
-    }
-    a = new WeakReference(parambcmt);
-    paramQQAppInterface.addObserver(parambcmt);
-  }
-  
-  public static void b(QQAppInterface paramQQAppInterface, bcmt parambcmt)
-  {
-    paramQQAppInterface.removeObserver(parambcmt);
-    if ((a != null) && (a.get() == parambcmt)) {
-      a = null;
+    if (!EGL14.eglMakeCurrent(this.jdField_a_of_type_AndroidOpenglEGLDisplay, this.jdField_a_of_type_AndroidOpenglEGLSurface, this.jdField_a_of_type_AndroidOpenglEGLSurface, this.jdField_a_of_type_AndroidOpenglEGLContext)) {
+      throw new RuntimeException("eglMakeCurrent failed");
     }
   }
 }

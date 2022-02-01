@@ -1,69 +1,67 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.atomic.AtomicBoolean;
-import mqq.manager.TicketManager;
-import mqq.observer.SSOAccountObserver;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
-class batb
-  extends basy
+public class batb
 {
-  private SSOAccountObserver a;
-  private AtomicBoolean c = new AtomicBoolean(false);
+  public final int a;
+  public final long a;
+  private List<basb> a;
+  private int b;
+  public final long b;
+  private int c;
   
-  batb(basx parambasx)
+  public batb(int paramInt, long paramLong1, long paramLong2)
   {
-    super(parambasx);
-    this.jdField_a_of_type_MqqObserverSSOAccountObserver = new batc(this);
-    this.jdField_a_of_type_JavaLangString = "GetSKeyStep";
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_Long = paramLong1;
+    this.jdField_b_of_type_Long = paramLong2;
   }
   
-  protected boolean a()
+  private void a()
   {
-    return (this.c.get()) && (!TextUtils.isEmpty(basx.f(this.jdField_b_of_type_Basx)));
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext()) {
+      ((basb)localIterator.next()).b();
+    }
+    this.jdField_a_of_type_JavaUtilList.clear();
+    this.jdField_b_of_type_Int = 0;
   }
   
-  protected void d()
+  private void b()
   {
-    String str = this.jdField_b_of_type_Basx.a.getCurrentAccountUin();
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.share.ForwardSdkShareProcessor", 2, "GetSKeyStep|process|account=" + str + ",refresh=" + basx.a(this.jdField_b_of_type_Basx));
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext()) {
+      ((basb)localIterator.next()).c();
     }
-    if (this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) {
-      f();
-    }
-    for (;;)
+    this.jdField_a_of_type_JavaUtilList.clear();
+    this.jdField_b_of_type_Int = 0;
+  }
+  
+  public int a(float paramFloat)
+  {
+    int i = this.jdField_a_of_type_JavaUtilList.size();
+    if (i >= 6)
     {
-      return;
-      if (!this.jdField_b_of_type_Basx.e())
-      {
-        QLog.d("Q.share.ForwardSdkShareProcessor", 1, "illegal app = " + this.jdField_b_of_type_Basx.a);
-        this.jdField_b_of_type_Basx.b(9366, "illegal app");
-        c();
-        return;
+      basb localbasb1 = (basb)this.jdField_a_of_type_JavaUtilList.get(0);
+      basb localbasb2 = (basb)this.jdField_a_of_type_JavaUtilList.get(i - 1);
+      float f = (float)(localbasb2.b() - localbasb1.b()) * 1000.0F / (i - 1);
+      paramFloat = (float)(Math.abs(localbasb2.a()) - Math.abs(localbasb1.a())) / ((i - 1) * paramFloat);
+      f = 1.1F * f;
+      if (f < paramFloat) {
+        return 1;
       }
-      int i;
-      if (!basx.a(this.jdField_b_of_type_Basx))
-      {
-        str = ((TicketManager)this.jdField_b_of_type_Basx.a.getManager(2)).getSkey(str);
-        if (!TextUtils.isEmpty(str))
-        {
-          i = 0;
-          basx.d(this.jdField_b_of_type_Basx, str);
-          this.c.set(true);
-          b();
-        }
-      }
-      while (i != 0)
-      {
-        if (basx.b(this.jdField_b_of_type_Basx) == 11) {
-          aseh.a("KEY_SSO_GET_TICKET_NO_PASSWD");
-        }
-        this.jdField_b_of_type_Basx.a.ssoGetTicketNoPasswd(this.jdField_b_of_type_Basx.a.getCurrentAccountUin(), 4096, this.jdField_a_of_type_MqqObserverSSOAccountObserver);
-        return;
-        i = 1;
-      }
+      i = (int)Math.floor(f / (f - paramFloat));
+      yqp.a("FlowEdit_VideoFlowDecodeTask", "averageDecodeTime = %.1f us, averagePlayTime = %.1f us, dropRate = %d", Float.valueOf(f), Float.valueOf(paramFloat), Integer.valueOf(i));
+      return Math.min(8, i);
     }
+    return 1;
+  }
+  
+  public String toString()
+  {
+    return "DecodeSegmentInfo{Index=" + this.jdField_a_of_type_Int + ", StartUs=" + this.jdField_a_of_type_Long + ", EndUs=" + this.jdField_b_of_type_Long + ", Size=" + this.jdField_a_of_type_JavaUtilList.size() + ", Decoding=" + this.jdField_b_of_type_Int + '}';
   }
 }
 

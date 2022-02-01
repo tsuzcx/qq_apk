@@ -1,50 +1,15 @@
-import com.tencent.mobileqq.javahooksdk.HookMethodCallback;
-import com.tencent.mobileqq.javahooksdk.JavaHookBridge;
-import com.tencent.mobileqq.javahooksdk.MethodHookParam;
-
 class atgm
-  implements HookMethodCallback
+  extends atfq
 {
-  private int a;
-  
-  public atgm(int paramInt)
+  public atgm(atfe paramatfe)
   {
-    this.a = paramInt;
+    super(paramatfe);
   }
   
-  public void afterHookedMethod(MethodHookParam paramMethodHookParam)
+  protected String a()
   {
-    if (paramMethodHookParam.throwable == null) {
-      return;
-    }
-    Throwable localThrowable;
-    if (paramMethodHookParam.throwable.getCause() != null) {
-      localThrowable = paramMethodHookParam.throwable.getCause();
-    }
-    while ((localThrowable instanceof OutOfMemoryError))
-    {
-      atgl.b();
-      try
-      {
-        paramMethodHookParam.result = JavaHookBridge.invokeOriginMethod(paramMethodHookParam.method, paramMethodHookParam.thisObject, paramMethodHookParam.args);
-        paramMethodHookParam.throwable = null;
-        atgl.a(true, this.a);
-        return;
-      }
-      catch (Exception paramMethodHookParam)
-      {
-        atgl.a(false, this.a);
-        return;
-        localThrowable = paramMethodHookParam.throwable;
-      }
-      catch (Error paramMethodHookParam)
-      {
-        atgl.a(false, this.a);
-      }
-    }
+    return "StateUploadoneWhenPause";
   }
-  
-  public void beforeHookedMethod(MethodHookParam paramMethodHookParam) {}
 }
 
 

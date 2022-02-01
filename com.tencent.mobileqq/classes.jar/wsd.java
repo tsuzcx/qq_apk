@@ -1,66 +1,46 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import java.util.List;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.biz.qqstory.msgTabNode.model.MsgTabNodeListLoader.MsgTabWorkThreadHandler.1;
+import java.util.ArrayList;
+import java.util.Set;
 
 public class wsd
-  extends wss
-  implements urr<wse, wsf>
+  extends Handler
 {
-  private boolean a;
-  
-  public String a()
+  public wsd(wrx paramwrx, Looper paramLooper)
   {
-    return "GetPhotographyGuideInfoStep";
+    super(paramLooper);
   }
   
-  public void a()
+  public void handleMessage(Message paramMessage)
   {
-    wxe.d("Q.qqstory.home.GetPhotographyGuideInfoStep", "run");
-    wse localwse = new wse();
-    urp.a().a(localwse, this);
-  }
-  
-  public void a(@NonNull wse paramwse, @Nullable wsf paramwsf, @NonNull ErrorMessage paramErrorMessage)
-  {
-    if ((paramErrorMessage.isSuccess()) && (paramwsf != null))
+    super.handleMessage(paramMessage);
+    switch (paramMessage.what)
     {
-      wxe.b("Q.qqstory.home.GetPhotographyGuideInfoStep", "onCmdRespond success.");
-      paramwse = (uvt)uwa.a(10);
-      paramwsf = paramwsf.a;
-      if ((paramwsf != null) && (paramwsf.size() > 0)) {
-        paramwse.b("StorySvc.get_photography_guide.word", paramwsf.get(0));
-      }
-      for (;;)
+    }
+    do
+    {
+      do
       {
-        d();
         return;
-        paramwse.b("StorySvc.get_photography_guide.word", alud.a(2131705655));
-      }
-    }
-    wxe.d("Q.qqstory.home.GetPhotographyGuideInfoStep", "onCmdRespond : failed. errorMsg:%s , request:%s .", new Object[] { paramErrorMessage, paramwse });
-    b(paramErrorMessage);
-  }
-  
-  public void b() {}
-  
-  public void c()
-  {
-    try
-    {
-      this.a = true;
+        removeMessages(1);
+        yqp.b("Q.qqstory.msgTab.MsgTabNodeListLoader.workHandler", "handleMessage() MSG_LOAD_USER_ITEM_FROM_UI");
+        paramMessage = new ArrayList(this.a.jdField_a_of_type_JavaUtilSet);
+        this.a.jdField_a_of_type_JavaUtilSet.clear();
+      } while (!wrx.a(this.a, paramMessage, false));
+      this.a.jdField_a_of_type_AndroidOsHandler.post(new MsgTabNodeListLoader.MsgTabWorkThreadHandler.1(this));
       return;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
+      yqp.b("Q.qqstory.msgTab.MsgTabNodeListLoader.workHandler", "handleMessage() MSG_SCHEDULE_REQUIRE_USER_ITEM");
+      paramMessage = (String)paramMessage.obj;
+    } while (this.a.jdField_a_of_type_JavaUtilSet.contains(paramMessage));
+    this.a.jdField_a_of_type_JavaUtilSet.add(paramMessage);
+    sendEmptyMessageDelayed(1, 2500L);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     wsd
  * JD-Core Version:    0.7.0.1
  */

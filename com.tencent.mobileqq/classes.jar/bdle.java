@@ -1,197 +1,223 @@
-import android.annotation.TargetApi;
-import android.app.Activity;
 import android.content.Context;
 import android.content.res.Resources;
-import android.os.Build.VERSION;
-import android.view.Display;
+import android.graphics.drawable.Drawable;
+import android.view.LayoutInflater;
+import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.ViewGroup.LayoutParams;
-import android.view.ViewGroup.MarginLayoutParams;
-import android.view.WindowManager;
-import android.widget.GridView;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
 import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import com.tencent.mobileqq.activity.selectmember.ResultRecord;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.common.config.AppSetting;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.mobileqq.filemanager.widget.AsyncImageView;
+import com.tencent.mobileqq.teamworkforgroup.GroupPadTemplateInfo;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Set;
 
 public class bdle
-  extends bdjz
+  extends BaseAdapter
+  implements View.OnClickListener
 {
-  TextView a;
-  RelativeLayout b;
-  RelativeLayout c;
-  RelativeLayout d;
-  int i;
+  public static int a;
+  public static int b;
+  Context jdField_a_of_type_AndroidContentContext;
+  protected View.OnClickListener a;
+  final List<GroupPadTemplateInfo> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private Set<String> jdField_a_of_type_JavaUtilSet = new HashSet();
+  private Set<String> b;
   
-  public bdle(Context paramContext, int paramInt)
+  static
   {
-    super(paramContext, paramInt);
-    this.i = aepi.a(35.0F, paramContext.getResources());
+    jdField_a_of_type_Int = 1;
+    jdField_b_of_type_Int = 2;
   }
   
-  public float a(Activity paramActivity, float paramFloat)
+  public bdle(Context paramContext, View.OnClickListener paramOnClickListener)
   {
-    Display localDisplay = paramActivity.getWindowManager().getDefaultDisplay();
-    float f2 = localDisplay.getWidth();
-    int j = paramActivity.getResources().getDimensionPixelSize(2131296779);
-    float f1 = paramFloat;
-    if (j > f2 * paramFloat)
+    this.jdField_b_of_type_JavaUtilSet = new HashSet();
+    this.jdField_a_of_type_AndroidViewView$OnClickListener = paramOnClickListener;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+  }
+  
+  private void a(AsyncImageView paramAsyncImageView, GroupPadTemplateInfo paramGroupPadTemplateInfo)
+  {
+    if (paramGroupPadTemplateInfo != null)
     {
-      f2 = j / localDisplay.getWidth();
-      f1 = paramFloat;
-      if (f2 > paramFloat)
+      Drawable localDrawable = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130840250);
+      if (!bkgj.a(paramGroupPadTemplateInfo.mobThumbUrl)) {
+        paramAsyncImageView.setImageDrawable(localDrawable);
+      }
+      for (;;)
       {
-        f1 = paramFloat;
-        if (f2 < 1.0D) {
-          f1 = f2;
+        return;
+        String str = paramGroupPadTemplateInfo.mobThumbUrl;
+        paramGroupPadTemplateInfo = URLDrawable.URLDrawableOptions.obtain();
+        paramGroupPadTemplateInfo.mLoadingDrawable = localDrawable;
+        paramGroupPadTemplateInfo.mFailedDrawable = localDrawable;
+        Object localObject = null;
+        try
+        {
+          paramGroupPadTemplateInfo = URLDrawable.getDrawable(str, paramGroupPadTemplateInfo);
+          if (paramGroupPadTemplateInfo != null)
+          {
+            if ((paramGroupPadTemplateInfo.getStatus() == 2) && (this.jdField_b_of_type_JavaUtilSet.remove(str))) {
+              paramGroupPadTemplateInfo.restartDownload();
+            }
+            paramGroupPadTemplateInfo.setDownloadListener(new bdlf(this, str));
+            paramAsyncImageView.setImageDrawable(paramGroupPadTemplateInfo);
+            if (!QLog.isColorLevel()) {
+              continue;
+            }
+            QLog.d("GroupPadTemplateAdapter", 2, "loadThumbImage is ok. url: " + str);
+          }
+        }
+        catch (Exception localException)
+        {
+          for (;;)
+          {
+            paramGroupPadTemplateInfo = localObject;
+            if (QLog.isColorLevel())
+            {
+              QLog.e("GroupPadTemplateAdapter", 2, localException, new Object[] { "loadThumbImage failed" });
+              paramGroupPadTemplateInfo = localObject;
+            }
+          }
+          paramAsyncImageView.setImageDrawable(localDrawable);
+          return;
         }
       }
     }
-    return f1;
+    paramAsyncImageView.setImageResource(2130840250);
   }
   
-  public void a(QQAppInterface paramQQAppInterface, Activity paramActivity, String paramString1, int paramInt, String paramString2, boolean paramBoolean)
+  public GroupPadTemplateInfo a()
   {
-    QLog.i("Forward.Dialog", 1, "uin: " + paramString1 + " uinType: " + paramInt + " titleStr: " + paramString2);
-    this.b.setVisibility(0);
-    this.title.setVisibility(8);
-    this.d.setVisibility(8);
-    this.c.setVisibility(0);
-    this.a.setText(paramString2);
-    ImageView localImageView1 = (ImageView)this.b.findViewById(2131368180);
-    RelativeLayout localRelativeLayout = (RelativeLayout)this.b.findViewById(2131377976);
-    ImageView localImageView2 = (ImageView)this.b.findViewById(2131368178);
-    bdlf localbdlf = new bdlf(this, paramQQAppInterface, paramString2, paramString1, paramInt);
-    paramActivity = new bdlg(this, paramInt, paramQQAppInterface, paramActivity, paramString1, paramString2);
-    if ((paramInt == 0) || (paramInt == 1000))
-    {
-      localImageView1.setImageDrawable(bdbk.a(paramQQAppInterface, 1, paramString1));
-      this.c.setOnClickListener(paramActivity);
-      this.c.setBackgroundResource(2130839719);
-      return;
-    }
-    if (paramInt == 1)
-    {
-      if (paramBoolean) {}
-      for (paramQQAppInterface = bdbk.a(paramQQAppInterface, 113, paramString1);; paramQQAppInterface = bdbk.a(paramQQAppInterface, 4, paramString1))
-      {
-        localImageView1.setImageDrawable(paramQQAppInterface);
-        localImageView1.setOnClickListener(localbdlf);
-        localRelativeLayout.setOnClickListener(paramActivity);
-        localRelativeLayout.setBackgroundResource(2130839719);
-        return;
-      }
-    }
-    if (paramInt == 3000)
-    {
-      localImageView1.setImageDrawable(bdbk.a(paramQQAppInterface, 101, paramString1));
-      localImageView1.setOnClickListener(localbdlf);
-      localRelativeLayout.setOnClickListener(paramActivity);
-      localRelativeLayout.setBackgroundResource(2130839719);
-      return;
-    }
-    if (paramInt == 1006)
-    {
-      localImageView1.setImageDrawable(bdbk.a(paramQQAppInterface, 11, paramString1));
-      this.c.setOnClickListener(paramActivity);
-      this.c.setBackgroundResource(2130839719);
-      return;
-    }
-    if (alof.z.equals(paramString1))
-    {
-      localImageView1.setImageResource(2130843834);
-      localImageView1.setOnClickListener(localbdlf);
-      this.c.setOnClickListener(paramActivity);
-      this.c.setBackgroundResource(2130839719);
-      return;
-    }
-    if (alof.A.equals(paramString1))
-    {
-      localImageView1.setImageResource(2130843832);
-      localImageView1.setOnClickListener(localbdlf);
-      this.c.setOnClickListener(paramActivity);
-      this.c.setBackgroundResource(2130839719);
-      return;
-    }
-    localImageView2.setVisibility(8);
-    localImageView1.setImageDrawable(bdbk.a(1, 3));
+    GroupPadTemplateInfo localGroupPadTemplateInfo = new GroupPadTemplateInfo();
+    localGroupPadTemplateInfo.docOrSheetType = 1;
+    localGroupPadTemplateInfo.templateName = this.jdField_a_of_type_AndroidContentContext.getString(2131692808);
+    return localGroupPadTemplateInfo;
   }
   
-  @TargetApi(16)
-  public void a(QQAppInterface paramQQAppInterface, Activity paramActivity, List<ResultRecord> paramList, boolean paramBoolean)
+  public void a(View.OnClickListener paramOnClickListener)
   {
-    this.b.setVisibility(0);
-    this.d.setVisibility(0);
-    this.title.setVisibility(8);
-    this.c.setVisibility(8);
-    ((TextView)this.b.findViewById(2131379214)).setText(alud.a(2131710586));
-    GridView localGridView = (GridView)this.b.findViewById(2131367429);
-    localGridView.setNumColumns(5);
-    localGridView.setHorizontalSpacing((aepi.a(236.0F, getContext().getResources()) - this.i * 5) / 5);
-    localGridView.setVerticalSpacing(aepi.a(10.0F, getContext().getResources()));
-    Object localObject = (RelativeLayout.LayoutParams)localGridView.getLayoutParams();
-    if (Build.VERSION.SDK_INT >= 16) {}
-    for (int j = localGridView.getVerticalSpacing();; j = 0)
+    this.jdField_a_of_type_AndroidViewView$OnClickListener = paramOnClickListener;
+  }
+  
+  public void a(List<GroupPadTemplateInfo> paramList)
+  {
+    this.jdField_a_of_type_JavaUtilList.clear();
+    if ((paramList != null) && (paramList.size() > 0))
     {
-      if (paramList.size() <= 5) {}
-      for (((RelativeLayout.LayoutParams)localObject).height = this.i;; ((RelativeLayout.LayoutParams)localObject).height = (j + this.i * 2))
+      paramList = paramList.iterator();
+      while (paramList.hasNext())
       {
-        localGridView.setLayoutParams((ViewGroup.LayoutParams)localObject);
-        localGridView.setFocusable(false);
-        localObject = null;
-        if (paramBoolean) {
-          localObject = new bdlh(this, paramActivity);
+        GroupPadTemplateInfo localGroupPadTemplateInfo = (GroupPadTemplateInfo)paramList.next();
+        if ((localGroupPadTemplateInfo != null) && (localGroupPadTemplateInfo.templateID >= 0)) {
+          this.jdField_a_of_type_JavaUtilList.add(localGroupPadTemplateInfo);
         }
-        localGridView.setAdapter(new bdli(this, paramQQAppInterface, getContext(), paramList, (View.OnClickListener)localObject));
-        return;
+      }
+      paramList = a();
+      this.jdField_a_of_type_JavaUtilList.add(paramList);
+    }
+    notifyDataSetChanged();
+  }
+  
+  public int getCount()
+  {
+    return this.jdField_a_of_type_JavaUtilList.size();
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    if ((paramInt >= 0) && (paramInt < this.jdField_a_of_type_JavaUtilList.size())) {
+      return this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    }
+    return null;
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    GroupPadTemplateInfo localGroupPadTemplateInfo = (GroupPadTemplateInfo)getItem(paramInt);
+    if (localGroupPadTemplateInfo != null) {
+      return localGroupPadTemplateInfo.templateID;
+    }
+    return 0L;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    GroupPadTemplateInfo localGroupPadTemplateInfo = (GroupPadTemplateInfo)getItem(paramInt);
+    View localView;
+    if (getCount() == paramInt + 1)
+    {
+      localView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131559246, null);
+      paramView = new bdlg(this);
+      paramView.jdField_a_of_type_Int = jdField_b_of_type_Int;
+      paramView.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView = ((AsyncImageView)localView.findViewById(2131367668));
+      paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131367664));
+      paramView.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131367662));
+      paramView.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupPadTemplateInfo = localGroupPadTemplateInfo;
+      localView.setTag(paramView);
+      localView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
+      if (paramView.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupPadTemplateInfo == null) {
+        break label316;
+      }
+      if (paramView.jdField_a_of_type_Int != jdField_a_of_type_Int) {
+        break label293;
+      }
+      a(paramView.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView, localGroupPadTemplateInfo);
+      label141:
+      paramView.jdField_a_of_type_AndroidWidgetTextView.setText(localGroupPadTemplateInfo.templateName);
+      label153:
+      if (AppSetting.c)
+      {
+        if (localGroupPadTemplateInfo == null) {
+          break label338;
+        }
+        localView.setContentDescription(localGroupPadTemplateInfo.templateName);
       }
     }
-  }
-  
-  public void c()
-  {
-    if (this.d == null) {
-      return;
-    }
-    ViewGroup.MarginLayoutParams localMarginLayoutParams = (ViewGroup.MarginLayoutParams)this.d.getLayoutParams();
-    localMarginLayoutParams.topMargin = aepi.a(2.0F, getContext().getResources());
-    this.d.setLayoutParams(localMarginLayoutParams);
-  }
-  
-  public void c(String paramString)
-  {
-    this.title.setVisibility(8);
-    this.b.setVisibility(0);
-    ((TextView)this.b.findViewById(2131379214)).setText(paramString);
-  }
-  
-  public void dismiss()
-  {
-    if (hasPreViewInDialog())
+    for (;;)
     {
-      removePreviewView();
-      return;
+      EventCollector.getInstance().onListGetView(paramInt, localView, paramViewGroup, getItemId(paramInt));
+      return localView;
+      localView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131559245, null);
+      paramView = new bdlg(this);
+      paramView.jdField_a_of_type_Int = jdField_a_of_type_Int;
+      paramView.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView = ((AsyncImageView)localView.findViewById(2131367667));
+      paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131367666));
+      paramView.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131367661));
+      paramView.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupPadTemplateInfo = localGroupPadTemplateInfo;
+      localView.setTag(paramView);
+      localView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
+      break;
+      label293:
+      if (paramView.jdField_a_of_type_Int != jdField_b_of_type_Int) {
+        break label141;
+      }
+      paramView.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView.setImageResource(2130840252);
+      break label141;
+      label316:
+      paramView.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView.setImageResource(2130840250);
+      paramView.jdField_a_of_type_AndroidWidgetTextView.setText("");
+      break label153;
+      label338:
+      localView.setContentDescription("");
     }
-    super.dismiss();
   }
   
-  @TargetApi(11)
-  public void setContentView(int paramInt)
-  {
-    super.setContentView(paramInt);
-    this.b = ((RelativeLayout)findViewById(2131375985));
-    this.a = ((TextView)this.b.findViewById(2131379217));
-    this.c = ((RelativeLayout)this.b.findViewById(2131367563));
-    this.d = ((RelativeLayout)this.b.findViewById(2131367564));
-  }
+  public void onClick(View paramView) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bdle
  * JD-Core Version:    0.7.0.1
  */

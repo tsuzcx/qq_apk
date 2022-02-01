@@ -1,22 +1,12 @@
-final class apdl<T>
+class apdl
 {
-  public apdl<T> a;
-  public final T a;
-  public apdl<T> b;
-  
-  public apdl()
-  {
-    this.jdField_a_of_type_JavaLangObject = null;
-    this.jdField_a_of_type_Apdl = this;
-    this.b = this;
-  }
-  
-  public apdl(T paramT, apdl<T> paramapdl1, apdl<T> paramapdl2)
-  {
-    this.jdField_a_of_type_JavaLangObject = paramT;
-    this.jdField_a_of_type_Apdl = paramapdl1;
-    this.b = paramapdl2;
-  }
+  int jdField_a_of_type_Int;
+  long jdField_a_of_type_Long;
+  int b;
+  int c;
+  int d;
+  int e;
+  int f;
 }
 
 

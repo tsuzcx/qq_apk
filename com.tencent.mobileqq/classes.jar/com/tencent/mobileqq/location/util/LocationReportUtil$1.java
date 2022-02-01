@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.location.util;
 
 import android.os.Handler;
-import atuf;
-import bdne;
+import awbj;
+import bgsg;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
 
@@ -13,24 +13,24 @@ public final class LocationReportUtil$1
   
   public void run()
   {
-    if (atuf.a())
+    if (awbj.a())
     {
       if (QLog.isColorLevel()) {
         QLog.d("LocationReportUtil", 2, new Object[] { "run: invoked. need stop report. ", " reporting: ", Boolean.valueOf(this.a) });
       }
       return;
     }
-    long l = System.currentTimeMillis() / 1000L - atuf.a();
-    bdne.a(BaseApplicationImpl.getApplication(), this.a, (int)l);
+    long l = System.currentTimeMillis() / 1000L - awbj.a();
+    bgsg.a(BaseApplicationImpl.getApplication(), this.a, (int)l);
     if (QLog.isColorLevel()) {
       QLog.d("LocationReportUtil", 2, new Object[] { "updateLocationBgReport.run: invoked. ", " sProcBgAliveTimeSecond: ", Long.valueOf(l), " reporting: ", Boolean.valueOf(this.a) });
     }
-    atuf.a().postDelayed(this, 30000L);
+    awbj.a().postDelayed(this, 30000L);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.location.util.LocationReportUtil.1
  * JD-Core Version:    0.7.0.1
  */

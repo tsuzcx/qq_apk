@@ -1,46 +1,54 @@
-import android.util.Log;
-import java.io.Writer;
+import Wallet.SkinInfo;
+import java.util.Iterator;
+import java.util.List;
 
 public class akqy
-  extends Writer
 {
-  private StringBuilder a = new StringBuilder();
-  
-  private void a()
+  public static akqw a(String paramString)
   {
-    if (this.a.length() > 0)
+    akqw localakqw = new akqw(anni.a(2131704223));
+    localakqw.jdField_b_of_type_Int = -2;
+    localakqw.jdField_a_of_type_WalletSkinInfo.skin_id = -2;
+    localakqw.jdField_a_of_type_WalletSkinInfo.skin_permission_state = 1L;
+    localakqw.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketRedPacketInfoBase.title = paramString;
+    localakqw.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketRedPacketInfoBase.icon = null;
+    localakqw.jdField_a_of_type_Int = 0;
+    return localakqw;
+  }
+  
+  public static akqw a(List<akqw> paramList, int paramInt)
+  {
+    paramList = paramList.iterator();
+    while (paramList.hasNext())
     {
-      Log.v("GLTextureView", this.a.toString());
-      this.a.delete(0, this.a.length());
-    }
-  }
-  
-  public void close()
-  {
-    a();
-  }
-  
-  public void flush()
-  {
-    a();
-  }
-  
-  public void write(char[] paramArrayOfChar, int paramInt1, int paramInt2)
-  {
-    int i = 0;
-    if (i < paramInt2)
-    {
-      char c = paramArrayOfChar[(paramInt1 + i)];
-      if (c == '\n') {
-        a();
-      }
-      for (;;)
-      {
-        i += 1;
-        break;
-        this.a.append(c);
+      akqw localakqw = (akqw)paramList.next();
+      if (localakqw.jdField_a_of_type_WalletSkinInfo.skin_id == paramInt) {
+        return localakqw;
       }
     }
+    return null;
+  }
+  
+  public static akqw b(String paramString)
+  {
+    akqw localakqw = new akqw(anni.a(2131704225));
+    localakqw.jdField_b_of_type_Int = -1;
+    localakqw.jdField_a_of_type_WalletSkinInfo.skin_id = 0;
+    localakqw.jdField_a_of_type_WalletSkinInfo.skin_permission_state = 1L;
+    localakqw.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketRedPacketInfoBase.title = paramString;
+    localakqw.jdField_a_of_type_Int = -1;
+    return localakqw;
+  }
+  
+  public static akqw c(String paramString)
+  {
+    akqw localakqw = new akqw(anni.a(2131704224));
+    localakqw.jdField_b_of_type_JavaLangString = paramString;
+    localakqw.jdField_b_of_type_Int = 1;
+    localakqw.jdField_a_of_type_Int = 1000;
+    localakqw.jdField_a_of_type_WalletSkinInfo.skin_id = -1;
+    localakqw.jdField_a_of_type_WalletSkinInfo.skin_permission_state = 1L;
+    return localakqw;
   }
 }
 

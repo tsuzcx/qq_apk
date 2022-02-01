@@ -1,37 +1,56 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 
-class arbf
-  implements bkle
+public class arbf
+  extends aqkz<arbe>
 {
-  arbf(arau paramarau, String paramString, int paramInt, Object paramObject) {}
-  
-  public void a(String paramString, long paramLong, float paramFloat) {}
-  
-  public void a(String paramString1, String paramString2, boolean paramBoolean, String paramString3, int paramInt)
+  public static arbe a()
   {
-    int i;
-    if ((paramBoolean) && (paramString1 != null) && (!TextUtils.isEmpty(paramString2)) && (new File(paramString2).exists()))
-    {
-      i = 1;
-      if (i == 0) {
-        break label128;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("WeiYunLogicCenter<FileAssistant>", 2, "getWeiYunThumb onSucceed. filePath[" + paramString2 + "]");
-      }
-      arau.a(this.jdField_a_of_type_Arau).a().a(true, 39, new Object[] { this.jdField_a_of_type_JavaLangString, Integer.valueOf(this.jdField_a_of_type_Int), paramString2, this.jdField_a_of_type_JavaLangObject });
+    return (arbe)aqlk.a().a(487);
+  }
+  
+  @NonNull
+  public arbe a(int paramInt)
+  {
+    return new arbe();
+  }
+  
+  @Nullable
+  public arbe a(aqlg[] paramArrayOfaqlg)
+  {
+    if ((paramArrayOfaqlg != null) && (paramArrayOfaqlg.length > 0)) {
+      return arbe.a(paramArrayOfaqlg);
     }
-    label128:
-    while (!QLog.isColorLevel())
-    {
-      return;
-      i = 0;
-      break;
-    }
-    QLog.i("WeiYunLogicCenter<FileAssistant>", 2, "getWeiYunThumb onFailed: errcode[" + paramInt + "], errmsg[" + paramString3 + "]");
+    return null;
+  }
+  
+  public void a(arbe paramarbe) {}
+  
+  public Class<arbe> clazz()
+  {
+    return arbe.class;
+  }
+  
+  public boolean isNeedCompressed()
+  {
+    return true;
+  }
+  
+  public boolean isNeedStoreLargeFile()
+  {
+    return false;
+  }
+  
+  public int migrateOldVersion()
+  {
+    return 0;
+  }
+  
+  public void onReqFailed(int paramInt) {}
+  
+  public int type()
+  {
+    return 487;
   }
 }
 

@@ -10,10 +10,11 @@ import android.graphics.Bitmap.CompressFormat;
 import android.graphics.BitmapFactory;
 import android.graphics.BitmapFactory.Options;
 import android.media.ExifInterface;
+import android.media.ThumbnailUtils;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
-import bdfa;
+import bgkc;
 import com.tencent.image.SafeBitmapFactory;
 import com.tencent.mobileqq.activity.photo.album.NewPhotoListActivity;
 import com.tencent.mobileqq.app.BaseActivity;
@@ -35,6 +36,7 @@ import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
+import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.ArrayList<Ljava.lang.String;>;
 import java.util.Iterator;
@@ -42,7 +44,7 @@ import java.util.Set;
 import mqq.os.MqqHandler;
 import org.json.JSONArray;
 import org.json.JSONObject;
-import xrg;
+import zkr;
 
 public class ImageJsPlugin
   extends BaseJsPlugin
@@ -53,17 +55,11 @@ public class ImageJsPlugin
   private static final boolean USE_NATIVE_CAMERA_FLAG = true;
   private int mCallBackId = -1;
   private boolean mHasChoosePhoto;
+  private boolean mHasRegisterChooseImageReceiver;
   private JsRuntime mJsRunTime;
   private boolean mNeedCompress;
   private boolean mShowOriBtn;
   private BroadcastReceiver receiver = new ImageJsPlugin.7(this);
-  
-  public ImageJsPlugin()
-  {
-    IntentFilter localIntentFilter = new IntentFilter();
-    localIntentFilter.addAction("micro_api_choose_image");
-    AppLoaderFactory.getAppLoaderManager().getMiniAppInterface().getApp().registerReceiver(this.receiver, localIntentFilter);
-  }
   
   private void callbackChooseImage(ArrayList<String> paramArrayList, JsRuntime paramJsRuntime, int paramInt)
   {
@@ -130,7 +126,7 @@ public class ImageJsPlugin
         return;
       }
       if (paramArrayList == null) {
-        break label286;
+        break label285;
       }
       localJSONArray = new JSONArray();
       localObject = new JSONArray();
@@ -169,34 +165,93 @@ public class ImageJsPlugin
       }
       this.jsPluginEngine.callbackJsEventOK(paramJsRuntime, "chooseImage", (JSONObject)localObject, paramInt);
       return;
-      label286:
+      label285:
       paramArrayList = null;
       localJSONArray = null;
     }
   }
   
-  private void compressImage(String paramString, int paramInt1, JsRuntime paramJsRuntime, int paramInt2)
+  private void compressImage(String paramString, int paramInt1, int paramInt2, int paramInt3, JsRuntime paramJsRuntime, int paramInt4)
   {
     try
     {
-      Object localObject = ImageUtil.getLocalBitmap(paramString);
-      if (localObject != null)
+      int i = ImageUtil.getExifOrientation(paramString);
+      Object localObject1 = ImageUtil.getLocalBitmap(paramString);
+      if (localObject1 != null)
       {
-        ByteArrayOutputStream localByteArrayOutputStream = new ByteArrayOutputStream();
-        ((Bitmap)localObject).compress(Bitmap.CompressFormat.JPEG, paramInt1, localByteArrayOutputStream);
-        localObject = BitmapFactory.decodeStream(new ByteArrayInputStream(localByteArrayOutputStream.toByteArray()), null, null);
-        paramString = MiniAppFileManager.getInstance().getTmpPath(paramString.hashCode() + ".jpg");
-        ImageUtil.saveBitmapToFile((Bitmap)localObject, new File(paramString));
-        localObject = new JSONObject();
-        ((JSONObject)localObject).put("tempFilePath", MiniAppFileManager.getInstance().getWxFilePath(paramString));
-        this.jsPluginEngine.callbackJsEventOK(paramJsRuntime, "compressImage", (JSONObject)localObject, paramInt2);
+        int j = ((Bitmap)localObject1).getWidth();
+        if ((((Bitmap)localObject1).getHeight() < paramInt3) || (j < paramInt2))
+        {
+          Object localObject2 = "destSize invalid(" + paramInt2 + "," + paramInt3 + ")";
+          this.jsPluginEngine.callbackJsEventFail(paramJsRuntime, "compressImage", null, (String)localObject2, paramInt4);
+          localObject2 = new ByteArrayOutputStream();
+          ((Bitmap)localObject1).compress(Bitmap.CompressFormat.JPEG, paramInt1, (OutputStream)localObject2);
+          localObject1 = BitmapFactory.decodeStream(new ByteArrayInputStream(((ByteArrayOutputStream)localObject2).toByteArray()), null, null);
+          if ((i == 0) || (localObject1 == null)) {
+            break label289;
+          }
+          localObject2 = ImageUtil.rotaingImageView(i, (Bitmap)localObject1);
+          ((Bitmap)localObject1).recycle();
+          localObject1 = localObject2;
+        }
+        for (;;)
+        {
+          paramString = MiniAppFileManager.getInstance().getTmpPath(paramString.hashCode() + ".jpg");
+          ImageUtil.saveBitmapToFile((Bitmap)localObject1, new File(paramString));
+          localObject1 = new JSONObject();
+          ((JSONObject)localObject1).put("tempFilePath", MiniAppFileManager.getInstance().getWxFilePath(paramString));
+          this.jsPluginEngine.callbackJsEventOK(paramJsRuntime, "compressImage", (JSONObject)localObject1, paramInt4);
+          return;
+          localObject1 = ThumbnailUtils.extractThumbnail((Bitmap)localObject1, paramInt2, paramInt3);
+          break;
+        }
       }
-      return;
     }
     catch (Exception paramString)
     {
       QLog.e("ImageJsPlugin", 1, "compressImage error,", paramString);
-      this.jsPluginEngine.callbackJsEventFail(paramJsRuntime, "compressImage", null, paramInt2);
+      this.jsPluginEngine.callbackJsEventFail(paramJsRuntime, "compressImage", null, paramInt4);
+      return;
+    }
+    label289:
+  }
+  
+  private void compressImage(String paramString, int paramInt1, JsRuntime paramJsRuntime, int paramInt2)
+  {
+    for (;;)
+    {
+      try
+      {
+        int i = ImageUtil.getExifOrientation(paramString);
+        Object localObject1 = ImageUtil.getLocalBitmap(paramString);
+        if (localObject1 != null)
+        {
+          Object localObject2 = new ByteArrayOutputStream();
+          ((Bitmap)localObject1).compress(Bitmap.CompressFormat.JPEG, paramInt1, (OutputStream)localObject2);
+          localObject1 = BitmapFactory.decodeStream(new ByteArrayInputStream(((ByteArrayOutputStream)localObject2).toByteArray()), null, null);
+          if ((i != 0) && (localObject1 != null))
+          {
+            localObject2 = ImageUtil.rotaingImageView(i, (Bitmap)localObject1);
+            ((Bitmap)localObject1).recycle();
+            localObject1 = localObject2;
+            paramString = MiniAppFileManager.getInstance().getTmpPath(paramString.hashCode() + ".jpg");
+            ImageUtil.saveBitmapToFile((Bitmap)localObject1, new File(paramString));
+            localObject1 = new JSONObject();
+            ((JSONObject)localObject1).put("tempFilePath", MiniAppFileManager.getInstance().getWxFilePath(paramString));
+            this.jsPluginEngine.callbackJsEventOK(paramJsRuntime, "compressImage", (JSONObject)localObject1, paramInt2);
+          }
+        }
+        else
+        {
+          return;
+        }
+      }
+      catch (Exception paramString)
+      {
+        QLog.e("ImageJsPlugin", 1, "compressImage error,", paramString);
+        this.jsPluginEngine.callbackJsEventFail(paramJsRuntime, "compressImage", null, paramInt2);
+        return;
+      }
     }
   }
   
@@ -218,18 +273,18 @@ public class ImageJsPlugin
   {
     // Byte code:
     //   0: aload_1
-    //   1: invokestatic 281	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   1: invokestatic 251	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   4: ifeq +5 -> 9
     //   7: aload_1
     //   8: areturn
-    //   9: new 287	java/io/File
+    //   9: new 257	java/io/File
     //   12: dup
     //   13: aload_1
-    //   14: invokespecial 289	java/io/File:<init>	(Ljava/lang/String;)V
+    //   14: invokespecial 260	java/io/File:<init>	(Ljava/lang/String;)V
     //   17: astore 4
-    //   19: invokestatic 203	com/tencent/mobileqq/mini/appbrand/utils/MiniAppFileManager:getInstance	()Lcom/tencent/mobileqq/mini/appbrand/utils/MiniAppFileManager;
+    //   19: invokestatic 173	com/tencent/mobileqq/mini/appbrand/utils/MiniAppFileManager:getInstance	()Lcom/tencent/mobileqq/mini/appbrand/utils/MiniAppFileManager;
     //   22: ldc_w 396
-    //   25: invokevirtual 375	com/tencent/mobileqq/mini/appbrand/utils/MiniAppFileManager:getTmpPath	(Ljava/lang/String;)Ljava/lang/String;
+    //   25: invokevirtual 369	com/tencent/mobileqq/mini/appbrand/utils/MiniAppFileManager:getTmpPath	(Ljava/lang/String;)Ljava/lang/String;
     //   28: astore 11
     //   30: aload 11
     //   32: ifnonnull +16 -> 48
@@ -239,10 +294,10 @@ public class ImageJsPlugin
     //   41: invokestatic 400	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   44: ldc_w 402
     //   47: areturn
-    //   48: new 287	java/io/File
+    //   48: new 257	java/io/File
     //   51: dup
     //   52: aload 11
-    //   54: invokespecial 289	java/io/File:<init>	(Ljava/lang/String;)V
+    //   54: invokespecial 260	java/io/File:<init>	(Ljava/lang/String;)V
     //   57: astore 12
     //   59: aconst_null
     //   60: astore 8
@@ -254,7 +309,7 @@ public class ImageJsPlugin
     //   70: astore 5
     //   72: aload 9
     //   74: astore_3
-    //   75: invokestatic 299	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   75: invokestatic 270	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   78: ifeq +40 -> 118
     //   81: aload 8
     //   83: astore 5
@@ -262,23 +317,23 @@ public class ImageJsPlugin
     //   87: astore_3
     //   88: ldc 14
     //   90: iconst_2
-    //   91: new 306	java/lang/StringBuilder
+    //   91: new 277	java/lang/StringBuilder
     //   94: dup
-    //   95: invokespecial 307	java/lang/StringBuilder:<init>	()V
+    //   95: invokespecial 278	java/lang/StringBuilder:<init>	()V
     //   98: ldc_w 404
-    //   101: invokevirtual 313	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   101: invokevirtual 284	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   104: aload 4
-    //   106: invokevirtual 293	java/io/File:length	()J
+    //   106: invokevirtual 264	java/io/File:length	()J
     //   109: invokevirtual 407	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   112: invokevirtual 320	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   112: invokevirtual 291	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   115: invokestatic 400	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   118: aload 8
     //   120: astore 5
     //   122: aload 9
     //   124: astore_3
-    //   125: new 152	android/graphics/BitmapFactory$Options
+    //   125: new 122	android/graphics/BitmapFactory$Options
     //   128: dup
-    //   129: invokespecial 153	android/graphics/BitmapFactory$Options:<init>	()V
+    //   129: invokespecial 123	android/graphics/BitmapFactory$Options:<init>	()V
     //   132: astore 4
     //   134: aload 8
     //   136: astore 5
@@ -304,7 +359,7 @@ public class ImageJsPlugin
     //   175: aload 9
     //   177: astore_3
     //   178: aload_1
-    //   179: invokestatic 414	com/tencent/mobileqq/mini/util/ImageUtil:getExifOrientation	(Ljava/lang/String;)I
+    //   179: invokestatic 304	com/tencent/mobileqq/mini/util/ImageUtil:getExifOrientation	(Ljava/lang/String;)I
     //   182: istore_2
     //   183: aload 8
     //   185: astore 5
@@ -312,15 +367,15 @@ public class ImageJsPlugin
     //   189: astore_3
     //   190: ldc 14
     //   192: iconst_2
-    //   193: new 306	java/lang/StringBuilder
+    //   193: new 277	java/lang/StringBuilder
     //   196: dup
-    //   197: invokespecial 307	java/lang/StringBuilder:<init>	()V
-    //   200: ldc_w 416
-    //   203: invokevirtual 313	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   197: invokespecial 278	java/lang/StringBuilder:<init>	()V
+    //   200: ldc_w 413
+    //   203: invokevirtual 284	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   206: iload_2
-    //   207: invokevirtual 370	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   210: invokevirtual 320	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   213: invokestatic 324	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   207: invokevirtual 321	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   210: invokevirtual 291	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   213: invokestatic 295	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   216: aload 10
     //   218: astore 6
     //   220: iload_2
@@ -331,14 +386,14 @@ public class ImageJsPlugin
     //   230: astore_3
     //   231: iload_2
     //   232: aload 10
-    //   234: invokestatic 420	com/tencent/mobileqq/mini/util/ImageUtil:rotaingImageView	(ILandroid/graphics/Bitmap;)Landroid/graphics/Bitmap;
+    //   234: invokestatic 358	com/tencent/mobileqq/mini/util/ImageUtil:rotaingImageView	(ILandroid/graphics/Bitmap;)Landroid/graphics/Bitmap;
     //   237: astore 6
     //   239: aload 8
     //   241: astore 5
     //   243: aload 9
     //   245: astore_3
     //   246: aload 10
-    //   248: invokevirtual 423	android/graphics/Bitmap:recycle	()V
+    //   248: invokevirtual 361	android/graphics/Bitmap:recycle	()V
     //   251: aload 7
     //   253: astore 4
     //   255: aload 6
@@ -347,24 +402,24 @@ public class ImageJsPlugin
     //   262: astore 5
     //   264: aload 9
     //   266: astore_3
-    //   267: new 425	java/io/FileOutputStream
+    //   267: new 415	java/io/FileOutputStream
     //   270: dup
     //   271: aload 12
-    //   273: invokespecial 428	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
+    //   273: invokespecial 418	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
     //   276: astore 4
     //   278: aload 6
-    //   280: getstatic 343	android/graphics/Bitmap$CompressFormat:JPEG	Landroid/graphics/Bitmap$CompressFormat;
+    //   280: getstatic 335	android/graphics/Bitmap$CompressFormat:JPEG	Landroid/graphics/Bitmap$CompressFormat;
     //   283: bipush 50
     //   285: aload 4
-    //   287: invokevirtual 349	android/graphics/Bitmap:compress	(Landroid/graphics/Bitmap$CompressFormat;ILjava/io/OutputStream;)Z
+    //   287: invokevirtual 339	android/graphics/Bitmap:compress	(Landroid/graphics/Bitmap$CompressFormat;ILjava/io/OutputStream;)Z
     //   290: pop
     //   291: aload 4
-    //   293: invokevirtual 431	java/io/FileOutputStream:flush	()V
+    //   293: invokevirtual 421	java/io/FileOutputStream:flush	()V
     //   296: aload 4
     //   298: astore 5
     //   300: aload 4
     //   302: astore_3
-    //   303: invokestatic 299	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   303: invokestatic 270	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   306: ifeq +40 -> 346
     //   309: aload 4
     //   311: astore 5
@@ -372,26 +427,26 @@ public class ImageJsPlugin
     //   315: astore_3
     //   316: ldc 14
     //   318: iconst_2
-    //   319: new 306	java/lang/StringBuilder
+    //   319: new 277	java/lang/StringBuilder
     //   322: dup
-    //   323: invokespecial 307	java/lang/StringBuilder:<init>	()V
-    //   326: ldc_w 433
-    //   329: invokevirtual 313	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   323: invokespecial 278	java/lang/StringBuilder:<init>	()V
+    //   326: ldc_w 423
+    //   329: invokevirtual 284	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   332: aload 12
-    //   334: invokevirtual 293	java/io/File:length	()J
+    //   334: invokevirtual 264	java/io/File:length	()J
     //   337: invokevirtual 407	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   340: invokevirtual 320	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   340: invokevirtual 291	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   343: invokestatic 400	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   346: aload 4
     //   348: ifnull +8 -> 356
     //   351: aload 4
-    //   353: invokevirtual 436	java/io/FileOutputStream:close	()V
+    //   353: invokevirtual 426	java/io/FileOutputStream:close	()V
     //   356: aload 11
     //   358: areturn
     //   359: astore 4
     //   361: aload 5
     //   363: astore_3
-    //   364: invokestatic 299	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   364: invokestatic 270	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   367: ifeq +18 -> 385
     //   370: aload 5
     //   372: astore_3
@@ -399,12 +454,12 @@ public class ImageJsPlugin
     //   375: iconst_2
     //   376: aload 4
     //   378: iconst_0
-    //   379: anewarray 301	java/lang/Object
-    //   382: invokestatic 304	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/Throwable;[Ljava/lang/Object;)V
+    //   379: anewarray 272	java/lang/Object
+    //   382: invokestatic 275	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/Throwable;[Ljava/lang/Object;)V
     //   385: aload 5
     //   387: ifnull -380 -> 7
     //   390: aload 5
-    //   392: invokevirtual 436	java/io/FileOutputStream:close	()V
+    //   392: invokevirtual 426	java/io/FileOutputStream:close	()V
     //   395: aload_1
     //   396: areturn
     //   397: astore_3
@@ -414,7 +469,7 @@ public class ImageJsPlugin
     //   401: aload_3
     //   402: ifnull +7 -> 409
     //   405: aload_3
-    //   406: invokevirtual 436	java/io/FileOutputStream:close	()V
+    //   406: invokevirtual 426	java/io/FileOutputStream:close	()V
     //   409: aload_1
     //   410: athrow
     //   411: astore_1
@@ -563,7 +618,7 @@ public class ImageJsPlugin
     localIntent.putExtra("PhotoConst.IS_FINISH_RESTART_INIT_ACTIVITY", true);
     localIntent.putExtra("PhotoConst.original_button", paramBoolean);
     paramActivity.startActivity(localIntent);
-    bdfa.anim(paramActivity, false, true);
+    bgkc.anim(paramActivity, false, true);
   }
   
   private void openNativeCamera(Activity paramActivity, JsRuntime paramJsRuntime, int paramInt)
@@ -600,13 +655,20 @@ public class ImageJsPlugin
       int k;
       try
       {
+        if (!this.mHasRegisterChooseImageReceiver)
+        {
+          localObject1 = new IntentFilter();
+          ((IntentFilter)localObject1).addAction("micro_api_choose_image");
+          AppLoaderFactory.getAppLoaderManager().getMiniAppInterface().getApp().registerReceiver(this.receiver, (IntentFilter)localObject1);
+          this.mHasRegisterChooseImageReceiver = true;
+        }
         localObject1 = new JSONObject(paramString2);
         j = ((JSONObject)localObject1).optInt("count", 9);
         paramString2 = ((JSONObject)localObject1).optJSONArray("sizeType");
         localObject1 = ((JSONObject)localObject1).optJSONArray("sourceType");
         i = j;
         if (j <= 9) {
-          break label1160;
+          break label1329;
         }
         i = 9;
       }
@@ -746,7 +808,7 @@ public class ImageJsPlugin
               paramString2 = MiniAppFileManager.getInstance().getAbsolutePath(paramString2);
               localObject1 = new File(paramString2);
               localObject1 = ShortVideoUtils.d() + System.currentTimeMillis() / 1000L + "_" + ((File)localObject1).getName();
-              if (xrg.a(this.jsPluginEngine.getActivityContext(), paramString2, (String)localObject1)) {
+              if (zkr.a(this.jsPluginEngine.getActivityContext(), paramString2, (String)localObject1)) {
                 this.jsPluginEngine.callbackJsEventOK(paramJsRuntime, paramString1, null, paramInt);
               }
               for (;;)
@@ -775,11 +837,16 @@ public class ImageJsPlugin
             paramString2 = new JSONObject(paramString2);
             localObject1 = paramString2.optString("src");
             i = paramString2.optInt("quality");
+            j = paramString2.optInt("destWidth");
+            k = paramString2.optInt("destHeight");
             if (TextUtils.isEmpty((CharSequence)localObject1)) {
               continue;
             }
             paramString2 = MiniAppFileManager.getInstance().getAbsolutePath((String)localObject1);
             if (TextUtils.isEmpty(paramString2)) {
+              continue;
+            }
+            if ((k > 0) && (j > 0)) {
               continue;
             }
             compressImage(paramString2, i, paramJsRuntime, paramInt);
@@ -789,16 +856,24 @@ public class ImageJsPlugin
             QLog.e("ImageJsPlugin", 1, paramString1 + " error", paramString2);
             this.jsPluginEngine.callbackJsEventFail(paramJsRuntime, paramString1, null, paramInt);
             continue;
+            compressImage(paramString2, i, j, k, paramJsRuntime, paramInt);
+            continue;
+            this.jsPluginEngine.callbackJsEventFail(paramJsRuntime, paramString1, null, paramInt);
+            continue;
           }
           return "";
           paramString2 = null;
           continue;
-          this.jsPluginEngine.callbackJsEventFail(paramJsRuntime, paramString1, null, paramInt);
+          if (((k <= 0) || (j > 0)) && ((k > 0) || (j <= 0))) {
+            continue;
+          }
+          paramString2 = "destSize invalid(" + j + "," + k + ")";
+          this.jsPluginEngine.callbackJsEventFail(paramJsRuntime, paramString1, null, paramString2, paramInt);
         }
         for (;;)
         {
           break;
-          label1160:
+          label1329:
           if (i < 1) {
             i = 1;
           }
@@ -819,8 +894,15 @@ public class ImageJsPlugin
   public void onDestroy()
   {
     super.onDestroy();
-    if (this.receiver != null) {
+    if ((this.receiver != null) && (this.mHasRegisterChooseImageReceiver)) {}
+    try
+    {
       AppLoaderFactory.getAppLoaderManager().getMiniAppInterface().getApp().unregisterReceiver(this.receiver);
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      QLog.e("ImageJsPlugin", 1, "unregisterReceiver exception", localThrowable);
     }
   }
   
@@ -832,7 +914,7 @@ public class ImageJsPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.appbrand.jsapi.plugins.ImageJsPlugin
  * JD-Core Version:    0.7.0.1
  */

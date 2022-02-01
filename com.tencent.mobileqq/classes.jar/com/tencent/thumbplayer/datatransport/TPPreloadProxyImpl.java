@@ -129,7 +129,7 @@ public class TPPreloadProxyImpl
     return 0;
   }
   
-  public int startPreload(String paramString, TPDownloadParamData paramTPDownloadParamData)
+  public int startPreload(String paramString, TPDownloadParamData paramTPDownloadParamData, ITPPreloadProxy.IPreloadListener paramIPreloadListener)
   {
     if (!isAvailable())
     {
@@ -142,7 +142,7 @@ public class TPPreloadProxyImpl
     paramTPDownloadParamData = TPProxyUtils.convertProxyDownloadParams(null, paramTPDownloadParamData);
     try
     {
-      int i = this.mDownloadProxy.startPreload(paramString, paramTPDownloadParamData, this.mInnerProxyListener);
+      int i = this.mDownloadProxy.startPreload(paramString, paramTPDownloadParamData, new TPPreloadProxyImpl.1(this, paramIPreloadListener));
       return i;
     }
     catch (Throwable paramString)
@@ -170,7 +170,7 @@ public class TPPreloadProxyImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.thumbplayer.datatransport.TPPreloadProxyImpl
  * JD-Core Version:    0.7.0.1
  */

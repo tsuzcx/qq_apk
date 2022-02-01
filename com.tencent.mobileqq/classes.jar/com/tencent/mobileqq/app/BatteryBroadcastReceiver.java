@@ -5,7 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
-import awen;
+import ayor;
 import com.tencent.qphone.base.util.QLog;
 import mqq.app.AppRuntime.Status;
 import mqq.util.WeakReference;
@@ -89,16 +89,15 @@ public final class BatteryBroadcastReceiver
         this.jdField_a_of_type_Int = i;
         paramIntent = new Bundle();
         paramIntent.putInt("KEY_BATTERY", i);
-        paramContext.notifyObservers(awen.class, 0, true, paramIntent);
+        paramContext.notifyObservers(ayor.class, 0, true, paramIntent);
       }
     }
     paramContext.setBatteryCapacity(i);
-    paramContext.updateBatteryStatus(paramContext.getBatteryCapacity(), paramContext.getPowerConnect());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.app.BatteryBroadcastReceiver
  * JD-Core Version:    0.7.0.1
  */

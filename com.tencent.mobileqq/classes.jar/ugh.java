@@ -1,21 +1,30 @@
-import java.util.ArrayList;
-import java.util.List;
+import org.json.JSONObject;
 
-class ugh
-  implements ufg
+public class ugh
+  extends uga
 {
-  ugh(uge paramuge) {}
+  public String a;
   
-  public void a(int paramInt)
+  public ugh(JSONObject paramJSONObject)
   {
-    ArrayList localArrayList = new ArrayList();
-    localArrayList.add(tzy.a("ext2", String.valueOf(paramInt)));
-    tzs.a(34, 2, this.a.a, localArrayList);
+    super(paramJSONObject);
+  }
+  
+  public static ugh a(JSONObject paramJSONObject)
+  {
+    return new ugh(paramJSONObject);
+  }
+  
+  public void a(JSONObject paramJSONObject)
+  {
+    if (paramJSONObject != null) {
+      this.a = paramJSONObject.toString();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     ugh
  * JD-Core Version:    0.7.0.1
  */

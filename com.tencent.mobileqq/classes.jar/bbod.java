@@ -1,17 +1,20 @@
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.widget.SingleLineTextView;
+import android.text.TextUtils;
 
-class bbod
+public class bbod
 {
-  View jdField_a_of_type_AndroidViewView;
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  SingleLineTextView jdField_a_of_type_ComTencentWidgetSingleLineTextView;
-  String jdField_a_of_type_JavaLangString;
+  public String a;
+  public String b;
   
-  bbod(bbob parambbob) {}
+  public bbod(String paramString1, String paramString2)
+  {
+    this.a = paramString1;
+    this.b = paramString2;
+  }
+  
+  public boolean a()
+  {
+    return !TextUtils.isEmpty(this.a);
+  }
 }
 
 

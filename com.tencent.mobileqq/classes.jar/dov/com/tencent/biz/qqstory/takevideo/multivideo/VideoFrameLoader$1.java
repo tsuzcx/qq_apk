@@ -1,28 +1,28 @@
 package dov.com.tencent.biz.qqstory.takevideo.multivideo;
 
-import bnah;
-import bnai;
+import bprn;
+import bpro;
 import java.lang.ref.WeakReference;
 
 public class VideoFrameLoader$1
   implements Runnable
 {
-  public VideoFrameLoader$1(bnah parambnah) {}
+  public VideoFrameLoader$1(bprn parambprn) {}
   
   public void run()
   {
-    bnai localbnai = null;
-    if (bnah.a(this.this$0) != null) {
-      localbnai = (bnai)bnah.a(this.this$0).get();
+    bpro localbpro = null;
+    if (bprn.a(this.this$0) != null) {
+      localbpro = (bpro)bprn.a(this.this$0).get();
     }
-    if (localbnai != null) {
-      localbnai.b();
+    if (localbpro != null) {
+      localbpro.b();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     dov.com.tencent.biz.qqstory.takevideo.multivideo.VideoFrameLoader.1
  * JD-Core Version:    0.7.0.1
  */

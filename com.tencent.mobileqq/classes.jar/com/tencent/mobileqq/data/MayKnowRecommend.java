@@ -2,8 +2,6 @@ package com.tencent.mobileqq.data;
 
 import android.graphics.Color;
 import android.text.TextUtils;
-import awge;
-import awhp;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.CodedInputStreamMicro;
 import com.tencent.mobileqq.pb.CodedOutputStreamMicro;
@@ -12,6 +10,8 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.persistence.Entity;
+import com.tencent.mobileqq.persistence.notColumn;
 import com.tencent.mobileqq.richstatus.RichStatus;
 import com.tencent.qphone.base.util.QLog;
 import java.io.ByteArrayOutputStream;
@@ -31,7 +31,7 @@ import tencent.im.s2c.msgtype0x210.submsgtype0x111.SubMsgType0x111.Label;
 import tencent.im.s2c.msgtype0x210.submsgtype0x111.SubMsgType0x111.MayKnowPerson;
 
 public class MayKnowRecommend
-  extends awge
+  extends Entity
   implements Serializable
 {
   public static final int INVALID_ADDFRIEND_SOURCE = -1;
@@ -44,7 +44,7 @@ public class MayKnowRecommend
   public byte[] additive;
   public short age;
   public byte[] algBuffer;
-  @awhp
+  @notColumn
   public boolean bHighLight;
   public long cardDisplayTimestamp;
   public String category;
@@ -54,7 +54,7 @@ public class MayKnowRecommend
   public short gender = 255;
   public boolean hasQZoneUpdate;
   public String mobile_name;
-  @awhp
+  @notColumn
   public List<MayKnowRecommend.MayKnowRecommendLabel> msgLabel;
   public byte[] msgLabelByte;
   public String nick;
@@ -64,7 +64,7 @@ public class MayKnowRecommend
   @Deprecated
   public String richBuffer;
   public byte[] richSingature;
-  @awhp
+  @notColumn
   public RichStatus richStatus;
   public int sourceId;
   public int tabID = 23;

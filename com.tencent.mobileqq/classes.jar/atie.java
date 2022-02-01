@@ -1,74 +1,130 @@
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.BitmapFactory.Options;
 import android.text.TextUtils;
-import com.tencent.biz.pubaccount.AccountDetailActivity;
-import com.tencent.mm.opensdk.modelbase.BaseResp;
-import com.tencent.mobileqq.jsp.QQApiPlugin.3;
+import android.widget.ImageView;
+import android.widget.ImageView.ScaleType;
+import android.widget.TextView;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import java.util.List;
 
 public class atie
-  implements bfah
+  extends bbqp
 {
-  public atie(QQApiPlugin.3 param3) {}
+  private BitmapFactory.Options a = new BitmapFactory.Options();
   
-  public void a(BaseResp paramBaseResp)
+  public atie(aobu paramaobu)
   {
-    if ((this.a.this$0.c == null) || (!this.a.this$0.c.equals(paramBaseResp.transaction))) {
+    super(paramaobu);
+  }
+  
+  public void a(bbmy parambbmy, bbvg parambbvg)
+  {
+    parambbvg.a().setMaxWidth(800);
+    Object localObject = (athz)parambbmy;
+    ImageView localImageView = parambbvg.b();
+    localImageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
+    localImageView.setImageDrawable(null);
+    localImageView.setBackgroundDrawable(null);
+    if (((athz)localObject).a == null) {
       return;
     }
-    boolean bool;
-    switch (paramBaseResp.errCode)
+    FileManagerEntity localFileManagerEntity = (FileManagerEntity)((athz)localObject).a.get(0);
+    int i = atvo.a(localFileManagerEntity.fileName);
+    if ((i == 0) || (i == 2))
     {
-    case -1: 
-    default: 
-      ybk.a(1, 2131720031);
-      bool = false;
+      if (bgmg.b(localFileManagerEntity.strThumbPath)) {
+        localObject = localFileManagerEntity.strThumbPath;
+      }
+      for (;;)
+      {
+        localObject = URLDrawable.URLDrawableOptions.obtain();
+        ((URLDrawable.URLDrawableOptions)localObject).mRequestHeight = parambbvg.b().getHeight();
+        ((URLDrawable.URLDrawableOptions)localObject).mRequestWidth = parambbvg.b().getWidth();
+        parambbvg = parambbvg.d();
+        if ((parambbvg != null) && (!TextUtils.isEmpty(parambbmy.d())))
+        {
+          parambbvg.setText(parambbmy.d());
+          parambbvg.setVisibility(0);
+        }
+        parambbmy = atwg.a(localFileManagerEntity);
+        if (parambbmy == null) {
+          break;
+        }
+        parambbmy = URLDrawable.getDrawable(parambbmy, (URLDrawable.URLDrawableOptions)localObject);
+        if (parambbmy == null) {
+          localImageView.setImageDrawable(localImageView.getContext().getResources().getDrawable(2130844302));
+        }
+        localImageView.setImageDrawable(parambbmy);
+        return;
+        if (bgmg.b(localFileManagerEntity.strLargeThumPath))
+        {
+          localObject = localFileManagerEntity.strLargeThumPath;
+        }
+        else
+        {
+          if (!bgmg.b(localFileManagerEntity.getFilePath())) {
+            break label265;
+          }
+          localFileManagerEntity.getFilePath();
+        }
+      }
+      label265:
+      localObject = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+      if (localFileManagerEntity.getCloudType() == 1) {
+        localObject = ((QQAppInterface)localObject).a().a(localFileManagerEntity, 7);
+      }
     }
     for (;;)
     {
-      if (!TextUtils.isEmpty(this.a.this$0.jdField_a_of_type_JavaLangString))
+      if (TextUtils.isEmpty((CharSequence)localObject))
       {
-        this.a.this$0.callJs(this.a.this$0.jdField_a_of_type_JavaLangString, new String[] { String.valueOf(bool) });
+        localImageView.setImageDrawable(BaseApplicationImpl.getContext().getResources().getDrawable(2130844302));
         return;
-        ybk.a(2, 2131720050);
-        if ((this.a.this$0.jdField_a_of_type_Belq != null) && (this.a.this$0.jdField_a_of_type_Belt != null))
-        {
-          int i;
-          label171:
-          String str1;
-          String str2;
-          String str3;
-          if ("2".equals(this.a.jdField_a_of_type_JavaLangString))
-          {
-            i = 1009;
-            paramBaseResp = this.a.this$0.jdField_a_of_type_Belq.g();
-            str1 = this.a.this$0.jdField_a_of_type_Belq.h();
-            str2 = this.a.b;
-            str3 = AccountDetailActivity.a(this.a.this$0.jdField_a_of_type_Belt.b());
-            String str4 = this.a.this$0.jdField_a_of_type_Belq.i();
-            if ((str4 == null) || ("".equals(str4))) {
-              break label314;
-            }
-            nrt.a(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8005B07", "0X8005B07", i, 0, str4, paramBaseResp, this.a.this$0.jdField_a_of_type_Belt.b(), str3, false);
-          }
-          for (;;)
-          {
-            bool = true;
-            break;
-            i = 1004;
-            break label171;
-            label314:
-            if ("2".equals(this.a.jdField_a_of_type_JavaLangString)) {
-              i = 1003;
-            }
-            nrt.a(null, "P_CliOper", "Pb_account_lifeservice", "", "0X80059DC", "0X80059DC", i, 0, str1, paramBaseResp, str2, str3, false);
-          }
-          bool = false;
+        if (localFileManagerEntity.getCloudType() == 2) {
+          localObject = ((QQAppInterface)localObject).a().a(localFileManagerEntity.WeiYunFileId, localFileManagerEntity.strLargeThumPath, 3, localFileManagerEntity);
         }
       }
       else
       {
-        this.a.this$0.callJs4OpenApiIfNeeded("shareMsg", 0, String.valueOf(bool));
+        localFileManagerEntity.strThumbPath = ((String)localObject);
+        break;
+        atvo.a(localImageView, localFileManagerEntity);
         return;
       }
-      bool = true;
+      localObject = "";
+    }
+  }
+  
+  public void b(bbmy parambbmy, bbvg parambbvg)
+  {
+    super.b(parambbmy, parambbvg);
+    if ((parambbvg.a() != null) && (!TextUtils.isEmpty(parambbmy.a())))
+    {
+      parambbvg.a().setVisibility(0);
+      parambbvg.a().setText(parambbmy.a());
+    }
+    if ((parambbvg.b() != null) && (!TextUtils.isEmpty(parambbmy.b())))
+    {
+      parambbvg.b().setVisibility(0);
+      parambbvg.b().setText(parambbmy.b());
+    }
+    if ((parambbvg.c() != null) && (!TextUtils.isEmpty(parambbmy.c())))
+    {
+      parambbvg.c().setVisibility(0);
+      parambbvg.c().setText(parambbmy.c());
+    }
+    if ((parambbmy.d() == null) && (parambbvg.d() != null)) {
+      parambbvg.d().setVisibility(8);
+    }
+    if ((parambbvg.d() != null) && (parambbmy.d() != null))
+    {
+      parambbvg.d().setVisibility(0);
+      parambbvg.d().setText(parambbmy.d());
     }
   }
 }

@@ -1,17 +1,12 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.dataline.activities.LiteActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class ao
-  implements View.OnClickListener
+public final class ao
+  implements DialogInterface.OnClickListener
 {
-  public ao(LiteActivity paramLiteActivity) {}
-  
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    aepi.n = true;
-    paramView = (ef)((ef)paramView.getTag()).clone();
-    this.a.a(paramView);
+    paramDialogInterface.dismiss();
   }
 }
 

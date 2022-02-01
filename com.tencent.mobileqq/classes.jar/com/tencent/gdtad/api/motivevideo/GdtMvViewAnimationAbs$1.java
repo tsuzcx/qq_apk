@@ -1,20 +1,20 @@
 package com.tencent.gdtad.api.motivevideo;
 
-import aapz;
+import acov;
 
 public class GdtMvViewAnimationAbs$1
   implements Runnable
 {
-  public GdtMvViewAnimationAbs$1(aapz paramaapz) {}
+  public GdtMvViewAnimationAbs$1(acov paramacov) {}
   
   public void run()
   {
-    aapz.a(this.this$0, this.this$0.a);
+    acov.a(this.this$0, this.this$0.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.gdtad.api.motivevideo.GdtMvViewAnimationAbs.1
  * JD-Core Version:    0.7.0.1
  */

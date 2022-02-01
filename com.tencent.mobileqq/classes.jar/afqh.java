@@ -1,18 +1,19 @@
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.data.ChatMessage;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.UncommonlyUsedContactsActivity;
 
-class afqh
-  extends afuf
+public class afqh
+  extends amcl
 {
-  afqh(afpy paramafpy)
-  {
-    super(paramafpy, null);
-  }
+  public int a;
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  int jdField_b_of_type_Int;
+  TextView jdField_b_of_type_AndroidWidgetTextView;
+  TextView c;
+  TextView d;
   
-  protected aeqy a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
-  {
-    return new asjp(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner);
-  }
+  private afqh(UncommonlyUsedContactsActivity paramUncommonlyUsedContactsActivity) {}
 }
 
 

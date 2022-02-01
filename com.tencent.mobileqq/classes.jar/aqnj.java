@@ -1,25 +1,53 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.widget.ExpandableListView;
+import android.text.TextUtils;
+import com.tencent.mobileqq.ark.ArkAppCenter;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-class aqnj
-  implements View.OnClickListener
+public class aqnj
+  implements aqlb<String>
 {
-  aqnj(aqni paramaqni, int paramInt) {}
+  public HashMap<String, String> a = new HashMap();
   
-  public void onClick(View paramView)
+  public void a(String paramString)
   {
-    if (aqni.a(this.jdField_a_of_type_Aqni).c(this.jdField_a_of_type_Int))
-    {
-      aqni.a(this.jdField_a_of_type_Aqni).b(this.jdField_a_of_type_Int);
-      return;
+    if (TextUtils.isEmpty(paramString)) {
+      ArkAppCenter.c("ArkAIKeyWordSDKShareConfig", "onParse,fileOrRes is null");
     }
-    aqni.a(this.jdField_a_of_type_Aqni).a(this.jdField_a_of_type_Int);
+    for (;;)
+    {
+      return;
+      try
+      {
+        paramString = new JSONObject(paramString).optJSONArray("ark_ai_keyword_sdk_share_app_info");
+        if (paramString != null)
+        {
+          int i = 0;
+          while (i < paramString.length())
+          {
+            Object localObject = (JSONObject)paramString.get(i);
+            String str = ((JSONObject)localObject).getString("appID");
+            localObject = ((JSONObject)localObject).getString("appName");
+            QLog.i("ArkAIKeyWordSDKShareConfig", 1, "onParse ark_ai_keyword_sdk_share_app_info id=" + str + ", name=" + (String)localObject);
+            this.a.put(str, localObject);
+            i += 1;
+          }
+        }
+        ArkAppCenter.c("ArkAIKeyWordSDKShareConfig", "getArkShareConfig,ark_ai_keyword_sdk_share_app_info is empty");
+        return;
+      }
+      catch (JSONException paramString)
+      {
+        QLog.e("ArkAIKeyWordSDKShareConfig", 1, "onParse error e = ", paramString);
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aqnj
  * JD-Core Version:    0.7.0.1
  */

@@ -1,50 +1,33 @@
-import android.os.Bundle;
-import android.os.Handler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.open.agent.BindGroupConfirmActivity;
-import com.tencent.protofile.getappinfo.GetAppInfoProto.GetAppinfoResponse;
-import mqq.observer.BusinessObserver;
+import android.text.Editable;
+import android.text.TextWatcher;
+import com.tencent.mobileqq.troop.homework.recite.ui.SearchReciteArticleFragment;
+import com.tencent.mobileqq.troop.widget.LoadMoreXListView;
 
 public class bfde
-  implements BusinessObserver
+  implements TextWatcher
 {
-  public bfde(BindGroupConfirmActivity paramBindGroupConfirmActivity) {}
+  public bfde(SearchReciteArticleFragment paramSearchReciteArticleFragment) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void afterTextChanged(Editable paramEditable)
   {
-    Object localObject = paramBundle.getString("ssoAccount");
-    if (!this.a.app.getCurrentAccountUin().equals(localObject)) {}
-    for (;;)
+    if (paramEditable.length() == 0)
     {
+      this.a.e();
+      this.a.a(false);
       return;
-      this.a.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.a.jdField_a_of_type_JavaLangRunnable);
-      if (paramBoolean)
-      {
-        localObject = new GetAppInfoProto.GetAppinfoResponse();
-        try
-        {
-          paramBundle = paramBundle.getByteArray("data");
-          if (paramBundle != null)
-          {
-            ((GetAppInfoProto.GetAppinfoResponse)localObject).mergeFrom(paramBundle);
-            if ((((GetAppInfoProto.GetAppinfoResponse)localObject).has()) && (((GetAppInfoProto.GetAppinfoResponse)localObject).ret.get() == 0))
-            {
-              paramBundle = this.a.jdField_a_of_type_AndroidOsHandler.obtainMessage();
-              paramBundle.what = 3;
-              paramBundle.obj = localObject;
-              this.a.jdField_a_of_type_AndroidOsHandler.sendMessage(paramBundle);
-              return;
-            }
-          }
-        }
-        catch (Exception paramBundle)
-        {
-          paramBundle.printStackTrace();
-        }
-      }
     }
+    this.a.jdField_a_of_type_Bfdn.a();
+    this.a.jdField_a_of_type_Bfdn.notifyDataSetChanged();
+    this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetLoadMoreXListView.a.a(false);
+    this.a.b = 0;
+    this.a.a(true);
+    paramEditable = paramEditable.toString();
+    this.a.b(paramEditable);
   }
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

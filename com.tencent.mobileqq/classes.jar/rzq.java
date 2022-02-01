@@ -1,31 +1,19 @@
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity.RecommendAndAdCallback.1;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
-import java.lang.ref.WeakReference;
-import java.util.List;
+import android.os.Bundle;
+import com.tencent.biz.pubaccount.VideoInfo.InterruptedWeishiAd;
 
-public class rzq
-  implements scu
+class rzq
+  implements tlo
 {
-  private WeakReference<FastWebActivity> a;
+  rzq(rzp paramrzp, Bundle paramBundle) {}
   
-  public rzq(FastWebActivity paramFastWebActivity)
+  public void a()
   {
-    this.a = new WeakReference(paramFastWebActivity);
-  }
-  
-  public void a(boolean paramBoolean, String paramString, List<BaseData> paramList1, List<BaseData> paramList2)
-  {
-    FastWebActivity localFastWebActivity = (FastWebActivity)this.a.get();
-    if (localFastWebActivity == null) {
-      return;
-    }
-    localFastWebActivity.runOnUiThread(new FastWebActivity.RecommendAndAdCallback.1(this, paramList1, paramList2, localFastWebActivity, paramBoolean, paramString));
+    pha.a(rzp.a(this.jdField_a_of_type_Rzp), rzp.a(this.jdField_a_of_type_Rzp).a, this.jdField_a_of_type_AndroidOsBundle);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     rzq
  * JD-Core Version:    0.7.0.1
  */

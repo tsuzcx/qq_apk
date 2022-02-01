@@ -1,19 +1,31 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.FontSettingActivity;
-import com.tencent.mobileqq.activity.GeneralSettingActivity;
+import com.tencent.qapmsdk.base.listener.IMemoryDumpListener;
+import java.util.ArrayList;
+import java.util.List;
+import org.jetbrains.annotations.NotNull;
 
-public class adde
-  implements View.OnClickListener
+class adde
+  implements IMemoryDumpListener
 {
-  public adde(GeneralSettingActivity paramGeneralSettingActivity) {}
+  adde(addd paramaddd, adcb paramadcb) {}
   
-  public void onClick(View paramView)
+  public void onFinishDump(boolean paramBoolean, @NotNull String paramString1, @NotNull String paramString2) {}
+  
+  public void onHprofDumped(@NotNull String paramString)
   {
-    paramView = new Intent(this.a, FontSettingActivity.class);
-    this.a.startActivity(paramView);
-    azqs.b(this.a.app, "CliOper", "", "", "Setting_tab", "0X8004FA2", 0, 0, "", "", "", "");
+    this.jdField_a_of_type_Adcb.a();
+  }
+  
+  @NotNull
+  public List<String> onPrepareDump(@NotNull String paramString)
+  {
+    long l1 = Runtime.getRuntime().totalMemory();
+    long l2 = Runtime.getRuntime().freeMemory();
+    ArrayList localArrayList = new ArrayList(4);
+    localArrayList.addAll(adct.b());
+    localArrayList.add(adct.b());
+    localArrayList.add(adct.a());
+    localArrayList.add(adct.a(paramString, l1 - l2));
+    return localArrayList;
   }
 }
 

@@ -1,31 +1,75 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.av.random.RandomController;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class lvf
-  implements DialogInterface.OnClickListener
 {
-  public lvf(RandomController paramRandomController) {}
+  private static mrr a;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public static void a(VideoAppInterface paramVideoAppInterface, int paramInt, String paramString)
   {
-    if (RandomController.a(this.a) == 1) {
-      azqs.b(null, "CliOper", "", "", "0X80053B5", "0X80053B5", 0, 0, "", "", "", "");
+    if (QLog.isColorLevel()) {
+      QLog.d("AVPushReport", 2, "onAvReportPush : rspType = " + paramInt + ",rspBody = " + paramString);
     }
-    for (;;)
+    if (a != null)
     {
-      this.a.b();
-      RandomController.d(this.a, false);
+      if (QLog.isColorLevel()) {
+        QLog.d("AVPushReport", 2, "ReportTask is running.");
+      }
       return;
-      if (RandomController.a(this.a) == 2) {
-        azqs.b(null, "CliOper", "", "", "0X80053C1", "0X80053C1", 0, 0, "", "", "", "");
+    }
+    String str;
+    if (a()) {
+      str = "https://play.mobile.qq.com/avreport_test/cgi-bin/report";
+    }
+    try
+    {
+      for (;;)
+      {
+        paramString = new JSONObject(paramString).optJSONObject("attach");
+        JSONObject localJSONObject = new JSONObject();
+        try
+        {
+          localJSONObject.put("uin", paramVideoAppInterface.getLongAccountUin());
+          localJSONObject.put("skey", paramVideoAppInterface.b());
+          localJSONObject.put("qqversion", "8.4.1");
+          localJSONObject.put("time", System.currentTimeMillis());
+          if (paramString != null) {
+            localJSONObject.put("attach", paramString);
+          }
+        }
+        catch (JSONException paramVideoAppInterface)
+        {
+          for (;;)
+          {
+            paramVideoAppInterface.printStackTrace();
+          }
+        }
+        a = new lvg(str, localJSONObject.toString(), null);
+        a.execute(new Void[0]);
+        return;
+        str = "https://play.mobile.qq.com/avreport/cgi-bin/report";
       }
     }
+    catch (JSONException paramString)
+    {
+      for (;;)
+      {
+        paramString.printStackTrace();
+        paramString = null;
+      }
+    }
+  }
+  
+  public static boolean a()
+  {
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     lvf
  * JD-Core Version:    0.7.0.1
  */

@@ -1,3 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<com.tencent.biz.widgets.KandianTextView android:textSize="14.0sp" android:textColor="#ffffffff" android:ellipsize="end" android:id="@id/mf7" android:layout_width="fill_parent" android:layout_height="wrap_content" android:maxLines="2"
-  xmlns:android="http://schemas.android.com/apk/res/android" />

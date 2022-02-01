@@ -1,14 +1,10 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-
-final class bkmo
-  implements DialogInterface.OnClickListener
+public abstract interface bkmo
 {
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public abstract void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, boolean paramBoolean, int paramInt5);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bkmo
  * JD-Core Version:    0.7.0.1
  */

@@ -1,28 +1,26 @@
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.profile.view.ProfileHeaderView;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import com.tencent.mobileqq.data.MessageRecord;
+import java.util.List;
+import msf.msgcomm.msg_comm.Msg;
+import tencent.im.msg.im_msg_body.Elem;
 
 public class aczg
-  extends bdon
+  implements acxk
 {
-  public aczg(FriendProfileCardActivity paramFriendProfileCardActivity, int paramInt)
+  public int a()
   {
-    super(paramInt);
+    return 0;
   }
   
-  public void a()
+  public void a(List<acxk> paramList) {}
+  
+  public boolean a(List<im_msg_body.Elem> paramList, msg_comm.Msg paramMsg, List<MessageRecord> paramList1, StringBuilder paramStringBuilder, boolean paramBoolean1, boolean paramBoolean2, bepr parambepr, bbzl parambbzl, bbyn parambbyn)
   {
-    if (this.a.jdField_a_of_type_ComTencentMobileqqProfileViewProfileHeaderView.e == 0) {}
-    for (boolean bool = true;; bool = false)
-    {
-      if (this.a.jdField_a_of_type_Adcl != null) {
-        this.a.jdField_a_of_type_Adcl.a(bool);
-      }
-      VasWebviewUtil.reportCommercialDrainage(this.a.app.getCurrentAccountUin(), "defaultcard", "click_customized", "", 1, 0, 0, "", "", "");
-      this.a.b(3);
-      return;
-    }
+    return false;
+  }
+  
+  public boolean a(im_msg_body.Elem paramElem)
+  {
+    return false;
   }
 }
 

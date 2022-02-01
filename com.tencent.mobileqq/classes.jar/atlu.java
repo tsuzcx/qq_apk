@@ -1,115 +1,80 @@
-import com.tencent.mobileqq.app.FriendListHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.TroopManager;
-import com.tencent.mobileqq.data.ExtensionInfo;
-import com.tencent.mobileqq.data.Friends;
-import com.tencent.mobileqq.data.TroopInfo;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.util.QLog;
-import tencent.media_relation.media_relation.MediaRelationInfo;
+import android.app.Activity;
+import android.content.res.Resources;
+import android.os.Bundle;
+import com.tencent.tbs.reader.TbsReaderView.ReaderCallback;
 
-public class atlu
+class atlu
+  implements TbsReaderView.ReaderCallback
 {
-  public static String a = "ListenTogetherAIOStatusHelper";
+  private Activity jdField_a_of_type_AndroidAppActivity;
+  private atlt jdField_a_of_type_Atlt;
+  private String jdField_a_of_type_JavaLangString;
   
-  public static void a(QQAppInterface paramQQAppInterface, String paramString, boolean paramBoolean)
+  public atlu(atlp paramatlp, atlt paramatlt, Activity paramActivity, String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i(a, 2, "setIsGroupListenTogetherOpen, app = " + paramQQAppInterface + " troopuin:" + paramString + " isOpen:" + paramBoolean);
-    }
-    if (paramQQAppInterface != null)
-    {
-      paramQQAppInterface = (TroopManager)paramQQAppInterface.getManager(52);
-      if (paramQQAppInterface != null)
-      {
-        paramString = paramQQAppInterface.b(paramString);
-        if (paramString != null)
-        {
-          paramString.setIsListenTogether(paramBoolean);
-          paramQQAppInterface.b(paramString);
-          if (QLog.isColorLevel()) {
-            QLog.i(a, 2, "setIsGroupListenTogetherOpen troopinfo saved");
-          }
-        }
-      }
-    }
+    this.jdField_a_of_type_Atlt = paramatlt;
+    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
   
-  public static boolean a(byte[] paramArrayOfByte)
+  public void a(Object paramObject, String paramString, int paramInt)
   {
-    media_relation.MediaRelationInfo localMediaRelationInfo;
-    if ((paramArrayOfByte != null) && (paramArrayOfByte.length > 0)) {
-      localMediaRelationInfo = new media_relation.MediaRelationInfo();
-    }
-    try
-    {
-      localMediaRelationInfo.mergeFrom(paramArrayOfByte);
-      paramArrayOfByte = localMediaRelationInfo;
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        int i;
-        long l;
-        paramArrayOfByte = null;
-        localException.printStackTrace();
-      }
-    }
-    if ((paramArrayOfByte != null) && (paramArrayOfByte.create_time.has()))
-    {
-      i = paramArrayOfByte.create_time.get();
-      l = NetConnInfoCenter.getServerTime();
-    }
-    return i >= l - 604800L;
-  }
-  
-  public static void b(QQAppInterface paramQQAppInterface, String paramString, boolean paramBoolean)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i(a, 2, "setIsC2CListenTogetherOpen, app = " + paramQQAppInterface + " frienduin:" + paramString + " isOpen:" + paramBoolean);
-    }
-    Friends localFriends;
-    Object localObject;
-    if (paramQQAppInterface != null)
-    {
-      alto localalto = (alto)paramQQAppInterface.getManager(51);
-      if (localalto != null)
-      {
-        localFriends = localalto.e(paramString);
-        if ((localFriends == null) || (!localFriends.isFriend())) {
-          paramBoolean = false;
-        }
-        ExtensionInfo localExtensionInfo = localalto.a(paramString);
-        localObject = localExtensionInfo;
-        if (localExtensionInfo == null)
-        {
-          localObject = new ExtensionInfo();
-          ((ExtensionInfo)localObject).uin = paramString;
-        }
-        boolean bool = ((ExtensionInfo)localObject).isListenTogetherOpen;
-        if (bool != paramBoolean)
-        {
-          ((ExtensionInfo)localObject).isListenTogetherOpen = paramBoolean;
-          localalto.a((ExtensionInfo)localObject);
-          ((FriendListHandler)paramQQAppInterface.a(1)).notifyUI(3, true, paramString);
-        }
-        if (QLog.isColorLevel())
-        {
-          paramString = a;
-          localObject = new StringBuilder().append("setIsC2CListenTogetherOpen extensionInfo saved, old=").append(bool).append(" new:").append(paramBoolean).append(" friend:");
-          if (localFriends == null) {
-            break label234;
-          }
-        }
-      }
-    }
-    label234:
-    for (paramQQAppInterface = Boolean.valueOf(localFriends.isFriend());; paramQQAppInterface = "null")
-    {
-      QLog.i(paramString, 2, paramQQAppInterface);
+    if ((paramObject == null) || (!(paramObject instanceof Bundle))) {
       return;
+    }
+    ((Bundle)paramObject).putInt(paramString, paramInt);
+  }
+  
+  public void a(Object paramObject, String paramString, boolean paramBoolean)
+  {
+    if ((paramObject == null) || (!(paramObject instanceof Bundle))) {
+      return;
+    }
+    ((Bundle)paramObject).putBoolean(paramString, paramBoolean);
+  }
+  
+  public void onCallBackAction(Integer paramInteger, Object paramObject1, Object paramObject2)
+  {
+    boolean bool = true;
+    switch (paramInteger.intValue())
+    {
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Atlp.a(paramInteger.intValue(), this.jdField_a_of_type_Atlt);
+      if (paramInteger.intValue() == 6001) {
+        this.jdField_a_of_type_Atlp.a(this.jdField_a_of_type_AndroidAppActivity, paramObject1, paramObject2, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Atlt);
+      }
+      return;
+      this.jdField_a_of_type_Atlp.a(paramObject1, this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_Atlt);
+      continue;
+      a(paramObject2, "is_bar_animating", false);
+      continue;
+      this.jdField_a_of_type_Atlp.a(paramObject1, this.jdField_a_of_type_JavaLangString);
+      continue;
+      a(paramObject2, "TitleHeight", (int)this.jdField_a_of_type_AndroidAppActivity.getResources().getDimension(2131298998));
+      continue;
+      if (this.jdField_a_of_type_Atlt != null)
+      {
+        if (this.jdField_a_of_type_Atlt.a()) {}
+        for (int i = 0;; i = 1)
+        {
+          a(paramObject2, "is_bar_show", i);
+          break;
+        }
+        if ((paramObject1 != null) && ((paramObject1 instanceof Integer)))
+        {
+          atlp localatlp = this.jdField_a_of_type_Atlp;
+          if (((Integer)paramObject1).intValue() == 0) {}
+          for (;;)
+          {
+            atlp.a(localatlp, false, bool);
+            break;
+            bool = false;
+          }
+          atlp.a(this.jdField_a_of_type_Atlp, false, false);
+        }
+      }
     }
   }
 }

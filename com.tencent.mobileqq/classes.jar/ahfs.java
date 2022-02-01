@@ -1,26 +1,27 @@
-import android.widget.LinearLayout;
-import com.tencent.mobileqq.activity.contact.addcontact.AddContactViewPagerTroopFragment;
-import com.tencent.mobileqq.activity.contact.addcontact.AddContactViewPagerTroopFragment.4.1;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.aio.item.QQStoryItemBuilder;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class ahfs
-  extends ampn
+  implements View.OnClickListener
 {
-  public ahfs(AddContactViewPagerTroopFragment paramAddContactViewPagerTroopFragment, String paramString)
-  {
-    super(paramString);
-  }
+  public ahfs(QQStoryItemBuilder paramQQStoryItemBuilder) {}
   
-  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("ac_ft.AddContactViewPagerTroopFragment", 2, "getview onLocationFinish info = " + paramSosoLbsInfo);
+    ahfy localahfy = (ahfy)afur.a(paramView);
+    if (paramView == localahfy.jdField_a_of_type_AndroidWidgetFrameLayout) {
+      this.a.b(localahfy);
     }
-    if (paramInt != 0)
+    for (;;)
     {
-      QLog.i("ac_ft.AddContactViewPagerTroopFragment", 1, "getview onLocationFinish, errorCode=" + paramInt);
-      this.a.a.post(new AddContactViewPagerTroopFragment.4.1(this));
+      bcst.b(this.a.a, "dc00898", "", "", "0x8009434", "0x8009434", 0, 0, "", "5", "", "");
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      if (paramView == localahfy.jdField_a_of_type_AndroidWidgetRelativeLayout) {
+        this.a.a(localahfy);
+      }
     }
   }
 }

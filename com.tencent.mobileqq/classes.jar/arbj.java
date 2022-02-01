@@ -1,48 +1,61 @@
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 
 public class arbj
-  extends aqxd
+  extends aqkz<arbi>
 {
-  aqru jdField_a_of_type_Aqru = null;
-  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  String jdField_a_of_type_JavaLangString;
-  String b;
-  
-  public arbj(QQAppInterface paramQQAppInterface, String paramString1, String paramString2)
+  public static arbi a()
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
-    a();
+    return (arbi)aqlk.a().a(451);
   }
   
-  public int a()
+  @NonNull
+  public arbi a(int paramInt)
   {
-    return 4;
+    return new arbi();
   }
   
-  public void a()
+  @Nullable
+  public arbi a(aqlg[] paramArrayOfaqlg)
   {
-    this.jdField_a_of_type_Aqru = new arbk(this);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().addObserver(this.jdField_a_of_type_Aqru);
+    if ((paramArrayOfaqlg != null) && (paramArrayOfaqlg.length > 0)) {
+      return arbi.a(paramArrayOfaqlg);
+    }
+    return null;
   }
   
-  public boolean a()
+  public void a(arbi paramarbi) {}
+  
+  public Class<arbi> clazz()
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(this.jdField_a_of_type_JavaLangString, this.b);
+    return arbi.class;
+  }
+  
+  public boolean isNeedCompressed()
+  {
     return true;
   }
   
-  public void b()
+  public boolean isNeedStoreLargeFile()
   {
-    if (this.jdField_a_of_type_Aqru != null) {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().deleteObserver(this.jdField_a_of_type_Aqru);
-    }
+    return false;
+  }
+  
+  public int migrateOldVersion()
+  {
+    return 0;
+  }
+  
+  public void onReqFailed(int paramInt) {}
+  
+  public int type()
+  {
+    return 451;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     arbj
  * JD-Core Version:    0.7.0.1
  */

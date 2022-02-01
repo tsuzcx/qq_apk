@@ -1,16 +1,16 @@
-class avgz
-  implements vyn
+import android.content.Context;
+import android.os.Bundle;
+import com.tencent.shadow.dynamic.host.EnterCallback;
+import com.tencent.shadow.dynamic.host.PluginManager;
+
+public abstract interface avgz
+  extends PluginManager
 {
-  avgz(avgv paramavgv, avgn paramavgn) {}
-  
-  public void a_(vyi paramvyi)
-  {
-    this.jdField_a_of_type_Avgn.a(this.jdField_a_of_type_Avgv);
-  }
+  public abstract void a(Context paramContext, long paramLong, Bundle paramBundle, EnterCallback paramEnterCallback);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     avgz
  * JD-Core Version:    0.7.0.1
  */

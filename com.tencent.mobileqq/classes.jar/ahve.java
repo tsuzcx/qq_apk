@@ -1,8 +1,16 @@
-public abstract interface ahve
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.aio.photo.PhotoListPanel;
+
+public class ahve
+  implements DialogInterface.OnClickListener
 {
-  public abstract void a(String paramString, int paramInt, float paramFloat);
+  public ahve(PhotoListPanel paramPhotoListPanel, Runnable paramRunnable) {}
   
-  public abstract void c(boolean paramBoolean);
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    this.jdField_a_of_type_JavaLangRunnable.run();
+  }
 }
 
 

@@ -1,21 +1,17 @@
-class ahuj
-  implements aufw
+public class ahuj
 {
-  ahuj(ahuf paramahuf) {}
-  
-  public void a(int paramInt)
-  {
-    this.a.c(false);
-    ahuf.a(this.a);
-  }
-  
-  public void a(long paramLong) {}
-  
-  public void a(boolean paramBoolean, int paramInt) {}
-  
-  public void b(int paramInt) {}
-  
-  public void c(int paramInt) {}
+  public int a;
+  boolean a = false;
+  boolean b = false;
+  boolean c = false;
+  public boolean d = false;
+  boolean e = false;
+  boolean f = false;
+  boolean g = false;
+  boolean h = false;
+  boolean i = false;
+  boolean j = false;
+  boolean k = false;
 }
 
 

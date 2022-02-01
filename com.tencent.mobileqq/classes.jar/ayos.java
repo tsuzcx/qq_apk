@@ -1,47 +1,55 @@
-import com.tencent.TMG.utils.QLog;
-import java.util.List;
-import org.json.JSONException;
-import org.json.JSONObject;
-import pb.unify.search.UnifySearchCommon.ResultItem;
-import pb.unite.search.DynamicSearch.ResultItem;
+import android.graphics.Bitmap;
+import androidx.annotation.NonNull;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.onlinestatus.OnLineStatusBlurBg.1;
+import com.tencent.mobileqq.theme.ThemeUtil;
+import com.tencent.qphone.base.util.QLog;
+import mqq.util.WeakReference;
 
 public class ayos
-  extends ayod
 {
-  public static final String a = ayos.class.getSimpleName();
-  public String b;
-  public String j;
-  public String k;
-  public String l;
-  public String m;
+  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
+  private String jdField_a_of_type_JavaLangString = "";
+  private WeakReference<ayou> jdField_a_of_type_MqqUtilWeakReference;
   
-  public ayos(String paramString, long paramLong, List<String> paramList, UnifySearchCommon.ResultItem paramResultItem, int paramInt)
+  private void a(@NonNull ayot paramayot, Bitmap paramBitmap, int paramInt1, String paramString, int paramInt2)
   {
-    super(paramString, paramLong, paramList, paramResultItem, paramInt);
+    ThreadManagerV2.postImmediately(new OnLineStatusBlurBg.1(this, paramayot, paramBitmap, paramInt1, paramInt2, paramString), null, false);
   }
   
-  public ayos(String paramString, long paramLong, List<String> paramList, DynamicSearch.ResultItem paramResultItem, int paramInt)
+  public void a(@NonNull ayot paramayot, ayou paramayou)
   {
-    super(paramString, paramLong, paramList, paramResultItem, paramInt);
-  }
-  
-  public void a(String paramString)
-  {
-    try
+    if ((paramayot.jdField_a_of_type_ComTencentMobileqqAppBaseActivity == null) || (paramayou == null))
     {
-      paramString = new JSONObject(paramString);
-      this.b = paramString.optString("leftIcon");
-      this.j = paramString.optString("firstTitle");
-      this.k = paramString.optString("secondTitle");
-      this.l = paramString.optString("moreText");
-      this.m = paramString.optString("jumpUrl");
+      if (QLog.isColorLevel()) {
+        QLog.d("OnLineStatusBlurBg", 4, "startBlurBg activity or listener is empty");
+      }
       return;
     }
-    catch (JSONException paramString)
+    if (("1103".equals(ThemeUtil.curThemeId)) || ("2920".equals(ThemeUtil.curThemeId)))
     {
-      while (!QLog.isColorLevel()) {}
-      QLog.d(a, 0, paramString.toString());
+      i = 1;
+      if (i == 0) {
+        break label120;
+      }
     }
+    String str;
+    label120:
+    for (int i = paramayot.b;; i = paramayot.jdField_a_of_type_Int)
+    {
+      str = paramayot.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getActivityName() + "_" + i;
+      if (!str.equals(this.jdField_a_of_type_JavaLangString)) {
+        break label128;
+      }
+      paramayou.a(true, this.jdField_a_of_type_AndroidGraphicsBitmap, i);
+      return;
+      i = 0;
+      break;
+    }
+    label128:
+    this.jdField_a_of_type_MqqUtilWeakReference = new WeakReference(paramayou);
+    a(paramayot, awsf.a(paramayot.jdField_a_of_type_ComTencentMobileqqAppBaseActivity), awsf.a(paramayot.jdField_a_of_type_ComTencentMobileqqAppBaseActivity), str, i);
   }
 }
 

@@ -2,9 +2,9 @@ package com.tencent.mobileqq.forward;
 
 import android.graphics.drawable.Drawable;
 import android.widget.ImageView;
-import asbh;
-import asbi;
-import bdjz;
+import auii;
+import auij;
+import bgpa;
 
 public class ForwardPhotoOption$3
   implements Runnable
@@ -24,12 +24,12 @@ public class ForwardPhotoOption$3
     {
       return;
     }
-    ForwardPhotoOption.a(this.this$0).a.setOnTouchListener(new asbh(this));
+    ForwardPhotoOption.a(this.this$0).a.setOnTouchListener(new auii(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.forward.ForwardPhotoOption.3
  * JD-Core Version:    0.7.0.1
  */

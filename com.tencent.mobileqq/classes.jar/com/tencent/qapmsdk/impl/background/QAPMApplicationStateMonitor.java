@@ -7,12 +7,12 @@ import java.util.concurrent.TimeUnit;
 public class QAPMApplicationStateMonitor
   implements Runnable
 {
-  public static final int ALTERNATEPERIOD = 30000;
+  public static final int ALTER_NATE_PERIOD = 30000;
   public static final int DELAY_AND_PERIOD = 5;
-  private static final Object firstLock = new Object();
+  private static final Object FIRST_LOCK = new Object();
+  private static final Object SECOND_LOCK = new Object();
   private static QAPMApplicationStateMonitor instance;
-  private static final Object secondLock = new Object();
-  private final int SnoozeTimenterval;
+  private final int SNOOZE_TIME_INTERVAL;
   private long activitySurviveCount = 0L;
   private boolean applicationNotInSnooze = true;
   private long backgroundTime = 0L;
@@ -24,7 +24,7 @@ public class QAPMApplicationStateMonitor
   
   QAPMApplicationStateMonitor(int paramInt1, int paramInt2, TimeUnit paramTimeUnit, int paramInt3)
   {
-    this.SnoozeTimenterval = paramInt3;
+    this.SNOOZE_TIME_INTERVAL = paramInt3;
     new ScheduledThreadPoolExecutor(1, new QAPMApplicationStateMonitor.1(this)).scheduleAtFixedRate(this, paramInt1, paramInt2, paramTimeUnit);
   }
   
@@ -40,11 +40,11 @@ public class QAPMApplicationStateMonitor
   private long getSnoozeTime()
   {
     // Byte code:
-    //   0: getstatic 29	com/tencent/qapmsdk/impl/background/QAPMApplicationStateMonitor:firstLock	Ljava/lang/Object;
+    //   0: getstatic 29	com/tencent/qapmsdk/impl/background/QAPMApplicationStateMonitor:FIRST_LOCK	Ljava/lang/Object;
     //   3: astore 5
     //   5: aload 5
     //   7: monitorenter
-    //   8: getstatic 31	com/tencent/qapmsdk/impl/background/QAPMApplicationStateMonitor:secondLock	Ljava/lang/Object;
+    //   8: getstatic 31	com/tencent/qapmsdk/impl/background/QAPMApplicationStateMonitor:SECOND_LOCK	Ljava/lang/Object;
     //   11: astore 6
     //   13: aload 6
     //   15: monitorenter
@@ -105,9 +105,9 @@ public class QAPMApplicationStateMonitor
   public void activityStarted(String arg1)
   {
     QAPMAppInstrumentation.activityStartBeginIns(???);
-    synchronized (firstLock)
+    synchronized (FIRST_LOCK)
     {
-      synchronized (secondLock)
+      synchronized (SECOND_LOCK)
       {
         this.activitySurviveCount += 1L;
         if (this.activitySurviveCount == 1L) {
@@ -115,7 +115,7 @@ public class QAPMApplicationStateMonitor
         }
         if (!this.applicationNotInSnooze)
         {
-          QAPMAppInstrumentation.appStateTimeInfo.hasSnooze = true;
+          QAPMAppInstrumentation.appStateTimeInfo.c = true;
           this.applicationNotInSnooze = true;
         }
         return;
@@ -125,14 +125,14 @@ public class QAPMApplicationStateMonitor
   
   public void activityStopped(String arg1)
   {
-    synchronized (firstLock)
+    synchronized (FIRST_LOCK)
     {
-      synchronized (secondLock)
+      synchronized (SECOND_LOCK)
       {
         this.activitySurviveCount -= 1L;
         if (this.activitySurviveCount == 0L)
         {
-          com.tencent.qapmsdk.impl.appstate.AppStateTimeInfo.lastBackgroundTime = System.currentTimeMillis();
+          com.tencent.qapmsdk.impl.appstate.b.b = System.currentTimeMillis();
           QAPMAppInstrumentation.isAppInBackground = true;
           this.backgroundTime = System.currentTimeMillis();
         }
@@ -143,9 +143,9 @@ public class QAPMApplicationStateMonitor
   
   public void run()
   {
-    synchronized (firstLock)
+    synchronized (FIRST_LOCK)
     {
-      if ((getSnoozeTime() >= this.SnoozeTimenterval) && (this.applicationNotInSnooze)) {
+      if ((getSnoozeTime() >= this.SNOOZE_TIME_INTERVAL) && (this.applicationNotInSnooze)) {
         this.applicationNotInSnooze = false;
       }
       return;
@@ -154,7 +154,7 @@ public class QAPMApplicationStateMonitor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.tencent.qapmsdk.impl.background.QAPMApplicationStateMonitor
  * JD-Core Version:    0.7.0.1
  */

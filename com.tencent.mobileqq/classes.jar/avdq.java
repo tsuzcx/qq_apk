@@ -1,12 +1,12 @@
-import android.os.Bundle;
+import com.tencent.mobileqq.hotpic.HotPicData;
 
 public abstract interface avdq
 {
-  public abstract void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle);
+  public abstract void a(HotPicData paramHotPicData);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     avdq
  * JD-Core Version:    0.7.0.1
  */

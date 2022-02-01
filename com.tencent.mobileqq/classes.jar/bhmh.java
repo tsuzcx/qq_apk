@@ -1,10 +1,23 @@
-public abstract interface bhmh
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.webview.WebViewTitleStyle;
+
+public final class bhmh
+  implements Parcelable.Creator<WebViewTitleStyle>
 {
-  public abstract void a();
+  public WebViewTitleStyle a(Parcel paramParcel)
+  {
+    return new WebViewTitleStyle(paramParcel);
+  }
+  
+  public WebViewTitleStyle[] a(int paramInt)
+  {
+    return new WebViewTitleStyle[paramInt];
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bhmh
  * JD-Core Version:    0.7.0.1
  */

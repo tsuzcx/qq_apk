@@ -1,75 +1,32 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.FeedFeature;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
+import android.text.TextUtils;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.qphone.base.util.QLog;
+import feedcloud.FeedCloudMeta.StUser;
+import feedcloud.FeedCloudRead.StGetMainPageRsp;
 
-public class uxd
+final class uxd
+  implements zxa<FeedCloudRead.StGetMainPageRsp>
 {
-  public int a;
-  public String a;
-  public boolean a;
-  public int b;
-  public boolean b;
-  public int c;
-  
-  public void a(qqstory_struct.FeedFeature paramFeedFeature)
+  public void a(boolean paramBoolean, long paramLong, String paramString, FeedCloudRead.StGetMainPageRsp paramStGetMainPageRsp)
   {
-    boolean bool2 = true;
-    this.jdField_a_of_type_JavaLangString = paramFeedFeature.feed_id.get().toStringUtf8();
-    this.jdField_a_of_type_Int = paramFeedFeature.total_like_num.get();
-    this.jdField_b_of_type_Int = paramFeedFeature.total_comment_num.get();
-    this.c = paramFeedFeature.total_viewing_num.get();
-    if (paramFeedFeature.deny_comment.get() == 1)
+    if ((paramBoolean) && (paramLong == 0L))
     {
-      bool1 = true;
-      this.jdField_a_of_type_Boolean = bool1;
-      if (paramFeedFeature.has_like.get() != 1) {
-        break label91;
+      if (paramStGetMainPageRsp == null) {
+        break label54;
+      }
+      uxc.a((FeedCloudMeta.StUser)paramStGetMainPageRsp.user.get());
+      if (TextUtils.isEmpty(uxc.c().nick.get())) {
+        QLog.w("QCircleGlobalInfo", 1, "qCircle get nick empty");
       }
     }
-    label91:
-    for (boolean bool1 = bool2;; bool1 = false)
-    {
-      this.jdField_b_of_type_Boolean = bool1;
-      return;
-      bool1 = false;
-      break;
-    }
-  }
-  
-  public boolean equals(Object paramObject)
-  {
-    if (this == paramObject) {}
-    do
-    {
-      return true;
-      if ((paramObject == null) || (getClass() != paramObject.getClass())) {
-        return false;
-      }
-      paramObject = (uxd)paramObject;
-      if (this.jdField_a_of_type_JavaLangString != null) {
-        return this.jdField_a_of_type_JavaLangString.equals(paramObject.jdField_a_of_type_JavaLangString);
-      }
-    } while (paramObject.jdField_a_of_type_JavaLangString == null);
-    return false;
-  }
-  
-  public int hashCode()
-  {
-    if (this.jdField_a_of_type_JavaLangString != null) {
-      return this.jdField_a_of_type_JavaLangString.hashCode();
-    }
-    return 0;
-  }
-  
-  public String toString()
-  {
-    return "FeedFeatureItem{feedId='" + this.jdField_a_of_type_JavaLangString + '\'' + ", totalLikeCount=" + this.jdField_a_of_type_Int + ", totalCommentCount=" + this.jdField_b_of_type_Int + ", totalViewCount=" + this.c + ", isDenyComment=" + this.jdField_a_of_type_Boolean + '}';
+    return;
+    label54:
+    QLog.w("QCircleGlobalInfo", 1, "getPuinUser empty");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     uxd
  * JD-Core Version:    0.7.0.1
  */

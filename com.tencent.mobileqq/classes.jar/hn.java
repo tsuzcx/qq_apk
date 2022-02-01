@@ -1,56 +1,55 @@
+import android.text.TextUtils;
+import com.immersion.touchsensesdk.AsyncConnectionProxy;
+import com.immersion.touchsensesdk.IConnection;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.QLog;
-import tencent.im.oidb.cmd0xa4d.oidb_0xa4d.IMMRReq;
-import tencent.im.oidb.cmd0xa4d.oidb_0xa4d.ReqBody;
+import java.lang.ref.WeakReference;
 
 public class hn
-  extends alpd
+  extends AsyncConnectionProxy
 {
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private hm jdField_a_of_type_Hm;
+  private WeakReference<QQAppInterface> a;
   
-  public hn(QQAppInterface paramQQAppInterface)
+  public hn()
   {
-    super(paramQQAppInterface);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-  }
-  
-  public void a(hm paramhm)
-  {
-    this.jdField_a_of_type_Hm = paramhm;
-  }
-  
-  public void a(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("ImmersionHandler", 2, "HapticMediaPlayer start request");
+    if (BaseApplicationImpl.sProcessId == 1) {
+      this.a = new WeakReference((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime());
     }
-    oidb_0xa4d.IMMRReq localIMMRReq = new oidb_0xa4d.IMMRReq();
-    localIMMRReq.str_url.set(paramString);
-    paramString = new oidb_0xa4d.ReqBody();
-    paramString.msg_immr_req.set(localIMMRReq);
-    mzy.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, new ho(false, this.jdField_a_of_type_Hm), paramString.toByteArray(), "OidbSvc.0xa4d", 2637, 1, null);
   }
   
-  protected Class<? extends alpg> observerClass()
+  public void connect(String paramString, int paramInt1, int paramInt2)
   {
-    return null;
+    if (TextUtils.isEmpty(paramString)) {
+      return;
+    }
+    ho localho = (ho)((QQAppInterface)this.a.get()).a(116);
+    localho.a(this);
+    localho.a(paramString);
   }
   
-  public void onDestroy()
+  public void setConnection(IConnection paramIConnection)
   {
-    super.onDestroy();
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = null;
+    StringBuilder localStringBuilder;
+    if (QLog.isColorLevel())
+    {
+      localStringBuilder = new StringBuilder().append("HapticMediaPlayer connection == NULL -->");
+      if (paramIConnection != null) {
+        break label45;
+      }
+    }
+    label45:
+    for (boolean bool = true;; bool = false)
+    {
+      QLog.i("ImmerIConnectionProxy", 2, bool);
+      super.setConnection(paramIConnection);
+      return;
+    }
   }
-  
-  public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     hn
  * JD-Core Version:    0.7.0.1
  */

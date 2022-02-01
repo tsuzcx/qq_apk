@@ -1,17 +1,30 @@
 import android.view.View;
-import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.FriendListHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.Friends;
+import com.tencent.mobileqq.widget.QQToast;
 
 class ajgr
-  implements View.OnClickListener
+  implements bkhw
 {
-  ajgr(ajgb paramajgb) {}
+  ajgr(ajgp paramajgp, boolean paramBoolean, Friends paramFriends, bkho parambkho) {}
   
-  public void onClick(View paramView)
+  public void OnClick(View paramView, int paramInt)
   {
-    if (this.a.jdField_b_of_type_Long == 77313L) {
-      this.a.jdField_b_of_type_Boolean = true;
+    if (!bgnt.g(ajgp.a(this.jdField_a_of_type_Ajgp))) {
+      QQToast.a(ajgp.a(this.jdField_a_of_type_Ajgp), 1, 2131691985, 0).a();
     }
-    this.a.c();
+    for (;;)
+    {
+      this.jdField_a_of_type_Bkho.e();
+      return;
+      paramView = (FriendListHandler)ajgp.a(this.jdField_a_of_type_Ajgp).a(1);
+      if (this.jdField_a_of_type_Boolean) {
+        paramView.b(1, new String[] { this.jdField_a_of_type_ComTencentMobileqqDataFriends.uin }, new boolean[] { false });
+      } else {
+        paramView.b(1, new String[] { this.jdField_a_of_type_ComTencentMobileqqDataFriends.uin }, new boolean[] { true });
+      }
+    }
   }
 }
 

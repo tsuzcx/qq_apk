@@ -1,6 +1,8 @@
 package com.tencent.mobileqq.mini.widget;
 
 import android.content.Context;
+import android.graphics.Paint;
+import android.graphics.Paint.FontMetrics;
 import android.graphics.Typeface;
 import android.os.Handler;
 import android.os.Looper;
@@ -15,7 +17,7 @@ import android.view.ViewTreeObserver;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.FrameLayout.LayoutParams;
-import bdnn;
+import bgsp;
 import com.tencent.mobileqq.mini.app.MiniAppStateManager;
 import com.tencent.mobileqq.mini.appbrand.AppBrandRuntime;
 import com.tencent.mobileqq.mini.appbrand.page.AbsAppBrandPage;
@@ -113,6 +115,14 @@ public class MiniAppTextArea1
     }
   }
   
+  private int getDefaultHeight(float paramFloat)
+  {
+    Object localObject = new Paint();
+    ((Paint)localObject).setTextSize(DisplayUtil.getDensity(getContext()) * paramFloat);
+    localObject = ((Paint)localObject).getFontMetrics();
+    return (int)(((Paint.FontMetrics)localObject).descent - ((Paint.FontMetrics)localObject).ascent);
+  }
+  
   private int getSelectionPosition()
   {
     int i = 0;
@@ -207,29 +217,37 @@ public class MiniAppTextArea1
       j = this.textAreaHeight;
       i = j;
       if (this.textAreaHeight != 0) {
-        break label626;
+        break label664;
       }
       i = j;
       if (!this.autoSize) {
-        break label626;
+        break label664;
+      }
+      if (this.textAreaMinHeight == 0)
+      {
+        i = 16;
+        if (paramJSONObject.has("fontSize")) {
+          i = paramJSONObject.optInt("fontSize");
+        }
+        this.textAreaMinHeight = getDefaultHeight(i);
       }
       j = this.textAreaMinHeight;
       i = j;
       if (!paramBoolean) {
-        break label626;
+        break label664;
       }
       i = j;
       if (getLayout() == null) {
-        break label626;
+        break label664;
       }
       i = j;
       if (getLayout().getHeight() <= this.textAreaMinHeight) {
-        break label626;
+        break label664;
       }
       i = getLayout().getHeight();
     }
-    label615:
-    label626:
+    label653:
+    label664:
     for (;;)
     {
       j = (int)(DisplayUtil.getDensity(getContext()) * paramJSONObject.optInt("left") + 0.5F);
@@ -254,7 +272,7 @@ public class MiniAppTextArea1
       else if (paramJSONObject.has("fontWeight"))
       {
         if (!"bold".equals(paramJSONObject.optString("fontWeight"))) {
-          break label615;
+          break label653;
         }
         setTypeface(Typeface.defaultFromStyle(1));
       }
@@ -295,10 +313,12 @@ public class MiniAppTextArea1
   
   private void updateTextareaHeight()
   {
-    if ((this.autoSize) && (getLayout() != null) && (getLayout().getHeight() > this.textAreaMinHeight) && (getLayout().getHeight() <= this.textAreaMaxHeight))
+    if ((this.autoSize) && (getLayout() != null) && (getLayout().getHeight() > this.textAreaMinHeight))
     {
       FrameLayout.LayoutParams localLayoutParams = (FrameLayout.LayoutParams)getLayoutParams();
-      localLayoutParams.height = getLayout().getHeight();
+      if ((this.textAreaMaxHeight == 0) || (getLayout().getHeight() <= this.textAreaMaxHeight)) {
+        localLayoutParams.height = getLayout().getHeight();
+      }
       setLayoutParams(localLayoutParams);
     }
   }
@@ -405,7 +425,7 @@ public class MiniAppTextArea1
       if (paramJSONObject.has("placeholder"))
       {
         str = paramJSONObject.optString("placeholder");
-        if (!bdnn.a(str)) {
+        if (!bgsp.a(str)) {
           setHint(str);
         }
       }
@@ -459,7 +479,7 @@ public class MiniAppTextArea1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.widget.MiniAppTextArea1
  * JD-Core Version:    0.7.0.1
  */

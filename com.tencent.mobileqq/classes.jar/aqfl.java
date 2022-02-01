@@ -1,21 +1,23 @@
-class aqfl
-  extends aqbl
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.graphics.Point;
+import android.widget.LinearLayout.LayoutParams;
+import com.tencent.mobileqq.colornote.smallscreen.ColorNoteSmallScreenRelativeLayout;
+
+public class aqfl
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  aqfl(aqfk paramaqfk) {}
+  public aqfl(ColorNoteSmallScreenRelativeLayout paramColorNoteSmallScreenRelativeLayout1, ColorNoteSmallScreenRelativeLayout paramColorNoteSmallScreenRelativeLayout2, Point paramPoint, LinearLayout.LayoutParams paramLayoutParams, int paramInt) {}
   
-  protected void a(boolean paramBoolean, int paramInt, aqcl paramaqcl, String paramString)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    this.a.a().a(paramBoolean, paramInt, paramaqcl, paramString);
-  }
-  
-  protected void a(boolean paramBoolean, aqcl paramaqcl)
-  {
-    this.a.a().a(paramBoolean, paramaqcl);
-  }
-  
-  protected void e(boolean paramBoolean)
-  {
-    this.a.a().a(paramBoolean);
+    int i = (int)(((Float)paramValueAnimator.getAnimatedValue()).floatValue() * (ColorNoteSmallScreenRelativeLayout.b(this.b) / 2));
+    int j = ColorNoteSmallScreenRelativeLayout.a(this.b, this.b.e());
+    int k = ColorNoteSmallScreenRelativeLayout.c(this.b);
+    if (ColorNoteSmallScreenRelativeLayout.a(this.b) != null) {
+      ColorNoteSmallScreenRelativeLayout.a(this.b).a(this.jdField_a_of_type_ComTencentMobileqqColornoteSmallscreenColorNoteSmallScreenRelativeLayout, this.jdField_a_of_type_AndroidGraphicsPoint.x - i, this.jdField_a_of_type_AndroidGraphicsPoint.y, j + this.jdField_a_of_type_AndroidGraphicsPoint.x - i, k + this.jdField_a_of_type_AndroidGraphicsPoint.y);
+    }
+    this.jdField_a_of_type_AndroidWidgetLinearLayout$LayoutParams.leftMargin = (this.jdField_a_of_type_Int + i);
   }
 }
 

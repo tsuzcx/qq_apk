@@ -1,31 +1,21 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.database.MemoryInfoEntry;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.biz.qqcircle.widgets.QCircleTitleFollowView;
 
-public class vcj
+class vcj
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public int a;
-  public long a;
-  public String a;
+  vcj(vcb paramvcb) {}
   
-  public vcj(vcg paramvcg, String paramString)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    this.jdField_a_of_type_JavaLangString = "";
-    paramvcg = ((uvn)uwa.a(19)).a(paramString);
-    if (paramvcg != null) {
-      a(paramvcg);
-    }
-  }
-  
-  public void a(@NonNull MemoryInfoEntry paramMemoryInfoEntry)
-  {
-    this.jdField_a_of_type_Long = paramMemoryInfoEntry.seq;
-    this.jdField_a_of_type_JavaLangString = paramMemoryInfoEntry.cookie;
-    this.jdField_a_of_type_Int = paramMemoryInfoEntry.timeZone;
+    vcb.a(this.a).getLayoutParams().width = (((Integer)paramValueAnimator.getAnimatedValue()).intValue() + bgtn.a(50.0F));
+    vcb.a(this.a).requestLayout();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     vcj
  * JD-Core Version:    0.7.0.1
  */

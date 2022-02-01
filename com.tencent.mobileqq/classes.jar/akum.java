@@ -1,23 +1,30 @@
-public abstract interface akum
-  extends akrx
+import com.tencent.mobileqq.activity.qwallet.redpacket.draw.DoodleView;
+
+public class akum
+  implements akvl
 {
-  public abstract void a(int paramInt, String paramString1, String paramString2);
+  public akum(DoodleView paramDoodleView) {}
   
-  public abstract void a(Object paramObject);
+  public void a()
+  {
+    if (DoodleView.a(this.a) != null) {
+      DoodleView.a(this.a).a();
+    }
+  }
   
-  public abstract void b();
+  public void a(int paramInt1, int paramInt2)
+  {
+    if (DoodleView.a(this.a) != null) {
+      DoodleView.a(this.a).a(paramInt1, paramInt2);
+    }
+  }
   
-  public abstract void b(String paramString1, String paramString2);
-  
-  public abstract void c();
-  
-  public abstract void d();
-  
-  public abstract void e();
-  
-  public abstract void f();
-  
-  public abstract void g();
+  public void b()
+  {
+    if (DoodleView.a(this.a) != null) {
+      DoodleView.a(this.a).b();
+    }
+  }
 }
 
 

@@ -1,387 +1,468 @@
-import android.content.ActivityNotFoundException;
-import android.content.Intent;
+import android.annotation.TargetApi;
 import android.graphics.Bitmap;
-import android.net.Uri;
-import android.net.http.SslCertificate;
-import android.os.Build.VERSION;
+import android.graphics.Bitmap.CompressFormat;
+import android.media.MediaCodec;
+import android.media.MediaCodec.BufferInfo;
+import android.media.MediaExtractor;
+import android.media.MediaFormat;
+import android.media.MediaMetadataRetriever;
 import android.os.Handler;
-import android.support.v4.util.ArrayMap;
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.CustomWebView;
-import com.tencent.biz.webviewbase.AbsBaseWebViewActivity;
-import com.tencent.biz.webviewbase.AbsBaseWebViewActivity.WebViewClientImpl.1;
-import com.tencent.mobileqq.activity.JumpActivity;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.app.BrowserAppInterface;
-import com.tencent.mobileqq.webview.sonic.SonicClientImpl;
-import com.tencent.mobileqq.webview.swift.WebViewFragment;
-import com.tencent.mobileqq.webview.swift.WebViewPluginEngine;
-import com.tencent.mobileqq.webview.swift.component.SwiftBrowserCookieMonster;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.smtt.export.external.interfaces.SslError;
-import com.tencent.smtt.export.external.interfaces.SslErrorHandler;
-import com.tencent.smtt.export.external.interfaces.WebResourceRequest;
-import com.tencent.smtt.export.external.interfaces.WebResourceResponse;
-import com.tencent.smtt.sdk.WebView;
-import com.tencent.smtt.sdk.WebView.HitTestResult;
-import com.tencent.smtt.sdk.WebViewClient;
-import com.tencent.sonic.sdk.SonicSession;
-import java.util.HashMap;
-import java.util.Map;
+import android.os.Looper;
+import android.os.Message;
+import android.util.Log;
+import com.tencent.biz.qqstory.takevideo.localmedia.demos.MediaCodecThumbnailGenerator.CodecHandler.1;
+import com.tencent.biz.qqstory.takevideo.localmedia.demos.MediaCodecThumbnailGenerator.CodecHandler.2;
+import java.io.BufferedOutputStream;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.nio.ByteBuffer;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Locale;
+import java.util.concurrent.TimeoutException;
 
+@TargetApi(16)
 public class zcz
-  extends WebViewClient
+  extends Handler
 {
-  private ArrayMap<String, Object> a;
-  
-  private zcz(AbsBaseWebViewActivity paramAbsBaseWebViewActivity) {}
-  
-  protected WebResourceResponse a(WebView paramWebView, String paramString)
+  public zcz(zcy paramzcy, Looper paramLooper)
   {
-    Object localObject3 = null;
-    Object localObject1 = null;
-    if (paramString.startsWith("mqqpa://resourceid/")) {
-      localObject1 = sxe.a(paramString);
-    }
-    WebViewPluginEngine localWebViewPluginEngine;
-    do
-    {
-      return localObject1;
-      localWebViewPluginEngine = ((CustomWebView)paramWebView).getPluginEngine();
-    } while (localWebViewPluginEngine == null);
-    Object localObject2;
-    if (!TextUtils.isEmpty(paramString)) {
-      if (paramString.startsWith("https://jsbridge/"))
-      {
-        paramWebView = paramString.replace("https://jsbridge/", "jsbridge://");
-        localObject2 = paramWebView;
-        if (QLog.isColorLevel())
-        {
-          QLog.d("WebLog_WebViewBase", 2, "doInterceptRequest: jsapi request with http(s), url = " + paramWebView);
-          localObject2 = paramWebView;
-        }
-      }
-    }
+    super(paramLooper);
+  }
+  
+  private void a(zda paramzda)
+  {
+    int i = 0;
+    zdd localzdd = new zdd();
+    localzdd.jdField_a_of_type_Zda = paramzda;
+    localzdd.jdField_b_of_type_Long = (bauq.a(paramzda.jdField_a_of_type_JavaLangString) * 1000L);
     for (;;)
     {
-      if ((TextUtils.isEmpty((CharSequence)localObject2)) || (!((String)localObject2).startsWith("jsbridge:"))) {
-        break label251;
-      }
-      this.b.b.post(new AbsBaseWebViewActivity.WebViewClientImpl.1(this, localWebViewPluginEngine, (String)localObject2));
-      localObject1 = new WebResourceResponse("text/html", "utf-8", null);
-      paramString = ((WebResourceResponse)localObject1).getResponseHeaders();
-      paramWebView = paramString;
-      if (paramString == null) {
-        paramWebView = new HashMap();
-      }
-      paramWebView.put("cache-control", "must-revalidate，no-store");
-      ((WebResourceResponse)localObject1).setResponseHeaders(paramWebView);
-      return localObject1;
-      paramWebView = paramString;
-      if (!paramString.startsWith("http://jsbridge/")) {
-        break;
-      }
-      paramWebView = paramString.replace("http://jsbridge/", "jsbridge://");
-      break;
-      localObject2 = paramString;
-      if (QLog.isColorLevel())
-      {
-        QLog.d("WebLog_WebViewBase", 2, "doInterceptRequest: default request, url = " + paramString);
-        localObject2 = paramString;
-      }
-    }
-    for (;;)
-    {
+      MediaExtractor localMediaExtractor;
+      int k;
       try
       {
-        label251:
-        if (this.b.jdField_a_of_type_ComTencentMobileqqWebviewSonicSonicClientImpl != null)
-        {
-          paramWebView = this.b.jdField_a_of_type_ComTencentMobileqqWebviewSonicSonicClientImpl.getSession().onClientRequestResource((String)localObject2);
-          if (!(paramWebView instanceof WebResourceResponse)) {
-            break label402;
-          }
-          paramWebView = (WebResourceResponse)paramWebView;
+        localObject1 = new File(paramzda.jdField_a_of_type_JavaLangString);
+        if (!((File)localObject1).canRead()) {
+          throw new FileNotFoundException("Unable to read " + localObject1);
         }
       }
-      catch (Exception paramString)
+      catch (Exception paramzda)
       {
-        label328:
-        paramWebView = localObject3;
-        label339:
-        QLog.e("WebLog_WebViewBase", 1, "shouldInterceptRequest:resource intercept by sonic error -> " + paramString.getMessage());
-        continue;
+        paramzda = paramzda;
+        Log.e("MediaCodecThumbnailGen", "startCaptureThumbnails Error!", paramzda);
+        if (!(paramzda instanceof IllegalArgumentException)) {
+          break label548;
+        }
+        localzdd.jdField_a_of_type_Int = 100;
+        yqp.c("MediaCodecThumbnailGen", "Error when generate thumbnail", paramzda);
+        obtainMessage(4, localzdd).sendToTarget();
+        return;
+        localMediaExtractor = new MediaExtractor();
+        localMediaExtractor.setDataSource(((File)localObject1).toString());
+        k = zcx.a(localMediaExtractor);
+        if (k < 0) {
+          throw new RuntimeException("No video track found in " + localObject1);
+        }
       }
-      for (;;)
+      finally {}
+      localMediaExtractor.selectTrack(k);
+      int j = paramzda.jdField_b_of_type_Int;
+      Object localObject1 = new long[paramzda.d];
+      long[] arrayOfLong = new long[paramzda.d];
+      while (i < paramzda.d)
       {
+        localMediaExtractor.seekTo(j * 1000L, 0);
+        arrayOfLong[i] = (j * 1000L);
+        localObject1[i] = localMediaExtractor.getSampleTime();
+        j += paramzda.c;
+        i += 1;
+      }
+      localMediaExtractor.seekTo(localObject1[0], 0);
+      MediaFormat localMediaFormat = localMediaExtractor.getTrackFormat(k);
+      boolean bool = localMediaFormat.containsKey("rotation-degrees");
+      if (bool) {}
+      try
+      {
+        localzdd.jdField_b_of_type_Int = localMediaFormat.getInteger("rotation-degrees");
+        label318:
+        i = localMediaFormat.getInteger("height");
+        j = localMediaFormat.getInteger("width");
+        Log.d("MediaCodecThumbnailGen", "Video size is " + j + "x" + i);
+        float f = paramzda.jdField_a_of_type_Int * 1.0F / Math.max(i, j);
+        paramzda = new zde((int)(j * f), (int)(i * f));
+        Object localObject2 = MediaCodec.createDecoderByType(localMediaFormat.getString("mime"));
+        ((MediaCodec)localObject2).configure(localMediaFormat, paramzda.a(), null, 0);
+        ((MediaCodec)localObject2).start();
+        localzdd.jdField_a_of_type_AndroidMediaMediaExtractor = localMediaExtractor;
+        localzdd.jdField_a_of_type_Zde = paramzda;
+        localzdd.jdField_a_of_type_AndroidMediaMediaCodec = ((MediaCodec)localObject2);
+        localzdd.c = k;
+        localzdd.jdField_a_of_type_Int = 0;
+        localzdd.d = 0;
+        localzdd.jdField_a_of_type_ArrayOfLong = ((long[])localObject1);
+        localzdd.jdField_b_of_type_ArrayOfLong = arrayOfLong;
+        obtainMessage(2, localzdd).sendToTarget();
+        return;
+        localObject2 = new MediaMetadataRetriever();
+        ((MediaMetadataRetriever)localObject2).setDataSource(localzdd.jdField_a_of_type_Zda.jdField_a_of_type_JavaLangString);
+        String str = ((MediaMetadataRetriever)localObject2).extractMetadata(24);
         try
         {
-          QLog.i("WebLog_WebViewBase", 1, "doInterceptRequest: resource intercept by sonic.");
-          localObject1 = paramWebView;
-          if (paramWebView != null) {
-            break;
-          }
-        }
-        catch (Exception paramString)
-        {
-          break label339;
-          break label328;
-        }
-        try
-        {
-          paramString = localWebViewPluginEngine.a((String)localObject2, 8L);
-          if (!(paramString instanceof WebResourceResponse)) {
+          localzdd.jdField_b_of_type_Int = Integer.parseInt(str);
+          label540:
+          ((MediaMetadataRetriever)localObject2).release();
+          break label318;
+          label548:
+          if ((paramzda instanceof RuntimeException))
+          {
+            localzdd.jdField_a_of_type_Int = 101;
             continue;
           }
-          paramString = (WebResourceResponse)paramString;
-          paramWebView = paramString;
-          return paramWebView;
+          localzdd.jdField_a_of_type_Int = -1;
         }
-        catch (Exception paramString)
+        catch (NumberFormatException localNumberFormatException)
         {
-          QLog.e("WebLog_WebViewBase", 1, new Object[] { "shouldInterceptRequest error:!", paramString.getMessage() });
-          return paramWebView;
+          break label540;
         }
       }
-      paramWebView = null;
-      continue;
-      label402:
-      paramWebView = null;
-    }
-  }
-  
-  public void onDetectedBlankScreen(String paramString, int paramInt)
-  {
-    QLog.i("WebLog_WebViewBase", 1, "onDetectedBlankScreen, status: " + paramInt + ", url:" + paramString);
-    this.b.jdField_a_of_type_Beiy.a(paramString, paramInt);
-  }
-  
-  public void onPageFinished(WebView paramWebView, String paramString)
-  {
-    if ((!this.b.c) && (!this.b.isFinishing()))
-    {
-      QLog.d("WebLog_WebViewBase", 1, "onPageFinished:" + paramString);
-      super.onPageFinished(paramWebView, paramString);
-      this.b.b(paramWebView, paramString);
-      if (this.b.jdField_a_of_type_ComTencentMobileqqWebviewSonicSonicClientImpl != null) {
-        this.b.jdField_a_of_type_ComTencentMobileqqWebviewSonicSonicClientImpl.getSession().onClientPageFinished(paramString);
-      }
-      WebViewPluginEngine localWebViewPluginEngine = ((CustomWebView)paramWebView).getPluginEngine();
-      if (localWebViewPluginEngine != null) {
-        localWebViewPluginEngine.a(paramString, 8589934594L, null);
-      }
-      if ((Build.VERSION.SDK_INT >= 19) && (!this.b.c) && (this.b.jdField_a_of_type_Nmx != null))
+      catch (NullPointerException localNullPointerException)
       {
-        paramString = paramWebView.getTitle();
-        this.b.jdField_a_of_type_Nmx.onReceivedTitle(paramWebView, paramString);
+        break label318;
       }
-      aeoy.b(this.b.getIntent());
-      return;
     }
-    QLog.e("WebLog_WebViewBase", 1, "call onPageFinished after destroy.");
   }
   
-  public void onPageStarted(WebView paramWebView, String paramString, Bitmap paramBitmap)
+  private void a(zdd paramzdd)
   {
-    if ((!this.b.c) && (!this.b.isFinishing()))
-    {
-      QLog.d("WebLog_WebViewBase", 1, "onPageStarted:" + paramString);
-      super.onPageStarted(paramWebView, paramString, paramBitmap);
-      this.b.a(paramWebView, paramString, paramBitmap);
-      WebViewPluginEngine localWebViewPluginEngine = ((CustomWebView)paramWebView).getPluginEngine();
-      if (localWebViewPluginEngine != null) {
-        localWebViewPluginEngine.a(paramString, 8589934593L, null);
-      }
-      this.b.b(paramWebView, paramString, paramBitmap);
-      return;
+    Log.e("MediaCodecThumbnailGen", "finishCapture");
+    boolean bool = true;
+    if (paramzdd.jdField_a_of_type_Int != 0) {
+      bool = false;
     }
-    QLog.e("WebLog_WebViewBase", 1, "call onPageStarted after destroy.");
+    if (paramzdd.jdField_a_of_type_Zde != null)
+    {
+      paramzdd.jdField_a_of_type_Zde.a();
+      paramzdd.jdField_a_of_type_Zde = null;
+    }
+    if (paramzdd.jdField_a_of_type_AndroidMediaMediaCodec != null)
+    {
+      paramzdd.jdField_a_of_type_AndroidMediaMediaCodec.stop();
+      paramzdd.jdField_a_of_type_AndroidMediaMediaCodec.release();
+      paramzdd.jdField_a_of_type_AndroidMediaMediaCodec = null;
+    }
+    if (paramzdd.jdField_a_of_type_AndroidMediaMediaExtractor != null)
+    {
+      paramzdd.jdField_a_of_type_AndroidMediaMediaExtractor.release();
+      paramzdd.jdField_a_of_type_AndroidMediaMediaExtractor = null;
+    }
+    zdc localzdc = new zdc();
+    localzdc.jdField_a_of_type_JavaUtilList = Collections.unmodifiableList(paramzdd.jdField_a_of_type_JavaUtilArrayList);
+    localzdc.b = Collections.unmodifiableList(paramzdd.jdField_b_of_type_JavaUtilArrayList);
+    localzdc.jdField_a_of_type_Int = paramzdd.jdField_a_of_type_Int;
+    this.a.a.post(new MediaCodecThumbnailGenerator.CodecHandler.1(this, paramzdd, bool, localzdc));
   }
   
-  public void onReceivedError(WebView paramWebView, int paramInt, String paramString1, String paramString2)
+  private void a(zdd paramzdd, boolean paramBoolean)
   {
-    if ((!this.b.c) && (!this.b.isFinishing()))
-    {
-      QLog.e("WebLog_WebViewBase", 1, "onReceivedError:" + paramInt + ", desc=" + paramString1 + ", url=" + paramString2);
-      this.b.a(paramWebView, paramInt, paramString1, paramString2);
-      paramWebView = ((CustomWebView)paramWebView).getPluginEngine();
-      if (paramWebView != null) {
-        paramWebView.a(paramString2, 8589934595L, paramInt);
-      }
-      return;
-    }
-    QLog.e("WebLog_WebViewBase", 1, "call onReceivedError after destroy.");
-  }
-  
-  public void onReceivedHttpError(WebView paramWebView, WebResourceRequest paramWebResourceRequest, WebResourceResponse paramWebResourceResponse)
-  {
-    if ((!this.b.c) && (!this.b.isFinishing()))
-    {
-      if ((paramWebView != null) && (paramWebResourceRequest != null) && (paramWebResourceResponse != null))
-      {
-        QLog.e("WebLog_WebViewBase", 1, "onReceivedHttpError:" + paramWebResourceRequest.getUrl() + "Occur error, resp code=" + paramWebResourceResponse.getStatusCode());
-        String str = paramWebView.getUrl();
-        if ((str != null) && (myl.a().a(str)))
-        {
-          paramWebView = ((CustomWebView)paramWebView).getPluginEngine();
-          if (paramWebView != null)
-          {
-            if (this.a == null) {
-              this.a = new ArrayMap(4);
-            }
-            this.a.put("requestData", paramWebResourceRequest);
-            this.a.put("responseData", paramWebResourceResponse);
-            this.a.put("errorCode", Integer.valueOf(paramWebResourceResponse.getStatusCode()));
-            paramWebView.a(str, 64L, this.a);
-          }
-        }
-      }
-      return;
-    }
-    QLog.e("WebLog_WebViewBase", 1, "call onReceivedHttpError after destroy.");
-  }
-  
-  public void onReceivedSslError(WebView paramWebView, SslErrorHandler paramSslErrorHandler, SslError paramSslError)
-  {
-    if ((!this.b.c) && (!this.b.isFinishing()))
-    {
-      SslCertificate localSslCertificate = paramSslError.getCertificate();
-      String str = paramWebView.getUrl();
-      paramSslError = new StringBuilder().append("onReceivedSslError:").append(paramSslError.getPrimaryError()).append(", cert=");
-      if (localSslCertificate == null) {}
-      for (paramWebView = "null";; paramWebView = localSslCertificate.toString())
-      {
-        QLog.e("WebLog_WebViewBase", 1, paramWebView + ", pageUrl=" + ndq.b(str, new String[0]));
-        paramSslErrorHandler.cancel();
-        return;
-      }
-    }
-    QLog.e("WebLog_WebViewBase", 1, "call onReceivedSslError after destroy.");
-  }
-  
-  public boolean shouldOverrideUrlLoading(WebView paramWebView, String paramString)
-  {
-    if ((this.b.c) || (this.b.isFinishing()))
-    {
-      QLog.e("WebLog_WebViewBase", 1, "call shouldOverrideUrlLoading after destroy.");
-      return true;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("WebLog_WebViewBase", 2, "shouldOverrideUrlLoading:" + ndq.b(paramString, new String[0]));
-    }
-    String str = paramString;
-    if (!TextUtils.isEmpty(paramString))
-    {
-      if (!paramString.startsWith("https://jsbridge/")) {
-        break label137;
-      }
-      str = paramString.replace("https://jsbridge/", "jsbridge://");
-    }
+    Object localObject1 = paramzdd.jdField_a_of_type_Zde;
+    zda localzda = paramzdd.jdField_a_of_type_Zda;
+    int k = paramzdd.d;
+    ArrayList localArrayList1 = paramzdd.jdField_a_of_type_JavaUtilArrayList;
+    ArrayList localArrayList2 = paramzdd.jdField_b_of_type_JavaUtilArrayList;
+    label576:
+    label579:
     for (;;)
-    {
-      aeoy.b(this.b.getIntent(), str);
-      if ((!TextUtils.isEmpty(str)) && (!"about:blank;".equals(str)) && (!"about:blank".equals(str))) {
-        break;
-      }
-      return true;
-      label137:
-      str = paramString;
-      if (paramString.startsWith("http://jsbridge/")) {
-        str = paramString.replace("http://jsbridge/", "jsbridge://");
-      }
-    }
-    paramString = beka.b(str);
-    ndq.a("urlInterceptManager");
-    Object localObject;
-    if ((("http".equals(paramString)) || ("data".equals(paramString))) && ((this.b.getActivity() instanceof QQBrowserActivity)))
-    {
-      localObject = ((QQBrowserActivity)this.b.getActivity()).b();
-      if ((localObject != null) && (((WebViewFragment)localObject).a != null) && (((WebViewFragment)localObject).a.a != null))
-      {
-        localObject = ((WebViewFragment)localObject).a.a.a(str);
-        if (localObject != null)
-        {
-          paramWebView = new Intent(this.b.getActivity(), JumpActivity.class);
-          paramWebView.setData(Uri.parse((String)localObject));
-          paramWebView.putExtra("from", "webview");
-          this.b.startActivity(paramWebView);
-          return true;
-        }
-      }
-      else if (QLog.isColorLevel())
-      {
-        QLog.e("WebLog_WebViewBase", 2, "URLInterceptManager = null");
-      }
-    }
-    ndq.b("urlInterceptManager");
-    if ((("http".equals(paramString)) || ("data".equals(paramString))) && (!str.contains("/cgi-bin/httpconn?htcmd=0x6ff0080"))) {
-      CustomWebView.addContextLog(ndq.b(str, new String[0]));
-    }
-    try
-    {
-      if (("http".equals(paramString)) || ("https".equals(paramString)))
-      {
-        localObject = paramWebView.getHitTestResult();
-        if ((localObject != null) && (((WebView.HitTestResult)localObject).getType() == 0))
-        {
-          QLog.i("WebLog_WebViewBase", 1, "shouldOverrideUrlLoading detect 302, url: " + str);
-          this.b.d = str;
-          SwiftBrowserCookieMonster.d();
-          this.b.jdField_a_of_type_Beiy.e(str);
-        }
-      }
-      localObject = ((CustomWebView)paramWebView).getPluginEngine();
-      if ((localObject != null) && (((WebViewPluginEngine)localObject).a(str))) {
-        return true;
-      }
-      if (this.b.a(paramWebView, str)) {
-        return true;
-      }
-      if (("http".equals(paramString)) || ("https".equals(paramString)) || ("data".equals(paramString)) || ("file".equals(paramString)))
-      {
-        if ((localObject != null) && (((WebViewPluginEngine)localObject).a(str, 16L, null))) {
-          return true;
-        }
-      }
-      else
-      {
-        paramString = Uri.parse(str);
-        str = paramString.getScheme();
-        if ((this.b.isResume()) && ((System.currentTimeMillis() - this.b.e < 1000L) || (this.b.jdField_a_of_type_Myl.a(paramWebView.getUrl(), str).booleanValue())))
-        {
-          paramWebView = new Intent("android.intent.action.VIEW", paramString);
-          paramWebView.addFlags(268435456);
-        }
-      }
-      label646:
-      return false;
-    }
-    catch (RuntimeException paramWebView)
     {
       try
       {
-        this.b.startActivity(paramWebView);
-        return true;
-        paramWebView = paramWebView;
-        paramString = QLog.getStackTraceString(paramWebView);
-        if (paramString.length() > 255) {}
-        for (paramWebView = paramString.substring(0, 255);; paramWebView = paramString)
+        ((zde)localObject1).c();
+        ((zde)localObject1).d();
+        ((zde)localObject1).a(false);
+        zdb localzdb = new zdb();
+        localObject1 = ((zde)localObject1).a();
+        if (localObject1 == null) {
+          break label576;
+        }
+        int j = paramzdd.jdField_b_of_type_Int;
+        int i;
+        if ((paramzdd.jdField_b_of_type_Int % 180 <= 0) || (((Bitmap)localObject1).getWidth() >= ((Bitmap)localObject1).getHeight()))
         {
-          azqs.b(null, "P_CliOper", "BizTechReport", "", "webview", "exception", 0, 1, 0, paramWebView, "", "", "");
-          QLog.e("WebLog_WebViewBase", 1, paramString);
-          break;
+          i = j;
+          if (paramzdd.jdField_b_of_type_Int % 180 == 0)
+          {
+            i = j;
+            if (((Bitmap)localObject1).getWidth() <= ((Bitmap)localObject1).getHeight()) {}
+          }
+        }
+        else
+        {
+          i = j;
+          if (localzda.jdField_a_of_type_Boolean) {
+            i = j + 90;
+          }
+        }
+        if (i > 0)
+        {
+          Object localObject2 = zlx.a((Bitmap)localObject1, i);
+          ((Bitmap)localObject1).recycle();
+          localObject1 = localObject2;
+          if (!paramBoolean) {
+            break label579;
+          }
+          localObject2 = new File(localzda.jdField_b_of_type_JavaLangString, String.format(Locale.getDefault(), a(k), new Object[0]));
+          try
+          {
+            BufferedOutputStream localBufferedOutputStream = new BufferedOutputStream(new FileOutputStream((File)localObject2));
+            float f2;
+            float f1;
+            localObject1 = paramzdd.jdField_b_of_type_ArrayOfLong;
+          }
+          finally
+          {
+            try
+            {
+              ((Bitmap)localObject1).compress(Bitmap.CompressFormat.JPEG, 80, localBufferedOutputStream);
+              if (localBufferedOutputStream == null) {}
+            }
+            finally
+            {
+              continue;
+            }
+            try
+            {
+              localBufferedOutputStream.close();
+              localzdb.jdField_a_of_type_JavaLangString = ((File)localObject2).getAbsolutePath();
+              yqp.c("MediaCodecThumbnailGen", "dumpThumbnailSurfaces() add: " + ((File)localObject2).getPath());
+              localzdb.jdField_a_of_type_Int = paramzdd.d;
+              localzdb.jdField_a_of_type_AndroidGraphicsBitmap = ((Bitmap)localObject1);
+              f2 = 0.0F;
+              f1 = f2;
+              if (localzda.jdField_b_of_type_Boolean)
+              {
+                f1 = f2;
+                if (paramzdd.d == 0)
+                {
+                  f1 = zcy.a(this.a, (Bitmap)localObject1);
+                  yqp.c("MediaCodecThumbnailGen", "blackRegionPrecent = " + f1);
+                  localzdb.jdField_a_of_type_Long = paramzdd.jdField_b_of_type_ArrayOfLong[paramzdd.d];
+                }
+              }
+              if ((f1 >= 0.9F) && (localzdb.jdField_a_of_type_Long <= 500000L) && (localzdb.jdField_a_of_type_Long + 100000L <= paramzdd.jdField_b_of_type_Long)) {
+                continue;
+              }
+              localArrayList1.add(localzdb.jdField_a_of_type_JavaLangString);
+              localArrayList2.add(localObject1);
+              this.a.a.post(new MediaCodecThumbnailGenerator.CodecHandler.2(this, paramzdd, localzdb));
+              paramzdd.d += 1;
+              obtainMessage(2, paramzdd).sendToTarget();
+              return;
+            }
+            catch (IOException localIOException)
+            {
+              yqp.c("MediaCodecThumbnailGen", "dumpThumbnailSurfaces() error ", localIOException);
+            }
+            localObject3 = finally;
+            localBufferedOutputStream = null;
+            if (localBufferedOutputStream != null) {
+              localBufferedOutputStream.close();
+            }
+          }
+          i = paramzdd.d;
+          localObject1[i] += 50000L;
+          obtainMessage(2, paramzdd).sendToTarget();
+          return;
         }
       }
-      catch (ActivityNotFoundException paramWebView)
+      catch (TimeoutException localTimeoutException)
       {
-        break label646;
+        sendMessageDelayed(obtainMessage(3, paramzdd), 100L);
+        Log.e("MediaCodecThumbnailGen", "dumpThumbnailSurfaces() timeout delay 100ms");
+        return;
       }
+      continue;
+    }
+  }
+  
+  private void b(zdd paramzdd)
+  {
+    MediaExtractor localMediaExtractor = paramzdd.jdField_a_of_type_AndroidMediaMediaExtractor;
+    MediaCodec localMediaCodec = paramzdd.jdField_a_of_type_AndroidMediaMediaCodec;
+    zda localzda = paramzdd.jdField_a_of_type_Zda;
+    long[] arrayOfLong1 = paramzdd.jdField_a_of_type_ArrayOfLong;
+    long[] arrayOfLong2 = paramzdd.jdField_b_of_type_ArrayOfLong;
+    int i1 = paramzdd.c;
+    int i2 = paramzdd.d;
+    long l1 = localMediaExtractor.getSampleTime();
+    ByteBuffer[] arrayOfByteBuffer = localMediaCodec.getInputBuffers();
+    MediaCodec.BufferInfo localBufferInfo = new MediaCodec.BufferInfo();
+    int j = 0;
+    int i = 0;
+    int k = 0;
+    int n;
+    int m;
+    long l2;
+    label237:
+    boolean bool;
+    for (;;)
+    {
+      label667:
+      label681:
+      if ((i == 0) && (i2 < localzda.d))
+      {
+        if ((paramzdd.jdField_a_of_type_Long != arrayOfLong1[i2]) && (l1 < arrayOfLong1[i2]))
+        {
+          Log.e("MediaCodecThumbnailGen", "SeekTo: " + arrayOfLong1[i2]);
+          localMediaExtractor.seekTo(arrayOfLong1[i2], 0);
+          paramzdd.jdField_a_of_type_Long = arrayOfLong1[i2];
+          localMediaCodec.flush();
+        }
+        n = k;
+        m = j;
+        l2 = l1;
+        if (k == 0)
+        {
+          m = localMediaCodec.dequeueInputBuffer(-1L);
+          if (m < 0) {
+            break label453;
+          }
+          n = localMediaExtractor.readSampleData(arrayOfByteBuffer[m], 0);
+          if (n >= 0) {
+            break label302;
+          }
+          localMediaCodec.queueInputBuffer(m, 0, 0, 0L, 4);
+          k = 1;
+          Log.d("MediaCodecThumbnailGen", "sent input EOS");
+          l2 = l1;
+          m = j;
+          n = k;
+        }
+        for (;;)
+        {
+          k = n;
+          j = m;
+          l1 = l2;
+          if (i != 0) {
+            break;
+          }
+          j = localMediaCodec.dequeueOutputBuffer(localBufferInfo, 10000L);
+          if (j != -1) {
+            break label476;
+          }
+          Log.d("MediaCodecThumbnailGen", "no output from decoder available");
+          k = n;
+          j = m;
+          l1 = l2;
+          break;
+          label302:
+          if (localMediaExtractor.getSampleTrackIndex() != i1) {
+            Log.w("MediaCodecThumbnailGen", "WEIRD: got sample from track " + localMediaExtractor.getSampleTrackIndex() + ", expected " + i1);
+          }
+          localMediaCodec.queueInputBuffer(m, 0, n, localMediaExtractor.getSampleTime(), 0);
+          Log.d("MediaCodecThumbnailGen", "submitted frame " + j + " to dec, size=" + n);
+          l1 = localMediaExtractor.getSampleTime();
+          Log.d("MediaCodecThumbnailGen", "extractor sample time = " + l1);
+          localMediaExtractor.advance();
+          j += 1;
+          break label237;
+          label453:
+          Log.d("MediaCodecThumbnailGen", "input buffer not available");
+          n = k;
+          m = j;
+          l2 = l1;
+        }
+        label476:
+        if (j == -3)
+        {
+          Log.d("MediaCodecThumbnailGen", "decoder output buffers changed");
+          k = n;
+          j = m;
+          l1 = l2;
+        }
+        else if (j == -2)
+        {
+          MediaFormat localMediaFormat = localMediaCodec.getOutputFormat();
+          Log.d("MediaCodecThumbnailGen", "decoder output format changed: " + localMediaFormat);
+          k = n;
+          j = m;
+          l1 = l2;
+        }
+        else if (j < 0)
+        {
+          bkfk.a("unexpected result from decoder.dequeueOutputBuffer: " + j);
+          k = n;
+          j = m;
+          l1 = l2;
+        }
+        else
+        {
+          Log.d("MediaCodecThumbnailGen", "surface decoder given buffer " + j + " (size=" + localBufferInfo.size + ")");
+          if ((localBufferInfo.flags & 0x4) != 0)
+          {
+            Log.d("MediaCodecThumbnailGen", "output EOS");
+            i = 1;
+            if (l2 > arrayOfLong2[i2])
+            {
+              bool = true;
+              localMediaCodec.releaseOutputBuffer(j, bool);
+              if (!bool) {
+                break label753;
+              }
+              Log.d("MediaCodecThumbnailGen", "awaiting decode of time: " + l2);
+            }
+          }
+        }
+      }
+    }
+    for (i = 1;; i = 0)
+    {
+      if (i == 0)
+      {
+        obtainMessage(4, paramzdd).sendToTarget();
+        return;
+        bool = false;
+        break label681;
+      }
+      obtainMessage(3, paramzdd).sendToTarget();
+      return;
+      label753:
+      k = n;
+      j = m;
+      l1 = l2;
+      break;
+      break label667;
+    }
+  }
+  
+  public String a(int paramInt)
+  {
+    return String.format(Locale.getDefault(), "thumbnail-%d.jpg", new Object[] { Integer.valueOf(paramInt) });
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    }
+    for (;;)
+    {
+      super.handleMessage(paramMessage);
+      return;
+      a((zda)paramMessage.obj);
+      continue;
+      b((zdd)paramMessage.obj);
+      continue;
+      a((zdd)paramMessage.obj, true);
+      continue;
+      a((zdd)paramMessage.obj);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     zcz
  * JD-Core Version:    0.7.0.1
  */

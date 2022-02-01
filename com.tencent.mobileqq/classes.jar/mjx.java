@@ -1,27 +1,20 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import android.widget.RelativeLayout;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.av.ui.VideoInviteActivity;
 
 class mjx
-  implements Animator.AnimatorListener
+  implements DialogInterface.OnClickListener
 {
-  mjx(mjs parammjs) {}
+  mjx(mjw parammjw) {}
   
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator) {}
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    mjs.a(this.a).setAlpha(0.0F);
-    mjs.a(this.a).setVisibility(0);
+    this.a.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.a(this.a.jdField_a_of_type_Long, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     mjx
  * JD-Core Version:    0.7.0.1
  */

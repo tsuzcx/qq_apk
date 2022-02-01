@@ -1,103 +1,244 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.activity.ChatActivityUtils;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.PhoneContact;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.data.MessageForPic;
+import com.tencent.mobileqq.data.PicMessageExtraData;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 public class aikc
-  extends aijq
 {
-  private bfyh a;
-  
-  public aikc(Context paramContext, SessionInfo paramSessionInfo, QQAppInterface paramQQAppInterface)
+  public int a(SessionInfo paramSessionInfo)
   {
-    super(paramContext, paramSessionInfo, paramQQAppInterface);
-    this.c = true;
+    int i = 1;
+    if (paramSessionInfo == null) {
+      i = 0;
+    }
+    int j;
+    do
+    {
+      return i;
+      j = paramSessionInfo.jdField_a_of_type_Int;
+    } while (j == 1);
+    if (j == 0) {
+      return 2;
+    }
+    if (ChatActivityUtils.a(j)) {
+      return 3;
+    }
+    return 4;
   }
   
-  protected void A()
+  public void a(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo, ayxx paramayxx)
   {
-    if (!this.d) {}
+    if ((paramQQAppInterface == null) || (paramSessionInfo == null) || (paramayxx == null)) {}
+    while ((paramayxx.jdField_a_of_type_ComTencentMobileqqDataPicMessageExtraData == null) || (paramayxx.jdField_a_of_type_ComTencentMobileqqDataPicMessageExtraData.imageBizType != 9)) {
+      return;
+    }
+    String str = "";
+    if ((paramayxx.jdField_a_of_type_Ayxr != null) || (paramayxx.jdField_a_of_type_Ayxr.a != null) || (paramayxx.jdField_a_of_type_Ayxr.a.f != null)) {
+      str = paramayxx.jdField_a_of_type_Ayxr.a.f;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("AdEmoReportUtil", 2, "reportForwardSingleAdEmo ");
+    }
+    a(paramQQAppInterface, paramSessionInfo.jdField_a_of_type_JavaLangString, "0X800B128", "0X800B128", 1, "", str, "");
+  }
+  
+  public void a(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo, MessageForPic paramMessageForPic)
+  {
+    if ((paramQQAppInterface == null) || (paramSessionInfo == null) || (paramMessageForPic == null)) {}
+    while (bgjy.a().a(paramMessageForPic, "0X800B126")) {
+      return;
+    }
+    bgjy.a().a(paramMessageForPic, "0X800B126");
+    String str2 = paramMessageForPic.picExtraData.mAdEmoDescStr;
+    String str1 = paramMessageForPic.md5;
+    if (QLog.isColorLevel()) {
+      QLog.d("AdEmoReportUtil", 2, "reportTailShow, picMsg.uniseq = " + paramMessageForPic.uniseq);
+    }
+    paramMessageForPic = paramSessionInfo.jdField_a_of_type_JavaLangString;
+    int i = a(paramSessionInfo);
+    paramSessionInfo = str1;
+    if (str1 == null) {
+      paramSessionInfo = "";
+    }
+    a(paramQQAppInterface, paramMessageForPic, "0X800B126", "0X800B126", i, "", paramSessionInfo, str2);
+  }
+  
+  public void a(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo, String paramString)
+  {
+    if ((paramQQAppInterface == null) || (paramSessionInfo == null) || (paramString == null)) {
+      return;
+    }
+    int i = a(paramSessionInfo);
+    if (QLog.isColorLevel()) {
+      QLog.d("AdEmoReportUtil", 2, "reportHitKeyWord, keyword = " + paramString + ", sessionType = " + i);
+    }
+    a(paramQQAppInterface, paramSessionInfo.jdField_a_of_type_JavaLangString, "0X800B123", "0X800B123", i, "", "", paramString);
+  }
+  
+  public void a(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo, String paramString1, int paramInt, String paramString2, String paramString3)
+  {
+    if ((paramQQAppInterface == null) || (paramSessionInfo == null) || (paramString1 == null) || (paramString2 == null) || (paramString3 == null)) {
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("AdEmoReportUtil", 2, "reportAdEmoShow, imgUrl = " + paramString1 + " , index = " + paramInt + " , imgMd5 = " + paramString2 + " , keyWord = " + paramString3);
+    }
+    a(paramQQAppInterface, paramSessionInfo.jdField_a_of_type_JavaLangString, "0X800B124", paramString1, a(paramSessionInfo), String.valueOf(paramInt + 1), paramString2, paramString3);
+  }
+  
+  public void a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, String paramString3, int paramInt, String paramString4, String paramString5, String paramString6)
+  {
+    StringBuilder localStringBuilder;
+    if (QLog.isColorLevel())
+    {
+      localStringBuilder = new StringBuilder().append("doReport, fromUin = ");
+      if ((paramQQAppInterface == null) || (paramQQAppInterface.getCurrentAccountUin() == null)) {
+        break label145;
+      }
+    }
+    label145:
+    for (String str = paramQQAppInterface.getCurrentAccountUin();; str = "")
+    {
+      QLog.d("AdEmoReportUtil", 2, str + ", toUin = " + paramString1 + " , subAction = " + paramString2 + ", actionName = " + paramString3 + " , fromType = " + paramInt + " ,r2 = " + paramString4 + " , r4 = " + paramString5 + " , r5 = " + paramString6);
+      bcst.b(paramQQAppInterface, "dc00898", "", paramString1, paramString2, paramString3, paramInt, 0, paramString4, "", paramString5, paramString6);
+      return;
+    }
+  }
+  
+  public void a(QQAppInterface paramQQAppInterface, String paramString, ArrayList<ChatMessage> paramArrayList, int paramInt)
+  {
+    if ((paramQQAppInterface == null) || (paramString == null) || (paramArrayList == null)) {
+      return;
+    }
+    Iterator localIterator = paramArrayList.iterator();
+    label19:
+    int i;
+    while (localIterator.hasNext())
+    {
+      paramArrayList = (ChatMessage)localIterator.next();
+      if (a(paramArrayList))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("AdEmoReportUtil", 2, "reportForwardAdEmoMulti, picMsg.uniseq = " + paramArrayList.uniseq);
+        }
+        i = 0;
+        if (paramInt != 0) {
+          break label133;
+        }
+        i = 3;
+      }
+    }
     for (;;)
     {
-      return;
-      if (this.jdField_a_of_type_AndroidWidgetImageView != null)
-      {
-        this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(null);
-        if ((ChatActivityUtils.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo)) || (ndv.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int)) || (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int == 1)) {
-          if (mdj.a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()))
-          {
-            this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-            this.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131698875));
-          }
-        }
-        while ((this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int != 0) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int != 1025))
-        {
-          this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-          return;
-          this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-          continue;
-          if ((this.jdField_a_of_type_AndroidWidgetTextView.getText() != null) && (this.jdField_a_of_type_AndroidWidgetTextView.getText().length() < 6)) {
-            this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(4);
-          } else {
-            this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-          }
-        }
+      String str = ((MessageForPic)paramArrayList).md5;
+      paramArrayList = str;
+      if (str == null) {
+        paramArrayList = "";
+      }
+      a(paramQQAppInterface, paramString, "0X800B128", "0X800B128", i, "", paramArrayList, "");
+      break label19;
+      break;
+      label133:
+      if (paramInt == 1) {
+        i = 2;
       }
     }
   }
   
-  public bfyh a()
+  public boolean a(ChatMessage paramChatMessage)
   {
-    if (this.jdField_a_of_type_Bfyh == null) {
-      this.jdField_a_of_type_Bfyh = ((bfyh)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(165));
-    }
-    return this.jdField_a_of_type_Bfyh;
-  }
-  
-  protected void f()
-  {
-    if (!this.d) {}
+    if (paramChatMessage == null) {}
     do
     {
-      Object localObject;
       do
       {
-        do
-        {
-          return;
-        } while ((!this.c) || ((this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int == 1025) && (a().a(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString))) || (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int != 1006));
-        localObject = ((aufv)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(11)).c(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString);
-        if ((localObject == null) || (bdgc.a(((PhoneContact)localObject).detalStatusFlag, ((PhoneContact)localObject).iTermType) == 0)) {
-          break;
-        }
-        localObject = bdgc.a((PhoneContact)localObject);
-        e(true);
-        this.b.setText((CharSequence)localObject);
-      } while (!AppSetting.c);
-      this.b.setContentDescription((CharSequence)localObject);
+        return false;
+      } while (!(paramChatMessage instanceof MessageForPic));
+      paramChatMessage = (MessageForPic)paramChatMessage;
+    } while ((paramChatMessage.picExtraData == null) || (paramChatMessage.picExtraData.imageBizType != 9));
+    return true;
+  }
+  
+  public void b(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo, MessageForPic paramMessageForPic)
+  {
+    if ((paramQQAppInterface == null) || (paramSessionInfo == null) || (paramMessageForPic == null)) {
       return;
-    } while (this.b.getVisibility() != 0);
-    e(false);
-  }
-  
-  protected void g()
-  {
-    super.g();
-    if (this.d)
-    {
-      f();
-      A();
     }
+    if (QLog.isColorLevel()) {
+      QLog.d("AdEmoReportUtil", 2, "reportTailClick, picMsg.uniseq = " + paramMessageForPic.uniseq);
+    }
+    String str1 = paramMessageForPic.md5;
+    paramMessageForPic = paramMessageForPic.picExtraData.mAdEmoDescStr;
+    String str2 = paramSessionInfo.jdField_a_of_type_JavaLangString;
+    int i = a(paramSessionInfo);
+    paramSessionInfo = str1;
+    if (str1 == null) {
+      paramSessionInfo = "";
+    }
+    a(paramQQAppInterface, str2, "0X800B127", "0X800B127", i, "", paramSessionInfo, paramMessageForPic);
   }
   
-  protected void y()
+  public void b(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo, String paramString1, int paramInt, String paramString2, String paramString3)
   {
-    this.jdField_a_of_type_JavaLangString = "MiniPieForStranger";
+    if ((paramQQAppInterface == null) || (paramSessionInfo == null) || (paramString1 == null) || (paramString2 == null) || (paramString3 == null)) {
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("AdEmoReportUtil", 2, "reportAdEmoSend, imgUrl = " + paramString1 + " , index = " + paramInt + " , imgMd5 = " + paramString2 + " , keyWord = " + paramString3);
+    }
+    a(paramQQAppInterface, paramSessionInfo.jdField_a_of_type_JavaLangString, "0X800B125", paramString1, a(paramSessionInfo), String.valueOf(paramInt + 1), paramString2, paramString3);
+  }
+  
+  public void c(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo, MessageForPic paramMessageForPic)
+  {
+    if ((paramQQAppInterface == null) || (paramMessageForPic == null)) {}
+    while (!a(paramMessageForPic)) {
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("AdEmoReportUtil", 2, "reportAdEmoAddFav, picMsg.uniseq = " + paramMessageForPic.uniseq);
+    }
+    paramMessageForPic = paramMessageForPic.md5;
+    if (paramSessionInfo == null)
+    {
+      paramSessionInfo = paramMessageForPic;
+      if (paramMessageForPic == null) {
+        paramSessionInfo = "";
+      }
+      a(paramQQAppInterface, "", "0X800B129", "0X800B129", 0, "", paramSessionInfo, "");
+      return;
+    }
+    String str = paramSessionInfo.jdField_a_of_type_JavaLangString;
+    int i = a(paramSessionInfo);
+    paramSessionInfo = paramMessageForPic;
+    if (paramMessageForPic == null) {
+      paramSessionInfo = "";
+    }
+    a(paramQQAppInterface, str, "0X800B129", "0X800B129", i, "", paramSessionInfo, "");
+  }
+  
+  public void d(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo, MessageForPic paramMessageForPic)
+  {
+    if ((paramQQAppInterface == null) || (paramSessionInfo == null) || (paramMessageForPic == null)) {}
+    while (!a(paramMessageForPic)) {
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("AdEmoReportUtil", 2, "reportEnterAdEmo, picMsg.uniseq = " + paramMessageForPic.uniseq);
+    }
+    paramMessageForPic = paramMessageForPic.md5;
+    String str = paramSessionInfo.jdField_a_of_type_JavaLangString;
+    int i = a(paramSessionInfo);
+    paramSessionInfo = paramMessageForPic;
+    if (paramMessageForPic == null) {
+      paramSessionInfo = "";
+    }
+    a(paramQQAppInterface, str, "0X800B12A", "0X800B12A", i, "", paramSessionInfo, "");
   }
 }
 

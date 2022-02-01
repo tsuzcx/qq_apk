@@ -1,24 +1,22 @@
+import android.content.Intent;
 import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabFrame;
-import com.tencent.mobileqq.activity.MainFragment;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.AccountManageActivity;
+import com.tencent.mobileqq.activity.PublicFragmentActivity;
+import com.tencent.mobileqq.onlinestatus.AccountOnlineStateActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class adip
-  extends adix
+  implements View.OnClickListener
 {
-  public adip(MainFragment paramMainFragment)
-  {
-    super(null);
-  }
+  public adip(AccountManageActivity paramAccountManageActivity) {}
   
   public void onClick(View paramView)
   {
-    alsn localalsn = this.a.b();
-    if ((localalsn instanceof ReadinjoyTabFrame)) {
-      ((ReadinjoyTabFrame)localalsn).l();
-    }
-    owy.a().l();
-    MainFragment.a(MainFragment.a(this.a), MainFragment.a(this.a));
-    super.onClick(paramView);
+    Intent localIntent = new Intent();
+    PublicFragmentActivity.a(this.a, localIntent, AccountOnlineStateActivity.class, 0);
+    aype.a(this.a.app);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

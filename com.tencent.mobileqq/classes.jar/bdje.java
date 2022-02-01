@@ -1,67 +1,32 @@
-import com.tencent.commonsdk.pool.ByteArrayPool;
-import java.io.ByteArrayOutputStream;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.CustomWebView;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class bdje
-  extends ByteArrayOutputStream
+class bdje
+  implements View.OnClickListener
 {
-  private final ByteArrayPool a;
+  bdje(bdjd parambdjd) {}
   
-  public bdje(ByteArrayPool paramByteArrayPool, int paramInt)
+  public void onClick(View paramView)
   {
-    this.a = paramByteArrayPool;
-    this.buf = this.a.getBuf(Math.max(paramInt, 256));
-  }
-  
-  private void a(int paramInt)
-  {
-    if (this.count + paramInt <= this.buf.length) {
+    if ((bdjd.a(this.a) instanceof CustomWebView))
+    {
+      if (2 != bdjd.a(this.a).c) {
+        break label57;
+      }
+      ((CustomWebView)bdjd.a(this.a)).callJs("openAdvPermissionsMobile()");
+      this.a.dismiss();
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
-    }
-    byte[] arrayOfByte = this.a.getBuf((this.count + paramInt) * 2);
-    System.arraycopy(this.buf, 0, arrayOfByte, 0, this.count);
-    this.a.returnBuf(this.buf);
-    this.buf = arrayOfByte;
-  }
-  
-  public byte[] a()
-  {
-    return this.buf;
-  }
-  
-  public void close()
-  {
-    this.a.returnBuf(this.buf);
-    this.buf = null;
-    super.close();
-  }
-  
-  public void write(int paramInt)
-  {
-    try
-    {
-      a(1);
-      super.write(paramInt);
-      return;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
-  }
-  
-  public void write(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
-  {
-    try
-    {
-      a(paramInt2);
-      super.write(paramArrayOfByte, paramInt1, paramInt2);
-      return;
-    }
-    finally
-    {
-      paramArrayOfByte = finally;
-      throw paramArrayOfByte;
+      label57:
+      ((CustomWebView)bdjd.a(this.a)).callJs("openCooperationMobile()");
+      this.a.dismiss();
+      bcst.b(bdjd.a(this.a).app, "dc00898", "", "", "0x8009412", "0x8009412", 0, 0, "", "", "", "");
     }
   }
 }

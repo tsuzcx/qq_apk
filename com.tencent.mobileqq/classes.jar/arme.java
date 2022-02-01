@@ -1,14 +1,39 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.common.app.AppInterface;
+import com.tencent.qphone.base.util.QLog;
 
-class arme
-  implements View.OnClickListener
+public class arme
 {
-  arme(armd paramarmd) {}
-  
-  public void onClick(View paramView)
+  public static int a(AppInterface paramAppInterface, Context paramContext)
   {
-    this.a.m();
+    int i = 0;
+    if ((paramAppInterface == null) || (paramContext == null)) {
+      QLog.e("TencentDocGuideHelper", 1, "getShownTimes sth is null");
+    }
+    int j;
+    do
+    {
+      return i;
+      j = paramContext.getSharedPreferences("tencent_doc", 4).getInt("shown_" + paramAppInterface.getCurrentAccountUin(), 0);
+      i = j;
+    } while (!QLog.isColorLevel());
+    QLog.i("TencentDocGuideHelper", 2, "getShownTimes " + j);
+    return j;
+  }
+  
+  public static void a(AppInterface paramAppInterface, Context paramContext, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("TencentDocGuideHelper", 2, "setShownTimes " + paramInt);
+    }
+    if ((paramAppInterface == null) || (paramContext == null))
+    {
+      QLog.e("TencentDocGuideHelper", 1, "setShownTimes sth is null");
+      return;
+    }
+    paramContext.getSharedPreferences("tencent_doc", 4).edit().putInt("shown_" + paramAppInterface.getCurrentAccountUin(), paramInt).commit();
   }
 }
 

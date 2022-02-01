@@ -1,29 +1,30 @@
-import com.tencent.mobileqq.activity.qwallet.redpacket.draw.DoodleLayout;
+import android.content.Context;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.widget.XListView;
 
 public class ajcp
-  implements ajcs
+  extends ajcl
 {
-  public ajcp(DoodleLayout paramDoodleLayout) {}
-  
-  public void a()
+  public ajcp(QQAppInterface paramQQAppInterface, Context paramContext, XListView paramXListView, ajco paramajco)
   {
-    if (DoodleLayout.a(this.a) != null) {
-      DoodleLayout.a(this.a).a();
-    }
+    super(paramQQAppInterface, paramContext, paramXListView, paramajco);
   }
   
-  public void a(int paramInt1, int paramInt2)
+  protected ajcf a()
   {
-    if (DoodleLayout.a(this.a) != null) {
-      DoodleLayout.a(this.a).a(paramInt1, paramInt2);
-    }
+    return new ajck(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, true);
   }
   
-  public void b()
+  protected void d()
   {
-    if (DoodleLayout.a(this.a) != null) {
-      DoodleLayout.a(this.a).a(this.a.a(true, false));
-    }
+    super.d();
+    bcst.b(null, "dc00899", "Grp_recom", "", "no_search_result", "exp", 0, 0, "", "", "", "");
+  }
+  
+  public void e()
+  {
+    super.e();
+    bcst.b(null, "dc00899", "Grp_recom", "", "no_search_result", "exp", 0, 0, "", "", "", "");
   }
 }
 

@@ -1,132 +1,67 @@
-import android.os.Bundle;
-import android.util.Log;
-import com.tencent.mobileqq.app.soso.SosoInterface;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
-import com.tencent.mobileqq.qipc.QIPCModule;
+import android.media.SoundPool;
+import android.media.SoundPool.OnLoadCompleteListener;
 import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCResult;
+import org.json.JSONObject;
 
-public class ampz
-  extends QIPCModule
+class ampz
+  implements SoundPool.OnLoadCompleteListener
 {
-  private static volatile ampz jdField_a_of_type_Ampz;
-  private static Object jdField_a_of_type_JavaLangObject = new Object();
+  ampz(ampy paramampy, float paramFloat, int paramInt, String paramString, amqr paramamqr, JSONObject paramJSONObject) {}
   
-  private ampz(String paramString)
+  public void onLoadComplete(SoundPool paramSoundPool, int paramInt1, int paramInt2)
   {
-    super(paramString);
-  }
-  
-  public static ampz a()
-  {
-    if (jdField_a_of_type_Ampz != null) {
-      return jdField_a_of_type_Ampz;
-    }
-    synchronized (jdField_a_of_type_JavaLangObject)
-    {
-      if (jdField_a_of_type_Ampz != null)
-      {
-        ampz localampz1 = jdField_a_of_type_Ampz;
-        return localampz1;
-      }
-    }
-    jdField_a_of_type_Ampz = new ampz("soso_interface");
-    ampz localampz2 = jdField_a_of_type_Ampz;
-    return localampz2;
-  }
-  
-  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
-  {
-    Object localObject2 = null;
-    Object localObject1 = null;
-    if (QLog.isColorLevel()) {
-      QLog.i("SOSO.LBS.SosoInterfaceModule", 2, "onCall s: " + paramString);
-    }
-    long l;
-    boolean bool2;
-    if ("get_lbs_info".equals(paramString))
-    {
-      bool1 = paramBundle.getBoolean("req_location");
-      l = paramBundle.getLong("max_cache_interval");
-      bool2 = paramBundle.getBoolean("goon");
-      paramInt = paramBundle.getInt("level");
-    }
-    label243:
-    do
+    float f = 1.0F;
+    if (ampy.a(this.jdField_a_of_type_Ampy) != null)
     {
       try
       {
-        paramString = SosoInterface.a(l, bool2, paramInt, bool1);
-        if (QLog.isColorLevel())
-        {
-          paramBundle = new StringBuilder().append("onCall action on get lbs info : maxCacheInterval: ").append(l).append(" goonListener: ").append(bool2).append(" level: ").append(paramInt).append(" reqLocation:").append(bool1).append(" lbsInfo is null: ");
-          if (paramString == null)
-          {
-            bool1 = true;
-            QLog.i("SOSO.LBS.SosoInterfaceModule", 2, bool1);
-          }
-        }
-        else
-        {
-          paramBundle = new Bundle();
-          localObject1 = new EIPCResult();
-          ((EIPCResult)localObject1).data = paramBundle;
-          if (paramString == null) {
-            break label243;
-          }
-          ((EIPCResult)localObject1).code = 0;
-          paramBundle.putParcelable("soso_lbs_info", paramString);
-          return localObject1;
-        }
-      }
-      catch (Exception paramBundle)
-      {
+        if (-1.0F == this.jdField_a_of_type_Float) {}
         for (;;)
         {
-          paramString = (String)localObject1;
-          if (QLog.isColorLevel())
+          paramInt1 = ampy.a(this.jdField_a_of_type_Ampy).play(paramInt1, f, f, 0, this.jdField_a_of_type_Int, 1.0F);
+          if (paramInt1 != 0) {
+            break;
+          }
+          QLog.w("cmgame_process.CmGameSoudPoolPlayer", 1, "fail to play, musicPath:" + this.jdField_a_of_type_JavaLangString);
+          return;
+          f = this.jdField_a_of_type_Float;
+        }
+        paramSoundPool = this.jdField_a_of_type_Amqr;
+        if (paramSoundPool == null) {
+          break label159;
+        }
+        try
+        {
+          if (this.jdField_a_of_type_OrgJsonJSONObject != null)
           {
-            QLog.i("SOSO.LBS.SosoInterfaceModule", 2, Log.getStackTraceString(paramBundle));
-            paramString = (String)localObject1;
-            continue;
-            bool1 = false;
-            continue;
-            ((EIPCResult)localObject1).code = -102;
+            this.jdField_a_of_type_OrgJsonJSONObject.put("id", paramInt1);
+            this.jdField_a_of_type_Amqr.a(this.jdField_a_of_type_OrgJsonJSONObject);
+            return;
           }
         }
-      }
-      localObject1 = localObject2;
-    } while (!"set_lbs_info".equals(paramString));
-    paramBundle.setClassLoader(SosoInterface.class.getClassLoader());
-    boolean bool1 = paramBundle.getBoolean("req_location");
-    localObject1 = new Bundle();
-    paramString = new EIPCResult();
-    paramString.data = ((Bundle)localObject1);
-    if (bool1) {}
-    try
-    {
-      SosoInterface.a(paramBundle.getInt("level"), (SosoInterface.SosoLbsInfo)paramBundle.getParcelable("soso_lbs_info"));
-      for (;;)
-      {
-        paramString.code = 0;
-        return paramString;
-        SosoInterface.a(paramBundle.getString("prodiver"), paramBundle.getByteArray("raw_data"));
-      }
-    }
-    catch (Exception paramBundle)
-    {
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.i("SOSO.LBS.SosoInterfaceModule", 2, Log.getStackTraceString(paramBundle));
+        catch (Throwable paramSoundPool)
+        {
+          QLog.e("cmgame_process.CmGameSoudPoolPlayer", 1, paramSoundPool, new Object[0]);
+          return;
         }
+        QLog.e("cmgame_process.CmGameSoudPoolPlayer", 1, "result is null");
       }
+      catch (Throwable paramSoundPool)
+      {
+        QLog.e("cmgame_process.CmGameSoudPoolPlayer", 1, "pool play failed", paramSoundPool);
+        return;
+      }
+      return;
+      label159:
+      QLog.e("cmgame_process.CmGameSoudPoolPlayer", 1, "handler is null");
+      return;
     }
+    QLog.e("cmgame_process.CmGameSoudPoolPlayer", 1, "soundpool is null");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     ampz
  * JD-Core Version:    0.7.0.1
  */

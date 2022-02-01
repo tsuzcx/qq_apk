@@ -1,142 +1,41 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.activity.photo.ImageInfo;
+import android.os.Handler;
+import com.tencent.qphone.base.util.QLog;
 
-public final class ainz
-  implements Parcelable.Creator<ImageInfo>
+class ainz
+  implements bdvw
 {
-  public ImageInfo a(Parcel paramParcel)
+  private Handler a;
+  
+  ainz(Handler paramHandler)
   {
-    boolean bool2 = true;
-    ImageInfo localImageInfo = new ImageInfo();
-    if (paramParcel.readInt() == 0)
-    {
-      bool1 = false;
-      localImageInfo.jdField_a_of_type_Boolean = bool1;
-      if (paramParcel.readInt() != 0) {
-        break label412;
-      }
-      bool1 = false;
-      label35:
-      localImageInfo.jdField_b_of_type_Boolean = bool1;
-      localImageInfo.jdField_a_of_type_JavaLangString = paramParcel.readString();
-      if (paramParcel.readInt() != 0) {
-        break label417;
-      }
-      bool1 = false;
-      label59:
-      localImageInfo.jdField_c_of_type_Boolean = bool1;
-      if (paramParcel.readInt() != 0) {
-        break label422;
-      }
-      bool1 = false;
-      label74:
-      localImageInfo.jdField_d_of_type_Boolean = bool1;
-      localImageInfo.jdField_b_of_type_JavaLangString = paramParcel.readString();
-      localImageInfo.jdField_c_of_type_JavaLangString = paramParcel.readString();
-      localImageInfo.jdField_a_of_type_Int = paramParcel.readInt();
-      if (paramParcel.readInt() != 0) {
-        break label427;
-      }
-      bool1 = false;
-      label116:
-      localImageInfo.jdField_e_of_type_Boolean = bool1;
-      localImageInfo.jdField_d_of_type_JavaLangString = paramParcel.readString();
-      localImageInfo.jdField_b_of_type_Int = paramParcel.readInt();
-      localImageInfo.jdField_e_of_type_JavaLangString = paramParcel.readString();
-      localImageInfo.jdField_c_of_type_Int = paramParcel.readInt();
-      localImageInfo.jdField_d_of_type_Int = paramParcel.readInt();
-      if (paramParcel.readInt() != 0) {
-        break label432;
-      }
-      bool1 = false;
-      label176:
-      localImageInfo.jdField_f_of_type_Boolean = bool1;
-      localImageInfo.jdField_a_of_type_Long = paramParcel.readLong();
-      if (paramParcel.readInt() != 0) {
-        break label437;
-      }
-      bool1 = false;
-      label200:
-      localImageInfo.jdField_h_of_type_Boolean = bool1;
-      if (paramParcel.readInt() != 0) {
-        break label442;
-      }
-      bool1 = false;
-      label215:
-      localImageInfo.jdField_i_of_type_Boolean = bool1;
-      localImageInfo.jdField_f_of_type_JavaLangString = paramParcel.readString();
-      localImageInfo.jdField_b_of_type_Long = paramParcel.readLong();
-      localImageInfo.g = paramParcel.readString();
-      localImageInfo.jdField_c_of_type_Long = paramParcel.readLong();
-      localImageInfo.jdField_h_of_type_JavaLangString = paramParcel.readString();
-      localImageInfo.jdField_f_of_type_Int = paramParcel.readInt();
-      localImageInfo.jdField_f_of_type_Int = paramParcel.readInt();
-      localImageInfo.jdField_h_of_type_Int = paramParcel.readInt();
-      localImageInfo.jdField_i_of_type_JavaLangString = paramParcel.readString();
-      localImageInfo.jdField_k_of_type_Int = paramParcel.readInt();
-      if (paramParcel.readInt() != 1) {
-        break label447;
-      }
-      bool1 = true;
-      label321:
-      localImageInfo.o = bool1;
-      if (paramParcel.readInt() != 1) {
-        break label452;
-      }
-      bool1 = true;
-      label337:
-      localImageInfo.n = bool1;
-      if (paramParcel.readInt() != 1) {
-        break label457;
-      }
-    }
-    label412:
-    label417:
-    label422:
-    label427:
-    label432:
-    label437:
-    label442:
-    label447:
-    label452:
-    label457:
-    for (boolean bool1 = bool2;; bool1 = false)
-    {
-      localImageInfo.p = bool1;
-      localImageInfo.jdField_d_of_type_Long = paramParcel.readLong();
-      localImageInfo.j = paramParcel.readString();
-      localImageInfo.jdField_k_of_type_JavaLangString = paramParcel.readString();
-      localImageInfo.jdField_l_of_type_JavaLangString = paramParcel.readString();
-      localImageInfo.jdField_l_of_type_Int = paramParcel.readInt();
-      return localImageInfo;
-      bool1 = true;
-      break;
-      bool1 = true;
-      break label35;
-      bool1 = true;
-      break label59;
-      bool1 = true;
-      break label74;
-      bool1 = true;
-      break label116;
-      bool1 = true;
-      break label176;
-      bool1 = true;
-      break label200;
-      bool1 = true;
-      break label215;
-      bool1 = false;
-      break label321;
-      bool1 = false;
-      break label337;
-    }
+    this.a = paramHandler;
   }
   
-  public ImageInfo[] a(int paramInt)
+  public void onResp(bdwt parambdwt)
   {
-    return new ImageInfo[paramInt];
+    if (QLog.isColorLevel()) {
+      QLog.d("ZhituManager", 2, "FontDownloadListener onResp: " + parambdwt);
+    }
+    if (parambdwt.jdField_a_of_type_Int == 3) {
+      return;
+    }
+    if (parambdwt.jdField_a_of_type_Int == 0)
+    {
+      if ("f832939458e5e54f73b1702bc4edb7e8".equalsIgnoreCase(ains.a(parambdwt.jdField_a_of_type_Bdws.c)))
+      {
+        this.a.sendEmptyMessage(100);
+        return;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("ZhituManager", 2, "font download but md5 is not matched");
+      }
+      this.a.sendEmptyMessage(101);
+      return;
+    }
+    this.a.sendEmptyMessage(101);
   }
+  
+  public void onUpdateProgeress(bdws parambdws, long paramLong1, long paramLong2) {}
 }
 
 

@@ -14,7 +14,7 @@ public class TPPlayerDecoderCapability
   
   private static native HashMap<Integer, TPCodecCapability.TPVCodecMaxCapability> _getDecoderMaxCapabilityMap(int paramInt);
   
-  private static native boolean _isVCodecCapabilitySupport(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6);
+  private static native boolean _isVCodecCapabilitySupport(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7);
   
   public static boolean addACodecBlacklist(int paramInt1, int paramInt2, TPCodecCapability.TPACodecCapability paramTPACodecCapability)
   {
@@ -112,7 +112,7 @@ public class TPPlayerDecoderCapability
     return TPCodecUtils.isHDRsupport(paramInt1, paramInt2, paramInt3);
   }
   
-  public static boolean isVCodecCapabilitySupport(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6)
+  public static boolean isVCodecCapabilitySupport(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7)
   {
     if (TPDecoderType.TP_VIDEO_DECODER_MEDIACODEC == paramInt1)
     {
@@ -133,7 +133,7 @@ public class TPPlayerDecoderCapability
     }
     try
     {
-      boolean bool = _isVCodecCapabilitySupport(paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramInt6);
+      boolean bool = _isVCodecCapabilitySupport(paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramInt6, paramInt7);
       return bool;
     }
     catch (Throwable localThrowable)
@@ -160,7 +160,7 @@ public class TPPlayerDecoderCapability
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.thumbplayer.core.common.TPPlayerDecoderCapability
  * JD-Core Version:    0.7.0.1
  */

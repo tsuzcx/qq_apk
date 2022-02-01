@@ -1,16 +1,7 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-
-class anxy
-  extends AnimatorListenerAdapter
+public class anxy
+  implements anil
 {
-  anxy(anxw paramanxw) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    super.onAnimationEnd(paramAnimator);
-    anxw.a(this.a, null);
-  }
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject) {}
 }
 
 

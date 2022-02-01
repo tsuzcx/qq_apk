@@ -4,7 +4,7 @@ import android.os.SystemClock;
 import android.text.TextUtils;
 import com.tencent.mobileqq.msf.core.MsfCore;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import com.tencent.mobileqq.msf.core.t;
+import com.tencent.mobileqq.msf.core.w;
 import com.tencent.msf.service.protocol.push.a.b;
 import com.tencent.qphone.base.util.MD5;
 import com.tencent.qphone.base.util.QLog;
@@ -3343,10 +3343,10 @@ public class c
     }
     for (;;)
     {
-      if (0L != t.h)
+      if (0L != w.h)
       {
-        this.q.l = t.h;
-        this.q.m = (t.i + "," + t.j);
+        this.q.l = w.h;
+        this.q.m = (w.i + "," + w.j);
       }
       return;
       if (QLog.isColorLevel()) {

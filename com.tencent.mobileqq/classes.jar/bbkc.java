@@ -1,25 +1,29 @@
 import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.troop.activity.TroopBarPublishUtils;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.view.inputmethod.InputMethodManager;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.search.fragment.SelectMemberContactSearchFragment;
+import com.tencent.qphone.base.util.BaseApplication;
 
-public final class bbkc
-  implements DialogInterface.OnClickListener
+public class bbkc
+  implements View.OnTouchListener
 {
-  public bbkc(Activity paramActivity) {}
+  public bbkc(SelectMemberContactSearchFragment paramSelectMemberContactSearchFragment) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    switch (paramInt)
+    if ((!bbup.a(SelectMemberContactSearchFragment.a(this.a))) && (!SelectMemberContactSearchFragment.a(this.a)) && (paramMotionEvent.getAction() == 1))
     {
-    default: 
-      return;
-    case 0: 
-      paramDialogInterface.dismiss();
-      return;
+      paramView = this.a.getActivity();
+      if (paramView != null) {
+        paramView.finish();
+      }
+      return false;
     }
-    TroopBarPublishUtils.c(this.a);
-    paramDialogInterface.dismiss();
+    ((InputMethodManager)BaseApplicationImpl.getContext().getSystemService("input_method")).hideSoftInputFromWindow(paramView.getWindowToken(), 0);
+    return false;
   }
 }
 

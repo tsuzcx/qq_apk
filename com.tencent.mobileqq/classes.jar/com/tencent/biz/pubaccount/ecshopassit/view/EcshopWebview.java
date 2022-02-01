@@ -11,16 +11,16 @@ public class EcshopWebview
   extends TouchWebView
 {
   private static final Object jdField_a_of_type_JavaLangObject = new Object();
-  public static int b;
   private static EcshopWebview b;
-  public int a;
+  public static int c;
   private EcshopWebview jdField_a_of_type_ComTencentBizPubaccountEcshopassitViewEcshopWebview;
-  private int c;
+  public int b;
+  private int d;
   
   public EcshopWebview(Context paramContext)
   {
     super(paramContext);
-    this.jdField_a_of_type_Int = 0;
+    this.jdField_b_of_type_Int = 0;
     if (QLog.isColorLevel()) {
       QLog.i("parasons333", 2, "---EcshopWebview---");
     }
@@ -37,15 +37,15 @@ public class EcshopWebview
         localEcshopWebview = jdField_b_of_type_ComTencentBizPubaccountEcshopassitViewEcshopWebview;
         jdField_b_of_type_ComTencentBizPubaccountEcshopassitViewEcshopWebview = localEcshopWebview.jdField_a_of_type_ComTencentBizPubaccountEcshopassitViewEcshopWebview;
         localEcshopWebview.jdField_a_of_type_ComTencentBizPubaccountEcshopassitViewEcshopWebview = null;
-        jdField_b_of_type_Int -= 1;
+        c -= 1;
       }
       if (localEcshopWebview == null) {
         return new EcshopWebview(new MutableContextWrapper(paramContext));
       }
     }
     localEcshopWebview.clearHistory();
-    localEcshopWebview.jdField_a_of_type_Int = 1;
-    localEcshopWebview.c += 1;
+    localEcshopWebview.jdField_b_of_type_Int = 1;
+    localEcshopWebview.d += 1;
     localEcshopWebview.onResume();
     ((MutableContextWrapper)localEcshopWebview.getContext()).setBaseContext(paramContext);
     return localEcshopWebview;
@@ -53,7 +53,7 @@ public class EcshopWebview
   
   public boolean canGoBack()
   {
-    if (1 == this.jdField_a_of_type_Int)
+    if (1 == this.jdField_b_of_type_Int)
     {
       Object localObject = copyBackForwardList();
       if ((localObject != null) && (((WebBackForwardList)localObject).getSize() > 0))

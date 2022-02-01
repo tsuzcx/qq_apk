@@ -1,21 +1,18 @@
-import com.tencent.mobileqq.troop.activity.TroopBarPublishActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.search.fragment.ActiveEntitySearchFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class bbjb
-  implements upk
+class bbjb
+  implements View.OnClickListener
 {
-  public bbjb(TroopBarPublishActivity paramTroopBarPublishActivity, String paramString1, long paramLong, String paramString2) {}
+  bbjb(bbiy parambbiy) {}
   
-  public void a(int paramInt, String paramString1, String paramString2)
+  public void onClick(View paramView)
   {
-    xrg.f(this.jdField_a_of_type_JavaLangString);
-    if (paramInt != 0)
-    {
-      QLog.i("tribe_publish_TroopBarPublishActivity", 1, "merge music failed. merge file path:" + this.jdField_a_of_type_JavaLangString + " merge result:" + paramInt);
-      this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarPublishActivity.a(null, this.jdField_a_of_type_Long);
-      return;
-    }
-    TroopBarPublishActivity.b(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarPublishActivity, this.b, this.jdField_a_of_type_Long);
+    this.a.a.b(this.a.a.b);
+    this.a.a.f.setVisibility(8);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

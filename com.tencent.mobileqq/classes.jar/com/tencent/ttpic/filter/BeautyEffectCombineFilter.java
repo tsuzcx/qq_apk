@@ -14,6 +14,7 @@ import com.tencent.aekit.openrender.util.GlUtil;
 import com.tencent.filter.BaseFilter;
 import com.tencent.ttpic.baseutils.bitmap.BitmapUtils;
 import com.tencent.ttpic.openapi.cache.VideoMemoryManager;
+import com.tencent.ttpic.openapi.filter.EyeBagBlurFilter;
 import com.tencent.ttpic.openapi.model.FaceItem;
 import com.tencent.ttpic.openapi.model.VideoMaterial;
 import com.tencent.ttpic.openapi.util.VideoTemplateParser;
@@ -399,7 +400,7 @@ public class BeautyEffectCombineFilter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.filter.BeautyEffectCombineFilter
  * JD-Core Version:    0.7.0.1
  */

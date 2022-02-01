@@ -1,27 +1,64 @@
-import android.os.Handler;
-import com.tencent.mobileqq.ar.view.ARScanEntryView;
-import com.tencent.mobileqq.ar.view.ARScanEntryView.4.1;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.image.Utils;
+import com.tencent.mobileqq.apollo.view.QQFrameZipDecoder.2;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import java.io.File;
 
 public class anhe
-  implements awcr
+  extends anhg
+  implements anhi
 {
-  public anhe(ARScanEntryView paramARScanEntryView) {}
-  
-  public void a()
+  public anhe(anhj paramanhj)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AREngine_ARScanEntryView", 2, "PopUp onStart ");
-    }
+    super(null, paramanhj);
+    this.jdField_a_of_type_Anhi = this;
   }
   
-  public void b()
+  public static String a(String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AREngine_ARScanEntryView", 2, "PopUp onEnd  needReportRedDot = " + ARScanEntryView.a(this.a));
+    paramString = Utils.Crc64String(paramString);
+    String str = ancb.k;
+    return str + paramString + ".zip";
+  }
+  
+  public void a(anhg paramanhg, String paramString1, String paramString2, String paramString3)
+  {
+    this.jdField_a_of_type_Int = 1;
+    bhhf localbhhf = new bhhf(paramString1, new File(paramString2));
+    localbhhf.p = true;
+    localbhhf.n = true;
+    localbhhf.f = "apollo_gif";
+    localbhhf.b = 1;
+    localbhhf.q = true;
+    localbhhf.r = true;
+    localbhhf.a(new anhf(this, paramString1, paramString2, paramString3));
+    paramanhg = BaseApplicationImpl.getApplication();
+    if (paramanhg != null)
+    {
+      paramanhg = paramanhg.getRuntime();
+      if (!(paramanhg instanceof QQAppInterface)) {}
     }
-    if (ARScanEntryView.a(this.a) != null) {
-      ARScanEntryView.a(this.a).post(new ARScanEntryView.4.1(this));
+    for (paramanhg = (QQAppInterface)paramanhg;; paramanhg = null)
+    {
+      if (paramanhg != null)
+      {
+        paramanhg = (bhhh)paramanhg.getManager(47);
+        if (paramanhg != null)
+        {
+          paramanhg = paramanhg.a(3);
+          if (paramanhg != null) {
+            paramanhg.a(localbhhf, localbhhf.a(), null);
+          }
+        }
+      }
+      for (int i = 0;; i = 1)
+      {
+        if (i != 0) {
+          ThreadManager.executeOnNetWorkThread(new QQFrameZipDecoder.2(this, localbhhf));
+        }
+        return;
+      }
     }
   }
 }

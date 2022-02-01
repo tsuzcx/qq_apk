@@ -1,325 +1,265 @@
 import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
 import android.content.res.Resources;
-import android.graphics.Point;
-import android.graphics.Rect;
-import android.graphics.drawable.ColorDrawable;
-import android.os.Build.VERSION;
-import android.provider.Settings.Secure;
-import android.provider.Settings.SettingNotFoundException;
-import android.text.TextPaint;
-import android.text.TextUtils;
-import android.util.DisplayMetrics;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.common.config.AppSetting;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.location.ui.MapUtils.1;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.troop.utils.TroopFileTransferManager;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.tencentmap.mapsdk.maps.Projection;
-import com.tencent.tencentmap.mapsdk.maps.TencentMap;
-import com.tencent.tencentmap.mapsdk.maps.model.LatLng;
-import java.io.UnsupportedEncodingException;
-import java.lang.reflect.Field;
-import java.net.URLEncoder;
+import java.util.Iterator;
+import java.util.List;
+import java.util.UUID;
 
 public class attk
+  implements attd<besl>
 {
-  private static Boolean a;
+  private long jdField_a_of_type_Long;
+  private Activity jdField_a_of_type_AndroidAppActivity;
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   
-  private static double a(double paramDouble)
+  public attk(QQAppInterface paramQQAppInterface, Activity paramActivity, long paramLong)
   {
-    return 3.141592653589793D * paramDouble / 180.0D;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
+    this.jdField_a_of_type_Long = paramLong;
   }
   
-  private static double a(double paramDouble1, double paramDouble2, double paramDouble3, double paramDouble4)
+  private void a(List<besl> paramList)
   {
-    paramDouble1 = a(paramDouble1);
-    paramDouble3 = a(paramDouble3);
-    paramDouble2 = a(paramDouble2);
-    paramDouble4 = a(paramDouble4);
-    double d = Math.pow(Math.sin((paramDouble1 - paramDouble3) / 2.0D), 2.0D);
-    return Math.asin(Math.sqrt(Math.cos(paramDouble1) * Math.cos(paramDouble3) * Math.pow(Math.sin((paramDouble2 - paramDouble4) / 2.0D), 2.0D) + d)) * 2.0D * 6378137.0D;
+    TroopFileTransferManager localTroopFileTransferManager = TroopFileTransferManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Long);
+    paramList = paramList.iterator();
+    while (paramList.hasNext())
+    {
+      besl localbesl = (besl)paramList.next();
+      bety localbety = bfsj.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Long, localbesl.jdField_a_of_type_JavaUtilUUID.toString(), localbesl.jdField_b_of_type_JavaLangString, localbesl.jdField_c_of_type_JavaLangString, localbesl.jdField_a_of_type_Long, localbesl.jdField_a_of_type_Int);
+      if ((localbety != null) && (localbety.jdField_a_of_type_JavaUtilUUID != null) && ((localbety.jdField_b_of_type_Int == 10) || (localbety.jdField_b_of_type_Int == 9))) {
+        localTroopFileTransferManager.c(localbety.jdField_a_of_type_JavaUtilUUID);
+      } else {
+        localTroopFileTransferManager.a(localbesl.jdField_b_of_type_JavaLangString, localbesl.jdField_c_of_type_JavaLangString, localbesl.jdField_a_of_type_Long, localbesl.jdField_a_of_type_Int);
+      }
+    }
   }
   
-  public static double a(LatLng paramLatLng1, LatLng paramLatLng2)
+  private void a(List<besl> paramList, attj paramattj)
   {
-    return a(paramLatLng1.latitude, paramLatLng1.longitude, paramLatLng2.latitude, paramLatLng2.longitude);
-  }
-  
-  public static int a(Context paramContext)
-  {
-    int j = 0;
-    if (Build.VERSION.SDK_INT >= 19) {}
+    if (paramList == null) {
+      QLog.w("TroopFileMultiOperate", 1, "fileList == null");
+    }
+    label314:
+    label315:
     for (;;)
     {
-      try
+      return;
+      paramList = paramList.iterator();
+      int i = 0;
+      if (paramList.hasNext())
       {
-        i = Settings.Secure.getInt(paramContext.getContentResolver(), "location_mode");
-        if (QLog.isColorLevel()) {
-          QLog.d("MapUtils", 2, "getLocationMode: invoked. locationMode: " + i);
+        paramattj = (besl)paramList.next();
+        Object localObject = new bety();
+        ((bety)localObject).g = paramattj.jdField_c_of_type_JavaLangString;
+        ((bety)localObject).jdField_a_of_type_JavaLangString = paramattj.h;
+        ((bety)localObject).jdField_c_of_type_Long = paramattj.jdField_a_of_type_Long;
+        ((bety)localObject).jdField_d_of_type_Long = paramattj.jdField_d_of_type_Long;
+        ((bety)localObject).jdField_a_of_type_JavaUtilUUID = paramattj.jdField_a_of_type_JavaUtilUUID;
+        ((bety)localObject).jdField_b_of_type_Long = this.jdField_a_of_type_Long;
+        ((bety)localObject).h = paramattj.jdField_a_of_type_Int;
+        ((bety)localObject).e = paramattj.jdField_b_of_type_JavaLangString;
+        ((bety)localObject).f = paramattj.jdField_d_of_type_JavaLangString;
+        ((bety)localObject).jdField_b_of_type_JavaLangString = paramattj.i;
+        ((bety)localObject).jdField_c_of_type_JavaLangString = paramattj.j;
+        ((bety)localObject).jdField_d_of_type_JavaLangString = paramattj.k;
+        ((bety)localObject).jdField_b_of_type_Int = paramattj.e;
+        bfrm.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Long).a(((bety)localObject).jdField_a_of_type_JavaUtilUUID);
+        localObject = atvo.a((bety)localObject);
+        if (paramattj.jdField_b_of_type_Long != 0L) {
+          ((FileManagerEntity)localObject).selfUin = ("" + paramattj.jdField_b_of_type_Long);
         }
-        return i;
+        if (paramattj.jdField_c_of_type_Int != 0) {
+          ((FileManagerEntity)localObject).lastTime = paramattj.jdField_c_of_type_Int;
+        }
+        ((FileManagerEntity)localObject).bSend = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount().equals(((FileManagerEntity)localObject).selfUin);
+        if (new bljl(3).a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidAppActivity, (FileManagerEntity)localObject, null, false)) {
+          break label314;
+        }
+        i = 1;
       }
-      catch (Settings.SettingNotFoundException paramContext)
+      for (;;)
       {
-        paramContext.printStackTrace();
-        i = j;
-        continue;
-      }
-      paramContext = Settings.Secure.getString(paramContext.getContentResolver(), "location_providers_allowed");
-      int i = j;
-      if (!TextUtils.isEmpty(paramContext)) {
-        if ((paramContext.contains("gps")) && (paramContext.contains("network")))
-        {
-          i = 3;
-        }
-        else if (paramContext.contains("gps"))
-        {
-          i = 1;
-        }
-        else
-        {
-          i = j;
-          if (paramContext.contains("network")) {
-            i = 2;
-          }
-        }
-      }
-    }
-  }
-  
-  private static Object a(Object paramObject, String paramString)
-  {
-    if (paramObject == null) {
-      return null;
-    }
-    try
-    {
-      paramString = paramObject.getClass().getDeclaredField(paramString);
-      paramString.setAccessible(true);
-      paramObject = paramString.get(paramObject);
-      return paramObject;
-    }
-    catch (NoSuchFieldException paramObject)
-    {
-      paramObject.printStackTrace();
-      return null;
-    }
-    catch (IllegalAccessException paramObject)
-    {
-      paramObject.printStackTrace();
-    }
-    return null;
-  }
-  
-  static String a(double paramDouble)
-  {
-    if (paramDouble < 60.0D)
-    {
-      if (Math.round(paramDouble) <= 0L) {}
-      for (i = 1;; i = (int)Math.round(paramDouble)) {
-        return i + "分钟";
-      }
-    }
-    if (paramDouble < 1440.0D)
-    {
-      i = (int)(paramDouble / 60.0D);
-      j = (int)Math.round(paramDouble - i * 60);
-      return i + "小时" + j + "分钟";
-    }
-    int i = (int)(paramDouble / 1440.0D);
-    int j = (int)(paramDouble / 60.0D - i * 24);
-    int k = (int)Math.round(paramDouble - j * 60 - i * 24 * 60);
-    return i + "天" + j + "小时" + k + "分钟";
-  }
-  
-  public static void a()
-  {
-    a = null;
-  }
-  
-  static void a(Activity paramActivity, String paramString1, String paramString2, String paramString3, LatLng paramLatLng1, LatLng paramLatLng2)
-  {
-    if (a(paramActivity))
-    {
-      String str = String.format("qqmap://map/routeplan?type=%s&from=%s&fromcoord=%f,%f&to=%s&tocoord=%f,%f&policy=1&referer=qq", new Object[] { paramString1, paramString2, Double.valueOf(paramLatLng1.latitude), Double.valueOf(paramLatLng1.longitude), paramString3, Double.valueOf(paramLatLng2.latitude), Double.valueOf(paramLatLng2.longitude) });
-      try
-      {
-        Intent localIntent = Intent.parseUri(str, 0);
-        localIntent.addCategory("android.intent.category.BROWSABLE");
-        localIntent.setComponent(null);
-        localIntent.setSelector(null);
-        localIntent.putExtra("big_brother_source_key", "biz_src_location_share");
-        paramActivity.startActivity(localIntent);
-        if (QLog.isColorLevel()) {
-          QLog.d("Q.qqmap", 2, "launchQQMap: " + str);
-        }
-        return;
-      }
-      catch (Exception localException)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.w("Q.qqmap", 2, "launchQQMap: " + str, localException);
-        }
-        azqs.b(null, "CliOper", "", "", "0X800A972", "0X800A972", 1, 0, "0", "0", "0", "");
-      }
-    }
-    for (;;)
-    {
-      try
-      {
-        paramString1 = String.format("qqmap://map/routeplan?type=%s&from=%s&fromcoord=%f,%f&to=%s&tocoord=%f,%f&referer=qq", new Object[] { paramString1, paramString2, Double.valueOf(paramLatLng1.latitude), Double.valueOf(paramLatLng1.longitude), paramString3, Double.valueOf(paramLatLng2.latitude), Double.valueOf(paramLatLng2.longitude) });
-        if (QLog.isColorLevel()) {
-          QLog.d("Q.qqmap", 2, "launchQQMap, mapparam = " + paramString1);
-        }
-        paramString1 = URLEncoder.encode(paramString1, "UTF-8");
-        paramString1 = "http://mapdownload.map.qq.com/outindex?key=qq&referer=qq2&channel=10041881%2C10041882&intention=" + paramString1;
-        paramString2 = new Intent(paramActivity, QQBrowserActivity.class);
-        paramString2.putExtra("big_brother_source_key", "biz_src_location_share");
-        paramString2.putExtra("url", paramString1);
-        paramActivity.startActivity(paramString2);
-        if (!QLog.isColorLevel()) {
-          break;
-        }
-        QLog.d("Q.qqmap", 2, "launchQQMap, download = " + paramString1);
-        return;
-      }
-      catch (UnsupportedEncodingException paramString1)
-      {
-        paramString1.printStackTrace();
-        paramString1 = new Intent(paramActivity, QQBrowserActivity.class);
-        paramString1.putExtra("big_brother_source_key", "biz_src_location_share");
-        paramString1.putExtra("url", "http://mapdownload.map.qq.com/outindex?key=qq&referer=qq2&channel=10041881%2C10041882");
-        paramActivity.startActivity(paramString1);
-      }
-      if (!QLog.isColorLevel()) {
         break;
-      }
-      QLog.d("Q.qqmap", 2, "launchQQMap, download = http://mapdownload.map.qq.com/outindex?key=qq&referer=qq2&channel=10041881%2C10041882");
-      return;
-      azqs.b(null, "CliOper", "", "", "0X800A972", "0X800A972", 2, 0, "0", "0", "0", "");
-    }
-  }
-  
-  public static void a(View paramView, String paramString)
-  {
-    if (AppSetting.c) {
-      paramView.setContentDescription(paramString);
-    }
-  }
-  
-  public static void a(ImageView paramImageView, String paramString)
-  {
-    URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-    localURLDrawableOptions.mRequestWidth = paramImageView.getWidth();
-    localURLDrawableOptions.mRequestHeight = paramImageView.getHeight();
-    localURLDrawableOptions.mLoadingDrawable = new ColorDrawable(0);
-    localURLDrawableOptions.mFailedDrawable = localURLDrawableOptions.mLoadingDrawable;
-    paramImageView.setImageDrawable(URLDrawable.getDrawable(paramString, localURLDrawableOptions));
-  }
-  
-  public static void a(TencentMap paramTencentMap)
-  {
-    if (paramTencentMap != null) {
-      a(a(a(a(a(paramTencentMap, "m"), "a"), "b"), "b"), "b", null);
-    }
-  }
-  
-  public static void a(TencentMap paramTencentMap, int paramInt)
-  {
-    if (paramTencentMap != null)
-    {
-      paramTencentMap = a(a(a(a(paramTencentMap.getUiSettings(), "a"), "a"), "d"), "W");
-      if ((paramTencentMap instanceof ViewGroup)) {
-        ((ViewGroup)paramTencentMap).setVisibility(paramInt);
+        if (i == 0) {
+          break label315;
+        }
+        atvo.a(this.jdField_a_of_type_AndroidAppActivity.getString(2131697395));
+        return;
       }
     }
   }
   
-  private static void a(Object paramObject1, String paramString, Object paramObject2)
+  private void b(List<besl> paramList)
   {
-    if (paramObject1 == null) {
+    if (!bgnt.d(this.jdField_a_of_type_AndroidAppActivity))
+    {
+      QQToast.a(this.jdField_a_of_type_AndroidAppActivity, 2131693991, 1).b(this.jdField_a_of_type_AndroidAppActivity.getResources().getDimensionPixelSize(2131298998));
       return;
     }
-    try
+    Iterator localIterator = paramList.iterator();
+    boolean bool = false;
+    if (localIterator.hasNext())
     {
-      paramString = paramObject1.getClass().getDeclaredField(paramString);
-      paramString.setAccessible(true);
-      paramString.set(paramObject1, paramObject2);
-      return;
+      Object localObject = (besl)localIterator.next();
+      localObject = atwt.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Long, (besl)localObject);
+      if (localObject == null) {
+        break label146;
+      }
+      bool = atwt.a(false, ((bety)localObject).jdField_c_of_type_Long, ((bety)localObject).e);
     }
-    catch (NoSuchFieldException paramObject1)
+    label146:
+    for (;;)
     {
-      paramObject1.printStackTrace();
+      break;
+      if (bool)
+      {
+        atvb.a(this.jdField_a_of_type_AndroidAppActivity, 2131692321, 2131692326, new attn(this, paramList));
+        return;
+      }
+      atwt.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramList, this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_Long);
       return;
-    }
-    catch (IllegalAccessException paramObject1)
-    {
-      paramObject1.printStackTrace();
     }
   }
   
-  public static void a(String paramString1, String paramString2, TextView paramTextView)
+  private void b(List<besl> paramList, attj paramattj)
   {
-    if (paramTextView.getWidth() == 0)
-    {
-      paramTextView.post(new MapUtils.1(paramString1, paramString2, paramTextView));
-      return;
-    }
-    String str = paramString1 + paramString2;
-    float f2 = paramTextView.getWidth();
-    float f1 = paramTextView.getPaint().measureText(paramString1);
-    float f3 = paramTextView.getPaint().measureText(paramString2);
-    if (f1 + f3 <= f2)
-    {
-      paramTextView.setText(str);
-      return;
-    }
-    float f4 = paramTextView.getPaint().measureText("...");
-    while ((f1 + f4 + f3 > f2) && (paramString1.length() > 0))
-    {
-      paramString1 = paramString1.substring(0, paramString1.length() - 1);
-      f1 = paramTextView.getPaint().measureText(paramString1);
-    }
-    paramTextView.setText(paramString1 + "..." + paramString2);
-  }
-  
-  public static boolean a(Context paramContext)
-  {
-    if (a == null) {
-      a = Boolean.valueOf(bhtl.a(paramContext, "com.tencent.map"));
-    }
-    return a.booleanValue();
-  }
-  
-  public static boolean a(Context paramContext, TencentMap paramTencentMap, LatLng paramLatLng)
-  {
-    boolean bool1 = false;
-    int i = paramContext.getResources().getDisplayMetrics().heightPixels;
-    paramContext = new Rect(0, 0, paramContext.getResources().getDisplayMetrics().widthPixels, i);
-    paramTencentMap = paramTencentMap.getProjection();
-    if (paramTencentMap == null) {}
-    boolean bool2;
+    if (bfsj.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_Long) == 0) {}
     do
     {
-      return bool1;
-      paramTencentMap = paramTencentMap.toScreenLocation(paramLatLng);
-      bool2 = paramContext.contains(paramTencentMap.x, paramTencentMap.y);
-      bool1 = bool2;
-    } while (!QLog.isColorLevel());
-    QLog.d("MapUtils", 2, "[map][init]isLocationInScreen: invoked. location: " + paramLatLng + " screen: " + paramTencentMap + " inScreen: " + bool2);
-    return bool2;
+      return;
+      paramattj = bfrm.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Long);
+    } while (paramattj == null);
+    boolean bool1 = bfsj.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Long);
+    paramList = paramList.iterator();
+    int i = 0;
+    if (paramList.hasNext())
+    {
+      besl localbesl = (besl)paramList.next();
+      boolean bool2 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin().equals(localbesl.b());
+      if ((!localbesl.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Long, true)) || ((!bool2) && (!bool1))) {
+        break label162;
+      }
+      paramattj.b(localbesl);
+      i = 1;
+    }
+    label162:
+    for (;;)
+    {
+      break;
+      if (bool1)
+      {
+        atvf.b(2131692193);
+        return;
+      }
+      if (i != 0)
+      {
+        atvf.b(2131692195);
+        return;
+      }
+      atvf.c(2131692194);
+      return;
+    }
+  }
+  
+  private void c(List<besl> paramList)
+  {
+    if (!bgnt.d(this.jdField_a_of_type_AndroidAppActivity))
+    {
+      QQToast.a(this.jdField_a_of_type_AndroidAppActivity, 2131693991, 1).b(this.jdField_a_of_type_AndroidAppActivity.getResources().getDimensionPixelSize(2131298998));
+      return;
+    }
+    Iterator localIterator = paramList.iterator();
+    boolean bool = false;
+    label46:
+    if (localIterator.hasNext())
+    {
+      Object localObject = (besl)localIterator.next();
+      localObject = atwt.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Long, (besl)localObject);
+      if (localObject == null) {
+        break label176;
+      }
+      bool = atwt.a(false, ((bety)localObject).jdField_c_of_type_Long, ((bety)localObject).e);
+    }
+    label176:
+    for (;;)
+    {
+      break label46;
+      if (bool)
+      {
+        if (!bigl.a(this.jdField_a_of_type_AndroidAppActivity, 5, new atto(this, paramList))) {
+          break;
+        }
+        atvb.a(this.jdField_a_of_type_AndroidAppActivity, 2131692321, 2131692324, new attp(this, paramList));
+        return;
+      }
+      atvf.d(this.jdField_a_of_type_AndroidAppActivity.getString(2131692439));
+      bfsj.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Long, paramList);
+      return;
+    }
+  }
+  
+  private void c(List<besl> paramList, attj paramattj)
+  {
+    if (!bgnt.d(this.jdField_a_of_type_AndroidAppActivity)) {
+      QQToast.a(this.jdField_a_of_type_AndroidAppActivity, 2131693991, 1).b(this.jdField_a_of_type_AndroidAppActivity.getResources().getDimensionPixelSize(2131298998));
+    }
+    do
+    {
+      do
+      {
+        return;
+        Iterator localIterator = paramList.iterator();
+        for (long l = 0L; localIterator.hasNext(); l = ((besl)localIterator.next()).jdField_a_of_type_Long + l) {}
+        TroopFileTransferManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Long);
+        if ((!atvo.a()) || (l <= 3145728L)) {
+          break;
+        }
+      } while (!bigl.a(this.jdField_a_of_type_AndroidAppActivity, 1, new attl(this, paramList, paramattj)));
+      paramList = new attm(this, paramList, paramattj);
+      paramattj = this.jdField_a_of_type_AndroidAppActivity.getString(2131696666);
+      bglp.a(this.jdField_a_of_type_AndroidAppActivity, 230, this.jdField_a_of_type_AndroidAppActivity.getString(2131696885), paramattj, 2131690582, 2131696603, paramList, paramList).show();
+      return;
+      a(paramList);
+    } while (paramattj == null);
+    paramattj.a(1, 0);
+  }
+  
+  public void a(List<besl> paramList, int paramInt, attj paramattj)
+  {
+    QLog.i("TroopFileMultiOperate", 1, "doFileMultiOperate. operateType[" + paramInt + "]");
+    if ((paramList == null) || (paramList.isEmpty()))
+    {
+      QLog.i("TroopFileMultiOperate", 1, "doFileMultiOperate. file list is null");
+      return;
+    }
+    switch (paramInt)
+    {
+    default: 
+      return;
+    case 1: 
+      c(paramList, paramattj);
+      return;
+    case 2: 
+      b(paramList);
+      return;
+    case 4: 
+      c(paramList);
+      return;
+    case 3: 
+      b(paramList, paramattj);
+      return;
+    }
+    a(paramList, paramattj);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     attk
  * JD-Core Version:    0.7.0.1
  */

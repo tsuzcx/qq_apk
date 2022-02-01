@@ -1,24 +1,21 @@
-import android.app.Activity;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.weiyun.WeiyunSaveTipsFactory.1;
+import com.tencent.widget.DynamicGridView;
 
 public class bkjz
-  implements View.OnTouchListener
+  implements bkka
 {
-  public bkjz(WeiyunSaveTipsFactory.1 param1) {}
+  private int jdField_a_of_type_Int;
+  private int b;
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public bkjz(DynamicGridView paramDynamicGridView, int paramInt1, int paramInt2)
   {
-    if (paramMotionEvent.getAction() == 0)
-    {
-      QLog.d("hehe", 2, new Object[] { "", "toast touch event" });
-      bkjy.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidAppActivity, this.a.jdField_a_of_type_AndroidAppActivity.getApplicationContext());
-      return true;
-    }
-    return false;
+    this.b = paramInt1;
+    this.jdField_a_of_type_Int = paramInt2;
+  }
+  
+  public void a(int paramInt1, int paramInt2)
+  {
+    DynamicGridView.a(this.jdField_a_of_type_ComTencentWidgetDynamicGridView, DynamicGridView.a(this.jdField_a_of_type_ComTencentWidgetDynamicGridView) + this.jdField_a_of_type_Int);
+    DynamicGridView.b(this.jdField_a_of_type_ComTencentWidgetDynamicGridView, DynamicGridView.b(this.jdField_a_of_type_ComTencentWidgetDynamicGridView) + this.b);
   }
 }
 

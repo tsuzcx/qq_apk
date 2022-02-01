@@ -4,7 +4,7 @@ import android.content.Context;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
-import azri;
+import bctj;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.feedback.eup.CrashReport;
 import com.tencent.qphone.base.util.QLog;
@@ -12,11 +12,11 @@ import com.tencent.qphone.base.util.QLog;
 public class StatisticCollector$1
   implements Runnable
 {
-  public StatisticCollector$1(azri paramazri) {}
+  public StatisticCollector$1(bctj parambctj) {}
   
   public void run()
   {
-    int i = azri.a();
+    int i = bctj.a();
     Object localObject1;
     if (i > 0)
     {

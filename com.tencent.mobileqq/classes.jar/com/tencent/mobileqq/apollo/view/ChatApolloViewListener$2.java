@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.apollo.view;
 
-import akpy;
-import alar;
-import albi;
-import alnq;
+import amje;
+import amtx;
+import amuo;
+import anha;
 import com.tencent.mobileqq.activity.BaseChatPie;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
@@ -13,7 +13,7 @@ import java.util.Iterator;
 public class ChatApolloViewListener$2
   implements Runnable
 {
-  public ChatApolloViewListener$2(alnq paramalnq, boolean paramBoolean, Object paramObject) {}
+  public ChatApolloViewListener$2(anha paramanha, boolean paramBoolean, Object paramObject) {}
   
   public void run()
   {
@@ -23,17 +23,17 @@ public class ChatApolloViewListener$2
         return;
       }
       Object localObject2 = (BaseChatPie)this.this$0.a.get();
-      if ((localObject2 != null) && (((BaseChatPie)localObject2).jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo != null) && (((BaseChatPie)localObject2).jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) && (((BaseChatPie)localObject2).jdField_a_of_type_Akpy != null) && (((BaseChatPie)localObject2).jdField_a_of_type_Akpy.a()) && (this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_JavaLangObject != null))
+      if ((localObject2 != null) && (((BaseChatPie)localObject2).jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo != null) && (((BaseChatPie)localObject2).jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) && (((BaseChatPie)localObject2).jdField_a_of_type_Amje != null) && (((BaseChatPie)localObject2).jdField_a_of_type_Amje.a()) && (this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_JavaLangObject != null))
       {
         Object localObject1 = (ArrayList)this.jdField_a_of_type_JavaLangObject;
         if ((localObject1 != null) && (((ArrayList)localObject1).size() != 0))
         {
-          localObject2 = albi.a(((BaseChatPie)localObject2).jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+          localObject2 = amuo.a(((BaseChatPie)localObject2).jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
           if (localObject2 != null)
           {
             localObject1 = ((ArrayList)localObject1).iterator();
             while (((Iterator)localObject1).hasNext()) {
-              ((alar)localObject2).a((String)((Iterator)localObject1).next(), true);
+              ((amtx)localObject2).a((String)((Iterator)localObject1).next(), true);
             }
           }
         }
@@ -48,7 +48,7 @@ public class ChatApolloViewListener$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.view.ChatApolloViewListener.2
  * JD-Core Version:    0.7.0.1
  */

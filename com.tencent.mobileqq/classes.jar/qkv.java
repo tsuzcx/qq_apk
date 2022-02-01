@@ -1,14 +1,18 @@
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.IBuilder;
+
 public class qkv
-  extends qkw
+  implements ViewBase.IBuilder
 {
-  public qkv(Long paramLong, Integer paramInteger, String paramString1, String paramString2)
+  public ViewBase build(VafContext paramVafContext)
   {
-    super(paramLong, paramInteger, paramString1, paramString2);
+    return new qku(paramVafContext);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     qkv
  * JD-Core Version:    0.7.0.1
  */

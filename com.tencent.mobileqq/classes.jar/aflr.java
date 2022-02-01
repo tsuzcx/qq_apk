@@ -1,28 +1,21 @@
-import android.content.Context;
 import android.content.Intent;
-import android.net.Uri;
-import android.text.style.ClickableSpan;
 import android.view.View;
-import com.tencent.mobileqq.widget.QQToast;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.activity.TroopMemberListActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class aflr
-  extends ClickableSpan
+public class aflr
+  implements View.OnClickListener
 {
-  aflr(aflo paramaflo) {}
+  public aflr(TroopMemberListActivity paramTroopMemberListActivity) {}
   
   public void onClick(View paramView)
   {
-    if (!bdin.d(this.a.a))
-    {
-      QQToast.a(this.a.a, alud.a(2131703620), 2000).a();
-      return;
-    }
-    paramView = new Intent();
-    paramView.setFlags(268435456);
-    paramView.setAction("android.intent.action.VIEW");
-    paramView.putExtra("devlock_open_source", "SmartDeviceMsg");
-    paramView.setData(Uri.parse("mqqdevlock://devlock/open?"));
-    this.a.a.startActivity(paramView);
+    Intent localIntent = new Intent(this.a, QQBrowserActivity.class);
+    localIntent.putExtra("url", "https://m.vip.qq.com/freedom/freedom_group_all.html?_wv=1");
+    this.a.startActivity(localIntent);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

@@ -1,28 +1,33 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.CheckBox;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.SQLiteDatabase;
+import mqq.app.AppRuntime;
 
-class ardk
-  implements View.OnClickListener
+public class ardk
 {
-  ardk(ardi paramardi, aynu paramaynu) {}
-  
-  public void onClick(View paramView)
+  public SQLiteDatabase a(AppRuntime paramAppRuntime, String paramString, boolean paramBoolean)
   {
-    ardh localardh = (ardh)this.jdField_a_of_type_Aynu;
-    localardh.a(paramView);
-    paramView = (CheckBox)paramView.findViewById(2131366315);
-    if (paramView.getVisibility() == 0) {
-      paramView.setChecked(localardh.b());
+    Object localObject2 = null;
+    Object localObject1 = localObject2;
+    if (paramAppRuntime != null)
+    {
+      localObject1 = localObject2;
+      if ((paramAppRuntime instanceof QQAppInterface))
+      {
+        paramAppRuntime = (QQAppInterface)paramAppRuntime;
+        if (!paramBoolean) {
+          break label41;
+        }
+        localObject1 = paramAppRuntime.b(paramString);
+      }
     }
-    if (ardi.a(this.jdField_a_of_type_Ardi) != null) {
-      ardi.a(this.jdField_a_of_type_Ardi).a();
-    }
+    return localObject1;
+    label41:
+    return paramAppRuntime.a(paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ardk
  * JD-Core Version:    0.7.0.1
  */

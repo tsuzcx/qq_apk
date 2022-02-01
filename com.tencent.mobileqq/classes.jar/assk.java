@@ -1,22 +1,17 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.vas.VasQuickUpdateManager;
-import mqq.app.AppRuntime;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.filemanager.activity.LocalFileBrowserActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-final class assk
-  implements asrz
+public class assk
+  implements View.OnClickListener
 {
-  public String a()
-  {
-    return awsl.a;
-  }
+  public assk(LocalFileBrowserActivity paramLocalFileBrowserActivity) {}
   
-  public void a(int paramInt)
+  public void onClick(View paramView)
   {
-    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
-    if ((localAppRuntime instanceof QQAppInterface)) {
-      ((VasQuickUpdateManager)localAppRuntime.getManager(184)).downloadItem(5L, "font.diycard.android." + paramInt, "HiBoomDownloader");
-    }
+    LocalFileBrowserActivity.a(this.a);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

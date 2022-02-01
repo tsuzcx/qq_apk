@@ -1,21 +1,35 @@
-import android.view.View;
-import android.view.ViewStub;
-import android.view.ViewStub.OnInflateListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.model.SelectPositionModule;
+import com.tencent.biz.pubaccount.readinjoy.model.SelectPositionModule.PositionData;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabFrame;
+import com.tencent.qphone.base.util.QLog;
 
-class sun
-  implements ViewStub.OnInflateListener
+public class sun
+  implements DialogInterface.OnClickListener
 {
-  sun(suk paramsuk) {}
+  public sun(ReadinjoyTabFrame paramReadinjoyTabFrame, SelectPositionModule.PositionData paramPositionData) {}
   
-  public void onInflate(ViewStub paramViewStub, View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.a = paramView;
-    this.a.e();
+    if (QLog.isColorLevel()) {
+      QLog.i("ReadInJoyTabFrame", 2, "showLocationChangedDialog change confirm");
+    }
+    paramDialogInterface = pmh.a().a();
+    if (paramDialogInterface != null) {
+      paramDialogInterface.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelSelectPositionModule$PositionData);
+    }
+    paramDialogInterface = pmh.a().a();
+    if (paramDialogInterface != null) {
+      paramDialogInterface.b(41695);
+    }
+    pmh.a().a(41695, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelSelectPositionModule$PositionData.city);
+    pmk.a().h(41695);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     sun
  * JD-Core Version:    0.7.0.1
  */

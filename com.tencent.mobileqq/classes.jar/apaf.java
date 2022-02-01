@@ -1,17 +1,43 @@
-import android.accounts.AccountManagerCallback;
-import android.accounts.AccountManagerFuture;
+import com.tencent.YTFace.model.FaceStatus;
 import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
-class apaf
-  implements AccountManagerCallback<Boolean>
+public class apaf
 {
-  apaf(apac paramapac) {}
+  public int a;
+  public String a;
+  public ArrayList<apag> a;
+  public FaceStatus[] a;
+  public int b;
+  public String b;
+  public int c;
+  public String c;
+  public int d;
   
-  public void run(AccountManagerFuture<Boolean> paramAccountManagerFuture)
+  public static boolean a(apaf paramapaf)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ContactSync.Manager", 2, "removeSyncAccount | is done = " + paramAccountManagerFuture.isDone());
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (paramapaf != null)
+    {
+      bool1 = bool2;
+      if (paramapaf.jdField_a_of_type_Int == 0)
+      {
+        bool1 = bool2;
+        if (paramapaf.jdField_b_of_type_Int == 0) {
+          bool1 = true;
+        }
+      }
     }
+    if (QLog.isColorLevel()) {
+      QLog.d("ARRspFaceResult", 2, "[ScanStarFace]isRecogSuccess result = " + bool1);
+    }
+    return bool1;
+  }
+  
+  public String toString()
+  {
+    return "ARCloudRecogRspFaceResult{errCode_MQ=" + this.jdField_a_of_type_Int + ", errMsg_MQ='" + this.jdField_a_of_type_JavaLangString + '\'' + ", errCode_YT=" + this.jdField_b_of_type_Int + ", errMsg_YT=" + this.jdField_b_of_type_JavaLangString + ", time_ms_YT=" + this.jdField_c_of_type_Int + ", group_size_YT=" + this.d + ", sessionID='" + this.jdField_c_of_type_JavaLangString + '\'' + ", starInfoList=" + this.jdField_a_of_type_JavaUtilArrayList + ", faceStatus[]=" + this.jdField_a_of_type_ArrayOfComTencentYTFaceModelFaceStatus + '}';
   }
 }
 

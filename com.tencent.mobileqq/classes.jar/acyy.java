@@ -1,18 +1,27 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
-import com.tencent.mobileqq.activity.FriendProfileCardActivity.12.2;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.data.MessageRecord;
+import java.util.List;
+import msf.msgcomm.msg_comm.Msg;
+import tencent.im.msg.im_msg_body.CustomFace;
+import tencent.im.msg.im_msg_body.Elem;
+import tencent.im.msg.im_msg_body.NotOnlineImage;
 
 public class acyy
-  implements DialogInterface.OnClickListener
+  extends aczg
 {
-  public acyy(FriendProfileCardActivity.12.2 param2) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public int a()
   {
-    this.a.jdField_a_of_type_Alpk.h();
-    this.a.jdField_a_of_type_Alpk.a(this.a.jdField_a_of_type_Acyw.a.a.a.a, "");
+    return super.a() + 4;
+  }
+  
+  public boolean a(List<im_msg_body.Elem> paramList, msg_comm.Msg paramMsg, List<MessageRecord> paramList1, StringBuilder paramStringBuilder, boolean paramBoolean1, boolean paramBoolean2, bepr parambepr, bbzl parambbzl, bbyn parambbyn)
+  {
+    new bbzc().b(paramList, paramList1, paramStringBuilder, paramMsg, parambepr, paramBoolean2);
+    return true;
+  }
+  
+  public boolean a(im_msg_body.Elem paramElem)
+  {
+    return (paramElem.not_online_image.has()) || (paramElem.custom_face.has());
   }
 }
 

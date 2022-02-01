@@ -1,11 +1,16 @@
-import android.content.Intent;
+import com.tencent.mobileqq.emoticonview.EmoticonPanelController;
+import com.tencent.mobileqq.emoticonview.EmoticonPanelMallHelper.3;
 
-class aryp
-  extends aryv
+public class aryp
+  implements bhlk
 {
-  aryp(Intent paramIntent)
+  public aryp(EmoticonPanelMallHelper.3 param3) {}
+  
+  public void a(boolean paramBoolean)
   {
-    super(paramIntent);
+    if (paramBoolean) {
+      this.a.this$0.a.a.a();
+    }
   }
 }
 

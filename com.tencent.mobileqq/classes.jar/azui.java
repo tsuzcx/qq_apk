@@ -1,59 +1,76 @@
+import java.util.ArrayList;
+import java.util.Iterator;
+
 public class azui
+  implements azue
 {
-  private int jdField_a_of_type_Int;
-  private short jdField_a_of_type_Short;
-  private boolean jdField_a_of_type_Boolean;
-  private byte[] jdField_a_of_type_ArrayOfByte;
-  private boolean b;
+  private azug jdField_a_of_type_Azug;
+  private ArrayList<azue> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   
-  azui(int paramInt)
+  public azuf a(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_ArrayOfByte = new byte[paramInt];
+    paramArrayOfByte = new azuf(paramArrayOfByte, paramInt1, paramInt2);
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    for (;;)
+    {
+      Object localObject = paramArrayOfByte;
+      azue localazue;
+      azuf localazuf;
+      if (localIterator.hasNext())
+      {
+        localazue = (azue)localIterator.next();
+        if (this.jdField_a_of_type_Azug != null) {
+          this.jdField_a_of_type_Azug.a(localazue, paramArrayOfByte);
+        }
+        localazuf = localazue.a(paramArrayOfByte.jdField_a_of_type_ArrayOfByte, paramArrayOfByte.b, paramArrayOfByte.jdField_a_of_type_Int);
+        localObject = localazuf;
+        if (localazuf != null)
+        {
+          localObject = localazuf;
+          if (localazuf.jdField_a_of_type_ArrayOfByte != null)
+          {
+            if (localazuf.jdField_a_of_type_Int != 0) {
+              break label121;
+            }
+            localObject = localazuf;
+          }
+        }
+      }
+      return localObject;
+      label121:
+      paramArrayOfByte = localazuf;
+      if (this.jdField_a_of_type_Azug != null)
+      {
+        this.jdField_a_of_type_Azug.b(localazue, localazuf);
+        paramArrayOfByte = localazuf;
+      }
+    }
   }
   
-  public int a()
+  public void a()
   {
-    return this.jdField_a_of_type_Int;
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    while (localIterator.hasNext()) {
+      ((azue)localIterator.next()).a();
+    }
   }
   
-  public short a()
+  public void a(int paramInt1, int paramInt2, int paramInt3)
   {
-    return this.jdField_a_of_type_Short;
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    while (localIterator.hasNext()) {
+      ((azue)localIterator.next()).a(paramInt1, paramInt2, paramInt3);
+    }
   }
   
-  public void a(int paramInt)
+  public void a(azue paramazue)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaUtilArrayList.add(paramazue);
   }
   
-  public void a(short paramShort)
+  public void a(azug paramazug)
   {
-    this.jdField_a_of_type_Short = paramShort;
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  public byte[] a()
-  {
-    return this.jdField_a_of_type_ArrayOfByte;
-  }
-  
-  public void b(boolean paramBoolean)
-  {
-    this.b = paramBoolean;
-  }
-  
-  public boolean b()
-  {
-    return this.b;
+    this.jdField_a_of_type_Azug = paramazug;
   }
 }
 

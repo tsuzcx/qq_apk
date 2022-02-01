@@ -1,6 +1,7 @@
 package com.tencent.open.agent;
 
-import adpn;
+import Override;
+import aevv;
 import android.content.ActivityNotFoundException;
 import android.content.BroadcastReceiver;
 import android.content.ComponentName;
@@ -11,32 +12,36 @@ import android.content.SharedPreferences;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.Signature;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.Looper;
 import android.os.Process;
 import android.os.SystemClock;
 import android.text.TextUtils;
-import aooz;
-import aopg;
-import aoph;
-import aopi;
-import aseh;
-import azri;
-import bdhe;
-import bety;
-import bfbn;
-import bfbq;
-import bfhz;
-import bfii;
-import bfij;
-import bfmt;
-import bfnj;
-import bfnz;
-import bfqv;
-import bfqw;
-import bfrh;
-import bfrj;
-import bfru;
+import android.view.MotionEvent;
+import aobl;
+import aqqm;
+import aqqv;
+import aqqw;
+import aqqx;
+import aukw;
+import bctj;
+import bgmj;
+import biau;
+import biik;
+import biiq;
+import biir;
+import biiu;
+import bipi;
+import bipr;
+import bips;
+import biuc;
+import bivh;
+import biyc;
+import biyn;
+import biyp;
+import biyz;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.LoginActivity;
@@ -44,35 +49,42 @@ import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.gesturelock.GesturePWDUtils;
 import com.tencent.mqq.shared_file_accessor.SharedPreferencesProxyManager;
+import com.tencent.open.model.AccountManage;
+import com.tencent.open.model.AccountManage.RefreshReason;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqconnect.wtlogin.OpenSDKAppInterface;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.security.MessageDigest;
 import java.util.ArrayList;
 import java.util.HashMap;
+import mqq.os.MqqHandler;
 
 public class AgentActivity
   extends BaseActivity
 {
   private long jdField_a_of_type_Long;
-  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new bfbq(this);
+  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver;
   private Intent jdField_a_of_type_AndroidContentIntent;
   protected Handler a;
-  protected bety a;
+  protected biau a;
   public OpenSDKAppInterface a;
+  private Runnable jdField_a_of_type_JavaLangRunnable;
   protected String a;
   protected boolean a;
+  private BroadcastReceiver b;
   protected boolean b;
   private boolean c;
   
   public AgentActivity()
   {
     this.jdField_a_of_type_AndroidOsHandler = new Handler();
+    this.jdField_b_of_type_AndroidContentBroadcastReceiver = new biiu(this);
   }
   
   private String a()
   {
-    bfqw.a().a();
-    Object localObject3 = bfnz.a();
+    AccountManage.a().a();
+    Object localObject3 = bivh.a();
     Object localObject2 = null;
     if (this.jdField_a_of_type_ComTencentQqconnectWtloginOpenSDKAppInterface.isLogin()) {
       localObject2 = this.jdField_a_of_type_ComTencentQqconnectWtloginOpenSDKAppInterface.getAccount();
@@ -85,14 +97,14 @@ public class AgentActivity
         localObject1 = (String)((ArrayList)localObject3).get(0);
       }
     }
-    localObject3 = bfii.a(getIntent(), "login_success_uin");
+    localObject3 = bipr.a(getIntent(), "login_success_uin");
     localObject2 = localObject1;
     if (!TextUtils.isEmpty((CharSequence)localObject3))
     {
       localObject2 = localObject1;
       if (!((String)localObject3).equals(localObject1))
       {
-        QLog.d("AgentActivity", 1, "--> doRouterForNewAuth set currentUin loginUin");
+        QLog.d("SDK_LOGIN.AgentActivity", 1, "--> doRouterForNewAuth set currentUin loginUin");
         localObject2 = localObject3;
       }
     }
@@ -111,40 +123,40 @@ public class AgentActivity
       localObject = str;
       localMessageDigest.update(paramContext[0].toByteArray());
       localObject = str;
-      paramContext = bdhe.a(localMessageDigest.digest());
+      paramContext = bgmj.a(localMessageDigest.digest());
       if (paramContext == null) {
         return "";
       }
       localObject = str;
       paramContext = paramContext.toLowerCase();
       localObject = str;
-      QLog.i("AgentActivity", 1, "-->getAppSignatureMD5, sign: " + paramContext);
+      QLog.i("SDK_LOGIN.AgentActivity", 1, "-->getAppSignatureMD5, sign: " + paramContext);
       localObject = str;
       localMessageDigest.reset();
       localObject = str;
       localMessageDigest.update((paramString1 + "_" + paramContext + "_" + paramString2 + "").getBytes());
       localObject = str;
-      paramContext = bdhe.a(localMessageDigest.digest());
+      paramContext = bgmj.a(localMessageDigest.digest());
       localObject = paramContext;
       localMessageDigest.reset();
       return paramContext;
     }
     catch (Exception paramContext)
     {
-      paramContext.printStackTrace();
+      QLog.i("SDK_LOGIN.AgentActivity", 1, "Exception", paramContext);
     }
     return localObject;
   }
   
-  private void a(int paramInt, String paramString)
+  private void a(int paramInt, String paramString1, String paramString2)
   {
     if (isFinishing()) {
       return;
     }
     Intent localIntent = new Intent();
     localIntent.putExtra("key_error_code", paramInt);
-    localIntent.putExtra("key_error_msg", paramString);
-    localIntent.putExtra("key_error_detail", "");
+    localIntent.putExtra("key_error_msg", paramString1);
+    localIntent.putExtra("key_error_detail", paramString2);
     localIntent.putExtra("key_response", "");
     setResult(-1, localIntent);
     finish();
@@ -152,169 +164,48 @@ public class AgentActivity
   
   private void a(String paramString1, Bundle paramBundle, String paramString2)
   {
-    QLog.d("AgentActivity", 1, new Object[] { "--> doRouterForNewAuth time = ", Long.valueOf(System.currentTimeMillis()) });
-    String str = a();
-    if (TextUtils.isEmpty(str))
+    QLog.d("SDK_LOGIN.AgentActivity", 1, new Object[] { "--> doRouterForNewAuth time = ", Long.valueOf(System.currentTimeMillis()) });
+    String str3 = a();
+    if (TextUtils.isEmpty(str3))
     {
-      QLog.d("AgentActivity", 1, "--> doRouterForNewAuth currentUin is null,goto old auth");
-      a(paramString1, paramBundle, paramString2, false);
+      QLog.d("SDK_LOGIN.AgentActivity", 1, "--> doRouterForNewAuth currentUin is null,goto old auth");
+      d(paramString1, paramBundle, paramString2, false);
       return;
     }
     long l = System.currentTimeMillis();
-    new bfqv().jdField_a_of_type_JavaLangString = str;
-    aseh.a("KEY_DELEGATE_GET_TICKET_NO_PASSWD");
-    this.jdField_a_of_type_ComTencentQqconnectWtloginOpenSDKAppInterface.a().a(this.jdField_a_of_type_ComTencentQqconnectWtloginOpenSDKAppInterface, str, new bfbn(this, paramString1, paramBundle, paramString2, l));
+    new biyc().jdField_a_of_type_JavaLangString = str3;
+    aukw.a("KEY_DELEGATE_GET_TICKET_NO_PASSWD");
+    String str2 = paramBundle.getString("key_proxy_appid");
+    if (TextUtils.isEmpty(str2)) {}
+    for (String str1 = paramString2;; str1 = str2)
+    {
+      this.jdField_a_of_type_ComTencentQqconnectWtloginOpenSDKAppInterface.a().a(this.jdField_a_of_type_ComTencentQqconnectWtloginOpenSDKAppInterface, str3, str1, AccountManage.RefreshReason.useCacheFirst, new biir(this, paramString1, paramBundle, paramString2, l, str2));
+      return;
+    }
   }
   
   private void a(String paramString1, Bundle paramBundle, String paramString2, boolean paramBoolean)
   {
-    long l = System.currentTimeMillis();
-    Intent localIntent;
-    if (paramBoolean)
+    if (this.jdField_a_of_type_JavaLangRunnable != null)
     {
-      localIntent = new Intent();
-      localIntent.putExtra("intent_router", 1);
-      localIntent.putExtra("public_fragment_window_feature", 1);
+      QLog.d("SDK_LOGIN.AgentActivity", 1, "addExpiredRunnable null != mExpiredRunnable");
+      return;
     }
-    for (;;)
-    {
-      localIntent.putExtra("key_action", paramString1);
-      Object localObject1 = b();
-      boolean bool;
-      if ((TextUtils.isEmpty((CharSequence)localObject1)) && (aooz.e()))
-      {
-        Object localObject2 = paramBundle.getString("ppsts");
-        QLog.d("AgentActivity", 1, new Object[] { "ppsts=", localObject2 });
-        HashMap localHashMap;
-        Object localObject3;
-        if (!TextUtils.isEmpty((CharSequence)localObject2))
-        {
-          localObject1 = bfij.a(paramBundle);
-          localHashMap = new HashMap();
-          localHashMap.put("appid", paramString2);
-          localHashMap.put("ppsts", localObject2);
-          localHashMap.put("sha", localObject1);
-          localObject1 = bfij.a((String)localObject2, (String)localObject1);
-          QLog.d("AgentActivity", 1, new Object[] { "can not get calling package name, use ppsts callFromPackageName=", localObject1 });
-          localObject2 = azri.a(BaseApplicationImpl.getApplication());
-          localObject3 = a();
-          if (!TextUtils.isEmpty((CharSequence)localObject1))
-          {
-            bool = true;
-            label209:
-            ((azri)localObject2).a((String)localObject3, "use_third_pkg_name", bool, 0L, 0L, localHashMap, "", false);
-          }
-        }
-        else
-        {
-          label228:
-          if (TextUtils.isEmpty((CharSequence)localObject1)) {
-            break label640;
-          }
-          localObject3 = bfru.a(this, (String)localObject1);
-          localHashMap = localObject3[0];
-          localObject2 = localObject3[1];
-          localObject3 = localObject3[2];
-          QLog.d("AgentActivity", 1, new Object[] { "-->onCreate appid: ", paramString2, ", package: ", localObject1, ", getAuthorizeSign.sign: ", localHashMap });
-          paramBundle.putString("packagename", (String)localObject1);
-          paramBundle.putString("packagesign", localHashMap);
-          paramBundle.putString("sign", (String)localObject2);
-          paramBundle.putString("time", (String)localObject3);
-          if (QLog.isColorLevel()) {
-            QLog.d("AgentActivity", 2, new Object[] { "-->onCreate, getAuthorizeSign.sign: ", localObject2 });
-          }
-        }
-      }
-      try
-      {
-        bfnj.a().a(0, "LOGIN_CHECK_AGENT", null, paramString2, null, Long.valueOf(SystemClock.elapsedRealtime()), 0, 1, null);
-        for (;;)
-        {
-          label390:
-          if (localIntent != null)
-          {
-            localIntent.putExtra("key_params", paramBundle);
-            if ((getAppInterface() == null) || (getAppInterface().isLogin())) {
-              break label723;
-            }
-            if (QLog.isColorLevel()) {
-              QLog.d("AgentActivity", 2, " qq is not login");
-            }
-            if ((!"action_login".equals(paramString1)) && (!"action_quick_login".equals(paramString1)) && (!"action_ptlogin_login".equals(paramString1))) {
-              break label723;
-            }
-            this.jdField_a_of_type_AndroidContentIntent = localIntent;
-            this.jdField_a_of_type_AndroidContentIntent.putExtra("authority_start_qq_login", true);
-            if (QLog.isColorLevel()) {
-              QLog.d("AgentActivity", 2, "qq is not login, first login it");
-            }
-            paramBundle = new Intent(this, LoginActivity.class);
-            paramBundle.putExtra("authority_start_qq_login", true);
-            if (!"action_ptlogin_login".equals(paramString1))
-            {
-              paramBundle.setFlags(268435456);
-              paramBundle.addFlags(32768);
-            }
-            paramString1 = new IntentFilter("action_login_sucess");
-            registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, paramString1);
-            startActivity(paramBundle);
-          }
-          return;
-          localIntent = new Intent(this, AuthorityActivity.class);
-          break;
-          bool = false;
-          break label209;
-          QLog.d("AgentActivity", 1, new Object[] { "isUseThirdTransformPkgName=", Boolean.valueOf(aooz.e()), ", ppsts=", paramBundle.getString("ppsts") });
-          break label228;
-          label640:
-          QLog.i("AgentActivity", 1, "-->onCreate can not get calling package name!");
-          localObject1 = new HashMap();
-          ((HashMap)localObject1).put("appid", paramString2);
-          azri.a(BaseApplicationImpl.getApplication()).a(a(), "login_pkg_name_empty", true, 0L, 0L, (HashMap)localObject1, "", false);
-          try
-          {
-            bfnj.a().a(1, "LOGIN_CHECK_AGENT", null, paramString2, null, Long.valueOf(SystemClock.elapsedRealtime()), 0, 1, "AgentActivity callFromPackageName is null");
-          }
-          catch (Exception paramString2) {}
-        }
-        label723:
-        if (paramBoolean) {
-          try
-          {
-            adpn.a(this, localIntent, PublicFragmentActivityForOpenSDK.class, OpenAuthorityFragment.class, 0);
-            QLog.d("AgentActivity", 1, new Object[] { "start_auth_use_time", " launch OpenAuthFragment use time = ", Long.valueOf(System.currentTimeMillis() - l) });
-            QLog.d("AgentActivity", 1, new Object[] { "start_auth_use_time", " start Auth total time = ", Long.valueOf(System.currentTimeMillis() - this.jdField_a_of_type_Long) });
-            return;
-          }
-          catch (ActivityNotFoundException paramString1)
-          {
-            QLog.e("AgentActivity", 1, new Object[] { "start_auth_use_time", "start Auth ActivityNotFoundException ", paramString1 });
-            a(-6);
-            super.finish();
-            return;
-          }
-        }
-        super.startActivityForResult(localIntent, 0);
-        QLog.d("AgentActivity", 1, new Object[] { "start_auth_use_time start Auth total time = ", Long.valueOf(System.currentTimeMillis() - this.jdField_a_of_type_Long) });
-        return;
-      }
-      catch (Exception paramString2)
-      {
-        break label390;
-      }
-    }
+    QLog.d("SDK_LOGIN.AgentActivity", 1, "addExpiredRunnable");
+    this.jdField_a_of_type_JavaLangRunnable = new AgentActivity.2(this, paramString1, paramBundle, paramString2, paramBoolean);
+    ThreadManager.getUIHandler().postDelayed(this.jdField_a_of_type_JavaLangRunnable, 20000L);
   }
   
   private boolean a()
   {
     long l1 = System.currentTimeMillis();
-    aopg localaopg = aopi.b(467);
+    aqqv localaqqv = aqqx.b(467);
     long l2 = System.currentTimeMillis();
-    if (localaopg == null) {}
-    for (String str = "is null";; str = "enable: " + localaopg.a().jdField_a_of_type_Boolean)
+    if (localaqqv == null) {}
+    for (String str = "is null";; str = "enable: " + localaqqv.a().jdField_a_of_type_Boolean)
     {
-      QLog.d("AgentActivity", 1, new Object[] { "start_auth_use_time", " load config use time: ", Long.valueOf(l2 - l1), " -->OpenSdkSwitchConfBean ", str });
-      if ((localaopg == null) || (!localaopg.a().jdField_a_of_type_Boolean)) {
+      QLog.d("SDK_LOGIN.AgentActivity", 1, new Object[] { "start_auth_use_time", " load config use time: ", Long.valueOf(l2 - l1), " -->OpenSdkSwitchConfBean ", str });
+      if ((localaqqv == null) || (!localaqqv.a().jdField_a_of_type_Boolean)) {
         break;
       }
       return true;
@@ -335,7 +226,7 @@ public class AgentActivity
         localObject = str;
         if (TextUtils.isEmpty(str))
         {
-          QLog.i("AgentActivity", 1, "-->getCallingPackage returns null!");
+          QLog.i("SDK_LOGIN.AgentActivity", 1, "-->getCallingPackage returns null!");
           localObject = super.getCallingActivity();
           if (localObject == null) {
             break label76;
@@ -343,7 +234,7 @@ public class AgentActivity
           str = ((ComponentName)localObject).getPackageName();
           localObject = str;
           if (TextUtils.isEmpty(str)) {
-            QLog.i("AgentActivity", 1, "-->getPackageName from component returns null!");
+            QLog.i("SDK_LOGIN.AgentActivity", 1, "-->getPackageName from component returns null!");
           }
         }
       }
@@ -351,7 +242,7 @@ public class AgentActivity
       {
         return localObject;
         label76:
-        QLog.i("AgentActivity", 1, "-->getCallingActivity returns null!");
+        QLog.i("SDK_LOGIN.AgentActivity", 1, "-->getCallingActivity returns null!");
       }
       i += 1;
     }
@@ -359,44 +250,234 @@ public class AgentActivity
   
   private void b()
   {
+    if (this.jdField_a_of_type_JavaLangRunnable != null)
+    {
+      QLog.d("SDK_LOGIN.AgentActivity", 1, "removeExpiredRunnable");
+      ThreadManager.getUIHandler().removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
+      this.jdField_a_of_type_JavaLangRunnable = null;
+    }
+  }
+  
+  private void b(String paramString1, Bundle paramBundle, String paramString2, boolean paramBoolean)
+  {
+    QLog.d("SDK_LOGIN.AgentActivity", 1, "registerExpiredReceiver");
+    if (this.jdField_a_of_type_AndroidContentBroadcastReceiver != null)
+    {
+      QLog.d("SDK_LOGIN.AgentActivity", 1, "null != mExpiredReceiver");
+      return;
+    }
+    this.jdField_a_of_type_AndroidContentBroadcastReceiver = new biiq(this, paramString1, paramBundle, paramString2, paramBoolean);
+    registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, new IntentFilter("mqq.intent.action.ACCOUNT_EXPIRED"));
+  }
+  
+  private void c()
+  {
+    if (this.jdField_a_of_type_AndroidContentBroadcastReceiver != null) {
+      QLog.d("SDK_LOGIN.AgentActivity", 1, "unRegisterLoginReceiver");
+    }
+    try
+    {
+      unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
+      this.jdField_a_of_type_AndroidContentBroadcastReceiver = null;
+      return;
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        QLog.e("SDK_LOGIN.AgentActivity", 1, "unRegisterLoginReceiver", localException);
+      }
+    }
+  }
+  
+  private void c(String paramString1, Bundle paramBundle, String paramString2, boolean paramBoolean)
+  {
+    if (Looper.getMainLooper() == Looper.myLooper())
+    {
+      QLog.d("SDK_LOGIN.AgentActivity", 1, "registerExpiredCallback");
+      a(paramString1, paramBundle, paramString2, paramBoolean);
+      b(paramString1, paramBundle, paramString2, paramBoolean);
+      return;
+    }
+    QLog.d("SDK_LOGIN.AgentActivity", 1, "registerExpiredCallback post");
+    ThreadManager.getUIHandler().post(new AgentActivity.4(this, paramString1, paramBundle, paramString2, paramBoolean));
+  }
+  
+  private void d()
+  {
+    if (Looper.getMainLooper() == Looper.myLooper())
+    {
+      QLog.d("SDK_LOGIN.AgentActivity", 1, "unregisterExpiredCallback");
+      c();
+      b();
+      return;
+    }
+    QLog.d("SDK_LOGIN.AgentActivity", 1, "unregisterExpiredCallback post");
+    ThreadManager.getUIHandler().post(new AgentActivity.5(this));
+  }
+  
+  private void d(String paramString1, Bundle paramBundle, String paramString2, boolean paramBoolean)
+  {
+    long l = System.currentTimeMillis();
+    Intent localIntent;
+    Object localObject1;
+    boolean bool;
+    if (paramBoolean)
+    {
+      localIntent = new Intent();
+      localIntent.putExtra("intent_router", 1);
+      localIntent.putExtra("public_fragment_window_feature", 1);
+      localIntent.putExtra("key_action", paramString1);
+      localObject1 = b();
+      if ((!TextUtils.isEmpty((CharSequence)localObject1)) || (!aqqm.a())) {
+        break label605;
+      }
+      Object localObject2 = paramBundle.getString("ppsts");
+      QLog.d("SDK_LOGIN.AgentActivity", 1, new Object[] { "ppsts=", localObject2 });
+      if (!TextUtils.isEmpty((CharSequence)localObject2))
+      {
+        localObject1 = bips.a(paramBundle);
+        localHashMap = new HashMap();
+        localHashMap.put("appid", paramString2);
+        localHashMap.put("ppsts", localObject2);
+        localHashMap.put("sha", localObject1);
+        localObject1 = bips.a((String)localObject2, (String)localObject1);
+        QLog.d("SDK_LOGIN.AgentActivity", 1, new Object[] { "can not get calling package name, use ppsts callFromPackageName=", localObject1 });
+        localObject2 = bctj.a(BaseApplicationImpl.getApplication());
+        localObject3 = a();
+        if (TextUtils.isEmpty((CharSequence)localObject1)) {
+          break label599;
+        }
+        bool = true;
+        label209:
+        ((bctj)localObject2).a((String)localObject3, "use_third_pkg_name", bool, 0L, 0L, localHashMap, "", false);
+      }
+      label228:
+      if (TextUtils.isEmpty((CharSequence)localObject1)) {
+        break label649;
+      }
+      Object localObject3 = biyz.a(this, (String)localObject1);
+      HashMap localHashMap = localObject3[0];
+      localObject2 = localObject3[1];
+      localObject3 = localObject3[2];
+      QLog.d("SDK_LOGIN.AgentActivity", 1, new Object[] { "-->onCreate appid: ", paramString2, ", package: ", localObject1, ", getAuthorizeSign.sign: ", localHashMap });
+      paramBundle.putString("packagename", (String)localObject1);
+      paramBundle.putString("packagesign", localHashMap);
+      paramBundle.putString("sign", (String)localObject2);
+      paramBundle.putString("time", (String)localObject3);
+      bipr.a(0, "LOGIN_CHECK_AGENT", null, paramString2, null, Long.valueOf(SystemClock.elapsedRealtime()), 0, 1, null);
+    }
+    for (;;)
+    {
+      if (localIntent != null)
+      {
+        localIntent.putExtra("key_params", paramBundle);
+        if ((getAppInterface() == null) || (getAppInterface().isLogin())) {
+          break label725;
+        }
+        QLog.d("SDK_LOGIN.AgentActivity", 1, " qq is not login");
+        if ((!"action_login".equals(paramString1)) && (!"action_quick_login".equals(paramString1)) && (!"action_ptlogin_login".equals(paramString1))) {
+          break label725;
+        }
+        this.jdField_a_of_type_AndroidContentIntent = localIntent;
+        this.jdField_a_of_type_AndroidContentIntent.putExtra("authority_start_qq_login", true);
+        QLog.d("SDK_LOGIN.AgentActivity", 1, "qq is not login, first login it");
+        localIntent = new Intent(this, LoginActivity.class);
+        localIntent.putExtra("authority_start_qq_login", true);
+        aobl.a().a(localIntent, paramBundle, paramString2);
+        if (!"action_ptlogin_login".equals(paramString1))
+        {
+          localIntent.setFlags(268435456);
+          localIntent.addFlags(32768);
+        }
+        paramString1 = new IntentFilter("action_login_sucess");
+        registerReceiver(this.jdField_b_of_type_AndroidContentBroadcastReceiver, paramString1);
+        startActivity(localIntent);
+      }
+      return;
+      if (!TextUtils.isEmpty(paramBundle.getString("key_proxy_appid")))
+      {
+        QLog.d("SDK_LOGIN.AgentActivity", 1, "routerToAuthActivity to old login, not support");
+        a(-10000, "error", "not support proxy login");
+        return;
+      }
+      localIntent = new Intent(this, AuthorityActivity.class);
+      break;
+      label599:
+      bool = false;
+      break label209;
+      label605:
+      QLog.d("SDK_LOGIN.AgentActivity", 1, new Object[] { "isUseThirdTransformPkgName=", Boolean.valueOf(aqqm.a()), ", ppsts=", paramBundle.getString("ppsts") });
+      break label228;
+      label649:
+      QLog.i("SDK_LOGIN.AgentActivity", 1, "-->onCreate can not get calling package name!");
+      localObject1 = new HashMap();
+      ((HashMap)localObject1).put("appid", paramString2);
+      bctj.a(BaseApplicationImpl.getApplication()).a(a(), "login_pkg_name_empty", true, 0L, 0L, (HashMap)localObject1, "", false);
+      bipr.a(1, "LOGIN_CHECK_AGENT", null, paramString2, null, Long.valueOf(SystemClock.elapsedRealtime()), 0, 1, "AgentActivity callFromPackageName is null");
+    }
+    label725:
+    if (paramBoolean) {}
+    for (;;)
+    {
+      try
+      {
+        aevv.a(this, localIntent, PublicFragmentActivityForOpenSDK.class, OpenAuthorityFragment.class, 0);
+        QLog.d("SDK_LOGIN.AgentActivity", 1, new Object[] { "start_auth_use_time", " launch OpenAuthFragment use time = ", Long.valueOf(System.currentTimeMillis() - l) });
+        QLog.d("SDK_LOGIN.AgentActivity", 1, new Object[] { "start_auth_use_time", " start Auth total time = ", Long.valueOf(System.currentTimeMillis() - this.jdField_a_of_type_Long) });
+        return;
+      }
+      catch (ActivityNotFoundException paramString1)
+      {
+        QLog.e("SDK_LOGIN.AgentActivity", 1, new Object[] { "start_auth_use_time", "start Auth ActivityNotFoundException ", paramString1 });
+        a(-6);
+        super.finish();
+        return;
+      }
+      super.startActivityForResult(localIntent, 0);
+    }
+  }
+  
+  private void e()
+  {
     if (isFinishing()) {
-      QLog.i("AgentActivity", 1, "-->showLoading activity is finishing");
+      QLog.i("SDK_LOGIN.AgentActivity", 1, "-->showLoading activity is finishing");
     }
     for (;;)
     {
       return;
       try
       {
-        if (this.jdField_a_of_type_Bety != null)
+        if (this.jdField_a_of_type_Biau != null)
         {
-          if (this.jdField_a_of_type_Bety.isShowing()) {
+          if (this.jdField_a_of_type_Biau.isShowing()) {
             continue;
           }
-          this.jdField_a_of_type_Bety.show();
+          this.jdField_a_of_type_Biau.show();
         }
       }
       catch (Exception localException)
       {
-        QLog.i("AgentActivity", 1, "-->showLoading Exception:", localException);
+        QLog.i("SDK_LOGIN.AgentActivity", 1, "-->showLoading Exception:", localException);
         return;
       }
     }
-    this.jdField_a_of_type_Bety = new bety(this, 0, 2131561237, 17);
-    this.jdField_a_of_type_Bety.a(-1);
-    this.jdField_a_of_type_Bety.show();
+    this.jdField_a_of_type_Biau = new biau(this, 0, 2131561461, 17);
+    this.jdField_a_of_type_Biau.a(-1);
+    this.jdField_a_of_type_Biau.show();
   }
   
   protected void a()
   {
-    if ((!super.isFinishing()) && (this.jdField_a_of_type_Bety != null) && (this.jdField_a_of_type_Bety.isShowing())) {}
+    if ((!super.isFinishing()) && (this.jdField_a_of_type_Biau != null) && (this.jdField_a_of_type_Biau.isShowing())) {}
     try
     {
-      this.jdField_a_of_type_Bety.dismiss();
+      this.jdField_a_of_type_Biau.dismiss();
       return;
     }
     catch (Exception localException)
     {
-      QLog.i("AgentActivity", 1, "-->dismissDialogProgress Exception:", localException);
+      QLog.i("SDK_LOGIN.AgentActivity", 1, "-->dismissDialogProgress Exception:", localException);
     }
   }
   
@@ -404,180 +485,168 @@ public class AgentActivity
   {
     Intent localIntent = new Intent();
     localIntent.putExtra("key_error_code", paramInt);
-    localIntent.putExtra("key_error_msg", bfmt.c);
+    localIntent.putExtra("key_error_msg", biuc.c);
     localIntent.putExtra("key_error_detail", "");
     localIntent.putExtra("key_response", "");
     super.setResult(-1, localIntent);
     super.finish();
   }
   
+  @Override
+  public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
+  {
+    boolean bool = super.dispatchTouchEvent(paramMotionEvent);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool);
+    return bool;
+  }
+  
   public boolean doOnCreate(Bundle paramBundle)
   {
-    Bundle localBundle = null;
     super.doOnCreate(paramBundle);
-    aseh.a();
-    aseh.a("KEY_LOGIN_STAGE_1_TOTAL");
-    aseh.a("KEY_AUTHORITY_TOTAL");
-    b();
+    biik.a();
+    aukw.a();
+    aukw.a("KEY_LOGIN_STAGE_1_TOTAL");
+    aukw.a("KEY_AUTHORITY_TOTAL");
+    e();
     this.jdField_a_of_type_Long = System.currentTimeMillis();
     this.jdField_a_of_type_ComTencentQqconnectWtloginOpenSDKAppInterface = ((OpenSDKAppInterface)super.getAppRuntime());
-    if ((super.getIntent() == null) || (paramBundle != null)) {
-      QLog.d("AgentActivity", 1, new Object[] { "-->onCreate, intent: ", super.getIntent(), " | savedInstanceState: ", paramBundle });
+    if ((super.getIntent() == null) || (paramBundle != null))
+    {
+      QLog.d("SDK_LOGIN.AgentActivity", 1, new Object[] { "-->onCreate, intent: ", super.getIntent(), " | savedInstanceState: ", paramBundle });
+      bipr.a(1, "LOGIN_CHECK_AGENT", null, null, null, Long.valueOf(SystemClock.elapsedRealtime()), 0, 1, "AgentActivity getIntent is null");
     }
+    Object localObject;
     for (;;)
     {
+      return true;
+      String str1 = bipr.a(super.getIntent(), "key_action");
+      this.jdField_a_of_type_JavaLangString = str1;
+      QLog.d("SDK_LOGIN.AgentActivity", 1, new Object[] { "-->onCreate, action: ", str1 });
       try
       {
-        bfnj.a().a(1, "LOGIN_CHECK_AGENT", null, null, null, Long.valueOf(SystemClock.elapsedRealtime()), 0, 1, "AgentActivity getIntent is null");
-        return true;
-      }
-      catch (Exception paramBundle) {}
-      Object localObject2 = "";
-      try
-      {
-        paramBundle = super.getIntent().getStringExtra("key_action");
-        localObject2 = paramBundle;
-      }
-      catch (Exception paramBundle)
-      {
-        Object localObject1;
-        continue;
-      }
-      this.jdField_a_of_type_JavaLangString = ((String)localObject2);
-      QLog.d("AgentActivity", 1, new Object[] { "-->onCreate, action: ", localObject2 });
-      try
-      {
-        paramBundle = super.getIntent().getBundleExtra("key_params");
-        localBundle = paramBundle;
+        localBundle = super.getIntent().getBundleExtra("key_params");
         if (localBundle == null)
         {
           a(-5);
-          if (!"action_login".equals(localObject2)) {
+          if (!"action_login".equals(str1)) {
             continue;
           }
-          try
-          {
-            bfnj.a().a(1, "LOGIN_CHECK_AGENT", null, null, null, Long.valueOf(SystemClock.elapsedRealtime()), 0, 1, "AgentActivity bundle is null");
-            return true;
-          }
-          catch (Exception paramBundle)
-          {
-            return true;
-          }
+          bipr.a(1, "LOGIN_CHECK_AGENT", null, null, null, Long.valueOf(SystemClock.elapsedRealtime()), 0, 1, "AgentActivity bundle is null");
+          return true;
         }
       }
       catch (Exception paramBundle)
       {
-        QLog.e("AgentActivity", 1, "-->onCreate Exception", paramBundle);
-        continue;
-        String str = localBundle.getString("client_id");
-        if ("action_login".equals(localObject2))
+        Bundle localBundle;
+        for (;;)
         {
-          QLog.d("AgentActivity", 1, new Object[] { "-->loginAction, action: ", localObject2, " time = ", Long.valueOf(System.currentTimeMillis()), ", appid=", str });
-          if (a())
-          {
-            ThreadManager.executeOnNetWorkThread(new AgentActivity.1(this, (String)localObject2, localBundle, str));
-            return true;
-          }
-          a((String)localObject2, localBundle, str, false);
-          return true;
+          QLog.e("SDK_LOGIN.AgentActivity", 1, "-->onCreate Exception", paramBundle);
+          localBundle = null;
         }
-        if ("action_pay".equals(localObject2))
+        String str2 = localBundle.getString("client_id");
+        if ("action_login".equals(str1))
         {
-          localObject1 = new Intent(this, AuthorityActivity.class);
-          ((Intent)localObject1).putExtra("key_action", (String)localObject2);
-          if (localObject1 == null) {
-            continue;
+          QLog.d("SDK_LOGIN.AgentActivity", 1, new Object[] { "-->loginAction, action: ", str1, " time = ", Long.valueOf(System.currentTimeMillis()), ", appid=", str2 });
+          if (a()) {
+            ThreadManager.executeOnNetWorkThread(new AgentActivity.1(this, str1, localBundle, str2));
           }
-          ((Intent)localObject1).putExtra("key_params", localBundle);
+          for (;;)
+          {
+            bipi.a().a(getAppInterface().getCurrentAccountUin(), "", str2, "1", "8", "0", true);
+            return true;
+            d(str1, localBundle, str2, false);
+          }
+        }
+        if ("action_pay".equals(str1))
+        {
+          localObject = new Intent(this, AuthorityActivity.class);
+          ((Intent)localObject).putExtra("key_action", str1);
+        }
+        while (localObject != null)
+        {
+          ((Intent)localObject).putExtra("key_params", localBundle);
           if ((getAppInterface() == null) || (getAppInterface().isLogin())) {
-            continue;
+            break label887;
           }
-          if (QLog.isColorLevel()) {
-            QLog.d("AgentActivity", 2, " qq is not login");
+          QLog.d("SDK_LOGIN.AgentActivity", 1, " qq is not login");
+          if ((!"action_login".equals(str1)) && (!"action_quick_login".equals(str1)) && (!"action_ptlogin_login".equals(str1))) {
+            break label887;
           }
-          if ((!"action_login".equals(localObject2)) && (!"action_quick_login".equals(localObject2)) && (!"action_ptlogin_login".equals(localObject2))) {
-            continue;
-          }
-          this.jdField_a_of_type_AndroidContentIntent = ((Intent)localObject1);
+          this.jdField_a_of_type_AndroidContentIntent = ((Intent)localObject);
           this.jdField_a_of_type_AndroidContentIntent.putExtra("authority_start_qq_login", true);
-          if (QLog.isColorLevel()) {
-            QLog.d("AgentActivity", 2, "qq is not login, first login it");
-          }
+          QLog.d("SDK_LOGIN.AgentActivity", 1, "qq is not login, first login it");
           paramBundle = new Intent(this, LoginActivity.class);
           paramBundle.putExtra("authority_start_qq_login", true);
-          if (!"action_ptlogin_login".equals(localObject2))
+          aobl.a().a(paramBundle, localBundle, str2);
+          if (!"action_ptlogin_login".equals(str1))
           {
             paramBundle.setFlags(268435456);
             paramBundle.addFlags(32768);
           }
-          localObject1 = new IntentFilter("action_login_sucess");
-          registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, (IntentFilter)localObject1);
+          localObject = new IntentFilter("action_login_sucess");
+          registerReceiver(this.jdField_b_of_type_AndroidContentBroadcastReceiver, (IntentFilter)localObject);
           startActivity(paramBundle);
-          try
-          {
-            bfhz.a().a(getAppInterface().getCurrentAccountUin(), "", str, "1", "8", "0", true);
-            return true;
+          bipr.a(getAppInterface().getCurrentAccountUin(), "", str2, "1", "8", "0", true);
+          return true;
+          if ((!"action_quick_login".equals(str1)) && (!"action_ptlogin_login".equals(str1))) {
+            break label694;
           }
-          catch (Exception paramBundle)
-          {
-            paramBundle.printStackTrace();
-            return true;
-          }
-        }
-        if (("action_quick_login".equals(localObject2)) || ("action_ptlogin_login".equals(localObject2)))
-        {
           this.c = true;
           paramBundle = super.getCallingPackage();
           if (QLog.isColorLevel()) {
-            QLog.d("AgentActivity", 2, "-->packagename: " + paramBundle);
+            QLog.d("SDK_LOGIN.AgentActivity", 2, "-->packagename: " + paramBundle);
           }
-          localObject1 = new Intent(this, QuickLoginAuthorityActivity.class);
-          ((Intent)localObject1).putExtra("key_action", (String)localObject2);
+          localObject = new Intent(this, QuickLoginAuthorityActivity.class);
+          ((Intent)localObject).putExtra("key_action", str1);
           localBundle.putString("packagename", paramBundle);
         }
-        else if (("action_invite".equals(localObject2)) || ("action_gift".equals(localObject2)) || ("action_ask".equals(localObject2)) || ("action_reactive".equals(localObject2)))
-        {
+        label694:
+        if (("action_invite".equals(str1)) || ("action_gift".equals(str1)) || ("action_ask".equals(str1)) || ("action_reactive".equals(str1))) {
           paramBundle = new Intent(this, SocialFriendChooser.class);
-          localObject1 = paramBundle;
-          if (paramBundle != null)
+        }
+        for (;;)
+        {
+          localObject = paramBundle;
+          if (paramBundle == null) {
+            break;
+          }
+          paramBundle.putExtra("key_action", str1);
+          localObject = localBundle.getString("hopenid");
+          localBundle.putString("encrytoken", biyn.a(this, "openid_encrytoken").getString((String)localObject, ""));
+          localObject = paramBundle;
+          break;
+          if ("action_story".equals(str1))
           {
-            paramBundle.putExtra("key_action", (String)localObject2);
-            localObject1 = localBundle.getString("hopenid");
-            localBundle.putString("encrytoken", bfrh.a(this, "openid_encrytoken").getString((String)localObject1, ""));
-            localObject1 = paramBundle;
+            paramBundle = new Intent(this, SendStoryActivity.class);
+          }
+          else if ("action_brag".equals(str1))
+          {
+            paramBundle = new Intent(this, BragActivity.class);
+          }
+          else
+          {
+            if (!"action_challenge".equals(str1)) {
+              break label879;
+            }
+            paramBundle = new Intent(this, ChallengeActivity.class);
           }
         }
-        else if ("action_story".equals(localObject2))
-        {
-          paramBundle = new Intent(this, SendStoryActivity.class);
-        }
-        else if ("action_brag".equals(localObject2))
-        {
-          paramBundle = new Intent(this, BragActivity.class);
-        }
-        else if ("action_challenge".equals(localObject2))
-        {
-          paramBundle = new Intent(this, ChallengeActivity.class);
-        }
-        else
-        {
-          a(-5);
-          return true;
-        }
+        label879:
+        a(-5);
+        return true;
       }
     }
     try
     {
-      super.startActivityForResult((Intent)localObject1, 0);
+      label887:
+      super.startActivityForResult((Intent)localObject, 0);
       return true;
     }
     catch (ActivityNotFoundException paramBundle)
     {
-      paramBundle.printStackTrace();
+      QLog.e("SDK_LOGIN.AgentActivity", 1, "ActivityNotFoundException", paramBundle);
       a(-6);
       super.finish();
-      return true;
     }
     return true;
   }
@@ -585,17 +654,17 @@ public class AgentActivity
   public void doOnResume()
   {
     super.doOnResume();
-    if ((QLog.isColorLevel()) && (getAppInterface() != null)) {
-      QLog.d("AgentActivity", 2, "-->onResume, app.isLogin(): " + getAppInterface().isLogin());
+    if (getAppInterface() != null) {
+      QLog.d("SDK_LOGIN.AgentActivity", 1, "-->onResume, app.isLogin(): " + getAppInterface().isLogin());
     }
-    if (this.b)
+    if (this.jdField_b_of_type_Boolean)
     {
       setResult(0);
       finish();
       this.jdField_a_of_type_Boolean = true;
       return;
     }
-    this.b = true;
+    this.jdField_b_of_type_Boolean = true;
   }
   
   public SharedPreferences getSharedPreferences(String paramString, int paramInt)
@@ -605,21 +674,26 @@ public class AgentActivity
   
   public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AgentActivity", 2, "-->onActivityResult, action: " + this.jdField_a_of_type_JavaLangString + " | requestCode: " + paramInt1 + " | resultCode: " + paramInt2 + " | data: " + paramIntent);
-    }
+    QLog.d("SDK_LOGIN.AgentActivity", 1, "-->onActivityResult, action: " + this.jdField_a_of_type_JavaLangString + " | requestCode: " + paramInt1 + " | resultCode: " + paramInt2 + " | data: " + paramIntent);
     super.setResult(paramInt2, paramIntent);
     super.finish();
     this.jdField_a_of_type_Boolean = true;
   }
   
+  @Override
+  public void onConfigurationChanged(Configuration paramConfiguration)
+  {
+    super.onConfigurationChanged(paramConfiguration);
+    EventCollector.getInstance().onActivityConfigurationChanged(this, paramConfiguration);
+  }
+  
   public void onDestroy()
   {
     super.onDestroy();
+    biik.b();
     a();
-    if (QLog.isColorLevel()) {
-      QLog.d("AgentActivity", 2, "-->onDestroy, action: " + this.jdField_a_of_type_JavaLangString);
-    }
+    QLog.d("SDK_LOGIN.AgentActivity", 1, "-->onDestroy, action: " + this.jdField_a_of_type_JavaLangString);
+    d();
     if (this.jdField_a_of_type_Boolean)
     {
       boolean bool = GesturePWDUtils.isAppOnForeground(this);

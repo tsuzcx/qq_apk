@@ -1,40 +1,32 @@
-import android.content.res.Resources;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.contacts.fragment.TroopFragment;
-import com.tencent.mobileqq.widget.QQToast;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.aio.photo.AIOImageProviderService;
+import com.tencent.superplayer.api.SuperPlayerVideoInfo;
+import java.util.ArrayList;
 
 public class ahtv
-  extends alpa
+  implements atdz
 {
-  public ahtv(TroopFragment paramTroopFragment) {}
+  public ahtv(AIOImageProviderService paramAIOImageProviderService, atnh paramatnh, long paramLong, int paramInt1, int paramInt2) {}
   
-  protected void a(String paramString1, int paramInt1, int paramInt2, String paramString2, String paramString3)
+  public void a(int paramInt, String paramString)
   {
-    if (paramInt2 == 0)
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageProviderService.a != null) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageProviderService.a.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.b, "I:E", new String[] { String.valueOf(paramInt), paramString }, null, null, -1, null);
+    }
+  }
+  
+  public void a(SuperPlayerVideoInfo paramSuperPlayerVideoInfo)
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageProviderService.a != null)
     {
-      this.a.h();
-      if (this.a.isResumed()) {
-        if (paramInt1 != 0) {
-          break label47;
-        }
-      }
+      ArrayList localArrayList = paramSuperPlayerVideoInfo.getCookie();
+      Bundle localBundle = new Bundle();
+      localBundle.putString("savepath", paramSuperPlayerVideoInfo.getLocalSavePath());
+      localBundle.putStringArrayList("cookies", localArrayList);
+      localBundle.putString("contextid", this.jdField_a_of_type_Atnh.a());
+      localBundle.putString("fileid", paramSuperPlayerVideoInfo.getFileId());
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageProviderService.a.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.b, this.jdField_a_of_type_Atnh.b(), paramSuperPlayerVideoInfo.getPlayUrls(), null, null, -1, localBundle);
     }
-    label47:
-    while (!this.a.isResumed())
-    {
-      QQToast.a(this.a.getActivity(), 2, alud.a(2131715777), 0).a();
-      do
-      {
-        return;
-      } while (paramInt1 != 1);
-      QQToast.a(this.a.getActivity(), 2, alud.a(2131715776), 0).a();
-      return;
-    }
-    paramString1 = paramString2;
-    if (TextUtils.isEmpty(paramString2)) {
-      paramString1 = this.a.getResources().getString(2131695087);
-    }
-    QQToast.a(this.a.getActivity(), 1, paramString1, 0).a();
   }
 }
 

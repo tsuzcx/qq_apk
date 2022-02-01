@@ -1,118 +1,230 @@
+import android.app.ActivityManager;
+import android.app.ActivityManager.RunningServiceInfo;
+import android.content.ComponentName;
 import android.content.Context;
-import android.graphics.PointF;
+import android.content.Intent;
+import android.net.Uri;
+import android.os.Build.VERSION;
+import android.os.Bundle;
 import android.os.Handler;
-import android.os.HandlerThread;
+import android.text.TextUtils;
+import com.tencent.av.gaudio.AVNotifyCenter;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.ttpic.baseutils.device.DeviceUtils;
-import dov.com.qq.im.ae.gif.video.PngsCreateWorkingQueue.1;
-import dov.com.qq.im.ae.gif.video.PngsCreateWorkingQueue.3;
-import java.util.ArrayList;
-import java.util.Iterator;
+import cooperation.ilive.IliveLaunchFragment;
+import cooperation.ilive.util.IliveEntranceUtil.1;
 import java.util.List;
-import java.util.concurrent.Semaphore;
 
 public class bleu
 {
-  private static String jdField_a_of_type_JavaLangString = "PngsCreateWorkingQueue";
-  private Context jdField_a_of_type_AndroidContentContext;
-  private Handler jdField_a_of_type_AndroidOsHandler;
-  private bles jdField_a_of_type_Bles = new bles();
-  private blew jdField_a_of_type_Blew;
-  private blex jdField_a_of_type_Blex;
+  private static long a;
+  public static boolean a;
+  private static long b;
+  public static boolean b;
   
-  public bleu(String paramString, List<List<List<PointF>>> paramList, List<List<float[]>> paramList1, double paramDouble, Context paramContext)
+  public static void a(Context paramContext, String paramString)
   {
-    this.jdField_a_of_type_Blex = new blex(paramString, paramList, paramList1, paramDouble);
-    paramString = new HandlerThread("PngsCreateWorkingQueue");
-    paramString.start();
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(paramString.getLooper());
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    QLog.e("IliveEntranceUtil", 1, "liveAnchorEntranceJump source = " + paramString);
+    Intent localIntent = new Intent();
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("page_type", 1);
+    localBundle.putString("source", paramString);
+    localBundle.putBoolean("isDebugVersion", false);
+    localBundle.putString("qqVersion", AppSetting.jdField_a_of_type_JavaLangString);
+    localBundle.putLong("start_time", System.currentTimeMillis());
+    localIntent.putExtra("KEY_EXTRAS", localBundle);
+    localIntent.putExtra("KEY_IS_START_LIVE", true);
+    IliveLaunchFragment.startSelf(paramContext, localIntent);
+    bhak.a("anchor_enter_count", null, 0L);
   }
   
-  private void a()
+  public static void a(blej paramblej)
   {
-    Iterator localIterator = this.jdField_a_of_type_Bles.a.iterator();
-    while (localIterator.hasNext())
-    {
-      String str = (String)localIterator.next();
-      QLog.d(jdField_a_of_type_JavaLangString, 4, "clear frame files, dir = " + str);
-      bdhb.a(str);
+    if (paramblej == null) {
+      return;
     }
-  }
-  
-  private void b(bler parambler)
-  {
-    String[] arrayOfString = new String[1];
-    arrayOfString[0] = "";
-    Semaphore localSemaphore = new Semaphore(0);
-    blcd localblcd = (blcd)blcc.jdField_a_of_type_JavaUtilList.get(blcc.jdField_a_of_type_ArrayOfInt[(parambler.jdField_a_of_type_Int % blcc.jdField_a_of_type_ArrayOfInt.length)]);
-    float f1 = 0.81F;
-    float f2 = 0.16F;
-    if (parambler.b.contains("\n"))
+    if (!TextUtils.isEmpty(paramblej.c)) {}
+    try
     {
-      f1 = 0.67F;
-      f2 = 0.3F;
+      paramblej.c = Uri.decode(paramblej.c);
+      if (TextUtils.isEmpty(paramblej.d)) {}
     }
-    int i;
-    if (this.jdField_a_of_type_AndroidContentContext != null)
+    catch (Exception localException1)
     {
-      j = (int)(DeviceUtils.getScreenWidth(this.jdField_a_of_type_AndroidContentContext) * 0.44F) + 1;
-      if (this.jdField_a_of_type_AndroidContentContext == null) {
-        break label242;
-      }
-      i = bdaq.a(this.jdField_a_of_type_AndroidContentContext, 2.0F) * 320 / j;
-      label119:
-      if (this.jdField_a_of_type_AndroidContentContext == null) {
-        break label248;
-      }
-    }
-    label242:
-    label248:
-    for (int j = bdaq.c(this.jdField_a_of_type_AndroidContentContext, 23.0F) * 320 / j;; j = 19)
-    {
-      this.jdField_a_of_type_Blex.a(parambler.b, j, localblcd.jdField_a_of_type_JavaLangString, localblcd.b, i, 0.0F, f1, 1.0F, f2);
-      this.jdField_a_of_type_Blex.a(parambler.jdField_a_of_type_JavaLangString);
-      this.jdField_a_of_type_Blex.a(new blev(this, parambler, arrayOfString, localSemaphore));
       try
       {
-        localSemaphore.acquire();
-        if (this.jdField_a_of_type_Blew != null) {
-          this.jdField_a_of_type_Blew.a(parambler.jdField_a_of_type_Int, arrayOfString[0]);
+        paramblej.d = Uri.decode(paramblej.d);
+        QLog.e("IliveEntranceUtil", 1, "liveWatchEntranceJump source = " + paramblej.jdField_a_of_type_JavaLangString + " roomID = " + paramblej.b + " retain = " + paramblej.jdField_a_of_type_Boolean + " sIsAnchorIsLive = " + jdField_a_of_type_Boolean + " sIsAudienceIsLive = " + jdField_b_of_type_Boolean);
+        if (QLog.isColorLevel()) {
+          QLog.i("IliveEntranceUtil", 2, " rtmp = " + paramblej.c + " closeJump = " + paramblej.d);
         }
-        return;
+        if (TextUtils.isEmpty(paramblej.b)) {
+          paramblej.b = "-1";
+        }
+        if ((jdField_a_of_type_Boolean) && (b(paramblej.jdField_a_of_type_AndroidContentContext)))
+        {
+          QLog.e("IliveEntranceUtil", 1, "sIsAnchorIsLive current anchor is live stop jump");
+          return;
+          localException1 = localException1;
+          localException1.printStackTrace();
+        }
       }
-      catch (InterruptedException parambler)
+      catch (Exception localException2)
       {
-        parambler.printStackTrace();
+        for (;;)
+        {
+          localException2.printStackTrace();
+        }
+        jdField_a_of_type_Boolean = false;
+        bhak.a("watch_enter_count", null, 0L);
+        Intent localIntent = new Intent();
+        Bundle localBundle = new Bundle();
+        localBundle.putInt("page_type", 3);
+        localBundle.putString("source", paramblej.jdField_a_of_type_JavaLangString);
+        localBundle.putString("room_id", paramblej.b);
+        localBundle.putString("rtmp_Url", paramblej.c);
+        localBundle.putLong("start_time", System.currentTimeMillis());
+        localBundle.putStringArrayList("playlist", paramblej.jdField_a_of_type_JavaUtilArrayList);
+        localBundle.putBoolean("retaion", paramblej.jdField_a_of_type_Boolean);
+        localBundle.putString("close_jump", paramblej.d);
+        localBundle.putBoolean("isDebugVersion", false);
+        localBundle.putString("qqVersion", AppSetting.jdField_a_of_type_JavaLangString);
+        localIntent.putExtra("KEY_EXTRAS", localBundle);
+        localIntent.putExtra("KEY_IS_START_LIVE", false);
+        IliveLaunchFragment.startSelf(paramblej.jdField_a_of_type_AndroidContentContext, localIntent);
       }
-      j = 1920;
-      break;
-      i = 5;
-      break label119;
     }
   }
   
-  public bles a()
+  public static boolean a()
   {
-    return this.jdField_a_of_type_Bles;
+    return (b(BaseApplicationImpl.getContext())) && ((jdField_a_of_type_Boolean) || (jdField_b_of_type_Boolean));
   }
   
-  public void a(bler parambler)
+  public static boolean a(int paramInt)
   {
-    this.jdField_a_of_type_AndroidOsHandler.post(new PngsCreateWorkingQueue.1(this, parambler));
+    boolean bool = true;
+    jdField_b_of_type_Long = System.currentTimeMillis();
+    QLog.i("IliveEntranceUtil", 1, " offest = " + (jdField_b_of_type_Long - jdField_a_of_type_Long));
+    if (jdField_b_of_type_Long - jdField_a_of_type_Long > paramInt) {}
+    for (;;)
+    {
+      jdField_a_of_type_Long = jdField_b_of_type_Long;
+      return bool;
+      bool = false;
+    }
   }
   
-  public void a(blew paramblew)
+  public static boolean a(Context paramContext)
   {
-    this.jdField_a_of_type_Blew = paramblew;
+    if (c())
+    {
+      a(paramContext, "qzone");
+      return true;
+    }
+    return false;
   }
   
-  public void a(boolean paramBoolean)
+  public static boolean a(Context paramContext, String paramString)
   {
-    QLog.d(jdField_a_of_type_JavaLangString, 4, "stop, clearFiles = " + paramBoolean);
-    this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
-    this.jdField_a_of_type_AndroidOsHandler.post(new PngsCreateWorkingQueue.3(this, paramBoolean));
-    this.jdField_a_of_type_AndroidContentContext = null;
+    try
+    {
+      blet.a("IliveEntranceUtilisServiceExisted");
+      paramContext = ((ActivityManager)paramContext.getSystemService("activity")).getRunningServices(2147483647);
+      if ((paramContext == null) || (paramContext.size() > 0)) {
+        break label97;
+      }
+      return false;
+    }
+    catch (Throwable paramContext)
+    {
+      for (;;)
+      {
+        Object localObject;
+        paramContext.printStackTrace();
+        continue;
+        label97:
+        int i = 0;
+        continue;
+        i += 1;
+      }
+    }
+    if (i < paramContext.size())
+    {
+      localObject = (ActivityManager.RunningServiceInfo)paramContext.get(i);
+      if (localObject != null)
+      {
+        localObject = ((ActivityManager.RunningServiceInfo)localObject).service;
+        if ((localObject != null) && (((ComponentName)localObject).getClassName().equals(paramString))) {
+          return true;
+        }
+      }
+    }
+    else
+    {
+      blet.b("IliveEntranceUtilisServiceExisted");
+      return false;
+    }
+  }
+  
+  public static boolean a(boolean paramBoolean)
+  {
+    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
+    if ((localObject instanceof QQAppInterface))
+    {
+      QQAppInterface localQQAppInterface = (QQAppInterface)localObject;
+      localObject = (mwd)localQQAppInterface.getManager(373);
+      if ((localObject != null) && (((mwd)localObject).a()))
+      {
+        b(localQQAppInterface.getApp().getBaseContext(), "进入直播间失败");
+        return false;
+      }
+      if (paramBoolean) {}
+      for (localObject = "通话中，不可发起直播"; localQQAppInterface.a().a(); localObject = "通话中，不可进入直播间")
+      {
+        b(localQQAppInterface.getApp().getBaseContext(), (String)localObject);
+        QLog.e("IliveEntranceUtil", 2, "isBusinessEnableEnterLive isPhoneCalling");
+        return false;
+      }
+      if (localQQAppInterface.a().b())
+      {
+        b(localQQAppInterface.getApp().getBaseContext(), (String)localObject);
+        QLog.e("IliveEntranceUtil", 2, "isBusinessEnableEnterLive isAvChating");
+        return false;
+      }
+    }
+    return true;
+  }
+  
+  private static void b(Context paramContext, String paramString)
+  {
+    ThreadManagerV2.getUIHandlerV2().post(new IliveEntranceUtil.1(paramContext, paramString));
+  }
+  
+  public static boolean b()
+  {
+    return Build.VERSION.SDK_INT >= aqyj.c().a();
+  }
+  
+  private static boolean b(Context paramContext)
+  {
+    boolean bool = a(paramContext, "com.tencent.proxyinner.plugin.loader.PluginToolProcessService");
+    QLog.e("IliveEntranceUtil", 1, "isIlivePluginsServiceExisted : " + bool);
+    return bool;
+  }
+  
+  public static boolean c()
+  {
+    return blen.a(1) == 1;
+  }
+  
+  public static boolean d()
+  {
+    return blen.a(2) == 1;
   }
 }
 

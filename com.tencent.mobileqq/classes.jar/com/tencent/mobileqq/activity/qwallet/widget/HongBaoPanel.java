@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.activity.qwallet.widget;
 
-import aere;
-import aetu;
-import aixs;
-import ajan;
-import ajbp;
-import ajbr;
-import ajbs;
-import ajbt;
-import ajet;
+import afxp;
+import agaa;
+import akpd;
+import aksg;
+import akti;
+import aktk;
+import aktl;
+import aktm;
+import akwv;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Color;
@@ -29,9 +29,9 @@ import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import azqs;
-import bayu;
-import bdnn;
+import bcst;
+import bdzx;
+import bgsp;
 import com.tencent.image.URLDrawable;
 import com.tencent.mobileqq.activity.BaseChatPie;
 import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory;
@@ -45,6 +45,7 @@ import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.theme.ThemeUtil;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import com.tencent.widget.immersive.ImmersiveUtils;
 import cooperation.qwallet.plugin.QWalletPicHelper;
 import java.util.ArrayList;
@@ -84,7 +85,7 @@ public class HongBaoPanel
   private RelativeLayout layoutAction;
   private RelativeLayout layoutBottom;
   ViewGroup mAIORootView;
-  aere mActionCustomListener = new HongBaoPanel.1(this);
+  afxp mActionCustomListener = new HongBaoPanel.1(this);
   private ImageView mActionRedDot;
   private TextView mActionTxtView;
   protected BaseActivity mActivity;
@@ -102,7 +103,7 @@ public class HongBaoPanel
   private TroopUnAccalimedRedPacketList mTroopUnAccalimedRedPacketList;
   private String panelBgColor;
   private String panelBgPic;
-  ajbp redManager;
+  akti redManager;
   private boolean setNightColorSucc;
   int spanCount = 4;
   private String url_action;
@@ -128,7 +129,7 @@ public class HongBaoPanel
   private int getNightModeIconTxtColor()
   {
     if (this.mNightModeIconTxtColor == null) {
-      this.mNightModeIconTxtColor = Integer.valueOf(getResources().getColor(2131166903));
+      this.mNightModeIconTxtColor = Integer.valueOf(getResources().getColor(2131166986));
     }
     return this.mNightModeIconTxtColor.intValue();
   }
@@ -172,7 +173,7 @@ public class HongBaoPanel
     Object localObject1;
     if (i < localList.size())
     {
-      localObject2 = (ajbt)localList.get(i);
+      localObject2 = (aktm)localList.get(i);
       if (i != 0)
       {
         localObject3 = new View(this.mContext);
@@ -198,17 +199,17 @@ public class HongBaoPanel
       if (i != 0) {
         ((LinearLayout.LayoutParams)localObject3).leftMargin = ImmersiveUtils.a(10.0F);
       }
-      if (bdnn.a(this.fontColorTab)) {
+      if (bgsp.a(this.fontColorTab)) {
         this.fontColorTab = "#27BEF6";
       }
-      localObject2 = ((ajbt)localObject2).b;
+      localObject2 = ((aktm)localObject2).b;
       if (!"#27BEF6".equals(this.fontColorTab)) {
         break label297;
       }
     }
     label290:
     label297:
-    for (int j = this.mContext.getResources().getColor(2131166914);; j = Color.parseColor(this.fontColorTab))
+    for (int j = this.mContext.getResources().getColor(2131166997);; j = Color.parseColor(this.fontColorTab))
     {
       setTextViewNameColor((TextView)localObject1, (String)localObject2, j, 1);
       i += 1;
@@ -221,14 +222,14 @@ public class HongBaoPanel
   
   private void initPanelBgAndHongBaoAction()
   {
-    Object localObject2 = (aixs)this.mApp.getManager(245);
-    if (isInValidTime((aixs)localObject2, ((aixs)localObject2).a("redPackPanel", "", new String[] { "themeInfo", "begintime" }), ((aixs)localObject2).a("redPackPanel", "", new String[] { "themeInfo", "endtime" })))
+    Object localObject2 = (akpd)this.mApp.getManager(245);
+    if (isInValidTime((akpd)localObject2, ((akpd)localObject2).a("redPackPanel", "", new String[] { "themeInfo", "begintime" }), ((akpd)localObject2).a("redPackPanel", "", new String[] { "themeInfo", "endtime" })))
     {
-      this.fontColorIcon = ((aixs)localObject2).a("redPackPanel", "#5B6175", new String[] { "themeInfo", "fontColorIcon" });
-      this.fontColorAct = ((aixs)localObject2).a("redPackPanel", "#000000", new String[] { "themeInfo", "fontColorAct" });
-      this.fontColorTab = ((aixs)localObject2).a("redPackPanel", "#27BEF6", new String[] { "themeInfo", "fontColorTab" });
-      this.panelBgPic = ((aixs)localObject2).a("redPackPanel", "", new String[] { "themeInfo", "panelPic" });
-      this.panelBgColor = ((aixs)localObject2).a("redPackPanel", "#FFFFFF", new String[] { "themeInfo", "panelColor" });
+      this.fontColorIcon = ((akpd)localObject2).a("redPackPanel", "#5B6175", new String[] { "themeInfo", "fontColorIcon" });
+      this.fontColorAct = ((akpd)localObject2).a("redPackPanel", "#000000", new String[] { "themeInfo", "fontColorAct" });
+      this.fontColorTab = ((akpd)localObject2).a("redPackPanel", "#27BEF6", new String[] { "themeInfo", "fontColorTab" });
+      this.panelBgPic = ((akpd)localObject2).a("redPackPanel", "", new String[] { "themeInfo", "panelPic" });
+      this.panelBgColor = ((akpd)localObject2).a("redPackPanel", "#FFFFFF", new String[] { "themeInfo", "panelColor" });
     }
     if (ThemeUtil.isCustomTheme(false))
     {
@@ -236,11 +237,11 @@ public class HongBaoPanel
       this.fontColorIcon = "#5B6175";
       this.panelBgColor = "";
     }
-    if (!bdnn.a(this.panelBgColor)) {}
+    if (!bgsp.a(this.panelBgColor)) {}
     try
     {
       setBackgroundColor(Color.parseColor(this.panelBgColor));
-      if (!bdnn.a(this.panelBgPic))
+      if (!bgsp.a(this.panelBgPic))
       {
         Object localObject1 = new CustomizeStrategyFactory.RedPacketInfo();
         ((CustomizeStrategyFactory.RedPacketInfo)localObject1).skinType = 100;
@@ -250,15 +251,15 @@ public class HongBaoPanel
         if (localObject1 != null) {
           updatePanelPictures((CustomizeStrategyFactory.RedPacketInfo)localObject1);
         }
-        localObject1 = ((aixs)localObject2).a("redPackPanel", new String[] { "panelAct" });
+        localObject1 = ((akpd)localObject2).a("redPackPanel", new String[] { "panelAct" });
         if (localObject1 != null) {
-          if (isInValidTime((aixs)localObject2, ((aixs)localObject2).a("redPackPanel", "", new String[] { "panelAct", "params", "begintime" }), ((aixs)localObject2).a("redPackPanel", "", new String[] { "panelAct", "params", "endtime" })))
+          if (isInValidTime((akpd)localObject2, ((akpd)localObject2).a("redPackPanel", "", new String[] { "panelAct", "params", "begintime" }), ((akpd)localObject2).a("redPackPanel", "", new String[] { "panelAct", "params", "endtime" })))
           {
             localObject2 = ((JSONObject)localObject1).optJSONObject("params");
             if (localObject2 != null) {
               this.url_action = ((JSONObject)localObject2).optString("url");
             }
-            if (!bdnn.a(this.url_action))
+            if (!bgsp.a(this.url_action))
             {
               this.layoutAction.setVisibility(0);
               setTextViewNameColor(this.mActionTxtView, ((JSONObject)localObject1).optString("name"), Color.parseColor(this.fontColorAct), 2);
@@ -301,15 +302,15 @@ public class HongBaoPanel
         }
         else
         {
-          setBackgroundResource(2130849680);
+          setBackgroundResource(2130850256);
         }
       }
     }
   }
   
-  private boolean isInValidTime(aixs paramaixs, String paramString1, String paramString2)
+  private boolean isInValidTime(akpd paramakpd, String paramString1, String paramString2)
   {
-    if (paramaixs == null) {
+    if (paramakpd == null) {
       return false;
     }
     try
@@ -317,9 +318,9 @@ public class HongBaoPanel
       boolean bool = RedPacketManager.isValidDate(paramString1, paramString2);
       return bool;
     }
-    catch (Throwable paramaixs)
+    catch (Throwable paramakpd)
     {
-      paramaixs.printStackTrace();
+      paramakpd.printStackTrace();
     }
     return false;
   }
@@ -377,7 +378,7 @@ public class HongBaoPanel
   private void updateActionRedDotById(String paramString)
   {
     ImageView localImageView;
-    if ((!bdnn.a(paramString)) && (this.redManager != null))
+    if ((!bgsp.a(paramString)) && (this.redManager != null))
     {
       paramString = this.redManager.a(paramString);
       if (paramString != null)
@@ -418,7 +419,7 @@ public class HongBaoPanel
                   break label244;
                 }
                 this.mImgPanelBackGround.setVisibility(0);
-                Drawable localDrawable = QWalletPicHelper.getDrawableForAIO(paramRedPacketInfo.resPath, bayu.a);
+                Drawable localDrawable = QWalletPicHelper.getDrawableForAIO(paramRedPacketInfo.resPath, bdzx.a);
                 ((URLDrawable)localDrawable).setURLDrawableListener(new HongBaoPanel.2(this, paramRedPacketInfo, localDrawable));
                 this.mImgPanelBackGround.setImageDrawable(localDrawable);
                 return;
@@ -433,7 +434,7 @@ public class HongBaoPanel
         return;
         if (isNightModeTxtEnable())
         {
-          this.layoutAction.setBackgroundResource(2130846891);
+          this.layoutAction.setBackgroundResource(2130847347);
           return;
         }
       } while ((paramRedPacketInfo == null) || (paramRedPacketInfo.icon == null));
@@ -460,10 +461,10 @@ public class HongBaoPanel
     int i = 0;
     while (i < ((List)localObject).size())
     {
-      localArrayList.add(((ajbs)((List)localObject).get(i)).jdField_a_of_type_JavaLangString);
+      localArrayList.add(((aktl)((List)localObject).get(i)).jdField_a_of_type_JavaLangString);
       i += 1;
     }
-    localObject = ((aixs)this.mApp.getManager(245)).a("redPackPanel", new String[] { "panelAct" });
+    localObject = ((akpd)this.mApp.getManager(245)).a("redPackPanel", new String[] { "panelAct" });
     if (localObject != null) {
       localArrayList.add(((JSONObject)localObject).optString("id"));
     }
@@ -477,21 +478,21 @@ public class HongBaoPanel
     this.isNightMode = ThemeUtil.isNowThemeIsNight(this.mApp, false, null);
     this.mBaseChatPie = paramBaseChatPie;
     this.mActivity = paramBaseChatPie.jdField_a_of_type_AndroidSupportV4AppFragmentActivity;
-    this.redManager = ((ajbp)this.mApp.getManager(273));
+    this.redManager = ((akti)this.mApp.getManager(273));
     this.mAIORootView = paramBaseChatPie.c;
     this.mSessionInfo = paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
-    this.mImgPanelBackGround = ((ImageView)findViewById(2131368079));
-    this.mHbRecyclerView = ((RecyclerView)findViewById(2131367731));
+    this.mImgPanelBackGround = ((ImageView)findViewById(2131368404));
+    this.mHbRecyclerView = ((RecyclerView)findViewById(2131368043));
     this.mHbRecyclerView.setHasFixedSize(true);
-    this.layoutBottom = ((RelativeLayout)findViewById(2131369168));
-    this.bottomTabLayout = ((LinearLayout)findViewById(2131369170));
-    this.mImgActionFire = ((ImageView)findViewById(2131368120));
-    this.layoutAction = ((RelativeLayout)findViewById(2131367716));
+    this.layoutBottom = ((RelativeLayout)findViewById(2131369557));
+    this.bottomTabLayout = ((LinearLayout)findViewById(2131369559));
+    this.mImgActionFire = ((ImageView)findViewById(2131368446));
+    this.layoutAction = ((RelativeLayout)findViewById(2131368028));
     this.layoutAction.setVisibility(8);
-    this.mActionRedDot = ((ImageView)findViewById(2131361908));
+    this.mActionRedDot = ((ImageView)findViewById(2131361963));
     this.mActionRedDot.setVisibility(8);
     this.layoutAction.setOnClickListener(this);
-    this.mActionTxtView = ((TextView)findViewById(2131377632));
+    this.mActionTxtView = ((TextView)findViewById(2131378471));
     this.mLayoutManager = new GridLayoutManager(this.mContext, this.spanCount);
     this.mLayoutManager.setOrientation(1);
     this.mHbRecyclerView.setLayoutManager(this.mLayoutManager);
@@ -513,43 +514,45 @@ public class HongBaoPanel
     switch (paramView.getId())
     {
     default: 
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
     }
-    if ((this.mContext != null) && (!bdnn.a(this.url_action))) {
-      ajet.b(this.mContext, this.url_action);
+    if ((this.mContext != null) && (!bgsp.a(this.url_action))) {
+      akwv.b(this.mContext, this.url_action);
     }
     if (this.redManager != null) {
       this.redManager.a(this.actionId);
     }
     updateActionRedDotById(this.actionId);
-    paramView = "";
+    String str = "";
+    label183:
     int i;
     if ((this.mSessionInfo.jdField_a_of_type_Int == 0) || (this.mSessionInfo.jdField_a_of_type_Int == 1000) || (this.mSessionInfo.jdField_a_of_type_Int == 1004) || (this.mSessionInfo.jdField_a_of_type_Int == 1001) || (this.mSessionInfo.jdField_a_of_type_Int == 10002) || (this.mSessionInfo.jdField_a_of_type_Int == 10004) || (this.mSessionInfo.jdField_a_of_type_Int == 10008))
     {
-      paramView = "entrance.click.c2c";
-      i = aetu.a();
+      str = "entrance.click.c2c";
+      i = agaa.a();
       if (i != 0) {
-        break label278;
+        break label287;
       }
-      paramView = paramView + ".plus";
+      str = str + ".plus";
     }
     for (;;)
     {
-      azqs.b(this.mApp, "P_CliOper", "Vip_pay_mywallet", "", "wallet", paramView, 0, 0, "10000", "", "", "");
-      return;
+      bcst.b(this.mApp, "P_CliOper", "Vip_pay_mywallet", "", "wallet", str, 0, 0, "10000", "", "", "");
+      break;
       if (this.mSessionInfo.jdField_a_of_type_Int == 3000)
       {
-        paramView = "entrance.click.group";
-        break;
+        str = "entrance.click.group";
+        break label183;
       }
       if (this.mSessionInfo.jdField_a_of_type_Int != 1) {
-        break;
+        break label183;
       }
-      paramView = "entrance.click.chatgroup";
-      break;
-      label278:
+      str = "entrance.click.chatgroup";
+      break label183;
+      label287:
       if (i == 1) {
-        paramView = paramView + ".quick";
+        str = str + ".quick";
       }
     }
   }
@@ -566,15 +569,15 @@ public class HongBaoPanel
   {
     Object localObject = this.mAdapter.getDatas();
     if ((localObject == null) || (((List)localObject).size() <= 0)) {}
-    ajbs localajbs;
+    aktl localaktl;
     do
     {
       return;
       while (!((Iterator)localObject).hasNext()) {
         localObject = ((List)localObject).iterator();
       }
-      localajbs = (ajbs)((Iterator)localObject).next();
-    } while ((localajbs == null) || (localajbs.jdField_a_of_type_Int != 8));
+      localaktl = (aktl)((Iterator)localObject).next();
+    } while ((localaktl == null) || (localaktl.jdField_a_of_type_Int != 8));
     PreloadManager.a().c(EmojiRedpacketUserGuideDialog.URL_DEFAULT, null);
   }
   
@@ -602,7 +605,7 @@ public class HongBaoPanel
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.qwallet.widget.HongBaoPanel
  * JD-Core Version:    0.7.0.1
  */

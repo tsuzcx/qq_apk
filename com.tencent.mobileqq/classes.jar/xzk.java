@@ -1,30 +1,20 @@
-import com.tencent.biz.qrcode.activity.QRDisplayActivity;
-import com.tencent.mobileqq.utils.ChnToSpell;
-import java.util.Comparator;
+import com.tencent.biz.qqstory.shareGroup.widget.StoryPickerFragment;
 
 public class xzk
-  implements Comparator<String>
+  implements zpt
 {
-  public xzk(QRDisplayActivity paramQRDisplayActivity) {}
+  public xzk(StoryPickerFragment paramStoryPickerFragment) {}
   
-  public int a(String paramString1, String paramString2)
+  public void a()
   {
-    int i = 1;
-    if ((paramString1 != null) && (paramString2 != null)) {
-      i = ChnToSpell.a(paramString1, 1).compareTo(ChnToSpell.a(paramString2, 1));
+    if (this.a.a != null) {
+      this.a.a.d();
     }
-    while (paramString1 != null) {
-      return i;
-    }
-    if (paramString2 != null) {
-      return -1;
-    }
-    return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     xzk
  * JD-Core Version:    0.7.0.1
  */

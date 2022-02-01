@@ -1,24 +1,14 @@
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import mqq.util.WeakReference;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class adpy
-  implements bevu
+class adpy
+  implements DialogInterface.OnClickListener
 {
-  final WeakReference<QQBrowserActivity> a;
+  adpy(adpw paramadpw) {}
   
-  public adpy(QQBrowserActivity paramQQBrowserActivity)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a = new WeakReference(paramQQBrowserActivity);
-  }
-  
-  public void onTabSelected(int paramInt1, int paramInt2)
-  {
-    QQBrowserActivity localQQBrowserActivity = (QQBrowserActivity)this.a.get();
-    if (localQQBrowserActivity == null) {}
-    while (paramInt1 == paramInt2) {
-      return;
-    }
-    QQBrowserActivity.a(paramInt2, localQQBrowserActivity);
+    paramDialogInterface.dismiss();
   }
 }
 

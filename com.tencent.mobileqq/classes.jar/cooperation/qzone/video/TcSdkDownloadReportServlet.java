@@ -4,7 +4,7 @@ import android.content.Intent;
 import android.os.Build;
 import android.os.Build.VERSION;
 import android.text.TextUtils;
-import bjdm;
+import blru;
 import com.tencent.mobileqq.msf.sdk.MsfMsgUtil;
 import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.remote.ToServiceMsg;
@@ -29,9 +29,9 @@ public class TcSdkDownloadReportServlet
     {
       try
       {
-        String str1 = QzoneConfig.getInstance().getConfig("QZoneSetting", "TcSDKReportURL", "http://btrace.qq.com/kvcollect");
+        String str1 = QzoneConfig.getInstance().getConfig("QZoneSetting", "TcSDKReportURL", "https://btrace.qq.com/kvcollect");
         String str2 = paramIntent.getStringExtra("uin");
-        String str3 = bjdm.a();
+        String str3 = blru.a();
         String str4 = Build.MODEL;
         String str5 = Build.VERSION.RELEASE;
         paramIntent = paramIntent.getStringExtra("report_msg");
@@ -134,7 +134,7 @@ public class TcSdkDownloadReportServlet
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.qzone.video.TcSdkDownloadReportServlet
  * JD-Core Version:    0.7.0.1
  */

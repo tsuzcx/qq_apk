@@ -1,37 +1,20 @@
-import android.os.IBinder;
-import android.os.IBinder.DeathRecipient;
-import android.os.Messenger;
-import com.tencent.mobileqq.emosm.web.MessengerService;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import android.widget.TextView;
+import com.tencent.ark.ArkDispatchTask;
+import com.tencent.mobileqq.ark.ArkAppCenter;
+import com.tencent.mobileqq.ark.debug.ArkIDESettingFragment;
+import com.tencent.mobileqq.ark.debug.ArkIDESettingFragment.6.1;
 
-class apqm
-  implements IBinder.DeathRecipient
+public class apqm
+  extends apqp
 {
-  apqm(apqh paramapqh) {}
+  public apqm(ArkIDESettingFragment paramArkIDESettingFragment) {}
   
-  public void binderDied()
+  public void a(int paramInt)
   {
-    if (QLog.isColorLevel())
+    if (ArkIDESettingFragment.a(this.a) != null)
     {
-      QLog.d("MessengerService$IncomingHandler", 2, "-->binder died");
-      MessengerService.a((MessengerService)this.a.a.get());
-      MessengerService.b((MessengerService)this.a.a.get());
-    }
-    MessengerService localMessengerService;
-    if (this.a.a != null)
-    {
-      localMessengerService = (MessengerService)this.a.a.get();
-      if ((localMessengerService == null) || (localMessengerService.a == null)) {}
-    }
-    try
-    {
-      localMessengerService.a.getBinder().unlinkToDeath(apqh.a(this.a), 0);
-      return;
-    }
-    catch (Exception localException)
-    {
-      QLog.d("MessengerService$IncomingHandler", 1, "-->binder died unlink to death error=" + localException.toString());
+      TextView localTextView = ArkIDESettingFragment.a(this.a);
+      ArkAppCenter.a().postToMainThread(new ArkIDESettingFragment.6.1(this, paramInt, localTextView));
     }
   }
 }

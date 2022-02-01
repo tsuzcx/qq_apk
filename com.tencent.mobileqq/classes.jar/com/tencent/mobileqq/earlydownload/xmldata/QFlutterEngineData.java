@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.earlydownload.xmldata;
 
-import aplz;
+import arov;
 
 public class QFlutterEngineData
   extends XmlData
 {
-  @aplz(a=true, b=true)
+  @arov(a=true, b=true)
   public String libEngineSoMD5 = "";
   
   public String getSharedPreferencesName()
@@ -15,12 +15,12 @@ public class QFlutterEngineData
   
   public String getStrResName()
   {
-    return "qq.android.flutter.engine.v8.3.3";
+    return "qq.android.flutter.engine.v8.3.9";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.earlydownload.xmldata.QFlutterEngineData
  * JD-Core Version:    0.7.0.1
  */

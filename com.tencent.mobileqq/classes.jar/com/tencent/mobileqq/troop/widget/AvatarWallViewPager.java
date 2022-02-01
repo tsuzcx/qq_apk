@@ -16,13 +16,13 @@ import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
-import bcpx;
-import bcqo;
-import bcqp;
+import bfup;
+import bfvg;
+import bfvh;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.theme.ThemeUtil;
 import com.tencent.qphone.base.util.QLog;
-import xsm;
+import zlx;
 
 public class AvatarWallViewPager
   extends RelativeLayout
@@ -57,7 +57,7 @@ public class AvatarWallViewPager
     super(paramContext, paramAttributeSet);
     this.jdField_a_of_type_Boolean = true;
     this.jdField_b_of_type_Boolean = true;
-    this.jdField_a_of_type_AndroidOsHandler = new bcqo(this, Looper.getMainLooper());
+    this.jdField_a_of_type_AndroidOsHandler = new bfvg(this, Looper.getMainLooper());
     this.jdField_a_of_type_AndroidContentContext = paramContext;
     a();
   }
@@ -67,11 +67,11 @@ public class AvatarWallViewPager
     View localView = new View(this.jdField_a_of_type_AndroidContentContext);
     if (this.jdField_a_of_type_AndroidWidgetLinearLayout$LayoutParams == null)
     {
-      int i = xsm.a(this.jdField_a_of_type_AndroidContentContext, 6.0F);
+      int i = zlx.a(this.jdField_a_of_type_AndroidContentContext, 6.0F);
       this.jdField_a_of_type_AndroidWidgetLinearLayout$LayoutParams = new LinearLayout.LayoutParams(i, i);
-      this.jdField_a_of_type_AndroidWidgetLinearLayout$LayoutParams.leftMargin = xsm.a(this.jdField_a_of_type_AndroidContentContext, 7.0F);
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = bcpx.a(getResources(), Color.parseColor("#80ffffff"), getResources().getDrawable(2130843304));
-      this.jdField_b_of_type_AndroidGraphicsDrawableDrawable = bcpx.a(getResources(), Color.parseColor("#ffffffff"), getResources().getDrawable(2130843304));
+      this.jdField_a_of_type_AndroidWidgetLinearLayout$LayoutParams.leftMargin = zlx.a(this.jdField_a_of_type_AndroidContentContext, 7.0F);
+      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = bfup.a(getResources(), Color.parseColor("#80ffffff"), getResources().getDrawable(2130843665));
+      this.jdField_b_of_type_AndroidGraphicsDrawableDrawable = bfup.a(getResources(), Color.parseColor("#ffffffff"), getResources().getDrawable(2130843665));
       if (ThemeUtil.isInNightMode(BaseApplicationImpl.getApplication().getRuntime()))
       {
         this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setColorFilter(1996488704, PorterDuff.Mode.SRC_ATOP);
@@ -96,14 +96,14 @@ public class AvatarWallViewPager
     RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, -2);
     localLayoutParams.addRule(12);
     localLayoutParams.addRule(11);
-    localLayoutParams.rightMargin = xsm.a(this.jdField_a_of_type_AndroidContentContext, 13.0F);
-    localLayoutParams.bottomMargin = xsm.a(this.jdField_a_of_type_AndroidContentContext, 10.0F);
+    localLayoutParams.rightMargin = zlx.a(this.jdField_a_of_type_AndroidContentContext, 13.0F);
+    localLayoutParams.bottomMargin = zlx.a(this.jdField_a_of_type_AndroidContentContext, 10.0F);
     this.jdField_a_of_type_AndroidWidgetLinearLayout = a();
     this.jdField_a_of_type_AndroidWidgetLinearLayout.setBackgroundColor(getResources().getColor(17170445));
     this.jdField_a_of_type_AndroidWidgetLinearLayout.setGravity(5);
     addView(this.jdField_a_of_type_AndroidWidgetLinearLayout, localLayoutParams);
     this.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallViewPager$RollViewPager.setOnPageChangeListener(new AvatarWallViewPager.RollerChangeListener(this));
-    new bcqp(this, this.jdField_a_of_type_AndroidContentContext, new LinearInterpolator()).a();
+    new bfvh(this, this.jdField_a_of_type_AndroidContentContext, new LinearInterpolator()).a();
   }
   
   public void b()
@@ -197,7 +197,7 @@ public class AvatarWallViewPager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.troop.widget.AvatarWallViewPager
  * JD-Core Version:    0.7.0.1
  */

@@ -1,41 +1,43 @@
-import android.opengl.GLSurfaceView.EGLContextFactory;
-import javax.microedition.khronos.egl.EGL10;
-import javax.microedition.khronos.egl.EGLConfig;
-import javax.microedition.khronos.egl.EGLContext;
-import javax.microedition.khronos.egl.EGLDisplay;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class axub
-  implements GLSurfaceView.EGLContextFactory
+class axub
+  implements View.OnClickListener
 {
-  private static int jdField_a_of_type_Int = 12440;
-  private EGLContext jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext;
+  axub(axtp paramaxtp, ImageView paramImageView1, ImageView paramImageView2, ImageView paramImageView3) {}
   
-  public EGLContext a()
+  public void onClick(View paramView)
   {
-    wxe.d("FlowEdit_EditorEGLContextFactory", "getEGLContext, %s", new Object[] { this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext });
-    return this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext;
-  }
-  
-  public EGLContext createContext(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLConfig paramEGLConfig)
-  {
-    int i = jdField_a_of_type_Int;
-    this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext = paramEGL10.eglCreateContext(paramEGLDisplay, paramEGLConfig, EGL10.EGL_NO_CONTEXT, new int[] { i, 2, 12344 });
-    wxe.d("FlowEdit_EditorEGLContextFactory", "createContext %s", new Object[] { this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext });
-    return this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext;
-  }
-  
-  public void destroyContext(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLContext paramEGLContext)
-  {
-    if (!paramEGL10.eglDestroyContext(paramEGLDisplay, this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext)) {
-      wxe.e("FlowEdit_EditorEGLContextFactory", "EditorEGLContextDisplay, display: " + paramEGLDisplay + " context: " + paramEGLContext);
+    if (paramView == this.jdField_a_of_type_AndroidWidgetImageView)
+    {
+      axtp.a(this.jdField_a_of_type_Axtp, 1);
+      new bcsy(this.jdField_a_of_type_Axtp.a.app).a("dc00899").b("grp_lbs").c("data_card").d("clk_face_dislike").e(this.jdField_a_of_type_Axtp.a.a.a).a();
     }
-    wxe.d("FlowEdit_EditorEGLContextFactory", "destroyContext, %s", new Object[] { this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext });
-    this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext = null;
+    for (;;)
+    {
+      axtp.b(this.jdField_a_of_type_Axtp);
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      if (paramView == this.b)
+      {
+        axtp.a(this.jdField_a_of_type_Axtp, 2);
+        new bcsy(this.jdField_a_of_type_Axtp.a.app).a("dc00899").b("grp_lbs").c("data_card").d("clk_face_superlike").e(this.jdField_a_of_type_Axtp.a.a.a).a();
+      }
+      else if (paramView == this.c)
+      {
+        axtp.a(this.jdField_a_of_type_Axtp, 3);
+        new bcsy(this.jdField_a_of_type_Axtp.a.app).a("dc00899").b("grp_lbs").c("data_card").d("clk_face_like").e(this.jdField_a_of_type_Axtp.a.a.a).a();
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     axub
  * JD-Core Version:    0.7.0.1
  */

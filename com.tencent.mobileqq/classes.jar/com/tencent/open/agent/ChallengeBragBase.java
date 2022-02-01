@@ -1,23 +1,27 @@
 package com.tencent.open.agent;
 
+import Override;
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.os.SystemClock;
 import android.text.TextUtils;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.EditText;
 import android.widget.TextView;
-import bfdt;
-import bfdu;
-import bflp;
-import bfmk;
-import bfmt;
-import bfri;
+import bikx;
+import biky;
+import bisy;
+import bitt;
+import biuc;
+import biyo;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.util.Iterator;
 import java.util.Set;
 
@@ -48,7 +52,7 @@ public abstract class ChallengeBragBase
   
   protected void a(String paramString)
   {
-    this.jdField_a_of_type_AndroidAppProgressDialog = ProgressDialog.show(this, "", super.getResources().getString(2131690979), true);
+    this.jdField_a_of_type_AndroidAppProgressDialog = ProgressDialog.show(this, "", super.getResources().getString(2131690821), true);
     this.jdField_a_of_type_AndroidAppProgressDialog.setCancelable(true);
     Bundle localBundle = new Bundle();
     localBundle.putString("appid", this.jdField_c_of_type_JavaLangString);
@@ -70,7 +74,7 @@ public abstract class ChallengeBragBase
       }
       localBundle.putString("appid_for_getting_config", this.jdField_c_of_type_JavaLangString);
     } while (this.n == null);
-    new bfmk(this.n, "GET", new bfdt(this)).a(localBundle);
+    new bitt(this.n, "GET", new bikx(this)).a(localBundle);
   }
   
   protected boolean a()
@@ -104,7 +108,7 @@ public abstract class ChallengeBragBase
     }
     catch (Exception localException)
     {
-      bflp.c("qqBaseActivity", "initParams exception." + localException.getMessage(), localException);
+      bisy.c("qqBaseActivity", "initParams exception." + localException.getMessage(), localException);
       c();
       return false;
     }
@@ -114,8 +118,8 @@ public abstract class ChallengeBragBase
     if (this.jdField_a_of_type_AndroidOsBundle.containsKey("source")) {
       this.k = this.jdField_a_of_type_AndroidOsBundle.getString("source");
     }
-    this.n = bfri.a().a("http://fusion.qq.com/cgi-bin/qzapps/mapp_getuserinfo.cgi");
-    this.o = bfri.a().a("http://appic.qq.com/cgi-bin/appstage/mapp_sendbragging.cgi");
+    this.n = biyo.a().a("https://fusion.qq.com/cgi-bin/qzapps/mapp_getuserinfo.cgi");
+    this.o = biyo.a().a("https://appic.qq.com/cgi-bin/appstage/mapp_sendbragging.cgi");
     return true;
   }
   
@@ -123,8 +127,8 @@ public abstract class ChallengeBragBase
   {
     Intent localIntent = new Intent();
     localIntent.putExtra("key_error_code", -5);
-    localIntent.putExtra("key_error_msg", bfmt.jdField_c_of_type_JavaLangString);
-    bflp.e("qqBaseActivity", "initParams:error code:-5; error msg:" + bfmt.jdField_c_of_type_JavaLangString);
+    localIntent.putExtra("key_error_msg", biuc.jdField_c_of_type_JavaLangString);
+    bisy.e("qqBaseActivity", "initParams:error code:-5; error msg:" + biuc.jdField_c_of_type_JavaLangString);
     if (this.jdField_a_of_type_AndroidOsBundle != null)
     {
       StringBuilder localStringBuilder = new StringBuilder();
@@ -134,7 +138,7 @@ public abstract class ChallengeBragBase
         String str = (String)localIterator.next();
         localStringBuilder.append(str + ": " + this.jdField_a_of_type_AndroidOsBundle.get(str).toString() + " ");
       }
-      bflp.e("qqBaseActivity", "params=" + localStringBuilder.toString());
+      bisy.e("qqBaseActivity", "params=" + localStringBuilder.toString());
     }
     super.setResult(-1, localIntent);
     super.finish();
@@ -147,6 +151,14 @@ public abstract class ChallengeBragBase
     }
   }
   
+  @Override
+  public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
+  {
+    boolean bool = super.dispatchTouchEvent(paramMotionEvent);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool);
+    return bool;
+  }
+  
   public void doOnResume()
   {
     super.doOnResume();
@@ -157,52 +169,63 @@ public abstract class ChallengeBragBase
   
   public void onClick(View paramView)
   {
+    Bundle localBundle;
+    int i1;
     if (paramView == this.b)
     {
-      paramView = new Bundle();
-      paramView.putString("appid", this.jdField_c_of_type_JavaLangString);
-      paramView.putString("hopenid", this.d);
-      paramView.putString("keystr", this.e);
-      paramView.putString("keytype", this.f);
-      paramView.putString("encrytoken", this.m);
-      paramView.putString("platform", this.g);
-      paramView.putString("sendmsg", this.jdField_a_of_type_AndroidWidgetEditText.getText().toString());
-      paramView.putString("imgurl", this.j);
-      paramView.putString("receiver", this.h);
-      i1 = 2131690998;
-      if ("action_brag".equals(this.p)) {
-        paramView.putString("typeid", "52");
-      }
-    }
-    while (paramView != this.jdField_c_of_type_AndroidWidgetTextView)
-    {
-      int i1;
-      for (;;)
+      localBundle = new Bundle();
+      localBundle.putString("appid", this.jdField_c_of_type_JavaLangString);
+      localBundle.putString("hopenid", this.d);
+      localBundle.putString("keystr", this.e);
+      localBundle.putString("keytype", this.f);
+      localBundle.putString("encrytoken", this.m);
+      localBundle.putString("platform", this.g);
+      localBundle.putString("sendmsg", this.jdField_a_of_type_AndroidWidgetEditText.getText().toString());
+      localBundle.putString("imgurl", this.j);
+      localBundle.putString("receiver", this.h);
+      i1 = 2131690840;
+      if ("action_brag".equals(this.p))
       {
-        paramView.putString("appid_for_getting_config", this.jdField_c_of_type_JavaLangString);
+        localBundle.putString("typeid", "52");
+        localBundle.putString("appid_for_getting_config", this.jdField_c_of_type_JavaLangString);
         if (this.k != null) {
-          paramView.putString("app_custom", this.k);
+          localBundle.putString("app_custom", this.k);
         }
         if (this.l != null) {
-          paramView.putString("pf", this.l);
+          localBundle.putString("pf", this.l);
         }
         this.jdField_a_of_type_AndroidAppProgressDialog = ProgressDialog.show(this, "", super.getResources().getString(i1), true);
-        new bfmk(this.o, "POST", new bfdu(this)).a(paramView);
-        return;
-        if ("action_challenge".equals(this.p))
-        {
-          paramView.putString("typeid", "53");
-          i1 = 2131690999;
-        }
+        new bitt(this.o, "POST", new biky(this)).a(localBundle);
       }
     }
-    super.setResult(0);
-    super.finish();
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      if (!"action_challenge".equals(this.p)) {
+        break;
+      }
+      localBundle.putString("typeid", "53");
+      i1 = 2131690841;
+      break;
+      if (paramView == this.jdField_c_of_type_AndroidWidgetTextView)
+      {
+        super.setResult(0);
+        super.finish();
+      }
+    }
+  }
+  
+  @Override
+  public void onConfigurationChanged(Configuration paramConfiguration)
+  {
+    super.onConfigurationChanged(paramConfiguration);
+    EventCollector.getInstance().onActivityConfigurationChanged(this, paramConfiguration);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.open.agent.ChallengeBragBase
  * JD-Core Version:    0.7.0.1
  */

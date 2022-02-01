@@ -1,19 +1,14 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.fragment.HotChatFragment;
-import com.tencent.mobileqq.fragment.HotChatFragment.HotChatWebView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class asfm
-  extends BroadcastReceiver
+class asfm
+  implements DialogInterface.OnClickListener
 {
-  public asfm(HotChatFragment paramHotChatFragment) {}
+  asfm(asfl paramasfl) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((paramIntent != null) && ("com.tencent.mobileqq.refresh_hot_chat_list".equals(paramIntent.getAction())) && (this.a.a != null) && (this.a.a.mWebview != null)) {
-      this.a.a.refresh();
-    }
+    paramDialogInterface.dismiss();
   }
 }
 

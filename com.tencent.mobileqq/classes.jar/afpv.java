@@ -1,12 +1,22 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-
-class afpv
-  implements DialogInterface.OnClickListener
+public class afpv
 {
-  afpv(afps paramafps) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public int a;
+  public String a = "";
+  public int b;
+  public String b = "";
+  public String c = "";
+  public String d = "";
+  public String e = "";
+  public String f = "";
+  public String g = "";
+  public String h = "";
+  public String i = "";
+  public String j = "";
+  public String k = "";
+  public String l = "";
+  public String m = "";
+  public String n = "";
+  public String o = "";
 }
 
 

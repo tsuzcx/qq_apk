@@ -1,30 +1,47 @@
-import android.text.TextUtils;
-import android.view.KeyEvent;
-import android.view.View;
-import android.view.View.OnKeyListener;
-import android.widget.EditText;
-import com.tencent.mobileqq.troop.createNewTroop.NewTroopContactView;
+import com.tencent.TMG.utils.QLog;
+import java.util.List;
+import org.json.JSONException;
+import org.json.JSONObject;
+import pb.unify.search.UnifySearchCommon.ResultItem;
+import pb.unite.search.DynamicSearch.ResultItem;
 
 public class bbnu
-  implements View.OnKeyListener
+  extends bbnh
 {
-  public bbnu(NewTroopContactView paramNewTroopContactView) {}
+  public CharSequence a;
+  public String a;
+  public CharSequence b;
+  public boolean b;
   
-  public boolean onKey(View paramView, int paramInt, KeyEvent paramKeyEvent)
+  public bbnu(String paramString, long paramLong, List<String> paramList, UnifySearchCommon.ResultItem paramResultItem, int paramInt)
   {
-    if (paramInt == 67)
-    {
-      if (paramKeyEvent.getAction() != 0) {
-        break label35;
+    super(paramString, paramLong, paramList, paramResultItem, paramInt);
+  }
+  
+  public bbnu(String paramString, long paramLong, List<String> paramList, DynamicSearch.ResultItem paramResultItem, int paramInt)
+  {
+    super(paramString, paramLong, paramList, paramResultItem, paramInt);
+  }
+  
+  public void a(String paramString)
+  {
+    for (boolean bool = true;; bool = false) {
+      try
+      {
+        paramString = new JSONObject(paramString);
+        this.jdField_a_of_type_JavaLangCharSequence = bbup.a(paramString.optJSONArray("leftText"));
+        this.jdField_b_of_type_JavaLangCharSequence = bbup.a(paramString.optJSONArray("rightText"));
+        this.jdField_a_of_type_JavaLangString = paramString.optString("bgColor");
+        if (paramString.optInt("needCenter") == 1)
+        {
+          this.jdField_b_of_type_Boolean = bool;
+          return;
+        }
       }
-      this.a.jdField_a_of_type_Boolean = TextUtils.isEmpty(this.a.jdField_a_of_type_AndroidWidgetEditText.getText());
-    }
-    for (;;)
-    {
-      return false;
-      label35:
-      if ((paramKeyEvent.getAction() == 1) && (this.a.jdField_a_of_type_Boolean)) {
-        this.a.jdField_a_of_type_Bbnx.a();
+      catch (JSONException paramString)
+      {
+        while (!QLog.isColorLevel()) {}
+        QLog.d(c, 0, paramString.toString());
       }
     }
   }

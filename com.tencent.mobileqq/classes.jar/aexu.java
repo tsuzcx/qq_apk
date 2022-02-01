@@ -1,11 +1,12 @@
-import android.animation.Animator;
-import com.tencent.mobileqq.dinifly.LottieDrawable;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public abstract interface aexu
+class aexu
+  implements DialogInterface.OnClickListener
 {
-  public abstract void a(Animator paramAnimator, int paramInt);
+  aexu(aext paramaext) {}
   
-  public abstract void a(LottieDrawable paramLottieDrawable, int paramInt);
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

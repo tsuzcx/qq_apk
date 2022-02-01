@@ -1,22 +1,17 @@
-import com.tencent.mobileqq.data.MessageForShortVideo;
+import android.graphics.drawable.Drawable;
 
-class agao
-  implements bezx
+public class agao
 {
-  agao(agai paramagai, MessageForShortVideo paramMessageForShortVideo, long paramLong, boolean paramBoolean) {}
-  
-  public void a(int paramInt)
-  {
-    if (paramInt == 2)
-    {
-      this.jdField_a_of_type_Agai.b(this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo, this.jdField_a_of_type_Long, this.jdField_a_of_type_Boolean);
-      azdd.jdField_a_of_type_Boolean = true;
-    }
-    while ((paramInt != 3) && (paramInt != 1)) {
-      return;
-    }
-    azdd.jdField_a_of_type_Long = 0L;
-  }
+  public int a;
+  public Drawable a;
+  public String a;
+  public boolean a;
+  public int b;
+  public String b;
+  public boolean b;
+  public int c;
+  public String c;
+  public boolean c;
 }
 
 

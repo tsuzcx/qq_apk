@@ -1,41 +1,97 @@
-import android.support.annotation.NonNull;
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tribe.async.dispatch.QQUIEventReceiver;
-import java.util.Iterator;
-import java.util.List;
+import android.view.View;
+import android.view.ViewStub;
+import com.tencent.biz.qqcircle.widgets.QCircleDoublePraiseView;
+import com.tencent.biz.subscribe.baseUI.ExtraTypeInfo;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.widget.immersive.ImmersiveUtils;
+import feedcloud.FeedCloudMeta.StFeed;
+import feedcloud.FeedCloudMeta.StVideo;
 
-public final class vzw
-  extends QQUIEventReceiver<vzl, vcp>
+public class vzw
+  extends vzg
 {
-  public vzw(@NonNull vzl paramvzl)
-  {
-    super(paramvzl);
-  }
+  private float jdField_a_of_type_Float = 1.777778F;
+  private QCircleDoublePraiseView jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleDoublePraiseView;
+  private float jdField_b_of_type_Float = 0.75F;
+  private int jdField_b_of_type_Int = ImmersiveUtils.a();
   
-  public void a(@NonNull vzl paramvzl, @NonNull vcp paramvcp)
+  private void a(FeedCloudMeta.StFeed paramStFeed)
   {
-    if ((paramvcp.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess()) && (paramvcp.jdField_a_of_type_JavaUtilList != null) && (paramvzl.a != null))
+    if (paramStFeed.type.get() != 3) {
+      return;
+    }
+    int m = paramStFeed.video.width.get();
+    int n = paramStFeed.video.height.get();
+    int k = this.jdField_b_of_type_Int;
+    int j = this.jdField_b_of_type_Int;
+    int i = j;
+    float f;
+    if (m != 0)
     {
-      paramvcp = paramvcp.jdField_a_of_type_JavaUtilList.iterator();
-      while (paramvcp.hasNext())
+      i = j;
+      if (n != 0)
       {
-        uxd localuxd = (uxd)paramvcp.next();
-        if (TextUtils.equals(paramvzl.a.b, localuxd.a)) {
-          paramvzl.i();
+        f = m / n;
+        if (f < this.jdField_a_of_type_Float) {
+          break label129;
         }
+        i = (int)(k / this.jdField_a_of_type_Float);
+      }
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleDoublePraiseView.getLayoutParams().width = k;
+      this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleDoublePraiseView.getLayoutParams().height = i;
+      this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleDoublePraiseView.setLayoutParams(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleDoublePraiseView.getLayoutParams());
+      return;
+      label129:
+      if ((f > this.jdField_b_of_type_Float) && (f <= this.jdField_a_of_type_Float)) {
+        i = (int)(k / f);
+      } else {
+        i = (int)(k / this.jdField_b_of_type_Float);
       }
     }
   }
   
-  public Class acceptEventClass()
+  protected String a()
   {
-    return vcp.class;
+    return "QCircleFeedItemDoublePraisePresenter";
+  }
+  
+  public void a(ViewStub paramViewStub)
+  {
+    if (paramViewStub != null)
+    {
+      this.jdField_a_of_type_AndroidViewView = paramViewStub.inflate();
+      this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleDoublePraiseView = ((QCircleDoublePraiseView)this.jdField_a_of_type_AndroidViewView.findViewById(2131373138));
+    }
+  }
+  
+  public void a(Object paramObject, int paramInt)
+  {
+    this.jdField_a_of_type_JavaLangObject = paramObject;
+    this.jdField_a_of_type_Int = paramInt;
+    if ((this.jdField_a_of_type_JavaLangObject != null) && ((this.jdField_a_of_type_JavaLangObject instanceof FeedCloudMeta.StFeed)))
+    {
+      FeedCloudMeta.StFeed localStFeed = (FeedCloudMeta.StFeed)this.jdField_a_of_type_JavaLangObject;
+      this.jdField_a_of_type_ComTencentBizQqcircleReportReportExtraTypeInfo.mDataPosition = this.jdField_a_of_type_Int;
+      this.jdField_a_of_type_ComTencentBizQqcircleReportReportExtraTypeInfo.mFeed = ((FeedCloudMeta.StFeed)paramObject);
+      this.jdField_a_of_type_ComTencentBizQqcircleReportReportExtraTypeInfo.mPlayScene = 1;
+      if (this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleDoublePraiseView != null)
+      {
+        this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleDoublePraiseView.setFeed(localStFeed);
+        if (this.jdField_a_of_type_ComTencentBizSubscribeBaseUIExtraTypeInfo != null) {
+          this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleDoublePraiseView.setPageType(this.jdField_a_of_type_ComTencentBizSubscribeBaseUIExtraTypeInfo.pageType);
+        }
+        this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleDoublePraiseView.setReportBean(a());
+        a(localStFeed);
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     vzw
  * JD-Core Version:    0.7.0.1
  */

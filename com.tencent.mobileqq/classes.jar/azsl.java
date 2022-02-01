@@ -1,64 +1,37 @@
-import android.os.Bundle;
+import android.util.SparseArray;
+import kotlin.Metadata;
+import org.jetbrains.annotations.NotNull;
 
-class azsl
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/profilesetting/ProfileSettingConstants$Companion;", "", "()V", "ALL_NOT_VISIBLE_STATE", "", "ALL_VISIBLE_STATE", "CLOSE_SWITCH_STATE", "FIELD_PRIVACY_AGE", "FIELD_PRIVACY_BIRTHDAY", "FIELD_PRIVACY_COLLEGE", "FIELD_PRIVACY_COMPANY", "FIELD_PRIVACY_CONSTELLATION", "FIELD_PRIVACY_EMAIL", "FIELD_PRIVACY_HOMETOWN", "FIELD_PRIVACY_LOCATION", "FIELD_PRIVACY_PERSONAL_NOTE", "FIELD_PRIVACY_PROFESSION", "FIELD_PRIVACY_SEX", "INVALID_STATE", "INVALID_SWITCH_STATE", "ITEM_TYPE_BASE", "ITEM_TYPE_EMPTY", "ITEM_TYPE_OTHER", "ITEM_TYPE_OTHER_WITH_SECOND_LINE", "ITEM_TYPE_TITLE", "ONLY_FRIEND_VISIBLE_STATE", "OPEN_SWITCH_STATE", "PARAM_SWITCHES_CHANGED", "", "PROFILE_DISPLAY_FIELD_BASE_ITEMS", "", "getPROFILE_DISPLAY_FIELD_BASE_ITEMS", "()[[Ljava/lang/Integer;", "[[Ljava/lang/Integer;", "PROFILE_DISPLAY_FIELD_CONFIG_MAP", "Landroid/util/SparseArray;", "getPROFILE_DISPLAY_FIELD_CONFIG_MAP", "()Landroid/util/SparseArray;", "PROFILE_DISPLAY_FIELD_OTHER_ITEMS", "getPROFILE_DISPLAY_FIELD_OTHER_ITEMS", "PROFILE_DISPLAY_FIELD_OTHER_SPEC_DEFAULT_CLOSE_ITEMS", "getPROFILE_DISPLAY_FIELD_OTHER_SPEC_DEFAULT_CLOSE_ITEMS", "()[Ljava/lang/Integer;", "[Ljava/lang/Integer;", "REQUEST_CODE_SWITCHES", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class azsl
 {
-  protected boolean a;
-  protected String[][] a;
-  protected boolean b = true;
-  protected boolean c;
-  protected boolean d;
-  
-  public azsl(azsk paramazsk, String paramString)
+  @NotNull
+  public final SparseArray<Integer> a()
   {
-    this.jdField_a_of_type_Boolean = true;
-    paramazsk = paramString.split(";");
-    this.jdField_a_of_type_Array2dOfJavaLangString = new String[paramazsk.length][];
-    int i = 0;
-    while (i < paramazsk.length)
-    {
-      this.jdField_a_of_type_Array2dOfJavaLangString[i] = paramazsk[i].split(",");
-      i += 1;
-    }
+    return azsk.a();
   }
   
-  public void a() {}
-  
-  public void a(Bundle paramBundle) {}
-  
-  public void b()
+  @NotNull
+  public final Integer[] a()
   {
-    this.c = true;
-    if (!azsk.a(this.jdField_a_of_type_Azsk)) {
-      this.d = true;
-    }
+    return azsk.a();
   }
   
-  public void c()
+  @NotNull
+  public final Integer[][] a()
   {
-    this.c = false;
-    this.d = false;
+    return azsk.a();
   }
   
-  public void d() {}
-  
-  public void e()
+  @NotNull
+  public final Integer[][] b()
   {
-    this.b = false;
-  }
-  
-  public void f()
-  {
-    this.d = false;
-  }
-  
-  public void g()
-  {
-    this.jdField_a_of_type_Boolean = false;
+    return azsk.b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     azsl
  * JD-Core Version:    0.7.0.1
  */

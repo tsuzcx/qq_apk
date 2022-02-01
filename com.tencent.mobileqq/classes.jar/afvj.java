@@ -1,12 +1,17 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
 
-class afvj
-  implements DialogInterface.OnClickListener
+final class afvj
+  implements afvp
 {
-  afvj(afvg paramafvg) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public ProfileActivity.AllInOne a(QQAppInterface paramQQAppInterface, String paramString, SessionInfo paramSessionInfo, MessageRecord paramMessageRecord)
+  {
+    paramQQAppInterface = new ProfileActivity.AllInOne(paramString, 94);
+    paramQQAppInterface.h = paramSessionInfo.d;
+    return paramQQAppInterface;
+  }
 }
 
 

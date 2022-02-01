@@ -1,22 +1,87 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.activity.contact.troop.TroopView;
+import com.tencent.mobileqq.activity.contact.troop.TroopView.MyTroopObserver.1;
+import com.tencent.mobileqq.data.TroopInfo;
+import com.tencent.mobileqq.widget.PullRefreshHeader;
+import com.tencent.mobileqq.widget.SlideDetectListView;
+import java.util.ArrayList;
 
-class ajgf
-  implements View.OnClickListener
+public class ajgf
+  extends anxg
 {
-  ajgf(ajgb paramajgb) {}
+  public ajgf(TroopView paramTroopView) {}
   
-  public void onClick(View paramView)
+  protected void a(int paramInt1, int paramInt2, String paramString)
   {
-    paramView = akyn.a();
-    if (paramView != null)
-    {
-      paramView.a(ajgb.a(this.a));
-      paramView.a();
-      akyn.i();
+    if (paramInt1 == 6) {
+      if (paramInt2 == 0) {
+        this.a.j();
+      }
     }
-    azqs.a(ajgb.a(this.a).app, "dc00898", "", "", "0X8009EE3", "0X8009EE3", 10, 0, "", "", "", "");
+    do
+    {
+      do
+      {
+        return;
+        if (paramInt1 != 2) {
+          break;
+        }
+      } while (paramInt2 != 0);
+      this.a.j();
+      return;
+    } while ((paramInt1 != 9) || (paramInt2 != 0));
+    this.a.j();
+  }
+  
+  protected void a(boolean paramBoolean)
+  {
+    if (paramBoolean) {
+      TroopView.a(this.a);
+    }
+    if (this.a.c)
+    {
+      this.a.c = false;
+      if (!paramBoolean) {
+        break label79;
+      }
+      this.a.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader.a(0);
+      this.a.a(101, 800L);
+    }
+    for (;;)
+    {
+      this.a.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView.postDelayed(new TroopView.MyTroopObserver.1(this), 1200L);
+      return;
+      label79:
+      this.a.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView.springBackOverScrollHeaderView();
+      this.a.b(2131718227);
+    }
+  }
+  
+  protected void a(boolean paramBoolean, long paramLong, int paramInt, TroopInfo paramTroopInfo)
+  {
+    if (paramBoolean) {
+      this.a.j();
+    }
+  }
+  
+  protected void a(boolean paramBoolean, String paramString)
+  {
+    if (paramBoolean) {
+      this.a.j();
+    }
+  }
+  
+  protected void b(boolean paramBoolean)
+  {
+    if (paramBoolean) {
+      this.a.j();
+    }
+  }
+  
+  protected void b(boolean paramBoolean, ArrayList<TroopInfo> paramArrayList)
+  {
+    if (paramBoolean) {
+      this.a.j();
+    }
   }
 }
 

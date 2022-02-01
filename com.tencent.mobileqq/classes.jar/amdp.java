@@ -1,65 +1,45 @@
-import android.support.annotation.NonNull;
-import com.tencent.mobileqq.app.SingleThreadExecutor;
-import com.tencent.mobileqq.app.ThreadManagerV2;
-import java.util.List;
-import java.util.concurrent.AbstractExecutorService;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.TimeUnit;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Transformation;
 
-public class amdp
-  extends AbstractExecutorService
+class amdp
+  extends Animation
 {
-  private final int a;
+  amdp(amdl paramamdl, View paramView, int paramInt) {}
   
-  protected amdp(int paramInt)
+  protected void applyTransformation(float paramFloat, Transformation paramTransformation)
   {
-    this.a = paramInt;
+    paramFloat = (float)(paramFloat * (0.5D + Math.sqrt(paramFloat) / 2.0D));
+    this.jdField_a_of_type_AndroidViewView.getLayoutParams().width = (this.jdField_a_of_type_Int - (int)(this.jdField_a_of_type_Int * paramFloat));
+    this.jdField_a_of_type_AndroidViewView.requestLayout();
+    if (paramFloat <= 0.4F) {
+      this.jdField_a_of_type_AndroidViewView.setAlpha((0.4F - Math.min(paramFloat, 0.4F)) / 0.4F);
+    }
+    do
+    {
+      do
+      {
+        return;
+        if (paramFloat > 0.99F) {
+          break;
+        }
+      } while (this.jdField_a_of_type_AndroidViewView.getVisibility() == 4);
+      this.jdField_a_of_type_AndroidViewView.setVisibility(4);
+      this.jdField_a_of_type_AndroidViewView.setAlpha(0.0F);
+      return;
+    } while (this.jdField_a_of_type_AndroidViewView.getVisibility() == 8);
+    this.jdField_a_of_type_AndroidViewView.setVisibility(8);
+    this.jdField_a_of_type_AndroidViewView.setAlpha(0.0F);
   }
   
-  public static ExecutorService a(int paramInt)
+  public boolean willChangeBounds()
   {
-    return new amdp(paramInt);
-  }
-  
-  public static ExecutorService b(int paramInt)
-  {
-    return new SingleThreadExecutor(paramInt);
-  }
-  
-  public boolean awaitTermination(long paramLong, @NonNull TimeUnit paramTimeUnit)
-  {
-    return false;
-  }
-  
-  public void execute(@NonNull Runnable paramRunnable)
-  {
-    ThreadManagerV2.excute(paramRunnable, this.a, null, false);
-  }
-  
-  public boolean isShutdown()
-  {
-    return false;
-  }
-  
-  public boolean isTerminated()
-  {
-    return false;
-  }
-  
-  public void shutdown()
-  {
-    throw new UnsupportedOperationException();
-  }
-  
-  @NonNull
-  public List<Runnable> shutdownNow()
-  {
-    throw new UnsupportedOperationException();
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amdp
  * JD-Core Version:    0.7.0.1
  */

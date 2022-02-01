@@ -1,48 +1,28 @@
-import android.bluetooth.BluetoothAdapter;
-import android.bluetooth.BluetoothClass;
-import android.bluetooth.BluetoothDevice;
-import android.bluetooth.BluetoothHeadset;
-import android.bluetooth.BluetoothProfile;
-import android.bluetooth.BluetoothProfile.ServiceListener;
-import com.tencent.mobileqq.activity.aio.AudioPlayer;
-import java.util.List;
+import com.tencent.mobileqq.activity.MoveToGroupActivity;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class aepq
-  implements BluetoothProfile.ServiceListener
+  extends anmu
 {
-  public aepq(AudioPlayer paramAudioPlayer, String paramString, int paramInt, BluetoothAdapter paramBluetoothAdapter) {}
+  public aepq(MoveToGroupActivity paramMoveToGroupActivity) {}
   
-  public void onServiceConnected(int paramInt, BluetoothProfile paramBluetoothProfile)
+  protected void onUpdateMoveGroup(String paramString, byte paramByte1, byte paramByte2)
   {
-    Object localObject;
-    if (paramInt == 1)
-    {
-      paramBluetoothProfile = (BluetoothHeadset)paramBluetoothProfile;
-      localObject = paramBluetoothProfile.getConnectedDevices();
-      if ((localObject == null) || (((List)localObject).size() <= 0)) {
-        break label87;
-      }
-      localObject = (BluetoothDevice)((List)localObject).get(0);
-      if (localObject != null) {
-        break label76;
-      }
-      paramInt = 0;
-      AudioPlayer.a(paramInt);
+    if (this.a.isFinishing()) {
+      return;
+    }
+    MoveToGroupActivity.a(this.a);
+    if (paramString == null) {
+      QQToast.a(this.a, this.a.getString(2131693749), 0).b(this.a.getTitleBarHeight());
     }
     for (;;)
     {
-      AudioPlayer.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioAudioPlayer, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
-      this.jdField_a_of_type_AndroidBluetoothBluetoothAdapter.closeProfileProxy(1, paramBluetoothProfile);
+      MoveToGroupActivity.b(this.a);
+      this.a.removeObserver(MoveToGroupActivity.a(this.a));
       return;
-      label76:
-      paramInt = ((BluetoothDevice)localObject).getBluetoothClass().getDeviceClass();
-      break;
-      label87:
-      AudioPlayer.a(0);
+      QQToast.a(this.a, 2, this.a.getString(2131693751), 0).b(this.a.getTitleBarHeight());
     }
   }
-  
-  public void onServiceDisconnected(int paramInt) {}
 }
 
 

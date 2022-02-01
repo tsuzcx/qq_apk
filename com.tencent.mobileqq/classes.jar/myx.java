@@ -1,37 +1,50 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.PoiMapActivity;
-import com.tencent.biz.PoiMapActivity.TabView;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
 import com.tencent.qphone.base.util.QLog;
 
-public class myx
-  implements View.OnClickListener
+class myx
+  extends BroadcastReceiver
 {
-  public myx(PoiMapActivity paramPoiMapActivity) {}
+  myx(myw parammyw) {}
   
-  public void onClick(View paramView)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if ((paramView instanceof PoiMapActivity.TabView))
-    {
-      this.a.a(((PoiMapActivity.TabView)paramView).a);
-      this.a.i();
-      if (QLog.isDevelopLevel()) {
-        QLog.i("PoiMapActivity", 4, "mTabClickListener" + ((PoiMapActivity.TabView)paramView).a);
-      }
-      if (PoiMapActivity.a(this.a)) {
-        this.a.a("share_locate", "click_tab" + (((PoiMapActivity.TabView)paramView).a + 1), "", "", "", "");
-      }
+    boolean bool = true;
+    paramContext = paramIntent.getAction();
+    paramIntent = paramIntent.getStringExtra("process_name");
+    if (QLog.isColorLevel()) {
+      QLog.d("GlobalExitRoomManagement", 2, "onReceive action: " + paramContext + "  process_name:" + paramIntent);
     }
-    else
+    int i;
+    if ((paramIntent != null) && (paramIntent.contains("openSdk")))
+    {
+      i = 1;
+      if (!"mqq.intent.action.QQ_BACKGROUND".equals(paramContext)) {
+        break label94;
+      }
+      myw.a(this.a, false);
+    }
+    label94:
+    while (!"mqq.intent.action.QQ_FOREGROUND".equals(paramContext))
     {
       return;
+      i = 0;
+      break;
     }
-    this.a.a("share_locate", "click_tab" + (((PoiMapActivity.TabView)paramView).a + 1), this.a.f, this.a.e, "", "");
+    paramContext = this.a;
+    if (i == 0) {}
+    for (;;)
+    {
+      myw.a(paramContext, bool);
+      return;
+      bool = false;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     myx
  * JD-Core Version:    0.7.0.1
  */

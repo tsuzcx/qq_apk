@@ -1,16 +1,16 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import java.io.File;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.qphone.base.util.QLog;
 
-final class agjd
-  implements DialogInterface.OnClickListener
+public class agjd
+  implements ahqg
 {
-  agjd(Activity paramActivity, File paramFile1, File paramFile2, agjg paramagjg) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(QQAppInterface paramQQAppInterface, MessageRecord paramMessageRecord)
   {
-    agjb.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_JavaIoFile, this.b, this.jdField_a_of_type_Agjg);
+    if (QLog.isColorLevel()) {
+      QLog.d("ECommerceExposeBusiness", 2, "onMessageExpose");
+    }
+    agjc.a(paramQQAppInterface, paramMessageRecord, 1);
   }
 }
 

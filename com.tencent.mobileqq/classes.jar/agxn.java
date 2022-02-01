@@ -1,21 +1,17 @@
-import com.tencent.mobileqq.activity.aio.stickerbubble.StickerBubbleAnimationViewHolder.2.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import mqq.os.MqqHandler;
+import android.widget.BaseAdapter;
+import com.tencent.mobileqq.data.ChatMessage;
 
-public class agxn
-  implements agxk
+class agxn
+  extends ahbl
 {
-  agxn(agxl paramagxl) {}
-  
-  public void a()
+  agxn(agwz paramagwz)
   {
-    agxl.a(this.a, agxl.b(this.a));
-    ThreadManager.getUIHandler().post(new StickerBubbleAnimationViewHolder.2.1(this));
+    super(paramagwz, null);
   }
   
-  public void b()
+  protected afxi a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
   {
-    agxl.b(this.a, agxl.b(this.a));
+    return new ahlj(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
   }
 }
 

@@ -1,12 +1,19 @@
-public abstract interface ahvx
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+
+class ahvx
+  implements Animation.AnimationListener
 {
-  public abstract void a();
+  ahvx(ahvv paramahvv, ahvq paramahvq) {}
   
-  public abstract void a(int paramInt, boolean paramBoolean1, boolean paramBoolean2);
+  public void onAnimationEnd(Animation paramAnimation)
+  {
+    this.jdField_a_of_type_Ahvv.b();
+  }
   
-  public abstract void b();
+  public void onAnimationRepeat(Animation paramAnimation) {}
   
-  public abstract void d();
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

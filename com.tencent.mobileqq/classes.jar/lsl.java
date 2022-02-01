@@ -1,183 +1,82 @@
-import com.tencent.mobileqq.utils.AudioHelper;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.av.random.RandomWebProtocol;
+import java.util.Random;
+import org.json.JSONObject;
 
 public class lsl
+  extends lsk
 {
-  private static float jdField_a_of_type_Float = -1.0F;
-  private static int jdField_a_of_type_Int = -1;
-  private static int b = -1;
+  int c;
+  int d;
+  int e;
+  String f;
   
-  public static float a()
+  public lsl(RandomWebProtocol paramRandomWebProtocol, lsk paramlsk, String paramString, int paramInt1, int paramInt2, int paramInt3, String... paramVarArgs)
   {
-    if (jdField_a_of_type_Float != -1.0F) {
-      return jdField_a_of_type_Float;
+    super(paramRandomWebProtocol, paramlsk);
+    this.a = 1;
+    this.c = paramString;
+    this.d = paramInt1;
+    this.c = paramInt2;
+    this.e = paramInt3;
+    if ((this.e == 2) && (paramVarArgs != null) && (paramVarArgs.length == 1)) {
+      this.f = paramVarArgs[0];
     }
+    this.d = "[d] RequestDouble";
+  }
+  
+  String a()
+  {
+    JSONObject localJSONObject1 = new JSONObject();
+    Object localObject = localJSONObject1;
     for (;;)
     {
       try
       {
-        lrh locallrh = lrh.a();
-        if (locallrh == null) {
+        this.a = new JSONObject().put("peer_gender", this.c).put("session_type", this.d).put("reqtype", this.e);
+        localObject = localJSONObject1;
+        if (this.e == 2)
+        {
+          localObject = localJSONObject1;
+          if (this.f != null)
+          {
+            localObject = localJSONObject1;
+            this.a.put("uniqkey", this.f);
+            localObject = localJSONObject1;
+            JSONObject localJSONObject2 = new JSONObject(super.a());
+            localObject = localJSONObject1;
+            if (this.e != 1) {
+              break label178;
+            }
+            localObject = localJSONObject1;
+            i = this.b.a;
+            localObject = localJSONObject1;
+            localJSONObject1 = localJSONObject2.put("rand", i);
+            localObject = localJSONObject1;
+            return localJSONObject1.toString();
+          }
+        }
+        localObject = localJSONObject1;
+        if (this.e != 1) {
           continue;
         }
-        jdField_a_of_type_Float = locallrh.a();
-        if (QLog.isColorLevel()) {
-          QLog.w("LowlightAndDenoiseTools", 1, "getVideodenoiseRatio[" + jdField_a_of_type_Float + "]");
-        }
+        localObject = localJSONObject1;
+        this.b.a = new Random().nextInt();
+        continue;
+        localObject = localException;
       }
       catch (Exception localException)
       {
-        QLog.w("LowlightAndDenoiseTools", 1, "getVideoDenoiseRatio, Excpetion", localException);
-        jdField_a_of_type_Float = 15.0F;
-        continue;
+        localException.printStackTrace();
+        return ((JSONObject)localObject).toString();
       }
-      return jdField_a_of_type_Float;
-      jdField_a_of_type_Float = 15.0F;
-    }
-  }
-  
-  static boolean a()
-  {
-    return lsa.a(8, 1800000, -2147483648);
-  }
-  
-  public static boolean b()
-  {
-    if (AudioHelper.a(12) == 1)
-    {
-      AudioHelper.a(alud.a(2131706788));
-      return true;
-    }
-    if (AudioHelper.a(12) == 0)
-    {
-      AudioHelper.a(alud.a(2131706790));
-      return true;
-    }
-    if (jdField_a_of_type_Int == -1) {}
-    for (;;)
-    {
-      try
-      {
-        locallrh = lrh.a();
-        if (locallrh == null) {
-          continue;
-        }
-        if (!locallrh.a()) {
-          continue;
-        }
-        jdField_a_of_type_Int = 1;
-        i = 1;
-      }
-      catch (Exception localException)
-      {
-        lrh locallrh;
-        QLog.w("LowlightAndDenoiseTools", 1, "isSupportLowlight, Excpetion", localException);
-        jdField_a_of_type_Int = 0;
-        continue;
-        int i = 4;
-        jdField_a_of_type_Int = 0;
-        continue;
-        i = 5;
-        jdField_a_of_type_Int = 0;
-        continue;
-        i = 0;
-        continue;
-      }
-      if (jdField_a_of_type_Int == -1)
-      {
-        if (!mvh.b()) {
-          continue;
-        }
-        if (!a()) {
-          continue;
-        }
-        i = 3;
-        jdField_a_of_type_Int = 1;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.w("LowlightAndDenoiseTools", 1, "isSupportLowlight[" + jdField_a_of_type_Int + "], step[" + i + "]");
-      }
-      if (jdField_a_of_type_Int == 1) {
-        break;
-      }
-      return false;
-      if (!locallrh.b()) {
-        continue;
-      }
-      i = 2;
-      jdField_a_of_type_Int = 0;
-    }
-  }
-  
-  public static boolean c()
-  {
-    if (AudioHelper.a(12) == 1)
-    {
-      AudioHelper.a(alud.a(2131706787));
-      return true;
-    }
-    if (AudioHelper.a(12) == 0)
-    {
-      AudioHelper.a(alud.a(2131706789));
-      return true;
-    }
-    if (b == -1) {}
-    try
-    {
-      locallrh = lrh.a();
-      if (locallrh == null) {
-        break label187;
-      }
-      if (!locallrh.c()) {
-        break label145;
-      }
-      b = 1;
-      jdField_a_of_type_Float = 25.0F;
-      i = 1;
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        lrh locallrh;
-        label70:
-        QLog.w("LowlightAndDenoiseTools", 1, "isSupportVideoDenoiseFlag, Excpetion", localException);
-        b = 0;
-        continue;
-        int i = 0;
-      }
-    }
-    if (b == -1)
-    {
-      if (!a()) {
-        break label161;
-      }
-      b = 1;
-    }
-    for (i = 3;; i = 4)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.w("LowlightAndDenoiseTools", 1, "isSupportVideoDenoiseFlag[" + b + "], step[" + i + "]");
-      }
-      if (b == 1) {
-        break;
-      }
-      return false;
-      label145:
-      if (!locallrh.d()) {
-        break label187;
-      }
-      b = 0;
-      i = 2;
-      break label70;
-      label161:
-      b = 0;
+      label178:
+      int i = new Random().nextInt();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     lsl
  * JD-Core Version:    0.7.0.1
  */

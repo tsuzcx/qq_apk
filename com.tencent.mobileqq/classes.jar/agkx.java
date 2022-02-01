@@ -1,16 +1,36 @@
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.OnScrollListener;
-import com.tencent.mobileqq.activity.aio.photo.PhotoListPanel;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.helper.AVGameHelper.1.1;
+import com.tencent.mobileqq.activity.aio.helper.AVGameHelper.1.2;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import mqq.os.MqqHandler;
 
 public class agkx
-  extends RecyclerView.OnScrollListener
+  extends mwq
 {
-  public agkx(PhotoListPanel paramPhotoListPanel) {}
+  agkx(agkw paramagkw) {}
   
-  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
+  public void a(int paramInt, String paramString1, String paramString2)
   {
-    super.onScrollStateChanged(paramRecyclerView, paramInt);
-    this.a.l = paramInt;
+    if ((paramString1 != null) && (agkw.a(this.a).a.equals(paramString1)))
+    {
+      paramString1 = (mwd)agkw.a(this.a).getManager(373);
+      if (paramString1 != null) {
+        paramString1.a(agkw.a(this.a).a, 0);
+      }
+    }
+  }
+  
+  public void a(int paramInt, String paramString, mwr parammwr)
+  {
+    ThreadManager.getUIHandler().post(new AVGameHelper.1.1(this, parammwr));
+  }
+  
+  public void b(int paramInt, String paramString1, String paramString2)
+  {
+    if ((paramString2 != null) && (agkw.a(this.a).a.equals(paramString2)) && (agkw.a(this.a) != null)) {
+      ThreadManager.getUIHandler().post(new AVGameHelper.1.2(this, paramInt));
+    }
   }
 }
 

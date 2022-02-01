@@ -1,5 +1,6 @@
 package com.tencent.mobileqq.mini.appbrand;
 
+import NS_COMM.COMM.StCommonExt;
 import android.app.Activity;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
@@ -7,8 +8,8 @@ import android.os.Handler;
 import android.text.TextUtils;
 import android.util.DisplayMetrics;
 import android.view.View;
-import bdgk;
-import bety;
+import bgln;
+import biau;
 import com.tencent.mobileqq.app.ThreadManagerV2;
 import com.tencent.mobileqq.mini.MiniAppInterface;
 import com.tencent.mobileqq.mini.apkg.ApkgInfo;
@@ -39,7 +40,7 @@ public abstract class BaseAppBrandRuntime
   public MiniAppInterface appInterface;
   public boolean isGettingScreenShot;
   public List<IJsPlugin> pluginList;
-  private bety shareScreenshotProgressDialog;
+  private biau shareScreenshotProgressDialog;
   
   public boolean canLaunchApp()
   {
@@ -55,7 +56,7 @@ public abstract class BaseAppBrandRuntime
       localObject = this.activity.getResources().getDisplayMetrics();
       j = ((DisplayMetrics)localObject).widthPixels;
     }
-    for (int i = (int)(((DisplayMetrics)localObject).widthPixels * 0.8D);; i = (int)(bdgk.l() * 0.8D))
+    for (int i = (int)(((DisplayMetrics)localObject).widthPixels * 0.8D);; i = (int)(bgln.l() * 0.8D))
     {
       paramBitmap = ImageUtil.cutOutImg(Bitmap.createBitmap(paramBitmap), j, i);
       localObject = ImageUtil.compressImage(paramBitmap, 1044480);
@@ -68,7 +69,7 @@ public abstract class BaseAppBrandRuntime
         break;
       }
       return localFile.getAbsolutePath();
-      j = (int)bdgk.k();
+      j = (int)bgln.k();
     }
     return null;
   }
@@ -143,7 +144,7 @@ public abstract class BaseAppBrandRuntime
     ThreadManagerV2.getUIHandlerV2().post(new BaseAppBrandRuntime.1(this));
   }
   
-  public void startShare(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, EntryModel paramEntryModel, ShareChatModel paramShareChatModel, int paramInt1, int paramInt2, String paramString7, MiniProgramShareUtils.OnShareListener paramOnShareListener)
+  public void startShare(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, EntryModel paramEntryModel, ShareChatModel paramShareChatModel, int paramInt1, int paramInt2, String paramString7, int paramInt3, COMM.StCommonExt paramStCommonExt, MiniProgramShareUtils.OnShareListener paramOnShareListener)
   {
     if (QLog.isColorLevel()) {
       QLog.d("AppBrandRuntime", 4, "startShare. content=" + paramString1 + ",sharePicPath=" + paramString2 + ",entryPath=" + paramString3);
@@ -191,7 +192,7 @@ public abstract class BaseAppBrandRuntime
       }
       for (;;)
       {
-        MiniProgramShareUtils.shareAsArkMessage(this.activity, new MiniArkShareModelBuilder().setAppId(this.appId).setTitle(paramString3.apkgName).setDescription(paramString1).setShareScene(1).setShareTemplateType(1).setShareBusinessType(paramString3.appConfig.config.getReportType()).setPicUrl(paramString2).setVidUrl(null).setJumpUrl(str2).setIconUrl(paramString3.iconUrl).setVersionType(paramString3.appConfig.config.verType).setVersionId(paramString3.appConfig.config.versionId).setWebURL(paramString4).setTemplateId(paramString5).setTemplateData(paramString6).setEntryModel(paramEntryModel).setShareChatModel(paramShareChatModel).setShareTarget(paramInt2).setRcvOpenId(paramString7).createMiniArkShareModel(), bool1, paramInt1, paramOnShareListener);
+        MiniProgramShareUtils.shareAsArkMessage(this.activity, new MiniArkShareModelBuilder().setAppId(this.appId).setTitle(paramString3.apkgName).setDescription(paramString1).setShareScene(paramInt3).setShareTemplateType(1).setShareBusinessType(paramString3.appConfig.config.getReportType()).setPicUrl(paramString2).setVidUrl(null).setJumpUrl(str2).setIconUrl(paramString3.iconUrl).setVersionType(paramString3.appConfig.config.verType).setVersionId(paramString3.appConfig.config.versionId).setWebURL(paramString4).setTemplateId(paramString5).setTemplateData(paramString6).setEntryModel(paramEntryModel).setShareChatModel(paramShareChatModel).setShareTarget(paramInt2).setRcvOpenId(paramString7).createMiniArkShareModel(), bool1, paramInt1, paramStCommonExt, paramOnShareListener);
         return;
         bool1 = bool2;
         if (isMiniGameRuntime())
@@ -205,10 +206,20 @@ public abstract class BaseAppBrandRuntime
     }
     QLog.e("BaseAppBrandRuntime", 2, "startShare perform share failed");
   }
+  
+  public void startShare(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, EntryModel paramEntryModel, ShareChatModel paramShareChatModel, int paramInt1, int paramInt2, String paramString7, int paramInt3, MiniProgramShareUtils.OnShareListener paramOnShareListener)
+  {
+    startShare(paramString1, paramString2, paramString3, paramString4, paramString5, paramString6, paramEntryModel, paramShareChatModel, paramInt1, paramInt2, paramString7, paramInt3, null, paramOnShareListener);
+  }
+  
+  public void startShare(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, EntryModel paramEntryModel, ShareChatModel paramShareChatModel, int paramInt1, int paramInt2, String paramString7, MiniProgramShareUtils.OnShareListener paramOnShareListener)
+  {
+    startShare(paramString1, paramString2, paramString3, paramString4, paramString5, paramString6, paramEntryModel, paramShareChatModel, paramInt1, paramInt2, paramString7, 1, paramOnShareListener);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.appbrand.BaseAppBrandRuntime
  * JD-Core Version:    0.7.0.1
  */

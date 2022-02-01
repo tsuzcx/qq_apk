@@ -1,24 +1,36 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.richmedia.capture.data.SegmentKeeper;
-import dov.com.qq.im.capture.view.VideoSegmentPickerProviderView;
-import java.lang.ref.WeakReference;
+import android.annotation.TargetApi;
+import android.os.Handler;
+import android.os.Message;
+import android.widget.ImageView;
+import cooperation.qzone.panorama.widget.PanoramaGuideAnimate;
 
 public class bmca
-  implements View.OnClickListener
+  extends Handler
 {
-  public bmca(VideoSegmentPickerProviderView paramVideoSegmentPickerProviderView) {}
+  public bmca(PanoramaGuideAnimate paramPanoramaGuideAnimate) {}
   
-  public void onClick(View paramView)
+  @TargetApi(11)
+  public void handleMessage(Message paramMessage)
   {
-    VideoSegmentPickerProviderView.a(this.a).a.clearSegments();
-    if (VideoSegmentPickerProviderView.a(this.a) != null)
+    super.handleMessage(paramMessage);
+    switch (paramMessage.what)
     {
-      paramView = (bmcb)VideoSegmentPickerProviderView.a(this.a).get();
-      if (paramView != null) {
-        paramView.a(0L, 0L);
-      }
     }
+    do
+    {
+      return;
+      PanoramaGuideAnimate.a(this.a).setRotationY(PanoramaGuideAnimate.a(this.a));
+      PanoramaGuideAnimate.a(this.a).setTranslationX(PanoramaGuideAnimate.b(this.a));
+      return;
+      if (PanoramaGuideAnimate.c(this.a) > 0.0F) {
+        break;
+      }
+    } while (PanoramaGuideAnimate.a(this.a) == null);
+    PanoramaGuideAnimate.a(this.a).a();
+    return;
+    PanoramaGuideAnimate.a(this.a, PanoramaGuideAnimate.c(this.a) - 0.05F);
+    this.a.setAlpha(PanoramaGuideAnimate.c(this.a));
+    PanoramaGuideAnimate.a(this.a).sendEmptyMessage(292);
   }
 }
 

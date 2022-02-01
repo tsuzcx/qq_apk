@@ -1,16 +1,18 @@
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.onlinestatus.location.OnlineStatusLocationFragment;
+import mqq.app.QQPermissionCallback;
+
 public class aysr
+  implements QQPermissionCallback
 {
-  public int a;
+  public aysr(OnlineStatusLocationFragment paramOnlineStatusLocationFragment, BaseActivity paramBaseActivity) {}
   
-  public aysr(int paramInt)
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    this.a = paramInt;
+    bglp.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 2131697626, 2131697628);
   }
   
-  public int a()
-  {
-    return this.a;
-  }
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt) {}
 }
 
 

@@ -1,51 +1,59 @@
-import android.content.Context;
+import SecurityAccountServer.RespondQueryQQBindingStat;
+import android.os.Handler;
+import android.text.TextUtils;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.data.search.SearchTypeDetailActivity;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.contactsync.ContactSyncManager;
+import com.tencent.mobileqq.contactsync.ContactSyncManager.1.1;
 import com.tencent.qphone.base.util.QLog;
-import java.util.List;
 
 public class arcz
-  implements arcy
+  extends aywi
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private String jdField_a_of_type_JavaLangString;
-  private List<Integer> jdField_a_of_type_JavaUtilList;
+  public arcz(ContactSyncManager paramContactSyncManager) {}
   
-  public arcz(QQAppInterface paramQQAppInterface, Context paramContext, String paramString, List<Integer> paramList)
+  protected void a(boolean paramBoolean1, boolean paramBoolean2)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_JavaUtilList = paramList;
+    awmz localawmz = (awmz)this.a.a.getManager(11);
+    int i = localawmz.d();
+    String str1 = this.a.a.getCurrentAccountUin();
+    String str2 = this.a.a();
+    if (QLog.isColorLevel()) {
+      QLog.d("ContactSync.Manager", 2, "onQueryBindState | state = " + i + " | syncUin = " + ContactSyncManager.b(str2) + " | currentUin = " + ContactSyncManager.b(str1));
+    }
+    if (localawmz.d()) {
+      if (TextUtils.isEmpty(str2)) {
+        ContactSyncManager.a(this.a).removeCallbacksAndMessages(null);
+      }
+    }
+    do
+    {
+      do
+      {
+        ContactSyncManager.a(this.a).sendEmptyMessage(1);
+        do
+        {
+          return;
+        } while (str1.equals(str2));
+        ContactSyncManager.a(this.a).removeCallbacksAndMessages(null);
+        ContactSyncManager.a(this.a).sendEmptyMessage(2);
+        ContactSyncManager.a(this.a).sendEmptyMessage(1);
+        return;
+      } while ((i != 5) && (i != 1) && ((i != 6) || (localawmz.a() == null) || (localawmz.a().lastUsedFlag != 3L)) && ((i != 7) || (localawmz.a() == null) || (!localawmz.a().isStopFindMatch)));
+      if ((i == 5) || (i == 1)) {
+        ThreadManager.excute(new ContactSyncManager.1.1(this), 16, null, false);
+      }
+    } while ((TextUtils.isEmpty(str2)) || (!str2.equals(this.a.a.getCurrentAccountUin())));
+    ContactSyncManager.a(this.a).removeCallbacksAndMessages(null);
+    ContactSyncManager.a(this.a).sendEmptyMessage(2);
   }
   
-  public void a(int paramInt)
+  protected void e(boolean paramBoolean, int paramInt)
   {
-    switch (paramInt)
-    {
-    default: 
-      QLog.i("QFileOfflineSearchTypeController", 4, "unknown search type.");
-      return;
-    case 3: 
-      azqs.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800A0B7", "0X800A0B7", 1, 0, "", "", "", "");
-      SearchTypeDetailActivity.a(this.jdField_a_of_type_AndroidContentContext, paramInt, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaUtilList);
-      return;
-    case 2: 
-      azqs.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800A0B7", "0X800A0B7", 2, 0, "", "", "", "");
-      SearchTypeDetailActivity.a(this.jdField_a_of_type_AndroidContentContext, paramInt, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaUtilList);
-      return;
-    case 0: 
-      azqs.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800A0B7", "0X800A0B7", 3, 0, "", "", "", "");
-      SearchTypeDetailActivity.a(this.jdField_a_of_type_AndroidContentContext, paramInt, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaUtilList);
-      return;
-    case 1: 
-      azqs.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800A0B7", "0X800A0B7", 4, 0, "", "", "", "");
-      SearchTypeDetailActivity.a(this.jdField_a_of_type_AndroidContentContext, paramInt, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaUtilList);
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("ContactSync.Manager", 2, "onQueryContactList | isSuccess = " + paramBoolean + " | updateFlag = " + paramInt);
     }
-    azqs.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800A0B7", "0X800A0B7", 5, 0, "", "", "", "");
-    SearchTypeDetailActivity.a(this.jdField_a_of_type_AndroidContentContext, paramInt, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaUtilList);
+    this.a.b(4);
   }
 }
 

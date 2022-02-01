@@ -1,11 +1,11 @@
 package com.tencent.biz.pubaccount;
 
-import nku;
+import ntm;
 
 public class AccountDetailActivity$9$1
   implements Runnable
 {
-  public AccountDetailActivity$9$1(nku paramnku) {}
+  public AccountDetailActivity$9$1(ntm paramntm) {}
   
   public void run()
   {

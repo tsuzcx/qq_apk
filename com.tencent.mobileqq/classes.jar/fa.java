@@ -1,156 +1,62 @@
-import android.annotation.TargetApi;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory.Options;
-import android.media.ExifInterface;
-import android.media.ThumbnailUtils;
-import com.tencent.image.JpegExifReader;
-import com.tencent.image.SafeBitmapFactory;
-import com.tencent.qphone.base.util.QLog;
+import android.widget.BaseAdapter;
+import java.util.HashMap;
+import java.util.Map;
 
-public class fa
+public abstract class fa
+  extends BaseAdapter
 {
-  public static int a(String paramString)
+  long jdField_a_of_type_Long = 0L;
+  private Map<Long, Long> jdField_a_of_type_JavaUtilMap = new HashMap();
+  
+  public abstract int a();
+  
+  public abstract long a(int paramInt);
+  
+  public boolean a(long paramLong)
   {
-    switch (JpegExifReader.readOrientation(paramString))
-    {
-    case 4: 
-    case 5: 
-    case 7: 
-    default: 
-      return 0;
-    case 6: 
-      return 90;
-    case 3: 
-      return 180;
-    }
-    return 270;
+    return this.jdField_a_of_type_JavaUtilMap.containsKey(Long.valueOf(paramLong));
   }
   
-  @TargetApi(8)
-  public static Bitmap a(String paramString, int paramInt1, int paramInt2)
-  {
-    int i = 1;
-    Object localObject = new BitmapFactory.Options();
-    ((BitmapFactory.Options)localObject).inJustDecodeBounds = true;
-    arsj.a(paramString, (BitmapFactory.Options)localObject);
-    ((BitmapFactory.Options)localObject).inJustDecodeBounds = false;
-    int j = ((BitmapFactory.Options)localObject).outHeight;
-    paramInt1 = ((BitmapFactory.Options)localObject).outWidth / paramInt1;
-    paramInt2 = j / paramInt2;
-    if (paramInt1 < paramInt2)
-    {
-      if (paramInt1 > 0) {
-        break label141;
-      }
-      paramInt1 = i;
-    }
-    label141:
-    for (;;)
-    {
-      ((BitmapFactory.Options)localObject).inSampleSize = paramInt1;
-      try
-      {
-        localObject = arsj.a(paramString, (BitmapFactory.Options)localObject);
-        return localObject;
-      }
-      catch (Exception localException)
-      {
-        QLog.d("wifiphoto", 2, "getImageThumbnail error imagePath is " + paramString);
-        return null;
-      }
-      catch (OutOfMemoryError localOutOfMemoryError)
-      {
-        QLog.d("wifiphoto", 2, "getImageThumbnail error(OOM)! imagePath is " + paramString);
-        return null;
-      }
-      paramInt1 = paramInt2;
-      break;
-    }
-  }
+  public abstract long b(int paramInt);
   
-  public static void a(String paramString, int paramInt)
+  public void b()
   {
-    for (;;)
+    this.jdField_a_of_type_Long = 0L;
+    this.jdField_a_of_type_JavaUtilMap.clear();
+    int j = a();
+    if (j > 0)
     {
-      try
+      int i = 0;
+      while (i < j)
       {
-        if (JpegExifReader.isCrashJpeg(paramString)) {
-          return;
-        }
-        ExifInterface localExifInterface = new ExifInterface(paramString);
-        switch (paramInt)
+        long l = a(i);
+        if (l > this.jdField_a_of_type_Long + 180L)
         {
-        case 90: 
-          paramString = Integer.toString(1);
-          localExifInterface.setAttribute("Orientation", paramString);
-          localExifInterface.saveAttributes();
-          return;
+          this.jdField_a_of_type_Long = l;
+          this.jdField_a_of_type_JavaUtilMap.put(Long.valueOf(b(i)), Long.valueOf(this.jdField_a_of_type_Long));
         }
+        i += 1;
       }
-      catch (Exception paramString)
-      {
-        paramString.printStackTrace();
-        return;
-      }
-      paramString = Integer.toString(6);
-      continue;
-      paramString = Integer.toString(3);
-      continue;
-      paramString = Integer.toString(8);
     }
   }
   
-  @TargetApi(8)
-  public static Bitmap b(String paramString, int paramInt1, int paramInt2)
+  public void c()
   {
-    int j = 1;
-    Object localObject = new BitmapFactory.Options();
-    ((BitmapFactory.Options)localObject).inJustDecodeBounds = true;
-    SafeBitmapFactory.decodeFile(paramString, (BitmapFactory.Options)localObject);
-    ((BitmapFactory.Options)localObject).inJustDecodeBounds = false;
-    int k = ((BitmapFactory.Options)localObject).outHeight;
-    int i = ((BitmapFactory.Options)localObject).outWidth / paramInt1;
-    k /= paramInt2;
-    if (i < k)
+    int i = a();
+    if (i == 0) {}
+    long l;
+    do
     {
-      if (i > 0) {
-        break label152;
-      }
-      i = j;
-    }
-    label152:
-    for (;;)
-    {
-      ((BitmapFactory.Options)localObject).inSampleSize = i;
-      try
-      {
-        localObject = SafeBitmapFactory.decodeFile(paramString, (BitmapFactory.Options)localObject);
-        return ThumbnailUtils.extractThumbnail((Bitmap)localObject, paramInt1, paramInt2, 2);
-      }
-      catch (Exception localException)
-      {
-        QLog.d("wifiphoto", 2, "getImageThumbnailForSize error imagePath is " + paramString);
-        return null;
-      }
-      catch (OutOfMemoryError localOutOfMemoryError)
-      {
-        QLog.d("wifiphoto", 2, "getImageThumbnailForSize error(OOM)! imagePath is " + paramString);
-        return null;
-      }
-      i = k;
-      break;
-    }
-  }
-  
-  @TargetApi(8)
-  public static Bitmap c(String paramString, int paramInt1, int paramInt2)
-  {
-    return ThumbnailUtils.createVideoThumbnail(paramString, 3);
+      return;
+      l = a(i - 1);
+    } while (l <= this.jdField_a_of_type_Long + 180L);
+    this.jdField_a_of_type_Long = l;
+    this.jdField_a_of_type_JavaUtilMap.put(Long.valueOf(b(i - 1)), Long.valueOf(this.jdField_a_of_type_Long));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     fa
  * JD-Core Version:    0.7.0.1
  */

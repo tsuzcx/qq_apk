@@ -1,28 +1,34 @@
-import android.os.Bundle;
-import android.view.ViewGroup;
-import com.tencent.biz.pubaccount.serviceAccountFolder.fragment.FolderFollowTabFragment;
-import com.tencent.biz.subscribe.baseUI.BaseWidgetView;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoySearchTipsContainer;
 
 public class sst
-  extends yiu
+  extends Handler
 {
-  public sst(FolderFollowTabFragment paramFolderFollowTabFragment, Bundle paramBundle)
+  public sst(ReadInJoySearchTipsContainer paramReadInJoySearchTipsContainer, Looper paramLooper)
   {
-    super(paramBundle);
+    super(paramLooper);
   }
   
-  protected BaseWidgetView a(ViewGroup paramViewGroup, yhy paramyhy)
+  public void handleMessage(Message paramMessage)
   {
-    return FolderFollowTabFragment.a(this.a);
+    super.handleMessage(paramMessage);
+    if (this.a.a != null)
+    {
+      if (paramMessage.obj != null) {
+        this.a.a.a((String)paramMessage.obj);
+      }
+    }
+    else {
+      return;
+    }
+    this.a.a.a(null);
   }
-  
-  public void loadData(yii paramyii) {}
-  
-  public void onPrepareParams(Bundle paramBundle) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     sst
  * JD-Core Version:    0.7.0.1
  */

@@ -1,44 +1,67 @@
-import android.view.View;
+import android.content.Context;
+import android.net.Uri;
+import android.view.Surface;
+import java.util.Map;
 
-public class xrt
-  extends xrx
+public abstract interface xrt
 {
-  public int a;
+  public abstract int a();
   
-  public xrt(xsc paramxsc, View paramView, int paramInt)
-  {
-    super(paramxsc, paramView);
-    this.a = paramInt;
-  }
+  public abstract void a(float paramFloat1, float paramFloat2);
   
-  public int a()
-  {
-    wxe.e("NullOptionElement", "getOptionIndex() on %d", new Object[] { Integer.valueOf(this.a) });
-    return this.a;
-  }
+  public abstract void a(int paramInt);
   
-  public CharSequence a()
-  {
-    wxe.e("NullOptionElement", "getText() on %d", new Object[] { Integer.valueOf(this.a) });
-    return "";
-  }
+  public abstract void a(Context paramContext, Uri paramUri, Map<String, String> paramMap);
   
-  public void a(CharSequence paramCharSequence)
-  {
-    wxe.e("NullOptionElement", "setText() on %d", new Object[] { Integer.valueOf(this.a) });
-  }
+  public abstract void a(Surface paramSurface);
   
-  public void a(boolean paramBoolean) {}
+  public abstract void a(xru paramxru);
   
-  public CharSequence b()
-  {
-    wxe.e("NullOptionElement", "getHint() on %d", new Object[] { Integer.valueOf(this.a) });
-    return "";
-  }
+  public abstract void a(xrv paramxrv);
+  
+  public abstract void a(xrw paramxrw);
+  
+  public abstract void a(xrx paramxrx);
+  
+  public abstract void a(xry paramxry);
+  
+  public abstract void a(xrz paramxrz);
+  
+  public abstract void a(xsb paramxsb);
+  
+  public abstract void a(boolean paramBoolean);
+  
+  public abstract boolean a();
+  
+  public abstract int b();
+  
+  public abstract void b();
+  
+  public abstract void b(int paramInt);
+  
+  public abstract void b(boolean paramBoolean);
+  
+  public abstract int c();
+  
+  public abstract void c();
+  
+  public abstract void c(int paramInt);
+  
+  public abstract int d();
+  
+  public abstract void d();
+  
+  public abstract int e();
+  
+  public abstract void e();
+  
+  public abstract void f();
+  
+  public abstract void g();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     xrt
  * JD-Core Version:    0.7.0.1
  */

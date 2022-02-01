@@ -1,29 +1,21 @@
-import android.support.annotation.NonNull;
-
 public class wqi
-  extends umf<wpr, veb>
 {
-  public wqi(wpr paramwpr)
-  {
-    super(paramwpr);
-  }
-  
-  public void a(@NonNull wpr paramwpr, @NonNull veb paramveb)
-  {
-    wxe.a("Q.qqstory.home.data.HomeFeedPresenter", "upload status change event:%s", paramveb);
-    wpr.a(paramwpr, paramveb.a);
-  }
-  
-  public Class acceptEventClass()
-  {
-    return veb.class;
-  }
-  
-  public void b(@NonNull wpr paramwpr, @NonNull veb paramveb) {}
+  @zkv(a="align")
+  public int a;
+  @zkv(a="image")
+  public String a;
+  @zkv(a="picture_margin")
+  public int[] a;
+  @zkv(a="picture_width")
+  public int b;
+  @zkv(a="picture_height")
+  public int c;
+  @zkv(a="standard_width")
+  public int d;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     wqi
  * JD-Core Version:    0.7.0.1
  */

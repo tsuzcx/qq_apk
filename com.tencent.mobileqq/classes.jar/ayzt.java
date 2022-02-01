@@ -1,13 +1,9 @@
-public class ayzt
+public final class ayzt
+  extends ayzn
 {
-  public int a;
-  public String a;
-  
-  public String toString()
+  protected int a()
   {
-    StringBuilder localStringBuilder = new StringBuilder("-----MessageDecContent----");
-    localStringBuilder.append("msgType:").append(this.jdField_a_of_type_Int).append(" content:").append(bdeu.a(this.jdField_a_of_type_JavaLangString));
-    return localStringBuilder.toString();
+    return 516;
   }
 }
 

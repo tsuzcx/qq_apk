@@ -1,110 +1,87 @@
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.CheckBox;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.activity.selectmember.RecentMemberInnerFrame;
-import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
-import com.tencent.mobileqq.data.Friends;
-import com.tencent.mobileqq.data.RecentUser;
-import java.util.ArrayList;
-import java.util.List;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 public class ajzu
-  extends akis
 {
-  public ajzu(RecentMemberInnerFrame paramRecentMemberInnerFrame)
+  public Map<Integer, Boolean> a;
+  public boolean a;
+  
+  public ajzu()
   {
-    super(paramRecentMemberInnerFrame.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity, paramRecentMemberInnerFrame.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, RecentMemberInnerFrame.a(paramRecentMemberInnerFrame), 1, true);
+    this.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_JavaUtilMap = new HashMap();
   }
   
-  public int getCount()
+  public static ajzu a(aqlg[] paramArrayOfaqlg)
   {
-    if (RecentMemberInnerFrame.a(this.a) == null) {
-      return 0;
+    if (QLog.isColorLevel()) {
+      QLog.d("mini_msg_config", 2, "parse.configData : " + paramArrayOfaqlg[0].a);
     }
-    return RecentMemberInnerFrame.a(this.a).size();
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    if ((paramInt >= 0) && (paramInt < RecentMemberInnerFrame.a(this.a).size())) {
-      return RecentMemberInnerFrame.a(this.a).get(paramInt);
-    }
-    return null;
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return 0L;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    Object localObject;
-    if ((paramView != null) && (paramView.getTag() != null))
+    localajzu = new ajzu();
+    try
     {
-      localObject = (ajzv)paramView.getTag();
-      paramViewGroup = paramView;
-      paramView = (View)localObject;
-    }
-    RecentUser localRecentUser;
-    for (;;)
-    {
-      localRecentUser = (RecentUser)getItem(paramInt);
-      if (localRecentUser != null) {
+      paramArrayOfaqlg = new JSONObject(paramArrayOfaqlg[0].a);
+      int i;
+      label93:
+      int k;
+      if (paramArrayOfaqlg.optInt("allSwitch") == 1)
+      {
+        bool = true;
+        localajzu.jdField_a_of_type_Boolean = bool;
+        paramArrayOfaqlg = paramArrayOfaqlg.optJSONArray("business");
+        int j = paramArrayOfaqlg.length();
+        i = 0;
+        if (i >= j) {
+          break label174;
+        }
+        JSONObject localJSONObject = (JSONObject)paramArrayOfaqlg.get(i);
+        k = localJSONObject.optInt("id");
+        if (localJSONObject.optInt("switch") != 1) {
+          break label163;
+        }
+      }
+      label163:
+      for (boolean bool = true;; bool = false)
+      {
+        localajzu.jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(k), Boolean.valueOf(bool));
+        i += 1;
+        break label93;
+        bool = false;
         break;
       }
-      return paramViewGroup;
-      paramView = new ajzv(this.a, null);
-      paramViewGroup = this.a.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.getLayoutInflater().inflate(2131562629, paramViewGroup, false);
-      paramView.jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)paramViewGroup.findViewById(2131364256));
-      paramView.c = ((ImageView)paramViewGroup.findViewById(2131367819));
-      paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramViewGroup.findViewById(2131370977));
-      paramViewGroup.setTag(paramView);
+      return localajzu;
     }
-    if (this.a.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.b(localRecentUser.uin))
+    catch (Exception paramArrayOfaqlg)
     {
-      paramView.jdField_a_of_type_AndroidWidgetCheckBox.setChecked(true);
-      paramView.c.setImageBitmap(a(1, localRecentUser.uin));
-      localObject = RecentMemberInnerFrame.a(this.a).b(localRecentUser.uin);
-      if (localObject != null) {
-        break label323;
-      }
-      localObject = "";
-      label189:
-      paramView.jdField_a_of_type_AndroidWidgetTextView.setText((CharSequence)localObject);
-      paramView.jdField_a_of_type_JavaLangString = localRecentUser.uin;
-      if ((this.a.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.b == null) || (!this.a.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.b.contains(localRecentUser.uin))) {
-        break label333;
-      }
-      paramView.jdField_a_of_type_AndroidWidgetCheckBox.setEnabled(false);
-      label249:
-      if (AppSetting.c)
+      paramArrayOfaqlg.printStackTrace();
+    }
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("allSwitch = ");
+    localStringBuilder.append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append(",businessSwitch: ");
+    if (this.jdField_a_of_type_JavaUtilMap.size() > 0)
+    {
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilMap.keySet().iterator();
+      while (localIterator.hasNext())
       {
-        if ((!paramView.jdField_a_of_type_AndroidWidgetCheckBox.isChecked()) || (!paramView.jdField_a_of_type_AndroidWidgetCheckBox.isEnabled())) {
-          break label344;
-        }
-        paramViewGroup.setContentDescription((String)localObject + alud.a(2131713593));
+        Integer localInteger = (Integer)localIterator.next();
+        boolean bool = ((Boolean)this.jdField_a_of_type_JavaUtilMap.get(localInteger)).booleanValue();
+        localStringBuilder.append(localInteger);
+        localStringBuilder.append("=");
+        localStringBuilder.append(bool);
+        localStringBuilder.append(",");
       }
     }
-    for (;;)
-    {
-      paramViewGroup.setOnClickListener(this.a);
-      return paramViewGroup;
-      paramView.jdField_a_of_type_AndroidWidgetCheckBox.setChecked(false);
-      break;
-      label323:
-      localObject = bdgc.a((Friends)localObject);
-      break label189;
-      label333:
-      paramView.jdField_a_of_type_AndroidWidgetCheckBox.setEnabled(true);
-      break label249;
-      label344:
-      paramViewGroup.setContentDescription((String)localObject + alud.a(2131713590));
-    }
+    return localStringBuilder.toString();
   }
 }
 

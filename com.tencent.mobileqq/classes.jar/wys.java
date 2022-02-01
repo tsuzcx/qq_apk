@@ -1,23 +1,73 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.qqstory.takevideo.EditTakeGifSource;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqGetEmoticonPackList;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspGetEmoticonPackList;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 
-public final class wys
-  implements Parcelable.Creator<EditTakeGifSource>
+public class wys
+  extends wlf<xaq>
 {
-  public EditTakeGifSource a(Parcel paramParcel)
+  public final String a;
+  public final int c;
+  public final int d;
+  public final int e;
+  
+  public wys(String paramString, int paramInt)
   {
-    return new EditTakeGifSource(paramParcel);
+    this(paramString, paramInt, 0, 0);
   }
   
-  public EditTakeGifSource[] a(int paramInt)
+  public wys(String paramString, int paramInt1, int paramInt2, int paramInt3)
   {
-    return new EditTakeGifSource[paramInt];
+    if (paramString == null) {
+      throw new IllegalArgumentException("mCookie should not be null");
+    }
+    if (paramInt1 <= 0) {
+      throw new IllegalArgumentException("mCount should not be less than 0 : " + paramInt1);
+    }
+    this.a = paramString;
+    this.c = paramInt1;
+    this.d = paramInt2;
+    this.e = paramInt3;
+  }
+  
+  public String a()
+  {
+    return wjz.a("StorySvc.video_emoticon_get");
+  }
+  
+  public wla a(byte[] paramArrayOfByte)
+  {
+    qqstory_service.RspGetEmoticonPackList localRspGetEmoticonPackList = new qqstory_service.RspGetEmoticonPackList();
+    try
+    {
+      localRspGetEmoticonPackList.mergeFrom(paramArrayOfByte);
+      return new xaq(localRspGetEmoticonPackList, paramArrayOfByte, System.currentTimeMillis());
+    }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      yqp.e("GetEmojiPackInfoListRequest", "GetEmojiPackInfoListRequest error : " + paramArrayOfByte);
+    }
+    return null;
+  }
+  
+  protected byte[] a()
+  {
+    qqstory_service.ReqGetEmoticonPackList localReqGetEmoticonPackList = new qqstory_service.ReqGetEmoticonPackList();
+    localReqGetEmoticonPackList.start_cookie.set(ByteStringMicro.copyFromUtf8(this.a));
+    localReqGetEmoticonPackList.count.set(this.c);
+    return localReqGetEmoticonPackList.toByteArray();
+  }
+  
+  public String toString()
+  {
+    return "GetEmojiPackInfoListRequest{mCookie='" + this.a + '\'' + ", mCount=" + this.c + ", latitude=" + this.d + ", longitude=" + this.e + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     wys
  * JD-Core Version:    0.7.0.1
  */

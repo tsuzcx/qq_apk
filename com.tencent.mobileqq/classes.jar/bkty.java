@@ -1,73 +1,54 @@
-public class bkty
+import android.os.Binder;
+import android.os.IBinder;
+import android.os.IInterface;
+import android.os.Parcel;
+
+public abstract class bkty
+  extends Binder
+  implements bktx
 {
-  private static final char jdField_a_of_type_Char = (char)Integer.parseInt("00000011", 2);
-  private static final char[] jdField_a_of_type_ArrayOfChar = { 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 43, 47 };
-  private static final char b = (char)Integer.parseInt("00001111", 2);
-  private static final char c = (char)Integer.parseInt("00111111", 2);
-  private static final char d = (char)Integer.parseInt("11111100", 2);
-  private static final char e = (char)Integer.parseInt("11110000", 2);
-  private static final char f = (char)Integer.parseInt("11000000", 2);
-  
-  public static String a(byte[] paramArrayOfByte)
+  public static bktx a(IBinder paramIBinder)
   {
-    int k = 0;
-    StringBuilder localStringBuilder = new StringBuilder((int)(paramArrayOfByte.length * 1.34D) + 3);
-    int i = 0;
-    int j = 0;
-    while (k < paramArrayOfByte.length)
-    {
-      j %= 8;
-      int m = i;
-      if (j < 8)
-      {
-        i = m;
-        switch (j)
-        {
-        default: 
-          i = m;
-        }
-        for (;;)
-        {
-          localStringBuilder.append(jdField_a_of_type_ArrayOfChar[i]);
-          j += 6;
-          m = i;
-          break;
-          i = (char)((char)(paramArrayOfByte[k] & d) >>> '\002');
-          continue;
-          i = (char)(paramArrayOfByte[k] & c);
-          continue;
-          m = (char)((char)(paramArrayOfByte[k] & b) << '\002');
-          i = m;
-          if (k + 1 < paramArrayOfByte.length)
-          {
-            i = (char)(m | (paramArrayOfByte[(k + 1)] & f) >>> 6);
-            continue;
-            m = (char)((char)(paramArrayOfByte[k] & jdField_a_of_type_Char) << '\004');
-            i = m;
-            if (k + 1 < paramArrayOfByte.length) {
-              i = (char)(m | (paramArrayOfByte[(k + 1)] & e) >>> 4);
-            }
-          }
-        }
-      }
-      k += 1;
-      i = m;
+    if (paramIBinder == null) {
+      return null;
     }
-    if (localStringBuilder.length() % 4 != 0)
-    {
-      i = 4 - localStringBuilder.length() % 4;
-      while (i > 0)
-      {
-        localStringBuilder.append("=");
-        i -= 1;
-      }
+    IInterface localIInterface = paramIBinder.queryLocalInterface("com.uodis.opendevice.aidl.OpenDeviceIdentifierService");
+    if ((localIInterface != null) && ((localIInterface instanceof bktx))) {
+      return (bktx)localIInterface;
     }
-    return localStringBuilder.toString();
+    return new bktz(paramIBinder);
+  }
+  
+  public boolean onTransact(int paramInt1, Parcel paramParcel1, Parcel paramParcel2, int paramInt2)
+  {
+    switch (paramInt1)
+    {
+    default: 
+      return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
+    case 1598968902: 
+      paramParcel2.writeString("com.uodis.opendevice.aidl.OpenDeviceIdentifierService");
+      return true;
+    case 1: 
+      paramParcel1.enforceInterface("com.uodis.opendevice.aidl.OpenDeviceIdentifierService");
+      paramParcel1 = a();
+      paramParcel2.writeNoException();
+      paramParcel2.writeString(paramParcel1);
+      return true;
+    }
+    paramParcel1.enforceInterface("com.uodis.opendevice.aidl.OpenDeviceIdentifierService");
+    boolean bool = a();
+    paramParcel2.writeNoException();
+    if (bool) {}
+    for (paramInt1 = 1;; paramInt1 = 0)
+    {
+      paramParcel2.writeInt(paramInt1);
+      return true;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bkty
  * JD-Core Version:    0.7.0.1
  */

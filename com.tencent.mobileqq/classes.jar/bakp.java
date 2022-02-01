@@ -1,17 +1,6 @@
-import com.tencent.mobileqq.teamworkforgroup.GroupTeamWorkListActivity.3;
-import com.tencent.qphone.base.util.QLog;
-
-public class bakp
-  implements beei
+public abstract interface bakp
 {
-  public bakp(GroupTeamWorkListActivity.3 param3) {}
-  
-  public void a(boolean paramBoolean)
-  {
-    if ((paramBoolean) && (QLog.isColorLevel())) {
-      QLog.i("Tag_webView", 1, "Web_qqbrowser_web TeamWorkList preloadWebProcess success! ");
-    }
-  }
+  public abstract void a(long paramLong);
 }
 
 

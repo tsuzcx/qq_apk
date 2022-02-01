@@ -1,33 +1,37 @@
-import android.app.Activity;
-import android.content.Intent;
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyUninterestComplainFragment;
-import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import com.tencent.mobileqq.activity.PublicFragmentActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
+import android.text.Editable;
+import android.text.TextWatcher;
+import com.tencent.biz.pubaccount.readinjoy.ugc.selectmember.ReadInJoySelectMemberFragment;
+import com.tencent.biz.pubaccount.readinjoy.ugc.selectmember.search.HybridSearchFragment;
 
-class rqq
-  implements bhyg
+public class rqq
+  implements TextWatcher
 {
-  rqq(rqj paramrqj, BaseArticleInfo paramBaseArticleInfo) {}
+  public rqq(ReadInJoySelectMemberFragment paramReadInJoySelectMemberFragment) {}
   
-  public void a()
+  public void afterTextChanged(Editable paramEditable)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadInJoyBaseAdapter", 2, "onAdComplain");
-    }
-    if ((this.jdField_a_of_type_Rqj.a instanceof Activity))
+    if (paramEditable.length() > 0)
     {
-      Intent localIntent = new Intent();
-      localIntent.putExtra("key_from_type", 1);
-      localIntent.putExtra("key_ad_info", (AdvertisementInfo)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo);
-      PublicFragmentActivity.a(this.jdField_a_of_type_Rqj.a, localIntent, ReadInJoyUninterestComplainFragment.class, 9999);
+      if (!ReadInJoySelectMemberFragment.a(this.a).isVisible()) {
+        this.a.getChildFragmentManager().beginTransaction().add(2131367067, ReadInJoySelectMemberFragment.a(this.a)).addToBackStack(null).commit();
+      }
+      ReadInJoySelectMemberFragment.a(this.a).a(paramEditable.toString());
     }
+    while (ReadInJoySelectMemberFragment.a(this.a).isDetached()) {
+      return;
+    }
+    this.a.getChildFragmentManager().popBackStackImmediate();
   }
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     rqq
  * JD-Core Version:    0.7.0.1
  */

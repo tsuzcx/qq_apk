@@ -1,21 +1,14 @@
-import com.tencent.widget.AbsListView;
+import kotlin.Metadata;
+import org.jetbrains.annotations.NotNull;
 
-class rum
-  extends pdi
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/video/CodecReuseHelper$OnCodecReuseInfoUpdateCallback;", "", "onCodecReuseInfoUpdate", "", "debugInfo", "", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public abstract interface rum
 {
-  rum(ruk paramruk, String paramString, AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
-  {
-    super(paramString);
-  }
-  
-  public void a(pdc parampdc)
-  {
-    parampdc.a(this.jdField_a_of_type_ComTencentWidgetAbsListView, this.jdField_a_of_type_Int, this.b, this.c);
-  }
+  public abstract void a(@NotNull String paramString);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     rum
  * JD-Core Version:    0.7.0.1
  */

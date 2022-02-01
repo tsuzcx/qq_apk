@@ -1,31 +1,31 @@
 package com.tencent.biz.pubaccount.readinjoy.automator;
 
-import ohj;
-import ohk;
-import ohl;
-import oho;
-import ohp;
+import oua;
+import oub;
+import ouc;
+import ouf;
+import oug;
 
 public class Automator$6
   implements Runnable
 {
-  public Automator$6(ohk paramohk, ohl paramohl) {}
+  public Automator$6(oub paramoub, ouc paramouc) {}
   
   public void run()
   {
     this.a.c();
-    oho localoho = this.a.a();
-    if ((localoho instanceof ohj))
+    ouf localouf = this.a.a();
+    if ((localouf instanceof oua))
     {
-      ((ohj)localoho).b();
+      ((oua)localouf).b();
       return;
     }
-    if ((localoho instanceof ohp))
+    if ((localouf instanceof oug))
     {
-      ((ohp)localoho).b();
+      ((oug)localouf).b();
       return;
     }
-    ohk.a(this.this$0);
+    oub.a(this.this$0);
   }
 }
 

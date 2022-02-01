@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.magicface.view;
 
-import atzj;
+import awgs;
 import com.tencent.mobileqq.activity.BaseChatPie;
 
 public class MagicfaceViewController$8
   implements Runnable
 {
-  public MagicfaceViewController$8(atzj paramatzj) {}
+  public MagicfaceViewController$8(awgs paramawgs) {}
   
   public void run()
   {
@@ -15,7 +15,7 @@ public class MagicfaceViewController$8
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.magicface.view.MagicfaceViewController.8
  * JD-Core Version:    0.7.0.1
  */

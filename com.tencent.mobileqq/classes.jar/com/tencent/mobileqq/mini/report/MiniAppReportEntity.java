@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.mini.report;
 
-import awge;
-import awhs;
+import com.tencent.mobileqq.persistence.Entity;
+import com.tencent.mobileqq.persistence.unique;
 import java.io.Serializable;
 
 public class MiniAppReportEntity
-  extends awge
+  extends Entity
   implements Serializable
 {
   public String appId;
   public String appType;
-  @awhs
+  @unique
   public String launchId;
   public String subActionType;
   public String verType;
@@ -35,7 +35,7 @@ public class MiniAppReportEntity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.report.MiniAppReportEntity
  * JD-Core Version:    0.7.0.1
  */

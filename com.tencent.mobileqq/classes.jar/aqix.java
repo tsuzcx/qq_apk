@@ -1,17 +1,20 @@
-import android.graphics.Rect;
 import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.conditionsearch.widget.TimeSelectView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public abstract interface aqix
+public class aqix
+  implements View.OnClickListener
 {
-  public abstract int a();
+  public aqix(TimeSelectView paramTimeSelectView) {}
   
-  public abstract Rect a(int paramInt);
-  
-  public abstract View a(int paramInt);
-  
-  public abstract int b();
-  
-  public abstract int c();
+  public void onClick(View paramView)
+  {
+    if (TimeSelectView.a(this.a) != null) {
+      TimeSelectView.a(this.a).a();
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

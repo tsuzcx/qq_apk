@@ -1,21 +1,28 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.os.Bundle;
-import com.tencent.mobileqq.apollo.cmgame.CmGameStartChecker.StartCheckParam;
-import com.tencent.mobileqq.apollo.store.ApolloGameActivity;
-import com.tencent.mobileqq.qipc.QIPCClientHelper;
+import android.view.View;
+import com.tencent.mobileqq.activity.recent.RecentBaseData;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class alcz
-  implements DialogInterface.OnClickListener
+class alcz
+  implements bkhw
 {
-  public alcz(ApolloGameActivity paramApolloGameActivity) {}
+  alcz(alcv paramalcv, QQAppInterface paramQQAppInterface, RecentBaseData paramRecentBaseData, bkho parambkho) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void OnClick(View paramView, int paramInt)
   {
-    paramDialogInterface = new Bundle();
-    paramDialogInterface.putBoolean("key_open_voice", true);
-    paramDialogInterface.putString("key_game_friUin", ApolloGameActivity.a(this.a).mTempAIOUin);
-    QIPCClientHelper.getInstance().callServer("cm_game_module", "action_aduio_enter_room", paramDialogInterface, null);
+    if (alcv.a(this.jdField_a_of_type_Alcv)) {
+      return;
+    }
+    alcv.a(this.jdField_a_of_type_Alcv, true);
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Bkho.dismiss();
+      return;
+      bcst.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentBaseData.getRecentUserUin(), "0X800991E", "0X800991E", 0, 0, "", "", "", "");
+      alcv.c(this.jdField_a_of_type_Alcv, this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentBaseData, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    }
   }
 }
 

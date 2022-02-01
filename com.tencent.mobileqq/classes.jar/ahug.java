@@ -1,80 +1,242 @@
-import android.content.res.Resources;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MayKnowRecommend;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Looper;
+import android.support.v4.util.ArrayMap;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
 import java.util.List;
-import java.util.Locale;
+import java.util.Map.Entry;
+import java.util.Set;
 
-class ahug
-  implements ahsh
+public class ahug
 {
-  ahug(ahuf paramahuf) {}
+  private int jdField_a_of_type_Int;
+  private ArrayMap<String, List<Object>> jdField_a_of_type_AndroidSupportV4UtilArrayMap = new ArrayMap();
+  private ArrayMap<String, Boolean> b = new ArrayMap();
   
-  public void a(List<MayKnowRecommend> paramList)
+  private int a(String paramString, int paramInt, List<Object> paramList)
   {
-    Object localObject2 = this.a.a(3);
-    boolean bool3 = ((ahua)localObject2).c;
-    Object localObject1 = ((ahua)localObject2).jdField_a_of_type_JavaLangObject;
-    Object localObject3;
-    boolean bool2;
-    boolean bool1;
-    if ((paramList != null) && (paramList.size() > 0))
-    {
-      ((ahua)localObject2).jdField_a_of_type_JavaLangString = ahuf.a(this.a).getApp().getResources().getString(2131699478);
-      ((ahua)localObject2).b = "";
-      ((ahua)localObject2).jdField_a_of_type_JavaLangObject = paramList;
-      localObject3 = (alwd)ahuf.a(this.a).getManager(159);
-      if (localObject3 == null) {
-        break label262;
-      }
-      bool2 = ((alwd)localObject3).b("sp_mayknow_entry_list_recommend");
-      bool1 = ((alwd)localObject3).b("sp_mayknow_entry_list_head");
+    a();
+    if ((paramString == null) || (paramInt <= 0) || (paramList == null)) {
+      return -1;
     }
-    for (;;)
+    int i = 0;
+    while (i < paramList.size())
     {
-      label128:
-      Object localObject4;
-      if ((bool1) && (!bool2))
-      {
-        ((ahua)localObject2).c = true;
-        ahuf.a(this.a);
-        if (QLog.isColorLevel())
-        {
-          localObject3 = Locale.getDefault();
-          bool1 = ((ahua)localObject2).c;
-          localObject4 = ((ahua)localObject2).jdField_a_of_type_JavaLangObject;
-          localObject2 = ((ahua)localObject2).b;
-          if (paramList == null) {
-            break label257;
-          }
-        }
+      Object localObject = paramList.get(i);
+      if (((localObject instanceof String)) && (((String)localObject).equals(paramString))) {
+        return i + paramInt;
       }
-      label257:
-      for (int i = paramList.size();; i = 0)
-      {
-        QLog.i("CTEntryMng", 2, String.format((Locale)localObject3, "updateMayKnow pre: [%s,%s], cur: [%s,%s], subtitle: %s recommends:%s", new Object[] { Boolean.valueOf(bool3), localObject1, Boolean.valueOf(bool1), localObject4, localObject2, Integer.valueOf(i) }));
-        return;
-        ((ahua)localObject2).jdField_a_of_type_JavaLangObject = null;
-        ((ahua)localObject2).b = null;
-        break;
-        ((ahua)localObject2).c = false;
-        break label128;
-      }
-      label262:
-      bool1 = true;
-      bool2 = false;
+      i += 1;
+    }
+    return -1;
+  }
+  
+  private void a(int paramInt, String paramString, List<Object> paramList)
+  {
+    a();
+    if ((paramString == null) || (paramInt < 0) || (paramList == null)) {}
+    do
+    {
+      return;
+      paramString = (List)this.jdField_a_of_type_AndroidSupportV4UtilArrayMap.get(paramString);
+    } while (paramString == null);
+    int i = paramString.size();
+    while ((i > 0) && (paramInt < paramList.size()))
+    {
+      paramList.remove(paramInt);
+      i -= 1;
+    }
+    paramInt = this.jdField_a_of_type_Int;
+    this.jdField_a_of_type_Int = (paramString.size() + paramInt);
+  }
+  
+  private void b(int paramInt, String paramString, List<Object> paramList)
+  {
+    a();
+    if ((paramString == null) || (paramInt < 0) || (paramList == null)) {}
+    do
+    {
+      return;
+      paramString = (List)this.jdField_a_of_type_AndroidSupportV4UtilArrayMap.get(paramString);
+    } while (paramString == null);
+    paramList.addAll(paramInt, paramString);
+    this.jdField_a_of_type_Int -= paramString.size();
+  }
+  
+  public int a()
+  {
+    a();
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public List<Object> a(String paramString)
+  {
+    a();
+    return (List)this.jdField_a_of_type_AndroidSupportV4UtilArrayMap.get(paramString);
+  }
+  
+  public void a()
+  {
+    if (Looper.myLooper() != Looper.getMainLooper()) {
+      throw new RuntimeException("This method must be called on UI thread");
     }
   }
   
-  public boolean a()
+  public void a(List<Object> paramList, int paramInt)
   {
-    ahua localahua = this.a.a(3);
-    ahum localahum = this.a.a(3);
-    if (QLog.isColorLevel()) {
-      QLog.d("CTEntryMng", 2, "isMayKnowEntryShown, canBeShown = " + localahua.c + ", flagValue = " + localahum.b);
+    a();
+    if ((paramList == null) || (paramInt <= 0)) {}
+    for (;;)
+    {
+      return;
+      int i = 0;
+      while (i < paramList.size())
+      {
+        Object localObject = paramList.get(i);
+        if (((localObject instanceof String)) && (this.b.get((String)localObject) != null) && (!((Boolean)this.b.get((String)localObject)).booleanValue()) && (this.jdField_a_of_type_AndroidSupportV4UtilArrayMap.get(localObject) != null)) {
+          paramList.addAll(i + paramInt, (Collection)this.jdField_a_of_type_AndroidSupportV4UtilArrayMap.get(localObject));
+        }
+        i += 1;
+      }
     }
-    return (localahua.c) && (localahum.b == 0);
+  }
+  
+  public void a(boolean paramBoolean, int paramInt, List<Object> paramList)
+  {
+    a();
+    if ((paramList == null) || (paramInt <= 0)) {}
+    for (;;)
+    {
+      return;
+      this.jdField_a_of_type_AndroidSupportV4UtilArrayMap.clear();
+      Object localObject2 = null;
+      int i = 0;
+      Object localObject3;
+      if (i < paramList.size())
+      {
+        localObject3 = paramList.get(i);
+        if ((localObject3 instanceof String))
+        {
+          localObject2 = (List)this.jdField_a_of_type_AndroidSupportV4UtilArrayMap.get(localObject3);
+          localObject1 = localObject2;
+          if (localObject2 == null)
+          {
+            localObject1 = new ArrayList();
+            this.jdField_a_of_type_AndroidSupportV4UtilArrayMap.put((String)localObject3, localObject1);
+          }
+        }
+        for (;;)
+        {
+          i += 1;
+          localObject2 = localObject1;
+          break;
+          localObject1 = localObject2;
+          if (localObject2 != null) {
+            if ((!(localObject3 instanceof ahui)) && (localObject3 != ahtj.b) && (!(localObject3 instanceof asfa)))
+            {
+              localObject1 = localObject2;
+              if (localObject3 != asem.c) {}
+            }
+            else
+            {
+              ((List)localObject2).add(localObject3);
+              localObject1 = localObject2;
+            }
+          }
+        }
+      }
+      this.jdField_a_of_type_Int = 0;
+      if (!paramBoolean) {
+        break;
+      }
+      Object localObject1 = this.b.entrySet().iterator();
+      while (((Iterator)localObject1).hasNext())
+      {
+        localObject3 = (Map.Entry)((Iterator)localObject1).next();
+        localObject2 = (String)((Map.Entry)localObject3).getKey();
+        localObject3 = (Boolean)((Map.Entry)localObject3).getValue();
+        if ((localObject3 != null) && (!((Boolean)localObject3).booleanValue())) {
+          a(a((String)localObject2, paramInt, paramList), (String)localObject2, paramList);
+        }
+      }
+    }
+    this.b.clear();
+  }
+  
+  public boolean a(String paramString)
+  {
+    a();
+    paramString = (Boolean)this.b.get(paramString);
+    if (paramString != null) {
+      return paramString.booleanValue();
+    }
+    return true;
+  }
+  
+  public boolean a(String paramString, int paramInt, List<Object> paramList)
+  {
+    boolean bool2 = true;
+    a();
+    if (this.jdField_a_of_type_AndroidSupportV4UtilArrayMap.get(paramString) == null) {
+      return false;
+    }
+    if (this.b.get(paramString) != null) {}
+    for (boolean bool1 = ((Boolean)this.b.get(paramString)).booleanValue();; bool1 = true)
+    {
+      ArrayMap localArrayMap = this.b;
+      if (!bool1)
+      {
+        localArrayMap.put(paramString, Boolean.valueOf(bool2));
+        paramInt = a(paramString, paramInt, paramList);
+        if (bool1) {
+          break label99;
+        }
+        b(paramInt, paramString, paramList);
+      }
+      for (;;)
+      {
+        return bool1;
+        bool2 = false;
+        break;
+        label99:
+        a(paramInt, paramString, paramList);
+      }
+    }
+  }
+  
+  public boolean a(List<Object> paramList, int paramInt)
+  {
+    a();
+    boolean bool2;
+    if ((this.b.isEmpty()) || (paramList == null))
+    {
+      bool2 = false;
+      return bool2;
+    }
+    int i = 0;
+    boolean bool1 = false;
+    label29:
+    if (i < paramList.size())
+    {
+      Object localObject = paramList.get(i);
+      if ((!(localObject instanceof String)) || (this.b.get((String)localObject) == null) || (((Boolean)this.b.get((String)localObject)).booleanValue()) || (this.jdField_a_of_type_AndroidSupportV4UtilArrayMap.get(localObject) == null)) {
+        break label155;
+      }
+      paramList.addAll(i + paramInt, (Collection)this.jdField_a_of_type_AndroidSupportV4UtilArrayMap.get(localObject));
+      bool1 = true;
+    }
+    label155:
+    for (;;)
+    {
+      i += 1;
+      break label29;
+      bool2 = bool1;
+      if (!bool1) {
+        break;
+      }
+      this.b.clear();
+      return bool1;
+    }
   }
 }
 

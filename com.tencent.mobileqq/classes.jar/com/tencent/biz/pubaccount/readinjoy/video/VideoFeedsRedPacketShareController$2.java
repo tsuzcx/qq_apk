@@ -1,17 +1,17 @@
 package com.tencent.biz.pubaccount.readinjoy.video;
 
-import bdoo;
-import qhj;
-import rgx;
+import bgtn;
+import rar;
+import sbv;
 
 public class VideoFeedsRedPacketShareController$2
   implements Runnable
 {
-  public VideoFeedsRedPacketShareController$2(rgx paramrgx) {}
+  public VideoFeedsRedPacketShareController$2(sbv paramsbv) {}
   
   public void run()
   {
-    rgx.a(this.this$0).showAsDropDown(rgx.a(this.this$0), -bdoo.a(6.0F), -bdoo.a(10.0F));
+    sbv.a(this.this$0).showAsDropDown(sbv.a(this.this$0), -bgtn.a(6.0F), -bgtn.a(10.0F));
   }
 }
 

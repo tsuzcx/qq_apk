@@ -1,14 +1,22 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.hardware.Sensor;
+import android.hardware.SensorEvent;
+import androidx.annotation.RequiresApi;
 
-class ayri
-  implements View.OnClickListener
+public class ayri
+  extends ayre
 {
-  ayri(ayrh paramayrh, aynt paramaynt) {}
-  
-  public void onClick(View paramView)
+  @RequiresApi(api=19)
+  ayri()
   {
-    this.jdField_a_of_type_Aynt.a(paramView);
+    super(18);
+    this.a = "StepSensorDetector";
+  }
+  
+  public void onAccuracyChanged(Sensor paramSensor, int paramInt) {}
+  
+  public void onSensorChanged(SensorEvent paramSensorEvent)
+  {
+    a();
   }
 }
 

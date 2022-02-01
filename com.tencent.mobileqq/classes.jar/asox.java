@@ -1,18 +1,17 @@
-import android.view.GestureDetector;
-import android.view.MotionEvent;
+import android.graphics.Rect;
 import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.gamecenter.web.QQGameFeedWebFragment;
 
-public class asox
-  implements View.OnTouchListener
+public abstract interface asox
 {
-  public asox(QQGameFeedWebFragment paramQQGameFeedWebFragment) {}
+  public abstract int a();
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
-  {
-    return QQGameFeedWebFragment.a(this.a).onTouchEvent(paramMotionEvent);
-  }
+  public abstract Rect a(int paramInt);
+  
+  public abstract View a(int paramInt);
+  
+  public abstract int b();
+  
+  public abstract int c();
 }
 
 

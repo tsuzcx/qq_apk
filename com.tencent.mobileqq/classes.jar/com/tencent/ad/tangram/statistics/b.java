@@ -15,6 +15,8 @@ public final class b
   public static final int ACTION_MOBILEAPP_DEEPLINK_CAN_NOT_GET_APP_INSTALL_INFO = 249;
   public static final int ACTION_MOBILEAPP_DEEPLINK_OPEN_APP_SUCCESS = 246;
   public static final int ACTION_MOBILEAPP_DEEPLINK_TRY_TO_OPEN_APP = 245;
+  public static final int ACTION_MOBILEAPP_DELAYED_DIRECT_START = 297;
+  public static final int ACTION_MOBILEAPP_DELAYED_DIRECT_SUCCESS = 295;
   public static final int ACTION_MOBILEAPP_JUMP_MARKET_DEEPLINK_SUCC = 285;
   public static final int ACTION_MOBILEAPP_MARKET_INSTALL_SUCC = 286;
   public static final int ACTION_MOBILEAPP_MOBILE_QQ_ALREADY_DOWNLOAD = 270;
@@ -26,6 +28,7 @@ public final class b
   public static final int ACTION_MOBILEAPP_MOBILE_QQ_MANUAL_CREATE_DOWNLOAD = 268;
   public static final int ACTION_MOBILEAPP_MOBILE_QQ_NEW_DOWNLOAD = 272;
   public static final int ACTION_MOBILEAPP_MOBILE_QQ_PAUSE_DOWNLOAD = 273;
+  public static final int ACTION_MOBILEAPP_SCHEMA_SUCCESS = 290;
   private static final String TAG = "AdReporterForEffect";
   
   private static String getUrl(Ad paramAd, int paramInt)
@@ -57,7 +60,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.ad.tangram.statistics.b
  * JD-Core Version:    0.7.0.1
  */

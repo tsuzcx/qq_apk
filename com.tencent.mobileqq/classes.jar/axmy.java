@@ -1,19 +1,24 @@
-import com.tencent.mobileqq.remind.widget.IosTimepicker;
-import com.tencent.widget.VerticalGallery;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.nearby.now.view.StuffContainerView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class axmy
-  implements bice
+  implements View.OnClickListener
 {
-  public axmy(IosTimepicker paramIosTimepicker) {}
+  public axmy(StuffContainerView paramStuffContainerView) {}
   
-  public void b(VerticalGallery paramVerticalGallery)
+  public void onClick(View paramView)
   {
-    IosTimepicker.a(this.a);
+    if (this.a.a != null) {
+      this.a.a.a(0);
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     axmy
  * JD-Core Version:    0.7.0.1
  */

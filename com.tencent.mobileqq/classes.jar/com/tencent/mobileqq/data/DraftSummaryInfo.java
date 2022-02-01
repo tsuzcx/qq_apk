@@ -8,6 +8,16 @@ public class DraftSummaryInfo
   private int type;
   private String uin;
   
+  public DraftSummaryInfo() {}
+  
+  public DraftSummaryInfo(String paramString1, int paramInt, String paramString2, long paramLong)
+  {
+    this.uin = paramString1;
+    this.type = paramInt;
+    this.summary = paramString2;
+    this.time = paramLong;
+  }
+  
   public String getAtInfoStr()
   {
     return this.atInfoStr;
@@ -21,6 +31,16 @@ public class DraftSummaryInfo
   public long getTime()
   {
     return this.time / 1000L;
+  }
+  
+  public int getType()
+  {
+    return this.type;
+  }
+  
+  public String getUin()
+  {
+    return this.uin;
   }
   
   public void setAtInfoStr(String paramString)
@@ -50,7 +70,7 @@ public class DraftSummaryInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.tencent.mobileqq.data.DraftSummaryInfo
  * JD-Core Version:    0.7.0.1
  */

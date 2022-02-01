@@ -3,13 +3,13 @@ package com.tencent.mobileqq.music;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import aurf;
+import awyl;
 import cooperation.qzone.music.BroadcastMusicInfo;
 
 public class SongInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<SongInfo> CREATOR = new aurf();
+  public static final Parcelable.Creator<SongInfo> CREATOR = new awyl();
   public int a;
   public long a;
   public BroadcastMusicInfo a;
@@ -94,7 +94,7 @@ public class SongInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.music.SongInfo
  * JD-Core Version:    0.7.0.1
  */

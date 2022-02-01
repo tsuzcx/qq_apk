@@ -1,31 +1,34 @@
-import android.view.animation.Animation;
-import android.view.animation.Transformation;
-import android.widget.TextView;
-import com.tencent.mobileqq.richmedia.capture.view.CircleBarView;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.nearby.profilecard.NearbyAuthVideoPlayerFragment;
+import com.tencent.mobileqq.nearby.profilecard.NearbyAuthVideoPlayerFragment.2.1;
+import com.tencent.qphone.base.util.QLog;
 
 public class axrf
-  extends Animation
+  implements apue
 {
-  public axrf(CircleBarView paramCircleBarView) {}
+  public axrf(NearbyAuthVideoPlayerFragment paramNearbyAuthVideoPlayerFragment) {}
   
-  protected void applyTransformation(float paramFloat, Transformation paramTransformation)
+  public void a(String paramString, int paramInt)
   {
-    super.applyTransformation(paramFloat, paramTransformation);
-    CircleBarView.a(this.a, CircleBarView.a(this.a) * paramFloat * CircleBarView.b(this.a) / CircleBarView.c(this.a));
-    CircleBarView.b(this.a, 30.0F);
-    if (CircleBarView.a(this.a) != null)
-    {
-      if (CircleBarView.a(this.a) != null) {
-        CircleBarView.a(this.a).setText(CircleBarView.a(this.a).a(paramFloat, CircleBarView.b(this.a), CircleBarView.c(this.a)));
-      }
-      CircleBarView.a(this.a).a(CircleBarView.a(this.a), paramFloat, CircleBarView.b(this.a), CircleBarView.c(this.a));
+    if (QLog.isColorLevel()) {
+      QLog.i("NearbyAuthVideoPlayerFragment", 2, "onDownloadFinish  url:" + paramString + "   progress:" + paramInt);
     }
-    this.a.postInvalidate();
+  }
+  
+  public void a(String paramString, boolean paramBoolean1, boolean paramBoolean2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("NearbyAuthVideoPlayerFragment", 2, "onDownloadFinish  url:" + paramString + "   isSuccess:" + paramBoolean1 + "  isFileExist:" + paramBoolean2);
+    }
+    if ((this.a.isDetached()) || (this.a.getActivity() == null)) {
+      return;
+    }
+    this.a.getActivity().runOnUiThread(new NearbyAuthVideoPlayerFragment.2.1(this, paramBoolean1));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     axrf
  * JD-Core Version:    0.7.0.1
  */

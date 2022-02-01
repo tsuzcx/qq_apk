@@ -1,33 +1,17 @@
-import com.tencent.mobileqq.activity.aio.stickerrecommended.StickerRecBarAdapter.ImgUpdateListener.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
-import mqq.os.MqqHandler;
+import android.widget.BaseAdapter;
+import com.tencent.mobileqq.data.ChatMessage;
 
-public class agyi
-  implements agyy
+class agyi
+  extends ahbl
 {
-  public agyf a;
-  
-  public agyi(agyf paramagyf)
+  agyi(agwz paramagwz)
   {
-    this.a = paramagyf;
+    super(paramagwz, null);
   }
   
-  public void a(List<agxz> paramList, String paramString1, String paramString2)
+  protected afxi a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
   {
-    if (this.a != null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("StickerRecBarAdapter", 2, "data=" + paramList.size());
-      }
-      agyf.a(this.a);
-      ThreadManager.getUIHandler().post(new StickerRecBarAdapter.ImgUpdateListener.1(this, paramString1, paramList, paramString2));
-    }
-    while (!QLog.isColorLevel()) {
-      return;
-    }
-    QLog.d("StickerRecBarAdapter", 2, "mAdapter is null");
+    return new agpl(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner);
   }
 }
 

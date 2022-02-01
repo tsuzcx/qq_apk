@@ -1,29 +1,31 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.data.MessageForTroopFile;
-import com.tencent.mobileqq.teamwork.spread.TroopFileAIOMsgTips.1;
-import com.tencent.qphone.base.util.QLog;
+import androidx.annotation.NonNull;
 
 public class bajq
-  extends baje
 {
-  public bajq(QQAppInterface paramQQAppInterface, ChatMessage paramChatMessage, bajk parambajk)
+  public int a;
+  public String a;
+  public int b;
+  public String b;
+  public int c = -1;
+  
+  public bajq()
   {
-    super(paramQQAppInterface, paramChatMessage, parambajk);
+    this.jdField_a_of_type_Int = -1;
+    this.jdField_b_of_type_Int = -1;
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_b_of_type_JavaLangString = "";
   }
   
-  protected String a()
+  @NonNull
+  public String toString()
   {
-    return ((MessageForTroopFile)this.a).fileName;
-  }
-  
-  protected void a(bajf parambajf)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("TroopFileAIOMsgTips", 1, "getWordsList by TroopFile[" + System.currentTimeMillis() + "]");
-    }
-    ThreadManager.post(new TroopFileAIOMsgTips.1(this, parambajf), 8, null, true);
+    StringBuilder localStringBuilder = new StringBuilder(1024);
+    localStringBuilder.append("age").append("=").append(this.jdField_a_of_type_Int).append("|");
+    localStringBuilder.append("gender").append("=").append(this.jdField_b_of_type_Int).append("|");
+    localStringBuilder.append("place").append("=").append(this.jdField_a_of_type_JavaLangString).append("|");
+    localStringBuilder.append("addSrc").append("=").append(this.jdField_b_of_type_JavaLangString).append("|");
+    localStringBuilder.append("commFrdCnt").append("=").append(this.c).append("|");
+    return localStringBuilder.toString();
   }
 }
 

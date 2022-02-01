@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.addon;
 
-import akmx;
+import amgd;
 import android.text.TextUtils;
-import awgf;
-import awgg;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.QQEntityManagerFactory;
+import com.tencent.mobileqq.persistence.EntityManager;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.util.LRULinkedHashMap;
 import java.util.Iterator;
@@ -13,11 +13,11 @@ import java.util.List;
 public class DiyPendantFetcher$5
   implements Runnable
 {
-  public DiyPendantFetcher$5(akmx paramakmx, QQAppInterface paramQQAppInterface) {}
+  public DiyPendantFetcher$5(amgd paramamgd, QQAppInterface paramQQAppInterface) {}
   
   public void run()
   {
-    List localList = this.a.getEntityManagerFactory().createEntityManager().a(DiyPendantEntity.class, true, null, null, null, null, null, " 20 ");
+    List localList = this.a.a().createEntityManager().query(DiyPendantEntity.class, true, null, null, null, null, null, " 20 ");
     if ((localList != null) && (localList.size() > 0))
     {
       Iterator localIterator = localList.iterator();
@@ -36,7 +36,7 @@ public class DiyPendantFetcher$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.addon.DiyPendantFetcher.5
  * JD-Core Version:    0.7.0.1
  */

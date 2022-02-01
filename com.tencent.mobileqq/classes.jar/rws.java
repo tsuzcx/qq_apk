@@ -1,35 +1,35 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.model.SelectPositionModule;
-import com.tencent.biz.pubaccount.readinjoy.model.SelectPositionModule.PositionData;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabFrame;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnVideoPreparedListener;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.Map.Entry;
+import java.util.Set;
 
-public class rws
-  implements DialogInterface.OnClickListener
+class rws
+  implements TVK_IMediaPlayer.OnVideoPreparedListener
 {
-  public rws(ReadinjoyTabFrame paramReadinjoyTabFrame, SelectPositionModule.PositionData paramPositionData) {}
+  rws(rwp paramrwp) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onVideoPrepared(TVK_IMediaPlayer paramTVK_IMediaPlayer)
   {
     if (QLog.isColorLevel()) {
-      QLog.i("ReadInJoyTabFrame", 2, "showLocationChangedDialog change confirm");
+      QLog.d(rwp.a(), 2, "播放器状态回调 onVideoPrepared");
     }
-    paramDialogInterface = owy.a().a();
-    if (paramDialogInterface != null) {
-      paramDialogInterface.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelSelectPositionModule$PositionData);
+    rwp.a(this.a, System.currentTimeMillis());
+    paramTVK_IMediaPlayer = new HashSet();
+    Iterator localIterator = rwp.a(this.a).entrySet().iterator();
+    while (localIterator.hasNext()) {
+      paramTVK_IMediaPlayer.add(((Map.Entry)localIterator.next()).getKey());
     }
-    paramDialogInterface = owy.a().a();
-    if (paramDialogInterface != null) {
-      paramDialogInterface.b(41695);
-    }
-    owy.a().a(41695, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelSelectPositionModule$PositionData.city);
-    oxb.a().g(41695);
+    rwp.a(this.a).setExtractFrameModeInfo(true, paramTVK_IMediaPlayer);
+    rwp.a(this.a).start();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     rws
  * JD-Core Version:    0.7.0.1
  */

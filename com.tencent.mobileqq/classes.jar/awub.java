@@ -1,36 +1,23 @@
-import QC.UniBusiGetOneItemWithCheckRsp;
+import android.view.GestureDetector.SimpleOnGestureListener;
+import android.view.MotionEvent;
+import android.view.View.OnLongClickListener;
+import com.tencent.mobileqq.multicard.MultiCardCustomLayout;
 
-class awub
-  implements alpg
+public class awub
+  extends GestureDetector.SimpleOnGestureListener
 {
-  awub(awtw paramawtw, awud paramawud) {}
+  public awub(MultiCardCustomLayout paramMultiCardCustomLayout) {}
   
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  public void onLongPress(MotionEvent paramMotionEvent)
   {
-    awud localawud;
-    if (this.jdField_a_of_type_Awud != null)
-    {
-      if (!(paramObject instanceof UniBusiGetOneItemWithCheckRsp)) {
-        break label50;
-      }
-      localawud = this.jdField_a_of_type_Awud;
-      if (((UniBusiGetOneItemWithCheckRsp)paramObject).ret != 0) {
-        break label45;
-      }
+    if (MultiCardCustomLayout.a(this.a) != null) {
+      MultiCardCustomLayout.a(this.a).onLongClick(this.a);
     }
-    label45:
-    for (paramBoolean = true;; paramBoolean = false)
-    {
-      localawud.a(paramBoolean, (UniBusiGetOneItemWithCheckRsp)paramObject);
-      return;
-    }
-    label50:
-    this.jdField_a_of_type_Awud.a(false, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     awub
  * JD-Core Version:    0.7.0.1
  */

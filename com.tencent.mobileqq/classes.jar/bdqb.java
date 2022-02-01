@@ -1,94 +1,22 @@
-import android.annotation.TargetApi;
-import android.net.SSLCertificateSocketFactory;
-import android.os.Build.VERSION;
-import java.lang.reflect.Method;
-import java.net.InetAddress;
-import java.net.Socket;
-import javax.net.ssl.HostnameVerifier;
-import javax.net.ssl.HttpsURLConnection;
-import javax.net.ssl.SSLPeerUnverifiedException;
-import javax.net.ssl.SSLSocket;
-import javax.net.ssl.SSLSocketFactory;
+import android.content.Intent;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
-public class bdqb
-  extends SSLSocketFactory
+class bdqb
+  implements bgyv
 {
-  private final String jdField_a_of_type_JavaLangString = "SniSSLSocketFactory";
-  HostnameVerifier jdField_a_of_type_JavaxNetSslHostnameVerifier;
-  private String b;
+  bdqb(bdqa parambdqa) {}
   
-  public bdqb(String paramString, HostnameVerifier paramHostnameVerifier)
+  public void onCompleted(QQAppInterface paramQQAppInterface, long paramLong, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2)
   {
-    this.b = paramString;
-    this.jdField_a_of_type_JavaxNetSslHostnameVerifier = paramHostnameVerifier;
+    QLog.e("TintManager", 1, "tint config download onCompleted");
+    this.a.loadConfig(BaseApplicationImpl.getApplication().getResources(), bdqa.a(this.a));
+    paramQQAppInterface = new Intent("com.tencent.qplus.THEME_UPDATE");
+    BaseApplicationImpl.getApplication().sendBroadcast(paramQQAppInterface, "com.tencent.msg.permission.pushnotify");
   }
   
-  public Socket createSocket()
-  {
-    return null;
-  }
-  
-  public Socket createSocket(String paramString, int paramInt)
-  {
-    return null;
-  }
-  
-  public Socket createSocket(String paramString, int paramInt1, InetAddress paramInetAddress, int paramInt2)
-  {
-    return null;
-  }
-  
-  public Socket createSocket(InetAddress paramInetAddress, int paramInt)
-  {
-    return null;
-  }
-  
-  public Socket createSocket(InetAddress paramInetAddress1, int paramInt1, InetAddress paramInetAddress2, int paramInt2)
-  {
-    return null;
-  }
-  
-  @TargetApi(17)
-  public Socket createSocket(Socket paramSocket, String paramString, int paramInt, boolean paramBoolean)
-  {
-    paramString = paramSocket.getInetAddress();
-    if (paramBoolean) {
-      paramSocket.close();
-    }
-    SSLCertificateSocketFactory localSSLCertificateSocketFactory = (SSLCertificateSocketFactory)SSLCertificateSocketFactory.getDefault(0);
-    paramSocket = (SSLSocket)localSSLCertificateSocketFactory.createSocket(paramString, paramInt);
-    paramSocket.setEnabledProtocols(paramSocket.getSupportedProtocols());
-    if (Build.VERSION.SDK_INT >= 17) {
-      localSSLCertificateSocketFactory.setHostname(paramSocket, this.b);
-    }
-    for (;;)
-    {
-      paramString = paramSocket.getSession();
-      if (this.jdField_a_of_type_JavaxNetSslHostnameVerifier == null) {
-        this.jdField_a_of_type_JavaxNetSslHostnameVerifier = HttpsURLConnection.getDefaultHostnameVerifier();
-      }
-      if (this.jdField_a_of_type_JavaxNetSslHostnameVerifier.verify(this.b, paramString)) {
-        break;
-      }
-      throw new SSLPeerUnverifiedException("Cannot verify hostname: " + this.b);
-      try
-      {
-        paramSocket.getClass().getMethod("setHostname", new Class[] { String.class }).invoke(paramSocket, new Object[] { this.b });
-      }
-      catch (Exception paramString) {}
-    }
-    return paramSocket;
-  }
-  
-  public String[] getDefaultCipherSuites()
-  {
-    return new String[0];
-  }
-  
-  public String[] getSupportedCipherSuites()
-  {
-    return new String[0];
-  }
+  public void onProgress(QQAppInterface paramQQAppInterface, long paramLong1, String paramString1, String paramString2, long paramLong2, long paramLong3) {}
 }
 
 

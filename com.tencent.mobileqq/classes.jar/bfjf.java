@@ -1,59 +1,72 @@
-import com.tencent.open.appcommon.js.DownloadInterface;
-import com.tencent.open.downloadnew.DownloadInfo;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
+import com.tencent.mobileqq.data.TroopMemberInfo;
+import com.tencent.mobileqq.troop.quickat.ui.AIOAtSearchManager;
+import com.tencent.qphone.base.util.QLog;
 import java.util.List;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
 
-public class bfjf
-  implements bfor
+class bfjf
+  extends anxg
 {
-  public bfjf(DownloadInterface paramDownloadInterface, String paramString) {}
+  bfjf(bfje parambfje) {}
   
-  public void a(int paramInt, String paramString)
+  protected void a(String paramString, boolean paramBoolean, List<TroopMemberInfo> paramList, int paramInt1, long paramLong, int paramInt2)
   {
-    bflp.e("DownloadInterface", "innerQueryDownloadInfoByViaInfo ERROR");
-  }
-  
-  public void a(List<DownloadInfo> paramList)
-  {
-    bflp.c("DownloadInterface", "innerQueryDownloadInfoByVia onResult = " + paramList.size());
-    JSONArray localJSONArray = new JSONArray();
-    int j = paramList.size();
-    int i = 0;
-    for (;;)
+    if (QLog.isColorLevel()) {
+      QLog.d("AtPanel", 2, "onUpdateTroopGetMemberList troopUin=" + paramString + " isSuccess=" + paramBoolean + " reqType=" + paramInt1 + " type" + paramInt2 + " reqTimestamp=" + paramLong);
+    }
+    if (paramInt1 != 2) {}
+    do
     {
-      if (i < j)
+      return;
+      if ((paramString != null) && (paramString.equals(bfje.a(this.a).a))) {
+        break;
+      }
+    } while (!QLog.isColorLevel());
+    QLog.d("AtPanel", 2, " onUpdateTroopGetMemberList troopUin =" + paramString + " mSession.troopUin=" + bfje.a(this.a).a);
+    return;
+    if ((paramList == null) || (paramList.isEmpty()))
+    {
+      if (QLog.isColorLevel())
       {
-        JSONObject localJSONObject = new JSONObject();
-        DownloadInfo localDownloadInfo = (DownloadInfo)paramList.get(i);
-        try
-        {
-          localJSONObject.put("appid", localDownloadInfo.jdField_c_of_type_JavaLangString);
-          localJSONObject.put("pro", localDownloadInfo.f);
-          localJSONObject.put("state", localDownloadInfo.a());
-          localJSONObject.put("ismyapp", localDownloadInfo.jdField_c_of_type_Int);
-          localJSONObject.put("download_from", localDownloadInfo.h);
-          localJSONArray.put(localJSONObject);
-          i += 1;
-        }
-        catch (JSONException localJSONException)
-        {
-          for (;;)
-          {
-            localJSONException.printStackTrace();
-          }
+        paramString = new StringBuilder().append(" onUpdateTroopGetMemberList troopMemberInfoList =");
+        if (paramList != null) {
+          break label224;
         }
       }
+      label224:
+      for (paramInt1 = 0;; paramInt1 = paramList.size())
+      {
+        QLog.d("AtPanel", 2, paramInt1);
+        if (bfje.a(this.a) != null) {
+          break label235;
+        }
+        if (!QLog.isColorLevel()) {
+          break;
+        }
+        QLog.d("AtPanel", 2, " onUpdateTroopGetMemberList mPopupWindow = null");
+        return;
+      }
+      label235:
+      bfje.a(this.a).a(0, 2131689828);
+      return;
     }
-    paramList = "javascript:if (typeof(QzoneApp) === 'object' && typeof(QzoneApp.fire) === 'function') { QzoneApp.fire('interface.getQueryDownloadActionByVia',{\"guid\": " + this.jdField_a_of_type_JavaLangString + ", \"r\" : 0, \"data\":" + localJSONArray.toString() + "});}void(0);";
-    bflp.c("DownloadInterface", "innerQueryDownloadInfoByVia querySucess : " + paramList);
-    this.jdField_a_of_type_ComTencentOpenAppcommonJsDownloadInterface.jsCallBack(paramList);
+    bfje.a(this.a).a(paramList);
+    bfje.a(this.a).a(bfje.a(this.a), bfje.a(this.a), bfje.a(this.a).G());
+  }
+  
+  protected void b()
+  {
+    super.b();
+    if (QLog.isColorLevel()) {
+      QLog.d("AtPanel", 2, "onTroopMemberUpdate: invoked. ");
+    }
+    bfje.a(this.a, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bfjf
  * JD-Core Version:    0.7.0.1
  */

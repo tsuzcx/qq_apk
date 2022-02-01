@@ -1,8 +1,30 @@
-import com.tencent.mobileqq.activity.qwallet.redpacket.IRedPacket;
+import java.util.List;
 
 public class ajcc
 {
-  public static final IRedPacket a = new ajcd();
+  public int a;
+  public Runnable a;
+  public List<String> a;
+  public int b;
+  public Runnable b;
+  
+  public void a(boolean paramBoolean)
+  {
+    if (a()) {
+      if (this.jdField_a_of_type_JavaLangRunnable != null) {
+        this.jdField_a_of_type_JavaLangRunnable.run();
+      }
+    }
+    while (this.jdField_b_of_type_JavaLangRunnable == null) {
+      return;
+    }
+    this.jdField_b_of_type_JavaLangRunnable.run();
+  }
+  
+  public boolean a()
+  {
+    return (this.jdField_b_of_type_Int & this.jdField_a_of_type_Int) == this.jdField_a_of_type_Int;
+  }
 }
 
 

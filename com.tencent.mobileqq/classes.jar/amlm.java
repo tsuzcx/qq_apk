@@ -1,21 +1,22 @@
-import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.apollo.data.CmGamePushItem;
 import java.util.Comparator;
-import msf.msgcomm.msg_comm.Msg;
-import msf.msgcomm.msg_comm.MsgHead;
 
 class amlm
-  implements Comparator<msg_comm.Msg>
+  implements Comparator<CmGamePushItem>
 {
   amlm(amll paramamll) {}
   
-  public int a(msg_comm.Msg paramMsg1, msg_comm.Msg paramMsg2)
+  public int a(CmGamePushItem paramCmGamePushItem1, CmGamePushItem paramCmGamePushItem2)
   {
-    return ((msg_comm.MsgHead)paramMsg1.msg_head.get()).msg_time.get() - ((msg_comm.MsgHead)paramMsg2.msg_head.get()).msg_time.get();
+    if (paramCmGamePushItem1.start_ts == paramCmGamePushItem2.start_ts) {
+      return paramCmGamePushItem2.send_time - paramCmGamePushItem1.send_time;
+    }
+    return paramCmGamePushItem2.start_ts - paramCmGamePushItem1.start_ts;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amlm
  * JD-Core Version:    0.7.0.1
  */

@@ -1,32 +1,33 @@
 package com.tencent.turingfd.sdk.xq;
 
-public class float
+public abstract class float<T>
 {
-  public static boolean a(String paramString1, String paramString2)
+  public volatile T kf;
+  
+  public final T get()
   {
-    if (paramString2 == null) {}
-    for (;;)
-    {
-      return false;
-      int i = paramString2.indexOf('/');
-      if (i != -1)
+    Object localObject1 = this.kf;
+    if (localObject1 == null) {
+      try
       {
-        String str = paramString2.substring(i).trim();
-        if ((str.startsWith("/data/")) && (!str.startsWith("/data/data/" + paramString1 + "/")))
+        Object localObject2 = this.kf;
+        localObject1 = localObject2;
+        if (localObject2 == null)
         {
-          boolean bool = str.endsWith(".so");
-          if ((!bool) && (str.endsWith(".jar"))) {}
-          for (i = 1; ((bool) || (i != 0)) && (paramString2.contains(else.get(else.aa))); i = 0) {
-            return true;
-          }
+          localObject1 = (Banana)this;
+          localObject1 = new Bergamot();
+          this.kf = localObject1;
         }
+        return localObject1;
       }
+      finally {}
     }
+    return ?;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.turingfd.sdk.xq.float
  * JD-Core Version:    0.7.0.1
  */

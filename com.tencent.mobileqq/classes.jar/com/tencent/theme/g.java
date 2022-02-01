@@ -1,51 +1,151 @@
 package com.tencent.theme;
 
-import android.annotation.TargetApi;
-import android.graphics.drawable.Drawable.ConstantState;
-import android.util.LongSparseArray;
+import android.content.res.Resources;
+import android.os.AsyncTask.Status;
+import android.os.Process;
+import android.os.SystemClock;
+import android.text.TextUtils;
+import android.util.TypedValue;
+import java.io.File;
+import java.util.HashMap;
+import java.util.HashSet;
 
-@TargetApi(16)
 public class g
-  extends LongSparseArray<Drawable.ConstantState>
 {
-  private int a;
-  private f b;
-  private int c = 0;
+  Resources a = null;
+  SkinEngine b;
+  g.a c = null;
+  int d = 0;
+  HashMap<String, Integer> e = new HashMap();
+  HashSet<String> f = new HashSet();
   
-  public g(int paramInt, f paramf)
+  public g(SkinEngine paramSkinEngine, Resources paramResources)
   {
-    this.a = paramInt;
-    this.b = paramf;
+    this.a = paramResources;
+    this.d = 0;
+    this.b = paramSkinEngine;
+    this.c = new g.a(this, null);
   }
   
-  public Drawable.ConstantState a(int paramInt)
+  public Integer a(String paramString)
   {
-    Drawable.ConstantState localConstantState = null;
-    this.c += 1;
-    if (this.c > 100) {
-      i.d("SkinEngine", 2, "parentFunction:" + this + ", childFunction=" + this.b.b[this.a], null);
-    }
-    for (;;)
+    return (Integer)this.e.get(paramString);
+  }
+  
+  public boolean a()
+  {
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (this.c != null)
     {
-      this.c -= 1;
-      return localConstantState;
-      localConstantState = (Drawable.ConstantState)this.b.b[this.a].valueAt(paramInt);
+      bool1 = bool2;
+      if (this.c.getStatus() == AsyncTask.Status.RUNNING) {
+        bool1 = true;
+      }
     }
+    return bool1;
   }
   
-  public Drawable.ConstantState a(long paramLong)
+  public void b()
   {
-    return this.b.a(this.a, paramLong);
+    if (this.c != null)
+    {
+      if (this.c.getStatus() == AsyncTask.Status.PENDING)
+      {
+        d();
+        this.c.execute(new Void[0]);
+      }
+      do
+      {
+        return;
+        if (this.c.getStatus() == AsyncTask.Status.RUNNING)
+        {
+          this.c.cancel(true);
+          d();
+          this.c = new g.a(this, null);
+          this.c.execute(new Void[0]);
+          return;
+        }
+      } while (this.c.getStatus() != AsyncTask.Status.FINISHED);
+      this.c = new g.a(this, null);
+      d();
+      this.c.execute(new Void[0]);
+      return;
+    }
+    this.c = new g.a(this, null);
+    d();
+    this.c.execute(new Void[0]);
   }
   
-  public void a(long paramLong, Drawable.ConstantState paramConstantState)
+  public boolean b(String paramString)
   {
-    this.b.b[this.a].put(paramLong, paramConstantState);
+    if (TextUtils.isEmpty(paramString)) {
+      return false;
+    }
+    return this.f.contains(paramString);
   }
   
-  public int size()
+  public void c()
   {
-    return this.b.b[this.a].size();
+    new TypedValue();
+    long l1 = SystemClock.uptimeMillis();
+    h.d("SkinEngine", 2, "[record]start,  pid:" + Process.myPid(), null);
+    this.d = 0;
+    File localFile = this.b.getThemeDirFile();
+    if ((localFile != null) && (localFile.exists()))
+    {
+      String[] arrayOfString = localFile.list();
+      if ((arrayOfString != null) && (arrayOfString.length != 0))
+      {
+        int k = arrayOfString.length;
+        int i = 0;
+        while (i < k)
+        {
+          String str1 = arrayOfString[i];
+          Object localObject = new File(localFile, str1 + "/");
+          if (((File)localObject).exists())
+          {
+            localObject = ((File)localObject).list();
+            if (localObject != null)
+            {
+              int m = localObject.length;
+              int j = 0;
+              if (j < m)
+              {
+                String str2 = localObject[j];
+                str2 = str2.substring(str2.lastIndexOf("/") + 1);
+                int n = this.b.getDrawableDpi(str1 + "/");
+                if (-1 == n) {}
+                for (;;)
+                {
+                  j += 1;
+                  break;
+                  if (-2 == n)
+                  {
+                    this.f.add(str2);
+                    this.d += 1;
+                  }
+                  else
+                  {
+                    this.e.put(str2, Integer.valueOf(n));
+                    this.d += 1;
+                  }
+                }
+              }
+            }
+          }
+          i += 1;
+        }
+      }
+    }
+    long l2 = SystemClock.uptimeMillis();
+    h.d("SkinEngine", 2, "[record]end, mCacheEntry:" + this.d + " pid:" + Process.myPid() + " touchCacheDuration:" + (l2 - l1), null);
+  }
+  
+  protected void d()
+  {
+    this.e.clear();
+    this.d = 0;
   }
 }
 

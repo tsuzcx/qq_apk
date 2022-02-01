@@ -1,13 +1,40 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.ChatHistoryImageView;
+import android.app.Activity;
+import android.app.Application.ActivityLifecycleCallbacks;
+import android.os.Bundle;
 
-public class acob
-  implements DialogInterface.OnClickListener
+class acob
+  implements Application.ActivityLifecycleCallbacks
 {
-  public acob(ChatHistoryImageView paramChatHistoryImageView) {}
+  acob(acnw paramacnw) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void onActivityCreated(Activity paramActivity, Bundle paramBundle) {}
+  
+  public void onActivityDestroyed(Activity paramActivity)
+  {
+    if (paramActivity == acnw.a(this.a)) {
+      acnw.a(this.a).l();
+    }
+  }
+  
+  public void onActivityPaused(Activity paramActivity)
+  {
+    if (paramActivity == acnw.a(this.a)) {
+      acnw.a(this.a).j();
+    }
+  }
+  
+  public void onActivityResumed(Activity paramActivity)
+  {
+    if (paramActivity == acnw.a(this.a)) {
+      acnw.a(this.a).k();
+    }
+  }
+  
+  public void onActivitySaveInstanceState(Activity paramActivity, Bundle paramBundle) {}
+  
+  public void onActivityStarted(Activity paramActivity) {}
+  
+  public void onActivityStopped(Activity paramActivity) {}
 }
 
 

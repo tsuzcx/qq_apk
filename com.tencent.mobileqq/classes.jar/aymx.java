@@ -1,63 +1,62 @@
-import android.app.Activity;
-import android.content.Intent;
+import android.text.TextUtils;
 import android.view.View;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.contact.addcontact.ClassificationSearchActivity;
 import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.search.activity.UniteSearchActivity;
-import java.util.List;
+import com.tencent.qphone.base.remote.SimpleAccount;
+import com.tencent.qphone.base.util.QLog;
 
-public class aymx
-  implements aynt
+class aymx
+  extends anmu
 {
-  private ahip jdField_a_of_type_Ahip;
-  private String jdField_a_of_type_JavaLangString;
-  private List<aynu> jdField_a_of_type_JavaUtilList;
+  aymx(aymu paramaymu) {}
   
-  public aymx(ahip paramahip, List<aynu> paramList, String paramString)
+  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
   {
-    this.jdField_a_of_type_JavaUtilList = paramList;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Ahip = paramahip;
-  }
-  
-  public int a()
-  {
-    return 1;
-  }
-  
-  public String a()
-  {
-    if (UniteSearchActivity.d == 12) {
-      return alud.a(2131705739) + swy.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), BaseApplicationImpl.getContext());
+    if ((!paramBoolean) || (TextUtils.isEmpty(paramString)) || (aymu.a(this.a) == null) || (aymu.a(this.a).isFinishing()) || (aymu.a(this.a) == null)) {
+      QLog.d("AccountPanel", 1, String.format("onUpdateCustomHead return, isSuccess: %s, uin: %s", new Object[] { Boolean.valueOf(paramBoolean), paramString }));
     }
-    return alud.a(2131705738);
+    do
+    {
+      return;
+      aynn localaynn = aymu.a(this.a, paramString);
+      if (localaynn != null) {
+        localaynn.a(aoch.a(aymu.a(this.a), 1, paramString));
+      }
+    } while (!QLog.isColorLevel());
+    QLog.d("AccountPanel", 2, String.format("onUpdateCustomHead, isSuccess: %s, uin: %s", new Object[] { Boolean.valueOf(paramBoolean), paramString }));
   }
   
-  public List<aynu> a()
+  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
   {
-    return this.jdField_a_of_type_JavaUtilList;
-  }
-  
-  public void a(View paramView)
-  {
-    ayvm.a(this.jdField_a_of_type_JavaLangString, 90, 0, paramView);
-    Intent localIntent = new Intent();
-    localIntent.putExtra("from_key", 2);
-    localIntent.putExtra("last_key_words", this.jdField_a_of_type_JavaLangString);
-    localIntent.setClass(paramView.getContext(), ClassificationSearchActivity.class);
-    localIntent.putExtra("jump_src_key", 0);
-    ClassificationSearchActivity.a((Activity)paramView.getContext(), localIntent, this.jdField_a_of_type_Ahip);
-    paramView = paramView.getContext();
-    if ((paramView != null) && ((paramView instanceof BaseActivity))) {
-      nrt.a(((BaseActivity)paramView).app, "P_CliOper", "Pb_account_lifeservice", "0", "0X8005D22", "0X8005D22", 0, 0, "0", "1", this.jdField_a_of_type_JavaLangString, "", false);
+    if ((!paramBoolean) || (TextUtils.isEmpty(paramString)) || (aymu.a(this.a) == null) || (aymu.a(this.a).isFinishing()) || (aymu.a(this.a) == null))
+    {
+      QLog.d("AccountPanel", 1, String.format("onUpdateFriendInfo return, isSuccess: %s, uin: %s", new Object[] { Boolean.valueOf(paramBoolean), paramString }));
+      return;
     }
-  }
-  
-  public String b()
-  {
-    return this.jdField_a_of_type_JavaLangString;
+    aynn localaynn = aymu.a(this.a, paramString);
+    Object localObject;
+    if (localaynn != null)
+    {
+      if (localaynn.jdField_a_of_type_Int != 2) {
+        break label147;
+      }
+      localObject = bglf.b(aymu.a(this.a), paramString, false);
+    }
+    for (;;)
+    {
+      localaynn.a((CharSequence)localObject);
+      if (!QLog.isColorLevel()) {
+        break;
+      }
+      QLog.d("AccountPanel", 2, String.format("onUpdateFriendInfo, isSuccess: %s, uin: %s", new Object[] { Boolean.valueOf(paramBoolean), paramString }));
+      return;
+      label147:
+      localObject = (SimpleAccount)localaynn.jdField_a_of_type_AndroidViewView.getTag(2131361895);
+      if (localObject != null) {
+        localObject = bddy.a(aymu.a(this.a), (SimpleAccount)localObject);
+      } else {
+        localObject = null;
+      }
+    }
   }
 }
 

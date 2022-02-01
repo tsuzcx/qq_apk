@@ -1,13 +1,18 @@
-import android.graphics.Point;
-import android.view.View;
+import android.content.Context;
+import android.graphics.Bitmap;
+import com.tencent.ark.open.ArkAppCacheMgr.OnGetAppIcon;
 
-public abstract interface appl
+class appl
+  implements ArkAppCacheMgr.OnGetAppIcon
 {
-  public abstract View a(int paramInt);
+  appl(appj paramappj, Context paramContext) {}
   
-  public abstract void a(View paramView);
-  
-  public abstract void a(View paramView, Point paramPoint1, Point paramPoint2);
+  public void callback(String paramString, Bitmap paramBitmap)
+  {
+    if (paramBitmap != null) {
+      appj.a(this.jdField_a_of_type_Appj, paramBitmap, this.jdField_a_of_type_AndroidContentContext);
+    }
+  }
 }
 
 

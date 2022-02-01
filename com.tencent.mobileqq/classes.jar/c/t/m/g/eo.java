@@ -1,75 +1,99 @@
 package c.t.m.g;
 
-import android.os.Handler;
-import android.os.HandlerThread;
-import android.telephony.ServiceState;
-import android.telephony.SignalStrength;
+import android.content.Context;
+import android.util.Pair;
+import java.io.IOException;
 
-final class eo
+public final class eo
+  implements ey
 {
-  volatile boolean a;
-  byte[] b = new byte[0];
-  final ea c;
-  eu d = null;
-  ServiceState e = null;
-  HandlerThread f;
-  eo.a g;
-  eo.b h;
-  Handler i;
-  SignalStrength j;
-  private eu k = null;
-  private eu l = null;
-  private int m = 0;
+  private static d a = null;
   
-  public eo(ea paramea)
+  public eo(Context paramContext, String paramString)
   {
-    this.c = paramea;
+    try
+    {
+      a = a.a(new b(paramContext, "test_uuid", paramString));
+      return;
+    }
+    catch (Throwable paramContext)
+    {
+      a = null;
+    }
   }
   
-  private void a(eu parameu)
+  private static String a(String paramString)
   {
-    if ((!this.a) || (parameu == null) || (this.c == null)) {
-      return;
+    String str2 = "GBK";
+    String str1 = str2;
+    int j;
+    int i;
+    if (paramString != null)
+    {
+      paramString = paramString.split(";");
+      j = paramString.length;
+      i = 0;
+    }
+    for (;;)
+    {
+      str1 = str2;
+      if (i < j)
+      {
+        str1 = paramString[i].trim();
+        int k = str1.indexOf("charset=");
+        if (-1 != k) {
+          str1 = str1.substring(k + 8, str1.length());
+        }
+      }
+      else
+      {
+        return str1;
+      }
+      i += 1;
+    }
+  }
+  
+  public final Pair<byte[], String> a(String paramString, byte[] paramArrayOfByte)
+  {
+    if (a == null) {
+      throw new IOException("can not init net sdk");
     }
     try
     {
-      if (this.d != null) {
-        parameu.a(this.d.a());
+      d locald = a;
+      paramString = locald.a(paramString, paramArrayOfByte);
+      paramString.a("User-Agent", "Dalvik/1.6.0 (Linux; U; Android 4.4; Nexus 5 Build/KRT16M)");
+      paramString.b();
+      new StringBuilder("req id: ").append(paramString.a());
+      paramString = locald.a(paramString);
+      if (paramString.a() == 0) {
+        break label123;
       }
-      this.d = parameu;
-      this.c.b(parameu);
-      return;
+      throw new IOException("net sdk error: errorCode=" + paramString.a());
     }
-    finally {}
-  }
-  
-  public final void a()
-  {
-    if (!this.a) {
-      return;
-    }
-    this.a = false;
-    synchronized (this.b)
+    catch (Exception paramString)
     {
-      if (this.h != null) {
-        this.h.a(0);
+      if (!(paramString instanceof IOException)) {
+        break label230;
       }
-      if (this.g != null)
+    }
+    throw ((IOException)paramString);
+    label123:
+    switch (paramString.b())
+    {
+    }
+    for (;;)
+    {
+      throw new IOException("net sdk error: httpStatus=" + paramString.b());
+      if (paramString.c() != null)
       {
-        this.g.a = true;
-        this.g.removeCallbacksAndMessages(null);
-        this.g = null;
+        paramArrayOfByte = a(paramString.a("content-type"));
+        return Pair.create(paramString.c(), paramArrayOfByte);
       }
-      if (this.f != null)
-      {
-        this.f.quit();
-        this.f = null;
-      }
-      this.d = null;
-      this.e = null;
-      this.h = null;
-      this.j = null;
-      return;
+      paramString = Pair.create("{}".getBytes(), "utf-8");
+      return paramString;
+      label230:
+      throw new IOException(paramString.getMessage());
     }
   }
 }

@@ -18,6 +18,7 @@ import com.tencent.mobileqq.mini.ui.NavigationBar;
 import com.tencent.mobileqq.mini.util.DisplayUtil;
 import com.tencent.mobileqq.mini.widget.TabBarView;
 import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import com.tencent.qqmini.sdk.launcher.utils.LiuHaiUtils;
 import com.tencent.widget.immersive.ImmersiveUtils;
 import java.lang.ref.WeakReference;
 
@@ -83,35 +84,43 @@ class MiniAppVideoPlayer$16
       if ((MiniAppVideoPlayer.access$000(this.this$0) == 0) || (MiniAppVideoPlayer.access$000(this.this$0) == 180))
       {
         if (j >= i) {
-          break label690;
+          break label715;
         }
         bool = false;
       }
     }
     for (;;)
     {
-      i = DisplayUtil.getRealHeight(this.this$0.getContext());
+      j = DisplayUtil.getRealHeight(this.this$0.getContext());
+      LiuHaiUtils.initLiuHaiProperty(localActivity);
+      i = j;
+      if (!bool)
+      {
+        i = j;
+        if (LiuHaiUtils.sHasNotch) {
+          i = j - LiuHaiUtils.getNotchInScreenHeight(localActivity);
+        }
+      }
       j = ImmersiveUtils.a();
-      label458:
-      label463:
+      label486:
       Object localObject;
       if (bool)
       {
         k = i;
-        if (!bool) {
-          break label607;
+        if (bool) {
+          i = j;
         }
         if (this.this$0.webviewContainer != null) {
-          break label612;
+          break label637;
         }
-        localObject = new RelativeLayout.LayoutParams(k, j);
+        localObject = new RelativeLayout.LayoutParams(k, i);
         ((RelativeLayout.LayoutParams)localObject).leftMargin = 0;
         ((RelativeLayout.LayoutParams)localObject).topMargin = 0;
         ((CoverVideoView)this.this$0.getParent()).setLayoutParams((ViewGroup.LayoutParams)localObject);
-        label511:
+        label541:
         localActivity.getWindow().getDecorView().setSystemUiVisibility(2);
         if (!bool) {
-          break label653;
+          break label678;
         }
         if (this.this$0.direction != -90)
         {
@@ -131,36 +140,33 @@ class MiniAppVideoPlayer$16
         MiniAppVideoPlayer.access$5100(this.this$0, bool);
         return;
         if (j <= i) {
-          break label690;
+          break label715;
         }
         bool = false;
         break;
         k = j;
-        break label458;
-        label607:
-        j = i;
-        break label463;
-        label612:
-        localObject = new FrameLayout.LayoutParams(k, j);
+        break label486;
+        label637:
+        localObject = new FrameLayout.LayoutParams(k, i);
         ((FrameLayout.LayoutParams)localObject).leftMargin = 0;
         ((FrameLayout.LayoutParams)localObject).topMargin = 0;
         ((CoverVideoView)this.this$0.getParent()).setLayoutParams((ViewGroup.LayoutParams)localObject);
-        break label511;
-        label653:
+        break label541;
+        label678:
         if ((this.this$0.direction == 180) || (this.this$0.direction == -180)) {
           i = 9;
         } else {
           i = 1;
         }
       }
-      label690:
+      label715:
       bool = true;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.widget.media.MiniAppVideoPlayer.16
  * JD-Core Version:    0.7.0.1
  */

@@ -1,24 +1,19 @@
-import com.tencent.mobileqq.activity.QQSettingMe;
-import java.lang.ref.WeakReference;
+import java.util.Map;
 
 public class adsy
-  implements zif
 {
-  WeakReference<QQSettingMe> a;
-  
-  public adsy(QQSettingMe paramQQSettingMe)
-  {
-    this.a = new WeakReference(paramQQSettingMe);
-  }
-  
-  public int a()
-  {
-    QQSettingMe localQQSettingMe = (QQSettingMe)this.a.get();
-    if (localQQSettingMe != null) {
-      return localQQSettingMe.a();
-    }
-    return 0;
-  }
+  public int a;
+  public String a;
+  public Map<String, String> a;
+  public boolean a;
+  public String b;
+  public boolean b;
+  public String c;
+  public boolean c;
+  public String d;
+  public boolean d;
+  public String e;
+  public boolean e;
 }
 
 

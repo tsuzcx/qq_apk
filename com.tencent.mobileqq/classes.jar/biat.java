@@ -1,7 +1,14 @@
-public class biat {}
+import com.tencent.map.lib.basemap.data.GeoPoint;
+
+public abstract interface biat
+{
+  public abstract void onMapScrollEnd(GeoPoint paramGeoPoint);
+  
+  public abstract void onMapScrollStart(GeoPoint paramGeoPoint);
+}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     biat
  * JD-Core Version:    0.7.0.1
  */

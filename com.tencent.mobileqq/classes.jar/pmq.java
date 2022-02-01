@@ -1,23 +1,40 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.qphone.base.util.QLog;
+import java.util.concurrent.ThreadFactory;
+import java.util.concurrent.atomic.AtomicInteger;
 
-class pmq
-  implements puq
+public class pmq
+  implements ThreadFactory
 {
-  pmq(pmo parampmo, ArticleInfo paramArticleInfo, pgd parampgd) {}
+  private final String jdField_a_of_type_JavaLangString;
+  private final ThreadGroup jdField_a_of_type_JavaLangThreadGroup;
+  private final AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(1);
   
-  public void a(int paramInt, ViewBase paramViewBase, TemplateBean paramTemplateBean)
+  public pmq()
   {
-    QLog.d("NewPolymericMultiVideoProteusItem", 1, "position : " + paramInt);
-    pmo.a(this.jdField_a_of_type_Pmo, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, paramInt);
-    this.jdField_a_of_type_Pgd.a().a().a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, paramViewBase.getNativeView(), paramInt, 0L);
+    Object localObject = System.getSecurityManager();
+    if (localObject != null) {}
+    for (localObject = ((SecurityManager)localObject).getThreadGroup();; localObject = Thread.currentThread().getThreadGroup())
+    {
+      this.jdField_a_of_type_JavaLangThreadGroup = ((ThreadGroup)localObject);
+      this.jdField_a_of_type_JavaLangString = "readinjoy-common-";
+      return;
+    }
+  }
+  
+  public Thread newThread(Runnable paramRunnable)
+  {
+    paramRunnable = new Thread(this.jdField_a_of_type_JavaLangThreadGroup, paramRunnable, this.jdField_a_of_type_JavaLangString + this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.getAndIncrement(), 0L);
+    if (paramRunnable.isDaemon()) {
+      paramRunnable.setDaemon(false);
+    }
+    if (paramRunnable.getPriority() != 5) {
+      paramRunnable.setPriority(5);
+    }
+    return paramRunnable;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     pmq
  * JD-Core Version:    0.7.0.1
  */

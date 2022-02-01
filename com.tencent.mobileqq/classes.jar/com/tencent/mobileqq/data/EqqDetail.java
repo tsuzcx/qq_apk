@@ -1,9 +1,6 @@
 package com.tencent.mobileqq.data;
 
-import alud;
-import awge;
-import awhp;
-import awhs;
+import anni;
 import com.tencent.mobileqq.mp.mobileqq_mp.ConfigGroupInfo;
 import com.tencent.mobileqq.mp.mobileqq_mp.ConfigInfo;
 import com.tencent.mobileqq.mp.mobileqq_mp.EqqAccountInfo;
@@ -14,18 +11,21 @@ import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.persistence.Entity;
+import com.tencent.mobileqq.persistence.notColumn;
+import com.tencent.mobileqq.persistence.unique;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Iterator;
 import java.util.List;
-import ndv;
+import nmp;
 
 public class EqqDetail
-  extends awge
+  extends Entity
 {
   public byte[] accountData;
   public String address = "";
-  @awhp
-  public String certifiedDescription = alud.a(2131704581);
+  @notColumn
+  public String certifiedDescription = anni.a(2131702978);
   public int certifiedGrade;
   public String displayNumber = "";
   public long eqqAccountFlag;
@@ -39,12 +39,12 @@ public class EqqDetail
   public boolean mIsSyncLbs;
   public boolean mIsSyncLbsSelected;
   public int mShowMsgFlag = -1;
-  public String name = alud.a(2131704582);
+  public String name = anni.a(2131702979);
   public String phoneNumber = "";
   public String realSummary = "";
   public int seqno;
-  public String summary = alud.a(2131704580);
-  @awhs
+  public String summary = anni.a(2131702977);
+  @unique
   public String uin;
   
   public EqqDetail() {}
@@ -225,7 +225,7 @@ public class EqqDetail
   
   public boolean hasIvrAbility()
   {
-    if (!ndv.a) {
+    if (!nmp.a) {
       if (QLog.isDevelopLevel()) {
         QLog.d("EqqDetail", 4, "Don't support sharp");
       }

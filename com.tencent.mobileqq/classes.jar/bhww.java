@@ -1,13 +1,10 @@
-import android.view.View;
-import com.tencent.widget.ExpandableListView;
-
 public abstract interface bhww
 {
-  public abstract boolean a(ExpandableListView paramExpandableListView, View paramView, int paramInt1, int paramInt2, long paramLong);
+  public abstract void a(boolean paramBoolean, int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bhww
  * JD-Core Version:    0.7.0.1
  */

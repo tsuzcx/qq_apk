@@ -1,20 +1,14 @@
 import com.tencent.mobileqq.data.ChatMessage;
 
-class fz
-  implements aufy<Void>
+public abstract class fz
 {
-  fz(fx paramfx, ChatMessage paramChatMessage) {}
+  public abstract void a(ChatMessage paramChatMessage, int paramInt);
   
-  public void a(Void paramVoid)
-  {
-    if (this.jdField_a_of_type_Fx.a(this.jdField_a_of_type_ComTencentMobileqqDataChatMessage) != null) {
-      bdom.a(this.jdField_a_of_type_Fx.a);
-    }
-  }
+  public abstract void a(ChatMessage paramChatMessage, boolean paramBoolean, int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     fz
  * JD-Core Version:    0.7.0.1
  */

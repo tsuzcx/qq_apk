@@ -1,20 +1,48 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.intervideo.huayang.Monitor.1;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.qphone.base.util.QLog;
 
 public class atbh
 {
-  public static boolean a = true;
+  int jdField_a_of_type_Int;
+  public atbj a;
+  atbl jdField_a_of_type_Atbl;
+  MessageRecord jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
+  String jdField_a_of_type_JavaLangString;
+  int jdField_b_of_type_Int = 0;
+  String jdField_b_of_type_JavaLangString;
   
-  public static void a(String paramString)
+  atbh(atan paramatan, String paramString1, String paramString2, int paramInt, MessageRecord paramMessageRecord)
   {
-    if (a) {
-      b(paramString);
-    }
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_b_of_type_JavaLangString = paramString2;
+    this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord = paramMessageRecord;
+    this.jdField_a_of_type_Atbj = new atbi(this, paramatan, paramMessageRecord);
   }
   
-  public static void b(String paramString)
+  void a()
   {
-    ThreadManager.executeOnNetWorkThread(new Monitor.1("https://cgi.pub.qq.com/report/report_vm?monitors=[$ID$]&t=$TIMESTAMP$".replace("$ID$", paramString).replace("$TIMESTAMP$", String.valueOf(System.currentTimeMillis()))));
+    if ((this.jdField_a_of_type_Atbl != null) && (this.jdField_b_of_type_Int == 0))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("FileMultiMsgManager<FileAssistant>", 1, "task excute : run task suc. status[" + this.jdField_b_of_type_Int + "]");
+      }
+      this.jdField_b_of_type_Int = 1;
+      this.jdField_a_of_type_Atbl.a(this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_a_of_type_Atbj);
+    }
+    while (!QLog.isColorLevel()) {
+      return;
+    }
+    QLog.i("FileMultiMsgManager<FileAssistant>", 1, "task excute : run task fail. status[" + this.jdField_b_of_type_Int + "]");
+  }
+  
+  void b()
+  {
+    if ((this.jdField_a_of_type_Atbl != null) && ((this.jdField_b_of_type_Int == 1) || (this.jdField_b_of_type_Int == 0)))
+    {
+      this.jdField_a_of_type_Atbl.a(this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_Int);
+      this.jdField_b_of_type_Int = 4;
+    }
   }
 }
 

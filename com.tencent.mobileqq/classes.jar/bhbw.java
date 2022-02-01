@@ -1,135 +1,314 @@
-import android.os.Debug;
-import android.os.Debug.MemoryInfo;
-import android.os.Handler;
-import android.os.SystemClock;
-import com.tencent.qqmini.sdk.core.manager.ThreadManager;
-import com.tencent.qqmini.sdk.core.proxy.MiniAppProxy;
-import com.tencent.qqmini.sdk.core.proxy.ProxyManager;
-import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
-import com.tencent.qqmini.sdk.log.QMLog;
-import com.tencent.qqmini.sdk.report.MiniGamePerformanceStatics.1;
-import java.util.Locale;
+import android.content.Context;
+import android.text.TextUtils;
+import com.tencent.biz.flatbuffers.FlatBuffersParser;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.vas.VasQuickUpdateEngine;
+import com.tencent.mobileqq.vas.VasQuickUpdateEngine.TagItemInfo;
+import com.tencent.mobileqq.vas.VasQuickUpdateManager;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.io.IOException;
+import java.lang.ref.WeakReference;
+import java.util.Iterator;
+import java.util.List;
 
-public class bhbw
+public abstract class bhbw
+  implements bgyr, bgyv
 {
-  private float jdField_a_of_type_Float;
-  private long jdField_a_of_type_Long;
-  private final Debug.MemoryInfo jdField_a_of_type_AndroidOsDebug$MemoryInfo = new Debug.MemoryInfo();
-  private final bhlq jdField_a_of_type_Bhlq = new bhlq();
-  private final bhlr jdField_a_of_type_Bhlr = new bhlr();
-  private final bhls jdField_a_of_type_Bhls = new bhls(200);
-  private MiniAppInfo jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo;
-  private final Runnable jdField_a_of_type_JavaLangRunnable = new MiniGamePerformanceStatics.1(this);
-  private long jdField_b_of_type_Long;
-  private final bhlq jdField_b_of_type_Bhlq = new bhlq();
+  private static final int ERROR_NULL_APP = 10087;
+  private static final int ERROR_WRONG_APP = 10088;
+  private static final int ERROR_X86 = 10086;
+  private static final String TAG = "BaseUpdateCallback";
+  private static bhby<bgyv> listeners = new bhby();
+  private static bhby<WeakReference<bgyv>> weakListeners = new bhby();
   
-  private float a()
+  private static String getKey(long paramLong, String paramString1, String paramString2)
   {
-    Debug.getMemoryInfo(this.jdField_a_of_type_AndroidOsDebug$MemoryInfo);
-    return this.jdField_a_of_type_AndroidOsDebug$MemoryInfo.getTotalPss() / 1024.0F;
+    if (TextUtils.isEmpty(paramString2)) {
+      return paramLong + "_" + paramString1;
+    }
+    return paramLong + "_" + paramString2;
   }
   
-  private static String a(float paramFloat)
+  private boolean isDefaultSc(String paramString)
   {
-    return String.format(Locale.US, "%.1f", new Object[] { Float.valueOf(paramFloat) });
+    String str = getScidPrefix();
+    return (!TextUtils.isEmpty(str)) && (paramString.startsWith(str));
   }
   
-  private void d()
+  public boolean canUpdate(QQAppInterface paramQQAppInterface, long paramLong, String paramString1, String paramString2)
   {
-    this.jdField_a_of_type_Bhlq.a();
-    this.jdField_b_of_type_Bhlq.a();
-    this.jdField_a_of_type_Bhls.a();
-    this.jdField_a_of_type_Long = bhbh.a("-1");
-    this.jdField_b_of_type_Long = SystemClock.uptimeMillis();
+    return true;
   }
   
-  private void e()
+  public void cleanCache(Context paramContext)
   {
-    float f2 = 0.0F;
-    MiniAppProxy localMiniAppProxy;
-    float f5;
-    float f6;
-    float f7;
-    float f3;
-    if (this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo != null)
+    if (!TextUtils.isEmpty(getRootDir())) {
+      VasQuickUpdateEngine.safeDeleteFile(new File(paramContext.getFilesDir() + File.separator + getRootDir()));
+    }
+  }
+  
+  public boolean deleteFiles(QQAppInterface paramQQAppInterface, long paramLong, String paramString)
+  {
+    if ((paramQQAppInterface != null) && (isDefaultSc(paramString))) {
+      return VasQuickUpdateEngine.safeDeleteFile(new File(getDir(paramQQAppInterface.getApp(), paramString)));
+    }
+    return false;
+  }
+  
+  protected void doOnCompleted(QQAppInterface paramQQAppInterface, long paramLong, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2)
+  {
+    if ((paramQQAppInterface != null) && (isZip_KeepZip()) && (paramInt1 == 0) && (isDefaultSc(paramString1)))
     {
-      long l = SystemClock.uptimeMillis() - this.jdField_b_of_type_Long;
-      if (l < 10000L)
+      paramString2 = getDir(paramQQAppInterface.getApp(), paramString1);
+      paramQQAppInterface = getSavePath(paramQQAppInterface.getApp(), paramString1);
+    }
+    try
+    {
+      bgmg.a(paramQQAppInterface, paramString2, false);
+      return;
+    }
+    catch (IOException paramQQAppInterface)
+    {
+      QLog.e("BaseUpdateCallback", 1, "_onCompleted: ", paramQQAppInterface);
+    }
+  }
+  
+  protected void doOnProgress(QQAppInterface paramQQAppInterface, long paramLong1, String paramString1, String paramString2, long paramLong2, long paramLong3) {}
+  
+  public void download(QQAppInterface paramQQAppInterface, int paramInt, bgyv parambgyv, boolean paramBoolean)
+  {
+    download(paramQQAppInterface, getScid(paramInt), parambgyv, paramBoolean);
+  }
+  
+  public void download(QQAppInterface paramQQAppInterface, long paramLong, String paramString, bgyv parambgyv, boolean paramBoolean)
+  {
+    if (FlatBuffersParser.c())
+    {
+      QLog.e("BaseUpdateCallback", 1, "x86 not support");
+      if (parambgyv != null) {
+        parambgyv.onCompleted(paramQQAppInterface, paramLong, paramString, "", "BaseUpdateCallback", 10086, 0);
+      }
+    }
+    do
+    {
+      return;
+      if (paramQQAppInterface != null) {
+        break label272;
+      }
+      localObject = BaseApplicationImpl.getApplication();
+      if (localObject != null) {
+        break;
+      }
+      QLog.e("BaseUpdateCallback", 1, "null app");
+    } while (parambgyv == null);
+    parambgyv.onCompleted(paramQQAppInterface, paramLong, paramString, "", "BaseUpdateCallback", 10087, 0);
+    return;
+    Object localObject = ((BaseApplicationImpl)localObject).getRuntime();
+    if ((localObject instanceof QQAppInterface)) {
+      paramQQAppInterface = (QQAppInterface)localObject;
+    }
+    label259:
+    label272:
+    for (;;)
+    {
+      if (parambgyv != null)
       {
-        d();
+        localObject = getKey(paramLong, paramString, "");
+        if (!paramBoolean) {
+          break label259;
+        }
+        weakListeners.a((String)localObject, new WeakReference(parambgyv));
+      }
+      for (;;)
+      {
+        QLog.e("BaseUpdateCallback", 1, "download: " + paramLong + "_" + paramString + ", " + parambgyv);
+        ((VasQuickUpdateManager)paramQQAppInterface.getManager(184)).downloadItem(paramLong, paramString, "BaseUpdateCallback");
+        return;
+        QLog.e("BaseUpdateCallback", 1, "wrong app:" + localObject);
+        if (parambgyv == null) {
+          break;
+        }
+        parambgyv.onCompleted(paramQQAppInterface, paramLong, paramString, "", "BaseUpdateCallback", 10088, 0);
+        return;
+        listeners.a((String)localObject, parambgyv);
+      }
+    }
+  }
+  
+  public void download(QQAppInterface paramQQAppInterface, String paramString)
+  {
+    download(paramQQAppInterface, paramString, null, false);
+  }
+  
+  public void download(QQAppInterface paramQQAppInterface, String paramString, bgyv parambgyv, boolean paramBoolean)
+  {
+    download(paramQQAppInterface, getBID(), paramString, parambgyv, paramBoolean);
+  }
+  
+  public abstract long getBID();
+  
+  public String getDir(Context paramContext, String paramString)
+  {
+    return new File(paramContext.getFilesDir() + File.separator + getRootDir(), paramString).getAbsolutePath();
+  }
+  
+  public int getId(String paramString)
+  {
+    try
+    {
+      int i = Integer.parseInt(paramString.substring(getScidPrefix().length()));
+      return i;
+    }
+    catch (Exception localException)
+    {
+      QLog.e("BaseUpdateCallback", 1, "getId error scid: " + paramString, localException);
+    }
+    return 0;
+  }
+  
+  public VasQuickUpdateEngine.TagItemInfo getItemInfo(QQAppInterface paramQQAppInterface, long paramLong, String paramString)
+  {
+    if ((paramQQAppInterface != null) && (isDefaultSc(paramString)))
+    {
+      VasQuickUpdateEngine.TagItemInfo localTagItemInfo = new VasQuickUpdateEngine.TagItemInfo();
+      localTagItemInfo.bPreConfig = false;
+      localTagItemInfo.bSaveInDir = false;
+      localTagItemInfo.strSavePath = getSavePath(paramQQAppInterface.getApp(), paramString);
+      return localTagItemInfo;
+    }
+    return null;
+  }
+  
+  protected String getRootDir()
+  {
+    return "";
+  }
+  
+  public String getSavePath(Context paramContext, String paramString)
+  {
+    String str = getDir(paramContext, paramString);
+    paramContext = str;
+    if (isZip_KeepZip()) {
+      paramContext = str + File.separator + paramString + ".zip";
+    }
+    return paramContext;
+  }
+  
+  public String getScid(int paramInt)
+  {
+    return getScidPrefix() + paramInt;
+  }
+  
+  protected String getScidPrefix()
+  {
+    return "";
+  }
+  
+  public boolean isFileExists(QQAppInterface paramQQAppInterface, long paramLong, String paramString)
+  {
+    if ((paramQQAppInterface != null) && (isDefaultSc(paramString))) {
+      return new File(getSavePath(paramQQAppInterface.getApp(), paramString)).exists();
+    }
+    return false;
+  }
+  
+  protected boolean isZip_KeepZip()
+  {
+    return true;
+  }
+  
+  public final void onCompleted(QQAppInterface paramQQAppInterface, long paramLong, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2)
+  {
+    doOnCompleted(paramQQAppInterface, paramLong, paramString1, paramString2, paramString3, paramInt1, paramInt2);
+    Object localObject1 = getItemInfo(paramQQAppInterface, paramLong, paramString1);
+    if (localObject1 == null) {
+      QLog.e("BaseUpdateCallback", 1, "onComplete getItemInfo failed: " + paramLong + "_" + paramString1);
+    }
+    boolean bool;
+    int i;
+    label88:
+    Object localObject2;
+    if (localObject1 == null)
+    {
+      bool = false;
+      if ((bool) && (paramInt1 == 0)) {
+        break label172;
+      }
+      i = 1;
+      localObject2 = getKey(paramLong, paramString1, paramString2);
+      if (i == 0) {
+        break label178;
+      }
+    }
+    label172:
+    label178:
+    for (localObject1 = listeners.b((String)localObject2);; localObject1 = listeners.a((String)localObject2))
+    {
+      localObject1 = ((List)localObject1).iterator();
+      while (((Iterator)localObject1).hasNext()) {
+        ((bgyv)((Iterator)localObject1).next()).onCompleted(paramQQAppInterface, paramLong, paramString1, paramString2, paramString3, paramInt1, paramInt2);
+      }
+      bool = ((VasQuickUpdateEngine.TagItemInfo)localObject1).bPreConfig;
+      break;
+      i = 0;
+      break label88;
+    }
+    if (i != 0) {}
+    for (localObject1 = weakListeners.b((String)localObject2);; localObject1 = weakListeners.a((String)localObject2))
+    {
+      localObject1 = ((List)localObject1).iterator();
+      while (((Iterator)localObject1).hasNext())
+      {
+        localObject2 = (bgyv)((WeakReference)((Iterator)localObject1).next()).get();
+        if (localObject2 != null) {
+          ((bgyv)localObject2).onCompleted(paramQQAppInterface, paramLong, paramString1, paramString2, paramString3, paramInt1, paramInt2);
+        }
+      }
+    }
+  }
+  
+  public final void onProgress(QQAppInterface paramQQAppInterface, long paramLong1, String paramString1, String paramString2, long paramLong2, long paramLong3)
+  {
+    Object localObject1 = getItemInfo(paramQQAppInterface, paramLong1, paramString1);
+    if (localObject1 == null) {
+      QLog.e("BaseUpdateCallback", 1, "onProgress getItemInfo failed: " + paramLong1 + "_" + paramString1);
+    }
+    if (localObject1 == null) {}
+    Object localObject2;
+    for (boolean bool = false;; bool = ((VasQuickUpdateEngine.TagItemInfo)localObject1).bPreConfig)
+    {
+      localObject1 = getKey(paramLong1, paramString1, paramString2);
+      if (bool) {
         return;
       }
-      localMiniAppProxy = (MiniAppProxy)ProxyManager.get(MiniAppProxy.class);
-      f5 = (float)(bhbh.a("-1") - this.jdField_a_of_type_Long) / ((float)l / 1000.0F);
-      f6 = this.jdField_a_of_type_Bhlq.a();
-      f7 = this.jdField_a_of_type_Bhlr.a() - this.jdField_a_of_type_Float;
-      if (!this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo.isReportTypeMiniGame()) {
-        break label365;
-      }
-      f3 = this.jdField_b_of_type_Bhlq.a();
-      float f4 = this.jdField_a_of_type_Bhls.a();
-      bhck.a(this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo, 629, a(f5), "1");
-      bhck.a(this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo, 631, a(f6), "1");
-      bhck.a(this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo, 643, a(f7), "1");
-      bhck.a(this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo, 630, a(f3), "1");
-      bhck.a(this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo, 642, a(f4), "1");
-      bhcc.a(f3, f4);
-      f1 = f3;
-      f2 = f4;
-      if (localMiniAppProxy.isDebugVersion())
-      {
-        QMLog.i("MiniGamePerformance", "cpu:" + f5 + " avgMemory:" + f6 + " memoryGrowth:" + f7 + " avgFps:" + f3 + " fpsVariance:" + f4 + " dalivkPss:" + this.jdField_a_of_type_AndroidOsDebug$MemoryInfo.dalvikPss + " nativePss:" + this.jdField_a_of_type_AndroidOsDebug$MemoryInfo.nativePss + " otherPss:" + this.jdField_a_of_type_AndroidOsDebug$MemoryInfo.otherPss + " totalPss:" + this.jdField_a_of_type_AndroidOsDebug$MemoryInfo.getTotalPss());
-        f2 = f4;
+      doOnProgress(paramQQAppInterface, paramLong1, paramString1, paramString2, paramLong2, paramLong3);
+      localObject2 = listeners.a((String)localObject1).iterator();
+      while (((Iterator)localObject2).hasNext()) {
+        ((bgyv)((Iterator)localObject2).next()).onProgress(paramQQAppInterface, paramLong1, paramString1, paramString2, paramLong2, paramLong3);
       }
     }
-    for (float f1 = f3;; f1 = 0.0F)
+    localObject1 = weakListeners.a((String)localObject1).iterator();
+    while (((Iterator)localObject1).hasNext())
     {
-      bhcd.a(this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo, f5, f6, f7, f1, f2);
-      d();
-      return;
-      label365:
-      bhck.a(this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo, 629, a(f5), bhck.a(this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo));
-      bhck.a(this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo, 631, a(f6), bhck.a(this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo));
-      bhck.a(this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo, 643, a(f7), bhck.a(this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo));
-      if (localMiniAppProxy.isDebugVersion()) {
-        QMLog.i("MiniGamePerformance", "cpu:" + f5 + " avgMemory:" + f6 + " memoryGrowth:" + f7 + " dalivkPss:" + this.jdField_a_of_type_AndroidOsDebug$MemoryInfo.dalvikPss + " nativePss:" + this.jdField_a_of_type_AndroidOsDebug$MemoryInfo.nativePss + " otherPss:" + this.jdField_a_of_type_AndroidOsDebug$MemoryInfo.otherPss + " totalPss:" + this.jdField_a_of_type_AndroidOsDebug$MemoryInfo.getTotalPss());
+      localObject2 = (bgyv)((WeakReference)((Iterator)localObject1).next()).get();
+      if (localObject2 != null) {
+        ((bgyv)localObject2).onProgress(paramQQAppInterface, paramLong1, paramString1, paramString2, paramLong2, paramLong3);
       }
     }
   }
   
-  public void a()
+  public void removeListener(long paramLong, String paramString, bgyv parambgyv)
   {
-    this.jdField_a_of_type_Float = a();
-  }
-  
-  public void a(float paramFloat)
-  {
-    this.jdField_a_of_type_Bhls.a(paramFloat);
-    this.jdField_b_of_type_Bhlq.a(paramFloat);
-  }
-  
-  public void a(MiniAppInfo paramMiniAppInfo)
-  {
-    this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo = paramMiniAppInfo;
-  }
-  
-  public void b()
-  {
-    d();
-    Handler localHandler = ThreadManager.a();
-    localHandler.removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
-    localHandler.postDelayed(this.jdField_a_of_type_JavaLangRunnable, 10000L);
-  }
-  
-  public void c()
-  {
-    ThreadManager.a().removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
-    e();
+    paramString = getKey(paramLong, paramString, "");
+    listeners.a(paramString, parambgyv, false);
+    weakListeners.a(paramString, parambgyv, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bhbw
  * JD-Core Version:    0.7.0.1
  */

@@ -1,27 +1,22 @@
 import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.data.AutoReplyText;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public abstract interface aynu
-  extends aynr
+class aynu
+  implements View.OnClickListener
 {
-  public abstract int a();
+  aynu(aynq paramaynq, AutoReplyText paramAutoReplyText) {}
   
-  public abstract CharSequence a();
-  
-  public abstract String a();
-  
-  public abstract void a(int paramInt1, int paramInt2);
-  
-  public abstract void a(View paramView);
-  
-  public abstract boolean a();
-  
-  public abstract int b();
-  
-  public abstract CharSequence b();
-  
-  public abstract CharSequence c();
-  
-  public abstract CharSequence d();
+  public void onClick(View paramView)
+  {
+    if ((aynq.a(this.jdField_a_of_type_Aynq) != null) && (paramView != null))
+    {
+      int i = this.jdField_a_of_type_ComTencentMobileqqDataAutoReplyText.getTextId();
+      aynq.a(this.jdField_a_of_type_Aynq, (View)paramView.getParent(), i);
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

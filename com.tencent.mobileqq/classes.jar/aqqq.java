@@ -1,63 +1,87 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.filemanager.activity.recentfile.QfileBaseRecentFileTabView;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.qphone.base.util.QLog;
 
 public class aqqq
-  implements View.OnClickListener
+  extends aqkz<aqqp>
 {
-  public aqqq(QfileBaseRecentFileTabView paramQfileBaseRecentFileTabView) {}
-  
-  public void onClick(View paramView)
+  public static boolean a()
   {
-    Object localObject1 = paramView.getTag();
-    Object localObject2;
-    FileManagerEntity localFileManagerEntity;
-    int i;
-    if ((localObject1 instanceof aqqz))
+    aqqp localaqqp = (aqqp)aqlk.a().a(632);
+    if (localaqqp != null) {}
+    for (boolean bool = localaqqp.a();; bool = false)
     {
-      localObject2 = (aqqz)paramView.getTag();
-      localObject1 = ((aqqz)localObject2).jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView;
-      localFileManagerEntity = (FileManagerEntity)((aqqz)localObject2).jdField_a_of_type_JavaLangObject;
-      i = ((aqqz)localObject2).b;
-      i = ((aqqz)localObject2).c;
+      QLog.d("SDK_SHARE.OpenSdkFakeMsgProcessor", 1, new Object[] { "isEnableFakeMsg = ", Boolean.valueOf(bool) });
+      return bool;
     }
+  }
+  
+  @NonNull
+  public aqqp a(int paramInt)
+  {
+    return new aqqp();
+  }
+  
+  @Nullable
+  public aqqp a(aqlg[] paramArrayOfaqlg)
+  {
+    int i = 0;
+    if (paramArrayOfaqlg == null) {}
     for (;;)
     {
-      if ((paramView.getId() == 2131366301) && (QfileBaseRecentFileTabView.b(this.a))) {
-        azqs.b(QfileBaseRecentFileTabView.s(this.a), "dc00898", "", "", "0X800A665", "0X800A665", 0, 0, "", "", "", "");
-      }
-      if (localFileManagerEntity != null)
-      {
-        localObject2 = this.a;
-        if (paramView.getId() != 2131366301) {
-          break label183;
-        }
-      }
-      label183:
-      for (boolean bool = true;; bool = false)
-      {
-        ((QfileBaseRecentFileTabView)localObject2).a(localFileManagerEntity, (View)localObject1, bool);
-        return;
-        if (!(localObject1 instanceof aqnh)) {
-          break label188;
-        }
-        localObject2 = (aqnh)paramView.getTag();
-        localObject1 = ((aqnh)localObject2).jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView;
-        localFileManagerEntity = (FileManagerEntity)((aqnh)localObject2).jdField_a_of_type_JavaLangObject;
-        i = ((aqnh)localObject2).b;
-        i = ((aqnh)localObject2).jdField_a_of_type_Int;
+      QLog.d("SDK_SHARE.OpenSdkFakeMsgProcessor", 1, new Object[] { "onParsed confFiles.length=", Integer.valueOf(i) });
+      if ((paramArrayOfaqlg == null) || (paramArrayOfaqlg.length <= 0)) {
         break;
       }
-      label188:
-      localObject1 = null;
-      localFileManagerEntity = null;
+      new aqqp();
+      return aqqp.a(paramArrayOfaqlg);
+      i = paramArrayOfaqlg.length;
     }
+    return null;
+  }
+  
+  public void a(aqqp paramaqqp)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("SDK_SHARE.OpenSdkFakeMsgProcessor", 2, "onUpdate " + paramaqqp.toString());
+    }
+  }
+  
+  public Class<aqqp> clazz()
+  {
+    return aqqp.class;
+  }
+  
+  public boolean isAccountRelated()
+  {
+    return true;
+  }
+  
+  public boolean isNeedCompressed()
+  {
+    return true;
+  }
+  
+  public boolean isNeedStoreLargeFile()
+  {
+    return false;
+  }
+  
+  public int migrateOldVersion()
+  {
+    return 0;
+  }
+  
+  public void onReqFailed(int paramInt) {}
+  
+  public int type()
+  {
+    return 632;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aqqq
  * JD-Core Version:    0.7.0.1
  */

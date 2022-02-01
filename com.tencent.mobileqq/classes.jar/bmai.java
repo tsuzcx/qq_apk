@@ -1,43 +1,29 @@
-import android.os.SystemClock;
-import com.tencent.mobileqq.richmedia.capture.data.MusicItemInfo;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.capture.view.MusicProviderView;
+import android.annotation.TargetApi;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.os.Build.VERSION;
+import com.tencent.qphone.base.util.BaseApplication;
+import cooperation.qzone.music.QzoneWebMusicJsPlugin;
 
 public class bmai
-  extends blts
+  implements DialogInterface.OnClickListener
 {
-  public bmai(MusicProviderView paramMusicProviderView) {}
+  public bmai(QzoneWebMusicJsPlugin paramQzoneWebMusicJsPlugin, int paramInt1, int paramInt2, int paramInt3) {}
   
-  public void a(int paramInt) {}
-  
-  public void a(String paramString) {}
-  
-  public void a(String paramString, int paramInt)
+  @TargetApi(9)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    long l = SystemClock.uptimeMillis();
-    if ((this.a.jdField_a_of_type_Long == 0L) || (l - this.a.jdField_a_of_type_Long > 16L))
+    paramDialogInterface = BaseApplication.getContext().getSharedPreferences("share", 0);
+    if (Build.VERSION.SDK_INT >= 9) {
+      paramDialogInterface.edit().putBoolean("qzone_bg_music_auto_play_warn_flag", false).apply();
+    }
+    for (;;)
     {
-      this.a.jdField_a_of_type_Bhtd.sendEmptyMessage(2);
-      this.a.jdField_a_of_type_Long = l;
-    }
-  }
-  
-  public void a(String paramString, boolean paramBoolean)
-  {
-    this.a.jdField_a_of_type_Bhtd.sendEmptyMessage(2);
-  }
-  
-  public void a(String paramString, boolean paramBoolean, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("MusicProviderView", 2, new Object[] { "onFinish, succ:", Boolean.valueOf(paramBoolean), ", failcode:", Integer.valueOf(paramInt) });
-    }
-    this.a.jdField_a_of_type_Bhtd.sendEmptyMessage(2);
-    if ((paramBoolean) && (this.a.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo != null) && (this.a.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo.getLocalPath().equals(paramString))) {
-      this.a.jdField_a_of_type_Bhtd.sendEmptyMessage(1);
-    }
-    if ((!paramBoolean) && (paramInt == -104)) {
-      this.a.jdField_a_of_type_Bhtd.sendEmptyMessage(5);
+      QzoneWebMusicJsPlugin.access$400(this.jdField_a_of_type_CooperationQzoneMusicQzoneWebMusicJsPlugin, this.jdField_a_of_type_Int, this.b, this.c);
+      return;
+      paramDialogInterface.edit().putBoolean("qzone_bg_music_auto_play_warn_flag", false).commit();
     }
   }
 }

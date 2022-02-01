@@ -1,19 +1,19 @@
+import android.support.v7.widget.RecyclerView.ViewHolder;
 import android.view.View;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.recent.cur.DragTextView;
-import com.tencent.widget.URLThemeImageView;
+import com.tencent.widget.FixSizeImageView;
 
-public class ajjz
-  extends ajjw
+class ajjz
+  extends RecyclerView.ViewHolder
 {
-  public View a;
-  public TextView a;
-  public DragTextView a;
-  public URLThemeImageView a;
-  public TextView b;
-  public URLThemeImageView b;
-  public TextView c;
-  public TextView d;
+  public FixSizeImageView a;
+  public FixSizeImageView b;
+  
+  public ajjz(ajjx paramajjx, View paramView)
+  {
+    super(paramView);
+    this.jdField_a_of_type_ComTencentWidgetFixSizeImageView = ((FixSizeImageView)paramView.findViewById(2131367826));
+    this.b = ((FixSizeImageView)paramView.findViewById(2131370529));
+  }
 }
 
 

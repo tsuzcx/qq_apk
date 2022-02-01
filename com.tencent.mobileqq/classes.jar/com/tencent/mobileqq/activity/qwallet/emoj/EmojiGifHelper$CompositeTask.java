@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.activity.qwallet.emoj;
 
-import ajeu;
+import akww;
 import android.text.TextUtils;
-import azid;
+import bcjd;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 
@@ -22,7 +22,7 @@ public class EmojiGifHelper$CompositeTask
   
   private String getGifPath()
   {
-    String str = ajeu.a(null) + "Camera/";
+    String str = akww.a(null) + "Camera/";
     File localFile = new File(str + "gif");
     if ((localFile.exists()) && (!localFile.isDirectory())) {
       localFile.delete();
@@ -47,7 +47,7 @@ public class EmojiGifHelper$CompositeTask
     boolean bool = false;
     try
     {
-      int i = azid.a(paramConvertParam.inPath, paramConvertParam.videoWidth, paramConvertParam.videoHeight, paramConvertParam.videoDuration, paramString, 7, 30, 100);
+      int i = bcjd.a(paramConvertParam.inPath, paramConvertParam.videoWidth, paramConvertParam.videoHeight, paramConvertParam.videoDuration, paramString, 7, 30, 100);
       if (QLog.isColorLevel()) {
         QLog.i("EmojiGifHelper", 2, "Video2GifConverter: convert retCode=" + i);
       }
@@ -122,7 +122,7 @@ public class EmojiGifHelper$CompositeTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.qwallet.emoj.EmojiGifHelper.CompositeTask
  * JD-Core Version:    0.7.0.1
  */

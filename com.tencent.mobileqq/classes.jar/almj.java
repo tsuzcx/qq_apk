@@ -1,65 +1,18 @@
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.ChatActivity;
-import com.tencent.mobileqq.apollo.view.ApolloPanel;
-import com.tencent.mobileqq.apollo.view.ApolloPanel.1.1;
-import com.tencent.mobileqq.apollo.view.ApolloPanel.1.2;
-import com.tencent.mobileqq.apollo.view.ApolloPanelGuideView;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ApolloActionData;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.activity.richmedia.state.RMVideoSwitchCameraPicMgr;
 
 public class almj
-  extends alkv
 {
-  public almj(ApolloPanel paramApolloPanel) {}
+  public int a;
+  public boolean a;
+  public int b;
+  public boolean b;
   
-  public void a()
+  private almj(RMVideoSwitchCameraPicMgr paramRMVideoSwitchCameraPicMgr)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ApolloPanel", 2, "tab download Done");
-    }
-  }
-  
-  public void a(ApolloActionData paramApolloActionData)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ApolloPanel", 2, "action res done. action=" + paramApolloActionData.actionId);
-    }
-    this.a.a(paramApolloActionData);
-    if (ApolloPanel.a(this.a) != null) {
-      ApolloPanel.a(this.a).a(paramApolloActionData);
-    }
-  }
-  
-  public void a(Boolean paramBoolean)
-  {
-    if ((this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie == null) || (this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a == null)) {}
-    MqqHandler localMqqHandler;
-    do
-    {
-      do
-      {
-        do
-        {
-          return;
-          localMqqHandler = this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a.getHandler(ChatActivity.class);
-        } while (localMqqHandler == null);
-        localMqqHandler.post(new ApolloPanel.1.1(this));
-        if (!paramBoolean.booleanValue()) {
-          break;
-        }
-        this.a.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a.getCurrentAccountUin());
-      } while (this.a.c == null);
-      this.a.c.clear();
-      this.a.d(this.a.b(ApolloPanel.jdField_a_of_type_Int));
-      return;
-    } while ((this.a.jdField_a_of_type_Almg == null) || (this.a.jdField_a_of_type_Almg.c != 3));
-    if (QLog.isColorLevel()) {
-      QLog.d("ApolloPanel", 2, "onJsonDone in panel fail refresh panel");
-    }
-    localMqqHandler.post(new ApolloPanel.1.2(this));
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_b_of_type_Int = 0;
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_b_of_type_Boolean = true;
   }
 }
 

@@ -4,10 +4,10 @@ import android.content.Intent;
 import android.os.IBinder;
 import android.os.Message;
 import android.os.RemoteException;
-import auwd;
-import avbd;
-import avbe;
-import avbm;
+import axdm;
+import axim;
+import axin;
+import axiv;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 import mqq.app.AppService;
@@ -15,25 +15,25 @@ import mqq.app.AppService;
 public class ConnectNearbyProcService
   extends AppService
 {
-  private static avbm jdField_a_of_type_Avbm;
+  private static axiv jdField_a_of_type_Axiv;
   private static Object jdField_a_of_type_JavaLangObject = new Object();
-  private auwd jdField_a_of_type_Auwd;
-  private avbe jdField_a_of_type_Avbe = new avbd(this);
+  private axdm jdField_a_of_type_Axdm;
+  private axin jdField_a_of_type_Axin = new axim(this);
   
   public static Message a(Message paramMessage)
   {
-    if ((jdField_a_of_type_Avbm == null) || (paramMessage == null)) {
+    if ((jdField_a_of_type_Axiv == null) || (paramMessage == null)) {
       return null;
     }
     try
     {
       synchronized (jdField_a_of_type_JavaLangObject)
       {
-        if (jdField_a_of_type_Avbm == null) {
+        if (jdField_a_of_type_Axiv == null) {
           return null;
         }
       }
-      paramMessage = jdField_a_of_type_Avbm.a(paramMessage);
+      paramMessage = jdField_a_of_type_Axiv.a(paramMessage);
     }
     catch (RemoteException paramMessage)
     {
@@ -48,7 +48,7 @@ public class ConnectNearbyProcService
     if ((this.app == null) || (!(this.app instanceof QQAppInterface))) {
       throw new IllegalArgumentException("not QQAppInterface. wrong.");
     }
-    this.jdField_a_of_type_Auwd = ((QQAppInterface)this.app).a();
+    this.jdField_a_of_type_Axdm = ((QQAppInterface)this.app).a();
   }
   
   public static boolean a()
@@ -57,7 +57,7 @@ public class ConnectNearbyProcService
     {
       synchronized (jdField_a_of_type_JavaLangObject)
       {
-        if (jdField_a_of_type_Avbm != null)
+        if (jdField_a_of_type_Axiv != null)
         {
           bool = true;
           return bool;
@@ -74,18 +74,18 @@ public class ConnectNearbyProcService
   
   public static Object[] a(int paramInt, Object... paramVarArgs)
   {
-    if (jdField_a_of_type_Avbm == null) {
+    if (jdField_a_of_type_Axiv == null) {
       return null;
     }
     try
     {
       synchronized (jdField_a_of_type_JavaLangObject)
       {
-        if (jdField_a_of_type_Avbm == null) {
+        if (jdField_a_of_type_Axiv == null) {
           return null;
         }
       }
-      paramVarArgs = jdField_a_of_type_Avbm.a(new BasicTypeDataParcel(paramInt, paramVarArgs));
+      paramVarArgs = jdField_a_of_type_Axiv.a(new BasicTypeDataParcel(paramInt, paramVarArgs));
     }
     catch (RemoteException paramVarArgs)
     {
@@ -101,16 +101,16 @@ public class ConnectNearbyProcService
   
   private Message b(Message paramMessage)
   {
-    if (this.jdField_a_of_type_Auwd != null) {
-      return this.jdField_a_of_type_Auwd.a(this, paramMessage);
+    if (this.jdField_a_of_type_Axdm != null) {
+      return this.jdField_a_of_type_Axdm.a(this, paramMessage);
     }
     return null;
   }
   
   private Object[] b(int paramInt, Object... paramVarArgs)
   {
-    if (this.jdField_a_of_type_Auwd != null) {
-      return this.jdField_a_of_type_Auwd.a(this, paramInt, paramVarArgs);
+    if (this.jdField_a_of_type_Axdm != null) {
+      return this.jdField_a_of_type_Axdm.a(this, paramInt, paramVarArgs);
     }
     return null;
   }
@@ -118,7 +118,7 @@ public class ConnectNearbyProcService
   public IBinder onBind(Intent paramIntent)
   {
     a();
-    return this.jdField_a_of_type_Avbe.asBinder();
+    return this.jdField_a_of_type_Axin.asBinder();
   }
   
   public void onCreate()
@@ -130,18 +130,18 @@ public class ConnectNearbyProcService
   {
     synchronized (jdField_a_of_type_JavaLangObject)
     {
-      jdField_a_of_type_Avbm = null;
+      jdField_a_of_type_Axiv = null;
       if (QLog.isColorLevel()) {
         QLog.i("nearby_ipc_log_tag", 2, "ConnectNearbyProcService onUnbind.");
       }
-      this.jdField_a_of_type_Auwd = null;
+      this.jdField_a_of_type_Axdm = null;
       return super.onUnbind(paramIntent);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.ipc.ConnectNearbyProcService
  * JD-Core Version:    0.7.0.1
  */

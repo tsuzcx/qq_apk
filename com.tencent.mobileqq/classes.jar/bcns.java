@@ -1,43 +1,42 @@
 import android.text.TextUtils;
-import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.data.MessageForTroopFile;
-import java.util.Iterator;
-import java.util.List;
-import java.util.UUID;
+import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.PathResult;
+import com.tencent.mobileqq.activity.qwallet.report.VACDReportUtil;
+import com.tencent.mobileqq.soload.LoadParam;
+import com.tencent.mobileqq.soload.LoadParam.LoadItem;
+import com.tencent.mobileqq.soload.config.SoConfig.SoDetailInfo;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
 class bcns
-  extends alpa
+  implements akse
 {
-  bcns(bcnr parambcnr) {}
+  bcns(bcnp parambcnp, boolean paramBoolean1, boolean paramBoolean2, bcoq parambcoq) {}
   
-  protected void a(Object paramObject)
+  public void onResult(int paramInt, PreloadManager.PathResult paramPathResult)
   {
-    if (this.a.a == null) {}
-    for (;;)
-    {
-      return;
-      paramObject = (bbtn)paramObject;
-      if (((!paramObject.jdField_a_of_type_Boolean) || (paramObject.jdField_b_of_type_Int != 1)) && (paramObject.jdField_b_of_type_Int == 12))
-      {
-        long l = paramObject.jdField_b_of_type_Long;
-        Iterator localIterator = this.a.a.a().a(String.valueOf(l), 1).iterator();
-        while (localIterator.hasNext())
-        {
-          Object localObject = (ChatMessage)localIterator.next();
-          if ((((ChatMessage)localObject).msgtype == -2017) && ((((ChatMessage)localObject).extraflag == 32772) || (((ChatMessage)localObject).extraflag == 32768)) && (((ChatMessage)localObject).isSendFromLocal()))
-          {
-            localObject = (MessageForTroopFile)localObject;
-            if ((((MessageForTroopFile)localObject).uuid != null) && (((MessageForTroopFile)localObject).uuid.equals(paramObject.jdField_a_of_type_JavaUtilUUID.toString()))) {
-              this.a.a.a().b(((MessageForTroopFile)localObject).frienduin, ((MessageForTroopFile)localObject).istroop, ((MessageForTroopFile)localObject).uniseq);
-            } else if ((!TextUtils.isEmpty(((MessageForTroopFile)localObject).url)) && (!TextUtils.isEmpty(paramObject.e)) && (((MessageForTroopFile)localObject).url.equals(paramObject.e))) {
-              this.a.a.a().b(((MessageForTroopFile)localObject).frienduin, ((MessageForTroopFile)localObject).istroop, ((MessageForTroopFile)localObject).uniseq);
-            }
-          }
-        }
-      }
+    if (QLog.isColorLevel()) {
+      QLog.i("SoLoadWidget.GetSoTaskAsync", 2, "[downloadSo] resCode=" + paramInt + ",pathRes=" + paramPathResult);
     }
+    VACDReportUtil.a(this.jdField_a_of_type_Bcnp.jdField_a_of_type_ComTencentMobileqqSoloadLoadParam.mReportSeq, null, "load.item.download.end", "sc=" + paramPathResult.subErrCode, paramInt, null);
+    this.jdField_a_of_type_Bcnp.jdField_a_of_type_Int = paramPathResult.subErrCode;
+    if ((paramInt == 0) && (!TextUtils.isEmpty(paramPathResult.folderPath)))
+    {
+      this.jdField_a_of_type_Bcnp.jdField_a_of_type_Boolean = true;
+      paramPathResult = new File(paramPathResult.folderPath, this.jdField_a_of_type_Bcnp.jdField_a_of_type_ComTencentMobileqqSoloadLoadParam$LoadItem.soFileName).getAbsolutePath();
+      bcnp.a(this.jdField_a_of_type_Bcnp, this.jdField_a_of_type_Boolean, this.b, this.jdField_a_of_type_Bcoq, paramPathResult, this.jdField_a_of_type_Bcnp.jdField_a_of_type_ComTencentMobileqqSoloadConfigSoConfig$SoDetailInfo.crc, 2);
+      return;
+    }
+    if (paramInt == 2)
+    {
+      bcnp.a(this.jdField_a_of_type_Bcnp, 4);
+      return;
+    }
+    if (paramPathResult.subErrCode == 404)
+    {
+      bcnp.a(this.jdField_a_of_type_Bcnp, 9);
+      return;
+    }
+    bcnp.a(this.jdField_a_of_type_Bcnp, 3);
   }
 }
 

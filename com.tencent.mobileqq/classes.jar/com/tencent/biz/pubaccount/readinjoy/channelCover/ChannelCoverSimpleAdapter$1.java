@@ -3,18 +3,18 @@ package com.tencent.biz.pubaccount.readinjoy.channelCover;
 import android.app.Activity;
 import android.content.Intent;
 import com.tencent.biz.pubaccount.readinjoy.struct.ChannelCoverInfo;
-import nrt;
-import ntd;
-import oiz;
+import oat;
+import och;
 import org.json.JSONException;
 import org.json.JSONObject;
-import rom;
-import ron;
+import ovq;
+import skb;
+import skc;
 
 public class ChannelCoverSimpleAdapter$1
   implements Runnable
 {
-  public ChannelCoverSimpleAdapter$1(oiz paramoiz, ChannelCoverInfo paramChannelCoverInfo) {}
+  public ChannelCoverSimpleAdapter$1(ovq paramovq, ChannelCoverInfo paramChannelCoverInfo) {}
   
   public void run()
   {
@@ -22,12 +22,12 @@ public class ChannelCoverSimpleAdapter$1
     {
       try
       {
-        if ((oiz.a(this.this$0) != null) && ((oiz.a(this.this$0) instanceof Activity)) && (((Activity)oiz.a(this.this$0)).getIntent() != null))
+        if ((ovq.a(this.this$0) != null) && ((ovq.a(this.this$0) instanceof Activity)) && (((Activity)ovq.a(this.this$0)).getIntent() != null))
         {
-          i = ((Activity)oiz.a(this.this$0)).getIntent().getIntExtra("channel_from", -1);
+          i = ((Activity)ovq.a(this.this$0)).getIntent().getIntExtra("channel_from", -1);
           JSONObject localJSONObject = new JSONObject();
           localJSONObject.put("is_followed", "1");
-          nrt.a(null, "", "0X8007BE6", "0X8007BE6", 0, 0, "1", "", "", new ron(ntd.a(this.a.mChannelCoverId, localJSONObject)).O(i).a().a(), false);
+          oat.a(null, "", "0X8007BE6", "0X8007BE6", 0, 0, "1", "", "", new skc(och.a(this.a.mChannelCoverId, localJSONObject)).O(i).a().a(), false);
           return;
         }
       }

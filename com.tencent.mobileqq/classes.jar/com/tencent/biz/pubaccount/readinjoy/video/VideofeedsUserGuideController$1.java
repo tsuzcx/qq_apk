@@ -2,19 +2,19 @@ package com.tencent.biz.pubaccount.readinjoy.video;
 
 import android.view.View;
 import android.widget.LinearLayout;
-import rlo;
+import sgp;
 
 public class VideofeedsUserGuideController$1
   implements Runnable
 {
-  public VideofeedsUserGuideController$1(rlo paramrlo) {}
+  public VideofeedsUserGuideController$1(sgp paramsgp) {}
   
   public void run()
   {
-    rlo.a(this.this$0).setVisibility(8);
-    rlo.a(this.this$0).findViewById(2131379437).setVisibility(8);
-    rlo.a(this.this$0).findViewById(2131379431).setVisibility(8);
-    rlo.a(this.this$0).findViewById(2131379432).setVisibility(8);
+    sgp.a(this.this$0).setVisibility(8);
+    sgp.a(this.this$0).findViewById(2131380361).setVisibility(8);
+    sgp.a(this.this$0).findViewById(2131380357).setVisibility(8);
+    sgp.a(this.this$0).findViewById(2131380358).setVisibility(8);
   }
 }
 

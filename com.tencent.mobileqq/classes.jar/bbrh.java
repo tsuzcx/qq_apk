@@ -1,318 +1,292 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.Color;
-import android.graphics.LightingColorFilter;
-import android.graphics.drawable.Drawable;
-import android.graphics.drawable.Drawable.ConstantState;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.ImageView;
-import android.widget.LinearLayout.LayoutParams;
-import android.widget.RelativeLayout;
-import android.widget.RelativeLayout.LayoutParams;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.MessageHandler;
+import com.tencent.ark.ArkDispatchTask;
+import com.tencent.ark.ark.Application;
+import com.tencent.ark.ark.VariantWrapper;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.app.TroopManager;
-import com.tencent.mobileqq.bubble.ChatXListView;
-import com.tencent.mobileqq.data.TroopInfo;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.mobileqq.theme.ThemeUtil;
-import com.tencent.mobileqq.troop.data.TroopEntranceBar.1;
-import com.tencent.mobileqq.troop.data.TroopEntranceBar.2;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.Observable;
-import java.util.Observer;
-import tencent.im.oidb.cmd0x487.oidb_0x487.ReqBody;
+import com.tencent.mobileqq.ark.ArkAppCenter;
+import com.tencent.mobileqq.search.rich.ArkAppModule.1;
+import com.tencent.mobileqq.search.rich.ArkAppModule.2;
+import java.lang.ref.WeakReference;
 
 public class bbrh
-  extends Observable
-  implements View.OnClickListener
+  extends apih
 {
-  public int a;
-  public long a;
-  public aeqo a;
-  protected altm a;
-  public Context a;
-  private LightingColorFilter jdField_a_of_type_AndroidGraphicsLightingColorFilter;
-  private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-  protected View a;
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  public RelativeLayout a;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  protected bdbb a;
-  public SessionInfo a;
-  public QQAppInterface a;
-  public ChatXListView a;
-  public List<TroopInfo> a;
-  public Map<String, Integer> a;
-  public Observer a;
-  public boolean a;
-  public int b;
-  private LightingColorFilter jdField_b_of_type_AndroidGraphicsLightingColorFilter;
-  private Drawable jdField_b_of_type_AndroidGraphicsDrawableDrawable;
-  View jdField_b_of_type_AndroidViewView;
-  public List<String> b;
-  public int c;
-  private Drawable jdField_c_of_type_AndroidGraphicsDrawableDrawable;
-  View jdField_c_of_type_AndroidViewView;
-  private int d;
-  private int e;
+  private WeakReference<bbri> a;
   
-  public bbrh()
+  public bbrh(ark.Application paramApplication, long paramLong)
   {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_b_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_JavaUtilMap = new HashMap();
-    this.jdField_a_of_type_Altm = new bbrk(this, null);
+    super(paramApplication, paramLong);
   }
   
-  public void a()
+  private int a(ark.VariantWrapper paramVariantWrapper, int paramInt)
   {
-    deleteObservers();
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Altm);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = null;
-    this.jdField_a_of_type_AndroidContentContext = null;
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = null;
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = null;
-    this.jdField_a_of_type_Aeqo = null;
-    this.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView = null;
-    this.jdField_a_of_type_JavaUtilObserver = null;
-  }
-  
-  public void a(long paramLong, int paramInt)
-  {
-    oidb_0x487.ReqBody localReqBody = new oidb_0x487.ReqBody();
-    localReqBody.uint32_channel.set(1);
-    localReqBody.uint64_subscribe_code.set(paramLong);
-    mzy.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, new bbri(this, paramLong), localReqBody.toByteArray(), "OidbSvc.0x487_0", 1159, paramInt);
-  }
-  
-  public void a(QQAppInterface paramQQAppInterface)
-  {
-    if ((this.jdField_b_of_type_Int <= 0) && (this.jdField_a_of_type_Int <= 0))
+    if (paramVariantWrapper == null) {}
+    int i;
+    do
     {
-      this.jdField_c_of_type_Int = -1;
-      return;
-    }
-    this.jdField_a_of_type_JavaUtilList.clear();
-    this.jdField_b_of_type_JavaUtilList.clear();
-    this.jdField_a_of_type_JavaUtilMap.clear();
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_b_of_type_Int = 0;
-    Object localObject1 = ((TroopManager)paramQQAppInterface.getManager(52)).a();
-    try
-    {
-      long l = Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a).longValue();
-      localObject1 = ((List)localObject1).iterator();
-      while (((Iterator)localObject1).hasNext())
-      {
-        Object localObject2 = (awge)((Iterator)localObject1).next();
-        if ((localObject2 instanceof TroopInfo))
-        {
-          localObject2 = (TroopInfo)localObject2;
-          if (((TroopInfo)localObject2).associatePubAccount == l)
-          {
-            this.jdField_b_of_type_Int += 1;
-            this.jdField_a_of_type_JavaUtilList.add(localObject2);
-            if (paramQQAppInterface.b(((TroopInfo)localObject2).troopuin) == 3) {
-              this.jdField_b_of_type_JavaUtilList.add(((TroopInfo)localObject2).troopuin);
-            }
-            this.jdField_a_of_type_JavaUtilMap.put(((TroopInfo)localObject2).troopuin, Integer.valueOf(paramQQAppInterface.a().a(((TroopInfo)localObject2).troopuin, 1)));
-          }
-        }
+      return paramInt;
+      i = paramVariantWrapper.GetType();
+      if (i == 4) {
+        return (int)paramVariantWrapper.GetDouble();
       }
-      return;
-    }
-    catch (NumberFormatException localNumberFormatException)
-    {
-      QLog.d(".troop.troop_pubaccount", 2, "publicAccount uin format exception. sessionInfo.curFriendUin is not long. value is " + this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
-      d();
-      e();
-      paramQQAppInterface.a().b(this.jdField_b_of_type_JavaUtilList);
-    }
+    } while (i != 3);
+    return paramVariantWrapper.GetInt();
   }
   
-  public void a(QQAppInterface paramQQAppInterface, Context paramContext, Observer paramObserver, SessionInfo paramSessionInfo, RelativeLayout paramRelativeLayout, aeqo paramaeqo, ChatXListView paramChatXListView)
+  private long a(ark.VariantWrapper paramVariantWrapper, long paramLong)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = paramSessionInfo;
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = paramRelativeLayout;
-    if (this.jdField_a_of_type_AndroidWidgetRelativeLayout != null) {
-      this.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131373445);
-    }
-    this.jdField_a_of_type_Aeqo = paramaeqo;
-    this.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView = paramChatXListView;
-    this.jdField_a_of_type_JavaUtilObserver = paramObserver;
-    deleteObservers();
-    addObserver(paramObserver);
-    paramQQAppInterface.addObserver(this.jdField_a_of_type_Altm);
-    this.jdField_a_of_type_Bdbb = new bdbb(paramContext, paramQQAppInterface);
-    this.d = paramContext.getResources().getColor(2131166174);
-    this.e = paramContext.getResources().getColor(2131166175);
-    this.jdField_a_of_type_AndroidGraphicsLightingColorFilter = new LightingColorFilter(Color.argb(255, 0, 0, 0), this.d);
-    this.jdField_b_of_type_AndroidGraphicsLightingColorFilter = new LightingColorFilter(Color.argb(255, 0, 0, 0), this.e);
+    if (paramVariantWrapper == null) {}
+    int i;
+    do
+    {
+      return paramLong;
+      i = paramVariantWrapper.GetType();
+      if (i == 4) {
+        return paramVariantWrapper.GetDouble();
+      }
+    } while (i != 3);
+    return paramVariantWrapper.GetInt();
   }
   
-  public void b()
+  private String a(ark.VariantWrapper paramVariantWrapper, String paramString)
   {
-    if ((this.jdField_a_of_type_AndroidWidgetRelativeLayout == null) || (this.jdField_a_of_type_Boolean)) {
-      return;
-    }
-    if (this.jdField_c_of_type_AndroidViewView == null) {
-      this.jdField_c_of_type_AndroidViewView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131560396, null);
-    }
-    if (this.jdField_a_of_type_AndroidWidgetRelativeLayout.indexOfChild(this.jdField_c_of_type_AndroidViewView) == -1)
+    if (paramVariantWrapper == null) {}
+    int i;
+    do
     {
-      localObject = new RelativeLayout.LayoutParams(-2, -2);
-      ((RelativeLayout.LayoutParams)localObject).topMargin = bdaq.a(this.jdField_a_of_type_AndroidContentContext, 18.0F);
-      ((RelativeLayout.LayoutParams)localObject).addRule(3, 2131373445);
-      ((RelativeLayout.LayoutParams)localObject).addRule(11);
-      ((RelativeLayout.LayoutParams)localObject).height = bdaq.a(this.jdField_a_of_type_AndroidContentContext, 41.0F);
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(this.jdField_c_of_type_AndroidViewView, (ViewGroup.LayoutParams)localObject);
+      return paramString;
+      i = paramVariantWrapper.GetType();
+      if (i == 5) {
+        return paramVariantWrapper.GetString();
+      }
+    } while (i != 6);
+    return paramVariantWrapper.GetTableAsJsonString();
+  }
+  
+  public void Destruct()
+  {
+    super.Destruct();
+  }
+  
+  public String GetTypeName()
+  {
+    return "QQSearch";
+  }
+  
+  public boolean HasMenthod(String paramString)
+  {
+    if (paramString.equals("Report")) {}
+    do
+    {
+      return true;
+      if (paramString.equals("GetContainerInfo")) {
+        return false;
+      }
+    } while ((paramString.equals("SetTalkBackText")) || (paramString.equals("Notify")));
+    return false;
+  }
+  
+  public boolean Invoke(String paramString, ark.VariantWrapper[] paramArrayOfVariantWrapper, ark.VariantWrapper paramVariantWrapper)
+  {
+    if (!a(paramString)) {}
+    do
+    {
+      return false;
+      if (paramString.equals("Report")) {
+        return a(paramArrayOfVariantWrapper, paramVariantWrapper);
+      }
+      if (paramString.equals("SetTalkBackText")) {
+        return b(paramArrayOfVariantWrapper, paramVariantWrapper);
+      }
+    } while (!paramString.equals("Notify"));
+    return c(paramArrayOfVariantWrapper, paramVariantWrapper);
+  }
+  
+  public void a(bbri parambbri)
+  {
+    this.a = new WeakReference(parambbri);
+  }
+  
+  protected boolean a(ark.VariantWrapper[] paramArrayOfVariantWrapper, ark.VariantWrapper paramVariantWrapper)
+  {
+    QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.sApplication.getRuntime();
+    if (localQQAppInterface == null) {
+      return false;
     }
-    if (this.jdField_b_of_type_AndroidViewView == null) {
-      this.jdField_b_of_type_AndroidViewView = this.jdField_c_of_type_AndroidViewView.findViewById(2131378310);
-    }
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_b_of_type_AndroidViewView.findViewById(2131378313));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_b_of_type_AndroidViewView.findViewById(2131378311));
-    Object localObject = (LinearLayout.LayoutParams)this.jdField_a_of_type_AndroidWidgetImageView.getLayoutParams();
-    ((LinearLayout.LayoutParams)localObject).leftMargin = bdaq.a(this.jdField_a_of_type_AndroidContentContext, 4.0F);
-    ((LinearLayout.LayoutParams)localObject).rightMargin = bdaq.a(this.jdField_a_of_type_AndroidContentContext, 5.0F);
-    int i = bdaq.a(this.jdField_a_of_type_AndroidContentContext, 18.0F);
-    ((LinearLayout.LayoutParams)localObject).height = i;
-    ((LinearLayout.LayoutParams)localObject).width = i;
-    this.jdField_a_of_type_AndroidWidgetImageView.setLayoutParams((ViewGroup.LayoutParams)localObject);
-    if (ThemeUtil.isInNightMode(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface)) {
-      this.jdField_b_of_type_AndroidViewView.setBackgroundResource(2130850078);
+    String str = localQQAppInterface.getCurrentAccountUin();
+    paramVariantWrapper = paramArrayOfVariantWrapper[0].GetString();
+    Object localObject1 = paramArrayOfVariantWrapper[1].GetString();
+    int i = 0;
+    int j = 0;
+    long l1 = 0L;
+    long l2 = 0L;
+    Object localObject3 = "";
+    Object localObject2 = "";
+    int k = 0;
+    Object localObject4;
+    int m;
+    long l3;
+    if (k < paramArrayOfVariantWrapper.length) {
+      if (k == 0)
+      {
+        localObject4 = paramArrayOfVariantWrapper[0].GetString();
+        m = j;
+        paramVariantWrapper = (ark.VariantWrapper)localObject1;
+        localObject1 = localObject4;
+        l3 = l2;
+        l2 = l1;
+        l1 = l3;
+        j = i;
+        i = m;
+      }
     }
     for (;;)
     {
-      this.jdField_c_of_type_AndroidGraphicsDrawableDrawable = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130843264);
-      this.jdField_b_of_type_AndroidViewView.setOnClickListener(this);
-      this.jdField_a_of_type_Boolean = true;
-      c();
-      this.jdField_c_of_type_AndroidViewView.setVisibility(8);
-      ThreadManager.post(new TroopEntranceBar.1(this), 8, null, true);
-      return;
-      this.jdField_b_of_type_AndroidViewView.setBackgroundResource(2130850079);
-    }
-  }
-  
-  public void c()
-  {
-    if (!this.jdField_a_of_type_Boolean) {
-      return;
-    }
-    ImageView localImageView = (ImageView)this.jdField_b_of_type_AndroidViewView.findViewById(2131378312);
-    localImageView.setVisibility(0);
-    LinearLayout.LayoutParams localLayoutParams = (LinearLayout.LayoutParams)localImageView.getLayoutParams();
-    localLayoutParams.height = -2;
-    localLayoutParams.width = -2;
-    localLayoutParams.leftMargin = bdaq.a(this.jdField_a_of_type_AndroidContentContext, 3.0F);
-    localLayoutParams.rightMargin = bdaq.a(this.jdField_a_of_type_AndroidContentContext, 8.0F);
-    Drawable localDrawable = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130843265);
-    localLayoutParams.leftMargin = bdaq.a(this.jdField_a_of_type_AndroidContentContext, 11.0F);
-    if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable == null) {
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = localDrawable.getConstantState().newDrawable(this.jdField_a_of_type_AndroidContentContext.getResources()).mutate();
-    }
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setColorFilter(this.jdField_a_of_type_AndroidGraphicsLightingColorFilter);
-    localImageView.setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
-    this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(this.d);
-    if (this.jdField_b_of_type_AndroidGraphicsDrawableDrawable == null) {
-      this.jdField_b_of_type_AndroidGraphicsDrawableDrawable = this.jdField_c_of_type_AndroidGraphicsDrawableDrawable.getConstantState().newDrawable(this.jdField_a_of_type_AndroidContentContext.getResources()).mutate();
-    }
-    this.jdField_b_of_type_AndroidGraphicsDrawableDrawable.setColorFilter(this.jdField_a_of_type_AndroidGraphicsLightingColorFilter);
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(this.jdField_b_of_type_AndroidGraphicsDrawableDrawable);
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(2131698107);
-  }
-  
-  public void d()
-  {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilMap.values().iterator();
-    for (long l = 0L; localIterator.hasNext(); l = ((Integer)localIterator.next()).intValue() + l) {}
-    this.jdField_a_of_type_Long = l;
-  }
-  
-  public void e()
-  {
-    String str1;
-    QQAppInterface localQQAppInterface;
-    if (this.jdField_b_of_type_Int <= 0)
-    {
-      this.jdField_c_of_type_Int = 0;
-      str1 = "entry_none";
-      localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo != null) {
-        break label128;
-      }
-    }
-    label128:
-    for (String str2 = "";; str2 = this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a)
-    {
-      azqs.b(localQQAppInterface, "P_CliOper", "Grp_public", "", "oper", str1, 0, 0, "", "", "", str2);
-      return;
-      if (this.jdField_b_of_type_Int == 1)
+      m = k + 1;
+      l3 = l2;
+      k = i;
+      i = j;
+      localObject4 = paramVariantWrapper;
+      paramVariantWrapper = (ark.VariantWrapper)localObject1;
+      localObject1 = localObject4;
+      j = k;
+      l2 = l1;
+      l1 = l3;
+      k = m;
+      break;
+      if (k == 1)
       {
-        if (this.jdField_a_of_type_Long <= 0L) {}
-        for (this.jdField_c_of_type_Int = 3;; this.jdField_c_of_type_Int = 1)
-        {
-          str1 = "entry_one";
-          break;
-        }
+        localObject1 = paramArrayOfVariantWrapper[1].GetString();
+        m = i;
+        localObject4 = paramVariantWrapper;
+        l3 = l1;
+        i = j;
+        j = m;
+        l1 = l2;
+        l2 = l3;
+        paramVariantWrapper = (ark.VariantWrapper)localObject1;
+        localObject1 = localObject4;
       }
-      if (this.jdField_a_of_type_Long <= 0L) {}
-      for (this.jdField_c_of_type_Int = 4;; this.jdField_c_of_type_Int = 2)
+      else if (k == 2)
       {
-        str1 = "entry_more";
-        break;
+        m = a(paramArrayOfVariantWrapper[2], 0);
+        i = j;
+        j = m;
+        localObject4 = paramVariantWrapper;
+        l3 = l1;
+        l1 = l2;
+        l2 = l3;
+        paramVariantWrapper = (ark.VariantWrapper)localObject1;
+        localObject1 = localObject4;
+      }
+      else if (k == 3)
+      {
+        m = a(paramArrayOfVariantWrapper[3], 0);
+        j = i;
+        localObject4 = paramVariantWrapper;
+        l3 = l1;
+        i = m;
+        l1 = l2;
+        l2 = l3;
+        paramVariantWrapper = (ark.VariantWrapper)localObject1;
+        localObject1 = localObject4;
+      }
+      else if (k == 4)
+      {
+        l3 = a(paramArrayOfVariantWrapper[4], 0L);
+        m = i;
+        localObject4 = paramVariantWrapper;
+        l1 = l2;
+        i = j;
+        j = m;
+        l2 = l3;
+        paramVariantWrapper = (ark.VariantWrapper)localObject1;
+        localObject1 = localObject4;
+      }
+      else if (k == 5)
+      {
+        l3 = a(paramArrayOfVariantWrapper[5], 0L);
+        m = i;
+        l2 = l1;
+        localObject4 = paramVariantWrapper;
+        l1 = l3;
+        i = j;
+        j = m;
+        paramVariantWrapper = (ark.VariantWrapper)localObject1;
+        localObject1 = localObject4;
+      }
+      else if (k == 6)
+      {
+        localObject4 = paramArrayOfVariantWrapper[6].GetString();
+        m = i;
+        localObject3 = paramVariantWrapper;
+        l3 = l1;
+        i = j;
+        j = m;
+        l1 = l2;
+        l2 = l3;
+        paramVariantWrapper = (ark.VariantWrapper)localObject1;
+        localObject1 = localObject3;
+        localObject3 = localObject4;
+      }
+      else if (k == 7)
+      {
+        localObject4 = paramArrayOfVariantWrapper[7].GetString();
+        m = i;
+        localObject2 = paramVariantWrapper;
+        l3 = l1;
+        i = j;
+        j = m;
+        l1 = l2;
+        l2 = l3;
+        paramVariantWrapper = (ark.VariantWrapper)localObject1;
+        localObject1 = localObject2;
+        localObject2 = localObject4;
+        continue;
+        bcst.b(localQQAppInterface, "CliOper", "", str, paramVariantWrapper, (String)localObject1, i, j, String.valueOf(l1), String.valueOf(l2), (String)localObject3, (String)localObject2);
+        return true;
+      }
+      else
+      {
+        m = i;
+        localObject4 = paramVariantWrapper;
+        l3 = l1;
+        i = j;
+        j = m;
+        l1 = l2;
+        l2 = l3;
+        paramVariantWrapper = (ark.VariantWrapper)localObject1;
+        localObject1 = localObject4;
       }
     }
   }
   
-  public void f()
+  protected apin[] a()
   {
-    Object localObject1 = ((TroopManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(52)).a();
-    try
-    {
-      long l = Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a).longValue();
-      localObject1 = ((List)localObject1).iterator();
-      while (((Iterator)localObject1).hasNext())
-      {
-        Object localObject2 = (awge)((Iterator)localObject1).next();
-        if ((localObject2 instanceof TroopInfo))
-        {
-          localObject2 = (TroopInfo)localObject2;
-          if (((TroopInfo)localObject2).associatePubAccount == l)
-          {
-            this.jdField_b_of_type_Int += 1;
-            this.jdField_a_of_type_JavaUtilList.add(localObject2);
-          }
-        }
-      }
-      return;
-    }
-    catch (NumberFormatException localNumberFormatException)
-    {
-      QLog.d(".troop.troop_pubaccount", 2, "publicAccount uin format exception. sessionInfo.curFriendUin is not long. value is " + this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
-    }
+    return null;
   }
   
-  public void onClick(View paramView)
+  protected boolean b(ark.VariantWrapper[] paramArrayOfVariantWrapper, ark.VariantWrapper paramVariantWrapper)
   {
-    ThreadManager.post(new TroopEntranceBar.2(this), 8, null, true);
+    if ((paramArrayOfVariantWrapper != null) && (paramArrayOfVariantWrapper.length >= 2) && (paramArrayOfVariantWrapper[0].IsString()) && (paramArrayOfVariantWrapper[1].IsView()))
+    {
+      paramVariantWrapper = paramArrayOfVariantWrapper[0].GetString();
+      long l = paramArrayOfVariantWrapper[1].GetView();
+      ArkAppCenter.a().postToMainThread(new ArkAppModule.1(this, l, paramVariantWrapper));
+    }
+    return true;
+  }
+  
+  protected boolean c(ark.VariantWrapper[] paramArrayOfVariantWrapper, ark.VariantWrapper paramVariantWrapper)
+  {
+    if ((paramArrayOfVariantWrapper != null) && (paramArrayOfVariantWrapper.length > 3) && (paramArrayOfVariantWrapper[1].IsString()) && (paramArrayOfVariantWrapper[3].IsView()))
+    {
+      paramVariantWrapper = paramArrayOfVariantWrapper[1].GetString();
+      String str = a(paramArrayOfVariantWrapper[2], null);
+      long l = paramArrayOfVariantWrapper[3].GetView();
+      ArkAppCenter.a().postToMainThread(new ArkAppModule.2(this, l, paramVariantWrapper, str));
+    }
+    return true;
   }
 }
 

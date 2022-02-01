@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.mini.appbrand.page;
 
-import alud;
 import android.view.View;
 import android.view.View.OnLongClickListener;
-import bhuf;
+import anni;
+import bkho;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.smtt.sdk.WebView;
 import com.tencent.smtt.sdk.WebView.HitTestResult;
@@ -22,13 +22,13 @@ class ProgressWebView$3
       if (QLog.isColorLevel()) {
         QLog.e("ProgressWebView", 2, "onLongClick : " + paramView);
       }
-      bhuf localbhuf = bhuf.a(ProgressWebView.access$500(this.this$0).getContext());
-      localbhuf.a(alud.a(2131708893), 7);
-      localbhuf.a(alud.a(2131708895), 7);
-      localbhuf.d(alud.a(2131708906));
-      localbhuf.c(true);
-      localbhuf.a(new ProgressWebView.3.1(this, localbhuf, paramView));
-      localbhuf.show();
+      bkho localbkho = bkho.a(ProgressWebView.access$500(this.this$0).getContext());
+      localbkho.a(anni.a(2131707269), 7);
+      localbkho.a(anni.a(2131707271), 7);
+      localbkho.d(anni.a(2131707282));
+      localbkho.d(true);
+      localbkho.a(new ProgressWebView.3.1(this, localbkho, paramView));
+      localbkho.show();
       return true;
     }
     return false;
@@ -36,7 +36,7 @@ class ProgressWebView$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.appbrand.page.ProgressWebView.3
  * JD-Core Version:    0.7.0.1
  */

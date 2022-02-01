@@ -1,38 +1,16 @@
-import android.text.TextUtils;
-import com.tencent.common.app.AppInterface;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.util.ArrayList;
-import java.util.List;
-
 class alfm
-  implements akqj
+  implements akyf
 {
-  alfm(alfe paramalfe, int paramInt, String paramString, AppInterface paramAppInterface, File paramFile) {}
+  alfm(alfl paramalfl) {}
   
-  public void a(boolean paramBoolean, akqi paramakqi)
+  public void a(int paramInt)
   {
-    paramakqi = akqa.a().a(8, this.jdField_a_of_type_Int);
-    Object localObject = new StringBuilder().append("downloadApolloRes onCheckFinish success:").append(paramBoolean).append(" downloadItem:");
-    if (paramakqi == null) {}
-    for (paramBoolean = true;; paramBoolean = false)
-    {
-      QLog.i("ApolloPluginRscLoader", 1, paramBoolean);
-      localObject = alfe.a(this.jdField_a_of_type_JavaLangString);
-      if (!TextUtils.isEmpty((CharSequence)localObject)) {
-        break;
-      }
-      QLog.e("ApolloPluginRscLoader", 1, "getApolloRsc error callbackId is null resourceUrl:" + this.jdField_a_of_type_JavaLangString);
-      return;
-    }
-    if (paramakqi == null)
-    {
-      this.jdField_a_of_type_Alfe.a((String)localObject, 2, this.jdField_a_of_type_Int + " json里无此id");
-      return;
-    }
-    ArrayList localArrayList = new ArrayList();
-    localArrayList.add(paramakqi);
-    akqc.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, "", new alfn(this, (String)localObject), localArrayList, false, null);
+    this.a.b();
+  }
+  
+  public void b(int paramInt)
+  {
+    this.a.b();
   }
 }
 

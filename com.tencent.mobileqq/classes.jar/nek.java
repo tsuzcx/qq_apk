@@ -1,33 +1,26 @@
-import com.tencent.biz.game.SensorAPIJavaScript;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.QQPermissionDenied;
-import mqq.app.QQPermissionGrant;
+import android.content.Context;
 
 public class nek
+  extends bjcl
 {
-  public nek(SensorAPIJavaScript paramSensorAPIJavaScript, String paramString) {}
-  
-  @QQPermissionDenied(1)
-  public void denied()
+  public nek(Context paramContext, bjci parambjci, nej paramnej)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(this.jdField_a_of_type_ComTencentBizGameSensorAPIJavaScript.TAG, 1, "CheckPermission user denied = ");
-    }
-    this.jdField_a_of_type_ComTencentBizGameSensorAPIJavaScript.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "false", "{result: -10, msg: 'no permission to record'}" });
+    super(paramContext, parambjci, paramnej);
   }
   
-  @QQPermissionGrant(1)
-  public void grant()
+  public nej a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(this.jdField_a_of_type_ComTencentBizGameSensorAPIJavaScript.TAG, 1, "CheckPermission user grant = ");
-    }
-    SensorAPIJavaScript.a(this.jdField_a_of_type_ComTencentBizGameSensorAPIJavaScript, this.jdField_a_of_type_JavaLangString);
+    return (nej)super.a();
+  }
+  
+  protected boolean a()
+  {
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     nek
  * JD-Core Version:    0.7.0.1
  */

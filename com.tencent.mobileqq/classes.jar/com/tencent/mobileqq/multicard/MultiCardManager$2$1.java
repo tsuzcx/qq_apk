@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.multicard;
 
-import aunp;
+import awut;
 import java.util.HashMap;
 
 class MultiCardManager$2$1
@@ -17,7 +17,7 @@ class MultiCardManager$2$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.multicard.MultiCardManager.2.1
  * JD-Core Version:    0.7.0.1
  */

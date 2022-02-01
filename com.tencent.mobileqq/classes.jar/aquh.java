@@ -1,59 +1,89 @@
-import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 
-class aquh
-  implements aqsa
+public class aquh
+  extends aqkz<aqug>
 {
-  aquh(aqug paramaqug, String paramString, aqva paramaqva) {}
-  
-  public void a(int paramInt, String paramString)
+  @NonNull
+  public static aqug a()
   {
-    boolean bool2 = false;
-    QLog.e("FileMultiMsgManager<FileAssistant>", 1, "Buddy2BuddyTaskExcuter faild");
-    boolean bool1;
-    if ((paramInt == -100001) || (paramInt == -100002) || (paramInt == -100003)) {
-      bool1 = true;
+    aqug localaqug2 = (aqug)aqlk.a().a(550);
+    aqug localaqug1 = localaqug2;
+    if (localaqug2 == null) {
+      localaqug1 = new aqug();
     }
-    for (;;)
+    if (QLog.isColorLevel()) {
+      QLog.d("TroopMemberRecommend.ConfProcessor", 2, "loadConfig(): bean = " + localaqug1.toString());
+    }
+    return localaqug1;
+  }
+  
+  @NonNull
+  public aqug a(int paramInt)
+  {
+    return new aqug();
+  }
+  
+  @Nullable
+  public aqug a(aqlg[] paramArrayOfaqlg)
+  {
+    return aqug.a(paramArrayOfaqlg);
+  }
+  
+  public void a(aqug paramaqug)
+  {
+    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
+    if ((localObject instanceof QQAppInterface))
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("FileMultiMsgManager<FileAssistant>", 1, "start forwardOfflineFileToX[" + this.jdField_a_of_type_Aqug.jdField_a_of_type_JavaLangString + "] faild:" + paramInt);
-      }
-      this.jdField_a_of_type_Aqva.a(aque.a(this.jdField_a_of_type_Aqug.jdField_a_of_type_Long, bool2), bool1);
-      return;
-      if ((paramInt == -6101) || (paramInt == -7003))
+      localObject = (QQAppInterface)localObject;
+      if (((QQAppInterface)localObject).a(347))
       {
-        bool1 = false;
-        bool2 = true;
-      }
-      else
-      {
-        bool1 = false;
+        ((awvy)((QQAppInterface)localObject).getManager(347)).a = paramaqug;
+        if (QLog.isColorLevel()) {
+          QLog.d("TroopMemberRecommend.ConfProcessor", 2, "onUpdate bean = " + paramaqug.toString());
+        }
       }
     }
   }
   
-  public void a(String paramString)
+  public Class clazz()
   {
-    Bundle localBundle = new Bundle();
-    localBundle.putString("_m_ForwardFileType", "1");
-    localBundle.putString("_m_ForwardReceiverUin", this.jdField_a_of_type_JavaLangString);
-    localBundle.putString("_m_ForwardFileName", this.jdField_a_of_type_Aqug.jdField_a_of_type_JavaLangString);
-    localBundle.putString("_m_ForwardSize", this.jdField_a_of_type_Aqug.jdField_a_of_type_Long + "");
-    localBundle.putString("_m_ForwardMd5", this.jdField_a_of_type_Aqug.c);
-    localBundle.putString("_m_ForwardUuid", paramString);
-    localBundle.putString("_m_ForwardDeadTime", "0");
-    localBundle.putString("_m_ForwardImgWidth", this.jdField_a_of_type_Aqug.e);
-    localBundle.putString("_m_ForwardImgHeight", this.jdField_a_of_type_Aqug.f);
+    return aqug.class;
+  }
+  
+  public boolean isNeedCompressed()
+  {
+    return true;
+  }
+  
+  public boolean isNeedStoreLargeFile()
+  {
+    return false;
+  }
+  
+  public int migrateOldVersion()
+  {
+    return 0;
+  }
+  
+  public void onReqFailed(int paramInt)
+  {
     if (QLog.isColorLevel()) {
-      QLog.i("FileMultiMsgManager<FileAssistant>", 1, "start forwardOfflineFileToX[" + this.jdField_a_of_type_Aqug.jdField_a_of_type_JavaLangString + "] success");
+      QLog.d("TroopMemberRecommend.ConfProcessor", 2, "onReqFailed " + paramInt);
     }
-    this.jdField_a_of_type_Aqva.a(paramString, localBundle);
+  }
+  
+  public int type()
+  {
+    return 550;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aquh
  * JD-Core Version:    0.7.0.1
  */

@@ -1,39 +1,49 @@
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import java.util.concurrent.atomic.AtomicBoolean;
+import android.content.Context;
+import android.view.ViewGroup;
+import com.tencent.biz.pubaccount.weishi_new.WSFollowFragment;
 
-class umi
-  implements urr<vgm, vhx>
+public class umi
+  extends bkrs<uhj, bkrv<uhj>>
 {
-  umi(umg paramumg) {}
+  private ucp a;
   
-  public void a(vgm arg1, vhx paramvhx, ErrorMessage paramErrorMessage)
+  public umi(Context paramContext, ucp paramucp)
   {
-    this.a.jdField_a_of_type_Long = System.currentTimeMillis();
-    if (paramErrorMessage.isSuccess()) {}
-    for (;;)
-    {
-      synchronized (this.a.jdField_b_of_type_JavaLangObject)
-      {
-        this.a.jdField_a_of_type_Umk = paramvhx.jdField_a_of_type_Umk;
-        this.a.jdField_a_of_type_Umk.a();
-        wxe.b("Q.qqstory.publish:VideoServerInfoManager", "get server inf %s", this.a.jdField_a_of_type_Umk);
-        this.a.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
-        this.a.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
-      }
-      synchronized (this.a.jdField_a_of_type_JavaLangObject)
-      {
-        this.a.jdField_a_of_type_JavaLangObject.notifyAll();
-        return;
-        paramvhx = finally;
-        throw paramvhx;
-        wxe.b("Q.qqstory.publish:VideoServerInfoManager", "get server info:%s", paramErrorMessage);
-      }
+    super(paramContext);
+    this.a = paramucp;
+  }
+  
+  public int a(int paramInt)
+  {
+    return 0;
+  }
+  
+  public bkrv<uhj> a(ViewGroup paramViewGroup, int paramInt)
+  {
+    return umj.a(paramViewGroup);
+  }
+  
+  public void a(bkrv<uhj> parambkrv)
+  {
+    super.onViewAttachedToWindow(parambkrv);
+    if (((parambkrv instanceof umj)) && (this.a != null) && (this.a.a().getUserVisibleHint()) && (this.a.a().isResumed())) {
+      ((umj)parambkrv).a();
     }
+  }
+  
+  public void a(bkrv<uhj> parambkrv, int paramInt)
+  {
+    uhj localuhj = (uhj)a(paramInt);
+    if (localuhj == null) {}
+    while (!(parambkrv instanceof umj)) {
+      return;
+    }
+    ((umj)parambkrv).a(localuhj, paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     umi
  * JD-Core Version:    0.7.0.1
  */

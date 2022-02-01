@@ -1,97 +1,50 @@
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.List;
 
 class bnsc
+  implements View.OnClickListener
 {
-  private BufferedReader jdField_a_of_type_JavaIoBufferedReader;
-  private InputStream jdField_a_of_type_JavaIoInputStream;
-  private InputStreamReader jdField_a_of_type_JavaIoInputStreamReader;
-  public Process a;
+  bnsc(bnsb parambnsb, int paramInt) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    if (this.jdField_a_of_type_JavaLangProcess != null)
+    bnsb.a(this.jdField_a_of_type_Bnsb, this.jdField_a_of_type_Int);
+    bnpk localbnpk;
+    if (this.jdField_a_of_type_Int != bnsb.a(this.jdField_a_of_type_Bnsb))
     {
-      this.jdField_a_of_type_JavaIoInputStream = this.jdField_a_of_type_JavaLangProcess.getInputStream();
-      this.jdField_a_of_type_JavaIoInputStreamReader = new InputStreamReader(this.jdField_a_of_type_JavaIoInputStream);
-      this.jdField_a_of_type_JavaIoBufferedReader = new BufferedReader(this.jdField_a_of_type_JavaIoInputStreamReader);
-    }
-  }
-  
-  public void b()
-  {
-    if (this.jdField_a_of_type_JavaLangProcess != null) {}
-    try
-    {
-      for (;;)
+      int i = bnsb.a(this.jdField_a_of_type_Bnsb);
+      bnsb.a(this.jdField_a_of_type_Bnsb, this.jdField_a_of_type_Int);
+      this.jdField_a_of_type_Bnsb.notifyItemChanged(this.jdField_a_of_type_Int);
+      this.jdField_a_of_type_Bnsb.notifyItemChanged(i);
+      if (bnsb.a(this.jdField_a_of_type_Bnsb) != null)
       {
-        String str = this.jdField_a_of_type_JavaIoBufferedReader.readLine();
-        if (str == null) {
-          break;
+        bnsd localbnsd = bnsb.a(this.jdField_a_of_type_Bnsb);
+        if (this.jdField_a_of_type_Int != 0) {
+          break label136;
         }
-        bnsa.a("[@] compressVideo log:" + str, null);
+        localbnpk = null;
+        localbnsd.a(localbnpk);
+        if (this.jdField_a_of_type_Int != 0) {
+          break label161;
+        }
+        bnyl.a().k("none");
+        bnyh.a().ab();
+        bnzb.b("AEGIFStickerAdapter", "【Gif Material Click】: null");
       }
-      label177:
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
-    }
-    catch (IOException localIOException1)
-    {
-      for (;;)
-      {
-        try
-        {
-          if (this.jdField_a_of_type_JavaIoInputStream != null) {
-            this.jdField_a_of_type_JavaIoInputStream.close();
-          }
-          if (this.jdField_a_of_type_JavaIoInputStreamReader != null) {
-            this.jdField_a_of_type_JavaIoInputStreamReader.close();
-          }
-          if (this.jdField_a_of_type_JavaIoBufferedReader != null) {
-            this.jdField_a_of_type_JavaIoBufferedReader.close();
-          }
-          return;
-        }
-        catch (IOException localIOException3) {}
-        try
-        {
-          if (this.jdField_a_of_type_JavaIoInputStream != null) {
-            this.jdField_a_of_type_JavaIoInputStream.close();
-          }
-          if (this.jdField_a_of_type_JavaIoInputStreamReader != null) {
-            this.jdField_a_of_type_JavaIoInputStreamReader.close();
-          }
-          if (this.jdField_a_of_type_JavaIoBufferedReader == null) {
-            continue;
-          }
-          this.jdField_a_of_type_JavaIoBufferedReader.close();
-          return;
-        }
-        catch (IOException localIOException2)
-        {
-          return;
-        }
-      }
-    }
-    finally
-    {
-      try
-      {
-        if (this.jdField_a_of_type_JavaIoInputStream != null) {
-          this.jdField_a_of_type_JavaIoInputStream.close();
-        }
-        if (this.jdField_a_of_type_JavaIoInputStreamReader != null) {
-          this.jdField_a_of_type_JavaIoInputStreamReader.close();
-        }
-        if (this.jdField_a_of_type_JavaIoBufferedReader != null) {
-          this.jdField_a_of_type_JavaIoBufferedReader.close();
-        }
-      }
-      catch (IOException localIOException4)
-      {
-        break label177;
-      }
+      label136:
+      localbnpk = (bnpk)bnsb.a(this.jdField_a_of_type_Bnsb).get(this.jdField_a_of_type_Int - 1);
+      break;
+      label161:
+      bnyl.a().k(((bnpk)bnsb.a(this.jdField_a_of_type_Bnsb).get(this.jdField_a_of_type_Int - 1)).a);
+      bnyh.a().ab();
+      bnzb.b("AEGIFStickerAdapter", "【Gif Material Click】: " + ((bnpk)bnsb.a(this.jdField_a_of_type_Bnsb).get(this.jdField_a_of_type_Int - 1)).a);
     }
   }
 }

@@ -1,127 +1,30 @@
-import com.tencent.mobileqq.richmedia.capture.data.MusicItemInfo;
+import android.os.Bundle;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.util.concurrent.ConcurrentHashMap;
+import cooperation.qzone.QzoneIPCModule;
+import eipc.EIPCResult;
+import feedcloud.FeedCloudTagcategorysvr.StTagCategoryRecomRsp;
 
 public class bltz
-  extends blts
+  implements zxa<FeedCloudTagcategorysvr.StTagCategoryRecomRsp>
 {
-  private blts jdField_a_of_type_Blts;
-  private ConcurrentHashMap<String, MusicItemInfo> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap;
-  private ConcurrentHashMap<String, beae> b;
+  public bltz(QzoneIPCModule paramQzoneIPCModule, int paramInt) {}
   
-  public bltz(ConcurrentHashMap<String, MusicItemInfo> paramConcurrentHashMap, ConcurrentHashMap<String, beae> paramConcurrentHashMap1, blts paramblts)
+  public void a(boolean paramBoolean, long paramLong, String paramString, FeedCloudTagcategorysvr.StTagCategoryRecomRsp paramStTagCategoryRecomRsp)
   {
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = paramConcurrentHashMap;
-    this.b = paramConcurrentHashMap1;
-    this.jdField_a_of_type_Blts = paramblts;
-  }
-  
-  public void a(int paramInt)
-  {
-    this.jdField_a_of_type_Blts.a(paramInt);
-  }
-  
-  public void a(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QQMusicDownloadListener", 2, "onCancel key=" + paramString);
-    }
-    MusicItemInfo localMusicItemInfo = (MusicItemInfo)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
-    if (localMusicItemInfo != null) {
-      localMusicItemInfo.mProgress = -1;
-    }
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(paramString);
-    this.b.remove(paramString);
-    this.jdField_a_of_type_Blts.a(paramString);
-    bmaz.a(localMusicItemInfo).c();
-  }
-  
-  public void a(String paramString, int paramInt)
-  {
-    MusicItemInfo localMusicItemInfo = (MusicItemInfo)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
-    int i = paramInt;
-    if (localMusicItemInfo != null)
+    QLog.i("[QzoneIPCModule_upload2]QCircle", 1, "QCircleGetRecommendTagRequest onReceive isSuccess:" + paramBoolean + " retCode:" + paramLong + " errMsg:" + paramString);
+    if ((paramBoolean) && (paramLong == 0L) && (paramStTagCategoryRecomRsp != null))
     {
-      i = paramInt;
-      if (paramInt == 100)
-      {
-        i = paramInt;
-        if (this.b.contains(localMusicItemInfo.getLocalPath())) {
-          i = 99;
-        }
-      }
-      localMusicItemInfo.mProgress = i;
-    }
-    this.jdField_a_of_type_Blts.a(paramString, i);
-  }
-  
-  public void a(String paramString, boolean paramBoolean)
-  {
-    MusicItemInfo localMusicItemInfo = (MusicItemInfo)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
-    if (localMusicItemInfo != null)
-    {
-      if (paramBoolean) {
-        break label60;
-      }
-      bmaz.a(localMusicItemInfo).c();
-      localMusicItemInfo.mProgress = -1;
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(paramString);
-      this.b.remove(paramString);
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Blts.a(paramString, paramBoolean);
+      Bundle localBundle = new Bundle();
+      localBundle.putLong("key_return_code", paramLong);
+      localBundle.putString("key_error_msg", paramString);
+      localBundle.putByteArray("key_qcircle_tag_list_rsp", paramStTagCategoryRecomRsp.toByteArray());
+      this.jdField_a_of_type_CooperationQzoneQzoneIPCModule.callbackResult(this.jdField_a_of_type_Int, EIPCResult.createResult(0, localBundle));
       return;
-      label60:
-      localMusicItemInfo.mProgress = 1;
     }
-  }
-  
-  public void a(String paramString, boolean paramBoolean, int paramInt)
-  {
-    MusicItemInfo localMusicItemInfo = (MusicItemInfo)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
-    if (QLog.isColorLevel()) {
-      QLog.d("QQMusicDownloadListener", 2, new Object[] { "onFinish, info:", localMusicItemInfo });
-    }
-    boolean bool = paramBoolean;
-    if (localMusicItemInfo != null)
-    {
-      if (!paramBoolean) {
-        break label214;
-      }
-      localMusicItemInfo.mProgress = 100;
-      bmaz.a(localMusicItemInfo).b();
-      bool = paramBoolean;
-      if (localMusicItemInfo.isMyMusicInfo())
-      {
-        bool = paramBoolean;
-        if (localMusicItemInfo.fileSize > 0L)
-        {
-          File localFile = new File(paramString);
-          if (localFile.length() != localMusicItemInfo.fileSize)
-          {
-            localMusicItemInfo.mProgress = -1;
-            bmaz.a(localMusicItemInfo).c();
-            paramBoolean = false;
-          }
-          bool = paramBoolean;
-          if (QLog.isColorLevel()) {
-            QLog.d("QQMusicDownloadListener", 2, "file.length =" + localFile.length() + " info.fileSize=" + localMusicItemInfo.fileSize);
-          }
-        }
-      }
-    }
-    for (bool = paramBoolean;; bool = paramBoolean)
-    {
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(paramString);
-      this.b.remove(paramString);
-      this.jdField_a_of_type_Blts.a(paramString, bool, paramInt);
-      return;
-      label214:
-      localMusicItemInfo.mProgress = -1;
-      bmaz.a(localMusicItemInfo).c();
-    }
+    paramStTagCategoryRecomRsp = new Bundle();
+    paramStTagCategoryRecomRsp.putLong("key_return_code", paramLong);
+    paramStTagCategoryRecomRsp.putString("key_error_msg", paramString);
+    this.jdField_a_of_type_CooperationQzoneQzoneIPCModule.callbackResult(this.jdField_a_of_type_Int, EIPCResult.createResult(-102, paramStTagCategoryRecomRsp));
   }
 }
 

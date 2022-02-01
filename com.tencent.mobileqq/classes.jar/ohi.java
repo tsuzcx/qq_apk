@@ -1,15 +1,34 @@
-public class ohi
+import android.os.Handler;
+import android.os.Message;
+import java.lang.ref.WeakReference;
+
+class ohi
+  extends Handler
 {
-  public static void a(int paramInt)
+  private WeakReference<ohg> a;
+  
+  public ohi(ohg paramohg)
   {
-    if ((paramInt == 41516) || (paramInt == 41522)) {
-      nrt.a(null, "", "0X8009EF4", "0X8009EF4", 0, 0, "", "", "", new ohg().a().a(paramInt).a(), false);
+    this.a = new WeakReference(paramohg);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    ohg localohg = (ohg)this.a.get();
+    if ((localohg == null) || (!localohg.b())) {
+      return;
     }
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    }
+    localohg.b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     ohi
  * JD-Core Version:    0.7.0.1
  */

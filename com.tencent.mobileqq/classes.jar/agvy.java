@@ -1,18 +1,21 @@
-import com.tencent.mobileqq.activity.aio.PlusPanel;
-import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
+import android.view.View;
 
-public class agvy
-  extends bbmn
+class agvy
+  extends ClickableSpan
 {
-  public agvy(TroopChatPie paramTroopChatPie) {}
+  agvy(agup paramagup, String paramString) {}
   
-  protected void a(long paramLong)
+  public void onClick(View paramView)
   {
-    if (!String.valueOf(paramLong).equals(this.a.c())) {}
-    while (TroopChatPie.l(this.a) == null) {
-      return;
-    }
-    TroopChatPie.m(this.a).a();
+    Integer.parseInt(this.jdField_a_of_type_JavaLangString);
+  }
+  
+  public void updateDrawState(TextPaint paramTextPaint)
+  {
+    paramTextPaint.setColor(-12541697);
+    paramTextPaint.setUnderlineText(false);
   }
 }
 

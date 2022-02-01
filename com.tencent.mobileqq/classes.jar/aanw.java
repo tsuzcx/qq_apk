@@ -1,29 +1,15 @@
-import com.tencent.image.URLDrawable;
-import java.net.URL;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.troop.EditUniqueTitleActivity;
 
-class aanw
-  implements aaum
+public class aanw
+  implements DialogInterface.OnClickListener
 {
-  aanw(aanv paramaanv) {}
+  public aanw(EditUniqueTitleActivity paramEditUniqueTitleActivity) {}
   
-  public void a(URLDrawable paramURLDrawable)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((paramURLDrawable != null) && (paramURLDrawable.getURL() != null)) {}
-    for (paramURLDrawable = paramURLDrawable.getURL().toString();; paramURLDrawable = null)
-    {
-      aase.b("GdtBannerImageView", String.format("onLoadSuccessful %s", new Object[] { paramURLDrawable }));
-      return;
-    }
-  }
-  
-  public void b(URLDrawable paramURLDrawable)
-  {
-    if ((paramURLDrawable != null) && (paramURLDrawable.getURL() != null)) {}
-    for (paramURLDrawable = paramURLDrawable.getURL().toString();; paramURLDrawable = null)
-    {
-      aase.b("GdtBannerImageView", String.format("onLoadFailed %s", new Object[] { paramURLDrawable }));
-      return;
-    }
+    EditUniqueTitleActivity.a(this.a);
   }
 }
 

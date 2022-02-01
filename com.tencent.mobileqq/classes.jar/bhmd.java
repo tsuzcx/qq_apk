@@ -1,24 +1,39 @@
-import com.tencent.qqmini.sdk.core.proxy.AsyncResult;
-import com.tencent.qqmini.sdk.ui.MainPageFragment;
-import org.json.JSONObject;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.widget.QQToast;
 
-public class bhmd
-  implements AsyncResult
+class bhmd
+  implements nix
 {
-  public bhmd(MainPageFragment paramMainPageFragment) {}
+  bhmd(bhmb parambhmb) {}
   
-  public void onReceiveResult(boolean paramBoolean, JSONObject paramJSONObject)
+  public void a(boolean paramBoolean, int paramInt1, int paramInt2)
   {
-    if ((paramBoolean) && (paramJSONObject != null))
-    {
-      paramJSONObject = paramJSONObject.optString("token");
-      MainPageFragment.a(this.a, paramJSONObject);
+    Object localObject = this.a.mRuntime.a(this.a.mRuntime.a());
+    if (paramBoolean) {
+      if (this.a.a)
+      {
+        if ((localObject != null) && ((localObject instanceof bhsw))) {
+          ((bhsw)localObject).setWarnToastVisible(true, 1, 2131691301);
+        }
+      }
+      else {
+        bhmb.a(this.a);
+      }
     }
+    while ((localObject == null) || (!(localObject instanceof bhsw))) {
+      for (;;)
+      {
+        return;
+        localObject = QQToast.a(BaseApplicationImpl.getContext(), 1, 2131691301, 1);
+        ((QQToast)localObject).b(((QQToast)localObject).c());
+      }
+    }
+    ((bhsw)localObject).setWarnToastVisible(false, 0, 0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bhmd
  * JD-Core Version:    0.7.0.1
  */

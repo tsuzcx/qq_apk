@@ -1,17 +1,15 @@
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.data.ChatMessage;
+import Wallet.AcsMsg;
+import com.tencent.mobileqq.data.MessageRecord;
 
-class aftt
-  extends afuf
+public class aftt
 {
-  aftt(afpy paramafpy)
-  {
-    super(paramafpy, null);
-  }
+  public long a;
+  public AcsMsg a;
+  public MessageRecord a;
   
-  protected aeqy a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
+  public String toString()
   {
-    return new afvd(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner);
+    return "QQReminderOrderModel{messageRecord=" + this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord + ", acsMsg=" + this.jdField_a_of_type_WalletAcsMsg + ", orderTime=" + this.jdField_a_of_type_Long + '}';
   }
 }
 

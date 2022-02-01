@@ -1,24 +1,22 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsAioGuideView;
+import kotlin.Metadata;
 
-public class rbu
-  implements Animation.AnimationListener
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "isFinish", "", "wording", "", "kotlin.jvm.PlatformType", "onRedPacketTaskFinish"}, k=3, mv={1, 1, 16})
+final class rbu
+  implements qza
 {
-  public rbu(VideoFeedsAioGuideView paramVideoFeedsAioGuideView) {}
+  rbu(rbi paramrbi) {}
   
-  public void onAnimationEnd(Animation paramAnimation) {}
-  
-  public void onAnimationRepeat(Animation paramAnimation)
+  public final void a(boolean paramBoolean, String paramString)
   {
-    VideoFeedsAioGuideView.a(this.a).setStartOffset(360L);
+    rbi localrbi = this.a;
+    if (localrbi != null) {
+      localrbi.a(paramBoolean, paramString);
+    }
   }
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     rbu
  * JD-Core Version:    0.7.0.1
  */

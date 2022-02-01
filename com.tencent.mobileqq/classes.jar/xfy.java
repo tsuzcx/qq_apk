@@ -1,24 +1,23 @@
-import android.animation.ValueAnimator;
-import android.annotation.TargetApi;
-import android.view.animation.AccelerateDecelerateInterpolator;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import com.tencent.biz.qqstory.playvideo.FollowCaptureLauncher;
 
-@TargetApi(11)
 public class xfy
+  implements DialogInterface.OnCancelListener
 {
-  public static ValueAnimator a(long paramLong, float paramFloat1, float paramFloat2, xgb paramxgb)
+  public xfy(FollowCaptureLauncher paramFollowCaptureLauncher) {}
+  
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    float f = (paramFloat2 - paramFloat1) / 5.0F;
-    ValueAnimator localValueAnimator = ValueAnimator.ofFloat(new float[] { paramFloat1, paramFloat2, paramFloat2 - 3.0F * f, paramFloat2, paramFloat2 - f, paramFloat2 });
-    localValueAnimator.setInterpolator(new AccelerateDecelerateInterpolator());
-    localValueAnimator.addUpdateListener(new xfz(paramxgb));
-    localValueAnimator.addListener(new xga(paramxgb, localValueAnimator));
-    localValueAnimator.setDuration(paramLong);
-    return localValueAnimator;
+    FollowCaptureLauncher.a(this.a, true);
+    FollowCaptureLauncher.a(this.a);
+    FollowCaptureLauncher.a(this.a, false);
+    yqu.a("FollowLaunchCancel", true, System.currentTimeMillis() - FollowCaptureLauncher.a(this.a), new String[] { "dialog_cancel" });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     xfy
  * JD-Core Version:    0.7.0.1
  */

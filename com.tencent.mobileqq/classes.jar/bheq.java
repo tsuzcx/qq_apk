@@ -1,23 +1,37 @@
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnCompletionListener;
-import android.os.Handler;
-import com.tencent.qqmini.sdk.log.QMLog;
-import com.tencent.qqmini.sdk.runtime.audiorecorder.LameMp3EncodeThread;
+import android.content.Context;
+import android.content.res.Resources;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import com.tencent.mobileqq.vashealth.HealthBusinessPlugin;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.HashMap;
 
 public class bheq
-  implements MediaPlayer.OnCompletionListener
+  implements View.OnClickListener
 {
-  public bheq(LameMp3EncodeThread paramLameMp3EncodeThread) {}
+  public bheq(HealthBusinessPlugin paramHealthBusinessPlugin, String paramString, Context paramContext) {}
   
-  public void onCompletion(MediaPlayer paramMediaPlayer)
+  public void onClick(View paramView)
   {
-    QMLog.i(LameMp3EncodeThread.a, "onCompletion");
-    LameMp3EncodeThread.a(this.a).sendEmptyMessage(106);
+    if (((TVK_IMediaPlayer)this.jdField_a_of_type_ComTencentMobileqqVashealthHealthBusinessPlugin.d.get(this.jdField_a_of_type_JavaLangString)).getOutputMute())
+    {
+      ((TVK_IMediaPlayer)this.jdField_a_of_type_ComTencentMobileqqVashealthHealthBusinessPlugin.d.get(this.jdField_a_of_type_JavaLangString)).setOutputMute(false);
+      ((ImageView)paramView).setImageDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130846359));
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      ((TVK_IMediaPlayer)this.jdField_a_of_type_ComTencentMobileqqVashealthHealthBusinessPlugin.d.get(this.jdField_a_of_type_JavaLangString)).setOutputMute(true);
+      ((ImageView)paramView).setImageDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130846358));
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bheq
  * JD-Core Version:    0.7.0.1
  */

@@ -16,7 +16,7 @@
   "event_type": "cmd_native_detail_ad_click",
   "subviews": [
     {
-      "view_type": "ReadinjoyNativeArticleAdDownloadView",
+      "view_type": "ReadInJoyAdDownloadView",
       "view_id": "id_view_AdDownloadView",
       "height": {
         "type": "relative",

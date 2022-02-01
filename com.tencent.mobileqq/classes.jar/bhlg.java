@@ -1,14 +1,21 @@
-import android.os.Bundle;
-
-public abstract interface bhlg
+public class bhlg
 {
-  public abstract void a(int paramInt, Bundle paramBundle);
+  public int a;
+  public int b;
+  public int c;
+  public int d;
   
-  public abstract void a(Bundle paramBundle);
+  bhlg(int paramInt)
+  {
+    this.a = paramInt;
+    this.b = 0;
+    this.c = 0;
+    this.d = 0;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bhlg
  * JD-Core Version:    0.7.0.1
  */

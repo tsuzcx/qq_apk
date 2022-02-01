@@ -1,8 +1,6 @@
-import android.view.View;
-
 public abstract interface blgf
 {
-  public abstract void a(View paramView, blab paramblab, int paramInt);
+  public abstract void a(String paramString1, String paramString2, long paramLong);
 }
 
 

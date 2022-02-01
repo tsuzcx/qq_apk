@@ -1,40 +1,47 @@
+import android.os.SystemClock;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.shortvideo.resource.ArtFilterResource;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.smtt.sdk.QbSdk;
+import com.tencent.smtt.sdk.WebAccelerator;
+import java.util.HashMap;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class bhrd
-  implements ArtFilterResource
 {
-  public String getCommonPrefix()
+  public static long a;
+  static final AtomicBoolean a;
+  
+  static
   {
-    return ajsv.c;
+    jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
   }
   
-  public String getFilterResPath()
+  public static boolean a()
   {
-    if (bhrb.a) {
-      return bnkr.b;
+    return jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get();
+  }
+  
+  public static boolean b()
+  {
+    if (jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.compareAndSet(false, true))
+    {
+      long l = System.currentTimeMillis();
+      HashMap localHashMap = new HashMap();
+      localHashMap.put("use_speedy_classloader", Boolean.valueOf(true));
+      localHashMap.put("use_dexloader_service", Boolean.valueOf(false));
+      QbSdk.initTbsSettings(localHashMap);
+      WebAccelerator.initTbsEnvironment(BaseApplicationImpl.sApplication.getApplicationContext(), 2);
+      bhqc.D = SystemClock.elapsedRealtime();
+      jdField_a_of_type_Long = System.currentTimeMillis() - l;
+      QLog.d("WebLog_SwiftWebAccelerator", 1, "WebAccelerator.initTbsEnvironment, cost=" + (System.currentTimeMillis() - l));
+      return true;
     }
-    return axom.b;
-  }
-  
-  public String getModelPath()
-  {
-    return "";
-  }
-  
-  public String getReshapePath()
-  {
-    return "";
-  }
-  
-  public String getSoPathDir()
-  {
-    return azkt.d(BaseApplicationImpl.getContext());
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bhrd
  * JD-Core Version:    0.7.0.1
  */

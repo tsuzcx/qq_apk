@@ -46,7 +46,7 @@ public class RedTouchUI
       try
       {
         Object localObject;
-        if (TextUtils.isEmpty(paramRedTypeInfo.getRed_desc()))
+        if (TextUtils.isEmpty(paramRedTypeInfo.getRedDesc()))
         {
           localObject = new JSONObject();
           if (!((JSONObject)localObject).has("bg")) {
@@ -55,7 +55,7 @@ public class RedTouchUI
         }
         label400:
         for (int i = a(((JSONObject)localObject).getString("bg"));; i = 0) {
-          switch (paramRedTypeInfo.getRed_type())
+          switch (paramRedTypeInfo.getRedType())
           {
           case 0: 
             paramRedTypeInfo = a(i);
@@ -67,7 +67,7 @@ public class RedTouchUI
             paramRedTypeInfo.setId(i);
             this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(paramRedTypeInfo);
             return;
-            localObject = new JSONObject(paramRedTypeInfo.getRed_desc());
+            localObject = new JSONObject(paramRedTypeInfo.getRedDesc());
             break;
           case 3: 
             if (!((JSONObject)localObject).has("av")) {}
@@ -79,7 +79,7 @@ public class RedTouchUI
               if (((JSONObject)localObject).has("dot")) {
                 k = ((JSONObject)localObject).getInt("dot");
               }
-              paramRedTypeInfo = a(paramRedTypeInfo.getRed_content(), j, k, i);
+              paramRedTypeInfo = a(paramRedTypeInfo.getRedContent(), j, k, i);
               if (paramRedTypeInfo == null) {
                 break;
               }
@@ -96,11 +96,11 @@ public class RedTouchUI
               if (((JSONObject)localObject).has("cn")) {
                 k = a(((JSONObject)localObject).getString("cn"));
               }
-              localObject = a(paramRedTypeInfo.getRed_content(), j, k, i);
+              localObject = a(paramRedTypeInfo.getRedContent(), j, k, i);
               if (localObject == null) {
                 break;
               }
-              if (paramRedTypeInfo.getRed_type() == 4)
+              if (paramRedTypeInfo.getRedType() == 4)
               {
                 i = this.c;
                 this.c = (i + 1);
@@ -113,7 +113,7 @@ public class RedTouchUI
                 i = this.d;
                 this.d = (i + 1);
               }
-              paramRedTypeInfo = a(paramRedTypeInfo.getRed_content());
+              paramRedTypeInfo = a(paramRedTypeInfo.getRedContent());
               if (paramRedTypeInfo == null) {
                 break;
               }
@@ -130,8 +130,8 @@ public class RedTouchUI
   
   private boolean a(RedTypeInfo paramRedTypeInfo1, RedTypeInfo paramRedTypeInfo2)
   {
-    if (paramRedTypeInfo1.getRed_type() != paramRedTypeInfo2.getRed_type()) {}
-    while ((!paramRedTypeInfo1.getRed_content().equals(paramRedTypeInfo2.getRed_content())) || (!paramRedTypeInfo1.getRed_desc().equals(paramRedTypeInfo2.getRed_desc())) || (paramRedTypeInfo1.getRed_priority() != paramRedTypeInfo2.getRed_priority())) {
+    if (paramRedTypeInfo1.getRedType() != paramRedTypeInfo2.getRedType()) {}
+    while ((!paramRedTypeInfo1.getRedContent().equals(paramRedTypeInfo2.getRedContent())) || (!paramRedTypeInfo1.getRedDesc().equals(paramRedTypeInfo2.getRedDesc())) || (paramRedTypeInfo1.getRedPriority() != paramRedTypeInfo2.getRedPriority())) {
       return false;
     }
     return true;
@@ -274,7 +274,7 @@ public class RedTouchUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.redtouch.RedTouchUI
  * JD-Core Version:    0.7.0.1
  */

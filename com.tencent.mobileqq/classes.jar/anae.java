@@ -1,14 +1,17 @@
-import android.os.Build;
+import com.tencent.TMG.sdk.AVAudioCtrl.EnableMicCompleteCallback;
+import com.tencent.qphone.base.util.QLog;
 
-public class anae
+class anae
+  extends AVAudioCtrl.EnableMicCompleteCallback
 {
-  public static boolean a(String paramString)
+  anae(anaa paramanaa) {}
+  
+  public void onComplete(boolean paramBoolean, int paramInt)
   {
-    if (bdnn.a(paramString)) {}
-    while (!("" + Build.MANUFACTURER).equalsIgnoreCase(paramString)) {
-      return false;
+    QLog.d("AVEngineWalper", 1, "StartOpenMic.OnComplete. bOpen = " + paramBoolean + ", result = " + paramInt);
+    if (this.a.a != null) {
+      this.a.a.a(paramBoolean, paramInt);
     }
-    return true;
   }
 }
 

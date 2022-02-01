@@ -1,8 +1,13 @@
-import android.widget.Button;
+import android.widget.TextView;
 
-public class ahmo
+class ahmo
+  extends afuv
 {
-  public Button a;
+  public TextView b;
+  public TextView c;
+  public TextView d;
+  
+  ahmo(ahmn paramahmn) {}
 }
 
 

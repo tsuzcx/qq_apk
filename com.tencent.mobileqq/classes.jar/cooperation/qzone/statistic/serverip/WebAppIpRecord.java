@@ -3,12 +3,12 @@ package cooperation.qzone.statistic.serverip;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import bjti;
+import bmhs;
 
 public class WebAppIpRecord
   implements Parcelable
 {
-  public static final Parcelable.Creator<WebAppIpRecord> CREATOR = new bjti();
+  public static final Parcelable.Creator<WebAppIpRecord> CREATOR = new bmhs();
   public long a;
   public WebAppIpRecord.FixedSizeLinkedHashMap<Integer, Long> a;
   
@@ -46,7 +46,7 @@ public class WebAppIpRecord
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.qzone.statistic.serverip.WebAppIpRecord
  * JD-Core Version:    0.7.0.1
  */

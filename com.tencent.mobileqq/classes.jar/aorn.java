@@ -1,99 +1,37 @@
-import android.text.TextUtils;
-import com.tencent.TMG.utils.QLog;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnPreparedListener;
+import com.tencent.qphone.base.util.QLog;
 
-public class aorn
+class aorn
+  implements MediaPlayer.OnPreparedListener
 {
-  private aoro[] a = new aoro[0];
+  aorn(aorl paramaorl) {}
   
-  public static aorn a(String paramString)
+  public void onPrepared(MediaPlayer paramMediaPlayer)
   {
-    int i = 0;
-    aorn localaorn = new aorn();
-    if (TextUtils.isEmpty(paramString)) {
+    try
+    {
       if (QLog.isColorLevel()) {
-        QLog.d("SingTogetherConfigBean", 0, "parse content is empty");
+        QLog.d("ARMusicController", 2, "load bg music success. : " + aorl.b(this.a));
       }
-    }
-    for (;;)
-    {
-      return localaorn;
-      try
+      this.a.a.seekTo(0);
+      aorl.b(this.a, true);
+      if (aorl.b(this.a))
       {
-        paramString = new JSONObject(paramString).getJSONArray("array");
-        if ((paramString != null) && (paramString.length() > 0))
-        {
-          localaorn.a = new aoro[paramString.length()];
-          while (i < paramString.length())
-          {
-            aoro localaoro = aoro.a(paramString.getJSONObject(i));
-            localaorn.a[i] = localaoro;
-            i += 1;
-          }
-          if (QLog.isColorLevel())
-          {
-            QLog.d("SingTogetherConfigBean", 0, "parse config=" + localaorn);
-            return localaorn;
-          }
-        }
+        this.a.a.start();
+        aorl.c(this.a, false);
       }
-      catch (JSONException paramString)
-      {
-        paramString.printStackTrace();
-      }
+      return;
     }
-    return localaorn;
-  }
-  
-  public aoro a(int paramInt)
-  {
-    Object localObject;
-    if ((this.a == null) || (this.a.length <= 0))
+    catch (Exception paramMediaPlayer)
     {
-      localObject = null;
-      return localObject;
+      paramMediaPlayer.printStackTrace();
     }
-    aoro[] arrayOfaoro = this.a;
-    int j = arrayOfaoro.length;
-    int i = 0;
-    for (;;)
-    {
-      if (i >= j) {
-        break label64;
-      }
-      aoro localaoro = arrayOfaoro[i];
-      localObject = localaoro;
-      if (localaoro.a == paramInt) {
-        break;
-      }
-      i += 1;
-    }
-    label64:
-    return null;
-  }
-  
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder(super.toString()).append(" ");
-    if ((this.a != null) && (this.a.length > 0))
-    {
-      aoro[] arrayOfaoro = this.a;
-      int j = arrayOfaoro.length;
-      int i = 0;
-      while (i < j)
-      {
-        localStringBuilder.append(arrayOfaoro[i]).append(" ");
-        i += 1;
-      }
-    }
-    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aorn
  * JD-Core Version:    0.7.0.1
  */

@@ -1,157 +1,190 @@
-import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.mobileqq.systemmsg.MessageForSystemMsg;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.util.QLog;
+import android.content.SharedPreferences;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.apollo.cmgame.CmGameStartChecker.StartCheckParam;
+import com.tencent.mobileqq.apollo.debug.CmGameDebugManager.1;
+import com.tencent.mobileqq.apollo.debug.CmGameDebugManager.2;
+import com.tencent.mobileqq.apollo.debug.page.CmGameDebugBaseFragment;
+import com.tencent.mobileqq.apollo.debug.page.CmGameDebugLogFragment;
+import com.tencent.mobileqq.apollo.debug.page.CmGameDebugToolFragment;
+import com.tencent.mobileqq.app.ThreadManager;
+import java.lang.ref.WeakReference;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
-import tencent.mobileim.structmsg.structmsg.RspHead;
-import tencent.mobileim.structmsg.structmsg.RspNextSystemMsg;
-import tencent.mobileim.structmsg.structmsg.StructMsg;
-import tencent.mobileim.structmsg.structmsg.SystemMsg;
+import java.util.concurrent.ArrayBlockingQueue;
+import java.util.concurrent.BlockingQueue;
+import mqq.os.MqqHandler;
 
-class amlz
-  implements bavp
+public class amlz
 {
-  amlz(amlp paramamlp) {}
+  public static final String[] a;
+  public static final String[] b;
+  public static final String[] c;
+  private WeakReference<amma> jdField_a_of_type_JavaLangRefWeakReference;
+  private BlockingQueue<ammi> jdField_a_of_type_JavaUtilConcurrentBlockingQueue = new ArrayBlockingQueue(100);
+  private boolean jdField_a_of_type_Boolean;
+  private BlockingQueue<ammi> b;
+  private BlockingQueue<ammi> c;
   
-  public void a(bavr parambavr, bavq parambavq)
+  static
   {
-    if (parambavr.a.getResultCode() != 1000)
+    jdField_a_of_type_ArrayOfJavaLangString = new String[] { "Log", "Tool" };
+    jdField_b_of_type_ArrayOfJavaLangString = new String[] { "All", "Log", "Info", "Error", "Game" };
+    jdField_c_of_type_ArrayOfJavaLangString = new String[] { "#000000", "#000000", "#6a59d6", "#FF0000", "#556B2F" };
+  }
+  
+  public amlz()
+  {
+    this.jdField_b_of_type_JavaUtilConcurrentBlockingQueue = new ArrayBlockingQueue(50);
+    this.jdField_c_of_type_JavaUtilConcurrentBlockingQueue = new ArrayBlockingQueue(50);
+  }
+  
+  public static CmGameDebugBaseFragment a(int paramInt)
+  {
+    switch (paramInt)
     {
-      this.a.a(4006, false, null);
+    default: 
+      return new CmGameDebugLogFragment();
+    case 0: 
+      return new CmGameDebugLogFragment();
+    }
+    return new CmGameDebugToolFragment();
+  }
+  
+  private void a(ammi paramammi)
+  {
+    if (paramammi == null) {
       return;
     }
-    Object localObject1;
-    int i;
+    switch (paramammi.a)
+    {
+    }
     for (;;)
     {
-      structmsg.RspNextSystemMsg localRspNextSystemMsg;
-      Object localObject2;
-      Object localObject3;
-      MessageForSystemMsg localMessageForSystemMsg;
-      try
-      {
-        localObject1 = (alto)amlp.b(this.a).getManager(51);
-        parambavq = amlp.c(this.a).getAccount();
-        localRspNextSystemMsg = new structmsg.RspNextSystemMsg();
-        localRspNextSystemMsg.mergeFrom((byte[])parambavr.a.getWupBuffer());
-        new StringBuilder();
-        if ((localRspNextSystemMsg == null) || (localRspNextSystemMsg.head.result.get() != 0)) {
-          this.a.a(4006, false, null);
-        }
-        parambavr = new ArrayList();
-        localObject2 = localRspNextSystemMsg.msgs.get();
-        j = ((List)localObject2).size();
-        if (!QLog.isColorLevel()) {
-          break label860;
-        }
-        QLog.e("Q.systemmsg.", 2, "<---sendGetNextFriendSystemMsg Resp : decode pb size = " + j);
+      this.jdField_a_of_type_JavaUtilConcurrentBlockingQueue.offer(paramammi);
+      if (this.jdField_a_of_type_JavaUtilConcurrentBlockingQueue.size() == 100) {
+        this.jdField_a_of_type_JavaUtilConcurrentBlockingQueue.poll();
       }
-      catch (Exception parambavr)
+      ThreadManager.getUIHandler().post(new CmGameDebugManager.1(this, paramammi));
+      return;
+      this.jdField_c_of_type_JavaUtilConcurrentBlockingQueue.offer(paramammi);
+      if (this.jdField_c_of_type_JavaUtilConcurrentBlockingQueue.size() == 50)
       {
-        int j;
-        long l3;
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.d("Q.systemmsg.", 2, "clearFriendSystemMsgResp exception", parambavr);
-        this.a.a(4006, false, null);
-        return;
-      }
-      if (i < j)
-      {
-        localObject3 = azaf.a(-2018);
-        ((MessageRecord)localObject3).msgtype = -2018;
-        ((MessageRecord)localObject3).selfuin = parambavq;
-        ((MessageRecord)localObject3).frienduin = alof.M;
-        ((MessageRecord)localObject3).senderuin = (((structmsg.StructMsg)((List)localObject2).get(i)).req_uin.get() + "");
-        ((MessageRecord)localObject3).istroop = 0;
-        ((MessageRecord)localObject3).time = ((structmsg.StructMsg)((List)localObject2).get(i)).msg_time.get();
-        ((MessageRecord)localObject3).isread = true;
-        localMessageForSystemMsg = (MessageForSystemMsg)localObject3;
-        localMessageForSystemMsg.structMsg = ((structmsg.StructMsg)((structmsg.StructMsg)((List)localObject2).get(i)).get());
-        ((MessageRecord)localObject3).msgData = localMessageForSystemMsg.structMsg.toByteArray();
-        localMessageForSystemMsg.parse();
-        parambavr.add(localMessageForSystemMsg);
-        i += 1;
-      }
-      else if (parambavr.size() > 0)
-      {
-        i = parambavr.size();
-        long l1 = ((MessageRecord)parambavr.get(0)).time;
-        long l2 = ((MessageRecord)parambavr.get(i - 1)).time;
-        l3 = bafi.a().a(amlp.d(this.a));
-        localObject2 = amlp.e(this.a).a().a(alof.M, 0, l3).iterator();
-        while (((Iterator)localObject2).hasNext())
-        {
-          localObject3 = (ChatMessage)((Iterator)localObject2).next();
-          if ((((ChatMessage)localObject3).time >= l2) && (((ChatMessage)localObject3).time <= l1))
-          {
-            amlp.f(this.a).a().b(alof.M, 0, ((ChatMessage)localObject3).uniseq, false);
-            ((Iterator)localObject2).remove();
-          }
-          else if ((localObject3 instanceof MessageForSystemMsg))
-          {
-            localMessageForSystemMsg = (MessageForSystemMsg)localObject3;
-            if (localMessageForSystemMsg.structMsg == null) {
-              localMessageForSystemMsg.parse();
-            }
-            String str = localMessageForSystemMsg.senderuin;
-            if ((localMessageForSystemMsg.structMsg.msg.sub_type.get() == 13) && (((alto)localObject1).b(str)))
-            {
-              amlp.g(this.a).a().b(alof.M, 0, ((ChatMessage)localObject3).uniseq, false);
-              ((Iterator)localObject2).remove();
-            }
-          }
-        }
-        bafi.a().a(amlp.h(this.a), l2);
-        if (parambavr.size() < 20) {
-          bafi.a().a(true, amlp.i(this.a));
-        }
-        l2 = localRspNextSystemMsg.following_friend_seq.get();
-        l1 = l2;
-        if (l2 <= 0L) {
-          l1 = amlp.j(this.a).a().e("following_friend_seq_47");
-        }
-        if (QLog.isColorLevel()) {
-          QLog.e("Q.systemmsg.", 2, "<---sendGetNextFriendSystemMsg : decode pb following_friend_seq" + l1);
-        }
-        amlp.k(this.a).a().e("following_friend_seq_47", l1);
-        localObject1 = amlp.m(this.a).a();
-        parambavq = String.valueOf(parambavq);
-        if ((!alww.a(parambavr)) || (!amlp.l(this.a).isBackground_Stop)) {
-          break label865;
+        this.jdField_c_of_type_JavaUtilConcurrentBlockingQueue.poll();
+        continue;
+        this.jdField_b_of_type_JavaUtilConcurrentBlockingQueue.offer(paramammi);
+        if (this.jdField_b_of_type_JavaUtilConcurrentBlockingQueue.size() == 50) {
+          this.jdField_b_of_type_JavaUtilConcurrentBlockingQueue.poll();
         }
       }
     }
-    label860:
-    label865:
-    for (boolean bool = true;; bool = false)
+  }
+  
+  public static boolean a(int paramInt)
+  {
+    amrt localamrt = ampj.a();
+    if (localamrt != null) {
+      return localamrt.a(paramInt);
+    }
+    return false;
+  }
+  
+  public static boolean a(CmGameStartChecker.StartCheckParam paramStartCheckParam)
+  {
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (paramStartCheckParam != null)
     {
-      ((QQMessageFacade)localObject1).a(parambavr, parambavq, bool);
-      this.a.a("handleGetSystemMsgResp", true, parambavr.size(), false, false);
-      for (;;)
+      bool1 = bool2;
+      if (paramStartCheckParam.isWhiteUsr)
       {
-        this.a.a(4005, true, null);
-        return;
-        bafi.a().a(true, amlp.n(this.a));
+        bool1 = bool2;
+        if (a(paramStartCheckParam.gameId)) {
+          bool1 = BaseApplicationImpl.getApplication().getSharedPreferences("cmgame_sp", 0).getBoolean("game_debug_tool_switch", true);
+        }
       }
-      i = 0;
-      break;
+    }
+    return bool1;
+  }
+  
+  private List<ammi> b(int paramInt)
+  {
+    Object localObject = Arrays.asList(this.jdField_a_of_type_JavaUtilConcurrentBlockingQueue.toArray(new ammi[0]));
+    if (paramInt == 0) {
+      return localObject;
+    }
+    ArrayList localArrayList = new ArrayList();
+    localObject = ((List)localObject).iterator();
+    while (((Iterator)localObject).hasNext())
+    {
+      ammi localammi = (ammi)((Iterator)localObject).next();
+      if (localammi.a == paramInt) {
+        localArrayList.add(localammi);
+      }
+    }
+    return localArrayList;
+  }
+  
+  public List<ammi> a(int paramInt)
+  {
+    ArrayList localArrayList = new ArrayList();
+    switch (paramInt)
+    {
+    default: 
+      return localArrayList;
+    case 0: 
+      return Arrays.asList(this.jdField_a_of_type_JavaUtilConcurrentBlockingQueue.toArray(new ammi[0]));
+    case 1: 
+      return b(1);
+    case 2: 
+      return b(2);
+    case 3: 
+      return Arrays.asList(this.jdField_b_of_type_JavaUtilConcurrentBlockingQueue.toArray(new ammi[0]));
+    }
+    return Arrays.asList(this.jdField_c_of_type_JavaUtilConcurrentBlockingQueue.toArray(new ammi[0]));
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_Boolean = true;
+    a(false);
+  }
+  
+  public void a(amma paramamma)
+  {
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramamma);
+  }
+  
+  public void a(String paramString, int paramInt, Object... paramVarArgs)
+  {
+    StringBuilder localStringBuilder = new StringBuilder(paramVarArgs.length * 30);
+    localStringBuilder.append(paramString).append(" | ");
+    int i = 0;
+    while (i < paramVarArgs.length)
+    {
+      paramString = paramVarArgs[i];
+      if (paramString != null) {
+        localStringBuilder.append(paramString.toString());
+      }
+      i += 1;
+    }
+    a(new ammi(localStringBuilder.toString(), paramInt));
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_JavaUtilConcurrentBlockingQueue.clear();
+    this.jdField_c_of_type_JavaUtilConcurrentBlockingQueue.clear();
+    this.jdField_b_of_type_JavaUtilConcurrentBlockingQueue.clear();
+    if ((paramBoolean) && (!this.jdField_a_of_type_Boolean)) {
+      ThreadManager.getUIHandler().post(new CmGameDebugManager.2(this));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amlz
  * JD-Core Version:    0.7.0.1
  */

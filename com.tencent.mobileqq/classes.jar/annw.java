@@ -1,18 +1,15 @@
-import com.tencent.ark.ArkEnvironmentManager.LibraryLoader;
-import com.tencent.mobileqq.ark.ArkAppCenter;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
 
-public final class annw
-  implements ArkEnvironmentManager.LibraryLoader
+final class annw
+  implements DialogInterface.OnDismissListener
 {
-  public boolean Load()
-  {
-    ArkAppCenter.f();
-    return ArkAppCenter.b;
-  }
+  annw(Activity paramActivity, int paramInt) {}
   
-  public boolean isLibraryLoad()
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    return ArkAppCenter.b;
+    this.jdField_a_of_type_AndroidAppActivity.setRequestedOrientation(this.jdField_a_of_type_Int);
   }
 }
 

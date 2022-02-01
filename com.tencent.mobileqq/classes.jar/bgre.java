@@ -1,30 +1,10 @@
-import android.content.DialogInterface.OnClickListener;
-import android.view.View;
-import android.view.View.OnClickListener;
-
-class bgre
-  implements View.OnClickListener
+public abstract interface bgre
 {
-  bgre(bgrb parambgrb, DialogInterface.OnClickListener paramOnClickListener) {}
-  
-  public void onClick(View paramView)
-  {
-    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
-      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_Bgrb, 1);
-    }
-    try
-    {
-      if (this.jdField_a_of_type_Bgrb.isShowing()) {
-        this.jdField_a_of_type_Bgrb.dismiss();
-      }
-      return;
-    }
-    catch (Exception paramView) {}
-  }
+  public abstract void a(boolean paramBoolean);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bgre
  * JD-Core Version:    0.7.0.1
  */

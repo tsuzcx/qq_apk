@@ -1,14 +1,9 @@
-import android.text.TextUtils;
-
 public class asid
 {
-  public static boolean a(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {
-      return false;
-    }
-    return paramString.startsWith("https://ti.qq.com/friends/unidirection?_wv=2&_wwv=128&tuin=");
-  }
+  public int a;
+  public long a;
+  public asht a;
+  public String a;
 }
 
 

@@ -1,29 +1,22 @@
-import android.text.TextUtils;
-import com.tencent.TMG.utils.QLog;
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.PathResult;
-import com.tencent.mobileqq.gamecenter.data.FullPopData;
-import java.io.File;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import kotlin.Metadata;
 
-class asni
-  implements ajal
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"}, k=3, mv={1, 1, 16})
+final class asni
+  implements View.OnClickListener
 {
-  asni(asnh paramasnh, FullPopData paramFullPopData) {}
+  asni(asnc paramasnc) {}
   
-  public void onResult(int paramInt, PreloadManager.PathResult paramPathResult)
+  public final void onClick(View paramView)
   {
-    if ((paramInt == 0) && (!TextUtils.isEmpty(paramPathResult.folderPath)))
+    if (this.a.isShowing())
     {
-      paramPathResult = new File(paramPathResult.folderPath);
-      if (paramPathResult.exists())
-      {
-        asnh.a(this.jdField_a_of_type_Asnh, this.jdField_a_of_type_ComTencentMobileqqGamecenterDataFullPopData);
-        asnh.a(this.jdField_a_of_type_Asnh).resPath = paramPathResult.getPath();
-        this.jdField_a_of_type_Asnh.a = true;
-        if (QLog.isColorLevel()) {
-          QLog.d("FullPopBussiness", 1, "full pop res is ready");
-        }
-      }
+      this.a.dismiss();
+      bcst.b(null, "dc00898", "", "", "0X800B08A", "0X800B08A", 6, 0, "", "", "", "");
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

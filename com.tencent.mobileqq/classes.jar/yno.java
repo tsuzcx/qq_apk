@@ -1,28 +1,43 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.subscribe.videoplayer.VideoPlayerView;
-import java.lang.ref.WeakReference;
+import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
 
-public class yno
-  implements View.OnClickListener
+class yno
+  implements INetInfoHandler
 {
-  public yno(VideoPlayerView paramVideoPlayerView) {}
+  yno(ynm paramynm) {}
   
-  public void onClick(View paramView)
+  public void onNetMobile2None()
   {
-    if (yxv.a("mLLSkipBackWrapper", 500L))
-    {
-      VideoPlayerView.e(this.a);
-      VideoPlayerView.a(this.a, new WeakReference(VideoPlayerView.b(this.a)), 0, 1, true);
-      if (VideoPlayerView.a(this.a) != null) {
-        this.a.a(VideoPlayerView.a(this.a).a() - 10000L);
-      }
-    }
+    ynm.b(this.a, ynm.a(3));
+  }
+  
+  public void onNetMobile2Wifi(String paramString)
+  {
+    ynm.b(this.a, ynm.a(1));
+  }
+  
+  public void onNetNone2Mobile(String paramString)
+  {
+    ynm.b(this.a, ynm.a(2));
+  }
+  
+  public void onNetNone2Wifi(String paramString)
+  {
+    ynm.b(this.a, ynm.a(1));
+  }
+  
+  public void onNetWifi2Mobile(String paramString)
+  {
+    ynm.b(this.a, ynm.a(2));
+  }
+  
+  public void onNetWifi2None()
+  {
+    ynm.b(this.a, ynm.a(3));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     yno
  * JD-Core Version:    0.7.0.1
  */

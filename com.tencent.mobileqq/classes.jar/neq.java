@@ -1,43 +1,39 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.SplashActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Handler;
+import android.os.HandlerThread;
+import android.os.Looper;
 
-public final class neq
-  implements yrb
+public class neq
 {
-  public neq(Activity paramActivity, boolean paramBoolean, String paramString) {}
+  private static final neq jdField_a_of_type_Neq = new neq();
+  private Handler jdField_a_of_type_AndroidOsHandler;
+  private Handler b;
   
-  public void callback(Bundle paramBundle)
+  private neq()
   {
-    int i = paramBundle.getInt("currentFragment", -1);
-    if (QLog.isColorLevel()) {
-      QLog.i("SensorAPIJavaScript", 2, "isFromAio callback " + i);
-    }
-    if (i == 2)
-    {
-      paramBundle = new Intent(this.jdField_a_of_type_AndroidAppActivity, SplashActivity.class);
-      paramBundle.setFlags(67108864);
-      this.jdField_a_of_type_AndroidAppActivity.startActivity(paramBundle);
-      return;
-    }
-    if ((this.jdField_a_of_type_Boolean) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)))
-    {
-      paramBundle = aepi.a(new Intent(this.jdField_a_of_type_AndroidAppActivity, SplashActivity.class), null);
-      paramBundle.putExtra("uin", this.jdField_a_of_type_JavaLangString);
-      paramBundle.putExtra("uintype", 1);
-      this.jdField_a_of_type_AndroidAppActivity.startActivity(paramBundle);
-      return;
-    }
-    this.jdField_a_of_type_AndroidAppActivity.setResult(4660);
-    this.jdField_a_of_type_AndroidAppActivity.finish();
+    HandlerThread localHandlerThread = new HandlerThread("avgame_chat_thread");
+    localHandlerThread.start();
+    this.jdField_a_of_type_AndroidOsHandler = new Handler(localHandlerThread.getLooper());
+    this.b = new Handler(Looper.getMainLooper());
+  }
+  
+  public static neq a()
+  {
+    return jdField_a_of_type_Neq;
+  }
+  
+  public Handler a()
+  {
+    return this.jdField_a_of_type_AndroidOsHandler;
+  }
+  
+  public Handler b()
+  {
+    return this.b;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     neq
  * JD-Core Version:    0.7.0.1
  */

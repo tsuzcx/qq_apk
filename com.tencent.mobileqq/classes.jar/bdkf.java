@@ -1,30 +1,21 @@
+import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.teamwork.fragment.TeamWorkAuthorizeSettingFragment;
 
-class bdkf
-  implements View.OnClickListener
+public class bdkf
+  implements DialogInterface.OnClickListener
 {
-  bdkf(bdjz parambdjz, DialogInterface.OnClickListener paramOnClickListener) {}
+  public bdkf(TeamWorkAuthorizeSettingFragment paramTeamWorkAuthorizeSettingFragment) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
-      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_Bdjz, 0);
-    }
-    try
-    {
-      if (this.jdField_a_of_type_Bdjz.isShowing()) {
-        this.jdField_a_of_type_Bdjz.dismiss();
-      }
-      return;
-    }
-    catch (Exception paramView) {}
+    this.a.getActivity().finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bdkf
  * JD-Core Version:    0.7.0.1
  */

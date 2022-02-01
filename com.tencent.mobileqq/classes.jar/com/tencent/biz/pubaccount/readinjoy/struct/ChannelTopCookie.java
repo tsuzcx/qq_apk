@@ -1,9 +1,9 @@
 package com.tencent.biz.pubaccount.readinjoy.struct;
 
-import awge;
+import com.tencent.mobileqq.persistence.Entity;
 
 public class ChannelTopCookie
-  extends awge
+  extends Entity
   implements Cloneable
 {
   public static final String TABLE_NAME = ArticleInfo.class.getSimpleName();

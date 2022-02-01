@@ -1,30 +1,43 @@
-import android.os.Message;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.RegisterActivity;
-import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
+import android.os.AsyncTask;
+import android.os.Handler;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.activity.ChatHistory;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageForApollo;
+import com.tencent.mobileqq.data.MessageRecord;
 
-public class adtv
-  extends MqqHandler
+class adtv
+  extends AsyncTask<MessageRecord, Object, Object>
 {
-  public adtv(RegisterActivity paramRegisterActivity) {}
+  adtv(adtu paramadtu) {}
   
-  public void handleMessage(Message paramMessage)
+  protected Object a(MessageRecord... paramVarArgs)
   {
-    switch (paramMessage.what)
-    {
-    }
-    do
-    {
-      return;
-      paramMessage = (String)paramMessage.obj;
-      if (!TextUtils.isEmpty(paramMessage))
-      {
-        RegisterActivity.b(this.a, paramMessage);
-        return;
+    if (this.a.a.d) {
+      if (this.a.a.jdField_a_of_type_Aywe != null) {
+        this.a.a.jdField_a_of_type_Aywe.a(paramVarArgs[0], true);
       }
-    } while (!QLog.isColorLevel());
-    QLog.d("IphoneTitleBarActivity", 2, "captcha sig is empty");
+    }
+    for (;;)
+    {
+      if ((paramVarArgs[0] instanceof MessageForApollo)) {
+        amuf.a(this.a.a.app, "chat_history_start_del_msg");
+      }
+      return null;
+      this.a.a.app.a().a(paramVarArgs[0], true);
+    }
+  }
+  
+  protected void onPostExecute(Object paramObject)
+  {
+    super.onPostExecute(paramObject);
+    this.a.a.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
+    if ((this.a.a.jdField_a_of_type_Biau != null) && (this.a.a.jdField_a_of_type_Biau.isShowing())) {
+      this.a.a.jdField_a_of_type_Biau.dismiss();
+    }
+    if (this.a.a.d) {
+      this.a.a.a(11, false);
+    }
   }
 }
 

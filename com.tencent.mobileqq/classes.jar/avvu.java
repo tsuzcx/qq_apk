@@ -1,42 +1,21 @@
-import android.app.Activity;
-import com.tencent.mobileqq.ocr.OCRResultActivity;
-import com.tencent.mobileqq.ocr.OCRResultActivity.10.1;
-import com.tencent.mobileqq.ocr.OCRResultActivity.10.2;
-import com.tencent.mobileqq.ocr.OCRResultActivity.10.3;
-import com.tencent.mobileqq.ocr.OCRResultActivity.10.4;
-import mqq.os.MqqHandler;
+import android.media.MediaPlayer;
+import com.tencent.mobileqq.listentogether.data.ISong;
+import com.tencent.mobileqq.listentogether.player.QQMusicPlayService;
 
 public class avvu
-  extends baih
 {
-  public avvu(OCRResultActivity paramOCRResultActivity, Activity paramActivity)
-  {
-    super(paramActivity);
-  }
+  MediaPlayer jdField_a_of_type_AndroidMediaMediaPlayer;
+  ISong jdField_a_of_type_ComTencentMobileqqListentogetherDataISong;
   
-  public void a()
+  public avvu(QQMusicPlayService paramQQMusicPlayService, MediaPlayer paramMediaPlayer, ISong paramISong)
   {
-    OCRResultActivity.a(this.a).post(new OCRResultActivity.10.1(this));
-  }
-  
-  public void a(int paramInt)
-  {
-    OCRResultActivity.a(this.a).post(new OCRResultActivity.10.4(this, paramInt));
-  }
-  
-  public void a(String paramString1, String paramString2)
-  {
-    OCRResultActivity.a(this.a).post(new OCRResultActivity.10.3(this));
-  }
-  
-  public void a(boolean paramBoolean, String paramString)
-  {
-    OCRResultActivity.a(this.a).post(new OCRResultActivity.10.2(this, paramString));
+    this.jdField_a_of_type_AndroidMediaMediaPlayer = paramMediaPlayer;
+    this.jdField_a_of_type_ComTencentMobileqqListentogetherDataISong = paramISong;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     avvu
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,15 @@
+import com.tencent.mobileqq.app.message.messageclean.ScanSpaceManager;
+import com.tencent.mobileqq.app.message.messageclean.ScanSpaceManager.ScanSpaceTask;
+
 public class aohp
+  implements aeyi
 {
-  public String a;
+  public aohp(ScanSpaceManager.ScanSpaceTask paramScanSpaceTask) {}
+  
+  public void a(int paramInt)
+  {
+    ScanSpaceManager.a(this.a.this$0, paramInt);
+  }
 }
 
 

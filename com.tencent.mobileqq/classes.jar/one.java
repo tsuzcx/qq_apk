@@ -1,21 +1,26 @@
-import java.util.List;
+import org.json.JSONObject;
 
-class one
-  extends oob
+public class one
 {
-  one(omz paramomz, boolean paramBoolean, List paramList)
-  {
-    super(paramomz, null);
-  }
+  public long a;
+  public String a;
+  public String b;
+  public String c;
   
-  void a(ooe paramooe)
+  one(omz paramomz, JSONObject paramJSONObject)
   {
-    paramooe.onCommentListLoad(1, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_JavaUtilList, omz.d(this.jdField_a_of_type_Omz), 2, 2);
+    if (paramJSONObject == null) {
+      return;
+    }
+    this.jdField_a_of_type_JavaLangString = paramJSONObject.optString("sActivityId");
+    this.b = paramJSONObject.optString("sGiftName");
+    this.c = paramJSONObject.optString("sNeedRole");
+    this.jdField_a_of_type_Long = paramJSONObject.optInt("iGiftId");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     one
  * JD-Core Version:    0.7.0.1
  */

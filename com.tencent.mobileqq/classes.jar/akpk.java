@@ -1,10 +1,15 @@
-public abstract interface akpk
+import android.text.Editable;
+import com.tencent.mobileqq.activity.qwallet.fragment.ExclusiveHbFragment;
+
+public class akpk
+  extends akqb
 {
-  public abstract void a();
+  public akpk(ExclusiveHbFragment paramExclusiveHbFragment) {}
   
-  public abstract void a(long paramLong);
-  
-  public abstract void b(long paramLong);
+  public void afterTextChanged(Editable paramEditable)
+  {
+    ExclusiveHbFragment.a(this.a);
+  }
 }
 
 

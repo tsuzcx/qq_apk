@@ -7,24 +7,24 @@ import com.tencent.aekit.api.standard.ai.AIManager;
 import com.tencent.ttpic.baseutils.io.FileUtils;
 import com.tencent.ttpic.baseutils.log.LogUtils;
 import com.tencent.ttpic.openapi.PTFaceDetector;
-import com.tencent.ttpic.openapi.initializer.AnimojiInitializer;
+import com.tencent.ttpic.openapi.initializer.Ace3DEngineInitializer;
+import com.tencent.ttpic.openapi.initializer.Face3DLibInitializer;
 import com.tencent.ttpic.openapi.initializer.FaceDetectInitializer;
-import com.tencent.ttpic.openapi.initializer.FaceKitInitializer;
-import com.tencent.ttpic.openapi.initializer.FilamentInitializer;
-import com.tencent.ttpic.openapi.initializer.GenderDetectorInitializer;
 import com.tencent.ttpic.openapi.initializer.GpuParticleInitializer;
 import com.tencent.ttpic.openapi.initializer.MaskImagesInitializer;
 import com.tencent.ttpic.openapi.initializer.PagInitializer;
 import com.tencent.ttpic.openapi.initializer.ParticleSystemInitializer;
 import com.tencent.ttpic.openapi.initializer.PtuAlgoInitializer;
 import com.tencent.ttpic.openapi.initializer.PtuToolsInitializer;
-import com.tencent.ttpic.openapi.initializer.RapidNetGenderSwitchInitializer;
-import com.tencent.ttpic.openapi.initializer.RapidNetGestureInitializer;
-import com.tencent.ttpic.openapi.initializer.RapidNetSegCpuInitializer;
-import com.tencent.ttpic.openapi.initializer.RapidNetSegGpuInitializer;
+import com.tencent.ttpic.openapi.initializer.TNNGenderSwitchInitializer;
+import com.tencent.ttpic.openapi.initializer.TNNGestureInitializer;
+import com.tencent.ttpic.openapi.initializer.TNNSegCpuInitializer;
+import com.tencent.ttpic.openapi.initializer.TNNSegGpuInitializer;
+import com.tencent.ttpic.openapi.initializer.TNNStyleChildInitializer;
 import com.tencent.ttpic.openapi.initializer.Voice2TextInitializer;
 import com.tencent.ttpic.openapi.initializer.VoiceChangerInitializer;
 import com.tencent.ttpic.openapi.initializer.YTCommonInitializer;
+import com.tencent.ttpic.openapi.model.FaceStyleItem.STYLE_CHANGE_TYPE;
 import com.tencent.ttpic.openapi.model.VideoMaterial;
 import com.tencent.ttpic.openapi.util.VideoMaterialUtil;
 import java.io.File;
@@ -70,55 +70,39 @@ public class FeatureManager
     if (paramVideoMaterial == null) {
       return true;
     }
-    if ((VideoMaterialUtil.isFilamentMaterial(paramVideoMaterial)) && (!FeatureManager.Features.FILAMENT.isFunctionReady())) {}
-    for (boolean bool3 = FeatureManager.Features.FILAMENT.init() & true;; bool3 = true)
+    if ((VideoMaterialUtil.isFilamentMaterial(paramVideoMaterial)) && (!FeatureManager.Features.ACE_3D_ENGINE.isFunctionReady())) {}
+    for (boolean bool3 = FeatureManager.Features.ACE_3D_ENGINE.init() & true;; bool3 = true)
     {
       boolean bool2 = bool3;
-      if (VideoMaterialUtil.isAnimojiMaterial(paramVideoMaterial))
-      {
-        bool2 = bool3;
-        if (!FeatureManager.Features.ANIMOJI.isFunctionReady()) {
-          bool2 = bool3 & FeatureManager.Features.ANIMOJI.init();
-        }
-      }
-      bool3 = bool2;
       if (VideoMaterialUtil.needVoiceChange(paramVideoMaterial))
       {
-        bool3 = bool2;
-        if (!FeatureManager.Features.VOICE_CHANGDER.isFunctionReady()) {
-          bool3 = bool2 & FeatureManager.Features.VOICE_CHANGDER.init();
-        }
-      }
-      bool2 = bool3;
-      if (VideoMaterialUtil.isAudio2textMaterial(paramVideoMaterial))
-      {
         bool2 = bool3;
-        if (!FeatureManager.Features.VOICE_TO_TEXT.isFunctionReady()) {
-          bool2 = bool3 & FeatureManager.Features.VOICE_TO_TEXT.init();
+        if (!FeatureManager.Features.VOICE_CHANGDER.isFunctionReady()) {
+          bool2 = bool3 & FeatureManager.Features.VOICE_CHANGDER.init();
         }
       }
       bool3 = bool2;
-      if (VideoMaterialUtil.isParticleMaterial(paramVideoMaterial))
+      if (VideoMaterialUtil.isAudio2textMaterial(paramVideoMaterial))
       {
         bool3 = bool2;
-        if (!FeatureManager.Features.PARTICLE_SYSTEM.isFunctionReady()) {
-          bool3 = bool2 & FeatureManager.Features.PARTICLE_SYSTEM.init();
+        if (!FeatureManager.Features.VOICE_TO_TEXT.isFunctionReady()) {
+          bool3 = bool2 & FeatureManager.Features.VOICE_TO_TEXT.init();
         }
       }
       bool2 = bool3;
-      if (VideoMaterialUtil.isGenderDetect(paramVideoMaterial))
+      if (VideoMaterialUtil.isParticleMaterial(paramVideoMaterial))
       {
         bool2 = bool3;
-        if (!FeatureManager.Features.GENDER_DETECTOR.isFunctionReady()) {
-          bool2 = bool3 & FeatureManager.Features.GENDER_DETECTOR.init();
+        if (!FeatureManager.Features.PARTICLE_SYSTEM.isFunctionReady()) {
+          bool2 = bool3 & FeatureManager.Features.PARTICLE_SYSTEM.init();
         }
       }
       bool3 = bool2;
       if (VideoMaterialUtil.is3DCosMaterial(paramVideoMaterial))
       {
         bool3 = bool2;
-        if (!FeatureManager.Features.FACE_KIT.isFunctionReady()) {
-          bool3 = bool2 & FeatureManager.Features.FACE_KIT.init();
+        if (!FeatureManager.Features.FACE_3D_LIB.isFunctionReady()) {
+          bool3 = bool2 & FeatureManager.Features.FACE_3D_LIB.init();
         }
       }
       if (!VideoMaterialUtil.isHairSegMaterial(paramVideoMaterial))
@@ -129,7 +113,7 @@ public class FeatureManager
       else
       {
         if ((!FeatureManager.Features.RAPID_NET_SEG_GPU.init()) || (!FeatureManager.Features.RAPID_NET_SEG_CPU.init())) {
-          break label330;
+          break label316;
         }
       }
       for (;;)
@@ -144,19 +128,28 @@ public class FeatureManager
           bool2 = bool3 & FeatureManager.Features.GPU_PARTICLE.init();
         }
         bool3 = bool2;
-        if (VideoMaterialUtil.isGenderSwitchMaterial(paramVideoMaterial)) {
+        if (VideoMaterialUtil.isTNNMaterial(paramVideoMaterial, FaceStyleItem.STYLE_CHANGE_TYPE.GENDER_SWITCH)) {
           bool3 = bool2 & FeatureManager.Features.RAPID_NET_GENDER_SWITCH.init();
         }
-        bool2 = bool3;
-        if (VideoMaterialUtil.isPagMaterial(paramVideoMaterial))
+        if ((!VideoMaterialUtil.isTNNMaterial(paramVideoMaterial, FaceStyleItem.STYLE_CHANGE_TYPE.CHILD_STYLE)) && (!VideoMaterialUtil.isTNNMaterial(paramVideoMaterial, FaceStyleItem.STYLE_CHANGE_TYPE.CARTOON_STYLE)))
         {
           bool2 = bool3;
+          if (!VideoMaterialUtil.isTNNMaterial(paramVideoMaterial, FaceStyleItem.STYLE_CHANGE_TYPE.FACE_CHANGE)) {}
+        }
+        else
+        {
+          bool2 = bool3 & FeatureManager.Features.TNN_STYLE_CHILD_INITIALIZER.init();
+        }
+        bool3 = bool2;
+        if (VideoMaterialUtil.isPagMaterial(paramVideoMaterial))
+        {
+          bool3 = bool2;
           if (!FeatureManager.Features.PAG.isFunctionReady()) {
-            bool2 = bool3 & FeatureManager.Features.PAG.init();
+            bool3 = bool2 & FeatureManager.Features.PAG.init();
           }
         }
-        return bool2;
-        label330:
+        return bool3;
+        label316:
         bool1 = false;
       }
     }
@@ -199,14 +192,14 @@ public class FeatureManager
     }
     boolean bool1 = true;
     if (paramBoolean) {
-      bool1 = true & FeatureManager.Features.YT_COMMON.init();
+      bool1 = true & FeatureManager.Features.YT_COMMON.init() & AIManager.installDetector(PTFaceDetector.class, FeatureManager.Features.FACE_DETECT.getSoDirOverrideFeatureManager(), FeatureManager.Features.FACE_DETECT.getResourceDirOverrideFeatureManager());
     }
     boolean bool2 = bool1 & FeatureManager.Features.PTU_TOOLS.init() & FeatureManager.Features.PTU_ALGO.init();
     bool1 = bool2;
     if (bool2) {
       bool1 = bool2 & FeatureManager.Features.MASK_IMAGES.init();
     }
-    return bool1 & AIManager.installDetector(PTFaceDetector.class) & FeatureManager.Features.MASK_IMAGES.init();
+    return bool1 & FeatureManager.Features.MASK_IMAGES.init();
   }
   
   public static void setModelDir(String paramString)
@@ -231,7 +224,7 @@ public class FeatureManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.openapi.manager.FeatureManager
  * JD-Core Version:    0.7.0.1
  */

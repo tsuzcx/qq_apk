@@ -1,182 +1,33 @@
-import android.os.Handler;
-import android.text.TextUtils;
-import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionMainActivity;
-import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionMainActivity.3.1;
-import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionMainActivity.3.10;
-import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionMainActivity.3.11;
-import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionMainActivity.3.2;
-import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionMainActivity.3.3;
-import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionMainActivity.3.4;
-import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionMainActivity.3.5;
-import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionMainActivity.3.6;
-import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionMainActivity.3.7;
-import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionMainActivity.3.8;
-import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionMainActivity.3.9;
-import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionPreloadManager;
+import android.app.Activity;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
+import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import com.tencent.viola.core.ViolaInstance;
+import org.json.JSONObject;
 
 public class tpf
-  extends npu
+  extends tpg
 {
-  public tpf(PublicAccountImageCollectionMainActivity paramPublicAccountImageCollectionMainActivity) {}
-  
-  public void a(tpr paramtpr)
+  tpf(tpd paramtpd1, Activity paramActivity, tpd paramtpd2, JSONObject paramJSONObject)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.pubaccount.video.PublicAccountArticleObserver", 2, "onGetPhotoCollectionInfoRespond");
-    }
-    PublicAccountImageCollectionMainActivity.a(this.a, paramtpr);
-    if (paramtpr == null)
+    super(paramtpd1, paramActivity, paramtpd2, paramJSONObject);
+  }
+  
+  public void a(String paramString1, String paramString2, String paramString3, ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem, int paramInt)
+  {
+    paramString1 = this.jdField_a_of_type_OrgJsonJSONObject.optString("rowkey", "");
+    paramInt = this.jdField_a_of_type_OrgJsonJSONObject.optInt("from_page");
+    if (paramString1.isEmpty())
     {
-      PublicAccountImageCollectionMainActivity.a(this.a).postDelayed(new PublicAccountImageCollectionMainActivity.3.5(this), 0L);
+      QLog.e(tpd.a, 1, "click add video to topic fail, rowkey=" + paramString1);
       return;
     }
-    PublicAccountImageCollectionMainActivity.a(this.a, paramtpr);
-    PublicAccountImageCollectionMainActivity.a(this.a);
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.pubaccount.video.PublicAccountArticleObserver", 2, "onReportReadPhotoCollectionRespond isSuccess =" + paramBoolean);
-    }
-  }
-  
-  public void a(boolean paramBoolean, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.pubaccount.video.PublicAccountArticleObserver", 2, "onCreateArticleCommentRespond isSuccess=" + paramBoolean);
-    }
-    if ((paramBoolean) && (paramInt == 0)) {
-      PublicAccountImageCollectionMainActivity.b(this.a);
-    }
-    for (int i = 1;; i = 0)
-    {
-      PublicAccountImageCollectionMainActivity.a(this.a).postDelayed(new PublicAccountImageCollectionMainActivity.3.6(this, paramBoolean, paramInt), 0L);
-      nrt.a(null, this.a.jdField_a_of_type_JavaLangString, "0X8007B97", "0X8007B97", 0, 0, this.a.b, this.a.c, "" + i, "", false);
-      return;
-    }
-  }
-  
-  public void a(boolean paramBoolean, String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.pubaccount.video.PublicAccountArticleObserver", 2, "onSendArticleLikeReq,articleID=" + paramString);
-    }
-  }
-  
-  public void a(boolean paramBoolean, String paramString, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.pubaccount.video.PublicAccountArticleObserver", 2, "onQueryArticleLikeCount,articleID=" + paramString + "likeCount" + paramInt);
-    }
-    if ((paramBoolean) && (!TextUtils.isEmpty(paramString)) && (paramString.equalsIgnoreCase(this.a.b)))
-    {
-      PublicAccountImageCollectionMainActivity.a(this.a, paramInt);
-      PublicAccountImageCollectionMainActivity.a(this.a).postDelayed(new PublicAccountImageCollectionMainActivity.3.1(this, paramInt), 0L);
-    }
-  }
-  
-  public void a(boolean paramBoolean1, String paramString, boolean paramBoolean2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.pubaccount.video.PublicAccountArticleObserver", 2, "onCheckIsArticleLiked,articleID=" + paramString + "isLiked" + paramBoolean2);
-    }
-    if ((paramBoolean1) && (!TextUtils.isEmpty(paramString)) && (paramString.equalsIgnoreCase(this.a.b)))
-    {
-      PublicAccountImageCollectionMainActivity.a(this.a, paramBoolean2);
-      PublicAccountImageCollectionMainActivity.a(this.a).postDelayed(new PublicAccountImageCollectionMainActivity.3.2(this), 0L);
-    }
-  }
-  
-  public void a(boolean paramBoolean, ArrayList<tpu> paramArrayList)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.pubaccount.video.PublicAccountArticleObserver", 2, "onGetRecommendInfoRespond isSuccess =" + paramBoolean);
-    }
-    if (paramBoolean)
-    {
-      if ((paramArrayList == null) || (paramArrayList.size() == 0))
-      {
-        PublicAccountImageCollectionMainActivity.a(this.a).postDelayed(new PublicAccountImageCollectionMainActivity.3.8(this), 0L);
-        return;
-      }
-      PublicAccountImageCollectionMainActivity.a(this.a, paramArrayList);
-      PublicAccountImageCollectionMainActivity.a(this.a).postDelayed(new PublicAccountImageCollectionMainActivity.3.9(this, paramArrayList), 0L);
-      return;
-    }
-    PublicAccountImageCollectionMainActivity.a(this.a).postDelayed(new PublicAccountImageCollectionMainActivity.3.10(this), 0L);
-  }
-  
-  public void a(boolean paramBoolean, tpr paramtpr, byte[] paramArrayOfByte, String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.pubaccount.video.PublicAccountArticleObserver", 2, "onGetPhotoCollectionInfoRespond isSuccess=" + paramBoolean);
-    }
-    if (paramBoolean) {
-      if ((paramString != null) && (!paramString.equals(this.a.b)))
-      {
-        if (paramtpr != null)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("Q.pubaccount.video.PublicAccountArticleObserver", 2, "onGetPhotoCollectionInfoRespond isSuccess=" + paramBoolean + " ;articleID = " + paramtpr.jdField_a_of_type_JavaLangString);
-          }
-          PublicAccountImageCollectionPreloadManager.a().a(paramtpr, paramArrayOfByte);
-          PublicAccountImageCollectionPreloadManager.a().b(paramtpr);
-        }
-        if ((paramtpr == null) || (paramtpr.jdField_a_of_type_JavaUtilArrayList == null)) {
-          break label308;
-        }
-      }
-    }
-    label308:
-    for (int i = paramtpr.jdField_a_of_type_JavaUtilArrayList.size();; i = 0)
-    {
-      nrt.a(null, this.a.jdField_a_of_type_JavaLangString, "0X8007B8A", "0X8007B8A", 0, 0, this.a.b, this.a.c, "" + PublicAccountImageCollectionMainActivity.b(this.a, PublicAccountImageCollectionMainActivity.a(this.a)), "" + i, false);
-      return;
-      PublicAccountImageCollectionMainActivity.a(this.a, paramtpr);
-      if (paramtpr == null)
-      {
-        PublicAccountImageCollectionMainActivity.a(this.a).postDelayed(new PublicAccountImageCollectionMainActivity.3.3(this), 0L);
-        break;
-      }
-      PublicAccountImageCollectionMainActivity.a(this.a, paramtpr);
-      PublicAccountImageCollectionPreloadManager.a().a(paramtpr, paramArrayOfByte);
-      PublicAccountImageCollectionMainActivity.a(this.a);
-      break;
-      PublicAccountImageCollectionMainActivity.a(this.a).postDelayed(new PublicAccountImageCollectionMainActivity.3.4(this), 0L);
-      break;
-    }
-  }
-  
-  public void b(boolean paramBoolean, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.pubaccount.video.PublicAccountArticleObserver", 2, "onGetArticleCommentCountRespond count=" + paramInt);
-    }
-    if (paramBoolean)
-    {
-      PublicAccountImageCollectionMainActivity.c(this.a, paramInt);
-      PublicAccountImageCollectionMainActivity.a(this.a).postDelayed(new PublicAccountImageCollectionMainActivity.3.7(this), 0L);
-    }
-  }
-  
-  public void c(boolean paramBoolean, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.pubaccount.video.PublicAccountArticleObserver", 2, "onGetArticleReadCount isSuccess =" + paramBoolean);
-    }
-    if (paramBoolean)
-    {
-      PublicAccountImageCollectionMainActivity.d(this.a, paramInt);
-      PublicAccountImageCollectionMainActivity.a(this.a).postDelayed(new PublicAccountImageCollectionMainActivity.3.11(this), 0L);
-    }
+    rjh.b(tpd.a(this.jdField_a_of_type_Tpd).getViolaInstance().getActivity(), paramString1, paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     tpf
  * JD-Core Version:    0.7.0.1
  */

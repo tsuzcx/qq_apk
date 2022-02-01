@@ -1,5 +1,6 @@
 package com.tencent.mobileqq.minigame.gpkg;
 
+import android.support.annotation.Nullable;
 import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
 
 public abstract interface GpkgManager$OnInitGpkgListener
@@ -14,6 +15,7 @@ public abstract interface GpkgManager$OnInitGpkgListener
   public static final int DOWNLOAD_UNKNOW_ERROR = 2024;
   public static final int EXCEPTION = 2001;
   public static final int GAME_CONFIG_NULL_ERROR = 2002;
+  public static final int PKG_DOWNLOAD_URL_NULL = 2025;
   public static final int PKG_FOLD_NOT_EXIST = 2007;
   public static final int RES_SUCC = 0;
   public static final int SUB_PKG_DOWNLOAD_URL_NULL = 2008;
@@ -22,11 +24,11 @@ public abstract interface GpkgManager$OnInitGpkgListener
   
   public abstract void onDownloadGpkgProgress(MiniAppInfo paramMiniAppInfo, float paramFloat, long paramLong);
   
-  public abstract void onInitGpkgInfo(int paramInt, MiniGamePkg paramMiniGamePkg, String paramString);
+  public abstract void onInitGpkgInfo(int paramInt, MiniGamePkg paramMiniGamePkg, String paramString, @Nullable GpkgManager.Info paramInfo);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.minigame.gpkg.GpkgManager.OnInitGpkgListener
  * JD-Core Version:    0.7.0.1
  */

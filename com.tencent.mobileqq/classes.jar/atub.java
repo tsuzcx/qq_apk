@@ -1,20 +1,27 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.os.Bundle;
 
 class atub
-  implements View.OnClickListener
+  implements attt
 {
-  atub(atua paramatua, String paramString) {}
+  atub(atua paramatua) {}
   
-  public void onClick(View paramView)
+  public void a(int paramInt1, int paramInt2, String paramString, int paramInt3, Bundle paramBundle)
   {
-    atua.a(this.jdField_a_of_type_Atua).a(this.jdField_a_of_type_JavaLangString);
-    azqs.b(null, "CliOper", "", "", "0X800A770", "0X800A770", 0, 0, "", "0", "0", "");
+    if (this.a.a != null) {
+      this.a.a.a(paramInt3);
+    }
+  }
+  
+  public void a(boolean paramBoolean, int paramInt, String paramString, Bundle paramBundle)
+  {
+    if (this.a.a != null) {
+      this.a.a.a(paramBoolean);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     atub
  * JD-Core Version:    0.7.0.1
  */

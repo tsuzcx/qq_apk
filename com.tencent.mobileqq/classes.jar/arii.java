@@ -1,60 +1,37 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.colornote.data.ColorNote;
-import com.tencent.mobileqq.data.DataLineMsgRecord;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.content.Intent;
+import com.tencent.mobileqq.data.QzoneCommonIntent;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import cooperation.qzone.QzoneExternalRequest;
+import mqq.app.MSFServlet;
+import mqq.app.Packet;
 
 public class arii
-  implements aocf
+  extends MSFServlet
 {
-  private DataLineMsgRecord a;
-  
-  public arii(DataLineMsgRecord paramDataLineMsgRecord)
+  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
   {
-    this.a = paramDataLineMsgRecord;
+    if (paramIntent == null) {}
+    while (!(paramIntent instanceof QzoneCommonIntent)) {
+      return;
+    }
+    paramIntent = (QzoneCommonIntent)paramIntent;
+    paramIntent.getProcessor().a(this, paramIntent, paramFromServiceMsg);
   }
   
-  private String a()
+  public void onSend(Intent paramIntent, Packet paramPacket)
   {
-    String str = "";
-    try
+    if ((paramIntent instanceof QzoneCommonIntent))
     {
-      JSONObject localJSONObject = new JSONObject();
-      if (this.a != null)
-      {
-        localJSONObject.put("file_color_note_uniSeq", this.a.sessionid);
-        str = localJSONObject.toString();
+      blrw localblrw = ((QzoneCommonIntent)paramIntent).getRequest();
+      byte[] arrayOfByte = localblrw.encode();
+      paramIntent = arrayOfByte;
+      if (arrayOfByte == null) {
+        paramIntent = new byte[4];
       }
-      return str;
+      paramPacket.setTimeout(30000L);
+      paramPacket.setSSOCommand("SQQzoneSvc." + localblrw.uniKey());
+      paramPacket.putSendData(paramIntent);
     }
-    catch (JSONException localJSONException) {}
-    return "";
-  }
-  
-  public ColorNote getColorNote()
-  {
-    if (this.a == null)
-    {
-      QLog.i("DatalineFileColorNoteServiceInfo", 1, "getColorNote: offline file info is null.");
-      return null;
-    }
-    aocl localaocl = new aocl();
-    localaocl.a(17039360);
-    String str = arsx.b(6, this.a.sessionid + "");
-    if (QLog.isColorLevel()) {
-      QLog.i("DatalineFileColorNoteServiceInfo", 2, "getColorNote: file colorNote key [" + str + "]");
-    }
-    localaocl.a(str);
-    localaocl.b(this.a.filename);
-    localaocl.c(arso.a(this.a.filesize));
-    int i = arrr.a(arrr.a(this.a.filename));
-    localaocl.d("resdrawable://" + i);
-    str = a();
-    if (!TextUtils.isEmpty(str)) {
-      localaocl.a(str.getBytes());
-    }
-    return localaocl.a();
   }
 }
 

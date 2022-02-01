@@ -22,6 +22,7 @@ import android.view.View;
 import android.view.View.OnCreateContextMenuListener;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
+import com.tencent.qqlive.module.videoreport.inject.fragment.V4FragmentCollector;
 import java.io.FileDescriptor;
 import java.io.PrintWriter;
 
@@ -537,6 +538,7 @@ public class Fragment
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
+    V4FragmentCollector.onV4FragmentViewCreated(this, null);
     return null;
   }
   

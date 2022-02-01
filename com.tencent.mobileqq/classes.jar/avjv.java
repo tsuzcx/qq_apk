@@ -1,34 +1,19 @@
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.nearby.profilecard.NearbyAuthVideoPlayerFragment;
-import com.tencent.mobileqq.nearby.profilecard.NearbyAuthVideoPlayerFragment.2.1;
 import com.tencent.qphone.base.util.QLog;
 
-public class avjv
-  implements antz
+class avjv
+  implements avkm
 {
-  public avjv(NearbyAuthVideoPlayerFragment paramNearbyAuthVideoPlayerFragment) {}
+  avjv(avju paramavju, avlu paramavlu) {}
   
-  public void a(String paramString, int paramInt)
+  public void a(int paramInt, String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("NearbyAuthVideoPlayerFragment", 2, "onDownloadFinish  url:" + paramString + "   progress:" + paramInt);
-    }
-  }
-  
-  public void a(String paramString, boolean paramBoolean1, boolean paramBoolean2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("NearbyAuthVideoPlayerFragment", 2, "onDownloadFinish  url:" + paramString + "   isSuccess:" + paramBoolean1 + "  isFileExist:" + paramBoolean2);
-    }
-    if ((this.a.isDetached()) || (this.a.getActivity() == null)) {
-      return;
-    }
-    this.a.getActivity().runOnUiThread(new NearbyAuthVideoPlayerFragment.2.1(this, paramBoolean1));
+    QLog.i("XProxy|NowProxy", 1, "openWatchTogetherRoom  enter success  retCode= " + paramInt + ";msg=" + paramString);
+    this.jdField_a_of_type_Avlu.a(paramInt, paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     avjv
  * JD-Core Version:    0.7.0.1
  */

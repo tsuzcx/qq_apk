@@ -1,57 +1,157 @@
-import android.content.Context;
-import android.graphics.SurfaceTexture;
-import android.opengl.GLSurfaceView;
-import android.opengl.GLSurfaceView.Renderer;
-import android.util.Size;
-import com.tencent.mobileqq.ar.ARRecord.VideoRecordController;
-import java.nio.FloatBuffer;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.apollo.view.ApolloPanel;
+import com.tencent.mobileqq.apollo.view.ApolloPanel.38.1;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ApolloActionPackage;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
+import mqq.os.MqqHandler;
 
-public abstract interface ange
-  extends GLSurfaceView.Renderer
+public class ange
+  implements angp
 {
-  public abstract int a();
+  public ange(ApolloPanel paramApolloPanel) {}
   
-  public abstract long a();
+  public angy a(int paramInt)
+  {
+    switch (paramInt)
+    {
+    default: 
+      return new aneh(this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
+    }
+    if (amhd.c("gamePanelSwitch") != 1)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("ApolloPanel", 2, "loadPanel gameSwitch is 0 return null");
+      }
+      return null;
+    }
+    return new anet(this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie);
+  }
   
-  public abstract void a();
+  public void a()
+  {
+    ApolloPanel.a(this.a).post(new ApolloPanel.38.1(this));
+  }
   
-  public abstract void a(int paramInt);
+  public void a(int paramInt)
+  {
+    SharedPreferences.Editor localEditor = this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getSharedPreferences("apollo_sp" + this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c(), 0).edit();
+    if (paramInt < 0) {
+      localEditor.remove("sp_key_apollo_current_page_index_3d");
+    }
+    for (;;)
+    {
+      localEditor.apply();
+      return;
+      localEditor.putString("sp_key_apollo_current_page_index_3d", String.valueOf(paramInt));
+    }
+  }
   
-  public abstract void a(int paramInt1, SurfaceTexture paramSurfaceTexture, int paramInt2, int paramInt3, int paramInt4, int paramInt5);
+  public void a(List<angy> paramList, List<ApolloActionPackage> paramList1, boolean paramBoolean)
+  {
+    int i = 0;
+    int m = 0;
+    while (i < paramList.size())
+    {
+      m += ((angy)paramList.get(i)).a();
+      i += 1;
+    }
+    i = -1;
+    Object localObject = this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getSharedPreferences("apollo_sp" + this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c(), 0);
+    if (((SharedPreferences)localObject).contains("sp_key_apollo_current_page_index_3d"))
+    {
+      localObject = ((SharedPreferences)localObject).getString("sp_key_apollo_current_page_index_3d", null);
+      if (TextUtils.isEmpty((CharSequence)localObject)) {}
+    }
+    for (;;)
+    {
+      try
+      {
+        j = Integer.parseInt((String)localObject);
+        if (j >= m) {
+          continue;
+        }
+      }
+      catch (Exception localException1)
+      {
+        int k;
+        int n;
+        j = -1;
+        i = 0;
+        QLog.e("ApolloPanel", 1, "parse previousSavedPagerIndexStr error", localException1);
+        continue;
+        k += 1;
+        continue;
+        j = 0;
+        continue;
+      }
+      try
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("ApolloPanel", 2, new Object[] { "[setCurrentIndex] from previous saved for 3d, pagerIndex=", Integer.valueOf(j) });
+        }
+        i = j;
+        j = 1;
+        k = j;
+        j = i;
+        i = k;
+        if (i != 0) {
+          continue;
+        }
+        n = paramList1.size();
+        k = 0;
+        if (k >= n) {
+          continue;
+        }
+        localObject = (ApolloActionPackage)paramList1.get(k);
+        if ((localObject == null) || (((ApolloActionPackage)localObject).packageId != 300)) {
+          continue;
+        }
+      }
+      catch (Exception localException2)
+      {
+        i = 1;
+        continue;
+        k = i;
+        i = j;
+        j = k;
+        continue;
+        k = 0;
+        continue;
+      }
+      if (k < paramList.size())
+      {
+        i = ApolloPanel.a(this.a, paramList, k);
+        if (QLog.isColorLevel()) {
+          QLog.d("ApolloPanel", 2, new Object[] { "[setCurrentIndex] default single action, pagerIndex=", Integer.valueOf(i) });
+        }
+        j = 1;
+        if (j == 0) {
+          i = 1;
+        }
+        if (i < m)
+        {
+          ApolloPanel.jdField_a_of_type_Int = i;
+          if (QLog.isColorLevel()) {
+            QLog.d("ApolloPanel", 2, new Object[] { "[setCurrentIndex] sCurrentIndex= ", Integer.valueOf(ApolloPanel.jdField_a_of_type_Int) });
+          }
+        }
+        return;
+      }
+      i = 0;
+      int j = -1;
+    }
+  }
   
-  public abstract void a(int paramInt, Object paramObject);
-  
-  public abstract void a(int paramInt, float[] paramArrayOfFloat);
-  
-  public abstract void a(long paramLong);
-  
-  public abstract void a(amvi paramamvi);
-  
-  public abstract void a(amvm paramamvm);
-  
-  public abstract void a(anho paramanho);
-  
-  public abstract void a(VideoRecordController paramVideoRecordController);
-  
-  public abstract void a(FloatBuffer paramFloatBuffer, Size paramSize);
-  
-  public abstract boolean a();
-  
-  public abstract boolean a(amvl paramamvl);
-  
-  public abstract boolean a(GLSurfaceView paramGLSurfaceView, Context paramContext);
-  
-  public abstract boolean a(boolean paramBoolean, float paramFloat1, float paramFloat2);
-  
-  public abstract void b();
-  
-  public abstract void b(long paramLong);
-  
-  public abstract boolean b();
-  
-  public abstract void c();
-  
-  public abstract void d();
+  public boolean a(int paramInt)
+  {
+    return (paramInt >= 100) && (paramInt != 400);
+  }
 }
 
 

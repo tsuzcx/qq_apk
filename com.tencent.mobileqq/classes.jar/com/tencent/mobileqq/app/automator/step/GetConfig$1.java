@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.app.automator.step;
 
-import azri;
-import bbaa;
+import bctj;
+import beaw;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.automator.Automator;
 import com.tencent.qphone.base.BaseConstants;
@@ -25,11 +25,11 @@ public class GetConfig$1
       }
       localObject = new HashMap();
       ((HashMap)localObject).put(BaseConstants.RDM_NoChangeFailCode, "");
-      azri.a(BaseApplication.getContext()).a(null, "actSDKPredownload", true, 0L, 0L, (HashMap)localObject, "");
+      bctj.a(BaseApplication.getContext()).a(null, "actSDKPredownload", true, 0L, 0L, (HashMap)localObject, "");
     }
-    Object localObject = (bbaa)this.this$0.a.app.getManager(193);
-    if (((bbaa)localObject).a()) {
-      ((bbaa)localObject).a("http://tvk_sdkmgr/unkown", -1L);
+    Object localObject = (beaw)this.this$0.a.app.getManager(193);
+    if (((beaw)localObject).a()) {
+      ((beaw)localObject).a("http://tvk_sdkmgr/unkown", -1L);
     }
   }
 }

@@ -1,11 +1,16 @@
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
+import android.widget.Button;
+import android.widget.TextView;
+import com.tencent.mobileqq.data.MayKnowRecommend;
+import com.tencent.widget.SingleLineTextView;
 
 class ajjt
-  extends ajjn
+  extends amcl
 {
-  public RelativeLayout a;
-  public ImageView c;
+  public Button a;
+  public TextView a;
+  public MayKnowRecommend a;
+  public SingleLineTextView a;
+  public SingleLineTextView b;
 }
 
 

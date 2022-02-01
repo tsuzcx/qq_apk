@@ -1,57 +1,23 @@
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.ark.API.ArkAppDownloadModule.5;
 
 public class aphq
-  extends apgp
+  implements DialogInterface.OnClickListener
 {
-  public aphr a;
-  public String b;
-  public boolean b;
+  public aphq(ArkAppDownloadModule.5 param5) {}
   
-  public static aphq a(JSONObject paramJSONObject)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    aphq localaphq = new aphq();
-    localaphq.jdField_a_of_type_JavaLangString = paramJSONObject.optString("name");
-    localaphq.jdField_b_of_type_JavaLangString = paramJSONObject.optString("action");
-    localaphq.jdField_a_of_type_Boolean = paramJSONObject.optBoolean("isChecked", true);
-    localaphq.jdField_b_of_type_Boolean = paramJSONObject.optBoolean("isAddByUser");
-    return localaphq;
-  }
-  
-  public JSONObject a()
-  {
-    JSONObject localJSONObject = new JSONObject();
-    try
-    {
-      localJSONObject.put("name", this.jdField_a_of_type_JavaLangString);
-      localJSONObject.put("action", this.jdField_b_of_type_JavaLangString);
-      localJSONObject.put("isChecked", this.jdField_a_of_type_Boolean);
-      localJSONObject.put("isAddByUser", this.jdField_b_of_type_Boolean);
-      return localJSONObject;
+    if (paramDialogInterface != null) {
+      paramDialogInterface.dismiss();
     }
-    catch (JSONException localJSONException)
-    {
-      localJSONException.printStackTrace();
-    }
-    return localJSONObject;
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_b_of_type_Boolean;
-  }
-  
-  public boolean b()
-  {
-    if (this.jdField_a_of_type_Aphr == null) {
-      return this.jdField_a_of_type_Boolean;
-    }
-    return this.jdField_a_of_type_Aphr.jdField_a_of_type_Boolean;
+    bcst.a(null, "dc00898", "", "", "0X8009E13", "0X8009E13", 0, 0, "8", "", this.a.b, "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aphq
  * JD-Core Version:    0.7.0.1
  */

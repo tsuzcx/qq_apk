@@ -1,13 +1,13 @@
-public abstract class bejt
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.troop.activity.TroopBarPublishActivity;
+
+public class bejt
+  implements DialogInterface.OnClickListener
 {
-  public final int a;
+  public bejt(TroopBarPublishActivity paramTroopBarPublishActivity) {}
   
-  public bejt(int paramInt)
-  {
-    this.a = paramInt;
-  }
-  
-  public abstract int a();
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

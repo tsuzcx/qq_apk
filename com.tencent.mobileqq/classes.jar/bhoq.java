@@ -1,44 +1,41 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqprotect.qsec.QSecFramework;
+import android.content.Context;
+import android.content.Intent;
+import android.view.View;
+import com.tencent.mobileqq.webview.swift.SwiftFragmentTabBar;
+import com.tencent.mobileqq.webview.swift.WebViewTabBarData;
+import cooperation.comic.ui.QQComicTabBarView;
+import cooperation.qqreader.view.ReaderTabBarView;
+import java.util.List;
 
 public class bhoq
-  extends Handler
 {
-  public bhoq(QSecFramework paramQSecFramework, Looper paramLooper)
+  public static View a(Context paramContext, Intent paramIntent, List<WebViewTabBarData> paramList, bics parambics)
   {
-    super(paramLooper);
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    try
-    {
-      if ((paramMessage.what == 1) && (!TextUtils.isEmpty((CharSequence)paramMessage.obj)))
-      {
-        long l = Long.parseLong((String)paramMessage.obj);
-        if (l != 0L)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("QSecFramework", 2, "handle native msg for cookie:" + l);
-          }
-          QSecFramework.a(6L, l, 0L, 0L, null, null, null, null);
-        }
-      }
-      return;
+    int i = 0;
+    if (paramIntent != null) {
+      i = paramIntent.getIntExtra("tabBarStyle", 0);
     }
-    catch (Exception paramMessage)
+    blpu.d("WebviewFragmentTabBarBuilder", "tab bar style =" + i);
+    if (i == 1)
     {
-      paramMessage.printStackTrace();
+      paramContext = new QQComicTabBarView(paramContext);
+      paramContext.a(paramIntent, paramList, parambics);
+      return paramContext;
     }
+    if (i == 2)
+    {
+      paramContext = new ReaderTabBarView(paramContext);
+      paramContext.a(paramIntent, paramList, parambics);
+      return paramContext;
+    }
+    paramContext = new SwiftFragmentTabBar(paramContext);
+    paramContext.a(paramList, parambics);
+    return paramContext;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bhoq
  * JD-Core Version:    0.7.0.1
  */

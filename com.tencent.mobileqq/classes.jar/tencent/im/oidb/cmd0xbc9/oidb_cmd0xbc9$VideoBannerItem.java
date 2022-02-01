@@ -40,7 +40,7 @@ public final class oidb_cmd0xbc9$VideoBannerItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     tencent.im.oidb.cmd0xbc9.oidb_cmd0xbc9.VideoBannerItem
  * JD-Core Version:    0.7.0.1
  */

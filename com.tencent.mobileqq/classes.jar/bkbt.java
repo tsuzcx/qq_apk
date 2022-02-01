@@ -1,8 +1,9 @@
-public class bkbt
+import android.util.Pair;
+import java.util.List;
+
+public abstract interface bkbt
 {
-  public int a;
-  public String a;
-  public String b;
+  public abstract void a(List<Pair<Integer, Byte>> paramList);
 }
 
 

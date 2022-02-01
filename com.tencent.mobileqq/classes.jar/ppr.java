@@ -1,16 +1,54 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyPicWaterFallFragment;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import org.json.JSONObject;
 
 class ppr
-  implements DialogInterface.OnDismissListener
+  implements View.OnClickListener
 {
-  ppr(ppq paramppq) {}
+  ppr(ppp paramppp, ReadInJoyPicWaterFallFragment paramReadInJoyPicWaterFallFragment) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface) {}
+  public void onClick(View paramView)
+  {
+    ReadInJoyPicWaterFallFragment.a(this.jdField_a_of_type_Ppp.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInJoyPicWaterFallFragment).a(paramView, this.jdField_a_of_type_Ppp.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo, this.jdField_a_of_type_Ppp.a());
+    JSONObject localJSONObject = pfe.a(this.jdField_a_of_type_Ppp.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Ppp.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInJoyPicWaterFallFragment.a(), 3, this.jdField_a_of_type_Ppp.a(), (ArticleInfo)this.jdField_a_of_type_Ppp.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo);
+    try
+    {
+      localJSONObject.put("card_type", 8);
+      pfg localpfg = new pfg(this.jdField_a_of_type_Ppp.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo);
+      localpfg.e = String.valueOf(this.jdField_a_of_type_Ppp.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.mArticleID);
+      localpfg.f = String.valueOf(this.jdField_a_of_type_Ppp.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.mStrategyId);
+      localpfg.g = localJSONObject.toString();
+      if (this.jdField_a_of_type_Ppp.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.mSocialFeedInfo.a != null) {
+        localpfg.a = String.valueOf(this.jdField_a_of_type_Ppp.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.mSocialFeedInfo.a.a);
+      }
+      localpfg.b = "0X8009A78";
+      localpfg.c = "0X8009A78";
+      pfe.a(localpfg);
+      localJSONObject = new JSONObject();
+      localJSONObject.put("time", System.currentTimeMillis() / 1000L);
+      localJSONObject.put("channel_id", this.jdField_a_of_type_Ppp.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInJoyPicWaterFallFragment.a());
+      localJSONObject.put("folder_status", pha.d);
+      localJSONObject.put("kandian_mode", pha.e());
+      localJSONObject.put("feeds_type", "1008");
+      localJSONObject.put("rowkey", ube.a(this.jdField_a_of_type_Ppp.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo));
+      oat.a(null, "", "0X8007058", "0X8007058", 0, 0, "", "", "", localJSONObject.toString(), false);
+    }
+    catch (Exception localException)
+    {
+      label296:
+      break label296;
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     ppr
  * JD-Core Version:    0.7.0.1
  */

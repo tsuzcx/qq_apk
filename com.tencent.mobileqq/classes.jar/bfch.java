@@ -1,19 +1,19 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.open.agent.AuthorityActivity;
-import com.tencent.protofile.sdkauthorize.SdkAuthorize.GetAuthApiListResponse;
-import org.json.JSONObject;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.troop.homework.entry.ui.BeginnerGuideFragment;
+import com.tencent.mobileqq.troop.homework.recite.ui.ReciteFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class bfch
-  implements DialogInterface.OnClickListener
+public class bfch
+  implements View.OnClickListener
 {
-  bfch(bfcf parambfcf, SdkAuthorize.GetAuthApiListResponse paramGetAuthApiListResponse, JSONObject paramJSONObject) {}
+  public bfch(ReciteFragment paramReciteFragment) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    paramDialogInterface.dismiss();
-    this.jdField_a_of_type_Bfcf.a.a(this.jdField_a_of_type_ComTencentProtofileSdkauthorizeSdkAuthorize$GetAuthApiListResponse.ret.get(), this.jdField_a_of_type_OrgJsonJSONObject.toString(), null, null);
+    this.a.m();
+    BeginnerGuideFragment.b(ReciteFragment.a(this.a), null, 4);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

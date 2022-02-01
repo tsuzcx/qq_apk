@@ -1,30 +1,23 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import java.lang.ref.WeakReference;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.activity.phone.NewStyleCountryActivity;
 
 public class akdp
-  extends BroadcastReceiver
+  implements Animation.AnimationListener
 {
-  public akdp(ShortVideoPlayActivity paramShortVideoPlayActivity) {}
+  public akdp(NewStyleCountryActivity paramNewStyleCountryActivity, int paramInt) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    paramContext = paramIntent.getAction();
-    if (QLog.isColorLevel()) {
-      QLog.d("ShortVideoPlayActivity", 2, "onReceive ===>" + paramContext);
-    }
-    if (("android.intent.action.SCREEN_OFF".equals(paramContext)) || ("tencent.av.v2q.StartVideoChat".equals(paramContext)))
-    {
-      if ((this.a.a != null) && (this.a.a.get() != null) && (((TVK_IMediaPlayer)this.a.a.get()).isPlaying())) {
-        this.a.k = true;
-      }
-      this.a.j();
-    }
+    this.jdField_a_of_type_ComTencentMobileqqActivityPhoneNewStyleCountryActivity.b.setAnimation(null);
+    this.jdField_a_of_type_ComTencentMobileqqActivityPhoneNewStyleCountryActivity.b.offsetTopAndBottom(this.jdField_a_of_type_Int);
+    this.jdField_a_of_type_ComTencentMobileqqActivityPhoneNewStyleCountryActivity.b.requestLayout();
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

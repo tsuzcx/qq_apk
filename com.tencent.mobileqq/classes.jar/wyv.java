@@ -1,47 +1,62 @@
-import android.os.Bundle;
-import android.os.Message;
-import com.tencent.biz.qqstory.takevideo.EditVideoArtFilter;
-import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
-import java.util.concurrent.atomic.AtomicInteger;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqGetBatchFeedFeature;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspGetBatchFeedFeature;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBRepeatField;
+import java.util.Iterator;
+import java.util.List;
 
 public class wyv
-  implements EIPCResultCallback
+  extends wlf<xas>
 {
-  public wyv(EditVideoArtFilter paramEditVideoArtFilter, xcz paramxcz) {}
+  public static final String a;
+  public List<String> a;
   
-  public void onCallback(EIPCResult paramEIPCResult)
+  static
   {
-    if (paramEIPCResult.data == null) {}
-    int j;
-    Object localObject;
-    do
+    jdField_a_of_type_JavaLangString = wjz.a("StorySvc.feed_feature_775");
+  }
+  
+  public String a()
+  {
+    return jdField_a_of_type_JavaLangString;
+  }
+  
+  public wla a(byte[] paramArrayOfByte)
+  {
+    qqstory_service.RspGetBatchFeedFeature localRspGetBatchFeedFeature = new qqstory_service.RspGetBatchFeedFeature();
+    try
     {
-      return;
-      int i = paramEIPCResult.data.getInt("param_art_filter_task_id");
-      j = paramEIPCResult.data.getInt("param_art_filter_style_id");
-      localObject = paramEIPCResult.data.getString("param_art_filter_resource_path");
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.qqstory.publish.edit.EditVideoArtFilter", 2, "QIPCResult: resultFilterTaskId:" + i + " currentFilterTaskId:" + this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoArtFilter.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() + " currentStyleId:" + EditVideoArtFilter.a(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoArtFilter) + " resultFilterStyleId:" + j + " resultFilterOriginImgPath:" + (String)localObject);
-      }
-    } while ((EditVideoArtFilter.a(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoArtFilter) != j) || (this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoArtFilter.d == null) || (!((String)localObject).equals(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoArtFilter.d)) || (!this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoArtFilter.jdField_a_of_type_Boolean));
-    if (paramEIPCResult.data.getInt("param_art_filter_task_result") == 0)
-    {
-      paramEIPCResult = paramEIPCResult.data.getString("param_art_filter_output_path");
-      localObject = EditVideoArtFilter.a(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoArtFilter).obtainMessage(34);
-      ((Message)localObject).obj = paramEIPCResult;
-      ((Message)localObject).arg1 = this.jdField_a_of_type_Xcz.a;
-      EditVideoArtFilter.a(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoArtFilter).sendMessage((Message)localObject);
-      return;
+      localRspGetBatchFeedFeature.mergeFrom(paramArrayOfByte);
+      return new xas(localRspGetBatchFeedFeature);
     }
-    paramEIPCResult = EditVideoArtFilter.a(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoArtFilter).obtainMessage(37);
-    EditVideoArtFilter.a(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoArtFilter).sendMessage(paramEIPCResult);
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      for (;;)
+      {
+        paramArrayOfByte.printStackTrace();
+      }
+    }
+  }
+  
+  protected byte[] a()
+  {
+    qqstory_service.ReqGetBatchFeedFeature localReqGetBatchFeedFeature = new qqstory_service.ReqGetBatchFeedFeature();
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext())
+    {
+      String str = (String)localIterator.next();
+      if (!TextUtils.isEmpty(str)) {
+        localReqGetBatchFeedFeature.feed_id_list.add(ByteStringMicro.copyFromUtf8(str));
+      }
+    }
+    return localReqGetBatchFeedFeature.toByteArray();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     wyv
  * JD-Core Version:    0.7.0.1
  */

@@ -1,15 +1,32 @@
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Emoticon;
-import com.tencent.mobileqq.emotionintegrate.AIOEmotionFragment;
+import com.tencent.mobileqq.businessCard.activity.CardPicGalleryActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class apzw
-  implements aufy<Emoticon>
+public class apzw
+  implements View.OnClickListener
 {
-  apzw(apzv paramapzv, int paramInt1, QQAppInterface paramQQAppInterface, int paramInt2, String paramString) {}
+  public apzw(CardPicGalleryActivity paramCardPicGalleryActivity, bkho parambkho) {}
   
-  public void a(Emoticon paramEmoticon)
+  public void onClick(View paramView)
   {
-    afvg.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_Apzv.a.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramEmoticon, this.b, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Apzv.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, true);
+    QQAppInterface localQQAppInterface;
+    if (2 == this.jdField_a_of_type_ComTencentMobileqqBusinessCardActivityCardPicGalleryActivity.d)
+    {
+      localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqBusinessCardActivityCardPicGalleryActivity.app;
+      if (!this.jdField_a_of_type_ComTencentMobileqqBusinessCardActivityCardPicGalleryActivity.b) {
+        break label70;
+      }
+    }
+    label70:
+    for (String str = "1";; str = "2")
+    {
+      bcst.b(localQQAppInterface, "dc00898", "", "", "0X800A88C", "0X800A88C", 4, 0, str, "", "", "");
+      this.jdField_a_of_type_Bkho.dismiss();
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+    }
   }
 }
 

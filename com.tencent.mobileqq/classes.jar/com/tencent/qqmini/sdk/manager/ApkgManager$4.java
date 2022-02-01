@@ -1,27 +1,26 @@
 package com.tencent.qqmini.sdk.manager;
 
 import android.text.TextUtils;
-import bgpc;
-import bgvi;
+import com.tencent.qqmini.sdk.core.utils.FileUtils;
+import com.tencent.qqmini.sdk.launcher.log.QMLog;
 import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
-import com.tencent.qqmini.sdk.log.QMLog;
-import com.tencent.qqmini.sdk.utils.MD5Utils;
+import com.tencent.qqmini.sdk.launcher.utils.MD5Utils;
 import java.io.File;
 
-public class ApkgManager$4
+class ApkgManager$4
   implements Runnable
 {
-  public ApkgManager$4(bgvi parambgvi, MiniAppInfo paramMiniAppInfo, String paramString) {}
+  ApkgManager$4(ApkgManager paramApkgManager, MiniAppInfo paramMiniAppInfo, String paramString) {}
   
   public void run()
   {
     int i = 0;
     try
     {
-      if ((this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)))
+      if ((this.val$miniAppInfo != null) && (!TextUtils.isEmpty(this.val$curPath)))
       {
-        String str1 = bgvi.b(this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo);
-        String str2 = MD5Utils.toMD5(this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo.appId);
+        String str1 = ApkgManager.getPkgRoot(this.val$miniAppInfo);
+        String str2 = MD5Utils.toMD5(this.val$miniAppInfo.appId);
         Object localObject = new File(str1);
         if (((File)localObject).isDirectory())
         {
@@ -30,10 +29,10 @@ public class ApkgManager$4
           while (i < j)
           {
             CharSequence localCharSequence = localObject[i];
-            if ((!TextUtils.isEmpty(localCharSequence)) && (localCharSequence.startsWith(str2)) && (!this.jdField_a_of_type_JavaLangString.contains(localCharSequence)))
+            if ((!TextUtils.isEmpty(localCharSequence)) && (localCharSequence.startsWith(str2)) && (!this.val$curPath.contains(localCharSequence)))
             {
               QMLog.d("ApkgManager", "delete pkg : " + localCharSequence);
-              bgpc.a(str1 + localCharSequence, false);
+              FileUtils.delete(str1 + localCharSequence, false);
             }
             i += 1;
           }
@@ -49,7 +48,7 @@ public class ApkgManager$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.qqmini.sdk.manager.ApkgManager.4
  * JD-Core Version:    0.7.0.1
  */

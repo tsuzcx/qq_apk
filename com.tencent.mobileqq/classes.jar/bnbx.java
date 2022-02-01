@@ -1,26 +1,17 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import dov.com.qq.im.QIMEffectCameraCaptureUnit;
 
-class bnbx
-  extends Handler
+public class bnbx
+  implements View.OnClickListener
 {
-  bnbx(bnbw parambnbw, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public bnbx(QIMEffectCameraCaptureUnit paramQIMEffectCameraCaptureUnit) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onClick(View paramView)
   {
-    if (paramMessage.what == 1000)
-    {
-      paramMessage = (String)paramMessage.obj;
-      this.a.a(paramMessage);
-    }
-    while ((paramMessage.what != 1002) || (this.a.a == null)) {
-      return;
-    }
-    this.a.a.a();
+    this.a.g();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

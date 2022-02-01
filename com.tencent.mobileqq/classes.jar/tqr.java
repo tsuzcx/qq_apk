@@ -1,87 +1,92 @@
-import android.net.Uri;
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
-import common.config.service.QzoneConfig;
-import feedcloud.FeedCloudCommon.Entry;
-import java.net.URL;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Set;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.bridge.RIJBridgeInvokeHandler.register.1;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.bridge.RIJBridgeInvokeHandler.register.10;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.bridge.RIJBridgeInvokeHandler.register.11;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.bridge.RIJBridgeInvokeHandler.register.12;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.bridge.RIJBridgeInvokeHandler.register.13;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.bridge.RIJBridgeInvokeHandler.register.14;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.bridge.RIJBridgeInvokeHandler.register.15;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.bridge.RIJBridgeInvokeHandler.register.16;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.bridge.RIJBridgeInvokeHandler.register.17;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.bridge.RIJBridgeInvokeHandler.register.18;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.bridge.RIJBridgeInvokeHandler.register.19;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.bridge.RIJBridgeInvokeHandler.register.2;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.bridge.RIJBridgeInvokeHandler.register.20;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.bridge.RIJBridgeInvokeHandler.register.21;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.bridge.RIJBridgeInvokeHandler.register.22;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.bridge.RIJBridgeInvokeHandler.register.23;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.bridge.RIJBridgeInvokeHandler.register.24;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.bridge.RIJBridgeInvokeHandler.register.25;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.bridge.RIJBridgeInvokeHandler.register.26;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.bridge.RIJBridgeInvokeHandler.register.27;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.bridge.RIJBridgeInvokeHandler.register.28;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.bridge.RIJBridgeInvokeHandler.register.29;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.bridge.RIJBridgeInvokeHandler.register.3;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.bridge.RIJBridgeInvokeHandler.register.30;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.bridge.RIJBridgeInvokeHandler.register.4;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.bridge.RIJBridgeInvokeHandler.register.5;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.bridge.RIJBridgeInvokeHandler.register.6;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.bridge.RIJBridgeInvokeHandler.register.7;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.bridge.RIJBridgeInvokeHandler.register.8;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.bridge.RIJBridgeInvokeHandler.register.9;
+import kotlin.Metadata;
+import kotlin.jvm.functions.Function2;
+import org.jetbrains.annotations.NotNull;
 
-public class tqr
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/viola/modules/bridge/RIJBridgeInvokeHandler;", "Lcom/tencent/biz/pubaccount/readinjoy/viola/modules/bridge/AbsBridgeInvokeHandler;", "module", "Lcom/tencent/biz/pubaccount/readinjoy/viola/modules/BridgeModule;", "(Lcom/tencent/biz/pubaccount/readinjoy/viola/modules/BridgeModule;)V", "nameSpace", "", "register", "", "Companion", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class tqr
+  extends tpt
 {
-  public static final String a;
-  public static final HashSet<String> a;
+  public static final tqs a = new tqs(null);
   
-  static
+  public tqr(@NotNull BridgeModule paramBridgeModule)
   {
-    jdField_a_of_type_JavaLangString = QzoneConfig.getQQCircleSearchPageUrl();
-    jdField_a_of_type_JavaUtilHashSet = new HashSet();
-    jdField_a_of_type_JavaUtilHashSet.add("_wwv");
-    jdField_a_of_type_JavaUtilHashSet.add("_proxy");
-    jdField_a_of_type_JavaUtilHashSet.add("_wv");
+    super(paramBridgeModule);
   }
   
-  public static String a(List<FeedCloudCommon.Entry> paramList, String paramString)
+  @NotNull
+  public String a()
   {
-    return tra.a(paramList, paramString, "");
+    return "readinjoy";
   }
   
-  public static HashMap<String, String> a(String paramString)
+  public void a()
   {
-    HashMap localHashMap;
-    try
-    {
-      if (!TextUtils.isEmpty(paramString))
-      {
-        paramString = Uri.parse(paramString);
-        if (paramString != null)
-        {
-          localHashMap = new HashMap();
-          Iterator localIterator = paramString.getQueryParameterNames().iterator();
-          while (localIterator.hasNext())
-          {
-            String str = (String)localIterator.next();
-            localHashMap.put(str, paramString.getQueryParameter(str));
-          }
-        }
-      }
-      return new HashMap();
-    }
-    catch (Exception paramString)
-    {
-      paramString.printStackTrace();
-    }
-    return localHashMap;
-  }
-  
-  public static boolean a(String paramString)
-  {
-    try
-    {
-      String str = new URL(paramString).getHost();
-      QLog.d("QCircleJsUrlConfig", 1, "url:" + paramString + " domain:" + str);
-      if (!TextUtils.isEmpty(str))
-      {
-        boolean bool = str.endsWith(".qq.com");
-        if (bool) {
-          return true;
-        }
-      }
-      return false;
-    }
-    catch (Exception paramString)
-    {
-      paramString.printStackTrace();
-    }
-    return false;
+    a("openPrivateLetter", (Function2)new RIJBridgeInvokeHandler.register.1(this));
+    a("openVideo", (Function2)new RIJBridgeInvokeHandler.register.2(this));
+    a("QReport", (Function2)new RIJBridgeInvokeHandler.register.3(this));
+    a("showUGCEditPage", (Function2)new RIJBridgeInvokeHandler.register.4(this));
+    a("showMultiBiuEditPage", (Function2)new RIJBridgeInvokeHandler.register.5(this));
+    a("selectAndInviteFriend", (Function2)new RIJBridgeInvokeHandler.register.6(this));
+    a("selectAndUploadAvatar", (Function2)new RIJBridgeInvokeHandler.register.7(this));
+    a("uploadTopicPic", (Function2)new RIJBridgeInvokeHandler.register.8(this));
+    a("showPicture", (Function2)new RIJBridgeInvokeHandler.register.9(this));
+    a("openAccountPageMore", (Function2)new RIJBridgeInvokeHandler.register.10(this));
+    a("socialize_feeds_update", (Function2)new RIJBridgeInvokeHandler.register.11(this));
+    a("updateAccountCardFollowInfo", (Function2)new RIJBridgeInvokeHandler.register.12(this));
+    a("updateTopicCardFollowInfo", (Function2)new RIJBridgeInvokeHandler.register.13(this));
+    a("showVisibleUserList", (Function2)new RIJBridgeInvokeHandler.register.14(this));
+    a("getBiuTriggerType", (Function2)new RIJBridgeInvokeHandler.register.15(this));
+    a("showShareReadInJoyMenu", (Function2)new RIJBridgeInvokeHandler.register.16(this));
+    a("showUGCVideoRecordPage", (Function2)new RIJBridgeInvokeHandler.register.17(this));
+    a("showCommentEditor", (Function2)new RIJBridgeInvokeHandler.register.18(this));
+    a("showCommentEditorNative", (Function2)new RIJBridgeInvokeHandler.register.19(this));
+    a("feeds_refresh_message", (Function2)new RIJBridgeInvokeHandler.register.20(this));
+    a("isInKanDianTab", (Function2)new RIJBridgeInvokeHandler.register.21(this));
+    a("hasRedPacketPermission", (Function2)new RIJBridgeInvokeHandler.register.22(this));
+    a("hasRedPacketSharePermission", (Function2)new RIJBridgeInvokeHandler.register.23(this));
+    a("updateRedPacketShareTime", (Function2)new RIJBridgeInvokeHandler.register.24(this));
+    a("requestRedPacketContentShareToast", (Function2)new RIJBridgeInvokeHandler.register.25(this));
+    a("requestBubbleTipsWording", (Function2)new RIJBridgeInvokeHandler.register.26(this));
+    a("onClickBubbleTips", (Function2)new RIJBridgeInvokeHandler.register.27(this));
+    a("clearMessageBoxData", (Function2)new RIJBridgeInvokeHandler.register.28(this));
+    a("showFollowAlertView", (Function2)new RIJBridgeInvokeHandler.register.29(this));
+    a("hideFollowAlertView", (Function2)new RIJBridgeInvokeHandler.register.30(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     tqr
  * JD-Core Version:    0.7.0.1
  */

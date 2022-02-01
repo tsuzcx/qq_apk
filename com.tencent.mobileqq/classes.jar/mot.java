@@ -1,68 +1,92 @@
-import android.support.v4.view.PagerAdapter;
-import android.view.View;
-import android.view.ViewGroup;
-import com.tencent.av.ui.beauty.BeautyBaseView;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
+import android.os.Handler;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.av.redpacket.AVRedPacketManager;
+import com.tencent.av.ui.redbag.AVRedBag.3.1;
+import com.tencent.qphone.base.util.QLog;
 
 public class mot
-  extends PagerAdapter
+  extends mbx
 {
-  final List<BeautyBaseView> jdField_a_of_type_JavaUtilList = new ArrayList();
+  mot(moq parammoq) {}
   
-  public mot(List<BeautyBaseView> paramList)
+  protected void a(String paramString, Boolean paramBoolean)
   {
-    this.jdField_a_of_type_JavaUtilList.clear();
-    Collection localCollection;
-    if (localCollection != null) {
-      this.jdField_a_of_type_JavaUtilList.addAll(localCollection);
+    paramString = this.a.a();
+    if (paramString != null)
+    {
+      mph localmph = paramString.jdField_a_of_type_Mph;
+      if (localmph != null) {
+        localmph.a(-4, 10000L);
+      }
+      paramString.c(paramBoolean.booleanValue());
     }
   }
   
-  public BeautyBaseView a(int paramInt)
+  public void a(mcb parammcb)
   {
-    Object localObject2 = null;
-    Object localObject1 = localObject2;
-    if (paramInt >= 0)
+    moy localmoy = this.a.a();
+    if (localmoy == null) {}
+    while ((!localmoy.a()) || (localmoy.d())) {
+      return;
+    }
+    mpt.c();
+    maf.a(this.a.a, 1045, 2131695157);
+    parammcb.jdField_b_of_type_Boolean = true;
+    parammcb.jdField_b_of_type_JavaLangString = "AVRedBag";
+  }
+  
+  protected void b(String paramString, Boolean paramBoolean)
+  {
+    moy localmoy = this.a.a();
+    if (localmoy != null)
     {
-      localObject1 = localObject2;
-      if (paramInt < this.jdField_a_of_type_JavaUtilList.size()) {
-        localObject1 = (BeautyBaseView)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+      if (QLog.isDevelopLevel()) {
+        QLog.w(this.a.i, 4, "onAVActivityStop, peerUin[" + paramString + "], isQuit[" + paramBoolean + "], isInGameMode[" + localmoy.a() + "], isGameStarter[" + localmoy.d() + "]");
+      }
+      if (localmoy.a()) {
+        ((AVRedPacketManager)this.a.a.a(6)).b(false);
+      }
+      localmoy.c();
+      if ((!paramBoolean.booleanValue()) && (localmoy.a()) && (!localmoy.d())) {
+        mpt.e();
       }
     }
-    return localObject1;
   }
   
-  public void destroyItem(ViewGroup paramViewGroup, int paramInt, Object paramObject)
+  public void b(String paramString1, String paramString2)
   {
-    if ((paramViewGroup != null) && ((paramObject instanceof BeautyBaseView))) {
-      paramViewGroup.removeView((BeautyBaseView)paramObject);
+    moy localmoy = this.a.a();
+    if (localmoy == null) {}
+    do
+    {
+      do
+      {
+        return;
+      } while ((!localmoy.a()) || (localmoy.jdField_a_of_type_Mpg == null) || (localmoy.jdField_a_of_type_Mpg.a == null));
+      QLog.w(this.a.i, 1, "onViewSwitch, uinBig[" + paramString1 + "], uinSmall[" + paramString2 + "]");
+    } while (!localmoy.jdField_a_of_type_Mpg.a.jdField_b_of_type_Boolean);
+    ((AVRedPacketManager)this.a.a.a(6)).a(paramString1, paramString2);
+  }
+  
+  protected void d(String paramString)
+  {
+    paramString = this.a.a();
+    if ((paramString != null) && (paramString.a())) {
+      ((AVRedPacketManager)this.a.a.a(6)).b(true);
     }
   }
   
-  public int getCount()
+  protected void e(String paramString)
   {
-    return this.jdField_a_of_type_JavaUtilList.size();
-  }
-  
-  public Object instantiateItem(ViewGroup paramViewGroup, int paramInt)
-  {
-    BeautyBaseView localBeautyBaseView = a(paramInt);
-    if ((paramViewGroup != null) && (localBeautyBaseView != null)) {
-      paramViewGroup.addView(localBeautyBaseView);
+    if (this.a.a == null) {
+      return;
     }
-    return localBeautyBaseView;
-  }
-  
-  public boolean isViewFromObject(View paramView, Object paramObject)
-  {
-    return paramView == paramObject;
+    this.a.a.a().post(new AVRedBag.3.1(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     mot
  * JD-Core Version:    0.7.0.1
  */

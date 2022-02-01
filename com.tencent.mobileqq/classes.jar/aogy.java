@@ -1,31 +1,34 @@
-import android.graphics.Bitmap;
-import com.tencent.mobileqq.widget.RoundImageView;
-import java.util.Iterator;
-import java.util.List;
-import java.util.concurrent.ConcurrentHashMap;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qq.permissionmonitorcore.PermissionMonitor.Listener;
+import com.tencent.robolectric.ShadowParcel;
+import java.util.Arrays;
 
 class aogy
-  implements ansr
+  implements PermissionMonitor.Listener
 {
-  aogy(aogx paramaogx) {}
-  
-  public void a(String paramString1, String paramString2, Bitmap paramBitmap)
+  static
   {
-    paramString2 = (List)aogx.a(this.a).get(paramString1);
-    if ((paramString2 != null) && (paramString2.size() > 0))
+    if (!aogs.class.desiredAssertionStatus()) {}
+    for (boolean bool = true;; bool = false)
     {
-      paramString2 = paramString2.iterator();
-      while (paramString2.hasNext())
-      {
-        aohb localaohb = (aohb)paramString2.next();
-        if ((localaohb != null) && (localaohb.jdField_a_of_type_ComTencentMobileqqWidgetRoundImageView != null) && (localaohb.jdField_a_of_type_Apby != null))
-        {
-          localaohb.jdField_a_of_type_ComTencentMobileqqWidgetRoundImageView.setImageBitmap(paramBitmap);
-          localaohb.jdField_a_of_type_Apby.c(true);
-        }
-      }
+      jdField_a_of_type_Boolean = bool;
+      return;
     }
-    aogx.a(this.a).remove(paramString1);
+  }
+  
+  aogy(aogs paramaogs) {}
+  
+  public void onMethodEntry(String paramString1, String paramString2, String paramString3, Object[] paramArrayOfObject)
+  {
+    if (aogs.a(this.jdField_a_of_type_Aogs) != Thread.currentThread()) {}
+    while ((!aogs.a(this.jdField_a_of_type_Aogs)) || (paramArrayOfObject.length != 4)) {
+      return;
+    }
+    if ((!jdField_a_of_type_Boolean) && (paramArrayOfObject[0] != aogs.a(this.jdField_a_of_type_Aogs))) {
+      throw new AssertionError();
+    }
+    ShadowParcel.b(aogs.a(this.jdField_a_of_type_Aogs), (byte[])paramArrayOfObject[1], ((Integer)paramArrayOfObject[2]).intValue(), ((Integer)paramArrayOfObject[3]).intValue());
+    QLog.i("ParcelHooker", 2, "onMethodEntry() called with: className = [" + paramString1 + "], methodName = [" + paramString2 + "], sig = [" + paramString3 + "], arguments = [" + Arrays.toString(paramArrayOfObject) + "]");
   }
 }
 

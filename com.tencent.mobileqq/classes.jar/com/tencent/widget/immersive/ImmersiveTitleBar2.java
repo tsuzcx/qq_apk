@@ -65,7 +65,7 @@ public class ImmersiveTitleBar2
       if (!ThemeUtil.isDefaultOrDIYTheme(false)) {
         break label82;
       }
-      setBackgroundResource(2130849536);
+      setBackgroundResource(2130850087);
       return;
       bool = false;
       break;
@@ -73,7 +73,7 @@ public class ImmersiveTitleBar2
       setCustomHeight(0);
     }
     label82:
-    setBackgroundColor(getResources().getColor(2131166959));
+    setBackgroundColor(getResources().getColor(2131167042));
   }
   
   protected void onMeasure(int paramInt1, int paramInt2)
@@ -90,7 +90,7 @@ public class ImmersiveTitleBar2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.widget.immersive.ImmersiveTitleBar2
  * JD-Core Version:    0.7.0.1
  */

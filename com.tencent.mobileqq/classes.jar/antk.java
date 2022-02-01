@@ -1,31 +1,32 @@
-import android.content.Context;
-import android.hardware.SensorEvent;
-import android.hardware.SensorManager;
-import android.os.Build.VERSION;
-import com.tencent.mobileqq.armap.sensor.provider.OrientationProviderNotFound;
-import java.util.List;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
 
 public class antk
-  extends antj
+  extends anii
 {
-  private float[] d = new float[16];
-  
-  public antk(Context paramContext, int paramInt, SensorManager paramSensorManager, antb paramantb)
+  public antk(QQAppInterface paramQQAppInterface)
   {
-    super(paramContext, paramInt, paramSensorManager, paramantb);
-    paramContext = paramSensorManager.getDefaultSensor(15);
-    if ((Build.VERSION.SDK_INT >= 18) && (paramContext != null))
-    {
-      this.a.add(paramContext);
-      return;
-    }
-    throw new OrientationProviderNotFound(String.valueOf(15));
+    super(paramQQAppInterface);
   }
   
-  public void onSensorChanged(SensorEvent paramSensorEvent)
+  protected Class<? extends anil> observerClass()
   {
-    antd.a(this.d, paramSensorEvent);
-    super.a(this.d);
+    return antl.class;
+  }
+  
+  public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  {
+    if ("QzoneService.GetNewAndUnread".equals(paramToServiceMsg.getServiceCmd()))
+    {
+      if (paramObject == null) {
+        notifyUI(1, false, null);
+      }
+    }
+    else {
+      return;
+    }
+    notifyUI(1, true, null);
   }
 }
 

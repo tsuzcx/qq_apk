@@ -1,9 +1,9 @@
 package com.tencent.open.downloadnew.common;
 
-import bfio;
-import bflp;
-import bfok;
-import bfpz;
+import bipx;
+import bisy;
+import bivr;
+import bixg;
 import com.tencent.open.downloadnew.DownloadInfo;
 
 class PackageInstallReceiver$3
@@ -13,26 +13,26 @@ class PackageInstallReceiver$3
   
   public void run()
   {
-    bflp.c(this.this$0.a, "ACTION_PACKAGE_ADDED >> " + this.a);
-    DownloadInfo localDownloadInfo = bfpz.a().a(this.b);
+    bisy.c(this.this$0.a, "ACTION_PACKAGE_ADDED >> " + this.a);
+    DownloadInfo localDownloadInfo = bixg.a().a(this.b);
     if (localDownloadInfo != null)
     {
-      bflp.c(this.this$0.a, "ACTION_PACKAGE_ADDED info != null>> " + localDownloadInfo.toString() + " " + localDownloadInfo.c + " " + localDownloadInfo.e);
-      bfok.a().d(localDownloadInfo);
-      bfio.a().a(101, localDownloadInfo);
+      bisy.c(this.this$0.a, "ACTION_PACKAGE_ADDED info != null>> " + localDownloadInfo.toString() + " " + localDownloadInfo.c + " " + localDownloadInfo.e);
+      bivr.a().d(localDownloadInfo);
+      bipx.a().a(101, localDownloadInfo);
     }
     for (;;)
     {
-      bfok.a().a(6, localDownloadInfo);
+      bivr.a().a(6, localDownloadInfo);
       return;
       localDownloadInfo = new DownloadInfo("", this.b);
-      bflp.c(this.this$0.a, "ACTION_PACKAGE_ADDED info == null>> " + localDownloadInfo.toString());
+      bisy.c(this.this$0.a, "ACTION_PACKAGE_ADDED info == null>> " + localDownloadInfo.toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.open.downloadnew.common.PackageInstallReceiver.3
  * JD-Core Version:    0.7.0.1
  */

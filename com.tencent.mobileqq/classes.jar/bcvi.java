@@ -1,14 +1,59 @@
-import com.tencent.mobileqq.troopgift.TroopGiftToAllSurfaceView;
-import com.tencent.mobileqq.troopgift.TroopGiftToAllSurfaceView.5;
-
 public class bcvi
-  implements badp
 {
-  public bcvi(TroopGiftToAllSurfaceView.5 param5) {}
+  private int jdField_a_of_type_Int;
+  private short jdField_a_of_type_Short;
+  private boolean jdField_a_of_type_Boolean;
+  private byte[] jdField_a_of_type_ArrayOfByte;
+  private boolean b;
   
-  public void a()
+  bcvi(int paramInt)
   {
-    TroopGiftToAllSurfaceView.a(this.a.this$0).a(new bado[] { new badu(600, 0, 255), new badx(new bado[] { new badw(300, 0.0F, 1.2F), new badw(300, 1.2F, 1.0F) }) });
+    this.jdField_a_of_type_ArrayOfByte = new byte[paramInt];
+  }
+  
+  public int a()
+  {
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public short a()
+  {
+    return this.jdField_a_of_type_Short;
+  }
+  
+  public void a(int paramInt)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public void a(short paramShort)
+  {
+    this.jdField_a_of_type_Short = paramShort;
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Boolean;
+  }
+  
+  public byte[] a()
+  {
+    return this.jdField_a_of_type_ArrayOfByte;
+  }
+  
+  public void b(boolean paramBoolean)
+  {
+    this.b = paramBoolean;
+  }
+  
+  public boolean b()
+  {
+    return this.b;
   }
 }
 

@@ -1,222 +1,195 @@
-import android.content.Context;
-import android.os.Environment;
-import com.tencent.apkupdate.ApkUpdateListener;
-import com.tencent.apkupdate.ApkUpdateParam;
-import com.tencent.apkupdate.ApkUpdateSDK;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.open.downloadnew.DownloadInfo;
-import com.tencent.open.downloadnew.UpdateManager.1;
-import com.tencent.open.downloadnew.UpdateManager.2;
-import java.io.File;
+import android.text.TextUtils;
+import java.io.ByteArrayInputStream;
+import java.io.DataInputStream;
 import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.concurrent.ConcurrentLinkedQueue;
-import mqq.os.MqqHandler;
+import java.util.HashMap;
 
 public class bfpq
-  implements ApkUpdateListener
 {
-  protected static bfpq a;
-  public static final String a;
-  protected ConcurrentLinkedQueue<bfpr> a;
-  
-  static
+  public static long a(byte[] paramArrayOfByte)
   {
-    jdField_a_of_type_JavaLangString = bfpq.class.getName();
-  }
-  
-  protected bfpq()
-  {
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue = new ConcurrentLinkedQueue();
-    ApkUpdateSDK.getInstance().init(bfbm.a().a());
-    ApkUpdateSDK.getInstance().addListener(this);
-  }
-  
-  public static bfpq a()
-  {
-    try
+    long l = 0L;
+    int i = 0;
+    while (i < 4)
     {
-      if (jdField_a_of_type_Bfpq == null) {
-        jdField_a_of_type_Bfpq = new bfpq();
-      }
-      bfpq localbfpq = jdField_a_of_type_Bfpq;
-      return localbfpq;
+      l += ((paramArrayOfByte[i] & 0xFF) << (3 - i) * 8);
+      i += 1;
     }
-    finally {}
+    return l;
   }
   
-  /* Error */
-  public static boolean a()
+  public static ArrayList<bfpr> a(long paramLong, DataInputStream paramDataInputStream, int paramInt1, int paramInt2)
   {
-    // Byte code:
-    //   0: ldc 2
-    //   2: monitorenter
-    //   3: getstatic 55	bfpq:jdField_a_of_type_Bfpq	Lbfpq;
-    //   6: astore_1
-    //   7: aload_1
-    //   8: ifnull +10 -> 18
-    //   11: iconst_1
-    //   12: istore_0
-    //   13: ldc 2
-    //   15: monitorexit
-    //   16: iload_0
-    //   17: ireturn
-    //   18: iconst_0
-    //   19: istore_0
-    //   20: goto -7 -> 13
-    //   23: astore_1
-    //   24: ldc 2
-    //   26: monitorexit
-    //   27: aload_1
-    //   28: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   12	8	0	bool	boolean
-    //   6	2	1	localbfpq	bfpq
-    //   23	5	1	localObject	Object
-    // Exception table:
-    //   from	to	target	type
-    //   3	7	23	finally
-  }
-  
-  public void a()
-  {
-    try
+    ArrayList localArrayList = new ArrayList();
+    paramDataInputStream.read(new byte[10]);
+    paramDataInputStream.read(new byte[3]);
+    paramDataInputStream.readByte();
+    paramDataInputStream.readInt();
+    paramDataInputStream.readInt();
+    paramDataInputStream.readInt();
+    paramDataInputStream.readInt();
+    paramDataInputStream.readByte();
+    paramDataInputStream.readByte();
+    paramDataInputStream.readByte();
+    paramDataInputStream.readByte();
+    int i = paramDataInputStream.readShort();
+    paramDataInputStream.read(new byte[i]);
+    int j = paramDataInputStream.readShort();
+    paramDataInputStream.read(new byte[j]);
+    int m;
+    for (i = i + 36 + 2 + j; i < paramInt1; i = i + 3 + m)
     {
-      ApkUpdateSDK.getInstance().removeListener(this);
-      ApkUpdateSDK.getInstance().destory();
-    }
-    catch (Exception localException)
-    {
-      for (;;)
+      int k = paramDataInputStream.readByte();
+      m = paramDataInputStream.readShort();
+      j = 0;
+      Object localObject1 = null;
+      Object localObject4 = null;
+      if (j < m)
       {
-        localException = localException;
-        bflp.a(jdField_a_of_type_JavaLangString, "onDestroy>>>", localException);
+        int i1 = paramDataInputStream.readByte();
+        int n = paramDataInputStream.readShort();
+        Object localObject5 = new byte[n];
+        paramDataInputStream.read((byte[])localObject5);
+        Object localObject2;
+        Object localObject3;
+        if (k == 3) {
+          if (i1 == 2)
+          {
+            localObject5 = new String((byte[])localObject5);
+            if (((String)localObject5).startsWith("{"))
+            {
+              i1 = ((String)localObject5).lastIndexOf('}');
+              localObject2 = localObject4;
+              localObject3 = localObject1;
+              if (i1 != -1)
+              {
+                localObject2 = localObject4;
+                localObject3 = localObject1;
+                if (((String)localObject5).length() > 1)
+                {
+                  localObject2 = ((String)localObject5).substring(1, i1).replaceAll("-", "").toUpperCase();
+                  localObject3 = localObject1;
+                }
+              }
+            }
+          }
+        }
+        for (;;)
+        {
+          j = j + 3 + n;
+          localObject4 = localObject2;
+          localObject1 = localObject3;
+          break;
+          i1 = ((String)localObject5).lastIndexOf('.');
+          localObject2 = localObject4;
+          localObject3 = localObject1;
+          if (i1 != -1)
+          {
+            localObject2 = localObject4;
+            localObject3 = localObject1;
+            if (((String)localObject5).length() > 1)
+            {
+              localObject2 = ((String)localObject5).substring(0, i1).toUpperCase();
+              localObject3 = localObject1;
+              continue;
+              localObject2 = localObject4;
+              localObject3 = localObject1;
+              if (i1 == 4)
+              {
+                long l = a((byte[])localObject5);
+                localObject2 = localObject4;
+                localObject3 = localObject1;
+                if (!TextUtils.isEmpty(localObject4))
+                {
+                  localObject2 = localObject4;
+                  localObject3 = localObject1;
+                  if (l != -1L)
+                  {
+                    localObject3 = localObject1;
+                    if (localObject1 == null) {
+                      localObject3 = new bfpr();
+                    }
+                    ((bfpr)localObject3).jdField_a_of_type_Long = paramLong;
+                    ((bfpr)localObject3).jdField_a_of_type_Int = paramInt2;
+                    ((bfpr)localObject3).b = l;
+                    ((bfpr)localObject3).jdField_a_of_type_JavaLangString = localObject4;
+                    localArrayList.add(localObject3);
+                    localObject2 = localObject4;
+                    continue;
+                    if (k == 5)
+                    {
+                      localObject2 = localObject4;
+                      localObject3 = localObject1;
+                      if (i1 == 255)
+                      {
+                        localObject2 = localObject4;
+                        localObject3 = localObject1;
+                      }
+                    }
+                    else
+                    {
+                      localObject2 = localObject4;
+                      localObject3 = localObject1;
+                      if (k == 6)
+                      {
+                        localObject2 = localObject4;
+                        localObject3 = localObject1;
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
       }
     }
-    finally {}
+    return localArrayList;
   }
   
-  public void a(bfpr parambfpr)
+  public static ArrayList<bfpr> a(long paramLong, byte[] paramArrayOfByte, int paramInt)
   {
-    try
+    ArrayList localArrayList1 = new ArrayList();
+    HashMap localHashMap = new HashMap();
+    paramArrayOfByte = new ByteArrayInputStream(paramArrayOfByte);
+    DataInputStream localDataInputStream = new DataInputStream(paramArrayOfByte);
+    int i = 0;
+    while (i < paramInt)
     {
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.add(parambfpr);
-      return;
-    }
-    finally
-    {
-      parambfpr = finally;
-      throw parambfpr;
-    }
-  }
-  
-  public void a(DownloadInfo paramDownloadInfo)
-  {
-    String str2 = paramDownloadInfo.e;
-    String str3 = paramDownloadInfo.l;
-    if ("mounted".equals(Environment.getExternalStorageState())) {}
-    int i;
-    for (String str1 = Environment.getExternalStorageDirectory().getAbsolutePath() + bfok.jdField_a_of_type_JavaLangString + "newApkDir";; str1 = bfbm.a().a().getFilesDir().getAbsolutePath())
-    {
-      File localFile = new File(str1);
-      if (!localFile.exists()) {
-        localFile.mkdirs();
+      localDataInputStream.readShort();
+      localDataInputStream.readShort();
+      localDataInputStream.readInt();
+      localDataInputStream.readInt();
+      localDataInputStream.readInt();
+      localDataInputStream.readByte();
+      localDataInputStream.readInt();
+      localDataInputStream.readInt();
+      int j = localDataInputStream.readInt();
+      localDataInputStream.readInt();
+      ArrayList localArrayList2 = a(paramLong, localDataInputStream, localDataInputStream.readShort(), j);
+      int k = localArrayList2.size();
+      j = 0;
+      while (j < k)
+      {
+        bfpr localbfpr = (bfpr)localArrayList2.get(j);
+        if (!localHashMap.containsKey(Long.valueOf(localbfpr.b)))
+        {
+          localArrayList1.add(localbfpr);
+          localHashMap.put(Long.valueOf(localbfpr.b), Boolean.valueOf(true));
+        }
+        j += 1;
       }
-      str1 = str1 + "/" + str2 + ".newGen.apk";
-      bflp.b(jdField_a_of_type_JavaLangString, "patchNewApk>>>>>packageName=" + str2 + ", patchPath=" + str3 + ", newApkPath=" + str1);
-      i = ApkUpdateSDK.getInstance().patchNewApk(str2, str3, str1);
-      if (i != 0) {
-        break label421;
-      }
-      bflp.b(jdField_a_of_type_JavaLangString, alud.a(2131716302));
-      paramDownloadInfo.l = str1;
-      if (("com.tencent.mobileqq".equals(paramDownloadInfo.e)) && (alqf.b((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()))) {
-        paramDownloadInfo.a = false;
-      }
-      if ((!"com.tencent.mobileqq".equals(paramDownloadInfo.e)) || (!bfok.a().b())) {
-        break label403;
-      }
-      paramDownloadInfo.j = bfok.a().a(paramDownloadInfo);
-      if (paramDownloadInfo.j == 0) {
-        break;
-      }
-      bflp.d(jdField_a_of_type_JavaLangString, "updateManager patchNewApk write code fail......");
-      paramDownloadInfo.a(-2);
-      bfok.a().e(paramDownloadInfo);
-      bfok.a().a(paramDownloadInfo, paramDownloadInfo.j, null);
-      return;
+      i += 1;
     }
-    paramDownloadInfo.a(4);
-    bfok.a().e(paramDownloadInfo);
-    bflp.c(jdField_a_of_type_JavaLangString, "info.path = " + paramDownloadInfo.l);
-    bfok.a().a(4, paramDownloadInfo);
-    if (paramDownloadInfo.a) {
-      bfok.a().c(paramDownloadInfo);
-    }
-    bfmy.a("300", paramDownloadInfo.h, paramDownloadInfo.c, paramDownloadInfo.o);
-    ThreadManager.getSubThreadHandler().post(new UpdateManager.1(this, str1, paramDownloadInfo));
-    return;
-    label403:
-    ThreadManager.getSubThreadHandler().post(new UpdateManager.2(this, str1, paramDownloadInfo));
-    return;
-    label421:
-    bflp.e(jdField_a_of_type_JavaLangString, alud.a(2131716303) + i);
-    bfok.a().a(-24, paramDownloadInfo);
-  }
-  
-  public void a(List<String> paramList)
-  {
-    bflp.b(jdField_a_of_type_JavaLangString, "checkUpdate>>> list size:" + paramList.size());
-    ApkUpdateSDK.getInstance().checkUpdate(paramList);
-  }
-  
-  public void b(bfpr parambfpr)
-  {
-    try
-    {
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.remove(parambfpr);
-      return;
-    }
-    finally
-    {
-      parambfpr = finally;
-      throw parambfpr;
-    }
-  }
-  
-  public void b(List<ApkUpdateParam> paramList)
-  {
-    bflp.b(jdField_a_of_type_JavaLangString, "checkUpdate>>> list size:" + paramList.size());
-    ApkUpdateSDK.getInstance().checkUpdateList(paramList);
-  }
-  
-  public void onCheckUpdateFailed(String paramString)
-  {
-    bflp.c(jdField_a_of_type_JavaLangString, "onCheckUpdateFailed>>>errMsg=" + paramString);
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.iterator();
-    while (localIterator.hasNext()) {
-      ((bfpr)localIterator.next()).a(paramString);
-    }
-  }
-  
-  public void onCheckUpdateSucceed(ArrayList paramArrayList)
-  {
-    if ((paramArrayList != null) && (paramArrayList.size() > 0))
-    {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.iterator();
-      while (localIterator.hasNext()) {
-        ((bfpr)localIterator.next()).a(paramArrayList);
-      }
-    }
+    localDataInputStream.close();
+    paramArrayOfByte.close();
+    localHashMap.clear();
+    return localArrayList1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bfpq
  * JD-Core Version:    0.7.0.1
  */

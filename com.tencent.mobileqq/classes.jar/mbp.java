@@ -1,23 +1,32 @@
-import android.content.Context;
-import android.view.OrientationEventListener;
-import com.tencent.av.smallscreen.SmallScreenRelativeLayout;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.common.app.BaseApplicationImpl;
 
 public class mbp
-  extends OrientationEventListener
 {
-  public mbp(SmallScreenRelativeLayout paramSmallScreenRelativeLayout, Context paramContext, int paramInt)
+  public static void a(String paramString)
   {
-    super(paramContext, paramInt);
+    bcst.b(null, "CliOper", "", "", paramString, paramString, 0, 0, "", "", "", "");
   }
   
-  public void onOrientationChanged(int paramInt)
+  public static void b(String paramString)
   {
-    this.a.a();
+    int i = 0;
+    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
+    if ((localObject instanceof VideoAppInterface)) {
+      i = ((VideoAppInterface)localObject).b("BEAUTY_SKIN");
+    }
+    if (i > 0) {}
+    for (localObject = "0X80076B4";; localObject = "0X80076B3")
+    {
+      a((String)localObject);
+      lbc.c("BeautyToolbar", "DataReport onUserBeauty:" + paramString + "|" + i);
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     mbp
  * JD-Core Version:    0.7.0.1
  */

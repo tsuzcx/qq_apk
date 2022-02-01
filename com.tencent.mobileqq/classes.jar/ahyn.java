@@ -1,16 +1,37 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.history.ChatHistoryBaseTenDocFragment;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.qphone.base.util.QLog;
 
-public class ahyn
-  implements View.OnClickListener
+class ahyn
+  extends anqd
 {
-  public ahyn(ChatHistoryBaseTenDocFragment paramChatHistoryBaseTenDocFragment) {}
+  ahyn(ahyk paramahyk) {}
   
-  public void onClick(View paramView)
+  protected void a(boolean paramBoolean, String paramString, long paramLong)
   {
-    azqs.b(this.a.a, "dc00898", "", "", "0X800A16A", "0X800A16A", ChatHistoryBaseTenDocFragment.a(this.a), 0, "", "", "s_qq_history_tab", "");
-    baic.a(this.a.getActivity(), "s_qq_history_tab", 1121);
+    a(paramBoolean, paramString, paramLong, null);
+  }
+  
+  protected void a(boolean paramBoolean, String paramString, long paramLong, anqa paramanqa)
+  {
+    if ((paramString == null) || (paramString.length() == 0)) {}
+    while (!paramString.equals(this.a.a.a)) {
+      return;
+    }
+    this.a.t = true;
+    this.a.a(262144, paramanqa, paramLong);
+  }
+  
+  public void b(String paramString)
+  {
+    if (QLog.isDevelopLevel()) {
+      QLog.d("MsgSend", 4, "delay 100ms, starting upadte ui");
+    }
+    this.a.f(131072);
+  }
+  
+  protected void c(boolean paramBoolean, String paramString)
+  {
+    this.a.f(65536);
   }
 }
 

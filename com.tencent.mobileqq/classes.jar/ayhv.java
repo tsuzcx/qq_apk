@@ -1,6 +1,17 @@
-public abstract interface ayhv
+import java.util.Comparator;
+
+class ayhv
+  implements Comparator<String>
 {
-  public abstract void a(int paramInt);
+  ayhv(ayhu paramayhu) {}
+  
+  public int a(String paramString1, String paramString2)
+  {
+    if ((paramString1 == null) || (paramString2 == null)) {
+      return 0;
+    }
+    return paramString2.length() - paramString1.length();
+  }
 }
 
 

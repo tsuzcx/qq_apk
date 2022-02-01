@@ -1,21 +1,36 @@
-import com.tencent.biz.qqstory.playvideo.MyVideoVisibleTroopPageView;
-import com.tencent.widget.AbsListView;
+import android.content.Context;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.TMG.utils.QLog;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import feedcloud.FeedCloudMeta.StNotice;
+import qqcircle.QQCircleFeedBase.StNoticeBusiData;
 
-public class vna
-  implements bhtv
+class vna
+  implements View.OnClickListener
 {
-  public vna(MyVideoVisibleTroopPageView paramMyVideoVisibleTroopPageView) {}
+  vna(vmz paramvmz, Context paramContext) {}
   
-  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
+  public void onClick(View paramView)
   {
-    this.a.a = paramInt1;
+    QLog.i("QCircleSystemMessagePresenter", 1, "clickSystemMessage messageId" + this.jdField_a_of_type_Vmz.jdField_a_of_type_FeedcloudFeedCloudMeta$StNotice.feedId.get());
+    if ((this.jdField_a_of_type_Vmz.jdField_a_of_type_QqcircleQQCircleFeedBase$StNoticeBusiData != null) && (this.jdField_a_of_type_Vmz.jdField_a_of_type_QqcircleQQCircleFeedBase$StNoticeBusiData.busiInfo.get() != null))
+    {
+      String str = uxn.a(this.jdField_a_of_type_Vmz.jdField_a_of_type_QqcircleQQCircleFeedBase$StNoticeBusiData.busiInfo.get(), "noticeFeedJumpUrl");
+      QLog.i("QCircleSystemMessagePresenter", 1, "clickSystemMessage get jumpUrl" + str);
+      if (!TextUtils.isEmpty(str)) {
+        uxo.b(this.jdField_a_of_type_AndroidContentContext, str);
+      }
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
-  
-  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     vna
  * JD-Core Version:    0.7.0.1
  */

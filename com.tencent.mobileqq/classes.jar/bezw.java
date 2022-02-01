@@ -1,16 +1,42 @@
-import android.content.Context;
-import android.text.TextUtils;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.wifisdk.TMSDKCustomConfig.IToast;
+import android.content.Intent;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.data.TroopInfo;
+import com.tencent.mobileqq.troop.homework.entry.ui.HomeWorkTroopSelectorFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.ArrayList;
 
-final class bezw
-  implements TMSDKCustomConfig.IToast
+public class bezw
+  implements View.OnClickListener
 {
-  public void showToast(Context paramContext, CharSequence paramCharSequence, int paramInt)
+  public bezw(HomeWorkTroopSelectorFragment paramHomeWorkTroopSelectorFragment) {}
+  
+  public void onClick(View paramView)
   {
-    if (!TextUtils.isEmpty(paramCharSequence)) {
-      QQToast.a(paramContext, paramCharSequence, paramInt).a();
+    ArrayList localArrayList1 = new ArrayList();
+    ArrayList localArrayList2 = new ArrayList();
+    if (HomeWorkTroopSelectorFragment.a(this.a) != null)
+    {
+      int j = HomeWorkTroopSelectorFragment.a(this.a).getCount();
+      int i = 0;
+      while (i < j)
+      {
+        localObject = (bfab)HomeWorkTroopSelectorFragment.a(this.a).getItem(i);
+        if ((((Boolean)((bfab)localObject).b).booleanValue()) && (!HomeWorkTroopSelectorFragment.a(this.a).equals(((TroopInfo)((bfab)localObject).a).troopuin)))
+        {
+          localArrayList1.add(((TroopInfo)((bfab)localObject).a).troopname);
+          localArrayList2.add(((TroopInfo)((bfab)localObject).a).troopuin);
+        }
+        i += 1;
+      }
     }
+    Object localObject = new Intent();
+    ((Intent)localObject).putStringArrayListExtra("HomeWorkConstants:homework_async_uin_list_key", localArrayList2);
+    ((Intent)localObject).putStringArrayListExtra("HomeWorkConstants:homework_async_name_list_key", localArrayList1);
+    this.a.getActivity().setResult(262, (Intent)localObject);
+    this.a.getActivity().doOnBackPressed();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

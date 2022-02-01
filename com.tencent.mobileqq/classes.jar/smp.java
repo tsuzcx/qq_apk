@@ -1,51 +1,87 @@
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import android.view.View;
+import android.widget.PopupWindow;
+import java.util.ArrayList;
+import java.util.List;
 
-final class smp
-  implements srg
+public class smp
 {
-  public void a()
+  private PopupWindow jdField_a_of_type_AndroidWidgetPopupWindow;
+  private List<bknx> jdField_a_of_type_JavaUtilList;
+  private boolean jdField_a_of_type_Boolean;
+  private List<Float> b = new ArrayList();
+  
+  private void a(boolean paramBoolean)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ViolaAccessHelper", 2, "pre load all offline from net is fail");
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    if ((this.jdField_a_of_type_Boolean) && (this.b.isEmpty()))
+    {
+      this.b.add(Float.valueOf(0.941F));
+      this.b.add(Float.valueOf(1.0F));
+      this.b.add(Float.valueOf(1.118F));
+      this.b.add(Float.valueOf(1.235F));
+      this.b.add(Float.valueOf(1.353F));
     }
   }
   
-  public void a(String paramString)
+  private float b(int paramInt)
   {
-    if (!TextUtils.isEmpty(paramString)) {}
-    try
-    {
-      paramString = new JSONObject(paramString);
-      JSONArray localJSONArray = (JSONArray)paramString.get("preload_bids");
-      int i = 0;
-      while (i < localJSONArray.length())
-      {
-        smk.a((String)localJSONArray.get(i), null);
-        i += 1;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("ViolaAccessHelper", 2, "pre load all offline from net is success");
-      }
-      smk.jdField_a_of_type_JavaLangString = ors.a();
-      smk.jdField_a_of_type_Long = System.currentTimeMillis();
-      if (paramString.has("use_main")) {
-        smk.jdField_a_of_type_Boolean = ((Boolean)paramString.get("use_main")).booleanValue();
-      }
-      return;
+    if ((paramInt >= 0) && (paramInt < this.b.size())) {
+      return ((Float)this.b.get(paramInt)).floatValue();
     }
-    catch (Exception paramString)
+    return 1.0F;
+  }
+  
+  public float a(int paramInt)
+  {
+    float f2 = 0.0F;
+    float f1;
+    if (this.jdField_a_of_type_Boolean) {
+      f1 = b(paramInt);
+    }
+    do
     {
-      while (!QLog.isColorLevel()) {}
-      QLog.e("ViolaAccessHelper", 2, "pre load all offline from net is exception:" + paramString.getMessage());
+      do
+      {
+        return f1;
+        f1 = f2;
+      } while (this.jdField_a_of_type_JavaUtilList == null);
+      f1 = f2;
+    } while (paramInt >= this.jdField_a_of_type_JavaUtilList.size());
+    return ((bknx)this.jdField_a_of_type_JavaUtilList.get(paramInt)).a();
+  }
+  
+  public smp a(View paramView)
+  {
+    if (this.jdField_a_of_type_AndroidWidgetPopupWindow != null) {
+      this.jdField_a_of_type_AndroidWidgetPopupWindow.showAtLocation(paramView, 83, 0, 0);
+    }
+    return this;
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_AndroidWidgetPopupWindow != null)
+    {
+      this.jdField_a_of_type_AndroidWidgetPopupWindow.dismiss();
+      this.jdField_a_of_type_AndroidWidgetPopupWindow = null;
+    }
+  }
+  
+  public boolean a()
+  {
+    return (this.jdField_a_of_type_AndroidWidgetPopupWindow != null) && (this.jdField_a_of_type_AndroidWidgetPopupWindow.isShowing());
+  }
+  
+  public void b()
+  {
+    if (this.jdField_a_of_type_AndroidWidgetPopupWindow != null) {
+      this.jdField_a_of_type_AndroidWidgetPopupWindow.dismiss();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     smp
  * JD-Core Version:    0.7.0.1
  */

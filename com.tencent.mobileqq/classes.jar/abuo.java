@@ -1,32 +1,22 @@
-import org.json.JSONObject;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.device.msg.activities.DeviceTipActivity;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class abuo
+  implements View.OnClickListener
 {
-  public int a;
-  public String a;
-  public String b;
+  public abuo(DeviceTipActivity paramDeviceTipActivity) {}
   
-  public abuo(abun paramabun) {}
-  
-  public boolean a(JSONObject paramJSONObject)
+  public void onClick(View paramView)
   {
-    try
-    {
-      this.jdField_a_of_type_Int = Integer.parseInt(paramJSONObject.getString("type"));
-      this.jdField_a_of_type_JavaLangString = paramJSONObject.getString("lib_name").trim();
-      this.b = paramJSONObject.getString("func_name").trim();
-      return true;
+    if (!bgnt.g(this.a)) {
+      QQToast.a(this.a, anni.a(2131702020), 2000).a();
     }
-    catch (Exception paramJSONObject)
-    {
-      abui.a("KingKongNativePatch", "Parse fingerprint error!");
-    }
-    return false;
-  }
-  
-  public String toString()
-  {
-    return this.jdField_a_of_type_Int + ", " + this.jdField_a_of_type_JavaLangString + ", " + this.b;
+    DeviceTipActivity.a(this.a, 2);
+    this.a.finish();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

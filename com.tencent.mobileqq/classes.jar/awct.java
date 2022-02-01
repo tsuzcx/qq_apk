@@ -1,29 +1,12 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.fling.TopGestureLayout;
-import com.tencent.mobileqq.onlinestatus.AccountOnlineStateActivity;
+import android.net.Network;
 
-public class awct
-  implements bibb
+public abstract interface awct
 {
-  public awct(AccountOnlineStateActivity paramAccountOnlineStateActivity) {}
-  
-  public void a(View paramView)
-  {
-    if (AccountOnlineStateActivity.a(this.a) != null) {
-      AccountOnlineStateActivity.a(this.a).setInterceptTouchFlag(false);
-    }
-  }
-  
-  public void b(View paramView)
-  {
-    if (AccountOnlineStateActivity.a(this.a) != null) {
-      AccountOnlineStateActivity.a(this.a).setInterceptTouchFlag(true);
-    }
-  }
+  public abstract void a(Network paramNetwork);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     awct
  * JD-Core Version:    0.7.0.1
  */

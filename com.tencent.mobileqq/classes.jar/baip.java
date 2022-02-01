@@ -1,17 +1,15 @@
-import com.tencent.smtt.export.external.interfaces.WebResourceResponse;
-import com.tencent.smtt.sdk.WebView;
+import com.tencent.mobileqq.activity.RegisterNewBaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-class baip
-  extends bair
+public abstract class baip
 {
-  baip(baim parambaim)
-  {
-    super(parambaim);
-  }
+  public RegisterNewBaseActivity a;
+  public QQAppInterface a;
   
-  public WebResourceResponse shouldInterceptRequest(WebView paramWebView, String paramString)
+  protected baip(RegisterNewBaseActivity paramRegisterNewBaseActivity)
   {
-    return a(paramWebView, paramString);
+    this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity = paramRegisterNewBaseActivity;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.app;
   }
 }
 

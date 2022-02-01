@@ -1,14 +1,16 @@
-import android.content.Context;
-import android.support.annotation.NonNull;
-import java.util.ArrayList;
+import java.util.Comparator;
 
-public abstract interface xot
+public final class xot
+  implements Comparator<xoy>
 {
-  public abstract void a(@NonNull ArrayList<xou> paramArrayList, @NonNull Context paramContext);
+  public int a(xoy paramxoy1, xoy paramxoy2)
+  {
+    return paramxoy1.a - paramxoy2.a;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     xot
  * JD-Core Version:    0.7.0.1
  */

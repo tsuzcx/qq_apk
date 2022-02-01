@@ -1,20 +1,17 @@
-import com.tencent.mobileqq.data.ApolloActionData;
-import java.util.Comparator;
+import android.hardware.Camera;
+import android.hardware.Camera.Face;
+import android.hardware.Camera.FaceDetectionListener;
+import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
+import com.tencent.qphone.base.util.QLog;
 
-class aljb
-  implements Comparator<ApolloActionData>
+public class aljb
+  implements Camera.FaceDetectionListener
 {
-  aljb(aliw paramaliw) {}
+  public aljb(NewFlowCameraActivity paramNewFlowCameraActivity) {}
   
-  public int a(ApolloActionData paramApolloActionData1, ApolloActionData paramApolloActionData2)
+  public void onFaceDetection(Camera.Face[] paramArrayOfFace, Camera paramCamera)
   {
-    if (paramApolloActionData2.version == paramApolloActionData1.version) {
-      return 0;
-    }
-    if (paramApolloActionData2.version > paramApolloActionData1.version) {
-      return 1;
-    }
-    return -1;
+    if (QLog.isColorLevel()) {}
   }
 }
 

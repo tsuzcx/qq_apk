@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.ar.view;
 
-import aepi;
+import afur;
 import android.graphics.Rect;
 import android.graphics.drawable.Animatable;
 import android.widget.FrameLayout.LayoutParams;
@@ -17,8 +17,8 @@ class QRScanEntryView$13
       if (this.this$0.jdField_a_of_type_AndroidWidgetImageView == null)
       {
         this.this$0.jdField_a_of_type_AndroidWidgetImageView = new ImageView(this.this$0.getContext());
-        this.this$0.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130839225);
-        i = aepi.a(25.0F, this.this$0.getResources());
+        this.this$0.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130839402);
+        i = afur.a(25.0F, this.this$0.getResources());
         localRect = new Rect(0, 0, i, i);
         localRect.offset(QRScanEntryView.a(this.this$0).centerX() - (int)(i * 0.5F), QRScanEntryView.a(this.this$0).centerY() - (int)(i * 0.5F));
         localLayoutParams = new FrameLayout.LayoutParams(i, i);
@@ -44,7 +44,7 @@ class QRScanEntryView$13
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.view.QRScanEntryView.13
  * JD-Core Version:    0.7.0.1
  */

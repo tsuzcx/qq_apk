@@ -1,174 +1,60 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.VideoInfo;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.concurrent.atomic.AtomicBoolean;
+import android.support.v4.util.Pools.SynchronizedPool;
 
-class rnl
-  extends ntc
+public class rnl
+  extends rnj<rnp, rno, rnn>
 {
-  private boolean jdField_a_of_type_Boolean;
+  private static final Pools.SynchronizedPool<rnn> jdField_a_of_type_AndroidSupportV4UtilPools$SynchronizedPool = new Pools.SynchronizedPool(10);
+  private static final rnk<rnp, rno, rnn> jdField_a_of_type_Rnk = new rnm();
   
-  private rnl(rnj paramrnj) {}
-  
-  private void a()
+  public rnl()
   {
-    rnj.a(this.jdField_a_of_type_Rnj).j();
+    super(jdField_a_of_type_Rnk);
   }
   
-  private void a(VideoInfo paramVideoInfo1, VideoInfo paramVideoInfo2)
+  private static rnn a(int paramInt1, int paramInt2, int paramInt3)
   {
-    if (!TextUtils.isEmpty(paramVideoInfo1.jdField_c_of_type_JavaLangString)) {
-      paramVideoInfo2.jdField_c_of_type_JavaLangString = paramVideoInfo1.jdField_c_of_type_JavaLangString;
+    rnn localrnn2 = (rnn)jdField_a_of_type_AndroidSupportV4UtilPools$SynchronizedPool.acquire();
+    rnn localrnn1 = localrnn2;
+    if (localrnn2 == null) {
+      localrnn1 = new rnn();
     }
-    if ((paramVideoInfo1.jdField_b_of_type_JavaUtilArrayList != null) && (paramVideoInfo1.jdField_b_of_type_JavaUtilArrayList.size() > 0))
-    {
-      if (paramVideoInfo2.jdField_b_of_type_JavaUtilArrayList == null) {
-        paramVideoInfo2.jdField_b_of_type_JavaUtilArrayList = new ArrayList();
-      }
-      paramVideoInfo2.jdField_b_of_type_JavaUtilArrayList.addAll(paramVideoInfo1.jdField_b_of_type_JavaUtilArrayList);
-    }
-    if ((paramVideoInfo2.jdField_b_of_type_Long <= 0L) && (paramVideoInfo1.jdField_b_of_type_Long > 0L)) {
-      paramVideoInfo2.jdField_b_of_type_Long = paramVideoInfo1.jdField_b_of_type_Long;
-    }
-    if ((paramVideoInfo1.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo != null) && (paramVideoInfo2.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo == null))
-    {
-      paramVideoInfo2.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo = paramVideoInfo1.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo;
-      paramVideoInfo2.jdField_a_of_type_Int = paramVideoInfo1.jdField_a_of_type_Int;
-    }
-    if (paramVideoInfo1.jdField_o_of_type_Int > 0) {
-      paramVideoInfo2.jdField_o_of_type_Int = paramVideoInfo1.jdField_o_of_type_Int;
-    }
-    if (paramVideoInfo1.jdField_f_of_type_Long > 0L) {
-      paramVideoInfo2.jdField_f_of_type_Long = paramVideoInfo1.jdField_f_of_type_Long;
-    }
-    if ((paramVideoInfo2.jdField_b_of_type_Int <= 0) && (paramVideoInfo1.jdField_b_of_type_Int > 0)) {
-      paramVideoInfo2.jdField_b_of_type_Int = paramVideoInfo1.jdField_b_of_type_Int;
-    }
-    if ((paramVideoInfo2.jdField_c_of_type_Int <= 0) && (paramVideoInfo1.jdField_c_of_type_Int > 0)) {
-      paramVideoInfo2.jdField_c_of_type_Int = paramVideoInfo1.jdField_c_of_type_Int;
-    }
-    if ((paramVideoInfo2.jdField_d_of_type_Int <= 0) && (paramVideoInfo1.jdField_d_of_type_Int > 0)) {
-      paramVideoInfo2.jdField_d_of_type_Int = paramVideoInfo1.jdField_d_of_type_Int;
-    }
-    if ((paramVideoInfo2.jdField_p_of_type_Int <= 0) && (paramVideoInfo1.jdField_p_of_type_Int > 0)) {
-      paramVideoInfo2.jdField_p_of_type_Int = paramVideoInfo1.jdField_p_of_type_Int;
-    }
-    if ((paramVideoInfo2.q <= 0) && (paramVideoInfo1.q > 0)) {
-      paramVideoInfo2.q = paramVideoInfo1.q;
-    }
-    if (!TextUtils.isEmpty(paramVideoInfo1.i)) {
-      paramVideoInfo2.i = paramVideoInfo1.i;
-    }
-    if ((TextUtils.isEmpty(paramVideoInfo2.jdField_k_of_type_JavaLangString)) && (!TextUtils.isEmpty(paramVideoInfo1.jdField_k_of_type_JavaLangString))) {
-      paramVideoInfo2.jdField_k_of_type_JavaLangString = paramVideoInfo1.jdField_k_of_type_JavaLangString;
-    }
-    if ((TextUtils.isEmpty(paramVideoInfo2.j)) && (!TextUtils.isEmpty(paramVideoInfo1.j))) {
-      paramVideoInfo2.j = paramVideoInfo1.j;
-    }
-    if ((TextUtils.isEmpty(paramVideoInfo2.g)) && (!TextUtils.isEmpty(paramVideoInfo1.g))) {
-      paramVideoInfo2.g = paramVideoInfo1.g;
-    }
-    if ((TextUtils.isEmpty(paramVideoInfo2.jdField_a_of_type_JavaLangString)) && (!TextUtils.isEmpty(paramVideoInfo1.jdField_a_of_type_JavaLangString)))
-    {
-      paramVideoInfo2.jdField_a_of_type_JavaLangString = paramVideoInfo1.jdField_a_of_type_JavaLangString;
-      paramVideoInfo2.jdField_a_of_type_Int = paramVideoInfo1.jdField_a_of_type_Int;
-    }
-    if ((TextUtils.isEmpty(paramVideoInfo2.jdField_f_of_type_JavaLangString)) && (!TextUtils.isEmpty(paramVideoInfo1.jdField_f_of_type_JavaLangString))) {
-      paramVideoInfo2.jdField_f_of_type_JavaLangString = paramVideoInfo1.jdField_f_of_type_JavaLangString;
-    }
-    if ((TextUtils.isEmpty(paramVideoInfo2.jdField_d_of_type_JavaLangString)) && (!TextUtils.isEmpty(paramVideoInfo1.jdField_d_of_type_JavaLangString))) {
-      paramVideoInfo2.jdField_d_of_type_JavaLangString = paramVideoInfo1.jdField_d_of_type_JavaLangString;
-    }
-    if ((TextUtils.isEmpty(paramVideoInfo2.jdField_c_of_type_JavaLangString)) && (!TextUtils.isEmpty(paramVideoInfo1.jdField_c_of_type_JavaLangString))) {
-      paramVideoInfo2.jdField_c_of_type_JavaLangString = paramVideoInfo1.jdField_c_of_type_JavaLangString;
-    }
-    if ((TextUtils.isEmpty(paramVideoInfo2.n)) && (!TextUtils.isEmpty(paramVideoInfo1.n))) {
-      paramVideoInfo2.n = paramVideoInfo1.n;
-    }
-    if ((TextUtils.isEmpty(paramVideoInfo2.m)) && (!TextUtils.isEmpty(paramVideoInfo1.m))) {
-      paramVideoInfo2.m = paramVideoInfo1.m;
-    }
-    if ((TextUtils.isEmpty(paramVideoInfo2.jdField_p_of_type_JavaLangString)) && (!TextUtils.isEmpty(paramVideoInfo1.jdField_p_of_type_JavaLangString))) {
-      paramVideoInfo2.jdField_p_of_type_JavaLangString = paramVideoInfo1.jdField_p_of_type_JavaLangString;
-    }
-    if ((TextUtils.isEmpty(paramVideoInfo2.jdField_p_of_type_JavaLangString)) && (!TextUtils.isEmpty(paramVideoInfo1.jdField_p_of_type_JavaLangString))) {
-      paramVideoInfo2.jdField_p_of_type_JavaLangString = paramVideoInfo1.jdField_p_of_type_JavaLangString;
-    }
-    if ((TextUtils.isEmpty(paramVideoInfo2.h)) && (!TextUtils.isEmpty(paramVideoInfo1.h))) {
-      paramVideoInfo2.h = paramVideoInfo1.h;
-    }
-    if (!paramVideoInfo2.jdField_b_of_type_Boolean) {
-      paramVideoInfo2.jdField_o_of_type_Boolean = paramVideoInfo1.jdField_o_of_type_Boolean;
-    }
-    if (!TextUtils.isEmpty(paramVideoInfo1.jdField_b_of_type_JavaLangString)) {
-      paramVideoInfo2.jdField_b_of_type_JavaLangString = paramVideoInfo1.jdField_b_of_type_JavaLangString;
-    }
-    if (!TextUtils.isEmpty(paramVideoInfo1.w)) {
-      paramVideoInfo2.w = paramVideoInfo1.w;
-    }
-    if (!TextUtils.isEmpty(paramVideoInfo1.x)) {
-      paramVideoInfo2.x = paramVideoInfo1.x;
-    }
-    paramVideoInfo2.jdField_k_of_type_Int = 0;
-    rdm.a(paramVideoInfo2);
+    localrnn1.a = paramInt1;
+    localrnn1.c = paramInt2;
+    localrnn1.b = paramInt3;
+    return localrnn1;
   }
   
-  protected void a(boolean paramBoolean, Bundle paramBundle)
+  public void a(rno paramrno, int paramInt1, int paramInt2)
   {
-    Object localObject1 = null;
-    rnj.a(this.jdField_a_of_type_Rnj).set(false);
-    if (!paramBoolean) {
-      a();
-    }
-    for (;;)
+    a(paramrno, 1, a(paramInt1, 0, paramInt2));
+  }
+  
+  public void a(rno paramrno, int paramInt, rnn paramrnn)
+  {
+    try
     {
-      rnj.a(this.jdField_a_of_type_Rnj);
-      ArrayList localArrayList;
-      do
-      {
-        return;
-        rnj.a(this.jdField_a_of_type_Rnj, paramBundle.getString("VALUE_COOKIE", null));
-        localArrayList = paramBundle.getParcelableArrayList("VIDEO_RECOMMEND_LIST");
-      } while ((localArrayList == null) || (localArrayList.size() == 0));
-      int i = rnj.a(this.jdField_a_of_type_Rnj).size();
-      Object localObject2 = localArrayList.iterator();
-      while (((Iterator)localObject2).hasNext())
-      {
-        VideoInfo localVideoInfo = (VideoInfo)((Iterator)localObject2).next();
-        if (rnj.a(this.jdField_a_of_type_Rnj).contains(localVideoInfo.jdField_a_of_type_JavaLangString)) {
-          ((Iterator)localObject2).remove();
-        }
-        if (localVideoInfo.jdField_c_of_type_Boolean) {
-          rdm.b(localVideoInfo);
-        }
-        rnj.a(this.jdField_a_of_type_Rnj).add(localVideoInfo.jdField_a_of_type_JavaLangString);
+      super.a(paramrno, paramInt, paramrnn);
+      if (paramrnn != null) {
+        jdField_a_of_type_AndroidSupportV4UtilPools$SynchronizedPool.release(paramrnn);
       }
-      rnj.a(this.jdField_a_of_type_Rnj).addAll(localArrayList);
-      localObject2 = (VideoInfo)paramBundle.getParcelable("VALUE_REQUEST_VIDEO_DETAIL_INFO");
-      paramBundle = localObject1;
-      if (rnj.a(this.jdField_a_of_type_Rnj).size() > 0) {
-        paramBundle = (VideoInfo)rnj.a(this.jdField_a_of_type_Rnj).get(0);
-      }
-      if ((!this.jdField_a_of_type_Boolean) && (paramBundle != null) && (localObject2 != null))
-      {
-        if ((paramBundle.g != null) && (paramBundle.g.equals(((VideoInfo)localObject2).g)))
-        {
-          a(paramBundle, (VideoInfo)localObject2);
-          paramBundle.a((VideoInfo)localObject2);
-        }
-        this.jdField_a_of_type_Boolean = true;
-        rnj.a(this.jdField_a_of_type_Rnj).a(0);
-      }
-      rnj.a(this.jdField_a_of_type_Rnj).a(i, localArrayList.size());
+      return;
     }
+    finally {}
+  }
+  
+  public void b(rno paramrno, int paramInt1, int paramInt2)
+  {
+    a(paramrno, 2, a(paramInt1, 0, paramInt2));
+  }
+  
+  public void c(rno paramrno, int paramInt1, int paramInt2)
+  {
+    a(paramrno, 4, a(paramInt1, 0, paramInt2));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     rnl
  * JD-Core Version:    0.7.0.1
  */

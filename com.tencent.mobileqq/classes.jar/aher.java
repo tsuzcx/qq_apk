@@ -1,50 +1,24 @@
-import java.util.HashMap;
-import org.xml.sax.Attributes;
-import org.xml.sax.Locator;
-import org.xml.sax.helpers.DefaultHandler;
-
-class aher
-  extends DefaultHandler
+public class aher
 {
-  aher(aheq paramaheq) {}
+  public static float a;
+  public static long a;
+  public static String a;
+  public static boolean a;
+  public static float[] a;
+  public static boolean b;
+  public static boolean c;
+  public static boolean d;
+  public static boolean e;
+  public static boolean f;
+  public static boolean g;
+  public static boolean h;
   
-  public void characters(char[] paramArrayOfChar, int paramInt1, int paramInt2) {}
-  
-  public void endDocument() {}
-  
-  public void endElement(String paramString1, String paramString2, String paramString3) {}
-  
-  public void endPrefixMapping(String paramString) {}
-  
-  public void ignorableWhitespace(char[] paramArrayOfChar, int paramInt1, int paramInt2) {}
-  
-  public void processingInstruction(String paramString1, String paramString2) {}
-  
-  public void setDocumentLocator(Locator paramLocator) {}
-  
-  public void skippedEntity(String paramString) {}
-  
-  public void startDocument() {}
-  
-  public void startElement(String paramString1, String paramString2, String paramString3, Attributes paramAttributes)
+  static
   {
-    if (paramString3.equals("config")) {
-      this.a.a.clear();
-    }
-    while (!paramString3.equals("value")) {
-      return;
-    }
-    int i = Integer.parseInt(paramAttributes.getValue("termType"));
-    try
-    {
-      int j = Integer.parseInt(paramAttributes.getValue("icon"));
-      this.a.a.put(Integer.valueOf(i), Integer.valueOf(j));
-      return;
-    }
-    catch (Exception paramString1) {}
+    jdField_a_of_type_Float = 1.0F;
+    jdField_a_of_type_ArrayOfFloat = new float[] { 0.5F, 1.0F, 1.5F, 2.0F, 2.5F, 3.0F };
+    jdField_a_of_type_JavaLangString = "ptt_uin";
   }
-  
-  public void startPrefixMapping(String paramString1, String paramString2) {}
 }
 
 

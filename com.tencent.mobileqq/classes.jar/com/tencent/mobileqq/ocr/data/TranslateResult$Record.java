@@ -3,12 +3,12 @@ package com.tencent.mobileqq.ocr.data;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import avxz;
+import ayhr;
 
 public class TranslateResult$Record
   implements Parcelable
 {
-  public static final Parcelable.Creator<Record> CREATOR = new avxz();
+  public static final Parcelable.Creator<Record> CREATOR = new ayhr();
   public int a;
   public String a;
   public int b;
@@ -53,7 +53,7 @@ public class TranslateResult$Record
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.ocr.data.TranslateResult.Record
  * JD-Core Version:    0.7.0.1
  */

@@ -1,8 +1,8 @@
 package cooperation.qzone.contentbox;
 
-import awgf;
-import awgg;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.QQEntityManagerFactory;
+import com.tencent.mobileqq.persistence.EntityManager;
 import cooperation.qzone.contentbox.model.QZoneMsgEntityNew;
 import cooperation.qzone.util.QZLog;
 
@@ -11,10 +11,10 @@ public class QZoneMsgManager$3
 {
   public void run()
   {
-    awgf localawgf = this.a.getEntityManagerFactory().createEntityManager();
+    EntityManager localEntityManager = this.a.a().createEntityManager();
     try
     {
-      localawgf.a(QZoneMsgEntityNew.class);
+      localEntityManager.drop(QZoneMsgEntityNew.class);
       return;
     }
     catch (Throwable localThrowable)
@@ -24,15 +24,15 @@ public class QZoneMsgManager$3
     }
     finally
     {
-      if (localawgf != null) {
-        localawgf.a();
+      if (localEntityManager != null) {
+        localEntityManager.close();
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.qzone.contentbox.QZoneMsgManager.3
  * JD-Core Version:    0.7.0.1
  */

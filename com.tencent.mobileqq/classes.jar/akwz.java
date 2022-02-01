@@ -1,21 +1,18 @@
+import Wallet.ReportHBGameRsp;
+import android.os.Bundle;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Map;
+import mqq.observer.BusinessObserver;
 
-class akwz
-  extends altm
+final class akwz
+  implements BusinessObserver
 {
-  akwz(akwy paramakwy) {}
-  
-  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
+    paramBundle = (ReportHBGameRsp)paramBundle.getSerializable("rsp");
     if (QLog.isColorLevel()) {
-      QLog.i("qwe", 2, "onUpdateFriendInfo:" + paramString);
+      QLog.d("QWalletTools", 2, "ReportHBGameRsp reportObserver:" + paramBoolean + "|" + paramBundle);
     }
-    if ((akwy.a(this.a) != null) && (akwy.a(this.a).get(paramString + "nick") != null))
-    {
-      int i = ((Integer)akwy.a(this.a).remove(paramString + "nick")).intValue();
-      this.a.a(i, paramString, 1);
-    }
+    if ((paramBoolean) && (paramBundle != null) && (paramBundle.result == 0)) {}
   }
 }
 

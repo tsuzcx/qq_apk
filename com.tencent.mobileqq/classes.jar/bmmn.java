@@ -1,24 +1,31 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.view.View;
-import android.widget.RelativeLayout.LayoutParams;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.webview.swift.JsBridgeListener;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import org.json.JSONObject;
 
-class bmmn
-  implements ValueAnimator.AnimatorUpdateListener
+public class bmmn
+  extends bmmk
 {
-  bmmn(bmml parambmml, int paramInt1, int paramInt2, int paramInt3, int paramInt4, View paramView) {}
-  
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public boolean a(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
   {
-    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    int i = (int)((this.jdField_a_of_type_Int - this.b) * f);
-    int j = this.b;
-    int k = (int)(f * (this.c - this.d));
-    int m = this.d;
-    paramValueAnimator = (RelativeLayout.LayoutParams)this.jdField_a_of_type_AndroidViewView.getLayoutParams();
-    paramValueAnimator.leftMargin = (i + j);
-    paramValueAnimator.bottomMargin = (m + k);
-    this.jdField_a_of_type_AndroidViewView.setLayoutParams(paramValueAnimator);
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if ("jumpNuanProfile".equals(paramString3))
+    {
+      bool1 = bool2;
+      if (!"Qzone".equals(paramString2)) {}
+    }
+    try
+    {
+      paramJsBridgeListener = new JSONObject(paramVarArgs[0]).optString("uin", "");
+      paramString1 = blsi.a();
+      paramString1.a = this.a.mRuntime.a().getAccount();
+      blsb.b(this.a.mRuntime.a(), paramString1, paramJsBridgeListener, -1);
+      bool1 = true;
+      return bool1;
+    }
+    catch (Throwable paramJsBridgeListener) {}
+    return false;
   }
 }
 

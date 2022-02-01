@@ -7,11 +7,11 @@ import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
 import com.tencent.mobileqq.pb.PBInt32Field;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.qqmini.sdk.core.auth.UserAuthInfo;
-import com.tencent.qqmini.sdk.core.auth.UserSettingInfo;
-import com.tencent.qqmini.sdk.core.proxy.AsyncResult;
-import com.tencent.qqmini.sdk.core.proxy.ChannelProxy.AuthListResult;
-import com.tencent.qqmini.sdk.log.QMLog;
+import com.tencent.qqmini.sdk.launcher.core.auth.UserAuthInfo;
+import com.tencent.qqmini.sdk.launcher.core.auth.UserSettingInfo;
+import com.tencent.qqmini.sdk.launcher.core.proxy.AsyncResult;
+import com.tencent.qqmini.sdk.launcher.core.proxy.ChannelProxy.AuthListResult;
+import com.tencent.qqmini.sdk.launcher.log.QMLog;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -78,7 +78,7 @@ class ChannelProxyDefault$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.core.proxy.service.ChannelProxyDefault.1
  * JD-Core Version:    0.7.0.1
  */

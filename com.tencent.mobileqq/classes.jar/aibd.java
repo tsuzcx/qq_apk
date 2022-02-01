@@ -1,33 +1,18 @@
-import android.os.Handler;
-import android.os.Message;
-import android.view.View;
-import com.tencent.mobileqq.activity.history.ChatHistoryTroopFileFragment;
-import com.tencent.widget.XListView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class aibd
-  extends Handler
+class aibd
+  implements DialogInterface.OnClickListener
 {
-  public aibd(ChatHistoryTroopFileFragment paramChatHistoryTroopFileFragment) {}
+  aibd(aiay paramaiay, boolean paramBoolean, bhtt parambhtt) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((paramMessage.what != 1) || (ChatHistoryTroopFileFragment.a(this.a) == null)) {}
-    for (;;)
-    {
-      return;
-      int i = ChatHistoryTroopFileFragment.a(this.a).getFirstVisiblePosition();
-      while (i <= ChatHistoryTroopFileFragment.a(this.a).getLastVisiblePosition())
-      {
-        paramMessage = ChatHistoryTroopFileFragment.a(this.a).getChildAt(i);
-        if (paramMessage != null)
-        {
-          paramMessage = paramMessage.getTag();
-          if ((paramMessage != null) && ((paramMessage instanceof bbvo))) {
-            ((bbvo)paramMessage).a(this.a.a, ChatHistoryTroopFileFragment.a(this.a));
-          }
-        }
-        i += 1;
-      }
+    this.jdField_a_of_type_Aiay.aa = true;
+    aiay.d(this.jdField_a_of_type_Aiay, this.jdField_a_of_type_Boolean);
+    this.jdField_a_of_type_Aiay.Z = true;
+    if ((this.jdField_a_of_type_Bhtt.a()) && (!this.jdField_a_of_type_Bhtt.b())) {
+      bcst.b(this.jdField_a_of_type_Aiay.a, "dc00899", "Grp_wolf", "", "ready_time", "ready_kick", 0, 0, "", "", "", "");
     }
   }
 }

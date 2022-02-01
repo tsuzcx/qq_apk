@@ -1,16 +1,20 @@
+import android.app.Activity;
 import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.ChatHistory;
+import com.tencent.gdtad.api.motivebrowsing.GdtMotiveBrowsingDialog.Companion.startMotiveBrowsingDialog.1;
+import com.tencent.gdtad.api.motivevideo.GdtMotiveVideoPageData;
+import kotlin.Metadata;
+import kotlin.jvm.internal.Intrinsics;
+import org.jetbrains.annotations.NotNull;
 
-public class acmm
-  implements View.OnClickListener
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/gdtad/api/motivebrowsing/GdtMotiveBrowsingDialog$Companion;", "", "()V", "TAG", "", "startMotiveBrowsingDialog", "", "activity", "Landroid/app/Activity;", "data", "Lcom/tencent/gdtad/api/motivevideo/GdtMotiveVideoPageData;", "intent", "Landroid/content/Intent;", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class acmm
 {
-  public acmm(ChatHistory paramChatHistory) {}
-  
-  public void onClick(View paramView)
+  public final void a(@NotNull Activity paramActivity, @NotNull GdtMotiveVideoPageData paramGdtMotiveVideoPageData, @NotNull Intent paramIntent)
   {
-    this.a.startActivity(new Intent("android.settings.WIRELESS_SETTINGS"));
+    Intrinsics.checkParameterIsNotNull(paramActivity, "activity");
+    Intrinsics.checkParameterIsNotNull(paramGdtMotiveVideoPageData, "data");
+    Intrinsics.checkParameterIsNotNull(paramIntent, "intent");
+    paramActivity.runOnUiThread((Runnable)new GdtMotiveBrowsingDialog.Companion.startMotiveBrowsingDialog.1(paramActivity, paramGdtMotiveVideoPageData, paramIntent));
   }
 }
 

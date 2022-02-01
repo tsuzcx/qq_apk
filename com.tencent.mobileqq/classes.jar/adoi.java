@@ -1,62 +1,89 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.activity.ProfileCardMoreActivity;
-import com.tencent.mobileqq.data.Card;
-import com.tencent.mobileqq.widget.FormSwitchItem;
+import android.text.TextUtils;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.activity.AuthDevVerifyCodeActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
+import mqq.manager.AccountManager;
+import mqq.observer.WtloginObserver;
+import oicq.wlogin_sdk.devicelock.DevlockInfo;
+import oicq.wlogin_sdk.request.WUserSigInfo;
+import oicq.wlogin_sdk.tools.ErrMsg;
 
 public class adoi
-  extends alpq
+  extends WtloginObserver
 {
-  public adoi(ProfileCardMoreActivity paramProfileCardMoreActivity) {}
+  public adoi(AuthDevVerifyCodeActivity paramAuthDevVerifyCodeActivity) {}
   
-  protected void onGetBabyQSwitch(boolean paramBoolean1, boolean paramBoolean2)
+  public void OnAskDevLockSms(WUserSigInfo paramWUserSigInfo, DevlockInfo paramDevlockInfo, int paramInt, ErrMsg paramErrMsg)
   {
-    if ((paramBoolean1) && (paramBoolean2 != this.a.d.a()))
-    {
-      this.a.d.setOnCheckedChangeListener(null);
-      this.a.d.setChecked(paramBoolean2);
-      this.a.d.setOnCheckedChangeListener(this.a);
-    }
-  }
-  
-  protected void onImpeach(boolean paramBoolean, String paramString)
-  {
-    if (!this.a.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.a.equals(paramString)) {
+    if (this.a.isFinishing()) {
       return;
     }
-    this.a.f();
-    if (paramBoolean)
+    this.a.c();
+    if ((paramInt == 0) && (paramDevlockInfo != null))
     {
-      this.a.a(2131690676, 2);
-      return;
-    }
-    this.a.a(2131690674, 1);
-  }
-  
-  protected void onSetBabyQSwitch(boolean paramBoolean1, boolean paramBoolean2)
-  {
-    if ((paramBoolean1) && (paramBoolean2 != this.a.d.a()))
-    {
-      this.a.d.setOnCheckedChangeListener(null);
-      this.a.d.setChecked(paramBoolean2);
-      this.a.d.setOnCheckedChangeListener(this.a);
-    }
-  }
-  
-  protected void onSetDetailInfo(boolean paramBoolean, int paramInt, Card paramCard)
-  {
-    if (((paramBoolean) && (paramInt == 0)) || ((!paramBoolean) && (paramInt == 34))) {}
-    for (;;)
-    {
-      if (this.a.jdField_a_of_type_AndroidOsBundle == null) {
-        this.a.jdField_a_of_type_AndroidOsBundle = new Bundle();
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.devlock.AuthDevVerifyCodeActivity", 2, "OnAskDevLockSms DevlockInfo.TimeLimit:" + paramDevlockInfo.TimeLimit + " AvailableMsgCount:" + paramDevlockInfo.AvailableMsgCount);
       }
-      if (paramCard != null) {
-        this.a.jdField_a_of_type_AndroidOsBundle.putShort("key_personality_label_switch", paramCard.switch_disable_personality_label);
+      if (paramDevlockInfo.TimeLimit <= 0) {
+        paramDevlockInfo.TimeLimit = 60;
       }
+      AuthDevVerifyCodeActivity.a(this.a, paramDevlockInfo.TimeLimit);
       return;
-      this.a.a(2131695607, 1);
     }
+    if (QLog.isColorLevel())
+    {
+      QLog.d("Q.devlock.AuthDevVerifyCodeActivity", 2, "OnAskDevLockSms ret = " + paramInt);
+      if (paramErrMsg != null) {
+        QLog.d("Q.devlock.AuthDevVerifyCodeActivity", 2, "OnAskDevLockSms  errMsg:" + paramErrMsg.getMessage());
+      }
+    }
+    if ((paramErrMsg != null) && (!TextUtils.isEmpty(paramErrMsg.getMessage())))
+    {
+      this.a.a(paramErrMsg.getMessage(), 1);
+      return;
+    }
+    paramWUserSigInfo = this.a.getString(2131715770);
+    this.a.a(paramWUserSigInfo, 1);
+  }
+  
+  public void OnCheckDevLockSms(WUserSigInfo paramWUserSigInfo, int paramInt, ErrMsg paramErrMsg)
+  {
+    if (QLog.isColorLevel())
+    {
+      QLog.d("Q.devlock.AuthDevVerifyCodeActivity", 2, "OnCheckDevLockSms ret = " + paramInt);
+      if (paramErrMsg != null) {
+        QLog.d("Q.devlock.AuthDevVerifyCodeActivity", 2, "OnCheckDevLockSms  errMsg:" + paramErrMsg.getMessage());
+      }
+    }
+    if (this.a.isFinishing()) {
+      return;
+    }
+    AuthDevVerifyCodeActivity.a(this.a);
+    if (paramInt == 0)
+    {
+      paramWUserSigInfo = (AccountManager)this.a.app.getManager(0);
+      if (paramWUserSigInfo != null) {
+        paramWUserSigInfo.refreshDA2(this.a.app.getCurrentAccountUin(), null);
+      }
+      asfr.a().a(null, this.a.app.getCurrentAccountUin(), 9);
+      this.a.setResult(-1);
+      this.a.finish();
+      paramErrMsg = (AppInterface)AuthDevVerifyCodeActivity.a(this.a).get();
+      paramWUserSigInfo = "";
+      if (paramErrMsg != null) {
+        paramWUserSigInfo = paramErrMsg.getAccount();
+      }
+      asfr.a().a(paramErrMsg, this.a, paramWUserSigInfo, true);
+      return;
+    }
+    if ((paramErrMsg != null) && (!TextUtils.isEmpty(paramErrMsg.getMessage())))
+    {
+      this.a.a(paramErrMsg.getMessage(), 1);
+      return;
+    }
+    this.a.a(2131715804, 1);
   }
 }
 

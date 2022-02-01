@@ -1,62 +1,31 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.QQLSActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class adqx
-  extends BroadcastReceiver
+final class adqx
+  implements DialogInterface.OnClickListener
 {
-  private String jdField_a_of_type_JavaLangString;
+  adqx(adsy paramadsy, int paramInt, adsx paramadsx) {}
   
-  private adqx(QQLSActivity paramQQLSActivity) {}
-  
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (QQLSActivity.f(this.jdField_a_of_type_ComTencentMobileqqActivityQQLSActivity)) {}
-    do
+    if (this.jdField_a_of_type_Adsy.a)
     {
-      do
-      {
-        for (;;)
-        {
-          return;
-          if (paramIntent != null) {}
-          try
-          {
-            this.jdField_a_of_type_JavaLangString = paramIntent.getAction();
-            if ("android.intent.action.SCREEN_ON".equals(this.jdField_a_of_type_JavaLangString))
-            {
-              if (!QLog.isColorLevel()) {
-                continue;
-              }
-              QLog.d("QQLSActivity", 2, "ScreenBroadcastReceiver ACTION_SCREEN_ON");
-            }
-          }
-          catch (Exception paramContext)
-          {
-            QLog.e("QQLSActivity", 1, paramContext, new Object[0]);
-            return;
-          }
-        }
-        if (!"android.intent.action.SCREEN_OFF".equals(this.jdField_a_of_type_JavaLangString)) {
-          break;
-        }
-      } while (!QLog.isColorLevel());
-      QLog.d("QQLSActivity", 2, "ScreenBroadcastReceiver ACTION_SCREEN_OFF");
+      if (this.jdField_a_of_type_Int != 2) {
+        break label59;
+      }
+      bcst.b(null, "CliOper", "", "", "Two_call", "Clk_2G_tips_btn", 0, 0, "2", "", "", "");
+    }
+    for (;;)
+    {
+      if (this.jdField_a_of_type_Adsx != null) {
+        this.jdField_a_of_type_Adsx.a();
+      }
       return;
-    } while (!"android.intent.action.USER_PRESENT".equals(this.jdField_a_of_type_JavaLangString));
-    if (QLog.isColorLevel())
-    {
-      paramContext = new StringBuilder().append("ScreenBroadcastReceiver ACTION_USER_PRESENTmanager.isEnterAio");
-      paramIntent = this.jdField_a_of_type_ComTencentMobileqqActivityQQLSActivity.a;
-      QLog.d("QQLSActivity", 2, auab.f);
+      label59:
+      if ((this.jdField_a_of_type_Int == 3) || (this.jdField_a_of_type_Int == 4)) {
+        bcst.b(null, "CliOper", "", "", "Two_call", "Clk_3G_tips_btn", 0, 0, "2", "", "", "");
+      }
     }
-    paramContext = this.jdField_a_of_type_ComTencentMobileqqActivityQQLSActivity.a;
-    if (!auab.f) {
-      QQLSActivity.g(this.jdField_a_of_type_ComTencentMobileqqActivityQQLSActivity);
-    }
-    this.jdField_a_of_type_ComTencentMobileqqActivityQQLSActivity.finish();
   }
 }
 

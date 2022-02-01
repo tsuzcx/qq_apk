@@ -1,11 +1,11 @@
 package com.tencent.biz.pubaccount.readinjoy.proteus.view.polymeric.helper;
 
-import pug;
+import qmi;
 
 public class RecycleViewAdapterHelper$1
   implements Runnable
 {
-  public RecycleViewAdapterHelper$1(pug parampug) {}
+  public RecycleViewAdapterHelper$1(qmi paramqmi) {}
   
   public void run()
   {

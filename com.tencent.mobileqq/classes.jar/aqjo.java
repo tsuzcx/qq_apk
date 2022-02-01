@@ -1,31 +1,79 @@
-import android.content.res.Resources;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.facetoface.Face2FaceAddFriendActivity;
-import com.tencent.mobileqq.facetoface.Face2FaceFriendDetailView;
-import com.tencent.mobileqq.widget.QQToast;
+import android.text.TextUtils;
+import org.json.JSONObject;
 
 public class aqjo
-  implements View.OnClickListener
 {
-  public aqjo(Face2FaceAddFriendActivity paramFace2FaceAddFriendActivity, String paramString) {}
+  public int a;
+  public long a;
+  public String a;
+  public boolean a;
+  public int b;
+  public String b;
+  public int c;
+  public String c;
+  public int d;
+  public String d;
+  public int e;
+  public String e;
+  public String f;
+  public String g;
   
-  public void onClick(View paramView)
+  public static aqjo a(String paramString)
   {
-    if (bdin.d(this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity))
-    {
-      Face2FaceAddFriendActivity.a(this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity, this.jdField_a_of_type_JavaLangString);
-      this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity.a.d();
-      paramView = Face2FaceAddFriendActivity.a(this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity).obtainMessage();
-      paramView.what = 2;
-      paramView.arg1 = 2;
-      paramView.obj = this.jdField_a_of_type_JavaLangString;
-      Face2FaceAddFriendActivity.a(this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity).sendMessage(paramView);
-      azqs.b(null, "CliOper", "", "", "0X80050EF", "0X80050EF", 2, 0, "", "", "", "");
-      return;
+    if (TextUtils.isEmpty(paramString)) {
+      return null;
     }
-    paramView = this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity.getResources().getString(2131692348);
-    QQToast.a(this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity, 0, paramView, 0).b(this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity.getTitleBarHeight());
+    aqjo localaqjo = new aqjo();
+    try
+    {
+      paramString = new JSONObject(paramString);
+      localaqjo.jdField_a_of_type_JavaLangString = paramString.optString("strGroupUin");
+      localaqjo.jdField_b_of_type_JavaLangString = paramString.optString("strSendUin");
+      localaqjo.jdField_a_of_type_Int = paramString.optInt("nTopicId");
+      localaqjo.jdField_b_of_type_Int = paramString.optInt("nBGType");
+      localaqjo.jdField_c_of_type_Int = paramString.optInt("nConfessorSex");
+      localaqjo.jdField_c_of_type_JavaLangString = paramString.optString("strRecNick");
+      localaqjo.jdField_d_of_type_Int = paramString.optInt("nRecNickType");
+      localaqjo.jdField_d_of_type_JavaLangString = paramString.optString("strRecUin");
+      localaqjo.jdField_e_of_type_JavaLangString = paramString.optString("strConfessorUin");
+      localaqjo.f = paramString.optString("strConfessorDesc");
+      localaqjo.g = paramString.optString("strConfessorNick");
+      localaqjo.jdField_e_of_type_Int = paramString.optInt("flag");
+      localaqjo.jdField_a_of_type_Long = paramString.optInt("confessTime");
+      localaqjo.jdField_a_of_type_Boolean = paramString.optBoolean("isRandomShmsgseq");
+      return localaqjo;
+    }
+    catch (Exception paramString) {}
+    return null;
+  }
+  
+  public String a()
+  {
+    try
+    {
+      Object localObject = new JSONObject();
+      ((JSONObject)localObject).put("strGroupUin", this.jdField_a_of_type_JavaLangString);
+      ((JSONObject)localObject).put("strSendUin", this.jdField_b_of_type_JavaLangString);
+      ((JSONObject)localObject).put("nTopicId", this.jdField_a_of_type_Int);
+      ((JSONObject)localObject).put("nBGType", this.jdField_b_of_type_Int);
+      ((JSONObject)localObject).put("nConfessorSex", this.jdField_c_of_type_Int);
+      ((JSONObject)localObject).put("strRecNick", this.jdField_c_of_type_JavaLangString);
+      ((JSONObject)localObject).put("nRecNickType", this.jdField_d_of_type_Int);
+      ((JSONObject)localObject).put("strRecUin", this.jdField_d_of_type_JavaLangString);
+      ((JSONObject)localObject).put("strConfessorUin", this.jdField_e_of_type_JavaLangString);
+      ((JSONObject)localObject).put("strConfessorDesc", this.f);
+      ((JSONObject)localObject).put("strConfessorNick", this.g);
+      ((JSONObject)localObject).put("flag", this.jdField_e_of_type_Int);
+      ((JSONObject)localObject).put("confessTime", this.jdField_a_of_type_Long);
+      ((JSONObject)localObject).put("isRandomShmsgseq", this.jdField_a_of_type_Boolean);
+      localObject = ((JSONObject)localObject).toString();
+      return localObject;
+    }
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
+    }
+    return "";
   }
 }
 

@@ -1,7 +1,7 @@
 package io.flutter.embedding.engine.systemchannels;
 
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import io.flutter.Log;
 import io.flutter.plugin.common.BasicMessageChannel.MessageHandler;
 import io.flutter.plugin.common.BasicMessageChannel.Reply;
@@ -95,7 +95,7 @@ class AccessibilityChannel$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     io.flutter.embedding.engine.systemchannels.AccessibilityChannel.1
  * JD-Core Version:    0.7.0.1
  */

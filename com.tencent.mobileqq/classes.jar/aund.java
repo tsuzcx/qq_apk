@@ -1,34 +1,32 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.mobileqq.multicard.MultiCardCustomLayout;
-import com.tencent.mobileqq.multicard.MultiCardFragment;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import com.tencent.mobileqq.fragment.NowLiveFragment;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
 
 public class aund
-  implements ValueAnimator.AnimatorUpdateListener
+  extends aopa
 {
-  public aund(MultiCardFragment paramMultiCardFragment, aunn paramaunn, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4) {}
-  
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public aund(NowLiveFragment paramNowLiveFragment, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString)
   {
-    float f1 = paramValueAnimator.getAnimatedFraction();
-    if (this.jdField_a_of_type_Aunn == null) {
-      return;
+    super(paramInt, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString);
+  }
+  
+  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  {
+    if (paramInt != 0)
+    {
+      QQToast.a(this.a.a, 1, anni.a(2131706440), 1).a();
+      this.a.f();
     }
-    float f2 = this.jdField_a_of_type_Float + (1.0F - this.jdField_a_of_type_Float) * f1;
-    this.jdField_a_of_type_Aunn.a.setScaleX(f2);
-    this.jdField_a_of_type_Aunn.a.setScaleY(f2);
-    this.jdField_a_of_type_Aunn.a.setTranslationX(0.0F);
-    this.jdField_a_of_type_Aunn.a.setTranslationY(this.b * (1.0F - f1));
-    paramValueAnimator = this.jdField_a_of_type_Aunn.a.getLayoutParams();
-    float f3 = this.c;
-    float f4 = this.d;
-    paramValueAnimator.height = ((int)((f1 * (1.0F - this.d) + f4) / f2 * f3));
-    this.jdField_a_of_type_Aunn.a.requestLayout();
+    if (QLog.isColorLevel()) {
+      QLog.d("NowLiveFragment", 2, "startLocation finish" + System.currentTimeMillis());
+    }
+    this.a.a(paramSosoLbsInfo);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aund
  * JD-Core Version:    0.7.0.1
  */

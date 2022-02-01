@@ -1,15 +1,25 @@
-import android.os.Environment;
-import java.io.File;
+import android.content.Context;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.ProteusItemData;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
 
-public final class szz
+class szz
+  implements tal
 {
-  public static final String a = Environment.getExternalStorageDirectory() + File.separator + Environment.DIRECTORY_PICTURES + File.separator + "Screenshots" + File.separator;
-  public static final String b = Environment.getExternalStorageDirectory() + File.separator + Environment.DIRECTORY_DCIM + File.separator + "Screenshots" + File.separator;
-  public static final String c = Environment.getExternalStorageDirectory() + File.separator + alud.a(2131713977) + File.separator;
+  szz(szv paramszv) {}
+  
+  public void a(ViewBase paramViewBase, Context paramContext, ProteusItemData paramProteusItemData)
+  {
+    tbc.a(paramProteusItemData.b, paramProteusItemData.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebUtilFastWebArticleInfo, paramProteusItemData.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusBeanTemplateBean, paramViewBase);
+    paramViewBase = paramViewBase.getEventAttachedData();
+    if (!TextUtils.isEmpty(paramViewBase)) {
+      pha.d(paramContext, paramViewBase);
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     szz
  * JD-Core Version:    0.7.0.1
  */

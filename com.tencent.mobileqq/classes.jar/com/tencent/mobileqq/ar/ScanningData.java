@@ -1,7 +1,5 @@
 package com.tencent.mobileqq.ar;
 
-import alud;
-import amyt;
 import android.animation.AnimatorSet;
 import android.animation.AnimatorSet.Builder;
 import android.animation.ObjectAnimator;
@@ -18,7 +16,9 @@ import android.util.DisplayMetrics;
 import android.view.Display;
 import android.view.WindowManager;
 import android.view.animation.LinearInterpolator;
-import bdoo;
+import anni;
+import aoxk;
+import bgtn;
 
 public abstract class ScanningData
 {
@@ -293,7 +293,7 @@ public abstract class ScanningData
   {
     this.jdField_c_of_type_Float = 1.0F;
     this.jdField_g_of_type_Float = 1.0F;
-    this.jdField_e_of_type_JavaLangString = alud.a(2131713907);
+    this.jdField_e_of_type_JavaLangString = anni.a(2131712286);
     this.jdField_f_of_type_JavaLangString = "YANG YANG";
     this.jdField_a_of_type_AndroidContentContext = paramContext;
     a();
@@ -321,7 +321,7 @@ public abstract class ScanningData
     this.jdField_b_of_type_AndroidGraphicsPaint.setAntiAlias(true);
     this.jdField_b_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL);
     this.jdField_b_of_type_AndroidGraphicsPaint.setDither(true);
-    this.jdField_b_of_type_AndroidGraphicsPaint.setStrokeWidth(amyt.jdField_b_of_type_Int);
+    this.jdField_b_of_type_AndroidGraphicsPaint.setStrokeWidth(aoxk.jdField_b_of_type_Int);
     this.jdField_c_of_type_AndroidGraphicsPaint = new Paint();
     this.jdField_c_of_type_AndroidGraphicsPaint.setStrokeCap(Paint.Cap.ROUND);
     this.jdField_c_of_type_AndroidGraphicsPaint.setAntiAlias(true);
@@ -420,7 +420,7 @@ public abstract class ScanningData
   {
     if (this.jdField_a_of_type_AndroidAnimationObjectAnimator == null)
     {
-      this.jdField_a_of_type_AndroidAnimationObjectAnimator = ObjectAnimator.ofFloat(this, "bCWidth", new float[] { bdoo.a(5.0F) * this.jdField_c_of_type_Float, amyt.jdField_c_of_type_Int * this.jdField_c_of_type_Float });
+      this.jdField_a_of_type_AndroidAnimationObjectAnimator = ObjectAnimator.ofFloat(this, "bCWidth", new float[] { bgtn.a(5.0F) * this.jdField_c_of_type_Float, aoxk.jdField_c_of_type_Int * this.jdField_c_of_type_Float });
       this.jdField_a_of_type_AndroidAnimationObjectAnimator.setInterpolator(new LinearInterpolator());
       this.jdField_a_of_type_AndroidAnimationObjectAnimator.setDuration(600L);
     }
@@ -577,7 +577,7 @@ public abstract class ScanningData
   {
     if (this.jdField_n_of_type_AndroidAnimationObjectAnimator == null)
     {
-      this.jdField_n_of_type_AndroidAnimationObjectAnimator = ObjectAnimator.ofFloat(this, "bCWidth", new float[] { amyt.jdField_c_of_type_Int * this.jdField_c_of_type_Float, amyt.jdField_h_of_type_Int * this.jdField_c_of_type_Float });
+      this.jdField_n_of_type_AndroidAnimationObjectAnimator = ObjectAnimator.ofFloat(this, "bCWidth", new float[] { aoxk.jdField_c_of_type_Int * this.jdField_c_of_type_Float, aoxk.jdField_h_of_type_Int * this.jdField_c_of_type_Float });
       this.jdField_n_of_type_AndroidAnimationObjectAnimator.setInterpolator(new LinearInterpolator());
       this.jdField_n_of_type_AndroidAnimationObjectAnimator.setDuration(600L);
     }
@@ -839,49 +839,49 @@ public abstract class ScanningData
   
   public void b()
   {
-    this.jdField_f_of_type_Float = amyt.I;
-    this.jdField_i_of_type_Float = amyt.jdField_h_of_type_Int;
-    this.jdField_n_of_type_Float = amyt.jdField_i_of_type_Int;
-    this.jdField_B_of_type_Float = amyt.L;
-    this.jdField_E_of_type_Float = amyt.jdField_c_of_type_Int;
-    this.L = amyt.G;
-    this.O = amyt.H;
-    this.P = amyt.jdField_b_of_type_Int;
-    this.X = amyt.G;
-    this.Y = amyt.jdField_c_of_type_Int;
-    this.ag = amyt.G;
-    this.ai = amyt.jdField_u_of_type_Int;
-    this.am = amyt.jdField_q_of_type_Int;
-    this.an = amyt.jdField_b_of_type_Int;
-    this.ay = amyt.jdField_c_of_type_Int;
-    this.aB = amyt.jdField_k_of_type_Int;
-    this.aH = amyt.x;
-    this.aD = amyt.C;
-    this.aE = amyt.jdField_u_of_type_Int;
-    this.aL = amyt.x;
-    this.aM = amyt.x;
-    this.aN = amyt.jdField_p_of_type_Int;
-    this.aP = amyt.jdField_r_of_type_Int;
-    this.aQ = amyt.jdField_r_of_type_Int;
-    this.aR = amyt.jdField_j_of_type_Int;
-    this.aH = amyt.jdField_r_of_type_Int;
-    this.aS = amyt.jdField_k_of_type_Int;
-    this.aT = amyt.jdField_m_of_type_Int;
+    this.jdField_f_of_type_Float = aoxk.I;
+    this.jdField_i_of_type_Float = aoxk.jdField_h_of_type_Int;
+    this.jdField_n_of_type_Float = aoxk.jdField_i_of_type_Int;
+    this.jdField_B_of_type_Float = aoxk.L;
+    this.jdField_E_of_type_Float = aoxk.jdField_c_of_type_Int;
+    this.L = aoxk.G;
+    this.O = aoxk.H;
+    this.P = aoxk.jdField_b_of_type_Int;
+    this.X = aoxk.G;
+    this.Y = aoxk.jdField_c_of_type_Int;
+    this.ag = aoxk.G;
+    this.ai = aoxk.jdField_u_of_type_Int;
+    this.am = aoxk.jdField_q_of_type_Int;
+    this.an = aoxk.jdField_b_of_type_Int;
+    this.ay = aoxk.jdField_c_of_type_Int;
+    this.aB = aoxk.jdField_k_of_type_Int;
+    this.aH = aoxk.x;
+    this.aD = aoxk.C;
+    this.aE = aoxk.jdField_u_of_type_Int;
+    this.aL = aoxk.x;
+    this.aM = aoxk.x;
+    this.aN = aoxk.jdField_p_of_type_Int;
+    this.aP = aoxk.jdField_r_of_type_Int;
+    this.aQ = aoxk.jdField_r_of_type_Int;
+    this.aR = aoxk.jdField_j_of_type_Int;
+    this.aH = aoxk.jdField_r_of_type_Int;
+    this.aS = aoxk.jdField_k_of_type_Int;
+    this.aT = aoxk.jdField_m_of_type_Int;
     this.aU = 0.0F;
-    this.aX = amyt.jdField_m_of_type_Int;
-    this.aY = amyt.jdField_b_of_type_Int;
-    this.bb = amyt.jdField_a_of_type_Int;
-    this.bd = amyt.A;
-    this.be = amyt.jdField_o_of_type_Int;
-    this.bf = amyt.f;
-    this.bh = amyt.jdField_d_of_type_Int;
-    this.bI = amyt.F;
-    this.bK = amyt.jdField_e_of_type_Int;
-    this.bL = amyt.jdField_h_of_type_Int;
-    this.bP = amyt.y;
-    this.bS = amyt.jdField_c_of_type_Int;
-    this.bV = amyt.jdField_v_of_type_Int;
-    this.bW = amyt.D;
+    this.aX = aoxk.jdField_m_of_type_Int;
+    this.aY = aoxk.jdField_b_of_type_Int;
+    this.bb = aoxk.jdField_a_of_type_Int;
+    this.bd = aoxk.A;
+    this.be = aoxk.jdField_o_of_type_Int;
+    this.bf = aoxk.f;
+    this.bh = aoxk.jdField_d_of_type_Int;
+    this.bI = aoxk.F;
+    this.bK = aoxk.jdField_e_of_type_Int;
+    this.bL = aoxk.jdField_h_of_type_Int;
+    this.bP = aoxk.y;
+    this.bS = aoxk.jdField_c_of_type_Int;
+    this.bV = aoxk.jdField_v_of_type_Int;
+    this.bW = aoxk.D;
   }
   
   public abstract void c();
@@ -1073,15 +1073,15 @@ public abstract class ScanningData
   
   public void x()
   {
-    this.jdField_f_of_type_Float = amyt.I;
-    this.jdField_i_of_type_Float = amyt.jdField_h_of_type_Int;
+    this.jdField_f_of_type_Float = aoxk.I;
+    this.jdField_i_of_type_Float = aoxk.jdField_h_of_type_Int;
     this.jdField_j_of_type_Float = 234.0F;
     this.jdField_k_of_type_Float = 36.0F;
     this.jdField_l_of_type_Float = 54.0F;
     this.jdField_m_of_type_Float = 216.0F;
     this.jdField_a_of_type_Int = Color.argb(255, 30, 255, 236);
     this.jdField_b_of_type_Int = Color.argb(255, 0, 191, 255);
-    this.jdField_n_of_type_Float = amyt.jdField_i_of_type_Int;
+    this.jdField_n_of_type_Float = aoxk.jdField_i_of_type_Int;
     this.jdField_o_of_type_Float = ((this.jdField_j_of_type_Float + this.jdField_m_of_type_Float) / 2.0F);
     this.jdField_p_of_type_Float = ((this.jdField_k_of_type_Float + this.jdField_l_of_type_Float) / 2.0F);
     this.jdField_c_of_type_Int = Color.argb(255, 30, 255, 236);
@@ -1089,18 +1089,18 @@ public abstract class ScanningData
     this.jdField_e_of_type_Int = Color.argb(255, 30, 255, 236);
     this.jdField_v_of_type_Float = 0.0F;
     this.jdField_u_of_type_Float = 0.0F;
-    this.jdField_B_of_type_Float = amyt.L;
-    this.jdField_E_of_type_Float = amyt.jdField_c_of_type_Int;
+    this.jdField_B_of_type_Float = aoxk.L;
+    this.jdField_E_of_type_Float = aoxk.jdField_c_of_type_Int;
     this.F = 160.0F;
     this.G = 290.0F;
     this.H = 340.0F;
     this.I = 110.0F;
     this.jdField_g_of_type_Int = -1;
     this.J = 102.0F;
-    this.K = amyt.M;
-    this.L = amyt.G;
-    this.O = amyt.H;
-    this.P = amyt.jdField_b_of_type_Int;
+    this.K = aoxk.M;
+    this.L = aoxk.G;
+    this.O = aoxk.H;
+    this.P = aoxk.jdField_b_of_type_Int;
     this.Q = 32.0F;
     this.R = 138.0F;
     this.S = 272.0F;
@@ -1109,8 +1109,8 @@ public abstract class ScanningData
     this.V = 258.0F;
     this.jdField_h_of_type_Int = -1;
     this.W = 0.0F;
-    this.X = amyt.G;
-    this.Y = amyt.jdField_c_of_type_Int;
+    this.X = aoxk.G;
+    this.Y = aoxk.jdField_c_of_type_Int;
     this.Z = 60.0F;
     this.aa = 100.0F;
     this.ab = 300.0F;
@@ -1119,12 +1119,12 @@ public abstract class ScanningData
     this.ae = 220.0F;
     this.jdField_i_of_type_Int = -1;
     this.af = 0.0F;
-    this.ag = amyt.G;
-    this.ai = amyt.jdField_u_of_type_Int;
+    this.ag = aoxk.G;
+    this.ai = aoxk.jdField_u_of_type_Int;
     this.jdField_j_of_type_Int = -1;
     this.aj = 0.0F;
-    this.am = amyt.jdField_q_of_type_Int;
-    this.an = amyt.jdField_b_of_type_Int;
+    this.am = aoxk.jdField_q_of_type_Int;
+    this.an = aoxk.jdField_b_of_type_Int;
     this.ao = 183.0F;
     this.ap = 267.0F;
     this.aq = 93.0F;
@@ -1135,78 +1135,78 @@ public abstract class ScanningData
     this.av = 87.0F;
     this.jdField_k_of_type_Int = -1;
     this.aw = 0.0F;
-    this.ay = amyt.jdField_c_of_type_Int;
+    this.ay = aoxk.jdField_c_of_type_Int;
     this.jdField_l_of_type_Int = -1;
     this.az = 0.0F;
-    this.aB = amyt.jdField_k_of_type_Int;
+    this.aB = aoxk.jdField_k_of_type_Int;
     this.jdField_m_of_type_Int = -1;
-    this.aH = amyt.x;
-    this.aD = amyt.C;
-    this.aE = amyt.jdField_u_of_type_Int;
-    this.aL = amyt.x;
-    this.aM = amyt.x;
-    this.aN = amyt.jdField_p_of_type_Int;
-    this.aP = amyt.jdField_r_of_type_Int;
-    this.aQ = amyt.jdField_r_of_type_Int;
-    this.aR = amyt.jdField_j_of_type_Int;
-    this.aH = amyt.jdField_r_of_type_Int;
-    this.aS = amyt.jdField_k_of_type_Int;
-    this.aT = amyt.jdField_m_of_type_Int;
+    this.aH = aoxk.x;
+    this.aD = aoxk.C;
+    this.aE = aoxk.jdField_u_of_type_Int;
+    this.aL = aoxk.x;
+    this.aM = aoxk.x;
+    this.aN = aoxk.jdField_p_of_type_Int;
+    this.aP = aoxk.jdField_r_of_type_Int;
+    this.aQ = aoxk.jdField_r_of_type_Int;
+    this.aR = aoxk.jdField_j_of_type_Int;
+    this.aH = aoxk.jdField_r_of_type_Int;
+    this.aS = aoxk.jdField_k_of_type_Int;
+    this.aT = aoxk.jdField_m_of_type_Int;
     this.aU = 0.0F;
-    this.aX = amyt.jdField_m_of_type_Int;
-    this.aY = amyt.jdField_b_of_type_Int;
+    this.aX = aoxk.jdField_m_of_type_Int;
+    this.aY = aoxk.jdField_b_of_type_Int;
     this.jdField_n_of_type_Int = Color.argb(102, 0, 0, 0);
     this.aZ = 270.0F;
     this.ba = 40.0F;
-    this.bb = amyt.jdField_a_of_type_Int;
-    this.bd = amyt.A;
-    this.be = amyt.jdField_o_of_type_Int;
-    this.bf = amyt.f;
-    this.bh = amyt.jdField_d_of_type_Int;
+    this.bb = aoxk.jdField_a_of_type_Int;
+    this.bd = aoxk.A;
+    this.be = aoxk.jdField_o_of_type_Int;
+    this.bf = aoxk.f;
+    this.bh = aoxk.jdField_d_of_type_Int;
     this.bj = 0.0F;
     this.bk = 0.0F;
-    this.bl = amyt.K;
-    this.bm = amyt.C;
+    this.bl = aoxk.K;
+    this.bm = aoxk.C;
     this.jdField_p_of_type_Int = Color.argb(229, 255, 255, 255);
     this.jdField_q_of_type_Int = Color.argb(229, 255, 255, 255);
     this.jdField_r_of_type_Int = Color.argb(127, 255, 255, 255);
-    this.bn = amyt.jdField_i_of_type_Int;
-    this.bo = amyt.jdField_s_of_type_Int;
-    this.bw = amyt.z;
-    this.bp = amyt.jdField_s_of_type_Int;
-    this.bq = amyt.jdField_s_of_type_Int;
-    this.br = amyt.jdField_g_of_type_Int;
-    this.bs = amyt.jdField_g_of_type_Int;
-    this.bx = amyt.jdField_s_of_type_Int;
-    this.bt = amyt.jdField_j_of_type_Int;
-    this.bu = amyt.jdField_p_of_type_Int;
-    this.bv = amyt.jdField_s_of_type_Int;
-    this.by = amyt.jdField_s_of_type_Int;
-    this.bz = amyt.jdField_r_of_type_Int;
-    this.bA = amyt.jdField_p_of_type_Int;
-    this.bB = amyt.jdField_n_of_type_Int;
+    this.bn = aoxk.jdField_i_of_type_Int;
+    this.bo = aoxk.jdField_s_of_type_Int;
+    this.bw = aoxk.z;
+    this.bp = aoxk.jdField_s_of_type_Int;
+    this.bq = aoxk.jdField_s_of_type_Int;
+    this.br = aoxk.jdField_g_of_type_Int;
+    this.bs = aoxk.jdField_g_of_type_Int;
+    this.bx = aoxk.jdField_s_of_type_Int;
+    this.bt = aoxk.jdField_j_of_type_Int;
+    this.bu = aoxk.jdField_p_of_type_Int;
+    this.bv = aoxk.jdField_s_of_type_Int;
+    this.by = aoxk.jdField_s_of_type_Int;
+    this.bz = aoxk.jdField_r_of_type_Int;
+    this.bA = aoxk.jdField_p_of_type_Int;
+    this.bB = aoxk.jdField_n_of_type_Int;
     this.jdField_s_of_type_Int = Color.argb(255, 119, 119, 119);
-    this.bC = amyt.jdField_h_of_type_Int;
-    this.bD = amyt.jdField_r_of_type_Int;
-    this.bE = amyt.jdField_e_of_type_Int;
+    this.bC = aoxk.jdField_h_of_type_Int;
+    this.bD = aoxk.jdField_r_of_type_Int;
+    this.bE = aoxk.jdField_e_of_type_Int;
     this.jdField_t_of_type_Int = Color.argb(76, 0, 104, 144);
-    this.bF = amyt.jdField_l_of_type_Int;
-    this.bG = amyt.jdField_i_of_type_Int;
+    this.bF = aoxk.jdField_l_of_type_Int;
+    this.bG = aoxk.jdField_i_of_type_Int;
     this.bH = 0.0F;
-    this.bI = amyt.F;
-    this.bK = amyt.jdField_e_of_type_Int;
+    this.bI = aoxk.F;
+    this.bK = aoxk.jdField_e_of_type_Int;
     this.jdField_u_of_type_Int = -1;
-    this.bL = amyt.jdField_h_of_type_Int;
+    this.bL = aoxk.jdField_h_of_type_Int;
     this.jdField_v_of_type_Int = -1;
     this.bM = 120.0F;
-    this.bP = amyt.y;
-    this.bS = amyt.jdField_c_of_type_Int;
+    this.bP = aoxk.y;
+    this.bS = aoxk.jdField_c_of_type_Int;
     this.jdField_w_of_type_Int = -1;
     this.bT = 0.0F;
     this.bU = 0.0F;
-    this.bV = amyt.jdField_v_of_type_Int;
-    this.bW = amyt.D;
-    this.jdField_w_of_type_Float = amyt.jdField_k_of_type_Int;
+    this.bV = aoxk.jdField_v_of_type_Int;
+    this.bW = aoxk.D;
+    this.jdField_w_of_type_Float = aoxk.jdField_k_of_type_Int;
     this.aV = 0.0F;
     this.aW = 0.0F;
     this.bc = 0.0F;
@@ -1259,7 +1259,7 @@ public abstract class ScanningData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.ScanningData
  * JD-Core Version:    0.7.0.1
  */

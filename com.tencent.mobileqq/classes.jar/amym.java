@@ -1,94 +1,72 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.ar.aidl.ARCommonConfigInfo;
-import com.tencent.mobileqq.ar.aidl.ArConfigInfo;
-import com.tencent.mobileqq.ar.aidl.ArEffectConfig;
+import android.text.TextUtils;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.apollo.utils.ApolloUtil;
 import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import org.json.JSONArray;
 
 class amym
-  extends amzt
+  implements amxk
 {
-  amym(amyk paramamyk) {}
+  amym(amyl paramamyl, JSONArray paramJSONArray, File paramFile, AppInterface paramAppInterface, String paramString1, int[] paramArrayOfInt, String paramString2) {}
   
-  public void a()
+  public void onDownLoadFinish(boolean paramBoolean, String paramString, int paramInt1, int[] paramArrayOfInt, int paramInt2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ArConfig_RemoteArConfigManager", 2, "onDownloadSuccess ");
-    }
-    if (amyk.a(this.a) == null)
+    QLog.d("ApolloPluginRscLoader", 1, new Object[] { "getCombination onDownLoadFinish sucess:", Boolean.valueOf(paramBoolean) });
+    label75:
+    int i;
+    if (paramInt1 > 0)
     {
-      QLog.d("ArConfig_RemoteArConfigManager", 1, "mArCallback onDownloadSuccess error mHandler is null ");
-      return;
-    }
-    amyk.a(this.a).sendMessage(amyk.a(this.a).obtainMessage(3));
-  }
-  
-  public void a(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ArConfig_RemoteArConfigManager", 2, "onDownloadError|error= " + paramInt);
-    }
-    if (amyk.a(this.a) == null)
-    {
-      QLog.d("ArConfig_RemoteArConfigManager", 1, "mArCallback onDownloadError error mHandler is null ");
-      return;
-    }
-    amyk.a(this.a).sendMessage(amyk.a(this.a).obtainMessage(5, Integer.valueOf(paramInt)));
-  }
-  
-  public void a(long paramLong1, long paramLong2)
-  {
-    if (paramLong2 != 0L)
-    {
-      long l = 100L * paramLong1 / paramLong2;
-      if (QLog.isColorLevel()) {
-        QLog.d("ArConfig_RemoteArConfigManager", 2, "onDownloadProcess percent= " + l);
-      }
-      if (amyk.a(this.a) == null) {
-        QLog.d("ArConfig_RemoteArConfigManager", 1, "mArCallback onDownloadProcess error mHandler is null ");
+      paramString = this.jdField_a_of_type_Amyl;
+      if (ApolloUtil.d(paramInt1))
+      {
+        paramInt2 = 0;
+        paramString = amyl.a(paramString, 1, String.valueOf(paramInt1), paramInt2);
+        this.jdField_a_of_type_OrgJsonJSONArray.put(paramString);
       }
     }
     else
     {
-      return;
+      if ((paramArrayOfInt == null) || (paramArrayOfInt.length <= 0)) {
+        break label147;
+      }
+      paramInt1 = 0;
+      if (paramInt1 >= paramArrayOfInt.length) {
+        break label147;
+      }
+      paramString = this.jdField_a_of_type_Amyl;
+      i = paramArrayOfInt[paramInt1];
+      if (!ApolloUtil.c(paramArrayOfInt[paramInt1])) {
+        break label141;
+      }
     }
-    Message localMessage = Message.obtain();
-    localMessage.what = 4;
-    localMessage.arg1 = ((int)paramLong1);
-    localMessage.arg2 = ((int)paramLong2);
-    amyk.a(this.a).sendMessage(localMessage);
-  }
-  
-  public void a(ArConfigInfo paramArConfigInfo, ArEffectConfig paramArEffectConfig, ARCommonConfigInfo paramARCommonConfigInfo)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ArConfig_RemoteArConfigManager", 2, "onConfigChanged!");
-    }
-    if (amyk.a(this.a) == null) {
-      QLog.d("ArConfig_RemoteArConfigManager", 1, "mArCallback onConfigChanged error mHandler is null ");
-    }
-    do
+    label141:
+    for (paramInt2 = 0;; paramInt2 = 2)
     {
+      paramString = amyl.a(paramString, 2, String.valueOf(i), paramInt2);
+      this.jdField_a_of_type_OrgJsonJSONArray.put(paramString);
+      paramInt1 += 1;
+      break label75;
+      paramInt2 = 2;
+      break;
+    }
+    label147:
+    if ((this.jdField_a_of_type_JavaIoFile != null) && (!this.jdField_a_of_type_JavaIoFile.exists()))
+    {
+      amxb.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, this.jdField_a_of_type_JavaLangString, new amyn(this));
       return;
-      if (paramArConfigInfo != null)
-      {
-        Message localMessage = Message.obtain();
-        localMessage.what = 1;
-        localMessage.obj = paramArConfigInfo;
-        amyk.a(this.a).sendMessage(localMessage);
-      }
-      if (paramArEffectConfig != null)
-      {
-        paramArConfigInfo = Message.obtain();
-        paramArConfigInfo.what = 2;
-        paramArConfigInfo.obj = paramArEffectConfig;
-        amyk.a(this.a).sendMessage(paramArConfigInfo);
-      }
-    } while (paramARCommonConfigInfo == null);
-    paramArConfigInfo = Message.obtain();
-    paramArConfigInfo.what = 9;
-    paramArConfigInfo.obj = paramARCommonConfigInfo;
-    amyk.a(this.a).sendMessage(paramArConfigInfo);
+    }
+    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
+    {
+      paramString = amyl.a(this.jdField_a_of_type_Amyl, 6, this.jdField_a_of_type_JavaLangString, 0);
+      this.jdField_a_of_type_OrgJsonJSONArray.put(paramString);
+    }
+    if ((this.jdField_a_of_type_ArrayOfInt == null) || (this.jdField_a_of_type_ArrayOfInt.length <= 0))
+    {
+      this.jdField_a_of_type_Amyl.a(this.b, anni.a(2131699295), this.jdField_a_of_type_OrgJsonJSONArray);
+      return;
+    }
+    amyl.a(this.jdField_a_of_type_Amyl, this.jdField_a_of_type_ArrayOfInt, this.b, this.jdField_a_of_type_OrgJsonJSONArray);
   }
 }
 

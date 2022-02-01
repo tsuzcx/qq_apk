@@ -1,59 +1,42 @@
-import android.content.Context;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.EmoticonPackage;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.widget.ImageView;
 import com.tencent.qphone.base.util.QLog;
 
-public class apwx
+class apwx
+  implements Animator.AnimatorListener
 {
-  private static apwx a;
+  apwx(apwv paramapwv, apxc paramapxc) {}
   
-  public static apwx a()
-  {
-    if (a == null) {}
-    try
-    {
-      if (a == null) {
-        a = new apwx();
-      }
-      return a;
-    }
-    finally {}
-  }
-  
-  public apte a(QQAppInterface paramQQAppInterface, Context paramContext, int paramInt1, int paramInt2, int paramInt3, EmoticonPackage paramEmoticonPackage, apuc paramapuc, BaseChatPie paramBaseChatPie, int paramInt4, boolean paramBoolean)
+  public void onAnimationCancel(Animator paramAnimator)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("EmotionPanelListViewAdapterBuilder", 2, "getAdapter panelType = " + paramInt2);
+      QLog.i("BubbleInterActiveAnim", 2, "onAnimationCancel " + this.jdField_a_of_type_Apxc.jdField_a_of_type_Long);
     }
-    switch (paramInt2)
-    {
-    case 10: 
-    case 11: 
-    default: 
-      return null;
-    case 1: 
-      return new apyy(paramQQAppInterface, paramContext, paramInt1, paramInt2, paramInt3, paramapuc, paramBaseChatPie, paramInt4);
-    case 6: 
-      return new aptg(paramQQAppInterface, paramContext, paramInt1, paramInt2, paramInt3, paramEmoticonPackage, paramapuc, paramBaseChatPie, paramInt4);
-    case 8: 
-      return new aptp(paramQQAppInterface, paramContext, paramInt1, paramInt2, paramInt3, paramEmoticonPackage, paramapuc, paramInt4);
-    case 7: 
-      return new apwc(paramQQAppInterface, paramContext, paramInt1, paramInt2, paramInt3, paramEmoticonPackage, paramapuc, paramInt4);
-    case 4: 
-      return new apxg(paramQQAppInterface, paramContext, paramInt1, paramInt2, paramInt3, paramapuc, paramBaseChatPie);
-    case 5: 
-      return new apxr(paramQQAppInterface, paramContext, paramInt1, paramInt2, paramInt3, paramapuc);
-    case 3: 
-      return new apyf(paramQQAppInterface, paramContext, paramInt1, paramInt2, paramInt3, paramapuc, paramInt4, paramBoolean);
-    case 2: 
-      return new apyo(paramQQAppInterface, paramContext, paramInt1, paramInt2, paramInt3, paramEmoticonPackage, paramapuc, paramBaseChatPie, paramInt4);
-    case 9: 
-      return new apyr(paramQQAppInterface, paramContext, paramInt1, paramInt2, paramInt3, paramEmoticonPackage, paramapuc, paramInt4);
-    case 12: 
-      return new apwa(paramQQAppInterface, paramContext, paramInt1, paramInt2, paramInt3, paramEmoticonPackage, paramapuc);
+    this.jdField_a_of_type_Apwv.a(this.jdField_a_of_type_Apxc);
+  }
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("BubbleInterActiveAnim", 2, "onAnimationEnd " + this.jdField_a_of_type_Apxc.jdField_a_of_type_Long);
     }
-    return new apts(paramQQAppInterface, paramContext, paramInt1, paramInt2, paramInt3, paramapuc, paramBaseChatPie);
+    this.jdField_a_of_type_Apwv.a(this.jdField_a_of_type_Apxc);
+  }
+  
+  public void onAnimationRepeat(Animator paramAnimator)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("BubbleInterActiveAnim", 2, "onAnimationRepeat " + this.jdField_a_of_type_Apxc.jdField_a_of_type_Long);
+    }
+  }
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("BubbleInterActiveAnim", 2, "onAnimationStart " + this.jdField_a_of_type_Apxc.jdField_a_of_type_Long);
+    }
+    this.jdField_a_of_type_Apxc.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
   }
 }
 

@@ -1,25 +1,19 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.widget.ExpandableListView;
-
-class aqnl
-  implements View.OnClickListener
+public class aqnl
 {
-  aqnl(aqni paramaqni, int paramInt) {}
+  public String a;
+  public String b;
+  public String c;
   
-  public void onClick(View paramView)
+  public aqnl(String paramString1, String paramString2, String paramString3)
   {
-    if (aqni.a(this.jdField_a_of_type_Aqni).c(this.jdField_a_of_type_Int))
-    {
-      aqni.a(this.jdField_a_of_type_Aqni).b(this.jdField_a_of_type_Int);
-      return;
-    }
-    aqni.a(this.jdField_a_of_type_Aqni).a(this.jdField_a_of_type_Int);
+    this.a = paramString1;
+    this.b = paramString2;
+    this.c = paramString3;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aqnl
  * JD-Core Version:    0.7.0.1
  */

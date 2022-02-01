@@ -9,6 +9,7 @@ public final class UniSetReq
   extends JceStruct
 {
   static Bubble cache_stBubble;
+  static Concise cache_stConcise = new Concise();
   static Funcall cache_stFuncall;
   static Hamlet cache_stHamletItem;
   static ArrayList<Hamlet> cache_stHamletItemList;
@@ -18,6 +19,7 @@ public final class UniSetReq
   static UniBusinessItem cache_stUniBusinessItem = new UniBusinessItem();
   public int clearflag;
   public Bubble stBubble;
+  public Concise stConcise;
   public Funcall stFuncall;
   public Hamlet stHamletItem;
   public ArrayList<Hamlet> stHamletItemList;
@@ -40,7 +42,7 @@ public final class UniSetReq
   
   public UniSetReq() {}
   
-  public UniSetReq(LoginInfo paramLoginInfo, UniBusinessItem paramUniBusinessItem, Hamlet paramHamlet, Bubble paramBubble, Redpacket paramRedpacket, Funcall paramFuncall, MessageShow paramMessageShow, ArrayList<Hamlet> paramArrayList, int paramInt)
+  public UniSetReq(LoginInfo paramLoginInfo, UniBusinessItem paramUniBusinessItem, Hamlet paramHamlet, Bubble paramBubble, Redpacket paramRedpacket, Funcall paramFuncall, MessageShow paramMessageShow, ArrayList<Hamlet> paramArrayList, int paramInt, Concise paramConcise)
   {
     this.stLogin = paramLoginInfo;
     this.stUniBusinessItem = paramUniBusinessItem;
@@ -51,6 +53,7 @@ public final class UniSetReq
     this.stMessageShow = paramMessageShow;
     this.stHamletItemList = paramArrayList;
     this.clearflag = paramInt;
+    this.stConcise = paramConcise;
   }
   
   public void readFrom(JceInputStream paramJceInputStream)
@@ -64,6 +67,7 @@ public final class UniSetReq
     this.stMessageShow = ((MessageShow)paramJceInputStream.read(cache_stMessageShow, 6, false));
     this.stHamletItemList = ((ArrayList)paramJceInputStream.read(cache_stHamletItemList, 7, false));
     this.clearflag = paramJceInputStream.read(this.clearflag, 8, false);
+    this.stConcise = ((Concise)paramJceInputStream.read(cache_stConcise, 16, false));
   }
   
   public void writeTo(JceOutputStream paramJceOutputStream)
@@ -89,6 +93,9 @@ public final class UniSetReq
       paramJceOutputStream.write(this.stHamletItemList, 7);
     }
     paramJceOutputStream.write(this.clearflag, 8);
+    if (this.stConcise != null) {
+      paramJceOutputStream.write(this.stConcise, 16);
+    }
   }
 }
 

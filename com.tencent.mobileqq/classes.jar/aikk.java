@@ -1,20 +1,8 @@
-import com.tencent.mobileqq.activity.ProfileActivity;
-import mqq.app.QQPermissionCallback;
-
-class aikk
-  implements QQPermissionCallback
+public abstract interface aikk
 {
-  aikk(aiki paramaiki) {}
+  public abstract void a(aiki paramaiki);
   
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    bdgm.a(this.a.a, paramArrayOfString, paramArrayOfInt);
-  }
-  
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    this.a.a.a = ProfileActivity.a(this.a.a, 5);
-  }
+  public abstract boolean a(String paramString);
 }
 
 

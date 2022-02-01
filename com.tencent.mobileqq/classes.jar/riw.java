@@ -1,406 +1,149 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.SystemClock;
+import android.graphics.BitmapFactory;
+import android.graphics.BitmapFactory.Options;
+import android.media.MediaMetadataRetriever;
+import android.os.Build.VERSION;
 import android.text.TextUtils;
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.animation.AlphaAnimation;
-import android.view.animation.LinearInterpolator;
-import android.view.animation.RotateAnimation;
-import android.widget.ImageView;
-import android.widget.SeekBar;
-import android.widget.SeekBar.OnSeekBarChangeListener;
-import android.widget.TextView;
-import com.tencent.biz.pubaccount.VideoInfo;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayManager;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsVideoUIDelegate.2;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsVideoUIDelegate.3;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsVideoUIDelegate.6;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsVideoUIDelegate.7;
-import com.tencent.biz.pubaccount.readinjoy.view.KandianUrlImageView;
-import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
 import com.tencent.qphone.base.util.QLog;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
-public class riw
-  implements SeekBar.OnSeekBarChangeListener, qyz
+public final class riw
 {
-  private long jdField_a_of_type_Long;
-  Handler jdField_a_of_type_AndroidOsHandler;
-  VideoFeedsPlayManager jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsPlayManager;
-  public rbn a;
-  boolean jdField_a_of_type_Boolean;
+  public int a;
+  public long a;
+  public LocalMediaInfo a;
+  @Nullable
+  public String a;
+  public boolean a;
+  private int[] a;
+  public int b;
+  public long b;
+  @Nullable
+  public String b;
   private boolean b;
-  private boolean c = true;
-  private boolean d;
-  private boolean e = true;
-  private boolean f;
-  private boolean g;
+  public long c;
+  public String c;
+  public long d;
+  public String d;
+  @NotNull
+  public String e = "";
+  public String f = "";
+  private String g;
   
-  public riw(rbn paramrbn, VideoFeedsPlayManager paramVideoFeedsPlayManager, boolean paramBoolean)
+  public riw()
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsPlayManager = paramVideoFeedsPlayManager;
-    this.jdField_a_of_type_Rbn = paramrbn;
-    this.jdField_a_of_type_Rbn.jdField_a_of_type_AndroidWidgetSeekBar.setOnSeekBarChangeListener(this);
-    this.b = paramBoolean;
-    this.jdField_a_of_type_AndroidOsHandler = new rix(this, Looper.getMainLooper());
+    this.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_ArrayOfInt = new int[2];
   }
   
-  private void a(int paramInt1, int paramInt2)
+  private int a(String paramString, boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_Rbn.jdField_b_of_type_ComTencentImageURLImageView == null) {
-      return;
-    }
-    rdm.a(this.jdField_a_of_type_Rbn.jdField_b_of_type_ComTencentImageURLImageView, paramInt1, paramInt2);
-  }
-  
-  public static void a(TextView paramTextView, VideoInfo paramVideoInfo, rjn paramrjn)
-  {
-    rdm.a(paramTextView, paramrjn, paramVideoInfo.jdField_a_of_type_JavaLangString, paramVideoInfo.g, paramVideoInfo.d, paramVideoInfo.jdField_a_of_type_Int);
-  }
-  
-  private void a(VideoInfo paramVideoInfo)
-  {
-    String str;
-    if (this.b) {
-      str = alud.a(2131716639);
-    }
-    for (;;)
+    int j = 0;
+    try
     {
-      paramVideoInfo = this.jdField_a_of_type_Rbn.y;
-      paramVideoInfo.setText(str);
-      rdm.a(paramVideoInfo, 0);
-      this.g = true;
-      this.jdField_a_of_type_AndroidOsHandler.postAtTime(new VideoFeedsVideoUIDelegate.7(this, paramVideoInfo), Integer.valueOf(0), SystemClock.uptimeMillis() + 1000L);
-      return;
-      str = alud.a(2131716535) + rdm.b(paramVideoInfo.b);
-      if (paramVideoInfo.b <= 0L) {
-        str = alud.a(2131716642);
+      paramString = paramString.split("x");
+      if (paramBoolean) {}
+      for (int i = 0;; i = 1)
+      {
+        if (paramString.length >= 2) {
+          j = Integer.parseInt(paramString[i]);
+        }
+        return j;
+      }
+      return 0;
+    }
+    catch (Throwable paramString)
+    {
+      QLog.e("LocalMediaInfo", 1, "getWidth error", paramString);
+    }
+  }
+  
+  private void a()
+  {
+    for (int i = 0;; i = 1) {
+      for (;;)
+      {
+        try
+        {
+          if (this.jdField_b_of_type_Boolean) {
+            return;
+          }
+          MediaMetadataRetriever localMediaMetadataRetriever = new MediaMetadataRetriever();
+          localMediaMetadataRetriever.setDataSource(this.jdField_b_of_type_JavaLangString);
+          int j = Integer.parseInt(localMediaMetadataRetriever.extractMetadata(18));
+          int k = Integer.parseInt(localMediaMetadataRetriever.extractMetadata(19));
+          if (Build.VERSION.SDK_INT >= 17)
+          {
+            int m = Integer.parseInt(localMediaMetadataRetriever.extractMetadata(24));
+            if ((m == 90) || (m == 270)) {
+              break;
+            }
+            if (i != 0)
+            {
+              this.g = (k + "x" + j);
+              this.jdField_b_of_type_Boolean = true;
+            }
+          }
+          else
+          {
+            QLog.e("LocalMediaInfo", 1, "checkAndSetExifResolution can't get rotation...");
+            continue;
+          }
+          this.g = (j + "x" + k);
+        }
+        catch (Throwable localThrowable)
+        {
+          QLog.e("LocalMediaInfo", 1, "checkAndSetExifResolution", localThrowable);
+          return;
+        }
       }
     }
   }
   
   private void b()
   {
-    rbs localrbs = null;
-    if ((this.jdField_a_of_type_Rbn instanceof rbs)) {
-      localrbs = (rbs)this.jdField_a_of_type_Rbn;
-    }
-    if ((localrbs != null) && (localrbs.b != null) && ((localrbs.b.getDrawable() instanceof out))) {
-      ((out)localrbs.b.getDrawable()).playAnimation();
-    }
-  }
-  
-  private void b(int paramInt)
-  {
-    a(paramInt, 500);
-  }
-  
-  private void b(int paramInt, String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("VideoFeedsVideoUIDelegate", 2, "innerChangePlayButton() what = " + paramInt);
-    }
-    this.c = false;
-    this.jdField_a_of_type_Rbn.g.clearAnimation();
-    this.jdField_a_of_type_Rbn.g.setVisibility(0);
-    switch (paramInt)
+    if ((this.jdField_a_of_type_ArrayOfInt[0] == 0) || (this.jdField_a_of_type_ArrayOfInt[1] == 0))
     {
+      BitmapFactory.Options localOptions = new BitmapFactory.Options();
+      localOptions.inJustDecodeBounds = true;
+      BitmapFactory.decodeFile(this.jdField_b_of_type_JavaLangString, localOptions);
+      this.jdField_a_of_type_ArrayOfInt[0] = localOptions.outWidth;
+      this.jdField_a_of_type_ArrayOfInt[1] = localOptions.outHeight;
     }
-    do
+  }
+  
+  public int a()
+  {
+    if (!this.jdField_a_of_type_Boolean)
     {
-      return;
-      this.jdField_a_of_type_Rbn.g.setBackgroundDrawable(rha.a(this.jdField_a_of_type_Rbn.g.getContext(), 2130842834));
-      this.jdField_a_of_type_Rbn.g.clearAnimation();
-      paramString = new RotateAnimation(0.0F, 360.0F, 1, 0.5F, 1, 0.5F);
-      paramString.setDuration(500L);
-      paramString.setRepeatCount(-1);
-      paramString.setRepeatMode(1);
-      paramString.setStartTime(-1L);
-      paramString.setInterpolator(new LinearInterpolator());
-      this.jdField_a_of_type_Rbn.g.startAnimation(paramString);
-      this.jdField_a_of_type_Rbn.c.setVisibility(0);
-      return;
-      this.jdField_a_of_type_Rbn.g.clearAnimation();
-      this.jdField_a_of_type_Rbn.g.setBackgroundDrawable(rha.a(this.jdField_a_of_type_Rbn.g.getContext(), 2130842836));
-      this.jdField_a_of_type_Rbn.c.setVisibility(0);
-      return;
-      this.jdField_a_of_type_Rbn.g.clearAnimation();
-      this.jdField_a_of_type_Rbn.g.setBackgroundDrawable(rha.a(this.jdField_a_of_type_Rbn.g.getContext(), 2130842836));
-      this.jdField_a_of_type_Rbn.c.setVisibility(8);
-      return;
-      this.jdField_a_of_type_Rbn.g.clearAnimation();
-      this.jdField_a_of_type_Rbn.g.setBackgroundDrawable(rha.a(this.jdField_a_of_type_Rbn.g.getContext(), 2130842836));
-      this.jdField_a_of_type_Rbn.c.setVisibility(0);
-      return;
-      this.jdField_a_of_type_Rbn.g.clearAnimation();
-      this.jdField_a_of_type_Rbn.g.setBackgroundDrawable(rha.a(this.jdField_a_of_type_Rbn.g.getContext(), 2130842835));
-      this.jdField_a_of_type_Rbn.c.setVisibility(0);
-      return;
-      this.jdField_a_of_type_Rbn.g.clearAnimation();
-      this.jdField_a_of_type_Rbn.g.setBackgroundDrawable(rha.a(this.jdField_a_of_type_Rbn.g.getContext(), 2130842835));
-      this.jdField_a_of_type_Rbn.c.setVisibility(8);
-    } while ((this.jdField_a_of_type_Rbn.x.getVisibility() != 0) || (!bdin.b(BaseApplicationImpl.getContext())));
-    this.jdField_a_of_type_Rbn.g.setVisibility(0);
-    this.jdField_a_of_type_Rbn.x.setVisibility(8);
-    this.jdField_a_of_type_Rbn.z.setVisibility(8);
-  }
-  
-  private boolean b(rfs paramrfs)
-  {
-    if (!bdin.b(BaseApplicationImpl.getContext())) {}
-    while ((paramrfs == null) || (paramrfs.jdField_a_of_type_ComTencentBizPubaccountVideoInfo == null) || (!this.jdField_a_of_type_Boolean) || (this.g)) {
-      return false;
+      b();
+      return this.jdField_a_of_type_ArrayOfInt[0];
     }
-    return true;
+    a();
+    if (TextUtils.isEmpty(this.g)) {
+      return a(this.c, true);
+    }
+    return a(this.g, true);
   }
   
-  public long a()
+  public int b()
   {
-    return this.jdField_a_of_type_Long;
-  }
-  
-  public void a()
-  {
-    int i = 100;
-    int j;
-    if (this.e)
+    if (!this.jdField_a_of_type_Boolean)
     {
-      long l1 = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsPlayManager.a();
-      long l2 = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsPlayManager.b();
-      j = (int)((float)l1 * 100.0F / (float)l2 + 0.5D);
-      if (j + 1 < 100) {
-        break label75;
-      }
+      b();
+      return this.jdField_a_of_type_ArrayOfInt[1];
     }
-    for (;;)
-    {
-      this.jdField_a_of_type_Rbn.jdField_a_of_type_AndroidWidgetSeekBar.setProgress(i);
-      this.jdField_a_of_type_Rbn.jdField_b_of_type_AndroidWidgetSeekBar.setProgress(i);
-      return;
-      label75:
-      i = j + 1;
+    a();
+    if (TextUtils.isEmpty(this.g)) {
+      return a(this.c, false);
     }
-  }
-  
-  public void a(int paramInt)
-  {
-    a(paramInt, null);
-  }
-  
-  public void a(int paramInt, String paramString)
-  {
-    this.c = false;
-    this.jdField_a_of_type_AndroidOsHandler.post(new VideoFeedsVideoUIDelegate.6(this, paramInt, paramString));
-  }
-  
-  public void a(rfs paramrfs)
-  {
-    if (b(paramrfs)) {
-      a(paramrfs.jdField_a_of_type_ComTencentBizPubaccountVideoInfo);
-    }
-    a(4);
-    b(8);
-    paramrfs.jdField_a_of_type_AndroidViewView.setVisibility(0);
-    a(this.jdField_a_of_type_Rbn.v, paramrfs.jdField_a_of_type_ComTencentBizPubaccountVideoInfo, paramrfs.jdField_a_of_type_Rjn);
-    b();
-  }
-  
-  public void a(rfs paramrfs, int paramInt1, int paramInt2, String paramString)
-  {
-    String str = paramString;
-    if (TextUtils.isEmpty(paramString)) {
-      str = alud.a(2131716610);
-    }
-    this.jdField_a_of_type_AndroidOsHandler.post(new VideoFeedsVideoUIDelegate.2(this, str, paramrfs));
-  }
-  
-  public void a(rfs paramrfs, int paramInt, boolean paramBoolean)
-  {
-    if (paramBoolean)
-    {
-      if (paramInt <= 300) {
-        break label113;
-      }
-      paramInt -= 300;
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Rbn.s.setVisibility(0);
-      paramrfs = new AlphaAnimation(0.0F, 1.0F);
-      paramrfs.setDuration(300L);
-      paramrfs.setStartOffset(paramInt);
-      this.jdField_a_of_type_Rbn.s.setAnimation(paramrfs);
-      AlphaAnimation localAlphaAnimation = new AlphaAnimation(1.0F, 0.0F);
-      localAlphaAnimation.setDuration(200L);
-      localAlphaAnimation.setAnimationListener(new riy(this));
-      paramrfs.setAnimationListener(new riz(this, localAlphaAnimation));
-      paramrfs.start();
-      return;
-      label113:
-      paramInt = 0;
-    }
-  }
-  
-  public void a(rfs paramrfs, long paramLong1, long paramLong2)
-  {
-    int i = 100;
-    if ((paramrfs != null) && (this.jdField_a_of_type_Rbn.jdField_a_of_type_AndroidWidgetSeekBar != null) && (this.jdField_a_of_type_Rbn.u != null) && (this.jdField_a_of_type_Rbn.w != null))
-    {
-      if (paramLong2 != 0L) {
-        break label114;
-      }
-      if (this.e)
-      {
-        this.jdField_a_of_type_Rbn.jdField_a_of_type_AndroidWidgetSeekBar.setProgress(0);
-        this.jdField_a_of_type_Rbn.jdField_b_of_type_AndroidWidgetSeekBar.setProgress(0);
-      }
-    }
-    label114:
-    while (paramLong1 == 0L)
-    {
-      if (paramLong2 > 0L) {
-        rdm.a(this.jdField_a_of_type_Rbn.w, paramLong2);
-      }
-      rdm.a(this.jdField_a_of_type_Rbn.v, this.jdField_a_of_type_Rbn.jdField_a_of_type_Rfs.jdField_a_of_type_Rjn);
-      return;
-    }
-    int j = (int)((float)paramLong1 * 100.0F / (float)paramLong2 + 0.5D);
-    if (j + 1 >= 100) {}
-    for (;;)
-    {
-      if (this.e)
-      {
-        this.jdField_a_of_type_Rbn.jdField_a_of_type_AndroidWidgetSeekBar.setProgress(i);
-        this.jdField_a_of_type_Rbn.jdField_b_of_type_AndroidWidgetSeekBar.setProgress(i);
-      }
-      rdm.a(this.jdField_a_of_type_Rbn.u, paramLong1);
-      break;
-      i = j + 1;
-    }
-  }
-  
-  public void a(rfs paramrfs, boolean paramBoolean)
-  {
-    this.jdField_a_of_type_AndroidOsHandler.removeMessages(-1);
-    if (!this.f) {
-      a(0, 0);
-    }
-    this.f = false;
-    if (paramBoolean)
-    {
-      a(1);
-      return;
-    }
-    this.c = true;
-    this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(-1, 1200L);
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.e = paramBoolean;
-  }
-  
-  public boolean a(rfs paramrfs)
-  {
-    return this.d;
-  }
-  
-  public void b(rfs paramrfs)
-  {
-    b(8);
-    if ((paramrfs != null) && (this.jdField_a_of_type_Rbn.d.getVisibility() == 0))
-    {
-      a(3);
-      return;
-    }
-    a(4);
-  }
-  
-  public void b(rfs paramrfs, boolean paramBoolean)
-  {
-    this.jdField_a_of_type_AndroidOsHandler.post(new VideoFeedsVideoUIDelegate.3(this, paramrfs, paramBoolean));
-  }
-  
-  public void c(rfs paramrfs)
-  {
-    this.f = false;
-  }
-  
-  public void d(rfs paramrfs)
-  {
-    a(0);
-  }
-  
-  public void e(rfs paramrfs)
-  {
-    a(0);
-  }
-  
-  public void f(rfs paramrfs) {}
-  
-  public void g(rfs paramrfs) {}
-  
-  public void h(rfs paramrfs)
-  {
-    a(1);
-  }
-  
-  public void i(rfs paramrfs)
-  {
-    if ((paramrfs != null) && (paramrfs.jdField_a_of_type_Rjn != null) && (paramrfs.jdField_a_of_type_Rjn.d()))
-    {
-      a(0);
-      return;
-    }
-    if ((paramrfs != null) && (this.jdField_a_of_type_Rbn.d.getVisibility() == 0))
-    {
-      a(3);
-      return;
-    }
-    a(4);
-  }
-  
-  public void j(rfs paramrfs)
-  {
-    a(0, 0);
-    a(0);
-  }
-  
-  public void onProgressChanged(SeekBar paramSeekBar, int paramInt, boolean paramBoolean)
-  {
-    if (!paramBoolean) {}
-    long l;
-    do
-    {
-      return;
-      this.jdField_a_of_type_Long = System.currentTimeMillis();
-      l = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsPlayManager.b();
-    } while (l <= 0L);
-    double d1 = paramInt / 100.0D;
-    paramInt = (int)(l * d1);
-    rdm.a(this.jdField_a_of_type_Rbn.u, paramInt);
-  }
-  
-  public void onStartTrackingTouch(SeekBar paramSeekBar)
-  {
-    this.d = true;
-  }
-  
-  public void onStopTrackingTouch(SeekBar paramSeekBar)
-  {
-    this.d = false;
-    int i = paramSeekBar.getProgress();
-    long l = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsPlayManager.b();
-    if (l > 0L)
-    {
-      i = (int)(i / 100.0D * l);
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsPlayManager.a(i);
-    }
+    return a(this.g, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     riw
  * JD-Core Version:    0.7.0.1
  */

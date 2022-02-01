@@ -3,10 +3,8 @@ package com.tencent.image;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.graphics.drawable.Drawable;
-import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.widget.ImageView;
-import com.tencent.qphone.base.util.QLog;
 import java.net.URL;
 
 public class URLImageView
@@ -28,18 +26,6 @@ public class URLImageView
   public URLImageView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    paramContext = getContentDescription();
-    if (!TextUtils.isEmpty(paramContext)) {}
-    try
-    {
-      setImageURL(paramContext.toString());
-      return;
-    }
-    catch (IllegalArgumentException paramAttributeSet)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.w("URLDrawable_", 2, "Illegal url: " + paramContext);
-    }
   }
   
   public void onLoadCanceled(URLDrawable paramURLDrawable)

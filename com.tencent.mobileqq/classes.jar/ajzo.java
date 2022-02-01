@@ -1,15 +1,64 @@
+import android.content.Context;
+import android.text.TextUtils;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.selectmember.PhoneContactTabView;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.aio.BaseChatItemLayout;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.anim.AIOAnimationConatiner;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.data.MessageForPoke;
+import com.tencent.mobileqq.data.MessageForPokeEmo;
+import com.tencent.mobileqq.data.MessageForScribble;
 
 public class ajzo
-  implements View.OnClickListener
+  extends ahkf
 {
-  public ajzo(PhoneContactTabView paramPhoneContactTabView) {}
-  
-  public void onClick(View paramView)
+  public ajzo(QQAppInterface paramQQAppInterface, BaseAdapter paramBaseAdapter, Context paramContext, SessionInfo paramSessionInfo, AIOAnimationConatiner paramAIOAnimationConatiner)
   {
-    PhoneContactTabView.a(this.a);
+    super(paramQQAppInterface, paramBaseAdapter, paramContext, paramSessionInfo, paramAIOAnimationConatiner);
+  }
+  
+  public void a(ChatMessage paramChatMessage, Context paramContext, BaseChatItemLayout paramBaseChatItemLayout, afwr paramafwr, int paramInt1, int paramInt2)
+  {
+    super.a(paramChatMessage, paramContext, paramBaseChatItemLayout, paramafwr, paramInt1, paramInt2);
+    paramContext = (ahkn)paramafwr;
+    if (paramContext.d != null)
+    {
+      if ((!(paramChatMessage instanceof MessageForPoke)) && (!(paramChatMessage instanceof MessageForPokeEmo))) {
+        break label109;
+      }
+      if (!TextUtils.isEmpty(paramChatMessage.msg)) {
+        break label95;
+      }
+      paramContext.d.setText(anni.a(2131705621));
+    }
+    for (;;)
+    {
+      if (paramContext.b != null) {
+        paramContext.b.setVisibility(8);
+      }
+      if (paramContext.c != null) {
+        paramContext.c.setVisibility(8);
+      }
+      return;
+      label95:
+      paramContext.d.setText(paramChatMessage.msg);
+      continue;
+      label109:
+      if ((paramChatMessage instanceof MessageForScribble)) {
+        paramContext.d.setText(anni.a(2131705620));
+      } else {
+        paramContext.d.setText(anni.a(2131705622));
+      }
+    }
+  }
+  
+  public void b(View paramView)
+  {
+    super.b(paramView);
   }
 }
 

@@ -43,7 +43,7 @@ public final class hw
   
   private Void a()
   {
-    Object localObject2 = ((AuthorizeRequest)((my)MapServiceManager.getService(my.class)).c()).checkAuth(pz.a, this.b, fz.g(), this.c, fz.c(), fz.a(), fz.d(), fz.e(), "4.2.8.1", fz.f(), "androidsdk", fz.b());
+    Object localObject2 = ((AuthorizeRequest)((my)MapServiceManager.getService(my.class)).c()).checkAuth(pz.a, this.b, fz.g(), this.c, fz.c(), fz.a(), fz.d(), fz.e(), "4.2.8.2", fz.f(), "androidsdk", fz.b());
     Object localObject1;
     if (localObject2 != null)
     {
@@ -157,7 +157,7 @@ public final class hw
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.map.sdk.a.hw
  * JD-Core Version:    0.7.0.1
  */

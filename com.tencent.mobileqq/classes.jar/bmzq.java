@@ -1,6 +1,6 @@
-public abstract interface bmzq<ERROR_TYPE, DATA_TYPE>
+public abstract interface bmzq
 {
-  public abstract Void a(ERROR_TYPE paramERROR_TYPE, DATA_TYPE paramDATA_TYPE);
+  public abstract void a(bmyy parambmyy, boolean paramBoolean, int paramInt, String paramString);
 }
 
 

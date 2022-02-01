@@ -1,44 +1,100 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.ColumnInfo;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import android.widget.LinearLayout;
+import android.widget.LinearLayout.LayoutParams;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentGridImage;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentDivider;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentHeaderTopicRecommend;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentLastRead;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentSocialOperation;
+import com.tencent.widget.AbsListView.LayoutParams;
 
-class quc
-  implements qts
+public class quc
+  extends qqt
 {
-  quc(qua paramqua, ColumnInfo paramColumnInfo) {}
+  private qvn a;
   
-  public void a(int paramInt1, String paramString1, String paramString2, int paramInt2)
+  public quc(Context paramContext, aobu paramaobu, snh paramsnh)
   {
-    QLog.i("RIJUGC.ManageColumnPresenter", 2, "createTopic response errorCode = " + paramInt1 + ", errorMsg = " + paramString1 + ", tip = " + paramString2 + ", topicId = " + paramInt2);
-    if (qua.a(this.jdField_a_of_type_Qua) == null) {
-      return;
+    super(paramContext, paramaobu, paramsnh);
+  }
+  
+  public qqt a()
+  {
+    this.jdField_a_of_type_Boolean = true;
+    return f(this.jdField_a_of_type_Snh, this.jdField_a_of_type_Aobu).q().l().h().g();
+  }
+  
+  public qqt d()
+  {
+    if (!this.jdField_a_of_type_Boolean) {
+      throw new Exception("buildComponent() must after buildComponent()!");
     }
-    qua.a(this.jdField_a_of_type_Qua).d();
-    if (paramInt1 == 0)
+    LinearLayout localLinearLayout = new LinearLayout(this.jdField_a_of_type_AndroidContentContext);
+    localLinearLayout.setOrientation(1);
+    localLinearLayout.setLayoutParams(new AbsListView.LayoutParams(-1, -2));
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderTopicRecommend != null) {
+      localLinearLayout.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderTopicRecommend);
+    }
+    if ((this.jdField_a_of_type_Qqs != null) && ((this.jdField_a_of_type_Qqs instanceof ComponentContentGridImage)))
     {
-      if (paramString2.equals(Integer.toString(0)))
-      {
-        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructColumnInfo.columnID = paramInt2;
-        qua.a(this.jdField_a_of_type_Qua).a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructColumnInfo, true);
-        qua.a(this.jdField_a_of_type_Qua).a(2131718812);
-        qua.a(this.jdField_a_of_type_Qua).a();
-        return;
-      }
-      qua.a(this.jdField_a_of_type_Qua).a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructColumnInfo, false);
-      if (!paramString1.isEmpty())
-      {
-        qua.a(this.jdField_a_of_type_Qua).a(paramString1);
-        return;
-      }
-      qua.a(this.jdField_a_of_type_Qua).a(2131718811);
-      return;
+      LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-1, -2);
+      localLayoutParams.setMargins(afur.a(12.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), 0, afur.a(12.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), 0);
+      ((ComponentContentGridImage)this.jdField_a_of_type_Qqs).setLayoutParams(localLayoutParams);
+      ((ComponentContentGridImage)this.jdField_a_of_type_Qqs).setOnNoItemClickListener(new qud(this));
+      localLinearLayout.addView((ComponentContentGridImage)this.jdField_a_of_type_Qqs);
     }
-    qua.a(this.jdField_a_of_type_Qua).a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructColumnInfo, false);
-    qua.a(this.jdField_a_of_type_Qua).a(2131718811);
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentSocialOperation != null) {
+      localLinearLayout.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentSocialOperation);
+    }
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentDivider != null) {
+      localLinearLayout.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentDivider);
+    }
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentLastRead != null) {
+      localLinearLayout.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentLastRead);
+    }
+    a(localLinearLayout);
+    return this;
+  }
+  
+  public qqt e()
+  {
+    return null;
+  }
+  
+  public qqt g()
+  {
+    this.jdField_a_of_type_Qqs = new ComponentContentGridImage(this.jdField_a_of_type_AndroidContentContext);
+    return this;
+  }
+  
+  public qqt o()
+  {
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderTopicRecommend != null) {
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderTopicRecommend.a(this.jdField_a_of_type_JavaLangObject);
+    }
+    if (this.jdField_a_of_type_Qqs != null)
+    {
+      if ((this.jdField_a_of_type_Qqs instanceof ComponentContentGridImage)) {
+        ((ComponentContentGridImage)this.jdField_a_of_type_Qqs).setMIReadInJoyModel(this.jdField_a_of_type_JavaLangObject);
+      }
+      this.jdField_a_of_type_Qvn = ComponentContentGridImage.a(this.jdField_a_of_type_JavaLangObject, 0);
+      this.jdField_a_of_type_Qqs.a(this.jdField_a_of_type_Qvn);
+    }
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentSocialOperation != null) {
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentSocialOperation.a(this.jdField_a_of_type_JavaLangObject);
+    }
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentDivider != null) {
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentDivider.a(this.jdField_a_of_type_JavaLangObject);
+    }
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentLastRead != null) {
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentLastRead.a(this.jdField_a_of_type_JavaLangObject);
+    }
+    return this;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     quc
  * JD-Core Version:    0.7.0.1
  */

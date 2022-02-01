@@ -1,21 +1,20 @@
-import android.view.MotionEvent;
-import com.tencent.widget.ARMapHongBaoListView;
+import com.tencent.mobileqq.werewolves.WerewolvesHostInterface;
 
-public abstract interface bhto
+public class bhto
+  implements axez
 {
-  public abstract int getMode();
+  public bhto(WerewolvesHostInterface paramWerewolvesHostInterface, boolean paramBoolean) {}
   
-  public abstract int getSpringbackOffset(ARMapHongBaoListView paramARMapHongBaoListView);
+  public void bt()
+  {
+    this.jdField_a_of_type_ComTencentMobileqqWerewolvesWerewolvesHostInterface.mGameRoomAVController.a(this.jdField_a_of_type_Boolean);
+  }
   
-  public abstract void onFlingScrollHeader(int paramInt1, int paramInt2);
-  
-  public abstract void onTouchMoving(ARMapHongBaoListView paramARMapHongBaoListView, boolean paramBoolean, MotionEvent paramMotionEvent);
-  
-  public abstract int onViewCompleteAfterRefresh(ARMapHongBaoListView paramARMapHongBaoListView);
+  public void bu() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bhto
  * JD-Core Version:    0.7.0.1
  */

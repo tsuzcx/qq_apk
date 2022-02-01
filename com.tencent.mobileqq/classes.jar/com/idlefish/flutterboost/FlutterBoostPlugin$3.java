@@ -1,6 +1,6 @@
 package com.idlefish.flutterboost;
 
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 import io.flutter.plugin.common.MethodChannel.Result;
 
 class FlutterBoostPlugin$3
@@ -33,7 +33,7 @@ class FlutterBoostPlugin$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.idlefish.flutterboost.FlutterBoostPlugin.3
  * JD-Core Version:    0.7.0.1
  */

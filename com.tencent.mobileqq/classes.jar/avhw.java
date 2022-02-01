@@ -1,27 +1,24 @@
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnTouchListener;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.intervideo.groupvideo.GroupVideoLoadingFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class avhw
-  implements View.OnTouchListener
+public class avhw
+  implements View.OnClickListener
 {
-  avhw(avhf paramavhf) {}
+  private avhw(GroupVideoLoadingFragment paramGroupVideoLoadingFragment) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onClick(View paramView)
   {
-    if ((paramMotionEvent.getAction() == 0) || (paramMotionEvent.getAction() == 2)) {
-      this.a.a.findViewById(2131364539).setAlpha(0.5F);
-    }
-    for (;;)
-    {
-      return false;
-      this.a.a.findViewById(2131364539).setAlpha(1.0F);
-    }
+    GroupVideoLoadingFragment.a(this.a).a(anni.a(2131704191), anni.a(2131704195));
+    GroupVideoLoadingFragment.a(this.a).c();
+    GroupVideoLoadingFragment.a(this.a, false);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     avhw
  * JD-Core Version:    0.7.0.1
  */

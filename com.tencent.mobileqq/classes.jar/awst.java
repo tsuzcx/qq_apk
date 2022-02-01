@@ -1,12 +1,45 @@
-import android.os.Bundle;
+import android.graphics.Rect;
+import android.support.v4.view.OnApplyWindowInsetsListener;
+import android.support.v4.view.ViewCompat;
+import android.support.v4.view.WindowInsetsCompat;
+import android.view.View;
+import com.tencent.mobileqq.multiaio.widget.MultiAIOBaseViewPager;
 
-public abstract interface awst
+public class awst
+  implements OnApplyWindowInsetsListener
 {
-  public abstract void a(int paramInt1, int paramInt2, String paramString, Bundle paramBundle);
+  private final Rect jdField_a_of_type_AndroidGraphicsRect = new Rect();
+  
+  public awst(MultiAIOBaseViewPager paramMultiAIOBaseViewPager) {}
+  
+  public WindowInsetsCompat onApplyWindowInsets(View paramView, WindowInsetsCompat paramWindowInsetsCompat)
+  {
+    paramView = ViewCompat.onApplyWindowInsets(paramView, paramWindowInsetsCompat);
+    if (paramView.isConsumed()) {
+      return paramView;
+    }
+    paramWindowInsetsCompat = this.jdField_a_of_type_AndroidGraphicsRect;
+    paramWindowInsetsCompat.left = paramView.getSystemWindowInsetLeft();
+    paramWindowInsetsCompat.top = paramView.getSystemWindowInsetTop();
+    paramWindowInsetsCompat.right = paramView.getSystemWindowInsetRight();
+    paramWindowInsetsCompat.bottom = paramView.getSystemWindowInsetBottom();
+    int i = 0;
+    int j = this.jdField_a_of_type_ComTencentMobileqqMultiaioWidgetMultiAIOBaseViewPager.getChildCount();
+    while (i < j)
+    {
+      WindowInsetsCompat localWindowInsetsCompat = ViewCompat.dispatchApplyWindowInsets(this.jdField_a_of_type_ComTencentMobileqqMultiaioWidgetMultiAIOBaseViewPager.getChildAt(i), paramView);
+      paramWindowInsetsCompat.left = Math.min(localWindowInsetsCompat.getSystemWindowInsetLeft(), paramWindowInsetsCompat.left);
+      paramWindowInsetsCompat.top = Math.min(localWindowInsetsCompat.getSystemWindowInsetTop(), paramWindowInsetsCompat.top);
+      paramWindowInsetsCompat.right = Math.min(localWindowInsetsCompat.getSystemWindowInsetRight(), paramWindowInsetsCompat.right);
+      paramWindowInsetsCompat.bottom = Math.min(localWindowInsetsCompat.getSystemWindowInsetBottom(), paramWindowInsetsCompat.bottom);
+      i += 1;
+    }
+    return paramView.replaceSystemWindowInsets(paramWindowInsetsCompat.left, paramWindowInsetsCompat.top, paramWindowInsetsCompat.right, paramWindowInsetsCompat.bottom);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     awst
  * JD-Core Version:    0.7.0.1
  */

@@ -1,17 +1,16 @@
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnCompletionListener;
-import com.tencent.mobileqq.widget.qqfloatingscreen.listener.IVideoOuterStatusListener;
-import com.tencent.mobileqq.widget.qqfloatingscreen.videoview.VideoTextureView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.troop.fragment.TroopMoreDetailFragment;
 
 public class beyn
-  implements MediaPlayer.OnCompletionListener
+  implements DialogInterface.OnClickListener
 {
-  public beyn(VideoTextureView paramVideoTextureView) {}
+  public beyn(TroopMoreDetailFragment paramTroopMoreDetailFragment, boolean paramBoolean) {}
   
-  public void onCompletion(MediaPlayer paramMediaPlayer)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (VideoTextureView.a() != null) {
-      VideoTextureView.a().onVideoComplete(true);
+    if (this.jdField_a_of_type_Boolean) {
+      bcst.b(null, "dc00898", "", "", "qq_vip", "0X800A57F", 2, 0, "", "", "", "");
     }
   }
 }

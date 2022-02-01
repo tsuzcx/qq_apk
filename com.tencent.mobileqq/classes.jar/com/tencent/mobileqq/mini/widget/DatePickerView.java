@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.mini.widget;
 
-import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
@@ -20,10 +19,12 @@ import android.widget.LinearLayout;
 import android.widget.NumberPicker;
 import android.widget.TextView;
 import com.tencent.mobileqq.mini.util.ColorUtils;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.qqlive.module.videoreport.inject.dialog.ReportDialog;
 import java.lang.reflect.Field;
 
 public class DatePickerView
-  extends Dialog
+  extends ReportDialog
   implements DialogInterface.OnCancelListener, View.OnClickListener
 {
   private int dayOfMonth;
@@ -36,13 +37,13 @@ public class DatePickerView
   
   public DatePickerView(@NonNull Context paramContext)
   {
-    super(paramContext, 2131755367);
+    super(paramContext, 2131755379);
     initView(paramContext);
   }
   
   private void initView(Context paramContext)
   {
-    paramContext = LayoutInflater.from(paramContext).inflate(2131559017, null);
+    paramContext = LayoutInflater.from(paramContext).inflate(2131559085, null);
     setContentView(paramContext);
     Object localObject = getWindow();
     if (localObject != null)
@@ -54,13 +55,13 @@ public class DatePickerView
       ((Window)localObject).setAttributes(localLayoutParams);
       ((Window)localObject).setGravity(80);
     }
-    localObject = (FrameLayout)paramContext.findViewById(2131371992);
+    localObject = (FrameLayout)paramContext.findViewById(2131372563);
     this.mDatePicker = new DatePicker(new ContextThemeWrapper(getContext(), 16973934));
     this.mDatePicker.setCalendarViewShown(false);
     ((FrameLayout)localObject).addView(this.mDatePicker);
-    this.mCancelTextView = ((TextView)paramContext.findViewById(2131378686));
+    this.mCancelTextView = ((TextView)paramContext.findViewById(2131379547));
     this.mCancelTextView.setOnClickListener(this);
-    this.mConfirmTextView = ((TextView)paramContext.findViewById(2131378721));
+    this.mConfirmTextView = ((TextView)paramContext.findViewById(2131379586));
     this.mConfirmTextView.setOnClickListener(this);
     setDatePickerDividerColor(this.mDatePicker);
     setOnCancelListener(this);
@@ -150,38 +151,42 @@ public class DatePickerView
   
   public void onClick(View paramView)
   {
-    if (paramView.getId() == 2131378686)
+    if (paramView.getId() == 2131379547)
     {
       if (this.mOnConfirmListener != null) {
         this.mOnConfirmListener.onDateCancel();
       }
       dismissDlg();
     }
-    while (paramView.getId() != 2131378721) {
+    while (paramView.getId() != 2131379586)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
     }
     int i;
+    String str1;
     if (this.mOnConfirmListener != null)
     {
       i = this.monthOfYear + 1;
       if (i >= 10) {
-        break label133;
+        break label144;
       }
-      paramView = "0" + i;
+      str1 = "0" + i;
+      label86:
       i = this.dayOfMonth;
       if (i >= 10) {
-        break label141;
+        break label152;
       }
     }
-    label133:
-    label141:
-    for (String str = "0" + i;; str = String.valueOf(i))
+    label144:
+    label152:
+    for (String str2 = "0" + i;; str2 = String.valueOf(i))
     {
-      this.mOnConfirmListener.onDateConfirm(String.valueOf(this.year), paramView, str);
+      this.mOnConfirmListener.onDateConfirm(String.valueOf(this.year), str1, str2);
       dismissDlg();
-      return;
-      paramView = String.valueOf(i);
       break;
+      str1 = String.valueOf(i);
+      break label86;
     }
   }
   
@@ -226,7 +231,7 @@ public class DatePickerView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.widget.DatePickerView
  * JD-Core Version:    0.7.0.1
  */

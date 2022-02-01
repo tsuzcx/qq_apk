@@ -1,27 +1,21 @@
-import com.tencent.mobileqq.activity.contacts.fragment.AlphabetFriendFragment;
-import com.tencent.qphone.base.util.QLog;
+import android.app.Dialog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnKeyListener;
+import android.view.KeyEvent;
 
-public class ahss
-  extends alpq
+class ahss
+  implements DialogInterface.OnKeyListener
 {
-  private ahss(AlphabetFriendFragment paramAlphabetFriendFragment) {}
+  ahss(ahsd paramahsd) {}
   
-  protected void onCardDownload(boolean paramBoolean, Object paramObject)
+  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
   {
-    if ((paramBoolean) && (AlphabetFriendFragment.b(this.a))) {
-      AlphabetFriendFragment.a(this.a, 1400L, true);
-    }
-  }
-  
-  protected void onGetCalReactiveDays(boolean paramBoolean1, boolean paramBoolean2)
-  {
-    if (paramBoolean1)
+    if (paramInt == 4)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("interactive", 2, " contacts onGetCalReactiveDays isAllow= " + paramBoolean2);
-      }
-      AlphabetFriendFragment.a(this.a, 1400L, false);
+      this.a.n = true;
+      ahsd.a(this.a).dismiss();
     }
+    return false;
   }
 }
 

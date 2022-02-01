@@ -1,42 +1,38 @@
-import android.text.InputFilter;
-import android.text.Spanned;
-import com.tencent.open.agent.CreateVirtualAccountFragment;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
 
 public class bfdv
-  implements InputFilter
+  extends Handler
 {
-  public bfdv(CreateVirtualAccountFragment paramCreateVirtualAccountFragment) {}
-  
-  public CharSequence filter(CharSequence paramCharSequence, int paramInt1, int paramInt2, Spanned paramSpanned, int paramInt3, int paramInt4)
+  public bfdv(bfdt parambfdt, Looper paramLooper)
   {
-    paramInt3 = 12 - (paramSpanned.length() - (paramInt4 - paramInt3));
-    if (paramInt3 <= 0)
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    for (;;)
     {
-      CreateVirtualAccountFragment.a(this.a, "昵称最多可输入12个字", false);
-      return "";
-    }
-    if (paramInt3 >= paramInt2 - paramInt1) {
-      return null;
-    }
-    paramInt3 += paramInt1;
-    paramInt2 = paramInt3;
-    if (Character.isHighSurrogate(paramCharSequence.charAt(paramInt3 - 1)))
-    {
-      paramInt3 -= 1;
-      paramInt2 = paramInt3;
-      if (paramInt3 == paramInt1)
+      try
       {
-        CreateVirtualAccountFragment.a(this.a, "昵称最多可输入12个字", false);
-        return "";
+        switch (paramMessage.what)
+        {
+        case 2: 
+          return;
+        }
       }
+      finally {}
+      paramMessage = paramMessage.getData();
+      this.a.b(paramMessage.getDouble("startTime"), paramMessage.getStringArray("pinyins"));
+      this.a.a(0);
     }
-    CreateVirtualAccountFragment.a(this.a, "昵称最多可输入12个字", false);
-    return paramCharSequence.subSequence(paramInt1, paramInt2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bfdv
  * JD-Core Version:    0.7.0.1
  */

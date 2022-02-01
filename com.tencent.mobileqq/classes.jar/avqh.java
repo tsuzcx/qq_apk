@@ -1,29 +1,20 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.widget.QQToast;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import com.tencent.mobileqq.jsp.UiApiPlugin;
 
-class avqh
-  implements avrg
+public class avqh
+  implements DialogInterface.OnCancelListener
 {
-  avqh(avqg paramavqg) {}
+  public avqh(UiApiPlugin paramUiApiPlugin, String paramString) {}
   
-  public void a(boolean paramBoolean, String paramString)
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    if (paramBoolean)
-    {
-      aveg localaveg = new aveg().h("data_card").i("feed_delete_suc").d("2").a(this.a.jdField_a_of_type_Avqc.a(this.a.jdField_a_of_type_Avqj)).b(paramString).c(String.valueOf(this.a.jdField_a_of_type_Avqc.a(this.a.jdField_a_of_type_Avqj)));
-      if (this.a.jdField_a_of_type_Avqc.jdField_a_of_type_Boolean) {}
-      for (paramString = "1";; paramString = "2")
-      {
-        localaveg.e(paramString).b(this.a.jdField_a_of_type_Avqc.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-        return;
-      }
-    }
-    QQToast.a(BaseApplicationImpl.getContext(), 1, alud.a(2131701417), 0).a();
+    this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.callJs(this.jdField_a_of_type_JavaLangString + "({button: -1})");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     avqh
  * JD-Core Version:    0.7.0.1
  */

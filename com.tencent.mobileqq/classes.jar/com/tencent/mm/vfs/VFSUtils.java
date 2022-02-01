@@ -1,8 +1,10 @@
 package com.tencent.mm.vfs;
 
+import android.database.Cursor;
 import android.net.Uri;
 import android.net.Uri.Builder;
 import android.os.Parcel;
+import android.os.ParcelFileDescriptor;
 import com.tencent.qphone.base.util.QLog;
 import java.io.Closeable;
 import java.io.IOException;
@@ -26,6 +28,38 @@ public final class VFSUtils
     if (i != paramInt) {
       throw new VFSUtils.FileSystemVersionException(paramClass, i, paramInt);
     }
+  }
+  
+  public static void closeQuietly(Cursor paramCursor)
+  {
+    if (paramCursor == null) {}
+    do
+    {
+      return;
+      try
+      {
+        paramCursor.close();
+        return;
+      }
+      catch (Exception paramCursor) {}
+    } while (!QLog.isColorLevel());
+    QLog.w("VFS.Utils", 2, "Failed to close object: " + paramCursor.toString());
+  }
+  
+  public static void closeQuietly(ParcelFileDescriptor paramParcelFileDescriptor)
+  {
+    if (paramParcelFileDescriptor == null) {}
+    do
+    {
+      return;
+      try
+      {
+        paramParcelFileDescriptor.close();
+        return;
+      }
+      catch (Exception paramParcelFileDescriptor) {}
+    } while (!QLog.isColorLevel());
+    QLog.w("VFS.Utils", 2, "Failed to close object: " + paramParcelFileDescriptor.toString());
   }
   
   public static void closeQuietly(Closeable paramCloseable)
@@ -257,14 +291,14 @@ public final class VFSUtils
     //   7: lstore 5
     //   9: aload_0
     //   10: aload_1
-    //   11: invokeinterface 284 2 0
+    //   11: invokeinterface 295 2 0
     //   16: astore_1
     //   17: aload 8
     //   19: astore_0
     //   20: aload_2
     //   21: aload_3
     //   22: iconst_0
-    //   23: invokeinterface 288 3 0
+    //   23: invokeinterface 299 3 0
     //   28: astore_2
     //   29: aload_2
     //   30: astore_0
@@ -275,7 +309,7 @@ public final class VFSUtils
     //   38: astore_0
     //   39: aload_1
     //   40: aload_3
-    //   41: invokevirtual 294	java/io/InputStream:read	([B)I
+    //   41: invokevirtual 305	java/io/InputStream:read	([B)I
     //   44: istore 4
     //   46: iload 4
     //   48: iconst_m1
@@ -286,7 +320,7 @@ public final class VFSUtils
     //   55: aload_3
     //   56: iconst_0
     //   57: iload 4
-    //   59: invokevirtual 300	java/io/OutputStream:write	([BII)V
+    //   59: invokevirtual 311	java/io/OutputStream:write	([BII)V
     //   62: lload 5
     //   64: iload 4
     //   66: i2l
@@ -294,9 +328,9 @@ public final class VFSUtils
     //   68: lstore 5
     //   70: goto -33 -> 37
     //   73: aload_1
-    //   74: invokestatic 302	com/tencent/mm/vfs/VFSUtils:closeQuietly	(Ljava/io/Closeable;)V
+    //   74: invokestatic 313	com/tencent/mm/vfs/VFSUtils:closeQuietly	(Ljava/io/Closeable;)V
     //   77: aload_2
-    //   78: invokestatic 302	com/tencent/mm/vfs/VFSUtils:closeQuietly	(Ljava/io/Closeable;)V
+    //   78: invokestatic 313	com/tencent/mm/vfs/VFSUtils:closeQuietly	(Ljava/io/Closeable;)V
     //   81: lload 5
     //   83: lreturn
     //   84: astore_2
@@ -305,9 +339,9 @@ public final class VFSUtils
     //   87: aload 7
     //   89: astore_0
     //   90: aload_1
-    //   91: invokestatic 302	com/tencent/mm/vfs/VFSUtils:closeQuietly	(Ljava/io/Closeable;)V
+    //   91: invokestatic 313	com/tencent/mm/vfs/VFSUtils:closeQuietly	(Ljava/io/Closeable;)V
     //   94: aload_0
-    //   95: invokestatic 302	com/tencent/mm/vfs/VFSUtils:closeQuietly	(Ljava/io/Closeable;)V
+    //   95: invokestatic 313	com/tencent/mm/vfs/VFSUtils:closeQuietly	(Ljava/io/Closeable;)V
     //   98: aload_2
     //   99: athrow
     //   100: astore_2

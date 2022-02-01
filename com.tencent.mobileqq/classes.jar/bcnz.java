@@ -1,12 +1,33 @@
-public class bcnz
+import com.tencent.mobileqq.soload.LoadExtResult;
+import com.tencent.mobileqq.soload.LoadParam;
+import java.util.List;
+
+class bcnz
+  implements bcob
 {
-  public long a;
-  public boolean a;
+  bcnz(bcny parambcny, int paramInt, LoadParam paramLoadParam, bcob parambcob) {}
   
-  public bcnz(boolean paramBoolean, long paramLong)
+  public void a(int paramInt, LoadExtResult paramLoadExtResult)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.jdField_a_of_type_Long = paramLong;
+    paramLoadExtResult = LoadExtResult.mergeExtResult(paramLoadExtResult, bcny.a(this.jdField_a_of_type_Bcny));
+    bcny.a(this.jdField_a_of_type_Bcny, paramLoadExtResult);
+    if (paramInt == 0) {
+      if (this.jdField_a_of_type_Int >= this.jdField_a_of_type_ComTencentMobileqqSoloadLoadParam.mLoadItems.size() - 1) {
+        if (this.jdField_a_of_type_Bcob != null) {
+          this.jdField_a_of_type_Bcob.a(paramInt, paramLoadExtResult);
+        }
+      }
+    }
+    do
+    {
+      return;
+      bcny.a(this.jdField_a_of_type_Bcny, this.jdField_a_of_type_ComTencentMobileqqSoloadLoadParam, this.jdField_a_of_type_Bcob, this.jdField_a_of_type_Int + 1);
+      return;
+      if (paramLoadExtResult != null) {
+        paramLoadExtResult.setFailIndex(this.jdField_a_of_type_Int + 1);
+      }
+    } while (this.jdField_a_of_type_Bcob == null);
+    this.jdField_a_of_type_Bcob.a(paramInt, paramLoadExtResult);
   }
 }
 

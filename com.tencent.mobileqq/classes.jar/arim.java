@@ -1,63 +1,45 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.colornote.data.ColorNote;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.content.Context;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
+import android.view.View;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.HotChatManager;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ShareHotChatGrayTips;
+import java.lang.ref.WeakReference;
 
 public class arim
-  implements aocf
+  extends ClickableSpan
 {
-  private FileManagerEntity a;
+  private anoc jdField_a_of_type_Anoc;
+  private ShareHotChatGrayTips jdField_a_of_type_ComTencentMobileqqDataShareHotChatGrayTips;
+  private String jdField_a_of_type_JavaLangString;
+  private WeakReference<QQAppInterface> jdField_a_of_type_JavaLangRefWeakReference;
+  private WeakReference<Context> b;
   
-  public arim(FileManagerEntity paramFileManagerEntity)
+  public arim(QQAppInterface paramQQAppInterface, Context paramContext, ShareHotChatGrayTips paramShareHotChatGrayTips, String paramString)
   {
-    this.a = paramFileManagerEntity;
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramQQAppInterface);
+    this.b = new WeakReference(paramContext);
+    this.jdField_a_of_type_ComTencentMobileqqDataShareHotChatGrayTips = paramShareHotChatGrayTips;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Anoc = new anoc((BaseActivity)paramContext, paramQQAppInterface, null);
   }
   
-  private String a()
+  public void onClick(View paramView)
   {
-    String str = "";
-    try
+    paramView = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (((Context)this.b.get() != null) && (this.jdField_a_of_type_ComTencentMobileqqDataShareHotChatGrayTips != null))
     {
-      JSONObject localJSONObject = new JSONObject();
-      if (this.a != null)
-      {
-        localJSONObject.put("file_color_note_peerType", this.a.peerType);
-        localJSONObject.put("file_color_note_peerUin", this.a.peerUin);
-        localJSONObject.put("file_color_note_uniSeq", this.a.uniseq);
-        localJSONObject.put("file_color_note_sessionId", this.a.nSessionId);
-        str = localJSONObject.toString();
-      }
-      return str;
+      paramView = ((HotChatManager)paramView.getManager(60)).a(this.jdField_a_of_type_ComTencentMobileqqDataShareHotChatGrayTips.mTroopUin);
+      this.jdField_a_of_type_Anoc.a(paramView);
     }
-    catch (JSONException localJSONException) {}
-    return "";
   }
   
-  public ColorNote getColorNote()
+  public void updateDrawState(TextPaint paramTextPaint)
   {
-    if (this.a == null)
-    {
-      QLog.i("OfflineFileColorNoteServiceInfo", 1, "getColorNote: offline file info is null.");
-      return null;
-    }
-    aocl localaocl = new aocl();
-    localaocl.a(17039360);
-    String str = arsx.b(1, this.a.nSessionId + "");
-    if (QLog.isColorLevel()) {
-      QLog.i("OfflineFileColorNoteServiceInfo", 2, "getColorNote: file colorNote key [" + str + "] fileId[" + this.a.Uuid + "]");
-    }
-    localaocl.a(str);
-    localaocl.b(this.a.fileName);
-    localaocl.c(arso.a(this.a.fileSize));
-    int i = arrr.a(arrr.a(this.a.fileName));
-    localaocl.d("resdrawable://" + i);
-    str = a();
-    if (!TextUtils.isEmpty(str)) {
-      localaocl.a(str.getBytes());
-    }
-    return localaocl.a();
+    paramTextPaint.setColor(-12541697);
+    paramTextPaint.setUnderlineText(false);
   }
 }
 

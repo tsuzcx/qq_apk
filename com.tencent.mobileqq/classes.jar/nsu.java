@@ -1,23 +1,20 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.pubaccount.VideoInfo.LikeActionDownloadBar;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.biz.pubaccount.AccountDetailActivity;
 
-public final class nsu
-  implements Parcelable.Creator<VideoInfo.LikeActionDownloadBar>
+public class nsu
+  implements DialogInterface.OnDismissListener
 {
-  public VideoInfo.LikeActionDownloadBar a(Parcel paramParcel)
-  {
-    return new VideoInfo.LikeActionDownloadBar(paramParcel);
-  }
+  public nsu(AccountDetailActivity paramAccountDetailActivity) {}
   
-  public VideoInfo.LikeActionDownloadBar[] a(int paramInt)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    return new VideoInfo.LikeActionDownloadBar[paramInt];
+    this.a.o = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     nsu
  * JD-Core Version:    0.7.0.1
  */

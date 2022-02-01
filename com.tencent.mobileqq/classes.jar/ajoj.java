@@ -1,15 +1,80 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.richmedia.EditLocalVideoActivity;
+import android.graphics.Color;
+import android.support.v7.widget.RecyclerView.Adapter;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.text.TextUtils;
+import android.view.LayoutInflater;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.ImageView.ScaleType;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ajoj
-  implements DialogInterface.OnClickListener
+  extends RecyclerView.Adapter
 {
-  public ajoj(EditLocalVideoActivity paramEditLocalVideoActivity) {}
+  public List<String> a = new ArrayList();
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public ajoj(List<String> paramList)
   {
-    this.a.finish();
+    if (paramList != null)
+    {
+      this.a.clear();
+      this.a.addAll(paramList);
+    }
+  }
+  
+  public int getItemCount()
+  {
+    if (this.a != null) {
+      return this.a.size();
+    }
+    return 0;
+  }
+  
+  public void onBindViewHolder(RecyclerView.ViewHolder paramViewHolder, int paramInt)
+  {
+    ImageView localImageView = ((ajok)paramViewHolder).a;
+    if (!TextUtils.isEmpty((String)this.a.get(paramInt)))
+    {
+      if (paramInt != 0) {
+        break label108;
+      }
+      String str = (String)this.a.get(paramInt);
+      URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
+      localURLDrawableOptions.mFailedDrawable = bdzx.a;
+      localURLDrawableOptions.mLoadingDrawable = bdzx.a;
+      localURLDrawableOptions.mPlayGifImage = ayzh.a(str);
+      localURLDrawableOptions.mUseAutoScaleParams = true;
+      localImageView.setImageDrawable(URLDrawable.getFileDrawable(str, localURLDrawableOptions));
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onRecyclerBindViewHolder(paramViewHolder, paramInt, getItemId(paramInt));
+      return;
+      label108:
+      if (paramInt == 1)
+      {
+        localImageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
+        localImageView.setPadding(0, 0, 0, 0);
+        localImageView.setImageDrawable(null);
+        localImageView.setBackgroundColor(Color.parseColor("#9A989EB4"));
+      }
+      else if (paramInt == 2)
+      {
+        localImageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
+        localImageView.setPadding(0, 0, 0, 0);
+        localImageView.setImageDrawable(null);
+        localImageView.setBackgroundColor(Color.parseColor("#48989EB4"));
+      }
+    }
+  }
+  
+  public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup paramViewGroup, int paramInt)
+  {
+    return new ajok(this, LayoutInflater.from(paramViewGroup.getContext()).inflate(2131559126, paramViewGroup, false));
   }
 }
 

@@ -1,7 +1,4 @@
-public abstract interface ahvo
-{
-  public abstract int a(int paramInt, boolean paramBoolean);
-}
+public abstract interface ahvo {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar

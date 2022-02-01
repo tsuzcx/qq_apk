@@ -1,101 +1,60 @@
-import com.tencent.biz.pubaccount.weishi_new.report.WSPublicAccReport;
-import com.tencent.open.downloadnew.DownloadInfo;
-import java.util.Iterator;
-import java.util.List;
+import android.content.Context;
+import android.content.res.AssetManager;
+import com.tencent.qphone.base.util.QLog;
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
-final class tfb
-  extends tez
+public class tfb
 {
-  public void installSucceed(String paramString1, String paramString2)
+  private static final String[] jdField_a_of_type_ArrayOfJavaLangString = new String[0];
+  private Map<String, String[]> jdField_a_of_type_JavaUtilMap = new HashMap();
+  
+  public tfb(Context paramContext, String paramString)
   {
-    super.installSucceed(paramString1, paramString2);
-    if (tfa.b()) {
-      return;
-    }
-    tfa.a(paramString1, paramString2, true);
+    a(paramContext, paramString);
   }
   
-  public void onDownloadCancel(DownloadInfo paramDownloadInfo)
+  private void a(Context paramContext, String paramString)
   {
-    tlo.c("WeishiDownloadUtil", "qq onDownloadCancel info = " + paramDownloadInfo);
-    if (tfa.a(paramDownloadInfo))
-    {
-      tfa.a();
-      int i = tfa.b();
-      WSPublicAccReport.getInstance().reportDownload(tfa.a(), i, 3, 2, 0);
-    }
+    b(paramContext, paramString);
   }
   
-  public void onDownloadError(DownloadInfo paramDownloadInfo, int paramInt1, String paramString, int paramInt2)
+  private boolean a(String paramString)
   {
-    tlo.d("WeishiDownloadUtil", "qq onDownloadError info = " + paramDownloadInfo);
-    if (tfa.a(paramDownloadInfo))
-    {
-      tfa.a();
-      paramInt2 = tfa.b();
-      WSPublicAccReport.getInstance().reportDownload(tfa.a(), paramInt2, 3, 2, 0);
-      tlo.d("WeishiDownloadUtil", " errorCode:" + paramInt1 + ", errorMsg: " + paramString);
-      tfa.a(paramDownloadInfo, paramInt1);
-    }
+    return (paramString == null) || (paramString.endsWith(".geojson")) || (paramString.equals("manifest"));
   }
   
-  public void onDownloadFinish(DownloadInfo paramDownloadInfo)
+  private void b(Context paramContext, String paramString)
   {
-    tfa.a();
-    int i = tfa.a();
-    int j = tfa.b();
-    if (tfa.b())
+    try
     {
-      if (tfa.d()) {
-        tlo.d("WeishiDownloadUtil", "这是预下载中点击操作，qq监听器响应");
-      }
-    }
-    else
-    {
-      tfa.a(paramDownloadInfo, i, j, "QQ");
-      return;
-    }
-    tlo.d("WeishiDownloadUtil", "这是qq的监听器，不响应qzone. onDownloadFinish eventId:" + i + ",eventType:" + j);
-  }
-  
-  public void onDownloadPause(DownloadInfo paramDownloadInfo)
-  {
-    super.onDownloadPause(paramDownloadInfo);
-    tlo.d("WeishiDownloadUtil", "qq onDownloadPause info = " + paramDownloadInfo);
-    if (tfa.a(paramDownloadInfo)) {
-      tfa.a();
-    }
-  }
-  
-  public void onDownloadUpdate(List<DownloadInfo> paramList)
-  {
-    super.onDownloadUpdate(paramList);
-    if ((paramList != null) && (paramList.size() > 0))
-    {
-      paramList = paramList.iterator();
-      while (paramList.hasNext())
+      String[] arrayOfString = paramContext.getAssets().list(paramString);
+      if (arrayOfString != null)
       {
-        DownloadInfo localDownloadInfo = (DownloadInfo)paramList.next();
-        tlo.c("WeishiDownloadUtil", "qq onDownloadUpdate progress = " + localDownloadInfo.f + ", url = " + localDownloadInfo.d);
+        this.jdField_a_of_type_JavaUtilMap.put(paramString, arrayOfString);
+        int j = arrayOfString.length;
+        int i = 0;
+        while (i < j)
+        {
+          String str = arrayOfString[i];
+          if (!a(str)) {
+            b(paramContext, paramString + "/" + str);
+          }
+          i += 1;
+        }
       }
+      return;
     }
-  }
-  
-  public void onDownloadWait(DownloadInfo paramDownloadInfo)
-  {
-    super.onDownloadWait(paramDownloadInfo);
-    tlo.d("WeishiDownloadUtil", "qq onDownloadWait info = " + paramDownloadInfo);
-  }
-  
-  public void packageReplaced(String paramString1, String paramString2)
-  {
-    super.packageReplaced(paramString1, paramString2);
-    tlo.d("WeishiDownloadUtil", "qq packageReplaced appid = " + paramString1 + ", packageName = " + paramString2);
+    catch (IOException paramContext)
+    {
+      QLog.e("Q.readinjoy.proteus", 1, "addFolderChild", paramContext);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     tfb
  * JD-Core Version:    0.7.0.1
  */

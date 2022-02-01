@@ -1,49 +1,65 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.pluginsdk.PluginManagerClient;
-import com.tencent.mobileqq.pluginsdk.PluginManagerHelper.OnPluginManagerLoadedListener;
-import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.atomic.AtomicBoolean;
+import android.content.Context;
+import java.util.HashMap;
 
-final class bive
-  implements PluginManagerHelper.OnPluginManagerLoadedListener
+public class bive
 {
-  bive(Runnable paramRunnable) {}
+  protected static bive a;
+  protected Context a;
+  protected bivd a;
+  protected final HashMap<String, bivb> a;
   
-  public void onPluginManagerLoaded(PluginManagerClient paramPluginManagerClient)
+  protected bive(Context paramContext)
   {
-    if (paramPluginManagerClient == null) {}
+    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
+    this.jdField_a_of_type_Bivd = new bivf(this);
+    this.jdField_a_of_type_AndroidContentContext = paramContext.getApplicationContext();
+  }
+  
+  public static bive a(Context paramContext)
+  {
+    if (jdField_a_of_type_Bive != null) {
+      return jdField_a_of_type_Bive;
+    }
     try
     {
-      ThreadManager.post(this.a, 5, null, false);
-      return;
+      if (jdField_a_of_type_Bive == null) {
+        jdField_a_of_type_Bive = new bive(paramContext);
+      }
+      paramContext = jdField_a_of_type_Bive;
+      return paramContext;
     }
-    catch (Exception paramPluginManagerClient) {}
-    if (paramPluginManagerClient.isPluginInstalled("qqfav.apk"))
+    finally {}
+  }
+  
+  public bivb a(Class<? extends biux> paramClass, long paramLong, String paramString)
+  {
+    synchronized (this.jdField_a_of_type_JavaUtilHashMap)
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("qqfav", 2, "qqfav.apk already installed.");
-      }
-      bivc.a().set(true);
-      try
-      {
-        ThreadManager.post(this.a, 5, null, false);
-        return;
-      }
-      catch (Exception paramPluginManagerClient)
-      {
-        return;
+      if (this.jdField_a_of_type_AndroidContentContext == null) {
+        throw new RuntimeException("call initiate(Context context) before this");
       }
     }
-    if (QLog.isColorLevel()) {
-      QLog.i("qqfav", 2, "installing plugin qqfav.apk");
+    if (paramString == null) {
+      throw new RuntimeException("invalid table name");
     }
-    paramPluginManagerClient.installPlugin("qqfav.apk", new bivf(this));
-    return;
+    Object localObject = bivb.a(paramLong, paramString);
+    localObject = (bivb)this.jdField_a_of_type_JavaUtilHashMap.get(localObject);
+    if (localObject == null)
+    {
+      paramClass = new bivb(this.jdField_a_of_type_AndroidContentContext, paramClass, paramLong, paramString);
+      paramClass.a(this.jdField_a_of_type_Bivd);
+      this.jdField_a_of_type_JavaUtilHashMap.put(paramClass.a(), paramClass);
+    }
+    for (;;)
+    {
+      return paramClass;
+      paramClass = (Class<? extends biux>)localObject;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bive
  * JD-Core Version:    0.7.0.1
  */

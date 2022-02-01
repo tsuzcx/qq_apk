@@ -1,15 +1,13 @@
 package com.tencent.mobileqq.theme.diy;
 
-import aeqq;
-import alof;
-import alud;
-import amca;
-import amdj;
+import Override;
+import afxa;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.graphics.BitmapFactory.Options;
 import android.graphics.Paint;
@@ -22,31 +20,42 @@ import android.os.Process;
 import android.text.TextUtils;
 import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.TextView;
-import apko;
-import azqs;
-import azri;
-import baop;
-import baoq;
-import baoy;
-import bapb;
-import bdal;
-import bdaq;
-import bdgm;
-import bdgz;
-import bdhb;
-import bdin;
-import bdjz;
-import bead;
-import beae;
-import beag;
-import beaj;
-import bety;
-import bevu;
+import anhk;
+import anni;
+import anuk;
+import anvs;
+import arni;
+import bcst;
+import bctj;
+import bdpt;
+import bdpu;
+import bdqc;
+import bdqf;
+import bggl;
+import bggq;
+import bgjw;
+import bglp;
+import bgme;
+import bgmg;
+import bgnt;
+import bgpa;
+import bhhe;
+import bhhf;
+import bhhh;
+import bhhk;
+import bhjt;
+import biau;
+import bics;
+import bkdi;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.image.ApngImage;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
 import com.tencent.mobileqq.activity.PayBridgeActivity;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.activity.SplashActivity;
@@ -63,18 +72,23 @@ import com.tencent.mobileqq.vas.VasQuickUpdateManager.CallBacker;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.mobileqq.widget.TabBarView;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import com.tencent.widget.HorizontalListView;
 import com.tencent.widget.immersive.SystemBarCompact;
 import java.io.File;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.concurrent.atomic.AtomicBoolean;
+import org.jetbrains.annotations.NotNull;
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 public class ThemeDIYActivity
   extends IphoneTitleBarActivity
-  implements DialogInterface.OnClickListener, View.OnClickListener, baoy
+  implements DialogInterface.OnClickListener, View.OnClickListener, bdqc
 {
   static final int BG_DEFAULT_POSITION = 1;
   static final int BG_UPLOAD_POSITION = 0;
@@ -112,7 +126,7 @@ public class ThemeDIYActivity
   HorizontalListView bgResHListView;
   VasQuickUpdateManager.CallBacker callBacker = new ThemeDIYActivity.3(this);
   ThemeDIYActivity.DataLoading dataLoad;
-  bdjz exitDialog;
+  bgpa exitDialog;
   ResSuitData initStyleRSD;
   boolean isBigScreenType;
   boolean isDIYThemeBefore;
@@ -135,27 +149,521 @@ public class ThemeDIYActivity
   int mStyleSaveStatus;
   int mStyleSetStatus;
   ArrayList<ResSuitData> mStyleSuits = new ArrayList();
-  bevu mTypeTabChangeListener = new ThemeDIYActivity.2(this);
+  bics mTypeTabChangeListener = new ThemeDIYActivity.2(this);
   boolean mUpdateUIPicAfterSaved;
   ResSuitData.BgSuit mUploadBgRSD;
   String mUserThemeId;
   String mUserVersion;
   View mblurbgView;
   PageIndicator pageIndicator;
-  bety progessDialog;
-  bead resDownloadListener = new ThemeDIYActivity.10(this);
+  biau progessDialog;
+  bhhe resDownloadListener = new ThemeDIYActivity.10(this);
   AdapterView.OnItemClickListener resItemClickListener = new ThemeDIYActivity.12(this);
-  bapb saveStyleCallback = new ThemeDIYActivity.7(this);
+  bdqf saveStyleCallback = new ThemeDIYActivity.7(this);
   final ThemeDIYData[] showData = getDiyData();
   HorizontalListView styleResHListView;
   ThemeDiyStyleLogic themeDiyStyleLogic;
-  baoq themeSwitchManager;
+  bdpu themeSwitchManager;
   ResSuitData tryOnStyleRSD;
   ResSuitData usedStyleRSD;
   
+  private void checkFileExists(ThemeDIYData paramThemeDIYData)
+  {
+    if ((paramThemeDIYData.tryOnBgBigRD == null) || (paramThemeDIYData.tryOnBgBigRD.state != 5))
+    {
+      dealBgRes(paramThemeDIYData, paramThemeDIYData.tryOnBgBigOrgRD, 115, true);
+      return;
+    }
+    paramThemeDIYData.mSaveStatus = 6;
+  }
+  
+  private void checkThemeBackground(int paramInt, ThemeDIYData paramThemeDIYData)
+  {
+    if (2 != paramThemeDIYData.mSetStatus) {
+      handleItemSetChange(paramInt, paramThemeDIYData);
+    }
+    for (;;)
+    {
+      return;
+      if (6 == paramThemeDIYData.mSaveStatus)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("ThemeDIYActivity", 2, "backgroundSave bg save ok:, pageIndex:" + paramInt);
+        }
+      }
+      else
+      {
+        if ((paramThemeDIYData.tryOnBgRSD == null) || (paramThemeDIYData.tryOnBgBigOrgRD == null))
+        {
+          handleTryOnBgRSD(paramInt, paramThemeDIYData);
+          return;
+        }
+        if (QLog.isColorLevel()) {
+          QLog.d("ThemeDIYActivity", 2, "backgroundSave bg diyData.tryOnBgRSD.id:" + paramThemeDIYData.tryOnBgRSD.id + ", pageIndex:" + paramInt);
+        }
+        if ("100".equals(paramThemeDIYData.tryOnBgRSD.id))
+        {
+          handleDiyDefaultBgId(paramInt, paramThemeDIYData);
+          return;
+        }
+        if ("99".equals(paramThemeDIYData.tryOnBgRSD.id))
+        {
+          if (handleDiyUploadBgId(paramInt, paramThemeDIYData)) {}
+        }
+        else {
+          while (QLog.isColorLevel())
+          {
+            QLog.d("ThemeDIYActivity", 2, "backgroundSave bg diyData.mSaveStatus:" + paramThemeDIYData.mSaveStatus + ", pageIndex:" + paramInt + ", tryOnBgBigOrgRD.state:" + paramThemeDIYData.tryOnBgBigOrgRD.state);
+            return;
+            handleOtherId(paramInt, paramThemeDIYData);
+          }
+        }
+      }
+    }
+  }
+  
+  private boolean dealBG(int paramInt, Bundle paramBundle)
+  {
+    int i = paramBundle.getInt("index");
+    ThemeDIYData localThemeDIYData = this.showData[i];
+    if (paramInt == 4)
+    {
+      localThemeDIYData.mSaveStatus = 6;
+      localThemeDIYData.tryOnBgBigOrgRD.state = 5;
+      localThemeDIYData.tryOnBgBigRD.state = 5;
+      if ((this.mIsSaving.get()) && (paramBundle.getInt("nextOperate") != 10)) {
+        paramBundle.putInt("nextOperate", 10);
+      }
+      if (this.mUpdateUIPicAfterSaved)
+      {
+        paramBundle = new Intent("com.tencent.qplus.THEME_INVALIDATE");
+        paramBundle.putExtra("pid", Process.myPid());
+        this.mContext.sendBroadcast(paramBundle, "com.tencent.msg.permission.pushnotify");
+        if (QLog.isColorLevel()) {
+          QLog.d("ThemeDIYActivity", 2, "pic Save, isSaved = true, change pic.");
+        }
+      }
+    }
+    while (paramInt != 8) {
+      return false;
+    }
+    this.mHandler.sendMessage(Message.obtain(this.mHandler, 25, "背景压黑压白错误103"));
+    QLog.e("ThemeDIYActivity", 2, "mSaveStyleCallback, OPERATE_KEY_DEAL_BG deal error." + localThemeDIYData.position);
+    return true;
+  }
+  
+  private boolean downBG(int paramInt, Bundle paramBundle)
+  {
+    int i = paramBundle.getInt("index");
+    paramBundle = this.showData[i];
+    if (QLog.isColorLevel()) {
+      QLog.d("ThemeDIYActivity", 2, "mSaveStyleCallback: callback, pageIndex:" + i);
+    }
+    if (paramInt == 4) {
+      dealBgRes(paramBundle, paramBundle.tryOnBgBigOrgRD, 115, true);
+    }
+    while (paramInt != 8) {
+      return false;
+    }
+    this.mHandler.sendMessage(Message.obtain(this.mHandler, 25, anni.a(2131713601) + i));
+    QLog.e("ThemeDIYActivity", 1, "mSaveStyleCallback, OPERATE_KEY_DOWN_BG Error, pageIndex:" + i);
+    return true;
+  }
+  
+  private boolean downloadStyle()
+  {
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    ThemeUtil.ThemeInfo localThemeInfo;
+    if (this.mStyleSaveStatus == 3)
+    {
+      localThemeInfo = ThemeDiyStyleLogic.getThemeInfoByDensity(this.mContext, (ResSuitData.StyleSuit)this.tryOnStyleRSD);
+      if (localThemeInfo != null) {
+        break label128;
+      }
+      QLog.e("ThemeDIYActivity", 1, "backgroundSave, themeInfo=null, oldThemeID:" + this.mUserThemeId + ", tryOnStyleRSD.id:" + this.tryOnStyleRSD.id);
+      this.mHandler.sendMessage(Message.obtain(this.mHandler, 25, anni.a(2131713593) + this.tryOnStyleRSD.id));
+      bool1 = true;
+    }
+    label128:
+    label259:
+    do
+    {
+      return bool1;
+      StringBuilder localStringBuilder;
+      if (QLog.isColorLevel())
+      {
+        localStringBuilder = new StringBuilder().append("backgroundSave, deal style, oldThemeID:").append(this.mUserThemeId).append(", newID:");
+        if (localThemeInfo == null) {
+          break label259;
+        }
+      }
+      for (String str = localThemeInfo.themeId;; str = "null")
+      {
+        QLog.d("ThemeDIYActivity", 2, str);
+        this.mStyleSaveStatus = 4;
+        if ((this.mUserThemeId != null) && (this.mUserThemeId.equals(localThemeInfo.themeId))) {
+          break;
+        }
+        bcst.b(this.app, "CliOper", "", this.app.getCurrentAccountUin(), "theme_mall", "diy_stylesuccess", 0, 0, "", localThemeInfo.themeId, "", "");
+        return false;
+      }
+      this.mStyleSaveStatus = 6;
+      bcst.b(this.app, "CliOper", "", this.app.getCurrentAccountUin(), "theme_mall", "diy_stylesuccess", 0, 0, "", localThemeInfo.themeId, "", "");
+      bool1 = bool2;
+    } while (!QLog.isColorLevel());
+    QLog.d("ThemeDIYActivity", 2, "backgroundSave, style ready!");
+    return false;
+  }
+  
   public static ThemeDIYData[] getDiyData()
   {
-    return new ThemeDIYData[] { new ThemeDIYData(2130845638, "theme_bg_setting_path", 2131166492, "theme_bg_setting_path_png", -50, 0), new ThemeDIYData(2130847003, "theme_bg_message_path", 2131166494, "theme_bg_message_path_png", 50, 1), new ThemeDIYData(2130849473, "theme_bg_aio_path", 0, "theme_bg_aio_path", 0, 2), new ThemeDIYData(2130847003, "theme_bg_friend_path", 2131166494, "theme_bg_friend_path_png", 50, 3), new ThemeDIYData(2130849473, "theme_bg_dynamic_path", 2131166494, "theme_bg_dynamic_path_png", 50, 4) };
+    return new ThemeDIYData[] { new ThemeDIYData(2130846048, "theme_bg_setting_path", 2131166566, "theme_bg_setting_path_png", -50, 0), new ThemeDIYData(2130847460, "theme_bg_message_path", 2131166568, "theme_bg_message_path_png", 50, 1), new ThemeDIYData(2130850024, "theme_bg_aio_path", 0, "theme_bg_aio_path", 0, 2), new ThemeDIYData(2130847460, "theme_bg_friend_path", 2131166568, "theme_bg_friend_path_png", 50, 3), new ThemeDIYData(2130850024, "theme_bg_dynamic_path", 2131166568, "theme_bg_dynamic_path_png", 50, 4) };
+  }
+  
+  private ArrayList<ResSuitData> getResSuitData(JSONObject paramJSONObject, long paramLong)
+  {
+    paramJSONObject = paramJSONObject.getJSONArray("data");
+    int i = 0;
+    if (i < paramJSONObject.length())
+    {
+      JSONObject localJSONObject = paramJSONObject.getJSONObject(i);
+      ResSuitData.BgSuit localBgSuit = new ResSuitData.BgSuit(localJSONObject);
+      localBgSuit.from = 2;
+      if (localBgSuit.isdecoded) {
+        this.mBgSuits.add(localBgSuit);
+      }
+      for (;;)
+      {
+        i += 1;
+        break;
+        QLog.e("ThemeDIYActivity", 2, "loadResJson bgSuit.isdecoded = false, bgObj=" + localJSONObject + ", timeStamp:" + paramLong);
+      }
+    }
+    return this.mBgSuits;
+  }
+  
+  @NotNull
+  private String getScid(int paramInt, boolean paramBoolean)
+  {
+    if (this.mRunFirstTime.compareAndSet(false, true)) {}
+    try
+    {
+      boolean bool = bhjt.a(this.app.getApplication(), "ThemeDIYActivity", false);
+      long l = bgjw.b();
+      QLog.d("ThemeDIYActivity", 2, "loadResJson Err haveSDCard:" + bool + ", availableSpace:" + l);
+      if (100 == paramInt)
+      {
+        String str1 = "diytheme.json";
+        if (QLog.isColorLevel()) {
+          QLog.d("ThemeDIYActivity", 2, "loadResJson decode scid json: " + str1 + ", ifAfterDownladed:" + paramBoolean);
+        }
+        return str1;
+      }
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        QLog.d("ThemeDIYActivity", 2, "loadResJson Err2 e:" + localException.getMessage());
+        continue;
+        String str2 = "diytheme.style.json";
+      }
+    }
+  }
+  
+  private void goError(int paramInt)
+  {
+    try
+    {
+      HashMap localHashMap = new HashMap();
+      localHashMap.put("param_vipType", String.valueOf(this.isVip));
+      localHashMap.put("param_opType", String.valueOf(paramInt));
+      localHashMap.put("param_isDiy", String.valueOf(this.isDIYThemeBefore));
+      bctj.a(this.mContext).a(this.app.getAccount(), "ThemeDiyStyleLogicCallback", false, 1L, 0L, localHashMap, "", false);
+      return;
+    }
+    catch (Exception localException) {}
+  }
+  
+  private void goOn(int paramInt, Bundle paramBundle, ResData paramResData)
+  {
+    if (paramInt == 4) {
+      if ((paramBundle != null) && (paramResData != null) && (117 == paramResData.type))
+      {
+        paramInt = paramBundle.getInt("page_index", -1);
+        if (this.mPageView.pageIndex == paramInt) {
+          blurBg(paramResData, null, 0, true);
+        }
+      }
+    }
+    while (paramInt != 8) {
+      return;
+    }
+    QLog.e("ThemeDIYActivity", 1, "StyleCallBack:save theme false, error type == " + paramInt);
+  }
+  
+  private void handleDiyDefaultBgId(int paramInt, ThemeDIYData paramThemeDIYData)
+  {
+    paramThemeDIYData.mSaveStatus = 6;
+    if (QLog.isColorLevel()) {
+      QLog.d("ThemeDIYActivity", 2, "backgroundSave bg set DIY_DEFAULT_BG_ID:, pageIndex:" + paramInt);
+    }
+  }
+  
+  private boolean handleDiyUploadBgId(int paramInt, ThemeDIYData paramThemeDIYData)
+  {
+    if (paramThemeDIYData.tryOnBgBigRD == null)
+    {
+      QLog.e("ThemeDIYActivity", 1, "backgroundSave DIY_UPLOAD_BG_ID bg Error null == tryOnBgBigRD, pageIndex:" + paramInt);
+      return true;
+    }
+    if (paramThemeDIYData.tryOnBgBigRD.state == 5) {
+      paramThemeDIYData.mSaveStatus = 6;
+    }
+    for (;;)
+    {
+      return false;
+      if (QLog.isColorLevel()) {
+        QLog.d("ThemeDIYActivity", 2, "backgroundSave DIY_UPLOAD_BG_ID:waiting deal, pageIndex:" + paramInt);
+      }
+    }
+  }
+  
+  private void handleItemSetChange(int paramInt, ThemeDIYData paramThemeDIYData)
+  {
+    paramThemeDIYData.mSaveStatus = 6;
+    if (QLog.isColorLevel()) {
+      QLog.d("ThemeDIYActivity", 2, "backgroundSave bg not change:, pageIndex:" + paramInt);
+    }
+  }
+  
+  private void handleMsgResDataChanged(Message paramMessage)
+  {
+    if (paramMessage.arg1 == 1) {
+      if (this.usedStyleRSD != null)
+      {
+        paramMessage = this.usedStyleRSD;
+        if ((paramMessage != null) || (this.mStyleSuits.size() <= 0)) {
+          break label161;
+        }
+        paramMessage = (ResSuitData)this.mStyleSuits.get(0);
+      }
+    }
+    label161:
+    for (;;)
+    {
+      if (paramMessage != null)
+      {
+        int i = 0;
+        for (;;)
+        {
+          if (i < this.mScrollLayout.getChildCount())
+          {
+            ((PageView)this.mScrollLayout.getChildAt(i)).showPic(paramMessage, null, false, null);
+            i += 1;
+            continue;
+            paramMessage = this.tryOnStyleRSD;
+            break;
+          }
+        }
+      }
+      if (this.bgResHListView != null)
+      {
+        this.bgResHListView = null;
+        this.mIsUserClickTab.set(false);
+        this.mTypeTabChangeListener.onTabSelected(1, 1);
+      }
+      while (this.styleResHListView == null) {
+        return;
+      }
+      this.styleResHListView = null;
+      this.mIsUserClickTab.set(false);
+      this.mTypeTabChangeListener.onTabSelected(3, 3);
+      return;
+    }
+  }
+  
+  private void handleMsgSHowPageBgInit(Message paramMessage)
+  {
+    int i = paramMessage.arg1;
+    if ((this.mScrollLayout != null) && (this.mScrollLayout.getChildCount() > i)) {}
+    for (Object localObject = this.mScrollLayout.getChildAt(i);; localObject = null)
+    {
+      if (((localObject instanceof PageView)) && ((paramMessage.obj instanceof ThemeBackground)))
+      {
+        localObject = (PageView)localObject;
+        paramMessage = (ThemeBackground)paramMessage.obj;
+        if (paramMessage.img != null)
+        {
+          ((PageView)localObject).showPic(this.showData[i].usedBgRSD, null, false, paramMessage.img);
+          if ((i == 0) && (this.showData[i].usedBgRSD != null))
+          {
+            localObject = new ResData();
+            ((ResData)localObject).id = this.showData[i].usedBgRSD.id;
+            ((ResData)localObject).path = paramMessage.path;
+            blurBg((ResData)localObject, paramMessage.img, 1, true);
+          }
+        }
+      }
+      return;
+    }
+  }
+  
+  private void handleMsgSaveTimeOut()
+  {
+    int i = 0;
+    if (i < this.showData.length)
+    {
+      if (6 != this.showData[i].mSaveStatus)
+      {
+        if (this.showData[i].tryOnBgBigOrgRD == null) {
+          break label125;
+        }
+        QLog.e("ThemeDIYActivity", 1, "save timeout 0 Page:" + i + ", state:" + this.showData[i].tryOnBgBigOrgRD.state + ", id:" + this.showData[i].tryOnBgBigOrgRD.id);
+        this.showData[i].tryOnBgBigOrgRD.state = 0;
+      }
+      for (;;)
+      {
+        i += 1;
+        break;
+        label125:
+        QLog.e("ThemeDIYActivity", 1, "save timeout 1 Page:" + i);
+      }
+    }
+    if (6 != this.mStyleSaveStatus) {
+      QLog.e("ThemeDIYActivity", 1, "save timeout 3 mStyleSaveStatus:" + this.mStyleSaveStatus);
+    }
+    if (6 != this.mSaveToServerStatus) {
+      QLog.e("ThemeDIYActivity", 1, "save timeout 4 mSaveToServerStatus:" + this.mSaveToServerStatus);
+    }
+    this.mHandler.removeMessages(24);
+    this.mIsSaving.set(false);
+    setProgessDialog(false, 0);
+    QQToast.a(this.mContext, 2131718548, 3000).b(this.mContext.getResources().getDimensionPixelSize(2131298998));
+  }
+  
+  private void handleMsgSetBlurBg(Message paramMessage)
+  {
+    paramMessage = (ResData)paramMessage.obj;
+    if (paramMessage == null) {
+      return;
+    }
+    Object localObject = this.mContext.getResources().getDrawable(2130847459);
+    try
+    {
+      URL localURL = new URL("themediydownloader", paramMessage.path, paramMessage.url);
+      URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
+      localURLDrawableOptions.mLoadingDrawable = ((Drawable)localObject);
+      localURLDrawableOptions.mFailedDrawable = ((Drawable)localObject);
+      localURLDrawableOptions.mUseSharpPImage = bkdi.a(BaseApplicationImpl.getApplication());
+      localObject = URLDrawable.getDrawable(localURL, localURLDrawableOptions);
+      if (((URLDrawable)localObject).getStatus() != 1)
+      {
+        ((URLDrawable)localObject).addHeader("my_id", paramMessage.id);
+        ((URLDrawable)localObject).addHeader("my_uin", this.app.c());
+        ((URLDrawable)localObject).addHeader("my_type", "" + paramMessage.type);
+        ((URLDrawable)localObject).addHeader("page_index", "" + this.mCurrentPageIndex);
+        return;
+      }
+    }
+    catch (MalformedURLException paramMessage)
+    {
+      QLog.e("ThemeDIYActivity", 1, "HANDLER_MSG_SET_BLUR_BG err:" + paramMessage.getMessage());
+      return;
+    }
+    blurBg(paramMessage, (Drawable)localObject, 0, true);
+  }
+  
+  private void handleOtherId(int paramInt, ThemeDIYData paramThemeDIYData)
+  {
+    File localFile = new File(paramThemeDIYData.tryOnBgBigOrgRD.path);
+    if (localFile.exists()) {
+      checkFileExists(paramThemeDIYData);
+    }
+    while (paramThemeDIYData.tryOnBgBigOrgRD.state != 0) {
+      return;
+    }
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("index", paramInt);
+    localBundle.putInt("type", 115);
+    localBundle.putInt("nextOperate", 10);
+    paramThemeDIYData = new bhhf(paramThemeDIYData.tryOnBgBigOrgRD.url, localFile);
+    ((bhhh)this.app.getManager(47)).a(1).a(paramThemeDIYData, this.resDownloadListener, localBundle);
+  }
+  
+  private void handleTryOnBgRSD(int paramInt, ThemeDIYData paramThemeDIYData)
+  {
+    QLog.e("ThemeDIYActivity", 1, "backgroundSave bg Error null, pageIndex:" + paramInt + ", tryOnBgRSD:" + paramThemeDIYData.tryOnBgRSD + ", tryOnBgBigOrgRD:" + paramThemeDIYData.tryOnBgBigOrgRD);
+    paramThemeDIYData.mSaveStatus = 6;
+  }
+  
+  private int parseResSuitData(int paramInt, String paramString, JSONObject paramJSONObject, ResSuitData.StyleSuit paramStyleSuit)
+  {
+    int i;
+    if ("999".equals(paramStyleSuit.id))
+    {
+      this.mStyleSuits.add(0, paramStyleSuit);
+      if (this.tryOnStyleRSD == null) {
+        this.tryOnStyleRSD = paramStyleSuit;
+      }
+      i = paramInt;
+      if (!TextUtils.isEmpty(this.mUserThemeId))
+      {
+        i = paramInt;
+        if (this.mUserThemeId.equals(paramStyleSuit.id))
+        {
+          this.initStyleRSD = paramStyleSuit;
+          this.usedStyleRSD = paramStyleSuit;
+          this.tryOnStyleRSD = paramStyleSuit;
+          ThemeDiyBgAdapter localThemeDiyBgAdapter = this.mAdapter;
+          this.mAdapter.tryOnStyleRSD = paramStyleSuit;
+          localThemeDiyBgAdapter.usedStyleRSD = paramStyleSuit;
+          i = 1;
+        }
+      }
+      if (!paramString.equals("m")) {
+        break label173;
+      }
+      paramStyleSuit.zipSize = paramJSONObject.optInt("m_size");
+      paramStyleSuit.zipUrl = paramJSONObject.optString("zipm");
+      paramStyleSuit.zipVersion = paramJSONObject.optString("m_version");
+    }
+    label173:
+    do
+    {
+      return i;
+      this.mStyleSuits.add(paramStyleSuit);
+      break;
+      if (paramString.equals("h"))
+      {
+        paramStyleSuit.zipSize = paramJSONObject.optInt("h_size");
+        paramStyleSuit.zipUrl = paramJSONObject.optString("ziph");
+        paramStyleSuit.zipVersion = paramJSONObject.optString("h_version");
+        return i;
+      }
+    } while (!paramString.equals("xh"));
+    paramStyleSuit.zipSize = paramJSONObject.optInt("xh_size");
+    paramStyleSuit.zipUrl = paramJSONObject.optString("zipxh");
+    paramStyleSuit.zipVersion = paramJSONObject.optString("xh_version");
+    return i;
+  }
+  
+  private void saveServer(int paramInt, Bundle paramBundle)
+  {
+    if (paramInt == 4)
+    {
+      this.mSaveToServerStatus = 6;
+      return;
+    }
+    this.mHandler.sendMessage(Message.obtain(this.mHandler, 28, 1, 1, paramBundle));
+    StringBuilder localStringBuilder = new StringBuilder().append("StyleCallBack:SAVE_SERVER false, error ret=");
+    if (paramBundle != null) {}
+    for (paramBundle = paramBundle.getInt("result_int") + "_" + paramBundle.getString("message");; paramBundle = "null Param")
+    {
+      QLog.e("ThemeDIYActivity", 1, paramBundle);
+      return;
+    }
   }
   
   public static void setSpThemeBackground(Context paramContext, String paramString, ThemeDIYData paramThemeDIYData)
@@ -184,7 +692,7 @@ public class ThemeDIYActivity
           if (paramThemeDIYData.position != 2) {
             break;
           }
-          aeqq.a(paramContext, paramString, null, "null");
+          afxa.a(paramContext, paramString, null, "null");
           return;
         }
       }
@@ -198,10 +706,171 @@ public class ThemeDIYActivity
       }
       while (paramThemeDIYData.position == 2)
       {
-        aeqq.a(paramContext, paramString, null, paramThemeDIYData.tryOnBgBigOrgRD.path);
+        afxa.a(paramContext, paramString, null, paramThemeDIYData.tryOnBgBigOrgRD.path);
         return;
         label309:
         ThemeBackground.setThemeBackgroundPic(paramContext, paramThemeDIYData.dealSpkey, paramString, paramThemeDIYData.tryOnBgBigOrgRD.path, paramThemeDIYData.tryOnBgBigOrgRD.url, paramThemeDIYData.tryOnBgBigOrgRD.id, "", 1, null, true);
+      }
+    }
+  }
+  
+  private void switchTheme(int paramInt)
+  {
+    if (paramInt == 4)
+    {
+      this.mUpdateUIPicAfterSaved = true;
+      if (QLog.isColorLevel()) {
+        QLog.d("ThemeDIYActivity", 2, "StyleCallBack:save theme ok!!");
+      }
+    }
+    while (paramInt != 8) {
+      return;
+    }
+    this.mHandler.sendMessage(Message.obtain(this.mHandler, 26, anni.a(2131713588)));
+    QLog.e("ThemeDIYActivity", 1, "StyleCallBack:save theme false, error type == " + paramInt);
+  }
+  
+  private void themeDiyDataSaveInit()
+  {
+    if (3 == this.mSaveToServerStatus)
+    {
+      this.mSaveToServerStatus = 4;
+      Bundle localBundle = new Bundle();
+      localBundle.putInt("nowOperate", 16);
+      localBundle.putInt("nextOperate", 10);
+      anvs localanvs = (anvs)this.app.a(14);
+      ThemeUtil.ThemeInfo localThemeInfo = ThemeDiyStyleLogic.getThemeInfoByDensity(this.mContext, (ResSuitData.StyleSuit)this.tryOnStyleRSD);
+      String str1 = this.mUserThemeId;
+      String str4 = this.mUserVersion;
+      String str2 = str1;
+      String str3 = str4;
+      int i;
+      if (this.tryOnStyleRSD != null)
+      {
+        if (localThemeInfo == null)
+        {
+          QLog.e("ThemeDIYActivity", 1, "backgroundSave, mSaveToServerStatus themeInfo=null, oldThemeID:" + this.mUserThemeId + ", tryOnStyleRSD.id:" + this.tryOnStyleRSD.id);
+          str3 = str4;
+          str2 = str1;
+        }
+      }
+      else
+      {
+        localBundle.putString("key_from", "201");
+        i = 0;
+        label165:
+        if (i >= this.showData.length) {
+          break label329;
+        }
+        if (this.showData[i].tryOnBgRSD == null) {
+          break label294;
+        }
+        str1 = this.showData[i].tryOnBgRSD.id;
+      }
+      for (;;)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("ThemeDIYActivity", 2, "backgroundSave, bg save : index = " + i + ",id=" + str1);
+        }
+        str4 = str1;
+        if (str1.equals("custom")) {
+          str4 = "99";
+        }
+        localBundle.putString(BUNDLE_PAGE_KEY[i], str4);
+        i += 1;
+        break label165;
+        str2 = localThemeInfo.themeId;
+        str3 = localThemeInfo.version;
+        break;
+        label294:
+        if (this.showData[i].usedBgRSD != null) {
+          str1 = this.showData[i].usedBgRSD.id;
+        } else {
+          str1 = "100";
+        }
+      }
+      label329:
+      if (QLog.isColorLevel()) {
+        QLog.d("ThemeDIYActivity", 2, "backgroundSave to save server2.");
+      }
+      localanvs.a(str2, str3, null, localBundle, this.saveStyleCallback);
+    }
+  }
+  
+  private void themeSwitch()
+  {
+    int i = 0;
+    if (i < this.showData.length)
+    {
+      localThemeDIYData = this.showData[i];
+      QQAppInterface localQQAppInterface;
+      String str;
+      if (2 == localThemeDIYData.mSetStatus) {
+        if ((localThemeDIYData.tryOnBgRSD != null) && (!"100".equals(localThemeDIYData.tryOnBgRSD.id)))
+        {
+          localQQAppInterface = this.app;
+          str = this.app.getCurrentAccountUin();
+          if (!"99".equals(localThemeDIYData.tryOnBgRSD.id)) {
+            break label168;
+          }
+        }
+      }
+      label168:
+      for (localObject = "diy_photosuccess";; localObject = "diy_yangtusuccess")
+      {
+        bcst.b(localQQAppInterface, "CliOper", "", str, "theme_mall", (String)localObject, 0, 0, String.valueOf(localThemeDIYData.position), String.valueOf(localThemeDIYData.tryOnBgRSD.id), String.valueOf(localThemeDIYData.tryOnBgRSD.from), "");
+        setSpThemeBackground(this.mContext, this.app.getAccount(), localThemeDIYData);
+        localThemeDIYData.usedBgRSD = localThemeDIYData.tryOnBgRSD;
+        localThemeDIYData.mSetStatus = 0;
+        i += 1;
+        break;
+      }
+    }
+    this.mStyleSetStatus = 0;
+    this.mHandler.removeMessages(24);
+    bcst.b(this.app, "CliOper", "", this.app.getCurrentAccountUin(), "theme_mall", "diy_savesuccess", 0, 0, "", "", "", "");
+    ThemeDIYData localThemeDIYData = null;
+    Object localObject = localThemeDIYData;
+    if (this.tryOnStyleRSD != null)
+    {
+      localObject = localThemeDIYData;
+      if ((this.tryOnStyleRSD instanceof ResSuitData.StyleSuit)) {
+        localObject = ThemeUtil.getThemeInfo(this.mContext, ((ResSuitData.StyleSuit)this.tryOnStyleRSD).id);
+      }
+    }
+    if (localObject == null)
+    {
+      QLog.e("ThemeDIYActivity", 1, "backgroundSave ok, themeInfo=null, oldThemeID:" + this.mUserThemeId);
+      if ((localObject == null) || (TextUtils.isEmpty(((ThemeUtil.ThemeInfo)localObject).themeId)) || (((ThemeUtil.ThemeInfo)localObject).themeId.equals(this.mUserThemeId))) {
+        break label431;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("ThemeDIYActivity", 2, "backgroundSave, isSaveDataOk = true, switchThemeTask.execute(" + ((ThemeUtil.ThemeInfo)localObject).themeId + ", " + ((ThemeUtil.ThemeInfo)localObject).version + ");");
+      }
+    }
+    for (;;)
+    {
+      return;
+      QLog.d("ThemeDIYActivity", 1, "backgroundSave ok, themeInfo=null, oldThemeID:" + this.mUserThemeId + ", themeInfo.themeId:" + ((ThemeUtil.ThemeInfo)localObject).themeId);
+      break;
+      try
+      {
+        label431:
+        Thread.sleep(1100L);
+        label437:
+        localObject = new Intent("com.tencent.qplus.THEME_INVALIDATE");
+        ((Intent)localObject).putExtra("pid", Process.myPid());
+        this.mContext.sendBroadcast((Intent)localObject, "com.tencent.msg.permission.pushnotify");
+        this.mUpdateUIPicAfterSaved = true;
+        if (!QLog.isColorLevel()) {
+          continue;
+        }
+        QLog.d("ThemeDIYActivity", 2, "backgroundSave, isSaveDataOk = true, dont change theme.");
+        return;
+      }
+      catch (Exception localException)
+      {
+        break label437;
       }
     }
   }
@@ -238,323 +907,71 @@ public class ThemeDIYActivity
   
   void backgroundSave()
   {
-    int i;
-    synchronized (this.showData)
+    boolean bool2 = false;
+    for (;;)
     {
-      this.mIsSaving.set(true);
-      this.mUpdateUIPicAfterSaved = false;
-      i = 0;
-      if (i >= this.showData.length) {
-        break label679;
-      }
-      ThemeDIYData localThemeDIYData1 = this.showData[i];
-      if (2 != localThemeDIYData1.mSetStatus)
+      int i;
+      boolean bool1;
+      synchronized (this.showData)
       {
-        localThemeDIYData1.mSaveStatus = 6;
-        if (QLog.isColorLevel()) {
-          QLog.d("ThemeDIYActivity", 2, "backgroundSave bg not change:, pageIndex:" + i);
-        }
-      }
-      else if (6 == localThemeDIYData1.mSaveStatus)
-      {
-        if (!QLog.isColorLevel()) {
-          break label2135;
-        }
-        QLog.d("ThemeDIYActivity", 2, "backgroundSave bg save ok:, pageIndex:" + i);
-      }
-    }
-    Object localObject3;
-    Object localObject2;
-    label679:
-    label864:
-    Object localObject4;
-    label1150:
-    boolean bool2;
-    label1163:
-    label1198:
-    label1355:
-    label1372:
-    label1401:
-    boolean bool1;
-    if ((localThemeDIYData2.tryOnBgRSD == null) || (localThemeDIYData2.tryOnBgBigOrgRD == null))
-    {
-      QLog.e("ThemeDIYActivity", 1, "backgroundSave bg Error null, pageIndex:" + i + ", tryOnBgRSD:" + localThemeDIYData2.tryOnBgRSD + ", tryOnBgBigOrgRD:" + localThemeDIYData2.tryOnBgBigOrgRD);
-      localThemeDIYData2.mSaveStatus = 6;
-    }
-    else
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("ThemeDIYActivity", 2, "backgroundSave bg diyData.tryOnBgRSD.id:" + localThemeDIYData2.tryOnBgRSD.id + ", pageIndex:" + i);
-      }
-      if ("100".equals(localThemeDIYData2.tryOnBgRSD.id))
-      {
-        localThemeDIYData2.mSaveStatus = 6;
-        if (QLog.isColorLevel()) {
-          QLog.d("ThemeDIYActivity", 2, "backgroundSave bg set DIY_DEFAULT_BG_ID:, pageIndex:" + i);
-        }
-      }
-      else
-      {
-        if ("99".equals(localThemeDIYData2.tryOnBgRSD.id))
+        this.mIsSaving.set(true);
+        this.mUpdateUIPicAfterSaved = false;
+        i = 0;
+        if (i < this.showData.length)
         {
-          if (localThemeDIYData2.tryOnBgBigRD == null)
-          {
-            QLog.e("ThemeDIYActivity", 1, "backgroundSave DIY_UPLOAD_BG_ID bg Error null == tryOnBgBigRD, pageIndex:" + i);
-            break label2135;
-          }
-          if (localThemeDIYData2.tryOnBgBigRD.state == 5) {
-            localThemeDIYData2.mSaveStatus = 6;
-          }
+          checkThemeBackground(i, this.showData[i]);
+          i += 1;
+          continue;
         }
-        for (;;)
+        if ((this.tryOnStyleRSD != null) && (2 == this.mStyleSetStatus))
         {
+          if (!downloadStyle()) {}
+        }
+        else {
+          this.mStyleSaveStatus = 6;
+        }
+        if (this.mStyleSaveStatus != 6) {
+          break label339;
+        }
+        if (QLog.isColorLevel()) {
+          QLog.d("ThemeDIYActivity", 2, "backgroundSave mStyleSaveStatus ok , mSaveToServerStatus:" + this.mSaveToServerStatus);
+        }
+        themeDiyDataSaveInit();
+        break label339;
+        if (i >= this.showData.length) {
+          break label334;
+        }
+        if (6 != this.showData[i].mSaveStatus)
+        {
+          bool1 = bool2;
           if (QLog.isColorLevel())
           {
-            QLog.d("ThemeDIYActivity", 2, "backgroundSave bg diyData.mSaveStatus:" + localThemeDIYData2.mSaveStatus + ", pageIndex:" + i + ", tryOnBgBigOrgRD.state:" + localThemeDIYData2.tryOnBgBigOrgRD.state);
-            break label2135;
-            if (QLog.isColorLevel())
-            {
-              QLog.d("ThemeDIYActivity", 2, "backgroundSave DIY_UPLOAD_BG_ID:waiting deal, pageIndex:" + i);
-              continue;
-              localObject3 = new File(localThemeDIYData2.tryOnBgBigOrgRD.path);
-              if (((File)localObject3).exists())
-              {
-                if ((localThemeDIYData2.tryOnBgBigRD == null) || (localThemeDIYData2.tryOnBgBigRD.state != 5)) {
-                  dealBgRes(localThemeDIYData2, localThemeDIYData2.tryOnBgBigOrgRD, 115, true);
-                } else {
-                  localThemeDIYData2.mSaveStatus = 6;
-                }
-              }
-              else if (localThemeDIYData2.tryOnBgBigOrgRD.state == 0)
-              {
-                localObject2 = new Bundle();
-                ((Bundle)localObject2).putInt("index", i);
-                ((Bundle)localObject2).putInt("type", 115);
-                ((Bundle)localObject2).putInt("nextOperate", 10);
-                localObject3 = new beae(localThemeDIYData2.tryOnBgBigOrgRD.url, (File)localObject3);
-                ((beag)this.app.getManager(47)).a(1).a((beae)localObject3, this.resDownloadListener, (Bundle)localObject2);
-                continue;
-                Bundle localBundle;
-                amdj localamdj;
-                ThemeUtil.ThemeInfo localThemeInfo;
-                if ((this.tryOnStyleRSD != null) && (2 == this.mStyleSetStatus)) {
-                  if (this.mStyleSaveStatus == 3)
-                  {
-                    localObject2 = ThemeDiyStyleLogic.getThemeInfoByDensity(this.mContext, (ResSuitData.StyleSuit)this.tryOnStyleRSD);
-                    if (localObject2 == null)
-                    {
-                      QLog.e("ThemeDIYActivity", 1, "backgroundSave, themeInfo=null, oldThemeID:" + this.mUserThemeId + ", tryOnStyleRSD.id:" + this.tryOnStyleRSD.id);
-                      this.mHandler.sendMessage(Message.obtain(this.mHandler, 25, alud.a(2131715294) + this.tryOnStyleRSD.id));
-                      return;
-                    }
-                    if (QLog.isColorLevel())
-                    {
-                      localObject3 = new StringBuilder().append("backgroundSave, deal style, oldThemeID:").append(this.mUserThemeId).append(", newID:");
-                      if (localObject2 == null) {
-                        break label2142;
-                      }
-                      localObject1 = ((ThemeUtil.ThemeInfo)localObject2).themeId;
-                      QLog.d("ThemeDIYActivity", 2, (String)localObject1);
-                    }
-                    this.mStyleSaveStatus = 4;
-                    if ((this.mUserThemeId == null) || (!this.mUserThemeId.equals(((ThemeUtil.ThemeInfo)localObject2).themeId))) {
-                      azqs.b(this.app, "CliOper", "", this.app.getCurrentAccountUin(), "theme_mall", "diy_stylesuccess", 0, 0, "", ((ThemeUtil.ThemeInfo)localObject2).themeId, "", "");
-                    }
-                  }
-                  else
-                  {
-                    if (this.mStyleSaveStatus != 6) {
-                      break label2158;
-                    }
-                    if (QLog.isColorLevel()) {
-                      QLog.d("ThemeDIYActivity", 2, "backgroundSave mStyleSaveStatus ok , mSaveToServerStatus:" + this.mSaveToServerStatus);
-                    }
-                    if (3 != this.mSaveToServerStatus) {
-                      break label2158;
-                    }
-                    this.mSaveToServerStatus = 4;
-                    localBundle = new Bundle();
-                    localBundle.putInt("nowOperate", 16);
-                    localBundle.putInt("nextOperate", 10);
-                    localamdj = (amdj)this.app.a(14);
-                    localThemeInfo = ThemeDiyStyleLogic.getThemeInfoByDensity(this.mContext, (ResSuitData.StyleSuit)this.tryOnStyleRSD);
-                    localObject1 = this.mUserThemeId;
-                    localObject4 = this.mUserVersion;
-                    localObject2 = localObject1;
-                    localObject3 = localObject4;
-                    if (this.tryOnStyleRSD != null)
-                    {
-                      if (localThemeInfo != null) {
-                        break label1355;
-                      }
-                      QLog.e("ThemeDIYActivity", 1, "backgroundSave, mSaveToServerStatus themeInfo=null, oldThemeID:" + this.mUserThemeId + ", tryOnStyleRSD.id:" + this.tryOnStyleRSD.id);
-                      localObject3 = localObject4;
-                      localObject2 = localObject1;
-                    }
-                    localBundle.putString("key_from", "201");
-                    i = 0;
-                    if (i >= this.showData.length) {
-                      break label1401;
-                    }
-                    if (this.showData[i].tryOnBgRSD == null) {
-                      break label1372;
-                    }
-                  }
-                }
-                for (localObject1 = this.showData[i].tryOnBgRSD.id;; localObject1 = this.showData[i].usedBgRSD.id)
-                {
-                  if (QLog.isColorLevel()) {
-                    QLog.d("ThemeDIYActivity", 2, "backgroundSave, bg save : index = " + i + ",id=" + (String)localObject1);
-                  }
-                  localObject4 = localObject1;
-                  if (((String)localObject1).equals("custom")) {
-                    localObject4 = "99";
-                  }
-                  localBundle.putString(BUNDLE_PAGE_KEY[i], (String)localObject4);
-                  i += 1;
-                  break label1163;
-                  this.mStyleSaveStatus = 6;
-                  azqs.b(this.app, "CliOper", "", this.app.getCurrentAccountUin(), "theme_mall", "diy_stylesuccess", 0, 0, "", ((ThemeUtil.ThemeInfo)localObject2).themeId, "", "");
-                  if (!QLog.isColorLevel()) {
-                    break;
-                  }
-                  QLog.d("ThemeDIYActivity", 2, "backgroundSave, style ready!");
-                  break;
-                  this.mStyleSaveStatus = 6;
-                  break;
-                  localObject2 = localThemeInfo.themeId;
-                  localObject3 = localThemeInfo.version;
-                  break label1150;
-                  if (this.showData[i].usedBgRSD == null) {
-                    break label2150;
-                  }
-                }
-                if (QLog.isColorLevel()) {
-                  QLog.d("ThemeDIYActivity", 2, "backgroundSave to save server2.");
-                }
-                localamdj.a((String)localObject2, (String)localObject3, null, localBundle, this.saveStyleCallback);
-                break label2158;
-                label1435:
-                bool1 = bool2;
-                if (i < this.showData.length)
-                {
-                  if (6 == this.showData[i].mSaveStatus) {
-                    break label2170;
-                  }
-                  if (!QLog.isColorLevel()) {
-                    break label2165;
-                  }
-                  QLog.d("ThemeDIYActivity", 2, "backgroundSave, bg status: iR = " + this.showData[i].mSaveStatus);
-                  break label2165;
-                }
-                label1503:
-                if (QLog.isColorLevel()) {
-                  QLog.d("ThemeDIYActivity", 2, "backgroundSave, mSaveStatus:isReady=" + bool1 + ", not iR:" + i + ", theme:" + this.mStyleSaveStatus + ", server:" + this.mSaveToServerStatus);
-                }
-                if ((bool1) && (6 == this.mStyleSaveStatus) && (6 == this.mSaveToServerStatus))
-                {
-                  i = 0;
-                  label1595:
-                  if (i < this.showData.length)
-                  {
-                    localObject2 = this.showData[i];
-                    if (2 == ((ThemeDIYData)localObject2).mSetStatus) {
-                      if ((((ThemeDIYData)localObject2).tryOnBgRSD != null) && (!"100".equals(((ThemeDIYData)localObject2).tryOnBgRSD.id)))
-                      {
-                        localObject3 = this.app;
-                        localObject4 = this.app.getCurrentAccountUin();
-                        if (!"99".equals(((ThemeDIYData)localObject2).tryOnBgRSD.id)) {
-                          break label2177;
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-            }
+            QLog.d("ThemeDIYActivity", 2, "backgroundSave, bg status: iR = " + this.showData[i].mSaveStatus);
+            bool1 = bool2;
           }
-        }
-      }
-    }
-    label2047:
-    String str;
-    label2177:
-    for (Object localObject1 = "diy_photosuccess";; str = "diy_yangtusuccess")
-    {
-      azqs.b((QQAppInterface)localObject3, "CliOper", "", (String)localObject4, "theme_mall", (String)localObject1, 0, 0, String.valueOf(((ThemeDIYData)localObject2).position), String.valueOf(((ThemeDIYData)localObject2).tryOnBgRSD.id), String.valueOf(((ThemeDIYData)localObject2).tryOnBgRSD.from), "");
-      setSpThemeBackground(this.mContext, this.app.getAccount(), (ThemeDIYData)localObject2);
-      ((ThemeDIYData)localObject2).usedBgRSD = ((ThemeDIYData)localObject2).tryOnBgRSD;
-      ((ThemeDIYData)localObject2).mSetStatus = 0;
-      i += 1;
-      break label1595;
-      this.mStyleSetStatus = 0;
-      this.mHandler.removeMessages(24);
-      azqs.b(this.app, "CliOper", "", this.app.getCurrentAccountUin(), "theme_mall", "diy_savesuccess", 0, 0, "", "", "", "");
-      localObject2 = null;
-      localObject1 = localObject2;
-      if (this.tryOnStyleRSD != null)
-      {
-        localObject1 = localObject2;
-        if ((this.tryOnStyleRSD instanceof ResSuitData.StyleSuit)) {
-          localObject1 = ThemeUtil.getThemeInfo(this.mContext, ((ResSuitData.StyleSuit)this.tryOnStyleRSD).id);
-        }
-      }
-      if (localObject1 == null)
-      {
-        QLog.e("ThemeDIYActivity", 1, "backgroundSave ok, themeInfo=null, oldThemeID:" + this.mUserThemeId);
-        if ((localObject1 == null) || (TextUtils.isEmpty(((ThemeUtil.ThemeInfo)localObject1).themeId)) || (((ThemeUtil.ThemeInfo)localObject1).themeId.equals(this.mUserThemeId))) {
-          break label2047;
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d("ThemeDIYActivity", 2, "backgroundSave, isSaveDataOk = true, switchThemeTask.execute(" + ((ThemeUtil.ThemeInfo)localObject1).themeId + ", " + ((ThemeUtil.ThemeInfo)localObject1).version + ");");
-        }
-      }
-      for (;;)
-      {
-        return;
-        QLog.d("ThemeDIYActivity", 1, "backgroundSave ok, themeInfo=null, oldThemeID:" + this.mUserThemeId + ", themeInfo.themeId:" + ((ThemeUtil.ThemeInfo)localObject1).themeId);
-        break;
-        try
-        {
-          Thread.sleep(1100L);
-          label2053:
-          localObject1 = new Intent("com.tencent.qplus.THEME_INVALIDATE");
-          ((Intent)localObject1).putExtra("pid", Process.myPid());
-          this.mContext.sendBroadcast((Intent)localObject1, "com.tencent.msg.permission.pushnotify");
-          this.mUpdateUIPicAfterSaved = true;
-          if (QLog.isColorLevel())
-          {
-            QLog.d("ThemeDIYActivity", 2, "backgroundSave, isSaveDataOk = true, dont change theme.");
-            continue;
-            if (QLog.isColorLevel()) {
-              QLog.d("ThemeDIYActivity", 2, "backgroundSave, waiting status.");
-            }
+          if (QLog.isColorLevel()) {
+            QLog.d("ThemeDIYActivity", 2, "backgroundSave, mSaveStatus:isReady=" + bool1 + ", not iR:" + i + ", theme:" + this.mStyleSaveStatus + ", server:" + this.mSaveToServerStatus);
           }
-        }
-        catch (Exception localException)
-        {
-          break label2053;
+          if ((!bool1) || (6 != this.mStyleSaveStatus) || (6 != this.mSaveToServerStatus)) {
+            break label316;
+          }
+          themeSwitch();
+          return;
         }
       }
-      label2135:
       i += 1;
-      break;
-      label2142:
-      str = "null";
-      break label864;
-      label2150:
-      str = "100";
-      break label1198;
-      label2158:
-      bool2 = true;
-      i = 0;
-      break label1435;
-      label2165:
-      bool1 = false;
-      break label1503;
-      label2170:
-      i += 1;
-      break label1435;
+      continue;
+      label316:
+      if (QLog.isColorLevel())
+      {
+        QLog.d("ThemeDIYActivity", 2, "backgroundSave, waiting status.");
+        continue;
+        label334:
+        bool1 = true;
+        continue;
+        label339:
+        i = 0;
+      }
     }
   }
   
@@ -610,6 +1027,14 @@ public class ThemeDIYActivity
     paramThemeDIYData.mSaveStatus = 6;
   }
   
+  @Override
+  public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
+  {
+    boolean bool = super.dispatchTouchEvent(paramMotionEvent);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool);
+    return bool;
+  }
+  
   public void doOnActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
     if ((paramInt1 == 4) && (paramIntent != null) && ("ThemeDIYBgVIP".equals(paramIntent.getStringExtra("callbackSn"))))
@@ -642,7 +1067,7 @@ public class ThemeDIYActivity
           i = paramInt1;
           if ((paramIntent != null) && (paramInt2 == 0) && (j == 0) && (i == 0))
           {
-            azqs.b(this.app, "CliOper", "", this.app.getCurrentAccountUin(), "theme_mall", "Join_nontop", 0, 1, "", "", "", "");
+            bcst.b(this.app, "CliOper", "", this.app.getCurrentAccountUin(), "theme_mall", "Join_nontop", 0, 1, "", "", "", "");
             this.isVip = true;
             this.mHandler.removeMessages(22);
             this.mIsSaving.set(false);
@@ -671,14 +1096,14 @@ public class ThemeDIYActivity
     this.themeDiyStyleLogic = new ThemeDiyStyleLogic(this.app, this);
     this.themeDiyStyleLogic.saveDealCallBack = this.saveStyleCallback;
     isBacked = false;
-    super.setContentViewNoTitle(2131562725);
-    this.mblurbgView = super.findViewById(2131363348);
-    paramBundle = (TextView)super.findViewById(2131368624);
-    Object localObject = (TextView)super.findViewById(2131368632);
+    super.setContentViewNoTitle(2131562964);
+    this.mblurbgView = super.findViewById(2131363539);
+    paramBundle = (TextView)super.findViewById(2131368947);
+    Object localObject = (TextView)super.findViewById(2131368955);
     paramBundle.setOnClickListener(this);
     ((TextView)localObject).setOnClickListener(this);
-    azqs.b(this.app, "CliOper", "", this.app.getCurrentAccountUin(), "theme_mall", "enter_diy2", 0, 0, "", "", "", "");
-    this.themeSwitchManager = ((baoq)this.app.getManager(185));
+    bcst.b(this.app, "CliOper", "", this.app.getCurrentAccountUin(), "theme_mall", "enter_diy2", 0, 0, "", "", "", "");
+    this.themeSwitchManager = ((bdpu)this.app.getManager(185));
     this.themeSwitchManager.a = this.saveStyleCallback;
     int j = this.mContext.getResources().getDisplayMetrics().heightPixels;
     int k = this.mContext.getResources().getDisplayMetrics().widthPixels;
@@ -694,9 +1119,9 @@ public class ThemeDIYActivity
       if (!paramBundle.exists()) {
         paramBundle.mkdirs();
       }
-      bdhb.c(ThemeDiyStyleLogic.getSdcardDIYDir() + ".nomedia");
+      bgmg.c(ThemeDiyStyleLogic.getSdcardDIYDir() + ".nomedia");
       this.isDIYThemeBefore = ThemeUtil.getIsDIYTheme(null);
-      if (((amca)this.app.a(13)).g() < 1) {
+      if (((anuk)this.app.a(13)).g() < 1) {
         break label498;
       }
     }
@@ -742,14 +1167,14 @@ public class ThemeDIYActivity
       paramBundle.put("param_themeUid", ThemeUtil.getUserCurrentThemeId(this.app));
       paramBundle.put("param_themeid", this.mUserThemeId);
       paramBundle.put("param_isDiy", String.valueOf(this.isDIYThemeBefore));
-      azri.a(this.mContext).a(this.app.getAccount(), "ThemeDIYActivityRun", true, 1L, 0L, paramBundle, "", false);
+      bctj.a(this.mContext).a(this.app.getAccount(), "ThemeDIYActivityRun", true, 1L, 0L, paramBundle, "", false);
       label674:
-      this.mScrollLayout = ((ScrollLayout)super.findViewById(2131361804));
+      this.mScrollLayout = ((ScrollLayout)super.findViewById(2131361805));
       this.mScrollLayout.setOnScreenChangeListener(this);
       paramBundle = new ResSuitData.StyleSuit();
       this.mStyleSuits.add(paramBundle);
       paramBundle.id = "999";
-      paramBundle.name = alud.a(2131715280);
+      paramBundle.name = anni.a(2131713579);
       paramBundle.thumbnail = "a.jpg";
       paramBundle.appStr = "theme";
       paramBundle.typeStr = "diytheme_new";
@@ -766,10 +1191,10 @@ public class ThemeDIYActivity
       }
       this.mUploadBgRSD = new ResSuitData.BgSuit(null);
       this.mUploadBgRSD.id = "99";
-      this.mUploadBgRSD.resID = 2130845683;
-      this.mUploadBgRSD.name = alud.a(2131715284);
+      this.mUploadBgRSD.resID = 2130846093;
+      this.mUploadBgRSD.name = anni.a(2131713583);
       ApngImage.playByTag(0);
-      int m = (int)(Math.max(j, k) - bdgz.a(this.mContext, 305));
+      int m = (int)(Math.max(j, k) - bgme.a(this.mContext, 305));
       int n = m * 322 / 572;
       LayoutInflater localLayoutInflater = LayoutInflater.from(this.mContext);
       ResData localResData = new ResData();
@@ -777,7 +1202,7 @@ public class ThemeDIYActivity
       i = 0;
       if (i < this.showData.length)
       {
-        PageView localPageView = (PageView)localLayoutInflater.inflate(2131562726, null);
+        PageView localPageView = (PageView)localLayoutInflater.inflate(2131562965, null);
         localPageView.init(this.showData[i], i, n, m, null);
         if (i == 0) {
           this.mPageView = localPageView;
@@ -785,7 +1210,7 @@ public class ThemeDIYActivity
         paramBundle = new ResSuitData.BgSuit(null);
         paramBundle.id = "100";
         paramBundle.resID = this.showData[i].themeBgID;
-        paramBundle.name = alud.a(2131715286);
+        paramBundle.name = anni.a(2131713585);
         this.showData[i].defaultBgRSD = paramBundle;
         k = 0;
         ThemeBackground localThemeBackground = new ThemeBackground();
@@ -806,7 +1231,7 @@ public class ThemeDIYActivity
           }
           localBgSuit = new ResSuitData.BgSuit(null);
           localObject = localThemeBackground.path.substring(localThemeBackground.path.lastIndexOf(File.separator) + 1);
-          if (localThemeBackground.path.indexOf(alof.cd) < 0) {
+          if (localThemeBackground.path.indexOf(anhk.cg) < 0) {
             break label1663;
           }
           paramBundle = (ChatBackgroundManager)this.app.getManager(63);
@@ -841,7 +1266,7 @@ public class ThemeDIYActivity
           localPageView.showPic(this.showData[i].usedBgRSD, null, false, localThemeBackground.img);
           paramBundle = new ThemeDIYActivity.ViewHolder();
           paramBundle.id = i;
-          paramBundle.scaleView = localPageView.findViewById(2131369279);
+          paramBundle.scaleView = localPageView.findViewById(2131369669);
           localPageView.setTag(paramBundle);
           if (i != 0) {
             break label1742;
@@ -897,26 +1322,26 @@ public class ThemeDIYActivity
           }
         }
       }
-      this.pageIndicator = ((PageIndicator)super.findViewById(2131368230));
+      this.pageIndicator = ((PageIndicator)super.findViewById(2131368558));
       this.pageIndicator.bindScrollViewGroup(this.mScrollLayout);
       this.dataLoad = new ThemeDIYActivity.DataLoading(this);
       this.dataLoad.bindScrollViewGroup(this.mScrollLayout);
-      paramBundle = (TabBarView)super.findViewById(2131377028);
-      paramBundle.setUnderLineHeight(bdaq.a(this, 4.0F));
+      paramBundle = (TabBarView)super.findViewById(2131377832);
+      paramBundle.setUnderLineHeight(bggq.a(this, 4.0F));
       paramBundle.setTabTextSize(16);
       paramBundle.setUnselectColor(-8882056);
-      paramBundle.setSelectColor(super.getResources().getColor(2131165307));
-      paramBundle.setUnselectColor(super.getResources().getColor(2131165307));
-      paramBundle.a.setColor(super.getResources().getColor(2131166495));
+      paramBundle.setSelectColor(super.getResources().getColor(2131165343));
+      paramBundle.setUnselectColor(super.getResources().getColor(2131165343));
+      paramBundle.a.setColor(super.getResources().getColor(2131166569));
       paramBundle.a("");
-      paramBundle.a(alud.a(2131715300));
+      paramBundle.a(anni.a(2131713599));
       paramBundle.a("");
-      paramBundle.a(alud.a(2131715291));
+      paramBundle.a(anni.a(2131713590));
       paramBundle.a("");
       paramBundle.setSelectedTab(1, false);
       paramBundle.setOnTabChangeListener(this.mTypeTabChangeListener);
-      paramBundle.setBackgroundDrawable(super.getResources().getDrawable(2130847003));
-      this.mResHListView = ((HorizontalListView)super.findViewById(2131377803));
+      paramBundle.setBackgroundDrawable(super.getResources().getDrawable(2130847460));
+      this.mResHListView = ((HorizontalListView)super.findViewById(2131378643));
       this.mAdapter = new ThemeDiyBgAdapter(this);
       this.mAdapter.themeDIYData = this.mPageView.mData;
       this.mAdapter.isDIYThemeBefore = this.isDIYThemeBefore;
@@ -928,7 +1353,7 @@ public class ThemeDIYActivity
       this.mAdapter.usedStyleRSD = this.usedStyleRSD;
       loadResJson(100, false);
       loadResJson(200, false);
-      baop.a(this.app, "theme_detail", "201", 150, bdin.a(null), 1, this.mUserThemeId, ThemeUtil.getUserCurrentThemeVersion(this.app), "2", "");
+      bdpt.a(this.app, "theme_detail", "201", 150, bgnt.a(null), 1, this.mUserThemeId, ThemeUtil.getUserCurrentThemeVersion(this.app), "2", "");
       this.mCompactBackup = this.mSystemBarComp;
       this.mSystemBarComp = null;
       new SystemBarCompact(this, true, -5986905).init();
@@ -978,9 +1403,9 @@ public class ThemeDIYActivity
     File localFile = new File(paramString);
     if ((localFile.exists()) && (!ChatBackgroundManager.a(localFile)))
     {
-      paramString = bdal.a(paramString, new BitmapFactory.Options());
+      paramString = bggl.a(paramString, new BitmapFactory.Options());
       if (paramString != null) {
-        return new apko(this.mContext.getResources(), paramString);
+        return new arni(this.mContext.getResources(), paramString);
       }
     }
     return null;
@@ -1083,11 +1508,11 @@ public class ThemeDIYActivity
     }
     if (this.isNotifyBack)
     {
-      azqs.b(this.app, "CliOper", "", this.app.getCurrentAccountUin(), "theme_mall", "diy_out", 0, 0, "", "", "", "");
+      bcst.b(this.app, "CliOper", "", this.app.getCurrentAccountUin(), "theme_mall", "diy_out", 0, 0, "", "", "", "");
       if (isNeedSave()) {
         try
         {
-          this.exitDialog = bdgm.a(this.mContext, 230, super.getResources().getString(2131720825), alud.a(2131715299), 2131692278, 2131719310, new ThemeDIYActivity.8(this), new ThemeDIYActivity.9(this));
+          this.exitDialog = bglp.a(this.mContext, 230, super.getResources().getString(2131718568), anni.a(2131713598), 2131691891, 2131717397, new ThemeDIYActivity.8(this), new ThemeDIYActivity.9(this));
           this.exitDialog.show();
           return true;
         }
@@ -1096,7 +1521,7 @@ public class ThemeDIYActivity
           QLog.e("ThemeDIYActivity", 1, localException.getMessage());
         }
       }
-      azqs.b(this.app, "CliOper", "", this.app.getCurrentAccountUin(), "theme_mall", "diy_outsuccess", 0, 1, "0", "", "", "");
+      bcst.b(this.app, "CliOper", "", this.app.getCurrentAccountUin(), "theme_mall", "diy_outsuccess", 0, 1, "0", "", "", "");
     }
     super.onBackEvent();
     return false;
@@ -1131,7 +1556,7 @@ public class ThemeDIYActivity
       if (2 == j)
       {
         str = "CJCLUBT";
-        localObject = alud.a(2131715295);
+        localObject = anni.a(2131713594);
         paramDialogInterface = "1450000516";
         paramInt = 2;
       }
@@ -1139,7 +1564,7 @@ public class ThemeDIYActivity
     }
     for (;;)
     {
-      azqs.b(this.app, "CliOper", "", this.app.getCurrentAccountUin(), "theme_mall", "diy_save_tips", 0, 0, String.valueOf(paramInt), "", "", "");
+      bcst.b(this.app, "CliOper", "", this.app.getCurrentAccountUin(), "theme_mall", "diy_save_tips", 0, 0, String.valueOf(paramInt), "", "", "");
       return;
       if (5 == j)
       {
@@ -1148,7 +1573,7 @@ public class ThemeDIYActivity
         if (paramInt == 1) {}
         for (paramDialogInterface = "diy_check";; paramDialogInterface = "diy_check_no")
         {
-          azqs.b((QQAppInterface)localObject, "CliOper", "", str, "theme_mall", paramDialogInterface, 0, 1, "", "", "", "");
+          bcst.b((QQAppInterface)localObject, "CliOper", "", str, "theme_mall", paramDialogInterface, 0, 1, "", "", "", "");
           if (paramInt != 1) {
             break;
           }
@@ -1177,14 +1602,23 @@ public class ThemeDIYActivity
   {
     switch (paramView.getId())
     {
-    default: 
-      return;
-    case 2131368624: 
-      onBackEvent();
-      return;
     }
-    saveOperate(true);
-    azqs.b(this.app, "CliOper", "", this.app.getCurrentAccountUin(), "theme_mall", "diy_save", 0, 0, "", "", "", "");
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      onBackEvent();
+      continue;
+      saveOperate(true);
+      bcst.b(this.app, "CliOper", "", this.app.getCurrentAccountUin(), "theme_mall", "diy_save", 0, 0, "", "", "", "");
+    }
+  }
+  
+  @Override
+  public void onConfigurationChanged(Configuration paramConfiguration)
+  {
+    super.onConfigurationChanged(paramConfiguration);
+    EventCollector.getInstance().onActivityConfigurationChanged(this, paramConfiguration);
   }
   
   public void onPostThemeChanged()
@@ -1212,7 +1646,7 @@ public class ThemeDIYActivity
     }
     if ((this.mNeedStatusTrans) && (this.mSystemBarComp != null))
     {
-      i = super.getResources().getColor(2131166959);
+      i = super.getResources().getColor(2131167042);
       this.mSystemBarComp.setStatusColor(i);
       this.mSystemBarComp.setStatusBarColor(i);
     }
@@ -1224,7 +1658,7 @@ public class ThemeDIYActivity
       QLog.d("ThemeDIYActivity", 2, "onPostThemeChanged mIsSaving=" + this.mIsSaving.get());
     }
     if (this.mIsSaving.get()) {
-      showTips(5, 0, null, alud.a(2131715287), null, alud.a(2131715281), null);
+      showTips(5, 0, null, anni.a(2131713586), null, anni.a(2131713580), null);
     }
     this.mIsSaving.set(false);
     this.isDIYThemeBefore = true;
@@ -1234,7 +1668,7 @@ public class ThemeDIYActivity
   
   public void onScreenChange(int paramInt)
   {
-    azqs.b(this.app, "CliOper", "", this.app.getCurrentAccountUin(), "theme_mall", "skim_page2", 0, 0, String.valueOf(paramInt), "", "", "");
+    bcst.b(this.app, "CliOper", "", this.app.getCurrentAccountUin(), "theme_mall", "skim_page2", 0, 0, String.valueOf(paramInt), "", "", "");
     if (QLog.isColorLevel()) {
       QLog.d("ThemeDIYActivity", 2, "onScreenChange: pageIndex = " + String.valueOf(paramInt));
     }
@@ -1300,7 +1734,7 @@ public class ThemeDIYActivity
     default: 
       paramObject = localObject;
       if (TextUtils.isEmpty((CharSequence)localObject)) {
-        paramObject = alud.a(2131715290);
+        paramObject = anni.a(2131713589);
       }
       paramObject = paramObject + j;
       i = 4;
@@ -1313,35 +1747,35 @@ public class ThemeDIYActivity
       setProgessDialog(false, 0);
       if (-404 == j)
       {
-        QQToast.a(this.mContext, 2131720772, 3000).b(this.mContext.getResources().getDimensionPixelSize(2131298914));
+        QQToast.a(this.mContext, 2131718548, 3000).b(this.mContext.getResources().getDimensionPixelSize(2131298998));
         return;
         i = 4;
         paramObject = localObject;
         localObject = str1;
         continue;
-        paramObject = alud.a(2131715282);
+        paramObject = anni.a(2131713581);
         if (!TextUtils.isEmpty(str1)) {
           break label446;
         }
-        localObject = alud.a(2131715293);
+        localObject = anni.a(2131713592);
         i = 1;
         continue;
         paramObject = localObject;
         if (TextUtils.isEmpty((CharSequence)localObject)) {
-          paramObject = alud.a(2131715297);
+          paramObject = anni.a(2131713596);
         }
         if (TextUtils.isEmpty(str1))
         {
-          localObject = alud.a(2131715279);
+          localObject = anni.a(2131713578);
           i = 2;
         }
       }
       else
       {
-        azqs.b(this.app, "CliOper", "", this.app.getCurrentAccountUin(), "theme_mall", "diy_save_tips", 0, 0, "0", "", "", "");
+        bcst.b(this.app, "CliOper", "", this.app.getCurrentAccountUin(), "theme_mall", "diy_save_tips", 0, 0, "0", "", "", "");
         QLog.e("ThemeDIYActivity", 1, "saveOperate fail, ret=" + j + ", msg=" + paramObject);
         if ((!TextUtils.isEmpty(str2)) && (TextUtils.isEmpty((CharSequence)localObject))) {
-          localObject = alud.a(2131715296);
+          localObject = anni.a(2131713595);
         }
         for (;;)
         {
@@ -1375,13 +1809,13 @@ public class ThemeDIYActivity
         }
         if ((this.isDIYThemeBefore) && (!isNeedSave()))
         {
-          this.mHandler.sendMessage(Message.obtain(this.mHandler, 27, alud.a(2131715305)));
+          this.mHandler.sendMessage(Message.obtain(this.mHandler, 27, anni.a(2131713604)));
           return;
         }
       }
       finally {}
       this.mHandler.removeMessages(24);
-      int j = bdin.a(this.mContext);
+      int j = bgnt.a(this.mContext);
       if (j == 1) {
         break label571;
       }
@@ -1404,7 +1838,7 @@ public class ThemeDIYActivity
       localThemeDIYData3.mSaveStatus = 3;
       localThemeDIYData2.mSaveStatus = 3;
       localThemeDIYData1.mSaveStatus = 3;
-      setProgessDialog(true, 2131720771);
+      setProgessDialog(true, 2131718547);
       ThreadManager.post(new ThemeDIYActivity.5(this), 8, null, true);
     }
     for (;;)
@@ -1501,7 +1935,7 @@ public class ThemeDIYActivity
     {
       if (this.progessDialog == null)
       {
-        this.progessDialog = new bety(this.mContext, getTitleBarHeight());
+        this.progessDialog = new biau(this.mContext, getTitleBarHeight());
         this.progessDialog.setCancelable(true);
       }
       this.progessDialog.c(paramInt);
@@ -1530,29 +1964,29 @@ public class ThemeDIYActivity
     this.mDialogData.putString("url", paramString5);
     this.mDialogData.putInt("fcID", paramInt2);
     if (TextUtils.isEmpty(paramString1)) {
-      paramString1 = alud.a(2131715285);
+      paramString1 = anni.a(2131713584);
     }
     for (;;)
     {
       if (TextUtils.isEmpty(paramString2)) {
-        paramString2 = alud.a(2131715292);
+        paramString2 = anni.a(2131713591);
       }
       for (;;)
       {
         if (TextUtils.isEmpty(paramString3)) {
-          paramString3 = alud.a(2131715298);
+          paramString3 = anni.a(2131713597);
         }
         for (;;)
         {
           if (TextUtils.isEmpty(paramString4)) {
-            paramString4 = alud.a(2131715303);
+            paramString4 = anni.a(2131713602);
           }
           for (;;)
           {
             if (QLog.isColorLevel()) {
               QLog.d("ThemeDIYActivity", 1, "showTips content=" + paramString2 + ", title=" + paramString1);
             }
-            paramString1 = bdgm.a(this.mContext, 0, paramString1, paramString2, paramString3, paramString4, this, this);
+            paramString1 = bglp.a(this.mContext, 0, paramString1, paramString2, paramString3, paramString4, this, this);
             if (paramString1 != null)
             {
               paramString1.show();
@@ -1567,7 +2001,7 @@ public class ThemeDIYActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.theme.diy.ThemeDIYActivity
  * JD-Core Version:    0.7.0.1
  */

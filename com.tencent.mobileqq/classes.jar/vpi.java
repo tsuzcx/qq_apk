@@ -1,35 +1,35 @@
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.playvideo.entrance.HotRecommendFeedPlayInfo;
-import java.util.ArrayList;
-import java.util.List;
+import android.support.v7.widget.RecyclerView.LayoutParams;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+import com.tencent.biz.qqcircle.polylike.QCirclePolyBaseLikeView;
+import qqcircle.QQCircleFeedBase.StPolyLike;
 
-public class vpi
-  extends vpa<HotRecommendFeedPlayInfo>
+class vpi
+  extends RecyclerView.ViewHolder
 {
-  public vpi(HotRecommendFeedPlayInfo paramHotRecommendFeedPlayInfo)
+  public vpi(vpe paramvpe, View paramView)
   {
-    super(paramHotRecommendFeedPlayInfo);
+    super(paramView);
   }
   
-  public woq a(String paramString)
+  public void a(QQCircleFeedBase.StPolyLike paramStPolyLike, int paramInt)
   {
-    paramString = new woq(((HotRecommendFeedPlayInfo)this.a).mFeedFeedId, 0, "", "");
-    paramString.b = ((HotRecommendFeedPlayInfo)this.a).mPullType;
-    return paramString;
-  }
-  
-  public void a(boolean paramBoolean, int paramInt, vps paramvps)
-  {
-    ArrayList localArrayList = new ArrayList();
-    vpb localvpb = new vpb(((HotRecommendFeedPlayInfo)this.a).mFeedFeedId, new woq(((HotRecommendFeedPlayInfo)this.a).mFeedFeedId, 0, "", ""));
-    localvpb.a.b = ((HotRecommendFeedPlayInfo)this.a).mPullType;
-    localArrayList.add(localvpb);
-    paramvps.a(new ErrorMessage(), localArrayList, true);
+    if ((this.itemView instanceof QCirclePolyBaseLikeView))
+    {
+      RecyclerView.LayoutParams localLayoutParams = new RecyclerView.LayoutParams(bclx.a / 4, bclx.a / 4);
+      this.itemView.setLayoutParams(localLayoutParams);
+      ((QCirclePolyBaseLikeView)this.itemView).setReportBean(vpe.a(this.a));
+      ((QCirclePolyBaseLikeView)this.itemView).setRequestManager(vpe.a(this.a));
+      ((QCirclePolyBaseLikeView)this.itemView).setCurrentFeed(vpe.a(this.a));
+      ((QCirclePolyBaseLikeView)this.itemView).setHookListener(new vpj(this));
+      ((QCirclePolyBaseLikeView)this.itemView).a(paramStPolyLike, paramInt);
+      this.a.a((QCirclePolyBaseLikeView)this.itemView);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     vpi
  * JD-Core Version:    0.7.0.1
  */

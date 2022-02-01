@@ -1,19 +1,10 @@
-import android.graphics.Bitmap;
-import android.support.v4.util.MQLruCache;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.dinifly.ImageAssetDelegate;
-import com.tencent.mobileqq.dinifly.LottieImageAsset;
+import android.graphics.Paint;
 
-public class bapf
-  implements ImageAssetDelegate
+public abstract interface bapf
 {
-  public Bitmap fetchBitmap(LottieImageAsset paramLottieImageAsset)
-  {
-    if (BaseApplicationImpl.sImageCache != null) {
-      return (Bitmap)BaseApplicationImpl.sImageCache.get(paramLottieImageAsset.getKey());
-    }
-    return null;
-  }
+  public abstract String a(float paramFloat1, float paramFloat2, float paramFloat3);
+  
+  public abstract void a(Paint paramPaint, float paramFloat1, float paramFloat2, float paramFloat3);
 }
 
 

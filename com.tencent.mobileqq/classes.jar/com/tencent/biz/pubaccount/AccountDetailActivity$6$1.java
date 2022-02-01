@@ -1,9 +1,11 @@
 package com.tencent.biz.pubaccount;
 
-import alof;
 import android.text.TextUtils;
+import anhk;
+import ayck;
 import com.tencent.mobileqq.activity.ChatActivity;
 import com.tencent.mobileqq.data.AccountDetail;
+import com.tencent.mobileqq.minigame.publicaccount.MiniGamePublicAccountHelper;
 
 class AccountDetailActivity$6$1
   implements Runnable
@@ -13,13 +15,24 @@ class AccountDetailActivity$6$1
   public void run()
   {
     this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivity$6.this$0.k();
-    if (TextUtils.equals(alof.aQ, this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivity$6.this$0.d)) {
+    if (TextUtils.equals(anhk.aP, this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivity$6.this$0.e)) {
       AccountDetailActivity.a(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivity$6.this$0);
     }
-    while ((!this.jdField_a_of_type_Boolean) || (this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivity$6.this$0.l)) {
+    do
+    {
       return;
-    }
-    this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivity$6.this$0.a(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivity$6.this$0.d, this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivity$6.this$0.b, this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivity$6.this$0.a.name, ChatActivity.class, true);
+      if (MiniGamePublicAccountHelper.shouldOpenWebFragment(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivity$6.this$0.e))
+      {
+        AccountDetailActivity.b(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivity$6.this$0);
+        return;
+      }
+      if (TextUtils.equals(ayck.a, this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivity$6.this$0.e))
+      {
+        AccountDetailActivity.c(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivity$6.this$0);
+        return;
+      }
+    } while ((!this.jdField_a_of_type_Boolean) || (this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivity$6.this$0.l));
+    this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivity$6.this$0.a(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivity$6.this$0.e, 1008, this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivity$6.this$0.a.name, ChatActivity.class, true);
   }
 }
 

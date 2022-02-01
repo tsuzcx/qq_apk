@@ -1,15 +1,13 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
+import java.io.File;
 
-class bndq
-  implements ValueAnimator.AnimatorUpdateListener
+public class bndq
 {
-  bndq(bndn parambndn) {}
-  
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
-  {
-    this.a.invalidateSelf();
-  }
+  public static final String a = bndv.a + File.separator + "gif";
+  public static final String b = a + File.separator + "capture";
+  public static final String c = a + File.separator + "res";
+  public static final String d = a + File.separator + "res_zip_download";
+  public static final String e = c + File.separator + "GifGuide";
+  public static final String f = a + File.separator + "material_config";
 }
 
 

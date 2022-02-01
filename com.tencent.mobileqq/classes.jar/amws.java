@@ -1,86 +1,101 @@
-import android.os.RemoteCallbackList;
-import android.os.RemoteException;
-import com.tencent.mobileqq.ar.ArConfigService;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
+import java.util.Calendar;
 
-public class amws
-  implements amxr
+class amws
+  extends bgzm
 {
-  public amws(ArConfigService paramArConfigService) {}
+  amws(amwr paramamwr) {}
   
-  public void a(int paramInt1, int paramInt2)
+  protected void onApolloDressChange(boolean paramBoolean, Object paramObject)
   {
-    if (ArConfigService.b(this.a) != null) {
-      try
-      {
-        int j = ArConfigService.b(this.a).beginBroadcast();
-        int i = 0;
-        for (;;)
-        {
-          if (i >= j) {
-            break label106;
-          }
-          try
-          {
-            ((amzj)ArConfigService.b(this.a).getBroadcastItem(i)).a(paramInt1, paramInt2);
-            i += 1;
-          }
-          catch (RemoteException localRemoteException)
-          {
-            for (;;)
-            {
-              localRemoteException.printStackTrace();
-            }
-          }
-        }
-        return;
+    if (paramBoolean)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("ApolloGuestsPresenter", 2, "ApolloDressChange uin=" + paramObject);
       }
-      catch (Exception localException)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("ArConfig_ArConfigService", 2, "FaceScanDownloadManager notify onProgress error:" + localException.getMessage());
-        }
+      if (amwr.a(this.a) != null) {
+        amwr.a(this.a).e();
       }
+      this.a.c();
     }
-    label106:
-    ArConfigService.b(this.a).finishBroadcast();
   }
   
-  public void a(int paramInt, boolean paramBoolean)
+  protected void onChangeUserApolloStatus(boolean paramBoolean, Object paramObject) {}
+  
+  protected void onGetZanCount(boolean paramBoolean, Object paramObject)
   {
-    if (ArConfigService.b(this.a) != null) {}
+    if ((!paramBoolean) || (paramObject == null) || (amwr.a(this.a) == null)) {
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("ApolloGuestsPresenter", 2, "get zanCount = " + paramObject);
+    }
+    Object localObject = BaseApplicationImpl.getApplication().getSharedPreferences("cmshow_zan", 0);
+    int i = ((SharedPreferences)localObject).getInt("apollo_zan_count" + amwr.a(this.a), 0);
+    ((SharedPreferences)localObject).edit().putInt("apollo_zan_count" + amwr.a(this.a), ((Integer)paramObject).intValue()).commit();
+    if (((Integer)paramObject).intValue() > 99999) {
+      paramObject = Integer.valueOf(99999);
+    }
     for (;;)
     {
-      int i;
+      localObject = String.valueOf(paramObject);
+      if (((Integer)paramObject).intValue() >= 99999)
+      {
+        paramObject = Integer.valueOf(99999);
+        localObject = paramObject + "+";
+      }
+      for (;;)
+      {
+        amwr.a(this.a).a((String)localObject, i, ((Integer)paramObject).intValue());
+        return;
+      }
+    }
+  }
+  
+  protected void onSetZanCount(boolean paramBoolean, Object paramObject)
+  {
+    if ((paramObject == null) || (amwr.a(this.a) == null) || (amwr.a(this.a) == null)) {
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("ApolloGuestsPresenter", 2, "set zanCount = " + paramObject);
+    }
+    if (paramBoolean) {}
+    label378:
+    for (;;)
+    {
       try
       {
-        int j = ArConfigService.b(this.a).beginBroadcast();
-        i = 0;
-        if (i >= j) {
-          break label129;
+        localObject = BaseApplicationImpl.getApplication().getSharedPreferences("cmshow_zan", 0);
+        Calendar localCalendar = Calendar.getInstance();
+        ((SharedPreferences)localObject).edit().putBoolean(amwr.a(this.a).getCurrentAccountUin() + "apollo_today_has_vote" + amwr.a(this.a) + localCalendar.get(1) + localCalendar.get(2) + localCalendar.get(5), true).commit();
+        if (((Integer)paramObject).intValue() <= 99999) {
+          break label378;
         }
-        if (paramBoolean) {}
-        try
-        {
-          ((amzj)ArConfigService.b(this.a).getBroadcastItem(i)).a(paramInt);
-        }
-        catch (RemoteException localRemoteException)
-        {
-          localRemoteException.printStackTrace();
-        }
-        ((amzj)ArConfigService.b(this.a).getBroadcastItem(i)).b(paramInt, 0);
+        paramObject = Integer.valueOf(99999);
+        amwr.a(this.a).b(((Integer)paramObject).intValue());
+        return;
       }
-      catch (Exception localException)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("ArConfig_ArConfigService", 2, "FaceScanDownloadManager notify onFinish error:" + localException.getMessage());
-        }
+      catch (Exception paramObject) {}
+      if (!QLog.isColorLevel()) {
+        break;
       }
+      QLog.e("ApolloGuestsPresenter", 2, "set zanCount error= " + paramObject.toString());
       return;
-      label129:
-      ArConfigService.b(this.a).finishBroadcast();
+      if (((Long)paramObject).longValue() != -501010L) {
+        break;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("ApolloGuestsPresenter", 2, "today has vote to " + amwr.a(this.a));
+      }
+      paramObject = BaseApplicationImpl.getApplication().getSharedPreferences("cmshow_zan", 0);
+      Object localObject = Calendar.getInstance();
+      paramObject.edit().putBoolean(amwr.a(this.a).getCurrentAccountUin() + "apollo_today_has_vote" + amwr.a(this.a) + ((Calendar)localObject).get(1) + ((Calendar)localObject).get(2) + ((Calendar)localObject).get(5), true).commit();
       return;
-      i += 1;
     }
   }
 }

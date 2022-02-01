@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.activity.richmedia.view;
 
-import ajwp;
+import alpf;
 
 class CameraGLSurfaceView$1
   implements Runnable
 {
-  CameraGLSurfaceView$1(CameraGLSurfaceView paramCameraGLSurfaceView, ajwp paramajwp) {}
+  CameraGLSurfaceView$1(CameraGLSurfaceView paramCameraGLSurfaceView, alpf paramalpf) {}
   
   public void run()
   {
@@ -14,7 +14,7 @@ class CameraGLSurfaceView$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.richmedia.view.CameraGLSurfaceView.1
  * JD-Core Version:    0.7.0.1
  */

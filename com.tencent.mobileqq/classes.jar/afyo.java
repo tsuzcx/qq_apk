@@ -1,26 +1,18 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.aio.item.QQStoryItemBuilder;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.activity.aio.ForwardUtils.SectionBase;
 
-public class afyo
-  implements View.OnClickListener
+public final class afyo
+  implements Parcelable.Creator<ForwardUtils.SectionBase>
 {
-  public afyo(QQStoryItemBuilder paramQQStoryItemBuilder) {}
-  
-  public void onClick(View paramView)
+  public ForwardUtils.SectionBase a(Parcel paramParcel)
   {
-    afyu localafyu = (afyu)aepi.a(paramView);
-    if (paramView == localafyu.jdField_a_of_type_AndroidWidgetFrameLayout) {
-      this.a.b(localafyu);
-    }
-    for (;;)
-    {
-      azqs.b(this.a.a, "dc00898", "", "", "0x8009434", "0x8009434", 0, 0, "", "5", "", "");
-      return;
-      if (paramView == localafyu.jdField_a_of_type_AndroidWidgetRelativeLayout) {
-        this.a.a(localafyu);
-      }
-    }
+    return new ForwardUtils.SectionBase(paramParcel);
+  }
+  
+  public ForwardUtils.SectionBase[] a(int paramInt)
+  {
+    return new ForwardUtils.SectionBase[paramInt];
   }
 }
 

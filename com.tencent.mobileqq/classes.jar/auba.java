@@ -1,20 +1,42 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.medalwall.MedalGuideView;
+import android.os.Handler.Callback;
+import android.os.Message;
+import com.tencent.mobileqq.filemanageraux.fileviewer.FileView.TdsDebugView;
+import java.lang.ref.WeakReference;
 
-public class auba
-  implements DialogInterface.OnDismissListener
+public final class auba
+  implements Handler.Callback
 {
-  public auba(MedalGuideView paramMedalGuideView) {}
+  private final WeakReference<TdsDebugView> a;
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  private auba(TdsDebugView paramTdsDebugView)
   {
-    MedalGuideView.a(this.a);
+    this.a = new WeakReference(paramTdsDebugView);
+  }
+  
+  public boolean handleMessage(Message paramMessage)
+  {
+    TdsDebugView localTdsDebugView = (TdsDebugView)this.a.get();
+    if (localTdsDebugView == null) {
+      return true;
+    }
+    switch (paramMessage.what)
+    {
+    default: 
+      return true;
+    case 1: 
+      TdsDebugView.a(localTdsDebugView, (String)paramMessage.obj, paramMessage.arg1);
+      return true;
+    case 2: 
+      TdsDebugView.b(localTdsDebugView, (String)paramMessage.obj, paramMessage.arg1);
+      return true;
+    }
+    TdsDebugView.c(localTdsDebugView, (String)paramMessage.obj, paramMessage.arg1);
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     auba
  * JD-Core Version:    0.7.0.1
  */

@@ -10,18 +10,20 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Build.VERSION;
 import android.os.Process;
-import bglv;
-import bgud;
-import com.tencent.qqmini.sdk.launcher.AppBrandLaunchManager;
+import android.text.TextUtils;
+import com.tencent.qqmini.sdk.annotation.MiniKeep;
 import com.tencent.qqmini.sdk.launcher.AppLoaderFactory;
+import com.tencent.qqmini.sdk.launcher.core.IMiniAppContext;
+import com.tencent.qqmini.sdk.launcher.log.QMLog;
 import com.tencent.qqmini.sdk.launcher.shell.IAppBrandProxy;
-import com.tencent.qqmini.sdk.log.QMLog;
 import java.util.Iterator;
-import java.util.LinkedHashMap;
 import java.util.List;
 
+@MiniKeep
 public class ProcessUtil
 {
+  public static String processName = "";
+  
   public static void exitProcess(Activity paramActivity)
   {
     AppLoaderFactory.g().getAppBrandProxy().onAppDestroy(null);
@@ -29,10 +31,10 @@ public class ProcessUtil
     Process.killProcess(Process.myPid());
   }
   
-  public static void exitProcess(bglv parambglv)
+  public static void exitProcess(IMiniAppContext paramIMiniAppContext)
   {
     AppLoaderFactory.g().getAppBrandProxy().onAppDestroy(null);
-    finishAndRemoveAllTasks(parambglv.a());
+    finishAndRemoveAllTasks(paramIMiniAppContext.getAttachedActivity());
     Process.killProcess(Process.myPid());
   }
   
@@ -74,33 +76,19 @@ public class ProcessUtil
   
   public static String getCurrentProcessName(Context paramContext)
   {
-    int i = Process.myPid();
-    Object localObject = "";
-    Iterator localIterator = ((ActivityManager)paramContext.getSystemService("activity")).getRunningAppProcesses().iterator();
-    paramContext = (Context)localObject;
-    if (localIterator.hasNext())
+    if (TextUtils.isEmpty(processName))
     {
-      localObject = (ActivityManager.RunningAppProcessInfo)localIterator.next();
-      if (((ActivityManager.RunningAppProcessInfo)localObject).pid != i) {
-        break label64;
+      int i = Process.myPid();
+      paramContext = ((ActivityManager)paramContext.getSystemService("activity")).getRunningAppProcesses().iterator();
+      while (paramContext.hasNext())
+      {
+        ActivityManager.RunningAppProcessInfo localRunningAppProcessInfo = (ActivityManager.RunningAppProcessInfo)paramContext.next();
+        if (localRunningAppProcessInfo.pid == i) {
+          processName = localRunningAppProcessInfo.processName;
+        }
       }
-      paramContext = ((ActivityManager.RunningAppProcessInfo)localObject).processName;
     }
-    label64:
-    for (;;)
-    {
-      break;
-      return paramContext;
-    }
-  }
-  
-  private static bgud getCurrentProcessorInfo(Context paramContext)
-  {
-    paramContext = getCurrentProcessName(paramContext);
-    if (paramContext != null) {
-      return (bgud)AppBrandLaunchManager.subProcessorInfoMap.get(paramContext);
-    }
-    return null;
+    return processName;
   }
   
   public static boolean isMainProcess(Context paramContext)
@@ -110,7 +98,7 @@ public class ProcessUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.qqmini.sdk.utils.ProcessUtil
  * JD-Core Version:    0.7.0.1
  */

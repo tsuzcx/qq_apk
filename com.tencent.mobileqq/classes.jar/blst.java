@@ -1,18 +1,15 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import dov.com.qq.im.capture.data.QIMBeautyItem;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import android.support.v4.app.FragmentActivity;
 
 public final class blst
-  implements Parcelable.Creator<QIMBeautyItem>
+  implements DialogInterface.OnDismissListener
 {
-  public QIMBeautyItem a(Parcel paramParcel)
-  {
-    return new QIMBeautyItem(paramParcel);
-  }
+  public blst(FragmentActivity paramFragmentActivity) {}
   
-  public QIMBeautyItem[] a(int paramInt)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    return new QIMBeautyItem[paramInt];
+    this.a.finish();
   }
 }
 

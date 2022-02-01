@@ -46,11 +46,13 @@ public class LaunchParam
   public static final int LAUNCH_SCENE_DESKTOP_TOP_BANNER = 3011;
   public static final int LAUNCH_SCENE_FILE_TENCENT_DOC = 2012;
   public static final int LAUNCH_SCENE_FILE_WEIYUN = 2011;
+  public static final int LAUNCH_SCENE_FLOAT_DRAG_AD = 2115;
   public static final int LAUNCH_SCENE_INTIMATE_RELATIONSHIP_PLAY_TOGETHER = 2064;
   public static final int LAUNCH_SCENE_KUOLIE_RECOMM = 2065;
   public static final int LAUNCH_SCENE_LEBA = 2007;
   public static final int LAUNCH_SCENE_LEBA_MINIAPP = 2050;
   public static final int LAUNCH_SCENE_MAIN_ENTRY = 1001;
+  public static final int LAUNCH_SCENE_MINI_APP_ONCE_SUBSCRIBE = 2105;
   public static final int LAUNCH_SCENE_MINI_APP_PROFILE = 1024;
   public static final int LAUNCH_SCENE_MINI_APP_SUBSCRIBE = 2085;
   public static final int LAUNCH_SCENE_MINI_CODE_FROM_ALBUM = 1049;
@@ -104,9 +106,11 @@ public class LaunchParam
   public String fromMiniAppId;
   public MiniAppInfo fromMiniAppInfo;
   public boolean isFakeAppInfo;
+  public boolean isFlutterMode;
   public long launchClickTimeMillis;
   public String miniAppId;
   public String navigateExtData;
+  public String privateExtraData;
   public String reportData;
   public int scene = 1001;
   public String shareTicket;
@@ -163,10 +167,15 @@ public class LaunchParam
     this.entryModel = paramLaunchParam.entryModel;
     this.fromBackToMiniApp = paramLaunchParam.fromBackToMiniApp;
     this.isFakeAppInfo = paramLaunchParam.isFakeAppInfo;
+    this.isFlutterMode = paramLaunchParam.isFlutterMode;
+    this.fromEnvVersion = paramLaunchParam.fromEnvVersion;
+    this.fromMiniAppInfo = paramLaunchParam.fromMiniAppInfo;
+    this.privateExtraData = paramLaunchParam.privateExtraData;
   }
   
   public void createFrom(Parcel paramParcel)
   {
+    boolean bool2 = true;
     this.scene = paramParcel.readInt();
     this.miniAppId = paramParcel.readString();
     this.extraKey = paramParcel.readString();
@@ -182,17 +191,35 @@ public class LaunchParam
     this.extendData = paramParcel.readString();
     this.entryModel = ((EntryModel)paramParcel.readParcelable(EntryModel.class.getClassLoader()));
     this.fromBackToMiniApp = paramParcel.readInt();
-    if (paramParcel.readInt() == 1) {}
-    for (boolean bool = true;; bool = false)
+    if (paramParcel.readInt() == 1)
     {
-      this.isFakeAppInfo = bool;
+      bool1 = true;
+      this.isFakeAppInfo = bool1;
+      if (paramParcel.readInt() != 1) {
+        break label200;
+      }
+    }
+    label200:
+    for (boolean bool1 = bool2;; bool1 = false)
+    {
+      this.isFlutterMode = bool1;
+      this.fromEnvVersion = paramParcel.readString();
+      this.fromMiniAppInfo = ((MiniAppInfo)paramParcel.readParcelable(MiniAppInfo.class.getClassLoader()));
+      this.privateExtraData = paramParcel.readString();
       return;
+      bool1 = false;
+      break;
     }
   }
   
   public int describeContents()
   {
     return 0;
+  }
+  
+  public boolean fromBackToMiniApp()
+  {
+    return this.fromBackToMiniApp == 1;
   }
   
   public String getScheme()
@@ -251,11 +278,12 @@ public class LaunchParam
   
   public String toString()
   {
-    return "LaunchParam{scene=" + this.scene + ", miniAppId='" + this.miniAppId + '\'' + ", extraKey='" + this.extraKey + '\'' + ", entryPath='" + this.entryPath + '\'' + ", extendData='" + this.extendData + '\'' + ", navigateExtData='" + this.navigateExtData + '\'' + ", fromMiniAppId='" + this.fromMiniAppId + '\'' + ", fakeUrl='" + this.fakeUrl + '\'' + ", timestamp=" + this.timestamp + ", launchClickTimeMillis=" + this.launchClickTimeMillis + ", tempState=" + this.tempState + ", shareTicket=" + this.shareTicket + ", envVersion=" + this.envVersion + ", reportData=" + this.reportData + ", fromBackToMiniApp=" + this.fromBackToMiniApp + '}';
+    return "LaunchParam{scene=" + this.scene + ", miniAppId='" + this.miniAppId + '\'' + ", extraKey='" + this.extraKey + '\'' + ", entryPath='" + this.entryPath + '\'' + ", extendData='" + this.extendData + '\'' + ", navigateExtData='" + this.navigateExtData + '\'' + ", fromMiniAppId='" + this.fromMiniAppId + '\'' + ", fakeUrl='" + this.fakeUrl + '\'' + ", timestamp=" + this.timestamp + ", launchClickTimeMillis=" + this.launchClickTimeMillis + ", tempState=" + this.tempState + ", shareTicket=" + this.shareTicket + ", envVersion=" + this.envVersion + ", reportData=" + this.reportData + ", fromBackToMiniApp=" + this.fromBackToMiniApp + ", isFakeAppInfo=" + this.isFakeAppInfo + ", isFlutterMode=" + this.isFlutterMode + '}';
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
+    int j = 1;
     paramParcel.writeInt(this.scene);
     paramParcel.writeString(this.miniAppId);
     paramParcel.writeString(this.extraKey);
@@ -271,17 +299,30 @@ public class LaunchParam
     paramParcel.writeString(this.extendData);
     paramParcel.writeParcelable(this.entryModel, paramInt);
     paramParcel.writeInt(this.fromBackToMiniApp);
-    if (this.isFakeAppInfo) {}
-    for (paramInt = 1;; paramInt = 0)
+    if (this.isFakeAppInfo)
     {
-      paramParcel.writeInt(paramInt);
+      i = 1;
+      paramParcel.writeInt(i);
+      if (!this.isFlutterMode) {
+        break label184;
+      }
+    }
+    label184:
+    for (int i = j;; i = 0)
+    {
+      paramParcel.writeInt(i);
+      paramParcel.writeString(this.fromEnvVersion);
+      paramParcel.writeParcelable(this.fromMiniAppInfo, paramInt);
+      paramParcel.writeString(this.privateExtraData);
       return;
+      i = 0;
+      break;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.launcher.model.LaunchParam
  * JD-Core Version:    0.7.0.1
  */

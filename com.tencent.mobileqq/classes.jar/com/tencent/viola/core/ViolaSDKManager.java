@@ -11,6 +11,7 @@ import com.tencent.viola.adapter.VWebSocketAdapter;
 import com.tencent.viola.bridge.ViolaBridgeManager;
 import com.tencent.viola.commons.IReportDelegate;
 import com.tencent.viola.commons.ViolaThread;
+import com.tencent.viola.nativevue.NativeVueEngine;
 import com.tencent.viola.utils.ViolaLogUtils;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
@@ -46,6 +47,7 @@ public class ViolaSDKManager
   private IReportDelegate mReportDelegate;
   private BlockingQueue<Runnable> mTaskQueue;
   private VWebSocketAdapter mWebsocketAdapter;
+  private NativeVueEngine nativeVueEngine;
   
   private ViolaSDKManager()
   {
@@ -112,13 +114,9 @@ public class ViolaSDKManager
   @Deprecated
   void createInstance(ViolaInstance paramViolaInstance, String paramString1, Map<String, Object> paramMap, String paramString2)
   {
-    this.mRenderMgr.registerInstance(paramViolaInstance);
     if (paramViolaInstance != null)
     {
-      this.mRenderMgr.registerInstance(paramViolaInstance);
-      if (instanceIdList != null) {
-        instanceIdList.add(paramViolaInstance.getInstanceId());
-      }
+      registerInstanceAndId(paramViolaInstance);
       String str = paramString2;
       if (TextUtils.isEmpty(paramString2)) {
         str = "";
@@ -133,16 +131,30 @@ public class ViolaSDKManager
     ViolaLogUtils.d("debugForTimeCost", "createInstanceJSSource : " + System.currentTimeMillis());
     if (paramViolaInstance != null)
     {
-      this.mRenderMgr.registerInstance(paramViolaInstance);
-      if (instanceIdList != null) {
-        instanceIdList.add(paramViolaInstance.getInstanceId());
-      }
+      registerInstanceAndId(paramViolaInstance);
       String str = paramString3;
       if (TextUtils.isEmpty(paramString3)) {
         str = "";
       }
       this.mBridgeMgr.createInstanceBySource(paramViolaInstance.getInstanceId(), paramString1, paramString2, str);
     }
+  }
+  
+  public String createVueDom(String paramString1, String paramString2)
+  {
+    if (this.nativeVueEngine == null) {
+      this.nativeVueEngine = new NativeVueEngine();
+    }
+    try
+    {
+      paramString1 = this.nativeVueEngine.createDom(paramString2, paramString1);
+      return paramString1;
+    }
+    catch (Throwable paramString1)
+    {
+      ViolaLogUtils.e("ViolaSDKManager", paramString1.getMessage());
+    }
+    return "";
   }
   
   void destroyInstance(String paramString)
@@ -256,6 +268,23 @@ public class ViolaSDKManager
     return this.mWebsocketAdapter;
   }
   
+  public boolean initNativeVue(String paramString1, String paramString2)
+  {
+    if (this.nativeVueEngine == null) {
+      this.nativeVueEngine = new NativeVueEngine();
+    }
+    try
+    {
+      boolean bool = this.nativeVueEngine.init(paramString1, paramString2);
+      return bool;
+    }
+    catch (Throwable paramString1)
+    {
+      ViolaLogUtils.e("ViolaSDKManager", paramString1.getMessage());
+    }
+    return false;
+  }
+  
   void initScriptsFramework(String paramString1, ViolaSDKEngine.InitCallback paramInitCallback, String paramString2)
   {
     if (TextUtils.isEmpty(paramString1)) {
@@ -333,6 +362,17 @@ public class ViolaSDKManager
     this.mBridgeMgr.registerComponents(paramList);
   }
   
+  public void registerInstanceAndId(ViolaInstance paramViolaInstance)
+  {
+    if ((paramViolaInstance == null) || (TextUtils.isEmpty(paramViolaInstance.getInstanceId()))) {}
+    do
+    {
+      return;
+      this.mRenderMgr.registerInstance(paramViolaInstance);
+    } while ((instanceIdList == null) || (instanceIdList.contains(paramViolaInstance.getInstanceId())));
+    instanceIdList.add(paramViolaInstance.getInstanceId());
+  }
+  
   public void registerModules(Map<String, Object> paramMap)
   {
     this.mBridgeMgr.registerModules(paramMap);
@@ -399,7 +439,7 @@ public class ViolaSDKManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.viola.core.ViolaSDKManager
  * JD-Core Version:    0.7.0.1
  */

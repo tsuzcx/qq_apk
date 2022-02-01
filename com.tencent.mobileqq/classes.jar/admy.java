@@ -1,16 +1,21 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.PhoneUnityBindInfoActivity;
+import android.view.View;
+import com.tencent.mobileqq.activity.AssociatedAccountActivity;
 
-class admy
-  implements DialogInterface.OnClickListener
+public class admy
+  implements bkhw
 {
-  admy(admx paramadmx) {}
+  public admy(AssociatedAccountActivity paramAssociatedAccountActivity, bkho parambkho) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void OnClick(View paramView, int paramInt)
   {
-    this.a.a.setResult(4003);
-    this.a.a.finish();
+    switch (paramInt)
+    {
+    default: 
+      return;
+    }
+    this.jdField_a_of_type_Bkho.cancel();
+    this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountActivity.app, this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountActivity.getString(2131690709));
+    bcst.b(this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountActivity.app, "dc00898", "", "", "0X800AC3E", "0X800AC3E", 0, 0, "", "", "", "");
   }
 }
 

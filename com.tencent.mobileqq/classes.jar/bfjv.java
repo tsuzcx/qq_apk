@@ -1,243 +1,306 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.text.TextUtils;
-import com.tencent.open.appcommon.now.download.js.DownloadCallbackWebImpl.1;
-import com.tencent.open.downloadnew.DownloadInfo;
-import com.tencent.smtt.sdk.WebView;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.TroopInfo;
+import com.tencent.mobileqq.utils.ChnToSpell;
+import com.tencent.mobileqq.widget.QQToast;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.LinkedHashMap;
 import java.util.List;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 public class bfjv
-  implements bfju
+  implements bfjr
 {
-  protected static bfjv a;
-  protected Handler a;
+  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
+  bfjs jdField_a_of_type_Bfjs;
+  boolean jdField_a_of_type_Boolean;
   
-  protected bfjv()
+  public bfjv(bfjs parambfjs)
   {
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
+    this.jdField_a_of_type_Bfjs = parambfjs;
+    a();
   }
   
-  public static bfjv a()
+  public static ajtt a()
   {
-    if (jdField_a_of_type_Bfjv == null) {
-      jdField_a_of_type_Bfjv = new bfjv();
-    }
-    return jdField_a_of_type_Bfjv;
+    ajtt localajtt = new ajtt();
+    localajtt.jdField_a_of_type_JavaLangString = "0";
+    localajtt.b = anni.a(2131710002);
+    localajtt.j = anni.a(2131710005);
+    localajtt.g = anni.a(2131710003);
+    localajtt.l = ChnToSpell.a(localajtt.j, 1);
+    localajtt.k = ChnToSpell.a(localajtt.j, 2);
+    return localajtt;
   }
   
-  protected String a(int paramInt)
+  public static ArrayList<ajtt> a(String paramString, List<ajtt> paramList, QQAppInterface paramQQAppInterface, TroopInfo paramTroopInfo)
   {
-    JSONObject localJSONObject = new JSONObject();
-    try
+    paramQQAppInterface = new ArrayList();
+    paramList = paramList.iterator();
+    while (paramList.hasNext())
     {
-      localJSONObject.put("nettype", paramInt);
-      return localJSONObject.toString();
-    }
-    catch (JSONException localJSONException)
-    {
-      for (;;)
+      ajtt localajtt = (ajtt)paramList.next();
+      if ((bfjk.a(localajtt.j, paramString)) || (bfjk.a(localajtt.k, paramString)) || (bfjk.a(localajtt.l, paramString)))
       {
-        bflp.c("DownloadCallbackWebImpl", "getCallBackJsonObject >>> ", localJSONException);
+        localajtt.v = localajtt.j;
+        localajtt.w = localajtt.l;
+        localajtt.x = localajtt.k;
+        paramQQAppInterface.add(localajtt);
       }
-    }
-  }
-  
-  protected String a(String paramString1, int paramInt1, int paramInt2, String paramString2, int paramInt3, String paramString3, int paramInt4, int paramInt5)
-  {
-    JSONObject localJSONObject = new JSONObject();
-    try
-    {
-      localJSONObject.put("packagename", paramString2);
-      localJSONObject.put("appid", paramString1);
-      localJSONObject.put("state", paramInt1);
-      localJSONObject.put("pro", paramInt2);
-      localJSONObject.put("ismyapp", paramInt3);
-      localJSONObject.put("errorMsg", paramString3);
-      localJSONObject.put("errorCode", paramInt4);
-      localJSONObject.put("writecodestate", paramInt5);
-      return localJSONObject.toString();
-    }
-    catch (JSONException paramString1)
-    {
-      for (;;)
+      else if ((bfjk.a(localajtt.m, paramString)) || (bfjk.a(localajtt.n, paramString)) || (bfjk.a(localajtt.o, paramString)))
       {
-        bflp.c("DownloadCallbackWebImpl", "getCallBackJsonObject >>> ", paramString1);
+        localajtt.v = localajtt.m;
+        localajtt.w = localajtt.o;
+        localajtt.x = localajtt.n;
+        paramQQAppInterface.add(localajtt);
       }
-    }
-  }
-  
-  protected String a(String paramString1, int paramInt, String paramString2)
-  {
-    JSONObject localJSONObject = new JSONObject();
-    try
-    {
-      localJSONObject.put("packagename", paramString2);
-      localJSONObject.put("appid", paramString1);
-      localJSONObject.put("state", paramInt);
-      localJSONObject.put("pro", 0);
-      return localJSONObject.toString();
-    }
-    catch (JSONException paramString1)
-    {
-      for (;;)
+      else if ((bfjk.a(localajtt.g, paramString)) || (bfjk.a(localajtt.h, paramString)) || (bfjk.a(localajtt.i, paramString)))
       {
-        bflp.c("DownloadCallbackWebImpl", "getCallBackJsonObject >>> ", paramString1);
+        localajtt.v = localajtt.g;
+        localajtt.w = localajtt.i;
+        localajtt.x = localajtt.h;
+        paramQQAppInterface.add(localajtt);
       }
-    }
-  }
-  
-  public JSONObject a(DownloadInfo paramDownloadInfo, int paramInt)
-  {
-    JSONObject localJSONObject = new JSONObject();
-    try
-    {
-      localJSONObject.put("appid", paramDownloadInfo.jdField_c_of_type_JavaLangString);
-      localJSONObject.put("state", paramDownloadInfo.a());
-      localJSONObject.put("pro", paramDownloadInfo.f);
-      localJSONObject.put("packagename", paramDownloadInfo.e);
-      localJSONObject.put("ismyapp", paramDownloadInfo.jdField_c_of_type_Int);
-      localJSONObject.put("download_from", paramDownloadInfo.jdField_h_of_type_Int);
-      localJSONObject.put("realDownloadType", paramDownloadInfo.jdField_d_of_type_Int);
-      localJSONObject.put("via", paramDownloadInfo.jdField_h_of_type_JavaLangString);
-      localJSONObject.put("writecodestate", paramDownloadInfo.j);
-      localJSONObject.put("extraInfo", paramDownloadInfo.o);
-      localJSONObject.put("isAutoInstallBySDK", paramDownloadInfo.jdField_d_of_type_Boolean);
-      localJSONObject.put("queryResult", paramInt);
-      return localJSONObject;
-    }
-    catch (JSONException paramDownloadInfo)
-    {
-      bflp.c("DownloadCallbackWebImpl", "onNetworkConnect " + paramDownloadInfo.getMessage(), paramDownloadInfo);
-    }
-    return localJSONObject;
-  }
-  
-  public void a(int paramInt)
-  {
-    a(a(paramInt));
-  }
-  
-  public void a(DownloadInfo paramDownloadInfo, int paramInt)
-  {
-    if (paramDownloadInfo != null) {
-      a(a(paramDownloadInfo, paramInt).toString());
-    }
-  }
-  
-  protected void a(String paramString)
-  {
-    bfjz localbfjz = bfjz.a();
-    for (;;)
-    {
-      int i;
-      try
+      else
       {
-        int j = localbfjz.a().size();
-        i = 0;
-        if (i < j)
+        String str1;
+        String str2;
+        String str3;
+        if (bfjk.a(localajtt.jdField_a_of_type_JavaLangString, paramString))
         {
-          Object localObject = (bfmu)localbfjz.a().get(i);
-          WebView localWebView = ((bfmu)localObject).getWebview();
-          if (localWebView != null) {
-            if (TextUtils.isEmpty(((bfmu)localObject).getJsCallbackMethod()))
-            {
-              localObject = "javascript:if (typeof(QzoneApp) === 'object' && typeof(QzoneApp.fire) === 'function') { QzoneApp.fire('loadProcess'," + paramString + ");}void(0);";
-              bflp.a("DownloadCallbackWebImpl", " commonJsCallBack >>> " + (String)localObject);
-              this.jdField_a_of_type_AndroidOsHandler.post(new DownloadCallbackWebImpl.1(this, localWebView, (String)localObject));
-            }
-            else
-            {
-              localObject = "javascript:" + ((bfmu)localObject).getJsCallbackMethod() + "(" + paramString + ")";
-              continue;
-            }
+          str1 = bfjk.c(localajtt);
+          str2 = bfjk.d(localajtt);
+          str3 = bfjk.e(localajtt);
+          localajtt.v = str1;
+          localajtt.w = str3;
+          localajtt.x = str2;
+          paramQQAppInterface.add(localajtt);
+        }
+        else if (a(localajtt, paramString, paramTroopInfo))
+        {
+          str1 = bfjk.c(localajtt);
+          str2 = bfjk.d(localajtt);
+          str3 = bfjk.e(localajtt);
+          localajtt.v = str1;
+          localajtt.w = str3;
+          localajtt.x = str2;
+          paramQQAppInterface.add(localajtt);
+        }
+        else if (b(localajtt, paramString, paramTroopInfo))
+        {
+          str1 = bfjk.c(localajtt);
+          str2 = bfjk.d(localajtt);
+          str3 = bfjk.e(localajtt);
+          localajtt.v = str1;
+          localajtt.w = str3;
+          localajtt.x = str2;
+          paramQQAppInterface.add(localajtt);
+        }
+        else if (c(localajtt, paramString, paramTroopInfo))
+        {
+          str1 = bfjk.c(localajtt);
+          str2 = bfjk.d(localajtt);
+          str3 = bfjk.e(localajtt);
+          localajtt.v = str1;
+          localajtt.w = str3;
+          localajtt.x = str2;
+          paramQQAppInterface.add(localajtt);
+        }
+      }
+    }
+    return paramQQAppInterface;
+  }
+  
+  public static List<ajtt> a(QQAppInterface paramQQAppInterface, List<ajtt> paramList, boolean paramBoolean)
+  {
+    if (!paramBoolean) {
+      return paramList;
+    }
+    paramQQAppInterface = (bftx)paramQQAppInterface.getManager(203);
+    ArrayList localArrayList = new ArrayList();
+    paramList = paramList.iterator();
+    while (paramList.hasNext())
+    {
+      ajtt localajtt = (ajtt)paramList.next();
+      if (!paramQQAppInterface.b(localajtt.jdField_a_of_type_JavaLangString)) {
+        localArrayList.add(localajtt);
+      }
+    }
+    return localArrayList;
+  }
+  
+  private static boolean a(ajtt paramajtt, String paramString, TroopInfo paramTroopInfo)
+  {
+    boolean bool2 = false;
+    ajtt localajtt = new ajtt();
+    boolean bool1 = bool2;
+    if (paramTroopInfo != null)
+    {
+      bool1 = bool2;
+      if (paramajtt != null)
+      {
+        bool1 = bool2;
+        if (paramTroopInfo.isTroopOwner(paramajtt.jdField_a_of_type_JavaLangString))
+        {
+          localajtt.b = anni.a(2131710004);
+          localajtt.j = anni.a(2131710000);
+          localajtt.l = ChnToSpell.a(localajtt.j, 1);
+          localajtt.k = ChnToSpell.a(localajtt.j, 2);
+          if ((!bfjk.a(localajtt.j, paramString)) && (!bfjk.a(localajtt.k, paramString)))
+          {
+            bool1 = bool2;
+            if (!bfjk.a(localajtt.l, paramString)) {}
           }
+          else
+          {
+            bool1 = true;
+          }
+        }
+      }
+    }
+    return bool1;
+  }
+  
+  public static boolean a(String paramString, ajtt paramajtt)
+  {
+    if ("all".equalsIgnoreCase(paramString)) {}
+    String str1;
+    String str2;
+    do
+    {
+      return true;
+      str1 = bfjk.c(paramajtt);
+      str2 = bfjk.d(paramajtt);
+      paramajtt = bfjk.e(paramajtt);
+    } while ((bfjk.a(str1, paramString)) || (bfjk.a(str2, paramString)) || (bfjk.a(paramajtt, paramString)));
+    return false;
+  }
+  
+  private static boolean b(ajtt paramajtt, String paramString, TroopInfo paramTroopInfo)
+  {
+    boolean bool2 = false;
+    ajtt localajtt = new ajtt();
+    boolean bool1 = bool2;
+    if (paramTroopInfo != null)
+    {
+      bool1 = bool2;
+      if (paramajtt != null)
+      {
+        bool1 = bool2;
+        if (paramTroopInfo.isTroopAdmin(paramajtt.jdField_a_of_type_JavaLangString))
+        {
+          localajtt.b = anni.a(2131709996);
+          localajtt.j = anni.a(2131709999);
+          localajtt.l = ChnToSpell.a(localajtt.j, 1);
+          localajtt.k = ChnToSpell.a(localajtt.j, 2);
+          if ((!bfjk.a(localajtt.j, paramString)) && (!bfjk.a(localajtt.k, paramString)))
+          {
+            bool1 = bool2;
+            if (!bfjk.a(localajtt.l, paramString)) {}
+          }
+          else
+          {
+            bool1 = true;
+          }
+        }
+      }
+    }
+    return bool1;
+  }
+  
+  private static boolean c(ajtt paramajtt, String paramString, TroopInfo paramTroopInfo)
+  {
+    boolean bool2 = false;
+    paramTroopInfo = new ajtt();
+    boolean bool1 = bool2;
+    if (paramajtt != null)
+    {
+      bool1 = bool2;
+      if (paramajtt.jdField_a_of_type_Boolean)
+      {
+        paramTroopInfo.b = anni.a(2131709997);
+        paramTroopInfo.j = anni.a(2131710001);
+        paramTroopInfo.l = ChnToSpell.a(paramTroopInfo.j, 1);
+        paramTroopInfo.k = ChnToSpell.a(paramTroopInfo.j, 2);
+        if ((!bfjk.a(paramTroopInfo.j, paramString)) && (!bfjk.a(paramTroopInfo.k, paramString)))
+        {
+          bool1 = bool2;
+          if (!bfjk.a(paramTroopInfo.l, paramString)) {}
         }
         else
         {
-          return;
+          bool1 = true;
         }
       }
-      catch (Exception paramString)
-      {
-        bflp.c("DownloadCallbackWebImpl", "doJsCallback >>> ", paramString);
-      }
-      i += 1;
     }
+    return bool1;
   }
   
-  public void a(List<DownloadInfo> paramList) {}
-  
-  public void installSucceed(String paramString1, String paramString2)
+  void a()
   {
-    a(a(paramString1, 6, paramString2));
+    Bitmap localBitmap = BitmapFactory.decodeResource(BaseApplicationImpl.getApplication().getResources(), 2130842420);
+    this.jdField_a_of_type_AndroidGraphicsBitmap = this.jdField_a_of_type_Bfjs.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(localBitmap);
   }
   
-  public void onDownloadCancel(DownloadInfo paramDownloadInfo)
+  public void a(View paramView)
   {
-    if (paramDownloadInfo != null) {
-      a(a(paramDownloadInfo, -1).toString());
-    }
-  }
-  
-  public void onDownloadError(DownloadInfo paramDownloadInfo, int paramInt1, String paramString, int paramInt2)
-  {
-    if (paramDownloadInfo != null) {
-      a(a(paramDownloadInfo.jdField_c_of_type_JavaLangString, paramInt2, paramDownloadInfo.f, paramDownloadInfo.e, paramDownloadInfo.jdField_c_of_type_Int, paramString, paramInt1, paramDownloadInfo.j));
-    }
-  }
-  
-  public void onDownloadFinish(DownloadInfo paramDownloadInfo)
-  {
-    if (paramDownloadInfo != null) {
-      a(a(paramDownloadInfo, -1).toString());
-    }
-  }
-  
-  public void onDownloadPause(DownloadInfo paramDownloadInfo)
-  {
-    if (paramDownloadInfo != null) {
-      a(a(paramDownloadInfo, -1).toString());
-    }
-  }
-  
-  public void onDownloadUpdate(List<DownloadInfo> paramList)
-  {
-    if (paramList != null)
+    boolean bool = false;
+    if ((paramView instanceof TextView))
     {
-      JSONArray localJSONArray = new JSONArray();
-      paramList = paramList.iterator();
-      while (paramList.hasNext()) {
-        localJSONArray.put(a((DownloadInfo)paramList.next(), -1));
+      paramView = (TextView)paramView;
+      if (this.jdField_a_of_type_Boolean)
+      {
+        paramView.setText(2131693880);
+        if (this.jdField_a_of_type_Bfjs.jdField_a_of_type_Bfjh != null) {
+          this.jdField_a_of_type_Bfjs.jdField_a_of_type_Bfjh.a();
+        }
+        if (!this.jdField_a_of_type_Boolean) {
+          bool = true;
+        }
+        this.jdField_a_of_type_Boolean = bool;
       }
-      a(localJSONArray.toString());
+    }
+    else
+    {
+      return;
+    }
+    paramView.setText(2131692257);
+    if (this.jdField_a_of_type_Bfjs.b) {
+      this.jdField_a_of_type_Bfjs.notifyDataSetChanged();
+    }
+    for (;;)
+    {
+      bcst.b(this.jdField_a_of_type_Bfjs.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800A48F", "0X800A48F", 0, 0, "", "", "", "");
+      break;
+      this.jdField_a_of_type_Bfjs.jdField_a_of_type_Bfjh.a(this.jdField_a_of_type_Bfjs.jdField_a_of_type_JavaLangString, true);
     }
   }
   
-  public void onDownloadWait(DownloadInfo paramDownloadInfo)
+  void a(ImageView paramImageView)
   {
-    if (paramDownloadInfo != null) {
-      a(a(paramDownloadInfo, -1).toString());
+    if (paramImageView != null) {
+      paramImageView.setImageBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap);
     }
   }
   
-  public void packageReplaced(String paramString1, String paramString2)
+  boolean a()
   {
-    a(a(paramString1, 13, paramString2));
+    return this.jdField_a_of_type_Bfjs.jdField_a_of_type_JavaUtilLinkedHashMap.size() >= 20;
   }
   
-  public void uninstallSucceed(String paramString1, String paramString2)
+  void b()
   {
-    a(a(paramString1, 9, paramString2));
+    QQToast.a(BaseApplicationImpl.context, 0, anni.a(2131709998), 0).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bfjv
  * JD-Core Version:    0.7.0.1
  */

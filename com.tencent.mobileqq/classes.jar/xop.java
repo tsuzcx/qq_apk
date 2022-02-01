@@ -1,82 +1,28 @@
-import android.content.Context;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.ImageView;
-import com.tencent.biz.qqstory.takevideo.view.widget.colorbar.HorizontalSelectColorLayout;
-import java.util.ArrayList;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
 
-public class xop
-  extends BaseAdapter
+class xop
+  implements xpm
 {
-  int jdField_a_of_type_Int = -1;
-  Context jdField_a_of_type_AndroidContentContext;
-  ArrayList<xou> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  xop(xol paramxol, StoryVideoItem paramStoryVideoItem) {}
   
-  public xop(HorizontalSelectColorLayout paramHorizontalSelectColorLayout, Context paramContext)
+  public void a(xpl paramxpl)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-  }
-  
-  public void a(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-    notifyDataSetChanged();
-  }
-  
-  public void a(ArrayList<xou> paramArrayList)
-  {
-    this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
-    notifyDataSetChanged();
-  }
-  
-  public int getCount()
-  {
-    return this.jdField_a_of_type_JavaUtilArrayList.size();
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    return this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    xou localxou = (xou)getItem(paramInt);
-    View localView;
-    if (paramView == null)
+    if (this.jdField_a_of_type_Xol.isCanceled()) {}
+    do
     {
-      localView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131561434, paramViewGroup, false);
-      paramView = new xoq(this);
-      paramView.a = ((ImageView)localView.findViewById(2131368477));
-      paramView.b = ((ImageView)localView.findViewById(2131368569));
-      localView.setTag(paramView);
-      paramViewGroup = paramView;
-    }
-    for (;;)
-    {
-      paramViewGroup.a.setImageDrawable(localxou.a);
-      if (paramInt != this.jdField_a_of_type_Int) {
-        break;
-      }
-      paramViewGroup.b.setVisibility(0);
-      return localView;
-      paramViewGroup = (xoq)paramView.getTag();
-      localView = paramView;
-    }
-    paramViewGroup.b.setVisibility(8);
-    return localView;
+      return;
+      yqp.a(this.jdField_a_of_type_Xol.a.jdField_a_of_type_JavaLangString, "onCompletion, [videoView], current state = %s", VideoViewVideoHolder.jdField_a_of_type_ArrayOfJavaLangString[this.jdField_a_of_type_Xol.a.c]);
+    } while (!VideoViewVideoHolder.b(this.jdField_a_of_type_Xol.a, 12));
+    VideoViewVideoHolder.a(this.jdField_a_of_type_Xol.a, 12);
+    this.jdField_a_of_type_Xol.a.d = 1;
+    VideoViewVideoHolder.a(this.jdField_a_of_type_Xol.a).a(this.jdField_a_of_type_Xol.a, paramxpl, VideoViewVideoHolder.b(this.jdField_a_of_type_Xol.a));
+    yqu.c("video_ope", "play_finish", 0, 0, new String[] { this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mOwnerUid, "", "", this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     xop
  * JD-Core Version:    0.7.0.1
  */

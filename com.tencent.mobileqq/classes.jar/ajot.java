@@ -1,15 +1,30 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.richmedia.EditLocalVideoActivity;
+import com.tencent.mobileqq.activity.history.ChatHistoryBaseFragment;
 
 public class ajot
-  implements DialogInterface.OnClickListener
+  implements ajuz
 {
-  public ajot(EditLocalVideoActivity paramEditLocalVideoActivity) {}
+  public ajot(ChatHistoryBaseFragment paramChatHistoryBaseFragment) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(int paramInt)
   {
-    EditLocalVideoActivity.a(this.a).dismiss();
+    switch (paramInt)
+    {
+    default: 
+      return;
+    case 1: 
+      this.a.k();
+      return;
+    case 3: 
+      this.a.l();
+      return;
+    case 2: 
+      this.a.m();
+      return;
+    case 4: 
+      this.a.n();
+      return;
+    }
+    this.a.o();
   }
 }
 

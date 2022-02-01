@@ -1,20 +1,19 @@
-import com.tencent.pb.addcontacts.AccountSearchPb.ResultItem;
-import com.tencent.pb.addcontacts.AccountSearchPb.hotwordrecord;
-import com.tencent.pb.addcontacts.AccountSearchPb.record;
-import java.util.List;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.mobileqq.activity.aio.item.SixCombolEffectView;
 
 public class ahip
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public int a;
-  public AccountSearchPb.hotwordrecord a;
-  public String a;
-  public List<String> a;
-  public boolean a;
-  public int b;
-  public List<AccountSearchPb.record> b;
-  public boolean b;
-  public int c;
-  public List<AccountSearchPb.ResultItem> c;
+  public ahip(SixCombolEffectView paramSixCombolEffectView, ahje paramahje) {}
+  
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  {
+    this.jdField_a_of_type_Ahje.a = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    if ((!this.jdField_a_of_type_Ahje.b) && (this.jdField_a_of_type_Ahje.a < 0.52F)) {
+      this.jdField_a_of_type_Ahje.b = true;
+    }
+  }
 }
 
 

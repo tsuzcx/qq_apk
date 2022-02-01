@@ -1,18 +1,24 @@
-class ymu
-  implements ymw
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.presenter.StoryListPresenter.4;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.presenter.StoryListPresenter.4.1;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
+public class ymu
+  implements View.OnClickListener
 {
-  ymu(ymq paramymq, afkf paramafkf) {}
+  public ymu(StoryListPresenter.4.1 param1) {}
   
-  public void a(boolean paramBoolean)
+  public void onClick(View paramView)
   {
-    if (!paramBoolean) {
-      ymq.a(this.jdField_a_of_type_Ymq, this.jdField_a_of_type_Afkf, true);
-    }
+    yqu.a("home_page", "clk_up_close", 0, 0, new String[0]);
+    this.a.a.this$0.a.dismiss();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     ymu
  * JD-Core Version:    0.7.0.1
  */

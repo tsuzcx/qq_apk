@@ -1,15 +1,29 @@
-import com.tencent.mobileqq.shortvideo.BaseShortVideoOprerator;
-import com.tencent.mobileqq.videoplatform.SDKInitListener;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
+import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelGalleryActivity;
+import com.tencent.qphone.base.util.QLog;
 
-class azdu
-  implements SDKInitListener
+public class azdu
+  extends BroadcastReceiver
 {
-  azdu(azdt paramazdt) {}
+  public azdu(PersonalityLabelGalleryActivity paramPersonalityLabelGalleryActivity) {}
   
-  public void onSDKInited(boolean paramBoolean)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    azdt.a(this.a);
-    BaseShortVideoOprerator.a(this.a.a.a, azdt.a(this.a));
+    if ((paramIntent != null) && (paramIntent.getAction().equalsIgnoreCase("com.tencent.mobileqq.card.modify_personality_label")))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("PersonalityLabelGalleryActivity", 2, "receive broadcast modify pl info");
+      }
+      paramContext = paramIntent.getBundleExtra("key_bundle_data");
+      if ((paramContext != null) && (paramContext.getBoolean("onTagChanged")))
+      {
+        this.a.a = true;
+        PersonalityLabelGalleryActivity.a(this.a);
+      }
+    }
   }
 }
 

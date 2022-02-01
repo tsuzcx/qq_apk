@@ -1,25 +1,31 @@
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
-import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 
-final class opo
-  extends ampt
+public class opo
 {
-  opo(int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString)
+  private static HashMap<Integer, Integer> a = new HashMap();
+  
+  static
   {
-    super(paramInt, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString);
+    a.put(Integer.valueOf(1107), Integer.valueOf(4));
+    a.put(Integer.valueOf(1108), Integer.valueOf(3));
+    a.put(Integer.valueOf(1109), Integer.valueOf(4));
+    a.put(Integer.valueOf(1105), Integer.valueOf(101));
+    a.put(Integer.valueOf(1106), Integer.valueOf(102));
+    a.put(Integer.valueOf(1110), Integer.valueOf(103));
+    a.put(Integer.valueOf(1111), Integer.valueOf(104));
   }
   
-  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  public static int a(int paramInt)
   {
-    opn.a(false);
-    if ((paramInt == 0) && (paramSosoLbsInfo != null) && (QLog.isColorLevel())) {
-      QLog.d("GalleryReportedUtils", 2, "get Location: info = " + paramSosoLbsInfo.toString());
+    if (a.containsKey(Integer.valueOf(paramInt))) {
+      return ((Integer)a.get(Integer.valueOf(paramInt))).intValue();
     }
+    return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     opo
  * JD-Core Version:    0.7.0.1
  */

@@ -1,20 +1,70 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqQQStoryGuide;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspQQStoryGuide;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt64Field;
 
-class wtn
-  implements View.OnClickListener
+public class wtn
+  extends wlf
 {
-  wtn(wtd paramwtd, wwk paramwwk) {}
+  public static String a = wjz.a("StorySvc.new_user_guide");
+  public String b;
+  public String c;
   
-  public void onClick(View paramView)
+  public wtn(String paramString1, String paramString2)
   {
-    wxj.a("home_page", "guide_close", 0, 0, new String[0]);
-    this.jdField_a_of_type_Wwk.dismiss();
+    this.b = paramString1;
+    this.c = paramString2;
+  }
+  
+  public String a()
+  {
+    return a;
+  }
+  
+  public wla a(byte[] paramArrayOfByte)
+  {
+    qqstory_service.RspQQStoryGuide localRspQQStoryGuide = new qqstory_service.RspQQStoryGuide();
+    try
+    {
+      localRspQQStoryGuide.mergeFrom(paramArrayOfByte);
+      return new wto(localRspQQStoryGuide);
+    }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      for (;;)
+      {
+        paramArrayOfByte.printStackTrace();
+      }
+    }
+  }
+  
+  protected byte[] a()
+  {
+    qqstory_service.ReqQQStoryGuide localReqQQStoryGuide = new qqstory_service.ReqQQStoryGuide();
+    try
+    {
+      localReqQQStoryGuide.to_uid.set(Long.valueOf(this.b).longValue());
+      localReqQQStoryGuide.version.set(this.c);
+      return localReqQQStoryGuide.toByteArray();
+    }
+    catch (NumberFormatException localNumberFormatException)
+    {
+      for (;;)
+      {
+        localReqQQStoryGuide.to_uid.set(0L);
+      }
+    }
+  }
+  
+  public String toString()
+  {
+    return "QQStoryGuideRequest{toUid='" + this.b + '\'' + "version='" + this.c + '\'' + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     wtn
  * JD-Core Version:    0.7.0.1
  */

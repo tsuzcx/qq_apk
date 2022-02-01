@@ -1,6 +1,22 @@
-public abstract interface aezd
+import com.tencent.mobileqq.activity.QQSettingMe;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+
+public class aezd
+  implements bhao
 {
-  public abstract void h();
+  public aezd(QQSettingMe paramQQSettingMe) {}
+  
+  public void a()
+  {
+    if (this.a.a != null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("QQSettingRedesign", 2, "enterWordListener");
+      }
+      this.a.c(this.a.a.getAccount());
+    }
+  }
 }
 
 

@@ -16,17 +16,17 @@
                         <com.tencent.mobileqq.extendfriend.wiget.ExtendFriendVoiceView android:id="@id/di4" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/mp" />
                     </LinearLayout>
                 </LinearLayout>
-                <LinearLayout android:orientation="vertical" android:id="@id/mi0" android:layout_width="fill_parent" android:layout_height="wrap_content">
-                    <TextView android:textSize="14.0sp" android:textColor="#ff777777" android:id="@id/mu1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="16.0dip" android:layout_marginBottom="10.0dip" android:text="@string/wij" android:singleLine="true" />
-                    <LinearLayout android:orientation="vertical" android:id="@id/mi1" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="16.0dip" android:layout_marginRight="16.0dip" android:layout_marginBottom="14.0dip">
-                        <TextView android:textSize="20.0sp" android:textColor="@color/bp" android:ellipsize="end" android:layout_gravity="center_vertical" android:id="@id/mtm" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxLines="4" android:includeFontPadding="false" />
-                        <ImageView android:layout_gravity="center_vertical" android:id="@id/m7p" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="5.0dip" android:src="@drawable/eg_" />
+                <LinearLayout android:orientation="vertical" android:id="@id/mxp" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                    <TextView android:textSize="14.0sp" android:textColor="#ff777777" android:id="@id/nq2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="16.0dip" android:layout_marginBottom="10.0dip" android:text="@string/wyo" android:singleLine="true" />
+                    <LinearLayout android:orientation="vertical" android:id="@id/mxq" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="16.0dip" android:layout_marginRight="16.0dip" android:layout_marginBottom="14.0dip">
+                        <TextView android:textSize="20.0sp" android:textColor="@color/bp" android:ellipsize="end" android:layout_gravity="center_vertical" android:id="@id/np6" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxLines="4" android:includeFontPadding="false" />
+                        <ImageView android:layout_gravity="center_vertical" android:id="@id/mse" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="5.0dip" android:src="@drawable/grz" />
                     </LinearLayout>
                 </LinearLayout>
                 <TextView android:textSize="14.0sp" android:textColor="#ff777777" android:id="@id/kbt" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="16.0dip" android:layout_marginBottom="10.0dip" android:text="扩列宣言" android:singleLine="true" />
                 <com.tencent.mobileqq.extendfriend.wiget.ExtendFriendGradientTextView android:id="@id/k8v" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="16.0dip" android:layout_marginRight="16.0dip" android:layout_marginBottom="10.0dip" android:text="@string/r15" />
             </LinearLayout>
-            <com.tencent.mobileqq.extendfriend.wiget.ExtendFriendGradientFootView android:id="@id/kwt" android:layout_width="fill_parent" android:layout_height="@dimen/ne" android:layout_alignParentBottom="true" />
+            <com.tencent.mobileqq.extendfriend.wiget.ExtendFriendGradientFootView android:id="@id/mmk" android:layout_width="fill_parent" android:layout_height="@dimen/ne" android:layout_alignParentBottom="true" />
             <ImageView android:layout_gravity="center_horizontal" android:id="@id/dv0" android:paddingTop="6.0dip" android:paddingBottom="16.0dip" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:src="@drawable/esj" android:layout_alignParentBottom="true" />
         </RelativeLayout>
         <ImageView android:id="@id/enc" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:src="@drawable/aca" />

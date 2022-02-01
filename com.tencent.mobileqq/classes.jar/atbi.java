@@ -1,91 +1,37 @@
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.os.Handler;
-import android.os.Looper;
-import android.text.TextUtils;
-import com.tencent.mobileqq.intervideo.huayang.MonitorConfig.1;
+import android.os.Bundle;
+import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import java.util.Map;
-import org.json.JSONObject;
 
-public class atbi
+class atbi
+  implements atbj
 {
-  public static Map<String, atbi> a;
-  public int a;
-  public int b;
-  public int c;
-  public int d;
-  public int e;
-  public int f;
-  public int g;
-  public int h;
+  atbi(atbh paramatbh, atan paramatan, MessageRecord paramMessageRecord) {}
   
-  static
+  public void a(String paramString, Bundle paramBundle)
   {
-    jdField_a_of_type_JavaUtilMap = new HashMap();
-  }
-  
-  public static void a(Context paramContext, String paramString)
-  {
-    if (jdField_a_of_type_JavaUtilMap.get(paramString) != null) {}
-    do
-    {
-      return;
-      paramContext = paramContext.getApplicationContext().getSharedPreferences("pre_huayang_plugin_new_start_mode", 4).getString("pre_monitor" + paramString, null);
-    } while (paramContext == null);
-    a(paramString, paramContext);
-  }
-  
-  public static void a(Context paramContext, String paramString1, String paramString2)
-  {
-    if ((jdField_a_of_type_JavaUtilMap.get(paramString1) != null) || (TextUtils.isEmpty(paramString2))) {
-      return;
-    }
-    paramContext.getApplicationContext().getSharedPreferences("pre_huayang_plugin_new_start_mode", 4).edit().putString("pre_monitor" + paramString1, paramString2).commit();
-    a(paramString1, paramString2);
-  }
-  
-  private static void a(String paramString1, String paramString2)
-  {
-    try
-    {
-      paramString2 = new JSONObject(paramString2);
-      atbi localatbi = new atbi();
-      localatbi.jdField_a_of_type_Int = paramString2.optInt("startupId");
-      localatbi.b = paramString2.optInt("downloadSucId");
-      localatbi.c = paramString2.optInt("downloadFailId");
-      localatbi.d = paramString2.optInt("loadSucId");
-      localatbi.e = paramString2.optInt("loadFailId");
-      localatbi.f = paramString2.optInt("startSucId");
-      localatbi.g = paramString2.optInt("firstUserId");
-      localatbi.h = paramString2.optInt("exitId");
-      jdField_a_of_type_JavaUtilMap.put(paramString1, localatbi);
-      if (QLog.isColorLevel()) {
-        QLog.d("MonitorConfig", 2, paramString1 + localatbi);
-      }
-      return;
-    }
-    catch (Throwable paramString1)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.d("MonitorConfig", 2, "pareMonitorConfig exception :" + paramString1);
-    }
-  }
-  
-  public static void b(Context paramContext, String paramString)
-  {
-    if (jdField_a_of_type_JavaUtilMap.get(paramString) != null)
-    {
-      atbh.b(String.valueOf(((atbi)jdField_a_of_type_JavaUtilMap.get(paramString)).jdField_a_of_type_Int));
-      return;
-    }
     if (QLog.isColorLevel()) {
-      QLog.d("MonitorConfig", 2, "没有找到匹配的monitor离线配置文件，重新拉取一次");
+      QLog.i("FileMultiMsgManager<FileAssistant>", 1, "FileUploadTask success, multiUniseq[ " + this.jdField_a_of_type_Atbh.jdField_a_of_type_JavaLangString + "] uuid[" + paramString + "] fileMrUniseq[" + this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.uniseq + "]");
     }
-    atbh.b("3235982");
-    new Handler(Looper.getMainLooper()).postDelayed(new MonitorConfig.1(paramContext, paramString), 1500L);
+    this.jdField_a_of_type_Atbh.b = 2;
+    atan.a(this.jdField_a_of_type_Atbh.jdField_a_of_type_Atan, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, paramBundle);
+    atan.b(this.jdField_a_of_type_Atbh.jdField_a_of_type_Atan, this.jdField_a_of_type_Atbh.jdField_a_of_type_JavaLangString);
+  }
+  
+  public void a(String paramString, boolean paramBoolean)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("FileMultiMsgManager<FileAssistant>", 1, "FileUploadTask fail, multiUniseq[ " + this.jdField_a_of_type_Atbh.jdField_a_of_type_JavaLangString + "] fileMrUniseq[" + this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.uniseq + "] canResume[" + paramBoolean + "] retMsg[" + paramString + "]");
+    }
+    if (paramBoolean) {}
+    for (this.jdField_a_of_type_Atbh.b = 4;; this.jdField_a_of_type_Atbh.b = 3)
+    {
+      atan.b(this.jdField_a_of_type_Atbh.jdField_a_of_type_Atan, this.jdField_a_of_type_Atbh.jdField_a_of_type_JavaLangString);
+      return;
+      String str = anni.a(2131708463) + this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.getExtInfoFromExtStr("_m_ForwardFileName");
+      paramString = str + "\n" + paramString;
+      this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.saveExtInfoToExtStr("_m_ForwardFaildReason", paramString);
+      this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.saveExtInfoToExtStr("_m_ForwardFileStatus", "2");
+    }
   }
 }
 

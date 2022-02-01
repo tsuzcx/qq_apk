@@ -1,37 +1,43 @@
 import android.content.Context;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.contact.troop.TroopWithCommonFriendsFragment;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.ark.ArkAppManagerPanel;
 
 public class ahqs
-  extends ahkp<ahof>
+  implements ahrc<ArkAppManagerPanel>
 {
-  public ahqs(TroopWithCommonFriendsFragment paramTroopWithCommonFriendsFragment, Context paramContext, int paramInt)
+  private final BaseChatPie jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie;
+  private ArkAppManagerPanel jdField_a_of_type_ComTencentMobileqqArkArkAppManagerPanel;
+  
+  public ahqs(BaseChatPie paramBaseChatPie)
   {
-    super(paramContext, paramInt);
+    this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie = paramBaseChatPie;
   }
   
-  protected void a(ahkz paramahkz, ahof paramahof, int paramInt)
+  public int a()
   {
-    TroopWithCommonFriendsFragment.a(this.a, paramahkz, paramahof, paramInt);
+    return 30;
   }
   
-  protected ahkz b(Context paramContext, ViewGroup paramViewGroup, int paramInt)
+  public ArkAppManagerPanel a()
   {
-    paramViewGroup = LayoutInflater.from(paramContext).inflate(paramInt, paramViewGroup, false);
-    paramContext = new ahpn(paramContext, paramViewGroup);
-    paramContext.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramViewGroup.findViewById(2131372936));
-    paramContext.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramViewGroup.findViewById(2131372926));
-    paramContext.jdField_b_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramViewGroup.findViewById(2131372933));
-    paramContext.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramViewGroup.findViewById(2131372931));
-    paramContext.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramViewGroup.findViewById(2131372937));
-    paramContext.jdField_a_of_type_AndroidWidgetButton = ((Button)paramViewGroup.findViewById(2131372935));
-    return paramContext;
+    return this.jdField_a_of_type_ComTencentMobileqqArkArkAppManagerPanel;
+  }
+  
+  public ArkAppManagerPanel a(Context paramContext)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqArkArkAppManagerPanel = ((ArkAppManagerPanel)View.inflate(paramContext, 2131558690, null));
+    this.jdField_a_of_type_ComTencentMobileqqArkArkAppManagerPanel.a(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie, this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a);
+    return this.jdField_a_of_type_ComTencentMobileqqArkArkAppManagerPanel;
+  }
+  
+  public void a() {}
+  
+  public void a(int paramInt1, int paramInt2) {}
+  
+  public boolean a()
+  {
+    return false;
   }
 }
 

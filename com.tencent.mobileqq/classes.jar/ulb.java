@@ -1,35 +1,25 @@
-import android.support.v7.widget.RecyclerView.OnChildAttachStateChangeListener;
-import android.view.View;
-import dov.com.qq.im.capture.view.SpeedFlexibleRecyclerView;
+import android.os.Bundle;
+import com.tencent.mobileqq.mini.sdk.MiniAppLauncher.MiniAppLaunchListener;
 
 class ulb
-  implements RecyclerView.OnChildAttachStateChangeListener
+  implements MiniAppLauncher.MiniAppLaunchListener
 {
-  ulb(ukt paramukt) {}
+  ulb(ukz paramukz) {}
   
-  public void onChildViewAttachedToWindow(View paramView)
+  public void onLaunchResult(boolean paramBoolean, Bundle paramBundle)
   {
-    paramView = (ukl)ukt.a(this.a).getChildViewHolder(paramView);
-    if ((paramView != null) && (paramView == ukt.a(this.a)))
+    StringBuilder localStringBuilder = new StringBuilder().append("launch mini program ");
+    if (paramBoolean) {}
+    for (String str = "success";; str = "fail")
     {
-      paramView.b();
-      wxe.b("Q.qqstory.recommendAlbum.ui.AlbumGalleryCapturePart", "attach from window , start play!");
-    }
-  }
-  
-  public void onChildViewDetachedFromWindow(View paramView)
-  {
-    paramView = (ukl)ukt.a(this.a).getChildViewHolder(paramView);
-    if ((paramView != null) && (paramView == ukt.a(this.a)))
-    {
-      paramView.c();
-      wxe.b("Q.qqstory.recommendAlbum.ui.AlbumGalleryCapturePart", "detach from window , stop play!");
+      upe.d("WSHomeFragmentPresenter", str + ", bundle: " + paramBundle.toString());
+      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     ulb
  * JD-Core Version:    0.7.0.1
  */

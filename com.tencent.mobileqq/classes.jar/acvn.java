@@ -1,24 +1,8 @@
-import com.tencent.mobileqq.activity.EditInfoActivity;
-import com.tencent.mobileqq.activity.EditInfoActivity.11.1;
-import com.tencent.mobileqq.data.Card;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.qphone.base.remote.ToServiceMsg;
 
-public class acvn
-  extends alpq
+public abstract interface acvn
 {
-  public acvn(EditInfoActivity paramEditInfoActivity) {}
-  
-  protected void onSetDetailInfo(boolean paramBoolean, int paramInt, Card paramCard)
-  {
-    if (!this.a.j) {}
-    do
-    {
-      return;
-      this.a.j = false;
-      this.a.runOnUiThread(new EditInfoActivity.11.1(this, paramBoolean, paramCard));
-    } while (!QLog.isColorLevel());
-    QLog.d("EditInfoActivity", 2, String.format("onGetDetailInfo, isSuccess: %s, resultCode:%s", new Object[] { Boolean.valueOf(paramBoolean), Integer.valueOf(paramInt) }));
-  }
+  public abstract ToServiceMsg a();
 }
 
 

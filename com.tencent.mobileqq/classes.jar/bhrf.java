@@ -1,36 +1,43 @@
-import com.tencent.sveffects.DpcSwitcher;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.mobileqq.webview.swift.WebViewFragment;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.smtt.sdk.ValueCallback;
 
-public class bhrf
-  implements DpcSwitcher
+final class bhrf
+  implements ValueCallback<String>
 {
-  public float getBeatyRate()
-  {
-    return azki.a();
-  }
+  bhrf(WebViewFragment paramWebViewFragment) {}
   
-  public boolean isBeautySwitchOpen()
+  public void a(String paramString)
   {
-    return azki.b();
-  }
-  
-  public boolean isDeNoiseSwitchOpen()
-  {
-    return azki.e();
-  }
-  
-  public boolean isPortraitSwitchOpen()
-  {
-    return azkt.g();
-  }
-  
-  public boolean isSvafSwitchOpen()
-  {
-    return azki.c();
+    if (QLog.isColorLevel()) {
+      QLog.d("SwiftWebViewUtils", 2, "evaluateJavascript: " + paramString);
+    }
+    Bundle localBundle = new Bundle();
+    if (!TextUtils.isEmpty(paramString)) {}
+    for (String str = paramString.trim();; str = "")
+    {
+      if (!TextUtils.isEmpty(str))
+      {
+        paramString = str;
+        if (str.startsWith("\"")) {
+          paramString = str.replaceFirst("\"", "");
+        }
+        str = paramString;
+        if (paramString.endsWith("\"")) {
+          str = paramString.substring(0, paramString.length() - 1);
+        }
+        localBundle.putString("banner_wording", String.format(anni.a(2131713392), new Object[] { str }));
+      }
+      this.a.goToConversation(localBundle);
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bhrf
  * JD-Core Version:    0.7.0.1
  */

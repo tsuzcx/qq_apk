@@ -1,37 +1,24 @@
-import android.view.ViewGroup;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.FrameLayout.LayoutParams;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
+import android.content.Intent;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.BaseApplication;
 
-public class avkb
-  implements Animation.AnimationListener
+final class avkb
+  implements apvt
 {
-  public avkb(NearbyPeopleProfileActivity paramNearbyPeopleProfileActivity) {}
-  
-  public void onAnimationEnd(Animation paramAnimation)
+  public void a(int paramInt1, int paramInt2)
   {
-    NearbyPeopleProfileActivity.a(this.a).removeView(NearbyPeopleProfileActivity.a(this.a));
-    NearbyPeopleProfileActivity.a(this.a).a();
-    NearbyPeopleProfileActivity.a(this.a, null);
-    NearbyPeopleProfileActivity.a(this.a, null);
-    if (NearbyPeopleProfileActivity.a(this.a) == null)
+    if (paramInt1 == avju.a)
     {
-      NearbyPeopleProfileActivity.a(this.a, this.a.a(this.a.j));
-      NearbyPeopleProfileActivity.b(this.a, NearbyPeopleProfileActivity.a(this.a).a());
-      NearbyPeopleProfileActivity.a(this.a).a();
-      NearbyPeopleProfileActivity.a(this.a).addView(NearbyPeopleProfileActivity.b(this.a), new FrameLayout.LayoutParams(-1, -1));
+      Intent localIntent = new Intent();
+      localIntent.setAction("action.now.jump");
+      localIntent.putExtra("jump_action", paramInt2);
+      BaseApplicationImpl.getContext().sendBroadcast(localIntent);
     }
-    NearbyPeopleProfileActivity.a(this.a).a(NearbyPeopleProfileActivity.a(this.a));
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     avkb
  * JD-Core Version:    0.7.0.1
  */

@@ -1,31 +1,24 @@
-import com.tencent.biz.qqstory.base.ErrorMessage;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.weishi_new.view.WSTabLayout;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class uvf
-  extends uli
+class uvf
+  implements View.OnClickListener
 {
-  public long a;
-  public final String a;
-  public final boolean a;
-  public String b;
-  public boolean b;
-  public String c;
-  public String d;
+  uvf(uve paramuve, WSTabLayout paramWSTabLayout) {}
   
-  public uvf(ErrorMessage paramErrorMessage, String paramString, boolean paramBoolean)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = paramErrorMessage;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public String toString()
-  {
-    return "DeleteStoryVideoEvent{vid='" + this.jdField_a_of_type_JavaLangString + '\'' + ", uid='" + this.jdField_b_of_type_JavaLangString + '\'' + ", groupId='" + this.c + '\'' + ", feedId='" + this.d + '\'' + ", videoIndex=" + this.jdField_a_of_type_Long + ", localDelete=" + this.jdField_a_of_type_Boolean + ", isRemoveMember=" + this.jdField_b_of_type_Boolean + '}';
+    if (WSTabLayout.a(this.jdField_a_of_type_Uve.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewWSTabLayout) != null) {
+      WSTabLayout.a(this.jdField_a_of_type_Uve.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewWSTabLayout).a(uve.a(this.jdField_a_of_type_Uve));
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     uvf
  * JD-Core Version:    0.7.0.1
  */

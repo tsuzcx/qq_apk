@@ -1,39 +1,78 @@
 import android.content.Context;
+import android.content.Intent;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.TextView;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyPicWaterFallFragment;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import org.json.JSONException;
+import org.json.JSONObject;
+import tencent.im.oidb.gallery.galleryFeeds.GalleryFeedsInfo;
 
-public class ppk
-  implements ViewBase.OnClickListener
+class ppk
+  implements View.OnClickListener
 {
-  Context jdField_a_of_type_AndroidContentContext;
-  ArticleInfo jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo;
-  rqj jdField_a_of_type_Rqj;
+  ppk(ppj paramppj, ReadInJoyPicWaterFallFragment paramReadInJoyPicWaterFallFragment) {}
   
-  public ppk(ArticleInfo paramArticleInfo, Context paramContext, rqj paramrqj)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo = paramArticleInfo;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_Rqj = paramrqj;
-  }
-  
-  public void onClick(ViewBase paramViewBase)
-  {
-    if (rqj.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo)) {
-      ors.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, 1, false, 0, 3);
+    Object localObject1 = this.jdField_a_of_type_Ppj.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.mGalleryFeedsInfo.bytes_jump_url.get().toStringUtf8();
+    Object localObject2;
+    if (TextUtils.isEmpty((CharSequence)localObject1))
+    {
+      localObject2 = this.jdField_a_of_type_Ppj.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.mArticleContentUrl;
+      if (!TextUtils.isEmpty((CharSequence)localObject1))
+      {
+        localObject1 = new Intent(this.jdField_a_of_type_Ppj.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
+        ((Intent)localObject1).putExtra("url", (String)localObject2);
+        this.jdField_a_of_type_Ppj.jdField_a_of_type_AndroidContentContext.startActivity((Intent)localObject1);
+      }
     }
     for (;;)
     {
-      opn.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, this.jdField_a_of_type_Rqj);
-      ppl.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, "0X8009440", "0X8009443");
+      this.jdField_a_of_type_Ppj.jdField_a_of_type_AndroidWidgetTextView.setTextColor(ReadInJoyPicWaterFallFragment.c);
+      pmh.a().a(this.jdField_a_of_type_Ppj.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.mArticleID, System.currentTimeMillis());
+      localObject1 = pfe.a(this.jdField_a_of_type_Ppj.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInJoyPicWaterFallFragment.getActivity(), this.jdField_a_of_type_Ppj.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInJoyPicWaterFallFragment.a(), 16, this.jdField_a_of_type_Ppj.a(), (ArticleInfo)this.jdField_a_of_type_Ppj.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo);
+      try
+      {
+        ((JSONObject)localObject1).put("card_type", 12);
+        localObject2 = new pfg(this.jdField_a_of_type_Ppj.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo);
+        ((pfg)localObject2).e = String.valueOf(this.jdField_a_of_type_Ppj.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.mArticleID);
+        ((pfg)localObject2).f = String.valueOf(this.jdField_a_of_type_Ppj.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.mStrategyId);
+        ((pfg)localObject2).g = ((JSONObject)localObject1).toString();
+        if (this.jdField_a_of_type_Ppj.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.mSocialFeedInfo.a != null) {
+          ((pfg)localObject2).a = String.valueOf(this.jdField_a_of_type_Ppj.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.mSocialFeedInfo.a.a);
+        }
+        ((pfg)localObject2).b = "0X8008E2F";
+        ((pfg)localObject2).c = "0X8008E2F";
+        pfe.a((pfg)localObject2);
+        ReadInJoyPicWaterFallFragment.a((ArticleInfo)this.jdField_a_of_type_Ppj.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo, this.jdField_a_of_type_Ppj.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInJoyPicWaterFallFragment.a(), 1009);
+      }
+      catch (JSONException localJSONException)
+      {
+        for (;;)
+        {
+          localJSONException.printStackTrace();
+        }
+      }
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
-      ors.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, 0, false, 0, 3);
+      localObject2 = new Intent(this.jdField_a_of_type_Ppj.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
+      ((Intent)localObject2).putExtra("url", (String)localObject1);
+      this.jdField_a_of_type_Ppj.jdField_a_of_type_AndroidContentContext.startActivity((Intent)localObject2);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     ppk
  * JD-Core Version:    0.7.0.1
  */

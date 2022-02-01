@@ -1,25 +1,82 @@
-import java.util.ArrayList;
+import android.content.Context;
+import android.graphics.Canvas;
+import com.tencent.biz.qqcircle.bizparts.danmaku.core.PhotoDanmakuDrawer;
+import java.util.Comparator;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.TreeSet;
 
-public class vem
-  extends uli
+public abstract class vem
 {
-  public String a;
-  public List<wnd> a;
+  protected int a;
+  protected final PhotoDanmakuDrawer a;
+  protected final List<vex> a;
+  protected final TreeSet<vex> a;
+  protected final vel a;
+  protected int b;
   
-  public vem()
+  protected vem(Context paramContext, vhh paramvhh, vel paramvel, Comparator<vex> paramComparator)
   {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.jdField_a_of_type_Vel = paramvel;
+    this.jdField_a_of_type_ComTencentBizQqcircleBizpartsDanmakuCorePhotoDanmakuDrawer = new PhotoDanmakuDrawer(paramContext, paramvhh);
+    this.jdField_a_of_type_JavaUtilTreeSet = new TreeSet(paramComparator);
+    this.jdField_a_of_type_JavaUtilList = new LinkedList();
+    a();
   }
   
-  public String toString()
+  public static vem a(Context paramContext, vhh paramvhh, vel paramvel, Comparator<vex> paramComparator, int paramInt)
   {
-    return super.toString() + " collectionId=" + this.jdField_a_of_type_JavaLangString + "mSimpleInfoList.size=" + this.jdField_a_of_type_JavaUtilList.size() + "mSimpleInfoList=" + this.jdField_a_of_type_JavaUtilList;
+    switch (paramInt)
+    {
+    default: 
+      return null;
+    }
+    return new vew(paramContext, paramvhh, paramvel, paramComparator);
+  }
+  
+  public PhotoDanmakuDrawer a()
+  {
+    return this.jdField_a_of_type_ComTencentBizQqcircleBizpartsDanmakuCorePhotoDanmakuDrawer;
+  }
+  
+  public List<vex> a()
+  {
+    return this.jdField_a_of_type_JavaUtilList;
+  }
+  
+  public abstract vex a(vev paramvev);
+  
+  public void a()
+  {
+    this.jdField_a_of_type_Int = this.jdField_a_of_type_Vel.e;
+  }
+  
+  public void a(Canvas paramCanvas)
+  {
+    this.jdField_a_of_type_ComTencentBizQqcircleBizpartsDanmakuCorePhotoDanmakuDrawer.a(paramCanvas);
+  }
+  
+  public void a(vex paramvex)
+  {
+    this.jdField_a_of_type_JavaUtilTreeSet.add(paramvex);
+  }
+  
+  public abstract void b();
+  
+  public abstract void c();
+  
+  public abstract void d();
+  
+  public abstract void e();
+  
+  public void f()
+  {
+    this.jdField_a_of_type_JavaUtilList.clear();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     vem
  * JD-Core Version:    0.7.0.1
  */

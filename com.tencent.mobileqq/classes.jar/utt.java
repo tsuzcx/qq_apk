@@ -1,20 +1,41 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.EditText;
+import android.text.TextUtils;
+import android.view.ViewGroup;
+import com.tencent.biz.pubaccount.weishi_new.verticalvideo.WSVerticalPageFragment;
 
-public final class utt
-  implements View.OnClickListener
+public class utt
+  extends uss
 {
-  public utt(EditText paramEditText) {}
-  
-  public void onClick(View paramView)
+  public utt(ViewGroup paramViewGroup, int paramInt, WSVerticalPageFragment paramWSVerticalPageFragment)
   {
-    this.a.append("@");
+    super(paramViewGroup, paramInt, paramWSVerticalPageFragment);
+  }
+  
+  public usp a(int paramInt)
+  {
+    return new uua(a(), this);
+  }
+  
+  public void a(int paramInt)
+  {
+    super.a(paramInt);
+  }
+  
+  protected boolean a()
+  {
+    return true;
+  }
+  
+  protected boolean b()
+  {
+    if ((this.a != null) && (TextUtils.equals(this.a.a(), "aio_home_page"))) {
+      return false;
+    }
+    return super.b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     utt
  * JD-Core Version:    0.7.0.1
  */

@@ -1,29 +1,31 @@
-import com.tencent.biz.qqstory.database.PublishVideoEntry;
-import com.tencent.mobileqq.activity.aio.photo.PeakActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import dov.com.qq.im.ae.album.nocropper.AECropperImageView;
 
-class bngu
-  extends xtb
+public class bngu
+  implements Animator.AnimatorListener
 {
-  bngu(bngs parambngs, String paramString1, PeakActivity paramPeakActivity, String paramString2, String paramString3, PublishVideoEntry paramPublishVideoEntry) {}
+  public bngu(AECropperImageView paramAECropperImageView) {}
   
-  public void onFailure(String paramString)
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    bngs.a(this.jdField_a_of_type_Bngs, 1, this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry);
+    AECropperImageView.a(this.a, false);
   }
   
-  public void onFinish(boolean paramBoolean)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("SaveVideoActivity", 2, "combine music finish: " + paramBoolean);
-    }
-    bdhb.d(this.jdField_a_of_type_JavaLangString);
-    if (paramBoolean)
-    {
-      bngs.a(this.jdField_a_of_type_Bngs, this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoPeakActivity, this.b, this.c, this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry);
-      return;
-    }
-    bngs.a(this.jdField_a_of_type_Bngs, 1, this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry);
+    AECropperImageView.a(this.a, false);
+    AECropperImageView.c(this.a);
+  }
+  
+  public void onAnimationRepeat(Animator paramAnimator)
+  {
+    AECropperImageView.a(this.a, true);
+  }
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    AECropperImageView.a(this.a, true);
   }
 }
 

@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy.view;
 
-import bkny;
+import bncl;
 import com.tencent.common.app.BaseApplicationImpl;
 
 class ReadInJoyListViewGroup$4
@@ -11,13 +11,13 @@ class ReadInJoyListViewGroup$4
   public void run()
   {
     if (BaseApplicationImpl.sProcessId != 9) {
-      bkny.a(BaseApplicationImpl.getContext());
+      bncl.a(BaseApplicationImpl.getContext());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup.4
  * JD-Core Version:    0.7.0.1
  */

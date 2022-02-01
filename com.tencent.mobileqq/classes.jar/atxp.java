@@ -1,41 +1,101 @@
-import android.os.Handler;
-import android.os.Message;
-import android.support.v4.util.MQLruCache;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.magicface.drawable.PngFrameManager.3;
-import com.tencent.qphone.base.util.QLog;
+import android.os.AsyncTask;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.RouterHandler;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.filemanager.widget.QFileSendBarManager.5;
+import cooperation.troop.TroopFileProxyActivity;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class atxp
-  extends bead
+  extends AsyncTask<Void, Void, Void>
 {
-  public atxp(PngFrameManager.3 param3) {}
+  public atxp(QFileSendBarManager.5 param5) {}
   
-  public void onDone(beae parambeae)
+  protected Void a(Void... paramVarArgs)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("PngFrameManager", 2, "func onDone.【aio preview】");
-    }
-    synchronized (this.a.this$0)
+    paramVarArgs = atxk.a(this.a.this$0);
+    Object localObject1 = atxk.b(this.a.this$0);
+    int i = atxk.a(this.a.this$0);
+    if (i == 5)
     {
-      if (this.a.this$0.a != null)
+      TroopFileProxyActivity.a.addAll(athc.a());
+      return null;
+    }
+    label114:
+    Object localObject2;
+    if (paramVarArgs.equals(anhk.z))
+    {
+      localObject1 = new ArrayList();
+      ((ArrayList)localObject1).addAll(athc.a());
+      paramVarArgs = (anjx)this.a.this$0.a.a(8);
+      paramVarArgs.a((ArrayList)localObject1);
+      localObject1 = athc.b().iterator();
+      i = 0;
+      if (((Iterator)localObject1).hasNext())
       {
-        if (parambeae.a() != 3) {
-          this.a.this$0.a.obtainMessage(226, this.a.jdField_a_of_type_Atxt).sendToTarget();
+        localObject2 = (FileManagerEntity)((Iterator)localObject1).next();
+        if (((FileManagerEntity)localObject2).nFileType == 13)
+        {
+          int j = i;
+          if (paramVarArgs.a((FileManagerEntity)localObject2) == 0L) {
+            j = i | 0x1;
+          }
+          i = j;
         }
       }
-      else {
-        return;
-      }
-      parambeae = atxv.a(this.a.jdField_a_of_type_JavaLangString);
-      this.a.jdField_a_of_type_Atxt.a = parambeae;
-      this.a.this$0.a.obtainMessage(227, this.a.jdField_a_of_type_Atxt).sendToTarget();
-      BaseApplicationImpl.sImageCache.put(this.a.jdField_a_of_type_JavaLangString, parambeae);
     }
+    for (;;)
+    {
+      break label114;
+      if ((((FileManagerEntity)localObject2).getCloudType() == 2) && (((FileManagerEntity)localObject2).WeiYunFileId != null))
+      {
+        paramVarArgs.a((FileManagerEntity)localObject2);
+      }
+      else if (!paramVarArgs.a().a((FileManagerEntity)localObject2))
+      {
+        i |= 0x4;
+        continue;
+        if (athc.e().size() > 0) {
+          this.a.this$0.a.a().a().a(athc.e(), anhk.z, 6000, null);
+        }
+        if ((i & 0x2) == 0) {
+          break;
+        }
+        return null;
+        if (i == 6002)
+        {
+          localObject1 = new ArrayList();
+          ((ArrayList)localObject1).addAll(athc.a());
+          ((RouterHandler)this.a.this$0.a.a(48)).a((ArrayList)localObject1, null, null, Long.parseLong(paramVarArgs));
+          return null;
+        }
+        if (i == 9501)
+        {
+          localObject1 = (abux)this.a.this$0.a.a(49);
+          localObject2 = new ArrayList();
+          ((ArrayList)localObject2).addAll(athc.a());
+          ((abux)localObject1).a().a(paramVarArgs, (List)localObject2);
+          return null;
+        }
+        this.a.this$0.a.a().a(false, (String)localObject1, paramVarArgs, i);
+        return null;
+      }
+    }
+  }
+  
+  protected void a(Void paramVoid)
+  {
+    super.onPostExecute(paramVoid);
+    atxk.c(this.a.this$0);
+    athc.b();
+    this.a.this$0.a(null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     atxp
  * JD-Core Version:    0.7.0.1
  */

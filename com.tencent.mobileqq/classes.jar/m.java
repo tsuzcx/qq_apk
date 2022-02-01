@@ -1,37 +1,25 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.etrump.mixlayout.ETFont;
-import com.etrump.mixlayout.ETTextView;
+import android.util.LruCache;
 
 class m
-  implements ValueAnimator.AnimatorUpdateListener
+  extends LruCache<Integer, String>
 {
-  m(l paraml) {}
-  
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public m(l paraml, int paramInt)
   {
-    int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
-    if (i >= this.a.i[0])
-    {
-      this.a.jdField_a_of_type_AndroidAnimationValueAnimator.cancel();
-      this.a.e = 0;
-      this.a.jdField_a_of_type_ComEtrumpMixlayoutETFont.mShouldDisplayAnimation = false;
-      this.a.jdField_a_of_type_ComEtrumpMixlayoutETTextView.isFounderAnimating = false;
-      this.a.jdField_a_of_type_ComEtrumpMixlayoutETTextView.invalidate();
-      if (this.a.jdField_a_of_type_ComEtrumpMixlayoutETTextView.mAnimationListener != null) {
-        this.a.jdField_a_of_type_ComEtrumpMixlayoutETTextView.mAnimationListener.a(this.a.jdField_a_of_type_ComEtrumpMixlayoutETTextView.mMessage, this.a.jdField_a_of_type_ComEtrumpMixlayoutETFont.mFontId);
-      }
-    }
-    while (i <= this.a.e) {
-      return;
-    }
-    this.a.e = i;
-    this.a.jdField_a_of_type_ComEtrumpMixlayoutETTextView.invalidate();
+    super(paramInt);
+  }
+  
+  protected void a(boolean paramBoolean, Integer paramInteger, String paramString1, String paramString2)
+  {
+    super.entryRemoved(paramBoolean, paramInteger, paramString1, paramString2);
+    n.a("FastColorFontHelper", "release start font " + paramString1);
+    this.a.a(paramInteger.intValue());
+    k.a(paramInteger.intValue());
+    n.a("FastColorFontHelper", "release end   font " + paramString1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     m
  * JD-Core Version:    0.7.0.1
  */

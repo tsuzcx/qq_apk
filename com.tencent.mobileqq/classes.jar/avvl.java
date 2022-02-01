@@ -1,27 +1,14 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.ocr.OCRPerformFragment;
-import com.tencent.qphone.base.util.QLog;
-
-public class avvl
-  extends BroadcastReceiver
+public abstract interface avvl
 {
-  public avvl(OCRPerformFragment paramOCRPerformFragment) {}
+  public abstract void a(String paramString, int paramInt);
   
-  public void onReceive(Context paramContext, Intent paramIntent)
-  {
-    if ("tencent.av.v2q.StartVideoChat".equals(paramIntent.getAction()))
-    {
-      QLog.d("OCRPerformFragment", 4, "receive videochat");
-      this.a.getActivity().finish();
-    }
-  }
+  public abstract void a(boolean paramBoolean);
+  
+  public abstract void a(boolean paramBoolean1, boolean paramBoolean2);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     avvl
  * JD-Core Version:    0.7.0.1
  */

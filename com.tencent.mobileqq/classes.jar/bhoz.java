@@ -1,18 +1,20 @@
-class bhoz
+import com.tencent.mobileqq.app.ThreadExcutor.IThreadListener;
+import com.tencent.mobileqq.webview.swift.component.SwiftBrowserCookieMonster;
+
+public class bhoz
+  implements ThreadExcutor.IThreadListener
 {
-  public int a;
-  public bhpk a;
-  public String a = "";
-  public int b;
-  public String b = "";
-  public int c;
-  public int d = -1;
-  public int e;
-  public int f;
+  public bhoz(SwiftBrowserCookieMonster paramSwiftBrowserCookieMonster) {}
+  
+  public void onAdded() {}
+  
+  public void onPostRun() {}
+  
+  public void onPreRun() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bhoz
  * JD-Core Version:    0.7.0.1
  */

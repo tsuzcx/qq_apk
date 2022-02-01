@@ -1,52 +1,32 @@
-public abstract class bjss
+import android.text.Editable;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.EditText;
+import com.tencent.qqconnect.wtlogin.Login;
+
+public class bjss
+  implements View.OnTouchListener
 {
-  protected String a;
-  protected boolean a;
+  public bjss(Login paramLogin) {}
   
-  public bjss(String paramString, boolean paramBoolean)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    a(paramString);
-    a(paramBoolean);
-  }
-  
-  public abstract String a();
-  
-  public void a(String paramString)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  public String b()
-  {
-    return null;
-  }
-  
-  public String c()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public String d()
-  {
-    if (a()) {
-      return a();
+    if (paramView == this.a.jdField_b_of_type_AndroidWidgetEditText) {
+      if ((paramMotionEvent.getAction() == 0) && (this.a.jdField_b_of_type_AndroidWidgetEditText.getText().length() > 0)) {
+        this.a.jdField_b_of_type_AndroidViewView.setVisibility(0);
+      }
     }
-    return null;
+    while ((paramView != this.a.jdField_a_of_type_AndroidWidgetEditText) || (paramMotionEvent.getAction() != 0) || (this.a.jdField_a_of_type_AndroidWidgetEditText.getText().length() <= 0)) {
+      return false;
+    }
+    this.a.jdField_a_of_type_AndroidViewView.setVisibility(0);
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bjss
  * JD-Core Version:    0.7.0.1
  */

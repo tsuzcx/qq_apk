@@ -1,192 +1,200 @@
 import android.app.Activity;
 import android.content.Intent;
-import android.os.Message;
-import android.support.annotation.NonNull;
+import android.os.SystemClock;
 import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewStub;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.activity.ForwardFriendListActivity;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tribe.async.async.JobSegment;
-import java.io.File;
-import java.util.Collections;
+import android.util.Log;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import cooperation.qzone.QZoneClickReport;
+import java.net.URL;
 import java.util.List;
+import java.util.Map;
 
 public class bmku
-  extends bmnh
-  implements View.OnClickListener, bmkw, bmkz
+  extends WebViewPlugin
 {
-  public static final String a;
-  private ViewStub jdField_a_of_type_AndroidViewViewStub;
-  private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
-  private bmkv jdField_a_of_type_Bmkv;
+  private int jdField_a_of_type_Int = 0;
+  private long jdField_a_of_type_Long;
+  private Map<Integer, String> jdField_a_of_type_JavaUtilMap;
+  private int jdField_b_of_type_Int;
+  private long jdField_b_of_type_Long;
   
-  static
+  public bmku()
   {
-    jdField_a_of_type_JavaLangString = ulg.e;
+    this.mPluginNameSpace = "gdtReportPlugin";
   }
   
-  public bmku(@NonNull bmnj parambmnj)
+  private long a()
   {
-    super(parambmnj);
+    return SystemClock.elapsedRealtime() - this.jdField_a_of_type_Long;
   }
   
-  private void a(String paramString)
+  private void a()
   {
-    paramString = new File(paramString);
-    boolean bool;
-    if (paramString.isFile())
+    Log.i("gdtReportPlugin", "172\t" + a());
+    bmfd.a().a().a(this.jdField_a_of_type_JavaUtilMap, 2014, 0, a(), 0L);
+  }
+  
+  private void a(int paramInt, Map<String, Object> paramMap)
+  {
+    Log.i("gdtReportPlugin", "173\t" + a());
+    if ((paramMap != null) && (paramMap.containsKey("errorCode")) && ((paramMap.get("errorCode") instanceof Integer))) {}
+    for (paramInt = Math.abs(((Integer)paramMap.get("errorCode")).intValue());; paramInt = 0)
     {
-      bool = paramString.delete();
-      wxe.d("Q.qqstory.publish.edit.EditVideoAt", "delete file : " + bool);
-    }
-    if (!paramString.exists())
-    {
-      bool = paramString.mkdirs();
-      wxe.d("Q.qqstory.publish.edit.EditVideoAt", "create folder : " + bool);
-    }
-  }
-  
-  private void d()
-  {
-    Intent localIntent = new Intent(BaseApplication.getContext(), ForwardFriendListActivity.class);
-    localIntent.putExtra("extra_choose_friend", 4);
-    localIntent.putExtra("extra_left_btn_text", alud.a(2131704299));
-    a().getActivity().startActivityForResult(localIntent, 2);
-    a().getActivity().overridePendingTransition(2130771997, 2130771977);
-  }
-  
-  public JobSegment<bnaz, bnaz> a(int paramInt)
-  {
-    return new bnay(this.jdField_a_of_type_Bmkv, null, this.jdField_a_of_type_Bmkv.a(paramInt));
-  }
-  
-  @NonNull
-  public List<String> a(int paramInt)
-  {
-    if (paramInt < 0) {
-      return Collections.EMPTY_LIST;
-    }
-    return this.jdField_a_of_type_Bmkv.a(paramInt);
-  }
-  
-  public void a()
-  {
-    super.a();
-    this.jdField_a_of_type_AndroidViewViewStub = ((ViewStub)a(2131362868));
-    if (this.jdField_a_of_type_AndroidWidgetRelativeLayout == null) {
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_a_of_type_AndroidViewViewStub.inflate());
-    }
-    if (this.jdField_a_of_type_Bmkv == null) {
-      this.jdField_a_of_type_Bmkv = new bmkv(a(), this.jdField_a_of_type_AndroidWidgetRelativeLayout);
-    }
-    this.jdField_a_of_type_Bmkv.a(this);
-    a(jdField_a_of_type_JavaLangString);
-    a(bmkz.class, this);
-  }
-  
-  public void a(int paramInt)
-  {
-    wxe.b("Q.qqstory.publish.edit.EditVideoAt", "EditVideoAt onStateChanged state = %d.", Integer.valueOf(paramInt));
-    this.jdField_a_of_type_Bmnj.a(paramInt);
-  }
-  
-  public void a(int paramInt1, int paramInt2, Intent paramIntent)
-  {
-    super.a(paramInt1, paramInt2, paramIntent);
-    switch (paramInt1)
-    {
-    default: 
+      bmfd.a().a().a(this.jdField_a_of_type_JavaUtilMap, 2014, 1, a(), paramInt);
       return;
     }
-    a().getActivity();
-    if (paramInt2 != -1)
+  }
+  
+  public static boolean a(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {}
+    for (;;)
     {
-      wxe.e("Q.qqstory.publish.edit.EditVideoAt", "the resultCode of choosing a qq single friend is not RESULT_OK!");
-      this.jdField_a_of_type_Bmnj.a(0);
+      return false;
+      try
+      {
+        paramString = new URL(paramString).getHost();
+        String[] arrayOfString = "ttc.gdt.qq.com#c.gdt.qq.com#xc.gdt.qq.com".split("#");
+        int j = arrayOfString.length;
+        int i = 0;
+        while (i < j)
+        {
+          boolean bool = paramString.equals(arrayOfString[i]);
+          if (bool) {
+            return true;
+          }
+          i += 1;
+        }
+        return false;
+      }
+      catch (Exception paramString) {}
+    }
+  }
+  
+  private long b()
+  {
+    return SystemClock.elapsedRealtime() - this.jdField_b_of_type_Long;
+  }
+  
+  private void b()
+  {
+    Log.i("gdtReportPlugin", "129\t" + a());
+    bmfd.a().a().a(this.jdField_a_of_type_JavaUtilMap, 2005, 0, b(), 0L);
+  }
+  
+  private void b(int paramInt, Map<String, Object> paramMap)
+  {
+    this.jdField_b_of_type_Long = SystemClock.elapsedRealtime();
+    if ((paramMap != null) && (paramMap.containsKey("errorCode")) && ((paramMap.get("errorCode") instanceof Integer))) {}
+    for (int i = Math.abs(((Integer)paramMap.get("errorCode")).intValue());; i = 0)
+    {
+      bmfd.a().a().a(this.jdField_a_of_type_JavaUtilMap, 2000, paramInt, a(), i);
+      Log.i("gdtReportPlugin", paramInt + 120 + "\t" + a());
       return;
     }
-    if (paramIntent == null)
-    {
-      wxe.e("Q.qqstory.publish.edit.EditVideoAt", "the intent of choosing a single qq friend is null!");
-      this.jdField_a_of_type_Bmnj.a(0);
-      return;
-    }
-    String str2 = paramIntent.getStringExtra("extra_choose_friend_uin");
-    String str1 = paramIntent.getStringExtra("extra_choose_friend_name");
-    Object localObject = paramIntent.getStringExtra("extraChooseFriendRemark");
-    if (str2 == null) {
-      wxe.c("Q.qqstory.publish.edit.EditVideoAt", "choose a single qq friend. result null");
+  }
+  
+  private void c()
+  {
+    this.jdField_b_of_type_Long = SystemClock.elapsedRealtime();
+    bmfd.a().a().a(this.jdField_a_of_type_JavaUtilMap, 2000, 0, a(), 0L);
+    Log.i("gdtReportPlugin", "120\t" + a());
+  }
+  
+  public boolean handleEvent(String paramString, long paramLong, Map<String, Object> paramMap)
+  {
+    if (this.mRuntime.a().getIntent().getBooleanExtra("needGdtLandingPageReport", false)) {
+      switch (this.jdField_a_of_type_Int)
+      {
+      default: 
+        if (this.jdField_b_of_type_Int == 1)
+        {
+          if ((paramLong != 8589934593L) || (this.jdField_a_of_type_Int != 1) || (a(paramString))) {
+            break label402;
+          }
+          a();
+          this.jdField_b_of_type_Int = 2;
+        }
+        break;
+      }
     }
     for (;;)
     {
-      this.jdField_a_of_type_Bmnj.a(0);
-      return;
-      wxe.b("Q.qqstory.publish.edit.EditVideoAt", "choose a single qq friend. uin = %s name = %s remark = %s.", str2, str1, localObject);
-      wxj.a("video_edit", "list_alt", 0, 0, new String[0]);
-      paramIntent = (Intent)localObject;
-      if (TextUtils.isEmpty((CharSequence)localObject))
+      paramString = new blrv();
+      paramString.c = String.valueOf(478);
+      if (paramLong == 8589934599L)
       {
-        wxe.d("Q.qqstory.publish.edit.EditVideoAt", "remark is null. set remark to name.");
-        paramIntent = str1;
+        paramString.d = String.valueOf(2);
+        QZoneClickReport.report(this.mRuntime.a().getAccount(), paramString, true);
       }
-      localObject = str1;
-      if (TextUtils.equals(str2, str1))
+      return false;
+      if (paramLong != 8589934593L) {
+        break;
+      }
+      if ((a(paramString)) && (this.jdField_b_of_type_Int == 0)) {
+        this.jdField_b_of_type_Int = 1;
+      }
+      List localList = (List)this.mRuntime.a().getIntent().getSerializableExtra("FeedDataCookie");
+      if ((localList != null) && (localList.size() == 1)) {
+        this.jdField_a_of_type_JavaUtilMap = ((Map)localList.get(0));
+      }
+      this.jdField_a_of_type_Long = SystemClock.elapsedRealtime();
+      this.jdField_a_of_type_Int = 1;
+      break;
+      if (paramLong == 8589934594L)
       {
-        wxe.d("Q.qqstory.publish.edit.EditVideoAt", "remark is null(choose a friend by searching.). set name to remark.");
-        localObject = paramIntent;
+        this.jdField_a_of_type_Int = 2;
+        c();
+        break;
       }
-      this.jdField_a_of_type_Bmkv.a(str2, paramIntent, (String)localObject);
-    }
-  }
-  
-  public void a(int paramInt, @NonNull bnaz parambnaz)
-  {
-    super.a(paramInt, parambnaz);
-    paramInt = this.jdField_a_of_type_Bmkv.a(paramInt);
-    if (paramInt > 0) {
-      wxj.a("video_edit", "send_alt", 0, 0, new String[] { paramInt + "" });
-    }
-  }
-  
-  protected boolean a(Message paramMessage)
-  {
-    if (paramMessage.what == 6)
-    {
-      int i = paramMessage.arg2;
-      this.jdField_a_of_type_Bmkv.a(i);
-      return true;
-    }
-    return false;
-  }
-  
-  public void a_(int paramInt, Object paramObject)
-  {
-    switch (paramInt)
-    {
-    default: 
-      if (this.jdField_a_of_type_AndroidWidgetRelativeLayout.getVisibility() != 0) {
-        this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
+      if (paramLong == 8589934595L)
+      {
+        this.jdField_a_of_type_Int = 3;
+        b(1, paramMap);
+        break;
       }
-      return;
-    case 18: 
-      d();
-      return;
+      if (paramLong == 8589934601L)
+      {
+        this.jdField_a_of_type_Int = 4;
+        b(94, paramMap);
+        b();
+        break;
+      }
+      if (paramLong != 8589934597L) {
+        break;
+      }
+      this.jdField_a_of_type_Int = 4;
+      b(95, paramMap);
+      b();
+      break;
+      if (paramLong != 8589934597L) {
+        break;
+      }
+      b();
+      this.jdField_a_of_type_Int = 4;
+      break;
+      if (paramLong == 8589934593L)
+      {
+        this.jdField_a_of_type_Int = 4;
+        b();
+        this.jdField_a_of_type_Long = SystemClock.elapsedRealtime();
+        break;
+      }
+      if (paramLong != 8589934597L) {
+        break;
+      }
+      this.jdField_a_of_type_Int = 4;
+      b();
+      break;
+      label402:
+      if ((a(paramString)) && ((paramLong == 8589934598L) || (paramLong == 8589934595L)))
+      {
+        this.jdField_b_of_type_Int = 2;
+        a(1, paramMap);
+      }
     }
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(4);
   }
-  
-  public void g()
-  {
-    super.g();
-    if (this.jdField_a_of_type_Bmkv != null) {
-      this.jdField_a_of_type_Bmkv.b();
-    }
-  }
-  
-  public void onClick(View paramView) {}
 }
 
 

@@ -1,21 +1,20 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.apollo.store.ApolloGameActivity;
-import com.tencent.mobileqq.utils.VipUtils;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
 
-public class aldd
-  implements DialogInterface.OnClickListener
+final class aldd
+  implements Animation.AnimationListener
 {
-  public aldd(ApolloGameActivity paramApolloGameActivity, alkd paramalkd, int paramInt) {}
+  aldd(View paramView, Animation paramAnimation) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if (this.jdField_a_of_type_Alkd != null) {
-      this.jdField_a_of_type_Alkd.a(1);
-    }
-    VipUtils.a(null, "cmshow", "Apollo", "sendToDesktopSusessful", 0, 1, new String[] { String.valueOf(this.jdField_a_of_type_Int) });
-    paramDialogInterface.dismiss();
+    this.jdField_a_of_type_AndroidViewView.startAnimation(this.jdField_a_of_type_AndroidViewAnimationAnimation);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

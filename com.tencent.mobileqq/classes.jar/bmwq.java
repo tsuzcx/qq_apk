@@ -1,42 +1,97 @@
-import android.widget.ImageView;
+import NS_MOBILE_COMM_CONF.MobileCommConf;
+import NS_MOBILE_COMM_CONF.NewMobileGlobalConf;
+import NS_MOBILE_COMM_CONF.NewMobileUserConf;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.capture.view.QIMCommonLoadingView;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.face.adapter.InformationFaceAdapter.DownloadProgressCallback.1;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.face.adapter.InformationFaceAdapter.DownloadProgressCallback.2;
+import java.util.ArrayList;
+import java.util.Iterator;
+import mqq.app.AppRuntime;
+import mqq.app.NewIntent;
 
 public class bmwq
-  implements blvr
 {
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private QIMCommonLoadingView jdField_a_of_type_DovComQqImCaptureViewQIMCommonLoadingView;
-  private Boolean jdField_a_of_type_JavaLangBoolean;
+  private static bmwq jdField_a_of_type_Bmwq;
+  private long jdField_a_of_type_Long = -1L;
   
-  bmwq(bmwo parambmwo, QIMCommonLoadingView paramQIMCommonLoadingView, ImageView paramImageView)
+  public static bmwq a()
   {
-    this.jdField_a_of_type_DovComQqImCaptureViewQIMCommonLoadingView = paramQIMCommonLoadingView;
-    this.jdField_a_of_type_AndroidWidgetImageView = paramImageView;
-    this.jdField_a_of_type_JavaLangBoolean = ((Boolean)paramImageView.getTag(2131377419));
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_DovComQqImCaptureViewQIMCommonLoadingView = null;
-    this.jdField_a_of_type_AndroidWidgetImageView = null;
-    this.jdField_a_of_type_JavaLangBoolean = null;
-  }
-  
-  public void a(float paramFloat, String paramString, int paramInt)
-  {
-    paramInt = (int)paramFloat;
-    this.jdField_a_of_type_DovComQqImCaptureViewQIMCommonLoadingView.post(new InformationFaceAdapter.DownloadProgressCallback.1(this, paramInt));
-  }
-  
-  public void a(boolean paramBoolean, String paramString, bmvz parambmvz)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("InformationFaceAdapter", 2, "isSucess:" + paramBoolean);
+    if (jdField_a_of_type_Bmwq == null) {}
+    try
+    {
+      if (jdField_a_of_type_Bmwq == null) {
+        jdField_a_of_type_Bmwq = new bmwq();
+      }
+      return jdField_a_of_type_Bmwq;
     }
-    this.jdField_a_of_type_DovComQqImCaptureViewQIMCommonLoadingView.post(new InformationFaceAdapter.DownloadProgressCallback.2(this, paramBoolean, parambmvz));
+    finally {}
+  }
+  
+  public static void a(long paramLong)
+  {
+    if (paramLong > 0L)
+    {
+      SharedPreferences.Editor localEditor = BaseApplicationImpl.getApplication().getSharedPreferences("new_report", 0).edit();
+      localEditor.putLong("lastReportTime", paramLong);
+      localEditor.apply();
+    }
+  }
+  
+  public void a(MobileCommConf paramMobileCommConf)
+  {
+    if ((paramMobileCommConf == null) || (paramMobileCommConf.new_mobile_global_conf == null) || (paramMobileCommConf.new_mobile_user_conf == null) || (paramMobileCommConf.vecAppList == null) || (paramMobileCommConf.maxScanNum <= 0)) {}
+    long l;
+    ArrayList localArrayList;
+    do
+    {
+      do
+      {
+        do
+        {
+          return;
+          l = paramMobileCommConf.new_mobile_global_conf.version;
+        } while (paramMobileCommConf.new_mobile_user_conf.version < l);
+        if (QLog.isColorLevel()) {
+          QLog.d("YYBInstallPackageManager", 1, "invokeReport");
+        }
+        l = System.currentTimeMillis() / 1000L;
+      } while (((this.jdField_a_of_type_Long >= paramMobileCommConf.new_mobile_user_conf.uBeginTime) && (this.jdField_a_of_type_Long <= paramMobileCommConf.new_mobile_user_conf.uEndTime)) || (l < paramMobileCommConf.new_mobile_user_conf.uBeginTime) || (l > paramMobileCommConf.new_mobile_user_conf.uEndTime));
+      localArrayList = new ArrayList();
+      Iterator localIterator = paramMobileCommConf.vecAppList.iterator();
+      do
+      {
+        String str;
+        do
+        {
+          if (!localIterator.hasNext()) {
+            break;
+          }
+          str = (String)localIterator.next();
+        } while (bkgu.a(BaseApplicationImpl.getApplication(), str));
+        localArrayList.add(str);
+      } while (localArrayList.size() < paramMobileCommConf.maxScanNum);
+    } while (localArrayList.size() <= 0);
+    this.jdField_a_of_type_Long = l;
+    a(this.jdField_a_of_type_Long);
+    paramMobileCommConf = new NewIntent(BaseApplicationImpl.getApplication(), bmws.class);
+    try
+    {
+      l = Long.parseLong(((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getCurrentAccountUin());
+      paramMobileCommConf.putExtra("selfuin", l);
+      paramMobileCommConf.putStringArrayListExtra("uninstall_app_list", localArrayList);
+      BaseApplicationImpl.getApplication().getRuntime().startServlet(paramMobileCommConf);
+      return;
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        QLog.e("YYBInstallPackageManager", 1, "get uin error " + localException);
+        l = 0L;
+      }
+    }
   }
 }
 

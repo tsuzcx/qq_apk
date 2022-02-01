@@ -1,17 +1,28 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import java.util.List;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import qqcircle.QQCircleFeedBase.StTabInfo;
 
-public abstract interface vaa
+class vaa
+  implements vvb
 {
-  public abstract void a(@Nullable uyg paramuyg, Error paramError);
+  vaa(uzy paramuzy) {}
   
-  public abstract void a(@Nullable uyg paramuyg, @NonNull List<StoryVideoItem> paramList);
+  public void a()
+  {
+    if (uzy.a(this.a) != null) {
+      uzy.a(this.a, uxn.a(uzy.a(this.a).a.urlInfo.get(), "authCampanyUrl"));
+    }
+  }
+  
+  public void b()
+  {
+    if (uzy.a(this.a) != null) {
+      uzy.a(this.a, uxn.a(uzy.a(this.a).a.urlInfo.get(), "authSchoolUrl"));
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     vaa
  * JD-Core Version:    0.7.0.1
  */

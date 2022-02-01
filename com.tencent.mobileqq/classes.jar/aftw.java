@@ -1,18 +1,26 @@
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.activity.aio.item.QQStoryItemBuilder;
-import com.tencent.mobileqq.data.ChatMessage;
+import java.io.File;
+import java.util.Comparator;
 
 class aftw
-  extends afuf
+  implements Comparator<File>
 {
-  aftw(afpy paramafpy)
+  aftw(aftv paramaftv) {}
+  
+  public int a(File paramFile1, File paramFile2)
   {
-    super(paramafpy, null);
+    long l = aftv.a(this.a, paramFile1) - aftv.a(this.a, paramFile2);
+    if (l > 0L) {
+      return 1;
+    }
+    if (l == 0L) {
+      return 0;
+    }
+    return -1;
   }
   
-  protected aeqy a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
+  public boolean equals(Object paramObject)
   {
-    return new QQStoryItemBuilder(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner);
+    return true;
   }
 }
 

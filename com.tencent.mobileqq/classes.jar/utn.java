@@ -1,19 +1,23 @@
-public class utn
-  extends uli
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
+class utn
+  implements View.OnClickListener
 {
-  public int a;
-  public long a;
-  public String a;
-  public int b;
-  public String b;
-  public String c;
-  public String d;
-  public String e;
-  public String f;
+  utn(utm paramutm) {}
+  
+  public void onClick(View paramView)
+  {
+    this.a.g();
+    this.a.i();
+    utm.a(this.a);
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     utn
  * JD-Core Version:    0.7.0.1
  */

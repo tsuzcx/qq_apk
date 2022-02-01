@@ -1,6 +1,7 @@
 package com.tencent.mobileqq.mini.widget.input;
 
 import android.content.Context;
+import android.os.Build;
 import android.view.inputmethod.InputMethodManager;
 import com.tencent.mobileqq.mini.appbrand.AppBrandRuntime;
 import com.tencent.mobileqq.mini.appbrand.page.AbsAppBrandPage;
@@ -20,10 +21,11 @@ public class WebInputHandler$KeyboardHiddenObserver
   
   public void update(Observable paramObservable, Object paramObject)
   {
+    boolean bool2 = true;
     try
     {
       if (!(paramObject instanceof String)) {
-        break label226;
+        break label229;
       }
       if ("hideKeyboard".equals((String)paramObject))
       {
@@ -62,26 +64,48 @@ public class WebInputHandler$KeyboardHiddenObserver
       WebInputHandler.access$602(this.this$0, 0);
       WebInputHandler.access$302(this.this$0, false);
       return;
-      label226:
+      label229:
       if (((paramObject instanceof Integer)) && (WebInputHandler.access$000(this.this$0) != null) && (WebInputHandler.access$000(this.this$0).getCurrentPageWebview() != null) && (WebInputHandler.access$000(this.this$0).getCurrentWebviewContainer().appBrandRuntime != null) && (WebInputHandler.access$000(this.this$0).getCurrentWebviewContainer().appBrandRuntime.activity != null))
       {
         WebInputHandler.access$302(this.this$0, true);
         WebInputHandler.access$402(this.this$0, (int)(Integer.valueOf(String.valueOf(paramObject)).intValue() * DisplayUtil.getDensity(WebInputHandler.access$000(this.this$0).getContext())));
-        if ((DisplayUtil.hasNavBar(WebInputHandler.access$000(this.this$0).getCurrentWebviewContainer().appBrandRuntime.activity)) && (DisplayUtil.isNavigationBarExist(WebInputHandler.access$000(this.this$0).getCurrentWebviewContainer().appBrandRuntime.activity))) {
-          WebInputHandler.access$402(this.this$0, WebInputHandler.access$400(this.this$0) + DisplayUtil.getNavigationBarHeight(WebInputHandler.access$000(this.this$0).getCurrentWebviewContainer().appBrandRuntime.activity));
+        boolean bool1;
+        if (Build.MANUFACTURER.equalsIgnoreCase("HUAWEI")) {
+          bool1 = DisplayUtil.checkNavigationBarShow(WebInputHandler.access$000(this.this$0).getCurrentWebviewContainer().appBrandRuntime.activity);
         }
-        paramObservable = new JSONObject();
-        paramObservable.put("inputId", WebInputHandler.access$100(this.this$0));
-        paramObservable.put("height", paramObject);
-        QLog.d("WebInputHandler", 1, "onKeyboardShow : " + paramObservable.toString());
-        WebInputHandler.access$000(this.this$0).getCurrentPageWebview().evaluateSubcribeJS("onKeyboardShow", paramObservable.toString(), WebInputHandler.access$000(this.this$0).getCurrentPageWebview().pageWebviewId);
+        for (;;)
+        {
+          QLog.d("WebInputHandler", 1, " hasNavBar : " + bool1);
+          if (bool1) {
+            WebInputHandler.access$402(this.this$0, WebInputHandler.access$400(this.this$0) + DisplayUtil.getNavigationBarHeight(WebInputHandler.access$000(this.this$0).getCurrentWebviewContainer().appBrandRuntime.activity));
+          }
+          paramObservable = new JSONObject();
+          paramObservable.put("inputId", WebInputHandler.access$100(this.this$0));
+          paramObservable.put("height", paramObject);
+          QLog.d("WebInputHandler", 1, "onKeyboardShow : " + paramObservable.toString());
+          WebInputHandler.access$000(this.this$0).getCurrentPageWebview().evaluateSubcribeJS("onKeyboardShow", paramObservable.toString(), WebInputHandler.access$000(this.this$0).getCurrentPageWebview().pageWebviewId);
+          return;
+          if (DisplayUtil.hasNavBar(WebInputHandler.access$000(this.this$0).getCurrentWebviewContainer().appBrandRuntime.activity))
+          {
+            bool1 = bool2;
+            if (DisplayUtil.isNavigationBarExist(WebInputHandler.access$000(this.this$0).getCurrentWebviewContainer().appBrandRuntime.activity)) {}
+          }
+          else
+          {
+            boolean bool3 = DisplayUtil.isFlymeOS7NavBarShow();
+            bool1 = bool2;
+            if (!bool3) {
+              bool1 = false;
+            }
+          }
+        }
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.widget.input.WebInputHandler.KeyboardHiddenObserver
  * JD-Core Version:    0.7.0.1
  */

@@ -1,65 +1,23 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.ar.aidl.ARCommonConfigInfo.NativeSoRes;
 
-public class aoxq
-  extends aokh<aoxo>
+public final class aoxq
+  implements Parcelable.Creator<ARCommonConfigInfo.NativeSoRes>
 {
-  public static aoxo a()
+  public ARCommonConfigInfo.NativeSoRes a(Parcel paramParcel)
   {
-    return (aoxo)aoks.a().a(569);
+    return new ARCommonConfigInfo.NativeSoRes(paramParcel);
   }
   
-  public int a()
+  public ARCommonConfigInfo.NativeSoRes[] a(int paramInt)
   {
-    return 569;
-  }
-  
-  @NonNull
-  public aoxo a(int paramInt)
-  {
-    return new aoxo();
-  }
-  
-  @Nullable
-  public aoxo a(aoko[] paramArrayOfaoko)
-  {
-    if ((paramArrayOfaoko != null) && (paramArrayOfaoko.length > 0)) {
-      return aoxo.a(paramArrayOfaoko);
-    }
-    return null;
-  }
-  
-  public Class<aoxo> a()
-  {
-    return aoxo.class;
-  }
-  
-  public void a(int paramInt)
-  {
-    QLog.d("TencentDocFormKeyWordsProcessor", 1, "TIM_CONVERT_TEAMWORK_CONFIG failed, resultCode:" + paramInt);
-  }
-  
-  public void a(aoxo paramaoxo) {}
-  
-  public int b()
-  {
-    return 0;
-  }
-  
-  public boolean b()
-  {
-    return false;
-  }
-  
-  public boolean c()
-  {
-    return true;
+    return new ARCommonConfigInfo.NativeSoRes[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aoxq
  * JD-Core Version:    0.7.0.1
  */

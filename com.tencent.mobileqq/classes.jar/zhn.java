@@ -3,46 +3,54 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import com.tencent.biz.widgets.TabLayout;
-import com.tencent.biz.widgets.TabLayout.TabAdapter.1;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.ArrayList;
 import java.util.List;
+import javax.annotation.Nullable;
 
-public abstract class zhn<T>
+public class zhn
   extends BaseAdapter
 {
-  protected Context a;
-  public TabLayout a;
-  protected List<T> a;
+  private Context jdField_a_of_type_AndroidContentContext;
+  private List<zhp> jdField_a_of_type_JavaUtilList = new ArrayList();
+  @Nullable
+  private zhp jdField_a_of_type_Zhp;
   
-  public zhn(Context paramContext, List<T> paramList)
+  public zhn(Context paramContext)
   {
     this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_JavaUtilList = paramList;
   }
   
-  protected abstract int a();
-  
-  public void a(TabLayout paramTabLayout)
+  @Nullable
+  public zhp a()
   {
-    this.jdField_a_of_type_ComTencentBizWidgetsTabLayout = paramTabLayout;
+    return this.jdField_a_of_type_Zhp;
   }
   
-  protected abstract void a(zho paramzho, T paramT, int paramInt);
+  public void a(List<zhp> paramList)
+  {
+    if (paramList == null)
+    {
+      this.jdField_a_of_type_JavaUtilList.clear();
+      return;
+    }
+    this.jdField_a_of_type_JavaUtilList.clear();
+    this.jdField_a_of_type_JavaUtilList.addAll(paramList);
+  }
+  
+  public void a(@Nullable zhp paramzhp)
+  {
+    this.jdField_a_of_type_Zhp = paramzhp;
+  }
   
   public int getCount()
   {
-    if (this.jdField_a_of_type_JavaUtilList != null) {
-      return this.jdField_a_of_type_JavaUtilList.size() + 1;
-    }
-    return 0;
+    return this.jdField_a_of_type_JavaUtilList.size();
   }
   
   public Object getItem(int paramInt)
   {
-    if ((this.jdField_a_of_type_JavaUtilList != null) && (paramInt < this.jdField_a_of_type_JavaUtilList.size())) {
-      return this.jdField_a_of_type_JavaUtilList.get(paramInt);
-    }
-    return null;
+    return this.jdField_a_of_type_JavaUtilList.get(paramInt);
   }
   
   public long getItemId(int paramInt)
@@ -52,31 +60,26 @@ public abstract class zhn<T>
   
   public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    Object localObject1 = null;
-    if (paramInt < getCount() - 1)
+    Object localObject;
+    if (paramView == null)
     {
-      Object localObject2 = this.jdField_a_of_type_ComTencentBizWidgetsTabLayout.a(paramInt);
-      paramView = (View)localObject2;
-      if (localObject2 == null)
-      {
-        paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(a(), paramViewGroup, false);
-        paramView.post(new TabLayout.TabAdapter.1(this, paramInt, paramView));
-      }
-      localObject2 = new zho(paramView, null);
-      paramView.setTranslationX(0.0F);
-      paramViewGroup = localObject1;
-      if (this.jdField_a_of_type_JavaUtilList != null) {
-        paramViewGroup = this.jdField_a_of_type_JavaUtilList.get(paramInt);
-      }
-      a((zho)localObject2, paramViewGroup, paramInt);
-      return paramView;
+      paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131561822, null);
+      localObject = new zho(paramView);
+      paramView.setTag(localObject);
     }
-    return LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131560065, paramViewGroup, false);
+    for (;;)
+    {
+      ((zho)localObject).a((zhp)this.jdField_a_of_type_JavaUtilList.get(paramInt), this.jdField_a_of_type_Zhp);
+      localObject = ((zho)localObject).a;
+      EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
+      return localObject;
+      localObject = (zho)paramView.getTag();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     zhn
  * JD-Core Version:    0.7.0.1
  */

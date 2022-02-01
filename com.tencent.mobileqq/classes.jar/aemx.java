@@ -1,21 +1,18 @@
-import com.tencent.mobileqq.activity.activateFriend.ActivateFriendActivity;
-import java.util.Comparator;
+import com.tencent.biz.qqcircle.list.bizblocks.QCircleObserver;
+import com.tencent.mobileqq.activity.Leba;
+import com.tencent.qphone.base.util.QLog;
 
 public class aemx
-  implements Comparator<aeok>
+  extends QCircleObserver
 {
-  public aemx(ActivateFriendActivity paramActivateFriendActivity) {}
+  public aemx(Leba paramLeba) {}
   
-  public int a(aeok paramaeok1, aeok paramaeok2)
+  public void onUpdateRedPoint(int paramInt)
   {
-    long l = paramaeok2.a - paramaeok1.a;
-    if (l > 0L) {
-      return 1;
+    if (QLog.isColorLevel()) {
+      QLog.e("Q.lebatab.leba", 2, "QCircleObserver onUpdateRedPoint " + paramInt);
     }
-    if (l < 0L) {
-      return -1;
-    }
-    return 0;
+    Leba.f(this.a);
   }
 }
 

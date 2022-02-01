@@ -6,12 +6,12 @@ import java.util.Iterator;
 import java.util.List;
 import org.json.JSONException;
 import org.json.JSONObject;
-import rzv;
+import sxt;
 
 public class WebFastAdapter$10
   implements Runnable
 {
-  public WebFastAdapter$10(rzv paramrzv) {}
+  public WebFastAdapter$10(sxt paramsxt) {}
   
   public void run()
   {
@@ -61,7 +61,7 @@ public class WebFastAdapter$10
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.fastweb.adapter.WebFastAdapter.10
  * JD-Core Version:    0.7.0.1
  */

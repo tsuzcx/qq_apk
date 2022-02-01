@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.ar.ARRenderModel;
 
-import amvj;
-import amwd;
+import aoua;
+import aouu;
 
 public class MultiFragmentAnimRenderable$4
   implements Runnable
@@ -9,14 +9,14 @@ public class MultiFragmentAnimRenderable$4
   public void run()
   {
     this.this$0.f();
-    if (amwd.a(this.this$0) != null) {
-      amwd.a(this.this$0).b(1, 0);
+    if (aouu.a(this.this$0) != null) {
+      aouu.a(this.this$0).b(1, 0);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.ARRenderModel.MultiFragmentAnimRenderable.4
  * JD-Core Version:    0.7.0.1
  */

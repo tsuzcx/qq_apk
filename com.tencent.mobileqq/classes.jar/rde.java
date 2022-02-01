@@ -1,18 +1,18 @@
-import android.view.View;
+import android.graphics.drawable.Drawable;
 
-public abstract interface rde
+class rde
+  extends rcs
 {
-  public abstract void a(View paramView);
+  rde(rdd paramrdd) {}
   
-  public abstract void a(View paramView, int paramInt);
-  
-  public abstract void a(View paramView, int paramInt1, int paramInt2);
-  
-  public abstract void b(View paramView);
+  public Drawable a()
+  {
+    return a("readinjoy_diandian_icon_foreground");
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     rde
  * JD-Core Version:    0.7.0.1
  */

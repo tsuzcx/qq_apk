@@ -75,7 +75,7 @@ public class NetworkDispatcher
         processRequest();
       }
     }
-    catch (InterruptedException localInterruptedException)
+    catch (Throwable localThrowable)
     {
       if (this.mQuit)
       {
@@ -88,7 +88,7 @@ public class NetworkDispatcher
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqlive.tvkplayer.thirdparties.httpclient.NetworkDispatcher
  * JD-Core Version:    0.7.0.1
  */

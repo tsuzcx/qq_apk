@@ -1,20 +1,19 @@
-import com.tencent.mobileqq.activity.ShortcutRouterActivity;
+import com.tencent.mobileqq.activity.ChatSettingForTroop;
+import com.tencent.qphone.base.util.QLog;
 
 public class adxv
-  implements acln
+  extends bgzm
 {
-  public adxv(ShortcutRouterActivity paramShortcutRouterActivity) {}
+  public adxv(ChatSettingForTroop paramChatSettingForTroop) {}
   
-  public void a()
+  protected void onGetMyTroopEffect(boolean paramBoolean, Object paramObject)
   {
-    this.a.finish();
-  }
-  
-  public void b() {}
-  
-  public void c()
-  {
-    this.a.finish();
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.chatopttroop", 2, "onGetMyTroopEffect  result = " + paramBoolean);
+    }
+    if (paramBoolean) {
+      this.a.a(true);
+    }
   }
 }
 

@@ -1,67 +1,58 @@
-import android.app.Activity;
-import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import com.tencent.mobileqq.richmedia.capture.view.CameraCaptureButtonLayout;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import java.util.concurrent.atomic.AtomicBoolean;
 
-class baoi
-  extends baot
+public class baoi
+  extends Handler
 {
-  baoi(baoh parambaoh) {}
+  public baoi(CameraCaptureButtonLayout paramCameraCaptureButtonLayout) {}
   
-  public void a()
+  public void handleMessage(Message paramMessage)
   {
-    if (baoh.a(this.a) == null) {}
-    for (Activity localActivity = null;; localActivity = (Activity)baoh.a(this.a).get())
+    super.handleMessage(paramMessage);
+    if (QLog.isColorLevel()) {
+      QLog.i("CameraCaptureLayout", 2, "handleMessage what:" + paramMessage.what + ", shortVideoShot:" + this.a.a.get());
+    }
+    switch (paramMessage.what)
     {
-      if (localActivity != null) {
-        this.a.jdField_a_of_type_Baoq.a(localActivity);
-      }
+    default: 
+    case 1: 
+    case 2: 
+    case 3: 
+    case 4: 
+    case 5: 
+      do
+      {
+        do
+        {
+          do
+          {
+            return;
+            CameraCaptureButtonLayout.c(this.a);
+            return;
+          } while (CameraCaptureButtonLayout.a(this.a) == null);
+          CameraCaptureButtonLayout.a(this.a).b();
+          return;
+        } while (!this.a.a.get());
+        if (CameraCaptureButtonLayout.a(this.a) != null) {
+          CameraCaptureButtonLayout.a(this.a).c();
+        }
+        this.a.a.set(false);
+        CameraCaptureButtonLayout.d(this.a);
+        return;
+        if (CameraCaptureButtonLayout.a(this.a) != null) {
+          CameraCaptureButtonLayout.a(this.a).a();
+        }
+        CameraCaptureButtonLayout.d(this.a);
+        return;
+      } while (!this.a.a.get());
+      CameraCaptureButtonLayout.e(this.a);
+      CameraCaptureButtonLayout.a(this.a).sendEmptyMessageDelayed(5, 50L);
       return;
     }
-  }
-  
-  public void a(long paramLong1, long paramLong2)
-  {
-    int i = 100;
-    if (paramLong2 <= 0L)
-    {
-      QLog.e("NightModeLogic", 1, "mThemeDownloadListener onDownloadProgress dwProgressMax <= 0");
-      i = 4;
-    }
-    if (paramLong1 <= paramLong2) {
-      i = (int)(100.0D * paramLong1 / paramLong2);
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("NightModeLogic", 2, "mThemeDownloadListener onDownloadProgress readSize:" + paramLong1 + ", allSize:" + paramLong2 + ", percent:" + i);
-    }
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("percent", i);
-    localBundle.putInt("start_status", 3);
-    this.a.jdField_a_of_type_AndroidOsHandler.sendMessage(Message.obtain(this.a.jdField_a_of_type_AndroidOsHandler, 4099, 1, 0, localBundle));
-  }
-  
-  public boolean a(int paramInt)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("start_status", 2);
-    if (paramInt == 0) {
-      this.a.jdField_a_of_type_AndroidOsHandler.sendMessage(Message.obtain(this.a.jdField_a_of_type_AndroidOsHandler, 4099, 1, 0, localBundle));
-    }
-    for (;;)
-    {
-      return super.a(paramInt);
-      this.a.jdField_a_of_type_Baoq.b();
-      this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(4100);
-      this.a.jdField_a_of_type_AndroidOsHandler.sendMessage(Message.obtain(this.a.jdField_a_of_type_AndroidOsHandler, 4099, -2, 0, localBundle));
-    }
-  }
-  
-  public boolean a(baoo parambaoo)
-  {
-    this.a.jdField_a_of_type_Baoq.a();
-    return false;
+    this.a.b();
   }
 }
 

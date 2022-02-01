@@ -1,20 +1,20 @@
 package com.tencent.gdtad.api.motivevideo;
 
-import aapx;
+import acop;
 
 public class GdtMvDownloadBtnPresenter$1
   implements Runnable
 {
-  public GdtMvDownloadBtnPresenter$1(aapx paramaapx, GdtMvAppBtnData paramGdtMvAppBtnData) {}
+  public GdtMvDownloadBtnPresenter$1(acop paramacop, GdtMvAppBtnData paramGdtMvAppBtnData) {}
   
   public void run()
   {
-    aapx.a(this.this$0, this.a);
+    acop.a(this.this$0, this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.gdtad.api.motivevideo.GdtMvDownloadBtnPresenter.1
  * JD-Core Version:    0.7.0.1
  */

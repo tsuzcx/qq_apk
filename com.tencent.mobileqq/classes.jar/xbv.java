@@ -1,39 +1,14 @@
-public class xbv
+public abstract interface xbv
 {
-  public int a;
-  public long a;
-  public boolean a;
+  public abstract void a(xdz paramxdz);
   
-  public boolean equals(Object paramObject)
-  {
-    if (this == paramObject) {}
-    do
-    {
-      return true;
-      if ((paramObject == null) || (getClass() != paramObject.getClass())) {
-        return false;
-      }
-      paramObject = (xbv)paramObject;
-      if (this.jdField_a_of_type_Int != paramObject.jdField_a_of_type_Int) {
-        return false;
-      }
-    } while (this.jdField_a_of_type_Long == paramObject.jdField_a_of_type_Long);
-    return false;
-  }
+  public abstract void b(xdz paramxdz);
   
-  public int hashCode()
-  {
-    return this.jdField_a_of_type_Int * 31 + (int)(this.jdField_a_of_type_Long ^ this.jdField_a_of_type_Long >>> 32);
-  }
-  
-  public String toString()
-  {
-    return "EditBehavior{hasMusic=" + this.jdField_a_of_type_Boolean + ", musicType=" + this.jdField_a_of_type_Int + ", musicId=" + this.jdField_a_of_type_Long + '}';
-  }
+  public abstract void c(xdz paramxdz);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     xbv
  * JD-Core Version:    0.7.0.1
  */

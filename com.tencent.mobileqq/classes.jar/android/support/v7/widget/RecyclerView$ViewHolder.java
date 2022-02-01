@@ -30,7 +30,7 @@ public abstract class RecyclerView$ViewHolder
   long mItemId = -1L;
   int mItemViewType = -1;
   int mOldPosition = -1;
-  RecyclerView mOwnerRecyclerView;
+  public RecyclerView mOwnerRecyclerView;
   List<Object> mPayloads = null;
   int mPosition = -1;
   int mPreLayoutPosition = -1;

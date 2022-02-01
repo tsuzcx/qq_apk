@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.activity.bless;
 
-import ahcn;
+import aipa;
 import android.graphics.drawable.AnimationDrawable;
 
 public class BlessActivity$AnimationDrawable2
   extends AnimationDrawable
 {
-  private ahcn jdField_a_of_type_Ahcn;
+  private aipa jdField_a_of_type_Aipa;
   private boolean jdField_a_of_type_Boolean;
   
   public BlessActivity$AnimationDrawable2(BlessActivity paramBlessActivity) {}
@@ -17,9 +17,9 @@ public class BlessActivity$AnimationDrawable2
     this.jdField_a_of_type_Boolean = false;
   }
   
-  public void a(ahcn paramahcn)
+  public void a(aipa paramaipa)
   {
-    this.jdField_a_of_type_Ahcn = paramahcn;
+    this.jdField_a_of_type_Aipa = paramaipa;
   }
   
   public boolean selectDrawable(int paramInt)
@@ -28,8 +28,8 @@ public class BlessActivity$AnimationDrawable2
     if ((paramInt != 0) && (paramInt == getNumberOfFrames() - 1) && (!this.jdField_a_of_type_Boolean))
     {
       this.jdField_a_of_type_Boolean = true;
-      if (this.jdField_a_of_type_Ahcn != null) {
-        this.jdField_a_of_type_Ahcn.a();
+      if (this.jdField_a_of_type_Aipa != null) {
+        this.jdField_a_of_type_Aipa.a();
       }
     }
     return bool;
@@ -37,7 +37,7 @@ public class BlessActivity$AnimationDrawable2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.bless.BlessActivity.AnimationDrawable2
  * JD-Core Version:    0.7.0.1
  */

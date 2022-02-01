@@ -1,22 +1,48 @@
-public class bagf
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.qphone.base.util.QLog;
+
+class bagf
+  extends Handler
 {
-  public int a;
-  public String a;
-  public boolean a;
-  public int b;
-  public String b;
-  public int c;
-  public String c;
-  public int d;
-  public String d;
-  public String e;
-  public String f;
-  public String g;
-  public String h;
-  public String i;
-  public String j;
-  public String k;
-  public String l;
+  public bagf(baga parambaga, Looper paramLooper)
+  {
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    try
+    {
+      switch (paramMessage.what)
+      {
+      case 1: 
+        baga.a(this.a);
+        return;
+      }
+    }
+    catch (Exception paramMessage)
+    {
+      paramMessage.printStackTrace();
+      QLog.e("QzoneGiftManager", 1, "handleMessage exception = " + paramMessage.getMessage());
+      return;
+    }
+    baga.b(this.a);
+    return;
+    baga.c(this.a);
+    return;
+    baga.d(this.a);
+    return;
+    baga.e(this.a);
+    return;
+    baga.f(this.a);
+    return;
+    baga.g(this.a);
+    return;
+    baga.h(this.a);
+    return;
+  }
 }
 
 

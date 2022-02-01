@@ -1,23 +1,19 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.pb.PBStringField;
-import feedcloud.FeedCloudMeta.StFeed;
-import feedcloud.FeedCloudMeta.StTagInfo;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
 
-class txi
-  implements View.OnClickListener
+public class txi
 {
-  txi(txh paramtxh, FeedCloudMeta.StFeed paramStFeed, FeedCloudMeta.StTagInfo paramStTagInfo) {}
+  private static boolean a = true;
   
-  public void onClick(View paramView)
-  {
-    tzw.a(16, 2, this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed, 2, 0);
-    tqs.a(this.jdField_a_of_type_FeedcloudFeedCloudMeta$StTagInfo.tagId.get(), this.jdField_a_of_type_FeedcloudFeedCloudMeta$StTagInfo.tagName.get());
-  }
+  public static void a(FromServiceMsg paramFromServiceMsg) {}
+  
+  public static void a(ToServiceMsg paramToServiceMsg) {}
+  
+  public static void a(byte[] paramArrayOfByte, String paramString) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     txi
  * JD-Core Version:    0.7.0.1
  */

@@ -1,70 +1,36 @@
-import android.text.TextUtils;
-import com.tencent.gdtad.aditem.GdtAd;
-import com.tencent.gdtad.api.motivevideo.GdtMotiveVideoPageData;
-import com.tencent.gdtad.views.video.GdtVideoData;
-import org.json.JSONObject;
-import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
-public class aapm
+class aapm
+  implements aapi
 {
-  private GdtAd jdField_a_of_type_ComTencentGdtadAditemGdtAd;
-  private GdtMotiveVideoPageData jdField_a_of_type_ComTencentGdtadApiMotivevideoGdtMotiveVideoPageData;
-  private GdtVideoData jdField_a_of_type_ComTencentGdtadViewsVideoGdtVideoData;
-  private qq_ad_get.QQAdGetRsp.AdInfo jdField_a_of_type_TencentGdtQq_ad_get$QQAdGetRsp$AdInfo;
+  aapm(aapl paramaapl, aapk paramaapk) {}
   
-  public aapm(GdtMotiveVideoPageData paramGdtMotiveVideoPageData)
+  public void a(String paramString1, boolean paramBoolean, String paramString2)
   {
-    aase.a("GdtMotiveVideoModel", "[GdtMotiveVideoModel]\n" + paramGdtMotiveVideoPageData.adsContent);
-    this.jdField_a_of_type_ComTencentGdtadApiMotivevideoGdtMotiveVideoPageData = paramGdtMotiveVideoPageData;
-    b(paramGdtMotiveVideoPageData);
-    a(paramGdtMotiveVideoPageData);
-  }
-  
-  private void a(GdtMotiveVideoPageData paramGdtMotiveVideoPageData)
-  {
-    this.jdField_a_of_type_ComTencentGdtadAditemGdtAd = new GdtAd(this.jdField_a_of_type_TencentGdtQq_ad_get$QQAdGetRsp$AdInfo);
-    this.jdField_a_of_type_ComTencentGdtadViewsVideoGdtVideoData = new GdtVideoData();
-    this.jdField_a_of_type_ComTencentGdtadViewsVideoGdtVideoData.setAd(this.jdField_a_of_type_ComTencentGdtadAditemGdtAd);
-    this.jdField_a_of_type_ComTencentGdtadViewsVideoGdtVideoData.setPlayScene(11);
-    this.jdField_a_of_type_ComTencentGdtadViewsVideoGdtVideoData.setUrl(paramGdtMotiveVideoPageData.url);
-  }
-  
-  private void b(GdtMotiveVideoPageData paramGdtMotiveVideoPageData)
-  {
-    if (TextUtils.isEmpty(paramGdtMotiveVideoPageData.adsContent))
+    if (QLog.isColorLevel()) {
+      QLog.d(".troop.VideoCombineHelper", 2, "combineVideos end! isSuccess:" + paramBoolean + " path = " + paramString1);
+    }
+    File localFile = new File(paramString1);
+    if ((paramBoolean) && (localFile.exists()))
     {
-      aase.d("GdtMotiveVideoModel", "[adJson==null error]");
+      if (this.jdField_a_of_type_Aapk.a)
+      {
+        this.jdField_a_of_type_Aapl.jdField_a_of_type_Aapz.b(this.jdField_a_of_type_Aapl);
+        return;
+      }
+      if (this.jdField_a_of_type_Aapl.jdField_a_of_type_JavaLangString != null)
+      {
+        l = System.currentTimeMillis();
+        this.jdField_a_of_type_Aapl.jdField_a_of_type_Aapa.a(paramString1, this.jdField_a_of_type_Aapl.jdField_a_of_type_JavaLangString, new aapn(this, l));
+        return;
+      }
+      long l = System.currentTimeMillis();
+      this.jdField_a_of_type_Aapl.a(localFile, this.jdField_a_of_type_Aapl.b, new aapp(this, l));
       return;
     }
-    try
-    {
-      this.jdField_a_of_type_TencentGdtQq_ad_get$QQAdGetRsp$AdInfo = ((qq_ad_get.QQAdGetRsp.AdInfo)qq_ad_get.QQAdGetRsp.AdInfo.class.cast(aasd.a(new qq_ad_get.QQAdGetRsp.AdInfo(), new JSONObject(paramGdtMotiveVideoPageData.adsContent))));
-      return;
-    }
-    catch (Throwable paramGdtMotiveVideoPageData)
-    {
-      aase.d("GdtMotiveVideoModel", "GdtMotiveVideoModel error]", paramGdtMotiveVideoPageData);
-    }
-  }
-  
-  public GdtAd a()
-  {
-    return this.jdField_a_of_type_ComTencentGdtadAditemGdtAd;
-  }
-  
-  public GdtMotiveVideoPageData a()
-  {
-    return this.jdField_a_of_type_ComTencentGdtadApiMotivevideoGdtMotiveVideoPageData;
-  }
-  
-  public GdtVideoData a()
-  {
-    return this.jdField_a_of_type_ComTencentGdtadViewsVideoGdtVideoData;
-  }
-  
-  public qq_ad_get.QQAdGetRsp.AdInfo a()
-  {
-    return this.jdField_a_of_type_TencentGdtQq_ad_get$QQAdGetRsp$AdInfo;
+    this.jdField_a_of_type_Aapl.d = paramString2;
+    this.jdField_a_of_type_Aapl.jdField_a_of_type_Aapz.a(this.jdField_a_of_type_Aapl);
   }
 }
 

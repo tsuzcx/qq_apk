@@ -30,6 +30,11 @@ public final class stSchema
     this.H5Url = paramJceInputStream.readString(3, false);
   }
   
+  public String toString()
+  {
+    return "stSchema{type=" + this.type + ", schema='" + this.schema + '\'' + ", miniAppSchema='" + this.miniAppSchema + '\'' + ", H5Url='" + this.H5Url + '\'' + '}';
+  }
+  
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.type, 0);

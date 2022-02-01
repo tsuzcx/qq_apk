@@ -9,9 +9,9 @@ class VideoPlayerView$21
   
   public void run()
   {
-    if ((VideoPlayerView.a(this.this$0) != null) && (VideoPlayerView.a(this.this$0).getVisibility() == 8) && (!VideoPlayerView.g()))
+    if ((VideoPlayerView.a(this.this$0) != null) && (VideoPlayerView.a(this.this$0).getVisibility() == 8) && (!VideoPlayerView.m()))
     {
-      this.this$0.a();
+      this.this$0.c();
       VideoPlayerView.e(this.this$0);
       VideoPlayerView.a(this.this$0).setVisibility(0);
       VideoPlayerView.a(this.this$0, true);
@@ -20,7 +20,7 @@ class VideoPlayerView$21
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.subscribe.videoplayer.VideoPlayerView.21
  * JD-Core Version:    0.7.0.1
  */

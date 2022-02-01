@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.addon;
 
-import akmx;
-import akmy;
-import akmz;
+import amgd;
+import amge;
+import amgf;
 import android.text.TextUtils;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
@@ -15,7 +15,7 @@ import java.util.concurrent.CopyOnWriteArraySet;
 public class DiyPendantFetcher$2
   implements Runnable
 {
-  public DiyPendantFetcher$2(akmx paramakmx, QQAppInterface paramQQAppInterface) {}
+  public DiyPendantFetcher$2(amgd paramamgd, QQAppInterface paramQQAppInterface) {}
   
   public void run()
   {
@@ -28,13 +28,13 @@ public class DiyPendantFetcher$2
       this.this$0.c(this.a);
       if (!this.this$0.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet.isEmpty())
       {
-        localObject1 = (akmz)this.a.a(114);
+        localObject1 = (amgf)this.a.a(114);
         localObject2 = new ArrayList();
         Iterator localIterator = this.this$0.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet.iterator();
         while (localIterator.hasNext()) {
           ((List)localObject2).add(Long.valueOf(Long.parseLong(((java.lang.String)localIterator.next()).split("_")[0])));
         }
-        ((akmz)localObject1).a((List)localObject2, null);
+        ((amgf)localObject1).a((List)localObject2, null);
         this.this$0.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet.clear();
       }
     }
@@ -44,17 +44,17 @@ public class DiyPendantFetcher$2
     Object localObject1 = this.this$0.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
     while (((Iterator)localObject1).hasNext())
     {
-      localObject2 = (akmy)((Iterator)localObject1).next();
-      if ((localObject2 == null) || (((akmy)localObject2).a() == null)) {
+      localObject2 = (amge)((Iterator)localObject1).next();
+      if ((localObject2 == null) || (((amge)localObject2).a() == null)) {
         this.this$0.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.remove(localObject2);
       }
     }
-    akmx.jdField_a_of_type_Long = 0L;
+    amgd.jdField_a_of_type_Long = 0L;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.addon.DiyPendantFetcher.2
  * JD-Core Version:    0.7.0.1
  */

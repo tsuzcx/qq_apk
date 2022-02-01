@@ -1,16 +1,36 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.EditText;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.shortvideo.hwcodec.SVHwEncoder;
+import java.util.concurrent.ConcurrentHashMap;
 
-class balt
-  implements View.OnClickListener
+public class balt
 {
-  balt(balm parambalm) {}
+  public ConcurrentHashMap<String, bali> a = new ConcurrentHashMap(10);
   
-  public void onClick(View paramView)
+  public bali a(SVHwEncoder paramSVHwEncoder, SessionInfo paramSessionInfo, int paramInt)
   {
-    this.a.a.setText("");
-    this.a.c();
+    paramSVHwEncoder = new bali(paramSVHwEncoder, paramSessionInfo, paramInt);
+    this.a.put(paramSVHwEncoder.a, paramSVHwEncoder);
+    baln.a("VideoCompoundController", "newProcessor, key = " + paramSVHwEncoder.a);
+    return paramSVHwEncoder;
+  }
+  
+  public bali a(String paramString)
+  {
+    baln.a("VideoCompoundController", "findProcessor, key = " + paramString);
+    if ((!this.a.isEmpty()) && (paramString != null) && (this.a.containsKey(paramString))) {
+      return (bali)this.a.get(paramString);
+    }
+    return null;
+  }
+  
+  public boolean a(String paramString)
+  {
+    baln.a("VideoCompoundController", "removeProcessor, key = " + paramString);
+    if (paramString == null) {}
+    while (this.a.remove(paramString) == null) {
+      return false;
+    }
+    return true;
   }
 }
 

@@ -1,22 +1,41 @@
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendCampusFragment;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import android.content.Intent;
+import android.text.TextUtils;
+import com.tencent.mobileqq.colornote.data.ColorNote;
+import com.tencent.mobileqq.music.QQPlayerService;
 
 public class aqdh
-  extends aqbl
+  implements aqdf
 {
-  public aqdh(ExtendFriendCampusFragment paramExtendFriendCampusFragment) {}
-  
-  protected void a(boolean paramBoolean, int paramInt)
+  private void a(Intent paramIntent, ColorNote paramColorNote)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ExtendFriendCampusFragment", 2, String.format("onUpdateCampusCertificateStatus isSuccess=%s scene=%s", new Object[] { Boolean.valueOf(paramBoolean), Integer.valueOf(paramInt) }));
+    String str = paramIntent.getStringExtra("url");
+    if ((!TextUtils.isEmpty(str)) && (str.matches("^https?://fm\\.qzone\\.qq\\.com/.*")))
+    {
+      paramColorNote = paramColorNote.getReserve();
+      if ((paramColorNote != null) && (paramColorNote.length > 0)) {
+        paramIntent.putExtra("url", new String(paramColorNote));
+      }
     }
-    if ((paramBoolean) && (paramInt == 1)) {
-      ExtendFriendCampusFragment.a(this.a);
-    }
-    if ((paramBoolean) && (ExtendFriendCampusFragment.a(this.a) != null)) {
-      ExtendFriendCampusFragment.b(this.a);
-    }
+  }
+  
+  public void a(Context paramContext, ColorNote paramColorNote)
+  {
+    if (paramColorNote == null) {}
+    Intent localIntent;
+    do
+    {
+      do
+      {
+        return;
+      } while (paramColorNote.getServiceType() != 16973824);
+      localIntent = QQPlayerService.a();
+    } while (localIntent == null);
+    a(localIntent, paramColorNote);
+    localIntent.addFlags(268435456);
+    localIntent.addFlags(536870912);
+    localIntent.addFlags(67108864);
+    paramContext.startActivity(localIntent);
   }
 }
 

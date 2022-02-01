@@ -1,14 +1,8 @@
-import dov.com.qq.im.QIMEffectCameraCaptureUnit;
+import android.view.View;
 
-public class bknh
-  implements bnmi
+public abstract interface bknh
 {
-  public bknh(QIMEffectCameraCaptureUnit paramQIMEffectCameraCaptureUnit) {}
-  
-  public void a()
-  {
-    QIMEffectCameraCaptureUnit.d(this.a);
-  }
+  public abstract void a(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4);
 }
 
 

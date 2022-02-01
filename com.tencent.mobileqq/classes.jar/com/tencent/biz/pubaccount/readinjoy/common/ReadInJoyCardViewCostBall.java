@@ -7,7 +7,7 @@ import android.util.AttributeSet;
 import android.view.WindowManager;
 import android.view.WindowManager.LayoutParams;
 import android.widget.TextView;
-import oqt;
+import pgb;
 
 public class ReadInJoyCardViewCostBall
   extends TextView
@@ -33,12 +33,12 @@ public class ReadInJoyCardViewCostBall
   
   private void a(Context paramContext)
   {
-    setId(2131370692);
-    setBackgroundColor(paramContext.getResources().getColor(2131165320));
+    setId(2131371248);
+    setBackgroundColor(paramContext.getResources().getColor(2131165356));
     setText("60.00");
     setTextColor(-16711936);
     setGravity(17);
-    setOnTouchListener(new oqt(this, null));
+    setOnTouchListener(new pgb(this, null));
   }
 }
 

@@ -1,33 +1,30 @@
-import NS_MINI_INTERFACE.INTERFACE.GuardInstruction;
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.qqmini.sdk.core.proxy.MiniAppProxy;
-import com.tencent.qqmini.sdk.core.proxy.ProxyManager;
+import java.util.Comparator;
 
 class bgwz
-  implements DialogInterface.OnClickListener
+  implements Comparator<bgxa>
 {
-  bgwz(bgwy parambgwy) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public int a(bgxa parambgxa1, bgxa parambgxa2)
   {
-    paramDialogInterface.dismiss();
-    if ((this.a.a() instanceof Activity))
-    {
-      paramDialogInterface = (MiniAppProxy)ProxyManager.get(MiniAppProxy.class);
-      Activity localActivity = (Activity)this.a.a();
-      Intent localIntent = new Intent();
-      localIntent.putExtra("url", this.a.a().url.get());
-      paramDialogInterface.startBrowserActivity(localActivity, localIntent);
+    int i = 1;
+    if (parambgxa1.a == parambgxa2.a) {
+      if (parambgxa1.b == parambgxa2.b) {
+        i = 0;
+      }
     }
+    while (parambgxa1.a > parambgxa2.a)
+    {
+      do
+      {
+        return i;
+      } while (parambgxa1.b > parambgxa2.b);
+      return -1;
+    }
+    return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bgwz
  * JD-Core Version:    0.7.0.1
  */

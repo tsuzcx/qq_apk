@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.ark;
 
-import acjm;
-import afih;
-import alud;
+import adrm;
+import agpp;
 import android.support.v4.app.FragmentActivity;
 import android.text.TextUtils;
-import anlu;
-import anlw;
-import anoe;
-import anoq;
-import anpc;
+import anni;
+import apma;
+import apmc;
+import apok;
+import apow;
+import appi;
 import com.tencent.ark.open.ArkAppCacheMgr;
 import com.tencent.mobileqq.activity.BaseChatPie;
 import com.tencent.mobileqq.activity.ChatFragment;
@@ -31,29 +31,29 @@ import org.w3c.dom.Text;
 public class ArkAdapterItemForTextMsg$2$1
   implements Runnable
 {
-  public ArkAdapterItemForTextMsg$2$1(anlw paramanlw) {}
+  public ArkAdapterItemForTextMsg$2$1(apmc paramapmc) {}
   
   public void run()
   {
     try
     {
-      if (this.a.jdField_a_of_type_Anlu.a.mArkContainer == null)
+      if (this.a.jdField_a_of_type_Apma.a.mArkContainer == null)
       {
-        anlu.a(this.a.jdField_a_of_type_Anlu, this.a.jdField_a_of_type_Anoq.a);
+        apma.a(this.a.jdField_a_of_type_Apma, this.a.jdField_a_of_type_Apow.a);
         return;
       }
       ArkAppMessage localArkAppMessage = new ArkAppMessage();
       localArkAppMessage.appMinVersion = "0.0.0.1";
-      localArkAppMessage.appName = this.a.jdField_a_of_type_Anlu.a.mArkContainer.getAppName();
+      localArkAppMessage.appName = this.a.jdField_a_of_type_Apma.a.mArkContainer.getAppName();
       if (TextUtils.isEmpty(localArkAppMessage.appName))
       {
-        anlu.a(this.a.jdField_a_of_type_Anlu, this.a.jdField_a_of_type_Anoq.a);
+        apma.a(this.a.jdField_a_of_type_Apma, this.a.jdField_a_of_type_Apow.a);
         return;
       }
     }
     catch (Exception localException)
     {
-      anlu.a(this.a.jdField_a_of_type_Anlu, this.a.jdField_a_of_type_Anoq.a);
+      apma.a(this.a.jdField_a_of_type_Apma, this.a.jdField_a_of_type_Apow.a);
       if (QLog.isColorLevel())
       {
         QLog.d("ArkAdapterItemForTextMsg", 2, "setSendClick parse ark app exception=" + localException);
@@ -67,13 +67,13 @@ public class ArkAdapterItemForTextMsg$2$1
         if (TextUtils.isEmpty(localException.appDesc)) {
           localException.appDesc = localException.appName;
         }
-        localException.promptText = String.format(alud.a(2131701023), new Object[] { localException.appDesc });
+        localException.promptText = String.format(anni.a(2131699448), new Object[] { localException.appDesc });
         localObject1 = new JSONObject();
         ((JSONObject)localObject1).put("forward", 1);
         ((JSONObject)localObject1).put("autosize", 1);
         ((JSONObject)localObject1).put("type", "card");
         localException.config = ((JSONObject)localObject1).toString();
-        localObject1 = this.a.jdField_a_of_type_Anlu.a.mArkContainer.getViewShare();
+        localObject1 = this.a.jdField_a_of_type_Apma.a.mArkContainer.getViewShare();
         Object localObject2;
         int i;
         if (!TextUtils.isEmpty((CharSequence)localObject1))
@@ -92,7 +92,7 @@ public class ArkAdapterItemForTextMsg$2$1
                 if ((localObject2 != null) && (((Node)localObject2).getChildNodes().getLength() > 0))
                 {
                   JSONObject localJSONObject = new JSONObject();
-                  if (anpc.a(((Node)localObject2).getFirstChild(), localJSONObject))
+                  if (appi.a(((Node)localObject2).getFirstChild(), localJSONObject))
                   {
                     localException.metaList = localJSONObject.toString();
                     i = 1;
@@ -116,15 +116,15 @@ public class ArkAdapterItemForTextMsg$2$1
         {
           if (j == 0)
           {
-            if ((!TextUtils.isEmpty(this.a.jdField_a_of_type_Anlu.a.appView)) && (!TextUtils.isEmpty(this.a.jdField_a_of_type_Anlu.a.meta)))
+            if ((!TextUtils.isEmpty(this.a.jdField_a_of_type_Apma.a.appView)) && (!TextUtils.isEmpty(this.a.jdField_a_of_type_Apma.a.meta)))
             {
-              localException.appView = this.a.jdField_a_of_type_Anlu.a.appView;
-              localException.metaList = this.a.jdField_a_of_type_Anlu.a.meta;
+              localException.appView = this.a.jdField_a_of_type_Apma.a.appView;
+              localException.metaList = this.a.jdField_a_of_type_Apma.a.meta;
             }
           }
           else
           {
-            localObject1 = ((FragmentActivity)this.a.jdField_a_of_type_Anoq.a).getChatFragment().a();
+            localObject1 = ((FragmentActivity)this.a.jdField_a_of_type_Apow.a).getChatFragment().a();
             if (localObject1 == null) {
               break label744;
             }
@@ -132,14 +132,14 @@ public class ArkAdapterItemForTextMsg$2$1
             if ((localObject2 == null) || (((BaseChatPie)localObject1).a == null)) {
               break label744;
             }
-            acjm.b(((BaseChatPie)localObject1).a, (SessionInfo)localObject2, localException);
-            anoe.a(((BaseChatPie)localObject1).a, localException.appName, "AIOCardSendMessage", 0, 0, 0L, 0L, 0L, "", "");
+            adrm.b(((BaseChatPie)localObject1).a, (SessionInfo)localObject2, localException);
+            apok.a(((BaseChatPie)localObject1).a, localException.appName, "AIOCardSendMessage", 0, 0, 0L, 0L, 0L, "", "");
             return;
           }
-          anlu.a(this.a.jdField_a_of_type_Anlu, this.a.jdField_a_of_type_Anoq.a);
+          apma.a(this.a.jdField_a_of_type_Apma, this.a.jdField_a_of_type_Apow.a);
           return;
           label744:
-          anlu.a(this.a.jdField_a_of_type_Anlu, this.a.jdField_a_of_type_Anoq.a);
+          apma.a(this.a.jdField_a_of_type_Apma, this.a.jdField_a_of_type_Apow.a);
           return;
           i = 0;
           break;
@@ -150,7 +150,7 @@ public class ArkAdapterItemForTextMsg$2$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ark.ArkAdapterItemForTextMsg.2.1
  * JD-Core Version:    0.7.0.1
  */

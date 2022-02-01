@@ -1,17 +1,20 @@
 package com.tencent.thumbplayer.api;
 
+import android.util.Log;
 import com.tencent.thumbplayer.caputure.TPCaptureUtils;
 import com.tencent.thumbplayer.core.common.TPVideoFrame;
 import com.tencent.thumbplayer.core.imagegenerator.ITPImageGeneratorCallback;
 import com.tencent.thumbplayer.core.imagegenerator.TPImageGenerator;
 import com.tencent.thumbplayer.core.imagegenerator.TPImageGeneratorParams;
+import com.tencent.thumbplayer.utils.TPLogUtil;
 import java.util.HashMap;
 import java.util.Map;
 
 public class TPVideoCapture
   implements ITPImageGeneratorCallback
 {
-  private Map<String, TPVideoCapture.TPVideoCaptureCallBack> mCallBackMap;
+  private static final String TAG = "TPThumbPlayer[TPVideoCapture.java]";
+  private Map<String, TPVideoCapture.TPVideoCaptureCallBack> mCallBackMap = new HashMap();
   private int mHeight = 0;
   private long mOpaque = 0L;
   private long mRequestedTimeMsToleranceAfter = 0L;
@@ -21,8 +24,15 @@ public class TPVideoCapture
   
   public TPVideoCapture(String paramString)
   {
-    this.mTpImageGenerator.init();
-    this.mCallBackMap = new HashMap();
+    try
+    {
+      this.mTpImageGenerator.init();
+      return;
+    }
+    catch (Exception paramString)
+    {
+      TPLogUtil.e("TPThumbPlayer[TPVideoCapture.java]", "init: " + Log.getStackTraceString(paramString));
+    }
   }
   
   private String generateOpaqueKey(long paramLong1, long paramLong2)
@@ -45,7 +55,15 @@ public class TPVideoCapture
   {
     this.mOpaque += 1L;
     this.mCallBackMap.put(generateOpaqueKey(this.mOpaque, paramLong), paramTPVideoCaptureCallBack);
-    this.mTpImageGenerator.generateImageAsyncAtTime(paramLong, this.mOpaque, getParameters());
+    try
+    {
+      this.mTpImageGenerator.generateImageAsyncAtTime(paramLong, this.mOpaque, getParameters());
+      return;
+    }
+    catch (Exception paramTPVideoCaptureCallBack)
+    {
+      TPLogUtil.e("TPThumbPlayer[TPVideoCapture.java]", "generateImageAsyncAtTime: " + Log.getStackTraceString(paramTPVideoCaptureCallBack));
+    }
   }
   
   public void generateImagesAsyncForTimes(long[] paramArrayOfLong, TPVideoCapture.TPVideoCaptureCallBack paramTPVideoCaptureCallBack)
@@ -59,7 +77,15 @@ public class TPVideoCapture
       this.mCallBackMap.put(generateOpaqueKey(this.mOpaque, l), paramTPVideoCaptureCallBack);
       i += 1;
     }
-    this.mTpImageGenerator.generateImagesAsyncForTimes(paramArrayOfLong, this.mOpaque, getParameters());
+    try
+    {
+      this.mTpImageGenerator.generateImagesAsyncForTimes(paramArrayOfLong, this.mOpaque, getParameters());
+      return;
+    }
+    catch (Exception paramArrayOfLong)
+    {
+      TPLogUtil.e("TPThumbPlayer[TPVideoCapture.java]", "generateImagesAsyncForTimes: " + Log.getStackTraceString(paramArrayOfLong));
+    }
   }
   
   public void onImageGenerationCompleted(int paramInt, long paramLong1, long paramLong2, long paramLong3, TPVideoFrame paramTPVideoFrame)
@@ -83,13 +109,21 @@ public class TPVideoCapture
   
   public void release()
   {
-    if (this.mTpImageGenerator != null)
+    try
     {
       this.mTpImageGenerator.cancelAllImageGenerations();
       this.mTpImageGenerator.unInit();
+      this.mCallBackMap.clear();
       this.mTpImageGenerator = null;
+      return;
     }
-    this.mCallBackMap.clear();
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        TPLogUtil.e("TPThumbPlayer[TPVideoCapture.java]", "release: " + Log.getStackTraceString(localException));
+      }
+    }
   }
   
   public void setSize(int paramInt1, int paramInt2)
@@ -112,7 +146,7 @@ public class TPVideoCapture
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.thumbplayer.api.TPVideoCapture
  * JD-Core Version:    0.7.0.1
  */

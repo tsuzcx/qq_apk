@@ -1,25 +1,47 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import com.tencent.mobileqq.ocr.view.ScanOcrView;
+import android.app.Activity;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.location.data.LocationRoom.Venue;
+import com.tencent.mobileqq.location.ui.LocationPickFragment;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class avzf
-  extends AnimatorListenerAdapter
+  implements View.OnClickListener
 {
-  public avzf(ScanOcrView paramScanOcrView, int paramInt) {}
+  public avzf(LocationPickFragment paramLocationPickFragment, Activity paramActivity) {}
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public void onClick(View paramView)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqOcrViewScanOcrView.b) {
-      ScanOcrView.a(this.jdField_a_of_type_ComTencentMobileqqOcrViewScanOcrView, this.jdField_a_of_type_Int + 1);
+    int i = 2;
+    if (!bgnt.a())
+    {
+      QQToast.a(this.jdField_a_of_type_AndroidAppActivity, 2131693417, 0).a();
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
     }
-    if (this.jdField_a_of_type_Int == 2) {
-      this.jdField_a_of_type_ComTencentMobileqqOcrViewScanOcrView.c();
+    LocationRoom.Venue localVenue = LocationPickFragment.a(this.jdField_a_of_type_ComTencentMobileqqLocationUiLocationPickFragment).a();
+    if (QLog.isColorLevel()) {
+      QLog.d("LocationPickFragment", 2, "[venue] pick confirm click: venue: " + localVenue);
+    }
+    if (LocationPickFragment.a(this.jdField_a_of_type_ComTencentMobileqqLocationUiLocationPickFragment).a()) {}
+    for (;;)
+    {
+      bcst.b(null, "CliOper", "", "", "0X800A962", "0X800A962", i, 0, "", "0", "0", "");
+      Intent localIntent = new Intent();
+      localIntent.putExtra("key_picked_location", localVenue);
+      this.jdField_a_of_type_AndroidAppActivity.setResult(-1, localIntent);
+      this.jdField_a_of_type_AndroidAppActivity.finish();
+      break;
+      i = 1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     avzf
  * JD-Core Version:    0.7.0.1
  */

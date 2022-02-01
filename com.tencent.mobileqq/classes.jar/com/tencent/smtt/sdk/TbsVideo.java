@@ -5,18 +5,18 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
-import com.tencent.tbs.video.interfaces.IUserStateHolder;
+import com.tencent.tbs.video.interfaces.a;
 
 public class TbsVideo
 {
   public static boolean canUseTbsPlayer(Context paramContext)
   {
-    return TbsVideoPlayer.getInstance(paramContext).canUseTbsPlayer();
+    return q.a(paramContext).a();
   }
   
   public static boolean canUseYunbo(Context paramContext)
   {
-    return (TbsVideoPlayer.getInstance(paramContext).canUseTbsPlayer()) && (QbSdk.canUseVideoFeatrue(paramContext, 1));
+    return (q.a(paramContext).a()) && (QbSdk.canUseVideoFeatrue(paramContext, 1));
   }
   
   public static void openVideo(Context paramContext, String paramString)
@@ -43,17 +43,17 @@ public class TbsVideo
     paramContext.startActivity(paramString);
   }
   
-  public static boolean openYunboVideo(Context paramContext, String paramString, Bundle paramBundle, IUserStateHolder paramIUserStateHolder)
+  public static boolean openYunboVideo(Context paramContext, String paramString, Bundle paramBundle, a parama)
   {
     if (canUseYunbo(paramContext)) {
-      return TbsVideoPlayer.getInstance(paramContext).play(paramString, paramBundle, paramIUserStateHolder);
+      return q.a(paramContext).a(paramString, paramBundle, parama);
     }
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.smtt.sdk.TbsVideo
  * JD-Core Version:    0.7.0.1
  */

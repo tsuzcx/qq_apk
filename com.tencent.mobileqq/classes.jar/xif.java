@@ -1,93 +1,25 @@
-import android.support.annotation.NonNull;
-import android.text.TextUtils;
 import android.view.View;
-import android.widget.ImageView;
-import android.widget.ProgressBar;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawableDownListener;
-import java.lang.ref.WeakReference;
+import android.view.View.OnClickListener;
+import com.tencent.biz.qqstory.playvideo.VideoCoverListBar;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class xif
-  implements URLDrawableDownListener
+  implements View.OnClickListener
 {
-  private final String jdField_a_of_type_JavaLangString;
-  private final WeakReference<ImageView> jdField_a_of_type_JavaLangRefWeakReference;
-  private final WeakReference<ProgressBar> b;
+  xif(xie paramxie, xid paramxid) {}
   
-  public xif(@NonNull String paramString, @NonNull ImageView paramImageView, @NonNull ProgressBar paramProgressBar)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramImageView);
-    this.b = new WeakReference(paramProgressBar);
-  }
-  
-  private boolean a(ImageView paramImageView)
-  {
-    paramImageView = (String)paramImageView.getTag(2131377450);
-    return (!TextUtils.isEmpty(paramImageView)) && (paramImageView.equals(this.jdField_a_of_type_JavaLangString));
-  }
-  
-  public void onLoadCancelled(View paramView, URLDrawable paramURLDrawable)
-  {
-    wxe.b("LocationFaceAdapter", "onLoadCanceled,url:" + this.jdField_a_of_type_JavaLangString);
-    paramView = (ImageView)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    paramURLDrawable = (ProgressBar)this.b.get();
-    if ((paramView != null) && (paramURLDrawable != null) && (a(paramView)))
-    {
-      paramURLDrawable.setVisibility(4);
-      paramView.setTag(2131377419, Boolean.valueOf(false));
-      return;
+    if (VideoCoverListBar.a(this.jdField_a_of_type_Xie.jdField_a_of_type_Xid.a) != null) {
+      VideoCoverListBar.a(this.jdField_a_of_type_Xie.jdField_a_of_type_Xid.a).a(xie.a(this.jdField_a_of_type_Xie));
     }
-    wxe.b("LocationFaceAdapter", "onLoadCanceled error.");
-  }
-  
-  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable)
-  {
-    wxe.b("LocationFaceAdapter", "onLoadFialed,url:" + this.jdField_a_of_type_JavaLangString);
-    paramView = (ImageView)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    paramURLDrawable = (ProgressBar)this.b.get();
-    if ((paramView != null) && (paramURLDrawable != null) && (a(paramView)))
-    {
-      paramURLDrawable.setVisibility(0);
-      paramView.setTag(2131377419, Boolean.valueOf(false));
-      return;
-    }
-    wxe.b("LocationFaceAdapter", "onLoadFialed error.");
-  }
-  
-  public void onLoadInterrupted(View paramView, URLDrawable paramURLDrawable, InterruptedException paramInterruptedException) {}
-  
-  public void onLoadProgressed(View paramView, URLDrawable paramURLDrawable, int paramInt)
-  {
-    wxe.b("LocationFaceAdapter", "onLoadProgressed,url:" + this.jdField_a_of_type_JavaLangString);
-    paramView = (ImageView)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    paramURLDrawable = (ProgressBar)this.b.get();
-    if ((paramView != null) && (paramURLDrawable != null) && (a(paramView)))
-    {
-      paramURLDrawable.setVisibility(0);
-      paramView.setTag(2131377419, Boolean.valueOf(false));
-      return;
-    }
-    wxe.b("LocationFaceAdapter", "onLoadProgressed error.");
-  }
-  
-  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
-  {
-    wxe.b("LocationFaceAdapter", "onLoadSuccessed,url:" + this.jdField_a_of_type_JavaLangString);
-    paramView = (ImageView)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    paramURLDrawable = (ProgressBar)this.b.get();
-    if ((paramView != null) && (paramURLDrawable != null) && (a(paramView)))
-    {
-      paramURLDrawable.setVisibility(4);
-      paramView.setTag(2131377419, Boolean.valueOf(true));
-      return;
-    }
-    wxe.b("LocationFaceAdapter", "onLoadSuccessed error.");
+    yqu.a("play_video", "clk_mini", 0, 0, new String[] { "2", "", "", xie.a(this.jdField_a_of_type_Xie) });
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     xif
  * JD-Core Version:    0.7.0.1
  */

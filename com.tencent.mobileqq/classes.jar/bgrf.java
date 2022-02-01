@@ -1,30 +1,32 @@
-import android.content.DialogInterface.OnClickListener;
-import android.view.View;
-import android.view.View.OnClickListener;
+import com.tencent.mobileqq.utils.QQRecorder.RecorderParam;
 
-class bgrf
-  implements View.OnClickListener
+public abstract interface bgrf
 {
-  bgrf(bgrb parambgrb, DialogInterface.OnClickListener paramOnClickListener) {}
+  public abstract int a();
   
-  public void onClick(View paramView)
-  {
-    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
-      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_Bgrb, 0);
-    }
-    try
-    {
-      if (this.jdField_a_of_type_Bgrb.isShowing()) {
-        this.jdField_a_of_type_Bgrb.dismiss();
-      }
-      return;
-    }
-    catch (Exception paramView) {}
-  }
+  public abstract int a(String paramString, QQRecorder.RecorderParam paramRecorderParam);
+  
+  public abstract void a();
+  
+  public abstract void a(int paramInt);
+  
+  public abstract void a(String paramString);
+  
+  public abstract void a(String paramString, QQRecorder.RecorderParam paramRecorderParam);
+  
+  public abstract void a(String paramString, QQRecorder.RecorderParam paramRecorderParam, double paramDouble);
+  
+  public abstract void a(String paramString1, QQRecorder.RecorderParam paramRecorderParam, String paramString2);
+  
+  public abstract void a(String paramString, byte[] paramArrayOfByte, int paramInt1, int paramInt2, double paramDouble, QQRecorder.RecorderParam paramRecorderParam);
+  
+  public abstract void b(String paramString, QQRecorder.RecorderParam paramRecorderParam);
+  
+  public abstract void c(String paramString, QQRecorder.RecorderParam paramRecorderParam);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bgrf
  * JD-Core Version:    0.7.0.1
  */

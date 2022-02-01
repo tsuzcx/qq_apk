@@ -1,6 +1,11 @@
+import java.util.List;
+import java.util.Map;
+
 public abstract interface aghd
 {
-  public abstract void a(Object paramObject);
+  public abstract void a(String paramString, int paramInt, aggv paramaggv, List<aghq> paramList, Map<Integer, Integer> paramMap);
+  
+  public abstract boolean a(String paramString);
 }
 
 

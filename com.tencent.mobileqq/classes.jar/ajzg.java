@@ -1,42 +1,13 @@
 import android.view.View;
-import com.tencent.mobileqq.activity.selectmember.FriendTabView;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.PinnedFooterExpandableListView;
 
-public class ajzg
-  implements bhzn
+class ajzg
+  implements bkiz
 {
-  public ajzg(FriendTabView paramFriendTabView) {}
+  ajzg(ajzf paramajzf, View paramView) {}
   
   public void a()
   {
-    this.a.a = true;
-    FriendTabView.a(this.a).setFooterEnable(false);
-  }
-  
-  public void a(PinnedFooterExpandableListView paramPinnedFooterExpandableListView, View paramView, int paramInt)
-  {
-    if (!this.a.a)
-    {
-      if (paramInt - 1 >= 0) {
-        paramPinnedFooterExpandableListView.b(paramInt - 1);
-      }
-      for (;;)
-      {
-        this.a.a = true;
-        FriendTabView.a(this.a).setFooterEnable(false);
-        return;
-        if (QLog.isColorLevel()) {
-          QLog.d("FriendTabView", 2, "header group unusal: " + paramInt);
-        }
-      }
-    }
-    if (paramPinnedFooterExpandableListView.c(paramInt))
-    {
-      paramPinnedFooterExpandableListView.b(paramInt);
-      return;
-    }
-    paramPinnedFooterExpandableListView.a(paramInt);
+    this.jdField_a_of_type_AndroidViewView.setSelected(false);
   }
 }
 

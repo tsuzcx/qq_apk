@@ -1,110 +1,214 @@
-import android.app.Activity;
 import android.content.Context;
 import android.content.res.Resources;
-import android.os.Handler;
-import android.os.Handler.Callback;
-import android.os.Message;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.tts.SilkStreamPlayer;
-import com.tencent.mobileqq.widget.QQToast;
-import mqq.manager.TicketManager;
+import android.os.Bundle;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.LinearLayout;
+import android.widget.LinearLayout.LayoutParams;
+import com.tencent.mobileqq.activity.aio.BaseChatItemLayout;
+import com.tencent.mobileqq.structmsg.AbsStructMsg;
+import com.tencent.mobileqq.structmsg.view.StructMsgItemTitle;
+import java.util.ArrayList;
+import java.util.Collection;
 
 public class bcxz
-  implements Handler.Callback
+  extends bcvt
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private Handler jdField_a_of_type_AndroidOsHandler;
-  private bcxy jdField_a_of_type_Bcxy;
-  private bcyb jdField_a_of_type_Bcyb;
-  protected bety a;
-  private SilkStreamPlayer jdField_a_of_type_ComTencentMobileqqTtsSilkStreamPlayer;
-  private TicketManager jdField_a_of_type_MqqManagerTicketManager;
+  public bcxz() {}
   
-  public bcxz(AppInterface paramAppInterface, Context paramContext)
+  public bcxz(Collection<bcvs> paramCollection)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_MqqManagerTicketManager = ((TicketManager)paramAppInterface.getManager(2));
-    this.jdField_a_of_type_AndroidOsHandler = new bhtd(this);
-    this.jdField_a_of_type_Bcxy = new bcya(this);
+    super(paramCollection);
   }
   
-  private void c()
+  protected int a(Resources paramResources, int paramInt, bcvs parambcvs)
   {
-    if (this.jdField_a_of_type_Bety == null) {
-      this.jdField_a_of_type_Bety = new bety(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131298914));
-    }
-    if (!((Activity)this.jdField_a_of_type_AndroidContentContext).isFinishing()) {
-      this.jdField_a_of_type_Bety.show();
-    }
+    return afur.a(5.0F, paramResources);
   }
   
-  private void d()
+  protected ArrayList<bcvs> a(ArrayList<bcvs> paramArrayList)
   {
-    if ((this.jdField_a_of_type_Bety != null) && (this.jdField_a_of_type_Bety.isShowing())) {
-      this.jdField_a_of_type_Bety.dismiss();
-    }
+    return paramArrayList;
   }
   
-  public void a()
+  protected int b()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqTtsSilkStreamPlayer != null) {
-      this.jdField_a_of_type_ComTencentMobileqqTtsSilkStreamPlayer.b();
-    }
-    if (this.jdField_a_of_type_Bcyb != null) {
-      this.jdField_a_of_type_Bcyb.b();
-    }
+    return 1;
   }
   
-  public void a(bcyb parambcyb)
+  public View b(Context paramContext, View paramView, Bundle paramBundle)
   {
-    this.jdField_a_of_type_Bcyb = parambcyb;
-  }
-  
-  public void a(String paramString1, String paramString2, String paramString3)
-  {
-    if (!bdin.g(this.jdField_a_of_type_AndroidContentContext)) {
-      QQToast.a(this.jdField_a_of_type_AndroidContentContext, alud.a(2131716226), 1).a();
-    }
-    do
+    Resources localResources = paramContext.getResources();
+    int n = localResources.getDimensionPixelSize(2131298900);
+    int i1 = localResources.getDimensionPixelSize(2131298901);
+    int i = afur.a(5.0F, localResources);
+    if ((this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsStructMsg != null) && (this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsStructMsg.mMsgServiceID == 35)) {}
+    for (int k = 6;; k = 10)
     {
-      return;
-      this.jdField_a_of_type_ComTencentMobileqqTtsSilkStreamPlayer = new SilkStreamPlayer(this.jdField_a_of_type_AndroidContentContext, paramString1, paramString2, this.jdField_a_of_type_MqqManagerTicketManager.getSkey(paramString2));
-      this.jdField_a_of_type_ComTencentMobileqqTtsSilkStreamPlayer.a(this.jdField_a_of_type_Bcxy);
-      this.jdField_a_of_type_ComTencentMobileqqTtsSilkStreamPlayer.a(paramString3);
-      this.jdField_a_of_type_ComTencentMobileqqTtsSilkStreamPlayer.a();
-    } while (this.jdField_a_of_type_Bcyb == null);
-    this.jdField_a_of_type_Bcyb.a();
+      Object localObject1;
+      Object localObject2;
+      View localView;
+      if ((paramView != null) && ((paramView instanceof LinearLayout)))
+      {
+        paramView = (LinearLayout)paramView;
+        if (!TextUtils.isEmpty(this.c)) {
+          paramView.setBackgroundResource(2130839432);
+        }
+        d(paramView);
+        localObject1 = a(this.jdField_a_of_type_JavaUtilArrayList);
+        if (paramView.getChildCount() != ((ArrayList)localObject1).size()) {
+          break label529;
+        }
+        k = ((ArrayList)localObject1).size();
+        j = 0;
+        if (j < k)
+        {
+          localObject2 = (bcvs)((ArrayList)localObject1).get(j);
+          ((bcvs)localObject2).jdField_a_of_type_JavaLangRefWeakReference = this.jdField_a_of_type_JavaLangRefWeakReference;
+          if ((localObject2 instanceof StructMsgItemTitle)) {
+            ((StructMsgItemTitle)localObject2).a(a(), this.p);
+          }
+          localView = ((bcvs)localObject2).a(paramContext, paramView.getChildAt(j), paramBundle);
+          if (localView != null) {}
+        }
+        else
+        {
+          label197:
+          return paramView;
+        }
+      }
+      else
+      {
+        paramView = new LinearLayout(paramContext);
+        paramView.setOrientation(1);
+        localObject1 = new LinearLayout.LayoutParams(-1, -2);
+        if (!a(1)) {
+          break label853;
+        }
+      }
+      label529:
+      label543:
+      label705:
+      label853:
+      for (int j = a(paramContext, k) + i;; j = i)
+      {
+        int m = i;
+        if (a(2)) {
+          m = i + a(paramContext, k);
+        }
+        paramView.setPadding(n, j, i1, m);
+        paramView.setLayoutParams((ViewGroup.LayoutParams)localObject1);
+        i = j;
+        break;
+        m = afur.a(10.0F, localResources);
+        LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-1, -2);
+        if (j > 0) {
+          localLayoutParams.topMargin = a(localResources, j, (bcvs)localObject2);
+        }
+        localObject2 = ((bcvs)localObject2).jdField_a_of_type_JavaLangString;
+        if ("picture".equals(localObject2))
+        {
+          localView.setId(-1);
+          localLayoutParams.height = (BaseChatItemLayout.f - m - m);
+        }
+        for (;;)
+        {
+          j += 1;
+          break;
+          if ("video".equals(localObject2))
+          {
+            localLayoutParams.height = (BaseChatItemLayout.f - m - m);
+          }
+          else if ("title".equals(localObject2))
+          {
+            localView.setId(-1);
+          }
+          else if ("summary".equals(localObject2))
+          {
+            localView.setId(-1);
+          }
+          else if ("hr".equals(localObject2))
+          {
+            localLayoutParams.height = 1;
+            if (k == 1) {
+              paramView.setPadding(0, 0, 0, 0);
+            } else if (j == k - 1) {
+              paramView.setPadding(n, i, i1, 0);
+            }
+          }
+          else if ("image".equals(localObject2))
+          {
+            localLayoutParams.gravity = 1;
+            paramView.setPadding(0, 0, 0, 0);
+          }
+        }
+        paramView.removeAllViews();
+        k = ((ArrayList)localObject1).size();
+        j = 0;
+        if (j < k)
+        {
+          localObject2 = (bcvs)((ArrayList)localObject1).get(j);
+          ((bcvs)localObject2).jdField_a_of_type_JavaLangRefWeakReference = this.jdField_a_of_type_JavaLangRefWeakReference;
+          if ((localObject2 instanceof StructMsgItemTitle)) {
+            ((StructMsgItemTitle)localObject2).a(a(), this.p);
+          }
+          localView = ((bcvs)localObject2).a(paramContext, null, paramBundle);
+          if (localView == null) {
+            break label197;
+          }
+          m = afur.a(10.0F, localResources);
+          localLayoutParams = new LinearLayout.LayoutParams(-1, -2);
+          if (j > 0) {
+            localLayoutParams.topMargin = a(localResources, j, (bcvs)localObject2);
+          }
+          localObject2 = ((bcvs)localObject2).jdField_a_of_type_JavaLangString;
+          if (!"picture".equals(localObject2)) {
+            break label705;
+          }
+          localView.setId(-1);
+          localLayoutParams.height = (BaseChatItemLayout.f - m - m);
+        }
+        for (;;)
+        {
+          paramView.addView(localView, localLayoutParams);
+          j += 1;
+          break label543;
+          break;
+          if ("video".equals(localObject2))
+          {
+            localLayoutParams.height = (BaseChatItemLayout.f - m - m);
+          }
+          else if ("title".equals(localObject2))
+          {
+            localView.setId(-1);
+          }
+          else if ("summary".equals(localObject2))
+          {
+            localView.setId(-1);
+          }
+          else if ("hr".equals(localObject2))
+          {
+            localLayoutParams.height = 1;
+            if (k == 1) {
+              paramView.setPadding(0, 0, 0, 0);
+            } else if (j == k - 1) {
+              paramView.setPadding(n, i, i1, 0);
+            }
+          }
+          else if ("image".equals(localObject2))
+          {
+            localLayoutParams.gravity = 1;
+            paramView.setPadding(0, 0, 0, 0);
+          }
+        }
+      }
+    }
   }
   
-  public boolean a()
+  public String b()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqTtsSilkStreamPlayer != null) {
-      return this.jdField_a_of_type_ComTencentMobileqqTtsSilkStreamPlayer.a();
-    }
-    return false;
-  }
-  
-  public void b()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqTtsSilkStreamPlayer != null) {
-      this.jdField_a_of_type_ComTencentMobileqqTtsSilkStreamPlayer.c();
-    }
-    this.jdField_a_of_type_Bcyb = null;
-    this.jdField_a_of_type_Bcxy = null;
-  }
-  
-  public boolean handleMessage(Message paramMessage)
-  {
-    switch (paramMessage.what)
-    {
-    }
-    for (;;)
-    {
-      return false;
-      c();
-      continue;
-      d();
-    }
+    return "Layout1";
   }
 }
 

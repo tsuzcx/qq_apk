@@ -4,13 +4,13 @@ import android.content.Context;
 import android.os.Handler;
 import android.util.AttributeSet;
 import android.widget.RelativeLayout;
-import biaf;
+import bknq;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.ProgressPieView;
 
 public class FilterProgress
   extends RelativeLayout
-  implements biaf
+  implements bknq
 {
   public Context a;
   public Handler a;
@@ -50,7 +50,7 @@ public class FilterProgress
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.qqstory.takevideo.artfilter.FilterProgress
  * JD-Core Version:    0.7.0.1
  */

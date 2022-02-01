@@ -9,7 +9,6 @@
         </RelativeLayout>
         <include android:id="@id/bm2" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginBottom="20.0dip" layout="@layout/b46" />
         <com.tencent.mobileqq.widget.FormSimpleItem android:id="@id/em6" android:focusable="true" android:clickable="true" android:layout_width="fill_parent" android:layout_height="50.0dip" formItem:bgType="jsv" formItem:leftText="@string/atl" formItem:leftTextColor="ab6" />
-        <com.tencent.mobileqq.widget.FormSimpleItem android:id="@id/bmc" android:focusable="true" android:clickable="true" android:layout_width="fill_parent" android:layout_height="50.0dip" formItem:bgType="abp" formItem:showArrow="true" />
         <com.tencent.mobileqq.widget.FormSimpleItem android:id="@id/chatHistory" android:focusable="true" android:clickable="true" android:layout_width="fill_parent" android:layout_height="50.0dip" android:layout_marginTop="20.0dip" formItem:bgType="jsv" formItem:leftText="@string/a0y" formItem:showArrow="true" />
         <com.tencent.mobileqq.widget.FormSimpleItem android:id="@id/i0w" android:focusable="true" android:clickable="true" android:layout_width="fill_parent" android:layout_height="50.0dip" formItem:bgType="evy" formItem:leftText="@string/a0v" formItem:showArrow="true" />
         <com.tencent.mobileqq.widget.FormSimpleItem android:id="@id/ioy" android:focusable="true" android:clickable="true" android:layout_width="fill_parent" android:layout_height="50.0dip" formItem:bgType="evy" formItem:leftText="@string/hfe" formItem:showArrow="true" />

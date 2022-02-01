@@ -1,16 +1,16 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.activity.aio.item.HeartBreakCombolEffectView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.TroopTransferActivity;
 
-public class afpm
-  implements View.OnTouchListener
+class afpm
+  implements DialogInterface.OnClickListener
 {
-  public afpm(HeartBreakCombolEffectView paramHeartBreakCombolEffectView) {}
+  afpm(afpk paramafpk, bgpa parambgpa) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return true;
+    bcst.b(this.jdField_a_of_type_Afpk.a.app, "P_CliOper", "Grp_manage", "", "turn_grp", "Clk_know", 0, 0, this.jdField_a_of_type_Afpk.a.a, "", "", "");
+    this.jdField_a_of_type_Bgpa.cancel();
   }
 }
 

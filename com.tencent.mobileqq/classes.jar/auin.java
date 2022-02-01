@@ -1,30 +1,21 @@
 import android.view.View;
-import com.tencent.mobileqq.msgbackup.fragment.MsgBackupQRFragment;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class auin
-  implements bexc
+class auin
+  implements View.OnClickListener
 {
-  public auin(MsgBackupQRFragment paramMsgBackupQRFragment) {}
+  auin(auim paramauim) {}
   
-  public void a(View paramView, int paramInt)
+  public void onClick(View paramView)
   {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.e("MsgBackup.MsgBackupQRFragment", 2, "TO_QRCODE page click left btn");
-    }
-    augo.a().d();
-    this.a.onBackEvent();
-    aujo.a("0X800A242", 4);
+    this.a.b();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     auin
  * JD-Core Version:    0.7.0.1
  */

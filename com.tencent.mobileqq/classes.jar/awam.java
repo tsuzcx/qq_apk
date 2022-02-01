@@ -1,73 +1,30 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.olympic.OlympicManager;
-import com.tencent.mobileqq.olympic.ShuayishuaConfig;
-import com.tencent.mobileqq.olympic.TorchInfo;
-import com.tencent.qphone.base.util.QLog;
+import android.app.Dialog;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.location.ui.LocationShareFragment;
+import mqq.app.QQPermissionCallback;
 
 public class awam
-  extends awan
+  implements QQPermissionCallback
 {
-  public awam(OlympicManager paramOlympicManager) {}
+  public awam(LocationShareFragment paramLocationShareFragment, BaseActivity paramBaseActivity, int paramInt1, String paramString, int paramInt2) {}
   
-  public void a(boolean paramBoolean, int paramInt1, TorchInfo paramTorchInfo, int paramInt2)
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    if (QLog.isColorLevel())
-    {
-      OlympicManager localOlympicManager = this.a;
-      QLog.i("OlympicManager", 2, "onGetMyTorchInfo.isSuccess=" + paramBoolean + ",errCode=" + paramInt1 + ",errStr=,info=" + paramTorchInfo);
+    paramArrayOfString = bglp.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity);
+    if (paramArrayOfString != null) {
+      paramArrayOfString.setOnDismissListener(new awan(this));
     }
+    avwv.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.app).a(this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.b, 1);
   }
   
-  public void a(boolean paramBoolean, int paramInt, String paramString, byte[] paramArrayOfByte, TorchInfo paramTorchInfo)
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    if (QLog.isColorLevel())
-    {
-      OlympicManager localOlympicManager = this.a;
-      QLog.i("OlympicManager", 2, "onCollectTorch.isSuccess=" + paramBoolean + ",errCode=" + paramInt + ",errStr=" + paramString + ",sig=" + paramArrayOfByte + ",info=" + paramTorchInfo);
-    }
-    OlympicManager.a(this.a, false);
-    if (paramBoolean)
-    {
-      OlympicManager.a(this.a, paramArrayOfByte);
-      if (paramInt == 0)
-      {
-        azqs.b(this.a.a, "CliOper", "", "", "0X80069C8", "0X80069C8", 0, 0, "", "", "", "");
-        this.a.a(1);
-        this.a.a(paramTorchInfo);
-        OlympicManager.b(this.a).obtainMessage(6).sendToTarget();
-        OlympicManager.b(this.a).obtainMessage(5).sendToTarget();
-        paramArrayOfByte = Long.valueOf(-1L);
-        paramString = paramArrayOfByte;
-        if (OlympicManager.a(this.a) != null)
-        {
-          paramString = paramArrayOfByte;
-          if (OlympicManager.a(this.a).type == 2) {
-            paramString = Long.valueOf(OlympicManager.a(this.a).uiBegin);
-          }
-        }
-        OlympicManager.a(this.a).obtainMessage(7, paramString).sendToTarget();
-      }
-    }
-    else
-    {
-      return;
-    }
-    if (paramInt == 1)
-    {
-      this.a.a(1);
-      OlympicManager.b(this.a).obtainMessage(6).sendToTarget();
-      OlympicManager.b(this.a).obtainMessage(5).sendToTarget();
-      return;
-    }
-    OlympicManager.b(this.a, false);
-    OlympicManager.b(this.a, null);
-    OlympicManager.a(this.a, 0);
+    LocationShareFragment.a(this.jdField_a_of_type_ComTencentMobileqqLocationUiLocationShareFragment);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     awam
  * JD-Core Version:    0.7.0.1
  */

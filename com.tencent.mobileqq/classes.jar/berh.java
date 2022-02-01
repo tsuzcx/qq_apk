@@ -1,10 +1,24 @@
-public abstract interface berh
+import com.tencent.mobileqq.troop.createNewTroop.RelationTroopEntity;
+import java.util.ArrayList;
+
+class berh
+  implements bfho
 {
-  public abstract void b();
+  berh(berf paramberf, bern parambern) {}
   
-  public abstract void c();
-  
-  public abstract void c(boolean paramBoolean);
+  public void a(ArrayList<bfhn> paramArrayList)
+  {
+    ArrayList localArrayList = new ArrayList();
+    int i = 0;
+    while (i < paramArrayList.size())
+    {
+      RelationTroopEntity localRelationTroopEntity = new RelationTroopEntity();
+      localRelationTroopEntity.troopInfo = ((bfhn)paramArrayList.get(i)).a;
+      localArrayList.add(localRelationTroopEntity);
+      i += 1;
+    }
+    this.jdField_a_of_type_Bern.a(localArrayList);
+  }
 }
 
 

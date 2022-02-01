@@ -1,23 +1,31 @@
-import android.net.Uri;
+import com.tencent.mobileqq.tribe.fragment.TribeVideoListPlayerFragment;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.smtt.export.external.interfaces.WebResourceRequest;
-import com.tencent.smtt.export.external.interfaces.WebResourceResponse;
-import com.tencent.smtt.sdk.WebView;
+import com.tencent.superplayer.view.ISPlayerVideoView.IVideoViewCallBack;
 
-class beel
-  extends beep
+public class beel
+  implements ISPlayerVideoView.IVideoViewCallBack
 {
-  beel(beej parambeej)
-  {
-    super(parambeej, null);
-  }
+  public beel(TribeVideoListPlayerFragment paramTribeVideoListPlayerFragment) {}
   
-  public WebResourceResponse shouldInterceptRequest(WebView paramWebView, WebResourceRequest paramWebResourceRequest)
+  public void onSurfaceChanged(Object paramObject)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("AbsWebView", 2, "new shouldInterceptRequest");
+      QLog.d("TribeVideoListPlayerFragment", 2, "IVideoViewBase.IVideoViewCallBack onSurfaceChanged");
     }
-    return a(paramWebView, paramWebResourceRequest.getUrl().toString());
+  }
+  
+  public void onSurfaceCreated(Object paramObject)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("TribeVideoListPlayerFragment", 2, "IVideoViewBase.IVideoViewCallBack onSurfaceCreated");
+    }
+  }
+  
+  public void onSurfaceDestroy(Object paramObject)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("TribeVideoListPlayerFragment", 2, "IVideoViewBase.IVideoViewCallBack onSurfaceDestory");
+    }
   }
 }
 

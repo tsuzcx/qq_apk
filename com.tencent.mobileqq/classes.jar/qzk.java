@@ -1,38 +1,18 @@
-import android.os.Bundle;
-import com.tencent.biz.pubaccount.readinjoy.video.ReadInJoyWebDataManager.6;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import android.view.animation.Interpolator;
 
-public class qzk
-  implements bckx
+class qzk
+  implements Interpolator
 {
-  public qzk(ReadInJoyWebDataManager.6 param6) {}
+  qzk(qzi paramqzi) {}
   
-  public void a(JSONObject paramJSONObject, int paramInt, Bundle paramBundle)
+  public float getInterpolation(float paramFloat)
   {
-    QLog.w("ReadInJoyWebDataManager", 2, Long.toString(Thread.currentThread().getId()));
-    if (paramJSONObject != null) {}
-    while (!QLog.isColorLevel()) {
-      try
-      {
-        if (QLog.isColorLevel()) {
-          QLog.w("ReadInJoyWebDataManager", 2, "sendLog result:" + paramJSONObject.toString());
-        }
-        return;
-      }
-      catch (Exception paramJSONObject)
-      {
-        while (!QLog.isColorLevel()) {}
-        QLog.w("ReadInJoyWebDataManager", 2, "sendLog result Exception :" + paramJSONObject);
-        return;
-      }
-    }
-    QLog.w("ReadInJoyWebDataManager", 2, "sendLog result null");
+    return (float)(Math.pow(2.0D, -10.0F * paramFloat) * Math.sin((paramFloat + 0.12F) * 6.283185307179586D / -0.1800000071525574D) + 1.0D);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     qzk
  * JD-Core Version:    0.7.0.1
  */

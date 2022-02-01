@@ -1,66 +1,31 @@
-import android.content.Intent;
-import android.content.res.Resources;
-import android.os.Bundle;
-import android.os.Handler.Callback;
-import android.os.Message;
-import android.support.v4.app.FragmentActivity;
-import android.widget.TextView;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment;
-import com.tencent.mobileqq.teamwork.TeamWorkFileImportInfo;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.biz.qqcircle.list.bizblocks.QCircleObserver;
+import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
 public class aeam
-  implements Handler.Callback
+  extends QCircleObserver
 {
-  public aeam(TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment paramTeamWorkDocEditBrowserFragment) {}
+  private WeakReference<Conversation> a;
   
-  public boolean handleMessage(Message paramMessage)
+  public aeam(Conversation paramConversation)
   {
-    switch (paramMessage.what)
+    this.a = new WeakReference(paramConversation);
+  }
+  
+  public void onUpdateRedPoint(int paramInt)
+  {
+    Conversation localConversation = (Conversation)this.a.get();
+    StringBuilder localStringBuilder = new StringBuilder().append("QCircleObserver onUpdateRedPoint: ");
+    if (localConversation != null) {}
+    for (boolean bool = true;; bool = false)
     {
-    default: 
-      return true;
-    case 2: 
-      if ((this.a.a.c != null) && (!this.a.a.c.isEnabled())) {
-        this.a.a.c.setEnabled(true);
+      QLog.d("Q.recent", 2, bool);
+      if (localConversation != null) {
+        localConversation.p();
       }
-      Object localObject = (String)paramMessage.obj;
-      if (TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment.a(this.a))
-      {
-        TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment.a(this.a, 1);
-        this.a.getActivity().finish();
-        paramMessage = new Bundle();
-        paramMessage.putString("savedUrl", (String)localObject);
-        localObject = (TeamWorkFileImportInfo)this.a.a().getParcelableExtra("key_team_work_file_import_info");
-        if (((TeamWorkFileImportInfo)localObject).e != 3) {
-          break label226;
-        }
-        paramMessage.putInt("editType", 1);
-      }
-      for (;;)
-      {
-        if (this.a.a().getParcelableExtra("key_team_work_file_import_info") != null) {
-          paramMessage.putParcelable("key_team_work_file_import_info", this.a.a().getParcelableExtra("key_team_work_file_import_info"));
-        }
-        paramMessage = apml.a("ipc_save_team_work", "", -1, paramMessage);
-        aprh.a().a(paramMessage);
-        return true;
-        TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment.a(this.a, 0);
-        TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment.a(this.a, (String)localObject);
-        break;
-        label226:
-        if (((TeamWorkFileImportInfo)localObject).e == 6) {
-          paramMessage.putInt("editType", 2);
-        }
-      }
+      return;
     }
-    if ((this.a.a.c != null) && (!this.a.a.c.isEnabled())) {
-      this.a.a.c.setEnabled(true);
-    }
-    QQToast.a(this.a.getActivity(), alud.a(2131715139), 0).b(BaseApplicationImpl.getContext().getResources().getDimensionPixelSize(2131298914));
-    return true;
   }
 }
 

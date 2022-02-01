@@ -1,17 +1,18 @@
-import java.io.File;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendProfileEditFragment.ExtendFriendInfo;
 
-public class asjl
+public final class asjl
+  implements Parcelable.Creator<ExtendFriendProfileEditFragment.ExtendFriendInfo>
 {
-  public static void a(File paramFile)
+  public ExtendFriendProfileEditFragment.ExtendFriendInfo a(Parcel paramParcel)
   {
-    if ((paramFile == null) || (paramFile.exists())) {}
-    do
-    {
-      return;
-      paramFile = paramFile.getParentFile();
-    } while ((paramFile == null) || (paramFile.exists()));
-    a(paramFile);
-    paramFile.mkdirs();
+    return new ExtendFriendProfileEditFragment.ExtendFriendInfo(paramParcel);
+  }
+  
+  public ExtendFriendProfileEditFragment.ExtendFriendInfo[] a(int paramInt)
+  {
+    return new ExtendFriendProfileEditFragment.ExtendFriendInfo[paramInt];
   }
 }
 

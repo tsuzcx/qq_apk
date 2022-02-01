@@ -1,18 +1,21 @@
 package com.tencent.biz.pubaccount.ecshopassit;
 
-import amrz;
+import Override;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.graphics.Rect;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
-import begs;
-import bibb;
+import aoqq;
+import bhnw;
+import bkom;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.webview.swift.WebViewFragment;
 import com.tencent.mobileqq.webview.swift.WebViewTabBarData;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -22,7 +25,7 @@ import java.util.Set;
 
 public class EcshopWebActivity
   extends QQBrowserActivity
-  implements bibb
+  implements bkom
 {
   public long a;
   ViewGroup jdField_a_of_type_AndroidViewViewGroup;
@@ -61,7 +64,7 @@ public class EcshopWebActivity
     if (this.jdField_a_of_type_Boolean) {
       return super.a(paramWebViewTabBarData);
     }
-    return begs.a(this, paramWebViewTabBarData, super.getIntent());
+    return bhnw.a(this, paramWebViewTabBarData, super.getIntent());
   }
   
   public void a(Rect paramRect, boolean paramBoolean)
@@ -129,24 +132,29 @@ public class EcshopWebActivity
     int i = paramMotionEvent.getAction();
     if (this.jdField_a_of_type_AndroidViewViewGroup == null)
     {
-      this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)findViewById(2131380185));
+      this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)findViewById(2131381162));
       if (this.jdField_a_of_type_AndroidViewViewGroup == null) {
-        this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)findViewById(2131364785));
+        this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)findViewById(2131365013));
       }
-      if (this.jdField_a_of_type_AndroidViewViewGroup == null) {
-        return super.dispatchTouchEvent(paramMotionEvent);
-      }
+      if (this.jdField_a_of_type_AndroidViewViewGroup != null) {}
     }
-    View localView = findViewById(2131375863);
-    if (localView == null) {
-      return super.dispatchTouchEvent(paramMotionEvent);
+    View localView;
+    for (boolean bool = super.dispatchTouchEvent(paramMotionEvent);; bool = super.dispatchTouchEvent(paramMotionEvent))
+    {
+      EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool);
+      return bool;
+      localView = findViewById(2131376599);
+      if (localView != null) {
+        break;
+      }
     }
     switch (i)
     {
     }
     for (;;)
     {
-      return super.dispatchTouchEvent(paramMotionEvent);
+      bool = super.dispatchTouchEvent(paramMotionEvent);
+      break;
       if ((!this.jdField_a_of_type_Boolean) && (!this.jdField_b_of_type_Boolean))
       {
         this.jdField_c_of_type_Boolean = false;
@@ -181,7 +189,7 @@ public class EcshopWebActivity
       localIntent.putExtra("uin", ((RecentShopParcel)this.jdField_a_of_type_JavaUtilList.get(0)).jdField_a_of_type_JavaLangString);
     }
     sendBroadcast(localIntent);
-    amrz.a(this.app, "9970", 1, 4, System.currentTimeMillis() - this.e);
+    aoqq.a(this.app, "9970", 1, 4, System.currentTimeMillis() - this.e);
   }
   
   public void doOnRestoreInstanceState(Bundle paramBundle)
@@ -207,6 +215,13 @@ public class EcshopWebActivity
   public boolean isWrapContent()
   {
     return true;
+  }
+  
+  @Override
+  public void onConfigurationChanged(Configuration paramConfiguration)
+  {
+    super.onConfigurationChanged(paramConfiguration);
+    EventCollector.getInstance().onActivityConfigurationChanged(this, paramConfiguration);
   }
   
   public void onCreate(Bundle paramBundle)

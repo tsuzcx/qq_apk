@@ -1,218 +1,135 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
-import android.os.Bundle;
-import android.util.DisplayMetrics;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.image.URLDrawable;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.CustomEmotionBase;
-import com.tencent.mobileqq.data.CustomEmotionData;
-import com.tencent.mobileqq.data.Emoticon;
+import android.annotation.TargetApi;
+import android.hardware.Camera;
+import android.hardware.Camera.CameraInfo;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.List;
 
+@TargetApi(9)
 public class aqan
-  extends aqae
 {
-  public apuf a;
+  private static aqan jdField_a_of_type_Aqan;
+  private static Camera.CameraInfo[] jdField_b_of_type_ArrayOfAndroidHardwareCamera$CameraInfo;
+  private final int jdField_a_of_type_Int;
+  private aqbh jdField_a_of_type_Aqbh = aqbh.a();
+  private final Camera.CameraInfo[] jdField_a_of_type_ArrayOfAndroidHardwareCamera$CameraInfo;
+  private int jdField_b_of_type_Int = -1;
+  private int c = -1;
+  private int d = -1;
   
-  public aqan(apuf paramapuf)
+  private aqan()
   {
-    this.a = paramapuf;
-  }
-  
-  public int a(List<aqae> paramList)
-  {
-    int i = 0;
-    if (i < paramList.size())
+    int i;
+    if (jdField_b_of_type_ArrayOfAndroidHardwareCamera$CameraInfo != null)
     {
-      Object localObject1 = (aqae)paramList.get(i);
-      Object localObject2;
-      if ((localObject1 instanceof aqan))
-      {
-        localObject1 = ((aqan)localObject1).a;
-        if ((!(localObject1 instanceof apxf)) || (!(this.a instanceof apxf))) {
-          break label133;
-        }
-        localObject2 = ((apxf)localObject1).f;
-        String str = ((apxf)this.a).f;
-        if ((localObject2 != null) && (((String)localObject2).equals(str))) {}
-        do
-        {
-          return i;
-          localObject1 = ((apxf)localObject1).e;
-          localObject2 = ((apxf)this.a).e;
-        } while ((localObject1 != null) && (((String)localObject1).equals(localObject2)));
+      this.jdField_a_of_type_Int = jdField_b_of_type_ArrayOfAndroidHardwareCamera$CameraInfo.length;
+      this.jdField_a_of_type_ArrayOfAndroidHardwareCamera$CameraInfo = jdField_b_of_type_ArrayOfAndroidHardwareCamera$CameraInfo;
+      i = k;
+      if (i >= this.jdField_a_of_type_Int) {
+        return;
       }
-      label133:
-      label203:
-      do
+      if ((this.c != -1) || (this.jdField_a_of_type_ArrayOfAndroidHardwareCamera$CameraInfo[i].facing != 0)) {
+        break label203;
+      }
+      this.c = i;
+    }
+    for (;;)
+    {
+      i += 1;
+      break;
+      this.jdField_a_of_type_Int = a();
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.camera.CameraHolder", 1, "[CameraHolder] mNumberOfCameras = " + this.jdField_a_of_type_Int);
+      }
+      this.jdField_a_of_type_ArrayOfAndroidHardwareCamera$CameraInfo = new Camera.CameraInfo[this.jdField_a_of_type_Int];
+      int j = 0;
+      for (;;)
       {
-        do
-        {
-          i += 1;
+        i = k;
+        if (j >= this.jdField_a_of_type_Int) {
           break;
-          if ((!(localObject1 instanceof apxv)) || (!(this.a instanceof apxv))) {
-            break label203;
-          }
-          localObject1 = ((apxv)localObject1).a;
-          localObject2 = ((apxv)this.a).a;
-        } while ((localObject1 == null) || (localObject2 == null) || (((Emoticon)localObject1).eId == null) || (!((Emoticon)localObject1).eId.equals(((Emoticon)localObject2).eId)));
-        return i;
-      } while ((!(localObject1 instanceof aptr)) || (!(this.a instanceof aptr)) || (((aptr)localObject1).g != ((aptr)this.a).g));
-      return i;
-    }
-    return 0;
-  }
-  
-  public long a()
-  {
-    if ((this.a instanceof apxm)) {
-      return ((apxm)this.a).a();
-    }
-    return 0L;
-  }
-  
-  public Drawable a(Context paramContext)
-  {
-    URLDrawable localURLDrawable = null;
-    if ((this.a instanceof apxv)) {
-      localURLDrawable = ((apxv)this.a).a("fromAIO", true);
-    }
-    do
-    {
-      return localURLDrawable;
-      if ((this.a instanceof apxf)) {
-        return ((apxf)this.a).b(paramContext, paramContext.getResources().getDisplayMetrics().density, paramContext.getResources().getDisplayMetrics().widthPixels, paramContext.getResources().getDisplayMetrics().heightPixels);
-      }
-    } while (!(this.a instanceof aptr));
-    return ((aptr)this.a).a(paramContext, paramContext.getResources().getDisplayMetrics().widthPixels, paramContext.getResources().getDisplayMetrics().heightPixels);
-  }
-  
-  public apuf a()
-  {
-    return this.a;
-  }
-  
-  public CustomEmotionData a()
-  {
-    if (((this.a instanceof apxf)) && (((apxf)this.a).g != null))
-    {
-      Object localObject = BaseApplicationImpl.getApplication().getRuntime();
-      if ((localObject instanceof QQAppInterface))
-      {
-        localObject = ((apon)((QQAppInterface)localObject).getManager(149)).a();
-        if (localObject != null)
+        }
+        this.jdField_a_of_type_ArrayOfAndroidHardwareCamera$CameraInfo[j] = new Camera.CameraInfo();
+        try
         {
-          localObject = ((List)localObject).iterator();
-          while (((Iterator)localObject).hasNext())
+          Camera.getCameraInfo(j, this.jdField_a_of_type_ArrayOfAndroidHardwareCamera$CameraInfo[j]);
+          j += 1;
+        }
+        catch (Exception localException)
+        {
+          for (;;)
           {
-            CustomEmotionData localCustomEmotionData = (CustomEmotionData)((Iterator)localObject).next();
-            if (((apxf)this.a).g.equalsIgnoreCase(localCustomEmotionData.resid)) {
-              return localCustomEmotionData;
-            }
+            QLog.e("Q.camera.CameraHolder", 2, localException, new Object[0]);
           }
         }
       }
-    }
-    return null;
-  }
-  
-  public void a(Bundle paramBundle, int paramInt)
-  {
-    super.a(paramBundle, paramInt);
-    paramBundle.putInt("cur_emotion_id", (int)a());
-    if ((this.a instanceof aptr)) {}
-    for (paramInt = 1;; paramInt = 0)
-    {
-      paramBundle.putInt("cur_emotion_type", paramInt);
-      return;
-    }
-  }
-  
-  public boolean a()
-  {
-    return this.a instanceof apxv;
-  }
-  
-  public boolean a(aqae paramaqae)
-  {
-    boolean bool = true;
-    if ((paramaqae instanceof aqan))
-    {
-      paramaqae = ((aqan)paramaqae).a;
-      Object localObject;
-      if (((paramaqae instanceof apxf)) && ((this.a instanceof apxf)))
-      {
-        paramaqae = ((apxf)paramaqae).g;
-        localObject = ((apxf)this.a).g;
-        return (paramaqae != null) && (paramaqae.equals(localObject));
-      }
-      if (((paramaqae instanceof apxv)) && ((this.a instanceof apxv)))
-      {
-        paramaqae = ((apxv)paramaqae).a;
-        localObject = ((apxv)this.a).a;
-        if ((paramaqae != null) && (localObject != null) && (paramaqae.eId != null) && (paramaqae.eId.equals(((Emoticon)localObject).eId)) && (paramaqae.epId != null) && (paramaqae.epId.equals(((Emoticon)localObject).epId))) {}
-        for (;;)
-        {
-          return bool;
-          bool = false;
-        }
+      label203:
+      if ((this.d == -1) && (this.jdField_a_of_type_ArrayOfAndroidHardwareCamera$CameraInfo[i].facing == 1)) {
+        this.d = i;
       }
     }
-    return false;
   }
   
-  public aqae b(Bundle paramBundle)
+  /* Error */
+  public static aqan a()
   {
-    if (paramBundle.containsKey("cur_emotion_id"))
-    {
-      QLog.d("FavEmoticonPreviewData", 1, "doRestoreSaveInstanceState");
-      int i = paramBundle.getInt("cur_emotion_type");
-      int j = paramBundle.getInt("cur_emotion_id");
-      paramBundle = BaseApplicationImpl.getApplication().getRuntime();
-      if ((paramBundle instanceof QQAppInterface))
-      {
-        paramBundle = (QQAppInterface)paramBundle;
-        if (i == 1) {}
-        for (i = 333;; i = 149)
-        {
-          paramBundle = (apmi)paramBundle.getManager(i);
-          Object localObject = paramBundle.a();
-          if ((localObject == null) || (((List)localObject).isEmpty())) {
-            break;
-          }
-          localObject = ((List)localObject).iterator();
-          CustomEmotionBase localCustomEmotionBase;
-          do
-          {
-            if (!((Iterator)localObject).hasNext()) {
-              break;
-            }
-            localCustomEmotionBase = (CustomEmotionBase)((Iterator)localObject).next();
-          } while (localCustomEmotionBase.emoId != j);
-          return new aqan(paramBundle.a(localCustomEmotionBase));
-        }
-      }
-    }
-    return null;
+    // Byte code:
+    //   0: ldc 2
+    //   2: monitorenter
+    //   3: getstatic 90	aqan:jdField_a_of_type_Aqan	Laqan;
+    //   6: ifnonnull +25 -> 31
+    //   9: ldc 2
+    //   11: monitorenter
+    //   12: getstatic 90	aqan:jdField_a_of_type_Aqan	Laqan;
+    //   15: ifnonnull +13 -> 28
+    //   18: new 2	aqan
+    //   21: dup
+    //   22: invokespecial 91	aqan:<init>	()V
+    //   25: putstatic 90	aqan:jdField_a_of_type_Aqan	Laqan;
+    //   28: ldc 2
+    //   30: monitorexit
+    //   31: getstatic 90	aqan:jdField_a_of_type_Aqan	Laqan;
+    //   34: astore_0
+    //   35: ldc 2
+    //   37: monitorexit
+    //   38: aload_0
+    //   39: areturn
+    //   40: astore_0
+    //   41: ldc 2
+    //   43: monitorexit
+    //   44: aload_0
+    //   45: athrow
+    //   46: astore_0
+    //   47: ldc 2
+    //   49: monitorexit
+    //   50: aload_0
+    //   51: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   34	5	0	localaqan	aqan
+    //   40	5	0	localObject1	Object
+    //   46	5	0	localObject2	Object
+    // Exception table:
+    //   from	to	target	type
+    //   12	28	40	finally
+    //   28	31	40	finally
+    //   41	44	40	finally
+    //   3	12	46	finally
+    //   31	35	46	finally
+    //   44	46	46	finally
   }
   
-  public boolean b()
+  public int a()
   {
-    return true;
+    return aqbh.a().b();
   }
   
-  public boolean c()
+  public aqbh a()
   {
-    return false;
+    return aqbh.a();
   }
   
-  public boolean d()
+  public Camera.CameraInfo[] a()
   {
-    return false;
+    return this.jdField_a_of_type_ArrayOfAndroidHardwareCamera$CameraInfo;
   }
 }
 

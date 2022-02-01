@@ -1,43 +1,37 @@
-import NS_QQ_STORY_META.META.StStoryFeed;
-import NS_QQ_STORY_META.META.StUser;
-import android.os.Bundle;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForAIOStoryVideo;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.mobileqq.util.StStoryFeedUtil;
-import java.io.Serializable;
-import java.util.ArrayList;
+import android.graphics.Bitmap;
+import android.graphics.drawable.Drawable;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.TextPreviewSettingActivity;
 
-class afhl
-  implements View.OnClickListener
+public class afhl
+  extends Handler
 {
-  afhl(afhk paramafhk, MessageForAIOStoryVideo paramMessageForAIOStoryVideo) {}
-  
-  public void onClick(View paramView)
+  public afhl(TextPreviewSettingActivity paramTextPreviewSettingActivity, Looper paramLooper)
   {
-    long l = System.currentTimeMillis();
-    paramView = (aeqn)this.jdField_a_of_type_Afhk.a.getManager(282);
-    if (paramView != null) {
-      paramView.a(4, 7);
-    }
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqDataMessageForAIOStoryVideo.mStStoryFeed;
-    if ((localObject != null) && (((META.StStoryFeed)localObject).postUser != null))
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    ImageView localImageView = (ImageView)this.a.findViewById(2131366948);
+    switch (paramMessage.what)
     {
-      paramView = new Bundle();
-      paramView.putLong("key_launch_time", l);
-      paramView.putLong("key_current_feeduin", ((META.StStoryFeed)localObject).postUser.uin.get());
-      paramView.putInt("key_request_from", 3);
-      paramView.putInt("key_weishi_entrance_type", 19);
-      ArrayList localArrayList = new ArrayList();
-      localArrayList.add(localObject);
-      localObject = StStoryFeedUtil.getConvertDataList(localArrayList);
-      paramView.putInt("key_video_story_jump_position", 0);
-      paramView.putSerializable("key_video_story_tranparent_story_feed", (Serializable)localObject);
-      paramView.putInt("key_request_business_type", 7);
-      bdhk.a(paramView);
     }
+    do
+    {
+      do
+      {
+        return;
+        localImageView.setImageDrawable(TextPreviewSettingActivity.a(this.a).a(TextPreviewSettingActivity.a(this.a)));
+        return;
+      } while (!(paramMessage.obj instanceof Drawable));
+      localImageView.setImageDrawable((Drawable)paramMessage.obj);
+      return;
+    } while (!(paramMessage.obj instanceof Bitmap));
+    localImageView.setImageBitmap((Bitmap)paramMessage.obj);
   }
 }
 

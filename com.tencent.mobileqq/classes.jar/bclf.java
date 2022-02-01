@@ -1,56 +1,21 @@
-import android.graphics.Bitmap;
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
-import android.support.v4.util.LruCache;
-import com.tencent.qphone.base.util.QLog;
+import android.media.MediaCodec.BufferInfo;
+import java.nio.ByteBuffer;
 
-public class bclf
-  extends Handler
+class bclf
 {
-  public void handleMessage(Message paramMessage)
+  public int a;
+  public MediaCodec.BufferInfo a;
+  public ByteBuffer a;
+  public int b;
+  
+  private bclf()
   {
-    if (paramMessage.what == 1001) {}
-    try
-    {
-      paramMessage = (String)paramMessage.obj;
-      if (QLog.isColorLevel()) {
-        QLog.d("NonMainAppListViewFaceLoader", 2, "DecodeHandler handle MSG_DECODE_FACE_BITMAP uin:" + paramMessage);
-      }
-      Bitmap localBitmap1 = bdhj.a((String)this.a.b.get(paramMessage), null);
-      if (localBitmap1 != null)
-      {
-        Bitmap localBitmap2 = this.a.a(localBitmap1);
-        if (localBitmap2 != null)
-        {
-          Message localMessage = Message.obtain();
-          Bundle localBundle = new Bundle();
-          localBundle.putParcelable("bmp", localBitmap2);
-          localBundle.putString("uin", paramMessage);
-          localMessage.obj = localBundle;
-          localMessage.what = 1002;
-          this.a.a.sendMessage(localMessage);
-          if (QLog.isColorLevel()) {
-            QLog.d("NonMainAppListViewFaceLoader", 2, "decodeFile, uin:" + paramMessage);
-          }
-        }
-        if ((localBitmap1 != null) && (!localBitmap1.isRecycled())) {
-          localBitmap1.recycle();
-        }
-      }
-      return;
-    }
-    catch (OutOfMemoryError paramMessage)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.e("NonMainAppListViewFaceLoader", 2, "decodeFile, OutOfMemoryError");
-      return;
-    }
-    catch (Exception paramMessage)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.e("NonMainAppListViewFaceLoader", 2, "decodeFile, exception:" + paramMessage.toString());
-    }
+    this.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo = new MediaCodec.BufferInfo();
+  }
+  
+  public void a(int paramInt1, int paramInt2)
+  {
+    this.jdField_a_of_type_JavaNioByteBuffer = ByteBuffer.allocate(paramInt1 * paramInt2 * 3 / 2);
   }
 }
 

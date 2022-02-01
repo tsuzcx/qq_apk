@@ -1,22 +1,40 @@
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.graphics.Paint.Style;
-import android.graphics.RectF;
-import java.util.ArrayList;
+import android.os.Handler;
+import android.os.Message;
+import android.support.v4.view.ViewPager;
+import cooperation.qzone.contentbox.BaseMsgView;
+import java.lang.ref.WeakReference;
 
-public abstract class blws
+public class blws
+  extends Handler
 {
-  protected Paint a = new Paint();
+  private WeakReference<BaseMsgView> a;
   
-  public blws()
+  public blws(BaseMsgView paramBaseMsgView)
   {
-    this.a.setAntiAlias(true);
-    this.a.setStyle(Paint.Style.FILL_AND_STROKE);
+    this.a = new WeakReference(paramBaseMsgView);
   }
   
-  public abstract void a(Canvas paramCanvas, RectF paramRectF, int paramInt1, int paramInt2);
-  
-  public abstract void a(Canvas paramCanvas, ArrayList<blyk> paramArrayList, int paramInt1, int paramInt2);
+  public void handleMessage(Message paramMessage)
+  {
+    super.handleMessage(paramMessage);
+    BaseMsgView localBaseMsgView = (BaseMsgView)this.a.get();
+    if (localBaseMsgView == null) {}
+    ViewPager localViewPager;
+    do
+    {
+      return;
+      switch (paramMessage.what)
+      {
+      default: 
+        localBaseMsgView.a(paramMessage);
+        return;
+      }
+      localViewPager = (ViewPager)((WeakReference)paramMessage.obj).get();
+    } while (localViewPager == null);
+    int i = paramMessage.arg1;
+    localViewPager.setCurrentItem((localViewPager.getCurrentItem() + 1) % i, true);
+    localBaseMsgView.a();
+  }
 }
 
 

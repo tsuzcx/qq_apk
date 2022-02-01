@@ -1,19 +1,25 @@
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import java.util.List;
+import java.util.ArrayList;
 
-public class vej
-  extends uli
+class vej
+  implements vfc
 {
-  public List<StoryVideoItem> a;
+  vej(vei paramvei) {}
   
-  public String toString()
+  public void a()
   {
-    return "GetVideoBasicInfoListEvent{, mVideoList=" + this.a + '}';
+    ArrayList localArrayList = new ArrayList();
+    if (vei.a(this.a)) {}
+    for (String str = "1";; str = "2")
+    {
+      localArrayList.add(vri.a("ext1", str));
+      vrg.a(84, 1, this.a.a(), localArrayList, vei.a(this.a));
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     vej
  * JD-Core Version:    0.7.0.1
  */

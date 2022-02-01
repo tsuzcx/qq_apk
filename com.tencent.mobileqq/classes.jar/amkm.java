@@ -1,43 +1,39 @@
-import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.apollo.activity.HotChatCenterFragment;
+import com.tencent.mobileqq.apollo.activity.HotChatCenterFragment.1.1;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.DataLineMsgRecord;
+import com.tencent.mobileqq.app.ThreadManager;
 
 public class amkm
-  extends amkn
+  extends anmu
 {
-  public amkm(QQAppInterface paramQQAppInterface, QQMessageFacade paramQQMessageFacade)
+  public amkm(HotChatCenterFragment paramHotChatCenterFragment) {}
+  
+  public void a(String paramString)
   {
-    super(paramQQAppInterface, paramQQMessageFacade);
-    this.jdField_a_of_type_JavaLangString = alof.A;
-    this.jdField_a_of_type_Int = 6003;
+    if (!paramString.equals(HotChatCenterFragment.a(this.a).getAccount())) {}
   }
   
-  public long a(DataLineMsgRecord paramDataLineMsgRecord, boolean paramBoolean)
+  protected void onSetComment(boolean paramBoolean, String paramString1, String paramString2, byte paramByte) {}
+  
+  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
   {
-    if (paramDataLineMsgRecord != null)
-    {
-      paramDataLineMsgRecord.selfuin = this.jdField_a_of_type_JavaLangString;
-      paramDataLineMsgRecord.frienduin = paramDataLineMsgRecord.selfuin;
-      paramDataLineMsgRecord.senderuin = paramDataLineMsgRecord.selfuin;
-      paramDataLineMsgRecord.istroop = this.jdField_a_of_type_Int;
-      paramDataLineMsgRecord.dataline_type = 1;
+    if (!paramBoolean) {}
+    while ((HotChatCenterFragment.a(this.a).getCurrentAccountUin() == null) || (!HotChatCenterFragment.a(this.a).getCurrentAccountUin().equals(paramString))) {
+      return;
     }
-    return super.a(paramDataLineMsgRecord, paramBoolean);
+    ThreadManager.post(new HotChatCenterFragment.1.1(this, paramString), 8, null, true);
   }
   
-  protected amns a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(1);
-  }
+  protected void onUpdateOnlineFriend(boolean paramBoolean, String[] paramArrayOfString) {}
   
-  protected void a()
+  protected void onUpdateRecentList()
   {
-    ((alqo)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(8)).b(false);
+    this.a.b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amkm
  * JD-Core Version:    0.7.0.1
  */

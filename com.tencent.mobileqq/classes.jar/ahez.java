@@ -1,41 +1,28 @@
-import com.tencent.mobileqq.activity.contact.RecommendTroopListWrapper.2.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.troop.data.RecommendTroopItem;
-import java.util.ArrayList;
-import java.util.List;
-import mqq.os.MqqHandler;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.profile.PersonalityLabel.CornerImageView;
 
-public class ahez
-  extends ameq
+class ahez
+  extends afuv
 {
-  ahez(ahex paramahex) {}
+  public long a;
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  CornerImageView jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelCornerImageView;
+  public String a;
+  View jdField_b_of_type_AndroidViewView;
+  TextView jdField_b_of_type_AndroidWidgetTextView;
+  CornerImageView jdField_b_of_type_ComTencentMobileqqProfilePersonalityLabelCornerImageView;
+  public String b;
+  View jdField_c_of_type_AndroidViewView;
+  TextView jdField_c_of_type_AndroidWidgetTextView;
+  View jdField_d_of_type_AndroidViewView;
+  TextView jdField_d_of_type_AndroidWidgetTextView;
+  View e;
+  View f;
+  View g;
   
-  protected void a(int paramInt1, int paramInt2, String paramString)
-  {
-    if (1 == paramInt1) {
-      ThreadManager.getUIHandler().post(new RecommendTroopListWrapper.2.1(this, paramString));
-    }
-  }
-  
-  protected void a(boolean paramBoolean1, int paramInt1, int paramInt2, boolean paramBoolean2, ArrayList<RecommendTroopItem> paramArrayList, boolean paramBoolean3)
-  {
-    this.a.a(paramBoolean1, paramInt1, paramInt2, paramBoolean2, paramArrayList, paramBoolean3);
-  }
-  
-  protected void a(boolean paramBoolean1, int paramInt1, String paramString, int paramInt2, boolean paramBoolean2, ArrayList<RecommendTroopItem> paramArrayList, boolean paramBoolean3)
-  {
-    this.a.a(paramBoolean1, paramInt1, paramString, paramInt2, paramBoolean2, paramArrayList, paramBoolean3);
-  }
-  
-  protected void a(boolean paramBoolean1, long paramLong, int paramInt, boolean paramBoolean2, ArrayList<RecommendTroopItem> paramArrayList)
-  {
-    this.a.a(paramBoolean1, paramLong, paramInt, paramBoolean2, paramArrayList);
-  }
-  
-  protected void b(boolean paramBoolean, List<RecommendTroopItem> paramList)
-  {
-    this.a.b(paramBoolean);
-  }
+  ahez(ahew paramahew) {}
 }
 
 

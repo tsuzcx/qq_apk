@@ -1,24 +1,29 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.biz.qqstory.view.NeoVideoRecordButton;
+import android.view.View;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import java.util.concurrent.atomic.AtomicBoolean;
 
-public class xun
-  implements ValueAnimator.AnimatorUpdateListener
+class xun
+  implements bkhw
 {
-  public xun(NeoVideoRecordButton paramNeoVideoRecordButton) {}
+  xun(xui paramxui, StoryVideoItem paramStoryVideoItem, AtomicBoolean paramAtomicBoolean, bkho parambkho) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void OnClick(View paramView, int paramInt)
   {
-    this.a.a.a(((Integer)paramValueAnimator.getAnimatedValue("border")).intValue(), 0.0F);
-    this.a.a.b(((Integer)paramValueAnimator.getAnimatedValue("ring")).intValue(), 0.0F);
-    this.a.b.a(((Integer)paramValueAnimator.getAnimatedValue("center")).intValue(), 0.0F);
-    this.a.b.e = ((Integer)paramValueAnimator.getAnimatedValue("color")).intValue();
-    NeoVideoRecordButton.a(this.a);
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Bkho.dismiss();
+      return;
+      xui.a(this.jdField_a_of_type_Xui, this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem);
+      this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     xun
  * JD-Core Version:    0.7.0.1
  */

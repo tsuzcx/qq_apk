@@ -1,61 +1,63 @@
-import com.tencent.biz.qqstory.base.ErrorMessage;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqCheckActivity;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspCheckActivity;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt64Field;
 
-public abstract class wss
-  implements wsz
+public class wss
+  extends wlf
 {
-  private Object jdField_a_of_type_JavaLangObject;
-  private wta jdField_a_of_type_Wta;
-  private wtb jdField_a_of_type_Wtb;
+  public static String a = wjz.a("StorySvc.check_activity");
+  public String b;
+  public final String c;
   
-  public Object a()
+  public wss(String paramString)
   {
-    return this.jdField_a_of_type_JavaLangObject;
+    this.c = paramString;
   }
   
-  public void a(Object paramObject)
+  public String a()
   {
-    this.jdField_a_of_type_JavaLangObject = paramObject;
+    return a;
   }
   
-  public void a(wta paramwta)
+  public wla a(byte[] paramArrayOfByte)
   {
-    this.jdField_a_of_type_Wta = paramwta;
-  }
-  
-  public void a(wtb paramwtb)
-  {
-    this.jdField_a_of_type_Wtb = paramwtb;
-  }
-  
-  public boolean a()
-  {
-    return true;
-  }
-  
-  protected void b(ErrorMessage paramErrorMessage)
-  {
-    paramErrorMessage.extraMsg = a();
-    if (this.jdField_a_of_type_Wta != null)
+    qqstory_service.RspCheckActivity localRspCheckActivity = new qqstory_service.RspCheckActivity();
+    try
     {
-      this.jdField_a_of_type_Wta.a(paramErrorMessage);
-      return;
+      localRspCheckActivity.mergeFrom(paramArrayOfByte);
+      return new wst(localRspCheckActivity);
     }
-    wxe.d("SimpleStep", a() + " errorCallBack is null.");
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      for (;;)
+      {
+        paramArrayOfByte.printStackTrace();
+      }
+    }
   }
   
-  public void d()
+  protected byte[] a()
   {
-    if (this.jdField_a_of_type_Wtb != null)
-    {
-      this.jdField_a_of_type_Wtb.a(a());
-      return;
+    qqstory_service.ReqCheckActivity localReqCheckActivity = new qqstory_service.ReqCheckActivity();
+    if (!TextUtils.isEmpty(this.c)) {
+      localReqCheckActivity.adcode.set(Long.valueOf(this.c).longValue());
     }
-    wxe.d("SimpleStep", a() + " finishCallBack is null.");
+    yqp.a("MsgTabCheckActiveRequest", "client version=%s", "8.4.1");
+    localReqCheckActivity.version.set("8.4.1");
+    return localReqCheckActivity.toByteArray();
+  }
+  
+  public String toString()
+  {
+    return "MsgTabCheckActiveRequest{value='" + this.b + '\'' + ", adCode='" + this.c + '\'' + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     wss
  * JD-Core Version:    0.7.0.1
  */

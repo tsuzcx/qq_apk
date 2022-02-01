@@ -1,24 +1,33 @@
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import com.tencent.biz.qqstory.takevideo.doodle.ui.widget.ClipboardEditText;
+import android.os.Message;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.playvideo.FollowCaptureLauncher;
 
-class xfx
-  implements ViewTreeObserver.OnGlobalLayoutListener
+public class xfx
+  implements whm
 {
-  private xfx(xfr paramxfr) {}
+  public xfx(FollowCaptureLauncher paramFollowCaptureLauncher) {}
   
-  public void onGlobalLayout()
+  public void a(String paramString, int paramInt)
   {
-    if (this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiWidgetClipboardEditText.getBottom() - this.a.c > this.a.b)
-    {
-      this.a.dismiss();
-      return;
-    }
-    this.a.jdField_a_of_type_Xfv.a(this.a.a());
+    Message localMessage = Message.obtain();
+    localMessage.obj = paramString;
+    localMessage.what = 65543;
+    FollowCaptureLauncher.a(this.a).sendMessage(localMessage);
+  }
+  
+  public void a(String paramString, int paramInt, ErrorMessage paramErrorMessage)
+  {
+    FollowCaptureLauncher.a(this.a).sendEmptyMessage(65544);
+  }
+  
+  public void b(String paramString, int paramInt)
+  {
+    FollowCaptureLauncher.a(this.a).sendEmptyMessage(65544);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     xfx
  * JD-Core Version:    0.7.0.1
  */

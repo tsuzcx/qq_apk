@@ -1,15 +1,19 @@
-import android.widget.ImageView;
-import android.widget.TextView;
+import com.tencent.mobileqq.activity.aio.anim.friendship.impl.boat.FriendShipWaveView;
 
-public class agdh
-  extends aeqi
+class agdh
+  implements bdet
 {
-  long jdField_a_of_type_Long;
-  aetk jdField_a_of_type_Aetk;
-  public ajxp a;
-  public ImageView b;
-  public ImageView c;
-  public TextView d;
+  agdh(agdg paramagdg) {}
+  
+  public void a()
+  {
+    int i = this.a.a.jdField_a_of_type_Int / 2;
+    int j = (int)(this.a.a.b - bggq.a(this.a.a.jdField_a_of_type_AndroidContentContext, 178.0F) - this.a.a.jdField_a_of_type_Bdfw.b / 2.0F);
+    int k = (int)(this.a.a.b - bggq.a(this.a.a.jdField_a_of_type_AndroidContentContext, 200.0F) - this.a.a.jdField_a_of_type_Bdfw.b / 2.0F);
+    bdfb localbdfb = new bdfb(new bdes[] { new bdew(450, i, j, i, k), new bdew(450, i, k, i, j) });
+    localbdfb.a = true;
+    this.a.a.jdField_a_of_type_Bdfw.a(new bdes[] { localbdfb });
+  }
 }
 
 

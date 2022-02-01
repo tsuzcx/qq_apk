@@ -1,152 +1,169 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
-import android.view.LayoutInflater;
+import android.text.TextUtils;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.GridView;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.activity.selectmember.ResultRecord;
-import com.tencent.mobileqq.troop.createNewTroop.NewTroopContactView;
-import com.tencent.mobileqq.troop.createNewTroop.NewTroopCreateActivity;
+import com.tencent.TMG.utils.QLog;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
 import java.util.ArrayList;
+import java.util.List;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+import pb.unify.search.UnifySearchCommon.ResultItem;
+import pb.unite.search.DynamicSearch.ResultItem;
 
 public class bbnx
-  extends BaseAdapter
-  implements bdbc
+  extends bbnh
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private final Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-  private boolean jdField_a_of_type_Boolean;
+  public bbny a;
+  public bbnz a;
+  public ArrayList<bboa> a;
+  public boolean b;
+  public boolean c;
   
-  public bbnx(NewTroopContactView paramNewTroopContactView, Context paramContext)
+  public bbnx(String paramString, long paramLong, List<String> paramList, UnifySearchCommon.ResultItem paramResultItem, int paramInt)
   {
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramContext.getResources().getDrawable(2130844552);
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    super(paramString, paramLong, paramList, paramResultItem, paramInt);
   }
   
-  public void a()
+  public bbnx(String paramString, long paramLong, List<String> paramList, DynamicSearch.ResultItem paramResultItem, int paramInt)
   {
-    if (this.jdField_a_of_type_Boolean)
+    super(paramString, paramLong, paramList, paramResultItem, paramInt);
+  }
+  
+  public int a(int paramInt)
+  {
+    int i = paramInt;
+    switch (paramInt)
     {
-      if ((this.jdField_a_of_type_ComTencentMobileqqTroopCreateNewTroopNewTroopContactView.c != null) && (this.jdField_a_of_type_ComTencentMobileqqTroopCreateNewTroopNewTroopContactView.c.size() > 0))
+    default: 
+      i = 1;
+    }
+    return i;
+  }
+  
+  public void a(View paramView)
+  {
+    super.a(paramView);
+    QQAppInterface localQQAppInterface;
+    if (this.jdField_a_of_type_Long == 1003L)
+    {
+      localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+      if (b() == null) {
+        break label93;
+      }
+    }
+    label93:
+    for (paramView = b();; paramView = "")
+    {
+      bcst.b(localQQAppInterface, "dc00898", "", paramView, "auth_search", "clk_content", 0, 0, "", "", "", "");
+      if (this.jdField_c_of_type_Boolean) {
+        bcst.b(null, "dc00898", "", "", "0X800AC12", "0X800AC12", 0, 0, "", "", "", "");
+      }
+      return;
+    }
+  }
+  
+  public void a(String paramString)
+  {
+    for (;;)
+    {
+      int i;
+      try
       {
-        String str = ((ResultRecord)this.jdField_a_of_type_ComTencentMobileqqTroopCreateNewTroopNewTroopContactView.c.get(this.jdField_a_of_type_ComTencentMobileqqTroopCreateNewTroopNewTroopContactView.c.size() - 1)).jdField_a_of_type_JavaLangString;
-        if (this.jdField_a_of_type_ComTencentMobileqqTroopCreateNewTroopNewTroopContactView.a(str))
+        paramString = new JSONObject(paramString);
+        if (paramString.optInt("needRightCenter") != 1) {
+          break label509;
+        }
+        bool = true;
+        this.b = bool;
+        JSONObject localJSONObject = paramString.optJSONObject("imageInfo");
+        if (localJSONObject != null) {
+          a(localJSONObject);
+        }
+        localJSONObject = paramString.optJSONObject("actionInfo");
+        if (localJSONObject != null)
         {
-          NewTroopContactView.a(this.jdField_a_of_type_ComTencentMobileqqTroopCreateNewTroopNewTroopContactView, str);
-          this.jdField_a_of_type_ComTencentMobileqqTroopCreateNewTroopNewTroopContactView.jdField_a_of_type_Bbne.notifyDataSetChanged();
-          this.jdField_a_of_type_ComTencentMobileqqTroopCreateNewTroopNewTroopContactView.b(false);
-          NewTroopContactView.a(this.jdField_a_of_type_ComTencentMobileqqTroopCreateNewTroopNewTroopContactView);
+          this.jdField_a_of_type_Bbny = new bbny(this);
+          this.jdField_a_of_type_Bbny.jdField_a_of_type_Int = localJSONObject.optInt("type");
+          this.jdField_a_of_type_Bbny.jdField_a_of_type_JavaLangCharSequence = localJSONObject.optString("word");
+          this.jdField_a_of_type_Bbny.jdField_a_of_type_JavaLangString = localJSONObject.optString("jumpUrl");
+        }
+        localJSONObject = paramString.optJSONObject("headIconInfo");
+        if (localJSONObject != null)
+        {
+          this.jdField_a_of_type_Bbnz = new bbnz(this);
+          this.jdField_a_of_type_Bbnz.jdField_a_of_type_Int = localJSONObject.optInt("type");
+          this.jdField_a_of_type_Bbnz.jdField_a_of_type_JavaLangString = localJSONObject.optString("iconUrl");
+          this.jdField_a_of_type_Bbnz.jdField_b_of_type_Int = localJSONObject.optInt("iconWidth");
+          this.jdField_a_of_type_Bbnz.c = localJSONObject.optInt("iconHeight");
+          this.jdField_a_of_type_Bbnz.jdField_a_of_type_JavaLangCharSequence = localJSONObject.optString("tagText");
+          this.jdField_a_of_type_Bbnz.jdField_b_of_type_JavaLangString = localJSONObject.optString("tagBgColor");
+        }
+        paramString = paramString.optJSONArray("lineList");
+        if ((paramString != null) && (paramString.length() > 0))
+        {
+          i = 0;
+          if (i < paramString.length())
+          {
+            localJSONObject = paramString.getJSONObject(i);
+            bboa localbboa;
+            if (!TextUtils.isEmpty(localJSONObject.optString("word")))
+            {
+              if (this.jdField_a_of_type_JavaUtilArrayList == null) {
+                this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+              }
+              localbboa = new bboa(this);
+              localbboa.jdField_a_of_type_JavaLangCharSequence = localJSONObject.optString("word");
+              localbboa.jdField_a_of_type_JavaLangString = localJSONObject.optString("fontType", "A");
+              localbboa.jdField_a_of_type_Int = localJSONObject.optInt("maxLines");
+              if (localJSONObject.optInt("needHighlight") != 1) {
+                break label514;
+              }
+              bool = true;
+              localbboa.jdField_a_of_type_Boolean = bool;
+              this.jdField_a_of_type_JavaUtilArrayList.add(localbboa);
+            }
+            else if (localJSONObject.optJSONArray("words") != null)
+            {
+              if (this.jdField_a_of_type_JavaUtilArrayList == null) {
+                this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+              }
+              localbboa = new bboa(this);
+              localbboa.jdField_a_of_type_JavaLangCharSequence = bbup.a(localJSONObject.optJSONArray("words"));
+              localbboa.jdField_a_of_type_JavaLangString = localJSONObject.optString("fontType", "A");
+              localbboa.jdField_a_of_type_Int = localJSONObject.optInt("maxLines");
+              if (localJSONObject.optInt("needHighlight") == 1)
+              {
+                bool = true;
+                localbboa.jdField_a_of_type_Boolean = bool;
+                this.jdField_a_of_type_JavaUtilArrayList.add(localbboa);
+              }
+            }
+          }
         }
       }
-      this.jdField_a_of_type_Boolean = false;
-      return;
-    }
-    this.jdField_a_of_type_Boolean = true;
-    super.notifyDataSetChanged();
-  }
-  
-  public int getCount()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqTroopCreateNewTroopNewTroopContactView.c.size();
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqTroopCreateNewTroopNewTroopContactView.c.get(paramInt);
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return 0L;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    ResultRecord localResultRecord = (ResultRecord)getItem(paramInt);
-    paramViewGroup = paramView;
-    if (paramView == null) {
-      paramViewGroup = this.jdField_a_of_type_ComTencentMobileqqTroopCreateNewTroopNewTroopContactView.jdField_a_of_type_ComTencentMobileqqTroopCreateNewTroopNewTroopCreateActivity.getLayoutInflater().inflate(2131559201, null);
-    }
-    paramViewGroup.setTag(localResultRecord);
-    ImageView localImageView = (ImageView)paramViewGroup.findViewById(2131365912);
-    if (paramInt == getCount() - 1) {
-      if (this.jdField_a_of_type_Boolean)
+      catch (JSONException paramString)
       {
-        paramView = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-        localImageView.setImageDrawable(paramView);
-        label78:
-        localImageView.setBackgroundDrawable(null);
-        if (localResultRecord.jdField_a_of_type_Int != 4) {
-          break label174;
+        if (QLog.isColorLevel()) {
+          QLog.d(jdField_c_of_type_JavaLangString, 0, paramString.toString());
         }
       }
-    }
-    TextView localTextView;
-    label174:
-    for (paramInt = 11;; paramInt = 1)
-    {
-      localTextView = (TextView)paramViewGroup.findViewById(2131378837);
-      if (localResultRecord.jdField_a_of_type_Int != 5) {
-        break label179;
-      }
-      localImageView.setImageResource(2130841744);
-      localTextView.setVisibility(0);
-      localTextView.setText(bdgc.a(localResultRecord.b));
-      if (AppSetting.c) {
-        localImageView.setContentDescription(localResultRecord.b);
-      }
-      return paramViewGroup;
-      paramView = null;
-      break;
-      localImageView.setImageDrawable(null);
-      break label78;
-    }
-    label179:
-    String str = localResultRecord.jdField_a_of_type_JavaLangString;
-    paramView = this.jdField_a_of_type_ComTencentMobileqqTroopCreateNewTroopNewTroopContactView.jdField_a_of_type_Bdbb.a(paramInt, str);
-    if (paramView == null)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqTroopCreateNewTroopNewTroopContactView.jdField_a_of_type_Bdbb.a(str, paramInt, true);
-      paramView = this.jdField_a_of_type_ComTencentMobileqqTroopCreateNewTroopNewTroopContactView.jdField_a_of_type_AndroidGraphicsBitmap;
-    }
-    for (;;)
-    {
-      localImageView.setBackgroundDrawable(new BitmapDrawable(this.jdField_a_of_type_ComTencentMobileqqTroopCreateNewTroopNewTroopContactView.jdField_a_of_type_ComTencentMobileqqTroopCreateNewTroopNewTroopCreateActivity.getResources(), paramView));
-      localTextView.setVisibility(8);
-      break;
-    }
-  }
-  
-  public void notifyDataSetChanged()
-  {
-    this.jdField_a_of_type_Boolean = false;
-    super.notifyDataSetChanged();
-  }
-  
-  public void onDecodeTaskCompleted(int paramInt1, int paramInt2, String paramString, Bitmap paramBitmap)
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqTroopCreateNewTroopNewTroopContactView.jdField_a_of_type_AndroidWidgetGridView == null) {}
-    for (;;)
-    {
       return;
-      paramInt1 = 0;
-      while (paramInt1 < this.jdField_a_of_type_ComTencentMobileqqTroopCreateNewTroopNewTroopContactView.jdField_a_of_type_AndroidWidgetGridView.getChildCount())
-      {
-        View localView = this.jdField_a_of_type_ComTencentMobileqqTroopCreateNewTroopNewTroopContactView.jdField_a_of_type_AndroidWidgetGridView.getChildAt(paramInt1);
-        Object localObject = localView.getTag();
-        if ((localObject != null) && ((localObject instanceof ResultRecord)) && (paramString.equals(((ResultRecord)localObject).jdField_a_of_type_JavaLangString))) {
-          ((ImageView)localView.findViewById(2131365912)).setBackgroundDrawable(new BitmapDrawable(this.jdField_a_of_type_ComTencentMobileqqTroopCreateNewTroopNewTroopContactView.jdField_a_of_type_ComTencentMobileqqTroopCreateNewTroopNewTroopCreateActivity.getResources(), paramBitmap));
-        }
-        paramInt1 += 1;
-      }
+      boolean bool = false;
+      continue;
+      i += 1;
+      continue;
+      label509:
+      bool = false;
+      continue;
+      label514:
+      bool = false;
     }
+  }
+  
+  public boolean b()
+  {
+    return true;
   }
 }
 

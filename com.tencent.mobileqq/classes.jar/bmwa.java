@@ -1,280 +1,208 @@
-import android.content.Context;
-import android.graphics.drawable.BitmapDrawable;
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.util.HashSet;
-import java.util.Set;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.content.BroadcastReceiver;
+import android.content.Intent;
+import android.content.IntentFilter;
+import android.os.Handler;
+import android.os.Looper;
+import android.view.View;
+import com.tencent.biz.pubaccount.CustomWebView;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.webview.swift.WebViewFragment;
+import cooperation.qzone.util.QZLog;
+import cooperation.vip.webview.controller.BaseTranslucentController.2;
 
 public class bmwa
 {
-  private static final Set<Integer> a = new HashSet(5);
-  private static final Set<Integer> b = new HashSet(5);
+  private long jdField_a_of_type_Long;
+  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new bmwb(this);
+  protected Handler a;
+  protected QQBrowserActivity a;
+  private Runnable jdField_a_of_type_JavaLangRunnable = new BaseTranslucentController.2(this);
+  private volatile boolean jdField_a_of_type_Boolean;
+  private volatile boolean b;
   
-  static
+  public bmwa(QQBrowserActivity paramQQBrowserActivity)
   {
-    a.add(Integer.valueOf(4));
-    a.add(Integer.valueOf(5));
-    a.add(Integer.valueOf(9));
-    a.add(Integer.valueOf(10));
-    b.add(Integer.valueOf(9));
-    b.add(Integer.valueOf(10));
+    QZLog.i("BaseTranslucentControll", "current controller = " + getClass().getName());
+    this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity = paramQQBrowserActivity;
+    this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
   }
   
-  public static int a(bmvz parambmvz)
+  private void f()
   {
-    int j = 0;
-    int i = j;
-    switch (parambmvz.a)
-    {
-    default: 
-      i = j;
-    }
+    if (this.jdField_a_of_type_Boolean) {}
     for (;;)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("QIMInformationPasterManager", 2, "check num of download dir:" + i);
+      return;
+      try
+      {
+        QZLog.i("BaseTranslucentControll", "registerBroadcast");
+        IntentFilter localIntentFilter = new IntentFilter();
+        String[] arrayOfString = a();
+        if (arrayOfString != null)
+        {
+          int j = arrayOfString.length;
+          int i = 0;
+          while (i < j)
+          {
+            localIntentFilter.addAction(arrayOfString[i]);
+            i += 1;
+          }
+        }
+        boolean bool = this.jdField_a_of_type_Boolean;
+        if (bool) {
+          continue;
+        }
+        try
+        {
+          this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity.registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, localIntentFilter, "com.tencent.msg.permission.pushnotify", null);
+          this.jdField_a_of_type_Boolean = true;
+          return;
+        }
+        catch (Exception localException1)
+        {
+          QZLog.e("BaseTranslucentControll", "regist receiver error:", localException1);
+          return;
+        }
+        return;
       }
-      return i;
-      i = 4;
-      continue;
-      i = 1;
-      continue;
-      i = 2;
-      continue;
-      i = 14;
-      continue;
-      i = 1;
-      continue;
-      i = 33;
-      continue;
-      i = 5;
-      continue;
-      i = 2;
-      continue;
-      i = 2;
-      continue;
-      i = 3;
+      catch (Exception localException2)
+      {
+        QZLog.e("BaseTranslucentControll", "registerBroadcast error", localException2);
+      }
     }
   }
   
-  public static BitmapDrawable a(String paramString1, Context paramContext, String paramString2)
+  private void g()
   {
     try
     {
-      if (QLog.isColorLevel()) {
-        QLog.e("InformationFaceConstant", 2, "to be parsed" + paramString1);
-      }
-      localJSONObject = new JSONObject(paramString1);
-    }
-    catch (JSONException localJSONException)
-    {
-      for (;;)
+      if (this.jdField_a_of_type_Boolean)
       {
-        JSONObject localJSONObject;
-        if (QLog.isColorLevel()) {
-          QLog.e("InformationFaceConstant", 2, localJSONException, new Object[0]);
+        QZLog.i("BaseTranslucentControll", "removeBroadcast");
+        try
+        {
+          this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity.unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
+          this.jdField_a_of_type_Boolean = false;
+          return;
         }
-        localObject = null;
+        catch (Exception localException1)
+        {
+          for (;;)
+          {
+            QZLog.e("BaseTranslucentControll", "unregisterReceiver error ", localException1);
+          }
+        }
       }
-      i = localObject.optInt("type", 0);
-      switch (i)
-      {
-      case 6: 
-      case 7: 
-      case 8: 
-      case 11: 
-      default: 
-        paramString1 = null;
+      return;
+    }
+    catch (Exception localException2)
+    {
+      QZLog.e("BaseTranslucentControll", "removeBroadcast error", localException2);
+    }
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_Long = System.currentTimeMillis();
+    a(false);
+    f();
+    this.jdField_a_of_type_AndroidOsHandler.postDelayed(this.jdField_a_of_type_JavaLangRunnable, 6100L);
+  }
+  
+  public void a(Intent paramIntent) {}
+  
+  protected void a(View paramView)
+  {
+    if (!this.b)
+    {
+      this.b = true;
+      QZLog.i("BaseTranslucentControll", "setAlpha(1)");
+      if (paramView != null) {
+        paramView.setAlpha(1.0F);
       }
     }
-    if (localJSONObject == null) {}
     for (;;)
     {
-      return null;
-      Object localObject;
-      int i;
-      while (paramString1 != null)
+      try
       {
-        return new BitmapDrawable(paramContext.getResources(), paramString1.a());
-        paramString1 = new bmxx(paramContext, paramString1).a(paramString1);
-        paramString1 = new bmxx(paramContext, bmxx.a(i, paramString1[0], paramString2, paramString1[2]));
-        continue;
-        paramString1 = new bmxm(paramContext, paramString1).a(paramString1);
-        paramString1 = new bmxm(paramContext, bmxm.a(i, paramString2, paramString1[1], paramString1[3], paramString1[2]));
-        continue;
-        paramString1 = new bmxr(paramContext, bmxr.a(i, new bmxr(paramContext, paramString1).a(paramString1)[1]));
-        continue;
-        paramString1 = new bmxo(paramContext, bmxo.a(i, new bmxo(paramContext, paramString1).a(paramString1)[0], paramString2));
-        continue;
-        paramString1 = new bmyd(paramContext, paramString1).a(paramString1);
-        paramString1 = new bmyd(paramContext, bmyd.a(i, paramString1[0], paramString1[1], paramString2));
-      }
-    }
-  }
-  
-  public static bmxt a(Context paramContext, String paramString)
-  {
-    try
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("InformationFaceConstant", 2, "to be parsed" + paramString);
-      }
-      localJSONObject = new JSONObject(paramString);
-    }
-    catch (JSONException localJSONException)
-    {
-      Object localObject;
-      for (;;)
-      {
-        JSONObject localJSONObject;
-        if (QLog.isColorLevel()) {
-          QLog.e("InformationFaceConstant", 2, localJSONException, new Object[0]);
+        if (this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity.a() != null)
+        {
+          paramView = this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity.a().getWebView();
+          if (paramView != null)
+          {
+            Object localObject = paramView.getTag(2131375821);
+            if ((localObject == null) || (!((Boolean)localObject).booleanValue())) {
+              break label119;
+            }
+            i = 1;
+            paramView.setTag(2131375818, Boolean.TRUE);
+            if (i != 0)
+            {
+              QZLog.i("BaseTranslucentControll", "tiantai jsReady true,notify webview.");
+              bmmp.a(paramView);
+              return;
+            }
+            QZLog.i("BaseTranslucentControll", "tiantai jsReady false,not notify webview.");
+            return;
+          }
         }
-        localObject = null;
       }
-      switch (localObject.optInt("type", 0))
+      catch (Exception paramView)
       {
-      case 8: 
-      default: 
-        return null;
-      case 1: 
-        return new bmxl(paramContext, paramString);
-      case 2: 
-        return new bmya(paramContext, paramString);
-      case 3: 
-        return new bmxy(paramContext, paramString);
+        QZLog.e("BaseTranslucentControll", "notify webview qzRoofStartAnimation fail.", paramView);
       }
+      return;
+      label119:
+      int i = 0;
     }
-    if (localJSONObject == null) {
-      return null;
-    }
-    return new bmxx(paramContext, paramString);
-    return new bmxm(paramContext, paramString);
-    return new bmye(paramContext, paramString);
-    return new bmxk(paramContext, paramString);
-    return new bmxr(paramContext, paramString);
-    return new bmxo(paramContext, paramString);
-    return new bmyd(paramContext, paramString);
-    return new bmxj(paramContext, paramString);
   }
   
-  public static bmxt a(bmvz parambmvz, Context paramContext, long paramLong)
+  public void a(boolean paramBoolean)
   {
-    int i = parambmvz.a;
-    String str2;
-    Object localObject;
-    String str1;
-    switch (i)
+    View localView = this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity.findViewById(2131365013);
+    if (localView == null) {
+      return;
+    }
+    if (!paramBoolean)
     {
-    case 8: 
-    default: 
-      return null;
-    case 1: 
-      return new bmxl(paramContext, bmxl.a(i, blzg.c(paramLong), blzg.d(paramLong), blzg.e(paramLong)));
-    case 2: 
-      return new bmya(paramContext, bmya.a(i, blzg.b(paramLong), blzg.a(paramLong)));
-    case 3: 
-      str2 = blvo.b(parambmvz);
-      parambmvz = blzg.a(paramLong);
-      localObject = str2 + File.separator + "eea02a45.ttf";
-      str1 = str2 + File.separator + "outsideBorder.png";
-      str2 = str2 + File.separator + "insideBorder.png";
-      if (QLog.isColorLevel()) {
-        QLog.d("InformationFaceConstant", 2, "luar.ttf file name:" + (String)localObject);
+      if (System.currentTimeMillis() - this.jdField_a_of_type_Long < 6000L)
+      {
+        localView.setAlpha(0.0F);
+        this.b = false;
+        QZLog.i("BaseTranslucentControll", "setAlpha(0)");
+        return;
       }
-      return new bmxy(paramContext, bmxy.a(i, parambmvz[2], parambmvz[3], parambmvz[0], parambmvz[1], (String)localObject, str1, str2));
-    case 4: 
-      str1 = blvo.b(parambmvz) + File.separator + "Roboto-Condensed.ttf";
-      localObject = parambmvz.l;
-      if (TextUtils.isEmpty(parambmvz.l)) {
-        localObject = alud.a(2131706154);
-      }
-      return new bmxx(paramContext, bmxx.a(i, blzg.b(paramLong), (String)localObject, str1));
-    case 5: 
-      localObject = blvo.b(parambmvz);
-      str1 = (String)localObject + File.separator + "Roboto-Condensed.ttf";
-      str2 = (String)localObject + File.separator + "location_icon.png";
-      localObject = parambmvz.l;
-      if (TextUtils.isEmpty(parambmvz.l)) {
-        localObject = alud.a(2131706151);
-      }
-      return new bmxm(paramContext, bmxm.a(i, (String)localObject, blzg.f(paramLong), str2, str1));
-    case 6: 
-      String str4 = blvo.b(parambmvz);
-      localObject = str4 + File.separator + "DINCond-Medium.ttf";
-      str1 = str4 + File.separator + parambmvz.k + ".apng";
-      str2 = str4 + File.separator + "temperatureSymbol.png";
-      String str3 = parambmvz.j;
-      str4 = str4 + File.separator + "line.png";
-      int j = parambmvz.c;
-      if (parambmvz.d == 3) {}
-      for (boolean bool = true;; bool = false) {
-        return new bmye(paramContext, bmye.a(i, j, str1, str3, str2, (String)localObject, str4, bool));
-      }
-    case 7: 
-      parambmvz = blvo.b(parambmvz);
-      return new bmxk(paramContext, bmxk.a(i, parambmvz + File.separator + "city.bpng"));
-    case 12: 
-      return new bmxr(paramContext, bmxr.a(i, blzg.g(paramLong)));
-    case 9: 
-      str1 = parambmvz.l;
-      localObject = str1;
-      if (TextUtils.isEmpty(str1)) {
-        localObject = "YOUR CITY";
-      }
-      return new bmxo(paramContext, bmxo.a(i, blvo.b(parambmvz) + File.separator + "location3_icon_3x.png", (String)localObject));
-    case 10: 
-      localObject = parambmvz.l;
-      return new bmyd(paramContext, bmyd.a(i, blvo.b(parambmvz) + File.separator + "location4_icon.png", blvo.b(parambmvz) + File.separator + "lantingzhonghei.ttf", (String)localObject));
+      QZLog.i("BaseTranslucentControll", "isLoadSuccess = true，setAlpha(1)");
+      a(localView);
+      return;
     }
-    return new bmxj(paramContext, bmxj.a(i, blvo.b(parambmvz) + File.separator + "up.png", blvo.b(parambmvz) + File.separator + "down.png", blzg.h(paramLong), blzg.i(paramLong)));
+    QZLog.i("BaseTranslucentControll", "isLoadSuccess = false，setAlpha(1)");
+    a(localView);
   }
   
-  public static bmxt a(bmxt parambmxt, Context paramContext, String paramString)
+  public boolean a()
   {
-    switch (parambmxt.a())
-    {
-    case 3: 
-    case 6: 
-    case 7: 
-    case 8: 
-    default: 
-      return null;
-    case 1: 
-      return new bmxl(paramContext, bmxl.a(parambmxt.a(), blzg.c(-1L), blzg.d(-1L), blzg.e(-1L)));
-    case 2: 
-      return new bmya(paramContext, bmya.a(parambmxt.a(), blzg.b(-1L), blzg.a(-1L)));
-    case 4: 
-      parambmxt = (bmxx)parambmxt;
-      return new bmxx(paramContext, bmxx.a(parambmxt.a(), parambmxt.a(), paramString, parambmxt.b()));
-    case 5: 
-      parambmxt = (bmxm)parambmxt;
-      return new bmxm(paramContext, bmxm.a(parambmxt.a(), paramString, blzg.f(-1L), parambmxt.a(), parambmxt.b()));
-    case 12: 
-      parambmxt = (bmxr)parambmxt;
-      return new bmxr(paramContext, bmxr.a(parambmxt.a(), parambmxt.a()));
-    case 11: 
-      parambmxt = (bmxj)parambmxt;
-      return new bmxj(paramContext, bmxj.a(parambmxt.a(), parambmxt.a(), parambmxt.b(), blzg.h(-1L), blzg.i(-1L)));
-    case 9: 
-      parambmxt = (bmxo)parambmxt;
-      return new bmxo(paramContext, bmxo.a(parambmxt.a(), parambmxt.a(), paramString));
-    }
-    parambmxt = (bmyd)parambmxt;
-    return new bmyd(paramContext, bmyd.a(parambmxt.a(), parambmxt.a(), parambmxt.b(), paramString));
+    return true;
   }
   
-  public static boolean a(int paramInt)
+  public String[] a()
   {
-    return a.contains(Integer.valueOf(paramInt));
+    return null;
   }
   
-  public static boolean b(int paramInt)
+  public void b() {}
+  
+  public void c() {}
+  
+  public void d()
   {
-    return b.contains(Integer.valueOf(paramInt));
+    g();
+    this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
+  }
+  
+  public void e()
+  {
+    a(true);
   }
 }
 

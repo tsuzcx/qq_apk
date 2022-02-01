@@ -1,6 +1,15 @@
-public abstract interface bewc
+import android.view.View;
+import android.view.View.OnLongClickListener;
+
+class bewc
+  implements View.OnLongClickListener
 {
-  public abstract void a();
+  bewc(bewa parambewa) {}
+  
+  public boolean onLongClick(View paramView)
+  {
+    return this.a.a(paramView);
+  }
 }
 
 

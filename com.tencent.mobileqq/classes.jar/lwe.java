@@ -1,63 +1,162 @@
+import android.graphics.Bitmap;
 import android.os.Bundle;
-import com.tencent.av.redpacket.AVRedPacketManager;
-import com.tencent.av.redpacket.AVRedPacketManager.GameStateInfo;
-import com.tencent.qphone.base.util.QLog;
+import android.os.IInterface;
+import android.os.ResultReceiver;
 
-public class lwe
-  implements lwh
+public abstract interface lwe
+  extends IInterface
 {
-  public lwe(AVRedPacketManager paramAVRedPacketManager) {}
+  public abstract int a();
   
-  public void a(boolean paramBoolean, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("AVRedPacketManager", 2, "onLoadFinish, isSucc=" + paramBoolean + ",type=" + paramInt);
-    }
-    if (!AVRedPacketManager.a(this.a, true)) {}
-    do
-    {
-      do
-      {
-        return;
-      } while (paramInt != 1);
-      if ((this.a.jdField_a_of_type_ComTencentAvRedpacketAVRedPacketManager$GameStateInfo.gameMode == 1) && (this.a.jdField_a_of_type_ComTencentAvRedpacketAVRedPacketManager$GameStateInfo.gameState == 1))
-      {
-        Bundle localBundle = new Bundle();
-        localBundle.putString("key", this.a.jdField_a_of_type_ComTencentAvRedpacketAVRedPacketManager$GameStateInfo.key);
-        localBundle.putInt("gameState", 1);
-        localBundle.putInt("fromWho", 1);
-        localBundle.putInt("musicId", this.a.g);
-        localBundle.putInt("enterType", this.a.jdField_a_of_type_ComTencentAvRedpacketAVRedPacketManager$GameStateInfo.enterType);
-        this.a.jdField_a_of_type_Lwb.a();
-        this.a.a(1, localBundle);
-        this.a.a(false, 1011, AVRedPacketManager.jdField_a_of_type_Long, null);
-        this.a.a(false, 1021, AVRedPacketManager.c, null);
-        return;
-      }
-    } while ((this.a.jdField_a_of_type_ComTencentAvRedpacketAVRedPacketManager$GameStateInfo.gameMode != 2) || (this.a.jdField_a_of_type_ComTencentAvRedpacketAVRedPacketManager$GameStateInfo.gameState != 1));
-    long l = Math.abs(System.currentTimeMillis() - this.a.jdField_a_of_type_ComTencentAvRedpacketAVRedPacketManager$GameStateInfo.mRedPacketComeStartTime);
-    paramBoolean = msp.b(AVRedPacketManager.a(this.a));
-    if (l >= AVRedPacketManager.f)
-    {
-      if (paramBoolean)
-      {
-        this.a.d();
-        return;
-      }
-      this.a.f();
-      return;
-    }
-    if (paramBoolean)
-    {
-      this.a.a(false, 1028, AVRedPacketManager.f - l, null);
-      return;
-    }
-    this.a.a(false, 1026, AVRedPacketManager.f - l, null);
-  }
+  public abstract int a(int paramInt, String paramString);
+  
+  public abstract int a(String paramString);
+  
+  public abstract long a(String paramString);
+  
+  public abstract Bitmap a(int paramInt, String paramString1, String paramString2, boolean paramBoolean1, boolean paramBoolean2);
+  
+  public abstract Bundle a(int paramInt1, int paramInt2, int paramInt3, byte[] paramArrayOfByte, Bundle paramBundle, ResultReceiver paramResultReceiver);
+  
+  public abstract String a();
+  
+  public abstract String a(int paramInt, String paramString1, String paramString2);
+  
+  public abstract String a(String paramString);
+  
+  public abstract void a();
+  
+  public abstract void a(int paramInt);
+  
+  public abstract void a(int paramInt1, long paramLong, int paramInt2, int paramInt3);
+  
+  public abstract void a(int paramInt, String paramString);
+  
+  public abstract void a(int paramInt, String paramString1, String paramString2);
+  
+  public abstract void a(long paramLong);
+  
+  public abstract void a(long paramLong, String paramString, int paramInt);
+  
+  public abstract void a(long paramLong1, String paramString, long paramLong2);
+  
+  public abstract void a(String paramString);
+  
+  public abstract void a(String paramString, int paramInt1, int paramInt2, byte[] paramArrayOfByte);
+  
+  public abstract void a(String paramString, long paramLong);
+  
+  public abstract void a(String paramString1, String paramString2, String paramString3);
+  
+  public abstract void a(String paramString1, String paramString2, String paramString3, int paramInt);
+  
+  public abstract void a(lvs paramlvs);
+  
+  public abstract void a(lwb paramlwb);
+  
+  public abstract void a(lwb paramlwb, String paramString);
+  
+  public abstract void a(lwh paramlwh);
+  
+  public abstract void a(boolean paramBoolean);
+  
+  public abstract void a(long[] paramArrayOfLong, String paramString);
+  
+  public abstract boolean a();
+  
+  public abstract boolean a(int paramInt, long paramLong);
+  
+  public abstract boolean a(long paramLong);
+  
+  public abstract boolean a(String paramString);
+  
+  public abstract boolean a(String paramString, int paramInt);
+  
+  public abstract boolean a(String paramString, int paramInt1, int paramInt2, byte[] paramArrayOfByte);
+  
+  public abstract boolean a(String paramString1, String paramString2);
+  
+  public abstract boolean a(String paramString, boolean paramBoolean);
+  
+  public abstract int[] a();
+  
+  public abstract long[] a(String paramString);
+  
+  public abstract String[] a(String paramString);
+  
+  public abstract int b();
+  
+  public abstract int b(String paramString);
+  
+  public abstract long b(String paramString);
+  
+  public abstract String b(String paramString);
+  
+  public abstract void b();
+  
+  public abstract void b(int paramInt, String paramString);
+  
+  public abstract void b(String paramString);
+  
+  public abstract void b(lvs paramlvs);
+  
+  public abstract void b(lwh paramlwh);
+  
+  public abstract void b(boolean paramBoolean);
+  
+  public abstract boolean b();
+  
+  public abstract boolean b(String paramString);
+  
+  public abstract boolean b(String paramString, int paramInt);
+  
+  public abstract long[] b(String paramString);
+  
+  public abstract int c();
+  
+  public abstract int c(String paramString);
+  
+  public abstract String c(String paramString);
+  
+  public abstract void c();
+  
+  public abstract void c(String paramString);
+  
+  public abstract void c(boolean paramBoolean);
+  
+  public abstract boolean c();
+  
+  public abstract boolean c(String paramString);
+  
+  public abstract boolean c(String paramString, int paramInt);
+  
+  public abstract int d();
+  
+  public abstract String d(String paramString);
+  
+  public abstract void d(String paramString);
+  
+  public abstract void d(boolean paramBoolean);
+  
+  public abstract boolean d();
+  
+  public abstract void e(String paramString);
+  
+  public abstract boolean e();
+  
+  public abstract void f(String paramString);
+  
+  public abstract boolean f();
+  
+  public abstract boolean g();
+  
+  public abstract boolean h();
+  
+  public abstract boolean i();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     lwe
  * JD-Core Version:    0.7.0.1
  */

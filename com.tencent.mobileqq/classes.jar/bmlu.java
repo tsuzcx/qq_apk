@@ -1,53 +1,28 @@
-import dov.com.qq.im.capture.view.ProviderViewEditContainer;
-import dov.com.qq.im.capture.view.VideoSegmentPickerProviderView;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.qphone.base.util.QLog;
+import common.config.service.QzoneConfig;
 
-class bmlu
-  implements bmtn
+final class bmlu
+  implements DialogInterface.OnClickListener
 {
-  bmlu(bmlp parambmlp) {}
+  bmlu(Context paramContext) {}
   
-  public void a()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.jdField_a_of_type_DovComQqImCaptureViewProviderViewEditContainer.a();
-    if (this.a.jdField_a_of_type_Bmnj.a == 27) {
-      this.a.jdField_a_of_type_Bmnj.a(0);
-    }
-    if (this.a.jdField_a_of_type_Bmnj.a == 36)
+    try
     {
-      bmjf localbmjf = (bmjf)this.a.a(bmjf.class);
-      if (localbmjf != null) {
-        localbmjf.c();
+      if (blru.a().indexOf("GM") < 0) {
+        bmls.a(QzoneConfig.getInstance().getConfig("H5Url", "DownloadQzoneClient", "https://m.qzone.com/client/fwd?bid=update&_wv=7"), this.a);
       }
-      this.a.jdField_a_of_type_Bmnj.a(0);
-    }
-  }
-  
-  public void a(bmyj parambmyj)
-  {
-    if ((this.a.jdField_a_of_type_Bmnj.h() != 0) && (bmnj.a(bmlp.a(this.a), 134217728)))
-    {
-      VideoSegmentPickerProviderView localVideoSegmentPickerProviderView = (VideoSegmentPickerProviderView)this.a.jdField_a_of_type_DovComQqImCaptureViewProviderViewEditContainer.a(111);
-      if (localVideoSegmentPickerProviderView != null)
-      {
-        bmjf localbmjf = (bmjf)this.a.a(bmjf.class);
-        if (localbmjf != null)
-        {
-          localVideoSegmentPickerProviderView.setPlayMode(localbmjf.a());
-          localbmjf.h_();
-          localbmjf.b();
-        }
-      }
-      this.a.jdField_a_of_type_DovComQqImCaptureViewProviderViewEditContainer.a(111, new Object[] { parambmyj });
-      if (this.a.jdField_a_of_type_Bmnj.a == 0) {
-        this.a.jdField_a_of_type_Bmnj.a(36);
-      }
-    }
-    do
-    {
       return;
-      this.a.jdField_a_of_type_DovComQqImCaptureViewProviderViewEditContainer.a(103, new Object[] { parambmyj });
-    } while (this.a.jdField_a_of_type_Bmnj.a != 0);
-    this.a.jdField_a_of_type_Bmnj.a(27);
+    }
+    catch (Exception paramDialogInterface)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.e("showQzoneAppDownloadDialog", 2, "simpleBrowserJump exception", paramDialogInterface);
+    }
   }
 }
 

@@ -1,47 +1,27 @@
-import android.app.Activity;
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.ChatActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnCompletionListener;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.richmedia.trimvideo.video.widget.FixedSizeVideoView;
 
-class aloi
-  extends BroadcastReceiver
+public class aloi
+  implements MediaPlayer.OnCompletionListener
 {
-  aloi(aloh paramaloh) {}
+  public aloi(FixedSizeVideoView paramFixedSizeVideoView) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onCompletion(MediaPlayer paramMediaPlayer)
   {
-    if (!TextUtils.isEmpty(aloh.a(this.a)))
+    if (this.a.a != null)
     {
-      int i = paramIntent.getIntExtra("result", -1);
-      paramContext = "{ \"ret\": " + i + " }";
-      if (QLog.isColorLevel()) {
-        QLog.d("BabyQFriendStatusWebViewPlugin", 2, "babyqWeb js req method = setFriendStatus, return = " + paramContext);
+      if (FixedSizeVideoView.a(this.a) != null) {
+        FixedSizeVideoView.a(this.a).removeMessages(0);
       }
-      if (i != 0) {
-        break label176;
-      }
-      if (aloh.a(this.a) != null)
-      {
-        paramContext = new Intent(aloh.a(this.a), ChatActivity.class);
-        paramContext.putExtra("uin", alof.aC);
-        paramContext.putExtra("uintype", 0);
-        paramContext.putExtra("uinname", "babyQ");
-        paramContext.putExtra("selfSet_leftViewText", aloh.a(this.a).getString(2131690623));
-        aloh.a(this.a).startActivity(paramContext);
-        aloh.a(this.a).finish();
-      }
+      this.a.a.a(paramMediaPlayer);
     }
-    return;
-    label176:
-    this.a.callJs(aloh.a(this.a) + "(" + paramContext + ");");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aloi
  * JD-Core Version:    0.7.0.1
  */

@@ -1,72 +1,25 @@
-import android.app.Activity;
-import android.content.Intent;
-import com.tencent.mobileqq.pluginsdk.ActivityLifecycle.ActivityLifecycleCallback;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.buscard.BuscardHelper;
-import mqq.app.AppActivity;
-import mqq.app.AppRuntime;
-import mqq.app.MobileQQ;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.open.agent.OpenAuthorityAccountView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class bimb
-  implements ActivityLifecycle.ActivityLifecycleCallback
+  implements View.OnClickListener
 {
-  public void onNewIntent(Activity paramActivity, Intent paramIntent)
-  {
-    if ((paramIntent != null) && ("android.nfc.action.TECH_DISCOVERED".equals(paramIntent.getAction()))) {
-      BuscardHelper.a("", paramActivity, paramIntent);
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("", 2, "NFCActivityLifecycleCallback onNewIntent " + MobileQQ.processName);
-    }
-  }
+  public bimb(OpenAuthorityAccountView paramOpenAuthorityAccountView) {}
   
-  public void onPause(Activity paramActivity)
+  public void onClick(View paramView)
   {
-    try
-    {
-      BuscardHelper.a(paramActivity, true, "", "");
-      if (QLog.isColorLevel()) {
-        QLog.d("", 2, "NFCActivityLifecycleCallback onPause " + MobileQQ.processName);
-      }
-      return;
+    Object localObject = paramView.getTag();
+    if ((localObject != null) && ((localObject instanceof String))) {
+      this.a.b((String)localObject);
     }
-    catch (Throwable paramActivity)
-    {
-      for (;;)
-      {
-        paramActivity.printStackTrace();
-      }
-    }
-  }
-  
-  public void onResume(Activity paramActivity)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("", 2, "NFCActivityLifecycleCallback onResume " + MobileQQ.processName);
-    }
-    try
-    {
-      if ((paramActivity instanceof AppActivity))
-      {
-        AppRuntime localAppRuntime = ((AppActivity)paramActivity).getAppRuntime();
-        if ((localAppRuntime != null) && (localAppRuntime.isLogin()))
-        {
-          BuscardHelper.a(paramActivity, true, "", "", null);
-          return;
-        }
-        BuscardHelper.a(paramActivity, true, "", "");
-        return;
-      }
-    }
-    catch (Throwable paramActivity)
-    {
-      paramActivity.printStackTrace();
-    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bimb
  * JD-Core Version:    0.7.0.1
  */

@@ -1,23 +1,35 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import dov.com.tencent.mobileqq.richmedia.capture.view.DragAnimationMgr;
-import dov.com.tencent.mobileqq.richmedia.capture.view.DragAnimationMgr.DragViewIcon;
+import android.support.annotation.NonNull;
+import android.text.SpannableString;
+import android.text.SpannableStringBuilder;
+import android.text.style.ForegroundColorSpan;
 
-public class bnme
-  extends AnimatorListenerAdapter
+class bnme
 {
-  public bnme(DragAnimationMgr paramDragAnimationMgr) {}
-  
-  public void onAnimationCancel(Animator paramAnimator)
+  static CharSequence a(@NonNull bnlp parambnlp)
   {
-    int i = DragAnimationMgr.a(this.a).a();
-    DragAnimationMgr.a(this.a, DragAnimationMgr.a(this.a), i);
+    if (parambnlp.a) {
+      return parambnlp.toString();
+    }
+    SpannableStringBuilder localSpannableStringBuilder = new SpannableStringBuilder();
+    parambnlp = parambnlp.toString();
+    SpannableString localSpannableString = new SpannableString(parambnlp);
+    localSpannableString.setSpan(new ForegroundColorSpan(-65536), 0, parambnlp.length(), 17);
+    localSpannableStringBuilder.append(localSpannableString);
+    return localSpannableStringBuilder;
   }
   
-  public void onAnimationEnd(Animator paramAnimator)
+  static CharSequence a(@NonNull bnlq parambnlq)
   {
-    int i = DragAnimationMgr.a(this.a).a();
-    DragAnimationMgr.a(this.a, DragAnimationMgr.a(this.a), i);
+    if ("failed".equals(parambnlq.c))
+    {
+      SpannableStringBuilder localSpannableStringBuilder = new SpannableStringBuilder();
+      parambnlq = parambnlq.toString();
+      SpannableString localSpannableString = new SpannableString(parambnlq);
+      localSpannableString.setSpan(new ForegroundColorSpan(-65536), 0, parambnlq.length(), 17);
+      localSpannableStringBuilder.append(localSpannableString);
+      return localSpannableStringBuilder;
+    }
+    return parambnlq.toString();
   }
 }
 

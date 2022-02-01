@@ -1,49 +1,23 @@
-import java.util.ArrayList;
-import java.util.Iterator;
+import com.tencent.biz.pubaccount.readinjoy.ugc.coverselect.CoverSelectTabFragment;
+import com.tencent.biz.pubaccount.readinjoy.view.widget.ViewPagerCompat;
 
-final class rmb
-  extends rma
+public class rmb
+  implements tja
 {
-  private final int jdField_a_of_type_Int;
-  private ArrayList<Long> jdField_a_of_type_JavaUtilArrayList;
+  public rmb(CoverSelectTabFragment paramCoverSelectTabFragment) {}
   
-  public rmb(int paramInt)
+  public void a(tjf paramtjf)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    CoverSelectTabFragment.a(this.a).setCurrentItem(paramtjf.a());
   }
   
-  public long a(long paramLong)
-  {
-    if (this.jdField_a_of_type_JavaUtilArrayList.size() >= this.jdField_a_of_type_Int) {
-      this.jdField_a_of_type_JavaUtilArrayList.remove(0);
-    }
-    this.jdField_a_of_type_JavaUtilArrayList.add(Long.valueOf(paramLong));
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-    for (paramLong = 0L; localIterator.hasNext(); paramLong = ((Long)localIterator.next()).longValue() + paramLong) {}
-    return paramLong / this.jdField_a_of_type_JavaUtilArrayList.size();
-  }
+  public void b(tjf paramtjf) {}
   
-  public void a()
-  {
-    super.a();
-    this.jdField_a_of_type_JavaUtilArrayList.clear();
-  }
-  
-  public void b()
-  {
-    super.b();
-    this.jdField_a_of_type_JavaUtilArrayList.clear();
-  }
-  
-  public String toString()
-  {
-    return "MoveAvgPredictor(" + this.jdField_a_of_type_Int + ')';
-  }
+  public void c(tjf paramtjf) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     rmb
  * JD-Core Version:    0.7.0.1
  */

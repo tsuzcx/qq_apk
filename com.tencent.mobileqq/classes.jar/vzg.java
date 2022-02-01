@@ -1,122 +1,121 @@
-import android.support.annotation.NonNull;
+import android.text.TextUtils;
 import android.view.View;
-import com.tribe.async.dispatch.Dispatcher;
-import com.tribe.async.dispatch.IEventReceiver;
-import com.tribe.async.dispatch.Subscriber;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.Set;
+import com.tencent.biz.qqcircle.report.QCircleReportBean;
+import com.tencent.biz.qqcircle.report.ReportExtraTypeInfo;
+import com.tencent.biz.qqcircle.widgets.feed.QCircleInsFeedItemView;
+import com.tencent.biz.subscribe.baseUI.ExtraTypeInfo;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.widget.QQToast;
+import feedcloud.FeedCloudMeta.StFeed;
 
-public abstract class vzg
-  implements IEventReceiver
+public abstract class vzg<T>
+  implements zxl<QCircleReportBean>
 {
-  private long a;
-  protected Map<Subscriber, String> a;
-  protected Set<vrx> a;
-  public vzd a;
-  protected boolean a;
-  public boolean b;
+  protected int a;
+  protected View a;
+  protected QCircleReportBean a;
+  public ReportExtraTypeInfo a;
+  private QCircleInsFeedItemView a;
+  protected ExtraTypeInfo a;
+  public T a;
+  protected uzb a;
   
-  public Map<Subscriber, String> a()
+  public vzg()
   {
+    this.jdField_a_of_type_ComTencentBizQqcircleReportReportExtraTypeInfo = new ReportExtraTypeInfo();
+  }
+  
+  public int a()
+  {
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public View a()
+  {
+    return this.jdField_a_of_type_AndroidViewView;
+  }
+  
+  public QCircleReportBean a()
+  {
+    return QCircleReportBean.getReportBean(a(), this.jdField_a_of_type_ComTencentBizQqcircleReportQCircleReportBean);
+  }
+  
+  public QCircleInsFeedItemView a()
+  {
+    return this.jdField_a_of_type_ComTencentBizQqcircleWidgetsFeedQCircleInsFeedItemView;
+  }
+  
+  public FeedCloudMeta.StFeed a()
+  {
+    if ((this.jdField_a_of_type_JavaLangObject instanceof FeedCloudMeta.StFeed)) {
+      return (FeedCloudMeta.StFeed)this.jdField_a_of_type_JavaLangObject;
+    }
     return null;
   }
   
-  public Set<vrx> a()
+  protected abstract String a();
+  
+  public void a(QCircleReportBean paramQCircleReportBean)
   {
-    return null;
+    this.jdField_a_of_type_ComTencentBizQqcircleReportQCircleReportBean = QCircleReportBean.setReportBean(a(), paramQCircleReportBean);
   }
   
-  public void a()
+  public void a(QCircleInsFeedItemView paramQCircleInsFeedItemView)
   {
-    Iterator localIterator;
-    Object localObject;
-    if ((this.jdField_a_of_type_JavaUtilMap != null) && (!this.jdField_a_of_type_JavaUtilMap.isEmpty()))
+    this.jdField_a_of_type_ComTencentBizQqcircleWidgetsFeedQCircleInsFeedItemView = paramQCircleInsFeedItemView;
+  }
+  
+  public void a(ExtraTypeInfo paramExtraTypeInfo)
+  {
+    this.jdField_a_of_type_ComTencentBizSubscribeBaseUIExtraTypeInfo = paramExtraTypeInfo;
+  }
+  
+  public void a(uzb paramuzb)
+  {
+    this.jdField_a_of_type_Uzb = paramuzb;
+  }
+  
+  public boolean a()
+  {
+    if ((this.jdField_a_of_type_JavaLangObject != null) && ((this.jdField_a_of_type_JavaLangObject instanceof FeedCloudMeta.StFeed)))
     {
-      localIterator = this.jdField_a_of_type_JavaUtilMap.entrySet().iterator();
-      while (localIterator.hasNext())
-      {
-        localObject = (Subscriber)((Map.Entry)localIterator.next()).getKey();
-        umc.a().unRegisterSubscriber((Subscriber)localObject);
+      String str = ((FeedCloudMeta.StFeed)this.jdField_a_of_type_JavaLangObject).id.get();
+      if ((!TextUtils.isEmpty(str)) && (str.startsWith("qcircle_fakeid_"))) {
+        return true;
       }
-      this.jdField_a_of_type_JavaUtilMap.clear();
     }
-    if ((this.jdField_a_of_type_JavaUtilSet != null) && (!this.jdField_a_of_type_JavaUtilSet.isEmpty()))
+    return false;
+  }
+  
+  public int b()
+  {
+    return QCircleReportBean.getPageId(a(), this.jdField_a_of_type_ComTencentBizQqcircleReportQCircleReportBean);
+  }
+  
+  protected boolean b()
+  {
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (a())
     {
-      localIterator = this.jdField_a_of_type_JavaUtilSet.iterator();
-      while (localIterator.hasNext())
+      bool1 = bool2;
+      if (this.jdField_a_of_type_AndroidViewView != null)
       {
-        localObject = (vrx)localIterator.next();
-        this.jdField_a_of_type_Vzd.b((vrx)localObject);
+        QQToast.a(this.jdField_a_of_type_AndroidViewView.getContext(), 0, 2131697243, 0).a();
+        bool1 = true;
       }
-      this.jdField_a_of_type_JavaUtilSet.clear();
     }
+    return bool1;
   }
   
-  public final void a(@NonNull vzd paramvzd, int paramInt, @NonNull vtt paramvtt)
+  public boolean c()
   {
-    vzd.a(paramvzd, paramInt);
-    this.jdField_a_of_type_Vzd = paramvzd;
-    if (!this.jdField_a_of_type_Boolean)
-    {
-      Object localObject1 = a();
-      if ((localObject1 != null) && (!((Map)localObject1).isEmpty()))
-      {
-        Iterator localIterator = ((Map)localObject1).entrySet().iterator();
-        while (localIterator.hasNext())
-        {
-          Object localObject2 = (Map.Entry)localIterator.next();
-          Subscriber localSubscriber = (Subscriber)((Map.Entry)localObject2).getKey();
-          localObject2 = (String)((Map.Entry)localObject2).getValue();
-          umc.a().registerSubscriber((String)localObject2, localSubscriber);
-        }
-        if (this.jdField_a_of_type_JavaUtilMap == null) {
-          this.jdField_a_of_type_JavaUtilMap = new HashMap();
-        }
-        this.jdField_a_of_type_JavaUtilMap.putAll((Map)localObject1);
-      }
-      localObject1 = a();
-      if ((localObject1 != null) && (!((Set)localObject1).isEmpty()))
-      {
-        if (this.jdField_a_of_type_JavaUtilSet == null) {
-          this.jdField_a_of_type_JavaUtilSet = new HashSet();
-        }
-        this.jdField_a_of_type_JavaUtilSet.addAll((Collection)localObject1);
-      }
-      this.jdField_a_of_type_Boolean = true;
-    }
-    a(paramvzd.a, paramvtt);
-  }
-  
-  public final void a(vzh paramvzh, vtt paramvtt)
-  {
-    paramvzh.a();
-    b(paramvzh, paramvtt);
-  }
-  
-  public boolean a(View paramView)
-  {
-    if (System.currentTimeMillis() - this.jdField_a_of_type_Long < 500L) {
-      return false;
-    }
-    this.jdField_a_of_type_Long = System.currentTimeMillis();
-    return true;
-  }
-  
-  public abstract void b(vzh paramvzh, vtt paramvtt);
-  
-  public boolean isValidate()
-  {
-    return this.b;
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     vzg
  * JD-Core Version:    0.7.0.1
  */

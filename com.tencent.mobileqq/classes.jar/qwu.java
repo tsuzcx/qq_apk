@@ -1,25 +1,21 @@
-import com.tencent.biz.pubaccount.readinjoy.ugc.selectvideo.SelectVideoPresenter.5.1;
-import java.util.List;
+import android.text.TextPaint;
+import android.text.style.CharacterStyle;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentUgcOriginalHeader;
 
 public class qwu
-  implements qoj
+  extends CharacterStyle
 {
-  qwu(qwp paramqwp) {}
+  public qwu(ComponentContentUgcOriginalHeader paramComponentContentUgcOriginalHeader) {}
   
-  public List a(int paramInt1, int paramInt2)
+  public void updateDrawState(TextPaint paramTextPaint)
   {
-    return qny.a(paramInt1, paramInt2);
-  }
-  
-  public void a(List paramList, boolean paramBoolean)
-  {
-    qwp.a(this.a).a(paramList, paramBoolean);
-    bfvz.c(new SelectVideoPresenter.5.1(this));
+    paramTextPaint.setColor(-14132075);
+    paramTextPaint.setTextSize(afur.a(2, 14, this.a.getResources()));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     qwu
  * JD-Core Version:    0.7.0.1
  */

@@ -1,92 +1,44 @@
-import com.tencent.mobileqq.activity.bless.BlessSelectMemberActivity;
+import android.text.TextUtils;
+import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.qphone.base.util.QLog;
 
 public class ahcz
-  extends alwx
 {
-  public ahcz(BlessSelectMemberActivity paramBlessSelectMemberActivity) {}
-  
-  public void a(boolean paramBoolean, int paramInt)
+  public static void a(MessageRecord paramMessageRecord)
   {
-    int i = 1;
-    if (QLog.isColorLevel()) {
-      QLog.d("BlessManager", 2, "onBlessDirtyTextCheck " + paramBoolean + " ,code=" + paramInt);
-    }
-    if (paramBoolean) {}
-    while ((i != 0) && (!BlessSelectMemberActivity.b()))
-    {
-      BlessSelectMemberActivity.a(this.a, BlessSelectMemberActivity.a(this.a));
-      return;
-      if (paramInt != 0) {
-        if (paramInt == 1)
-        {
-          BlessSelectMemberActivity.a(this.a, 2131690552, true);
-          i = 0;
-        }
-        else
-        {
-          if (paramInt == 8) {
-            BlessSelectMemberActivity.a(this.a, 2131690587, true);
-          }
-          i = 0;
-        }
-      }
-    }
-    this.a.e();
+    paramMessageRecord.isFolded = false;
   }
   
-  public void a(boolean paramBoolean1, int paramInt, long paramLong, boolean paramBoolean2)
+  public static boolean a(MessageRecord paramMessageRecord)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("BlessManager", 2, "onSendBlessMsgResp " + paramBoolean1 + " ,replyCode=" + paramInt + " waitTime=" + paramLong + " ,entrance=" + BlessSelectMemberActivity.a(this.a));
-    }
-    if (!this.a.a) {
-      return;
-    }
-    this.a.a = false;
-    if (paramInt == 67L)
+    if (paramMessageRecord.isSendFromLocal()) {}
+    for (;;)
     {
-      BlessSelectMemberActivity.a(System.currentTimeMillis());
-      this.a.a(paramLong);
-      this.a.e();
-      BlessSelectMemberActivity.a(this.a, 2131690572, true);
-      return;
-    }
-    if (BlessSelectMemberActivity.b(this.a) == 15)
-    {
-      this.a.a(paramBoolean1);
-      return;
-    }
-    this.a.a(paramBoolean1, paramBoolean2);
-  }
-  
-  protected void c(boolean paramBoolean, String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("BlessSelectMemberActivity", 2, "onUpdateMsgContent, isSuc:" + paramBoolean + " ,type:" + BlessSelectMemberActivity.c(this.a));
-    }
-    if (BlessSelectMemberActivity.c(this.a) == 3) {
-      if (paramBoolean) {
-        BlessSelectMemberActivity.a(this.a);
+      return false;
+      String str = paramMessageRecord.getExtInfoFromExtStr("key_message_extra_info_flag");
+      if (QLog.isColorLevel()) {
+        QLog.d("MessageFoldable", 2, "strFlag: " + str + ", mr: " + paramMessageRecord);
+      }
+      if (TextUtils.isEmpty(str)) {
+        continue;
+      }
+      try
+      {
+        i = Integer.parseInt(str);
+        if ((i & 0x8) == 0) {
+          continue;
+        }
+        return paramMessageRecord.isFolded;
+      }
+      catch (NumberFormatException localNumberFormatException)
+      {
+        for (;;)
+        {
+          localNumberFormatException.printStackTrace();
+          int i = 0;
+        }
       }
     }
-    do
-    {
-      do
-      {
-        return;
-        this.a.e();
-        BlessSelectMemberActivity.a(this.a, 2131690571, false);
-        return;
-      } while (BlessSelectMemberActivity.c(this.a) != 2);
-      if ((BlessSelectMemberActivity.a(this.a).a() == null) || (!paramBoolean))
-      {
-        this.a.e();
-        BlessSelectMemberActivity.a(this.a, 2131690588, false);
-        return;
-      }
-    } while (BlessSelectMemberActivity.b());
-    BlessSelectMemberActivity.b(this.a);
   }
 }
 

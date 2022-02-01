@@ -1,18 +1,26 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.ar.aidl.ARScanStarFaceConfigInfo;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.qphone.base.util.QLog;
 
-public final class amzb
-  implements Parcelable.Creator<ARScanStarFaceConfigInfo>
+final class amzb
+  extends bhhe
 {
-  public ARScanStarFaceConfigInfo a(Parcel paramParcel)
-  {
-    return new ARScanStarFaceConfigInfo(paramParcel);
-  }
+  amzb(SharedPreferences paramSharedPreferences, int paramInt, amyz paramamyz) {}
   
-  public ARScanStarFaceConfigInfo[] a(int paramInt)
+  public void onDone(bhhf parambhhf)
   {
-    return new ARScanStarFaceConfigInfo[paramInt];
+    super.onDone(parambhhf);
+    QLog.i("apollo_client_ApolloSSOConfig", 1, "checkUpdateApolloWebViewConfig download file task.getStatus()->" + parambhhf.a() + ", httpCode: " + parambhhf.f);
+    if (3 == parambhhf.a())
+    {
+      this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putInt("sp_key_apollo_webView_config_version", this.jdField_a_of_type_Int).commit();
+      if (QLog.isColorLevel()) {
+        QLog.d("apollo_client_ApolloSSOConfig", 2, "checkUpdateApolloWebViewConfig download version:" + this.jdField_a_of_type_Int);
+      }
+      if (this.jdField_a_of_type_Amyz != null) {
+        amyz.a(this.jdField_a_of_type_Amyz);
+      }
+    }
   }
 }
 

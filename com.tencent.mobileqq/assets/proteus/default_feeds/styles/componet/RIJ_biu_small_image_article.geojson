@@ -5,6 +5,7 @@
     "margin_left":"12",
     "visible_depend_on_children": "YES",
     "margin_right":"12",
+    "margin_bottom":"10",
     "height":{
         "type":"relative",
         "value":"72"
@@ -80,7 +81,7 @@
             },
             "attributes":{
                 "setText:":"$middle_content_txt",
-                "setTextColorString:":"#03081A",
+                "setTextColorString:":"#242424",
                 "setFontSizeString:":"16",
                 "setNumberOfLinesString:":"2"
             }

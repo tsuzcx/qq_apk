@@ -1,26 +1,64 @@
-import android.os.Handler;
-import com.tencent.biz.qqcircle.report.QCircleLpReportDc05503.1;
+import android.content.Context;
+import android.view.View;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.app.PublicAccountHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.PAMessage;
+import com.tencent.mobileqq.data.PAMessage.Item;
+import java.util.ArrayList;
 
-public class tzu
+final class tzu
+  implements bkhw
 {
-  public static void a(long paramLong1, long paramLong2, long paramLong3, int paramInt)
-  {
-    a(paramLong1, paramLong2, paramLong3, "", "", "", "", "", "", paramInt);
-  }
+  tzu(QQAppInterface paramQQAppInterface, String paramString, int paramInt, long paramLong, boolean paramBoolean, Context paramContext, bkho parambkho) {}
   
-  public static void a(long paramLong1, long paramLong2, long paramLong3, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, int paramInt)
+  public void OnClick(View paramView, int paramInt)
   {
-    uab.a().a().post(new QCircleLpReportDc05503.1(paramLong1, paramLong2, paramLong3, paramString1, paramString2, paramString3, paramString4, paramString5, paramString6, paramInt));
-  }
-  
-  private static int b()
-  {
-    return 5503;
+    switch (paramInt)
+    {
+    }
+    do
+    {
+      this.jdField_a_of_type_Bkho.dismiss();
+      return;
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_a_of_type_Long);
+      if (this.jdField_a_of_type_Boolean) {
+        PublicAccountHandler.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, "Pb_account_lifeservice", "mp_msg_sys_9", "aio_delete");
+      }
+      for (;;)
+      {
+        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().e(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
+        break;
+        PublicAccountHandler.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, "Pb_account_lifeservice", "mp_msg_sys_8", "aio_delete");
+      }
+    } while (!this.jdField_a_of_type_JavaLangString.equals("2010741172"));
+    paramView = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_a_of_type_Long);
+    if (paramView != null)
+    {
+      paramView = agaw.a(paramView);
+      if (paramView != null)
+      {
+        paramView = (PAMessage.Item)paramView.items.get(0);
+        if (paramView.url != null) {
+          tzo.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, paramView.url);
+        }
+      }
+    }
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_a_of_type_Long);
+    if (this.jdField_a_of_type_Boolean) {
+      PublicAccountHandler.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, "Pb_account_lifeservice", "mp_msg_sys_9", "aio_delete");
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().e(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
+      break;
+      PublicAccountHandler.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, "Pb_account_lifeservice", "mp_msg_sys_8", "aio_delete");
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     tzu
  * JD-Core Version:    0.7.0.1
  */

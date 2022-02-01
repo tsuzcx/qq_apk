@@ -1,19 +1,27 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.PoiMapActivity;
-
-class amss
-  implements View.OnClickListener
+public class amss
+  implements anil
 {
-  amss(amsq paramamsq) {}
+  protected void a(boolean paramBoolean, Object paramObject) {}
   
-  public void onClick(View paramView)
+  protected void b(boolean paramBoolean, Object paramObject) {}
+  
+  protected void c(boolean paramBoolean, Object paramObject) {}
+  
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    this.a.dismiss();
-    paramView = new Intent(paramView.getContext(), PoiMapActivity.class).putExtra("lat", Double.toString(this.a.jdField_a_of_type_Anav.a * 1.0D / 1000000.0D)).putExtra("lon", Double.toString(this.a.jdField_a_of_type_Anav.b * 1.0D / 1000000.0D));
-    this.a.jdField_a_of_type_AndroidAppActivity.startActivity(paramView);
+    switch (paramInt)
+    {
+    case 3: 
+    default: 
+      return;
+    case 2: 
+      a(paramBoolean, paramObject);
+      return;
+    case 1: 
+      b(paramBoolean, paramObject);
+      return;
+    }
+    c(paramBoolean, paramObject);
   }
 }
 

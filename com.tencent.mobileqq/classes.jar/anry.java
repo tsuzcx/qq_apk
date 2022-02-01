@@ -1,154 +1,146 @@
-import android.os.Build;
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.ark.ArkDispatchTask;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.ark.ArkAppCenter;
-import com.tencent.mobileqq.ark.vipreport.ArkVipReporter.1;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.pubaccount.AccountDetail.jce.SetRecvMsgStateRsp;
+import com.tencent.mobileqq.data.PublicAccountInfo;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map.Entry;
-import java.util.Set;
-import mqq.app.AppRuntime;
-import org.json.JSONObject;
 
 public class anry
+  implements anil
 {
-  private static Object jdField_a_of_type_JavaLangObject = new Object();
-  private static HashMap<String, anrz> jdField_a_of_type_JavaUtilHashMap = new HashMap(2);
-  private static boolean jdField_a_of_type_Boolean = true;
-  private static HashMap<String, anrx> b = new HashMap(2);
+  public static final int TYPE_ACCOUNT_DETAIL_DYNAMIC_LIST = 107;
+  public static final int TYPE_ACCOUNT_DETAIL_FUNCTION_FLAG = 109;
+  public static final int TYPE_DOWN_PUBLIC_ACCOUNT = 103;
+  public static final int TYPE_FOLLOW_PUBLIC_ACCOUNT = 101;
+  public static final int TYPE_GET_GUIDE_FRIENDS = 110;
+  public static final int TYPE_GET_HISTORY_MESSAGE = 105;
+  public static final int TYPE_GET_PUBLIC_NOTIFICATION = 106;
+  public static final int TYPE_GET_RECOMMEND_LIST = 104;
+  public static final int TYPE_GET_SUBSCRIBE_STATUS = 111;
+  public static final int TYPE_GET_USER_FOLLOW_LIST = 100;
+  public static final int TYPE_SET_KANDIAN_SUBSCRIBE = 108;
+  public static final int TYPE_SET_RECVMSG_STATUS = 112;
+  public static final int TYPE_UNFOLLOW_PUBLIC_ACCOUNT = 102;
   
-  private static anrz a(String paramString)
+  public void onDownPublicAccount() {}
+  
+  public void onDynamicListGet(boolean paramBoolean, int paramInt) {}
+  
+  public void onFollowPublicAccount(int paramInt, PublicAccountInfo paramPublicAccountInfo) {}
+  
+  public void onFollowPublicAccount(boolean paramBoolean, int paramInt) {}
+  
+  public void onFollowPublicAccount(boolean paramBoolean, String paramString) {}
+  
+  public void onGetGuideFriends(boolean paramBoolean, ArrayList<Long> paramArrayList) {}
+  
+  public void onGetHistoryMsgRet(int paramInt) {}
+  
+  public void onGetPublicAccountSubscribeStatus(boolean paramBoolean, long paramLong, int paramInt) {}
+  
+  public void onPublicAccountNotification(boolean paramBoolean1, boolean paramBoolean2) {}
+  
+  public void onSetPublicAccountSubscribeStatus(boolean paramBoolean, int paramInt, long paramLong) {}
+  
+  public void onSetRecvMsgState(boolean paramBoolean, SetRecvMsgStateRsp paramSetRecvMsgStateRsp) {}
+  
+  public void onUnfollowPublicAccount(int paramInt, PublicAccountInfo paramPublicAccountInfo) {}
+  
+  public void onUnfollowPublicAccount(boolean paramBoolean, String paramString) {}
+  
+  public final void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    Iterator localIterator = jdField_a_of_type_JavaUtilHashMap.entrySet().iterator();
-    while (localIterator.hasNext())
+    if (100 == paramInt)
     {
-      anrz localanrz = (anrz)((Map.Entry)localIterator.next()).getValue();
-      if ((localanrz.jdField_a_of_type_JavaUtilSet != null) && (localanrz.jdField_a_of_type_JavaUtilSet.contains(paramString))) {
-        return localanrz;
-      }
+      paramObject = (ansa)paramObject;
+      onUpdateUserFollowList(paramObject.jdField_a_of_type_Int, paramObject.jdField_a_of_type_Boolean);
     }
-    return null;
-  }
-  
-  public static void a(String paramString, long paramLong)
-  {
-    if ((jdField_a_of_type_Boolean) && (bdeu.b()) && (!TextUtils.isEmpty(paramString))) {
-      synchronized (jdField_a_of_type_JavaLangObject)
+    do
+    {
+      return;
+      if (101 == paramInt)
       {
-        anrz localanrz = a(paramString);
-        if ((localanrz != null) && (paramString.equals(localanrz.jdField_b_of_type_JavaLangString)))
+        if ((paramObject instanceof anrz))
         {
-          String str = localanrz.jdField_a_of_type_JavaLangString;
-          if (b.containsKey(str)) {
-            b(str);
-          }
-          anrx localanrx = new anrx();
-          localObject1 = BaseApplicationImpl.getApplication().getRuntime();
-          if (((AppRuntime)localObject1).getAccount() == null)
-          {
-            localObject1 = "";
-            localanrx.jdField_a_of_type_JavaLangString = ((String)localObject1);
-            localanrx.jdField_b_of_type_JavaLangString = (Build.MANUFACTURER + "_" + Build.MODEL);
-            localanrx.jdField_c_of_type_JavaLangString = "android";
-            localanrx.d = "8.3.5_4555";
-            localanrx.e = str;
-            localanrx.f = localanrz.jdField_b_of_type_JavaLangString;
-            localanrx.g = localanrz.jdField_c_of_type_JavaLangString;
-            localanrx.jdField_a_of_type_Long = paramLong;
-            localanrx.jdField_a_of_type_JavaUtilArrayList = new ArrayList(8);
-            b.put(str, localanrx);
-            QLog.d("ArkVipReporter", 1, new Object[] { "startSceneByEvent() sceneName=", str, ",evt =", paramString });
-            ArkDispatchTask.getInstance().postToArkThreadDelay(new ArkVipReporter.1(str, localanrz), localanrz.jdField_a_of_type_Long);
-          }
-        }
-        else
-        {
+          paramObject = (anrz)paramObject;
+          onFollowPublicAccount(paramObject.jdField_a_of_type_Int, paramObject.jdField_a_of_type_ComTencentMobileqqDataPublicAccountInfo);
           return;
         }
-        Object localObject1 = ((AppRuntime)localObject1).getAccount();
-      }
-    }
-  }
-  
-  public static void a(String paramString, anrz paramanrz)
-  {
-    aolw localaolw = aolx.b(380).a();
-    if ((localaolw != null) && (localaolw.a() != null)) {
-      jdField_a_of_type_Boolean = localaolw.a().c;
-    }
-    if ((jdField_a_of_type_Boolean) && (!TextUtils.isEmpty(paramString)) && (!jdField_a_of_type_JavaUtilHashMap.containsKey(paramanrz))) {
-      jdField_a_of_type_JavaUtilHashMap.put(paramString, paramanrz);
-    }
-    QLog.d("ArkVipReporter", 1, new Object[] { "initScene() sceneName=", paramString, ", enable =", Boolean.valueOf(jdField_a_of_type_Boolean) });
-  }
-  
-  public static void a(String paramString, boolean paramBoolean, long paramLong, HashMap<String, String> paramHashMap)
-  {
-    if ((jdField_a_of_type_Boolean) && (bdeu.b()) && (!TextUtils.isEmpty(paramString))) {
-      synchronized (jdField_a_of_type_JavaLangObject)
-      {
-        anrz localanrz = a(paramString);
-        if (localanrz != null)
+        if ((paramObject instanceof Integer))
         {
-          anrx localanrx = (anrx)b.get(localanrz.jdField_a_of_type_JavaLangString);
-          if (localanrx == null) {
-            return;
-          }
-          anrw localanrw = new anrw();
-          localanrw.jdField_a_of_type_JavaLangString = paramString;
-          localanrw.jdField_a_of_type_Int = localanrx.jdField_a_of_type_JavaUtilArrayList.size();
-          localanrw.jdField_a_of_type_Boolean = paramBoolean;
-          localanrw.jdField_b_of_type_Long = System.currentTimeMillis();
-          localanrw.jdField_c_of_type_Long = paramLong;
-          localanrw.jdField_a_of_type_Long = (localanrw.jdField_b_of_type_Long - paramLong);
-          localanrw.d = bdin.b(null);
-          localanrw.jdField_a_of_type_JavaUtilHashMap = paramHashMap;
-          localanrx.jdField_a_of_type_JavaUtilArrayList.add(localanrw);
-          QLog.d("ArkVipReporter", 1, new Object[] { "addEventToScene() evt:", paramString, ", cost time=", Long.valueOf(paramLong) });
-          if (paramString.equals(localanrz.jdField_c_of_type_JavaLangString)) {
-            b(localanrz.jdField_a_of_type_JavaLangString);
-          }
+          onFollowPublicAccount(paramBoolean, ((Integer)paramObject).intValue());
+          return;
         }
+        onFollowPublicAccount(paramBoolean, String.valueOf(paramObject));
         return;
       }
-    }
+      if (102 == paramInt)
+      {
+        if ((paramObject instanceof anrz))
+        {
+          paramObject = (anrz)paramObject;
+          onUnfollowPublicAccount(paramObject.jdField_a_of_type_Int, paramObject.jdField_a_of_type_ComTencentMobileqqDataPublicAccountInfo);
+          return;
+        }
+        onUnfollowPublicAccount(paramBoolean, String.valueOf(paramObject));
+        return;
+      }
+      if (103 == paramInt)
+      {
+        onDownPublicAccount();
+        return;
+      }
+      if (104 == paramInt)
+      {
+        onUpdateRecommendList(paramBoolean);
+        return;
+      }
+      if (105 == paramInt)
+      {
+        onGetHistoryMsgRet(((Integer)paramObject).intValue());
+        return;
+      }
+      if (106 == paramInt)
+      {
+        onPublicAccountNotification(paramBoolean, ((Boolean)paramObject).booleanValue());
+        return;
+      }
+      if (109 == paramInt)
+      {
+        onUpdateFunctionFlag(paramBoolean, (nyl)paramObject);
+        return;
+      }
+      if (108 == paramInt)
+      {
+        paramObject = (HashMap)paramObject;
+        onSetPublicAccountSubscribeStatus(paramBoolean, ((Integer)paramObject.get("seq")).intValue(), ((Long)paramObject.get("uin")).longValue());
+        return;
+      }
+      if (110 == paramInt)
+      {
+        onGetGuideFriends(paramBoolean, (ArrayList)paramObject);
+        return;
+      }
+      if (111 == paramInt)
+      {
+        paramObject = (HashMap)paramObject;
+        long l = 0L;
+        paramInt = 0;
+        if (paramObject != null)
+        {
+          l = ((Long)paramObject.get("uin")).longValue();
+          paramInt = ((Integer)paramObject.get("status")).intValue();
+        }
+        onGetPublicAccountSubscribeStatus(paramBoolean, l, paramInt);
+        return;
+      }
+    } while ((112 != paramInt) || (!(paramObject instanceof SetRecvMsgStateRsp)));
+    onSetRecvMsgState(paramBoolean, (SetRecvMsgStateRsp)paramObject);
   }
   
-  private static void b(String paramString)
-  {
-    synchronized (jdField_a_of_type_JavaLangObject)
-    {
-      anrx localanrx = (anrx)b.remove(paramString);
-      if (localanrx != null)
-      {
-        localanrx.jdField_b_of_type_Long = System.currentTimeMillis();
-        localanrx.jdField_c_of_type_Long = (localanrx.jdField_b_of_type_Long - localanrx.jdField_a_of_type_Long);
-        ??? = localanrx.a().toString();
-        QLog.d("ArkVipReporter", 1, new Object[] { "report() sceneName:", paramString, ",total cost time=", Long.valueOf(localanrx.jdField_c_of_type_Long) });
-        if (1 != BaseApplicationImpl.sProcessId) {
-          break label136;
-        }
-        paramString = (QQAppInterface)BaseApplicationImpl.sApplication.getRuntime();
-        if (paramString != null)
-        {
-          paramString = ((ArkAppCenter)paramString.getManager(121)).a();
-          if (paramString != null) {
-            paramString.b((String)???);
-          }
-        }
-      }
-      return;
-    }
-    label136:
-    paramString = new Bundle();
-    paramString.putString("reportContent", (String)???);
-    anqp.a().a("callVIPReport", paramString, null);
-  }
+  public void onUpdateFunctionFlag(boolean paramBoolean, nyl paramnyl) {}
+  
+  public void onUpdateRecommendList(boolean paramBoolean) {}
+  
+  public void onUpdateUserFollowList(int paramInt, boolean paramBoolean) {}
 }
 
 

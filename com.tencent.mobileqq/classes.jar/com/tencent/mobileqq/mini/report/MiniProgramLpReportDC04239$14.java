@@ -1,26 +1,30 @@
 package com.tencent.mobileqq.mini.report;
 
-import android.os.Bundle;
-import com.tencent.mobileqq.qipc.QIPCClientHelper;
+import com.tencent.mobileqq.mini.entry.MiniAppExposureManager.BaseExposureReport;
+import java.util.Iterator;
+import java.util.List;
 
 final class MiniProgramLpReportDC04239$14
   implements Runnable
 {
+  MiniProgramLpReportDC04239$14(List paramList) {}
+  
   public void run()
   {
-    if (MiniProgramLpReportDC04239.access$400() != null)
+    Iterator localIterator = this.val$appConfigList.iterator();
+    while (localIterator.hasNext())
     {
-      Bundle localBundle = new Bundle();
-      localBundle.putParcelable("app_config", MiniProgramLpReportDC04239.access$400());
-      localBundle.putLong("add_duration_ms", MiniProgramLpReportDC04239.access$500());
-      QIPCClientHelper.getInstance().callServer("MiniAppTransferModule", "record_duration", localBundle);
-      MiniProgramLpReportDC04239.access$600();
+      MiniAppExposureManager.BaseExposureReport localBaseExposureReport = (MiniAppExposureManager.BaseExposureReport)localIterator.next();
+      if (localBaseExposureReport != null) {
+        localBaseExposureReport.handleReport();
+      }
     }
+    MiniProgramReporter.getInstance().flush();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.report.MiniProgramLpReportDC04239.14
  * JD-Core Version:    0.7.0.1
  */

@@ -1,7 +1,7 @@
 package cooperation.qzone.report.lp;
 
 import android.text.TextUtils;
-import bjdm;
+import blru;
 import com.tencent.common.app.BaseApplicationImpl;
 import java.lang.reflect.Field;
 import java.util.HashMap;
@@ -35,7 +35,7 @@ public class LpReport_AlbumInfo_dc02151
     {
       str = BaseApplicationImpl.getApplication().getRuntime().getAccount();
       localHashMap.put("uin", str);
-      LpReportUtils.safePut(localHashMap, "qua", bjdm.a());
+      LpReportUtils.safePut(localHashMap, "qua", blru.a());
       if (!TextUtils.isEmpty(this.client_time)) {
         break label202;
       }
@@ -55,7 +55,7 @@ public class LpReport_AlbumInfo_dc02151
     }
     label202:
     label210:
-    for (String str = "8.3.5";; str = this.version)
+    for (String str = "8.4.1";; str = this.version)
     {
       LpReportUtils.safePut(localHashMap, "version", str);
       return localHashMap;
@@ -98,7 +98,7 @@ public class LpReport_AlbumInfo_dc02151
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.qzone.report.lp.LpReport_AlbumInfo_dc02151
  * JD-Core Version:    0.7.0.1
  */

@@ -1,17 +1,17 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity;
+
 public class alws
+  implements DialogInterface.OnClickListener
 {
-  public int a;
-  public long a;
-  public String a;
-  public int b;
-  public long b;
-  public String b;
-  public long c;
-  public String c;
+  public alws(ShortVideoPreviewActivity paramShortVideoPreviewActivity) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     alws
  * JD-Core Version:    0.7.0.1
  */

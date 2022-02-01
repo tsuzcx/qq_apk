@@ -1,32 +1,47 @@
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.Toast;
-import com.tencent.gdtad.api.GdtAd;
+import android.os.Bundle;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.qphone.base.util.QLog;
+import tencent.im.oidb.cmd0x6d8.oidb_0x6d8.GetSpaceRspBody;
+import tencent.im.oidb.cmd0x6d8.oidb_0x6d8.RspBody;
 
-class aarf
-  implements View.OnClickListener
+public abstract class aarf
+  extends niv
 {
-  aarf(aard paramaard) {}
-  
-  public void onClick(View paramView)
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    if (this.a.a() == null)
+    b(paramInt, paramArrayOfByte, paramBundle);
+  }
+  
+  public abstract void a(boolean paramBoolean, long paramLong1, long paramLong2, int paramInt);
+  
+  protected void b(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  {
+    if ((paramInt != 0) || (paramArrayOfByte == null))
     {
-      Toast.makeText(this.a.getActivity().getApplicationContext(), "error", 0).show();
+      a(false, 0L, 0L, 0);
       return;
     }
-    if (!this.a.a().isLoaded())
+    paramBundle = new oidb_0x6d8.RspBody();
+    try
     {
-      Toast.makeText(this.a.getActivity().getApplicationContext(), "ad is not loaded", 0).show();
+      paramBundle.mergeFrom(paramArrayOfByte);
+      if (!paramBundle.group_space_rsp.has())
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("TroopFileProtocol", 2, "no group_space_rsp rsp.");
+        }
+        a(false, 0L, 0L, 0);
+        return;
+      }
+    }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      a(false, 0L, 0L, 0);
       return;
     }
-    if (this.a.a().isInvalidated())
-    {
-      Toast.makeText(this.a.getActivity().getApplicationContext(), "ad is invalidated", 0).show();
-      return;
-    }
-    this.a.a();
+    paramArrayOfByte = (oidb_0x6d8.GetSpaceRspBody)paramBundle.group_space_rsp.get();
+    a(true, paramArrayOfByte.uint64_total_space.get(), paramArrayOfByte.uint64_used_space.get(), paramInt);
   }
 }
 

@@ -1,63 +1,76 @@
-import android.widget.ImageView;
-import java.lang.ref.WeakReference;
-import java.util.ArrayList;
-import java.util.LinkedHashMap;
-import java.util.ListIterator;
-import java.util.Map.Entry;
-import java.util.WeakHashMap;
-
 public class wro
 {
-  private LinkedHashMap<xve, WeakReference<ImageView>> jdField_a_of_type_JavaUtilLinkedHashMap = new LinkedHashMap(10, 0.75F, true);
-  private WeakHashMap<ImageView, xve> jdField_a_of_type_JavaUtilWeakHashMap = new WeakHashMap();
+  public final String a;
+  public final String b;
+  public final String c;
   
-  public int a()
+  public wro(String paramString1, String paramString2, String paramString3)
   {
-    return this.jdField_a_of_type_JavaUtilLinkedHashMap.size();
-  }
-  
-  public ListIterator<Map.Entry<xve, WeakReference<ImageView>>> a()
-  {
-    return new ArrayList(this.jdField_a_of_type_JavaUtilLinkedHashMap.entrySet()).listIterator(this.jdField_a_of_type_JavaUtilLinkedHashMap.size());
-  }
-  
-  public xve a(ImageView paramImageView)
-  {
-    paramImageView = (xve)this.jdField_a_of_type_JavaUtilWeakHashMap.remove(paramImageView);
-    if (paramImageView != null) {
-      this.jdField_a_of_type_JavaUtilLinkedHashMap.remove(paramImageView);
+    if ((paramString1 == null) || (paramString2 == null)) {
+      throw new IllegalArgumentException("both downloadUrl and downloadLocalPath should not be null");
     }
-    return paramImageView;
+    this.a = paramString1;
+    this.b = paramString2;
+    this.c = paramString3;
   }
   
-  public void a()
+  public boolean equals(Object paramObject)
   {
-    this.jdField_a_of_type_JavaUtilWeakHashMap.clear();
-    this.jdField_a_of_type_JavaUtilLinkedHashMap.clear();
-  }
-  
-  public void a(ImageView paramImageView, xve paramxve)
-  {
-    xve localxve = (xve)this.jdField_a_of_type_JavaUtilWeakHashMap.put(paramImageView, paramxve);
-    if (localxve != null) {
-      this.jdField_a_of_type_JavaUtilLinkedHashMap.remove(localxve);
+    boolean bool2 = true;
+    boolean bool3 = false;
+    if (this == paramObject) {
+      bool1 = true;
     }
-    this.jdField_a_of_type_JavaUtilLinkedHashMap.put(paramxve, new WeakReference(paramImageView));
+    do
+    {
+      do
+      {
+        do
+        {
+          do
+          {
+            return bool1;
+            bool1 = bool3;
+          } while (paramObject == null);
+          bool1 = bool3;
+        } while (getClass() != paramObject.getClass());
+        paramObject = (wro)paramObject;
+        bool1 = bool3;
+      } while (!this.a.equals(paramObject.a));
+      bool1 = bool3;
+    } while (!this.b.equals(paramObject.b));
+    if (this.c != null)
+    {
+      bool1 = bool2;
+      if (this.c.equals(paramObject.c)) {}
+    }
+    for (boolean bool1 = false;; bool1 = bool2)
+    {
+      return bool1;
+      if (paramObject.c != null) {
+        break;
+      }
+    }
   }
   
-  public void a(xve paramxve)
+  public int hashCode()
   {
-    this.jdField_a_of_type_JavaUtilLinkedHashMap.remove(paramxve);
+    int j = this.a.hashCode();
+    int k = this.b.hashCode();
+    if (this.c != null) {}
+    for (int i = this.c.hashCode();; i = 0) {
+      return i + (j * 31 + k) * 31;
+    }
   }
   
-  public xve b(ImageView paramImageView)
+  public String toString()
   {
-    return (xve)this.jdField_a_of_type_JavaUtilWeakHashMap.get(paramImageView);
+    return "Input{downloadUrl='" + this.a + '\'' + ", downloadLocalPath='" + this.b + '\'' + ", downloadFileMd5='" + this.c + '\'' + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     wro
  * JD-Core Version:    0.7.0.1
  */

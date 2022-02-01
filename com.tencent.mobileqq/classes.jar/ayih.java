@@ -1,26 +1,24 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import mqq.manager.Manager;
+import android.support.v4.view.ViewPager.OnPageChangeListener;
+import com.tencent.biz.lebasearch.widget.ScrolledTabHost;
+import com.tencent.mobileqq.ocr.ui.SearchResultFragment;
+import com.tencent.mobileqq.ocr.ui.SearchResultViewPagerAdapter;
 
 public class ayih
-  implements Manager
+  implements ViewPager.OnPageChangeListener
 {
-  public static final String a;
-  public static final String b = alud.a(2131714066);
-  public static final String c = alud.a(2131714065);
-  public static final String d = alud.a(2131714068);
-  int jdField_a_of_type_Int = -1;
-  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  public ayih(SearchResultFragment paramSearchResultFragment) {}
   
-  static
+  public void onPageScrollStateChanged(int paramInt) {}
+  
+  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2) {}
+  
+  public void onPageSelected(int paramInt)
   {
-    jdField_a_of_type_JavaLangString = alud.a(2131714067);
-  }
-  
-  public ayih(QQAppInterface paramQQAppInterface) {}
-  
-  public void onDestroy()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = null;
+    this.a.jdField_a_of_type_ComTencentBizLebasearchWidgetScrolledTabHost.setCurrentTab(paramInt);
+    if (this.a.jdField_a_of_type_Int != paramInt) {
+      this.a.jdField_a_of_type_ComTencentMobileqqOcrUiSearchResultViewPagerAdapter.a(paramInt);
+    }
+    this.a.jdField_a_of_type_Int = paramInt;
   }
 }
 

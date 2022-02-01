@@ -17,13 +17,17 @@ import android.view.View;
 import android.view.View.OnTouchListener;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
 import android.widget.Toast;
-import azqs;
-import beue;
-import beuf;
-import beuh;
-import beui;
+import bcst;
+import biba;
+import bibb;
+import bibc;
+import bibe;
+import bibf;
+import bibg;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.commonsdk.util.notification.QQNotificationManager;
 import com.tencent.mobileqq.app.DeviceProfileManager;
@@ -33,20 +37,23 @@ import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
+import org.jetbrains.annotations.NotNull;
+import zlx;
 
 public class QQToast
 {
   private static int jdField_a_of_type_Int = -1;
-  private static beui jdField_a_of_type_Beui = new beui(Looper.getMainLooper(), null);
+  private static bibg jdField_a_of_type_Bibg = new bibg(Looper.getMainLooper(), null);
   private static Class jdField_a_of_type_JavaLangClass;
   private static Field jdField_a_of_type_JavaLangReflectField;
   private static Method jdField_a_of_type_JavaLangReflectMethod;
-  private static BlockingQueue<beuh> jdField_a_of_type_JavaUtilConcurrentBlockingQueue = new LinkedBlockingQueue();
+  private static BlockingQueue<bibf> jdField_a_of_type_JavaUtilConcurrentBlockingQueue = new LinkedBlockingQueue();
   private long jdField_a_of_type_Long;
   private Context jdField_a_of_type_AndroidContentContext;
   private Resources jdField_a_of_type_AndroidContentResResources;
   private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
   private LayoutInflater jdField_a_of_type_AndroidViewLayoutInflater;
+  private bibe jdField_a_of_type_Bibe;
   private CharSequence jdField_a_of_type_JavaLangCharSequence;
   boolean jdField_a_of_type_Boolean = false;
   private int jdField_b_of_type_Int = 0;
@@ -119,12 +126,12 @@ public class QQToast
     case 3: 
     case 6: 
     default: 
-      return 2130839101;
+      return 2130839276;
     case 1: 
     case 4: 
-      return 2130847336;
+      return 2130847795;
     }
-    return 2130847337;
+    return 2130847796;
   }
   
   public static QQToast a(Context paramContext, int paramInt1, int paramInt2)
@@ -152,9 +159,48 @@ public class QQToast
     return paramContext;
   }
   
+  public static QQToast a(Context paramContext, int paramInt1, CharSequence paramCharSequence, bibe parambibe, int paramInt2)
+  {
+    paramContext = new QQToast(paramContext);
+    paramContext.a(a(paramInt1));
+    paramContext.b(paramInt1);
+    paramContext.a(paramCharSequence);
+    paramContext.d(paramInt2);
+    paramContext.a(parambibe);
+    return paramContext;
+  }
+  
   public static QQToast a(Context paramContext, CharSequence paramCharSequence, int paramInt)
   {
     return a(paramContext, 0, paramCharSequence, paramInt);
+  }
+  
+  private void a(@NotNull Toast paramToast, @NotNull LinearLayout paramLinearLayout, @NotNull bibe parambibe)
+  {
+    if ((parambibe.jdField_a_of_type_JavaLangString == null) || (parambibe.jdField_a_of_type_JavaLangString.isEmpty()))
+    {
+      QLog.e("QQToast", 1, "addRightActionView params isNullOrEmpty");
+      return;
+    }
+    Context localContext = paramLinearLayout.getContext();
+    Object localObject = new View(localContext);
+    LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(0, -2);
+    localLayoutParams.weight = 1.0F;
+    paramLinearLayout.addView((View)localObject, localLayoutParams);
+    localObject = new TextView(localContext);
+    ((TextView)localObject).setOnClickListener(new bibb(this, parambibe, paramToast));
+    ((TextView)localObject).setText(parambibe.jdField_a_of_type_JavaLangString);
+    if (parambibe.jdField_a_of_type_Int == 0) {
+      parambibe.jdField_a_of_type_Int = localContext.getResources().getColor(2131165513);
+    }
+    ((TextView)localObject).setTextColor(parambibe.jdField_a_of_type_Int);
+    if (parambibe.jdField_b_of_type_Int == 0) {
+      parambibe.jdField_b_of_type_Int = 16;
+    }
+    ((TextView)localObject).setTextSize(1, parambibe.jdField_b_of_type_Int);
+    paramToast = new LinearLayout.LayoutParams(-2, -2);
+    paramToast.rightMargin = zlx.a(localContext, 22.0F);
+    paramLinearLayout.addView((View)localObject, paramToast);
   }
   
   public static boolean a()
@@ -180,7 +226,7 @@ public class QQToast
           if (QLog.isColorLevel()) {
             QLog.d("QQToast", 2, "Temp Report mark: now Notification from disable to Enabled ");
           }
-          azqs.b(null, "dc00898", "", "", "0X8009ACA", "0X8009ACA", 0, 0, "", "", "", "");
+          bcst.b(null, "dc00898", "", "", "0X8009ACA", "0X8009ACA", 0, 0, "", "", "", "");
         }
       }
     } while (jdField_a_of_type_Int == 1);
@@ -243,27 +289,30 @@ public class QQToast
   
   public Toast a(int paramInt)
   {
-    return a(paramInt, 2131561338, null);
+    return a(paramInt, 2131561571, null);
   }
   
   public Toast a(int paramInt1, int paramInt2, View.OnTouchListener paramOnTouchListener)
   {
     QQToast.ProtectedToast localProtectedToast = new QQToast.ProtectedToast(this.jdField_a_of_type_AndroidContentContext);
     View localView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(paramInt2, null);
-    Object localObject = localView.findViewById(2131378106);
+    Object localObject = localView.findViewById(2131378951);
     if (Build.VERSION.SDK_INT >= 21) {
       ((View)localObject).setElevation(6.0F);
     }
-    AnimationUtils.loadAnimation(this.jdField_a_of_type_AndroidContentContext, 2130772231);
-    localView.findViewById(2131378112);
+    AnimationUtils.loadAnimation(this.jdField_a_of_type_AndroidContentContext, 2130772240);
+    localObject = (LinearLayout)localView.findViewById(2131378957);
+    if (this.jdField_a_of_type_Bibe != null) {
+      a(localProtectedToast, (LinearLayout)localObject, this.jdField_a_of_type_Bibe);
+    }
     if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null)
     {
-      localObject = (ImageView)localView.findViewById(2131378110);
+      localObject = (ImageView)localView.findViewById(2131378955);
       ((ImageView)localObject).setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
       ((ImageView)localObject).setColorFilter(b(this.jdField_b_of_type_Int), PorterDuff.Mode.MULTIPLY);
       if (this.jdField_a_of_type_JavaLangCharSequence != null)
       {
-        localObject = (TextView)localView.findViewById(2131378113);
+        localObject = (TextView)localView.findViewById(2131378958);
         ((TextView)localObject).setTextColor(c(this.jdField_b_of_type_Int));
         ((TextView)localObject).setText(this.jdField_a_of_type_JavaLangCharSequence);
         String str = this.jdField_a_of_type_JavaLangCharSequence.toString();
@@ -284,7 +333,7 @@ public class QQToast
         }
       }
       if (!a()) {
-        break label372;
+        break label395;
       }
       localProtectedToast.setGravity(55, 0, 0);
     }
@@ -293,12 +342,12 @@ public class QQToast
       localProtectedToast.setView(localView);
       localProtectedToast.setDuration(this.c);
       if (a()) {
-        localView.setOnTouchListener(new beue(this, localProtectedToast, paramOnTouchListener));
+        localView.setOnTouchListener(new biba(this, localProtectedToast, paramOnTouchListener));
       }
       return localProtectedToast;
-      ((ImageView)localView.findViewById(2131378110)).setVisibility(8);
+      ((ImageView)localView.findViewById(2131378955)).setVisibility(8);
       break;
-      label372:
+      label395:
       if (paramInt1 == 6316128) {
         localProtectedToast.setGravity(55, 0, b());
       } else {
@@ -322,14 +371,19 @@ public class QQToast
     this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramDrawable;
   }
   
-  public void a(beuf parambeuf)
+  public void a(bibc parambibc)
   {
-    parambeuf = new beuh(this, parambeuf);
-    jdField_a_of_type_JavaUtilConcurrentBlockingQueue.add(parambeuf);
-    jdField_a_of_type_Beui.sendEmptyMessage(1);
+    parambibc = new bibf(this, parambibc);
+    jdField_a_of_type_JavaUtilConcurrentBlockingQueue.add(parambibc);
+    jdField_a_of_type_Bibg.sendEmptyMessage(1);
     if (QLog.isColorLevel()) {
       QLog.d("QQToast", 2, "current queue size is " + jdField_a_of_type_JavaUtilConcurrentBlockingQueue.size());
     }
+  }
+  
+  public void a(bibe parambibe)
+  {
+    this.jdField_a_of_type_Bibe = parambibe;
   }
   
   public void a(CharSequence paramCharSequence)

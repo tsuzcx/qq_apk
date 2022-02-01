@@ -1,56 +1,39 @@
-import android.support.annotation.NonNull;
-import com.tencent.qphone.base.util.QLog;
-import javax.annotation.Nullable;
+import com.qq.jce.wup.UniPacket;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
 
 public class bbzi
-  extends aokh<bbzh>
+  extends aber
 {
-  public int a()
+  private static String[] jdField_a_of_type_ArrayOfJavaLangString = { "MessageSvc", "TransService", "StreamSvr", "ADMsgSvc", "VideoSvc", "VideoCCSvc", "OnlinePush", "KQQGroupPic", "AccostSvc", "SecretFileSvc", "MultiVideo" };
+  private bbyx jdField_a_of_type_Bbyx = new bbyx();
+  private bbzb jdField_a_of_type_Bbzb = new bbzb();
+  
+  public bbzi(QQAppInterface paramQQAppInterface)
   {
-    return 605;
+    this.jdField_a_of_type_Bbzb.a(paramQQAppInterface);
   }
   
-  @NonNull
-  public bbzh a(int paramInt)
+  public Object a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
   {
-    QLog.d("PublishHwkThirdPartyEntryConfig.config", 2, "migrateOldOrDefaultContent, type: " + paramInt);
-    return new bbzh();
+    return this.jdField_a_of_type_Bbyx.a(paramToServiceMsg, paramFromServiceMsg);
   }
   
-  @Nullable
-  public bbzh a(aoko[] paramArrayOfaoko)
+  public void a()
   {
-    if ((paramArrayOfaoko != null) && (paramArrayOfaoko.length > 0)) {
-      return bbzh.a(paramArrayOfaoko[0].a);
-    }
-    return null;
+    this.jdField_a_of_type_Bbzb = null;
+    this.jdField_a_of_type_Bbyx = null;
   }
   
-  public Class<bbzh> a()
+  public boolean a(ToServiceMsg paramToServiceMsg, UniPacket paramUniPacket)
   {
-    return bbzh.class;
+    return this.jdField_a_of_type_Bbzb.a(paramToServiceMsg, paramUniPacket);
   }
   
-  public void a(int paramInt)
+  public String[] a()
   {
-    QLog.d("PublishHwkThirdPartyEntryConfig.config", 1, "onReqFailed, failCode = " + paramInt);
-  }
-  
-  public void a(bbzh parambbzh) {}
-  
-  public int b()
-  {
-    return 0;
-  }
-  
-  public boolean b()
-  {
-    return true;
-  }
-  
-  public boolean c()
-  {
-    return true;
+    return jdField_a_of_type_ArrayOfJavaLangString;
   }
 }
 

@@ -1,15 +1,13 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import dov.com.qq.im.capture.view.MusicProviderView;
+import cooperation.qzone.music.QzoneWebMusicJsPlugin;
 
 public class bman
-  implements DialogInterface.OnClickListener
+  implements bmar
 {
-  public bman(MusicProviderView paramMusicProviderView) {}
+  public bman(QzoneWebMusicJsPlugin paramQzoneWebMusicJsPlugin, String paramString) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a()
   {
-    paramDialogInterface.dismiss();
+    this.jdField_a_of_type_CooperationQzoneMusicQzoneWebMusicJsPlugin.playAudioList(this.jdField_a_of_type_JavaLangString);
   }
 }
 

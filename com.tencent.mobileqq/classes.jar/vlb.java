@@ -1,72 +1,118 @@
-import android.content.Context;
-import com.tencent.biz.qqstory.newshare.util.StoryShareEncryptHelper.2;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Set;
-import mqq.os.MqqHandler;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.qqcircle.report.ReportExtraTypeInfo;
+import com.tencent.biz.qqcircle.widgets.QCircleLayerStatusView;
+import com.tencent.biz.subscribe.baseUI.ExtraTypeInfo;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBRepeatField;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import feedcloud.FeedCloudMeta.StFeed;
+import feedcloud.FeedCloudMeta.StUser;
+import java.util.ArrayList;
+import java.util.List;
+import qqcircle.QQCircleFeedBase.StFeedBusiReqData;
 
-public class vlb
+class vlb
+  implements View.OnClickListener
 {
-  public static void a(Context paramContext, String paramString, vld paramvld, bety parambety)
-  {
-    ThreadManager.getUIHandler().post(new StoryShareEncryptHelper.2(paramString, parambety, paramContext, paramvld));
-  }
+  vlb(vks paramvks) {}
   
-  public static void a(String paramString, HashMap<String, String> paramHashMap)
+  public void onClick(View paramView)
   {
-    paramString = paramString.split("&");
-    int j = paramString.length;
-    int i = 0;
-    while (i < j)
+    boolean bool2 = true;
+    Object localObject2;
+    Object localObject3;
+    if (vks.a(this.a).getVisibility() != 0)
     {
-      String[] arrayOfString = paramString[i].split("=");
-      if (arrayOfString.length == 2) {
-        paramHashMap.put(arrayOfString[0], arrayOfString[1]);
-      }
-      i += 1;
-    }
-  }
-  
-  public static void a(HashMap<String, String> paramHashMap)
-  {
-    HashMap<String, String> localHashMap = null;
-    Iterator localIterator = paramHashMap.keySet().iterator();
-    paramHashMap = localHashMap;
-    while (localIterator.hasNext())
-    {
-      String str = (String)localIterator.next();
-      if ((!str.equals("src_type")) && (!str.equals("version")) && (!str.equals("from_leba")) && (!str.equals("leba_resid")) && (!str.equals("config_res_plugin_item_name")) && (!str.equals("redtouch_click_timestamp")) && (!str.equals("lebaVersion")) && (!str.equals("redid")))
+      localObject1 = new uzn();
+      localObject2 = vks.a(this.a);
+      localObject3 = new ReportExtraTypeInfo();
+      if ((vks.a(this.a) != null) && (vks.a(this.a).a() != null))
       {
-        localHashMap = paramHashMap;
-        if (QLog.isColorLevel())
-        {
-          if (paramHashMap != null) {
-            break label144;
-          }
-          paramHashMap = new StringBuilder();
-        }
-        for (;;)
-        {
-          paramHashMap.append(str);
-          localHashMap = paramHashMap;
-          localIterator.remove();
-          paramHashMap = localHashMap;
-          break;
-          label144:
-          paramHashMap.append('|');
-        }
+        RecyclerView.ViewHolder localViewHolder = vks.a(this.a).a();
+        ((ReportExtraTypeInfo)localObject3).mFeed = ((FeedCloudMeta.StFeed)localObject2);
+        ((ReportExtraTypeInfo)localObject3).mDataPosition = localViewHolder.getAdapterPosition();
+        ((ReportExtraTypeInfo)localObject3).mPlayScene = 2;
+      }
+      ((uzn)localObject1).jdField_a_of_type_ComTencentBizSubscribeBaseUIExtraTypeInfo = ((ExtraTypeInfo)localObject3);
+      ((uzn)localObject1).jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed = ((FeedCloudMeta.StFeed)localObject2);
+      ((uzn)localObject1).jdField_a_of_type_Int = 0;
+      if (uxx.a(((uzn)localObject1).jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed)) {
+        break label442;
+      }
+      bool1 = true;
+      ((uzn)localObject1).jdField_b_of_type_Boolean = bool1;
+      ((uzn)localObject1).c = true;
+      ((uzn)localObject1).jdField_a_of_type_Boolean = uxx.a(((uzn)localObject1).jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed);
+      ((uzn)localObject1).d = false;
+      ((uzn)localObject1).f = false;
+      ((uzn)localObject1).e = false;
+      if (localObject2 != null) {
+        localObject3 = new QQCircleFeedBase.StFeedBusiReqData();
       }
     }
-    if ((paramHashMap != null) && (QLog.isColorLevel())) {
-      QLog.d("Q.qqstory.share.trans.helper", 2, "remove attrs:" + paramHashMap);
+    for (;;)
+    {
+      try
+      {
+        ((QQCircleFeedBase.StFeedBusiReqData)localObject3).mergeFrom(((FeedCloudMeta.StFeed)localObject2).busiData.get().toByteArray());
+        localObject3 = ((QQCircleFeedBase.StFeedBusiReqData)localObject3).uninterest_buttons.get();
+        if ((localObject3 == null) || (((List)localObject3).size() <= 0)) {
+          continue;
+        }
+        bool1 = true;
+        ((uzn)localObject1).d = bool1;
+      }
+      catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException)
+      {
+        label442:
+        localInvalidProtocolBufferMicroException.printStackTrace();
+        continue;
+        bool1 = false;
+        continue;
+        bool1 = false;
+        continue;
+        localObject1 = "2";
+        continue;
+      }
+      localObject3 = ((FeedCloudMeta.StFeed)localObject2).opMask2.get();
+      if (localObject3 != null)
+      {
+        if ((uxx.a((FeedCloudMeta.StUser)((FeedCloudMeta.StFeed)localObject2).poster.get())) || (!((List)localObject3).contains(Integer.valueOf(1)))) {
+          continue;
+        }
+        bool1 = true;
+        ((uzn)localObject1).f = bool1;
+        if ((uxx.a((FeedCloudMeta.StUser)((FeedCloudMeta.StFeed)localObject2).poster.get())) || (!((List)localObject3).contains(Integer.valueOf(2)))) {
+          continue;
+        }
+        bool1 = bool2;
+        ((uzn)localObject1).e = bool1;
+        ((uzn)localObject1).h = ((List)localObject3).contains(Integer.valueOf(10));
+        ((uzn)localObject1).jdField_b_of_type_Int = vks.a(this.a).a();
+      }
+      this.a.b("share_action_show_share_sheet", localObject1);
+      localObject2 = new ArrayList();
+      if (!vks.a(this.a)) {
+        continue;
+      }
+      localObject1 = "1";
+      ((ArrayList)localObject2).add(vri.a("ext1", (String)localObject1));
+      vrg.a(21, 2, this.a.a(), (List)localObject2, vks.c(this.a));
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      bool1 = false;
+      break;
+      bool1 = false;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     vlb
  * JD-Core Version:    0.7.0.1
  */

@@ -1,14 +1,19 @@
-public abstract interface rpw
+import com.tencent.qphone.base.util.QLog;
+import org.jetbrains.annotations.NotNull;
+
+class rpw
+  implements oud
 {
-  public abstract void a();
+  rpw(rps paramrps) {}
   
-  public abstract boolean a();
-  
-  public abstract void b();
+  public void a(@NotNull String paramString1, @NotNull String paramString2)
+  {
+    QLog.d(paramString1, 1, paramString2);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     rpw
  * JD-Core Version:    0.7.0.1
  */

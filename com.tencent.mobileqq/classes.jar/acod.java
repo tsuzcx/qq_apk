@@ -1,15 +1,31 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.ChatHistoryImageView;
+import android.app.Activity;
+import android.content.Intent;
+import com.tencent.gdtad.api.motivevideo.GdtMotiveVideoFragment;
 
 public class acod
-  implements DialogInterface.OnClickListener
+  implements acpf
 {
-  public acod(ChatHistoryImageView paramChatHistoryImageView) {}
+  public acod(GdtMotiveVideoFragment paramGdtMotiveVideoFragment) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public Activity a()
   {
-    this.a.j();
+    return this.a.getActivity();
+  }
+  
+  public void a()
+  {
+    Activity localActivity = a();
+    if (localActivity != null) {
+      localActivity.finish();
+    }
+  }
+  
+  public void a(int paramInt, Intent paramIntent)
+  {
+    Activity localActivity = a();
+    if (localActivity != null) {
+      localActivity.setResult(paramInt, paramIntent);
+    }
   }
 }
 

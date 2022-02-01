@@ -7,71 +7,74 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import arcp;
-import arcr;
-import ayjn;
-import bdbb;
+import aobu;
+import athz;
+import atib;
+import bbio;
+import com.tencent.qqlive.module.videoreport.inject.fragment.ReportV4Fragment;
+import com.tencent.qqlive.module.videoreport.inject.fragment.V4FragmentCollector;
 import com.tencent.widget.ListView;
 import java.util.List;
 
 public class FileSearchDetailFragment
-  extends Fragment
+  extends ReportV4Fragment
 {
-  private static arcp b;
+  private static athz b;
   TextView jdField_a_of_type_AndroidWidgetTextView;
-  arcp jdField_a_of_type_Arcp;
-  ayjn jdField_a_of_type_Ayjn;
-  public bdbb a;
+  public aobu a;
+  athz jdField_a_of_type_Athz;
+  bbio jdField_a_of_type_Bbio;
   ListView jdField_a_of_type_ComTencentWidgetListView;
   String jdField_a_of_type_JavaLangString;
   
-  public static FileSearchDetailFragment a(String paramString, arcp paramarcp)
+  public static FileSearchDetailFragment a(String paramString, athz paramathz)
   {
-    b = paramarcp;
-    paramarcp = new FileSearchDetailFragment();
+    b = paramathz;
+    paramathz = new FileSearchDetailFragment();
     Bundle localBundle = new Bundle();
     localBundle.putString("keyword", paramString);
-    paramarcp.setArguments(localBundle);
-    return paramarcp;
+    paramathz.setArguments(localBundle);
+    return paramathz;
   }
   
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    this.jdField_a_of_type_Arcp = b;
+    this.jdField_a_of_type_Athz = b;
     b = null;
     this.jdField_a_of_type_JavaLangString = getArguments().getString("keyword");
   }
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    paramLayoutInflater = paramLayoutInflater.inflate(2131559253, paramViewGroup, false);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramLayoutInflater.findViewById(2131367565));
-    this.jdField_a_of_type_ComTencentWidgetListView = ((ListView)paramLayoutInflater.findViewById(2131369519));
+    paramLayoutInflater = paramLayoutInflater.inflate(2131559338, paramViewGroup, false);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramLayoutInflater.findViewById(2131367877));
+    this.jdField_a_of_type_ComTencentWidgetListView = ((ListView)paramLayoutInflater.findViewById(2131369914));
+    V4FragmentCollector.onV4FragmentViewCreated(this, paramLayoutInflater);
     return paramLayoutInflater;
   }
   
   public void onDestroy()
   {
     super.onDestroy();
-    if (this.jdField_a_of_type_Bdbb != null) {
-      this.jdField_a_of_type_Bdbb.d();
+    if (this.jdField_a_of_type_Aobu != null) {
+      this.jdField_a_of_type_Aobu.d();
     }
   }
   
   public void onViewCreated(View paramView, Bundle paramBundle)
   {
     super.onViewCreated(paramView, paramBundle);
-    paramView = getString(2131692648);
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(String.format(paramView, new Object[] { Integer.valueOf(this.jdField_a_of_type_Arcp.a.size()), this.jdField_a_of_type_JavaLangString }));
-    this.jdField_a_of_type_Bdbb = new bdbb(getActivity(), getActivity().app);
-    this.jdField_a_of_type_Ayjn = new arcr(this, this.jdField_a_of_type_ComTencentWidgetListView, this.jdField_a_of_type_Bdbb, this.jdField_a_of_type_Arcp, this.jdField_a_of_type_JavaLangString, getActivity().app);
-    this.jdField_a_of_type_ComTencentWidgetListView.setAdapter(this.jdField_a_of_type_Ayjn);
+    paramView = getString(2131692235);
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(String.format(paramView, new Object[] { Integer.valueOf(this.jdField_a_of_type_Athz.a.size()), this.jdField_a_of_type_JavaLangString }));
+    this.jdField_a_of_type_Aobu = new aobu(getActivity(), getActivity().app);
+    this.jdField_a_of_type_Bbio = new atib(this, this.jdField_a_of_type_ComTencentWidgetListView, this.jdField_a_of_type_Aobu, this.jdField_a_of_type_Athz, this.jdField_a_of_type_JavaLangString, getActivity().app);
+    this.jdField_a_of_type_ComTencentWidgetListView.setAdapter(this.jdField_a_of_type_Bbio);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.data.search.FileSearchDetailFragment
  * JD-Core Version:    0.7.0.1
  */

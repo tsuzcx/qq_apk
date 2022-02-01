@@ -1,33 +1,20 @@
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import android.os.Handler;
 
 class ysp
-  implements ysj
+  implements banv
 {
-  ysp(yso paramyso, long paramLong) {}
+  ysp(ysm paramysm) {}
   
-  public void a(String paramString1, boolean paramBoolean, String paramString2)
+  public void a()
   {
-    if (QLog.isColorLevel())
-    {
-      QLog.d(".troop.VideoCombineHelper", 2, "combineWording end! isSuccess:" + paramBoolean + " path = " + paramString1);
-      QLog.d(".troop.trace_video_combine", 2, "combineWordingTime:" + (System.currentTimeMillis() - this.jdField_a_of_type_Long));
-    }
-    File localFile = new File(paramString1);
-    if ((paramBoolean) && (localFile.exists()))
-    {
-      this.jdField_a_of_type_Yso.a.jdField_a_of_type_Ysl.e = paramString1;
-      this.jdField_a_of_type_Yso.a.jdField_a_of_type_Ysm.a.b(this.jdField_a_of_type_Yso.a.jdField_a_of_type_Ysm);
-      this.jdField_a_of_type_Yso.a.jdField_a_of_type_Ysm.b();
-      return;
-    }
-    this.jdField_a_of_type_Yso.a.jdField_a_of_type_Ysm.d = paramString2;
-    this.jdField_a_of_type_Yso.a.jdField_a_of_type_Ysm.a.a(this.jdField_a_of_type_Yso.a.jdField_a_of_type_Ysm);
+    this.a.jdField_a_of_type_Boolean = false;
+    this.a.jdField_a_of_type_AndroidOsHandler.postDelayed(this.a.jdField_a_of_type_JavaLangRunnable, 10000L);
+    ((yye)wpm.a(8)).a(zkx.a(this.a.jdField_a_of_type_Yty.a), this.a.jdField_a_of_type_Yyr);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     ysp
  * JD-Core Version:    0.7.0.1
  */

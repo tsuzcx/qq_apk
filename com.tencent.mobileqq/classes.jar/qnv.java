@@ -1,29 +1,64 @@
+import android.text.TextUtils;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.pts.core.lite.DefaultPTSLiteEventListener;
+import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
 
-public class qnv
+class qnv
+  extends DefaultPTSLiteEventListener
 {
-  public long a;
-  public String a;
-  public boolean a;
-  public long b;
-  public String b;
-  public boolean b;
+  qnv(qnu paramqnu) {}
   
-  public HashMap<String, String> a()
+  public void onExposureTriggered(String paramString, HashMap<String, String> paramHashMap, View paramView)
   {
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("param_vid", this.jdField_a_of_type_JavaLangString);
-    localHashMap.put("param_success", String.valueOf(this.jdField_a_of_type_Boolean).toLowerCase());
-    localHashMap.put("param_costTime", String.valueOf(this.jdField_a_of_type_Long));
-    localHashMap.put("param_ret_code", String.valueOf(this.jdField_b_of_type_Long));
-    localHashMap.put("param_err_info", this.jdField_b_of_type_JavaLangString);
-    localHashMap.put("param_retry", String.valueOf(this.jdField_b_of_type_Boolean));
-    return localHashMap;
+    qnu.a(this.a, paramString, paramHashMap, paramView, "[onExposureTriggered]");
+  }
+  
+  public void onSwiperDragTriggered(String paramString, HashMap<String, String> paramHashMap, View paramView)
+  {
+    qnu.a(this.a, paramString, paramHashMap, paramView, "[onSwiperItemExposureTriggered]");
+    if (qnu.a(this.a) == null)
+    {
+      QLog.e("PTSLiteItemViewBuilder", 1, "[onSwiperDragTriggered], ptsLiteSwiperEventDispatcher is null.");
+      return;
+    }
+    qnu.a(this.a).a(paramString, paramHashMap, paramView);
+  }
+  
+  public void onSwiperItemExposureTriggered(String paramString, HashMap<String, String> paramHashMap, View paramView)
+  {
+    qnu.a(this.a, paramString, paramHashMap, paramView, "[onSwiperItemExposureTriggered]");
+    if (qnu.a(this.a) == null)
+    {
+      QLog.e("PTSLiteItemViewBuilder", 1, "[onSwiperItemExposureTriggered], ptsLiteSwiperEventDispatcher is null.");
+      return;
+    }
+    qnu.a(this.a).a(paramString, paramHashMap, paramView, pha.e(qnu.a(this.a).a()));
+  }
+  
+  public void onTapEventTriggered(String paramString, HashMap<String, String> paramHashMap, View paramView)
+  {
+    qnu.a(this.a, paramString, paramHashMap, paramView, "[onTapEventTriggered]");
+    if ((paramHashMap == null) || (TextUtils.isEmpty(paramString)) || (qnu.a(this.a) == null)) {
+      return;
+    }
+    if ((ArticleInfo)qnu.a(this.a).get(paramString) == null)
+    {
+      QLog.i("PTSLiteItemViewBuilder", 1, "[onTapEventTriggered], articleInfo is null.");
+      return;
+    }
+    if (qnu.a(this.a) == null)
+    {
+      QLog.i("PTSLiteItemViewBuilder", 1, "[onTapEventTriggered], ptsLiteTapEventDispatcher is null.");
+      return;
+    }
+    qnu.a(this.a).a(paramString, paramHashMap, paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     qnv
  * JD-Core Version:    0.7.0.1
  */

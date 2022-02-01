@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.activity;
 
-import acjm;
+import adrm;
 import android.os.Bundle;
 import android.os.Message;
-import aspz;
+import auxd;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -20,7 +20,7 @@ class BaseChatPie$17
   
   public void run()
   {
-    acjm.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
+    adrm.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
     Iterator localIterator = this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int).iterator();
     while (localIterator.hasNext())
     {
@@ -28,7 +28,7 @@ class BaseChatPie$17
       if ((localObject instanceof MessageForUniteGrayTip))
       {
         localObject = (MessageForUniteGrayTip)localObject;
-        if (aspz.a((MessageForUniteGrayTip)localObject, this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface))
+        if (auxd.a((MessageForUniteGrayTip)localObject, this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface))
         {
           Message localMessage = new Message();
           Bundle localBundle = new Bundle();
@@ -44,7 +44,7 @@ class BaseChatPie$17
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.BaseChatPie.17
  * JD-Core Version:    0.7.0.1
  */

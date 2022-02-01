@@ -4,7 +4,7 @@ import android.content.Context;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.inputmethod.InputMethodManager;
-import com.tencent.mobileqq.microapp.appbrand.a.a.y;
+import com.tencent.mobileqq.microapp.appbrand.a.a.f;
 import com.tencent.mobileqq.microapp.appbrand.page.AbsAppBrandPage;
 import com.tencent.mobileqq.microapp.appbrand.page.AppBrandPageContainer;
 import com.tencent.mobileqq.microapp.appbrand.page.PageWebview;
@@ -45,10 +45,10 @@ public final class a
     finally {}
   }
   
-  public void a(y paramy, BaseAppBrandWebview paramBaseAppBrandWebview, String paramString, int paramInt)
+  public void a(f paramf, BaseAppBrandWebview paramBaseAppBrandWebview, String paramString, int paramInt)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("WebInputHandler", 2, "[showKeyboard] jsPluginEngine=" + paramy + ", webview=" + paramBaseAppBrandWebview + ", webParams=" + paramString + ", callbackId=" + paramInt);
+      QLog.d("WebInputHandler", 2, "[showKeyboard] jsPluginEngine=" + paramf + ", webview=" + paramBaseAppBrandWebview + ", webParams=" + paramString + ", callbackId=" + paramInt);
     }
     synchronized (this.d)
     {
@@ -60,12 +60,12 @@ public final class a
         Log.e("WebInputHandler", "[showKeyboard] invalid webview");
         return;
       }
-      if ((paramy == null) || (paramy.a == null) || (paramy.a.g == null))
+      if ((paramf == null) || (paramf.a == null) || (paramf.a.g == null))
       {
         if (QLog.isColorLevel()) {
           QLog.e("WebInputHandler", 2, "[showKeyboard] runtime error");
         }
-        paramBaseAppBrandWebview.evaluateCallbackJs(paramInt, com.tencent.mobileqq.microapp.b.a.b("showKeyboard", null).toString());
+        paramBaseAppBrandWebview.evaluateCallbackJs(paramInt, com.tencent.mobileqq.microapp.a.c.b("showKeyboard", null).toString());
         return;
       }
     }
@@ -74,19 +74,19 @@ public final class a
       if (QLog.isColorLevel()) {
         QLog.e("WebInputHandler", 2, "[showKeyboard] no web input params");
       }
-      paramBaseAppBrandWebview.evaluateCallbackJs(paramInt, com.tencent.mobileqq.microapp.b.a.b("showKeyboard", null).toString());
+      paramBaseAppBrandWebview.evaluateCallbackJs(paramInt, com.tencent.mobileqq.microapp.a.c.b("showKeyboard", null).toString());
       return;
     }
-    this.f = ((AbsAppBrandPage)paramy.a.g.pageLinkedList.peek());
+    this.f = ((AbsAppBrandPage)paramf.a.g.pageLinkedList.peek());
     if (this.f == null)
     {
-      paramBaseAppBrandWebview.evaluateCallbackJs(paramInt, com.tencent.mobileqq.microapp.b.a.b("showKeyboard", null).toString());
+      paramBaseAppBrandWebview.evaluateCallbackJs(paramInt, com.tencent.mobileqq.microapp.a.c.b("showKeyboard", null).toString());
       return;
     }
     WebEditText localWebEditText = new WebEditText(paramBaseAppBrandWebview.getContext());
     try
     {
-      bool = localWebEditText.a(paramy, this.f, paramString);
+      bool = localWebEditText.a(paramf, this.f, paramString);
       this.h = this.c.incrementAndGet();
       PageWebview localPageWebview = this.f.getCurrentPageWebview();
       localPageWebview.onWebviewScrollListener = new b(this, localPageWebview);
@@ -96,24 +96,23 @@ public final class a
         if (QLog.isColorLevel()) {
           QLog.d("WebInputHandler", 2, new Object[] { "[showKeyboard] makeLayoutParams scrollY:", Integer.valueOf(localPageWebview.scrollY) });
         }
-        this.f.addView(localWebEditText, localWebEditText.b(this.f.getCurrentPageWebview().scrollY));
         this.e = localWebEditText;
         localWebEditText.a(this.h);
         localWebEditText.a(localPageWebview);
         this.g.put(Integer.valueOf(this.h), localWebEditText);
         localWebEditText.d();
-        localWebEditText.addTextChangedListener(new c(this, paramString, paramy, localPageWebview));
+        localWebEditText.addTextChangedListener(new c(this, paramString, paramf, localPageWebview));
         localWebEditText.setOnEditorActionListener(new d(this, localWebEditText, localPageWebview));
-        paramy = com.tencent.mobileqq.microapp.b.a.a("showKeyboard", null);
-        paramy.put("inputId", this.h);
-        paramBaseAppBrandWebview.evaluteJs("WeixinJSBridge.invokeCallbackHandler(" + paramInt + ", " + paramy + ")");
+        paramf = com.tencent.mobileqq.microapp.a.c.a("showKeyboard", null);
+        paramf.put("inputId", this.h);
+        paramBaseAppBrandWebview.evaluteJs("WeixinJSBridge.invokeCallbackHandler(" + paramInt + ", " + paramf + ")");
       }
-      catch (Exception paramy)
+      catch (Exception paramf)
       {
         for (;;)
         {
           if (QLog.isColorLevel()) {
-            QLog.e("WebInputHandler", 2, "[showKeyboard] exception:", paramy);
+            QLog.e("WebInputHandler", 2, "[showKeyboard] exception:", paramf);
           }
         }
       }
@@ -128,8 +127,8 @@ public final class a
         }
         boolean bool = false;
         continue;
-        paramy = com.tencent.mobileqq.microapp.b.a.b("showKeyboard", null);
-        paramBaseAppBrandWebview.evaluteJs("WeixinJSBridge.invokeCallbackHandler(" + paramInt + ", " + paramy + ")");
+        paramf = com.tencent.mobileqq.microapp.a.c.b("showKeyboard", null);
+        paramBaseAppBrandWebview.evaluteJs("WeixinJSBridge.invokeCallbackHandler(" + paramInt + ", " + paramf + ")");
       }
     }
   }
@@ -182,7 +181,7 @@ public final class a
   }
   
   /* Error */
-  public boolean a(y paramy, String paramString)
+  public boolean a(f paramf, String paramString)
   {
     // Byte code:
     //   0: aload_0
@@ -193,162 +192,154 @@ public final class a
     //   7: aload_1
     //   8: ifnonnull +11 -> 19
     //   11: iconst_0
-    //   12: istore 10
+    //   12: istore 9
     //   14: aload_0
     //   15: monitorexit
-    //   16: iload 10
+    //   16: iload 9
     //   18: ireturn
     //   19: new 129	org/json/JSONObject
     //   22: dup
     //   23: aload_2
-    //   24: invokespecial 370	org/json/JSONObject:<init>	(Ljava/lang/String;)V
+    //   24: invokespecial 363	org/json/JSONObject:<init>	(Ljava/lang/String;)V
     //   27: astore_2
     //   28: aload_0
     //   29: getfield 43	com/tencent/mobileqq/microapp/widget/input/a:g	Ljava/util/Map;
     //   32: aload_2
-    //   33: ldc 243
-    //   35: invokevirtual 374	org/json/JSONObject:optInt	(Ljava/lang/String;)I
+    //   33: ldc 236
+    //   35: invokevirtual 367	org/json/JSONObject:optInt	(Ljava/lang/String;)I
     //   38: invokestatic 198	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   41: invokeinterface 378 2 0
+    //   41: invokeinterface 371 2 0
     //   46: checkcast 160	com/tencent/mobileqq/microapp/widget/input/WebEditText
     //   49: astore_1
     //   50: aload_1
     //   51: ifnonnull +9 -> 60
     //   54: iconst_0
-    //   55: istore 10
+    //   55: istore 9
     //   57: goto -43 -> 14
     //   60: aload_2
-    //   61: ldc_w 380
-    //   64: invokevirtual 384	org/json/JSONObject:optJSONObject	(Ljava/lang/String;)Lorg/json/JSONObject;
+    //   61: ldc_w 373
+    //   64: invokevirtual 377	org/json/JSONObject:optJSONObject	(Ljava/lang/String;)Lorg/json/JSONObject;
     //   67: astore_2
     //   68: aload_2
-    //   69: ifnull +161 -> 230
+    //   69: ifnull +146 -> 215
     //   72: aload_2
-    //   73: ldc_w 386
-    //   76: invokevirtual 374	org/json/JSONObject:optInt	(Ljava/lang/String;)I
+    //   73: ldc_w 379
+    //   76: invokevirtual 367	org/json/JSONObject:optInt	(Ljava/lang/String;)I
     //   79: istore 7
     //   81: aload_2
-    //   82: ldc_w 388
-    //   85: invokevirtual 374	org/json/JSONObject:optInt	(Ljava/lang/String;)I
-    //   88: istore 6
+    //   82: ldc_w 381
+    //   85: invokevirtual 367	org/json/JSONObject:optInt	(Ljava/lang/String;)I
+    //   88: istore 5
     //   90: aload_2
-    //   91: ldc_w 390
-    //   94: invokevirtual 374	org/json/JSONObject:optInt	(Ljava/lang/String;)I
+    //   91: ldc_w 383
+    //   94: invokevirtual 367	org/json/JSONObject:optInt	(Ljava/lang/String;)I
     //   97: istore 4
     //   99: aload_2
-    //   100: ldc_w 392
-    //   103: invokevirtual 374	org/json/JSONObject:optInt	(Ljava/lang/String;)I
-    //   106: istore 5
+    //   100: ldc_w 385
+    //   103: invokevirtual 367	org/json/JSONObject:optInt	(Ljava/lang/String;)I
+    //   106: istore 6
     //   108: aload_1
-    //   109: invokevirtual 310	com/tencent/mobileqq/microapp/widget/input/WebEditText:getContext	()Landroid/content/Context;
-    //   112: invokestatic 398	com/tencent/mobileqq/microapp/util/DisplayUtil:getDensity	(Landroid/content/Context;)F
+    //   109: invokevirtual 303	com/tencent/mobileqq/microapp/widget/input/WebEditText:getContext	()Landroid/content/Context;
+    //   112: invokestatic 391	com/tencent/mobileqq/microapp/util/DisplayUtil:getDensity	(Landroid/content/Context;)F
     //   115: fstore_3
     //   116: iload 4
     //   118: i2f
     //   119: fload_3
     //   120: fmul
-    //   121: ldc_w 399
+    //   121: ldc_w 392
     //   124: fadd
     //   125: f2i
     //   126: istore 4
-    //   128: iload 5
+    //   128: iload 6
     //   130: i2f
     //   131: fload_3
     //   132: fmul
-    //   133: ldc_w 399
+    //   133: ldc_w 392
     //   136: fadd
     //   137: f2i
-    //   138: istore 5
+    //   138: istore 6
     //   140: iload 7
     //   142: i2f
     //   143: fload_3
     //   144: fmul
-    //   145: ldc_w 399
+    //   145: ldc_w 392
     //   148: fadd
     //   149: f2i
     //   150: istore 7
-    //   152: iload 6
+    //   152: iload 5
     //   154: i2f
     //   155: fload_3
     //   156: fmul
-    //   157: ldc_w 399
+    //   157: ldc_w 392
     //   160: fadd
     //   161: f2i
-    //   162: istore 6
+    //   162: istore 5
     //   164: aload_0
     //   165: getfield 54	com/tencent/mobileqq/microapp/widget/input/a:f	Lcom/tencent/mobileqq/microapp/appbrand/page/AbsAppBrandPage;
     //   168: invokevirtual 178	com/tencent/mobileqq/microapp/appbrand/page/AbsAppBrandPage:getCurrentPageWebview	()Lcom/tencent/mobileqq/microapp/appbrand/page/PageWebview;
     //   171: getfield 192	com/tencent/mobileqq/microapp/appbrand/page/PageWebview:scrollY	I
     //   174: istore 8
-    //   176: aload_0
-    //   177: getfield 54	com/tencent/mobileqq/microapp/widget/input/a:f	Lcom/tencent/mobileqq/microapp/appbrand/page/AbsAppBrandPage;
-    //   180: invokevirtual 403	com/tencent/mobileqq/microapp/appbrand/page/AbsAppBrandPage:getNavBar	()Lcom/tencent/mobileqq/microapp/ui/NavigationBar;
-    //   183: invokevirtual 408	com/tencent/mobileqq/microapp/ui/NavigationBar:getHeight	()I
-    //   186: istore 9
-    //   188: aload_1
-    //   189: invokevirtual 412	com/tencent/mobileqq/microapp/widget/input/WebEditText:getLayoutParams	()Landroid/view/ViewGroup$LayoutParams;
-    //   192: checkcast 414	android/widget/FrameLayout$LayoutParams
-    //   195: astore_2
+    //   176: aload_1
+    //   177: invokevirtual 396	com/tencent/mobileqq/microapp/widget/input/WebEditText:getLayoutParams	()Landroid/view/ViewGroup$LayoutParams;
+    //   180: checkcast 398	android/widget/FrameLayout$LayoutParams
+    //   183: astore_2
+    //   184: aload_2
+    //   185: iload 4
+    //   187: putfield 400	android/widget/FrameLayout$LayoutParams:width	I
+    //   190: aload_2
+    //   191: iload 6
+    //   193: putfield 402	android/widget/FrameLayout$LayoutParams:height	I
     //   196: aload_2
-    //   197: iload 4
-    //   199: putfield 416	android/widget/FrameLayout$LayoutParams:width	I
+    //   197: iload 7
+    //   199: putfield 405	android/widget/FrameLayout$LayoutParams:leftMargin	I
     //   202: aload_2
     //   203: iload 5
-    //   205: putfield 418	android/widget/FrameLayout$LayoutParams:height	I
-    //   208: aload_2
-    //   209: iload 7
-    //   211: putfield 421	android/widget/FrameLayout$LayoutParams:leftMargin	I
-    //   214: aload_2
-    //   215: iload 9
-    //   217: iload 6
-    //   219: iload 8
-    //   221: isub
-    //   222: iadd
-    //   223: putfield 424	android/widget/FrameLayout$LayoutParams:topMargin	I
-    //   226: aload_1
-    //   227: invokevirtual 427	com/tencent/mobileqq/microapp/widget/input/WebEditText:requestLayout	()V
-    //   230: iconst_1
-    //   231: istore 10
-    //   233: goto -219 -> 14
-    //   236: astore_1
-    //   237: aload_1
-    //   238: invokevirtual 430	java/lang/Exception:printStackTrace	()V
-    //   241: iconst_0
-    //   242: istore 10
-    //   244: goto -230 -> 14
-    //   247: astore_1
-    //   248: aload_0
-    //   249: monitorexit
-    //   250: aload_1
-    //   251: athrow
+    //   205: iload 8
+    //   207: isub
+    //   208: putfield 408	android/widget/FrameLayout$LayoutParams:topMargin	I
+    //   211: aload_1
+    //   212: invokevirtual 411	com/tencent/mobileqq/microapp/widget/input/WebEditText:requestLayout	()V
+    //   215: iconst_1
+    //   216: istore 9
+    //   218: goto -204 -> 14
+    //   221: astore_1
+    //   222: aload_1
+    //   223: invokevirtual 414	java/lang/Exception:printStackTrace	()V
+    //   226: iconst_0
+    //   227: istore 9
+    //   229: goto -215 -> 14
+    //   232: astore_1
+    //   233: aload_0
+    //   234: monitorexit
+    //   235: aload_1
+    //   236: athrow
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	252	0	this	a
-    //   0	252	1	paramy	y
-    //   0	252	2	paramString	String
+    //   0	237	0	this	a
+    //   0	237	1	paramf	f
+    //   0	237	2	paramString	String
     //   115	41	3	f1	float
-    //   97	101	4	i	int
-    //   106	98	5	j	int
-    //   88	134	6	k	int
-    //   79	131	7	m	int
-    //   174	48	8	n	int
-    //   186	37	9	i1	int
-    //   12	231	10	bool	boolean
+    //   97	89	4	i	int
+    //   88	120	5	j	int
+    //   106	86	6	k	int
+    //   79	119	7	m	int
+    //   174	34	8	n	int
+    //   12	216	9	bool	boolean
     // Exception table:
     //   from	to	target	type
-    //   19	50	236	java/lang/Exception
-    //   60	68	236	java/lang/Exception
-    //   72	116	236	java/lang/Exception
-    //   164	230	236	java/lang/Exception
-    //   2	7	247	finally
-    //   19	50	247	finally
-    //   60	68	247	finally
-    //   72	116	247	finally
-    //   164	230	247	finally
-    //   237	241	247	finally
+    //   19	50	221	java/lang/Exception
+    //   60	68	221	java/lang/Exception
+    //   72	116	221	java/lang/Exception
+    //   164	215	221	java/lang/Exception
+    //   2	7	232	finally
+    //   19	50	232	finally
+    //   60	68	232	finally
+    //   72	116	232	finally
+    //   164	215	232	finally
+    //   222	226	232	finally
   }
   
-  public void b(y paramy, BaseAppBrandWebview paramBaseAppBrandWebview, String paramString, int paramInt)
+  public void b(f paramf, BaseAppBrandWebview paramBaseAppBrandWebview, String paramString, int paramInt)
   {
     for (;;)
     {
@@ -356,7 +347,7 @@ public final class a
       try
       {
         if (QLog.isColorLevel()) {
-          QLog.d("WebInputHandler", 2, "[hideKeyboard] jsPluginEngine=" + paramy + ", webview=" + paramBaseAppBrandWebview + ", webParams=" + paramString + ", callbackId=" + paramInt);
+          QLog.d("WebInputHandler", 2, "[hideKeyboard] jsPluginEngine=" + paramf + ", webview=" + paramBaseAppBrandWebview + ", webParams=" + paramString + ", callbackId=" + paramInt);
         }
         localObject = this.d;
         if (paramBaseAppBrandWebview != null) {}
@@ -369,14 +360,14 @@ public final class a
             }
             return;
           }
-          if ((paramy == null) || (paramy.a == null) || (paramy.a.g == null))
+          if ((paramf == null) || (paramf.a == null) || (paramf.a.g == null))
           {
             if (QLog.isColorLevel()) {
               QLog.e("WebInputHandler", 2, "[hideKeyboard] runtime error");
             }
-            paramBaseAppBrandWebview.evaluateCallbackJs(paramInt, com.tencent.mobileqq.microapp.b.a.b("hideKeyboard", null).toString());
+            paramBaseAppBrandWebview.evaluateCallbackJs(paramInt, com.tencent.mobileqq.microapp.a.c.b("hideKeyboard", null).toString());
             continue;
-            paramy = finally;
+            paramf = finally;
           }
         }
         finally {}
@@ -388,23 +379,23 @@ public final class a
       if (QLog.isColorLevel()) {
         QLog.e("WebInputHandler", 2, "[hideKeyboard] no web input params");
       }
-      paramBaseAppBrandWebview.evaluateCallbackJs(paramInt, com.tencent.mobileqq.microapp.b.a.b("hideKeyboard", null).toString());
+      paramBaseAppBrandWebview.evaluateCallbackJs(paramInt, com.tencent.mobileqq.microapp.a.c.b("hideKeyboard", null).toString());
       continue;
       label216:
-      if ((AbsAppBrandPage)paramy.a.g.pageLinkedList.peek() == null) {
-        paramBaseAppBrandWebview.evaluateCallbackJs(paramInt, com.tencent.mobileqq.microapp.b.a.b("hideKeyboard", null).toString());
+      if ((AbsAppBrandPage)paramf.a.g.pageLinkedList.peek() == null) {
+        paramBaseAppBrandWebview.evaluateCallbackJs(paramInt, com.tencent.mobileqq.microapp.a.c.b("hideKeyboard", null).toString());
       }
       try
       {
-        paramy = paramBaseAppBrandWebview.getContext();
+        paramf = paramBaseAppBrandWebview.getContext();
         int i = new JSONObject(paramString).optInt("inputId");
         if (!this.g.containsKey(Integer.valueOf(i)))
         {
-          paramBaseAppBrandWebview.evaluateCallbackJs(paramInt, com.tencent.mobileqq.microapp.b.a.a("hideKeyboard", null).toString());
+          paramBaseAppBrandWebview.evaluateCallbackJs(paramInt, com.tencent.mobileqq.microapp.a.c.a("hideKeyboard", null).toString());
           continue;
         }
         WebEditText localWebEditText = (WebEditText)this.g.remove(Integer.valueOf(i));
-        paramBaseAppBrandWebview.evaluateCallbackJs(paramInt, com.tencent.mobileqq.microapp.b.a.a("hideKeyboard", null).toString());
+        paramBaseAppBrandWebview.evaluateCallbackJs(paramInt, com.tencent.mobileqq.microapp.a.c.a("hideKeyboard", null).toString());
         paramString = new JSONObject();
         paramString.put("inputId", i);
         paramString.put("value", localWebEditText.getText().toString());
@@ -413,17 +404,17 @@ public final class a
         localWebEditText.setFocusable(false);
         localWebEditText.setFocusableInTouchMode(false);
         localWebEditText.clearFocus();
-        ((InputMethodManager)paramy.getSystemService("input_method")).hideSoftInputFromWindow(localWebEditText.getWindowToken(), 0);
+        ((InputMethodManager)paramf.getSystemService("input_method")).hideSoftInputFromWindow(localWebEditText.getWindowToken(), 0);
         localWebEditText.c();
-        paramy = (PageWebview)paramBaseAppBrandWebview;
-        paramy.evaluateSubcribeJS("onKeyboardComplete", paramString.toString(), paramy.pageWebviewId);
+        paramf = (PageWebview)paramBaseAppBrandWebview;
+        paramf.evaluateSubcribeJS("onKeyboardComplete", paramString.toString(), paramf.pageWebviewId);
       }
-      catch (Exception paramy)
+      catch (Exception paramf)
       {
         for (;;)
         {
           if (QLog.isColorLevel()) {
-            QLog.e("WebInputHandler", 2, "hideKeyboard, exception", paramy);
+            QLog.e("WebInputHandler", 2, "hideKeyboard, exception", paramf);
           }
         }
       }
@@ -437,7 +428,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.microapp.widget.input.a
  * JD-Core Version:    0.7.0.1
  */

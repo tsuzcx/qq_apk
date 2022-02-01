@@ -1,70 +1,73 @@
-import android.os.Bundle;
-import android.text.TextUtils;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import com.tencent.qphone.base.util.QLog;
 
-class aqsv
-  implements aqsa
+public class aqsv
+  extends aqkz<aqsu>
 {
-  aqsv(aqsu paramaqsu, String paramString, aqtc paramaqtc) {}
-  
-  public void a(int paramInt, String paramString)
+  @NonNull
+  public aqsu a(int paramInt)
   {
-    boolean bool2 = false;
-    QLog.e("FileMultiMsgManager<FileAssistant>", 1, "Disc2TroopTaskExcuter onFaild：");
-    boolean bool1;
-    if ((paramInt == -100001) || (paramInt == -100002) || (paramInt == -100003)) {
-      bool1 = true;
-    }
-    for (;;)
+    return new aqsu();
+  }
+  
+  @Nullable
+  public aqsu a(aqlg[] paramArrayOfaqlg)
+  {
+    if ((paramArrayOfaqlg != null) && (paramArrayOfaqlg.length > 0) && (paramArrayOfaqlg[0] != null))
     {
+      aqsu localaqsu = aqsu.a(paramArrayOfaqlg[0].a);
       if (QLog.isColorLevel()) {
-        QLog.e("FileMultiMsgManager<FileAssistant>", 1, this.jdField_a_of_type_Aqsu.jdField_a_of_type_JavaLangString + " Disc2TroopTaskExcuter send faild:" + paramInt);
+        QLog.d("QuickAuthorityConfProcessor", 2, "onParsed " + paramArrayOfaqlg[0].a);
       }
-      this.jdField_a_of_type_Aqtc.a(aqsf.a(this.jdField_a_of_type_Aqsu.jdField_a_of_type_Long, bool2), bool1);
-      return;
-      if ((paramInt == -6101) || (paramInt == -7003))
-      {
-        bool1 = false;
-        bool2 = true;
-      }
-      else
-      {
-        bool1 = false;
-      }
+      return localaqsu;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("QuickAuthorityConfProcessor", 2, "onParsed is null");
+    }
+    return null;
+  }
+  
+  public void a(aqsu paramaqsu)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QuickAuthorityConfProcessor", 2, "onUpdate " + paramaqsu.toString());
     }
   }
   
-  public void a(String paramString)
+  public Class<aqsu> clazz()
   {
-    Bundle localBundle = new Bundle();
-    localBundle.putString("_m_ForwardFileType", "3");
-    localBundle.putString("_m_ForwardReceiverUin", this.jdField_a_of_type_JavaLangString);
-    localBundle.putString("_m_ForwardFileName", this.jdField_a_of_type_Aqsu.jdField_a_of_type_JavaLangString);
-    localBundle.putString("_m_ForwardSize", this.jdField_a_of_type_Aqsu.jdField_a_of_type_Long + "");
-    localBundle.putString("_m_ForwardMd5", this.jdField_a_of_type_Aqsu.c);
-    localBundle.putString("_m_ForwardDeadTime", "0");
-    localBundle.putString("_m_ForwardImgWidth", this.jdField_a_of_type_Aqsu.e);
-    localBundle.putString("_m_ForwardImgHeight", this.jdField_a_of_type_Aqsu.f);
-    localBundle.putString("_m_ForwardUuid", paramString);
-    int i;
-    if (TextUtils.isEmpty(this.jdField_a_of_type_Aqsu.e))
-    {
-      i = 0;
-      if (!TextUtils.isEmpty(this.jdField_a_of_type_Aqsu.f)) {
-        break label257;
-      }
+    return aqsu.class;
+  }
+  
+  public boolean isNeedCompressed()
+  {
+    return true;
+  }
+  
+  public boolean isNeedStoreLargeFile()
+  {
+    return false;
+  }
+  
+  public int migrateOldVersion()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QuickAuthorityConfProcessor", 2, "migrateOldVersion");
     }
-    label257:
-    for (int j = 0;; j = Integer.parseInt(this.jdField_a_of_type_Aqsu.f))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("FileMultiMsgManager<FileAssistant>", 1, this.jdField_a_of_type_Aqsu.jdField_a_of_type_JavaLangString + " Disc2TroopTaskExcuter send success send feeds");
-      }
-      aqsf.a(aqsf.a(this.jdField_a_of_type_Aqsu.jdField_a_of_type_Aqsf), Long.parseLong(this.jdField_a_of_type_JavaLangString), 102, paramString, this.jdField_a_of_type_Aqsu.jdField_a_of_type_Long, 0, i, j, 0, false, localBundle, this.jdField_a_of_type_Aqtc);
-      return;
-      i = Integer.parseInt(this.jdField_a_of_type_Aqsu.e);
-      break;
+    return 0;
+  }
+  
+  public void onReqFailed(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QuickAuthorityConfProcessor", 2, new Object[] { "onReqFailed ", Integer.valueOf(paramInt) });
     }
+  }
+  
+  public int type()
+  {
+    return 546;
   }
 }
 

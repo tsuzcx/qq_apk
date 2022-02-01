@@ -1,9 +1,19 @@
-import android.graphics.drawable.Drawable;
 import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import kotlin.Metadata;
 
-public abstract interface bdcn
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"}, k=3, mv={1, 1, 16})
+final class bdcn
+  implements View.OnClickListener
 {
-  public abstract void a(View paramView, Drawable paramDrawable);
+  bdcn(bdcl parambdcl) {}
+  
+  public final void onClick(View paramView)
+  {
+    bdcl.a(this.a);
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

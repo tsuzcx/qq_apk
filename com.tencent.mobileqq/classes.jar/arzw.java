@@ -1,16 +1,28 @@
-import android.net.Uri;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import com.tencent.mobileqq.emoticonview.EmotionKeywordHorizonListView;
+import com.tencent.mobileqq.emoticonview.EmotionKeywordLayout;
 
-class arzw
-  implements asqy
+public class arzw
+  implements Animator.AnimatorListener
 {
-  arzw(arzt paramarzt) {}
+  public arzw(EmotionKeywordLayout paramEmotionKeywordLayout) {}
   
-  public void a(Uri paramUri) {}
+  public void onAnimationCancel(Animator paramAnimator) {}
   
-  public void a(String paramString1, String paramString2, long paramLong)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    this.a.a = arzt.a(this.a, paramString2, paramLong);
+    if (paramAnimator == EmotionKeywordLayout.a(this.a)) {
+      this.a.setVisibility(8);
+    }
+    if (EmotionKeywordLayout.a(this.a) != null) {
+      EmotionKeywordLayout.a(this.a).resetCurrentX(0);
+    }
   }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

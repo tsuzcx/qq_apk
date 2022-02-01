@@ -1,36 +1,36 @@
-import android.view.ViewGroup;
-import com.tencent.biz.qqstory.msgTabNode.roundwithdashdemo2018.widgets.StoryMsgNodeFrameLayout;
+import com.tencent.TMG.utils.QLog;
+import com.tencent.biz.qqcircle.fragments.QCircleBlockContainer;
+import com.tencent.biz.richframework.part.block.base.NestScrollRecyclerView;
 
 class vbv
-  extends vbo
+  implements vtq
 {
-  public vbv(ViewGroup paramViewGroup)
-  {
-    super(paramViewGroup, 2131561509);
-  }
+  vbv(vbt paramvbt) {}
   
-  public void a(String paramString)
-  {
-    b(paramString);
-  }
+  public void a() {}
   
-  public void a(uyg paramuyg)
-  {
-    super.a(paramuyg);
-    wxe.a("Q.qqstory.msgTab.WeiShiRecommendNodeViewHolder", "bindData %s", paramuyg);
-    a(xsj.b(paramuyg.g));
-    this.a.setNodeName(paramuyg.c, 2130846202);
-  }
+  public void a(int paramInt) {}
   
-  protected void b(uyg paramuyg)
+  public void b()
   {
-    this.a.setDisplayState(6);
-    this.a.a(paramuyg);
+    vbt.a(this.a).a().scrollToPosition(0);
+    vbt.a(this.a).a().e();
+    vbt.a(this.a).clearData();
+    this.a.a(true, false, true);
+    if (vbt.a(this.a) == 1) {
+      vrc.a(87, 6, vbt.a(this.a), this.a.c());
+    }
+    for (;;)
+    {
+      QLog.d("QCircleLightInteractListPart", 3, "dismiss");
+      return;
+      vrc.a(75, 2, vbt.a(this.a), this.a.c());
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     vbv
  * JD-Core Version:    0.7.0.1
  */

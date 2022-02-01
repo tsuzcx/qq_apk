@@ -1,7 +1,4 @@
-public abstract interface bnkt
-{
-  public abstract void a();
-}
+public class bnkt {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar

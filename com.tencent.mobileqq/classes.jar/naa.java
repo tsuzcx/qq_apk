@@ -1,85 +1,32 @@
-import android.os.Bundle;
-import android.support.annotation.Nullable;
-import com.tencent.biz.ProtoUtils.StoryProtocolObserver.1;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.ErrorInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.mqsafeedit.BaseApplication;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import java.lang.ref.WeakReference;
-import mqq.observer.BusinessObserver;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.PopupWindow;
+import android.widget.TextView;
+import com.tencent.avgame.gameroom.GameRoomFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public abstract class naa
-  implements BusinessObserver
+public class naa
+  implements View.OnClickListener
 {
-  public final long a;
-  public WeakReference<QQAppInterface> a;
-  public boolean a;
+  public naa(GameRoomFragment paramGameRoomFragment) {}
   
-  public naa()
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(null);
-    this.jdField_a_of_type_Long = System.currentTimeMillis();
-  }
-  
-  private void a(int paramInt, boolean paramBoolean, Bundle paramBundle)
-  {
-    long l = System.currentTimeMillis() - this.jdField_a_of_type_Long;
-    String str = paramBundle.getString("cmd");
-    if (paramBoolean)
+    String str = String.format(this.a.getString(2131690238), new Object[] { this.a.b.getText().toString().replace("-", " ") });
+    GameRoomFragment.a(this.a, str);
+    this.a.a(2, this.a.getString(2131690239));
+    if (this.a.a != null)
     {
-      localObject = paramBundle.getByteArray("data");
-      if ((localObject != null) && (localObject.length > 0))
-      {
-        paramBundle = a(0, (byte[])localObject, paramBundle);
-        if (paramBundle != null)
-        {
-          paramInt = paramBundle.error_code.get();
-          paramBundle = paramBundle.error_desc.get().toStringUtf8();
-          if (paramInt == 0) {
-            wxe.a("Q.qqstory.net:StoryProtocolObserver", "get cmd:%s success take time:%d data length=%d", str, Long.valueOf(l), Integer.valueOf(localObject.length));
-          }
-          for (;;)
-          {
-            wxj.b("story_net", str, 0, paramInt, new String[] { paramBundle, String.valueOf(l), wxj.a(BaseApplication.getContext()) });
-            return;
-            wxe.d("Q.qqstory.net:StoryProtocolObserver", "get cmd:%s error:%d msg:%s take time:%d data length%d", new Object[] { str, Integer.valueOf(paramInt), paramBundle, Long.valueOf(l), Integer.valueOf(localObject.length) });
-          }
-        }
-        wxe.d("Q.qqstory.net:StoryProtocolObserver", "get cmd:%s error. response is null", new Object[] { str });
-        wxj.b("story_net", str, 0, 940002, new String[] { "response is null", String.valueOf(l), wxj.a(BaseApplication.getContext()) });
-        return;
-      }
-      a(-1, null, paramBundle);
-      wxe.d("Q.qqstory.net:StoryProtocolObserver", "get cmd:" + str + " channel error:%d, take time:%d", new Object[] { Integer.valueOf(-1), Long.valueOf(l) });
-      wxj.b("story_net", str, 0, 940002, new String[] { "rsp data error", String.valueOf(l), wxj.a(BaseApplication.getContext()) });
-      return;
+      this.a.a.dismiss();
+      this.a.a = null;
     }
-    paramInt = paramBundle.getInt("data_error_code");
-    Object localObject = paramBundle.getString("data_error_msg");
-    a(paramInt, null, paramBundle);
-    wxe.d("Q.qqstory.net:StoryProtocolObserver", "get cmd:" + str + " channel error:%d, take time:%d", new Object[] { Integer.valueOf(-1), Long.valueOf(l) });
-    wxj.b("story_net", str, 0, paramInt, new String[] { localObject, String.valueOf(l), wxj.a(BaseApplication.getContext()) });
-  }
-  
-  public abstract qqstory_struct.ErrorInfo a(int paramInt, @Nullable byte[] paramArrayOfByte, Bundle paramBundle);
-  
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
-  {
-    if (this.jdField_a_of_type_Boolean)
-    {
-      a(paramInt, paramBoolean, paramBundle);
-      return;
-    }
-    ThreadManager.post(new ProtoUtils.StoryProtocolObserver.1(this, paramInt, paramBoolean, paramBundle), 5, null, false);
+    bcst.b(null, "dc00898", "", "", "0X800B020", "0X800B020", 0, 0, "", "", "", "");
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     naa
  * JD-Core Version:    0.7.0.1
  */

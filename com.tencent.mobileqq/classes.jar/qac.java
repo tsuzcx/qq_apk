@@ -1,72 +1,52 @@
-import android.content.Context;
-import android.view.View;
-import android.widget.LinearLayout;
-import com.tencent.widget.AbsListView.LayoutParams;
-import java.lang.reflect.Constructor;
+import android.os.Handler;
+import com.tencent.biz.pubaccount.readinjoy.model.SelectPositionModule;
+import com.tencent.biz.pubaccount.readinjoy.model.SelectPositionModule.PositionData;
+import com.tencent.biz.pubaccount.readinjoy.position.SelectCityPresenter.1;
+import com.tencent.biz.pubaccount.readinjoy.position.SelectCityPresenter.2;
+import java.util.List;
+import mqq.util.WeakReference;
 
-public class qac<T extends View>
-  extends pxl
+public class qac
+  implements pyh
 {
-  private Class<T> a;
+  private SelectPositionModule jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelSelectPositionModule = pmh.a().a();
+  private WeakReference<qad> jdField_a_of_type_MqqUtilWeakReference;
   
-  qac(Context paramContext, bdbb parambdbb, rqj paramrqj, Class<T> paramClass)
+  public qac(qad paramqad)
   {
-    super(paramContext, parambdbb, paramrqj);
-    this.jdField_a_of_type_JavaLangClass = paramClass;
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelSelectPositionModule.a(this);
+    this.jdField_a_of_type_MqqUtilWeakReference = new WeakReference(paramqad);
   }
   
-  public pxl a()
+  private void b(List<qaa> paramList)
   {
-    this.jdField_a_of_type_Boolean = true;
-    return g().l().n();
+    qad localqad = (qad)this.jdField_a_of_type_MqqUtilWeakReference.get();
+    if ((localqad != null) && (paramList != null)) {
+      localqad.a(paramList);
+    }
   }
   
-  public pxl d()
+  public void a()
   {
-    LinearLayout localLinearLayout = new LinearLayout(this.jdField_a_of_type_AndroidContentContext);
-    localLinearLayout.setOrientation(1);
-    localLinearLayout.setLayoutParams(new AbsListView.LayoutParams(-1, -2));
-    if ((this.jdField_a_of_type_Pxk != null) && (this.jdField_a_of_type_Pxk.getClass().equals(this.jdField_a_of_type_JavaLangClass))) {
-      localLinearLayout.addView((View)this.jdField_a_of_type_Pxk);
+    SelectPositionModule localSelectPositionModule = pmh.a().a();
+    if (localSelectPositionModule != null) {
+      b(localSelectPositionModule.a());
     }
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentDivider != null) {
-      localLinearLayout.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentDivider);
-    }
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentLastRead != null) {
-      localLinearLayout.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentLastRead);
-    }
-    a(localLinearLayout);
-    return this;
   }
   
-  public pxl e()
+  public void a(SelectPositionModule.PositionData paramPositionData)
   {
-    return this;
+    bjda.a().post(new SelectCityPresenter.2(this, paramPositionData));
   }
   
-  public pxl g()
+  public void a(List<qaa> paramList)
   {
-    try
-    {
-      this.jdField_a_of_type_Pxk = ((pxk)this.jdField_a_of_type_JavaLangClass.getConstructor(new Class[] { Context.class }).newInstance(new Object[] { this.jdField_a_of_type_AndroidContentContext }));
-      return this;
-    }
-    catch (Exception localException)
-    {
-      localException.printStackTrace();
-    }
-    return this;
-  }
-  
-  public pxl o()
-  {
-    super.o();
-    return this;
+    bjda.a().post(new SelectCityPresenter.1(this, paramList));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     qac
  * JD-Core Version:    0.7.0.1
  */

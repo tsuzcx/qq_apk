@@ -1,13 +1,17 @@
-import android.widget.ImageView;
-import android.widget.TextView;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
 
-public class afvf
-  extends aepm
+final class afvf
+  implements afvp
 {
-  public ImageView a;
-  public TextView b;
-  
-  public afvf(afve paramafve) {}
+  public ProfileActivity.AllInOne a(QQAppInterface paramQQAppInterface, String paramString, SessionInfo paramSessionInfo, MessageRecord paramMessageRecord)
+  {
+    paramQQAppInterface = new ProfileActivity.AllInOne(paramSessionInfo.a, 115);
+    paramQQAppInterface.h = paramSessionInfo.d;
+    return paramQQAppInterface;
+  }
 }
 
 

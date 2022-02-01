@@ -1,22 +1,45 @@
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.transfile.ShortVideoUploadProcessor;
+import com.tencent.mobileqq.data.MessageForShortVideo;
+import com.tencent.richmediabrowser.log.BrowserLogHelper;
+import com.tencent.richmediabrowser.log.IBrowserLog;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class baxq
-  extends alwx
 {
-  public baxq(ShortVideoUploadProcessor paramShortVideoUploadProcessor) {}
+  private static int a;
+  public ConcurrentHashMap<Long, baxt> a;
   
-  public void a(boolean paramBoolean, long paramLong, alwy paramalwy)
+  static
   {
-    this.a.b("sendMsgFinish", "success:" + paramBoolean);
-    bdif.a(String.valueOf(this.a.a.jdField_a_of_type_Long), "message", "sendMsgFinish isSuccess:" + paramBoolean + ",mr = " + this.a.a.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.toString());
-    this.a.a(this.a.c, false, paramBoolean, paramalwy);
-    if (paramBoolean)
-    {
-      this.a.e();
-      return;
+    jdField_a_of_type_Int = 900000;
+  }
+  
+  private baxq()
+  {
+    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
+  }
+  
+  public static final baxq a()
+  {
+    return baxs.a();
+  }
+  
+  public baxt a(long paramLong)
+  {
+    if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(Long.valueOf(paramLong))) {
+      return (baxt)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Long.valueOf(paramLong));
     }
-    this.a.d();
+    return null;
+  }
+  
+  public void a()
+  {
+    BrowserLogHelper.getInstance().getGalleryLog().d(" LongVideoUrlCacheManager", 4, "LongVideoUrlCacheManager,clearCache");
+    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
+  }
+  
+  public void a(long paramLong1, String[] paramArrayOfString, long paramLong2, MessageForShortVideo paramMessageForShortVideo, int paramInt, String paramString)
+  {
+    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(Long.valueOf(paramLong1), new baxt(this, paramArrayOfString, paramLong2, paramMessageForShortVideo, paramInt, paramString));
   }
 }
 

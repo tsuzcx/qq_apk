@@ -1,42 +1,18 @@
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import java.util.Iterator;
-import org.json.JSONObject;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.SearchMightKnowFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public final class afcp
+public class afcp
+  implements View.OnClickListener
 {
-  public HashMap<String, String> a = new HashMap();
+  public afcp(SearchMightKnowFragment paramSearchMightKnowFragment) {}
   
-  private void a(String paramString)
+  public void onClick(View paramView)
   {
-    if (!TextUtils.isEmpty(paramString))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("ECommerceDataReportConfigProcessor", 2, "configText : " + paramString);
-      }
-      try
-      {
-        paramString = new JSONObject(paramString);
-        Iterator localIterator = paramString.keys();
-        while (localIterator.hasNext())
-        {
-          String str1 = (String)localIterator.next();
-          if (!TextUtils.isEmpty(str1))
-          {
-            String str2 = paramString.optString(str1, "");
-            if (!TextUtils.isEmpty(str2)) {
-              this.a.put(str1, str2);
-            }
-          }
-        }
-        return;
-      }
-      catch (Throwable paramString)
-      {
-        QLog.e("ECommerceDataReportConfigProcessor", 1, paramString, new Object[0]);
-      }
-    }
+    this.a.getActivity().finish();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

@@ -1,10 +1,18 @@
-public abstract interface afmx
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.TroopMemberListActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
+public class afmx
+  implements View.OnClickListener
 {
-  public abstract void a();
+  public afmx(TroopMemberListActivity paramTroopMemberListActivity) {}
   
-  public abstract void a(int paramInt);
-  
-  public abstract void b();
+  public void onClick(View paramView)
+  {
+    this.a.finish();
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

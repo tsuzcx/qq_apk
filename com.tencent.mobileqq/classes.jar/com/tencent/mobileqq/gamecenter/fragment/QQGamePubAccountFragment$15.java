@@ -1,48 +1,37 @@
 package com.tencent.mobileqq.gamecenter.fragment;
 
-import alud;
+import android.text.TextUtils;
+import com.tencent.mobileqq.gamecenter.data.FeedsItemData.GameInfo;
 import com.tencent.mobileqq.gamecenter.view.QQGameStatusView;
-import com.tencent.mobileqq.widget.QQToast;
 import cooperation.wadl.ipc.WadlParams;
 import cooperation.wadl.ipc.WadlResult;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.Map;
 
 class QQGamePubAccountFragment$15
   implements Runnable
 {
-  QQGamePubAccountFragment$15(QQGamePubAccountFragment paramQQGamePubAccountFragment, WadlResult paramWadlResult) {}
+  QQGamePubAccountFragment$15(QQGamePubAccountFragment paramQQGamePubAccountFragment, ArrayList paramArrayList) {}
   
   public void run()
   {
-    if (this.a.b == 12)
+    Iterator localIterator = this.a.iterator();
+    while (localIterator.hasNext())
     {
-      QQGamePubAccountFragment.a(this.this$0).a(this.a.a.a, 2);
-      return;
-    }
-    if (this.a.b == 6)
-    {
-      QQGamePubAccountFragment.a(this.this$0).a(this.a.a.a, 6);
-      return;
-    }
-    if (this.a.b == 4)
-    {
-      QQGamePubAccountFragment.a(this.this$0).a(this.a.a.a, 5);
-      QQGamePubAccountFragment.a(this.this$0).a(this.a.a.a, this.a.d + "");
-      return;
-    }
-    if (this.a.b == 7)
-    {
-      if (this.this$0.getActivity() != null) {
-        QQToast.a(this.this$0.getActivity(), alud.a(2131710710), 0).a();
+      WadlResult localWadlResult = (WadlResult)localIterator.next();
+      if ((localWadlResult != null) && (localWadlResult.a != null) && (localWadlResult.a.a.equals(this.this$0.a().gameAppId)) && (localWadlResult.jdField_b_of_type_Int == 6) && (!TextUtils.isEmpty(localWadlResult.jdField_b_of_type_JavaLangString)))
+      {
+        QQGamePubAccountFragment.a(this.this$0).a(localWadlResult.a.a, 6);
+        QQGamePubAccountFragment.a(this.this$0).a(localWadlResult.jdField_b_of_type_JavaLangString);
+        this.this$0.a.put(localWadlResult.a.a, localWadlResult.a);
       }
-      QQGamePubAccountFragment.a(this.this$0).a(this.a.a.a, 2);
-      return;
     }
-    QQGamePubAccountFragment.a(this.this$0).a(this.a.a.a, 2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.gamecenter.fragment.QQGamePubAccountFragment.15
  * JD-Core Version:    0.7.0.1
  */

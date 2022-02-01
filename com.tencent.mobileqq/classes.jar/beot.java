@@ -1,15 +1,21 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.widget.CustomedTabWidget;
+import java.util.Comparator;
+import java.util.Map.Entry;
 
-public class beot
-  implements View.OnClickListener
+class beot
+  implements Comparator<Map.Entry<String, beov>>
 {
-  public beot(CustomedTabWidget paramCustomedTabWidget) {}
+  beot(beos parambeos) {}
   
-  public void onClick(View paramView)
+  public int a(Map.Entry<String, beov> paramEntry1, Map.Entry<String, beov> paramEntry2)
   {
-    this.a.setCurrentTab(this.a.indexOfChild(paramView));
+    float f = ((beov)paramEntry2.getValue()).a() - ((beov)paramEntry1.getValue()).a();
+    if (f > 0.0F) {
+      return 1;
+    }
+    if (f < 0.0F) {
+      return -1;
+    }
+    return 0;
   }
 }
 

@@ -1,27 +1,33 @@
-public abstract interface agmc
+import com.tencent.mobileqq.relationx.icebreaking.AIOIceBreakShow;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
+
+class agmc
+  implements bajj
 {
-  public static final String a = alud.a(2131706118);
-  public static final String b = alud.a(2131706115);
-  public static final String c = alud.a(2131706116);
-  public static final String d = alud.a(2131706117);
+  agmc(agmb paramagmb) {}
   
-  public abstract void a();
-  
-  public abstract void b();
-  
-  public abstract boolean b();
-  
-  public abstract void c();
-  
-  public abstract void e();
-  
-  public abstract void f();
-  
-  public abstract void g();
-  
-  public abstract void h();
-  
-  public abstract void i();
+  public void a(boolean paramBoolean, List<aiit> paramList)
+  {
+    StringBuilder localStringBuilder = new StringBuilder().append("onGetIceBreakHotPic, success: ").append(paramBoolean).append(" hotPiceList size: ");
+    int i;
+    if (paramList == null)
+    {
+      i = 0;
+      QLog.i("IceBreak.HotPic", 1, i);
+      if (paramBoolean) {
+        break label59;
+      }
+    }
+    label59:
+    while (this.a.a == null)
+    {
+      return;
+      i = paramList.size();
+      break;
+    }
+    this.a.a.a(paramList);
+  }
 }
 
 

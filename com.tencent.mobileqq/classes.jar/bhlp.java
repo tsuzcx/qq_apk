@@ -1,239 +1,103 @@
-import android.content.Context;
+import android.annotation.SuppressLint;
+import android.net.Uri;
+import android.view.View;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.inject.webview.jsbridge.JsBridgeController;
+import com.tencent.qqlive.module.videoreport.inject.webview.jsinject.JsInjector;
+import com.tencent.smtt.export.external.interfaces.GeolocationPermissionsCallback;
+import com.tencent.smtt.export.external.interfaces.IX5WebChromeClient.CustomViewCallback;
+import com.tencent.smtt.export.external.interfaces.JsPromptResult;
+import com.tencent.smtt.export.external.interfaces.JsResult;
+import com.tencent.smtt.sdk.ValueCallback;
+import com.tencent.smtt.sdk.WebView;
 
-public class bhlp
+class bhlp
+  extends nvu
 {
-  public static int a(String paramString, Object paramObject)
+  bhlp(bhll parambhll) {}
+  
+  private void a(View paramView, int paramInt, IX5WebChromeClient.CustomViewCallback paramCustomViewCallback)
   {
-    paramString = (Integer)bhiw.a(paramObject, "startDumpAudioData", false, bhiw.a(new Class[] { String.class }), new Object[] { paramString });
-    if (paramString != null) {
-      return paramString.intValue();
+    if (QLog.isColorLevel()) {
+      QLog.d("AbsWebView", 2, "show custom view called");
     }
-    return -10;
+    this.a.showCustomView(paramView, paramInt, paramCustomViewCallback);
   }
   
-  public static Object a(Context paramContext)
+  public View getVideoLoadingProgressView()
   {
-    return bhiw.a("com.tencent.rtmp.WXLivePusher", bhiw.a(new Class[] { Context.class }), new Object[] { paramContext });
+    return this.a.getVideoLoadingProgressView();
   }
   
-  public static void a(float paramFloat, Object paramObject)
+  public void onGeolocationPermissionsShowPrompt(String paramString, GeolocationPermissionsCallback paramGeolocationPermissionsCallback)
   {
-    bhiw.a(paramObject, "setMicVolume", false, bhiw.a(new Class[] { Float.TYPE }), new Object[] { Float.valueOf(paramFloat) });
-  }
-  
-  public static void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, Object paramObject)
-  {
-    bhiw.a(paramObject, "setBeautyFilter", false, bhiw.a(new Class[] { Integer.TYPE, Integer.TYPE, Integer.TYPE, Integer.TYPE }), new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Integer.valueOf(paramInt4) });
-  }
-  
-  public static void a(int paramInt, Object paramObject)
-  {
-    bhiw.a(paramObject, "setBGMPosition", false, bhiw.a(new Class[] { Integer.TYPE }), new Object[] { Integer.valueOf(paramInt) });
-  }
-  
-  public static void a(int paramInt, boolean paramBoolean1, boolean paramBoolean2, Object paramObject)
-  {
-    bhiw.a(paramObject, "setVideoQuality", false, bhiw.a(new Class[] { Integer.TYPE, Boolean.TYPE, Boolean.TYPE }), new Object[] { Integer.valueOf(paramInt), Boolean.valueOf(paramBoolean1), Boolean.valueOf(paramBoolean2) });
-  }
-  
-  public static void a(Object paramObject)
-  {
-    bhiw.a(paramObject, "stopPusher", false, null, new Object[0]);
-  }
-  
-  public static void a(Object paramObject1, Object paramObject2)
-  {
-    try
-    {
-      bhiw.a(paramObject2, "setConfig", false, bhiw.a(new Class[] { Class.forName("com.tencent.rtmp.WXLivePushConfig") }), new Object[] { paramObject1 });
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("AbsWebView", 2, "onGeolocationPermissionsShowPrompt:" + paramString);
     }
-    catch (ClassNotFoundException paramObject1)
-    {
-      paramObject1.printStackTrace();
+    this.a.onGeolocationPermissionsShowPrompt(paramString, paramGeolocationPermissionsCallback);
+  }
+  
+  public void onHideCustomView()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("AbsWebView", 2, "hide custom view called");
     }
+    this.a.onHideCustomView();
   }
   
-  public static void a(String paramString, Object paramObject)
+  public boolean onJsAlert(WebView paramWebView, String paramString1, String paramString2, JsResult paramJsResult)
   {
-    bhiw.a(paramObject, "setPusherUrl", false, bhiw.a(new Class[] { String.class }), new Object[] { paramString });
+    return this.a.onJsAlert(paramWebView, paramString1, paramString2, paramJsResult);
   }
   
-  public static void a(boolean paramBoolean, Object paramObject)
+  @Override
+  public boolean onJsPrompt(WebView paramWebView, String paramString1, String paramString2, String paramString3, JsPromptResult paramJsPromptResult)
   {
-    bhiw.a(paramObject, "setMute", false, bhiw.a(new Class[] { Boolean.TYPE }), new Object[] { Boolean.valueOf(paramBoolean) });
-  }
-  
-  public static boolean a(float paramFloat, Object paramObject)
-  {
-    paramObject = bhiw.a(paramObject, "setBGMVolume", false, bhiw.a(new Class[] { Float.TYPE }), new Object[] { Float.valueOf(paramFloat) });
-    return ((paramObject instanceof Boolean)) && (((Boolean)paramObject).booleanValue());
-  }
-  
-  public static boolean a(Object paramObject)
-  {
-    paramObject = bhiw.a(paramObject, "stopBGM", false, null, new Object[0]);
-    return ((paramObject instanceof Boolean)) && (((Boolean)paramObject).booleanValue());
-  }
-  
-  public static boolean a(String paramString, Object paramObject)
-  {
-    paramString = bhiw.a(paramObject, "startPusher", false, bhiw.a(new Class[] { String.class }), new Object[] { paramString });
-    return ((paramString instanceof Integer)) && (((Integer)paramString).intValue() == 0);
-  }
-  
-  public static boolean a(boolean paramBoolean, Object paramObject)
-  {
-    paramObject = (Boolean)bhiw.a(paramObject, "turnOnFlashLight", false, bhiw.a(new Class[] { Boolean.TYPE }), new Object[] { Boolean.valueOf(paramBoolean) });
-    if (paramObject != null) {
-      return paramObject.booleanValue();
+    if (JsBridgeController.getInstance().shouldIntercept(paramWebView, paramString2, paramString1, paramJsPromptResult)) {
+      return true;
     }
-    return false;
+    return super.onJsPrompt(paramWebView, paramString1, paramString2, paramString3, paramJsPromptResult);
   }
   
-  public static boolean a(byte[] paramArrayOfByte, Object paramObject)
+  public void onProgressChanged(WebView paramWebView, int paramInt)
   {
-    paramArrayOfByte = (Boolean)bhiw.a(paramObject, "sendMessageEx", false, bhiw.a(new Class[] { [B.class }), new Object[] { paramArrayOfByte });
-    if (paramArrayOfByte != null) {
-      return paramArrayOfByte.booleanValue();
+    JsInjector.getInstance().onProgressChanged(paramWebView, paramInt);
+    if (QLog.isColorLevel()) {
+      QLog.d("AbsWebView", 2, "onProgressChanged:" + paramInt);
     }
-    return false;
-  }
-  
-  public static void b(int paramInt, Object paramObject)
-  {
-    bhiw.a(paramObject, "setRenderRotation", false, bhiw.a(new Class[] { Integer.TYPE }), new Object[] { Integer.valueOf(paramInt) });
-  }
-  
-  public static void b(Object paramObject)
-  {
-    bhiw.a(paramObject, "resumePusher", false, null, new Object[0]);
-  }
-  
-  public static void b(Object paramObject1, Object paramObject2)
-  {
-    bhiw.a(paramObject2, "startCameraPreview", false, bhiw.a(new Class[] { paramObject1.getClass() }), new Object[] { paramObject1 });
-  }
-  
-  public static void b(boolean paramBoolean, Object paramObject)
-  {
-    bhiw.a(paramObject, "setMirror", false, bhiw.a(new Class[] { Boolean.TYPE }), new Object[] { Boolean.valueOf(paramBoolean) });
-  }
-  
-  public static boolean b(Object paramObject)
-  {
-    paramObject = bhiw.a(paramObject, "pauseBGM", false, null, new Object[0]);
-    return ((paramObject instanceof Boolean)) && (((Boolean)paramObject).booleanValue());
-  }
-  
-  public static boolean b(String paramString, Object paramObject)
-  {
-    paramString = bhiw.a(paramObject, "playBGM", false, bhiw.a(new Class[] { String.class }), new Object[] { paramString });
-    return ((paramString instanceof Boolean)) && (((Boolean)paramString).booleanValue());
-  }
-  
-  public static void c(int paramInt, Object paramObject)
-  {
-    bhiw.a(paramObject, "setLocalVideoMirrorType", false, bhiw.a(new Class[] { Integer.TYPE }), new Object[] { Integer.valueOf(paramInt) });
-  }
-  
-  public static void c(Object paramObject)
-  {
-    bhiw.a(paramObject, "pausePusher", false, null, new Object[0]);
-  }
-  
-  public static void c(Object paramObject1, Object paramObject2)
-  {
-    try
-    {
-      bhiw.a(paramObject2, "snapshot", false, bhiw.a(new Class[] { Class.forName("com.tencent.rtmp.TXLivePusher$ITXSnapshotListener") }), new Object[] { paramObject1 });
-      return;
+    if ((this.a.mProgressBarController != null) && (this.a.mProgressBarController.b() == 0)) {
+      this.a.mProgressBarController.a((byte)1);
     }
-    catch (ClassNotFoundException paramObject1)
-    {
-      paramObject1.printStackTrace();
+    if (paramInt == 100) {
+      this.a.showProgressBar(false);
     }
+    this.a.onProgressChanged(paramWebView, paramInt);
   }
   
-  public static void c(boolean paramBoolean, Object paramObject)
+  public void onReceivedTitle(WebView paramWebView, String paramString)
   {
-    bhiw.a(paramObject, "stopCameraPreview", false, bhiw.a(new Class[] { Boolean.TYPE }), new Object[] { Boolean.valueOf(paramBoolean) });
+    this.a.onReceivedTitle(paramWebView, paramString);
   }
   
-  public static boolean c(Object paramObject)
+  public void onShowCustomView(View paramView, int paramInt, IX5WebChromeClient.CustomViewCallback paramCustomViewCallback)
   {
-    paramObject = bhiw.a(paramObject, "resumeBGM", false, null, new Object[0]);
-    return ((paramObject instanceof Boolean)) && (((Boolean)paramObject).booleanValue());
+    a(paramView, paramInt, paramCustomViewCallback);
   }
   
-  public static void d(int paramInt, Object paramObject)
+  @SuppressLint({"InlinedApi"})
+  public void onShowCustomView(View paramView, IX5WebChromeClient.CustomViewCallback paramCustomViewCallback)
   {
-    bhiw.a(paramObject, "setReverb", false, bhiw.a(new Class[] { Integer.TYPE }), new Object[] { Integer.valueOf(paramInt) });
+    a(paramView, 10, paramCustomViewCallback);
   }
   
-  public static void d(Object paramObject)
+  public void openFileChooser(ValueCallback<Uri> paramValueCallback, String paramString1, String paramString2)
   {
-    bhiw.a(paramObject, "switchCamera", false, null, new Object[0]);
-  }
-  
-  public static void d(Object paramObject1, Object paramObject2)
-  {
-    try
-    {
-      bhiw.a(paramObject2, "setPushListener", false, bhiw.a(new Class[] { Class.forName("com.tencent.rtmp.ITXLivePushListener") }), new Object[] { paramObject1 });
-      return;
-    }
-    catch (ClassNotFoundException paramObject1)
-    {
-      paramObject1.printStackTrace();
-    }
-  }
-  
-  public static void d(boolean paramBoolean, Object paramObject)
-  {
-    bhiw.a(paramObject, "showDebugLog", false, bhiw.a(new Class[] { Boolean.TYPE }), new Object[] { Boolean.valueOf(paramBoolean) });
-  }
-  
-  public static boolean d(Object paramObject)
-  {
-    paramObject = (Boolean)bhiw.a(paramObject, "isPushing", false, null, new Object[0]);
-    if (paramObject != null) {
-      return paramObject.booleanValue();
-    }
-    return false;
-  }
-  
-  public static void e(Object paramObject)
-  {
-    bhiw.a(paramObject, "stopDumpAudioData", false, null, new Object[0]);
-  }
-  
-  public static void e(Object paramObject1, Object paramObject2)
-  {
-    try
-    {
-      bhiw.a(paramObject2, "setBGMNofify", false, bhiw.a(new Class[] { Class.forName("com.tencent.rtmp.TXLivePusher$OnBGMNotify") }), new Object[] { paramObject1 });
-      return;
-    }
-    catch (ClassNotFoundException paramObject1)
-    {
-      paramObject1.printStackTrace();
-    }
-  }
-  
-  public static void f(Object paramObject)
-  {
-    bhiw.a(paramObject, "startAudioRecord", false, null, new Object[0]);
-  }
-  
-  public static void g(Object paramObject)
-  {
-    bhiw.a(paramObject, "stopAudioRecord", false, null, new Object[0]);
+    this.a.openFileChooser(paramValueCallback, paramString1, paramString2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bhlp
  * JD-Core Version:    0.7.0.1
  */

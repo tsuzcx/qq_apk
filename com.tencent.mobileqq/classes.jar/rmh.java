@@ -1,23 +1,12 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.pubaccount.readinjoy.video.discovery.DiscoveryBannerInfo;
+import android.graphics.Bitmap;
 
-public final class rmh
-  implements Parcelable.Creator<DiscoveryBannerInfo>
+public abstract interface rmh
 {
-  public DiscoveryBannerInfo a(Parcel paramParcel)
-  {
-    return new DiscoveryBannerInfo(paramParcel);
-  }
-  
-  public DiscoveryBannerInfo[] a(int paramInt)
-  {
-    return new DiscoveryBannerInfo[paramInt];
-  }
+  public abstract void a(Bitmap paramBitmap);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     rmh
  * JD-Core Version:    0.7.0.1
  */

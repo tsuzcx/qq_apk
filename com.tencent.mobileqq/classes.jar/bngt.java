@@ -1,19 +1,23 @@
-import com.tencent.biz.qqstory.database.PublishVideoEntry;
-import com.tencent.mobileqq.activity.aio.photo.PeakActivity;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.graphics.Matrix;
+import dov.com.qq.im.ae.album.nocropper.AECropperImageView;
 
-class bngt
-  implements upk
+public class bngt
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  bngt(bngs parambngs, PeakActivity paramPeakActivity, String paramString1, String paramString2, PublishVideoEntry paramPublishVideoEntry) {}
+  public bngt(AECropperImageView paramAECropperImageView, float paramFloat) {}
   
-  public void a(int paramInt, String paramString1, String paramString2)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    if (paramInt == 0)
-    {
-      bngs.a(this.jdField_a_of_type_Bngs, this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoPeakActivity, this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry);
+    paramValueAnimator = this.jdField_a_of_type_DovComQqImAeAlbumNocropperAECropperImageView.getImageMatrix();
+    if (AECropperImageView.a(this.jdField_a_of_type_DovComQqImAeAlbumNocropperAECropperImageView, paramValueAnimator) <= AECropperImageView.a(this.jdField_a_of_type_DovComQqImAeAlbumNocropperAECropperImageView)) {
       return;
     }
-    bngs.a(this.jdField_a_of_type_Bngs, 1, this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry);
+    double d = Math.pow(AECropperImageView.a(this.jdField_a_of_type_DovComQqImAeAlbumNocropperAECropperImageView) / this.jdField_a_of_type_Float, 0.0500000007450581D);
+    paramValueAnimator.postScale((float)d, (float)d, AECropperImageView.b(this.jdField_a_of_type_DovComQqImAeAlbumNocropperAECropperImageView), AECropperImageView.c(this.jdField_a_of_type_DovComQqImAeAlbumNocropperAECropperImageView));
+    this.jdField_a_of_type_DovComQqImAeAlbumNocropperAECropperImageView.setImageMatrix(paramValueAnimator);
+    this.jdField_a_of_type_DovComQqImAeAlbumNocropperAECropperImageView.invalidate();
   }
 }
 

@@ -1,21 +1,27 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.profile.view.ProfileHeaderView;
+import com.tencent.mobileqq.data.TroopMemberInfo;
+import com.tencent.mobileqq.multicard.MultiCardRecommendFragment;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
+import mqq.os.MqqHandler;
 
 public class awvg
-  implements View.OnClickListener
+  extends anxg
 {
-  public awvg(ProfileHeaderView paramProfileHeaderView, View paramView) {}
+  public awvg(MultiCardRecommendFragment paramMultiCardRecommendFragment) {}
   
-  public void onClick(View paramView)
+  protected void a(String paramString, boolean paramBoolean, List<TroopMemberInfo> paramList, int paramInt1, long paramLong, int paramInt2)
   {
-    awrn.a().c(this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileHeaderView.a);
-    this.jdField_a_of_type_AndroidViewView.setVisibility(8);
+    if (QLog.isColorLevel()) {
+      QLog.d("TroopMemberRecommend.MultiCardRecommendFragment", 2, "onUpdateTroopGetMemberList（） troopUin =  " + paramString);
+    }
+    if ((paramInt1 == 9) && (paramString.equals(MultiCardRecommendFragment.a(this.a))) && (this.a.a != null)) {
+      this.a.a.sendEmptyMessage(4);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     awvg
  * JD-Core Version:    0.7.0.1
  */

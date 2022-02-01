@@ -1,43 +1,16 @@
-import android.os.Message;
-import com.tencent.mobileqq.activity.contact.addcontact.TroopView;
-import com.tencent.mobileqq.activity.contacts.adapter.ContactsViewPagerAdapter;
-import com.tencent.mobileqq.activity.contacts.view.ContactsViewPager;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.mobileqq.activity.aio.item.SixCombolEffectView;
 
 public class ahiy
-  implements ahvv
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public ahiy(TroopView paramTroopView) {}
+  public ahiy(SixCombolEffectView paramSixCombolEffectView) {}
   
-  public void a()
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    if (babd.a())
-    {
-      localMessage = TroopView.a(this.a).obtainMessage(15);
-      TroopView.a(this.a).sendMessage(localMessage);
-    }
-    do
-    {
-      return;
-      if (!bdin.g(BaseApplication.getContext())) {
-        break label105;
-      }
-      if (this.a.a.size() <= 0) {
-        break;
-      }
-    } while ((TroopView.a(this.a) == null) || (TroopView.a(this.a) == null));
-    TroopView.a(this.a).b(TroopView.a(this.a).getCurrentItem());
-    return;
-    TroopView.b(this.a);
-    return;
-    label105:
-    if (QLog.isColorLevel()) {
-      QLog.d("addContacts.TroopView", 2, "refresh falied. network unavailable");
-    }
-    Message localMessage = TroopView.a(this.a).obtainMessage(13);
-    TroopView.a(this.a).sendMessageDelayed(localMessage, 1000L);
+    this.a.a = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    this.a.invalidate();
   }
 }
 

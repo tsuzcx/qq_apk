@@ -1,30 +1,30 @@
 package com.tencent.mobileqq.ar.ARRenderModel;
 
-import amsu;
-import amvj;
-import amvw;
+import aorl;
+import aoua;
+import aoun;
 
 public class GeneralAR3DRenderable$1
   implements Runnable
 {
-  public GeneralAR3DRenderable$1(amvw paramamvw) {}
+  public GeneralAR3DRenderable$1(aoun paramaoun) {}
   
   public void run()
   {
-    if (amvw.a(this.this$0) != 9) {}
+    if (aoun.a(this.this$0) != 9) {}
     do
     {
       return;
-      if (amvw.a(this.this$0) != null) {
-        amvw.a(this.this$0).b(0, 1);
+      if (aoun.a(this.this$0) != null) {
+        aoun.a(this.this$0).b(0, 1);
       }
-    } while (amvw.a(this.this$0) == null);
-    amvw.a(this.this$0).a();
+    } while (aoun.a(this.this$0) == null);
+    aoun.a(this.this$0).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.ARRenderModel.GeneralAR3DRenderable.1
  * JD-Core Version:    0.7.0.1
  */

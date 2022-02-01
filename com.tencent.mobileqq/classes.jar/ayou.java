@@ -1,10 +1,8 @@
-public class ayou
+import android.graphics.Bitmap;
+
+public abstract interface ayou
 {
-  public int a;
-  public CharSequence a;
-  public String a;
-  
-  public ayou(ayot paramayot) {}
+  public abstract void a(boolean paramBoolean, Bitmap paramBitmap, int paramInt);
 }
 
 

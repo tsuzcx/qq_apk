@@ -1,26 +1,18 @@
-import com.tencent.viola.adapter.IJSApiAdapter.OnInovkeCallback;
-import org.json.JSONObject;
+import com.tencent.biz.pubaccount.readinjoy.view.RainView;
 
-class sne
-  implements qzm
+public class sne
+  implements bdet
 {
-  IJSApiAdapter.OnInovkeCallback a;
+  public sne(RainView paramRainView) {}
   
-  public sne(IJSApiAdapter.OnInovkeCallback paramOnInovkeCallback)
+  public void a()
   {
-    this.a = paramOnInovkeCallback;
-  }
-  
-  public void a(JSONObject paramJSONObject)
-  {
-    if (this.a != null) {
-      this.a.callback(paramJSONObject);
-    }
+    this.a.b(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     sne
  * JD-Core Version:    0.7.0.1
  */

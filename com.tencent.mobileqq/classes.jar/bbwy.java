@@ -1,7 +1,6 @@
 public abstract interface bbwy
-  extends bbwe
 {
-  public abstract void a(int paramInt);
+  public abstract void a();
 }
 
 

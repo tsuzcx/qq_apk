@@ -1,14 +1,17 @@
-public abstract interface bntf
+class bntf
+  implements bntm
 {
-  public abstract bntg a(int paramInt1, int paramInt2);
+  bntf(bnta parambnta) {}
   
-  public abstract void a();
-  
-  public abstract void a(int paramInt);
-  
-  public abstract void a(Throwable paramThrowable);
-  
-  public abstract void b();
+  public void a(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    if (bnta.a(this.a))
+    {
+      bnta.a(this.a, paramBoolean1, paramBoolean2);
+      return;
+    }
+    bnta.b(this.a, paramBoolean1, paramBoolean2);
+  }
 }
 
 

@@ -1,16 +1,9 @@
-public class beai
+import android.graphics.Bitmap;
+import java.net.URL;
+
+public abstract interface beai
 {
-  public boolean a;
-  
-  public beai()
-  {
-    this.a = false;
-  }
-  
-  public beai(boolean paramBoolean)
-  {
-    this.a = paramBoolean;
-  }
+  public abstract Bitmap getBitmap(URL paramURL);
 }
 
 

@@ -1,8 +1,21 @@
-import dov.com.qq.im.aeeditor.module.filter.AEEditorFilterBean;
+import android.app.Activity;
+import android.view.View;
+import com.tencent.shadow.dynamic.host.EnterCallback;
+import cooperation.qqreader.ReaderSplashImpl.3.1;
 
-public abstract interface bloc
+public class bloc
+  implements EnterCallback
 {
-  public abstract boolean a(int paramInt, AEEditorFilterBean paramAEEditorFilterBean);
+  bloc(blnz paramblnz) {}
+  
+  public void onCloseLoadingView() {}
+  
+  public void onEnterComplete() {}
+  
+  public void onShowLoadingView(View paramView)
+  {
+    blnz.a(this.a).runOnUiThread(new ReaderSplashImpl.3.1(this, paramView));
+  }
 }
 
 

@@ -1,14 +1,42 @@
-public class blvv
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.pluginsdk.PluginManagerClient;
+import com.tencent.mobileqq.pluginsdk.PluginManagerHelper.OnPluginManagerLoadedListener;
+import cooperation.qzone.util.QZLog;
+import mqq.util.WeakReference;
+
+final class blvv
+  implements PluginManagerHelper.OnPluginManagerLoadedListener
 {
-  public String a;
-  public String b;
-  public String c;
+  blvv(long paramLong, blvx paramblvx) {}
   
-  public blvv(String paramString1, String paramString2, String paramString3)
+  public void onPluginManagerLoaded(PluginManagerClient paramPluginManagerClient)
   {
-    this.a = paramString1;
-    this.b = paramString2;
-    this.c = paramString3;
+    StringBuilder localStringBuilder = new StringBuilder().append("onPluginManagerLoaded: ");
+    Object localObject;
+    if (paramPluginManagerClient != null)
+    {
+      localObject = Boolean.valueOf(paramPluginManagerClient.isPluginInstalled("qzone_plugin.apk"));
+      QZLog.i("QZoneApiProxy", localObject + " cost " + (System.nanoTime() - this.jdField_a_of_type_Long));
+      if (paramPluginManagerClient.isPluginInstalled("qzone_plugin.apk")) {
+        blvu.b = true;
+      }
+      blvu.a(new WeakReference(paramPluginManagerClient));
+      if (this.jdField_a_of_type_Blvx != null)
+      {
+        localObject = this.jdField_a_of_type_Blvx;
+        if ((paramPluginManagerClient == null) || (!paramPluginManagerClient.isPluginInstalled("qzone_plugin.apk")) || (!blvu.a(BaseApplicationImpl.getApplication()))) {
+          break label133;
+        }
+      }
+    }
+    label133:
+    for (boolean bool = true;; bool = false)
+    {
+      ((blvx)localObject).onLoadOver(bool);
+      return;
+      localObject = "null";
+      break;
+    }
   }
 }
 

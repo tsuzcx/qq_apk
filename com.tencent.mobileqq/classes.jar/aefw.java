@@ -1,24 +1,10 @@
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.TroopMemberListActivity;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
 
-public class aefw
-  implements View.OnClickListener
+public abstract interface aefw
 {
-  public aefw(TroopMemberListActivity paramTroopMemberListActivity) {}
+  public abstract void a(View paramView);
   
-  public void onClick(View paramView)
-  {
-    paramView = new ArrayList();
-    Iterator localIterator = this.a.a.b.iterator();
-    while (localIterator.hasNext()) {
-      paramView.add(Long.valueOf(Long.parseLong((String)localIterator.next())));
-    }
-    TroopMemberListActivity.a(this.a, paramView);
-  }
+  public abstract boolean a(String paramString, int paramInt);
 }
 
 

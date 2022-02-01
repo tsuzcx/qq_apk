@@ -7,7 +7,6 @@ import android.net.Uri;
 import android.os.Parcel;
 import android.os.ParcelFileDescriptor;
 import android.os.Parcelable.Creator;
-import java.io.Closeable;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -102,13 +101,13 @@ final class ContentsSchemeResolver$ContentProviderFileSystem
       Object localObject1 = this.mCR.query(Uri.parse(paramString), null, null, null, null);
       if (localObject1 == null)
       {
-        VFSUtils.closeQuietly((Closeable)localObject1);
+        VFSUtils.closeQuietly((Cursor)localObject1);
         return null;
       }
       int i;
       int j;
       boolean bool;
-      VFSUtils.closeQuietly((Closeable)localObject1);
+      VFSUtils.closeQuietly((Cursor)localObject1);
     }
     finally
     {
@@ -119,11 +118,11 @@ final class ContentsSchemeResolver$ContentProviderFileSystem
         bool = ((Cursor)localObject1).moveToFirst();
         if (!bool)
         {
-          VFSUtils.closeQuietly((Closeable)localObject1);
+          VFSUtils.closeQuietly((Cursor)localObject1);
           return null;
         }
         paramString = new FileSystem.FileEntry(this, paramString, ((Cursor)localObject1).getString(i), ((Cursor)localObject1).getLong(j), 0L, 0L, false);
-        VFSUtils.closeQuietly((Closeable)localObject1);
+        VFSUtils.closeQuietly((Cursor)localObject1);
         return paramString;
       }
       finally

@@ -1,24 +1,25 @@
 package com.tencent.common.app;
 
-import alpg;
-import alvw;
 import android.app.ActivityManager;
 import android.app.ActivityManager.RunningAppProcessInfo;
 import android.content.Context;
 import android.os.Bundle;
 import android.os.Looper;
-import aoks;
-import aorl;
-import awgg;
-import awin;
-import bard;
-import baue;
-import bdpy;
+import anil;
+import anpe;
+import aqlk;
+import aqtl;
+import aywz;
+import bdsv;
+import bdvu;
+import bgut;
+import bguy;
 import com.tencent.mobileqq.highway.HwEngine;
+import com.tencent.mobileqq.imcore.proxy.IMCoreAppRuntime;
+import com.tencent.mobileqq.persistence.EntityManagerFactory;
 import com.tencent.mobileqq.pluginsdk.PluginRuntime;
 import com.tencent.mobileqq.transfile.ProtoReqManager;
 import com.tencent.mobileqq.troop.filemanager.TroopFileProtoReqMgr;
-import com.tencent.mobileqq.utils.httputils.HttpCommunicator;
 import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
@@ -26,15 +27,15 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.concurrent.ConcurrentHashMap;
-import mqq.app.AppRuntime;
+import mqq.app.MobileQQ;
 import mqq.os.MqqHandler;
 
 public abstract class AppInterface
-  extends AppRuntime
-  implements bdpy
+  extends IMCoreAppRuntime
+  implements bguy
 {
   public BaseApplicationImpl app;
-  protected HttpCommunicator comunicator;
+  protected bgut comunicator;
   private MqqHandler defaultHanlder = new MqqHandler(Looper.getMainLooper());
   protected final ConcurrentHashMap<Class, MqqHandler> handlerMap = new ConcurrentHashMap();
   public HwEngine mHwEngine;
@@ -224,9 +225,9 @@ public abstract class AppInterface
     paramPluginRuntime.sendAppDataIncerment(paramString, getAppDataIncermentTags(paramString, paramBoolean, paramInt1, paramInt2, paramInt3, paramLong), paramLong);
   }
   
-  public void addObserver(alpg paramalpg) {}
+  public void addObserver(anil paramanil) {}
   
-  public void addObserver(alpg paramalpg, boolean paramBoolean) {}
+  public void addObserver(anil paramanil, boolean paramBoolean) {}
   
   public void countFlow(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, long paramLong)
   {
@@ -242,7 +243,7 @@ public abstract class AppInterface
     return null;
   }
   
-  public List<alpg> getBusinessObserver(int paramInt)
+  public List<anil> getBusinessObserver(int paramInt)
   {
     return null;
   }
@@ -259,12 +260,12 @@ public abstract class AppInterface
     return null;
   }
   
-  public awgg getEntityManagerFactory()
+  public EntityManagerFactory getEntityManagerFactory()
   {
     return getEntityManagerFactory(getAccount());
   }
   
-  public abstract awgg getEntityManagerFactory(String paramString);
+  public abstract EntityManagerFactory getEntityManagerFactory(String paramString);
   
   public MqqHandler getHandler(Class paramClass)
   {
@@ -274,7 +275,7 @@ public abstract class AppInterface
     return this.defaultHanlder;
   }
   
-  public HttpCommunicator getHttpCommunicatort()
+  public bgut getHttpCommunicatort()
   {
     if (this.comunicator == null) {}
     try
@@ -289,15 +290,30 @@ public abstract class AppInterface
   
   public HwEngine getHwEngine()
   {
+    MobileQQ localMobileQQ;
+    String str;
+    int i;
+    int j;
     if (this.mHwEngine == null)
     {
-      aorl localaorl = (aorl)aoks.a().a(538);
-      this.mHwEngine = new HwEngine(getApplication(), getCurrentAccountUin(), getAppid(), this, alvw.a(), localaorl.a);
+      aqtl localaqtl = (aqtl)aqlk.a().a(538);
+      localMobileQQ = getApplication();
+      str = getCurrentAccountUin();
+      i = getAppid();
+      j = anpe.a();
+      if ((localaqtl == null) || (!localaqtl.a)) {
+        break label81;
+      }
     }
-    return this.mHwEngine;
+    label81:
+    for (boolean bool = true;; bool = false)
+    {
+      this.mHwEngine = new HwEngine(localMobileQQ, str, i, this, j, bool);
+      return this.mHwEngine;
+    }
   }
   
-  public baue getNetEngine(int paramInt)
+  public bdvu getNetEngine(int paramInt)
   {
     return null;
   }
@@ -315,7 +331,7 @@ public abstract class AppInterface
     finally {}
   }
   
-  public bard getTransFileController()
+  public bdsv getTransFileController()
   {
     return null;
   }
@@ -335,7 +351,7 @@ public abstract class AppInterface
   
   protected void httpCommunicatorCreate()
   {
-    this.comunicator = new HttpCommunicator(this, 128);
+    this.comunicator = new bgut(this, 128);
     this.comunicator.a();
   }
   
@@ -373,7 +389,7 @@ public abstract class AppInterface
     this.handlerMap.remove(paramClass);
   }
   
-  public void removeObserver(alpg paramalpg) {}
+  public void removeObserver(anil paramanil) {}
   
   public void reportClickEvent(String paramString1, String paramString2)
   {
@@ -402,7 +418,7 @@ public abstract class AppInterface
     }
     for (;;)
     {
-      awin.a(paramLong, paramBoolean, bool);
+      aywz.a(paramLong, paramBoolean, bool);
       return;
       label156:
       paramBoolean = false;

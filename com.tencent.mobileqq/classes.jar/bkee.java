@@ -1,24 +1,15 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import cooperation.vip.pb.TianShuAccess.AdItem;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.sharp.jni.TraeAudioManager.TraeAudioManagerLooper;
 
-class bkee
-  implements View.OnClickListener
+public class bkee
+  extends Handler
 {
-  bkee(bkeb parambkeb, String paramString) {}
+  public bkee(TraeAudioManager.TraeAudioManagerLooper paramTraeAudioManagerLooper) {}
   
-  public void onClick(View paramView)
+  public void handleMessage(Message paramMessage)
   {
-    bkeb.a(this.jdField_a_of_type_Bkeb);
-    if ((bkeb.a(this.jdField_a_of_type_Bkeb) != null) && (bkeb.a(this.jdField_a_of_type_Bkeb).a() != null) && (bkeb.a(this.jdField_a_of_type_Bkeb).a().app != null) && (bkeb.a(this.jdField_a_of_type_Bkeb) != null))
-    {
-      bkea.a(bkeb.a(this.jdField_a_of_type_Bkeb).a().app, bkeb.a(this.jdField_a_of_type_Bkeb).a(), this.jdField_a_of_type_JavaLangString, 4005);
-      bkea.a(bkeb.a(this.jdField_a_of_type_Bkeb).a().app, 102, String.valueOf(bkeb.a(this.jdField_a_of_type_Bkeb).iAdId.get()), bkeb.a(this.jdField_a_of_type_Bkeb).traceinfo.get());
-    }
+    this.a.a(paramMessage);
   }
 }
 

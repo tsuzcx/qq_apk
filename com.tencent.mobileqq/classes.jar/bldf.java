@@ -1,15 +1,37 @@
-import android.support.annotation.Nullable;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import android.widget.TextView;
+import cooperation.groupvideo.GVideoPluginInstallerActivity;
 
-class bldf
-  implements bmeo<blet>
+public class bldf
+  extends Handler
 {
-  bldf(blda paramblda) {}
-  
-  public void a(@Nullable blet paramblet)
+  public bldf(GVideoPluginInstallerActivity paramGVideoPluginInstallerActivity, Looper paramLooper)
   {
-    if (paramblet != null) {
-      blda.a(this.a, paramblet);
-    }
+    super(paramLooper);
+  }
+  
+  public void dispatchMessage(Message paramMessage)
+  {
+    if (paramMessage == null) {}
+    do
+    {
+      return;
+      switch (paramMessage.what)
+      {
+      default: 
+        return;
+      case 1: 
+        GVideoPluginInstallerActivity.a(this.a);
+        return;
+      }
+    } while ((!(paramMessage.obj instanceof String)) || (this.a.a == null));
+    this.a.a.setText((String)paramMessage.obj);
+    return;
+    GVideoPluginInstallerActivity.b(this.a);
+    return;
+    this.a.finish();
   }
 }
 

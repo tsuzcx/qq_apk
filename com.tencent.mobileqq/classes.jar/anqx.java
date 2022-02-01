@@ -1,41 +1,107 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.Button;
-import com.tencent.mobileqq.activity.photo.album.NewPhotoPreviewActivity;
-import com.tencent.mobileqq.app.ThreadManagerV2;
-import com.tencent.mobileqq.ark.image.PhotoPreviewLogicArk.1.1;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.pb.getnumredmsg.NumRedMsg.NumMsgBusi;
+import com.tencent.pb.getnumredmsg.NumRedMsg.NumMsgReqBody;
+import com.tencent.pb.getnumredmsg.NumRedMsg.NumMsgRspBody;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
-import java.util.Locale;
+import java.util.List;
 
 public class anqx
-  implements View.OnClickListener
+  extends anii
 {
-  anqx(anqw paramanqw) {}
+  protected QQAppInterface a;
   
-  public void onClick(View paramView)
+  public anqx(QQAppInterface paramQQAppInterface)
   {
-    ((NewPhotoPreviewActivity)this.a.mActivity).sendBtn.setClickable(false);
-    if (anqw.a(this.a).selectedPhotoList.size() > 0)
-    {
-      if (QLog.isColorLevel())
-      {
-        paramView = new StringBuilder(anqw.b(this.a).selectedPhotoList.size() * 128);
-        int i = 0;
-        while (i < anqw.c(this.a).selectedPhotoList.size())
-        {
-          paramView.append(String.format(Locale.CHINA, "choose image[%d],path=%s \r\n", new Object[] { Integer.valueOf(i), anqw.d(this.a).selectedPhotoList.get(i) }));
-          i += 1;
-        }
-        QLog.d("PhotoPreviewLogicArk", 2, paramView.toString());
-      }
-      ThreadManagerV2.executeOnSubThread(new PhotoPreviewLogicArk.1.1(this));
+    super(paramQQAppInterface);
+    this.a = paramQQAppInterface;
+  }
+  
+  protected void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  {
+    int i;
+    if ((paramFromServiceMsg.isSuccess()) && (paramObject != null)) {
+      i = 1;
     }
     for (;;)
     {
-      ((NewPhotoPreviewActivity)this.a.mActivity).finish();
-      return;
-      anqp.a().a("callbackArk", null, null);
+      paramFromServiceMsg = (baia)this.a.getManager(65);
+      if (i != 0)
+      {
+        NumRedMsg.NumMsgRspBody localNumMsgRspBody = new NumRedMsg.NumMsgRspBody();
+        try
+        {
+          localNumMsgRspBody.mergeFrom((byte[])paramObject);
+          if (localNumMsgRspBody.i_retcode.get() == 0)
+          {
+            paramFromServiceMsg.a(localNumMsgRspBody, paramToServiceMsg, true);
+            return;
+            i = 0;
+          }
+        }
+        catch (InvalidProtocolBufferMicroException paramObject)
+        {
+          for (;;)
+          {
+            paramObject.printStackTrace();
+            if (QLog.isColorLevel()) {
+              QLog.i("NumRedMsgHandler", 2, "mergeFrom failed");
+            }
+          }
+          if (QLog.isColorLevel()) {
+            QLog.i("NumRedMsgHandler", 2, "rsp code != 0 , error msg == " + localNumMsgRspBody.str_errmsg.get());
+          }
+          paramFromServiceMsg.a(localNumMsgRspBody, paramToServiceMsg, false);
+          return;
+        }
+      }
+    }
+    paramFromServiceMsg.a(null, paramToServiceMsg, false);
+  }
+  
+  public void a(List<NumRedMsg.NumMsgBusi> paramList, int paramInt, String paramString, long[] paramArrayOfLong)
+  {
+    NumRedMsg.NumMsgReqBody localNumMsgReqBody = new NumRedMsg.NumMsgReqBody();
+    localNumMsgReqBody.i_proto_ver.set(1);
+    localNumMsgReqBody.ui_plat_id.set(109);
+    localNumMsgReqBody.str_client_ver.set("8.4.1.4680");
+    localNumMsgReqBody.ui64_uin.set(Long.parseLong(this.a.getCurrentAccountUin()));
+    ArrayList localArrayList = new ArrayList();
+    localArrayList.addAll(paramList);
+    localNumMsgReqBody.rpt_num_msg.set(localArrayList);
+    paramList = new ToServiceMsg("mobileqq.service", this.a.getCurrentAccountUin(), "red_touch_num_svr.get_num_msg");
+    paramList.putWupBuffer(localNumMsgReqBody.toByteArray());
+    paramList.extraData.putInt("NumMsgListenerKey", paramInt);
+    paramList.extraData.putLongArray("NumMsgIDList", paramArrayOfLong);
+    paramList.extraData.putString("NumMsgListenerCmd", paramString);
+    sendPbReq(paramList);
+    if (QLog.isColorLevel()) {
+      QLog.i("NumRedMsgHandler", 2, "sendPbReq called.");
+    }
+  }
+  
+  protected Class<? extends anil> observerClass()
+  {
+    return null;
+  }
+  
+  public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  {
+    if ("red_touch_num_svr.get_num_msg".equals(paramFromServiceMsg.getServiceCmd()))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("NumRedMsgHandler", 2, "onReceive called.");
+      }
+      a(paramToServiceMsg, paramFromServiceMsg, paramObject);
     }
   }
 }

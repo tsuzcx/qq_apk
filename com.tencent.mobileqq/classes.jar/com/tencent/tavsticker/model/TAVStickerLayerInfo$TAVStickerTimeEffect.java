@@ -4,29 +4,29 @@ import com.tencent.tav.coremedia.CMTimeRange;
 
 public class TAVStickerLayerInfo$TAVStickerTimeEffect
 {
-  private CMTimeRange mSourceVideoTimeRange = CMTimeRange.CMTimeRangeInvalid;
-  private CMTimeRange mTimeRange = CMTimeRange.CMTimeRangeInvalid;
   private boolean reversed = false;
+  private CMTimeRange sourceVideoTimeRange = CMTimeRange.CMTimeRangeInvalid;
+  private CMTimeRange timeRange = CMTimeRange.CMTimeRangeInvalid;
   
   public TAVStickerLayerInfo$TAVStickerTimeEffect(CMTimeRange paramCMTimeRange1, CMTimeRange paramCMTimeRange2, boolean paramBoolean)
   {
     if (paramCMTimeRange1 != null) {
-      this.mSourceVideoTimeRange = paramCMTimeRange1;
+      this.sourceVideoTimeRange = paramCMTimeRange1;
     }
     if (paramCMTimeRange2 != null) {
-      this.mTimeRange = paramCMTimeRange2;
+      this.timeRange = paramCMTimeRange2;
     }
     this.reversed = paramBoolean;
   }
   
   public CMTimeRange getSourceVideoTimeRange()
   {
-    return this.mSourceVideoTimeRange;
+    return this.sourceVideoTimeRange;
   }
   
   public CMTimeRange getTimeRange()
   {
-    return this.mTimeRange;
+    return this.timeRange;
   }
   
   public boolean isReversed()
@@ -36,17 +36,17 @@ public class TAVStickerLayerInfo$TAVStickerTimeEffect
   
   public String toString()
   {
-    StringBuilder localStringBuilder = new StringBuilder().append("TAVStickerTimeEffect {mSourceVideoTimeRange : ");
-    if (this.mSourceVideoTimeRange != null)
+    StringBuilder localStringBuilder = new StringBuilder().append("TAVStickerTimeEffect {sourceVideoTimeRange : ");
+    if (this.sourceVideoTimeRange != null)
     {
-      str = "start : " + this.mSourceVideoTimeRange.getStartUs() + ", duration : " + this.mSourceVideoTimeRange.getDurationUs();
-      localStringBuilder = localStringBuilder.append(str).append(", mTimeRange : ");
-      if (this.mTimeRange == null) {
+      str = "start : " + this.sourceVideoTimeRange.getStartUs() + ", duration : " + this.sourceVideoTimeRange.getDurationUs();
+      localStringBuilder = localStringBuilder.append(str).append(", timeRange : ");
+      if (this.timeRange == null) {
         break label152;
       }
     }
     label152:
-    for (String str = "start : " + this.mTimeRange.getStartUs() + ", duration : " + this.mTimeRange.getDurationUs();; str = "null")
+    for (String str = "start : " + this.timeRange.getStartUs() + ", duration : " + this.timeRange.getDurationUs();; str = "null")
     {
       return str + ", reversed : " + this.reversed + "}";
       str = "null";
@@ -56,7 +56,7 @@ public class TAVStickerLayerInfo$TAVStickerTimeEffect
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tavsticker.model.TAVStickerLayerInfo.TAVStickerTimeEffect
  * JD-Core Version:    0.7.0.1
  */

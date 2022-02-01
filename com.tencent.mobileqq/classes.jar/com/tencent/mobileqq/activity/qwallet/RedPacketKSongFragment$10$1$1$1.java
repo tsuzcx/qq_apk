@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.activity.qwallet;
 
-import aivu;
-import aivv;
+import akmy;
+import akmz;
 
 public class RedPacketKSongFragment$10$1$1$1
   implements Runnable
 {
-  public RedPacketKSongFragment$10$1$1$1(aivv paramaivv) {}
+  public RedPacketKSongFragment$10$1$1$1(akmz paramakmz) {}
   
   public void run()
   {
@@ -16,7 +16,7 @@ public class RedPacketKSongFragment$10$1$1$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.qwallet.RedPacketKSongFragment.10.1.1.1
  * JD-Core Version:    0.7.0.1
  */

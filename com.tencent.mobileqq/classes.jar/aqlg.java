@@ -1,25 +1,18 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.filemanager.activity.FMActivity;
-
-public class aqlg
-  extends BroadcastReceiver
+public final class aqlg
 {
-  public aqlg(FMActivity paramFMActivity) {}
+  @Deprecated
+  public int a;
+  public String a;
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public aqlg(int paramInt, String paramString)
   {
-    if ("com.tencent.qlink.destory.fmactivity".equalsIgnoreCase(paramIntent.getAction()))
-    {
-      this.a.finish();
-      this.a.overridePendingTransition(0, 0);
-    }
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aqlg
  * JD-Core Version:    0.7.0.1
  */

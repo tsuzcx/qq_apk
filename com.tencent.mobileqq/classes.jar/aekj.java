@@ -1,28 +1,17 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.UpgradeActivity;
-import com.tencent.mobileqq.activity.UpgradeActivity.15.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import mqq.os.MqqHandler;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.HongbaoShowerActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class aekj
-  implements DialogInterface.OnClickListener
+  implements View.OnClickListener
 {
-  public aekj(UpgradeActivity paramUpgradeActivity) {}
+  public aekj(HongbaoShowerActivity paramHongbaoShowerActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    bflp.b("qqBaseActivity", bfiq.a(10010, 1, 3, 200));
-    bfio.a().a(17, bfiq.a(10010, 1, 3, 200));
-    if (!bfox.a().b()) {
-      bflz.a().a(alud.a(2131716305));
-    }
-    for (;;)
-    {
-      ThreadManager.getSubThreadHandler().postDelayed(new UpgradeActivity.15.1(this), 500L);
-      return;
-      bdio.a(this.a);
-    }
+    HongbaoShowerActivity.a(this.a);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

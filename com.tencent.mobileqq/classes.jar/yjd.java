@@ -1,27 +1,28 @@
-import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.biz.subscribe.fragments.SubscribeBaseFragment;
-import com.tencent.common.app.BaseApplicationImpl;
+import android.support.annotation.Nullable;
+import java.util.concurrent.atomic.AtomicBoolean;
 
-public class yjd
-  extends aobz
+class yjd
+  implements wri
 {
-  public yjd(SubscribeBaseFragment paramSubscribeBaseFragment) {}
+  yjd(yjc paramyjc, wrf paramwrf) {}
   
-  public void onAddColorNote(Bundle paramBundle, boolean paramBoolean)
+  public void a(boolean paramBoolean, @Nullable wre paramwre)
   {
-    super.onAddColorNote(paramBundle, paramBoolean);
-    aofm.a(BaseApplicationImpl.getContext(), 2, true);
-    if (this.a.getActivity() != null)
+    yqp.e("Q.qqstory.home.data.HomeFeedPresenter", "lbs update %b %s", new Object[] { Boolean.valueOf(paramBoolean), paramwre });
+    this.jdField_a_of_type_Wrf.b(this);
+    if (this.jdField_a_of_type_Yjc.a.get())
     {
-      this.a.getActivity().finish();
-      this.a.getActivity().overridePendingTransition(0, 0);
+      yqp.d("Q.qqstory.home.data.HomeFeedPresenter", "is destroy");
+      return;
     }
+    yjc.a(this.jdField_a_of_type_Yjc).a = paramwre;
+    yjc.a(this.jdField_a_of_type_Yjc).a(null, 0);
+    ((yij)wpm.a(11)).a = paramwre;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     yjd
  * JD-Core Version:    0.7.0.1
  */

@@ -1,34 +1,16 @@
-import android.text.TextUtils;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.TroopRequestActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.List;
+import com.tencent.mobileqq.activity.FriendProfileImageActivity;
+import com.tencent.widget.AdapterView;
 
 public class aehm
-  implements View.OnClickListener
+  implements bkik
 {
-  public aehm(TroopRequestActivity paramTroopRequestActivity) {}
+  public aehm(FriendProfileImageActivity paramFriendProfileImageActivity) {}
   
-  public void onClick(View paramView)
+  public boolean a(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    paramView = (amdc)this.a.app.a(26);
-    ArrayList localArrayList = new ArrayList();
-    try
-    {
-      if (!TextUtils.isEmpty(this.a.b)) {
-        localArrayList.add(Long.valueOf(Long.parseLong(this.a.b)));
-      }
-      paramView.a(localArrayList);
-      return;
-    }
-    catch (NumberFormatException paramView)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.d("Q.systemmsg.TroopRequestActivity", 2, "delete Stranger parseLong() error", paramView);
-    }
+    FriendProfileImageActivity.a(this.a);
+    return true;
   }
 }
 

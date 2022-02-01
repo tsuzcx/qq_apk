@@ -1,29 +1,58 @@
+import java.util.HashMap;
+import java.util.Map;
+
 public class bbuo
 {
-  public int a;
-  public long a;
-  public String a;
-  public int b;
-  public long b;
-  public String b;
-  public int c;
-  public int d;
+  private static int jdField_a_of_type_Int;
+  private static String jdField_a_of_type_JavaLangString = "";
+  private static Map<Integer, Integer> jdField_a_of_type_JavaUtilMap = new HashMap();
   
-  public bbuo(int paramInt1, String paramString1, String paramString2, int paramInt2, int paramInt3, int paramInt4, long paramLong)
+  public static int a(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    this.jdField_b_of_type_Int = paramInt2;
-    this.c = paramInt3;
-    this.d = paramInt4;
-    this.jdField_b_of_type_Long = paramLong;
-    this.jdField_a_of_type_Long = System.currentTimeMillis();
+    Integer localInteger = (Integer)jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(paramInt));
+    if (localInteger == null) {
+      return 0;
+    }
+    return localInteger.intValue();
   }
   
-  public String toString()
+  public static String a()
   {
-    return String.format("{id: %d, uin: %s, troopUin: %s, createTime: %d, svipLevel: %d, svipType: %d, globalTroopLevel: %d, mode: %d}", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int), this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, Long.valueOf(this.jdField_a_of_type_Long), Integer.valueOf(this.jdField_b_of_type_Int), Integer.valueOf(this.c), Integer.valueOf(this.d), Long.valueOf(this.jdField_b_of_type_Long) });
+    return jdField_a_of_type_JavaLangString;
+  }
+  
+  public static void a()
+  {
+    try
+    {
+      jdField_a_of_type_JavaLangString = "";
+      jdField_a_of_type_Int = 0;
+      jdField_a_of_type_JavaUtilMap.clear();
+      return;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
+  }
+  
+  public static void a(int paramInt)
+  {
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      return;
+      try
+      {
+        jdField_a_of_type_Int += 1;
+        jdField_a_of_type_JavaLangString = jdField_a_of_type_JavaLangString + paramInt + "|";
+        jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(paramInt), Integer.valueOf(jdField_a_of_type_Int));
+      }
+      finally {}
+    }
   }
 }
 

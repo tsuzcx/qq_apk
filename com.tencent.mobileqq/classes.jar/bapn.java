@@ -1,9 +1,10 @@
-import android.os.Bundle;
+import com.tencent.mobileqq.shortvideo.filter.QQFilterRenderManager.ChainBuilder;
 
-public final class bapn
+public abstract interface bapn
 {
-  public final Bundle a = new Bundle();
-  public Object a;
+  public abstract void a(QQFilterRenderManager.ChainBuilder paramChainBuilder);
+  
+  public abstract void m();
 }
 
 

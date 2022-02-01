@@ -4,26 +4,26 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.text.TextUtils;
-import apfi;
-import awge;
-import awhp;
-import awhs;
+import arif;
+import com.tencent.mobileqq.persistence.Entity;
+import com.tencent.mobileqq.persistence.notColumn;
+import com.tencent.mobileqq.persistence.unique;
 
 public class PrecoverResource
-  extends awge
+  extends Entity
   implements Parcelable
 {
-  public static final Parcelable.Creator<PrecoverResource> CREATOR = new apfi();
-  @awhp
+  public static final Parcelable.Creator<PrecoverResource> CREATOR = new arif();
+  @notColumn
   public int arg1;
-  @awhp
+  @notColumn
   public int arg2;
   public String businessId;
   public String md5;
-  @awhs
+  @unique
   public String pk;
   public String resId;
-  @awhp
+  @notColumn
   public String thirdPartDownloadPath;
   public String url;
   
@@ -129,7 +129,7 @@ public class PrecoverResource
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.data.PrecoverResource
  * JD-Core Version:    0.7.0.1
  */

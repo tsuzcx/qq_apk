@@ -1,61 +1,23 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.ar.aidl.ArEffectConfig;
 
-public class aoxw
-  extends aokh<aoxv>
+public final class aoxw
+  implements Parcelable.Creator<ArEffectConfig>
 {
-  public static aoxv a()
+  public ArEffectConfig a(Parcel paramParcel)
   {
-    return (aoxv)aoks.a().a(377);
+    return new ArEffectConfig(paramParcel);
   }
   
-  public int a()
+  public ArEffectConfig[] a(int paramInt)
   {
-    return 377;
-  }
-  
-  @NonNull
-  public aoxv a(int paramInt)
-  {
-    return new aoxv();
-  }
-  
-  @Nullable
-  public aoxv a(aoko[] paramArrayOfaoko)
-  {
-    if ((paramArrayOfaoko != null) && (paramArrayOfaoko.length > 0)) {
-      return aoxv.a(paramArrayOfaoko);
-    }
-    return null;
-  }
-  
-  public Class<aoxv> a()
-  {
-    return aoxv.class;
-  }
-  
-  public void a(int paramInt) {}
-  
-  public void a(aoxv paramaoxv) {}
-  
-  public int b()
-  {
-    return 0;
-  }
-  
-  public boolean b()
-  {
-    return false;
-  }
-  
-  public boolean c()
-  {
-    return true;
+    return new ArEffectConfig[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aoxw
  * JD-Core Version:    0.7.0.1
  */

@@ -1,87 +1,201 @@
-import android.graphics.BitmapFactory;
-import android.graphics.BitmapFactory.Options;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.image.DownloadParams;
-import com.tencent.image.GifDrawable;
-import com.tencent.image.URLDrawableHandler;
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
+import android.os.Build.VERSION;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.io.IOException;
-import java.net.URL;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.Iterator;
+import java.util.List;
 
-public class baqm
-  extends barz
+class baqm
+  extends BaseAdapter
 {
-  public baqm(BaseApplicationImpl paramBaseApplicationImpl)
+  private int jdField_a_of_type_Int;
+  private Resources jdField_a_of_type_AndroidContentResResources;
+  private LayoutInflater jdField_a_of_type_AndroidViewLayoutInflater;
+  private baqn jdField_a_of_type_Baqn;
+  private List<ShareActionSheetBuilder.ActionSheetItem> jdField_a_of_type_JavaUtilList;
+  
+  public baqm(Context paramContext, List<ShareActionSheetBuilder.ActionSheetItem> paramList)
   {
-    super("AIOPhotoImageDownloader", paramBaseApplicationImpl);
+    this.jdField_a_of_type_JavaUtilList = paramList;
+    this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(paramContext);
   }
   
-  public Object decodeFile(File paramFile, DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
+  public ShareActionSheetBuilder.ActionSheetItem a(int paramInt)
   {
-    try
+    ShareActionSheetBuilder.ActionSheetItem localActionSheetItem;
+    if ((this.jdField_a_of_type_JavaUtilList == null) || (paramInt < 0))
     {
-      paramURLDrawableHandler.publishProgress(9900);
-      paramURLDrawableHandler = paramDownloadParams.urlStr;
-      boolean bool = "aiothumb".equals(paramDownloadParams.url.getProtocol());
-      if (QLog.isColorLevel()) {
-        a("AIOPhotoImageDownloader", "DecodeFile", "DecodeFile START,cacheFile=" + paramFile.getAbsolutePath() + ",url=" + paramURLDrawableHandler);
-      }
-      if ((GifDrawable.isGifFile(paramFile)) && (!bool))
-      {
-        if (!QLog.isColorLevel()) {
-          break label332;
-        }
-        a("AIOPhotoImageDownloader", "DecodeFile", "DecodeFile END,GIF image,cacheFile=" + paramFile.getAbsolutePath() + ",url=" + paramURLDrawableHandler);
-        return null;
-      }
-      paramDownloadParams = new BitmapFactory.Options();
-      paramDownloadParams.inPreferredConfig = bayu.a;
-      paramDownloadParams.inDensity = 160;
-      paramDownloadParams.inTargetDensity = 160;
-      paramDownloadParams.inScreenDensity = 160;
-      if (bool) {
-        try
-        {
-          paramDownloadParams.inJustDecodeBounds = false;
-          paramDownloadParams = BitmapFactory.decodeFile(paramFile.getAbsolutePath(), paramDownloadParams);
-          if (paramDownloadParams != null) {
-            return new bazi(paramFile.getAbsolutePath()).a(paramDownloadParams);
-          }
-          paramFile.delete();
-          throw new IOException("step:decode error, not valid pic");
-        }
-        catch (OutOfMemoryError paramFile)
-        {
-          throw paramFile;
-        }
-      }
-      if (!QLog.isColorLevel()) {
-        break label332;
-      }
+      localActionSheetItem = null;
+      return localActionSheetItem;
     }
-    catch (Exception paramURLDrawableHandler)
+    int j = -1;
+    int i = 0;
+    for (;;)
     {
-      paramDownloadParams = a(paramURLDrawableHandler);
-      if (paramDownloadParams != null)
-      {
-        paramFile = paramDownloadParams;
-        if (paramDownloadParams.length() != 0) {}
+      if (i >= this.jdField_a_of_type_JavaUtilList.size()) {
+        break label89;
       }
-      else
+      localActionSheetItem = (ShareActionSheetBuilder.ActionSheetItem)this.jdField_a_of_type_JavaUtilList.get(i);
+      int k = j;
+      if (localActionSheetItem != null)
       {
-        paramFile = paramURLDrawableHandler.toString();
+        k = j;
+        if (localActionSheetItem.visibility == 0) {
+          k = j + 1;
+        }
       }
-      if (QLog.isColorLevel())
-      {
-        QLog.e("AIOPhotoImageDownloader", 2, paramFile);
-        a("AIOPhotoImageDownloader", "DecodeFile", "DecodeFile FAIL,exceptionmsg:" + paramFile);
+      if (k == paramInt) {
+        break;
       }
-      throw paramURLDrawableHandler;
+      i += 1;
+      j = k;
     }
-    a("AIOPhotoImageDownloader", "DecodeFile", "DecodeFile END,is not Thumb,cacheFile=" + paramFile.getAbsolutePath() + ",url=" + paramURLDrawableHandler);
-    label332:
+    label89:
     return null;
+  }
+  
+  public int getCount()
+  {
+    if (this.jdField_a_of_type_JavaUtilList == null) {
+      return 0;
+    }
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    int i = 0;
+    if (localIterator.hasNext())
+    {
+      ShareActionSheetBuilder.ActionSheetItem localActionSheetItem = (ShareActionSheetBuilder.ActionSheetItem)localIterator.next();
+      if ((localActionSheetItem == null) || (localActionSheetItem.visibility != 0)) {
+        break label60;
+      }
+      i += 1;
+    }
+    label60:
+    for (;;)
+    {
+      break;
+      return i;
+    }
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    int j = 0;
+    if (this.jdField_a_of_type_AndroidContentResResources == null) {
+      this.jdField_a_of_type_AndroidContentResResources = paramViewGroup.getContext().getResources();
+    }
+    if (this.jdField_a_of_type_Int == 0) {
+      this.jdField_a_of_type_Int = ((int)this.jdField_a_of_type_AndroidContentResResources.getDimension(2131296728));
+    }
+    if (this.jdField_a_of_type_Baqn == null) {
+      this.jdField_a_of_type_Baqn = new baqn(paramViewGroup.getContext());
+    }
+    View localView;
+    if (paramView == null)
+    {
+      localView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131558935, paramViewGroup, false);
+      paramView = new bgsa();
+      paramView.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131377352));
+      paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131377353));
+      localView.setTag(paramView);
+    }
+    for (;;)
+    {
+      paramView.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder$ActionSheetItem = a(paramInt);
+      if (paramView.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder$ActionSheetItem != null) {
+        break;
+      }
+      QLog.e("ShareActionSheet", 2, "ShareActionSheet.ActionSheetItemAdapter.getView() getItem(" + paramInt + ") == null !!!");
+      EventCollector.getInstance().onListGetView(paramInt, localView, paramViewGroup, getItemId(paramInt));
+      return localView;
+      localObject = (bgsa)paramView.getTag();
+      localView = paramView;
+      paramView = (View)localObject;
+    }
+    localView.setId(paramView.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder$ActionSheetItem.id);
+    paramView.jdField_a_of_type_AndroidWidgetTextView.setText(baqk.a(paramView.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder$ActionSheetItem.label, 6));
+    int i = -8947849;
+    Object localObject = paramView.jdField_a_of_type_AndroidWidgetTextView;
+    if (paramView.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder$ActionSheetItem.enable)
+    {
+      label256:
+      ((TextView)localObject).setTextColor(i);
+      if (!paramView.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder$ActionSheetItem.iconNeedBg) {
+        break label493;
+      }
+      if (paramView.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder$ActionSheetItem.iconDrawable == null) {
+        break label434;
+      }
+      localObject = paramView.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder$ActionSheetItem.iconDrawable;
+      label292:
+      i = ((Drawable)localObject).getIntrinsicWidth();
+      int k = ((Drawable)localObject).getIntrinsicHeight();
+      if (this.jdField_a_of_type_Int <= i) {
+        break label453;
+      }
+      i = (int)((this.jdField_a_of_type_Int - i) / 2.0F);
+      label328:
+      if (this.jdField_a_of_type_Int > k) {
+        j = (int)((this.jdField_a_of_type_Int - k) / 2.0F);
+      }
+      localObject = this.jdField_a_of_type_Baqn.a((Drawable)localObject, i, j);
+      if (!paramView.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder$ActionSheetItem.enable) {
+        break label459;
+      }
+      Drawable localDrawable = baqn.a(this.jdField_a_of_type_Baqn, (Drawable)localObject);
+      localObject = this.jdField_a_of_type_Baqn.a((Drawable)localObject, localDrawable);
+      paramView.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localObject);
+      label408:
+      if (Build.VERSION.SDK_INT < 16) {
+        break label482;
+      }
+      paramView.jdField_a_of_type_AndroidWidgetImageView.setBackground(null);
+    }
+    for (;;)
+    {
+      break;
+      i = 2138535799;
+      break label256;
+      label434:
+      localObject = this.jdField_a_of_type_AndroidContentResResources.getDrawable(paramView.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder$ActionSheetItem.icon);
+      break label292;
+      label453:
+      i = 0;
+      break label328;
+      label459:
+      localObject = baqn.b(this.jdField_a_of_type_Baqn, (Drawable)localObject);
+      paramView.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localObject);
+      break label408;
+      label482:
+      paramView.jdField_a_of_type_AndroidWidgetImageView.setBackgroundDrawable(null);
+      continue;
+      label493:
+      paramView.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130837562);
+      if (paramView.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder$ActionSheetItem.iconDrawable != null)
+      {
+        if (Build.VERSION.SDK_INT >= 16) {
+          paramView.jdField_a_of_type_AndroidWidgetImageView.setBackground(paramView.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder$ActionSheetItem.iconDrawable);
+        } else {
+          paramView.jdField_a_of_type_AndroidWidgetImageView.setBackgroundDrawable(paramView.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder$ActionSheetItem.iconDrawable);
+        }
+      }
+      else {
+        paramView.jdField_a_of_type_AndroidWidgetImageView.setBackgroundResource(paramView.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder$ActionSheetItem.icon);
+      }
+    }
   }
 }
 

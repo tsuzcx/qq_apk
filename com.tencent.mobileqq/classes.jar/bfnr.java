@@ -1,27 +1,26 @@
+import android.view.View;
+import com.tencent.mobileqq.troop.troop_apps.entry.ui.BulkSendMessageFragment;
+import com.tencent.mobileqq.widget.ClearableEditText;
+import java.util.List;
+
 public class bfnr
+  implements bkhw
 {
-  protected String a;
-  protected String b;
+  public bfnr(BulkSendMessageFragment paramBulkSendMessageFragment, bkho parambkho) {}
   
-  public bfnr(String paramString1, String paramString2)
+  public void OnClick(View paramView, int paramInt)
   {
-    this.a = paramString1;
-    this.b = paramString2;
-  }
-  
-  public String a()
-  {
-    return this.a;
-  }
-  
-  public String b()
-  {
-    return this.b;
+    if (paramInt < this.jdField_a_of_type_ComTencentMobileqqTroopTroop_appsEntryUiBulkSendMessageFragment.jdField_a_of_type_JavaUtilList.size())
+    {
+      paramView = (String)this.jdField_a_of_type_ComTencentMobileqqTroopTroop_appsEntryUiBulkSendMessageFragment.jdField_a_of_type_JavaUtilList.get(paramInt);
+      this.jdField_a_of_type_ComTencentMobileqqTroopTroop_appsEntryUiBulkSendMessageFragment.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText.setText(paramView);
+    }
+    this.jdField_a_of_type_Bkho.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bfnr
  * JD-Core Version:    0.7.0.1
  */

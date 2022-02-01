@@ -1,16 +1,59 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import android.widget.EditText;
+import android.os.RemoteException;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qzone.plugin.PluginRecord;
+import cooperation.qzone.util.NetworkState;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 class bmlg
-  implements DialogInterface.OnDismissListener
+  implements bmec
 {
-  bmlg(bmla parambmla, bmyu parambmyu) {}
+  bmlg(bmle parambmle, JSONObject paramJSONObject, boolean paramBoolean, String paramString) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void a(bmcj parambmcj)
   {
-    this.jdField_a_of_type_Bmla.a.a(0);
-    bmla.a(this.jdField_a_of_type_Bmla).setText(this.jdField_a_of_type_Bmyu.a());
+    if (parambmcj == null) {
+      return;
+    }
+    try
+    {
+      localPluginRecord = parambmcj.a("qzone_live_video_plugin_hack.apk");
+      if ((localPluginRecord == null) || (localPluginRecord.state != 4)) {
+        break label104;
+      }
+      this.jdField_a_of_type_OrgJsonJSONObject.put("isInstalled", true);
+    }
+    catch (JSONException parambmcj)
+    {
+      for (;;)
+      {
+        PluginRecord localPluginRecord;
+        parambmcj.printStackTrace();
+        return;
+        if ((localPluginRecord != null) && ((localPluginRecord.state == 2) || (NetworkState.isWifiConn())))
+        {
+          this.jdField_a_of_type_OrgJsonJSONObject.put("isInstalled", false);
+          if (this.jdField_a_of_type_Boolean)
+          {
+            if (QLog.isColorLevel()) {
+              QLog.i("QZoneLiveJsPlugin", 2, " needInstall:" + this.jdField_a_of_type_Boolean + ",需要安装插件");
+            }
+            parambmcj.a(localPluginRecord.id, null, 0);
+          }
+        }
+      }
+    }
+    catch (RemoteException parambmcj)
+    {
+      parambmcj.printStackTrace();
+    }
+    if (QLog.isColorLevel()) {
+      QLog.i("QZoneLiveJsPlugin", 2, " 返回结果：" + this.jdField_a_of_type_OrgJsonJSONObject);
+    }
+    this.jdField_a_of_type_Bmle.a.callJs(this.jdField_a_of_type_JavaLangString, new String[] { this.jdField_a_of_type_OrgJsonJSONObject.toString() });
+    return;
+    label104:
   }
 }
 

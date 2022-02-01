@@ -1,33 +1,51 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.aio.item.StructingMsgItemBuilder;
-import com.tencent.mobileqq.data.MessageForStructing;
-import com.tencent.mobileqq.structmsg.AbsStructMsg;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.NinePatch;
+import android.graphics.Paint;
+import android.graphics.Rect;
 
 public class agce
-  implements DialogInterface.OnClickListener
 {
-  public agce(StructingMsgItemBuilder paramStructingMsgItemBuilder, MessageForStructing paramMessageForStructing) {}
+  public Bitmap a;
+  public NinePatch a;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a()
   {
-    Bundle localBundle = new Bundle();
-    if ((this.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing.structingMsg.source_puin != null) && (!"".equals(this.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing.structingMsg.source_puin))) {
-      localBundle.putString("source_puin", this.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing.structingMsg.source_puin);
+    if (this.jdField_a_of_type_AndroidGraphicsBitmap != null)
+    {
+      this.jdField_a_of_type_AndroidGraphicsBitmap.recycle();
+      this.jdField_a_of_type_AndroidGraphicsBitmap = null;
     }
-    localBundle.putInt("forward_type", -3);
-    this.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing.structingMsg.mCommentText = null;
-    localBundle.putInt("structmsg_service_id", this.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing.structingMsg.mMsgServiceID);
-    localBundle.putByteArray("stuctmsg_bytes", this.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing.structingMsg.getBytes());
-    localBundle.putLong("structmsg_uniseq", this.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing.uniseq);
-    localBundle.putInt("accostType", this.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing.structingMsg.sourceAccoutType);
-    Intent localIntent = new Intent();
-    localIntent.putExtras(localBundle);
-    aryv.a((Activity)this.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder.a, localIntent, 21);
-    paramDialogInterface.dismiss();
+  }
+  
+  public void a(Bitmap paramBitmap)
+  {
+    if (paramBitmap != null)
+    {
+      this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
+      paramBitmap = this.jdField_a_of_type_AndroidGraphicsBitmap.getNinePatchChunk();
+      if ((paramBitmap != null) && (NinePatch.isNinePatchChunk(paramBitmap))) {
+        this.jdField_a_of_type_AndroidGraphicsNinePatch = new NinePatch(this.jdField_a_of_type_AndroidGraphicsBitmap, paramBitmap, null);
+      }
+    }
+    else
+    {
+      return;
+    }
+    this.jdField_a_of_type_AndroidGraphicsNinePatch = null;
+  }
+  
+  public void a(Canvas paramCanvas, Rect paramRect1, Rect paramRect2, Paint paramPaint)
+  {
+    if (this.jdField_a_of_type_AndroidGraphicsNinePatch != null) {
+      if (paramPaint != null) {
+        this.jdField_a_of_type_AndroidGraphicsNinePatch.draw(paramCanvas, paramRect2, paramPaint);
+      }
+    }
+    while ((this.jdField_a_of_type_AndroidGraphicsBitmap == null) || (paramPaint == null)) {
+      return;
+    }
+    paramCanvas.drawBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap, paramRect1, paramRect2, paramPaint);
   }
 }
 

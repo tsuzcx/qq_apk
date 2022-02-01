@@ -1,47 +1,86 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.aio.ForwardUtils;
-import com.tencent.qphone.base.util.QLog;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.Rect;
+import com.tencent.image.NativeGifIndex8;
+import java.io.File;
+import java.lang.ref.WeakReference;
+import java.util.ArrayList;
 
-class asdh
-  extends nac
+public class asdh
+  extends NativeGifIndex8
 {
-  asdh(asdb paramasdb, String paramString1, String paramString2, String paramString3) {}
+  private boolean a = true;
+  private boolean b;
+  private boolean c;
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public asdh(File paramFile, int paramInt, boolean paramBoolean)
   {
-    if (paramInt == 0) {}
-    for (boolean bool = true;; bool = false)
-    {
-      aseh.a("KEY_STAGE_2_IMAGE_B77", bool);
-      if (paramBundle == null) {
-        break;
-      }
-      long l = paramBundle.getLong("0xb77_9_sendTime", -1L);
-      QLog.d("ForwardOption.ForwardSdkShareOption", 1, new Object[] { "handleGetMessageState currentRequestTime =", Long.valueOf(asdb.a(this.jdField_a_of_type_Asdb)), ", sendStamp = ", Long.valueOf(l) });
-      if ((l != -1L) && (l == asdb.a(this.jdField_a_of_type_Asdb))) {
-        break;
-      }
-      asdb.a(this.jdField_a_of_type_Asdb, asdb.e(), this.jdField_a_of_type_JavaLangString);
-      return;
-    }
-    azqs.b(null, "dc00898", "", "", "0X8009C94", "0X8009C94", 0, 0, "" + paramInt, "4", this.b, this.c);
-    QLog.d("ForwardOption.ForwardSdkShareOption", 1, new Object[] { "大图发送消息后客户端收到回调=0X8009C94, errorCode=", Integer.valueOf(paramInt), ", fileType=4, toType=", this.b, ", title=", this.c });
-    if ((paramInt != 0) || (paramArrayOfByte == null))
-    {
-      paramArrayOfByte = ForwardUtils.a(paramArrayOfByte);
-      asdb.a(this.jdField_a_of_type_Asdb, (String)paramArrayOfByte[2], this.jdField_a_of_type_JavaLangString);
-      return;
-    }
-    asdb.a(this.jdField_a_of_type_Asdb, "", this.jdField_a_of_type_JavaLangString);
+    super(paramFile, paramBoolean, true, 0, 0, 0.0F);
   }
   
-  public boolean a(int paramInt, String paramString, Bundle paramBundle)
+  public void a()
   {
-    if (!TextUtils.isEmpty(paramString)) {
-      QLog.e("ForwardOption.ForwardSdkShareOption", 1, new Object[] { "onError msg =", paramString });
+    this.a = true;
+  }
+  
+  public void b()
+  {
+    this.a = false;
+    this.b = true;
+  }
+  
+  public void doApplyNextFrame()
+  {
+    super.doApplyNextFrame();
+    if (this.c)
+    {
+      this.c = false;
+      this.b = false;
     }
-    return super.a(paramInt, paramString, paramBundle);
+  }
+  
+  public void draw(Canvas paramCanvas, Rect paramRect, Paint paramPaint, boolean paramBoolean)
+  {
+    initHandlerAndRunnable();
+    if ((!this.a) && (this.mFirstFrameBitmap != null)) {
+      if (this.mFirstFrameBitmap != null) {
+        paramCanvas.drawBitmap(this.mFirstFrameBitmap, null, paramRect, paramPaint);
+      }
+    }
+    do
+    {
+      return;
+      if (!this.b) {
+        break;
+      }
+      if (this.mFirstFrameBitmap != null) {
+        paramCanvas.drawBitmap(this.mFirstFrameBitmap, null, paramRect, paramPaint);
+      }
+      if (!sPaused)
+      {
+        executeNewTask();
+        return;
+      }
+    } while (this.mIsInPendingAction);
+    sPendingActions.add(new WeakReference(this));
+    this.mIsInPendingAction = true;
+    return;
+    super.draw(paramCanvas, paramRect, paramPaint, paramBoolean);
+  }
+  
+  public void getNextFrame()
+  {
+    try
+    {
+      if (this.b)
+      {
+        this.c = true;
+        super.reset();
+      }
+      super.getNextFrame();
+      return;
+    }
+    finally {}
   }
 }
 

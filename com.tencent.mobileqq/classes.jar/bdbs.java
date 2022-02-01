@@ -1,6 +1,10 @@
+import com.tencent.mobileqq.data.MessageForPtt;
+
 public abstract interface bdbs
 {
-  public abstract void a(boolean paramBoolean1, boolean paramBoolean2, String paramString);
+  public abstract void a(String paramString, MessageForPtt paramMessageForPtt);
+  
+  public abstract void a(boolean paramBoolean, MessageForPtt paramMessageForPtt);
 }
 
 

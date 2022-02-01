@@ -1,57 +1,54 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.View.OnLongClickListener;
-import com.tencent.mobileqq.activity.aio.item.ArkAppLoadLayout;
-import com.tencent.mobileqq.activity.aio.item.ArkAppView;
-import com.tencent.mobileqq.data.MessageForArkFlashChat;
-import com.tencent.mobileqq.flashchat.FlashChatItem;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.util.concurrent.RejectedExecutionException;
 
-public class arwo
-  extends RecyclerView.ViewHolder
-  implements View.OnClickListener, View.OnLongClickListener
+class arwo
+  implements URLDrawable.URLDrawableListener
 {
-  public int a;
-  public arwh a;
-  arwp a;
-  public ArkAppLoadLayout a;
-  public ArkAppView a;
-  public MessageForArkFlashChat a;
-  public FlashChatItem a;
-  public int b;
-  int c;
+  arwo(arwh paramarwh) {}
   
-  public arwo(View paramView, arwp paramarwp, int paramInt)
+  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
+  
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
   {
-    super(paramView);
-    this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkFlashChat = null;
-    if (paramarwp != null) {
-      this.jdField_a_of_type_Arwp = paramarwp;
+    if ((paramThrowable instanceof RejectedExecutionException)) {
+      if (QLog.isColorLevel()) {
+        QLog.i("BigEmotionDownloadedAdapter", 2, "arg0.getConstantState() = " + paramURLDrawable.getConstantState());
+      }
     }
-    this.c = paramInt;
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppView = ((ArkAppView)paramView.findViewById(2131362798));
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppLoadLayout = ((ArkAppLoadLayout)paramView.findViewById(2131369757));
-    this.itemView.setOnClickListener(this);
-    this.itemView.setOnTouchListener(paramarwp);
-  }
-  
-  public void onClick(View paramView)
-  {
-    if (this.jdField_a_of_type_Arwp != null) {
-      this.jdField_a_of_type_Arwp.a(paramView, getPosition(), this.c);
-    }
-  }
-  
-  public boolean onLongClick(View paramView)
-  {
-    boolean bool = false;
-    if (this.jdField_a_of_type_Arwp != null)
+    label41:
+    int i;
+    do
     {
-      this.jdField_a_of_type_Arwp.b(paramView, getPosition(), this.c);
-      bool = true;
-    }
-    return bool;
+      do
+      {
+        do
+        {
+          break label41;
+          do
+          {
+            return;
+          } while (paramURLDrawable == null);
+          paramThrowable = paramURLDrawable.getFileInLocal();
+          if ((paramThrowable != null) && (paramThrowable.exists())) {
+            paramThrowable.delete();
+          }
+          paramThrowable = paramURLDrawable.getTag();
+        } while (!(paramThrowable instanceof Integer));
+        i = ((Integer)paramThrowable).intValue();
+      } while (i >= 3);
+      i += 1;
+      paramURLDrawable.setTag(Integer.valueOf(i));
+      paramURLDrawable.restartDownload();
+    } while (!QLog.isColorLevel());
+    QLog.i("BigEmotionDownloadedAdapter", 2, "download recomment comic pic , try count = " + i);
   }
+  
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable) {}
 }
 
 

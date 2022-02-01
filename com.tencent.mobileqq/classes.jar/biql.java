@@ -1,16 +1,26 @@
-import java.io.File;
+import java.util.ArrayList;
+import java.util.HashMap;
 
-public abstract interface biql
+public class biql
 {
-  public abstract void a(File paramFile1, File paramFile2);
+  public static ArrayList<String> a;
+  public static HashMap<String, Class<?>> a;
   
-  public abstract void a(File paramFile1, File paramFile2, File paramFile3);
-  
-  public abstract void a(File paramFile1, File paramFile2, Throwable paramThrowable);
+  static
+  {
+    jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    jdField_a_of_type_JavaUtilHashMap = new HashMap();
+    jdField_a_of_type_JavaUtilArrayList.add("getQueryDownloadAction");
+    jdField_a_of_type_JavaUtilArrayList.add("checkUpdate");
+    jdField_a_of_type_JavaUtilArrayList.add("picUpload");
+    jdField_a_of_type_JavaUtilArrayList.add("gSetPackageScanSetting");
+    jdField_a_of_type_JavaUtilArrayList.add("getAllSDKDownloadInfos");
+    jdField_a_of_type_JavaUtilArrayList.add("queryInstalledAppInfo");
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     biql
  * JD-Core Version:    0.7.0.1
  */

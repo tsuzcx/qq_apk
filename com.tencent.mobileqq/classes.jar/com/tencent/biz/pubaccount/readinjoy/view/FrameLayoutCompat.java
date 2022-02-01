@@ -6,12 +6,12 @@ import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.FrameLayout;
-import rpt;
+import sms;
 
 public class FrameLayoutCompat
   extends FrameLayout
 {
-  private rpt a;
+  private sms a;
   
   public FrameLayoutCompat(@NonNull Context paramContext)
   {
@@ -36,14 +36,14 @@ public class FrameLayoutCompat
     }
   }
   
-  public void setVisibilityChangedListener(rpt paramrpt)
+  public void setVisibilityChangedListener(sms paramsms)
   {
-    this.a = paramrpt;
+    this.a = paramsms;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.FrameLayoutCompat
  * JD-Core Version:    0.7.0.1
  */

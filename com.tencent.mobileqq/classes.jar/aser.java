@@ -1,44 +1,46 @@
-import android.graphics.Bitmap;
-import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.util.Pair;
-import android.widget.ImageView;
+import com.tencent.mobileqq.emotionintegrate.SearchEmoticonFragment;
+import com.tencent.mobileqq.emotionintegrate.SearchEmoticonWebBean;
+import com.tencent.mobileqq.webview.swift.JsBridgeListener;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
 import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-class aser
-  implements bdbc
+public class aser
+  extends WebViewPlugin
 {
-  aser(asep paramasep) {}
-  
-  public void onDecodeTaskCompleted(int paramInt1, int paramInt2, String paramString, Bitmap paramBitmap)
+  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
   {
-    QLog.i("ForwardTroopMemberControllerForMiniPie", 1, "onDecodeTaskCompleted uin: " + paramString);
-    if (asep.a(this.a) == null) {}
-    while (asep.a(this.a).a()) {
-      return;
-    }
-    paramInt2 = asep.a(this.a).findFirstVisibleItemPosition();
-    int i = asep.a(this.a).getChildCount();
-    paramInt1 = 1;
-    label74:
-    if (paramInt1 < i) {
-      if (((String)((Pair)asep.a(this.a).a.get(paramInt2 + paramInt1 - 1)).first).equals(paramString))
-      {
-        asew localasew = (asew)asep.a(this.a).getChildViewHolder(asep.a(this.a).getChildAt(paramInt1));
-        if (!(localasew instanceof asev)) {
-          break label170;
-        }
-        ((asev)localasew).a.setImageBitmap(paramBitmap);
-      }
-    }
-    for (;;)
+    boolean bool = false;
+    if ((!"emoticon".equals(paramString2)) || (("showEmoticon".equals(paramString3)) && (paramVarArgs != null) && (paramVarArgs.length > 0))) {}
+    try
     {
-      paramInt1 += 1;
-      break label74;
-      break;
-      label170:
-      QLog.e("ForwardTroopMemberControllerForMiniPie", 2, "onDecodeTaskCompleted viewHolder in wrong instance ! ");
+      paramJsBridgeListener = new JSONObject(paramVarArgs[0]);
+      paramString1 = new SearchEmoticonWebBean();
+      paramString1.jdField_a_of_type_JavaLangString = paramJsBridgeListener.optString("emt_name", "");
+      paramString1.jdField_b_of_type_JavaLangString = paramJsBridgeListener.optString("emt_oriUrl", "");
+      paramString1.jdField_c_of_type_JavaLangString = paramJsBridgeListener.optString("emt_oriMd5", "");
+      paramString1.jdField_a_of_type_Int = paramJsBridgeListener.optInt("emt_oriFileSize", 0);
+      paramString1.jdField_b_of_type_Int = paramJsBridgeListener.optInt("emt_oriWidth", 0);
+      paramString1.jdField_c_of_type_Int = paramJsBridgeListener.optInt("emt_oriHeight", 0);
+      paramString1.jdField_d_of_type_Int = paramJsBridgeListener.optInt("emt_type", 0);
+      paramString1.jdField_d_of_type_JavaLangString = paramJsBridgeListener.optString("emt_packCoverUrl", "");
+      paramString1.e = paramJsBridgeListener.optString("emt_packId", "");
+      paramString1.f = paramJsBridgeListener.optString("emt_packName", "");
+      paramString1.g = paramJsBridgeListener.optString("emt_miniId", "");
+      paramString1.h = paramJsBridgeListener.optString("emt_miniName", "");
+      SearchEmoticonFragment.a(this.mRuntime.a(), paramString1);
+      bool = true;
+      return bool;
+    }
+    catch (JSONException paramJsBridgeListener)
+    {
+      for (;;)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("EmoticonPlugin", 2, "showEmoticon error : " + bkgg.a(paramJsBridgeListener));
+        }
+      }
     }
   }
 }

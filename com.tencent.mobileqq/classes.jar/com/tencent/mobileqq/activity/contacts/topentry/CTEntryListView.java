@@ -4,7 +4,7 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.ViewConfiguration;
-import azkz;
+import bclx;
 import com.tencent.mobileqq.app.FrameHelperActivity;
 import com.tencent.widget.HorizontalListView;
 
@@ -62,7 +62,7 @@ public class CTEntryListView
       if ((!this.jdField_a_of_type_Boolean) || (i <= k)) {
         break label200;
       }
-      if ((j / i >= 0.6F) || (this.jdField_a_of_type_Int <= (int)(azkz.jdField_a_of_type_Int * 0.1F))) {
+      if ((j / i >= 0.6F) || (this.jdField_a_of_type_Int <= (int)(bclx.jdField_a_of_type_Int * 0.1F))) {
         break label208;
       }
     }
@@ -110,7 +110,7 @@ public class CTEntryListView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contacts.topentry.CTEntryListView
  * JD-Core Version:    0.7.0.1
  */

@@ -13,14 +13,14 @@ class WebView$2
   {
     try
     {
-      if (Apn.getApnType(this.val$context) == 3) {}
+      if (Apn.getApnType(this.a) == 3) {}
       for (boolean bool = true;; bool = false)
       {
-        QbSdk.sIsApnWifi = bool;
-        QbSdk.sApnRecordTime = System.currentTimeMillis();
+        QbSdk.e = bool;
+        QbSdk.f = System.currentTimeMillis();
         IntentFilter localIntentFilter = new IntentFilter();
         localIntentFilter.addAction("android.net.conn.CONNECTIVITY_CHANGE");
-        this.val$context.getApplicationContext().registerReceiver(WebView.access$200(), localIntentFilter);
+        this.a.getApplicationContext().registerReceiver(WebView.e(), localIntentFilter);
         return;
       }
       return;
@@ -30,7 +30,7 @@ class WebView$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.smtt.sdk.WebView.2
  * JD-Core Version:    0.7.0.1
  */

@@ -1,22 +1,24 @@
-import com.tencent.mobileqq.activity.richmedia.FlowCameraActivity2;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Handler;
+import android.os.Message;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.activity.history.ChatHistoryC2CAllFragment;
 
 public class ajpm
-  implements azhn
+  extends Handler
 {
-  public ajpm(FlowCameraActivity2 paramFlowCameraActivity2) {}
+  public ajpm(ChatHistoryC2CAllFragment paramChatHistoryC2CAllFragment) {}
   
-  public void a(Exception paramException)
+  public void handleMessage(Message paramMessage)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("FlowCameraActivity", 2, "[onCameraException]", paramException);
-    }
-  }
-  
-  public void a(RuntimeException paramRuntimeException)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("FlowCameraActivity", 2, "[onDispatchThreadException]", paramRuntimeException);
+    if (paramMessage.what == 1)
+    {
+      if ((this.a.a != null) && (this.a.a.isShowing())) {
+        this.a.a.dismiss();
+      }
+      this.a.a = new biau(this.a.getActivity(), this.a.getActivity().getTitleBarHeight());
+      this.a.a.setCancelable(false);
+      this.a.a.c(2131691339);
+      this.a.a.show();
     }
   }
 }

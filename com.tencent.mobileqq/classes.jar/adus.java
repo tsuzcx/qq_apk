@@ -1,30 +1,15 @@
-import android.view.ActionMode;
-import android.view.ActionMode.Callback;
-import android.view.Menu;
-import android.view.MenuItem;
-import com.tencent.mobileqq.activity.RegisterPhoneNumActivity;
+import com.tencent.mobileqq.activity.ChatHistoryFileActivity;
 
-public class adus
-  implements ActionMode.Callback
+class adus
+  implements awxb
 {
-  public adus(RegisterPhoneNumActivity paramRegisterPhoneNumActivity) {}
+  adus(adur paramadur) {}
   
-  public boolean onActionItemClicked(ActionMode paramActionMode, MenuItem paramMenuItem)
+  public void a()
   {
-    return false;
-  }
-  
-  public boolean onCreateActionMode(ActionMode paramActionMode, Menu paramMenu)
-  {
-    paramMenu.clear();
-    return false;
-  }
-  
-  public void onDestroyActionMode(ActionMode paramActionMode) {}
-  
-  public boolean onPrepareActionMode(ActionMode paramActionMode, Menu paramMenu)
-  {
-    return false;
+    this.a.jdField_a_of_type_Awxi.a(this.a.jdField_a_of_type_JavaUtilList, 2, 5);
+    this.a.jdField_a_of_type_Awxi.a();
+    this.a.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryFileActivity.a();
   }
 }
 

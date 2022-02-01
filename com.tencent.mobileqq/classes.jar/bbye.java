@@ -1,103 +1,45 @@
-import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.TroopInfo;
+import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
+import android.os.Handler;
 import com.tencent.qphone.base.util.QLog;
-import mqq.manager.Manager;
+import oicq.wlogin_sdk.request.WFastLoginInfo;
+import oicq.wlogin_sdk.request.WUserSigInfo;
+import oicq.wlogin_sdk.request.WtloginHelper;
+import oicq.wlogin_sdk.request.WtloginListener;
+import oicq.wlogin_sdk.tools.ErrMsg;
 
-public class bbye
-  implements Manager
+class bbye
+  extends WtloginListener
 {
-  private long a;
-  public bbyd a;
+  bbye(bbyc parambbyc, String paramString, WtloginHelper paramWtloginHelper, int paramInt, Context paramContext) {}
   
-  public bbye(QQAppInterface paramQQAppInterface) {}
-  
-  public bbyd a(long paramLong, boolean paramBoolean, TroopChatPie paramTroopChatPie, String paramString)
+  public void OnException(ErrMsg paramErrMsg, int paramInt, WUserSigInfo paramWUserSigInfo)
   {
+    super.OnException(paramErrMsg, paramInt, paramWUserSigInfo);
     if (QLog.isColorLevel()) {
-      QLog.d("TroopClassControllerMan", 2, "updateTroopAioClassUI troopClassType" + paramLong + ", currentTroopClassType" + this.jdField_a_of_type_Long);
+      QLog.d(getClass().getSimpleName(), 2, "geta1 OnException " + paramErrMsg);
     }
-    if ((paramLong != this.jdField_a_of_type_Long) && (this.jdField_a_of_type_Bbyd != null)) {
-      this.jdField_a_of_type_Bbyd.a(false, paramTroopChatPie, paramBoolean);
-    }
-    this.jdField_a_of_type_Bbyd = a(paramTroopChatPie, paramString);
-    if (this.jdField_a_of_type_Bbyd != null) {
-      this.jdField_a_of_type_Bbyd.a(true, paramTroopChatPie, paramBoolean);
-    }
-    for (;;)
+    bbyc.a = false;
+    this.jdField_a_of_type_Bbyc.b.removeMessages(0);
+  }
+  
+  public void onGetA1WithA1(String paramString, long paramLong1, int paramInt1, long paramLong2, byte[] paramArrayOfByte1, long paramLong3, long paramLong4, long paramLong5, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3, WUserSigInfo paramWUserSigInfo, WFastLoginInfo paramWFastLoginInfo, int paramInt2, ErrMsg paramErrMsg)
+  {
+    this.jdField_a_of_type_Bbyc.b.removeMessages(0);
+    bbyc.a = false;
+    if (paramInt2 != 0)
     {
-      this.jdField_a_of_type_Long = paramLong;
-      return this.jdField_a_of_type_Bbyd;
       if (QLog.isColorLevel()) {
-        QLog.d("TroopClassControllerMan", 2, "currenTroopClassController is null!!!");
+        QLog.d(getClass().getSimpleName(), 2, "geta1 failed " + paramInt2);
       }
+      return;
     }
+    paramArrayOfByte1 = new Intent("android.intent.action.VIEW", Uri.parse(this.jdField_a_of_type_JavaLangString));
+    paramArrayOfByte1.putExtras(this.jdField_a_of_type_OicqWlogin_sdkRequestWtloginHelper.PrepareQloginResult(paramString, paramLong4, paramLong5, paramInt2, paramWFastLoginInfo));
+    paramArrayOfByte1.setFlags(this.jdField_a_of_type_Int);
+    this.jdField_a_of_type_AndroidContentContext.startActivity(paramArrayOfByte1);
   }
-  
-  public bbyd a(TroopChatPie paramTroopChatPie, String paramString)
-  {
-    if (TroopInfo.isHomeworkTroop(paramTroopChatPie.a, paramString))
-    {
-      if (!(this.jdField_a_of_type_Bbyd instanceof bcgs)) {
-        this.jdField_a_of_type_Bbyd = new bcgs(paramTroopChatPie.a, paramTroopChatPie.a(), paramTroopChatPie);
-      }
-      this.jdField_a_of_type_Long = 32L;
-    }
-    for (;;)
-    {
-      return this.jdField_a_of_type_Bbyd;
-      if (TroopInfo.isFansTroop(paramTroopChatPie.a, paramString))
-      {
-        this.jdField_a_of_type_Long = 27L;
-      }
-      else
-      {
-        this.jdField_a_of_type_Bbyd = null;
-        this.jdField_a_of_type_Long = 0L;
-        if (QLog.isColorLevel()) {
-          QLog.d("TroopClassControllerMan", 2, "getControllerByTroopUin null " + paramString);
-        }
-      }
-    }
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_Bbyd != null) {
-      this.jdField_a_of_type_Bbyd.c();
-    }
-  }
-  
-  public void a(int paramInt)
-  {
-    if ((this.jdField_a_of_type_Bbyd instanceof bcgs)) {
-      this.jdField_a_of_type_Bbyd.a(bckt.b(paramInt));
-    }
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    if (this.jdField_a_of_type_Bbyd != null) {
-      this.jdField_a_of_type_Bbyd.b(paramBoolean);
-    }
-  }
-  
-  public void b()
-  {
-    if (this.jdField_a_of_type_Bbyd != null) {
-      this.jdField_a_of_type_Bbyd.b();
-    }
-    this.jdField_a_of_type_Bbyd = null;
-  }
-  
-  public void c()
-  {
-    if (this.jdField_a_of_type_Bbyd != null) {
-      this.jdField_a_of_type_Bbyd.a();
-    }
-  }
-  
-  public void onDestroy() {}
 }
 
 

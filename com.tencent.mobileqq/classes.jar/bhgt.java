@@ -1,49 +1,52 @@
-import android.content.Context;
-import android.view.View;
-import android.view.View.OnFocusChangeListener;
-import android.view.inputmethod.InputMethodManager;
-import com.tencent.qqmini.sdk.runtime.core.page.NativeViewContainer;
-import com.tencent.qqmini.sdk.runtime.core.page.widget.MiniAppTextArea;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.OnLogListener;
 
-public class bhgt
-  implements View.OnFocusChangeListener
+final class bhgt
+  implements TVK_SDKMgr.OnLogListener
 {
-  public bhgt(MiniAppTextArea paramMiniAppTextArea) {}
-  
-  public void onFocusChange(View paramView, boolean paramBoolean)
+  public int d(String paramString1, String paramString2)
   {
-    if (!MiniAppTextArea.a(this.a))
-    {
-      if (!paramBoolean) {
-        break label98;
-      }
-      localInputMethodManager = (InputMethodManager)MiniAppTextArea.a(this.a).getContext().getSystemService("input_method");
-      if (localInputMethodManager != null) {
-        localInputMethodManager.showSoftInput(paramView, 0);
-      }
-      if (MiniAppTextArea.b(this.a))
-      {
-        i = MiniAppTextArea.a(this.a);
-        j = MiniAppTextArea.b(this.a);
-        k = MiniAppTextArea.c(this.a);
-        MiniAppTextArea.a(this.a, i - j - k);
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d(paramString1, 2, paramString2);
     }
-    label98:
-    while (!MiniAppTextArea.b(this.a))
-    {
-      InputMethodManager localInputMethodManager;
-      int i;
-      int j;
-      int k;
-      return;
+    return 0;
+  }
+  
+  public int e(String paramString1, String paramString2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(paramString1, 2, paramString2);
     }
-    MiniAppTextArea.a(this.a);
+    return 0;
+  }
+  
+  public int i(String paramString1, String paramString2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(paramString1, 2, paramString2);
+    }
+    return 0;
+  }
+  
+  public int v(String paramString1, String paramString2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(paramString1, 2, paramString2);
+    }
+    return 0;
+  }
+  
+  public int w(String paramString1, String paramString2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(paramString1, 2, paramString2);
+    }
+    return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bhgt
  * JD-Core Version:    0.7.0.1
  */

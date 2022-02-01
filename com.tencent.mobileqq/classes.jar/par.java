@@ -1,33 +1,23 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.view.View;
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.biz.pubaccount.readinjoy.engine.KandianMergeManager;
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoySelfFragment;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.BaseApplication;
 
-public class par
-  implements CompoundButton.OnCheckedChangeListener
+class par
+  implements DialogInterface.OnClickListener
 {
-  public par(ReadInJoySelfFragment paramReadInJoySelfFragment) {}
+  par(paq parampaq, String paramString, int paramInt) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    ReadInJoySelfFragment.a(this.a).b(paramBoolean);
-    if (paramBoolean)
-    {
-      QQToast.a(this.a.a.getContext(), this.a.a.getContext().getResources().getString(2131700045), 0).b(BaseApplication.getContext().getResources().getDimensionPixelSize(2131298914));
-      nrt.a(null, "CliOper", "", "", "0X80067D6", "0X80067D6", 0, 0, "", "", "", ors.c(), false);
-      return;
+    QQToast.a(this.jdField_a_of_type_Paq.jdField_a_of_type_Pan.a, 2, anni.a(2131711813), 0).a();
+    if (this.jdField_a_of_type_Paq.jdField_a_of_type_Pag != null) {
+      this.jdField_a_of_type_Paq.jdField_a_of_type_Pag.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, paramInt);
     }
-    nrt.a(null, "CliOper", "", "", "0X800705C", "0X800705C", 0, 0, "", "", "", ors.c(), false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     par
  * JD-Core Version:    0.7.0.1
  */

@@ -1,10 +1,10 @@
 public abstract interface xru
 {
-  public abstract void a(xrs paramxrs);
+  public abstract void a(xrt paramxrt, int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     xru
  * JD-Core Version:    0.7.0.1
  */

@@ -1,27 +1,27 @@
 package dov.com.tencent.biz.qqstory.takevideo;
 
-import bmoh;
+import bpfn;
 
 public class EditVideoStoryButton$3
   implements Runnable
 {
-  public EditVideoStoryButton$3(bmoh parambmoh) {}
+  public EditVideoStoryButton$3(bpfn parambpfn) {}
   
   public void run()
   {
     if (this.this$0.jdField_a_of_type_Boolean) {
       return;
     }
-    bmoh localbmoh;
+    bpfn localbpfn;
     if (this.this$0.jdField_a_of_type_Float < 50.0F) {
-      localbmoh = this.this$0;
+      localbpfn = this.this$0;
     }
-    for (localbmoh.jdField_a_of_type_Float += this.this$0.b; this.this$0.jdField_a_of_type_Float > 99.0F; localbmoh.jdField_a_of_type_Float += 1.0F)
+    for (localbpfn.jdField_a_of_type_Float += this.this$0.b; this.this$0.jdField_a_of_type_Float > 99.0F; localbpfn.jdField_a_of_type_Float += 1.0F)
     {
       this.this$0.jdField_a_of_type_Float = 99.0F;
       this.this$0.a((int)this.this$0.jdField_a_of_type_Float);
       return;
-      localbmoh = this.this$0;
+      localbpfn = this.this$0;
     }
     this.this$0.a((int)this.this$0.jdField_a_of_type_Float);
     this.this$0.j();
@@ -29,7 +29,7 @@ public class EditVideoStoryButton$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     dov.com.tencent.biz.qqstory.takevideo.EditVideoStoryButton.3
  * JD-Core Version:    0.7.0.1
  */

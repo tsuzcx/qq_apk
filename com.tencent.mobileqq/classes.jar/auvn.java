@@ -1,64 +1,74 @@
-import android.app.Dialog;
-import android.content.Context;
-import android.content.Intent;
-import android.os.Build.VERSION;
-import android.provider.Settings;
-import android.view.Window;
-import android.widget.TextView;
-import com.tencent.common.app.BaseApplicationImpl;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.gamecenter.view.QQGamePubViewpager;
+import com.tencent.mobileqq.gamecenter.web.QQGameFeedWebFragment;
+import com.tencent.mobileqq.gamecenter.web.QQGameMsgInfo;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class auvn
+  implements View.OnClickListener
 {
-  private static void b(String paramString)
+  public auvn(QQGameFeedWebFragment paramQQGameFeedWebFragment) {}
+  
+  public void onClick(View paramView)
   {
-    int j = 1;
-    int i = j;
-    if (Build.VERSION.SDK_INT >= 23)
+    String str2 = "";
+    String str1 = "";
+    Object localObject = QQGameFeedWebFragment.a(this.a);
+    int i;
+    label152:
+    int j;
+    if (localObject != null)
     {
-      localObject = BaseApplicationImpl.getApplication();
-      i = j;
-      if (localObject != null)
-      {
-        i = j;
-        if (!Settings.canDrawOverlays((Context)localObject))
-        {
-          i = 0;
-          ((Context)localObject).startActivity(new Intent("android.settings.action.MANAGE_OVERLAY_PERMISSION"));
-        }
+      str2 = ((QQGameMsgInfo)localObject).gameAppId;
+      if (TextUtils.isEmpty(((QQGameMsgInfo)localObject).paMsgid)) {
+        str1 = "";
       }
     }
-    if (i == 0) {
+    else
+    {
+      localObject = new HashMap();
+      ((Map)localObject).put(Integer.valueOf(2), str1);
+      ((Map)localObject).put(Integer.valueOf(3), "2");
+      ((Map)localObject).put(Integer.valueOf(4), "20");
+      ((Map)localObject).put(Integer.valueOf(24), "1");
+      aceh.a(ampj.a(), "769", "205037", str2, "76901", "1", "160", (Map)localObject);
+      if (QQGameFeedWebFragment.a(this.a) != null)
+      {
+        if (QQGameFeedWebFragment.a(this.a) != null) {
+          break label201;
+        }
+        i = 0;
+        j = QQGameFeedWebFragment.a(this.a).getCurrentItem();
+        if (j + 1 >= i) {
+          break label217;
+        }
+        QQGameFeedWebFragment.a(this.a).setCurrentItem(j + 1);
+      }
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
+      str1 = ((QQGameMsgInfo)localObject).paMsgid;
+      break;
+      label201:
+      i = QQGameFeedWebFragment.a(this.a).size();
+      break label152;
+      label217:
+      if (j == i - 1) {
+        QQGameFeedWebFragment.a(this.a).setCurrentItem(i);
+      }
     }
-    Object localObject = new Dialog(BaseApplicationImpl.getApplication(), 2131755801);
-    ((Dialog)localObject).getWindow().setType(2003);
-    ((Dialog)localObject).setContentView(2131558919);
-    TextView localTextView = (TextView)((Dialog)localObject).findViewById(2131365237);
-    if (localTextView != null) {
-      localTextView.setText("dump文件保存地址");
-    }
-    localTextView = (TextView)((Dialog)localObject).findViewById(2131365233);
-    if ((localTextView != null) && (paramString != null)) {
-      localTextView.setText(paramString);
-    }
-    localTextView = (TextView)((Dialog)localObject).findViewById(2131365222);
-    if (localTextView != null)
-    {
-      localTextView.setText(2131690648);
-      localTextView.setOnClickListener(new auvp((Dialog)localObject));
-    }
-    localTextView = (TextView)((Dialog)localObject).findViewById(2131365228);
-    if (localTextView != null)
-    {
-      localTextView.setText(alud.a(2131707588));
-      localTextView.setOnClickListener(new auvq((Dialog)localObject, paramString));
-    }
-    ((Dialog)localObject).show();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     auvn
  * JD-Core Version:    0.7.0.1
  */

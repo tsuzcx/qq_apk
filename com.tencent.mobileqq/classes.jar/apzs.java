@@ -1,30 +1,45 @@
-import android.graphics.Color;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
+import ProfileLogic.QC.setUserProfileRsp;
+import com.tencent.mobileqq.activity.ProfileActivity;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Emoticon;
-import com.tencent.mobileqq.emotionintegrate.AIOEmotionFragment;
-import com.tencent.mobileqq.vaswebviewplugin.EmojiHomeUiPlugin;
+import com.tencent.mobileqq.businessCard.activity.CardPicGalleryActivity;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
 
 public class apzs
-  implements View.OnTouchListener
+  extends anun
 {
-  public apzs(AIOEmotionFragment paramAIOEmotionFragment) {}
+  public apzs(CardPicGalleryActivity paramCardPicGalleryActivity) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void e(boolean paramBoolean, Object paramObject)
   {
-    if (paramMotionEvent.getAction() == 1)
+    if ((paramBoolean) && ((paramObject instanceof setUserProfileRsp)))
     {
-      this.a.b.setBackgroundColor(Color.parseColor("#F7F7F7"));
-      EmojiHomeUiPlugin.openEmojiDetailPage(this.a.getActivity(), this.a.a().getAccount(), 8, this.a.a.epId, false, false);
-      this.a.a("0X800997F");
+      i = ((setUserProfileRsp)paramObject).ret;
+      if (QLog.isColorLevel()) {
+        QLog.d("qqBaseActivity", 2, "mSvipObserver: [setUserProfileRsp] ret=" + i);
+      }
+      if (i == 0)
+      {
+        if (this.a.app != null)
+        {
+          paramObject = new ProfileActivity.AllInOne(this.a.app.getCurrentAccountUin(), 0);
+          paramObject.g = 1;
+          paramObject.h = 8;
+          ProfileActivity.b(this.a, paramObject);
+          QQToast.a(this.a, 0, 2131718831, 0).a();
+        }
+        this.a.finish();
+      }
     }
-    while (paramMotionEvent.getAction() != 0) {
-      return false;
+    while (!"profilelogic.setUserProfile".equals(paramObject))
+    {
+      int i;
+      return;
+      QQToast.a(this.a, 1, 2131718828, 0).a();
+      return;
     }
-    this.a.b.setBackgroundColor(Color.parseColor("#DEDEDE"));
-    return false;
+    QQToast.a(this.a, 1, 2131718828, 0).a();
   }
 }
 

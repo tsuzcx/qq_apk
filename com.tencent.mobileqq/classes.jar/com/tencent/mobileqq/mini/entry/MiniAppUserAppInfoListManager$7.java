@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.mini.entry;
 
-import awgf;
-import awgg;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
+import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.mobileqq.persistence.EntityManagerFactory;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -25,7 +25,7 @@ class MiniAppUserAppInfoListManager$7
       return;
       localObject1 = ((AppInterface)localObject1).getEntityManagerFactory().createEntityManager();
     } while (localObject1 == null);
-    Object localObject3 = ((awgf)localObject1).a(MiniAppEntity.class, MiniAppEntity.class.getSimpleName(), false, null, null, null, null, "position asc", null);
+    Object localObject3 = ((EntityManager)localObject1).query(MiniAppEntity.class, MiniAppEntity.class.getSimpleName(), false, null, null, null, null, "position asc", null);
     localObject1 = new StringBuilder();
     if (localObject3 != null)
     {
@@ -62,7 +62,7 @@ class MiniAppUserAppInfoListManager$7
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.entry.MiniAppUserAppInfoListManager.7
  * JD-Core Version:    0.7.0.1
  */

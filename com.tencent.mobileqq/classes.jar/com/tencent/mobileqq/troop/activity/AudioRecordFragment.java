@@ -13,13 +13,15 @@ import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.RelativeLayout;
-import bbfq;
-import bbfr;
+import bego;
+import begp;
 import com.tencent.mobileqq.activity.aio.audiopanel.CommonRecordSoundPanel;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.fragment.PublicBaseFragment;
 import com.tencent.mobileqq.troop.data.AudioInfo;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.qqlive.module.videoreport.inject.fragment.V4FragmentCollector;
 import com.tencent.theme.SkinnableBitmapDrawable;
 
 public class AudioRecordFragment
@@ -41,12 +43,12 @@ public class AudioRecordFragment
   
   public AudioRecordFragment()
   {
-    this.jdField_a_of_type_AndroidOsHandler = new bbfr(this);
+    this.jdField_a_of_type_AndroidOsHandler = new begp(this);
   }
   
   protected void a(Resources paramResources, View paramView)
   {
-    paramResources = paramResources.getDrawable(2130849680);
+    paramResources = paramResources.getDrawable(2130850256);
     if ((paramResources instanceof BitmapDrawable)) {
       paramResources = ((BitmapDrawable)paramResources).getBitmap();
     }
@@ -79,18 +81,21 @@ public class AudioRecordFragment
   {
     switch (paramView.getId())
     {
-    default: 
-      return;
     }
-    getActivity().setResult(0);
-    getActivity().finish();
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      getActivity().setResult(0);
+      getActivity().finish();
+    }
   }
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    this.jdField_a_of_type_AndroidViewView = paramLayoutInflater.inflate(2131559767, null);
+    this.jdField_a_of_type_AndroidViewView = paramLayoutInflater.inflate(2131559906, null);
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = getActivity().app;
-    this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131376034));
+    this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131376788));
     this.jdField_a_of_type_Int = getArguments().getInt("audio_max_length", 60000);
     boolean bool = getArguments().getBoolean("auto_start", false);
     this.jdField_a_of_type_JavaLangString = getArguments().getString("from");
@@ -99,19 +104,21 @@ public class AudioRecordFragment
       this.jdField_b_of_type_JavaLangString = getArguments().getString("bid");
       this.c = getArguments().getString("fromflag");
     }
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131362884));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131362997));
     a(getResources(), this.jdField_a_of_type_AndroidWidgetRelativeLayout);
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelCommonRecordSoundPanel = ((CommonRecordSoundPanel)paramLayoutInflater.inflate(2131559713, null));
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelCommonRecordSoundPanel = ((CommonRecordSoundPanel)paramLayoutInflater.inflate(2131559850, null));
     this.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelCommonRecordSoundPanel);
     this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelCommonRecordSoundPanel.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, getActivity(), this.jdField_a_of_type_AndroidOsHandler, 1, bool);
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelCommonRecordSoundPanel.b();
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelCommonRecordSoundPanel.d();
     this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelCommonRecordSoundPanel.setTimeOutTime(this.jdField_a_of_type_Int);
-    this.jdField_b_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131378242);
+    this.jdField_b_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131379095);
     this.jdField_b_of_type_AndroidViewView.setOnClickListener(this);
     paramLayoutInflater = AnimationUtils.loadAnimation(getActivity(), 2130771979);
-    paramLayoutInflater.setAnimationListener(new bbfq(this));
+    paramLayoutInflater.setAnimationListener(new bego(this));
     this.jdField_b_of_type_AndroidWidgetRelativeLayout.startAnimation(paramLayoutInflater);
-    return this.jdField_a_of_type_AndroidViewView;
+    paramLayoutInflater = this.jdField_a_of_type_AndroidViewView;
+    V4FragmentCollector.onV4FragmentViewCreated(this, paramLayoutInflater);
+    return paramLayoutInflater;
   }
   
   public void onDestroy()
@@ -121,7 +128,7 @@ public class AudioRecordFragment
     if (QLog.isColorLevel()) {
       QLog.d("AIOAudioPanel", 2, "RecordSoundPanel.onDestroy() is called,isRecording is:" + bool);
     }
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelCommonRecordSoundPanel.e();
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelCommonRecordSoundPanel.c();
   }
   
   public void onFinish()
@@ -136,12 +143,12 @@ public class AudioRecordFragment
     if (QLog.isColorLevel()) {
       QLog.d("AIOAudioPanel", 2, "RecordSoundPanel.onPause() is called,isRecording is:" + bool);
     }
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelCommonRecordSoundPanel.d();
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelCommonRecordSoundPanel.b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.troop.activity.AudioRecordFragment
  * JD-Core Version:    0.7.0.1
  */

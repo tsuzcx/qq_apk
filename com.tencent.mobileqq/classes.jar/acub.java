@@ -1,18 +1,27 @@
-import android.app.Dialog;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.DiscussionInfoCardActivity;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.widget.RelativeLayout.LayoutParams;
+import com.tencent.gdtad.views.videoceiling.GdtVideoCeilingLandView;
+import com.tencent.gdtad.views.videoceiling.GdtVideoCeilingView;
 
-class acub
-  implements DialogInterface.OnClickListener
+public class acub
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  acub(acua paramacua) {}
+  public acub(GdtVideoCeilingView paramGdtVideoCeilingView, RelativeLayout.LayoutParams paramLayoutParams, int paramInt1, int paramInt2, GdtVideoCeilingLandView paramGdtVideoCeilingLandView, boolean paramBoolean) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    if ((this.a.a.a != null) && (this.a.a.a.isShowing()) && (this.a.a.a.getWindow() != null)) {
-      this.a.a.a.dismiss();
+    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    paramValueAnimator = this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams;
+    int i = this.jdField_a_of_type_Int;
+    paramValueAnimator.topMargin = ((int)(f * this.b) + i);
+    if (((this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams.topMargin < 1) || (this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams.topMargin >= GdtVideoCeilingView.a(this.jdField_a_of_type_ComTencentGdtadViewsVideoceilingGdtVideoCeilingView))) && (this.jdField_a_of_type_ComTencentGdtadViewsVideoceilingGdtVideoCeilingLandView.jdField_a_of_type_Boolean)) {
+      GdtVideoCeilingView.a(this.jdField_a_of_type_ComTencentGdtadViewsVideoceilingGdtVideoCeilingView, this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams, this.jdField_a_of_type_ComTencentGdtadViewsVideoceilingGdtVideoCeilingLandView, this.jdField_a_of_type_Boolean);
     }
+    while (this.jdField_a_of_type_ComTencentGdtadViewsVideoceilingGdtVideoCeilingLandView == null) {
+      return;
+    }
+    this.jdField_a_of_type_ComTencentGdtadViewsVideoceilingGdtVideoCeilingLandView.setLayoutParams(this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams);
   }
 }
 

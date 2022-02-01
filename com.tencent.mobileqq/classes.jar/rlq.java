@@ -1,27 +1,60 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.ImageView;
+import android.content.Context;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.widget.ArrayAdapter;
+import com.tencent.biz.pubaccount.readinjoy.struct.TagInfo;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.LinkedHashSet;
+import java.util.Set;
 
-class rlq
-  implements Animation.AnimationListener
+public class rlq
+  extends ArrayAdapter<TagInfo>
 {
-  rlq(rlo paramrlo) {}
+  final Set<TagInfo> a = new LinkedHashSet();
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public rlq(@NonNull Context paramContext, int paramInt)
   {
-    paramAnimation = (ImageView)rlo.a(this.a).findViewById(2131379431);
-    ImageView localImageView = (ImageView)rlo.a(this.a).findViewById(2131379432);
-    rlo.a(this.a, localImageView, paramAnimation, 100L, 240L);
+    super(paramContext, paramInt);
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
+  public void a(@Nullable TagInfo paramTagInfo)
+  {
+    if (!this.a.contains(paramTagInfo))
+    {
+      this.a.add(paramTagInfo);
+      super.add(paramTagInfo);
+    }
+  }
   
-  public void onAnimationStart(Animation paramAnimation) {}
+  public void a(TagInfo... paramVarArgs)
+  {
+    addAll(Arrays.asList(paramVarArgs));
+  }
+  
+  public void addAll(@NonNull Collection<? extends TagInfo> paramCollection)
+  {
+    paramCollection = new LinkedHashSet(paramCollection);
+    paramCollection.removeAll(this.a);
+    this.a.addAll(paramCollection);
+    super.addAll(paramCollection);
+  }
+  
+  public void b(@Nullable TagInfo paramTagInfo)
+  {
+    this.a.remove(paramTagInfo);
+    super.remove(paramTagInfo);
+  }
+  
+  public void clear()
+  {
+    super.clear();
+    this.a.clear();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     rlq
  * JD-Core Version:    0.7.0.1
  */

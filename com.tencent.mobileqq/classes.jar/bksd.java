@@ -1,28 +1,8 @@
-public class bksd
+public abstract interface bksd
 {
-  public final bksc a;
-  public final bkse a;
+  public abstract boolean a(boolean paramBoolean);
   
-  private bksd(bksc parambksc, bkse parambkse)
-  {
-    this.jdField_a_of_type_Bksc = parambksc;
-    this.jdField_a_of_type_Bkse = parambkse;
-  }
-  
-  public static bksd a()
-  {
-    return new bksd(null, bkse.d);
-  }
-  
-  public static bksd a(bksc parambksc)
-  {
-    return new bksd(parambksc, bkse.b);
-  }
-  
-  public static bksd b()
-  {
-    return new bksd(null, bkse.c);
-  }
+  public abstract void c();
 }
 
 

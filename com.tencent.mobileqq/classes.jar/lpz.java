@@ -1,45 +1,39 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.av.VideoController;
-import com.tencent.av.gaudio.GaInviteActivity;
+import android.opengl.GLES20;
+import javax.microedition.khronos.opengles.GL11;
 
 public class lpz
-  implements DialogInterface.OnClickListener
+  implements lqa
 {
-  int jdField_a_of_type_Int;
-  
-  public lpz(GaInviteActivity paramGaInviteActivity, int paramInt)
+  public int a()
   {
-    this.jdField_a_of_type_Int = paramInt;
+    int[] arrayOfInt = new int[1];
+    arrayOfInt[0] = 0;
+    GLES20.glGenTextures(1, arrayOfInt, 0);
+    lrz.a();
+    return arrayOfInt[0];
   }
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(int paramInt1, int[] paramArrayOfInt, int paramInt2)
   {
-    switch (this.jdField_a_of_type_Int)
-    {
-    }
-    for (;;)
-    {
-      paramDialogInterface.dismiss();
-      return;
-      if (this.jdField_a_of_type_ComTencentAvGaudioGaInviteActivity.a.l()) {
-        this.jdField_a_of_type_ComTencentAvGaudioGaInviteActivity.a.h(true);
-      }
-      for (;;)
-      {
-        this.jdField_a_of_type_ComTencentAvGaudioGaInviteActivity.d();
-        break;
-        if (this.jdField_a_of_type_ComTencentAvGaudioGaInviteActivity.a.e) {
-          this.jdField_a_of_type_ComTencentAvGaudioGaInviteActivity.a.m();
-        }
-      }
-      this.jdField_a_of_type_ComTencentAvGaudioGaInviteActivity.finish();
-    }
+    GLES20.glGenBuffers(paramInt1, paramArrayOfInt, paramInt2);
+    lrz.a();
+  }
+  
+  public void a(GL11 paramGL11, int paramInt1, int[] paramArrayOfInt, int paramInt2)
+  {
+    GLES20.glDeleteTextures(paramInt1, paramArrayOfInt, paramInt2);
+    lrz.a();
+  }
+  
+  public void b(GL11 paramGL11, int paramInt1, int[] paramArrayOfInt, int paramInt2)
+  {
+    GLES20.glDeleteBuffers(paramInt1, paramArrayOfInt, paramInt2);
+    lrz.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     lpz
  * JD-Core Version:    0.7.0.1
  */

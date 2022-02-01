@@ -1,12 +1,19 @@
-public abstract interface nfz
+public class nfz
 {
-  public abstract void a(int paramInt);
+  public int a;
+  public int b;
+  public int c;
   
-  public abstract void b(int paramInt);
+  public nfz(int paramInt1, int paramInt2, int paramInt3)
+  {
+    this.a = paramInt1;
+    this.b = paramInt2;
+    this.c = paramInt3;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     nfz
  * JD-Core Version:    0.7.0.1
  */

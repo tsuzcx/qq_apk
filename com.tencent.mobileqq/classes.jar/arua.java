@@ -1,18 +1,27 @@
 import android.os.Bundle;
+import com.tencent.mobileqq.emosm.web.MessengerService;
+import com.tencent.mobileqq.emosm.web.MessengerService.IncomingHandler.4;
 
-public abstract interface arua
+public class arua
+  implements amob
 {
-  public abstract void a(int paramInt, Bundle paramBundle);
+  public arua(MessengerService.IncomingHandler.4 param4) {}
   
-  public abstract void a(int paramInt, String paramString, Bundle paramBundle);
+  public void a()
+  {
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("result", 0);
+    this.a.jdField_a_of_type_AndroidOsBundle.putBundle("response", localBundle);
+    this.a.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.a(this.a.jdField_a_of_type_AndroidOsBundle);
+  }
   
-  public abstract void a(Bundle paramBundle);
-  
-  public abstract void a(String paramString, Bundle paramBundle);
-  
-  public abstract void b(Bundle paramBundle);
-  
-  public abstract void c(Bundle paramBundle);
+  public void a(int paramInt)
+  {
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("result", paramInt);
+    this.a.jdField_a_of_type_AndroidOsBundle.putBundle("response", localBundle);
+    this.a.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.a(this.a.jdField_a_of_type_AndroidOsBundle);
+  }
 }
 
 

@@ -1,22 +1,34 @@
 package com.tencent.mobileqq.activity;
 
-import adpn;
+import Override;
+import aevv;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.Configuration;
+import android.view.MotionEvent;
 import com.tencent.mobileqq.fragment.PublicBaseFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class PublicFragmentActivityForTool
   extends PublicFragmentActivity
 {
   public static void b(Activity paramActivity, Intent paramIntent, Class<? extends PublicBaseFragment> paramClass, int paramInt)
   {
-    adpn.a(paramActivity, paramIntent, PublicFragmentActivityForTool.class, paramClass, paramInt);
+    aevv.a(paramActivity, paramIntent, PublicFragmentActivityForTool.class, paramClass, paramInt);
   }
   
   public static void b(Context paramContext, Intent paramIntent, Class<? extends PublicBaseFragment> paramClass)
   {
-    adpn.a(paramContext, paramIntent, PublicFragmentActivityForTool.class, paramClass);
+    aevv.a(paramContext, paramIntent, PublicFragmentActivityForTool.class, paramClass);
+  }
+  
+  @Override
+  public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
+  {
+    boolean bool = super.dispatchTouchEvent(paramMotionEvent);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool);
+    return bool;
   }
   
   public String getModuleId()
@@ -28,10 +40,17 @@ public class PublicFragmentActivityForTool
     }
     return str1;
   }
+  
+  @Override
+  public void onConfigurationChanged(Configuration paramConfiguration)
+  {
+    super.onConfigurationChanged(paramConfiguration);
+    EventCollector.getInstance().onActivityConfigurationChanged(this, paramConfiguration);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.PublicFragmentActivityForTool
  * JD-Core Version:    0.7.0.1
  */

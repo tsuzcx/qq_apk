@@ -4,12 +4,11 @@ import NS_COMM.COMM.StCommonExt;
 import NS_QWEB_PROTOCAL.PROTOCAL.StQWebRsp;
 import android.content.Intent;
 import android.os.Bundle;
-import bdpd;
+import bguc;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
 import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBInt64Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
 import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.util.QLog;
 import mqq.app.Packet;
@@ -40,8 +39,7 @@ public class MiniMidasConsumeServlet
           continue;
         }
         localStQWebRsp = new PROTOCAL.StQWebRsp();
-        localStQWebRsp.mergeFrom(bdpd.b(paramFromServiceMsg.getWupBuffer()));
-        localBundle.putInt("key_index", (int)localStQWebRsp.Seq.get());
+        localStQWebRsp.mergeFrom(bguc.b(paramFromServiceMsg.getWupBuffer()));
         if (!paramFromServiceMsg.isSuccess()) {
           continue;
         }
@@ -96,7 +94,7 @@ public class MiniMidasConsumeServlet
         localObject1 = new byte[4];
       }
       paramPacket.setSSOCommand("LightAppSvc.mini_app_pay.GamePay");
-      paramPacket.putSendData(bdpd.a((byte[])localObject1));
+      paramPacket.putSendData(bguc.a((byte[])localObject1));
       paramPacket.setTimeout(paramIntent.getLongExtra("timeout", 30000L));
       super.onSend(paramIntent, paramPacket);
       return;
@@ -115,7 +113,7 @@ public class MiniMidasConsumeServlet
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.servlet.MiniMidasConsumeServlet
  * JD-Core Version:    0.7.0.1
  */

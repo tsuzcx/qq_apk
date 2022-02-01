@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.nearby.profilecard;
 
-import alud;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Color;
@@ -16,9 +15,11 @@ import android.view.ViewGroup.LayoutParams;
 import android.view.ViewGroup.MarginLayoutParams;
 import android.widget.FrameLayout.LayoutParams;
 import android.widget.TextView;
-import avpu;
+import anni;
+import axxe;
 import com.tencent.mobileqq.nearby.interestTag.InterestTagInfo;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import com.tencent.widget.HorizontalLabelLayout;
 import java.util.ArrayList;
 import java.util.List;
@@ -31,7 +32,7 @@ public class SavorTagIcon
   float jdField_a_of_type_Float;
   int jdField_a_of_type_Int;
   TextView jdField_a_of_type_AndroidWidgetTextView;
-  avpu jdField_a_of_type_Avpu;
+  axxe jdField_a_of_type_Axxe;
   String jdField_a_of_type_JavaLangString;
   List<InterestTagInfo> jdField_a_of_type_JavaUtilList;
   boolean jdField_a_of_type_Boolean = true;
@@ -65,7 +66,7 @@ public class SavorTagIcon
     if ((this.jdField_a_of_type_JavaUtilList == null) || (this.jdField_a_of_type_JavaLangString == null)) {
       return "";
     }
-    StringBuilder localStringBuilder = new StringBuilder(alud.a(2131713896));
+    StringBuilder localStringBuilder = new StringBuilder(anni.a(2131712275));
     localStringBuilder.append(this.jdField_a_of_type_JavaLangString).append(this.jdField_a_of_type_JavaUtilList.size()).append("个");
     int i = 0;
     while (i < this.jdField_a_of_type_JavaUtilList.size())
@@ -89,9 +90,9 @@ public class SavorTagIcon
     this.f = ((int)(this.jdField_a_of_type_Float * 12.0F));
   }
   
-  public void a(String paramString, int paramInt, List<InterestTagInfo> paramList, avpu paramavpu)
+  public void a(String paramString, int paramInt, List<InterestTagInfo> paramList, axxe paramaxxe)
   {
-    this.jdField_a_of_type_Avpu = paramavpu;
+    this.jdField_a_of_type_Axxe = paramaxxe;
     this.jdField_a_of_type_Int = paramInt;
     this.jdField_a_of_type_JavaLangString = paramString;
     paramString = jdField_a_of_type_ArrayOfJavaLangString[0];
@@ -195,8 +196,8 @@ public class SavorTagIcon
     this.jdField_a_of_type_Int = 0;
     this.jdField_a_of_type_JavaLangString = "";
     this.jdField_a_of_type_JavaUtilList = new ArrayList(2);
-    this.b = getResources().getDimensionPixelSize(2131298681);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)LayoutInflater.from(getContext()).inflate(2131561104, null));
+    this.b = getResources().getDimensionPixelSize(2131298764);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)LayoutInflater.from(getContext()).inflate(2131561315, null));
     FrameLayout.LayoutParams localLayoutParams = a();
     localLayoutParams.width = -1;
     localLayoutParams.height = -2;
@@ -226,7 +227,7 @@ public class SavorTagIcon
     if (i < j) {
       while (i < j)
       {
-        localObject1 = LayoutInflater.from(getContext()).inflate(2131561100, null);
+        localObject1 = LayoutInflater.from(getContext()).inflate(2131561311, null);
         localObject2 = a();
         ((ViewGroup.MarginLayoutParams)localObject2).width = -2;
         ((ViewGroup.MarginLayoutParams)localObject2).height = -2;
@@ -286,7 +287,7 @@ public class SavorTagIcon
           {
             GradientDrawable localGradientDrawable;
             j = Color.parseColor(((InterestTagInfo)localObject2).tagTextColor);
-            TextView localTextView = (TextView)((View)localObject1).findViewById(2131379107);
+            TextView localTextView = (TextView)((View)localObject1).findViewById(2131380031);
             if (localTextView != null)
             {
               localTextView.setText(str);
@@ -294,7 +295,7 @@ public class SavorTagIcon
             }
             ((View)localObject1).setBackgroundDrawable(localGradientDrawable);
             ((View)localObject1).setTag(localObject2);
-            if (this.jdField_a_of_type_Avpu != null)
+            if (this.jdField_a_of_type_Axxe != null)
             {
               ((View)localObject1).setOnClickListener(this);
               continue;
@@ -325,9 +326,10 @@ public class SavorTagIcon
     if (paramView == null) {}
     for (Object localObject = null;; localObject = paramView.getTag())
     {
-      if (((localObject instanceof InterestTagInfo)) && (this.jdField_a_of_type_Avpu != null)) {
-        this.jdField_a_of_type_Avpu.a(paramView, this.jdField_a_of_type_Int, (InterestTagInfo)localObject);
+      if (((localObject instanceof InterestTagInfo)) && (this.jdField_a_of_type_Axxe != null)) {
+        this.jdField_a_of_type_Axxe.a(paramView, this.jdField_a_of_type_Int, (InterestTagInfo)localObject);
       }
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
     }
   }
@@ -348,7 +350,7 @@ public class SavorTagIcon
     this.jdField_a_of_type_Boolean = paramBoolean;
     if (this.jdField_a_of_type_Boolean)
     {
-      this.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawablesWithIntrinsicBounds(0, 0, 2130839098, 0);
+      this.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawablesWithIntrinsicBounds(0, 0, 2130839273, 0);
       return;
     }
     this.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
@@ -361,7 +363,7 @@ public class SavorTagIcon
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.profilecard.SavorTagIcon
  * JD-Core Version:    0.7.0.1
  */

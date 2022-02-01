@@ -1,23 +1,13 @@
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
+import android.view.View;
 
 class asxv
-  implements EIPCResultCallback
+  implements bkiz
 {
-  asxv(asxu paramasxu) {}
+  asxv(asxs paramasxs, View paramView) {}
   
-  public void onCallback(EIPCResult paramEIPCResult)
+  public void a()
   {
-    asxu.a(paramEIPCResult, "action");
-    switch (paramEIPCResult.code)
-    {
-    default: 
-      return;
-    case -102: 
-      asxu.a(this.a).a(2, paramEIPCResult.data);
-      return;
-    }
-    asxu.a(this.a).a(1, paramEIPCResult.data);
+    this.jdField_a_of_type_AndroidViewView.setSelected(false);
   }
 }
 

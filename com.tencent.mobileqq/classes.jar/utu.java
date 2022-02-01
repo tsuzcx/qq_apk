@@ -1,44 +1,32 @@
-import android.graphics.drawable.Drawable;
-import com.tencent.biz.qqstory.app.QQStoryContext;
-import com.tencent.biz.qqstory.comment.StoryInputBarView;
+import android.view.ViewGroup;
+import com.tencent.biz.pubaccount.weishi_new.verticalvideo.WSVerticalPageFragment;
 
 public class utu
-  implements apuc
+  extends uss
 {
-  public utu(StoryInputBarView paramStoryInputBarView) {}
-  
-  public void a(apuf paramapuf)
+  public utu(ViewGroup paramViewGroup, int paramInt, WSVerticalPageFragment paramWSVerticalPageFragment)
   {
-    if (((paramapuf instanceof apza)) && (this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx != null)) {
-      ((apza)paramapuf).a(QQStoryContext.a(), this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx, null);
-    }
+    super(paramViewGroup, paramInt, paramWSVerticalPageFragment);
   }
   
-  public void a(apuf paramapuf1, apuf paramapuf2, Drawable paramDrawable) {}
+  public usp a(int paramInt)
+  {
+    return new uuc(a(), this);
+  }
   
-  public boolean a(apuf paramapuf)
+  public boolean b()
   {
     return false;
   }
   
-  public void b()
+  public boolean c()
   {
-    if (this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx != null) {
-      banh.a(this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx);
-    }
+    return false;
   }
-  
-  public void b(apuf paramapuf) {}
-  
-  public void c() {}
-  
-  public void d() {}
-  
-  public void setting() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     utu
  * JD-Core Version:    0.7.0.1
  */

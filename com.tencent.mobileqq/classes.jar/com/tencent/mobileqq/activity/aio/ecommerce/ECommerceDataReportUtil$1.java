@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.activity.aio.ecommerce;
 
-import afcp;
-import afcq;
-import aoks;
+import agjb;
+import agjc;
+import aqlk;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
@@ -17,12 +17,12 @@ public final class ECommerceDataReportUtil$1
   {
     try
     {
-      afcp localafcp = (afcp)aoks.a().a(592);
-      if ((localafcp != null) && (localafcp.a != null) && (!localafcp.a.isEmpty()))
+      agjb localagjb = (agjb)aqlk.a().a(592);
+      if ((localagjb != null) && (localagjb.a != null) && (!localagjb.a.isEmpty()))
       {
-        afcq.a(localafcp.a);
-        afcq.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
-        afcq.a((QQAppInterface)this.jdField_a_of_type_MqqUtilWeakReference.get(), this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.b);
+        agjc.a(localagjb.a);
+        agjc.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+        agjc.a((QQAppInterface)this.jdField_a_of_type_MqqUtilWeakReference.get(), this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.b);
       }
       return;
     }
@@ -34,7 +34,7 @@ public final class ECommerceDataReportUtil$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.ecommerce.ECommerceDataReportUtil.1
  * JD-Core Version:    0.7.0.1
  */

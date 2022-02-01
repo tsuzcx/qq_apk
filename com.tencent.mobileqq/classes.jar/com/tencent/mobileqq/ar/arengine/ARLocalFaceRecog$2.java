@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.ar.arengine;
 
-import ancc;
+import apat;
 import com.tencent.mobileqq.widget.QQToast;
 
 public class ARLocalFaceRecog$2
@@ -13,7 +13,7 @@ public class ARLocalFaceRecog$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.arengine.ARLocalFaceRecog.2
  * JD-Core Version:    0.7.0.1
  */

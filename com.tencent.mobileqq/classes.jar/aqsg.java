@@ -1,29 +1,23 @@
-import android.os.Bundle;
-import com.tencent.qphone.base.util.QLog;
+import android.text.TextUtils;
 
-final class aqsg
-  extends yuj
+public class aqsg
 {
-  aqsg(String paramString, aqtc paramaqtc, long paramLong) {}
+  public String a;
+  public boolean a;
   
-  public void a(boolean paramBoolean, int paramInt1, String paramString, int paramInt2, int paramInt3, Bundle paramBundle)
+  public aqsg(aqsf paramaqsf)
   {
-    if (!paramBoolean)
-    {
-      QLog.d("FileMultiMsgManager<FileAssistant>", 1, "onReqFeedsResult return failed fileid " + this.jdField_a_of_type_JavaLangString);
-      this.jdField_a_of_type_Aqtc.a(aqsf.a(this.jdField_a_of_type_Long, false), true);
-      return;
-    }
-    paramBundle.putString("_m_ForwardBusType", String.valueOf(paramInt2));
-    paramBundle.putString("_m_ForwardDeadTime", String.valueOf(paramInt3));
-    if (paramInt1 == 0)
-    {
-      QLog.d("FileMultiMsgManager<FileAssistant>", 1, "onReqFeedsResult success fileid " + this.jdField_a_of_type_JavaLangString);
-      this.jdField_a_of_type_Aqtc.a(this.jdField_a_of_type_JavaLangString, paramBundle);
-      return;
-    }
-    QLog.d("FileMultiMsgManager<FileAssistant>", 1, "onReqFeedsResult return[" + paramInt1 + "] fileid " + this.jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_Aqtc.a(aqsf.a(this.jdField_a_of_type_Long, false), false);
+    this.jdField_a_of_type_JavaLangString = "";
+  }
+  
+  public boolean a()
+  {
+    return (this.jdField_a_of_type_Boolean) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString));
+  }
+  
+  public String toString()
+  {
+    return "WebBundleConfig{enable=" + this.jdField_a_of_type_Boolean + ", preloadUrl='" + this.jdField_a_of_type_JavaLangString + '\'' + '}';
   }
 }
 

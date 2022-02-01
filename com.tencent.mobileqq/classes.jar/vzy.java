@@ -1,32 +1,29 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tribe.async.dispatch.QQUIEventReceiver;
+import com.tencent.mobileqq.pb.PBStringField;
+import feedcloud.FeedCloudMeta.StFeed;
+import feedcloud.FeedCloudMeta.StUser;
 
-public class vzy
-  extends QQUIEventReceiver<vzl, vdl>
+class vzy
+  implements vxe
 {
-  public vzy(@NonNull vzl paramvzl)
-  {
-    super(paramvzl);
-  }
+  vzy(vzx paramvzx) {}
   
-  public void a(@NonNull vzl paramvzl, @NonNull vdl paramvdl)
+  public void a() {}
+  
+  public void a(int paramInt) {}
+  
+  public void b(int paramInt)
   {
-    if (paramvdl.a.isSuccess())
+    if ((this.a.jdField_a_of_type_JavaLangObject instanceof FeedCloudMeta.StFeed))
     {
-      wxe.a(paramvzl.b, "receive user info event. %s.", paramvdl.toString());
-      paramvzl.i();
+      FeedCloudMeta.StFeed localStFeed = (FeedCloudMeta.StFeed)this.a.jdField_a_of_type_JavaLangObject;
+      vrc.a(localStFeed.poster.id.get(), 17, 2, this.a.jdField_a_of_type_Int, localStFeed, null, this.a.b());
+      vrr.a().a(new vrt().a("followbutton").b("follow").a(localStFeed).a(this.a.a()).a(this.a.jdField_a_of_type_Int).c(localStFeed.poster.id.get()));
     }
-  }
-  
-  public Class acceptEventClass()
-  {
-    return vdl.class;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     vzy
  * JD-Core Version:    0.7.0.1
  */

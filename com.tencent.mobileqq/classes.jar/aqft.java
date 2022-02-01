@@ -1,15 +1,31 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.extendfriend.limitchat.ExtendFriendLimitChatMatchFragment;
+import com.tencent.mobileqq.colornote.smallscreen.ColorNoteSmallScreenFullToast;
+import com.tencent.mobileqq.colornote.smallscreen.ColorNoteSmallScreenRelativeLayout;
+import com.tencent.mobileqq.colornote.smallscreen.ColorNoteSmallScreenService;
 
 public class aqft
-  implements DialogInterface.OnClickListener
+  implements aink
 {
-  public aqft(ExtendFriendLimitChatMatchFragment paramExtendFriendLimitChatMatchFragment) {}
+  public aqft(ColorNoteSmallScreenService paramColorNoteSmallScreenService) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a() {}
+  
+  public void a(int paramInt)
   {
-    ExtendFriendLimitChatMatchFragment.a(this.a);
+    if ((ColorNoteSmallScreenService.a(this.a) != null) && (ColorNoteSmallScreenService.a(this.a).a()))
+    {
+      ColorNoteSmallScreenService.a(this.a).a();
+      ColorNoteSmallScreenService.a(this.a).b();
+    }
+    while ((this.a.jdField_a_of_type_ComTencentMobileqqColornoteSmallscreenColorNoteSmallScreenFullToast == null) || (!this.a.jdField_a_of_type_ComTencentMobileqqColornoteSmallscreenColorNoteSmallScreenFullToast.a)) {
+      return;
+    }
+    this.a.jdField_a_of_type_ComTencentMobileqqColornoteSmallscreenColorNoteSmallScreenFullToast.onClick(this.a.jdField_a_of_type_ComTencentMobileqqColornoteSmallscreenColorNoteSmallScreenFullToast);
+  }
+  
+  public void b()
+  {
+    ColorNoteSmallScreenService.a(this.a);
+    this.a.jdField_a_of_type_ComTencentMobileqqColornoteSmallscreenColorNoteSmallScreenRelativeLayout.f();
   }
 }
 

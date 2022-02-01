@@ -1,1105 +1,630 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.preference.PreferenceManager;
-import android.text.TextUtils;
+import android.app.Activity;
+import android.content.Context;
+import android.content.pm.ApplicationInfo;
+import android.os.Build.VERSION;
+import android.os.Handler;
+import android.os.HandlerThread;
+import android.os.Message;
+import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.config.operation.QQOperateManager.1;
-import com.tencent.mobileqq.config.operation.QQOperationTaskRecord;
-import com.tencent.mobileqq.config.operation.QQOperationViopTipTask;
-import com.tencent.mobileqq.config.operation.QQOperationVoipTipsTaskExcuteRecord;
-import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.app.soso.SosoInterface;
+import com.tencent.mobileqq.ar.ARRecognition;
+import com.tencent.mobileqq.ar.aidl.ARCommonConfigInfo;
+import com.tencent.mobileqq.ar.arengine.ARCloudControl.1;
+import com.tencent.mobileqq.ar.arengine.ARCloudControl.10;
+import com.tencent.mobileqq.ar.arengine.ARCloudControl.2;
+import com.tencent.mobileqq.ar.arengine.ARCloudControl.3;
+import com.tencent.mobileqq.ar.arengine.ARCloudControl.5;
+import com.tencent.mobileqq.ar.arengine.ARCloudControl.8;
+import com.tencent.mobileqq.ar.model.ArLBSActivity;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.Iterator;
-import java.util.List;
-import java.util.concurrent.CopyOnWriteArrayList;
+import mqq.app.QQPermissionDenied;
+import mqq.app.QQPermissionGrant;
+import mqq.os.MqqHandler;
 
 public class aozd
 {
-  private static aozd jdField_a_of_type_Aozd;
-  private static Object jdField_a_of_type_JavaLangObject = new Object();
-  private static String jdField_a_of_type_JavaLangString;
+  private static final Object jdField_a_of_type_JavaLangObject = new Object();
+  private static boolean jdField_k_of_type_Boolean;
+  private static boolean jdField_l_of_type_Boolean;
   int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long = System.currentTimeMillis();
-  private ArrayList<aoze> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  private CopyOnWriteArrayList<QQOperationViopTipTask> jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList = new CopyOnWriteArrayList();
-  private ArrayList<QQOperationViopTipTask> jdField_b_of_type_JavaUtilArrayList = new ArrayList();
-  private CopyOnWriteArrayList<QQOperationTaskRecord> jdField_b_of_type_JavaUtilConcurrentCopyOnWriteArrayList = new CopyOnWriteArrayList();
-  private CopyOnWriteArrayList<QQOperationVoipTipsTaskExcuteRecord> c = new CopyOnWriteArrayList();
+  long jdField_a_of_type_Long;
+  Activity jdField_a_of_type_AndroidAppActivity;
+  private Handler jdField_a_of_type_AndroidOsHandler;
+  private HandlerThread jdField_a_of_type_AndroidOsHandlerThread;
+  public aopa a;
+  aoyp jdField_a_of_type_Aoyp;
+  private aozj jdField_a_of_type_Aozj;
+  public aozk a;
+  aozw jdField_a_of_type_Aozw;
+  private apad jdField_a_of_type_Apad;
+  AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface;
+  public ARCommonConfigInfo a;
+  ArLBSActivity jdField_a_of_type_ComTencentMobileqqArModelArLBSActivity;
+  String jdField_a_of_type_JavaLangString;
+  private ArrayList<String> jdField_a_of_type_JavaUtilArrayList;
+  private boolean jdField_a_of_type_Boolean = true;
+  private byte[] jdField_a_of_type_ArrayOfByte;
+  int jdField_b_of_type_Int;
+  public long b;
+  private volatile boolean jdField_b_of_type_Boolean;
+  int jdField_c_of_type_Int;
+  long jdField_c_of_type_Long;
+  private boolean jdField_c_of_type_Boolean;
+  int jdField_d_of_type_Int;
+  long jdField_d_of_type_Long;
+  private boolean jdField_d_of_type_Boolean = true;
+  int jdField_e_of_type_Int;
+  long jdField_e_of_type_Long;
+  private boolean jdField_e_of_type_Boolean = true;
+  int jdField_f_of_type_Int;
+  long jdField_f_of_type_Long;
+  private boolean jdField_f_of_type_Boolean;
+  int jdField_g_of_type_Int = 10000;
+  long jdField_g_of_type_Long;
+  private boolean jdField_g_of_type_Boolean;
+  int jdField_h_of_type_Int;
+  long jdField_h_of_type_Long;
+  private boolean jdField_h_of_type_Boolean;
+  int jdField_i_of_type_Int;
+  long jdField_i_of_type_Long;
+  private boolean jdField_i_of_type_Boolean;
+  int jdField_j_of_type_Int = -1;
+  long jdField_j_of_type_Long;
+  private boolean jdField_j_of_type_Boolean = true;
+  long jdField_k_of_type_Long = 0L;
+  private long jdField_l_of_type_Long;
+  private long jdField_m_of_type_Long;
+  private boolean jdField_m_of_type_Boolean;
+  private long n;
   
-  public static aozd a(QQAppInterface paramQQAppInterface)
+  public aozd()
   {
-    synchronized (jdField_a_of_type_JavaLangObject)
-    {
-      if ((jdField_a_of_type_Aozd == null) || (!jdField_a_of_type_Aozd.a()) || (!paramQQAppInterface.getCurrentAccountUin().equals(jdField_a_of_type_JavaLangString)))
-      {
-        jdField_a_of_type_Aozd = new aozd();
-        jdField_a_of_type_JavaLangString = paramQQAppInterface.getCurrentAccountUin();
-        jdField_a_of_type_Aozd.a(paramQQAppInterface);
-      }
-      paramQQAppInterface = jdField_a_of_type_Aozd;
-      return paramQQAppInterface;
-    }
+    this.jdField_a_of_type_Aopa = new aozh(this, 0, true, true, 3000L, true, false, "QQARScan");
   }
   
-  private void a(QQAppInterface paramQQAppInterface)
+  public static void a()
   {
-    this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.clear();
-    this.jdField_b_of_type_JavaUtilConcurrentCopyOnWriteArrayList.clear();
-    this.c.clear();
-    this.jdField_b_of_type_JavaUtilArrayList.clear();
-    this.jdField_a_of_type_JavaUtilArrayList.clear();
-    if (TextUtils.isEmpty(jdField_a_of_type_JavaLangString)) {
-      return;
-    }
-    Object localObject1 = PreferenceManager.getDefaultSharedPreferences(BaseApplicationImpl.getContext());
-    this.jdField_a_of_type_Int = ((SharedPreferences)localObject1).getInt(jdField_a_of_type_JavaLangString + "QQOperationVoIPRequestCount", 0);
-    long l = ((SharedPreferences)localObject1).getLong(jdField_a_of_type_JavaLangString + "QQOperationVoIPRequestCountTime", 0L);
-    if ((this.jdField_a_of_type_Int == 0) || (l == 0L) || (!a(l)))
-    {
-      this.jdField_a_of_type_Int = 0;
-      ((SharedPreferences)localObject1).edit().putInt(jdField_a_of_type_JavaLangString + "QQOperationVoIPRequestCount", 0).putLong(jdField_a_of_type_JavaLangString + "QQOperationVoIPRequestCountTime", System.currentTimeMillis()).commit();
-    }
-    paramQQAppInterface = paramQQAppInterface.getEntityManagerFactory().createEntityManager();
-    for (;;)
-    {
-      Object localObject5;
-      Object localObject6;
-      Object localObject7;
-      try
-      {
-        localObject1 = paramQQAppInterface.a(QQOperationViopTipTask.class, new QQOperationViopTipTask().getTableName(), false, null, null, null, null, null, null);
-        if ((localObject1 != null) && (((List)localObject1).size() > 0))
-        {
-          if (QLog.isDevelopLevel()) {
-            QLog.d("QQOperateVoIP", 4, "init data config_task_size = " + ((List)localObject1).size());
-          }
-          this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.addAll((ArrayList)localObject1);
-          localObject1 = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
-          if (((Iterator)localObject1).hasNext())
-          {
-            localObject5 = (QQOperationViopTipTask)((Iterator)localObject1).next();
-            l = System.currentTimeMillis();
-            localObject6 = ((QQOperationViopTipTask)localObject5).getEndDate();
-            localObject7 = ((QQOperationViopTipTask)localObject5).getBeginDate();
-            if (((localObject6 == null) || (l <= ((Date)localObject6).getTime())) && ((localObject7 == null) || (l >= ((Date)localObject7).getTime()))) {
-              continue;
-            }
-            this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.remove(localObject5);
-            if ((localObject6 == null) || (l <= ((Date)localObject6).getTime())) {
-              continue;
-            }
-            paramQQAppInterface.b((awge)localObject5);
-            continue;
-          }
-        }
-        Object localObject2;
-        if (!QLog.isDevelopLevel()) {
-          break label666;
-        }
-      }
-      catch (Exception localException)
-      {
-        localException.printStackTrace();
-        return;
-        localObject2 = paramQQAppInterface.a(QQOperationTaskRecord.class, new QQOperationTaskRecord().getTableName(), false, null, null, null, null, null, null);
-        if ((localObject2 != null) && (((List)localObject2).size() > 0))
-        {
-          this.jdField_b_of_type_JavaUtilConcurrentCopyOnWriteArrayList.addAll((ArrayList)localObject2);
-          localObject2 = this.jdField_b_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
-          if (((Iterator)localObject2).hasNext())
-          {
-            localObject5 = (QQOperationTaskRecord)((Iterator)localObject2).next();
-            localObject6 = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
-            if (!((Iterator)localObject6).hasNext()) {
-              break label1230;
-            }
-            localObject7 = (QQOperationViopTipTask)((Iterator)localObject6).next();
-            if (((QQOperationTaskRecord)localObject5).taskid != ((QQOperationViopTipTask)localObject7).taskid) {
-              continue;
-            }
-            i = 1;
-            if (i == 0)
-            {
-              this.jdField_b_of_type_JavaUtilConcurrentCopyOnWriteArrayList.remove(localObject5);
-              paramQQAppInterface.b((awge)localObject5);
-            }
-            if (a(((QQOperationTaskRecord)localObject5).recordTime)) {
-              continue;
-            }
-            ((QQOperationTaskRecord)localObject5).hasShowedUins = "";
-            ((QQOperationTaskRecord)localObject5).recordTime = System.currentTimeMillis();
-            paramQQAppInterface.b((awge)localObject5);
-            continue;
-          }
-        }
-      }
-      finally
-      {
-        paramQQAppInterface.a();
-      }
-      QLog.d("QQOperateVoIP", 4, "init data task_record_size = " + this.jdField_b_of_type_JavaUtilConcurrentCopyOnWriteArrayList.size());
-      label666:
-      Object localObject4 = paramQQAppInterface.a(QQOperationVoipTipsTaskExcuteRecord.class, new QQOperationVoipTipsTaskExcuteRecord().getTableName(), false, null, null, null, null, null, null);
-      if ((localObject4 != null) && (((List)localObject4).size() > 0))
-      {
-        this.c.addAll((ArrayList)localObject4);
-        localObject4 = this.c.iterator();
-        while (((Iterator)localObject4).hasNext())
-        {
-          localObject5 = (QQOperationVoipTipsTaskExcuteRecord)((Iterator)localObject4).next();
-          if (!a(((QQOperationVoipTipsTaskExcuteRecord)localObject5).time))
-          {
-            this.c.remove(localObject5);
-            paramQQAppInterface.b((awge)localObject5);
-          }
-        }
-      }
-      if (QLog.isDevelopLevel()) {
-        QLog.d("QQOperateVoIP", 4, "init data task_excuted_record_size = " + this.c.size());
-      }
-      localObject4 = this.c.iterator();
-      while (((Iterator)localObject4).hasNext())
-      {
-        localObject5 = (QQOperationVoipTipsTaskExcuteRecord)((Iterator)localObject4).next();
-        if (((QQOperationVoipTipsTaskExcuteRecord)localObject5).taskid != -1)
-        {
-          localObject5 = a(((QQOperationVoipTipsTaskExcuteRecord)localObject5).taskid);
-          if (localObject5 != null) {
-            this.jdField_b_of_type_JavaUtilArrayList.add(localObject5);
-          }
-          if (QLog.isDevelopLevel()) {
-            QLog.d("QQOperateVoIP", 4, "init data net_task_show_size = " + this.jdField_b_of_type_JavaUtilArrayList.size());
-          }
-        }
-        else
-        {
-          localObject6 = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-          do
-          {
-            if (!((Iterator)localObject6).hasNext()) {
-              break;
-            }
-            localObject7 = (aoze)((Iterator)localObject6).next();
-          } while ((((aoze)localObject7).b != ((QQOperationVoipTipsTaskExcuteRecord)localObject5).uinType) || (((aoze)localObject7).jdField_a_of_type_Int != ((QQOperationVoipTipsTaskExcuteRecord)localObject5).tipType));
-        }
-      }
-      for (int i = 1;; i = 0)
-      {
-        if (i == 0)
-        {
-          localObject6 = new aoze();
-          ((aoze)localObject6).b = ((QQOperationVoipTipsTaskExcuteRecord)localObject5).uinType;
-          ((aoze)localObject6).jdField_a_of_type_Int = ((QQOperationVoipTipsTaskExcuteRecord)localObject5).tipType;
-          this.jdField_a_of_type_JavaUtilArrayList.add(localObject6);
-        }
-        if (!QLog.isDevelopLevel()) {
-          break;
-        }
-        QLog.d("QQOperateVoIP", 4, "init data native_task_show_size = " + this.jdField_a_of_type_JavaUtilArrayList.size());
-        break;
-        if (QLog.isDevelopLevel())
-        {
-          QLog.d("QQOperateVoIP", 4, "do Init tipsTask :" + this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList);
-          QLog.d("QQOperateVoIP", 4, "do Init taskRecord :" + this.jdField_b_of_type_JavaUtilConcurrentCopyOnWriteArrayList);
-          QLog.d("QQOperateVoIP", 4, "do Init excuteRecord :" + this.c);
-          QLog.d("QQOperateVoIP", 4, "do Init netShowList :" + this.jdField_b_of_type_JavaUtilArrayList);
-          QLog.d("QQOperateVoIP", 4, "do Init nativeShowList :" + this.jdField_a_of_type_JavaUtilArrayList);
-        }
-        paramQQAppInterface.a();
-        return;
-      }
-      label1230:
-      i = 0;
-    }
-  }
-  
-  public static boolean a(long paramLong)
-  {
-    Calendar localCalendar1 = Calendar.getInstance();
-    Calendar localCalendar2 = Calendar.getInstance();
-    localCalendar2.setTimeInMillis(System.currentTimeMillis());
-    localCalendar1.setTimeInMillis(paramLong);
-    return localCalendar2.get(5) == localCalendar1.get(5);
-  }
-  
-  public static void b()
-  {
-    if (jdField_a_of_type_Aozd == null) {
-      return;
-    }
-    synchronized (jdField_a_of_type_JavaLangObject)
-    {
-      jdField_a_of_type_Aozd.a();
-      jdField_a_of_type_Aozd = null;
-      return;
-    }
-  }
-  
-  public int a(int paramInt)
-  {
-    Iterator localIterator = this.c.iterator();
-    int i = 0;
-    if (localIterator.hasNext())
-    {
-      if (((QQOperationVoipTipsTaskExcuteRecord)localIterator.next()).taskid != paramInt) {
-        break label44;
-      }
-      i += 1;
-    }
-    label44:
-    for (;;)
-    {
-      break;
-      return i;
-    }
-  }
-  
-  public int a(int paramInt1, String paramString, int paramInt2)
-  {
-    Iterator localIterator = this.c.iterator();
-    while (localIterator.hasNext())
-    {
-      QQOperationVoipTipsTaskExcuteRecord localQQOperationVoipTipsTaskExcuteRecord = (QQOperationVoipTipsTaskExcuteRecord)localIterator.next();
-      if ((localQQOperationVoipTipsTaskExcuteRecord.taskid == paramInt1) && (localQQOperationVoipTipsTaskExcuteRecord.uin.equals(paramString)) && (localQQOperationVoipTipsTaskExcuteRecord.uinType == paramInt2)) {
-        return localQQOperationVoipTipsTaskExcuteRecord.count + 0;
-      }
-    }
-    return 0;
-  }
-  
-  public int a(String paramString, int paramInt, QQOperationViopTipTask paramQQOperationViopTipTask, QQAppInterface paramQQAppInterface, List<ChatMessage> paramList)
-  {
-    if (paramList == null)
-    {
-      paramInt = 0;
-      return paramInt;
-    }
-    if (paramList.size() == 1) {
-      return 0;
-    }
-    long l1 = ayzl.a();
-    long l2 = paramQQOperationViopTipTask.frequencyTime * 60 * 1000;
-    int n = paramQQOperationViopTipTask.frequencyMessage;
-    l1 = (l1 * 1000L - l2) / 1000L;
-    int k = paramList.size();
-    paramInt = 0;
-    int i = 0;
-    int j = 0;
-    k -= 1;
-    label85:
-    int m;
-    if (k >= 0)
-    {
-      paramString = (ChatMessage)paramList.get(k);
-      if (paramString.time >= l1)
-      {
-        if ((!abti.p(paramString.msgtype)) || (paramString.extraflag != 0)) {
-          break label221;
-        }
-        if (!paramString.isSend())
-        {
-          m = 1;
-          i = j;
-          j = m;
-          label148:
-          m = paramInt + 1;
-          paramInt = i;
-          i = j;
-          j = paramInt;
-          paramInt = m;
-        }
-      }
-    }
-    label221:
-    for (;;)
-    {
-      k -= 1;
-      break label85;
-      m = 1;
-      j = i;
-      i = m;
-      break label148;
-      if ((paramInt >= n) && (i != 0) && (j != 0)) {}
-      for (i = 1; i == 0; i = 0) {
-        return 0;
-      }
-      break;
-    }
-  }
-  
-  public aozf a(String paramString, int paramInt1, QQAppInterface paramQQAppInterface, List<ChatMessage> paramList, boolean paramBoolean, int paramInt2)
-  {
-    for (;;)
-    {
-      synchronized (jdField_a_of_type_JavaLangObject)
-      {
-        long l = System.currentTimeMillis();
-        ArrayList localArrayList = new ArrayList();
-        boolean bool = a(paramString, paramInt1, 1, paramQQAppInterface, paramList, localArrayList, paramBoolean, paramInt2);
-        paramBoolean = a(paramString, paramInt1, 2, paramQQAppInterface, paramList, localArrayList, paramBoolean, paramInt2);
-        if (QLog.isDevelopLevel()) {
-          QLog.d("QQOperateVoIP", 4, "voip_request_panduan_time = " + (System.currentTimeMillis() - l));
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d("QQOperateVoIP", 2, "voip_request_isNeed  blue = " + bool + " gray = " + paramBoolean);
-        }
-        paramString = new aozf();
-        if (bool) {
-          break label271;
-        }
-        if (paramBoolean)
-        {
-          break label271;
-          paramString.jdField_a_of_type_Boolean = paramBoolean;
-          paramString.jdField_a_of_type_JavaUtilArrayList = localArrayList;
-          if (!QLog.isDevelopLevel()) {
-            break label249;
-          }
-          paramQQAppInterface = localArrayList.iterator();
-          if (!paramQQAppInterface.hasNext()) {
-            break label249;
-          }
-          paramList = (aozg)paramQQAppInterface.next();
-          QLog.d("QQOperateVoIP", 4, "isNeedRequestForTips2 ..request taskid = .... " + paramList.jdField_a_of_type_Int);
-        }
-      }
-      paramBoolean = false;
-      continue;
-      label249:
-      if (paramString.jdField_a_of_type_Boolean) {
-        this.jdField_a_of_type_Int += 1;
-      }
-      return paramString;
-      label271:
-      paramBoolean = true;
-    }
-  }
-  
-  public QQOperationTaskRecord a(int paramInt)
-  {
-    Iterator localIterator = this.jdField_b_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
-    while (localIterator.hasNext())
-    {
-      QQOperationTaskRecord localQQOperationTaskRecord = (QQOperationTaskRecord)localIterator.next();
-      if (paramInt == localQQOperationTaskRecord.taskid) {
-        return localQQOperationTaskRecord;
-      }
-    }
-    return null;
-  }
-  
-  public QQOperationViopTipTask a(int paramInt)
-  {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
-    while (localIterator.hasNext())
-    {
-      QQOperationViopTipTask localQQOperationViopTipTask = (QQOperationViopTipTask)localIterator.next();
-      if (localQQOperationViopTipTask.taskid == paramInt) {
-        return localQQOperationViopTipTask;
-      }
-    }
-    return null;
-  }
-  
-  public QQOperationViopTipTask a(int paramInt1, int paramInt2)
-  {
-    Iterator localIterator = this.jdField_b_of_type_JavaUtilArrayList.iterator();
-    while (localIterator.hasNext())
-    {
-      QQOperationViopTipTask localQQOperationViopTipTask = (QQOperationViopTipTask)localIterator.next();
-      if ((paramInt1 == localQQOperationViopTipTask.uinType) && (paramInt2 == localQQOperationViopTipTask.tipType)) {
-        return localQQOperationViopTipTask;
-      }
-    }
-    return null;
-  }
-  
-  public QQOperationVoipTipsTaskExcuteRecord a(QQOperationVoipTipsTaskExcuteRecord paramQQOperationVoipTipsTaskExcuteRecord)
-  {
-    Iterator localIterator = this.c.iterator();
-    while (localIterator.hasNext())
-    {
-      QQOperationVoipTipsTaskExcuteRecord localQQOperationVoipTipsTaskExcuteRecord = (QQOperationVoipTipsTaskExcuteRecord)localIterator.next();
-      if ((localQQOperationVoipTipsTaskExcuteRecord != null) && (localQQOperationVoipTipsTaskExcuteRecord.taskid == paramQQOperationVoipTipsTaskExcuteRecord.taskid) && (localQQOperationVoipTipsTaskExcuteRecord.tipType == paramQQOperationVoipTipsTaskExcuteRecord.tipType) && (localQQOperationVoipTipsTaskExcuteRecord.uin != null) && (localQQOperationVoipTipsTaskExcuteRecord.uin.equals(paramQQOperationVoipTipsTaskExcuteRecord.uin)) && (localQQOperationVoipTipsTaskExcuteRecord.uinType == paramQQOperationVoipTipsTaskExcuteRecord.uinType)) {
-        return localQQOperationVoipTipsTaskExcuteRecord;
-      }
-    }
-    return null;
-  }
-  
-  public ArrayList<QQOperationViopTipTask> a(int paramInt1, int paramInt2)
-  {
-    ArrayList localArrayList = new ArrayList();
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
-    while (localIterator.hasNext())
-    {
-      QQOperationViopTipTask localQQOperationViopTipTask = (QQOperationViopTipTask)localIterator.next();
-      if ((localQQOperationViopTipTask.uinType == paramInt1) && (paramInt2 == localQQOperationViopTipTask.tipType)) {
-        localArrayList.add(localQQOperationViopTipTask);
-      }
-    }
-    return localArrayList;
-  }
-  
-  public ArrayList<String> a(String paramString, int paramInt, QQOperationViopTipTask paramQQOperationViopTipTask, QQAppInterface paramQQAppInterface, List<ChatMessage> paramList)
-  {
-    paramString = paramQQOperationViopTipTask.getKeywordList();
-    paramQQOperationViopTipTask = new ArrayList();
-    if ((paramList != null) && (paramList.size() > 0))
-    {
-      paramQQAppInterface = paramList.iterator();
-      while (paramQQAppInterface.hasNext())
-      {
-        paramList = (ChatMessage)paramQQAppInterface.next();
-        if ((paramList.msgtype == -1000) && (!TextUtils.isEmpty(paramList.msg)))
-        {
-          Iterator localIterator = paramString.iterator();
-          while (localIterator.hasNext())
-          {
-            String str = (String)localIterator.next();
-            if ((!TextUtils.isEmpty(str)) && (paramList.msg.contains(str)) && (!paramQQOperationViopTipTask.contains(str))) {
-              paramQQOperationViopTipTask.add(str);
-            }
-          }
-        }
-      }
-    }
-    return paramQQOperationViopTipTask;
-  }
-  
-  public void a()
-  {
-    ThreadManager.post(new QQOperateManager.1(this, this.jdField_a_of_type_Int), 8, null, true);
-  }
-  
-  public void a(QQAppInterface paramQQAppInterface, int paramInt1, int paramInt2)
-  {
-    QQOperationVoipTipsTaskExcuteRecord localQQOperationVoipTipsTaskExcuteRecord = new QQOperationVoipTipsTaskExcuteRecord();
-    localQQOperationVoipTipsTaskExcuteRecord.taskid = -1;
-    localQQOperationVoipTipsTaskExcuteRecord.uinType = paramInt1;
-    localQQOperationVoipTipsTaskExcuteRecord.tipType = paramInt2;
-    localQQOperationVoipTipsTaskExcuteRecord.time = System.currentTimeMillis();
-    localQQOperationVoipTipsTaskExcuteRecord.uin = "0";
-    a(paramQQAppInterface, localQQOperationVoipTipsTaskExcuteRecord);
-  }
-  
-  public void a(QQAppInterface paramQQAppInterface, QQOperationVoipTipsTaskExcuteRecord paramQQOperationVoipTipsTaskExcuteRecord)
-  {
-    int i = 1;
-    if (paramQQOperationVoipTipsTaskExcuteRecord == null) {
-      return;
-    }
+    Object localObject2 = BaseApplicationImpl.sApplication;
     Object localObject1;
-    awgf localawgf;
+    if (Build.VERSION.SDK_INT >= 9)
+    {
+      localObject1 = ((Context)localObject2).getApplicationInfo().nativeLibraryDir + "/";
+      localObject1 = (String)localObject1 + "libARCloud.so";
+      localObject2 = ((Context)localObject2).getFilesDir() + "libARCloud.so";
+      if (!new File((String)localObject1).exists()) {
+        break label172;
+      }
+    }
     for (;;)
     {
-      synchronized (jdField_a_of_type_JavaLangObject)
+      if (!((String)localObject1).equals(""))
       {
-        localObject1 = a(paramQQOperationVoipTipsTaskExcuteRecord);
-        if (localObject1 == null)
+        try
         {
-          this.c.add(paramQQOperationVoipTipsTaskExcuteRecord);
-          if (QLog.isDevelopLevel()) {
-            QLog.d("QQOperateVoIP", 4, "addVoipTipTaskExcuteRecord record.taskid = " + paramQQOperationVoipTipsTaskExcuteRecord.taskid + " TodayRecord : " + this.c);
-          }
-          localawgf = paramQQAppInterface.getEntityManagerFactory().createEntityManager();
-          if (paramQQOperationVoipTipsTaskExcuteRecord.taskid != -1) {
-            break;
-          }
-          paramQQAppInterface = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-          if (!paramQQAppInterface.hasNext()) {
-            break label720;
-          }
-          localObject1 = (aoze)paramQQAppInterface.next();
-          if ((((aoze)localObject1).b != paramQQOperationVoipTipsTaskExcuteRecord.uinType) || (((aoze)localObject1).jdField_a_of_type_Int != paramQQOperationVoipTipsTaskExcuteRecord.tipType)) {
-            continue;
-          }
-          if (i == 0)
-          {
-            paramQQAppInterface = new aoze();
-            paramQQAppInterface.b = paramQQOperationVoipTipsTaskExcuteRecord.uinType;
-            paramQQAppInterface.jdField_a_of_type_Int = paramQQOperationVoipTipsTaskExcuteRecord.tipType;
-            this.jdField_a_of_type_JavaUtilArrayList.add(paramQQAppInterface);
-          }
-          if (QLog.isDevelopLevel()) {
-            QLog.d("QQOperateVoIP", 4, "Update TodayNativeShow :" + this.jdField_a_of_type_JavaUtilArrayList);
-          }
-          label225:
-          paramQQOperationVoipTipsTaskExcuteRecord.setStatus(1000);
-          localawgf.b(paramQQOperationVoipTipsTaskExcuteRecord);
-          localawgf.a();
+          System.load((String)localObject1);
+          QLog.i("AREngine_ARCloudControl", 1, "load " + (String)localObject1 + " successfully!");
+          jdField_k_of_type_Boolean = true;
           return;
         }
-      }
-      ((QQOperationVoipTipsTaskExcuteRecord)localObject1).count += 1;
-      paramQQOperationVoipTipsTaskExcuteRecord = (QQOperationVoipTipsTaskExcuteRecord)localObject1;
-    }
-    paramQQAppInterface = this.jdField_b_of_type_JavaUtilArrayList.iterator();
-    label309:
-    Iterator localIterator;
-    while (paramQQAppInterface.hasNext()) {
-      if (((QQOperationViopTipTask)paramQQAppInterface.next()).taskid == paramQQOperationVoipTipsTaskExcuteRecord.taskid)
-      {
-        i = 1;
-        if (i == 0)
+        catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
         {
-          paramQQAppInterface = a(paramQQOperationVoipTipsTaskExcuteRecord.taskid);
-          this.jdField_b_of_type_JavaUtilArrayList.add(paramQQAppInterface);
+          label172:
+          QLog.i("AREngine_ARCloudControl", 1, "load " + (String)localObject1 + " failed! " + localUnsatisfiedLinkError.getMessage());
         }
-        if (QLog.isDevelopLevel()) {
-          QLog.d("QQOperateVoIP", 4, "Update TodayNetShow :" + this.jdField_b_of_type_JavaUtilArrayList);
-        }
-        paramQQAppInterface = null;
-        localIterator = this.jdField_b_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
-      }
-    }
-    label720:
-    label725:
-    for (;;)
-    {
-      if (localIterator.hasNext())
-      {
-        localObject1 = (QQOperationTaskRecord)localIterator.next();
-        if (((QQOperationTaskRecord)localObject1).taskid == paramQQOperationVoipTipsTaskExcuteRecord.taskid)
-        {
-          ((QQOperationTaskRecord)localObject1).addUinShowCount(paramQQOperationVoipTipsTaskExcuteRecord.uin);
-          if (!((QQOperationTaskRecord)localObject1).hasShowedUins.contains(paramQQOperationVoipTipsTaskExcuteRecord.uin + "_" + paramQQOperationVoipTipsTaskExcuteRecord.uinType))
-          {
-            ((QQOperationTaskRecord)localObject1).hasShowedUins = (((QQOperationTaskRecord)localObject1).hasShowedUins + paramQQOperationVoipTipsTaskExcuteRecord.uin + "_" + paramQQOperationVoipTipsTaskExcuteRecord.uinType + "|");
-            ((QQOperationTaskRecord)localObject1).aioCount += 1;
-          }
-          paramQQAppInterface = (QQAppInterface)localObject1;
-          if (!QLog.isDevelopLevel()) {
-            break label725;
-          }
-          QLog.d("QQOperateVoIP", 4, "QQOperationTaskRecord record.taskid = " + ((QQOperationTaskRecord)localObject1).taskid + " existTaskRecord.showCount = " + ((QQOperationTaskRecord)localObject1).showCount + " existTaskRecord.aioCount = " + ((QQOperationTaskRecord)localObject1).aioCount);
-          paramQQAppInterface = (QQAppInterface)localObject1;
-          break label725;
-        }
-      }
-      else
-      {
-        localObject1 = paramQQAppInterface;
-        if (paramQQAppInterface == null)
-        {
-          localObject1 = new QQOperationTaskRecord();
-          ((QQOperationTaskRecord)localObject1).taskid = paramQQOperationVoipTipsTaskExcuteRecord.taskid;
-          ((QQOperationTaskRecord)localObject1).aioCount = 1;
-          ((QQOperationTaskRecord)localObject1).addUinShowCount(paramQQOperationVoipTipsTaskExcuteRecord.uin);
-          ((QQOperationTaskRecord)localObject1).recordTime = System.currentTimeMillis();
-          ((QQOperationTaskRecord)localObject1).hasShowedUins = (paramQQOperationVoipTipsTaskExcuteRecord.uin + "_" + paramQQOperationVoipTipsTaskExcuteRecord.uinType + "|");
-          this.jdField_b_of_type_JavaUtilConcurrentCopyOnWriteArrayList.add(localObject1);
-        }
-        ((QQOperationTaskRecord)localObject1).setStatus(1000);
-        localawgf.b((awge)localObject1);
-        break label225;
-      }
-      break label725;
-      i = 0;
-      break label309;
-      i = 0;
-      break;
-    }
-  }
-  
-  /* Error */
-  public void a(QQAppInterface paramQQAppInterface, ArrayList<QQOperationViopTipTask> paramArrayList)
-  {
-    // Byte code:
-    //   0: invokestatic 177	com/tencent/qphone/base/util/QLog:isDevelopLevel	()Z
-    //   3: ifeq +29 -> 32
-    //   6: ldc 179
-    //   8: iconst_4
-    //   9: new 101	java/lang/StringBuilder
-    //   12: dup
-    //   13: invokespecial 102	java/lang/StringBuilder:<init>	()V
-    //   16: ldc_w 465
-    //   19: invokevirtual 106	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   22: aload_2
-    //   23: invokevirtual 289	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   26: invokevirtual 111	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   29: invokestatic 188	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   32: aload_2
-    //   33: ifnull +10 -> 43
-    //   36: aload_2
-    //   37: invokevirtual 269	java/util/ArrayList:size	()I
-    //   40: ifne +4 -> 44
-    //   43: return
-    //   44: aload_1
-    //   45: invokevirtual 149	com/tencent/mobileqq/app/QQAppInterface:getEntityManagerFactory	()Lawgg;
-    //   48: invokevirtual 155	awgg:createEntityManager	()Lawgf;
-    //   51: astore_3
-    //   52: aload_3
-    //   53: invokevirtual 468	awgf:a	()Lawgh;
-    //   56: astore_1
-    //   57: aload_1
-    //   58: invokevirtual 471	awgh:a	()V
-    //   61: aload_3
-    //   62: ldc 157
-    //   64: invokevirtual 474	awgf:a	(Ljava/lang/Class;)Z
-    //   67: pop
-    //   68: aload_2
-    //   69: invokevirtual 270	java/util/ArrayList:iterator	()Ljava/util/Iterator;
-    //   72: astore 4
-    //   74: aload 4
-    //   76: invokeinterface 201 1 0
-    //   81: ifeq +38 -> 119
-    //   84: aload_3
-    //   85: aload 4
-    //   87: invokeinterface 205 1 0
-    //   92: checkcast 157	com/tencent/mobileqq/config/operation/QQOperationViopTipTask
-    //   95: invokevirtual 247	awgf:b	(Lawge;)V
-    //   98: goto -24 -> 74
-    //   101: astore_2
-    //   102: aload_2
-    //   103: invokevirtual 226	java/lang/Exception:printStackTrace	()V
-    //   106: aload_1
-    //   107: invokevirtual 476	awgh:b	()V
-    //   110: aload_3
-    //   111: invokevirtual 228	awgf:a	()V
-    //   114: aload_0
-    //   115: invokevirtual 312	aozd:a	()V
-    //   118: return
-    //   119: invokestatic 177	com/tencent/qphone/base/util/QLog:isDevelopLevel	()Z
-    //   122: ifeq +32 -> 154
-    //   125: ldc 179
-    //   127: iconst_4
-    //   128: new 101	java/lang/StringBuilder
-    //   131: dup
-    //   132: invokespecial 102	java/lang/StringBuilder:<init>	()V
-    //   135: ldc_w 478
-    //   138: invokevirtual 106	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   141: aload_2
-    //   142: invokevirtual 269	java/util/ArrayList:size	()I
-    //   145: invokevirtual 184	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   148: invokevirtual 111	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   151: invokestatic 188	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   154: aload_1
-    //   155: invokevirtual 480	awgh:c	()V
-    //   158: aload_1
-    //   159: invokevirtual 476	awgh:b	()V
-    //   162: goto -52 -> 110
-    //   165: astore_2
-    //   166: aload_1
-    //   167: invokevirtual 476	awgh:b	()V
-    //   170: aload_2
-    //   171: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	172	0	this	aozd
-    //   0	172	1	paramQQAppInterface	QQAppInterface
-    //   0	172	2	paramArrayList	ArrayList<QQOperationViopTipTask>
-    //   51	60	3	localawgf	awgf
-    //   72	14	4	localIterator	Iterator
-    // Exception table:
-    //   from	to	target	type
-    //   57	74	101	java/lang/Exception
-    //   74	98	101	java/lang/Exception
-    //   119	154	101	java/lang/Exception
-    //   154	158	101	java/lang/Exception
-    //   57	74	165	finally
-    //   74	98	165	finally
-    //   102	106	165	finally
-    //   119	154	165	finally
-    //   154	158	165	finally
-  }
-  
-  public void a(String paramString, int paramInt, ArrayList<aozg> paramArrayList, QQAppInterface paramQQAppInterface)
-  {
-    ((alqf)paramQQAppInterface.a(4)).a(paramString, paramInt, paramArrayList, false);
-  }
-  
-  public boolean a()
-  {
-    return a(this.jdField_a_of_type_Long);
-  }
-  
-  public boolean a(int paramInt1, int paramInt2)
-  {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-    while (localIterator.hasNext())
-    {
-      aoze localaoze = (aoze)localIterator.next();
-      if ((paramInt1 == localaoze.b) && (paramInt2 == localaoze.jdField_a_of_type_Int)) {
-        return true;
-      }
-    }
-    return false;
-  }
-  
-  public boolean a(String paramString, int paramInt1, int paramInt2, QQAppInterface paramQQAppInterface, List<ChatMessage> paramList, ArrayList<aozg> paramArrayList, boolean paramBoolean, int paramInt3)
-  {
-    if (this.jdField_a_of_type_Int >= 100)
-    {
-      if (QLog.isDevelopLevel()) {
-        QLog.d("QQOperateVoIP", 4, "isNeedRequestForTips2 ..requestCount >100 ...... ");
-      }
-      return false;
-    }
-    if (a(paramInt1, paramInt2)) {
-      return false;
-    }
-    if (!c(paramInt1, paramInt2)) {
-      return false;
-    }
-    Object localObject3;
-    Object localObject1;
-    label147:
-    int i;
-    label160:
-    int j;
-    Object localObject2;
-    if (b(paramInt1, paramInt2))
-    {
-      if (QLog.isDevelopLevel()) {
-        QLog.d("QQOperateVoIP", 4, "isNeedRequestForTips2 ..server has xiafa guo ...... ");
-      }
-      localObject3 = a(paramInt1, paramInt2);
-      if (localObject3 == null) {
-        return false;
-      }
-      localObject1 = a(((QQOperationViopTipTask)localObject3).taskid);
-      if ((localObject1 != null) && (QLog.isDevelopLevel())) {
-        QLog.d("QQOperateVoIP", 4, "isNeedRequestForTips2 .." + localObject1);
-      }
-      if (localObject1 != null)
-      {
-        paramInt2 = ((QQOperationTaskRecord)localObject1).aioCount;
-        if (localObject1 == null) {
-          break label686;
-        }
-        i = ((QQOperationTaskRecord)localObject1).getUinTotalShowCount(paramString);
-        j = a(((QQOperationViopTipTask)localObject3).taskid);
-        int k = a(((QQOperationViopTipTask)localObject3).taskid, paramString, paramInt1);
-        if (QLog.isDevelopLevel()) {
-          QLog.d("QQOperateVoIP", 4, " judge showLimit, thisTaskAIOShowedCount = " + paramInt2 + ",thisTaskTotalShowedCount = " + i + ",thisTaskTodayAIOShowCount = " + j + ",thisUinTodayShowedCount" + k);
-        }
-        if ((localObject3 == null) || ((paramInt2 >= ((QQOperationViopTipTask)localObject3).limitTotalAIOCount) && ((paramInt2 != ((QQOperationViopTipTask)localObject3).limitTotalAIOCount) || (localObject1 == null) || (((QQOperationTaskRecord)localObject1).hasShowedUins == null) || (!((QQOperationTaskRecord)localObject1).hasShowedUins.contains(paramString)))) || (i >= ((QQOperationViopTipTask)localObject3).limitTotalShowCount) || ((j >= ((QQOperationViopTipTask)localObject3).limitDayAIOCount) && ((k <= 0) || (j != ((QQOperationViopTipTask)localObject3).limitDayAIOCount))) || (k >= ((QQOperationViopTipTask)localObject3).limitDayAIOShowCount)) {
-          break label1523;
-        }
-        if (!paramBoolean) {
-          break label706;
-        }
-        localObject2 = null;
-        if (paramList == null) {
-          break label692;
-        }
-        paramInt2 = paramList.size();
-        label363:
-        if (paramInt2 <= 0) {
-          break label1550;
+        localObject1 = ((Context)localObject2).getApplicationInfo().dataDir + "/lib/";
+        break;
+        if (!new File((String)localObject2).exists()) {
+          break label248;
         }
         localObject1 = localObject2;
-        if (paramInt3 > -1)
+        continue;
+      }
+      if (QLog.isDevelopLevel()) {
+        QLog.i("AREngine_ARCloudControl", 2, "loadSo suc");
+      }
+      jdField_k_of_type_Boolean = false;
+      return;
+      label248:
+      localObject1 = "";
+    }
+  }
+  
+  private void a(int paramInt, apad paramapad)
+  {
+    QLog.i("AREngine_ARCloudControl", 1, "requestToCheckLBSLocation.");
+    this.jdField_a_of_type_Apad = paramapad;
+    if (this.jdField_a_of_type_AndroidOsHandler != null)
+    {
+      if (this.jdField_a_of_type_AndroidOsHandler.hasMessages(2)) {
+        this.jdField_a_of_type_AndroidOsHandler.removeMessages(2);
+      }
+      Message localMessage = Message.obtain(this.jdField_a_of_type_AndroidOsHandler, new ARCloudControl.8(this));
+      localMessage.what = 2;
+      this.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(localMessage, this.jdField_g_of_type_Int);
+    }
+    this.jdField_a_of_type_ComTencentMobileqqArModelArLBSActivity = apad.a(this.jdField_a_of_type_ComTencentMobileqqArAidlARCommonConfigInfo.recognitions, paramapad);
+    if (Build.VERSION.SDK_INT >= 23)
+    {
+      if (((BaseActivity)this.jdField_a_of_type_AndroidAppActivity).checkSelfPermission("android.permission.ACCESS_FINE_LOCATION") != 0)
+      {
+        QLog.d("AREngine_ARCloudControl", 1, "checkSelfPermission. not grant");
+        ((BaseActivity)this.jdField_a_of_type_AndroidAppActivity).requestPermissions(new aozi(this), 1, new String[] { "android.permission.ACCESS_COARSE_LOCATION", "android.permission.ACCESS_FINE_LOCATION" });
+        return;
+      }
+      QLog.d("AREngine_ARCloudControl", 1, "checkSelfPermission. grant");
+      grant();
+      return;
+    }
+    SosoInterface.a(this.jdField_a_of_type_Aopa);
+  }
+  
+  private void a(apai paramapai)
+  {
+    QLog.i("AREngine_ARCloudControl", 1, "[DEBUG_SCAN_yt_face] requestToUploadImg. : ");
+    long l1 = System.currentTimeMillis();
+    if (this.jdField_a_of_type_Aoyp != null)
+    {
+      this.jdField_d_of_type_Boolean = true;
+      this.jdField_h_of_type_Int += 1;
+    }
+    synchronized (jdField_a_of_type_JavaLangObject)
+    {
+      if (this.jdField_a_of_type_AndroidOsHandler != null)
+      {
+        if (this.jdField_a_of_type_AndroidOsHandler.hasMessages(1)) {
+          this.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
+        }
+        Message localMessage = Message.obtain(this.jdField_a_of_type_AndroidOsHandler, new ARCloudControl.5(this));
+        localMessage.what = 1;
+        this.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(localMessage, this.jdField_g_of_type_Int);
+      }
+      this.jdField_a_of_type_Aoyp.a(paramapai, new aozg(this, l1, paramapai));
+      return;
+    }
+  }
+  
+  private void a(Runnable paramRunnable)
+  {
+    a(paramRunnable, 0L);
+  }
+  
+  private void a(Runnable paramRunnable, long paramLong)
+  {
+    synchronized (jdField_a_of_type_JavaLangObject)
+    {
+      if (this.jdField_a_of_type_AndroidOsHandler != null) {
+        this.jdField_a_of_type_AndroidOsHandler.postDelayed(paramRunnable, paramLong);
+      }
+      return;
+    }
+  }
+  
+  private void a(String paramString, int paramInt1, int paramInt2)
+  {
+    QLog.i("AREngine_ARCloudControl", 1, "requestToCheckLBSLocationInternal.");
+    System.currentTimeMillis();
+    if (this.jdField_a_of_type_Aoyp != null)
+    {
+      this.jdField_j_of_type_Boolean = true;
+      if (this.jdField_a_of_type_AndroidOsHandler != null)
+      {
+        if (this.jdField_a_of_type_AndroidOsHandler.hasMessages(2)) {
+          this.jdField_a_of_type_AndroidOsHandler.removeMessages(2);
+        }
+        Message localMessage = Message.obtain(this.jdField_a_of_type_AndroidOsHandler, new ARCloudControl.10(this));
+        localMessage.what = 2;
+        this.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(localMessage, this.jdField_g_of_type_Int);
+      }
+      this.jdField_a_of_type_Aoyp.a(paramString, paramInt1, paramInt2, new aoze(this));
+    }
+  }
+  
+  private void a(byte[] paramArrayOfByte, ArrayList<ARRecognition> paramArrayList)
+  {
+    if (this.jdField_a_of_type_Aozw != null)
+    {
+      apai localapai = new apai();
+      this.jdField_a_of_type_Aozw.a(paramArrayOfByte, paramArrayList, new aozf(this, localapai), this.jdField_b_of_type_Int, this.jdField_c_of_type_Int, this.jdField_a_of_type_Int);
+    }
+  }
+  
+  public static boolean a()
+  {
+    boolean bool = true;
+    for (;;)
+    {
+      try
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("AREngine_ARCloudControl", 2, "loadNativeLibrary" + jdField_l_of_type_Boolean + ", loadSoSuccess=" + jdField_k_of_type_Boolean);
+        }
+        if (jdField_l_of_type_Boolean)
         {
-          localObject1 = localObject2;
-          if (paramInt3 < paramList.size())
+          bool = jdField_k_of_type_Boolean;
+          return bool;
+        }
+        if (aovh.a(aovh.a()))
+        {
+          jdField_l_of_type_Boolean = true;
+          try
           {
-            localObject1 = new ArrayList();
-            ((ArrayList)localObject1).addAll(paramList.subList(paramInt3, paramList.size()));
+            if (aovh.a(aovh.a()) != 0) {
+              break label167;
+            }
+            jdField_k_of_type_Boolean = bool;
           }
-        }
-        if (QLog.isDevelopLevel())
-        {
-          localObject2 = new StringBuilder().append(" request from open aio ,firstUnreadMsgIndex = ").append(paramInt3).append("unreadMsgList size = ");
-          if (localObject1 != null) {
-            break label697;
+          catch (Throwable localThrowable)
+          {
+            jdField_k_of_type_Boolean = false;
+            QLog.i("AREngine_ARCloudControl", 1, "load ARCloud so failed. err msg = " + localThrowable.getMessage());
+            continue;
           }
-          paramInt2 = 0;
-          label463:
-          QLog.d("QQOperateVoIP", 4, paramInt2);
+          QLog.d("AREngine_ARCloudControl", 1, "loadArNativeSo");
+          bool = jdField_k_of_type_Boolean;
+          continue;
         }
+        QLog.i("AREngine_ARCloudControl", 1, "load ARCloud so failed. ARCloud so is not exist!");
+      }
+      finally {}
+      bool = jdField_k_of_type_Boolean;
+      continue;
+      label167:
+      bool = false;
+    }
+  }
+  
+  private void b(byte[] paramArrayOfByte)
+  {
+    QLog.i("AREngine_ARCloudControl", 1, "saveTmpPreviewData should nerver be called ");
+    if ((paramArrayOfByte != null) && (paramArrayOfByte.length > 0))
+    {
+      if ((this.jdField_a_of_type_ArrayOfByte == null) || (this.jdField_a_of_type_ArrayOfByte.length != paramArrayOfByte.length)) {
+        this.jdField_a_of_type_ArrayOfByte = new byte[paramArrayOfByte.length];
+      }
+      System.arraycopy(paramArrayOfByte, 0, this.jdField_a_of_type_ArrayOfByte, 0, paramArrayOfByte.length);
+      this.jdField_m_of_type_Boolean = true;
+      if (this.n <= 0L) {
+        this.n = System.currentTimeMillis();
+      }
+    }
+  }
+  
+  private void i()
+  {
+    QLog.i("AREngine_ARCloudControl", 1, "startUploadThread.");
+    synchronized (jdField_a_of_type_JavaLangObject)
+    {
+      if (this.jdField_a_of_type_AndroidOsHandlerThread == null)
+      {
+        this.jdField_a_of_type_AndroidOsHandlerThread = ThreadManager.newFreeHandlerThread("ARCloudEnginePreprocessThread", 0);
+        this.jdField_a_of_type_AndroidOsHandlerThread.start();
+        this.jdField_a_of_type_AndroidOsHandler = new Handler(this.jdField_a_of_type_AndroidOsHandlerThread.getLooper());
+      }
+      return;
+    }
+  }
+  
+  private void j()
+  {
+    QLog.i("AREngine_ARCloudControl", 1, "stopUploadThread.");
+    synchronized (jdField_a_of_type_JavaLangObject)
+    {
+      if (this.jdField_a_of_type_AndroidOsHandler != null) {
+        this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
+      }
+      this.jdField_a_of_type_AndroidOsHandler = null;
+      if (this.jdField_a_of_type_AndroidOsHandlerThread != null)
+      {
+        this.jdField_a_of_type_AndroidOsHandlerThread.quit();
+        this.jdField_a_of_type_AndroidOsHandlerThread.interrupt();
+      }
+      this.jdField_a_of_type_AndroidOsHandlerThread = null;
+      return;
+    }
+  }
+  
+  private void k()
+  {
+    this.jdField_a_of_type_ArrayOfByte = null;
+    this.jdField_m_of_type_Boolean = false;
+    this.n = 0L;
+  }
+  
+  private void l()
+  {
+    QLog.i("AREngine_ARCloudControl", 1, "stopUploadingImg.");
+    if (this.jdField_a_of_type_Aoyp != null) {
+      this.jdField_a_of_type_Aoyp.a();
+    }
+  }
+  
+  public ArrayList<String> a()
+  {
+    return this.jdField_a_of_type_JavaUtilArrayList;
+  }
+  
+  public void a(int paramInt1, int paramInt2, int paramInt3)
+  {
+    this.jdField_b_of_type_Int = paramInt1;
+    this.jdField_c_of_type_Int = paramInt2;
+    this.jdField_a_of_type_Int = paramInt3;
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public void a(byte[] paramArrayOfByte)
+  {
+    if (this.jdField_k_of_type_Long == 0L) {
+      this.jdField_k_of_type_Long = System.currentTimeMillis();
+    }
+    long l1;
+    if ((this.jdField_b_of_type_Boolean) && (this.jdField_a_of_type_Aozk != null))
+    {
+      l1 = System.currentTimeMillis();
+      bool1 = this.jdField_a_of_type_Aozk.a(paramArrayOfByte);
+      this.jdField_b_of_type_Boolean = false;
+      this.jdField_a_of_type_Aozj.c(bool1);
+      QLog.i("AREngine_ARCloudControl", 1, "isSameSceneWithBestImg = " + bool1 + " cost time:" + (System.currentTimeMillis() - l1) + "ms");
+    }
+    if ((!this.jdField_a_of_type_Boolean) || (this.jdField_a_of_type_Aozk == null)) {
+      return;
+    }
+    if (this.jdField_e_of_type_Boolean)
+    {
+      QLog.i("AREngine_ARCloudControl", 1, "selectImage start");
+      QLog.i("AREngine_ARCloudControl", 1, String.format("selectImage total time cost:start Time is %s", new Object[] { "firstTimeStart" }));
+      this.jdField_e_of_type_Boolean = false;
+      if (this.jdField_l_of_type_Long == 0L) {
+        this.jdField_l_of_type_Long = System.currentTimeMillis();
+      }
+      if (this.jdField_i_of_type_Boolean) {
+        ThreadManager.getUIHandler().post(new ARCloudControl.1(this));
+      }
+    }
+    if (this.jdField_a_of_type_Aozj != null) {
+      this.jdField_a_of_type_Aozj.b();
+    }
+    this.jdField_c_of_type_Long = System.currentTimeMillis();
+    boolean bool1 = this.jdField_a_of_type_Aozk.a(paramArrayOfByte, this.jdField_b_of_type_Int, this.jdField_c_of_type_Int);
+    if ((bool1) && (this.jdField_m_of_type_Long == 0L)) {
+      this.jdField_m_of_type_Long = System.currentTimeMillis();
+    }
+    int i1;
+    if (this.jdField_a_of_type_Aozj != null)
+    {
+      boolean bool2 = this.jdField_a_of_type_Aozj.a();
+      l1 = this.jdField_a_of_type_Aozj.a();
+      if ((bool1) && (!this.jdField_m_of_type_Boolean) && (bool2))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("AREngine_ARCloudControl", 2, "selectImage save tmp preview data");
+        }
+        b(paramArrayOfByte);
+        i1 = 0;
+        bool1 = false;
+        this.jdField_a_of_type_Aozj.a(bool1);
       }
     }
     for (;;)
     {
-      localObject1 = a(paramString, paramInt1, (QQOperationViopTipTask)localObject3, paramQQAppInterface, (List)localObject1);
-      paramInt2 = a(paramString, paramInt1, (QQOperationViopTipTask)localObject3, paramQQAppInterface, paramList);
-      paramString = (String)localObject1;
-      label508:
-      if (QLog.isDevelopLevel()) {
-        QLog.d("QQOperateVoIP", 4, " judge taskid = " + ((QQOperationViopTipTask)localObject3).taskid + ", matchKeyWords = " + paramString + ",pinfanNum = " + paramInt2);
-      }
-      paramInt3 = 0;
-      if ((TextUtils.isEmpty(((QQOperationViopTipTask)localObject3).keywordString)) && (((QQOperationViopTipTask)localObject3).frequencyTime == 0))
+      if (!bool1)
       {
-        paramInt1 = 1;
-        label588:
-        if (paramInt1 == 0) {
-          break label1544;
-        }
-        paramQQAppInterface = paramArrayList.iterator();
-        for (;;)
+        this.jdField_a_of_type_Boolean = true;
+        return;
+        if ((bool1) && (this.jdField_m_of_type_Boolean) && (System.currentTimeMillis() < this.n + l1))
         {
-          if (paramQQAppInterface.hasNext()) {
-            if (((aozg)paramQQAppInterface.next()).jdField_a_of_type_Int == ((QQOperationViopTipTask)localObject3).taskid)
-            {
-              paramInt1 = 1;
-              label632:
-              if (paramInt1 == 0)
-              {
-                paramQQAppInterface = new aozg();
-                paramQQAppInterface.jdField_a_of_type_Int = ((QQOperationViopTipTask)localObject3).taskid;
-                paramQQAppInterface.b = paramInt2;
-                paramQQAppInterface.jdField_a_of_type_JavaUtilArrayList = paramString;
-                paramArrayList.add(paramQQAppInterface);
-              }
-            }
+          if (QLog.isColorLevel()) {
+            QLog.d("AREngine_ARCloudControl", 2, "selectImage update tmp preview data");
           }
-        }
-      }
-      label1156:
-      label1544:
-      for (paramBoolean = true;; paramBoolean = false)
-      {
-        return paramBoolean;
-        paramInt2 = 0;
-        break label147;
-        label686:
-        i = 0;
-        break label160;
-        label692:
-        paramInt2 = 0;
-        break label363;
-        label697:
-        paramInt2 = ((ArrayList)localObject1).size();
-        break label463;
-        label706:
-        paramString = a(paramString, paramInt1, (QQOperationViopTipTask)localObject3, paramQQAppInterface, paramList);
-        if (paramString.size() == 0) {
+          b(paramArrayOfByte);
+          i1 = 0;
+          bool1 = false;
           break;
         }
-        paramInt2 = 0;
-        break label508;
-        if ((TextUtils.isEmpty(((QQOperationViopTipTask)localObject3).keywordString)) && (((QQOperationViopTipTask)localObject3).frequencyTime != 0))
-        {
-          paramInt1 = paramInt3;
-          if (paramInt2 <= 0) {
-            break label588;
-          }
-          paramInt1 = 1;
-          break label588;
+        if ((bool1) || (!this.jdField_m_of_type_Boolean) || (System.currentTimeMillis() < l1 + this.n)) {
+          break label675;
         }
-        if ((!TextUtils.isEmpty(((QQOperationViopTipTask)localObject3).keywordString)) && (((QQOperationViopTipTask)localObject3).frequencyTime == 0))
-        {
-          paramInt1 = paramInt3;
-          if (paramString.size() <= 0) {
-            break label588;
-          }
-          paramInt1 = 1;
-          break label588;
+        if (QLog.isColorLevel()) {
+          QLog.d("AREngine_ARCloudControl", 2, "selectImage use tmp preview data");
         }
-        paramInt1 = paramInt3;
-        if (paramString.size() <= 0) {
-          break label588;
-        }
-        paramInt1 = paramInt3;
-        if (paramInt2 <= 0) {
-          break label588;
-        }
-        paramInt1 = 1;
-        break label588;
-        localObject1 = a(paramInt1, paramInt2);
-        if (QLog.isDevelopLevel()) {
-          QLog.d("QQOperateVoIP", 4, "isNeedRequestForTips2 ..server has not xiafa guo  ...... ");
-        }
-        if ((localObject1 == null) || (((ArrayList)localObject1).size() < 1))
-        {
-          if (QLog.isDevelopLevel()) {
-            QLog.d("QQOperateVoIP", 4, "isNeedRequestForTips2 ..this type no valid task  ...... ");
-          }
-          return false;
-        }
-        localObject3 = ((ArrayList)localObject1).iterator();
-        boolean bool = false;
-        QQOperationViopTipTask localQQOperationViopTipTask;
-        if (((Iterator)localObject3).hasNext())
-        {
-          localQQOperationViopTipTask = (QQOperationViopTipTask)((Iterator)localObject3).next();
-          localObject1 = a(localQQOperationViopTipTask.taskid);
-          if (localObject1 != null)
-          {
-            paramInt2 = ((QQOperationTaskRecord)localObject1).aioCount;
-            label926:
-            if (localObject1 == null) {
-              break label1381;
-            }
-            i = ((QQOperationTaskRecord)localObject1).getUinTotalShowCount(paramString);
-            label939:
-            if (QLog.isDevelopLevel()) {
-              QLog.d("QQOperateVoIP", 4, " judge showLimit, thisTaskAIOShowedCount = " + paramInt2 + ",thisTaskTotalShowedCount = " + i);
-            }
-            if (((paramInt2 >= localQQOperationViopTipTask.limitTotalAIOCount) && ((paramInt2 != localQQOperationViopTipTask.limitTotalAIOCount) || (localObject1 == null) || (((QQOperationTaskRecord)localObject1).hasShowedUins == null) || (!((QQOperationTaskRecord)localObject1).hasShowedUins.contains(paramString)))) || (i >= localQQOperationViopTipTask.limitTotalShowCount)) {
-              break label1530;
-            }
-            if (!paramBoolean) {
-              break label1401;
-            }
-            if (paramList == null) {
-              break label1387;
-            }
-            paramInt2 = paramList.size();
-            label1053:
-            localObject2 = null;
-            if (paramInt2 <= 0) {
-              break label1533;
-            }
-            localObject1 = localObject2;
-            if (paramInt3 > -1)
-            {
-              localObject1 = localObject2;
-              if (paramInt3 < paramList.size())
-              {
-                localObject1 = new ArrayList();
-                ((ArrayList)localObject1).addAll(paramList.subList(paramInt3, paramList.size()));
-              }
-            }
-            if (QLog.isDevelopLevel())
-            {
-              localObject2 = new StringBuilder().append(" request from open aio ,firstUnreadMsgIndex = ").append(paramInt3).append("unreadMsgList size = ");
-              if (localObject1 != null) {
-                break label1392;
-              }
-              paramInt2 = 0;
-              QLog.d("QQOperateVoIP", 4, paramInt2);
-            }
-          }
-        }
-        for (;;)
-        {
-          localObject1 = a(paramString, paramInt1, localQQOperationViopTipTask, paramQQAppInterface, (List)localObject1);
-          i = a(paramString, paramInt1, localQQOperationViopTipTask, paramQQAppInterface, paramList);
-          label1199:
-          if (QLog.isDevelopLevel()) {
-            QLog.d("QQOperateVoIP", 4, " judge taskid = " + localQQOperationViopTipTask.taskid + ", matchKeyWords = " + localObject1 + ",pinfanNum = " + i);
-          }
-          j = 0;
-          if ((TextUtils.isEmpty(localQQOperationViopTipTask.keywordString)) && (localQQOperationViopTipTask.frequencyTime == 0))
-          {
-            paramInt2 = 1;
-            if (paramInt2 == 0) {
-              break label1530;
-            }
-            localObject2 = paramArrayList.iterator();
-            while (((Iterator)localObject2).hasNext()) {
-              if (((aozg)((Iterator)localObject2).next()).jdField_a_of_type_Int == localQQOperationViopTipTask.taskid)
-              {
-                paramInt2 = 1;
-                label1325:
-                if (paramInt2 == 0)
-                {
-                  localObject2 = new aozg();
-                  ((aozg)localObject2).jdField_a_of_type_Int = localQQOperationViopTipTask.taskid;
-                  ((aozg)localObject2).b = i;
-                  ((aozg)localObject2).jdField_a_of_type_JavaUtilArrayList = ((ArrayList)localObject1);
-                  paramArrayList.add(localObject2);
-                }
-                bool = true;
-              }
-            }
-          }
-          label1381:
-          label1387:
-          label1392:
-          label1401:
-          label1530:
-          for (;;)
-          {
-            break;
-            paramInt2 = 0;
-            break label926;
-            i = 0;
-            break label939;
-            paramInt2 = 0;
-            break label1053;
-            paramInt2 = ((ArrayList)localObject1).size();
-            break label1156;
-            localObject1 = a(paramString, paramInt1, localQQOperationViopTipTask, paramQQAppInterface, paramList);
-            if (((ArrayList)localObject1).size() == 0) {
-              break;
-            }
-            i = 0;
-            break label1199;
-            if ((TextUtils.isEmpty(localQQOperationViopTipTask.keywordString)) && (localQQOperationViopTipTask.frequencyTime != 0))
-            {
-              paramInt2 = j;
-              if (i <= 0) {
-                break label1281;
-              }
-              paramInt2 = 1;
-              break label1281;
-            }
-            if ((!TextUtils.isEmpty(localQQOperationViopTipTask.keywordString)) && (localQQOperationViopTipTask.frequencyTime == 0))
-            {
-              paramInt2 = j;
-              if (((ArrayList)localObject1).size() <= 0) {
-                break label1281;
-              }
-              paramInt2 = 1;
-              break label1281;
-            }
-            paramInt2 = j;
-            if (((ArrayList)localObject1).size() <= 0) {
-              break label1281;
-            }
-            paramInt2 = j;
-            if (i <= 0) {
-              break label1281;
-            }
-            paramInt2 = 1;
-            break label1281;
-            return bool;
-            return false;
-            paramInt2 = 0;
-            break label1325;
-          }
-          label1523:
-          label1533:
-          localObject1 = null;
-        }
-        paramInt1 = 0;
-        break label632;
+        paramArrayOfByte = this.jdField_a_of_type_ArrayOfByte;
+        k();
+        i1 = 1;
+        bool1 = true;
+        break;
       }
-      label1281:
-      label1550:
-      localObject1 = null;
+      this.jdField_d_of_type_Long = System.currentTimeMillis();
+      QLog.i("AREngine_ARCloudControl", 1, String.format("selectImage total time cost:%sms", new Object[] { Long.valueOf(System.currentTimeMillis() - this.jdField_b_of_type_Long) }) + ":select result is " + bool1);
+      this.jdField_f_of_type_Long = (System.currentTimeMillis() - this.jdField_k_of_type_Long);
+      this.jdField_a_of_type_Boolean = false;
+      if (this.jdField_i_of_type_Boolean) {
+        ThreadManager.getUIHandler().post(new ARCloudControl.2(this));
+      }
+      if (i1 != 0) {}
+      for (;;)
+      {
+        if (this.jdField_a_of_type_Aozj != null) {
+          this.jdField_a_of_type_Aozj.b(true);
+        }
+        if ((!this.jdField_f_of_type_Boolean) && (this.jdField_a_of_type_Aozj != null))
+        {
+          l1 = this.jdField_a_of_type_Aozj.b();
+          aoxj.a().a(l1, this.jdField_l_of_type_Long, this.jdField_m_of_type_Long, this.jdField_a_of_type_Aozk.jdField_c_of_type_Int);
+          aoqw.a().a(l1, this.jdField_m_of_type_Long);
+          this.jdField_f_of_type_Boolean = true;
+        }
+        a(new ARCloudControl.3(this, paramArrayOfByte));
+        return;
+        paramArrayOfByte = this.jdField_a_of_type_Aozk.a();
+      }
+      label675:
+      i1 = 0;
+      break;
+      i1 = 0;
     }
   }
   
-  public boolean b(int paramInt1, int paramInt2)
+  public boolean a(aozj paramaozj, AppInterface paramAppInterface, Activity paramActivity, int paramInt1, int paramInt2, int paramInt3, ARCommonConfigInfo paramARCommonConfigInfo)
   {
-    Iterator localIterator = this.jdField_b_of_type_JavaUtilArrayList.iterator();
-    while (localIterator.hasNext())
-    {
-      QQOperationViopTipTask localQQOperationViopTipTask = (QQOperationViopTipTask)localIterator.next();
-      if ((paramInt1 == localQQOperationViopTipTask.uinType) && (paramInt2 == localQQOperationViopTipTask.tipType)) {
-        return true;
-      }
+    long l2 = System.currentTimeMillis();
+    jdField_k_of_type_Boolean = a();
+    apcf.a().b(System.currentTimeMillis() - l2, jdField_k_of_type_Boolean);
+    if (!jdField_k_of_type_Boolean) {
+      return false;
     }
-    return false;
+    this.jdField_a_of_type_Aozk = new aozk(aozk.jdField_b_of_type_Int);
+    this.jdField_a_of_type_Aozw = new aozw();
+    this.jdField_a_of_type_Aozk.a(BaseApplicationImpl.getContext().getApplicationContext());
+    this.jdField_a_of_type_Aozw.a();
+    this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
+    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
+    this.jdField_e_of_type_Int = paramInt1;
+    this.jdField_d_of_type_Int = paramInt2;
+    this.jdField_f_of_type_Int = paramInt3;
+    this.jdField_a_of_type_Aozj = paramaozj;
+    this.jdField_a_of_type_Aoyp = new aoyp(paramAppInterface, true);
+    this.jdField_a_of_type_Aoyp.a();
+    this.jdField_a_of_type_ComTencentMobileqqArAidlARCommonConfigInfo = paramARCommonConfigInfo;
+    if (this.jdField_a_of_type_ComTencentMobileqqArAidlARCommonConfigInfo != null) {}
+    for (long l1 = ARRecognition.a(this.jdField_a_of_type_ComTencentMobileqqArAidlARCommonConfigInfo.recognitions);; l1 = 0L)
+    {
+      this.jdField_a_of_type_Long = l1;
+      this.jdField_e_of_type_Boolean = true;
+      if (this.jdField_a_of_type_JavaUtilArrayList == null) {
+        this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+      }
+      this.jdField_a_of_type_JavaUtilArrayList.clear();
+      apcf.a().c(System.currentTimeMillis() - l2, jdField_k_of_type_Boolean);
+      return true;
+    }
   }
   
-  public boolean c(int paramInt1, int paramInt2)
+  public void b()
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
-    while (localIterator.hasNext())
-    {
-      QQOperationViopTipTask localQQOperationViopTipTask = (QQOperationViopTipTask)localIterator.next();
-      if ((localQQOperationViopTipTask.tipType == paramInt2) || (localQQOperationViopTipTask.uinType == paramInt1)) {
-        return true;
-      }
+    this.jdField_a_of_type_Boolean = true;
+    this.jdField_e_of_type_Boolean = true;
+    this.jdField_c_of_type_Boolean = false;
+    this.jdField_b_of_type_Long = System.currentTimeMillis();
+    i();
+    k();
+  }
+  
+  public void b(boolean paramBoolean)
+  {
+    this.jdField_b_of_type_Boolean = paramBoolean;
+  }
+  
+  public void c()
+  {
+    if (!this.jdField_c_of_type_Boolean) {
+      return;
     }
-    return false;
+    g();
+    this.jdField_b_of_type_Long = System.currentTimeMillis();
+    this.jdField_a_of_type_Boolean = true;
+    QLog.i("AREngine_ARCloudControl", 1, String.format("selectImage total time cost:start Time is %s", new Object[] { "resume" }));
+    this.jdField_e_of_type_Boolean = true;
+    this.jdField_c_of_type_Boolean = false;
+    i();
+    k();
+  }
+  
+  public void d()
+  {
+    if (this.jdField_c_of_type_Boolean) {
+      return;
+    }
+    this.jdField_e_of_type_Long = System.currentTimeMillis();
+    h();
+    this.jdField_c_of_type_Boolean = true;
+    this.jdField_a_of_type_Boolean = false;
+    j();
+    l();
+  }
+  
+  @QQPermissionDenied(1)
+  public void denied()
+  {
+    QLog.d("AREngine_ARCloudControl", 1, "CheckPermission user denied = ");
+    this.jdField_a_of_type_Apad = null;
+  }
+  
+  public void e()
+  {
+    QLog.i("AREngine_ARCloudControl", 1, "stop.");
+    this.jdField_c_of_type_Boolean = true;
+    this.jdField_a_of_type_Boolean = false;
+    j();
+    l();
+  }
+  
+  public void f()
+  {
+    QLog.i("AREngine_ARCloudControl", 1, "uninit");
+    if (this.jdField_a_of_type_Aozk != null)
+    {
+      this.jdField_a_of_type_Aozk.a();
+      this.jdField_a_of_type_Aozk = null;
+    }
+    if (this.jdField_a_of_type_Aozw != null)
+    {
+      this.jdField_a_of_type_Aozw.b();
+      this.jdField_a_of_type_Aozw = null;
+    }
+    this.jdField_a_of_type_Aozj = null;
+    if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (!this.jdField_a_of_type_JavaUtilArrayList.isEmpty())) {
+      this.jdField_a_of_type_JavaUtilArrayList.clear();
+    }
+    this.jdField_a_of_type_JavaUtilArrayList = null;
+    this.jdField_a_of_type_Apad = null;
+    if (this.jdField_a_of_type_Aoyp != null) {
+      this.jdField_a_of_type_Aoyp.b();
+    }
+    this.jdField_a_of_type_AndroidAppActivity = null;
+  }
+  
+  public void g()
+  {
+    this.jdField_b_of_type_Long = 0L;
+    this.jdField_e_of_type_Long = 0L;
+    this.jdField_f_of_type_Long = 0L;
+    this.jdField_h_of_type_Int = 0;
+    this.jdField_g_of_type_Long = 0L;
+    this.jdField_h_of_type_Long = 0L;
+    this.jdField_i_of_type_Long = 0L;
+    this.jdField_a_of_type_JavaLangString = null;
+    this.jdField_i_of_type_Int = 0;
+    this.jdField_j_of_type_Int = -1;
+    this.jdField_c_of_type_Long = 0L;
+    this.jdField_d_of_type_Long = 0L;
+    this.jdField_k_of_type_Long = 0L;
+  }
+  
+  @QQPermissionGrant(1)
+  public void grant()
+  {
+    QLog.d("AREngine_ARCloudControl", 1, "CheckPermission user grant = ");
+    SosoInterface.a(this.jdField_a_of_type_Aopa);
+  }
+  
+  public void h()
+  {
+    QLog.d("AREngine_ARCloudControl", 2, "arCloudReport mResult:" + this.jdField_j_of_type_Int);
+    apcf.a().a(this.jdField_f_of_type_Long, this.jdField_g_of_type_Long, this.jdField_h_of_type_Long, this.jdField_h_of_type_Int, this.jdField_a_of_type_JavaLangString, this.jdField_i_of_type_Int, this.jdField_i_of_type_Long, this.jdField_j_of_type_Long, this.jdField_e_of_type_Long - this.jdField_b_of_type_Long, this.jdField_j_of_type_Int);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aozd
  * JD-Core Version:    0.7.0.1
  */

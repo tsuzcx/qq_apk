@@ -1,43 +1,44 @@
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import java.util.ArrayList;
-import qqcircle.TaskCenterReader.TaskListRsp;
+import com.tencent.biz.pubaccount.readinjoy.viola.videonew.topicvideo.VTopicVideo;
+import com.tencent.viola.core.dispatch.ComponentAppearEvent;
+import com.tencent.viola.core.dispatch.IEvent;
+import com.tencent.viola.core.dispatch.IObserver;
 
-class trv
-  implements zac<TaskCenterReader.TaskListRsp>
+public class trv
+  implements IObserver
 {
-  trv(trt paramtrt) {}
+  public trv(VTopicVideo paramVTopicVideo) {}
   
-  public void a(boolean paramBoolean, long paramLong, String paramString, TaskCenterReader.TaskListRsp paramTaskListRsp)
+  public String getRef()
   {
-    if (paramTaskListRsp != null)
+    return this.a.getRef();
+  }
+  
+  public void onReceive(IEvent paramIEvent)
+  {
+    if ((paramIEvent.getRef().equals(this.a.getRef())) && (this.a.getVideoLifeCycleChangeListener() != null))
     {
-      this.a.setDatas((ArrayList)paramTaskListRsp.taskRecords.get());
-      if ((this.a.a != null) && (trt.b(this.a) != null))
-      {
-        this.a.a.removeAllViews();
-        paramString = String.valueOf(paramTaskListRsp.myFuel.get()).toCharArray();
-        int j = paramString.length;
-        int i = 0;
-        while (i < j)
-        {
-          char c = paramString[i];
-          ImageView localImageView = new ImageView(trt.c(this.a));
-          localImageView.setImageResource(trt.a(this.a)[java.lang.Character.getNumericValue(c)]);
-          this.a.a.addView(localImageView);
-          i += 1;
-        }
+      paramIEvent = (ComponentAppearEvent)paramIEvent;
+      if (!paramIEvent.event.equals("didDisappear")) {
+        break label59;
       }
-      trt.a(this.a, paramTaskListRsp.taskEntranceUrl.get());
+      this.a.getVideoLifeCycleChangeListener().K_();
     }
+    label59:
+    do
+    {
+      return;
+      if (paramIEvent.event.equals("willAppear"))
+      {
+        this.a.getVideoLifeCycleChangeListener().I_();
+        return;
+      }
+    } while (!paramIEvent.event.equals("didAppear"));
+    this.a.getVideoLifeCycleChangeListener().J_();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     trv
  * JD-Core Version:    0.7.0.1
  */

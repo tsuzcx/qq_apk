@@ -1,23 +1,38 @@
-import android.view.KeyEvent;
-import android.view.View.OnClickListener;
-import android.widget.TextView;
-import android.widget.TextView.OnEditorActionListener;
+import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
 
 class bmzi
-  implements TextView.OnEditorActionListener
+  implements INetInfoHandler
 {
-  bmzi(bmzh parambmzh) {}
+  bmzi(bmzf parambmzf) {}
   
-  public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
+  public void onNetMobile2None()
   {
-    if (paramInt == 6)
-    {
-      paramTextView = this.a.jdField_a_of_type_AndroidViewView$OnClickListener;
-      if (paramTextView != null) {
-        paramTextView.onClick(this.a.jdField_a_of_type_AndroidWidgetTextView);
-      }
-    }
-    return false;
+    this.a.a(false, false);
+  }
+  
+  public void onNetMobile2Wifi(String paramString)
+  {
+    this.a.a(true, true);
+  }
+  
+  public void onNetNone2Mobile(String paramString)
+  {
+    this.a.a(false, true);
+  }
+  
+  public void onNetNone2Wifi(String paramString)
+  {
+    this.a.a(true, true);
+  }
+  
+  public void onNetWifi2Mobile(String paramString)
+  {
+    this.a.a(false, true);
+  }
+  
+  public void onNetWifi2None()
+  {
+    this.a.a(false, false);
   }
 }
 

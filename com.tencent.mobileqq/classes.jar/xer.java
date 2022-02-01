@@ -1,58 +1,52 @@
-import android.content.Context;
-import android.text.TextUtils;
-import android.widget.ImageView;
+import android.graphics.Bitmap;
+import android.support.v4.app.NotificationCompat.Builder;
+import com.tencent.biz.qqstory.notification.StoryPushMsg;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableListener;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
-public class xer
+class xer
+  implements URLDrawable.URLDrawableListener
 {
-  private static xer a = new xer();
+  xer(xeq paramxeq, NotificationCompat.Builder paramBuilder, QQAppInterface paramQQAppInterface, StoryPushMsg paramStoryPushMsg, int paramInt) {}
   
-  public static xer a()
+  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
+  
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
   {
-    return a;
+    if (QLog.isColorLevel()) {
+      QLog.d("StoryMsgNotification", 2, "thumbDrawable onLoadFialed, exception: " + QLog.getStackTraceString(paramThrowable));
+    }
+    this.jdField_a_of_type_Xeq.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentBizQqstoryNotificationStoryPushMsg, this.jdField_a_of_type_Int, this.jdField_a_of_type_AndroidSupportV4AppNotificationCompat$Builder);
+    xeq.a(this.jdField_a_of_type_Xeq).remove(paramURLDrawable);
   }
   
-  public void a(Context paramContext, ImageView paramImageView, String paramString, int paramInt1, int paramInt2, URLDrawable.URLDrawableListener paramURLDrawableListener)
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
   {
-    if ((paramImageView == null) || (TextUtils.isEmpty(paramString)))
-    {
-      wxe.e("ImageLoader", "ImageView or uri is null.");
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("StoryMsgNotification", 2, "thumbDrawable onLoadSuccessed start, mURLDrawableList.size():" + xeq.a(this.jdField_a_of_type_Xeq).size());
     }
-    wxe.b("ImageLoader", "uri:" + paramString + ",width:" + paramInt1 + ",height:" + paramInt2);
-    paramContext = URLDrawable.URLDrawableOptions.obtain();
-    if ((paramInt1 > 0) && (paramInt2 > 0))
-    {
-      paramContext.mRequestWidth = paramInt1;
-      paramContext.mRequestHeight = paramInt2;
+    Bitmap localBitmap1 = bgmo.a(paramURLDrawable.getCurrDrawable(), 200, 200);
+    Bitmap localBitmap2 = nmb.b(localBitmap1, 1);
+    if (QLog.isColorLevel()) {
+      QLog.d("StoryMsgNotification", 2, "thumbDrawable onLoadSuccessed start, cutBitmap.size():" + localBitmap2.getHeight() + ", " + localBitmap2.getWidth());
     }
-    paramContext.mFailedDrawable = bayu.a;
-    paramContext.mLoadingDrawable = bayu.a;
-    paramContext.mUseAutoScaleParams = false;
-    paramContext = URLDrawable.getDrawable(paramString, paramContext);
-    if (paramURLDrawableListener != null)
-    {
-      if (paramContext.getStatus() != 1) {
-        break label154;
-      }
-      wxe.b("ImageLoader", "URLDrawable's status is SUCCESSED.");
-      paramURLDrawableListener.onLoadSuccessed(paramContext);
-    }
-    for (;;)
-    {
-      paramContext.setURLDrawableListener(paramURLDrawableListener);
-      paramImageView.setImageDrawable(paramContext);
-      return;
-      label154:
-      wxe.b("ImageLoader", "start load URLDrawable.");
+    this.jdField_a_of_type_AndroidSupportV4AppNotificationCompat$Builder.setLargeIcon(localBitmap2);
+    this.jdField_a_of_type_Xeq.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentBizQqstoryNotificationStoryPushMsg, this.jdField_a_of_type_Int, this.jdField_a_of_type_AndroidSupportV4AppNotificationCompat$Builder);
+    localBitmap1.recycle();
+    xeq.a(this.jdField_a_of_type_Xeq).remove(paramURLDrawable);
+    if (QLog.isColorLevel()) {
+      QLog.d("StoryMsgNotification", 2, "thumbDrawable onLoadSuccessed, mURLDrawableList.size():" + xeq.a(this.jdField_a_of_type_Xeq).size());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     xer
  * JD-Core Version:    0.7.0.1
  */

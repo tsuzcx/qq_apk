@@ -1,23 +1,56 @@
-import android.content.res.Resources;
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import android.widget.TextView;
-import com.tencent.mobileqq.campuscircle.CampusCircleReplyActivity;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ArkAppMessage;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Map;
 
-public class aobi
-  implements CompoundButton.OnCheckedChangeListener
+class aobi
+  extends mwq
 {
-  public aobi(CampusCircleReplyActivity paramCampusCircleReplyActivity) {}
+  aobi(aobd paramaobd, long paramLong1, Map paramMap, QQAppInterface paramQQAppInterface, int paramInt, String paramString1, String paramString2, long paramLong2, long paramLong3) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  private void a(boolean paramBoolean, String paramString)
   {
-    paramCompoundButton = this.a.getResources();
-    TextView localTextView = CampusCircleReplyActivity.a(this.a);
-    if (paramBoolean) {}
-    for (paramCompoundButton = paramCompoundButton.getColorStateList(2131166256);; paramCompoundButton = paramCompoundButton.getColorStateList(2131166258))
+    if ((paramBoolean) && (!TextUtils.isEmpty(paramString)))
     {
-      localTextView.setTextColor(paramCompoundButton);
+      SessionInfo localSessionInfo = new SessionInfo();
+      localSessionInfo.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
+      localSessionInfo.jdField_a_of_type_JavaLangString = this.jdField_b_of_type_JavaLangString;
+      if (TextUtils.isEmpty(this.jdField_c_of_type_JavaLangString)) {}
+      for (String str = "邀请你加入派对";; str = this.jdField_c_of_type_JavaLangString + "邀请你加入派对")
+      {
+        paramString = new ArkAppMessage(str, "com.tencent.avgame", null, "invite", "1.0.0.1", aoay.a(String.valueOf(this.jdField_b_of_type_Long), Long.valueOf(this.jdField_c_of_type_Long).longValue(), paramString), null, null);
+        adrm.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localSessionInfo, paramString);
+        return;
+      }
+    }
+    QLog.e("AvGameRoomListObserver", 1, "requestShareUrlAndSendMsg error");
+  }
+  
+  public void a(boolean paramBoolean, String paramString, long paramLong)
+  {
+    if (paramLong != this.jdField_a_of_type_Long)
+    {
+      QLog.e("AvGameRoomListObserver", 1, "requestShareUrlAndSendMsg fail: observer not match");
       return;
+    }
+    QLog.d("AvGameRoomListObserver", 1, "requestShareUrlAndSendMsg isSuccess: " + paramBoolean + " shareUrl: " + paramString + " mark: " + paramLong);
+    mwq localmwq = (mwq)this.jdField_a_of_type_JavaUtilMap.remove(Long.valueOf(this.jdField_a_of_type_Long));
+    if (localmwq == null)
+    {
+      QLog.e("AvGameRoomListObserver", 1, "requestShareUrlAndSendMsg fail: observer not exist");
+      return;
+    }
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(localmwq);
+    try
+    {
+      a(paramBoolean, paramString);
+      return;
+    }
+    catch (Exception paramString)
+    {
+      QLog.e("AvGameRoomListObserver", 1, "handleSendMsg exception: " + paramString.getMessage());
     }
   }
 }

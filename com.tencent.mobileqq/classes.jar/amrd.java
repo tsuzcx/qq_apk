@@ -1,23 +1,26 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.app.utils.FriendsStatusUtil.UpdateFriendStatusItem;
+import android.os.Bundle;
+import com.tencent.mobileqq.apollo.aioChannel.ApolloCmdChannel;
+import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
 
-public final class amrd
-  implements Parcelable.Creator<FriendsStatusUtil.UpdateFriendStatusItem>
+final class amrd
+  implements EIPCResultCallback
 {
-  public FriendsStatusUtil.UpdateFriendStatusItem a(Parcel paramParcel)
-  {
-    return new FriendsStatusUtil.UpdateFriendStatusItem(paramParcel);
-  }
+  amrd(long paramLong) {}
   
-  public FriendsStatusUtil.UpdateFriendStatusItem[] a(int paramInt)
+  public void onCallback(EIPCResult paramEIPCResult)
   {
-    return new FriendsStatusUtil.UpdateFriendStatusItem[paramInt];
+    paramEIPCResult = paramEIPCResult.data.getString("resData");
+    ampj.a().callbackFromRequest(this.a, 0, "sc.script_notify_action_ready.local", paramEIPCResult);
+    if (QLog.isColorLevel()) {
+      QLog.d("cmgame_process.CmGameToolCmdChannel", 2, " GET_ACTION_DATA onCallback resJson:" + paramEIPCResult);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amrd
  * JD-Core Version:    0.7.0.1
  */

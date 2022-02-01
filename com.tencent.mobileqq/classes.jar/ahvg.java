@@ -1,35 +1,15 @@
-import android.os.Handler.Callback;
-import android.os.Message;
-import com.tencent.mobileqq.activity.contacts.view.SimpleCheckableSlidingIndicator;
+import com.tencent.mobileqq.activity.aio.photo.PhotoListPanel;
 
 public class ahvg
-  implements Handler.Callback
+  implements bigw
 {
-  public ahvg(SimpleCheckableSlidingIndicator paramSimpleCheckableSlidingIndicator) {}
+  public ahvg(PhotoListPanel paramPhotoListPanel, Runnable paramRunnable) {}
   
-  public boolean handleMessage(Message paramMessage)
+  public void a(int paramInt)
   {
-    if (paramMessage.what == SimpleCheckableSlidingIndicator.d)
-    {
-      if (this.a.getScrollX() == SimpleCheckableSlidingIndicator.a(this.a))
-      {
-        SimpleCheckableSlidingIndicator.a(this.a, SimpleCheckableSlidingIndicator.a);
-        if (SimpleCheckableSlidingIndicator.a(this.a) != null) {
-          SimpleCheckableSlidingIndicator.a(this.a).a(SimpleCheckableSlidingIndicator.b(this.a));
-        }
-        SimpleCheckableSlidingIndicator.a(this.a).removeMessages(SimpleCheckableSlidingIndicator.d);
-      }
+    if (paramInt == 2) {
+      this.jdField_a_of_type_JavaLangRunnable.run();
     }
-    else {
-      return false;
-    }
-    SimpleCheckableSlidingIndicator.a(this.a, SimpleCheckableSlidingIndicator.c);
-    if (SimpleCheckableSlidingIndicator.a(this.a) != null) {
-      SimpleCheckableSlidingIndicator.a(this.a).a(SimpleCheckableSlidingIndicator.b(this.a));
-    }
-    SimpleCheckableSlidingIndicator.b(this.a, this.a.getScrollX());
-    SimpleCheckableSlidingIndicator.a(this.a).sendEmptyMessageDelayed(SimpleCheckableSlidingIndicator.d, 50L);
-    return false;
   }
 }
 

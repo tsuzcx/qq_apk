@@ -74,6 +74,11 @@ public class PTSRootNodeItemViewDelegate
     return this.mRootNodeInfo;
   }
   
+  public View getRootView()
+  {
+    return this.mRootView;
+  }
+  
   public boolean insert(PTSNodeInfo paramPTSNodeInfo, int paramInt)
   {
     if (PTSLog.isDebug()) {
@@ -173,7 +178,7 @@ public class PTSRootNodeItemViewDelegate
       this.mRootView.bindData(this.mAppInstance);
       return;
     }
-    PTSLog.i("PTSRootNodeItemViewDelegate", "[onLayoutTempPatchFinished], do not update, not the valid appInstance.");
+    PTSLog.i("PTSRootNodeItemViewDelegate", "[onLayoutTempPatchFinished], do not update, not the valid appInstance or the rootView is null.");
   }
   
   public boolean refreshNodeList(List<PTSNodeInfo> paramList)
@@ -219,17 +224,14 @@ public class PTSRootNodeItemViewDelegate
   
   public void setRootView(ViewGroup paramViewGroup)
   {
-    if ((paramViewGroup instanceof PTSItemView))
-    {
+    if ((paramViewGroup instanceof PTSItemView)) {
       this.mRootView = ((PTSItemView)paramViewGroup);
-      return;
     }
-    PTSLog.e("PTSRootNodeItemViewDelegate", "[setRootView] error, not PTSItemView.");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.pts.core.itemview.PTSRootNodeItemViewDelegate
  * JD-Core Version:    0.7.0.1
  */

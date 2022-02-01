@@ -1,23 +1,14 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.pubaccount.weishi_new.push.WSPushPreloadModel;
-
-public final class tja
-  implements Parcelable.Creator<WSPushPreloadModel>
+public abstract interface tja
 {
-  public WSPushPreloadModel a(Parcel paramParcel)
-  {
-    return new WSPushPreloadModel(paramParcel);
-  }
+  public abstract void a(tjf paramtjf);
   
-  public WSPushPreloadModel[] a(int paramInt)
-  {
-    return new WSPushPreloadModel[paramInt];
-  }
+  public abstract void b(tjf paramtjf);
+  
+  public abstract void c(tjf paramtjf);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     tja
  * JD-Core Version:    0.7.0.1
  */

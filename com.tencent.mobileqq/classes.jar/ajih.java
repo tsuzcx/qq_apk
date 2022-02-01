@@ -1,14 +1,18 @@
-public abstract interface ajih
+import android.view.View;
+import android.view.View.AccessibilityDelegate;
+import com.tencent.mobileqq.activity.contacts.base.tabs.SimpleSlidingIndicator;
+
+public class ajih
+  extends View.AccessibilityDelegate
 {
-  public abstract void a(int paramInt);
+  public ajih(SimpleSlidingIndicator paramSimpleSlidingIndicator) {}
   
-  public abstract void a(int paramInt, float paramFloat);
-  
-  public abstract void a(int paramInt1, int paramInt2);
-  
-  public abstract void a(int paramInt, boolean paramBoolean);
-  
-  public abstract void b(int paramInt1, int paramInt2);
+  public void sendAccessibilityEvent(View paramView, int paramInt)
+  {
+    if (paramInt != 4096) {
+      super.sendAccessibilityEvent(paramView, paramInt);
+    }
+  }
 }
 
 

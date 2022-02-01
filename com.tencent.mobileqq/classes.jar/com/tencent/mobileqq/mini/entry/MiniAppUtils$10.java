@@ -2,8 +2,7 @@ package com.tencent.mobileqq.mini.entry;
 
 import com.tencent.mobileqq.mini.apkg.MiniAppConfig;
 import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
-import com.tencent.mobileqq.mini.reuse.MiniAppCmdUtil;
-import com.tencent.mobileqq.mini.sdk.LaunchParam;
+import common.config.service.QzoneConfig;
 
 final class MiniAppUtils$10
   implements Runnable
@@ -12,42 +11,28 @@ final class MiniAppUtils$10
   
   public void run()
   {
-    boolean bool;
-    int i;
-    String str1;
-    if ((this.val$appConfig != null) && (this.val$appConfig.config != null))
+    if (this.val$appConfig != null)
     {
-      bool = MiniAppUtils.isFromPullDownEntry(this.val$appConfig);
-      if (!bool) {
-        break label121;
+      if (!MiniAppUtils.isFromPullDownEntry(this.val$appConfig)) {
+        break label45;
       }
-      i = 1;
-      if (this.val$appConfig.launchParam == null) {
-        break label126;
-      }
-      str1 = String.valueOf(this.val$appConfig.launchParam.scene);
-      label55:
-      if (this.val$appConfig.config.via == null) {
-        break label132;
+      MiniAppUtils.access$200(this.val$appConfig);
+      if (QzoneConfig.getInstance().getConfig("qqminiapp", "backAutoHide", 0) == 2) {
+        MiniAppUtils.updateMiniAppList(100);
       }
     }
-    label132:
-    for (String str2 = this.val$appConfig.config.via;; str2 = "")
-    {
-      MiniAppCmdUtil.getInstance().useUserApp(this.val$appConfig.config.appId, this.val$appConfig.config.verType, i, str1, str2, null, new MiniAppUtils.10.1(this, bool));
+    label45:
+    while ((this.val$appConfig.config == null) || (this.val$appConfig.config.isAppStoreMiniApp())) {
       return;
-      label121:
-      i = 0;
-      break;
-      label126:
-      str1 = "";
-      break label55;
     }
+    MiniAppInfo localMiniAppInfo = MiniAppInfo.copy(this.val$appConfig.config);
+    localMiniAppInfo.debugInfo = null;
+    MiniAppUtils.access$300(localMiniAppInfo);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.entry.MiniAppUtils.10
  * JD-Core Version:    0.7.0.1
  */

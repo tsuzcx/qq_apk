@@ -9,7 +9,6 @@ import com.tencent.tavcut.util.BitmapUtil;
 import com.tencent.taveffect.core.TAVTextureInfo;
 import com.tencent.tavkit.ciimage.CIContext;
 import com.tencent.tavkit.ciimage.CIImage;
-import com.tencent.tavkit.ciimage.TAVGLUtils;
 import com.tencent.tavkit.composition.video.RenderInfo;
 import com.tencent.tavkit.composition.video.TAVVideoEffect;
 import com.tencent.tavkit.composition.video.TAVVideoEffect.Filter;
@@ -50,9 +49,6 @@ class WSLutEffectNode$WSLutEffectFilter
         return paramCIImage;
         paramTAVVideoEffect = paramRenderInfo.getCiContext();
       } while ((paramTAVVideoEffect == null) || (paramTAVVideoEffect.getRenderContext() == null));
-      TextureInfo localTextureInfo = CIContext.newTextureInfo((int)paramCIImage.getSize().width, (int)paramCIImage.getSize().height);
-      paramTAVVideoEffect.convertImageToTexture(paramCIImage, localTextureInfo);
-      TAVGLUtils.saveBitmap(localTextureInfo);
       l = paramRenderInfo.getTime().getTimeUs() / 1000L;
     } while (((WSLutEffectNode.access$000(this.this$0) != null) && ((l < WSLutEffectNode.access$000(this.this$0).getLutStartTime()) || (l > WSLutEffectNode.access$000(this.this$0).getLutStartTime() + WSLutEffectNode.access$000(this.this$0).getLutDuration()))) || (!BitmapUtil.isValidBitmap(WSLutEffectNode.access$100(this.this$0))));
     this.mEffect.setLUTBitmap(WSLutEffectNode.access$100(this.this$0));
@@ -100,7 +96,7 @@ class WSLutEffectNode$WSLutEffectFilter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.weseevideo.composition.effectnode.WSLutEffectNode.WSLutEffectFilter
  * JD-Core Version:    0.7.0.1
  */

@@ -1,31 +1,20 @@
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Iterator;
-import java.util.List;
+import android.content.Context;
+import android.os.AsyncTask;
 
-public class atxb
+final class atxb
+  extends df
 {
-  private List<atxc> a = Collections.synchronizedList(new ArrayList());
+  atxb(Context paramContext) {}
   
-  void a(long paramLong)
+  protected void a(AsyncTask<Integer, Integer, String> paramAsyncTask, int paramInt)
   {
-    Iterator localIterator = this.a.iterator();
-    while (localIterator.hasNext()) {
-      ((atxc)localIterator.next()).a(paramLong);
-    }
-  }
-  
-  void b(long paramLong)
-  {
-    Iterator localIterator = this.a.iterator();
-    while (localIterator.hasNext()) {
-      ((atxc)localIterator.next()).b(paramLong);
-    }
+    super.a(paramAsyncTask, paramInt);
+    dc.a(this.a, paramAsyncTask, paramInt, new atxc(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     atxb
  * JD-Core Version:    0.7.0.1
  */

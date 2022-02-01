@@ -1,10 +1,21 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import com.tencent.mobileqq.activity.PhoneUnityChangeActivity;
 
-final class aeua
-  implements DialogInterface.OnClickListener
+public class aeua
+  implements bkhw
 {
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public aeua(PhoneUnityChangeActivity paramPhoneUnityChangeActivity) {}
+  
+  public void OnClick(View paramView, int paramInt)
+  {
+    this.a.jdField_a_of_type_Bkho.cancel();
+    if (this.a.jdField_a_of_type_Bgpa == null) {
+      this.a.jdField_a_of_type_Bgpa = bglp.a(this.a, 230, anni.a(2131706811), anni.a(2131706801), anni.a(2131706789), anni.a(2131706792), new aeub(this), new aeuc(this));
+    }
+    if ((this.a.jdField_a_of_type_Bgpa != null) && (!this.a.jdField_a_of_type_Bgpa.isShowing()) && (!this.a.isFinishing())) {
+      this.a.jdField_a_of_type_Bgpa.show();
+    }
+  }
 }
 
 

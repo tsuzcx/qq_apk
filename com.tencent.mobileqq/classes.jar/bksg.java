@@ -1,33 +1,52 @@
-import android.opengl.GLSurfaceView.EGLContextFactory;
-import dov.com.qq.im.ae.camera.core.AECameraGLSurfaceView;
-import javax.microedition.khronos.egl.EGL10;
-import javax.microedition.khronos.egl.EGLConfig;
-import javax.microedition.khronos.egl.EGLContext;
-import javax.microedition.khronos.egl.EGLDisplay;
+import android.content.Context;
+import android.graphics.PointF;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.LinearSmoothScroller;
+import android.support.v7.widget.RecyclerView.SmoothScroller.Action;
+import android.support.v7.widget.RecyclerView.State;
+import android.util.DisplayMetrics;
+import android.view.View;
 
-public class bksg
-  implements GLSurfaceView.EGLContextFactory
+class bksg
+  extends LinearSmoothScroller
 {
-  private int jdField_a_of_type_Int = 12440;
-  
-  public bksg(AECameraGLSurfaceView paramAECameraGLSurfaceView) {}
-  
-  public EGLContext createContext(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLConfig paramEGLConfig)
+  bksg(bkse parambkse, Context paramContext, LinearLayoutManager paramLinearLayoutManager)
   {
-    int i = this.jdField_a_of_type_Int;
-    paramEGL10 = paramEGL10.eglCreateContext(paramEGLDisplay, paramEGLConfig, EGL10.EGL_NO_CONTEXT, new int[] { i, 2, 12344 });
-    bljn.d("AECameraGLSurfaceView", "[EGLContext] createContext finish");
-    return paramEGL10;
+    super(paramContext);
   }
   
-  public void destroyContext(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLContext paramEGLContext)
+  public float calculateSpeedPerPixel(DisplayMetrics paramDisplayMetrics)
   {
-    if (paramEGLDisplay == null) {
-      bljn.d("AECameraGLSurfaceView", "EGLDisplay is null.");
+    return bkse.a(this.jdField_a_of_type_Bkse) / paramDisplayMetrics.densityDpi;
+  }
+  
+  public int calculateTimeForDeceleration(int paramInt)
+  {
+    return super.calculateTimeForDeceleration(paramInt);
+  }
+  
+  public int calculateTimeForScrolling(int paramInt)
+  {
+    return super.calculateTimeForScrolling(paramInt);
+  }
+  
+  public PointF computeScrollVectorForPosition(int paramInt)
+  {
+    return this.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager.computeScrollVectorForPosition(paramInt);
+  }
+  
+  public void onTargetFound(View paramView, RecyclerView.State paramState, RecyclerView.SmoothScroller.Action paramAction)
+  {
+    paramView = bkse.a(this.jdField_a_of_type_Bkse, this.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager, paramView);
+    int i = paramView[0];
+    int j = paramView[1];
+    int k = calculateTimeForDeceleration(Math.max(Math.abs(i), Math.abs(j)));
+    if (k > 0)
+    {
+      paramAction.update(i, j, k, this.mDecelerateInterpolator);
+      return;
     }
-    AECameraGLSurfaceView.a(this.jdField_a_of_type_DovComQqImAeCameraCoreAECameraGLSurfaceView);
-    paramEGL10.eglDestroyContext(paramEGLDisplay, paramEGLContext);
-    bljn.d("AECameraGLSurfaceView", "[EGLContext] destroyContext finish");
+    bksk.a(bkse.a(this.jdField_a_of_type_Bkse));
   }
 }
 

@@ -1,10 +1,12 @@
-public class bbzg
+import java.util.Comparator;
+
+final class bbzg
+  implements Comparator<acxk>
 {
-  public String a;
-  public boolean a;
-  public String b;
-  public boolean b = true;
-  public String c;
+  public int a(acxk paramacxk1, acxk paramacxk2)
+  {
+    return paramacxk2.a() - paramacxk1.a();
+  }
 }
 
 

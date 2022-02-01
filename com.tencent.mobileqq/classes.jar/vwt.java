@@ -1,22 +1,20 @@
-import android.annotation.TargetApi;
-import android.os.Handler;
-import com.tencent.biz.qqstory.playvideo.player.TextureVideoView;
-import com.tencent.biz.qqstory.playvideo.player.TextureVideoView.1.1;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.qqcircle.widgets.QCircleFeedCommentWidget;
 
-public class vwt
-  implements vyq
+class vwt
+  implements DialogInterface.OnClickListener
 {
-  public vwt(TextureVideoView paramTextureVideoView) {}
+  vwt(vwo paramvwo, int paramInt) {}
   
-  @TargetApi(15)
-  public void a(vyi paramvyi, int paramInt1, int paramInt2)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.getHandler().post(new TextureVideoView.1.1(this, paramvyi));
+    QCircleFeedCommentWidget.a(this.jdField_a_of_type_Vwo.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFeedCommentWidget).a(this.jdField_a_of_type_Vwo.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFeedCommentWidget.getContext().hashCode(), this.jdField_a_of_type_Vwo.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed, this.jdField_a_of_type_Vwo.jdField_a_of_type_FeedcloudFeedCloudMeta$StComment, this.jdField_a_of_type_Int, QCircleFeedCommentWidget.a(this.jdField_a_of_type_Vwo.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFeedCommentWidget));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     vwt
  * JD-Core Version:    0.7.0.1
  */

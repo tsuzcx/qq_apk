@@ -1,23 +1,19 @@
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.OnScrollListener;
+import com.tencent.mobileqq.data.Emoticon;
 import com.tencent.qphone.base.util.QLog;
 
 class asbv
-  extends RecyclerView.OnScrollListener
+  implements awgx
 {
-  asbv(asbs paramasbs) {}
+  asbv(asbu paramasbu, String paramString) {}
   
-  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
+  public void a()
   {
-    QLog.i("Forward.Preview.Dialog", 1, "onScrollStateChanged state: " + paramInt);
-    if (paramInt != 0) {
-      asbs.a(this.a).c();
+    if (QLog.isColorLevel()) {
+      QLog.d("PicEmoticonInfo", 2, "[play back] ready to send msg,magicvalue:" + this.jdField_a_of_type_Asbu.jdField_a_of_type_ComTencentMobileqqDataEmoticon.magicValue);
     }
-    while (!asbs.a(this.a).a()) {
-      return;
-    }
-    asbs.a(this.a).b();
-    asbs.a(this.a).notifyDataSetChanged();
+    this.jdField_a_of_type_Asbu.jdField_a_of_type_ComTencentMobileqqDataEmoticon.magicValue = this.jdField_a_of_type_JavaLangString;
+    adrm.a(this.jdField_a_of_type_Asbu.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Asbu.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Asbu.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_Asbu.jdField_a_of_type_ComTencentMobileqqDataEmoticon);
+    bcst.b(this.jdField_a_of_type_Asbu.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "ep_mall", "0X800579D", 0, 0, this.jdField_a_of_type_Asbu.jdField_a_of_type_ComTencentMobileqqDataEmoticon.epId, "", "", "");
   }
 }
 

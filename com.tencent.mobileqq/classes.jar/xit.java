@@ -1,44 +1,35 @@
-import android.content.Context;
-import android.support.annotation.NonNull;
-import android.view.View;
-import android.view.ViewGroup;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.playvideo.entrance.HotRecommendFeedPlayInfo;
+import java.util.ArrayList;
+import java.util.List;
 
-public abstract class xit<T extends xis>
+public class xit
+  extends xil<HotRecommendFeedPlayInfo>
 {
-  protected int a;
-  public final View a;
-  public T a;
-  
-  protected xit(@NonNull Context paramContext, ViewGroup paramViewGroup)
+  public xit(HotRecommendFeedPlayInfo paramHotRecommendFeedPlayInfo)
   {
-    this.jdField_a_of_type_AndroidViewView = a(paramContext, paramViewGroup);
-    if (this.jdField_a_of_type_AndroidViewView == null) {
-      throw new NullPointerException("onCreateView can not return null");
-    }
+    super(paramHotRecommendFeedPlayInfo);
   }
   
-  protected abstract View a(@NonNull Context paramContext, ViewGroup paramViewGroup);
-  
-  public void a()
+  public yib a(String paramString)
   {
-    this.jdField_a_of_type_Xis = null;
-    this.jdField_a_of_type_Int = -1;
+    paramString = new yib(((HotRecommendFeedPlayInfo)this.a).mFeedFeedId, 0, "", "");
+    paramString.b = ((HotRecommendFeedPlayInfo)this.a).mPullType;
+    return paramString;
   }
   
-  public void a(T paramT, int paramInt)
+  public void a(boolean paramBoolean, int paramInt, xjd paramxjd)
   {
-    this.jdField_a_of_type_Xis = paramT;
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public boolean a()
-  {
-    return (this.jdField_a_of_type_Xis != null) && (this.jdField_a_of_type_Xis.a());
+    ArrayList localArrayList = new ArrayList();
+    xim localxim = new xim(((HotRecommendFeedPlayInfo)this.a).mFeedFeedId, new yib(((HotRecommendFeedPlayInfo)this.a).mFeedFeedId, 0, "", ""));
+    localxim.a.b = ((HotRecommendFeedPlayInfo)this.a).mPullType;
+    localArrayList.add(localxim);
+    paramxjd.a(new ErrorMessage(), localArrayList, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     xit
  * JD-Core Version:    0.7.0.1
  */

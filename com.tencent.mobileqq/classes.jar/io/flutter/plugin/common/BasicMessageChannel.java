@@ -1,12 +1,15 @@
 package io.flutter.plugin.common;
 
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.annotation.UiThread;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.annotation.UiThread;
 import java.nio.ByteBuffer;
+import java.nio.charset.Charset;
+import java.util.Locale;
 
 public final class BasicMessageChannel<T>
 {
+  public static final String CHANNEL_BUFFERS_CHANNEL = "dev.flutter/channel-buffers";
   private static final String TAG = "BasicMessageChannel#";
   @NonNull
   private final MessageCodec<T> codec;
@@ -20,6 +23,17 @@ public final class BasicMessageChannel<T>
     this.messenger = paramBinaryMessenger;
     this.name = paramString;
     this.codec = paramMessageCodec;
+  }
+  
+  static void resizeChannelBuffer(@NonNull BinaryMessenger paramBinaryMessenger, @NonNull String paramString, int paramInt)
+  {
+    Charset localCharset = Charset.forName("UTF-8");
+    paramBinaryMessenger.send("dev.flutter/channel-buffers", ByteBuffer.wrap(String.format(Locale.US, "resize\r%s\r%d", new Object[] { paramString, Integer.valueOf(paramInt) }).getBytes(localCharset)));
+  }
+  
+  public void resizeChannelBuffer(int paramInt)
+  {
+    resizeChannelBuffer(this.messenger, this.name, paramInt);
   }
   
   public void send(@Nullable T paramT)
@@ -58,7 +72,7 @@ public final class BasicMessageChannel<T>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     io.flutter.plugin.common.BasicMessageChannel
  * JD-Core Version:    0.7.0.1
  */

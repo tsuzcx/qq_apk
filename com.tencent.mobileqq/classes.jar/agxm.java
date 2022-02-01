@@ -1,25 +1,12 @@
-import com.tencent.mobileqq.activity.aio.stickerbubble.StickerBubbleAnimationViewHolder.1.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ChatMessage;
 
-public class agxm
-  implements agxk
+final class agxm
+  implements ahbm
 {
-  agxm(agxl paramagxl) {}
-  
-  public void a()
+  public int a(QQAppInterface paramQQAppInterface, ChatMessage paramChatMessage)
   {
-    agxl.a(this.a, agxl.a(this.a));
-    ThreadManager.getUIHandler().post(new StickerBubbleAnimationViewHolder.1.1(this));
-  }
-  
-  public void b()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("StickerBubbleAnimationViewHolder", 2, "onSurfaceDestroyed");
-    }
-    agxl.b(this.a, agxl.a(this.a));
+    return atcb.a(paramQQAppInterface, paramChatMessage);
   }
 }
 

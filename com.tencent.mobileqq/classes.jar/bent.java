@@ -1,65 +1,23 @@
-import android.graphics.Rect;
-import android.graphics.drawable.Drawable;
-import android.os.Bundle;
-import android.support.v4.view.accessibility.AccessibilityNodeInfoCompat;
-import android.support.v4.widget.ExploreByTouchHelper;
+import android.app.Activity;
 import android.view.View;
-import android.view.accessibility.AccessibilityEvent;
-import com.tencent.mobileqq.widget.ClearableEditText;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.GroupManagerActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class bent
-  extends ExploreByTouchHelper
+class bent
+  implements View.OnClickListener
 {
-  public bent(ClearableEditText paramClearableEditText, View paramView)
-  {
-    super(paramView);
-  }
+  bent(bens parambens) {}
   
-  public int getVirtualViewAt(float paramFloat1, float paramFloat2)
+  public void onClick(View paramView)
   {
-    if ((ClearableEditText.c(this.a)) && (paramFloat1 > this.a.getWidth() - this.a.getPaddingRight() - this.a.a.getIntrinsicWidth())) {
-      return 0;
-    }
-    return -1;
-  }
-  
-  public void getVisibleVirtualViews(List<Integer> paramList)
-  {
-    if (ClearableEditText.c(this.a)) {
-      paramList.add(Integer.valueOf(0));
-    }
-  }
-  
-  public boolean onPerformActionForVirtualView(int paramInt1, int paramInt2, Bundle paramBundle)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ClearableEditTextHelper", 2, "onPerformActionForVirtualView virtualViewId:" + paramInt1);
-    }
-    return false;
-  }
-  
-  public void onPopulateEventForVirtualView(int paramInt, AccessibilityEvent paramAccessibilityEvent)
-  {
-    if (paramInt == 0) {
-      paramAccessibilityEvent.setContentDescription(alud.a(2131702329));
-    }
-  }
-  
-  public void onPopulateNodeForVirtualView(int paramInt, AccessibilityNodeInfoCompat paramAccessibilityNodeInfoCompat)
-  {
-    if (paramInt == 0)
-    {
-      paramAccessibilityNodeInfoCompat.setContentDescription(alud.a(2131702328));
-      paramAccessibilityNodeInfoCompat.addAction(16);
-      paramAccessibilityNodeInfoCompat.setBoundsInParent(new Rect(this.a.getWidth() - this.a.getPaddingRight() - this.a.a.getIntrinsicWidth(), this.a.getPaddingTop(), this.a.getWidth() - this.a.getPaddingRight(), this.a.getHeight() - this.a.getPaddingBottom()));
-    }
+    GroupManagerActivity.a((Activity)bens.a(this.a));
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bent
  * JD-Core Version:    0.7.0.1
  */

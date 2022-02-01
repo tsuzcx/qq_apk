@@ -11,6 +11,7 @@ import com.tencent.tavsticker.utils.CollectionUtil;
 import com.tencent.weseevideo.composition.VideoRenderChainManager.IStickerContextInterface;
 import com.tencent.weseevideo.editor.utils.HandlerUtils;
 import com.tencent.weseevideo.model.effect.StickerModel;
+import com.tencent.weseevideo.model.effect.SubtitleModel;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -20,6 +21,7 @@ public class WSOverlayStickerMergedEffectNode
 {
   private VideoRenderChainManager.IStickerContextInterface mContextCreator;
   private List<StickerModel> mStickerModels;
+  private SubtitleModel mSubtitleModel;
   private final String sEffectId = "WSOverlayStickerMergedEffectNode" + Integer.toHexString(hashCode());
   
   public WSOverlayStickerMergedEffectNode(TAVStickerRenderContext paramTAVStickerRenderContext, VideoRenderChainManager.IStickerContextInterface paramIStickerContextInterface)
@@ -87,6 +89,17 @@ public class WSOverlayStickerMergedEffectNode
     }
   }
   
+  private void updateSubtitleSticker(@NonNull CGSize paramCGSize)
+  {
+    if ((!isAvailable()) || (this.mContextCreator != null)) {}
+    do
+    {
+      return;
+      removeStickers(findStickerByType(VideoEffectType.TYPE_SUBTITLE.value));
+    } while (this.mSubtitleModel == null);
+    VideoEffectNodeFactory.addPagOverlayEffectNode(this.mSubtitleModel, paramCGSize, getStickerContext(), this.mContextCreator);
+  }
+  
   @NonNull
   public String effectId()
   {
@@ -101,6 +114,11 @@ public class WSOverlayStickerMergedEffectNode
     return this.mStickerModels;
   }
   
+  public SubtitleModel getSubtitleModel()
+  {
+    return this.mSubtitleModel;
+  }
+  
   public void setStickerModels(List<StickerModel> paramList, CGSize paramCGSize)
   {
     this.mStickerModels = paramList;
@@ -108,10 +126,18 @@ public class WSOverlayStickerMergedEffectNode
       updateCommonSticker(paramCGSize);
     }
   }
+  
+  public void setSubtitleModel(SubtitleModel paramSubtitleModel, CGSize paramCGSize)
+  {
+    this.mSubtitleModel = paramSubtitleModel;
+    if (this.mContextCreator == null) {
+      updateSubtitleSticker(paramCGSize);
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.weseevideo.composition.effectnode.WSOverlayStickerMergedEffectNode
  * JD-Core Version:    0.7.0.1
  */

@@ -2,7 +2,7 @@ package dov.com.qq.im.aeeditor.module.aifilter;
 
 import android.view.ViewPropertyAnimator;
 import android.widget.RelativeLayout;
-import bllc;
+import bocx;
 
 public class AEEditorComicLoadingView$2
   implements Runnable
@@ -11,12 +11,12 @@ public class AEEditorComicLoadingView$2
   
   public void run()
   {
-    this.this$0.a.animate().alpha(0.0F).setDuration(500L).setListener(new bllc(this)).start();
+    this.this$0.a.animate().alpha(0.0F).setDuration(500L).setListener(new bocx(this)).start();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     dov.com.qq.im.aeeditor.module.aifilter.AEEditorComicLoadingView.2
  * JD-Core Version:    0.7.0.1
  */

@@ -9,12 +9,14 @@ class InternalAppUIProxy$2$1
   
   public void run()
   {
-    ((AppBrandUI)InternalAppUIProxy.access$000(this.this$1.this$0)).doOnBackPressed();
+    if (InternalAppUIProxy.access$000(this.this$1.this$0) != null) {
+      ((AppBrandUI)InternalAppUIProxy.access$000(this.this$1.this$0)).doOnBackPressed();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.app.InternalAppUIProxy.2.1
  * JD-Core Version:    0.7.0.1
  */

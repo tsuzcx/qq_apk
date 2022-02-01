@@ -1,28 +1,19 @@
-import com.tencent.mobileqq.activity.ChatActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnCompletionListener;
 
-public class xsf
+class xsf
+  implements MediaPlayer.OnCompletionListener
 {
-  public static void a(QQAppInterface paramQQAppInterface)
+  xsf(xsd paramxsd, xrv paramxrv) {}
+  
+  public void onCompletion(MediaPlayer paramMediaPlayer)
   {
-    if (paramQQAppInterface == null) {}
-    do
-    {
-      return;
-      paramQQAppInterface = paramQQAppInterface.getHandler(ChatActivity.class);
-    } while (paramQQAppInterface == null);
-    if (QLog.isColorLevel()) {
-      QLog.d("StoryAIOUtils", 2, "refreshAIOStoryMessages");
-    }
-    paramQQAppInterface.removeMessages(267387141);
-    paramQQAppInterface.sendMessageDelayed(paramQQAppInterface.obtainMessage(267387141), 500L);
+    this.jdField_a_of_type_Xrv.a(this.jdField_a_of_type_Xsd);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     xsf
  * JD-Core Version:    0.7.0.1
  */

@@ -1,22 +1,14 @@
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.shortvideo.resource.AVFilterResource;
 
-class bkem
-  implements bkfd
+public class bkem
+  implements AVFilterResource
 {
-  bkem(bkel parambkel) {}
-  
-  public void a(boolean paramBoolean)
+  public String getFilterResPath()
   {
-    bkel.a(this.a, paramBoolean);
-    if ((bkel.a(this.a)) && (bkel.b(this.a)))
-    {
-      bkel.a(this.a);
-      if (bkel.c(this.a))
-      {
-        QLog.d("VipARCameraController", 2, " init onresume");
-        bkel.a(this.a).a();
-      }
+    if (bkel.a) {
+      return bqbq.b;
     }
+    return bamn.b;
   }
 }
 

@@ -1,14 +1,16 @@
 import android.view.View;
-import android.view.View.OnClickListener;
+import com.tencent.mobileqq.data.MessageForDeviceFile;
 
 class agsu
-  implements View.OnClickListener
+  implements bkhw
 {
-  agsu(agso paramagso) {}
+  agsu(agss paramagss, MessageForDeviceFile paramMessageForDeviceFile, bkho parambkho) {}
   
-  public void onClick(View paramView)
+  public void OnClick(View paramView, int paramInt)
   {
-    agso.a(this.a, paramView);
+    this.jdField_a_of_type_Agss.b(this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeviceFile);
+    this.jdField_a_of_type_Agss.b();
+    this.jdField_a_of_type_Bkho.dismiss();
   }
 }
 

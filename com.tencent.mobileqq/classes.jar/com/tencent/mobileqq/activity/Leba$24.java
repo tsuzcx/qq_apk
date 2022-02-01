@@ -1,22 +1,22 @@
 package com.tencent.mobileqq.activity;
 
-import atkv;
+import axby;
+import bcsy;
 
 class Leba$24
   implements Runnable
 {
-  Leba$24(Leba paramLeba) {}
+  Leba$24(Leba paramLeba, axby paramaxby) {}
   
   public void run()
   {
-    if (Leba.a(this.this$0) != null) {
-      Leba.a(this.this$0).b();
-    }
+    int i = this.a.b();
+    new bcsy(this.this$0.a).a("dc00899").b("grp_lbs").c("entry").d("clk").a(new String[] { "", String.valueOf(i), "", "" }).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.Leba.24
  * JD-Core Version:    0.7.0.1
  */

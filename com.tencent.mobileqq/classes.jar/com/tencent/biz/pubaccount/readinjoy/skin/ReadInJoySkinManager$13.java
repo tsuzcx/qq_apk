@@ -1,15 +1,15 @@
 package com.tencent.biz.pubaccount.readinjoy.skin;
 
-import qja;
+import rdd;
 
 public class ReadInJoySkinManager$13
   implements Runnable
 {
-  public ReadInJoySkinManager$13(qja paramqja, int paramInt, String paramString, boolean paramBoolean) {}
+  public ReadInJoySkinManager$13(rdd paramrdd, int paramInt, String paramString, boolean paramBoolean) {}
   
   public void run()
   {
-    qja.a(this.this$0, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Boolean);
+    rdd.a(this.this$0, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Boolean);
   }
 }
 

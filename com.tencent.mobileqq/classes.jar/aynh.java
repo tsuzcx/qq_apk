@@ -1,49 +1,24 @@
-import android.view.View;
-import com.tencent.mobileqq.search.activity.MessageSearchActivity;
-import java.util.List;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.QQAppInterface;
+import mqq.app.AppRuntime.Status;
 
-public class aynh
-  implements aynt
+class aynh
+  extends ayuf
 {
-  public static final String a;
-  private List<aynu> a;
-  private String b;
+  aynh(aymu paramaymu) {}
   
-  static
+  public void a(boolean paramBoolean, Bundle paramBundle)
   {
-    jdField_a_of_type_JavaLangString = alud.a(2131705782);
-  }
-  
-  public aynh(List<aynu> paramList, String paramString)
-  {
-    this.jdField_a_of_type_JavaUtilList = paramList;
-    this.b = paramString;
-  }
-  
-  public int a()
-  {
-    return 3;
-  }
-  
-  public String a()
-  {
-    return jdField_a_of_type_JavaLangString;
-  }
-  
-  public List<aynu> a()
-  {
-    return this.jdField_a_of_type_JavaUtilList;
-  }
-  
-  public void a(View paramView)
-  {
-    ayvm.a(this.b, 40, 0, paramView);
-    MessageSearchActivity.a(paramView.getContext(), this.b);
-  }
-  
-  public String b()
-  {
-    return this.b;
+    super.a(paramBoolean, paramBundle);
+    paramBundle = aymu.a(this.a).getOnlineStatus();
+    long l = ayox.a().a(aymu.a(this.a));
+    if ((paramBoolean) && (paramBundle == AppRuntime.Status.online) && (l == 1030L))
+    {
+      if (aymu.a(this.a) != null) {
+        aymu.a(this.a).a(paramBundle);
+      }
+      this.a.c();
+    }
   }
 }
 

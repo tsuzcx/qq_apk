@@ -1,8 +1,9 @@
 package com.tencent.mobileqq.ar.view;
 
 import android.app.Activity;
-import anft;
-import arso;
+import apek;
+import atwl;
+import bcst;
 import com.tencent.mobileqq.ocr.OCRPerformFragment;
 
 class OCRScanEntryView$1
@@ -12,16 +13,18 @@ class OCRScanEntryView$1
   
   public void run()
   {
-    String str = anft.a().a();
-    if (arso.a(str)) {
+    String str = apek.a().a();
+    if (atwl.a(str))
+    {
       OCRPerformFragment.a((Activity)this.this$0.a, str, 0, -1008, null);
+      bcst.b(null, "dc00898", "", "", "0X800AE06", "0X800AE06", 1, 0, "", "0", "0", "");
     }
     OCRScanEntryView.a(this.this$0, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.view.OCRScanEntryView.1
  * JD-Core Version:    0.7.0.1
  */

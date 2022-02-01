@@ -2,12 +2,12 @@ package com.tencent.mobileqq.profile;
 
 import android.os.Parcel;
 import android.text.TextUtils;
-import awge;
-import awgf;
-import awgg;
-import awhs;
-import awrm;
+import azfx;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.QQEntityManagerFactory;
+import com.tencent.mobileqq.persistence.Entity;
+import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.mobileqq.persistence.unique;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.util.LRULinkedHashMap;
 import java.util.ArrayList;
@@ -17,7 +17,7 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 public class ProfileShoppingPhotoInfo
-  extends awge
+  extends Entity
 {
   public static final int FOLLOW_TYPE_CANCEL_CARE = 3;
   public static final int FOLLOW_TYPE_NORMAL_CARE = 1;
@@ -32,18 +32,18 @@ public class ProfileShoppingPhotoInfo
   public byte[] picByteData;
   public int seqNo;
   public String shopName;
-  @awhs
+  @unique
   public String uin;
   
-  public static byte[] converPhoto2RawData(List<awrm> paramList)
+  public static byte[] converPhoto2RawData(List<azfx> paramList)
   {
     Object localObject = new ArrayList();
     paramList = paramList.iterator();
     while (paramList.hasNext())
     {
-      awrm localawrm = (awrm)paramList.next();
-      if (localawrm != null) {
-        ((List)localObject).add(localawrm.a());
+      azfx localazfx = (azfx)paramList.next();
+      if (localazfx != null) {
+        ((List)localObject).add(localazfx.a());
       }
     }
     paramList = Parcel.obtain();
@@ -75,9 +75,9 @@ public class ProfileShoppingPhotoInfo
           return paramQQAppInterface;
         }
       }
-      paramQQAppInterface = paramQQAppInterface.getEntityManagerFactory().createEntityManager();
-      ProfileShoppingPhotoInfo localProfileShoppingPhotoInfo = (ProfileShoppingPhotoInfo)paramQQAppInterface.a(ProfileShoppingPhotoInfo.class, paramString);
-      paramQQAppInterface.a();
+      paramQQAppInterface = paramQQAppInterface.a().createEntityManager();
+      ProfileShoppingPhotoInfo localProfileShoppingPhotoInfo = (ProfileShoppingPhotoInfo)paramQQAppInterface.find(ProfileShoppingPhotoInfo.class, paramString);
+      paramQQAppInterface.close();
       paramQQAppInterface = mLock;
       if ((localProfileShoppingPhotoInfo != null) && (paramString != null)) {}
       try
@@ -98,7 +98,7 @@ public class ProfileShoppingPhotoInfo
     }
   }
   
-  public static List<awrm> parseShoppingPhotoJson(String paramString)
+  public static List<azfx> parseShoppingPhotoJson(String paramString)
   {
     ArrayList localArrayList = new ArrayList();
     if (TextUtils.isEmpty(paramString)) {}
@@ -124,10 +124,10 @@ public class ProfileShoppingPhotoInfo
                 int j = 0;
                 while (j < m)
                 {
-                  awrm localawrm = new awrm();
-                  localawrm.b = ((JSONArray)localObject).getJSONObject(j).getString("url");
-                  localawrm.a = ((JSONArray)localObject).getJSONObject(j).getJSONArray("pic_url").getString(0);
-                  localArrayList.add(localawrm);
+                  azfx localazfx = new azfx();
+                  localazfx.b = ((JSONArray)localObject).getJSONObject(j).getString("url");
+                  localazfx.a = ((JSONArray)localObject).getJSONObject(j).getJSONArray("pic_url").getString(0);
+                  localArrayList.add(localazfx);
                   j += 1;
                 }
               }
@@ -160,11 +160,11 @@ public class ProfileShoppingPhotoInfo
         if (paramProfileShoppingPhotoInfo.uin != null) {
           photoWinCache.put(paramProfileShoppingPhotoInfo.uin, paramProfileShoppingPhotoInfo);
         }
-        paramQQAppInterface = paramQQAppInterface.getEntityManagerFactory().createEntityManager();
+        paramQQAppInterface = paramQQAppInterface.a().createEntityManager();
         if (paramProfileShoppingPhotoInfo.getStatus() == 1000)
         {
-          paramQQAppInterface.a(paramProfileShoppingPhotoInfo);
-          paramQQAppInterface.a();
+          paramQQAppInterface.persist(paramProfileShoppingPhotoInfo);
+          paramQQAppInterface.close();
           if (!QLog.isColorLevel()) {
             break;
           }
@@ -173,12 +173,12 @@ public class ProfileShoppingPhotoInfo
         }
       }
       finally {}
-      paramQQAppInterface.a(paramProfileShoppingPhotoInfo);
+      paramQQAppInterface.update(paramProfileShoppingPhotoInfo);
     }
   }
   
   /* Error */
-  public List<awrm> getPhotoFromRawData()
+  public List<azfx> getPhotoFromRawData()
   {
     // Byte code:
     //   0: new 52	java/util/ArrayList
@@ -186,7 +186,7 @@ public class ProfileShoppingPhotoInfo
     //   4: invokespecial 53	java/util/ArrayList:<init>	()V
     //   7: astore_3
     //   8: aload_0
-    //   9: getfield 249	com/tencent/mobileqq/profile/ProfileShoppingPhotoInfo:picByteData	[B
+    //   9: getfield 252	com/tencent/mobileqq/profile/ProfileShoppingPhotoInfo:picByteData	[B
     //   12: ifnonnull +5 -> 17
     //   15: aload_3
     //   16: areturn
@@ -194,25 +194,25 @@ public class ProfileShoppingPhotoInfo
     //   20: astore_2
     //   21: aload_2
     //   22: aload_0
-    //   23: getfield 249	com/tencent/mobileqq/profile/ProfileShoppingPhotoInfo:picByteData	[B
+    //   23: getfield 252	com/tencent/mobileqq/profile/ProfileShoppingPhotoInfo:picByteData	[B
     //   26: iconst_0
     //   27: aload_0
-    //   28: getfield 249	com/tencent/mobileqq/profile/ProfileShoppingPhotoInfo:picByteData	[B
+    //   28: getfield 252	com/tencent/mobileqq/profile/ProfileShoppingPhotoInfo:picByteData	[B
     //   31: arraylength
-    //   32: invokevirtual 253	android/os/Parcel:unmarshall	([BII)V
+    //   32: invokevirtual 256	android/os/Parcel:unmarshall	([BII)V
     //   35: aload_2
     //   36: iconst_0
     //   37: invokevirtual 88	android/os/Parcel:setDataPosition	(I)V
     //   40: aload_2
     //   41: aload_0
-    //   42: invokevirtual 257	java/lang/Object:getClass	()Ljava/lang/Class;
-    //   45: invokevirtual 263	java/lang/Class:getClassLoader	()Ljava/lang/ClassLoader;
-    //   48: invokevirtual 267	android/os/Parcel:readArrayList	(Ljava/lang/ClassLoader;)Ljava/util/ArrayList;
+    //   42: invokevirtual 260	java/lang/Object:getClass	()Ljava/lang/Class;
+    //   45: invokevirtual 266	java/lang/Class:getClassLoader	()Ljava/lang/ClassLoader;
+    //   48: invokevirtual 270	android/os/Parcel:readArrayList	(Ljava/lang/ClassLoader;)Ljava/util/ArrayList;
     //   51: astore 4
     //   53: aload 4
     //   55: ifnull +15 -> 70
     //   58: aload 4
-    //   60: invokeinterface 270 1 0
+    //   60: invokeinterface 273 1 0
     //   65: istore_1
     //   66: iload_1
     //   67: ifne +9 -> 76
@@ -228,15 +228,15 @@ public class ProfileShoppingPhotoInfo
     //   92: ifeq +87 -> 179
     //   95: aload 4
     //   97: invokeinterface 69 1 0
-    //   102: checkcast 272	java/lang/String
+    //   102: checkcast 275	java/lang/String
     //   105: astore 5
-    //   107: new 71	awrm
+    //   107: new 71	azfx
     //   110: dup
-    //   111: invokespecial 200	awrm:<init>	()V
+    //   111: invokespecial 201	azfx:<init>	()V
     //   114: astore 6
     //   116: aload 6
     //   118: aload 5
-    //   120: invokevirtual 274	awrm:a	(Ljava/lang/String;)V
+    //   120: invokevirtual 277	azfx:a	(Ljava/lang/String;)V
     //   123: aload_3
     //   124: aload 6
     //   126: invokeinterface 79 2 0
@@ -250,13 +250,13 @@ public class ProfileShoppingPhotoInfo
     //   146: new 120	java/lang/StringBuilder
     //   149: dup
     //   150: invokespecial 121	java/lang/StringBuilder:<init>	()V
-    //   153: ldc_w 276
+    //   153: ldc_w 279
     //   156: invokevirtual 127	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   159: aload 4
-    //   161: invokevirtual 221	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   161: invokevirtual 222	java/lang/Exception:getMessage	()Ljava/lang/String;
     //   164: invokevirtual 127	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   167: invokevirtual 133	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   170: invokestatic 224	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;)V
+    //   170: invokestatic 225	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;)V
     //   173: aload_2
     //   174: invokevirtual 99	android/os/Parcel:recycle	()V
     //   177: aload_3
@@ -279,7 +279,7 @@ public class ProfileShoppingPhotoInfo
     //   51	45	4	localObject2	Object
     //   135	25	4	localException	Exception
     //   105	14	5	str	String
-    //   114	11	6	localawrm	awrm
+    //   114	11	6	localazfx	azfx
     // Exception table:
     //   from	to	target	type
     //   21	53	135	java/lang/Exception
@@ -313,7 +313,7 @@ public class ProfileShoppingPhotoInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.profile.ProfileShoppingPhotoInfo
  * JD-Core Version:    0.7.0.1
  */

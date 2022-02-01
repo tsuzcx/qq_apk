@@ -1,111 +1,56 @@
-import android.os.Bundle;
 import android.os.Handler;
-import android.os.Handler.Callback;
+import android.os.Looper;
 import android.os.Message;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.ARMapHongBaoListView;
+import android.widget.TextView;
+import java.lang.ref.WeakReference;
+import java.util.HashMap;
 
 public class bhtm
-  implements Handler.Callback
+  extends Handler
 {
-  public bhtm(ARMapHongBaoListView paramARMapHongBaoListView) {}
-  
-  public boolean handleMessage(Message paramMessage)
+  public bhtm()
   {
-    int j;
-    int k;
-    switch (paramMessage.what)
+    super(Looper.getMainLooper());
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    super.handleMessage(paramMessage);
+    paramMessage = (String[])paramMessage.obj;
+    Object localObject = paramMessage[0];
+    CharSequence localCharSequence = paramMessage[1];
+    WeakReference localWeakReference = (WeakReference)bhte.a.remove(localObject);
+    if ((localWeakReference != null) && (localWeakReference.get() != null))
     {
-    default: 
-      return false;
-    case 1: 
-      this.a.setIsShowingPreguide(true);
-      boolean bool1 = paramMessage.getData().getBoolean("isFirstCall", false);
-      boolean bool2 = paramMessage.getData().getBoolean("isListViewSpring", false);
-      boolean bool3 = paramMessage.getData().getBoolean("isPendantBounce", false);
-      j = paramMessage.getData().getInt("pendantBountCnt", 0);
-      if (QLog.isColorLevel()) {
-        QLog.d("ARMapHongBaoListView", 2, "ARMapHongBaoListView handleMessage MSG_WHAT_GUIDE_SHOW, " + bool1 + "," + bool2 + "," + bool3 + "," + j);
+      if (!(((TextView)localWeakReference.get()).getTag() instanceof String[])) {
+        break label142;
       }
-      if ((bool1) && (bool2))
-      {
-        this.a.jdField_a_of_type_Ansg.a(-this.a.d);
-        if ((ARMapHongBaoListView.a(this.a) != null) && (this.a.b)) {
-          ARMapHongBaoListView.a(this.a).b(false);
-        }
-      }
-      if ((bool3) && (j > 0))
-      {
-        float f = j * 1.0F / 6.0F;
-        if (this.a.jdField_a_of_type_Anse != null) {
-          this.a.jdField_a_of_type_Anse.a((int)(f * this.a.d), j * 300L);
-        }
-        k = j - 1;
-        i = k;
-        if (k > 0)
-        {
-          paramMessage = Message.obtain(ARMapHongBaoListView.a(this.a), 1);
-          paramMessage.getData().putBoolean("isFirstCall", false);
-          paramMessage.getData().putBoolean("isListViewSpring", false);
-          paramMessage.getData().putBoolean("isPendantBounce", bool3);
-          paramMessage.getData().putInt("pendantBountCnt", k);
-          ARMapHongBaoListView.a(this.a).sendMessageDelayed(paramMessage, j * 300L + 200L);
-        }
-      }
-      break;
+      paramMessage = (String[])((TextView)localWeakReference.get()).getTag();
     }
-    for (int i = k;; i = j)
+    for (;;)
     {
-      if (i == 0)
+      if ((paramMessage != null) && (paramMessage.length == 2) && (paramMessage[0].equals(localObject))) {}
+      try
       {
-        paramMessage = Message.obtain(ARMapHongBaoListView.a(this.a), 2);
-        ARMapHongBaoListView.a(this.a).sendMessageDelayed(paramMessage, 1200L);
+        ((TextView)localWeakReference.get()).setText(String.format(paramMessage[1], new Object[] { localCharSequence }));
+        ((TextView)localWeakReference.get()).setText(localCharSequence);
+        return;
+        label142:
+        paramMessage = null;
       }
-      this.a.invalidate();
-      return false;
-      if (QLog.isColorLevel()) {
-        QLog.d("ARMapHongBaoListView", 2, "ARMapHongBaoListView handleMessage MSG_WHAT_GUIDE_HIDE");
+      catch (Exception paramMessage)
+      {
+        for (;;)
+        {
+          ((TextView)localWeakReference.get()).setText(localCharSequence);
+        }
       }
-      if (ARMapHongBaoListView.a(this.a) != null) {
-        ARMapHongBaoListView.a(this.a).a(false);
-      }
-      ARMapHongBaoListView.a(this.a, paramMessage.what);
-      ARMapHongBaoListView.a(this.a).sendEmptyMessageDelayed(5, 300L);
-      return false;
-      this.a.setIsShowingPreguide(true);
-      i = this.a.d;
-      if (paramMessage.arg1 != 0) {
-        i = paramMessage.arg1;
-      }
-      this.a.jdField_a_of_type_Ansg.a(-i);
-      if (this.a.jdField_a_of_type_Anse != null) {
-        this.a.jdField_a_of_type_Anse.a(this.a.d / 3, 300L);
-      }
-      Message localMessage = Message.obtain(ARMapHongBaoListView.a(this.a), 4);
-      localMessage.obj = paramMessage.obj;
-      ARMapHongBaoListView.a(this.a).sendMessageDelayed(localMessage, 2000L);
-      if ((ARMapHongBaoListView.a(this.a) == null) || (!this.a.b)) {
-        break;
-      }
-      ARMapHongBaoListView.a(this.a).b(false);
-      return false;
-      if (((Bundle)paramMessage.obj).getBoolean("isSpringBack")) {
-        ARMapHongBaoListView.a(this.a, paramMessage.what);
-      }
-      ARMapHongBaoListView.a(this.a).sendEmptyMessageDelayed(5, 300L);
-      if (ARMapHongBaoListView.a(this.a) == null) {
-        break;
-      }
-      ARMapHongBaoListView.a(this.a).a(false);
-      return false;
-      this.a.setIsShowingPreguide(false);
-      return false;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bhtm
  * JD-Core Version:    0.7.0.1
  */

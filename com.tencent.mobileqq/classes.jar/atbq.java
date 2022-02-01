@@ -1,29 +1,109 @@
-import android.app.Activity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.intervideo.groupvideo.IVPluginDataReporter;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import java.util.concurrent.ConcurrentHashMap;
 
-class atbq
-  implements View.OnClickListener
+public class atbq
 {
-  atbq(atbp paramatbp) {}
+  private anif jdField_a_of_type_Anif = new atbs(this);
+  private asyw jdField_a_of_type_Asyw = new atbr(this);
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private ConcurrentHashMap<String, attu> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap;
+  private boolean jdField_a_of_type_Boolean;
   
-  public void onClick(View paramView)
+  public atbq(QQAppInterface paramQQAppInterface)
   {
-    atcg.a.a(31, null);
-    atam.a(atbp.a(this.a).getApplicationContext(), this.a.a).a();
-    atbp.a(this.a).finish();
-    atbp.a(this.a).opType("huiyin").opName("loading_close").d1(String.valueOf(bdin.a(atbp.a(this.a).getApplicationContext()))).d2(String.valueOf(atbp.a(this.a))).report();
-    if (atbp.a(this.a) == 1)
-    {
-      if (!bdin.a(atbp.a(this.a).getApplicationContext())) {
-        atbp.a(this.a).opType("huiyin").opName("plugin_download_close").report();
-      }
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+  }
+  
+  private void c()
+  {
+    if (this.jdField_a_of_type_Asyw != null) {
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().addObserver(this.jdField_a_of_type_Asyw);
     }
-    else {
+    if (this.jdField_a_of_type_Anif != null) {
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Anif);
+    }
+  }
+  
+  private void d()
+  {
+    if (this.jdField_a_of_type_Asyw != null) {
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().deleteObserver(this.jdField_a_of_type_Asyw);
+    }
+    if (this.jdField_a_of_type_Anif != null) {
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Anif);
+    }
+  }
+  
+  public attu a(String paramString1, String paramString2, String paramString3)
+  {
+    if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap == null)
+    {
+      QLog.e("QFileMultiControlManager<QFile>", 1, "req map is null.if you forget init manager?");
+      return null;
+    }
+    paramString1 = attu.a(paramString1, paramString2, paramString3);
+    return (attu)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString1);
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_Boolean) {
       return;
     }
-    atbp.a(this.a).opType("huiyin").opName("plugin_download_loading_close").report();
+    QLog.i("QFileMultiControlManager<QFile>", 1, "initFileControlManager");
+    this.jdField_a_of_type_Boolean = true;
+    c();
+    if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap != null) {
+      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
+    }
+    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
+  }
+  
+  public void a(attu paramattu)
+  {
+    if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap == null)
+    {
+      QLog.e("QFileMultiControlManager<QFile>", 1, "req map is null.if you forget init manager?");
+      return;
+    }
+    if (paramattu == null)
+    {
+      QLog.e("QFileMultiControlManager<QFile>", 1, "req is null.");
+      return;
+    }
+    String str = paramattu.a();
+    if (TextUtils.isEmpty(str))
+    {
+      QLog.e("QFileMultiControlManager<QFile>", 1, "controlKey is null.");
+      return;
+    }
+    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramattu.a(), paramattu);
+    QLog.e("QFileMultiControlManager<QFile>", 1, "addFileControlReq: controlKey[" + str + "]");
+  }
+  
+  public void b()
+  {
+    QLog.i("QFileMultiControlManager<QFile>", 1, "clearFileControlManager");
+    this.jdField_a_of_type_Boolean = false;
+    d();
+    if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap != null) {
+      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
+    }
+    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = null;
+  }
+  
+  public void b(attu paramattu)
+  {
+    if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap == null)
+    {
+      QLog.e("QFileMultiControlManager<QFile>", 1, "req map is null.if you forget init manager?");
+      return;
+    }
+    paramattu = paramattu.a();
+    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(paramattu);
+    QLog.e("QFileMultiControlManager<QFile>", 1, "removeFileContolReq: controlKey[" + paramattu + "]");
   }
 }
 

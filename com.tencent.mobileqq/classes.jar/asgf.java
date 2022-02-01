@@ -1,55 +1,213 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.os.Handler;
-import com.tencent.mobileqq.app.IphoneTitleBarActivity;
-import com.tencent.mobileqq.fragment.NearbyHybridFragment;
-import com.tencent.mobileqq.fragment.NearbyHybridFragment.15.1;
-import com.tencent.mobileqq.fragment.NearbyHybridFragment.15.2;
-import com.tencent.mobileqq.fragment.NearbyHybridFragment.15.3;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.smtt.sdk.CookieManager;
-import com.tencent.smtt.sdk.CookieSyncManager;
-import java.util.Map;
-import oicq.wlogin_sdk.request.Ticket;
-import oicq.wlogin_sdk.request.WtTicketPromise;
-import oicq.wlogin_sdk.tools.ErrMsg;
+import com.tencent.mobileqq.data.Card;
+import java.util.ArrayList;
+import java.util.List;
 
 public class asgf
-  implements WtTicketPromise
+  implements anil
 {
-  public asgf(NearbyHybridFragment paramNearbyHybridFragment) {}
+  protected void a(int paramInt) {}
   
-  public void Done(Ticket paramTicket)
+  protected void a(boolean paramBoolean) {}
+  
+  protected void a(boolean paramBoolean, int paramInt) {}
+  
+  protected void a(boolean paramBoolean, int paramInt1, int paramInt2, ashh paramashh, int paramInt3) {}
+  
+  protected void a(boolean paramBoolean, int paramInt1, int paramInt2, ashh paramashh, String paramString) {}
+  
+  protected void a(boolean paramBoolean, int paramInt, ashh paramashh) {}
+  
+  protected void a(boolean paramBoolean, int paramInt, ashh paramashh, String paramString) {}
+  
+  protected void a(boolean paramBoolean1, long paramLong, String paramString, boolean paramBoolean2, byte[] paramArrayOfByte, boolean paramBoolean3, boolean paramBoolean4, int paramInt, List<asht> paramList, ashg paramashg) {}
+  
+  protected void a(boolean paramBoolean, ashh paramashh) {}
+  
+  protected void a(boolean paramBoolean, asht paramasht, int paramInt) {}
+  
+  protected void a(boolean paramBoolean, Card paramCard) {}
+  
+  protected void a(boolean paramBoolean, Object paramObject) {}
+  
+  protected void a(boolean paramBoolean, String paramString) {}
+  
+  protected void a(boolean paramBoolean, ArrayList<Long> paramArrayList) {}
+  
+  protected void a(boolean paramBoolean1, ArrayList<ashw> paramArrayList, boolean paramBoolean2, int paramInt, ArrayList<String> paramArrayList1, boolean paramBoolean3) {}
+  
+  protected void b(boolean paramBoolean) {}
+  
+  protected void b(boolean paramBoolean, Object paramObject) {}
+  
+  protected void c(boolean paramBoolean) {}
+  
+  protected void d(boolean paramBoolean) {}
+  
+  protected void e(boolean paramBoolean) {}
+  
+  protected void f(boolean paramBoolean) {}
+  
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    if (paramTicket != null)
+    int i = -1;
+    switch (paramInt)
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("nearby.NearbyHybridFragment", 2, "preGetKeyInPreloadService : Done");
-      }
-      String str = new String((byte[])paramTicket._pskey_map.get("now.qq.com"));
-      this.a.jdField_a_of_type_ComTencentSmttSdkCookieManager.setCookie("now.qq.com", "p_skey=" + str);
-      CookieSyncManager.getInstance().sync();
-      this.a.jdField_a_of_type_ComTencentMobileqqAppIphoneTitleBarActivity.getSharedPreferences("NearbyActivity.nearByTabUrl", 4).edit().putString("pskey", "" + str).commit();
-      this.a.jdField_a_of_type_ComTencentMobileqqAppIphoneTitleBarActivity.getSharedPreferences("NearbyActivity.nearByTabUrl", 4).edit().putLong("pskey_t", System.currentTimeMillis()).commit();
-      com.tencent.mobileqq.fragment.NowLiveFragment.b = new String((byte[])paramTicket._pskey_map.get("now.qq.com"));
     }
-    this.a.jdField_a_of_type_AndroidOsHandler.post(new NearbyHybridFragment.15.1(this));
-  }
-  
-  public void Failed(ErrMsg paramErrMsg)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("nearby.NearbyHybridFragment", 2, "preGetKeyInPreloadService failed " + paramErrMsg);
-    }
-    this.a.jdField_a_of_type_AndroidOsHandler.post(new NearbyHybridFragment.15.2(this));
-  }
-  
-  public void Timeout(ErrMsg paramErrMsg)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("nearby.NearbyHybridFragment", 2, "preGetKeyInPreloadService timeout!" + paramErrMsg);
-    }
-    this.a.jdField_a_of_type_AndroidOsHandler.post(new NearbyHybridFragment.15.3(this));
+    do
+    {
+      do
+      {
+        do
+        {
+          do
+          {
+            return;
+            c(paramBoolean);
+            return;
+          } while ((paramObject == null) || (!(paramObject instanceof Object[])));
+          paramObject = (Object[])paramObject;
+          if ((paramBoolean) && (paramObject.length == 9))
+          {
+            a(true, ((Long)paramObject[0]).longValue(), (String)paramObject[1], ((Boolean)paramObject[2]).booleanValue(), (byte[])paramObject[3], ((Boolean)paramObject[4]).booleanValue(), ((Boolean)paramObject[5]).booleanValue(), ((Integer)paramObject[6]).intValue(), (List)paramObject[7], (ashg)paramObject[8]);
+            return;
+          }
+        } while ((paramBoolean) || (paramObject.length != 2));
+        a(false, ((Long)paramObject[0]).longValue(), (String)paramObject[1], false, null, false, false, 0, null, null);
+        return;
+        a(paramBoolean, (Card)paramObject);
+        return;
+        paramObject = (Object[])paramObject;
+        a(paramBoolean, (asht)paramObject[0], ((Integer)paramObject[1]).intValue());
+        return;
+        b(((Boolean)paramObject).booleanValue());
+        return;
+        d(((Boolean)paramObject).booleanValue());
+        return;
+        if ((paramObject instanceof Object[]))
+        {
+          paramObject = (Object[])paramObject;
+          if (paramObject.length == 4)
+          {
+            a(paramBoolean, ((Integer)paramObject[0]).intValue(), ((Integer)paramObject[1]).intValue(), (ashh)paramObject[2], ((Integer)paramObject[3]).intValue());
+            return;
+          }
+          a(paramBoolean, -1, -1, null, -1);
+          return;
+        }
+        a(paramBoolean, -1, -1, null, -1);
+        return;
+        if ((paramObject instanceof Object[]))
+        {
+          paramObject = (Object[])paramObject;
+          if ((paramObject != null) && (paramObject.length == 2))
+          {
+            a(paramBoolean, ((Integer)paramObject[0]).intValue(), (ashh)paramObject[1]);
+            return;
+          }
+          a(false, -1, null);
+          return;
+        }
+        a(paramBoolean, -1, null);
+        return;
+        paramInt = i;
+        if (paramObject != null)
+        {
+          paramInt = i;
+          if ((paramObject instanceof Object[]))
+          {
+            paramObject = (Object[])paramObject;
+            paramInt = i;
+            if (paramObject != null)
+            {
+              paramInt = i;
+              if (paramObject.length > 0) {
+                paramInt = ((Integer)paramObject[0]).intValue();
+              }
+            }
+          }
+        }
+        a(paramBoolean, paramInt);
+        return;
+        a(paramBoolean, paramObject);
+        return;
+        if (paramBoolean)
+        {
+          if ((paramObject != null) && ((paramObject instanceof Object[])))
+          {
+            paramObject = (Object[])paramObject;
+            if ((paramObject != null) && (paramObject.length == 4))
+            {
+              a(paramBoolean, ((Integer)paramObject[0]).intValue(), (ashh)paramObject[1], (String)paramObject[3]);
+              return;
+            }
+            a(false, -1, null, null);
+            return;
+          }
+          a(false, -1, null, null);
+          return;
+        }
+        a(false, -1, null, null);
+        return;
+        if ((paramBoolean) && (paramObject != null) && ((paramObject instanceof Object[])))
+        {
+          paramObject = (Object[])paramObject;
+          if ((paramObject != null) && (paramObject.length == 1))
+          {
+            a(paramBoolean, (ashh)paramObject[0]);
+            return;
+          }
+          a(false, null);
+          return;
+        }
+        a(false, null);
+        return;
+        e(paramBoolean);
+        return;
+        if ((paramBoolean) && (paramObject != null) && ((paramObject instanceof Object[])))
+        {
+          paramObject = (Object[])paramObject;
+          if ((paramObject != null) && (paramObject.length == 5))
+          {
+            a(true, (ArrayList)paramObject[0], ((Boolean)paramObject[1]).booleanValue(), ((Integer)paramObject[2]).intValue(), (ArrayList)paramObject[3], ((Boolean)paramObject[4]).booleanValue());
+            return;
+          }
+          a(false, null, true, 0, null, false);
+          return;
+        }
+        a(false, null, true, 0, null, false);
+        return;
+        f(paramBoolean);
+        return;
+        if (paramBoolean)
+        {
+          if ((paramObject != null) && ((paramObject instanceof Object[])))
+          {
+            paramObject = (Object[])paramObject;
+            if ((paramObject != null) && (paramObject.length == 4))
+            {
+              a(paramBoolean, ((Integer)paramObject[0]).intValue(), ((Integer)paramObject[2]).intValue(), (ashh)paramObject[1], (String)paramObject[3]);
+              return;
+            }
+            a(false, -1, -1, null, null);
+            return;
+          }
+          a(false, -1, -1, null, null);
+          return;
+        }
+        a(false, -1, -1, null, null);
+        return;
+        a(((Integer)paramObject).intValue());
+        return;
+        a(paramBoolean);
+        return;
+        a(paramBoolean, (ArrayList)paramObject);
+        return;
+        b(paramBoolean, paramObject);
+        return;
+      } while (!(paramObject instanceof Object[]));
+      paramObject = (Object[])paramObject;
+    } while (paramObject.length <= 0);
+    a(paramBoolean, (String)paramObject[0]);
   }
 }
 

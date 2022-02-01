@@ -1,36 +1,66 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.storyHome.QQStoryBaseActivity;
-import com.tribe.async.dispatch.Dispatcher.Dispatchable;
-import com.tribe.async.dispatch.Subscriber;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.base.preload.PreloadDownloader;
 import java.lang.ref.WeakReference;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 
-public class wgs
-  implements Subscriber
+class wgs
+  implements bdvw
 {
-  private WeakReference<QQStoryBaseActivity> jdField_a_of_type_JavaLangRefWeakReference;
+  wgs(wgr paramwgr) {}
   
-  public wgs(QQStoryBaseActivity paramQQStoryBaseActivity1, QQStoryBaseActivity paramQQStoryBaseActivity2)
+  public void onResp(bdwt parambdwt)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramQQStoryBaseActivity2);
+    if (parambdwt.jdField_a_of_type_Int == 3) {}
+    wgv localwgv;
+    do
+    {
+      do
+      {
+        return;
+        localObject = ((bdvs)parambdwt.jdField_a_of_type_Bdws).a();
+      } while ((localObject == null) || (!(localObject instanceof wgv)));
+      localwgv = (wgv)localObject;
+      this.a.a.jdField_a_of_type_JavaUtilMap.remove(((wgv)localObject).jdField_a_of_type_JavaLangString);
+      localwgv.jdField_b_of_type_Long = (System.currentTimeMillis() - localwgv.jdField_a_of_type_Long);
+    } while (localwgv.jdField_a_of_type_Wgo == null);
+    Object localObject = localwgv.jdField_a_of_type_Wgo;
+    if (parambdwt.jdField_a_of_type_Int == 0) {}
+    for (parambdwt = new ErrorMessage(0, "");; parambdwt = new ErrorMessage(parambdwt.b, parambdwt.jdField_a_of_type_JavaLangString))
+    {
+      ((wgo)localObject).a(localwgv, parambdwt);
+      return;
+    }
   }
   
-  public void accept(@NonNull List<Class<? extends Dispatcher.Dispatchable>> paramList)
+  public void onUpdateProgeress(bdws arg1, long paramLong1, long paramLong2)
   {
-    paramList.add(xqy.class);
-  }
-  
-  public void handleDispatch(@NonNull Dispatcher.Dispatchable paramDispatchable)
-  {
-    paramDispatchable = (QQStoryBaseActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (paramDispatchable != null) {
-      paramDispatchable.c();
+    ??? = ???.a();
+    if ((??? != null) && ((??? instanceof wgv)))
+    {
+      wgv localwgv = (wgv)???;
+      int i = (int)(paramLong1 / paramLong2 * 100.0D);
+      synchronized (PreloadDownloader.a)
+      {
+        if (this.a.a.jdField_a_of_type_JavaUtilList != null)
+        {
+          Iterator localIterator = this.a.a.jdField_a_of_type_JavaUtilList.iterator();
+          while (localIterator.hasNext())
+          {
+            wgz localwgz = (wgz)((WeakReference)localIterator.next()).get();
+            if (localwgz != null) {
+              localwgz.a(localwgv.jdField_b_of_type_JavaLangString, localwgv.jdField_a_of_type_Int, i, localwgv);
+            }
+          }
+        }
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     wgs
  * JD-Core Version:    0.7.0.1
  */

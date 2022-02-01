@@ -1,8 +1,13 @@
-import com.tencent.map.lib.basemap.data.GeoPoint;
+import com.tencent.mobileqq.app.ThreadRegulator;
+import com.tencent.mobileqq.imcore.proxy.IMCoreProxyRoute.ThreadRegulator.Proxy;
 
-public abstract interface bcql
+public final class bcql
+  implements IMCoreProxyRoute.ThreadRegulator.Proxy
 {
-  public abstract void a(int paramInt, GeoPoint paramGeoPoint);
+  public void checkInNextBusiness()
+  {
+    ThreadRegulator.a().b();
+  }
 }
 
 

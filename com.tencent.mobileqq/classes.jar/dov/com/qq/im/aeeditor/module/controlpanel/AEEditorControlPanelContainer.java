@@ -6,7 +6,7 @@ import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.widget.FrameLayout;
 import android.widget.FrameLayout.LayoutParams;
-import blnz;
+import bogc;
 import dov.com.qq.im.aeeditor.module.filter.AEEditorFilterControlPanel;
 
 public abstract class AEEditorControlPanelContainer
@@ -36,16 +36,16 @@ public abstract class AEEditorControlPanelContainer
     a();
   }
   
-  public AEEditorFilterControlPanel a(blnz paramblnz)
+  public AEEditorFilterControlPanel a(bogc parambogc)
   {
     removeAllViews();
     if (this.jdField_a_of_type_DovComQqImAeeditorModuleFilterAEEditorFilterControlPanel == null)
     {
       this.jdField_a_of_type_DovComQqImAeeditorModuleFilterAEEditorFilterControlPanel = new AEEditorFilterControlPanel(this.jdField_a_of_type_AndroidContentContext);
-      this.jdField_a_of_type_DovComQqImAeeditorModuleFilterAEEditorFilterControlPanel.setFilterChangedComparator(paramblnz);
+      this.jdField_a_of_type_DovComQqImAeeditorModuleFilterAEEditorFilterControlPanel.setFilterChangedComparator(parambogc);
     }
-    paramblnz = new FrameLayout.LayoutParams(-1, -1);
-    addView(this.jdField_a_of_type_DovComQqImAeeditorModuleFilterAEEditorFilterControlPanel, paramblnz);
+    parambogc = new FrameLayout.LayoutParams(-1, -1);
+    addView(this.jdField_a_of_type_DovComQqImAeeditorModuleFilterAEEditorFilterControlPanel, parambogc);
     return this.jdField_a_of_type_DovComQqImAeeditorModuleFilterAEEditorFilterControlPanel;
   }
   
@@ -58,7 +58,7 @@ public abstract class AEEditorControlPanelContainer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     dov.com.qq.im.aeeditor.module.controlpanel.AEEditorControlPanelContainer
  * JD-Core Version:    0.7.0.1
  */

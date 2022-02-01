@@ -1,41 +1,36 @@
-import android.opengl.GLES20;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.richmedia.mediacodec.utils.GlUtil;
+import NS_QQ_STORY_CLIENT.CLIENT.StGetWatermarkDictRsp;
+import NS_QQ_STORY_CLIENT.CLIENT.StWatermarkDict;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBStringField;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
 
-public class bnnz
-  extends bnny
+class bnnz
+  implements zxa<CLIENT.StGetWatermarkDictRsp>
 {
-  private static String jdField_a_of_type_JavaLangString = GlUtil.readTextFromRawResource(BaseApplicationImpl.getContext(), 2131230751);
-  private float jdField_a_of_type_Float;
-  private int jdField_a_of_type_Int;
+  bnnz(bnnx parambnnx) {}
   
-  public bnnz()
+  public void a(boolean paramBoolean, long paramLong, String paramString, CLIENT.StGetWatermarkDictRsp paramStGetWatermarkDictRsp)
   {
-    this(0.5F);
-  }
-  
-  public bnnz(float paramFloat)
-  {
-    super("uniform mat4 uMVPMatrix;\nuniform mat4 uTextureMatrix;\nattribute vec4 aPosition;\nattribute vec4 aTextureCoord;\nvarying vec2 vTextureCoord;\nvoid main() {\n    gl_Position = uMVPMatrix * aPosition;\n    vTextureCoord = (uTextureMatrix * aTextureCoord).xy;\n}\n", jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_Float = paramFloat;
-  }
-  
-  public void a(float paramFloat)
-  {
-    this.jdField_a_of_type_Float = paramFloat;
-  }
-  
-  public void onDrawTexture()
-  {
-    super.onDrawTexture();
-    GLES20.glUniform1f(this.jdField_a_of_type_Int, this.jdField_a_of_type_Float);
-  }
-  
-  public void onInitialized()
-  {
-    super.onInitialized();
-    this.jdField_a_of_type_Int = GLES20.glGetUniformLocation(getProgram(), "brightness");
-    a(this.jdField_a_of_type_Float);
+    if (paramBoolean)
+    {
+      bnzb.b(bnnx.a(), "[onReceive]:");
+      paramString = paramStGetWatermarkDictRsp.extInfo;
+      paramStGetWatermarkDictRsp = paramStGetWatermarkDictRsp.vecWatermarkDict.get();
+      paramString = new HashMap();
+      paramStGetWatermarkDictRsp = paramStGetWatermarkDictRsp.iterator();
+      while (paramStGetWatermarkDictRsp.hasNext())
+      {
+        CLIENT.StWatermarkDict localStWatermarkDict = (CLIENT.StWatermarkDict)paramStGetWatermarkDictRsp.next();
+        paramString.put(localStWatermarkDict.key.get(), localStWatermarkDict.value.get());
+      }
+      bnzb.b(bnnx.a(), "[onReceive] watermarkDict.size:" + paramString.size());
+      bnnx.a(this.a, paramString);
+      return;
+    }
+    bnzb.d(bnnx.a(), "retCode:" + paramLong + " errMSg:" + paramString);
   }
 }
 

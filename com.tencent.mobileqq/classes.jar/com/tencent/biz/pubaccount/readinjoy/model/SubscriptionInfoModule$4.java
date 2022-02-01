@@ -1,13 +1,13 @@
 package com.tencent.biz.pubaccount.readinjoy.model;
 
-import oxb;
+import pmk;
 
 public class SubscriptionInfoModule$4
   implements Runnable
 {
   public void run()
   {
-    oxb.a().b(this.a);
+    pmk.a().b(this.a);
   }
 }
 

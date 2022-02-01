@@ -1,10 +1,24 @@
-class bgnu
+public class bgnu
 {
-  private static final bgnt a = new bgnt(null);
+  public static long a(String paramString)
+  {
+    return a(paramString, -1L);
+  }
+  
+  public static long a(String paramString, long paramLong)
+  {
+    try
+    {
+      long l = Long.parseLong(paramString);
+      return l;
+    }
+    catch (NumberFormatException paramString) {}
+    return paramLong;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bgnu
  * JD-Core Version:    0.7.0.1
  */

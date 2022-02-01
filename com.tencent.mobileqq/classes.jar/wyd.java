@@ -1,41 +1,62 @@
-class wyd
-  implements xjl<Boolean, xjq>
+import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqBatchFeedComment;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspBatchFeedComment;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBRepeatField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import java.util.List;
+
+public class wyd
+  extends wlf
 {
-  wyd(wyb paramwyb, long paramLong, int paramInt) {}
+  private static final String jdField_a_of_type_JavaLangString = wjz.a("StorySvc.feed_comment_list_batch_775");
+  private List<String> jdField_a_of_type_JavaUtilList;
+  private int c;
   
-  public Void a(Boolean paramBoolean, xjq paramxjq)
+  public wyd(List<String> paramList, boolean paramBoolean)
   {
-    if ((!paramBoolean.booleanValue()) || (paramxjq == null) || (paramxjq.jdField_a_of_type_AndroidGraphicsBitmap == null))
+    this.jdField_a_of_type_JavaUtilList = paramList;
+    if (paramBoolean) {}
+    for (int i = 1;; i = 2)
     {
-      wxe.e("Q.qqstory.record.EditLocalVideoPlayer", "Generate thumbnail error! thumbnail = (null)");
-      return null;
+      this.c = i;
+      return;
     }
-    wxe.b("Q.qqstory.record.EditLocalVideoPlayer", "Generate thumbnail index = %d", Integer.valueOf(paramxjq.jdField_a_of_type_Int));
-    if (paramxjq.jdField_a_of_type_Int >= this.jdField_a_of_type_Wyb.a.length)
+  }
+  
+  public String a()
+  {
+    return jdField_a_of_type_JavaLangString;
+  }
+  
+  public wla a(byte[] paramArrayOfByte)
+  {
+    qqstory_service.RspBatchFeedComment localRspBatchFeedComment = new qqstory_service.RspBatchFeedComment();
+    try
     {
-      wxe.e("Q.qqstory.record.EditLocalVideoPlayer", "Generate thumbnail index = %d OutOfArrayBounds", new Object[] { Integer.valueOf(paramxjq.jdField_a_of_type_Int) });
-      return null;
+      localRspBatchFeedComment.mergeFrom(paramArrayOfByte);
+      return new wye(localRspBatchFeedComment);
     }
-    wxe.b("Q.qqstory.record.EditLocalVideoPlayer.Flow", "thumbnailProgress index: %d thumbnail done!", Integer.valueOf(paramxjq.jdField_a_of_type_Int));
-    this.jdField_a_of_type_Wyb.a[paramxjq.jdField_a_of_type_Int] = wye.a(this.jdField_a_of_type_Wyb.a[paramxjq.jdField_a_of_type_Int], paramxjq.jdField_a_of_type_AndroidGraphicsBitmap);
-    this.jdField_a_of_type_Wyb.a[paramxjq.jdField_a_of_type_Int].jdField_a_of_type_JavaLangString = paramxjq.jdField_a_of_type_JavaLangString;
-    if (paramxjq.jdField_a_of_type_Long > 0L)
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
     {
-      this.jdField_a_of_type_Wyb.a[paramxjq.jdField_a_of_type_Int].jdField_a_of_type_Int = ((int)paramxjq.jdField_a_of_type_Long / 1000);
-      wxe.b("Q.qqstory.record.EditLocalVideoPlayer.Flow", "fix start time : %d ", Integer.valueOf(this.jdField_a_of_type_Wyb.a[paramxjq.jdField_a_of_type_Int].jdField_a_of_type_Int));
-      if ((this.jdField_a_of_type_Wyb.a[paramxjq.jdField_a_of_type_Int].b <= 0) && (this.jdField_a_of_type_Wyb.a.length == 1))
+      for (;;)
       {
-        this.jdField_a_of_type_Wyb.a[paramxjq.jdField_a_of_type_Int].b = ((int)this.jdField_a_of_type_Long);
-        wxe.b("Q.qqstory.record.EditLocalVideoPlayer.Flow", "fix end time : %d ", Integer.valueOf(this.jdField_a_of_type_Int));
+        paramArrayOfByte.printStackTrace();
       }
     }
-    this.jdField_a_of_type_Wyb.i();
-    return null;
+  }
+  
+  protected byte[] a()
+  {
+    qqstory_service.ReqBatchFeedComment localReqBatchFeedComment = new qqstory_service.ReqBatchFeedComment();
+    List localList = a(this.jdField_a_of_type_JavaUtilList);
+    localReqBatchFeedComment.feed_id_list.set(localList);
+    localReqBatchFeedComment.source.set(this.c);
+    return localReqBatchFeedComment.toByteArray();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     wyd
  * JD-Core Version:    0.7.0.1
  */

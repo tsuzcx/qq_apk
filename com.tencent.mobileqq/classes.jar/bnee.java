@@ -1,10 +1,28 @@
-public abstract interface bnee
+import dov.com.qq.im.ae.mode.AECaptureMode;
+
+class bnee
+  implements bnmu
 {
-  public abstract void b(int paramInt, String paramString);
+  bnee(bndy parambndy) {}
   
-  public abstract void c(int paramInt, String paramString);
+  public void a()
+  {
+    bndy.a(this.a).a(null);
+  }
   
-  public abstract void d(int paramInt, String paramString);
+  public void a(bnpf parambnpf)
+  {
+    if (bndy.b(this.a) == AECaptureMode.NORMAL)
+    {
+      bndy.a(this.a).a(parambnpf);
+      return;
+    }
+    bnzb.d("AEPituCameraUnit", "onMaterialSelected---but current capture mode is not normal");
+  }
+  
+  public void b() {}
+  
+  public void c() {}
 }
 
 

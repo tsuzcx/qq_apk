@@ -1,6 +1,7 @@
 package com.tencent.ttpic.util.youtu;
 
 import android.graphics.PointF;
+import com.tencent.ttpic.openapi.PTFaceAttr.PTExpression;
 import com.tencent.ttpic.openapi.facedetect.FaceInfo;
 import com.tencent.ttpic.openapi.util.VideoMaterialUtil.EXPRESSION_TYPE;
 import com.tencent.ttpic.util.AlgoUtils;
@@ -9,6 +10,7 @@ import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.ListIterator;
+import java.util.Set;
 
 public class ExpressionDetectorObject
 {
@@ -169,7 +171,52 @@ public class ExpressionDetectorObject
       return false;
     }
     FaceInfo localFaceInfo = (FaceInfo)((LinkedList)this.mFaceQueueList.get(paramInt)).getFirst();
-    return AlgoUtils.getDistance((PointF)localFaceInfo.points.get(77), (PointF)localFaceInfo.points.get(69)) / AlgoUtils.getDistance((PointF)localFaceInfo.points.get(65), (PointF)localFaceInfo.points.get(66)) >= 0.55F;
+    if ((localFaceInfo != null) && (localFaceInfo.expressionWeights != null)) {}
+    for (float f1 = localFaceInfo.expressionWeights[31];; f1 = 0.0F)
+    {
+      Float[] arrayOfFloat = new Float[25];
+      arrayOfFloat[0] = localFaceInfo.pointsVis[3];
+      arrayOfFloat[1] = localFaceInfo.pointsVis[4];
+      arrayOfFloat[2] = localFaceInfo.pointsVis[5];
+      arrayOfFloat[3] = localFaceInfo.pointsVis[6];
+      arrayOfFloat[4] = localFaceInfo.pointsVis[7];
+      arrayOfFloat[5] = localFaceInfo.pointsVis[8];
+      arrayOfFloat[6] = localFaceInfo.pointsVis[9];
+      arrayOfFloat[7] = localFaceInfo.pointsVis[10];
+      arrayOfFloat[8] = localFaceInfo.pointsVis[11];
+      arrayOfFloat[9] = localFaceInfo.pointsVis[12];
+      arrayOfFloat[10] = localFaceInfo.pointsVis[13];
+      arrayOfFloat[11] = localFaceInfo.pointsVis[14];
+      arrayOfFloat[12] = localFaceInfo.pointsVis[15];
+      arrayOfFloat[13] = localFaceInfo.pointsVis[65];
+      arrayOfFloat[14] = localFaceInfo.pointsVis[66];
+      arrayOfFloat[15] = localFaceInfo.pointsVis[67];
+      arrayOfFloat[16] = localFaceInfo.pointsVis[68];
+      arrayOfFloat[17] = localFaceInfo.pointsVis[69];
+      arrayOfFloat[18] = localFaceInfo.pointsVis[70];
+      arrayOfFloat[19] = localFaceInfo.pointsVis[71];
+      arrayOfFloat[20] = localFaceInfo.pointsVis[75];
+      arrayOfFloat[21] = localFaceInfo.pointsVis[76];
+      arrayOfFloat[22] = localFaceInfo.pointsVis[77];
+      arrayOfFloat[23] = localFaceInfo.pointsVis[78];
+      arrayOfFloat[24] = localFaceInfo.pointsVis[79];
+      int i = arrayOfFloat.length;
+      paramInt = 0;
+      float f2 = 0.0F;
+      while (paramInt < i)
+      {
+        f2 += arrayOfFloat[paramInt].floatValue();
+        paramInt += 1;
+      }
+      f2 /= arrayOfFloat.length;
+      if (f2 == 0.0F) {
+        break;
+      }
+      if ((f1 > 0.36F / f2) || (f1 > 1.5F * 0.36F)) {}
+      for (boolean bool = true;; bool = false) {
+        return bool;
+      }
+    }
   }
   
   private boolean isExpressionLeftEyeOccludedDetected()
@@ -204,7 +251,7 @@ public class ExpressionDetectorObject
     if (f / 9.0F < 0.5D)
     {
       this.isLeftEyeClosed[paramInt] = true;
-      return false;
+      return true;
     }
     if (this.isLeftEyeClosed[paramInt] != 0)
     {
@@ -278,7 +325,7 @@ public class ExpressionDetectorObject
       if (paramInt < this.islipsOccluded.length)
       {
         this.islipsOccluded[paramInt] = true;
-        return false;
+        return true;
       }
     }
     else if ((paramInt < this.islipsOccluded.length) && (this.islipsOccluded[paramInt] != 0))
@@ -409,7 +456,7 @@ public class ExpressionDetectorObject
     if (f / 9.0F < 0.5D)
     {
       this.isRightEyeClosed[paramInt] = true;
-      return false;
+      return true;
     }
     if (this.isRightEyeClosed[paramInt] != 0)
     {
@@ -545,6 +592,79 @@ public class ExpressionDetectorObject
     return new PointF(paramPointF1.x - paramPointF2.x, paramPointF1.y - paramPointF2.y);
   }
   
+  private void updateExpressionDoubleEyesOcculudedDetected(List<Set<Integer>> paramList)
+  {
+    int i = 0;
+    while (i < this.mFaceQueueList.size())
+    {
+      Set localSet = (Set)paramList.get(i);
+      if ((localSet != null) && (localSet.contains(Integer.valueOf(PTFaceAttr.PTExpression.RIGHT_EYE_OCCLUDED.value))) && (localSet.contains(Integer.valueOf(PTFaceAttr.PTExpression.LEFT_EYE_OCCLUDED.value)))) {
+        localSet.add(Integer.valueOf(PTFaceAttr.PTExpression.DOUBLE_EYE_OCCLUDED.value));
+      }
+      i += 1;
+    }
+  }
+  
+  private void updateExpressionKissDetected(List<Set<Integer>> paramList)
+  {
+    int i = 0;
+    while (i < this.mFaceQueueList.size())
+    {
+      if ((isExpressionKissDetected(i)) && (paramList.get(i) != null)) {
+        ((Set)paramList.get(i)).add(Integer.valueOf(PTFaceAttr.PTExpression.KISS.value));
+      }
+      i += 1;
+    }
+  }
+  
+  private void updateExpressionLeftEyeOccludedDetected(List<Set<Integer>> paramList)
+  {
+    int i = 0;
+    while (i < this.mFaceQueueList.size())
+    {
+      if ((isExpressionLeftEyeOccludedDetected(i)) && (paramList.get(i) != null)) {
+        ((Set)paramList.get(i)).add(Integer.valueOf(PTFaceAttr.PTExpression.LEFT_EYE_OCCLUDED.value));
+      }
+      i += 1;
+    }
+  }
+  
+  private void updateExpressionMouthOccludedDetected(List<Set<Integer>> paramList)
+  {
+    int i = 0;
+    while (i < this.mFaceQueueList.size())
+    {
+      if ((isExpressionMouthOccludedDetected(i)) && (paramList.get(i) != null)) {
+        ((Set)paramList.get(i)).add(Integer.valueOf(PTFaceAttr.PTExpression.MOUTH_OCCLUDED.value));
+      }
+      i += 1;
+    }
+  }
+  
+  private void updateExpressionOpenMouthDetected(List<Set<Integer>> paramList)
+  {
+    int i = 0;
+    while (i < this.mFaceQueueList.size())
+    {
+      if ((isExpressionOpenMouthDetected(i)) && (paramList.get(i) != null)) {
+        ((Set)paramList.get(i)).add(Integer.valueOf(PTFaceAttr.PTExpression.MOUTH_OPEN.value));
+      }
+      i += 1;
+    }
+  }
+  
+  private void updateExpressionRightEyeOccludedDetected(List<Set<Integer>> paramList)
+  {
+    int i = 0;
+    while (i < this.mFaceQueueList.size())
+    {
+      if ((isExpressionRightEyeOccludedDetected(i)) && (paramList.get(i) != null)) {
+        ((Set)paramList.get(i)).add(Integer.valueOf(PTFaceAttr.PTExpression.RIGHT_EYE_OCCLUDED.value));
+      }
+      i += 1;
+    }
+  }
+  
   public void addFaces(List<FaceInfo> paramList)
   {
     if (paramList == null)
@@ -598,6 +718,31 @@ public class ExpressionDetectorObject
         localLinkedList.removeLast();
       }
     }
+  }
+  
+  public void detectAllFaceExpression(List<Set<Integer>> paramList, int paramInt)
+  {
+    switch (paramInt)
+    {
+    default: 
+      return;
+    case 3: 
+      updateExpressionOpenMouthDetected(paramList);
+      return;
+    case 7: 
+      updateExpressionKissDetected(paramList);
+      return;
+    case 15: 
+      updateExpressionMouthOccludedDetected(paramList);
+      return;
+    case 16: 
+      updateExpressionLeftEyeOccludedDetected(paramList);
+      return;
+    case 17: 
+      updateExpressionRightEyeOccludedDetected(paramList);
+      return;
+    }
+    updateExpressionDoubleEyesOcculudedDetected(paramList);
   }
   
   public boolean detectExpression(int paramInt)
@@ -698,7 +843,7 @@ public class ExpressionDetectorObject
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.util.youtu.ExpressionDetectorObject
  * JD-Core Version:    0.7.0.1
  */

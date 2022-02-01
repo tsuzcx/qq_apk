@@ -8,7 +8,6 @@ import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.soso.SosoInterface;
 import com.tencent.mobileqq.mini.out.activity.MapActivity;
 import com.tencent.mobileqq.mini.sdk.MiniAppController;
-import com.tencent.mobileqq.mini.util.ApiUtil.OnLocationFinish;
 import com.tencent.mobileqq.mini.webview.JsRuntime;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Set;
@@ -22,7 +21,7 @@ public class MapJsPlugin
   private static final Set<String> S_EVENT_MAP = new MapJsPlugin.1();
   private static final String TAG = "MapJsPlugin";
   
-  public void getLocationJsonObject(Context paramContext, String paramString1, String paramString2, JsRuntime paramJsRuntime, int paramInt, String paramString3, ApiUtil.OnLocationFinish paramOnLocationFinish)
+  public void getLocationJsonObject(Context paramContext, String paramString1, String paramString2, JsRuntime paramJsRuntime, int paramInt, String paramString3, MapJsPlugin.OnLocationFinish paramOnLocationFinish)
   {
     if (paramContext == null)
     {
@@ -123,7 +122,7 @@ public class MapJsPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.appbrand.jsapi.plugins.MapJsPlugin
  * JD-Core Version:    0.7.0.1
  */

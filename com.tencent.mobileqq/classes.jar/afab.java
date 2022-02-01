@@ -1,21 +1,34 @@
-import com.tencent.mobileqq.activity.aio.doodle.DoodleLayout;
-import com.tencent.mobileqq.activity.aio.doodle.DoodlePanel;
+import android.content.Intent;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.RecommendFriendActivity;
+import com.tencent.mobileqq.data.MayKnowRecommend;
+import java.util.List;
 
 public class afab
-  implements afbx
+  implements amdu
 {
-  public afab(DoodlePanel paramDoodlePanel) {}
+  public afab(RecommendFriendActivity paramRecommendFriendActivity) {}
   
-  public void a(int paramInt)
+  public void a()
   {
-    if (DoodlePanel.a(this.a) != null)
-    {
-      if (DoodlePanel.a(this.a) != null) {
-        DoodlePanel.a(this.a).setTemplateID(paramInt);
-      }
-      DoodlePanel.a(this.a);
-      bdea.a(this.a.getContext(), "aio_doodle_template_picker_select", String.valueOf(paramInt));
-    }
+    RecommendFriendActivity.a(this.a).setVisibility(0);
+  }
+  
+  public void a(String paramString)
+  {
+    RecommendFriendActivity.a(this.a, paramString);
+  }
+  
+  public void a(List<MayKnowRecommend> paramList)
+  {
+    Intent localIntent = this.a.getIntent();
+    int i = localIntent.getIntExtra("EntranceId", 0);
+    RecommendFriendActivity.a(this.a, localIntent, i, paramList);
+  }
+  
+  public void b()
+  {
+    RecommendFriendActivity.a(this.a).setVisibility(8);
   }
 }
 

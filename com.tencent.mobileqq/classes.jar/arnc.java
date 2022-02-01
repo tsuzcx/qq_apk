@@ -1,19 +1,19 @@
-import android.app.Activity;
-import com.tencent.mobileqq.filemanager.fileviewer.presenter.VideoFilePresenter.1.1;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.graphics.PathMeasure;
+import com.tencent.mobileqq.doutu.combo.ComboMasterView;
 
 public class arnc
-  implements aqxn
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  arnc(arnb paramarnb) {}
+  public arnc(ComboMasterView paramComboMasterView, PathMeasure paramPathMeasure, float[] paramArrayOfFloat) {}
   
-  public void a()
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    this.a.n();
-  }
-  
-  public void b()
-  {
-    this.a.a.runOnUiThread(new VideoFilePresenter.1.1(this));
+    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    this.jdField_a_of_type_AndroidGraphicsPathMeasure.getPosTan(f, this.jdField_a_of_type_ArrayOfFloat, null);
+    this.jdField_a_of_type_ComTencentMobileqqDoutuComboComboMasterView.setTranslationX(this.jdField_a_of_type_ArrayOfFloat[0]);
+    this.jdField_a_of_type_ComTencentMobileqqDoutuComboComboMasterView.setTranslationY(this.jdField_a_of_type_ArrayOfFloat[1]);
   }
 }
 

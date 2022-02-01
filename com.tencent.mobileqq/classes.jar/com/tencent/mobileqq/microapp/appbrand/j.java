@@ -4,11 +4,11 @@ import Wallet.ApkgConfig;
 import android.widget.FrameLayout;
 import com.tencent.mobileqq.activity.qwallet.report.VACDReportUtil;
 import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.microapp.a.c;
 import com.tencent.mobileqq.microapp.apkg.MiniAppConfig;
-import com.tencent.mobileqq.microapp.apkg.f;
 import com.tencent.mobileqq.microapp.app.b;
 import com.tencent.mobileqq.microapp.app.b.a;
-import com.tencent.mobileqq.microapp.c.c;
+import com.tencent.mobileqq.microapp.widget.g;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -28,9 +28,9 @@ public final class j
     this.a = paramFrameLayout;
   }
   
-  private void a(f paramf, Throwable paramThrowable)
+  private void a(c paramc, Throwable paramThrowable)
   {
-    if ((paramf == null) || (paramThrowable == null)) {}
+    if ((paramc == null) || (paramThrowable == null)) {}
     do
     {
       return;
@@ -38,28 +38,28 @@ public final class j
       {
         JSONObject localJSONObject = new JSONObject();
         localJSONObject.put("scene", "AppBrandRuntimeContainer init");
-        localJSONObject.put("miniAppId", paramf.d);
-        if (paramf.b != null) {
-          localJSONObject.put("page", paramf.b.b);
+        localJSONObject.put("miniAppId", paramc.d);
+        if (paramc.b != null) {
+          localJSONObject.put("page", paramc.b.f);
         }
-        paramf = new StringBuilder(256);
-        paramf.append(paramThrowable.toString());
+        paramc = new StringBuilder(256);
+        paramc.append(paramThrowable.toString());
         if (paramThrowable.getStackTrace() != null)
         {
           StackTraceElement[] arrayOfStackTraceElement = paramThrowable.getStackTrace();
           int i = 0;
           while ((i < arrayOfStackTraceElement.length) && (i < 16))
           {
-            paramf.append("\n ");
-            paramf.append(arrayOfStackTraceElement[i].toString());
+            paramc.append("\n ");
+            paramc.append(arrayOfStackTraceElement[i].toString());
             i += 1;
           }
         }
-        paramf = paramf.toString();
-        VACDReportUtil.a(localJSONObject.toString(), "MiniAppStat", "MiniAppCrashReport", "Catch", null, 88888, paramf);
+        paramc = paramc.toString();
+        VACDReportUtil.a(localJSONObject.toString(), "MiniAppStat", "MiniAppCrashReport", "Catch", null, 88888, paramc);
         return;
       }
-      catch (Throwable paramf) {}
+      catch (Throwable paramc) {}
     } while (!QLog.isColorLevel());
     QLog.e("AppBrandRuntimeContainer", 2, paramThrowable, new Object[0]);
   }
@@ -85,20 +85,20 @@ public final class j
     return null;
   }
   
-  public final void a(f paramf, String paramString)
+  public final void a(c paramc, String paramString)
   {
-    if (paramf == null) {
+    if (paramc == null) {
       return;
     }
-    a locala = a(paramf.d, paramf.f.getRuntimeType());
+    a locala = a(paramc.d, paramc.f.getRuntimeType());
     if (locala != null)
     {
-      locala.a(paramf);
+      locala.a(paramc);
       return;
     }
     try
     {
-      locala = new a(this.b, this, paramf);
+      locala = new a(this.b, this, paramc);
       locala.a(paramString, false);
       b(locala);
       return;
@@ -108,9 +108,9 @@ public final class j
       if (QLog.isColorLevel()) {
         QLog.e("AppBrandRuntimeContainer", 2, paramString, new Object[0]);
       }
-      a(paramf, paramString);
-      paramf = new b.a(-1, paramf.f.config.mini_appid, paramf.f.getRuntimeType(), null);
-      b.a().a(paramf);
+      a(paramc, paramString);
+      paramc = new b.a(-1, paramc.f.config.mini_appid, paramc.f.getRuntimeType(), null);
+      b.a().a(paramc);
     }
   }
   
@@ -191,7 +191,7 @@ public final class j
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.microapp.appbrand.j
  * JD-Core Version:    0.7.0.1
  */

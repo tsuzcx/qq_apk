@@ -1,24 +1,28 @@
-import com.tencent.mobileqq.widget.AnimationTextView;
-import com.tencent.mobileqq.widget.MixedMsgLinearLayout;
-import java.util.Stack;
+import org.json.JSONObject;
 
 public class beqy
 {
-  private Stack<AnimationTextView> jdField_a_of_type_JavaUtilStack = new Stack();
+  public String a;
+  public String b;
+  public String c;
+  public String d;
+  public String e;
+  public String f;
+  public String g;
+  public String h;
   
-  public beqy(MixedMsgLinearLayout paramMixedMsgLinearLayout) {}
+  public beqy() {}
   
-  public AnimationTextView a()
+  public beqy(JSONObject paramJSONObject)
   {
-    if (this.jdField_a_of_type_JavaUtilStack.isEmpty()) {
-      return null;
-    }
-    return (AnimationTextView)this.jdField_a_of_type_JavaUtilStack.pop();
-  }
-  
-  public void a(AnimationTextView paramAnimationTextView)
-  {
-    this.jdField_a_of_type_JavaUtilStack.push(paramAnimationTextView);
+    this.a = paramJSONObject.optString("serverip", "");
+    this.b = paramJSONObject.optString("serverport", "");
+    this.c = paramJSONObject.optString("checkkey", "");
+    this.d = paramJSONObject.optString("exists", "");
+    this.e = paramJSONObject.optString("uin", "");
+    this.f = paramJSONObject.optString("vid", "");
+    this.g = paramJSONObject.optString("fid", "");
+    this.h = paramJSONObject.optString("complete", "");
   }
 }
 

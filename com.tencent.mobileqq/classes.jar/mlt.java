@@ -1,16 +1,20 @@
-public abstract interface mlt
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.av.ui.beauty.BeautyView;
+
+public class mlt
+  implements DialogInterface.OnClickListener
 {
-  public abstract void a(int paramInt);
+  public mlt(BeautyView paramBeautyView) {}
   
-  public abstract void a(long paramLong);
-  
-  public abstract void a(lyh paramlyh, int paramInt1, int paramInt2);
-  
-  public abstract void b(int paramInt);
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    paramDialogInterface.dismiss();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     mlt
  * JD-Core Version:    0.7.0.1
  */

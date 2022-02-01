@@ -1,51 +1,79 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import com.tencent.qphone.base.util.QLog;
 
-class aqsj
-  extends aqtd
+public class aqsj
+  extends aqkz<aqsi>
 {
-  protected long a;
-  protected String a;
-  protected String b;
-  protected String c;
-  protected String d;
-  protected String e;
-  protected String f;
-  
-  public aqsj(aqsf paramaqsf, MessageRecord paramMessageRecord)
+  public static aqsi a()
   {
-    super(paramaqsf);
-    this.jdField_a_of_type_JavaLangString = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardFileName");
-    this.jdField_a_of_type_Long = Long.parseLong(paramMessageRecord.getExtInfoFromExtStr("_m_ForwardSize"));
-    this.b = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardUuid");
-    this.c = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardMd5");
-    this.d = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardImgWidth");
-    this.e = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardImgHeight");
-    this.f = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardStatusPaused");
+    return (aqsi)aqlk.a().a(441);
   }
   
-  void a(String paramString, int paramInt) {}
-  
-  void a(String paramString, int paramInt, aqtc paramaqtc)
+  @NonNull
+  public aqsi a(int paramInt)
   {
-    if ("1".equals(this.f))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("FileMultiMsgManager<FileAssistant>", 1, "start Buddy2DiscTaskExcuter:" + this.jdField_a_of_type_JavaLangString + " faild, file is upload paused");
-      }
-      paramaqtc.a(aqsf.a(this.jdField_a_of_type_Long, false), false);
-      return;
+    return new aqsi();
+  }
+  
+  @Nullable
+  public aqsi a(aqlg[] paramArrayOfaqlg)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QQGameConfProcessor", 2, "onParsed ");
     }
-    if ((this.b == null) || (this.b.length() == 0))
+    if ((paramArrayOfaqlg != null) && (paramArrayOfaqlg.length > 0))
     {
-      if (QLog.isColorLevel()) {
-        QLog.e("FileMultiMsgManager<FileAssistant>", 1, this.jdField_a_of_type_JavaLangString + " Buddy2DiscTaskExcuter faild,文件不存在或已失效");
-      }
-      paramaqtc.a(aqsf.a(this.jdField_a_of_type_Long, true), false);
-      return;
+      new aqsi();
+      return aqsi.a(paramArrayOfaqlg);
     }
-    aqsf.a(this.jdField_a_of_type_Aqsf).a().a().a(paramString, paramInt, this.b, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Long, 106, new aqsk(this, paramString, paramaqtc));
+    return null;
+  }
+  
+  public void a(aqsi paramaqsi)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QQGameConfProcessor", 2, "onUpdate " + paramaqsi.toString());
+    }
+  }
+  
+  public Class<aqsi> clazz()
+  {
+    return aqsi.class;
+  }
+  
+  public boolean isAccountRelated()
+  {
+    return true;
+  }
+  
+  public boolean isNeedCompressed()
+  {
+    return true;
+  }
+  
+  public boolean isNeedStoreLargeFile()
+  {
+    return false;
+  }
+  
+  public int migrateOldVersion()
+  {
+    return 0;
+  }
+  
+  public void onReqFailed(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QQGameConfProcessor", 2, "onReqFailed " + paramInt);
+    }
+  }
+  
+  public void onReqNoReceive() {}
+  
+  public int type()
+  {
+    return 441;
   }
 }
 

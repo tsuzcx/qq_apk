@@ -1,113 +1,75 @@
+import android.content.Intent;
 import android.os.Bundle;
-import java.security.InvalidParameterException;
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.concurrent.ConcurrentHashMap;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.ProfileActivity;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.TroopManager;
+import com.tencent.mobileqq.data.Friends;
+import com.tencent.mobileqq.data.TroopInfo;
+import com.tencent.mobileqq.troop.activity.TroopAdminList;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class beho
+  implements View.OnClickListener
 {
-  final int jdField_a_of_type_Int;
-  private behr jdField_a_of_type_Behr = new behp(this);
-  final behs jdField_a_of_type_Behs;
-  final beht jdField_a_of_type_Beht;
-  final ConcurrentHashMap<Integer, Object> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap;
+  public beho(TroopAdminList paramTroopAdminList) {}
   
-  public beho(beht parambeht, int paramInt, behs parambehs)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Beht = parambeht;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Behs = parambehs;
-    int i = 0;
-    while (i < 32)
+    Object localObject1 = (behq)paramView.getTag();
+    if (localObject1 != null)
     {
-      int k = j;
-      if ((1 << i & paramInt) != 0) {
-        k = j + 1;
+      localObject1 = ((behq)localObject1).a;
+      if (!this.a.app.getCurrentAccountUin().equals(localObject1)) {
+        break label60;
       }
-      i += 1;
-      j = k;
+      localObject1 = new ProfileActivity.AllInOne((String)localObject1, 0);
     }
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap(j);
-  }
-  
-  public <T> T a(int paramInt)
-  {
-    if (paramInt >= 0) {}
     for (;;)
     {
-      Object localObject4;
-      try
+      ProfileActivity.b(this.a, (ProfileActivity.AllInOne)localObject1);
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      label60:
+      int i = this.a.getIntent().getIntExtra("t_s_f", -1);
+      Object localObject2 = ((anmw)this.a.app.getManager(51)).e((String)localObject1);
+      TroopInfo localTroopInfo = ((TroopManager)this.a.app.getManager(52)).b(this.a.c);
+      if ((localObject2 != null) && (((Friends)localObject2).isFriend()))
       {
-        if ((this.jdField_a_of_type_Int & paramInt) == 0) {
-          break label250;
-        }
-        localObject4 = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Integer.valueOf(paramInt));
-        Object localObject1 = localObject4;
-        if (localObject4 != null) {
-          break label136;
-        }
-        if (this.jdField_a_of_type_Behs == null) {
-          break label255;
-        }
-        localObject4 = this.jdField_a_of_type_Behs.a(paramInt);
-      }
-      finally {}
-      throw new InvalidParameterException("componentFlag:" + paramInt + " cannot create, please check!");
-      Object localObject3 = new beiq();
-      label136:
-      label250:
-      label255:
-      do
-      {
-        if ((localObject3 instanceof behq))
+        if (localTroopInfo != null)
         {
-          localObject4 = (behq)localObject3;
-          ((behq)localObject4).jdField_a_of_type_Behr = this.jdField_a_of_type_Behr;
-          ((behq)localObject4).b();
+          localObject1 = new ProfileActivity.AllInOne((String)localObject1, 20);
+          ((ProfileActivity.AllInOne)localObject1).d = this.a.d;
+          ((ProfileActivity.AllInOne)localObject1).c = this.a.c;
         }
-        this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(Integer.valueOf(paramInt), localObject3);
         for (;;)
         {
-          return localObject3;
-          localObject3 = new beih(this.jdField_a_of_type_Behr);
+          ((ProfileActivity.AllInOne)localObject1).h = ((Friends)localObject2).name;
+          ((ProfileActivity.AllInOne)localObject1).i = ((Friends)localObject2).remark;
           break;
-          localObject3 = new bejh();
-          break;
-          localObject3 = new beir();
-          break;
-          localObject3 = new beib(this.jdField_a_of_type_Behr.a());
-          break;
-          localObject3 = new beiy();
-          break;
-          localObject3 = new bejc(this.jdField_a_of_type_Behr.a());
-          break;
-          localObject3 = new beie();
-          break;
-          localObject3 = new beim();
-          break;
-          localObject3 = null;
+          localObject1 = new ProfileActivity.AllInOne((String)localObject1, 1);
         }
-        localObject3 = localObject4;
-      } while (localObject4 != null);
-      localObject3 = localObject4;
-      switch (paramInt)
-      {
       }
-    }
-  }
-  
-  public void a(int paramInt, Bundle paramBundle)
-  {
-    Bundle localBundle = paramBundle;
-    if (paramBundle == null) {
-      localBundle = new Bundle();
-    }
-    paramBundle = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.values().iterator();
-    while (paramBundle.hasNext())
-    {
-      Object localObject = paramBundle.next();
-      if ((localObject instanceof behq)) {
-        ((behq)localObject).a(paramInt, localBundle);
+      if (i == 1002)
+      {
+        localObject1 = new ProfileActivity.AllInOne((String)localObject1, 97);
+      }
+      else if (localTroopInfo != null)
+      {
+        localObject1 = new ProfileActivity.AllInOne((String)localObject1, 21);
+        ((ProfileActivity.AllInOne)localObject1).d = this.a.d;
+        ((ProfileActivity.AllInOne)localObject1).c = this.a.c;
+        ((ProfileActivity.AllInOne)localObject1).l = 12;
+      }
+      else
+      {
+        localObject1 = new ProfileActivity.AllInOne((String)localObject1, 23);
+        localObject2 = new Bundle();
+        ((Bundle)localObject2).putString("troop_code", this.a.d);
+        ((Bundle)localObject2).putString("troop_uin", this.a.c);
+        ((ProfileActivity.AllInOne)localObject1).b.putBundle("flc_extra_param", (Bundle)localObject2);
       }
     }
   }

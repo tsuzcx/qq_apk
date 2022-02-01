@@ -150,8 +150,14 @@ public class VideoPrefsUtil
     if (mPrefs == null) {
       mPrefs = PreferenceManager.getDefaultSharedPreferences(paramContext);
     }
-    mSoPrefs = AEModule.getContext().getSharedPreferences("puding_so", 0);
     mContext = new WeakReference(paramContext);
+    if (AEModule.getContext() != null) {
+      paramContext = AEModule.getContext();
+    }
+    if (paramContext == null) {
+      return;
+    }
+    mSoPrefs = paramContext.getSharedPreferences("puding_so", 0);
   }
   
   public static boolean isAgeSDKDownload()
@@ -269,7 +275,7 @@ public class VideoPrefsUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.openapi.util.VideoPrefsUtil
  * JD-Core Version:    0.7.0.1
  */

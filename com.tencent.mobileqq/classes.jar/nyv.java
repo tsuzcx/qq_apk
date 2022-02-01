@@ -1,20 +1,19 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyChannelActivity;
+import android.widget.ImageView;
+import com.tencent.biz.pubaccount.PublicAccountBrowser;
 
 public class nyv
-  implements View.OnClickListener
+  implements bkkn
 {
-  public nyv(ReadInJoyChannelActivity paramReadInJoyChannelActivity) {}
+  public nyv(PublicAccountBrowser paramPublicAccountBrowser) {}
   
-  public void onClick(View paramView)
+  public boolean a(int paramInt)
   {
-    ReadInJoyChannelActivity.a(this.a);
+    return (paramInt == 0) && (PublicAccountBrowser.a(this.a).getVisibility() == 0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     nyv
  * JD-Core Version:    0.7.0.1
  */

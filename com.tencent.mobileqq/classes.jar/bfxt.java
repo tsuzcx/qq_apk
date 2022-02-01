@@ -1,61 +1,23 @@
-import android.graphics.SurfaceTexture;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.troop.widget.TroopMoreDetailView;
+import com.tencent.mobileqq.troop.widget.TroopMoreDetailView.UpdateTroopMembersFaceTask;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class bfxt
-  implements bfyc
+public class bfxt
+  implements View.OnClickListener
 {
-  bfxt(bfxs parambfxs) {}
+  public bfxt(TroopMoreDetailView.UpdateTroopMembersFaceTask paramUpdateTroopMembersFaceTask, TroopMoreDetailView paramTroopMoreDetailView) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    wxe.b("DefaultMediaPlayer", "decoder -> onDecodeStart");
-  }
-  
-  public void a(int paramInt, Throwable paramThrowable)
-  {
-    wxe.d("DefaultMediaPlayer", "decoder -> onDecodeError :%d , %s", new Object[] { Integer.valueOf(paramInt), paramThrowable });
-  }
-  
-  public void a(long paramLong)
-  {
-    if (bfxs.a(this.a) == 0)
-    {
-      bfxu.a(this.a.hashCode(), "[Player] on video decode first frame");
-      bfxs.a(this.a, 1);
-    }
-  }
-  
-  public void a(SurfaceTexture paramSurfaceTexture)
-  {
-    bfxs.a(this.a, paramSurfaceTexture);
-  }
-  
-  public void b()
-  {
-    wxe.d("DefaultMediaPlayer", "decoder -> onDecodeFinish");
-    bfxs.a(this.a);
-  }
-  
-  public void b(long paramLong)
-  {
-    wxe.d("DefaultMediaPlayer", "decoder -> onDecodeSeekTo :%d", new Object[] { Long.valueOf(paramLong) });
-  }
-  
-  public void c()
-  {
-    wxe.d("DefaultMediaPlayer", "decoder -> onDecodeCancel");
-    bfxs.a(this.a);
-  }
-  
-  public void d()
-  {
-    wxe.d("DefaultMediaPlayer", "decoder -> onDecodeRepeat");
-    bfxs.a(this.a);
-    bfxs.b(this.a);
+    this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopMoreDetailView.c();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bfxt
  * JD-Core Version:    0.7.0.1
  */

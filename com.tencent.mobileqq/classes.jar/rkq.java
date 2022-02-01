@@ -1,44 +1,106 @@
-import android.os.Handler;
-import android.os.Message;
+import android.content.Context;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.LinearLayout;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyHeadImageView;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyNickNameTextView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.List;
 
-class rkq
-  extends Handler
+public class rkq
+  extends BaseAdapter
+  implements View.OnClickListener
 {
-  rkq(rkp paramrkp) {}
+  private Context jdField_a_of_type_AndroidContentContext;
+  private List<Long> jdField_a_of_type_JavaUtilList;
   
-  public void handleMessage(Message paramMessage)
+  public rkq(Context paramContext, List<Long> paramList)
   {
-    switch (paramMessage.what)
-    {
-    default: 
-    case 100: 
-    case 101: 
-    case 102: 
-      do
-      {
-        return;
-        rkp.a(this.a);
-        return;
-        this.a.k();
-        return;
-        rkp.b(this.a);
-        sendEmptyMessageDelayed(102, 1000L);
-      } while (rkp.a(this.a) != 1);
-      rkp.c(this.a);
-      return;
-    case 103: 
-      rkp.a(this.a, 3);
-      return;
-    case 104: 
-      rkp.d(this.a);
-      return;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_JavaUtilList = paramList;
+  }
+  
+  public int getCount()
+  {
+    if (this.jdField_a_of_type_JavaUtilList != null) {
+      return this.jdField_a_of_type_JavaUtilList.size();
     }
-    rkp.e(this.a);
+    return 0;
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    return null;
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    Object localObject;
+    if ((this.jdField_a_of_type_JavaUtilList == null) || (this.jdField_a_of_type_JavaUtilList.size() <= paramInt))
+    {
+      localObject = null;
+      EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
+      return localObject;
+    }
+    if (paramView == null)
+    {
+      paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131560233, paramViewGroup, false);
+      localObject = new rkr();
+      ((rkr)localObject).jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131376798));
+      ((rkr)localObject).jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyHeadImageView = ((ReadInJoyHeadImageView)paramView.findViewById(2131369143));
+      ((rkr)localObject).jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyNickNameTextView = ((ReadInJoyNickNameTextView)paramView.findViewById(2131379786));
+      paramView.setTag(localObject);
+    }
+    for (;;)
+    {
+      if (localObject != null)
+      {
+        long l = ((Long)this.jdField_a_of_type_JavaUtilList.get(paramInt)).longValue();
+        ((rkr)localObject).jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyHeadImageView.setHeadImgByUin(l);
+        ((rkr)localObject).jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyNickNameTextView.setNickNameByUin(l);
+        ((rkr)localObject).jdField_a_of_type_AndroidWidgetLinearLayout.setTag(2131376062, Integer.valueOf(paramInt));
+        ((rkr)localObject).jdField_a_of_type_AndroidWidgetLinearLayout.setOnClickListener(this);
+      }
+      localObject = paramView;
+      break;
+      if ((paramView.getTag() instanceof rkr)) {
+        localObject = (rkr)paramView.getTag();
+      } else {
+        localObject = null;
+      }
+    }
+  }
+  
+  public void onClick(View paramView)
+  {
+    switch (paramView.getId())
+    {
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      if (paramView.getTag(2131376062) != null)
+      {
+        int i = ((Integer)paramView.getTag(2131376062)).intValue();
+        if ((this.jdField_a_of_type_JavaUtilList != null) && (this.jdField_a_of_type_JavaUtilList.size() > i)) {
+          paa.a(String.valueOf(this.jdField_a_of_type_JavaUtilList.get(i)), this.jdField_a_of_type_AndroidContentContext);
+        }
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     rkq
  * JD-Core Version:    0.7.0.1
  */

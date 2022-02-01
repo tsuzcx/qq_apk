@@ -1,13 +1,24 @@
-import com.tencent.mobileqq.activity.ChatSettingForTroop;
+import com.tencent.ad.tangram.statistics.AdReporterForAnalysis;
 
 public class acqa
-  implements awrr
+  implements acqj
 {
-  public acqa(ChatSettingForTroop paramChatSettingForTroop) {}
-  
-  public void a(String paramString)
+  public boolean a(acpp paramacpp, String paramString, String... paramVarArgs)
   {
-    azqs.b(this.a.app, "grp_set", "", "", "grp_data", "grp_set_copy", 0, 0, paramString, "", "", "");
+    Object localObject = null;
+    aanz localaanz = aanz.a();
+    localaanz.a();
+    localaanz.j(new acqb(this, paramacpp, paramString, paramVarArgs, localaanz));
+    if (paramacpp != null) {}
+    for (paramString = paramacpp.a();; paramString = null)
+    {
+      paramVarArgs = localObject;
+      if (paramacpp != null) {
+        paramVarArgs = paramacpp.a();
+      }
+      AdReporterForAnalysis.reportForJSBridgeInvoked(paramString, false, "getUserInfo", paramVarArgs);
+      return true;
+    }
   }
 }
 

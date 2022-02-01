@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.extendfriend.pulltorefresh;
 
 import android.view.animation.Interpolator;
-import aqgs;
-import aqgw;
+import aslx;
+import asmb;
 
 final class PullToRefreshBase$SmoothScrollRunnable
   implements Runnable
@@ -10,19 +10,19 @@ final class PullToRefreshBase$SmoothScrollRunnable
   private final int jdField_a_of_type_Int;
   private final long jdField_a_of_type_Long;
   private final Interpolator jdField_a_of_type_AndroidViewAnimationInterpolator;
-  private aqgs jdField_a_of_type_Aqgs;
+  private aslx jdField_a_of_type_Aslx;
   private boolean jdField_a_of_type_Boolean = true;
   private final int jdField_b_of_type_Int;
   private long jdField_b_of_type_Long = -1L;
   private int c = -1;
   
-  public PullToRefreshBase$SmoothScrollRunnable(PullToRefreshBase paramPullToRefreshBase, int paramInt1, int paramInt2, long paramLong, aqgs paramaqgs)
+  public PullToRefreshBase$SmoothScrollRunnable(PullToRefreshBase paramPullToRefreshBase, int paramInt1, int paramInt2, long paramLong, aslx paramaslx)
   {
     this.jdField_b_of_type_Int = paramInt1;
     this.jdField_a_of_type_Int = paramInt2;
     this.jdField_a_of_type_AndroidViewAnimationInterpolator = PullToRefreshBase.a(paramPullToRefreshBase);
     this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_Aqgs = paramaqgs;
+    this.jdField_a_of_type_Aslx = paramaslx;
   }
   
   public void a()
@@ -39,10 +39,10 @@ final class PullToRefreshBase$SmoothScrollRunnable
       if ((!this.jdField_a_of_type_Boolean) || (this.jdField_a_of_type_Int == this.c)) {
         break label128;
       }
-      aqgw.a(this.this$0, this);
+      asmb.a(this.this$0, this);
     }
     label128:
-    while (this.jdField_a_of_type_Aqgs == null)
+    while (this.jdField_a_of_type_Aslx == null)
     {
       return;
       long l = Math.max(Math.min((System.currentTimeMillis() - this.jdField_b_of_type_Long) * 1000L / this.jdField_a_of_type_Long, 1000L), 0L);
@@ -52,12 +52,12 @@ final class PullToRefreshBase$SmoothScrollRunnable
       this.this$0.a(this.c);
       break;
     }
-    this.jdField_a_of_type_Aqgs.a();
+    this.jdField_a_of_type_Aslx.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.extendfriend.pulltorefresh.PullToRefreshBase.SmoothScrollRunnable
  * JD-Core Version:    0.7.0.1
  */

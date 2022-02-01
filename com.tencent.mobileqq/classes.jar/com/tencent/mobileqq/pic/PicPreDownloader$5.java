@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.pic;
 
-import awjd;
-import awjl;
+import ayxp;
+import ayxx;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Iterator;
 import java.util.List;
@@ -19,7 +19,7 @@ class PicPreDownloader$5
     {
       int j;
       int i;
-      awjl localawjl;
+      ayxx localayxx;
       synchronized (this.this$0.jdField_a_of_type_JavaUtilList)
       {
         Iterator localIterator = this.this$0.jdField_a_of_type_JavaUtilList.iterator();
@@ -28,27 +28,27 @@ class PicPreDownloader$5
         if (!localIterator.hasNext()) {
           break label310;
         }
-        localawjl = (awjl)localIterator.next();
-        switch (localawjl.f)
+        localayxx = (ayxx)localIterator.next();
+        switch (localayxx.f)
         {
         case 4: 
           k += 1;
-          localawjl.e = localawjl.f;
-          this.this$0.jdField_a_of_type_JavaUtilMap.put(localawjl.a.g, Integer.valueOf(localawjl.e));
-          this.this$0.d.add(0, localawjl);
-          localawjl.e = localawjl.f;
-          this.this$0.jdField_a_of_type_JavaUtilMap.put(localawjl.a.g, Integer.valueOf(localawjl.e));
+          localayxx.e = localayxx.f;
+          this.this$0.jdField_a_of_type_JavaUtilMap.put(localayxx.a.g, Integer.valueOf(localayxx.e));
+          this.this$0.d.add(0, localayxx);
+          localayxx.e = localayxx.f;
+          this.this$0.jdField_a_of_type_JavaUtilMap.put(localayxx.a.g, Integer.valueOf(localayxx.e));
         }
       }
       i += 1;
-      localawjl.e = localawjl.f;
-      this.this$0.jdField_a_of_type_JavaUtilMap.put(localawjl.a.g, Integer.valueOf(localawjl.e));
-      this.this$0.b.add(0, localawjl);
+      localayxx.e = localayxx.f;
+      this.this$0.jdField_a_of_type_JavaUtilMap.put(localayxx.a.g, Integer.valueOf(localayxx.e));
+      this.this$0.b.add(0, localayxx);
       continue;
       j += 1;
-      localawjl.e = localawjl.f;
-      this.this$0.jdField_a_of_type_JavaUtilMap.put(localawjl.a.g, Integer.valueOf(localawjl.e));
-      this.this$0.c.add(0, localawjl);
+      localayxx.e = localayxx.f;
+      this.this$0.jdField_a_of_type_JavaUtilMap.put(localayxx.a.g, Integer.valueOf(localayxx.e));
+      this.this$0.c.add(0, localayxx);
       continue;
       label310:
       this.this$0.jdField_a_of_type_JavaUtilList.clear();
@@ -61,7 +61,7 @@ class PicPreDownloader$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.pic.PicPreDownloader.5
  * JD-Core Version:    0.7.0.1
  */

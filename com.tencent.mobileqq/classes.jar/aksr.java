@@ -1,52 +1,42 @@
-public class aksr
+import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCConnection;
+import eipc.EIPClientConnectListener;
+
+class aksr
+  implements EIPClientConnectListener
 {
-  public float a;
-  public String a;
-  public float b;
-  public String b;
-  public float c;
-  public float d;
-  public float e;
-  public float f;
-  public float g;
-  public float h;
-  public float i;
-  public float j;
-  public float k;
-  public float l;
+  aksr(aksp paramaksp, long paramLong) {}
   
-  public aksr(String paramString1, String paramString2, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, float paramFloat5, float paramFloat6, float paramFloat7, float paramFloat8, float paramFloat9, float paramFloat10, float paramFloat11, float paramFloat12)
+  public void connectFailed()
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_a_of_type_Float = paramFloat1;
-    this.jdField_b_of_type_Float = paramFloat2;
-    this.c = paramFloat3;
-    this.d = paramFloat4;
-    this.e = paramFloat5;
-    this.f = paramFloat6;
-    this.g = paramFloat7;
-    this.h = paramFloat8;
-    this.i = paramFloat9;
-    this.j = paramFloat10;
-    this.k = paramFloat11;
-    this.l = paramFloat12;
-    this.jdField_b_of_type_JavaLangString = paramString2;
+    aksp.a(this.jdField_a_of_type_Aksp, false);
+    aksp.b(this.jdField_a_of_type_Aksp, false);
+    synchronized (aksp.a(this.jdField_a_of_type_Aksp))
+    {
+      aksp.a(this.jdField_a_of_type_Aksp).notifyAll();
+      if (QLog.isColorLevel()) {
+        QLog.d("QWalletIPCConnector", 2, "connectFailed:" + aksp.a(this.jdField_a_of_type_Aksp));
+      }
+      return;
+    }
   }
   
-  public void a(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, float paramFloat5, float paramFloat6, float paramFloat7, float paramFloat8, float paramFloat9, float paramFloat10, float paramFloat11, float paramFloat12)
+  public void connectSuccess(EIPCConnection arg1)
   {
-    this.jdField_a_of_type_Float = paramFloat1;
-    this.jdField_b_of_type_Float = paramFloat2;
-    this.c = paramFloat3;
-    this.d = paramFloat4;
-    this.e = paramFloat5;
-    this.f = paramFloat6;
-    this.g = paramFloat7;
-    this.h = paramFloat8;
-    this.i = paramFloat9;
-    this.j = paramFloat10;
-    this.k = paramFloat11;
-    this.l = paramFloat12;
+    long l = System.currentTimeMillis();
+    if (??? != null) {
+      aksp.a(this.jdField_a_of_type_Aksp, ???.procName);
+    }
+    aksp.a(this.jdField_a_of_type_Aksp, true);
+    aksp.b(this.jdField_a_of_type_Aksp, false);
+    synchronized (aksp.a(this.jdField_a_of_type_Aksp))
+    {
+      aksp.a(this.jdField_a_of_type_Aksp).notifyAll();
+      if (QLog.isColorLevel()) {
+        QLog.d("QWalletIPCConnector", 2, "connectSuccess:" + aksp.a(this.jdField_a_of_type_Aksp) + "|" + (l - this.jdField_a_of_type_Long));
+      }
+      return;
+    }
   }
 }
 

@@ -18,7 +18,7 @@ public final class oidb_0x8e6$VoteInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     tencent.im.oidb.oidb_0x8e6.oidb_0x8e6.VoteInfo
  * JD-Core Version:    0.7.0.1
  */

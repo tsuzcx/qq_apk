@@ -1,62 +1,201 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.aio.item.StructingMsgItemBuilder;
-import com.tencent.mobileqq.mp.mobileqq_mp.RetInfo;
-import com.tencent.mobileqq.mp.mobileqq_mp.SubscribeResponse;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import mqq.observer.BusinessObserver;
+import android.annotation.TargetApi;
+import android.app.Activity;
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory.Options;
+import android.util.DisplayMetrics;
+import android.view.animation.AlphaAnimation;
+import android.view.animation.Animation;
+import android.widget.FrameLayout.LayoutParams;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.aio.anim.friendship.impl.BoatAnimDirector.1;
+import com.tencent.mobileqq.activity.aio.anim.friendship.impl.BoatAnimDirector.2;
+import com.tencent.mobileqq.activity.aio.anim.friendship.impl.base.FriendShipLayout;
+import com.tencent.mobileqq.activity.aio.anim.friendship.impl.boat.FriendShipWaveView;
+import com.tencent.qphone.base.util.QLog;
 
-class agco
-  implements BusinessObserver
+public class agco
+  extends agcz
 {
-  agco(agcn paramagcn, String paramString) {}
+  Context jdField_a_of_type_AndroidContentContext;
+  Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
+  public ImageView a;
+  private bdfr jdField_a_of_type_Bdfr = new agcp(this);
+  FriendShipWaveView jdField_a_of_type_ComTencentMobileqqActivityAioAnimFriendshipImplBoatFriendShipWaveView;
+  String jdField_a_of_type_JavaLangString = "aio_ship_ship.png";
+  boolean jdField_a_of_type_Boolean = false;
+  Bitmap jdField_b_of_type_AndroidGraphicsBitmap;
+  String jdField_b_of_type_JavaLangString = "aio_ship_banner.png";
+  boolean jdField_b_of_type_Boolean = false;
+  Bitmap jdField_c_of_type_AndroidGraphicsBitmap;
+  String jdField_c_of_type_JavaLangString = "aio_ship_blink.png";
+  Bitmap jdField_d_of_type_AndroidGraphicsBitmap;
+  String jdField_d_of_type_JavaLangString = "aio_ship_close.png";
+  Bitmap jdField_e_of_type_AndroidGraphicsBitmap;
+  String jdField_e_of_type_JavaLangString = "aio_ship_star1.png";
+  Bitmap jdField_f_of_type_AndroidGraphicsBitmap;
+  String jdField_f_of_type_JavaLangString = "aio_ship_star2.png";
+  Bitmap jdField_g_of_type_AndroidGraphicsBitmap;
+  String jdField_g_of_type_JavaLangString = "aio_ship_star3.png";
+  Bitmap jdField_h_of_type_AndroidGraphicsBitmap;
+  String jdField_h_of_type_JavaLangString = "aio_ship_star4.png";
+  Bitmap jdField_i_of_type_AndroidGraphicsBitmap;
+  String jdField_i_of_type_JavaLangString = "aio_ship_wave1.png";
+  Bitmap jdField_j_of_type_AndroidGraphicsBitmap;
+  String jdField_j_of_type_JavaLangString = "aio_ship_wave2.png";
+  Bitmap jdField_k_of_type_AndroidGraphicsBitmap;
+  String jdField_k_of_type_JavaLangString = "aio_ship_wave3.png";
+  Bitmap jdField_l_of_type_AndroidGraphicsBitmap;
+  String jdField_l_of_type_JavaLangString = "aio_ship_wording.png";
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public agco(Activity paramActivity)
   {
-    if (paramBoolean) {}
+    super(paramActivity);
+    this.jdField_a_of_type_AndroidContentContext = paramActivity;
+  }
+  
+  private void b(int paramInt1, int paramInt2)
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimFriendshipImplBoatFriendShipWaveView != null)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimFriendshipImplBoatFriendShipWaveView.a(paramInt1, paramInt2, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Bdfr, this.jdField_a_of_type_AndroidGraphicsBitmap, this.jdField_b_of_type_AndroidGraphicsBitmap, this.jdField_c_of_type_AndroidGraphicsBitmap, this.jdField_d_of_type_AndroidGraphicsBitmap, this.jdField_e_of_type_AndroidGraphicsBitmap, this.jdField_f_of_type_AndroidGraphicsBitmap, this.jdField_g_of_type_AndroidGraphicsBitmap, this.jdField_h_of_type_AndroidGraphicsBitmap, this.jdField_i_of_type_AndroidGraphicsBitmap, this.jdField_j_of_type_AndroidGraphicsBitmap, this.jdField_k_of_type_AndroidGraphicsBitmap, this.jdField_l_of_type_AndroidGraphicsBitmap);
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimFriendshipImplBoatFriendShipWaveView.a();
+    }
+  }
+  
+  public int a()
+  {
+    return 1;
+  }
+  
+  public void a()
+  {
+    super.a();
+    if (!this.jdField_b_of_type_Boolean)
+    {
+      FriendShipLayout localFriendShipLayout = a();
+      if (localFriendShipLayout != null)
+      {
+        if (localFriendShipLayout.getChildCount() > 0) {
+          localFriendShipLayout.removeAllViews();
+        }
+        a(0);
+        this.jdField_a_of_type_AndroidWidgetImageView = new ImageView(this.jdField_a_of_type_AndroidContentContext);
+        this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimFriendshipImplBoatFriendShipWaveView = new FriendShipWaveView(this.jdField_a_of_type_AndroidContentContext, null);
+        FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(-1, -1);
+        localFriendShipLayout.addView(this.jdField_a_of_type_AndroidWidgetImageView, localLayoutParams);
+        localFriendShipLayout.addView(this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimFriendshipImplBoatFriendShipWaveView);
+        a(bclx.a, bclx.b);
+        this.jdField_b_of_type_Boolean = true;
+      }
+    }
+    bcst.b(null, "dc00898", "", "", "0X8007777", "0X8007777", 0, 0, "", "", "", "");
+  }
+  
+  public void a(int paramInt1, int paramInt2)
+  {
+    b(paramInt1, paramInt2);
+    if (this.jdField_a_of_type_AndroidWidgetImageView != null) {
+      this.jdField_a_of_type_AndroidWidgetImageView.postDelayed(new BoatAnimDirector.2(this), 1000L);
+    }
+  }
+  
+  @TargetApi(9)
+  public void a(agdf paramagdf)
+  {
+    String str = axav.b();
+    if (bgmg.a(str)) {}
     for (;;)
     {
-      int i;
       try
       {
-        paramBundle = paramBundle.getByteArray("data");
-        if (paramBundle != null)
+        BitmapFactory.Options localOptions = new BitmapFactory.Options();
+        localOptions.inScaled = true;
+        localOptions.inDensity = 320;
+        localOptions.inTargetDensity = this.jdField_a_of_type_AndroidContentContext.getResources().getDisplayMetrics().densityDpi;
+        this.jdField_a_of_type_AndroidGraphicsBitmap = bgmo.a(str + this.jdField_a_of_type_JavaLangString, localOptions);
+        this.jdField_b_of_type_AndroidGraphicsBitmap = bgmo.a(str + this.jdField_b_of_type_JavaLangString, localOptions);
+        this.jdField_c_of_type_AndroidGraphicsBitmap = bgmo.a(str + this.jdField_c_of_type_JavaLangString, localOptions);
+        this.jdField_d_of_type_AndroidGraphicsBitmap = bgmo.a(str + this.jdField_d_of_type_JavaLangString, localOptions);
+        this.jdField_e_of_type_AndroidGraphicsBitmap = bgmo.a(str + this.jdField_e_of_type_JavaLangString, localOptions);
+        this.jdField_f_of_type_AndroidGraphicsBitmap = bgmo.a(str + this.jdField_f_of_type_JavaLangString, localOptions);
+        this.jdField_g_of_type_AndroidGraphicsBitmap = bgmo.a(str + this.jdField_g_of_type_JavaLangString, localOptions);
+        this.jdField_h_of_type_AndroidGraphicsBitmap = bgmo.a(str + this.jdField_h_of_type_JavaLangString, localOptions);
+        this.jdField_i_of_type_AndroidGraphicsBitmap = bgmo.a(str + this.jdField_i_of_type_JavaLangString, localOptions);
+        this.jdField_j_of_type_AndroidGraphicsBitmap = bgmo.a(str + this.jdField_j_of_type_JavaLangString, localOptions);
+        this.jdField_k_of_type_AndroidGraphicsBitmap = bgmo.a(str + this.jdField_k_of_type_JavaLangString, localOptions);
+        this.jdField_l_of_type_AndroidGraphicsBitmap = bgmo.a(str + this.jdField_l_of_type_JavaLangString, localOptions);
+        if ((this.jdField_a_of_type_AndroidGraphicsBitmap != null) && (this.jdField_b_of_type_AndroidGraphicsBitmap != null) && (this.jdField_d_of_type_AndroidGraphicsBitmap != null) && (this.jdField_i_of_type_AndroidGraphicsBitmap != null) && (this.jdField_j_of_type_AndroidGraphicsBitmap != null) && (this.jdField_k_of_type_AndroidGraphicsBitmap != null))
         {
-          mobileqq_mp.SubscribeResponse localSubscribeResponse = new mobileqq_mp.SubscribeResponse();
-          localSubscribeResponse.mergeFrom(paramBundle);
-          paramInt = ((mobileqq_mp.RetInfo)localSubscribeResponse.ret_info.get()).ret_code.get();
-          if (paramInt == 0)
-          {
-            i = 1;
-            paramInt = 1;
+          this.jdField_a_of_type_Boolean = true;
+          if (QLog.isColorLevel()) {
+            QLog.d("FriendShipViewManager", 2, "checkImageRes isResOk=" + this.jdField_a_of_type_Boolean);
           }
+          super.a(paramagdf);
+          paramagdf.a(this.jdField_a_of_type_Boolean);
+          return;
         }
-      }
-      catch (Exception paramBundle)
-      {
-        paramInt = 0;
-      }
-      try
-      {
-        StructingMsgItemBuilder.a(this.jdField_a_of_type_Agcn.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder, this.jdField_a_of_type_Agcn.jdField_a_of_type_AndroidAppActivity);
-        azqs.b(this.jdField_a_of_type_Agcn.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder.a, "dc00899", "Pb_account_lifeservice", "", "0X8006513", "0X8006513", 0, 0, "" + paramInt, "" + this.jdField_a_of_type_JavaLangString, "", "");
-        return;
-      }
-      catch (Exception paramBundle)
-      {
-        for (;;)
-        {
-          paramInt = i;
+        if (!QLog.isColorLevel()) {
+          continue;
         }
+        QLog.d("FriendShipViewManager", 2, "checkImageRes bitmap is null");
+        continue;
       }
-      StructingMsgItemBuilder.b(this.jdField_a_of_type_Agcn.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder, this.jdField_a_of_type_Agcn.jdField_a_of_type_AndroidAppActivity);
-      break label236;
-      StructingMsgItemBuilder.b(this.jdField_a_of_type_Agcn.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder, this.jdField_a_of_type_Agcn.jdField_a_of_type_AndroidAppActivity);
-      break label236;
-      StructingMsgItemBuilder.b(this.jdField_a_of_type_Agcn.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder, this.jdField_a_of_type_Agcn.jdField_a_of_type_AndroidAppActivity);
-      continue;
-      StructingMsgItemBuilder.b(this.jdField_a_of_type_Agcn.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder, this.jdField_a_of_type_Agcn.jdField_a_of_type_AndroidAppActivity);
-      label236:
-      paramInt = 0;
+      catch (Exception localException)
+      {
+        this.jdField_a_of_type_Boolean = false;
+        QLog.e("FriendShipViewManager", 4, localException, new Object[0]);
+        continue;
+      }
+      catch (OutOfMemoryError localOutOfMemoryError)
+      {
+        QLog.d("FriendShipViewManager", 2, "checkImageRes bitmap failed");
+        continue;
+      }
+      this.jdField_a_of_type_Boolean = false;
+    }
+  }
+  
+  public void b()
+  {
+    this.jdField_b_of_type_Boolean = false;
+    Object localObject;
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimFriendshipImplBoatFriendShipWaveView != null)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimFriendshipImplBoatFriendShipWaveView.i();
+      localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimFriendshipImplBoatFriendShipWaveView;
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimFriendshipImplBoatFriendShipWaveView.postDelayed(new BoatAnimDirector.1(this, (FriendShipWaveView)localObject), 300L);
+    }
+    if (this.jdField_a_of_type_AndroidWidgetImageView != null)
+    {
+      localObject = new AlphaAnimation(1.0F, 0.0F);
+      ((AlphaAnimation)localObject).setDuration(300L);
+      this.jdField_a_of_type_AndroidWidgetImageView.startAnimation((Animation)localObject);
+    }
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimFriendshipImplBoatFriendShipWaveView = null;
+    this.jdField_a_of_type_AndroidWidgetImageView = null;
+    super.b();
+  }
+  
+  public void c()
+  {
+    if (this.jdField_b_of_type_Boolean) {
+      a(4);
+    }
+  }
+  
+  public void d()
+  {
+    if (this.jdField_b_of_type_Boolean) {
+      a(0);
+    }
+  }
+  
+  public void e()
+  {
+    if (this.jdField_b_of_type_Boolean) {
+      b();
     }
   }
 }

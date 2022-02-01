@@ -1,32 +1,63 @@
-import android.content.Context;
-import android.support.annotation.NonNull;
-import android.view.ViewGroup;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.pb.PBEnumField;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.pb.PBInt64Field;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import cooperation.weiyun.channel.pb.WeiyunPB.MsgHead;
+import java.util.concurrent.atomic.AtomicInteger;
+import mqq.app.AppRuntime;
 
-public class bmyp
-  extends bmyl
+final class bmyp
 {
-  public String c;
+  private static final AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(0);
+  private final WeiyunPB.MsgHead jdField_a_of_type_CooperationWeiyunChannelPbWeiyunPB$MsgHead;
+  private final byte[] jdField_a_of_type_ArrayOfByte;
   
-  public bmyp(int paramInt1, String paramString, int paramInt2)
+  bmyp(int paramInt, byte[] paramArrayOfByte)
   {
-    super(paramInt1, paramString, paramInt2);
+    this.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
+    this.jdField_a_of_type_CooperationWeiyunChannelPbWeiyunPB$MsgHead = a(paramInt);
   }
   
-  @NonNull
-  public bmym a(@NonNull Context paramContext, ViewGroup paramViewGroup)
+  bmyp(WeiyunPB.MsgHead paramMsgHead, byte[] paramArrayOfByte)
   {
-    return new bmyr(this, paramContext, paramViewGroup, null);
+    this.jdField_a_of_type_CooperationWeiyunChannelPbWeiyunPB$MsgHead = paramMsgHead;
+    this.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
   }
   
-  @NonNull
-  public Class<? extends bmym> a()
+  private WeiyunPB.MsgHead a(int paramInt)
   {
-    return bmyr.class;
+    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
+    WeiyunPB.MsgHead localMsgHead = new WeiyunPB.MsgHead();
+    localMsgHead.uin.set(localAppRuntime.getLongAccountUin());
+    localMsgHead.seq.set(a());
+    localMsgHead.type.set(1);
+    localMsgHead.cmd.set(paramInt);
+    localMsgHead.emulator_flag.set(0);
+    localMsgHead.appid.set(31532);
+    localMsgHead.encrypt.set(0);
+    localMsgHead.zip_flag.set(0);
+    localMsgHead.version.set(bnao.c());
+    localMsgHead.fix_version.set(bnao.d());
+    localMsgHead.nettype.set(nmd.a(localAppRuntime.getApplication()));
+    localMsgHead.major_version.set(bnao.a());
+    localMsgHead.minor_version.set(bnao.b());
+    return localMsgHead;
   }
   
-  public boolean a()
+  public int a()
   {
-    return true;
+    return jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.getAndIncrement();
+  }
+  
+  public WeiyunPB.MsgHead a()
+  {
+    return this.jdField_a_of_type_CooperationWeiyunChannelPbWeiyunPB$MsgHead;
+  }
+  
+  public byte[] a()
+  {
+    return this.jdField_a_of_type_ArrayOfByte;
   }
 }
 

@@ -1,13 +1,13 @@
 package com.tencent.biz.pubaccount.readinjoy.model;
 
 import com.tencent.qphone.base.util.QLog;
-import oxb;
-import pfg;
+import pmk;
+import pwl;
 
 public class ChannelCoverInfoModule$8
   implements Runnable
 {
-  public ChannelCoverInfoModule$8(pfg parampfg, boolean paramBoolean) {}
+  public ChannelCoverInfoModule$8(pwl parampwl, boolean paramBoolean) {}
   
   public void run()
   {
@@ -16,7 +16,7 @@ public class ChannelCoverInfoModule$8
       i = 1;
     }
     QLog.d("ChannelCoverInfoModule", 2, new Object[] { "notifyHasMoreChannelRedPoint, success = ", Integer.valueOf(i) });
-    oxb.a().b(this.a);
+    pmk.a().b(this.a);
   }
 }
 

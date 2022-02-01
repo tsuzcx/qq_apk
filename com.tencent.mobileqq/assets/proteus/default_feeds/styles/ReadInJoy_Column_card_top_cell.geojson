@@ -1,0 +1,182 @@
+{
+    "view_id": "id_column_card_top_cell",
+    "view_type": "UIView",
+    "layout_type": "layout_relative",
+    "margin_bottom": "4",
+    "align_parent_left": "YES",
+    "align_parent_top": "YES",
+    "height": {
+        "type": "relative",
+        "value": "36"
+    },
+    "width": {
+        "type": "match_parent"
+    },
+    "attributes": {
+        "setAttatchInfo:": "$column_top_view_visibility"
+    },
+    "subviews": [
+        {
+            "view_id": "id_column_cover_image",
+            "view_type": "ReadInjoyAsynImageView",
+            "height": {
+                "type": "relative",
+                "value": "32"
+            },
+            "width": {
+                "type": "relative",
+                "value": "32"
+            },
+            "attributes": {
+                "setImageWithURLString:lineup:": [
+                    "$column_cover_image_url",
+                    "0"
+                ],
+                "setFrameString:": "-1",
+                "setCornerRadiusString:": "16"
+            }
+        },
+        {
+            "view_id": "id_column_logo_image",
+            "view_type": "ReadInjoyAsynImageView",
+            "margin_top": "19",
+            "margin_left": "19",
+            "default_visible": "YES",
+            "height": {
+                "type": "relative",
+                "value": "16"
+            },
+            "width": {
+                "type": "relative",
+                "value": "16"
+            },
+            "attributes": {
+                "setImageWithURLString:lineup:": [
+                    "$column_logo_image_url",
+                    "0"
+                ],
+                "setFrameString:": "-1",
+                "setCornerRadiusString:": "8"
+            }
+        },
+        {
+            "view_id": "id_column_name_container",
+            "view_type": "UIView",
+            "layout_type": "layout_relative",
+            "default_visible": "YES",
+            "right_of_view": "id_column_cover_image",
+            "margin_left": "8",
+            "height": {
+                "type": "relative",
+                "value": "32"
+            },
+            "width": {
+                "type": "relative",
+                "value": "311"
+            },
+            "subviews": [
+                {
+                    "view_id": "id_column_name_view",
+                    "view_type": "UIView",
+                    "layout_type": "layout_relative",
+                    "align_parent_center_vertical": "YES",
+                    "default_visible": "YES",
+                    "height": {
+                        "type": "wrap_content"
+                    },
+                    "width": {
+                        "type": "wrap_content"
+                    },
+                    "subviews": [
+                        {
+                            "view_id": "id_column_name_label",
+                            "view_type": "UILabel",
+                            "align_parent_left": "YES",
+                            "align_parent_right": "YES",
+                            "align_parent_top": "YES",
+                            "height": {
+                                "type": "wrap_content"
+                            },
+                            "width": {
+                                "type": "wrap_content"
+                            },
+                            "attributes": {
+                                "setText:": "$column_info_name_text",
+                                "setTextColorString:": "#242424",
+                                "setBoldFontSizeString:": "16",
+                                "setNumberOfLinesString:": "1",
+                                "setMaxWidth:type:": [
+                                    "253",
+                                    "relative"
+                                ]
+                            }
+                        },
+                        {
+                            "view_id": "id_column_subscription_count",
+                            "view_type": "UILabel",
+                            "align_parent_left": "YES",
+                            "below_of_view": "id_column_name_label",
+                            "margin_top": "2",
+                            "height": {
+                                "type": "wrap_content"
+                            },
+                            "width": {
+                                "type": "wrap_content"
+                            },
+                            "attributes": {
+                                "setText:": "$column_info_subscription_text",
+                                "setTextColorString:": "#8F8F8F",
+                                "setFontSizeString:": "11",
+                                "setNumberOfLinesString:": "1"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "view_id": "id_top_subscribe_view",
+                    "view_type": "UIView",
+                    "layout_type": "layout_relative",
+                    "height": {
+                        "type": "relative",
+                        "value": "23"
+                    },
+                    "width": {
+                        "type": "relative",
+                        "value": "50"
+                    },
+                    "align_parent_right": "YES",
+                    "align_parent_center_vertical": "YES",
+                    "event_type": "cmd_subscription_click",
+                    "default_visible": "YES",
+                    "attributes": {
+                        "setBackgroundColorString:": "$subscription_background_color",
+                        "setCornerRadiusString:": "12",
+                        "setBorderColorString:": "$subscription_border_color",
+                        "setBorderWidthString:": "$subscription_border_width",
+                        "setClipsToBoundsString:": "1"
+                    },
+                    "subviews": [
+                        {
+                            "view_id": "id_top_subscribe_label",
+                            "view_type": "UILabel",
+                            "align_parent_center": "YES",
+                            "height": {
+                                "type": "match_parent"
+                            },
+                            "width": {
+                                "type": "match_parent"
+                            },
+                            "attributes": {
+                                "setText:": "$subscribe_title",
+                                "setFontSizeString:": "12",
+                                "setNumberOfLinesString:": "1",
+                                "setTextAlignmentString:": "1",
+                                "setTextColorString:": "$subscription_title_color"
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

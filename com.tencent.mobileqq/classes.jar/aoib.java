@@ -1,34 +1,50 @@
-import android.graphics.Bitmap;
+import android.content.Context;
 import android.view.View;
-import com.tencent.mobileqq.conditionsearch.SearchResultActivity;
-import com.tencent.widget.XListView;
+import android.view.View.OnClickListener;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class aoib
-  implements aybr
+class aoib
+  implements View.OnClickListener
 {
-  public aoib(SearchResultActivity paramSearchResultActivity) {}
+  aoib(aohz paramaohz) {}
   
-  public void a(int paramInt1, int paramInt2, Bitmap paramBitmap)
+  public void onClick(View paramView)
   {
-    if ((paramBitmap == null) || (paramInt2 == 201)) {}
-    for (;;)
+    try
     {
-      return;
-      if (this.a.jdField_a_of_type_Int == 0)
+      bcst.b(null, "dc00898", "", "", "0X8009ACC", "0X8009ACC", 0, 0, "", "", "", "");
+      if (aoht.a != null) {
+        aohz.a(this.a).startActivity(aoht.a);
+      }
+      for (;;)
       {
-        int i = this.a.jdField_a_of_type_ComTencentWidgetXListView.getChildCount();
-        paramInt2 = 0;
-        while (paramInt2 < i)
+        this.a.dismiss();
+        EventCollector.getInstance().onViewClicked(paramView);
+        return;
+        if (aohz.a(this.a) == null) {
+          break;
+        }
+        if (QLog.isColorLevel()) {
+          QLog.d(aohz.a(), 2, "init MsgNotifyPushDialog.initPushOpeNotifyConfig");
+        }
+        aoht.a(aohz.a(this.a));
+        aohz.a(this.a).startActivity(aoht.a);
+      }
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        if (QLog.isColorLevel())
         {
-          paramBitmap = this.a.jdField_a_of_type_ComTencentWidgetXListView.getChildAt(paramInt2).getTag();
-          if ((paramBitmap != null) && ((paramBitmap instanceof aoid)))
-          {
-            paramBitmap = (aoid)paramBitmap;
-            if (paramBitmap.jdField_a_of_type_Int == paramInt1) {
-              SearchResultActivity.a(this.a, paramBitmap, paramBitmap.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus);
-            }
+          QLog.d(aohz.a(), 2, "Start Activity Failed");
+          aohz.a(this.a).startActivity(bgnj.c(aohz.a(this.a)));
+          continue;
+          if (QLog.isColorLevel()) {
+            QLog.d(aohz.a(), 2, "mAppInterface=null, use default intent");
           }
-          paramInt2 += 1;
+          aohz.a(this.a).startActivity(bgnj.a(aohz.a(this.a)));
         }
       }
     }

@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.app;
 
 import android.os.Handler;
-import awgf;
-import awgg;
+import com.tencent.mobileqq.data.QQEntityManagerFactory;
 import com.tencent.mobileqq.data.TroopMemberInfo;
+import com.tencent.mobileqq.persistence.EntityManager;
 
 class TroopManager$9
   implements Runnable
@@ -12,22 +12,22 @@ class TroopManager$9
   
   public void run()
   {
-    awgf localawgf = this.this$0.a.getEntityManagerFactory().createEntityManager();
+    EntityManager localEntityManager = this.this$0.a.a().createEntityManager();
     if (this.jdField_a_of_type_ComTencentMobileqqDataTroopMemberInfo.getStatus() == 1000) {
-      localawgf.b(this.jdField_a_of_type_ComTencentMobileqqDataTroopMemberInfo);
+      localEntityManager.persistOrReplace(this.jdField_a_of_type_ComTencentMobileqqDataTroopMemberInfo);
     }
     for (;;)
     {
-      localawgf.a();
+      localEntityManager.close();
       this.jdField_a_of_type_AndroidOsHandler.post(new TroopManager.9.1(this));
       return;
-      localawgf.a(this.jdField_a_of_type_ComTencentMobileqqDataTroopMemberInfo);
+      localEntityManager.update(this.jdField_a_of_type_ComTencentMobileqqDataTroopMemberInfo);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.app.TroopManager.9
  * JD-Core Version:    0.7.0.1
  */

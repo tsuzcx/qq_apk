@@ -1,21 +1,19 @@
-import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
+import android.text.Editable;
+import android.text.TextWatcher;
 
 class arye
-  implements EIPCResultCallback
+  implements TextWatcher
 {
-  arye(aryd paramaryd) {}
+  arye(aryb paramaryb) {}
   
-  public void onCallback(EIPCResult paramEIPCResult)
+  public void afterTextChanged(Editable paramEditable)
   {
-    if (!paramEIPCResult.isSuccess())
-    {
-      QLog.d("QFlutter.launcher", 1, "install IPC fail");
-      arxy.b();
-      aryd.a(this.a, 1, true);
-    }
+    this.a.a(paramEditable.toString());
   }
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

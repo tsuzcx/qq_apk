@@ -1,62 +1,69 @@
-import android.view.LayoutInflater;
-import android.view.View;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import java.util.List;
+import com.tencent.qphone.base.util.QLog;
 
 public class ayqq
-  extends ayrj
 {
-  public ayqq(bdbb parambdbb)
+  private double jdField_a_of_type_Double = 0.0D;
+  private int jdField_a_of_type_Int;
+  private long jdField_a_of_type_Long;
+  private ayqr jdField_a_of_type_Ayqr;
+  private String jdField_a_of_type_JavaLangString;
+  private double jdField_b_of_type_Double = 0.0D;
+  private int jdField_b_of_type_Int;
+  
+  ayqq(String paramString, int paramInt)
   {
-    super(parambdbb);
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Int = paramInt;
+    a();
   }
   
-  protected ayqo<aynu, aywd> a(bdbb parambdbb)
+  void a()
   {
-    return new ayqr(parambdbb);
+    this.jdField_b_of_type_Int = 0;
+    this.jdField_a_of_type_Double = 0.0D;
+    this.jdField_b_of_type_Double = 0.0D;
   }
   
-  public void a(ayns paramayns, aywc paramaywc)
+  public void a(double paramDouble)
   {
-    Object localObject = (aynt)paramayns;
-    paramayns = ((aywf)paramaywc).a();
-    if (paramayns != null)
+    long l = System.currentTimeMillis();
+    if (this.jdField_b_of_type_Int < this.jdField_a_of_type_Int - 1)
     {
-      List localList = ((aynt)localObject).a();
-      if (localList != null)
-      {
-        paramayns.removeAllViews();
-        int k = Math.min(localList.size(), ((aynt)localObject).a());
-        int i = 0;
-        if (i < k)
-        {
-          localObject = (aynu)localList.get(i);
-          View localView = LayoutInflater.from(paramaywc.a().getContext()).inflate(2131562611, null);
-          aywg localaywg = new aywg(localView);
-          localView.setTag(2131379971, localObject);
-          localView.setTag(2131379976, localaywg);
-          localView.setTag(2131379972, Integer.valueOf(i));
-          localView.setTag(2131379970, Integer.valueOf(localList.size()));
-          localView.setTag(2131379973, this.a);
-          ayvp.a((aynu)localObject, k, i);
-          int m = ((aynu)localObject).a();
-          int n = ((aynu)localObject).b();
-          if ((localObject instanceof aynv)) {}
-          for (int j = ((aynv)localObject).r;; j = 0)
-          {
-            ayvp.a(m, n, localView, j);
-            paramayns.addView(localView);
-            this.a.a((ayns)localObject, localaywg);
-            i += 1;
-            break;
-          }
-        }
+      if (QLog.isColorLevel()) {
+        QLog.d("TimeSampler", 2, "[status][sampler] " + this.jdField_a_of_type_JavaLangString + " sample. count: " + this.jdField_b_of_type_Int + " value: " + paramDouble + " total: " + this.jdField_a_of_type_Double);
       }
+      this.jdField_a_of_type_Double += paramDouble;
+      this.jdField_b_of_type_Double = Math.max(this.jdField_b_of_type_Double, paramDouble);
+      this.jdField_b_of_type_Int += 1;
     }
-    if (paramaywc.b() != null) {
-      paramaywc.b().setVisibility(8);
+    for (;;)
+    {
+      this.jdField_a_of_type_Long = l;
+      return;
+      this.jdField_a_of_type_Double += paramDouble;
+      if (l - this.jdField_a_of_type_Long < 30L)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("TimeSampler", 2, "[status][sampler] " + this.jdField_a_of_type_JavaLangString + " sample. batch mode count: " + this.jdField_b_of_type_Int + " value: " + paramDouble + " total: " + this.jdField_a_of_type_Double);
+        }
+        this.jdField_b_of_type_Double = Math.max(this.jdField_b_of_type_Double, paramDouble);
+        this.jdField_b_of_type_Int += 1;
+        return;
+      }
+      double d = this.jdField_a_of_type_Double / (this.jdField_b_of_type_Int + 1);
+      if (QLog.isColorLevel()) {
+        QLog.d("TimeSampler", 2, "[status][sampler] " + this.jdField_a_of_type_JavaLangString + " sample. triggered count: " + this.jdField_b_of_type_Int + " value: " + paramDouble + " total: " + this.jdField_a_of_type_Double + " ave: " + d);
+      }
+      if (this.jdField_a_of_type_Ayqr != null) {
+        this.jdField_a_of_type_Ayqr.a(d, this.jdField_b_of_type_Double);
+      }
+      a();
     }
+  }
+  
+  void a(ayqr paramayqr)
+  {
+    this.jdField_a_of_type_Ayqr = paramayqr;
   }
 }
 

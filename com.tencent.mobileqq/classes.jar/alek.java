@@ -1,91 +1,53 @@
+import android.content.Context;
 import android.text.TextUtils;
-import com.tencent.mobileqq.apollo.ApolloTextureView;
-import com.tencent.mobileqq.apollo.barrage.BarrageView;
-import com.tencent.mobileqq.apollo.store.ApolloWebAvatarParam;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageForArkApp;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.qphone.base.util.BaseApplication;
 
-class alek
-  implements akrb
+public class alek
+  extends aleq
 {
-  private WeakReference<aleh> a;
-  
-  public alek(aleh paramaleh)
+  public alek(Context paramContext, String paramString)
   {
-    this.a = new WeakReference(paramaleh);
+    a(paramString);
   }
   
-  public void a(int paramInt1, int paramInt2, String paramString)
+  public Object a(int paramInt, bepr parambepr, Object paramObject, MessageRecord paramMessageRecord, QQAppInterface paramQQAppInterface)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ApolloViewController", 2, new Object[] { "mOtherSurfaceView onCompleteRender, roleName=", paramString });
+    paramQQAppInterface = null;
+    if ((paramMessageRecord instanceof MessageForArkApp)) {
+      paramQQAppInterface = appj.a((MessageForArkApp)paramMessageRecord);
     }
-    if (TextUtils.isEmpty(paramString)) {}
+    if ((paramObject instanceof alek))
+    {
+      paramObject = (alek)paramObject;
+      if (paramQQAppInterface != null) {
+        paramObject.a(paramQQAppInterface);
+      }
+      paramObject.jdField_a_of_type_Beps.a(parambepr.jdField_a_of_type_Beps);
+      return paramObject;
+    }
+    paramObject = BaseApplication.getContext();
+    if (paramQQAppInterface != null) {}
     for (;;)
     {
-      return;
-      if (this.a != null)
-      {
-        aleh localaleh = (aleh)this.a.get();
-        ApolloWebAvatarParam localApolloWebAvatarParam;
-        if (localaleh != null)
-        {
-          localApolloWebAvatarParam = aleh.a(localaleh);
-          if ((localApolloWebAvatarParam != null) && (paramString.equals(localApolloWebAvatarParam.apolloId)) && (localaleh.b != null))
-          {
-            aleh.b(localaleh);
-            aleh.a(localaleh).removeMessages(24);
-            localaleh.b.stopLoopDelayed(1000L);
-            if (!TextUtils.isEmpty(aleh.a(localaleh)))
-            {
-              if (!aleh.a(localaleh)) {
-                break label173;
-              }
-              if ((aleh.a(localaleh) == 1) && (localaleh.a != null)) {
-                localaleh.a.b();
-              }
-            }
-          }
-        }
-        while ((localaleh != null) && (localaleh.b != null))
-        {
-          return;
-          label173:
-          if (aleh.a(localaleh) == 1)
-          {
-            if (localaleh.a != null) {
-              localaleh.a.a(true);
-            }
-          }
-          else {
-            localaleh.b.getRenderImpl().a(1, localApolloWebAvatarParam.apolloId, "Bubble");
-          }
-        }
-      }
+      paramObject = new alek(paramObject, paramQQAppInterface);
+      paramObject.jdField_a_of_type_Beps = new beps(parambepr.jdField_a_of_type_Beps);
+      return paramObject;
+      paramQQAppInterface = "";
     }
   }
   
-  public void a(int paramInt, String paramString)
+  public void a(String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ApolloViewController", 2, new Object[] { "mOtherSurfaceView onStartRender, roleName=", paramString });
-    }
     if (TextUtils.isEmpty(paramString)) {}
-    aleh localaleh;
-    ApolloWebAvatarParam localApolloWebAvatarParam;
-    do
+    for (paramString = "";; paramString = '[' + paramString + ']')
     {
-      do
-      {
-        do
-        {
-          return;
-        } while (this.a == null);
-        localaleh = (aleh)this.a.get();
-      } while (localaleh == null);
-      localApolloWebAvatarParam = aleh.a(localaleh);
-    } while ((localApolloWebAvatarParam == null) || (!paramString.equals(localApolloWebAvatarParam.apolloId)));
-    aleh.a(localaleh);
+      this.jdField_a_of_type_JavaLangString = paramString;
+      this.b = this.jdField_a_of_type_JavaLangString;
+      return;
+    }
   }
 }
 

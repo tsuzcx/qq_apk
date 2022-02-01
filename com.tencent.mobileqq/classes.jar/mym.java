@@ -1,73 +1,100 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.os.Bundle;
-import com.tencent.biz.AuthorizeConfig.2;
-import com.tencent.biz.AuthorizeConfig.2.1.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.mp.mobileqq_mp.WebviewWhiteListResponse;
-import com.tencent.mobileqq.mp.mobileqq_mp.WebviewWhiteListResponse.RetInfo;
+import androidx.annotation.NonNull;
+import com.tencent.mobileqq.pb.PBEnumField;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.atomic.AtomicInteger;
-import mqq.observer.BusinessObserver;
-import mqq.os.MqqHandler;
+import com.tencent.util.Pair;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import trpc.qq_vgame.common.AvGameCommon.GameQuestionInfo;
+import trpc.qq_vgame.common.AvGameCommon.GuessPictureQuestionInfo;
+import trpc.qq_vgame.common.AvGameCommon.GuessPictureTipsInfo;
 
 public class mym
-  implements BusinessObserver
+  extends myl
 {
-  public mym(AuthorizeConfig.2 param2) {}
-  
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  protected myl a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AuthorizeConfig", 2, "onReceive whitelist:" + paramBoolean);
-    }
-    if (paramBoolean)
+    return new mym();
+  }
+  
+  public void a(AvGameCommon.GameQuestionInfo paramGameQuestionInfo)
+  {
+    if (paramGameQuestionInfo.type.get() == 2)
     {
-      paramBundle = paramBundle.getByteArray("data");
-      if (paramBundle != null)
+      if (paramGameQuestionInfo.picture.has())
       {
-        mobileqq_mp.WebviewWhiteListResponse localWebviewWhiteListResponse = new mobileqq_mp.WebviewWhiteListResponse();
-        try
+        Object localObject = (AvGameCommon.GuessPictureQuestionInfo)paramGameQuestionInfo.picture.get();
+        if (paramGameQuestionInfo.id.has())
         {
-          localWebviewWhiteListResponse.mergeFrom(paramBundle);
-          paramInt = localWebviewWhiteListResponse.ret_info.ret_code.get();
-          if (QLog.isColorLevel()) {
-            QLog.d("AuthorizeConfig", 2, "sso status code: " + String.valueOf(paramInt));
+          i = paramGameQuestionInfo.id.get();
+          this.jdField_a_of_type_Int = i;
+          myb localmyb = this.jdField_a_of_type_Myb;
+          if (!((AvGameCommon.GuessPictureQuestionInfo)localObject).url.has()) {
+            break label225;
           }
-          if (paramInt == 0)
-          {
-            ThreadManager.getSubThreadHandler().post(new AuthorizeConfig.2.1.1(this, localWebviewWhiteListResponse));
-            azqs.b(null, "P_CliOper", "Pb_account_lifeservice", "", "webview_whitelist", "update_success", 0, 1, 0, "", "", "", "");
-            return;
+          paramGameQuestionInfo = ((AvGameCommon.GuessPictureQuestionInfo)localObject).url.get();
+          label79:
+          localmyb.a(paramGameQuestionInfo, null, 0);
+          localmyb = this.b;
+          if (!((AvGameCommon.GuessPictureQuestionInfo)localObject).answer.has()) {
+            break label231;
           }
-          if (paramInt == 304)
-          {
-            this.a.this$0.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.set(2);
-            this.a.this$0.jdField_a_of_type_AndroidContentSharedPreferences.edit().putLong("lastUpdate", System.currentTimeMillis()).commit();
-            this.a.this$0.g();
-            this.a.this$0.i();
-            azqs.b(null, "P_CliOper", "Pb_account_lifeservice", "", "webview_whitelist", "update_not_modify", 0, 1, 0, "", "", "", "");
-            return;
+          paramGameQuestionInfo = ((AvGameCommon.GuessPictureQuestionInfo)localObject).answer.get();
+          label111:
+          localmyb.a(paramGameQuestionInfo, null, 0);
+          if (!((AvGameCommon.GuessPictureQuestionInfo)localObject).size.has()) {
+            break label237;
           }
         }
-        catch (Exception paramBundle)
+        label225:
+        label231:
+        label237:
+        for (int i = ((AvGameCommon.GuessPictureQuestionInfo)localObject).size.get();; i = this.c)
         {
-          if (QLog.isColorLevel()) {
-            QLog.d("AuthorizeConfig", 2, "update error: " + paramBundle);
+          this.c = i;
+          paramGameQuestionInfo = ((AvGameCommon.GuessPictureQuestionInfo)localObject).tip_list.get();
+          if (paramGameQuestionInfo == null) {
+            return;
           }
+          paramGameQuestionInfo = paramGameQuestionInfo.iterator();
+          while (paramGameQuestionInfo.hasNext())
+          {
+            localObject = (AvGameCommon.GuessPictureTipsInfo)paramGameQuestionInfo.next();
+            localObject = new Pair(Integer.valueOf(((AvGameCommon.GuessPictureTipsInfo)localObject).show_delay_ts.get()), ((AvGameCommon.GuessPictureTipsInfo)localObject).tips.get());
+            this.jdField_a_of_type_JavaUtilArrayList.add(localObject);
+          }
+          i = this.jdField_a_of_type_Int;
+          break;
+          paramGameQuestionInfo = "";
+          break label79;
+          paramGameQuestionInfo = "";
+          break label111;
         }
       }
     }
-    this.a.this$0.g();
-    this.a.this$0.i();
-    this.a.this$0.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.set(0);
-    azqs.b(null, "P_CliOper", "Pb_account_lifeservice", "", "webview_whitelist", "update_failed", 0, 1, 0, "", "", "", "");
+    else {
+      super.a(paramGameQuestionInfo);
+    }
+  }
+  
+  public int b()
+  {
+    return 2;
+  }
+  
+  @NonNull
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(c());
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     mym
  * JD-Core Version:    0.7.0.1
  */

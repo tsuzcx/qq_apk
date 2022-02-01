@@ -1,11 +1,20 @@
-class afef
-  implements benf
+import com.tencent.mobileqq.activity.ShortcutRouterActivity;
+
+public class afef
+  implements adsx
 {
-  afef(afee paramafee) {}
+  public afef(ShortcutRouterActivity paramShortcutRouterActivity) {}
   
   public void a()
   {
-    this.a.g();
+    this.a.finish();
+  }
+  
+  public void b() {}
+  
+  public void c()
+  {
+    this.a.finish();
   }
 }
 

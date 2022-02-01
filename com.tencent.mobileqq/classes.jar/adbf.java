@@ -1,15 +1,34 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.FriendProfileImageActivity;
+import org.json.JSONObject;
 
 public class adbf
-  implements DialogInterface.OnClickListener
 {
-  public adbf(FriendProfileImageActivity paramFriendProfileImageActivity, String paramString1, String paramString2) {}
+  public int a;
+  public String a;
+  public int b;
+  public String b;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public adbf(adbc paramadbc) {}
+  
+  public boolean a(JSONObject paramJSONObject)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageActivity.a(this.jdField_a_of_type_JavaLangString, this.b);
+    try
+    {
+      this.jdField_a_of_type_Int = Integer.parseInt(paramJSONObject.getString("param_index"));
+      this.jdField_b_of_type_Int = Integer.parseInt(paramJSONObject.getString("param_type"));
+      this.jdField_a_of_type_JavaLangString = paramJSONObject.getString("param_value1").trim();
+      this.jdField_b_of_type_JavaLangString = paramJSONObject.getString("param_value2").trim();
+      return true;
+    }
+    catch (Exception paramJSONObject)
+    {
+      adax.a("KingKongNativePatch", "Parse parameter error!");
+    }
+    return false;
+  }
+  
+  public String toString()
+  {
+    return "Index " + this.jdField_a_of_type_Int + ": " + this.jdField_b_of_type_Int + ", " + this.jdField_a_of_type_JavaLangString + ", " + this.jdField_b_of_type_JavaLangString;
   }
 }
 

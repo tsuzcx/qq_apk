@@ -2,7 +2,7 @@ package com.tencent.biz.pubaccount.readinjoy.fragment;
 
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.webprocess.WebProcessManager;
-import ors;
+import pha;
 
 class ReadInJoyDailyFragment$6
   implements Runnable
@@ -11,7 +11,7 @@ class ReadInJoyDailyFragment$6
   
   public void run()
   {
-    QQAppInterface localQQAppInterface = ors.a();
+    QQAppInterface localQQAppInterface = pha.a();
     if (localQQAppInterface == null) {
       return;
     }

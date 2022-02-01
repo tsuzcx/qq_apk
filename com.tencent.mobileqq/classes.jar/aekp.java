@@ -1,20 +1,36 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnKeyListener;
-import android.view.KeyEvent;
-import com.tencent.mobileqq.activity.UpgradeActivity;
+import android.content.res.Resources;
+import android.text.Editable;
+import android.text.TextUtils;
+import android.text.TextWatcher;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.HotChatAnnounceActivity;
 
 public class aekp
-  implements DialogInterface.OnKeyListener
+  implements TextWatcher
 {
-  public aekp(UpgradeActivity paramUpgradeActivity) {}
+  public aekp(HotChatAnnounceActivity paramHotChatAnnounceActivity) {}
   
-  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
+  public void afterTextChanged(Editable paramEditable)
   {
-    if (paramInt == 4) {
-      this.a.finish();
+    paramEditable = paramEditable.toString();
+    int i = 0;
+    if (!TextUtils.isEmpty(paramEditable)) {
+      i = paramEditable.getBytes().length / 3;
     }
-    return false;
+    if (i <= 40) {
+      this.a.a.setTextColor(this.a.getResources().getColor(2131167060));
+    }
+    for (;;)
+    {
+      this.a.a.setText("" + (40 - i));
+      return;
+      this.a.a.setTextColor(-65536);
+    }
   }
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

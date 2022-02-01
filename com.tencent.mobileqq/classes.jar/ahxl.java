@@ -1,21 +1,30 @@
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.QQPermissionCallback;
+import android.graphics.Bitmap;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.RedPacketInfo;
 
-class ahxl
-  implements QQPermissionCallback
+public class ahxl
+  extends ahxe
 {
-  ahxl(ahww paramahww) {}
+  public Bitmap a;
+  public String b;
   
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public ahxl(String paramString)
   {
-    QLog.i("SDKEmotionSettingManager", 1, "setEmotion denied sd grant");
-    bdgm.a(ahww.a(this.a), new ahxm(this));
+    super(paramString);
   }
   
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public void a(CustomizeStrategyFactory.RedPacketInfo paramRedPacketInfo)
   {
-    QLog.i("SDKEmotionSettingManager", 1, "setEmotion user grant");
-    ahww.a(this.a, ahww.b(this.a));
+    if (paramRedPacketInfo != null)
+    {
+      this.a = paramRedPacketInfo.icon;
+      this.b = paramRedPacketInfo.resPath;
+    }
+  }
+  
+  public boolean a()
+  {
+    return (this.a != null) && (!TextUtils.isEmpty(this.b));
   }
 }
 

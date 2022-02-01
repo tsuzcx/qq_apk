@@ -1,8 +1,12 @@
-import android.os.Bundle;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public abstract interface beex
+class beex
+  implements View.OnClickListener
 {
-  public abstract void a(Bundle paramBundle);
+  beex(beeu parambeeu) {}
+  
+  public void onClick(View paramView) {}
 }
 
 

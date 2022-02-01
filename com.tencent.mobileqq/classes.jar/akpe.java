@@ -1,31 +1,40 @@
-import android.view.View;
-import com.tencent.mobileqq.apollo.ApolloRender;
-import org.json.JSONObject;
+import Wallet.RspWalletConfig;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.qwallet.config.QWalletConfig;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
+import mqq.observer.BusinessObserver;
 
-public final class akpe
-  implements abwu
+class akpe
+  implements BusinessObserver
 {
-  public akpe(View paramView, abwx paramabwx, long paramLong, double paramDouble1, double paramDouble2, double paramDouble3, double paramDouble4, double paramDouble5, double paramDouble6) {}
+  akpe(akpd paramakpd, long paramLong, akpg paramakpg, WeakReference paramWeakReference) {}
   
-  public void onComplete() {}
-  
-  public void onFailure(int paramInt, String paramString)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    ApolloRender.locationEnd(this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_Abwx, this.jdField_a_of_type_Long, this.jdField_a_of_type_Double, this.b, this.c, this.d, this.e, this.f, "", paramInt, "location city failed");
+    if ((paramInt != 10) || (!paramBoolean)) {}
+    try
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("QWalletConfigManager", 2, "fail get rsp:" + this.jdField_a_of_type_Long);
+      }
+      akpd.a(this.jdField_a_of_type_Akpd, -1L);
+      return;
+    }
+    catch (Throwable paramBundle)
+    {
+      for (;;)
+      {
+        paramBundle.printStackTrace();
+      }
+    }
+    paramBundle = (RspWalletConfig)paramBundle.getSerializable("rsp");
+    if (QLog.isColorLevel()) {
+      QLog.d("QWalletConfigManager", 2, "RspWalletConfig|" + paramBundle);
+    }
+    akpd.a(this.jdField_a_of_type_Akpd).handleRsp(paramBundle, this.jdField_a_of_type_Long, this.jdField_a_of_type_Akpg, (akpd)this.jdField_a_of_type_JavaLangRefWeakReference.get());
+    akpd.a(this.jdField_a_of_type_Akpd, -1L);
   }
-  
-  public void onPermission(int paramInt)
-  {
-    ApolloRender.locationEnd(this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_Abwx, this.jdField_a_of_type_Long, this.jdField_a_of_type_Double, this.b, this.c, this.d, this.e, this.f, "", paramInt, "location city failed permission");
-  }
-  
-  public void onSuccess(JSONObject paramJSONObject)
-  {
-    paramJSONObject = paramJSONObject.optString("city", "");
-    ApolloRender.locationEnd(this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_Abwx, this.jdField_a_of_type_Long, this.jdField_a_of_type_Double, this.b, this.c, this.d, this.e, this.f, paramJSONObject, 0, "location success");
-  }
-  
-  public void onTrigger(JSONObject paramJSONObject) {}
 }
 
 

@@ -1,6 +1,7 @@
 package com.tencent.biz.subscribe.widget.commodity;
 
 import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StYouZanGood;
+import aalj;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
@@ -8,12 +9,11 @@ import com.tencent.mobileqq.pb.PBInt64Field;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 import org.json.JSONObject;
-import yom;
 
 public class CommodityBean
   implements Parcelable
 {
-  public static final Parcelable.Creator<CommodityBean> CREATOR = new yom();
+  public static final Parcelable.Creator<CommodityBean> CREATOR = new aalj();
   public String mAlias = "";
   public String mImg = "";
   public long mItemID;
@@ -87,7 +87,7 @@ public class CommodityBean
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.subscribe.widget.commodity.CommodityBean
  * JD-Core Version:    0.7.0.1
  */

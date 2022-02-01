@@ -1,41 +1,23 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
+import android.content.Context;
+import android.net.Uri;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 public class aokm
-  implements aojz
+  extends aojt
 {
-  public void a(QQAppInterface paramQQAppInterface, int paramInt, String paramString, aojy paramaojy)
+  public aojs a(QQAppInterface paramQQAppInterface, Context paramContext, String paramString, aojw paramaojw)
   {
-    if ((paramaojy != null) && ("smart_devices_discovery_config".equals(paramString))) {
-      if (QLog.isColorLevel()) {
-        QLog.d("OnSmartDeviceDiscoveryCfgListener", 2, "handleConfigForTag smartDeviceDiscoverCfg content = " + paramaojy.a);
-      }
-    }
-    try
-    {
-      paramInt = new JSONObject(paramaojy.a).optInt("smart_device_discovery_config_switch");
-      BaseApplication.getContext().getSharedPreferences(paramQQAppInterface.getCurrentAccountUin() + "smart_device_discovery_config_file", 0).edit().putInt("smart_device_discovery_config_switch", paramInt).apply();
-      return;
-    }
-    catch (JSONException paramString)
-    {
-      paramString.printStackTrace();
-      return;
-    }
-    catch (Exception paramString) {}finally
-    {
-      BaseApplication.getContext().getSharedPreferences(paramQQAppInterface.getCurrentAccountUin() + "smart_device_discovery_config_file", 0).edit().putInt("smart_device_discovery_config_switch", 1).apply();
-    }
+    paramaojw = Uri.parse(paramString).getLastPathSegment();
+    paramQQAppInterface = new aokl(paramQQAppInterface, paramContext);
+    paramQQAppInterface.a = paramString;
+    paramQQAppInterface.b = "com.qqfav";
+    paramQQAppInterface.c = paramaojw;
+    return paramQQAppInterface;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aokm
  * JD-Core Version:    0.7.0.1
  */

@@ -18,7 +18,7 @@ public class LzmaUtils
       i = j;
       if (QLog.isColorLevel())
       {
-        QLog.d("LzmaUtils", 2, "path is null.");
+        QLog.d("lzmaDecode", 2, "path is null.");
         i = j;
       }
     }
@@ -32,7 +32,7 @@ public class LzmaUtils
         }
         i = j;
       } while (!QLog.isColorLevel());
-      QLog.d("LzmaUtils", 2, "lzma File not exists.");
+      QLog.d("lzmaDecode", 2, "lzma File not exists.");
       return -1;
       File localFile = new File(paramString2);
       if ((localFile.exists()) || (localFile.mkdirs())) {
@@ -40,7 +40,7 @@ public class LzmaUtils
       }
       i = j;
     } while (!QLog.isColorLevel());
-    QLog.d("LzmaUtils", 2, "cannot create dirs.");
+    QLog.d("lzmaDecode", 2, "cannot create dirs.");
     return -1;
     for (;;)
     {
@@ -69,7 +69,7 @@ public class LzmaUtils
             if (!QLog.isColorLevel()) {
               break;
             }
-            QLog.d("LzmaUtils", 2, "decode file, result:" + j);
+            QLog.d("lzmaDecode", 2, "decode file, result:" + j);
             return j;
           }
           k += 1;
@@ -83,7 +83,7 @@ public class LzmaUtils
       }
       label207:
       if (QLog.isColorLevel()) {
-        QLog.d("LzmaUtils", 2, "Unsatisfied Link error: " + paramContext.toString());
+        QLog.d("lzmaDecode", 2, "Unsatisfied Link error: " + paramContext.toString());
       }
       j = i;
     }
@@ -93,7 +93,7 @@ public class LzmaUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.vas.LzmaUtils
  * JD-Core Version:    0.7.0.1
  */

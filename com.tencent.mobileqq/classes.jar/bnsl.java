@@ -1,133 +1,99 @@
-import android.opengl.GLES20;
+import android.view.View;
+import android.view.View.OnClickListener;
+import camera.XEFFECT_MATERIALS_GENERAL_DATASTRUCT.MetaMaterial;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Set;
 
-public class bnsl
+class bnsl
+  implements View.OnClickListener
 {
-  private int jdField_a_of_type_Int;
-  private boolean jdField_a_of_type_Boolean;
-  private int[] jdField_a_of_type_ArrayOfInt = new int[1];
-  private int jdField_b_of_type_Int;
-  private boolean jdField_b_of_type_Boolean;
-  private int[] jdField_b_of_type_ArrayOfInt = new int[1];
-  private int[] c = new int[1];
-  private int[] d = new int[1];
+  bnsl(bnsi parambnsi) {}
   
-  public static void a(String paramString)
+  public void onClick(View paramView)
   {
-    int i = GLES20.glGetError();
-    if (i != 0) {
-      b("glError: errFunc =" + paramString + "err=" + i);
-    }
-  }
-  
-  public static void b(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("PtvFilterOpenglFrameBuffer", 2, paramString);
-    }
-  }
-  
-  private void d()
-  {
-    if (this.jdField_a_of_type_Boolean)
-    {
-      GLES20.glGenRenderbuffers(1, this.c, 0);
-      a("glGenRenderbuffers:Depth");
-      GLES20.glBindRenderbuffer(36161, this.c[0]);
-      a("glBindRenderbuffer:Depth");
-      if (this.jdField_b_of_type_Boolean)
+    int j = 0;
+    bnsi.a(this.a, true);
+    Set localSet = bnsi.a(this.a).a();
+    QLog.d("AEGIFChunkPreviewFragment", 4, "save button click, selectedItems = " + localSet);
+    Object localObject = bnyl.a();
+    ((bnyl)localObject).j();
+    int i = 0;
+    while (i < bnsi.a(this.a).size()) {
+      if (!localSet.contains(Integer.valueOf(i)))
       {
-        GLES20.glRenderbufferStorage(36161, 35056, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
-        a("glRenderbufferStorage:Depth[packed]");
-        GLES20.glFramebufferRenderbuffer(36160, 36096, 36161, this.c[0]);
-        a("glFramebufferRenderbuffer:Depth[packed]");
-        GLES20.glFramebufferRenderbuffer(36160, 36128, 36161, this.c[0]);
-        a("glFramebufferRenderbuffer:Stencil[packed]");
-        this.d[0] = this.c[0];
+        i += 1;
+      }
+      else
+      {
+        if (((bnri)bnsi.a(this.a).get(i)).jdField_a_of_type_CameraXEFFECT_MATERIALS_GENERAL_DATASTRUCTMetaMaterial != null)
+        {
+          ((bnyl)localObject).k(((bnri)bnsi.a(this.a).get(i)).jdField_a_of_type_CameraXEFFECT_MATERIALS_GENERAL_DATASTRUCTMetaMaterial.id);
+          ((bnyl)localObject).i("none");
+          ((bnyl)localObject).j("none");
+        }
+        for (;;)
+        {
+          bnyh.a().af();
+          break;
+          if (!((bnri)bnsi.a(this.a).get(i)).jdField_a_of_type_JavaLangString.equals(""))
+          {
+            ((bnyl)localObject).k("none");
+            ((bnyl)localObject).i(((bnrl)bnrk.jdField_a_of_type_JavaUtilList.get(bnrk.jdField_a_of_type_ArrayOfInt[(i % bnrk.jdField_a_of_type_ArrayOfInt.length)])).jdField_a_of_type_JavaLangString);
+            ((bnyl)localObject).j(((bnri)bnsi.a(this.a).get(i)).jdField_a_of_type_JavaLangString);
+          }
+          else
+          {
+            ((bnyl)localObject).k("none");
+            ((bnyl)localObject).i("none");
+            ((bnyl)localObject).j("none");
+          }
+        }
       }
     }
-    else
+    bnsi.a(this.a).a(false);
+    bnua localbnua = bnsi.a(this.a).a();
+    QLog.d("AEGIFChunkPreviewFragment", 4, "save button click, pngDirs = " + localbnua.a + ", texts = " + localbnua.b);
+    ArrayList localArrayList1 = new ArrayList();
+    ArrayList localArrayList2 = new ArrayList();
+    ArrayList localArrayList3 = new ArrayList();
+    ArrayList localArrayList4 = new ArrayList();
+    i = j;
+    if (i < localbnua.a.size())
     {
-      return;
+      Integer localInteger = (Integer)localbnua.d.get(i);
+      if (localSet.contains(localInteger))
+      {
+        if ((i != 0) || (bnsi.a(this.a) == null)) {
+          break label599;
+        }
+        localArrayList1.add(bnsi.a(this.a).jdField_a_of_type_JavaLangString);
+        localArrayList2.add(bnsi.a(this.a).b);
+        localArrayList3.add(bnsi.a(this.a).c);
+      }
+      for (;;)
+      {
+        String str = bnsi.a(this.a, localInteger.intValue());
+        StringBuilder localStringBuilder = new StringBuilder().append("gif^");
+        localObject = str;
+        if (str == null) {
+          localObject = "";
+        }
+        localObject = (String)localObject;
+        localArrayList4.add(localObject);
+        bnzb.b("AEGIFChunkPreviewFragment", "save gif, index=" + i + ", widgetInfo=" + (String)localObject + ", originIndex=" + localInteger);
+        i += 1;
+        break;
+        label599:
+        localArrayList1.add(localbnua.a.get(i));
+        localArrayList2.add(localbnua.b.get(i));
+        localArrayList3.add(localbnua.c.get(i));
+      }
     }
-    GLES20.glRenderbufferStorage(36161, 33189, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
-    a("glRenderbufferStorage:Depth");
-    GLES20.glFramebufferRenderbuffer(36160, 36096, 36161, this.c[0]);
-    a("glFramebufferRenderbuffer:Depth");
-    this.d[0] = 0;
-  }
-  
-  public void a()
-  {
-    GLES20.glBindFramebuffer(36160, this.jdField_b_of_type_ArrayOfInt[0]);
-    a("glBindFramebuffer: [makeCurrentFrameBuffer]mFrameBufferId=" + this.jdField_b_of_type_ArrayOfInt[0]);
-    GLES20.glGetIntegerv(36006, this.jdField_a_of_type_ArrayOfInt, 0);
-    b("[makeCurrentFrameBuffer]GL_FRAMEBUFFER_BINDING: mStatusCheck=" + this.jdField_a_of_type_ArrayOfInt[0] + " mFrameBufferId[0]=" + this.jdField_b_of_type_ArrayOfInt[0]);
-  }
-  
-  public void a(int paramInt)
-  {
-    a();
-    GLES20.glFramebufferTexture2D(36160, 36064, 3553, paramInt, 0);
-    a("glFramebufferTexture2D");
-    paramInt = GLES20.glCheckFramebufferStatus(36160);
-    if (paramInt != 36053) {
-      a("glCheckFramebufferStatus: status=" + paramInt);
-    }
-  }
-  
-  public void a(int paramInt1, int paramInt2, int paramInt3)
-  {
-    this.jdField_a_of_type_Int = paramInt2;
-    this.jdField_b_of_type_Int = paramInt3;
-    GLES20.glActiveTexture(33987);
-    GLES20.glBindTexture(3553, paramInt1);
-    a("glBindTexture");
-    GLES20.glTexParameteri(3553, 10240, 9728);
-    a("glTexParameteri");
-    GLES20.glTexParameteri(3553, 10241, 9728);
-    a("glTexParameteri");
-    GLES20.glTexParameteri(3553, 10242, 33071);
-    a("glTexParameteri");
-    GLES20.glTexParameteri(3553, 10243, 33071);
-    a("glTexParameteri");
-    GLES20.glTexImage2D(3553, 0, 6408, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, 0, 6408, 5121, null);
-    a("glTexImage2D");
-    GLES20.glBindTexture(3553, 0);
-    a("glBindTexture");
-  }
-  
-  public boolean a(boolean paramBoolean1, boolean paramBoolean2)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean1;
-    this.jdField_b_of_type_Boolean = paramBoolean2;
-    a("glIsTexture");
-    GLES20.glGenFramebuffers(1, this.jdField_b_of_type_ArrayOfInt, 0);
-    a("glGenFramebuffers");
-    GLES20.glBindFramebuffer(36160, this.jdField_b_of_type_ArrayOfInt[0]);
-    a("glBindFramebuffer");
-    d();
-    return true;
-  }
-  
-  public void b()
-  {
-    GLES20.glBindFramebuffer(36160, 0);
-    a("glBindFramebuffer: [restoreToWindFrameBuffer]mFrameBufferId=0");
-    GLES20.glGetIntegerv(36006, this.jdField_a_of_type_ArrayOfInt, 0);
-    b("[restoreToWindFrameBuffer]GL_FRAMEBUFFER_BINDING: mStatusCheck=" + this.jdField_a_of_type_ArrayOfInt[0]);
-  }
-  
-  public void c()
-  {
-    b();
-    if (this.jdField_a_of_type_Boolean) {
-      GLES20.glDeleteRenderbuffers(1, this.c, 0);
-    }
-    GLES20.glDeleteFramebuffers(1, this.jdField_b_of_type_ArrayOfInt, 0);
-    this.jdField_b_of_type_ArrayOfInt[0] = 0;
-    this.c[0] = 0;
-    this.d[0] = 0;
+    bnsi.a(this.a, localArrayList1, localArrayList2, localArrayList3, localArrayList4);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

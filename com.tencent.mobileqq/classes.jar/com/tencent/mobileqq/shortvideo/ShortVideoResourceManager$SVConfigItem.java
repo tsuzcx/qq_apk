@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.shortvideo;
 
-import azfg;
-import bdnn;
+import bcgg;
+import bgsp;
 
 public class ShortVideoResourceManager$SVConfigItem
 {
@@ -21,20 +21,25 @@ public class ShortVideoResourceManager$SVConfigItem
   
   public boolean check64BitReady()
   {
-    return (!bdnn.a(this.arm64v8a_md5)) && (!bdnn.a(this.arm64v8a_url));
+    return (!bgsp.a(this.arm64v8a_md5)) && (!bgsp.a(this.arm64v8a_url));
   }
   
   public String getSignature()
   {
-    if ((azfg.a()) && (check64BitReady())) {
+    if ((bcgg.a()) && (check64BitReady())) {
       return this.arm64v8a_md5 + '_' + this.versionCode;
     }
     return this.armv7a_md5 + '_' + this.versionCode;
   }
+  
+  public String toString()
+  {
+    return "SVConfigItem{name='" + this.name + '\'' + ", arm_url='" + this.arm_url + '\'' + ", armv7a_url='" + this.armv7a_url + '\'' + ", x86_url='" + this.x86_url + '\'' + ", arm64v8a_url='" + this.arm64v8a_url + '\'' + ", arm_md5='" + this.arm_md5 + '\'' + ", armv7a_md5='" + this.armv7a_md5 + '\'' + ", x86_md5='" + this.x86_md5 + '\'' + ", arm64v8a_md5='" + this.arm64v8a_md5 + '\'' + ", versionCode=" + this.versionCode + ", predownload=" + this.predownload + ", extend1='" + this.extend1 + '\'' + ", extend2='" + this.extend2 + '\'' + '}';
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.ShortVideoResourceManager.SVConfigItem
  * JD-Core Version:    0.7.0.1
  */

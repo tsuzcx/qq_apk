@@ -1,11 +1,13 @@
-import com.tencent.mobileqq.activity.photo.album.AlbumListFragment;
+import com.tencent.mobileqq.activity.contact.addcontact.AddContactsView;
 
 public class airu
-  extends aiqq
+  implements anjm
 {
-  protected airu(AlbumListFragment paramAlbumListFragment)
+  public airu(AddContactsView paramAddContactsView) {}
+  
+  public void a()
   {
-    super(paramAlbumListFragment);
+    this.a.c = false;
   }
 }
 

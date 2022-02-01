@@ -1,11 +1,13 @@
 package io.flutter.embedding.engine.systemchannels;
 
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import io.flutter.embedding.engine.dart.DartExecutor;
 import io.flutter.plugin.common.MethodChannel;
 import io.flutter.plugin.common.MethodChannel.MethodCallHandler;
 import io.flutter.plugin.common.StandardMethodCodec;
+import java.io.PrintWriter;
+import java.io.StringWriter;
 
 public class PlatformViewsChannel
 {
@@ -18,6 +20,13 @@ public class PlatformViewsChannel
   {
     this.channel = new MethodChannel(paramDartExecutor, "flutter/platform_views", StandardMethodCodec.INSTANCE);
     this.channel.setMethodCallHandler(this.parsingHandler);
+  }
+  
+  private static String detailedExceptionString(Exception paramException)
+  {
+    StringWriter localStringWriter = new StringWriter();
+    paramException.printStackTrace(new PrintWriter(localStringWriter));
+    return localStringWriter.toString();
   }
   
   public void invokeViewFocused(int paramInt)
@@ -35,7 +44,7 @@ public class PlatformViewsChannel
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     io.flutter.embedding.engine.systemchannels.PlatformViewsChannel
  * JD-Core Version:    0.7.0.1
  */

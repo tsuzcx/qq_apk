@@ -5,9 +5,10 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.IntentFilter;
 import android.os.Handler;
+import com.tencent.qqlive.module.videoreport.inject.dialog.ReportDialog;
 
 public class PluginSplashDialog
-  extends Dialog
+  extends ReportDialog
 {
   private Handler mHandler = new PluginSplashDialog.InternalHandler(this);
   private String mPluginApk;

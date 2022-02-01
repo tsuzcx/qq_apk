@@ -1,34 +1,23 @@
-class avgy
-  implements vym
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.intervideo.IVPluginInfo;
+
+public final class avgy
+  implements Parcelable.Creator<IVPluginInfo>
 {
-  avgy(avgv paramavgv, avgm paramavgm) {}
-  
-  public boolean a_(vyi paramvyi, int paramInt1, int paramInt2)
+  public IVPluginInfo a(Parcel paramParcel)
   {
-    int i;
-    if (paramInt1 == 3) {
-      i = 1;
-    }
-    for (;;)
-    {
-      return this.jdField_a_of_type_Avgm.a(this.jdField_a_of_type_Avgv, i, Integer.valueOf(paramInt2));
-      if (paramInt1 == 701)
-      {
-        i = 2;
-      }
-      else
-      {
-        i = paramInt1;
-        if (paramInt1 == 702) {
-          i = 3;
-        }
-      }
-    }
+    return new IVPluginInfo(paramParcel);
+  }
+  
+  public IVPluginInfo[] a(int paramInt)
+  {
+    return new IVPluginInfo[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     avgy
  * JD-Core Version:    0.7.0.1
  */

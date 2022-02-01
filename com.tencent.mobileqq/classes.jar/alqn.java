@@ -1,21 +1,25 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.CustomEmotionBase;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
 
-public abstract class alqn<T extends CustomEmotionBase>
-  extends alpd
+class alqn
+  implements View.OnTouchListener
 {
-  protected alqn(QQAppInterface paramQQAppInterface)
+  alqn(alqm paramalqm) {}
+  
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    super(paramQQAppInterface);
+    if (paramMotionEvent.getAction() == 0)
+    {
+      alqm.a(this.a).x = ((int)paramMotionEvent.getRawX());
+      alqm.a(this.a).y = ((int)paramMotionEvent.getRawY());
+    }
+    return false;
   }
-  
-  public abstract void a();
-  
-  protected abstract void a(Object paramObject, boolean paramBoolean);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     alqn
  * JD-Core Version:    0.7.0.1
  */

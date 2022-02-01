@@ -1,21 +1,14 @@
-public class ajwl
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+
+class ajwl
+  implements DialogInterface.OnClickListener
 {
-  public int a;
-  public String a;
-  public String b = "";
-  public String c = "";
+  ajwl(ajvr paramajvr) {}
   
-  private ajwl()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_JavaLangString = "";
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_JavaLangString = "";
-    this.b = "";
-    this.c = "";
+    paramDialogInterface.dismiss();
   }
 }
 

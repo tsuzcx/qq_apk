@@ -1,87 +1,32 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.qphone.base.util.QLog;
-
 public class aooo
-  extends aokh<aoon>
+  implements anil
 {
-  public static aoon a()
-  {
-    return (aoon)aoks.a().a(489);
-  }
+  public void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt) {}
   
-  public int a()
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    return 489;
-  }
-  
-  @NonNull
-  public aoon a(int paramInt)
-  {
-    return new aoon();
-  }
-  
-  @Nullable
-  public aoon a(aoko[] paramArrayOfaoko)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("MsgTabCameraSwitchProcessor", 2, "onParsed ");
+    switch (paramInt)
+    {
     }
-    if ((paramArrayOfaoko != null) && (paramArrayOfaoko.length > 0)) {
-      return aoon.a(paramArrayOfaoko);
-    }
-    return null;
-  }
-  
-  public Class<aoon> a()
-  {
-    return aoon.class;
-  }
-  
-  public void a()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("MsgTabCameraSwitchProcessor", 2, "onReqNoReceive ");
-    }
-  }
-  
-  public void a(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("MsgTabCameraSwitchProcessor", 2, "onReqFailed " + paramInt);
-    }
-  }
-  
-  public void a(aoon paramaoon)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("MsgTabCameraSwitchProcessor", 2, "onUpdate " + paramaoon.toString());
-    }
-  }
-  
-  public boolean a()
-  {
-    return true;
-  }
-  
-  public int b()
-  {
-    return 0;
-  }
-  
-  public boolean b()
-  {
-    return false;
-  }
-  
-  public boolean c()
-  {
-    return true;
+    do
+    {
+      do
+      {
+        return;
+      } while (paramObject == null);
+      if (!paramBoolean) {
+        break;
+      }
+      paramObject = (Object[])paramObject;
+    } while (paramObject.length < 2);
+    a(true, ((Boolean)paramObject[0]).booleanValue(), ((Integer)paramObject[1]).intValue());
+    return;
+    a(false, false, -1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aooo
  * JD-Core Version:    0.7.0.1
  */

@@ -1,35 +1,19 @@
-import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
+import android.text.TextUtils;
+import com.tencent.mobileqq.emoticonview.EmoticonPanelController;
 
-class arxx
-  implements EIPCResultCallback
+public class arxx
+  implements awnd<String, Integer>
 {
-  arxx(arxw paramarxw) {}
+  public arxx(EmoticonPanelController paramEmoticonPanelController, int paramInt) {}
   
-  public void onCallback(EIPCResult paramEIPCResult)
+  public Integer a(String paramString)
   {
-    boolean bool;
-    if ((paramEIPCResult != null) && (paramEIPCResult.isSuccess()))
-    {
-      bool = true;
-      if (!bool)
-      {
-        if (paramEIPCResult != null) {
-          break label57;
-        }
-        QLog.d("FlutterMainQIPCModule", 1, "ipc callback, result == null");
-      }
+    this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonPanelController.d(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonPanelController.k);
+    int i = this.jdField_a_of_type_Int;
+    if (!TextUtils.isEmpty(paramString)) {
+      i = EmoticonPanelController.a(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonPanelController, paramString);
     }
-    for (;;)
-    {
-      QLog.d("FlutterMainQIPCModule", 1, new Object[] { "ipc callback , isSuccess: %s", Boolean.valueOf(bool) });
-      return;
-      bool = false;
-      break;
-      label57:
-      QLog.d("FlutterMainQIPCModule", 1, "ipc callback, errCode: " + paramEIPCResult.code);
-    }
+    return Integer.valueOf(i);
   }
 }
 

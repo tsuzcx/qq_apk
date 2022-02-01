@@ -1,47 +1,87 @@
+import android.net.Uri;
 import android.text.TextUtils;
-import com.tencent.biz.qqstory.utils.JsonORM;
-import com.tencent.biz.qqstory.utils.JsonORM.JsonParseException;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.qphone.base.util.QLog;
+import common.config.service.QzoneConfig;
+import feedcloud.FeedCloudCommon.Entry;
+import java.net.URL;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Set;
 
 public class uxn
 {
-  @xrk(a="gametype")
-  public int a;
-  @xrk(a="gameid")
-  public String a;
-  @xrk(a="name")
-  public String b;
-  @xrk(a="result")
-  public String c;
+  public static final String a;
+  public static final HashSet<String> a;
   
-  public static uxn a(String paramString)
+  static
   {
-    if (TextUtils.isEmpty(paramString)) {
-      return null;
-    }
+    jdField_a_of_type_JavaLangString = QzoneConfig.getQQCircleSearchPageUrl();
+    jdField_a_of_type_JavaUtilHashSet = new HashSet();
+    jdField_a_of_type_JavaUtilHashSet.add("_wwv");
+    jdField_a_of_type_JavaUtilHashSet.add("_proxy");
+    jdField_a_of_type_JavaUtilHashSet.add("_wv");
+  }
+  
+  public static String a(List<FeedCloudCommon.Entry> paramList, String paramString)
+  {
+    return uxx.a(paramList, paramString, "");
+  }
+  
+  public static HashMap<String, String> a(String paramString)
+  {
+    HashMap localHashMap;
     try
     {
-      paramString = (uxn)JsonORM.a(new JSONObject(paramString), uxn.class);
-      return paramString;
+      if (!TextUtils.isEmpty(paramString))
+      {
+        paramString = Uri.parse(paramString);
+        if (paramString != null)
+        {
+          localHashMap = new HashMap();
+          Iterator localIterator = paramString.getQueryParameterNames().iterator();
+          while (localIterator.hasNext())
+          {
+            String str = (String)localIterator.next();
+            localHashMap.put(str, paramString.getQueryParameter(str));
+          }
+        }
+      }
+      return new HashMap();
     }
-    catch (JsonORM.JsonParseException paramString)
+    catch (Exception paramString)
     {
       paramString.printStackTrace();
-      return null;
     }
-    catch (JSONException paramString)
+    return localHashMap;
+  }
+  
+  public static boolean a(String paramString)
+  {
+    try
     {
-      for (;;)
+      String str = new URL(paramString).getHost();
+      QLog.d("QCircleJsUrlConfig", 1, "url:" + paramString + " domain:" + str);
+      if (!TextUtils.isEmpty(str))
       {
-        paramString.printStackTrace();
+        boolean bool = str.endsWith(".qq.com");
+        if (bool) {
+          return true;
+        }
       }
+      return false;
     }
+    catch (Exception paramString)
+    {
+      paramString.printStackTrace();
+    }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     uxn
  * JD-Core Version:    0.7.0.1
  */

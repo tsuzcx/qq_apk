@@ -1,21 +1,55 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.widget.Button;
-import com.tencent.mobileqq.activity.photo.album.NewPhotoListActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.widget.ImageView;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
+import android.widget.RadioGroup.OnCheckedChangeListener;
+import com.tencent.mobileqq.activity.contact.addcontact.AddContactsActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class aird
-  implements DialogInterface.OnClickListener
+public class aird
+  implements RadioGroup.OnCheckedChangeListener
 {
-  aird(aira paramaira) {}
+  public aird(AddContactsActivity paramAddContactsActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onCheckedChanged(RadioGroup paramRadioGroup, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("PhotoListActivity", 2, "cancel shortvideo_mobile_send_confirm dialog");
+    if ((paramInt == 2131378194) && (AddContactsActivity.a(this.a).isChecked()))
+    {
+      AddContactsActivity.a(this.a);
+      bcst.b(this.a.app, "CliOper", "", "", "0X8004BE9", "0X8004BE9", 0, 0, "", "", "", "");
+      AddContactsActivity.a(this.a).setSelected(true);
+      AddContactsActivity.b(this.a).setSelected(false);
+      AddContactsActivity.c(this.a).setSelected(false);
+      AddContactsActivity.a(this.a).setVisibility(8);
     }
-    if (((NewPhotoListActivity)this.a.mActivity).sendBtn != null) {
-      ((NewPhotoListActivity)this.a.mActivity).sendBtn.setClickable(true);
+    for (;;)
+    {
+      EventCollector.getInstance().onCheckedChanged(paramRadioGroup, paramInt);
+      return;
+      if ((paramInt == 2131378196) && (AddContactsActivity.b(this.a).isChecked()))
+      {
+        AddContactsActivity.b(this.a);
+        bcst.b(this.a.app, "CliOper", "", "", "0X8004BEA", "0X8004BEA", 0, 0, "", "", "", "");
+        bcst.b(this.a.app, "P_CliOper", "Grp_find", "", "grptab", "exp", 0, 0, "", "", "", "");
+        AddContactsActivity.b(this.a).setSelected(true);
+        AddContactsActivity.a(this.a).setSelected(false);
+        AddContactsActivity.c(this.a).setSelected(false);
+        ImageView localImageView = AddContactsActivity.a(this.a);
+        if (AddContactsActivity.a(this.a)) {}
+        for (int i = 0;; i = 8)
+        {
+          localImageView.setVisibility(i);
+          break;
+        }
+      }
+      if ((paramInt == 2131378195) && (AddContactsActivity.c(this.a).isChecked()))
+      {
+        AddContactsActivity.c(this.a);
+        bcst.b(this.a.app, "CliOper", "", "", "0X8004BEB", "0X8004BEB", 0, 0, "", "", "", "");
+        AddContactsActivity.c(this.a).setSelected(true);
+        AddContactsActivity.a(this.a).setSelected(false);
+        AddContactsActivity.b(this.a).setSelected(false);
+        AddContactsActivity.a(this.a).setVisibility(8);
+      }
     }
   }
 }

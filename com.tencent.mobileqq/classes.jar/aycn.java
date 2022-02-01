@@ -1,95 +1,117 @@
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.graphics.Paint.FontMetricsInt;
-import android.graphics.Rect;
-import android.graphics.drawable.Drawable;
+import android.support.v4.app.FragmentActivity;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.Adapter;
+import android.support.v7.widget.StaggeredGridLayoutManager.LayoutParams;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.List;
 
 public class aycn
-  extends beri
+  extends RecyclerView.Adapter<ayco>
 {
-  public float a;
-  private int jdField_a_of_type_Int;
-  private Paint jdField_a_of_type_AndroidGraphicsPaint;
-  private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-  private String jdField_a_of_type_JavaLangString;
-  public boolean a;
-  private float[] jdField_a_of_type_ArrayOfFloat;
-  public float b;
-  private int b;
-  private int c;
+  private int jdField_a_of_type_Int = 3;
+  private FragmentActivity jdField_a_of_type_AndroidSupportV4AppFragmentActivity;
+  private RecyclerView jdField_a_of_type_AndroidSupportV7WidgetRecyclerView;
+  private aydj jdField_a_of_type_Aydj;
+  private final List<ayeh> jdField_a_of_type_JavaUtilList;
   
-  public aycn(Drawable paramDrawable1, int paramInt1, String paramString, int paramInt2, Drawable paramDrawable2, float paramFloat)
+  public aycn(FragmentActivity paramFragmentActivity, RecyclerView paramRecyclerView, List<ayeh> paramList)
   {
-    super(paramDrawable1, paramInt1);
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Int = paramInt2;
-    this.jdField_a_of_type_ArrayOfFloat = new float[this.jdField_a_of_type_JavaLangString.length()];
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramDrawable2;
-    this.jdField_a_of_type_AndroidGraphicsPaint = new Paint(1);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setTextSize(paramFloat);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(paramInt2);
+    this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity = paramFragmentActivity;
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = paramRecyclerView;
+    this.jdField_a_of_type_JavaUtilList = paramList;
   }
   
-  public int a()
+  public ayco a(ViewGroup paramViewGroup, int paramInt)
   {
-    getSize(this.jdField_a_of_type_AndroidGraphicsPaint, this.jdField_a_of_type_JavaLangString, 0, this.jdField_a_of_type_JavaLangString.length(), this.jdField_a_of_type_AndroidGraphicsPaint.getFontMetricsInt());
-    return this.b;
-  }
-  
-  public int b()
-  {
-    Rect localRect = getDrawable().getBounds();
-    Paint.FontMetricsInt localFontMetricsInt = this.jdField_a_of_type_AndroidGraphicsPaint.getFontMetricsInt();
-    int i = localRect.bottom;
-    int j = -localFontMetricsInt.top;
-    this.c = Math.max(i, localFontMetricsInt.bottom + j);
-    return this.c;
-  }
-  
-  public void draw(Canvas paramCanvas, CharSequence paramCharSequence, int paramInt1, int paramInt2, float paramFloat, int paramInt3, int paramInt4, int paramInt5, Paint paramPaint)
-  {
-    if (this.jdField_a_of_type_Boolean) {}
-    for (int i = this.jdField_a_of_type_AndroidGraphicsPaint.getFontMetricsInt().top + paramInt4;; i = paramInt4)
+    switch (paramInt)
     {
-      if ((this.b > 0) && (this.c > 0))
+    case 2: 
+    default: 
+      return new aycp(LayoutInflater.from(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity).inflate(2131559531, paramViewGroup, false));
+    case 0: 
+      if (this.jdField_a_of_type_Aydj == null)
       {
-        this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setBounds(0, i, this.b, this.c + i);
-        this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.draw(paramCanvas);
+        paramViewGroup = LayoutInflater.from(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity).inflate(2131559530, paramViewGroup, false);
+        this.jdField_a_of_type_Aydj = new aydj(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView, paramViewGroup);
       }
-      super.draw(paramCanvas, paramCharSequence, paramInt1, paramInt2, paramFloat, paramInt3, paramInt4, paramInt5, paramPaint);
-      float f = getDrawable().getBounds().right;
-      paramInt1 = this.jdField_a_of_type_AndroidGraphicsPaint.getFontMetricsInt().ascent;
-      if (this.jdField_a_of_type_Boolean) {}
-      for (;;)
+      return this.jdField_a_of_type_Aydj;
+    case 1: 
+      return new aycs(LayoutInflater.from(paramViewGroup.getContext()).inflate(2131559526, paramViewGroup, false));
+    }
+    return new ayea(LayoutInflater.from(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity).inflate(2131559532, paramViewGroup, false));
+  }
+  
+  public void a()
+  {
+    notifyItemChanged(0);
+  }
+  
+  public void a(int paramInt)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public void a(ayco paramayco)
+  {
+    super.onViewAttachedToWindow(paramayco);
+    ViewGroup.LayoutParams localLayoutParams = paramayco.itemView.getLayoutParams();
+    if ((localLayoutParams != null) && ((localLayoutParams instanceof StaggeredGridLayoutManager.LayoutParams)) && (a(paramayco.getLayoutPosition()))) {
+      ((StaggeredGridLayoutManager.LayoutParams)localLayoutParams).setFullSpan(true);
+    }
+  }
+  
+  public void a(ayco paramayco, int paramInt)
+  {
+    switch (getItemViewType(paramInt))
+    {
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onRecyclerBindViewHolder(paramayco, paramInt, getItemId(paramInt));
+      return;
+      this.jdField_a_of_type_Aydj.a();
+      continue;
+      aycr.a(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, paramayco);
+      continue;
+      if (paramInt - 2 < this.jdField_a_of_type_JavaUtilList.size())
       {
-        paramCanvas.drawText(this.jdField_a_of_type_JavaLangString, paramFloat + f, paramInt4, this.jdField_a_of_type_AndroidGraphicsPaint);
-        return;
-        paramInt4 -= paramInt1;
+        ayeb.a(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, paramayco, (ayeh)this.jdField_a_of_type_JavaUtilList.get(paramInt - 2), paramInt);
+        continue;
+        ayeb.a(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, paramayco, this.jdField_a_of_type_Int);
       }
     }
   }
   
-  public int getSize(Paint paramPaint, CharSequence paramCharSequence, int paramInt1, int paramInt2, Paint.FontMetricsInt paramFontMetricsInt)
+  protected boolean a(int paramInt)
   {
-    paramCharSequence = getDrawable().getBounds();
-    this.jdField_a_of_type_AndroidGraphicsPaint.getTextWidths(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ArrayOfFloat);
-    paramInt1 = paramCharSequence.right;
-    paramFontMetricsInt = this.jdField_a_of_type_ArrayOfFloat;
-    int i = paramFontMetricsInt.length;
-    paramInt2 = 0;
-    while (paramInt2 < i)
-    {
-      float f = paramFontMetricsInt[paramInt2];
-      paramInt1 = (int)(paramInt1 + f);
-      paramInt2 += 1;
+    return getItemViewType(paramInt) != 2;
+  }
+  
+  public int getItemCount()
+  {
+    if ((this.jdField_a_of_type_Int != 1) && ((this.jdField_a_of_type_JavaUtilList == null) || (this.jdField_a_of_type_JavaUtilList.size() == 0))) {
+      return 3;
     }
-    this.b = paramInt1;
-    paramPaint = paramPaint.getFontMetricsInt();
-    paramInt2 = paramCharSequence.bottom;
-    i = -paramPaint.top;
-    this.c = Math.max(paramInt2, paramPaint.bottom + i);
-    return paramInt1;
+    return this.jdField_a_of_type_JavaUtilList.size() + 2;
+  }
+  
+  public int getItemViewType(int paramInt)
+  {
+    int i = 1;
+    if (paramInt == 0) {
+      i = 0;
+    }
+    while (paramInt == 1) {
+      return i;
+    }
+    if ((this.jdField_a_of_type_Int != 1) && ((this.jdField_a_of_type_JavaUtilList == null) || (this.jdField_a_of_type_JavaUtilList.size() == 0))) {
+      return 3;
+    }
+    return 2;
   }
 }
 

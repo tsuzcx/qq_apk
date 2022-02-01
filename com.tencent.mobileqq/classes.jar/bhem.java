@@ -1,31 +1,31 @@
-import android.content.Context;
 import android.os.Bundle;
-import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
-import com.tencent.qqmini.sdk.runtime.app.AppRuntimeLoader;
+import android.os.Handler;
+import android.os.Looper;
+import com.tencent.mobileqq.vas.watchword.VasWatchWord.addObserver.1.checkWatchWord.1.1;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
+import kotlin.Metadata;
 
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "it", "Leipc/EIPCResult;", "kotlin.jvm.PlatformType", "onCallback"}, k=3, mv={1, 1, 16})
 public final class bhem
-  implements bguo<AppRuntimeLoader>
+  implements EIPCResultCallback
 {
-  public AppRuntimeLoader a(Context paramContext, Bundle paramBundle)
-  {
-    return new AppRuntimeLoader(paramContext);
-  }
+  public static final bhem a = new bhem();
   
-  public void a(Bundle paramBundle) {}
-  
-  public boolean a(Bundle paramBundle)
+  public final void onCallback(EIPCResult paramEIPCResult)
   {
-    return true;
-  }
-  
-  public boolean a(MiniAppInfo paramMiniAppInfo)
-  {
-    return (paramMiniAppInfo != null) && (paramMiniAppInfo.isEngineTypeMiniApp());
+    if (paramEIPCResult != null) {}
+    for (Bundle localBundle = paramEIPCResult.data; localBundle == null; localBundle = null) {
+      return;
+    }
+    int i = paramEIPCResult.data.getInt("ret");
+    bhek.a.b();
+    new Handler(Looper.getMainLooper()).post((Runnable)new VasWatchWord.addObserver.1.checkWatchWord.1.1(paramEIPCResult, i));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bhem
  * JD-Core Version:    0.7.0.1
  */

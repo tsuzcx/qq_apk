@@ -1,19 +1,25 @@
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.OnScrollListener;
-import com.tencent.mobileqq.activity.qwallet.TroopUnAccalimedRedPacketList;
+import android.view.View;
+import com.tencent.mobileqq.activity.contact.connections.ConnectionsExplorationClidFragment;
+import com.tencent.mobileqq.activity.contact.connections.ConnectionsExplorationFragment;
 
 public class aixe
-  extends RecyclerView.OnScrollListener
+  implements bkom
 {
-  public aixe(TroopUnAccalimedRedPacketList paramTroopUnAccalimedRedPacketList) {}
+  public aixe(ConnectionsExplorationClidFragment paramConnectionsExplorationClidFragment) {}
   
-  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
+  public void a(View paramView)
   {
-    if (paramInt != 0) {}
-    for (boolean bool = true;; bool = false)
-    {
-      agmq.a(bool);
-      return;
+    paramView = this.a.getParentFragment();
+    if ((paramView != null) && ((paramView instanceof ConnectionsExplorationFragment))) {
+      ((ConnectionsExplorationFragment)paramView).a(false);
+    }
+  }
+  
+  public void b(View paramView)
+  {
+    paramView = this.a.getParentFragment();
+    if ((paramView != null) && ((paramView instanceof ConnectionsExplorationFragment))) {
+      ((ConnectionsExplorationFragment)paramView).a(true);
     }
   }
 }

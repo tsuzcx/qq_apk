@@ -1,30 +1,23 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.ui.CustomMenuBar;
-import com.tencent.mobileqq.activity.aio.InputLinearLayout;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.item.GivingHeartItemBuilder.4.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.vas.VasQuickUpdateManager;
+import com.tencent.mobileqq.vas.VasQuickUpdateManager.CallBacker;
+import com.tencent.qphone.base.util.QLog;
+import mqq.os.MqqHandler;
 
-class ague
-  implements View.OnClickListener
+public class ague
+  extends VasQuickUpdateManager.CallBacker
 {
-  ague(agti paramagti) {}
+  ague(agtx paramagtx) {}
   
-  public void onClick(View paramView)
+  public void callback(long paramLong, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, VasQuickUpdateManager paramVasQuickUpdateManager)
   {
-    aepi.n = true;
-    this.a.jdField_a_of_type_ComTencentBizUiCustomMenuBar.setVisibility(8);
-    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioInputLinearLayout != null) {
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityAioInputLinearLayout.setVisibility(0);
-    }
-    if (this.a.i != null) {
-      this.a.i.setVisibility(0);
-    }
-    if (this.a.j != null) {
-      this.a.j.setVisibility(0);
-    }
-    this.a.aD();
-    if (this.a.jdField_a_of_type_Nrc.b(this.a.a()) != 0) {
-      azqs.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Pb_account_lifeservice", "", "0X8005EC5", "0X8005EC5", 0, 0, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, "", "", "");
+    if ((paramString1.equals("poke.effectList")) && (paramInt1 == 0))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("GivingHeart", 2, "download vas poke list from GivingHeartItemBuilder, update pokeSvipMap now.");
+      }
+      ThreadManager.getFileThreadHandler().post(new GivingHeartItemBuilder.4.1(this));
     }
   }
 }

@@ -1,6 +1,18 @@
-public abstract interface aysn
+import com.tencent.map.geolocation.TencentDirectionListener;
+
+class aysn
+  implements TencentDirectionListener
 {
-  public abstract void a(int paramInt);
+  aysn(aysl paramaysl) {}
+  
+  public void onDirectionChanged(double paramDouble, int paramInt)
+  {
+    if (aysl.a(this.a) != null)
+    {
+      aysl.a(this.a, 180.0D + paramDouble);
+      aysl.a(this.a, false);
+    }
+  }
 }
 
 

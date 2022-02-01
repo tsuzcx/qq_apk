@@ -1,76 +1,80 @@
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.SeekBar;
-import android.widget.TextView;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsGestureLayout;
-import com.tencent.image.URLImageView;
+import android.os.IBinder;
 
-public class rbn
-  extends rbl
+class rbn
+  implements rbl
 {
-  TextView A;
-  public ViewGroup a;
-  SeekBar jdField_a_of_type_AndroidWidgetSeekBar;
-  VideoFeedsGestureLayout jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsGestureLayout;
-  public qyv a;
-  public rfs a;
-  riw jdField_a_of_type_Riw;
-  public roh a;
-  ViewGroup jdField_b_of_type_AndroidViewViewGroup;
-  SeekBar jdField_b_of_type_AndroidWidgetSeekBar;
-  public URLImageView b;
-  public ViewGroup c;
-  public ViewGroup d;
-  ViewGroup e;
-  ViewGroup f;
-  ViewGroup g;
-  public ImageView g;
-  ViewGroup jdField_h_of_type_AndroidViewViewGroup;
-  ImageView jdField_h_of_type_AndroidWidgetImageView;
-  ImageView i;
-  View s;
-  TextView u;
-  TextView v;
-  TextView w;
-  TextView x;
-  TextView y;
-  TextView z;
+  private IBinder a;
   
-  public rbn(View paramView, int paramInt)
+  rbn(IBinder paramIBinder)
   {
-    super(paramView, paramInt);
-    this.jdField_b_of_type_AndroidWidgetSeekBar = ((SeekBar)paramView.findViewById(2131368331));
-    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)paramView.findViewById(2131364609));
-    paramView = this.jdField_a_of_type_AndroidViewViewGroup;
-    this.jdField_b_of_type_AndroidViewViewGroup = ((ViewGroup)paramView.findViewById(2131379738));
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsGestureLayout = ((VideoFeedsGestureLayout)paramView.findViewById(2131367135));
-    this.jdField_b_of_type_ComTencentImageURLImageView = ((URLImageView)paramView.findViewById(2131364892));
-    this.jdField_g_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131372077));
-    this.d = ((ViewGroup)paramView.findViewById(2131379655));
-    this.jdField_a_of_type_AndroidWidgetSeekBar = ((SeekBar)paramView.findViewById(2131376331));
-    this.u = ((TextView)paramView.findViewById(2131364958));
-    this.w = ((TextView)paramView.findViewById(2131378227));
-    this.c = ((ViewGroup)paramView.findViewById(2131372078));
-    this.jdField_g_of_type_AndroidViewViewGroup = ((ViewGroup)paramView.findViewById(2131363395));
-    this.jdField_h_of_type_AndroidViewViewGroup = ((ViewGroup)paramView.findViewById(2131366996));
-    this.i = ((ImageView)paramView.findViewById(2131366997));
-    this.x = ((TextView)paramView.findViewById(2131371436));
-    this.y = ((TextView)paramView.findViewById(2131366334));
-    this.z = ((TextView)paramView.findViewById(2131369096));
-    this.v = ((TextView)paramView.findViewById(2131376672));
-    this.e = ((LinearLayout)paramView.findViewById(2131366995));
-    this.f = ((LinearLayout)paramView.findViewById(2131364340));
-    this.A = ((TextView)paramView.findViewById(2131366998));
-    this.jdField_h_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131379884));
-    this.s = paramView.findViewById(2131379679);
-    this.jdField_a_of_type_Roh = new roh(paramView, null);
+    this.a = paramIBinder;
+  }
+  
+  /* Error */
+  public void a(boolean paramBoolean)
+  {
+    // Byte code:
+    //   0: iconst_1
+    //   1: istore_2
+    //   2: invokestatic 23	android/os/Parcel:obtain	()Landroid/os/Parcel;
+    //   5: astore_3
+    //   6: invokestatic 23	android/os/Parcel:obtain	()Landroid/os/Parcel;
+    //   9: astore 4
+    //   11: aload_3
+    //   12: ldc 25
+    //   14: invokevirtual 29	android/os/Parcel:writeInterfaceToken	(Ljava/lang/String;)V
+    //   17: iload_1
+    //   18: ifeq +38 -> 56
+    //   21: aload_3
+    //   22: iload_2
+    //   23: invokevirtual 33	android/os/Parcel:writeInt	(I)V
+    //   26: aload_0
+    //   27: getfield 15	rbn:a	Landroid/os/IBinder;
+    //   30: iconst_1
+    //   31: aload_3
+    //   32: aload 4
+    //   34: iconst_0
+    //   35: invokeinterface 39 5 0
+    //   40: pop
+    //   41: aload 4
+    //   43: invokevirtual 42	android/os/Parcel:readException	()V
+    //   46: aload 4
+    //   48: invokevirtual 45	android/os/Parcel:recycle	()V
+    //   51: aload_3
+    //   52: invokevirtual 45	android/os/Parcel:recycle	()V
+    //   55: return
+    //   56: iconst_0
+    //   57: istore_2
+    //   58: goto -37 -> 21
+    //   61: astore 5
+    //   63: aload 4
+    //   65: invokevirtual 45	android/os/Parcel:recycle	()V
+    //   68: aload_3
+    //   69: invokevirtual 45	android/os/Parcel:recycle	()V
+    //   72: aload 5
+    //   74: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	75	0	this	rbn
+    //   0	75	1	paramBoolean	boolean
+    //   1	57	2	i	int
+    //   5	64	3	localParcel1	android.os.Parcel
+    //   9	55	4	localParcel2	android.os.Parcel
+    //   61	12	5	localObject	Object
+    // Exception table:
+    //   from	to	target	type
+    //   11	17	61	finally
+    //   21	46	61	finally
+  }
+  
+  public IBinder asBinder()
+  {
+    return this.a;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     rbn
  * JD-Core Version:    0.7.0.1
  */

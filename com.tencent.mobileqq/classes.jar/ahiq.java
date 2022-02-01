@@ -1,18 +1,15 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.activity.contact.addcontact.SearchResultItem;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.mobileqq.activity.aio.item.SixCombolEffectView;
 
-public final class ahiq
-  implements Parcelable.Creator<SearchResultItem>
+public class ahiq
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public SearchResultItem a(Parcel paramParcel)
-  {
-    return new SearchResultItem(paramParcel);
-  }
+  public ahiq(SixCombolEffectView paramSixCombolEffectView, ahje paramahje) {}
   
-  public SearchResultItem[] a(int paramInt)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    return new SearchResultItem[paramInt];
+    this.jdField_a_of_type_Ahje.a = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
   }
 }
 

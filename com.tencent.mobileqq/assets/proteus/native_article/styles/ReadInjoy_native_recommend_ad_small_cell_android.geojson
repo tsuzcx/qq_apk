@@ -18,8 +18,7 @@
                 "layout_type": "layout_relative",
                 "margin_top":"18",
                 "height": {
-                  "type": "relative",
-                  "value": "73"
+                  "type": "wrap_content"
                 },
                 "width": {
                   "type": "match_parent"
@@ -59,7 +58,7 @@
                         "attributes": {
                           "setTextColorString:": "#262626",
                           "setText:": "-1",
-                          "setFontSizeString:": "17",
+                          "setFontSizeString:ratio:":["17","$attribute_text_size_ratio"],
                           "setNumberOfLinesString:": "2"
                         }
                       },

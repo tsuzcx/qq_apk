@@ -1,16 +1,19 @@
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.activity.qwallet.redpacket.draw.ChooseItemView;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.troop.data.RecommendTroopItem;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class ajch
-  implements View.OnTouchListener
+class ajch
+  implements View.OnClickListener
 {
-  public ajch(ChooseItemView paramChooseItemView) {}
+  ajch(ajcf paramajcf) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onClick(View paramView)
   {
-    return true;
+    RecommendTroopItem localRecommendTroopItem = (RecommendTroopItem)paramView.getTag(-1);
+    bfup.a(ajcf.a(this.a), localRecommendTroopItem, this.a.b(), this.a.c());
+    this.a.a(localRecommendTroopItem);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

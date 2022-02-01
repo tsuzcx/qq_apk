@@ -1,49 +1,28 @@
-import com.tencent.mobileqq.data.DiscussionInfo;
-import com.tencent.mobileqq.data.TroopInfo;
-import java.util.Comparator;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.PathResult;
+import java.util.List;
+import java.util.Map;
 
-public class aklx
-  implements Comparator<aklz>
+class aklx
+  implements akse
 {
-  private int a(aklz paramaklz)
-  {
-    if ((a(paramaklz) == 0L) || (paramaklz.jdField_a_of_type_Int == 4)) {
-      return paramaklz.jdField_a_of_type_Int + 3;
-    }
-    return paramaklz.jdField_a_of_type_Int;
-  }
+  aklx(aklv paramaklv, AppInterface paramAppInterface) {}
   
-  private long a(aklz paramaklz)
+  public void onResult(int paramInt, PreloadManager.PathResult paramPathResult)
   {
-    if ((paramaklz.jdField_a_of_type_Awge instanceof TroopInfo)) {
-      return ((TroopInfo)paramaklz.jdField_a_of_type_Awge).lastMsgTime;
+    List localList = (List)aklv.a(this.jdField_a_of_type_Aklv).get(paramPathResult.url);
+    if (paramPathResult.url.endsWith(".zip")) {
+      aklv.a(this.jdField_a_of_type_Aklv, this.jdField_a_of_type_ComTencentCommonAppAppInterface, paramPathResult.url, paramPathResult.folderPath, localList);
     }
-    if ((paramaklz.jdField_a_of_type_Awge instanceof DiscussionInfo)) {
-      return ((DiscussionInfo)paramaklz.jdField_a_of_type_Awge).lastMsgTime;
+    while (!paramPathResult.url.endsWith(".png")) {
+      return;
     }
-    return 0L;
-  }
-  
-  public int a(aklz paramaklz1, aklz paramaklz2)
-  {
-    if ((paramaklz1 == null) && (paramaklz2 == null)) {
-      return 0;
-    }
-    if (paramaklz1 == null) {
-      return -1;
-    }
-    if (paramaklz2 == null) {
-      return 1;
-    }
-    if (a(paramaklz1) == a(paramaklz2)) {
-      return (int)(a(paramaklz2) - a(paramaklz1));
-    }
-    return a(paramaklz1) - a(paramaklz2);
+    aklv.a(this.jdField_a_of_type_Aklv, this.jdField_a_of_type_ComTencentCommonAppAppInterface, paramPathResult.url, localList);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aklx
  * JD-Core Version:    0.7.0.1
  */

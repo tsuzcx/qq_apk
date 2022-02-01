@@ -40,48 +40,47 @@ public class FontAssetManager
     if (localObject1 != null) {
       return localObject1;
     }
-    Object localObject3 = null;
+    Object localObject2 = null;
     if (this.delegate != null) {
-      localObject3 = this.delegate.fetchFont(paramString);
+      localObject2 = this.delegate.fetchFont(paramString);
     }
-    localObject1 = localObject3;
+    localObject1 = localObject2;
     String str;
     if (this.delegate != null)
     {
-      localObject1 = localObject3;
-      if (localObject3 == null)
+      localObject1 = localObject2;
+      if (localObject2 == null)
       {
         str = this.delegate.getFontPath(paramString);
-        localObject1 = localObject3;
+        localObject1 = localObject2;
         if (str == null) {}
       }
     }
     try
     {
       localObject1 = Typeface.createFromAsset(this.assetManager, str);
-      localObject3 = localObject1;
+      localObject2 = localObject1;
       if (localObject1 == null) {
-        localObject3 = "fonts/" + paramString + this.defaultFontFileExtension;
+        localObject1 = "fonts/" + paramString + this.defaultFontFileExtension;
       }
     }
     catch (RuntimeException localRuntimeException1)
     {
       try
       {
-        localObject3 = Typeface.createFromAsset(this.assetManager, (String)localObject3);
-        this.fontFamilies.put(paramString, localObject3);
-        return localObject3;
+        localObject2 = Typeface.createFromAsset(this.assetManager, (String)localObject1);
+        this.fontFamilies.put(paramString, localObject2);
+        return localObject2;
         localRuntimeException1 = localRuntimeException1;
         localRuntimeException1.printStackTrace();
-        localObject2 = localObject3;
+        Typeface localTypeface = Typeface.DEFAULT;
       }
       catch (RuntimeException localRuntimeException2)
       {
         for (;;)
         {
-          Object localObject2;
           localRuntimeException2.printStackTrace();
-          Object localObject4 = localObject2;
+          localObject2 = Typeface.DEFAULT;
         }
       }
     }
@@ -131,7 +130,7 @@ public class FontAssetManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.dinifly.manager.FontAssetManager
  * JD-Core Version:    0.7.0.1
  */

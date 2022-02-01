@@ -1,46 +1,18 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import android.animation.AnimatorSet;
-import android.animation.ObjectAnimator;
-import android.animation.ValueAnimator;
-import android.view.View;
-import android.view.animation.Animation;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import cooperation.qzone.model.PublishEventTag;
 
-public class blzm
+public final class blzm
+  implements Parcelable.Creator<PublishEventTag>
 {
-  public static Animator a(View paramView, int paramInt1, int paramInt2, int paramInt3)
+  public PublishEventTag a(Parcel paramParcel)
   {
-    ValueAnimator localValueAnimator = ValueAnimator.ofInt(new int[] { paramInt2, paramInt3 });
-    localValueAnimator.addUpdateListener(new blzn(paramInt1, paramView));
-    return localValueAnimator;
+    return new PublishEventTag(paramParcel);
   }
   
-  public static Animation a(View paramView, float paramFloat1, float paramFloat2)
+  public PublishEventTag[] a(int paramInt)
   {
-    return new bdob(Float.valueOf(paramFloat1), Float.valueOf(paramFloat2), new blzo(paramView));
-  }
-  
-  public static void a(List<blzp> paramList, Animator.AnimatorListener paramAnimatorListener)
-  {
-    if (paramList.size() > 0)
-    {
-      ArrayList localArrayList = new ArrayList();
-      paramList = paramList.iterator();
-      while (paramList.hasNext())
-      {
-        blzp localblzp = (blzp)paramList.next();
-        ObjectAnimator localObjectAnimator = ObjectAnimator.ofFloat(localblzp.jdField_a_of_type_AndroidViewView, localblzp.jdField_a_of_type_JavaLangString, new float[] { localblzp.jdField_a_of_type_Float, localblzp.jdField_b_of_type_Float }).setDuration(localblzp.jdField_a_of_type_Long);
-        localObjectAnimator.setStartDelay(localblzp.jdField_b_of_type_Long);
-        localArrayList.add(localObjectAnimator);
-      }
-      paramList = new AnimatorSet();
-      paramList.playTogether(localArrayList);
-      paramList.addListener(paramAnimatorListener);
-      paramList.start();
-    }
+    return new PublishEventTag[paramInt];
   }
 }
 

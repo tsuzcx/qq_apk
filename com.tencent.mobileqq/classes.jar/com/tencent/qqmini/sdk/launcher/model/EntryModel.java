@@ -9,8 +9,9 @@ public class EntryModel
   implements Parcelable
 {
   public static final Parcelable.Creator<EntryModel> CREATOR = new EntryModel.1();
-  public static final int TYPE_C2C = 1;
-  public static final int TYPE_GROUP = 2;
+  public static final int TYPE_C2C = 0;
+  public static final int TYPE_GROUP = 1;
+  public long dwGroupClassExt;
   private String entryDataHash;
   public boolean isAdmin;
   public String name;
@@ -37,6 +38,7 @@ public class EntryModel
     {
       this.isAdmin = bool;
       this.entryDataHash = paramParcel.readString();
+      this.dwGroupClassExt = paramParcel.readLong();
       this.reportData = paramParcel.readString();
       return;
     }
@@ -62,6 +64,7 @@ public class EntryModel
     {
       paramParcel.writeByte((byte)paramInt);
       paramParcel.writeString(this.entryDataHash);
+      paramParcel.writeLong(this.dwGroupClassExt);
       paramParcel.writeString(this.reportData);
       return;
     }
@@ -69,7 +72,7 @@ public class EntryModel
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.launcher.model.EntryModel
  * JD-Core Version:    0.7.0.1
  */

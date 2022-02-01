@@ -1,21 +1,21 @@
 package com.tencent.biz.pubaccount.readinjoy.view;
 
-import rpc;
-import rpd;
+import smb;
+import smc;
 
 public class CaptureOperateTouchLayout$IndicatorTouchListener$2
   implements Runnable
 {
-  public CaptureOperateTouchLayout$IndicatorTouchListener$2(rpd paramrpd) {}
+  public CaptureOperateTouchLayout$IndicatorTouchListener$2(smc paramsmc) {}
   
   public void run()
   {
-    rpd.a(this.a).b();
+    smc.a(this.a).b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.CaptureOperateTouchLayout.IndicatorTouchListener.2
  * JD-Core Version:    0.7.0.1
  */

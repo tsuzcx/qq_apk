@@ -12,6 +12,7 @@ import android.support.v4.app.FragmentManager;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.CheckBox;
+import com.tencent.qqlive.module.videoreport.inject.dialog.ReportDialog;
 import com.unnamed.b.atv.model.TreeNode;
 import com.unnamed.b.atv.view.AndroidTreeView;
 import java.util.Iterator;
@@ -22,7 +23,7 @@ import me.ele.uetool.util.JarResource;
 import me.ele.uetool.view.RegionView;
 
 public class FragmentListTreeDialog
-  extends Dialog
+  extends ReportDialog
   implements Provider
 {
   private ViewGroup containerView;
@@ -95,7 +96,7 @@ public class FragmentListTreeDialog
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     me.ele.uetool.dialog.FragmentListTreeDialog
  * JD-Core Version:    0.7.0.1
  */

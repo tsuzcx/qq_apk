@@ -1,19 +1,21 @@
-import android.view.ViewGroup;
-import com.tencent.mobileqq.filemanager.data.search.troop.TroopFileSearchFragment;
+import android.text.Editable;
+import android.text.TextUtils;
+import android.text.TextWatcher;
 
-public class ards
-  extends ayjn<aynu, aywd>
+class ards
+  implements TextWatcher
 {
-  public ards(TroopFileSearchFragment paramTroopFileSearchFragment) {}
+  ards(ardr paramardr) {}
   
-  protected ayqp<aynu, aywd> a(int paramInt)
-  {
-    return new ardu();
-  }
+  public void afterTextChanged(Editable paramEditable) {}
   
-  protected aywe a(int paramInt, ViewGroup paramViewGroup)
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
   {
-    return new ardw(paramViewGroup);
+    if (!TextUtils.isEmpty(paramCharSequence)) {
+      this.a.c();
+    }
   }
 }
 

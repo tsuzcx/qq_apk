@@ -1,15 +1,31 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
+import com.tencent.biz.tribe.TribeVideoPlugin;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.superplayer.view.ISPlayerVideoView.IVideoViewCallBack;
 
-class aank
-  implements DialogInterface.OnDismissListener
+public class aank
+  implements ISPlayerVideoView.IVideoViewCallBack
 {
-  aank(aanj paramaanj) {}
+  public aank(TribeVideoPlugin paramTribeVideoPlugin) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void onSurfaceChanged(Object paramObject)
   {
-    this.a.jdField_a_of_type_Aans.d();
-    this.a.jdField_a_of_type_Aanh.c();
+    if (QLog.isColorLevel()) {
+      QLog.d("TribeVideoPlugin", 2, "IVideoViewBase.IVideoViewCallBack onSurfaceDestory");
+    }
+  }
+  
+  public void onSurfaceCreated(Object paramObject)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("TribeVideoPlugin", 2, "IVideoViewBase.IVideoViewCallBack onSurfaceCreated");
+    }
+  }
+  
+  public void onSurfaceDestroy(Object paramObject)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("TribeVideoPlugin", 2, "IVideoViewBase.IVideoViewCallBack onSurfaceDestory");
+    }
   }
 }
 

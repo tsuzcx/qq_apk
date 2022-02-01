@@ -1,45 +1,19 @@
-import java.security.MessageDigest;
+import com.tencent.mobileqq.app.BaseActivity;
+import mqq.app.QQPermissionCallback;
 
-public class bekn
+public final class bekn
+  implements QQPermissionCallback
 {
-  private static char[] a = { 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 97, 98, 99, 100, 101, 102 };
+  public bekn(BaseActivity paramBaseActivity) {}
   
-  public static String a(String paramString)
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    try
-    {
-      paramString = a(paramString.getBytes(), "SHA1");
-      return paramString;
+    if (!this.a.isFinishing()) {
+      bglp.b(this.a);
     }
-    catch (Exception paramString)
-    {
-      paramString.printStackTrace();
-    }
-    return "";
   }
   
-  private static String a(byte[] paramArrayOfByte)
-  {
-    StringBuilder localStringBuilder = new StringBuilder(paramArrayOfByte.length * 2);
-    int i = 0;
-    while (i < paramArrayOfByte.length)
-    {
-      localStringBuilder.append(a[((paramArrayOfByte[i] & 0xF0) >>> 4)]);
-      localStringBuilder.append(a[(paramArrayOfByte[i] & 0xF)]);
-      i += 1;
-    }
-    return localStringBuilder.toString();
-  }
-  
-  private static String a(byte[] paramArrayOfByte, String paramString)
-  {
-    if ((paramArrayOfByte == null) || (paramArrayOfByte.length == 0)) {
-      return "";
-    }
-    paramString = MessageDigest.getInstance(paramString);
-    paramString.update(paramArrayOfByte, 0, paramArrayOfByte.length);
-    return a(paramString.digest());
-  }
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt) {}
 }
 
 

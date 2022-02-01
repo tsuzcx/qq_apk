@@ -1,18 +1,38 @@
-public abstract interface bnra
+import com.tencent.aekit.openrender.internal.Frame;
+
+public class bnra
 {
-  public abstract void a();
+  public static final Integer a;
+  private bnrh jdField_a_of_type_Bnrh = new bnrh();
+  private Frame jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame = new Frame();
+  private boolean jdField_a_of_type_Boolean = true;
   
-  public abstract void a(int paramInt);
+  static
+  {
+    jdField_a_of_type_JavaLangInteger = Integer.valueOf(480);
+  }
   
-  public abstract void a(int paramInt1, int paramInt2);
+  public Frame a(Frame paramFrame)
+  {
+    Frame localFrame = paramFrame;
+    if (this.jdField_a_of_type_Boolean)
+    {
+      this.jdField_a_of_type_Bnrh.a(paramFrame, this.jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame);
+      localFrame = this.jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame;
+    }
+    return localFrame;
+  }
   
-  public abstract void a(String paramString, int paramInt1, int paramInt2, int paramInt3);
+  public void a()
+  {
+    this.jdField_a_of_type_Bnrh.apply();
+  }
   
-  public abstract void a(String paramString1, int paramInt1, int paramInt2, String paramString2);
-  
-  public abstract void a(String paramString, int paramInt, long paramLong);
-  
-  public abstract void b();
+  public void b()
+  {
+    this.jdField_a_of_type_Bnrh.ClearGLSL();
+    this.jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame.clear();
+  }
 }
 
 

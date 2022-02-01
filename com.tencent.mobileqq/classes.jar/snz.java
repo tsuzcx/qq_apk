@@ -1,19 +1,23 @@
-import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
-import org.json.JSONObject;
+import android.widget.PopupWindow.OnDismissListener;
 
-public class snz
-  implements spj
+class snz
+  implements PopupWindow.OnDismissListener
 {
-  public snz(BridgeModule paramBridgeModule) {}
+  snz(snh paramsnh) {}
   
-  public void a(String paramString, JSONObject paramJSONObject)
+  public void onDismiss()
   {
-    this.a.invokeCallJS(paramString, paramJSONObject);
+    snh.a(this.a).a(1.0F);
+    if (this.a.b)
+    {
+      this.a.a.c();
+      this.a.b = false;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     snz
  * JD-Core Version:    0.7.0.1
  */

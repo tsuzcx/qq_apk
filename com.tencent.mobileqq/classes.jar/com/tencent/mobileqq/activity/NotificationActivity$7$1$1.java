@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.activity;
 
-import adku;
-import adkv;
+import aeri;
+import aerj;
 
 public class NotificationActivity$7$1$1
   implements Runnable
 {
-  public NotificationActivity$7$1$1(adkv paramadkv) {}
+  public NotificationActivity$7$1$1(aerj paramaerj) {}
   
   public void run()
   {

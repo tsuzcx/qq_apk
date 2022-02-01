@@ -1,54 +1,23 @@
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.view.View;
-import android.view.ViewGroup.MarginLayoutParams;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.widget.immersive.ImmersiveUtils;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.ImageView;
+import com.tencent.mobileqq.apollo.view.ApolloPanelListAdapter.1;
+import com.tencent.mobileqq.apollo.view.ApolloPanelListAdapter.1.1.1;
 
-public final class angs
+public class angs
+  implements Animation.AnimationListener
 {
-  public static int a(String paramString)
+  public angs(ApolloPanelListAdapter.1 param1) {}
+  
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    return BaseApplicationImpl.getApplication().getSharedPreferences("UniformUtils", 0).getInt(paramString, 0);
+    this.a.a.setVisibility(8);
+    this.a.a.postDelayed(new ApolloPanelListAdapter.1.1.1(this), 300L);
   }
   
-  public static void a(Context paramContext, View paramView)
-  {
-    if (ImmersiveUtils.isSupporImmersive() == 1)
-    {
-      int i = ImmersiveUtils.getStatusBarHeight(paramContext);
-      paramContext = (ViewGroup.MarginLayoutParams)paramView.getLayoutParams();
-      paramContext.topMargin = i;
-      paramView.setLayoutParams(paramContext);
-    }
-  }
+  public void onAnimationRepeat(Animation paramAnimation) {}
   
-  public static void a(Context paramContext, View paramView, boolean paramBoolean, int paramInt)
-  {
-    ViewGroup.MarginLayoutParams localMarginLayoutParams;
-    int i;
-    if (azkz.a(paramContext))
-    {
-      localMarginLayoutParams = (ViewGroup.MarginLayoutParams)paramView.getLayoutParams();
-      i = paramInt;
-      if (paramBoolean) {
-        i = paramInt + azkz.d(paramContext);
-      }
-      if (localMarginLayoutParams.bottomMargin != i) {}
-    }
-    else
-    {
-      return;
-    }
-    localMarginLayoutParams.bottomMargin = i;
-    paramView.setLayoutParams(localMarginLayoutParams);
-  }
-  
-  public static void a(String paramString, int paramInt)
-  {
-    BaseApplicationImpl.getApplication().getSharedPreferences("UniformUtils", 0).edit().putInt(paramString, paramInt).commit();
-  }
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

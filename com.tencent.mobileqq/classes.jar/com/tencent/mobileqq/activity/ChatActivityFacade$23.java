@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.activity;
 
-import azaf;
-import azvd;
-import bayf;
+import bbzh;
+import bcwd;
+import bdzi;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.activity.aio.ForwardUtils;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -24,7 +24,7 @@ public final class ChatActivityFacade$23
       if (this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.isSendFromLocal()) {
         this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.frienduin, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.uniseq));
       }
-      AbsStructMsg localAbsStructMsg = azvd.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.msgData);
+      AbsStructMsg localAbsStructMsg = bcwd.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.msgData);
       this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_a_of_type_Long);
       if ((localAbsStructMsg instanceof StructMsgForImageShare))
       {
@@ -42,13 +42,13 @@ public final class ChatActivityFacade$23
       QLog.e("ChatActivityFacade", 1, "resendStructMessage error :", localRuntimeException);
       throw localRuntimeException;
     }
-    MessageRecord localMessageRecord = azaf.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord);
+    MessageRecord localMessageRecord = bbzh.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord);
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(localMessageRecord, null, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ChatActivityFacade.23
  * JD-Core Version:    0.7.0.1
  */

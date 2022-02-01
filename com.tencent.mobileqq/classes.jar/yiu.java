@@ -1,73 +1,40 @@
-import android.os.Bundle;
-import android.support.v7.widget.RecyclerView.RecycledViewPool;
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.ViewGroup;
-import com.tencent.biz.subscribe.baseUI.BaseWidgetView;
-import com.tencent.biz.subscribe.component.base.NestScrollRecyclerView;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tribe.async.async.JobContext;
+import java.util.Vector;
 
-public abstract class yiu
-  extends yhy
+class yiu
+  implements wld<wyj, wyk>
 {
-  private RecyclerView.ViewHolder jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$ViewHolder;
-  private BaseWidgetView jdField_a_of_type_ComTencentBizSubscribeBaseUIBaseWidgetView;
-  private boolean jdField_a_of_type_Boolean = true;
+  yiu(yit paramyit, JobContext paramJobContext, yig paramyig) {}
   
-  public yiu(Bundle paramBundle)
+  public void a(@NonNull wyj paramwyj, @Nullable wyk arg2, @NonNull ErrorMessage paramErrorMessage)
   {
-    super(paramBundle);
-  }
-  
-  public BaseWidgetView a()
-  {
-    return this.jdField_a_of_type_ComTencentBizSubscribeBaseUIBaseWidgetView;
-  }
-  
-  protected abstract BaseWidgetView a(ViewGroup paramViewGroup, yhy paramyhy);
-  
-  public void a(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    if (getParentAdapter() != null) {
-      getParentAdapter().notifyDataSetChanged();
-    }
-  }
-  
-  public int getItemCount()
-  {
-    if (this.jdField_a_of_type_Boolean) {
-      return 1;
-    }
-    return 0;
-  }
-  
-  public int getItemViewType(int paramInt)
-  {
-    return 1;
-  }
-  
-  public int getViewTypeCount()
-  {
-    return 3;
-  }
-  
-  public void onBindViewHolder(RecyclerView.ViewHolder paramViewHolder, int paramInt) {}
-  
-  public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup paramViewGroup, int paramInt)
-  {
-    if (this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$ViewHolder == null)
+    if (this.jdField_a_of_type_ComTribeAsyncAsyncJobContext.isJobCancelled())
     {
-      this.jdField_a_of_type_ComTencentBizSubscribeBaseUIBaseWidgetView = a(paramViewGroup, this);
-      paramViewGroup = new yhx(this, this.jdField_a_of_type_ComTencentBizSubscribeBaseUIBaseWidgetView);
-      paramViewGroup.setIsRecyclable(false);
-      getParentRecyclerView().getRecycledViewPool().setMaxRecycledViews(getGlobalViewType(paramInt), 0);
-      this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$ViewHolder = paramViewGroup;
+      yqp.d("Q.qqstory.home.data:HomeFeedAllInfoPullSegment", "feed basic info pull segment cancel on net respond");
+      return;
     }
-    return this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$ViewHolder;
+    wyk localwyk = ???;
+    if (??? == null) {
+      localwyk = new wyk(paramErrorMessage);
+    }
+    if (paramErrorMessage.isFail()) {
+      yqp.d("Q.qqstory.home.data:HomeFeedAllInfoPullSegment", "request fail for feed info request");
+    }
+    synchronized (this.jdField_a_of_type_Yit)
+    {
+      yit.a(this.jdField_a_of_type_Yit, localwyk);
+      yit.a(this.jdField_a_of_type_Yit).remove(paramwyj);
+      yit.a(this.jdField_a_of_type_Yit, this.jdField_a_of_type_Yig);
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     yiu
  * JD-Core Version:    0.7.0.1
  */

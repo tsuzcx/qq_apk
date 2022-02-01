@@ -29,6 +29,9 @@ public class SegmentDataPipe
   public List<Float[]> allPointsVis;
   public int[] curve;
   public Map<String, Long> detectTimes = new HashMap();
+  public List<Set<Integer>> expressions = new ArrayList();
+  public List<float[]> face3DRotationArray = new ArrayList();
+  public List<float[]> face3DVerticesArray = new ArrayList();
   public Map<Integer, FaceActionCounter> faceActionCounter;
   public double faceAverageL = 60.0D;
   public List<FaceInfo> faceInfos;
@@ -94,7 +97,7 @@ public class SegmentDataPipe
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.openapi.gles.SegmentDataPipe
  * JD-Core Version:    0.7.0.1
  */

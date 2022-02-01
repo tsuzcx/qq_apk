@@ -1,27 +1,31 @@
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentHeaderTopicRecommend;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.UrlJumpInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
 import com.tencent.qphone.base.util.QLog;
-import java.net.URL;
+import java.util.List;
 
-public class qee
-  implements tpv
+class qee
+  implements qms
 {
-  public qee(ComponentHeaderTopicRecommend paramComponentHeaderTopicRecommend) {}
+  qee(qec paramqec, ArticleInfo paramArticleInfo, Container paramContainer) {}
   
-  public void a(URL paramURL, int paramInt) {}
-  
-  public void a(URL paramURL, Throwable paramThrowable) {}
-  
-  public void a(URL paramURL, sfc paramsfc)
+  public void a(int paramInt, ViewBase paramViewBase, TemplateBean paramTemplateBean)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ComponentHeaderTopicRecommend", 2, "topic image view download success");
+    QLog.d("multiVideoColumnInfo", 1, "position : " + paramInt);
+    paramViewBase = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.multiVideoColumnInfo.a;
+    if ((paramInt >= 0) && (paramInt < paramViewBase.size()) && (paramViewBase.get(paramInt) != null) && (((rhx)paramViewBase.get(paramInt)).jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructUrlJumpInfo != null))
+    {
+      paramTemplateBean = ((rhx)paramViewBase.get(paramInt)).jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructUrlJumpInfo;
+      ryx.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getContext(), paramTemplateBean);
+      qec.a(this.jdField_a_of_type_Qec, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, 2, paramTemplateBean.e, ((rhx)paramViewBase.get(paramInt)).jdField_a_of_type_JavaLangString);
     }
-    ComponentHeaderTopicRecommend.a(this.a, paramsfc.a());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     qee
  * JD-Core Version:    0.7.0.1
  */

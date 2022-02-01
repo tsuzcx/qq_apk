@@ -1,16 +1,30 @@
-import feedcloud.FeedCloudMeta.StUser;
+import android.graphics.drawable.Drawable;
 
-public abstract interface uew
+public class uew
+  implements arxd
 {
-  public abstract void a();
+  public void a(arxg paramarxg) {}
   
-  public abstract void a(FeedCloudMeta.StUser paramStUser);
+  public void a(arxg paramarxg1, arxg paramarxg2, Drawable paramDrawable) {}
   
-  public abstract void b();
+  public boolean a(arxg paramarxg)
+  {
+    return false;
+  }
+  
+  public void b() {}
+  
+  public void b(arxg paramarxg) {}
+  
+  public void c() {}
+  
+  public void d() {}
+  
+  public void setting() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     uew
  * JD-Core Version:    0.7.0.1
  */

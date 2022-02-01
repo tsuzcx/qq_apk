@@ -1,15 +1,16 @@
 package com.tencent.mobileqq.vas;
 
-import aepi;
-import aevp;
-import aevq;
-import akmu;
+import afur;
+import agcb;
+import agcc;
+import amga;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.Drawable.ConstantState;
+import android.os.Build.VERSION;
 import android.os.Bundle;
 import android.os.Looper;
 import android.os.Message;
@@ -19,15 +20,15 @@ import android.text.TextUtils;
 import android.util.Pair;
 import android.view.View;
 import android.widget.ImageView;
-import azmk;
-import bdeu;
-import bdfp;
-import bdhb;
-import bdin;
-import bdtj;
-import bdtk;
-import bdtl;
-import beag;
+import bcnj;
+import bgjw;
+import bgks;
+import bgmg;
+import bgnt;
+import bgym;
+import bgyn;
+import bgyo;
+import bhhh;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.aio.BaseChatItemLayout;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -37,6 +38,8 @@ import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import java.io.IOException;
+import java.util.Collection;
+import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
@@ -45,7 +48,7 @@ import mqq.app.AppRuntime;
 import mqq.os.MqqHandler;
 
 public class PendantInfo
-  implements aevq
+  implements agcc
 {
   static int jdField_a_of_type_Int = 1000;
   static ConcurrentHashMap<Long, Integer> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap;
@@ -61,11 +64,11 @@ public class PendantInfo
   public static int k = 100;
   public static int l = 2147483647;
   public static int m = 3;
-  public long a;
+  long jdField_a_of_type_Long;
   protected Context a;
-  public Bitmap a;
-  public bdtk a;
-  beag jdField_a_of_type_Beag = null;
+  Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
+  public bgyn a;
+  bhhh jdField_a_of_type_Bhhh = null;
   public PendantInfo.AnimationLruCache a;
   protected Object a;
   String jdField_a_of_type_JavaLangString = null;
@@ -76,11 +79,11 @@ public class PendantInfo
   String[] jdField_a_of_type_ArrayOfJavaLangString;
   private String jdField_b_of_type_JavaLangString;
   public boolean b;
-  public boolean c;
+  boolean c;
   int n;
   public int o;
   int p;
-  public int q = -1;
+  protected int q = -1;
   public int r = m;
   private int s;
   
@@ -100,12 +103,12 @@ public class PendantInfo
     this.n = -1;
     this.jdField_a_of_type_ArrayOfJavaLangString = null;
     this.jdField_a_of_type_AndroidContentContext = BaseApplicationImpl.getContext();
-    this.jdField_a_of_type_MqqOsMqqHandler = new bdtj(this, Looper.getMainLooper(), null);
+    this.jdField_a_of_type_MqqOsMqqHandler = new bgym(this, Looper.getMainLooper(), null);
     QQAppInterface localQQAppInterface = a();
     if (localQQAppInterface == null) {
       return;
     }
-    this.jdField_a_of_type_Beag = ((beag)localQQAppInterface.getManager(47));
+    this.jdField_a_of_type_Bhhh = ((bhhh)localQQAppInterface.getManager(47));
     this.jdField_a_of_type_ComTencentMobileqqVasPendantInfo$AnimationLruCache = new PendantInfo.AnimationLruCache(this, jdField_b_of_type_Int);
   }
   
@@ -116,6 +119,26 @@ public class PendantInfo
       return (QQAppInterface)localAppRuntime;
     }
     return null;
+  }
+  
+  private void a(Message paramMessage)
+  {
+    long l1 = paramMessage.getData().getLong("targetId");
+    if (g == l1)
+    {
+      paramMessage = this.jdField_a_of_type_ComTencentMobileqqVasPendantInfo$AnimationLruCache.values().iterator();
+      while (paramMessage.hasNext())
+      {
+        Drawable localDrawable = (Drawable)paramMessage.next();
+        if ((localDrawable != null) && ((localDrawable instanceof agcb))) {
+          a((agcb)localDrawable, l1);
+        }
+      }
+    }
+    paramMessage = (Drawable)this.jdField_a_of_type_ComTencentMobileqqVasPendantInfo$AnimationLruCache.get(Long.valueOf(l1));
+    if ((paramMessage != null) && ((paramMessage instanceof agcb))) {
+      a((agcb)paramMessage, l1);
+    }
   }
   
   public static boolean a(Message paramMessage, long paramLong)
@@ -140,7 +163,96 @@ public class PendantInfo
     return false;
   }
   
-  public int a(int paramInt)
+  private void b(Message paramMessage)
+  {
+    this.jdField_b_of_type_Boolean = true;
+    this.q = a(this.q);
+    Bitmap localBitmap;
+    long l1;
+    if ((paramMessage.obj instanceof Bitmap))
+    {
+      Object localObject = (Bitmap)paramMessage.obj;
+      if ((localObject != null) && (b() != localObject))
+      {
+        localBitmap = a();
+        if (localBitmap != null)
+        {
+          if ((localBitmap.isMutable()) && (Build.VERSION.SDK_INT > 11)) {
+            this.jdField_a_of_type_AndroidGraphicsBitmap = localBitmap;
+          }
+        }
+        else {
+          a((Bitmap)localObject);
+        }
+      }
+      else
+      {
+        l1 = paramMessage.getData().getLong("targetId");
+        try
+        {
+          if (g != l1) {
+            break label286;
+          }
+          paramMessage = this.jdField_a_of_type_ComTencentMobileqqVasPendantInfo$AnimationLruCache.values().iterator();
+          while (paramMessage.hasNext())
+          {
+            localObject = (Drawable)paramMessage.next();
+            if (localObject != null) {
+              ((Drawable)localObject).invalidateSelf();
+            }
+          }
+          if (2 != this.o) {
+            break label272;
+          }
+        }
+        catch (Exception paramMessage)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d("PendantInfo", 2, "handleMessage, exception:" + paramMessage.getMessage());
+          }
+        }
+        label190:
+        if (!this.jdField_c_of_type_Boolean) {
+          break label357;
+        }
+        if (QLog.isColorLevel()) {
+          QLog.d("PendantInfo", 2, "cancel decode pendant in market:" + this.jdField_a_of_type_Long);
+        }
+        this.jdField_c_of_type_Boolean = false;
+        l1 = g;
+        this.q = 0;
+        this.r = 3;
+      }
+    }
+    label272:
+    label286:
+    label357:
+    for (;;)
+    {
+      if (this.r == 0) {
+        this.jdField_a_of_type_Bgyn = null;
+      }
+      do
+      {
+        return;
+        localBitmap.recycle();
+        this.jdField_a_of_type_AndroidGraphicsBitmap = null;
+        break;
+        paramMessage = (Drawable)this.jdField_a_of_type_ComTencentMobileqqVasPendantInfo$AnimationLruCache.get(Long.valueOf(l1));
+        if (paramMessage == null) {
+          break label190;
+        }
+        paramMessage.invalidateSelf();
+        break label190;
+        b(l1);
+        return;
+      } while (!QLog.isColorLevel());
+      QLog.d("PendantInfo", 2, "wrong type , msg.obj = " + paramMessage.obj.getClass());
+      return;
+    }
+  }
+  
+  protected int a(int paramInt)
   {
     if (paramInt == this.s - 1)
     {
@@ -158,7 +270,7 @@ public class PendantInfo
       i1 = -1;
       return i1;
     }
-    Integer localInteger = (Integer)bdfp.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Long.valueOf(this.jdField_a_of_type_Long));
+    Integer localInteger = (Integer)bgks.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Long.valueOf(this.jdField_a_of_type_Long));
     int i2;
     Object localObject1;
     int i3;
@@ -166,7 +278,7 @@ public class PendantInfo
     if ((paramFile.exists()) && ((localInteger == null) || (-1 == this.n)))
     {
       i2 = -2147483648;
-      localObject1 = bdhb.a(paramFile);
+      localObject1 = bgmg.a(paramFile);
       if (localObject1 != null)
       {
         localObject1 = new String((byte[])localObject1);
@@ -198,7 +310,7 @@ public class PendantInfo
         i1 = i2;
         this.n = i2;
         i1 = i2;
-        bdfp.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(Long.valueOf(this.jdField_a_of_type_Long), Integer.valueOf(i2));
+        bgks.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(Long.valueOf(this.jdField_a_of_type_Long), Integer.valueOf(i2));
         i1 = i2;
         i2 = ((String)localObject1).indexOf("\"isDiy\":");
         if (i2 != -1)
@@ -217,7 +329,7 @@ public class PendantInfo
           if (QLog.isColorLevel()) {
             QLog.d("PendantInfo", 2, "pendant isDiy=" + i2);
           }
-          bdfp.b.put(Long.valueOf(this.jdField_a_of_type_Long), Integer.valueOf(i2));
+          bgks.b.put(Long.valueOf(this.jdField_a_of_type_Long), Integer.valueOf(i2));
           if (i1 != -2147483648) {
             continue;
           }
@@ -249,8 +361,8 @@ public class PendantInfo
             QLog.d("PendantInfo", 2, "static pendant, abort dynamic request");
           }
           this.o = 5;
-          this.jdField_b_of_type_JavaLangString = bdfp.b(this.jdField_a_of_type_Long, this.o);
-          localObject1 = aepi.a();
+          this.jdField_b_of_type_JavaLangString = bgks.b(this.jdField_a_of_type_Long, this.o);
+          localObject1 = afur.a();
           if (this.o != 2) {
             continue;
           }
@@ -266,7 +378,7 @@ public class PendantInfo
         a(1, 7, 0L);
         continue;
         continue;
-        localInteger = (Integer)bdfp.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Long.valueOf(this.jdField_a_of_type_Long));
+        localInteger = (Integer)bgks.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Long.valueOf(this.jdField_a_of_type_Long));
         continue;
         Object localObject2 = localObject1;
         if (localObject1 == null)
@@ -276,7 +388,7 @@ public class PendantInfo
         }
         try
         {
-          localObject2 = bdhb.b(paramFile);
+          localObject2 = bgmg.b(paramFile);
           a((String)localObject2);
         }
         catch (IOException localIOException)
@@ -333,13 +445,13 @@ public class PendantInfo
     //   17: putfield 85	com/tencent/mobileqq/vas/PendantInfo:jdField_b_of_type_Boolean	Z
     //   20: aconst_null
     //   21: areturn
-    //   22: new 357	android/graphics/BitmapFactory$Options
+    //   22: new 439	android/graphics/BitmapFactory$Options
     //   25: dup
-    //   26: invokespecial 358	android/graphics/BitmapFactory$Options:<init>	()V
+    //   26: invokespecial 440	android/graphics/BitmapFactory$Options:<init>	()V
     //   29: astore 11
     //   31: aload_2
-    //   32: checkcast 359	[Ljava/lang/String;
-    //   35: checkcast 359	[Ljava/lang/String;
+    //   32: checkcast 441	[Ljava/lang/String;
+    //   35: checkcast 441	[Ljava/lang/String;
     //   38: astore_2
     //   39: aload_2
     //   40: iload_3
@@ -352,49 +464,49 @@ public class PendantInfo
     //   47: astore 10
     //   49: aload 11
     //   51: sipush 320
-    //   54: putfield 362	android/graphics/BitmapFactory$Options:inDensity	I
+    //   54: putfield 444	android/graphics/BitmapFactory$Options:inDensity	I
     //   57: aload 11
     //   59: invokestatic 155	com/tencent/common/app/BaseApplicationImpl:getApplication	()Lcom/tencent/common/app/BaseApplicationImpl;
-    //   62: invokevirtual 366	com/tencent/common/app/BaseApplicationImpl:getResources	()Landroid/content/res/Resources;
-    //   65: invokevirtual 372	android/content/res/Resources:getDisplayMetrics	()Landroid/util/DisplayMetrics;
-    //   68: getfield 377	android/util/DisplayMetrics:densityDpi	I
-    //   71: putfield 380	android/graphics/BitmapFactory$Options:inTargetDensity	I
+    //   62: invokevirtual 448	com/tencent/common/app/BaseApplicationImpl:getResources	()Landroid/content/res/Resources;
+    //   65: invokevirtual 454	android/content/res/Resources:getDisplayMetrics	()Landroid/util/DisplayMetrics;
+    //   68: getfield 459	android/util/DisplayMetrics:densityDpi	I
+    //   71: putfield 462	android/graphics/BitmapFactory$Options:inTargetDensity	I
     //   74: aload 11
-    //   76: getfield 362	android/graphics/BitmapFactory$Options:inDensity	I
+    //   76: getfield 444	android/graphics/BitmapFactory$Options:inDensity	I
     //   79: aload 11
-    //   81: getfield 380	android/graphics/BitmapFactory$Options:inTargetDensity	I
+    //   81: getfield 462	android/graphics/BitmapFactory$Options:inTargetDensity	I
     //   84: if_icmpge +13 -> 97
     //   87: aload 11
     //   89: aload 11
-    //   91: getfield 380	android/graphics/BitmapFactory$Options:inTargetDensity	I
-    //   94: putfield 362	android/graphics/BitmapFactory$Options:inDensity	I
-    //   97: new 382	java/io/FileInputStream
+    //   91: getfield 462	android/graphics/BitmapFactory$Options:inTargetDensity	I
+    //   94: putfield 444	android/graphics/BitmapFactory$Options:inDensity	I
+    //   97: new 464	java/io/FileInputStream
     //   100: dup
     //   101: aload 10
-    //   103: invokespecial 384	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
+    //   103: invokespecial 466	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
     //   106: astore 9
-    //   108: getstatic 389	android/os/Build$VERSION:SDK_INT	I
+    //   108: getstatic 258	android/os/Build$VERSION:SDK_INT	I
     //   111: bipush 11
     //   113: if_icmple +655 -> 768
     //   116: aload 11
-    //   118: getfield 362	android/graphics/BitmapFactory$Options:inDensity	I
+    //   118: getfield 444	android/graphics/BitmapFactory$Options:inDensity	I
     //   121: aload 11
-    //   123: getfield 380	android/graphics/BitmapFactory$Options:inTargetDensity	I
+    //   123: getfield 462	android/graphics/BitmapFactory$Options:inTargetDensity	I
     //   126: if_icmpgt +642 -> 768
-    //   129: new 357	android/graphics/BitmapFactory$Options
+    //   129: new 439	android/graphics/BitmapFactory$Options
     //   132: dup
-    //   133: invokespecial 358	android/graphics/BitmapFactory$Options:<init>	()V
+    //   133: invokespecial 440	android/graphics/BitmapFactory$Options:<init>	()V
     //   136: astore 8
     //   138: aload 8
     //   140: iconst_1
-    //   141: putfield 392	android/graphics/BitmapFactory$Options:inJustDecodeBounds	Z
-    //   144: new 394	java/io/BufferedInputStream
+    //   141: putfield 469	android/graphics/BitmapFactory$Options:inJustDecodeBounds	Z
+    //   144: new 471	java/io/BufferedInputStream
     //   147: dup
-    //   148: new 382	java/io/FileInputStream
+    //   148: new 464	java/io/FileInputStream
     //   151: dup
     //   152: aload 10
-    //   154: invokespecial 384	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
-    //   157: invokespecial 397	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
+    //   154: invokespecial 466	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
+    //   157: invokespecial 474	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
     //   160: astore_2
     //   161: aload_2
     //   162: astore 5
@@ -403,26 +515,26 @@ public class PendantInfo
     //   167: aload_2
     //   168: aconst_null
     //   169: aload 8
-    //   171: invokestatic 403	android/graphics/BitmapFactory:decodeStream	(Ljava/io/InputStream;Landroid/graphics/Rect;Landroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
+    //   171: invokestatic 480	android/graphics/BitmapFactory:decodeStream	(Ljava/io/InputStream;Landroid/graphics/Rect;Landroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
     //   174: pop
     //   175: aload_2
     //   176: astore 5
     //   178: aload_2
     //   179: astore 4
     //   181: aload_0
-    //   182: getfield 405	com/tencent/mobileqq/vas/PendantInfo:jdField_a_of_type_AndroidGraphicsBitmap	Landroid/graphics/Bitmap;
+    //   182: getfield 260	com/tencent/mobileqq/vas/PendantInfo:jdField_a_of_type_AndroidGraphicsBitmap	Landroid/graphics/Bitmap;
     //   185: ifnull +124 -> 309
     //   188: aload_2
     //   189: astore 5
     //   191: aload_2
     //   192: astore 4
     //   194: aload_0
-    //   195: getfield 405	com/tencent/mobileqq/vas/PendantInfo:jdField_a_of_type_AndroidGraphicsBitmap	Landroid/graphics/Bitmap;
+    //   195: getfield 260	com/tencent/mobileqq/vas/PendantInfo:jdField_a_of_type_AndroidGraphicsBitmap	Landroid/graphics/Bitmap;
     //   198: aload 8
-    //   200: getfield 408	android/graphics/BitmapFactory$Options:outWidth	I
+    //   200: getfield 483	android/graphics/BitmapFactory$Options:outWidth	I
     //   203: aload 8
-    //   205: getfield 411	android/graphics/BitmapFactory$Options:outHeight	I
-    //   208: invokestatic 416	com/tencent/mobileqq/activity/aio/anim/FriendProfileCardBgDrawable:a	(Landroid/graphics/Bitmap;II)Z
+    //   205: getfield 486	android/graphics/BitmapFactory$Options:outHeight	I
+    //   208: invokestatic 491	com/tencent/mobileqq/activity/aio/anim/FriendProfileCardBgDrawable:a	(Landroid/graphics/Bitmap;II)Z
     //   211: ifeq +98 -> 309
     //   214: aload_2
     //   215: astore 5
@@ -430,33 +542,33 @@ public class PendantInfo
     //   218: astore 4
     //   220: aload 11
     //   222: aload_0
-    //   223: getfield 405	com/tencent/mobileqq/vas/PendantInfo:jdField_a_of_type_AndroidGraphicsBitmap	Landroid/graphics/Bitmap;
-    //   226: putfield 419	android/graphics/BitmapFactory$Options:inBitmap	Landroid/graphics/Bitmap;
+    //   223: getfield 260	com/tencent/mobileqq/vas/PendantInfo:jdField_a_of_type_AndroidGraphicsBitmap	Landroid/graphics/Bitmap;
+    //   226: putfield 494	android/graphics/BitmapFactory$Options:inBitmap	Landroid/graphics/Bitmap;
     //   229: aload_2
     //   230: astore 5
     //   232: aload_2
     //   233: astore 4
     //   235: aload 11
     //   237: iconst_1
-    //   238: putfield 422	android/graphics/BitmapFactory$Options:inMutable	Z
+    //   238: putfield 497	android/graphics/BitmapFactory$Options:inMutable	Z
     //   241: aload_2
     //   242: astore 5
     //   244: aload_2
     //   245: astore 4
     //   247: aload 11
     //   249: iconst_1
-    //   250: putfield 425	android/graphics/BitmapFactory$Options:inSampleSize	I
+    //   250: putfield 500	android/graphics/BitmapFactory$Options:inSampleSize	I
     //   253: aload_2
     //   254: astore 5
     //   256: aload_2
     //   257: astore 4
-    //   259: new 394	java/io/BufferedInputStream
+    //   259: new 471	java/io/BufferedInputStream
     //   262: dup
     //   263: aload 9
-    //   265: invokespecial 397	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
+    //   265: invokespecial 474	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
     //   268: aconst_null
     //   269: aload 11
-    //   271: invokestatic 428	com/tencent/image/SafeBitmapFactory:decodeStream	(Ljava/io/InputStream;Landroid/graphics/Rect;Landroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
+    //   271: invokestatic 503	com/tencent/image/SafeBitmapFactory:decodeStream	(Ljava/io/InputStream;Landroid/graphics/Rect;Landroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
     //   274: astore 8
     //   276: aload 8
     //   278: astore 4
@@ -465,14 +577,14 @@ public class PendantInfo
     //   283: aload 5
     //   285: ifnull +8 -> 293
     //   288: aload 5
-    //   290: invokevirtual 431	java/io/BufferedInputStream:close	()V
+    //   290: invokevirtual 506	java/io/BufferedInputStream:close	()V
     //   293: aload 9
-    //   295: invokevirtual 434	java/io/InputStream:close	()V
+    //   295: invokevirtual 509	java/io/InputStream:close	()V
     //   298: aload 4
     //   300: areturn
     //   301: astore_2
     //   302: aload_2
-    //   303: invokevirtual 437	java/io/IOException:printStackTrace	()V
+    //   303: invokevirtual 512	java/io/IOException:printStackTrace	()V
     //   306: aload 4
     //   308: areturn
     //   309: aload_2
@@ -481,190 +593,190 @@ public class PendantInfo
     //   313: astore 4
     //   315: aload 11
     //   317: aconst_null
-    //   318: putfield 419	android/graphics/BitmapFactory$Options:inBitmap	Landroid/graphics/Bitmap;
+    //   318: putfield 494	android/graphics/BitmapFactory$Options:inBitmap	Landroid/graphics/Bitmap;
     //   321: goto -92 -> 229
     //   324: astore_2
-    //   325: ldc 183
+    //   325: ldc 228
     //   327: iconst_1
-    //   328: new 258	java/lang/StringBuilder
+    //   328: new 271	java/lang/StringBuilder
     //   331: dup
-    //   332: invokespecial 259	java/lang/StringBuilder:<init>	()V
-    //   335: ldc_w 439
-    //   338: invokevirtual 265	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   332: invokespecial 272	java/lang/StringBuilder:<init>	()V
+    //   335: ldc_w 514
+    //   338: invokevirtual 278	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   341: aload_2
-    //   342: invokestatic 342	com/tencent/mobileqq/msf/sdk/MsfSdkUtils:getStackTraceString	(Ljava/lang/Throwable;)Ljava/lang/String;
-    //   345: invokevirtual 265	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   348: invokevirtual 271	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   351: invokestatic 190	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   342: invokestatic 427	com/tencent/mobileqq/msf/sdk/MsfSdkUtils:getStackTraceString	(Ljava/lang/Throwable;)Ljava/lang/String;
+    //   345: invokevirtual 278	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   348: invokevirtual 285	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   351: invokestatic 235	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   354: aload 7
     //   356: astore 4
     //   358: goto -75 -> 283
     //   361: astore 5
     //   363: aconst_null
     //   364: astore_2
-    //   365: ldc 183
+    //   365: ldc 228
     //   367: iconst_1
-    //   368: new 258	java/lang/StringBuilder
+    //   368: new 271	java/lang/StringBuilder
     //   371: dup
-    //   372: invokespecial 259	java/lang/StringBuilder:<init>	()V
-    //   375: ldc_w 441
-    //   378: invokevirtual 265	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   372: invokespecial 272	java/lang/StringBuilder:<init>	()V
+    //   375: ldc_w 516
+    //   378: invokevirtual 278	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   381: aload 5
-    //   383: invokestatic 342	com/tencent/mobileqq/msf/sdk/MsfSdkUtils:getStackTraceString	(Ljava/lang/Throwable;)Ljava/lang/String;
-    //   386: invokevirtual 265	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   389: invokevirtual 271	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   392: invokestatic 190	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   383: invokestatic 427	com/tencent/mobileqq/msf/sdk/MsfSdkUtils:getStackTraceString	(Ljava/lang/Throwable;)Ljava/lang/String;
+    //   386: invokevirtual 278	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   389: invokevirtual 285	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   392: invokestatic 235	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   395: aload 11
     //   397: aconst_null
-    //   398: putfield 419	android/graphics/BitmapFactory$Options:inBitmap	Landroid/graphics/Bitmap;
+    //   398: putfield 494	android/graphics/BitmapFactory$Options:inBitmap	Landroid/graphics/Bitmap;
     //   401: aload 11
     //   403: iconst_0
-    //   404: putfield 422	android/graphics/BitmapFactory$Options:inMutable	Z
-    //   407: new 394	java/io/BufferedInputStream
+    //   404: putfield 497	android/graphics/BitmapFactory$Options:inMutable	Z
+    //   407: new 471	java/io/BufferedInputStream
     //   410: dup
     //   411: aload 9
-    //   413: invokespecial 397	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
+    //   413: invokespecial 474	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
     //   416: aconst_null
     //   417: aload 11
-    //   419: invokestatic 428	com/tencent/image/SafeBitmapFactory:decodeStream	(Ljava/io/InputStream;Landroid/graphics/Rect;Landroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
+    //   419: invokestatic 503	com/tencent/image/SafeBitmapFactory:decodeStream	(Ljava/io/InputStream;Landroid/graphics/Rect;Landroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
     //   422: astore 4
     //   424: aload 4
     //   426: astore 6
-    //   428: ldc 183
+    //   428: ldc 228
     //   430: iconst_1
-    //   431: new 258	java/lang/StringBuilder
+    //   431: new 271	java/lang/StringBuilder
     //   434: dup
-    //   435: invokespecial 259	java/lang/StringBuilder:<init>	()V
-    //   438: ldc_w 443
-    //   441: invokevirtual 265	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   435: invokespecial 272	java/lang/StringBuilder:<init>	()V
+    //   438: ldc_w 518
+    //   441: invokevirtual 278	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   444: aload 10
-    //   446: invokevirtual 265	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   449: invokevirtual 271	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   452: invokestatic 190	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   446: invokevirtual 278	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   449: invokevirtual 285	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   452: invokestatic 235	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   455: aload_0
-    //   456: getfield 405	com/tencent/mobileqq/vas/PendantInfo:jdField_a_of_type_AndroidGraphicsBitmap	Landroid/graphics/Bitmap;
+    //   456: getfield 260	com/tencent/mobileqq/vas/PendantInfo:jdField_a_of_type_AndroidGraphicsBitmap	Landroid/graphics/Bitmap;
     //   459: ifnull +51 -> 510
-    //   462: ldc 183
+    //   462: ldc 228
     //   464: iconst_1
-    //   465: new 258	java/lang/StringBuilder
+    //   465: new 271	java/lang/StringBuilder
     //   468: dup
-    //   469: invokespecial 259	java/lang/StringBuilder:<init>	()V
-    //   472: ldc_w 445
-    //   475: invokevirtual 265	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   469: invokespecial 272	java/lang/StringBuilder:<init>	()V
+    //   472: ldc_w 520
+    //   475: invokevirtual 278	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   478: aload_0
-    //   479: getfield 405	com/tencent/mobileqq/vas/PendantInfo:jdField_a_of_type_AndroidGraphicsBitmap	Landroid/graphics/Bitmap;
-    //   482: invokevirtual 450	android/graphics/Bitmap:getWidth	()I
-    //   485: invokevirtual 268	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   488: ldc_w 452
-    //   491: invokevirtual 265	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   479: getfield 260	com/tencent/mobileqq/vas/PendantInfo:jdField_a_of_type_AndroidGraphicsBitmap	Landroid/graphics/Bitmap;
+    //   482: invokevirtual 523	android/graphics/Bitmap:getWidth	()I
+    //   485: invokevirtual 364	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   488: ldc_w 525
+    //   491: invokevirtual 278	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   494: aload_0
-    //   495: getfield 405	com/tencent/mobileqq/vas/PendantInfo:jdField_a_of_type_AndroidGraphicsBitmap	Landroid/graphics/Bitmap;
-    //   498: invokevirtual 455	android/graphics/Bitmap:getHeight	()I
-    //   501: invokevirtual 268	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   504: invokevirtual 271	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   507: invokestatic 190	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   495: getfield 260	com/tencent/mobileqq/vas/PendantInfo:jdField_a_of_type_AndroidGraphicsBitmap	Landroid/graphics/Bitmap;
+    //   498: invokevirtual 528	android/graphics/Bitmap:getHeight	()I
+    //   501: invokevirtual 364	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   504: invokevirtual 285	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   507: invokestatic 235	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   510: aload 6
     //   512: astore 4
     //   514: aload_2
     //   515: astore 5
     //   517: aload 6
     //   519: ifnull -236 -> 283
-    //   522: ldc 183
+    //   522: ldc 228
     //   524: iconst_1
-    //   525: new 258	java/lang/StringBuilder
+    //   525: new 271	java/lang/StringBuilder
     //   528: dup
-    //   529: invokespecial 259	java/lang/StringBuilder:<init>	()V
-    //   532: ldc_w 457
-    //   535: invokevirtual 265	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   529: invokespecial 272	java/lang/StringBuilder:<init>	()V
+    //   532: ldc_w 530
+    //   535: invokevirtual 278	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   538: aload 6
-    //   540: invokevirtual 450	android/graphics/Bitmap:getWidth	()I
-    //   543: invokevirtual 268	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   546: ldc_w 452
-    //   549: invokevirtual 265	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   540: invokevirtual 523	android/graphics/Bitmap:getWidth	()I
+    //   543: invokevirtual 364	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   546: ldc_w 525
+    //   549: invokevirtual 278	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   552: aload 6
-    //   554: invokevirtual 455	android/graphics/Bitmap:getHeight	()I
-    //   557: invokevirtual 268	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   560: invokevirtual 271	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   563: invokestatic 190	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   554: invokevirtual 528	android/graphics/Bitmap:getHeight	()I
+    //   557: invokevirtual 364	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   560: invokevirtual 285	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   563: invokestatic 235	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   566: aload 6
     //   568: astore 4
     //   570: aload_2
     //   571: astore 5
     //   573: goto -290 -> 283
     //   576: astore 4
-    //   578: ldc 183
+    //   578: ldc 228
     //   580: iconst_1
-    //   581: new 258	java/lang/StringBuilder
+    //   581: new 271	java/lang/StringBuilder
     //   584: dup
-    //   585: invokespecial 259	java/lang/StringBuilder:<init>	()V
-    //   588: ldc_w 459
-    //   591: invokevirtual 265	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   585: invokespecial 272	java/lang/StringBuilder:<init>	()V
+    //   588: ldc_w 532
+    //   591: invokevirtual 278	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   594: aload 4
-    //   596: invokestatic 342	com/tencent/mobileqq/msf/sdk/MsfSdkUtils:getStackTraceString	(Ljava/lang/Throwable;)Ljava/lang/String;
-    //   599: invokevirtual 265	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   602: invokevirtual 271	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   605: invokestatic 190	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   596: invokestatic 427	com/tencent/mobileqq/msf/sdk/MsfSdkUtils:getStackTraceString	(Ljava/lang/Throwable;)Ljava/lang/String;
+    //   599: invokevirtual 278	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   602: invokevirtual 285	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   605: invokestatic 235	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   608: goto -180 -> 428
     //   611: astore 4
-    //   613: ldc 183
+    //   613: ldc 228
     //   615: iconst_1
-    //   616: new 258	java/lang/StringBuilder
+    //   616: new 271	java/lang/StringBuilder
     //   619: dup
-    //   620: invokespecial 259	java/lang/StringBuilder:<init>	()V
-    //   623: ldc_w 461
-    //   626: invokevirtual 265	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   620: invokespecial 272	java/lang/StringBuilder:<init>	()V
+    //   623: ldc_w 534
+    //   626: invokevirtual 278	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   629: aload 4
-    //   631: invokestatic 342	com/tencent/mobileqq/msf/sdk/MsfSdkUtils:getStackTraceString	(Ljava/lang/Throwable;)Ljava/lang/String;
-    //   634: invokevirtual 265	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   637: invokevirtual 271	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   640: invokestatic 190	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   631: invokestatic 427	com/tencent/mobileqq/msf/sdk/MsfSdkUtils:getStackTraceString	(Ljava/lang/Throwable;)Ljava/lang/String;
+    //   634: invokevirtual 278	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   637: invokevirtual 285	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   640: invokestatic 235	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   643: goto -215 -> 428
-    //   646: new 357	android/graphics/BitmapFactory$Options
+    //   646: new 439	android/graphics/BitmapFactory$Options
     //   649: dup
-    //   650: invokespecial 358	android/graphics/BitmapFactory$Options:<init>	()V
+    //   650: invokespecial 440	android/graphics/BitmapFactory$Options:<init>	()V
     //   653: astore 4
     //   655: aload_2
-    //   656: checkcast 463	bdtl
+    //   656: checkcast 536	bgyo
     //   659: astore_2
     //   660: aload 4
     //   662: sipush 320
-    //   665: putfield 362	android/graphics/BitmapFactory$Options:inDensity	I
+    //   665: putfield 444	android/graphics/BitmapFactory$Options:inDensity	I
     //   668: aload 4
     //   670: invokestatic 155	com/tencent/common/app/BaseApplicationImpl:getApplication	()Lcom/tencent/common/app/BaseApplicationImpl;
-    //   673: invokevirtual 366	com/tencent/common/app/BaseApplicationImpl:getResources	()Landroid/content/res/Resources;
-    //   676: invokevirtual 372	android/content/res/Resources:getDisplayMetrics	()Landroid/util/DisplayMetrics;
-    //   679: getfield 377	android/util/DisplayMetrics:densityDpi	I
-    //   682: putfield 380	android/graphics/BitmapFactory$Options:inTargetDensity	I
+    //   673: invokevirtual 448	com/tencent/common/app/BaseApplicationImpl:getResources	()Landroid/content/res/Resources;
+    //   676: invokevirtual 454	android/content/res/Resources:getDisplayMetrics	()Landroid/util/DisplayMetrics;
+    //   679: getfield 459	android/util/DisplayMetrics:densityDpi	I
+    //   682: putfield 462	android/graphics/BitmapFactory$Options:inTargetDensity	I
     //   685: aload 4
-    //   687: getfield 362	android/graphics/BitmapFactory$Options:inDensity	I
+    //   687: getfield 444	android/graphics/BitmapFactory$Options:inDensity	I
     //   690: aload 4
-    //   692: getfield 380	android/graphics/BitmapFactory$Options:inTargetDensity	I
+    //   692: getfield 462	android/graphics/BitmapFactory$Options:inTargetDensity	I
     //   695: if_icmpge +13 -> 708
     //   698: aload 4
     //   700: aload 4
-    //   702: getfield 380	android/graphics/BitmapFactory$Options:inTargetDensity	I
-    //   705: putfield 362	android/graphics/BitmapFactory$Options:inDensity	I
-    //   708: new 394	java/io/BufferedInputStream
+    //   702: getfield 462	android/graphics/BitmapFactory$Options:inTargetDensity	I
+    //   705: putfield 444	android/graphics/BitmapFactory$Options:inDensity	I
+    //   708: new 471	java/io/BufferedInputStream
     //   711: dup
-    //   712: new 382	java/io/FileInputStream
+    //   712: new 464	java/io/FileInputStream
     //   715: dup
     //   716: aload_2
-    //   717: getfield 464	bdtl:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   720: invokespecial 384	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
-    //   723: invokespecial 397	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
+    //   717: getfield 537	bgyo:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   720: invokespecial 466	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
+    //   723: invokespecial 474	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
     //   726: aconst_null
     //   727: aload 4
-    //   729: invokestatic 428	com/tencent/image/SafeBitmapFactory:decodeStream	(Ljava/io/InputStream;Landroid/graphics/Rect;Landroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
+    //   729: invokestatic 503	com/tencent/image/SafeBitmapFactory:decodeStream	(Ljava/io/InputStream;Landroid/graphics/Rect;Landroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
     //   732: astore_2
     //   733: aload_2
     //   734: areturn
     //   735: astore_2
-    //   736: invokestatic 256	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   736: invokestatic 269	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   739: ifeq -719 -> 20
-    //   742: ldc 183
+    //   742: ldc 228
     //   744: iconst_2
-    //   745: ldc_w 466
-    //   748: invokestatic 468	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   745: ldc_w 539
+    //   748: invokestatic 541	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
     //   751: aconst_null
     //   752: areturn
     //   753: astore 5
@@ -729,7 +841,7 @@ public class PendantInfo
   public Drawable a(int paramInt1, long paramLong, String paramString, int paramInt2)
   {
     this.o = paramInt1;
-    StringBuilder localStringBuilder = aepi.a();
+    StringBuilder localStringBuilder = afur.a();
     Object localObject;
     if (this.o == 2)
     {
@@ -739,11 +851,11 @@ public class PendantInfo
       if ((TextUtils.isEmpty(paramString)) || (paramInt2 <= 0)) {
         break label205;
       }
-      if ((localObject != null) && ((localObject instanceof akmu))) {
+      if ((localObject != null) && ((localObject instanceof amga))) {
         break label256;
       }
       localObject = paramString + "_" + paramInt2;
-      paramString = new akmu(BaseApplicationImpl.getApplication().getResources());
+      paramString = new amga(BaseApplicationImpl.getApplication().getResources());
       paramString.b((String)localObject);
       paramString.a(this);
       this.jdField_a_of_type_ComTencentMobileqqVasPendantInfo$AnimationLruCache.put(Long.valueOf(paramLong), paramString);
@@ -756,9 +868,9 @@ public class PendantInfo
       localObject = "static_pendant";
       break;
       label205:
-      if ((localObject == null) || ((localObject instanceof akmu)))
+      if ((localObject == null) || ((localObject instanceof amga)))
       {
-        paramString = new aevp(BaseApplicationImpl.getApplication().getResources());
+        paramString = new agcb(BaseApplicationImpl.getApplication().getResources());
         paramString.a(this);
         this.jdField_a_of_type_ComTencentMobileqqVasPendantInfo$AnimationLruCache.put(Long.valueOf(paramLong), paramString);
       }
@@ -786,34 +898,34 @@ public class PendantInfo
     //   14: aload_0
     //   15: getfield 104	com/tencent/mobileqq/vas/PendantInfo:jdField_a_of_type_Long	J
     //   18: bipush 8
-    //   20: invokestatic 312	bdfp:b	(JI)Ljava/lang/String;
+    //   20: invokestatic 400	bgks:b	(JI)Ljava/lang/String;
     //   23: astore_3
     //   24: aload_3
-    //   25: invokestatic 508	bdhb:a	(Ljava/lang/String;)Z
+    //   25: invokestatic 576	bgmg:a	(Ljava/lang/String;)Z
     //   28: ifeq -17 -> 11
     //   31: aload_3
-    //   32: invokestatic 511	bdhb:a	(Ljava/lang/String;)Ljava/util/ArrayList;
+    //   32: invokestatic 579	bgmg:a	(Ljava/lang/String;)Ljava/util/ArrayList;
     //   35: astore 4
     //   37: aload 4
-    //   39: invokevirtual 516	java/util/ArrayList:size	()I
+    //   39: invokevirtual 584	java/util/ArrayList:size	()I
     //   42: ifle -31 -> 11
     //   45: aload_0
     //   46: aload 4
-    //   48: invokevirtual 516	java/util/ArrayList:size	()I
-    //   51: anewarray 228	java/lang/String
+    //   48: invokevirtual 584	java/util/ArrayList:size	()I
+    //   51: anewarray 335	java/lang/String
     //   54: putfield 112	com/tencent/mobileqq/vas/PendantInfo:jdField_a_of_type_ArrayOfJavaLangString	[Ljava/lang/String;
-    //   57: new 258	java/lang/StringBuilder
+    //   57: new 271	java/lang/StringBuilder
     //   60: dup
-    //   61: invokespecial 259	java/lang/StringBuilder:<init>	()V
+    //   61: invokespecial 272	java/lang/StringBuilder:<init>	()V
     //   64: astore 4
     //   66: aload 4
     //   68: aload_3
-    //   69: invokevirtual 265	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   72: getstatic 519	java/io/File:separator	Ljava/lang/String;
-    //   75: invokevirtual 265	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   69: invokevirtual 278	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   72: getstatic 587	java/io/File:separator	Ljava/lang/String;
+    //   75: invokevirtual 278	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   78: pop
     //   79: aload 4
-    //   81: invokevirtual 271	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   81: invokevirtual 285	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   84: astore_3
     //   85: iconst_0
     //   86: istore_1
@@ -827,16 +939,16 @@ public class PendantInfo
     //   98: aload_0
     //   99: getfield 112	com/tencent/mobileqq/vas/PendantInfo:jdField_a_of_type_ArrayOfJavaLangString	[Ljava/lang/String;
     //   102: iload_1
-    //   103: invokestatic 319	aepi:a	()Ljava/lang/StringBuilder;
+    //   103: invokestatic 407	afur:a	()Ljava/lang/StringBuilder;
     //   106: aload_3
-    //   107: invokevirtual 265	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   107: invokevirtual 278	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   110: iload_1
     //   111: iconst_1
     //   112: iadd
-    //   113: invokevirtual 268	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   116: ldc_w 521
-    //   119: invokevirtual 265	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   122: invokevirtual 271	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   113: invokevirtual 364	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   116: ldc_w 589
+    //   119: invokevirtual 278	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   122: invokevirtual 285	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   125: aastore
     //   126: iload_1
     //   127: iconst_1
@@ -871,7 +983,7 @@ public class PendantInfo
       if (QLog.isColorLevel()) {
         QLog.i("PendantInfo", 2, "download pendant report actionResult=" + paramInt1 + ",pendantId=" + this.jdField_a_of_type_Long + ",type=" + paramInt2);
       }
-      int i1 = bdin.a(this.jdField_a_of_type_AndroidContentContext);
+      int i1 = bgnt.a(this.jdField_a_of_type_AndroidContentContext);
       if (paramLong < 3600000L) {
         VasWebviewUtil.reportVasStatus("AvatarPendant", "download", String.valueOf(this.jdField_a_of_type_Long), 0, 0, paramInt1, i1, String.valueOf(paramLong), String.valueOf(paramInt2));
       }
@@ -890,11 +1002,11 @@ public class PendantInfo
     do
     {
       return;
-      File localFile = new File(bdfp.b(this.jdField_a_of_type_Long, 4));
+      File localFile = new File(bgks.b(this.jdField_a_of_type_Long, 4));
       if (!localFile.exists())
       {
-        ((VasQuickUpdateManager)localQQAppInterface.getManager(184)).downloadItem(4L, bdfp.a(this.jdField_a_of_type_Long, 4), "PendantInfo");
-        this.jdField_a_of_type_JavaUtilMap.put(bdfp.a(this.jdField_a_of_type_Long, 4), Long.valueOf(paramInt));
+        ((VasQuickUpdateManager)localQQAppInterface.getManager(184)).downloadItem(4L, bgks.a(this.jdField_a_of_type_Long, 4), "PendantInfo");
+        this.jdField_a_of_type_JavaUtilMap.put(bgks.a(this.jdField_a_of_type_Long, 4), Long.valueOf(paramInt));
         return;
       }
       paramInt = a(localFile, paramInt);
@@ -904,10 +1016,10 @@ public class PendantInfo
   
   public void a(long paramLong)
   {
-    File localFile = new File(bdfp.b(this.jdField_a_of_type_Long, 4));
+    File localFile = new File(bgks.b(this.jdField_a_of_type_Long, 4));
     int i1 = 1;
-    if (this.jdField_a_of_type_JavaUtilMap.containsKey(bdfp.a(this.jdField_a_of_type_Long, 4))) {
-      i1 = ((Long)this.jdField_a_of_type_JavaUtilMap.get(bdfp.a(this.jdField_a_of_type_Long, 4))).intValue();
+    if (this.jdField_a_of_type_JavaUtilMap.containsKey(bgks.a(this.jdField_a_of_type_Long, 4))) {
+      i1 = ((Long)this.jdField_a_of_type_JavaUtilMap.get(bgks.a(this.jdField_a_of_type_Long, 4))).intValue();
     }
     i1 = a(localFile, i1);
     if (i1 > -1) {
@@ -934,22 +1046,22 @@ public class PendantInfo
       ??? = a();
       if (??? != null)
       {
-        ((VasQuickUpdateManager)((QQAppInterface)???).getManager(184)).downloadItem(4L, bdfp.a(this.jdField_a_of_type_Long, paramInt), "PendantInfo");
-        this.jdField_a_of_type_JavaUtilMap.put(bdfp.a(this.jdField_a_of_type_Long, paramInt), Long.valueOf(paramLong));
+        ((VasQuickUpdateManager)((QQAppInterface)???).getManager(184)).downloadItem(4L, bgks.a(this.jdField_a_of_type_Long, paramInt), "PendantInfo");
+        this.jdField_a_of_type_JavaUtilMap.put(bgks.a(this.jdField_a_of_type_Long, paramInt), Long.valueOf(paramLong));
         return;
       }
     }
   }
   
-  public void a(aevp paramaevp, long paramLong)
+  void a(agcb paramagcb, long paramLong)
   {
-    if ((paramaevp == null) || (this.jdField_a_of_type_ArrayOfJavaLangString == null)) {}
+    if ((paramagcb == null) || (this.jdField_a_of_type_ArrayOfJavaLangString == null)) {}
     label151:
     label172:
     for (;;)
     {
       return;
-      paramaevp.a(this.jdField_a_of_type_ArrayOfJavaLangString, this.p);
+      paramagcb.a(this.jdField_a_of_type_ArrayOfJavaLangString, this.p);
       this.jdField_a_of_type_JavaLangObject = this.jdField_a_of_type_ArrayOfJavaLangString;
       this.s = this.jdField_a_of_type_ArrayOfJavaLangString.length;
       boolean bool;
@@ -981,9 +1093,9 @@ public class PendantInfo
     }
   }
   
-  public void a(Bitmap paramBitmap)
+  void a(Bitmap paramBitmap)
   {
-    int i1 = bdeu.a(paramBitmap);
+    int i1 = bgjw.a(paramBitmap);
     BitmapDrawable localBitmapDrawable = new BitmapDrawable(BaseApplicationImpl.getApplication().getResources(), paramBitmap);
     localBitmapDrawable.setTargetDensity(BaseApplicationImpl.getApplication().getResources().getDisplayMetrics());
     StringBuilder localStringBuilder;
@@ -992,7 +1104,7 @@ public class PendantInfo
       if (QLog.isDevelopLevel()) {
         QLog.d("PendantInfo", 4, "setPendantBitmap cache key equal null");
       }
-      localStringBuilder = aepi.a();
+      localStringBuilder = afur.a();
       if (this.o != 2) {
         break label138;
       }
@@ -1016,8 +1128,8 @@ public class PendantInfo
       {
         d();
         this.r = 0;
-        if ((paramDrawable instanceof aevp)) {
-          ((aevp)paramDrawable).a(this.jdField_b_of_type_JavaLangString);
+        if ((paramDrawable instanceof agcb)) {
+          ((agcb)paramDrawable).a(this.jdField_b_of_type_JavaLangString);
         }
         paramDrawable = this.jdField_a_of_type_MqqOsMqqHandler.obtainMessage(16);
         if (paramBoolean) {
@@ -1039,7 +1151,7 @@ public class PendantInfo
   
   public void a(View paramView, int paramInt1, long paramLong, String paramString, int paramInt2)
   {
-    if (azmk.b()) {
+    if (bcnj.b()) {
       if (QLog.isColorLevel()) {
         QLog.i("PendantInfo", 2, "setDrawable, SimpleUIMode is open now");
       }
@@ -1047,7 +1159,7 @@ public class PendantInfo
     do
     {
       return;
-      this.jdField_b_of_type_JavaLangString = bdfp.b(this.jdField_a_of_type_Long, paramInt1);
+      this.jdField_b_of_type_JavaLangString = bgks.b(this.jdField_a_of_type_Long, paramInt1);
       paramString = a(paramInt1, paramLong, paramString, paramInt2);
       if ((paramView instanceof BaseChatItemLayout))
       {
@@ -1065,15 +1177,15 @@ public class PendantInfo
     {
       i1 = paramString.indexOf("\"interval\":");
       if (i1 == -1) {
-        break label111;
+        break label112;
       }
       int i2 = paramString.indexOf(",", i1 + 10);
       if (i2 == -1) {
-        break label111;
+        break label112;
       }
       paramString = paramString.substring(i1 + 11, i2);
       if (paramString == null) {
-        break label111;
+        break label112;
       }
     }
     for (;;)
@@ -1096,7 +1208,7 @@ public class PendantInfo
         a(1, 7, 0L);
         return;
       }
-      label111:
+      label112:
       i1 = -2147483648;
     }
   }
@@ -1124,14 +1236,14 @@ public class PendantInfo
     return (localPair != null) && (localPair.first != null);
   }
   
-  public Bitmap b()
+  Bitmap b()
   {
     if (this.jdField_a_of_type_JavaLangString == null)
     {
       if (QLog.isDevelopLevel()) {
         QLog.d("PendantInfo", 4, "getPendantBitmap cache key equal null");
       }
-      StringBuilder localStringBuilder = aepi.a();
+      StringBuilder localStringBuilder = afur.a();
       if (this.o == 2)
       {
         localObject = "dynamic_pendant";
@@ -1172,11 +1284,11 @@ public class PendantInfo
       this.jdField_b_of_type_Boolean = false;
       l1 = SystemClock.uptimeMillis();
       l2 = this.p;
-      this.jdField_a_of_type_Bdtk = new bdtk(this, this.jdField_a_of_type_ArrayOfJavaLangString, paramLong);
+      this.jdField_a_of_type_Bgyn = new bgyn(this, this.jdField_a_of_type_ArrayOfJavaLangString, paramLong);
     }
     try
     {
-      this.jdField_a_of_type_Bdtk.execute(new Long[] { Long.valueOf(l1 + l2), Long.valueOf(this.q), Long.valueOf(this.o) });
+      this.jdField_a_of_type_Bgyn.execute(new Long[] { Long.valueOf(l1 + l2), Long.valueOf(this.q), Long.valueOf(this.o) });
       return;
     }
     catch (Exception localException)
@@ -1188,17 +1300,17 @@ public class PendantInfo
   void b(long paramLong, int paramInt)
   {
     long l1 = g;
-    if (this.jdField_a_of_type_JavaUtilMap.containsKey(bdfp.a(this.jdField_a_of_type_Long, paramInt))) {
-      l1 = ((Long)this.jdField_a_of_type_JavaUtilMap.get(bdfp.a(this.jdField_a_of_type_Long, paramInt))).longValue();
+    if (this.jdField_a_of_type_JavaUtilMap.containsKey(bgks.a(this.jdField_a_of_type_Long, paramInt))) {
+      l1 = ((Long)this.jdField_a_of_type_JavaUtilMap.get(bgks.a(this.jdField_a_of_type_Long, paramInt))).longValue();
     }
     File localFile;
     if ((2 == paramInt) && (this.n == 1))
     {
-      ??? = new File(bdfp.b(paramLong, paramInt));
+      ??? = new File(bgks.b(paramLong, paramInt));
       if (((File)???).exists())
       {
-        localFile = new File(bdfp.b(paramLong, 8));
-        if (!beag.a((File)???, localFile, true)) {
+        localFile = new File(bgks.b(paramLong, 8));
+        if (!bhhh.a((File)???, localFile, true)) {
           break label228;
         }
         a();
@@ -1249,14 +1361,14 @@ public class PendantInfo
   {
     try
     {
-      if (((this.jdField_a_of_type_JavaLangObject instanceof bdtl)) && (a()))
+      if (((this.jdField_a_of_type_JavaLangObject instanceof bgyo)) && (a()))
       {
-        if ((this.jdField_a_of_type_JavaLangObject != null) && (((bdtl)this.jdField_a_of_type_JavaLangObject).jdField_a_of_type_JavaLangString != null) && (((bdtl)this.jdField_a_of_type_JavaLangObject).jdField_a_of_type_JavaLangString.equals(this.jdField_b_of_type_JavaLangString))) {
+        if ((this.jdField_a_of_type_JavaLangObject != null) && (((bgyo)this.jdField_a_of_type_JavaLangObject).jdField_a_of_type_JavaLangString != null) && (((bgyo)this.jdField_a_of_type_JavaLangObject).jdField_a_of_type_JavaLangString.equals(this.jdField_b_of_type_JavaLangString))) {
           return;
         }
         if (this.jdField_a_of_type_Boolean) {}
       }
-      else if (this.jdField_a_of_type_Bdtk != null)
+      else if (this.jdField_a_of_type_Bgyn != null)
       {
         Message localMessage = this.jdField_a_of_type_MqqOsMqqHandler.obtainMessage(16);
         if (!a(localMessage, g)) {
@@ -1271,27 +1383,27 @@ public class PendantInfo
       QLog.e("PendantInfo", 1, "decodeBigImage, e=" + MsfSdkUtils.getStackTraceString(localException));
       return;
     }
-    this.jdField_a_of_type_JavaLangObject = new bdtl(this, this.jdField_b_of_type_JavaLangString);
+    this.jdField_a_of_type_JavaLangObject = new bgyo(this, this.jdField_b_of_type_JavaLangString);
     this.r = 0;
-    this.jdField_a_of_type_Bdtk = new bdtk(this, this.jdField_a_of_type_JavaLangObject, g);
+    this.jdField_a_of_type_Bgyn = new bgyn(this, this.jdField_a_of_type_JavaLangObject, g);
     long l1 = SystemClock.uptimeMillis();
     long l2 = this.p;
-    this.jdField_a_of_type_Bdtk.execute(new Long[] { Long.valueOf(l1 + l2), Long.valueOf(this.q), Long.valueOf(this.o) });
+    this.jdField_a_of_type_Bgyn.execute(new Long[] { Long.valueOf(l1 + l2), Long.valueOf(this.q), Long.valueOf(this.o) });
   }
   
   public void e()
   {
-    if (this.jdField_a_of_type_Bdtk != null)
+    if (this.jdField_a_of_type_Bgyn != null)
     {
-      this.jdField_a_of_type_Bdtk.cancel(false);
-      this.jdField_a_of_type_Bdtk = null;
+      this.jdField_a_of_type_Bgyn.cancel(false);
+      this.jdField_a_of_type_Bgyn = null;
     }
     this.jdField_b_of_type_Boolean = true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.vas.PendantInfo
  * JD-Core Version:    0.7.0.1
  */

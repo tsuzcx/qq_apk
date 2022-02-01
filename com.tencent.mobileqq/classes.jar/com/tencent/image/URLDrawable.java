@@ -851,6 +851,11 @@ public class URLDrawable
     return 0;
   }
   
+  public Object getExtraInfo()
+  {
+    return this.mExtraInfo;
+  }
+  
   public File getFileInLocal()
   {
     if (this.mDrawableContainerState == null) {

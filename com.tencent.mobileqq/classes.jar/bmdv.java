@@ -1,51 +1,10 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.RestrictTo;
-import java.util.concurrent.Executor;
+import cooperation.qzone.plugin.PluginRecord;
 
-@RestrictTo({android.support.annotation.RestrictTo.Scope.LIBRARY_GROUP})
-public class bmdv
-  extends bmea
+abstract interface bmdv
 {
-  private static volatile bmdv jdField_a_of_type_Bmdv;
-  @NonNull
-  private static final Executor jdField_a_of_type_JavaUtilConcurrentExecutor = new bmdw();
-  @NonNull
-  private static final Executor jdField_b_of_type_JavaUtilConcurrentExecutor = new bmdx();
-  @NonNull
-  private bmea jdField_a_of_type_Bmea = this.jdField_b_of_type_Bmea;
-  @NonNull
-  private bmea jdField_b_of_type_Bmea = new bmdy();
+  public abstract void b(boolean paramBoolean, PluginRecord paramPluginRecord);
   
-  @NonNull
-  public static bmdv a()
-  {
-    if (jdField_a_of_type_Bmdv != null) {
-      return jdField_a_of_type_Bmdv;
-    }
-    try
-    {
-      if (jdField_a_of_type_Bmdv == null) {
-        jdField_a_of_type_Bmdv = new bmdv();
-      }
-      return jdField_a_of_type_Bmdv;
-    }
-    finally {}
-  }
-  
-  public void a(Runnable paramRunnable)
-  {
-    this.jdField_a_of_type_Bmea.a(paramRunnable);
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Bmea.a();
-  }
-  
-  public void b(Runnable paramRunnable)
-  {
-    this.jdField_a_of_type_Bmea.b(paramRunnable);
-  }
+  public abstract void e(PluginRecord paramPluginRecord);
 }
 
 

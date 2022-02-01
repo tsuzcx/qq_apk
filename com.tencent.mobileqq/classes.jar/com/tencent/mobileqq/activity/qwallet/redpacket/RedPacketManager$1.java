@@ -18,11 +18,12 @@ final class RedPacketManager$1
     put(Integer.valueOf(9), Integer.valueOf(524288));
     put(Integer.valueOf(10), Integer.valueOf(1000001));
     put(Integer.valueOf(11), Integer.valueOf(1024));
+    put(Integer.valueOf(15), Integer.valueOf(1000002));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.qwallet.redpacket.RedPacketManager.1
  * JD-Core Version:    0.7.0.1
  */

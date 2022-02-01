@@ -1,13 +1,21 @@
-import android.view.MotionEvent;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.activity.ShowReactiveActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class afei
-  implements bepm
+public class afei
+  implements View.OnClickListener
 {
-  afei(afee paramafee) {}
+  public afei(ShowReactiveActivity paramShowReactiveActivity, aqxn paramaqxn) {}
   
-  public boolean a(MotionEvent paramMotionEvent)
+  public void onClick(View paramView)
   {
-    return afee.a(this.a, paramMotionEvent);
+    Intent localIntent = new Intent(this.jdField_a_of_type_ComTencentMobileqqActivityShowReactiveActivity, QQBrowserActivity.class);
+    localIntent.putExtra("url", this.jdField_a_of_type_Aqxn.c);
+    this.jdField_a_of_type_ComTencentMobileqqActivityShowReactiveActivity.startActivity(localIntent);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

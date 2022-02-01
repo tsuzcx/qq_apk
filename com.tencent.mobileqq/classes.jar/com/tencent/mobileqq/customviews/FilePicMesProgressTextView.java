@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.customviews;
 
-import afhj;
+import agor;
 import android.graphics.drawable.Drawable;
 
 public class FilePicMesProgressTextView
@@ -29,8 +29,8 @@ public class FilePicMesProgressTextView
       if (localDrawable != null)
       {
         localDrawable.setLevel((100 - paramInt) * 100);
-        if (((localDrawable instanceof afhj)) && (!this.jdField_a_of_type_Boolean)) {
-          ((afhj)localDrawable).a(this.jdField_a_of_type_Int, this.b);
+        if (((localDrawable instanceof agor)) && (!this.jdField_a_of_type_Boolean)) {
+          ((agor)localDrawable).a(this.jdField_a_of_type_Int, this.b);
         }
       }
       return;
@@ -40,7 +40,7 @@ public class FilePicMesProgressTextView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.customviews.FilePicMesProgressTextView
  * JD-Core Version:    0.7.0.1
  */

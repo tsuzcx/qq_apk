@@ -1,44 +1,26 @@
-import android.util.Pair;
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import java.util.ArrayList;
-import java.util.Iterator;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
+import kotlin.Metadata;
+import kotlin.jvm.internal.Intrinsics;
+import org.jetbrains.annotations.NotNull;
 
-class oxy
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"com/tencent/biz/pubaccount/readinjoy/comment/CommentProteusListenerUtil$Companion$initDeleteCommentClickListener$1", "Lcom/tencent/biz/pubaccount/readinjoy/comment/CommentProteusListenerUtil$CommentProteusOnClickListener;", "configClickListener", "", "cmdStrId", "", "container", "Lcom/tencent/biz/pubaccount/readinjoy/view/proteus/virtualview/container/Container;", "adapter", "Lcom/tencent/biz/pubaccount/readinjoy/comment/ReadinjoyCommentListBaseAdapter;", "commentViewItem", "Lcom/tencent/biz/pubaccount/readinjoy/comment/data/CommentViewItem;", "viewBase", "Lcom/tencent/biz/pubaccount/readinjoy/view/proteus/virtualview/core/ViewBase;", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class oxy
+  implements owp
 {
-  public long a;
-  public ArrayList<Pair<BaseArticleInfo, Float>> a;
-  public long b;
-  
-  private oxy(oxp paramoxp)
+  public void a(int paramInt, @NotNull Container paramContainer, @NotNull pan parampan, @NotNull pay parampay, @NotNull ViewBase paramViewBase)
   {
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  }
-  
-  public ArrayList<Long> a()
-  {
-    ArrayList localArrayList = new ArrayList();
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-    while (localIterator.hasNext()) {
-      localArrayList.add(Long.valueOf(((BaseArticleInfo)((Pair)localIterator.next()).first).mArticleID));
-    }
-    return localArrayList;
-  }
-  
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder("screenInfo : \n");
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-    while (localIterator.hasNext())
-    {
-      Pair localPair = (Pair)localIterator.next();
-      localStringBuilder.append("【").append(((BaseArticleInfo)localPair.first).mTitle).append("】");
-    }
-    return localStringBuilder.toString();
+    Intrinsics.checkParameterIsNotNull(paramContainer, "container");
+    Intrinsics.checkParameterIsNotNull(parampan, "adapter");
+    Intrinsics.checkParameterIsNotNull(parampay, "commentViewItem");
+    Intrinsics.checkParameterIsNotNull(paramViewBase, "viewBase");
+    paramViewBase.setOnClickListener((ViewBase.OnClickListener)new oxz(parampan, parampay));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     oxy
  * JD-Core Version:    0.7.0.1
  */

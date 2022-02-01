@@ -1,22 +1,42 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
-import com.tencent.mobileqq.activity.ProfileActivity;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import msf.msgsvc.msg_svc.CommTmp;
+import msf.msgsvc.msg_svc.RoutingHead;
 
-class aczw
-  implements DialogInterface.OnClickListener
+public class aczw
+  implements acxp
 {
-  aczw(aczv paramaczv) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public int a()
   {
-    paramDialogInterface.dismiss();
-    this.a.a.o();
-    azqs.b(this.a.a.app, "CliOper", "", "", "P_prof", "Pp_send_msg", ProfileActivity.a(this.a.a.a.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.h), 0, Integer.toString(ProfileActivity.a(this.a.a.a.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne)), Integer.toString(this.a.a.a.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.k), "", "");
-    if (this.a.a.a.b) {
-      new azqx(this.a.a.app).a("dc00899").b("Grp_mem_card").c("page").d("msg_clk").a(new String[] { this.a.a.a.jdField_a_of_type_JavaLangString }).a();
+    return 1033;
+  }
+  
+  public boolean a()
+  {
+    return false;
+  }
+  
+  public boolean a(msg_svc.RoutingHead paramRoutingHead, MessageRecord paramMessageRecord, QQAppInterface paramQQAppInterface)
+  {
+    msg_svc.CommTmp localCommTmp = new msg_svc.CommTmp();
+    localCommTmp.c2c_type.set(1);
+    localCommTmp.svr_type.set(156);
+    localCommTmp.to_uin.set(Long.valueOf(paramMessageRecord.frienduin).longValue());
+    paramMessageRecord = paramQQAppInterface.a().a(paramMessageRecord.frienduin, paramMessageRecord.selfuin);
+    if (paramMessageRecord != null) {
+      localCommTmp.sig.set(ByteStringMicro.copyFrom(paramMessageRecord));
     }
+    paramRoutingHead.comm_tmp.set(localCommTmp);
+    return true;
+  }
+  
+  public int b()
+  {
+    return 0;
   }
 }
 

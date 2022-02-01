@@ -1,8 +1,8 @@
 package com.tencent.imcore.message;
 
-import absi;
-import ammb;
-import ayzl;
+import acvh;
+import aogp;
+import bbyp;
 import com.tencent.mobileqq.app.MessageHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.MessageRecord;
@@ -10,7 +10,7 @@ import com.tencent.mobileqq.data.MessageRecord;
 public class BaseMessageManager$4
   implements Runnable
 {
-  public BaseMessageManager$4(absi paramabsi, MessageRecord paramMessageRecord, long paramLong) {}
+  public BaseMessageManager$4(acvh paramacvh, MessageRecord paramMessageRecord, long paramLong) {}
   
   public void run()
   {
@@ -25,13 +25,13 @@ public class BaseMessageManager$4
     {
       this.this$0.a.a().f(null);
       return;
-      this.this$0.a.a().a().a(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.frienduin, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.istroop, ammb.e, ammb.m);
+      this.this$0.a.a().a().a(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.frienduin, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.istroop, aogp.b, aogp.j);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.imcore.message.BaseMessageManager.4
  * JD-Core Version:    0.7.0.1
  */

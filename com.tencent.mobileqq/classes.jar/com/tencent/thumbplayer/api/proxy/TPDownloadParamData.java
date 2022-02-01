@@ -22,6 +22,7 @@ public class TPDownloadParamData
   private long fileDuration;
   private String fileMD5;
   private long fileSize;
+  public String flowId;
   private Map<String, Integer> formatInfo;
   private int fp2p;
   private boolean isCharge;
@@ -135,6 +136,11 @@ public class TPDownloadParamData
   public long getFileSize()
   {
     return this.fileSize;
+  }
+  
+  public String getFlowId()
+  {
+    return this.flowId;
   }
   
   public Map<String, Integer> getFormatInfo()
@@ -332,6 +338,11 @@ public class TPDownloadParamData
     this.fileSize = paramLong;
   }
   
+  public void setFlowId(String paramString)
+  {
+    this.flowId = paramString;
+  }
+  
   public void setFormatInfo(Map<String, Integer> paramMap)
   {
     this.formatInfo = paramMap;
@@ -434,7 +445,7 @@ public class TPDownloadParamData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.thumbplayer.api.proxy.TPDownloadParamData
  * JD-Core Version:    0.7.0.1
  */

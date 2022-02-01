@@ -1,25 +1,22 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.SimpleJob;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class wuk
-  extends SimpleJob<Object>
+  implements View.OnClickListener
 {
-  wuk(wub paramwub, String paramString1, String paramString2)
-  {
-    super(paramString1);
-  }
+  wuk(wui paramwui) {}
   
-  protected Object a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
+  public void onClick(View paramView)
   {
-    wub.a(this.jdField_a_of_type_Wub).a(this.jdField_a_of_type_JavaLangString);
-    return null;
+    this.a.a.dismiss();
+    yqu.a("msg_tab", "clk_tips", 0, 0, new String[] { "1", "", "", "" });
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     wuk
  * JD-Core Version:    0.7.0.1
  */

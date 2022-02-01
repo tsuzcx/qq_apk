@@ -1,100 +1,49 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.CustomWebView;
-import com.tencent.biz.subscribe.fragments.SubscribeHybirdFragment;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.storyHome.model.VideoListFeedItem;
+import java.util.List;
 
 public class yjj
-  extends BroadcastReceiver
+  extends wfr<yjc, ycp>
 {
-  private yjj(SubscribeHybirdFragment paramSubscribeHybirdFragment) {}
-  
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public yjj(yjc paramyjc)
   {
-    int i = 0;
-    if (paramIntent != null)
-    {
-      paramContext = paramIntent.getAction();
-      if (!TextUtils.equals(paramContext, "action_update_follow_state")) {
-        break label89;
-      }
-    }
-    label89:
-    while (!TextUtils.equals(paramContext, "action_get_lbs_location")) {
-      try
-      {
-        paramContext = new JSONObject();
-        paramContext.put("uin", paramIntent.getStringExtra("uin"));
-        paramContext.put("followState", paramIntent.getIntExtra("followState", 0));
-        if (this.a.getWebView() != null) {
-          this.a.getWebView().callJs(WebViewPlugin.toJsScript("updateFollowState", paramContext, null));
-        }
-        return;
-      }
-      catch (JSONException paramContext)
-      {
-        paramContext.printStackTrace();
-        return;
-      }
-    }
-    for (;;)
-    {
-      try
-      {
-        paramContext = paramIntent.getStringArrayExtra("code");
-        String[] arrayOfString = paramIntent.getStringArrayExtra("location");
-        paramIntent = new JSONObject();
-        JSONObject localJSONObject = new JSONObject();
-        if ((paramContext != null) && (arrayOfString != null) && (paramContext.length == 4) && (arrayOfString.length == 4))
-        {
-          if (i < 4)
-          {
-            if ("0".equals(paramContext[i]))
-            {
-              paramContext[i] = "";
-              arrayOfString[i] = "";
-            }
-          }
-          else
-          {
-            paramIntent.put("country", paramContext[0]);
-            paramIntent.put("province", paramContext[1]);
-            paramIntent.put("city", paramContext[2]);
-            paramIntent.put("area", paramContext[3]);
-            localJSONObject.put("country", arrayOfString[0]);
-            localJSONObject.put("province", arrayOfString[1]);
-            localJSONObject.put("city", arrayOfString[2]);
-            localJSONObject.put("area", arrayOfString[3]);
-          }
-        }
-        else
-        {
-          paramContext = new JSONObject();
-          paramContext.put("code", paramIntent);
-          paramContext.put("location", localJSONObject);
-          if (this.a.getWebView() == null) {
-            break;
-          }
-          this.a.getWebView().callJs(WebViewPlugin.toJsScript("getlbslocationCallback", paramContext, null));
-          return;
-        }
-      }
-      catch (JSONException paramContext)
-      {
-        paramContext.printStackTrace();
-        return;
-      }
-      i += 1;
-    }
+    super(paramyjc);
   }
+  
+  public void a(@NonNull yjc paramyjc, @NonNull ycp paramycp)
+  {
+    Object localObject = paramyjc.a(paramycp.jdField_a_of_type_JavaLangString);
+    if (localObject == null)
+    {
+      yqp.d("Q.qqstory.home.data.HomeFeedPresenter", "can't find feedId:%s", new Object[] { paramycp.jdField_a_of_type_JavaLangString });
+      return;
+    }
+    if (!(localObject instanceof yka))
+    {
+      yqp.d("Q.qqstory.home.data.HomeFeedPresenter", "that is not general type!! feedId:%s", new Object[] { paramycp.jdField_a_of_type_JavaLangString });
+      return;
+    }
+    localObject = (yka)localObject;
+    if (paramycp.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess())
+    {
+      ((yka)localObject).c(paramycp.jdField_a_of_type_JavaUtilList, false);
+      ((VideoListFeedItem)((yka)localObject).a).updateVideoInfo(paramycp.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedVideoInfo);
+      yqp.a("Q.qqstory.home.data.HomeFeedPresenter", "feedId %s video update after count:%d", paramycp.jdField_a_of_type_JavaLangString, Integer.valueOf(((yka)localObject).a().size()));
+    }
+    yjc.a(paramyjc).a((yka)localObject);
+  }
+  
+  public Class acceptEventClass()
+  {
+    return ycp.class;
+  }
+  
+  public void b(@NonNull yjc paramyjc, @NonNull ycp paramycp) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     yjj
  * JD-Core Version:    0.7.0.1
  */

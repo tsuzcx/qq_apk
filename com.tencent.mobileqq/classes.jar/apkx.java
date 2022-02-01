@@ -1,106 +1,40 @@
-import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.earlydownload.xmldata.ApolloJscLibData;
-import com.tencent.mobileqq.earlydownload.xmldata.XmlData;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import mqq.manager.TicketManager;
+import oicq.wlogin_sdk.request.Ticket;
+import oicq.wlogin_sdk.request.WtTicketPromise;
+import oicq.wlogin_sdk.tools.ErrMsg;
 
-public class apkx
-  extends apld
+class apkx
+  implements WtTicketPromise
 {
-  public apkx(QQAppInterface paramQQAppInterface)
-  {
-    super("android.qq.apollo.jsc820", paramQQAppInterface);
-  }
+  apkx(apkv paramapkv, TicketManager paramTicketManager, QQAppInterface paramQQAppInterface, String paramString, apky paramapky) {}
   
-  public static void a()
+  public void Done(Ticket paramTicket)
   {
-    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
-    if ((localObject instanceof QQAppInterface))
-    {
-      localObject = (apks)((QQAppInterface)localObject).getManager(77);
-      if (localObject != null)
-      {
-        localObject = (apkx)((apks)localObject).a("android.qq.apollo.jsc820");
-        if (localObject != null)
-        {
-          ((apkx)localObject).a(true);
-          QLog.i("ApolloSoLoader_JscHandler", 1, "restartDownload jscLib");
-        }
-      }
+    if (QLog.isColorLevel()) {
+      QLog.i("ArkApp.GetPSKeyAsyncHandler", 2, "--- pskey async done---  ");
+    }
+    paramTicket = this.jdField_a_of_type_MqqManagerTicketManager.getPskey(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), this.jdField_a_of_type_JavaLangString);
+    if (this.jdField_a_of_type_Apky != null) {
+      this.jdField_a_of_type_Apky.a(paramTicket);
     }
   }
   
-  public int a()
+  public void Failed(ErrMsg paramErrMsg)
   {
-    return 10072;
-  }
-  
-  public Class<? extends XmlData> a()
-  {
-    return ApolloJscLibData.class;
-  }
-  
-  public String a()
-  {
-    return "ApolloSoLoader_JscHandler";
-  }
-  
-  public void a(String paramString)
-  {
-    QLog.i("ApolloSoLoader_JscHandler", 1, "[doOnDownloadSuccess] jsc:" + paramString);
-    XmlData localXmlData = a();
-    if (localXmlData != null) {
-      QLog.i("ApolloSoLoader_JscHandler", 1, "version:" + localXmlData.Version);
-    }
-    int i;
-    if (BaseApplicationImpl.sProcessId == 1)
-    {
-      i = 1;
-      if (i != 0) {
-        alhp.a(10, null, new int[] { 1 });
-      }
-      if (new File(paramString).exists())
-      {
-        if (bhss.a(paramString, 0)) {
-          break label189;
-        }
-        if (localXmlData != null)
-        {
-          localXmlData.loadState = 0;
-          localXmlData.Version = 0;
-          apkr.a(localXmlData, new String[] { "loadState", "Version" });
-        }
-        QLog.e("ApolloSoLoader_JscHandler", 1, "[doOnDownloadSuccess],unzip apollo jsclib failed!");
-        if (i != 0)
-        {
-          alhp.a(10, 201, 1001, new Object[] { "unzip jsc lib failed" });
-          alko.a = true;
-        }
-      }
-    }
-    for (;;)
-    {
-      super.a(paramString);
-      return;
-      i = 0;
-      break;
-      label189:
-      if (i != 0) {
-        alhp.a(10, 201, 0, new Object[] { "libjsc so download success" });
-      }
-      alko.a("after_JSC_downloaded");
+    QLog.i("ArkApp.GetPSKeyAsyncHandler", 1, "--- pskey async failed---  " + paramErrMsg.getMessage());
+    if (this.jdField_a_of_type_Apky != null) {
+      this.jdField_a_of_type_Apky.a(null);
     }
   }
   
-  public boolean a()
+  public void Timeout(ErrMsg paramErrMsg)
   {
-    return true;
-  }
-  
-  public String b()
-  {
-    return null;
+    QLog.i("ArkApp.GetPSKeyAsyncHandler", 1, "--- pskey async timeout---  " + paramErrMsg.getMessage());
+    if (this.jdField_a_of_type_Apky != null) {
+      this.jdField_a_of_type_Apky.a(null);
+    }
   }
 }
 

@@ -1,16 +1,16 @@
-import android.graphics.drawable.Drawable;
-import java.lang.ref.WeakReference;
-import java.util.HashMap;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class bnrp
+class bnrp
+  implements View.OnClickListener
 {
-  public static HashMap<String, WeakReference<Drawable>> a;
-  public static String[] a;
+  bnrp(bnrn parambnrn) {}
   
-  static
+  public void onClick(View paramView)
   {
-    jdField_a_of_type_ArrayOfJavaLangString = new String[] { "Le X620", "Nexus 5X", "ZTE A2017", "PRA-AL00X" };
-    jdField_a_of_type_JavaUtilHashMap = new HashMap();
+    this.a.d();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

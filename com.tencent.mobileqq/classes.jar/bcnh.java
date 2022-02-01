@@ -1,96 +1,76 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.troop.utils.TroopFileTransferManager;
-import com.tencent.mobileqq.troop.utils.TroopFileTransferManager.Item;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Set;
-import java.util.UUID;
+import java.util.concurrent.atomic.AtomicLong;
 
 public class bcnh
-  extends yuh
+  extends bdpx
 {
-  public bcnh(TroopFileTransferManager paramTroopFileTransferManager) {}
+  private boolean jdField_a_of_type_Boolean;
   
-  public void a(boolean paramBoolean, int paramInt1, int paramInt2, String paramString1, String paramString2, String paramString3, Bundle paramBundle)
+  public bcnh(bcnd parambcnd) {}
+  
+  public boolean a(int paramInt)
   {
-    long l = paramBundle.getLong("troopUin");
-    try
-    {
-      paramString1 = (TroopFileTransferManager)TroopFileTransferManager.a().get(Long.valueOf(l));
-      if (paramString1 == null)
-      {
-        if (QLog.isDevelopLevel()) {
-          QLog.i("TroopFileTransferManager", 4, "bad troopUin" + l);
-        }
-        return;
-      }
-      paramString3 = paramBundle.getString("itemKey");
-      if (paramString3 == null) {
-        return;
-      }
-      paramBundle = UUID.fromString(paramString3);
-      try
-      {
-        paramString2 = (TroopFileTransferManager.Item)paramString1.a.get(paramBundle);
-        if (paramString2 == null)
-        {
-          if (QLog.isDevelopLevel()) {
-            QLog.i("TroopFileTransferManager", 4, "bad item key" + paramString3);
-          }
-          return;
-        }
-      }
-      finally {}
+    boolean bool2 = false;
+    QLog.i("SimpleUILog.SimpleUIHandler", 1, String.format("postSwitch %d", new Object[] { Integer.valueOf(paramInt) }));
+    if (this.jdField_a_of_type_Boolean) {
+      return true;
     }
-    finally {}
-    if (paramBoolean)
+    this.jdField_a_of_type_Boolean = true;
+    switch (paramInt)
     {
-      if (QLog.isDevelopLevel()) {
-        QLog.e("TroopFileTransferManager", 4, String.format("onCopyToResult - retCode: %d", new Object[] { Integer.valueOf(paramInt1) }));
-      }
-      if (paramString2.BusId == 25) {
-        label445:
-        for (;;)
+    case 3: 
+    default: 
+      paramInt = 3;
+    }
+    for (;;)
+    {
+      if (paramInt == 0)
+      {
+        if (!AppNetConnInfo.isNetSupport())
         {
-          try
-          {
-            bkjc.a(paramInt1);
-            if (paramInt1 == 0)
-            {
-              this.a.b.remove(paramBundle);
-              if (this.a.b.size() != 0) {
-                break label330;
-              }
-              paramString3 = new bcmr(paramString2.FileName, this.a.e, 5, 604);
-              this.a.a(paramString2, 5, paramString3);
-              return;
-            }
+          this.jdField_a_of_type_Bcnd.notifyUI(3, false, new Object[] { Boolean.valueOf(true), Boolean.valueOf(this.jdField_a_of_type_Bcnd.jdField_a_of_type_Boolean), Integer.valueOf(6) });
+          bool1 = this.jdField_a_of_type_Bcnd.a(false, "211", bcnj.b(), true, bcnj.a(bcnj.c()));
+          if (!bool1) {
+            bcnd.a(this.jdField_a_of_type_Bcnd, bcnd.a(this.jdField_a_of_type_Bcnd), -2147483648, bcnd.b(this.jdField_a_of_type_Bcnd), -2147483648, null, -2147483648);
           }
-          finally {}
-          this.a.b.put(paramBundle, Integer.valueOf(paramInt1));
-          continue;
-          label330:
-          paramString3 = this.a.b.keySet().iterator();
-          do
-          {
-            if (!paramString3.hasNext()) {
-              break;
-            }
-            paramBundle = (UUID)paramString3.next();
-          } while (((Integer)this.a.b.get(paramBundle)).intValue() != 2147483647);
-          for (paramInt1 = 0;; paramInt1 = 1)
-          {
-            if (paramInt1 == 0) {
-              break label445;
-            }
-            paramString3 = new bcmr(paramString2.FileName, this.a.e, 5, 605);
-            this.a.a(paramString2, 5, paramString3);
+          if (!QLog.isColorLevel()) {
             break;
           }
+          QLog.i("SimpleUILog.SimpleUIHandler", 2, String.format("postSwitch net_err revert theme bStartSwtich=%b", new Object[] { Boolean.valueOf(bool1) }));
+          return true;
+          paramInt = 0;
+          continue;
+          paramInt = 3;
+          continue;
+          paramInt = 1;
+          continue;
+        }
+        bcnd localbcnd = (bcnd)this.jdField_a_of_type_Bcnd.app.a(154);
+        if (bcnd.a(this.jdField_a_of_type_Bcnd, bcnd.a(this.jdField_a_of_type_Bcnd)) == 1) {}
+        for (boolean bool1 = true;; bool1 = false)
+        {
+          paramInt = bcnd.a(this.jdField_a_of_type_Bcnd, bcnd.b(this.jdField_a_of_type_Bcnd));
+          if (bcnd.a(this.jdField_a_of_type_Bcnd, bcnd.c(this.jdField_a_of_type_Bcnd)) == 1) {
+            bool2 = true;
+          }
+          try
+          {
+            long l = localbcnd.a(bool1, paramInt, this.jdField_a_of_type_Bcnd.jdField_a_of_type_Boolean, bool2);
+            bcnd.a(this.jdField_a_of_type_Bcnd).set(l);
+            return true;
+          }
+          catch (Exception localException)
+          {
+            return true;
+          }
         }
       }
     }
+    bcnd.a(this.jdField_a_of_type_Bcnd, bcnd.a(this.jdField_a_of_type_Bcnd), -2147483648, bcnd.b(this.jdField_a_of_type_Bcnd), -2147483648, bcnd.c(this.jdField_a_of_type_Bcnd), -2147483648);
+    this.jdField_a_of_type_Bcnd.notifyUI(3, false, new Object[] { Boolean.valueOf(false), Boolean.valueOf(this.jdField_a_of_type_Bcnd.jdField_a_of_type_Boolean), Integer.valueOf(paramInt) });
+    return true;
   }
 }
 

@@ -1,36 +1,181 @@
-import android.support.annotation.RestrictTo;
+import android.content.Context;
+import android.os.IBinder;
+import android.os.RemoteException;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qzone.plugin.PluginRecord;
 
-@RestrictTo({android.support.annotation.RestrictTo.Scope.LIBRARY_GROUP})
-public class bmde
-  implements bmdi
+class bmde
+  extends bmcj
 {
-  private final bmdh[] a;
+  bmel a;
   
-  bmde(bmdh[] paramArrayOfbmdh)
+  bmde(bmel parambmel)
   {
-    this.a = paramArrayOfbmdh;
+    this.a = parambmel;
   }
   
-  public void a(bmdn parambmdn, bmdk parambmdk)
+  public PluginRecord a(String paramString)
   {
-    int j = 0;
-    bmdp localbmdp = new bmdp();
-    bmdh[] arrayOfbmdh = this.a;
-    int k = arrayOfbmdh.length;
-    int i = 0;
-    while (i < k)
+    try
     {
-      arrayOfbmdh[i].a(parambmdn, parambmdk, false, localbmdp);
-      i += 1;
+      paramString = this.a.a(paramString);
+      return paramString;
     }
-    arrayOfbmdh = this.a;
-    k = arrayOfbmdh.length;
-    i = j;
-    while (i < k)
+    catch (RemoteException paramString)
     {
-      arrayOfbmdh[i].a(parambmdn, parambmdk, true, localbmdp);
-      i += 1;
+      paramString.printStackTrace();
+      return null;
     }
+    catch (NullPointerException paramString)
+    {
+      for (;;)
+      {
+        QLog.w("QZonePluginClient", 1, "", paramString);
+      }
+    }
+  }
+  
+  public void a()
+  {
+    try
+    {
+      this.a.a();
+      return;
+    }
+    catch (NullPointerException localNullPointerException)
+    {
+      QLog.e("QZonePluginClient", 1, localNullPointerException, new Object[0]);
+    }
+  }
+  
+  public void a(Context paramContext, bmcp parambmcp, bmco parambmco)
+  {
+    try
+    {
+      a(parambmcp.b, new bmdf(this, parambmco, paramContext, parambmcp), 0);
+      return;
+    }
+    catch (RemoteException paramContext)
+    {
+      paramContext.printStackTrace();
+    }
+  }
+  
+  public void a(bmcq parambmcq, int paramInt)
+  {
+    try
+    {
+      this.a.a(parambmcq, paramInt);
+      return;
+    }
+    catch (NullPointerException parambmcq)
+    {
+      QLog.e("QZonePluginClient", 1, parambmcq, new Object[0]);
+    }
+  }
+  
+  public boolean a()
+  {
+    try
+    {
+      boolean bool = this.a.a();
+      return bool;
+    }
+    catch (RemoteException localRemoteException)
+    {
+      localRemoteException.printStackTrace();
+    }
+    return false;
+  }
+  
+  public boolean a(String paramString)
+  {
+    try
+    {
+      boolean bool = this.a.a(paramString);
+      return bool;
+    }
+    catch (RemoteException paramString)
+    {
+      paramString.printStackTrace();
+    }
+    return false;
+  }
+  
+  public boolean a(String paramString, bmct parambmct, int paramInt)
+  {
+    try
+    {
+      boolean bool = this.a.a(paramString, parambmct, paramInt);
+      return bool;
+    }
+    catch (NullPointerException paramString)
+    {
+      QLog.e("QZonePluginClient", 1, paramString, new Object[0]);
+    }
+    return false;
+  }
+  
+  public void b()
+  {
+    this.a = null;
+  }
+  
+  boolean b()
+  {
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    try
+    {
+      if (this.a != null)
+      {
+        IBinder localIBinder = this.a.asBinder();
+        bool1 = bool2;
+        if (localIBinder != null)
+        {
+          bool1 = bool2;
+          if (localIBinder.isBinderAlive())
+          {
+            boolean bool3 = localIBinder.pingBinder();
+            bool1 = bool2;
+            if (bool3) {
+              bool1 = true;
+            }
+          }
+        }
+      }
+      return bool1;
+    }
+    catch (Exception localException) {}
+    return false;
+  }
+  
+  public boolean b(String paramString)
+  {
+    try
+    {
+      boolean bool = this.a.b(paramString);
+      return bool;
+    }
+    catch (RemoteException paramString)
+    {
+      paramString.printStackTrace();
+    }
+    return false;
+  }
+  
+  public boolean c(String paramString)
+  {
+    try
+    {
+      boolean bool = this.a.c(paramString);
+      return bool;
+    }
+    catch (RemoteException paramString)
+    {
+      paramString.printStackTrace();
+    }
+    return false;
   }
 }
 

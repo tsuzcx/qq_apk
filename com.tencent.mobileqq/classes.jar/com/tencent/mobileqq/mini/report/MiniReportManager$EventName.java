@@ -9,7 +9,11 @@ public class MiniReportManager$EventName
   public static final String APP_DOWNLOAD_END = "appdownloadend";
   public static final String APP_DOWNLOAD_RESULT = "app_download_result";
   public static final String APP_DOWNLOAD_START = "appdownloadstart";
+  public static final String APP_EMBEDDED_LIVE = "miniappembeddedlive";
+  public static final String APP_EMBEDDED_LIVE_RESULT = "miniappembeddedliveresult";
   public static final String APP_EMBEDDED_VIDEO = "miniappembeddedvideo";
+  public static final String APP_EMBEDDED_VIDEO_RESULT = "miniappembeddedvideoresult";
+  public static final String APP_ERR_WHITE_SCREEN = "app_err_white_screen";
   public static final String APP_EXIT = "apponunload";
   public static final String APP_FIRST_NEWPAGE_RESULT = "newpage_result";
   public static final String APP_FIRST_RENDER_RESULT = "first_render_result";
@@ -58,6 +62,7 @@ public class MiniReportManager$EventName
   public static final String LOADING_PAGE_CLOSE_CLICK = "loadingpagecloseclick";
   public static final String MEMORY_GROWTH = "memoryGrowth";
   public static final String MEMORY_PERFORMANCE = "memoryPerformance";
+  public static final String MINI_APP_DOWNLOAD_WITH_CACHE = "download_with_cache";
   public static final String MINI_APP_START_BY_CACHE = "miniappstartbycache";
   public static final String MINI_GAME_BASE_LIB_INSTALL_SKIP = "minigamebaselibinstallskip";
   public static final String MINI_GAME_BASE_LIB_LOAD_JAR = "minigamebaselibloadjar";
@@ -77,6 +82,7 @@ public class MiniReportManager$EventName
   public static final String MINI_GAME_LOAD_BASE_LIB_END = "minigameloadbaselibend";
   public static final String MINI_GAME_LOAD_MAIN_PKG = "minigameloadmainpkg";
   public static final String MINI_GAME_LOAD_MAIN_PKG_END = "minigameloadmainpkgend";
+  public static final String MINI_GAME_LOAD_SO_EXCEPTION = "game_load_so_exception";
   public static final String MINI_GAME_LOAD_SUB_PKG = "minigameloadsubpkg";
   public static final String MINI_GAME_LOAD_SUB_PKG_END = "minigameloadsubpkgend";
   public static final String MINI_GAME_NO_REFRESH = "minigamenorefresh";
@@ -106,6 +112,7 @@ public class MiniReportManager$EventName
   public static final String SERVICE_START = "service_start";
   public static final String SHOW = "apponshow";
   public static final String SSO_CMD_END = "ssocmdend";
+  public static final String SSO_CMD_RESULT = "ssocmdresult";
   public static final String SSO_CMD_START = "ssocmdstart";
   public static final String STEP_CREATE_SURFACEVIEW = "stepcreatesurfaceview";
   public static final String STEP_FIRST_FRAME_FROM_CREATE = "stepfirstframefromcreate";
@@ -140,7 +147,7 @@ public class MiniReportManager$EventName
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.report.MiniReportManager.EventName
  * JD-Core Version:    0.7.0.1
  */

@@ -1,39 +1,26 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.polymeric.EventCallback;
 
-public class qme
-  implements Cloneable
+class qme
+  implements bksj
 {
-  public int a;
-  public long a;
-  public String a;
-  public int b;
+  qme(qly paramqly) {}
   
-  public qme(SocializeFeedsInfo paramSocializeFeedsInfo) {}
+  public void a() {}
   
-  public qme a()
+  public void a(RecyclerView.ViewHolder paramViewHolder)
   {
-    try
-    {
-      qme localqme = (qme)super.clone();
-      return localqme;
+    int i = qly.a(this.a).a(qly.a(this.a).b());
+    paramViewHolder = qly.a(this.a).getEventCallback();
+    if (paramViewHolder != null) {
+      paramViewHolder.onPagerChange(i);
     }
-    catch (CloneNotSupportedException localCloneNotSupportedException) {}
-    return null;
-  }
-  
-  public boolean a()
-  {
-    return this.b == 1;
-  }
-  
-  public String toString()
-  {
-    return "uin=" + this.jdField_a_of_type_Long + "type=" + this.jdField_a_of_type_Int;
+    this.a.a(i);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     qme
  * JD-Core Version:    0.7.0.1
  */

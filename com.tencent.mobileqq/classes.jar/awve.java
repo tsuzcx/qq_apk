@@ -1,20 +1,21 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.profile.view.ProfileHeaderView;
+import android.graphics.Bitmap;
+import com.tencent.mobileqq.multicard.MultiCardRecommendFragment;
 
 public class awve
-  implements View.OnClickListener
+  implements aobv
 {
-  public awve(ProfileHeaderView paramProfileHeaderView, awqt paramawqt) {}
+  public awve(MultiCardRecommendFragment paramMultiCardRecommendFragment) {}
   
-  public void onClick(View paramView)
+  public void onDecodeTaskCompleted(int paramInt1, int paramInt2, String paramString, Bitmap paramBitmap)
   {
-    ProfileHeaderView.a(this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileHeaderView, this.jdField_a_of_type_Awqt);
+    if (MultiCardRecommendFragment.a(this.a) != null) {
+      MultiCardRecommendFragment.a(this.a).notifyDataSetChanged();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     awve
  * JD-Core Version:    0.7.0.1
  */

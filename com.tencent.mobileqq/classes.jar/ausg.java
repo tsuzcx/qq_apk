@@ -1,105 +1,62 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.graytip.MessageForUniteGrayTip;
-import com.tencent.mobileqq.utils.VipUtils;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.ImageView;
+import android.widget.ImageView.ScaleType;
 
 public class ausg
 {
-  public static void a(QQAppInterface paramQQAppInterface) {}
-  
-  public static void a(QQAppInterface paramQQAppInterface, MessageForUniteGrayTip paramMessageForUniteGrayTip, int paramInt)
+  public static View a(Context paramContext, int paramInt, ViewGroup paramViewGroup)
   {
-    if (paramMessageForUniteGrayTip != null)
+    switch (paramInt)
     {
-      String str1 = paramMessageForUniteGrayTip.getExtInfoFromExtStr("mutualmark_id");
-      String str2 = paramMessageForUniteGrayTip.getExtInfoFromExtStr("mutualmark_WillDowngradeSoon");
-      paramMessageForUniteGrayTip = paramMessageForUniteGrayTip.frienduin;
-      if (!TextUtils.isEmpty(str1))
-      {
-        long l1 = auss.b(str1);
-        long l2 = auss.a(str1);
-        if ((auss.b(l1)) && (l2 >= 0L)) {
-          azqs.b(paramQQAppInterface, "dc00898", "", paramMessageForUniteGrayTip, "0X800A7E4", auss.a(l1, l2), (int)(l1 * 10L + l2), 0, "", "", "", "");
-        }
-      }
-      if (QLog.isColorLevel()) {
-        QLog.i("MutualMarkBusinessLogicHelper", 2, "reportMutualMarkGrayTipExposure id:" + str1 + " willDowngradeSoon:" + str2 + " grayID:" + paramInt);
-      }
+    default: 
+      return null;
+    case 5: 
+    case 7: 
+      return LayoutInflater.from(paramContext).inflate(2131559194, paramViewGroup, false);
     }
+    return a(paramContext, paramViewGroup);
   }
   
-  public static void a(QQAppInterface paramQQAppInterface, MessageForUniteGrayTip paramMessageForUniteGrayTip, int paramInt, String paramString)
+  public static View a(Context paramContext, ViewGroup paramViewGroup)
   {
-    if (paramMessageForUniteGrayTip != null)
-    {
-      paramQQAppInterface = paramMessageForUniteGrayTip.getExtInfoFromExtStr("mutualmark_id");
-      paramMessageForUniteGrayTip = paramMessageForUniteGrayTip.getExtInfoFromExtStr("mutualmark_WillDowngradeSoon");
-      if (QLog.isColorLevel()) {
-        QLog.i("MutualMarkBusinessLogicHelper", 2, "reportMutualMarkGrayTipClickWebLink id:" + paramQQAppInterface + " willDowngradeSoon:" + paramMessageForUniteGrayTip + " url:" + paramString);
-      }
+    int i = paramViewGroup.getWidth();
+    ImageView localImageView = new ImageView(paramContext);
+    paramViewGroup = localImageView.getLayoutParams();
+    paramContext = paramViewGroup;
+    if (paramViewGroup == null) {
+      paramContext = new ViewGroup.LayoutParams(-2, -2);
     }
+    localImageView.setPadding(0, 20, 0, 20);
+    paramContext.width = (i - localImageView.getPaddingLeft() - localImageView.getPaddingRight() - localImageView.getPaddingLeft());
+    paramContext.height = (i * 200 / 718);
+    localImageView.setLayoutParams(paramContext);
+    localImageView.setId(2131363262);
+    localImageView.setScaleType(ImageView.ScaleType.FIT_XY);
+    return localImageView;
   }
   
-  public static void a(QQAppInterface paramQQAppInterface, String paramString, autj paramautj)
+  public static ausb a(Context paramContext, int paramInt, ViewGroup paramViewGroup)
   {
-    if (paramautj != null)
+    View localView = a(paramContext, paramInt, paramViewGroup);
+    switch (paramInt)
     {
-      azqs.b(paramQQAppInterface, "dc00898", "", paramString, "0X800A7E3", auss.a(paramautj.a, paramautj.b), (int)(paramautj.a * 10L + paramautj.b), 0, "", "", "", "");
-      switch ((int)paramautj.a)
-      {
-      }
+    default: 
+      return null;
+    case 5: 
+      return new ausi(paramContext, localView, paramViewGroup);
+    case 7: 
+      return new aush(paramContext, localView, paramViewGroup);
     }
-    for (;;)
-    {
-      VipUtils.a(paramString, paramautj, paramQQAppInterface, "C2C_click");
-      azqs.b(paramQQAppInterface, "CliOper", "", "", "0X8007602", "0X8007602", 0, 0, "", "", "", "");
-      azqs.b(null, "dc00898", "", "", "0X800A1FA", "0X800A1FA", 0, 0, "", "", "", "");
-      return;
-      azqs.b(paramQQAppInterface, "dc00898", "", paramString, "0X800A7A1", "0X800A7A1", 0, 0, "", "", "", "");
-    }
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface, String paramString, autj paramautj1, autj paramautj2)
-  {
-    if (paramautj1 != null) {
-      azqs.b(paramQQAppInterface, "dc00898", "", paramString, "0X800A7E2", auss.a(paramautj1.a, paramautj1.b), (int)(paramautj1.a * 10L + paramautj1.b), 0, "", "", "", "");
-    }
-    if (paramautj2 != null) {
-      azqs.b(paramQQAppInterface, "dc00898", "", paramString, "0X800A7E2", auss.a(paramautj2.a, paramautj2.b), (int)(paramautj2.a * 10L + paramautj2.b), 0, "", "", "", "");
-    }
-    azqs.b(null, "dc00898", "", "", "0X800A1F9", "0X800A1F9", 0, 0, "", "", "", "");
-  }
-  
-  public static boolean a(QQAppInterface paramQQAppInterface)
-  {
-    return false;
-  }
-  
-  public static void b(QQAppInterface paramQQAppInterface, MessageForUniteGrayTip paramMessageForUniteGrayTip, int paramInt)
-  {
-    if (paramMessageForUniteGrayTip != null)
-    {
-      String str1 = paramMessageForUniteGrayTip.getExtInfoFromExtStr("mutualmark_id");
-      String str2 = paramMessageForUniteGrayTip.getExtInfoFromExtStr("mutualmark_WillDowngradeSoon");
-      paramMessageForUniteGrayTip = paramMessageForUniteGrayTip.frienduin;
-      if (!TextUtils.isEmpty(str1))
-      {
-        long l1 = auss.b(str1);
-        long l2 = auss.a(str1);
-        if ((auss.b(l1)) && (l2 >= 0L)) {
-          azqs.b(paramQQAppInterface, "dc00898", "", paramMessageForUniteGrayTip, "0X800A7E5", auss.a(l1, l2), (int)(l1 * 10L + l2), 0, "", "", "", "");
-        }
-      }
-      if (QLog.isColorLevel()) {
-        QLog.i("MutualMarkBusinessLogicHelper", 2, "reportMutualMarkGrayTipClick id:" + str1 + " willDowngradeSoon:" + str2 + " grayID:" + paramInt);
-      }
-    }
+    return new ausc(paramContext, localView, paramViewGroup);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     ausg
  * JD-Core Version:    0.7.0.1
  */

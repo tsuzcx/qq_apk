@@ -57,6 +57,7 @@ public class StringCommon
   public static final int STR_ID_SET_ALPHA = 65;
   public static final int STR_ID_SET_ENABLE_MARQUEE_TEXT = 67;
   public static final int STR_ID_SET_FONT_FILE_PATH = 64;
+  public static final int STR_ID_SET_FRONT_SIZE_RATIO = 70;
   public static final int STR_ID_SET_HEIGHT_STRING = 58;
   public static final int STR_ID_SET_LINKSPAN_CLICKABLE = 68;
   public static final int STR_ID_SET_MAX_WIDTH = 69;
@@ -74,6 +75,7 @@ public class StringCommon
   public static final int STR_ID_TEXT_SET_TEXT_ALIGNMENT_STRING = 50;
   public static final int STR_ID_TEXT_SIZE = 19;
   public static final int STR_ID_TEXT_SIZE_AND_BOLD = 21;
+  public static final int STR_ID_TEXT_SIZE_AND_BOLD_RATIO = 71;
   public static final int STR_ID_VISIBILITY = 37;
   public static final int STR_ID_WIDTH = 1;
   public static final int STR_PROTEUS_MAX_SYSTEM_ID = 1000;
@@ -155,6 +157,8 @@ public class StringCommon
     mString2Index.put("setMarqueeEnable", Integer.valueOf(67));
     mString2Index.put("setMaxWidth:type:", Integer.valueOf(69));
     mString2Index.put("setLinkClickable", Integer.valueOf(68));
+    mString2Index.put("setFontSizeString:ratio:", Integer.valueOf(70));
+    mString2Index.put("setBoldFontSizeString:ratio:", Integer.valueOf(71));
   }
   
   public static int getStrIdFromString(String paramString)
@@ -178,7 +182,7 @@ public class StringCommon
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.common.StringCommon
  * JD-Core Version:    0.7.0.1
  */

@@ -1,10 +1,20 @@
-import android.os.Build.VERSION;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendProfileEditFragment;
+import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendProfileEditFragment.ExtendFriendInfo;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class asjk
+  implements View.OnClickListener
 {
-  public static boolean a()
+  public asjk(ExtendFriendProfileEditFragment paramExtendFriendProfileEditFragment, ExtendFriendProfileEditFragment.ExtendFriendInfo paramExtendFriendInfo) {}
+  
+  public void onClick(View paramView)
   {
-    return Build.VERSION.SDK_INT >= 11;
+    if (this.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendProfileEditFragment.getActivity() != null) {
+      asme.a(this.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendProfileEditFragment.getActivity(), this.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendProfileEditFragment$ExtendFriendInfo.g, this.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendProfileEditFragment$ExtendFriendInfo.h, this.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendProfileEditFragment$ExtendFriendInfo.d, this.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendProfileEditFragment$ExtendFriendInfo.c);
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

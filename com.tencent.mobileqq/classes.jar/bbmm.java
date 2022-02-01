@@ -1,69 +1,53 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManagerV2;
-import com.tencent.mobileqq.troop.aioapp.GrayGroupAppsDbHelper.1;
-import com.tencent.mobileqq.troop.aioapp.data.GrayGroupAppEntity;
-import java.util.Collection;
-import java.util.Iterator;
+import android.view.View;
+import com.tencent.mobileqq.mini.sdk.MiniAppLauncher;
 import java.util.List;
-import java.util.concurrent.ConcurrentHashMap;
 
 public class bbmm
+  implements bbmx
 {
-  private final QQAppInterface a;
+  protected int a;
+  private String a;
+  public List<bbmy> a;
   
-  bbmm(QQAppInterface paramQQAppInterface)
+  public bbmm(List<bbmy> paramList, String paramString, int paramInt)
   {
-    this.a = paramQQAppInterface;
+    this.jdField_a_of_type_JavaUtilList = paramList;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Int = paramInt;
   }
   
-  private void a(boolean paramBoolean)
+  public int a()
   {
-    awgf localawgf = this.a.getEntityManagerFactory().createEntityManager();
-    bbmk localbbmk = bbmk.a(this.a);
-    Object localObject = localawgf.a(GrayGroupAppEntity.class);
-    if (!bbmp.a((Collection)localObject))
-    {
-      localObject = ((List)localObject).iterator();
-      while (((Iterator)localObject).hasNext())
-      {
-        GrayGroupAppEntity localGrayGroupAppEntity = (GrayGroupAppEntity)((Iterator)localObject).next();
-        if (paramBoolean)
-        {
-          localGrayGroupAppEntity.updatedTimestamp = 0L;
-          b(localGrayGroupAppEntity);
-        }
-        localbbmk.a.put(Long.valueOf(localGrayGroupAppEntity.groupUin), localGrayGroupAppEntity);
-      }
-    }
-    localawgf.a();
+    return 3;
   }
   
-  private void b(GrayGroupAppEntity paramGrayGroupAppEntity)
+  public String a()
   {
-    awgf localawgf = this.a.getEntityManagerFactory().createEntityManager();
-    paramGrayGroupAppEntity.setStatus(1000);
-    localawgf.b(paramGrayGroupAppEntity);
-    localawgf.a();
+    return anni.a(2131704181);
   }
   
-  public void a()
+  public List<bbmy> a()
   {
-    a(false);
+    return this.jdField_a_of_type_JavaUtilList;
   }
   
-  void a(GrayGroupAppEntity paramGrayGroupAppEntity)
+  public void a(View paramView)
   {
-    ThreadManagerV2.excute(new GrayGroupAppsDbHelper.1(this, paramGrayGroupAppEntity), 32, null, false);
+    bbrf.a(null, 0, this.jdField_a_of_type_Int, "0X8009D47", 0, 0, null, null);
+    String str = bbup.b("pages/search-results/search-results?mode=search&q=" + this.jdField_a_of_type_JavaLangString);
+    str = bbup.b("https://m.q.qq.com/a/p/1108291530?via=2005_2&referer=2005&s=" + str);
+    str = "mqqapi://microapp/open?url=" + str;
+    MiniAppLauncher.startMiniApp(paramView.getContext(), str, 2005, null);
   }
   
-  public void b()
+  public int b()
   {
-    a(true);
+    return this.jdField_a_of_type_Int;
   }
   
-  void c()
+  public String b()
   {
-    this.a.getEntityManagerFactory().createEntityManager().a(GrayGroupAppEntity.class.getSimpleName(), null, null);
+    return this.jdField_a_of_type_JavaLangString;
   }
 }
 

@@ -1,43 +1,28 @@
-import android.app.Activity;
-import android.os.Handler;
-import android.os.Looper;
-import com.tencent.mobileqq.apollo.ApolloSurfaceView;
-import com.tencent.mobileqq.apollo.process.data.CmGameInitParams;
-import com.tencent.mobileqq.apollo.process.data.CmGameScreenRotate.1;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.upgrade.activity.UpgradeDetailActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class akyy
+class akyy
+  implements View.OnClickListener
 {
-  public int a;
-  private Activity jdField_a_of_type_AndroidAppActivity;
-  private Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
-  private ApolloSurfaceView jdField_a_of_type_ComTencentMobileqqApolloApolloSurfaceView;
-  private CmGameInitParams jdField_a_of_type_ComTencentMobileqqApolloProcessDataCmGameInitParams;
+  akyy(akyh paramakyh) {}
   
-  public akyy(ApolloSurfaceView paramApolloSurfaceView, CmGameInitParams paramCmGameInitParams, Activity paramActivity)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Int = 1;
-    this.jdField_a_of_type_ComTencentMobileqqApolloApolloSurfaceView = paramApolloSurfaceView;
-    this.jdField_a_of_type_ComTencentMobileqqApolloProcessDataCmGameInitParams = paramCmGameInitParams;
-    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
-  }
-  
-  public static int a(int paramInt)
-  {
-    if (paramInt == 1) {}
-    do
+    this.a.a(-1, null);
+    if (bgdt.a().a() == 4)
     {
-      return 1;
-      if (paramInt == 3) {
-        return 0;
-      }
-    } while (paramInt != 2);
-    return 8;
-  }
-  
-  public void a(int paramInt)
-  {
-    if (this.jdField_a_of_type_AndroidOsHandler != null) {
-      this.jdField_a_of_type_AndroidOsHandler.post(new CmGameScreenRotate.1(this, paramInt));
+      bcst.b(akyh.a(this.a).app, "CliOper", "", "", "0X8004DA4", "0X8004DA4", 0, 0, bgds.b(), bgdt.b(), bgdt.a(), "1");
+      bgdt.a().a(akyh.a(this.a));
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      bcst.b(akyh.a(this.a).app, "CliOper", "", "", "0X8004DA3", "0X8004DA3", 0, 0, bgds.b(), bgdt.b(), bgdt.a(), "1");
+      UpgradeDetailActivity.a(akyh.a(this.a), bgdt.a().a(), true, true, true);
     }
   }
 }

@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.config.struct;
 
-import aozv;
-import aozw;
+import arcv;
+import arcw;
 
 public class PicAndAdConf$1
   implements Runnable
 {
-  public PicAndAdConf$1(aozv paramaozv, aozw paramaozw) {}
+  public PicAndAdConf$1(arcv paramarcv, arcw paramarcw) {}
   
   public void run()
   {

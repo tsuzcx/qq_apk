@@ -1,28 +1,28 @@
 package cooperation.weiyun;
 
-import bkjr;
-import bkjy;
+import bmyg;
+import bmyl;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.widget.QQToast;
 
 public class WeiyunAIOUtils$WeiyunCallbackImpl$1
   implements Runnable
 {
-  public WeiyunAIOUtils$WeiyunCallbackImpl$1(bkjr parambkjr) {}
+  public WeiyunAIOUtils$WeiyunCallbackImpl$1(bmyg parambmyg) {}
   
   public void run()
   {
     if (BaseActivity.sTopActivity != null)
     {
-      bkjy.a(bkjr.a(this.this$0), BaseActivity.sTopActivity, bkjr.a(this.this$0));
+      bmyl.a(bmyg.a(this.this$0), BaseActivity.sTopActivity, bmyg.a(this.this$0));
       return;
     }
-    QQToast.a(bkjr.a(this.this$0), 2, 2131697816, 1).b(bkjr.a(this.this$0));
+    QQToast.a(bmyg.a(this.this$0), 2, 2131696658, 1).b(bmyg.a(this.this$0));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.weiyun.WeiyunAIOUtils.WeiyunCallbackImpl.1
  * JD-Core Version:    0.7.0.1
  */

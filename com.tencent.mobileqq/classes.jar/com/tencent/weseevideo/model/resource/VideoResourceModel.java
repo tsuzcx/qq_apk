@@ -17,6 +17,7 @@ public class VideoResourceModel
   private long sourceTimeDurationUs;
   private long sourceTimeStart;
   private long sourceTimeStartUs;
+  private float speed = 1.0F;
   private int type = 1;
   private int width;
   
@@ -116,6 +117,11 @@ public class VideoResourceModel
     return this.sourceTimeStartUs;
   }
   
+  public float getSpeed()
+  {
+    return this.speed;
+  }
+  
   public int getType()
   {
     return this.type;
@@ -197,6 +203,12 @@ public class VideoResourceModel
     this.sourceTimeStartUs = paramLong;
   }
   
+  public void setSpeed(float paramFloat)
+  {
+    this.speed = paramFloat;
+    this.scaleDuration = (((float)this.selectTimeDuration / paramFloat));
+  }
+  
   public void setType(int paramInt)
   {
     this.type = paramInt;
@@ -214,7 +226,7 @@ public class VideoResourceModel
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.weseevideo.model.resource.VideoResourceModel
  * JD-Core Version:    0.7.0.1
  */

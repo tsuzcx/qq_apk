@@ -1,7 +1,7 @@
 package io.flutter.embedding.engine.systemchannels;
 
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import io.flutter.Log;
 import io.flutter.embedding.engine.dart.DartExecutor;
 import io.flutter.plugin.common.JSONMethodCodec;
@@ -56,6 +56,11 @@ public class TextInputChannel
     this.channel.invokeMethod("TextInputClient.performAction", Arrays.asList(new Serializable[] { Integer.valueOf(paramInt), "TextInputAction.previous" }));
   }
   
+  public void requestExistingInputState()
+  {
+    this.channel.invokeMethod("TextInputClient.requestExistingInputState", null);
+  }
+  
   public void search(int paramInt)
   {
     Log.v("TextInputChannel", "Sending 'search' message.");
@@ -104,7 +109,7 @@ public class TextInputChannel
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     io.flutter.embedding.engine.systemchannels.TextInputChannel
  * JD-Core Version:    0.7.0.1
  */

@@ -1,26 +1,38 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.filemanager.core.OnlineFileSessionCenter.1;
-import com.tencent.qphone.base.util.QLog;
+import android.support.annotation.NonNull;
+import android.text.TextUtils;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class aqyk
-  extends BroadcastReceiver
 {
-  public aqyk(OnlineFileSessionCenter.1 param1) {}
+  private static String a = "https://h5.vip.qq.com/p/pay/index?_wv=17301507&_wwv=8192&aid=mvip.g.a.zh_jjms&month=1&type=vip";
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  @NonNull
+  public static aqyk a(String paramString)
   {
-    if (paramIntent != null)
+    aqyk localaqyk = new aqyk();
+    if (TextUtils.isEmpty(paramString)) {
+      return localaqyk;
+    }
+    a(paramString);
+    return localaqyk;
+  }
+  
+  public static String a()
+  {
+    return a;
+  }
+  
+  private static void a(String paramString)
+  {
+    try
     {
-      paramContext = paramIntent.getAction();
-      if ((paramContext != null) && (paramContext.equals("com.tencent.mobileqq.intent.logout")))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.i("OnlineFileSessionCenter<FileAssistant>", 2, "OLfilesession[] logout.....!");
-        }
-        this.a.this$0.a();
-      }
+      a = new JSONObject(paramString).getJSONObject("android").getString("payH5Url");
+      return;
+    }
+    catch (JSONException paramString)
+    {
+      paramString.printStackTrace();
     }
   }
 }

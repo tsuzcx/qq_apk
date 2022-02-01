@@ -1,41 +1,41 @@
 package com.tencent.biz.pubaccount.readinjoy.pts.loader;
 
-import bdhb;
+import bgmg;
 import com.tencent.qphone.base.util.QLog;
-import pwa;
-import pwc;
+import qok;
+import qom;
 
 public class PTSJSCLoader$4
   implements Runnable
 {
-  public PTSJSCLoader$4(pwa parampwa) {}
+  public PTSJSCLoader$4(qok paramqok) {}
   
   public void run()
   {
-    if (!bdhb.a(pwa.b(this.this$0)))
+    if (!bgmg.a(qok.b(this.this$0)))
     {
       QLog.i("PTSJSCLoader", 1, "[handleDownloadPTSJSC], offline dir does not exist.");
       return;
     }
-    if (!pwc.a(pwa.b(this.this$0), "4044"))
+    if (!qom.a(qok.b(this.this$0), "4044"))
     {
       QLog.i("PTSJSCLoader", 1, "[handleDownloadPTSJSC], offline dir is not valid.");
       return;
     }
-    if (!pwc.a(pwa.b(this.this$0) + "/" + "pts_jsc_config.json"))
+    if (!qom.a(qok.b(this.this$0) + "/" + "pts_jsc_config.json"))
     {
       QLog.i("PTSJSCLoader", 1, "[handleDownloadPTSJC], offline version is not valid.");
       return;
     }
-    if (bdhb.a(pwa.a(this.this$0)))
+    if (bgmg.a(qok.a(this.this$0)))
     {
-      QLog.i("PTSJSCLoader", 1, "[handleDownloadPTSJC], delete inner dir, dir = " + pwa.a(this.this$0));
-      bdhb.a(pwa.a(this.this$0));
+      QLog.i("PTSJSCLoader", 1, "[handleDownloadPTSJC], delete inner dir, dir = " + qok.a(this.this$0));
+      bgmg.a(qok.a(this.this$0));
     }
     try
     {
-      boolean bool1 = bdhb.d(pwa.b(this.this$0) + "/" + "libjsc.so", pwa.a(this.this$0) + "/" + "libjsc.so");
-      boolean bool2 = bdhb.d(pwa.b(this.this$0) + "/" + "pts_jsc_config.json", pwa.a(this.this$0) + "/" + "pts_jsc_config.json");
+      boolean bool1 = bgmg.d(qok.b(this.this$0) + "/" + "libjsc.so", qok.a(this.this$0) + "/" + "libjsc.so");
+      boolean bool2 = bgmg.d(qok.b(this.this$0) + "/" + "pts_jsc_config.json", qok.a(this.this$0) + "/" + "pts_jsc_config.json");
       QLog.i("PTSJSCLoader", 1, "[handleDownloadPTSJSC], copyJSCSoSuccess = " + bool1 + ", copyConfigSuccess = " + bool2);
       return;
     }

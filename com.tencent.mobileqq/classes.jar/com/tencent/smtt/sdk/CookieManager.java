@@ -6,8 +6,8 @@ import android.content.SharedPreferences.Editor;
 import android.os.Build.VERSION;
 import android.text.TextUtils;
 import com.tencent.smtt.export.external.DexLoader;
-import com.tencent.smtt.utils.ReflectionUtils;
 import com.tencent.smtt.utils.TbsLog;
+import com.tencent.smtt.utils.i;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
@@ -15,28 +15,23 @@ import java.util.concurrent.CopyOnWriteArrayList;
 
 public class CookieManager
 {
-  private static final int FUNCTION_SET_COOKIE_WITHOUT_CALLBACK = 2;
-  private static final int FUNCTION_SET_COOKIE_WITH_CALLBACK = 1;
   public static String LOGTAG = "CookieManager";
-  private static final String SP_COOKIEINFO = "cookiedb_info";
-  private static final String SP_KEY_COOKIEDB_VERSION = "db_version";
-  private static final String SP_KEY_COOKIES = "key_cookie";
-  private static CookieManager mInstance;
-  CopyOnWriteArrayList<CookieManager.CookieInstance> cookieInstances;
-  private boolean isCompatiableed = false;
-  CookieManager.COOKIE_MODE mCookueMode = CookieManager.COOKIE_MODE.MODE_NONE;
-  String mTargetKey;
-  private boolean mbWebviewExist = false;
+  private static CookieManager d;
+  CopyOnWriteArrayList<CookieManager.b> a;
+  String b;
+  CookieManager.a c = CookieManager.a.a;
+  private boolean e = false;
+  private boolean f = false;
   
   public static CookieManager getInstance()
   {
-    if (mInstance == null) {}
+    if (d == null) {}
     try
     {
-      if (mInstance == null) {
-        mInstance = new CookieManager();
+      if (d == null) {
+        d = new CookieManager();
       }
-      return mInstance;
+      return d;
     }
     finally {}
   }
@@ -61,124 +56,76 @@ public class CookieManager
     }
   }
   
-  public boolean acceptCookie()
+  void a()
   {
-    X5CoreEngine localX5CoreEngine = X5CoreEngine.getInstance();
-    if ((localX5CoreEngine != null) && (localX5CoreEngine.isX5Core())) {
-      return localX5CoreEngine.wizard().cookieManager_acceptCookie();
+    label26:
+    label52:
+    Object localObject3;
+    for (;;)
+    {
+      try
+      {
+        this.f = true;
+        if (this.a != null)
+        {
+          int i = this.a.size();
+          if (i != 0) {}
+        }
+        else
+        {
+          return;
+        }
+        Object localObject1 = v.a();
+        if ((localObject1 == null) || (!((v)localObject1).b())) {
+          break;
+        }
+        localObject1 = this.a.iterator();
+        if (!((Iterator)localObject1).hasNext()) {
+          break label292;
+        }
+        localObject3 = (CookieManager.b)((Iterator)localObject1).next();
+        switch (((CookieManager.b)localObject3).a)
+        {
+        case 1: 
+          setCookie(((CookieManager.b)localObject3).b, ((CookieManager.b)localObject3).c, ((CookieManager.b)localObject3).d);
+          break;
+        case 2: 
+          setCookie(((CookieManager.b)localObject3).b, ((CookieManager.b)localObject3).c);
+        }
+      }
+      finally {}
     }
-    return android.webkit.CookieManager.getInstance().acceptCookie();
+    Iterator localIterator = this.a.iterator();
+    for (;;)
+    {
+      Object localObject4;
+      if (localIterator.hasNext()) {
+        localObject4 = (CookieManager.b)localIterator.next();
+      }
+      switch (((CookieManager.b)localObject4).a)
+      {
+      case 1: 
+        if (Build.VERSION.SDK_INT >= 21)
+        {
+          localObject3 = android.webkit.CookieManager.getInstance();
+          String str1 = ((CookieManager.b)localObject4).b;
+          String str2 = ((CookieManager.b)localObject4).c;
+          localObject4 = ((CookieManager.b)localObject4).d;
+          i.a(localObject3, "setCookie", new Class[] { String.class, String.class, android.webkit.ValueCallback.class }, new Object[] { str1, str2, localObject4 });
+        }
+        break;
+      case 2: 
+        android.webkit.CookieManager.getInstance().setCookie(((CookieManager.b)localObject4).b, ((CookieManager.b)localObject4).c);
+        continue;
+        label292:
+        this.a.clear();
+        break label26;
+        break label52;
+      }
+    }
   }
   
-  /* Error */
-  public boolean acceptThirdPartyCookies(WebView paramWebView)
-  {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: invokestatic 98	com/tencent/smtt/sdk/X5CoreEngine:getInstance	()Lcom/tencent/smtt/sdk/X5CoreEngine;
-    //   5: astore_3
-    //   6: aload_3
-    //   7: ifnull +70 -> 77
-    //   10: aload_3
-    //   11: invokevirtual 101	com/tencent/smtt/sdk/X5CoreEngine:isX5Core	()Z
-    //   14: ifeq +63 -> 77
-    //   17: aload_3
-    //   18: invokevirtual 105	com/tencent/smtt/sdk/X5CoreEngine:wizard	()Lcom/tencent/smtt/sdk/X5CoreWizard;
-    //   21: invokevirtual 123	com/tencent/smtt/sdk/X5CoreWizard:dexLoader	()Lcom/tencent/smtt/export/external/DexLoader;
-    //   24: astore_3
-    //   25: aload_1
-    //   26: invokevirtual 129	com/tencent/smtt/sdk/WebView:getView	()Landroid/view/View;
-    //   29: astore_1
-    //   30: aload_3
-    //   31: ldc 131
-    //   33: ldc 133
-    //   35: iconst_1
-    //   36: anewarray 135	java/lang/Class
-    //   39: dup
-    //   40: iconst_0
-    //   41: ldc 4
-    //   43: aastore
-    //   44: iconst_1
-    //   45: anewarray 4	java/lang/Object
-    //   48: dup
-    //   49: iconst_0
-    //   50: aload_1
-    //   51: aastore
-    //   52: invokevirtual 141	com/tencent/smtt/export/external/DexLoader:invokeStaticMethod	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Class;[Ljava/lang/Object;)Ljava/lang/Object;
-    //   55: astore_1
-    //   56: aload_1
-    //   57: ifnull +15 -> 72
-    //   60: aload_1
-    //   61: checkcast 143	java/lang/Boolean
-    //   64: invokevirtual 146	java/lang/Boolean:booleanValue	()Z
-    //   67: istore_2
-    //   68: aload_0
-    //   69: monitorexit
-    //   70: iload_2
-    //   71: ireturn
-    //   72: iconst_1
-    //   73: istore_2
-    //   74: goto -6 -> 68
-    //   77: getstatic 64	android/os/Build$VERSION:SDK_INT	I
-    //   80: bipush 21
-    //   82: if_icmpge +8 -> 90
-    //   85: iconst_1
-    //   86: istore_2
-    //   87: goto -19 -> 68
-    //   90: invokestatic 115	android/webkit/CookieManager:getInstance	()Landroid/webkit/CookieManager;
-    //   93: astore_3
-    //   94: aload_1
-    //   95: invokevirtual 129	com/tencent/smtt/sdk/WebView:getView	()Landroid/view/View;
-    //   98: astore_1
-    //   99: aload_3
-    //   100: ldc 147
-    //   102: iconst_1
-    //   103: anewarray 135	java/lang/Class
-    //   106: dup
-    //   107: iconst_0
-    //   108: ldc 149
-    //   110: aastore
-    //   111: iconst_1
-    //   112: anewarray 4	java/lang/Object
-    //   115: dup
-    //   116: iconst_0
-    //   117: aload_1
-    //   118: aastore
-    //   119: invokestatic 155	com/tencent/smtt/utils/ReflectionUtils:invokeInstance	(Ljava/lang/Object;Ljava/lang/String;[Ljava/lang/Class;[Ljava/lang/Object;)Ljava/lang/Object;
-    //   122: astore_1
-    //   123: aload_1
-    //   124: ifnull +14 -> 138
-    //   127: aload_1
-    //   128: checkcast 143	java/lang/Boolean
-    //   131: invokevirtual 146	java/lang/Boolean:booleanValue	()Z
-    //   134: istore_2
-    //   135: goto -67 -> 68
-    //   138: iconst_0
-    //   139: istore_2
-    //   140: goto -72 -> 68
-    //   143: astore_1
-    //   144: aload_0
-    //   145: monitorexit
-    //   146: aload_1
-    //   147: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	148	0	this	CookieManager
-    //   0	148	1	paramWebView	WebView
-    //   67	73	2	bool	boolean
-    //   5	95	3	localObject	Object
-    // Exception table:
-    //   from	to	target	type
-    //   2	6	143	finally
-    //   10	56	143	finally
-    //   60	68	143	finally
-    //   77	85	143	finally
-    //   90	123	143	finally
-    //   127	135	143	finally
-  }
-  
-  protected void compatiableCookieDatabaseIfNeed(Context paramContext, boolean paramBoolean1, boolean paramBoolean2)
+  protected void a(Context paramContext, boolean paramBoolean1, boolean paramBoolean2)
   {
     int k = 0;
     int j = 0;
@@ -192,9 +139,9 @@ public class CookieManager
       label261:
       try
       {
-        if ((this.mCookueMode != CookieManager.COOKIE_MODE.MODE_NONE) && (paramContext != null) && (TbsExtensionFunctionManager.getInstance().canUseFunction(paramContext, "cookie_switch.txt")))
+        if ((this.c != CookieManager.a.a) && (paramContext != null) && (TbsExtensionFunctionManager.getInstance().canUseFunction(paramContext, "cookie_switch.txt")))
         {
-          bool = this.isCompatiableed;
+          bool = this.e;
           if (!bool) {}
         }
         else
@@ -204,11 +151,11 @@ public class CookieManager
         l2 = System.currentTimeMillis();
         l1 = 0L;
         TbsLog.i(LOGTAG, "compatiableCookieDatabaseIfNeed,isX5Inited:" + paramBoolean1 + ",useX5:" + paramBoolean2);
-        if ((!paramBoolean1) && (!QbSdk.getIsSysWebViewForcedByOuter()) && (!QbSdk.mIsSysWebViewForced)) {
-          break label477;
+        if ((!paramBoolean1) && (!QbSdk.getIsSysWebViewForcedByOuter()) && (!QbSdk.a)) {
+          break label473;
         }
-        if ((QbSdk.getIsSysWebViewForcedByOuter()) || (QbSdk.mIsSysWebViewForced)) {
-          break label506;
+        if ((QbSdk.getIsSysWebViewForcedByOuter()) || (QbSdk.a)) {
+          break label502;
         }
         bool = TbsExtensionFunctionManager.getInstance().canUseFunction(paramContext, "usex5.txt");
         TbsLog.i(LOGTAG, "usex5 : mUseX5LastProcess->" + bool + ",useX5:" + paramBoolean2);
@@ -217,23 +164,23 @@ public class CookieManager
           continue;
         }
         localTbsLogInfo = TbsLogReport.getInstance(paramContext).tbsLogInfo();
-        if (TextUtils.isEmpty(this.mTargetKey)) {
-          break label463;
+        if (TextUtils.isEmpty(this.b)) {
+          break label459;
         }
-        if ((TbsInstaller.getInstance().getTbsCoreInstalledVerInNolock(paramContext) > 0) && (TbsInstaller.getInstance().getTbsCoreInstalledVerInNolock(paramContext) < 36001)) {
+        if ((n.a().i(paramContext) > 0) && (n.a().i(paramContext) < 36001)) {
           continue;
         }
         if (!bool) {
-          break label348;
+          break label344;
         }
-        i = SqliteDataManager.getCookieDBVersion(paramContext);
+        i = h.d(paramContext);
         j = i;
         if (i <= 0) {
-          break label488;
+          break label484;
         }
         j = getROMCookieDBVersion(paramContext);
         if (j > 0) {
-          break label501;
+          break label497;
         }
         paramBoolean1 = true;
       }
@@ -243,12 +190,12 @@ public class CookieManager
       localTbsLogInfo.setFailDetail("x5->sys:" + bool + " from:" + i + " to:" + j + ",timeused:" + l1);
       TbsLogReport.getInstance(paramContext).eventReport(TbsLogReport.EventType.TYPE_COOKIE_DB_SWITCH, localTbsLogInfo);
       continue;
-      label348:
-      int i = SqliteDataManager.getCookieDBVersion(paramContext);
+      label344:
+      int i = h.d(paramContext);
       j = i;
       if (i > 0)
       {
-        String str = TbsInstaller.getInstance().getConfileFileProperty(paramContext, "cookies_database_version");
+        String str = n.a().d(paramContext, "cookies_database_version");
         paramBoolean1 = TextUtils.isEmpty(str);
         j = i;
         if (!paramBoolean1) {
@@ -264,11 +211,11 @@ public class CookieManager
           }
         }
       }
-      label463:
-      label477:
-      label488:
-      label501:
-      label506:
+      label459:
+      label473:
+      label484:
+      label497:
+      label502:
       do
       {
         do
@@ -278,14 +225,14 @@ public class CookieManager
             localTbsLogInfo.setErrorCode(703);
             break label269;
           }
-          SqliteDataManager.transformCookies(paramContext, this.mCookueMode, this.mTargetKey, paramBoolean1, paramBoolean2);
+          h.a(paramContext, this.c, this.b, paramBoolean1, paramBoolean2);
           localTbsLogInfo.setErrorCode(704);
           l1 = System.currentTimeMillis() - l2;
           break label269;
           localTbsLogInfo.setErrorCode(701);
           i = 0;
           break label269;
-          X5CoreEngine.getInstance().init(paramContext, null);
+          v.a().a(paramContext, null);
           break;
           i = j;
           paramBoolean1 = false;
@@ -303,23 +250,140 @@ public class CookieManager
     }
   }
   
+  public boolean acceptCookie()
+  {
+    v localv = v.a();
+    if ((localv != null) && (localv.b())) {
+      return localv.c().d();
+    }
+    return android.webkit.CookieManager.getInstance().acceptCookie();
+  }
+  
+  /* Error */
+  public boolean acceptThirdPartyCookies(WebView paramWebView)
+  {
+    // Byte code:
+    //   0: aload_0
+    //   1: monitorenter
+    //   2: invokestatic 95	com/tencent/smtt/sdk/v:a	()Lcom/tencent/smtt/sdk/v;
+    //   5: astore_3
+    //   6: aload_3
+    //   7: ifnull +72 -> 79
+    //   10: aload_3
+    //   11: invokevirtual 97	com/tencent/smtt/sdk/v:b	()Z
+    //   14: ifeq +65 -> 79
+    //   17: aload_3
+    //   18: invokevirtual 292	com/tencent/smtt/sdk/v:c	()Lcom/tencent/smtt/sdk/w;
+    //   21: invokevirtual 303	com/tencent/smtt/sdk/w:b	()Lcom/tencent/smtt/export/external/DexLoader;
+    //   24: astore_3
+    //   25: aload_1
+    //   26: invokevirtual 309	com/tencent/smtt/sdk/WebView:getView	()Landroid/view/View;
+    //   29: astore_1
+    //   30: aload_3
+    //   31: ldc_w 311
+    //   34: ldc_w 313
+    //   37: iconst_1
+    //   38: anewarray 136	java/lang/Class
+    //   41: dup
+    //   42: iconst_0
+    //   43: ldc 4
+    //   45: aastore
+    //   46: iconst_1
+    //   47: anewarray 4	java/lang/Object
+    //   50: dup
+    //   51: iconst_0
+    //   52: aload_1
+    //   53: aastore
+    //   54: invokevirtual 319	com/tencent/smtt/export/external/DexLoader:invokeStaticMethod	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Class;[Ljava/lang/Object;)Ljava/lang/Object;
+    //   57: astore_1
+    //   58: aload_1
+    //   59: ifnull +15 -> 74
+    //   62: aload_1
+    //   63: checkcast 321	java/lang/Boolean
+    //   66: invokevirtual 324	java/lang/Boolean:booleanValue	()Z
+    //   69: istore_2
+    //   70: aload_0
+    //   71: monitorexit
+    //   72: iload_2
+    //   73: ireturn
+    //   74: iconst_1
+    //   75: istore_2
+    //   76: goto -6 -> 70
+    //   79: getstatic 50	android/os/Build$VERSION:SDK_INT	I
+    //   82: bipush 21
+    //   84: if_icmpge +8 -> 92
+    //   87: iconst_1
+    //   88: istore_2
+    //   89: goto -19 -> 70
+    //   92: invokestatic 133	android/webkit/CookieManager:getInstance	()Landroid/webkit/CookieManager;
+    //   95: astore_3
+    //   96: aload_1
+    //   97: invokevirtual 309	com/tencent/smtt/sdk/WebView:getView	()Landroid/view/View;
+    //   100: astore_1
+    //   101: aload_3
+    //   102: ldc_w 325
+    //   105: iconst_1
+    //   106: anewarray 136	java/lang/Class
+    //   109: dup
+    //   110: iconst_0
+    //   111: ldc_w 327
+    //   114: aastore
+    //   115: iconst_1
+    //   116: anewarray 4	java/lang/Object
+    //   119: dup
+    //   120: iconst_0
+    //   121: aload_1
+    //   122: aastore
+    //   123: invokestatic 145	com/tencent/smtt/utils/i:a	(Ljava/lang/Object;Ljava/lang/String;[Ljava/lang/Class;[Ljava/lang/Object;)Ljava/lang/Object;
+    //   126: astore_1
+    //   127: aload_1
+    //   128: ifnull +14 -> 142
+    //   131: aload_1
+    //   132: checkcast 321	java/lang/Boolean
+    //   135: invokevirtual 324	java/lang/Boolean:booleanValue	()Z
+    //   138: istore_2
+    //   139: goto -69 -> 70
+    //   142: iconst_0
+    //   143: istore_2
+    //   144: goto -74 -> 70
+    //   147: astore_1
+    //   148: aload_0
+    //   149: monitorexit
+    //   150: aload_1
+    //   151: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	152	0	this	CookieManager
+    //   0	152	1	paramWebView	WebView
+    //   69	75	2	bool	boolean
+    //   5	97	3	localObject	Object
+    // Exception table:
+    //   from	to	target	type
+    //   2	6	147	finally
+    //   10	58	147	finally
+    //   62	70	147	finally
+    //   79	87	147	finally
+    //   92	127	147	finally
+    //   131	139	147	finally
+  }
+  
   public void flush()
   {
-    X5CoreEngine localX5CoreEngine = X5CoreEngine.getInstance();
-    if ((localX5CoreEngine != null) && (localX5CoreEngine.isX5Core())) {
-      localX5CoreEngine.wizard().dexLoader().invokeStaticMethod("com.tencent.tbs.tbsshell.WebCoreProxy", "cookieManager_flush", new Class[0], new Object[0]);
+    v localv = v.a();
+    if ((localv != null) && (localv.b())) {
+      localv.c().b().invokeStaticMethod("com.tencent.tbs.tbsshell.WebCoreProxy", "cookieManager_flush", new Class[0], new Object[0]);
     }
     while (Build.VERSION.SDK_INT < 21) {
       return;
     }
-    ReflectionUtils.invokeInstance(android.webkit.CookieManager.getInstance(), "flush", new Class[0], new Object[0]);
+    i.a(android.webkit.CookieManager.getInstance(), "flush", new Class[0], new Object[0]);
   }
   
   public String getCookie(String paramString)
   {
-    X5CoreEngine localX5CoreEngine = X5CoreEngine.getInstance();
-    if ((localX5CoreEngine != null) && (localX5CoreEngine.isX5Core())) {
-      return localX5CoreEngine.wizard().getCookie(paramString);
+    v localv = v.a();
+    if ((localv != null) && (localv.b())) {
+      return localv.c().a(paramString);
     }
     try
     {
@@ -335,22 +399,22 @@ public class CookieManager
   
   public boolean hasCookies()
   {
-    X5CoreEngine localX5CoreEngine = X5CoreEngine.getInstance();
-    if ((localX5CoreEngine != null) && (localX5CoreEngine.isX5Core())) {
-      return localX5CoreEngine.wizard().cookieManager_hasCookies();
+    v localv = v.a();
+    if ((localv != null) && (localv.b())) {
+      return localv.c().h();
     }
     return android.webkit.CookieManager.getInstance().hasCookies();
   }
   
   public void removeAllCookie()
   {
-    if (this.cookieInstances != null) {
-      this.cookieInstances.clear();
+    if (this.a != null) {
+      this.a.clear();
     }
-    X5CoreEngine localX5CoreEngine = X5CoreEngine.getInstance();
-    if ((localX5CoreEngine != null) && (localX5CoreEngine.isX5Core()))
+    v localv = v.a();
+    if ((localv != null) && (localv.b()))
     {
-      localX5CoreEngine.wizard().cookieManager_removeAllCookie();
+      localv.c().e();
       return;
     }
     android.webkit.CookieManager.getInstance().removeAllCookie();
@@ -358,25 +422,25 @@ public class CookieManager
   
   public void removeAllCookies(ValueCallback<Boolean> paramValueCallback)
   {
-    if (this.cookieInstances != null) {
-      this.cookieInstances.clear();
+    if (this.a != null) {
+      this.a.clear();
     }
-    X5CoreEngine localX5CoreEngine = X5CoreEngine.getInstance();
-    if ((localX5CoreEngine != null) && (localX5CoreEngine.isX5Core())) {
-      localX5CoreEngine.wizard().dexLoader().invokeStaticMethod("com.tencent.tbs.tbsshell.WebCoreProxy", "cookieManager_removeAllCookies", new Class[] { android.webkit.ValueCallback.class }, new Object[] { paramValueCallback });
+    v localv = v.a();
+    if ((localv != null) && (localv.b())) {
+      localv.c().b().invokeStaticMethod("com.tencent.tbs.tbsshell.WebCoreProxy", "cookieManager_removeAllCookies", new Class[] { android.webkit.ValueCallback.class }, new Object[] { paramValueCallback });
     }
     while (Build.VERSION.SDK_INT < 21) {
       return;
     }
-    ReflectionUtils.invokeInstance(android.webkit.CookieManager.getInstance(), "removeAllCookies", new Class[] { android.webkit.ValueCallback.class }, new Object[] { paramValueCallback });
+    i.a(android.webkit.CookieManager.getInstance(), "removeAllCookies", new Class[] { android.webkit.ValueCallback.class }, new Object[] { paramValueCallback });
   }
   
   public void removeExpiredCookie()
   {
-    X5CoreEngine localX5CoreEngine = X5CoreEngine.getInstance();
-    if ((localX5CoreEngine != null) && (localX5CoreEngine.isX5Core()))
+    v localv = v.a();
+    if ((localv != null) && (localv.b()))
     {
-      localX5CoreEngine.wizard().dexLoader().invokeStaticMethod("com.tencent.tbs.tbsshell.WebCoreProxy", "cookieManager_removeExpiredCookie", new Class[0], new Object[0]);
+      localv.c().b().invokeStaticMethod("com.tencent.tbs.tbsshell.WebCoreProxy", "cookieManager_removeExpiredCookie", new Class[0], new Object[0]);
       return;
     }
     android.webkit.CookieManager.getInstance().removeExpiredCookie();
@@ -384,10 +448,10 @@ public class CookieManager
   
   public void removeSessionCookie()
   {
-    X5CoreEngine localX5CoreEngine = X5CoreEngine.getInstance();
-    if ((localX5CoreEngine != null) && (localX5CoreEngine.isX5Core()))
+    v localv = v.a();
+    if ((localv != null) && (localv.b()))
     {
-      localX5CoreEngine.wizard().dexLoader().invokeStaticMethod("com.tencent.tbs.tbsshell.WebCoreProxy", "cookieManager_removeSessionCookie", new Class[0], new Object[0]);
+      localv.c().b().invokeStaticMethod("com.tencent.tbs.tbsshell.WebCoreProxy", "cookieManager_removeSessionCookie", new Class[0], new Object[0]);
       return;
     }
     android.webkit.CookieManager.getInstance().removeSessionCookie();
@@ -395,14 +459,14 @@ public class CookieManager
   
   public void removeSessionCookies(ValueCallback<Boolean> paramValueCallback)
   {
-    X5CoreEngine localX5CoreEngine = X5CoreEngine.getInstance();
-    if ((localX5CoreEngine != null) && (localX5CoreEngine.isX5Core())) {
-      localX5CoreEngine.wizard().dexLoader().invokeStaticMethod("com.tencent.tbs.tbsshell.WebCoreProxy", "cookieManager_removeSessionCookies", new Class[] { android.webkit.ValueCallback.class }, new Object[] { paramValueCallback });
+    v localv = v.a();
+    if ((localv != null) && (localv.b())) {
+      localv.c().b().invokeStaticMethod("com.tencent.tbs.tbsshell.WebCoreProxy", "cookieManager_removeSessionCookies", new Class[] { android.webkit.ValueCallback.class }, new Object[] { paramValueCallback });
     }
     while (Build.VERSION.SDK_INT < 21) {
       return;
     }
-    ReflectionUtils.invokeInstance(android.webkit.CookieManager.getInstance(), "removeSessionCookies", new Class[] { android.webkit.ValueCallback.class }, new Object[] { paramValueCallback });
+    i.a(android.webkit.CookieManager.getInstance(), "removeSessionCookies", new Class[] { android.webkit.ValueCallback.class }, new Object[] { paramValueCallback });
   }
   
   /* Error */
@@ -411,63 +475,63 @@ public class CookieManager
     // Byte code:
     //   0: aload_0
     //   1: monitorenter
-    //   2: invokestatic 98	com/tencent/smtt/sdk/X5CoreEngine:getInstance	()Lcom/tencent/smtt/sdk/X5CoreEngine;
+    //   2: invokestatic 95	com/tencent/smtt/sdk/v:a	()Lcom/tencent/smtt/sdk/v;
     //   5: astore_2
     //   6: aload_2
-    //   7: ifnull +50 -> 57
+    //   7: ifnull +51 -> 58
     //   10: aload_2
-    //   11: invokevirtual 101	com/tencent/smtt/sdk/X5CoreEngine:isX5Core	()Z
-    //   14: ifeq +43 -> 57
+    //   11: invokevirtual 97	com/tencent/smtt/sdk/v:b	()Z
+    //   14: ifeq +44 -> 58
     //   17: aload_2
-    //   18: invokevirtual 105	com/tencent/smtt/sdk/X5CoreEngine:wizard	()Lcom/tencent/smtt/sdk/X5CoreWizard;
-    //   21: invokevirtual 123	com/tencent/smtt/sdk/X5CoreWizard:dexLoader	()Lcom/tencent/smtt/export/external/DexLoader;
-    //   24: ldc 131
-    //   26: ldc_w 363
-    //   29: iconst_1
-    //   30: anewarray 135	java/lang/Class
-    //   33: dup
-    //   34: iconst_0
-    //   35: getstatic 367	java/lang/Boolean:TYPE	Ljava/lang/Class;
-    //   38: aastore
-    //   39: iconst_1
-    //   40: anewarray 4	java/lang/Object
-    //   43: dup
-    //   44: iconst_0
-    //   45: iload_1
-    //   46: invokestatic 371	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
-    //   49: aastore
-    //   50: invokevirtual 141	com/tencent/smtt/export/external/DexLoader:invokeStaticMethod	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Class;[Ljava/lang/Object;)Ljava/lang/Object;
-    //   53: pop
-    //   54: aload_0
-    //   55: monitorexit
-    //   56: return
-    //   57: invokestatic 115	android/webkit/CookieManager:getInstance	()Landroid/webkit/CookieManager;
-    //   60: iload_1
-    //   61: invokevirtual 373	android/webkit/CookieManager:setAcceptCookie	(Z)V
-    //   64: goto -10 -> 54
-    //   67: astore_2
-    //   68: aload_2
-    //   69: invokevirtual 317	java/lang/Throwable:printStackTrace	()V
-    //   72: goto -18 -> 54
-    //   75: astore_2
-    //   76: aload_0
-    //   77: monitorexit
-    //   78: aload_2
-    //   79: athrow
+    //   18: invokevirtual 292	com/tencent/smtt/sdk/v:c	()Lcom/tencent/smtt/sdk/w;
+    //   21: invokevirtual 303	com/tencent/smtt/sdk/w:b	()Lcom/tencent/smtt/export/external/DexLoader;
+    //   24: ldc_w 311
+    //   27: ldc_w 378
+    //   30: iconst_1
+    //   31: anewarray 136	java/lang/Class
+    //   34: dup
+    //   35: iconst_0
+    //   36: getstatic 382	java/lang/Boolean:TYPE	Ljava/lang/Class;
+    //   39: aastore
+    //   40: iconst_1
+    //   41: anewarray 4	java/lang/Object
+    //   44: dup
+    //   45: iconst_0
+    //   46: iload_1
+    //   47: invokestatic 386	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
+    //   50: aastore
+    //   51: invokevirtual 319	com/tencent/smtt/export/external/DexLoader:invokeStaticMethod	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Class;[Ljava/lang/Object;)Ljava/lang/Object;
+    //   54: pop
+    //   55: aload_0
+    //   56: monitorexit
+    //   57: return
+    //   58: invokestatic 133	android/webkit/CookieManager:getInstance	()Landroid/webkit/CookieManager;
+    //   61: iload_1
+    //   62: invokevirtual 388	android/webkit/CookieManager:setAcceptCookie	(Z)V
+    //   65: goto -10 -> 55
+    //   68: astore_2
+    //   69: aload_2
+    //   70: invokevirtual 342	java/lang/Throwable:printStackTrace	()V
+    //   73: goto -18 -> 55
+    //   76: astore_2
+    //   77: aload_0
+    //   78: monitorexit
+    //   79: aload_2
+    //   80: athrow
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	80	0	this	CookieManager
-    //   0	80	1	paramBoolean	boolean
-    //   5	13	2	localX5CoreEngine	X5CoreEngine
-    //   67	2	2	localThrowable	Throwable
-    //   75	4	2	localObject	Object
+    //   0	81	0	this	CookieManager
+    //   0	81	1	paramBoolean	boolean
+    //   5	13	2	localv	v
+    //   68	2	2	localThrowable	Throwable
+    //   76	4	2	localObject	Object
     // Exception table:
     //   from	to	target	type
-    //   57	64	67	java/lang/Throwable
-    //   2	6	75	finally
-    //   10	54	75	finally
-    //   57	64	75	finally
-    //   68	72	75	finally
+    //   58	65	68	java/lang/Throwable
+    //   2	6	76	finally
+    //   10	55	76	finally
+    //   58	65	76	finally
+    //   69	73	76	finally
   }
   
   /* Error */
@@ -476,104 +540,104 @@ public class CookieManager
     // Byte code:
     //   0: aload_0
     //   1: monitorenter
-    //   2: invokestatic 98	com/tencent/smtt/sdk/X5CoreEngine:getInstance	()Lcom/tencent/smtt/sdk/X5CoreEngine;
+    //   2: invokestatic 95	com/tencent/smtt/sdk/v:a	()Lcom/tencent/smtt/sdk/v;
     //   5: astore_3
     //   6: aload_3
-    //   7: ifnull +70 -> 77
+    //   7: ifnull +71 -> 78
     //   10: aload_3
-    //   11: invokevirtual 101	com/tencent/smtt/sdk/X5CoreEngine:isX5Core	()Z
-    //   14: ifeq +63 -> 77
+    //   11: invokevirtual 97	com/tencent/smtt/sdk/v:b	()Z
+    //   14: ifeq +64 -> 78
     //   17: aload_3
-    //   18: invokevirtual 105	com/tencent/smtt/sdk/X5CoreEngine:wizard	()Lcom/tencent/smtt/sdk/X5CoreWizard;
-    //   21: invokevirtual 123	com/tencent/smtt/sdk/X5CoreWizard:dexLoader	()Lcom/tencent/smtt/export/external/DexLoader;
+    //   18: invokevirtual 292	com/tencent/smtt/sdk/v:c	()Lcom/tencent/smtt/sdk/w;
+    //   21: invokevirtual 303	com/tencent/smtt/sdk/w:b	()Lcom/tencent/smtt/export/external/DexLoader;
     //   24: astore_3
-    //   25: getstatic 367	java/lang/Boolean:TYPE	Ljava/lang/Class;
+    //   25: getstatic 382	java/lang/Boolean:TYPE	Ljava/lang/Class;
     //   28: astore 4
     //   30: aload_1
-    //   31: invokevirtual 129	com/tencent/smtt/sdk/WebView:getView	()Landroid/view/View;
+    //   31: invokevirtual 309	com/tencent/smtt/sdk/WebView:getView	()Landroid/view/View;
     //   34: astore_1
     //   35: aload_3
-    //   36: ldc 131
-    //   38: ldc_w 377
-    //   41: iconst_2
-    //   42: anewarray 135	java/lang/Class
-    //   45: dup
-    //   46: iconst_0
-    //   47: ldc 4
-    //   49: aastore
-    //   50: dup
-    //   51: iconst_1
-    //   52: aload 4
-    //   54: aastore
-    //   55: iconst_2
-    //   56: anewarray 4	java/lang/Object
-    //   59: dup
-    //   60: iconst_0
-    //   61: aload_1
-    //   62: aastore
-    //   63: dup
-    //   64: iconst_1
-    //   65: iload_2
-    //   66: invokestatic 371	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
-    //   69: aastore
-    //   70: invokevirtual 141	com/tencent/smtt/export/external/DexLoader:invokeStaticMethod	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Class;[Ljava/lang/Object;)Ljava/lang/Object;
-    //   73: pop
-    //   74: aload_0
-    //   75: monitorexit
-    //   76: return
-    //   77: getstatic 64	android/os/Build$VERSION:SDK_INT	I
-    //   80: bipush 21
-    //   82: if_icmplt -8 -> 74
-    //   85: invokestatic 115	android/webkit/CookieManager:getInstance	()Landroid/webkit/CookieManager;
-    //   88: astore_3
-    //   89: getstatic 367	java/lang/Boolean:TYPE	Ljava/lang/Class;
-    //   92: astore 4
-    //   94: aload_1
-    //   95: invokevirtual 129	com/tencent/smtt/sdk/WebView:getView	()Landroid/view/View;
-    //   98: astore_1
-    //   99: aload_3
-    //   100: ldc_w 378
-    //   103: iconst_2
-    //   104: anewarray 135	java/lang/Class
-    //   107: dup
-    //   108: iconst_0
-    //   109: ldc 149
-    //   111: aastore
-    //   112: dup
-    //   113: iconst_1
-    //   114: aload 4
-    //   116: aastore
-    //   117: iconst_2
-    //   118: anewarray 4	java/lang/Object
-    //   121: dup
-    //   122: iconst_0
-    //   123: aload_1
-    //   124: aastore
-    //   125: dup
-    //   126: iconst_1
-    //   127: iload_2
-    //   128: invokestatic 371	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
-    //   131: aastore
-    //   132: invokestatic 155	com/tencent/smtt/utils/ReflectionUtils:invokeInstance	(Ljava/lang/Object;Ljava/lang/String;[Ljava/lang/Class;[Ljava/lang/Object;)Ljava/lang/Object;
-    //   135: pop
-    //   136: goto -62 -> 74
-    //   139: astore_1
-    //   140: aload_0
-    //   141: monitorexit
-    //   142: aload_1
-    //   143: athrow
+    //   36: ldc_w 311
+    //   39: ldc_w 392
+    //   42: iconst_2
+    //   43: anewarray 136	java/lang/Class
+    //   46: dup
+    //   47: iconst_0
+    //   48: ldc 4
+    //   50: aastore
+    //   51: dup
+    //   52: iconst_1
+    //   53: aload 4
+    //   55: aastore
+    //   56: iconst_2
+    //   57: anewarray 4	java/lang/Object
+    //   60: dup
+    //   61: iconst_0
+    //   62: aload_1
+    //   63: aastore
+    //   64: dup
+    //   65: iconst_1
+    //   66: iload_2
+    //   67: invokestatic 386	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
+    //   70: aastore
+    //   71: invokevirtual 319	com/tencent/smtt/export/external/DexLoader:invokeStaticMethod	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Class;[Ljava/lang/Object;)Ljava/lang/Object;
+    //   74: pop
+    //   75: aload_0
+    //   76: monitorexit
+    //   77: return
+    //   78: getstatic 50	android/os/Build$VERSION:SDK_INT	I
+    //   81: bipush 21
+    //   83: if_icmplt -8 -> 75
+    //   86: invokestatic 133	android/webkit/CookieManager:getInstance	()Landroid/webkit/CookieManager;
+    //   89: astore_3
+    //   90: getstatic 382	java/lang/Boolean:TYPE	Ljava/lang/Class;
+    //   93: astore 4
+    //   95: aload_1
+    //   96: invokevirtual 309	com/tencent/smtt/sdk/WebView:getView	()Landroid/view/View;
+    //   99: astore_1
+    //   100: aload_3
+    //   101: ldc_w 393
+    //   104: iconst_2
+    //   105: anewarray 136	java/lang/Class
+    //   108: dup
+    //   109: iconst_0
+    //   110: ldc_w 327
+    //   113: aastore
+    //   114: dup
+    //   115: iconst_1
+    //   116: aload 4
+    //   118: aastore
+    //   119: iconst_2
+    //   120: anewarray 4	java/lang/Object
+    //   123: dup
+    //   124: iconst_0
+    //   125: aload_1
+    //   126: aastore
+    //   127: dup
+    //   128: iconst_1
+    //   129: iload_2
+    //   130: invokestatic 386	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
+    //   133: aastore
+    //   134: invokestatic 145	com/tencent/smtt/utils/i:a	(Ljava/lang/Object;Ljava/lang/String;[Ljava/lang/Class;[Ljava/lang/Object;)Ljava/lang/Object;
+    //   137: pop
+    //   138: goto -63 -> 75
+    //   141: astore_1
+    //   142: aload_0
+    //   143: monitorexit
+    //   144: aload_1
+    //   145: athrow
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	144	0	this	CookieManager
-    //   0	144	1	paramWebView	WebView
-    //   0	144	2	paramBoolean	boolean
-    //   5	95	3	localObject	Object
-    //   28	87	4	localClass	Class
+    //   0	146	0	this	CookieManager
+    //   0	146	1	paramWebView	WebView
+    //   0	146	2	paramBoolean	boolean
+    //   5	96	3	localObject	Object
+    //   28	89	4	localClass	Class
     // Exception table:
     //   from	to	target	type
-    //   2	6	139	finally
-    //   10	74	139	finally
-    //   77	136	139	finally
+    //   2	6	141	finally
+    //   10	75	141	finally
+    //   78	138	141	finally
   }
   
   public void setCookie(String paramString1, String paramString2)
@@ -596,142 +660,142 @@ public class CookieManager
     // Byte code:
     //   0: aload_0
     //   1: monitorenter
-    //   2: invokestatic 98	com/tencent/smtt/sdk/X5CoreEngine:getInstance	()Lcom/tencent/smtt/sdk/X5CoreEngine;
+    //   2: invokestatic 95	com/tencent/smtt/sdk/v:a	()Lcom/tencent/smtt/sdk/v;
     //   5: astore 4
     //   7: aload 4
-    //   9: ifnull +69 -> 78
+    //   9: ifnull +67 -> 76
     //   12: aload 4
-    //   14: invokevirtual 101	com/tencent/smtt/sdk/X5CoreEngine:isX5Core	()Z
-    //   17: ifeq +61 -> 78
+    //   14: invokevirtual 97	com/tencent/smtt/sdk/v:b	()Z
+    //   17: ifeq +59 -> 76
     //   20: aload 4
-    //   22: invokevirtual 105	com/tencent/smtt/sdk/X5CoreEngine:wizard	()Lcom/tencent/smtt/sdk/X5CoreWizard;
-    //   25: invokevirtual 123	com/tencent/smtt/sdk/X5CoreWizard:dexLoader	()Lcom/tencent/smtt/export/external/DexLoader;
-    //   28: ldc 131
-    //   30: ldc_w 385
-    //   33: iconst_3
-    //   34: anewarray 135	java/lang/Class
-    //   37: dup
-    //   38: iconst_0
-    //   39: ldc_w 387
+    //   22: invokevirtual 292	com/tencent/smtt/sdk/v:c	()Lcom/tencent/smtt/sdk/w;
+    //   25: invokevirtual 303	com/tencent/smtt/sdk/w:b	()Lcom/tencent/smtt/export/external/DexLoader;
+    //   28: ldc_w 311
+    //   31: ldc_w 398
+    //   34: iconst_3
+    //   35: anewarray 136	java/lang/Class
+    //   38: dup
+    //   39: iconst_0
+    //   40: ldc 138
     //   42: aastore
     //   43: dup
     //   44: iconst_1
-    //   45: ldc_w 387
-    //   48: aastore
-    //   49: dup
-    //   50: iconst_2
-    //   51: ldc_w 342
-    //   54: aastore
-    //   55: iconst_3
-    //   56: anewarray 4	java/lang/Object
-    //   59: dup
-    //   60: iconst_0
-    //   61: aload_1
-    //   62: aastore
-    //   63: dup
-    //   64: iconst_1
-    //   65: aload_2
-    //   66: aastore
-    //   67: dup
-    //   68: iconst_2
-    //   69: aload_3
-    //   70: aastore
-    //   71: invokevirtual 141	com/tencent/smtt/export/external/DexLoader:invokeStaticMethod	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Class;[Ljava/lang/Object;)Ljava/lang/Object;
-    //   74: pop
-    //   75: aload_0
-    //   76: monitorexit
-    //   77: return
-    //   78: invokestatic 98	com/tencent/smtt/sdk/X5CoreEngine:getInstance	()Lcom/tencent/smtt/sdk/X5CoreEngine;
-    //   81: invokevirtual 390	com/tencent/smtt/sdk/X5CoreEngine:isInited	()Z
-    //   84: ifne +65 -> 149
-    //   87: new 392	com/tencent/smtt/sdk/CookieManager$CookieInstance
-    //   90: dup
-    //   91: aload_0
-    //   92: invokespecial 395	com/tencent/smtt/sdk/CookieManager$CookieInstance:<init>	(Lcom/tencent/smtt/sdk/CookieManager;)V
-    //   95: astore 4
-    //   97: aload 4
-    //   99: iconst_1
-    //   100: putfield 398	com/tencent/smtt/sdk/CookieManager$CookieInstance:function	I
-    //   103: aload 4
-    //   105: aload_1
-    //   106: putfield 401	com/tencent/smtt/sdk/CookieManager$CookieInstance:url	Ljava/lang/String;
-    //   109: aload 4
-    //   111: aload_2
-    //   112: putfield 404	com/tencent/smtt/sdk/CookieManager$CookieInstance:value	Ljava/lang/String;
-    //   115: aload 4
-    //   117: aload_3
-    //   118: putfield 408	com/tencent/smtt/sdk/CookieManager$CookieInstance:valueCallback	Lcom/tencent/smtt/sdk/ValueCallback;
-    //   121: aload_0
-    //   122: getfield 326	com/tencent/smtt/sdk/CookieManager:cookieInstances	Ljava/util/concurrent/CopyOnWriteArrayList;
-    //   125: ifnonnull +14 -> 139
-    //   128: aload_0
-    //   129: new 328	java/util/concurrent/CopyOnWriteArrayList
-    //   132: dup
-    //   133: invokespecial 409	java/util/concurrent/CopyOnWriteArrayList:<init>	()V
-    //   136: putfield 326	com/tencent/smtt/sdk/CookieManager:cookieInstances	Ljava/util/concurrent/CopyOnWriteArrayList;
-    //   139: aload_0
-    //   140: getfield 326	com/tencent/smtt/sdk/CookieManager:cookieInstances	Ljava/util/concurrent/CopyOnWriteArrayList;
-    //   143: aload 4
-    //   145: invokevirtual 413	java/util/concurrent/CopyOnWriteArrayList:add	(Ljava/lang/Object;)Z
-    //   148: pop
-    //   149: aload_0
-    //   150: getfield 52	com/tencent/smtt/sdk/CookieManager:mbWebviewExist	Z
-    //   153: ifeq -78 -> 75
-    //   156: getstatic 64	android/os/Build$VERSION:SDK_INT	I
-    //   159: bipush 21
-    //   161: if_icmplt -86 -> 75
-    //   164: invokestatic 115	android/webkit/CookieManager:getInstance	()Landroid/webkit/CookieManager;
-    //   167: ldc_w 414
-    //   170: iconst_3
-    //   171: anewarray 135	java/lang/Class
-    //   174: dup
-    //   175: iconst_0
-    //   176: ldc_w 387
-    //   179: aastore
-    //   180: dup
-    //   181: iconst_1
-    //   182: ldc_w 387
+    //   45: ldc 138
+    //   47: aastore
+    //   48: dup
+    //   49: iconst_2
+    //   50: ldc 140
+    //   52: aastore
+    //   53: iconst_3
+    //   54: anewarray 4	java/lang/Object
+    //   57: dup
+    //   58: iconst_0
+    //   59: aload_1
+    //   60: aastore
+    //   61: dup
+    //   62: iconst_1
+    //   63: aload_2
+    //   64: aastore
+    //   65: dup
+    //   66: iconst_2
+    //   67: aload_3
+    //   68: aastore
+    //   69: invokevirtual 319	com/tencent/smtt/export/external/DexLoader:invokeStaticMethod	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Class;[Ljava/lang/Object;)Ljava/lang/Object;
+    //   72: pop
+    //   73: aload_0
+    //   74: monitorexit
+    //   75: return
+    //   76: invokestatic 95	com/tencent/smtt/sdk/v:a	()Lcom/tencent/smtt/sdk/v;
+    //   79: invokevirtual 399	com/tencent/smtt/sdk/v:d	()Z
+    //   82: ifne +65 -> 147
+    //   85: new 112	com/tencent/smtt/sdk/CookieManager$b
+    //   88: dup
+    //   89: aload_0
+    //   90: invokespecial 402	com/tencent/smtt/sdk/CookieManager$b:<init>	(Lcom/tencent/smtt/sdk/CookieManager;)V
+    //   93: astore 4
+    //   95: aload 4
+    //   97: iconst_1
+    //   98: putfield 114	com/tencent/smtt/sdk/CookieManager$b:a	I
+    //   101: aload 4
+    //   103: aload_1
+    //   104: putfield 116	com/tencent/smtt/sdk/CookieManager$b:b	Ljava/lang/String;
+    //   107: aload 4
+    //   109: aload_2
+    //   110: putfield 118	com/tencent/smtt/sdk/CookieManager$b:c	Ljava/lang/String;
+    //   113: aload 4
+    //   115: aload_3
+    //   116: putfield 121	com/tencent/smtt/sdk/CookieManager$b:d	Lcom/tencent/smtt/sdk/ValueCallback;
+    //   119: aload_0
+    //   120: getfield 84	com/tencent/smtt/sdk/CookieManager:a	Ljava/util/concurrent/CopyOnWriteArrayList;
+    //   123: ifnonnull +14 -> 137
+    //   126: aload_0
+    //   127: new 86	java/util/concurrent/CopyOnWriteArrayList
+    //   130: dup
+    //   131: invokespecial 403	java/util/concurrent/CopyOnWriteArrayList:<init>	()V
+    //   134: putfield 84	com/tencent/smtt/sdk/CookieManager:a	Ljava/util/concurrent/CopyOnWriteArrayList;
+    //   137: aload_0
+    //   138: getfield 84	com/tencent/smtt/sdk/CookieManager:a	Ljava/util/concurrent/CopyOnWriteArrayList;
+    //   141: aload 4
+    //   143: invokevirtual 407	java/util/concurrent/CopyOnWriteArrayList:add	(Ljava/lang/Object;)Z
+    //   146: pop
+    //   147: aload_0
+    //   148: getfield 37	com/tencent/smtt/sdk/CookieManager:f	Z
+    //   151: ifeq -78 -> 73
+    //   154: getstatic 50	android/os/Build$VERSION:SDK_INT	I
+    //   157: bipush 21
+    //   159: if_icmplt -86 -> 73
+    //   162: invokestatic 133	android/webkit/CookieManager:getInstance	()Landroid/webkit/CookieManager;
+    //   165: ldc 134
+    //   167: iconst_3
+    //   168: anewarray 136	java/lang/Class
+    //   171: dup
+    //   172: iconst_0
+    //   173: ldc 138
+    //   175: aastore
+    //   176: dup
+    //   177: iconst_1
+    //   178: ldc 138
+    //   180: aastore
+    //   181: dup
+    //   182: iconst_2
+    //   183: ldc 140
     //   185: aastore
-    //   186: dup
-    //   187: iconst_2
-    //   188: ldc_w 342
-    //   191: aastore
-    //   192: iconst_3
-    //   193: anewarray 4	java/lang/Object
-    //   196: dup
-    //   197: iconst_0
-    //   198: aload_1
-    //   199: aastore
-    //   200: dup
-    //   201: iconst_1
-    //   202: aload_2
-    //   203: aastore
-    //   204: dup
-    //   205: iconst_2
-    //   206: aload_3
-    //   207: aastore
-    //   208: invokestatic 155	com/tencent/smtt/utils/ReflectionUtils:invokeInstance	(Ljava/lang/Object;Ljava/lang/String;[Ljava/lang/Class;[Ljava/lang/Object;)Ljava/lang/Object;
-    //   211: pop
-    //   212: goto -137 -> 75
-    //   215: astore_1
-    //   216: aload_0
-    //   217: monitorexit
-    //   218: aload_1
-    //   219: athrow
+    //   186: iconst_3
+    //   187: anewarray 4	java/lang/Object
+    //   190: dup
+    //   191: iconst_0
+    //   192: aload_1
+    //   193: aastore
+    //   194: dup
+    //   195: iconst_1
+    //   196: aload_2
+    //   197: aastore
+    //   198: dup
+    //   199: iconst_2
+    //   200: aload_3
+    //   201: aastore
+    //   202: invokestatic 145	com/tencent/smtt/utils/i:a	(Ljava/lang/Object;Ljava/lang/String;[Ljava/lang/Class;[Ljava/lang/Object;)Ljava/lang/Object;
+    //   205: pop
+    //   206: goto -133 -> 73
+    //   209: astore_1
+    //   210: aload_0
+    //   211: monitorexit
+    //   212: aload_1
+    //   213: athrow
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	220	0	this	CookieManager
-    //   0	220	1	paramString1	String
-    //   0	220	2	paramString2	String
-    //   0	220	3	paramValueCallback	ValueCallback<Boolean>
-    //   5	139	4	localObject	Object
+    //   0	214	0	this	CookieManager
+    //   0	214	1	paramString1	String
+    //   0	214	2	paramString2	String
+    //   0	214	3	paramValueCallback	ValueCallback<Boolean>
+    //   5	137	4	localObject	Object
     // Exception table:
     //   from	to	target	type
-    //   2	7	215	finally
-    //   12	75	215	finally
-    //   78	139	215	finally
-    //   139	149	215	finally
-    //   149	212	215	finally
+    //   2	7	209	finally
+    //   12	73	209	finally
+    //   76	137	209	finally
+    //   137	147	209	finally
+    //   147	206	209	finally
   }
   
   /* Error */
@@ -740,129 +804,129 @@ public class CookieManager
     // Byte code:
     //   0: aload_0
     //   1: monitorenter
-    //   2: invokestatic 98	com/tencent/smtt/sdk/X5CoreEngine:getInstance	()Lcom/tencent/smtt/sdk/X5CoreEngine;
+    //   2: invokestatic 95	com/tencent/smtt/sdk/v:a	()Lcom/tencent/smtt/sdk/v;
     //   5: astore 4
     //   7: aload 4
-    //   9: ifnull +59 -> 68
+    //   9: ifnull +58 -> 67
     //   12: aload 4
-    //   14: invokevirtual 101	com/tencent/smtt/sdk/X5CoreEngine:isX5Core	()Z
-    //   17: ifeq +51 -> 68
+    //   14: invokevirtual 97	com/tencent/smtt/sdk/v:b	()Z
+    //   17: ifeq +50 -> 67
     //   20: aload 4
-    //   22: invokevirtual 105	com/tencent/smtt/sdk/X5CoreEngine:wizard	()Lcom/tencent/smtt/sdk/X5CoreWizard;
-    //   25: invokevirtual 123	com/tencent/smtt/sdk/X5CoreWizard:dexLoader	()Lcom/tencent/smtt/export/external/DexLoader;
-    //   28: ldc 131
-    //   30: ldc_w 385
-    //   33: iconst_2
-    //   34: anewarray 135	java/lang/Class
-    //   37: dup
-    //   38: iconst_0
-    //   39: ldc_w 387
+    //   22: invokevirtual 292	com/tencent/smtt/sdk/v:c	()Lcom/tencent/smtt/sdk/w;
+    //   25: invokevirtual 303	com/tencent/smtt/sdk/w:b	()Lcom/tencent/smtt/export/external/DexLoader;
+    //   28: ldc_w 311
+    //   31: ldc_w 398
+    //   34: iconst_2
+    //   35: anewarray 136	java/lang/Class
+    //   38: dup
+    //   39: iconst_0
+    //   40: ldc 138
     //   42: aastore
     //   43: dup
     //   44: iconst_1
-    //   45: ldc_w 387
-    //   48: aastore
-    //   49: iconst_2
-    //   50: anewarray 4	java/lang/Object
-    //   53: dup
-    //   54: iconst_0
-    //   55: aload_1
-    //   56: aastore
-    //   57: dup
-    //   58: iconst_1
-    //   59: aload_2
-    //   60: aastore
-    //   61: invokevirtual 141	com/tencent/smtt/export/external/DexLoader:invokeStaticMethod	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Class;[Ljava/lang/Object;)Ljava/lang/Object;
-    //   64: pop
-    //   65: aload_0
-    //   66: monitorexit
-    //   67: return
-    //   68: aload_0
-    //   69: getfield 52	com/tencent/smtt/sdk/CookieManager:mbWebviewExist	Z
-    //   72: ifne +7 -> 79
-    //   75: iload_3
-    //   76: ifeq +11 -> 87
-    //   79: invokestatic 115	android/webkit/CookieManager:getInstance	()Landroid/webkit/CookieManager;
-    //   82: aload_1
-    //   83: aload_2
-    //   84: invokevirtual 417	android/webkit/CookieManager:setCookie	(Ljava/lang/String;Ljava/lang/String;)V
-    //   87: invokestatic 98	com/tencent/smtt/sdk/X5CoreEngine:getInstance	()Lcom/tencent/smtt/sdk/X5CoreEngine;
-    //   90: invokevirtual 390	com/tencent/smtt/sdk/X5CoreEngine:isInited	()Z
-    //   93: ifne -28 -> 65
-    //   96: new 392	com/tencent/smtt/sdk/CookieManager$CookieInstance
-    //   99: dup
-    //   100: aload_0
-    //   101: invokespecial 395	com/tencent/smtt/sdk/CookieManager$CookieInstance:<init>	(Lcom/tencent/smtt/sdk/CookieManager;)V
-    //   104: astore 4
-    //   106: aload 4
-    //   108: iconst_2
-    //   109: putfield 398	com/tencent/smtt/sdk/CookieManager$CookieInstance:function	I
-    //   112: aload 4
-    //   114: aload_1
-    //   115: putfield 401	com/tencent/smtt/sdk/CookieManager$CookieInstance:url	Ljava/lang/String;
-    //   118: aload 4
-    //   120: aload_2
-    //   121: putfield 404	com/tencent/smtt/sdk/CookieManager$CookieInstance:value	Ljava/lang/String;
-    //   124: aload 4
-    //   126: aconst_null
-    //   127: putfield 408	com/tencent/smtt/sdk/CookieManager$CookieInstance:valueCallback	Lcom/tencent/smtt/sdk/ValueCallback;
-    //   130: aload_0
-    //   131: getfield 326	com/tencent/smtt/sdk/CookieManager:cookieInstances	Ljava/util/concurrent/CopyOnWriteArrayList;
-    //   134: ifnonnull +14 -> 148
-    //   137: aload_0
-    //   138: new 328	java/util/concurrent/CopyOnWriteArrayList
-    //   141: dup
-    //   142: invokespecial 409	java/util/concurrent/CopyOnWriteArrayList:<init>	()V
-    //   145: putfield 326	com/tencent/smtt/sdk/CookieManager:cookieInstances	Ljava/util/concurrent/CopyOnWriteArrayList;
-    //   148: aload_0
-    //   149: getfield 326	com/tencent/smtt/sdk/CookieManager:cookieInstances	Ljava/util/concurrent/CopyOnWriteArrayList;
-    //   152: aload 4
-    //   154: invokevirtual 413	java/util/concurrent/CopyOnWriteArrayList:add	(Ljava/lang/Object;)Z
-    //   157: pop
-    //   158: goto -93 -> 65
-    //   161: astore_1
-    //   162: aload_0
-    //   163: monitorexit
-    //   164: aload_1
-    //   165: athrow
+    //   45: ldc 138
+    //   47: aastore
+    //   48: iconst_2
+    //   49: anewarray 4	java/lang/Object
+    //   52: dup
+    //   53: iconst_0
+    //   54: aload_1
+    //   55: aastore
+    //   56: dup
+    //   57: iconst_1
+    //   58: aload_2
+    //   59: aastore
+    //   60: invokevirtual 319	com/tencent/smtt/export/external/DexLoader:invokeStaticMethod	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Class;[Ljava/lang/Object;)Ljava/lang/Object;
+    //   63: pop
+    //   64: aload_0
+    //   65: monitorexit
+    //   66: return
+    //   67: aload_0
+    //   68: getfield 37	com/tencent/smtt/sdk/CookieManager:f	Z
+    //   71: ifne +7 -> 78
+    //   74: iload_3
+    //   75: ifeq +11 -> 86
+    //   78: invokestatic 133	android/webkit/CookieManager:getInstance	()Landroid/webkit/CookieManager;
+    //   81: aload_1
+    //   82: aload_2
+    //   83: invokevirtual 146	android/webkit/CookieManager:setCookie	(Ljava/lang/String;Ljava/lang/String;)V
+    //   86: invokestatic 95	com/tencent/smtt/sdk/v:a	()Lcom/tencent/smtt/sdk/v;
+    //   89: invokevirtual 399	com/tencent/smtt/sdk/v:d	()Z
+    //   92: ifne -28 -> 64
+    //   95: new 112	com/tencent/smtt/sdk/CookieManager$b
+    //   98: dup
+    //   99: aload_0
+    //   100: invokespecial 402	com/tencent/smtt/sdk/CookieManager$b:<init>	(Lcom/tencent/smtt/sdk/CookieManager;)V
+    //   103: astore 4
+    //   105: aload 4
+    //   107: iconst_2
+    //   108: putfield 114	com/tencent/smtt/sdk/CookieManager$b:a	I
+    //   111: aload 4
+    //   113: aload_1
+    //   114: putfield 116	com/tencent/smtt/sdk/CookieManager$b:b	Ljava/lang/String;
+    //   117: aload 4
+    //   119: aload_2
+    //   120: putfield 118	com/tencent/smtt/sdk/CookieManager$b:c	Ljava/lang/String;
+    //   123: aload 4
+    //   125: aconst_null
+    //   126: putfield 121	com/tencent/smtt/sdk/CookieManager$b:d	Lcom/tencent/smtt/sdk/ValueCallback;
+    //   129: aload_0
+    //   130: getfield 84	com/tencent/smtt/sdk/CookieManager:a	Ljava/util/concurrent/CopyOnWriteArrayList;
+    //   133: ifnonnull +14 -> 147
+    //   136: aload_0
+    //   137: new 86	java/util/concurrent/CopyOnWriteArrayList
+    //   140: dup
+    //   141: invokespecial 403	java/util/concurrent/CopyOnWriteArrayList:<init>	()V
+    //   144: putfield 84	com/tencent/smtt/sdk/CookieManager:a	Ljava/util/concurrent/CopyOnWriteArrayList;
+    //   147: aload_0
+    //   148: getfield 84	com/tencent/smtt/sdk/CookieManager:a	Ljava/util/concurrent/CopyOnWriteArrayList;
+    //   151: aload 4
+    //   153: invokevirtual 407	java/util/concurrent/CopyOnWriteArrayList:add	(Ljava/lang/Object;)Z
+    //   156: pop
+    //   157: goto -93 -> 64
+    //   160: astore_1
+    //   161: aload_0
+    //   162: monitorexit
+    //   163: aload_1
+    //   164: athrow
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	166	0	this	CookieManager
-    //   0	166	1	paramString1	String
-    //   0	166	2	paramString2	String
-    //   0	166	3	paramBoolean	boolean
-    //   5	148	4	localObject	Object
+    //   0	165	0	this	CookieManager
+    //   0	165	1	paramString1	String
+    //   0	165	2	paramString2	String
+    //   0	165	3	paramBoolean	boolean
+    //   5	147	4	localObject	Object
     // Exception table:
     //   from	to	target	type
-    //   2	7	161	finally
-    //   12	65	161	finally
-    //   68	75	161	finally
-    //   79	87	161	finally
-    //   87	148	161	finally
-    //   148	158	161	finally
+    //   2	7	160	finally
+    //   12	64	160	finally
+    //   67	74	160	finally
+    //   78	86	160	finally
+    //   86	147	160	finally
+    //   147	157	160	finally
   }
   
-  public boolean setCookieCompatialbeMode(Context paramContext, CookieManager.COOKIE_MODE paramCOOKIE_MODE, String paramString, boolean paramBoolean)
+  public boolean setCookieCompatialbeMode(Context paramContext, CookieManager.a parama, String paramString, boolean paramBoolean)
   {
     System.currentTimeMillis();
     if ((paramContext == null) || (!TbsExtensionFunctionManager.getInstance().canUseFunction(paramContext, "cookie_switch.txt"))) {
       return false;
     }
-    this.mCookueMode = paramCOOKIE_MODE;
+    this.c = parama;
     if (paramString != null) {
-      this.mTargetKey = paramString;
+      this.b = paramString;
     }
-    if ((this.mCookueMode != CookieManager.COOKIE_MODE.MODE_NONE) && (paramBoolean) && (!X5CoreEngine.getInstance().isInited())) {
-      X5CoreEngine.getInstance().init(paramContext, null);
+    if ((this.c != CookieManager.a.a) && (paramBoolean) && (!v.a().d())) {
+      v.a().a(paramContext, null);
     }
     return true;
   }
   
   public void setCookies(Map<String, String[]> paramMap)
   {
-    Object localObject = X5CoreEngine.getInstance();
-    if ((localObject != null) && (((X5CoreEngine)localObject).isX5Core())) {}
-    for (boolean bool = ((X5CoreEngine)localObject).wizard().cookieManager_setCookies(paramMap);; bool = false)
+    Object localObject = v.a();
+    if ((localObject != null) && (((v)localObject).b())) {}
+    for (boolean bool = ((v)localObject).c().a(paramMap);; bool = false)
     {
       if (!bool)
       {
@@ -883,79 +947,10 @@ public class CookieManager
       return;
     }
   }
-  
-  void syncCookies()
-  {
-    label26:
-    label52:
-    Object localObject3;
-    for (;;)
-    {
-      try
-      {
-        this.mbWebviewExist = true;
-        if (this.cookieInstances != null)
-        {
-          int i = this.cookieInstances.size();
-          if (i != 0) {}
-        }
-        else
-        {
-          return;
-        }
-        Object localObject1 = X5CoreEngine.getInstance();
-        if ((localObject1 == null) || (!((X5CoreEngine)localObject1).isX5Core())) {
-          break;
-        }
-        localObject1 = this.cookieInstances.iterator();
-        if (!((Iterator)localObject1).hasNext()) {
-          break label296;
-        }
-        localObject3 = (CookieManager.CookieInstance)((Iterator)localObject1).next();
-        switch (((CookieManager.CookieInstance)localObject3).function)
-        {
-        case 1: 
-          setCookie(((CookieManager.CookieInstance)localObject3).url, ((CookieManager.CookieInstance)localObject3).value, ((CookieManager.CookieInstance)localObject3).valueCallback);
-          break;
-        case 2: 
-          setCookie(((CookieManager.CookieInstance)localObject3).url, ((CookieManager.CookieInstance)localObject3).value);
-        }
-      }
-      finally {}
-    }
-    Iterator localIterator = this.cookieInstances.iterator();
-    for (;;)
-    {
-      Object localObject4;
-      if (localIterator.hasNext()) {
-        localObject4 = (CookieManager.CookieInstance)localIterator.next();
-      }
-      switch (((CookieManager.CookieInstance)localObject4).function)
-      {
-      case 1: 
-        if (Build.VERSION.SDK_INT >= 21)
-        {
-          localObject3 = android.webkit.CookieManager.getInstance();
-          String str1 = ((CookieManager.CookieInstance)localObject4).url;
-          String str2 = ((CookieManager.CookieInstance)localObject4).value;
-          localObject4 = ((CookieManager.CookieInstance)localObject4).valueCallback;
-          ReflectionUtils.invokeInstance(localObject3, "setCookie", new Class[] { String.class, String.class, android.webkit.ValueCallback.class }, new Object[] { str1, str2, localObject4 });
-        }
-        break;
-      case 2: 
-        android.webkit.CookieManager.getInstance().setCookie(((CookieManager.CookieInstance)localObject4).url, ((CookieManager.CookieInstance)localObject4).value);
-        continue;
-        label296:
-        this.cookieInstances.clear();
-        break label26;
-        break label52;
-      }
-    }
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.smtt.sdk.CookieManager
  * JD-Core Version:    0.7.0.1
  */

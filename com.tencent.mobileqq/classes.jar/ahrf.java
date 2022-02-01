@@ -1,18 +1,26 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
-import com.tencent.widget.FixSizeImageView;
+import android.text.Editable;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.photo.PhotoListPanel;
+import com.tencent.widget.XEditTextEx;
 
 class ahrf
-  extends RecyclerView.ViewHolder
+  implements ahvh
 {
-  public FixSizeImageView a;
-  public FixSizeImageView b;
+  ahrf(ahrd paramahrd) {}
   
-  public ahrf(ahrd paramahrd, View paramView)
+  public boolean a(PhotoListPanel paramPhotoListPanel)
   {
-    super(paramView);
-    this.jdField_a_of_type_ComTencentWidgetFixSizeImageView = ((FixSizeImageView)paramView.findViewById(2131367516));
-    this.b = ((FixSizeImageView)paramView.findViewById(2131370086));
+    return false;
+  }
+  
+  public boolean b(PhotoListPanel paramPhotoListPanel)
+  {
+    if (ahrd.a(this.a).J) {}
+    while ((ahrd.a(this.a).o()) || (ahrd.a(this.a).a == null) || (ahrd.a(this.a).a.getText() == null) || (ahrd.a(this.a).a.getText().length() <= 0)) {
+      return false;
+    }
+    ahrd.a(this.a).as();
+    return true;
   }
 }
 

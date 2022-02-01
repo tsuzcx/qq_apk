@@ -1,34 +1,20 @@
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import com.tencent.widget.HorizontalListView;
-import java.util.List;
+import com.tencent.mobileqq.app.FrameHelperActivity;
+import com.tencent.qphone.base.util.QLog;
 
-class anme
-  implements AdapterView.OnItemClickListener
+public class anme
+  extends ayor
 {
-  anme(anma paramanma) {}
+  public anme(FrameHelperActivity paramFrameHelperActivity) {}
   
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void a(int paramInt)
   {
-    paramAdapterView = anma.a(this.a).getSelectedView();
-    if (paramAdapterView != null) {
-      paramAdapterView.setSelected(false);
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.recent", 2, "onBatteryChanged updateOnlineStatusItem");
     }
-    anma.a(this.a).setSelection(paramInt);
-    paramAdapterView = anma.a(this.a).getSelectedView();
-    if (paramAdapterView != null) {
-      paramAdapterView.setSelected(true);
+    if (FrameHelperActivity.a(this.a) != null) {
+      FrameHelperActivity.a(this.a).a(paramInt);
     }
-    anma.a(this.a, paramInt);
-    anma.a(this.a, true);
-    if ((anma.a(this.a) != null) && (anma.a(this.a).size() > 0) && (anma.a(this.a).size() > anma.a(this.a)))
-    {
-      paramAdapterView = (annb)anma.a(this.a).get(anma.a(this.a));
-      if (paramAdapterView != null) {
-        anoe.a(null, paramAdapterView.a, "AIOInputPannelTabClick", 0, 0, 0L, 0L, 0L, "", "");
-      }
-    }
+    this.a.a("OnBatteryChangeObserver");
   }
 }
 

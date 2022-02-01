@@ -1,11 +1,22 @@
-class aevr
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.widget.EditText;
+import com.tencent.mobileqq.activity.PublicAccountListActivity;
+
+public class aevr
+  implements TextWatcher
 {
-  String jdField_a_of_type_JavaLangString;
+  public aevr(PublicAccountListActivity paramPublicAccountListActivity) {}
   
-  public aevr(aevp paramaevp, String paramString)
+  public void afterTextChanged(Editable paramEditable)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
+    paramEditable = this.a.a.getText().toString().trim();
+    this.a.b(paramEditable);
   }
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

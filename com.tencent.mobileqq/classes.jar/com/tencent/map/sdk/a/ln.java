@@ -103,7 +103,7 @@ public final class ln
         localObject1 = new Bundle();
         ((Bundle)localObject1).putInt("halley_app_id", 3203);
         ((Bundle)localObject1).putString("halley_app_name", pz.a);
-        ((Bundle)localObject1).putString("halley_app_version", "android_vector_sdk_4.2.8.1");
+        ((Bundle)localObject1).putString("halley_app_version", "android_vector_sdk_4.2.8.2");
         localObject1 = NetManager.buildAdapter(AdapterType.Halley, (Bundle)localObject1);
         NetManager.getInstance().setAdapter(localContext, (NetAdapter)localObject1);
         localObject2 = QStorageManager.getInstance(localContext);
@@ -2238,7 +2238,7 @@ public final class ln
       for (;;)
       {
         localJSONObject.put("renderError", localObject);
-        localJSONObject.put("sdkver", "4.2.8.1");
+        localJSONObject.put("sdkver", "4.2.8.2");
         return localJSONObject.toString();
         localObject = gf.a(this.c);
         break;

@@ -1,56 +1,55 @@
-import android.text.TextUtils;
+import android.content.Intent;
+import android.support.v4.app.FragmentActivity;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.PublicAccountListActivity;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.AppInfo;
 import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.List;
 
 public class adox
-  implements View.OnClickListener
+  implements bkhw
 {
-  public adox(PublicAccountListActivity paramPublicAccountListActivity) {}
+  public adox(BaseChatPie paramBaseChatPie, bkho parambkho) {}
   
-  public void onClick(View paramView)
+  public void OnClick(View paramView, int paramInt)
   {
-    switch (paramView.getId())
+    switch (paramInt)
     {
-    default: 
-    case 2131368624: 
-    case 2131368655: 
-    case 2131363873: 
-      Object localObject;
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Bkho.dismiss();
       do
       {
-        return;
-        this.a.finish();
-        return;
-        adpm.a(this.a);
-        nrt.a(this.a.app, "P_CliOper", "Pb_account_lifeservice", "", "0X800573A", "0X800573A", 0, 0, "", "", "", "", false);
-        paramView = (axlx)this.a.app.getManager(36);
-        localObject = paramView.a("101000.101001");
-        if ((localObject != null) && (((BusinessInfoCheckUpdate.AppInfo)localObject).iNewFlag.get() == 1)) {
-          azqs.b(this.a.app, "P_CliOper", "Pb_account_lifeservice", "", "0X80060E3", "0X80060E3", 0, 0, "", "", "", "");
-        }
-        paramView.b("101000.101001");
-        return;
-        localObject = (String)paramView.getTag(-1);
-        paramView = (String)paramView.getTag(-2);
-        if ((!TextUtils.isEmpty((CharSequence)localObject)) && (!TextUtils.isEmpty(paramView))) {
-          break;
+        for (;;)
+        {
+          return;
+          bcst.b(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, "Manage_stranger", "Manage_str_delete", 0, 0, "", "", "", "");
+          bcst.b(null, "dc00898", "", "", "0X800ACA3", "0X800ACA3", 0, 0, "", "0", "0", "");
+          paramView = (anvl)this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(26);
+          ArrayList localArrayList = new ArrayList();
+          try
+          {
+            localArrayList.add(Long.valueOf(Long.parseLong(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString)));
+            paramView.a(localArrayList);
+            if (this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.c == null) {
+              this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.c = new biau(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_AndroidContentContext, 0);
+            }
+            this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.c.show();
+          }
+          catch (NumberFormatException paramView) {}
         }
       } while (!QLog.isColorLevel());
-      QLog.w("PublicAccountListActivity", 2, "onClick - uin = " + (String)localObject + ", name = " + paramView);
+      QLog.d(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_JavaLangString, 2, "delete Stranger parseLong() error", paramView);
       return;
-      ndv.a(this.a.app, this.a, paramView, (String)localObject, "IvrEnterpriseDetailEngineFalse");
-      return;
-    case 2131372446: 
-      adpm.a(this.a, (String)this.a.d.getTag());
-      nrt.a(this.a.app, "P_CliOper", "Pb_account_lifeservice", "", "0X800573D", "0X800573D", 0, 0, "", "", "", "", false);
-      return;
+      paramView = new Intent(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, QQBrowserActivity.class);
+      paramView.putExtra("url", "https://ti.qq.com/friends/unidirection?_wv=2&_wwv=128&tuin=" + this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString);
+      this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.startActivity(paramView);
+      bcst.b(null, "dc00898", "", "", "0X800ACA4", "0X800ACA4", 0, 0, "", "0", "0", "");
     }
-    adpm.a(this.a, (String)this.a.d.getTag());
   }
 }
 

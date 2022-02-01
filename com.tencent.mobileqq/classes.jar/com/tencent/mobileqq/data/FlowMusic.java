@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.data;
 
 import NS_QQ_STORY_META.META.StMusic;
-import awge;
-import awhp;
-import awhs;
 import com.tencent.mobileqq.pb.PBInt32Field;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.persistence.Entity;
+import com.tencent.mobileqq.persistence.notColumn;
+import com.tencent.mobileqq.persistence.unique;
 import com.tencent.mobileqq.richmedia.capture.data.MusicItemInfo;
 
 public class FlowMusic
-  extends awge
+  extends Entity
   implements Comparable<FlowMusic>
 {
   public static final int SOURCE_CUSTOM_ADD = 0;
@@ -21,14 +21,14 @@ public class FlowMusic
   public String albumUrl;
   public int duration = -1;
   public String path;
-  @awhp
+  @notColumn
   public int playable = 1;
   public int singerId;
   public String singerMid;
   public String singerName;
-  @awhp
+  @notColumn
   public long size = -1L;
-  @awhs
+  @unique
   public int songId;
   public String songMid;
   public String songName;
@@ -37,7 +37,7 @@ public class FlowMusic
   public long storeTimeStamp = -1L;
   public int tryBegin = -1;
   public int tryEnd = -1;
-  @awhp
+  @notColumn
   public String url;
   public int userOwnRule;
   

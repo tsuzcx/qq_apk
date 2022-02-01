@@ -1,49 +1,29 @@
-import android.content.Context;
+import android.support.v7.widget.LinearLayoutManager;
+import android.view.View;
+import android.view.View.OnLayoutChangeListener;
 import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.ae.camera.core.AECameraGLSurfaceView;
+import com.tencent.widget.pull2refresh.RecyclerViewCompat;
 
-public class bksh
-  extends bkzl
+class bksh
+  implements View.OnLayoutChangeListener
 {
-  public bksh(AECameraGLSurfaceView paramAECameraGLSurfaceView, Context paramContext)
-  {
-    super(paramContext);
-  }
+  private boolean jdField_a_of_type_Boolean;
   
-  public void a(float paramFloat1, float paramFloat2, float paramFloat3)
-  {
-    if (AECameraGLSurfaceView.a(this.a) != null) {
-      AECameraGLSurfaceView.a(this.a).a(paramFloat3);
-    }
-  }
+  private bksh(bkse parambkse) {}
   
-  public void a(int paramInt)
+  public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
   {
-    int i = 0;
-    AECameraGLSurfaceView.a(this.a, paramInt);
-    bksp.a().b(paramInt);
-    if (paramInt == -1) {
-      if (QLog.isColorLevel()) {
-        QLog.d("AECameraGLSurfaceView", 2, "OrientationEventListener unknown");
-      }
-    }
-    for (int j = 90;; j = 0)
+    bkse.a(this.jdField_a_of_type_Bkse).removeOnLayoutChangeListener(this);
+    if (bkse.a(this.jdField_a_of_type_Bkse).getItemCount() > bkse.c(this.jdField_a_of_type_Bkse) + bkse.d(this.jdField_a_of_type_Bkse))
     {
-      if ((paramInt > 315) || (paramInt < 45)) {
-        i = 90;
+      if (QLog.isColorLevel()) {
+        QLog.d("PagerSnapHelper", 2, "onLayoutChange: ");
       }
-      for (;;)
-      {
-        AECameraGLSurfaceView.b(this.a, i);
-        return;
-        if ((paramInt > 45) && (paramInt < 135)) {
-          i = 180;
-        } else if ((paramInt > 135) && (paramInt < 225)) {
-          i = 270;
-        } else if ((paramInt <= 225) || (paramInt >= 315)) {
-          i = j;
-        }
+      paramView = this.jdField_a_of_type_Bkse.a(bkse.a(this.jdField_a_of_type_Bkse));
+      if ((!this.jdField_a_of_type_Bkse.a(paramView)) || (this.jdField_a_of_type_Boolean)) {
+        bkse.a(this.jdField_a_of_type_Bkse, paramView, this.jdField_a_of_type_Boolean);
       }
+      this.jdField_a_of_type_Boolean = false;
     }
   }
 }

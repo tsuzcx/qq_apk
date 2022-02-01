@@ -12,7 +12,7 @@ public class Gravity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.ditto.attribute.Gravity
  * JD-Core Version:    0.7.0.1
  */

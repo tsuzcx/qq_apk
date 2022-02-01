@@ -1,27 +1,11 @@
-import java.util.Comparator;
-
-final class akig
-  implements Comparator<String>
+class akig
+  extends akib
 {
-  public int a(String paramString1, String paramString2)
-  {
-    if ("★".equals(paramString2)) {}
-    do
-    {
-      return 1;
-      if ("★".equals(paramString1)) {
-        return -1;
-      }
-      if ("#".equals(paramString2)) {
-        return -1;
-      }
-    } while ("#".equals(paramString1));
-    return paramString1.compareTo(paramString2);
-  }
+  akig(akif paramakif) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     akig
  * JD-Core Version:    0.7.0.1
  */

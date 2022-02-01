@@ -1,56 +1,61 @@
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.aio.helper.AIOIconChangeByTimeHelper.1;
-import com.tencent.mobileqq.activity.aio.helper.AIOIconChangeByTimeHelper.2;
+import android.os.Message;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.atomic.AtomicInteger;
 
-public class afdd
-  implements affa
+class afdd
+  extends bdzm
 {
-  private afdf jdField_a_of_type_Afdf;
-  private ambp jdField_a_of_type_Ambp = new afde(this);
-  private BaseChatPie jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie;
-  private final Object jdField_a_of_type_JavaLangObject = new Object();
-  private volatile AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(0);
+  afdd(afdc paramafdc) {}
   
-  afdd(BaseChatPie paramBaseChatPie)
+  public void handleMessage(Message paramMessage)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie = paramBaseChatPie;
-  }
-  
-  public void a(int paramInt)
-  {
-    Object localObject = null;
-    switch (paramInt)
-    {
+    int i = paramMessage.what;
+    paramMessage = (bduk)paramMessage.obj;
+    if (paramMessage == null) {
+      if (QLog.isColorLevel()) {
+        QLog.d("SendMultiPictureHelper", 2, "file is null");
+      }
     }
-    for (;;)
+    do
     {
-      if (localObject != null) {}
-      try
+      do
       {
-        ((Runnable)localObject).run();
+        return;
+        if (QLog.isColorLevel()) {
+          QLog.d("SendMultiPictureHelper", 2, "transferListener status: " + i);
+        }
+        i = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(paramMessage.p, paramMessage.i, paramMessage.b);
+      } while (this.a.jdField_d_of_type_Boolean);
+      if (this.a.jdField_b_of_type_Boolean)
+      {
+        if (paramMessage.d == 1005)
+        {
+          this.a.jdField_c_of_type_Boolean = true;
+          return;
+        }
+        if (paramMessage.d == 1003)
+        {
+          this.a.a();
+          return;
+        }
+        afdc.a(this.a, this.a.jdField_c_of_type_Int, this.a.jdField_a_of_type_JavaLangString, paramMessage.b);
         return;
       }
-      catch (Exception localException)
+      if (paramMessage.d == 1003)
       {
-        QLog.e("AIOIconChangeByTimeHelper", 1, localException, new Object[0]);
+        if (this.a.jdField_a_of_type_Bgpa != null) {
+          this.a.jdField_a_of_type_Bgpa.setMessage(String.format(this.a.jdField_d_of_type_JavaLangString, new Object[] { Integer.valueOf(this.a.jdField_a_of_type_Int + 1), Integer.valueOf(this.a.jdField_b_of_type_Int), Integer.valueOf(100) }));
+        }
+        this.a.a();
+        return;
       }
-      this.jdField_a_of_type_Afdf = new afdf(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie, null);
-      afdf.a(this.jdField_a_of_type_Afdf);
-      continue;
-      this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a.addObserver(this.jdField_a_of_type_Ambp);
-      localObject = new AIOIconChangeByTimeHelper.1(this);
-      continue;
-      this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a.removeObserver(this.jdField_a_of_type_Ambp);
-      localObject = new AIOIconChangeByTimeHelper.2(this);
-    }
-  }
-  
-  public int[] a()
-  {
-    return new int[] { 2, 6, 11 };
+      if (paramMessage.d == 1005)
+      {
+        this.a.a();
+        return;
+      }
+    } while (this.a.jdField_a_of_type_Bgpa == null);
+    this.a.jdField_a_of_type_Bgpa.setMessage(String.format(this.a.jdField_d_of_type_JavaLangString, new Object[] { Integer.valueOf(this.a.jdField_a_of_type_Int + 1), Integer.valueOf(this.a.jdField_b_of_type_Int), Integer.valueOf(i) }));
   }
 }
 

@@ -1,35 +1,47 @@
-import android.app.Dialog;
-import android.view.GestureDetector.SimpleOnGestureListener;
-import android.view.MotionEvent;
-import com.tencent.biz.qqstory.playvideo.MyVideoVisibleTroopPageView;
+import com.tencent.biz.qqcircle.QCircleInitBean.QCircleActionBean;
+import com.tencent.mobileqq.pb.MessageMicro;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import feedcloud.FeedCloudMeta.StComment;
+import feedcloud.FeedCloudMeta.StNotice;
+import feedcloud.FeedCloudMeta.StOperation;
+import feedcloud.FeedCloudMeta.StReply;
+import java.util.List;
+import qqcircle.QQCircleFeedBase.StBusiInfoCommentListData;
 
 public class vnb
-  extends GestureDetector.SimpleOnGestureListener
+  extends vmk
 {
-  public vnb(MyVideoVisibleTroopPageView paramMyVideoVisibleTroopPageView) {}
-  
-  public boolean onDown(MotionEvent paramMotionEvent)
+  public vnb(int paramInt)
   {
-    return true;
+    super(paramInt);
   }
   
-  public boolean onFling(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
+  public void a(uxk paramuxk, boolean paramBoolean)
   {
-    if ((paramMotionEvent2 != null) && (paramMotionEvent1 != null))
+    if (!paramBoolean)
     {
-      paramFloat1 = Math.abs(paramMotionEvent2.getX() - paramMotionEvent1.getX());
-      float f = Math.abs(paramMotionEvent2.getY() - paramMotionEvent1.getY());
-      double d = Math.abs(Math.asin(paramFloat1 / Math.sqrt(paramFloat1 * paramFloat1 + f * f)));
-      if ((paramFloat2 > 0.0F) && (d < 0.5235987755982988D) && (this.a.jdField_a_of_type_Int == 0)) {
-        this.a.jdField_a_of_type_AndroidAppDialog.dismiss();
+      QQCircleFeedBase.StBusiInfoCommentListData localStBusiInfoCommentListData = new QQCircleFeedBase.StBusiInfoCommentListData();
+      Object localObject = (FeedCloudMeta.StComment)this.a.operation.comment.get();
+      if (localObject != null)
+      {
+        localStBusiInfoCommentListData.comment.set((MessageMicro)localObject);
+        localObject = ((FeedCloudMeta.StComment)localObject).vecReply.get();
+        if ((localObject != null) && (((List)localObject).size() > 0))
+        {
+          int i = ((List)localObject).size();
+          localStBusiInfoCommentListData.reply.set((MessageMicro)((List)localObject).get(i - 1));
+        }
+        localObject = new QCircleInitBean.QCircleActionBean();
+        ((QCircleInitBean.QCircleActionBean)localObject).mShowInputKeyboard = false;
+        paramuxk.a(localStBusiInfoCommentListData.toByteArray());
+        paramuxk.a((QCircleInitBean.QCircleActionBean)localObject);
       }
     }
-    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     vnb
  * JD-Core Version:    0.7.0.1
  */

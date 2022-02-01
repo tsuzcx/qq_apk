@@ -1,26 +1,29 @@
 package com.tencent.mobileqq.dating;
 
-import aepi;
-import aluj;
-import aluu;
+import Override;
+import afur;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
 import android.content.DialogInterface.OnDismissListener;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.os.Handler.Callback;
 import android.os.Looper;
 import android.os.Message;
 import android.text.TextUtils;
-import apib;
-import apis;
-import auwz;
-import azqs;
-import bdgf;
-import bdin;
-import beub;
+import android.view.MotionEvent;
+import anno;
+import annz;
+import arkw;
+import arln;
+import axei;
+import bcst;
+import bgli;
+import bgnt;
+import biax;
 import com.tencent.mobileqq.activity.ChatActivity;
 import com.tencent.mobileqq.activity.SplashActivity;
 import com.tencent.mobileqq.app.BaseActivity;
@@ -31,6 +34,7 @@ import com.tencent.mobileqq.data.HotChatInfo;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.util.HashMap;
 import mqq.os.MqqHandler;
 import org.json.JSONException;
@@ -45,8 +49,8 @@ public class NearbyTransitActivity
   private static long jdField_b_of_type_Long;
   protected int a;
   long jdField_a_of_type_Long;
-  private aluu jdField_a_of_type_Aluu = new apis(this);
-  public beub a;
+  private annz jdField_a_of_type_Annz = new arln(this);
+  public biax a;
   private MqqHandler jdField_a_of_type_MqqOsMqqHandler;
   private boolean jdField_a_of_type_Boolean;
   private int jdField_b_of_type_Int;
@@ -60,12 +64,12 @@ public class NearbyTransitActivity
   
   static
   {
-    jdField_a_of_type_JavaLangString = aluj.jdField_c_of_type_JavaLangString;
+    jdField_a_of_type_JavaLangString = anno.jdField_c_of_type_JavaLangString;
   }
   
   private void a()
   {
-    apib.a("NearbyTransitActivity", new Object[] { "parseParams" });
+    arkw.a("NearbyTransitActivity", new Object[] { "parseParams" });
     Intent localIntent = getIntent();
     Bundle localBundle = localIntent.getExtras();
     this.jdField_b_of_type_JavaLangString = localBundle.getString("from");
@@ -84,10 +88,10 @@ public class NearbyTransitActivity
       this.e = 1;
     }
     this.jdField_a_of_type_Long = localIntent.getLongExtra("enter_time", System.currentTimeMillis());
-    this.jdField_a_of_type_Beub = new beub(this, 2131561236);
-    this.jdField_a_of_type_Int = getResources().getDimensionPixelSize(2131298914);
+    this.jdField_a_of_type_Biax = new biax(this, 2131561460);
+    this.jdField_a_of_type_Int = getResources().getDimensionPixelSize(2131298998);
     this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_MqqOsMqqHandler = new bdgf(Looper.getMainLooper(), this);
+    this.jdField_a_of_type_MqqOsMqqHandler = new bgli(Looper.getMainLooper(), this);
   }
   
   public static void a(Context paramContext, String paramString)
@@ -213,7 +217,7 @@ public class NearbyTransitActivity
     a("enterAIO", 1);
     if (this.jdField_b_of_type_Int > 0)
     {
-      localIntent = aepi.a(new Intent(this, SplashActivity.class), null);
+      localIntent = afur.a(new Intent(this, SplashActivity.class), null);
       localIntent.putExtra("uin", paramString1);
       localIntent.putExtra("uintype", 1);
       localIntent.putExtra("troop_uin", paramString2);
@@ -255,7 +259,7 @@ public class NearbyTransitActivity
   public static void a(String paramString, boolean paramBoolean, long paramLong, int paramInt)
   {
     if (QLog.isDevelopLevel()) {
-      auwz.a("NearbyTransitActivity", "reportResult", new Object[] { Boolean.valueOf(paramBoolean), Long.valueOf(paramLong), Integer.valueOf(paramInt) });
+      axei.a("NearbyTransitActivity", "reportResult", new Object[] { Boolean.valueOf(paramBoolean), Long.valueOf(paramLong), Integer.valueOf(paramInt) });
     }
     ThreadManager.getSubThreadHandler().post(new NearbyTransitActivity.4(paramInt, paramString, paramBoolean, paramLong));
   }
@@ -263,7 +267,7 @@ public class NearbyTransitActivity
   private boolean a(HotChatInfo paramHotChatInfo)
   {
     HotChatInfo localHotChatInfo = ((HotChatManager)this.app.getManager(60)).a();
-    azqs.b(this.app, "CliOper", "", "", "0X8004412", "0X8004412", 1, 0, "", "", "", "");
+    bcst.b(this.app, "CliOper", "", "", "0X8004412", "0X8004412", 1, 0, "", "", "", "");
     if (localHotChatInfo == null)
     {
       a(paramHotChatInfo);
@@ -287,21 +291,21 @@ public class NearbyTransitActivity
     int k = 0;
     int i = 0;
     a("doAction", 1);
-    apib.a("NearbyTransitActivity", new Object[] { "doAction", Boolean.valueOf(this.jdField_a_of_type_Boolean) });
+    arkw.a("NearbyTransitActivity", new Object[] { "doAction", Boolean.valueOf(this.jdField_a_of_type_Boolean) });
     if (this.jdField_a_of_type_Boolean) {
       return;
     }
     Object localObject;
-    if (bdin.d(BaseApplication.getContext()))
+    if (bgnt.d(BaseApplication.getContext()))
     {
-      this.app.addObserver(this.jdField_a_of_type_Aluu, true);
+      this.app.addObserver(this.jdField_a_of_type_Annz, true);
       if (this.jdField_c_of_type_Int == 1)
       {
-        localObject = (aluj)this.app.a(35);
+        localObject = (anno)this.app.a(35);
         if ((localObject != null) && (!TextUtils.isEmpty(this.jdField_c_of_type_JavaLangString))) {
           if (this.jdField_b_of_type_Int > 0)
           {
-            if (!((aluj)localObject).a(this.jdField_c_of_type_JavaLangString, this.jdField_d_of_type_Int, this.jdField_b_of_type_Boolean, 0, this.jdField_b_of_type_Int)) {
+            if (!((anno)localObject).a(this.jdField_c_of_type_JavaLangString, this.jdField_d_of_type_Int, this.jdField_b_of_type_Boolean, 0, this.jdField_b_of_type_Int)) {
               i = 1;
             }
             j = i;
@@ -332,7 +336,7 @@ public class NearbyTransitActivity
           this.jdField_a_of_type_MqqOsMqqHandler.sendMessageDelayed((Message)localObject, 200L);
           return;
           i = j;
-          if (!((aluj)localObject).a(this.jdField_c_of_type_JavaLangString, this.jdField_d_of_type_Int, this.jdField_b_of_type_Boolean)) {
+          if (!((anno)localObject).a(this.jdField_c_of_type_JavaLangString, this.jdField_d_of_type_Int, this.jdField_b_of_type_Boolean)) {
             i = 1;
           }
           j = i;
@@ -376,7 +380,7 @@ public class NearbyTransitActivity
           continue;
         }
         QLog.d("NearbyTransitActivity", 2, "", localJSONException);
-        this.app.removeObserver(this.jdField_a_of_type_Aluu);
+        this.app.removeObserver(this.jdField_a_of_type_Annz);
         k = 7;
         int m = 1;
         continue;
@@ -411,7 +415,7 @@ public class NearbyTransitActivity
         Message localMessage = Message.obtain();
         localMessage.what = 1;
         localMessage.arg1 = 2;
-        localMessage.obj = getString(2131693417);
+        localMessage.obj = getString(2131692897);
         break label182;
         label460:
         localMessage = null;
@@ -435,7 +439,7 @@ public class NearbyTransitActivity
   
   protected void a(Common.WifiPOIInfo paramWifiPOIInfo)
   {
-    if (bdin.d(BaseApplication.getContext()))
+    if (bgnt.d(BaseApplication.getContext()))
     {
       this.jdField_a_of_type_MqqOsMqqHandler.removeMessages(2);
       this.jdField_a_of_type_MqqOsMqqHandler.removeMessages(5);
@@ -447,8 +451,16 @@ public class NearbyTransitActivity
     paramWifiPOIInfo = Message.obtain();
     paramWifiPOIInfo.what = 1;
     paramWifiPOIInfo.arg1 = 2;
-    paramWifiPOIInfo.obj = getString(2131693417);
+    paramWifiPOIInfo.obj = getString(2131692897);
     this.jdField_a_of_type_MqqOsMqqHandler.sendMessage(paramWifiPOIInfo);
+  }
+  
+  @Override
+  public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
+  {
+    boolean bool = super.dispatchTouchEvent(paramMotionEvent);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool);
+    return bool;
   }
   
   public boolean doOnCreate(Bundle paramBundle)
@@ -467,16 +479,16 @@ public class NearbyTransitActivity
   
   public void doOnDestroy()
   {
-    apib.a("NearbyTransitActivity", new Object[] { "doOnDestroy" });
+    arkw.a("NearbyTransitActivity", new Object[] { "doOnDestroy" });
     this.jdField_a_of_type_Boolean = true;
     this.jdField_a_of_type_MqqOsMqqHandler.removeCallbacksAndMessages(null);
-    this.app.removeObserver(this.jdField_a_of_type_Aluu);
+    this.app.removeObserver(this.jdField_a_of_type_Annz);
     super.doOnDestroy();
   }
   
   public boolean handleMessage(Message paramMessage)
   {
-    apib.a("NearbyTransitActivity", new Object[] { "handleMessage", Integer.valueOf(paramMessage.what) });
+    arkw.a("NearbyTransitActivity", new Object[] { "handleMessage", Integer.valueOf(paramMessage.what) });
     switch (paramMessage.what)
     {
     }
@@ -484,15 +496,15 @@ public class NearbyTransitActivity
     do
     {
       return false;
-      if (this.jdField_a_of_type_Beub != null) {
-        this.jdField_a_of_type_Beub.b();
+      if (this.jdField_a_of_type_Biax != null) {
+        this.jdField_a_of_type_Biax.b();
       }
       long l;
       if ((paramMessage.what == 2) || ((paramMessage.obj instanceof String)))
       {
         if (paramMessage.what == 2)
         {
-          str1 = getString(2131693417);
+          str1 = getString(2131692897);
           if ((paramMessage.obj instanceof String)) {
             str1 = (String)paramMessage.obj;
           }
@@ -502,7 +514,7 @@ public class NearbyTransitActivity
       else
       {
         this.jdField_a_of_type_MqqOsMqqHandler.removeCallbacksAndMessages(null);
-        this.app.removeObserver(this.jdField_a_of_type_Aluu);
+        this.app.removeObserver(this.jdField_a_of_type_Annz);
         l = System.currentTimeMillis() - this.jdField_a_of_type_Long;
         if (l > 0L)
         {
@@ -520,20 +532,20 @@ public class NearbyTransitActivity
         str1 = jdField_a_of_type_JavaLangString;
         break;
       }
-      if (this.jdField_a_of_type_Beub != null) {
-        this.jdField_a_of_type_Beub.b();
+      if (this.jdField_a_of_type_Biax != null) {
+        this.jdField_a_of_type_Biax.b();
       }
       paramMessage = (Object[])paramMessage.obj;
       a((String)paramMessage[0], (String)paramMessage[1], (String)paramMessage[2]);
       this.jdField_a_of_type_MqqOsMqqHandler.removeCallbacksAndMessages(null);
-      this.app.removeObserver(this.jdField_a_of_type_Aluu);
+      this.app.removeObserver(this.jdField_a_of_type_Annz);
       finish();
       return false;
       a((Common.WifiPOIInfo)paramMessage.obj);
       return false;
-    } while (this.jdField_a_of_type_Beub == null);
+    } while (this.jdField_a_of_type_Biax == null);
     if (this.e == 1) {}
-    for (String str1 = getString(2131693405);; str1 = getString(2131693404))
+    for (String str1 = getString(2131692888);; str1 = getString(2131692887))
     {
       String str2 = str1;
       if (paramMessage.obj != null)
@@ -542,10 +554,10 @@ public class NearbyTransitActivity
         if ((paramMessage.obj instanceof String))
         {
           str2 = (String)paramMessage.obj;
-          auwz.a("NearbyTransitActivity", new Object[] { "handleMessage MSG_SHOW_LOADING ", str2 });
+          axei.a("NearbyTransitActivity", new Object[] { "handleMessage MSG_SHOW_LOADING ", str2 });
         }
       }
-      this.jdField_a_of_type_Beub.a(0, str2, 0, this);
+      this.jdField_a_of_type_Biax.a(0, str2, 0, this);
       return false;
     }
   }
@@ -567,6 +579,13 @@ public class NearbyTransitActivity
     this.jdField_a_of_type_MqqOsMqqHandler.sendMessage(paramDialogInterface);
   }
   
+  @Override
+  public void onConfigurationChanged(Configuration paramConfiguration)
+  {
+    super.onConfigurationChanged(paramConfiguration);
+    EventCollector.getInstance().onActivityConfigurationChanged(this, paramConfiguration);
+  }
+  
   public void onDismiss(DialogInterface paramDialogInterface) {}
   
   public void requestWindowFeature(Intent paramIntent)
@@ -576,7 +595,7 @@ public class NearbyTransitActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.dating.NearbyTransitActivity
  * JD-Core Version:    0.7.0.1
  */

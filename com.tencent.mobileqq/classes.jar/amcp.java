@@ -1,33 +1,17 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ShortVideoUpInfo;
-import mqq.manager.Manager;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class amcp
-  implements Manager
+class amcp
+  implements View.OnClickListener
 {
-  private awgf a;
+  amcp(amco paramamco) {}
   
-  public amcp(QQAppInterface paramQQAppInterface)
+  public void onClick(View paramView)
   {
-    this.a = paramQQAppInterface.getEntityManagerFactory().createEntityManager();
+    amco.a(this.a).a(paramView);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
-  
-  public ShortVideoUpInfo a(String paramString)
-  {
-    return (ShortVideoUpInfo)this.a.a(ShortVideoUpInfo.class, paramString);
-  }
-  
-  public boolean a(String paramString)
-  {
-    boolean bool = false;
-    paramString = a(paramString);
-    if (paramString != null) {
-      bool = this.a.b(paramString);
-    }
-    return bool;
-  }
-  
-  public void onDestroy() {}
 }
 
 

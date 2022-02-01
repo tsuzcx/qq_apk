@@ -1,34 +1,29 @@
-import android.os.Handler;
-import com.tencent.biz.qqstory.playvideo.TVKPreloader.2.1;
-import com.tencent.biz.qqstory.playvideo.TVKPreloader.2.2;
-import com.tencent.qqlive.mediaplayer.api.TVK_ICacheMgr.IPreloadCallback;
+import android.animation.TypeEvaluator;
+import android.graphics.PointF;
 
-public final class vok
-  implements TVK_ICacheMgr.IPreloadCallback
+public class vok
+  implements TypeEvaluator<PointF>
 {
-  public void onPreLoadFailed(String paramString1, int paramInt, String paramString2)
+  private PointF jdField_a_of_type_AndroidGraphicsPointF;
+  private PointF b;
+  
+  public vok(vog paramvog, PointF paramPointF1, PointF paramPointF2)
   {
-    synchronized ()
-    {
-      voo localvoo = voi.a();
-      voi.a().post(new TVKPreloader.2.2(this, localvoo, paramString1, paramInt, paramString2));
-      return;
-    }
+    this.jdField_a_of_type_AndroidGraphicsPointF = paramPointF1;
+    this.b = paramPointF2;
   }
   
-  public void onPreLoadSucess(String arg1, String paramString2)
+  public PointF a(float paramFloat, PointF paramPointF1, PointF paramPointF2)
   {
-    synchronized ()
-    {
-      paramString2 = voi.a();
-      voi.a().post(new TVKPreloader.2.1(this, paramString2));
-      return;
-    }
+    PointF localPointF = new PointF();
+    localPointF.x = (paramPointF1.x * (1.0F - paramFloat) * (1.0F - paramFloat) * (1.0F - paramFloat) + this.jdField_a_of_type_AndroidGraphicsPointF.x * 3.0F * paramFloat * (1.0F - paramFloat) * (1.0F - paramFloat) + this.b.x * 3.0F * paramFloat * paramFloat * (1.0F - paramFloat) + paramPointF2.x * paramFloat * paramFloat * paramFloat);
+    localPointF.y = (paramPointF1.y * (1.0F - paramFloat) * (1.0F - paramFloat) * (1.0F - paramFloat) + this.jdField_a_of_type_AndroidGraphicsPointF.y * 3.0F * paramFloat * (1.0F - paramFloat) * (1.0F - paramFloat) + this.b.y * 3.0F * paramFloat * paramFloat * (1.0F - paramFloat) + paramPointF2.y * paramFloat * paramFloat * paramFloat);
+    return localPointF;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     vok
  * JD-Core Version:    0.7.0.1
  */

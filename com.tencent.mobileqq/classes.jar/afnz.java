@@ -1,22 +1,21 @@
-import android.os.Bundle;
 import android.view.View;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.TroopRequestActivity;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class afnz
-  implements arsg
+public class afnz
+  implements View.OnClickListener
 {
-  afnz(afnq paramafnq) {}
+  public afnz(TroopRequestActivity paramTroopRequestActivity) {}
   
   public void onClick(View paramView)
   {
-    paramView = new Bundle();
-    paramView.putString(bdun.e, "QQ会员");
-    paramView.putString(bdun.f, "LTMCLUB");
-    paramView.putString(bdun.d, "1450000515");
-    paramView.putInt(bdun.b, 3);
-    paramView.putString(bdun.a, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
-    paramView.putString(bdun.i, bdzx.a().c(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface));
-    bdun.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidContentContext, paramView);
+    TroopRequestActivity.a(this.a).setVisibility(8);
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.security_verify", 2, "close warning tips");
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

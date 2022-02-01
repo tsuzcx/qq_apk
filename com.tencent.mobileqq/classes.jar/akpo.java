@@ -1,14 +1,20 @@
-import com.tencent.mobileqq.data.ApolloActionData;
-import java.util.Comparator;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.qwallet.fragment.KuaKuaHbFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class akpo
-  implements Comparator<ApolloActionData>
+public class akpo
+  implements View.OnClickListener
 {
-  akpo(akpm paramakpm) {}
+  public akpo(KuaKuaHbFragment paramKuaKuaHbFragment) {}
   
-  public int a(ApolloActionData paramApolloActionData1, ApolloActionData paramApolloActionData2)
+  public void onClick(View paramView)
   {
-    return this.a.a(paramApolloActionData2) - this.a.a(paramApolloActionData1);
+    if ((paramView instanceof TextView)) {
+      KuaKuaHbFragment.a(this.a).setText(((TextView)paramView).getText().toString());
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

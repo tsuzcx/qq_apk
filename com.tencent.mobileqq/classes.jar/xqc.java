@@ -1,22 +1,32 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qqstory.troop.memories.TroopStoryMemoriesListAdapter;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnCompletionListener;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnDownloadCallbackListener;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnErrorListener;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnInfoListener;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnVideoPreparedListener;
 
-class xqc
-  implements View.OnClickListener
+public class xqc
+  implements TVK_IMediaPlayer.OnCompletionListener, TVK_IMediaPlayer.OnDownloadCallbackListener, TVK_IMediaPlayer.OnErrorListener, TVK_IMediaPlayer.OnInfoListener, TVK_IMediaPlayer.OnVideoPreparedListener
 {
-  xqc(xqb paramxqb) {}
+  public void OnDownloadCallback(String paramString) {}
   
-  public void onClick(View paramView)
+  public void onCompletion(TVK_IMediaPlayer paramTVK_IMediaPlayer) {}
+  
+  public boolean onError(TVK_IMediaPlayer paramTVK_IMediaPlayer, int paramInt1, int paramInt2, int paramInt3, String paramString, Object paramObject)
   {
-    if (this.a.a.a != null) {
-      this.a.a.a.a();
-    }
+    return false;
   }
+  
+  public boolean onInfo(TVK_IMediaPlayer paramTVK_IMediaPlayer, int paramInt, Object paramObject)
+  {
+    return false;
+  }
+  
+  public void onVideoPrepared(TVK_IMediaPlayer paramTVK_IMediaPlayer) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     xqc
  * JD-Core Version:    0.7.0.1
  */

@@ -1,20 +1,29 @@
-import android.annotation.TargetApi;
-import android.os.Build.VERSION;
-import android.view.View;
-import android.view.View.AccessibilityDelegate;
-import android.view.accessibility.AccessibilityNodeInfo;
-import com.tencent.mobileqq.activity.aio.BaseBubbleBuilder;
+import android.os.Handler;
+import android.os.Handler.Callback;
+import android.os.Message;
+import com.tencent.mobileqq.activity.NearbyActivity;
 
 public class aeqa
-  extends View.AccessibilityDelegate
+  implements Handler.Callback
 {
-  public aeqa(BaseBubbleBuilder paramBaseBubbleBuilder) {}
+  public aeqa(NearbyActivity paramNearbyActivity) {}
   
-  @TargetApi(16)
-  public void onInitializeAccessibilityNodeInfo(View paramView, AccessibilityNodeInfo paramAccessibilityNodeInfo)
+  public boolean handleMessage(Message paramMessage)
   {
-    if (Build.VERSION.SDK_INT >= 16) {
-      paramAccessibilityNodeInfo.setVisibleToUser(false);
+    switch (paramMessage.what)
+    {
+    }
+    for (;;)
+    {
+      return false;
+      if (!this.a.c)
+      {
+        this.a.g();
+        this.a.b.removeMessages(1000);
+        this.a.b.sendEmptyMessageDelayed(1000, this.a.n);
+        continue;
+        NearbyActivity.a(this.a);
+      }
     }
   }
 }

@@ -1,6 +1,7 @@
 package com.tencent.mobileqq.activity;
 
-import com.tencent.widget.XPanelContainer;
+import aheh;
+import com.tencent.qphone.base.util.QLog;
 
 class BaseChatPie$59
   implements Runnable
@@ -9,13 +10,15 @@ class BaseChatPie$59
   
   public void run()
   {
-    this.this$0.o(0);
-    this.this$0.a.a(1);
+    if (QLog.isColorLevel()) {
+      QLog.d(this.this$0.jdField_a_of_type_JavaLangString, 2, "checkPESourceDowned onShow First");
+    }
+    aheh.d(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.BaseChatPie.59
  * JD-Core Version:    0.7.0.1
  */

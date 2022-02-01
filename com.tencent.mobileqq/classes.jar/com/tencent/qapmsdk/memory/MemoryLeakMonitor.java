@@ -11,7 +11,7 @@ import com.tencent.qapmsdk.memory.leakdetect.LeakInspector;
 public class MemoryLeakMonitor
   extends QAPMMonitorPlugin
 {
-  public static boolean sEnableFragmentInspect = true;
+  public static boolean enableFragmentInspect = true;
   
   public void start()
   {
@@ -22,7 +22,7 @@ public class MemoryLeakMonitor
     {
       LeakInspector.enableAutoDump(true);
       ActivityWatcher.startActivityInspect();
-      if (sEnableFragmentInspect) {
+      if (enableFragmentInspect) {
         FragmentWatcher.startFragmentInspect();
       }
       return;
@@ -34,7 +34,7 @@ public class MemoryLeakMonitor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.tencent.qapmsdk.memory.MemoryLeakMonitor
  * JD-Core Version:    0.7.0.1
  */

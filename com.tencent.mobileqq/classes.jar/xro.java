@@ -1,25 +1,35 @@
-import android.content.Context;
-import com.tencent.mobileqq.msf.sdk.handler.INetEventHandler;
-
-final class xro
-  implements INetEventHandler
+public class xro
 {
-  xro(Context paramContext) {}
+  private int a = 0;
   
-  public void onNetChangeEvent(boolean paramBoolean)
+  xro(int paramInt)
   {
-    if (paramBoolean)
+    this.a = paramInt;
+  }
+  
+  public static xro a(int paramInt)
+  {
+    return new xro(paramInt);
+  }
+  
+  public int a()
+  {
+    switch (this.a)
     {
-      xrn.a(this.a);
-      return;
+    default: 
+      return this.a;
     }
-    xrn.a("");
-    xrn.b("");
+    return 0;
+  }
+  
+  public int b()
+  {
+    return this.a;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     xro
  * JD-Core Version:    0.7.0.1
  */

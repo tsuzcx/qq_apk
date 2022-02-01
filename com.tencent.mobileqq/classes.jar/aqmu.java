@@ -1,36 +1,22 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.filemanager.activity.UniformDownloadActivity;
-
 public class aqmu
-  implements View.OnClickListener
+  extends aqmp
 {
-  public aqmu(UniformDownloadActivity paramUniformDownloadActivity) {}
+  private aqno a;
   
-  public void onClick(View paramView)
+  public aqmu(String paramString, aqno paramaqno)
   {
-    if (bdin.d(this.a.getActivity()))
-    {
-      UniformDownloadActivity.a(this.a).setVisibility(8);
-      if (arrr.a())
-      {
-        arre.a(this.a.getActivity(), 2131692754, 2131721167, new aqmv(this));
-        return;
-      }
-      UniformDownloadActivity.a(this.a);
-      this.a.finish();
-      this.a.overridePendingTransition(0, 0);
-      return;
-    }
-    arri.a(2131692747);
-    this.a.finish();
-    this.a.overridePendingTransition(0, 0);
+    super(paramString);
+    this.a = paramaqno;
+  }
+  
+  public aqno a()
+  {
+    return this.a;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aqmu
  * JD-Core Version:    0.7.0.1
  */

@@ -1,18 +1,20 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import android.annotation.TargetApi;
+import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-@TargetApi(11)
-public class ajog
-  implements Animator.AnimatorListener
+class ajog
+  implements View.OnClickListener
 {
-  public void onAnimationCancel(Animator paramAnimator) {}
+  ajog(ajod paramajod, DialogInterface.OnClickListener paramOnClickListener) {}
   
-  public void onAnimationEnd(Animator paramAnimator) {}
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
+  public void onClick(View paramView)
+  {
+    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
+      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_Ajod, 2);
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

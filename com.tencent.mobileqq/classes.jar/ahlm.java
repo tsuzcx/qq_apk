@@ -1,34 +1,24 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.contact.newfriend.NewFriendActivity;
-import java.lang.ref.WeakReference;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.data.MessageForTofuNicePics;
 
-public class ahlm
-  extends Handler
+class ahlm
+  extends afuv
 {
-  private WeakReference<NewFriendActivity> a;
+  public long a;
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  MessageForTofuNicePics jdField_a_of_type_ComTencentMobileqqDataMessageForTofuNicePics;
+  public String a;
+  View jdField_b_of_type_AndroidViewView;
+  ImageView jdField_b_of_type_AndroidWidgetImageView;
+  TextView jdField_b_of_type_AndroidWidgetTextView;
+  View jdField_c_of_type_AndroidViewView;
+  ImageView jdField_c_of_type_AndroidWidgetImageView;
+  TextView jdField_c_of_type_AndroidWidgetTextView;
+  TextView d;
   
-  public ahlm(NewFriendActivity paramNewFriendActivity)
-  {
-    this.a = new WeakReference(paramNewFriendActivity);
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    NewFriendActivity localNewFriendActivity = (NewFriendActivity)this.a.get();
-    if (localNewFriendActivity == null) {
-      return;
-    }
-    switch (paramMessage.what)
-    {
-    default: 
-      throw new RuntimeException("Unknown message: " + paramMessage.what);
-    case 1: 
-      localNewFriendActivity.a(paramMessage.arg1);
-      return;
-    }
-    localNewFriendActivity.finish();
-  }
+  ahlm(ahll paramahll) {}
 }
 
 

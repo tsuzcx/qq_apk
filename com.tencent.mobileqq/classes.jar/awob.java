@@ -1,87 +1,50 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Friends;
-import com.tencent.mobileqq.data.MessageForShortVideo;
-import com.tencent.mobileqq.mqsafeedit.BaseApplication;
-import com.tencent.qphone.base.BaseConstants;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import com.tencent.mobileqq.msgbackup.data.MsgBackupUserData;
 
 public class awob
 {
-  public int a;
-  public long a;
-  public boolean a;
-  public int b;
-  public long b;
-  public boolean b;
-  public boolean c;
+  private int jdField_a_of_type_Int;
+  private MsgBackupUserData jdField_a_of_type_ComTencentMobileqqMsgbackupDataMsgBackupUserData;
+  private String jdField_a_of_type_JavaLangString;
+  private String b;
   
-  public awob(QQAppInterface paramQQAppInterface, MessageForShortVideo paramMessageForShortVideo, long paramLong1, long paramLong2)
+  public awob(String paramString1, String paramString2, MsgBackupUserData paramMsgBackupUserData, int paramInt)
   {
-    this.jdField_a_of_type_Int = bdin.a(BaseApplication.getContext());
-    this.jdField_a_of_type_Boolean = azdo.a(paramQQAppInterface, paramMessageForShortVideo);
-    if (paramMessageForShortVideo.videoAttr == 1) {}
-    for (;;)
-    {
-      this.c = bool;
-      paramQQAppInterface = (alto)paramQQAppInterface.getManager(51);
-      if (paramQQAppInterface != null)
-      {
-        paramQQAppInterface = paramQQAppInterface.e(String.valueOf(paramMessageForShortVideo.senderuin));
-        if (paramQQAppInterface != null) {
-          this.jdField_b_of_type_Boolean = paramQQAppInterface.isFriend();
-        }
-      }
-      this.jdField_a_of_type_Long = paramLong1;
-      this.jdField_b_of_type_Long = paramLong2;
-      return;
-      bool = false;
-    }
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.b = paramString2;
+    this.jdField_a_of_type_ComTencentMobileqqMsgbackupDataMsgBackupUserData = paramMsgBackupUserData;
+    this.jdField_a_of_type_Int = paramInt;
   }
   
-  public void a()
+  public int a()
   {
-    if (QLog.isColorLevel())
-    {
-      localObject = new StringBuilder("doReport:");
-      ((StringBuilder)localObject).append("mMsgViewedInAIOTime=").append(this.jdField_a_of_type_Long).append("|");
-      ((StringBuilder)localObject).append("mMsgClickedTime=").append(this.jdField_b_of_type_Long).append("|");
-      ((StringBuilder)localObject).append("mViewNetType=").append(this.jdField_a_of_type_Int).append("|");
-      ((StringBuilder)localObject).append("mClickNetType=").append(this.jdField_b_of_type_Int).append("|");
-      ((StringBuilder)localObject).append("mAutoDownload=").append(this.jdField_a_of_type_Boolean).append("|");
-      ((StringBuilder)localObject).append("mIsFriend=").append(this.jdField_b_of_type_Boolean).append("|");
-      ((StringBuilder)localObject).append("mIsHotVideo=").append(this.c).append("|");
-      QLog.i("ShortVideoPredictionEvaluator", 2, ((StringBuilder)localObject).toString());
-    }
-    Object localObject = new HashMap();
-    ((HashMap)localObject).put(BaseConstants.RDM_NoChangeFailCode, "");
-    ((HashMap)localObject).put("viewed_time", String.valueOf(this.jdField_a_of_type_Long));
-    ((HashMap)localObject).put("click_time", String.valueOf(this.jdField_b_of_type_Long));
-    ((HashMap)localObject).put("view_net", String.valueOf(this.jdField_a_of_type_Int));
-    ((HashMap)localObject).put("click_net", String.valueOf(this.jdField_b_of_type_Int));
-    ((HashMap)localObject).put("auto_download", String.valueOf(this.jdField_a_of_type_Boolean));
-    ((HashMap)localObject).put("is_friend", String.valueOf(this.jdField_b_of_type_Boolean));
-    ((HashMap)localObject).put("is_hot", String.valueOf(this.c));
-    if (this.jdField_b_of_type_Long > 0L) {}
-    for (boolean bool = true;; bool = false)
-    {
-      azri.a(BaseApplication.getContext()).a(null, "actVideoMessageTime", bool, 0L, 0L, (HashMap)localObject, "");
-      return;
-    }
+    return this.jdField_a_of_type_Int;
   }
   
-  public void a(long paramLong)
+  public MsgBackupUserData a()
   {
-    if (this.jdField_b_of_type_Long == 0L)
-    {
-      this.jdField_b_of_type_Long = paramLong;
-      this.jdField_b_of_type_Int = bdin.a(BaseApplication.getContext());
-    }
+    return this.jdField_a_of_type_ComTencentMobileqqMsgbackupDataMsgBackupUserData;
+  }
+  
+  public String a()
+  {
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public String b()
+  {
+    return this.b;
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder("--MsgBackupConfirmQrRsp--");
+    localStringBuilder.append(",token:").append(this.jdField_a_of_type_JavaLangString).append(",encryptKey:").append(this.b).append(",userData:").append(this.jdField_a_of_type_ComTencentMobileqqMsgbackupDataMsgBackupUserData).append(",bizType:").append(this.jdField_a_of_type_Int);
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     awob
  * JD-Core Version:    0.7.0.1
  */

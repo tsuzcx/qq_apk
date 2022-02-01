@@ -1,32 +1,24 @@
-import android.view.GestureDetector;
-import android.view.MotionEvent;
-import com.tencent.mobileqq.multicard.MultiCardRootLayout;
-import java.lang.ref.WeakReference;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.fragment.TempMsgSettingFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class auog
-  implements bhxe
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public auog(MultiCardRootLayout paramMultiCardRootLayout) {}
+  public auog(TempMsgSettingFragment paramTempMsgSettingFragment) {}
   
-  public boolean a(MotionEvent paramMotionEvent)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    int i = paramMotionEvent.getActionMasked();
-    if (MultiCardRootLayout.a(this.a) != null)
-    {
-      auoi localauoi = (auoi)MultiCardRootLayout.a(this.a).get();
-      if ((localauoi != null) && (localauoi.a(i))) {
-        return true;
-      }
-    }
-    if (MultiCardRootLayout.a(this.a) != null) {
-      MultiCardRootLayout.a(this.a).onTouchEvent(paramMotionEvent);
-    }
-    return false;
+    ((awhm)this.a.a.getManager(303)).a((short)-23168, paramBoolean, true);
+    bcst.b(this.a.a, "dc00898", "", "", "0X8009976", "0X8009976", 6, 6, "", "", "", "");
+    EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     auog
  * JD-Core Version:    0.7.0.1
  */

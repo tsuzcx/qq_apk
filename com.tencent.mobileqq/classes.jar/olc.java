@@ -1,35 +1,37 @@
-import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentListFragment;
-import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentListView;
-import com.tencent.widget.AbsListView;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.readinjoy.ad.common_ad_action.download_action.AdDownloadUtil.1;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.ThreadManager;
+import mqq.os.MqqHandler;
 
 public class olc
-  implements bhtv
 {
-  public olc(ReadInJoyCommentListFragment paramReadInJoyCommentListFragment) {}
-  
-  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
+  public static void a(orb paramorb, old paramold)
   {
-    ((ReadInJoyCommentListView)paramAbsListView).a(paramAbsListView, paramInt1, paramInt2, paramInt3);
+    if (paramorb == null)
+    {
+      paramold.a(false);
+      return;
+    }
+    ThreadManager.getSubThreadHandler().post(new AdDownloadUtil.1(paramorb, paramold));
   }
   
-  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
+  public static boolean a(String paramString)
   {
-    if (!ReadInJoyCommentListFragment.a(this.a).a().a().a()) {
-      ((ReadInJoyCommentListView)paramAbsListView).a(paramAbsListView, paramInt);
+    return nxw.a(BaseApplicationImpl.getContext(), paramString);
+  }
+  
+  public static boolean a(orb paramorb)
+  {
+    if ((paramorb == null) || (TextUtils.isEmpty(paramorb.d))) {
+      return false;
     }
-    for (;;)
-    {
-      if ((ReadInJoyCommentListFragment.a(this.a) != null) && (ReadInJoyCommentListFragment.a(this.a).a() != null)) {
-        ReadInJoyCommentListFragment.a(this.a).a().a(ReadInJoyCommentListFragment.a(this.a).getFirstVisiblePosition(), ReadInJoyCommentListFragment.a(this.a).getLastVisiblePosition());
-      }
-      return;
-      ((ReadInJoyCommentListView)paramAbsListView).d();
-    }
+    return a(paramorb.d);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     olc
  * JD-Core Version:    0.7.0.1
  */

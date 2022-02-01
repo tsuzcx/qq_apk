@@ -5,6 +5,7 @@ import android.content.DialogInterface.OnCancelListener;
 import android.graphics.drawable.ColorDrawable;
 import android.support.v4.app.FragmentActivity;
 import android.view.Window;
+import com.tencent.qqlive.module.videoreport.inject.dialog.ReportDialog;
 
 class ChatHistoryBaseFragment$4
   implements Runnable
@@ -19,7 +20,7 @@ class ChatHistoryBaseFragment$4
         break label175;
       }
       this.this$0.a = new ChatHistoryBaseFragment.ProgressView(this.this$0.getActivity());
-      this.this$0.b = new Dialog(this.this$0.getActivity());
+      this.this$0.b = new ReportDialog(this.this$0.getActivity());
       this.this$0.b.getWindow().setBackgroundDrawable(new ColorDrawable(0));
       this.this$0.b.setCanceledOnTouchOutside(false);
       this.this$0.b.requestWindowFeature(1);
@@ -38,7 +39,7 @@ class ChatHistoryBaseFragment$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.history.ChatHistoryBaseFragment.4
  * JD-Core Version:    0.7.0.1
  */

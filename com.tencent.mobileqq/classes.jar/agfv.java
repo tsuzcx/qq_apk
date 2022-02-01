@@ -1,37 +1,32 @@
-import android.content.Context;
-import android.content.Intent;
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.data.MessageForWantGiftMsg;
+import android.app.Activity;
+import android.os.Bundle;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.webview.swift.WebViewFragment;
+import com.tencent.mobileqq.widget.QQToast;
 
 class agfv
-  implements View.OnClickListener
+  implements aaob
 {
-  agfv(agfu paramagfu, ChatMessage paramChatMessage, MessageForWantGiftMsg paramMessageForWantGiftMsg) {}
+  agfv(agfu paramagfu) {}
   
-  public void onClick(View paramView)
+  public void callback(Bundle paramBundle)
   {
-    if (paramView.getId() == 2131373134)
+    boolean bool;
+    if (paramBundle.getInt("type") == 73)
     {
-      new azqx(this.jdField_a_of_type_Agfu.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a("dc00899").b("Grp_flower").c("grp_aio").d("clk_send_him").a(0).a(new String[] { this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.frienduin + "", "29" }).a();
-      paramView = bdne.i(this.jdField_a_of_type_Agfu.jdField_a_of_type_AndroidContentContext, "url");
-      if (TextUtils.isEmpty(paramView)) {
-        break label216;
-      }
+      bool = paramBundle.getBoolean("isSuccess");
+      if ((!this.a.jdField_a_of_type_AndroidAppActivity.isFinishing()) || (!this.a.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewFragment.isDestroyed)) {}
     }
-    for (;;)
+    else
     {
-      paramView = paramView.replace("{troopUin}", "" + this.jdField_a_of_type_ComTencentMobileqqDataMessageForWantGiftMsg.frienduin).replace("{uin}", "" + this.jdField_a_of_type_ComTencentMobileqqDataMessageForWantGiftMsg.senderuin).replace("{from}", "29");
-      Intent localIntent = new Intent(this.jdField_a_of_type_Agfu.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
-      localIntent.putExtra("url", paramView);
-      this.jdField_a_of_type_Agfu.jdField_a_of_type_AndroidContentContext.startActivity(localIntent);
       return;
-      label216:
-      paramView = "https://qun.qq.com/qunpay/gifts/index.html?_bid=2204&troopUin={troopUin}&uin={uin}&from={from}&_wv=1031";
     }
+    if (Boolean.valueOf(bool).booleanValue())
+    {
+      QQToast.a(BaseApplicationImpl.getApplication(), 2, 2131718680, 0).b(this.a.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewFragment.getTitleBarHeight());
+      return;
+    }
+    QQToast.a(BaseApplicationImpl.getApplication(), 1, 2131718677, 0).b(this.a.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewFragment.getTitleBarHeight());
   }
 }
 

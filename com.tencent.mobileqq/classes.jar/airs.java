@@ -1,10 +1,20 @@
-import com.tencent.biz.qqstory.takevideo.slideshow.SlideItemInfo;
+import android.view.View;
+import com.tencent.mobileqq.activity.contact.addcontact.AddContactsView;
 
-public abstract interface airs
+public class airs
+  implements bkom
 {
-  public abstract void a_(SlideItemInfo paramSlideItemInfo);
+  public airs(AddContactsView paramAddContactsView) {}
   
-  public abstract void av_();
+  public void a(View paramView)
+  {
+    AddContactsView.b(this.a, false);
+  }
+  
+  public void b(View paramView)
+  {
+    AddContactsView.b(this.a, true);
+  }
 }
 
 

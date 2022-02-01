@@ -1,23 +1,14 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.nearby.now.model.MedalInfo;
+import com.tencent.mobileqq.hotpic.HotVideoData;
 
-public final class avcx
-  implements Parcelable.Creator<MedalInfo>
+public abstract interface avcx
 {
-  public MedalInfo a(Parcel paramParcel)
-  {
-    return new MedalInfo(paramParcel);
-  }
+  public abstract void a(HotVideoData paramHotVideoData);
   
-  public MedalInfo[] a(int paramInt)
-  {
-    return new MedalInfo[paramInt];
-  }
+  public abstract void b(HotVideoData paramHotVideoData);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     avcx
  * JD-Core Version:    0.7.0.1
  */

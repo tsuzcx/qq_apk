@@ -1,66 +1,63 @@
-import android.app.Activity;
-import android.content.res.Resources;
-import android.view.View;
-import com.tencent.biz.pubaccount.VideoInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.DislikeInfo;
-import com.tencent.mobileqq.widget.QQToast;
-import java.util.ArrayList;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.qphone.base.util.QLog;
+import tencent.im.oidb.articlesummary.feeds_info.VisibleShowInfo;
 
-class rhq
-  implements rse
+public class rhq
+  implements Cloneable
 {
-  rhq(rhf paramrhf, VideoInfo paramVideoInfo) {}
+  public int a;
+  public long a;
+  public long b;
   
-  public boolean a(View paramView, ArrayList<DislikeInfo> paramArrayList, Object paramObject)
+  public rhq()
   {
-    paramView = ors.a();
-    AdvertisementInfo localAdvertisementInfo;
-    if (this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo != null)
+    this.jdField_a_of_type_Int = 0;
+  }
+  
+  private static rhq b(feeds_info.VisibleShowInfo paramVisibleShowInfo)
+  {
+    long l2 = 0L;
+    rhq localrhq = new rhq();
+    long l1;
+    if (paramVisibleShowInfo.uint64_feed_id.has())
     {
-      if (rhf.a(this.jdField_a_of_type_Rhf).jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo == null) {
-        rdm.a(this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo);
-      }
-      owy.a().a(Long.valueOf(paramView).longValue(), this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.makeDislikeParam(paramArrayList, this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.g));
-      localAdvertisementInfo = noy.a(this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.jdField_a_of_type_ComTencentBizPubaccountVideoAdInfo);
-      if ((paramObject == null) || (!(paramObject instanceof DislikeInfo))) {
-        break label304;
+      l1 = paramVisibleShowInfo.uint64_feed_id.get();
+      localrhq.b = l1;
+      if (!paramVisibleShowInfo.uint32_visible_type.has()) {
+        break label150;
       }
     }
-    label301:
-    label304:
-    for (long l = ((DislikeInfo)paramObject).a;; l = 0L)
+    label150:
+    for (int i = paramVisibleShowInfo.uint32_visible_type.get();; i = 0)
     {
-      paramView = "";
-      int i = 0;
-      if (i < paramArrayList.size())
-      {
-        paramObject = (DislikeInfo)paramArrayList.get(i);
-        if (paramObject == null) {
-          break label301;
-        }
-        paramObject = paramView + paramObject.a;
-        paramView = paramObject;
-        if (i != paramArrayList.size() - 1) {
-          paramView = paramObject + ",";
-        }
+      localrhq.jdField_a_of_type_Int = i;
+      l1 = l2;
+      if (paramVisibleShowInfo.uint64_who.has()) {
+        l1 = paramVisibleShowInfo.uint64_who.get();
       }
-      for (;;)
-      {
-        i += 1;
-        break;
-        noy.a(new obk().a(rhf.a(this.jdField_a_of_type_Rhf)).a(noy.c).b(noy.P).a(localAdvertisementInfo).a(this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.jdField_a_of_type_ComTencentBizPubaccountVideoAdInfo).a(l).a(paramView).a());
-        QQToast.a(rhf.a(this.jdField_a_of_type_Rhf), -1, rhf.a(this.jdField_a_of_type_Rhf).getString(2131700055), 0).b(rhf.a(this.jdField_a_of_type_Rhf).getResources().getDimensionPixelSize(2131298914));
-        rhf.a(this.jdField_a_of_type_Rhf).dismiss();
-        return true;
-      }
+      localrhq.jdField_a_of_type_Long = l1;
+      QLog.d("SocializeFeedsInfo", 1, "feeds privacy | feedsid  " + localrhq.b + " | privacyType " + localrhq.jdField_a_of_type_Int + " | privacySetUin " + localrhq.jdField_a_of_type_Long);
+      return localrhq;
+      l1 = 0L;
+      break;
     }
+  }
+  
+  public rhq a()
+  {
+    try
+    {
+      rhq localrhq = (rhq)super.clone();
+      return localrhq;
+    }
+    catch (CloneNotSupportedException localCloneNotSupportedException) {}
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     rhq
  * JD-Core Version:    0.7.0.1
  */

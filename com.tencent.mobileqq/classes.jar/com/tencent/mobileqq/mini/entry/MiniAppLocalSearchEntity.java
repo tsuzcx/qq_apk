@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.mini.entry;
 
-import awge;
-import awhs;
+import com.tencent.mobileqq.persistence.Entity;
+import com.tencent.mobileqq.persistence.unique;
 import java.io.Serializable;
 
 public class MiniAppLocalSearchEntity
-  extends awge
+  extends Entity
   implements Serializable
 {
-  @awhs
+  @unique
   public String appId;
   public String appName;
   public String desc;
@@ -35,7 +35,7 @@ public class MiniAppLocalSearchEntity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.entry.MiniAppLocalSearchEntity
  * JD-Core Version:    0.7.0.1
  */

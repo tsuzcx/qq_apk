@@ -2,13 +2,13 @@ package com.tencent.mobileqq.surfaceviewaction.gl;
 
 import android.graphics.Bitmap;
 import android.opengl.GLES20;
-import baev;
+import bdfz;
 import com.tencent.qphone.base.util.QLog;
 
 public class Texture$3
   implements Runnable
 {
-  public Texture$3(baev parambaev) {}
+  public Texture$3(bdfz parambdfz) {}
   
   public void run()
   {
@@ -19,7 +19,7 @@ public class Texture$3
       GLES20.glDeleteTextures(arrayOfInt.length, arrayOfInt, 0);
       GLES20.glFlush();
       if (QLog.isColorLevel()) {
-        QLog.d("Texture", 2, "Texture->release real: textureId = " + this.this$0.jdField_a_of_type_Int + ", filePath = " + baev.a(this.this$0));
+        QLog.d("Texture", 2, "Texture->release real: textureId = " + this.this$0.jdField_a_of_type_Int + ", filePath = " + bdfz.a(this.this$0));
       }
       this.this$0.jdField_a_of_type_Int = 0;
     }
@@ -32,7 +32,7 @@ public class Texture$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.surfaceviewaction.gl.Texture.3
  * JD-Core Version:    0.7.0.1
  */

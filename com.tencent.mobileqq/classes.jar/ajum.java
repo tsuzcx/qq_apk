@@ -1,128 +1,39 @@
-import android.graphics.Bitmap;
-import android.graphics.Canvas;
-import android.graphics.Typeface;
 import android.text.TextUtils;
-import com.tencent.mobileqq.richmedia.mediacodec.utils.GlUtil;
-import com.tencent.ttpic.openapi.filter.RenderBuffer;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.List;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
-class ajum
+public class ajum
 {
-  public int a;
-  public ajvh a;
-  public Bitmap a;
-  public boolean a;
-  public ajvh b;
+  int jdField_a_of_type_Int = 0;
+  final List<Long> jdField_a_of_type_JavaUtilList = new ArrayList(5);
   
-  public ajum(String paramString, float paramFloat1, int paramInt, float paramFloat2, float paramFloat3, Typeface paramTypeface)
+  public ajum(String paramString)
   {
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_Ajvh = new ajvh(paramString, paramFloat1, paramInt, paramFloat2, -1.0F, 1, -1.0F, paramTypeface);
-    this.b = new ajvh(paramString, paramFloat1, -1, paramFloat2, -1.0F, 1, paramFloat3, paramTypeface);
-    if (!TextUtils.isEmpty(paramString)) {}
-    for (boolean bool = true;; bool = false)
+    try
     {
-      this.jdField_a_of_type_Boolean = bool;
-      b(paramString);
-      return;
-    }
-  }
-  
-  private boolean a(String paramString1, String paramString2)
-  {
-    if ((paramString1 == null) && (paramString2 == null)) {}
-    do
-    {
-      return true;
-      if ((paramString1 == null) || (paramString2 == null)) {
-        return false;
-      }
-    } while (paramString1.equals(paramString2));
-    return false;
-  }
-  
-  private void b(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString))
-    {
-      this.jdField_a_of_type_AndroidGraphicsBitmap = null;
-      if (this.jdField_a_of_type_Int != -1)
+      paramString = aqkp.a(paramString, "troop_member_list_config");
+      if (paramString != null)
       {
-        GlUtil.deleteTexture(this.jdField_a_of_type_Int);
-        this.jdField_a_of_type_Int = -1;
+        Object localObject = new JSONObject(paramString);
+        this.jdField_a_of_type_Int = ((JSONObject)localObject).optInt("maxTroopMemberSize");
+        localObject = ((JSONObject)localObject).optJSONArray("troopClassIdList");
+        while ((localObject != null) && (i < ((JSONArray)localObject).length()))
+        {
+          this.jdField_a_of_type_JavaUtilList.add(Long.valueOf(((JSONArray)localObject).optLong(i)));
+          i += 1;
+        }
       }
-    }
-    do
-    {
-      return;
-      if (this.jdField_a_of_type_AndroidGraphicsBitmap != null) {
-        this.jdField_a_of_type_AndroidGraphicsBitmap.recycle();
-      }
-      if (this.jdField_a_of_type_Int != -1)
-      {
-        GlUtil.deleteTexture(this.jdField_a_of_type_Int);
-        this.jdField_a_of_type_Int = -1;
-      }
-      this.jdField_a_of_type_AndroidGraphicsBitmap = ajup.a(this.b.jdField_a_of_type_Float + 5.0F, this.b.b);
-    } while (this.jdField_a_of_type_AndroidGraphicsBitmap == null);
-    paramString = new Canvas(this.jdField_a_of_type_AndroidGraphicsBitmap);
-    this.b.a(paramString, 0.0F, 0.0F);
-    this.jdField_a_of_type_Ajvh.a(paramString, 0.0F, 0.0F);
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_Int != -1)
-    {
-      GlUtil.deleteTexture(this.jdField_a_of_type_Int);
-      this.jdField_a_of_type_Int = -1;
-    }
-    if (this.jdField_a_of_type_AndroidGraphicsBitmap != null)
-    {
-      this.jdField_a_of_type_AndroidGraphicsBitmap.recycle();
-      this.jdField_a_of_type_AndroidGraphicsBitmap = null;
-    }
-  }
-  
-  public void a(Canvas paramCanvas, float paramFloat1, float paramFloat2)
-  {
-    if (!this.jdField_a_of_type_Boolean) {
-      return;
-    }
-    if (this.jdField_a_of_type_AndroidGraphicsBitmap == null)
-    {
-      this.b.a(paramCanvas, paramFloat1, paramFloat2);
-      this.jdField_a_of_type_Ajvh.a(paramCanvas, paramFloat1, paramFloat2);
-      return;
-    }
-    paramCanvas.drawBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap, paramFloat1, paramFloat2, null);
-  }
-  
-  public void a(RenderBuffer paramRenderBuffer, float paramFloat1, float paramFloat2)
-  {
-    if ((paramRenderBuffer == null) || (!this.jdField_a_of_type_Boolean)) {}
-    do
-    {
-      return;
-      if ((this.jdField_a_of_type_Int < 0) && (this.jdField_a_of_type_AndroidGraphicsBitmap != null)) {
-        this.jdField_a_of_type_Int = GlUtil.createTexture(3553, this.jdField_a_of_type_AndroidGraphicsBitmap);
-      }
-    } while (this.jdField_a_of_type_Int < 0);
-    ajup.a(paramRenderBuffer, this.jdField_a_of_type_Int, this.b.jdField_a_of_type_Float, this.b.b, null, paramFloat1, paramFloat2);
-  }
-  
-  public void a(String paramString)
-  {
-    if (!TextUtils.isEmpty(paramString)) {}
-    for (boolean bool = true;; bool = false)
-    {
-      this.jdField_a_of_type_Boolean = bool;
-      if (!a(paramString, this.jdField_a_of_type_Ajvh.jdField_a_of_type_JavaLangString))
-      {
-        this.jdField_a_of_type_Ajvh.a(paramString);
-        this.b.a(paramString);
-        b(paramString);
+      if (QLog.isColorLevel()) {
+        QLog.i("TroopMemberAddFrdHelper", 2, String.format("TroopMemberListConfig max: %s, idList: %s, config: %s", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int), TextUtils.join(",", this.jdField_a_of_type_JavaUtilList), paramString }));
       }
       return;
+    }
+    catch (Throwable paramString)
+    {
+      paramString.printStackTrace();
     }
   }
 }

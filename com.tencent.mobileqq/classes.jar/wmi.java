@@ -1,40 +1,47 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.database.MemoryInfoEntry;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.SimpleJob;
-import com.tribe.async.dispatch.Dispatcher;
-import java.util.ArrayList;
+import android.os.Bundle;
+import com.tencent.biz.qqstory.database.CommentEntry;
+import com.tencent.mobileqq.pb.MessageMicro;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
 class wmi
-  extends SimpleJob<Object>
+  implements wnp
 {
-  wmi(wmf paramwmf, String paramString1, String paramString2)
+  wmi(wmf paramwmf, int paramInt, CommentEntry paramCommentEntry) {}
+  
+  public void a(int paramInt, Bundle paramBundle)
   {
-    super(paramString1);
+    a(-1, anni.a(2131703185));
   }
   
-  protected Object a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
+  public void a(int paramInt, String paramString)
   {
-    paramJobContext = (uvn)uwa.a(19);
-    paramVarArgs = paramJobContext.a(vcg.a(this.jdField_a_of_type_Wmf.b));
-    wmk localwmk = new wmk(this.jdField_a_of_type_Wmf.c);
-    ArrayList localArrayList = new ArrayList();
-    localwmk.jdField_a_of_type_JavaUtilList = paramJobContext.a(this.jdField_a_of_type_JavaLangString, localArrayList);
-    localwmk.jdField_a_of_type_JavaUtilArrayList = localArrayList;
-    if ((paramVarArgs != null) && (paramVarArgs.isEnd == 1)) {}
-    for (boolean bool = true;; bool = false)
-    {
-      localwmk.jdField_a_of_type_Boolean = bool;
-      umc.a().dispatch(localwmk);
-      wxe.a("Q.qqstory.memories:MemoryDataPuller", "Get memory key list %s", localwmk.jdField_a_of_type_JavaUtilList);
-      return null;
+    QQToast.a(BaseApplication.getContext(), 1, anni.a(2131703208) + paramInt, 0).a();
+    this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry.status = 0;
+    this.jdField_a_of_type_Wmf.e();
+    if (QLog.isColorLevel()) {
+      QLog.e("FeedCommentLego", 2, new Object[] { "ReqGetLikeList ErrorCode:", Integer.valueOf(paramInt), " | ErrorMsg: ", paramString });
     }
   }
+  
+  public void a(MessageMicro paramMessageMicro)
+  {
+    this.jdField_a_of_type_Wmf.jdField_a_of_type_JavaUtilList.remove(this.jdField_a_of_type_Int);
+    this.jdField_a_of_type_Wmf.e();
+    this.jdField_a_of_type_Wmf.jdField_a_of_type_Woj.d(this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry);
+    wnb.a().a();
+    this.jdField_a_of_type_Wmf.a(false, null);
+    QQToast.a(BaseApplication.getContext(), 2, anni.a(2131703209), 0).a();
+    wmf.a(this.jdField_a_of_type_Wmf.jdField_a_of_type_Int, 2, this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry.feedId, this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry.commentId);
+  }
+  
+  public void a(boolean paramBoolean, Bundle paramBundle) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     wmi
  * JD-Core Version:    0.7.0.1
  */

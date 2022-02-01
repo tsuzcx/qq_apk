@@ -1,36 +1,51 @@
-import android.support.annotation.NonNull;
-import java.util.List;
+import java.io.IOException;
+import java.nio.ByteBuffer;
 
 public class blve
 {
-  public static blrs a(String paramString)
-  {
-    return new blto(Integer.valueOf(paramString).intValue());
-  }
+  public final int a;
+  public final long a;
+  public String a;
+  public final int b;
+  public final long b;
+  public final int c;
+  public final long c;
+  public final int d;
+  public final long d;
+  public final long e;
+  public final long f;
   
-  public static blrs a(String paramString1, @NonNull String paramString2, String paramString3, float paramFloat1, float paramFloat2, float paramFloat3)
+  private blve(ByteBuffer paramByteBuffer, int paramInt)
   {
-    bmvv localbmvv = ((blvi)blqr.a(4)).a(paramString2);
-    if ((localbmvv instanceof bmwf)) {
-      return new blvb((bmwf)localbmvv, paramString2, paramString3, paramFloat1, paramFloat2, paramFloat3);
+    switch (paramInt)
+    {
+    default: 
+      throw new IOException("Unexpected elf class: " + paramInt);
+    case 1: 
+      this.jdField_a_of_type_Int = paramByteBuffer.getInt();
+      this.jdField_b_of_type_Int = paramByteBuffer.getInt();
+      this.jdField_a_of_type_Long = paramByteBuffer.getInt();
+      this.jdField_b_of_type_Long = paramByteBuffer.getInt();
+      this.jdField_c_of_type_Long = paramByteBuffer.getInt();
+      this.jdField_d_of_type_Long = paramByteBuffer.getInt();
+      this.jdField_c_of_type_Int = paramByteBuffer.getInt();
+      this.jdField_d_of_type_Int = paramByteBuffer.getInt();
+      this.e = paramByteBuffer.getInt();
     }
-    if ((localbmvv instanceof bmwc)) {
-      return new blva((bmwc)localbmvv, paramString2, paramString3, paramFloat1, paramFloat2, paramFloat3);
+    for (this.f = paramByteBuffer.getInt();; this.f = paramByteBuffer.getLong())
+    {
+      this.jdField_a_of_type_JavaLangString = null;
+      return;
+      this.jdField_a_of_type_Int = paramByteBuffer.getInt();
+      this.jdField_b_of_type_Int = paramByteBuffer.getInt();
+      this.jdField_a_of_type_Long = paramByteBuffer.getLong();
+      this.jdField_b_of_type_Long = paramByteBuffer.getLong();
+      this.jdField_c_of_type_Long = paramByteBuffer.getLong();
+      this.jdField_d_of_type_Long = paramByteBuffer.getLong();
+      this.jdField_c_of_type_Int = paramByteBuffer.getInt();
+      this.jdField_d_of_type_Int = paramByteBuffer.getInt();
+      this.e = paramByteBuffer.getLong();
     }
-    if ((localbmvv instanceof bmvw)) {
-      return new blux((bmvw)localbmvv, paramString1, paramString2, paramString3, paramFloat1, paramFloat2, paramFloat3);
-    }
-    return null;
-  }
-  
-  public static blrs a(@NonNull String paramString, @NonNull List<String> paramList, float paramFloat1, float paramFloat2, float paramFloat3)
-  {
-    return new blxc(paramString, paramList, paramFloat1, paramFloat2, paramFloat3);
-  }
-  
-  public static blrs b(String paramString)
-  {
-    return new blvf(paramString);
   }
 }
 

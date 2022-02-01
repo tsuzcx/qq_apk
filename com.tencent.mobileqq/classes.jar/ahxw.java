@@ -1,16 +1,20 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
 import android.view.View;
-import android.widget.ImageView;
+import android.view.View.OnClickListener;
+import com.tencent.biz.ui.CustomMenuBar;
+import com.tencent.mobileqq.activity.aio.InputLinearLayout;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class ahxw
-  extends RecyclerView.ViewHolder
+  implements View.OnClickListener
 {
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  ahxw(ahxt paramahxt) {}
   
-  ahxw(ahxv paramahxv, View paramView)
+  public void onClick(View paramView)
   {
-    super(paramView);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131376974));
+    afur.n = true;
+    this.a.jdField_a_of_type_ComTencentBizUiCustomMenuBar.setVisibility(8);
+    this.a.jdField_a_of_type_ComTencentMobileqqActivityAioInputLinearLayout.setVisibility(0);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

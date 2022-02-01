@@ -1,7 +1,7 @@
 package com.tencent.qqmini.sdk.core.proxy.service;
 
-import com.tencent.qqmini.sdk.core.proxy.DownloaderProxy.DownloadListener;
-import com.tencent.qqmini.sdk.log.QMLog;
+import com.tencent.qqmini.sdk.launcher.core.proxy.DownloaderProxy.DownloadListener;
+import com.tencent.qqmini.sdk.launcher.log.QMLog;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -19,7 +19,7 @@ public class DownloaderProxyDefault$DownloadTask
   public int mTaskId;
   public int mTimeout;
   public String mUrl;
-  private int redirectCount;
+  private int redirectCount = 0;
   
   public DownloaderProxyDefault$DownloadTask(int paramInt1, String paramString1, Map<String, String> paramMap, String paramString2, int paramInt2, DownloaderProxy.DownloadListener paramDownloadListener)
   {
@@ -94,7 +94,7 @@ public class DownloaderProxyDefault$DownloadTask
     //   0: new 173	java/io/File
     //   3: dup
     //   4: aload_0
-    //   5: getfield 37	com/tencent/qqmini/sdk/core/proxy/service/DownloaderProxyDefault$DownloadTask:mFilePath	Ljava/lang/String;
+    //   5: getfield 39	com/tencent/qqmini/sdk/core/proxy/service/DownloaderProxyDefault$DownloadTask:mFilePath	Ljava/lang/String;
     //   8: invokespecial 174	java/io/File:<init>	(Ljava/lang/String;)V
     //   11: astore 7
     //   13: aload 7
@@ -116,7 +116,7 @@ public class DownloaderProxyDefault$DownloadTask
     //   52: pop
     //   53: aload_0
     //   54: aload_0
-    //   55: getfield 33	com/tencent/qqmini/sdk/core/proxy/service/DownloaderProxyDefault$DownloadTask:mUrl	Ljava/lang/String;
+    //   55: getfield 35	com/tencent/qqmini/sdk/core/proxy/service/DownloaderProxyDefault$DownloadTask:mUrl	Ljava/lang/String;
     //   58: invokespecial 168	com/tencent/qqmini/sdk/core/proxy/service/DownloaderProxyDefault$DownloadTask:getRealConnection	(Ljava/lang/String;)Ljava/net/HttpURLConnection;
     //   61: astore 5
     //   63: aload 5
@@ -127,7 +127,7 @@ public class DownloaderProxyDefault$DownloadTask
     //   73: invokevirtual 193	java/io/IOException:printStackTrace	()V
     //   76: goto -23 -> 53
     //   79: aload 5
-    //   81: invokevirtual 121	java/net/HttpURLConnection:getResponseCode	()I
+    //   81: invokevirtual 123	java/net/HttpURLConnection:getResponseCode	()I
     //   84: istore_1
     //   85: iload_1
     //   86: sipush 200
@@ -146,7 +146,7 @@ public class DownloaderProxyDefault$DownloadTask
     //   116: checkcast 195	com/tencent/qqmini/sdk/core/proxy/service/DownloaderProxyDefault$DownloadTask$PositionFixedInputStream
     //   119: astore 6
     //   121: aload_0
-    //   122: getfield 41	com/tencent/qqmini/sdk/core/proxy/service/DownloaderProxyDefault$DownloadTask:mListener	Lcom/tencent/qqmini/sdk/core/proxy/DownloaderProxy$DownloadListener;
+    //   122: getfield 43	com/tencent/qqmini/sdk/core/proxy/service/DownloaderProxyDefault$DownloadTask:mListener	Lcom/tencent/qqmini/sdk/launcher/core/proxy/DownloaderProxy$DownloadListener;
     //   125: iload_1
     //   126: aload 5
     //   128: invokevirtual 206	java/net/HttpURLConnection:getHeaderFields	()Ljava/util/Map;
@@ -156,11 +156,11 @@ public class DownloaderProxyDefault$DownloadTask
     //   141: astore 8
     //   143: aload 8
     //   145: invokestatic 221	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   148: ifne +295 -> 443
+    //   148: ifne +319 -> 467
     //   151: aload 8
     //   153: ldc 223
     //   155: invokevirtual 226	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
-    //   158: ifeq +285 -> 443
+    //   158: ifeq +309 -> 467
     //   161: new 228	java/util/zip/GZIPInputStream
     //   164: dup
     //   165: aload 6
@@ -185,7 +185,7 @@ public class DownloaderProxyDefault$DownloadTask
     //   205: iconst_m1
     //   206: if_icmpeq +184 -> 390
     //   209: aload_0
-    //   210: getfield 43	com/tencent/qqmini/sdk/core/proxy/service/DownloaderProxyDefault$DownloadTask:mAbort	Z
+    //   210: getfield 45	com/tencent/qqmini/sdk/core/proxy/service/DownloaderProxyDefault$DownloadTask:mAbort	Z
     //   213: ifeq +112 -> 325
     //   216: aload 4
     //   218: invokevirtual 248	java/io/InputStream:close	()V
@@ -193,42 +193,42 @@ public class DownloaderProxyDefault$DownloadTask
     //   223: invokevirtual 251	java/io/OutputStream:close	()V
     //   226: return
     //   227: astore 4
-    //   229: ldc 123
+    //   229: ldc 125
     //   231: ldc 253
     //   233: aload 4
-    //   235: invokestatic 148	com/tencent/qqmini/sdk/log/QMLog:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   235: invokestatic 150	com/tencent/qqmini/sdk/launcher/log/QMLog:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
     //   238: aload_0
     //   239: getfield 26	com/tencent/qqmini/sdk/core/proxy/service/DownloaderProxyDefault$DownloadTask:this$0	Lcom/tencent/qqmini/sdk/core/proxy/service/DownloaderProxyDefault;
     //   242: getfield 259	com/tencent/qqmini/sdk/core/proxy/service/DownloaderProxyDefault:taskMap	Ljava/util/concurrent/ConcurrentHashMap;
     //   245: aload_0
-    //   246: getfield 31	com/tencent/qqmini/sdk/core/proxy/service/DownloaderProxyDefault$DownloadTask:mTaskId	I
+    //   246: getfield 33	com/tencent/qqmini/sdk/core/proxy/service/DownloaderProxyDefault$DownloadTask:mTaskId	I
     //   249: invokestatic 265	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   252: invokevirtual 270	java/util/concurrent/ConcurrentHashMap:remove	(Ljava/lang/Object;)Ljava/lang/Object;
     //   255: pop
     //   256: aload_0
-    //   257: getfield 41	com/tencent/qqmini/sdk/core/proxy/service/DownloaderProxyDefault$DownloadTask:mListener	Lcom/tencent/qqmini/sdk/core/proxy/DownloaderProxy$DownloadListener;
+    //   257: getfield 43	com/tencent/qqmini/sdk/core/proxy/service/DownloaderProxyDefault$DownloadTask:mListener	Lcom/tencent/qqmini/sdk/launcher/core/proxy/DownloaderProxy$DownloadListener;
     //   260: bipush 254
     //   262: aload 4
     //   264: invokevirtual 271	java/io/IOException:getMessage	()Ljava/lang/String;
     //   267: invokeinterface 274 3 0
     //   272: return
-    //   273: new 110	com/tencent/qqmini/sdk/core/proxy/service/DownloadException
+    //   273: new 112	com/tencent/qqmini/sdk/core/proxy/service/DownloadException
     //   276: dup
     //   277: iload_1
     //   278: ldc_w 276
-    //   281: invokespecial 117	com/tencent/qqmini/sdk/core/proxy/service/DownloadException:<init>	(ILjava/lang/String;)V
+    //   281: invokespecial 119	com/tencent/qqmini/sdk/core/proxy/service/DownloadException:<init>	(ILjava/lang/String;)V
     //   284: athrow
     //   285: astore 4
     //   287: aload_0
     //   288: getfield 26	com/tencent/qqmini/sdk/core/proxy/service/DownloaderProxyDefault$DownloadTask:this$0	Lcom/tencent/qqmini/sdk/core/proxy/service/DownloaderProxyDefault;
     //   291: getfield 259	com/tencent/qqmini/sdk/core/proxy/service/DownloaderProxyDefault:taskMap	Ljava/util/concurrent/ConcurrentHashMap;
     //   294: aload_0
-    //   295: getfield 31	com/tencent/qqmini/sdk/core/proxy/service/DownloaderProxyDefault$DownloadTask:mTaskId	I
+    //   295: getfield 33	com/tencent/qqmini/sdk/core/proxy/service/DownloaderProxyDefault$DownloadTask:mTaskId	I
     //   298: invokestatic 265	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   301: invokevirtual 270	java/util/concurrent/ConcurrentHashMap:remove	(Ljava/lang/Object;)Ljava/lang/Object;
     //   304: pop
     //   305: aload_0
-    //   306: getfield 41	com/tencent/qqmini/sdk/core/proxy/service/DownloaderProxyDefault$DownloadTask:mListener	Lcom/tencent/qqmini/sdk/core/proxy/DownloaderProxy$DownloadListener;
+    //   306: getfield 43	com/tencent/qqmini/sdk/core/proxy/service/DownloaderProxyDefault$DownloadTask:mListener	Lcom/tencent/qqmini/sdk/launcher/core/proxy/DownloaderProxy$DownloadListener;
     //   309: aload 4
     //   311: invokevirtual 279	com/tencent/qqmini/sdk/core/proxy/service/DownloadException:getCode	()I
     //   314: aload 4
@@ -244,7 +244,7 @@ public class DownloaderProxyDefault$DownloadTask
     //   335: iconst_m1
     //   336: if_icmpeq +34 -> 370
     //   339: aload_0
-    //   340: getfield 41	com/tencent/qqmini/sdk/core/proxy/service/DownloaderProxyDefault$DownloadTask:mListener	Lcom/tencent/qqmini/sdk/core/proxy/DownloaderProxy$DownloadListener;
+    //   340: getfield 43	com/tencent/qqmini/sdk/core/proxy/service/DownloaderProxyDefault$DownloadTask:mListener	Lcom/tencent/qqmini/sdk/launcher/core/proxy/DownloaderProxy$DownloadListener;
     //   343: aload 6
     //   345: invokevirtual 287	com/tencent/qqmini/sdk/core/proxy/service/DownloaderProxyDefault$DownloadTask$PositionFixedInputStream:getPosition	()I
     //   348: i2f
@@ -261,7 +261,7 @@ public class DownloaderProxyDefault$DownloadTask
     //   362: invokeinterface 291 6 0
     //   367: goto -171 -> 196
     //   370: aload_0
-    //   371: getfield 41	com/tencent/qqmini/sdk/core/proxy/service/DownloaderProxyDefault$DownloadTask:mListener	Lcom/tencent/qqmini/sdk/core/proxy/DownloaderProxy$DownloadListener;
+    //   371: getfield 43	com/tencent/qqmini/sdk/core/proxy/service/DownloaderProxyDefault$DownloadTask:mListener	Lcom/tencent/qqmini/sdk/launcher/core/proxy/DownloaderProxy$DownloadListener;
     //   374: fconst_0
     //   375: aload 6
     //   377: invokevirtual 287	com/tencent/qqmini/sdk/core/proxy/service/DownloaderProxyDefault$DownloadTask$PositionFixedInputStream:getPosition	()I
@@ -279,23 +279,37 @@ public class DownloaderProxyDefault$DownloadTask
     //   406: getfield 26	com/tencent/qqmini/sdk/core/proxy/service/DownloaderProxyDefault$DownloadTask:this$0	Lcom/tencent/qqmini/sdk/core/proxy/service/DownloaderProxyDefault;
     //   409: getfield 259	com/tencent/qqmini/sdk/core/proxy/service/DownloaderProxyDefault:taskMap	Ljava/util/concurrent/ConcurrentHashMap;
     //   412: aload_0
-    //   413: getfield 31	com/tencent/qqmini/sdk/core/proxy/service/DownloaderProxyDefault$DownloadTask:mTaskId	I
+    //   413: getfield 33	com/tencent/qqmini/sdk/core/proxy/service/DownloaderProxyDefault$DownloadTask:mTaskId	I
     //   416: invokestatic 265	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   419: invokevirtual 270	java/util/concurrent/ConcurrentHashMap:remove	(Ljava/lang/Object;)Ljava/lang/Object;
     //   422: pop
     //   423: aload_0
-    //   424: getfield 41	com/tencent/qqmini/sdk/core/proxy/service/DownloaderProxyDefault$DownloadTask:mListener	Lcom/tencent/qqmini/sdk/core/proxy/DownloaderProxy$DownloadListener;
+    //   424: getfield 43	com/tencent/qqmini/sdk/core/proxy/service/DownloaderProxyDefault$DownloadTask:mListener	Lcom/tencent/qqmini/sdk/launcher/core/proxy/DownloaderProxy$DownloadListener;
     //   427: iload_1
     //   428: aload_0
-    //   429: getfield 37	com/tencent/qqmini/sdk/core/proxy/service/DownloaderProxyDefault$DownloadTask:mFilePath	Ljava/lang/String;
-    //   432: aload 5
-    //   434: invokevirtual 206	java/net/HttpURLConnection:getHeaderFields	()Ljava/util/Map;
-    //   437: invokeinterface 295 4 0
-    //   442: return
-    //   443: goto -271 -> 172
+    //   429: getfield 39	com/tencent/qqmini/sdk/core/proxy/service/DownloaderProxyDefault$DownloadTask:mFilePath	Ljava/lang/String;
+    //   432: new 293	com/tencent/qqmini/sdk/launcher/core/proxy/DownloaderProxy$DownloadListener$DownloadResult
+    //   435: dup
+    //   436: ldc_w 295
+    //   439: ldc2_w 296
+    //   442: iconst_1
+    //   443: ldc_w 295
+    //   446: iconst_1
+    //   447: lconst_0
+    //   448: lconst_0
+    //   449: lconst_0
+    //   450: lconst_0
+    //   451: lconst_0
+    //   452: lconst_0
+    //   453: aload 5
+    //   455: invokevirtual 206	java/net/HttpURLConnection:getHeaderFields	()Ljava/util/Map;
+    //   458: invokespecial 300	com/tencent/qqmini/sdk/launcher/core/proxy/DownloaderProxy$DownloadListener$DownloadResult:<init>	(Ljava/lang/String;JZLjava/lang/String;ZJJJJJJLjava/util/Map;)V
+    //   461: invokeinterface 304 4 0
+    //   466: return
+    //   467: goto -295 -> 172
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	446	0	this	DownloadTask
+    //   0	470	0	this	DownloadTask
     //   84	344	1	i	int
     //   177	184	2	j	int
     //   203	128	3	k	int
@@ -303,7 +317,7 @@ public class DownloaderProxyDefault$DownloadTask
     //   112	105	4	localObject1	Object
     //   227	36	4	localIOException2	java.io.IOException
     //   285	106	4	localDownloadException	DownloadException
-    //   61	372	5	localHttpURLConnection	HttpURLConnection
+    //   61	393	5	localHttpURLConnection	HttpURLConnection
     //   119	257	6	localPositionFixedInputStream	DownloaderProxyDefault.DownloadTask.PositionFixedInputStream
     //   11	385	7	localObject2	Object
     //   141	187	8	localObject3	Object
@@ -321,7 +335,7 @@ public class DownloaderProxyDefault$DownloadTask
     //   325	334	227	java/io/IOException
     //   339	367	227	java/io/IOException
     //   370	387	227	java/io/IOException
-    //   390	442	227	java/io/IOException
+    //   390	466	227	java/io/IOException
     //   53	63	285	com/tencent/qqmini/sdk/core/proxy/service/DownloadException
     //   79	85	285	com/tencent/qqmini/sdk/core/proxy/service/DownloadException
     //   99	172	285	com/tencent/qqmini/sdk/core/proxy/service/DownloadException
@@ -332,12 +346,12 @@ public class DownloaderProxyDefault$DownloadTask
     //   325	334	285	com/tencent/qqmini/sdk/core/proxy/service/DownloadException
     //   339	367	285	com/tencent/qqmini/sdk/core/proxy/service/DownloadException
     //   370	387	285	com/tencent/qqmini/sdk/core/proxy/service/DownloadException
-    //   390	442	285	com/tencent/qqmini/sdk/core/proxy/service/DownloadException
+    //   390	466	285	com/tencent/qqmini/sdk/core/proxy/service/DownloadException
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.core.proxy.service.DownloaderProxyDefault.DownloadTask
  * JD-Core Version:    0.7.0.1
  */

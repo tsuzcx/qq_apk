@@ -1,44 +1,44 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import com.tencent.biz.pubaccount.readinjoy.view.ChannelClassificationListView;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.biz.pubaccount.readinjoy.struct.ColumnInfo;
+import com.tencent.qphone.base.util.QLog;
 
 class rpi
-  implements View.OnClickListener
+  implements rox
 {
-  rpi(rph paramrph, ViewGroup paramViewGroup) {}
+  rpi(rpf paramrpf, ColumnInfo paramColumnInfo) {}
   
-  public void onClick(View paramView)
+  public void a(int paramInt1, String paramString, int paramInt2, int paramInt3)
   {
-    int i = ((Integer)paramView.getTag()).intValue();
-    if (ChannelClassificationListView.a(this.jdField_a_of_type_Rph.a) != null) {
-      ChannelClassificationListView.a(this.jdField_a_of_type_Rph.a).onItemClick((AdapterView)this.jdField_a_of_type_AndroidViewViewGroup, paramView, i, this.jdField_a_of_type_Rph.getItemId(i));
-    }
-    paramView = new JSONObject();
-    try
-    {
-      paramView.put("subchannelid", this.jdField_a_of_type_Rph.a(i).b());
-      paramView.put("subchannelname", this.jdField_a_of_type_Rph.a(i).a());
-      paramView.put("channelid", ChannelClassificationListView.a(this.jdField_a_of_type_Rph.a));
-      nrt.a(null, ors.a() + "", "0X8009933", "0X8009933", 0, 0, "", "", "", paramView.toString(), false);
+    QLog.i("RIJUGC.ManageColumnPresenter", 2, "createTopic response errorCode = " + paramInt1 + ", errorMsg = " + paramString + ", bizCode = " + paramInt2 + ", topicId = " + paramInt3);
+    if (rpf.a(this.jdField_a_of_type_Rpf) == null) {
       return;
     }
-    catch (JSONException localJSONException)
+    rpf.a(this.jdField_a_of_type_Rpf).d();
+    if (paramInt1 == 0)
     {
-      for (;;)
+      if (paramInt2 == 0)
       {
-        localJSONException.printStackTrace();
+        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructColumnInfo.columnID = paramInt3;
+        rpf.a(this.jdField_a_of_type_Rpf).b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructColumnInfo, true);
+        rpf.a(this.jdField_a_of_type_Rpf).a(2131717014);
+        rpf.a(this.jdField_a_of_type_Rpf).a();
+        return;
       }
+      rpf.a(this.jdField_a_of_type_Rpf).b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructColumnInfo, false);
+      if (!paramString.isEmpty())
+      {
+        rpf.a(this.jdField_a_of_type_Rpf).a(paramString);
+        return;
+      }
+      rpf.a(this.jdField_a_of_type_Rpf).a(2131717013);
+      return;
     }
+    rpf.a(this.jdField_a_of_type_Rpf).b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructColumnInfo, false);
+    rpf.a(this.jdField_a_of_type_Rpf).a(2131717013);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     rpi
  * JD-Core Version:    0.7.0.1
  */

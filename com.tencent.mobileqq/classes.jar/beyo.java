@@ -1,19 +1,30 @@
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnSeekCompleteListener;
-import com.tencent.mobileqq.widget.qqfloatingscreen.listener.IVideoOuterStatusListener;
-import com.tencent.mobileqq.widget.qqfloatingscreen.videoview.VideoTextureView;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.troop.widget.RedDotAnimateView;
+import java.lang.ref.WeakReference;
 
 public class beyo
-  implements MediaPlayer.OnSeekCompleteListener
 {
-  public beyo(VideoTextureView paramVideoTextureView) {}
+  protected ImageView a;
+  protected SessionInfo a;
+  protected QQAppInterface a;
+  protected RedDotAnimateView a;
+  protected WeakReference<BaseActivity> a;
   
-  public void onSeekComplete(MediaPlayer paramMediaPlayer)
-  {
-    if (VideoTextureView.a() != null) {
-      VideoTextureView.a().onVideoStart(VideoTextureView.a(this.a));
-    }
-  }
+  public void a() {}
+  
+  public void a(boolean paramBoolean) {}
+  
+  public void a(boolean paramBoolean1, TroopChatPie paramTroopChatPie, boolean paramBoolean2) {}
+  
+  public void b() {}
+  
+  public void b(boolean paramBoolean) {}
+  
+  public void c() {}
 }
 
 

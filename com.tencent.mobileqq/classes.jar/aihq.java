@@ -1,35 +1,48 @@
+import android.text.TextUtils;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.AbsListView;
-import com.tencent.widget.XListView;
+import mqq.observer.AccountObserver;
 
 class aihq
-  implements bhtv
+  extends AccountObserver
 {
-  int jdField_a_of_type_Int = 0;
-  int b = 0;
+  aihq(aihn paramaihn) {}
   
-  aihq(aihl paramaihl) {}
-  
-  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
+  public void onRefreshDA2(boolean paramBoolean, String paramString1, String paramString2)
   {
-    this.jdField_a_of_type_Int = (paramInt1 + paramInt2);
-    this.b = paramInt3;
-  }
-  
-  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
-  {
-    if (this.jdField_a_of_type_Aihl.jdField_a_of_type_ComTencentWidgetXListView.getAdapter() == this.jdField_a_of_type_Aihl.jdField_a_of_type_Aihv) {}
-    do
+    int i;
+    if (QLog.isColorLevel())
     {
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.i(aihl.jdField_a_of_type_JavaLangString, 2, "onScrollStateChanged, scrollState = " + paramInt + ", lastItem = " + this.jdField_a_of_type_Int + ", totalItemCount = " + this.b);
+      paramString1 = new StringBuilder().append("onRefrshDA2 result: ").append(paramBoolean).append(", da2 length: ");
+      if (paramString2 == null)
+      {
+        i = 0;
+        QLog.d("C2CMsgRoamProxy", 2, i);
       }
-    } while ((this.b == 0) || (this.jdField_a_of_type_Int != this.b) || (paramInt != 0));
-    if (QLog.isColorLevel()) {
-      QLog.i(aihl.jdField_a_of_type_JavaLangString, 2, "onScrollStateChanged, reach bottom, lastItem = " + this.jdField_a_of_type_Int + ", totalItemCount = " + this.b);
     }
-    aihl.a(this.jdField_a_of_type_Aihl);
+    else
+    {
+      if ((!paramBoolean) || (TextUtils.isEmpty(paramString2))) {
+        break label98;
+      }
+      i = 1;
+      label64:
+      if (i == 0) {
+        break label104;
+      }
+      aihn.a(this.a, true);
+    }
+    for (;;)
+    {
+      aihn.c(this.a).b();
+      return;
+      i = paramString2.length();
+      break;
+      label98:
+      i = 0;
+      break label64;
+      label104:
+      aihn.a(this.a, false);
+    }
   }
 }
 

@@ -11,15 +11,15 @@ class WebView$7
   
   public void onNewPicture(IX5WebViewBase paramIX5WebViewBase, Picture paramPicture, boolean paramBoolean)
   {
-    this.this$0.setX5WebView(paramIX5WebViewBase);
-    this.val$listner.onNewPicture(this.this$0, paramPicture);
+    this.b.a(paramIX5WebViewBase);
+    this.a.onNewPicture(this.b, paramPicture);
   }
   
   public void onNewPictureIfHaveContent(IX5WebViewBase paramIX5WebViewBase, Picture paramPicture) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.smtt.sdk.WebView.7
  * JD-Core Version:    0.7.0.1
  */

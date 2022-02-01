@@ -1,169 +1,70 @@
+import android.content.res.Resources;
 import android.os.Bundle;
-import com.tencent.mobileqq.qipc.QIPCClientHelper;
-import com.tencent.mobileqq.qipc.QIPCModule;
-import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCClient;
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
-import java.util.ArrayList;
-import java.util.Iterator;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qqlive.mediaplayer.api.TVK_PlayerVideoInfo;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
-public class atnn
-  extends QIPCModule
+class atnn
+  implements atwd
 {
-  private ArrayList<atnq> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  private volatile boolean jdField_a_of_type_Boolean;
+  atnn(atnm paramatnm, long paramLong, boolean paramBoolean1, String paramString1, Bundle paramBundle, short paramShort, boolean paramBoolean2, String paramString2, String paramString3) {}
   
-  private atnn()
+  public void a(boolean paramBoolean)
   {
-    super("ListenTogetherIPCModuleWebClient");
-  }
-  
-  public static atnn a()
-  {
-    return atnp.a();
-  }
-  
-  private EIPCResult a(String arg1, Bundle paramBundle, int paramInt)
-  {
-    if ((!"action_status_changed".equals(???)) || (paramBundle == null)) {}
-    for (;;)
+    if (paramBoolean)
     {
-      return null;
-      paramBundle = paramBundle.getString("data");
-      try
-      {
-        paramBundle = new JSONObject(paramBundle);
-        if (QLog.isColorLevel()) {
-          QLog.d("ListenTogetherIPCModuleWebClient", 2, "statusChanged action:" + ??? + " data=" + paramBundle);
-        }
-        if (paramBundle != null) {
-          synchronized (this.jdField_a_of_type_JavaUtilArrayList)
-          {
-            Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-            while (localIterator.hasNext())
-            {
-              atnq localatnq = (atnq)localIterator.next();
-              if (localatnq != null) {
-                localatnq.a(paramBundle);
-              }
-            }
-          }
-        }
-      }
-      catch (JSONException paramBundle)
-      {
-        for (;;)
-        {
-          QLog.i("ListenTogetherIPCModuleWebClient", 1, "statusChanged error:" + paramBundle.getMessage());
-          paramBundle = null;
-        }
-        ??? = new EIPCResult();
-        ???.code = 0;
-      }
-    }
-    return ???;
-  }
-  
-  public static void a(JSONObject paramJSONObject)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putString("data", paramJSONObject.toString());
-    QIPCClientHelper.getInstance().getClient().callServer("ListenTogetherIPCModuleMainServer", "action_status_changed", localBundle, null);
-  }
-  
-  public static void a(JSONObject paramJSONObject, String paramString, EIPCResultCallback paramEIPCResultCallback)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putString("data", paramJSONObject.toString());
-    QIPCClientHelper.getInstance().getClient().callServer("ListenTogetherIPCModuleMainServer", paramString, localBundle, paramEIPCResultCallback);
-  }
-  
-  public void a(atnq paramatnq)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ListenTogetherIPCModuleWebClient", 2, "register callback:" + paramatnq);
-    }
-    if (this.jdField_a_of_type_JavaUtilArrayList.contains(paramatnq)) {}
-    for (;;)
-    {
-      return;
-      if (this.jdField_a_of_type_JavaUtilArrayList.isEmpty()) {
-        ??? = a();
-      }
-      try
-      {
-        QIPCClientHelper.getInstance().register((QIPCModule)???);
-        this.jdField_a_of_type_Boolean = true;
-        if (QLog.isColorLevel()) {
-          QLog.d("ListenTogetherIPCModuleWebClient", 2, "register real");
-        }
-      }
-      catch (Exception localException)
-      {
-        synchronized (this.jdField_a_of_type_JavaUtilArrayList)
-        {
-          this.jdField_a_of_type_JavaUtilArrayList.add(paramatnq);
-          if (!QLog.isColorLevel()) {
-            continue;
-          }
-          QLog.d("ListenTogetherIPCModuleWebClient", 2, "register mListenTogetherClient2WebCallbacks.size:" + this.jdField_a_of_type_JavaUtilArrayList.size());
-          return;
-          localException = localException;
-          QLog.e("ListenTogetherIPCModuleWebClient", 1, "register ipc module error.", localException);
-        }
-      }
-    }
-  }
-  
-  public void b(atnq paramatnq)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ListenTogetherIPCModuleWebClient", 2, "unregister callback:" + paramatnq + " mHasRegistered:" + this.jdField_a_of_type_Boolean);
-    }
-    if (this.jdField_a_of_type_JavaUtilArrayList.contains(paramatnq)) {}
-    synchronized (this.jdField_a_of_type_JavaUtilArrayList)
-    {
-      this.jdField_a_of_type_JavaUtilArrayList.remove(paramatnq);
-      if (QLog.isColorLevel()) {
-        QLog.d("ListenTogetherIPCModuleWebClient", 2, "unregister mListenTogetherClient2WebCallbacks.size:" + this.jdField_a_of_type_JavaUtilArrayList.size());
-      }
-      if ((!this.jdField_a_of_type_JavaUtilArrayList.isEmpty()) || (!this.jdField_a_of_type_Boolean)) {}
-    }
-    try
-    {
-      if (QIPCClientHelper.getInstance().getClient() != null)
-      {
-        QIPCClientHelper.getInstance().getClient().unRegisterModule(a());
-        this.jdField_a_of_type_Boolean = false;
-        if (QLog.isColorLevel()) {
-          QLog.d("ListenTogetherIPCModuleWebClient", 2, "unregister real");
-        }
-      }
+      localObject1 = new HashMap();
+      ((Map)localObject1).put("shouq_bus_type", "bus_type_video_file");
+      localObject2 = new TVK_PlayerVideoInfo();
+      ((TVK_PlayerVideoInfo)localObject2).setReportInfoMap((Map)localObject1);
+      ((TVK_PlayerVideoInfo)localObject2).setPlayType(4);
+      ((TVK_PlayerVideoInfo)localObject2).setConfigMap("RawVideoPlay", "true");
+      ((TVK_PlayerVideoInfo)localObject2).setConfigMap("keep_last_frame", "true");
+      this.jdField_a_of_type_Atnm.jdField_a_of_type_Atds.a();
       return;
     }
-    catch (Exception paramatnq)
+    if (this.jdField_a_of_type_Long == -100001L) {}
+    while ((this.jdField_a_of_type_JavaLangString == null) || (this.jdField_a_of_type_JavaLangString.length() == 0))
     {
-      QLog.e("ListenTogetherIPCModuleWebClient", 1, "unregister ipc module error.", paramatnq);
+      long l = 9360L;
+      if (this.jdField_a_of_type_Long == 0L) {
+        l = 9048L;
+      }
+      this.jdField_a_of_type_Atnm.jdField_a_of_type_Atds.a((int)l, BaseApplication.getContext().getResources().getString(2131690818));
+      return;
+      if ((this.jdField_a_of_type_Long == -25081L) || (this.jdField_a_of_type_Long == -6101L) || (this.jdField_a_of_type_Long == -7003L))
+      {
+        this.jdField_a_of_type_Atnm.jdField_a_of_type_Atnl.a(true);
+        this.jdField_a_of_type_Atnm.jdField_a_of_type_Atds.a((int)this.jdField_a_of_type_Long, BaseApplication.getContext().getResources().getString(2131692499));
+        return;
+      }
+      if (!this.jdField_a_of_type_Boolean)
+      {
+        this.jdField_a_of_type_Atnm.jdField_a_of_type_Atds.a((int)9045L, BaseApplication.getContext().getResources().getString(2131690818));
+        return;
+      }
     }
-    paramatnq = finally;
-    throw paramatnq;
-  }
-  
-  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ListenTogetherIPCModuleWebClient", 2, "onCall, params=" + paramBundle + ", action=" + paramString + ", callBackId=" + paramInt);
+    String str = this.jdField_a_of_type_JavaLangString;
+    Object localObject2 = "";
+    Object localObject1 = null;
+    if (this.jdField_a_of_type_AndroidOsBundle != null)
+    {
+      localObject2 = this.jdField_a_of_type_AndroidOsBundle.getString("IPv6Dns", "");
+      localObject1 = this.jdField_a_of_type_AndroidOsBundle.getStringArrayList("ipv6list");
     }
-    if (paramBundle == null) {
-      QLog.i("ListenTogetherIPCModuleWebClient", 1, "onCall, param is null, action=" + paramString + ", callBackId=" + paramInt);
+    localObject1 = atnl.a(this.jdField_a_of_type_Atnm.jdField_a_of_type_Atnl, (String)localObject2, this.jdField_a_of_type_Short, (List)localObject1, this.jdField_b_of_type_Boolean);
+    if (!TextUtils.isEmpty((CharSequence)localObject1)) {}
+    for (;;)
+    {
+      localObject2 = this.jdField_b_of_type_JavaLangString;
+      localObject1 = "http://" + (String)localObject1 + ":" + String.valueOf(this.jdField_a_of_type_Short) + this.c;
+      this.jdField_a_of_type_Atnm.jdField_a_of_type_Atds.a((String)localObject1, (String)localObject2);
+      return;
+      localObject1 = str;
     }
-    while (!"action_status_changed".equals(paramString)) {
-      return null;
-    }
-    return a(paramString, paramBundle, paramInt);
   }
 }
 

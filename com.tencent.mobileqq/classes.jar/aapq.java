@@ -1,21 +1,21 @@
-import android.view.View;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
-public class aapq
-  extends aapr
+class aapq
+  extends aapv
 {
-  public int a;
-  public View a;
-  public int b;
-  public View b;
-  public int c;
-  public View c;
-  public int d;
-  public View d;
-  public int e;
-  public View e;
-  public int f;
-  public int g;
-  public int h;
+  aapq(aapl paramaapl, long paramLong, aapi paramaapi, File paramFile)
+  {
+    super(paramaapl.a);
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(".troop.trace_video_combine", 2, "combineVideos total = " + (System.currentTimeMillis() - this.jdField_a_of_type_Long));
+    }
+    this.jdField_a_of_type_Aapi.a(this.jdField_a_of_type_JavaIoFile.getAbsolutePath(), paramBoolean, null);
+  }
 }
 
 

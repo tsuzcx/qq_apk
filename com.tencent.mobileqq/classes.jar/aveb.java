@@ -1,34 +1,39 @@
-import android.text.TextUtils;
-import com.tencent.mm.opensdk.modelbase.BaseResp;
-import com.tencent.mobileqq.wxapi.WXShareHelper;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnInfoListener;
 
 class aveb
-  implements bfah
+  implements TVK_IMediaPlayer.OnInfoListener
 {
-  aveb(avea paramavea) {}
+  aveb(avdv paramavdv) {}
   
-  public void a(BaseResp paramBaseResp)
+  public boolean onInfo(TVK_IMediaPlayer paramTVK_IMediaPlayer, int paramInt, Object paramObject)
   {
-    if ((paramBaseResp != null) && (TextUtils.equals(this.a.jdField_a_of_type_JavaLangString, paramBaseResp.transaction)))
+    switch (paramInt)
     {
-      WXShareHelper.a().b(this);
-      if (paramBaseResp.errCode != 0) {
-        break label59;
-      }
-      if (this.a.jdField_a_of_type_Aved != null) {
-        this.a.jdField_a_of_type_Aved.a(true);
-      }
     }
-    label59:
-    while (this.a.jdField_a_of_type_Aved == null) {
-      return;
-    }
-    this.a.jdField_a_of_type_Aved.a(false);
+    do
+    {
+      return false;
+      if (QLog.isColorLevel()) {
+        QLog.d("VideoBaseItem", 2, "video start buffering !");
+      }
+      if (avdv.a(this.a) != null) {
+        avdv.a(this.a).a(this.a.b, 0);
+      }
+      this.a.c = 6;
+      return false;
+      if (QLog.isColorLevel()) {
+        QLog.d("VideoBaseItem", 2, "video end buffering !");
+      }
+    } while (avdv.a(this.a) == null);
+    avdv.a(this.a).a(this.a.b, 1);
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aveb
  * JD-Core Version:    0.7.0.1
  */

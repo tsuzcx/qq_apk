@@ -1,8 +1,18 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.phone.BindVerifyActivity;
+
 public class akcr
+  implements DialogInterface.OnClickListener
 {
-  public String a;
-  public String b;
-  public String c;
+  public akcr(BindVerifyActivity paramBindVerifyActivity) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    paramDialogInterface.dismiss();
+    this.a.setResult(0);
+    this.a.finish();
+  }
 }
 
 

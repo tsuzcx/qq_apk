@@ -1,83 +1,60 @@
-import android.util.SparseArray;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.View.OnLongClickListener;
-import java.util.HashMap;
+import android.os.Build.VERSION;
+import android.support.annotation.NonNull;
+import android.text.TextUtils;
+import java.util.Iterator;
+import java.util.List;
 
 public class wtq
-  implements View.OnClickListener, View.OnLongClickListener
 {
-  public int a;
-  public SparseArray<View> a;
-  public View a;
-  public Object a;
-  public String a;
-  public HashMap<String, Object> a;
-  public wrj a;
-  public int b;
-  public SparseArray<String> b;
-  public int c = -1;
-  
-  public wtq(View paramView)
+  public static int a(long paramLong1, long paramLong2)
   {
-    this.jdField_b_of_type_Int = -1;
-    this.jdField_a_of_type_AndroidViewView = paramView;
-    this.jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
-    this.jdField_b_of_type_AndroidUtilSparseArray = new SparseArray();
-    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
-    paramView.setTag(this);
+    if (paramLong1 < paramLong2) {
+      return -1;
+    }
+    if (paramLong1 == paramLong2) {
+      return 0;
+    }
+    return 1;
   }
   
-  public View a()
+  public static wrs a(@NonNull List<wrs> paramList1, @NonNull List<wrs> paramList2, @NonNull String paramString)
   {
-    return this.jdField_a_of_type_AndroidViewView;
-  }
-  
-  public <T extends View> T a(int paramInt)
-  {
-    View localView2 = (View)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
-    View localView1 = localView2;
-    if (localView2 == null)
+    paramList2.clear();
+    wrs localwrs = null;
+    Iterator localIterator = paramList1.iterator();
+    paramList1 = localwrs;
+    if (localIterator.hasNext())
     {
-      localView1 = this.jdField_a_of_type_AndroidViewView.findViewById(paramInt);
-      this.jdField_a_of_type_AndroidUtilSparseArray.put(paramInt, localView1);
+      localwrs = (wrs)localIterator.next();
+      if (a(localwrs)) {
+        paramList2.add(localwrs);
+      }
+      if ((paramList1 != null) || (!TextUtils.equals(paramString, localwrs.jdField_a_of_type_JavaLangString))) {
+        break label76;
+      }
+      paramList1 = localwrs;
     }
-    return localView1;
-  }
-  
-  public Object a(String paramString)
-  {
-    return this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
-  }
-  
-  public void a(String paramString, Object paramObject)
-  {
-    this.jdField_a_of_type_JavaUtilHashMap.put(paramString, paramObject);
-  }
-  
-  public void a(wrj paramwrj)
-  {
-    this.jdField_a_of_type_Wrj = paramwrj;
-  }
-  
-  public void onClick(View paramView)
-  {
-    if (this.jdField_a_of_type_Wrj != null) {
-      this.jdField_a_of_type_Wrj.a(this.jdField_b_of_type_Int, paramView, this.jdField_a_of_type_JavaLangObject, this);
+    label76:
+    for (;;)
+    {
+      break;
+      return paramList1;
     }
   }
   
-  public boolean onLongClick(View paramView)
+  public static boolean a()
   {
-    if (this.jdField_a_of_type_Wrj != null) {
-      this.jdField_a_of_type_Wrj.b(this.jdField_b_of_type_Int, paramView, this.jdField_a_of_type_JavaLangObject, this);
-    }
-    return true;
+    return Build.VERSION.SDK_INT > 19;
+  }
+  
+  public static boolean a(wrs paramwrs)
+  {
+    return (paramwrs.jdField_a_of_type_Int == 5) || (paramwrs.jdField_a_of_type_Int == 6) || (paramwrs.jdField_a_of_type_Int == 7) || (paramwrs.jdField_a_of_type_Int == 8) || (paramwrs.jdField_a_of_type_Int == 9) || (paramwrs.jdField_a_of_type_Int == 12) || (paramwrs.jdField_a_of_type_Int == 13);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     wtq
  * JD-Core Version:    0.7.0.1
  */

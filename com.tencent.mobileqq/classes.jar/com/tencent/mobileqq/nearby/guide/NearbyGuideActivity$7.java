@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.nearby.guide;
 
 import android.os.Bundle;
-import auxh;
+import axeq;
 import com.tencent.mobileqq.nearby.picbrowser.PicInfo;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -9,7 +9,7 @@ import java.util.Iterator;
 class NearbyGuideActivity$7
   implements Runnable
 {
-  NearbyGuideActivity$7(NearbyGuideActivity paramNearbyGuideActivity, ArrayList paramArrayList, auxh paramauxh, Bundle paramBundle) {}
+  NearbyGuideActivity$7(NearbyGuideActivity paramNearbyGuideActivity, ArrayList paramArrayList, axeq paramaxeq, Bundle paramBundle) {}
   
   public void run()
   {
@@ -25,12 +25,12 @@ class NearbyGuideActivity$7
         localArrayList.add(localPicInfo);
       }
     }
-    this.jdField_a_of_type_Auxh.a(this.jdField_a_of_type_AndroidOsBundle, localArrayList, null, true, true, true, false);
+    this.jdField_a_of_type_Axeq.a(this.jdField_a_of_type_AndroidOsBundle, localArrayList, null, true, true, true, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.guide.NearbyGuideActivity.7
  * JD-Core Version:    0.7.0.1
  */

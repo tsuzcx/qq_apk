@@ -1,12 +1,12 @@
 package com.tencent.biz.pubaccount.subscript;
 
 import com.tencent.mobileqq.app.QQAppInterface;
-import suk;
+import tvx;
 
 public class SubscriptRecommendController$9
   implements Runnable
 {
-  public SubscriptRecommendController$9(suk paramsuk) {}
+  public SubscriptRecommendController$9(tvx paramtvx) {}
   
   public void run()
   {
@@ -19,7 +19,7 @@ public class SubscriptRecommendController$9
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.pubaccount.subscript.SubscriptRecommendController.9
  * JD-Core Version:    0.7.0.1
  */

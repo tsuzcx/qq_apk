@@ -1,127 +1,116 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.storyHome.StoryTransitionActivity;
-import com.tencent.common.app.AppInterface;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.bless.BlessSelectMemberActivity;
-import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
-import com.tencent.mobileqq.shortvideo.VideoEnvironment;
-import com.tencent.mobileqq.widget.QQToast;
+import android.widget.ImageView;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.activity.aio.item.MarketFaceItemBuilder.6.1;
+import com.tencent.mobileqq.activity.aio.item.MarketFaceItemBuilder.6.2;
+import com.tencent.mobileqq.activity.aio.item.MarketFaceItemBuilder.6.3;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.data.Emoticon;
+import com.tencent.mobileqq.data.EmoticonPackage;
 import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.List;
 
 public class ahcq
+  extends arvc
 {
-  public static String a = "BlessJsApiUtils";
+  ahcq(ahch paramahch) {}
   
-  public static void a(Activity paramActivity, String paramString1, String paramString2)
+  private void a(EmoticonPackage paramEmoticonPackage, Boolean paramBoolean, List<Emoticon> paramList)
   {
-    if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString1.trim())))
+    Boolean localBoolean = null;
+    paramList = paramList.iterator();
+    Emoticon localEmoticon;
+    boolean bool;
+    if (paramList.hasNext())
     {
-      QQToast.a(paramActivity, 2131690548, 1).a();
-      return;
+      localEmoticon = (Emoticon)paramList.next();
+      Iterator localIterator = this.a.jdField_a_of_type_JavaUtilList.iterator();
+      for (;;)
+      {
+        if (localIterator.hasNext())
+        {
+          paramList = (ahcu)localIterator.next();
+          if ((paramList.jdField_a_of_type_Asbq != null) && (paramEmoticonPackage.epId.equals(paramList.jdField_a_of_type_Asbq.a.epId)))
+          {
+            paramBoolean = paramList.jdField_a_of_type_ComTencentMobileqqDataChatMessage;
+            if ((paramList.jdField_a_of_type_Boolean) && (paramList.e.hasWindowFocus()))
+            {
+              bool = true;
+              localBoolean = Boolean.valueOf(bool);
+              paramList.jdField_a_of_type_Boolean = false;
+              paramEmoticonPackage = paramList;
+              paramList = paramBoolean;
+            }
+          }
+        }
+      }
     }
-    Intent localIntent = new Intent(paramActivity, BlessSelectMemberActivity.class);
-    localIntent.putExtra("param_type", 9003);
-    localIntent.putExtra("param_entrance", 15);
-    localIntent.putExtra("param_only_friends", true);
-    localIntent.putExtra("param_donot_need_contacts", true);
-    localIntent.putExtra("param_title", paramActivity.getString(2131690565));
-    localIntent.putExtra("param_done_button_wording", paramActivity.getString(2131691089));
-    localIntent.putExtra("param_exit_animation", 1);
-    localIntent.putExtra("param_blesstype", 1);
-    localIntent.putExtra("param_blessword_content", paramString1);
-    localIntent.putExtra("param_web_callback", paramString2);
-    paramActivity.startActivity(localIntent);
-    paramActivity.overridePendingTransition(2130771992, 2130771993);
-  }
-  
-  public static boolean a(AppInterface paramAppInterface)
-  {
-    boolean bool = VideoEnvironment.b(paramAppInterface);
-    if ((!bool) && (QLog.isColorLevel())) {
-      QLog.d(a, 2, "isMobileSupportPTV fasle");
-    }
-    return bool;
-  }
-  
-  public static boolean a(AppInterface paramAppInterface, Activity paramActivity, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8, String paramString9, String paramString10, String paramString11, String paramString12)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i(a, 2, "startBlessPtvActivity , supportVideo:" + paramString1 + ", supportPhoto:" + paramString2 + ", cameramode:" + paramString3 + ", unfoldDDStr:" + paramString5 + ", dDCategoryName:" + paramString6 + ", dDItemID:" + paramString7 + ", unfoldFilter:" + paramString9 + ", filterCategoryName:" + paramString10 + ", filterItemID:" + paramString11 + ", callback:" + paramString12);
-    }
-    boolean bool1 = "1".equals(paramString1);
-    boolean bool2 = "1".equals(paramString2);
-    if ("1".equals(paramString3)) {}
-    boolean bool3;
-    boolean bool4;
-    boolean bool5;
-    boolean bool6;
-    for (int i = 2;; i = 1)
+    for (;;)
     {
-      bool3 = "1".equals(paramString4);
-      bool4 = "1".equals(paramString8);
-      bool5 = "1".equals(paramString5);
-      bool6 = "1".equals(paramString9);
-      if (axpm.a()) {
+      if (localBoolean.booleanValue()) {
+        if (paramList != null)
+        {
+          paramBoolean = paramList.senderuin;
+          ((BaseActivity)this.a.b).runOnUiThread(new MarketFaceItemBuilder.6.2(this, localEmoticon, paramBoolean, paramEmoticonPackage));
+        }
+      }
+      while ((localEmoticon == null) || (localEmoticon.jobType != 4))
+      {
+        return;
+        bool = false;
         break;
       }
-      if (QLog.isColorLevel()) {
-        QLog.i(a, 2, "supportMediaCodec = false");
-      }
-      QQToast.a(paramActivity, paramActivity.getString(2131690562), 0).a();
-      return false;
+      ((BaseActivity)this.a.b).runOnUiThread(new MarketFaceItemBuilder.6.3(this, paramEmoticonPackage, localEmoticon));
+      return;
+      paramList = null;
+      paramEmoticonPackage = localBoolean;
+      localBoolean = paramBoolean;
     }
-    paramAppInterface = bkof.a(bool1, bool2, i, true, bool3, bool5, paramString6, paramString7, bool4, bool6, paramString10, paramString11, bkof.e, "", "", null, "", "", "", "", null);
-    paramString1 = new Intent(paramActivity, StoryTransitionActivity.class);
-    paramString1.putExtras(paramAppInterface);
-    paramString1.putExtra(bkof.p, true);
-    paramString1.putExtra("jump_action", 7);
-    paramActivity.startActivity(paramString1);
-    return true;
   }
   
-  public static boolean b(AppInterface paramAppInterface)
+  public void a(EmoticonPackage paramEmoticonPackage, int paramInt)
   {
-    boolean bool = azkt.c();
-    if ((!bool) && (QLog.isColorLevel())) {
-      QLog.d(a, 2, "issupportFilterSo false");
-    }
-    return bool;
-  }
-  
-  public static boolean c(AppInterface paramAppInterface)
-  {
-    boolean bool = true;
-    if (paramAppInterface.getCurrentAccountUin() == null) {
-      if (QLog.isColorLevel()) {
-        QLog.i(a, 2, "isAccLoginSuccess false.");
+    Object localObject;
+    ahcu localahcu;
+    if (paramInt != 0)
+    {
+      localObject = this.a.jdField_a_of_type_JavaUtilList.iterator();
+      while (((Iterator)localObject).hasNext())
+      {
+        localahcu = (ahcu)((Iterator)localObject).next();
+        if ((localahcu.jdField_a_of_type_Asbq != null) && (paramEmoticonPackage.epId.equals(localahcu.jdField_a_of_type_Asbq.a.epId)))
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d("MarketFaceItemBuilder", 2, "Download magic Emoji fail!");
+          }
+          ((BaseActivity)this.a.b).runOnUiThread(new MarketFaceItemBuilder.6.1(this, localahcu));
+        }
       }
     }
+    label118:
     do
     {
       do
       {
         do
         {
-          return false;
-        } while (!a(paramAppInterface));
-        if (azkt.a(BaseApplicationImpl.getContext()) == 1) {
-          break;
-        }
-      } while (!QLog.isColorLevel());
-      QLog.d(a, 2, "PtvFilterSoLoad getFilterSoState is false");
-      return false;
-    } while (!axpm.a());
-    if (ShortVideoUtils.a()) {}
-    for (;;)
-    {
-      return bool;
-      ShortVideoUtils.a(paramAppInterface);
-      if (!ShortVideoUtils.a()) {
-        bool = false;
-      }
+          this.a.jdField_a_of_type_JavaUtilList.remove(localahcu);
+          return;
+          break label118;
+          while ((!this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a()) || (paramEmoticonPackage == null)) {}
+          localObject = ((awmr)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(14)).a(paramEmoticonPackage.epId);
+        } while (localObject == null);
+        a(paramEmoticonPackage, Boolean.valueOf(false), (List)localObject);
+        localObject = this.a.jdField_a_of_type_JavaUtilList.iterator();
+      } while (!((Iterator)localObject).hasNext());
+      localahcu = (ahcu)((Iterator)localObject).next();
+    } while ((localahcu.jdField_a_of_type_Asbq == null) || (!paramEmoticonPackage.epId.equals(localahcu.jdField_a_of_type_Asbq.a.epId)));
+    if (localahcu.jdField_a_of_type_Asbq.a.jobType == 2) {
+      bgtl.a(this.a.b, null);
     }
+    this.a.jdField_a_of_type_JavaUtilList.remove(localahcu);
   }
 }
 

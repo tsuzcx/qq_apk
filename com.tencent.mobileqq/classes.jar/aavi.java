@@ -1,17 +1,6 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.gdtad.views.videoimax.GdtVideoImaxFragment;
-
-public class aavi
-  implements View.OnClickListener
+public abstract interface aavi
 {
-  public aavi(GdtVideoImaxFragment paramGdtVideoImaxFragment) {}
-  
-  public void onClick(View paramView)
-  {
-    GdtVideoImaxFragment.a(this.a);
-    GdtVideoImaxFragment.b(this.a);
-  }
+  public abstract void a();
 }
 
 

@@ -1,7 +1,10 @@
-class ayab
-  implements ayan
+public class ayab
 {
-  ayab(ayaa paramayaa) {}
+  public int a;
+  public String a;
+  public int b;
+  public int c;
+  public int d;
 }
 
 

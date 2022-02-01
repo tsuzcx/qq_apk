@@ -1,76 +1,38 @@
-import android.support.annotation.NonNull;
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.mobileqq.ar.aidl.ArCloudConfigInfo;
 
 public class aous
-  extends aouf<aour>
+  extends aouc
 {
-  public static aour c()
+  public ArCloudConfigInfo a;
+  public String b;
+  public String c;
+  public String d;
+  
+  public aous(String paramString1, int paramInt1, int paramInt2, String paramString2, String paramString3, String paramString4, ArCloudConfigInfo paramArCloudConfigInfo, int paramInt3, float paramFloat1, float paramFloat2, float paramFloat3)
   {
-    aour localaour2 = (aour)aoks.a().a(498);
-    aour localaour1 = localaour2;
-    if (localaour2 == null) {
-      localaour1 = new aour();
-    }
-    return localaour1;
+    super(paramString1, paramInt1, paramInt2, paramInt3, paramFloat1, paramFloat2, paramFloat3);
+    this.jdField_b_of_type_JavaLangString = paramString2;
+    this.c = paramString3;
+    this.d = paramString4;
+    this.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo = paramArCloudConfigInfo;
   }
   
-  public int a()
+  public String toString()
   {
-    return 498;
-  }
-  
-  @NonNull
-  public aour a()
-  {
-    return new aour();
-  }
-  
-  @NonNull
-  public aour a(@NonNull aoko[] paramArrayOfaoko)
-  {
-    aour localaour = new aour();
-    paramArrayOfaoko = paramArrayOfaoko[0].jdField_a_of_type_JavaLangString;
-    if (TextUtils.isEmpty(paramArrayOfaoko)) {}
-    for (;;)
-    {
-      return localaour;
-      try
-      {
-        paramArrayOfaoko = new JSONObject(paramArrayOfaoko);
-        localaour.jdField_a_of_type_Int = paramArrayOfaoko.optInt("stage");
-        localaour.jdField_a_of_type_JavaLangString = paramArrayOfaoko.optString("pay_url");
-        if (QLog.isColorLevel())
-        {
-          QLog.d("vip_ptt.ConfigProcessor", 1, "json parse config.stage:" + localaour.jdField_a_of_type_Int + " url=" + localaour.jdField_a_of_type_JavaLangString);
-          return localaour;
-        }
-      }
-      catch (JSONException paramArrayOfaoko)
-      {
-        QLog.e("vip_ptt.ConfigProcessor", 1, "json parse error:" + paramArrayOfaoko);
-        localaour.b = paramArrayOfaoko.toString();
-      }
-    }
-    return localaour;
-  }
-  
-  public Class<aour> a()
-  {
-    return aour.class;
-  }
-  
-  @NonNull
-  public aour b()
-  {
-    return new aour();
+    StringBuilder localStringBuilder = new StringBuilder("GeneralAR_3D_ResourceInfo{");
+    localStringBuilder.append("key=").append(this.jdField_a_of_type_JavaLangString).append('\'');
+    localStringBuilder.append(", arType=").append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(", trackMode=").append(this.jdField_b_of_type_Int);
+    localStringBuilder.append(", mLuaScriptPath=").append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append(", mResourceDirPath='").append(this.c).append('\'');
+    localStringBuilder.append(", mMusicPath='").append(this.d).append('\'');
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aous
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.mini.apkg;
 
-import alud;
+import anni;
 import com.tencent.component.network.downloader.DownloadResult;
 import com.tencent.component.network.downloader.DownloadResult.Content;
 import com.tencent.component.network.downloader.DownloadResult.Process;
@@ -21,7 +21,7 @@ class ApkgManager$5
     if (this.val$listener != null)
     {
       this.val$listener.onInitApkgInfo(1, this.val$apkgInfo, null);
-      QLog.d("ApkgManager", 2, "onDownloadCanceled() called with: s = [" + paramString + "]");
+      QLog.d("ApkgManager", 1, "onDownloadCanceled() called with: s = [" + paramString + "]");
     }
   }
   
@@ -29,7 +29,7 @@ class ApkgManager$5
   {
     if (this.val$listener != null)
     {
-      this.val$listener.onInitApkgInfo(2, this.val$apkgInfo, alud.a(2131700671));
+      this.val$listener.onInitApkgInfo(2, this.val$apkgInfo, anni.a(2131699097));
       QLog.d("ApkgManager", 1, "onDownloadFailed() called with: s = [" + paramString + "], downloadResult = [" + paramDownloadResult + "]");
     }
     int i;
@@ -59,9 +59,7 @@ class ApkgManager$5
       MiniReportManager.reportEventType(this.val$apkgInfo.appConfig, 615, this.val$url, null, null, 0, "0", 0L, null);
       paramString = ApkgManager.getApkgFolderPath(this.val$apkgInfo.appConfig.config);
       boolean bool = WxapkgUnpacker.unpackSync(new File(this.val$savePath).getAbsolutePath(), paramString, ApkgManager.access$100(this.this$0));
-      if (QLog.isColorLevel()) {
-        QLog.d("ApkgManager", 1, "downloadSubPack | getResPath :hasUnpack=" + bool + "; folderPath=" + paramString + "; subRoot=" + ApkgManager.access$100(this.this$0));
-      }
+      QLog.d("ApkgManager", 1, "downloadSubPack | getResPath :hasUnpack=" + bool + "; folderPath=" + paramString + "; subRoot=" + ApkgManager.access$100(this.this$0));
       MiniReportManager.reportEventType(this.val$apkgInfo.appConfig, 616, this.val$url, null, null, 0, "0", 0L, null);
       if (bool) {
         if (this.val$listener != null) {
@@ -71,14 +69,14 @@ class ApkgManager$5
       while (this.val$listener == null) {
         return;
       }
-      this.val$listener.onInitApkgInfo(3, this.val$apkgInfo, alud.a(2131700672));
+      this.val$listener.onInitApkgInfo(3, this.val$apkgInfo, anni.a(2131699098));
       return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.apkg.ApkgManager.5
  * JD-Core Version:    0.7.0.1
  */

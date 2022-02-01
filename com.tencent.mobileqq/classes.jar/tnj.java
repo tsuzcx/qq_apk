@@ -1,46 +1,41 @@
-import android.view.ViewGroup;
-import com.tencent.biz.pubaccount.weishi_new.verticalvideo.WSVerticalPageFragment;
+import android.support.annotation.Nullable;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class tnj
-  extends tmw<tmv>
+  implements pea
 {
-  public thf a;
-  public thl a;
+  public tnj(BridgeModule paramBridgeModule, JSONObject paramJSONObject, String paramString) {}
   
-  public tnj(ViewGroup paramViewGroup, WSVerticalPageFragment paramWSVerticalPageFragment)
+  public void a(long paramLong, boolean paramBoolean1, int paramInt1, @Nullable String paramString1, @Nullable String paramString2, int paramInt2, boolean paramBoolean2)
   {
-    super(paramViewGroup, 2131559866, paramWSVerticalPageFragment);
-    b();
-  }
-  
-  private void b() {}
-  
-  public tcl<tmv> a()
-  {
-    tlo.a("comment", "WSVerticalVideoHolder createItemView--------------------------！");
-    return new tnk(a(), this);
-  }
-  
-  public void a()
-  {
-    this.a.c();
-  }
-  
-  public void a(tmv paramtmv)
-  {
-    super.a(paramtmv);
-    this.a.a(paramtmv);
-  }
-  
-  public void c()
-  {
-    super.c();
-    this.a.b();
+    if (!paramBoolean1) {}
+    try
+    {
+      this.jdField_a_of_type_OrgJsonJSONObject.put("retCode", -2);
+      this.jdField_a_of_type_OrgJsonJSONObject.put("commentId", paramString1);
+      for (;;)
+      {
+        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule.invokeCallJS(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_OrgJsonJSONObject);
+        return;
+        this.jdField_a_of_type_OrgJsonJSONObject.put("retCode", 0);
+        this.jdField_a_of_type_OrgJsonJSONObject.put("commentId", paramString1);
+      }
+    }
+    catch (JSONException paramString1)
+    {
+      for (;;)
+      {
+        QLog.e(BridgeModule.TAG, 1, "handleCommentEditorNativeResult put create comment result error.");
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     tnj
  * JD-Core Version:    0.7.0.1
  */

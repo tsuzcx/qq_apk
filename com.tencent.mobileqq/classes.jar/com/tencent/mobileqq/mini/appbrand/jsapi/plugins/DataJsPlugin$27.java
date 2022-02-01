@@ -1,55 +1,41 @@
 package com.tencent.mobileqq.mini.appbrand.jsapi.plugins;
 
-import com.tencent.mobileqq.mini.reuse.MiniAppCmdInterface;
-import com.tencent.mobileqq.mini.webview.JsRuntime;
+import adea;
+import aded;
+import com.tencent.mobileqq.mini.appbrand.BaseAppBrandRuntime;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import java.util.List;
 
 class DataJsPlugin$27
-  implements MiniAppCmdInterface
+  implements Runnable
 {
-  DataJsPlugin$27(DataJsPlugin paramDataJsPlugin, String paramString1, JsRuntime paramJsRuntime, String paramString2, int paramInt) {}
+  DataJsPlugin$27(DataJsPlugin paramDataJsPlugin, adea paramadea) {}
   
-  public void onCmdListener(boolean paramBoolean, JSONObject paramJSONObject)
+  public void run()
   {
-    if (paramBoolean)
+    synchronized (DataJsPlugin.access$200(this.this$0))
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("[mini] DataJsPlugin", 2, "call getUserInfo ： " + paramJSONObject.toString());
-      }
-      if (("webapi_getuserinfo_opendata".equals(this.val$apiName)) && (paramJSONObject != null)) {}
-      try
+      if (Math.abs(System.currentTimeMillis() - DataJsPlugin.access$300(this.this$0).longValue()) <= 5000L)
       {
-        paramJSONObject.remove("signature");
-        paramJSONObject.remove("encryptedData");
-        paramJSONObject.remove("iv");
-        paramJSONObject.remove("cloudID");
-        if (paramJSONObject.has("data"))
-        {
-          JSONObject localJSONObject = new JSONObject(paramJSONObject.get("data").toString());
-          localJSONObject.remove("signature");
-          paramJSONObject.put("data", localJSONObject);
-        }
-        this.this$0.jsPluginEngine.callbackJsEventOK(this.val$webview, this.val$event, paramJSONObject, this.val$callbackId);
+        DataJsPlugin.access$200(this.this$0).add(this.val$callback);
         return;
       }
-      catch (Throwable localThrowable)
-      {
-        for (;;)
-        {
-          QLog.e("[mini] DataJsPlugin", 1, "webapi_getuserinfo_opendata error, ", localThrowable);
-        }
+      if (QLog.isColorLevel()) {
+        QLog.d("[mini] DataJsPlugin", 2, "really call login");
       }
+      String str = this.this$0.jsPluginEngine.appBrandRuntime.appId;
+      if (DataJsPlugin.access$400(this.this$0) == null) {
+        DataJsPlugin.access$500(this.this$0, 6, str);
+      }
+      DataJsPlugin.access$302(this.this$0, Long.valueOf(System.currentTimeMillis()));
+      DataJsPlugin.access$200(this.this$0).add(this.val$callback);
+      DataJsPlugin.access$400(this.this$0).a("login", null, new DataJsPlugin.27.1(this));
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("[mini] DataJsPlugin", 2, "call getUserInfo failed. ");
-    }
-    this.this$0.jsPluginEngine.callbackJsEventFail(this.val$webview, this.val$event, null, this.val$callbackId);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.appbrand.jsapi.plugins.DataJsPlugin.27
  * JD-Core Version:    0.7.0.1
  */

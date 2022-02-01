@@ -1,30 +1,13 @@
-import android.os.Message;
-import dov.com.qq.im.capture.view.MusicFragmentProviderView;
+import cooperation.qzone.music.QzoneWebMusicJsPlugin;
 
 public class bmag
-  implements blrq
+  implements bmar
 {
-  public bmag(MusicFragmentProviderView paramMusicFragmentProviderView) {}
+  public bmag(QzoneWebMusicJsPlugin paramQzoneWebMusicJsPlugin, String paramString) {}
   
-  public void a(boolean paramBoolean, Object paramObject)
+  public void a()
   {
-    Message localMessage;
-    if (this.a.a != null)
-    {
-      localMessage = this.a.a.obtainMessage();
-      if (!paramBoolean) {
-        break label61;
-      }
-    }
-    label61:
-    for (int i = 1;; i = 0)
-    {
-      localMessage.arg1 = i;
-      localMessage.obj = paramObject;
-      localMessage.what = 7;
-      this.a.a.sendMessage(localMessage);
-      return;
-    }
+    this.jdField_a_of_type_CooperationQzoneMusicQzoneWebMusicJsPlugin.playMusicList(this.jdField_a_of_type_JavaLangString);
   }
 }
 

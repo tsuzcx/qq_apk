@@ -2,11 +2,12 @@ package com.tencent.mobileqq.theme;
 
 import android.os.SystemClock;
 import android.text.TextUtils;
-import azri;
-import baoo;
-import baop;
-import baot;
-import bdut;
+import bctj;
+import bdps;
+import bdpt;
+import bdpx;
+import bgzu;
+import bhce;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.BaseApplication;
@@ -95,7 +96,7 @@ class ThemeSwitcher$DownloadListenser
         str = ThemeUtil.getIDFromSCID(paramString);
       } while (!ThemeSwitcher.a(this.this$0).a().equals(str));
       this.b = (SystemClock.uptimeMillis() + this.jdField_a_of_type_Long);
-    } while ((!paramString.startsWith("theme.android.")) || (ThemeSwitcher.a(this.this$0) == null));
+    } while ((!paramString.startsWith(bhce.jdField_a_of_type_JavaLangString)) || (ThemeSwitcher.a(this.this$0) == null));
     ThemeSwitcher.a(this.this$0).a(paramLong1, paramLong2);
   }
   
@@ -117,9 +118,9 @@ class ThemeSwitcher$DownloadListenser
         a(localQQAppInterface, null, null, 1);
         return;
       }
-    } while (!paramString1.startsWith("theme.android."));
+    } while (!paramString1.startsWith(bhce.jdField_a_of_type_JavaLangString));
     a(localQQAppInterface, paramString1, paramString2, 0);
-    baop.a(null, "theme_detail", ThemeSwitcher.a(this.this$0), 153, 1, 35, str, "20000000", baop.jdField_a_of_type_JavaLangString, "");
+    bdpt.a(null, "theme_detail", ThemeSwitcher.a(this.this$0), 153, 1, 35, str, "20000000", bdpt.jdField_a_of_type_JavaLangString, "");
   }
   
   public void run()
@@ -135,16 +136,16 @@ class ThemeSwitcher$DownloadListenser
       return;
     }
     QLog.e("ThemeSwitcher", 1, "downloadTheme timeout");
-    bdut.a(null, "individual_v2_theme_download_fail", this.jdField_a_of_type_JavaLangString, this.this$0.toString(), ThemeSwitcher.a(this.this$0).a(), ThemeSwitcher.a(this.this$0), "", 0.0F, 0.0F);
+    bgzu.a(null, "individual_v2_theme_download_fail", this.jdField_a_of_type_JavaLangString, this.this$0.toString(), ThemeSwitcher.a(this.this$0).a(), ThemeSwitcher.a(this.this$0), "", 0.0F, 0.0F);
     HashMap localHashMap = new HashMap();
     localHashMap.put("reportKey", this.jdField_a_of_type_JavaLangString);
-    azri.a(BaseApplication.getContext()).a("", "individual_v2_theme_download_fail", false, 0L, -1L, localHashMap, "", true);
+    bctj.a(BaseApplication.getContext()).a("", "individual_v2_theme_download_fail", false, 0L, -1L, localHashMap, "", true);
     a(localQQAppInterface, null, null, 2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.theme.ThemeSwitcher.DownloadListenser
  * JD-Core Version:    0.7.0.1
  */

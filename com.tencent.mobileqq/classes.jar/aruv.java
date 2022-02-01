@@ -1,14 +1,19 @@
+import com.tencent.mobileqq.data.CustomEmotionData;
+import java.util.List;
+
 class aruv
-  implements arrh
+  extends anli
 {
-  aruv(arut paramarut) {}
+  aruv(arup paramarup, Object paramObject) {}
   
-  public void a()
+  protected void a(List<CustomEmotionData> arg1)
   {
-    this.a.c();
+    synchronized (this.jdField_a_of_type_JavaLangObject)
+    {
+      this.jdField_a_of_type_JavaLangObject.notify();
+      return;
+    }
   }
-  
-  public void b() {}
 }
 
 

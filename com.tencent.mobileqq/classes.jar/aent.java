@@ -1,43 +1,64 @@
-import Wallet.AcsGetMsgRsp;
-import android.os.Bundle;
-import android.os.Handler;
-import com.tencent.mobileqq.activity.activateFriend.QQNotifySettingBaseFragment;
-import com.tencent.mobileqq.activity.activateFriend.QQNotifySettingBaseFragment.1.1;
-import com.tencent.mobileqq.activity.activateFriend.QQNotifySettingBaseFragment.1.2;
-import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.activity.LikeSettingActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.widget.FormSwitchItem;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class aent
-  implements BusinessObserver
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public aent(QQNotifySettingBaseFragment paramQQNotifySettingBaseFragment) {}
+  public aent(LikeSettingActivity paramLikeSettingActivity) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    if ((QQNotifySettingBaseFragment.a(this.a).isShowing()) && (QQNotifySettingBaseFragment.a(this.a) != null)) {
-      QQNotifySettingBaseFragment.a(this.a).dismiss();
-    }
-    if (paramInt == 2005)
+    if (paramCompoundButton == this.a.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.a())
     {
-      if (QLog.isColorLevel()) {
-        QLog.d(QQNotifySettingBaseFragment.a(), 2, "acs msg succ");
-      }
-      if (!paramBoolean) {
-        break label114;
-      }
-      paramBundle = (AcsGetMsgRsp)paramBundle.getSerializable("rsp");
-      if (paramBundle != null) {
-        QQNotifySettingBaseFragment.a(this.a).post(new QQNotifySettingBaseFragment.1.1(this, paramBundle));
-      }
+      ((axdv)this.a.app.a(66)).a(paramBoolean);
+      this.a.app.reportClickEvent("CliOper", "0X8006729");
     }
-    else
+    for (;;)
     {
+      EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
       return;
+      if (paramCompoundButton == this.a.c.a())
+      {
+        this.a.app.e(true, paramBoolean);
+      }
+      else
+      {
+        QQAppInterface localQQAppInterface;
+        String str;
+        if (paramCompoundButton == this.a.b.a())
+        {
+          localQQAppInterface = this.a.app;
+          if (paramBoolean) {}
+          for (str = "1";; str = "0")
+          {
+            bcst.b(localQQAppInterface, "dc00898", "", "", "0X8007614", "0X8007614", 0, 0, str, "", "", "");
+            this.a.jdField_a_of_type_Anip.h(paramBoolean);
+            break;
+          }
+        }
+        if (paramCompoundButton == this.a.d.a())
+        {
+          localQQAppInterface = this.a.app;
+          if (paramBoolean) {}
+          for (str = "1";; str = "2")
+          {
+            bcst.b(localQQAppInterface, "dc00898", "", "", "0X800791B", "0X800791B", 0, 0, str, "", "", "");
+            this.a.jdField_a_of_type_Anip.f(paramBoolean);
+            if (paramBoolean) {
+              break label249;
+            }
+            this.a.b.setVisibility(8);
+            break;
+          }
+          label249:
+          this.a.b.setVisibility(0);
+        }
+      }
     }
-    QQNotifySettingBaseFragment.a(this.a).post(new QQNotifySettingBaseFragment.1.2(this));
-    return;
-    label114:
-    this.a.a();
   }
 }
 

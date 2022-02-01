@@ -1,27 +1,27 @@
 package cooperation.qqfav.globalsearch;
 
-import ayuh;
-import ayuu;
-import bivz;
+import bbtk;
+import bbtx;
+import blkk;
 import java.util.List;
 
 class FavoriteSearchEngine$SearchRunnable
   implements Runnable
 {
-  ayuh<bivz> jdField_a_of_type_Ayuh;
-  ayuu jdField_a_of_type_Ayuu;
+  bbtk<blkk> jdField_a_of_type_Bbtk;
+  bbtx jdField_a_of_type_Bbtx;
   
   private FavoriteSearchEngine$SearchRunnable(FavoriteSearchEngine paramFavoriteSearchEngine) {}
   
   public void run()
   {
-    ayuu localayuu = this.jdField_a_of_type_Ayuu;
-    String str = this.jdField_a_of_type_Ayuu.a;
-    List localList = this.this$0.a(localayuu);
+    bbtx localbbtx = this.jdField_a_of_type_Bbtx;
+    String str = this.jdField_a_of_type_Bbtx.a;
+    List localList = this.this$0.a(localbbtx);
     try
     {
-      if ((this.jdField_a_of_type_Ayuh != null) && (localayuu == this.jdField_a_of_type_Ayuu) && (str.equals(this.jdField_a_of_type_Ayuu.a))) {
-        this.jdField_a_of_type_Ayuh.a(localList, 1);
+      if ((this.jdField_a_of_type_Bbtk != null) && (localbbtx == this.jdField_a_of_type_Bbtx) && (str.equals(this.jdField_a_of_type_Bbtx.a))) {
+        this.jdField_a_of_type_Bbtk.a(localList, 1);
       }
       return;
     }
@@ -30,7 +30,7 @@ class FavoriteSearchEngine$SearchRunnable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.qqfav.globalsearch.FavoriteSearchEngine.SearchRunnable
  * JD-Core Version:    0.7.0.1
  */

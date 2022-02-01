@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.bubble;
 
 import android.animation.AnimatorSet;
-import anwq;
-import anwx;
+import apwv;
+import apxc;
 
 public class BubbleInterActiveAnim$4
   implements Runnable
 {
-  public BubbleInterActiveAnim$4(anwq paramanwq, anwx paramanwx) {}
+  public BubbleInterActiveAnim$4(apwv paramapwv, apxc paramapxc) {}
   
   public void run()
   {
@@ -18,7 +18,7 @@ public class BubbleInterActiveAnim$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.bubble.BubbleInterActiveAnim.4
  * JD-Core Version:    0.7.0.1
  */

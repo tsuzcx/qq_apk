@@ -1,69 +1,43 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.qphone.base.util.QLog;
+import android.support.v4.view.ViewPager.OnPageChangeListener;
+import android.widget.LinearLayout;
+import com.tencent.biz.pubaccount.NativeAd.fragment.ReadInJoyNativeAdFragment;
 import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
 
-class nwy
-  implements pez
+public class nwy
+  implements ViewPager.OnPageChangeListener
 {
-  nwy(nww paramnww, pew parampew) {}
+  public nwy(ReadInJoyNativeAdFragment paramReadInJoyNativeAdFragment) {}
   
-  private long a(List<ArticleInfo> paramList)
+  public void onPageScrollStateChanged(int paramInt) {}
+  
+  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2) {}
+  
+  public void onPageSelected(int paramInt)
   {
-    paramList = paramList.iterator();
-    long l = 0L;
-    if (paramList.hasNext())
-    {
-      ArticleInfo localArticleInfo = (ArticleInfo)paramList.next();
-      if (l >= localArticleInfo.mRecommendSeq) {
-        break label50;
-      }
-      l = localArticleInfo.mRecommendSeq;
+    ReadInJoyNativeAdFragment.a(this.a, Math.max(ReadInJoyNativeAdFragment.a(this.a), paramInt + 1));
+    ((nxe)ReadInJoyNativeAdFragment.a(this.a).get(paramInt)).a();
+    if (paramInt + 1 < ReadInJoyNativeAdFragment.a(this.a).size()) {
+      ((nxe)ReadInJoyNativeAdFragment.a(this.a).get(paramInt + 1)).b();
     }
-    label50:
+    if ((ReadInJoyNativeAdFragment.a(this.a) != null) && (ReadInJoyNativeAdFragment.a(this.a).a == 1) && ((ReadInJoyNativeAdFragment.b(this.a) == 1) || (ReadInJoyNativeAdFragment.b(this.a) == 2)))
+    {
+      if (paramInt != ReadInJoyNativeAdFragment.a(this.a).size() - 1) {
+        break label155;
+      }
+      ReadInJoyNativeAdFragment.a(this.a).setVisibility(8);
+    }
     for (;;)
     {
-      break;
-      return l;
+      ReadInJoyNativeAdFragment.a(this.a);
+      return;
+      label155:
+      ReadInJoyNativeAdFragment.a(this.a).setVisibility(0);
     }
-  }
-  
-  public List<ArticleInfo> a(int paramInt, List<ArticleInfo> paramList1, List<ArticleInfo> paramList2)
-  {
-    if ((!otf.c(paramInt)) || (paramList2 == null) || (paramList1 == null) || (paramList2.isEmpty())) {
-      return null;
-    }
-    long l = a(paramList2);
-    if (l < 1000L)
-    {
-      QLog.d("ReadInJoyDailyViewController", 1, "onPreDeal : " + l);
-      return null;
-    }
-    paramList2 = new ArrayList();
-    if (!nww.a())
-    {
-      paramList1 = paramList1.iterator();
-      while (paramList1.hasNext())
-      {
-        ArticleInfo localArticleInfo = (ArticleInfo)paramList1.next();
-        if ((localArticleInfo.mRecommendSeq > 0L) && (localArticleInfo.mRecommendSeq < 1000L))
-        {
-          localArticleInfo.mRecommendSeq += l;
-          paramList2.add(localArticleInfo);
-          QLog.d("ReadInJoyDailyViewController", 1, "onPreDeal : " + l + "  seq: " + localArticleInfo.mRecommendSeq);
-        }
-      }
-    }
-    bkbq.a(nww.a(), Boolean.valueOf(true));
-    nww.a(true);
-    this.jdField_a_of_type_Pew.a(null);
-    return paramList2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     nwy
  * JD-Core Version:    0.7.0.1
  */

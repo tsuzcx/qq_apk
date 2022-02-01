@@ -1,26 +1,35 @@
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import java.util.ArrayList;
-import tencent.im.oidb.cmd0x74b.oidb_0x74b.RspBody;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.qphone.base.util.QLog;
 
-public class anua
+class anua
+  extends Handler
 {
-  public ArrayList<anub> a;
-  
-  public static anua a(oidb_0x74b.RspBody paramRspBody)
+  anua(antz paramantz, Looper paramLooper)
   {
-    Object localObject;
-    if (paramRspBody == null) {
-      localObject = null;
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
     }
-    anua localanua;
     do
     {
-      return localObject;
-      localanua = new anua();
-      localObject = localanua;
-    } while (!paramRspBody.rpt_msg_uin_head_list.has());
-    localanua.a = anub.a(paramRspBody.rpt_msg_uin_head_list.get());
-    return localanua;
+      return;
+      this.a.b();
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.d("RegisterProxySvcPack", 2, new Object[] { "real notify pcStatus:", Integer.valueOf(antz.a(this.a)), " ,devStatus:", Integer.valueOf(antz.b(this.a)), " ,clientType:", Long.valueOf(antz.a(this.a)), " ,appid:", Long.valueOf(antz.b(this.a)) });
+      }
+      this.a.notifyUI(2, true, new Object[] { Integer.valueOf(antz.b(this.a)) });
+    } while (antz.b(this.a) != 0);
+    if (!this.a.a.hasMessages(101)) {
+      this.a.a.sendEmptyMessageDelayed(101, 3000L);
+    }
+    bghu.a(false);
   }
 }
 

@@ -1,27 +1,15 @@
-import android.content.Context;
-import android.support.v7.widget.LinearLayoutManager;
+import com.tencent.biz.pubaccount.weishi_new.event.WSSimpleBaseEvent;
+import java.util.ArrayList;
 
-class uhg
-  extends LinearLayoutManager
+public abstract interface uhg<T extends WSSimpleBaseEvent>
 {
-  uhg(uhf paramuhf, Context paramContext, int paramInt, boolean paramBoolean)
-  {
-    super(paramContext, paramInt, paramBoolean);
-  }
+  public abstract void a(WSSimpleBaseEvent paramWSSimpleBaseEvent);
   
-  public boolean canScrollHorizontally()
-  {
-    return false;
-  }
-  
-  public boolean canScrollVertically()
-  {
-    return false;
-  }
+  public abstract ArrayList<Class<T>> getEventClass();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     uhg
  * JD-Core Version:    0.7.0.1
  */

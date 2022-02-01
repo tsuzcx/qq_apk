@@ -1,30 +1,30 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.PhoneUnityChangeActivity;
-import com.tencent.mobileqq.app.PhoneContactManagerImp;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.view.View;
+import com.tencent.mobileqq.activity.AssociatedAccountManageActivity;
+import com.tencent.mobileqq.data.SubAccountInfo;
 
-class adnl
-  implements DialogInterface.OnClickListener
+public class adnl
+  implements bkhw
 {
-  adnl(adnj paramadnj) {}
+  SubAccountInfo jdField_a_of_type_ComTencentMobileqqDataSubAccountInfo;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public adnl(AssociatedAccountManageActivity paramAssociatedAccountManageActivity) {}
+  
+  public void OnClick(View paramView, int paramInt)
   {
-    paramDialogInterface.dismiss();
-    if (!bdin.d(this.a.a))
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountManageActivity.a != null) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountManageActivity.a.dismiss();
+    }
+    switch (paramInt)
     {
-      PhoneUnityChangeActivity.a(this.a.a, 2131694831);
+    default: 
       return;
     }
-    if (this.a.a.b == null)
-    {
-      this.a.a.b = new adnm(this);
-      this.a.a.app.registObserver(this.a.a.b);
-    }
-    PhoneUnityChangeActivity.a(this.a.a).a(true, false);
-    PhoneUnityChangeActivity.a(this.a.a, 2131719785, 0L, true);
-    azqs.b(this.a.a.app, "CliOper", "", "", "0X8005B81", "0X8005B81", 0, 0, "", "", "", "");
+    this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountManageActivity.b(this.jdField_a_of_type_ComTencentMobileqqDataSubAccountInfo);
+  }
+  
+  public void a(SubAccountInfo paramSubAccountInfo)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqDataSubAccountInfo = paramSubAccountInfo;
   }
 }
 

@@ -1,20 +1,46 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.confess.data.TroopConfessMsg;
-import com.tencent.mobileqq.data.MessageForTroopConfess;
-import java.util.List;
+import android.content.Context;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-class aojr
-  implements View.OnClickListener
+public class aojr
+  extends aojt
 {
-  aojr(aojq paramaojq, MessageForTroopConfess paramMessageForTroopConfess) {}
-  
-  public void onClick(View paramView)
+  public aojs a(QQAppInterface paramQQAppInterface, Context paramContext, String paramString, aojw paramaojw)
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopConfess.mTroopConfessMsg != null) && (this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopConfess.mTroopConfessMsg.items != null) && (!this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopConfess.mTroopConfessMsg.items.isEmpty())) {
-      aojt.a(this.jdField_a_of_type_Aojq.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Aojq.jdField_a_of_type_AndroidContentContext, 1, this.jdField_a_of_type_Aojq.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopConfess.getConfessTopicId(), String.valueOf(this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopConfess.mTroopConfessMsg.confessorUin), String.valueOf(this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopConfess.getConfessToUin()));
+    if (paramString.startsWith("mqqapi://vaslive"))
+    {
+      paramQQAppInterface = new aojq(paramQQAppInterface, paramContext);
+      paramQQAppInterface.a = paramString;
+      paramQQAppInterface.b = "vaslive";
+      if (paramString.startsWith("mqqapi://vaslive/watch")) {
+        paramQQAppInterface.c = "watch";
+      }
+      for (;;)
+      {
+        paramContext = paramString.split("\\?");
+        if (paramContext.length == 2) {
+          break;
+        }
+        return paramQQAppInterface;
+        if (paramString.startsWith("mqqapi://vaslive/myshopping")) {
+          paramQQAppInterface.c = "mqqapi://vaslive/myshopping";
+        }
+      }
+      paramContext = paramContext[1].split("&");
+      if (paramContext != null)
+      {
+        int i = 0;
+        while (i < paramContext.length)
+        {
+          paramString = paramContext[i].split("=");
+          if ((paramString != null) && (paramString.length == 2)) {
+            paramQQAppInterface.a(paramString[0], paramString[1]);
+          }
+          i += 1;
+        }
+      }
+      return paramQQAppInterface;
     }
+    return null;
   }
 }
 

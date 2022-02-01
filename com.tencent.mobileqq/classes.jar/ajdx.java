@@ -1,6 +1,20 @@
-public abstract interface ajdx
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.troop.data.RecommendTroopItem;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
+class ajdx
+  implements View.OnClickListener
 {
-  public abstract void a(boolean paramBoolean);
+  ajdx(ajdv paramajdv) {}
+  
+  public void onClick(View paramView)
+  {
+    RecommendTroopItem localRecommendTroopItem = (RecommendTroopItem)paramView.getTag(-1);
+    bfup.a(ajdv.a(this.a), localRecommendTroopItem, 10001);
+    bgjt.a("Grp_contacts_news", "notice", "recom_clk_add", 0, 0, new String[] { localRecommendTroopItem.uin, localRecommendTroopItem.recomAlgol });
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

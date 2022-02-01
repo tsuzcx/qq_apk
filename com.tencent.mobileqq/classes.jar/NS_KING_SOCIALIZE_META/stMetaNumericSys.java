@@ -3,13 +3,16 @@ package NS_KING_SOCIALIZE_META;
 import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
+import java.util.ArrayList;
 
 public final class stMetaNumericSys
   extends JceStruct
 {
+  static ArrayList<String> cache_fri_follow_avatar = new ArrayList();
   public int fans_num;
   public int feed_num;
   public int frdonly_feed_num;
+  public ArrayList<String> fri_follow_avatar;
   public int fri_follow_num;
   public int interest_num;
   public int is_followed;
@@ -17,9 +20,14 @@ public final class stMetaNumericSys
   public int priv_feed_num;
   public int receivepraise_num;
   
+  static
+  {
+    cache_fri_follow_avatar.add("");
+  }
+  
   public stMetaNumericSys() {}
   
-  public stMetaNumericSys(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8, int paramInt9)
+  public stMetaNumericSys(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8, int paramInt9, ArrayList<String> paramArrayList)
   {
     this.feed_num = paramInt1;
     this.praise_num = paramInt2;
@@ -30,6 +38,7 @@ public final class stMetaNumericSys
     this.priv_feed_num = paramInt7;
     this.fri_follow_num = paramInt8;
     this.frdonly_feed_num = paramInt9;
+    this.fri_follow_avatar = paramArrayList;
   }
   
   public void readFrom(JceInputStream paramJceInputStream)
@@ -43,6 +52,7 @@ public final class stMetaNumericSys
     this.priv_feed_num = paramJceInputStream.read(this.priv_feed_num, 6, false);
     this.fri_follow_num = paramJceInputStream.read(this.fri_follow_num, 7, false);
     this.frdonly_feed_num = paramJceInputStream.read(this.frdonly_feed_num, 8, false);
+    this.fri_follow_avatar = ((ArrayList)paramJceInputStream.read(cache_fri_follow_avatar, 9, false));
   }
   
   public void writeTo(JceOutputStream paramJceOutputStream)
@@ -56,6 +66,9 @@ public final class stMetaNumericSys
     paramJceOutputStream.write(this.priv_feed_num, 6);
     paramJceOutputStream.write(this.fri_follow_num, 7);
     paramJceOutputStream.write(this.frdonly_feed_num, 8);
+    if (this.fri_follow_avatar != null) {
+      paramJceOutputStream.write(this.fri_follow_avatar, 9);
+    }
   }
 }
 

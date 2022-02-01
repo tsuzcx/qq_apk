@@ -1,16 +1,29 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.TroopDisbandActivity;
+import com.tencent.mobileqq.activity.EditActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.CustomEmotionData;
+import com.tencent.mobileqq.widget.QQToast;
 
-class aecs
-  implements DialogInterface.OnClickListener
+public class aecs
+  extends anli
 {
-  aecs(aecq paramaecq, bdjz parambdjz) {}
+  public aecs(EditActivity paramEditActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  protected void a(boolean paramBoolean, Object paramObject)
   {
-    azqs.b(this.jdField_a_of_type_Aecq.a.app, "P_CliOper", "Grp_manage", "", "del_grp", "Clk_know", 0, 0, this.jdField_a_of_type_Aecq.a.a, "", "", "");
-    this.jdField_a_of_type_Bdjz.cancel();
+    EditActivity.a(this.a);
+    if (paramBoolean)
+    {
+      paramObject = (CustomEmotionData)paramObject;
+      if (paramObject != null)
+      {
+        ((arrp)this.a.app.getManager(103)).c(paramObject);
+        EditActivity.b(this.a);
+      }
+    }
+    while (!(paramObject instanceof String)) {
+      return;
+    }
+    QQToast.a(this.a, 1, (String)paramObject, 1).a();
   }
 }
 

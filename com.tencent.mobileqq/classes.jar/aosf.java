@@ -1,118 +1,91 @@
-import android.support.annotation.NonNull;
 import android.text.TextUtils;
+import com.tencent.mobileqq.utils.AudioHelper;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import java.io.File;
 
 public class aosf
+  extends apsz
 {
-  public int a;
-  public String a;
-  public ArrayList<aosg> a;
-  
-  public aosf()
+  public String a(aptd paramaptd)
   {
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_a_of_type_JavaLangString = "";
+    paramaptd = ((aosk)paramaptd.a).jdField_d_of_type_JavaLangString;
+    if (AudioHelper.f()) {
+      QLog.w(aost.a, 1, "getUnzipDirPath, path[" + paramaptd + "]");
+    }
+    return paramaptd;
   }
   
-  public static aosf a(String paramString)
+  public boolean a(aptd paramaptd)
   {
-    if (TextUtils.isEmpty(paramString)) {
-      return null;
+    aosk localaosk = (aosk)paramaptd.a;
+    localaosk.jdField_d_of_type_Int = 0;
+    boolean bool1 = super.a(paramaptd);
+    String str1 = "ARPromotionRDHandler, needDownload[" + bool1 + "], zipItem[" + localaosk;
+    String str4;
+    File localFile;
+    boolean bool2;
+    String str3;
+    if (bool1)
+    {
+      str4 = azcm.a("20180426_803_worldcupXXX", localaosk.b);
+      if (!TextUtils.isEmpty(str4))
+      {
+        localFile = new File(str4);
+        bool2 = localFile.exists();
+        str3 = str1 + "], prePath[" + str4 + "], exists[" + bool2;
+        if (!bool2) {}
+      }
     }
-    aosf localaosf = new aosf();
     for (;;)
     {
-      int i;
+      String str2;
       try
       {
-        JSONObject localJSONObject = new JSONObject(paramString);
-        paramString = localJSONObject.optJSONArray("match");
-        if (paramString == null) {
-          break;
-        }
-        localaosf.jdField_a_of_type_Int = localJSONObject.optInt("switch");
-        localaosf.jdField_a_of_type_JavaLangString = localJSONObject.optString("blackList");
-        if (localaosf.jdField_a_of_type_JavaUtilArrayList == null)
+        str1 = bkcx.a(localFile);
+        str3 = str3 + "], preMd5[" + str1;
+        if (TextUtils.equals(localaosk.b, str1))
         {
-          localaosf.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-          a(localaosf);
-          i = 0;
-          if (i < paramString.length())
-          {
-            localJSONObject = paramString.getJSONObject(i);
-            if (localJSONObject == null) {
-              break label235;
-            }
-            aosg localaosg = new aosg();
-            localaosg.jdField_a_of_type_JavaLangString = localJSONObject.optString("key");
-            localaosg.b = localJSONObject.optString("resUrl");
-            localaosg.c = localJSONObject.optString("md5");
-            localaosf.jdField_a_of_type_JavaUtilArrayList.add(localaosg);
-            break label235;
+          str1 = str3 + anni.a(2131699539);
+          bool2 = bgmg.d(str4, b(paramaptd));
+          bool1 = super.a(paramaptd);
+          paramaptd = str1 + ", copyFile[" + bool2 + "], reCheck[" + bool1 + "]";
+          if (!bool1) {
+            localaosk.jdField_d_of_type_Int = 1;
           }
-        }
-        else
-        {
-          localaosf.jdField_a_of_type_JavaUtilArrayList.clear();
-          continue;
-        }
-        if (!QLog.isColorLevel()) {
-          break label233;
+          QLog.w(aost.a, 1, paramaptd);
+          return bool1;
         }
       }
-      catch (Exception paramString)
+      catch (Exception localException)
       {
-        QLog.e("VipARConfBean", 1, "parse content exception = " + paramString.getMessage());
-        paramString.printStackTrace();
-        return null;
+        str2 = "Exception";
+        continue;
+        paramaptd = str3 + anni.a(2131699538);
+        continue;
       }
-      QLog.i("VipARConfBean", 2, " parseSuccess data = " + localaosf.toString());
-      label233:
-      return localaosf;
-      label235:
-      i += 1;
+      paramaptd = str3;
+      continue;
+      paramaptd = str2;
     }
   }
   
-  private static void a(aosf paramaosf)
+  public boolean a(aptd paramaptd, boolean paramBoolean)
   {
-    if ((paramaosf == null) || (TextUtils.isEmpty(paramaosf.jdField_a_of_type_JavaLangString))) {
-      QLog.i("VipARConfBean", 1, "checkIsInBlackList return empty");
-    }
-    if (bkey.a(paramaosf.jdField_a_of_type_JavaLangString)) {
-      paramaosf.jdField_a_of_type_Int = 0;
-    }
+    return false;
   }
   
-  @NonNull
-  public String toString()
+  public String b(aptd paramaptd)
   {
-    if (this.jdField_a_of_type_JavaUtilArrayList != null)
-    {
-      StringBuilder localStringBuilder = new StringBuilder(" switch = " + this.jdField_a_of_type_Int);
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-      while (localIterator.hasNext())
-      {
-        aosg localaosg = (aosg)localIterator.next();
-        if (localaosg != null) {
-          localStringBuilder.append("\n " + localaosg.toString());
-        }
-      }
-      if ((this.jdField_a_of_type_JavaUtilArrayList == null) || (this.jdField_a_of_type_JavaUtilArrayList.size() == 0)) {
-        localStringBuilder.append(" config list = null");
-      }
-      return localStringBuilder.toString();
+    paramaptd = ((aosk)paramaptd.a).c;
+    if (AudioHelper.f()) {
+      QLog.w(aost.a, 1, "getDownloadPath, path[" + paramaptd + "]");
     }
-    return " switch = " + this.jdField_a_of_type_Int + " list = null";
+    return paramaptd;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aosf
  * JD-Core Version:    0.7.0.1
  */

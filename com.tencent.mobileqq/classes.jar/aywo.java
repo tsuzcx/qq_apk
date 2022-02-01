@@ -1,25 +1,21 @@
-import android.view.ViewGroup;
-import android.widget.LinearLayout;
-import com.tencent.widget.HorizontalListView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class aywo
-  extends aywk
-  implements bhxs
+class aywo
+  implements DialogInterface.OnClickListener
 {
-  public ayoi a;
-  public HorizontalListView a;
+  aywo(aywm paramaywm) {}
   
-  public aywo(ViewGroup paramViewGroup, int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    super(paramViewGroup, paramInt);
-    this.jdField_a_of_type_ComTencentWidgetHorizontalListView = ((HorizontalListView)((LinearLayout)a(paramInt)).findViewById(2131376282));
-    this.jdField_a_of_type_ComTencentWidgetHorizontalListView.setOnScrollStateChangedListener(this);
-  }
-  
-  public void onScrollStateChanged(int paramInt)
-  {
-    if (paramInt == 4097) {
-      this.jdField_a_of_type_Ayoi.b = this.jdField_a_of_type_ComTencentWidgetHorizontalListView.getCurrentX();
+    try
+    {
+      paramDialogInterface.dismiss();
+      return;
+    }
+    catch (Exception paramDialogInterface)
+    {
+      paramDialogInterface.printStackTrace();
     }
   }
 }

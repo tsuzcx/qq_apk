@@ -1,28 +1,28 @@
-import android.widget.DatePicker;
-import android.widget.DatePicker.OnDateChangedListener;
-
 class bhjc
-  implements DatePicker.OnDateChangedListener
+  implements bhjp
 {
   bhjc(bhjb parambhjb) {}
   
-  public void onDateChanged(DatePicker paramDatePicker, int paramInt1, int paramInt2, int paramInt3)
+  public void a(int paramInt, String paramString)
   {
-    if (paramDatePicker != null)
-    {
-      bhjb.a(this.a, paramDatePicker.getYear());
-      bhjb.b(this.a, paramDatePicker.getMonth());
-      bhjb.c(this.a, paramDatePicker.getDayOfMonth());
-      return;
+    if (bhjb.a(this.a) != null) {
+      bhjb.a(this.a).a(false);
     }
-    bhjb.a(this.a, paramInt1);
-    bhjb.b(this.a, paramInt2);
-    bhjb.c(this.a, paramInt3);
+  }
+  
+  public void a(bhjg parambhjg)
+  {
+    bhjb.a(this.a, parambhjg);
+    if (bhjb.a(this.a) != null)
+    {
+      bhjb.a(this.a);
+      bhjb.a(this.a).a(parambhjg.a);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bhjc
  * JD-Core Version:    0.7.0.1
  */

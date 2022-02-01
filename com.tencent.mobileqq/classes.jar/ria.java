@@ -1,37 +1,28 @@
-import android.content.Context;
-import com.tencent.biz.pubaccount.VideoInfo;
-import java.lang.ref.WeakReference;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import tencent.im.oidb.cmd0xbc9.oidb_cmd0xbc9.AdReport;
 
-class ria
-  implements syx
+public class ria
 {
-  private int jdField_a_of_type_Int;
-  private VideoInfo jdField_a_of_type_ComTencentBizPubaccountVideoInfo;
-  private WeakReference<Context> jdField_a_of_type_JavaLangRefWeakReference;
-  private int b;
-  private int c;
-  private int d;
+  public String a;
   
-  public ria(Context paramContext, int paramInt1, int paramInt2, int paramInt3, int paramInt4, VideoInfo paramVideoInfo)
+  public static ria a(oidb_cmd0xbc9.AdReport paramAdReport)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramContext);
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
-    this.c = paramInt3;
-    this.d = paramInt4;
-    this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo = paramVideoInfo;
+    ria localria = new ria();
+    localria.a = paramAdReport.bytes_report_url.get().toStringUtf8();
+    return localria;
   }
   
-  public void a(boolean paramBoolean)
+  public oidb_cmd0xbc9.AdReport a()
   {
-    if ((this.jdField_a_of_type_JavaLangRefWeakReference != null) && (this.jdField_a_of_type_JavaLangRefWeakReference.get() != null)) {
-      rhf.a((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get(), this.jdField_a_of_type_Int, this.b, this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo, this.c, this.d, false, paramBoolean);
-    }
+    oidb_cmd0xbc9.AdReport localAdReport = new oidb_cmd0xbc9.AdReport();
+    localAdReport.bytes_report_url.set(ByteStringMicro.copyFromUtf8(this.a));
+    return localAdReport;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     ria
  * JD-Core Version:    0.7.0.1
  */

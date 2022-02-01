@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.data;
 
 import android.text.TextUtils;
-import awge;
-import awhp;
-import awhs;
-import bdtd;
+import bgyd;
+import com.tencent.mobileqq.persistence.Entity;
+import com.tencent.mobileqq.persistence.notColumn;
+import com.tencent.mobileqq.persistence.unique;
 import java.io.Serializable;
 
 public class ApolloActionData
-  extends awge
+  extends Entity
   implements Serializable
 {
   public static final int ACTION_HIDE = 0;
@@ -18,14 +18,14 @@ public class ApolloActionData
   public static final int MAIN_ACTION = 1;
   public static final int POST_ACTION = 2;
   public static final int PRE_ACTION = 0;
-  @awhs
+  @unique
   public int actionId;
   public float actionMoveDis;
   public String actionName;
   public int actionType;
   public int activeValue;
   public String anmiName;
-  @awhp
+  @notColumn
   public String atNickName;
   public String boy1;
   public String bubbleText;
@@ -42,7 +42,7 @@ public class ApolloActionData
   public boolean hasSound;
   public int icon;
   public String iconUrl;
-  @awhp
+  @notColumn
   public String inputText;
   public int isShow;
   public String keywords;
@@ -102,12 +102,12 @@ public class ApolloActionData
   
   public boolean verifyVersion(String paramString)
   {
-    return (TextUtils.isEmpty(this.minVer)) || (TextUtils.isEmpty(this.maxVer)) || ((bdtd.a(this.minVer, paramString)) && (bdtd.a(paramString, this.maxVer)));
+    return (TextUtils.isEmpty(this.minVer)) || (TextUtils.isEmpty(this.maxVer)) || ((bgyd.a(this.minVer, paramString)) && (bgyd.a(paramString, this.maxVer)));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.ApolloActionData
  * JD-Core Version:    0.7.0.1
  */

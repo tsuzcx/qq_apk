@@ -1,8 +1,29 @@
-public abstract interface ajsj
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
+public class ajsj
+  implements View.OnClickListener
 {
-  public abstract void a();
+  public ajsj(ChatHistoryTroopMemberFragment paramChatHistoryTroopMemberFragment) {}
   
-  public abstract void b();
+  public void onClick(View paramView)
+  {
+    this.a.f = false;
+    this.a.u = "";
+    this.a.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+    this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+    if (this.a.d != 22) {
+      this.a.b.setVisibility(0);
+    }
+    if (this.a.jdField_a_of_type_Ajtv != null) {
+      this.a.jdField_a_of_type_Ajtv.a();
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

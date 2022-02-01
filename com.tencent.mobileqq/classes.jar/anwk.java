@@ -1,76 +1,87 @@
-import android.graphics.Bitmap;
-import android.graphics.Canvas;
-import android.graphics.ColorFilter;
-import android.graphics.Paint;
-import android.graphics.Rect;
-import android.graphics.drawable.Drawable;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
+import tencent.im.oidb.cmd0x88d.oidb_0x88d.GroupInfo;
+import tencent.im.oidb.cmd0x88d.oidb_0x88d.RspBody;
+import tencent.im.oidb.cmd0x88d.oidb_0x88d.RspGroupInfo;
 
 class anwk
-  extends Drawable
 {
-  public int a;
-  public Bitmap a;
-  private Paint a;
-  public boolean a;
-  public int b = -1;
+  private int jdField_a_of_type_Int;
+  private long jdField_a_of_type_Long;
+  private String jdField_a_of_type_JavaLangString;
+  private oidb_0x88d.GroupInfo jdField_a_of_type_TencentImOidbCmd0x88dOidb_0x88d$GroupInfo;
+  private byte[] jdField_a_of_type_ArrayOfByte;
   
-  public anwk(Bitmap paramBitmap)
+  public anwk(anwd paramanwd, String paramString, long paramLong, int paramInt, byte... paramVarArgs)
   {
-    this.jdField_a_of_type_AndroidGraphicsPaint = new Paint(6);
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
-    this.jdField_a_of_type_Int = paramBitmap.getWidth();
-    this.b = paramBitmap.getHeight();
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Long = paramLong;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_ArrayOfByte = paramVarArgs;
   }
   
-  public void draw(Canvas paramCanvas)
-  {
-    Rect localRect = super.getBounds();
-    if (this.jdField_a_of_type_Boolean)
-    {
-      paramCanvas.save();
-      paramCanvas.scale(-1.0F, 1.0F, localRect.centerX(), localRect.centerY());
-    }
-    paramCanvas.drawBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap, null, super.getBounds(), this.jdField_a_of_type_AndroidGraphicsPaint);
-    if (this.jdField_a_of_type_Boolean) {
-      paramCanvas.restore();
-    }
-  }
-  
-  public int getIntrinsicHeight()
+  public int a()
   {
     return this.jdField_a_of_type_Int;
   }
   
-  public int getIntrinsicWidth()
+  public anwk a()
   {
-    return this.b;
-  }
-  
-  public int getOpacity()
-  {
-    return -3;
-  }
-  
-  public void setAlpha(int paramInt)
-  {
-    if (paramInt != this.jdField_a_of_type_AndroidGraphicsPaint.getAlpha())
-    {
-      this.jdField_a_of_type_AndroidGraphicsPaint.setAlpha(paramInt);
-      super.invalidateSelf();
+    oidb_0x88d.RspBody localRspBody = new oidb_0x88d.RspBody();
+    localRspBody.mergeFrom(this.jdField_a_of_type_ArrayOfByte);
+    if ((this.jdField_a_of_type_Int != 0) && (localRspBody.str_errorinfo.has())) {
+      this.jdField_a_of_type_JavaLangString = String.valueOf(localRspBody.str_errorinfo.get().toByteArray());
     }
+    this.jdField_a_of_type_TencentImOidbCmd0x88dOidb_0x88d$GroupInfo = null;
+    List localList = localRspBody.stzrspgroupinfo.get();
+    int i;
+    int j;
+    label74:
+    oidb_0x88d.RspGroupInfo localRspGroupInfo;
+    if (localList == null)
+    {
+      i = 0;
+      j = 0;
+      if ((this.jdField_a_of_type_TencentImOidbCmd0x88dOidb_0x88d$GroupInfo != null) || (j >= i)) {
+        break label186;
+      }
+      localRspGroupInfo = (oidb_0x88d.RspGroupInfo)localList.get(j);
+      if ((localRspGroupInfo != null) && (localRspGroupInfo.uint64_group_code.get() == this.jdField_a_of_type_Long)) {
+        break label138;
+      }
+    }
+    for (;;)
+    {
+      j += 1;
+      break label74;
+      i = localList.size();
+      break;
+      label138:
+      this.jdField_a_of_type_Int = localRspGroupInfo.uint32_result.get();
+      if ((this.jdField_a_of_type_Int == 0) && (localRspGroupInfo.stgroupinfo.has())) {
+        this.jdField_a_of_type_TencentImOidbCmd0x88dOidb_0x88d$GroupInfo = ((oidb_0x88d.GroupInfo)localRspGroupInfo.stgroupinfo.get());
+      }
+    }
+    label186:
+    if (QLog.isColorLevel()) {
+      QLog.d("TroopHandler", 2, "oidb_0x88d_7.RspBody: {\n" + anqy.proto2String(localRspBody) + "}");
+    }
+    return this;
   }
   
-  public void setColorFilter(ColorFilter paramColorFilter)
+  public String a()
   {
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColorFilter(paramColorFilter);
-    super.invalidateSelf();
+    return this.jdField_a_of_type_JavaLangString;
   }
   
-  public void setDither(boolean paramBoolean)
+  public oidb_0x88d.GroupInfo a()
   {
-    this.jdField_a_of_type_AndroidGraphicsPaint.setDither(paramBoolean);
-    super.invalidateSelf();
+    return this.jdField_a_of_type_TencentImOidbCmd0x88dOidb_0x88d$GroupInfo;
   }
 }
 

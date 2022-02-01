@@ -6,7 +6,7 @@ import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.view.View.MeasureSpec;
 import android.widget.ScrollView;
-import bdaq;
+import bggq;
 
 public class MaxHeightScrollView
   extends ScrollView
@@ -36,7 +36,7 @@ public class MaxHeightScrollView
   
   private void a()
   {
-    this.a = (a(getContext()) - bdaq.a(getContext(), 56.0F));
+    this.a = (a(getContext()) - bggq.a(getContext(), 56.0F));
   }
   
   public int a()
@@ -66,7 +66,7 @@ public class MaxHeightScrollView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.open.widget.MaxHeightScrollView
  * JD-Core Version:    0.7.0.1
  */

@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.adapter;
 
-import akkn;
+import ameh;
 
 public class RecommendFriendAdapter$6
   implements Runnable
 {
-  public RecommendFriendAdapter$6(akkn paramakkn) {}
+  public RecommendFriendAdapter$6(ameh paramameh) {}
   
   public void run()
   {
@@ -14,7 +14,7 @@ public class RecommendFriendAdapter$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.adapter.RecommendFriendAdapter.6
  * JD-Core Version:    0.7.0.1
  */

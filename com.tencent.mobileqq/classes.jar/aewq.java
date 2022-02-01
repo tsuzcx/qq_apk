@@ -1,116 +1,52 @@
-import android.app.Activity;
-import android.support.annotation.NonNull;
+import android.os.Message;
+import com.tencent.mobileqq.activity.QQIdentiferLegacy;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map.Entry;
-import java.util.Set;
+import com.tencent.youtu.ytagreflectlivecheck.YTAGReflectLiveCheckInterface.GetLiveStyleResult;
+import com.tencent.youtu.ytagreflectlivecheck.requester.LiveStyleRequester.YTLiveStyleReq;
+import com.tencent.youtu.ytagreflectlivecheck.requester.LiveStyleResponse;
+import com.tencent.youtu.ytcommon.tools.wejson.WeJson;
+import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.concurrent.atomic.AtomicInteger;
+import mqq.os.MqqHandler;
 
 public class aewq
-  implements aewb
+  implements YTAGReflectLiveCheckInterface.GetLiveStyleResult
 {
-  private int jdField_a_of_type_Int;
-  private Activity jdField_a_of_type_AndroidAppActivity;
-  private String jdField_a_of_type_JavaLangString;
-  private HashMap<Integer, aews> jdField_a_of_type_JavaUtilHashMap;
-  private String b;
+  public aewq(QQIdentiferLegacy paramQQIdentiferLegacy, boolean paramBoolean) {}
   
-  public aewq(@NonNull Activity paramActivity)
+  public void onFailed(int paramInt, String paramString1, String paramString2)
   {
-    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
-    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
-    this.jdField_a_of_type_Int = 0;
-  }
-  
-  public void a()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("FriendShipViewManager", 2, "doOnResume");
-    }
-    aews localaews = (aews)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(this.jdField_a_of_type_Int));
-    if (localaews != null) {
-      localaews.d();
-    }
-  }
-  
-  public boolean a(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("FriendShipViewManager", 2, "play anim " + paramInt);
-    }
-    if (paramInt == 0) {
-      return false;
-    }
-    aews localaews = (aews)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(this.jdField_a_of_type_Int));
-    if (localaews != null)
-    {
-      localaews.b();
-      localaews.e();
-      this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(this.jdField_a_of_type_Int), null);
-      this.jdField_a_of_type_Int = 0;
-    }
-    localaews = (aews)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(paramInt));
-    if (localaews == null)
-    {
-      localaews = aewn.a(paramInt, this.jdField_a_of_type_AndroidAppActivity);
-      if (localaews == null) {
-        return false;
-      }
-      this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(paramInt), localaews);
+    String str = new WeJson().toJson(new LiveStyleRequester.YTLiveStyleReq(-2.0F, "10164651"));
+    Message localMessage = this.jdField_a_of_type_ComTencentMobileqqActivityQQIdentiferLegacy.a.obtainMessage(2);
+    localMessage.arg1 = 24;
+    localMessage.obj = str;
+    if (paramInt == 3) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityQQIdentiferLegacy.a.sendMessageDelayed(localMessage, 2000L);
     }
     for (;;)
     {
-      if ((localaews instanceof aewi)) {
-        ((aewi)localaews).a(this.jdField_a_of_type_JavaLangString, this.b);
-      }
-      localaews.a(new aewr(this, localaews));
-      return true;
+      QLog.d("QQIdentiferLegacy", 1, new Object[] { "getLightInfo Failed code=", Integer.valueOf(paramInt), " tips=", paramString1, " howtofix=", paramString2, " lightRTry=", Integer.valueOf(QQIdentiferLegacy.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQIdentiferLegacy).get()) });
+      return;
+      this.jdField_a_of_type_ComTencentMobileqqActivityQQIdentiferLegacy.a.sendMessage(localMessage);
     }
   }
   
-  public boolean a(int paramInt, String paramString1, String paramString2)
+  public void onSuccess(LiveStyleRequester.YTLiveStyleReq paramYTLiveStyleReq, LiveStyleResponse paramLiveStyleResponse)
   {
-    QLog.i("FriendShipViewManager", 1, "play , url = " + paramString1 + " md5:" + paramString2);
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
-    if (this.jdField_a_of_type_JavaLangString != null) {
-      this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString.trim();
-    }
-    if (this.b != null) {
-      this.b = this.b.trim();
-    }
-    a(3);
-    return true;
-  }
-  
-  public void b()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("FriendShipViewManager", 2, "doOnPause");
-    }
-    aews localaews = (aews)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(this.jdField_a_of_type_Int));
-    if (localaews != null) {
-      localaews.c();
-    }
-  }
-  
-  public void c()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("FriendShipViewManager", 2, "doOnDestroy");
-    }
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilHashMap.entrySet().iterator();
-    while (localIterator.hasNext())
+    QLog.d("QQIdentiferLegacy", 1, new Object[] { "getLightInfo success, current is loading : ", Boolean.valueOf(QQIdentiferLegacy.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQIdentiferLegacy).get()) });
+    paramYTLiveStyleReq.app_id = "10164651";
+    paramYTLiveStyleReq = new WeJson().toJson(paramYTLiveStyleReq);
+    this.jdField_a_of_type_ComTencentMobileqqActivityQQIdentiferLegacy.a.removeMessages(2);
+    paramLiveStyleResponse = this.jdField_a_of_type_ComTencentMobileqqActivityQQIdentiferLegacy.a.obtainMessage(2);
+    paramLiveStyleResponse.arg1 = 23;
+    this.jdField_a_of_type_ComTencentMobileqqActivityQQIdentiferLegacy.a.sendMessage(paramLiveStyleResponse);
+    if (QQIdentiferLegacy.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQIdentiferLegacy).compareAndSet(true, true)) {}
+    do
     {
-      Map.Entry localEntry = (Map.Entry)localIterator.next();
-      if (localEntry.getValue() != null)
-      {
-        ((aews)localEntry.getValue()).b();
-        ((aews)localEntry.getValue()).e();
-      }
-    }
-    this.jdField_a_of_type_JavaUtilHashMap.clear();
-    this.jdField_a_of_type_Int = 0;
+      return;
+      QQIdentiferLegacy.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQIdentiferLegacy, paramYTLiveStyleReq, this.jdField_a_of_type_Boolean);
+    } while (!QLog.isColorLevel());
+    QLog.d("QQIdentiferLegacy", 2, "getLightInfo success");
   }
 }
 

@@ -1,16 +1,15 @@
 package com.tencent.mobileqq.vas;
 
-import alof;
 import android.text.TextUtils;
-import bdhb;
-import bdtn;
-import bdug;
-import bdul;
-import bdwi;
-import bdws;
-import bdzf;
+import anhk;
+import bgmg;
+import bgyq;
+import bgzm;
+import bhbw;
+import bhcg;
+import bhdh;
+import bhgg;
 import com.google.gson.stream.JsonReader;
-import com.tencent.biz.flatbuffers.FlatBuffersParser;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -21,7 +20,6 @@ import java.lang.ref.WeakReference;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicInteger;
 import mqq.app.AppRuntime;
 import mqq.app.MobileQQ;
@@ -54,7 +52,7 @@ public class VasQuickUpdateManager
   public static final long BID_SONIC_TEMPLATE_UPDATE = 1001L;
   public static final long BID_STICKER_GUIDE_MATERIAL = 1004L;
   public static final long BID_TROOP_ENTER_EFFECT = 25L;
-  public static final String QUICKUPDATE_TEST_DIR = bdzf.a(alof.aX + ".vas_quickupdate_test/");
+  public static final String QUICKUPDATE_TEST_DIR = bhgg.a(anhk.ba + ".vas_quickupdate_test/");
   public static final String SCID_APNG_SO = "libAPNG_813";
   public static final String SCID_AVATARIN_PENDANT_JSON = "avatarInPendant_json";
   public static final String SCID_BLESS_VOICECHANGE = "blessVoiceList.json";
@@ -69,7 +67,7 @@ public class VasQuickUpdateManager
   public static final String SCID_COMIC_CONFIG = "vipComic_config_v2.json";
   public static final String SCID_COMIC_NAV_CONFIG = "vipComic_nav_config.json";
   public static final String SCID_COMIC_NAV_ICON = "vipComic_nav_tabIcon.zip";
-  public static final String SCID_COMIC_PLAYER_SO = "libqgplayer_765";
+  public static final String SCID_COMIC_PLAYER_SO = "libqgplayer_841";
   public static final String SCID_DEFAULT_CARD_CFG_PREFIX = "profileitem.";
   public static final String SCID_DEFAULT_FONT = "defaultFont_775";
   public static final String SCID_DIY_CARD_CONFIG = "card.diyFontConfig.json";
@@ -128,10 +126,10 @@ public class VasQuickUpdateManager
   private static final String TAG = "VasQuickUpdateManager";
   public QQAppInterface app;
   ConcurrentHashMap<Integer, VasQuickUpdateManager.CallBacker> callBackers = new ConcurrentHashMap();
-  private bdwi defaultCallback = new VasQuickUpdateManager.2(this);
-  VasQuickUpdateEngine mEngine;
+  private bhbw defaultCallback = new VasQuickUpdateManager.DefaultUpdateCallback(this);
+  bhdh mEngineProxy;
   AtomicInteger mKey = new AtomicInteger(0);
-  bdul mQuickUpdateObserver = new VasQuickUpdateManager.1(this);
+  public bgzm mQuickUpdateObserver = new VasQuickUpdateManager.DefaultVasExtensionObserver(this);
   
   public VasQuickUpdateManager(QQAppInterface paramQQAppInterface)
   {
@@ -155,7 +153,7 @@ public class VasQuickUpdateManager
     //   16: aload_0
     //   17: invokestatic 385	com/tencent/mobileqq/theme/ThemeCleaner:a	(Landroid/content/Context;)V
     //   20: aload_0
-    //   21: invokestatic 388	bdws:a	(Landroid/content/Context;)V
+    //   21: invokestatic 388	bhcg:a	(Landroid/content/Context;)V
     //   24: ldc 2
     //   26: monitorexit
     //   27: return
@@ -197,62 +195,50 @@ public class VasQuickUpdateManager
     }
   }
   
+  private static void downloadItem(AppRuntime paramAppRuntime, long paramLong, String paramString1, String paramString2, VasQuickUpdateManager.CallBacker paramCallBacker)
+  {
+    if (paramAppRuntime != null) {}
+    for (Manager localManager = paramAppRuntime.getManager(184); (localManager == null) || (!(localManager instanceof VasQuickUpdateManager)); localManager = null)
+    {
+      QLog.e("VasQuickUpdateManager", 1, "getFileFromLocal, Err0, bid=" + paramLong + ",scid:" + paramString1 + ", mgr:" + localManager + ", app=" + paramAppRuntime + ", filePaht=" + paramString2);
+      return;
+    }
+    paramString2 = (VasQuickUpdateManager)localManager;
+    paramString2.addCallBacker(paramCallBacker);
+    if (16L == paramLong)
+    {
+      paramAppRuntime = "getFileFromLocal_redPacket";
+      if (("iRedPacket_v3.json".equals(paramString1)) || ("iRedPacket_v3.char300.json".equals(paramString1)) || ("iRedPacket_v3.font.zip".equals(paramString1)) || ("iRedPacket_v3.specialChar.zip".equals(paramString1))) {
+        paramAppRuntime = "silent_download.redbag" + paramString1;
+      }
+      paramString2.downloadItem(paramLong, paramString1, paramAppRuntime);
+      return;
+    }
+    paramString2.downloadItem(paramLong, paramString1, "getFileFromLocal_" + paramLong);
+  }
+  
   public static File getFileFromLocal(AppRuntime paramAppRuntime, long paramLong, String paramString1, String paramString2, boolean paramBoolean, VasQuickUpdateManager.CallBacker paramCallBacker)
   {
-    String str = paramString2;
-    if (TextUtils.isEmpty(paramString2))
-    {
-      str = paramString2;
-      if (paramAppRuntime != null) {
-        str = paramAppRuntime.getApplication().getFilesDir() + File.separator + paramString1;
-      }
-    }
-    if (TextUtils.isEmpty(str))
-    {
-      QLog.e("VasQuickUpdateManager", 1, "getFileFromLocal err filePath, bid=" + paramLong + ",scid:" + paramString1 + ", app=" + paramAppRuntime + ", filePaht=" + str);
-      return null;
-    }
-    File localFile = new File(str);
-    paramString2 = localFile;
-    if (!localFile.exists())
-    {
-      if (!paramBoolean) {
-        break label379;
-      }
-      if (paramAppRuntime == null) {
-        break label249;
-      }
-      paramString2 = paramAppRuntime.getManager(184);
-      if ((paramString2 != null) && ((paramString2 instanceof VasQuickUpdateManager))) {
-        break label255;
-      }
-      QLog.e("VasQuickUpdateManager", 1, "getFileFromLocal, Err0, bid=" + paramLong + ",scid:" + paramString1 + ", mgr:" + paramString2 + ", app=" + paramAppRuntime + ", filePaht=" + str);
-      paramString2 = null;
+    if ((TextUtils.isEmpty(paramString2)) && (paramAppRuntime != null)) {
+      paramString2 = paramAppRuntime.getApplication().getFilesDir() + File.separator + paramString1;
     }
     for (;;)
     {
-      return paramString2;
-      label249:
-      paramString2 = null;
-      break;
-      label255:
-      paramString2 = (VasQuickUpdateManager)paramString2;
-      paramString2.addCallBacker(paramCallBacker);
-      if (16L == paramLong)
+      if (TextUtils.isEmpty(paramString2)) {
+        QLog.e("VasQuickUpdateManager", 1, "getFileFromLocal err filePath, bid=" + paramLong + ",scid:" + paramString1 + ", app=" + paramAppRuntime + ", filePaht=" + paramString2);
+      }
+      File localFile;
+      do
       {
-        paramAppRuntime = "getFileFromLocal_redPacket";
-        if (("iRedPacket_v3.json".equals(paramString1)) || ("iRedPacket_v3.char300.json".equals(paramString1)) || ("iRedPacket_v3.font.zip".equals(paramString1)) || ("iRedPacket_v3.specialChar.zip".equals(paramString1))) {
-          paramAppRuntime = "silent_download.redbag" + paramString1;
+        return null;
+        localFile = new File(paramString2);
+        if (localFile.exists()) {
+          break;
         }
-        paramString2.downloadItem(paramLong, paramString1, paramAppRuntime);
-        paramString2 = null;
-      }
-      else
-      {
-        paramString2.downloadItem(paramLong, paramString1, "getFileFromLocal_" + paramLong);
-        label379:
-        paramString2 = null;
-      }
+      } while (!paramBoolean);
+      downloadItem(paramAppRuntime, paramLong, paramString1, paramString2, paramCallBacker);
+      return null;
+      return localFile;
     }
   }
   
@@ -267,7 +253,7 @@ public class VasQuickUpdateManager
     if (((File)localObject).exists()) {
       try
       {
-        JSONObject localJSONObject = new JSONObject(bdhb.a((File)localObject));
+        JSONObject localJSONObject = new JSONObject(bgmg.a((File)localObject));
         return localJSONObject;
       }
       catch (Throwable localThrowable)
@@ -338,16 +324,11 @@ public class VasQuickUpdateManager
   
   private void initEngine()
   {
-    if (FlatBuffersParser.c()) {}
-    do
-    {
-      return;
-      QLog.e("VasQuickUpdateManager", 1, "initEngine: " + this);
-      this.mEngine = VasQuickUpdateEngine.getInstance();
-      bdws.a(this.defaultCallback);
-      this.mEngine.mWeakHandler = new WeakReference((bdug)this.app.a(71));
-    } while ((this.mEngine.mUpdateManagerInstance == 0L) || (!this.mEngine.engineReady.get()));
-    this.mEngine.nativeupdateAllItem(this.mEngine.mUpdateManagerInstance);
+    QLog.e("VasQuickUpdateManager", 1, "initEngine: " + this);
+    this.mEngineProxy = new bhdh(this.app);
+    bhcg.a(this.defaultCallback);
+    this.mEngineProxy.setWeakHandler(new WeakReference((VasExtensionHandler)this.app.a(71)));
+    this.mEngineProxy.startUpdateAllItem();
   }
   
   public void addCallBacker(VasQuickUpdateManager.CallBacker paramCallBacker)
@@ -396,8 +377,8 @@ public class VasQuickUpdateManager
     if (QLog.isColorLevel()) {
       QLog.d("VasQuickUpdateManager", 2, "cancelDwonloadItem bid = " + paramLong + " scid = " + paramString);
     }
-    if (this.mEngine != null) {
-      this.mEngine.cancelDwonloadItem(paramLong, paramString);
+    if (this.mEngineProxy != null) {
+      this.mEngineProxy.cancelDwonloadItem(paramLong, paramString);
     }
   }
   
@@ -406,8 +387,8 @@ public class VasQuickUpdateManager
     if (QLog.isColorLevel()) {
       QLog.d("VasQuickUpdateManager", 2, "downloadGatherItem bid = " + paramLong + " scid = " + paramString1 + " scidList = " + TextUtils.join(",", paramArrayOfString) + " from = " + paramString2);
     }
-    if (this.mEngine != null) {
-      this.mEngine.downloadGatherItem(paramLong, paramString1, paramArrayOfString, paramString2);
+    if (this.mEngineProxy != null) {
+      this.mEngineProxy.downloadGatherItem(paramLong, paramString1, paramArrayOfString, paramString2);
     }
   }
   
@@ -416,8 +397,8 @@ public class VasQuickUpdateManager
     if (QLog.isColorLevel()) {
       QLog.d("VasQuickUpdateManager", 2, "downloadItem bid = " + paramLong + " scid = " + paramString1 + " from = " + paramString2);
     }
-    if (this.mEngine != null) {
-      this.mEngine.downloadItem(paramLong, paramString1, paramString2);
+    if (this.mEngineProxy != null) {
+      this.mEngineProxy.downloadItem(paramLong, paramString1, paramString2);
     }
   }
   
@@ -425,10 +406,11 @@ public class VasQuickUpdateManager
   {
     QLog.e("VasQuickUpdateManager", 1, "onDestroy: " + this);
     this.app.removeObserver(this.mQuickUpdateObserver);
-    if (this.mEngine != null) {
-      bdws.b(this.defaultCallback);
-    }
+    bhcg.b(this.defaultCallback);
     this.callBackers.clear();
+    if (this.mEngineProxy != null) {
+      this.mEngineProxy.onDestory();
+    }
   }
   
   public void onProgressToAll(long paramLong1, String paramString1, String paramString2, long paramLong2, long paramLong3)
@@ -446,18 +428,18 @@ public class VasQuickUpdateManager
     }
   }
   
-  public void queryItemVersion(int paramInt, String paramString, boolean paramBoolean1, boolean paramBoolean2, long paramLong, bdtn parambdtn)
+  public void queryItemVersion(int paramInt, String paramString, boolean paramBoolean1, boolean paramBoolean2, long paramLong, bgyq parambgyq)
   {
-    if (this.mEngine != null)
+    if (this.mEngineProxy != null)
     {
-      parambdtn = new VasQuickUpdateManager.TimeoutWrapper(parambdtn, paramBoolean2, null);
+      parambgyq = new VasQuickUpdateManager.TimeoutWrapper(parambgyq, paramBoolean2, null);
       if (paramLong > 0L) {
-        ThreadManager.getSubThreadHandler().postDelayed(parambdtn, paramLong);
+        ThreadManager.getSubThreadHandler().postDelayed(parambgyq, paramLong);
       }
-      this.mEngine.queryItemVersion(paramInt, paramString, paramBoolean1, parambdtn);
+      this.mEngineProxy.queryItemVersion(paramInt, paramString, paramBoolean1, parambgyq);
       return;
     }
-    parambdtn.a(2, "", "");
+    parambgyq.a(2, "", "");
   }
   
   public void removeCallBacker(VasQuickUpdateManager.CallBacker paramCallBacker)
@@ -470,7 +452,7 @@ public class VasQuickUpdateManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.vas.VasQuickUpdateManager
  * JD-Core Version:    0.7.0.1
  */

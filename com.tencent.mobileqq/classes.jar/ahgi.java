@@ -1,21 +1,29 @@
-import com.tencent.mobileqq.activity.contact.addcontact.AddContactsView;
-import com.tencent.qphone.base.util.QLog;
+import android.app.Activity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import cooperation.qzone.QZoneClickReport;
 
-public class ahgi
-  implements alqc
+class ahgi
+  implements View.OnClickListener
 {
-  public ahgi(AddContactsView paramAddContactsView) {}
+  ahgi(ahgg paramahgg) {}
   
-  public void a(int paramInt, boolean paramBoolean)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AddContactsView", 2, "onGetConfig | isSuccess = " + paramBoolean + ", resultCode = " + paramInt);
-    }
-    if ((paramInt == 2) && (paramBoolean))
+    if (((this.a.jdField_a_of_type_AndroidContentContext instanceof Activity)) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo != null) && (this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null))
     {
-      this.a.d = true;
-      this.a.f();
+      Object localObject = new blrv();
+      ((blrv)localObject).c = "330";
+      ((blrv)localObject).d = "3";
+      ((blrv)localObject).e = "2";
+      QZoneClickReport.startReportImediately(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), (blrv)localObject);
+      localObject = blsi.a();
+      blsb.a((Activity)this.a.jdField_a_of_type_AndroidContentContext, (blsi)localObject, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, 0, 0, 0);
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

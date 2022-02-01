@@ -1,27 +1,22 @@
-import android.view.View;
+import android.os.Handler.Callback;
+import android.os.Message;
+import com.tencent.mobileqq.activity.PublicAccountListActivity;
 
 public class aeuy
+  implements Handler.Callback
 {
-  public float a;
-  public int a;
-  public long a;
-  public aeux a;
-  public View a;
-  public boolean a;
-  public float b;
-  public int b;
-  public boolean b;
-  public float c = 0.0F;
-  public float d = 1.0F;
-  public float e = 1.0F;
-  public float f = 1.0F;
+  public aeuy(PublicAccountListActivity paramPublicAccountListActivity) {}
   
-  public aeuy()
+  public boolean handleMessage(Message paramMessage)
   {
-    this.jdField_a_of_type_Float = 0.0F;
-    this.jdField_b_of_type_Float = 0.0F;
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_b_of_type_Boolean = false;
+    switch (paramMessage.what)
+    {
+    }
+    for (;;)
+    {
+      return true;
+      this.a.c();
+    }
   }
 }
 

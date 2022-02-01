@@ -1,91 +1,39 @@
-import com.tencent.qqmini.sdk.log.QMLog;
-import com.tencent.tissue.v8rt.engine.ILog;
+import android.os.Message;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.RegisterNewBaseActivity;
+import com.tencent.qphone.base.util.QLog;
+import mqq.os.MqqHandler;
 
-public class bhiy
-  implements ILog
+class bhiy
+  extends MqqHandler
 {
-  String a = "MIV8RT";
+  bhiy(bhix parambhix) {}
   
-  public int d(String paramString1, String paramString2)
+  public void handleMessage(Message paramMessage)
   {
-    QMLog.d(this.a + "/" + paramString1, paramString2, null);
-    return 0;
-  }
-  
-  public int d(String paramString1, String paramString2, Throwable paramThrowable)
-  {
-    QMLog.d(this.a + "/" + paramString1, paramString2, paramThrowable);
-    return 0;
-  }
-  
-  public int e(String paramString1, String paramString2)
-  {
-    QMLog.e(this.a + "/" + paramString1, paramString2);
-    return 0;
-  }
-  
-  public int e(String paramString1, String paramString2, Throwable paramThrowable)
-  {
-    QMLog.e(this.a + "/" + paramString1, paramString2, paramThrowable);
-    return 0;
-  }
-  
-  public int i(String paramString1, String paramString2)
-  {
-    QMLog.i(this.a + "/" + paramString1, paramString2);
-    return 0;
-  }
-  
-  public int i(String paramString1, String paramString2, Throwable paramThrowable)
-  {
-    QMLog.i(this.a + "/" + paramString1, paramString2, paramThrowable);
-    return 0;
-  }
-  
-  public void printNativeLog(int paramInt, String paramString1, String paramString2)
-  {
-    paramString1 = this.a + "/" + paramString1;
-    int i;
-    if (paramInt >= 100)
+    switch (paramMessage.what)
     {
-      i = paramInt - 100 + 2;
-      if (i > 2) {
-        break label65;
-      }
-      QMLog.d(paramString1, paramString2);
-    }
-    for (;;)
-    {
-      if (paramInt >= 100) {}
+    default: 
+    case 104: 
+      do
+      {
+        return;
+        paramMessage = (String)paramMessage.obj;
+        if ((this.a.jdField_a_of_type_Baim != null) && (!TextUtils.isEmpty(paramMessage)))
+        {
+          this.a.jdField_a_of_type_Baim.a(paramMessage);
+          return;
+        }
+      } while (!QLog.isColorLevel());
+      QLog.d(bhix.jdField_a_of_type_JavaLangString, 2, "captcha sig is empty");
       return;
-      i = paramInt;
-      break;
-      label65:
-      if (i == 3) {
-        QMLog.i(paramString1, paramString2);
-      } else if (i == 4) {
-        QMLog.w(paramString1, paramString2);
-      } else if (i == 5) {
-        QMLog.e(paramString1, paramString2);
-      }
     }
-  }
-  
-  public int w(String paramString1, String paramString2)
-  {
-    QMLog.w(this.a + "/" + paramString1, paramString2);
-    return 0;
-  }
-  
-  public int w(String paramString1, String paramString2, Throwable paramThrowable)
-  {
-    QMLog.w(this.a + "/" + paramString1, paramString2, paramThrowable);
-    return 0;
+    bhix.a(this.a).finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bhiy
  * JD-Core Version:    0.7.0.1
  */

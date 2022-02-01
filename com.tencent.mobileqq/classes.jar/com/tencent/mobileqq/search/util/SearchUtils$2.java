@@ -2,11 +2,11 @@ package com.tencent.mobileqq.search.util;
 
 import android.text.TextUtils;
 import android.view.View;
-import aymg;
-import aymj;
-import aynq;
-import ayvm;
-import azri;
+import bblk;
+import bbln;
+import bbmu;
+import bbup;
+import bctj;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.TroopManager;
@@ -17,36 +17,36 @@ import java.util.HashMap;
 public final class SearchUtils$2
   implements Runnable
 {
-  public SearchUtils$2(View paramView, aynq paramaynq) {}
+  public SearchUtils$2(View paramView, bbmu parambbmu) {}
   
   public void run()
   {
     int j = -1;
     HashMap localHashMap = new HashMap();
-    Object localObject = (Integer)this.jdField_a_of_type_AndroidViewView.getTag(2131379972);
+    Object localObject = (Integer)this.jdField_a_of_type_AndroidViewView.getTag(2131380930);
     int i;
     if (localObject != null)
     {
       i = ((Integer)localObject).intValue();
       localHashMap.put("itemLinePosition", String.valueOf(i + 1));
-      localHashMap.put("matchDegree", String.valueOf(this.jdField_a_of_type_Aynq.b()));
-      localHashMap.put("className", this.jdField_a_of_type_Aynq.getClass().getSimpleName());
-      localHashMap.put("keyword", this.jdField_a_of_type_Aynq.a());
-      if (this.jdField_a_of_type_Aynq.jdField_a_of_type_JavaUtilHashMap != null) {
-        localHashMap.putAll(this.jdField_a_of_type_Aynq.jdField_a_of_type_JavaUtilHashMap);
+      localHashMap.put("matchDegree", String.valueOf(this.jdField_a_of_type_Bbmu.b()));
+      localHashMap.put("className", this.jdField_a_of_type_Bbmu.getClass().getSimpleName());
+      localHashMap.put("keyword", this.jdField_a_of_type_Bbmu.a());
+      if (this.jdField_a_of_type_Bbmu.jdField_a_of_type_JavaUtilHashMap != null) {
+        localHashMap.putAll(this.jdField_a_of_type_Bbmu.jdField_a_of_type_JavaUtilHashMap);
       }
-      if (!(this.jdField_a_of_type_Aynq instanceof aymj)) {
+      if (!(this.jdField_a_of_type_Bbmu instanceof bbln)) {
         break label339;
       }
-      localObject = ((aymj)this.jdField_a_of_type_Aynq).a;
+      localObject = ((bbln)this.jdField_a_of_type_Bbmu).a;
     }
     for (;;)
     {
-      if ((!TextUtils.isEmpty((CharSequence)localObject)) && (this.jdField_a_of_type_Aynq.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null))
+      if ((!TextUtils.isEmpty((CharSequence)localObject)) && (this.jdField_a_of_type_Bbmu.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null))
       {
-        int k = this.jdField_a_of_type_Aynq.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.b((String)localObject);
-        localHashMap.put("troopMask", String.valueOf(this.jdField_a_of_type_Aynq.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.b((String)localObject)));
-        TroopManager localTroopManager = (TroopManager)this.jdField_a_of_type_Aynq.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(52);
+        int k = this.jdField_a_of_type_Bbmu.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.b((String)localObject);
+        localHashMap.put("troopMask", String.valueOf(this.jdField_a_of_type_Bbmu.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.b((String)localObject)));
+        TroopManager localTroopManager = (TroopManager)this.jdField_a_of_type_Bbmu.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(52);
         i = j;
         if (localTroopManager != null)
         {
@@ -62,13 +62,13 @@ public final class SearchUtils$2
           QLog.d("searchUtils", 2, "Report troop member click, troopMask:" + k + " troopMemberNum:" + i);
         }
       }
-      azri.a(BaseApplicationImpl.getApplication()).a(null, "ContactSearchMatchDegree", true, 0L, 0L, ayvm.a(localHashMap), "", false);
+      bctj.a(BaseApplicationImpl.getApplication()).a(null, "ContactSearchMatchDegree", true, 0L, 0L, bbup.a(localHashMap), "", false);
       return;
       i = -1;
       break;
       label339:
-      if ((this.jdField_a_of_type_Aynq instanceof aymg)) {
-        localObject = ((aymg)this.jdField_a_of_type_Aynq).a;
+      if ((this.jdField_a_of_type_Bbmu instanceof bblk)) {
+        localObject = ((bblk)this.jdField_a_of_type_Bbmu).a;
       } else {
         localObject = "";
       }
@@ -77,7 +77,7 @@ public final class SearchUtils$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.search.util.SearchUtils.2
  * JD-Core Version:    0.7.0.1
  */

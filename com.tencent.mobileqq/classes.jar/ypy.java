@@ -1,40 +1,21 @@
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
-import com.tencent.biz.subscribe.event.FollowUpdateEvent;
-import com.tencent.biz.subscribe.widget.textview.FollowTextView;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.widget.QQToast;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class ypy
-  extends alzr
+class ypy
+  implements View.OnClickListener
 {
-  public ypy(FollowTextView paramFollowTextView) {}
+  ypy(ypv paramypv) {}
   
-  public void b(boolean paramBoolean, String paramString)
+  public void onClick(View paramView)
   {
-    super.b(paramBoolean, paramString);
-    FollowTextView.a(this.a, true);
-    if (paramBoolean)
-    {
-      if (!FollowTextView.a(this.a)) {
-        FollowTextView.a(this.a, false, FollowTextView.a(this.a));
-      }
-      this.a.a(0);
-      if (FollowTextView.a(this.a) != null)
-      {
-        if (FollowTextView.a(this.a) != null) {
-          FollowTextView.a(this.a).a(false, FollowTextView.a(this.a));
-        }
-        yiw.a().a(new FollowUpdateEvent(0, FollowTextView.a(this.a).poster.id.get()));
-      }
-      return;
-    }
-    QQToast.a(this.a.getContext(), 2131690714, 0).a();
+    this.a.dismiss();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     ypy
  * JD-Core Version:    0.7.0.1
  */

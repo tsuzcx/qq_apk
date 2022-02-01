@@ -1,31 +1,35 @@
-import android.os.Bundle;
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsAppInterface;
-import com.tencent.mobileqq.data.MessageForShortVideo;
-import com.tencent.mobileqq.qipc.QIPCServerHelper;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
+import java.util.Map;
+import kotlin.Metadata;
+import kotlin.jvm.JvmStatic;
+import kotlin.jvm.internal.Intrinsics;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
-class rei
-  implements aesa
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/srtUtils/longcontentinfoupdater/LongContentInfoUpdater$Companion;", "", "()V", "mapping", "", "", "Lcom/tencent/biz/pubaccount/readinjoy/srtUtils/longcontentinfoupdater/LongContentInfoUpdater;", "getUpdater", "articleInfo", "Lcom/tencent/biz/pubaccount/readinjoy/struct/BaseArticleInfo;", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class rei
 {
-  rei(reh paramreh, MessageForShortVideo paramMessageForShortVideo) {}
-  
-  public void a(View paramView, bass parambass, int paramInt1, int paramInt2)
+  @JvmStatic
+  @Nullable
+  public final reh a(@NotNull BaseArticleInfo paramBaseArticleInfo)
   {
-    if ((parambass == null) || (this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo == null) || (parambass.jdField_b_of_type_Long != this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.uniseq)) {}
-    while ((parambass.jdField_b_of_type_Int != 6) && (parambass.jdField_b_of_type_Int != 17) && (parambass.jdField_b_of_type_Int != 9) && (parambass.jdField_b_of_type_Int != 20)) {
-      return;
+    Intrinsics.checkParameterIsNotNull(paramBaseArticleInfo, "articleInfo");
+    Map localMap = reh.a();
+    paramBaseArticleInfo = paramBaseArticleInfo.mSocialFeedInfo;
+    if (paramBaseArticleInfo != null)
+    {
+      paramBaseArticleInfo = paramBaseArticleInfo.a;
+      if (paramBaseArticleInfo == null) {}
     }
-    paramView = new Bundle();
-    paramView.putInt("VALUE_SHORTVIDEO_RESP_FILE_STATUS", parambass.d);
-    paramView.putString("VALUE_SHORTVIDEO_RESP_FILE_DOMAIN", parambass.u);
-    paramView.putStringArray("VALUE_SHORTVIDEO_RESP_FILE_URLS", parambass.c);
-    paramView.putLong("VALUE_SHORTVIDEO_RESP_FILE_UNISEQ", parambass.jdField_b_of_type_Long);
-    QIPCServerHelper.getInstance().callClient(VideoFeedsAppInterface.a, "Module_VideoFeedsIPCServer", "CMD_SHORTVIDEO_REQUEST_MANUAL_DOWNLOAD", paramView, null);
+    for (paramBaseArticleInfo = Integer.valueOf(paramBaseArticleInfo.a);; paramBaseArticleInfo = null) {
+      return (reh)localMap.get(paramBaseArticleInfo);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     rei
  * JD-Core Version:    0.7.0.1
  */

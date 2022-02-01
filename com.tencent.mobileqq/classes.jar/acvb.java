@@ -1,78 +1,93 @@
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.DiscussionMemberActivity;
-import java.util.List;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Iterator;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class acvb
-  extends akis
+  extends acuy
 {
-  private List<acuy> jdField_a_of_type_JavaUtilList;
+  private ArrayList<String> a;
   
-  public acvb(List<acuy> paramList)
+  public acvb(JSONObject paramJSONObject)
   {
-    super(paramList, paramList.app, paramList.a, 1, true);
-    Object localObject;
-    this.jdField_a_of_type_JavaUtilList = localObject;
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    a(paramJSONObject);
   }
   
-  public int getCount()
+  public String a()
   {
-    if (this.jdField_a_of_type_JavaUtilList == null) {
-      return 0;
-    }
-    return this.jdField_a_of_type_JavaUtilList.size();
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    if ((paramInt >= 0) && (paramInt < this.jdField_a_of_type_JavaUtilList.size())) {
-      return this.jdField_a_of_type_JavaUtilList.get(paramInt);
-    }
-    return null;
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    acuy localacuy;
-    if (paramView == null)
+    String str1 = super.a();
+    try
     {
-      paramView = this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionMemberActivity.getLayoutInflater().inflate(2131559029, paramViewGroup, false);
-      paramViewGroup = new acvd(null);
-      paramViewGroup.c = ((ImageView)paramView.findViewById(2131368796));
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131378896));
-      paramView.setTag(paramViewGroup);
-      localacuy = (acuy)getItem(paramInt);
-      if (localacuy != null)
+      JSONObject localJSONObject = new JSONObject(str1);
+      localJSONObject.put("patchName", this.jdField_a_of_type_JavaLangString);
+      localJSONObject.put("patchUrl", this.b);
+      localJSONObject.put("patchSize", this.jdField_a_of_type_Int);
+      StringBuilder localStringBuilder = new StringBuilder("");
+      if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (this.jdField_a_of_type_JavaUtilArrayList.size() > 0))
       {
-        if ((localacuy.b != null) && (!"".equals(localacuy.b.trim()))) {
-          break label149;
+        Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+        while (localIterator.hasNext())
+        {
+          String str3 = (String)localIterator.next();
+          if (!TextUtils.isEmpty(str3)) {
+            localStringBuilder.append(str3).append(";");
+          }
         }
-        paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText(localacuy.jdField_a_of_type_JavaLangString);
+      }
+      localJSONException.put("classIdList", localStringBuilder.toString());
+    }
+    catch (JSONException localJSONException)
+    {
+      QLog.d("PatchLogTag", 1, "DexPatchItemConfigDalvik writeToJsonString", localJSONException);
+      return str1;
+    }
+    String str2 = localJSONException.toString();
+    return str2;
+  }
+  
+  public ArrayList<String> a()
+  {
+    return this.jdField_a_of_type_JavaUtilArrayList;
+  }
+  
+  protected void a(JSONObject paramJSONObject)
+  {
+    int i = 0;
+    super.a(paramJSONObject);
+    this.jdField_a_of_type_JavaLangString = paramJSONObject.optString("patchName", null);
+    this.b = paramJSONObject.optString("patchUrl", null);
+    this.jdField_a_of_type_Int = paramJSONObject.optInt("patchSize", 0);
+    paramJSONObject = paramJSONObject.optString("classIdList", "").split(";");
+    if ((paramJSONObject != null) && (paramJSONObject.length > 0))
+    {
+      int j = paramJSONObject.length;
+      while (i < j)
+      {
+        CharSequence localCharSequence = paramJSONObject[i];
+        if (!TextUtils.isEmpty(localCharSequence)) {
+          this.jdField_a_of_type_JavaUtilArrayList.add(localCharSequence);
+        }
+        i += 1;
       }
     }
-    for (;;)
+  }
+  
+  public boolean a(String paramString)
+  {
+    if (this.jdField_a_of_type_JavaUtilArrayList.size() <= 0)
     {
-      paramViewGroup.jdField_a_of_type_JavaLangString = localacuy.jdField_a_of_type_JavaLangString;
-      paramViewGroup.c.setImageBitmap(a(1, localacuy.jdField_a_of_type_JavaLangString));
-      return paramView;
-      paramViewGroup = (acvd)paramView.getTag();
-      break;
-      label149:
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText(localacuy.b);
+      QLog.d("PatchLogTag", 1, "DexPatchItemConfigDalvik isValidConfig classIdList is empty");
+      return false;
     }
+    return super.a(paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     acvb
  * JD-Core Version:    0.7.0.1
  */

@@ -1,18 +1,18 @@
-import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.NotifyPushSettingActivity;
-import com.tencent.mobileqq.activity.SoundAndVibrateActivity;
+import com.tencent.mobileqq.activity.ArkFullScreenAppActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class adlq
   implements View.OnClickListener
 {
-  public adlq(NotifyPushSettingActivity paramNotifyPushSettingActivity) {}
+  public adlq(ArkFullScreenAppActivity paramArkFullScreenAppActivity) {}
   
   public void onClick(View paramView)
   {
-    paramView = new Intent(this.a.getActivity(), SoundAndVibrateActivity.class);
-    this.a.startActivity(paramView);
+    this.a.finish();
+    this.a.overridePendingTransition(2130771997, 2130772001);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

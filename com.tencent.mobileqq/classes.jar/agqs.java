@@ -1,12 +1,9 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.pubaccount.ecshopassit.view.QggMinusOneViewTitleLayout;
 
-class agqs
-  implements DialogInterface.OnClickListener
+public class agqs
+  extends agqe
 {
-  agqs(agqq paramagqq) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public QggMinusOneViewTitleLayout a;
 }
 
 

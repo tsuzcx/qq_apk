@@ -1,112 +1,57 @@
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.Locale;
-import org.json.JSONObject;
+import com.tencent.mobileqq.applets.data.AppletItem;
 
 public class aoqu
 {
-  public int a;
-  public long a;
-  public String a;
-  public int b;
-  public String b;
-  public int c = -1;
-  public int d = -1;
-  public int e;
-  public int f;
+  private int jdField_a_of_type_Int;
+  private long jdField_a_of_type_Long;
+  private String jdField_a_of_type_JavaLangString;
+  private int jdField_b_of_type_Int;
+  private String jdField_b_of_type_JavaLangString;
+  private String c;
   
-  public aoqu()
+  public aoqu a(int paramInt)
   {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_b_of_type_JavaLangString = "";
+    this.jdField_a_of_type_Int = paramInt;
+    return this;
   }
   
-  public static aoqu a(JSONObject paramJSONObject)
+  public aoqu a(long paramLong)
   {
-    aoqu localaoqu = new aoqu();
-    if (paramJSONObject == null) {}
-    do
-    {
-      do
-      {
-        do
-        {
-          return localaoqu;
-          paramJSONObject = paramJSONObject.optJSONObject("emoticon_guide_config");
-        } while (paramJSONObject == null);
-        if (QLog.isColorLevel()) {
-          QLog.i("QQSysAndEmojiConfProcessor", 2, "parse GuideConfBean: ");
-        }
-        if (paramJSONObject.has("emoticon_guide_url")) {
-          localaoqu.jdField_a_of_type_JavaLangString = paramJSONObject.optString("emoticon_guide_url");
-        }
-        if (paramJSONObject.has("emoticon_guide_night_url")) {
-          localaoqu.jdField_b_of_type_JavaLangString = paramJSONObject.optString("emoticon_guide_night_url");
-        }
-        if (paramJSONObject.has("emoticon_guide_serverid")) {
-          localaoqu.c = paramJSONObject.optInt("emoticon_guide_serverid", -1);
-        }
-        if (paramJSONObject.has("emoticon_guide_serverid_type")) {
-          localaoqu.d = paramJSONObject.optInt("emoticon_guide_serverid_type", -1);
-        }
-        if (paramJSONObject.has("emoticon_guide_width")) {
-          localaoqu.e = paramJSONObject.optInt("emoticon_guide_width", 0);
-        }
-        if (paramJSONObject.has("emoticon_guide_height")) {
-          localaoqu.f = paramJSONObject.optInt("emoticon_guide_height", 0);
-        }
-        if (paramJSONObject.has("emoticon_guide_open")) {
-          localaoqu.jdField_a_of_type_Int = paramJSONObject.optInt("emoticon_guide_open", 0);
-        }
-        if (paramJSONObject.has("emoticon_guide_version")) {
-          localaoqu.jdField_b_of_type_Int = paramJSONObject.optInt("emoticon_guide_version", 0);
-        }
-      } while (!paramJSONObject.has("emoticon_guide_invalid_time"));
-      paramJSONObject = paramJSONObject.optString("emoticon_guide_invalid_time", null);
-    } while (TextUtils.isEmpty(paramJSONObject));
-    SimpleDateFormat localSimpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.CHINA);
-    try
-    {
-      localaoqu.jdField_a_of_type_Long = localSimpleDateFormat.parse(paramJSONObject).getTime();
-      return localaoqu;
-    }
-    catch (Exception paramJSONObject)
-    {
-      QLog.d("QQSysAndEmojiConfProcessor", 2, "parse invalidTime failed!", paramJSONObject);
-    }
-    return localaoqu;
+    this.jdField_a_of_type_Long = paramLong;
+    return this;
   }
   
-  boolean a()
+  public aoqu a(String paramString)
   {
-    int i = bdne.c("key_emoticon_guide_version");
-    if (this.jdField_b_of_type_Int > i)
-    {
-      bdne.a("key_emoticon_guide_version", Integer.valueOf(this.jdField_b_of_type_Int));
-      bdne.a("key_show_emoticon_guide", Boolean.valueOf(true));
-      return true;
-    }
-    return false;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    return this;
   }
   
-  public boolean b()
+  public AppletItem a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("QQSysAndEmojiConfProcessor", 2, "currentTimeMillis: " + System.currentTimeMillis() + " mInvalidTime: " + this.jdField_a_of_type_Long);
-    }
-    return (this.jdField_a_of_type_Int == 1) && (System.currentTimeMillis() < this.jdField_a_of_type_Long);
+    return new AppletItem(this.jdField_a_of_type_Long, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.c, null);
   }
   
-  public String toString()
+  public void a(String paramString)
   {
-    return "{mOpen=" + this.jdField_a_of_type_Int + ", mDrawableUrl='" + this.jdField_a_of_type_JavaLangString + '\'' + ", mNightDrawableUrl=" + this.jdField_b_of_type_JavaLangString + ", mServerId=" + this.c + ", mEmoType=" + this.d + ", mInvalidTime=" + this.jdField_a_of_type_Long + '}';
+    this.c = paramString;
+  }
+  
+  public aoqu b(int paramInt)
+  {
+    this.jdField_b_of_type_Int = paramInt;
+    return this;
+  }
+  
+  public aoqu b(String paramString)
+  {
+    this.jdField_b_of_type_JavaLangString = paramString;
+    return this;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aoqu
  * JD-Core Version:    0.7.0.1
  */

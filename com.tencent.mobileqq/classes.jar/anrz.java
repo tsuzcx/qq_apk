@@ -1,12 +1,9 @@
-import java.util.Set;
+import com.tencent.mobileqq.data.PublicAccountInfo;
 
 public class anrz
 {
-  public long a;
-  public String a;
-  public Set<String> a;
-  public String b;
-  public String c;
+  public int a;
+  public PublicAccountInfo a;
 }
 
 

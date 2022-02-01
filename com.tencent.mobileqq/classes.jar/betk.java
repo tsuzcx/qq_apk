@@ -1,45 +1,23 @@
-import android.view.View;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawableDownListener;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class betk
-  implements URLDrawableDownListener
+class betk
+  implements DialogInterface.OnClickListener
 {
-  final String jdField_a_of_type_JavaLangString;
-  final WeakReference<View> jdField_a_of_type_JavaLangRefWeakReference;
-  final String b;
+  betk(besy parambesy, besl parambesl) {}
   
-  public betk(View paramView, String paramString1, String paramString2)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramView);
-    this.b = paramString1;
-    this.jdField_a_of_type_JavaLangString = paramString2;
-  }
-  
-  public void onLoadCancelled(View paramView, URLDrawable paramURLDrawable) {}
-  
-  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable)
-  {
-    paramView = (View)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (paramView != null)
+    switch (paramInt)
     {
-      QLog.e("Q.profilecard.FrdProfileCard", 1, this.jdField_a_of_type_JavaLangString + this.b);
-      paramView.setVisibility(8);
+    case 0: 
+    default: 
+      return;
     }
-  }
-  
-  public void onLoadInterrupted(View paramView, URLDrawable paramURLDrawable, InterruptedException paramInterruptedException) {}
-  
-  public void onLoadProgressed(View paramView, URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
-  {
-    paramView = (View)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (paramView != null) {
-      paramView.setVisibility(0);
+    if (besy.a(this.jdField_a_of_type_Besy) != 0) {
+      bfrm.a(this.jdField_a_of_type_Besy.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Besy.jdField_a_of_type_Long).b(this.jdField_a_of_type_Besl);
     }
+    bcst.b(this.jdField_a_of_type_Besy.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "Grp", "Cancel_pause_upload", 0, 0, "", this.jdField_a_of_type_Besy.jdField_a_of_type_Long + "", "", "");
   }
 }
 

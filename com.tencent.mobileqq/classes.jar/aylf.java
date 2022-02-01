@@ -1,25 +1,30 @@
-import android.view.ViewGroup;
-import com.tencent.mobileqq.search.ftsentity.FTSEntitySearchDetailActivity;
-import com.tencent.mobileqq.search.ftsentity.FTSEntitySearchDetailFragment;
-import com.tencent.widget.ListView;
-import java.util.List;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.olympic.activity.OlympicToolBaseActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class aylf
-  extends ayle<ayli, ayxt>
+  implements View.OnClickListener
 {
-  public aylf(FTSEntitySearchDetailFragment paramFTSEntitySearchDetailFragment, ListView paramListView, bdbb parambdbb, List paramList, String paramString, FTSEntitySearchDetailActivity paramFTSEntitySearchDetailActivity)
-  {
-    super(paramListView, parambdbb, paramList, paramString, paramFTSEntitySearchDetailActivity);
-  }
+  public aylf(OlympicToolBaseActivity paramOlympicToolBaseActivity) {}
   
-  protected ayqp a(int paramInt)
+  public void onClick(View paramView)
   {
-    return new ayqm(FTSEntitySearchDetailFragment.a(this.a));
-  }
-  
-  protected aywe a(int paramInt, ViewGroup paramViewGroup)
-  {
-    return new ayvz(paramViewGroup, 2131562606);
+    switch (paramView.getId())
+    {
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      this.a.b();
+      continue;
+      this.a.c();
+      continue;
+      this.a.d();
+      continue;
+      this.a.doOnBackPressed();
+    }
   }
 }
 

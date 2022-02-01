@@ -1,8 +1,7 @@
 package com.tencent.mobileqq.mini.mainpage;
 
 import NS_COMM.COMM.StCommonExt;
-import adpn;
-import alud;
+import aevv;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Build.VERSION;
@@ -18,7 +17,8 @@ import android.view.Window;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import aoom;
+import anni;
+import aqpv;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.PublicFragmentActivityForMini;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
@@ -35,6 +35,8 @@ import com.tencent.mobileqq.mini.share.MiniArkShareModelBuilder;
 import com.tencent.mobileqq.mini.share.MiniProgramShareUtils;
 import com.tencent.mobileqq.qipc.QIPCClientHelper;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.qqlive.module.videoreport.inject.fragment.V4FragmentCollector;
 import com.tencent.widget.Switch;
 import com.tencent.widget.immersive.ImmersiveUtils;
 import java.io.UnsupportedEncodingException;
@@ -46,7 +48,7 @@ public class MainPageFragment
   extends PublicBaseFragment
   implements View.OnClickListener
 {
-  private static final String LIKE_NUM_POSTFIX = alud.a(2131706828);
+  private static final String LIKE_NUM_POSTFIX = anni.a(2131705219);
   public static final String TAG = "MainPageFragment";
   private boolean isLike;
   private boolean isMiniGame;
@@ -84,7 +86,7 @@ public class MainPageFragment
     //   5: iconst_0
     //   6: putfield 128	com/tencent/image/URLDrawable$URLDrawableOptions:mPlayGifImage	Z
     //   9: ldc 129
-    //   11: invokestatic 135	bdoo:b	(F)I
+    //   11: invokestatic 135	bgtn:b	(F)I
     //   14: istore_2
     //   15: aload_3
     //   16: iload_2
@@ -115,11 +117,11 @@ public class MainPageFragment
     //   66: iload_2
     //   67: iload_2
     //   68: ldc 170
-    //   70: invokestatic 135	bdoo:b	(F)I
-    //   73: invokestatic 175	bcyz:b	(III)[I
+    //   70: invokestatic 135	bgtn:b	(F)I
+    //   73: invokestatic 175	bgey:b	(III)[I
     //   76: invokevirtual 179	com/tencent/image/URLDrawable:setTag	(Ljava/lang/Object;)V
     //   79: aload_3
-    //   80: getstatic 183	bcyz:i	Lcom/tencent/image/DownloadParams$DecodeHandler;
+    //   80: getstatic 183	bgey:j	Lcom/tencent/image/DownloadParams$DecodeHandler;
     //   83: invokevirtual 187	com/tencent/image/URLDrawable:setDecodeHandler	(Lcom/tencent/image/DownloadParams$DecodeHandler;)V
     //   86: aload_3
     //   87: astore 4
@@ -190,15 +192,15 @@ public class MainPageFragment
   private void handleMoreButtonEvent()
   {
     this.mMiniAppDialog = new MiniAppDialog(getActivity());
-    this.mMiniAppDialog.setContentView(LayoutInflater.from(getActivity()).inflate(2131562180, null));
-    TextView localTextView = (TextView)this.mMiniAppDialog.findViewById(2131370642);
-    localTextView.setText(alud.a(2131706820));
+    this.mMiniAppDialog.setContentView(LayoutInflater.from(getActivity()).inflate(2131562415, null));
+    TextView localTextView = (TextView)this.mMiniAppDialog.findViewById(2131371196);
+    localTextView.setText(anni.a(2131705211));
     localTextView.setOnClickListener(this);
-    localTextView = (TextView)this.mMiniAppDialog.findViewById(2131370636);
-    localTextView.setText(alud.a(2131706815));
+    localTextView = (TextView)this.mMiniAppDialog.findViewById(2131371190);
+    localTextView.setText(anni.a(2131705206));
     localTextView.setVisibility(0);
     localTextView.setOnClickListener(this);
-    ((TextView)this.mMiniAppDialog.findViewById(2131370618)).setOnClickListener(this);
+    ((TextView)this.mMiniAppDialog.findViewById(2131371173)).setOnClickListener(this);
     this.mMiniAppDialog.show();
   }
   
@@ -233,7 +235,7 @@ public class MainPageFragment
       {
         if (getView() != null)
         {
-          View localView = getView().findViewById(2131376507);
+          View localView = getView().findViewById(2131377297);
           if (localView != null) {
             localView.setVisibility(8);
           }
@@ -249,16 +251,16 @@ public class MainPageFragment
     }
     if (this.isMiniGame)
     {
-      this.mSetTopText.setText(alud.a(2131706819));
-      this.mRecommendMiniAppBtn.setText(alud.a(2131706822));
-      this.mEnterMiniAppBtn.setText(alud.a(2131706818));
-      this.mLikeNum.setText(alud.a(2131706824));
+      this.mSetTopText.setText(anni.a(2131705210));
+      this.mRecommendMiniAppBtn.setText(anni.a(2131705213));
+      this.mEnterMiniAppBtn.setText(anni.a(2131705209));
+      this.mLikeNum.setText(anni.a(2131705215));
       return;
     }
-    if (aoom.g()) {
-      this.mSetTopText.setText(alud.a(2131706819));
+    if (aqpv.c()) {
+      this.mSetTopText.setText(anni.a(2131705210));
     }
-    this.mLikeNum.setText(alud.a(2131706827));
+    this.mLikeNum.setText(anni.a(2131705218));
   }
   
   public static void launch(Context paramContext, MiniAppConfig paramMiniAppConfig, int paramInt)
@@ -267,7 +269,7 @@ public class MainPageFragment
     localIntent.putExtra("public_fragment_window_feature", 1);
     localIntent.putExtra("app_config", paramMiniAppConfig);
     localIntent.putExtra("versionType", paramInt);
-    adpn.a(paramContext, localIntent, PublicFragmentActivityForMini.class, MainPageFragment.class);
+    aevv.a(paramContext, localIntent, PublicFragmentActivityForMini.class, MainPageFragment.class);
   }
   
   public static void launchForMiniGame(Context paramContext, MiniAppConfig paramMiniAppConfig, int paramInt, boolean paramBoolean)
@@ -277,7 +279,7 @@ public class MainPageFragment
     localIntent.putExtra("app_config", paramMiniAppConfig);
     localIntent.putExtra("versionType", paramInt);
     localIntent.putExtra("isMiniGame", paramBoolean);
-    adpn.a(paramContext, localIntent, PublicFragmentActivityForMini.class, MainPageFragment.class);
+    aevv.a(paramContext, localIntent, PublicFragmentActivityForMini.class, MainPageFragment.class);
   }
   
   private void reportClick(String paramString)
@@ -377,7 +379,7 @@ public class MainPageFragment
         localUnsupportedEncodingException.printStackTrace();
       }
     }
-    localObject2 = "https://tucao.qq.com/qq_miniprogram/tucao?appid=" + this.mMiniAppInfo.appId + "&openid=" + getUin() + "&avatar=" + (String)localObject1 + alud.a(2131706830);
+    localObject2 = "https://tucao.qq.com/qq_miniprogram/tucao?appid=" + this.mMiniAppInfo.appId + "&openid=" + getUin() + "&avatar=" + (String)localObject1 + anni.a(2131705221);
     localObject1 = new Intent(getActivity(), QQBrowserActivity.class);
     ((Intent)localObject1).putExtra("url", (String)localObject2);
     localObject2 = new Bundle();
@@ -449,19 +451,19 @@ public class MainPageFragment
   {
     if (!this.isLike) {
       if (this.isMiniGame) {
-        this.mLikeNum.setText(alud.a(2131706816));
+        this.mLikeNum.setText(anni.a(2131705207));
       }
     }
     while (paramInt <= 0)
     {
       return;
-      this.mLikeNum.setText(alud.a(2131706829));
+      this.mLikeNum.setText(anni.a(2131705220));
       return;
     }
     if (paramInt > 9999)
     {
       float f = paramInt / 10000.0F;
-      this.mLikeNum.setText(String.format("%.2f", new Object[] { Float.valueOf(f) }) + alud.a(2131706826) + LIKE_NUM_POSTFIX);
+      this.mLikeNum.setText(String.format("%.2f", new Object[] { Float.valueOf(f) }) + anni.a(2131705217) + LIKE_NUM_POSTFIX);
       return;
     }
     this.mLikeNum.setText(paramInt + LIKE_NUM_POSTFIX);
@@ -471,10 +473,10 @@ public class MainPageFragment
   {
     if (paramBoolean)
     {
-      this.mLikeBtn.setImageResource(2130840899);
+      this.mLikeBtn.setImageResource(2130841128);
       return;
     }
-    this.mLikeBtn.setImageResource(2130840926);
+    this.mLikeBtn.setImageResource(2130841160);
   }
   
   private void updateTopTypeState(MiniAppInfo paramMiniAppInfo)
@@ -487,56 +489,54 @@ public class MainPageFragment
     this.mSetTopSwitch.setChecked(true);
   }
   
+  public boolean needImmersive()
+  {
+    return false;
+  }
+  
   public void onClick(View paramView)
   {
     switch (paramView.getId())
     {
-    case 2131370640: 
-    default: 
-    case 2131370621: 
-    case 2131370628: 
-    case 2131370641: 
-    case 2131370639: 
-    case 2131370615: 
-    case 2131370645: 
-    case 2131370646: 
-    case 2131370642: 
-      do
-      {
-        return;
-        startMiniApp();
-        reportClick("launch");
-        return;
-        setLikeNum();
-        return;
-        setTopType(this.mMiniAppInfo);
-        return;
-        startRecommendMiniApp();
-        reportClick("share");
-        return;
-        startComplainAndCallback();
-        return;
-        getActivity().finish();
-        return;
-        handleMoreButtonEvent();
-        return;
-      } while ((this.mMiniAppInfo == null) || (TextUtils.isEmpty(this.mMiniAppInfo.appId)));
-      PermissionSettingFragment.launchForResult(getActivity(), this.mMiniAppInfo.appId, this.mMiniAppInfo.name, 5);
-      this.mMiniAppDialog.dismiss();
-      reportClick("set");
-      return;
-    case 2131370636: 
-      startMoreInformation();
-      this.mMiniAppDialog.dismiss();
-      reportClick("profile");
-      return;
     }
-    this.mMiniAppDialog.dismiss();
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      startMiniApp();
+      reportClick("launch");
+      continue;
+      setLikeNum();
+      continue;
+      setTopType(this.mMiniAppInfo);
+      continue;
+      startRecommendMiniApp();
+      reportClick("share");
+      continue;
+      startComplainAndCallback();
+      continue;
+      getActivity().finish();
+      continue;
+      handleMoreButtonEvent();
+      continue;
+      if ((this.mMiniAppInfo != null) && (!TextUtils.isEmpty(this.mMiniAppInfo.appId)))
+      {
+        PermissionSettingFragment.launchForResult(getActivity(), this.mMiniAppInfo.appId, this.mMiniAppInfo.name, 5);
+        this.mMiniAppDialog.dismiss();
+        reportClick("set");
+        continue;
+        startMoreInformation();
+        this.mMiniAppDialog.dismiss();
+        reportClick("profile");
+        continue;
+        this.mMiniAppDialog.dismiss();
+      }
+    }
   }
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    paramLayoutInflater = LayoutInflater.from(getActivity()).inflate(2131562181, null);
+    paramLayoutInflater = LayoutInflater.from(getActivity()).inflate(2131562416, null);
     if (Build.VERSION.SDK_INT >= 23)
     {
       getActivity().getWindow().clearFlags(67108864);
@@ -550,6 +550,7 @@ public class MainPageFragment
       paramLayoutInflater.setPadding(0, ImmersiveUtils.getStatusBarHeight(getActivity()), 0, 0);
     }
     initData();
+    V4FragmentCollector.onV4FragmentViewCreated(this, paramLayoutInflater);
     return paramLayoutInflater;
   }
   
@@ -567,22 +568,22 @@ public class MainPageFragment
   public void onViewCreated(View paramView, Bundle paramBundle)
   {
     super.onViewCreated(paramView, paramBundle);
-    this.mAppIcon = ((ImageView)paramView.findViewById(2131370631));
+    this.mAppIcon = ((ImageView)paramView.findViewById(2131371185));
     this.mAppIcon.setOnLongClickListener(this.mLongClickListener);
-    this.mAppName = ((TextView)paramView.findViewById(2131370637));
-    this.mIntroduction = ((TextView)paramView.findViewById(2131370617));
-    this.mLikeNum = ((TextView)paramView.findViewById(2131370630));
-    this.mLikeBtn = ((ImageView)paramView.findViewById(2131370629));
-    this.mSetTopSwitch = ((Switch)paramView.findViewById(2131370641));
-    this.mRecommendMiniAppBtn = ((Button)paramView.findViewById(2131370639));
-    this.mEnterMiniAppBtn = ((Button)paramView.findViewById(2131370621));
-    this.mRelativePublicAccountContainer = paramView.findViewById(2131370640);
-    this.mComplainCallbackContainer = paramView.findViewById(2131370615);
-    this.mLikeContainer = paramView.findViewById(2131370628);
-    this.mBackView = ((ImageView)paramView.findViewById(2131370645));
-    this.mMoreView = ((ImageView)paramView.findViewById(2131370646));
-    this.mSetTopText = ((TextView)paramView.findViewById(2131376508));
-    this.mSeparator = paramView.findViewById(2131368570);
+    this.mAppName = ((TextView)paramView.findViewById(2131371191));
+    this.mIntroduction = ((TextView)paramView.findViewById(2131371172));
+    this.mLikeNum = ((TextView)paramView.findViewById(2131371184));
+    this.mLikeBtn = ((ImageView)paramView.findViewById(2131371183));
+    this.mSetTopSwitch = ((Switch)paramView.findViewById(2131371195));
+    this.mRecommendMiniAppBtn = ((Button)paramView.findViewById(2131371193));
+    this.mEnterMiniAppBtn = ((Button)paramView.findViewById(2131371176));
+    this.mRelativePublicAccountContainer = paramView.findViewById(2131371194);
+    this.mComplainCallbackContainer = paramView.findViewById(2131371170);
+    this.mLikeContainer = paramView.findViewById(2131371182);
+    this.mBackView = ((ImageView)paramView.findViewById(2131371199));
+    this.mMoreView = ((ImageView)paramView.findViewById(2131371200));
+    this.mSetTopText = ((TextView)paramView.findViewById(2131377298));
+    this.mSeparator = paramView.findViewById(2131368893);
     this.mSetTopSwitch.setOnClickListener(this);
     this.mRecommendMiniAppBtn.setOnClickListener(this);
     this.mEnterMiniAppBtn.setOnClickListener(this);
@@ -614,7 +615,7 @@ public class MainPageFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.mainpage.MainPageFragment
  * JD-Core Version:    0.7.0.1
  */

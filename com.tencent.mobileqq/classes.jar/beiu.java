@@ -1,17 +1,32 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.webview.swift.component.SwiftBrowserShareMenuHandler.5.1;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.troop.activity.TroopAvatarWallPreviewActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class beiu
-  implements DialogInterface.OnClickListener
+  implements View.OnClickListener
 {
-  beiu(beir parambeir, int paramInt, String paramString) {}
+  public beiu(TroopAvatarWallPreviewActivity paramTroopAvatarWallPreviewActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    ThreadManager.excute(new SwiftBrowserShareMenuHandler.5.1(this), 128, null, false);
-    beir.a(this.jdField_a_of_type_Beir, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString);
+    switch (paramView.getId())
+    {
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      bkho localbkho = (bkho)bkif.a(this.a, null);
+      localbkho.a(2131692950, 3);
+      localbkho.c(2131690582);
+      localbkho.a(new beiv(this, localbkho));
+      localbkho.show();
+      continue;
+      TroopAvatarWallPreviewActivity.c(this.a);
+      continue;
+      TroopAvatarWallPreviewActivity.i(this.a);
+    }
   }
 }
 

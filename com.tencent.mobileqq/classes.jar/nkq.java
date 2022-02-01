@@ -1,93 +1,60 @@
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import com.tencent.biz.pubaccount.AccountDetailActivity;
-import com.tencent.mobileqq.data.AccountDetail;
-import com.tencent.mobileqq.utils.ShareActionSheetBuilder;
-import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
+import android.os.Bundle;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.AppRuntime;
+import mqq.app.NewIntent;
+import mqq.observer.BusinessObserver;
+import tencent.im.sso.offlinpkg.OfflinePkg.RspBody;
 
-public class nkq
-  implements AdapterView.OnItemClickListener
+final class nkq
+  implements BusinessObserver
 {
-  public nkq(AccountDetailActivity paramAccountDetailActivity) {}
+  nkq(NewIntent paramNewIntent, nkl paramnkl, boolean paramBoolean1, boolean paramBoolean2, AppRuntime paramAppRuntime, boolean paramBoolean3) {}
   
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    paramAdapterView = paramView.getTag();
-    if (paramAdapterView == null) {
-      return;
+    this.jdField_a_of_type_MqqAppNewIntent.setObserver(null);
+    if (QLog.isColorLevel()) {
+      QLog.d("HtmlCheckUpdate", 2, "-->offline:checkUpdate,onReceive:isSuccess=" + paramBoolean);
     }
-    if (this.a.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder.isShowing()) {
-      this.a.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder.dismiss();
-    }
-    paramInt = ((bdmy)paramAdapterView).a.action;
-    int i = nrt.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.d, this.a.jdField_a_of_type_ComTencentMobileqqDataAccountDetail);
-    if (paramInt == 11)
-    {
-      this.a.E();
-      paramInt = 7;
-      paramView = this.a.d;
-      if (!this.a.d()) {
-        break label437;
-      }
-    }
-    label437:
-    for (paramAdapterView = "02";; paramAdapterView = "01")
-    {
-      nrt.a(null, paramView, "0X8007CA6", "0X8007CA6", 0, 0, paramAdapterView, paramInt + "", i + "", null);
-      return;
-      if (paramInt == 2)
+    if (paramBoolean) {
+      try
       {
-        yuq.b(this.a, this.a.a(), this.a.a(), this.a.b());
-        paramInt = 1;
-        break;
-      }
-      if (paramInt == 3)
-      {
-        yuq.a(this.a, this.a.a(), this.a.a(), this.a.b());
-        paramInt = 2;
-        break;
-      }
-      if ((paramInt == 9) || (paramInt == 10))
-      {
-        yuq.a(this.a, this.a.a(), this.a.a(), this.a.b(), paramInt);
-        if (paramInt == 9)
-        {
-          paramInt = 3;
-          break;
+        paramBundle = paramBundle.getByteArray("data");
+        if (paramBundle == null) {
+          return;
         }
-        paramInt = 4;
-        break;
+        OfflinePkg.RspBody localRspBody = new OfflinePkg.RspBody();
+        localRspBody.mergeFrom(paramBundle);
+        paramBundle = new String(localRspBody.str_offline_pkg.get().toByteArray(), "UTF-8");
+        if (this.jdField_a_of_type_Nkl != null) {
+          this.jdField_a_of_type_Nkl.loaded(paramBundle, 0);
+        }
+        if (!this.jdField_a_of_type_Boolean) {
+          return;
+        }
+        if (this.b)
+        {
+          nko.c(paramBundle, this.jdField_a_of_type_MqqAppAppRuntime, this.c, this.jdField_a_of_type_Nkl);
+          return;
+        }
+        nko.c(paramBundle, this.jdField_a_of_type_MqqAppAppRuntime, this.c, null);
+        return;
       }
-      if (paramInt == 31)
+      catch (Exception paramBundle)
       {
-        this.a.D();
-        paramInt = 6;
-        break;
+        this.jdField_a_of_type_Nkl.loaded("{\"r\":-1}", 2);
+        return;
       }
-      if (paramInt == 30)
-      {
-        this.a.f();
-        paramInt = 5;
-        break;
-      }
-      if (paramInt == 32)
-      {
-        this.a.G();
-        paramInt = 8;
-        break;
-      }
-      if (paramInt == 19) {
-        bfyh.a(this.a, 6, this.a.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.name, this.a.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.summary, this.a.h, "mqqapi://card/show_pslcard?src_type=internal&source=sharecard&version=1&uin=" + this.a.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.uin, this.a.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.uin, i, true);
-      }
-      paramInt = 0;
-      break;
+    } else if (this.jdField_a_of_type_Nkl != null) {
+      this.jdField_a_of_type_Nkl.loaded("{\"r\":-1}", 2);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     nkq
  * JD-Core Version:    0.7.0.1
  */

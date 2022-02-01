@@ -1,6 +1,6 @@
 package com.tencent.av.ui.funchat.record;
 
-import azri;
+import bctj;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
@@ -30,11 +30,11 @@ public final class QavRecordReporter$1
     if (QLog.isColorLevel()) {
       QLog.i("QavRecordReporter", 2, "onRecordEnd  params=" + localHashMap);
     }
-    localObject = azri.a(BaseApplicationImpl.getContext());
+    localObject = bctj.a(BaseApplicationImpl.getContext());
     if (this.e != 3) {}
     for (;;)
     {
-      ((azri)localObject).a("", "av_record_fps", bool, this.jdField_d_of_type_Long, 0L, localHashMap, "", false);
+      ((bctj)localObject).a("", "av_record_fps", bool, this.jdField_d_of_type_Long, 0L, localHashMap, "", false);
       return;
       bool = false;
     }
@@ -42,7 +42,7 @@ public final class QavRecordReporter$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.av.ui.funchat.record.QavRecordReporter.1
  * JD-Core Version:    0.7.0.1
  */

@@ -1,24 +1,10 @@
-import java.util.concurrent.atomic.AtomicBoolean;
-import msf.msgcomm.msg_comm.Msg;
+import kotlin.Metadata;
 
-class amar
-{
-  public long a;
-  public AtomicBoolean a;
-  public msg_comm.Msg a;
-  public long b;
-  
-  public amar(msg_comm.Msg paramMsg, long paramLong1, long paramLong2)
-  {
-    this.jdField_a_of_type_MsfMsgcommMsg_comm$Msg = paramMsg;
-    this.jdField_a_of_type_Long = paramLong1;
-    this.b = paramLong2;
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
-  }
-}
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/activity/weather/webpage/WebPageData$Companion;", "", "()V", "EVENT_ARK_LOAD_STATE", "", "EVENT_CHANGE_PAGE_BG", "EVENT_JS_CALL", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class amar {}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amar
  * JD-Core Version:    0.7.0.1
  */

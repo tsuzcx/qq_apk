@@ -1,16 +1,42 @@
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.TroopTransferActivity;
+import android.content.DialogInterface.OnDismissListener;
+import android.widget.CompoundButton;
+import com.tencent.mobileqq.activity.GeneralSettingActivity;
+import mqq.util.WeakReference;
 
-class aejg
-  implements DialogInterface.OnClickListener
+public class aejg
+  implements DialogInterface.OnDismissListener
 {
-  aejg(aeje paramaeje, bdjz parambdjz) {}
+  WeakReference<GeneralSettingActivity> a;
+  WeakReference<CompoundButton> b;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public aejg(GeneralSettingActivity paramGeneralSettingActivity, CompoundButton paramCompoundButton)
   {
-    azqs.b(this.jdField_a_of_type_Aeje.a.app, "P_CliOper", "Grp_manage", "", "turn_grp", "Clk_know", 0, 0, this.jdField_a_of_type_Aeje.a.a, "", "", "");
-    this.jdField_a_of_type_Bdjz.cancel();
+    this.a = new WeakReference(paramGeneralSettingActivity);
+    this.b = new WeakReference(paramCompoundButton);
+  }
+  
+  public void onDismiss(DialogInterface paramDialogInterface)
+  {
+    CompoundButton localCompoundButton = null;
+    if (this.a == null)
+    {
+      paramDialogInterface = null;
+      if (this.b != null) {
+        break label47;
+      }
+    }
+    for (;;)
+    {
+      if ((paramDialogInterface != null) && (localCompoundButton != null)) {
+        paramDialogInterface.a(localCompoundButton, false);
+      }
+      return;
+      paramDialogInterface = (GeneralSettingActivity)this.a.get();
+      break;
+      label47:
+      localCompoundButton = (CompoundButton)this.b.get();
+    }
   }
 }
 

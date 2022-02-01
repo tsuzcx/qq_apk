@@ -1,11 +1,6 @@
-class andj
-  implements baug
+public abstract interface andj
 {
-  andj(andh paramandh) {}
-  
-  public void onResp(bavf parambavf) {}
-  
-  public void onUpdateProgeress(bave parambave, long paramLong1, long paramLong2) {}
+  public abstract void b(boolean paramBoolean);
 }
 
 

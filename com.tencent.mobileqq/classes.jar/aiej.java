@@ -1,13 +1,17 @@
-import android.os.Bundle;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class aiej
-  implements bett
+  implements View.OnClickListener
 {
-  aiej(aiei paramaiei) {}
+  aiej(aidp paramaidp) {}
   
-  public void a(Bundle paramBundle) {}
-  
-  public void b(Bundle paramBundle) {}
+  public void onClick(View paramView)
+  {
+    paramView.setVisibility(8);
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

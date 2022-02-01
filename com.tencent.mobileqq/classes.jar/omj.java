@@ -1,76 +1,63 @@
-import android.app.Activity;
-import android.content.ClipboardManager;
-import android.content.Context;
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.TextView;
-import com.tencent.widget.BubblePopupWindow;
+import org.json.JSONObject;
 
-class omj
-  implements View.OnClickListener
+public class omj
 {
-  omj(omg paramomg, omt paramomt, TextView paramTextView, boolean paramBoolean1, boolean paramBoolean2, Activity paramActivity, BubblePopupWindow paramBubblePopupWindow) {}
+  public double a;
+  public int a;
+  public long a;
+  public String a;
+  public double b;
+  public int b;
+  public long b;
+  public String b;
+  public double c;
+  public long c;
+  public String c;
+  public double d;
   
-  public void onClick(View paramView)
+  public static omj a(JSONObject paramJSONObject)
   {
-    int j = 1;
-    int i;
-    switch (paramView.getId())
-    {
-    default: 
-      i = -1;
-      label50:
-      if (this.jdField_a_of_type_Omg.a != null)
-      {
-        paramView = this.jdField_a_of_type_Omg.a;
-        if (!(this.jdField_a_of_type_Omg instanceof ola)) {
-          break label251;
-        }
-      }
-      break;
+    if (paramJSONObject == null) {
+      return null;
     }
-    for (;;)
+    try
     {
-      paramView.a(j, i, this.jdField_a_of_type_Omt);
-      this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.b();
-      return;
-      paramView = (ClipboardManager)paramView.getContext().getSystemService("clipboard");
-      if (TextUtils.isEmpty(this.jdField_a_of_type_Omt.a)) {
-        break;
-      }
-      paramView.setText(this.jdField_a_of_type_Omt.a);
-      i = -1;
-      break label50;
-      this.jdField_a_of_type_Omg.d(this.jdField_a_of_type_Omt);
-      i = 1;
-      break label50;
-      this.jdField_a_of_type_Omg.e(this.jdField_a_of_type_Omt);
-      TextView localTextView = this.jdField_a_of_type_AndroidWidgetTextView;
-      if (this.jdField_a_of_type_Boolean) {}
-      for (paramView = alud.a(2131713118);; paramView = alud.a(2131713183))
+      omj localomj = new omj();
+      try
       {
-        localTextView.setText(paramView);
-        i = 5;
-        break;
+        localomj.jdField_a_of_type_Int = paramJSONObject.optInt("showGesturesAdType");
+        localomj.jdField_a_of_type_Long = paramJSONObject.optLong("showGesturesAd_beginTime");
+        localomj.jdField_b_of_type_Long = paramJSONObject.optLong("showGesturesAd_endTime");
+        localomj.jdField_a_of_type_JavaLangString = paramJSONObject.optString("DragGoods");
+        localomj.jdField_a_of_type_Double = paramJSONObject.optDouble("DragGoodsCoordinateH");
+        localomj.jdField_b_of_type_Double = paramJSONObject.optDouble("DragGoodsCoordinateW");
+        localomj.jdField_c_of_type_Double = paramJSONObject.optDouble("DragGoodsCoordinateX");
+        localomj.d = paramJSONObject.optDouble("DragGoodsCoordinateY");
+        localomj.jdField_b_of_type_JavaLangString = paramJSONObject.optString("LongPressColor");
+        localomj.jdField_c_of_type_Long = paramJSONObject.optLong("LongPressTime");
+        localomj.jdField_c_of_type_JavaLangString = paramJSONObject.optString("slideColor");
+        localomj.jdField_b_of_type_Int = paramJSONObject.optInt("validSlideLength");
+        return localomj;
       }
-      if (this.b)
+      catch (Exception localException1)
       {
-        this.jdField_a_of_type_Omg.c(this.jdField_a_of_type_Omt);
-        i = 4;
-        break label50;
+        paramJSONObject = localomj;
       }
-      this.jdField_a_of_type_Omg.a(this.jdField_a_of_type_AndroidAppActivity, new omk(this));
-      i = 3;
-      break label50;
-      label251:
-      j = 2;
     }
+    catch (Exception localException2)
+    {
+      for (;;)
+      {
+        paramJSONObject = null;
+      }
+    }
+    localException1.printStackTrace();
+    return paramJSONObject;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     omj
  * JD-Core Version:    0.7.0.1
  */

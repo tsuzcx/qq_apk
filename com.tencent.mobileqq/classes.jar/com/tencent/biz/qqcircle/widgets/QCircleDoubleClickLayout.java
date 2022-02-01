@@ -9,20 +9,25 @@ import android.view.MotionEvent;
 import android.view.ViewConfiguration;
 import android.widget.FrameLayout;
 import com.tencent.qphone.base.util.QLog;
-import tqb;
-import ucr;
+import uxb;
+import vvv;
+import vvw;
+import vvx;
 
 public class QCircleDoubleClickLayout
   extends FrameLayout
 {
-  private int jdField_a_of_type_Int = tqb.jdField_a_of_type_Int;
+  private int jdField_a_of_type_Int = uxb.jdField_a_of_type_Int;
   private final Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
   private MotionEvent jdField_a_of_type_AndroidViewMotionEvent;
   private Runnable jdField_a_of_type_JavaLangRunnable = new QCircleDoubleClickLayout.1(this);
-  private ucr jdField_a_of_type_Ucr;
+  private vvv jdField_a_of_type_Vvv;
+  private vvw jdField_a_of_type_Vvw;
+  private vvx jdField_a_of_type_Vvx;
   private boolean jdField_a_of_type_Boolean = true;
   private int jdField_b_of_type_Int;
   private MotionEvent jdField_b_of_type_AndroidViewMotionEvent;
+  private Runnable jdField_b_of_type_JavaLangRunnable = new QCircleDoubleClickLayout.2(this);
   private boolean jdField_b_of_type_Boolean;
   private int jdField_c_of_type_Int;
   private MotionEvent jdField_c_of_type_AndroidViewMotionEvent;
@@ -93,7 +98,8 @@ public class QCircleDoubleClickLayout
     ViewConfiguration localViewConfiguration = ViewConfiguration.get(getContext());
     this.jdField_b_of_type_Int = localViewConfiguration.getScaledDoubleTapSlop();
     this.jdField_c_of_type_Int = (this.jdField_b_of_type_Int * this.jdField_b_of_type_Int);
-    this.jdField_d_of_type_Int = localViewConfiguration.getScaledTouchSlop();
+    int i = localViewConfiguration.getScaledTouchSlop();
+    this.jdField_d_of_type_Int = (localViewConfiguration.getScaledTouchSlop() * i);
   }
   
   private void b(MotionEvent paramMotionEvent)
@@ -118,6 +124,9 @@ public class QCircleDoubleClickLayout
     {
       a(this.jdField_a_of_type_AndroidViewMotionEvent);
       b(this.jdField_b_of_type_AndroidViewMotionEvent);
+      if (this.jdField_a_of_type_Vvx != null) {
+        this.jdField_a_of_type_Vvx.a();
+      }
       QLog.d("QCircleDoubleClickLayout", 1, "singleTap success");
       return;
     }
@@ -146,6 +155,7 @@ public class QCircleDoubleClickLayout
     this.jdField_d_of_type_AndroidViewMotionEvent = null;
     this.jdField_e_of_type_AndroidViewMotionEvent = null;
     this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
+    this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.jdField_b_of_type_JavaLangRunnable);
   }
   
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
@@ -175,7 +185,9 @@ public class QCircleDoubleClickLayout
         }
         if (!this.jdField_b_of_type_Boolean)
         {
-          this.jdField_a_of_type_AndroidOsHandler.postDelayed(this.jdField_a_of_type_JavaLangRunnable, tqb.jdField_a_of_type_Int);
+          this.jdField_a_of_type_AndroidOsHandler.postDelayed(this.jdField_a_of_type_JavaLangRunnable, uxb.jdField_a_of_type_Int);
+          this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.jdField_b_of_type_JavaLangRunnable);
+          this.jdField_a_of_type_AndroidOsHandler.postDelayed(this.jdField_b_of_type_JavaLangRunnable, uxb.jdField_b_of_type_Int);
           this.jdField_b_of_type_Boolean = true;
         }
         if (this.jdField_c_of_type_AndroidViewMotionEvent != null) {
@@ -186,8 +198,9 @@ public class QCircleDoubleClickLayout
       while (!this.jdField_b_of_type_Boolean)
       {
         return super.dispatchTouchEvent(paramMotionEvent);
-        if (paramMotionEvent.getAction() == 1)
+        if ((paramMotionEvent.getAction() == 1) || (paramMotionEvent.getAction() == 3))
         {
+          this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.jdField_b_of_type_JavaLangRunnable);
           if (this.jdField_c_of_type_Boolean)
           {
             this.jdField_c_of_type_Boolean = false;
@@ -209,6 +222,7 @@ public class QCircleDoubleClickLayout
           this.jdField_e_of_type_AndroidViewMotionEvent = MotionEvent.obtain(paramMotionEvent);
           if (a(this.jdField_c_of_type_AndroidViewMotionEvent, this.jdField_e_of_type_AndroidViewMotionEvent))
           {
+            this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.jdField_b_of_type_JavaLangRunnable);
             d();
             a();
             this.jdField_c_of_type_Boolean = true;
@@ -228,14 +242,24 @@ public class QCircleDoubleClickLayout
     this.jdField_a_of_type_Boolean = paramBoolean;
   }
   
-  public void setOnDoubleClickListener(ucr paramucr)
+  public void setOnDoubleClickListener(vvv paramvvv)
   {
-    this.jdField_a_of_type_Ucr = paramucr;
+    this.jdField_a_of_type_Vvv = paramvvv;
+  }
+  
+  public void setOnLongClickListener(vvw paramvvw)
+  {
+    this.jdField_a_of_type_Vvw = paramvvw;
+  }
+  
+  public void setOnTapClickListener(vvx paramvvx)
+  {
+    this.jdField_a_of_type_Vvx = paramvvx;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.qqcircle.widgets.QCircleDoubleClickLayout
  * JD-Core Version:    0.7.0.1
  */

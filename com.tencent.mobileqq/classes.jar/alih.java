@@ -1,21 +1,40 @@
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.richmedia.FlowCameraActivity2;
+import com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
+import com.tencent.mobileqq.activity.richmedia.view.CameraCover;
+import com.tencent.mobileqq.app.BaseActivity2;
+import com.tencent.mobileqq.shortvideo.mediadevice.AudioCapture;
+import com.tencent.qphone.base.util.QLog;
+
 public class alih
+  extends BroadcastReceiver
 {
-  public long a;
-  public String a;
-  public long b;
+  public alih(FlowCameraActivity2 paramFlowCameraActivity2) {}
   
-  public alih(String paramString, long paramLong1, long paramLong2)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Long = paramLong1;
-    this.b = paramLong2;
-  }
-  
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString).append("|");
-    return localStringBuilder.toString();
+    if ("tencent.av.v2q.StartVideoChat".equals(paramIntent.getAction()))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("FlowCameraActivity", 2, "receive ACTION_START_VIDEO_CHAT.");
+      }
+      paramContext = BaseActivity2.$(this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewCameraCover, 2131366766);
+      if (paramContext != null) {
+        this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewCameraCover.removeView(paramContext);
+      }
+      if ((this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr != null) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.a != null)) {
+        this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.a.e();
+      }
+      if (this.a.e) {
+        this.a.l();
+      }
+      if ((this.a.f) && (this.a.c)) {
+        this.a.c(false);
+      }
+      this.a.b();
+    }
   }
 }
 

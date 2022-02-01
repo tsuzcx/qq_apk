@@ -23,7 +23,7 @@ final class GpkgManager$4
     if (this.val$listener != null)
     {
       QLog.e("[minigame] GpkgManager", 1, "[Gpkg] onDownloadCanceled() called with: s = [" + paramString + "]");
-      this.val$listener.onInitGpkgInfo(2003, null, "download canceled");
+      this.val$listener.onInitGpkgInfo(2003, null, "download canceled", null);
     }
   }
   
@@ -42,7 +42,7 @@ final class GpkgManager$4
     {
       if (((paramDownloadResult == null) || (paramDownloadResult.getStatus() == null) || (this.val$gameConfig.config.verType == 3) || (paramDownloadResult.getStatus().httpStatus != 403) || (paramDownloadResult.getReport() == null) || (paramDownloadResult.getReport().response == null)) || (this.val$listener != null))
       {
-        this.val$listener.onInitGpkgInfo(2004, null, "download pkg fail");
+        this.val$listener.onInitGpkgInfo(2004, null, "download pkg fail", GpkgManager.access$100(paramDownloadResult));
         StringBuilder localStringBuilder = new StringBuilder().append("[Gpkg]onDownloadFailed() called with: s = [").append(paramString).append("], downloadResult = [");
         paramString = paramDownloadResult;
         if (paramDownloadResult != null)
@@ -78,26 +78,27 @@ final class GpkgManager$4
   
   public void onDownloadSucceed(String paramString, DownloadResult paramDownloadResult)
   {
-    long l2 = 0L;
     GpkgManager.downloadDuration = System.currentTimeMillis() - this.val$startTime;
-    QLog.i("[minigame] GpkgManager", 1, "[Gpkg] onDownloadSucceed " + paramString + ",cost:" + GpkgManager.downloadDuration);
     if ((paramDownloadResult != null) && (paramDownloadResult.getContent() != null)) {}
     for (long l1 = paramDownloadResult.getContent().length;; l1 = -1L)
     {
+      paramDownloadResult.getReport();
+      QLog.i("[minigame] GpkgManager", 1, "[Gpkg] onDownloadSucceed " + paramString + ", cost: " + GpkgManager.downloadDuration + "ms speed:" + l1 / (GpkgManager.downloadDuration / 1000.0D) + " B/S");
       MiniReportManager.addCostTimeEventAttachInfo(this.val$gameConfig, 2, "1");
       paramString = this.val$gameConfig;
-      if (GpkgManager.downloadDuration > 0L) {
-        l2 = GpkgManager.downloadDuration;
+      if (GpkgManager.downloadDuration > 0L) {}
+      for (long l2 = GpkgManager.downloadDuration;; l2 = 0L)
+      {
+        MiniReportManager.reportEventType(paramString, 620, null, String.valueOf(l1), null, 0, "1", l2, null);
+        GpkgManager.access$300(GpkgManager.access$200(this.val$savePath), this.val$unPackFolderPath, this.val$gameConfig, this.val$listener, this.val$finalSubApkUrl, this.val$finalIndependentPath, this.val$isMiniGameProcess, paramDownloadResult);
+        return;
       }
-      MiniReportManager.reportEventType(paramString, 620, null, String.valueOf(l1), null, 0, "1", l2, null);
-      GpkgManager.access$100(GpkgManager.access$000(this.val$savePath), this.val$unPackFolderPath, this.val$gameConfig, this.val$listener, this.val$finalSubApkUrl, this.val$finalIndependentPath, this.val$isMiniGameProcess);
-      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.minigame.gpkg.GpkgManager.4
  * JD-Core Version:    0.7.0.1
  */

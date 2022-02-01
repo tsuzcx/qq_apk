@@ -1,15 +1,16 @@
-import com.tencent.mobileqq.activity.QQSettingMe;
-import com.tencent.mobileqq.activity.QQSettingMe.34.1;
-import com.tencent.mobileqq.app.BaseActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class adsr
-  extends alwc
+public final class adsr
+  implements DialogInterface.OnClickListener
 {
-  public adsr(QQSettingMe paramQQSettingMe) {}
+  public adsr(adsx paramadsx) {}
   
-  public void a(Object paramObject)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.a.runOnUiThread(new QQSettingMe.34.1(this));
+    if (this.a != null) {
+      this.a.a();
+    }
   }
 }
 

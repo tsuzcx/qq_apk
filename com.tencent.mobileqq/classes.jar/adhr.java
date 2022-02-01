@@ -1,18 +1,21 @@
+import android.app.Dialog;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.FrameLayout;
-import com.tencent.mobileqq.activity.LoginInfoActivity;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.activity.AccountManageActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class adhr
   implements View.OnClickListener
 {
-  public adhr(LoginInfoActivity paramLoginInfoActivity, FrameLayout paramFrameLayout) {}
+  public adhr(AccountManageActivity paramAccountManageActivity) {}
   
   public void onClick(View paramView)
   {
-    LoginInfoActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityLoginInfoActivity, this.jdField_a_of_type_AndroidWidgetFrameLayout);
-    LoginInfoActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityLoginInfoActivity).removeMessages(20200313);
+    if ((this.a.b != null) && (this.a.b.isShowing())) {
+      this.a.b.dismiss();
+    }
+    bcst.b(this.a.app, "CliOper", "", "", "0X800433B", "0X800433B", 0, 0, "", "", "", "");
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

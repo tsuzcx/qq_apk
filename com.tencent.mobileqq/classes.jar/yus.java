@@ -1,30 +1,32 @@
-public class yus
+import com.tencent.widget.AbsListView;
+import java.util.ArrayList;
+
+class yus
+  implements bkhe
 {
-  public static int a;
-  public static int b;
-  String a;
-  public boolean a;
-  String b;
-  public int c;
-  String c;
-  public int d;
+  int jdField_a_of_type_Int = 0;
   
-  static
+  yus(yur paramyur) {}
+  
+  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
   {
-    jdField_b_of_type_Int = 1;
+    this.jdField_a_of_type_Int = (paramInt1 + paramInt2);
   }
   
-  public yus(String paramString1, String paramString2, String paramString3)
+  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
   {
-    this.jdField_c_of_type_Int = jdField_a_of_type_Int;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    this.jdField_c_of_type_JavaLangString = paramString3;
+    if (paramInt == 1) {
+      bkft.b(this.jdField_a_of_type_Yur.a().a());
+    }
+    while ((paramInt != 0) || (this.jdField_a_of_type_Yur.a == null) || (this.jdField_a_of_type_Int < this.jdField_a_of_type_Yur.a.size())) {
+      return;
+    }
+    yur.a(this.jdField_a_of_type_Yur);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     yus
  * JD-Core Version:    0.7.0.1
  */

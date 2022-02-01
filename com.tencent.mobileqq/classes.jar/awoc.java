@@ -1,61 +1,44 @@
-import android.text.TextUtils;
-import java.util.ArrayList;
-import java.util.Iterator;
+import com.tencent.mobileqq.msgbackup.data.MsgBackupUserData;
 
 public class awoc
 {
-  public final String a;
-  public final ArrayList<awoe> a;
+  private int jdField_a_of_type_Int;
+  private MsgBackupUserData jdField_a_of_type_ComTencentMobileqqMsgbackupDataMsgBackupUserData;
+  private String jdField_a_of_type_JavaLangString;
+  private String b;
   
-  public awoc(String paramString)
+  public awob a()
+  {
+    return new awob(this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_ComTencentMobileqqMsgbackupDataMsgBackupUserData, this.jdField_a_of_type_Int);
+  }
+  
+  public awoc a(int paramInt)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+    return this;
+  }
+  
+  public awoc a(MsgBackupUserData paramMsgBackupUserData)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqMsgbackupDataMsgBackupUserData = paramMsgBackupUserData;
+    return this;
+  }
+  
+  public awoc a(String paramString)
   {
     this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList(1);
+    return this;
   }
   
-  public static boolean a(awoe paramawoe)
+  public awoc b(String paramString)
   {
-    return (paramawoe != null) && (!TextUtils.isEmpty(paramawoe.jdField_a_of_type_JavaLangString)) && (!TextUtils.isEmpty(paramawoe.b));
-  }
-  
-  public String a(String paramString)
-  {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-    while (localIterator.hasNext())
-    {
-      awoe localawoe = (awoe)localIterator.next();
-      if ((a(localawoe)) && (paramString != null) && (paramString.equals(localawoe.jdField_a_of_type_JavaLangString))) {
-        return localawoe.b;
-      }
-    }
-    return null;
-  }
-  
-  public void a(bdpi parambdpi)
-  {
-    if (parambdpi == null) {}
-    for (;;)
-    {
-      return;
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-      while (localIterator.hasNext())
-      {
-        awoe localawoe = (awoe)localIterator.next();
-        if (a(localawoe)) {
-          parambdpi.a(2131364912, localawoe.jdField_a_of_type_JavaLangString, 0);
-        }
-      }
-    }
-  }
-  
-  public void a(String paramString1, String paramString2)
-  {
-    this.jdField_a_of_type_JavaUtilArrayList.add(new awoe(paramString1, paramString2, null));
+    this.b = paramString;
+    return this;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     awoc
  * JD-Core Version:    0.7.0.1
  */

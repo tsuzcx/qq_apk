@@ -1,131 +1,48 @@
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.graphics.Paint.Cap;
-import android.graphics.Paint.Join;
-import android.graphics.Paint.Style;
-import android.graphics.Path;
-import android.view.MotionEvent;
-import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.content.Context;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.playvideo.entrance.OpenPlayerBuilder;
+import com.tencent.biz.qqstory.playvideo.entrance.OpenPlayerBuilder.Data;
+import com.tencent.biz.qqstory.playvideo.entrance.OpenPlayerBuilder.UIStyle;
+import com.tencent.biz.qqstory.playvideo.entrance.VidListPlayInfo;
+import com.tencent.mobileqq.widget.QQToast;
 
-public class xhp
-  extends xhf
+final class xhp
+  extends xfr
 {
-  public static final int a;
-  public float a;
-  public Paint a;
-  xhb a;
-  public xho a;
-  public float b;
-  public int b;
-  public Paint b;
-  public int c = aepi.a(6.0F, BaseApplicationImpl.getContext().getResources());
+  xhp(String paramString1, String paramString2, int paramInt, Context paramContext) {}
   
-  static
+  public void a(int paramInt, String paramString, StoryVideoItem paramStoryVideoItem)
   {
-    jdField_a_of_type_Int = xov.a[8];
-  }
-  
-  public xhp(xhb paramxhb)
-  {
-    this.jdField_b_of_type_Int = jdField_a_of_type_Int;
-    this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-    this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.STROKE);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeJoin(Paint.Join.ROUND);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeCap(Paint.Cap.ROUND);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeWidth(this.c);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(jdField_a_of_type_Int);
-    this.jdField_b_of_type_AndroidGraphicsPaint = new Paint();
-    this.jdField_b_of_type_AndroidGraphicsPaint.setAntiAlias(true);
-    this.jdField_b_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.STROKE);
-    this.jdField_b_of_type_AndroidGraphicsPaint.setStrokeJoin(Paint.Join.ROUND);
-    this.jdField_b_of_type_AndroidGraphicsPaint.setStrokeCap(Paint.Cap.ROUND);
-    this.jdField_b_of_type_AndroidGraphicsPaint.setColor(jdField_a_of_type_Int);
-    this.jdField_a_of_type_Xhb = paramxhb;
-  }
-  
-  private void a(Paint paramPaint, xho paramxho)
-  {
-    paramPaint.setXfermode(null);
-    paramPaint.setColor(paramxho.jdField_b_of_type_Int);
-    paramPaint.setStrokeWidth(paramxho.c);
-    paramPaint.setShader(null);
-  }
-  
-  public Paint a()
-  {
-    return this.jdField_b_of_type_AndroidGraphicsPaint;
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_AndroidGraphicsPaint.setXfermode(null);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.jdField_b_of_type_Int);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeWidth(this.c);
-  }
-  
-  public void a(int paramInt)
-  {
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(paramInt);
-    this.jdField_b_of_type_Int = paramInt;
-  }
-  
-  public void a(Canvas paramCanvas, xhc paramxhc, Paint paramPaint)
-  {
-    if ((paramxhc instanceof xho))
+    if ((paramInt == 0) && (paramStoryVideoItem != null))
     {
-      paramxhc = (xho)paramxhc;
-      a(paramPaint, paramxhc);
-      paramCanvas.drawPath(paramxhc.a, paramPaint);
-    }
-  }
-  
-  public boolean a(MotionEvent paramMotionEvent)
-  {
-    float f1 = paramMotionEvent.getX();
-    float f2 = paramMotionEvent.getY();
-    switch (paramMotionEvent.getAction())
-    {
-    }
-    for (;;)
-    {
-      return true;
-      this.jdField_a_of_type_Float = f1;
-      this.jdField_b_of_type_Float = f2;
-      this.jdField_a_of_type_Xho = new xho(new Path(), 101, this.jdField_a_of_type_AndroidGraphicsPaint.getColor(), this.c);
-      if (this.jdField_a_of_type_Xhb != null) {
-        this.jdField_a_of_type_Xhb.a(this.jdField_a_of_type_Xho);
+      paramString = new OpenPlayerBuilder(new VidListPlayInfo(this.jdField_a_of_type_JavaLangString, this.b), this.jdField_a_of_type_Int).a();
+      OpenPlayerBuilder.UIStyle localUIStyle = paramString.mUIStyle;
+      if (paramStoryVideoItem.mInteractStatus == 1) {}
+      for (paramInt = 1;; paramInt = 2)
+      {
+        localUIStyle.bottomWidgetShowFlag = paramInt;
+        paramString.mUIStyle.mPlayerRepeatMode = 1;
+        xho.a(this.jdField_a_of_type_AndroidContentContext, paramString, null);
+        return;
       }
-      DoodleLayout.a("use_graffiti");
-      this.jdField_a_of_type_Xho.a.reset();
-      this.jdField_a_of_type_Xho.a.moveTo(f1, f2);
-      this.jdField_a_of_type_Xho.a.lineTo(f1 + 1.0F, f2 + 1.0F);
-      continue;
-      if ((this.jdField_a_of_type_Xho != null) && (this.jdField_a_of_type_Xho.a != null)) {
-        this.jdField_a_of_type_Xho.a.quadTo(this.jdField_a_of_type_Float, this.jdField_b_of_type_Float, (this.jdField_a_of_type_Float + f1) / 2.0F, (this.jdField_b_of_type_Float + f2) / 2.0F);
-      }
-      this.jdField_a_of_type_Float = f1;
-      this.jdField_b_of_type_Float = f2;
     }
-  }
-  
-  public Paint b()
-  {
-    return this.jdField_a_of_type_AndroidGraphicsPaint;
-  }
-  
-  public void b()
-  {
-    this.jdField_b_of_type_Int = jdField_a_of_type_Int;
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(jdField_a_of_type_Int);
-    this.jdField_a_of_type_Xho = null;
+    if (paramInt == 10100)
+    {
+      QQToast.a(this.jdField_a_of_type_AndroidContentContext.getApplicationContext(), 1, anni.a(2131713239), 0).a();
+      return;
+    }
+    if (!TextUtils.isEmpty(paramString))
+    {
+      QQToast.a(this.jdField_a_of_type_AndroidContentContext.getApplicationContext(), 1, paramString, 0).a();
+      return;
+    }
+    QQToast.a(this.jdField_a_of_type_AndroidContentContext.getApplicationContext(), 1, anni.a(2131713240) + paramInt, 0).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     xhp
  * JD-Core Version:    0.7.0.1
  */

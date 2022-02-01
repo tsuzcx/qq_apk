@@ -9,7 +9,7 @@ import android.graphics.PaintFlagsDrawFilter;
 import android.os.Handler;
 import android.util.AttributeSet;
 import android.view.View;
-import beuv;
+import bibt;
 
 public class RotateableView
   extends View
@@ -18,7 +18,7 @@ public class RotateableView
   private int jdField_a_of_type_Int;
   private Context jdField_a_of_type_AndroidContentContext;
   private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
-  Handler jdField_a_of_type_AndroidOsHandler = new beuv(this);
+  Handler jdField_a_of_type_AndroidOsHandler = new bibt(this);
   private boolean jdField_a_of_type_Boolean;
   private int b;
   private int c;
@@ -87,7 +87,7 @@ public class RotateableView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.widget.RotateableView
  * JD-Core Version:    0.7.0.1
  */

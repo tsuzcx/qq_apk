@@ -1,53 +1,55 @@
-import android.support.annotation.NonNull;
+import android.view.View;
+import android.widget.ImageView;
+import com.tencent.biz.qqcircle.polylike.QCirclePolyLikeAniView;
+import com.tencent.biz.qqcircle.polylike.QCirclePolyLikeAniView.2.1;
+import com.tencent.mobileqq.bubble.QQAnimationDrawable;
+import com.tencent.qphone.base.util.QLog;
+import qqcircle.QQCircleFeedBase.StPolyLike;
 
 public class vpm
+  implements apyj
 {
-  public String a;
-  public String b;
+  public vpm(QCirclePolyLikeAniView.2.1 param1, ImageView paramImageView) {}
   
-  public vpm(@NonNull String paramString)
+  public void a()
   {
-    this.a = paramString;
-    xqq.a(paramString);
-  }
-  
-  public boolean equals(Object paramObject)
-  {
-    if (this == paramObject) {}
-    do
+    QLog.d("QCirclePolymorphicAniView", 1, "create ain stop:" + this.jdField_a_of_type_AndroidWidgetImageView.getHeight() + " " + this.jdField_a_of_type_AndroidWidgetImageView.getWidth());
+    if (this.jdField_a_of_type_ComTencentBizQqcirclePolylikeQCirclePolyLikeAniView$2$1.jdField_a_of_type_Vpl.jdField_a_of_type_Boolean)
     {
-      return true;
-      if ((paramObject == null) || (getClass() != paramObject.getClass())) {
-        return false;
-      }
-      paramObject = (vpm)paramObject;
-      if (this.a != null) {
-        return this.a.equals(paramObject.a);
-      }
-    } while (paramObject.a == null);
-    return false;
+      int i = (bclx.a - this.jdField_a_of_type_AndroidWidgetImageView.getWidth()) / 2;
+      int j = (bclx.b - this.jdField_a_of_type_AndroidWidgetImageView.getHeight()) / 2;
+      QCirclePolyLikeAniView localQCirclePolyLikeAniView = this.jdField_a_of_type_ComTencentBizQqcirclePolylikeQCirclePolyLikeAniView$2$1.jdField_a_of_type_Vpl.jdField_a_of_type_ComTencentBizQqcirclePolylikeQCirclePolyLikeAniView;
+      QQCircleFeedBase.StPolyLike localStPolyLike = this.jdField_a_of_type_ComTencentBizQqcirclePolylikeQCirclePolyLikeAniView$2$1.jdField_a_of_type_Vpl.jdField_a_of_type_QqcircleQQCircleFeedBase$StPolyLike;
+      ImageView localImageView = this.jdField_a_of_type_AndroidWidgetImageView;
+      View localView1 = this.jdField_a_of_type_ComTencentBizQqcirclePolylikeQCirclePolyLikeAniView$2$1.jdField_a_of_type_Vpl.jdField_a_of_type_AndroidViewView;
+      View localView2 = this.jdField_a_of_type_ComTencentBizQqcirclePolylikeQCirclePolyLikeAniView$2$1.jdField_a_of_type_Vpl.jdField_b_of_type_AndroidViewView;
+      boolean bool = this.jdField_a_of_type_ComTencentBizQqcirclePolylikeQCirclePolyLikeAniView$2$1.jdField_a_of_type_Vpl.jdField_b_of_type_Boolean;
+      aavl localaavl = this.jdField_a_of_type_ComTencentBizQqcirclePolylikeQCirclePolyLikeAniView$2$1.jdField_a_of_type_Vpl.jdField_a_of_type_Aavl;
+      localQCirclePolyLikeAniView.startZanAni(localStPolyLike, localImageView, localView1, localView2, new int[] { i, j }, bool, localaavl);
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_ComTencentBizQqcirclePolylikeQCirclePolyLikeAniView$2$1.jdField_a_of_type_ComTencentMobileqqBubbleQQAnimationDrawable.stop();
+      return;
+      this.jdField_a_of_type_AndroidWidgetImageView.setAnimation(null);
+      this.jdField_a_of_type_ComTencentBizQqcirclePolylikeQCirclePolyLikeAniView$2$1.jdField_a_of_type_Vpl.jdField_a_of_type_ComTencentBizQqcirclePolylikeQCirclePolyLikeAniView.removeAllViews();
+      this.jdField_a_of_type_ComTencentBizQqcirclePolylikeQCirclePolyLikeAniView$2$1.jdField_a_of_type_Vpl.jdField_a_of_type_ComTencentBizQqcirclePolylikeQCirclePolyLikeAniView.setVisibility(8);
+    }
   }
   
-  public int hashCode()
+  public void a(int paramInt)
   {
-    if (this.a != null) {
-      return this.a.hashCode();
-    }
-    return 0;
+    QLog.d("QCirclePolymorphicAniView", 1, "create ain onPlay:");
   }
   
-  public String toString()
+  public void b()
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    if (this.b == null) {}
-    for (String str = "";; str = this.b) {
-      return str + this.a;
-    }
+    QLog.d("QCirclePolymorphicAniView", 1, "create ain start:");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     vpm
  * JD-Core Version:    0.7.0.1
  */

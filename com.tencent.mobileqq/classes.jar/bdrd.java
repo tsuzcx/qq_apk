@@ -1,26 +1,36 @@
-import android.os.Handler;
-import com.tencent.image.ApngDrawable.OnPlayRepeatListener;
-import com.tencent.image.ApngImage;
-import com.tencent.mobileqq.app.ThreadManagerV2;
-import com.tencent.mobileqq.vas.ApngQueuePlayer.RepeatListener.1;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.Map.Entry;
+import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
 
-public class bdrd
-  implements ApngDrawable.OnPlayRepeatListener
+class bdrd
+  extends anxg
 {
-  private int a;
+  bdrd(bdrb parambdrb) {}
   
-  bdrd(bdqz parambdqz) {}
-  
-  public void a(ApngImage paramApngImage)
+  protected void a(int paramInt1, int paramInt2, String paramString)
   {
-    this.jdField_a_of_type_Int = paramApngImage.apngLoop;
-    paramApngImage.setOnPlayRepeatListener(this);
+    if (QLog.isColorLevel()) {
+      QLog.d("TogetherControlManager", 2, "onTroopManagerSuccess,reqType=" + paramInt1 + ", result=" + paramInt2 + ", troopUin=" + paramString);
+    }
+    if ((paramInt2 == 0) && ((paramInt1 == 9) || (paramInt1 == 2)))
+    {
+      Iterator localIterator = bdrb.a(this.a).entrySet().iterator();
+      while (localIterator.hasNext()) {
+        ((bdrm)((Map.Entry)localIterator.next()).getValue()).a(paramInt1, paramInt2, paramString);
+      }
+    }
   }
   
-  public void onPlayRepeat(int paramInt)
+  protected void b(String paramString, int paramInt)
   {
-    if (paramInt == this.jdField_a_of_type_Int) {
-      ThreadManagerV2.getUIHandlerV2().post(new ApngQueuePlayer.RepeatListener.1(this));
+    if (QLog.isColorLevel()) {
+      QLog.d("TogetherControlManager", 2, "onPassiveExit, troopUin=" + paramString + ", reason=" + paramInt);
+    }
+    Iterator localIterator = bdrb.a(this.a).entrySet().iterator();
+    while (localIterator.hasNext()) {
+      ((bdrm)((Map.Entry)localIterator.next()).getValue()).a(paramString, paramInt);
     }
   }
 }

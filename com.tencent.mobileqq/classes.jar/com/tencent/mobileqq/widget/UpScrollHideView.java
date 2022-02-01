@@ -4,14 +4,14 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.widget.FrameLayout;
-import bewc;
+import bida;
 
 public class UpScrollHideView
   extends FrameLayout
 {
   private float jdField_a_of_type_Float;
   private int jdField_a_of_type_Int = -1;
-  private bewc jdField_a_of_type_Bewc;
+  private bida jdField_a_of_type_Bida;
   private int b;
   
   public UpScrollHideView(Context paramContext)
@@ -56,8 +56,8 @@ public class UpScrollHideView
     if (this.b > getHeight())
     {
       setVisibility(8);
-      if (this.jdField_a_of_type_Bewc != null) {
-        this.jdField_a_of_type_Bewc.a();
+      if (this.jdField_a_of_type_Bida != null) {
+        this.jdField_a_of_type_Bida.a();
       }
     }
     for (;;)
@@ -68,14 +68,14 @@ public class UpScrollHideView
     }
   }
   
-  public void setOnViewHideListener(bewc parambewc)
+  public void setOnViewHideListener(bida parambida)
   {
-    this.jdField_a_of_type_Bewc = parambewc;
+    this.jdField_a_of_type_Bida = parambida;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.widget.UpScrollHideView
  * JD-Core Version:    0.7.0.1
  */

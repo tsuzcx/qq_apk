@@ -1,21 +1,24 @@
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.base.videoupload.task.StoryVideoUploadTask;
+import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
+import java.util.List;
 
-public class uqj
-  implements upz
+class uqj
+  implements ukm
 {
-  public uqj(StoryVideoUploadTask paramStoryVideoUploadTask) {}
+  uqj(uqi paramuqi) {}
   
-  public void a(upy paramupy)
+  public List<ukn> a(int paramInt, boolean paramBoolean)
   {
-    ((uqf)this.a.a).j = ((upt)paramupy).b;
-    wxe.b("Q.qqstory.publish.upload:StoryVideoUploadTask", "make video thumbnail finish:%s", ((uqf)this.a.a).j);
-    this.a.a(1, new ErrorMessage());
+    return urc.a(this.a.a(), paramInt, paramBoolean);
+  }
+  
+  public boolean a()
+  {
+    return AppNetConnInfo.isWifiConn();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     uqj
  * JD-Core Version:    0.7.0.1
  */

@@ -1,107 +1,68 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import android.graphics.RectF;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import android.content.SharedPreferences;
+import android.os.Build.VERSION;
+import com.tencent.aekit.api.standard.AEModule;
+import com.tencent.aekit.api.standard.AEModuleConfig;
+import com.tencent.aekit.api.standard.AEModuleConfig.Builder;
+import com.tencent.aekit.api.standard.ai.AIManager;
+import com.tencent.aekit.openrender.AEOpenRenderConfig;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.shortvideo.resource.PtuFilterResource;
+import com.tencent.mobileqq.shortvideo.resource.Resources;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.sveffects.SLog;
+import com.tencent.sveffects.SdkContext;
+import com.tencent.ttpic.openai.ttpicmodule.AEGenderDetector;
+import com.tencent.ttpic.openai.ttpicmodule.AEHandDetector;
+import com.tencent.ttpic.openapi.offlineset.OfflineConfig;
+import com.tencent.ttpic.openapi.ttpicmodule.AECatDetector;
+import com.tencent.ttpic.openapi.ttpicmodule.PTEmotionDetector;
+import com.tencent.ttpic.openapi.ttpicmodule.module_hair_segment.PTHairSegmenter;
+import com.tencent.ttpic.openapi.ttpicmodule.module_human_segment.PTHumanSegmenter;
+import com.tencent.ttpic.openapi.ttpicmodule.module_sky_segment.PTSkySegmenter;
+import com.tencent.ttpic.openapi.util.CfConfig;
+import com.tencent.ttpic.video.AECoderFactory;
 
-class bndd
-  implements Animator.AnimatorListener
+public class bndd
 {
-  bndd(bndb parambndb) {}
+  private static boolean a;
   
-  public void onAnimationCancel(Animator paramAnimator)
+  public static boolean a()
   {
-    if (bndb.b(this.a))
-    {
-      bndb.a(this.a, false);
-      bndb.g(this.a, bndb.e(this.a));
-      if (bndb.e(this.a) != 1) {
-        break label53;
-      }
-      this.a.a(2);
+    if (a) {
+      return true;
     }
-    label53:
-    do
-    {
-      return;
-      if (bndb.e(this.a) == 3)
-      {
-        this.a.a(0);
-        return;
-      }
-    } while (bndb.e(this.a) != 4);
-    if ((bndb.a(this.a)) && (bndb.a(this.a) != null))
-    {
-      paramAnimator = (bndm)bndb.a(this.a).get();
-      if (paramAnimator != null)
-      {
-        RectF localRectF = bndb.a(this.a).a(bndb.f(this.a));
-        if (localRectF == null) {
-          break label183;
-        }
-        paramAnimator.a(bndb.e(this.a), bndb.f(this.a), localRectF);
-      }
+    if (!bnpy.a(bnpt.b)) {
+      return false;
     }
-    for (;;)
+    if (!b())
     {
-      bndb.b(this.a, false);
-      this.a.a(0);
-      return;
-      label183:
-      QLog.d("GroundDrawable", 2, "onGroundMarkSelected error 2 !! rc is null:" + bndb.f(this.a));
+      SLog.e("AEKitForQQ", "sdk version Limited!");
+      return false;
     }
+    bkel.a();
+    String str = SdkContext.getInstance().getResources().getPtuFilterResource().getSoPathDir();
+    BaseApplication localBaseApplication = BaseApplicationImpl.getContext();
+    SharedPreferences localSharedPreferences = bnyp.a().a();
+    AEOpenRenderConfig.setEnableStrictMode(false);
+    AEModule.initialize(localBaseApplication, AEModuleConfig.newBuilder().setLoadSo(false).setLutDir(str).setModelDir(str).setSoDir(str).setAuthMode(1).setPreferences(localSharedPreferences).setEnableDebug(false).setFramebufferFetchEnable(false).setEnableResourceCheck(false).setEnableProfiler(false).setEnableDefaultBasic3(false).build());
+    AECoderFactory.setAEDecoder(new bnde());
+    AECoderFactory.setAEEncoder(new bndf());
+    AIManager.registerDetector(AEHandDetector.class);
+    AIManager.registerDetector(AECatDetector.class);
+    AIManager.registerDetector(AEGenderDetector.class);
+    AIManager.registerDetector(PTEmotionDetector.class);
+    AIManager.registerDetector(PTHairSegmenter.class);
+    AIManager.registerDetector(PTSkySegmenter.class);
+    AIManager.registerDetector(PTHumanSegmenter.class);
+    dov.com.qq.im.ae.data.AEMaterialConfigParser.a = OfflineConfig.getPhonePerfLevel();
+    CfConfig.setDecryptListener(new bndg());
+    a = true;
+    return true;
   }
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public static boolean b()
   {
-    if (this.a.isRunning())
-    {
-      bndb.a(this.a, false);
-      bndb.f(this.a, bndb.e(this.a));
-      if (bndb.e(this.a) != 1) {
-        break label53;
-      }
-      this.a.a(2);
-    }
-    label53:
-    do
-    {
-      return;
-      if (bndb.e(this.a) == 3)
-      {
-        this.a.a(0);
-        return;
-      }
-    } while (bndb.e(this.a) != 4);
-    if ((bndb.a(this.a)) && (bndb.a(this.a) != null))
-    {
-      paramAnimator = (bndm)bndb.a(this.a).get();
-      if (paramAnimator != null)
-      {
-        RectF localRectF = bndb.a(this.a).a(bndb.f(this.a));
-        if (localRectF == null) {
-          break label183;
-        }
-        paramAnimator.a(bndb.e(this.a), bndb.f(this.a), localRectF);
-      }
-    }
-    for (;;)
-    {
-      bndb.b(this.a, false);
-      this.a.a(0);
-      return;
-      label183:
-      QLog.d("GroundDrawable", 2, "onGroundMarkSelected error!! rc is null:" + bndb.f(this.a));
-    }
-  }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    if (this.a.isRunning()) {
-      bndb.e(this.a, bndb.e(this.a));
-    }
+    return (AEModule.isAeKitSupportVersion()) && (Build.VERSION.SDK_INT >= 21);
   }
 }
 

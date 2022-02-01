@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.app;
 
-import abti;
+import acwh;
 import android.content.SharedPreferences;
-import bdmm;
+import bgro;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
@@ -28,12 +28,24 @@ public class DeviceProfileManager$AccountDpcManager
   {
     this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
     this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
-    this.jdField_a_of_type_JavaLangString = abti.a(paramAppInterface.getCurrentAccountUin());
-    if (BaseApplicationImpl.sProcessId != 9) {}
-    for (boolean bool = true;; bool = false)
+    try
     {
-      a(bool);
-      return;
+      this.jdField_a_of_type_JavaLangString = acwh.a(paramAppInterface.getCurrentAccountUin());
+      if (BaseApplicationImpl.sProcessId != 9)
+      {
+        bool = true;
+        a(bool);
+        return;
+      }
+    }
+    catch (NoClassDefFoundError paramAppInterface)
+    {
+      for (;;)
+      {
+        paramAppInterface.printStackTrace();
+        continue;
+        boolean bool = false;
+      }
     }
   }
   
@@ -42,7 +54,7 @@ public class DeviceProfileManager$AccountDpcManager
     if (paramAppInterface == null) {
       return "";
     }
-    return abti.a(paramAppInterface.getCurrentAccountUin()) + "_" + paramString;
+    return acwh.a(paramAppInterface.getCurrentAccountUin()) + "_" + paramString;
   }
   
   private String a(String paramString)
@@ -70,7 +82,7 @@ public class DeviceProfileManager$AccountDpcManager
     if (!paramBoolean) {
       return;
     }
-    SharedPreferences localSharedPreferences = bdmm.a(BaseApplicationImpl.getApplication(), "dpcConfig_account");
+    SharedPreferences localSharedPreferences = bgro.a(BaseApplicationImpl.getApplication(), "dpcConfig_account");
     DeviceProfileManager.AccountDpcManager.DpcAccountNames[] arrayOfDpcAccountNames = DeviceProfileManager.AccountDpcManager.DpcAccountNames.values();
     int j = arrayOfDpcAccountNames.length;
     int i = 0;

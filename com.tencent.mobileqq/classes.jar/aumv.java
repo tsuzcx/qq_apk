@@ -1,147 +1,93 @@
-import android.content.Context;
-import android.os.SystemClock;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.TextView;
-import com.tencent.mobileqq.data.IntimateInfo;
-import com.tencent.mobileqq.multicard.MultiCardFragment;
+import android.text.TextUtils;
+import android.widget.LinearLayout;
+import com.tencent.mobileqq.app.IphoneTitleBarActivity;
+import com.tencent.mobileqq.fragment.NearbyHybridFragment;
+import com.tencent.mobileqq.nearby.NearbyAppInterface;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.pb.now.ilive_feeds_near_anchor.NearAnchorInfo;
+import com.tencent.protobuf.nearbyPeopleRecommend.nearbyPeopleRecommend.QueryRspItem;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
+import java.util.List;
 
 public class aumv
-  implements View.OnClickListener, aunp, aunq, aunr
+  extends anqw
 {
-  private long jdField_a_of_type_Long;
-  public Context a;
-  private View jdField_a_of_type_AndroidViewView;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  auno jdField_a_of_type_Auno;
-  MultiCardFragment jdField_a_of_type_ComTencentMobileqqMulticardMultiCardFragment;
-  private Long jdField_a_of_type_JavaLangLong;
-  public boolean a;
+  public aumv(NearbyHybridFragment paramNearbyHybridFragment) {}
   
-  private void b(boolean paramBoolean)
+  public void a(List<nearbyPeopleRecommend.QueryRspItem> paramList)
   {
-    View localView;
-    if (this.jdField_a_of_type_AndroidViewView != null)
+    if ((this.a.b.getVisibility() == 0) && (paramList != null))
     {
-      localView = this.jdField_a_of_type_AndroidViewView.findViewById(2131378765);
-      if (localView != null) {
-        if (!paramBoolean) {
-          break label33;
-        }
-      }
+      paramList = (nearbyPeopleRecommend.QueryRspItem)paramList.get(0);
+      axzy.a(paramList.msg_id.get(), paramList.rd_people.get());
+      NearbyHybridFragment.a(this.a);
     }
-    label33:
-    for (int i = 0;; i = 8)
+  }
+  
+  public void a(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8, int paramInt9, String paramString1, String paramString2, String paramString3)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("nearby.NearbyHybridFragment", 2, "onSetFilterList");
+    }
+    axbu localaxbu = new axbu();
+    localaxbu.jdField_a_of_type_Int = paramInt1;
+    localaxbu.jdField_b_of_type_Int = paramInt2;
+    localaxbu.jdField_c_of_type_Int = paramInt3;
+    localaxbu.jdField_d_of_type_Int = paramInt4;
+    localaxbu.e = paramInt9;
+    localaxbu.f = paramInt5;
+    localaxbu.jdField_d_of_type_ArrayOfJavaLangString[0] = String.valueOf(paramInt6);
+    localaxbu.jdField_d_of_type_ArrayOfJavaLangString[1] = String.valueOf(paramInt7);
+    localaxbu.jdField_d_of_type_ArrayOfJavaLangString[2] = String.valueOf(paramInt8);
+    localaxbu.jdField_b_of_type_JavaLangString = paramString1;
+    localaxbu.jdField_c_of_type_JavaLangString = paramString2;
+    localaxbu.jdField_d_of_type_JavaLangString = paramString3;
+    StringBuilder localStringBuilder = new StringBuilder();
+    if (!TextUtils.isEmpty(paramString1)) {
+      localStringBuilder.append(paramString1);
+    }
+    if (!TextUtils.isEmpty(paramString2)) {
+      localStringBuilder.append("-").append(paramString2);
+    }
+    if (!TextUtils.isEmpty(paramString3)) {
+      localStringBuilder.append("-").append(paramString3);
+    }
+    paramString2 = localStringBuilder.toString();
+    paramString1 = paramString2;
+    if (TextUtils.isEmpty(paramString2)) {
+      paramString1 = "不限";
+    }
+    localaxbu.jdField_a_of_type_JavaLangString = paramString1;
+    if (!localaxbu.equals(this.a.jdField_a_of_type_Axbu)) {
+      localaxbu.jdField_a_of_type_Boolean = true;
+    }
+    this.a.jdField_a_of_type_Axbu = localaxbu;
+    if ((((aqlc)this.a.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface.getManager(210)).a() == 0) && (this.a.jdField_a_of_type_Axbu != null) && (this.a.jdField_a_of_type_Axbu.jdField_a_of_type_Boolean)) {
+      axbu.a(this.a.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface.getCurrentAccountUin(), this.a.jdField_a_of_type_Axbu);
+    }
+  }
+  
+  protected void a(boolean paramBoolean, List<ilive_feeds_near_anchor.NearAnchorInfo> paramList)
+  {
+    QLog.e("nearby.NearbyHybridFragment", 2, "onNearbyLiveFeedAnchor isSucc:" + paramBoolean);
+    if ((paramBoolean) && (paramList.size() > 0))
     {
-      localView.setVisibility(i);
+      this.a.jdField_a_of_type_Axcj.b(paramList);
       return;
     }
+    this.a.jdField_a_of_type_Axcj.b(null);
   }
   
-  public View a()
+  public void b()
   {
-    return this.jdField_a_of_type_AndroidViewView;
-  }
-  
-  public void a()
-  {
-    a(false);
-  }
-  
-  public void a(long paramLong, ArrayList<Long> paramArrayList)
-  {
-    if (this.jdField_a_of_type_Long != paramLong) {}
-    do
-    {
-      return;
-      if ((paramArrayList == null) || (paramArrayList.size() == 0))
-      {
-        b(true);
-        a(null);
-        return;
-      }
-      b(false);
-    } while (this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardFragment == null);
-    this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardFragment.a(paramArrayList, null, null);
-  }
-  
-  public void a(long paramLong, HashMap<Long, String> paramHashMap)
-  {
-    if ((this.jdField_a_of_type_Long != paramLong) || (paramHashMap == null)) {}
-    while (this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardFragment == null) {
-      return;
-    }
-    this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardFragment.a(null, null, paramHashMap);
-  }
-  
-  public void a(String paramString)
-  {
-    if ((!this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_AndroidWidgetTextView != null)) {
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(null);
-    }
-  }
-  
-  public void a(ArrayList<Long> paramArrayList, boolean paramBoolean1, boolean paramBoolean2)
-  {
-    if (paramArrayList == null) {}
-    do
-    {
-      do
-      {
-        return;
-        if (QLog.isColorLevel())
-        {
-          StringBuilder localStringBuilder = new StringBuilder();
-          localStringBuilder.append("onPreLoadData : ");
-          localStringBuilder.append(paramArrayList.size());
-          localStringBuilder.append("  ");
-          Iterator localIterator = paramArrayList.iterator();
-          while (localIterator.hasNext())
-          {
-            localStringBuilder.append((Long)localIterator.next());
-            localStringBuilder.append(" ");
-          }
-          QLog.d("MultiCardContainer", 2, "onPreLoadData : " + localStringBuilder.toString());
-        }
-      } while (this.jdField_a_of_type_Auno == null);
-      if (paramBoolean1) {
-        this.jdField_a_of_type_Auno.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Long, paramArrayList, this);
-      }
-    } while (!paramBoolean2);
-    this.jdField_a_of_type_Auno.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Long, paramArrayList, this);
-  }
-  
-  public void a(HashMap<Long, IntimateInfo> paramHashMap)
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardFragment != null) {
-      this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardFragment.a(null, paramHashMap, null);
-    }
-  }
-  
-  public void a(boolean paramBoolean) {}
-  
-  public void onClick(View paramView)
-  {
-    long l = SystemClock.elapsedRealtime();
-    if ((this.jdField_a_of_type_JavaLangLong != null) && (l - this.jdField_a_of_type_JavaLangLong.longValue() < 500L)) {
-      return;
-    }
-    this.jdField_a_of_type_JavaLangLong = Long.valueOf(l);
-    switch (paramView.getId())
-    {
-    default: 
-      return;
-    }
-    a(true);
+    this.a.jdField_a_of_type_ComTencentMobileqqAppIphoneTitleBarActivity.finish();
+    this.a.jdField_a_of_type_ComTencentMobileqqAppIphoneTitleBarActivity.overridePendingTransition(0, 0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aumv
  * JD-Core Version:    0.7.0.1
  */

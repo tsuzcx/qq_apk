@@ -1,9 +1,9 @@
 package com.tencent.biz.pubaccount.readinjoy.activity;
 
 import com.tencent.biz.pubaccount.readinjoy.engine.KandianMergeManager;
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoySelfFragment;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyBaseFragment;
 import com.tencent.mobileqq.app.QQAppInterface;
-import qzi;
+import rvd;
 
 class ReadInJoySelfActivity$1
   implements Runnable
@@ -12,12 +12,12 @@ class ReadInJoySelfActivity$1
   
   public void run()
   {
-    this.this$0.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInJoySelfFragment.a();
-    qzi localqzi;
+    this.this$0.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInJoyBaseFragment.l();
+    rvd localrvd;
     String str;
     if (this.this$0.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineKandianMergeManager != null)
     {
-      localqzi = qzi.a();
+      localrvd = rvd.a();
       str = this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
       if (!this.this$0.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineKandianMergeManager.i()) {
         break label57;
@@ -26,7 +26,7 @@ class ReadInJoySelfActivity$1
     label57:
     for (int i = 0;; i = 1)
     {
-      localqzi.a(str, i);
+      localrvd.a(str, i);
       return;
     }
   }

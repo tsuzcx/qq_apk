@@ -1,37 +1,28 @@
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.ocr.activity.ScanOcrActivity;
 
-public class avxm
-  implements View.OnTouchListener
+class avxm
+  implements bkhw
 {
-  public avxm(ScanOcrActivity paramScanOcrActivity) {}
+  avxm(avxl paramavxl, bkho parambkho) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void OnClick(View paramView, int paramInt)
   {
-    switch (paramMotionEvent.getAction())
+    switch (paramInt)
     {
     }
     for (;;)
     {
-      return false;
-      if (paramView == ScanOcrActivity.a(this.a))
-      {
-        paramView.setAlpha(0.7F);
-      }
-      else
-      {
-        paramView.setAlpha(0.5F);
-        continue;
-        paramView.setAlpha(1.0F);
-      }
+      this.jdField_a_of_type_Bkho.e();
+      return;
+      avxl.a(this.jdField_a_of_type_Avxl);
+      continue;
+      avxl.b(this.jdField_a_of_type_Avxl);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     avxm
  * JD-Core Version:    0.7.0.1
  */

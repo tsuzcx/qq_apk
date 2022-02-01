@@ -1,19 +1,63 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.listentogether.fragment.ListenTogetherOverlayFragment;
+import android.text.TextUtils;
+import com.tencent.mobileqq.colornote.data.ColorNote;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class atna
-  implements DialogInterface.OnCancelListener
+  implements aqck
 {
-  public atna(ListenTogetherOverlayFragment paramListenTogetherOverlayFragment, atnw paramatnw) {}
+  private FileManagerEntity a;
   
-  public void onCancel(DialogInterface paramDialogInterface)
+  public atna(FileManagerEntity paramFileManagerEntity)
   {
-    this.jdField_a_of_type_Atnw.b(false);
-    if (!ListenTogetherOverlayFragment.a(this.jdField_a_of_type_ComTencentMobileqqListentogetherFragmentListenTogetherOverlayFragment).isFinishing()) {
-      ListenTogetherOverlayFragment.a(this.jdField_a_of_type_ComTencentMobileqqListentogetherFragmentListenTogetherOverlayFragment).finish();
+    this.a = paramFileManagerEntity;
+  }
+  
+  private String a()
+  {
+    String str = "";
+    try
+    {
+      JSONObject localJSONObject = new JSONObject();
+      if (this.a != null)
+      {
+        localJSONObject.put("file_color_note_peerType", this.a.peerType);
+        localJSONObject.put("file_color_note_peerUin", this.a.peerUin);
+        localJSONObject.put("file_color_note_uniSeq", this.a.uniseq);
+        localJSONObject.put("file_color_note_sessionId", this.a.nSessionId);
+        str = localJSONObject.toString();
+      }
+      return str;
     }
+    catch (JSONException localJSONException) {}
+    return "";
+  }
+  
+  public ColorNote getColorNote()
+  {
+    if (this.a == null)
+    {
+      QLog.i("OfflineFileColorNoteServiceInfo", 1, "getColorNote: offline file info is null.");
+      return null;
+    }
+    aqcs localaqcs = new aqcs();
+    localaqcs.a(17039360);
+    String str = atwt.b(1, this.a.nSessionId + "");
+    if (QLog.isColorLevel()) {
+      QLog.i("OfflineFileColorNoteServiceInfo", 2, "getColorNote: file colorNote key [" + str + "] fileId[" + this.a.Uuid + "]");
+    }
+    localaqcs.a(str);
+    localaqcs.b(this.a.fileName);
+    localaqcs.c(atwl.a(this.a.fileSize));
+    int i = atvo.a(atvo.a(this.a.fileName));
+    localaqcs.d("resdrawable://" + i);
+    str = a();
+    if (!TextUtils.isEmpty(str)) {
+      localaqcs.a(str.getBytes());
+    }
+    return localaqcs.a();
   }
 }
 

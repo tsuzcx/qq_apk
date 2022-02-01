@@ -1,131 +1,171 @@
+import android.content.Context;
+import android.content.res.Resources;
 import android.os.Handler;
+import android.os.Message;
 import android.text.TextUtils;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.apollo.view.ApolloGameViewBinder.ISessionHandler.1;
-import com.tencent.mobileqq.apollo.view.ApolloGameViewBinder.ISessionHandler.2;
-import com.tencent.mobileqq.apollo.view.ApolloGameViewBinder.ISessionHandler.3;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ApolloActionData;
-import com.tencent.mobileqq.data.ApolloGameData;
+import android.util.DisplayMetrics;
+import android.view.View;
+import android.widget.ProgressBar;
+import android.widget.TextView;
+import com.tencent.biz.qqstory.takevideo.music.MusicHorizontalSeekView;
+import com.tencent.mobileqq.activity.richmedia.p2veffect.music.P2VEditMusicDialog;
+import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
 
 public class allw
-  extends akvk
+  extends Handler
 {
-  public int a;
-  private WeakReference<alln> a;
+  public allw(P2VEditMusicDialog paramP2VEditMusicDialog) {}
   
-  public allw(alln paramalln)
+  public void handleMessage(Message paramMessage)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramalln);
-  }
-  
-  public void a(int paramInt1, String paramString1, long paramLong, String paramString2, int paramInt2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ApolloGameViewBinder", 2, new Object[] { "[onQueryVirtualRoomInfo] errCode=", Long.valueOf(paramLong), ", gameId=", Integer.valueOf(paramInt1), ", resultStr=", paramString2 });
-    }
-    if (this.jdField_a_of_type_Int != paramInt2)
+    super.handleMessage(paramMessage);
+    switch (paramMessage.what)
     {
-      QLog.e("ApolloGameViewBinder", 1, "[onQueryVirtualRoomInfo] mCreateRoomReqCode != reqCode");
-      return;
-    }
-    alln localalln = (alln)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (localalln == null)
-    {
-      QLog.e("ApolloGameViewBinder", 1, "[onQueryVirtualRoomInfo] viewBinder null");
-      return;
-    }
-    if (alln.a(localalln) == null)
-    {
-      QLog.e("ApolloGameViewBinder", 1, "[onQueryVirtualRoomInfo] viewBinder app null");
-      return;
-    }
-    ApolloGameData localApolloGameData = ((aliw)alln.a(localalln).getManager(155)).a(paramInt1);
-    if (localApolloGameData == null)
-    {
-      QLog.e("ApolloGameViewBinder", 1, "[onQueryVirtualRoomInfo] gameData null");
-      return;
-    }
-    if (paramLong == 0L)
-    {
-      akvf.a(alln.a(localalln), paramString1, paramString2);
-      return;
-    }
-    if (paramLong == -300404L)
-    {
-      alln.a(localalln).post(new ApolloGameViewBinder.ISessionHandler.1(this, localalln, localApolloGameData));
-      return;
-    }
-    if (paramLong == -300405L)
-    {
-      alln.a(localalln).post(new ApolloGameViewBinder.ISessionHandler.2(this, localalln, localApolloGameData));
-      return;
-    }
-    QLog.e("ApolloGameViewBinder", 1, new Object[] { "[onQueryVirtualRoomInfo] errCode=", Long.valueOf(paramLong) });
-    alln.a(localalln).post(new ApolloGameViewBinder.ISessionHandler.3(this, localalln));
-  }
-  
-  public void a(boolean paramBoolean, int paramInt1, long paramLong, int paramInt2)
-  {
-    alln localalln = (alln)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (localalln == null) {
-      break label17;
-    }
-    label17:
-    while (alln.a(localalln) == null) {
-      return;
-    }
-    if (this.jdField_a_of_type_Int != paramInt2)
-    {
-      QLog.e("ApolloGameViewBinder", 1, "onCreateRoomId mCreateRoomReqCode != reqCode");
-      return;
-    }
-    if (!paramBoolean)
-    {
-      QLog.e("ApolloGameViewBinder", 1, "onCreateRoomId createSuccess:false");
-      return;
-    }
-    super.a(paramBoolean, paramInt1, paramLong, paramInt2);
-    alnf localalnf = new alnf();
-    Object localObject = (aliw)alln.a(localalln).getManager(155);
-    String str = alud.a(2131700728);
-    ApolloGameData localApolloGameData = ((aliw)localObject).a(paramInt1);
-    if ((localApolloGameData != null) && (!TextUtils.isEmpty(localApolloGameData.name)))
-    {
-      localObject = ((aliw)localObject).a(localApolloGameData.actionId);
-      if (localObject == null) {
-        break label296;
-      }
-      str = ((ApolloActionData)localObject).actionName;
-    }
-    label296:
-    for (;;)
-    {
-      paramInt2 = localApolloGameData.actionId;
-      localalnf.jdField_b_of_type_JavaLangString = localApolloGameData.name;
-      for (;;)
+    case 4: 
+    case 5: 
+    case 10: 
+    default: 
+    case 1: 
+    case 2: 
+      do
       {
-        localalnf.jdField_a_of_type_JavaLangString = str;
-        localalnf.jdField_b_of_type_Int = paramInt2;
-        localalnf.jdField_a_of_type_Long = paramLong;
-        localalnf.jdField_a_of_type_Int = paramInt1;
-        localalnf.d = 3;
-        localalnf.e = 0;
-        if ((alln.a(localalln) == null) || (alln.a(localalln) == null)) {
-          break;
-        }
-        akvf.a(alln.a(localalln), alln.a(localalln).jdField_a_of_type_JavaLangString, localalnf);
-        if (!akvs.a(alln.a(localalln).jdField_a_of_type_JavaLangString)) {
-          break;
-        }
-        ((aknx)alln.a(localalln).getManager(153)).a().b(alln.a(localalln).jdField_a_of_type_JavaLangString, paramInt1, paramLong);
+        do
+        {
+          return;
+          this.a.b();
+          if (this.a.jdField_a_of_type_Zdt != null)
+          {
+            this.a.jdField_a_of_type_Zdt.a(this.a.jdField_a_of_type_JavaUtilArrayList);
+            this.a.jdField_a_of_type_Zdt.notifyDataSetChanged();
+          }
+          paramMessage = this.a.jdField_a_of_type_Ally.a();
+          if (this.a.jdField_a_of_type_Zdt != null) {
+            this.a.jdField_a_of_type_Zdt.a(paramMessage);
+          }
+          if (paramMessage == null) {
+            break;
+          }
+          if (paramMessage.jdField_b_of_type_Int == 0)
+          {
+            this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(3);
+            return;
+          }
+          if (paramMessage.jdField_b_of_type_Int == 1)
+          {
+            this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(6);
+            return;
+          }
+          if (!TextUtils.isEmpty(paramMessage.g))
+          {
+            this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(2);
+            return;
+          }
+        } while (!this.a.jdField_a_of_type_Boolean);
+        this.a.jdField_a_of_type_Boolean = false;
+        this.a.a(paramMessage);
         return;
-        localalnf.jdField_b_of_type_JavaLangString = alud.a(2131700768);
-        paramInt2 = 0;
+        if (!this.a.jdField_a_of_type_Ally.c())
+        {
+          this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(3);
+          return;
+        }
+        this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(6);
+        return;
+        this.a.b();
+        paramMessage = this.a.jdField_a_of_type_Ally.a();
+        if (paramMessage != null) {
+          break;
+        }
+      } while (!QLog.isColorLevel());
+      QLog.e(P2VEditMusicDialog.a(), 2, "MSG_PLAY_MUSIC music is NULL!!!!!");
+      return;
+      if (paramMessage.g == null)
+      {
+        QLog.e(P2VEditMusicDialog.a(), 2, "MSG_PLAY_MUSIC music.download_path is NULL!!!!!");
+        return;
       }
+      paramMessage.f = ((int)ShortVideoUtils.a(paramMessage.g));
+      if (paramMessage.d < 0) {
+        paramMessage.d = 0;
+      }
+      if (paramMessage.d + this.a.jdField_a_of_type_Int > paramMessage.f) {
+        paramMessage.d = 0;
+      }
+      paramMessage.e = (paramMessage.d + this.a.jdField_a_of_type_Int);
+      this.a.jdField_a_of_type_Ally.a(3);
+      this.a.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(8);
+      this.a.jdField_b_of_type_AndroidViewView.setVisibility(0);
+      this.a.jdField_a_of_type_AndroidViewView.setVisibility(0);
+      this.a.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
+      this.a.jdField_a_of_type_AndroidWidgetTextView.setText(paramMessage.jdField_b_of_type_JavaLangString);
+      this.a.c();
+      MusicHorizontalSeekView.a((this.a.a() + 500) / 1000, this.a.getContext().getResources().getDisplayMetrics().widthPixels - bgtn.a(8.0F));
+      this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoMusicMusicHorizontalSeekView.setDurations((this.a.a() + 500) / 1000, (Math.max(paramMessage.f, this.a.jdField_a_of_type_Int) + 500) / 1000);
+      this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoMusicMusicHorizontalSeekView.a(paramMessage.d);
+      this.a.b(paramMessage.d, paramMessage.e);
+      return;
+    case 11: 
+      this.a.b();
+      paramMessage = this.a.jdField_a_of_type_Zdw;
+      paramMessage.f = ((int)ShortVideoUtils.a(paramMessage.g));
+      if (paramMessage.d < 0) {
+        paramMessage.d = 0;
+      }
+      if (paramMessage.d + this.a.jdField_a_of_type_Int > paramMessage.f) {
+        paramMessage.d = 0;
+      }
+      paramMessage.e = (paramMessage.d + this.a.jdField_a_of_type_Int);
+      this.a.jdField_a_of_type_Ally.a(paramMessage);
+      this.a.jdField_a_of_type_Ally.a(3);
+      this.a.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(8);
+      this.a.jdField_b_of_type_AndroidViewView.setVisibility(0);
+      this.a.jdField_a_of_type_AndroidViewView.setVisibility(0);
+      this.a.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
+      this.a.jdField_a_of_type_AndroidWidgetTextView.setText(paramMessage.jdField_b_of_type_JavaLangString);
+      this.a.c();
+      this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoMusicMusicHorizontalSeekView.setDurations((this.a.a() + 500) / 1000, (Math.max(paramMessage.f, this.a.jdField_a_of_type_Int) + 500) / 1000);
+      this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoMusicMusicHorizontalSeekView.a(paramMessage.d);
+      this.a.b(paramMessage.d, paramMessage.e);
+      return;
+    case 3: 
+      this.a.b();
+      this.a.jdField_a_of_type_Ally.a(zdw.jdField_a_of_type_Zdw);
+      this.a.jdField_a_of_type_Ally.a(0);
+      this.a.jdField_a_of_type_AndroidWidgetTextView.setText("");
+      this.a.jdField_b_of_type_AndroidWidgetTextView.setText(anni.a(2131706632));
+      this.a.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
+      this.a.jdField_a_of_type_AndroidViewView.setVisibility(8);
+      return;
+    case 6: 
+      this.a.b();
+      this.a.jdField_a_of_type_Ally.a(zdw.jdField_b_of_type_Zdw);
+      this.a.jdField_a_of_type_Ally.a(1);
+      this.a.jdField_a_of_type_AndroidWidgetTextView.setText("");
+      this.a.jdField_b_of_type_AndroidWidgetTextView.setText(anni.a(2131706631));
+      this.a.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
+      this.a.jdField_a_of_type_AndroidViewView.setVisibility(8);
+      P2VEditMusicDialog.a(this.a);
+      return;
+    case 7: 
+      paramMessage = (String)paramMessage.obj;
+      QQToast.a(this.a.getContext(), paramMessage, 0).a();
+      return;
+    case 8: 
+      this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoMusicMusicHorizontalSeekView.setPlayedPosition(this.a.jdField_b_of_type_Int);
+      return;
+    case 9: 
+      if (this.a.jdField_a_of_type_AndroidWidgetProgressBar.getVisibility() != 0)
+      {
+        this.a.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(0);
+        this.a.jdField_b_of_type_AndroidViewView.setVisibility(8);
+      }
+      this.a.jdField_a_of_type_AndroidWidgetProgressBar.setProgress(paramMessage.arg1);
+      return;
     }
+    paramMessage = (zdw)paramMessage.obj;
+    this.a.b(paramMessage);
   }
 }
 

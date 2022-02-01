@@ -1,27 +1,28 @@
-import android.util.Property;
-import dov.com.tencent.biz.qqstory.takevideo.speedpicker.PickerContainer;
+import android.arch.lifecycle.Observer;
+import android.support.annotation.Nullable;
+import dov.com.qq.im.ae.camera.ui.topbar.AEVideoStoryTopBarViewModel.Ratio;
+import dov.com.qq.im.ae.mode.AECaptureMode;
 
-public class bneb
-  extends Property<PickerContainer, Float>
+class bneb
+  implements Observer<AEVideoStoryTopBarViewModel.Ratio>
 {
-  public bneb(PickerContainer paramPickerContainer, Class paramClass, String paramString)
-  {
-    super(paramClass, paramString);
-  }
+  bneb(bndy parambndy) {}
   
-  public Float a(PickerContainer paramPickerContainer)
+  public void a(@Nullable AEVideoStoryTopBarViewModel.Ratio paramRatio)
   {
-    if (paramPickerContainer != null) {
-      return PickerContainer.a(paramPickerContainer);
-    }
-    return Float.valueOf(1.0F);
-  }
-  
-  public void a(PickerContainer paramPickerContainer, Float paramFloat)
-  {
-    if (paramPickerContainer != null) {
-      PickerContainer.a(paramPickerContainer, paramFloat);
-    }
+    bnzb.b("AEPituCameraUnit", "mCurrentRatio---onChanged: ratio=" + paramRatio);
+    if (paramRatio == null) {}
+    do
+    {
+      do
+      {
+        return;
+      } while (bndy.a(this.a) == paramRatio);
+      bndy.a(this.a, paramRatio);
+      bnyp.a().a("sp_key_ae_camera_ratio", paramRatio.code, 0);
+    } while (bndy.b(this.a) != AECaptureMode.NORMAL);
+    bndy.f(this.a);
+    bndy.g(this.a);
   }
 }
 

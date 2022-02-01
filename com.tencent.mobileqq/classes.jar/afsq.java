@@ -1,18 +1,36 @@
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.activity.aio.item.ShortVideoRealItemBuilder;
-import com.tencent.mobileqq.data.ChatMessage;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.activateFriend.ActivateFriendView;
+import com.tencent.mobileqq.activity.activateFriend.ActivateFriendViewItem;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class afsq
-  extends afuf
+public class afsq
+  implements View.OnClickListener
 {
-  afsq(afpy paramafpy)
-  {
-    super(paramafpy, null);
-  }
+  public afsq(ActivateFriendView paramActivateFriendView) {}
   
-  protected aeqy a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
+  public void onClick(View paramView)
   {
-    return new ShortVideoRealItemBuilder(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner);
+    ActivateFriendViewItem localActivateFriendViewItem = (ActivateFriendViewItem)paramView;
+    if (localActivateFriendViewItem.a)
+    {
+      ActivateFriendView.a(this.a);
+      if (localActivateFriendViewItem.a) {
+        break label82;
+      }
+    }
+    label82:
+    for (boolean bool = true;; bool = false)
+    {
+      localActivateFriendViewItem.setChecked(bool);
+      if (ActivateFriendView.a(this.a) != null) {
+        ActivateFriendView.a(this.a).a(ActivateFriendView.c(this.a));
+      }
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      ActivateFriendView.b(this.a);
+      break;
+    }
   }
 }
 

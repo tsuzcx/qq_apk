@@ -1,21 +1,21 @@
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
-
-class oqb
-  implements ViewBase.OnClickListener
+public class oqb
 {
-  oqb(opz paramopz) {}
-  
-  public void onClick(ViewBase paramViewBase)
+  public static boolean a(int paramInt)
   {
-    if (this.a.a != null) {
-      opy.a(this.a.a, paramViewBase);
+    if (!pfq.a()) {
+      return false;
     }
+    switch (paramInt)
+    {
+    default: 
+      return false;
+    }
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     oqb
  * JD-Core Version:    0.7.0.1
  */

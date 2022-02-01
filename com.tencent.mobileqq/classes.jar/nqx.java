@@ -1,21 +1,33 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.biz.pubaccount.PublicAccountJavascriptInterface;
+import com.tencent.biz.pubaccount.AccountDetail.model.AccountDetailVideoManager.5;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.InstallListener;
 
 public class nqx
-  implements DialogInterface.OnClickListener
+  implements TVK_SDKMgr.InstallListener
 {
-  public nqx(PublicAccountJavascriptInterface paramPublicAccountJavascriptInterface, String paramString) {}
+  public nqx(AccountDetailVideoManager.5 param5) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onInstallProgress(float paramFloat) {}
+  
+  public void onInstalledFailed(int paramInt)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountJavascriptInterface.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "-3", "{}" });
-    this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountJavascriptInterface.a = true;
+    if (QLog.isColorLevel()) {
+      QLog.d("AccountDetailVideoManager", 2, "installSDK onInstalledFailed arg0=" + paramInt);
+    }
+    nqt.a = false;
+  }
+  
+  public void onInstalledSuccessed()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("AccountDetailVideoManager", 2, "installSDK onInstalledSuccessed");
+    }
+    nqt.a = true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     nqx
  * JD-Core Version:    0.7.0.1
  */

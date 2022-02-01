@@ -9,17 +9,17 @@
         </RelativeLayout>
     </RelativeLayout>
     <include android:visibility="visible" android:layout_width="fill_parent" android:layout_height="fill_parent" layout="@layout/hg" />
-    <com.tencent.mobileqq.activity.contacts.view.pullrefresh.CommonRefreshLayout android:id="@id/j8z" android:background="@drawable/bg_texture_theme_version2" android:layout_width="fill_parent" android:layout_height="fill_parent">
+    <com.tencent.mobileqq.activity.contacts.pullrefresh.CommonRefreshLayout android:id="@id/j8z" android:background="@drawable/bg_texture_theme_version2" android:layout_width="fill_parent" android:layout_height="fill_parent">
         <include android:id="@id/j8x" layout="@layout/ib" />
         <FrameLayout android:id="@id/j8y" android:layout_width="fill_parent" android:layout_height="fill_parent">
             <ImageView android:id="@id/b8c" android:layout_width="fill_parent" android:layout_height="fill_parent" android:src="@drawable/bg_texture_theme_version2" android:scaleType="centerCrop" />
-            <com.tencent.mobileqq.activity.contacts.view.HeaderScrollView android:orientation="vertical" android:id="@id/b8a" android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <com.tencent.mobileqq.activity.contacts.base.HeaderScrollView android:orientation="vertical" android:id="@id/b8a" android:layout_width="fill_parent" android:layout_height="fill_parent">
                 <include android:id="@id/b7z" android:layout_width="fill_parent" android:layout_height="wrap_content" layout="@layout/i5" />
                 <FrameLayout android:background="@drawable/jh" android:layout_width="fill_parent" android:layout_height="wrap_content">
-                    <com.tencent.mobileqq.activity.contacts.view.SimpleSlidingIndicator android:textSize="16.0dip" android:id="@id/ixv" android:layout_width="fill_parent" android:layout_height="56.0dip" app:checkTextColor="@color/hd" app:indicatorAlpha="25" app:indicatorColor="@color/hd" app:indicatorMarginLeftRight="14.0dip" app:indicatorMarginTopBottom="12.0dip" app:indicatorRoundRectX="16.0dip" app:indicatorRoundRectY="16.0dip" app:tabContainerPaddingLeftRight="16.0dip" app:tabGap="2.0dip" app:tabPaddingLeftRight="14.0dip" app:uncheckTextColor="@color/skin_gray2_theme_version2" />
+                    <com.tencent.mobileqq.activity.contacts.base.tabs.SimpleSlidingIndicator android:textSize="16.0dip" android:id="@id/ixv" android:layout_width="fill_parent" android:layout_height="56.0dip" app:checkTextColor="@color/hd" app:indicatorAlpha="25" app:indicatorColor="@color/hd" app:indicatorMarginLeftRight="14.0dip" app:indicatorMarginTopBottom="12.0dip" app:indicatorRoundRectX="16.0dip" app:indicatorRoundRectY="16.0dip" app:tabContainerPaddingLeftRight="16.0dip" app:tabGap="2.0dip" app:tabPaddingLeftRight="14.0dip" app:uncheckTextColor="@color/skin_gray2_theme_version2" />
                 </FrameLayout>
-                <com.tencent.mobileqq.activity.contacts.view.ContactsViewPager android:id="@id/b8d" android:layout_width="fill_parent" android:layout_height="wrap_content" />
-            </com.tencent.mobileqq.activity.contacts.view.HeaderScrollView>
+                <com.tencent.mobileqq.activity.contacts.base.tabs.ContactsViewPager android:id="@id/b8d" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+            </com.tencent.mobileqq.activity.contacts.base.HeaderScrollView>
         </FrameLayout>
-    </com.tencent.mobileqq.activity.contacts.view.pullrefresh.CommonRefreshLayout>
+    </com.tencent.mobileqq.activity.contacts.pullrefresh.CommonRefreshLayout>
 </LinearLayout>

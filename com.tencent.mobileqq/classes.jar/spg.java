@@ -1,51 +1,38 @@
-import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
-import com.tencent.gdtad.api.GdtAd;
-import org.json.JSONObject;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseListView;
+import com.tencent.qphone.base.util.QLog;
 
 public class spg
-  implements aane
+  implements spc
 {
-  public spg(BridgeModule paramBridgeModule, String paramString) {}
+  public spg(ReadInJoyBaseListView paramReadInJoyBaseListView) {}
   
-  public void a(GdtAd paramGdtAd)
+  public void a()
   {
-    Object localObject = oeg.a(paramGdtAd);
-    paramGdtAd = new JSONObject();
-    for (;;)
+    if (pgs.a(pgs.a()))
     {
-      try
-      {
-        paramGdtAd.put("adInfo", localObject);
-        if (localObject != null) {
-          continue;
-        }
-        paramGdtAd.put("retCode", -1);
+      if (QLog.isColorLevel()) {
+        QLog.d("ReadInJoyBaseListView", 2, new Object[] { "preloadOptimize switch ON, mCurrentStatus = ", Integer.valueOf(this.a.c) });
       }
-      catch (Exception localException)
+      if ((this.a.c == 0) && ((!ube.a(this.a.d)) || (!this.a.b)))
       {
-        localException.printStackTrace();
-        continue;
+        this.a.a(4);
+        QLog.d("ReadInJoyBaseListView", 2, "preloadOptimize switch ON, loadingMore()");
       }
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule.invokeCallJS(this.jdField_a_of_type_JavaLangString, paramGdtAd);
-      return;
-      paramGdtAd.put("retCode", 0);
     }
+    do
+    {
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.d("ReadInJoyBaseListView", 2, new Object[] { "preloadOptimize switch OFF, mCurrentStatus = ", Integer.valueOf(this.a.c) });
+      }
+    } while ((ube.a(this.a.d)) && ((this.a.c != 0) || (this.a.b)));
+    this.a.a(4);
+    QLog.d("ReadInJoyBaseListView", 2, "preloadOptimize switch OFF, loadingMore()");
   }
-  
-  public void a(GdtAd paramGdtAd, aand paramaand)
-  {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule.invokeErrorCallJS(this.jdField_a_of_type_JavaLangString, paramaand.a());
-  }
-  
-  public void b(GdtAd paramGdtAd) {}
-  
-  public void c(GdtAd paramGdtAd) {}
-  
-  public void d(GdtAd paramGdtAd) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     spg
  * JD-Core Version:    0.7.0.1
  */

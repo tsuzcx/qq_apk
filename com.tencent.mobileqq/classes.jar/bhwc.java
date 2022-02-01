@@ -1,27 +1,13 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import com.tencent.widget.DynamicGridView;
+import android.app.Dialog;
+import android.view.View;
 
-public class bhwc
-  extends AnimatorListenerAdapter
+public abstract interface bhwc
 {
-  public bhwc(DynamicGridView paramDynamicGridView) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    DynamicGridView.b(this.a, false);
-    DynamicGridView.a(this.a);
-  }
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    DynamicGridView.b(this.a, true);
-    DynamicGridView.a(this.a);
-  }
+  public abstract void a(Dialog paramDialog, View paramView, boolean paramBoolean);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bhwc
  * JD-Core Version:    0.7.0.1
  */

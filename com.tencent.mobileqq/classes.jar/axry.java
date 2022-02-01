@@ -1,29 +1,27 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.richmedia.capture.view.ProviderContainerView;
-import com.tencent.mobileqq.richmedia.capture.view.ProviderView;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class axry
-  implements Animation.AnimationListener
+  implements View.OnClickListener
 {
-  public axry(ProviderContainerView paramProviderContainerView) {}
+  public axry(NearbyPeopleProfileActivity paramNearbyPeopleProfileActivity) {}
   
-  public void onAnimationEnd(Animation paramAnimation) {}
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
+  public void onClick(View paramView)
   {
-    if (ProviderContainerView.a(this.a) != null)
+    if ((this.a.a != null) && (!this.a.isFinishing()))
     {
-      ProviderContainerView.a(this.a).setAlpha(1.0F);
-      ProviderContainerView.a(this.a).setVisibility(0);
+      this.a.a.dismiss();
+      this.a.a = null;
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     axry
  * JD-Core Version:    0.7.0.1
  */

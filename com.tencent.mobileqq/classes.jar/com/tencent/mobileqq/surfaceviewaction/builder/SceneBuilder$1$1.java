@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.surfaceviewaction.builder;
 
-import badk;
-import bady;
-import baeh;
+import bdeo;
+import bdfc;
+import bdfl;
 
 class SceneBuilder$1$1
   implements Runnable
@@ -11,13 +11,13 @@ class SceneBuilder$1$1
   
   public void run()
   {
-    badk localbadk = bady.a(this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionBuilderSceneBuilder$1.this$0, this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionBuilderSceneBuilder$1.jdField_a_of_type_Badm, this.jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionBuilderSceneBuilder$1.jdField_a_of_type_Baeh.a(localbadk);
+    bdeo localbdeo = bdfc.a(this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionBuilderSceneBuilder$1.this$0, this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionBuilderSceneBuilder$1.jdField_a_of_type_Bdeq, this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionBuilderSceneBuilder$1.jdField_a_of_type_Bdfl.a(localbdeo);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.surfaceviewaction.builder.SceneBuilder.1.1
  * JD-Core Version:    0.7.0.1
  */

@@ -1,72 +1,17 @@
-import android.os.Handler.Callback;
-import android.os.Message;
-import com.tencent.mobileqq.activity.contacts.adapter.ContactsViewPagerAdapter;
-import com.tencent.mobileqq.activity.contacts.view.HeaderScrollView;
-import com.tencent.mobileqq.activity.contacts.view.pullrefresh.CommonRefreshLayout;
-import com.tencent.mobileqq.activity.contacts.view.pullrefresh.ContactRefreshHeader;
-import com.tencent.mobileqq.widget.QQToast;
-import mqq.os.MqqHandler;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.qphone.base.util.QLog;
 
 class ahsj
-  implements Handler.Callback
+  implements DialogInterface.OnClickListener
 {
-  ahsj(ahsi paramahsi) {}
+  ahsj(ahsd paramahsd) {}
   
-  private void a()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (ahsi.a(this.a) != null) {
-      ahsi.a(this.a).setRefreshing(false);
+    if (QLog.isColorLevel()) {
+      QLog.d("AIOGalleryScene", 2, "showSaveFileTips cancel");
     }
-    if (ahsi.a(this.a) != null) {
-      ahsi.a(this.a).setRefresh(false);
-    }
-  }
-  
-  public boolean handleMessage(Message paramMessage)
-  {
-    switch (paramMessage.what)
-    {
-    default: 
-    case 3: 
-    case 4: 
-    case 5: 
-    case 6: 
-    case 7: 
-      label146:
-      do
-      {
-        return false;
-        QQToast.a(this.a.a(), 1, 2131720337, 0).b(ahsi.a(this.a));
-        a();
-        return false;
-        int i = paramMessage.arg1;
-        if (paramMessage.arg2 == 1) {}
-        for (i = 1;; i = 0)
-        {
-          if (i == 0) {
-            break label146;
-          }
-          ahsi.a(this.a);
-          if (ahsi.a(this.a) == null) {
-            break;
-          }
-          ahsi.a(this.a).a(0);
-          this.a.a.sendEmptyMessageDelayed(5, 800L);
-          return false;
-        }
-        a();
-        QQToast.a(this.a.a(), 1, 2131720337, 0).b(ahsi.a(this.a));
-        return false;
-        a();
-        return false;
-        ahsi.a(this.a, true, true);
-        return false;
-      } while ((ahsi.a(this.a) == null) || (ahsi.a(this.a) == null));
-      ahsi.a(this.a).a(ahsi.a(this.a).getScrollY(), ahsi.a(this.a).a());
-      return false;
-    }
-    this.a.f();
-    return false;
   }
 }
 

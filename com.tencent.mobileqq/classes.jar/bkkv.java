@@ -1,38 +1,33 @@
-import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
+import android.graphics.Matrix;
+import android.view.ViewDebug.ExportedProperty;
 
-class bkkv
-  implements INetInfoHandler
+public class bkkv
 {
-  bkkv(bkks parambkks) {}
+  @ViewDebug.ExportedProperty
+  public float a;
+  private final Matrix a;
+  public boolean a;
+  @ViewDebug.ExportedProperty
+  public float b;
+  private boolean b;
+  @ViewDebug.ExportedProperty
+  public float c = 0.0F;
+  @ViewDebug.ExportedProperty
+  public float d = 1.0F;
+  @ViewDebug.ExportedProperty
+  public float e = 1.0F;
+  @ViewDebug.ExportedProperty
+  public float f = 0.0F;
+  @ViewDebug.ExportedProperty
+  public float g = 0.0F;
   
-  public void onNetMobile2None()
+  public bkkv()
   {
-    this.a.a(false, false);
-  }
-  
-  public void onNetMobile2Wifi(String paramString)
-  {
-    this.a.a(true, true);
-  }
-  
-  public void onNetNone2Mobile(String paramString)
-  {
-    this.a.a(false, true);
-  }
-  
-  public void onNetNone2Wifi(String paramString)
-  {
-    this.a.a(true, true);
-  }
-  
-  public void onNetWifi2Mobile(String paramString)
-  {
-    this.a.a(false, true);
-  }
-  
-  public void onNetWifi2None()
-  {
-    this.a.a(false, false);
+    this.jdField_a_of_type_AndroidGraphicsMatrix = new Matrix();
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_b_of_type_Boolean = true;
+    this.jdField_a_of_type_Float = 0.0F;
+    this.jdField_b_of_type_Float = 0.0F;
   }
 }
 

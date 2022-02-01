@@ -1,30 +1,11 @@
-public class aslu
+import android.view.View;
+import com.tencent.mobileqq.extendfriend.pulltorefresh.PullToRefreshBase;
+import com.tencent.mobileqq.extendfriend.pulltorefresh.PullToRefreshBase.Mode;
+import com.tencent.mobileqq.extendfriend.pulltorefresh.PullToRefreshBase.State;
+
+public abstract interface aslu<V extends View>
 {
-  public int a;
-  public long a;
-  public String a;
-  public int b;
-  public long b;
-  public String b;
-  public int c;
-  public long c;
-  public String c;
-  public int d;
-  public String d;
-  public String e;
-  public String f;
-  public String g;
-  public String h;
-  public String i;
-  public String j;
-  public String k;
-  public String l;
-  public String m;
-  
-  public String toString()
-  {
-    return "TaskInfo{appId=" + this.jdField_a_of_type_JavaLangString + ", packageName=" + this.jdField_b_of_type_JavaLangString + ", appName=" + this.e + ", taskStatus=" + this.d + ", fileSize=" + this.jdField_a_of_type_Long + ", downloadFileSize=" + this.jdField_b_of_type_Long + ", downloadFilePath='" + this.l + '\'' + ", createTime=" + this.c + ", apkChannel=" + this.g + '}';
-  }
+  public abstract void a(PullToRefreshBase<V> paramPullToRefreshBase, PullToRefreshBase.State paramState, PullToRefreshBase.Mode paramMode);
 }
 
 

@@ -1,68 +1,41 @@
-import android.graphics.Bitmap;
-import android.graphics.Bitmap.Config;
-import android.graphics.Canvas;
-import com.tencent.biz.qqstory.newshare.job.ShareGroupAvatarSaveFileJob.1;
-import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.io.IOException;
-import java.util.Map;
 
-public class viu
-  extends vis
+class viu
+  implements bdvw
 {
-  private final String c;
+  viu(vit paramvit, viw paramviw) {}
   
-  private boolean a(wdl paramwdl)
+  public void onResp(bdwt parambdwt)
   {
-    boolean bool = false;
-    try
-    {
-      Bitmap localBitmap = Bitmap.createBitmap(paramwdl.a(), paramwdl.b(), Bitmap.Config.ARGB_8888);
-      Canvas localCanvas = new Canvas(localBitmap);
-      localCanvas.drawColor(-1);
-      localCanvas.drawBitmap(paramwdl.a(), 0.0F, 0.0F, null);
-      bdhj.a(bdhj.a(localBitmap, 100), new File(this.c));
-      bool = true;
+    if (parambdwt.a == 0) {
+      QLog.d(vit.b(), 1, this.jdField_a_of_type_Viw.a() + ",download success ");
     }
-    catch (IOException paramwdl)
+    do
     {
-      while (!QLog.isColorLevel()) {}
-      QLog.e("ShareGroupAvatarSaveFileJob", 2, paramwdl, new Object[0]);
-      return false;
-    }
-    catch (OutOfMemoryError paramwdl)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.e("ShareGroupAvatarSaveFileJob", 2, paramwdl, new Object[0]);
-    }
-    return bool;
-    return false;
+      vit.a(this.jdField_a_of_type_Vit, this.jdField_a_of_type_Viw);
+      do
+      {
+        return;
+      } while ((parambdwt.a != 1) && (parambdwt.a != 2));
+      QLog.d(vit.b(), 1, this.jdField_a_of_type_Viw.a() + ",download failed ");
+      bgmg.a(this.jdField_a_of_type_Viw.c(), true);
+    } while (viw.a(this.jdField_a_of_type_Viw) == null);
+    viw.a(this.jdField_a_of_type_Viw).a(false);
   }
   
-  protected void a(Error paramError)
+  public void onUpdateProgeress(bdws parambdws, long paramLong1, long paramLong2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.e("ShareGroupAvatarSaveFileJob", 2, paramError, new Object[0]);
+    if (viw.a(this.jdField_a_of_type_Viw) != null)
+    {
+      int i = (int)((float)paramLong1 / (float)paramLong2 * 100.0F);
+      viw.a(this.jdField_a_of_type_Viw).a(i);
+      QLog.d(vit.b(), 1, this.jdField_a_of_type_Viw.a() + ",download progress:  " + i);
     }
-    b(false);
-  }
-  
-  protected void a(Map<String, Object> paramMap)
-  {
-    if ((paramMap != null) && (!paramMap.isEmpty()) && (paramMap.containsKey("ShareGroupAvatarSaveFileJob_sgi"))) {
-      this.a = ((String)a("ShareGroupAvatarSaveFileJob_sgi"));
-    }
-  }
-  
-  protected void a(wdl paramwdl)
-  {
-    ThreadManager.post(new ShareGroupAvatarSaveFileJob.1(this, paramwdl), 8, null, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     viu
  * JD-Core Version:    0.7.0.1
  */

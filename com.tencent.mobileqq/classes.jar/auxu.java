@@ -1,28 +1,52 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.view.WindowManager;
-import android.view.WindowManager.LayoutParams;
+import android.net.Uri;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
 class auxu
-  implements ValueAnimator.AnimatorUpdateListener
+  implements auyc
 {
-  auxu(auxs paramauxs, WindowManager.LayoutParams paramLayoutParams, ValueAnimator paramValueAnimator) {}
+  auxu(auxt paramauxt, int paramInt, String paramString) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void a(Uri paramUri)
   {
-    if (this.jdField_a_of_type_Auxs.b)
+    QLog.e("CheckForward.Security", 1, "system share.prepareFileInfoAndReq : onFaild= " + paramUri);
+    this.jdField_a_of_type_Auxt.a.finish();
+  }
+  
+  public void a(String paramString1, String paramString2, long paramLong)
+  {
+    QLog.d("CheckForward.Security", 1, "system share.prepareFileInfoAndReq : onFinish= " + paramString1);
+    try
     {
-      int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
-      this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams.x = i;
-      this.jdField_a_of_type_Auxs.jdField_a_of_type_AndroidViewWindowManager.updateViewLayout(this.jdField_a_of_type_Auxs.jdField_a_of_type_AndroidWidgetTextView, this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams);
+      if (this.jdField_a_of_type_Int == 2)
+      {
+        paramString2 = new ArrayList();
+        paramString2.add(paramString1);
+        this.jdField_a_of_type_Auxt.a(paramString2, this.jdField_a_of_type_JavaLangString);
+        return;
+      }
+      if (this.jdField_a_of_type_Int == 4)
+      {
+        paramString2 = new ArrayList();
+        paramString2.add(paramString1);
+        this.jdField_a_of_type_Auxt.b(paramString2, this.jdField_a_of_type_JavaLangString);
+        return;
+      }
+    }
+    catch (Throwable paramString1)
+    {
+      QLog.e("CheckForward.Security", 1, "system share.prepareFileInfoAndReq exception=", paramString1);
       return;
     }
-    this.jdField_a_of_type_AndroidAnimationValueAnimator.cancel();
+    if (this.jdField_a_of_type_Int == 3) {
+      this.jdField_a_of_type_Auxt.a(paramString1, this.jdField_a_of_type_JavaLangString);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     auxu
  * JD-Core Version:    0.7.0.1
  */

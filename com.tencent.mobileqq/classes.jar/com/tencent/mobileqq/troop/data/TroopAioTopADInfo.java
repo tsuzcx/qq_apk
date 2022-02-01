@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.troop.data;
 
-import awge;
-import awhs;
+import com.tencent.mobileqq.persistence.Entity;
+import com.tencent.mobileqq.persistence.unique;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 
 public class TroopAioTopADInfo
-  extends awge
+  extends Entity
 {
   public int adId;
   public String backgroundUrl;
@@ -16,7 +16,7 @@ public class TroopAioTopADInfo
   public String picUrl;
   public int showType;
   public String strWord;
-  @awhs
+  @unique
   public String troopUin;
   public String uiUrl;
   public long validTime;
@@ -42,7 +42,7 @@ public class TroopAioTopADInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.troop.data.TroopAioTopADInfo
  * JD-Core Version:    0.7.0.1
  */

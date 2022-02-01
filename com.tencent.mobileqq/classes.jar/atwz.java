@@ -1,19 +1,28 @@
-import java.util.Comparator;
+import android.content.Context;
+import android.os.AsyncTask;
 
-class atwz
-  implements Comparator<atwn>
+final class atwz
+  extends df
 {
-  public int a(atwn paramatwn1, atwn paramatwn2)
+  atwz(Context paramContext) {}
+  
+  protected void a(AsyncTask<Integer, Integer, String> paramAsyncTask, int paramInt)
   {
-    if (paramatwn1.a >= paramatwn2.a) {
-      return 1;
+    try
+    {
+      dc.a(this.a, paramAsyncTask, paramInt, new atxa(this));
+      super.a(paramAsyncTask, paramInt);
+      return;
     }
-    return -1;
+    catch (Exception paramAsyncTask)
+    {
+      paramAsyncTask.printStackTrace();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     atwz
  * JD-Core Version:    0.7.0.1
  */

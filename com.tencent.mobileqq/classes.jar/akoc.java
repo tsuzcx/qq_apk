@@ -1,48 +1,20 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.mobileqq.apollo.ApolloManager.20.1;
-import com.tencent.mobileqq.apollo.data.ApolloPreDownloadData;
-import com.tencent.mobileqq.apollo.utils.ApolloUtil;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.qwallet.TopayManager.5.1;
 
 public class akoc
-  extends bead
+  implements DialogInterface.OnClickListener
 {
-  akoc(aknx paramaknx) {}
+  public akoc(TopayManager.5.1 param1) {}
   
-  public void onDoneFile(beae parambeae)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((parambeae == null) || (this.a.a == null)) {}
-    String str1;
-    do
+    switch (paramInt)
     {
-      return;
-      if (parambeae.a != 0)
-      {
-        QLog.e("ApolloManager", 1, new Object[] { "preDownloadListener task error:", Integer.valueOf(parambeae.a()) });
-        return;
-      }
-      str1 = parambeae.c;
-      parambeae = parambeae.a();
-    } while (parambeae == null);
-    ApolloPreDownloadData localApolloPreDownloadData = (ApolloPreDownloadData)parambeae.getSerializable(str1);
-    if (localApolloPreDownloadData == null)
-    {
-      QLog.e("ApolloManager", 1, "preDownloadListener res onDoneFile but preDownload data is null");
+    default: 
       return;
     }
-    if (!TextUtils.isEmpty(localApolloPreDownloadData.zipDir)) {}
-    for (parambeae = ApolloUtil.e(localApolloPreDownloadData.dirType) + localApolloPreDownloadData.zipDir;; parambeae = aliu.t + localApolloPreDownloadData.resId + ".zip")
-    {
-      String str2 = ApolloUtil.e(localApolloPreDownloadData.dirType) + localApolloPreDownloadData.dir;
-      if (QLog.isColorLevel()) {
-        QLog.d("ApolloManager", 2, new Object[] { "preDownloadListener res zip done reportId:", localApolloPreDownloadData.reportId, ", url:", str1 });
-      }
-      ThreadManager.getSubThreadHandler().post(new ApolloManager.20.1(this, localApolloPreDownloadData, parambeae, str2));
-      return;
-    }
+    paramDialogInterface.dismiss();
   }
 }
 

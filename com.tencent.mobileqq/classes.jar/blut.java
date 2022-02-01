@@ -1,27 +1,19 @@
-import com.tencent.mobileqq.richmedia.capture.data.MusicItemInfo;
-import dov.com.qq.im.capture.music.humrecognition.view.BgmRecognitionProviderView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import cooperation.qzone.QzoneVerticalVideoDownloadActivity;
 
 public class blut
-  extends blts
+  implements View.OnClickListener
 {
-  public blut(BgmRecognitionProviderView paramBgmRecognitionProviderView) {}
+  public blut(QzoneVerticalVideoDownloadActivity paramQzoneVerticalVideoDownloadActivity) {}
   
-  public void a(int paramInt) {}
-  
-  public void a(String paramString) {}
-  
-  public void a(String paramString, int paramInt) {}
-  
-  public void a(String paramString, boolean paramBoolean)
+  public void onClick(View paramView)
   {
-    bflz.a().a(alud.a(2131701467) + this.a.a);
-  }
-  
-  public void a(String paramString, boolean paramBoolean, int paramInt)
-  {
-    if ((paramBoolean) && (this.a.a.getLocalPath().equals(paramString))) {
-      BgmRecognitionProviderView.a(this.a).sendEmptyMessage(1003);
-    }
+    QzoneVerticalVideoDownloadActivity.access$502(this.a, true);
+    QzoneVerticalVideoDownloadActivity.access$600(this.a);
+    this.a.finish();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

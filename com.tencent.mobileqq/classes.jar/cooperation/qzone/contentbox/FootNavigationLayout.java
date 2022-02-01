@@ -10,8 +10,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import bjil;
-import bjjd;
+import blwt;
+import blxl;
 import java.util.ArrayList;
 
 public class FootNavigationLayout
@@ -44,15 +44,15 @@ public class FootNavigationLayout
   
   private void a()
   {
-    LayoutInflater.from(getContext()).inflate(2131562197, this);
-    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)findViewById(2131368596));
-    this.jdField_a_of_type_ArrayOfAndroidViewViewGroup = new ViewGroup[] { (ViewGroup)findViewById(2131366384), (ViewGroup)findViewById(2131376303), (ViewGroup)findViewById(2131377811) };
-    this.jdField_a_of_type_ArrayOfAndroidWidgetImageView = new ImageView[] { (ImageView)findViewById(2131366385), (ImageView)findViewById(2131376304), (ImageView)findViewById(2131377812) };
-    this.jdField_a_of_type_ArrayOfAndroidWidgetTextView = new TextView[] { (TextView)findViewById(2131366386), (TextView)findViewById(2131376305), (TextView)findViewById(2131377813) };
-    this.jdField_a_of_type_ArrayOfAndroidViewView = new View[] { null, findViewById(2131365357), findViewById(2131365358) };
+    LayoutInflater.from(getContext()).inflate(2131562432, this);
+    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)findViewById(2131368919));
+    this.jdField_a_of_type_ArrayOfAndroidViewViewGroup = new ViewGroup[] { (ViewGroup)findViewById(2131366636), (ViewGroup)findViewById(2131377083), (ViewGroup)findViewById(2131378651) };
+    this.jdField_a_of_type_ArrayOfAndroidWidgetImageView = new ImageView[] { (ImageView)findViewById(2131366637), (ImageView)findViewById(2131377084), (ImageView)findViewById(2131378652) };
+    this.jdField_a_of_type_ArrayOfAndroidWidgetTextView = new TextView[] { (TextView)findViewById(2131366638), (TextView)findViewById(2131377085), (TextView)findViewById(2131378653) };
+    this.jdField_a_of_type_ArrayOfAndroidViewView = new View[] { null, findViewById(2131365592), findViewById(2131365593) };
   }
   
-  public void a(ArrayList<bjjd> paramArrayList)
+  public void a(ArrayList<blxl> paramArrayList)
   {
     if ((paramArrayList == null) || (paramArrayList.size() == 0))
     {
@@ -85,8 +85,8 @@ public class FootNavigationLayout
       break label20;
       break;
       label85:
-      bjjd localbjjd = (bjjd)paramArrayList.get(i);
-      if ((localbjjd == null) || (TextUtils.isEmpty(localbjjd.a)) || (TextUtils.isEmpty(localbjjd.a.trim())))
+      blxl localblxl = (blxl)paramArrayList.get(i);
+      if ((localblxl == null) || (TextUtils.isEmpty(localblxl.a)) || (TextUtils.isEmpty(localblxl.a.trim())))
       {
         if (localViewGroup != null) {
           localViewGroup.setVisibility(8);
@@ -101,9 +101,9 @@ public class FootNavigationLayout
         {
           localViewGroup.setVisibility(0);
           if (localTextView != null) {
-            localTextView.setText(localbjjd.a);
+            localTextView.setText(localblxl.a);
           }
-          localViewGroup.setOnClickListener(new bjil(this, localbjjd, i));
+          localViewGroup.setOnClickListener(new blwt(this, localblxl, i));
         }
         if (localView != null) {
           localView.setVisibility(0);
@@ -153,7 +153,7 @@ public class FootNavigationLayout
       {
         localObject2 = localObject1[i];
         if (localObject2 != null) {
-          localObject2.setBackgroundResource(2130847972);
+          localObject2.setBackgroundResource(2130848448);
         }
         i += 1;
       }
@@ -177,7 +177,7 @@ public class FootNavigationLayout
     {
       localObject2 = localObject1[i];
       if (localObject2 != null) {
-        localObject2.setBackgroundResource(2130847971);
+        localObject2.setBackgroundResource(2130848447);
       }
       i += 1;
     }
@@ -185,7 +185,7 @@ public class FootNavigationLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.qzone.contentbox.FootNavigationLayout
  * JD-Core Version:    0.7.0.1
  */

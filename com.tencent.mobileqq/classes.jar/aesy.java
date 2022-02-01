@@ -1,26 +1,25 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import android.view.ViewGroup;
-import com.tencent.mobileqq.activity.aio.IntimateTitleSwitchView;
+import com.tencent.mobileqq.activity.PermisionPrivacyActivity;
+import com.tencent.mobileqq.widget.FormSwitchItem;
 
 public class aesy
-  implements Animator.AnimatorListener
+  extends anmu
 {
-  public aesy(IntimateTitleSwitchView paramIntimateTitleSwitchView) {}
+  public aesy(PermisionPrivacyActivity paramPermisionPrivacyActivity) {}
   
-  public void onAnimationCancel(Animator paramAnimator)
+  protected void onGetVisibilityForNetWorkStatus(boolean paramBoolean1, boolean paramBoolean2)
   {
-    onAnimationEnd(paramAnimator);
+    if (paramBoolean1) {
+      PermisionPrivacyActivity.a(this.a, this.a.b.a(), paramBoolean2);
+    }
   }
   
-  public void onAnimationEnd(Animator paramAnimator)
+  protected void onSetVisibilityForNetWorkStatus(boolean paramBoolean1, boolean paramBoolean2)
   {
-    this.a.c.setAlpha(1.0F);
+    if (!paramBoolean1) {
+      this.a.a(2131717834, 1);
+    }
+    PermisionPrivacyActivity.a(this.a, this.a.b.a(), paramBoolean2);
   }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

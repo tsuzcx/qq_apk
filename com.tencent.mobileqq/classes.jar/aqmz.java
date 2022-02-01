@@ -1,28 +1,40 @@
-import android.widget.ImageView;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import com.tencent.mobileqq.filemanager.activity.UniformDownloadActivity;
+import com.tencent.mobileqq.config.QStorageInstantiateException;
+import com.tencent.qphone.base.util.QLog;
 
 public class aqmz
-  implements URLDrawable.URLDrawableListener
+  extends aqmv
 {
-  public aqmz(UniformDownloadActivity paramUniformDownloadActivity, ImageView paramImageView) {}
-  
-  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  public aqmp a(String paramString)
   {
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(null);
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(paramURLDrawable);
+    QLog.d("ArkMsgAIDisableConfProcessor", 1, "[onParsed] type=" + type() + ", content = " + paramString);
+    try
+    {
+      aqnn localaqnn = (aqnn)aqlu.a(paramString, aqnn.class);
+      return new aqmt(paramString, localaqnn);
+    }
+    catch (QStorageInstantiateException localQStorageInstantiateException)
+    {
+      for (;;)
+      {
+        QLog.i("ArkMsgAIDisableConfProcessor", 1, "loadConfig:" + paramString + "fail", localQStorageInstantiateException);
+        Object localObject = null;
+      }
+    }
+  }
+  
+  public boolean isAccountRelated()
+  {
+    return true;
+  }
+  
+  public int type()
+  {
+    return 159;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aqmz
  * JD-Core Version:    0.7.0.1
  */

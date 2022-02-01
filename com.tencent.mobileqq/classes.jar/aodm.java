@@ -1,23 +1,49 @@
-import android.os.Bundle;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.colornote.settings.ColorNoteSettingFragment;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ApolloBaseInfo;
+import com.tencent.mobileqq.data.Friends;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.qphone.base.util.QLog;
+import friendlist.FriendInfo;
+import java.util.ArrayList;
 
-class aodm
-  implements View.OnClickListener
+public class aodm
 {
-  aodm(aodl paramaodl) {}
+  amhd jdField_a_of_type_Amhd;
+  ArrayList<ApolloBaseInfo> jdField_a_of_type_JavaUtilArrayList;
   
-  public void onClick(View paramView)
+  public aodm(QQAppInterface paramQQAppInterface, int paramInt)
   {
-    if ((aodl.a(this.a) != null) && (aodl.a(this.a).getVisibility() == 0) && (aodl.a(this.a).hasFocus())) {
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList(paramInt);
+    this.jdField_a_of_type_Amhd = ((amhd)paramQQAppInterface.getManager(153));
+  }
+  
+  public void a()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.contacttab.friend.ApolloBaseInfoBatchUpdater", 2, "saveInBatch size=" + this.jdField_a_of_type_JavaUtilArrayList.size());
+    }
+    this.jdField_a_of_type_Amhd.b(this.jdField_a_of_type_JavaUtilArrayList);
+  }
+  
+  public void a(Friends paramFriends, FriendInfo paramFriendInfo)
+  {
+    ApolloBaseInfo localApolloBaseInfo = this.jdField_a_of_type_Amhd.b(paramFriends.uin);
+    if (localApolloBaseInfo != null) {
+      if ((localApolloBaseInfo.apolloStatus != paramFriendInfo.cApolloFlag) || (localApolloBaseInfo.apolloServerTS != paramFriendInfo.uApolloTimestamp) || (localApolloBaseInfo.apolloSignValidTS != paramFriendInfo.uApolloSignTime) || (localApolloBaseInfo.cmshow3dFlag != paramFriendInfo.cCentiShow3DFlag))
+      {
+        localApolloBaseInfo.apolloStatus = paramFriendInfo.cApolloFlag;
+        localApolloBaseInfo.apolloServerTS = paramFriendInfo.uApolloTimestamp;
+        localApolloBaseInfo.apolloSignValidTS = paramFriendInfo.uApolloSignTime;
+        localApolloBaseInfo.apolloSignStr = "";
+        localApolloBaseInfo.cmshow3dFlag = paramFriendInfo.cCentiShow3DFlag;
+        localApolloBaseInfo.apolloUpdateTime = NetConnInfoCenter.getServerTime();
+        this.jdField_a_of_type_JavaUtilArrayList.add(localApolloBaseInfo);
+      }
+    }
+    while (!QLog.isColorLevel()) {
       return;
     }
-    aodl.a(this.a);
-    paramView = new Bundle();
-    paramView.putInt("start_from", 1);
-    ColorNoteSettingFragment.a(aodl.a(this.a), ColorNoteSettingFragment.class, paramView);
-    azqs.b(null, "dc00898", "", "", "0X800A8AF", "0X800A8AF", 0, 0, "", "", "", "");
+    QLog.e("Q.contacttab.friend.ApolloBaseInfoBatchUpdater", 2, "apolloBaseInfo return null uin: " + paramFriends.uin);
   }
 }
 

@@ -9,7 +9,7 @@ public class TPCommonEnum
   public static final int TP_AUDIO_DECODER_MEDIACODEC = 2;
   public static final int TP_AUDIO_RENDERER_TYPE_AAUDIO = 2;
   public static final int TP_AUDIO_RENDERER_TYPE_AUDIOTRACK = 1;
-  public static final int TP_AUDIO_RENDERER_TYPE_OBEO = 3;
+  public static final int TP_AUDIO_RENDERER_TYPE_OBOE = 3;
   public static final int TP_AUDIO_RENDERER_TYPE_OPENAL = 5;
   public static final int TP_AUDIO_RENDERER_TYPE_OPENSL = 4;
   public static final int TP_DECODER_UNKNOWN = -1;
@@ -31,7 +31,7 @@ public class TPCommonEnum
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.thumbplayer.api.TPCommonEnum
  * JD-Core Version:    0.7.0.1
  */

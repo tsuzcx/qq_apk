@@ -1,25 +1,33 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.SimpleJob;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspGetBatchFeedFeature;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.FeedFeature;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
-class xas
-  extends SimpleJob<Object>
+public class xas
+  extends wla
 {
-  xas(xan paramxan, String paramString1, String paramString2, int paramInt1, int paramInt2, String[] paramArrayOfString)
-  {
-    super(paramString1);
-  }
+  public List<wqp> a = new ArrayList();
   
-  protected Object a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
+  public xas(qqstory_service.RspGetBatchFeedFeature paramRspGetBatchFeedFeature)
   {
-    wxj.a("video_edit", this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.b, this.jdField_a_of_type_ArrayOfJavaLangString);
-    return null;
+    if ((paramRspGetBatchFeedFeature.feed_feature_list.has()) && (!paramRspGetBatchFeedFeature.feed_feature_list.isEmpty()))
+    {
+      paramRspGetBatchFeedFeature = paramRspGetBatchFeedFeature.feed_feature_list.get().iterator();
+      while (paramRspGetBatchFeedFeature.hasNext())
+      {
+        qqstory_struct.FeedFeature localFeedFeature = (qqstory_struct.FeedFeature)paramRspGetBatchFeedFeature.next();
+        wqp localwqp = new wqp();
+        localwqp.a(localFeedFeature);
+        this.a.add(localwqp);
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     xas
  * JD-Core Version:    0.7.0.1
  */

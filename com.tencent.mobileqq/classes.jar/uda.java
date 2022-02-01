@@ -1,19 +1,23 @@
-import com.tencent.biz.qqcircle.widgets.QCircleFeedCommentWidget;
+import UserGrowth.stPublisherRsp;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.weishi_new.WSHomeFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class uda
-  implements ucd
+  implements View.OnClickListener
 {
-  public uda(QCircleFeedCommentWidget paramQCircleFeedCommentWidget, String paramString) {}
+  public uda(WSHomeFragment paramWSHomeFragment, stPublisherRsp paramstPublisherRsp) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    tzs.a(this.jdField_a_of_type_JavaLangString, QCircleFeedCommentWidget.a(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFeedCommentWidget).a, QCircleFeedCommentWidget.a(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFeedCommentWidget), 44);
-    tqs.a(this.jdField_a_of_type_JavaLangString);
+    WSHomeFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newWSHomeFragment, this.jdField_a_of_type_UserGrowthStPublisherRsp);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     uda
  * JD-Core Version:    0.7.0.1
  */

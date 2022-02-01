@@ -1,46 +1,50 @@
 import android.os.Bundle;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.qipc.QIPCModule;
 import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCResult;
+import java.util.concurrent.atomic.AtomicBoolean;
+import mqq.observer.SSOAccountObserver;
 
-public class bduu
-  extends QIPCModule
+class bduu
+  extends SSOAccountObserver
 {
-  private static bduu a;
+  bduu(bdut parambdut) {}
   
-  public bduu(String paramString)
+  public void onFailed(String paramString, int paramInt1, int paramInt2, Bundle paramBundle)
   {
-    super(paramString);
+    QLog.w("Q.share.ForwardSdkShareProcessor", 1, "GetSKeyStep|onFailed|account=" + paramString + ",ret=" + paramInt2);
+    if (bdup.b(this.a.b) == 11) {
+      aukw.a("KEY_SSO_GET_TICKET_NO_PASSWD", paramBundle, false);
+    }
+    this.a.b.b(9401, "get sKey failed");
+    this.a.c();
   }
   
-  public static bduu a()
+  public void onGetTicketNoPasswd(String paramString, byte[] paramArrayOfByte, int paramInt, Bundle paramBundle)
   {
-    if (a == null) {}
-    try
+    QLog.i("Q.share.ForwardSdkShareProcessor", 1, "GetSKeyStep|onGetTicketNoPasswd|account=" + bipr.a(paramString) + ",type=" + paramInt);
+    if (bdup.b(this.a.b) == 11) {
+      aukw.a("KEY_SSO_GET_TICKET_NO_PASSWD", paramBundle, true);
+    }
+    long l = System.currentTimeMillis();
+    if (paramInt == 4096)
     {
-      if (a == null) {
-        a = new bduu("VasMonitorIPCModule");
-      }
-      return a;
+      bdup.d(this.a.b, new String(paramArrayOfByte));
+      bdut.a(this.a).set(true);
+      bivh.a(paramString, l);
+      this.a.b();
+      return;
     }
-    finally {}
+    this.a.b.b(9401, "get sKey failed");
+    this.a.c();
   }
   
-  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
+  public void onUserCancel(String paramString, int paramInt, Bundle paramBundle)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("VasMonitorIPCModule", 2, "action = " + paramString);
+    QLog.w("Q.share.ForwardSdkShareProcessor", 1, "GetSKeyStep|onUserCancel|action=" + paramInt);
+    if (bdup.b(this.a.b) == 11) {
+      aukw.a("KEY_SSO_GET_TICKET_NO_PASSWD", paramBundle, false);
     }
-    if (paramBundle == null) {
-      QLog.d("VasMonitorIPCModule", 2, "vasreport Err params=null, action=" + paramString);
-    }
-    while ((!"action_vas_monitor".equals(paramString)) || (BaseApplicationImpl.getApplication() == null) || (!(BaseApplicationImpl.getApplication().getRuntime() instanceof QQAppInterface)) || ((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime() == null)) {
-      return null;
-    }
-    bdut.a(null, paramBundle.getString("key_appid"), paramBundle.getString("key_err_code"), paramBundle.getString("key_log"), paramBundle.getString("key_key4"), paramBundle.getString("key_key5"), paramBundle.getString("key_key6"), paramBundle.getFloat("key_value2"), paramBundle.getFloat("key_value3"));
-    return null;
+    this.a.b.b(9401, "onUserCancel");
+    this.a.c();
   }
 }
 

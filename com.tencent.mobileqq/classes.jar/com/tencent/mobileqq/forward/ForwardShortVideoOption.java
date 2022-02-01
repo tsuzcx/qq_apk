@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.forward;
 
-import aepi;
-import ajpy;
-import alof;
-import alud;
+import abqn;
+import abrs;
+import afur;
+import alio;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Resources;
@@ -15,24 +15,26 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
-import aryl;
-import aryv;
-import asbe;
-import asef;
-import aseg;
-import awji;
-import azdd;
-import azdx;
-import azen;
-import azkz;
-import azqs;
-import bawj;
-import bdeb;
-import bdeu;
-import bdhb;
-import bdjz;
-import bdoo;
-import bhsb;
+import anhk;
+import anni;
+import aufw;
+import aufz;
+import auif;
+import auku;
+import aukv;
+import ayxu;
+import bcec;
+import bcev;
+import bcfn;
+import bclx;
+import bcst;
+import bdxq;
+import bgjc;
+import bgjw;
+import bgmg;
+import bgpa;
+import bgtn;
+import bkfl;
 import com.tencent.device.datadef.DeviceInfo;
 import com.tencent.device.datadef.ProductInfo;
 import com.tencent.image.URLDrawable;
@@ -55,15 +57,13 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
-import ndv;
-import wxj;
-import ztp;
-import zuu;
+import nmp;
+import yqu;
 
 public class ForwardShortVideoOption
-  extends aryv
+  extends aufz
 {
-  private aseg a;
+  private aukv a;
   
   public ForwardShortVideoOption(Intent paramIntent)
   {
@@ -72,15 +72,15 @@ public class ForwardShortVideoOption
     this.jdField_b_of_type_Int = 7;
   }
   
-  private void G()
+  private void H()
   {
     Object localObject1;
     if (this.jdField_a_of_type_AndroidOsBundle.getBoolean("isFromFavorite", false))
     {
-      localObject1 = alof.bl + "pic/" + this.jdField_a_of_type_AndroidContentIntent.getStringExtra("thumbfile_md5") + "_0";
+      localObject1 = anhk.bo + "pic/" + this.jdField_a_of_type_AndroidContentIntent.getStringExtra("thumbfile_md5") + "_0";
       String str = this.jdField_b_of_type_JavaLangString;
       if ((!TextUtils.isEmpty(str)) && (!TextUtils.isEmpty((CharSequence)localObject1)) && (!new File(str).exists()) && (new File((String)localObject1).exists())) {
-        bdhb.d((String)localObject1, str);
+        bgmg.d((String)localObject1, str);
       }
     }
     if (!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) {
@@ -92,13 +92,13 @@ public class ForwardShortVideoOption
     {
       try
       {
-        localObject1 = bawj.a(this.jdField_b_of_type_JavaLangString, azkz.a(100.0F), azkz.a(300.0F));
+        localObject1 = bdxq.a(this.jdField_b_of_type_JavaLangString, bclx.a(100.0F), bclx.a(300.0F));
         if (localObject1 == null) {
           break label275;
         }
         localObject1 = ((URL)localObject1).toString();
         localObject1 = URLDrawable.getDrawable((String)localObject1);
-        ((URLDrawable)localObject1).setBounds(0, 0, azkz.a(248.0F), azkz.a(248.0F));
+        ((URLDrawable)localObject1).setBounds(0, 0, bclx.a(248.0F), bclx.a(248.0F));
         this.jdField_a_of_type_AndroidContentIntent.getBooleanExtra("forward_is_long_video", false);
         this.jdField_a_of_type_AndroidContentIntent.getIntExtra("file_send_size", 0);
         this.jdField_a_of_type_AndroidContentIntent.getIntExtra("file_send_duration", 0);
@@ -108,10 +108,10 @@ public class ForwardShortVideoOption
       catch (OutOfMemoryError localOutOfMemoryError)
       {
         QLog.e("ForwardOption.ForwardShortVideoOption", 2, "initPreviewImage omm!", localOutOfMemoryError);
-        this.jdField_a_of_type_Aseg.a(null);
+        this.jdField_a_of_type_Aukv.a(null);
         return;
       }
-      this.jdField_a_of_type_Aseg.a(null);
+      this.jdField_a_of_type_Aukv.a(null);
       return;
       label275:
       Object localObject2 = null;
@@ -132,7 +132,7 @@ public class ForwardShortVideoOption
       localIntent.putExtra("video_play_caller", 5);
       localIntent.putExtra("message_click_start", System.currentTimeMillis());
       this.jdField_a_of_type_AndroidAppActivity.startActivity(localIntent);
-      D();
+      E();
     }
     do
     {
@@ -141,7 +141,7 @@ public class ForwardShortVideoOption
       if (QLog.isColorLevel()) {
         QLog.d("ForwardOption.ForwardShortVideoOption", 2, "enterVideoPreview file " + (String)localObject);
       }
-      if (bdhb.a((String)localObject))
+      if (bgmg.a((String)localObject))
       {
         localIntent.putExtra("file_send_path", (String)localObject);
         localIntent.putExtra("video_play_caller", 6);
@@ -152,26 +152,37 @@ public class ForwardShortVideoOption
     QLog.d("ForwardOption.ForwardShortVideoOption", 2, "enterVideoPreview file not exit ");
   }
   
+  public void A()
+  {
+    Intent localIntent = new Intent();
+    localIntent.putExtras(a());
+    localIntent.putExtra("forward_to_someplace_from_shoot_quick", 1003);
+    this.jdField_a_of_type_AndroidAppActivity.setResult(-1, localIntent);
+    this.jdField_a_of_type_AndroidAppActivity.finish();
+    bcst.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8007810", "0X8007810", 0, 0, "", "", "", "");
+    yqu.a("plus_shoot", "send_tip", 0, 0, new String[] { "", "", "", "" });
+  }
+  
   public View a()
   {
-    View localView = LayoutInflater.from(this.jdField_a_of_type_AndroidAppActivity).inflate(2131558938, null);
-    int i = bdoo.a(15.0F);
+    View localView = LayoutInflater.from(this.jdField_a_of_type_AndroidAppActivity).inflate(2131559005, null);
+    int i = bgtn.a(15.0F);
     localView.setPadding(0, i, 0, i);
-    this.jdField_a_of_type_Aseg = new aseg(null);
-    this.jdField_a_of_type_Aseg.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131366819));
-    ((ChatThumbView)this.jdField_a_of_type_Aseg.jdField_a_of_type_AndroidWidgetImageView).jdField_b_of_type_Boolean = false;
-    this.jdField_a_of_type_Aseg.jdField_a_of_type_ComTencentMobileqqForwardForwardShortVideoOption$PressDarkImageView = new ForwardShortVideoOption.PressDarkImageView(this.jdField_a_of_type_AndroidAppActivity);
-    this.jdField_a_of_type_Aseg.jdField_a_of_type_ComTencentMobileqqForwardForwardShortVideoOption$PressDarkImageView.setImageDrawable(this.jdField_a_of_type_AndroidAppActivity.getResources().getDrawable(2130839711));
-    this.jdField_a_of_type_Aseg.jdField_a_of_type_ComTencentMobileqqForwardForwardShortVideoOption$PressDarkImageView.jdField_a_of_type_AndroidWidgetImageView = this.jdField_a_of_type_Aseg.jdField_a_of_type_AndroidWidgetImageView;
-    RelativeLayout localRelativeLayout = (RelativeLayout)localView.findViewById(2131366818);
-    i = bdoo.a(40.0F);
+    this.jdField_a_of_type_Aukv = new aukv(null);
+    this.jdField_a_of_type_Aukv.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131367087));
+    ((ChatThumbView)this.jdField_a_of_type_Aukv.jdField_a_of_type_AndroidWidgetImageView).jdField_b_of_type_Boolean = false;
+    this.jdField_a_of_type_Aukv.jdField_a_of_type_ComTencentMobileqqForwardForwardShortVideoOption$PressDarkImageView = new ForwardShortVideoOption.PressDarkImageView(this.jdField_a_of_type_AndroidAppActivity);
+    this.jdField_a_of_type_Aukv.jdField_a_of_type_ComTencentMobileqqForwardForwardShortVideoOption$PressDarkImageView.setImageDrawable(this.jdField_a_of_type_AndroidAppActivity.getResources().getDrawable(2130840117));
+    this.jdField_a_of_type_Aukv.jdField_a_of_type_ComTencentMobileqqForwardForwardShortVideoOption$PressDarkImageView.jdField_a_of_type_AndroidWidgetImageView = this.jdField_a_of_type_Aukv.jdField_a_of_type_AndroidWidgetImageView;
+    RelativeLayout localRelativeLayout = (RelativeLayout)localView.findViewById(2131367086);
+    i = bgtn.a(40.0F);
     RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(i, i);
     localLayoutParams.addRule(13);
-    localRelativeLayout.addView(this.jdField_a_of_type_Aseg.jdField_a_of_type_ComTencentMobileqqForwardForwardShortVideoOption$PressDarkImageView, localLayoutParams);
-    localView.findViewById(2131366818).setVisibility(0);
-    G();
-    this.jdField_a_of_type_Aseg.jdField_a_of_type_ComTencentMobileqqForwardForwardShortVideoOption$PressDarkImageView.setContentDescription(alud.a(2131705220));
-    this.jdField_a_of_type_Aseg.jdField_a_of_type_ComTencentMobileqqForwardForwardShortVideoOption$PressDarkImageView.setOnClickListener(new asef(this));
+    localRelativeLayout.addView(this.jdField_a_of_type_Aukv.jdField_a_of_type_ComTencentMobileqqForwardForwardShortVideoOption$PressDarkImageView, localLayoutParams);
+    localView.findViewById(2131367086).setVisibility(0);
+    H();
+    this.jdField_a_of_type_Aukv.jdField_a_of_type_ComTencentMobileqqForwardForwardShortVideoOption$PressDarkImageView.setContentDescription(anni.a(2131703616));
+    this.jdField_a_of_type_Aukv.jdField_a_of_type_ComTencentMobileqqForwardForwardShortVideoOption$PressDarkImageView.setOnClickListener(new auku(this));
     return localView;
   }
   
@@ -184,7 +195,7 @@ public class ForwardShortVideoOption
     {
       RecentUser localRecentUser = (RecentUser)paramList.next();
       if (localRecentUser != null) {
-        if ((!bdeu.a(localRecentUser.uin)) && (localRecentUser.getType() != 10004) && ((localRecentUser.getType() != 0) || (!ndv.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localRecentUser.uin, localRecentUser.getType()))) && ((localRecentUser.getType() == 0) || (localRecentUser.getType() == 1) || (localRecentUser.getType() == 3000)))
+        if ((!bgjw.a(localRecentUser.uin)) && (localRecentUser.getType() != 10004) && ((localRecentUser.getType() != 0) || (!nmp.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localRecentUser.uin, localRecentUser.getType()))) && ((localRecentUser.getType() == 0) || (localRecentUser.getType() == 1) || (localRecentUser.getType() == 3000)))
         {
           if ((localHotChatManager != null) && (localHotChatManager.b(localRecentUser.uin))) {}
           for (int i = 1;; i = 0)
@@ -199,7 +210,7 @@ public class ForwardShortVideoOption
         else
         {
           label171:
-          if ((localRecentUser.uin.equalsIgnoreCase(alof.z)) && (a(aryl.f)) && (p())) {
+          if ((localRecentUser.uin.equalsIgnoreCase(anhk.z)) && (a(aufw.f)) && (q())) {
             localArrayList.add(localRecentUser);
           }
         }
@@ -210,17 +221,17 @@ public class ForwardShortVideoOption
   
   public void a()
   {
-    if (k()) {
+    if (l()) {
       this.jdField_a_of_type_JavaUtilSet.add(d);
     }
-    if (l()) {
+    if (m()) {
       this.jdField_a_of_type_JavaUtilSet.add(c);
     }
-    if (m()) {
+    if (n()) {
       this.jdField_a_of_type_JavaUtilSet.add(jdField_b_of_type_JavaLangInteger);
     }
     boolean bool = this.jdField_a_of_type_AndroidContentIntent.getBooleanExtra("k_smartdevice", true);
-    if ((o()) && (bool)) {
+    if ((p()) && (bool)) {
       this.jdField_a_of_type_JavaUtilSet.add(j);
     }
     if (this.jdField_a_of_type_AndroidContentIntent.getBooleanExtra("k_qzone", false)) {
@@ -236,7 +247,7 @@ public class ForwardShortVideoOption
     }
   }
   
-  public boolean a(bdjz parambdjz)
+  public boolean a(bgpa parambgpa)
   {
     String str1 = null;
     if (this.jdField_a_of_type_AndroidOsBundle.getBoolean("is_forward_ptv", false))
@@ -244,39 +255,39 @@ public class ForwardShortVideoOption
       if (!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) {}
       try
       {
-        parambdjz.setPreviewImage(asbe.a(bdeb.a(new BitmapDrawable(this.jdField_a_of_type_AndroidAppActivity.getResources(), this.jdField_b_of_type_JavaLangString))), true, 1);
+        parambgpa.setPreviewImage(auif.a(bgjc.a(new BitmapDrawable(this.jdField_a_of_type_AndroidAppActivity.getResources(), this.jdField_b_of_type_JavaLangString))), true, 1);
         return false;
       }
-      catch (OutOfMemoryError parambdjz)
+      catch (OutOfMemoryError parambgpa)
       {
         for (;;)
         {
-          QLog.e("ForwardOption.ForwardShortVideoOption", 2, "get ptv drawable omm!", parambdjz);
+          QLog.e("ForwardOption.ForwardShortVideoOption", 2, "get ptv drawable omm!", parambgpa);
         }
       }
     }
     Object localObject;
     if (this.jdField_a_of_type_AndroidOsBundle.getBoolean("isFromFavorite", false))
     {
-      localObject = alof.bl + "pic/" + this.jdField_a_of_type_AndroidContentIntent.getStringExtra("thumbfile_md5") + "_0";
+      localObject = anhk.bo + "pic/" + this.jdField_a_of_type_AndroidContentIntent.getStringExtra("thumbfile_md5") + "_0";
       String str2 = this.jdField_b_of_type_JavaLangString;
       if ((!TextUtils.isEmpty(str2)) && (!TextUtils.isEmpty((CharSequence)localObject)) && (!new File(str2).exists()) && (new File((String)localObject).exists())) {
-        bdhb.d((String)localObject, str2);
+        bgmg.d((String)localObject, str2);
       }
     }
     if (!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) {
       try
       {
-        localObject = bawj.a(this.jdField_b_of_type_JavaLangString, azkz.a(100.0F), azkz.a(300.0F));
+        localObject = bdxq.a(this.jdField_b_of_type_JavaLangString, bclx.a(100.0F), bclx.a(300.0F));
         if (localObject != null) {
           str1 = ((URL)localObject).toString();
         }
-        ThreadManager.post(new ForwardShortVideoOption.1(this, URLDrawable.getDrawable(str1), parambdjz, this.jdField_a_of_type_AndroidContentIntent.getBooleanExtra("forward_is_long_video", false), this.jdField_a_of_type_AndroidContentIntent.getIntExtra("file_send_size", 0), this.jdField_a_of_type_AndroidContentIntent.getIntExtra("file_send_duration", 0)), 8, null, false);
+        ThreadManager.post(new ForwardShortVideoOption.1(this, URLDrawable.getDrawable(str1), parambgpa, this.jdField_a_of_type_AndroidContentIntent.getBooleanExtra("forward_is_long_video", false), this.jdField_a_of_type_AndroidContentIntent.getIntExtra("file_send_size", 0), this.jdField_a_of_type_AndroidContentIntent.getIntExtra("file_send_duration", 0)), 8, null, false);
         return false;
       }
-      catch (OutOfMemoryError parambdjz)
+      catch (OutOfMemoryError parambgpa)
       {
-        QLog.e("ForwardOption.ForwardShortVideoOption", 2, "get shortvideo drawable omm!", parambdjz);
+        QLog.e("ForwardOption.ForwardShortVideoOption", 2, "get shortvideo drawable omm!", parambgpa);
         return true;
       }
     }
@@ -286,7 +297,7 @@ public class ForwardShortVideoOption
   public DeviceInfo[] a(DeviceInfo[] paramArrayOfDeviceInfo)
   {
     ArrayList localArrayList = new ArrayList();
-    ztp localztp = (ztp)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(51);
+    abqn localabqn = (abqn)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(51);
     int j = paramArrayOfDeviceInfo.length;
     int i = 0;
     while (i < j)
@@ -294,7 +305,7 @@ public class ForwardShortVideoOption
       DeviceInfo localDeviceInfo = paramArrayOfDeviceInfo[i];
       if (localDeviceInfo != null)
       {
-        ProductInfo localProductInfo = localztp.a(localDeviceInfo.productId);
+        ProductInfo localProductInfo = localabqn.a(localDeviceInfo.productId);
         if ((localProductInfo != null) && (localProductInfo.isSupportFuncMsgType(2)) && (a(j))) {
           localArrayList.add(localDeviceInfo);
         }
@@ -326,7 +337,7 @@ public class ForwardShortVideoOption
     }
     QLog.d("ForwardOption.ForwardShortVideoOption", 1, "sendDatalineSingle filePath: " + (String)localObject2);
     paramIntent.putExtra("dataline_forward_path", (String)localObject2);
-    bhsb.a(true, (String)localObject2);
+    bkfl.a(true, (String)localObject2);
   }
   
   public void b(String paramString)
@@ -342,7 +353,7 @@ public class ForwardShortVideoOption
     localIntent.putExtra("fragment_id", 1);
     localIntent.putExtra("switch_anim", true);
     localIntent.putExtra("forward_to_someplace_from_shoot_quick", 1002);
-    azqs.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X800780F", "0X800780F", 0, 0, "", "", "", "");
+    bcst.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X800780F", "0X800780F", 0, 0, "", "", "", "");
     this.jdField_a_of_type_AndroidAppActivity.setResult(-1, localIntent);
     this.jdField_a_of_type_AndroidAppActivity.finish();
   }
@@ -374,7 +385,7 @@ public class ForwardShortVideoOption
     int j;
     int i;
     Intent localIntent;
-    if (f())
+    if (g())
     {
       b();
       if (this.jdField_a_of_type_AndroidOsBundle.getInt("param_key_redbag_type", 0) == LocalMediaInfo.REDBAG_TYPE_GET)
@@ -384,17 +395,17 @@ public class ForwardShortVideoOption
         if (j == 1)
         {
           i = 1;
-          ajpy.a("", "0X80088E4", String.valueOf(i));
+          alio.a("", "0X80088E4", String.valueOf(i));
         }
       }
       else
       {
         localObject = new Intent(this.jdField_a_of_type_AndroidAppActivity, SplashActivity.class);
         ((Intent)localObject).putExtras(this.jdField_a_of_type_AndroidOsBundle);
-        localIntent = aepi.a((Intent)localObject, null);
+        localIntent = afur.a((Intent)localObject, null);
         localIntent.putExtra("isBack2Root", true);
         if (!bool2) {
-          break label249;
+          break label248;
         }
         ForwardUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_AndroidContentContext, localIntent, null);
       }
@@ -407,7 +418,7 @@ public class ForwardShortVideoOption
         }
         i = 2;
         break;
-        label249:
+        label248:
         if ((bool3) || (bool4))
         {
           localSessionInfo = new SessionInfo();
@@ -421,7 +432,7 @@ public class ForwardShortVideoOption
           }
           for (;;)
           {
-            azqs.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", (String)localObject, (String)localObject, 0, 0, "", "", "", "");
+            bcst.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", (String)localObject, (String)localObject, 0, 0, "", "", "", "");
             break;
             if (localSessionInfo.jdField_a_of_type_Int == 1) {
               localObject = "0X800780D";
@@ -440,21 +451,21 @@ public class ForwardShortVideoOption
       if (j == 1)
       {
         i = 1;
-        ajpy.a("", "0X80088E4", String.valueOf(i));
+        alio.a("", "0X80088E4", String.valueOf(i));
       }
     }
     else
     {
       localObject = new Intent(this.jdField_a_of_type_AndroidAppActivity, SplashActivity.class);
       ((Intent)localObject).putExtras(this.jdField_a_of_type_AndroidOsBundle);
-      localIntent = aepi.a((Intent)localObject, null);
+      localIntent = afur.a((Intent)localObject, null);
       localIntent.putExtra("isBack2Root", true);
       if (!bool2) {
-        break label577;
+        break label567;
       }
       ForwardUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_AndroidContentContext, localIntent, null);
     }
-    label577:
+    label567:
     while ((!bool3) && (!bool4))
     {
       this.jdField_a_of_type_AndroidAppActivity.setResult(-1, localIntent);
@@ -477,7 +488,7 @@ public class ForwardShortVideoOption
     }
     for (;;)
     {
-      azqs.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", (String)localObject, (String)localObject, 0, 0, "", "", "", "");
+      bcst.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", (String)localObject, (String)localObject, 0, 0, "", "", "", "");
       break;
       if (localSessionInfo.jdField_a_of_type_Int == 1) {
         localObject = "0X800780D";
@@ -494,17 +505,17 @@ public class ForwardShortVideoOption
     String str;
     if (this.jdField_a_of_type_AndroidOsBundle.getBoolean("NeedReportForwardShortVideo", false))
     {
-      i = awji.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidOsBundle.getInt("uintype"), this.jdField_a_of_type_AndroidOsBundle.getString("uin"));
+      i = ayxu.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidOsBundle.getInt("uintype"), this.jdField_a_of_type_AndroidOsBundle.getString("uin"));
       if (i != 3) {
-        break label90;
+        break label84;
       }
       str = "1";
     }
     for (;;)
     {
-      azqs.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8005622", "0X8005622", 0, 0, str, "", "", "");
+      bcst.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8005622", "0X8005622", 0, 0, str, "", "", "");
       return;
-      label90:
+      label84:
       if (i == 2) {
         str = "2";
       } else if (i == 0) {
@@ -515,7 +526,7 @@ public class ForwardShortVideoOption
     }
   }
   
-  public boolean h()
+  public boolean i()
   {
     if (this.jdField_a_of_type_AndroidOsBundle.getBoolean("is_forward_ptv", false))
     {
@@ -535,11 +546,11 @@ public class ForwardShortVideoOption
       QLog.d("ForwardOption.ForwardShortVideoOption", 2, "-->getCancelListener--onClick--type = " + i);
     }
     if (i == m.intValue()) {
-      wxj.a("plus_shoot", "nosend_tip", 0, 0, new String[] { "", "", "", "" });
+      yqu.a("plus_shoot", "nosend_tip", 0, 0, new String[] { "", "", "", "" });
     }
   }
   
-  public void y()
+  public void z()
   {
     Object localObject2 = new Intent();
     ((Intent)localObject2).putExtra("uin", this.jdField_a_of_type_AndroidOsBundle.getString("uin"));
@@ -556,37 +567,26 @@ public class ForwardShortVideoOption
     ((Intent)localObject2).putExtra("thumbfile_md5", this.jdField_a_of_type_AndroidOsBundle.getString("thumbfile_md5"));
     ((Intent)localObject2).putExtra("file_source", this.jdField_a_of_type_AndroidOsBundle.getString("file_source"));
     ((Intent)localObject2).putExtra("file_video_source_dir", this.jdField_a_of_type_AndroidOsBundle.getString("file_video_source_dir"));
-    Object localObject1 = azdd.a(0, 4);
-    localObject2 = azdd.a(localObject2, (azdx)localObject1);
-    ((azdx)localObject1).a((azen)localObject2);
-    zuu localzuu = new zuu(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-    MessageRecord localMessageRecord = localzuu.a((azen)localObject2);
-    localzuu.a(localMessageRecord);
-    ((azen)localObject2).a = localMessageRecord;
-    ((azdx)localObject1).a((azen)localObject2);
-    azdd.a((azdx)localObject1, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    Object localObject1 = bcec.a(0, 4);
+    localObject2 = bcec.a(localObject2, (bcev)localObject1);
+    ((bcev)localObject1).a((bcfn)localObject2);
+    abrs localabrs = new abrs(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    MessageRecord localMessageRecord = localabrs.a((bcfn)localObject2);
+    localabrs.a(localMessageRecord);
+    ((bcfn)localObject2).a = localMessageRecord;
+    ((bcev)localObject1).a((bcfn)localObject2);
+    bcec.a((bcev)localObject1, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
     localObject1 = new Intent(this.jdField_a_of_type_AndroidAppActivity, SplashActivity.class);
     ((Intent)localObject1).putExtras(this.jdField_a_of_type_AndroidOsBundle);
-    localObject1 = aepi.a((Intent)localObject1, null);
+    localObject1 = afur.a((Intent)localObject1, null);
     ((Intent)localObject1).putExtra("isBack2Root", true);
     this.jdField_a_of_type_AndroidAppActivity.startActivity((Intent)localObject1);
     this.jdField_a_of_type_AndroidAppActivity.finish();
   }
-  
-  public void z()
-  {
-    Intent localIntent = new Intent();
-    localIntent.putExtras(a());
-    localIntent.putExtra("forward_to_someplace_from_shoot_quick", 1003);
-    this.jdField_a_of_type_AndroidAppActivity.setResult(-1, localIntent);
-    this.jdField_a_of_type_AndroidAppActivity.finish();
-    azqs.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8007810", "0X8007810", 0, 0, "", "", "", "");
-    wxj.a("plus_shoot", "send_tip", 0, 0, new String[] { "", "", "", "" });
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.forward.ForwardShortVideoOption
  * JD-Core Version:    0.7.0.1
  */

@@ -1,58 +1,17 @@
-import android.view.View;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawableDownListener.Adapter;
-import com.tencent.mobileqq.widget.AnyScaleTypeImageView;
-import com.tencent.open.agent.OpenCardContainer;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class bffr
-  extends URLDrawableDownListener.Adapter
+final class bffr
+  implements DialogInterface.OnClickListener
 {
-  public bffr(OpenCardContainer paramOpenCardContainer) {}
-  
-  public void onLoadCancelled(View paramView, URLDrawable paramURLDrawable)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    super.onLoadCancelled(paramView, paramURLDrawable);
-    if (QLog.isColorLevel()) {
-      QLog.d("OpenCardContainer", 2, "-->drawabel onLoadCancelled, view: " + paramView);
-    }
-  }
-  
-  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("OpenCardContainer", 2, "-->drawabel onLoadFailed, view: " + paramView);
-    }
-  }
-  
-  public void onLoadInterrupted(View paramView, URLDrawable paramURLDrawable, InterruptedException paramInterruptedException)
-  {
-    super.onLoadInterrupted(paramView, paramURLDrawable, paramInterruptedException);
-    if (QLog.isColorLevel()) {
-      QLog.d("OpenCardContainer", 2, "-->drawabel onLoadInterrupted, view: " + paramView);
-    }
-  }
-  
-  public void onLoadProgressed(View paramView, URLDrawable paramURLDrawable, int paramInt)
-  {
-    super.onLoadProgressed(paramView, paramURLDrawable, paramInt);
-    if (QLog.isColorLevel()) {
-      QLog.d("OpenCardContainer", 2, "-->drawabel onLoadProgressed, view: " + paramView);
-    }
-  }
-  
-  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("OpenCardContainer", 2, "-->drawabel onLoadSuccessed, view: " + paramView);
-    }
-    OpenCardContainer.a(this.a);
-    ((AnyScaleTypeImageView)paramView).setImageDrawable(paramURLDrawable);
+    paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bffr
  * JD-Core Version:    0.7.0.1
  */

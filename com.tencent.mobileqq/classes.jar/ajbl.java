@@ -1,24 +1,15 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.PathResult;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.util.concurrent.atomic.AtomicBoolean;
+import com.tencent.mobileqq.activity.contact.phonecontact.PhoneContactManagerImp;
+import com.tencent.mobileqq.data.PhoneContact;
+import java.util.Comparator;
 
-class ajbl
-  implements ajal
+public class ajbl
+  implements Comparator<PhoneContact>
 {
-  ajbl(ajbk paramajbk, File paramFile, AtomicBoolean paramAtomicBoolean) {}
+  public ajbl(PhoneContactManagerImp paramPhoneContactManagerImp) {}
   
-  public void onResult(int paramInt, PreloadManager.PathResult arg2)
+  public int a(PhoneContact paramPhoneContact1, PhoneContact paramPhoneContact2)
   {
-    if ((paramInt == 0) && (!TextUtils.isEmpty(???.filePath))) {}
-    synchronized (this.jdField_a_of_type_JavaIoFile)
-    {
-      this.jdField_a_of_type_JavaIoFile.notify();
-      this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
-      return;
-      QLog.e("QWalletPicDownloader", 2, "downloadImage file not succeed, pathRes=" + ???);
-    }
+    return paramPhoneContact1.contactID - paramPhoneContact2.contactID;
   }
 }
 

@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.emoticonview;
 
-import apty;
-import bdhb;
+import arwz;
+import bgmg;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
@@ -17,7 +17,7 @@ import mqq.app.AppRuntime;
 public class CommonUsedSystemEmojiManager$3
   implements Runnable
 {
-  public CommonUsedSystemEmojiManager$3(apty paramapty) {}
+  public CommonUsedSystemEmojiManager$3(arwz paramarwz) {}
   
   public void run()
   {
@@ -45,7 +45,7 @@ public class CommonUsedSystemEmojiManager$3
             }
             QLog.d("CommonUsedSystemEmojiManager", 2, localStringBuilder.toString());
           }
-          bdhb.a(localFile.getAbsolutePath(), localSubCmd0x13Rsp.toByteArray(), false);
+          bgmg.a(localFile.getAbsolutePath(), localSubCmd0x13Rsp.toByteArray(), false);
           return;
         }
       }
@@ -54,7 +54,7 @@ public class CommonUsedSystemEmojiManager$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.CommonUsedSystemEmojiManager.3
  * JD-Core Version:    0.7.0.1
  */

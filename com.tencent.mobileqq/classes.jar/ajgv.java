@@ -1,23 +1,26 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.util.Pair;
+import com.tencent.mobileqq.activity.contacts.alphabet.AlphabetFriendFragment;
+import com.tencent.qphone.base.util.QLog;
 
-class ajgv
-  implements View.OnClickListener
+public class ajgv
+  extends aniz
 {
-  ajgv(ajgb paramajgb) {}
+  private ajgv(AlphabetFriendFragment paramAlphabetFriendFragment) {}
   
-  public void onClick(View paramView)
+  protected void onCardDownload(boolean paramBoolean, Object paramObject)
   {
-    Intent localIntent = new Intent(ajgb.a(this.a), QQBrowserActivity.class);
-    localIntent.putExtra("uin", ((QQAppInterface)ajgb.a(this.a).getAppRuntime()).getCurrentAccountUin());
-    paramView = (Pair)paramView.getTag();
-    if (paramView != null) {
-      ajgb.a(this.a).startActivity(localIntent.putExtra("url", "https://qzs.qq.com/iot/mobile/xiaowei-qq-proxy/index.html?din=" + ((Long)paramView.first).longValue() + "&deviceRemark=" + (String)paramView.second));
+    if ((paramBoolean) && (AlphabetFriendFragment.b(this.a))) {
+      AlphabetFriendFragment.a(this.a, 1400L, true);
+    }
+  }
+  
+  protected void onGetCalReactiveDays(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    if (paramBoolean1)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("interactive", 2, " contacts onGetCalReactiveDays isAllow= " + paramBoolean2);
+      }
+      AlphabetFriendFragment.a(this.a, 1400L, false);
     }
   }
 }

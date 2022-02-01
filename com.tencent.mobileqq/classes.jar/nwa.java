@@ -1,27 +1,20 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.smtt.export.external.interfaces.JsResult;
 
 class nwa
-  implements ViewBase.OnClickListener
+  implements DialogInterface.OnClickListener
 {
-  nwa(nvz paramnvz) {}
+  nwa(nvu paramnvu, JsResult paramJsResult) {}
   
-  public void onClick(ViewBase paramViewBase)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramViewBase.getEventAttachedData() == null)
-    {
-      QLog.e("DailyHeaderViewController", 1, "[onClick] attach event data is null");
-      return;
-    }
-    nvp.a(this.a.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_OrgJsonJSONObject);
-    ors.a(paramViewBase.getNativeView().getContext(), paramViewBase.getEventAttachedData());
+    this.jdField_a_of_type_ComTencentSmttExportExternalInterfacesJsResult.confirm();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     nwa
  * JD-Core Version:    0.7.0.1
  */

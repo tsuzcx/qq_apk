@@ -1,7 +1,4 @@
-public abstract interface alef
-{
-  public abstract void a(boolean paramBoolean, int paramInt);
-}
+public abstract interface alef {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar

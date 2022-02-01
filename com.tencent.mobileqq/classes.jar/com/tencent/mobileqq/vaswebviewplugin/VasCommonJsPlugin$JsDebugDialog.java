@@ -7,11 +7,12 @@ import android.view.Window;
 import android.widget.RelativeLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
+import com.tencent.qqlive.module.videoreport.inject.dialog.ReportDialog;
 import java.util.Iterator;
 import java.util.List;
 
 class VasCommonJsPlugin$JsDebugDialog
-  extends Dialog
+  extends ReportDialog
 {
   TextView textView;
   
@@ -53,7 +54,7 @@ class VasCommonJsPlugin$JsDebugDialog
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.vaswebviewplugin.VasCommonJsPlugin.JsDebugDialog
  * JD-Core Version:    0.7.0.1
  */

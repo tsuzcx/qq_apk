@@ -1,32 +1,37 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.subscribe.beans.SubscribeDraftBean;
-import com.tencent.biz.subscribe.widget.relativevideo.SubScribeDraftItemView;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.notification.StoryPushMsg;
 
-public class ypl
-  implements View.OnClickListener
+class ypl
+  extends wfi
 {
-  public ypl(SubScribeDraftItemView paramSubScribeDraftItemView, SubscribeDraftBean paramSubscribeDraftBean) {}
+  ypl(ypb paramypb) {}
   
-  public void onClick(View paramView)
+  public void a(StoryPushMsg paramStoryPushMsg)
   {
-    if (!yxv.a("subscribe_draft_click"))
+    if ((ypb.a(this.a) == null) || (ypb.a(this.a).a == null))
     {
-      boolean bool = SubScribeDraftItemView.a(this.jdField_a_of_type_ComTencentBizSubscribeWidgetRelativevideoSubScribeDraftItemView);
-      paramView = new Intent();
-      paramView.putExtra("postUin", SubScribeDraftItemView.a(this.jdField_a_of_type_ComTencentBizSubscribeWidgetRelativevideoSubScribeDraftItemView));
-      paramView.putExtra("has_shop", bool);
-      paramView.putExtra("subscribeDraftID", String.valueOf(this.jdField_a_of_type_ComTencentBizSubscribeBeansSubscribeDraftBean.getDraftId()));
-      bjdt.a((Activity)this.jdField_a_of_type_ComTencentBizSubscribeWidgetRelativevideoSubScribeDraftItemView.getContext(), paramView, 0);
-      zaj.b(SubScribeDraftItemView.b(this.jdField_a_of_type_ComTencentBizSubscribeWidgetRelativevideoSubScribeDraftItemView), "auth_pubish", "clk_draftclk", 0, 0, new String[0]);
+      yqp.e("NewMyStorySegment", "onPushMessage MyStory feed is null!");
+      return;
     }
+    String str = ypb.a(this.a).a.a;
+    if (!TextUtils.equals(str, paramStoryPushMsg.d))
+    {
+      yqp.a("NewMyStorySegment", "onPushMessage Push feed id = %s not equal to current feed %s, ignore!", paramStoryPushMsg.d, str);
+      return;
+    }
+    switch (paramStoryPushMsg.a)
+    {
+    case 16: 
+    case 17: 
+    default: 
+      return;
+    }
+    this.a.a(new ymk[] { new ymf(yln.a(str)), (ymk)this.a.b.a(), new yme(new ypm(this, str)) });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     ypl
  * JD-Core Version:    0.7.0.1
  */

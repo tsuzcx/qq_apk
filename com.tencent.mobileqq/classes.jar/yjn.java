@@ -1,27 +1,58 @@
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
-import com.tencent.biz.subscribe.fragments.SubscribePersonalBottomOpusFragment;
-import com.tencent.biz.videostory.network.VSNetworkHelper;
-import com.tencent.biz.videostory.network.request.SubscribePersonalDetailRequest;
-import com.tencent.mobileqq.pb.PBStringField;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.storyHome.model.FeedItem;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.Map;
 
 public class yjn
-  implements yia<yei>
+  extends wfr<yjc, wpr>
 {
-  public yjn(SubscribePersonalBottomOpusFragment paramSubscribePersonalBottomOpusFragment) {}
-  
-  public void a(yii paramyii, yei paramyei)
+  public yjn(yjc paramyjc)
   {
-    if ((paramyii.e()) && (this.a.a != null) && (this.a.a.a != null))
+    super(paramyjc);
+  }
+  
+  public void a(@NonNull yjc paramyjc, @NonNull wpr paramwpr)
+  {
+    Object localObject = yjc.a(paramyjc);
+    paramwpr = paramwpr.a;
+    wpp localwpp = (wpp)wpm.a(27);
+    localObject = ((ArrayList)localObject).iterator();
+    int i = 0;
+    while (((Iterator)localObject).hasNext())
     {
-      paramyii = new SubscribePersonalDetailRequest(this.a.a.a.poster.id.get(), paramyii.b());
-      VSNetworkHelper.a().a(paramyii, new yjo(this, paramyei));
+      yjy localyjy = (yjy)((Iterator)localObject).next();
+      if ((localyjy instanceof yka))
+      {
+        wyx localwyx = (wyx)paramwpr.get(localyjy.a().feedId);
+        if (localwyx == null) {
+          break label129;
+        }
+        ((yka)localyjy).d = localwpp.a(((yka)localyjy).a(), localwyx.a);
+        i = 1;
+      }
+    }
+    label129:
+    for (;;)
+    {
+      break;
+      if (i != 0) {
+        yjc.a(paramyjc).f();
+      }
+      return;
     }
   }
+  
+  public Class acceptEventClass()
+  {
+    return wpr.class;
+  }
+  
+  public void b(@NonNull yjc paramyjc, @NonNull wpr paramwpr) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     yjn
  * JD-Core Version:    0.7.0.1
  */

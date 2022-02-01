@@ -1,64 +1,28 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.qphone.base.util.QLog;
-import tencent.im.PasswdUrlReport.RspBody;
-import tencent.im.PasswdUrlReport.UploadRespItem;
+import android.content.Intent;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.tribe.fragment.TribeVideoListPlayerFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.ArrayList;
 
 class beet
-  extends nac
+  implements View.OnClickListener
 {
-  beet(beer parambeer) {}
+  beet(bees parambees, int paramInt) {}
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("urlSecMgr", 2, "receive PasswdUrlReport code=" + paramInt);
-    }
-    if ((paramInt != 0) || (paramArrayOfByte == null)) {
-      if ((QLog.isColorLevel()) && (paramArrayOfByte == null)) {
-        break label231;
-      }
-    }
-    for (;;)
+    Object localObject = new Intent(this.jdField_a_of_type_Bees.jdField_a_of_type_ComTencentMobileqqTribeFragmentTribeVideoListPlayerFragment.getActivity(), QQBrowserActivity.class);
+    ((Intent)localObject).putExtra("url", ((beff)this.jdField_a_of_type_Bees.jdField_a_of_type_JavaUtilArrayList.get(this.jdField_a_of_type_Int)).b);
+    this.jdField_a_of_type_Bees.jdField_a_of_type_ComTencentMobileqqTribeFragmentTribeVideoListPlayerFragment.getActivity().startActivity((Intent)localObject);
+    if (this.jdField_a_of_type_Bees.jdField_a_of_type_Befh.c == 31) {}
+    for (localObject = "1";; localObject = "2")
     {
-      try
-      {
-        paramBundle = ((PasswdUrlReport.RspBody)new PasswdUrlReport.RspBody().mergeFrom(paramArrayOfByte)).upload_rsp_item.ret_msg.get();
-        StringBuilder localStringBuilder = new StringBuilder().append("PasswdUrlReport error code=").append(paramInt);
-        if (paramArrayOfByte == null)
-        {
-          paramArrayOfByte = ", data=null";
-          QLog.i("urlSecMgr", 2, paramArrayOfByte);
-          return;
-        }
-      }
-      catch (InvalidProtocolBufferMicroException paramBundle)
-      {
-        paramBundle = "";
-        continue;
-        paramArrayOfByte = ", msg=" + paramBundle;
-        continue;
-      }
-      paramBundle = new PasswdUrlReport.RspBody();
-      try
-      {
-        paramBundle.mergeFrom(paramArrayOfByte);
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.d("urlSecMgr", 2, new Object[] { "parse PasswdUrlReport result res=", Integer.valueOf(paramBundle.result.get()), " retCode=", Integer.valueOf(paramBundle.upload_rsp_item.ret_code.get()) });
-        return;
-      }
-      catch (InvalidProtocolBufferMicroException paramArrayOfByte) {}
-      if (QLog.isColorLevel())
-      {
-        QLog.i("urlSecMgr", 2, "parse error", paramArrayOfByte);
-        return;
-        label231:
-        paramBundle = "";
-      }
+      bcst.b(null, "dc00899", "Grp_tribe", "", "video_player", "Clk_tribe", 0, 0, this.jdField_a_of_type_Bees.jdField_a_of_type_Befh.d, ((beff)this.jdField_a_of_type_Bees.jdField_a_of_type_JavaUtilArrayList.get(this.jdField_a_of_type_Int)).a + "", "", (String)localObject);
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
     }
   }
 }

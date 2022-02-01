@@ -1,27 +1,28 @@
 public class baqs
+  implements Cloneable
 {
-  long jdField_a_of_type_Long;
-  String jdField_a_of_type_JavaLangString;
-  boolean jdField_a_of_type_Boolean;
-  long jdField_b_of_type_Long;
-  String jdField_b_of_type_JavaLangString;
-  String c;
-  String d;
-  String e;
-  String f;
-  String g;
-  String h;
+  public int a;
+  public long a;
+  public String a;
+  public int b;
+  public int c;
+  public int d;
   
-  public baqs(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, long paramLong, String paramString7)
+  public baqs(String paramString, int paramInt)
   {
-    this.a = paramString1;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    this.c = paramString3;
-    this.d = paramString4;
-    this.e = paramString5;
-    this.f = paramString6;
-    this.jdField_b_of_type_Long = paramLong;
-    this.h = paramString7;
+    this.jdField_a_of_type_Long = -1L;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public baqs a()
+  {
+    return (baqs)super.clone();
+  }
+  
+  public String toString()
+  {
+    return this.jdField_a_of_type_JavaLangString + ":" + this.jdField_a_of_type_Int + " failCount:" + this.b;
   }
 }
 

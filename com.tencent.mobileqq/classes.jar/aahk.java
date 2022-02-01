@@ -1,14 +1,36 @@
-import com.tencent.gamecenter.common.util.GameCenterAPIJavaScript;
+import android.os.Bundle;
+import android.view.ViewGroup;
+import com.tencent.biz.subscribe.baseUI.BaseWidgetView;
+import com.tencent.biz.subscribe.event.SubDraftChangeEvent;
+import com.tencent.biz.subscribe.fragments.SubscribePersonalDetailFragment;
 
 public class aahk
-  implements aahz
+  extends zyu
 {
-  public aahk(GameCenterAPIJavaScript paramGameCenterAPIJavaScript, String paramString) {}
-  
-  public void a(int paramInt, String paramString)
+  public aahk(SubscribePersonalDetailFragment paramSubscribePersonalDetailFragment, Bundle paramBundle)
   {
-    this.jdField_a_of_type_ComTencentGamecenterCommonUtilGameCenterAPIJavaScript.callbackJS(this.jdField_a_of_type_JavaLangString, paramInt, paramString);
+    super(paramBundle);
   }
+  
+  protected BaseWidgetView a(ViewGroup paramViewGroup, zxu paramzxu)
+  {
+    return SubscribePersonalDetailFragment.a(this.a);
+  }
+  
+  public void loadData(zxz paramzxz)
+  {
+    if ((paramzxz.c()) || (paramzxz.d()))
+    {
+      if ((SubscribePersonalDetailFragment.a(this.a) != null) && (SubscribePersonalDetailFragment.a(this.a).a() == 1))
+      {
+        SubDraftChangeEvent localSubDraftChangeEvent = new SubDraftChangeEvent();
+        zwp.a().a(localSubDraftChangeEvent);
+      }
+      SubscribePersonalDetailFragment.a(this.a, paramzxz);
+    }
+  }
+  
+  public void onInitBlock(Bundle paramBundle) {}
 }
 
 

@@ -387,6 +387,20 @@ public class WtloginManagerImpl
     this.app.startServlet(localNewIntent);
   }
   
+  public int checkSMSVerifyLoginAccount(String paramString1, String paramString2, int paramInt, byte[] paramArrayOfByte, WtloginObserver paramWtloginObserver)
+  {
+    NewIntent localNewIntent = new NewIntent(this.app.getApplication(), WtloginServlet.class);
+    localNewIntent.putExtra("action", 2118);
+    localNewIntent.putExtra("userAccount", paramString1);
+    localNewIntent.putExtra("countryCode", paramString2);
+    localNewIntent.putExtra("appid", paramInt);
+    localNewIntent.putExtra("verifyToken", paramArrayOfByte);
+    localNewIntent.withouLogin = true;
+    localNewIntent.setObserver(paramWtloginObserver);
+    this.app.startServlet(localNewIntent);
+    return 0;
+  }
+  
   public byte[] getGUID()
   {
     return this.localWtloginHelper.GetGuid();

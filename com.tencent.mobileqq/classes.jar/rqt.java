@@ -1,23 +1,23 @@
-import android.widget.PopupWindow.OnDismissListener;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.pubaccount.readinjoy.ugc.selectmember.ResultRecord;
 
-class rqt
-  implements PopupWindow.OnDismissListener
+public final class rqt
+  implements Parcelable.Creator<ResultRecord>
 {
-  rqt(rqj paramrqj) {}
-  
-  public void onDismiss()
+  public ResultRecord a(Parcel paramParcel)
   {
-    rqj.a(this.a).a(1.0F);
-    if (this.a.b)
-    {
-      this.a.a.c();
-      this.a.b = false;
-    }
+    return new ResultRecord(paramParcel);
+  }
+  
+  public ResultRecord[] a(int paramInt)
+  {
+    return new ResultRecord[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     rqt
  * JD-Core Version:    0.7.0.1
  */

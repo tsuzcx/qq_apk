@@ -1,14 +1,22 @@
-import dov.com.qq.im.ae.mode.AECaptureMode;
+import android.content.Context;
+import com.tencent.qphone.base.util.QLog;
 
-public final class blfi
+final class blfi
+  implements blfo
 {
-  public final int a;
-  public final AECaptureMode a;
+  blfi(blfn paramblfn) {}
   
-  public blfi(AECaptureMode paramAECaptureMode, int paramInt)
+  public void a(boolean paramBoolean, Context paramContext, blfq paramblfq)
   {
-    this.jdField_a_of_type_DovComQqImAeModeAECaptureMode = paramAECaptureMode;
-    this.jdField_a_of_type_Int = paramInt;
+    if (QLog.isColorLevel()) {
+      QLog.d("plugin_tag", 2, "openActivityForResult onPluginReady." + paramBoolean);
+    }
+    if (paramBoolean) {
+      blfh.d(paramContext, paramblfq);
+    }
+    if (this.a != null) {
+      this.a.a(paramBoolean);
+    }
   }
 }
 

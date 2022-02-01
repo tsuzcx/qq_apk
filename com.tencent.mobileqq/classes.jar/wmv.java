@@ -1,39 +1,65 @@
-import android.support.annotation.NonNull;
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.model.item.QQUserUIItem;
-import com.tencent.biz.qqstory.storyHome.memory.StoryMemoriesFragment;
-import com.tribe.async.dispatch.QQUIEventReceiver;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqLikeFeed;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspLikeFeed;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 
-class wmv
-  extends QQUIEventReceiver<wms, vdl>
+public class wmv
+  extends wnn
 {
-  public wmv(@NonNull wms paramwms)
+  int jdField_a_of_type_Int;
+  String jdField_a_of_type_JavaLangString;
+  boolean jdField_a_of_type_Boolean;
+  int b = -1;
+  
+  public wmv(String paramString, boolean paramBoolean, int paramInt1, int paramInt2)
   {
-    super(paramwms);
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.b = paramInt1;
+    this.jdField_a_of_type_Int = paramInt2;
   }
   
-  public void a(@NonNull wms paramwms, @NonNull vdl paramvdl)
+  public String a()
   {
-    if ((paramvdl.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess()) && (paramvdl.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem != null) && (TextUtils.equals(paramvdl.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem.getUnionId(), paramwms.jdField_a_of_type_JavaLangString)))
+    return wms.b;
+  }
+  
+  public wno a(byte[] paramArrayOfByte)
+  {
+    qqstory_service.RspLikeFeed localRspLikeFeed = new qqstory_service.RspLikeFeed();
+    try
     {
-      wxe.b("Q.qqstory.memories.QQStoryMemoriesPresenter", "receive user info event. %s. from others.", paramvdl);
-      paramwms.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem = paramvdl.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem;
-      wms.a(paramwms).e();
-      wms.a(paramwms).c();
-      wms.a(paramwms).d();
-      wms.a(paramwms).a();
+      localRspLikeFeed.mergeFrom(paramArrayOfByte);
+      return new wmw(localRspLikeFeed);
     }
+    catch (Exception paramArrayOfByte)
+    {
+      yqp.d("Q.qqstory:FeedLikeDataProvider", "" + paramArrayOfByte);
+    }
+    return null;
   }
   
-  public Class acceptEventClass()
+  protected byte[] a()
   {
-    return vdl.class;
+    qqstory_service.ReqLikeFeed localReqLikeFeed = new qqstory_service.ReqLikeFeed();
+    localReqLikeFeed.feed_id.set(ByteStringMicro.copyFromUtf8(this.jdField_a_of_type_JavaLangString));
+    PBUInt32Field localPBUInt32Field = localReqLikeFeed.operation;
+    if (this.jdField_a_of_type_Boolean) {}
+    for (int i = 1;; i = 2)
+    {
+      localPBUInt32Field.set(i);
+      localReqLikeFeed.source.set(this.jdField_a_of_type_Int);
+      if (this.b != -1) {
+        localReqLikeFeed.type.set(this.b);
+      }
+      return localReqLikeFeed.toByteArray();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     wmv
  * JD-Core Version:    0.7.0.1
  */

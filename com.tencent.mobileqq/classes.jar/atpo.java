@@ -1,80 +1,64 @@
-import android.support.annotation.Nullable;
-import com.tencent.tencentmap.mapsdk.maps.model.LatLng;
-import org.jetbrains.annotations.NotNull;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.qphone.base.util.QLog;
 
-public class atpo
+class atpo
+  extends aare
 {
-  private double jdField_a_of_type_Double;
-  private int jdField_a_of_type_Int = -1;
-  private LatLng jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelLatLng;
-  private String jdField_a_of_type_JavaLangString;
+  atpo(atpf paramatpf) {}
   
-  public atpo(String paramString, LatLng paramLatLng, double paramDouble)
+  public void a(boolean paramBoolean, int paramInt1, String paramString1, String paramString2, int paramInt2, int paramInt3, String paramString3, ByteStringMicro paramByteStringMicro1, String paramString4, ByteStringMicro paramByteStringMicro2, Bundle paramBundle)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelLatLng = paramLatLng;
-    this.jdField_a_of_type_Double = paramDouble;
-  }
-  
-  public double a()
-  {
-    return this.jdField_a_of_type_Double;
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public LatLng a()
-  {
-    return this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelLatLng;
-  }
-  
-  public String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelLatLng = null;
-  }
-  
-  public void a(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void a(LatLng paramLatLng, Double paramDouble)
-  {
-    if (paramLatLng != null) {
-      this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelLatLng = paramLatLng;
-    }
-    if (paramDouble != null) {
-      this.jdField_a_of_type_Double = paramDouble.doubleValue();
-    }
-  }
-  
-  public boolean equals(@Nullable Object paramObject)
-  {
-    if ((paramObject instanceof atpo))
+    paramByteStringMicro2 = this.a.a.a();
+    paramByteStringMicro1 = atvo.a(paramByteStringMicro1);
+    paramString2 = null;
+    paramString1 = paramString2;
+    if (paramBoolean)
     {
-      paramObject = (atpo)paramObject;
-      return this.jdField_a_of_type_JavaLangString.equals(paramObject.a());
+      paramString1 = paramString2;
+      if (!TextUtils.isEmpty(paramByteStringMicro1))
+      {
+        paramInt1 = paramByteStringMicro2.zipType;
+        paramString1 = "http://" + paramString3 + ":" + paramInt3 + "/ftn_compress_getfile/rkey=" + paramByteStringMicro1 + "&filetype=" + paramInt1 + "&path=" + bkgj.a(paramByteStringMicro2.zipInnerPath) + "&";
+      }
     }
-    return super.equals(paramObject);
-  }
-  
-  @NotNull
-  public String toString()
-  {
-    return "LocationItem{mUin='" + this.jdField_a_of_type_JavaLangString + '\'' + ", mLatLng=" + this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelLatLng + ", mRotation=" + this.jdField_a_of_type_Double + '}';
+    if (!TextUtils.isEmpty(paramString1))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("TroopFileModel<FileAssistant>", 1, "url = " + paramString1 + ", cookies = " + paramString4);
+      }
+      if (atpf.a(this.a) != null) {
+        atpf.a(this.a).a(paramString1, paramString4);
+      }
+      if (this.a.a.a() != null)
+      {
+        paramString1 = String.valueOf(this.a.a.a().TroopUin);
+        if (this.a.a.a() == null) {
+          break label291;
+        }
+        paramString2 = atvo.b(this.a.a.a().nFileType);
+        label261:
+        bcst.b(null, "dc00899", "Grp_files", "", "oper", "Clk_pre_video", 0, 0, paramString1, "", paramString2, "1");
+      }
+    }
+    label291:
+    do
+    {
+      return;
+      paramString1 = "";
+      break;
+      paramString2 = "unknow";
+      break label261;
+      QLog.i("TroopFileModel<FileAssistant>", 1, "requestOnlinePreviewDownloadUrl_onGetFilePreviewResult error, url is null.");
+    } while (atpf.a(this.a) == null);
+    atpf.a(this.a).c();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     atpo
  * JD-Core Version:    0.7.0.1
  */

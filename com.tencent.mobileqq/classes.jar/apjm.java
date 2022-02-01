@@ -1,124 +1,139 @@
-import android.os.Build.VERSION;
-import android.os.Handler;
-import android.os.Looper;
+import android.support.v4.app.FragmentActivity;
 import android.text.TextUtils;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.ChatFragment;
+import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.mini.sdk.EntryModel;
+import com.tencent.mobileqq.mini.sdk.MiniAppLauncher;
 import com.tencent.qphone.base.util.QLog;
-import mqq.app.AppActivity;
-import org.json.JSONException;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import org.json.JSONArray;
 import org.json.JSONObject;
 
-public final class apjm
+public class apjm
 {
-  private Handler jdField_a_of_type_AndroidOsHandler;
-  private final WebViewPlugin jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin;
-  private String jdField_a_of_type_JavaLangString;
+  private static HashMap<String, apjp> a = new HashMap();
   
-  public apjm(WebViewPlugin paramWebViewPlugin)
+  static
   {
-    this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin = paramWebViewPlugin;
+    a.put("qq", new apjr());
+    a.put("tel", new apjt());
+    a.put("app", new apjn());
+    a.put("mqzone", new apjs());
+    a.put("miniapp", new apjq());
   }
   
-  private AppActivity a()
+  public static List<Object> a(JSONArray paramJSONArray)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin == null)
+    ArrayList localArrayList = new ArrayList();
+    int i = 0;
+    if (i < paramJSONArray.length())
     {
-      localObject = null;
-      if (localObject != null) {
-        break label38;
+      Object localObject2 = paramJSONArray.get(i);
+      Object localObject1;
+      if ((localObject2 instanceof JSONArray)) {
+        localObject1 = a((JSONArray)localObject2);
       }
-    }
-    label38:
-    for (Object localObject = null;; localObject = ((begz)localObject).a())
-    {
-      if (!(localObject instanceof AppActivity)) {
-        break label46;
-      }
-      return (AppActivity)localObject;
-      localObject = this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime;
-      break;
-    }
-    label46:
-    return null;
-  }
-  
-  private void a(boolean paramBoolean, int paramInt)
-  {
-    String str = this.jdField_a_of_type_JavaLangString;
-    Object localObject1;
-    if (!TextUtils.isEmpty(str)) {
-      localObject1 = "";
-    }
-    try
-    {
-      Object localObject2 = new JSONObject();
-      ((JSONObject)localObject2).put("granted", paramBoolean);
-      ((JSONObject)localObject2).put("errorCode", paramInt);
-      ((JSONObject)localObject2).put("cmd", "onPermissionResult");
-      localObject2 = ((JSONObject)localObject2).toString();
-      localObject1 = localObject2;
-    }
-    catch (JSONException localJSONException)
-    {
       for (;;)
       {
-        QLog.e("CameraHelper", 1, "onPermissionResult error", localJSONException);
+        localArrayList.add(localObject1);
+        i += 1;
+        break;
+        localObject1 = localObject2;
+        if ((localObject2 instanceof JSONObject)) {
+          localObject1 = a((JSONObject)localObject2);
+        }
       }
     }
-    if ((this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin != null) && (!TextUtils.isEmpty((CharSequence)localObject1))) {
-      this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.callJs(str, new String[] { localObject1 });
-    }
+    return localArrayList;
   }
   
-  private boolean a()
+  public static Map<String, Object> a(JSONObject paramJSONObject)
   {
-    AppActivity localAppActivity = a();
-    return (Build.VERSION.SDK_INT < 23) || (localAppActivity == null) || (localAppActivity.checkSelfPermission("android.permission.CAMERA") == 0);
+    HashMap localHashMap = new HashMap();
+    Iterator localIterator = paramJSONObject.keys();
+    if (localIterator.hasNext())
+    {
+      String str = (String)localIterator.next();
+      Object localObject2 = paramJSONObject.get(str);
+      Object localObject1;
+      if ((localObject2 instanceof JSONArray)) {
+        localObject1 = a((JSONArray)localObject2);
+      }
+      for (;;)
+      {
+        localHashMap.put(str, localObject1);
+        break;
+        localObject1 = localObject2;
+        if ((localObject2 instanceof JSONObject)) {
+          localObject1 = a((JSONObject)localObject2);
+        }
+      }
+    }
+    return localHashMap;
   }
   
-  private void b()
+  public static boolean a(String paramString1, String paramString2, JSONObject paramJSONObject, long paramLong, String paramString3)
   {
-    AppActivity localAppActivity = a();
-    if (localAppActivity == null) {
-      return;
-    }
-    localAppActivity.requestPermissions(new apjn(this), 1819, new String[] { "android.permission.CAMERA" });
-    if (this.jdField_a_of_type_AndroidOsHandler == null) {
-      this.jdField_a_of_type_AndroidOsHandler = new apjo(this, Looper.getMainLooper());
-    }
-    this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1, 10000L);
-  }
-  
-  private void c()
-  {
-    if (this.jdField_a_of_type_AndroidOsHandler != null) {
-      this.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
-    }
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_JavaLangString = null;
-    c();
-    this.jdField_a_of_type_AndroidOsHandler = null;
-  }
-  
-  public boolean a(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {
-      QLog.e("CameraHelper", 1, "checkPermission failed, callback is invalid.");
-    }
-    while (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin == null) {
+    if (TextUtils.isEmpty(paramString1)) {
       return false;
     }
-    this.jdField_a_of_type_JavaLangString = paramString;
-    if (a())
-    {
-      a(true, 0);
-      return true;
+    QLog.e("ArkApp", 2, "navigate url: " + paramString1);
+    Object localObject = paramString1.split(":");
+    if (localObject.length <= 1) {
+      return false;
     }
-    b();
-    return false;
+    if (MiniAppLauncher.isMiniAppUrl(paramString1)) {
+      try
+      {
+        i = Integer.parseInt((String)bkgj.b(paramString1.substring(paramString1.indexOf("?") + 1)).get("scene"));
+        paramString2 = b();
+        MiniAppLauncher.startMiniApp(BaseActivity.sTopActivity, paramString1, i, paramString2, null);
+        return true;
+      }
+      catch (Exception paramString2)
+      {
+        for (;;)
+        {
+          QLog.e("ArkApp", 1, "Ark parse miniapp scene failed.", paramString2);
+          int i = 2059;
+        }
+      }
+    }
+    localObject = localObject[0];
+    apjp localapjp = (apjp)a.get(localObject);
+    if (localapjp == null) {
+      return false;
+    }
+    localObject = paramString1.substring(((String)localObject).length() + 1);
+    paramString1 = (String)localObject;
+    if (((String)localObject).startsWith("//")) {
+      paramString1 = ((String)localObject).substring(2);
+    }
+    localapjp.a(paramString1, paramString2, paramJSONObject, paramLong, paramString3);
+    return true;
+  }
+  
+  private static EntryModel b()
+  {
+    Object localObject = BaseActivity.sTopActivity;
+    if ((localObject instanceof FragmentActivity))
+    {
+      localObject = (FragmentActivity)localObject;
+      if (((FragmentActivity)localObject).getChatFragment() != null)
+      {
+        localObject = ((FragmentActivity)localObject).getChatFragment().a();
+        if ((localObject instanceof TroopChatPie)) {
+          return ((BaseChatPie)localObject).a();
+        }
+      }
+    }
+    return null;
   }
 }
 

@@ -23,12 +23,15 @@ class DesktopDataManager$2
       localEntry.value.set(str);
       this.val$extInfo.mapInfo.get().add(localEntry);
     }
-    DesktopDataManager.access$200(this.this$0, this.val$extInfo, this.val$recommendAppInfos, new ArrayList());
+    if (this.val$recommendAppList.isEmpty()) {
+      this.val$recommendAppList.addAll(this.this$0.parseRecommendExposureFromSp());
+    }
+    DesktopDataManager.access$200(this.this$0, this.val$extInfo, this.val$recommendAppList, new ArrayList());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.entry.desktop.item.DesktopDataManager.2
  * JD-Core Version:    0.7.0.1
  */

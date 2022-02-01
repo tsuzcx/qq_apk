@@ -1,61 +1,43 @@
-import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import mqq.app.MSFServlet;
-import mqq.app.Packet;
+import org.json.JSONObject;
 
 public class aqtq
-  extends MSFServlet
 {
-  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
+  public int a;
+  public String a;
+  public boolean a;
+  public int b;
+  public boolean b;
+  public int c = 1;
+  public int d = -1;
+  
+  public aqtq()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("FileTransferServlet<FileAssistant>", 2, "onReceive called");
-    }
-    if (paramIntent == null)
-    {
-      QLog.e("FileTransferServlet<FileAssistant>", 1, "onReceive : req is null");
-      return;
-    }
-    paramIntent.getExtras().putParcelable("response", paramFromServiceMsg);
-    QQAppInterface localQQAppInterface = (QQAppInterface)getAppRuntime();
-    paramIntent = (ToServiceMsg)paramIntent.getParcelableExtra(ToServiceMsg.class.getSimpleName());
-    paramFromServiceMsg.attributes.put(FromServiceMsg.class.getSimpleName(), paramIntent);
-    localQQAppInterface.a().a(paramIntent, paramFromServiceMsg);
+    this.jdField_a_of_type_JavaLangString = "";
   }
   
-  public void onSend(Intent paramIntent, Packet paramPacket)
+  public static aqtq a(JSONObject paramJSONObject)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("FileTransferServlet<FileAssistant>", 2, "onSend called");
-    }
-    if (paramIntent == null) {
-      QLog.e("FileTransferServlet<FileAssistant>", 1, "onSend : req is null");
-    }
-    do
-    {
-      return;
-      paramIntent = (ToServiceMsg)paramIntent.getParcelableExtra(ToServiceMsg.class.getSimpleName());
-      if (paramIntent == null) {
-        break;
-      }
-      paramPacket.setSSOCommand(paramIntent.getServiceCmd());
-      paramPacket.putSendData(paramIntent.getWupBuffer());
-      paramPacket.setTimeout(paramIntent.getTimeout());
-      paramPacket.addAttribute("fastresend", Boolean.valueOf(true));
-    } while (paramIntent.isNeedCallback());
-    paramPacket.setNoResponse();
-    return;
-    QLog.e("FileTransferServlet<FileAssistant>", 1, "onSend : toMsg is null");
+    aqtq localaqtq = new aqtq();
+    localaqtq.jdField_a_of_type_Boolean = paramJSONObject.optBoolean("show_c2c_chat_setting", false);
+    localaqtq.jdField_b_of_type_Boolean = paramJSONObject.optBoolean("show_group_chat_setting", false);
+    localaqtq.jdField_a_of_type_Int = paramJSONObject.optInt("service_type", -1);
+    localaqtq.jdField_b_of_type_Int = paramJSONObject.optInt("jumpType", -1);
+    localaqtq.c = paramJSONObject.optInt("version", -1);
+    localaqtq.d = paramJSONObject.optInt("appid", -1);
+    localaqtq.jdField_a_of_type_JavaLangString = paramJSONObject.optString("jumpUrl", "");
+    return localaqtq;
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("showC2CChatSetting=").append(this.jdField_a_of_type_Boolean).append(" showGroupChatSetting=").append(this.jdField_b_of_type_Boolean).append(" serviceType=").append(this.jdField_a_of_type_Int).append(" jumpType=").append(this.jdField_b_of_type_Int).append(" version=").append(this.c).append(" appId=").append(this.d).append(" jumpUrl=").append(this.jdField_a_of_type_JavaLangString);
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aqtq
  * JD-Core Version:    0.7.0.1
  */

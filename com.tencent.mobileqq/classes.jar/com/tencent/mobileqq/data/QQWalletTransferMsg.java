@@ -1,20 +1,23 @@
 package com.tencent.mobileqq.data;
 
 import android.text.TextUtils;
+import blqz;
+import blra;
+import blrb;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBSInt32Field;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
-import java.io.ObjectInput;
-import java.io.ObjectOutput;
+import com.tencent.qphone.base.util.QLog;
 import tencent.im.msg.im_msg_body.QQWalletAioBody;
 
 public class QQWalletTransferMsg
+  implements blqz
 {
   public QQWalletAioBodyReserve body;
   private int channelId;
-  public QQWalletTransferMsgElem elem;
+  public QQWalletBaseMsgElem elem;
   public String listId;
   private int resend;
   public int templateId;
@@ -22,7 +25,7 @@ public class QQWalletTransferMsg
   public QQWalletTransferMsg()
   {
     this.body = new QQWalletAioBodyReserve();
-    this.elem = new QQWalletTransferMsgElem();
+    this.elem = new QQWalletBaseMsgElem();
   }
   
   public QQWalletTransferMsg(im_msg_body.QQWalletAioBody paramQQWalletAioBody, String paramString)
@@ -30,11 +33,11 @@ public class QQWalletTransferMsg
     if ((paramQQWalletAioBody == null) || (TextUtils.isEmpty(paramString)))
     {
       this.body = new QQWalletAioBodyReserve();
-      this.elem = new QQWalletTransferMsgElem();
+      this.elem = new QQWalletBaseMsgElem();
       return;
     }
     if ((paramQQWalletAioBody.sint32_msgtype.has()) && (paramQQWalletAioBody.sint32_msgtype.get() == 16)) {
-      this.elem = new QQWalletTransferMsgElem(paramQQWalletAioBody.receiver);
+      this.elem = new QQWalletBaseMsgElem(paramQQWalletAioBody.receiver);
     }
     for (;;)
     {
@@ -48,132 +51,123 @@ public class QQWalletTransferMsg
       return;
       long l = paramQQWalletAioBody.uint64_senduin.get();
       if ((l != 0L) && (paramString.compareTo("" + l) == 0)) {
-        this.elem = new QQWalletTransferMsgElem(paramQQWalletAioBody.sender);
+        this.elem = new QQWalletBaseMsgElem(paramQQWalletAioBody.sender);
       } else {
-        this.elem = new QQWalletTransferMsgElem(paramQQWalletAioBody.receiver);
+        this.elem = new QQWalletBaseMsgElem(paramQQWalletAioBody.receiver);
       }
     }
   }
   
-  public void readExternal(int paramInt, ObjectInput paramObjectInput)
+  public byte[] flushMsgData(int paramInt)
   {
-    this.elem.background = paramObjectInput.readInt();
-    this.elem.icon = paramObjectInput.readInt();
-    this.elem.title = paramObjectInput.readUTF();
-    this.elem.subTitle = paramObjectInput.readUTF();
-    this.elem.content = paramObjectInput.readUTF();
-    this.elem.linkUrl = paramObjectInput.readUTF();
-    this.elem.blackStripe = paramObjectInput.readUTF();
-    this.elem.notice = paramObjectInput.readUTF();
-    this.channelId = paramObjectInput.readInt();
-    this.templateId = paramObjectInput.readInt();
-    this.resend = paramObjectInput.readInt();
-    if (paramInt == 1)
+    Object localObject3 = null;
+    for (;;)
     {
-      this.elem.titleColor = -1;
-      this.elem.subtitleColor = -1;
-      this.elem.actionsPriority = "";
-      this.elem.jumpUrl = "";
-      this.elem.nativeAndroid = "";
-      this.elem.iconUrl = "";
-      this.elem.contentColor = 13487565;
-      this.elem.contentBgColor = -1;
-      this.elem.aioImageLeft = "";
-      this.elem.aioImageRight = "";
-      this.elem.cftImage = "";
-    }
-    do
-    {
-      return;
-      if (paramInt == 2)
+      try
       {
-        this.elem.titleColor = paramObjectInput.readInt();
-        this.elem.subtitleColor = paramObjectInput.readInt();
-        this.elem.actionsPriority = paramObjectInput.readUTF();
-        this.elem.jumpUrl = paramObjectInput.readUTF();
-        this.elem.nativeAndroid = paramObjectInput.readUTF();
-        this.elem.iconUrl = "";
-        this.elem.contentColor = 13487565;
-        this.elem.contentBgColor = -1;
-        this.elem.aioImageLeft = "";
-        this.elem.aioImageRight = "";
-        this.elem.cftImage = "";
-        return;
+        localObject1 = new blrb();
+        localObject2 = localObject1;
       }
-      if (paramInt == 3)
+      catch (Exception localException1)
       {
-        this.elem.titleColor = paramObjectInput.readInt();
-        this.elem.subtitleColor = paramObjectInput.readInt();
-        this.elem.actionsPriority = paramObjectInput.readUTF();
-        this.elem.jumpUrl = paramObjectInput.readUTF();
-        this.elem.nativeAndroid = paramObjectInput.readUTF();
-        this.elem.iconUrl = paramObjectInput.readUTF();
-        this.elem.contentColor = paramObjectInput.readInt();
-        this.elem.contentBgColor = paramObjectInput.readInt();
-        this.elem.aioImageLeft = paramObjectInput.readUTF();
-        this.elem.aioImageRight = paramObjectInput.readUTF();
-        this.elem.cftImage = paramObjectInput.readUTF();
-        return;
+        try
+        {
+          writeHeader((blrb)localObject1, paramInt);
+          writeExternal((blrb)localObject1);
+          localObject2 = localObject1;
+          localObject1 = localObject3;
+          if (localObject2 != null) {
+            localObject1 = localObject2.a();
+          }
+          return localObject1;
+        }
+        catch (Exception localException2)
+        {
+          Object localObject1;
+          Object localObject2;
+          break label42;
+        }
+        localException1 = localException1;
+        localObject1 = null;
       }
-    } while (paramInt != 4);
-    try
-    {
-      this.elem.titleColor = paramObjectInput.readInt();
-      this.elem.subtitleColor = paramObjectInput.readInt();
-      this.elem.actionsPriority = paramObjectInput.readUTF();
-      this.elem.jumpUrl = paramObjectInput.readUTF();
-      this.elem.nativeAndroid = paramObjectInput.readUTF();
-      this.elem.iconUrl = paramObjectInput.readUTF();
-      this.elem.contentColor = paramObjectInput.readInt();
-      this.elem.contentBgColor = paramObjectInput.readInt();
-      this.elem.aioImageLeft = paramObjectInput.readUTF();
-      this.elem.aioImageRight = paramObjectInput.readUTF();
-      this.elem.cftImage = paramObjectInput.readUTF();
-      this.body.pfa_type = paramObjectInput.readInt();
-      this.elem.readJsonParams(paramObjectInput.readUTF());
-      this.listId = paramObjectInput.readUTF();
-      return;
+      label42:
+      if (QLog.isColorLevel())
+      {
+        QLog.d("Q.msg.qqwalletmsg", 2, "QQWalletTransferMsg write Exception", localException1);
+        localObject2 = localObject1;
+      }
     }
-    catch (Exception paramObjectInput) {}
   }
   
-  public void writeExternal(ObjectOutput paramObjectOutput)
+  public void readExternal(blra paramblra)
   {
-    paramObjectOutput.writeInt(this.elem.background);
-    paramObjectOutput.writeInt(this.elem.icon);
-    paramObjectOutput.writeUTF(this.elem.title);
-    paramObjectOutput.writeUTF(this.elem.subTitle);
-    paramObjectOutput.writeUTF(this.elem.content);
-    paramObjectOutput.writeUTF(this.elem.linkUrl);
-    paramObjectOutput.writeUTF(this.elem.blackStripe);
-    paramObjectOutput.writeUTF(this.elem.notice);
-    paramObjectOutput.writeInt(this.channelId);
-    paramObjectOutput.writeInt(this.templateId);
-    paramObjectOutput.writeInt(this.resend);
-    paramObjectOutput.writeInt(this.elem.titleColor);
-    paramObjectOutput.writeInt(this.elem.subtitleColor);
-    paramObjectOutput.writeUTF(this.elem.actionsPriority);
-    paramObjectOutput.writeUTF(this.elem.jumpUrl);
-    paramObjectOutput.writeUTF(this.elem.nativeAndroid);
-    paramObjectOutput.writeUTF(this.elem.iconUrl);
-    paramObjectOutput.writeInt(this.elem.contentColor);
-    paramObjectOutput.writeInt(this.elem.contentBgColor);
-    paramObjectOutput.writeUTF(this.elem.aioImageLeft);
-    paramObjectOutput.writeUTF(this.elem.aioImageRight);
-    paramObjectOutput.writeUTF(this.elem.cftImage);
-    paramObjectOutput.writeInt(this.body.pfa_type);
-    paramObjectOutput.writeUTF(this.elem.generateJsonParams());
-    if (this.listId == null) {}
-    for (String str = "";; str = this.listId)
-    {
-      paramObjectOutput.writeUTF(str);
-      return;
-    }
+    this.elem.background = paramblra.a();
+    this.elem.icon = paramblra.a();
+    this.elem.title = paramblra.a();
+    this.elem.subTitle = paramblra.a();
+    this.elem.content = paramblra.a();
+    this.elem.linkUrl = paramblra.a();
+    this.elem.blackStripe = paramblra.a();
+    this.elem.notice = paramblra.a();
+    this.channelId = paramblra.a();
+    this.templateId = paramblra.a();
+    this.resend = paramblra.a();
+    this.elem.titleColor = paramblra.a(-1);
+    this.elem.subtitleColor = paramblra.a(-1);
+    this.elem.actionsPriority = paramblra.a();
+    this.elem.jumpUrl = paramblra.a();
+    this.elem.nativeAndroid = paramblra.a();
+    this.elem.iconUrl = paramblra.a();
+    this.elem.contentColor = paramblra.a(13487565);
+    this.elem.contentBgColor = paramblra.a(-1);
+    this.elem.aioImageLeft = paramblra.a();
+    this.elem.aioImageRight = paramblra.a();
+    this.elem.cftImage = paramblra.a();
+    this.body.pfa_type = paramblra.a();
+    this.elem.readJsonParams(paramblra.a());
+    this.listId = paramblra.a();
+  }
+  
+  public void writeExternal(blrb paramblrb)
+  {
+    paramblrb.a(this.elem.background);
+    paramblrb.a(this.elem.icon);
+    paramblrb.a(this.elem.title);
+    paramblrb.a(this.elem.subTitle);
+    paramblrb.a(this.elem.content);
+    paramblrb.a(this.elem.linkUrl);
+    paramblrb.a(this.elem.blackStripe);
+    paramblrb.a(this.elem.notice);
+    paramblrb.a(this.channelId);
+    paramblrb.a(this.templateId);
+    paramblrb.a(this.resend);
+    paramblrb.a(this.elem.titleColor);
+    paramblrb.a(this.elem.subtitleColor);
+    paramblrb.a(this.elem.actionsPriority);
+    paramblrb.a(this.elem.jumpUrl);
+    paramblrb.a(this.elem.nativeAndroid);
+    paramblrb.a(this.elem.iconUrl);
+    paramblrb.a(this.elem.contentColor);
+    paramblrb.a(this.elem.contentBgColor);
+    paramblrb.a(this.elem.aioImageLeft);
+    paramblrb.a(this.elem.aioImageRight);
+    paramblrb.a(this.elem.cftImage);
+    paramblrb.a(this.body.pfa_type);
+    paramblrb.a(this.elem.generateJsonParams());
+    paramblrb.a(this.listId);
+  }
+  
+  public void writeHeader(blrb paramblrb, int paramInt)
+  {
+    paramblrb.a(32);
+    paramblrb.a(1);
+    paramblrb.a(4);
+    paramblrb.a(paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.data.QQWalletTransferMsg
  * JD-Core Version:    0.7.0.1
  */

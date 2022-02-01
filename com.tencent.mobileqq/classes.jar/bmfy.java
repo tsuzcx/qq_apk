@@ -1,26 +1,24 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.ptv.BaseButton;
-import dov.com.qq.im.ptv.LightWeightCaptureButtonHorizontalLayout;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import cooperation.qzone.QZoneShareData;
+import cooperation.qzone.share.QZoneShareActivity;
 
 public class bmfy
-  extends AnimatorListenerAdapter
+  implements DialogInterface.OnClickListener
 {
-  public bmfy(LightWeightCaptureButtonHorizontalLayout paramLightWeightCaptureButtonHorizontalLayout) {}
+  public bmfy(QZoneShareActivity paramQZoneShareActivity, Activity paramActivity, QZoneShareData paramQZoneShareData) {}
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("CameraCaptureLayout", 2, "rollBackDeleteAnimatorToActive deleteView 190ms all end ScaleX:" + this.a.b.getScaleX() + " ScaleY:" + this.a.b.getScaleY());
+    switch (paramInt)
+    {
+    default: 
+      return;
     }
-  }
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("CameraCaptureLayout", 2, "rollBackDeleteAnimatorToActive deleteView begin");
-    }
+    QZoneShareActivity.a(this.jdField_a_of_type_CooperationQzoneShareQZoneShareActivity, this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_CooperationQzoneQZoneShareData, false);
+    this.jdField_a_of_type_AndroidAppActivity.setResult(0, this.jdField_a_of_type_CooperationQzoneShareQZoneShareActivity.getIntent());
+    this.jdField_a_of_type_AndroidAppActivity.finish();
   }
 }
 

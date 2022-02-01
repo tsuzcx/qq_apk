@@ -1,12 +1,19 @@
-import android.widget.CheckBox;
-import android.widget.TextView;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.businessCard.data.BusinessCard;
 
-public class aqac
+public final class aqac
+  implements Parcelable.Creator<BusinessCard>
 {
-  CheckBox jdField_a_of_type_AndroidWidgetCheckBox;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
+  public BusinessCard a(Parcel paramParcel)
+  {
+    return new BusinessCard(paramParcel);
+  }
   
-  public aqac(apzy paramapzy) {}
+  public BusinessCard[] a(int paramInt)
+  {
+    return new BusinessCard[paramInt];
+  }
 }
 
 

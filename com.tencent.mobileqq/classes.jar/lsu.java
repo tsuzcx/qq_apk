@@ -1,21 +1,24 @@
+import com.tencent.av.random.RandomWebProtocol;
+import org.json.JSONObject;
+
 public class lsu
-  implements lst
+  extends lsp
 {
-  public void a(lss paramlss) {}
+  String b;
   
-  public boolean a(lss paramlss)
-  {
-    return false;
-  }
+  public lsu(RandomWebProtocol paramRandomWebProtocol) {}
   
-  public boolean b(lss paramlss)
+  void a(String paramString)
   {
-    return true;
+    super.a(paramString);
+    if ((this.jdField_a_of_type_Int == 5) && (this.jdField_a_of_type_OrgJsonJSONObject != null)) {
+      this.b = RandomWebProtocol.a(this.jdField_a_of_type_OrgJsonJSONObject.optString("roomowner"));
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     lsu
  * JD-Core Version:    0.7.0.1
  */

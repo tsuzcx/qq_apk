@@ -1,43 +1,35 @@
-import android.text.TextUtils;
-import mqq.manager.Manager;
+import com.tencent.ark.ArkDispatchTask;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import com.tencent.mobileqq.ark.API.ArkAppEventObserverManager.1.1;
+import com.tencent.mobileqq.ark.API.ArkAppEventObserverManager.1.2;
+import com.tencent.mobileqq.ark.ArkAppCenter;
+import com.tencent.qphone.base.util.QLog;
 
 public class aphy
-  implements Manager
+  extends aopa
 {
-  public static long a;
-  public static long b;
-  public static long c;
-  protected awgf a;
-  
-  public static void a(String paramString, long paramLong1, long paramLong2, long paramLong3)
+  aphy(aphx paramaphx, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString)
   {
-    if (TextUtils.isEmpty(paramString)) {
-      return;
-    }
-    if (!auwz.c())
-    {
-      auwq.a(paramString, "DatingManager.maplng", Long.valueOf(paramLong1));
-      auwq.a(paramString, "DatingManager.maplat", Long.valueOf(paramLong2));
-      auwq.a(paramString, "DatingManager.timestamp", Long.valueOf(paramLong3));
-      return;
-    }
-    jdField_a_of_type_Long = paramLong1;
-    b = paramLong2;
-    c = paramLong3;
+    super(paramInt, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString);
   }
   
-  public void onDestroy()
+  public void onConsecutiveFailure(int paramInt1, int paramInt2)
   {
-    if (this.jdField_a_of_type_Awgf != null) {}
-    try
-    {
-      this.jdField_a_of_type_Awgf.a();
+    if (QLog.isColorLevel()) {
+      QLog.d("ArkAppEventObserverManager", 2, "onConsecutiveFailure errCode=" + paramInt1 + ", failCount=" + paramInt2);
+    }
+    if (paramInt2 < 3) {
       return;
     }
-    catch (Exception localException)
-    {
-      localException.printStackTrace();
+    ArkAppCenter.a().post(aphx.a(this.a), new ArkAppEventObserverManager.1.2(this));
+  }
+  
+  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ArkAppEventObserverManager", 2, "onLocationFinish errCode=" + paramInt);
     }
+    ArkAppCenter.a().post(aphx.a(this.a), new ArkAppEventObserverManager.1.1(this, paramSosoLbsInfo, paramInt));
   }
 }
 

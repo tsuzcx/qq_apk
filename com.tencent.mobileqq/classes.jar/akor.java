@@ -1,6 +1,48 @@
-public abstract interface akor
+import Wallet.RedPackGrapInfo;
+import android.animation.Animator;
+import android.support.v7.widget.RecyclerView;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.qwallet.TroopUnAccalimedRedPacketList;
+import com.tencent.mobileqq.activity.qwallet.redpacket.IRedPacket.OnGetAvailableListListener;
+import java.util.List;
+
+public class akor
+  implements IRedPacket.OnGetAvailableListListener
 {
-  public abstract void a(int paramInt, boolean paramBoolean1, boolean paramBoolean2);
+  public akor(TroopUnAccalimedRedPacketList paramTroopUnAccalimedRedPacketList) {}
+  
+  public void OnGetAvailableList(List<RedPackGrapInfo> paramList)
+  {
+    if (TroopUnAccalimedRedPacketList.a(this.a) != null) {
+      TroopUnAccalimedRedPacketList.a(this.a).setVisibility(8);
+    }
+    if ((paramList == null) || (paramList.isEmpty()))
+    {
+      if (TroopUnAccalimedRedPacketList.a(this.a) != null) {
+        TroopUnAccalimedRedPacketList.a(this.a).setVisibility(8);
+      }
+      if (TroopUnAccalimedRedPacketList.a(this.a) != null)
+      {
+        TroopUnAccalimedRedPacketList.a(this.a).setVisibility(0);
+        TroopUnAccalimedRedPacketList.a(this.a).setText(anni.a(2131714472));
+      }
+    }
+    do
+    {
+      return;
+      if (TroopUnAccalimedRedPacketList.a(this.a) != null) {
+        TroopUnAccalimedRedPacketList.a(this.a).setVisibility(0);
+      }
+      if (TroopUnAccalimedRedPacketList.a(this.a) != null) {
+        TroopUnAccalimedRedPacketList.a(this.a).setVisibility(8);
+      }
+      if (TroopUnAccalimedRedPacketList.a(this.a) != null) {
+        TroopUnAccalimedRedPacketList.a(this.a).a(paramList);
+      }
+    } while (TroopUnAccalimedRedPacketList.a(this.a) == null);
+    TroopUnAccalimedRedPacketList.a(this.a).start();
+  }
 }
 
 

@@ -1,26 +1,38 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQMapActivity;
+import com.tencent.mobileqq.activity.ChatActivityFacade.3;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.qphone.base.util.QLog;
+import feedcloud.FeedCloudRead.StGetC2CFeedRsp;
+import java.util.Locale;
 
 public class adrp
-  implements View.OnClickListener
+  implements zxa<FeedCloudRead.StGetC2CFeedRsp>
 {
-  public adrp(QQMapActivity paramQQMapActivity) {}
+  public adrp(ChatActivityFacade.3 param3) {}
   
-  public void onClick(View paramView)
+  public void a(boolean paramBoolean, long paramLong, String paramString, FeedCloudRead.StGetC2CFeedRsp paramStGetC2CFeedRsp)
   {
-    if (this.a.a == null)
+    if (paramBoolean) {
+      if (paramStGetC2CFeedRsp != null)
+      {
+        if ((QLog.isColorLevel()) && (paramStGetC2CFeedRsp.attchInfo != null) && (paramStGetC2CFeedRsp.attchInfo.get() != null)) {
+          QLog.d("ChatActivityFacade.QCircleFeeds", 2, "QCircleStGetC2CFeedRequest: response.attchInfo==" + paramStGetC2CFeedRsp.attchInfo.get());
+        }
+        adrm.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, paramStGetC2CFeedRsp, this.a.jdField_a_of_type_Boolean);
+        if ((paramStGetC2CFeedRsp.attchInfo != null) && (!bgsp.a(paramStGetC2CFeedRsp.attchInfo.get()))) {
+          adrm.c(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, paramStGetC2CFeedRsp.attchInfo.get());
+        }
+      }
+    }
+    while (!QLog.isColorLevel())
     {
-      this.a.a = ((bhuf)bhus.a(this.a, null));
-      this.a.a.b(2131698445);
-      this.a.a.b(2131692401);
-      this.a.a.c(2131690648);
-      this.a.a.a(new adrq(this));
+      do
+      {
+        return;
+      } while (!QLog.isColorLevel());
+      QLog.e("ChatActivityFacade.QCircleFeeds", 2, "QCircleStGetC2CFeedRequest failed: response==null");
+      return;
     }
-    if (!this.a.a.isShowing()) {
-      this.a.a.show();
-    }
-    azqs.b(null, "P_CliOper", "Pb_account_lifeservice", "", "rec_locate", "click_menu", 0, 0, "", "", "", "");
+    QLog.e("ChatActivityFacade.QCircleFeeds", 2, String.format(Locale.getDefault(), "QCircleStGetC2CFeedRequest failed: retCode=%d,errMsg=%s", new Object[] { Long.valueOf(paramLong), paramString }));
   }
 }
 

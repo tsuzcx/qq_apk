@@ -1,38 +1,14 @@
-import android.support.v4.app.FragmentActivity;
-import android.widget.TextView;
-import com.tencent.widget.FadeIconImageView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class aiau
-  extends aiac
+class aiau
+  implements DialogInterface.OnClickListener
 {
-  public static final int[] a;
-  public static final int[] b = { 2131364149 };
+  aiau(aias paramaias) {}
   
-  static
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    jdField_a_of_type_ArrayOfInt = new int[] { 2131690782 };
-  }
-  
-  public aiau(FragmentActivity paramFragmentActivity)
-  {
-    super(paramFragmentActivity);
-  }
-  
-  public void a()
-  {
-    super.a();
-    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
-    this.jdField_a_of_type_ComTencentWidgetFadeIconImageView.setVisibility(8);
-  }
-  
-  protected int[] a()
-  {
-    return b;
-  }
-  
-  protected int[] b()
-  {
-    return jdField_a_of_type_ArrayOfInt;
+    aias.a(this.a);
   }
 }
 

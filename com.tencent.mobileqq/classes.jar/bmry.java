@@ -1,25 +1,6 @@
-class bmry
-  implements uxw
+public abstract interface bmry
 {
-  bmry(bmru parambmru) {}
-  
-  public void a(boolean paramBoolean, uxs paramuxs)
-  {
-    wxe.b("DoodleEmojiManager", "requestPoiFaces onLbsUpdate.");
-    if ((paramBoolean) && (paramuxs != null) && (this.a.a != null)) {
-      this.a.a(paramuxs.b, paramuxs.a, this.a.a);
-    }
-    for (;;)
-    {
-      paramuxs = (uxt)uwa.a(9);
-      if (paramuxs != null) {
-        paramuxs.b(this);
-      }
-      this.a.a = null;
-      return;
-      wxe.e("DoodleEmojiManager", "onLbsUpdate failed.");
-    }
-  }
+  public abstract void a(boolean paramBoolean, String paramString);
 }
 
 

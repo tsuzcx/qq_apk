@@ -1,14 +1,6 @@
-class baod
-  extends azmj
+public abstract interface baod
 {
-  baod(baoc parambaoc) {}
-  
-  protected void a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, int paramInt)
-  {
-    if (baoc.a(this.a) != null) {
-      this.a.b(baoc.a(this.a));
-    }
-  }
+  public abstract void a(float paramFloat);
 }
 
 

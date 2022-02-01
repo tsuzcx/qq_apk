@@ -1,17 +1,64 @@
-import android.support.annotation.NonNull;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import java.util.Set;
 
-class bbrb
-  implements Comparable<bbrb>
+public class bbrb
+  extends bbph
 {
-  public String a;
-  public String b;
+  private Set<String> b;
   
-  bbrb(bbqu parambbqu) {}
-  
-  public int a(@NonNull bbrb parambbrb)
+  public bbrb(aobu paramaobu, bbpl parambbpl, Set<String> paramSet1, Set<String> paramSet2)
   {
-    return this.b.compareTo(parambbrb.b);
+    super(paramaobu, parambbpl, paramSet1);
+    this.b = paramSet2;
   }
+  
+  public void b(bbmy parambbmy, bbvg parambbvg)
+  {
+    super.b(parambbmy, parambbvg);
+    if (parambbvg.c() != null)
+    {
+      localObject = parambbmy.b();
+      if ((this.b != null) && (this.b.contains(localObject))) {
+        parambbvg.c().setText(anni.a(2131712495));
+      }
+    }
+    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
+    boolean bool = bfpx.b((QQAppInterface)localObject, parambbmy.b());
+    if ((localObject instanceof QQAppInterface))
+    {
+      if (!(parambbvg instanceof bbva)) {
+        break label165;
+      }
+      ((bbva)parambbvg).a(bool);
+    }
+    for (;;)
+    {
+      if (parambbvg.a() != null)
+      {
+        if ((!(parambbmy instanceof bblt)) && (!(parambbmy instanceof bblg)) && (!(parambbmy instanceof bblo))) {
+          break;
+        }
+        if (parambbvg.c() != null) {
+          parambbvg.c().setVisibility(8);
+        }
+        parambbvg.a().setVisibility(0);
+      }
+      return;
+      label165:
+      if ((parambbvg instanceof bbwz)) {
+        ((bbwz)parambbvg).a(bool);
+      }
+    }
+    if (parambbvg.c() != null) {
+      parambbvg.c().setVisibility(0);
+    }
+    parambbvg.a().setVisibility(8);
+  }
+  
+  public void d(bbmy parambbmy, bbvg parambbvg) {}
 }
 
 

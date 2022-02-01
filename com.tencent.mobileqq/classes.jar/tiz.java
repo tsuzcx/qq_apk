@@ -1,23 +1,29 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.pubaccount.weishi_new.push.WSPushOpModel;
+import android.support.v4.view.PagerAdapter;
+import android.support.v4.view.ViewPager;
+import com.tencent.biz.pubaccount.readinjoy.view.widget.TabLayoutCompat;
 
-public final class tiz
-  implements Parcelable.Creator<WSPushOpModel>
+public class tiz
+  implements tjl
 {
-  public WSPushOpModel a(Parcel paramParcel)
+  private boolean jdField_a_of_type_Boolean;
+  
+  public tiz(TabLayoutCompat paramTabLayoutCompat) {}
+  
+  public void a(ViewPager paramViewPager, PagerAdapter paramPagerAdapter1, PagerAdapter paramPagerAdapter2)
   {
-    return new WSPushOpModel(paramParcel);
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat.a == paramViewPager) {
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat.a(paramPagerAdapter2, this.jdField_a_of_type_Boolean);
+    }
   }
   
-  public WSPushOpModel[] a(int paramInt)
+  public void a(boolean paramBoolean)
   {
-    return new WSPushOpModel[paramInt];
+    this.jdField_a_of_type_Boolean = paramBoolean;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     tiz
  * JD-Core Version:    0.7.0.1
  */

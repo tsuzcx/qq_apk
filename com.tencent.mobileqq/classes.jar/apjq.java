@@ -1,25 +1,76 @@
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.mini.sdk.MiniAppLauncher;
 import com.tencent.qphone.base.util.QLog;
-import mqq.app.QQPermissionDenied;
-import mqq.app.QQPermissionGrant;
+import java.util.Map;
+import org.json.JSONObject;
 
-class apjq
+public class apjq
+  implements apjp
 {
-  apjq(apjp paramapjp) {}
-  
-  @QQPermissionDenied(1818)
-  public void denied()
+  public boolean a(String paramString1, String paramString2, JSONObject paramJSONObject, long paramLong, String paramString3)
   {
-    QLog.e("VoiceInputHelper", 1, "checkPermission user denied");
-    apjp.a(this.a);
-    this.a.onGetError(1830001);
-  }
-  
-  @QQPermissionGrant(1818)
-  public void grant()
-  {
-    QLog.d("VoiceInputHelper", 1, "checkPermission user grant");
-    apjp.a(this.a);
-    apjp.b(this.a);
+    if (paramLong != 0L) {
+      return false;
+    }
+    paramString2 = BaseActivity.sTopActivity;
+    if (paramString2 == null) {
+      return false;
+    }
+    if (paramString1.startsWith("open/")) {
+      try
+      {
+        int j = Integer.parseInt(paramString1.substring("open/".length(), paramString1.indexOf("?")));
+        paramJSONObject = (String)bkgj.a(paramString1).get("url");
+        int i = j;
+        if (j != 1007)
+        {
+          i = j;
+          if (j != 1008)
+          {
+            i = j;
+            if (j != 1014)
+            {
+              i = j;
+              if (j != 1036)
+              {
+                i = j;
+                if (j != 2061)
+                {
+                  i = j;
+                  if (j != 2072)
+                  {
+                    i = j;
+                    if (j != 2075)
+                    {
+                      i = j;
+                      if (j != 2085)
+                      {
+                        i = j;
+                        if (j != 2105)
+                        {
+                          i = j;
+                          if (j != 4012) {
+                            i = 2059;
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+        MiniAppLauncher.startMiniApp(paramString2, paramJSONObject, i, apjm.a(), null);
+        return true;
+      }
+      catch (Exception paramString2)
+      {
+        QLog.e("ArkApp", 1, "parse miniapp scheme failed:" + paramString1, paramString2);
+        return false;
+      }
+    }
+    return false;
   }
 }
 

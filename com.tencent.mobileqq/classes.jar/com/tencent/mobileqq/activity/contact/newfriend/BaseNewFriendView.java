@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.contact.newfriend;
 
-import ahlc;
+import aixx;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -11,7 +11,7 @@ import com.tencent.mobileqq.app.QQAppInterface;
 public class BaseNewFriendView
   extends FrameLayout
 {
-  public ahlc a;
+  public aixx a;
   protected Intent a;
   public QQAppInterface a;
   private boolean a;
@@ -26,7 +26,7 @@ public class BaseNewFriendView
   {
     this.b = false;
     if (!a()) {
-      this.jdField_a_of_type_Ahlc.b();
+      this.jdField_a_of_type_Aixx.b();
     }
   }
   
@@ -34,21 +34,21 @@ public class BaseNewFriendView
   {
     if ((20000 == paramInt1) && (paramInt2 != 0))
     {
-      this.jdField_a_of_type_Ahlc.getActivity().setResult(paramInt2, paramIntent);
+      this.jdField_a_of_type_Aixx.getActivity().setResult(paramInt2, paramIntent);
       g();
     }
   }
   
   public final void a(Intent paramIntent, int paramInt)
   {
-    this.jdField_a_of_type_Ahlc.getActivity().startActivityForResult(paramIntent, paramInt);
+    this.jdField_a_of_type_Aixx.getActivity().startActivityForResult(paramIntent, paramInt);
   }
   
-  protected void a(Intent paramIntent, ahlc paramahlc)
+  protected void a(Intent paramIntent, aixx paramaixx)
   {
     this.jdField_a_of_type_AndroidContentIntent = paramIntent;
-    this.jdField_a_of_type_Ahlc = paramahlc;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = this.jdField_a_of_type_Ahlc.a();
+    this.jdField_a_of_type_Aixx = paramaixx;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = this.jdField_a_of_type_Aixx.a();
   }
   
   protected final boolean a()
@@ -61,10 +61,10 @@ public class BaseNewFriendView
     this.jdField_a_of_type_Boolean = false;
     if (this.b)
     {
-      this.jdField_a_of_type_Ahlc.a();
+      this.jdField_a_of_type_Aixx.a();
       return;
     }
-    this.jdField_a_of_type_Ahlc.b();
+    this.jdField_a_of_type_Aixx.b();
   }
   
   protected void c() {}
@@ -87,12 +87,12 @@ public class BaseNewFriendView
   protected void g()
   {
     this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_Ahlc.getActivity().finish();
+    this.jdField_a_of_type_Aixx.getActivity().finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contact.newfriend.BaseNewFriendView
  * JD-Core Version:    0.7.0.1
  */

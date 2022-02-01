@@ -1,26 +1,38 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
-import com.tencent.mobileqq.extendfriend.wiget.ExtendFriendCampusVerifyTipsView;
+import android.graphics.Point;
+import android.os.Bundle;
+import com.tencent.mobileqq.colornote.data.ColorNote;
 
 public class aqce
-  extends RecyclerView.ViewHolder
 {
-  private ExtendFriendCampusVerifyTipsView a;
-  
-  public aqce(View paramView, aqib paramaqib)
+  public void onAddColorNote(Bundle paramBundle, boolean paramBoolean)
   {
-    super(paramView);
-    this.a = ((ExtendFriendCampusVerifyTipsView)paramView);
-    this.a.setOnClickListener(paramaqib);
+    if (paramBundle != null)
+    {
+      int i = paramBundle.getInt("param_service_type");
+      String str = paramBundle.getString("param_sub_type");
+      if (paramBundle.getInt("param_extra", 1) != 2) {
+        aqdc.a().a(i, str, paramBoolean);
+      }
+      aqdc.a().a(new Point(paramBundle.getInt("key_float_window_position_x"), paramBundle.getInt("key_float_window_position_y")));
+    }
   }
   
-  public void a(aqcx paramaqcx, int paramInt)
+  public void onDeleteColorNote(int paramInt, String paramString, boolean paramBoolean)
   {
-    if ((paramaqcx instanceof aqcf))
+    aqdc.a().a(paramInt, paramString, paramBoolean);
+  }
+  
+  public void onUpdateColorNote(ColorNote paramColorNote, boolean paramBoolean) {}
+  
+  public void onUpdateColorNoteState(int paramInt, String paramString, Bundle paramBundle)
+  {
+    if (paramBundle != null)
     {
-      paramaqcx = (aqcf)paramaqcx;
-      this.a.setTipsType(paramaqcx.a);
-      this.a.setPadding(0, paramInt, 0, 0);
+      aqdc.a().a(paramInt, paramString, paramBundle.getBoolean("extra_is_colornote_exists"));
+      aqdc.a().c(paramBundle.getBoolean("extra_can_add_colornote"));
+      aqdc.a().a(new Point(paramBundle.getInt("key_float_window_position_x"), paramBundle.getInt("key_float_window_position_y")));
+      boolean bool = paramBundle.getBoolean("extra_after_sync_msg");
+      aqdc.a().b(bool);
     }
   }
 }

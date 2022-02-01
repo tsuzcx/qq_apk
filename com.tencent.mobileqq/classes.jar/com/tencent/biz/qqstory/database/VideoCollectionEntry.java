@@ -1,11 +1,11 @@
 package com.tencent.biz.qqstory.database;
 
-import awge;
-import awhs;
-import wxe;
+import com.tencent.mobileqq.persistence.Entity;
+import com.tencent.mobileqq.persistence.unique;
+import yqp;
 
 public class VideoCollectionEntry
-  extends awge
+  extends Entity
 {
   public String address;
   public int collectionCount;
@@ -16,7 +16,7 @@ public class VideoCollectionEntry
   public String feedId;
   public String groupId;
   public int hasShareToDiscover;
-  @awhs
+  @unique
   public String key;
   public String label;
   public String nextCookie;
@@ -34,7 +34,7 @@ public class VideoCollectionEntry
     }
     catch (NumberFormatException localNumberFormatException)
     {
-      wxe.e("VideoCollectionEntry", "NumberFormatException while getCollectionId. collectionKey is %s,", new Object[] { paramString });
+      yqp.e("VideoCollectionEntry", "NumberFormatException while getCollectionId. collectionKey is %s,", new Object[] { paramString });
     }
     return -1;
   }
@@ -66,7 +66,7 @@ public class VideoCollectionEntry
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.qqstory.database.VideoCollectionEntry
  * JD-Core Version:    0.7.0.1
  */

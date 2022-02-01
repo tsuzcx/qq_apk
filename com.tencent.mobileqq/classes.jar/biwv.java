@@ -1,20 +1,27 @@
+import android.content.DialogInterface.OnClickListener;
 import android.view.View;
 import android.view.View.OnClickListener;
-import cooperation.qqfav.widget.LocationDetailActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class biwv
+class biwv
   implements View.OnClickListener
 {
-  public biwv(LocationDetailActivity paramLocationDetailActivity) {}
+  biwv(biws parambiws, DialogInterface.OnClickListener paramOnClickListener, int paramInt, boolean paramBoolean) {}
   
   public void onClick(View paramView)
   {
-    this.a.onBackPressed();
+    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
+      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_Biws, this.jdField_a_of_type_Int);
+    }
+    if (this.jdField_a_of_type_Boolean) {
+      this.jdField_a_of_type_Biws.dismiss();
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     biwv
  * JD-Core Version:    0.7.0.1
  */

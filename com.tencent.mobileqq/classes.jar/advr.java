@@ -1,107 +1,200 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.ims.QQProtectRisks.QQProtectRisksResponse;
-import com.tencent.ims.QQProtectRisks.RiskInfo;
-import com.tencent.mobileqq.activity.RiskInfoActivity;
-import com.tencent.mobileqq.activity.RiskInfoItem;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import java.util.Map;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Handler.Callback;
+import android.os.Looper;
+import android.os.Message;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.ChatHistoryStructMsgView.2;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.widget.AbsListView;
+import com.tencent.widget.XListView;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.List<Lcom.tencent.mobileqq.data.ChatMessage;>;
+import mqq.os.MqqHandler;
 
 public class advr
-  extends nac
+  extends advt
+  implements Handler.Callback, bkhe
 {
-  public advr(RiskInfoActivity paramRiskInfoActivity) {}
+  private static int c;
+  public int a;
+  public long a;
+  ambv jdField_a_of_type_Ambv;
+  Context jdField_a_of_type_AndroidContentContext;
+  View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener;
+  View jdField_a_of_type_AndroidViewView;
+  private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  public QQAppInterface a;
+  XListView jdField_a_of_type_ComTencentWidgetXListView;
+  final String jdField_a_of_type_JavaLangString = "ChatHistory_Struct";
+  public ArrayList<Object> a;
+  public final MqqHandler a;
+  boolean jdField_a_of_type_Boolean = false;
+  public int b;
+  public long b;
+  View.OnClickListener b;
+  public String b;
+  public boolean b;
+  public long c;
+  public String c;
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  static
   {
-    boolean bool1;
-    boolean bool2;
-    if ((paramInt != 0) || (paramArrayOfByte == null))
+    jdField_c_of_type_Int = 30;
+  }
+  
+  public advr()
+  {
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    this.jdField_b_of_type_Boolean = false;
+    this.jdField_a_of_type_Long = 9223372036854775807L;
+    this.jdField_b_of_type_Long = 9223372036854775807L;
+    this.jdField_c_of_type_Long = 9223372036854775807L;
+    this.jdField_b_of_type_Int = 3;
+    this.jdField_a_of_type_MqqOsMqqHandler = new bkfv(Looper.getMainLooper(), this, true);
+  }
+  
+  private void a()
+  {
+    if (this.jdField_b_of_type_AndroidViewView$OnClickListener != null) {
+      return;
+    }
+    this.jdField_b_of_type_AndroidViewView$OnClickListener = new advs(this);
+  }
+  
+  public View a()
+  {
+    return this.jdField_a_of_type_AndroidWidgetRelativeLayout;
+  }
+  
+  public void a(Intent paramIntent, QQAppInterface paramQQAppInterface, Context paramContext)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_b_of_type_JavaLangString = paramIntent.getStringExtra("uin");
+    this.jdField_a_of_type_Int = paramIntent.getIntExtra("uintype", 0);
+    this.jdField_c_of_type_JavaLangString = paramIntent.getStringExtra("uinname");
+    a();
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)View.inflate(this.jdField_a_of_type_AndroidContentContext, 2131562917, null));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131366001));
+    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131377917));
+    this.jdField_a_of_type_ComTencentWidgetXListView.setCacheColorHint(0);
+    this.jdField_a_of_type_ComTencentWidgetXListView.setOnScrollListener(this);
+    this.jdField_a_of_type_AndroidViewView = View.inflate(this.jdField_a_of_type_AndroidContentContext, 2131562916, null);
+    this.jdField_a_of_type_AndroidViewView.setVisibility(0);
+    this.jdField_a_of_type_ComTencentWidgetXListView.addFooterView(this.jdField_a_of_type_AndroidViewView);
+    a(true);
+    this.jdField_a_of_type_Ambv = new ambv(this.jdField_a_of_type_AndroidContentContext, (ArrayList)this.jdField_a_of_type_JavaUtilArrayList.clone(), this.jdField_b_of_type_AndroidViewView$OnClickListener, this.jdField_a_of_type_AndroidViewView$OnClickListener, this);
+    this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_Ambv);
+  }
+  
+  public void a(List<ChatMessage> paramList)
+  {
+    Iterator localIterator;
+    int i;
+    if ((paramList != null) && (!paramList.isEmpty()))
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("RiskInfoDetails", 2, "request risks info,onResult error=" + paramInt + " data=" + paramArrayOfByte);
-      }
-      bool1 = false;
-      paramBundle = new HashMap();
-      bool2 = bool1;
-      if (!bool1) {}
+      this.jdField_a_of_type_JavaUtilArrayList.removeAll(paramList);
+      localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+      paramList = null;
+      i = 0;
     }
     for (;;)
     {
-      try
+      Object localObject1 = paramList;
+      if (localIterator.hasNext())
       {
-        QQProtectRisks.QQProtectRisksResponse localQQProtectRisksResponse = new QQProtectRisks.QQProtectRisksResponse();
-        localQQProtectRisksResponse.mergeFrom(paramArrayOfByte);
-        paramInt = 0;
-        if (localQQProtectRisksResponse.uint32_sec_cmd.has()) {
-          paramInt = localQQProtectRisksResponse.uint32_sec_cmd.get();
-        }
-        bool2 = bool1;
-        if (paramInt == 1)
+        Object localObject2 = localIterator.next();
+        if ((localObject2 instanceof String))
         {
-          bool2 = bool1;
-          if (localQQProtectRisksResponse.risk_info_list.has())
-          {
-            bool2 = bool1;
-            if (!localQQProtectRisksResponse.risk_info_list.isEmpty())
-            {
-              paramInt = 0;
-              bool2 = bool1;
-              if (paramInt < localQQProtectRisksResponse.risk_info_list.size())
-              {
-                new QQProtectRisks.RiskInfo();
-                paramArrayOfByte = (QQProtectRisks.RiskInfo)localQQProtectRisksResponse.risk_info_list.get(paramInt);
-                if ((paramArrayOfByte.uint32_item_type.has()) && (paramArrayOfByte.uint32_item_type.get() == 1)) {
-                  break label511;
-                }
-                RiskInfoItem localRiskInfoItem = new RiskInfoItem();
-                localRiskInfoItem.jdField_a_of_type_JavaLangString = paramArrayOfByte.str_left_text.get();
-                localRiskInfoItem.d = paramArrayOfByte.str_jump_target.get();
-                if ((TextUtils.isEmpty(localRiskInfoItem.jdField_a_of_type_JavaLangString)) || (TextUtils.isEmpty(localRiskInfoItem.d))) {
-                  break label511;
-                }
-                localRiskInfoItem.jdField_b_of_type_JavaLangString = paramArrayOfByte.str_right_text.get();
-                localRiskInfoItem.c = paramArrayOfByte.str_desc_text.get();
-                localRiskInfoItem.jdField_a_of_type_Int = paramArrayOfByte.uint32_click_report_id.get();
-                if (paramArrayOfByte.uint32_item_id.has()) {
-                  localRiskInfoItem.jdField_b_of_type_Int = paramArrayOfByte.uint32_item_id.get();
-                }
-                if (paramArrayOfByte.str_right_text_open.has()) {
-                  localRiskInfoItem.e = paramArrayOfByte.str_right_text_open.get();
-                }
-                paramArrayOfByte = String.format("%d", new Object[] { Integer.valueOf(localRiskInfoItem.jdField_b_of_type_Int) });
-                if (localRiskInfoItem.jdField_b_of_type_Int == 0) {
-                  paramArrayOfByte = localRiskInfoItem.d;
-                }
-                paramBundle.put(paramArrayOfByte, localRiskInfoItem);
-                QLog.d("RiskInfoDetails", 1, String.format("%s, %s, %s, %s, %d, %d, %s", new Object[] { localRiskInfoItem.jdField_a_of_type_JavaLangString, localRiskInfoItem.jdField_b_of_type_JavaLangString, localRiskInfoItem.c, localRiskInfoItem.d, Integer.valueOf(localRiskInfoItem.jdField_a_of_type_Int), Integer.valueOf(localRiskInfoItem.jdField_b_of_type_Int), localRiskInfoItem.e }));
-              }
-            }
+          localObject1 = paramList;
+          if (i == 0) {
+            localObject1 = localObject2;
+          }
+          int j = i + 1;
+          paramList = (List<ChatMessage>)localObject1;
+          i = j;
+          if (j != 2) {
+            continue;
           }
         }
       }
-      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+      else
       {
-        QLog.d("RiskInfoDetails", 1, "error protobuf content");
-        bool2 = false;
-        RiskInfoActivity.a(this.a, paramBundle, bool2);
+        if (localObject1 != null) {
+          this.jdField_a_of_type_JavaUtilArrayList.remove(localObject1);
+        }
+        this.jdField_a_of_type_MqqOsMqqHandler.sendEmptyMessage(1);
         return;
       }
-      catch (Throwable paramArrayOfByte)
-      {
-        paramArrayOfByte.printStackTrace();
-        bool2 = bool1;
-        continue;
-      }
-      bool1 = true;
-      break;
-      label511:
-      paramInt += 1;
+      paramList = null;
+      i = 0;
+    }
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    ThreadManager.post(new ChatHistoryStructMsgView.2(this, paramBoolean), 10, null, true);
+  }
+  
+  public boolean b()
+  {
+    return this.jdField_a_of_type_Boolean;
+  }
+  
+  public void e()
+  {
+    this.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_Ambv.notifyDataSetChanged();
+  }
+  
+  public void f()
+  {
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_a_of_type_Ambv.notifyDataSetChanged();
+  }
+  
+  public boolean handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    default: 
+      return false;
+    }
+    if (this.jdField_a_of_type_JavaUtilArrayList.isEmpty())
+    {
+      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+      this.jdField_a_of_type_ComTencentWidgetXListView.setVisibility(4);
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Ambv.notifyDataSetChanged();
+      return false;
+      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+      this.jdField_a_of_type_AndroidViewView.setVisibility(8);
+      this.jdField_a_of_type_ComTencentWidgetXListView.setVisibility(0);
+      this.jdField_a_of_type_Ambv.jdField_a_of_type_JavaUtilArrayList = ((ArrayList)this.jdField_a_of_type_JavaUtilArrayList.clone());
+    }
+  }
+  
+  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
+  {
+    if ((paramInt == 0) && (!this.jdField_b_of_type_Boolean))
+    {
+      this.jdField_a_of_type_AndroidViewView.setVisibility(0);
+      a(false);
+      this.jdField_a_of_type_Ambv.notifyDataSetChanged();
     }
   }
 }

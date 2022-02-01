@@ -1,16 +1,16 @@
-public abstract interface aezb
+import com.tencent.mobileqq.activity.QQSettingMe;
+import com.tencent.mobileqq.activity.QQSettingMe.35.1;
+import com.tencent.mobileqq.app.BaseActivity;
+
+public class aezb
+  extends anpj
 {
-  public abstract void a(int paramInt1, int paramInt2);
+  public aezb(QQSettingMe paramQQSettingMe) {}
   
-  public abstract void a(int paramInt1, int paramInt2, int paramInt3);
-  
-  public abstract void b(int paramInt);
-  
-  public abstract void i();
-  
-  public abstract void j();
-  
-  public abstract void k();
+  public void a(Object paramObject)
+  {
+    this.a.a.runOnUiThread(new QQSettingMe.35.1(this));
+  }
 }
 
 

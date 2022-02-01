@@ -1,8 +1,8 @@
-import java.util.List;
-
 public abstract interface bcgf
 {
-  public abstract void a(List<bcgk> paramList);
+  public abstract void a(int paramInt);
+  
+  public abstract void a(boolean paramBoolean);
 }
 
 

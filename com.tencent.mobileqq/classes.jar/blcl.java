@@ -1,30 +1,19 @@
-import android.support.annotation.Nullable;
-import dov.com.qq.im.ae.gif.giftext.AEGIFOutlineTextView;
+import com.tencent.mobileqq.app.ThreadManager;
+import cooperation.gmersdk_warper.GMEAVEngineWalper.1.1;
+import mqq.os.MqqHandler;
 
-class blcl
-  implements bmeo<blcd>
+public class blcl
+  extends bldb
 {
-  blcl(blcj paramblcj, AEGIFOutlineTextView paramAEGIFOutlineTextView) {}
+  blcl(blck paramblck) {}
   
-  public void a(@Nullable blcd paramblcd)
+  public void a(int paramInt) {}
+  
+  public void a(int paramInt, String paramString)
   {
-    if (paramblcd != null)
-    {
-      this.jdField_a_of_type_DovComQqImAeGifGiftextAEGIFOutlineTextView.setTextColor(paramblcd.a);
-      this.jdField_a_of_type_DovComQqImAeGifGiftextAEGIFOutlineTextView.setOutlineColor(paramblcd.b);
-      if (paramblcd.a.equals("#ccffffff"))
-      {
-        this.jdField_a_of_type_DovComQqImAeGifGiftextAEGIFOutlineTextView.setShadowParam(3.0F, 0.0F, 1.0F, "#73000000");
-        this.jdField_a_of_type_DovComQqImAeGifGiftextAEGIFOutlineTextView.setShadow(true);
-        this.jdField_a_of_type_DovComQqImAeGifGiftextAEGIFOutlineTextView.setStroke(false);
-      }
+    if (paramInt == 0) {
+      ThreadManager.getUIHandler().post(new GMEAVEngineWalper.1.1(this));
     }
-    else
-    {
-      return;
-    }
-    this.jdField_a_of_type_DovComQqImAeGifGiftextAEGIFOutlineTextView.setShadow(false);
-    this.jdField_a_of_type_DovComQqImAeGifGiftextAEGIFOutlineTextView.setStroke(true);
   }
 }
 

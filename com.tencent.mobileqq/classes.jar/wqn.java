@@ -1,81 +1,48 @@
 import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.StoryFeed;
-import com.tencent.biz.qqstory.storyHome.model.FeedItem;
-import java.util.ArrayList;
-import java.util.List;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqGetFilterList;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 
-public abstract class wqn<T extends FeedItem>
+public class wqn
+  extends wlf<wqo>
 {
-  protected T a;
-  public boolean b;
+  @NonNull
+  public final String a;
+  public final int c;
   
-  public wqn(@NonNull T paramT)
+  public wqn(@NonNull String paramString)
   {
-    xqq.a(paramT);
-    this.a = paramT;
+    this(paramString, 20);
   }
   
-  public static wqn a(int paramInt)
+  public wqn(@NonNull String paramString, int paramInt)
   {
-    FeedItem localFeedItem = FeedItem.createFeedItemByType(paramInt);
-    if (localFeedItem == null) {
-      return null;
-    }
-    return localFeedItem.generateHomeFeed();
+    this.a = paramString;
+    this.c = paramInt;
   }
   
-  public T a()
+  public String a()
   {
-    return this.a;
+    return wjz.a("StorySvc.video_filter_list");
   }
   
-  public abstract void a();
-  
-  public abstract void a(int paramInt, vey paramvey, ves paramves, vev paramvev);
-  
-  public abstract boolean a(qqstory_struct.StoryFeed paramStoryFeed);
-  
-  public abstract void b();
-  
-  public List<StoryVideoItem> d()
+  public wla a(byte[] paramArrayOfByte)
   {
-    return new ArrayList(0);
+    return new wqo(paramArrayOfByte);
   }
   
-  public boolean equals(Object paramObject)
+  protected byte[] a()
   {
-    if (this == paramObject) {}
-    do
-    {
-      return true;
-      if ((paramObject == null) || (getClass() != paramObject.getClass())) {
-        return false;
-      }
-      paramObject = (wqn)paramObject;
-      if (this.a != null) {
-        return this.a.equals(paramObject.a);
-      }
-    } while (paramObject.a == null);
-    return false;
-  }
-  
-  public int hashCode()
-  {
-    if (this.a != null) {
-      return this.a.hashCode();
-    }
-    return 0;
-  }
-  
-  public String toString()
-  {
-    return this.a.toString();
+    qqstory_service.ReqGetFilterList localReqGetFilterList = new qqstory_service.ReqGetFilterList();
+    localReqGetFilterList.count.set(this.c);
+    localReqGetFilterList.start_cookie.set(ByteStringMicro.copyFromUtf8(this.a));
+    return localReqGetFilterList.toByteArray();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     wqn
  * JD-Core Version:    0.7.0.1
  */

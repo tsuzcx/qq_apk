@@ -1,26 +1,26 @@
-import com.tencent.mobileqq.richmedia.capture.data.FilterDesc;
-import java.util.concurrent.atomic.AtomicInteger;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
-class ajsy
-  implements baug
+public class ajsy
+  implements View.OnClickListener
 {
-  ajsy(ajsv paramajsv) {}
+  public ajsy(ChatHistoryTroopMemberFragment paramChatHistoryTroopMemberFragment) {}
   
-  public void onResp(bavf parambavf)
+  public void onClick(View paramView)
   {
-    FilterDesc localFilterDesc = (FilterDesc)parambavf.jdField_a_of_type_Bave.a();
-    if (parambavf.jdField_a_of_type_Int != 0)
-    {
-      lek.c("VideoFilterTools", "download IconFile failed. errorCode: " + parambavf.b + ", errorMsg: " + parambavf.jdField_a_of_type_JavaLangString + ", file: " + localFilterDesc.iconurl);
-      return;
+    ArrayList localArrayList = new ArrayList();
+    Iterator localIterator = this.a.a.b.iterator();
+    while (localIterator.hasNext()) {
+      localArrayList.add(Long.valueOf(Long.parseLong((String)localIterator.next())));
     }
-    if ((ajsv.a(this.a).decrementAndGet() == 0) && (ajsv.a(this.a) != null)) {
-      ajsv.a(this.a).a(true);
-    }
-    lek.c("VideoFilterTools", "download iconFile success. file: " + localFilterDesc.iconurl);
+    ChatHistoryTroopMemberFragment.a(this.a, localArrayList);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
-  
-  public void onUpdateProgeress(bave parambave, long paramLong1, long paramLong2) {}
 }
 
 

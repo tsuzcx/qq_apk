@@ -1,16 +1,36 @@
-import android.view.animation.Interpolator;
+import android.support.annotation.Nullable;
+import com.tencent.mobileqq.widget.QQToast;
+import java.lang.ref.WeakReference;
 
 public class bibf
-  implements Interpolator
 {
-  public float getInterpolation(float paramFloat)
+  private QQToast jdField_a_of_type_ComTencentMobileqqWidgetQQToast;
+  private WeakReference<bibc> jdField_a_of_type_JavaLangRefWeakReference;
+  
+  public bibf(QQToast paramQQToast, bibc parambibc)
   {
-    return (float)(Math.pow(paramFloat - 1.0D, 5.0D) + 1.0D);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetQQToast = paramQQToast;
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(parambibc);
+  }
+  
+  private boolean a()
+  {
+    bibc localbibc = (bibc)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    return (localbibc != null) && (localbibc.a());
+  }
+  
+  @Nullable
+  QQToast a()
+  {
+    if (a()) {
+      return this.jdField_a_of_type_ComTencentMobileqqWidgetQQToast;
+    }
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bibf
  * JD-Core Version:    0.7.0.1
  */

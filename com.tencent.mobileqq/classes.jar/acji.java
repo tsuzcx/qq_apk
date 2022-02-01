@@ -1,167 +1,108 @@
+import android.os.Bundle;
 import android.text.TextUtils;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.ad.tangram.ipc.AdIPCManager;
+import com.tencent.ad.tangram.ipc.AdIPCManager.Handler;
+import com.tencent.ad.tangram.ipc.AdIPCManager.Params;
+import com.tencent.ad.tangram.ipc.AdIPCManager.Result;
+import com.tencent.ad.tangram.process.AdProcessManager;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.qipc.QIPCModule;
+import com.tencent.mobileqq.qipc.QIPCServerHelper;
+import eipc.EIPCResult;
 
-public class acji
-  extends aqru
+public final class acji
+  extends QIPCModule
 {
-  private acji(BaseChatPie paramBaseChatPie) {}
+  private static volatile acji a;
   
-  protected void a()
+  private acji(String paramString)
   {
-    this.a.jdField_a_of_type_Aeqo.notifyDataSetChanged();
+    super(paramString);
   }
   
-  protected void a(int paramInt, long paramLong, String paramString)
+  public static acji a()
   {
-    arrr.a(paramLong, paramInt, paramString);
-    bkmm.a(null, paramInt);
-    if (this.a.jdField_a_of_type_Aeqo != null) {
-      this.a.jdField_a_of_type_Aeqo.notifyDataSetChanged();
-    }
-  }
-  
-  protected void a(long paramLong1, long paramLong2)
-  {
-    this.a.jdField_a_of_type_Aeqo.notifyDataSetChanged();
-  }
-  
-  protected void a(long paramLong1, long paramLong2, String paramString, int paramInt)
-  {
-    this.a.jdField_a_of_type_Aeqo.notifyDataSetChanged();
-  }
-  
-  protected void a(long paramLong, String paramString1, int paramInt, String paramString2)
-  {
-    if ((paramString2 != null) && (paramString2.length() > 0))
+    if (a == null) {}
+    try
     {
-      arrr.a(paramString2);
+      if (a == null) {
+        a = new acji("gdt_ipc_async_module_client_to_server");
+      }
+      return a;
+    }
+    finally {}
+  }
+  
+  public void callbackResult(int paramInt, EIPCResult paramEIPCResult)
+  {
+    if (paramEIPCResult != null) {}
+    for (boolean bool = paramEIPCResult.isSuccess();; bool = false)
+    {
+      acqy.b("GdtIPCAdapter", String.format("ClientToServerIPCAsyncModule.callbackResult success:%b", new Object[] { Boolean.valueOf(bool) }));
+      super.callbackResult(paramInt, paramEIPCResult);
       return;
     }
-    arrr.a(paramLong);
   }
   
-  protected void a(long paramLong, boolean paramBoolean, int paramInt, String paramString)
+  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
   {
-    if ((paramString != null) && (paramString.length() > 0)) {
-      arrr.a(paramString);
+    AdIPCManager.Params localParams = new AdIPCManager.Params(paramBundle);
+    String str1;
+    String str2;
+    if (localParams != null)
+    {
+      str1 = localParams.getAction();
+      if (localParams == null) {
+        break label73;
+      }
+      str2 = localParams.getToProcessName();
+      label34:
+      acqy.b("GdtIPCAdapter", String.format("ClientToServerIPCAsyncModule.onCall action:%s to:%s", new Object[] { str1, str2 }));
+      if (!TextUtils.isEmpty(paramString)) {
+        break label79;
+      }
     }
-    this.a.jdField_a_of_type_Aeqo.notifyDataSetChanged();
-  }
-  
-  protected void a(arcg paramarcg)
-  {
-    if (paramarcg == null) {}
-    label4:
+    label73:
+    label79:
     do
     {
-      FileManagerEntity localFileManagerEntity;
       do
       {
-        do
-        {
-          break label4;
-          do
-          {
-            return;
-          } while (!(paramarcg.a instanceof FileManagerEntity));
-          localFileManagerEntity = (FileManagerEntity)paramarcg.a;
-          if ((paramarcg.b == null) || (paramarcg.b.length() <= 0)) {
-            break;
-          }
-          localFileManagerEntity.strThumbPath = paramarcg.b;
-          this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().c(localFileManagerEntity);
-        } while (this.a.jdField_a_of_type_Aeqo == null);
-        this.a.jdField_a_of_type_Aeqo.notifyDataSetChanged();
-        return;
-      } while (localFileManagerEntity.thumbInvalidCode != 1);
-      this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().c(localFileManagerEntity);
-    } while (this.a.jdField_a_of_type_Aeqo == null);
-    this.a.jdField_a_of_type_Aeqo.notifyDataSetChanged();
-  }
-  
-  protected void a(Integer paramInteger, long paramLong, String paramString)
-  {
-    if (this.a.jdField_a_of_type_Aeqo != null) {
-      this.a.jdField_a_of_type_Aeqo.notifyDataSetChanged();
-    }
-    arrr.a(paramLong, paramInteger.intValue(), paramString);
-    bkmm.a(null, paramInteger.intValue());
-  }
-  
-  protected void a(boolean paramBoolean, long paramLong1, long paramLong2, String paramString, int paramInt)
-  {
-    this.a.jdField_a_of_type_Aeqo.notifyDataSetChanged();
-  }
-  
-  protected void a(boolean paramBoolean, long paramLong1, long paramLong2, String paramString1, int paramInt1, int paramInt2, String paramString2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "OnFileTransferEnd : isSuccess[" + paramBoolean + "], uniseq[" + paramLong1 + "], nSessionId[" + paramLong2 + paramString1 + "], peerType[" + paramInt1 + "]");
-    }
-    paramString1 = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(paramLong2);
-    if ((paramString1 != null) && (paramString1.nOpType == 6)) {
-      if (bkjc.a(paramInt2))
-      {
-        if (!paramBoolean) {
-          break label154;
-        }
-        bkjy.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.a(), this.a.a());
+        return null;
+        str1 = null;
+        break;
+        str2 = null;
+        break label34;
+      } while ((!localParams.isValid()) || (!TextUtils.equals(localParams.getAction(), paramString)));
+      str1 = AdProcessManager.INSTANCE.getCurrentProcessName(BaseApplicationImpl.getContext());
+      paramString = AdIPCManager.INSTANCE.getHandler(paramString);
+      if (!TextUtils.equals(str1, localParams.getToProcessName())) {
+        break label206;
       }
-    }
-    for (;;)
+    } while (paramString == null);
+    paramString = paramString.handle(localParams);
+    paramBundle = new EIPCResult();
+    int i;
+    if ((paramString != null) && (paramString.success))
     {
-      this.a.jdField_a_of_type_Aeqo.notifyDataSetChanged();
-      return;
-      label154:
-      if (bkjc.b())
-      {
-        bkjc.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-      }
-      else
-      {
-        if (!TextUtils.isEmpty(paramString2)) {
-          QQToast.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), paramString2, 1).b(this.a.a());
-        }
-        for (;;)
-        {
-          bkmm.a(null, paramInt2);
-          break;
-          QQToast.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), 2131692913, 1).b(this.a.a());
-        }
-        if ((!paramBoolean) && (paramString1 != null) && (!TextUtils.isEmpty(paramString1.peerUin)) && (paramString1.peerUin.equalsIgnoreCase(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString)))
-        {
-          arrr.a(paramLong2, paramInt2, paramString2);
-          bkmm.a(null, paramInt2);
-        }
+      i = 0;
+      paramBundle.code = i;
+      if (paramString == null) {
+        break label201;
       }
     }
-  }
-  
-  protected void b()
-  {
-    this.a.jdField_a_of_type_Aeqo.notifyDataSetChanged();
-  }
-  
-  protected void b(long paramLong1, long paramLong2, String paramString, int paramInt)
-  {
-    this.a.jdField_a_of_type_Aeqo.notifyDataSetChanged();
-  }
-  
-  protected void c()
-  {
-    this.a.jdField_a_of_type_Aeqo.notifyDataSetChanged();
-  }
-  
-  protected void d()
-  {
-    if (this.a.jdField_a_of_type_Aeqo != null) {
-      this.a.jdField_a_of_type_Aeqo.notifyDataSetChanged();
+    label201:
+    for (paramString = paramString.bundle;; paramString = null)
+    {
+      paramBundle.data = paramString;
+      callbackResult(paramInt, paramBundle);
+      return null;
+      i = -102;
+      break;
     }
+    label206:
+    QIPCServerHelper.getInstance().callClient(localParams.getToProcessName(), "gdt_ipc_module_server_to_client", localParams.getAction(), paramBundle, new acjj(this, localParams, paramInt));
+    return null;
   }
 }
 

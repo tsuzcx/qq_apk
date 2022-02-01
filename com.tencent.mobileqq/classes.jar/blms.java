@@ -1,17 +1,39 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.tavcut.exporter.ImageExporter;
-import dov.com.qq.im.aeeditor.module.edit.AEEditorImageEditFragment;
-import dov.com.qq.im.aeeditor.module.edit.AEEditorImageEditFragment.10;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qqpim.QQPimGetTipsInfoIPC;
+import cooperation.qqpim.QQPimPluginProxyService;
 
 public class blms
-  implements DialogInterface.OnDismissListener
+  implements blmy
 {
-  public blms(AEEditorImageEditFragment.10 param10) {}
+  public blms(QQPimGetTipsInfoIPC paramQQPimGetTipsInfoIPC) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void a()
   {
-    AEEditorImageEditFragment.a(this.a.this$0).cancel();
+    if (QLog.isColorLevel()) {
+      QLog.i(blmr.a, 2, "QQPimGetTipsInfoIPC.hasInstalled() ");
+    }
+    QQPimPluginProxyService.a(QQPimGetTipsInfoIPC.a(this.a));
+  }
+  
+  public void a(float paramFloat)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i(blmr.a, 2, "QQPimGetTipsInfoIPC.downloading() " + paramFloat);
+    }
+  }
+  
+  public void a(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i(blmr.a, 2, "QQPimGetTipsInfoIPC.downloadError() " + paramInt);
+    }
+  }
+  
+  public void b()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i(blmr.a, 2, "QQPimGetTipsInfoIPC.downloadBegin()");
+    }
   }
 }
 

@@ -1,6 +1,17 @@
-public abstract interface blin
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import cooperation.qlink.QlinkStandardDialogActivity;
+
+public class blin
+  implements DialogInterface.OnClickListener
 {
-  public abstract void a(int paramInt);
+  public blin(QlinkStandardDialogActivity paramQlinkStandardDialogActivity) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    blhj.a(this.a, 5, null);
+    this.a.finish();
+  }
 }
 
 

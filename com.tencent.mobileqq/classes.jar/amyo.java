@@ -1,58 +1,27 @@
-import android.os.Handler;
-import android.os.Message;
 import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
 class amyo
-  extends amzq
+  implements amxn
 {
-  amyo(amyk paramamyk) {}
+  amyo(amyl paramamyl, File paramFile, String paramString) {}
   
-  public void a(int paramInt)
+  public void a(boolean paramBoolean, int paramInt)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("ArConfig_RemoteArConfigManager", 2, "onMiniDownloadSuccess success " + paramInt);
+      QLog.d("ApolloPluginRscLoader", 2, "getApolloRsc checkDownloadFaceData onDownLoadFinish: sucess:" + paramBoolean);
     }
-    if (amyk.a(this.a) == null)
+    if (paramBoolean)
     {
-      QLog.d("ArConfig_RemoteArConfigManager", 1, "onMiniDownloadSuccess error mHandler is null ");
+      if (this.jdField_a_of_type_JavaIoFile.exists())
+      {
+        this.jdField_a_of_type_Amyl.a(this.jdField_a_of_type_JavaLangString, 0, anni.a(2131699293));
+        return;
+      }
+      this.jdField_a_of_type_Amyl.a(this.jdField_a_of_type_JavaLangString, 2, anni.a(2131699322));
       return;
     }
-    Message localMessage = Message.obtain();
-    localMessage.what = 10;
-    localMessage.arg1 = paramInt;
-    amyk.a(this.a).sendMessage(localMessage);
-  }
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ArConfig_RemoteArConfigManager", 2, "onMiniDownloadProcess process " + paramInt1 + " : " + paramInt2);
-    }
-    if (amyk.a(this.a) == null) {
-      return;
-    }
-    Message localMessage = Message.obtain();
-    localMessage.what = 11;
-    localMessage.arg1 = paramInt1;
-    localMessage.arg2 = paramInt2;
-    amyk.a(this.a).sendMessage(localMessage);
-  }
-  
-  public void b(int paramInt1, int paramInt2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ArConfig_RemoteArConfigManager", 2, "onMiniDownloadError " + paramInt1 + " : " + paramInt2);
-    }
-    if (amyk.a(this.a) == null)
-    {
-      QLog.d("ArConfig_RemoteArConfigManager", 1, "onMiniDownloadError error mHandler is null ");
-      return;
-    }
-    Message localMessage = Message.obtain();
-    localMessage.what = 12;
-    localMessage.arg1 = paramInt1;
-    localMessage.arg2 = paramInt2;
-    amyk.a(this.a).sendMessage(localMessage);
+    this.jdField_a_of_type_Amyl.a(this.jdField_a_of_type_JavaLangString, 2, anni.a(2131699304));
   }
 }
 

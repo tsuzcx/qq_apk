@@ -1,38 +1,52 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
 import com.tencent.av.VideoController;
+import com.tencent.av.ui.QavPanel;
+import com.tencent.av.ui.VideoInviteActivity;
 
-class mjv
-  implements DialogInterface.OnClickListener
+public class mjv
+  implements mhj
 {
-  mjv(mju parammju) {}
+  public mjv(VideoInviteActivity paramVideoInviteActivity, long paramLong, boolean paramBoolean) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a()
   {
-    if (paramDialogInterface != null) {
-      paramDialogInterface.dismiss();
-    }
-    mjs.a(this.a.a, false);
-    if (paramInt == 1)
+    if (this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.a != null)
     {
-      azqs.b(null, "CliOper", "", "", "0X800A563", "0X800A563", 0, 0, "", "", "", "");
-      this.a.a.c();
-      if (!mww.a(mjs.a(this.a.a))) {
-        mjs.a(this.a.a).a(mjs.a(this.a.a));
+      this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.a.setViewEnable(2131373371, false);
+      this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.a.setViewEnable(2131363071, false);
+      this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.a.setViewEnable(2131363083, false);
+      this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.a.setViewEnable(2131363082, false);
+    }
+  }
+  
+  public void b()
+  {
+    if (this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.i)
+    {
+      this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.a().a(this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.c, 1, true);
+      long l = mqu.a(this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.c);
+      this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.a().a(this.jdField_a_of_type_Long, 3, l);
+      this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.h = true;
+      this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.a().a(this.jdField_a_of_type_Long, l, 1);
+      this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.e = true;
+      this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.finish();
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.overridePendingTransition(0, 2130772169);
+      return;
+      this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.a().a(this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.c, 1, false);
+      this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.a().a(this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.c, 248);
+      this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.a().b(248);
+      if (this.jdField_a_of_type_Boolean) {
+        this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.a().b(this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.c, 1);
       }
+      this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.finish();
     }
-    while (paramInt != 0)
-    {
-      return;
-      mjs.a(this.a.a).b(mjs.a(this.a.a));
-      return;
-    }
-    mjs.a(this.a.a, mjs.a(this.a.a).a().v);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     mjv
  * JD-Core Version:    0.7.0.1
  */

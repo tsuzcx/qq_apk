@@ -1,123 +1,104 @@
-import android.os.Handler;
-import android.os.Looper;
-import com.tencent.biz.pubaccount.readinjoy.automator.Automator.1;
-import com.tencent.biz.pubaccount.readinjoy.automator.Automator.3;
-import com.tencent.biz.pubaccount.readinjoy.automator.Automator.4;
-import com.tencent.biz.pubaccount.readinjoy.automator.Automator.5;
-import com.tencent.biz.pubaccount.readinjoy.automator.Automator.6;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.LinkedList;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import android.app.Activity;
+import android.text.TextUtils;
+import android.widget.FrameLayout;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.ViewFactory;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class ohk
 {
-  private final Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
-  @Nullable
-  private Runnable jdField_a_of_type_JavaLangRunnable;
-  private ArrayList<ohl> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  private final LinkedList<ohl> jdField_a_of_type_JavaUtilLinkedList = new LinkedList();
-  @Nullable
-  private ohm jdField_a_of_type_Ohm;
-  @Nullable
-  private ohn jdField_a_of_type_Ohn;
+  private FrameLayout jdField_a_of_type_AndroidWidgetFrameLayout;
+  private TemplateBean jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusBeanTemplateBean;
+  private Container jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer;
+  private VafContext jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext = new VafContext();
+  private JSONObject jdField_a_of_type_OrgJsonJSONObject;
+  private teh jdField_a_of_type_Teh;
   
-  private void c()
+  public ohk(Activity paramActivity, FrameLayout paramFrameLayout)
   {
-    if (!this.jdField_a_of_type_JavaUtilLinkedList.isEmpty())
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext.setContext(paramActivity);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext.setCurActivity(paramActivity);
+    this.jdField_a_of_type_Teh = teh.a("default_feeds", true);
+    pfr.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext, "default_feeds");
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext.setTemplateFactory(this.jdField_a_of_type_Teh);
+    this.jdField_a_of_type_AndroidWidgetFrameLayout = paramFrameLayout;
+    a();
+  }
+  
+  private void a()
+  {
+    try
     {
-      localObject = (ohl)this.jdField_a_of_type_JavaUtilLinkedList.removeFirst();
-      if (((ohl)localObject).a())
+      String str = (String)bmqa.a("readinjoy_follow_subscribed_list_data_key", "");
+      if (!TextUtils.isEmpty(str)) {
+        a(new JSONObject(str));
+      }
+      return;
+    }
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
+    }
+  }
+  
+  public void a(JSONObject paramJSONObject)
+  {
+    if ((paramJSONObject == null) || (this.jdField_a_of_type_AndroidWidgetFrameLayout == null)) {
+      return;
+    }
+    for (;;)
+    {
+      try
       {
-        local4 = new Automator.4(this, (ohl)localObject);
-        if (((ohl)localObject).c()) {
-          local4.run();
+        if (this.jdField_a_of_type_Teh != null)
+        {
+          localTemplateBean = this.jdField_a_of_type_Teh.getTemplateBean(paramJSONObject);
+          if (localTemplateBean == null)
+          {
+            QLog.d("SubscribedListHeaderController", 1, "templateBean is null");
+            return;
+          }
+          if (this.jdField_a_of_type_OrgJsonJSONObject == null)
+          {
+            Container localContainer = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext.getViewFactory().inflate(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext, localTemplateBean);
+            if (localContainer == null) {
+              break;
+            }
+            localContainer.setBackgroundResource(2130841683);
+            this.jdField_a_of_type_AndroidWidgetFrameLayout.addView(localContainer, -1, -1);
+            this.jdField_a_of_type_AndroidWidgetFrameLayout.setVisibility(0);
+            this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer = localContainer;
+          }
+          pfr.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext, localTemplateBean);
+          ViewFactory.findClickableViewListener(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getVirtualView(), new ohl(this, localTemplateBean));
+          pfr.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusBeanTemplateBean, localTemplateBean);
+          this.jdField_a_of_type_OrgJsonJSONObject = paramJSONObject;
+          this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusBeanTemplateBean = localTemplateBean;
+          pfr.a(localTemplateBean, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getVirtualView(), "expose_T");
+          QLog.d("SubscribedListHeaderController", 1, "update subscribed list data : " + this.jdField_a_of_type_OrgJsonJSONObject);
+          return;
         }
       }
-    }
-    while (this.jdField_a_of_type_JavaLangRunnable == null)
-    {
-      Automator.4 local4;
-      return;
-      Object localObject = this.jdField_a_of_type_Ohn;
-      if (localObject != null)
+      catch (JSONException paramJSONObject)
       {
-        ((ohn)localObject).a(local4);
         return;
       }
-      new Thread(local4).start();
-      return;
-      b(new Automator.5(this, (ohl)localObject));
-      return;
-    }
-    this.jdField_a_of_type_JavaLangRunnable.run();
-  }
-  
-  @Nullable
-  public final ohm a()
-  {
-    return this.jdField_a_of_type_Ohm;
-  }
-  
-  @Nullable
-  public final ohn a()
-  {
-    return this.jdField_a_of_type_Ohn;
-  }
-  
-  public final void a()
-  {
-    b(new Automator.3(this));
-  }
-  
-  public final void a(@Nullable Runnable paramRunnable)
-  {
-    this.jdField_a_of_type_JavaLangRunnable = paramRunnable;
-  }
-  
-  public final void a(@NotNull ohl paramohl)
-  {
-    b(new Automator.6(this, paramohl));
-  }
-  
-  public final void a(@Nullable ohm paramohm)
-  {
-    this.jdField_a_of_type_Ohm = paramohm;
-  }
-  
-  public final void a(@Nullable ohn paramohn)
-  {
-    this.jdField_a_of_type_Ohn = paramohn;
-  }
-  
-  public final void a(@NotNull ohl[] paramArrayOfohl, boolean paramBoolean)
-  {
-    b(new Automator.1(this, paramArrayOfohl, paramBoolean));
-  }
-  
-  public final void b()
-  {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-    while (localIterator.hasNext()) {
-      ((ohl)localIterator.next()).a();
+      TemplateBean localTemplateBean = null;
     }
   }
   
-  public void b(@NotNull Runnable paramRunnable)
+  public boolean a()
   {
-    if (Thread.currentThread() == Looper.getMainLooper().getThread()) {}
-    for (int i = 1; i != 0; i = 0)
-    {
-      paramRunnable.run();
-      return;
-    }
-    this.jdField_a_of_type_AndroidOsHandler.post(paramRunnable);
+    return this.jdField_a_of_type_AndroidWidgetFrameLayout.getVisibility() == 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     ohk
  * JD-Core Version:    0.7.0.1
  */

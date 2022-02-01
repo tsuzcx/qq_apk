@@ -1,40 +1,10 @@
-import android.content.Intent;
-import android.os.Bundle;
-import android.view.KeyEvent;
-import android.view.MotionEvent;
-import android.view.View;
+import cooperation.qzone.statistic.access.concept.Collector;
 
-public abstract interface bmhi
+public abstract class bmhi
 {
-  public abstract View a();
+  public static bmhi a = new bmhj();
   
-  public abstract void a(int paramInt1, int paramInt2, Intent paramIntent);
-  
-  public abstract void a(Intent paramIntent);
-  
-  public abstract void a(Bundle paramBundle);
-  
-  public abstract boolean a();
-  
-  public abstract boolean a(int paramInt, KeyEvent paramKeyEvent, boolean paramBoolean);
-  
-  public abstract boolean a(MotionEvent paramMotionEvent, boolean paramBoolean);
-  
-  public abstract void b(Bundle paramBundle);
-  
-  public abstract void b_(int paramInt1, int paramInt2);
-  
-  public abstract void d();
-  
-  public abstract void e();
-  
-  public abstract void f();
-  
-  public abstract void p();
-  
-  public abstract void s();
-  
-  public abstract void t();
+  public abstract boolean a(Collector paramCollector);
 }
 
 

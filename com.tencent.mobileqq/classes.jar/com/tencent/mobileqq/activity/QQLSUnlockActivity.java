@@ -1,10 +1,12 @@
 package com.tencent.mobileqq.activity;
 
-import aivm;
+import Override;
+import akmq;
 import android.app.Activity;
 import android.app.KeyguardManager;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.Configuration;
 import android.os.Build;
 import android.os.Build.VERSION;
 import android.os.Bundle;
@@ -14,13 +16,15 @@ import android.os.Message;
 import android.os.PowerManager;
 import android.os.PowerManager.WakeLock;
 import android.provider.Settings.System;
+import android.view.MotionEvent;
 import android.view.Window;
-import azri;
+import bctj;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.commonsdk.util.notification.QQNotificationManager;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mqq.shared_file_accessor.SharedPreferencesProxyManager;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import com.tencent.widget.immersive.ImmersiveUtils;
 
 public class QQLSUnlockActivity
@@ -59,6 +63,14 @@ public class QQLSUnlockActivity
     }
   }
   
+  @Override
+  public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
+  {
+    boolean bool = super.dispatchTouchEvent(paramMotionEvent);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool);
+    return bool;
+  }
+  
   public SharedPreferences getSharedPreferences(String paramString, int paramInt)
   {
     return SharedPreferencesProxyManager.getInstance().getProxy(paramString, paramInt);
@@ -84,6 +96,13 @@ public class QQLSUnlockActivity
     if (QLog.isColorLevel()) {
       QLog.d("LSUnlockActivity", 2, "onBackPressed ");
     }
+  }
+  
+  @Override
+  public void onConfigurationChanged(Configuration paramConfiguration)
+  {
+    super.onConfigurationChanged(paramConfiguration);
+    EventCollector.getInstance().onActivityConfigurationChanged(this, paramConfiguration);
   }
   
   protected void onCreate(Bundle paramBundle)
@@ -115,7 +134,7 @@ public class QQLSUnlockActivity
         QQNotificationManager.getInstance().cancel("QQLSActivity", 238);
         paramBundle = BaseApplicationImpl.getApplication().getRuntime();
         if ((paramBundle instanceof QQAppInterface)) {
-          aivm.a((QQAppInterface)paramBundle, false);
+          akmq.a((QQAppInterface)paramBundle, false);
         }
       }
       return;
@@ -136,13 +155,13 @@ public class QQLSUnlockActivity
   protected void onPause()
   {
     super.onPause();
-    azri.a(this).c(this);
+    bctj.a(this).c(this);
   }
   
   protected void onResume()
   {
     super.onResume();
-    azri.a(this).b(this);
+    bctj.a(this).b(this);
   }
   
   protected void onSaveInstanceState(Bundle paramBundle)
@@ -154,7 +173,7 @@ public class QQLSUnlockActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.QQLSUnlockActivity
  * JD-Core Version:    0.7.0.1
  */

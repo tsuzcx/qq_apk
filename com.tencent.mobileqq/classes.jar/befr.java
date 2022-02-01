@@ -1,27 +1,16 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.FrameLayout.LayoutParams;
+import com.tencent.mobileqq.tribe.videoupload.TribeVideoUploadTask;
 
-class befr
-  implements Animation.AnimationListener
+public class befr
+  implements wjl
 {
-  befr(befq parambefq, View paramView) {}
+  public befr(TribeVideoUploadTask paramTribeVideoUploadTask, befq parambefq) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void a(wjk paramwjk)
   {
-    paramAnimation = (FrameLayout.LayoutParams)this.jdField_a_of_type_AndroidViewView.getLayoutParams();
-    paramAnimation.leftMargin = this.jdField_a_of_type_Befq.e;
-    paramAnimation.topMargin = this.jdField_a_of_type_Befq.f;
-    this.jdField_a_of_type_AndroidViewView.setLayoutParams(paramAnimation);
-    this.jdField_a_of_type_AndroidViewView.clearAnimation();
-    this.jdField_a_of_type_AndroidViewView.setVisibility(0);
-    this.jdField_a_of_type_Befq.a = false;
+    paramwjk = (befo)paramwjk;
+    this.jdField_a_of_type_Befq.b = paramwjk.a.c;
+    this.jdField_a_of_type_Befq.c = paramwjk.a.a;
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

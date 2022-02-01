@@ -1,31 +1,26 @@
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
-
 class aptv
-  implements apwu
 {
-  aptv(apts paramapts) {}
+  static final float[] a;
   
-  public void a(List<apws> paramList)
+  static
   {
-    StringBuilder localStringBuilder;
-    if (QLog.isColorLevel())
+    int k = 0;
+    a = new float[8192];
+    int i = 0;
+    int j;
+    for (;;)
     {
-      localStringBuilder = new StringBuilder().append("refreshPanelData call back dataList = ");
-      if (paramList != null) {
-        break label60;
+      j = k;
+      if (i >= 8192) {
+        break;
       }
+      a[i] = ((float)Math.sin((i + 0.5F) / 8192.0F * 6.283186F));
+      i += 1;
     }
-    label60:
-    for (Object localObject = "null";; localObject = Integer.valueOf(paramList.size()))
+    while (j < 360)
     {
-      QLog.d("CameraEmotionAdapter", 2, localObject);
-      if (paramList != null)
-      {
-        this.a.a(paramList);
-        this.a.notifyDataSetChanged();
-      }
-      return;
+      a[((int)(j * 22.755556F) & 0x1FFF)] = ((float)Math.sin(j * 0.01745329F));
+      j += 90;
     }
   }
 }

@@ -1,32 +1,19 @@
-import android.os.Handler;
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.app.FrameHelperActivity;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.AppRuntime.Status;
-import mqq.observer.AccountObserver;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.gdtad.views.form.GdtFormView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class acsq
-  extends AccountObserver
+  implements View.OnClickListener
 {
-  public acsq(Conversation paramConversation) {}
+  public acsq(GdtFormView paramGdtFormView) {}
   
-  public void onOnlineStatusChanged(boolean paramBoolean1, AppRuntime.Status paramStatus, boolean paramBoolean2, boolean paramBoolean3, long paramLong, boolean paramBoolean4)
+  public void onClick(View paramView)
   {
-    if (this.a.a != null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.recent", 2, String.format("onOnlineStatusChanged, currentStatus = %s", new Object[] { paramStatus }));
-      }
-      this.a.a.a.sendEmptyMessage(18);
+    if (GdtFormView.a(this.a)) {
+      GdtFormView.a(this.a);
     }
-  }
-  
-  public void onOnlineStatusPush(AppRuntime.Status paramStatus, long paramLong)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.recent", 2, String.format("onOnlineStatusPush, currentStatus = %s , extOnlineStatus = %d", new Object[] { paramStatus, Long.valueOf(paramLong) }));
-    }
-    this.a.a.a.sendEmptyMessage(18);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

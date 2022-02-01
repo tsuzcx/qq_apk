@@ -1,29 +1,12 @@
-import com.tencent.ark.ArkEnvironmentManager.Log;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public final class annv
-  implements ArkEnvironmentManager.Log
+final class annv
+  implements DialogInterface.OnClickListener
 {
-  public void d(String paramString1, String paramString2)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(paramString1, 2, paramString2);
-    }
-  }
-  
-  public void e(String paramString1, String paramString2)
-  {
-    QLog.e(paramString1, 1, paramString2);
-  }
-  
-  public void i(String paramString1, String paramString2)
-  {
-    QLog.i(paramString1, 1, paramString2);
-  }
-  
-  public void w(String paramString1, String paramString2)
-  {
-    QLog.w(paramString1, 1, paramString2);
+    paramDialogInterface.dismiss();
   }
 }
 

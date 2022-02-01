@@ -1,82 +1,42 @@
-public final class ajwr
-  implements ajwt
+import android.content.Intent;
+import com.tencent.mobileqq.activity.SplashActivity;
+import com.tencent.mobileqq.activity.main.MainAssistObserver.8.1;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+
+public class ajwr
+  implements anqk
 {
-  private boolean a(char paramChar)
+  ajwr(ajvr paramajvr) {}
+  
+  public void a(int paramInt)
   {
-    Character.UnicodeBlock localUnicodeBlock = Character.UnicodeBlock.of(paramChar);
-    return (localUnicodeBlock == Character.UnicodeBlock.CJK_UNIFIED_IDEOGRAPHS) || (localUnicodeBlock == Character.UnicodeBlock.CJK_COMPATIBILITY_IDEOGRAPHS) || (localUnicodeBlock == Character.UnicodeBlock.CJK_UNIFIED_IDEOGRAPHS_EXTENSION_A) || (localUnicodeBlock == Character.UnicodeBlock.GENERAL_PUNCTUATION) || (localUnicodeBlock == Character.UnicodeBlock.CJK_SYMBOLS_AND_PUNCTUATION) || (localUnicodeBlock == Character.UnicodeBlock.HALFWIDTH_AND_FULLWIDTH_FORMS);
+    if ((this.a.a == null) || (this.a.a.app == null)) {
+      return;
+    }
+    QQAppInterface localQQAppInterface = this.a.a.app;
+    this.a.a(32, 16, Integer.valueOf(paramInt));
+    Intent localIntent = new Intent("com.tencent.qq.syncQQMessage");
+    localQQAppInterface.getApp().sendBroadcast(localIntent);
+    if (QLog.isDevelopLevel()) {
+      QLog.d("fetchUnReadCount", 4, String.format("MainAssistObserver消息tab, nUnreadCount[%s]", new Object[] { Integer.valueOf(paramInt) }));
+    }
+    pmy.a().a(paramInt);
   }
   
-  public int a(CharSequence paramCharSequence, int paramInt1, int paramInt2)
+  public void a(boolean paramBoolean, int paramInt)
   {
-    int i;
-    if (paramInt1 <= paramInt2)
-    {
-      i = paramInt1;
-      if (paramInt1 > paramInt2) {
-        break label75;
-      }
+    if (QLog.isDevelopLevel()) {
+      QLog.d("SplashActivity", 4, String.format("onRefresh, needReGetUnread[%s], nUnReadCount[%s]", new Object[] { Boolean.valueOf(paramBoolean), Integer.valueOf(paramInt) }));
     }
-    int j;
-    for (;;)
+    if ((!paramBoolean) && (paramInt >= 0))
     {
-      j = 0;
-      paramInt1 = i;
-      while ((paramInt1 < paramInt2) && (paramInt1 < paramCharSequence.length()))
-      {
-        int k = j;
-        if (a(paramCharSequence.charAt(paramInt1))) {
-          k = j + 1;
-        }
-        paramInt1 += 1;
-        j = k;
-      }
-      i = paramInt2;
-      break;
-      label75:
-      paramInt2 = paramInt1;
+      a(paramInt);
+      return;
     }
-    return j + (paramInt2 - i);
-  }
-  
-  public int b(CharSequence paramCharSequence, int paramInt1, int paramInt2)
-  {
-    int m = 0;
-    int i;
-    if (paramInt1 <= paramInt2)
-    {
-      i = paramInt1;
-      if (paramInt1 > paramInt2) {
-        break label83;
-      }
-      label16:
-      paramInt1 = i;
-    }
-    int k;
-    for (int j = 0;; j = k)
-    {
-      k = m;
-      if (paramInt1 < paramCharSequence.length())
-      {
-        k = j;
-        if (a(paramCharSequence.charAt(paramInt1))) {
-          k = j + 1;
-        }
-        if (paramInt1 + k >= paramInt2) {
-          k = paramInt1 - i;
-        }
-      }
-      else
-      {
-        return k;
-        i = paramInt2;
-        break;
-        label83:
-        paramInt2 = paramInt1;
-        break label16;
-      }
-      paramInt1 += 1;
-    }
+    ThreadManager.executeOnSubThread(new MainAssistObserver.8.1(this));
   }
 }
 

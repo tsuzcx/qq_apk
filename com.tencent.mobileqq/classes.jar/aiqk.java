@@ -1,154 +1,53 @@
-import android.os.Bundle;
-import android.text.TextUtils;
+import com.tencent.mobileqq.activity.chathistory.ChatHistoryBubbleListForTroopFragment;
+import com.tencent.mobileqq.activity.chathistory.ChatHistoryByDateFragment;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.widget.datepicker.CalendarDay;
+import com.tencent.mobileqq.widget.datepicker.SimpleMonthView;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
 
 public class aiqk
-  extends aiqi
-  implements ainy
+  implements bidp
 {
-  private aiqm jdField_a_of_type_Aiqm;
-  private Map<Long, Float> jdField_a_of_type_JavaUtilMap = new ConcurrentHashMap();
-  private aiqj b;
+  CalendarDay jdField_a_of_type_ComTencentMobileqqWidgetDatepickerCalendarDay;
+  CalendarDay b;
   
-  public aiqk()
+  public aiqk(ChatHistoryByDateFragment paramChatHistoryByDateFragment, CalendarDay paramCalendarDay1, CalendarDay paramCalendarDay2)
   {
-    this.jdField_a_of_type_Aiob = new ainx();
-    ((ainx)this.jdField_a_of_type_Aiob).a(this);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetDatepickerCalendarDay = paramCalendarDay1;
+    this.b = paramCalendarDay2;
   }
   
-  public float a(long paramLong)
+  public CalendarDay a()
   {
-    if (this.jdField_a_of_type_JavaUtilMap.containsKey(Long.valueOf(paramLong))) {
-      return ((Float)this.jdField_a_of_type_JavaUtilMap.get(Long.valueOf(paramLong))).floatValue();
+    if (this.jdField_a_of_type_ComTencentMobileqqWidgetDatepickerCalendarDay == null) {
+      return new CalendarDay(System.currentTimeMillis());
     }
-    return 0.0F;
+    return this.jdField_a_of_type_ComTencentMobileqqWidgetDatepickerCalendarDay;
   }
   
-  public void a(aiqj paramaiqj)
+  public void a(CalendarDay paramCalendarDay, MessageRecord paramMessageRecord)
   {
-    this.b = paramaiqj;
-    ((ainx)this.jdField_a_of_type_Aiob).a(new aiql(this));
+    String str = this.jdField_a_of_type_ComTencentMobileqqActivityChathistoryChatHistoryByDateFragment.jdField_a_of_type_JavaLangString;
+    ChatHistoryBubbleListForTroopFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityChathistoryChatHistoryByDateFragment.getActivity(), str, paramMessageRecord, -1, 3);
+    bcst.b(this.jdField_a_of_type_ComTencentMobileqqActivityChathistoryChatHistoryByDateFragment.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "Grp_chatRecord", "", "chatRecor_date", "date_clk", 0, 0, this.jdField_a_of_type_ComTencentMobileqqActivityChathistoryChatHistoryByDateFragment.jdField_a_of_type_JavaLangString, "", "", "");
+    QLog.i(ChatHistoryByDateFragment.a(), 1, "clickDay: CalendarDay" + paramCalendarDay + " | MessageRecord:" + paramMessageRecord);
   }
   
-  public void a(aiqm paramaiqm)
+  public void a(SimpleMonthView paramSimpleMonthView, int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_Aiqm = paramaiqm;
-  }
-  
-  public void a(boolean paramBoolean, String paramString)
-  {
-    if ((paramBoolean) && (this.jdField_a_of_type_Aiqm != null)) {
-      this.jdField_a_of_type_Aiqm.a(paramString);
+    if (!ChatHistoryByDateFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityChathistoryChatHistoryByDateFragment, paramInt1, paramInt2)) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityChathistoryChatHistoryByDateFragment.a(paramInt1, paramInt2);
     }
   }
   
-  public void b(int paramInt1, int paramInt2)
+  public CalendarDay b()
   {
-    if ((this.jdField_a_of_type_Aiob != null) && ((this.jdField_a_of_type_Aiob instanceof ainx))) {
-      ((ainx)this.jdField_a_of_type_Aiob).a(paramInt1, paramInt2);
-    }
-  }
-  
-  public boolean b()
-  {
-    if (this.jdField_a_of_type_Aiqo == null) {
-      QLog.i("VideoPlayControllerForFile.filevideoPeek", 1, "OnFileVideoPlay mInfo is null");
-    }
-    do
+    if (this.b == null)
     {
-      do
-      {
-        return false;
-      } while (!super.b());
-      this.jdField_a_of_type_Aiqo.jdField_c_of_type_Boolean = true;
-      if (QLog.isColorLevel()) {
-        QLog.i("VideoPlayControllerForFile.filevideoPeek", 1, "OnFileVideoPlay id:" + this.jdField_a_of_type_Aiqo.jdField_a_of_type_Long + " set played flag");
-      }
-    } while ((this.jdField_a_of_type_Agki == null) || (!this.jdField_a_of_type_Aiqo.jdField_a_of_type_Boolean));
-    String str = alud.a(2131716730) + arso.a(this.jdField_a_of_type_Aiqo.jdField_c_of_type_Long) + "/" + arso.a(this.jdField_a_of_type_Aiqo.jdField_b_of_type_Long) + ")";
-    float f = (float)this.jdField_a_of_type_Aiqo.jdField_c_of_type_Long / (float)this.jdField_a_of_type_Aiqo.jdField_b_of_type_Long;
-    this.b.a(this.jdField_a_of_type_Aiqo.jdField_a_of_type_Long, f, str);
-    this.jdField_a_of_type_Agki.a(this.jdField_a_of_type_Aiqo.jdField_a_of_type_Long, 11, null);
-    return false;
-  }
-  
-  public long c()
-  {
-    if (ainx.class.isInstance(this.jdField_a_of_type_Aiob)) {
-      return ((ainx)this.jdField_a_of_type_Aiob).a();
+      CalendarDay localCalendarDay = new CalendarDay(System.currentTimeMillis());
+      return new CalendarDay(localCalendarDay.year + 1, localCalendarDay.month, localCalendarDay.month);
     }
-    return 0L;
-  }
-  
-  public void d()
-  {
-    if (this.jdField_a_of_type_Aiqo == null) {
-      QLog.i("VideoPlayControllerForFile.filevideoPeek", 1, "OnFileVideoPause mInfo is null");
-    }
-    do
-    {
-      do
-      {
-        return;
-        if (QLog.isDevelopLevel()) {
-          QLog.i("PauseDebug", 1, "OnFileVideoPause : " + this.jdField_a_of_type_Aiqo.jdField_a_of_type_Long);
-        }
-        if (!this.jdField_a_of_type_Boolean) {
-          break;
-        }
-      } while (!QLog.isColorLevel());
-      QLog.i("VideoPlayControllerForFile.filevideoPeek", 1, "OnFileVideoPause user set cancel,igon!");
-      return;
-    } while ((this.jdField_a_of_type_Int != 3) || (!this.jdField_a_of_type_Aiqo.jdField_b_of_type_Boolean) || (!this.jdField_a_of_type_Aiqo.jdField_c_of_type_Boolean) || (this.jdField_a_of_type_Agki == null));
-    this.jdField_a_of_type_Aiqo.jdField_c_of_type_Boolean = false;
-    Bundle localBundle = new Bundle();
-    localBundle.putFloat("progress", a(this.jdField_a_of_type_Aiqo.jdField_a_of_type_Long));
-    this.jdField_a_of_type_Agki.a(this.jdField_a_of_type_Aiqo.jdField_a_of_type_Long, 10, localBundle);
-    this.jdField_a_of_type_Aiob.a();
-  }
-  
-  public void e()
-  {
-    if (this.jdField_a_of_type_Aiqo == null)
-    {
-      QLog.i("VideoPlayControllerForFile.filevideoPeek", 1, "onFileVideoCancel mInfo is null");
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.i("VideoPlayControllerForFile.filevideoPeek", 1, "onFileVideoCancel id:" + this.jdField_a_of_type_Aiqo.jdField_a_of_type_Long);
-    }
-    this.jdField_a_of_type_Aiob.a();
-    this.jdField_a_of_type_Agki.a(this.jdField_a_of_type_Aiqo.jdField_a_of_type_Long, 12, null);
-  }
-  
-  public void f()
-  {
-    if (this.jdField_a_of_type_Aiqo == null) {
-      super.f();
-    }
-    do
-    {
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.i("VideoPlayControllerForFile.filevideoPeek", 1, "VideoPlayControllerForFile onItemClick");
-      }
-      if ((this.jdField_a_of_type_Aiqo.jdField_b_of_type_Boolean) && (this.jdField_a_of_type_Aiqo.jdField_a_of_type_Boolean) && (c()))
-      {
-        QLog.i("VideoPlayControllerForFile.filevideoPeek", 1, "file[" + this.jdField_a_of_type_Aiqo.jdField_a_of_type_Long + "] is downloading return!");
-        return;
-      }
-      super.f();
-    } while ((!this.jdField_a_of_type_Aiqo.jdField_b_of_type_Boolean) || (!this.jdField_a_of_type_Aiqo.d) || (TextUtils.isEmpty(this.jdField_a_of_type_Aiqo.jdField_b_of_type_JavaLangString)) || (this.jdField_a_of_type_Aiob.a == null));
-    b();
-  }
-  
-  public void l()
-  {
-    if (this.jdField_a_of_type_Aiob != null) {
-      this.jdField_a_of_type_Aiob.b();
-    }
+    return this.b;
   }
 }
 

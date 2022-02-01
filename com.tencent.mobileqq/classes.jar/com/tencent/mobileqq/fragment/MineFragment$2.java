@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.fragment;
 
-import asfu;
+import aumh;
 import com.tencent.mobileqq.nearby.NearbyAppInterface;
 
 public final class MineFragment$2
@@ -10,12 +10,12 @@ public final class MineFragment$2
   
   public void run()
   {
-    asfu.b(this.a);
+    aumh.b(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.fragment.MineFragment.2
  * JD-Core Version:    0.7.0.1
  */

@@ -1,22 +1,14 @@
-import android.opengl.EGLContext;
+import android.view.View;
 
-public class azkc
+public abstract interface azkc
 {
-  int jdField_a_of_type_Int;
-  EGLContext jdField_a_of_type_AndroidOpenglEGLContext;
-  Object jdField_a_of_type_JavaLangObject = new Object();
-  int b;
+  public abstract void a(View paramView);
   
-  public void a(EGLContext paramEGLContext, int paramInt1, int paramInt2)
-  {
-    synchronized (this.jdField_a_of_type_JavaLangObject)
-    {
-      this.jdField_a_of_type_AndroidOpenglEGLContext = paramEGLContext;
-      this.jdField_a_of_type_Int = paramInt1;
-      this.b = paramInt2;
-      return;
-    }
-  }
+  public abstract void a(View paramView, float paramFloat);
+  
+  public abstract void a(View paramView, float paramFloat1, float paramFloat2);
+  
+  public abstract void b(View paramView);
 }
 
 

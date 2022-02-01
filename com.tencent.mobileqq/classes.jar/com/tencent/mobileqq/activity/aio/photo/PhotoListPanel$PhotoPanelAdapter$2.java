@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.activity.aio.photo;
 
-import agli;
+import ahvl;
 import java.util.List;
 
 public class PhotoListPanel$PhotoPanelAdapter$2
   implements Runnable
 {
-  public PhotoListPanel$PhotoPanelAdapter$2(agli paramagli, List paramList) {}
+  public PhotoListPanel$PhotoPanelAdapter$2(ahvl paramahvl, List paramList) {}
   
   public void run()
   {
@@ -15,7 +15,7 @@ public class PhotoListPanel$PhotoPanelAdapter$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.photo.PhotoListPanel.PhotoPanelAdapter.2
  * JD-Core Version:    0.7.0.1
  */

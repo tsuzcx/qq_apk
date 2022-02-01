@@ -12,6 +12,7 @@ import android.widget.TextView;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.theme.ThemeUtil;
 import com.tencent.proto.lbsshare.LBSShare.POI;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -32,8 +33,8 @@ public class POIAdapter
     this.mInflater = LayoutInflater.from(paramContext);
     this.blueColor = Color.rgb(0, 121, 255);
     ThemeUtil.getCurrentThemeInfo().getString("themeId");
-    this.textGray = paramContext.getResources().getColor(2131166977);
-    this.textBlack = paramContext.getResources().getColor(2131166903);
+    this.textGray = paramContext.getResources().getColor(2131167060);
+    this.textBlack = paramContext.getResources().getColor(2131166986);
   }
   
   public void addPoiList(List<LBSShare.POI> paramList, boolean paramBoolean)
@@ -74,16 +75,17 @@ public class POIAdapter
   
   public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
+    Object localObject;
     if (paramView == null)
     {
-      paramViewGroup = new POIAdapter.PoiItemViewHolder();
-      paramView = this.mInflater.inflate(2131561775, null);
-      paramViewGroup.nameTextView = ((TextView)paramView.findViewById(2131370990));
-      paramViewGroup.addrTextView = ((TextView)paramView.findViewById(2131362135));
-      paramViewGroup.chooseView = paramView.findViewById(2131376350);
-      paramViewGroup.chooseView.setVisibility(4);
-      paramViewGroup.detailView = paramView;
-      paramView.setTag(paramViewGroup);
+      localObject = new POIAdapter.PoiItemViewHolder();
+      paramView = this.mInflater.inflate(2131562014, null);
+      ((POIAdapter.PoiItemViewHolder)localObject).nameTextView = ((TextView)paramView.findViewById(2131371551));
+      ((POIAdapter.PoiItemViewHolder)localObject).addrTextView = ((TextView)paramView.findViewById(2131362197));
+      ((POIAdapter.PoiItemViewHolder)localObject).chooseView = paramView.findViewById(2131377138);
+      ((POIAdapter.PoiItemViewHolder)localObject).chooseView.setVisibility(4);
+      ((POIAdapter.PoiItemViewHolder)localObject).detailView = paramView;
+      paramView.setTag(localObject);
     }
     LBSShare.POI localPOI;
     for (;;)
@@ -92,23 +94,28 @@ public class POIAdapter
       if (localPOI != null) {
         break;
       }
-      return null;
-      paramViewGroup = (POIAdapter.PoiItemViewHolder)paramView.getTag();
+      localObject = null;
+      EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
+      return localObject;
+      localObject = (POIAdapter.PoiItemViewHolder)paramView.getTag();
     }
-    paramViewGroup.poi = localPOI;
-    paramViewGroup.nameTextView.setText(localPOI.name.get());
-    paramViewGroup.addrTextView.setText(localPOI.addr.get());
+    ((POIAdapter.PoiItemViewHolder)localObject).poi = localPOI;
+    ((POIAdapter.PoiItemViewHolder)localObject).nameTextView.setText(localPOI.name.get());
+    ((POIAdapter.PoiItemViewHolder)localObject).addrTextView.setText(localPOI.addr.get());
     if (paramInt == this.selectPos)
     {
-      paramViewGroup.nameTextView.setTextColor(this.blueColor);
-      paramViewGroup.addrTextView.setTextColor(this.blueColor);
-      paramViewGroup.chooseView.setVisibility(0);
-      return paramView;
+      ((POIAdapter.PoiItemViewHolder)localObject).nameTextView.setTextColor(this.blueColor);
+      ((POIAdapter.PoiItemViewHolder)localObject).addrTextView.setTextColor(this.blueColor);
+      ((POIAdapter.PoiItemViewHolder)localObject).chooseView.setVisibility(0);
     }
-    paramViewGroup.nameTextView.setTextColor(this.textBlack);
-    paramViewGroup.addrTextView.setTextColor(this.textGray);
-    paramViewGroup.chooseView.setVisibility(4);
-    return paramView;
+    for (;;)
+    {
+      localObject = paramView;
+      break;
+      ((POIAdapter.PoiItemViewHolder)localObject).nameTextView.setTextColor(this.textBlack);
+      ((POIAdapter.PoiItemViewHolder)localObject).addrTextView.setTextColor(this.textGray);
+      ((POIAdapter.PoiItemViewHolder)localObject).chooseView.setVisibility(4);
+    }
   }
   
   public void reset()
@@ -132,7 +139,7 @@ public class POIAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.out.activity.POIAdapter
  * JD-Core Version:    0.7.0.1
  */

@@ -1,19 +1,21 @@
-import android.graphics.Bitmap;
-import com.tencent.image.DownloadParams;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import com.tencent.biz.pubaccount.Advertisement.view.VideoCoverView;
 
-final class nvo
-  extends bcyz
+public class nvo
+  extends AnimatorListenerAdapter
 {
-  public Bitmap run(DownloadParams paramDownloadParams, Bitmap paramBitmap)
+  public nvo(VideoCoverView paramVideoCoverView) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    paramDownloadParams = paramBitmap.copy(paramBitmap.getConfig(), true);
-    bdnl.a(paramDownloadParams, 40);
-    return paramDownloadParams;
+    super.onAnimationEnd(paramAnimator);
+    VideoCoverView.a(this.a, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     nvo
  * JD-Core Version:    0.7.0.1
  */

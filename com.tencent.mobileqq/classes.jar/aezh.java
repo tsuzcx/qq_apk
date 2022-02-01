@@ -1,16 +1,30 @@
-import android.app.Activity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.aio.confess.ConfessHalfScreenActivity.ConfessBrowserFragment;
+import com.tencent.mobileqq.activity.QQSettingMe;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
+import com.tencent.qphone.base.util.QLog;
 
-class aezh
-  implements View.OnClickListener
+public class aezh
+  extends aopa
 {
-  aezh(aezg paramaezg) {}
-  
-  public void onClick(View paramView)
+  public aezh(QQSettingMe paramQQSettingMe, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString)
   {
-    this.a.a.a().finish();
+    super(paramInt, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString);
+  }
+  
+  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QQSettingRedesign", 2, "onLocationFinish errCode:" + paramInt + ",info:" + paramSosoLbsInfo);
+    }
+    if ((paramInt == 0) && (paramSosoLbsInfo != null) && (paramSosoLbsInfo.a != null))
+    {
+      paramInt = (int)(paramSosoLbsInfo.a.a * 1000000.0D);
+      int i = (int)(paramSosoLbsInfo.a.b * 1000000.0D);
+      if (QLog.isColorLevel()) {
+        QLog.d("QQSettingRedesign", 2, "onLocationFinish latitude:" + paramInt + ",longtitude:" + i);
+      }
+      alzv.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramInt, i, this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity);
+    }
   }
 }
 

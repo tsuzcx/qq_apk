@@ -1,8 +1,15 @@
-import com.tencent.image.URLImageView;
+import android.os.MessageQueue.IdleHandler;
 
-public class ainw
+class ainw
+  implements MessageQueue.IdleHandler
 {
-  URLImageView a;
+  ainw(ains paramains) {}
+  
+  public boolean queueIdle()
+  {
+    this.a.b();
+    return false;
+  }
 }
 
 

@@ -35,72 +35,67 @@ public class IPConfigStrategy
   
   private final void addConfig(String paramString, Map<String, Map<Integer, IPConfigStrategy.IPConfig>> paramMap, Map<String, Pattern> paramMap1)
   {
-    if ((TextUtils.isEmpty(paramString)) || (paramMap == null) || (paramMap1 == null)) {}
+    if ((TextUtils.isEmpty(paramString)) || (paramMap == null) || (paramMap1 == null)) {
+      return;
+    }
+    paramString = paramString.trim();
+    if (paramString.startsWith(",")) {
+      paramString = "{" + paramString.substring(1);
+    }
     for (;;)
     {
-      return;
-      paramString = paramString.trim();
-      if (paramString.startsWith(","))
+      try
       {
-        paramString = "{" + paramString.substring(1);
-        try
+        JSONObject localJSONObject = new JSONObject(paramString);
+        if (localJSONObject == null) {
+          break;
+        }
+        JSONArray localJSONArray1 = localJSONObject.names();
+        if (localJSONArray1 == null) {
+          break;
+        }
+        int i = 0;
+        if (i >= localJSONArray1.length()) {
+          break;
+        }
+        String str = localJSONArray1.getString(i);
+        Object localObject1 = (Map)paramMap.get(str);
+        if (localObject1 == null)
         {
-          for (;;)
+          localObject1 = new HashMap();
+          paramMap.put(str, localObject1);
+          JSONArray localJSONArray2 = localJSONObject.getJSONArray(localJSONArray1.getString(i));
+          if (localJSONArray2 != null)
           {
-            JSONObject localJSONObject = new JSONObject(paramString);
-            if (localJSONObject == null) {
-              break;
-            }
-            JSONArray localJSONArray1 = localJSONObject.names();
-            if (localJSONArray1 == null) {
-              break;
-            }
-            int i = 0;
-            if (i >= localJSONArray1.length()) {
-              break;
-            }
-            String str = localJSONArray1.getString(i);
-            HashMap localHashMap = new HashMap();
-            JSONArray localJSONArray2 = localJSONObject.getJSONArray(localJSONArray1.getString(i));
-            if (localJSONArray2 != null)
+            int j = 0;
+            if (j < localJSONArray2.length())
             {
-              int j = 0;
-              while (j < localJSONArray2.length())
+              Object localObject3 = localJSONArray2.getJSONObject(j);
+              Object localObject2 = ((JSONObject)localObject3).getString("ip");
+              int k = ((JSONObject)localObject3).getInt("port");
+              Integer localInteger = Integer.valueOf(((JSONObject)localObject3).getInt("apn"));
+              IPInfo localIPInfo = new IPInfo((String)localObject2, Integer.valueOf(k).intValue());
+              localObject3 = (IPConfigStrategy.IPConfig)((Map)localObject1).get(localInteger);
+              localObject2 = localObject3;
+              if (localObject3 == null)
               {
-                Object localObject2 = localJSONArray2.getJSONObject(j);
-                localObject1 = ((JSONObject)localObject2).getString("ip");
-                int k = ((JSONObject)localObject2).getInt("port");
-                Integer localInteger = Integer.valueOf(((JSONObject)localObject2).getInt("apn"));
-                IPInfo localIPInfo = new IPInfo((String)localObject1, Integer.valueOf(k).intValue());
-                localObject2 = (IPConfigStrategy.IPConfig)localHashMap.get(localInteger);
-                localObject1 = localObject2;
-                if (localObject2 == null)
-                {
-                  localObject1 = new IPConfigStrategy.IPConfig();
-                  localHashMap.put(localInteger, localObject1);
-                }
-                ((IPConfigStrategy.IPConfig)localObject1).appendIP(localIPInfo);
-                j += 1;
+                localObject2 = new IPConfigStrategy.IPConfig();
+                ((Map)localObject1).put(localInteger, localObject2);
               }
-            }
-            Object localObject1 = (Map)paramMap.get(str);
-            if (localObject1 == null) {
-              paramMap.put(str, localHashMap);
-            }
-            for (;;)
-            {
-              paramMap1.put(str, Pattern.compile(str, 2));
-              i += 1;
-              break;
-              ((Map)localObject1).putAll(localHashMap);
+              ((IPConfigStrategy.IPConfig)localObject2).appendIP(localIPInfo);
+              j += 1;
+              continue;
             }
           }
+          paramMap1.put(str, Pattern.compile(str, 2));
+          i += 1;
         }
-        catch (Throwable paramMap)
-        {
-          QDLog.e("IPConfigStrategy", "exception when add ip config: " + paramString, paramMap);
-          return;
-        }
+        else {}
+      }
+      catch (Throwable paramMap)
+      {
+        QDLog.e("IPConfigStrategy", "exception when add ip config: " + paramString, paramMap);
+        return;
       }
     }
   }
@@ -484,7 +479,7 @@ public class IPConfigStrategy
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.component.network.downloader.strategy.IPConfigStrategy
  * JD-Core Version:    0.7.0.1
  */

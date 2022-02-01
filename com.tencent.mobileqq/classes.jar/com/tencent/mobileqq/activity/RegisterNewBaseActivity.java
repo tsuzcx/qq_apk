@@ -1,22 +1,26 @@
 package com.tencent.mobileqq.activity;
 
-import adul;
-import adun;
+import Override;
+import afav;
+import afax;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.os.Handler;
+import android.view.MotionEvent;
 import android.view.View.OnClickListener;
 import android.view.Window;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import beuj;
+import bibh;
 import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import mqq.os.MqqHandler;
 
 public class RegisterNewBaseActivity
@@ -31,15 +35,14 @@ public class RegisterNewBaseActivity
   public String b;
   public boolean b;
   public String c;
-  public boolean c;
+  public boolean c = true;
   
   public RegisterNewBaseActivity()
   {
     this.jdField_b_of_type_JavaLangString = "86";
-    this.jdField_c_of_type_Boolean = true;
     this.jdField_b_of_type_Int = -1;
-    this.jdField_a_of_type_AndroidOsHandler = new adul(this);
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = new adun(this);
+    this.jdField_a_of_type_AndroidOsHandler = new afav(this);
+    this.jdField_a_of_type_AndroidViewView$OnClickListener = new afax(this);
   }
   
   public String a()
@@ -49,12 +52,12 @@ public class RegisterNewBaseActivity
   
   protected void a(int paramInt)
   {
-    ((ProgressBar)findViewById(2131375622)).setProgress(paramInt);
+    ((ProgressBar)findViewById(2131376347)).setProgress(paramInt);
   }
   
   public void a(int paramInt1, int paramInt2)
   {
-    new beuj(this).a(paramInt1, getTitleBarHeight(), 1, paramInt2);
+    new bibh(this).a(paramInt1, getTitleBarHeight(), 1, paramInt2);
   }
   
   public void a(String paramString, int paramInt)
@@ -66,7 +69,7 @@ public class RegisterNewBaseActivity
     if (paramString.endsWith("\n")) {
       str = paramString.substring(0, paramString.length() - 1);
     }
-    new beuj(this).a(str, getTitleBarHeight(), 0, paramInt);
+    new bibh(this).a(str, getTitleBarHeight(), 0, paramInt);
   }
   
   public void a(String paramString1, String paramString2)
@@ -84,7 +87,7 @@ public class RegisterNewBaseActivity
   
   protected void a(boolean paramBoolean)
   {
-    ProgressBar localProgressBar = (ProgressBar)findViewById(2131375622);
+    ProgressBar localProgressBar = (ProgressBar)findViewById(2131376347);
     if (paramBoolean) {}
     for (int i = 0;; i = 4)
     {
@@ -93,17 +96,12 @@ public class RegisterNewBaseActivity
     }
   }
   
-  public String b()
-  {
-    return this.jdField_c_of_type_JavaLangString;
-  }
-  
   protected void b()
   {
-    TextView localTextView = (TextView)findViewById(2131363833);
+    TextView localTextView = (TextView)findViewById(2131364039);
     localTextView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-    if (AppSetting.jdField_c_of_type_Boolean) {
-      localTextView.setContentDescription(getResources().getString(2131690623));
+    if (AppSetting.c) {
+      localTextView.setContentDescription(getResources().getString(2131690563));
     }
   }
   
@@ -122,9 +120,9 @@ public class RegisterNewBaseActivity
   
   protected void b(String paramString)
   {
-    TextView localTextView = (TextView)findViewById(2131379154);
+    TextView localTextView = (TextView)findViewById(2131380079);
     localTextView.setText(paramString);
-    if (AppSetting.jdField_c_of_type_Boolean) {
+    if (AppSetting.c) {
       localTextView.setContentDescription(paramString);
     }
   }
@@ -167,12 +165,20 @@ public class RegisterNewBaseActivity
   
   protected void c(int paramInt)
   {
-    TextView localTextView = (TextView)findViewById(2131379154);
+    TextView localTextView = (TextView)findViewById(2131380079);
     String str = getResources().getString(paramInt);
     localTextView.setText(str);
-    if (AppSetting.jdField_c_of_type_Boolean) {
+    if (AppSetting.c) {
       localTextView.setContentDescription(str);
     }
+  }
+  
+  @Override
+  public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
+  {
+    boolean bool = super.dispatchTouchEvent(paramMotionEvent);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool);
+    return bool;
   }
   
   public boolean doOnCreate(Bundle paramBundle)
@@ -203,10 +209,17 @@ public class RegisterNewBaseActivity
     }
     paramDialogInterface.dismiss();
   }
+  
+  @Override
+  public void onConfigurationChanged(Configuration paramConfiguration)
+  {
+    super.onConfigurationChanged(paramConfiguration);
+    EventCollector.getInstance().onActivityConfigurationChanged(this, paramConfiguration);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.RegisterNewBaseActivity
  * JD-Core Version:    0.7.0.1
  */

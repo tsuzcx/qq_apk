@@ -1,47 +1,31 @@
-import com.tencent.mobileqq.multiaio.widget.MultiAIOViewPager;
-import com.tencent.mobileqq.multicard.MultiCardFragment;
-import com.tencent.mobileqq.multicard.MultiCardFragment.ReportRunnable;
-import com.tencent.qphone.base.util.QLog;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.fragment.QQSettingAutoDownloadAndSaveFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import mqq.app.AppRuntime;
 
 public class aunl
-  implements aumn
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public aunl(MultiCardFragment paramMultiCardFragment) {}
+  public aunl(QQSettingAutoDownloadAndSaveFragment paramQQSettingAutoDownloadAndSaveFragment) {}
   
-  public void a(int paramInt)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("MultiCardFragment", 2, "Indicator onPageScrollStateChanged() called with: state = [" + paramInt + "]");
-    }
-    switch (paramInt)
+    bkfl.a(false, paramBoolean);
+    String str = BaseApplicationImpl.getApplication().getRuntime().getAccount();
+    if (paramBoolean) {}
+    for (int i = 1;; i = 0)
     {
-    default: 
-    case 0: 
-    case 1: 
-      do
-      {
-        do
-        {
-          return;
-          MultiCardFragment.a(this.a);
-          MultiCardFragment.a(this.a, true);
-        } while ((MultiCardFragment.a(this.a) == null) || (MultiCardFragment.a(this.a).a() <= MultiCardFragment.a(this.a).a()));
-        MultiCardFragment.a(this.a).b(MultiCardFragment.a(this.a).a());
-        MultiCardFragment.a(this.a).a();
-        return;
-        MultiCardFragment.b(this.a, true);
-        MultiCardFragment.a(this.a, false);
-      } while (MultiCardFragment.a(this.a) == null);
-      MultiCardFragment.a(this.a, MultiCardFragment.a(this.a).a());
+      bcst.b(null, "CliOper", "", str, "0X800A6E4", "0X800A6E4", 0, i, "", "", "", "");
+      EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
       return;
     }
-    MultiCardFragment.b(this.a, true);
-    MultiCardFragment.a(this.a, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aunl
  * JD-Core Version:    0.7.0.1
  */

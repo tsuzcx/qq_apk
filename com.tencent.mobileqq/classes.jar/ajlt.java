@@ -1,8 +1,18 @@
-public abstract interface ajlt
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.data.MayKnowRecommend;
+import com.tencent.widget.SingleLineTextView;
+
+class ajlt
+  extends amcl
 {
-  public abstract void a(byte[] paramArrayOfByte);
-  
-  public abstract byte[] a();
+  public Button a;
+  public ImageView a;
+  public TextView a;
+  public MayKnowRecommend a;
+  public SingleLineTextView a;
+  public SingleLineTextView b;
 }
 
 

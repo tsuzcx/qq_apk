@@ -1,92 +1,184 @@
+import android.annotation.TargetApi;
 import android.content.Context;
-import android.os.Message;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.ChatActivity;
-import com.tencent.mobileqq.activity.ChatActivityUtils;
-import com.tencent.mobileqq.activity.ChatFragment;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Emoticon;
-import com.tencent.mobileqq.data.EmoticonPackage;
-import com.tencent.mobileqq.emoticon.EmojiStickerManager.StickerInfo;
-import com.tencent.mobileqq.vaswebviewplugin.EmojiHomeUiPlugin;
+import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.Rect;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
-final class apxz
-  implements aufy<EmoticonPackage>
+public final class apxz
+  extends apxy
 {
-  apxz(Context paramContext, QQAppInterface paramQQAppInterface, Emoticon paramEmoticon, apro paramapro, SessionInfo paramSessionInfo, EmojiStickerManager.StickerInfo paramStickerInfo) {}
+  public boolean a;
+  public int c;
+  public String c = "";
   
-  public void a(EmoticonPackage paramEmoticonPackage)
+  public apxz()
   {
-    boolean bool;
-    if ((paramEmoticonPackage != null) && ((2 != paramEmoticonPackage.status) || (!paramEmoticonPackage.valid))) {
-      if (paramEmoticonPackage.jobType == 4)
+    this.jdField_a_of_type_Boolean = true;
+  }
+  
+  public static apxy a(JSONObject paramJSONObject)
+  {
+    Object localObject = paramJSONObject.optString("type");
+    if (("diy_chartlet".equalsIgnoreCase((String)localObject)) || ("static".equalsIgnoreCase((String)localObject)))
+    {
+      apxz localapxz = new apxz();
+      localapxz.jdField_b_of_type_JavaLangString = ((String)localObject);
+      localObject = BaseApplicationImpl.getApplication().getApplicationContext();
+      localapxz.jdField_a_of_type_JavaLangString = paramJSONObject.optString("align").toUpperCase();
+      if (paramJSONObject.has("rect"))
       {
-        bool = true;
-        EmojiHomeUiPlugin.openEmojiDetailPage(((BaseActivity)this.jdField_a_of_type_AndroidContentContext).getActivity(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), 8, this.jdField_a_of_type_ComTencentMobileqqDataEmoticon.epId, false, bool);
-        azqs.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "ep_mall", "0X8005C13", 0, 0, "", "", "", "");
+        JSONArray localJSONArray = paramJSONObject.optJSONArray("rect");
+        localapxz.jdField_a_of_type_ArrayOfInt = new int[4];
+        int i = 0;
+        while (i < localJSONArray.length())
+        {
+          localapxz.jdField_a_of_type_ArrayOfInt[i] = bggq.a((Context)localObject, localJSONArray.optInt(i) / 2);
+          i += 1;
+        }
       }
-    }
-    do
-    {
-      return;
-      bool = false;
-      break;
-      if (!this.jdField_a_of_type_Apro.c()) {
-        break label483;
-      }
-      if (this.jdField_a_of_type_Apro.a(this.jdField_a_of_type_ComTencentMobileqqDataEmoticon.epId, Boolean.valueOf(false))) {
-        break label170;
-      }
-      ChatActivityUtils.a(this.jdField_a_of_type_AndroidContentContext, 2131690020, 0);
-      paramEmoticonPackage = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getHandler(ChatActivity.class);
-    } while (paramEmoticonPackage == null);
-    paramEmoticonPackage.obtainMessage(10).sendToTarget();
-    paramEmoticonPackage.obtainMessage(21).sendToTarget();
-    return;
-    label170:
-    Object localObject = atys.a(this.jdField_a_of_type_ComTencentMobileqqDataEmoticon, 0);
-    if ((localObject != null) && (((atya)localObject).a))
-    {
-      if (atzj.a())
-      {
-        ((FragmentActivity)this.jdField_a_of_type_AndroidContentContext).getChatFragment().a().a(this.jdField_a_of_type_ComTencentMobileqqDataEmoticon, 0, null, false);
-        ((FragmentActivity)this.jdField_a_of_type_AndroidContentContext).getChatFragment().a().a().a(this.jdField_a_of_type_ComTencentMobileqqDataEmoticon);
-        return;
-      }
-      this.jdField_a_of_type_ComTencentMobileqqDataEmoticon.magicValue = "value=1";
-    }
-    do
-    {
-      apxv.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_ComTencentMobileqqDataEmoticon, this.jdField_a_of_type_ComTencentMobileqqEmoticonEmojiStickerManager$StickerInfo);
-      return;
-      int j = atxu.a(atys.a(this.jdField_a_of_type_ComTencentMobileqqDataEmoticon, 0));
-      int i = 0;
-      if (paramEmoticonPackage != null) {
-        i = paramEmoticonPackage.rscType;
-      }
-      paramEmoticonPackage = "rscType?" + i + ";value=" + j;
-      this.jdField_a_of_type_ComTencentMobileqqDataEmoticon.magicValue = paramEmoticonPackage;
+      localapxz.jdField_a_of_type_Boolean = paramJSONObject.optBoolean("mirror", true);
       if (QLog.isColorLevel()) {
-        QLog.d("PicEmoticonInfo", 2, "before play,magicvalue:" + this.jdField_a_of_type_ComTencentMobileqqDataEmoticon.magicValue);
+        QLog.d("DiyBubbleConfig", 2, "Resolve DiyBubblePasterConfig json->" + paramJSONObject);
       }
-      if ((localObject != null) && (!((atya)localObject).c))
+      return localapxz;
+    }
+    QLog.e("DiyBubbleConfig", 1, "error! paster type: " + (String)localObject);
+    return null;
+  }
+  
+  @TargetApi(11)
+  public Rect a(apym paramapym, Canvas paramCanvas)
+  {
+    int i1 = 0;
+    paramCanvas = paramapym.getBounds();
+    Resources localResources = BaseApplicationImpl.getContext().getResources();
+    if (jdField_b_of_type_Int == -1) {
+      jdField_b_of_type_Int = afur.a(48.0F, localResources);
+    }
+    int j = this.jdField_a_of_type_ArrayOfInt[3];
+    int i = this.jdField_a_of_type_ArrayOfInt[2];
+    int m;
+    int n;
+    int k;
+    if (paramCanvas.height() >= jdField_b_of_type_Int)
+    {
+      afur.a(10.0F, localResources);
+      afur.a(9.0F, localResources);
+      m = 0;
+      n = 0;
+      k = j;
+      j = n;
+    }
+    for (;;)
+    {
+      if (this.jdField_a_of_type_JavaLangString.startsWith("T")) {
+        n = m + this.jdField_a_of_type_ArrayOfInt[1];
+      }
+      for (;;)
       {
-        acjm.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_ComTencentMobileqqDataEmoticon);
-        azqs.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "ep_mall", "0X800579D", 0, 0, this.jdField_a_of_type_ComTencentMobileqqDataEmoticon.epId, "", "", "");
-        return;
+        label111:
+        if (this.jdField_a_of_type_JavaLangString.endsWith("L")) {
+          m = this.jdField_a_of_type_ArrayOfInt[0] + j;
+        }
+        for (;;)
+        {
+          j = m;
+          if (paramapym.b)
+          {
+            j = m;
+            if (!this.jdField_a_of_type_Boolean) {
+              j = paramCanvas.width() - m - i;
+            }
+          }
+          return new Rect(j, n, i + j, k + n);
+          n = afur.a(10.0F, localResources);
+          m = afur.a(7.0F, localResources);
+          if ("static".equalsIgnoreCase(this.jdField_b_of_type_JavaLangString))
+          {
+            m = -afur.a(2.0F, localResources);
+            k = j;
+            j = 0;
+            break;
+          }
+          k = j;
+          if (j <= m * 2) {
+            break label407;
+          }
+          m *= 2;
+          j = this.jdField_a_of_type_ArrayOfInt[2] * m / this.jdField_a_of_type_ArrayOfInt[3];
+          i = j;
+          k = m;
+          if (j >= n * 2) {
+            break label407;
+          }
+          int i2 = j / 2;
+          k = m;
+          i = j;
+          j = n - i2;
+          m = 0;
+          break;
+          if (!this.jdField_a_of_type_JavaLangString.startsWith("B")) {
+            break label401;
+          }
+          n = this.jdField_a_of_type_ArrayOfInt[1] + this.jdField_a_of_type_ArrayOfInt[3] + paramCanvas.height() - k - m;
+          break label111;
+          m = i1;
+          if (this.jdField_a_of_type_JavaLangString.endsWith("R")) {
+            m = this.jdField_a_of_type_ArrayOfInt[0] + this.jdField_a_of_type_ArrayOfInt[2] + paramCanvas.width() - i - j;
+          }
+        }
+        label401:
+        n = 0;
       }
-      localObject = ((FragmentActivity)this.jdField_a_of_type_AndroidContentContext).getChatFragment();
-    } while (localObject == null);
-    ((ChatFragment)localObject).a().a().a(this.jdField_a_of_type_ComTencentMobileqqDataEmoticon, new apya(this, paramEmoticonPackage));
-    return;
-    label483:
-    ChatActivityUtils.a(this.jdField_a_of_type_AndroidContentContext, 2131690039);
-    azqs.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "ep_mall", "0X8005C16", 0, 0, "", "", "", "");
+      label407:
+      m = 0;
+      j = 0;
+    }
+  }
+  
+  public void a(apym paramapym, Canvas paramCanvas)
+  {
+    if ((paramCanvas == null) || (paramapym == null)) {}
+    for (;;)
+    {
+      return;
+      Bitmap localBitmap;
+      if ("diy_chartlet".equalsIgnoreCase(this.jdField_b_of_type_JavaLangString)) {
+        localBitmap = apwr.a().b(paramapym, this);
+      }
+      while (localBitmap != null)
+      {
+        int i = paramCanvas.save();
+        if ((paramapym.b) && (this.jdField_a_of_type_Boolean)) {
+          paramCanvas.scale(-1.0F, 1.0F, paramapym.getBounds().centerX(), paramapym.getBounds().centerY());
+        }
+        Paint localPaint = new Paint();
+        paramapym = a(paramapym, paramCanvas);
+        if (paramCanvas.getHeight() < jdField_b_of_type_Int) {
+          paramCanvas.drawBitmap(localBitmap, null, paramapym, localPaint);
+        }
+        for (;;)
+        {
+          paramCanvas.restoreToCount(i);
+          return;
+          if (!"static".equalsIgnoreCase(this.jdField_b_of_type_JavaLangString)) {
+            break label166;
+          }
+          localBitmap = apwr.a().a(paramapym, this);
+          break;
+          paramCanvas.drawBitmap(localBitmap, paramapym.left, paramapym.top, localPaint);
+        }
+        label166:
+        localBitmap = null;
+      }
+    }
   }
 }
 

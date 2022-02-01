@@ -1,31 +1,33 @@
-import java.util.ArrayList;
+import android.content.Context;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.ad.data.ProteusBannerBigPicItemData;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.ViewFactory;
+import java.lang.ref.WeakReference;
+import org.json.JSONObject;
 
-class onw
-  extends oob
+public class onw
+  extends onq
 {
-  onw(omz paramomz, int paramInt)
+  public onw(View paramView, BaseData paramBaseData, WeakReference<Context> paramWeakReference)
   {
-    super(paramomz, null);
+    super(paramBaseData, paramWeakReference, localWeakReference);
   }
   
-  void a(ooe paramooe)
+  public void a(BaseData paramBaseData, Context paramContext, JSONObject paramJSONObject)
   {
-    if (paramooe == null) {}
-    do
-    {
-      return;
-      if (this.jdField_a_of_type_Int == 1)
-      {
-        paramooe.onCommentListLoad(1, false, new ArrayList(), false, 2, 2);
-        return;
-      }
-    } while (this.jdField_a_of_type_Int != 2);
-    paramooe.onCommentLoadMore(1, false, new ArrayList(), false, 2);
+    ViewFactory.findClickableViewListener(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getVirtualView(), new onx(this, paramBaseData, paramContext));
+  }
+  
+  protected boolean a(BaseData paramBaseData1, BaseData paramBaseData2)
+  {
+    return (paramBaseData1 == paramBaseData2) && ((paramBaseData2 instanceof ProteusBannerBigPicItemData));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     onw
  * JD-Core Version:    0.7.0.1
  */

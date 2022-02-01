@@ -1,22 +1,21 @@
-import android.text.SpannableString;
-import com.tencent.qphone.base.util.QLog;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.mobileqq.widget.ParticipleView;
 
 public class bhzb
-  extends biba
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public int a;
+  public bhzb(ParticipleView paramParticipleView) {}
   
-  public void a(SpannableString paramSpannableString)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("spanStyle", 2, "[MarginStyle] start:" + this.b + " end:" + this.c + " marginPix:" + this.a);
-    }
-    paramSpannableString.setSpan(new bhza(this.a), this.b, this.c, 17);
+    ParticipleView.a(this.a, ((Float)paramValueAnimator.getAnimatedValue()).floatValue());
+    this.a.invalidate();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bhzb
  * JD-Core Version:    0.7.0.1
  */

@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.mini.out.nativePlugins;
 
 import android.os.Bundle;
-import bflp;
+import bisy;
 import com.tencent.mobileqq.mini.appbrand.utils.MiniAppFileManager;
 import com.tencent.mobileqq.mini.out.nativePlugins.foundation.NativePlugin.JSContext;
 import com.tencent.mobileqq.qipc.QIPCClientHelper;
@@ -39,7 +39,7 @@ public class WeiyunNativeBusiness$WeiyunDownloadBussiness$WeiyunDownloadClientQI
   
   public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
   {
-    bflp.c("WeiyunDownloadClientIPC", "onCall action|" + paramString + " params|" + paramBundle + " callbackId|" + paramInt);
+    bisy.c("WeiyunDownloadClientIPC", "onCall action|" + paramString + " params|" + paramBundle + " callbackId|" + paramInt);
     if (paramBundle == null) {}
     for (;;)
     {
@@ -221,7 +221,7 @@ public class WeiyunNativeBusiness$WeiyunDownloadBussiness$WeiyunDownloadClientQI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.out.nativePlugins.WeiyunNativeBusiness.WeiyunDownloadBussiness.WeiyunDownloadClientQIPCModule
  * JD-Core Version:    0.7.0.1
  */

@@ -1,59 +1,36 @@
-import android.support.v4.util.SparseArrayCompat;
+import android.content.Context;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import java.net.URL;
 
-public class aiit
+public abstract interface aiit
+  extends aiis
 {
-  private SparseArrayCompat<SparseArrayCompat<affa>> a = new SparseArrayCompat(15);
-  private SparseArrayCompat<afez> b = new SparseArrayCompat();
+  public abstract URLDrawable.URLDrawableOptions a();
   
-  public aiit(aijq paramaijq)
-  {
-    a(1, new aike(paramaijq));
-    a(2, new aijp(paramaijq));
-    a(3, new aiix(paramaijq));
-  }
+  public abstract URLDrawable a(URL paramURL, URLDrawable.URLDrawableOptions paramURLDrawableOptions);
   
-  private void a(int paramInt, affa paramaffa)
-  {
-    this.b.put(paramInt, paramaffa);
-    int[] arrayOfInt = paramaffa.a();
-    int j = arrayOfInt.length;
-    int i = 0;
-    while (i < j)
-    {
-      int k = arrayOfInt[i];
-      SparseArrayCompat localSparseArrayCompat2 = (SparseArrayCompat)this.a.get(k);
-      SparseArrayCompat localSparseArrayCompat1 = localSparseArrayCompat2;
-      if (localSparseArrayCompat2 == null)
-      {
-        localSparseArrayCompat1 = new SparseArrayCompat();
-        this.a.put(k, localSparseArrayCompat1);
-      }
-      localSparseArrayCompat1.put(paramInt, paramaffa);
-      i += 1;
-    }
-  }
+  public abstract String a();
   
-  public <T extends afez> T a(int paramInt)
-  {
-    return (afez)this.b.get(paramInt);
-  }
+  public abstract URL a();
   
-  public void a(int paramInt)
-  {
-    SparseArrayCompat localSparseArrayCompat = (SparseArrayCompat)this.a.get(paramInt);
-    if (localSparseArrayCompat == null) {}
-    for (;;)
-    {
-      return;
-      int j = localSparseArrayCompat.size();
-      int i = 0;
-      while (i < j)
-      {
-        ((affa)localSparseArrayCompat.valueAt(i)).a(paramInt);
-        i += 1;
-      }
-    }
-  }
+  public abstract void a(QQAppInterface paramQQAppInterface, int paramInt);
+  
+  public abstract void a(QQAppInterface paramQQAppInterface, Context paramContext, SessionInfo paramSessionInfo);
+  
+  public abstract boolean a();
+  
+  public abstract String b();
+  
+  public abstract boolean b();
+  
+  public abstract String c();
+  
+  public abstract boolean c();
+  
+  public abstract String d();
 }
 
 

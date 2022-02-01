@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.contact.addcontact;
 
-import ahjf;
-import ahjg;
+import aitw;
+import aitx;
 import android.content.Context;
 import android.content.res.Resources;
 import android.view.LayoutInflater;
@@ -10,6 +10,7 @@ import android.view.View.OnClickListener;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.util.ArrayList;
 
 public class ViewFactory$GuideView
@@ -17,7 +18,7 @@ public class ViewFactory$GuideView
   implements View.OnClickListener
 {
   public static final int a;
-  public ahjg a;
+  public aitx a;
   private int b = -1;
   
   static
@@ -38,7 +39,7 @@ public class ViewFactory$GuideView
     int i = 0;
     while (i < jdField_a_of_type_Int)
     {
-      addView(paramContext.inflate(2131558465, this, false));
+      addView(paramContext.inflate(2131558471, this, false));
       i += 1;
     }
   }
@@ -51,7 +52,7 @@ public class ViewFactory$GuideView
     {
       View localView = getChildAt(i);
       localView.setTag(((Integer)localView.getTag()).intValue(), paramString);
-      ((TextView)localView.findViewById(2131367409)).setText(paramString);
+      ((TextView)localView.findViewById(2131367717)).setText(paramString);
       String str = localView.getContentDescription().toString();
       int k = str.length();
       int m = str.indexOf(":");
@@ -65,7 +66,7 @@ public class ViewFactory$GuideView
     }
   }
   
-  private void a(ArrayList<ahjf> paramArrayList, String paramString)
+  private void a(ArrayList<aitw> paramArrayList, String paramString)
   {
     int j = getChildCount();
     int i = 0;
@@ -73,28 +74,28 @@ public class ViewFactory$GuideView
     {
       View localView = getChildAt(i);
       localView.setOnClickListener(this);
-      localView.setTag(Integer.valueOf(((ahjf)paramArrayList.get(i)).b));
-      localView.setTag(((ahjf)paramArrayList.get(i)).b, paramString);
-      ((ImageView)localView.findViewById(2131367404)).setImageResource(((ahjf)paramArrayList.get(i)).b);
-      ((TextView)localView.findViewById(2131367419)).setText(localView.getContext().getResources().getString(((ahjf)paramArrayList.get(i)).jdField_a_of_type_Int) + ":");
-      ((TextView)localView.findViewById(2131367409)).setText(paramString);
-      localView.setContentDescription(getResources().getString(((ahjf)paramArrayList.get(i)).jdField_a_of_type_Int) + ":" + paramString);
+      localView.setTag(Integer.valueOf(((aitw)paramArrayList.get(i)).b));
+      localView.setTag(((aitw)paramArrayList.get(i)).b, paramString);
+      ((ImageView)localView.findViewById(2131367712)).setImageResource(((aitw)paramArrayList.get(i)).b);
+      ((TextView)localView.findViewById(2131367728)).setText(localView.getContext().getResources().getString(((aitw)paramArrayList.get(i)).jdField_a_of_type_Int) + ":");
+      ((TextView)localView.findViewById(2131367717)).setText(paramString);
+      localView.setContentDescription(getResources().getString(((aitw)paramArrayList.get(i)).jdField_a_of_type_Int) + ":" + paramString);
       i += 1;
     }
   }
   
-  public ahjf a(int paramInt)
+  public aitw a(int paramInt)
   {
     switch (paramInt)
     {
     default: 
       return null;
     case 80000000: 
-      return new ahjf(2131689718, 2130844326);
+      return new aitw(2131689629, 2130844720);
     case 80000001: 
-      return new ahjf(2131689720, 2130844327);
+      return new aitw(2131689631, 2130844721);
     }
-    return new ahjf(2131689719, 2130844328);
+    return new aitw(2131689630, 2130844722);
   }
   
   public void a(int paramInt, String paramString)
@@ -120,15 +121,16 @@ public class ViewFactory$GuideView
   public void onClick(View paramView)
   {
     int i = ((Integer)paramView.getTag()).intValue();
-    paramView = (String)paramView.getTag(i);
+    String str = (String)paramView.getTag(i);
     switch (i)
     {
     }
     for (;;)
     {
-      if (this.jdField_a_of_type_Ahjg != null) {
-        this.jdField_a_of_type_Ahjg.a(i, paramView);
+      if (this.jdField_a_of_type_Aitx != null) {
+        this.jdField_a_of_type_Aitx.a(i, str);
       }
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
       i = 80000000;
       continue;
@@ -138,14 +140,14 @@ public class ViewFactory$GuideView
     }
   }
   
-  public void setListener(ahjg paramahjg)
+  public void setListener(aitx paramaitx)
   {
-    this.jdField_a_of_type_Ahjg = paramahjg;
+    this.jdField_a_of_type_Aitx = paramaitx;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contact.addcontact.ViewFactory.GuideView
  * JD-Core Version:    0.7.0.1
  */

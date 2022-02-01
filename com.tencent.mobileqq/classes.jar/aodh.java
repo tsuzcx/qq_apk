@@ -1,50 +1,48 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.colornote.data.ColorNote;
-import com.tencent.mobileqq.music.QQPlayerService;
-import java.util.List;
+import com.tencent.mobileqq.data.RecentUser;
+import com.tencent.mobileqq.persistence.Entity;
+import java.util.Comparator;
 
 class aodh
-  implements View.OnClickListener
+  implements Comparator<Entity>
 {
-  aodg jdField_a_of_type_Aodg;
-  aodk jdField_a_of_type_Aodk;
+  aodh(aodg paramaodg) {}
   
-  aodh(aodg paramaodg, aodk paramaodk)
+  public int a(Entity paramEntity1, Entity paramEntity2)
   {
-    this.jdField_a_of_type_Aodg = paramaodg;
-    this.jdField_a_of_type_Aodk = paramaodk;
-  }
-  
-  public void onClick(View paramView)
-  {
-    int i = this.jdField_a_of_type_Aodk.getAdapterPosition();
-    ColorNote localColorNote = (ColorNote)aodg.a(this.jdField_a_of_type_Aodg).get(i);
-    aoca.b(localColorNote.mServiceType, localColorNote.mSubType);
-    aodg.a(this.jdField_a_of_type_Aodg).remove(i);
-    this.jdField_a_of_type_Aodg.notifyDataSetChanged();
-    switch (localColorNote.getServiceType())
+    int j = -1;
+    paramEntity1 = (RecentUser)paramEntity1;
+    paramEntity2 = (RecentUser)paramEntity2;
+    long l1 = Math.max(paramEntity1.lastmsgtime, paramEntity1.lastmsgdrafttime);
+    long l2 = Math.max(paramEntity2.lastmsgtime, paramEntity2.lastmsgdrafttime);
+    int i;
+    if (l1 < l2)
     {
-    default: 
-      if (aocr.b(localColorNote))
+      i = 1;
+      if (paramEntity1.getType() != paramEntity2.getType()) {
+        break label80;
+      }
+    }
+    label80:
+    do
+    {
+      do
       {
-        if ((aocq.a().a()) && (aocd.b())) {
-          aodg.a(this.jdField_a_of_type_Aodg).a(paramView);
+        return i;
+        if (l1 == l2)
+        {
+          i = 0;
+          break;
         }
-        azqs.b(null, "dc00898", "", "", "0X800A8AC", "0X800A8AC", aobv.b(aocr.a(localColorNote.getServiceType())), 0, "", "", "", "");
+        i = -1;
+        break;
+        i = j;
+      } while (paramEntity1.getType() == 0);
+      if (paramEntity2.getType() == 0) {
+        return 1;
       }
-      break;
-    }
-    for (;;)
-    {
-      if ((this.jdField_a_of_type_Aodg.getItemCount() == 0) && (aodg.a(this.jdField_a_of_type_Aodg) != null)) {
-        aodg.a(this.jdField_a_of_type_Aodg).a();
-      }
-      return;
-      QQPlayerService.c(paramView.getContext());
-      break;
-      azqs.b(null, "dc00898", "", "", "0X800A747", "0X800A747", aobv.a(localColorNote.getServiceType()), 0, "", "", "", "");
-    }
+      i = j;
+    } while (paramEntity1.getType() - paramEntity2.getType() > 0);
+    return 1;
   }
 }
 

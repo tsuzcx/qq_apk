@@ -7,7 +7,7 @@ import com.tencent.qphone.base.util.QLog;
 import java.util.Iterator;
 import mqq.app.AppRuntime;
 import mqq.manager.TicketManager;
-import ndd;
+import nlw;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -106,7 +106,7 @@ public class JSONUtils
         a(paramJSONObject, (Bundle)localObject);
       }
     }
-    localObject = ndd.a((Bundle)localObject);
+    localObject = nlw.a((Bundle)localObject);
     StringBuilder localStringBuilder = new StringBuilder().append(paramString);
     if (paramString.contains("?")) {}
     for (paramJSONObject = "&";; paramJSONObject = "?")

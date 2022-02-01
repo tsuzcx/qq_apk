@@ -1,17 +1,19 @@
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.data.ChatMessage;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.activateFriend.SendBirthdayWishesActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class aftp
-  extends afuf
+public class aftp
+  implements View.OnClickListener
 {
-  aftp(afpy paramafpy)
-  {
-    super(paramafpy, null);
-  }
+  public aftp(SendBirthdayWishesActivity paramSendBirthdayWishesActivity) {}
   
-  protected aeqy a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
+  public void onClick(View paramView)
   {
-    return new afzh(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner);
+    bcst.b(this.a.app, "CliOper", "", "", "0X8004E0A", "0X8004E0A", 0, 0, "", "", "", "");
+    this.a.setResult(0);
+    this.a.finish();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

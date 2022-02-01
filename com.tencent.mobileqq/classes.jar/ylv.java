@@ -1,57 +1,60 @@
-import android.graphics.Bitmap;
-import android.graphics.Canvas;
-import android.graphics.Color;
-import android.graphics.PorterDuff.Mode;
-import android.util.Pair;
-import android.widget.ImageView;
-import com.tencent.biz.subscribe.utils.MergeBitmapBlurUtil.1;
-import com.tencent.biz.subscribe.utils.MergeBitmapBlurUtil.2;
-import com.tencent.mobileqq.app.ThreadManager;
-import mqq.os.MqqHandler;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspGetUserGuide;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public class ylv
+  extends wla
 {
-  public static void a(String paramString, ImageView paramImageView)
-  {
-    ThreadManager.post(new MergeBitmapBlurUtil.1(paramString, paramImageView), 5, null, false);
-  }
+  public String a;
+  public int b;
+  public String c;
+  public String d;
+  public String e;
   
-  private static void b(Bitmap paramBitmap, ImageView paramImageView)
+  public ylv(qqstory_service.RspGetUserGuide paramRspGetUserGuide)
   {
-    ThreadManager.getUIHandler().post(new MergeBitmapBlurUtil.2(paramBitmap, paramImageView));
-  }
-  
-  private static void b(String paramString, Bitmap paramBitmap, ImageView paramImageView)
-  {
-    Bitmap localBitmap;
-    Canvas localCanvas;
-    if (paramBitmap != null)
+    if (paramRspGetUserGuide.pic_url.has())
     {
-      localBitmap = bdhj.a(paramImageView.getContext(), paramBitmap, 0.25F, 20.0F);
-      if (localBitmap != null)
-      {
-        localCanvas = new Canvas();
-        if (!localBitmap.isMutable()) {
-          break label124;
-        }
+      localObject1 = paramRspGetUserGuide.pic_url.get().toStringUtf8();
+      this.a = ((String)localObject1);
+      if (!paramRspGetUserGuide.word.has()) {
+        break label129;
+      }
+      localObject1 = paramRspGetUserGuide.word.get().toStringUtf8();
+      label53:
+      this.c = ((String)localObject1);
+      this.b = paramRspGetUserGuide.seqno.get();
+      if (!paramRspGetUserGuide.confirm_word.has()) {
+        break label134;
       }
     }
-    label124:
-    for (Object localObject = localBitmap;; localObject = localBitmap.copy(localBitmap.getConfig(), true))
+    label129:
+    label134:
+    for (Object localObject1 = paramRspGetUserGuide.confirm_word.get().toStringUtf8();; localObject1 = null)
     {
-      localCanvas.setBitmap((Bitmap)localObject);
-      localCanvas.drawColor(Color.parseColor("#3F000000"), PorterDuff.Mode.SRC_OVER);
-      localObject = xsv.a(paramBitmap.getWidth(), paramBitmap.getHeight(), paramImageView.getWidth(), paramImageView.getHeight());
-      paramBitmap = xqw.a(xqw.a(localBitmap, ((Integer)((Pair)localObject).first).intValue(), ((Integer)((Pair)localObject).second).intValue(), true), paramBitmap);
-      b(paramBitmap, paramImageView);
-      bdfz.a(paramString, paramBitmap);
+      this.d = ((String)localObject1);
+      localObject1 = localObject2;
+      if (paramRspGetUserGuide.cancel_word.has()) {
+        localObject1 = paramRspGetUserGuide.cancel_word.get().toStringUtf8();
+      }
+      this.e = ((String)localObject1);
       return;
+      localObject1 = null;
+      break;
+      localObject1 = null;
+      break label53;
     }
+  }
+  
+  public String toString()
+  {
+    return "Response{imageUrl='" + this.a + '\'' + ", word='" + this.c + '\'' + ", seqno=" + this.b + ", confirmBtnTxt='" + this.d + '\'' + ", cancelBtnTxt='" + this.e + '\'' + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     ylv
  * JD-Core Version:    0.7.0.1
  */

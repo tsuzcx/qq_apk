@@ -1,8 +1,20 @@
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.facetoface.Face2FaceDetailBaseView;
+
 public class asqm
+  implements Animation.AnimationListener
 {
-  public String a;
-  public String b;
-  public String c;
+  public asqm(Face2FaceDetailBaseView paramFace2FaceDetailBaseView) {}
+  
+  public void onAnimationEnd(Animation paramAnimation)
+  {
+    this.a.a.b();
+  }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

@@ -3,21 +3,22 @@ package com.tencent.mobileqq.ocr.ui;
 import android.app.Activity;
 import android.support.v4.app.Fragment;
 import android.view.View.OnTouchListener;
-import avya;
-import avyb;
+import ayhs;
+import ayht;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qqlive.module.videoreport.inject.fragment.ReportV4Fragment;
 
 public class BaseOCRTextSearchFragment
-  extends Fragment
+  extends ReportV4Fragment
 {
   public View.OnTouchListener a;
-  public avyb a;
+  public ayht a;
   public QQAppInterface a;
   
   public BaseOCRTextSearchFragment()
   {
-    this.jdField_a_of_type_AndroidViewView$OnTouchListener = new avya(this);
+    this.jdField_a_of_type_AndroidViewView$OnTouchListener = new ayhs(this);
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = ((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime());
   }
   
@@ -25,14 +26,14 @@ public class BaseOCRTextSearchFragment
   {
     super.onAttach(paramActivity);
     if ((paramActivity instanceof OCRTextSearchActivity)) {
-      this.jdField_a_of_type_Avyb = ((OCRTextSearchActivity)paramActivity).jdField_a_of_type_Avyb;
+      this.jdField_a_of_type_Ayht = ((OCRTextSearchActivity)paramActivity).jdField_a_of_type_Ayht;
     }
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = ((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.ocr.ui.BaseOCRTextSearchFragment
  * JD-Core Version:    0.7.0.1
  */

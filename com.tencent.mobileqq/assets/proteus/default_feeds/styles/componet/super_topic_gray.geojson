@@ -111,7 +111,6 @@
                             "type":"match_parent"
                             },
                             "attributes":{
-                            "setFrameString":"-1",
                             "setText:":"-1",
                             "setTextColorString:":"#D9000000",
                             "setFontSizeString:":"16",

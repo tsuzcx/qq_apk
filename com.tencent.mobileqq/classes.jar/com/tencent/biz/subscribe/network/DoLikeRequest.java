@@ -4,7 +4,7 @@ import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
 import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StLike;
 import NS_CERTIFIED_ACCOUNT_WRITE.CertifiedAccountWrite.StDoLikeReq;
 import NS_CERTIFIED_ACCOUNT_WRITE.CertifiedAccountWrite.StDoLikeRsp;
-import com.tencent.biz.videostory.network.request.VSBaseRequest;
+import com.tencent.biz.richframework.network.request.VSBaseRequest;
 import com.tencent.mobileqq.pb.MessageMicro;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
@@ -50,7 +50,7 @@ public class DoLikeRequest
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.subscribe.network.DoLikeRequest
  * JD-Core Version:    0.7.0.1
  */

@@ -1,17 +1,24 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.flashchat.FlashChatTextEffectView;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.IPSiteModel.Comic;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class arwk
-  extends arwe
+class arwk
+  implements View.OnClickListener
 {
-  public arwk(FlashChatTextEffectView paramFlashChatTextEffectView) {}
+  arwk(arwh paramarwh, IPSiteModel.Comic paramComic, String paramString1, String paramString2) {}
   
-  public void b(boolean paramBoolean, Bundle paramBundle)
+  public void onClick(View paramView)
   {
-    super.b(paramBoolean, paramBundle);
-    if (paramBoolean) {
-      this.a.b();
-    }
+    Intent localIntent = new Intent(this.jdField_a_of_type_Arwh.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
+    localIntent.putExtra("hide_operation_bar", true);
+    VasWebviewUtil.openQQBrowserWithoutAD(this.jdField_a_of_type_Arwh.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqDataIPSiteModel$Comic.jumpUrl, -1L, localIntent, false, -1);
+    VasWebviewUtil.reportCommercialDrainage(this.jdField_a_of_type_Arwh.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "IP", "aio_comicclk", "", 0, 0, 0, this.jdField_a_of_type_JavaLangString, this.b, "", "", "", "", "", 0, 0, 0, 0);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

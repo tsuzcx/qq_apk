@@ -1,11 +1,22 @@
+import android.view.View;
+import com.tencent.mobileqq.data.MessageForDeviceFile;
+
 class agst
-  extends ameq
+  implements bkhw
 {
-  agst(agso paramagso) {}
+  agst(agss paramagss, MessageForDeviceFile paramMessageForDeviceFile, bkho parambkho) {}
   
-  protected void a(boolean paramBoolean, Object paramObject)
+  public void OnClick(View paramView, int paramInt)
   {
-    agso.a(this.a, paramBoolean, paramObject);
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Bkho.dismiss();
+      return;
+      this.jdField_a_of_type_Agss.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeviceFile);
+    }
   }
 }
 

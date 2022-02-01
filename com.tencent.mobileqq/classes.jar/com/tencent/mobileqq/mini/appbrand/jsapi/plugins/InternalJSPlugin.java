@@ -10,16 +10,17 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
 import android.util.Log;
-import bfir;
-import bfod;
-import bfoh;
-import bfoj;
-import bjdm;
+import biqa;
+import bivl;
+import bivp;
+import blru;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.mini.apkg.ApkgInfo;
 import com.tencent.mobileqq.mini.apkg.MiniAppConfig;
 import com.tencent.mobileqq.mini.appbrand.BaseAppBrandRuntime;
+import com.tencent.mobileqq.mini.appbrand.ui.MiniAppWebviewFragment;
+import com.tencent.mobileqq.mini.appbrand.utils.AppBrandUtil;
 import com.tencent.mobileqq.mini.entry.MiniAppUtils;
 import com.tencent.mobileqq.mini.report.InnerAppReportDc4239;
 import com.tencent.mobileqq.mini.reuse.MiniAppCmdUtil;
@@ -28,6 +29,7 @@ import com.tencent.mobileqq.mini.webview.JsRuntime;
 import com.tencent.mobileqq.pluginsdk.BasePluginActivity;
 import com.tencent.mobileqq.qipc.QIPCClientHelper;
 import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.open.downloadnew.DownloadListener;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Set;
 import org.json.JSONException;
@@ -43,7 +45,7 @@ public class InternalJSPlugin
   private static final Set<String> S_EVENT_MAP = new InternalJSPlugin.1();
   public static final String TAG = "InternalJSPlugin";
   public Set<String> eventMap;
-  private bfoj mDownloadListener = new InternalJSPlugin.8(this);
+  private DownloadListener mDownloadListener = new InternalJSPlugin.8(this);
   private String mDownloadNativeAppId;
   private String mDownloadPackageName;
   private String mDownloadUrl;
@@ -59,15 +61,15 @@ public class InternalJSPlugin
     this.mDownloadNativeAppId = paramString1;
     this.mDownloadPackageName = paramString2;
     Bundle localBundle = new Bundle();
-    localBundle.putString(bfoh.b, paramString1);
-    localBundle.putString(bfoh.j, paramString4);
-    localBundle.putString(bfoh.f, paramString2);
-    localBundle.putInt(bfoh.k, 2);
-    localBundle.putString(bfoh.i, "MiniApp");
-    localBundle.putString(bfoh.l, paramString3);
-    localBundle.putInt(bfoh.H, 1);
-    bfod.a(this.mDownloadListener);
-    bfod.a(paramActivity, localBundle, "biz_src_miniapp", null, 0);
+    localBundle.putString(bivp.b, paramString1);
+    localBundle.putString(bivp.j, paramString4);
+    localBundle.putString(bivp.f, paramString2);
+    localBundle.putInt(bivp.k, 2);
+    localBundle.putString(bivp.i, "MiniApp");
+    localBundle.putString(bivp.l, paramString3);
+    localBundle.putInt(bivp.H, 1);
+    bivl.a(this.mDownloadListener);
+    bivl.a(paramActivity, localBundle, "biz_src_miniapp", null, 0);
     QQToast.a(paramActivity, "开始下载", 1).a();
     InnerAppReportDc4239.innerAppReport(this.jsPluginEngine.appBrandRuntime.getApkgInfo().appConfig, null, "launchapp", "downloadapp", "qqdownload");
   }
@@ -132,13 +134,13 @@ public class InternalJSPlugin
     localBundle.putString("big_brother_source_key", "biz_src_miniapp");
     if ((paramContext instanceof BasePluginActivity))
     {
-      bfir.b(((BasePluginActivity)paramContext).getOutActivity(), localBundle);
+      biqa.b(((BasePluginActivity)paramContext).getOutActivity(), localBundle);
       InnerAppReportDc4239.innerAppReport(this.jsPluginEngine.appBrandRuntime.getApkgInfo().appConfig, null, "launchapp", "downloadapp", "yybdownload");
       return;
     }
     if ((paramContext instanceof Activity))
     {
-      bfir.b((Activity)paramContext, localBundle);
+      biqa.b((Activity)paramContext, localBundle);
       InnerAppReportDc4239.innerAppReport(this.jsPluginEngine.appBrandRuntime.getApkgInfo().appConfig, null, "launchapp", "downloadapp", "yybdownload");
       return;
     }
@@ -181,35 +183,43 @@ public class InternalJSPlugin
         }
         paramopenUrlCallback.openResult(false, "openUrl error");
         continue;
-        if (!paramJSONObject.has("target")) {
-          break label349;
+        if (!AppBrandUtil.isOpenUrlFilter((String)localObject)) {
+          break label178;
         }
       }
       finally {}
       label153:
-      int i = paramJSONObject.optInt("target");
-      if ((i < 0) || (i > 1))
+      if (paramopenUrlCallback != null)
       {
-        if (paramopenUrlCallback != null) {
-          paramopenUrlCallback.openResult(false, "target error");
-        }
-      }
-      else
-      {
-        if (i == 1)
+        paramopenUrlCallback.openResult(false, "url is not support.");
+        continue;
+        label178:
+        int i;
+        if (paramJSONObject.has("target"))
         {
-          localObject = new Intent("android.intent.action.VIEW", Uri.parse((String)localObject));
-          ((Intent)localObject).putExtra("big_brother_source_key", "biz_src_miniapp");
-          if (((Intent)localObject).resolveActivity(paramBaseJsPluginEngine.getActivityContext().getPackageManager()) != null)
+          i = paramJSONObject.optInt("target");
+          if ((i < 0) || (i > 1))
           {
-            QLog.d("InternalJSPlugin", 2, "openUrl by system webview.");
-            paramBaseJsPluginEngine.getActivityContext().startActivity((Intent)localObject);
+            if (paramopenUrlCallback == null) {
+              continue;
+            }
+            paramopenUrlCallback.openResult(false, "target error");
+            continue;
+          }
+          if (i == 1)
+          {
+            localObject = new Intent("android.intent.action.VIEW", Uri.parse((String)localObject));
+            ((Intent)localObject).putExtra("big_brother_source_key", "biz_src_miniapp");
+            if (((Intent)localObject).resolveActivity(paramBaseJsPluginEngine.getActivityContext().getPackageManager()) != null)
+            {
+              QLog.d("InternalJSPlugin", 2, "openUrl by system webview.");
+              paramBaseJsPluginEngine.getActivityContext().startActivity((Intent)localObject);
+            }
           }
         }
-        label262:
-        label296:
-        label347:
-        label349:
+        label287:
+        label320:
+        label371:
         Bundle localBundle;
         switch (paramJSONObject.optInt("animation"))
         {
@@ -219,15 +229,15 @@ public class InternalJSPlugin
           for (;;)
           {
             if (paramopenUrlCallback == null) {
-              break label347;
+              break label371;
             }
             paramopenUrlCallback.openResult(true, null);
             break;
             QLog.d("InternalJSPlugin", 2, "openUrl by system webview error.");
-            break label262;
+            break label287;
             paramBaseJsPluginEngine.getActivityContext().overridePendingTransition(0, 0);
             continue;
-            paramBaseJsPluginEngine.getActivityContext().overridePendingTransition(2130772293, 0);
+            paramBaseJsPluginEngine.getActivityContext().overridePendingTransition(2130772302, 0);
           }
           continue;
           localBundle = new Bundle();
@@ -235,7 +245,7 @@ public class InternalJSPlugin
           {
             i = paramJSONObject.optInt("style");
             if ((i >= 0) && (i <= 2)) {
-              break label803;
+              break label851;
             }
             QLog.e("InternalJSPlugin", 2, "style error, return.");
             if (paramopenUrlCallback == null) {
@@ -250,10 +260,12 @@ public class InternalJSPlugin
         default: 
           for (;;)
           {
-            label411:
+            label435:
             localBundle.putBoolean("hide_title_left_arrow", paramJSONObject.optBoolean("hideLeftArrow", false));
             Intent localIntent = new Intent(paramBaseJsPluginEngine.getActivityContext(), QQBrowserActivity.class);
             localIntent.putExtra("articalChannelId", 0);
+            localIntent.putExtra("fragmentClass", MiniAppWebviewFragment.class);
+            localIntent.putStringArrayListExtra("key_url_black_list", AppBrandUtil.getConfigFilter());
             if ((paramBaseJsPluginEngine == null) || (paramBaseJsPluginEngine.appBrandRuntime == null) || (paramBaseJsPluginEngine.appBrandRuntime.getApkgInfo() == null) || (paramBaseJsPluginEngine.appBrandRuntime.getApkgInfo().appConfig == null) || (!paramBaseJsPluginEngine.appBrandRuntime.getApkgInfo().appConfig.isInternalApp())) {
               localIntent.setFlags(402653184);
             }
@@ -271,42 +283,42 @@ public class InternalJSPlugin
               break;
               localBundle.putBoolean("hide_more_button", false);
               localBundle.putBoolean("hide_operation_bar", true);
-              break label411;
+              break label435;
               localBundle.putBoolean("hide_more_button", true);
               localBundle.putBoolean("hide_operation_bar", true);
-              break label411;
+              break label435;
               localBundle.putBoolean("hide_more_button", false);
               localBundle.putBoolean("hide_operation_bar", false);
               localBundle.putString("webStyle", "");
-              break label411;
+              break label435;
               localBundle.putBoolean("hide_more_button", true);
               localBundle.putBoolean("hide_operation_bar", false);
               localBundle.putString("webStyle", "");
-              break label411;
+              break label435;
               localBundle.putBoolean("hide_left_button", true);
               localBundle.putBoolean("show_right_close_button", true);
-              break label411;
+              break label435;
               localBundle.putBoolean("isTransparentTitleAndClickable", true);
               continue;
             }
             paramBaseJsPluginEngine.getActivityContext().startActivity(localIntent);
             if (paramopenUrlCallback == null) {
-              break label846;
+              break label894;
             }
             paramopenUrlCallback.openResult(true, null);
-            break label846;
+            break label894;
             paramBaseJsPluginEngine.getActivityContext().overridePendingTransition(0, 0);
             break;
-            paramBaseJsPluginEngine.getActivityContext().overridePendingTransition(2130772293, 0);
+            paramBaseJsPluginEngine.getActivityContext().overridePendingTransition(2130772302, 0);
             break;
-            break label296;
-            label803:
+            break label320;
+            label851:
             switch (i)
             {
             }
-            break label411;
+            break label435;
           }
-          label846:
+          label894:
           switch (i)
           {
           }
@@ -413,7 +425,7 @@ public class InternalJSPlugin
       {
         try
         {
-          ((JSONObject)localObject1).put("qua", bjdm.a());
+          ((JSONObject)localObject1).put("qua", blru.a());
           this.jsPluginEngine.callbackJsEventOK(paramJsRuntime, paramString1, (JSONObject)localObject1, paramInt);
           return super.handleNativeRequest(paramString1, paramString2, paramJsRuntime, paramInt);
         }
@@ -472,7 +484,7 @@ public class InternalJSPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.appbrand.jsapi.plugins.InternalJSPlugin
  * JD-Core Version:    0.7.0.1
  */

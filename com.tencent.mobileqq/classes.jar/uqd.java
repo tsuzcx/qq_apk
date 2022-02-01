@@ -1,47 +1,136 @@
-import android.annotation.TargetApi;
-import com.tencent.biz.qqstory.base.ErrorMessage;
+import UserGrowth.stCollection;
+import UserGrowth.stNewIconStyle;
+import UserGrowth.stSchema;
+import UserGrowth.stSimpleMetaFeed;
+import UserGrowth.stSimpleMetaPerson;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.weishi_new.download.WSDownloadParams;
+import com.tencent.biz.pubaccount.weishi_new.verticalvideo.WSVerticalPageFragment;
+import com.tencent.common.app.BaseApplicationImpl;
 import java.util.ArrayList;
 import java.util.List;
 
-@TargetApi(14)
 public class uqd
 {
-  public volatile int a;
-  public long a;
-  public ErrorMessage a;
-  public List<upy> a;
-  public int b;
-  public int c;
-  
-  public uqd()
+  private static stSchema a(stSimpleMetaFeed paramstSimpleMetaFeed)
   {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    String str3 = paramstSimpleMetaFeed.new_icon.h5_url;
+    String str2 = paramstSimpleMetaFeed.new_icon.schema_url;
+    String str1 = str2;
+    if (TextUtils.isEmpty(str3))
+    {
+      str1 = str2;
+      if (!upg.a(str2)) {
+        str1 = upg.a(paramstSimpleMetaFeed);
+      }
+    }
+    paramstSimpleMetaFeed = new stSchema();
+    paramstSimpleMetaFeed.schema = str1;
+    paramstSimpleMetaFeed.H5Url = str3;
+    return paramstSimpleMetaFeed;
   }
   
-  public boolean a()
+  private static WSDownloadParams a(WSVerticalPageFragment paramWSVerticalPageFragment, int paramInt, String paramString)
   {
-    return (this.jdField_a_of_type_Int == 6) || (this.jdField_a_of_type_Int == 3);
+    WSDownloadParams localWSDownloadParams = new WSDownloadParams();
+    localWSDownloadParams.mScene = urc.a(paramWSVerticalPageFragment.a());
+    localWSDownloadParams.mLinkStrategyType = ugb.a().a();
+    localWSDownloadParams.mEventId = paramInt;
+    localWSDownloadParams.mTestId = ups.a(localWSDownloadParams.mScene);
+    localWSDownloadParams.mScheme = paramString;
+    return localWSDownloadParams;
   }
   
-  public boolean b()
+  public static void a(WSVerticalPageFragment paramWSVerticalPageFragment, stSimpleMetaFeed paramstSimpleMetaFeed)
   {
-    return this.jdField_a_of_type_Int == 5;
+    if ((paramWSVerticalPageFragment == null) || (paramstSimpleMetaFeed == null) || (paramstSimpleMetaFeed.collection == null)) {
+      return;
+    }
+    String str1 = paramWSVerticalPageFragment.a();
+    String str2 = paramWSVerticalPageFragment.b();
+    if ((paramstSimpleMetaFeed.collection.click_action == 2) && (a(paramstSimpleMetaFeed.collection.schema)))
+    {
+      new uip(paramWSVerticalPageFragment.getActivity()).a(paramstSimpleMetaFeed.collection.schema).a(a(paramWSVerticalPageFragment, 16, paramstSimpleMetaFeed.collection.schema.schema)).a(new uqe(str1, str2, paramstSimpleMetaFeed)).a();
+      return;
+    }
+    ArrayList localArrayList = new ArrayList();
+    localArrayList.add(paramstSimpleMetaFeed);
+    WSVerticalPageFragment.a(paramWSVerticalPageFragment.getActivity(), "vertical_layer_collection", str2, localArrayList, 0);
+    c(str1, str2, paramstSimpleMetaFeed, 1000001);
   }
   
-  public String toString()
+  public static void a(String paramString, WSVerticalPageFragment paramWSVerticalPageFragment, stSimpleMetaFeed paramstSimpleMetaFeed)
   {
-    StringBuffer localStringBuffer = new StringBuffer("BaseTaskInfo{");
-    localStringBuffer.append("status=").append(this.jdField_a_of_type_Int);
-    localStringBuffer.append(", retryTimes=").append(this.b);
-    localStringBuffer.append(", result=").append(this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage);
-    localStringBuffer.append('}');
-    return localStringBuffer.toString();
+    
+    if ((paramWSVerticalPageFragment == null) || (paramstSimpleMetaFeed == null) || (paramstSimpleMetaFeed.poster == null) || (paramstSimpleMetaFeed.poster.avatarSchema == null)) {
+      return;
+    }
+    String str1 = paramWSVerticalPageFragment.a();
+    String str2 = paramWSVerticalPageFragment.b();
+    stSimpleMetaPerson localstSimpleMetaPerson = paramstSimpleMetaFeed.poster;
+    new uip(paramWSVerticalPageFragment.getActivity()).a(localstSimpleMetaPerson.avatarSchema).a(a(paramWSVerticalPageFragment, 1, localstSimpleMetaPerson.avatarSchema.schema)).a(new uqg(str1, str2, paramString, paramstSimpleMetaFeed)).a();
+  }
+  
+  private static boolean a(stSchema paramstSchema)
+  {
+    if (paramstSchema == null) {}
+    while ((TextUtils.isEmpty(paramstSchema.miniAppSchema)) && (TextUtils.isEmpty(paramstSchema.schema)) && (TextUtils.isEmpty(paramstSchema.H5Url))) {
+      return false;
+    }
+    return true;
+  }
+  
+  public static void b(WSVerticalPageFragment paramWSVerticalPageFragment, stSimpleMetaFeed paramstSimpleMetaFeed)
+  {
+    if ((paramWSVerticalPageFragment == null) || (paramstSimpleMetaFeed == null)) {
+      return;
+    }
+    if (upg.a(paramstSimpleMetaFeed.feed_material_jump_url)) {}
+    for (paramstSimpleMetaFeed = paramstSimpleMetaFeed.feed_material_jump_url; zmi.a(BaseApplicationImpl.getContext()); paramstSimpleMetaFeed = upg.a(paramstSimpleMetaFeed))
+    {
+      upg.a(paramWSVerticalPageFragment.getActivity(), "biz_src_jc_gzh_weishi", paramstSimpleMetaFeed);
+      return;
+    }
+    ugx.a(paramWSVerticalPageFragment.getActivity(), a(paramWSVerticalPageFragment, 3, paramstSimpleMetaFeed), true);
+  }
+  
+  private static void b(String paramString, int paramInt1, int paramInt2)
+  {
+    unh.a(paramString, paramInt1, paramInt2);
+  }
+  
+  private static void b(String paramString1, String paramString2, String paramString3, stSimpleMetaFeed paramstSimpleMetaFeed, int paramInt)
+  {
+    uut.a(paramString1, paramString2, paramString3, paramInt, paramstSimpleMetaFeed);
+  }
+  
+  public static void c(WSVerticalPageFragment paramWSVerticalPageFragment, stSimpleMetaFeed paramstSimpleMetaFeed)
+  {
+    if ((paramWSVerticalPageFragment == null) || (paramstSimpleMetaFeed == null) || (paramstSimpleMetaFeed.new_icon == null)) {
+      return;
+    }
+    String str1 = paramWSVerticalPageFragment.a();
+    String str2 = paramWSVerticalPageFragment.b();
+    Object localObject = paramstSimpleMetaFeed.new_icon;
+    int i = ((stNewIconStyle)localObject).tag_type;
+    int j = ((stNewIconStyle)localObject).id;
+    localObject = a(paramstSimpleMetaFeed);
+    new uip(paramWSVerticalPageFragment.getActivity()).a((stSchema)localObject).a(true).a(a(paramWSVerticalPageFragment, 4, ((stSchema)localObject).schema)).a(new uqf(str1, str2, paramstSimpleMetaFeed, i, j)).a();
+  }
+  
+  private static void c(String paramString1, String paramString2, stSimpleMetaFeed paramstSimpleMetaFeed, int paramInt)
+  {
+    uut.a(paramString1, paramString2, paramstSimpleMetaFeed, paramInt);
+  }
+  
+  private static void d(String paramString1, String paramString2, stSimpleMetaFeed paramstSimpleMetaFeed, int paramInt)
+  {
+    uut.d(paramString1, paramString2, paramInt, paramstSimpleMetaFeed);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     uqd
  * JD-Core Version:    0.7.0.1
  */

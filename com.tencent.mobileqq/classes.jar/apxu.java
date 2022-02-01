@@ -1,30 +1,10 @@
-import android.view.View;
-import java.util.ArrayList;
-
-public class apxu
+public abstract interface apxu
 {
-  private ArrayList<View> a = new ArrayList();
+  public abstract void aG();
   
-  public View a()
-  {
-    if (this.a.size() > 0) {
-      return (View)this.a.remove(0);
-    }
-    return null;
-  }
+  public abstract void aH();
   
-  public void a()
-  {
-    this.a.clear();
-  }
-  
-  public void a(View paramView)
-  {
-    if (this.a.size() >= 3) {
-      return;
-    }
-    this.a.add(paramView);
-  }
+  public abstract boolean s();
 }
 
 

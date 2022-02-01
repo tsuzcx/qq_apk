@@ -1,22 +1,36 @@
-import com.tencent.biz.qqstory.storyHome.detail.model.DetailFeedAllInfoPullSegment.Observer.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tribe.async.parallel.SimpleParallelObserver;
-import mqq.os.MqqHandler;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.SimpleJob;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
-public class wie
-  extends SimpleParallelObserver
+class wie
+  extends SimpleJob<Object>
 {
-  wie(wib paramwib) {}
-  
-  public void onAllFunctionComplete(boolean paramBoolean)
+  wie(why paramwhy, String paramString)
   {
-    super.onAllFunctionComplete(paramBoolean);
-    ThreadManager.getUIHandler().post(new DetailFeedAllInfoPullSegment.Observer.1(this, paramBoolean));
+    super(paramString);
+  }
+  
+  protected Object a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
+  {
+    paramVarArgs = ((wpj)wpm.a(5)).a();
+    paramJobContext = new ArrayList(paramVarArgs.size());
+    paramVarArgs = paramVarArgs.iterator();
+    while (paramVarArgs.hasNext()) {
+      paramJobContext.add(new wjr((StoryVideoItem)paramVarArgs.next()));
+    }
+    this.a.a(paramJobContext);
+    yqp.c("Q.qqstory.publish.upload:StoryVideoUploadManager", "had load local task size " + paramJobContext.size());
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     wie
  * JD-Core Version:    0.7.0.1
  */

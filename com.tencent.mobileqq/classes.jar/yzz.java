@@ -1,22 +1,17 @@
-public class yzz
-  extends zaa
+import android.graphics.Bitmap;
+import android.view.animation.Animation;
+
+public abstract interface yzz
 {
-  private final String a = yzz.class.getName();
+  public abstract void a(Animation paramAnimation);
   
-  public yzz(String paramString1, String paramString2)
-  {
-    super(paramString1, paramString2);
-  }
+  public abstract Bitmap b();
   
-  protected String a()
-  {
-    wxe.b(this.a, "Get cache tag[Disk]: cache");
-    return "cache";
-  }
+  public abstract void b(Animation paramAnimation);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     yzz
  * JD-Core Version:    0.7.0.1
  */

@@ -1,24 +1,24 @@
 package com.tencent.biz.pubaccount.readinjoy;
 
 import java.io.File;
-import nwc;
-import nwf;
-import nwg;
-import qip;
+import ofx;
+import oga;
+import ogb;
+import rcs;
 
 public class KanDianViewController$PullRefreshCompleteListener$2
   implements Runnable
 {
-  public KanDianViewController$PullRefreshCompleteListener$2(nwf paramnwf) {}
+  public KanDianViewController$PullRefreshCompleteListener$2(oga paramoga) {}
   
   public void run()
   {
-    String str = qip.f();
+    String str = rcs.f();
     if ((str != null) && (new File(str).exists()))
     {
-      nwc.a(this.a.a, str);
-      nwc.a(this.a.a).removeMessages(3);
-      nwc.a(this.a.a).sendEmptyMessage(2);
+      ofx.a(this.a.a, str);
+      ofx.a(this.a.a).removeMessages(3);
+      ofx.a(this.a.a).sendEmptyMessage(2);
     }
   }
 }

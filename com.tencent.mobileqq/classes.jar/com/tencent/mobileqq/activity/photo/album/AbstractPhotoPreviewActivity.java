@@ -1,14 +1,13 @@
 package com.tencent.mobileqq.activity.photo.album;
 
-import aiqf;
-import aiqy;
+import Override;
 import android.annotation.TargetApi;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.content.res.Resources;
-import android.graphics.Color;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.view.MotionEvent;
 import android.view.SurfaceView;
 import android.view.View;
 import android.widget.Button;
@@ -19,20 +18,14 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import apkp;
-import bnsf;
-import bnsg;
-import com.tencent.image.QQLiveImage;
-import com.tencent.image.URLDrawable;
+import bqit;
+import bqiu;
 import com.tencent.mobileqq.activity.aio.photo.PeakActivity;
 import com.tencent.mobileqq.activity.photo.DragGallery;
 import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
+import com.tencent.mobileqq.activity.photo.album.preview.BasePreviewAdapter;
 import com.tencent.mobileqq.widget.NumberCheckBox;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.net.MalformedURLException;
-import java.net.URI;
-import java.net.URL;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -42,7 +35,7 @@ public abstract class AbstractPhotoPreviewActivity
 {
   public static final String FROM_WHERE_KEY = "FROM_WHERE";
   public static final String TAG = "PhotoPreviewActivity";
-  public AbstractPhotoPreviewActivity.ImageAdapter adapter = new AbstractPhotoPreviewActivity.ImageAdapter(this);
+  public BasePreviewAdapter adapter;
   public TextView backToPhotoListBtn;
   public RelativeLayout bottomBar;
   public RelativeLayout bottom_blackLH;
@@ -53,9 +46,8 @@ public abstract class AbstractPhotoPreviewActivity
   ImageView mCenterVideoPlayBtn;
   public boolean mEnableLiuHai = false;
   public PhotoPreviewBaseData mPhotoPreviewData;
-  PhotoPreviewLogic mPhotoPreviewLogic;
+  PhotoPreviewLogic<? extends AbstractPhotoPreviewActivity, ? extends OtherCommonData> mPhotoPreviewLogic;
   public SurfaceView mSurfaceView;
-  public aiqf mVideoPlayController;
   public Button magicStickBtn;
   float originalTextSize = 13.0F;
   public CheckBox qualityCheckBox;
@@ -71,32 +63,20 @@ public abstract class AbstractPhotoPreviewActivity
   public View topBar;
   public LinearLayout top_blackLH;
   
-  public abstract PhotoPreviewLogic generateLogic();
+  @Override
+  public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
+  {
+    boolean bool = super.dispatchTouchEvent(paramMotionEvent);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool);
+    return bool;
+  }
+  
+  public PhotoPreviewLogic generateLogic()
+  {
+    return new PhotoPreviewLogicBase(this);
+  }
   
   public abstract Class getBackActivity();
-  
-  public Drawable getCoverDrawable(String paramString, int paramInt1, int paramInt2, LocalMediaInfo paramLocalMediaInfo)
-  {
-    apkp localapkp = new apkp(Color.rgb(214, 214, 214), paramInt1, paramInt2);
-    if (!TextUtils.isEmpty(paramString)) {
-      try
-      {
-        URLDrawable localURLDrawable = URLDrawable.getDrawable(paramString, paramInt1, paramInt2, localapkp, localapkp);
-        localURLDrawable.setTag(paramLocalMediaInfo);
-        if (localURLDrawable.getStatus() != 1) {
-          localURLDrawable.downloadImediatly();
-        }
-        return localURLDrawable;
-      }
-      catch (Exception paramLocalMediaInfo)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.e("PhotoPreviewActivity", 2, "getCoverDrawable():  getDrawable Exception, coverUrl=" + paramString, paramLocalMediaInfo);
-        }
-      }
-    }
-    return localapkp;
-  }
   
   public int getCurrentSelectedPostion()
   {
@@ -105,25 +85,7 @@ public abstract class AbstractPhotoPreviewActivity
   
   public String getExceedMaxSelectNumStr()
   {
-    return getResources().getString(2131695260, new Object[] { Integer.valueOf(this.mPhotoPreviewLogic.mPhotoCommonData.maxSelectNum) });
-  }
-  
-  public URL getFileUrl(File paramFile)
-  {
-    if (paramFile == null) {
-      return null;
-    }
-    String str = paramFile.getPath();
-    if ((!TextUtils.isEmpty(str)) && (getMediaType(str) == 1)) {
-      return QAlbumUtil.generateAlbumVideoThumbURL(str, "VIDEO");
-    }
-    try
-    {
-      paramFile = paramFile.toURI().toURL();
-      return paramFile;
-    }
-    catch (MalformedURLException paramFile) {}
-    return null;
+    return getResources().getString(2131694275, new Object[] { Integer.valueOf(this.mPhotoPreviewLogic.mPhotoCommonData.maxSelectNum) });
   }
   
   public LocalMediaInfo getMediaInfo(String paramString)
@@ -139,8 +101,8 @@ public abstract class AbstractPhotoPreviewActivity
         Object localObject;
         if ((localLocalMediaInfo != null) && ((localLocalMediaInfo.mediaWidth == 0) || (localLocalMediaInfo.mediaHeight == 0)))
         {
-          localObject = new bnsg();
-          bnsf.a(paramString, (bnsg)localObject);
+          localObject = new bqiu();
+          bqit.a(paramString, (bqiu)localObject);
           localLocalMediaInfo.mediaWidth = localObject.a[0];
           localLocalMediaInfo.mediaHeight = localObject.a[1];
           localLocalMediaInfo.rotation = localObject.a[2];
@@ -205,6 +167,16 @@ public abstract class AbstractPhotoPreviewActivity
     this.topBar.setVisibility(4);
   }
   
+  protected void initGallery()
+  {
+    this.gallery.setSupportMatchParent(true);
+    this.gallery.setAdapter(this.adapter);
+    this.gallery.setOnNoBlankListener(this.adapter);
+    this.gallery.setOnItemSelectedListener(this.adapter);
+    this.gallery.setSpacing(getResources().getDimensionPixelSize(2131297079));
+    this.gallery.setOnItemClickListener(this.adapter);
+  }
+  
   public boolean isWrapContent()
   {
     return false;
@@ -221,7 +193,7 @@ public abstract class AbstractPhotoPreviewActivity
   public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
     int i = paramCompoundButton.getId();
-    if (i == 2131373968) {
+    if (i == 2131374690) {
       this.mPhotoPreviewLogic.onQualityBtnClick(paramCompoundButton, paramBoolean);
     }
     for (;;)
@@ -231,34 +203,42 @@ public abstract class AbstractPhotoPreviewActivity
         this.qualityTv.setTextColor(-1);
         this.flashTv.setTextColor(-1);
       }
+      EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
       return;
-      if (i == 2131366474) {
+      if (i == 2131366739) {
         this.mPhotoPreviewLogic.mOnCheckedChangedCallback.flashPicCheckedChanged(paramBoolean);
       }
     }
   }
   
+  @Override
+  public void onConfigurationChanged(Configuration paramConfiguration)
+  {
+    super.onConfigurationChanged(paramConfiguration);
+    EventCollector.getInstance().onActivityConfigurationChanged(this, paramConfiguration);
+  }
+  
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    super.setContentView(2131559436);
-    this.mSurfaceView = ((SurfaceView)findViewById(2131367029));
+    super.setContentView(2131559566);
+    this.mSurfaceView = ((SurfaceView)findViewById(2131367297));
     this.mSurfaceView.setVisibility(8);
-    this.rootLayout = ((RelativeLayout)findViewById(2131376035));
-    this.topBar = findViewById(2131378144);
-    this.bottomBar = ((RelativeLayout)findViewById(2131363377));
-    this.magicStickBtn = ((Button)findViewById(2131369993));
-    this.flashPicCb = ((CheckBox)findViewById(2131366474));
-    this.flashTv = ((TextView)findViewById(2131366475));
-    this.qualityCheckBox = ((CheckBox)findViewById(2131373968));
-    this.qualityTv = ((TextView)findViewById(2131373974));
-    this.cancelTv = ((TextView)findViewById(2131371892));
-    this.sendBtn = ((Button)findViewById(2131376395));
-    this.selectedBox = ((NumberCheckBox)findViewById(2131376372));
-    this.selectLayout = findViewById(2131376352);
-    this.titleView = ((TextView)findViewById(2131377938));
-    this.backToPhotoListBtn = ((TextView)findViewById(2131363031));
-    this.gallery = ((DragGallery)findViewById(2131367020));
+    this.rootLayout = ((RelativeLayout)findViewById(2131376789));
+    this.topBar = findViewById(2131378990);
+    this.bottomBar = ((RelativeLayout)findViewById(2131363570));
+    this.magicStickBtn = ((Button)findViewById(2131370435));
+    this.flashPicCb = ((CheckBox)findViewById(2131366739));
+    this.flashTv = ((TextView)findViewById(2131366740));
+    this.qualityCheckBox = ((CheckBox)findViewById(2131374690));
+    this.qualityTv = ((TextView)findViewById(2131374696));
+    this.cancelTv = ((TextView)findViewById(2131372464));
+    this.sendBtn = ((Button)findViewById(2131377184));
+    this.selectedBox = ((NumberCheckBox)findViewById(2131377161));
+    this.selectLayout = findViewById(2131377140);
+    this.titleView = ((TextView)findViewById(2131378776));
+    this.backToPhotoListBtn = ((TextView)findViewById(2131363216));
+    this.gallery = ((DragGallery)findViewById(2131367288));
     this.flashPicCb.setVisibility(8);
     this.flashTv.setVisibility(8);
     this.qualityCheckBox.setVisibility(8);
@@ -267,13 +247,15 @@ public abstract class AbstractPhotoPreviewActivity
     this.mPhotoPreviewLogic = generateLogic();
     this.mPhotoPreviewData = this.mPhotoPreviewLogic.mPhotoPreviewData;
     this.mPhotoPreviewLogic.initData(getIntent());
+    this.adapter = this.mPhotoPreviewLogic.getPreviewAdapter();
+    initGallery();
     this.mPhotoPreviewLogic.initUI();
   }
   
   public void onDestroy()
   {
-    QQLiveImage.onBackground(this);
     super.onDestroy();
+    this.adapter.onDestroy();
     this.mPhotoPreviewLogic.doOnDestroy();
   }
   
@@ -289,15 +271,14 @@ public abstract class AbstractPhotoPreviewActivity
   public void onPause()
   {
     super.onPause();
-    if (this.mVideoPlayController != null) {
-      this.mVideoPlayController.i();
-    }
+    this.adapter.onPause();
   }
   
   @TargetApi(9)
   public void onResume()
   {
     super.onResume();
+    this.adapter.onResume();
     this.mPhotoPreviewLogic.doOnResume();
   }
   
@@ -330,7 +311,7 @@ public abstract class AbstractPhotoPreviewActivity
     }
   }
   
-  public void showMenuBar()
+  void showMenuBar()
   {
     this.mPhotoPreviewData.showBar = true;
     this.topBar.setVisibility(0);
@@ -338,7 +319,7 @@ public abstract class AbstractPhotoPreviewActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.photo.album.AbstractPhotoPreviewActivity
  * JD-Core Version:    0.7.0.1
  */

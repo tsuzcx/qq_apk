@@ -1,17 +1,51 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.ChatSettingForTroop;
-import com.tencent.mobileqq.troopinfo.TroopInfoData;
+import com.tencent.ad.tangram.statistics.AdReporterForAnalysis;
+import com.tencent.gdtad.qqproxy.GdtLocationUtil;
+import org.json.JSONObject;
 
-public class acqn
-  implements View.OnClickListener
+class acqn
+  implements acqj
 {
-  public acqn(ChatSettingForTroop paramChatSettingForTroop) {}
-  
-  public void onClick(View paramView)
+  public boolean a(acpp paramacpp, String paramString, String... paramVarArgs)
   {
-    ChatSettingForTroop.e(this.a);
-    bdes.a("Grp_set_new", "grpData_admin", "clk_quitgrp", 0, 0, new String[] { this.a.a.troopUin, bdes.a(this.a.a) });
+    Object localObject = null;
+    if (paramacpp != null) {}
+    for (;;)
+    {
+      try
+      {
+        paramVarArgs = paramacpp.a();
+        paramVarArgs = GdtLocationUtil.INSTANCE.getLocation(paramVarArgs);
+        localJSONObject = new JSONObject();
+        if (paramVarArgs == null) {
+          continue;
+        }
+        localJSONObject.put("lat", paramVarArgs[0]);
+        localJSONObject.put("lon", paramVarArgs[1]);
+        paramacpp.callJs(paramString, new String[] { localJSONObject.toString() });
+      }
+      catch (Exception paramString)
+      {
+        JSONObject localJSONObject;
+        paramString.printStackTrace();
+        continue;
+        paramString = null;
+        continue;
+      }
+      if (paramacpp == null) {
+        continue;
+      }
+      paramString = paramacpp.a();
+      paramVarArgs = localObject;
+      if (paramacpp != null) {
+        paramVarArgs = paramacpp.a();
+      }
+      AdReporterForAnalysis.reportForJSBridgeInvoked(paramString, false, "getLocation", paramVarArgs);
+      return true;
+      paramVarArgs = null;
+      continue;
+      localJSONObject.put("lat", JSONObject.NULL);
+      localJSONObject.put("lon", JSONObject.NULL);
+    }
   }
 }
 

@@ -1,15 +1,6 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnShowListener;
-
-class bkcg
-  implements DialogInterface.OnShowListener
+public abstract interface bkcg
 {
-  bkcg(bkce parambkce, bety parambety) {}
-  
-  public void onShow(DialogInterface paramDialogInterface)
-  {
-    this.jdField_a_of_type_Bety.hide();
-  }
+  public abstract void a(int paramInt1, int paramInt2);
 }
 
 

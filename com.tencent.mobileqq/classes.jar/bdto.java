@@ -1,16 +1,21 @@
-import android.support.annotation.Nullable;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.vas.VasQuickUpdateEngine.TagItemInfo;
+import com.tencent.mobileqq.highway.api.ITransCallbackForReport;
 
-public abstract interface bdto
+class bdto
+  implements ITransCallbackForReport
 {
-  public abstract boolean canUpdate(@Nullable QQAppInterface paramQQAppInterface, long paramLong, String paramString1, String paramString2);
+  bdto(bdtl parambdtl) {}
   
-  public abstract boolean deleteFiles(@Nullable QQAppInterface paramQQAppInterface, long paramLong, String paramString);
-  
-  public abstract VasQuickUpdateEngine.TagItemInfo getItemInfo(@Nullable QQAppInterface paramQQAppInterface, long paramLong, String paramString);
-  
-  public abstract boolean isFileExists(@Nullable QQAppInterface paramQQAppInterface, long paramLong, String paramString);
+  public void onFailed(int paramInt, String paramString1, String paramString2)
+  {
+    bdtl localbdtl = this.a;
+    String str2 = this.a.c;
+    if (this.a.f == null) {}
+    for (String str1 = this.a.l;; str1 = this.a.f)
+    {
+      localbdtl.a("actRichMediaNetMonitor_pttUp", false, paramInt, paramString1, paramString2, str2, str1, null);
+      return;
+    }
+  }
 }
 
 

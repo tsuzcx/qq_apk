@@ -1,252 +1,161 @@
-import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForRichText;
-import com.tencent.mobileqq.data.MessageForShortVideo;
-import com.tencent.mobileqq.data.MessageRecord;
-import dov.com.tencent.mobileqq.shortvideo.BaseShortVideoOprerator;
-import tencent.im.msg.im_msg_body.RichText;
+import android.os.Bundle;
+import camera.MOBILE_QQ_MATERIAL_INTERFACE.GetBulkImageClassifyReq;
+import camera.MOBILE_QQ_MATERIAL_INTERFACE.GetBulkImageClassifyRsp;
+import camera.MOBILE_QQ_MATERIAL_INTERFACE.GetCameraConfigReq;
+import camera.MOBILE_QQ_MATERIAL_INTERFACE.GetCameraConfigRsp;
+import camera.MOBILE_QQ_MATERIAL_INTERFACE.GetFontDataReq;
+import camera.MOBILE_QQ_MATERIAL_INTERFACE.GetFontDataRsp;
+import camera.MOBILE_QQ_MATERIAL_INTERFACE.GetImgValidStatusReq;
+import camera.MOBILE_QQ_MATERIAL_INTERFACE.GetImgValidStatusRsp;
+import camera.MOBILE_QQ_MATERIAL_INTERFACE.GetOnlineUserNumReq;
+import camera.MOBILE_QQ_MATERIAL_INTERFACE.GetOnlineUserNumRsp;
+import camera.MOBILE_QQ_MATERIAL_INTERFACE.GetRecommandTextByEmotionReq;
+import camera.MOBILE_QQ_MATERIAL_INTERFACE.GetRecommandTextByEmotionRsp;
+import camera.MOBILE_QQ_MATERIAL_INTERFACE.GetTextValidStatusReq;
+import camera.MOBILE_QQ_MATERIAL_INTERFACE.GetTextValidStatusRsp;
+import com.qq.jce.wup.UniPacket;
+import com.tencent.mobileqq.app.PeakAppInterface;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
+import java.util.ArrayList;
 
 public class bnow
-  extends BaseShortVideoOprerator
+  extends bnos
 {
-  public bnow() {}
+  private static final String[] jdField_a_of_type_ArrayOfJavaLangString = { "CameraModuleSvc" };
+  private PeakAppInterface jdField_a_of_type_ComTencentMobileqqAppPeakAppInterface;
   
-  public bnow(QQAppInterface paramQQAppInterface)
+  public bnow(PeakAppInterface paramPeakAppInterface)
   {
-    super(paramQQAppInterface);
+    super(paramPeakAppInterface);
+    this.jdField_a_of_type_ComTencentMobileqqAppPeakAppInterface = paramPeakAppInterface;
   }
   
-  public MessageRecord a(bnpw parambnpw)
+  private boolean b(ToServiceMsg paramToServiceMsg, UniPacket paramUniPacket)
   {
-    int i = 1;
-    long l = System.currentTimeMillis();
-    MessageForShortVideo localMessageForShortVideo = azaf.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, parambnpw.jdField_c_of_type_JavaLangString, parambnpw.jdField_d_of_type_JavaLangString, parambnpw.jdField_b_of_type_Int);
-    localMessageForShortVideo.videoFileName = parambnpw.jdField_h_of_type_JavaLangString;
-    if (parambnpw.jdField_a_of_type_JavaLangString == null) {
-      parambnpw.jdField_a_of_type_JavaLangString = "";
-    }
-    localMessageForShortVideo.uuid = parambnpw.jdField_a_of_type_JavaLangString;
-    if (parambnpw.jdField_e_of_type_JavaLangString == null) {
-      parambnpw.jdField_e_of_type_JavaLangString = "";
-    }
-    localMessageForShortVideo.md5 = parambnpw.jdField_e_of_type_JavaLangString;
-    localMessageForShortVideo.mLocalMd5 = parambnpw.jdField_f_of_type_JavaLangString;
-    localMessageForShortVideo.videoFileName = parambnpw.k;
-    localMessageForShortVideo.videoFileFormat = parambnpw.l;
-    localMessageForShortVideo.videoFileSize = parambnpw.jdField_i_of_type_Int;
-    localMessageForShortVideo.videoFileTime = parambnpw.jdField_j_of_type_Int;
-    localMessageForShortVideo.thumbWidth = parambnpw.jdField_g_of_type_Int;
-    localMessageForShortVideo.thumbHeight = parambnpw.jdField_h_of_type_Int;
-    localMessageForShortVideo.videoFileStatus = 999;
-    localMessageForShortVideo.videoFileProgress = 0;
-    if (parambnpw.jdField_b_of_type_Int == 0)
-    {
-      localMessageForShortVideo.fileType = 6;
-      localMessageForShortVideo.thumbMD5 = parambnpw.jdField_g_of_type_JavaLangString;
-      if (parambnpw.jdField_j_of_type_JavaLangString == null) {
-        parambnpw.jdField_j_of_type_JavaLangString = "";
-      }
-      localMessageForShortVideo.fileSource = parambnpw.jdField_j_of_type_JavaLangString;
-      localMessageForShortVideo.lastModified = 0L;
-      localMessageForShortVideo.thumbFileSize = parambnpw.m;
-      localMessageForShortVideo.busiType = parambnpw.jdField_f_of_type_Int;
-      localMessageForShortVideo.fromChatType = parambnpw.jdField_c_of_type_Int;
-      localMessageForShortVideo.toChatType = parambnpw.jdField_d_of_type_Int;
-      localMessageForShortVideo.uiOperatorFlag = 2;
-      localMessageForShortVideo.supportProgressive = parambnpw.jdField_a_of_type_Boolean;
-      localMessageForShortVideo.fileWidth = parambnpw.n;
-      localMessageForShortVideo.fileHeight = parambnpw.o;
-      if (parambnpw.jdField_a_of_type_Bnpx == null) {
-        break label468;
-      }
-      label284:
-      if (i != 0)
-      {
-        localMessageForShortVideo.msgseq = parambnpw.jdField_a_of_type_Bnpx.jdField_a_of_type_Long;
-        localMessageForShortVideo.shmsgseq = parambnpw.jdField_a_of_type_Bnpx.b;
-        localMessageForShortVideo.msgUid = parambnpw.jdField_a_of_type_Bnpx.jdField_c_of_type_Long;
-      }
-      if (localMessageForShortVideo.busiType != 2) {
-        break label473;
-      }
-    }
-    label468:
-    label473:
-    for (localMessageForShortVideo.msg = azdf.b;; localMessageForShortVideo.msg = azdf.jdField_a_of_type_JavaLangString)
-    {
-      localMessageForShortVideo.serial();
-      parambnpw.jdField_a_of_type_Long = localMessageForShortVideo.uniseq;
-      awiw.a(this.b, this.jdField_a_of_type_JavaLangString, "packForwardMsg", "cost:" + (System.currentTimeMillis() - l));
-      awiw.a(this.b, this.jdField_a_of_type_JavaLangString, "packForwardMsg", "mr: " + localMessageForShortVideo.toString());
-      return localMessageForShortVideo;
-      if (parambnpw.jdField_b_of_type_Int == 3000)
-      {
-        localMessageForShortVideo.fileType = 17;
-        break;
-      }
-      if (parambnpw.jdField_b_of_type_Int != 1) {
-        break;
-      }
-      localMessageForShortVideo.fileType = 9;
-      break;
-      i = 0;
-      break label284;
-    }
+    GetFontDataReq localGetFontDataReq = new GetFontDataReq();
+    localGetFontDataReq.Content = paramToServiceMsg.extraData.getString("Content");
+    localGetFontDataReq.FontName = paramToServiceMsg.extraData.getString("FontName");
+    paramUniPacket.setServantName("CameraModuleSvc");
+    paramUniPacket.setFuncName("CameraModuleSvc.GetFontData");
+    paramUniPacket.put("CameraModuleSvc.GetFontData", localGetFontDataReq);
+    return true;
   }
   
-  public MessageRecord a(bnqe parambnqe)
+  private boolean c(ToServiceMsg paramToServiceMsg, UniPacket paramUniPacket)
   {
-    long l = System.currentTimeMillis();
-    MessageForShortVideo localMessageForShortVideo;
-    label234:
-    label252:
-    String str1;
-    label324:
-    int i;
-    if (parambnqe.jdField_d_of_type_Boolean)
-    {
-      localMessageForShortVideo = azaf.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, parambnqe.jdField_c_of_type_JavaLangString, parambnqe.jdField_d_of_type_JavaLangString, parambnqe.jdField_b_of_type_Int);
-      localMessageForShortVideo.subBusiType = 1;
-      localMessageForShortVideo.videoFileName = parambnqe.jdField_h_of_type_JavaLangString;
-      if (parambnqe.jdField_a_of_type_JavaLangString == null) {
-        parambnqe.jdField_a_of_type_JavaLangString = "";
-      }
-      localMessageForShortVideo.uuid = parambnqe.jdField_a_of_type_JavaLangString;
-      if (parambnqe.jdField_e_of_type_JavaLangString == null) {
-        parambnqe.jdField_e_of_type_JavaLangString = "";
-      }
-      localMessageForShortVideo.md5 = parambnqe.jdField_e_of_type_JavaLangString;
-      localMessageForShortVideo.videoFileFormat = 2;
-      localMessageForShortVideo.videoFileSize = parambnqe.jdField_e_of_type_Int;
-      localMessageForShortVideo.videoFileTime = parambnqe.jdField_f_of_type_Int;
-      localMessageForShortVideo.thumbWidth = parambnqe.jdField_c_of_type_Int;
-      localMessageForShortVideo.thumbHeight = parambnqe.jdField_d_of_type_Int;
-      localMessageForShortVideo.mThumbFilePath = parambnqe.jdField_i_of_type_JavaLangString;
-      localMessageForShortVideo.mVideoFileSourceDir = parambnqe.jdField_j_of_type_JavaLangString;
-      localMessageForShortVideo.videoFileStatus = 999;
-      localMessageForShortVideo.videoFileProgress = 0;
-      localMessageForShortVideo.extraflag = 32772;
-      localMessageForShortVideo.thumbMD5 = parambnqe.jdField_g_of_type_JavaLangString;
-      if (parambnqe.k == null) {
-        parambnqe.k = "";
-      }
-      localMessageForShortVideo.fileSource = parambnqe.k;
-      localMessageForShortVideo.lastModified = 0L;
-      localMessageForShortVideo.mediacodecEncode = parambnqe.jdField_c_of_type_Boolean;
-      if (localMessageForShortVideo.istroop != 0) {
-        break label552;
-      }
-      localMessageForShortVideo.fileType = 6;
-      if (parambnqe.jdField_b_of_type_Int != 1008) {
-        break label592;
-      }
-      localMessageForShortVideo.busiType = 1007;
-      localMessageForShortVideo.fromChatType = -1;
-      localMessageForShortVideo.toChatType = -1;
-      localMessageForShortVideo.uiOperatorFlag = 1;
-      localMessageForShortVideo.supportProgressive = parambnqe.jdField_b_of_type_Boolean;
-      localMessageForShortVideo.fileWidth = parambnqe.jdField_h_of_type_Int;
-      localMessageForShortVideo.fileHeight = parambnqe.jdField_i_of_type_Int;
-      localMessageForShortVideo.syncToStory = parambnqe.jdField_e_of_type_Boolean;
-      String str2 = ayzs.n;
-      if (!localMessageForShortVideo.syncToStory) {
-        break label635;
-      }
-      str1 = "1";
-      localMessageForShortVideo.saveExtInfoToExtStr(str2, str1);
-      if (parambnqe.jdField_a_of_type_Bnqf == null) {
-        break label643;
-      }
-      i = 1;
-      label342:
-      if (i != 0)
-      {
-        localMessageForShortVideo.msgseq = parambnqe.jdField_a_of_type_Bnqf.jdField_a_of_type_Long;
-        localMessageForShortVideo.shmsgseq = parambnqe.jdField_a_of_type_Bnqf.b;
-        localMessageForShortVideo.msgUid = parambnqe.jdField_a_of_type_Bnqf.jdField_c_of_type_Long;
-      }
-      if (localMessageForShortVideo.busiType != 2) {
-        break label648;
-      }
-      localMessageForShortVideo.msg = azdf.b;
-      label399:
-      if (!parambnqe.jdField_g_of_type_Boolean) {
-        break label659;
-      }
-      localMessageForShortVideo.saveExtInfoToExtStr("video_send_aio_key_is_qim", "true");
-    }
-    for (;;)
-    {
-      localMessageForShortVideo.serial();
-      parambnqe.jdField_a_of_type_Long = localMessageForShortVideo.uniseq;
-      awiw.a(this.b, this.jdField_a_of_type_JavaLangString, "packmsg", "cost:" + (System.currentTimeMillis() - l));
-      awiw.a(this.b, this.jdField_a_of_type_JavaLangString, "packMsg", "mr: " + localMessageForShortVideo.toLogString() + "-" + localMessageForShortVideo.toString());
-      return localMessageForShortVideo;
-      localMessageForShortVideo = azaf.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, parambnqe.jdField_c_of_type_JavaLangString, parambnqe.jdField_d_of_type_JavaLangString, parambnqe.jdField_b_of_type_Int);
-      localMessageForShortVideo.subBusiType = 0;
-      break;
-      label552:
-      if (localMessageForShortVideo.istroop == 3000)
-      {
-        localMessageForShortVideo.fileType = 17;
-        break label234;
-      }
-      if (localMessageForShortVideo.istroop != 1) {
-        break label234;
-      }
-      localMessageForShortVideo.fileType = 9;
-      break label234;
-      label592:
-      if (2 == parambnqe.jdField_a_of_type_Int)
-      {
-        localMessageForShortVideo.busiType = 1;
-        break label252;
-      }
-      if (3 == parambnqe.jdField_a_of_type_Int)
-      {
-        localMessageForShortVideo.busiType = 2;
-        break label252;
-      }
-      localMessageForShortVideo.busiType = 0;
-      break label252;
-      label635:
-      str1 = "0";
-      break label324;
-      label643:
-      i = 0;
-      break label342;
-      label648:
-      localMessageForShortVideo.msg = azdf.jdField_a_of_type_JavaLangString;
-      break label399;
-      label659:
-      localMessageForShortVideo.saveExtInfoToExtStr("video_send_aio_key_is_qim", "false");
-    }
+    GetImgValidStatusReq localGetImgValidStatusReq = new GetImgValidStatusReq();
+    localGetImgValidStatusReq.Rawdata = paramToServiceMsg.extraData.getByteArray("Rawdata");
+    paramUniPacket.setServantName("CameraModuleSvc");
+    paramUniPacket.setFuncName("CameraModuleSvc.GetImgValidStatus");
+    paramUniPacket.put("CameraModuleSvc.GetImgValidStatus", localGetImgValidStatusReq);
+    return true;
   }
   
-  public MessageRecord a(im_msg_body.RichText paramRichText)
+  private boolean d(ToServiceMsg paramToServiceMsg, UniPacket paramUniPacket)
   {
-    awiw.a(this.b, this.jdField_a_of_type_JavaLangString, "attachRichText2Msg", "");
-    if ((this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord instanceof MessageForRichText)) {
-      ((MessageForRichText)this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord).richText = paramRichText;
-    }
-    return this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
+    GetBulkImageClassifyReq localGetBulkImageClassifyReq = new GetBulkImageClassifyReq();
+    localGetBulkImageClassifyReq.MultiPics = ((ArrayList)paramToServiceMsg.extraData.getSerializable("AI_FILTER_REQ_PICS"));
+    paramUniPacket.setServantName("CameraModuleSvc");
+    paramUniPacket.setFuncName("CameraModuleSvc.GetBulkImageClassify");
+    paramUniPacket.put("CameraModuleSvc.GetBulkImageClassify", localGetBulkImageClassifyReq);
+    paramToServiceMsg.setTimeout(15000L);
+    return true;
   }
   
-  public void a(awki paramawki)
+  private boolean e(ToServiceMsg paramToServiceMsg, UniPacket paramUniPacket)
   {
-    awiw.a(this.b, this.jdField_a_of_type_JavaLangString, "updateMsg", "resut:" + paramawki);
-    if (paramawki != null)
-    {
-      MessageForShortVideo localMessageForShortVideo = (MessageForShortVideo)this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
-      localMessageForShortVideo.videoFileSize = ((int)paramawki.jdField_a_of_type_Long);
-      localMessageForShortVideo.uuid = paramawki.jdField_c_of_type_JavaLangString;
-      localMessageForShortVideo.md5 = paramawki.jdField_d_of_type_JavaLangString;
-      localMessageForShortVideo.thumbFileSize = ((int)paramawki.jdField_c_of_type_Long);
-      localMessageForShortVideo.videoAttr = paramawki.jdField_c_of_type_Int;
-      localMessageForShortVideo.videoKandianType = paramawki.jdField_d_of_type_Int;
-      localMessageForShortVideo.serial();
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.frienduin, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.istroop, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.uniseq, localMessageForShortVideo.msgData);
+    paramToServiceMsg = new GetOnlineUserNumReq();
+    paramUniPacket.setServantName("CameraModuleSvc");
+    paramUniPacket.setFuncName("CameraModuleSvc.GetOnlineUserNum");
+    paramUniPacket.put("CameraModuleSvc.GetOnlineUserNum", paramToServiceMsg);
+    return true;
+  }
+  
+  private boolean f(ToServiceMsg paramToServiceMsg, UniPacket paramUniPacket)
+  {
+    paramToServiceMsg = new GetCameraConfigReq();
+    paramUniPacket.setServantName("CameraModuleSvc");
+    paramUniPacket.setFuncName("CameraModuleSvc.GetCameraConfig");
+    paramUniPacket.put("CameraModuleSvc.GetCameraConfig", paramToServiceMsg);
+    return true;
+  }
+  
+  private boolean g(ToServiceMsg paramToServiceMsg, UniPacket paramUniPacket)
+  {
+    GetRecommandTextByEmotionReq localGetRecommandTextByEmotionReq = new GetRecommandTextByEmotionReq();
+    localGetRecommandTextByEmotionReq.Rawdata = paramToServiceMsg.extraData.getByteArray("Rawdata");
+    paramUniPacket.setServantName("CameraModuleSvc");
+    paramUniPacket.setFuncName("CameraModuleSvc.GetRecommandTextByEmotion");
+    paramUniPacket.put("CameraModuleSvc.GetRecommandTextByEmotion", localGetRecommandTextByEmotionReq);
+    return true;
+  }
+  
+  private boolean h(ToServiceMsg paramToServiceMsg, UniPacket paramUniPacket)
+  {
+    GetTextValidStatusReq localGetTextValidStatusReq = new GetTextValidStatusReq();
+    localGetTextValidStatusReq.EmoText = paramToServiceMsg.extraData.getString("EmoText");
+    paramUniPacket.setServantName("CameraModuleSvc");
+    paramUniPacket.setFuncName("CameraModuleSvc.GetTextValidStatus");
+    paramUniPacket.put("CameraModuleSvc.GetTextValidStatus", localGetTextValidStatusReq);
+    return true;
+  }
+  
+  public Object a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
+  {
+    if (paramToServiceMsg.getServiceCmd().equalsIgnoreCase("CameraModuleSvc.GetRecommandTextByEmotion")) {
+      return a(paramFromServiceMsg.getWupBuffer(), "CameraModuleSvc.GetRecommandTextByEmotion", new GetRecommandTextByEmotionRsp());
     }
+    if (paramToServiceMsg.getServiceCmd().equalsIgnoreCase("CameraModuleSvc.GetTextValidStatus")) {
+      return a(paramFromServiceMsg.getWupBuffer(), "CameraModuleSvc.GetTextValidStatus", new GetTextValidStatusRsp());
+    }
+    if (paramToServiceMsg.getServiceCmd().equalsIgnoreCase("CameraModuleSvc.GetCameraConfig")) {
+      return a(paramFromServiceMsg.getWupBuffer(), "CameraModuleSvc.GetCameraConfig", new GetCameraConfigRsp());
+    }
+    if (paramToServiceMsg.getServiceCmd().equalsIgnoreCase("CameraModuleSvc.GetOnlineUserNum")) {
+      return a(paramFromServiceMsg.getWupBuffer(), "CameraModuleSvc.GetOnlineUserNum", new GetOnlineUserNumRsp());
+    }
+    if (paramToServiceMsg.getServiceCmd().equalsIgnoreCase("CameraModuleSvc.GetFontData")) {
+      return a(paramFromServiceMsg.getWupBuffer(), "CameraModuleSvc.GetFontData", new GetFontDataRsp());
+    }
+    if (paramToServiceMsg.getServiceCmd().equalsIgnoreCase("CameraModuleSvc.GetImgValidStatus")) {
+      return a(paramFromServiceMsg.getWupBuffer(), "CameraModuleSvc.GetImgValidStatus", new GetImgValidStatusRsp());
+    }
+    if (paramToServiceMsg.getServiceCmd().equalsIgnoreCase("CameraModuleSvc.GetBulkImageClassify")) {
+      return a(paramFromServiceMsg.getWupBuffer(), "CameraModuleSvc.GetBulkImageClassify", new GetBulkImageClassifyRsp());
+    }
+    return super.a(paramToServiceMsg, paramFromServiceMsg);
+  }
+  
+  public boolean a(ToServiceMsg paramToServiceMsg, UniPacket paramUniPacket)
+  {
+    if (paramToServiceMsg.getServiceCmd().equalsIgnoreCase("CameraModuleSvc.GetRecommandTextByEmotion")) {
+      return g(paramToServiceMsg, paramUniPacket);
+    }
+    if (paramToServiceMsg.getServiceCmd().equalsIgnoreCase("CameraModuleSvc.GetTextValidStatus")) {
+      return h(paramToServiceMsg, paramUniPacket);
+    }
+    if (paramToServiceMsg.getServiceCmd().equalsIgnoreCase("CameraModuleSvc.GetCameraConfig")) {
+      return f(paramToServiceMsg, paramUniPacket);
+    }
+    if (paramToServiceMsg.getServiceCmd().equalsIgnoreCase("CameraModuleSvc.GetOnlineUserNum")) {
+      return e(paramToServiceMsg, paramUniPacket);
+    }
+    if (paramToServiceMsg.getServiceCmd().equalsIgnoreCase("CameraModuleSvc.GetFontData")) {
+      return b(paramToServiceMsg, paramUniPacket);
+    }
+    if (paramToServiceMsg.getServiceCmd().equalsIgnoreCase("CameraModuleSvc.GetImgValidStatus")) {
+      return c(paramToServiceMsg, paramUniPacket);
+    }
+    if (paramToServiceMsg.getServiceCmd().equalsIgnoreCase("CameraModuleSvc.GetBulkImageClassify")) {
+      return d(paramToServiceMsg, paramUniPacket);
+    }
+    return super.a(paramToServiceMsg, paramUniPacket);
+  }
+  
+  public String[] a()
+  {
+    return jdField_a_of_type_ArrayOfJavaLangString;
   }
 }
 

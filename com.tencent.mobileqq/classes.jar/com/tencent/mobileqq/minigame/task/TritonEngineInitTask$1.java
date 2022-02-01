@@ -1,21 +1,25 @@
 package com.tencent.mobileqq.minigame.task;
 
-import com.tencent.mobileqq.minigame.utils.thread.TTHandleThread;
-import java.util.concurrent.Executor;
+import android.os.Process;
+import com.tencent.mobileqq.minigame.manager.GameEnvManager.IDownloadListener;
+import com.tencent.mobileqq.minigame.utils.GameLog;
 
 class TritonEngineInitTask$1
-  implements Executor
+  implements GameEnvManager.IDownloadListener
 {
   TritonEngineInitTask$1(TritonEngineInitTask paramTritonEngineInitTask) {}
   
-  public void execute(Runnable paramRunnable)
+  public void onDownloadResult(int paramInt, String paramString)
   {
-    TTHandleThread.getInstance().execute_FILE(paramRunnable);
+    GameLog.getInstance().e(this.this$0.LOG_TAG, "[MiniEng] download triton on Exception callback, retCode:" + paramInt + ", msg:" + paramString);
+    if (paramInt == 0) {
+      Process.killProcess(Process.myPid());
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.minigame.task.TritonEngineInitTask.1
  * JD-Core Version:    0.7.0.1
  */

@@ -1,21 +1,31 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.av.share.AVSchema;
+import android.os.Handler;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.av.ui.AVActivity;
+import com.tencent.av.ui.AVActivity.10.1;
+import com.tencent.av.ui.AVActivity.10.2;
 
 public class man
-  implements DialogInterface.OnClickListener
+  extends bhjz
 {
-  public man(AVSchema paramAVSchema, String paramString) {}
+  public man(AVActivity paramAVActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a()
   {
-    mts.d();
-    this.jdField_a_of_type_ComTencentAvShareAVSchema.b(this.jdField_a_of_type_JavaLangString);
+    if (this.a.a != null) {
+      this.a.a.a().postDelayed(new AVActivity.10.1(this), 0L);
+    }
+  }
+  
+  public void a(int paramInt1, int paramInt2, int paramInt3)
+  {
+    if (this.a.a != null) {
+      this.a.a.a().post(new AVActivity.10.2(this));
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     man
  * JD-Core Version:    0.7.0.1
  */

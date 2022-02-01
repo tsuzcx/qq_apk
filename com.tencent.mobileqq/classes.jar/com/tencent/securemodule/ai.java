@@ -4,6 +4,7 @@ import android.app.ProgressDialog;
 import android.os.Handler;
 import android.os.Message;
 import android.widget.Toast;
+import com.tencent.qqlive.module.videoreport.inject.dialog.ReportProgressDialog;
 import com.tencent.securemodule.ui.TransparentActivity;
 import com.tencent.securemodule.ui.TransparentActivity.a;
 
@@ -22,7 +23,7 @@ public class ai
       {
         return;
       } while (TransparentActivity.a(this.a) != null);
-      TransparentActivity.a(this.a, new ProgressDialog(TransparentActivity.b(this.a)));
+      TransparentActivity.a(this.a, new ReportProgressDialog(TransparentActivity.b(this.a)));
       TransparentActivity.a(this.a).setMessage("正在处理...");
       TransparentActivity.a(this.a).setOnCancelListener(new aj(this));
       TransparentActivity.a(this.a).show();
@@ -47,7 +48,7 @@ public class ai
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.securemodule.ai
  * JD-Core Version:    0.7.0.1
  */

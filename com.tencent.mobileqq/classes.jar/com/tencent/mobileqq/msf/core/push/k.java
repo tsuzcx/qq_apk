@@ -11,7 +11,7 @@ class k
   public void onCompletion(MediaPlayer paramMediaPlayer)
   {
     paramMediaPlayer.release();
-    this.a.ac = null;
+    this.a.Z = null;
   }
 }
 

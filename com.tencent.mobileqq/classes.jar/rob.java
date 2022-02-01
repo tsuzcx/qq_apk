@@ -1,49 +1,25 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.ugc.editvideo.EditVideoFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class rob
-  extends Handler
+public class rob
+  implements View.OnClickListener
 {
-  private WeakReference<rny> a;
+  public rob(EditVideoFragment paramEditVideoFragment) {}
   
-  public rob(rny paramrny)
+  public void onClick(View paramView)
   {
-    this.a = new WeakReference(paramrny);
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    switch (paramMessage.what)
-    {
+    if ((EditVideoFragment.b(this.a) != null) && (EditVideoFragment.b(this.a).isShowing())) {
+      EditVideoFragment.b(this.a).dismiss();
     }
-    do
-    {
-      do
-      {
-        return;
-      } while (this.a.get() == null);
-      rny.a((rny)this.a.get());
-      rny.a((rny)this.a.get()).sendEmptyMessageDelayed(0, rny.a((rny)this.a.get()));
-      return;
-    } while (this.a.get() == null);
-    if (QLog.isColorLevel()) {
-      QLog.d(rny.a((rny)this.a.get()), 2, "prePlay timeout, try rePlay");
-    }
-    if ((((rny)this.a.get()).e()) && (rny.a((rny)this.a.get()).a() == rny.a((rny)this.a.get())))
-    {
-      rny.b((rny)this.a.get());
-      return;
-    }
-    rny.a((rny)this.a.get(), false);
-    ((rny)this.a.get()).a(rny.a((rny)this.a.get()));
-    rny.a((rny)this.a.get(), rny.a((rny)this.a.get()));
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     rob
  * JD-Core Version:    0.7.0.1
  */

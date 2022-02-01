@@ -1,32 +1,29 @@
-import android.content.Context;
-import com.tencent.qphone.base.util.QLog;
-
 public class amxu
+  implements Comparable
 {
-  Context a;
-  public awaw a;
-  public bdjz a;
+  public int a;
+  public String a;
+  public boolean a;
+  public int b;
+  public int c;
+  public int d;
+  public int e;
+  public int f;
+  public int g;
+  public int h;
+  public int i;
+  public int j;
   
-  public amxu(Context paramContext, awaw paramawaw)
+  public int compareTo(Object paramObject)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_Awaw = paramawaw;
-    this.jdField_a_of_type_Bdjz = bdgm.a(this.jdField_a_of_type_AndroidContentContext, 230);
-    paramContext = new amxv(this);
-    this.jdField_a_of_type_Bdjz.setPositiveButton(2131690231, paramContext);
-    this.jdField_a_of_type_Bdjz.setNegativeButton(2131690230, paramContext);
-    this.jdField_a_of_type_Bdjz.setMessage(2131690233);
-  }
-  
-  public void a()
-  {
-    if (!this.jdField_a_of_type_Bdjz.isShowing()) {
-      this.jdField_a_of_type_Bdjz.show();
+    paramObject = (amxu)paramObject;
+    if (this.d < paramObject.d) {
+      return 1;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("FaceUIController", 2, "doOnClickFeedBack");
+    if (this.d > paramObject.d) {
+      return -1;
     }
-    azqs.b(null, "dc00898", "", "", "0X8008352", "0X8008352", 0, 0, "", "", "", "");
+    return 0;
   }
 }
 

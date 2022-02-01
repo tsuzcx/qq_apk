@@ -1,34 +1,30 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qphone.base.util.QLog;
-import oicq.wlogin_sdk.request.Ticket;
-import oicq.wlogin_sdk.request.WtTicketPromise;
-import oicq.wlogin_sdk.tools.ErrMsg;
+import android.view.View;
+import android.view.View.OnLongClickListener;
+import com.tencent.mobileqq.receipt.ReceiptMessageDetailFragment;
+import java.lang.ref.WeakReference;
 
-class bagx
-  implements WtTicketPromise
+public class bagx
+  implements View.OnLongClickListener
 {
-  bagx(bagw parambagw, Runnable paramRunnable) {}
+  private WeakReference<ReceiptMessageDetailFragment> a;
   
-  public void Done(Ticket paramTicket)
+  private bagx(ReceiptMessageDetailFragment paramReceiptMessageDetailFragment)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("TeamWorkFileImportHandler", 2, "--- pskey invalid retry ---  ");
-    }
-    ThreadManager.executeOnNetWorkThread(this.jdField_a_of_type_JavaLangRunnable);
+    this.a = new WeakReference(paramReceiptMessageDetailFragment);
   }
   
-  public void Failed(ErrMsg paramErrMsg)
+  public boolean onLongClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.e("TeamWorkFileImportHandler", 2, "--- get pskey failed ---  " + paramErrMsg.getMessage());
+    paramView = (ReceiptMessageDetailFragment)this.a.get();
+    if ((paramView == null) || (!paramView.isAdded())) {
+      return false;
     }
-  }
-  
-  public void Timeout(ErrMsg paramErrMsg)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.e("TeamWorkFileImportHandler", 2, "--- get pskey timeout ---  " + paramErrMsg.getMessage());
-    }
+    bkho localbkho = bkho.a(paramView.getActivity());
+    localbkho.b(2131691137);
+    localbkho.c(2131690582);
+    localbkho.a(new bagy(this, paramView, localbkho));
+    localbkho.show();
+    return true;
   }
 }
 

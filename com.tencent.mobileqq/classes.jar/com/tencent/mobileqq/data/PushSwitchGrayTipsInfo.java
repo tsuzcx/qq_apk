@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.data;
 
-import awge;
+import com.tencent.mobileqq.persistence.Entity;
 import java.io.Serializable;
 
 public class PushSwitchGrayTipsInfo
-  extends awge
+  extends Entity
   implements Serializable
 {
   public long lastShowTime;
@@ -26,7 +26,7 @@ public class PushSwitchGrayTipsInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.data.PushSwitchGrayTipsInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -1,49 +1,141 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import android.os.Handler;
-import com.tencent.mobileqq.activity.specialcare.QQSpecialFriendSettingActivity;
-import com.tencent.mobileqq.app.FriendListHandler;
-import com.tencent.mobileqq.widget.FormSwitchItem;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.activity.photo.ImageInfo;
 
-class aket
-  implements DialogInterface.OnDismissListener
+public final class aket
+  implements Parcelable.Creator<ImageInfo>
 {
-  aket(akes paramakes, amne paramamne) {}
-  
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public ImageInfo a(Parcel paramParcel)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QQSpecialFriendSettingActivity", 2, "finish all settings when dialog dismiss");
-    }
-    if (bdin.g(this.jdField_a_of_type_Akes.a))
+    boolean bool2 = true;
+    ImageInfo localImageInfo = new ImageInfo();
+    if (paramParcel.readInt() == 0)
     {
-      boolean bool1 = QQSpecialFriendSettingActivity.a(this.jdField_a_of_type_Akes.a).a();
-      boolean bool2 = QQSpecialFriendSettingActivity.b(this.jdField_a_of_type_Akes.a).a();
-      paramDialogInterface = QQSpecialFriendSettingActivity.a(this.jdField_a_of_type_Akes.a);
-      String str = QQSpecialFriendSettingActivity.a(this.jdField_a_of_type_Akes.a);
-      int i = QQSpecialFriendSettingActivity.a(this.jdField_a_of_type_Akes.a);
-      paramDialogInterface.a(str, new int[] { 2, 3 }, new boolean[] { bool1, bool2 }, new String[] { String.valueOf(i), null });
-      paramDialogInterface = this.jdField_a_of_type_Akes.a.a.obtainMessage(8193);
-      paramDialogInterface.obj = this.jdField_a_of_type_Akes.a.getString(2131699861);
-      this.jdField_a_of_type_Akes.a.a.sendMessage(paramDialogInterface);
-      if ((bool1) && (bool2))
-      {
-        paramDialogInterface = "0";
-        azqs.b(null, "CliOper", "", "", "0X80050E2", "0X80050E2", 0, 0, paramDialogInterface, "", "", "");
+      bool1 = false;
+      localImageInfo.jdField_a_of_type_Boolean = bool1;
+      if (paramParcel.readInt() != 0) {
+        break label412;
+      }
+      bool1 = false;
+      label35:
+      localImageInfo.jdField_b_of_type_Boolean = bool1;
+      localImageInfo.jdField_a_of_type_JavaLangString = paramParcel.readString();
+      if (paramParcel.readInt() != 0) {
+        break label417;
+      }
+      bool1 = false;
+      label59:
+      localImageInfo.jdField_c_of_type_Boolean = bool1;
+      if (paramParcel.readInt() != 0) {
+        break label422;
+      }
+      bool1 = false;
+      label74:
+      localImageInfo.jdField_d_of_type_Boolean = bool1;
+      localImageInfo.jdField_b_of_type_JavaLangString = paramParcel.readString();
+      localImageInfo.jdField_c_of_type_JavaLangString = paramParcel.readString();
+      localImageInfo.jdField_a_of_type_Int = paramParcel.readInt();
+      if (paramParcel.readInt() != 0) {
+        break label427;
+      }
+      bool1 = false;
+      label116:
+      localImageInfo.jdField_e_of_type_Boolean = bool1;
+      localImageInfo.jdField_d_of_type_JavaLangString = paramParcel.readString();
+      localImageInfo.jdField_b_of_type_Int = paramParcel.readInt();
+      localImageInfo.jdField_e_of_type_JavaLangString = paramParcel.readString();
+      localImageInfo.jdField_c_of_type_Int = paramParcel.readInt();
+      localImageInfo.jdField_d_of_type_Int = paramParcel.readInt();
+      if (paramParcel.readInt() != 0) {
+        break label432;
+      }
+      bool1 = false;
+      label176:
+      localImageInfo.jdField_f_of_type_Boolean = bool1;
+      localImageInfo.jdField_a_of_type_Long = paramParcel.readLong();
+      if (paramParcel.readInt() != 0) {
+        break label437;
+      }
+      bool1 = false;
+      label200:
+      localImageInfo.jdField_h_of_type_Boolean = bool1;
+      if (paramParcel.readInt() != 0) {
+        break label442;
+      }
+      bool1 = false;
+      label215:
+      localImageInfo.jdField_i_of_type_Boolean = bool1;
+      localImageInfo.jdField_f_of_type_JavaLangString = paramParcel.readString();
+      localImageInfo.jdField_b_of_type_Long = paramParcel.readLong();
+      localImageInfo.g = paramParcel.readString();
+      localImageInfo.jdField_c_of_type_Long = paramParcel.readLong();
+      localImageInfo.jdField_h_of_type_JavaLangString = paramParcel.readString();
+      localImageInfo.jdField_f_of_type_Int = paramParcel.readInt();
+      localImageInfo.jdField_f_of_type_Int = paramParcel.readInt();
+      localImageInfo.jdField_h_of_type_Int = paramParcel.readInt();
+      localImageInfo.jdField_i_of_type_JavaLangString = paramParcel.readString();
+      localImageInfo.jdField_k_of_type_Int = paramParcel.readInt();
+      if (paramParcel.readInt() != 1) {
+        break label447;
+      }
+      bool1 = true;
+      label321:
+      localImageInfo.o = bool1;
+      if (paramParcel.readInt() != 1) {
+        break label452;
+      }
+      bool1 = true;
+      label337:
+      localImageInfo.n = bool1;
+      if (paramParcel.readInt() != 1) {
+        break label457;
       }
     }
-    for (;;)
+    label412:
+    label417:
+    label422:
+    label427:
+    label432:
+    label437:
+    label442:
+    label447:
+    label452:
+    label457:
+    for (boolean bool1 = bool2;; bool1 = false)
     {
-      this.jdField_a_of_type_Amne.a();
-      return;
-      paramDialogInterface = "1";
+      localImageInfo.p = bool1;
+      localImageInfo.jdField_d_of_type_Long = paramParcel.readLong();
+      localImageInfo.j = paramParcel.readString();
+      localImageInfo.jdField_k_of_type_JavaLangString = paramParcel.readString();
+      localImageInfo.jdField_l_of_type_JavaLangString = paramParcel.readString();
+      localImageInfo.jdField_l_of_type_Int = paramParcel.readInt();
+      return localImageInfo;
+      bool1 = true;
       break;
-      paramDialogInterface = this.jdField_a_of_type_Akes.a.a.obtainMessage(8195);
-      paramDialogInterface.arg1 = 0;
-      paramDialogInterface.arg2 = 2131692398;
-      this.jdField_a_of_type_Akes.a.a.sendMessage(paramDialogInterface);
+      bool1 = true;
+      break label35;
+      bool1 = true;
+      break label59;
+      bool1 = true;
+      break label74;
+      bool1 = true;
+      break label116;
+      bool1 = true;
+      break label176;
+      bool1 = true;
+      break label200;
+      bool1 = true;
+      break label215;
+      bool1 = false;
+      break label321;
+      bool1 = false;
+      break label337;
     }
+  }
+  
+  public ImageInfo[] a(int paramInt)
+  {
+    return new ImageInfo[paramInt];
   }
 }
 

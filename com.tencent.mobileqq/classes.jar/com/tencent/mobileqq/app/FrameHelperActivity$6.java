@@ -1,56 +1,21 @@
 package com.tencent.mobileqq.app;
 
-import alth;
-import android.os.Handler;
-import android.text.TextUtils;
-import android.view.ViewGroup;
-import bddf;
-import bhsg;
-import com.tencent.mobileqq.activity.recent.DrawerFrame;
-import com.tencent.mobileqq.data.Card;
+import android.view.View;
 import com.tencent.mobileqq.widget.RandomCoverView;
-import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
 
 class FrameHelperActivity$6
   implements Runnable
 {
-  FrameHelperActivity$6(FrameHelperActivity paramFrameHelperActivity, QQAppInterface paramQQAppInterface) {}
+  FrameHelperActivity$6(FrameHelperActivity paramFrameHelperActivity, RandomCoverView paramRandomCoverView) {}
   
   public void run()
   {
-    if ((this.this$0.jdField_a_of_type_AndroidViewViewGroup == null) || (FrameHelperActivity.a(this.this$0) == null)) {
-      return;
-    }
-    RandomCoverView localRandomCoverView = (RandomCoverView)this.this$0.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131378146);
-    Object localObject = this.a.getCurrentAccountUin();
-    localObject = bddf.a(this.a, (String)localObject);
-    String str = (String)localObject.getCoverData(0)[0];
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.profilecard.", 2, "[getCoverData] getCovertUrl from cache,url:" + str);
-    }
-    if ((!TextUtils.isEmpty(str)) && (!bhsg.b()))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.recent", 2, "card.isNoCover()=" + ((Card)localObject).isNoCover());
-      }
-      if ((!bhsg.a(this.a, (Card)localObject)) && (((Card)localObject).isNoCover()))
-      {
-        FrameHelperActivity.a(this.this$0).a(false);
-        ThreadManager.getUIHandler().post(new FrameHelperActivity.6.1(this, localRandomCoverView));
-        return;
-      }
-      FrameHelperActivity.a(this.this$0).a(true);
-      ThreadManager.getUIHandler().post(new FrameHelperActivity.6.2(this, localRandomCoverView));
-      FrameHelperActivity.a(this.this$0, bhsg.a(this.this$0.getActivity(), this.a, (Card)localObject, localRandomCoverView, str, FrameHelperActivity.a(this.this$0), this.this$0.jdField_a_of_type_ComTencentMobileqqActivityRecentDrawerFrame.a()));
-      return;
-    }
-    this.this$0.jdField_a_of_type_AndroidOsHandler.postDelayed(new FrameHelperActivity.6.3(this, (Card)localObject), 3000L);
+    this.a.a().setVisibility(0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.app.FrameHelperActivity.6
  * JD-Core Version:    0.7.0.1
  */

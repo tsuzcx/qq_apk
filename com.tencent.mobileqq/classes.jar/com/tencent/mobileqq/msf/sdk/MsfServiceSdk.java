@@ -752,6 +752,11 @@ public class MsfServiceSdk
     this.proxy.initMsfService();
   }
   
+  public int onKillProcess()
+  {
+    return this.proxy.onKillProcess();
+  }
+  
   public int onProcessViewableChanged(boolean paramBoolean, long paramLong)
   {
     return this.proxy.onProcessViewableChanged(paramBoolean, paramLong, BaseApplication.processName);

@@ -4,38 +4,38 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
-import bazo;
-import bejx;
+import bhrb;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.transfile.dns.InnerDns;
 import com.tencent.mobileqq.webprocess.WebAccelerateHelper;
 import com.tencent.mobileqq.webview.swift.component.SwiftBrowserCookieMonster;
 import com.tencent.qphone.base.util.QLog;
-import myl;
+import nhe;
 
 public class SwiftWebAccelerator$5
   implements Runnable
 {
-  public SwiftWebAccelerator$5(bejx parambejx, long paramLong, Bundle paramBundle) {}
+  public SwiftWebAccelerator$5(bhrb parambhrb, long paramLong, Bundle paramBundle) {}
   
   public void run()
   {
     long l = System.currentTimeMillis();
     QLog.i("WebLog_SwiftWebAccelerator", 1, "doThreadedStep_LoadConfigs.run cost " + (l - this.jdField_a_of_type_Long) + "ms.");
     l = System.currentTimeMillis();
-    bazo.a();
+    InnerDns.getInstance();
     QLog.i("WebLog_SwiftWebAccelerator", 1, "doThreadedStep_LoadConfigs:init inner-dns cost " + (l - this.jdField_a_of_type_Long) + "ms.");
     l = System.currentTimeMillis();
-    myl localmyl = myl.a(false);
-    localmyl.a("http://www.qq.com/", "foo.bar");
-    localmyl.a("skey");
-    localmyl.a("pskey");
-    localmyl.a("pt4_token");
-    localmyl.a("a1");
-    localmyl.a("a2");
-    localmyl.b("http://www.qq.com/");
-    localmyl.a();
-    localmyl.b();
-    localmyl.e();
+    nhe localnhe = nhe.a(false);
+    localnhe.a("https://www.qq.com/", "foo.bar");
+    localnhe.a("skey");
+    localnhe.a("pskey");
+    localnhe.a("pt4_token");
+    localnhe.a("a1");
+    localnhe.a("a2");
+    localnhe.b("https://www.qq.com/");
+    localnhe.a();
+    localnhe.b();
+    localnhe.e();
     QLog.i("WebLog_SwiftWebAccelerator", 1, "doThreadedStep_LoadConfigs:load domain white list config, cost " + (System.currentTimeMillis() - l) + "ms.");
     l = System.currentTimeMillis();
     if (WebAccelerateHelper.getInstance().isPreGetKey()) {
@@ -51,7 +51,7 @@ public class SwiftWebAccelerator$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.webview.swift.utils.SwiftWebAccelerator.5
  * JD-Core Version:    0.7.0.1
  */

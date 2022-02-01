@@ -1,27 +1,8 @@
-import android.util.Property;
+import java.io.File;
 
-class bndk
-  extends Property<bndb, Integer>
+public class bndk
 {
-  bndk(bndb parambndb, Class paramClass, String paramString)
-  {
-    super(paramClass, paramString);
-  }
-  
-  public Integer a(bndb parambndb)
-  {
-    if (parambndb != null) {
-      return Integer.valueOf(bndb.d(parambndb));
-    }
-    return Integer.valueOf(0);
-  }
-  
-  public void a(bndb parambndb, Integer paramInteger)
-  {
-    if (parambndb != null) {
-      bndb.d(parambndb, paramInteger.intValue());
-    }
-  }
+  public static final String a = bndm.f + File.separator + "camera_story_default_template.json";
 }
 
 

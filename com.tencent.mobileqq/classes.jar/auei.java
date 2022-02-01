@@ -1,19 +1,52 @@
-import java.lang.ref.WeakReference;
+import io.flutter.plugin.common.MethodCall;
+import io.flutter.plugin.common.MethodChannel.MethodCallHandler;
+import io.flutter.plugin.common.MethodChannel.Result;
+import io.flutter.plugin.common.MethodCodec;
+import io.flutter.plugin.common.StandardMethodCodec;
+import java.util.HashMap;
 
-public abstract class auei<T>
+public abstract class auei
+  implements MethodChannel.MethodCallHandler
 {
-  public WeakReference<T> a;
+  public static final MethodCodec a = StandardMethodCodec.INSTANCE;
   
-  public auei(T paramT)
+  protected abstract void a(String paramString, MethodChannel.Result paramResult);
+  
+  protected abstract void a(String paramString, Integer paramInteger, MethodChannel.Result paramResult);
+  
+  protected abstract void a(String paramString, Integer paramInteger, Double paramDouble, MethodChannel.Result paramResult);
+  
+  protected abstract void a(String paramString1, Integer paramInteger, String paramString2, String paramString3, String paramString4, HashMap<String, String> paramHashMap, MethodChannel.Result paramResult);
+  
+  public void onMethodCall(MethodCall paramMethodCall, MethodChannel.Result paramResult)
   {
-    this.a = new WeakReference(paramT);
+    String str = paramMethodCall.method;
+    if ("reportException".equals(str))
+    {
+      a((String)paramMethodCall.argument("pagePath"), (Integer)paramMethodCall.argument("category"), (String)paramMethodCall.argument("errorType"), (String)paramMethodCall.argument("errorMsg"), (String)paramMethodCall.argument("stack"), (HashMap)paramMethodCall.argument("extraInfo"), paramResult);
+      return;
+    }
+    if ("recordPageView".equals(str))
+    {
+      a((String)paramMethodCall.argument("pagePath"), paramResult);
+      return;
+    }
+    if ("reportScrollPerfomance".equals(str))
+    {
+      a((String)paramMethodCall.argument("pagePath"), (Integer)paramMethodCall.argument("FPS"), (Double)paramMethodCall.argument("dropRate"), paramResult);
+      return;
+    }
+    if ("reportPageLoadTime".equals(str))
+    {
+      a((String)paramMethodCall.argument("pagePath"), (Integer)paramMethodCall.argument("loadTime"), paramResult);
+      return;
+    }
+    paramResult.notImplemented();
   }
-  
-  public abstract void a(T paramT, boolean paramBoolean, auef paramauef);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     auei
  * JD-Core Version:    0.7.0.1
  */

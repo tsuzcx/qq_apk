@@ -1,38 +1,26 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tribe.async.dispatch.QQUIEventReceiver;
+import android.arch.lifecycle.MutableLiveData;
+import com.tencent.TMG.utils.QLog;
+import qqcircle.QQCircleProfile.SetProfileRsp;
 
-public class vty
-  extends QQUIEventReceiver<vtv, vej>
+class vty
+  implements zxa<QQCircleProfile.SetProfileRsp>
 {
-  public vty(@NonNull vtv paramvtv)
-  {
-    super(paramvtv);
-  }
+  vty(vtx paramvtx) {}
   
-  public void a(@NonNull vtv paramvtv, @NonNull vej paramvej)
+  public void a(boolean paramBoolean, long paramLong, String paramString, QQCircleProfile.SetProfileRsp paramSetProfileRsp)
   {
-    if ((paramvej.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isFail()) || (paramvej.jdField_a_of_type_JavaUtilList == null)) {
-      return;
-    }
-    if (vtv.b(paramvtv))
+    QLog.d("QCircleDataEditViewMode", 1, "setProfileRequest isSuccess:" + paramBoolean + " retCode:" + paramLong + " errorMsg:" + paramString);
+    if ((!paramBoolean) || (paramLong != 0L) || (paramSetProfileRsp == null))
     {
-      vtv.b(paramvtv, true);
-      wxe.b("VideoCoverListGroupHolder", "base info return , notify list while idle");
+      this.a.a.setValue(vup.a(paramString).a(paramLong));
       return;
     }
-    paramvtv.d();
-    wxe.b("VideoCoverListGroupHolder", "base info return , notify list now");
-  }
-  
-  public Class acceptEventClass()
-  {
-    return vej.class;
+    this.a.a.setValue(vup.a(false).a(false, paramSetProfileRsp));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     vty
  * JD-Core Version:    0.7.0.1
  */

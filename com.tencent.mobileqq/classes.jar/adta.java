@@ -1,15 +1,26 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.QQSettingSettingActivity;
+import android.view.MotionEvent;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.ChatFragment;
+import com.tencent.mobileqq.activity.fling.TopGestureLayout.InterceptTouchEventListener;
 
 public class adta
-  extends avva
+  implements TopGestureLayout.InterceptTouchEventListener
 {
-  public adta(QQSettingSettingActivity paramQQSettingSettingActivity) {}
+  public adta(ChatFragment paramChatFragment) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void OnDispatchTouchEvent(MotionEvent paramMotionEvent)
   {
-    QQSettingSettingActivity.a(this.a);
-    QQSettingSettingActivity.b(this.a);
+    if (this.a.a != null) {
+      this.a.a.b(paramMotionEvent);
+    }
+  }
+  
+  public boolean OnInterceptTouchEvent(MotionEvent paramMotionEvent)
+  {
+    if (this.a.a != null) {
+      return this.a.a.a(paramMotionEvent);
+    }
+    return true;
   }
 }
 

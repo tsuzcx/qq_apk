@@ -1,73 +1,33 @@
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.os.Handler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 
-public class nom
-  extends noe
+public final class nom
+  implements DialogInterface.OnClickListener
 {
-  public long a;
-  public non a;
-  public int d;
-  public String d;
-  public String e;
-  public String f;
+  public nom(int paramInt, QQAppInterface paramQQAppInterface, long paramLong, Handler paramHandler) {}
   
-  public static nom a(JSONObject paramJSONObject)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramJSONObject == null) {}
-    nom localnom;
-    Object localObject;
-    for (;;)
+    if (this.jdField_a_of_type_Int == 1)
     {
-      return null;
-      localnom = new nom();
-      try
-      {
-        localObject = paramJSONObject.optJSONObject("video");
-        if (localObject != null)
-        {
-          localnom.e = ((JSONObject)localObject).optString("coverUrl");
-          localnom.jdField_d_of_type_JavaLangString = ((JSONObject)localObject).optString("videoUrl");
-          if (TextUtils.isEmpty(localnom.jdField_d_of_type_JavaLangString))
-          {
-            if (!QLog.isColorLevel()) {
-              continue;
-            }
-            QLog.d("AdModuleVideo", 2, "video url is null");
-            return null;
-          }
-        }
-      }
-      catch (JSONException paramJSONObject)
-      {
-        paramJSONObject.printStackTrace();
-        return null;
-      }
+      ajvi.a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Long, true, NetConnInfoCenter.getServerTimeMillis(), -9223372036854775808L);
+      this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(0);
+      l = NetConnInfoCenter.getServerTimeMillis();
+      ((antt)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(31)).a(String.valueOf(this.jdField_a_of_type_Long), true, l);
+      return;
     }
-    localnom.jdField_a_of_type_Long = paramJSONObject.optLong("duration");
-    localnom.jdField_d_of_type_Int = paramJSONObject.optInt("mixType");
-    localnom.f = paramJSONObject.optString("linkUrl");
-    paramJSONObject = paramJSONObject.optString("appInfo");
-    if (!TextUtils.isEmpty(paramJSONObject))
-    {
-      paramJSONObject = new JSONObject(paramJSONObject);
-      localObject = new non();
-      ((non)localObject).a = paramJSONObject.optString("appid");
-      ((non)localObject).b = paramJSONObject.optString("scheme");
-      ((non)localObject).c = paramJSONObject.optString("packageName");
-      ((non)localObject).jdField_d_of_type_JavaLangString = paramJSONObject.optString("androidDownloadUrl");
-      ((non)localObject).e = paramJSONObject.optString("appName");
-      localnom.jdField_a_of_type_Non = ((non)localObject);
-    }
-    return localnom;
+    ajvi.a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Long, false, NetConnInfoCenter.getServerTimeMillis(), -9223372036854775808L);
+    this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1);
+    long l = NetConnInfoCenter.getServerTimeMillis();
+    ((antt)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(31)).a(String.valueOf(this.jdField_a_of_type_Long), false, l);
   }
-  
-  public void b() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     nom
  * JD-Core Version:    0.7.0.1
  */

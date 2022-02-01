@@ -1,27 +1,23 @@
+import com.tencent.biz.pubaccount.readinjoy.view.pullrefresh.RefreshAnimView;
+import com.tencent.mobileqq.dinifly.LottieComposition;
+import com.tencent.mobileqq.dinifly.OnCompositionLoadedListener;
+
 class tfo
-  implements tkr
+  implements OnCompositionLoadedListener
 {
-  tfo(tfk paramtfk) {}
+  tfo(tfn paramtfn, Runnable paramRunnable) {}
   
-  public void a(String paramString)
+  public void onCompositionLoaded(LottieComposition paramLottieComposition)
   {
-    tlo.b("WSFollowFeedHolder", "[onUserClick] uid: " + paramString);
-    paramString = "weishi://profile?person_id=" + paramString;
-    tlf.a(tfk.a(this.a).a(), paramString, 700, tfk.a(this.a), "content");
-    tfk.a(this.a, "content");
-  }
-  
-  public void b(String paramString)
-  {
-    tlo.b("WSFollowFeedHolder", "[onTopicClick] tid: " + paramString);
-    paramString = "weishi://topic?topic_id=" + paramString;
-    tlf.a(tfk.a(this.a).a(), paramString, 700, tfk.a(this.a), "content");
-    tfk.a(this.a, "content");
+    RefreshAnimView.a(this.jdField_a_of_type_Tfn.a, paramLottieComposition);
+    if (paramLottieComposition != null) {
+      this.jdField_a_of_type_JavaLangRunnable.run();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     tfo
  * JD-Core Version:    0.7.0.1
  */

@@ -1,22 +1,40 @@
-import com.tencent.mobileqq.activity.contact.newfriend.SystemMsgListView;
-import com.tencent.mobileqq.widget.QQToast;
+import android.content.Context;
+import android.content.Intent;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.data.MessageForWantGiftMsg;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class ahnk
-  extends alpq
+class ahnk
+  implements View.OnClickListener
 {
-  public ahnk(SystemMsgListView paramSystemMsgListView) {}
+  ahnk(ahnj paramahnj, ChatMessage paramChatMessage, MessageForWantGiftMsg paramMessageForWantGiftMsg) {}
   
-  protected void onSetConnectionsSwitch(boolean paramBoolean, int paramInt1, int paramInt2)
+  public void onClick(View paramView)
   {
-    if (paramBoolean)
+    String str;
+    if (paramView.getId() == 2131373760)
     {
-      if (SystemMsgListView.a(this.a) != null) {
-        SystemMsgListView.a(this.a).c();
+      new bcsy(this.jdField_a_of_type_Ahnj.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a("dc00899").b("Grp_flower").c("grp_aio").d("clk_send_him").a(0).a(new String[] { this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.frienduin + "", "29" }).a();
+      str = bgsg.i(this.jdField_a_of_type_Ahnj.jdField_a_of_type_AndroidContentContext, "url");
+      if (TextUtils.isEmpty(str)) {
+        break label223;
       }
-      QQToast.a(this.a.getContext(), 2131699570, 3000).a();
-      return;
     }
-    QQToast.a(this.a.getContext(), 2131699569, 1).a();
+    for (;;)
+    {
+      str = str.replace("{troopUin}", "" + this.jdField_a_of_type_ComTencentMobileqqDataMessageForWantGiftMsg.frienduin).replace("{uin}", "" + this.jdField_a_of_type_ComTencentMobileqqDataMessageForWantGiftMsg.senderuin).replace("{from}", "29");
+      Intent localIntent = new Intent(this.jdField_a_of_type_Ahnj.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
+      localIntent.putExtra("url", str);
+      this.jdField_a_of_type_Ahnj.jdField_a_of_type_AndroidContentContext.startActivity(localIntent);
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      label223:
+      str = "https://qun.qq.com/qunpay/gifts/index.html?_bid=2204&troopUin={troopUin}&uin={uin}&from={from}&_wv=1031";
+    }
   }
 }
 

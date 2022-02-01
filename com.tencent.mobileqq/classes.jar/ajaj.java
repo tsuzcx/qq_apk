@@ -1,32 +1,56 @@
-import com.tencent.mobileqq.activity.qwallet.preload.DownloadParam;
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager;
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.PathResult;
-import java.util.HashMap;
+import com.tencent.mobileqq.activity.contact.newfriend.SystemMsgListView;
+import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.List;
 
 public class ajaj
+  extends ankx
 {
-  int jdField_a_of_type_Int = 0;
-  ajam jdField_a_of_type_Ajam;
-  HashMap<String, PreloadManager.PathResult> jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  List<DownloadParam> jdField_a_of_type_JavaUtilList;
-  boolean jdField_a_of_type_Boolean = false;
+  public ajaj(SystemMsgListView paramSystemMsgListView) {}
   
-  public ajaj(List<DownloadParam> paramList, ajam paramajam)
+  protected void a(boolean paramBoolean, int paramInt, long paramLong, ArrayList<String> paramArrayList)
   {
-    this.jdField_a_of_type_JavaUtilList = paramajam;
-    Object localObject;
-    this.jdField_a_of_type_Ajam = localObject;
+    if (paramBoolean) {
+      SystemMsgListView.a(this.a).b(paramLong);
+    }
   }
   
-  public void a()
+  protected void a(boolean paramBoolean, Object paramObject)
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext())
+    if (paramBoolean) {
+      if (!(paramObject instanceof ArrayList)) {
+        break label76;
+      }
+    }
+    label76:
+    for (paramObject = (ArrayList)paramObject;; paramObject = null)
     {
-      DownloadParam localDownloadParam = (DownloadParam)localIterator.next();
-      this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadManager.a(localDownloadParam, new ajak(this));
+      if ((paramObject != null) && (paramObject.size() > 0))
+      {
+        paramObject = paramObject.iterator();
+        while (paramObject.hasNext())
+        {
+          Object localObject = paramObject.next();
+          if ((localObject instanceof Long)) {
+            SystemMsgListView.a(this.a).b(((Long)localObject).longValue());
+          }
+        }
+      }
+      return;
+    }
+  }
+  
+  protected void a(boolean paramBoolean, String paramString)
+  {
+    if (paramBoolean) {}
+    try
+    {
+      long l = Long.parseLong(paramString);
+      SystemMsgListView.a(this.a).b(l);
+      return;
+    }
+    catch (Exception paramString)
+    {
+      paramString.printStackTrace();
     }
   }
 }

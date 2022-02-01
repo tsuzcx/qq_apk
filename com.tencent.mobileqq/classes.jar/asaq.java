@@ -1,69 +1,18 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.aio.ForwardUtils;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import tencent.im.msg.im_msg_body.RichText;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.mobileqq.emoticonview.EmotionSearchPanel;
 
-class asaq
-  implements awkh
+public class asaq
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  asaq(asap paramasap) {}
+  public asaq(EmotionSearchPanel paramEmotionSearchPanel, int paramInt) {}
   
-  public MessageRecord a(im_msg_body.RichText paramRichText)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    return null;
-  }
-  
-  public void a(awki paramawki)
-  {
-    if ((paramawki != null) && (QLog.isColorLevel())) {
-      QLog.d(asap.a(), 2, "requestNormalShare updateMsg info =" + paramawki);
-    }
-  }
-  
-  public void b(awki paramawki)
-  {
-    String str = asap.a(this.a).getString("uin");
-    HashMap localHashMap = new HashMap();
-    if (asap.a(this.a))
-    {
-      localObject = "1";
-      localHashMap.put("param_time_out", localObject);
-      if (str != null) {
-        break label125;
-      }
-    }
-    label125:
-    for (Object localObject = "";; localObject = str)
-    {
-      aseh.a("KEY_STAGE_2_SEND_MSG_BY_SERVER", (String)localObject, localHashMap, ForwardUtils.a(paramawki));
-      QLog.d(asap.a(), 1, new Object[] { "requestNormalShare onSend result =", paramawki, ", isTimeOut=", Boolean.valueOf(asap.a(this.a)) });
-      if (!asap.a(this.a)) {
-        break label132;
-      }
-      return;
-      localObject = "0";
-      break;
-    }
-    label132:
-    if (ForwardUtils.a(paramawki))
-    {
-      paramawki = (String[])paramawki.jdField_a_of_type_JavaLangObject;
-      QLog.i(asap.a(), 1, "requestNormalShare onSend urls=" + paramawki[0] + " ," + paramawki[1]);
-      asap.a(this.a, paramawki[0], paramawki[1]);
-      return;
-    }
-    int i = paramawki.b;
-    boolean bool = ForwardUtils.a(asap.a(this.a));
-    localObject = (String[])paramawki.jdField_a_of_type_JavaLangObject;
-    QLog.e(asap.a(), 1, new Object[] { "requestNormalShare onSend error result.result : ", Integer.valueOf(paramawki.jdField_a_of_type_Int), ", errCode=" + i + ", hasSDPermission=" + bool });
-    if ((i == 9402) && (!bool) && (localObject != null) && (localObject.length == 2))
-    {
-      asap.a(this.a, localObject[0], localObject[1]);
-      return;
-    }
-    asap.a(this.a);
+    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    int i = (int)(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmotionSearchPanel.b - EmotionSearchPanel.a(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmotionSearchPanel) * f);
+    EmotionSearchPanel.a(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmotionSearchPanel, i);
+    EmotionSearchPanel.b(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmotionSearchPanel, (int)((1.0F - f) * this.jdField_a_of_type_Int));
   }
 }
 

@@ -6,6 +6,7 @@ import android.widget.SeekBar;
 import android.widget.SeekBar.OnSeekBarChangeListener;
 import android.widget.TextView;
 import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class MiniAppVideoPlayer$4
   implements SeekBar.OnSeekBarChangeListener
@@ -48,11 +49,12 @@ class MiniAppVideoPlayer$4
     if ((this.this$0.showCenterPlayBtn) && ("center".equals(this.this$0.playBtnPosition))) {
       MiniAppVideoPlayer.access$2400(this.this$0).setVisibility(0);
     }
+    EventCollector.getInstance().onStopTrackingTouch(paramSeekBar);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.widget.media.MiniAppVideoPlayer.4
  * JD-Core Version:    0.7.0.1
  */

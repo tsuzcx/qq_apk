@@ -1,16 +1,16 @@
 package com.tencent.biz.pubaccount.readinjoy.dynamicfeeds.datamodule;
 
-import ovj;
-import owd;
+import pkr;
+import pll;
 
 public class DynamicChannelHeaderModule$1
   implements Runnable
 {
-  public DynamicChannelHeaderModule$1(owd paramowd, int paramInt1, int paramInt2, ovj paramovj) {}
+  public DynamicChannelHeaderModule$1(pll parampll, int paramInt1, int paramInt2, pkr parampkr) {}
   
   public void run()
   {
-    owd.a(this.this$0, this.jdField_a_of_type_Int, this.b, this.jdField_a_of_type_Ovj);
+    pll.a(this.this$0, this.jdField_a_of_type_Int, this.b, this.jdField_a_of_type_Pkr);
   }
 }
 

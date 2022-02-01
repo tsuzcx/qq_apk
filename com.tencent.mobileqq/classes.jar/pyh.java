@@ -1,22 +1,15 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.model.SelectPositionModule.PositionData;
+import java.util.List;
 
-class pyh
-  implements View.OnClickListener
+public abstract interface pyh
 {
-  pyh(pyg parampyg) {}
+  public abstract void a(SelectPositionModule.PositionData paramPositionData);
   
-  public void onClick(View paramView)
-  {
-    paramView = this.a.jdField_a_of_type_Rqj.a();
-    if (paramView != null) {
-      paramView.a(null, ((pgd)this.a.jdField_a_of_type_JavaLangObject).a(), 2);
-    }
-  }
+  public abstract void a(List<qaa> paramList);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     pyh
  * JD-Core Version:    0.7.0.1
  */

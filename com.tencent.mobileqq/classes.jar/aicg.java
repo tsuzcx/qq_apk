@@ -1,17 +1,27 @@
-import android.app.Dialog;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment;
+import com.tencent.mobileqq.widget.PullRefreshHeader;
+import com.tencent.widget.ListView;
 
-public class aicg
-  implements View.OnClickListener
+class aicg
+  implements bkmq
 {
-  public aicg(ChatHistoryTroopMemberFragment paramChatHistoryTroopMemberFragment) {}
+  aicg(aibv paramaibv) {}
   
-  public void onClick(View paramView)
+  public void a(int paramInt, View paramView, ListView paramListView)
   {
-    this.a.d.dismiss();
+    aibv.a(this.a).setPullType(0);
+    aibv.a(this.a).c(aibv.g);
+    aibv.a(this.a, 0, this.a.a.a());
   }
+  
+  public boolean a(int paramInt, View paramView, ListView paramListView)
+  {
+    return false;
+  }
+  
+  public void b(int paramInt, View paramView, ListView paramListView) {}
+  
+  public void c(int paramInt, View paramView, ListView paramListView) {}
 }
 
 

@@ -1,44 +1,56 @@
-import android.graphics.Matrix;
-import android.view.animation.Animation;
-import android.view.animation.Transformation;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.PublicAccountListActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.AppInfo;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class aeve
-  extends Animation
+public class aeve
+  implements View.OnClickListener
 {
-  private float jdField_a_of_type_Float;
-  private float b;
+  public aeve(PublicAccountListActivity paramPublicAccountListActivity) {}
   
-  aeve(aeva paramaeva) {}
-  
-  protected void applyTransformation(float paramFloat, Transformation paramTransformation)
+  public void onClick(View paramView)
   {
-    float f2 = 1.5F;
-    float f1 = 0.0F;
-    if (paramFloat < this.jdField_a_of_type_Aeva.jdField_a_of_type_Float * 5.0F) {
-      paramFloat = f2;
+    switch (paramView.getId())
+    {
     }
     for (;;)
     {
-      paramTransformation.setAlpha(f1);
-      paramTransformation.getMatrix().setScale(paramFloat, paramFloat, this.jdField_a_of_type_Float, this.b);
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
-      if (paramFloat < 13.0F * this.jdField_a_of_type_Aeva.jdField_a_of_type_Float)
+      this.a.finish();
+      continue;
+      aevt.a(this.a);
+      oat.a(this.a.app, "P_CliOper", "Pb_account_lifeservice", "", "0X800573A", "0X800573A", 0, 0, "", "", "", "", false);
+      Object localObject1 = (baif)this.a.app.getManager(36);
+      Object localObject2 = ((baif)localObject1).a("101000.101001");
+      if ((localObject2 != null) && (((BusinessInfoCheckUpdate.AppInfo)localObject2).iNewFlag.get() == 1)) {
+        bcst.b(this.a.app, "P_CliOper", "Pb_account_lifeservice", "", "0X80060E3", "0X80060E3", 0, 0, "", "", "", "");
+      }
+      ((baif)localObject1).b("101000.101001");
+      continue;
+      localObject1 = (String)paramView.getTag(-1);
+      localObject2 = (String)paramView.getTag(-2);
+      if ((TextUtils.isEmpty((CharSequence)localObject1)) || (TextUtils.isEmpty((CharSequence)localObject2)))
       {
-        f1 = 0.5F - (paramFloat - this.jdField_a_of_type_Aeva.jdField_a_of_type_Float * 5.0F) / (this.jdField_a_of_type_Aeva.jdField_a_of_type_Float * 8.0F) * 0.5F;
-        paramFloat = 1.5F + (paramFloat - this.jdField_a_of_type_Aeva.jdField_a_of_type_Float * 5.0F) / (this.jdField_a_of_type_Aeva.jdField_a_of_type_Float * 8.0F) * 0.5F;
+        if (QLog.isColorLevel()) {
+          QLog.w("PublicAccountListActivity", 2, "onClick - uin = " + (String)localObject1 + ", name = " + (String)localObject2);
+        }
       }
       else
       {
-        paramFloat = 2.0F;
+        nmp.a(this.a.app, this.a, (String)localObject2, (String)localObject1, "IvrEnterpriseDetailEngineFalse");
+        continue;
+        aevt.a(this.a, (String)this.a.d.getTag());
+        oat.a(this.a.app, "P_CliOper", "Pb_account_lifeservice", "", "0X800573D", "0X800573D", 0, 0, "", "", "", "", false);
+        continue;
+        aevt.a(this.a, (String)this.a.d.getTag());
       }
     }
-  }
-  
-  public void initialize(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
-  {
-    super.initialize(paramInt1, paramInt2, paramInt3, paramInt4);
-    this.jdField_a_of_type_Float = (paramInt1 * 0.5F);
-    this.b = (paramInt2 * 0.5F);
   }
 }
 

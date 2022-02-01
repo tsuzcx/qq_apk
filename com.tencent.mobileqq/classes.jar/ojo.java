@@ -1,19 +1,19 @@
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
+import android.view.View;
+import android.view.animation.Animation;
 
 class ojo
-  implements ViewBase.OnClickListener
+  extends bkfi
 {
-  ojo(ojn paramojn) {}
+  ojo(ojm paramojm, View paramView) {}
   
-  public void onClick(ViewBase paramViewBase)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    this.a.jdField_a_of_type_Omg.b(this.a.jdField_a_of_type_Omt);
+    this.jdField_a_of_type_AndroidViewView.setVisibility(0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     ojo
  * JD-Core Version:    0.7.0.1
  */

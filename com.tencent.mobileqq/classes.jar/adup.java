@@ -1,19 +1,12 @@
-import com.tencent.mobileqq.activity.RegisterPhoneNumActivity;
-
-public class adup
-  implements adif
+public abstract interface adup
 {
-  public adup(RegisterPhoneNumActivity paramRegisterPhoneNumActivity) {}
+  public abstract void a();
   
-  public void a()
-  {
-    RegisterPhoneNumActivity.a(this.a).b();
-  }
+  public abstract void a(asfa paramasfa);
   
-  public void b()
-  {
-    RegisterPhoneNumActivity.a(this.a).b();
-  }
+  public abstract boolean a();
+  
+  public abstract void b(asfa paramasfa);
 }
 
 

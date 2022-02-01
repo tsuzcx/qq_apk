@@ -3,8 +3,8 @@ package com.tencent.mobileqq.vas.VasResEngine;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import bdhb;
-import bdvd;
+import bgmg;
+import bhae;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import java.util.ArrayList;
@@ -12,7 +12,7 @@ import java.util.ArrayList;
 public class VasResController$2
   implements Runnable
 {
-  public VasResController$2(bdvd parambdvd, String paramString, int paramInt1, int paramInt2) {}
+  public VasResController$2(bhae parambhae, String paramString, int paramInt1, int paramInt2) {}
   
   public void run()
   {
@@ -25,7 +25,7 @@ public class VasResController$2
     do
     {
       return;
-      localObject1 = bdhb.a(this.jdField_a_of_type_JavaLangString);
+      localObject1 = bgmg.a(this.jdField_a_of_type_JavaLangString);
     } while (((ArrayList)localObject1).size() <= 0);
     String[] arrayOfString = new String[((ArrayList)localObject1).size()];
     Object localObject2 = new StringBuilder();
@@ -43,7 +43,7 @@ public class VasResController$2
         i += 1;
       }
     }
-    localObject1 = bdvd.a(this.this$0).obtainMessage();
+    localObject1 = bhae.a(this.this$0).obtainMessage();
     localObject2 = new Bundle();
     ((Bundle)localObject2).putInt("type", 1);
     ((Bundle)localObject2).putStringArray("pngs", arrayOfString);
@@ -51,12 +51,12 @@ public class VasResController$2
     ((Bundle)localObject2).putInt("repeatTimes", this.b);
     ((Message)localObject1).setData((Bundle)localObject2);
     ((Message)localObject1).what = 10001;
-    bdvd.a(this.this$0).sendMessage((Message)localObject1);
+    bhae.a(this.this$0).sendMessage((Message)localObject1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.vas.VasResEngine.VasResController.2
  * JD-Core Version:    0.7.0.1
  */

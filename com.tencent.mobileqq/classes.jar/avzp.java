@@ -1,12 +1,19 @@
-import com.tencent.mobileqq.ocr.view.gesture.GestureProxy.StateSource;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.location.data.LocationRoom.Venue;
+import java.util.List;
 
-public abstract interface avzp
+public class avzp
 {
-  public abstract void a(GestureProxy.StateSource paramStateSource);
+  private int jdField_a_of_type_Int;
+  private avzr jdField_a_of_type_Avzr;
+  private BaseActivity jdField_a_of_type_ComTencentMobileqqAppBaseActivity;
+  private final List<LocationRoom.Venue> jdField_a_of_type_JavaUtilList;
+  private boolean jdField_a_of_type_Boolean;
+  private boolean b;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     avzp
  * JD-Core Version:    0.7.0.1
  */

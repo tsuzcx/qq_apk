@@ -1,19 +1,13 @@
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
+import com.tencent.image.URLDrawableHandler;
 
-public class tec
+public abstract interface tec
+  extends URLDrawableHandler
 {
-  public ImageView a;
-  public LinearLayout a;
-  public TextView a;
-  public LinearLayout b;
-  public TextView b;
-  public TextView c;
+  public abstract void a(String paramString);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     tec
  * JD-Core Version:    0.7.0.1
  */

@@ -1,25 +1,16 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.image.URLDrawable;
+import com.tencent.mobileqq.businessCard.activity.CardPicGalleryActivity;
 
-class apzz
-  implements View.OnClickListener
+public class apzz
+  implements DialogInterface.OnClickListener
 {
-  apzz(apzy paramapzy, String paramString) {}
+  public apzz(CardPicGalleryActivity paramCardPicGalleryActivity, URLDrawable paramURLDrawable, String paramString) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (apzy.a(this.jdField_a_of_type_Apzy).a(this.jdField_a_of_type_JavaLangString) == null) {
-      return;
-    }
-    boolean bool = apzy.a(this.jdField_a_of_type_Apzy).a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Apzy.jdField_a_of_type_Int, this.jdField_a_of_type_Apzy.jdField_a_of_type_JavaUtilList);
-    String str = apzy.a(this.jdField_a_of_type_Apzy) + "";
-    if (bool) {}
-    for (paramView = "1";; paramView = "2")
-    {
-      azqs.b(null, "dc00898", "", "", "0X800AC87", "0X800AC87", 2, 0, str, paramView, "", "");
-      this.jdField_a_of_type_Apzy.notifyDataSetChanged();
-      return;
-    }
+    CardPicGalleryActivity.a(this.jdField_a_of_type_ComTencentMobileqqBusinessCardActivityCardPicGalleryActivity, this.jdField_a_of_type_ComTencentImageURLDrawable, this.jdField_a_of_type_JavaLangString);
   }
 }
 

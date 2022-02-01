@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.app;
 
-import aluj;
-import auwz;
+import anno;
+import axei;
 import com.tencent.mobileqq.data.HotChatInfo;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Map;
@@ -24,21 +24,21 @@ class HotChatManager$AddHotChatInfoRunnable
         break label63;
       }
       if (QLog.isColorLevel()) {
-        auwz.a("HotChatManager", new Object[] { "AddHotChatInfoRunnable already exist", this.a.troopUin });
+        axei.a("HotChatManager", new Object[] { "AddHotChatInfoRunnable already exist", this.a.troopUin });
       }
     }
     return;
     label63:
     if (QLog.isColorLevel()) {
-      auwz.a("HotChatManager", new Object[] { "AddHotChatInfoRunnable", this.a.troopUin });
+      axei.a("HotChatManager", new Object[] { "AddHotChatInfoRunnable", this.a.troopUin });
     }
     this.this$0.a(this.a, 4);
-    ((aluj)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(35)).a();
+    ((anno)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(35)).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.app.HotChatManager.AddHotChatInfoRunnable
  * JD-Core Version:    0.7.0.1
  */

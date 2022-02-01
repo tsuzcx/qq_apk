@@ -1,13 +1,12 @@
-import com.tencent.common.app.AppInterface;
-import java.util.List;
+import android.graphics.Bitmap;
 
 public abstract interface alpf
 {
-  public abstract List<String> a(AppInterface paramAppInterface);
+  public abstract void a(Bitmap paramBitmap);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     alpf
  * JD-Core Version:    0.7.0.1
  */

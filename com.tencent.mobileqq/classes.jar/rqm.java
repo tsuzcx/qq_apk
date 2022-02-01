@@ -1,20 +1,21 @@
-class rqm
-  implements rjl
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.ugc.selectmember.FriendListFragment;
+
+public class rqm
+  implements bkkk
 {
-  rqm(rqj paramrqj) {}
+  public rqm(FriendListFragment paramFriendListFragment) {}
   
-  public void a(rjk paramrjk, boolean paramBoolean)
+  public void a(int paramInt)
   {
-    if (paramBoolean) {}
-    while ((this.a.c == 0) || (this.a.c == 56) || (qzy.c)) {
-      return;
+    if (FriendListFragment.a(this.a) != null) {
+      FriendListFragment.a(this.a).onClick(null);
     }
-    this.a.a(paramrjk);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     rqm
  * JD-Core Version:    0.7.0.1
  */

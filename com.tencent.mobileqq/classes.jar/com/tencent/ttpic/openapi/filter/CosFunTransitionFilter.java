@@ -66,6 +66,26 @@ public class CosFunTransitionFilter
     this.isInited = true;
   }
   
+  public CosFunTransitionFilter(String paramString1, String paramString2, int paramInt1, int paramInt2)
+  {
+    Object localObject = paramString2.split("/");
+    localObject = localObject[(localObject.length - 1)];
+    this.template = CfTemplateParser.parseCrazyFace(FileUtils.getRealPath(paramString2), (String)localObject);
+    this.MAX_SIZE = initMaxLength();
+    this.backgroundMode1 = paramInt1;
+    this.backgroundMode2 = paramInt2;
+    if (this.template == null) {}
+    do
+    {
+      return;
+      paramString1 = FaceOffUtil.getFaceBitmap(paramString1, this.MAX_SIZE.width, this.MAX_SIZE.height);
+    } while (!BitmapUtils.isLegal(paramString1));
+    paramInt1 = RendererUtils.createTexture(paramString1);
+    paramString1.recycle();
+    this.materialFrame = new Frame(0, paramInt1, paramString1.getWidth(), paramString1.getHeight());
+    this.isInited = true;
+  }
+  
   private SizeI initMaxLength()
   {
     if (DeviceUtils.hasDeviceHigh(AEModule.getContext())) {
@@ -313,7 +333,7 @@ public class CosFunTransitionFilter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.openapi.filter.CosFunTransitionFilter
  * JD-Core Version:    0.7.0.1
  */

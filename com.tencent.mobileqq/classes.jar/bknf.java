@@ -1,83 +1,28 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import android.widget.TextView;
-import com.tencent.mobileqq.richmedia.capture.view.EffectsCameraCaptureView;
-import com.tencent.mobileqq.troop.widget.RedDotImageView;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.QIMEffectCameraCaptureUnit;
-import dov.com.qq.im.capture.view.QIMProviderContainerView;
-import dov.com.tencent.mobileqq.activity.richmedia.VideoFilterViewPager;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.widget.ExpandableListView;
+import com.tencent.widget.PinnedHeaderExpandableListView;
 
 public class bknf
-  extends Handler
+  implements View.OnTouchListener
 {
-  public bknf(QIMEffectCameraCaptureUnit paramQIMEffectCameraCaptureUnit, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public bknf(PinnedHeaderExpandableListView paramPinnedHeaderExpandableListView) {}
   
-  public void handleMessage(Message paramMessage)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    switch (paramMessage.what)
+    if (paramMotionEvent.getAction() == 1)
     {
-    default: 
-    case 1000: 
-      for (;;)
+      long l = this.a.a(this.a.getFirstVisiblePosition());
+      if ((ExpandableListView.b(l) == 0) || (ExpandableListView.b(l) == 1))
       {
-        super.handleMessage(paramMessage);
-        return;
-        QIMEffectCameraCaptureUnit.d(this.a).setVisibility(8);
-        if (((paramMessage.obj instanceof Boolean)) && (((Boolean)paramMessage.obj).booleanValue()))
-        {
-          QIMEffectCameraCaptureUnit.f(this.a, false);
-          this.a.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewEffectsCameraCaptureView.z();
+        int i = ExpandableListView.c(l);
+        if ((PinnedHeaderExpandableListView.a(this.a) == null) || (!PinnedHeaderExpandableListView.a(this.a).a(this.a, paramView, i, PinnedHeaderExpandableListView.a(this.a).getGroupId(i)))) {
+          this.a.b(i);
         }
       }
     }
-    boolean bool1;
-    label104:
-    boolean bool2;
-    label134:
-    Object localObject;
-    if (paramMessage.arg1 == 1)
-    {
-      bool1 = true;
-      if ((!this.a.u) || (this.a.jdField_a_of_type_DovComQqImCaptureViewQIMProviderContainerView.a() == 0) || (!bool1)) {
-        break label237;
-      }
-      bool2 = true;
-      localObject = this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetRedDotImageView;
-      if (!bool2) {
-        break label243;
-      }
-      i = 0;
-      label150:
-      ((RedDotImageView)localObject).setVisibility(i);
-      localObject = this.a.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaVideoFilterViewPager;
-      if (!bool1) {
-        break label248;
-      }
-    }
-    label237:
-    label243:
-    label248:
-    for (int i = 0;; i = 4)
-    {
-      ((VideoFilterViewPager)localObject).setVisibility(i);
-      this.a.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaVideoFilterViewPager.setEnabled(bool1);
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.d("QIMEffectCameraCaptureUnit", 2, new Object[] { "checkEffectButton ", Boolean.valueOf(bool2), " filter So exists:", Boolean.valueOf(bool1) });
-      break;
-      bool1 = false;
-      break label104;
-      bool2 = false;
-      break label134;
-      i = 4;
-      break label150;
-    }
+    return true;
   }
 }
 

@@ -1,68 +1,151 @@
-import java.net.InetAddress;
-import java.net.Socket;
-import javax.net.ssl.HttpsURLConnection;
-import javax.net.ssl.SSLSocket;
-import javax.net.ssl.SSLSocketFactory;
+import NS_MOBILE_NEWEST_FEEDS.newest_feeds_req;
+import android.content.Intent;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.Friends;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class bafy
-  extends SSLSocketFactory
 {
-  private final SSLSocketFactory a;
+  private static final Pattern a = Pattern.compile("@?\\{uin:\\d+,nick(name)?:.*?\\}");
   
-  public bafy()
+  public static newest_feeds_req a(int paramInt, long paramLong1, ArrayList<Long> paramArrayList, long paramLong2, String paramString)
   {
-    this.a = HttpsURLConnection.getDefaultSSLSocketFactory();
+    return new newest_feeds_req(paramInt, paramLong1, paramArrayList, paramLong2, paramString, blru.a(), null);
   }
   
-  public bafy(SSLSocketFactory paramSSLSocketFactory)
+  public static newest_feeds_req a(Intent paramIntent)
   {
-    this.a = paramSSLSocketFactory;
-  }
-  
-  private Socket a(Socket paramSocket)
-  {
-    if ((paramSocket instanceof SSLSocket))
-    {
-      paramSocket = new bagb(this, (SSLSocket)paramSocket, null);
-      ((bagb)paramSocket).setEnabledProtocols(new String[] { "TLSv1.1", "TLSv1.2" });
-      return paramSocket;
+    if (paramIntent == null) {
+      return new newest_feeds_req();
     }
-    return paramSocket;
+    paramIntent = paramIntent.getSerializableExtra("req");
+    if ((paramIntent != null) && ((paramIntent instanceof newest_feeds_req))) {
+      return (newest_feeds_req)paramIntent;
+    }
+    return new newest_feeds_req();
   }
   
-  public Socket createSocket(String paramString, int paramInt)
+  public static Intent a(Intent paramIntent, newest_feeds_req paramnewest_feeds_req)
   {
-    return a(this.a.createSocket(paramString, paramInt));
+    Intent localIntent = paramIntent;
+    if (paramIntent == null) {
+      localIntent = new Intent();
+    }
+    localIntent.putExtra("req", paramnewest_feeds_req);
+    return localIntent;
   }
   
-  public Socket createSocket(String paramString, int paramInt1, InetAddress paramInetAddress, int paramInt2)
+  public static String a(String paramString)
   {
-    return a(this.a.createSocket(paramString, paramInt1, paramInetAddress, paramInt2));
+    if ("".equals(paramString)) {}
+    int j;
+    int i;
+    do
+    {
+      return null;
+      int k = paramString.indexOf("uin:");
+      j = paramString.indexOf(",");
+      i = 0;
+      if (k != -1) {
+        i = k + 4;
+      }
+    } while ((i == 0) || (j == -1));
+    return paramString.substring(i, j);
   }
   
-  public Socket createSocket(InetAddress paramInetAddress, int paramInt)
+  public static String a(String paramString, QQAppInterface paramQQAppInterface)
   {
-    return a(this.a.createSocket(paramInetAddress, paramInt));
+    if ((TextUtils.isEmpty(paramString)) || (paramQQAppInterface == null)) {
+      localObject = null;
+    }
+    Matcher localMatcher;
+    do
+    {
+      return localObject;
+      localMatcher = a.matcher(paramString);
+      localObject = paramString;
+    } while (!localMatcher.find());
+    String str2 = localMatcher.group();
+    String str3 = a(str2);
+    String str1 = "";
+    Object localObject = str1;
+    if (!TextUtils.isEmpty(str3))
+    {
+      anmw localanmw = (anmw)paramQQAppInterface.getManager(51);
+      localObject = str1;
+      if (localanmw != null)
+      {
+        localObject = localanmw.e(str3);
+        if (localObject == null) {
+          break label153;
+        }
+      }
+    }
+    label151:
+    label153:
+    for (localObject = ((Friends)localObject).getFriendNickWithAlias();; localObject = "")
+    {
+      if (TextUtils.isEmpty((CharSequence)localObject)) {
+        localObject = b(str2);
+      }
+      for (;;)
+      {
+        if (TextUtils.isEmpty((CharSequence)localObject)) {
+          break label151;
+        }
+        paramString = paramString.replace(str2, "@" + (String)localObject + " ");
+        break;
+      }
+      break;
+    }
   }
   
-  public Socket createSocket(InetAddress paramInetAddress1, int paramInt1, InetAddress paramInetAddress2, int paramInt2)
+  public static ArrayList<Long> a(QQAppInterface paramQQAppInterface)
   {
-    return a(this.a.createSocket(paramInetAddress1, paramInt1, paramInetAddress2, paramInt2));
+    paramQQAppInterface = (anmw)paramQQAppInterface.getManager(51);
+    if (paramQQAppInterface == null) {
+      return null;
+    }
+    Object localObject = paramQQAppInterface.d();
+    if (localObject != null)
+    {
+      paramQQAppInterface = new ArrayList(((ArrayList)localObject).size());
+      localObject = ((ArrayList)localObject).iterator();
+      while (((Iterator)localObject).hasNext())
+      {
+        Friends localFriends = (Friends)((Iterator)localObject).next();
+        if ((localFriends != null) && (Friends.isValidUin(localFriends.uin))) {
+          paramQQAppInterface.add(Long.valueOf(Long.parseLong(localFriends.uin)));
+        }
+      }
+    }
+    for (;;)
+    {
+      return paramQQAppInterface;
+      paramQQAppInterface = null;
+    }
   }
   
-  public Socket createSocket(Socket paramSocket, String paramString, int paramInt, boolean paramBoolean)
+  public static String b(String paramString)
   {
-    return a(this.a.createSocket(paramSocket, paramString, paramInt, paramBoolean));
-  }
-  
-  public String[] getDefaultCipherSuites()
-  {
-    return this.a.getDefaultCipherSuites();
-  }
-  
-  public String[] getSupportedCipherSuites()
-  {
-    return this.a.getSupportedCipherSuites();
+    if (TextUtils.isEmpty(paramString)) {}
+    int j;
+    int i;
+    do
+    {
+      return null;
+      int k = paramString.indexOf(",nick:");
+      j = paramString.indexOf("}");
+      i = 0;
+      if (k != -1) {
+        i = k + 6;
+      }
+    } while ((j == -1) || (i == 0));
+    return paramString.substring(i, j);
   }
 }
 

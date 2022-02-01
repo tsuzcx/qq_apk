@@ -1,31 +1,29 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.app.BaseActivity2;
-import com.tencent.mobileqq.gesturelock.GesturePWDUtils;
+import com.tencent.mobileqq.activity.richmedia.trimvideo.video.widget.VideoFramesRetriever;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class alow
-  extends BroadcastReceiver
+  implements Comparable<alow>
 {
-  private alow(BaseActivity2 paramBaseActivity2) {}
+  public int a;
+  public long a;
+  public int b;
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public alow(VideoFramesRetriever paramVideoFramesRetriever, long paramLong, int paramInt1, int paramInt2)
   {
-    if (paramIntent.getAction().equals("android.intent.action.SCREEN_OFF"))
-    {
-      BaseActivity2.mAppForground = false;
-      GesturePWDUtils.setAppForground(paramContext, BaseActivity2.mAppForground);
-    }
-    while (!paramIntent.getAction().equals("android.intent.action.SCREEN_ON")) {
-      return;
-    }
-    BaseActivity2.mAppForground = GesturePWDUtils.isAppOnForegroundByTasks(paramContext);
-    GesturePWDUtils.setAppForground(paramContext, BaseActivity2.mAppForground);
+    this.jdField_a_of_type_Long = paramLong;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = Math.min(paramInt2, VideoFramesRetriever.a(paramVideoFramesRetriever));
+    VideoFramesRetriever.a(paramVideoFramesRetriever).put(Integer.valueOf(paramInt1), this);
+  }
+  
+  public int a(alow paramalow)
+  {
+    return -(int)(this.jdField_a_of_type_Long - paramalow.jdField_a_of_type_Long);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     alow
  * JD-Core Version:    0.7.0.1
  */

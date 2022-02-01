@@ -1,19 +1,18 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.content.DialogInterface;
 
 class ziw
-  implements View.OnClickListener
+  extends bgmc
 {
-  ziw(zis paramzis) {}
+  ziw(ziv paramziv) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.j();
+    paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     ziw
  * JD-Core Version:    0.7.0.1
  */

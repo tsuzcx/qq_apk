@@ -1,24 +1,18 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.ark.setting.ArkAppListActivity;
-import com.tencent.mobileqq.ark.setting.ArkAuthorityInfoActivity;
+import java.io.File;
+import java.io.FileFilter;
+import java.util.regex.Pattern;
 
-public class anrp
-  implements View.OnClickListener
+class anrp
+  implements FileFilter
 {
-  public anrp(ArkAppListActivity paramArkAppListActivity, String paramString) {}
-  
-  public void onClick(View paramView)
+  public boolean accept(File paramFile)
   {
-    paramView = new Intent(this.jdField_a_of_type_ComTencentMobileqqArkSettingArkAppListActivity, ArkAuthorityInfoActivity.class);
-    paramView.putExtra("intent_extra_authority_app_name", this.jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_ComTencentMobileqqArkSettingArkAppListActivity.startActivity(paramView);
+    return Pattern.matches("cpu[0-9]+", paramFile.getName());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     anrp
  * JD-Core Version:    0.7.0.1
  */

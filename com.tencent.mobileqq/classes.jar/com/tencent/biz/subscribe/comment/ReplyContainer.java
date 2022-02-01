@@ -2,7 +2,7 @@ package com.tencent.biz.subscribe.comment;
 
 import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StComment;
 import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StReply;
-import alud;
+import aaga;
 import android.content.Context;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
@@ -12,10 +12,11 @@ import android.view.View.OnLongClickListener;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
+import anni;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.util.List;
-import yhn;
 
 public class ReplyContainer
   extends LinearLayout
@@ -23,8 +24,8 @@ public class ReplyContainer
 {
   private int jdField_a_of_type_Int;
   private CertifiedAccountMeta.StComment jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StComment;
+  private aaga jdField_a_of_type_Aaga;
   private ReplyActionView jdField_a_of_type_ComTencentBizSubscribeCommentReplyActionView;
-  private yhn jdField_a_of_type_Yhn;
   private int b;
   private int c;
   
@@ -97,7 +98,7 @@ public class ReplyContainer
         CertifiedAccountMeta.StReply localStReply = (CertifiedAccountMeta.StReply)localList.get(i);
         ReplyView localReplyView = new ReplyView(getContext());
         localReplyView.setPosition(i);
-        localReplyView.setOnCommentElementClickListener(this.jdField_a_of_type_Yhn);
+        localReplyView.setOnCommentElementClickListener(this.jdField_a_of_type_Aaga);
         localReplyView.setLayoutParams(new RelativeLayout.LayoutParams(-1, -2));
         localReplyView.setClickable(true);
         localReplyView.setFocusable(true);
@@ -128,7 +129,7 @@ public class ReplyContainer
         addView(this.jdField_a_of_type_ComTencentBizSubscribeCommentReplyActionView);
         setVisibility(0);
         return;
-        this.jdField_a_of_type_ComTencentBizSubscribeCommentReplyActionView.a().setText(alud.a(2131713790));
+        this.jdField_a_of_type_ComTencentBizSubscribeCommentReplyActionView.a().setText(anni.a(2131712169));
         this.jdField_a_of_type_ComTencentBizSubscribeCommentReplyActionView.a().setVisibility(0);
         this.jdField_a_of_type_ComTencentBizSubscribeCommentReplyActionView.b().setVisibility(8);
         continue;
@@ -138,7 +139,7 @@ public class ReplyContainer
           paramInt = j - paramInt;
           if (paramInt > 0)
           {
-            this.jdField_a_of_type_ComTencentBizSubscribeCommentReplyActionView.a().setText(alud.a(2131713788) + paramInt + alud.a(2131713789));
+            this.jdField_a_of_type_ComTencentBizSubscribeCommentReplyActionView.a().setText(anni.a(2131712167) + paramInt + anni.a(2131712168));
             this.jdField_a_of_type_ComTencentBizSubscribeCommentReplyActionView.a().setVisibility(0);
             this.jdField_a_of_type_ComTencentBizSubscribeCommentReplyActionView.b().setVisibility(8);
           }
@@ -159,18 +160,22 @@ public class ReplyContainer
     switch (paramView.getId())
     {
     }
-    do
+    for (;;)
     {
-      do
-      {
-        return;
-      } while (this.jdField_a_of_type_Yhn == null);
-      this.jdField_a_of_type_Yhn.a(paramView, 10, this.jdField_a_of_type_Int, this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StComment);
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
-    } while (this.jdField_a_of_type_Yhn == null);
-    CertifiedAccountMeta.StComment localStComment = this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StComment;
-    int i = getHeight() / this.c;
-    this.jdField_a_of_type_Yhn.a(paramView, 11, this.jdField_a_of_type_Int, new Object[] { localStComment, Integer.valueOf(i) });
+      if (this.jdField_a_of_type_Aaga != null)
+      {
+        this.jdField_a_of_type_Aaga.a(paramView, 10, this.jdField_a_of_type_Int, this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StComment);
+        continue;
+        if (this.jdField_a_of_type_Aaga != null)
+        {
+          CertifiedAccountMeta.StComment localStComment = this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StComment;
+          int i = getHeight() / this.c;
+          this.jdField_a_of_type_Aaga.a(paramView, 11, this.jdField_a_of_type_Int, new Object[] { localStComment, Integer.valueOf(i) });
+        }
+      }
+    }
   }
   
   public boolean onLongClick(View paramView)
@@ -183,9 +188,9 @@ public class ReplyContainer
     this.b = paramInt;
   }
   
-  public void setOnCommentElementClickListener(yhn paramyhn)
+  public void setOnCommentElementClickListener(aaga paramaaga)
   {
-    this.jdField_a_of_type_Yhn = paramyhn;
+    this.jdField_a_of_type_Aaga = paramaaga;
   }
   
   public void setPosition(int paramInt)
@@ -195,7 +200,7 @@ public class ReplyContainer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.subscribe.comment.ReplyContainer
  * JD-Core Version:    0.7.0.1
  */

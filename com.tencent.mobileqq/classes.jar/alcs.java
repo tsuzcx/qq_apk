@@ -1,18 +1,13 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.apollo.sdk.IPCSpriteContext;
+import android.content.DialogInterface;
 
-public final class alcs
-  implements Parcelable.Creator<IPCSpriteContext>
+class alcs
+  extends bgmc
 {
-  public IPCSpriteContext a(Parcel paramParcel)
-  {
-    return new IPCSpriteContext(paramParcel);
-  }
+  alcs(alcp paramalcp) {}
   
-  public IPCSpriteContext[] a(int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return new IPCSpriteContext[paramInt];
+    paramDialogInterface.dismiss();
   }
 }
 

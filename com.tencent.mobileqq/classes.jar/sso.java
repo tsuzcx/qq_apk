@@ -1,26 +1,30 @@
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.activity.recent.cur.DragTextView;
-import com.tencent.widget.SingleLineTextView;
+import android.app.Activity;
+import android.os.Bundle;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyProteusFamilyListViewGroup;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyProteusFamilyListViewGroup.9.1;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyProteusFamilyListViewGroup.9.2;
+import com.tencent.mobileqq.data.MessageRecord;
 
-class sso
-  extends bibi
+public class sso
+  implements plz
 {
-  Button jdField_a_of_type_AndroidWidgetButton;
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
-  DragTextView jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView;
-  SingleLineTextView jdField_a_of_type_ComTencentWidgetSingleLineTextView;
-  String jdField_a_of_type_JavaLangString;
-  Button jdField_b_of_type_AndroidWidgetButton;
-  SingleLineTextView jdField_b_of_type_ComTencentWidgetSingleLineTextView;
+  public sso(ReadInJoyProteusFamilyListViewGroup paramReadInJoyProteusFamilyListViewGroup) {}
   
-  sso(ssk paramssk) {}
+  public void a(MessageRecord paramMessageRecord) {}
+  
+  public void a(MessageRecord paramMessageRecord, int paramInt, Bundle paramBundle)
+  {
+    this.a.a().runOnUiThread(new ReadInJoyProteusFamilyListViewGroup.9.2(this));
+  }
+  
+  public void b(MessageRecord paramMessageRecord)
+  {
+    this.a.a().runOnUiThread(new ReadInJoyProteusFamilyListViewGroup.9.1(this));
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     sso
  * JD-Core Version:    0.7.0.1
  */

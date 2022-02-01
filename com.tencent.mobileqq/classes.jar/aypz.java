@@ -1,28 +1,72 @@
-class aypz
-  implements bbfz
+import kotlin.Metadata;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/onlinestatus/TimePair;", "", "interval", "", "updateTimeSec", "(JJ)V", "getInterval", "()J", "setInterval", "(J)V", "getUpdateTimeSec", "setUpdateTimeSec", "component1", "component2", "copy", "equals", "", "other", "hashCode", "", "toString", "", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class aypz
 {
-  aypz(aypv paramaypv, ayms paramayms) {}
+  private long a;
+  private long b;
   
-  public void a(String paramString, int paramInt)
+  public aypz()
   {
-    if ((this.jdField_a_of_type_Ayms.b != null) && (this.jdField_a_of_type_Ayms.b.equals(paramString)))
+    this(0L, 0L, 3, null);
+  }
+  
+  public aypz(long paramLong1, long paramLong2)
+  {
+    this.a = paramLong1;
+    this.b = paramLong2;
+  }
+  
+  public final long a()
+  {
+    return this.a;
+  }
+  
+  public final void a(long paramLong)
+  {
+    this.a = paramLong;
+  }
+  
+  public final long b()
+  {
+    return this.b;
+  }
+  
+  public final void b(long paramLong)
+  {
+    this.b = paramLong;
+  }
+  
+  public boolean equals(@Nullable Object paramObject)
+  {
+    if (this != paramObject)
     {
-      if (paramInt != 3) {
-        break label45;
-      }
-      this.jdField_a_of_type_Ayms.j = 2;
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Aypv.a();
-      return;
-      label45:
-      if ((paramInt == 2) || (paramInt == 4)) {
-        this.jdField_a_of_type_Ayms.j = 1;
-      } else if (paramInt == 1) {
-        this.jdField_a_of_type_Ayms.j = 0;
+      if ((paramObject instanceof aypz))
+      {
+        paramObject = (aypz)paramObject;
+        if ((this.a != paramObject.a) || (this.b != paramObject.b)) {}
       }
     }
+    else {
+      return true;
+    }
+    return false;
+  }
+  
+  public int hashCode()
+  {
+    long l = this.a;
+    int i = (int)(l ^ l >>> 32);
+    l = this.b;
+    return i * 31 + (int)(l ^ l >>> 32);
+  }
+  
+  @NotNull
+  public String toString()
+  {
+    return "TimePair(interval=" + this.a + ", updateTimeSec=" + this.b + ")";
   }
 }
 

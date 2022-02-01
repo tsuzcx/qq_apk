@@ -1,103 +1,47 @@
-import com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.profile.view.QzonePhotoView;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class azjv
+  implements View.OnClickListener
 {
-  private FileOutputStream jdField_a_of_type_JavaIoFileOutputStream;
-  private String jdField_a_of_type_JavaLangString;
-  private String b;
+  private long jdField_a_of_type_Long;
   
-  public azjv(String paramString)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_JavaLangString = (this.jdField_a_of_type_JavaLangString + File.separator + "audio_data_cache" + File.separator);
-    paramString = new File(this.jdField_a_of_type_JavaLangString);
-    boolean bool1 = paramString.mkdirs();
-    boolean bool2 = paramString.isDirectory();
-    if ((!bool1) && (!bool2)) {
-      throw new RuntimeException("AudioDataCache: mkd=" + bool1 + " isdir=" + bool2);
-    }
-  }
+  public azjv(QzonePhotoView paramQzonePhotoView) {}
   
-  private static void a(String paramString, Throwable paramThrowable)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel())
+    long l = System.currentTimeMillis();
+    if (Math.abs(l - this.jdField_a_of_type_Long) < 1000L) {}
+    for (;;)
     {
-      if (paramThrowable != null) {
-        QLog.d("AudioDataCache", 2, "[@] " + paramString, paramThrowable);
-      }
-    }
-    else {
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
-    }
-    QLog.d("AudioDataCache", 2, "[@] " + paramString);
-  }
-  
-  public String a(RMVideoStateMgr paramRMVideoStateMgr)
-  {
-    a("closeCache: path=" + this.b, null);
-    String str = this.jdField_a_of_type_JavaLangString + this.b;
-    if ((this.jdField_a_of_type_JavaIoFileOutputStream == null) || (paramRMVideoStateMgr != null)) {}
-    try
-    {
-      paramRMVideoStateMgr.g();
-      this.jdField_a_of_type_JavaIoFileOutputStream.close();
-    }
-    catch (IOException paramRMVideoStateMgr)
-    {
-      label74:
-      break label74;
-    }
-    this.jdField_a_of_type_JavaIoFileOutputStream = null;
-    this.b = null;
-    return str;
-  }
-  
-  public void a(RMVideoStateMgr paramRMVideoStateMgr)
-  {
-    a("initCache: oldpath=" + this.b + " mOutStream=" + this.jdField_a_of_type_JavaIoFileOutputStream, null);
-    a(paramRMVideoStateMgr);
-    this.b = azlm.a();
-    paramRMVideoStateMgr = this.jdField_a_of_type_JavaLangString + this.b;
-    File localFile = new File(paramRMVideoStateMgr);
-    if (localFile.exists()) {
-      throw new RuntimeException("AudioDataCache: file exists| " + paramRMVideoStateMgr);
-    }
-    try
-    {
-      this.jdField_a_of_type_JavaIoFileOutputStream = new FileOutputStream(localFile);
-      a("initCache: newPath=" + this.b, null);
-      return;
-    }
-    catch (FileNotFoundException paramRMVideoStateMgr)
-    {
-      for (;;)
+      this.jdField_a_of_type_Long = l;
+      if ((paramView != null) && ((paramView.getTag() instanceof azde)))
       {
-        this.jdField_a_of_type_JavaIoFileOutputStream = null;
+        Object localObject = (azde)paramView.getTag();
+        if (localObject != null)
+        {
+          int i = ((azde)localObject).a;
+          localObject = QzonePhotoView.a(this.jdField_a_of_type_ComTencentMobileqqProfileViewQzonePhotoView).a.a;
+          switch (i)
+          {
+          default: 
+            break;
+          case 25: 
+            bcst.b(this.jdField_a_of_type_ComTencentMobileqqProfileViewQzonePhotoView.a, "CliOper", "", "", "card_mall", "0X80066C4", 0, 0, "2", "", "", "");
+            if (QLog.isColorLevel()) {
+              QLog.i("ProfileCard.QzonePhotoView", 2, "View.OnClickListener click type is photo wall view");
+            }
+            QzonePhotoView.a(this.jdField_a_of_type_ComTencentMobileqqProfileViewQzonePhotoView, QzonePhotoView.a(this.jdField_a_of_type_ComTencentMobileqqProfileViewQzonePhotoView));
+          }
+        }
       }
     }
-  }
-  
-  public boolean a(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
-  {
-    boolean bool = false;
-    if (this.jdField_a_of_type_JavaIoFileOutputStream != null) {}
-    try
-    {
-      this.jdField_a_of_type_JavaIoFileOutputStream.write(paramArrayOfByte, paramInt1, paramInt2);
-      bool = true;
-      return bool;
-    }
-    catch (IOException paramArrayOfByte)
-    {
-      paramArrayOfByte.printStackTrace();
-      a("writeData: exp=", paramArrayOfByte);
-    }
-    return false;
   }
 }
 

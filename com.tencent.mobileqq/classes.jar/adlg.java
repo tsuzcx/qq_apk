@@ -1,46 +1,67 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.activity.NotifyPushSettingActivity;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.AddRequestActivity;
+import com.tencent.mobileqq.activity.SplashActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
-import com.tencent.mobileqq.widget.FormSwitchItem;
+import com.tencent.mobileqq.data.Friends;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class adlg
-  implements CompoundButton.OnCheckedChangeListener
+  implements View.OnClickListener
 {
-  public adlg(NotifyPushSettingActivity paramNotifyPushSettingActivity) {}
+  public adlg(AddRequestActivity paramAddRequestActivity) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void onClick(View paramView)
   {
-    int i = 1;
-    if (AppSetting.c) {
-      NotifyPushSettingActivity.c(this.a).setContentDescription(alud.a(2131719350));
-    }
-    SettingCloneUtil.writeValue(this.a, this.a.a, this.a.getString(2131719350), "qqsetting_notify_blncontrol_key", paramBoolean);
-    QQAppInterface localQQAppInterface;
-    if (paramBoolean)
+    int j = 0;
+    bcst.b(this.a.app, "CliOper", "", "", "Verification_msg", "Vfc_answ_clk", 0, 0, "", "", "", "");
+    Object localObject1 = this.a;
+    int i;
+    if (AddRequestActivity.a(this.a) == 3999)
     {
-      NotifyPushSettingActivity.a(this.a.getActivity(), this.a.app.getCurrentAccountUin(), "LED_light", 1);
-      localQQAppInterface = this.a.app;
-      if (!paramBoolean) {
-        break label147;
+      i = 3041;
+      AddRequestActivity.a((AddRequestActivity)localObject1, i);
+      Object localObject2 = (anmw)this.a.app.getManager(51);
+      boolean bool = ((anmw)localObject2).b(this.a.a);
+      localObject1 = afur.a(new Intent(this.a, SplashActivity.class), null);
+      ((Intent)localObject1).putExtra("uin", this.a.a);
+      ((Intent)localObject1).putExtra("add_friend_source_id", AddRequestActivity.a(this.a));
+      if (!bool) {
+        break label236;
       }
-      label89:
-      if (!paramBoolean) {
-        break label152;
+      localObject2 = ((anmw)localObject2).e(this.a.a);
+      if (localObject2 != null)
+      {
+        ((Intent)localObject1).putExtra("cSpecialFlag", ((Friends)localObject2).cSpecialFlag);
+        ((Intent)localObject1).putExtra("uinname", bglf.a((Friends)localObject2));
       }
+      label192:
+      if (!bool) {
+        break label269;
+      }
+      i = j;
     }
-    label147:
-    label152:
-    for (paramCompoundButton = "1";; paramCompoundButton = "0")
+    for (;;)
     {
-      azqs.b(localQQAppInterface, "CliOper", "", "", "Setting_tab", "Led_blinking", 0, i, paramCompoundButton, "", "", "");
+      ((Intent)localObject1).putExtra("uintype", i);
+      this.a.startActivity((Intent)localObject1);
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
-      NotifyPushSettingActivity.a(this.a.getActivity(), this.a.app.getCurrentAccountUin(), "LED_light", 0);
+      i = AddRequestActivity.a(this.a);
       break;
-      i = 0;
-      break label89;
+      label236:
+      ((Intent)localObject1).putExtra("uinname", this.a.b);
+      ((Intent)localObject1).putExtra("param_wzry_data", AddRequestActivity.a(this.a));
+      break label192;
+      label269:
+      if ((AddRequestActivity.a(this.a) == 2007) || (AddRequestActivity.a(this.a) == 3007) || (AddRequestActivity.a(this.a) == 4007)) {
+        i = 1001;
+      } else if ((AddRequestActivity.a(this.a) == 2019) || (AddRequestActivity.a(this.a) == 3019)) {
+        i = 1010;
+      } else {
+        i = 1022;
+      }
     }
   }
 }

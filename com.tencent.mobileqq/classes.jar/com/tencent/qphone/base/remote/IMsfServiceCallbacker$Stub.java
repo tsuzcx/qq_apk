@@ -11,10 +11,12 @@ public abstract class IMsfServiceCallbacker$Stub
   implements IMsfServiceCallbacker
 {
   private static final String DESCRIPTOR = "com.tencent.qphone.base.remote.IMsfServiceCallbacker";
-  static final int TRANSACTION_onReceivePushResp = 2;
+  static final int TRANSACTION_onFirstPkgResp = 2;
+  static final int TRANSACTION_onNextPkgResp = 3;
+  static final int TRANSACTION_onReceiveFirstPkgPushResp = 5;
+  static final int TRANSACTION_onReceiveNextPkgPushResp = 6;
+  static final int TRANSACTION_onReceivePushResp = 4;
   static final int TRANSACTION_onResponse = 1;
-  static final int TRANSACTION_onSyncReceivePushResp = 4;
-  static final int TRANSACTION_onSyncResponse = 3;
   
   public IMsfServiceCallbacker$Stub()
   {
@@ -41,6 +43,7 @@ public abstract class IMsfServiceCallbacker$Stub
   public boolean onTransact(int paramInt1, Parcel paramParcel1, Parcel paramParcel2, int paramInt2)
   {
     FromServiceMsg localFromServiceMsg = null;
+    Object localObject;
     switch (paramInt1)
     {
     default: 
@@ -54,7 +57,7 @@ public abstract class IMsfServiceCallbacker$Stub
       {
         localObject = (ToServiceMsg)ToServiceMsg.CREATOR.createFromParcel(paramParcel1);
         if (paramParcel1.readInt() == 0) {
-          break label140;
+          break label156;
         }
       }
       for (paramParcel1 = (FromServiceMsg)FromServiceMsg.CREATOR.createFromParcel(paramParcel1);; paramParcel1 = null)
@@ -68,34 +71,44 @@ public abstract class IMsfServiceCallbacker$Stub
     case 2: 
       paramParcel1.enforceInterface("com.tencent.qphone.base.remote.IMsfServiceCallbacker");
       if (paramParcel1.readInt() != 0) {}
+      for (localObject = (ToServiceMsg)ToServiceMsg.CREATOR.createFromParcel(paramParcel1);; localObject = null)
+      {
+        if (paramParcel1.readInt() != 0) {
+          localFromServiceMsg = (FromServiceMsg)FromServiceMsg.CREATOR.createFromParcel(paramParcel1);
+        }
+        onFirstPkgResp((ToServiceMsg)localObject, localFromServiceMsg, paramParcel1.readInt(), paramParcel1.readInt(), paramParcel1.readInt());
+        paramParcel2.writeNoException();
+        return true;
+      }
+    case 3: 
+      paramParcel1.enforceInterface("com.tencent.qphone.base.remote.IMsfServiceCallbacker");
+      onNextPkgResp(paramParcel1.readInt(), paramParcel1.readInt(), paramParcel1.createByteArray());
+      paramParcel2.writeNoException();
+      return true;
+    case 4: 
+      paramParcel1.enforceInterface("com.tencent.qphone.base.remote.IMsfServiceCallbacker");
+      if (paramParcel1.readInt() != 0) {}
       for (paramParcel1 = (FromServiceMsg)FromServiceMsg.CREATOR.createFromParcel(paramParcel1);; paramParcel1 = null)
       {
         onReceivePushResp(paramParcel1);
         paramParcel2.writeNoException();
         return true;
       }
-    case 3: 
-      label140:
+    case 5: 
+      label156:
       paramParcel1.enforceInterface("com.tencent.qphone.base.remote.IMsfServiceCallbacker");
       if (paramParcel1.readInt() != 0) {}
-      for (localObject = (ToServiceMsg)ToServiceMsg.CREATOR.createFromParcel(paramParcel1);; localObject = null)
+      for (localObject = (FromServiceMsg)FromServiceMsg.CREATOR.createFromParcel(paramParcel1);; localObject = null)
       {
-        if (paramParcel1.readInt() != 0) {
-          localFromServiceMsg = (FromServiceMsg)FromServiceMsg.CREATOR.createFromParcel(paramParcel1);
-        }
-        onSyncResponse((ToServiceMsg)localObject, localFromServiceMsg, paramParcel1.readInt(), paramParcel1.readInt(), paramParcel1.readInt());
+        onReceiveFirstPkgPushResp((FromServiceMsg)localObject, paramParcel1.readInt(), paramParcel1.readInt(), paramParcel1.readInt());
         paramParcel2.writeNoException();
         return true;
       }
     }
     paramParcel1.enforceInterface("com.tencent.qphone.base.remote.IMsfServiceCallbacker");
-    if (paramParcel1.readInt() != 0) {}
-    for (Object localObject = (FromServiceMsg)FromServiceMsg.CREATOR.createFromParcel(paramParcel1);; localObject = null)
-    {
-      onSyncReceivePushResp((FromServiceMsg)localObject, paramParcel1.readInt(), paramParcel1.readInt(), paramParcel1.readInt());
-      paramParcel2.writeNoException();
-      return true;
-    }
+    onReceiveNextPkgPushResp(paramParcel1.readInt(), paramParcel1.readInt(), paramParcel1.createByteArray());
+    paramParcel2.writeNoException();
+    return true;
   }
 }
 

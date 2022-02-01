@@ -1,24 +1,9 @@
-import android.os.Bundle;
-import android.os.ResultReceiver;
-
-class ajbd
-  implements alqc
+public class ajbd
+  extends ajax
 {
-  ajbd(ajaz paramajaz, Bundle paramBundle, int paramInt, ResultReceiver paramResultReceiver, alpy paramalpy) {}
-  
-  public void a(int paramInt, boolean paramBoolean)
+  public boolean a()
   {
-    this.jdField_a_of_type_AndroidOsBundle.putInt("updateResult", this.jdField_a_of_type_Int);
-    if (paramBoolean) {
-      this.jdField_a_of_type_AndroidOsBundle.putInt("isUpdateSuccess", 1);
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_AndroidOsResultReceiver.send(1, this.jdField_a_of_type_AndroidOsBundle);
-      this.jdField_a_of_type_Alpy.d(this);
-      return;
-      this.jdField_a_of_type_AndroidOsBundle.putInt("isUpdateSuccess", -1);
-    }
+    return true;
   }
 }
 

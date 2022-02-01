@@ -1,15 +1,16 @@
 package com.tencent.mobileqq.activity;
 
-import adfm;
+import aelp;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.SpannableString;
 import android.text.TextUtils;
-import aryv;
-import azqs;
-import azrh;
-import bfav;
+import aufz;
+import bcst;
+import bcti;
+import bihw;
+import com.tencent.mobileqq.activity.aio.ForwardUtils;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqprotect.qsec.QSecFramework;
@@ -26,15 +27,15 @@ class JumpActivity$5
     Object localObject1 = this.this$0.getIntent().getType();
     Object localObject3 = this.a.getString("pkg_name");
     if (QSecFramework.a().a(1003).booleanValue()) {
-      bfav.a().a(this.this$0, null);
+      bihw.a().a(this.this$0, null);
     }
     if ("cn.wps.moffice_eng".equals(localObject3)) {
-      azqs.b(this.this$0.app, "CliOper", "", "", "0X8008810", "0X8008810", 0, 0, "", "", "", "");
+      bcst.b(this.this$0.app, "CliOper", "", "", "0X8008810", "0X8008810", 0, 0, "", "", "", "");
     }
     if (TextUtils.isEmpty((CharSequence)localObject1)) {
       return;
     }
-    azrh.a(this.this$0.app.getApplication().getApplicationContext(), this.this$0.app.getCurrentAccountUin(), "dl_share_frd");
+    bcti.a(this.this$0.app.getApplication().getApplicationContext(), this.this$0.app.getCurrentAccountUin(), "dl_share_frd");
     if (QLog.isColorLevel()) {
       QLog.d("JumpAction", 2, "forward form JumpActivity doShare type=" + (String)localObject1);
     }
@@ -55,7 +56,7 @@ class JumpActivity$5
     {
       localObject1 = this.this$0.getIntent().getScheme();
       if ((TextUtils.isEmpty((CharSequence)localObject1)) || (!((String)localObject1).equals("geo"))) {
-        break label992;
+        break label1059;
       }
       localObject1 = new Intent();
       ((Intent)localObject1).putExtras(new Bundle());
@@ -63,7 +64,7 @@ class JumpActivity$5
       ((Intent)localObject1).putExtra("forward_from_jump", true);
       ((Intent)localObject1).putExtra("forward_type", -2);
       ((Intent)localObject1).setData(this.this$0.getIntent().getData());
-      aryv.a(this.this$0, (Intent)localObject1);
+      aufz.a(this.this$0, (Intent)localObject1);
       this.this$0.finish();
       return;
       if (!((String)localObject1).startsWith("message")) {
@@ -116,7 +117,7 @@ class JumpActivity$5
         this.this$0.finish();
         return;
         ((Intent)localObject1).putExtra("sendMultiple", true);
-        ((Intent)localObject1).putExtra("forward_text", this.this$0.getString(2131691100));
+        ((Intent)localObject1).putExtra("forward_text", this.this$0.getString(2131690921));
       }
     }
     localObject3 = this.this$0.getIntent().getAction();
@@ -137,17 +138,25 @@ class JumpActivity$5
           {
             ((Intent)localObject2).putExtra("sendMultiple", false);
             ((Intent)localObject2).putExtras(this.a);
-            new adfm(this.this$0, (Intent)localObject2).execute(new Object[] { this.this$0.getApplicationContext(), localObject3 });
+            new aelp(this.this$0, (Intent)localObject2).execute(new Object[] { this.this$0.getApplicationContext(), localObject3 });
             return;
           }
-          localObject1 = JumpActivity.a(this.this$0, (Uri)localObject3);
-          if (localObject1 == null)
+          localObject1 = ((Uri)localObject3).getPath();
+          localObject3 = JumpActivity.a(this.this$0, (Uri)localObject3);
+          if (localObject3 == null)
           {
             this.this$0.finish();
             return;
           }
-          ((Intent)localObject2).setData((Uri)localObject1);
-          label899:
+          if ((ForwardUtils.a()) && ("file".equals(((Uri)localObject3).getScheme())))
+          {
+            QLog.d("JumpAction", 1, new Object[] { "doShare scheme uriPath=", localObject1 });
+            if ((localObject1 != null) && (((String)localObject1).startsWith(ForwardUtils.a()))) {
+              ((Intent)localObject2).putExtra("path_for_file_scheme", (String)localObject1);
+            }
+          }
+          ((Intent)localObject2).setData((Uri)localObject3);
+          label966:
           ((Intent)localObject2).putExtra("sendMultiple", false);
         }
       }
@@ -155,21 +164,21 @@ class JumpActivity$5
     for (;;)
     {
       ((Intent)localObject2).putExtras(this.a);
-      aryv.a(this.this$0, (Intent)localObject2);
+      aufz.a(this.this$0, (Intent)localObject2);
       break;
       if ((localObject3 instanceof String))
       {
         ((Intent)localObject2).setData(Uri.parse((String)localObject3));
-        break label899;
+        break label966;
       }
       this.this$0.finish();
       return;
       this.this$0.finish();
       return;
       ((Intent)localObject2).putExtra("sendMultiple", true);
-      ((Intent)localObject2).putExtra("forward_text", this.this$0.getString(2131691100));
+      ((Intent)localObject2).putExtra("forward_text", this.this$0.getString(2131690921));
     }
-    label992:
+    label1059:
     this.this$0.finish();
   }
 }

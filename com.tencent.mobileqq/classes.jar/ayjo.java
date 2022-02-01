@@ -1,77 +1,106 @@
-import android.graphics.Bitmap;
-import android.view.View;
-import com.tencent.widget.AbsListView;
-import com.tencent.widget.ListView;
+import android.content.Context;
+import android.view.MotionEvent;
 
-public abstract class ayjo<M extends aynr, V extends aywb>
-  extends ayjn<M, V>
-  implements bdbc, bhtv
+public class ayjo
 {
-  protected int a;
-  protected bdbb a;
-  private ListView a;
+  private float jdField_a_of_type_Float;
+  private final ayjp jdField_a_of_type_Ayjp;
+  private boolean jdField_a_of_type_Boolean;
+  private float jdField_b_of_type_Float;
+  private boolean jdField_b_of_type_Boolean;
+  private float c;
+  private float d;
+  private float e;
   
-  public ayjo(ListView paramListView, bdbb parambdbb)
+  public ayjo(Context paramContext, ayjp paramayjp)
   {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_ComTencentWidgetListView = paramListView;
-    this.jdField_a_of_type_Bdbb = parambdbb;
-    parambdbb.a(this);
-    paramListView.setOnScrollListener(this);
+    this.jdField_a_of_type_Ayjp = paramayjp;
   }
   
-  public void onDecodeTaskCompleted(int paramInt1, int paramInt2, String paramString, Bitmap paramBitmap)
+  private float a(MotionEvent paramMotionEvent)
   {
-    if ((!this.jdField_a_of_type_Bdbb.a()) && ((this.jdField_a_of_type_Int == 0) || (this.jdField_a_of_type_Int == 1)))
-    {
-      int i = this.jdField_a_of_type_ComTencentWidgetListView.getChildCount();
-      paramInt1 = 0;
-      while (paramInt1 < i)
-      {
-        aynr localaynr = (aynr)this.jdField_a_of_type_ComTencentWidgetListView.getChildAt(paramInt1).getTag(2131379971);
-        if ((localaynr != null) && (localaynr.c() == paramInt2) && (paramString.equals(localaynr.b())))
-        {
-          ayqo localayqo = (ayqo)this.jdField_a_of_type_ComTencentWidgetListView.getChildAt(paramInt1).getTag(2131379973);
-          aywb localaywb = (aywb)this.jdField_a_of_type_ComTencentWidgetListView.getChildAt(paramInt1).getTag(2131379976);
-          if ((localayqo != null) && (localaywb != null)) {
-            localayqo.a(localaynr, localaywb, paramBitmap);
-          }
-        }
-        paramInt1 += 1;
-      }
+    return (float)Math.toDegrees(Math.atan2(paramMotionEvent.getY(1) - paramMotionEvent.getY(0), paramMotionEvent.getX(1) - paramMotionEvent.getX(0)));
+  }
+  
+  private void a()
+  {
+    if ((this.jdField_a_of_type_Boolean) || (Math.abs(this.c - this.d) < 5.0F)) {
+      return;
     }
+    this.jdField_a_of_type_Boolean = true;
+    this.jdField_b_of_type_Boolean = this.jdField_a_of_type_Ayjp.b(this);
   }
   
-  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
+  private boolean a()
   {
-    if (this.jdField_a_of_type_ComTencentWidgetListView == null) {}
-    for (;;)
+    return (this.jdField_a_of_type_Boolean) && (this.jdField_b_of_type_Boolean) && (this.jdField_a_of_type_Ayjp.a(this));
+  }
+  
+  private void b()
+  {
+    if (!this.jdField_a_of_type_Boolean) {}
+    do
     {
       return;
-      this.jdField_a_of_type_Int = paramInt;
-      if ((paramInt != 0) && (paramInt != 1)) {
-        break;
-      }
-      if (this.jdField_a_of_type_Bdbb.a()) {
-        this.jdField_a_of_type_Bdbb.b();
-      }
-      int i = this.jdField_a_of_type_ComTencentWidgetListView.getChildCount();
-      paramInt = 0;
-      while (paramInt < i)
-      {
-        aynr localaynr = (aynr)this.jdField_a_of_type_ComTencentWidgetListView.getChildAt(paramInt).getTag(2131379971);
-        ayqo localayqo = (ayqo)this.jdField_a_of_type_ComTencentWidgetListView.getChildAt(paramInt).getTag(2131379973);
-        aywb localaywb = (aywb)this.jdField_a_of_type_ComTencentWidgetListView.getChildAt(paramInt).getTag(2131379976);
-        if ((localayqo != null) && (localaynr != null) && (paramAbsListView != null)) {
-          localayqo.a(localaynr, localaywb);
-        }
-        paramInt += 1;
-      }
+      this.jdField_a_of_type_Boolean = false;
+    } while (!this.jdField_b_of_type_Boolean);
+    this.jdField_a_of_type_Ayjp.a(this);
+    this.jdField_b_of_type_Boolean = false;
+  }
+  
+  public float a()
+  {
+    return this.jdField_a_of_type_Float;
+  }
+  
+  public boolean a(MotionEvent paramMotionEvent)
+  {
+    int i = 0;
+    switch (paramMotionEvent.getActionMasked())
+    {
     }
-    this.jdField_a_of_type_Bdbb.a();
-    this.jdField_a_of_type_Bdbb.c();
+    do
+    {
+      do
+      {
+        do
+        {
+          do
+          {
+            return true;
+            b();
+            return true;
+          } while (paramMotionEvent.getPointerCount() != 2);
+          float f = a(paramMotionEvent);
+          this.d = f;
+          this.e = f;
+          this.c = f;
+          return true;
+        } while ((paramMotionEvent.getPointerCount() < 2) || ((this.jdField_a_of_type_Boolean) && (!this.jdField_b_of_type_Boolean)));
+        this.d = a(paramMotionEvent);
+        this.jdField_a_of_type_Float = ((paramMotionEvent.getX(1) + paramMotionEvent.getX(0)) * 0.5F);
+        this.jdField_b_of_type_Float = ((paramMotionEvent.getY(1) + paramMotionEvent.getY(0)) * 0.5F);
+        boolean bool = this.jdField_a_of_type_Boolean;
+        a();
+        if ((!bool) || (a())) {
+          i = 1;
+        }
+      } while (i == 0);
+      this.e = this.d;
+      return true;
+    } while (paramMotionEvent.getPointerCount() != 2);
+    b();
+    return true;
+  }
+  
+  public float b()
+  {
+    return this.jdField_b_of_type_Float;
+  }
+  
+  public float c()
+  {
+    return this.d - this.e;
   }
 }
 

@@ -1,29 +1,16 @@
-import com.tencent.biz.pubaccount.readinjoy.proteus.view.polymeric.helper.RecycleViewAdapterHelper.3.2.1;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
-import org.json.JSONObject;
+import android.view.View;
 
-public class puj
-  implements ViewBase.OnClickListener
+public abstract interface puj
 {
-  puj(puh parampuh) {}
+  public abstract int a();
   
-  public void onClick(ViewBase paramViewBase)
-  {
-    opy.a(this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusBeanTemplateBean, paramViewBase);
-    ors.a(pug.a(this.a.jdField_a_of_type_Pug).getContext(), paramViewBase.getEventAttachedData());
-    paramViewBase = (String)this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusBeanTemplateBean.getDataAttribute(paramViewBase.getViewId(), "topic_id");
-    this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusBeanTemplateBean.getData().remove("reddot_num");
-    this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusBeanTemplateBean.refreshData();
-    pug.a(this.a.jdField_a_of_type_Pug, new RecycleViewAdapterHelper.3.2.1(this));
-    owy.a().i(paramViewBase);
-  }
+  public abstract sey a();
+  
+  public abstract boolean a(View paramView);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     puj
  * JD-Core Version:    0.7.0.1
  */

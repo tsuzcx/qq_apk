@@ -7,20 +7,22 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import ayjp;
-import aykw;
-import bdbb;
+import aobu;
+import bbiq;
+import bbjz;
 import com.tencent.mobileqq.app.fms.FullMessageSearchResult.SearchResultItem;
+import com.tencent.qqlive.module.videoreport.inject.fragment.ReportV4Fragment;
+import com.tencent.qqlive.module.videoreport.inject.fragment.V4FragmentCollector;
 import com.tencent.widget.ListView;
 import java.util.List;
 
 public class MessageSearchDetailFragment
-  extends Fragment
+  extends ReportV4Fragment
 {
   private static FullMessageSearchResult.SearchResultItem jdField_a_of_type_ComTencentMobileqqAppFmsFullMessageSearchResult$SearchResultItem;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private ayjp jdField_a_of_type_Ayjp;
-  private bdbb jdField_a_of_type_Bdbb;
+  private aobu jdField_a_of_type_Aobu;
+  private bbiq jdField_a_of_type_Bbiq;
   private ListView jdField_a_of_type_ComTencentWidgetListView;
   private String jdField_a_of_type_JavaLangString;
   private FullMessageSearchResult.SearchResultItem b;
@@ -45,17 +47,18 @@ public class MessageSearchDetailFragment
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    paramLayoutInflater = paramLayoutInflater.inflate(2131559253, paramViewGroup, false);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramLayoutInflater.findViewById(2131367565));
-    this.jdField_a_of_type_ComTencentWidgetListView = ((ListView)paramLayoutInflater.findViewById(2131369519));
+    paramLayoutInflater = paramLayoutInflater.inflate(2131559338, paramViewGroup, false);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramLayoutInflater.findViewById(2131367877));
+    this.jdField_a_of_type_ComTencentWidgetListView = ((ListView)paramLayoutInflater.findViewById(2131369914));
+    V4FragmentCollector.onV4FragmentViewCreated(this, paramLayoutInflater);
     return paramLayoutInflater;
   }
   
   public void onDestroy()
   {
     super.onDestroy();
-    if (this.jdField_a_of_type_Bdbb != null) {
-      this.jdField_a_of_type_Bdbb.d();
+    if (this.jdField_a_of_type_Aobu != null) {
+      this.jdField_a_of_type_Aobu.d();
     }
   }
   
@@ -65,18 +68,18 @@ public class MessageSearchDetailFragment
     if ((this.b == null) || (this.b.secondPageMessageUniseq == null)) {}
     for (int i = 0;; i = this.b.secondPageMessageUniseq.size())
     {
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(getString(2131719581, new Object[] { Integer.valueOf(i), this.jdField_a_of_type_JavaLangString }));
-      this.jdField_a_of_type_Bdbb = new bdbb(getActivity(), getActivity().app);
-      this.jdField_a_of_type_Ayjp = new aykw(this, this.jdField_a_of_type_ComTencentWidgetListView, this.jdField_a_of_type_Bdbb, this.b, this.jdField_a_of_type_JavaLangString, getActivity().app);
-      this.jdField_a_of_type_ComTencentWidgetListView.setAdapter(this.jdField_a_of_type_Ayjp);
-      this.jdField_a_of_type_Ayjp.a();
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(getString(2131717619, new Object[] { Integer.valueOf(i), this.jdField_a_of_type_JavaLangString }));
+      this.jdField_a_of_type_Aobu = new aobu(getActivity(), getActivity().app);
+      this.jdField_a_of_type_Bbiq = new bbjz(this, this.jdField_a_of_type_ComTencentWidgetListView, this.jdField_a_of_type_Aobu, this.b, this.jdField_a_of_type_JavaLangString, getActivity().app);
+      this.jdField_a_of_type_ComTencentWidgetListView.setAdapter(this.jdField_a_of_type_Bbiq);
+      this.jdField_a_of_type_Bbiq.a();
       return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.search.fragment.MessageSearchDetailFragment
  * JD-Core Version:    0.7.0.1
  */

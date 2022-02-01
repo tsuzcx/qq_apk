@@ -29,7 +29,7 @@ public class r
   
   public int a(long paramLong, int paramInt1, int paramInt2, long[] paramArrayOfLong, WUserSigInfo paramWUserSigInfo, byte[] paramArrayOfByte)
   {
-    int j = t.w;
+    int j = t.x;
     Object localObject = t.b(this.x.h);
     tlv_t104 localtlv_t104 = ((async_context)localObject)._t104;
     if (localtlv_t104 == null) {
@@ -75,7 +75,7 @@ public class r
     Object localObject4 = new tlv_t17a();
     Object localObject2 = new tlv_t(407);
     Object localObject3 = new tlv_t542();
-    localObject1 = ((tlv_t8)localObject1).get_tlv_8(0, t.u, 0);
+    localObject1 = ((tlv_t8)localObject1).get_tlv_8(0, t.v, 0);
     paramArrayOfByte1 = localtlv_t104.get_tlv_104(paramArrayOfByte1);
     paramArrayOfLong = localtlv_t116.get_tlv_116(paramInt1, paramInt2, paramArrayOfLong);
     paramArrayOfByte2 = localtlv_t174.get_tlv_174(paramArrayOfByte2);

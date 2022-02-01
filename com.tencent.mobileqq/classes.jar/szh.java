@@ -1,19 +1,20 @@
+import android.content.Context;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.ViewFactory.FoundClickableViewListener;
+
 class szh
+  implements ViewFactory.FoundClickableViewListener
 {
-  int jdField_a_of_type_Int;
-  String jdField_a_of_type_JavaLangString;
-  boolean jdField_a_of_type_Boolean;
+  szh(szg paramszg, Context paramContext) {}
   
-  public szh(String paramString, int paramInt, boolean paramBoolean)
+  public void onFound(ViewBase paramViewBase)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    paramViewBase.setOnClickListener(new szi(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     szh
  * JD-Core Version:    0.7.0.1
  */

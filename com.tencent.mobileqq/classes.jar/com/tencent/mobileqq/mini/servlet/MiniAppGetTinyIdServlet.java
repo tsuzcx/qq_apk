@@ -4,7 +4,7 @@ import NS_MINI_INTERFACE.INTERFACE.StTinyidOpenidPair;
 import NS_MINI_INTERFACE.INTERFACE.StTrans4TinyidRsp;
 import android.content.Intent;
 import android.os.Bundle;
-import bdpd;
+import bguc;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt64Field;
@@ -55,14 +55,14 @@ public class MiniAppGetTinyIdServlet
       localObject = new byte[4];
     }
     paramPacket.setSSOCommand("LightAppSvc.mini_user_info.Trans4Tinyid");
-    paramPacket.putSendData(bdpd.a((byte[])localObject));
+    paramPacket.putSendData(bguc.a((byte[])localObject));
     paramPacket.setTimeout(paramIntent.getLongExtra("timeout", 30000L));
     super.onSend(paramIntent, paramPacket);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.servlet.MiniAppGetTinyIdServlet
  * JD-Core Version:    0.7.0.1
  */

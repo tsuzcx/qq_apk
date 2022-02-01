@@ -1,16 +1,6 @@
-import dov.com.qq.im.ae.camera.AEVideoCaptureResult;
-
 public abstract interface bksm
 {
-  public abstract void a(int paramInt);
-  
-  public abstract void a(axqw paramaxqw);
-  
-  public abstract void a(AEVideoCaptureResult paramAEVideoCaptureResult);
-  
-  public abstract void m();
-  
-  public abstract void n();
+  public abstract boolean a(float paramFloat1, float paramFloat2);
 }
 
 

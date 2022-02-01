@@ -2,8 +2,8 @@ package com.tencent.biz.pubaccount.util;
 
 import android.os.Bundle;
 import android.text.TextUtils;
-import bckx;
-import bcky;
+import bfpo;
+import bfpp;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -11,7 +11,7 @@ import com.tencent.mobileqq.app.ThreadManagerV2;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
 import mqq.manager.TicketManager;
-import syg;
+import tzt;
 
 public final class PublicAccountUtil$19
   implements Runnable
@@ -68,12 +68,12 @@ public final class PublicAccountUtil$19
           if (!TextUtils.isEmpty((CharSequence)localObject4))
           {
             localObject1 = new Bundle();
-            str = String.format("http://c.mp.qq.com/post/pageview/report?ftype=5&ctype=1&aid=%s&vid=%s&rtype=%d&rowkey=%s", new Object[] { this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, Integer.valueOf(this.jdField_a_of_type_Int), this.jdField_b_of_type_JavaLangString });
+            str = String.format("https://c.mp.qq.com/post/pageview/report?ftype=5&ctype=1&aid=%s&vid=%s&rtype=%d&rowkey=%s", new Object[] { this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, Integer.valueOf(this.jdField_a_of_type_Int), this.jdField_b_of_type_JavaLangString });
             ((Bundle)localObject1).putString("Cookie", "uin=" + (String)localObject3 + "; skey=" + (String)localObject4);
             localObject3 = new HashMap();
             ((HashMap)localObject3).put("BUNDLE", localObject1);
             ((HashMap)localObject3).put("CONTEXT", BaseApplicationImpl.getApplication());
-            localObject4 = new syg(this);
+            localObject4 = new tzt(this);
             localObject1 = str;
             if (this.jdField_a_of_type_Int == 1) {
               localObject1 = str + "&rcode=" + Integer.toString(this.jdField_b_of_type_Int);
@@ -81,7 +81,7 @@ public final class PublicAccountUtil$19
             if (QLog.isColorLevel()) {
               QLog.i("PublicAccountUtil", 2, "doVideoPlayRealtimeReport cgiUrl=" + (String)localObject1);
             }
-            new bcky((String)localObject1, "GET", (bckx)localObject4, 0, null).executeOnExecutor(ThreadManagerV2.getNetExcutor(), new HashMap[] { localObject3 });
+            new bfpp((String)localObject1, "GET", (bfpo)localObject4, 0, null).executeOnExecutor(ThreadManagerV2.getNetExcutor(), new HashMap[] { localObject3 });
             return;
           }
         }
@@ -91,7 +91,7 @@ public final class PublicAccountUtil$19
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.pubaccount.util.PublicAccountUtil.19
  * JD-Core Version:    0.7.0.1
  */

@@ -1,21 +1,13 @@
-import android.widget.FrameLayout;
+import kotlin.Metadata;
 
-class ual
-  implements uau
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/util/ReadInJoyShareHelperV2$OnFontSizeChangeListener;", "", "onFontSizeChange", "", "index", "", "textSizeRatio", "", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public abstract interface ual
 {
-  ual(uaj paramuaj) {}
-  
-  public void a()
-  {
-    if (uaj.a(this.a) != null) {
-      uaj.a(this.a).a(3);
-    }
-    uaj.a(this.a).setAlpha(0.0F);
-  }
+  public abstract void a(int paramInt, float paramFloat);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     ual
  * JD-Core Version:    0.7.0.1
  */

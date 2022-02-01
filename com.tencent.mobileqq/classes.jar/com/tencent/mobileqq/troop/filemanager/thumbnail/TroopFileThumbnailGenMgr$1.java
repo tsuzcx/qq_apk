@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.troop.filemanager.thumbnail;
 
-import bbxd;
+import bexo;
 
 public class TroopFileThumbnailGenMgr$1
   implements Runnable
 {
-  public TroopFileThumbnailGenMgr$1(bbxd parambbxd, String paramString, boolean paramBoolean, int paramInt, TroopFileThumbnailGenTask paramTroopFileThumbnailGenTask) {}
+  public TroopFileThumbnailGenMgr$1(bexo parambexo, String paramString, boolean paramBoolean, int paramInt, TroopFileThumbnailGenTask paramTroopFileThumbnailGenTask) {}
   
   public void run()
   {
@@ -14,7 +14,7 @@ public class TroopFileThumbnailGenMgr$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.troop.filemanager.thumbnail.TroopFileThumbnailGenMgr.1
  * JD-Core Version:    0.7.0.1
  */

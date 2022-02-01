@@ -1,70 +1,48 @@
-import com.tencent.biz.now.NowVideoView;
-import com.tencent.image.AbsThirdDataSourceAdapter;
-import com.tencent.image.AbsThirdDataSourceAdapter.OnPreparedCallback;
-import com.tencent.mobileqq.data.MessageRecord;
+import java.util.Iterator;
 import java.util.List;
 
 public class ngj
-  extends AbsThirdDataSourceAdapter
 {
-  int jdField_a_of_type_Int = 0;
-  AbsThirdDataSourceAdapter.OnPreparedCallback jdField_a_of_type_ComTencentImageAbsThirdDataSourceAdapter$OnPreparedCallback;
-  String jdField_a_of_type_JavaLangString;
-  
-  public ngj(NowVideoView paramNowVideoView) {}
-  
-  public boolean a()
+  public static nfz a()
   {
-    if (!this.jdField_a_of_type_ComTencentBizNowNowVideoView.jdField_a_of_type_Nga.a(this.jdField_a_of_type_ComTencentBizNowNowVideoView.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.frienduin, this.jdField_a_of_type_ComTencentBizNowNowVideoView.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.time)) {
-      return true;
-    }
-    if (this.jdField_a_of_type_ComTencentBizNowNowVideoView.jdField_a_of_type_JavaUtilList.size() > 0)
+    return a(1);
+  }
+  
+  public static nfz a(int paramInt)
+  {
+    Object localObject = aqnx.a().a();
+    if (localObject != null)
     {
-      String str = (String)this.jdField_a_of_type_ComTencentBizNowNowVideoView.jdField_a_of_type_JavaUtilList.get(this.jdField_a_of_type_ComTencentBizNowNowVideoView.jdField_a_of_type_JavaUtilList.size() - 1);
-      this.jdField_a_of_type_Int = 2;
-      this.jdField_a_of_type_JavaLangString = str;
-      if ((this.jdField_a_of_type_ComTencentImageAbsThirdDataSourceAdapter$OnPreparedCallback != null) && (this.jdField_a_of_type_ComTencentBizNowNowVideoView.d == 0))
+      localObject = ((List)localObject).iterator();
+      while (((Iterator)localObject).hasNext())
       {
-        this.jdField_a_of_type_ComTencentImageAbsThirdDataSourceAdapter$OnPreparedCallback.onPrepared();
-        return true;
+        nfz localnfz = (nfz)((Iterator)localObject).next();
+        if (localnfz.a == paramInt) {
+          return localnfz;
+        }
       }
     }
-    return false;
+    return new nfz(0, 10, 15);
   }
   
-  public int getPlayType()
+  public static nfz b()
   {
-    return 1;
+    return a(2);
   }
   
-  public int getStaus()
+  public static nfz c()
   {
-    return this.jdField_a_of_type_Int;
+    return a(3);
   }
   
-  public String getURL()
+  public static nfz d()
   {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public void requestPrepare(String paramString, AbsThirdDataSourceAdapter.OnPreparedCallback paramOnPreparedCallback)
-  {
-    this.jdField_a_of_type_ComTencentImageAbsThirdDataSourceAdapter$OnPreparedCallback = paramOnPreparedCallback;
-    if (this.jdField_a_of_type_ComTencentBizNowNowVideoView.jdField_a_of_type_JavaUtilList.size() > 0)
-    {
-      paramString = (String)this.jdField_a_of_type_ComTencentBizNowNowVideoView.jdField_a_of_type_JavaUtilList.get(this.jdField_a_of_type_ComTencentBizNowNowVideoView.jdField_a_of_type_JavaUtilList.size() - 1);
-      this.jdField_a_of_type_Int = 2;
-      this.jdField_a_of_type_JavaLangString = paramString;
-      paramOnPreparedCallback.onPrepared();
-      return;
-    }
-    this.jdField_a_of_type_Int = 1;
-    this.jdField_a_of_type_ComTencentBizNowNowVideoView.jdField_a_of_type_Nga.a(this.jdField_a_of_type_ComTencentBizNowNowVideoView.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.frienduin, this.jdField_a_of_type_ComTencentBizNowNowVideoView.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentBizNowNowVideoView.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.time);
+    return a(4);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ngj
  * JD-Core Version:    0.7.0.1
  */

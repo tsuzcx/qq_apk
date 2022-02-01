@@ -1,30 +1,26 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.richmedia.capture.view.PtvTemplateProviderView;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import android.os.Handler.Callback;
+import android.os.Message;
 
-public final class axse
-  extends BroadcastReceiver
+class axse
+  implements Handler.Callback
 {
-  private axse(PtvTemplateProviderView paramPtvTemplateProviderView) {}
+  axse(axsd paramaxsd) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public boolean handleMessage(Message paramMessage)
   {
-    if ("action_brocassreceiver_for_ptv".equals(paramIntent.getAction()))
+    switch (paramMessage.what)
     {
-      axoc.a().b(false);
-      PtvTemplateProviderView.a(this.a);
-      if (QLog.isColorLevel()) {
-        QLog.d("PtvTemplateProviderView", 2, "PtvTemplateProviderView PtvBroadcastReceiver size=" + this.a.a.size());
-      }
+    }
+    for (;;)
+    {
+      return true;
+      axsd.a(this.a);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     axse
  * JD-Core Version:    0.7.0.1
  */

@@ -1,24 +1,30 @@
+import android.view.MotionEvent;
 import android.view.View;
-import com.tencent.av.camera.CameraUtils;
-import com.tencent.av.ui.AVActivity;
+import android.view.View.OnTouchListener;
+import com.tencent.av.ui.GAudioMembersCtrlActivity;
 
 public class mdn
-  implements bhuk
+  implements View.OnTouchListener
 {
-  public mdn(AVActivity paramAVActivity) {}
+  public mdn(GAudioMembersCtrlActivity paramGAudioMembersCtrlActivity) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (this.a.a != null)
+    switch (paramMotionEvent.getAction())
     {
-      this.a.a.a();
-      this.a.a.b();
+    }
+    for (;;)
+    {
+      return false;
+      paramView.setAlpha(0.5F);
+      continue;
+      paramView.setAlpha(1.0F);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     mdn
  * JD-Core Version:    0.7.0.1
  */

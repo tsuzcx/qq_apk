@@ -1,182 +1,65 @@
-import com.tencent.biz.pubaccount.readinjoy.preload.util.FeedsPreloadDataReport.1;
-import com.tencent.qphone.base.remote.ToServiceMsg;
+import android.text.TextUtils;
+import com.tencent.aladdin.config.handlers.AladdinConfigHandler;
 import com.tencent.qphone.base.util.QLog;
-import java.util.List;
-import org.json.JSONException;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
 
 public class piw
+  implements AladdinConfigHandler
 {
-  public static void a(ToServiceMsg paramToServiceMsg, int paramInt)
+  public boolean onReceiveConfig(int paramInt1, int paramInt2, String paramString)
   {
-    Object localObject;
-    boolean bool1;
-    boolean bool2;
-    label130:
-    long l;
-    if (paramToServiceMsg != null)
+    QLog.d("NativeProteusBidConfigHandler", 1, "[onReceiveConfig] " + paramString);
+    Map localMap = phv.a(paramString);
+    Object localObject2 = localMap.keySet();
+    Object localObject1 = "";
+    paramString = "";
+    Iterator localIterator = ((Set)localObject2).iterator();
+    String str;
+    if (localIterator.hasNext())
     {
-      localObject = (Long)paramToServiceMsg.getAttribute("feedsRequestBeginTime");
-      Integer localInteger = (Integer)paramToServiceMsg.getAttribute("channelID");
-      Long localLong = (Long)paramToServiceMsg.getAttribute(pgp.d);
-      Boolean localBoolean = (Boolean)paramToServiceMsg.getAttribute("hitFeedsPreloadCache");
-      if (localBoolean == null) {
-        break label268;
-      }
-      bool1 = localBoolean.booleanValue();
-      if ((localInteger != null) && (localInteger.intValue() == 0) && (localLong != null) && (localLong.longValue() == -1L))
+      str = (String)localIterator.next();
+      localObject2 = (String)localMap.get(str);
+      QLog.d("NativeProteusBidConfigHandler", 2, "[onReceiveConfig] key=" + str + ", value=" + (String)localObject2);
+      if (TextUtils.equals(str, "native_article"))
       {
-        if ((localObject == null) || (((Long)localObject).longValue() <= 0L)) {
-          break label303;
-        }
-        paramToServiceMsg = (List)paramToServiceMsg.getAttribute("SubscriptionArticles");
-        if ((paramToServiceMsg == null) || (paramToServiceMsg.size() <= 0)) {
-          break label273;
-        }
-        bool2 = true;
-        l = System.currentTimeMillis() - ((Long)localObject).longValue();
-        QLog.d("FeedsPreloadDataReport", 1, new Object[] { "refreshTime = ", Long.valueOf(l), ", hitFeedsPreloadCache = ", Boolean.valueOf(bool1), ", isRedPoint = ", Boolean.valueOf(bool2) });
-        localObject = ors.a();
-        if (!bool2) {
-          break label278;
-        }
-        paramToServiceMsg = "1";
+        bmqa.a("native_proteus_offline_bid", (String)localObject2);
+        paramString = (String)localObject1;
+        localObject1 = localObject2;
       }
     }
     for (;;)
     {
-      try
-      {
-        ((orz)localObject).a("is_reddot", paramToServiceMsg);
-        if (!bool1) {
-          continue;
-        }
-        paramToServiceMsg = "1";
-        ((orz)localObject).a("hit_preload", paramToServiceMsg);
-        ((orz)localObject).a("refresh_cost", String.valueOf(l));
-        ((orz)localObject).a("refresh_num", String.valueOf(paramInt));
-      }
-      catch (JSONException paramToServiceMsg)
-      {
-        label268:
-        label273:
-        label278:
-        QLog.d("FeedsPreloadDataReport", 1, "reportFeedsRefreshCost, e = ", paramToServiceMsg);
-        continue;
-      }
-      a("0X8009C16", ((orz)localObject).a());
-      piy.a(l, bool1);
-      return;
-      bool1 = false;
+      localObject2 = paramString;
+      paramString = (String)localObject1;
+      localObject1 = localObject2;
       break;
-      bool2 = false;
-      break label130;
-      paramToServiceMsg = "0";
-      continue;
-      paramToServiceMsg = "0";
-    }
-    label303:
-    QLog.d("FeedsPreloadDataReport", 1, "beginTime is null, no need to report.");
-  }
-  
-  private static void a(String paramString1, String paramString2)
-  {
-    piu.a().a(new FeedsPreloadDataReport.1(paramString1, paramString2));
-  }
-  
-  public static void a(boolean paramBoolean, int paramInt)
-  {
-    orz localorz = ors.a();
-    String str;
-    if (paramBoolean) {
-      str = "1";
-    }
-    try
-    {
-      for (;;)
+      if (TextUtils.equals(str, "native_article_cdn_url"))
       {
-        localorz.a("preload_reddot", str);
-        localorz.a("preload_num", String.valueOf(paramInt));
-        a("0X8009C15", localorz.a());
-        return;
-        str = "0";
-      }
-    }
-    catch (JSONException localJSONException)
-    {
-      for (;;)
-      {
-        QLog.d("FeedsPreloadDataReport", 1, "reportHitFeedsPreloadCache, e = ", localJSONException);
-      }
-    }
-  }
-  
-  public static void a(boolean paramBoolean, int paramInt, long paramLong)
-  {
-    orz localorz = ors.a();
-    String str;
-    if (paramBoolean) {
-      str = "1";
-    }
-    for (;;)
-    {
-      try
-      {
-        localorz.a("preload_reddot", str);
-        localorz.a("preload_num", String.valueOf(paramInt));
-        localorz.a("package_size", String.valueOf(paramLong));
-        if (paramLong <= 20000L) {
-          continue;
-        }
-        str = "1";
-        localorz.a("is_too_large", str);
-      }
-      catch (JSONException localJSONException)
-      {
-        QLog.d("FeedsPreloadDataReport", 1, "reportReceiveFeedsPreload, e = ", localJSONException);
+        localObject1 = paramString;
+        paramString = (String)localObject2;
         continue;
+        tfc.a(paramString, (String)localObject1);
+        return true;
       }
-      a("0X8009C14", localorz.a());
-      return;
-      str = "0";
-      continue;
-      str = "0";
+      else
+      {
+        localObject2 = paramString;
+        paramString = (String)localObject1;
+        localObject1 = localObject2;
+      }
     }
   }
   
-  public static void a(boolean paramBoolean1, boolean paramBoolean2)
+  public void onWipeConfig(int paramInt)
   {
-    orz localorz = ors.a();
-    String str;
-    if (paramBoolean1) {
-      str = "1";
-    }
-    for (;;)
-    {
-      try
-      {
-        localorz.a("preload_reddot", str);
-        if (!paramBoolean2) {
-          continue;
-        }
-        str = "1";
-        localorz.a("has_exception", str);
-      }
-      catch (JSONException localJSONException)
-      {
-        QLog.d("FeedsPreloadDataReport", 1, "reportTriggerFeedsPreload, e = ", localJSONException);
-        continue;
-      }
-      a("0X8009C13", localorz.a());
-      return;
-      str = "0";
-      continue;
-      str = "0";
-    }
+    bmqa.a("native_proteus_offline_bid", "0");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     piw
  * JD-Core Version:    0.7.0.1
  */

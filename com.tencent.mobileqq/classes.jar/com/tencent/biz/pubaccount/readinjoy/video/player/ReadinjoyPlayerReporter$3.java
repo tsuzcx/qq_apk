@@ -1,31 +1,19 @@
 package com.tencent.biz.pubaccount.readinjoy.video.player;
 
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import java.util.Properties;
-import qlq;
-import rjn;
-import rof;
+import sfb;
+import sim;
 
 public class ReadinjoyPlayerReporter$3
   implements Runnable
 {
-  public ReadinjoyPlayerReporter$3(rof paramrof, rjn paramrjn) {}
+  public ReadinjoyPlayerReporter$3(sim paramsim, sfb paramsfb) {}
   
   public void run()
   {
-    if (rof.a(this.this$0)) {
+    if (sim.a(this.this$0)) {
       return;
     }
-    Properties localProperties = this.a.a().getPlayDetailsTime();
-    this.this$0.a.f = Long.valueOf(localProperties.getProperty("httpdnsMS")).longValue();
-    this.this$0.a.g = Long.valueOf(localProperties.getProperty("httpredirectMS")).longValue();
-    this.this$0.a.h = Long.valueOf(localProperties.getProperty("cacheframeMS")).longValue();
-    if (1 == this.this$0.a.a) {
-      this.this$0.a.i = Long.valueOf(localProperties.getProperty("vidtourlMS")).longValue();
-    }
-    this.this$0.a.j = Long.valueOf(localProperties.getProperty("httpfirstrecvMS")).longValue();
-    this.this$0.a.k = Long.valueOf(localProperties.getProperty("getmp4headerMS")).longValue();
-    this.this$0.a.l = Long.valueOf(localProperties.getProperty("httpconnectMS")).longValue();
+    this.a.a();
   }
 }
 

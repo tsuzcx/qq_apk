@@ -1,22 +1,24 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import com.tencent.mobileqq.widget.qqfloatingscreen.FloatingScreenContainer;
+import android.os.Bundle;
+import java.util.UUID;
 
-public class bexh
-  implements Animator.AnimatorListener
+class bexh
+  extends aarj
 {
-  public bexh(FloatingScreenContainer paramFloatingScreenContainer) {}
+  bexh(bexg parambexg) {}
   
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
+  public void a(boolean paramBoolean, int paramInt1, int paramInt2, String paramString1, String paramString2, String paramString3, Bundle paramBundle)
   {
-    paramAnimator.removeAllListeners();
+    if (paramBundle.getLong("troopUin") != bexg.a(this.a)) {}
+    do
+    {
+      return;
+      paramBundle = paramBundle.getString("itemKey");
+    } while ((paramBundle == null) || (!UUID.fromString(paramBundle).equals(this.a.a())));
+    if (!paramBoolean) {
+      bevx.a("TroopFileToTroopForwarder", bevx.a, "[" + bexg.a(this.a) + "] onFowardToTroopResult isSuccess:false ");
+    }
+    bexg.a(this.a, paramInt1, paramInt2, paramString1, paramString2, paramString3);
   }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

@@ -1,27 +1,14 @@
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.VideoInfo;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsFirstVideoRecommendationManager.VideoFeedsFirstRecommendObserver.1;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoPreDownloadMgr;
-import com.tencent.qphone.base.util.QLog;
+import kotlin.Metadata;
 
-public class rcf
-  implements osi
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/share/watchword/mvp/RIJReadWatchWordModel;", "Lcom/tencent/biz/pubaccount/readinjoy/share/watchword/mvp/IRIJReadWatchWordShareContract$IModel;", "()V", "requestWatchWordUrl", "", "watchWord", "", "callback", "Lkotlin/Function5;", "Lkotlin/ParameterName;", "name", "jumpUrl", "", "type", "Lcom/tencent/biz/pubaccount/readinjoy/share/watchword/mvp/RIJReadWatchWordModel$UserInfo;", "userInfo", "Lcom/tencent/biz/pubaccount/readinjoy/share/watchword/mvp/RIJReadWatchWordModel$VideoInfo;", "videoInfo", "Lcom/tencent/biz/pubaccount/readinjoy/share/watchword/mvp/RIJReadWatchWordModel$TopicInfo;", "topicInfo", "Companion", "TopicInfo", "UserInfo", "VideoInfo", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class rcf
+  implements rca
 {
-  public rcf(VideoFeedsFirstVideoRecommendationManager.VideoFeedsFirstRecommendObserver.1 param1, VideoPreDownloadMgr paramVideoPreDownloadMgr) {}
-  
-  public void a(osl paramosl)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(rcd.a(), 2, "UUIDToUrlCallback Callback vid=" + paramosl.jdField_b_of_type_JavaLangString + ", url=" + paramosl.jdField_a_of_type_JavaLangString + ", isH265=" + paramosl.jdField_a_of_type_Boolean + ", isHWCodec=" + paramosl.jdField_b_of_type_Boolean + ", fileBitRate=" + paramosl.c);
-    }
-    if ((!TextUtils.isEmpty(paramosl.jdField_a_of_type_JavaLangString)) && (!this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoPreDownloadMgr.a(paramosl.jdField_a_of_type_JavaLangString, paramosl.jdField_b_of_type_JavaLangString))) {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoPreDownloadMgr.a(paramosl.jdField_a_of_type_JavaLangString, paramosl.jdField_b_of_type_JavaLangString, 0, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsFirstVideoRecommendationManager$VideoFeedsFirstRecommendObserver$1.a.d);
-    }
-  }
+  public static final rcg a = new rcg(null);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     rcf
  * JD-Core Version:    0.7.0.1
  */

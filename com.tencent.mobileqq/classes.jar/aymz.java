@@ -1,70 +1,53 @@
-import android.content.Context;
-import android.content.Intent;
-import android.view.View;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.search.searchengine.NetSearchEngine;
+import android.text.TextUtils;
+import com.tencent.qphone.base.remote.SimpleAccount;
 import com.tencent.qphone.base.util.QLog;
-import java.net.URLEncoder;
-import java.util.List;
 
-public class aymz
-  implements aynt
+class aymz
+  extends anqd
 {
-  private String jdField_a_of_type_JavaLangString;
-  private List<aynu> jdField_a_of_type_JavaUtilList;
-  private boolean jdField_a_of_type_Boolean;
+  aymz(aymu paramaymu) {}
   
-  public aymz(ahip paramahip, List<aynu> paramList, String paramString, boolean paramBoolean)
+  public void a(boolean paramBoolean, String paramString, bdej parambdej)
   {
-    this.jdField_a_of_type_JavaUtilList = paramList;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public int a()
-  {
-    return 1;
-  }
-  
-  public String a()
-  {
-    return alud.a(2131705737);
-  }
-  
-  public List<aynu> a()
-  {
-    return this.jdField_a_of_type_JavaUtilList;
-  }
-  
-  public void a(View paramView)
-  {
-    ayvm.a(this.jdField_a_of_type_JavaLangString, 80, 0, paramView);
-    new Intent().putExtra("last_key_words", this.jdField_a_of_type_JavaLangString);
-    long l1 = Double.valueOf(NetSearchEngine.a * 1000000.0D).longValue();
-    long l2 = Double.valueOf(NetSearchEngine.b * 1000000.0D).longValue();
-    Object localObject2 = "http://qqweb.qq.com/m/relativegroup/index.html?source=qun_recent_search&keyword=" + URLEncoder.encode(this.jdField_a_of_type_JavaLangString) + "&gpstype=1&sid=AWSAPtjyiVRg92WelXNMAqd0&_bid=165&lon=" + Long.valueOf(l2) + "&lat=" + Long.valueOf(l1);
-    Object localObject1 = localObject2;
-    if (this.jdField_a_of_type_Boolean) {
-      localObject1 = (String)localObject2 + "&show_tab=hot";
+    if (aymu.a(this.a, paramBoolean, paramString, parambdej)) {
+      return;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("search", 2, "lastKeywords = " + this.jdField_a_of_type_JavaLangString + " jump url is : " + (String)localObject1);
-    }
-    localObject2 = new Intent(paramView.getContext(), QQBrowserActivity.class);
-    ((Intent)localObject2).putExtra("url", (String)localObject1);
-    ((Intent)localObject2).putExtra("uin", ((BaseActivity)paramView.getContext()).app.getCurrentAccountUin());
-    ((Intent)localObject2).putExtra("portraitOnly", true);
-    ((Intent)localObject2).putExtra("hide_more_button", true);
-    ((Intent)localObject2).putExtra("hide_operation_bar", true);
-    ((Intent)localObject2).putExtra("isShowAd", false);
-    paramView.getContext().startActivity((Intent)localObject2);
+    aymu.a(this.a, paramBoolean, paramString, false);
   }
   
-  public String b()
+  public void a(boolean paramBoolean, String paramString1, String paramString2)
   {
-    return this.jdField_a_of_type_JavaLangString;
+    if ((TextUtils.isEmpty(paramString1)) || (aymu.a(this.a) == null)) {
+      return;
+    }
+    StringBuilder localStringBuilder;
+    if (QLog.isColorLevel())
+    {
+      localStringBuilder = new StringBuilder().append("AccountPanel onSubAccountMsgNumConfirm isSuccess=").append(paramBoolean).append(" subUin=").append(paramString1).append(" set need2ConfirmMsgNum=");
+      if (paramBoolean) {
+        break label127;
+      }
+    }
+    label127:
+    for (paramBoolean = true;; paramBoolean = false)
+    {
+      QLog.d("AccountPanel", 2, paramBoolean + " nextAction=" + paramString2);
+      if (paramString1.equals(aymu.a(this.a).getUin())) {
+        this.a.a(aymu.a(this.a));
+      }
+      aymu.a(this.a, null);
+      return;
+    }
+  }
+  
+  public void b(boolean paramBoolean, String paramString, bdei parambdei)
+  {
+    if (aymu.a(this.a, paramString, parambdei))
+    {
+      QLog.d("AccountPanel", 1, String.format("onGetSubAccountMsg return, isSuccess: %s, subAccount: %s", new Object[] { Boolean.valueOf(paramBoolean), paramString }));
+      return;
+    }
+    aymu.a(this.a, paramBoolean, paramString, true);
   }
 }
 

@@ -1,19 +1,12 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.view.View;
 
-class biea
-  implements ValueAnimator.AnimatorUpdateListener
+public abstract interface biea
 {
-  biea(bidz parambidz, bidr parambidr) {}
-  
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
-  {
-    this.jdField_a_of_type_Bidz.a(paramValueAnimator.getAnimatedFraction());
-  }
+  public abstract void onItemSelect(View paramView, int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     biea
  * JD-Core Version:    0.7.0.1
  */

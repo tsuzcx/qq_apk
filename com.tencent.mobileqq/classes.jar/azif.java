@@ -1,9 +1,20 @@
-import com.tencent.maxvideo.common.AVIOStruct;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.profile.stickynote.publish.ui.StickyNotePublishFragment;
 
 public class azif
+  implements DialogInterface.OnClickListener
 {
-  public AVIOStruct a;
-  public byte[] a;
+  public azif(StickyNotePublishFragment paramStickyNotePublishFragment) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    paramDialogInterface.dismiss();
+    this.a.b.obtainMessage(3, "").sendToTarget();
+    bcst.b(null, "dc00898", "", "", "0X800AB31", "0X800AB31", 2, 0, "0", "0", "", "");
+  }
 }
 
 

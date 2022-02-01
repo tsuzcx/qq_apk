@@ -1,51 +1,28 @@
-import android.graphics.Color;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.ImageView;
+import com.tencent.mobileqq.data.EmoticonPackage;
 
 class asaa
-  implements View.OnTouchListener
+  extends arvc
 {
-  asaa(arzx paramarzx) {}
+  asaa(arzy paramarzy) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void a(EmoticonPackage paramEmoticonPackage)
   {
-    int i = arzx.a(this.a);
-    if (paramMotionEvent.getAction() == 0)
-    {
-      paramMotionEvent = paramView.findViewById(2131366765);
-      if (paramMotionEvent != null) {
-        paramMotionEvent.setBackgroundColor(Color.argb(25, 0, 0, 0));
-      }
-      if (i != 1) {}
-    }
-    do
-    {
-      do
-      {
-        do
-        {
-          do
-          {
-            do
-            {
-              return false;
-            } while (i != 3);
-            paramView = (ImageView)paramView.findViewById(2131366771);
-          } while (paramView == null);
-          paramView.setImageResource(2130839712);
-          return false;
-        } while (paramMotionEvent.getAction() != 1);
-        paramMotionEvent = paramView.findViewById(2131366765);
-        if (paramMotionEvent != null) {
-          paramMotionEvent.setBackgroundColor(Color.argb(0, 0, 0, 0));
-        }
-      } while ((i == 1) || (i != 3));
-      paramView = (ImageView)paramView.findViewById(2131366771);
-    } while (paramView == null);
-    paramView.setImageResource(2130839711);
-    return false;
+    this.a.b(paramEmoticonPackage);
+  }
+  
+  public void a(EmoticonPackage paramEmoticonPackage, int paramInt)
+  {
+    this.a.a(paramEmoticonPackage, paramInt);
+  }
+  
+  public void a(EmoticonPackage paramEmoticonPackage, int paramInt1, int paramInt2)
+  {
+    this.a.a(paramEmoticonPackage);
+  }
+  
+  public void b(EmoticonPackage paramEmoticonPackage, int paramInt1, int paramInt2)
+  {
+    this.a.a(paramEmoticonPackage, paramInt1, paramInt2);
   }
 }
 

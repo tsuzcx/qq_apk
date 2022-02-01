@@ -1,17 +1,52 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import dov.com.qq.im.ae.play.AETakeFacePhotoPreviewFragment;
-import dov.com.qq.im.ae.play.AEVideoShelfEditFragment;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.pluginsdk.ipc.AbstractPluginCommunicationChannel;
+import mqq.app.AppRuntime;
 
 public class blgr
-  implements DialogInterface.OnDismissListener
+  extends AbstractPluginCommunicationChannel
 {
-  public blgr(AETakeFacePhotoPreviewFragment paramAETakeFacePhotoPreviewFragment) {}
-  
-  public void onDismiss(DialogInterface paramDialogInterface)
+  private QQAppInterface a()
   {
-    AETakeFacePhotoPreviewFragment.a(this.a);
-    AEVideoShelfEditFragment.a(this.a.getActivity(), false);
+    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
+    if ((localAppRuntime != null) && ((localAppRuntime instanceof QQAppInterface))) {
+      return (QQAppInterface)localAppRuntime;
+    }
+    return null;
+  }
+  
+  public String getNickName()
+  {
+    String str = null;
+    QQAppInterface localQQAppInterface = a();
+    if (localQQAppInterface != null) {
+      str = localQQAppInterface.getCurrentNickname();
+    }
+    return str;
+  }
+  
+  public String getSKey()
+  {
+    String str = null;
+    if (a() != null) {
+      str = "getSKey";
+    }
+    return str;
+  }
+  
+  public String getSid()
+  {
+    throw new RuntimeException("NotSupported!");
+  }
+  
+  public long getUin()
+  {
+    long l = 0L;
+    QQAppInterface localQQAppInterface = a();
+    if (localQQAppInterface != null) {
+      l = localQQAppInterface.getLongAccountUin();
+    }
+    return l;
   }
 }
 

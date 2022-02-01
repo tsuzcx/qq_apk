@@ -13,6 +13,7 @@ import com.tencent.mobileqq.app.ThreadManagerV2;
 import com.tencent.mobileqq.mini.apkg.MiniAppConfig;
 import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
 import com.tencent.mobileqq.mini.report.MiniProgramReportHelper;
+import com.tencent.mobileqq.mini.sdk.EntryModel;
 import com.tencent.mobileqq.mini.sdk.LaunchParam;
 import com.tencent.mobileqq.mini.servlet.MiniAppSSOCmdHelper;
 import com.tencent.mobileqq.pb.MessageMicro;
@@ -187,43 +188,49 @@ public class GameGrowthGuardianManager
       localPBStringField.set((String)localObject1);
       localObject1 = localStJudgeTimingReq.appType;
       if (!paramMiniAppConfig.isEngineTypeMiniGame()) {
-        break label373;
+        break label425;
       }
       i = 1;
       label126:
       ((PBInt32Field)localObject1).set(i);
       localObject1 = localStJudgeTimingReq.scene;
       if (paramMiniAppConfig.launchParam == null) {
-        break label378;
+        break label430;
       }
       i = paramMiniAppConfig.launchParam.scene;
       label154:
       ((PBInt32Field)localObject1).set(i);
       localStJudgeTimingReq.factType.set(paramInt);
       localStJudgeTimingReq.reportTime.set(TimeUnit.MILLISECONDS.toSeconds(System.currentTimeMillis()));
+      if ((paramMiniAppConfig.launchParam != null) && (paramMiniAppConfig.launchParam.entryModel != null) && (1 == paramMiniAppConfig.launchParam.entryModel.type)) {
+        localStJudgeTimingReq.sourceID.set(String.valueOf(paramMiniAppConfig.launchParam.entryModel.uin));
+      }
       if (previousExtInfo != null) {
         localStJudgeTimingReq.extInfo.set(previousExtInfo);
       }
       if (paramInt != 11) {
-        break label383;
+        break label435;
       }
       localStJudgeTimingReq.totalTime.set(0);
-      label218:
+      label270:
       localPBStringField = localStJudgeTimingReq.launchId;
       if (localObject2 == null) {
-        break label408;
+        break label460;
       }
       localObject1 = localObject2;
-      label234:
+      label286:
       localPBStringField.set((String)localObject1);
       localStJudgeTimingReq.afterCertify.set(0);
       localObject2 = localStJudgeTimingReq.via;
       if ((paramMiniAppConfig.config == null) || (paramMiniAppConfig.config.via == null)) {
-        break label415;
+        break label467;
       }
     }
-    label408:
-    label415:
+    label425:
+    label430:
+    label435:
+    label460:
+    label467:
     for (Object localObject1 = paramMiniAppConfig.config.via;; localObject1 = "")
     {
       ((PBStringField)localObject2).set((String)localObject1);
@@ -237,21 +244,18 @@ public class GameGrowthGuardianManager
         }
       }
       ((PBInt32Field)localObject1).set(i);
-      MiniAppSSOCmdHelper.sendSSOCmdRequest("LightAppSvc.mini_app_growguard.JudgeTiming", paramMiniAppConfig.config.appId, localStJudgeTimingReq, INTERFACE.StJudgeTimingRsp.class, new GameGrowthGuardianManager.2(paramContext, paramMiniAppConfig, paramInt));
+      MiniAppSSOCmdHelper.sendSSOCmdRequest("LightAppSvc.mini_app_growguard.JudgeTiming", paramMiniAppConfig.config.appId, localStJudgeTimingReq, INTERFACE.StJudgeTimingRsp.class, new GameGrowthGuardianManager.2(paramMiniAppConfig, paramContext, paramInt));
       return;
       localObject1 = "";
       break;
-      label373:
       i = 0;
       break label126;
-      label378:
       i = 0;
       break label154;
-      label383:
       localStJudgeTimingReq.totalTime.set((int)TimeUnit.MILLISECONDS.toSeconds(System.currentTimeMillis() - beginExecuteMillis));
-      break label218;
+      break label270;
       localObject1 = "";
-      break label234;
+      break label286;
     }
   }
   
@@ -409,7 +413,7 @@ public class GameGrowthGuardianManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.minigame.manager.GameGrowthGuardianManager
  * JD-Core Version:    0.7.0.1
  */

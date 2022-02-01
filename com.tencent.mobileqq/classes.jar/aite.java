@@ -1,66 +1,37 @@
-import android.content.res.Resources;
+import android.graphics.Bitmap;
 import android.view.View;
-import android.widget.Button;
-import com.tencent.mobileqq.activity.photo.album.NewPhotoPreviewActivity;
-import com.tencent.mobileqq.widget.QQToast;
-import java.util.ArrayList;
+import com.tencent.mobileqq.activity.contact.addcontact.SearchBaseFragment;
+import com.tencent.widget.XListView;
 
 public class aite
-  extends airj
+  implements bbaa
 {
-  private final String a;
+  public aite(SearchBaseFragment paramSearchBaseFragment) {}
   
-  aite(NewPhotoPreviewActivity paramNewPhotoPreviewActivity)
+  public void a(int paramInt1, int paramInt2, Bitmap paramBitmap)
   {
-    super(paramNewPhotoPreviewActivity);
-    this.jdField_a_of_type_JavaLangString = "PhotoPreviewLogicAEPlay";
-  }
-  
-  private void c(String paramString)
-  {
-    long l = System.currentTimeMillis();
-    if (l - this.jdField_a_of_type_Airg.lastTimeShowToast >= 700L)
+    if ((paramBitmap == null) || (paramInt2 == 201)) {}
+    for (;;)
     {
-      this.jdField_a_of_type_Airg.lastTimeShowToast = l;
-      QQToast.a(this.mActivity, paramString, 0).b(((NewPhotoPreviewActivity)this.mActivity).getResources().getDimensionPixelSize(2131298914));
-    }
-  }
-  
-  private boolean c()
-  {
-    return this.mPhotoCommonData.selectedPhotoList.size() < this.mPhotoCommonData.maxSelectNum;
-  }
-  
-  public void initUI()
-  {
-    super.initUI();
-    ((NewPhotoPreviewActivity)this.mActivity).sendBtn.setOnClickListener(new aitf(this));
-  }
-  
-  public void onSelectClick(View paramView)
-  {
-    if ((!this.mPhotoCommonData.selectedIndex.contains(Integer.valueOf(((NewPhotoPreviewActivity)this.mActivity).getCurrentSelectedPostion()))) && (this.mPhotoCommonData.selectedPhotoList.size() >= this.mPhotoCommonData.maxSelectNum))
-    {
-      c(String.format(((NewPhotoPreviewActivity)this.mActivity).getString(2131689820), new Object[] { Integer.valueOf(this.mPhotoCommonData.maxSelectNum) }));
       return;
+      if ((this.a.e == 0) && (this.a.a != null))
+      {
+        int i = this.a.a.getChildCount();
+        paramInt2 = 0;
+        while (paramInt2 < i)
+        {
+          paramBitmap = this.a.a.getChildAt(paramInt2).getTag();
+          if ((paramBitmap != null) && ((paramBitmap instanceof aith)))
+          {
+            paramBitmap = (aith)paramBitmap;
+            if (paramBitmap.jdField_a_of_type_Int == paramInt1) {
+              this.a.a(paramBitmap, paramBitmap.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus);
+            }
+          }
+          paramInt2 += 1;
+        }
+      }
     }
-    super.onSelectClick(paramView);
-  }
-  
-  public void updateButton()
-  {
-    super.updateButton();
-    String str = ((NewPhotoPreviewActivity)this.mActivity).getString(2131717497);
-    int i = this.mPhotoCommonData.selectedPhotoList.size();
-    str = str + " " + i + "/" + this.mPhotoCommonData.maxSelectNum;
-    ((NewPhotoPreviewActivity)this.mActivity).sendBtn.setText(str);
-    ((NewPhotoPreviewActivity)this.mActivity).sendBtn.setEnabled(true);
-    if (c())
-    {
-      ((NewPhotoPreviewActivity)this.mActivity).sendBtn.setBackgroundResource(2130849207);
-      return;
-    }
-    ((NewPhotoPreviewActivity)this.mActivity).sendBtn.setBackgroundResource(2130837724);
   }
 }
 

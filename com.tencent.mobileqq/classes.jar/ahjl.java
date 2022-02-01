@@ -1,46 +1,30 @@
-import android.os.Handler;
-import android.os.Message;
-import android.support.v7.widget.RecyclerView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.contact.addcontact.face2face.Face2FaceAddContactFragment;
-import com.tencent.mobileqq.widget.QQToast;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.aio.item.StructingMsgItemBuilder;
+import com.tencent.mobileqq.structmsg.AbsShareMsg;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class ahjl
-  extends Handler
+  implements View.OnClickListener
 {
-  public ahjl(Face2FaceAddContactFragment paramFace2FaceAddContactFragment) {}
+  public ahjl(StructingMsgItemBuilder paramStructingMsgItemBuilder, AbsShareMsg paramAbsShareMsg) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onClick(View paramView)
   {
-    if (paramMessage.what == 5)
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg.mMsgActionData;
+    int i = this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg.uinType;
+    if (!TextUtils.isEmpty((CharSequence)localObject))
     {
-      Face2FaceAddContactFragment.a(this.a).setText(2131692372);
-      Face2FaceAddContactFragment.a(this.a).setVisibility(8);
-      Face2FaceAddContactFragment.a(this.a).setVisibility(0);
+      localObject = bgng.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder.jdField_a_of_type_AndroidContentContext, (String)localObject);
+      if (localObject != null)
+      {
+        ((bgmp)localObject).b("webview");
+        ((bgmp)localObject).a("uin_type", i + "");
+        ((bgmp)localObject).a();
+      }
     }
-    do
-    {
-      return;
-      if (paramMessage.what == 301)
-      {
-        Face2FaceAddContactFragment.a(this.a);
-        return;
-      }
-      if (paramMessage.what == 500)
-      {
-        Face2FaceAddContactFragment.b(this.a);
-        return;
-      }
-      if (paramMessage.what == 401)
-      {
-        removeMessages(301);
-        this.a.d();
-        return;
-      }
-    } while (paramMessage.what != 6);
-    Face2FaceAddContactFragment.c(this.a);
-    QQToast.a(this.a.getActivity(), this.a.getString(2131691072), 0).a();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

@@ -1,28 +1,17 @@
-import android.os.Bundle;
-import com.tencent.qphone.base.util.QLog;
+import android.graphics.Canvas;
 
-class yre
-  implements yrb
+public abstract interface yre
+  extends ytx
 {
-  yre(yrd paramyrd, String paramString) {}
+  public abstract int a(int paramInt);
   
-  public void callback(Bundle paramBundle)
-  {
-    boolean bool = paramBundle.getBoolean("isSuccess", false);
-    if (bool)
-    {
-      paramBundle = paramBundle.getString("data");
-      this.jdField_a_of_type_Yrd.callJs(this.jdField_a_of_type_JavaLangString, new String[] { paramBundle });
-    }
-    while (!QLog.isColorLevel()) {
-      return;
-    }
-    QLog.d(this.jdField_a_of_type_Yrd.TAG, 2, "getTroopBarPublishInfo() in callback isSuccess=" + bool);
-  }
+  public abstract boolean a(int paramInt);
+  
+  public abstract boolean a(int paramInt1, Canvas paramCanvas, int paramInt2, int paramInt3);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     yre
  * JD-Core Version:    0.7.0.1
  */

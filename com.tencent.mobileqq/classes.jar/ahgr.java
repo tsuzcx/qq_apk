@@ -1,55 +1,26 @@
-import android.text.TextUtils;
-import android.view.KeyEvent;
-import android.widget.EditText;
-import android.widget.TextView;
-import android.widget.TextView.OnEditorActionListener;
-import com.tencent.mobileqq.activity.contact.addcontact.ClassificationSearchActivity;
-import com.tencent.mobileqq.activity.contact.addcontact.SearchBaseFragment;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageForReplyText;
+import com.tencent.mobileqq.widget.QQToast;
 
-public class ahgr
-  implements TextView.OnEditorActionListener
+class ahgr
+  implements DialogInterface.OnClickListener
 {
-  public ahgr(ClassificationSearchActivity paramClassificationSearchActivity) {}
+  ahgr(ahgl paramahgl, MessageForReplyText paramMessageForReplyText) {}
   
-  public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((paramInt == 3) || ((paramKeyEvent != null) && (paramKeyEvent.getKeyCode() == 66)))
+    if ((this.jdField_a_of_type_Ahgl.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int == 1) && (((bfsk)this.jdField_a_of_type_Ahgl.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(48)).a(this.jdField_a_of_type_Ahgl.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, true).a) && ((this.jdField_a_of_type_Ahgl.jdField_a_of_type_AndroidContentContext instanceof BaseActivity)))
     {
-      paramTextView = this.a.jdField_a_of_type_AndroidWidgetEditText.getText().toString();
-      if (!TextUtils.isEmpty(paramTextView)) {
-        if ((this.a.f == ClassificationSearchActivity.jdField_a_of_type_Int) && (!TextUtils.isEmpty(paramTextView.trim())))
-        {
-          this.a.a(paramTextView);
-          nrt.a(null, "dc00899", "Pb_account_lifeservice", "", "0X80067C4", "0X80067C4", 0, 0, "", "", paramTextView, "", true);
-          ClassificationSearchActivity.a(this.a, paramTextView);
-        }
-      }
-      for (;;)
-      {
-        return true;
-        if (this.a.f == ClassificationSearchActivity.d)
-        {
-          nrt.a(null, "", "0X800742D", "0X800742D", 0, 0, paramTextView, "", "", "");
-          ClassificationSearchActivity.a(this.a, paramTextView);
-        }
-        else
-        {
-          this.a.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactSearchBaseFragment.a(paramTextView, false);
-          continue;
-          if (this.a.f == ClassificationSearchActivity.jdField_a_of_type_Int)
-          {
-            paramTextView = this.a.jdField_a_of_type_AndroidWidgetEditText.getHint().toString();
-            if ((!TextUtils.isEmpty(paramTextView.trim())) && (!TextUtils.equals(paramTextView, alud.a(2131702310))) && (!TextUtils.equals(paramTextView, alud.a(2131702325))))
-            {
-              this.a.a(paramTextView);
-              nrt.a(null, "dc00899", "Pb_account_lifeservice", "", "0X80067C4", "0X80067C4", 0, 0, "", "", paramTextView, "", true);
-              ClassificationSearchActivity.a(this.a, paramTextView);
-            }
-          }
-        }
-      }
+      paramDialogInterface = (BaseActivity)this.jdField_a_of_type_Ahgl.jdField_a_of_type_AndroidContentContext;
+      QQToast.a(this.jdField_a_of_type_Ahgl.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), 2131696676, 0).b(paramDialogInterface.getTitleBarHeight());
+      return;
     }
-    return false;
+    this.jdField_a_of_type_Ahgl.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(this.jdField_a_of_type_ComTencentMobileqqDataMessageForReplyText, null, true);
   }
 }
 

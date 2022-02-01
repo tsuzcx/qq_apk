@@ -85,6 +85,60 @@ public class DynamicStickerFilter
     return this.item.type == VideoFilterFactory.POSITION_TYPE.BODY.type;
   }
   
+  protected void updateCatFacePositions(List<PointF> paramList, float[] paramArrayOfFloat, float paramFloat)
+  {
+    super.updatePositions(paramList);
+    if ((CollectionUtils.isEmpty(paramList)) || (!isValidItem(this.item))) {
+      clearTextureParam();
+    }
+    int i;
+    do
+    {
+      return;
+      localPointF1 = (PointF)paramList.get(this.item.alignFacePoints[0]);
+      if (this.item.alignFacePoints.length != 1) {
+        break;
+      }
+      i = this.item.alignFacePoints[0];
+      PointF localPointF2 = (PointF)paramList.get(i);
+      localPointF1 = new PointF((localPointF1.x + localPointF2.x) / 2.0F, (localPointF1.y + localPointF2.y) / 2.0F);
+      float f1 = localPointF1.x - this.item.anchorPoint[0];
+      float f2 = localPointF1.y - this.item.anchorPoint[1];
+      float f3 = this.item.width;
+      setPositions(AlgoUtils.adjustPosition(AlgoUtils.calPositions(f1, this.item.height + f2, f1 + f3, f2, this.width, this.height), this.audioScaleFactor));
+      addParam(new UniformParam.Float2fParam("texAnchor", localPointF1.x - this.canvasCenter.x, localPointF1.y - this.canvasCenter.y));
+    } while ((paramList.size() <= this.item.scalePivots[0]) || (paramList.size() <= this.item.scalePivots[1]));
+    PointF localPointF1 = new PointF(((PointF)paramList.get(this.item.scalePivots[0])).x, ((PointF)paramList.get(this.item.scalePivots[0])).y);
+    paramList = new PointF(((PointF)paramList.get(this.item.scalePivots[1])).x, ((PointF)paramList.get(this.item.scalePivots[1])).y);
+    double d1 = Math.pow(localPointF1.x - paramList.x, 2.0D);
+    d1 = Math.sqrt(Math.pow(localPointF1.y - paramList.y, 2.0D) + d1) / this.item.scaleFactor;
+    double d2;
+    if (this.item.maxScaledWidth != 0)
+    {
+      d2 = this.item.maxScaledWidth / this.item.width;
+      if (d1 > d2) {
+        d1 = d2;
+      }
+    }
+    for (;;)
+    {
+      d2 = d1;
+      if (this.item.minScaledWidth != 0)
+      {
+        double d3 = this.item.minScaledWidth / this.item.width;
+        d2 = d1;
+        if (d1 < d3) {
+          d2 = d3;
+        }
+      }
+      addParam(new UniformParam.FloatParam("texScale", (float)d2));
+      addParam(new UniformParam.Float3fParam("texRotate", 0.0F, 0.0F, (float)(paramArrayOfFloat[0] + 3.141592653589793D + Math.toRadians(paramFloat))));
+      return;
+      i = this.item.alignFacePoints[1];
+      break;
+    }
+  }
+  
   protected void updatePositions(List<PointF> paramList)
   {
     super.updatePositions(paramList);
@@ -357,7 +411,7 @@ public class DynamicStickerFilter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.filter.DynamicStickerFilter
  * JD-Core Version:    0.7.0.1
  */

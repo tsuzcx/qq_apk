@@ -1,23 +1,27 @@
-import android.support.v7.widget.GridLayoutManager.SpanSizeLookup;
+import java.util.Comparator;
 
-class yic
-  extends GridLayoutManager.SpanSizeLookup
+public class yic
+  implements Comparator<yib>
 {
-  yic(yib paramyib) {}
-  
-  public int getSpanSize(int paramInt)
+  public int a(yib paramyib1, yib paramyib2)
   {
-    paramInt = this.a.a(paramInt);
-    yhy localyhy = this.a.a(paramInt);
-    if (localyhy != null) {
-      return localyhy.getSpanCount(localyhy.getLocalPosition(paramInt));
+    if (paramyib1.a == paramyib2.a) {
+      if (!paramyib1.b) {}
+    }
+    while (paramyib1.a > paramyib2.a)
+    {
+      return -1;
+      if (paramyib2.b) {
+        return 1;
+      }
+      return 0;
     }
     return 1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     yic
  * JD-Core Version:    0.7.0.1
  */

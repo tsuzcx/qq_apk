@@ -1,22 +1,31 @@
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.profile.PersonalityLabel.CornerImageView;
+import android.media.AudioManager;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.aio.AudioPlayerBase;
 
-class afvz
-  extends aepm
+public class afvz
+  extends Handler
 {
-  public long a;
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  URLImageView jdField_a_of_type_ComTencentImageURLImageView;
-  CornerImageView jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelCornerImageView;
-  public String a;
-  TextView b;
-  TextView c;
-  TextView d;
-  TextView e;
+  public afvz(AudioPlayerBase paramAudioPlayerBase) {}
   
-  afvz(afvw paramafvw) {}
+  public void handleMessage(Message paramMessage)
+  {
+    if ((paramMessage.what == 1000) && (this.a.d == 0) && (this.a.a()))
+    {
+      int i = this.a.jdField_a_of_type_AndroidMediaAudioManager.getStreamVolume(this.a.jdField_a_of_type_Bgkk.b);
+      int j = this.a.jdField_a_of_type_AndroidMediaAudioManager.getStreamMaxVolume(this.a.jdField_a_of_type_Bgkk.b);
+      if (i / j <= 0.18F) {
+        break label125;
+      }
+      this.a.d = 1;
+      if (this.a.jdField_a_of_type_Afwa != null) {
+        this.a.jdField_a_of_type_Afwa.c(this.a, this.a.d);
+      }
+    }
+    return;
+    label125:
+    this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1000, 200L);
+  }
 }
 
 

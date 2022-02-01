@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.activateFriend;
 
-import alud;
 import android.widget.ImageButton;
+import anni;
 
 class SendBirthdayWishesActivity$4
   implements Runnable
@@ -12,17 +12,17 @@ class SendBirthdayWishesActivity$4
   {
     if (this.a == 2)
     {
-      this.this$0.a.setImageResource(2130837979);
-      this.this$0.a.setContentDescription(alud.a(2131714175));
+      this.this$0.a.setImageResource(2130838073);
+      this.this$0.a.setContentDescription(anni.a(2131712547));
       return;
     }
-    this.this$0.a.setImageResource(2130847428);
-    this.this$0.a.setContentDescription(alud.a(2131714176));
+    this.this$0.a.setImageResource(2130847887);
+    this.this$0.a.setContentDescription(anni.a(2131712548));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.activateFriend.SendBirthdayWishesActivity.4
  * JD-Core Version:    0.7.0.1
  */

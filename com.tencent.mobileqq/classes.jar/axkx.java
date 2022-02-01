@@ -1,21 +1,20 @@
-import com.tencent.mobileqq.receipt.ReceiptMessageReadMemberListContainerFragment;
-import com.tencent.mobileqq.receipt.ReceiptMessageReadMemberListFragment.MemberInfo;
-import com.tencent.mobileqq.utils.ChnToSpell;
-import java.util.Comparator;
+import android.os.Bundle;
 
-public class axkx
-  implements Comparator<ReceiptMessageReadMemberListFragment.MemberInfo>
+class axkx
+  extends niu
 {
-  public axkx(ReceiptMessageReadMemberListContainerFragment paramReceiptMessageReadMemberListContainerFragment) {}
+  axkx(axks paramaxks, axkz paramaxkz) {}
   
-  public int a(ReceiptMessageReadMemberListFragment.MemberInfo paramMemberInfo1, ReceiptMessageReadMemberListFragment.MemberInfo paramMemberInfo2)
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    return ChnToSpell.a(paramMemberInfo1.b, 1).compareTo(ChnToSpell.a(paramMemberInfo2.b, 1));
+    if (this.jdField_a_of_type_Axkz != null) {
+      this.jdField_a_of_type_Axkz.a(paramInt, paramArrayOfByte, paramBundle);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     axkx
  * JD-Core Version:    0.7.0.1
  */

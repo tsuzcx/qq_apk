@@ -1,27 +1,24 @@
-import com.tencent.mobileqq.activity.aio.photo.AIORichMediaData;
-import com.tencent.mobileqq.activity.chathistory.ChatHistoryForTroopFragment;
-import com.tencent.qphone.base.util.QLog;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.ProgressBar;
+import android.widget.TextView;
 
 public class ahdz
-  implements aheg
+  extends RecyclerView.ViewHolder
 {
-  public ahdz(ChatHistoryForTroopFragment paramChatHistoryForTroopFragment) {}
+  public ImageView a;
+  public ProgressBar a;
+  public TextView a;
+  public ImageView b;
   
-  public void a(AIORichMediaData[] paramArrayOfAIORichMediaData, int paramInt)
+  public ahdz(View paramView)
   {
-    if ((paramArrayOfAIORichMediaData != null) && (paramArrayOfAIORichMediaData.length > 0))
-    {
-      this.a.a = paramArrayOfAIORichMediaData[(paramArrayOfAIORichMediaData.length - 1)];
-      if (QLog.isColorLevel()) {
-        QLog.i("chatHistory.troop.portal", 2, "get the first media data");
-      }
-    }
-    do
-    {
-      return;
-      this.a.a = null;
-    } while (!QLog.isColorLevel());
-    QLog.i("chatHistory.troop.portal", 2, "no media data found");
+    super(paramView);
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131372709));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131372708));
+    this.b = ((ImageView)paramView.findViewById(2131372706));
+    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)paramView.findViewById(2131372710));
   }
 }
 

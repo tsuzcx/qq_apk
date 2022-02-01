@@ -1,13 +1,17 @@
-import java.lang.annotation.Annotation;
-import java.lang.annotation.Documented;
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
-import java.lang.annotation.Target;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendFragment;
 
-@Documented
-@Retention(RetentionPolicy.RUNTIME)
-@Target({java.lang.annotation.ElementType.FIELD})
-public @interface asiz {}
+public class asiz
+  implements DialogInterface.OnDismissListener
+{
+  public asiz(ExtendFriendFragment paramExtendFriendFragment) {}
+  
+  public void onDismiss(DialogInterface paramDialogInterface)
+  {
+    ExtendFriendFragment.a(this.a, false);
+  }
+}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar

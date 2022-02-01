@@ -1,29 +1,31 @@
-import android.widget.ImageView;
-import com.tencent.mobileqq.filemanager.activity.FilePreviewActivity;
+import com.taobao.android.dexposed.XC_MethodHook;
+import com.tencent.mobileqq.config.QConfigureException;
+import com.tencent.qphone.base.util.QLog;
+import de.robv.android.xposed.XC_MethodHook.MethodHookParam;
 
-public class aqlq
-  implements artl
+final class aqlq
+  extends XC_MethodHook
 {
-  public aqlq(FilePreviewActivity paramFilePreviewActivity) {}
-  
-  public void a(int paramInt)
+  public void beforeHookedMethod(XC_MethodHook.MethodHookParam paramMethodHookParam)
   {
-    switch (paramInt)
+    try
     {
-    default: 
-      return;
-    case 1: 
-      FilePreviewActivity.a(this.a, bagk.a(this.a.app, FilePreviewActivity.a(this.a), this.a, "<FileAssistant>FilePreviewActivity", this.a.getString(2131720692), false));
+      paramMethodHookParam = aqln.a();
+      if ((!paramMethodHookParam.contains("QConfigManager.readSync")) && (!paramMethodHookParam.contains("QConfigManager.loadConObj")) && (!paramMethodHookParam.contains("QConfigManager.save"))) {
+        aqln.a(new QConfigureException(paramMethodHookParam), "Can not parse json beyond QConfigManager when app starting.", "QConfigWatchDog_Json");
+      }
       return;
     }
-    bagk.a(this.a.app, this.a, "<FileAssistant>FilePreviewActivity", FilePreviewActivity.a(this.a));
+    catch (Exception paramMethodHookParam)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.d("QConfigWatchDog", 2, "hook json exception.", paramMethodHookParam);
+    }
   }
-  
-  public void a(ImageView paramImageView) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aqlq
  * JD-Core Version:    0.7.0.1
  */

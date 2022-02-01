@@ -1,64 +1,46 @@
-import android.content.Context;
-import android.view.View;
-import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.mobileqq.app.PublicAccountHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.PAMessage;
-import com.tencent.mobileqq.data.PAMessage.Item;
-import java.util.ArrayList;
+import androidx.annotation.Nullable;
+import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
 
-final class syh
-  implements bhuk
+public class syh
+  implements Comparable<syh>
 {
-  syh(QQAppInterface paramQQAppInterface, String paramString, int paramInt, long paramLong, boolean paramBoolean, Context paramContext, bhuf parambhuf) {}
+  public float a;
+  public int a;
+  public long a;
+  public AdvertisementInfo a;
+  public long b;
   
-  public void OnClick(View paramView, int paramInt)
+  public int a(syh paramsyh)
   {
-    switch (paramInt)
-    {
+    if (this.jdField_a_of_type_Int < paramsyh.jdField_a_of_type_Int) {
+      return -1;
     }
-    do
-    {
-      this.jdField_a_of_type_Bhuf.dismiss();
-      return;
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_a_of_type_Long);
-      if (this.jdField_a_of_type_Boolean) {
-        PublicAccountHandler.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, "Pb_account_lifeservice", "mp_msg_sys_9", "aio_delete");
-      }
-      for (;;)
-      {
-        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().e(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
-        break;
-        PublicAccountHandler.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, "Pb_account_lifeservice", "mp_msg_sys_8", "aio_delete");
-      }
-    } while (!this.jdField_a_of_type_JavaLangString.equals("2010741172"));
-    paramView = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_a_of_type_Long);
-    if (paramView != null)
-    {
-      paramView = aeum.a(paramView);
-      if (paramView != null)
-      {
-        paramView = (PAMessage.Item)paramView.items.get(0);
-        if (paramView.url != null) {
-          syb.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, paramView.url);
-        }
-      }
+    if (this.jdField_a_of_type_Int > paramsyh.jdField_a_of_type_Int) {
+      return 1;
     }
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_a_of_type_Long);
-    if (this.jdField_a_of_type_Boolean) {
-      PublicAccountHandler.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, "Pb_account_lifeservice", "mp_msg_sys_9", "aio_delete");
+    return 0;
+  }
+  
+  public boolean equals(@Nullable Object paramObject)
+  {
+    if ((!(paramObject instanceof syh)) || (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo == null) || (((syh)paramObject).jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo == null)) {
+      return false;
     }
-    for (;;)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().e(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
-      break;
-      PublicAccountHandler.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, "Pb_account_lifeservice", "mp_msg_sys_8", "aio_delete");
+    return (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo == ((syh)paramObject).jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo) && (this.jdField_a_of_type_Int == ((syh)paramObject).jdField_a_of_type_Int);
+  }
+  
+  public int hashCode()
+  {
+    int i = 17;
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo != null) {
+      i = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo.hashCode() + 527;
     }
+    return i * 31 + this.jdField_a_of_type_Int;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     syh
  * JD-Core Version:    0.7.0.1
  */

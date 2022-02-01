@@ -1,28 +1,29 @@
-import com.tencent.widget.AbsListView;
-import java.util.ArrayList;
+import android.app.Activity;
+import android.content.Intent;
+import android.view.ViewGroup;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-class blwb
-  implements bhtv
+public abstract interface blwb
 {
-  int jdField_a_of_type_Int = 0;
+  public abstract void attachQQContext(Activity paramActivity, QQAppInterface paramQQAppInterface);
   
-  blwb(blwa paramblwa) {}
+  public abstract void clearCache();
   
-  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
-  {
-    this.jdField_a_of_type_Int = (paramInt1 + paramInt2);
-  }
+  public abstract void forceRefresh();
   
-  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
-  {
-    if (paramInt == 1) {
-      bhsj.b(this.jdField_a_of_type_Blwa.h);
-    }
-    while ((paramInt != 0) || (this.jdField_a_of_type_Blwa.a == null) || (this.jdField_a_of_type_Int < this.jdField_a_of_type_Blwa.a.size())) {
-      return;
-    }
-    blwa.a(this.jdField_a_of_type_Blwa);
-  }
+  public abstract void onSwitchOutofQzone();
+  
+  public abstract void resetReportFlag();
+  
+  public abstract void setQzoneSwitchlistener(ajvl paramajvl);
+  
+  public abstract void setRightButtonType(int paramInt);
+  
+  public abstract int setTitleAlphaAndGetLastValue(int paramInt);
+  
+  public abstract void setTitleView(ViewGroup paramViewGroup);
+  
+  public abstract void updatePublishBox(Intent paramIntent);
 }
 
 

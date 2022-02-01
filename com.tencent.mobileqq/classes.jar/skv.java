@@ -1,49 +1,30 @@
-import android.support.v4.view.ViewPager.OnPageChangeListener;
-import com.tencent.biz.pubaccount.readinjoy.view.widget.ViewPagerCompat;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
 
-public class skv
-  implements ViewPager.OnPageChangeListener
+class skv
+  extends skd
 {
-  private skv(ViewPagerCompat paramViewPagerCompat) {}
+  skv(ske paramske) {}
   
-  public void onPageScrollStateChanged(int paramInt)
+  public void a(int paramInt, BaseArticleInfo paramBaseArticleInfo, String paramString, ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem)
   {
-    if (ViewPagerCompat.a(this.a) != null)
-    {
-      Iterator localIterator = ViewPagerCompat.a(this.a).iterator();
-      while (localIterator.hasNext()) {
-        ((ViewPager.OnPageChangeListener)localIterator.next()).onPageScrollStateChanged(paramInt);
-      }
-    }
+    ske.a(this.a, false);
+    ske.a(this.a, ske.a(this.a), null, 0, "");
   }
   
-  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2)
+  public int b()
   {
-    if (ViewPagerCompat.a(this.a) != null)
-    {
-      Iterator localIterator = ViewPagerCompat.a(this.a).iterator();
-      while (localIterator.hasNext()) {
-        ((ViewPager.OnPageChangeListener)localIterator.next()).onPageScrolled(paramInt1, paramFloat, paramInt2);
-      }
-    }
+    return 0;
   }
   
-  public void onPageSelected(int paramInt)
+  public int c()
   {
-    if (ViewPagerCompat.a(this.a) != null)
-    {
-      Iterator localIterator = ViewPagerCompat.a(this.a).iterator();
-      while (localIterator.hasNext()) {
-        ((ViewPager.OnPageChangeListener)localIterator.next()).onPageSelected(paramInt);
-      }
-    }
+    return 1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     skv
  * JD-Core Version:    0.7.0.1
  */

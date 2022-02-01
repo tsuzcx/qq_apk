@@ -1,26 +1,21 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQMapActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class adrj
-  implements View.OnClickListener
+final class adrj
+  implements DialogInterface.OnClickListener
 {
-  public adrj(QQMapActivity paramQQMapActivity) {}
+  adrj(adsy paramadsy, adsx paramadsx) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (!bdin.d(this.a)) {
-      this.a.x();
+    if (this.jdField_a_of_type_Adsy.a) {
+      bcst.b(null, "CliOper", "", "", "Two_call", "Clk_shield_btn", 0, 0, "2", "", "", "");
     }
-    for (;;)
-    {
-      zgv.a("see_streetview");
-      return;
-      if (bdin.a(this.a)) {
-        this.a.p();
-      } else {
-        bdgm.a(this.a, 230).setTitle(this.a.getString(2131690071)).setMessage(2131695059).setPositiveButton(2131691090, new adrl(this)).setNegativeButton(2131690648, new adrk(this)).show();
-      }
+    if (this.jdField_a_of_type_Adsx != null) {
+      this.jdField_a_of_type_Adsx.a();
+    }
+    if (paramDialogInterface != null) {
+      paramDialogInterface.dismiss();
     }
   }
 }

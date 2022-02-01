@@ -1,40 +1,23 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.pubaccount.VideoInfo.InterruptedWeishiAd;
 
-class obw
-  extends BroadcastReceiver
+public final class obw
+  implements Parcelable.Creator<VideoInfo.InterruptedWeishiAd>
 {
-  final String jdField_a_of_type_JavaLangString = "reason";
-  final String b = "globalactions";
-  final String c = "recentapps";
-  final String d = "homekey";
-  
-  obw(obv paramobv) {}
-  
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public VideoInfo.InterruptedWeishiAd a(Parcel paramParcel)
   {
-    if (paramIntent.getAction().equals("android.intent.action.CLOSE_SYSTEM_DIALOGS"))
-    {
-      paramContext = paramIntent.getStringExtra("reason");
-      if ((paramContext != null) && (obv.a(this.jdField_a_of_type_Obv) != null))
-      {
-        if (!paramContext.equals("homekey")) {
-          break label55;
-        }
-        obv.a(this.jdField_a_of_type_Obv).a();
-      }
-    }
-    label55:
-    while (!paramContext.equals("recentapps")) {
-      return;
-    }
-    obv.a(this.jdField_a_of_type_Obv).b();
+    return new VideoInfo.InterruptedWeishiAd(paramParcel);
+  }
+  
+  public VideoInfo.InterruptedWeishiAd[] a(int paramInt)
+  {
+    return new VideoInfo.InterruptedWeishiAd[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     obw
  * JD-Core Version:    0.7.0.1
  */

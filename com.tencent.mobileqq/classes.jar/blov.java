@@ -1,13 +1,31 @@
-public class blov
+import cooperation.qqreader.js.JsCallParams;
+
+class blov
 {
-  public static blou a()
+  long jdField_a_of_type_Long;
+  JsCallParams jdField_a_of_type_CooperationQqreaderJsJsCallParams;
+  long b;
+  
+  blov(String paramString1, String paramString2, String paramString3, long paramLong, String... paramVarArgs)
   {
-    return new blos();
+    this.jdField_a_of_type_CooperationQqreaderJsJsCallParams = new JsCallParams(paramString1, paramString2, paramString3, paramVarArgs);
+    this.jdField_a_of_type_Long = paramLong;
+    this.b = System.currentTimeMillis();
   }
   
-  public static blox a()
+  void a()
   {
-    return new blot();
+    this.b = System.currentTimeMillis();
+  }
+  
+  boolean a()
+  {
+    return System.currentTimeMillis() - this.b > this.jdField_a_of_type_Long;
+  }
+  
+  boolean a(blov paramblov)
+  {
+    return this.jdField_a_of_type_CooperationQqreaderJsJsCallParams.a(paramblov.jdField_a_of_type_CooperationQqreaderJsJsCallParams);
   }
 }
 

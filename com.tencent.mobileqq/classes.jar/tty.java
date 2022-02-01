@@ -1,115 +1,209 @@
-import android.app.Activity;
-import android.arch.lifecycle.MutableLiveData;
 import android.content.res.Resources;
-import android.graphics.Color;
-import android.os.Message;
 import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.biz.qqcircle.QCircleInitBean;
-import com.tencent.biz.qqcircle.component.ComponentBaseFragment;
-import com.tencent.mobileqq.pb.PBStringField;
-import feedcloud.FeedCloudMeta.StFeed;
-import feedcloud.FeedCloudMeta.StShare;
-import feedcloud.FeedCloudMeta.StTagInfo;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.activity.recent.TimeManager;
+import com.tencent.mobileqq.activity.recent.data.RecentItemPublicAccountChatMsgData;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.AccountDetail;
+import com.tencent.mobileqq.data.DraftSummaryInfo;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.data.PublicAccountInfo;
+import com.tencent.mobileqq.data.RecentUser;
+import com.tencent.mobileqq.persistence.notColumn;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
 public class tty
-  extends tvv
-  implements View.OnClickListener
 {
-  private View jdField_a_of_type_AndroidViewView;
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private QCircleInitBean jdField_a_of_type_ComTencentBizQqcircleQCircleInitBean;
-  private FeedCloudMeta.StTagInfo jdField_a_of_type_FeedcloudFeedCloudMeta$StTagInfo;
-  private ubx jdField_a_of_type_Ubx;
-  private ImageView b;
+  public int a;
+  public long a;
+  public MessageRecord a;
+  public CharSequence a;
+  public String a;
+  public boolean a;
+  public int b;
+  public long b;
+  @notColumn
+  public CharSequence b;
+  public String b;
+  public boolean b;
+  public int c;
+  public String c;
+  public int d;
+  public String d;
+  @notColumn
+  public int e;
+  public String e;
   
-  public tty(QCircleInitBean paramQCircleInitBean)
+  public tty()
   {
-    this.jdField_a_of_type_ComTencentBizQqcircleQCircleInitBean = paramQCircleInitBean;
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_b_of_type_Boolean = true;
+    this.jdField_d_of_type_Int = BaseApplicationImpl.getApplication().getResources().getColor(2131167092);
+    this.jdField_b_of_type_Long = 0L;
   }
   
-  private void a(FeedCloudMeta.StTagInfo paramStTagInfo)
+  public static tty a(QQAppInterface paramQQAppInterface, RecentUser paramRecentUser)
   {
-    if (paramStTagInfo == null) {
-      return;
+    paramRecentUser = new RecentItemPublicAccountChatMsgData(paramRecentUser);
+    paramRecentUser.a(paramQQAppInterface, paramQQAppInterface.getApplication());
+    tty localtty = new tty();
+    localtty.jdField_a_of_type_Boolean = true;
+    localtty.jdField_a_of_type_JavaLangString = paramRecentUser.getRecentUserUin();
+    localtty.jdField_b_of_type_Int = paramRecentUser.mUnreadNum;
+    localtty.jdField_c_of_type_Int = paramRecentUser.mAuthenIconId;
+    localtty.jdField_a_of_type_Long = paramRecentUser.mDisplayTime;
+    localtty.jdField_b_of_type_JavaLangString = paramRecentUser.mShowTime;
+    localtty.jdField_b_of_type_Long = paramRecentUser.getLastMsgTime();
+    localtty.jdField_c_of_type_JavaLangString = paramRecentUser.mTitleName;
+    localtty.jdField_a_of_type_JavaLangCharSequence = paramRecentUser.mLastMsg;
+    localtty.jdField_a_of_type_ComTencentMobileqqDataMessageRecord = paramQQAppInterface.a().b(localtty.jdField_a_of_type_JavaLangString, 1008);
+    localtty.jdField_d_of_type_JavaLangString = tue.a(paramQQAppInterface, localtty.jdField_a_of_type_JavaLangString);
+    localtty.jdField_e_of_type_JavaLangString = paramRecentUser.mReportKeyBytesOacMsgxtend;
+    a(paramQQAppInterface, localtty);
+    b(paramQQAppInterface, localtty);
+    c(paramQQAppInterface, localtty);
+    if (QLog.isColorLevel()) {
+      QLog.d("ServiceAccountFolderFeed", 2, "createFromRecentUser->" + localtty.toString());
     }
-    this.jdField_a_of_type_FeedcloudFeedCloudMeta$StTagInfo = paramStTagInfo;
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(paramStTagInfo.tagName.get());
+    return localtty;
   }
   
-  public String a()
+  public static tty a(QQAppInterface paramQQAppInterface, twg paramtwg)
   {
-    return "QCircleTagPageTitleBarPart";
-  }
-  
-  protected void a(View paramView)
-  {
-    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131377958);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131379043));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131368709));
-    this.b = ((ImageView)paramView.findViewById(2131368911));
-    this.b.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(this);
-    this.jdField_a_of_type_Ubx = ((ubx)a(ubx.class));
-    this.jdField_a_of_type_Ubx.b.observe(a(), new ttz(this));
-    if ((this.jdField_a_of_type_ComTencentBizQqcircleQCircleInitBean != null) && (this.jdField_a_of_type_ComTencentBizQqcircleQCircleInitBean.getTagInfo() != null)) {
-      a(this.jdField_a_of_type_ComTencentBizQqcircleQCircleInitBean.getTagInfo());
+    tty localtty = new tty();
+    localtty.jdField_a_of_type_Boolean = false;
+    localtty.jdField_a_of_type_JavaLangString = paramtwg.jdField_a_of_type_JavaLangString;
+    localtty.jdField_b_of_type_Int = paramtwg.jdField_b_of_type_Int;
+    localtty.jdField_c_of_type_Int = 0;
+    localtty.jdField_a_of_type_Long = paramtwg.jdField_a_of_type_Long;
+    localtty.jdField_b_of_type_JavaLangString = TimeManager.getInstance().getMsgDisplayTime(paramtwg.jdField_a_of_type_JavaLangString, paramtwg.jdField_a_of_type_Long);
+    String str2 = twi.a().a(paramtwg.jdField_a_of_type_JavaLangString);
+    String str1 = str2;
+    if ("".equals(str2)) {
+      str1 = paramtwg.jdField_a_of_type_JavaLangString;
     }
+    localtty.jdField_c_of_type_JavaLangString = str1;
+    if (paramtwg.jdField_a_of_type_JavaUtilList.size() > 0) {
+      localtty.jdField_a_of_type_JavaLangCharSequence = ((twh)paramtwg.jdField_a_of_type_JavaUtilList.get(0)).jdField_b_of_type_JavaLangString;
+    }
+    localtty.jdField_a_of_type_ComTencentMobileqqDataMessageRecord = paramQQAppInterface.a().b(paramtwg.jdField_a_of_type_JavaLangString, 1008);
+    localtty.jdField_d_of_type_JavaLangString = tue.a(paramQQAppInterface, paramtwg.jdField_a_of_type_JavaLangString);
+    a(paramQQAppInterface, localtty);
+    b(paramQQAppInterface, localtty);
+    c(paramQQAppInterface, localtty);
+    if (QLog.isColorLevel()) {
+      QLog.d("ServiceAccountFolderFeed", 2, "createFromSubscriptionFeed->" + localtty.toString());
+    }
+    return localtty;
   }
   
-  public void a(String paramString, Object paramObject)
+  private static void a(QQAppInterface paramQQAppInterface, tty paramtty)
   {
-    super.a(paramString, paramObject);
-    int i;
-    if ((TextUtils.equals(paramString, "tag_page_action_title_bar_animation")) && ((paramObject instanceof Message)))
+    paramQQAppInterface = (anrs)paramQQAppInterface.getManager(56);
+    if (paramQQAppInterface != null)
     {
-      i = ((Message)paramObject).what;
-      this.jdField_a_of_type_AndroidViewView.setBackgroundColor(Color.argb(i, 235, 236, 240));
-      this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(Color.argb(i, 0, 0, 0));
-      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-      if (i != 0) {
-        break label94;
+      PublicAccountInfo localPublicAccountInfo = paramQQAppInterface.b(paramtty.jdField_a_of_type_JavaLangString);
+      if (localPublicAccountInfo == null) {
+        break label59;
       }
-      this.jdField_a_of_type_AndroidViewView.setBackgroundColor(0);
-      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+      if (!TextUtils.isEmpty(localPublicAccountInfo.name)) {
+        paramtty.jdField_c_of_type_JavaLangString = localPublicAccountInfo.name;
+      }
+      paramtty.jdField_b_of_type_Boolean = localPublicAccountInfo.isVisible();
+      paramtty.jdField_c_of_type_Int = 0;
     }
-    label94:
-    while (i != 255) {
-      return;
-    }
-    this.jdField_a_of_type_AndroidViewView.setBackgroundColor(a().getResources().getColor(2131166178));
-    this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(-16777216);
-  }
-  
-  public void onClick(View paramView)
-  {
-    switch (paramView.getId())
-    {
-    }
+    label59:
     do
     {
-      do
-      {
-        return;
-      } while ((a().onBackEvent()) || (a() == null));
-      a().finish();
       return;
-    } while (this.jdField_a_of_type_FeedcloudFeedCloudMeta$StTagInfo == null);
-    paramView = new trz();
-    paramView.jdField_a_of_type_Int = 3;
-    FeedCloudMeta.StFeed localStFeed = new FeedCloudMeta.StFeed();
-    localStFeed.share.set(this.jdField_a_of_type_FeedcloudFeedCloudMeta$StTagInfo.shareInfo.get());
-    paramView.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed = localStFeed;
-    b("share_action_show_share_sheet", paramView);
+      paramQQAppInterface = paramQQAppInterface.a(paramtty.jdField_a_of_type_JavaLangString);
+    } while (paramQQAppInterface == null);
+    if (!TextUtils.isEmpty(paramQQAppInterface.name)) {
+      paramtty.jdField_c_of_type_JavaLangString = paramQQAppInterface.name;
+    }
+    if (1 == paramQQAppInterface.showFlag) {}
+    for (boolean bool = true;; bool = false)
+    {
+      paramtty.jdField_b_of_type_Boolean = bool;
+      paramtty.jdField_c_of_type_Int = 0;
+      return;
+    }
+  }
+  
+  private static void b(QQAppInterface paramQQAppInterface, tty paramtty)
+  {
+    int i = paramQQAppInterface.a().g(paramtty.jdField_a_of_type_JavaLangString, 1008);
+    if (paramtty.jdField_b_of_type_Int > 0)
+    {
+      if ((paramtty.jdField_b_of_type_Int != 1) || (i <= 0)) {
+        break label40;
+      }
+      paramtty.jdField_a_of_type_Int = 2;
+    }
+    label40:
+    do
+    {
+      return;
+      paramtty.jdField_a_of_type_Int = 1;
+    } while (i <= 0);
+    paramtty.jdField_b_of_type_Int -= 1;
+  }
+  
+  private static void c(QQAppInterface paramQQAppInterface, tty paramtty)
+  {
+    paramQQAppInterface = paramQQAppInterface.a();
+    if (paramQQAppInterface != null)
+    {
+      paramtty.jdField_b_of_type_JavaLangCharSequence = null;
+      paramQQAppInterface = paramQQAppInterface.getDraftSummaryInfo(paramtty.jdField_a_of_type_JavaLangString, 1008);
+      if ((paramQQAppInterface != null) && (!TextUtils.isEmpty(paramQQAppInterface.getSummary())))
+      {
+        if (paramtty.jdField_a_of_type_Long != paramQQAppInterface.getTime()) {
+          break label58;
+        }
+        paramtty.jdField_e_of_type_Int = 4;
+      }
+    }
+    label58:
+    while ((paramtty.jdField_a_of_type_ComTencentMobileqqDataMessageRecord != null) && (paramQQAppInterface.getTime() <= paramtty.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.time)) {
+      return;
+    }
+    paramtty.jdField_e_of_type_Int = 4;
+    paramtty.jdField_a_of_type_Long = paramQQAppInterface.getTime();
+    paramtty.jdField_b_of_type_JavaLangString = TimeManager.getInstance().getMsgDisplayTime(paramtty.jdField_a_of_type_JavaLangString, paramQQAppInterface.getTime());
+    paramtty.jdField_a_of_type_JavaLangCharSequence = paramQQAppInterface.getSummary();
+  }
+  
+  public final boolean a()
+  {
+    return (this.jdField_a_of_type_Int == 1) || (this.jdField_a_of_type_Int == 4);
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("ServiceAccountFolderFeed content->");
+    localStringBuilder.append("mIsCreateFromMessageTab:" + this.jdField_a_of_type_Boolean);
+    localStringBuilder.append(", mUin:" + this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(", mUnreadFlag:" + this.jdField_a_of_type_Int);
+    localStringBuilder.append(", mUnreadNum:" + this.jdField_b_of_type_Int);
+    localStringBuilder.append(", mAuthenIconId:" + this.jdField_c_of_type_Int);
+    localStringBuilder.append(", mShowTime:" + this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append(", mTitleName:" + this.jdField_c_of_type_JavaLangString);
+    localStringBuilder.append(", mMsgBrief:" + this.jdField_a_of_type_JavaLangCharSequence);
+    localStringBuilder.append(", mMsgExtraInfo:" + this.jdField_d_of_type_JavaLangString);
+    localStringBuilder.append(", mDraft:" + this.jdField_b_of_type_JavaLangCharSequence);
+    localStringBuilder.append(", mStatus:" + this.jdField_e_of_type_Int);
+    localStringBuilder.append(", mDisplayTime:" + this.jdField_a_of_type_Long);
+    localStringBuilder.append(", mOperationTime:" + this.jdField_b_of_type_Long);
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     tty
  * JD-Core Version:    0.7.0.1
  */

@@ -1,77 +1,102 @@
-import com.tencent.mobileqq.webview.swift.JsBridgeListener;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
-import java.lang.reflect.Method;
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.jsp.UiApiPlugin;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
+import dov.com.qq.im.QIMCameraCaptureActivity;
+import dov.com.tencent.mobileqq.richmedia.capture.activity.CaptureQmcfSoDownloadActivity;
+import mqq.app.AppActivity;
+import org.json.JSONObject;
 
-@Deprecated
-public abstract class befl
-  extends WebViewPlugin
+public class befl
 {
-  public befl()
+  public static String a = "tribe_publish_TribePublishLauncher";
+  
+  public static JSONObject a(Bundle paramBundle)
   {
-    this.mPluginNameSpace = getNameSpace();
+    if (paramBundle != null)
+    {
+      paramBundle = paramBundle.getString("options");
+      if (QLog.isColorLevel()) {
+        QLog.d(a, 2, "getTribeJsonExtra option: " + paramBundle);
+      }
+      try
+      {
+        paramBundle = new JSONObject(paramBundle);
+        return paramBundle;
+      }
+      catch (Exception paramBundle)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.e(a, 2, "getTribeJsonExtra: " + paramBundle);
+        }
+      }
+    }
+    return null;
   }
   
-  protected Method getJsMethod(String paramString1, String paramString2, int paramInt)
+  public static void a(UiApiPlugin paramUiApiPlugin, Activity paramActivity, AppInterface paramAppInterface, String paramString1, byte paramByte, String paramString2)
   {
-    if (!getNameSpace().equals(paramString1)) {}
-    for (;;)
+    if ((paramActivity instanceof AppActivity))
     {
-      return null;
-      paramString1 = getClass().getDeclaredMethods();
-      int j = paramString1.length;
-      int i = 0;
-      while (i < j)
-      {
-        Method localMethod = paramString1[i];
-        if ((localMethod.getName().equals(paramString2)) && (localMethod.getParameterTypes().length == paramInt)) {
-          return localMethod;
-        }
-        i += 1;
+      AppActivity localAppActivity = (AppActivity)paramActivity;
+      if (localAppActivity.checkSelfPermission("android.permission.WRITE_EXTERNAL_STORAGE") != 0) {
+        localAppActivity.requestPermissions(new befm(localAppActivity), 1, new String[] { "android.permission.WRITE_EXTERNAL_STORAGE" });
       }
+    }
+    while ((ljj.b(paramActivity)) || (a(paramActivity))) {
+      return;
+    }
+    boolean bool = bqjb.b(paramAppInterface);
+    if ((!bool) && (!bgnt.g(paramActivity)))
+    {
+      QQToast.a(paramActivity, 2131717374, 0).a();
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d(a, 2, "launchTakeVideoForTribe, videoSoUsable=" + bool);
+    }
+    paramUiApiPlugin.g();
+    paramAppInterface = new Bundle();
+    paramAppInterface.putBoolean("flow_camera_video_mode", true);
+    paramAppInterface.putBoolean("flow_camera_capture_mode", false);
+    paramAppInterface.putString("options", paramString1);
+    paramAppInterface.putLong("ACTIVITY_START_TIME", System.currentTimeMillis());
+    paramAppInterface.putInt("edit_video_type", 10012);
+    if (bool)
+    {
+      paramUiApiPlugin.startActivityForResult(QIMCameraCaptureActivity.a(paramActivity, paramAppInterface), paramByte);
+      if (!"barindex".equals(paramString2)) {
+        break label287;
+      }
+    }
+    label287:
+    for (int i = 1;; i = 2)
+    {
+      bcst.b(null, "dc00899", "Grp_tribe", "", "video_shoot", "exp_findview", i, 0, "", "", "", "");
+      return;
+      paramActivity = new Intent(paramActivity, CaptureQmcfSoDownloadActivity.class);
+      paramActivity.putExtras(paramAppInterface);
+      paramActivity.putExtra("pendingIntentClass", bncq.class.getName());
+      paramActivity.putExtra("pendingIntentRequest", paramByte);
+      paramActivity.putExtra("pendingIntentAllWait", true);
+      paramUiApiPlugin.startActivityForResult(paramActivity, paramByte);
+      break;
     }
   }
   
-  protected abstract String getNameSpace();
-  
-  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  private static boolean a(Context paramContext)
   {
     boolean bool = false;
-    paramString2 = getJsMethod(paramString2, paramString3, paramVarArgs.length);
-    if (paramString2 != null) {}
-    try
+    if (!bann.a())
     {
-      if (paramVarArgs.length == 0) {}
-      for (paramString1 = paramString2.invoke(this, new Object[0]);; paramString1 = paramString2.invoke(this, paramVarArgs))
-      {
-        paramString2 = paramString2.getReturnType();
-        if ((paramString2 != Void.TYPE) && (paramString2 != Void.class)) {
-          break label97;
-        }
-        if (paramJsBridgeListener == null) {
-          break label128;
-        }
-        if (!paramJsBridgeListener.a) {
-          break;
-        }
-        callJs4OpenApi(paramJsBridgeListener, 0, JsBridgeListener.a(0, null, null));
-        break label128;
-      }
-      paramJsBridgeListener.a(null);
-      break label128;
-      label97:
-      if (paramJsBridgeListener != null) {
-        if (paramJsBridgeListener.a) {
-          callJs4OpenApi(paramJsBridgeListener, 0, JsBridgeListener.a(0, paramString1, null));
-        } else {
-          paramJsBridgeListener.a(paramString1);
-        }
-      }
-      label128:
+      bglp.a(paramContext, 230).setMessage(anni.a(2131713765)).setPositiveButton(2131694081, new befn()).show();
       bool = true;
-      return bool;
     }
-    catch (Exception paramJsBridgeListener) {}
-    return false;
+    return bool;
   }
 }
 

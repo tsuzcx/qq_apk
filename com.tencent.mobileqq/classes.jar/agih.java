@@ -1,17 +1,6 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-
-class agih
-  implements DialogInterface.OnClickListener
+public abstract interface agih
 {
-  agih(agig paramagig) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    paramDialogInterface.dismiss();
-    aghx.W(this.a.a).setResult(8001);
-  }
+  public abstract void a();
 }
 
 

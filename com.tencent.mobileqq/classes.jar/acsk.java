@@ -1,30 +1,16 @@
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import android.graphics.LinearGradient;
+import android.graphics.Shader;
+import android.graphics.Shader.TileMode;
+import android.graphics.drawable.ShapeDrawable.ShaderFactory;
 
-public class acsk
-  extends aluu
+final class acsk
+  extends ShapeDrawable.ShaderFactory
 {
-  public acsk(Conversation paramConversation) {}
+  acsk(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, int[] paramArrayOfInt) {}
   
-  public void a(boolean paramBoolean, String paramString1, int paramInt, String paramString2, Long paramLong)
+  public Shader resize(int paramInt1, int paramInt2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.recent", 2, "onGetUserCreateHotChatAnnounce  isSuccess= " + paramBoolean + ", result=" + paramInt + ", memo=" + paramString2 + ", troopOwner=" + paramLong);
-    }
-    if ((paramBoolean) && (paramInt == 0)) {
-      this.a.a(0L);
-    }
-  }
-  
-  public void a(boolean paramBoolean, String paramString1, byte[] paramArrayOfByte, int paramInt, String paramString2, String paramString3, List<Long> paramList)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.recent", 2, "onGetHotChatAnnounce  isSuccess= " + paramBoolean + ", result=" + paramInt + ", memo=" + paramString2 + ", jumpurl=" + paramString3);
-    }
-    if ((paramBoolean) && (paramInt == 0)) {
-      this.a.a(0L);
-    }
+    return new LinearGradient(paramInt1 * this.jdField_a_of_type_Float, paramInt2 * this.b, paramInt1 * this.c, paramInt2 * this.d, this.jdField_a_of_type_ArrayOfInt, null, Shader.TileMode.CLAMP);
   }
 }
 

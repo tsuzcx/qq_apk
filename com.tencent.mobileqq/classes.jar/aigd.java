@@ -1,34 +1,38 @@
-import android.view.KeyEvent;
-import android.view.View;
-import android.view.View.OnKeyListener;
-import android.widget.TextView;
-import android.widget.TextView.OnEditorActionListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.TroopManager;
+import com.tencent.mobileqq.data.TroopInfo;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.BaseApplication;
 
 public class aigd
-  implements View.OnKeyListener, TextView.OnEditorActionListener
+  implements DialogInterface.OnClickListener
 {
-  protected aigd(aigc paramaigc) {}
+  public aigd(TroopChatPie paramTroopChatPie) {}
   
-  public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramInt == 3)
-    {
-      this.a.a();
-      return true;
-    }
-    return false;
-  }
-  
-  public boolean onKey(View paramView, int paramInt, KeyEvent paramKeyEvent)
-  {
-    if ((paramKeyEvent.getKeyCode() == 66) || (paramKeyEvent.getKeyCode() == 84))
-    {
-      if (paramKeyEvent.getAction() == 1) {
-        this.a.a();
+    paramDialogInterface = (anwd)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(20);
+    if ((bgnt.d(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getApplicationContext())) && (paramDialogInterface != null)) {
+      if (((TroopManager)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(52)).c(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a).isTroopOwner(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin())) {
+        paramDialogInterface.l(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
       }
-      return true;
     }
-    return false;
+    for (;;)
+    {
+      new bcsy(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a("dc00899").b("Grp_banned").c("Grp_AIO").d("clk_quitgrp").a(new String[] { this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a }).a();
+      return;
+      paramDialogInterface.k(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
+      continue;
+      if (paramDialogInterface != null) {
+        QQToast.a(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, 1, 2131693991, 0).a();
+      } else {
+        QQToast.a(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, 1, 2131691895, 0).a();
+      }
+    }
   }
 }
 

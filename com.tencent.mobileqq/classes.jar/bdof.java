@@ -1,13 +1,16 @@
-import android.graphics.Point;
+import android.text.Editable;
+import android.text.Editable.Factory;
+import com.tencent.mobileqq.activity.ChatTextSizeSettingActivity;
 
 final class bdof
-  implements bdoi<Point>
+  extends Editable.Factory
 {
-  public Point a(float paramFloat, Point paramPoint1, Point paramPoint2)
+  public Editable newEditable(CharSequence paramCharSequence)
   {
-    float f1 = paramPoint1.x;
-    float f2 = paramPoint1.y;
-    return new Point((int)(f1 + (paramPoint2.x - f1) * paramFloat), (int)(f2 + (paramPoint2.y - f2) * paramFloat));
+    if ((paramCharSequence instanceof bdod)) {
+      return (Editable)paramCharSequence;
+    }
+    return new bdod(paramCharSequence, 3, ChatTextSizeSettingActivity.b() + 1);
   }
 }
 

@@ -1,55 +1,49 @@
-import android.support.v7.widget.RecyclerView.Adapter;
-import android.view.LayoutInflater;
-import android.view.ViewGroup;
-import com.tencent.mobileqq.extendfriend.bean.MiniAppRecommInfo.MiniApp;
-import com.tencent.mobileqq.mini.apkg.MiniAppConfig;
-import com.tencent.mobileqq.mini.entry.MiniAppExposureManager.MiniAppExposureData;
-import com.tencent.mobileqq.mini.report.MiniProgramLpReportDC04239;
-import java.util.ArrayList;
-import java.util.List;
+import com.tencent.TMG.utils.QLog;
 
 public class aqcu
-  extends RecyclerView.Adapter<aqct>
+  implements anil
 {
-  private List<MiniAppRecommInfo.MiniApp> jdField_a_of_type_JavaUtilList = new ArrayList();
-  
-  public aqcu(aqcs paramaqcs) {}
-  
-  public aqct a(ViewGroup paramViewGroup, int paramInt)
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    paramViewGroup = LayoutInflater.from(aqcs.a(this.jdField_a_of_type_Aqcs)).inflate(2131559363, null, false);
-    return new aqct(aqcs.a(this.jdField_a_of_type_Aqcs), paramViewGroup);
-  }
-  
-  public void a(aqct paramaqct, int paramInt)
-  {
-    MiniAppRecommInfo.MiniApp localMiniApp = (MiniAppRecommInfo.MiniApp)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-    paramaqct.a(localMiniApp);
-    paramaqct.a(paramInt);
-    if ((localMiniApp != null) && (localMiniApp.jdField_a_of_type_ComTencentMobileqqMiniApkgMiniAppInfo != null))
+    switch (paramInt)
     {
-      paramaqct = new MiniAppConfig(localMiniApp.jdField_a_of_type_ComTencentMobileqqMiniApkgMiniAppInfo);
-      paramaqct.launchParam.scene = 2065;
-      ArrayList localArrayList = new ArrayList();
-      localArrayList.add(new MiniAppExposureManager.MiniAppExposureData(paramaqct, paramInt));
-      MiniProgramLpReportDC04239.reportPageView(localArrayList, "expo");
-      aqcs.a(101, paramInt, localMiniApp.jdField_a_of_type_Int);
+    default: 
+      return;
+    case 1: 
+      paramObject = (Object[])paramObject;
+      if ((paramObject != null) && (paramObject.length == 1))
+      {
+        aqcy localaqcy = aqcz.a();
+        if ((localaqcy == null) || (!localaqcy.a())) {
+          break label135;
+        }
+      }
+      break;
     }
-  }
-  
-  public void a(List<MiniAppRecommInfo.MiniApp> paramList)
-  {
-    if (paramList != null)
+    label135:
+    for (paramInt = 1;; paramInt = 0)
     {
-      this.jdField_a_of_type_JavaUtilList.clear();
-      this.jdField_a_of_type_JavaUtilList.addAll(paramList);
-      notifyDataSetChanged();
+      if ((paramInt != 0) && (!((Boolean)paramObject[0]).booleanValue())) {}
+      for (paramBoolean = true;; paramBoolean = false)
+      {
+        aqcb.c(paramBoolean);
+        if (!QLog.isColorLevel()) {
+          break;
+        }
+        QLog.d("ColorNoteObserver", 0, "onUpdate: TYPE_REQ_GET_COLOR_NOTE_RECENT_SWITCH");
+        return;
+      }
+      if (!QLog.isColorLevel()) {
+        break;
+      }
+      QLog.d("ColorNoteObserver", 0, "onUpdate: params == null || params.length != 1");
+      return;
+      if (!QLog.isColorLevel()) {
+        break;
+      }
+      QLog.d("ColorNoteObserver", 0, "onUpdate: TYPE_REQ_SET_COLOR_NOTE_RECENT_SWITCH");
+      return;
     }
-  }
-  
-  public int getItemCount()
-  {
-    return this.jdField_a_of_type_JavaUtilList.size();
   }
 }
 

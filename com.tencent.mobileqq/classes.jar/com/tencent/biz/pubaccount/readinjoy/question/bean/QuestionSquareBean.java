@@ -1,13 +1,13 @@
 package com.tencent.biz.pubaccount.readinjoy.question.bean;
 
-import awge;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.persistence.Entity;
 import tencent.im.oidb.cmd0xbe7.oidb_cmd0xbe7.QuestionInfo;
 
 public class QuestionSquareBean
-  extends awge
+  extends Entity
 {
   public int answerNum;
   public int fanNum;

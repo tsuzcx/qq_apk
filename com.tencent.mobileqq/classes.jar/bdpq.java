@@ -1,14 +1,53 @@
-public abstract interface bdpq
+import android.os.RemoteException;
+import com.tencent.qphone.base.util.QLog;
+
+class bdpq
+  extends bdpx
 {
-  public abstract void a(bdpo parambdpo, bdpp parambdpp, float paramFloat1, float paramFloat2);
+  bdpq(bdpp parambdpp, bdoz parambdoz) {}
   
-  public abstract boolean a(float paramFloat1, float paramFloat2);
+  public void a()
+  {
+    try
+    {
+      this.jdField_a_of_type_Bdoz.beginSwitch();
+      return;
+    }
+    catch (RemoteException localRemoteException)
+    {
+      QLog.e("ThemeIPCModule", 1, "beginSwitch: ", localRemoteException);
+    }
+  }
   
-  public abstract boolean a(bdpo parambdpo, bdpp parambdpp, float paramFloat1, float paramFloat2);
+  public boolean a(int paramInt)
+  {
+    try
+    {
+      this.jdField_a_of_type_Bdoz.postSwitch(paramInt);
+      return super.a(paramInt);
+    }
+    catch (RemoteException localRemoteException)
+    {
+      for (;;)
+      {
+        QLog.e("ThemeIPCModule", 1, "postSwitch: ", localRemoteException);
+      }
+    }
+  }
   
-  public abstract void b(bdpo parambdpo, bdpp parambdpp, float paramFloat1, float paramFloat2);
-  
-  public abstract boolean b(bdpo parambdpo, bdpp parambdpp, float paramFloat1, float paramFloat2);
+  public boolean a(bdps parambdps)
+  {
+    try
+    {
+      this.jdField_a_of_type_Bdoz.doSwitch(parambdps.a(), parambdps.d());
+      return true;
+    }
+    catch (RemoteException parambdps)
+    {
+      QLog.e("ThemeIPCModule", 1, "beforeSwitch: ", parambdps);
+    }
+    return true;
+  }
 }
 
 

@@ -2,18 +2,18 @@ package com.tencent.biz.pubaccount.readinjoy.view.text;
 
 import android.text.style.ForegroundColorSpan;
 import com.tencent.biz.pubaccount.readinjoy.struct.TopicInfo;
-import sgy;
-import sha;
+import tfp;
+import tfr;
 
 public class TopicSpan
   extends ForegroundColorSpan
-  implements sgy, sha
+  implements tfp, tfr
 {
   private final TopicInfo a;
   
   public TopicSpan(TopicInfo paramTopicInfo)
   {
-    super(-12084769);
+    super(-15504151);
     this.a = paramTopicInfo;
   }
   
@@ -24,7 +24,7 @@ public class TopicSpan
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.text.TopicSpan
  * JD-Core Version:    0.7.0.1
  */

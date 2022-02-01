@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.troop.enterEffect;
 
-import bbuq;
+import bevb;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
@@ -11,7 +11,7 @@ import tencent.qun.group_effect.group_effect_commu.TGetMyEffectRsp0x2;
 public class TroopEnterEffectManager$2
   implements Runnable
 {
-  public TroopEnterEffectManager$2(bbuq parambbuq, group_effect_commu.TGetMyEffectRsp0x2 paramTGetMyEffectRsp0x2) {}
+  public TroopEnterEffectManager$2(bevb parambevb, group_effect_commu.TGetMyEffectRsp0x2 paramTGetMyEffectRsp0x2) {}
   
   public void run()
   {
@@ -95,7 +95,7 @@ public class TroopEnterEffectManager$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.troop.enterEffect.TroopEnterEffectManager.2
  * JD-Core Version:    0.7.0.1
  */

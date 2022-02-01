@@ -1,6 +1,6 @@
 package dov.com.qq.im.ae.camera.core;
 
-import bkyt;
+import bnnx;
 
 class AECameraGLSurfaceView$12$3
   implements Runnable
@@ -9,12 +9,12 @@ class AECameraGLSurfaceView$12$3
   
   public void run()
   {
-    bkyt.a().a();
+    bnnx.a().a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     dov.com.qq.im.ae.camera.core.AECameraGLSurfaceView.12.3
  * JD-Core Version:    0.7.0.1
  */

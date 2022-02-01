@@ -1,13 +1,13 @@
 package dov.com.tencent.mobileqq.shortvideo;
 
-import baub;
-import baue;
-import bavg;
-import bdhb;
-import bdin;
-import blqh;
-import bnpl;
-import bnpm;
+import bdvs;
+import bdvu;
+import bdwu;
+import bgmg;
+import bgnt;
+import bojl;
+import bqgc;
+import bqgd;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.app.PeakAppInterface;
 import com.tencent.qphone.base.util.QLog;
@@ -16,7 +16,7 @@ import java.io.File;
 public class QIMPtvTemplateManager$4
   implements Runnable
 {
-  public QIMPtvTemplateManager$4(bnpl parambnpl, PtvTemplateManager.PtvTemplateInfo paramPtvTemplateInfo) {}
+  public QIMPtvTemplateManager$4(bqgc parambqgc, PtvTemplateManager.PtvTemplateInfo paramPtvTemplateInfo) {}
   
   public void run()
   {
@@ -27,7 +27,7 @@ public class QIMPtvTemplateManager$4
     {
       return;
       this.a.usable = false;
-      int i = (int)(bdhb.a() / 1024.0F / 1024.0F);
+      int i = (int)(bgmg.a() / 1024.0F / 1024.0F);
       int j = (int)(this.a.sizeFree * 1024.0D);
       if (QLog.isColorLevel()) {
         QLog.d("QIMPtvTemplateManager", 2, "preDownloadTemplates getAvailableInnernalMemorySize: " + i + " mSizeFree: " + j);
@@ -40,18 +40,18 @@ public class QIMPtvTemplateManager$4
       }
       else
       {
-        baub localbaub = new baub();
-        localbaub.jdField_a_of_type_Baug = new bnpm(this);
-        localbaub.jdField_a_of_type_JavaLangString = this.a.resurl;
-        localbaub.jdField_a_of_type_Int = 0;
-        localbaub.jdField_c_of_type_JavaLangString = new File(bnpl.a(), this.a.name).getPath();
-        localbaub.jdField_c_of_type_Int = bdin.a(bavg.a().a());
+        bdvs localbdvs = new bdvs();
+        localbdvs.jdField_a_of_type_Bdvw = new bqgd(this);
+        localbdvs.jdField_a_of_type_JavaLangString = this.a.resurl;
+        localbdvs.jdField_a_of_type_Int = 0;
+        localbdvs.c = new File(bqgc.a(), this.a.name).getPath();
+        localbdvs.b = bgnt.a(bdwu.a().a());
         try
         {
-          AppInterface localAppInterface = blqh.a();
+          AppInterface localAppInterface = bojl.a();
           if (localAppInterface != null)
           {
-            ((PeakAppInterface)localAppInterface).getNetEngine(0).a(localbaub);
+            ((PeakAppInterface)localAppInterface).getNetEngine(0).a(localbdvs);
             if (QLog.isColorLevel())
             {
               QLog.i("QIMPtvTemplateManager", 2, "startDownloadFilterConfigZip, url: " + this.a.resurl);
@@ -66,7 +66,7 @@ public class QIMPtvTemplateManager$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     dov.com.tencent.mobileqq.shortvideo.QIMPtvTemplateManager.4
  * JD-Core Version:    0.7.0.1
  */

@@ -1,33 +1,31 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.storyHome.model.GeneralFeedItem;
-import com.tribe.async.dispatch.Subscriber.SingleEventSubscriberNoRefect;
+import com.tencent.biz.qqcircle.requests.QCircleGetMainPageRequest;
+import com.tencent.biz.richframework.network.VSNetworkHelper;
+import com.tencent.qphone.base.util.QLog;
 
 public class vqn
-  extends Subscriber.SingleEventSubscriberNoRefect<uow>
+  extends zzj
 {
-  vqi a;
+  private String a;
   
-  public vqn(@NonNull vqi paramvqi)
+  public vqn(String paramString)
   {
-    this.a = paramvqi;
+    this.a = paramString;
   }
   
-  protected void a(@NonNull uow paramuow)
-  {
-    if ((paramuow.b != null) && (paramuow.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem != null)) {
-      vqi.a(this.a, paramuow.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid, paramuow.b.mVid, paramuow.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelGeneralFeedItem.feedId);
-    }
-  }
+  public void a() {}
   
-  public Class acceptEventClass()
+  public void a(zzp paramzzp)
   {
-    return uow.class;
+    QCircleGetMainPageRequest localQCircleGetMainPageRequest = new QCircleGetMainPageRequest(this.a, null);
+    paramzzp = new vqo(this, localQCircleGetMainPageRequest, paramzzp);
+    localQCircleGetMainPageRequest.setEnableCache(true);
+    VSNetworkHelper.a().a(localQCircleGetMainPageRequest, paramzzp);
+    QLog.d("QCirclePersonalDetailPreLoaderTask", 1, "QCirclePersonalDetailPreLoaderTask->sendQCircleRequest: CmdName:" + localQCircleGetMainPageRequest.getCmdName() + "| TraceId:" + localQCircleGetMainPageRequest.getTraceId() + " | SeqId:" + localQCircleGetMainPageRequest.getCurrentSeq());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     vqn
  * JD-Core Version:    0.7.0.1
  */

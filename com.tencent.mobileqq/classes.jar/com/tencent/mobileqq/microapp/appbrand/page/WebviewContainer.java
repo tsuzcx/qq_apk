@@ -15,22 +15,21 @@ import android.widget.FrameLayout;
 import android.widget.FrameLayout.LayoutParams;
 import android.widget.ImageView;
 import android.widget.TextView;
-import bdnn;
+import bgsp;
 import com.tencent.image.URLDrawable;
+import com.tencent.mobileqq.microapp.a.c;
 import com.tencent.mobileqq.microapp.apkg.ApkgConfigManager.a;
-import com.tencent.mobileqq.microapp.apkg.f;
-import com.tencent.mobileqq.microapp.apkg.r;
-import com.tencent.mobileqq.microapp.apkg.t;
-import com.tencent.mobileqq.microapp.app.b;
-import com.tencent.mobileqq.microapp.appbrand.utils.p;
-import com.tencent.mobileqq.microapp.c.c;
+import com.tencent.mobileqq.microapp.apkg.j;
+import com.tencent.mobileqq.microapp.apkg.l;
+import com.tencent.mobileqq.microapp.appbrand.a;
+import com.tencent.mobileqq.microapp.appbrand.b.h;
 import com.tencent.mobileqq.microapp.util.DisplayUtil;
 import com.tencent.mobileqq.microapp.widget.CanvasView;
 import com.tencent.mobileqq.microapp.widget.CoverImageView;
 import com.tencent.mobileqq.microapp.widget.CoverView;
 import com.tencent.mobileqq.microapp.widget.MapContext;
 import com.tencent.mobileqq.microapp.widget.MiniAppTextArea;
-import com.tencent.mobileqq.microapp.widget.d;
+import com.tencent.mobileqq.microapp.widget.g;
 import com.tencent.mobileqq.microapp.widget.media.MiniAppCamera;
 import com.tencent.mobileqq.microapp.widget.media.MiniAppVideoPlayer;
 import com.tencent.mobileqq.widget.QQMapView;
@@ -45,8 +44,8 @@ public class WebviewContainer
   implements SwipeRefreshLayout.OnRefreshListener, PageWebview.OnWebviewScrollListener
 {
   public static final String TAG = "WebViewContainer";
-  protected f apkgInfo;
-  public com.tencent.mobileqq.microapp.appbrand.a appBrandRuntime;
+  protected c apkgInfo$5475ea27;
+  public a appBrandRuntime;
   private SparseArray appTextAreaSparseArray = new SparseArray();
   private SparseArray cameraViewSparseArray = new SparseArray();
   private SparseArray canvasSparseArray = new SparseArray();
@@ -58,23 +57,23 @@ public class WebviewContainer
   private CanvasView mCurrCanvas;
   private SparseArray mTextViewSparseArray = new SparseArray();
   private SparseArray mapContextArray;
-  private d miniAppFileView;
-  protected r pageInfo;
+  private com.tencent.mobileqq.microapp.widget.b miniAppFileView;
+  protected j pageInfo;
   private PageWebview pageWebview;
   public SwipeRefreshLayout swipeRefreshLayout;
   private SparseArray videoPlayerSparseArray = new SparseArray();
   
-  public WebviewContainer(Context paramContext, com.tencent.mobileqq.microapp.appbrand.a parama, f paramf, String paramString)
+  public WebviewContainer(Context paramContext, a parama, c paramc, String paramString)
   {
     super(paramContext);
     this.density = DisplayUtil.getDensity(paramContext);
     this.appBrandRuntime = parama;
-    this.apkgInfo = paramf;
-    this.pageInfo = paramf.b.d(paramString);
+    this.apkgInfo$5475ea27 = paramc;
+    this.pageInfo = paramc.b.b(paramString);
     this.componentLayout = new FrameLayout(getContext());
     this.mapContextArray = new SparseArray();
     this.swipeRefreshLayout = new SwipeRefreshLayout(getContext());
-    this.swipeRefreshLayout.setEnabled(this.pageInfo.a.d);
+    this.swipeRefreshLayout.setEnabled(this.pageInfo.a.b);
     this.swipeRefreshLayout.setOnRefreshListener(this);
     addView(this.swipeRefreshLayout, new FrameLayout.LayoutParams(-1, -1));
     notifyChangePullDownRefreshStyle();
@@ -82,7 +81,7 @@ public class WebviewContainer
   
   private String getActualColor(String paramString)
   {
-    if (bdnn.a(paramString)) {
+    if (bgsp.a(paramString)) {
       return "";
     }
     String str = paramString.substring(paramString.length() - 2);
@@ -178,7 +177,7 @@ public class WebviewContainer
   {
     if (this.pageWebview != null)
     {
-      paramString = com.tencent.mobileqq.microapp.b.a.b(paramString, paramJSONObject);
+      paramString = c.b(paramString, paramJSONObject);
       if (paramString == null) {
         break label32;
       }
@@ -195,7 +194,7 @@ public class WebviewContainer
   {
     if (this.pageWebview != null)
     {
-      paramString = com.tencent.mobileqq.microapp.b.a.a(paramString, paramJSONObject);
+      paramString = c.a(paramString, paramJSONObject);
       if (paramString == null) {
         break label32;
       }
@@ -228,7 +227,7 @@ public class WebviewContainer
       {
         ((MiniAppVideoPlayer)localObject).a();
         ((MiniAppVideoPlayer)localObject).d();
-        b.a().deleteObserver(((MiniAppVideoPlayer)localObject).q);
+        com.tencent.mobileqq.microapp.app.b.a().deleteObserver(((MiniAppVideoPlayer)localObject).q);
         this.componentLayout.removeView((View)localObject);
       }
       i += 1;
@@ -251,7 +250,7 @@ public class WebviewContainer
     if (this.innerWebView != null)
     {
       this.componentLayout.removeView(this.innerWebView);
-      p.a().a(this.innerWebView, getContext());
+      h.a().a(this.innerWebView, getContext());
     }
   }
   
@@ -307,7 +306,7 @@ public class WebviewContainer
     return true;
   }
   
-  public void insertCamera$6f1019db$e44775(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, ApkgConfigManager.a parama)
+  public void insertCamera$6f1019db(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, ApkgConfigManager.a parama)
   {
     MiniAppCamera localMiniAppCamera2 = (MiniAppCamera)this.cameraViewSparseArray.get(paramInt1);
     MiniAppCamera localMiniAppCamera1 = localMiniAppCamera2;
@@ -361,7 +360,7 @@ public class WebviewContainer
   {
     if (this.miniAppFileView == null)
     {
-      this.miniAppFileView = new d(getContext());
+      this.miniAppFileView = new com.tencent.mobileqq.microapp.widget.b(getContext());
       FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(getPageWebview().getWidth(), getPageWebview().getHeight());
       localLayoutParams.leftMargin = 0;
       localLayoutParams.topMargin = 0;
@@ -385,7 +384,7 @@ public class WebviewContainer
     if (QLog.isColorLevel()) {
       QLog.d("WebViewContainer", 2, "insertHTMLWebView htmlId=" + paramInt1 + ",left=" + paramInt2 + ",top=" + paramInt3 + ",w=" + paramInt4 + ",h=" + paramInt5);
     }
-    this.innerWebView = p.a().a(this.apkgInfo.d, paramInt1);
+    this.innerWebView = h.a().a(this.apkgInfo$5475ea27.d, paramInt1);
     FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(paramInt4, paramInt5);
     localLayoutParams.leftMargin = paramInt2;
     localLayoutParams.topMargin = paramInt3;
@@ -408,7 +407,7 @@ public class WebviewContainer
     if (localLayoutParams == null) {
       localObject2 = new FrameLayout.LayoutParams(-2, -2);
     }
-    if ((bdnn.a(paramString2)) || ((paramString2.startsWith("http")) || (paramString2.startsWith("https")))) {}
+    if ((bgsp.a(paramString2)) || ((paramString2.startsWith("http")) || (paramString2.startsWith("https")))) {}
     for (;;)
     {
       try
@@ -437,8 +436,8 @@ public class WebviewContainer
       this.componentLayout.addView((View)localObject1, paramJSONObject);
       return;
       paramString2 = this.appBrandRuntime.c.j(paramString2);
-      if (!bdnn.a(paramString2)) {
-        ((CoverImageView)localObject1).setImageBitmap(com.tencent.mobileqq.microapp.b.a.i(paramString2));
+      if (!bgsp.a(paramString2)) {
+        ((CoverImageView)localObject1).setImageBitmap(c.q(paramString2));
       }
     }
   }
@@ -454,7 +453,7 @@ public class WebviewContainer
     }
     localObject = new QQMapView(getContext(), null);
     this.componentLayout.addView((View)localObject);
-    localObject = new MapContext(this.pageWebview, this.appBrandRuntime.i, (QQMapView)localObject, paramInt, this.apkgInfo);
+    localObject = new MapContext(this.pageWebview, this.appBrandRuntime.i, (QQMapView)localObject, paramInt, this.apkgInfo$5475ea27);
     this.mapContextArray.put(paramInt, localObject);
   }
   
@@ -506,7 +505,7 @@ public class WebviewContainer
       localObject2 = new FrameLayout.LayoutParams(-2, -2);
     }
     localObject3 = paramJSONObject.optJSONObject("style");
-    if ((localObject3 != null) && (!bdnn.a(getActualColor(((JSONObject)localObject3).optString("bgColor")))))
+    if ((localObject3 != null) && (!bgsp.a(getActualColor(((JSONObject)localObject3).optString("bgColor")))))
     {
       ((CoverView)localObject1).setBackgroundColor(Color.parseColor(getActualColor(((JSONObject)localObject3).optString("bgColor"))));
       ((CoverView)localObject1).setScaleX(Float.parseFloat(((JSONObject)localObject3).optString("scaleX")));
@@ -520,7 +519,7 @@ public class WebviewContainer
     localObject3 = paramJSONObject.optJSONObject("label");
     if (localObject3 != null)
     {
-      if (!bdnn.a(((JSONObject)localObject3).optString("color"))) {
+      if (!bgsp.a(((JSONObject)localObject3).optString("color"))) {
         ((CoverView)localObject1).setTextColor(Color.parseColor(getActualColor(((JSONObject)localObject3).optString("color"))));
       }
       ((CoverView)localObject1).setTextSize(1, ((JSONObject)localObject3).optInt("fontSize"));
@@ -531,7 +530,7 @@ public class WebviewContainer
     }
     for (;;)
     {
-      if (!bdnn.a(((JSONObject)localObject3).optString("content"))) {
+      if (!bgsp.a(((JSONObject)localObject3).optString("content"))) {
         ((CoverView)localObject1).setText(((JSONObject)localObject3).optString("content"));
       }
       if ("bold".equals(((JSONObject)localObject3).optString("fontWeight"))) {
@@ -571,7 +570,7 @@ public class WebviewContainer
       localMiniAppVideoPlayer1.b = paramJSONObject.optString("data");
       localMiniAppVideoPlayer1.c = this.appBrandRuntime.i;
       localMiniAppVideoPlayer1.d = this.pageWebview.pageWebviewId;
-      b.a().addObserver(localMiniAppVideoPlayer1.q);
+      com.tencent.mobileqq.microapp.app.b.a().addObserver(localMiniAppVideoPlayer1.q);
       this.videoPlayerSparseArray.put(paramInt, localMiniAppVideoPlayer1);
     }
     localMiniAppVideoPlayer1.b(paramJSONObject);
@@ -811,7 +810,7 @@ public class WebviewContainer
   public void updateImageView(JSONObject paramJSONObject, int paramInt, String paramString, boolean paramBoolean)
   {
     CoverImageView localCoverImageView = (CoverImageView)this.imageViewSparseArray.get(paramInt);
-    if ((localCoverImageView == null) || ((bdnn.a(paramString)) || ((paramString.startsWith("http")) || (paramString.startsWith("https"))))) {}
+    if ((localCoverImageView == null) || ((bgsp.a(paramString)) || ((paramString.startsWith("http")) || (paramString.startsWith("https"))))) {}
     for (;;)
     {
       try
@@ -839,8 +838,8 @@ public class WebviewContainer
       localCoverImageView.setLayoutParams(paramJSONObject);
       return;
       paramString = this.appBrandRuntime.c.j(paramString);
-      if (!bdnn.a(paramString)) {
-        localCoverImageView.setImageBitmap(com.tencent.mobileqq.microapp.b.a.i(paramString));
+      if (!bgsp.a(paramString)) {
+        localCoverImageView.setImageBitmap(c.q(paramString));
       }
     }
   }
@@ -901,7 +900,7 @@ public class WebviewContainer
         ((FrameLayout.LayoutParams)localObject).topMargin = paramInt;
       }
       paramJSONObject = paramJSONObject.optString("filePath");
-      if (!bdnn.a(paramJSONObject))
+      if (!bgsp.a(paramJSONObject))
       {
         localMiniAppVideoPlayer.a(paramJSONObject.replace("https:", "http:"));
         if (localMiniAppVideoPlayer.i) {
@@ -913,7 +912,7 @@ public class WebviewContainer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.microapp.appbrand.page.WebviewContainer
  * JD-Core Version:    0.7.0.1
  */

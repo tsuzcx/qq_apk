@@ -1,45 +1,28 @@
-import com.tencent.ark.open.ArkAppInfo.AppTemplateView;
-import com.tencent.ark.open.ArkAppMgr.AppPathInfo;
-import com.tencent.ark.open.ArkAppMgr.IGetAppPathByNameCallback;
+import com.tencent.mobileqq.activity.TroopAssistantActivity;
+import com.tencent.mobileqq.app.ThreadExcutor.IThreadListener;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
 
-public final class afik
-  implements ArkAppMgr.IGetAppPathByNameCallback
+public class afik
+  implements ThreadExcutor.IThreadListener
 {
-  protected WeakReference<afii> a;
+  public afik(TroopAssistantActivity paramTroopAssistantActivity) {}
   
-  public afik(WeakReference<afii> paramWeakReference)
+  public void onAdded()
   {
-    this.a = paramWeakReference;
+    QLog.e("TroopAssistantActivity", 2, "mRefreshListener onAdded:" + TroopAssistantActivity.a(this.a));
+    TroopAssistantActivity.a(this.a, true);
   }
   
-  public void onGetAppPathByName(int paramInt, String paramString, ArkAppMgr.AppPathInfo paramAppPathInfo, Object paramObject)
+  public void onPostRun()
   {
-    paramObject = (afii)this.a.get();
-    if (paramObject == null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("ArkApp.ArkAppContainer", 1, "onGetAppPathByName.wrapper == null");
-      }
-      return;
-    }
-    String str1 = paramObject.a(paramString);
-    if (paramAppPathInfo != null) {}
-    for (paramString = paramAppPathInfo.path;; paramString = null)
-    {
-      paramObject.a.getAppFromLocal = false;
-      paramObject.a.endOfGetApp = System.currentTimeMillis();
-      if ((paramAppPathInfo != null) && (paramAppPathInfo.appTempInfo != null))
-      {
-        String str2 = paramAppPathInfo.appTempInfo.template;
-        str2 = paramAppPathInfo.appTempInfo.templateView;
-        afii.a(paramObject).view = str2;
-      }
-      afii.a(paramAppPathInfo);
-      paramObject.a(paramString, paramInt, str1);
-      return;
-    }
+    QLog.e("TroopAssistantActivity", 2, "mRefreshListener onPostRun:" + TroopAssistantActivity.a(this.a));
+    TroopAssistantActivity.a(this.a, false);
+  }
+  
+  public void onPreRun()
+  {
+    QLog.e("TroopAssistantActivity", 2, "mRefreshListener onPreRun:" + TroopAssistantActivity.a(this.a));
+    TroopAssistantActivity.a(this.a, true);
   }
 }
 

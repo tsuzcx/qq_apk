@@ -1,105 +1,111 @@
-import android.content.Context;
-import android.content.Intent;
-import android.net.Uri;
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.JumpActivity;
-import com.tencent.mobileqq.app.BaseActivity;
+import android.os.AsyncTask;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.search.report.ReportModelDC02528;
+import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
+import java.lang.ref.WeakReference;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.concurrent.ConcurrentHashMap;
 
 class aywx
-  implements View.OnClickListener
+  extends AsyncTask<Void, Void, Void>
 {
   aywx(ayww paramayww) {}
   
-  public void onClick(View paramView)
+  protected Void a(Void... paramVarArgs)
   {
-    Object localObject1 = paramView.getTag(2131377450);
-    Object localObject2 = paramView.getTag(2131377451);
-    Context localContext;
-    Object localObject3;
-    if ((localObject1 != null) && ((localObject1 instanceof String)))
+    ayxi.a(this.a.a.jdField_a_of_type_Aywt.jdField_b_of_type_JavaLangString, this.a.a.jdField_a_of_type_Aywt.jdField_a_of_type_JavaLangString, "uploadNotExistFiles start");
+    int i = 0;
+    paramVarArgs = null;
+    Object localObject2;
+    Object localObject1;
+    for (;;)
     {
-      localContext = paramView.getContext();
-      localObject1 = (String)localObject1;
-      localObject3 = paramView.getTag(2131377424);
-      if (!(localObject3 instanceof Integer)) {
-        break label485;
-      }
-    }
-    label404:
-    label485:
-    for (int i = ((Integer)localObject3).intValue();; i = 0)
-    {
-      if (TextUtils.isEmpty((CharSequence)localObject1)) {
-        localObject1 = ayvj.c(i);
-      }
-      for (localObject1 = ayvj.a((String)localObject2, 3, (String)localObject1);; localObject1 = ayvj.b((String)localObject1, i))
+      if (i < this.a.a.jdField_a_of_type_JavaUtilArrayList.size())
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("NetSearchTemplateNewEntranceView", 2, "open Browser append suffix url = " + (String)localObject1);
-        }
-        if (localObject1 != null) {
-          break;
-        }
-        QLog.e("NetSearchTemplateNewEntranceView", 2, "NetSearchSubView click jumpurl is null");
-        return;
-      }
-      aysc.a(null, 0, i, "0X8009D5F", 0, 0, null, null);
-      paramView = (ayoo)paramView.getTag(2131379971);
-      localObject3 = new JSONObject();
-      try
-      {
-        ((JSONObject)localObject3).put("project", aysc.a());
-        ((JSONObject)localObject3).put("event_src", "client");
-        ((JSONObject)localObject3).put("experiment_id", aysc.b);
-        if (paramView != null)
+        ayxr localayxr = (ayxr)this.a.a.jdField_a_of_type_JavaUtilList.get(i);
+        localObject2 = (ayxy)this.a.a.jdField_a_of_type_JavaUtilArrayList.get(i);
+        localObject1 = paramVarArgs;
+        if (((ayxy)localObject2).jdField_a_of_type_Int == -2)
         {
-          QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-          ReportModelDC02528 localReportModelDC02528 = new ReportModelDC02528().module("all_result").action("clk_relatedsearch_list").obj1(paramView.a + "").obj2(paramView.d).ver1(paramView.a()).ver2(aysc.a(i));
-          if (localObject2 == null)
+          String str = ayww.a(this.a, localayxr);
+          if (str == null) {
+            break label551;
+          }
+          ayxi.a(this.a.a.jdField_a_of_type_Aywt.jdField_b_of_type_JavaLangString, this.a.a.jdField_a_of_type_Aywt.jdField_a_of_type_JavaLangString, "uploadForwardMultiMsgPics.uploadFiles", "Upload [" + i + "]mLocalPath ＝ " + str);
+          localObject2 = new bdzn();
+          ((bdzn)localObject2).jdField_e_of_type_Boolean = false;
+          ((bdzn)localObject2).jdField_b_of_type_JavaLangString = ((QQAppInterface)this.a.a.jdField_a_of_type_JavaLangRefWeakReference.get()).getAccount();
+          ((bdzn)localObject2).c = this.a.a.jdField_a_of_type_Aywt.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.frienduin;
+          ((bdzn)localObject2).d = this.a.a.jdField_a_of_type_Aywt.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.senderuin;
+          ((bdzn)localObject2).jdField_a_of_type_Int = this.a.a.jdField_a_of_type_Aywt.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.istroop;
+          ((bdzn)localObject2).jdField_b_of_type_Int = 1;
+          ((bdzn)localObject2).jdField_a_of_type_Long = (this.a.a.jdField_a_of_type_Aywt.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.uniseq + i);
+          for (localObject1 = ((bdzn)localObject2).c + ((bdzn)localObject2).jdField_a_of_type_Long; ((QQAppInterface)this.a.a.jdField_a_of_type_JavaLangRefWeakReference.get()).a().a.containsKey(localObject1); localObject1 = ((bdzn)localObject2).c + ((bdzn)localObject2).jdField_a_of_type_Long) {
+            ((bdzn)localObject2).jdField_a_of_type_Long += 100L;
+          }
+          ((bdzn)localObject2).jdField_a_of_type_Boolean = true;
+          ((bdzn)localObject2).jdField_e_of_type_Int = localayxr.jdField_a_of_type_Ayyg.jdField_a_of_type_Int;
+          ((bdzn)localObject2).i = str;
+          localObject1 = new bdzr();
+          if (localayxr.jdField_a_of_type_Int < 0)
           {
-            paramView = "";
-            aysc.a(null, localReportModelDC02528.ver4(paramView).ver7(((JSONObject)localObject3).toString()).session_id(localQQAppInterface.getCurrentAccountUin() + ayif.a));
+            ((bdzr)localObject1).jdField_a_of_type_Boolean = false;
+            ((bdzn)localObject2).jdField_a_of_type_JavaLangObject = localObject1;
+            ((bdzn)localObject2).jdField_a_of_type_Ayyt = new aywy(this, i, str);
+            ((QQAppInterface)this.a.a.jdField_a_of_type_JavaLangRefWeakReference.get()).a().a((bdzn)localObject2);
+            localObject1 = paramVarArgs;
           }
         }
         else
         {
-          if ((!((String)localObject1).startsWith("https://")) && (!((String)localObject1).startsWith("http://"))) {
-            break label404;
-          }
-          ayvm.a(localContext, (String)localObject2, (String)localObject1);
-          return;
-        }
-      }
-      catch (JSONException localJSONException)
-      {
-        for (;;)
-        {
-          QLog.e("NetSearchTemplateNewEntranceView", 2, "e = " + localJSONException);
+          i += 1;
+          paramVarArgs = (Void[])localObject1;
           continue;
-          paramView = localObject2.toString();
         }
-        if ((localContext instanceof BaseActivity))
+        if (localayxr.jdField_a_of_type_Int == 2) {}
+        for (boolean bool = true;; bool = false)
         {
-          paramView = bdib.a(((BaseActivity)localContext).app, localContext, (String)localObject1);
-          if (paramView != null)
-          {
-            paramView.c();
-            return;
-          }
-          localContext.startActivity(new Intent(localContext, JumpActivity.class).setData(Uri.parse((String)localObject1)));
-          return;
+          ((bdzr)localObject1).jdField_a_of_type_Boolean = bool;
+          break;
         }
-        localContext.startActivity(new Intent(localContext, JumpActivity.class).setData(Uri.parse((String)localObject1)));
-        return;
+        label551:
+        ((ayxy)localObject2).jdField_a_of_type_Int = -1;
+        ((ayxy)localObject2).jdField_a_of_type_Ayxt = new ayxt();
+        ((ayxy)localObject2).jdField_a_of_type_Ayxt.jdField_b_of_type_JavaLangString = ("Get target pic filepath of [" + i + "] failed");
+        if ((localayxr.jdField_a_of_type_Ayxp.jdField_b_of_type_Int == 1) || (localayxr.jdField_a_of_type_Ayxp.jdField_b_of_type_Int == 3000))
+        {
+          ((ayxy)localObject2).jdField_a_of_type_JavaLangObject = this.a.a.a(null, null, i);
+          label645:
+          if (!QLog.isColorLevel()) {
+            break label793;
+          }
+          if (paramVarArgs != null) {
+            break label790;
+          }
+          paramVarArgs = new StringBuilder();
+          label663:
+          paramVarArgs.append("Upload [").append(i).append("] failed, errDec ＝ ").append(((ayxy)localObject2).jdField_a_of_type_Ayxt.jdField_b_of_type_JavaLangString).append("\n");
+        }
       }
+    }
+    label790:
+    label793:
+    for (;;)
+    {
+      ayww.a(this.a);
+      if (ayww.a(this.a) == 0) {
+        aywv.a(this.a.a);
+      }
+      localObject1 = paramVarArgs;
+      break;
+      ((ayxy)localObject2).jdField_a_of_type_JavaLangObject = this.a.a.a(null, null, i);
+      break label645;
+      if (paramVarArgs != null) {
+        ayxi.b(this.a.a.jdField_a_of_type_Aywt.jdField_b_of_type_JavaLangString, this.a.a.jdField_a_of_type_Aywt.jdField_a_of_type_JavaLangString, "uploadForwardMultiMsgPics.uploadFiles", paramVarArgs.toString());
+      }
+      return null;
+      break label663;
     }
   }
 }

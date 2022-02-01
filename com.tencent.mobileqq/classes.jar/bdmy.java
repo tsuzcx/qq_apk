@@ -1,12 +1,17 @@
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class bdmy
+class bdmy
+  implements View.OnClickListener
 {
-  public ImageView a;
-  public TextView a;
-  public ShareActionSheetBuilder.ActionSheetItem a;
+  bdmy(bdmq parambdmq) {}
+  
+  public void onClick(View paramView)
+  {
+    this.a.dismiss();
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

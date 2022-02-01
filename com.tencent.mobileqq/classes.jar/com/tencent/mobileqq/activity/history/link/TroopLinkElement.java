@@ -2,10 +2,10 @@ package com.tencent.mobileqq.activity.history.link;
 
 import android.text.TextUtils;
 import android.webkit.URLUtil;
-import awge;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.TroopManager;
+import com.tencent.mobileqq.persistence.Entity;
 import com.tencent.qphone.base.util.QLog;
 import java.io.Serializable;
 import java.util.Date;
@@ -14,7 +14,7 @@ import mqq.app.AppRuntime;
 import org.json.JSONObject;
 
 public class TroopLinkElement
-  extends awge
+  extends Entity
   implements Serializable
 {
   private static final String TAG = "TroopLinkElement";
@@ -90,7 +90,7 @@ public class TroopLinkElement
     localTroopLinkElement.nickname = "zhuoxu";
     localTroopLinkElement.timeSecond = "1565655656";
     localTroopLinkElement.uin = "2463624242";
-    localTroopLinkElement.iconUrl = "http://t.cn/Aip1JkfR";
+    localTroopLinkElement.iconUrl = "https://t.cn/Aip1JkfR";
     localTroopLinkElement.msgSeq = "400";
     return localTroopLinkElement;
   }
@@ -111,7 +111,7 @@ public class TroopLinkElement
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.history.link.TroopLinkElement
  * JD-Core Version:    0.7.0.1
  */

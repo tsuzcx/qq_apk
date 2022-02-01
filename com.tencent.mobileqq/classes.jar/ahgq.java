@@ -1,56 +1,40 @@
-import android.content.res.Resources;
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ImageButton;
-import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.activity.contact.addcontact.ClassificationSearchActivity;
-import com.tencent.mobileqq.activity.contact.addcontact.SearchBaseFragment;
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class ahgq
-  implements TextWatcher
+class ahgq
+  implements View.OnClickListener
 {
-  public ahgq(ClassificationSearchActivity paramClassificationSearchActivity) {}
+  ahgq(ahgl paramahgl) {}
   
-  public void afterTextChanged(Editable paramEditable)
+  public void onClick(View paramView)
   {
-    String str = this.a.jdField_a_of_type_AndroidWidgetEditText.getText().toString();
-    paramEditable = this.a.jdField_a_of_type_AndroidWidgetImageButton;
-    if (str.equals("")) {}
-    for (int i = 8;; i = 0)
+    switch (paramView.getId())
     {
-      paramEditable.setVisibility(i);
-      if (this.a.f != ClassificationSearchActivity.c) {
-        break;
-      }
-      this.a.jdField_a_of_type_AndroidWidgetButton.setText(this.a.getResources().getString(2131690648));
-      if (AppSetting.c) {
-        this.a.jdField_a_of_type_AndroidWidgetButton.setContentDescription(this.a.jdField_a_of_type_AndroidWidgetButton.getText().toString());
-      }
-      if ((str.equals("")) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactSearchBaseFragment != null))
-      {
-        if ((this.a.f != ClassificationSearchActivity.jdField_a_of_type_Int) && (this.a.f != ClassificationSearchActivity.d)) {
-          break label219;
-        }
-        ClassificationSearchActivity.a(this.a);
-      }
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
+      String str = (String)paramView.getTag();
+      if (!TextUtils.isEmpty(str))
+      {
+        Intent localIntent = new Intent(this.a.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
+        localIntent.putExtra("hide_more_button", true);
+        localIntent.putExtra("hide_operation_bar", true);
+        localIntent.putExtra("url", str);
+        this.a.jdField_a_of_type_AndroidContentContext.startActivity(localIntent);
+        ((Activity)this.a.jdField_a_of_type_AndroidContentContext).overridePendingTransition(2130771997, 0);
+      }
+      bcst.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "Grp_talk", "", "obj", "link_msg", 0, 0, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, "", "", "");
     }
-    Button localButton = this.a.jdField_a_of_type_AndroidWidgetButton;
-    if (!str.equals("")) {}
-    for (paramEditable = this.a.getResources().getString(2131719603);; paramEditable = this.a.getResources().getString(2131690648))
-    {
-      localButton.setText(paramEditable);
-      break;
-    }
-    label219:
-    this.a.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactSearchBaseFragment.d();
   }
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

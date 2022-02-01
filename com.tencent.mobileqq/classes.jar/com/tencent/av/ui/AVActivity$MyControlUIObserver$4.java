@@ -1,12 +1,12 @@
 package com.tencent.av.ui;
 
 import com.tencent.av.ui.funchat.filter.EffectFilterPanel;
-import mdw;
+import may;
 
 public class AVActivity$MyControlUIObserver$4
   implements Runnable
 {
-  public AVActivity$MyControlUIObserver$4(mdw parammdw) {}
+  public AVActivity$MyControlUIObserver$4(may parammay) {}
   
   public void run()
   {
@@ -20,7 +20,7 @@ public class AVActivity$MyControlUIObserver$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.av.ui.AVActivity.MyControlUIObserver.4
  * JD-Core Version:    0.7.0.1
  */

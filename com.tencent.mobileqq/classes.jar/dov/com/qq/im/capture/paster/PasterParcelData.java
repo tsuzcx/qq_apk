@@ -6,16 +6,16 @@ import android.graphics.RectF;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import blvn;
-import bmqh;
-import bmqk;
+import boor;
+import bphn;
+import bphq;
 import com.tencent.mobileqq.richmedia.capture.data.SegmentKeeper;
 import org.json.JSONObject;
 
 public class PasterParcelData
   implements Parcelable
 {
-  public static final Parcelable.Creator<PasterParcelData> CREATOR = new blvn();
+  public static final Parcelable.Creator<PasterParcelData> CREATOR = new boor();
   public static int a;
   public static int b;
   public float a;
@@ -71,36 +71,36 @@ public class PasterParcelData
     this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataSegmentKeeper = ((SegmentKeeper)paramParcel.readParcelable(SegmentKeeper.class.getClassLoader()));
   }
   
-  public PasterParcelData(bmqk parambmqk)
+  public PasterParcelData(bphq parambphq)
   {
     this.jdField_a_of_type_Float = 1.0F;
     this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataSegmentKeeper = new SegmentKeeper();
-    this.jdField_a_of_type_AndroidGraphicsPointF = parambmqk.b;
-    this.jdField_a_of_type_Float = parambmqk.q;
-    this.jdField_b_of_type_Float = parambmqk.r;
-    this.jdField_c_of_type_Float = parambmqk.s;
-    this.jdField_d_of_type_Float = parambmqk.t;
-    this.jdField_e_of_type_Float = parambmqk.u;
-    this.jdField_f_of_type_Float = parambmqk.v;
-    this.jdField_a_of_type_AndroidGraphicsRectF = parambmqk.jdField_a_of_type_AndroidGraphicsRectF;
-    this.jdField_a_of_type_JavaLangString = parambmqk.jdField_d_of_type_JavaLangString;
-    this.jdField_b_of_type_JavaLangString = parambmqk.jdField_e_of_type_JavaLangString;
-    this.jdField_c_of_type_JavaLangString = parambmqk.jdField_f_of_type_JavaLangString;
-    this.jdField_d_of_type_Int = parambmqk.h;
-    this.jdField_e_of_type_JavaLangString = parambmqk.jdField_g_of_type_JavaLangString;
-    this.jdField_e_of_type_Int = parambmqk.jdField_g_of_type_Int;
-    if ((parambmqk instanceof bmqh))
+    this.jdField_a_of_type_AndroidGraphicsPointF = parambphq.b;
+    this.jdField_a_of_type_Float = parambphq.q;
+    this.jdField_b_of_type_Float = parambphq.r;
+    this.jdField_c_of_type_Float = parambphq.s;
+    this.jdField_d_of_type_Float = parambphq.t;
+    this.jdField_e_of_type_Float = parambphq.u;
+    this.jdField_f_of_type_Float = parambphq.v;
+    this.jdField_a_of_type_AndroidGraphicsRectF = parambphq.jdField_a_of_type_AndroidGraphicsRectF;
+    this.jdField_a_of_type_JavaLangString = parambphq.jdField_d_of_type_JavaLangString;
+    this.jdField_b_of_type_JavaLangString = parambphq.jdField_e_of_type_JavaLangString;
+    this.jdField_c_of_type_JavaLangString = parambphq.jdField_f_of_type_JavaLangString;
+    this.jdField_d_of_type_Int = parambphq.h;
+    this.jdField_e_of_type_JavaLangString = parambphq.jdField_g_of_type_JavaLangString;
+    this.jdField_e_of_type_Int = parambphq.jdField_g_of_type_Int;
+    if ((parambphq instanceof bphn))
     {
       this.jdField_c_of_type_Int = jdField_b_of_type_Int;
-      bmqh localbmqh = (bmqh)parambmqk;
-      this.jdField_f_of_type_Int = localbmqh.jdField_a_of_type_Int;
-      this.jdField_g_of_type_Int = localbmqh.jdField_b_of_type_Int;
-      this.jdField_f_of_type_JavaLangString = localbmqh.jdField_b_of_type_JavaLangString;
+      bphn localbphn = (bphn)parambphq;
+      this.jdField_f_of_type_Int = localbphn.jdField_a_of_type_Int;
+      this.jdField_g_of_type_Int = localbphn.jdField_b_of_type_Int;
+      this.jdField_f_of_type_JavaLangString = localbphn.jdField_b_of_type_JavaLangString;
     }
     for (;;)
     {
-      this.jdField_d_of_type_JavaLangString = parambmqk.a();
-      this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataSegmentKeeper = new SegmentKeeper(parambmqk.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataSegmentKeeper);
+      this.jdField_d_of_type_JavaLangString = parambphq.a();
+      this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataSegmentKeeper = new SegmentKeeper(parambphq.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataSegmentKeeper);
       return;
       this.jdField_c_of_type_Int = jdField_a_of_type_Int;
     }
@@ -176,7 +176,7 @@ public class PasterParcelData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     dov.com.qq.im.capture.paster.PasterParcelData
  * JD-Core Version:    0.7.0.1
  */

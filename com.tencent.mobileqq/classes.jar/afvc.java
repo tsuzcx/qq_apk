@@ -1,18 +1,17 @@
-import android.view.ViewGroup;
-import android.widget.TextView;
-import com.etrump.mixlayout.ETTextView;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
 
-public class afvc
-  extends aeqi
+final class afvc
+  implements afvp
 {
-  public ajxp a;
-  protected ViewGroup a;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  protected ETTextView a;
-  protected TextView b;
-  public ETTextView b;
-  
-  public afvc(afuw paramafuw) {}
+  public ProfileActivity.AllInOne a(QQAppInterface paramQQAppInterface, String paramString, SessionInfo paramSessionInfo, MessageRecord paramMessageRecord)
+  {
+    paramQQAppInterface = new ProfileActivity.AllInOne(paramMessageRecord.frienduin, 34);
+    paramQQAppInterface.h = paramSessionInfo.d;
+    return paramQQAppInterface;
+  }
 }
 
 

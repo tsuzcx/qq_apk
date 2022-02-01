@@ -1,83 +1,22 @@
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnPreparedListener;
-import org.json.JSONObject;
+import android.app.Activity;
+import android.os.Bundle;
+import com.tencent.qphone.base.util.QLog;
 
-public class akgf
-  implements MediaPlayer.OnPreparedListener
+class akgf
+  extends niv
 {
-  String jdField_a_of_type_JavaLangString;
-  JSONObject jdField_a_of_type_OrgJsonJSONObject;
-  boolean jdField_a_of_type_Boolean;
+  akgf(akge paramakge, long paramLong) {}
   
-  public akgf(akga paramakga, JSONObject paramJSONObject, String paramString, boolean paramBoolean)
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    this.jdField_a_of_type_OrgJsonJSONObject = paramJSONObject;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public void a()
-  {
-    try
-    {
-      this.jdField_a_of_type_OrgJsonJSONObject.put("code", 2);
-      this.jdField_a_of_type_OrgJsonJSONObject.put("errorMessage", "can't play");
-      this.jdField_a_of_type_Akga.callJs(this.jdField_a_of_type_JavaLangString, new String[] { this.jdField_a_of_type_OrgJsonJSONObject.toString() });
+    if (QLog.isColorLevel()) {
+      QLog.d("SdkDynamicAvatarSettingHelper", 2, new Object[] { "checkOpenidDiff, onResult, errorCode=", Integer.valueOf(paramInt) });
+    }
+    if ((this.jdField_a_of_type_Akge.a.isFinishing()) || (System.currentTimeMillis() - this.jdField_a_of_type_Long > 5000L)) {}
+    while (paramInt != 16) {
       return;
     }
-    catch (Exception localException1)
-    {
-      akga.a(this.jdField_a_of_type_Akga, "-->handleJsRequest exception:" + localException1.toString());
-      try
-      {
-        JSONObject localJSONObject = new JSONObject();
-        localJSONObject.put("code", 2);
-        localJSONObject.put("errorMessage", "exception");
-        this.jdField_a_of_type_Akga.callJs(this.jdField_a_of_type_JavaLangString, new String[] { localJSONObject.toString() });
-        return;
-      }
-      catch (Exception localException2)
-      {
-        localException2.printStackTrace();
-      }
-    }
-  }
-  
-  public void onPrepared(MediaPlayer paramMediaPlayer)
-  {
-    if (akga.a(this.jdField_a_of_type_Akga).a()) {}
-    try
-    {
-      if (!this.jdField_a_of_type_Boolean)
-      {
-        akga.a(this.jdField_a_of_type_Akga, "-->play failed");
-        this.jdField_a_of_type_OrgJsonJSONObject.put("code", 2);
-        this.jdField_a_of_type_OrgJsonJSONObject.put("errorMessage", "can't play");
-      }
-      for (;;)
-      {
-        this.jdField_a_of_type_Akga.callJs(this.jdField_a_of_type_JavaLangString, new String[] { this.jdField_a_of_type_OrgJsonJSONObject.toString() });
-        return;
-        this.jdField_a_of_type_OrgJsonJSONObject.put("code", 0);
-      }
-      return;
-    }
-    catch (Exception paramMediaPlayer)
-    {
-      akga.a(this.jdField_a_of_type_Akga, "-->handleJsRequest exception:" + paramMediaPlayer.toString());
-      try
-      {
-        paramMediaPlayer = new JSONObject();
-        paramMediaPlayer.put("code", 2);
-        paramMediaPlayer.put("errorMessage", "exception");
-        this.jdField_a_of_type_Akga.callJs(this.jdField_a_of_type_JavaLangString, new String[] { paramMediaPlayer.toString() });
-        return;
-      }
-      catch (Exception paramMediaPlayer)
-      {
-        paramMediaPlayer.printStackTrace();
-      }
-    }
+    akgc.b(this.jdField_a_of_type_Akge.a);
   }
 }
 

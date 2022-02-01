@@ -1,26 +1,17 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.view.animation.AnimationUtils;
+import android.os.Handler;
 
 class agpx
-  implements Animation.AnimationListener
+  implements adbw
 {
-  agpx(agpw paramagpw) {}
+  agpx(agpv paramagpv) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void a(int paramInt, abez paramabez) {}
+  
+  public void a(long paramLong)
   {
-    if (this.a.a.q != null)
-    {
-      paramAnimation = AnimationUtils.loadAnimation(this.a.a.a, 2130772225);
-      paramAnimation.setAnimationListener(this);
-      this.a.a.q.startAnimation(paramAnimation);
-    }
+    agpv.a("onLowMemory");
+    agpv.a().sendMessage(agpv.a().obtainMessage(5));
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

@@ -1,262 +1,272 @@
-import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
-import android.os.RemoteException;
 import android.text.TextUtils;
+import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.image.Utils;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
-import com.tencent.mobileqq.ocr.OCRPerformFragment;
-import com.tencent.mobileqq.pic.PicShareToWX;
-import com.tencent.mobileqq.qipc.QIPCClientHelper;
-import com.tencent.mobileqq.richmediabrowser.AIOBrowserBaseData;
-import com.tencent.mobileqq.richmediabrowser.model.AIOPictureData;
-import com.tencent.mobileqq.startup.step.CheckPermission;
-import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.mobileqq.widget.share.ShareActionSheet;
-import com.tencent.mobileqq.widget.share.ShareActionSheet.OnItemClickListener;
-import com.tencent.richmediabrowser.core.RichMediaBrowserManager;
-import com.tencent.richmediabrowser.log.BrowserLogHelper;
-import com.tencent.richmediabrowser.log.IBrowserLog;
-import com.tencent.richmediabrowser.model.RichMediaBrowserInfo;
-import com.tencent.richmediabrowser.presenter.IProvider;
-import cooperation.qzone.LocalMultiProcConfig;
-import cooperation.qzone.QZoneClickReport;
-import java.io.File;
-import mqq.app.AppRuntime;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.nearby.redtouch.RedTouchItem;
+import com.tencent.mobileqq.pb.MessageMicro;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+import tencent.im.oidb.cmd0x6cd.PullRedpointReq;
+import tencent.im.oidb.cmd0x6cd.RedpointInfo;
+import tencent.im.oidb.cmd0x6cd.ReqBody;
+import tencent.im.oidb.cmd0x6cd.RspBody;
+import tencent.im.oidb.cmd0x6ce.ReadRedpointReq;
+import tencent.im.oidb.cmd0x6ce.ReqBody;
+import tencent.im.oidb.cmd0x6ce.RspBody;
+import tencent.im.oidb.cmd0x6f5.ReqBody;
+import tencent.im.oidb.cmd0x6f5.RspBody;
 
-class ayag
-  implements ShareActionSheet.OnItemClickListener
+public class ayag
+  extends anii
 {
-  ayag(ayaa paramayaa, AIOPictureData paramAIOPictureData, RichMediaBrowserInfo paramRichMediaBrowserInfo, File paramFile) {}
-  
-  public void onItemClick(ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem, ShareActionSheet paramShareActionSheet)
+  public ayag(AppInterface paramAppInterface)
   {
-    int j = paramActionSheetItem.action;
-    paramShareActionSheet = paramActionSheetItem.argus;
-    if (j != 72) {
-      this.jdField_a_of_type_Ayaa.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheet.dismiss();
+    super(paramAppInterface);
+  }
+  
+  private void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("RedtouchHandler", 2, "handleGetRedPointConfigs");
     }
-    int i;
-    switch (j)
-    {
-    default: 
-      i = 0;
+    paramToServiceMsg = new cmd0x6f5.RspBody();
+    int i = parseOIDBPkg(paramFromServiceMsg, paramObject, paramToServiceMsg);
+    if (QLog.isColorLevel()) {
+      QLog.i("RedtouchHandler", 2, "handleGetRedPointConfigs, errCode=" + i);
     }
-    label174:
-    label2113:
-    for (;;)
+    if ((i == 0) && (paramToServiceMsg.str_config_version.has()))
     {
-      azqs.b(null, "dc00898", "", "", "0X8009EF6", "0X8009EF6", i, 0, "", "", "", "");
-      return;
-      i = 12;
-      BrowserLogHelper.getInstance().getGalleryLog().d("AIOPictureView", 4, "action sheet add to favorite.");
-      paramActionSheetItem = new Bundle();
-      paramActionSheetItem.putString("pic_md5", this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserModelAIOPictureData.f);
-      paramShareActionSheet = new ayah(this);
-      QIPCClientHelper.getInstance().callServer("EmoticonIPCModule", "action_group_emo_big_pic_add_fav", paramActionSheetItem, paramShareActionSheet);
-      if (this.jdField_a_of_type_Ayaa.b)
+      paramFromServiceMsg = paramToServiceMsg.str_config_version.get();
+      if (QLog.isColorLevel()) {
+        QLog.i("RedtouchHandler", 2, "handleGetRedPointConfigs, server configVersion=" + paramFromServiceMsg);
+      }
+      if (!TextUtils.isEmpty(paramFromServiceMsg))
       {
-        VasWebviewUtil.reportCommercialDrainage("", "QLbq", "MoreOp", "0", 1, 0, 0, "", "", "1", "", "", "", "", 0, 0, 0, 0);
-        i = 12;
-        continue;
-        i = 1;
-        if (RichMediaBrowserManager.getInstance().getProvider() != null) {
-          RichMediaBrowserManager.getInstance().getProvider().reportData("Pic_Forward_Contacts", 0);
-        }
-        paramShareActionSheet = new axyx();
-        paramShareActionSheet.jdField_a_of_type_Int = j;
-        if (j == 72)
+        paramObject = (axzw)this.app.getManager(160);
+        if (paramObject != null)
         {
-          paramShareActionSheet.jdField_a_of_type_JavaLangString = paramActionSheetItem.uin;
-          paramShareActionSheet.jdField_b_of_type_Int = paramActionSheetItem.uinType;
+          paramObject.a(paramFromServiceMsg);
+          paramObject.a(paramToServiceMsg);
+          paramObject.a();
         }
-        axyv localaxyv = ayaa.a(this.jdField_a_of_type_Ayaa);
-        RichMediaBrowserInfo localRichMediaBrowserInfo = this.jdField_a_of_type_ComTencentRichmediabrowserModelRichMediaBrowserInfo;
-        Activity localActivity = this.jdField_a_of_type_Ayaa.mContext;
-        if (this.jdField_a_of_type_Ayaa.b) {}
-        for (paramActionSheetItem = "biz_src_jc_groupgif";; paramActionSheetItem = "biz_src_jc_photo")
+      }
+    }
+  }
+  
+  private void b(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  {
+    RedTouchItem localRedTouchItem = null;
+    Object localObject = null;
+    boolean bool3 = false;
+    boolean bool2 = false;
+    if (QLog.isColorLevel()) {
+      QLog.i("RedtouchHandler", 2, "handlePullRedTouch");
+    }
+    if ((paramToServiceMsg == null) || (paramFromServiceMsg == null)) {
+      return;
+    }
+    boolean bool4 = paramToServiceMsg.extraData.getBoolean("is_single_task", false);
+    if (bool4) {}
+    label164:
+    label345:
+    for (int i = paramToServiceMsg.extraData.getInt("task_id");; i = 0)
+    {
+      cmd0x6cd.RspBody localRspBody = new cmd0x6cd.RspBody();
+      int j = parseOIDBPkg(paramFromServiceMsg, paramObject, localRspBody);
+      paramObject = (axzw)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getManager(160);
+      if (paramObject == null) {
+        break;
+      }
+      if (j == 0)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.i("RedtouchHandler", 2, "handlePullRedTouch success.");
+        }
+        if (localRspBody.rpt_msg_redpoint.has())
         {
-          localaxyv.a(localRichMediaBrowserInfo, localActivity, paramShareActionSheet, 100500, paramActionSheetItem);
-          if (this.jdField_a_of_type_Ayaa.b) {
-            VasWebviewUtil.reportCommercialDrainage("", "QLbq", "MoreOp", "0", 1, 0, 0, "", "", "2", "", "", "", "", 0, 0, 0, 0);
+          paramToServiceMsg = localRspBody.rpt_msg_redpoint.get();
+          if (paramToServiceMsg == null) {
+            break label345;
           }
-          if (!axyd.a().c()) {
-            break label2113;
+          paramFromServiceMsg = new ArrayList(paramToServiceMsg.size());
+          j = 0;
+          if (j >= paramToServiceMsg.size()) {
+            break label232;
           }
-          aupn.a("0X8009ABA");
-          i = 1;
+          localRedTouchItem = RedTouchItem.getRedTouchItem((cmd0x6cd.RedpointInfo)paramToServiceMsg.get(j));
+          if ((!bool4) || (localRedTouchItem.taskId == i)) {
+            break label220;
+          }
+        }
+        for (;;)
+        {
+          j += 1;
+          break label164;
+          paramToServiceMsg = null;
           break;
+          label220:
+          paramFromServiceMsg.add(localRedTouchItem);
         }
-        i = 4;
-        if (RichMediaBrowserManager.getInstance().getProvider() != null) {
-          RichMediaBrowserManager.getInstance().getProvider().reportData("Pic_Forward_Qzone", 0);
+      }
+      label232:
+      for (paramToServiceMsg = paramFromServiceMsg;; paramToServiceMsg = null)
+      {
+        paramFromServiceMsg = localObject;
+        if (localRspBody.rpt_unfinished_redpoint.has()) {
+          paramFromServiceMsg = localRspBody.rpt_unfinished_redpoint.get();
         }
-        axza.a(this.jdField_a_of_type_Ayaa.mContext, axyd.a().d(), axyd.a().b(), this.jdField_a_of_type_Ayaa.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentRichmediabrowserModelRichMediaBrowserInfo, this.jdField_a_of_type_Ayaa.jdField_a_of_type_Boolean, axyd.a().a());
-        if (this.jdField_a_of_type_Ayaa.b)
+        boolean bool1 = bool2;
+        if (paramFromServiceMsg != null)
         {
-          VasWebviewUtil.reportCommercialDrainage("", "QLbq", "MoreOp", "0", 1, 0, 0, "", "", "4", "", "", "", "", 0, 0, 0, 0);
-          i = 4;
-          continue;
-          if (LocalMultiProcConfig.getInt4Uin(axyd.a().d() + "__qzone_pic_permission__" + axyd.a().a(), -1, Long.valueOf(axyd.a().d()).longValue()) == 0)
+          bool1 = bool2;
+          if (paramFromServiceMsg.size() > 0)
           {
-            paramActionSheetItem = new bdjz(this.jdField_a_of_type_Ayaa.mContext, 2131755801);
-            paramActionSheetItem.setContentView(2131558942);
-            paramActionSheetItem.setTitle(this.jdField_a_of_type_Ayaa.mContext.getString(2131698099));
-            paramActionSheetItem.setMessage(this.jdField_a_of_type_Ayaa.mContext.getString(2131698097));
-            paramActionSheetItem.setNegativeButton(this.jdField_a_of_type_Ayaa.mContext.getString(2131698098), new ayai(this));
-            paramActionSheetItem.setCanceledOnTouchOutside(false);
-            paramActionSheetItem.setCancelable(false);
-            paramActionSheetItem.show();
-            QZoneClickReport.startReportImediately(axyd.a().d(), "40", "1");
-            i = 5;
+            bool1 = true;
+            a(paramFromServiceMsg, bool4);
           }
-          else
+        }
+        for (;;)
+        {
+          paramObject.a(paramToServiceMsg, bool1);
+          return;
+          bool1 = bool3;
+          paramToServiceMsg = localRedTouchItem;
+          if (QLog.isColorLevel())
           {
-            if (RichMediaBrowserManager.getInstance().getProvider() != null) {
-              RichMediaBrowserManager.getInstance().getProvider().reportData("Pic_Forward_Grpalbum", 0);
-            }
-            axza.a(this.jdField_a_of_type_Ayaa.mContext, axyd.a().d(), axyd.a().a(), axyd.a().b(), this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserModelAIOPictureData.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserModelAIOPictureData.e, this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserModelAIOPictureData.g, -1);
-            i = 5;
-            continue;
-            if (!CheckPermission.isHasStoragePermission(this.jdField_a_of_type_Ayaa.mContext))
-            {
-              CheckPermission.requestStorePermission(this.jdField_a_of_type_Ayaa.mContext, null);
-              return;
-            }
-            if (RichMediaBrowserManager.getInstance().getProvider() != null) {
-              RichMediaBrowserManager.getInstance().getProvider().reportData("Pic_save", 0);
-            }
-            paramActionSheetItem = new axyn();
-            if ((paramActionSheetItem.a(this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserModelAIOPictureData, 4) == null) && (paramActionSheetItem.a(this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserModelAIOPictureData, 4)) && (AppNetConnInfo.isNetSupport())) {
-              if ((!AppNetConnInfo.isWifiConn()) && (this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserModelAIOPictureData.c > 29360128L)) {
-                this.jdField_a_of_type_Ayaa.a(1, this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserModelAIOPictureData, this.jdField_a_of_type_ComTencentRichmediabrowserModelRichMediaBrowserInfo);
-              }
-            }
-            for (;;)
-            {
-              if (RichMediaBrowserManager.getInstance().getProvider() != null) {
-                RichMediaBrowserManager.getInstance().getProvider().reportData(this.jdField_a_of_type_JavaIoFile.getAbsolutePath(), 55);
-              }
-              if (this.jdField_a_of_type_Ayaa.b) {
-                VasWebviewUtil.reportCommercialDrainage("", "QLbq", "MoreOp", "0", 1, 0, 0, "", "", "3", "", "", "", "", 0, 0, 0, 0);
-              }
-              if (axyd.a().c()) {
-                aupn.a("0X8009ABB");
-              }
-              BrowserLogHelper.getInstance().getGalleryLog().d("AIOPictureView", 2, "ACTION_GALLERY_PIC_SAVE");
-              i = 2;
-              break;
-              ayaa.a(this.jdField_a_of_type_Ayaa).a(this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserModelAIOPictureData);
-              ayaa.a(this.jdField_a_of_type_Ayaa).a(this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserModelAIOPictureData.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserModelAIOPictureData.jdField_a_of_type_Int, 3);
-              this.jdField_a_of_type_Ayaa.updateUI();
-              continue;
-              axza.a(this.jdField_a_of_type_Ayaa.mContext, this.jdField_a_of_type_JavaIoFile, Utils.Crc64String(this.jdField_a_of_type_JavaIoFile.getAbsolutePath() + NetConnInfoCenter.getServerTime()));
-            }
-            paramActionSheetItem = new Intent();
-            paramActionSheetItem.putExtra("preResult", paramShareActionSheet);
-            axzh.a(this.jdField_a_of_type_Ayaa.mContext, this.jdField_a_of_type_Ayaa.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserModelAIOPictureData.jdField_b_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserModelAIOPictureData.jdField_k_of_type_Boolean, this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserModelAIOPictureData.jdField_k_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserModelAIOPictureData.f, this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserModelAIOPictureData.j, this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserModelAIOPictureData.e, 1, axyd.a().d(), axyd.a().c(), paramActionSheetItem);
-            azqs.b(null, "P_CliOper", "qrcode", "", "0X80059A4", "0X80059A4", 0, 0, "", "", "", "");
-            i = 9;
-            continue;
-            paramActionSheetItem = new Intent();
-            paramActionSheetItem.putExtra("preResult", paramShareActionSheet);
-            axzh.a(this.jdField_a_of_type_Ayaa.mContext, this.jdField_a_of_type_Ayaa.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserModelAIOPictureData.jdField_b_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserModelAIOPictureData.jdField_k_of_type_Boolean, this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserModelAIOPictureData.jdField_k_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserModelAIOPictureData.f, this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserModelAIOPictureData.j, this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserModelAIOPictureData.e, 2, axyd.a().d(), axyd.a().c(), paramActionSheetItem);
-            i = 10;
-            continue;
-            j = 3;
-            for (;;)
-            {
-              try
-              {
-                paramActionSheetItem = (AIOBrowserBaseData)this.jdField_a_of_type_ComTencentRichmediabrowserModelRichMediaBrowserInfo.baseData;
-                i = j;
-                if (RichMediaBrowserManager.getInstance().getProvider() == null) {
-                  break;
-                }
-                paramActionSheetItem = RichMediaBrowserManager.getInstance().getProvider().getFavorateParams(paramActionSheetItem.jdField_a_of_type_Long, paramActionSheetItem.jdField_a_of_type_Int);
-                if (paramActionSheetItem != null) {
-                  break label1566;
-                }
-                biva.b(this.jdField_a_of_type_JavaIoFile.getAbsolutePath()).a(this.jdField_a_of_type_Ayaa.mContext, axyd.a().d());
-                bivo.a(null, 40, 3);
-                i = j;
-              }
-              catch (RemoteException paramActionSheetItem)
-              {
-                BrowserLogHelper.getInstance().getGalleryLog().d("AIOPictureView", 4, "ACTION_GALLERY_PIC_FAVORITE exception = " + paramActionSheetItem.getMessage());
-                QQToast.a(this.jdField_a_of_type_Ayaa.mContext.getApplicationContext(), this.jdField_a_of_type_Ayaa.mContext.getString(2131692988), 0).a();
-                i = j;
-              }
-              break;
-              new biva(paramActionSheetItem).a(this.jdField_a_of_type_Ayaa.mContext, axyd.a().d());
-            }
-            i = 8;
-            OCRPerformFragment.a(this.jdField_a_of_type_Ayaa.mContext, this.jdField_a_of_type_JavaIoFile.getAbsolutePath(), 1, this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserModelAIOPictureData.jdField_b_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserModelAIOPictureData.f);
-            continue;
-            j = 6;
-            if (this.jdField_a_of_type_Ayaa.b)
-            {
-              BrowserLogHelper.getInstance().getGalleryLog().d("AIOPictureView", 4, "action sheet share weiyun.");
-              paramActionSheetItem = new Bundle();
-              paramActionSheetItem.putString("pic_md5", this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserModelAIOPictureData.f);
-              QIPCClientHelper.getInstance().callServer("EmoticonIPCModule", "action_group_emo_big_pic_upload_wy", paramActionSheetItem, null);
-              VasWebviewUtil.reportCommercialDrainage("", "QLbq", "MoreOp", "0", 1, 0, 0, "", "", "5", "", "", "", "", 0, 0, 0, 0);
-              i = 6;
-            }
-            else
-            {
-              i = j;
-              if (this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserModelAIOPictureData.jdField_a_of_type_Long > 0L)
-              {
-                i = j;
-                if (RichMediaBrowserManager.getInstance().getProvider() != null)
-                {
-                  i = j;
-                  if (RichMediaBrowserManager.getInstance().getProvider().isPingBinder())
-                  {
-                    RichMediaBrowserManager.getInstance().getProvider().saveToWeiyun(this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserModelAIOPictureData.jdField_a_of_type_Long);
-                    QQToast.a(this.jdField_a_of_type_Ayaa.mContext, this.jdField_a_of_type_Ayaa.mContext.getString(2131692914), 0).a();
-                    i = 6;
-                    continue;
-                    paramActionSheetItem = axyd.a().a();
-                    if (TextUtils.isEmpty(paramActionSheetItem)) {
-                      paramActionSheetItem = axyd.a().c();
-                    }
-                    for (;;)
-                    {
-                      azqs.b(null, "P_CliOper", "dwop_via", "", "0X8009BE3", "0X8009BE3", axyd.a().c(), 0, "", "", "", "");
-                      axzh.a(this.jdField_a_of_type_Ayaa.mContext, axyd.a().a(), axyd.a().c(), paramActionSheetItem, this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserModelAIOPictureData.jdField_b_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserModelAIOPictureData.d, this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserModelAIOPictureData.jdField_b_of_type_Int, false);
-                      i = 7;
-                      break label174;
-                      paramActionSheetItem = BaseApplicationImpl.getApplication().getRuntime();
-                      if ((paramActionSheetItem == null) || (RichMediaBrowserManager.getInstance().getProvider() == null)) {
-                        break;
-                      }
-                      if (this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserModelAIOPictureData.jdField_m_of_type_Boolean)
-                      {
-                        RichMediaBrowserManager.getInstance().getProvider().safetyReport(axyd.a().a(), true, this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserModelAIOPictureData.jdField_m_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserModelAIOPictureData.l, paramActionSheetItem.getAccount(), this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserModelAIOPictureData.n);
-                        i = 0;
-                        break label174;
-                      }
-                      RichMediaBrowserManager.getInstance().getProvider().safetyReport(axyd.a().a(), false, this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserModelAIOPictureData.jdField_k_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserModelAIOPictureData.l, paramActionSheetItem.getAccount(), this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserModelAIOPictureData.n);
-                      i = 0;
-                      break label174;
-                      PicShareToWX.a(this.jdField_a_of_type_JavaIoFile.getPath(), this.jdField_a_of_type_Ayaa.mContext, 1);
-                      azqs.b(null, "dc00898", "", "", "0X800A4FF", "0X800A4FF", 0, 0, "", "", "", "");
-                      break;
-                    }
-                  }
-                }
-              }
-            }
+            QLog.i("RedtouchHandler", 2, "handlePullRedTouch failed:" + j);
+            bool1 = bool3;
+            paramToServiceMsg = localRedTouchItem;
           }
         }
       }
     }
+  }
+  
+  private void c(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("RedtouchHandler", 2, "handleReportTouchClick");
+    }
+    if ((paramToServiceMsg == null) || (paramFromServiceMsg == null)) {}
+    int i;
+    do
+    {
+      do
+      {
+        return;
+        i = paramToServiceMsg.extraData.getInt("redPointId", 0);
+        if (parseOIDBPkg(paramFromServiceMsg, paramObject, new cmd0x6ce.RspBody()) != 0) {
+          break;
+        }
+      } while (!QLog.isColorLevel());
+      QLog.i("RedtouchHandler", 2, "handleReportTouchClick success. taskId:" + i);
+      return;
+    } while (!QLog.isColorLevel());
+    QLog.i("RedtouchHandler", 2, "handleReportTouchClick faild. taskId:" + i);
+  }
+  
+  public void a()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("RedtouchHandler", 2, "getRedPointConfigs(), client version : 8.4.1");
+    }
+    cmd0x6f5.ReqBody localReqBody = new cmd0x6f5.ReqBody();
+    localReqBody.uint32_qq_platform.set(1);
+    localReqBody.str_qq_version.set("8.4.1");
+    sendPbReq(makeOIDBPkg("OidbSvc.cmd0x6f5", 1781, 0, localReqBody.toByteArray()));
+  }
+  
+  public void a(List<cmd0x6ce.ReadRedpointReq> paramList)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("RedtouchHandler", 2, "reportRedTouchClick, redPointId=" + ((cmd0x6ce.ReadRedpointReq)paramList.get(0)).uint32_appid.get());
+    }
+    Object localObject = new cmd0x6ce.ReqBody();
+    ((cmd0x6ce.ReqBody)localObject).rpt_msg_read_req.set(paramList);
+    localObject = makeOIDBPkg("OidbSvc.cmd0x6ce", 1742, 0, ((cmd0x6ce.ReqBody)localObject).toByteArray());
+    ((ToServiceMsg)localObject).extraData.putInt("redPointId", ((cmd0x6ce.ReadRedpointReq)paramList.get(0)).uint32_appid.get());
+    super.sendPbReq((ToServiceMsg)localObject);
+  }
+  
+  public void a(List<cmd0x6cd.PullRedpointReq> paramList, boolean paramBoolean)
+  {
+    StringBuilder localStringBuilder;
+    if (QLog.isColorLevel())
+    {
+      localStringBuilder = new StringBuilder().append("pullRedTouch, list size=");
+      if (paramList != null) {
+        break label68;
+      }
+    }
+    label68:
+    for (Object localObject = "";; localObject = Integer.valueOf(paramList.size()))
+    {
+      QLog.i("RedtouchHandler", 2, localObject + ", isSingleTask=" + paramBoolean);
+      if ((paramList != null) && (paramList.size() != 0)) {
+        break;
+      }
+      return;
+    }
+    localObject = new cmd0x6cd.ReqBody();
+    if (paramBoolean) {
+      ((cmd0x6cd.ReqBody)localObject).msg_pull_single_task.set((MessageMicro)paramList.get(0));
+    }
+    for (;;)
+    {
+      ((cmd0x6cd.ReqBody)localObject).uint32_ret_msg_rec.set(1);
+      localObject = makeOIDBPkg("OidbSvc.cmd0x6cd", 1741, 0, ((cmd0x6cd.ReqBody)localObject).toByteArray());
+      ((ToServiceMsg)localObject).extraData.putBoolean("is_single_task", paramBoolean);
+      if (paramBoolean) {
+        ((ToServiceMsg)localObject).extraData.putInt("task_id", ((cmd0x6cd.PullRedpointReq)paramList.get(0)).uint32_taskid.get());
+      }
+      super.sendPbReq((ToServiceMsg)localObject);
+      return;
+      ((cmd0x6cd.ReqBody)localObject).rpt_last_pull_redpoint.set(paramList);
+    }
+  }
+  
+  protected boolean msgCmdFilter(String paramString)
+  {
+    if (this.allowCmdSet == null)
+    {
+      this.allowCmdSet = new HashSet();
+      this.allowCmdSet.add("OidbSvc.cmd0x6f5");
+      this.allowCmdSet.add("OidbSvc.cmd0x6cd");
+      this.allowCmdSet.add("OidbSvc.cmd0x6ce");
+    }
+    return !this.allowCmdSet.contains(paramString);
+  }
+  
+  protected Class<? extends anil> observerClass()
+  {
+    return null;
+  }
+  
+  public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  {
+    String str = paramFromServiceMsg.getServiceCmd();
+    if ("OidbSvc.cmd0x6cd".equals(str)) {
+      b(paramToServiceMsg, paramFromServiceMsg, paramObject);
+    }
+    do
+    {
+      return;
+      if ("OidbSvc.cmd0x6ce".equals(str))
+      {
+        c(paramToServiceMsg, paramFromServiceMsg, paramObject);
+        return;
+      }
+    } while (!"OidbSvc.cmd0x6f5".equals(str));
+    a(paramToServiceMsg, paramFromServiceMsg, paramObject);
   }
 }
 

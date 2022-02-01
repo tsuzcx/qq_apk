@@ -1,22 +1,31 @@
-import android.view.View;
-import android.view.View.OnLayoutChangeListener;
-import com.tencent.qphone.base.util.QLog;
-
-class mhm
-  implements View.OnLayoutChangeListener
+public class mhm
 {
-  mhm(mhl parammhl) {}
+  public int a;
+  public Object a;
+  public String a;
+  public boolean a;
+  public int b;
+  public String b;
+  public boolean b;
+  public int c;
+  public String c;
+  public boolean c;
+  public String d;
+  public boolean d;
   
-  public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
+  public mhm()
   {
-    if (QLog.isColorLevel()) {
-      QLog.e("MemberPagerAdapter", 2, String.format("view : left[%s], top[%s], right[%s], bottom[%s], oldLeft[%s], oldTop[%s], oldRight[%s], oldBottom[%s]", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Integer.valueOf(paramInt4), Integer.valueOf(paramInt5), Integer.valueOf(paramInt6), Integer.valueOf(paramInt7), Integer.valueOf(paramInt8) }));
-    }
+    this.jdField_a_of_type_Int = 0;
+  }
+  
+  public String toString()
+  {
+    return "id[" + this.jdField_a_of_type_JavaLangString + "], name[" + this.c + "], desc[" + this.d + "]";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     mhm
  * JD-Core Version:    0.7.0.1
  */

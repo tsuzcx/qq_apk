@@ -4,7 +4,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Messenger;
-import ndk;
+import nmd;
 
 public class DownloadService
   extends BroadcastReceiver
@@ -13,14 +13,14 @@ public class DownloadService
   
   public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (ndk.a(paramContext) == 1) {
+    if (nmd.a(paramContext) == 1) {
       BidDownloader.a();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.common.offline.DownloadService
  * JD-Core Version:    0.7.0.1
  */

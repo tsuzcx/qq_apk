@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.selectmember;
 
-import akbr;
-import akbs;
+import aluh;
+import alui;
 import android.os.Bundle;
 import android.os.Handler;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -14,7 +14,7 @@ import com.tencent.mobileqq.pb.PBUInt64Field;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.List;
-import nac;
+import niv;
 import tencent.im.oidb.cmd0x88d.oidb_0x88d.GroupInfo;
 import tencent.im.oidb.cmd0x88d.oidb_0x88d.RspBody;
 import tencent.im.oidb.cmd0x88d.oidb_0x88d.RspGroupInfo;
@@ -22,7 +22,7 @@ import tencent.im.oidb.cmd0x88d.oidb_0x88d.RspGroupInfo;
 public class TroopListAdapter$1$1
   implements Runnable
 {
-  public TroopListAdapter$1$1(akbs paramakbs, QQAppInterface paramQQAppInterface, byte[] paramArrayOfByte, Bundle paramBundle, Handler paramHandler) {}
+  public TroopListAdapter$1$1(alui paramalui, QQAppInterface paramQQAppInterface, byte[] paramArrayOfByte, Bundle paramBundle, Handler paramHandler) {}
   
   public void run()
   {
@@ -58,7 +58,7 @@ public class TroopListAdapter$1$1
       localArrayList = this.jdField_a_of_type_AndroidOsBundle.getStringArrayList("TroopList");
       if (localArrayList != null)
       {
-        akbr.a((QQAppInterface)akbr.a(this.jdField_a_of_type_Akbs.a).b.get(), akbr.a(this.jdField_a_of_type_Akbs.a), localArrayList);
+        aluh.a((QQAppInterface)aluh.a(this.jdField_a_of_type_Alui.a).b.get(), aluh.a(this.jdField_a_of_type_Alui.a), localArrayList);
         return;
       }
       this.jdField_a_of_type_AndroidOsHandler.post(new TroopListAdapter.1.1.1(this));
@@ -67,7 +67,7 @@ public class TroopListAdapter$1$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.selectmember.TroopListAdapter.1.1
  * JD-Core Version:    0.7.0.1
  */

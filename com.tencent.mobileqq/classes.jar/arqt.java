@@ -1,15 +1,33 @@
-import android.app.Activity;
+import com.tencent.mobileqq.emosm.emosearch.EmotionSearchItem;
+import java.util.List;
 
-class arqt
-  implements bezx
+public class arqt
 {
-  arqt(arqo paramarqo, Activity paramActivity, int paramInt) {}
+  int jdField_a_of_type_Int;
+  arqu jdField_a_of_type_Arqu;
+  List<EmotionSearchItem> jdField_a_of_type_JavaUtilList;
   
-  public void a(int paramInt)
+  public arqt(int paramInt)
   {
-    if (paramInt == 2) {
-      arqo.a(this.jdField_a_of_type_Arqo, this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_Int);
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public int a()
+  {
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public List<EmotionSearchItem> a()
+  {
+    return this.jdField_a_of_type_JavaUtilList;
+  }
+  
+  public boolean a()
+  {
+    if (this.jdField_a_of_type_Arqu == null) {
+      return false;
     }
+    return this.jdField_a_of_type_Arqu.a;
   }
 }
 

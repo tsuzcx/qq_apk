@@ -1,37 +1,43 @@
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.RelativeLayout;
+import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class axsn
+class axsn
+  implements View.OnClickListener
 {
-  private View jdField_a_of_type_AndroidViewView;
-  private ViewGroup jdField_a_of_type_AndroidViewViewGroup;
+  axsn(axsd paramaxsd, ImageView paramImageView1, ImageView paramImageView2, ImageView paramImageView3) {}
   
-  private void a()
+  public void onClick(View paramView)
   {
-    if ((this.jdField_a_of_type_AndroidViewViewGroup != null) && (this.jdField_a_of_type_AndroidViewView != null)) {
-      this.jdField_a_of_type_AndroidViewViewGroup.addView(this.jdField_a_of_type_AndroidViewView);
+    if (paramView == this.jdField_a_of_type_AndroidWidgetImageView)
+    {
+      axsd.a(this.jdField_a_of_type_Axsd, 1);
+      new bcsy(this.jdField_a_of_type_Axsd.a.app).a("dc00899").b("grp_lbs").c("data_card").d("clk_face_dislike").e(this.jdField_a_of_type_Axsd.a.a.a).a();
     }
-  }
-  
-  private void a(ViewGroup paramViewGroup)
-  {
-    if (paramViewGroup != null) {
-      paramViewGroup.removeAllViews();
+    for (;;)
+    {
+      axsd.b(this.jdField_a_of_type_Axsd);
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      if (paramView == this.b)
+      {
+        axsd.a(this.jdField_a_of_type_Axsd, 2);
+        new bcsy(this.jdField_a_of_type_Axsd.a.app).a("dc00899").b("grp_lbs").c("data_card").d("clk_face_superlike").e(this.jdField_a_of_type_Axsd.a.a.a).a();
+      }
+      else if (paramView == this.c)
+      {
+        axsd.a(this.jdField_a_of_type_Axsd, 3);
+        new bcsy(this.jdField_a_of_type_Axsd.a.app).a("dc00899").b("grp_lbs").c("data_card").d("clk_face_like").e(this.jdField_a_of_type_Axsd.a.a.a).a();
+      }
     }
-  }
-  
-  public void a(RelativeLayout paramRelativeLayout)
-  {
-    a(this.jdField_a_of_type_AndroidViewViewGroup);
-    a(paramRelativeLayout);
-    this.jdField_a_of_type_AndroidViewViewGroup = paramRelativeLayout;
-    a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     axsn
  * JD-Core Version:    0.7.0.1
  */

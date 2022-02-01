@@ -1,15 +1,53 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.contact.troop.TroopSuspiciousFragment;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.widget.ListView;
 
 public class ahqd
-  implements View.OnClickListener
+  implements agma
 {
-  public ahqd(TroopSuspiciousFragment paramTroopSuspiciousFragment) {}
+  private ahqe jdField_a_of_type_Ahqe;
+  private BaseChatPie jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie;
+  private boolean jdField_a_of_type_Boolean;
   
-  public void onClick(View paramView)
+  public ahqd(BaseChatPie paramBaseChatPie)
   {
-    TroopSuspiciousFragment.b(this.a);
+    this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie = paramBaseChatPie;
+  }
+  
+  private ListView a()
+  {
+    if ((this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie instanceof aicv)) {
+      return ((aicv)this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie).a();
+    }
+    return this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView;
+  }
+  
+  public void a(int paramInt)
+  {
+    switch (paramInt)
+    {
+    default: 
+    case 3: 
+    case 7: 
+    case 19: 
+      do
+      {
+        return;
+        this.jdField_a_of_type_Ahqe = new ahqe();
+        return;
+        this.jdField_a_of_type_Boolean = true;
+        this.jdField_a_of_type_Ahqe.a(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, a());
+        return;
+      } while (!this.jdField_a_of_type_Boolean);
+      this.jdField_a_of_type_Ahqe.b(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, a());
+      return;
+    }
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_a_of_type_Ahqe = null;
+  }
+  
+  public int[] a()
+  {
+    return new int[] { 3, 7, 13, 19 };
   }
 }
 

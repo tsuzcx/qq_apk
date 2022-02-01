@@ -1,6 +1,21 @@
-public abstract interface bfbe
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.troop.homework.entry.ui.SubmitHomeWorkFragment;
+
+public class bfbe
+  implements DialogInterface.OnClickListener
 {
-  public abstract void exec(String paramString, bfbb parambfbb);
+  public bfbe(SubmitHomeWorkFragment paramSubmitHomeWorkFragment) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    switch (paramInt)
+    {
+    default: 
+      return;
+    }
+    SubmitHomeWorkFragment.a(this.a);
+  }
 }
 
 

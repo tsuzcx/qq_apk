@@ -8,7 +8,7 @@ import org.libpag.PAGFont;
 
 public class TAVFontManager
 {
-  public static final int CACHE_SIZE = 10;
+  private static final int CACHE_SIZE = 10;
   private static final String TAG = TAVFontManager.class.getSimpleName();
   private static volatile TAVFontManager sInstance = null;
   private LruCache<String, PAGFont> mapPagFont = null;
@@ -87,7 +87,7 @@ public class TAVFontManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tavsticker.core.TAVFontManager
  * JD-Core Version:    0.7.0.1
  */

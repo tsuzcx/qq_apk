@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.data;
 
-import alud;
-import awhp;
+import anni;
+import com.tencent.mobileqq.persistence.notColumn;
 import java.io.File;
 
 public class MessageForFile
@@ -13,11 +13,11 @@ public class MessageForFile
   public long fileSize;
   public String fileSizeString;
   public String fileType;
-  @awhp
+  @notColumn
   public long originalMsgUid;
-  @awhp
+  @notColumn
   public long originalTime;
-  @awhp
+  @notColumn
   public long originalmsgShseq;
   public int status;
   public String[] tempMsg;
@@ -52,7 +52,7 @@ public class MessageForFile
   
   public String getSummaryMsg()
   {
-    StringBuilder localStringBuilder = new StringBuilder().append(alud.a(2131706961));
+    StringBuilder localStringBuilder = new StringBuilder().append(anni.a(2131705352));
     if (this.fileName == null) {}
     for (String str = "";; str = this.fileName) {
       return str;

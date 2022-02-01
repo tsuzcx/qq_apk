@@ -1,20 +1,34 @@
-import com.tencent.biz.qqstory.storyHome.memory.view.MemoriesInnerListView;
+import android.view.View;
+import android.view.View.OnFocusChangeListener;
+import com.tencent.biz.qqstory.comment.StoryInputBarView;
 
 public class wne
-  implements bhxs
+  implements View.OnFocusChangeListener
 {
-  public wne(MemoriesInnerListView paramMemoriesInnerListView) {}
+  public wne(StoryInputBarView paramStoryInputBarView) {}
   
-  public void onScrollStateChanged(int paramInt)
+  public void onFocusChange(View paramView, boolean paramBoolean)
   {
-    if ((paramInt == 4097) && (this.a.a != null)) {
-      this.a.a.a(MemoriesInnerListView.a(this.a).a);
+    if (!paramBoolean) {
+      this.a.a();
+    }
+    while (this.a.jdField_a_of_type_Boolean) {
+      return;
+    }
+    this.a.jdField_a_of_type_ComTencentBizQqstoryViewWidgetBubbleBubbleTextView = StoryInputBarView.a(this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_AndroidViewView, this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx, this.a.jdField_a_of_type_Ybd.jdField_a_of_type_Boolean);
+    this.a.jdField_a_of_type_Ybd.jdField_a_of_type_ComTencentBizQqstoryViewWidgetBubbleBubbleTextView = this.a.jdField_a_of_type_ComTencentBizQqstoryViewWidgetBubbleBubbleTextView;
+    paramView = this.a;
+    if (this.a.jdField_a_of_type_ComTencentBizQqstoryViewWidgetBubbleBubbleTextView != null) {}
+    for (paramBoolean = true;; paramBoolean = false)
+    {
+      paramView.jdField_a_of_type_Boolean = paramBoolean;
+      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     wne
  * JD-Core Version:    0.7.0.1
  */

@@ -1,106 +1,61 @@
-import android.annotation.TargetApi;
-import android.content.Context;
-import android.text.TextUtils;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import com.tencent.biz.pubaccount.PhotoWallViewForAccountDetail;
+import android.widget.ImageView;
 import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawableDownListener.Adapter;
 import com.tencent.image.URLImageView;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.AbsListView.LayoutParams;
-import java.util.List;
-import org.json.JSONArray;
 
-public class npq
-  extends BaseAdapter
+class npq
+  extends URLDrawableDownListener.Adapter
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private LayoutInflater jdField_a_of_type_AndroidViewLayoutInflater;
-  List<npo> jdField_a_of_type_JavaUtilList;
+  npq(npm paramnpm) {}
   
-  public npq(PhotoWallViewForAccountDetail paramPhotoWallViewForAccountDetail, Context paramContext)
+  public void onLoadCancelled(View paramView, URLDrawable paramURLDrawable)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext);
-  }
-  
-  public void a(List<npo> paramList)
-  {
-    this.jdField_a_of_type_JavaUtilList = paramList;
-    notifyDataSetChanged();
-  }
-  
-  public int getCount()
-  {
-    if (this.jdField_a_of_type_JavaUtilList != null) {
-      return this.jdField_a_of_type_JavaUtilList.size();
+    super.onLoadCancelled(paramView, paramURLDrawable);
+    if (QLog.isColorLevel()) {
+      QLog.d("AccountDetailBaseAdapter", 2, "onLoadCancelled");
     }
-    return 0;
   }
   
-  public Object getItem(int paramInt)
+  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable)
   {
-    if (this.jdField_a_of_type_JavaUtilList != null) {
-      return this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    super.onLoadFailed(paramView, paramURLDrawable, paramThrowable);
+    if (!this.a.f) {
+      this.a.l();
     }
-    return null;
+    if (QLog.isColorLevel()) {
+      QLog.d("AccountDetailBaseAdapter", 2, "onLoadFailed ,cause = " + paramThrowable);
+    }
   }
   
-  public long getItemId(int paramInt)
+  public void onLoadInterrupted(View paramView, URLDrawable paramURLDrawable, InterruptedException paramInterruptedException)
   {
-    return paramInt;
+    super.onLoadInterrupted(paramView, paramURLDrawable, paramInterruptedException);
+    if (QLog.isColorLevel()) {
+      QLog.d("AccountDetailBaseAdapter", 2, "onLoadInterrupted");
+    }
   }
   
-  @TargetApi(16)
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
   {
-    for (;;)
+    if (paramView == null) {}
+    do
     {
-      try
+      return;
+      this.a.k();
+      if ((paramView instanceof ImageView))
       {
-        paramViewGroup = new JSONArray(((npo)this.jdField_a_of_type_JavaUtilList.get(paramInt)).e);
-        if (paramViewGroup.length() > 0)
-        {
-          paramViewGroup = paramViewGroup.optString(0);
-          if (paramView == null)
-          {
-            localnpr = new npr(this);
-            paramView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131559440, null);
-            paramView.setLayoutParams(new AbsListView.LayoutParams(this.jdField_a_of_type_ComTencentBizPubaccountPhotoWallViewForAccountDetail.a, this.jdField_a_of_type_ComTencentBizPubaccountPhotoWallViewForAccountDetail.b));
-            localnpr.a = ((URLImageView)paramView.findViewById(2131371920));
-            paramView.setTag(localnpr);
-            localnpr.a.setTag(new awor(25, Integer.valueOf(paramInt)));
-            if (!TextUtils.isEmpty(paramViewGroup)) {
-              continue;
-            }
-            localnpr.a.setImageResource(2130839372);
-            return paramView;
-          }
-        }
+        ((URLImageView)paramView).setImageDrawable(paramURLDrawable);
+        paramView.requestLayout();
       }
-      catch (Exception paramViewGroup)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("AccountDetail.PhotoWallViewForAccountDetail", 2, "RICH_PIC_TEXT:pic json error!");
-        }
-        paramViewGroup.printStackTrace();
-        paramViewGroup = null;
-        continue;
-        npr localnpr = (npr)paramView.getTag();
-        continue;
-        paramViewGroup = URLDrawable.getDrawable(paramViewGroup);
-        localnpr.a.setImageDrawable(paramViewGroup);
-        return paramView;
-      }
-      paramViewGroup = null;
-    }
+    } while (!QLog.isColorLevel());
+    QLog.d("AccountDetailBaseAdapter", 2, "onLoadSuccessed");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     npq
  * JD-Core Version:    0.7.0.1
  */

@@ -1,28 +1,92 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.qq.jce.wup.BasicClassTypeUtil;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.pluginsdk.PluginStatic;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
+import mqq.app.AppRuntime;
 
-class bmra
-  implements ValueAnimator.AnimatorUpdateListener
+public class bmra
 {
-  bmra(bmqz parambmqz) {}
-  
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public static final AppRuntime a(BaseApplicationImpl paramBaseApplicationImpl, String paramString)
   {
-    if (this.a.a.b == null) {
-      return;
+    if (paramBaseApplicationImpl == null) {
+      return null;
     }
-    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    this.a.s = (this.a.d + this.a.f * f);
-    this.a.t = (this.a.e + this.a.g * f);
-    this.a.q = (this.a.b + this.a.h * f);
-    this.a.r = (this.a.c + this.a.i * f);
-    if (this.a.a.a != null) {
-      this.a.a.a.a(f);
+    if ("troop_member_card_plugin.apk".equals(paramString)) {}
+    label158:
+    for (String str = "com.tencent.mobileqq.memcard.base.TroopMemberCardAppInterface";; str = null) {
+      try
+      {
+        for (;;)
+        {
+          Class localClass = Class.forName(str);
+          paramBaseApplicationImpl = localClass;
+          if (paramBaseApplicationImpl != null) {
+            break;
+          }
+          try
+          {
+            QLog.e("TroopMemCardLog", 1, "*createTroopMemcardAppInterface load class fail");
+            return null;
+          }
+          catch (ClassNotFoundException paramBaseApplicationImpl)
+          {
+            paramBaseApplicationImpl.printStackTrace();
+            return null;
+          }
+          if (!"troop_manage_plugin.apk".equals(paramString)) {
+            break label158;
+          }
+          str = "com.tencent.mobileqq.base.TroopManageAppInterface";
+        }
+      }
+      catch (ClassNotFoundException localClassNotFoundException)
+      {
+        for (;;)
+        {
+          paramString = PluginStatic.getOrCreateClassLoader(paramBaseApplicationImpl, paramString);
+          paramBaseApplicationImpl = paramString.loadClass(str);
+          BasicClassTypeUtil.setClassLoader(true, paramString);
+        }
+      }
+      catch (IllegalArgumentException paramBaseApplicationImpl)
+      {
+        paramBaseApplicationImpl.printStackTrace();
+        return null;
+        paramBaseApplicationImpl = paramBaseApplicationImpl.getDeclaredConstructor(new Class[0]).newInstance(new Object[0]);
+        if ((paramBaseApplicationImpl == null) || (!(paramBaseApplicationImpl instanceof AppRuntime))) {
+          break;
+        }
+        paramBaseApplicationImpl = (AppRuntime)paramBaseApplicationImpl;
+        return paramBaseApplicationImpl;
+      }
+      catch (IllegalAccessException paramBaseApplicationImpl)
+      {
+        paramBaseApplicationImpl.printStackTrace();
+        return null;
+      }
+      catch (InstantiationException paramBaseApplicationImpl)
+      {
+        paramBaseApplicationImpl.printStackTrace();
+        return null;
+      }
+      catch (InvocationTargetException paramBaseApplicationImpl)
+      {
+        paramBaseApplicationImpl.printStackTrace();
+        return null;
+      }
+      catch (NoSuchMethodException paramBaseApplicationImpl)
+      {
+        paramBaseApplicationImpl.printStackTrace();
+        return null;
+      }
+      catch (Exception paramBaseApplicationImpl)
+      {
+        paramBaseApplicationImpl.printStackTrace();
+        return null;
+      }
     }
-    if (f == 1.0F) {
-      this.a.a.b(5);
-    }
-    bmqw.a(this.a.a);
   }
 }
 

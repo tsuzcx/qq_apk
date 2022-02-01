@@ -1,35 +1,15 @@
-import android.animation.Animator;
-import android.view.View;
-import com.tencent.mobileqq.activity.richmedia.FlowCameraActivity2;
-import com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.history.ChatHistoryC2CAllFragment;
+import com.tencent.mobileqq.app.proxy.ProxyObserver;
+import mqq.os.MqqHandler;
 
 public class ajph
-  extends ajog
+  extends ProxyObserver
 {
-  public ajph(FlowCameraActivity2 paramFlowCameraActivity2) {}
+  public ajph(ChatHistoryC2CAllFragment paramChatHistoryC2CAllFragment) {}
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public void onProxySaveToDbFinished()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("FlowCameraActivity", 2, "startExitPtvModeAnimation: onAnimationEnd <<===");
-    }
-    if (this.a.jdField_a_of_type_Ajqc != null) {
-      this.a.jdField_a_of_type_Ajqc.a();
-    }
-    this.a.k();
-    this.a.e.setVisibility(4);
-    this.a.e.setPadding(0, 0, 0, 0);
-    if ((this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr != null) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.a != null)) {
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.a.y();
-    }
-  }
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("FlowCameraActivity", 2, "startExitPtvModeAnimation: onAnimationStart ===>>");
-    }
+    this.a.a.sendEmptyMessage(41);
   }
 }
 

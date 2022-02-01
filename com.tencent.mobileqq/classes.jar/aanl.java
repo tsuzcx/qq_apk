@@ -1,14 +1,16 @@
+import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnClickListener;
+import android.view.View.OnTouchListener;
+import com.tencent.biz.tribe.TribeVideoPlugin;
 
-class aanl
-  implements View.OnClickListener
+public class aanl
+  implements View.OnTouchListener
 {
-  aanl(aanj paramaanj) {}
+  public aanl(TribeVideoPlugin paramTribeVideoPlugin) {}
   
-  public void onClick(View paramView)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    this.a.dismiss();
+    return true;
   }
 }
 

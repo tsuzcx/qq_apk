@@ -1,16 +1,23 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.aio.helper.AIOLongShotHelper;
+import android.os.Handler;
+import android.widget.Toast;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.SendMultiPictureHelper.6.1;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.msf.sdk.handler.INetEventHandler;
 
 public class afdi
-  implements View.OnClickListener
+  implements INetEventHandler
 {
-  public afdi(AIOLongShotHelper paramAIOLongShotHelper) {}
+  afdi(afdc paramafdc) {}
   
-  public void onClick(View paramView)
+  public void onNetChangeEvent(boolean paramBoolean)
   {
-    this.a.b(paramView);
-    AIOLongShotHelper.a("0X8009DE9");
+    if (!paramBoolean)
+    {
+      Toast.makeText(BaseApplicationImpl.getApplication(), this.a.a.getString(2131693956), 1).show();
+      SendMultiPictureHelper.6.1 local1 = new SendMultiPictureHelper.6.1(this);
+      new Handler().postDelayed(local1, 3000L);
+    }
   }
 }
 

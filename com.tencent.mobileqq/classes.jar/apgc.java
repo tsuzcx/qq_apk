@@ -1,21 +1,10 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.msgcache.MsgLruCache;
-import com.tencent.mobileqq.database.corrupt.DBFixConfigActivity;
-import mqq.app.AppRuntime;
+import javax.microedition.khronos.opengles.GL10;
 
-public class apgc
-  implements View.OnClickListener
+public abstract interface apgc
 {
-  public apgc(DBFixConfigActivity paramDBFixConfigActivity, AppRuntime paramAppRuntime) {}
+  public abstract void a(GL10 paramGL10);
   
-  public void onClick(View paramView)
-  {
-    if ((this.jdField_a_of_type_MqqAppAppRuntime instanceof QQAppInterface)) {
-      ((QQAppInterface)this.jdField_a_of_type_MqqAppAppRuntime).a(0).a().a().printMsgLruCache();
-    }
-  }
+  public abstract void a(GL10 paramGL10, int paramInt1, int paramInt2);
 }
 
 

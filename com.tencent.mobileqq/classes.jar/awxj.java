@@ -1,33 +1,20 @@
-import android.view.animation.Animation;
-import com.tencent.mobileqq.ptt.LSRecordPanel;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import java.util.List;
 
-public class awxj
-  extends awxe
+class awxj
+  implements DialogInterface.OnClickListener
 {
-  public awxj(LSRecordPanel paramLSRecordPanel) {}
+  awxj(awxi paramawxi, List paramList) {}
   
-  public void a(Animation paramAnimation, float paramFloat)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((this.a.c == null) && (this.a.a != null) && (paramFloat >= 0.5F)) {
-      this.a.f();
-    }
-  }
-  
-  public void onAnimationEnd(Animation paramAnimation)
-  {
-    if (QLog.isDevelopLevel()) {
-      QLog.d("LsRecord", 4, "LS startExpandAnimation onAnimationEnd");
-    }
-    if (paramAnimation == this.a.a) {
-      this.a.h();
-    }
-    this.a.a = null;
+    this.jdField_a_of_type_Awxi.a(this.jdField_a_of_type_JavaUtilList, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     awxj
  * JD-Core Version:    0.7.0.1
  */

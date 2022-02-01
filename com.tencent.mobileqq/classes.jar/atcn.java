@@ -1,16 +1,19 @@
-import android.os.Bundle;
-import mqq.observer.BusinessObserver;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 
-class atcn
-  implements BusinessObserver
+public class atcn
+  extends atch
 {
-  atcn(atch paramatch) {}
+  int a;
+  int b;
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle) {}
+  public atcn(FileManagerEntity paramFileManagerEntity)
+  {
+    super(paramFileManagerEntity);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     atcn
  * JD-Core Version:    0.7.0.1
  */

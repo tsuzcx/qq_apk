@@ -1,12 +1,25 @@
-public abstract interface qfr
+class qfr
 {
-  public abstract void a();
+  private boolean jdField_a_of_type_Boolean;
   
-  public abstract void a(int paramInt, long paramLong, String paramString1, qfz paramqfz, String paramString2, String paramString3, String paramString4);
+  qfr(qfa paramqfa, boolean paramBoolean)
+  {
+    a(paramBoolean);
+  }
+  
+  void a(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  boolean a()
+  {
+    return this.jdField_a_of_type_Boolean;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     qfr
  * JD-Core Version:    0.7.0.1
  */

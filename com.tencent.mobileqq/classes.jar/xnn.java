@@ -1,29 +1,25 @@
-import java.io.File;
-import java.util.Comparator;
+import android.view.View;
+import android.view.ViewGroup;
 
-public final class xnn
-  implements Comparator<File>
+public class xnn
+  extends xnl
 {
-  public int a(File paramFile1, File paramFile2)
+  public final View b;
+  
+  public xnn(View paramView)
   {
-    long l = paramFile1.lastModified() - paramFile2.lastModified();
-    if (l > 0L) {
-      return -1;
-    }
-    if (l == 0L) {
-      return 0;
-    }
-    return 1;
+    super((ViewGroup)paramView.getParent());
+    this.b = paramView;
   }
   
-  public boolean equals(Object paramObject)
+  protected View a(ViewGroup paramViewGroup)
   {
-    return true;
+    return this.b;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     xnn
  * JD-Core Version:    0.7.0.1
  */

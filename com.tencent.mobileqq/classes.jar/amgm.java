@@ -1,31 +1,47 @@
-import com.tencent.mobileqq.app.addfriendverifi.ui.NewFriendVerifyBlockedListFragment;
-import com.tencent.widget.AbsListView;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.qphone.base.util.QLog;
 
-public class amgm
-  implements bhtv
+class amgm
+  extends Handler
 {
-  public amgm(NewFriendVerifyBlockedListFragment paramNewFriendVerifyBlockedListFragment) {}
-  
-  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
+  amgm(amgl paramamgl, Looper paramLooper)
   {
-    if (NewFriendVerifyBlockedListFragment.a(this.a) != null)
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    if (paramMessage.what == amgl.a(this.a))
     {
-      if ((paramInt != 0) && (paramInt != 1)) {
-        NewFriendVerifyBlockedListFragment.a(this.a).a();
+      QLog.d(amgl.a(this.a), 4, "Receive Message!");
+      this.a.a();
+    }
+    for (;;)
+    {
+      try
+      {
+        bcst.b(null, "P_CliOper", "Safe_Antiphishing", "", "AlertDialog", "config", 0, 1, "", "", "", "");
+        return;
+      }
+      catch (Exception paramMessage) {}
+      if (paramMessage.what == amgl.b(this.a))
+      {
+        QLog.d(amgl.a(this.a), 4, "Receive Message!");
+        try
+        {
+          bcst.b(null, "P_CliOper", "Safe_Antiphishing", "", "AlertDialog", "config", 0, 0, "", "", "", "");
+          return;
+        }
+        catch (Exception paramMessage) {}
       }
     }
-    else {
-      return;
-    }
-    NewFriendVerifyBlockedListFragment.a(this.a).b();
-    NewFriendVerifyBlockedListFragment.a(this.a).c();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amgm
  * JD-Core Version:    0.7.0.1
  */

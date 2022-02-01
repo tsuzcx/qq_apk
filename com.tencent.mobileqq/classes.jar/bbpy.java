@@ -1,33 +1,67 @@
-import android.util.SparseArray;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.troop.data.TroopAioKeywordTipInfo;
-import com.tencent.mobileqq.troop.data.TroopAioKeywordTipManager.4.1;
-import java.util.List;
+import android.view.View;
+import com.tencent.qphone.base.util.QLog;
 
 public class bbpy
-  extends amdy
+  extends bbqp
 {
-  bbpy(bbpw parambbpw, MessageRecord paramMessageRecord, bbpz parambbpz) {}
+  private bboz jdField_a_of_type_Bboz;
+  private bbph jdField_a_of_type_Bbph;
+  private bbpu jdField_a_of_type_Bbpu;
+  private bbqa jdField_a_of_type_Bbqa;
   
-  protected void a(boolean paramBoolean, List<TroopAioKeywordTipInfo> paramList)
+  public bbpy(aobu paramaobu)
   {
-    if (paramBoolean)
+    super(paramaobu);
+    this.jdField_a_of_type_Bbpu = new bbpu(paramaobu);
+    this.jdField_a_of_type_Bbph = new bbph(paramaobu);
+    this.jdField_a_of_type_Bboz = new bboz(paramaobu, 268435456);
+  }
+  
+  public void b(bbmy parambbmy, bbvg parambbvg)
+  {
+    if ((!(parambbmy instanceof bbmu)) && (!(parambbmy instanceof bblw))) {
+      QLog.e("MostUsedResultPresenter", 2, "unresolved model");
+    }
+    do
     {
-      if ((paramList != null) && (paramList.size() > 0))
+      return;
+      if ((parambbmy instanceof bbmu))
       {
-        bbpw.a(this.jdField_a_of_type_Bbpw, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, (TroopAioKeywordTipInfo)paramList.get(0), this.jdField_a_of_type_Bbpz);
-        synchronized (this.jdField_a_of_type_Bbpw.b)
+        localObject = (bbmu)parambbmy;
+        int i = bboj.a(((bbmu)localObject).e());
+        if (i == 2)
         {
-          this.jdField_a_of_type_Bbpw.b.put(((TroopAioKeywordTipInfo)paramList.get(0)).ruleId, paramList.get(0));
-          ThreadManager.post(new TroopAioKeywordTipManager.4.1(this, paramList), 2, null, true);
+          this.jdField_a_of_type_Bbpu.b(parambbmy, parambbvg);
           return;
         }
+        if (i == 1)
+        {
+          this.jdField_a_of_type_Bbph.b(parambbmy, parambbvg);
+          return;
+        }
+        QLog.e("MostUsedResultPresenter", 2, "unresolved id type" + ((bbmu)localObject).e());
+        return;
       }
-      bbpw.a(this.jdField_a_of_type_Bbpw, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, null, this.jdField_a_of_type_Bbpz);
+    } while (!(parambbmy instanceof bblw));
+    Object localObject = (bblw)parambbmy;
+    if (bboj.a(((bblw)localObject).e()) == 3)
+    {
+      this.jdField_a_of_type_Bboz.b(parambbmy, parambbvg);
       return;
     }
-    bbpw.a(this.jdField_a_of_type_Bbpw, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, null, this.jdField_a_of_type_Bbpz);
+    QLog.e("MostUsedResultPresenter", 2, "unresolved id type" + ((bblw)localObject).e());
+  }
+  
+  protected void c(bbmy parambbmy, bbvg parambbvg)
+  {
+    if (this.jdField_a_of_type_Bbqa != null)
+    {
+      if (parambbvg.a() != null) {
+        parambbvg.a().setOnClickListener(new bbpz(this));
+      }
+      return;
+    }
+    super.c(parambbmy, parambbvg);
   }
 }
 

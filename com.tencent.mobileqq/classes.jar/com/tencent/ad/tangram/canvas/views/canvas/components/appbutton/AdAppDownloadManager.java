@@ -7,6 +7,7 @@ import android.text.TextUtils;
 import android.util.Pair;
 import com.tencent.ad.tangram.Ad;
 import com.tencent.ad.tangram.canvas.download.AdCanvasDownloadListener;
+import com.tencent.ad.tangram.canvas.download.AdDownloadTask;
 import com.tencent.ad.tangram.canvas.download.AdDownloader;
 import com.tencent.ad.tangram.canvas.download.IAdDownloader.Callback;
 import com.tencent.ad.tangram.canvas.report.AdRefreshCallback;
@@ -175,8 +176,10 @@ public class AdAppDownloadManager
   {
     try
     {
-      if (this.mCgdtAppBtnData == null) {
+      if (this.mCgdtAppBtnData == null)
+      {
         this.mCgdtAppBtnData = paramAdAppBtnData;
+        AdDownloadTask.setDownloadUrl(this.mCgdtAppBtnData.apkUrlhttp);
       }
       return;
     }
@@ -381,7 +384,6 @@ public class AdAppDownloadManager
     AdLog.i("AdCanvasAppBtnUIAdapter", "onDestroy resetStaticVariables");
     unregisterDownloadListener();
     this.mContext = null;
-    this.mCgdtAppBtnData = null;
     this.isLoadingAppData = false;
     this.mStartedDownload = false;
     if (this.mBtnUIPresenterList != null) {
@@ -456,7 +458,7 @@ public class AdAppDownloadManager
   
   public void removePresenter(h paramh)
   {
-    if ((this.mBtnUIPresenterList != null) && (this.mBtnUIPresenterList.contains(paramh))) {
+    if (this.mBtnUIPresenterList != null) {
       this.mBtnUIPresenterList.remove(paramh);
     }
   }
@@ -519,7 +521,7 @@ public class AdAppDownloadManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.ad.tangram.canvas.views.canvas.components.appbutton.AdAppDownloadManager
  * JD-Core Version:    0.7.0.1
  */

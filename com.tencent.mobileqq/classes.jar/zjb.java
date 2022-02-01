@@ -1,206 +1,115 @@
-import android.app.Activity;
-import android.content.res.Resources;
-import android.graphics.Rect;
-import android.graphics.drawable.Drawable;
-import android.util.DisplayMetrics;
-import android.view.View;
-import com.tencent.common.galleryactivity.AnimationView;
-import com.tencent.image.GifDrawable;
-import com.tencent.image.URLDrawable;
-import java.util.ArrayList;
-import java.util.Iterator;
+import android.content.Intent;
+import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.text.TextUtils;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageForShortVideo;
+import com.tencent.mobileqq.data.MessageForTroopStory;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.qphone.base.util.QLog;
 
 public class zjb
-  extends zil
 {
-  int jdField_a_of_type_Int;
-  Activity jdField_a_of_type_AndroidAppActivity;
-  protected View a;
-  protected AnimationView a;
-  zir jdField_a_of_type_Zir;
-  View b;
-  View c;
-  
-  public zjb(Activity paramActivity, zir paramzir)
+  public static MessageRecord a(QQAppInterface paramQQAppInterface, String paramString)
   {
-    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
-    this.jdField_a_of_type_Zir = paramzir;
-    this.jdField_a_of_type_Int = paramActivity.getResources().getDisplayMetrics().densityDpi;
-  }
-  
-  private Drawable a(Rect paramRect1, Rect paramRect2, Rect paramRect3, Rect paramRect4, zjd paramzjd, boolean paramBoolean)
-  {
-    if (paramzjd == null) {}
-    Drawable localDrawable;
-    do
+    if ((paramQQAppInterface != null) && (a(paramString)))
     {
-      return null;
-      localDrawable = paramzjd.c();
-      paramRect1 = paramzjd.b();
-    } while ((paramRect1 == null) || (localDrawable == null) || (!paramzjd.a(paramBoolean)));
-    int i = this.jdField_a_of_type_AndroidViewView.getWidth();
-    int j = this.jdField_a_of_type_AndroidViewView.getHeight();
-    int k = localDrawable.getIntrinsicWidth();
-    int m = localDrawable.getIntrinsicHeight();
-    paramRect2.set(0, 0, k, m);
-    paramRect3.set(paramRect1);
-    if ((paramzjd instanceof agkf)) {}
-    for (paramRect2 = ((agkf)paramzjd).a;; paramRect2 = null)
-    {
-      if ((!bhtb.e()) && ((localDrawable instanceof URLDrawable)) && ((((URLDrawable)localDrawable).getCurrDrawable() instanceof GifDrawable))) {}
-      for (paramRect1 = zjc.a(k, m, i, j, false, paramRect2);; paramRect1 = null)
-      {
-        if (paramRect1 == null) {
-          paramRect1 = zjc.a(k, m, i, j, paramRect2);
-        }
-        for (;;)
-        {
-          paramRect4.set(paramRect1);
-          return localDrawable;
-        }
+      ziz localziz = (ziz)paramQQAppInterface.getManager(208);
+      String str = a(paramString);
+      paramString = localziz.a(paramString);
+      if (paramString != null) {
+        return paramQQAppInterface.a().d(str, 1, paramString.longValue());
       }
     }
+    return null;
   }
   
-  public void b()
+  public static String a(Intent paramIntent, @NonNull String paramString1, String paramString2)
   {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_ComTencentCommonGalleryactivityAnimationView.setVisibility(4);
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-    while (localIterator.hasNext()) {
-      ((zja)localIterator.next()).b();
-    }
-    this.jdField_a_of_type_JavaUtilArrayList.clear();
-  }
-  
-  public boolean b()
-  {
-    boolean bool = true;
-    if (a()) {
-      return true;
-    }
-    if (this.jdField_a_of_type_AndroidViewView == null) {
-      f();
-    }
-    Rect localRect1 = new Rect();
-    Rect localRect2 = new Rect();
-    zjd localzjd = this.jdField_a_of_type_Zir.a();
-    if (localzjd == null) {
-      return false;
-    }
-    Rect localRect3 = localzjd.a();
-    Rect localRect4 = new Rect();
-    Drawable localDrawable = a(null, localRect4, localRect1, localRect2, localzjd, true);
-    this.jdField_a_of_type_Boolean = true;
-    if (localDrawable != null)
+    int j = 78;
+    int i = 8;
+    int k = 0;
+    if ((!TextUtils.isEmpty(paramString2)) && (!TextUtils.isEmpty(paramString1)))
     {
-      this.jdField_b_of_type_Boolean = bool;
-      if (this.jdField_b_of_type_Boolean) {
-        break label126;
+      paramString1 = paramString1.replace("$GCODE$", paramString2);
+      if (paramIntent != null) {
+        break label121;
       }
-      this.jdField_a_of_type_ComTencentCommonGalleryactivityAnimationView.setVisibility(4);
+      label36:
+      if (paramIntent != null) {
+        break label133;
+      }
+      label40:
+      if (paramIntent != null) {
+        break label146;
+      }
     }
     for (;;)
     {
-      return this.jdField_b_of_type_Boolean;
-      bool = false;
+      paramIntent = new StringBuilder(paramString1);
+      paramIntent.append("&troopStoryMemoriesFrom=").append(i).append("&playVideoFrom=").append(j).append("&lastOpenFrom=").append(k);
+      return paramIntent.toString();
+      QLog.e("TroopStoryUtil", 1, new Object[] { "configTroopStoryProfileFromAIO empty. troopUin=", "", ", url=", paramString1 });
       break;
-      label126:
-      this.jdField_a_of_type_ComTencentCommonGalleryactivityAnimationView.setVisibility(0);
-      this.jdField_a_of_type_ComTencentCommonGalleryactivityAnimationView.setAnimationListener(this);
-      this.jdField_a_of_type_ComTencentCommonGalleryactivityAnimationView.jdField_a_of_type_Boolean = localzjd.c;
-      if (localRect3 == null) {
-        this.jdField_a_of_type_ComTencentCommonGalleryactivityAnimationView.a(localDrawable, localRect1, localRect2, localzjd.a(), this.jdField_a_of_type_Long);
-      } else {
-        this.jdField_a_of_type_ComTencentCommonGalleryactivityAnimationView.a(localDrawable, localRect3, localRect4, localRect1, localRect2, this.jdField_a_of_type_Long);
-      }
+      label121:
+      i = paramIntent.getIntExtra("extra_share_group_from", 8);
+      break label36;
+      label133:
+      j = paramIntent.getIntExtra("extra_play_video_from", 78);
+      break label40;
+      label146:
+      k = paramIntent.getIntExtra("extra_last_open_from", 0);
     }
   }
   
-  public void c()
+  public static String a(MessageForShortVideo paramMessageForShortVideo)
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-    while (localIterator.hasNext()) {
-      ((zja)localIterator.next()).c();
-    }
+    return ("gs_" + paramMessageForShortVideo.frienduin + '_' + paramMessageForShortVideo.getMd5() + '_' + bita.d(paramMessageForShortVideo.uuid) + "-700").toLowerCase();
   }
   
-  public boolean c()
+  public static String a(String paramString)
   {
-    if (a()) {
-      return true;
-    }
-    if (this.jdField_a_of_type_AndroidViewView == null) {
-      f();
-    }
-    Rect localRect2 = new Rect();
-    Rect localRect3 = new Rect();
-    zjd localzjd = this.jdField_a_of_type_Zir.a();
-    Rect localRect1 = null;
-    if (localzjd != null) {
-      localRect1 = localzjd.a();
-    }
-    Rect localRect4 = new Rect();
-    Drawable localDrawable = a(localRect1, localRect4, localRect2, localRect3, localzjd, false);
-    this.jdField_a_of_type_Boolean = true;
-    boolean bool;
-    if (localDrawable != null)
+    if (a(paramString))
     {
-      bool = true;
-      this.jdField_b_of_type_Boolean = bool;
-      if (this.jdField_b_of_type_Boolean) {
-        break label127;
-      }
-      this.jdField_a_of_type_ComTencentCommonGalleryactivityAnimationView.setVisibility(4);
-    }
-    for (;;)
-    {
-      return this.jdField_b_of_type_Boolean;
-      bool = false;
-      break;
-      label127:
-      this.jdField_a_of_type_ComTencentCommonGalleryactivityAnimationView.setVisibility(0);
-      this.jdField_a_of_type_ComTencentCommonGalleryactivityAnimationView.setAnimationListener(this);
-      this.jdField_a_of_type_ComTencentCommonGalleryactivityAnimationView.jdField_a_of_type_Boolean = localzjd.c;
-      this.jdField_a_of_type_ComTencentCommonGalleryactivityAnimationView.a(localDrawable, localRect2, localRect3, localzjd.a(), localzjd.c(), localzjd.d(), this.jdField_a_of_type_Long);
-      if (localRect1 == null) {
-        this.jdField_a_of_type_ComTencentCommonGalleryactivityAnimationView.a(localDrawable, localRect2, localRect3, localzjd.a(), localzjd.c(), localzjd.d(), this.jdField_a_of_type_Long);
-      } else {
-        this.jdField_a_of_type_ComTencentCommonGalleryactivityAnimationView.b(localDrawable, localRect1, localRect4, localRect2, localRect3, this.jdField_a_of_type_Long);
+      paramString = paramString.split("_");
+      if (paramString.length > 2) {
+        return paramString[1];
       }
     }
+    return null;
   }
   
-  public void d()
+  public static void a(MessageForTroopStory paramMessageForTroopStory, Bundle paramBundle)
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-    while (localIterator.hasNext()) {
-      ((zja)localIterator.next()).d();
-    }
+    paramBundle.putInt("forward_type", 32);
+    paramBundle.putLong("key_uid", paramMessageForTroopStory.uid);
+    paramBundle.putString("key_union_id", paramMessageForTroopStory.unionId);
+    paramBundle.putString("key_md5", paramMessageForTroopStory.md5);
+    paramBundle.putString("key_thumb_url", paramMessageForTroopStory.thumbUrl);
+    paramBundle.putString("key_doodle_url", paramMessageForTroopStory.doodleUrl);
+    paramBundle.putInt("key_video_width", paramMessageForTroopStory.videoWidth);
+    paramBundle.putInt("key_video_height", paramMessageForTroopStory.videoHeight);
+    paramBundle.putString("key_source_name", paramMessageForTroopStory.sourceName);
+    paramBundle.putString("key_source_action_type", paramMessageForTroopStory.sourceActionType);
+    paramBundle.putString("key_source_action_data", paramMessageForTroopStory.sourceActionData);
+    paramBundle.putString("key_compatible_text", paramMessageForTroopStory.compatibleText);
+    paramBundle.putInt("key_ctr_version", paramMessageForTroopStory.ctrVersion);
   }
   
-  public void e()
+  public static boolean a(int paramInt, MessageRecord paramMessageRecord)
   {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_ComTencentCommonGalleryactivityAnimationView.setVisibility(4);
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-    while (localIterator.hasNext()) {
-      ((zja)localIterator.next()).e();
-    }
-    this.jdField_a_of_type_JavaUtilArrayList.clear();
+    return (wfg.i()) && (paramInt == 1) && ((paramMessageRecord instanceof MessageForShortVideo)) && (((MessageForShortVideo)paramMessageRecord).busiType == 1);
   }
   
-  public void f()
+  public static boolean a(String paramString)
   {
-    this.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_AndroidAppActivity.findViewById(2131367020);
-    this.jdField_a_of_type_ComTencentCommonGalleryactivityAnimationView = ((AnimationView)this.jdField_a_of_type_AndroidAppActivity.findViewById(2131362576));
-    this.jdField_b_of_type_AndroidViewView = this.jdField_a_of_type_AndroidAppActivity.findViewById(2131376034);
-    this.c = this.jdField_a_of_type_AndroidAppActivity.findViewById(2131363034);
+    return (paramString != null) && (paramString.startsWith("gs_"));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     zjb
  * JD-Core Version:    0.7.0.1
  */

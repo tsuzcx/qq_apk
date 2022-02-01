@@ -2,7 +2,7 @@ package io.flutter.view;
 
 import android.graphics.Rect;
 import android.opengl.Matrix;
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 import io.flutter.util.Predicate;
 import java.nio.ByteBuffer;
 import java.util.ArrayList;
@@ -18,6 +18,7 @@ class AccessibilityBridge$SemanticsNode
   private float bottom;
   private List<SemanticsNode> childrenInHitTestOrder = new ArrayList();
   private List<SemanticsNode> childrenInTraversalOrder = new ArrayList();
+  private int currentValueLength;
   private List<AccessibilityBridge.CustomAccessibilityAction> customAccessibilityActions;
   private String decreasedValue;
   private int flags;
@@ -32,6 +33,7 @@ class AccessibilityBridge$SemanticsNode
   private boolean inverseTransformDirty = true;
   private String label;
   private float left;
+  private int maxValueLength;
   private AccessibilityBridge.CustomAccessibilityAction onLongPressOverride;
   private AccessibilityBridge.CustomAccessibilityAction onTapOverride;
   private SemanticsNode parent;
@@ -213,9 +215,13 @@ class AccessibilityBridge$SemanticsNode
   private boolean isFocusable()
   {
     if (hasFlag(AccessibilityBridge.Flag.SCOPES_ROUTE)) {}
-    while (((((AccessibilityBridge.Action.SCROLL_RIGHT.value | AccessibilityBridge.Action.SCROLL_LEFT.value | AccessibilityBridge.Action.SCROLL_UP.value | AccessibilityBridge.Action.SCROLL_DOWN.value) ^ 0xFFFFFFFF) & this.actions) == 0) && (this.flags == 0) && ((this.label == null) || (this.label.isEmpty())) && ((this.value == null) || (this.value.isEmpty())) && ((this.hint == null) || (this.hint.isEmpty()))) {
+    do
+    {
       return false;
-    }
+      if (hasFlag(AccessibilityBridge.Flag.IS_FOCUSABLE)) {
+        return true;
+      }
+    } while (((((AccessibilityBridge.Action.SCROLL_RIGHT.value | AccessibilityBridge.Action.SCROLL_LEFT.value | AccessibilityBridge.Action.SCROLL_UP.value | AccessibilityBridge.Action.SCROLL_DOWN.value) ^ 0xFFFFFFFF) & this.actions) == 0) && (this.flags == 0) && ((this.label == null) || (this.label.isEmpty())) && ((this.value == null) || (this.value.isEmpty())) && ((this.hint == null) || (this.hint.isEmpty())));
     return true;
   }
   
@@ -303,6 +309,8 @@ class AccessibilityBridge$SemanticsNode
     this.previousScrollExtentMin = this.scrollExtentMin;
     this.flags = paramByteBuffer.getInt();
     this.actions = paramByteBuffer.getInt();
+    this.maxValueLength = paramByteBuffer.getInt();
+    this.currentValueLength = paramByteBuffer.getInt();
     this.textSelectionBase = paramByteBuffer.getInt();
     this.textSelectionExtent = paramByteBuffer.getInt();
     this.platformViewId = paramByteBuffer.getInt();
@@ -319,34 +327,34 @@ class AccessibilityBridge$SemanticsNode
       this.label = str;
       i = paramByteBuffer.getInt();
       if (i != -1) {
-        break label341;
-      }
-      str = null;
-      label189:
-      this.value = str;
-      i = paramByteBuffer.getInt();
-      if (i != -1) {
-        break label349;
-      }
-      str = null;
-      label208:
-      this.increasedValue = str;
-      i = paramByteBuffer.getInt();
-      if (i != -1) {
         break label357;
       }
       str = null;
-      label227:
-      this.decreasedValue = str;
+      label205:
+      this.value = str;
       i = paramByteBuffer.getInt();
       if (i != -1) {
         break label365;
       }
+      str = null;
+      label224:
+      this.increasedValue = str;
+      i = paramByteBuffer.getInt();
+      if (i != -1) {
+        break label373;
+      }
+      str = null;
+      label243:
+      this.decreasedValue = str;
+      i = paramByteBuffer.getInt();
+      if (i != -1) {
+        break label381;
+      }
     }
-    label341:
-    label349:
     label357:
     label365:
+    label373:
+    label381:
     for (paramArrayOfString = null;; paramArrayOfString = paramArrayOfString[i])
     {
       this.hint = paramArrayOfString;
@@ -367,11 +375,11 @@ class AccessibilityBridge$SemanticsNode
       str = paramArrayOfString[i];
       break;
       str = paramArrayOfString[i];
-      break label189;
+      break label205;
       str = paramArrayOfString[i];
-      break label208;
+      break label224;
       str = paramArrayOfString[i];
-      break label227;
+      break label243;
     }
     this.inverseTransformDirty = true;
     this.globalGeometryDirty = true;
@@ -381,7 +389,7 @@ class AccessibilityBridge$SemanticsNode
     i = 0;
     while (i < j)
     {
-      paramArrayOfString = AccessibilityBridge.access$5800(this.accessibilityBridge, paramByteBuffer.getInt());
+      paramArrayOfString = AccessibilityBridge.access$6000(this.accessibilityBridge, paramByteBuffer.getInt());
       paramArrayOfString.parent = this;
       this.childrenInTraversalOrder.add(paramArrayOfString);
       i += 1;
@@ -389,7 +397,7 @@ class AccessibilityBridge$SemanticsNode
     i = 0;
     while (i < j)
     {
-      paramArrayOfString = AccessibilityBridge.access$5800(this.accessibilityBridge, paramByteBuffer.getInt());
+      paramArrayOfString = AccessibilityBridge.access$6000(this.accessibilityBridge, paramByteBuffer.getInt());
       paramArrayOfString.parent = this;
       this.childrenInHitTestOrder.add(paramArrayOfString);
       i += 1;
@@ -404,13 +412,13 @@ class AccessibilityBridge$SemanticsNode
     {
       this.customAccessibilityActions = new ArrayList(j);
       i = 0;
-      label531:
+      label547:
       if (i >= j) {
-        break label597;
+        break label613;
       }
-      paramArrayOfString = AccessibilityBridge.access$5900(this.accessibilityBridge, paramByteBuffer.getInt());
-      if (AccessibilityBridge.CustomAccessibilityAction.access$3600(paramArrayOfString) != AccessibilityBridge.Action.TAP.value) {
-        break label599;
+      paramArrayOfString = AccessibilityBridge.access$6100(this.accessibilityBridge, paramByteBuffer.getInt());
+      if (AccessibilityBridge.CustomAccessibilityAction.access$3800(paramArrayOfString) != AccessibilityBridge.Action.TAP.value) {
+        break label615;
       }
       this.onTapOverride = paramArrayOfString;
     }
@@ -418,14 +426,14 @@ class AccessibilityBridge$SemanticsNode
     {
       this.customAccessibilityActions.add(paramArrayOfString);
       i += 1;
-      break label531;
+      break label547;
       this.customAccessibilityActions.clear();
       i = 0;
-      break label531;
-      label597:
+      break label547;
+      label613:
       break;
-      label599:
-      if (AccessibilityBridge.CustomAccessibilityAction.access$3600(paramArrayOfString) == AccessibilityBridge.Action.LONG_PRESS.value) {
+      label615:
+      if (AccessibilityBridge.CustomAccessibilityAction.access$3800(paramArrayOfString) == AccessibilityBridge.Action.LONG_PRESS.value) {
         this.onLongPressOverride = paramArrayOfString;
       } else {
         this.customAccessibilityActions.add(paramArrayOfString);
@@ -435,7 +443,7 @@ class AccessibilityBridge$SemanticsNode
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     io.flutter.view.AccessibilityBridge.SemanticsNode
  * JD-Core Version:    0.7.0.1
  */

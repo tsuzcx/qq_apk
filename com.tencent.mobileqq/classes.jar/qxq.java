@@ -1,28 +1,21 @@
-import android.content.Context;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentHeaderTopicRecommend;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
 
-public abstract class qxq
+public class qxq
+  implements pyu
 {
-  Context jdField_a_of_type_AndroidContentContext;
-  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  qxr jdField_a_of_type_Qxr;
+  public qxq(ComponentHeaderTopicRecommend paramComponentHeaderTopicRecommend) {}
   
-  public qxq(Context paramContext, QQAppInterface paramQQAppInterface, qxr paramqxr)
+  public void a(boolean paramBoolean, String paramString, int paramInt)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_Qxr = paramqxr;
+    if ((paramBoolean) && (paramInt == 1)) {
+      pmh.a().a((int)ComponentHeaderTopicRecommend.a(this.a).businessId, 0);
+    }
   }
-  
-  public void a() {}
-  
-  public abstract void a(String paramString, boolean paramBoolean);
-  
-  public abstract void b();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     qxq
  * JD-Core Version:    0.7.0.1
  */

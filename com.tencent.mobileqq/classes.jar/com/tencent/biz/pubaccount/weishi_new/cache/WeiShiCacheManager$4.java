@@ -4,21 +4,21 @@ import UserGrowth.stFollowFeedsRsp;
 import cooperation.qzone.LocalMultiProcConfig;
 import java.util.ArrayList;
 import java.util.List;
-import tcq;
-import tlv;
+import uen;
+import ups;
 
 public class WeiShiCacheManager$4
   implements Runnable
 {
-  public WeiShiCacheManager$4(tcq paramtcq, List paramList) {}
+  public WeiShiCacheManager$4(uen paramuen, List paramList) {}
   
   public void run()
   {
     ArrayList localArrayList = new ArrayList();
-    if (this.a.size() > tcq.a(this.this$0))
+    if (this.a.size() > uen.a(this.this$0))
     {
       int i = 0;
-      while (i < tcq.a(this.this$0))
+      while (i < uen.a(this.this$0))
       {
         localArrayList.add(this.a.get(i));
         i += 1;
@@ -28,8 +28,8 @@ public class WeiShiCacheManager$4
     {
       stFollowFeedsRsp localstFollowFeedsRsp = new stFollowFeedsRsp();
       localstFollowFeedsRsp.feeds = localArrayList;
-      if (tcq.a(this.this$0, localstFollowFeedsRsp, tcq.a(this.this$0), localArrayList.size())) {
-        LocalMultiProcConfig.putString("weishi_usergrowth", "key_ws_cache_v", tlv.c());
+      if (uen.a(this.this$0, localstFollowFeedsRsp, uen.a(this.this$0), localArrayList.size())) {
+        LocalMultiProcConfig.putString("weishi_usergrowth", "key_ws_cache_v", ups.c());
       }
       return;
       localArrayList = new ArrayList(this.a);
@@ -38,7 +38,7 @@ public class WeiShiCacheManager$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.cache.WeiShiCacheManager.4
  * JD-Core Version:    0.7.0.1
  */

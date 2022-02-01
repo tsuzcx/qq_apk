@@ -1,101 +1,78 @@
-import android.graphics.BitmapFactory;
-import android.graphics.BitmapFactory.Options;
-import android.graphics.drawable.BitmapDrawable;
-import android.widget.ImageView;
-import android.widget.ImageView.ScaleType;
-import android.widget.TextView;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Bundle;
+import android.text.TextUtils;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
-public class biwa
-  extends ayrm
+class biwa
+  implements EIPCResultCallback
 {
-  private BitmapFactory.Options a = new BitmapFactory.Options();
+  biwa(bivz parambivz) {}
   
-  public biwa(bdbb parambdbb)
+  public void onCallback(EIPCResult paramEIPCResult)
   {
-    super(parambdbb);
-  }
-  
-  public void a(aynu paramaynu, aywd paramaywd)
-  {
-    paramaywd.a().setMaxWidth(800);
-    bivz localbivz = (bivz)paramaynu;
-    ImageView localImageView = paramaywd.b();
-    localImageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
-    if ((5 == localbivz.f) || (localbivz.jdField_a_of_type_Boolean))
-    {
-      localImageView.setImageResource(2130843795);
-      if (localbivz.jdField_d_of_type_JavaLangString == null) {
-        break label186;
-      }
-      paramaynu = URLDrawable.URLDrawableOptions.obtain();
-      paramaynu.mRequestHeight = paramaywd.b().getHeight();
-      paramaynu.mRequestWidth = paramaywd.b().getWidth();
-      if ((5 != localbivz.f) && (!localbivz.jdField_a_of_type_Boolean)) {
-        break label136;
-      }
-      localImageView.setBackgroundDrawable(URLDrawable.getDrawable(localbivz.jdField_d_of_type_JavaLangString, paramaynu));
-    }
-    label136:
-    do
-    {
-      return;
-      localImageView.setImageDrawable(null);
-      localImageView.setBackgroundDrawable(null);
-      break;
-      try
-      {
-        localImageView.setImageDrawable(URLDrawable.getDrawable(localbivz.jdField_d_of_type_JavaLangString, paramaynu));
-        return;
-      }
-      catch (Exception paramaynu) {}
-    } while (!QLog.isColorLevel());
-    QLog.d("FavoriteSearchResultPresenter", 2, "bindFace exception = " + paramaynu.toString());
-    return;
-    label186:
-    if (localbivz.jdField_d_of_type_Int != 0)
-    {
-      if ((5 == localbivz.f) || (localbivz.jdField_a_of_type_Boolean))
-      {
-        localImageView.setBackgroundResource(localbivz.jdField_d_of_type_Int);
-        return;
-      }
-      localImageView.setImageResource(localbivz.jdField_d_of_type_Int);
+    bisy.c("DownloaderGetCodeClient", "EIPCResultCallback onCallback...");
+    if (paramEIPCResult == null) {
       return;
     }
-    if (localbivz.jdField_a_of_type_ArrayOfByte != null)
+    Object localObject1 = paramEIPCResult.data;
+    if (localObject1 == null)
     {
-      this.a.inJustDecodeBounds = true;
-      BitmapFactory.decodeByteArray(localbivz.jdField_a_of_type_ArrayOfByte, 0, localbivz.jdField_a_of_type_ArrayOfByte.length, this.a);
-      this.a.inJustDecodeBounds = false;
-      this.a.inSampleSize = (this.a.outWidth / paramaywd.b().getMeasuredWidth());
+      bisy.c("DownloaderGetCodeClient", "EIPCResultCallback onCallback data is null...");
+      return;
+    }
+    paramEIPCResult = ((Bundle)localObject1).getString("PackageName");
+    int i = ((Bundle)localObject1).getInt("VersionCode");
+    bivz.a(this.a).put(bivz.a(this.a, paramEIPCResult, i), Boolean.valueOf(false));
+    String str1 = ((Bundle)localObject1).getString("Code");
+    boolean bool = ((Bundle)localObject1).getBoolean("IsSuccess");
+    bisy.c("DownloaderGetCodeClient", "EIPCResultCallback onCallback pkgName|" + paramEIPCResult + " versionCode|" + i + " isSuc|" + bool + " code|" + str1);
+    for (;;)
+    {
+      bivi localbivi;
+      Bundle localBundle;
       try
       {
-        paramaynu = new BitmapDrawable(null, BitmapFactory.decodeByteArray(localbivz.jdField_a_of_type_ArrayOfByte, 0, localbivz.jdField_a_of_type_ArrayOfByte.length, this.a));
-        if ((5 == localbivz.f) || (localbivz.jdField_a_of_type_Boolean))
-        {
-          localImageView.setBackgroundDrawable(paramaynu);
-          return;
+        localObject1 = bivz.a(this.a, paramEIPCResult, i);
+        String str2 = (String)bivz.a(this.a).get(localObject1);
+        Object localObject2 = (List)bivz.b(this.a).get(localObject1);
+        if (localObject2 == null) {
+          break label315;
         }
-      }
-      catch (OutOfMemoryError paramaynu)
-      {
-        for (;;)
-        {
-          paramaynu = null;
+        localObject2 = ((List)localObject2).iterator();
+        if (!((Iterator)localObject2).hasNext()) {
+          break;
         }
-        localImageView.setImageDrawable(paramaynu);
-        return;
+        localbivi = (bivi)((Iterator)localObject2).next();
+        if (localbivi == null) {
+          continue;
+        }
+        localBundle = new Bundle();
+        if (TextUtils.isEmpty(str2))
+        {
+          localbivi.a(paramEIPCResult, i, str1, bool, localBundle);
+          continue;
+        }
+        localBundle.putString(bivp.a, str2);
       }
+      finally {}
+      localbivi.a(paramEIPCResult, i, str1, bool, localBundle);
     }
-    super.a(paramaynu, paramaywd);
+    bivz.b(this.a).remove(localObject1);
+    for (;;)
+    {
+      return;
+      label315:
+      bisy.c("DownloaderGetCodeClient", "EIPCResultCallback onCallback getCodeListener is null");
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     biwa
  * JD-Core Version:    0.7.0.1
  */

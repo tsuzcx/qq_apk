@@ -1,23 +1,17 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.ocr.data.OcrConfig;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.location.ui.LocationDialogUtil.11;
 
-public final class avxu
-  implements Parcelable.Creator<OcrConfig>
+public class avxu
+  implements DialogInterface.OnClickListener
 {
-  public OcrConfig a(Parcel paramParcel)
-  {
-    return new OcrConfig(paramParcel);
-  }
+  public avxu(LocationDialogUtil.11 param11) {}
   
-  public OcrConfig[] a(int paramInt)
-  {
-    return new OcrConfig[paramInt];
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     avxu
  * JD-Core Version:    0.7.0.1
  */

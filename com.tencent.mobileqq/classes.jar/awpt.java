@@ -1,28 +1,29 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.view.View;
-import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelGalleryActivity;
-import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelInfo;
+import com.tencent.mobileqq.activity.recent.RecentBaseData;
+import com.tencent.mobileqq.msgbackup.fragment.MsgBackupSelectionFragment;
+import java.util.HashSet;
 
-class awpt
-  implements DialogInterface.OnClickListener
+public class awpt
+  implements awpg
 {
-  awpt(awpq paramawpq, View paramView, PersonalityLabelInfo paramPersonalityLabelInfo) {}
+  public awpt(MsgBackupSelectionFragment paramMsgBackupSelectionFragment) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(boolean paramBoolean, RecentBaseData paramRecentBaseData)
   {
-    if (paramDialogInterface != null) {
-      paramDialogInterface.dismiss();
+    if (paramBoolean) {
+      MsgBackupSelectionFragment.a(this.a).a.add(paramRecentBaseData);
     }
-    paramDialogInterface = (awpp)this.jdField_a_of_type_AndroidViewView.getTag(2131365065);
-    if (paramDialogInterface != null) {
-      this.jdField_a_of_type_Awpq.a.a(paramDialogInterface.e, this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPersonalityLabelInfo.id);
+    for (;;)
+    {
+      int i = MsgBackupSelectionFragment.a(this.a).a.size();
+      MsgBackupSelectionFragment.a(this.a, i);
+      return;
+      MsgBackupSelectionFragment.a(this.a).a.remove(paramRecentBaseData);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     awpt
  * JD-Core Version:    0.7.0.1
  */

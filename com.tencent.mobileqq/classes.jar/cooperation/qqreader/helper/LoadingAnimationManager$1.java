@@ -1,20 +1,20 @@
 package cooperation.qqreader.helper;
 
-import bizw;
+import bloh;
 
 public class LoadingAnimationManager$1
   implements Runnable
 {
-  public LoadingAnimationManager$1(bizw parambizw, long paramLong) {}
+  public LoadingAnimationManager$1(bloh parambloh, long paramLong) {}
   
   public void run()
   {
-    bizw.a(this.this$0, this.a);
+    bloh.a(this.this$0, this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.qqreader.helper.LoadingAnimationManager.1
  * JD-Core Version:    0.7.0.1
  */

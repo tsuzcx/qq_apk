@@ -1,12 +1,6 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-
-class agie
-  implements DialogInterface.OnCancelListener
+public abstract interface agie
 {
-  agie(aghx paramaghx) {}
-  
-  public void onCancel(DialogInterface paramDialogInterface) {}
+  public abstract void a(agid paramagid);
 }
 
 

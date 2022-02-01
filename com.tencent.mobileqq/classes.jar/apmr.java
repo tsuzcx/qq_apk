@@ -1,6 +1,8 @@
 public class apmr
 {
-  public static final String a = alof.aW + "/Tencent/QQ_Images/";
+  public String a;
+  public boolean a;
+  public String[] a;
 }
 
 

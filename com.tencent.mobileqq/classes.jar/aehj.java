@@ -1,53 +1,21 @@
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.ProfileActivity;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.activity.TroopRequestActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import tencent.mobileim.structmsg.structmsg.StructMsg;
-import tencent.mobileim.structmsg.structmsg.SystemMsg;
+import com.tencent.mobileqq.activity.FriendProfileImageActivity;
 
-public class aehj
-  implements View.OnClickListener
+class aehj
+  implements bkhw
 {
-  public aehj(TroopRequestActivity paramTroopRequestActivity) {}
+  aehj(aehi paramaehi, aehv paramaehv, bkho parambkho) {}
   
-  public void onClick(View paramView)
+  public void OnClick(View paramView, int paramInt)
   {
-    long l = System.currentTimeMillis();
-    if ((l - TroopRequestActivity.c > 0L) && (l - TroopRequestActivity.c < 800L)) {
-      return;
-    }
-    TroopRequestActivity.c = l;
-    if (((alto)this.a.app.getManager(51)).b(this.a.l)) {
-      paramView = new ProfileActivity.AllInOne(this.a.l, 1);
-    }
-    for (;;)
-    {
-      azqs.b(this.a.app, "P_CliOper", "Grp_contacts", "", "notice", "see_fromdata", 0, 0, this.a.a.msg.group_code.get() + "", "3", "", "");
-      ProfileActivity.b(this.a, paramView);
-      return;
-      if ((this.a.a.msg.group_msg_type.get() != 2) || (this.a.a.msg.sub_type.get() != 3)) {
-        break;
-      }
-      paramView = new ProfileActivity.AllInOne(this.a.l, 26);
-      paramView.d = 1;
-    }
-    paramView = new ProfileActivity.AllInOne(this.a.l, 24);
-    bcpx.a(this.a.a, paramView);
-    switch (this.a.b)
+    switch (paramInt)
     {
     }
     for (;;)
     {
-      break;
-      paramView.l = 3;
-      break;
-      paramView.l = 1;
-      break;
-      paramView.l = 2;
+      this.jdField_a_of_type_Bkho.dismiss();
+      return;
+      this.jdField_a_of_type_Aehi.a.b(this.jdField_a_of_type_Aehv);
     }
   }
 }

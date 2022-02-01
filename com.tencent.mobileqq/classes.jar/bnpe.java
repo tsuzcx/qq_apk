@@ -1,15 +1,28 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-
-final class bnpe
-  implements DialogInterface.OnClickListener
+class bnpe
+  implements bnpq
 {
-  bnpe(String paramString) {}
+  bnpe(bnpc parambnpc, bnpq parambnpq) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(bnpf parambnpf, int paramInt)
   {
-    bljn.b("PtuTemplateManager", "【Camera is in Prepareing】toast show: choose sure");
-    bnpa.a(this.a);
+    if (this.jdField_a_of_type_Bnpq != null) {
+      this.jdField_a_of_type_Bnpq.a(parambnpf, paramInt);
+    }
+  }
+  
+  public void a(bnpf parambnpf, boolean paramBoolean)
+  {
+    bnpf localbnpf = bnpc.a(this.jdField_a_of_type_Bnpc, parambnpf);
+    if (localbnpf != null) {
+      localbnpf.e = bnpc.a(parambnpf);
+    }
+    if (this.jdField_a_of_type_Bnpq != null)
+    {
+      this.jdField_a_of_type_Bnpq.a(parambnpf, paramBoolean);
+      if (localbnpf != null) {
+        bnzb.b("AEMaterialManager", "【END】onDownloadFinish :" + localbnpf.a);
+      }
+    }
   }
 }
 

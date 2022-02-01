@@ -1,15 +1,28 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.PermisionPrivacyActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.AssistantSettingActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class admj
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
-  public admj(PermisionPrivacyActivity paramPermisionPrivacyActivity) {}
+  public admj(AssistantSettingActivity paramAssistantSettingActivity) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    bdow.a(this.a.app, this.a, "setting");
+    QLog.e("vip_ptt.AssistantSettingActivity", 1, "click pay for auto ptt");
+    paramDialogInterface = aqxe.c();
+    if (TextUtils.isEmpty(paramDialogInterface.a)) {
+      bgrl.a(this.a, "https://h5.vip.qq.com/proxy/domain/imgcache.qq.com/club/platform/lib/pay/wv_proxy.html?_wv=524289&_fv=0&type=!svip&aid=mvip.n.a.zdzwz");
+    }
+    for (;;)
+    {
+      this.a.b();
+      return;
+      paramDialogInterface = paramDialogInterface.a.replace("{aid}", "mvip.n.a.zdzwz");
+      bgrl.a(this.a, paramDialogInterface);
+    }
   }
 }
 

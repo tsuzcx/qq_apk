@@ -1,24 +1,24 @@
 package cooperation.qzone.webviewplugin;
 
-import bjqu;
-import bjqw;
-import bjxu;
+import bmfd;
+import bmfg;
+import bmmf;
 
 public class QzoneDynamicAlbumPlugin$1
   implements Runnable
 {
-  public QzoneDynamicAlbumPlugin$1(bjxu parambjxu) {}
+  public QzoneDynamicAlbumPlugin$1(bmmf parambmmf) {}
   
   public void run()
   {
-    bjxu.a(bjxu.a());
-    bjqu.a().a().a("0");
-    bjqu.a().a().c("0");
+    bmmf.a(bmmf.a());
+    bmfd.a().a().a("0");
+    bmfd.a().a().c("0");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.qzone.webviewplugin.QzoneDynamicAlbumPlugin.1
  * JD-Core Version:    0.7.0.1
  */

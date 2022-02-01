@@ -1,25 +1,18 @@
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.data.IPSiteModel.Gxzb;
+import com.tencent.mobileqq.ar.model.ArLBSActivity;
 
 public final class apeg
-  implements Parcelable.Creator
+  implements Parcelable.Creator<ArLBSActivity>
 {
-  public IPSiteModel.Gxzb a(Parcel paramParcel)
+  public ArLBSActivity a(Parcel paramParcel)
   {
-    IPSiteModel.Gxzb localGxzb = new IPSiteModel.Gxzb();
-    localGxzb.appid = paramParcel.readInt();
-    localGxzb.appName = paramParcel.readString();
-    localGxzb.cover = paramParcel.readString();
-    localGxzb.feeType = paramParcel.readInt();
-    localGxzb.id = paramParcel.readString();
-    localGxzb.name = paramParcel.readString();
-    return localGxzb;
+    return new ArLBSActivity(paramParcel);
   }
   
-  public IPSiteModel.Gxzb[] a(int paramInt)
+  public ArLBSActivity[] a(int paramInt)
   {
-    return new IPSiteModel.Gxzb[paramInt];
+    return new ArLBSActivity[paramInt];
   }
 }
 

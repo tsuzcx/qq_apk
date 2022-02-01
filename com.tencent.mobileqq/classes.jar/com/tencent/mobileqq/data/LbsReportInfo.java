@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.data;
 
 import android.text.TextUtils;
-import awge;
+import com.tencent.mobileqq.persistence.Entity;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.Iterator;
 
 public class LbsReportInfo
-  extends awge
+  extends Entity
 {
   public float accuracy;
   public double alt;

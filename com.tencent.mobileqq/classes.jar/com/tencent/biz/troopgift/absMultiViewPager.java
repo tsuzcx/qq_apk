@@ -1,5 +1,6 @@
 package com.tencent.biz.troopgift;
 
+import aatu;
 import android.content.Context;
 import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
@@ -7,18 +8,18 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.util.ArrayList;
-import ywr;
 
 public abstract class absMultiViewPager
   extends ViewPager
   implements AdapterView.OnItemClickListener
 {
+  protected aatu a;
   protected ViewPager.OnPageChangeListener a;
   protected AdapterView.OnItemClickListener a;
   protected absMultiViewPager.ViewPagerAdapter a;
   protected ArrayList<Object> a;
-  protected ywr a;
   protected ArrayList<View> b = new ArrayList();
   protected int d;
   
@@ -53,8 +54,8 @@ public abstract class absMultiViewPager
   
   protected void a(int paramInt1, int paramInt2)
   {
-    if (this.jdField_a_of_type_Ywr != null) {
-      this.jdField_a_of_type_Ywr.a(paramInt1, paramInt2, getCurrentItem());
+    if (this.jdField_a_of_type_Aatu != null) {
+      this.jdField_a_of_type_Aatu.a(paramInt1, paramInt2, getCurrentItem());
     }
   }
   
@@ -87,6 +88,7 @@ public abstract class absMultiViewPager
     if (this.jdField_a_of_type_AndroidWidgetAdapterView$OnItemClickListener != null) {
       this.jdField_a_of_type_AndroidWidgetAdapterView$OnItemClickListener.onItemClick(paramAdapterView, paramView, paramInt, paramLong);
     }
+    EventCollector.getInstance().onItemClick(paramAdapterView, paramView, paramInt, paramLong);
   }
   
   public void setData(ArrayList<Object> paramArrayList)
@@ -106,14 +108,14 @@ public abstract class absMultiViewPager
     super.setOnPageChangeListener(paramOnPageChangeListener);
   }
   
-  public void setOnPagerSizeChangeListener(ywr paramywr)
+  public void setOnPagerSizeChangeListener(aatu paramaatu)
   {
-    this.jdField_a_of_type_Ywr = paramywr;
+    this.jdField_a_of_type_Aatu = paramaatu;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.troopgift.absMultiViewPager
  * JD-Core Version:    0.7.0.1
  */

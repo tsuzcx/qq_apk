@@ -1,59 +1,75 @@
-import android.os.Handler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.NowShowVideoInfo;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.mobileqq.widget.PhotoWallView;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import java.util.ArrayList;
-import java.util.List;
-import tencent.im.ilive.photo.NowLiveGallary.RspBody.PhotoInfo;
+import com.tencent.mobileqq.data.TroopFeedItem;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class besa
-  extends alpp
+  extends berz
 {
-  private WeakReference<PhotoWallView> a;
-  
-  public besa(PhotoWallView paramPhotoWallView)
+  public TroopFeedItem a(JSONObject paramJSONObject)
   {
-    this.a = new WeakReference(paramPhotoWallView);
-  }
-  
-  public void a(int paramInt, List<NowLiveGallary.RspBody.PhotoInfo> paramList)
-  {
-    if (this.a != null) {}
-    for (PhotoWallView localPhotoWallView = (PhotoWallView)this.a.get();; localPhotoWallView = null)
+    int i = 0;
+    TroopFeedItem localTroopFeedItem = super.a(paramJSONObject);
+    if (localTroopFeedItem == null) {
+      return null;
+    }
+    for (;;)
     {
-      if (localPhotoWallView == null) {
-        return;
-      }
-      if (paramInt != 0)
+      JSONObject localJSONObject;
+      try
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("PhotoWallView", 2, "onGetNowOnliveGallay errorCode:" + paramInt);
+        paramJSONObject = paramJSONObject.getJSONArray("content");
+        if (i >= paramJSONObject.length()) {
+          break label283;
         }
-        localPhotoWallView.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(4);
-        return;
+        localJSONObject = paramJSONObject.getJSONObject(i);
+        int j = localJSONObject.getInt("type");
+        if (j == 5)
+        {
+          if (localJSONObject.has("file_path")) {
+            localTroopFeedItem.linkUrl = localJSONObject.getString("file_path");
+          }
+          localTroopFeedItem.type = 0;
+          if (localJSONObject.has("sharesize")) {
+            localTroopFeedItem.ex_1 = ("" + localJSONObject.getLong("sharesize"));
+          }
+          boolean bool = localJSONObject.has("bus_id");
+          if (bool) {}
+          try
+          {
+            localTroopFeedItem.content = ("" + localJSONObject.getLong("bus_id"));
+            if (!localJSONObject.has("sharefile")) {
+              break label308;
+            }
+            localTroopFeedItem.title = localJSONObject.getString("sharefile");
+          }
+          catch (JSONException localJSONException)
+          {
+            localTroopFeedItem.content = ("" + localJSONObject.getString("bus_id"));
+            continue;
+          }
+        }
+        if (j != 3) {
+          break label308;
+        }
       }
-      if (QLog.isColorLevel()) {
-        QLog.d("PhotoWallView", 2, "onGetNowOnliveGallay size:" + paramList.size());
-      }
-      localPhotoWallView.jdField_a_of_type_JavaUtilArrayList.clear();
-      paramInt = 0;
-      while (paramInt < paramList.size())
+      catch (JSONException paramJSONObject)
       {
-        Object localObject = (NowLiveGallary.RspBody.PhotoInfo)paramList.get(paramInt);
-        localObject = new NowShowVideoInfo(((NowLiveGallary.RspBody.PhotoInfo)localObject).cover.get().toStringUtf8(), ((NowLiveGallary.RspBody.PhotoInfo)localObject).video.get().toStringUtf8(), ((NowLiveGallary.RspBody.PhotoInfo)localObject).timestamp.get());
-        localPhotoWallView.jdField_a_of_type_JavaUtilArrayList.add(localObject);
-        paramInt += 1;
+        paramJSONObject.printStackTrace();
+        return null;
       }
-      if (localPhotoWallView.jdField_a_of_type_JavaUtilArrayList.size() > 0) {
-        azqs.b((QQAppInterface)this.b.get(), "dc00899", "NOW", "", "qq_zlk", "replay_exp", 0, 0, localPhotoWallView.jdField_a_of_type_JavaLangString, "", "", "");
+      if (localJSONObject.has("pic_id"))
+      {
+        localTroopFeedItem.picPath = ("https://gdynamic.qpic.cn/gdynamic/" + localJSONObject.getString("pic_id") + "/109");
+        break label308;
+        label283:
+        if ((bgsp.a(localTroopFeedItem.linkUrl)) || (bgsp.a(localTroopFeedItem.content))) {
+          break;
+        }
+        return localTroopFeedItem;
       }
-      localPhotoWallView.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(4);
-      return;
+      label308:
+      i += 1;
     }
   }
 }

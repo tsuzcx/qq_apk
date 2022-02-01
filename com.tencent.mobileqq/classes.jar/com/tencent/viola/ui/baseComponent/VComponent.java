@@ -1,6 +1,7 @@
 package com.tencent.viola.ui.baseComponent;
 
 import android.animation.Animator;
+import android.animation.ObjectAnimator;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.LinearGradient;
@@ -83,6 +84,8 @@ public abstract class VComponent<T extends View>
   private List<VComponent.AnimationInfo> animationInfos = new CopyOnWriteArrayList();
   private VComponentCompat compat;
   private boolean fixMinHeight = false;
+  private Animator fromTransformOpacityAnimator;
+  private boolean hasPerformFromTransformOpacity;
   private ViewPropertyAnimator mAlphaAnimator;
   private AnimationModule.AnimationHolder mAnimationHolder;
   public Set<String> mAppendEvents = new HashSet();
@@ -96,6 +99,7 @@ public abstract class VComponent<T extends View>
   private long mDoubleClickSystemTime = 0L;
   private int mFrameX = 0;
   private int mFrameY = 0;
+  private boolean mHasPerformTransformAnimate;
   private IFComponentHolder mHolder;
   public T mHost;
   public ViolaInstance mInstance;
@@ -109,6 +113,7 @@ public abstract class VComponent<T extends View>
   private int mPreRealLeft = 0;
   private int mPreRealTop = 0;
   private int mPreRealWidth = 0;
+  private ViewPropertyAnimator mTransformAnimator;
   private int mType;
   @VComponentField(nativeReturnMethod="getVisibility", propertyName="visibility")
   private String mVisibility;
@@ -207,78 +212,6 @@ public abstract class VComponent<T extends View>
       }
     }
     localVComponentAdapter.onDoubleClick(localView, this.mDomObj.getAttributes().get("vr"));
-  }
-  
-  private void fireClickAction(String paramString, MotionEvent paramMotionEvent)
-  {
-    float f1 = 0.0F;
-    if ((this.mAppendEvents.contains(paramString)) && (this.mHost != null)) {}
-    for (;;)
-    {
-      JSONArray localJSONArray;
-      JSONObject localJSONObject;
-      try
-      {
-        localJSONArray = new JSONArray();
-        localJSONObject = new JSONObject();
-        Object localObject = getPositionInfoRelativeToRoot(0);
-        if (getInstance() == null) {
-          break label504;
-        }
-        paramMotionEvent = getInstance().getLocationOnRenderContainer(new float[] { paramMotionEvent.getRawX(), paramMotionEvent.getRawY() });
-        f2 = paramMotionEvent.x;
-        f1 = paramMotionEvent.y;
-        localJSONObject.put("pageX", FlexConvertUtils.px2dip(f2) + "dp");
-        localJSONObject.put("pageY", FlexConvertUtils.px2dip(f1) + "dp");
-        localJSONObject.put("frame", localObject);
-        localJSONObject.put("state", "start");
-        paramMotionEvent = this.mHost.getTag();
-        if ((paramMotionEvent == null) || (!(paramMotionEvent instanceof HashMap))) {
-          break label467;
-        }
-        paramMotionEvent = (HashMap)paramMotionEvent;
-        localObject = paramMotionEvent.get("click");
-        if ((localObject == null) || (!(localObject instanceof Map))) {
-          break label324;
-        }
-        localObject = ((Map)localObject).entrySet().iterator();
-        if (!((Iterator)localObject).hasNext()) {
-          break label358;
-        }
-        Map.Entry localEntry = (Map.Entry)((Iterator)localObject).next();
-        localJSONObject.put(localEntry.getKey().toString(), localEntry.getValue());
-        continue;
-        exportClickAction(paramString);
-      }
-      catch (JSONException paramMotionEvent)
-      {
-        ViolaLogUtils.e("VComponent", "mClickEventListener JSONException e:" + paramMotionEvent.getMessage());
-      }
-      return;
-      label324:
-      if (((this.mHost instanceof VTextView)) && (((VTextView)this.mHost).mIsRich)) {
-        localJSONObject.put("index", -2);
-      }
-      label358:
-      paramMotionEvent.put("click", null);
-      for (;;)
-      {
-        paramMotionEvent = this.mDomObj.getRef();
-        if (!TextUtils.isEmpty(paramMotionEvent)) {
-          localJSONArray.put(paramMotionEvent);
-        }
-        localJSONArray.put(paramString);
-        ViolaLogUtils.d("VComponent", "mClickEventListener callData :" + localJSONArray.toString() + ", dom type = " + getDomObject().getType() + " , data " + localJSONObject.toString());
-        fireEvent(paramString, localJSONArray, localJSONObject);
-        break;
-        label467:
-        if (((this.mHost instanceof VTextView)) && (((VTextView)this.mHost).mIsRich)) {
-          localJSONObject.put("index", -2);
-        }
-      }
-      label504:
-      float f2 = 0.0F;
-    }
   }
   
   private void fireCommonTouchEvent(View paramView, MotionEvent paramMotionEvent)
@@ -417,6 +350,62 @@ public abstract class VComponent<T extends View>
     calFrameXY(localDomObject2);
   }
   
+  private void internalCreateViewImpl()
+  {
+    if ((this.mContext == null) && (this.mParent != null)) {
+      this.mContext = this.mParent.getContext();
+    }
+    if (this.mContext != null)
+    {
+      this.mHost = initComponentHostView(this.mContext);
+      tryCompatVR(this.mDomObj);
+      if ((this.mHost == null) && (!isVirtualComponent())) {
+        initView();
+      }
+      if (this.mHost != null) {
+        this.mHost.setId(DomUtils.generateViewId());
+      }
+      updateLifeCycle("created");
+    }
+    for (;;)
+    {
+      trySetFromTransformOpacity();
+      return;
+      ViolaLogUtils.e("createViewImpl", "Context is null");
+    }
+  }
+  
+  private void internalDestroy(boolean paramBoolean)
+  {
+    if ((this.mHost != null) && (this.mHost.getLayerType() == 2)) {
+      this.mHost.setLayerType(0, null);
+    }
+    removeAllEvent();
+    ViolaLogUtils.d("VComponent", "destroy component type:" + this.mDomObj.getType() + "; ref:" + this.mDomObj.getRef());
+    updateLifeCycle("destroyed");
+    if (paramBoolean) {
+      this.mDomObj.destroy();
+    }
+    this.mIsDestroyed = true;
+    this.mContext = null;
+    this.animationInfos.clear();
+    if (this.mAlphaAnimator != null)
+    {
+      this.mAlphaAnimator.cancel();
+      this.mAlphaAnimator = null;
+    }
+    if (this.mTransformAnimator != null)
+    {
+      this.mTransformAnimator.cancel();
+      this.mTransformAnimator = null;
+    }
+    if (this.fromTransformOpacityAnimator != null)
+    {
+      this.fromTransformOpacityAnimator.cancel();
+      this.fromTransformOpacityAnimator = null;
+    }
+  }
+  
   private boolean isContainCommonTouchEvent()
   {
     return (this.mAppendEvents.contains("touchDown")) || (this.mAppendEvents.contains("touchUp")) || (this.mAppendEvents.contains("touchMove")) || (this.mAppendEvents.contains("touchCancel"));
@@ -478,6 +467,21 @@ public abstract class VComponent<T extends View>
     }
   }
   
+  private void setFromTransform(Object paramObject)
+  {
+    View localView = getHostView();
+    if (localView == null) {
+      return;
+    }
+    if ((this.mDomObj != null) && (this.mDomObj.getStyle().containsKey("transform_origin_parse")))
+    {
+      Pair localPair = (Pair)this.mDomObj.getStyle().get("transform_origin_parse");
+      localView.setPivotX(((Float)localPair.first).floatValue());
+      localView.setPivotY(((Float)localPair.second).floatValue());
+    }
+    setTransformValue(localView, paramObject, false);
+  }
+  
   private void setLinearGradient(Object paramObject)
   {
     if ((paramObject instanceof LinearGradient)) {
@@ -485,11 +489,32 @@ public abstract class VComponent<T extends View>
     }
   }
   
+  private void setOpacityCompat(float paramFloat)
+  {
+    if ((!this.hasPerformFromTransformOpacity) && (this.mHost != null) && (this.mDomObj != null) && (this.mDomObj.getAttributes().containsKey("animationDuration")) && (this.mDomObj.getStyle().containsKey("fromTransformOpacity")))
+    {
+      if ((this.fromTransformOpacityAnimator != null) && (this.fromTransformOpacityAnimator.isRunning())) {
+        this.fromTransformOpacityAnimator.cancel();
+      }
+      i = ViolaUtils.getInt(this.mDomObj.getAttributes().get("animationDuration"));
+      this.fromTransformOpacityAnimator = ObjectAnimator.ofFloat(this.mHost, "alpha", new float[] { this.mHost.getAlpha(), paramFloat }).setDuration(i);
+      this.fromTransformOpacityAnimator.start();
+      this.hasPerformFromTransformOpacity = true;
+    }
+    while ((this.mDomObj == null) || (!this.mDomObj.getStyle().containsKey("opacity")))
+    {
+      int i;
+      return;
+    }
+    setOpacity(paramFloat);
+  }
+  
   private void setPivot(Object paramObject)
   {
     paramObject = (Pair)paramObject;
     View localView = getHostView();
-    if (localView == null) {
+    if (localView == null) {}
+    while ((this.mDomObj == null) || (this.mDomObj.getAttributes().containsKey("animationDuration"))) {
       return;
     }
     localView.setPivotX(((Float)paramObject.first).floatValue());
@@ -500,6 +525,12 @@ public abstract class VComponent<T extends View>
   {
     View localView = getHostView();
     if (localView == null) {
+      return;
+    }
+    if ((this.mDomObj != null) && (this.mDomObj.getAttributes().containsKey("animationDuration")) && (!this.mHasPerformTransformAnimate))
+    {
+      setTransformWithAnimate(localView, (Map)paramObject);
+      this.mHasPerformTransformAnimate = true;
       return;
     }
     setTransformValue(localView, paramObject, false);
@@ -606,6 +637,13 @@ public abstract class VComponent<T extends View>
     }
   }
   
+  private void trySetFromTransformOpacity()
+  {
+    if ((this.mHost != null) && (this.mDomObj != null) && (this.mDomObj.getAttributes().containsKey("animationDuration")) && (this.mDomObj.getStyle().containsKey("fromTransformOpacity"))) {
+      this.mHost.setAlpha(ViolaUtils.getFloat(this.mDomObj.getStyle().get("fromTransformOpacity"), Float.valueOf(1.0F)));
+    }
+  }
+  
   public void addAnimationInfo(VComponent.AnimationInfo paramAnimationInfo)
   {
     this.animationInfos.add(paramAnimationInfo);
@@ -631,6 +669,8 @@ public abstract class VComponent<T extends View>
   }
   
   public void addSubViewOnIntercept(ViewGroup paramViewGroup, int paramInt) {}
+  
+  public void afterBringToRootByAnim() {}
   
   @JSMethod
   public void animate(@NonNull JSONObject paramJSONObject1, @NonNull JSONObject paramJSONObject2, @Nullable String paramString)
@@ -677,6 +717,8 @@ public abstract class VComponent<T extends View>
     applyLayout();
     applyEvents();
   }
+  
+  public void beforeBringToRootByAnim() {}
   
   public void bindData()
   {
@@ -756,53 +798,68 @@ public abstract class VComponent<T extends View>
   
   protected void checkDisAppearEventFromDomobject()
   {
-    float f2 = 0.0F;
+    float f4 = 0.0F;
     DomObject localDomObject;
     int i;
+    int j;
     if ((this.mDomObj.getEvents().contains("didAppear")) || (this.mDomObj.getEvents().contains("didDisappear")) || (this.mDomObj.getEvents().contains("willAppear")))
     {
       localDomObject = getDomObject();
       if ((localDomObject != null) && (localDomObject.getParent() != null) && (!"page".equals(localDomObject.getType())))
       {
         i = 0;
+        j = 0;
         if ((!"cell".equals(localDomObject.getType())) && (!"footer-cell".equals(localDomObject.getType()))) {
-          break label375;
+          break label524;
         }
-        ((DomObjectCell)localDomObject).addRegisterDidAppearComponentDyStart(i, getRef());
-        ((DomObjectCell)localDomObject).addRegisterDidAppearComponentDyEnd(i + getDomObject().getLayoutHeight(), getRef());
+        ((DomObjectCell)localDomObject).addReDidAppearComptDyStart(j, getRef());
+        ((DomObjectCell)localDomObject).addReDidAppearComptDyEnd(j + getDomObject().getLayoutHeight(), getRef());
+        ((DomObjectCell)localDomObject).addReDidAppearComptDxStart(i, getRef());
+        ((DomObjectCell)localDomObject).addReDidAppearComptDxEnd(i + getDomObject().getLayoutWidth(), getRef());
         if (!getDomObject().getAttributes().containsKey("appearScopeTop")) {
-          break label421;
+          break label604;
         }
       }
     }
-    label421:
+    label524:
+    label604:
     for (float f1 = (int)FlexConvertUtils.converPxByViewportToRealPx(getDomObject().getAttributes().get("appearScopeTop"), 750);; f1 = 0.0F)
     {
-      if (getDomObject().getAttributes().containsKey("appearScopeBottom")) {
-        f2 = (int)FlexConvertUtils.converPxByViewportToRealPx(getDomObject().getAttributes().get("appearScopeBottom"), 750);
-      }
-      ((DomObjectCell)localDomObject).addRegisterDidAppearComponentDyStartOffset(f1, getRef());
-      ((DomObjectCell)localDomObject).addRegisterDidAppearComponentDyEndOffset(f2, getRef());
-      if (!((DomObjectCell)localDomObject).isSetComponentStaet(getRef())) {
-        ((DomObjectCell)localDomObject).setComponentState(getRef(), DomObjectCell.ComponentState.DIDDISAPPEAR);
-      }
-      if (getDomObject().getEvents().contains("didAppear")) {
-        ((DomObjectCell)localDomObject).addRegisterComponent("didAppear", getRef());
-      }
-      if (getDomObject().getEvents().contains("didDisappear")) {
-        ((DomObjectCell)localDomObject).addRegisterComponent("didDisappear", getRef());
-      }
-      if (getDomObject().getEvents().contains("willAppear")) {
-        ((DomObjectCell)localDomObject).addRegisterComponent("willAppear", getRef());
-      }
-      label375:
-      do
+      if (getDomObject().getAttributes().containsKey("appearScopeBottom")) {}
+      for (float f2 = (int)FlexConvertUtils.converPxByViewportToRealPx(getDomObject().getAttributes().get("appearScopeBottom"), 750);; f2 = 0.0F)
       {
-        return;
-        i = (int)(i + localDomObject.getLayoutY() + localDomObject.getPadding().get(1));
-        localDomObject = (DomObject)localDomObject.getParent();
-      } while ((localDomObject == null) || (localDomObject.getParent() == null));
-      break;
+        if (getDomObject().getAttributes().containsKey("appearScopeLeft")) {}
+        for (float f3 = (int)FlexConvertUtils.converPxByViewportToRealPx(getDomObject().getAttributes().get("appearScopeLeft"), 750);; f3 = 0.0F)
+        {
+          if (getDomObject().getAttributes().containsKey("appearScopeRight")) {
+            f4 = (int)FlexConvertUtils.converPxByViewportToRealPx(getDomObject().getAttributes().get("appearScopeRight"), 750);
+          }
+          ((DomObjectCell)localDomObject).addReDidAppearComptDyStartOffset(f1, getRef());
+          ((DomObjectCell)localDomObject).addReDidAppearComptDyEndOffset(f2, getRef());
+          ((DomObjectCell)localDomObject).addReDidAppearComptDxStartOffset(f3, getRef());
+          ((DomObjectCell)localDomObject).addReDidAppearComptDxEndOffset(f4, getRef());
+          if (!((DomObjectCell)localDomObject).isSetComponentStaet(getRef())) {
+            ((DomObjectCell)localDomObject).setComponentState(getRef(), DomObjectCell.ComponentState.DIDDISAPPEAR);
+          }
+          if (getDomObject().getEvents().contains("didAppear")) {
+            ((DomObjectCell)localDomObject).addRegisterComponent("didAppear", getRef());
+          }
+          if (getDomObject().getEvents().contains("didDisappear")) {
+            ((DomObjectCell)localDomObject).addRegisterComponent("didDisappear", getRef());
+          }
+          if (getDomObject().getEvents().contains("willAppear")) {
+            ((DomObjectCell)localDomObject).addRegisterComponent("willAppear", getRef());
+          }
+          do
+          {
+            return;
+            j = (int)(j + localDomObject.getLayoutY() + localDomObject.getPadding().get(1));
+            i = (int)(i + localDomObject.getLayoutX() + localDomObject.getPadding().get(0));
+            localDomObject = (DomObject)localDomObject.getParent();
+          } while ((localDomObject == null) || (localDomObject.getParent() == null));
+          break;
+        }
+      }
     }
   }
   
@@ -826,54 +883,116 @@ public abstract class VComponent<T extends View>
   public final void createView(Context paramContext)
   {
     if (!isLazy()) {
-      createViewImpl(paramContext);
+      createViewImplWithContext(paramContext);
     }
   }
   
   protected void createViewImpl()
   {
-    if (this.mContext != null)
-    {
-      this.mHost = initComponentHostView(this.mContext);
-      tryCompatVR(this.mDomObj);
-      if ((this.mHost == null) && (!isVirtualComponent())) {
-        initView();
-      }
-      if (this.mHost != null) {
-        this.mHost.setId(DomUtils.generateViewId());
-      }
-      updateLifeCycle("created");
-    }
+    internalCreateViewImpl();
   }
   
-  protected void createViewImpl(Context paramContext)
+  protected void createViewImplWithContext(Context paramContext)
   {
     this.mContext = paramContext;
-    createViewImpl();
+    internalCreateViewImpl();
   }
   
   public void destroy()
   {
-    if ((this.mHost != null) && (this.mHost.getLayerType() == 2)) {
-      this.mHost.setLayerType(0, null);
-    }
-    removeAllEvent();
-    ViolaLogUtils.d("VComponent", "destroy component type:" + this.mDomObj.getType() + "; ref:" + this.mDomObj.getRef());
-    updateLifeCycle("destroyed");
-    this.mDomObj.destroy();
-    this.mIsDestroyed = true;
-    this.mContext = null;
-    this.animationInfos.clear();
-    if (this.mAlphaAnimator != null)
+    internalDestroy(true);
+  }
+  
+  public void destroyComp()
+  {
+    internalDestroy(false);
+    if ((this.mInstance == null) || (this.mDomObj == null)) {}
+    DOMActionContext localDOMActionContext;
+    do
     {
-      this.mAlphaAnimator.cancel();
-      this.mAlphaAnimator = null;
-    }
+      return;
+      localDOMActionContext = ViolaUtils.getDomActionContext(this.mInstance.getInstanceId());
+    } while (localDOMActionContext == null);
+    String str = this.mDomObj.getRef();
+    localDOMActionContext.unregisterComponent(str);
+    localDOMActionContext.unregisterDOMObject(str);
   }
   
   final void doRichGestrue(JSParam paramJSParam)
   {
     ViolaBridgeManager.getInstance().post(new VComponent.2(this, paramJSParam));
+  }
+  
+  protected void fireClickAction(String paramString, MotionEvent paramMotionEvent)
+  {
+    float f1 = 0.0F;
+    if ((this.mAppendEvents.contains(paramString)) && (this.mHost != null)) {}
+    for (;;)
+    {
+      JSONArray localJSONArray;
+      JSONObject localJSONObject;
+      try
+      {
+        localJSONArray = new JSONArray();
+        localJSONObject = new JSONObject();
+        Object localObject = getPositionInfoRelativeToRoot(0);
+        if (getInstance() == null) {
+          break label504;
+        }
+        paramMotionEvent = getInstance().getLocationOnRenderContainer(new float[] { paramMotionEvent.getRawX(), paramMotionEvent.getRawY() });
+        f2 = paramMotionEvent.x;
+        f1 = paramMotionEvent.y;
+        localJSONObject.put("pageX", FlexConvertUtils.px2dip(f2) + "dp");
+        localJSONObject.put("pageY", FlexConvertUtils.px2dip(f1) + "dp");
+        localJSONObject.put("frame", localObject);
+        localJSONObject.put("state", "start");
+        paramMotionEvent = this.mHost.getTag();
+        if ((paramMotionEvent == null) || (!(paramMotionEvent instanceof HashMap))) {
+          break label467;
+        }
+        paramMotionEvent = (HashMap)paramMotionEvent;
+        localObject = paramMotionEvent.get("click");
+        if ((localObject == null) || (!(localObject instanceof Map))) {
+          break label324;
+        }
+        localObject = ((Map)localObject).entrySet().iterator();
+        if (!((Iterator)localObject).hasNext()) {
+          break label358;
+        }
+        Map.Entry localEntry = (Map.Entry)((Iterator)localObject).next();
+        localJSONObject.put(localEntry.getKey().toString(), localEntry.getValue());
+        continue;
+        exportClickAction(paramString);
+      }
+      catch (JSONException paramMotionEvent)
+      {
+        ViolaLogUtils.e("VComponent", "mClickEventListener JSONException e:" + paramMotionEvent.getMessage());
+      }
+      return;
+      label324:
+      if (((this.mHost instanceof VTextView)) && (((VTextView)this.mHost).mIsRich)) {
+        localJSONObject.put("index", -2);
+      }
+      label358:
+      paramMotionEvent.put("click", null);
+      for (;;)
+      {
+        paramMotionEvent = this.mDomObj.getRef();
+        if (!TextUtils.isEmpty(paramMotionEvent)) {
+          localJSONArray.put(paramMotionEvent);
+        }
+        localJSONArray.put(paramString);
+        ViolaLogUtils.d("VComponent", "mClickEventListener callData :" + localJSONArray.toString() + ", dom type = " + getDomObject().getType() + " , data " + localJSONObject.toString());
+        fireEvent(paramString, localJSONArray, localJSONObject);
+        break;
+        label467:
+        if (((this.mHost instanceof VTextView)) && (((VTextView)this.mHost).mIsRich)) {
+          localJSONObject.put("index", -2);
+        }
+      }
+      label504:
+      float f2 = 0.0F;
+    }
   }
   
   public final void fireEvent(String paramString, Object paramObject1, Object paramObject2)
@@ -1243,6 +1362,14 @@ public abstract class VComponent<T extends View>
     }
   }
   
+  @JSMethod
+  public void hidePreCreateBody()
+  {
+    if (getInstance() != null) {
+      getInstance().hidePreCreateBody();
+    }
+  }
+  
   protected T initComponentHostView(@NonNull Context paramContext)
   {
     return null;
@@ -1491,6 +1618,8 @@ public abstract class VComponent<T extends View>
     updateLifeCycle("mounted");
   }
   
+  public void onRecycler() {}
+  
   public void onRichGestureScroll(int paramInt1, int paramInt2)
   {
     if (this.mAssocioationEvents == null) {
@@ -1553,6 +1682,8 @@ public abstract class VComponent<T extends View>
     this.mHost.setOnTouchListener(null);
     return true;
   }
+  
+  public void removedByDiff() {}
   
   public void removedByJs()
   {
@@ -1636,11 +1767,26 @@ public abstract class VComponent<T extends View>
           getHostView().setAlpha(1.0F);
         }
         this.mAlphaAnimator = null;
-        return;
       }
+      this.mNeedInterceptTouchEvent = false;
+      if (this.mTransformAnimator != null)
+      {
+        this.mTransformAnimator.cancel();
+        this.mTransformAnimator = null;
+      }
+      this.mHasPerformTransformAnimate = false;
+      if (this.fromTransformOpacityAnimator != null)
+      {
+        this.fromTransformOpacityAnimator.cancel();
+        this.fromTransformOpacityAnimator = null;
+      }
+      this.hasPerformFromTransformOpacity = false;
+      return;
     }
     catch (Exception localException) {}
   }
+  
+  public void resetComponent(DomObject paramDomObject) {}
   
   public final void resetEvents(List<String> paramList)
   {
@@ -1802,15 +1948,20 @@ public abstract class VComponent<T extends View>
           }
           i = 24;
           break;
-          if (!paramString.equals("background_image_parse")) {
+          if (!paramString.equals("fromTransformParse")) {
             break;
           }
           i = 25;
           break;
-          if (!paramString.equals("rotation")) {
+          if (!paramString.equals("background_image_parse")) {
             break;
           }
           i = 26;
+          break;
+          if (!paramString.equals("rotation")) {
+            break;
+          }
+          i = 27;
           break;
           resetBackground();
           return true;
@@ -2026,7 +2177,10 @@ public abstract class VComponent<T extends View>
     {
       return;
       paramObject = getHostView();
-    } while ((paramObject == null) || (paramObject.getAlpha() == f) || (this.mDomObj == null) || (!this.mDomObj.getAttributes().containsKey("animationDuration")));
+    } while ((paramObject == null) || (this.mDomObj == null) || (!this.mDomObj.getAttributes().containsKey("animationDuration")));
+    if (this.mAlphaAnimator != null) {
+      this.mAlphaAnimator.cancel();
+    }
     int i = ViolaUtils.getInt(this.mDomObj.getAttributes().get("animationDuration"));
     this.mAlphaAnimator = paramObject.animate().alpha(f).setDuration(i);
     this.mAlphaAnimator.start();
@@ -2232,6 +2386,16 @@ public abstract class VComponent<T extends View>
                                                 }
                                                 i = 27;
                                                 break;
+                                                if (!paramString.equals("fromTransformParse")) {
+                                                  break;
+                                                }
+                                                i = 28;
+                                                break;
+                                                if (!paramString.equals("fromTransformOpacity")) {
+                                                  break;
+                                                }
+                                                i = 29;
+                                                break;
                                                 paramString = ViolaUtils.getString(paramObject, null);
                                                 bool1 = bool2;
                                               } while (paramString == null);
@@ -2307,7 +2471,7 @@ public abstract class VComponent<T extends View>
                       } while (paramString == null);
                       bool1 = bool2;
                     } while (paramString.equals(Float.valueOf(-1.0F)));
-                    setOpacity(paramString.floatValue());
+                    setOpacityCompat(paramString.floatValue());
                     return true;
                     paramString = ViolaUtils.getString(paramObject, null);
                     bool1 = bool2;
@@ -2356,6 +2520,249 @@ public abstract class VComponent<T extends View>
     return true;
     setLinearGradient(paramObject);
     return true;
+    setFromTransform(paramObject);
+    return true;
+    setOpacityCompat(ViolaUtils.getFloat(this.mDomObj.getStyle().get("opacity"), Float.valueOf(1.0F)));
+    return true;
+  }
+  
+  public void setTransformWithAnimate(View paramView, Map<Property<View, Float>, Float> paramMap)
+  {
+    paramMap = paramMap.entrySet().iterator();
+    float f2 = -1.0F;
+    float f7 = -1.0F;
+    float f5 = -1.0F;
+    float f6 = -1.0F;
+    float f3 = -1.0F;
+    float f4 = -1.0F;
+    int i;
+    if (paramMap.hasNext())
+    {
+      Object localObject = (Map.Entry)paramMap.next();
+      Property localProperty = (Property)((Map.Entry)localObject).getKey();
+      float f1 = ((Float)((Map.Entry)localObject).getValue()).floatValue();
+      localObject = localProperty.getName();
+      i = -1;
+      label184:
+      float f8;
+      switch (((String)localObject).hashCode())
+      {
+      default: 
+        switch (i)
+        {
+        default: 
+          f8 = f2;
+          f1 = f7;
+          f2 = f5;
+          f5 = f4;
+          f4 = f3;
+          f3 = f6;
+          f6 = f8;
+        }
+        break;
+      }
+      for (;;)
+      {
+        f8 = f5;
+        f5 = f2;
+        f2 = f6;
+        f7 = f1;
+        f6 = f3;
+        f3 = f4;
+        f4 = f8;
+        break;
+        if (!((String)localObject).equals("translationX")) {
+          break label184;
+        }
+        i = 0;
+        break label184;
+        if (!((String)localObject).equals("translationY")) {
+          break label184;
+        }
+        i = 1;
+        break label184;
+        if (!((String)localObject).equals("translation")) {
+          break label184;
+        }
+        i = 2;
+        break label184;
+        if (!((String)localObject).equals("scaleX")) {
+          break label184;
+        }
+        i = 3;
+        break label184;
+        if (!((String)localObject).equals("scaleY")) {
+          break label184;
+        }
+        i = 4;
+        break label184;
+        if (!((String)localObject).equals("scale")) {
+          break label184;
+        }
+        i = 5;
+        break label184;
+        if (!((String)localObject).equals("rotation")) {
+          break label184;
+        }
+        i = 6;
+        break label184;
+        if (!((String)localObject).equals("rotationX")) {
+          break label184;
+        }
+        i = 7;
+        break label184;
+        if (!((String)localObject).equals("rotationY")) {
+          break label184;
+        }
+        i = 8;
+        break label184;
+        f8 = f7;
+        f4 = f6;
+        f7 = f1;
+        f6 = f2;
+        f2 = f5;
+        f5 = f3;
+        f1 = f8;
+        f3 = f4;
+        f4 = f5;
+        f5 = f7;
+        continue;
+        f8 = f7;
+        f3 = f6;
+        f7 = f4;
+        f4 = f1;
+        f6 = f2;
+        f1 = f8;
+        f2 = f5;
+        f5 = f7;
+        continue;
+        f4 = f7;
+        f3 = f6;
+        f7 = f1;
+        f8 = f5;
+        f5 = f1;
+        f6 = f2;
+        f1 = f4;
+        f2 = f8;
+        f4 = f5;
+        f5 = f7;
+        continue;
+        f8 = f7;
+        f7 = f4;
+        f4 = f1;
+        f6 = f2;
+        f2 = f5;
+        f5 = f3;
+        f1 = f8;
+        f3 = f4;
+        f4 = f5;
+        f5 = f7;
+        continue;
+        f8 = f7;
+        f5 = f3;
+        f3 = f6;
+        f7 = f4;
+        f4 = f1;
+        f6 = f2;
+        f1 = f8;
+        f2 = f4;
+        f4 = f5;
+        f5 = f7;
+        continue;
+        f8 = f7;
+        f5 = f3;
+        f7 = f4;
+        f3 = f1;
+        f4 = f1;
+        f6 = f2;
+        f1 = f8;
+        f2 = f4;
+        f4 = f5;
+        f5 = f7;
+        continue;
+        f2 = f1;
+        f7 = f6;
+        f8 = f3;
+        float f9 = f4;
+        f6 = f1;
+        f1 = f2;
+        f2 = f5;
+        f3 = f7;
+        f4 = f8;
+        f5 = f9;
+        continue;
+        f7 = f6;
+        f8 = f4;
+        f4 = f3;
+        f6 = f2;
+        f2 = f5;
+        f3 = f7;
+        f5 = f8;
+        continue;
+        f2 = f5;
+        f5 = f6;
+        f8 = f3;
+        f9 = f4;
+        f6 = f1;
+        f1 = f7;
+        f3 = f5;
+        f4 = f8;
+        f5 = f9;
+      }
+    }
+    if ((f4 == -1.0F) && (f3 == -1.0F) && (f6 == -1.0F) && (f5 == -1.0F) && (f7 == -1.0F) && (f2 == -1.0F)) {
+      return;
+    }
+    if (this.mTransformAnimator != null) {
+      this.mTransformAnimator.cancel();
+    }
+    this.mTransformAnimator = paramView.animate();
+    if (this.mDomObj.getStyle().containsKey("transform_origin_parse")) {}
+    for (paramMap = (Pair)this.mDomObj.getStyle().get("transform_origin_parse");; paramMap = null)
+    {
+      if (f4 != -1.0F) {
+        this.mTransformAnimator.translationX(f4);
+      }
+      if (f3 != -1.0F) {
+        this.mTransformAnimator.translationY(f3);
+      }
+      if (f6 != -1.0F)
+      {
+        this.mTransformAnimator.scaleX(f6);
+        if (paramMap != null) {
+          paramView.setPivotX(((Float)paramMap.first).floatValue());
+        }
+      }
+      if (f5 != -1.0F)
+      {
+        this.mTransformAnimator.scaleY(f5);
+        if (paramMap != null) {
+          paramView.setPivotY(((Float)paramMap.second).floatValue());
+        }
+      }
+      if (f7 != -1.0F)
+      {
+        this.mTransformAnimator.rotationX(f7);
+        if (paramMap != null) {
+          paramView.setPivotX(((Float)paramMap.first).floatValue());
+        }
+      }
+      if (f2 != -1.0F)
+      {
+        this.mTransformAnimator.rotationY(f2);
+        if (paramMap != null) {
+          paramView.setPivotY(((Float)paramMap.second).floatValue());
+        }
+      }
+      i = ViolaUtils.getInt(this.mDomObj.getAttributes().get("animationDuration"));
+      paramView = getInstance();
+      if (paramView == null) {
+        break;
+      }
+      paramView.increaseTransformCount();
+      this.mTransformAnimator.setDuration(i).setListener(new VComponent.3(this, paramView)).start();
+      return;
+    }
   }
   
   public void tryCompatVR(DomObject paramDomObject)
@@ -2496,7 +2903,7 @@ public abstract class VComponent<T extends View>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.viola.ui.baseComponent.VComponent
  * JD-Core Version:    0.7.0.1
  */

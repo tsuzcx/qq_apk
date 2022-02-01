@@ -1,17 +1,11 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.chathistory.TroopAIOEmotionFragment;
-
-public class ahef
-  implements bhuk
+class ahef
 {
-  public ahef(TroopAIOEmotionFragment paramTroopAIOEmotionFragment, bhuf parambhuf) {}
+  public int a;
+  public long a;
   
-  public void OnClick(View paramView, int paramInt)
+  ahef(ahed paramahed)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityChathistoryTroopAIOEmotionFragment.b();
-    if (this.jdField_a_of_type_Bhuf.isShowing()) {
-      this.jdField_a_of_type_Bhuf.dismiss();
-    }
+    this.jdField_a_of_type_Long = -1L;
   }
 }
 

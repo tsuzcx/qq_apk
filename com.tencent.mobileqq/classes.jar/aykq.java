@@ -1,23 +1,22 @@
-import android.view.ViewGroup;
-import com.tencent.mobileqq.search.fragment.FunctionSearchFragment;
-import com.tencent.widget.ListView;
+import android.os.Handler;
+import android.os.Message;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class aykq
-  extends ayjo<aynu, aywd>
+class aykq
+  implements View.OnClickListener
 {
-  public aykq(FunctionSearchFragment paramFunctionSearchFragment, ListView paramListView, bdbb parambdbb)
-  {
-    super(paramListView, parambdbb);
-  }
+  aykq(ayko paramayko, ayld paramayld) {}
   
-  protected ayqp<aynu, aywd> a(int paramInt)
+  public void onClick(View paramView)
   {
-    return new aypv(this.jdField_a_of_type_Bdbb, 268435456);
-  }
-  
-  protected aywe a(int paramInt, ViewGroup paramViewGroup)
-  {
-    return new ayxl(paramViewGroup, 268435456);
+    ayko.a(this.jdField_a_of_type_Ayko).removeMessages(101);
+    ayko.a(this.jdField_a_of_type_Ayko).obtainMessage(101).sendToTarget();
+    if (this.jdField_a_of_type_Ayld.a != null) {
+      this.jdField_a_of_type_Ayld.a.a();
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.business.sougou;
 
-import anyo;
-import anyp;
+import apyt;
+import apyu;
 import java.lang.ref.WeakReference;
 
 class WordMatchManager$HotWordMatcher$1
@@ -13,9 +13,9 @@ class WordMatchManager$HotWordMatcher$1
   {
     if ((this.jdField_a_of_type_ComTencentMobileqqBusinessSougouWordMatchManager$HotWordMatcher.a != null) && (this.jdField_a_of_type_ComTencentMobileqqBusinessSougouWordMatchManager$HotWordMatcher.a.a != null))
     {
-      anyo localanyo = (anyo)this.jdField_a_of_type_ComTencentMobileqqBusinessSougouWordMatchManager$HotWordMatcher.a.a.get();
-      if (localanyo != null) {
-        localanyo.a(this.jdField_a_of_type_ComTencentMobileqqBusinessSougouWordMatchManager$HotWordMatcher.a.b, this.jdField_a_of_type_ArrayOfComTencentMobileqqBusinessSougouWordMatchManager$HotWordItem);
+      apyt localapyt = (apyt)this.jdField_a_of_type_ComTencentMobileqqBusinessSougouWordMatchManager$HotWordMatcher.a.a.get();
+      if (localapyt != null) {
+        localapyt.a(this.jdField_a_of_type_ComTencentMobileqqBusinessSougouWordMatchManager$HotWordMatcher.a.b, this.jdField_a_of_type_ArrayOfComTencentMobileqqBusinessSougouWordMatchManager$HotWordItem);
       }
     }
     this.jdField_a_of_type_ComTencentMobileqqBusinessSougouWordMatchManager$HotWordMatcher.dispatchNextTask();
@@ -23,7 +23,7 @@ class WordMatchManager$HotWordMatcher$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.business.sougou.WordMatchManager.HotWordMatcher.1
  * JD-Core Version:    0.7.0.1
  */

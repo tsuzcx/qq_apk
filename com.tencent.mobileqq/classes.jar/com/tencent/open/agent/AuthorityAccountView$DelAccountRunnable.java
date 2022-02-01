@@ -1,6 +1,7 @@
 package com.tencent.open.agent;
 
 import android.content.Intent;
+import android.text.TextUtils;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.tencent.mobileqq.app.BaseActivity;
@@ -21,14 +22,25 @@ public class AuthorityAccountView$DelAccountRunnable
   public void run()
   {
     this.this$0.c(this.a);
-    Object localObject = ((TextView)AuthorityAccountView.a(this.this$0).findViewById(2131361880)).getText().toString();
-    if ((localObject != null) && (((String)localObject).equals(this.a)))
+    Object localObject = AuthorityAccountView.a(this.this$0).findViewById(2131361926);
+    if (localObject == null)
+    {
+      QLog.e("AuthorityAccountView", 1, "--> DelAccountRunnable null == currUinView");
+      return;
+    }
+    localObject = ((TextView)localObject).getText();
+    if (TextUtils.isEmpty((CharSequence)localObject))
+    {
+      QLog.e("AuthorityAccountView", 1, "--> DelAccountRunnable text isEmpty");
+      return;
+    }
+    if (((CharSequence)localObject).toString().equals(this.a))
     {
       if (this.this$0.a.size() != 1) {
-        break label246;
+        break label273;
       }
       if ((AuthorityAccountView.a(this.this$0) == null) || (!(AuthorityAccountView.a(this.this$0) instanceof AuthorityActivity))) {
-        break label192;
+        break label219;
       }
       localObject = new Intent(AuthorityAccountView.a(this.this$0), Login.class);
       ((Intent)localObject).putExtra("key_req_src", 1);
@@ -44,16 +56,16 @@ public class AuthorityAccountView$DelAccountRunnable
       this.this$0.c();
       ((BaseActivity)AuthorityAccountView.a(this.this$0)).runOnUiThread(new AuthorityAccountView.DelAccountRunnable.2(this));
       return;
-      label192:
+      label219:
       if ((AuthorityAccountView.a(this.this$0) != null) && ((AuthorityAccountView.a(this.this$0) instanceof QuickLoginAuthorityActivity)))
       {
         ((QuickLoginAuthorityActivity)AuthorityAccountView.a(this.this$0)).a = null;
         ((QuickLoginAuthorityActivity)AuthorityAccountView.a(this.this$0)).a(null);
       }
     }
-    label246:
+    label273:
     int i = 0;
-    label248:
+    label275:
     if (i < this.this$0.a.size())
     {
       localObject = (String)this.this$0.a.get(i);
@@ -64,14 +76,14 @@ public class AuthorityAccountView$DelAccountRunnable
       ((BaseActivity)AuthorityAccountView.a(this.this$0)).runOnUiThread(new AuthorityAccountView.DelAccountRunnable.1(this, (String)localObject));
       break;
       i += 1;
-      break label248;
+      break label275;
       localObject = null;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.open.agent.AuthorityAccountView.DelAccountRunnable
  * JD-Core Version:    0.7.0.1
  */

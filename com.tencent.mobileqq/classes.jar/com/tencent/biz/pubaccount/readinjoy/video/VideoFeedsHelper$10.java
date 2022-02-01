@@ -1,23 +1,23 @@
 package com.tencent.biz.pubaccount.readinjoy.video;
 
-import android.app.Dialog;
-import rdm;
+import android.widget.TextView;
+import com.tencent.mobileqq.app.ThreadManager;
+import mqq.os.MqqHandler;
+import ryx;
 
 public final class VideoFeedsHelper$10
   implements Runnable
 {
+  public VideoFeedsHelper$10(int paramInt, String paramString, TextView paramTextView) {}
+  
   public void run()
   {
-    try
+    if (this.jdField_a_of_type_Int > 0) {}
+    for (String str = ryx.e(this.jdField_a_of_type_Int);; str = this.jdField_a_of_type_JavaLangString)
     {
-      if (rdm.a != null)
-      {
-        rdm.a.dismiss();
-        rdm.a = null;
-      }
+      ThreadManager.getUIHandler().post(new VideoFeedsHelper.10.1(this, str));
       return;
     }
-    catch (Exception localException) {}
   }
 }
 

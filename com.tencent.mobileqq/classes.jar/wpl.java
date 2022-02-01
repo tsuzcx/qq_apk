@@ -1,53 +1,53 @@
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.text.TextUtils;
 import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tribe.async.async.JobContext;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Vector;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspGetPromoteTaskList;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt64Field;
 
 class wpl
-  implements urr<veu, vev>
+  implements wld<xaf, xag>
 {
-  wpl(wpi paramwpi, JobContext paramJobContext, wov paramwov) {}
+  wpl(wpk paramwpk) {}
   
-  public void a(@NonNull veu paramveu, @Nullable vev arg2, @NonNull ErrorMessage paramErrorMessage)
+  public void a(@NonNull xaf paramxaf, @Nullable xag paramxag, @NonNull ErrorMessage paramErrorMessage)
   {
-    if (this.jdField_a_of_type_ComTribeAsyncAsyncJobContext.isJobCancelled())
-    {
-      wxe.d("Q.qqstory.home.data:HomeFeedAllInfoPullSegment", "feed like info pull segment cancel on net respond");
-      return;
+    if (paramxag == null) {
+      yqp.e("StoryPromoteTaskManager", "onCmdRespond() error: %s", new Object[] { paramxag });
     }
-    if (??? == null)
+    do
     {
-      paramErrorMessage = new vev(paramErrorMessage);
-      synchronized (this.jdField_a_of_type_Wpi)
+      return;
+      if (paramErrorMessage.errorCode == 15000)
       {
-        wpi.a(this.jdField_a_of_type_Wpi, paramErrorMessage);
-        wpi.a(this.jdField_a_of_type_Wpi).remove(paramveu);
-        wpi.a(this.jdField_a_of_type_Wpi, this.jdField_a_of_type_Wov);
+        yqp.a("StoryPromoteTaskManager", "onCmdRespond() no change of the request %s", paramxag);
+        this.a.jdField_a_of_type_Long = paramxag.a.uint64_expire_time.get();
         return;
       }
-    }
-    if (paramErrorMessage.isFail()) {
-      wxe.d("Q.qqstory.home.data:HomeFeedAllInfoPullSegment", "request fail for like request");
-    }
-    uvm localuvm = (uvm)uwa.a(15);
-    Iterator localIterator = ???.jdField_a_of_type_JavaUtilList.iterator();
-    for (;;)
-    {
-      paramErrorMessage = ???;
-      if (!localIterator.hasNext()) {
-        break;
+      if (paramErrorMessage.isFail())
+      {
+        yqp.e("StoryPromoteTaskManager", "onCmdRespond() error: %s", new Object[] { paramxag });
+        return;
       }
-      paramErrorMessage = (vew)localIterator.next();
-      localuvm.a(paramErrorMessage.jdField_a_of_type_JavaUtilList, paramErrorMessage.jdField_a_of_type_JavaLangString, false, true);
+    } while (this.a.jdField_a_of_type_Boolean);
+    this.a.jdField_a_of_type_JavaLangString = paramxag.a.bytes_cookie.get().toStringUtf8();
+    this.a.jdField_a_of_type_Long = paramxag.a.uint64_expire_time.get();
+    this.a.a();
+    this.a.a(paramxag.a);
+    paramxaf = paramxag.a.bytes_global_promote_url.get().toStringUtf8();
+    if (!TextUtils.isEmpty(paramxaf))
+    {
+      ((wpf)wpm.a(10)).b("key_story_player_promote_url", paramxaf);
+      this.a.b = paramxaf;
     }
+    this.a.a("onCmdRespond()");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     wpl
  * JD-Core Version:    0.7.0.1
  */

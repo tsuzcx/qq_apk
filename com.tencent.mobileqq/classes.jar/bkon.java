@@ -1,35 +1,11 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import dov.com.qq.im.ae.view.TabLayout;
-import mqq.util.WeakReference;
+import android.view.animation.Interpolator;
 
-final class bkon
-  extends BroadcastReceiver
+public class bkon
+  implements Interpolator
 {
-  private TabLayout a;
-  
-  public void a(TabLayout paramTabLayout)
+  public float getInterpolation(float paramFloat)
   {
-    this.a = ((TabLayout)new WeakReference(paramTabLayout).get());
-  }
-  
-  public void onReceive(Context paramContext, Intent paramIntent)
-  {
-    boolean bool = paramIntent.getBooleanExtra("is_show", true);
-    if (this.a != null)
-    {
-      paramContext = this.a;
-      if (!bool) {
-        break label34;
-      }
-    }
-    label34:
-    for (int i = 0;; i = 8)
-    {
-      paramContext.setVisibility(i);
-      return;
-    }
+    return (float)(Math.pow(paramFloat - 1.0D, 5.0D) + 1.0D);
   }
 }
 

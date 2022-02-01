@@ -1,32 +1,28 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.data.FileInfo;
-import java.util.List;
+import android.os.AsyncTask;
 
-public class de
+final class de
+  implements atve
 {
-  public int a;
-  public long a;
-  public String a;
-  public boolean a;
-  public boolean b = true;
-  public boolean c = false;
+  de(AsyncTask paramAsyncTask, int paramInt, atve paramatve) {}
   
-  public de()
+  public void a()
   {
-    this.jdField_a_of_type_JavaLangString = "Printer";
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_a_of_type_Int = 1;
-    this.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_AndroidOsAsyncTask.execute(new Integer[] { Integer.valueOf(this.jdField_a_of_type_Int) });
+    if (this.jdField_a_of_type_Atve != null) {
+      this.jdField_a_of_type_Atve.a();
+    }
   }
   
-  public boolean a(List<FileInfo> paramList, String paramString, QQAppInterface paramQQAppInterface)
+  public void b()
   {
-    return true;
+    if (this.jdField_a_of_type_Atve != null) {
+      this.jdField_a_of_type_Atve.b();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     de
  * JD-Core Version:    0.7.0.1
  */

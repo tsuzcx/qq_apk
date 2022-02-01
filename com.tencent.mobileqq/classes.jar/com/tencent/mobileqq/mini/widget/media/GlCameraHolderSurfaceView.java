@@ -11,8 +11,8 @@ import android.hardware.Camera.Size;
 import android.os.Build;
 import android.util.AttributeSet;
 import android.util.Log;
-import azhe;
-import azhf;
+import bcie;
+import bcif;
 import com.tencent.mobileqq.mini.zxing.BarcodeFormat;
 import com.tencent.mobileqq.mini.zxing.DecodeHintType;
 import com.tencent.mobileqq.mini.zxing.MultiFormatReader;
@@ -90,7 +90,7 @@ public class GlCameraHolderSurfaceView
   
   private boolean canFocus()
   {
-    return !azhf.d(azhf.a);
+    return !bcif.d(bcif.a);
   }
   
   private void getCameraInfo()
@@ -143,7 +143,7 @@ public class GlCameraHolderSurfaceView
           continue;
         }
         String str = localParameters.getFocusMode();
-        if (((str != null) && (str.equals(paramString))) || (!azhe.a().a(paramString))) {
+        if (((str != null) && (str.equals(paramString))) || (!bcie.a().a(paramString))) {
           continue;
         }
         localParameters.setFocusMode(paramString);
@@ -345,7 +345,7 @@ public class GlCameraHolderSurfaceView
       this.isBackCameraNow = bool;
       this.camera = Camera.open(paramInt);
       paramInt = 90;
-      if (azhf.d(azhf.g)) {
+      if (bcif.d(bcif.g)) {
         paramInt = 270;
       }
       this.camera.setDisplayOrientation(paramInt);
@@ -438,7 +438,7 @@ public class GlCameraHolderSurfaceView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.widget.media.GlCameraHolderSurfaceView
  * JD-Core Version:    0.7.0.1
  */

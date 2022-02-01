@@ -1,6 +1,6 @@
 package dov.com.tencent.biz.qqstory.takevideo;
 
-import azfx;
+import bcgx;
 
 class EditVideoActivity$4
   implements Runnable
@@ -11,7 +11,7 @@ class EditVideoActivity$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     dov.com.tencent.biz.qqstory.takevideo.EditVideoActivity.4
  * JD-Core Version:    0.7.0.1
  */

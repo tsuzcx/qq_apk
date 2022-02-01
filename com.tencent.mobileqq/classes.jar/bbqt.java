@@ -1,21 +1,16 @@
-public class bbqt
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
+class bbqt
+  implements View.OnClickListener
 {
-  public int a;
-  public long a;
-  public String a;
-  public byte[] a;
-  public int b;
-  public long b;
+  bbqt(bbqr parambbqr, bbnd parambbnd) {}
   
-  public bbqt()
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_JavaLangString = "";
-  }
-  
-  public String toString()
-  {
-    return "TroopCreateAdvanceData{resultCode=" + this.jdField_a_of_type_Int + ", groupSize=" + this.jdField_b_of_type_Int + ", troopCode=" + this.jdField_a_of_type_Long + ", troopUin=" + this.jdField_b_of_type_Long + '}';
+    this.jdField_a_of_type_Bbnd.a(paramView);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.richmedia;
 
-import alud;
+import anni;
 import com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
 import com.tencent.qphone.base.util.QLog;
 
@@ -13,7 +13,7 @@ class NewFlowCameraActivity$41
   {
     if (!this.this$0.m)
     {
-      this.this$0.a.a(2002, alud.a(2131707856), false);
+      this.this$0.a.a(2002, anni.a(2131706247), false);
       if (QLog.isColorLevel()) {
         QLog.d("PTV.NewFlowCameraActivity", 2, "[@] ERR_CODE_CAMERA_CREATE  黑名单机型,2秒还没有获取到预览帧,可能没有权限");
       }
@@ -22,7 +22,7 @@ class NewFlowCameraActivity$41
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity.41
  * JD-Core Version:    0.7.0.1
  */

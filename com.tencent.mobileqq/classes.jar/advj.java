@@ -1,16 +1,36 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.RiskHintDlgFragment;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import java.util.ArrayList;
+import java.util.List;
 
-public class advj
-  implements DialogInterface.OnClickListener
+class advj
+  implements atve
 {
-  public advj(RiskHintDlgFragment paramRiskHintDlgFragment) {}
+  advj(advh paramadvh, FileManagerEntity paramFileManagerEntity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a()
   {
-    this.a.a(this.a.b);
+    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.getCloudType() == 0) {
+      this.jdField_a_of_type_Advh.a.a.a().b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId);
+    }
+    anjx localanjx;
+    ArrayList localArrayList;
+    do
+    {
+      return;
+      if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.getCloudType() != 6) {
+        break;
+      }
+      localanjx = (anjx)this.jdField_a_of_type_Advh.a.a.a(8);
+      localArrayList = new ArrayList();
+      localArrayList.add(Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.uniseq));
+    } while (localanjx.a(localArrayList));
+    atvf.a(2131692313);
+    return;
+    this.jdField_a_of_type_Advh.a.a.a().a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId);
   }
+  
+  public void b() {}
 }
 
 

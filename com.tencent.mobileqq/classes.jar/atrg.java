@@ -1,21 +1,23 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.location.ui.LocationDialogUtil.7;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class atrg
-  implements DialogInterface.OnClickListener
+class atrg
+  implements View.OnClickListener
 {
-  public atrg(LocationDialogUtil.7 param7) {}
+  atrg(atrf paramatrf) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    this.a.a.finish();
+    int i = atwt.b(this.a.a.e());
+    bcst.b(null, "dc00898", "", "", "0X800A689", "0X800A689", 0, 0, i + "", "", "", "");
+    this.a.a.g();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     atrg
  * JD-Core Version:    0.7.0.1
  */

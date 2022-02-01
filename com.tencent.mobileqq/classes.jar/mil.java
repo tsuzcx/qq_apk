@@ -1,26 +1,27 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.av.ui.MultiVideoCtrlLayerUIBase;
+import com.tencent.av.ui.RedbagToolbar;
 
 public class mil
-  implements View.OnClickListener
+  implements mpo
 {
-  public mil(MultiVideoCtrlLayerUIBase paramMultiVideoCtrlLayerUIBase, ImageView paramImageView) {}
+  public mil(RedbagToolbar paramRedbagToolbar, moy parammoy) {}
   
-  public void onClick(View paramView)
+  public void a(boolean paramBoolean)
   {
-    ((TextView)this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUIBase.a.findViewById(2131372916)).setVisibility(8);
-    this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-    this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUIBase.f = true;
-    azqs.b(null, "CliOper", "", "", "0X800AEB8", "0X800AEB8", 0, 0, "", "", "", "");
+    if (paramBoolean) {}
+    for (paramBoolean = this.jdField_a_of_type_ComTencentAvUiRedbagToolbar.startActivity_SendRedBag(true);; paramBoolean = false)
+    {
+      if (!paramBoolean)
+      {
+        this.jdField_a_of_type_Moy.a(false);
+        this.jdField_a_of_type_ComTencentAvUiRedbagToolbar.exitCurrentToolbar();
+      }
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     mil
  * JD-Core Version:    0.7.0.1
  */

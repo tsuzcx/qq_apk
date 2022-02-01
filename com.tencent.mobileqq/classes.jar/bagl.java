@@ -1,41 +1,49 @@
-import android.content.Context;
-import android.view.View;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.teamwork.TeamWorkFileImportInfo;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.Matrix;
+import android.graphics.Paint;
 
-final class bagl
-  implements bhuk
+public class bagl
 {
-  bagl(TeamWorkFileImportInfo paramTeamWorkFileImportInfo, bhuf parambhuf, QQAppInterface paramQQAppInterface, Context paramContext, String paramString, bago parambago) {}
+  public float a;
+  public int a;
+  public long a;
+  public Bitmap a;
+  public boolean a;
+  public float b;
+  public int b;
+  public long b;
+  public float c;
+  public float d = 1.0F;
   
-  public void OnClick(View paramView, int paramInt)
+  public bagl()
   {
-    switch (paramInt)
-    {
-    }
-    do
-    {
-      do
-      {
-        return;
-        this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.g = 2;
-        this.jdField_a_of_type_Bhuf.dismiss();
-        paramView = bagk.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_AndroidContentContext.getString(2131720691), true);
-        if (this.jdField_a_of_type_Bago != null) {
-          this.jdField_a_of_type_Bago.a(paramView);
-        }
-      } while (!this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.d());
-      bajr.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "0X8009ED1");
+    this.jdField_a_of_type_Int = 255;
+    this.jdField_a_of_type_Long = System.currentTimeMillis();
+  }
+  
+  public void a(Canvas paramCanvas, Paint paramPaint, Matrix paramMatrix)
+  {
+    if (this.jdField_a_of_type_AndroidGraphicsBitmap == null) {
       return;
-      this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.g = 0;
-      ((bagw)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(120)).e(this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo);
-      this.jdField_a_of_type_Bhuf.dismiss();
-      paramView = bagk.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_AndroidContentContext.getString(2131720691), true);
-      if (this.jdField_a_of_type_Bago != null) {
-        this.jdField_a_of_type_Bago.a(paramView);
-      }
-    } while (!this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.d());
-    bajr.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "0X8009ED2");
+    }
+    int i = (int)(this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth() * this.d);
+    int j = (int)(this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight() * this.d);
+    Matrix localMatrix = paramMatrix;
+    if (paramMatrix == null) {
+      localMatrix = new Matrix();
+    }
+    paramPaint.setAlpha(this.jdField_a_of_type_Int);
+    localMatrix.reset();
+    localMatrix.setScale(this.d, this.d);
+    localMatrix.postRotate(this.c, i / 2, j / 2);
+    localMatrix.postTranslate(this.jdField_a_of_type_Float, this.jdField_b_of_type_Float);
+    paramCanvas.drawBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap, localMatrix, paramPaint);
+  }
+  
+  public String toString()
+  {
+    return " mDx = " + this.jdField_a_of_type_Float + " mDy = " + this.jdField_b_of_type_Float + " mScale = " + this.d + " mRotation = " + this.c + " mDuration = " + this.jdField_b_of_type_Long + " mAlpha = " + this.jdField_a_of_type_Int;
   }
 }
 

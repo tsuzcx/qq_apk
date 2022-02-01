@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.activity.recent.data;
 
-import ajlh;
 import android.content.Context;
 import android.content.Intent;
-import bdeu;
+import bgjw;
 import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.activity.recent.TimeManager;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.RecentUser;
 import java.util.Locale;
 
 public class RecentItemNoticeData
-  extends RecentUserBaseData
+  extends AbsRecentUserBusinessBaseData
 {
   public String from;
   public Intent intent;
@@ -35,7 +35,7 @@ public class RecentItemNoticeData
     this.time = paramLong2;
     this.mDisplayTime = paramLong2;
     this.mTitleName = String.format(Locale.getDefault(), "%s:%s", new Object[] { paramString3, paramString1 });
-    this.mShowTime = ajlh.a().a(a(), this.mDisplayTime);
+    this.mShowTime = TimeManager.getInstance().getMsgDisplayTime(getRecentUserUin(), this.mDisplayTime);
   }
   
   public void a(Intent paramIntent)
@@ -76,7 +76,7 @@ public class RecentItemNoticeData
   public boolean a(int paramInt, long paramLong1, String paramString1, String paramString2, String paramString3, long paramLong2)
   {
     if (this.type != paramInt) {}
-    while ((this.uin != paramLong1) || (this.time != paramLong2) || (!bdeu.a(this.wording, paramString1)) || (!bdeu.a(this.url, paramString2)) || (!bdeu.a(this.from, paramString3))) {
+    while ((this.uin != paramLong1) || (this.time != paramLong2) || (!bgjw.a(this.wording, paramString1)) || (!bgjw.a(this.url, paramString2)) || (!bgjw.a(this.from, paramString3))) {
       return false;
     }
     return true;
@@ -84,7 +84,7 @@ public class RecentItemNoticeData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.data.RecentItemNoticeData
  * JD-Core Version:    0.7.0.1
  */

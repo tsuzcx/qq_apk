@@ -1,8 +1,18 @@
-import java.util.ArrayList;
+import android.graphics.Paint;
+import android.support.annotation.NonNull;
 
-public abstract interface bdnp
+class bdnp
+  extends bdns
 {
-  public abstract void a(boolean paramBoolean, ArrayList<bdno> paramArrayList);
+  bdnp(String paramString)
+  {
+    super(4, paramString);
+  }
+  
+  float a(@NonNull Paint paramPaint)
+  {
+    return 0.0F;
+  }
 }
 
 

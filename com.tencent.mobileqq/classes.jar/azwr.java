@@ -1,23 +1,31 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import java.lang.ref.WeakReference;
+import android.content.Context;
+import android.widget.ImageView;
+import com.tencent.mobileqq.videoplatform.api.IBaseVideoView;
+import com.tencent.mobileqq.videoplatform.api.VideoPlayParam;
+import com.tencent.mobileqq.videoplatform.api.VideoViewFactory;
 
-class azwr
-  implements View.OnTouchListener
+public class azwr
 {
-  azwr(azwp paramazwp) {}
+  static {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public static IBaseVideoView a(Context paramContext, long paramLong, VideoPlayParam paramVideoPlayParam, ImageView paramImageView)
   {
-    if (this.a.a != null)
-    {
-      aetk localaetk = (aetk)this.a.a.get();
-      if (localaetk != null) {
-        return localaetk.onTouch(paramView, paramMotionEvent);
-      }
-    }
-    return false;
+    return VideoViewFactory.createQQVideoPlayView(paramContext, paramLong, paramVideoPlayParam, paramImageView);
+  }
+  
+  public static IBaseVideoView a(Context paramContext, long paramLong, VideoPlayParam paramVideoPlayParam, boolean paramBoolean)
+  {
+    return VideoViewFactory.createCropBubbleView(paramContext, paramLong, paramVideoPlayParam, paramBoolean);
+  }
+  
+  public static IBaseVideoView b(Context paramContext, long paramLong, VideoPlayParam paramVideoPlayParam, ImageView paramImageView)
+  {
+    return VideoViewFactory.createBaseVideoView(paramContext, paramLong, paramVideoPlayParam, paramImageView);
+  }
+  
+  public static IBaseVideoView c(Context paramContext, long paramLong, VideoPlayParam paramVideoPlayParam, ImageView paramImageView)
+  {
+    return VideoViewFactory.createBaseVideoViewFS(paramContext, paramLong, paramVideoPlayParam, paramImageView);
   }
 }
 

@@ -1,29 +1,20 @@
-import android.os.Build.VERSION;
-import android.view.ViewGroup.LayoutParams;
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import android.widget.ImageView;
+import android.content.Intent;
+import com.tencent.mobileqq.data.MessageForMixedMsg;
+import com.tencent.mobileqq.data.MessageForPic;
+import com.tencent.mobileqq.pic.CompressInfo;
+import java.util.ArrayList;
 
-class ayxh
-  implements ViewTreeObserver.OnGlobalLayoutListener
+public abstract interface ayxh
 {
-  ayxh(ayxg paramayxg) {}
+  public abstract ayxr a(Intent paramIntent);
   
-  public void onGlobalLayout()
-  {
-    if (ayxg.a(this.a) != null)
-    {
-      if (Build.VERSION.SDK_INT >= 16) {
-        ayxg.a(this.a).getViewTreeObserver().removeOnGlobalLayoutListener(this);
-      }
-      ViewGroup.LayoutParams localLayoutParams = ayxg.a(this.a).getLayoutParams();
-      if (localLayoutParams != null)
-      {
-        localLayoutParams.height = ((int)(ayxg.a(this.a).getWidth() / 2.3F));
-        ayxg.a(this.a).requestLayout();
-      }
-    }
-  }
+  public abstract ayxr a(MessageForPic paramMessageForPic, int paramInt, String paramString1, String paramString2, String paramString3);
+  
+  public abstract ayyg a(Intent paramIntent);
+  
+  public abstract CompressInfo a(Intent paramIntent);
+  
+  public abstract ArrayList<ayxr> a(MessageForMixedMsg paramMessageForMixedMsg, int paramInt, String paramString1, String paramString2, String paramString3);
 }
 
 

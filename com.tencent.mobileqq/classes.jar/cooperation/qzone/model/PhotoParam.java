@@ -3,14 +3,14 @@ package cooperation.qzone.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import bjlb;
+import blzk;
 import java.util.HashMap;
 import java.util.Map;
 
 public class PhotoParam
   implements Parcelable
 {
-  public static final Parcelable.Creator<PhotoParam> CREATOR = new bjlb();
+  public static final Parcelable.Creator<PhotoParam> CREATOR = new blzk();
   public int a;
   public long a;
   public String a;
@@ -243,7 +243,7 @@ public class PhotoParam
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.qzone.model.PhotoParam
  * JD-Core Version:    0.7.0.1
  */

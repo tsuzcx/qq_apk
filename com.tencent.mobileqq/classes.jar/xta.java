@@ -1,36 +1,20 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+
 class xta
+  implements DialogInterface.OnClickListener
 {
-  final String jdField_a_of_type_JavaLangString;
-  final boolean jdField_a_of_type_Boolean;
-  boolean b;
+  xta(xsw paramxsw) {}
   
-  xta(boolean paramBoolean, String paramString)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  static xta a()
-  {
-    return new xta(false, "");
-  }
-  
-  static xta a(Process paramProcess)
-  {
-    if (a(Integer.valueOf(paramProcess.exitValue()))) {}
-    for (String str = xub.a(paramProcess.getInputStream());; str = xub.a(paramProcess.getErrorStream())) {
-      return new xta(a(Integer.valueOf(paramProcess.exitValue())), str);
-    }
-  }
-  
-  static boolean a(Integer paramInteger)
-  {
-    return (paramInteger != null) && (paramInteger.intValue() == 0);
+    xsw.a(this.a);
+    yqu.a("play_video", "clk_window", 0, 0, new String[0]);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     xta
  * JD-Core Version:    0.7.0.1
  */

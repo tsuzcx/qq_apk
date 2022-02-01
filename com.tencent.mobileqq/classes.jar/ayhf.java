@@ -1,15 +1,27 @@
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.mobileqq.ocr.activity.ScanOcrActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class ayhf
+public class ayhf
   implements View.OnClickListener
 {
-  ayhf(ayhe paramayhe) {}
+  public ayhf(ScanOcrActivity paramScanOcrActivity) {}
   
   public void onClick(View paramView)
   {
-    int i = ((Integer)paramView.getTag(-1)).intValue();
-    ayhe.a(this.a).onItemClick(this.a.a, paramView, i, 0L);
+    if ((ScanOcrActivity.a(this.a) == 1) && ((ScanOcrActivity.b(this.a) == 0) || (ScanOcrActivity.b(this.a) == 4)))
+    {
+      ScanOcrActivity.a(this.a).a();
+      ScanOcrActivity.a(this.a, false);
+      ScanOcrActivity.b(this.a);
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      this.a.finish();
+    }
   }
 }
 

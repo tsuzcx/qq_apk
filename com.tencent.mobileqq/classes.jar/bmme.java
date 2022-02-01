@@ -1,84 +1,85 @@
-import android.support.v4.view.ViewPager.OnPageChangeListener;
+import android.os.Bundle;
 import android.text.TextUtils;
-import android.util.SparseArray;
-import android.util.SparseIntArray;
-import android.view.View;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoFilter;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoFilter.FilterPagerAdapter;
-import dov.com.tencent.biz.qqstory.takevideo.HWEditLocalVideoPlayer;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.webview.swift.JsBridgeListener;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qzone.webviewplugin.QzoneDeviceTagJsPlugin.1;
+import cooperation.qzone.webviewplugin.QzoneDeviceTagJsPlugin.2;
+import mqq.os.MqqHandler;
 
 public class bmme
-  implements ViewPager.OnPageChangeListener
+  extends bmmk
+  implements bmfh
 {
-  private bmme(EditVideoFilter paramEditVideoFilter) {}
+  private static final String a;
   
-  public void onPageScrollStateChanged(int paramInt) {}
-  
-  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2)
+  static
   {
-    paramInt2 = 0;
-    int i = paramInt1 % this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoFilter$FilterPagerAdapter.a();
-    Object localObject = this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoFilter$FilterPagerAdapter.a(i);
-    if (localObject != null) {}
-    for (paramInt1 = ((bmyl)localObject).jdField_a_of_type_Int;; paramInt1 = 0)
-    {
-      localObject = this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoFilter$FilterPagerAdapter.a((i + 1) % this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoFilter$FilterPagerAdapter.a());
-      if (localObject != null) {
-        paramInt2 = ((bmyl)localObject).jdField_a_of_type_Int;
-      }
-      localObject = (bmnt)this.a.a(bmnt.class);
-      if (localObject != null) {
-        ((bmnt)localObject).a(paramInt1, paramInt2, paramFloat);
-      }
-      return;
-    }
+    jdField_a_of_type_JavaLangString = bmmc.class.getSimpleName();
   }
   
-  public void onPageSelected(int paramInt)
+  private static void a(WebViewPlugin paramWebViewPlugin, bhod parambhod, String[] paramArrayOfString)
   {
-    Object localObject = this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoFilter$FilterPagerAdapter.a(paramInt);
-    if (localObject != null) {}
-    for (int i = ((bmyl)localObject).jdField_a_of_type_Int;; i = 0)
-    {
-      this.a.jdField_a_of_type_AndroidUtilSparseArray.put(this.a.jdField_a_of_type_Bmnj.a(), localObject);
-      if ((i == 2) || (i == 1) || (i == 3) || (i == 0))
-      {
-        localObject = this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoFilter$FilterPagerAdapter.a(paramInt);
-        if ((localObject != null) && (TextUtils.isEmpty(((bmym)localObject).jdField_a_of_type_Bmyl.b))) {
-          EditVideoFilter.a((bmym)localObject);
-        }
-      }
-      localObject = this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoFilter$FilterPagerAdapter.a(paramInt - 1);
-      bmym localbmym = this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoFilter$FilterPagerAdapter.a(paramInt + 1);
-      if (localObject != null) {
-        ((bmym)localObject).jdField_a_of_type_AndroidViewView.clearAnimation();
-      }
-      if (localbmym != null) {
-        localbmym.jdField_a_of_type_AndroidViewView.clearAnimation();
-      }
-      this.a.jdField_a_of_type_Long = System.currentTimeMillis();
-      this.a.jdField_a_of_type_Int = i;
-      EditVideoFilter.a(this.a).put(this.a.jdField_a_of_type_Bmnj.a(), paramInt);
-      localObject = (bmnt)this.a.a(bmnt.class);
-      if (localObject != null)
-      {
-        ((bmnt)localObject).b(i);
-        if ((localObject instanceof HWEditLocalVideoPlayer)) {
-          ((HWEditLocalVideoPlayer)localObject).a(i);
-        }
-        if ((localObject instanceof bmpc)) {
-          ((bmpc)localObject).a(i);
-        }
-      }
-      this.a.j();
-      if (i != 0)
-      {
-        this.a.jdField_a_of_type_Bmnj.a("608", "9", "0", true);
-        wxk.a("0X80076DE");
-      }
-      wxe.a("Q.qqstory.publish.edit.EditVideoFilter", "LastSelectVideoFilterTime : %s , LastSelectVideoPlayMode : %s .", Long.valueOf(this.a.jdField_a_of_type_Long), Integer.valueOf(this.a.jdField_a_of_type_Int));
-      return;
+    parambhod.a().getHandler(bmme.class).post(new QzoneDeviceTagJsPlugin.1(paramArrayOfString));
+  }
+  
+  private static void b(WebViewPlugin paramWebViewPlugin, bhod parambhod, String[] paramArrayOfString)
+  {
+    parambhod.a().getHandler(bmme.class).post(new QzoneDeviceTagJsPlugin.2());
+  }
+  
+  public void a()
+  {
+    super.a();
+    bmfd.a().b(this);
+  }
+  
+  public boolean a(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  {
+    if ((!"Qzone".equals(paramString2)) || (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin == null) || (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime == null)) {
+      return false;
     }
+    if ("GetDeviceInfo".equalsIgnoreCase(paramString3))
+    {
+      bmfd.a().a(this);
+      b(this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin, this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime, paramVarArgs);
+      return true;
+    }
+    if ("SetUserTail".equalsIgnoreCase(paramString3))
+    {
+      bmfd.a().a(this);
+      a(this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin, this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime, paramVarArgs);
+      return true;
+    }
+    return false;
+  }
+  
+  public void onWebEvent(String paramString, Bundle paramBundle)
+  {
+    if ((paramBundle == null) || (!paramBundle.containsKey("data"))) {}
+    do
+    {
+      do
+      {
+        do
+        {
+          return;
+          paramBundle = paramBundle.getBundle("data");
+          if (paramBundle != null) {
+            break;
+          }
+        } while (!QLog.isColorLevel());
+        QLog.e(jdField_a_of_type_JavaLangString, 2, "call js function,bundle is empty");
+        return;
+        if (!"cmd.getDeviceInfos".equals(paramString)) {
+          break;
+        }
+        paramString = paramBundle.getString("param.DeviceInfos");
+      } while (TextUtils.isEmpty(paramString));
+      this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.callJs("window.QZPhoneTagJSInterface.onReceive({code:0,data:" + paramString + "})");
+      return;
+    } while (!"cmd.setUserTail".equals(paramString));
   }
 }
 

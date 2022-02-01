@@ -1,11 +1,8 @@
-public class ancs
+import com.tencent.mobileqq.app.QQAppInterface;
+
+public abstract interface ancs
 {
-  public long b = 0L;
-  
-  public String toString()
-  {
-    return "ARLocalRecogResultBase{recogType = " + this.b + '}';
-  }
+  public abstract void a(int paramInt1, QQAppInterface paramQQAppInterface, String paramString1, String paramString2, String paramString3, int paramInt2, int[] paramArrayOfInt, int paramInt3);
 }
 
 

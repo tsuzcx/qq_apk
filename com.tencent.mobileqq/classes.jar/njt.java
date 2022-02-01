@@ -1,165 +1,105 @@
+import android.app.Dialog;
 import android.content.Context;
 import android.content.res.Resources;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
-import android.text.TextUtils.TruncateAt;
-import android.util.DisplayMetrics;
+import android.os.Bundle;
+import android.os.Handler;
+import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.ImageView.ScaleType;
-import android.widget.LinearLayout;
+import android.view.Window;
+import android.view.WindowManager.LayoutParams;
+import android.widget.ImageView;
 import android.widget.LinearLayout.LayoutParams;
-import android.widget.RelativeLayout;
-import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLImageView;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import com.tencent.biz.anonymous.QQAnonymousDialog.2;
+import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qqlive.module.videoreport.inject.dialog.ReportDialog;
 
 public class njt
-  extends nik
+  extends ReportDialog
 {
-  public njt(Context paramContext, ArrayList<npo> paramArrayList, nhu paramnhu, String paramString1, String paramString2)
+  public int a;
+  public Context a;
+  public Handler a;
+  public LayoutInflater a;
+  public View a;
+  public ImageView a;
+  public TextView a;
+  
+  public njt(Context paramContext)
   {
-    super(paramContext, paramArrayList, paramnhu, paramString1, paramString2);
+    super(paramContext, 2131755823);
+    this.jdField_a_of_type_AndroidOsHandler = new Handler(new nju(this));
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(paramContext);
+    this.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131560559, null);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131370211));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131370222));
   }
   
-  public static View a(Context paramContext, View paramView, ViewGroup paramViewGroup, npn paramnpn, int paramInt, nhu paramnhu, String paramString1, String paramString2)
+  public void a()
   {
-    paramnpn = a(paramnpn, paramInt);
-    if (paramnpn.size() % 2 != 0)
-    {
-      paramnpn.remove(paramnpn.size() - 1);
-      if (QLog.isDevelopLevel()) {
-        QLog.d("AccountDetailJigsawViewWrapper", 2, "createView remove last data!");
-      }
-    }
-    if (paramnpn.isEmpty())
-    {
-      paramContext = paramView;
-      if (QLog.isDevelopLevel())
-      {
-        QLog.d("AccountDetailJigsawViewWrapper", 2, "createView return convertView!");
-        paramContext = paramView;
-      }
-      return paramContext;
-    }
-    if ((paramView != null) && ((paramView instanceof LinearLayout))) {
-      paramView = (LinearLayout)paramView;
-    }
-    for (;;)
-    {
-      paramViewGroup = paramView.getTag();
-      if ((paramViewGroup == null) || (!(paramViewGroup instanceof njt)) || (!((njt)paramViewGroup).a(paramnpn))) {
-        break label162;
-      }
-      paramContext = paramView;
-      if (!QLog.isDevelopLevel()) {
-        break;
-      }
-      QLog.d("AccountDetailJigsawViewWrapper", 2, "createView reuse!");
-      return paramView;
-      paramView = new LinearLayout(paramContext);
-      paramView.setOrientation(1);
-      paramView.setPadding(0, aepi.a(20.0F, paramViewGroup.getResources()), 0, 0);
-    }
-    label162:
-    if (QLog.isDevelopLevel()) {
-      QLog.d("AccountDetailJigsawViewWrapper", 2, "createView new create!");
-    }
-    paramContext = new njt(paramContext, paramnpn, paramnhu, paramString1, paramString2);
-    paramContext.a(paramView);
-    paramView.setTag(paramContext);
-    return paramView;
+    LinearLayout.LayoutParams localLayoutParams = (LinearLayout.LayoutParams)this.jdField_a_of_type_AndroidWidgetImageView.getLayoutParams();
+    localLayoutParams.width = ((int)bgme.a(this.jdField_a_of_type_AndroidContentContext, 44.0F));
+    localLayoutParams.height = ((int)bgme.a(this.jdField_a_of_type_AndroidContentContext, 44.0F));
+    super.show();
+    this.jdField_a_of_type_AndroidViewView.postDelayed(new QQAnonymousDialog.2(this), 1000L);
   }
   
-  private void a(LinearLayout paramLinearLayout)
+  public void a(int paramInt, String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AccountDetailJigsawViewWrapper", 2, "buildView!");
-    }
-    paramLinearLayout.removeAllViews();
-    paramLinearLayout.setClickable(false);
-    paramLinearLayout.setOnClickListener(null);
-    Context localContext = paramLinearLayout.getContext();
-    Object localObject1 = localContext.getResources();
-    int m = aepi.a(2.0F, (Resources)localObject1);
-    int n = (((Resources)localObject1).getDisplayMetrics().widthPixels - m) / 2;
-    int i1 = aepi.a(125.0F, (Resources)localObject1);
-    int i = 0;
-    if (i < this.jdField_a_of_type_JavaUtilArrayList.size())
+    switch (paramInt)
     {
-      int j;
-      label94:
-      int k;
-      label103:
-      Object localObject2;
-      if (i % 2 == 0)
+    default: 
+    case 1: 
+    case 3: 
+      do
       {
-        j = 1;
-        if (i / 2 != 0) {
-          break label442;
-        }
-        k = 1;
-        if (j == 0) {
-          break label448;
-        }
-        localObject1 = new LinearLayout(localContext);
-        ((LinearLayout)localObject1).setOrientation(0);
-        localObject2 = new LinearLayout.LayoutParams(-1, i1);
-        if (k == 0) {
-          ((LinearLayout.LayoutParams)localObject2).setMargins(0, m, 0, 0);
-        }
-        ((LinearLayout)localObject1).setLayoutParams((ViewGroup.LayoutParams)localObject2);
-        paramLinearLayout.addView((View)localObject1);
-      }
-      for (;;)
-      {
-        localObject2 = (npo)this.jdField_a_of_type_JavaUtilArrayList.get(i);
-        RelativeLayout localRelativeLayout = new RelativeLayout(localContext);
-        Object localObject3 = new LinearLayout.LayoutParams(n, i1);
-        if (j == 0) {
-          ((LinearLayout.LayoutParams)localObject3).setMargins(m, 0, 0, 0);
-        }
-        localRelativeLayout.setLayoutParams((ViewGroup.LayoutParams)localObject3);
-        localRelativeLayout.setTag(localObject2);
-        localRelativeLayout.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-        ((LinearLayout)localObject1).addView(localRelativeLayout);
-        localObject1 = new URLImageView(localContext);
-        ((URLImageView)localObject1).setLayoutParams(new RelativeLayout.LayoutParams(-1, -1));
-        ((URLImageView)localObject1).setBackgroundDrawable(URLDrawable.getDrawable(((npo)localObject2).e, null, null, true));
-        ((URLImageView)localObject1).setImageDrawable(new ColorDrawable(Color.parseColor("#33000000")));
-        ((URLImageView)localObject1).setScaleType(ImageView.ScaleType.CENTER_CROP);
-        localRelativeLayout.addView((View)localObject1);
-        localObject1 = new TextView(localContext);
-        localObject3 = new RelativeLayout.LayoutParams(-1, -1);
-        ((RelativeLayout.LayoutParams)localObject3).setMargins(aepi.a(20.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), 0, aepi.a(20.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), 0);
-        ((TextView)localObject1).setLayoutParams((ViewGroup.LayoutParams)localObject3);
-        ((TextView)localObject1).setGravity(17);
-        ((TextView)localObject1).setText(((npo)localObject2).a);
-        ((TextView)localObject1).setTextColor(-1);
-        ((TextView)localObject1).setTextSize(2, 16.0F);
-        ((TextView)localObject1).setSingleLine(true);
-        ((TextView)localObject1).setEllipsize(TextUtils.TruncateAt.END);
-        localRelativeLayout.addView((View)localObject1);
-        i += 1;
-        break;
-        j = 0;
-        break label94;
-        label442:
-        k = 0;
-        break label103;
-        label448:
-        localObject1 = (LinearLayout)paramLinearLayout.getChildAt(i / 2);
-      }
+        do
+        {
+          return;
+          this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130843610);
+          this.jdField_a_of_type_AndroidWidgetTextView.setText(paramString);
+        } while (!AppSetting.c);
+        QQAppInterface.f(paramString);
+        return;
+        this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130843604);
+        this.jdField_a_of_type_AndroidWidgetTextView.setText(paramString);
+      } while (!AppSetting.c);
+      QQAppInterface.f(paramString);
+      return;
     }
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130843609);
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131695359));
+  }
+  
+  public void dismiss()
+  {
+    try
+    {
+      super.dismiss();
+      return;
+    }
+    catch (Exception localException) {}
+  }
+  
+  protected void onCreate(Bundle paramBundle)
+  {
+    super.onCreate(paramBundle);
+    paramBundle = getWindow();
+    paramBundle.setContentView(this.jdField_a_of_type_AndroidViewView);
+    WindowManager.LayoutParams localLayoutParams = paramBundle.getAttributes();
+    localLayoutParams.width = -2;
+    localLayoutParams.height = -2;
+    localLayoutParams.gravity = 17;
+    paramBundle.setAttributes(localLayoutParams);
+    setCanceledOnTouchOutside(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     njt
  * JD-Core Version:    0.7.0.1
  */

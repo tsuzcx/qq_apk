@@ -1,70 +1,77 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
-import android.widget.Toast;
-import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.Vector;
+import java.util.concurrent.atomic.AtomicBoolean;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
-class beuk
-  extends Handler
+public class beuk
 {
-  beuk(beuj parambeuj, Looper paramLooper)
+  public beum a;
+  private Comparator<beuo> a;
+  public Vector<beuo> a;
+  public AtomicBoolean a;
+  public boolean a;
+  
+  public beuk()
   {
-    super(paramLooper);
+    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
+    this.jdField_a_of_type_JavaUtilVector = new Vector();
+    this.jdField_a_of_type_JavaUtilComparator = new beul(this);
   }
   
-  public void handleMessage(Message paramMessage)
+  public void a(String paramString)
   {
-    beul localbeul = (beul)paramMessage.obj;
-    paramMessage = localbeul.jdField_a_of_type_JavaLangString;
-    if ((paramMessage == null) || (paramMessage.length() == 0)) {}
+    int i = 0;
     for (;;)
     {
       try
       {
-        String str = this.a.jdField_a_of_type_AndroidContentContext.getResources().getString(localbeul.b);
-        paramMessage = str;
-        if (this.a.jdField_a_of_type_AndroidWidgetToast != null) {
-          break label116;
+        paramString = new JSONObject(paramString);
+        Object localObject = paramString.optJSONArray("effectSwitch");
+        if ((localObject != null) && (((JSONArray)localObject).length() > 0))
+        {
+          if (((JSONArray)localObject).getJSONObject(0).optInt("androidSwitch") == 1)
+          {
+            bool = true;
+            this.jdField_a_of_type_Boolean = bool;
+          }
         }
-        this.a.jdField_a_of_type_AndroidWidgetToast = QQToast.a(this.a.jdField_a_of_type_AndroidContentContext, localbeul.jdField_a_of_type_Int, paramMessage, localbeul.c).a(localbeul.d);
-        if (this.a.jdField_a_of_type_AndroidWidgetToast != null) {
-          this.a.jdField_a_of_type_AndroidWidgetToast.show();
+        else
+        {
+          paramString = paramString.optJSONArray("grayMsgList");
+          if ((paramString != null) && (paramString.length() > 0))
+          {
+            if (i < paramString.length())
+            {
+              localObject = paramString.getJSONObject(i);
+              beuo localbeuo = new beuo();
+              localbeuo.a((JSONObject)localObject);
+              this.jdField_a_of_type_JavaUtilVector.add(localbeuo);
+              i += 1;
+              continue;
+            }
+            Collections.sort(this.jdField_a_of_type_JavaUtilVector, this.jdField_a_of_type_JavaUtilComparator);
+          }
+          if (QLog.isColorLevel()) {
+            QLog.d("TroopEnterEffect.Config", 2, "config mergeFromJSON enable = " + this.jdField_a_of_type_Boolean + " graytips: " + this.jdField_a_of_type_JavaUtilVector.size());
+          }
+          return;
         }
+      }
+      catch (Exception paramString)
+      {
+        QLog.e("TroopEnterEffect.Config", 1, "mergeFromJSON error: " + paramString.getMessage());
         return;
       }
-      catch (Exception localException)
-      {
-        localException.printStackTrace();
-      }
-      continue;
-      try
-      {
-        label116:
-        View localView = this.a.jdField_a_of_type_AndroidWidgetToast.getView();
-        ((TextView)localView.findViewById(2131378113)).setText(paramMessage);
-        ((ImageView)localView.findViewById(2131378110)).setImageResource(QQToast.a(localbeul.jdField_a_of_type_Int));
-        this.a.jdField_a_of_type_AndroidWidgetToast.setDuration(localbeul.c);
-      }
-      catch (Throwable paramMessage)
-      {
-        paramMessage.printStackTrace();
-        this.a.jdField_a_of_type_AndroidWidgetToast = null;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.i("QQToastNotifier", 2, paramMessage.toString());
-      }
+      boolean bool = false;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     beuk
  * JD-Core Version:    0.7.0.1
  */

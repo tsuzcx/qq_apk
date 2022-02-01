@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.transfile;
 
-import baxe;
+import bdyk;
 
 public class ShortVideoForwardProcessor$1
   implements Runnable
 {
-  public ShortVideoForwardProcessor$1(baxe parambaxe) {}
+  public ShortVideoForwardProcessor$1(bdyk parambdyk) {}
   
   public void run()
   {
@@ -14,7 +14,7 @@ public class ShortVideoForwardProcessor$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.ShortVideoForwardProcessor.1
  * JD-Core Version:    0.7.0.1
  */

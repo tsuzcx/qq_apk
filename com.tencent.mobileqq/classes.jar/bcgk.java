@@ -1,33 +1,39 @@
+import android.hardware.Camera.PreviewCallback;
+import android.media.Image;
+import android.media.Image.Plane;
+import android.media.ImageReader;
+import android.media.ImageReader.OnImageAvailableListener;
+import com.tencent.mobileqq.shortvideo.camera2.Camera2Control;
+import java.nio.ByteBuffer;
+
 public class bcgk
-  implements Comparable<bcgk>
+  implements ImageReader.OnImageAvailableListener
 {
-  public int a;
-  public String a;
-  public int b;
-  public String b;
+  public bcgk(Camera2Control paramCamera2Control) {}
   
-  public bcgk(int paramInt1, String paramString1, String paramString2, int paramInt2)
+  public void onImageAvailable(ImageReader paramImageReader)
   {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    this.jdField_b_of_type_Int = paramInt2;
-  }
-  
-  public int a(bcgk parambcgk)
-  {
-    if (this.jdField_b_of_type_Int < parambcgk.jdField_b_of_type_Int) {
-      return -1;
+    try
+    {
+      paramImageReader = paramImageReader.acquireNextImage();
+      if (paramImageReader != null)
+      {
+        Camera.PreviewCallback localPreviewCallback = Camera2Control.a(this.a);
+        if (localPreviewCallback != null)
+        {
+          ByteBuffer localByteBuffer = paramImageReader.getPlanes()[0].getBuffer();
+          byte[] arrayOfByte = new byte[localByteBuffer.remaining()];
+          localByteBuffer.get(arrayOfByte);
+          localPreviewCallback.onPreviewFrame(arrayOfByte, null);
+        }
+        paramImageReader.close();
+      }
+      return;
     }
-    if (this.jdField_b_of_type_Int > parambcgk.jdField_b_of_type_Int) {
-      return 1;
+    catch (Exception paramImageReader)
+    {
+      bcgu.a(1, "[Camera2] onImageAvailable mPreviewReader exception:" + paramImageReader);
     }
-    return 0;
-  }
-  
-  public String toString()
-  {
-    return "TroopHonor{id=" + this.jdField_a_of_type_Int + ", name='" + this.jdField_a_of_type_JavaLangString + '\'' + ", iconUrl='" + this.jdField_b_of_type_JavaLangString + '\'' + ", priority='" + this.jdField_b_of_type_Int + '\'' + '}';
   }
 }
 

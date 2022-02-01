@@ -1,56 +1,51 @@
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.FrameLayout;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.widget.SquareImageView;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import android.os.Build;
+import android.os.Build.VERSION;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import java.net.URLEncoder;
 
-public class aywn
-  extends aywk
+class aywn
+  implements DialogInterface.OnClickListener
 {
-  public int a;
-  public FrameLayout a;
-  public ImageView a;
-  public LinearLayout a;
-  public RelativeLayout a;
-  public TextView a;
-  public URLImageView a;
-  public SquareImageView a;
-  public ImageView b;
-  public LinearLayout b;
-  public TextView b;
-  public URLImageView b;
-  public TextView c;
-  public ImageView d;
-  public TextView d;
+  aywn(aywm paramaywm, String paramString, Activity paramActivity, QQAppInterface paramQQAppInterface) {}
   
-  public aywn(ViewGroup paramViewGroup, int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    super(paramViewGroup, paramInt);
-  }
-  
-  protected void a()
-  {
-    super.a();
-    View localView = a(this.jdField_c_of_type_Int);
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131364893));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131367819));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131377448));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)localView.findViewById(2131371984));
-    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)localView.findViewById(2131376795));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetSquareImageView = ((SquareImageView)this.jdField_a_of_type_AndroidWidgetFrameLayout.findViewById(2131368018));
-    this.jdField_d_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidWidgetFrameLayout.findViewById(2131369137));
-    this.jdField_a_of_type_Int = this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildCount();
-    this.jdField_b_of_type_AndroidWidgetLinearLayout = ((LinearLayout)localView.findViewById(2131365514));
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)localView.findViewById(2131365526));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131375237));
-    this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)localView.findViewById(2131380391));
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131380393));
-    this.jdField_b_of_type_ComTencentImageURLImageView = ((URLImageView)localView.findViewById(2131364558));
-    this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131364590));
+    try
+    {
+      paramDialogInterface.dismiss();
+      paramDialogInterface = new StringBuilder("https://aq.qq.com/cn2/change_psw/mobile/mobile_change_psw_reg_input_psw");
+      paramDialogInterface.append("?");
+      paramDialogInterface.append("uin=");
+      paramDialogInterface.append(this.jdField_a_of_type_JavaLangString);
+      paramDialogInterface.append("&plat=1");
+      paramDialogInterface.append("&app=1");
+      paramDialogInterface.append("&version=8.4.1.4680");
+      paramDialogInterface.append("&device=" + URLEncoder.encode(Build.DEVICE));
+      paramDialogInterface.append("&system=" + Build.VERSION.RELEASE);
+      paramDialogInterface.append("&systemInt=" + Integer.toString(Build.VERSION.SDK_INT));
+      paramDialogInterface = paramDialogInterface.toString();
+      Intent localIntent = new Intent();
+      localIntent.putExtra("portraitOnly", true);
+      localIntent.putExtra("url", paramDialogInterface);
+      localIntent.putExtra("uin", this.jdField_a_of_type_JavaLangString);
+      localIntent.putExtra("hide_operation_bar", true);
+      localIntent.putExtra("hide_more_button", true);
+      VasWebviewUtil.openQQBrowserActivity(this.jdField_a_of_type_AndroidAppActivity, paramDialogInterface, 32768L, localIntent, false, -1);
+      bcst.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "Mobile_signup", "Setiing_pw_tips", 0, 0, "", "", "", "");
+      return;
+    }
+    catch (Exception paramDialogInterface)
+    {
+      for (;;)
+      {
+        paramDialogInterface.printStackTrace();
+      }
+    }
   }
 }
 

@@ -1,33 +1,25 @@
-import android.content.Intent;
-import com.tencent.mobileqq.webview.swift.WebViewFragment;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.SeekBar;
+import android.widget.TextView;
 
-public class beeq
+public abstract class beeq
+  extends RecyclerView.ViewHolder
 {
-  public static beft a(bejh parambejh)
+  public int a;
+  public SeekBar a;
+  ImageView jdField_b_of_type_AndroidWidgetImageView;
+  public RelativeLayout b;
+  TextView jdField_b_of_type_AndroidWidgetTextView;
+  ImageView jdField_c_of_type_AndroidWidgetImageView;
+  TextView jdField_c_of_type_AndroidWidgetTextView;
+  ImageView d;
+  
+  beeq(View paramView)
   {
-    int j = 0;
-    int i = j;
-    if (parambejh.a != null)
-    {
-      i = j;
-      if (parambejh.a.a() != null) {
-        i = parambejh.a.a().getIntExtra("titleBarStyle", 0);
-      }
-    }
-    bjbl.d("SwiftWebTitleBuilder", "title bar style is" + i);
-    if (i == 1) {
-      return new biob(parambejh);
-    }
-    if (i == 2) {
-      return new begd(parambejh);
-    }
-    if (i == 3) {
-      return new bjbw(parambejh);
-    }
-    if (i == 4) {
-      return new ufz(parambejh);
-    }
-    return new beft(parambejh);
+    super(paramView);
   }
 }
 

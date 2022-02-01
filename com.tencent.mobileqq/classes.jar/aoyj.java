@@ -1,61 +1,22 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import android.os.IInterface;
+import com.tencent.mobileqq.ar.aidl.ARCommonConfigInfo;
+import com.tencent.mobileqq.ar.aidl.ArConfigInfo;
+import com.tencent.mobileqq.ar.aidl.ArEffectConfig;
 
-public class aoyj
-  extends aokh<aoyi>
+public abstract interface aoyj
+  extends IInterface
 {
-  public static aoyi a()
-  {
-    return (aoyi)aoks.a().a(451);
-  }
+  public abstract void a();
   
-  public int a()
-  {
-    return 451;
-  }
+  public abstract void a(int paramInt);
   
-  @NonNull
-  public aoyi a(int paramInt)
-  {
-    return new aoyi();
-  }
+  public abstract void a(long paramLong1, long paramLong2);
   
-  @Nullable
-  public aoyi a(aoko[] paramArrayOfaoko)
-  {
-    if ((paramArrayOfaoko != null) && (paramArrayOfaoko.length > 0)) {
-      return aoyi.a(paramArrayOfaoko);
-    }
-    return null;
-  }
-  
-  public Class<aoyi> a()
-  {
-    return aoyi.class;
-  }
-  
-  public void a(int paramInt) {}
-  
-  public void a(aoyi paramaoyi) {}
-  
-  public int b()
-  {
-    return 0;
-  }
-  
-  public boolean b()
-  {
-    return false;
-  }
-  
-  public boolean c()
-  {
-    return true;
-  }
+  public abstract void a(ArConfigInfo paramArConfigInfo, ArEffectConfig paramArEffectConfig, ARCommonConfigInfo paramARCommonConfigInfo);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aoyj
  * JD-Core Version:    0.7.0.1
  */

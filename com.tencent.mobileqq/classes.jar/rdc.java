@@ -1,31 +1,26 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.biz.pubaccount.VideoInfo.GameAdComData;
+import tencent.im.oidb.cmd0x5bd.oidb_0x5bd.GuideInfo;
+import tencent.im.oidb.cmd0x5bd.oidb_0x5bd.RefreshInfo;
+import tencent.im.oidb.cmd0x5bd.oidb_0x5bd.SkinInfo;
 
-class rdc
-  implements DialogInterface.OnClickListener
+public class rdc
+  implements anil
 {
-  rdc(rcz paramrcz, boolean paramBoolean) {}
+  public void a(boolean paramBoolean, oidb_0x5bd.SkinInfo paramSkinInfo, oidb_0x5bd.GuideInfo paramGuideInfo1, oidb_0x5bd.GuideInfo paramGuideInfo2, oidb_0x5bd.RefreshInfo paramRefreshInfo, int paramInt) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    if (!this.jdField_a_of_type_Boolean) {
-      if (!rcz.a(this.jdField_a_of_type_Rcz)) {}
-    }
-    while (!(rcz.a(this.jdField_a_of_type_Rcz) instanceof Activity))
+    switch (paramInt)
     {
-      return;
-      this.jdField_a_of_type_Rcz.b();
+    default: 
       return;
     }
-    oee.b(rcz.a(this.jdField_a_of_type_Rcz));
-    odv.a(rcz.a(this.jdField_a_of_type_Rcz), rcz.a(this.jdField_a_of_type_Rcz).o, rcz.a(this.jdField_a_of_type_Rcz).p, "");
+    paramObject = (Object[])paramObject;
+    a(paramBoolean, (oidb_0x5bd.SkinInfo)paramObject[0], (oidb_0x5bd.GuideInfo)paramObject[1], (oidb_0x5bd.GuideInfo)paramObject[2], (oidb_0x5bd.RefreshInfo)paramObject[3], ((Integer)paramObject[4]).intValue());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     rdc
  * JD-Core Version:    0.7.0.1
  */

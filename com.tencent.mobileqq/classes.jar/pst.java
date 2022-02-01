@@ -1,18 +1,46 @@
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.IBuilder;
+import android.os.Handler;
+import android.os.Handler.Callback;
+import android.os.Message;
+import java.util.Iterator;
+import java.util.List;
 
-public class pst
-  implements ViewBase.IBuilder
+final class pst
+  implements Handler.Callback
 {
-  public ViewBase build(VafContext paramVafContext)
+  public boolean handleMessage(Message paramMessage)
   {
-    return new pss(paramVafContext);
+    switch (paramMessage.what)
+    {
+    default: 
+    case 0: 
+    case 1: 
+      do
+      {
+        do
+        {
+          return true;
+          pss.a(false);
+          pss.a().removeMessages(0);
+        } while ((pss.a() == null) || (pss.a().size() <= 0));
+        paramMessage = pss.a().iterator();
+        while (paramMessage.hasNext()) {
+          ((psu)paramMessage.next()).a(true);
+        }
+        pss.a(false);
+        pss.a().removeMessages(1);
+      } while ((pss.a() == null) || (pss.a().size() <= 0));
+      paramMessage = pss.a().iterator();
+      while (paramMessage.hasNext()) {
+        ((psu)paramMessage.next()).a(false);
+      }
+    }
+    pss.a(true);
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     pst
  * JD-Core Version:    0.7.0.1
  */

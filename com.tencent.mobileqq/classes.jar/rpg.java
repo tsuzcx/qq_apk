@@ -1,36 +1,33 @@
-import com.tencent.biz.pubaccount.readinjoy.view.ChannelClassificationListView;
-import org.json.JSONException;
-import org.json.JSONObject;
+import org.jetbrains.annotations.NotNull;
 
-public class rpg
-  implements bhxs
+class rpg
+  implements rtb
 {
-  public rpg(ChannelClassificationListView paramChannelClassificationListView) {}
+  rpg(rpf paramrpf, String paramString) {}
   
-  public void onScrollStateChanged(int paramInt)
+  public void a(float paramFloat) {}
+  
+  public void a(int paramInt, @NotNull String paramString)
   {
-    JSONObject localJSONObject;
-    if (paramInt == 4098) {
-      localJSONObject = new JSONObject();
-    }
-    try
+    if (rpf.a(this.jdField_a_of_type_Rpf) != null)
     {
-      localJSONObject.put("channelid", ChannelClassificationListView.a(this.a));
-      nrt.a(null, ors.a() + "", "0X8009934", "0X8009934", 0, 0, "", "", "", localJSONObject.toString(), false);
-      return;
+      rpf.a(this.jdField_a_of_type_Rpf).b();
+      rpf.a(this.jdField_a_of_type_Rpf).a(2131716918);
     }
-    catch (JSONException localJSONException)
+  }
+  
+  public void a(String paramString)
+  {
+    if (rpf.a(this.jdField_a_of_type_Rpf) != null)
     {
-      for (;;)
-      {
-        localJSONException.printStackTrace();
-      }
+      rpf.a(this.jdField_a_of_type_Rpf).b();
+      rpf.a(this.jdField_a_of_type_Rpf).a(paramString, this.jdField_a_of_type_JavaLangString);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     rpg
  * JD-Core Version:    0.7.0.1
  */

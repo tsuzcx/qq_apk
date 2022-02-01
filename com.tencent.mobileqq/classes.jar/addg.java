@@ -1,18 +1,48 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.activity.GeneralSettingActivity;
+import com.tencent.common.config.AppSetting;
+import com.tencent.qapmsdk.base.listener.IInspectorListener;
+import com.tencent.qapmsdk.common.util.InspectUUID;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.List;
+import org.jetbrains.annotations.NotNull;
 
-public class addg
-  implements CompoundButton.OnCheckedChangeListener
+class addg
+  implements IInspectorListener
 {
-  public addg(GeneralSettingActivity paramGeneralSettingActivity) {}
+  public void onCheckingLeaked(int paramInt, @NotNull String paramString) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public boolean onFilter(@NotNull Object paramObject)
   {
-    banm.a(paramBoolean);
-    if (paramBoolean) {
-      banm.a(new addh(this.a.jdField_a_of_type_Adyd, this.a.jdField_a_of_type_AndroidViewView));
-    }
+    return false;
+  }
+  
+  public void onFinishDump(boolean paramBoolean, @NotNull String paramString1, @NotNull String paramString2)
+  {
+    QLog.i("MagnifierSDK.QAPM.QAPMLeakWrapper", 1, "finishDump" + paramString1 + paramString2);
+  }
+  
+  public void onHprofDumped(@NotNull String paramString) {}
+  
+  public boolean onLeaked(@NotNull InspectUUID paramInspectUUID)
+  {
+    if (paramInspectUUID == null) {}
+    do
+    {
+      return false;
+      paramInspectUUID.toString();
+    } while (AppSetting.d);
+    return false;
+  }
+  
+  @NotNull
+  public List<String> onPrepareDump(@NotNull String paramString)
+  {
+    ArrayList localArrayList = new ArrayList(4);
+    localArrayList.add(adct.b());
+    localArrayList.add(adct.a());
+    localArrayList.addAll(adct.b());
+    QLog.i("MagnifierSDK.QAPM.QAPMLeakWrapper", 1, "leakDump" + paramString);
+    return localArrayList;
   }
 }
 

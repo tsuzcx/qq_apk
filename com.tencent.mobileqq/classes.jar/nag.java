@@ -1,626 +1,1266 @@
-import android.content.SharedPreferences;
-import android.util.Log;
-import com.tencent.biz.TroopRedpoint.TroopRedTouchHandler.1;
-import com.tencent.biz.TroopRedpoint.TroopRedTouchHandler.4;
-import com.tencent.biz.qqstory.network.pb.qqstory_710_message.ReqClearMessage;
-import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.app.proxy.ProxyManager;
-import com.tencent.mobileqq.data.RecentUser;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.MessageMicro;
-import com.tencent.mobileqq.pb.PBBoolField;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBRepeatField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.app.Activity;
+import android.content.Context;
+import android.content.DialogInterface.OnClickListener;
+import android.content.res.Resources;
+import android.graphics.RectF;
+import android.os.Handler;
+import android.os.Handler.Callback;
+import android.os.Message;
+import android.text.TextUtils;
+import com.tencent.avgame.app.AVGameAppInterface;
+import com.tencent.avgame.gamelogic.data.Player;
+import com.tencent.avgame.gamelogic.data.RoomInfo;
+import com.tencent.avgame.gameroom.GameRoomPresenterImp.3;
+import com.tencent.avgame.gameroom.GameRoomPresenterImp.4;
+import com.tencent.avgame.gameroom.GameRoomPresenterImp.5;
+import com.tencent.avgame.session.AVGameSession;
+import com.tencent.avgame.session.AVGameUserInfo;
+import com.tencent.avgame.ui.AVGameActivity;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashMap;
 import java.util.List;
-import mqq.app.MobileQQ;
-import mqq.app.NewIntent;
-import mqq.os.MqqHandler;
-import org.json.JSONObject;
-import tencent.im.oidb.cmd0x791.oidb_0x791.GetRedDotOpt;
-import tencent.im.oidb.cmd0x791.oidb_0x791.GetRedDotRes;
-import tencent.im.oidb.cmd0x791.oidb_0x791.RedDotInfo;
-import tencent.im.oidb.cmd0x791.oidb_0x791.ReqBody;
-import tencent.im.oidb.cmd0x791.oidb_0x791.RspBody;
-import tencent.im.oidb.cmd0x791.oidb_0x791.SetRedDotOpt;
-import tencent.im.oidb.oidb_sso.OIDBSSOPkg;
-import tencent.im.s2c.msgtype0x210.submsgtype0x69.Submsgtype0x69;
 
 public class nag
-  extends alpd
+  implements Handler.Callback, mzd, mze, nal
 {
-  public int a;
-  protected alpg a;
-  protected nam a;
+  private int jdField_a_of_type_Int;
+  private long jdField_a_of_type_Long;
+  protected Context a;
+  protected DialogInterface.OnClickListener a;
+  public Handler a;
+  public Runnable a;
+  protected mwx a;
+  protected naj a;
+  public nam a;
+  protected nat a;
+  protected nav a;
+  protected nbb a;
+  public nbn a;
+  protected nbo a;
+  protected ndc a;
+  private boolean jdField_a_of_type_Boolean;
+  private long jdField_b_of_type_Long;
+  private boolean jdField_b_of_type_Boolean;
   
-  public nag(QQAppInterface paramQQAppInterface)
+  public nag(nam paramnam)
   {
-    super(paramQQAppInterface);
-    this.jdField_a_of_type_Alpg = new naj(this);
-    this.jdField_a_of_type_Nam = new nam(this);
-    AppNetConnInfo.registerConnectionChangeReceiver(paramQQAppInterface.getApplication(), this.jdField_a_of_type_Nam);
-    this.jdField_a_of_type_Int = 0;
+    this.jdField_a_of_type_Mwx = new nah(this);
+    this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener = new nai(this);
+    this.jdField_a_of_type_JavaLangRunnable = new GameRoomPresenterImp.3(this);
+    this.jdField_a_of_type_Nam = paramnam;
   }
   
-  public static oidb_0x791.RedDotInfo a(QQAppInterface paramQQAppInterface, byte[] paramArrayOfByte)
+  private void a(int paramInt1, int paramInt2, myc parammyc)
   {
-    int j = 0;
-    Object localObject1 = null;
-    label700:
-    label979:
-    label1002:
-    if ((paramArrayOfByte != null) && (paramQQAppInterface != null))
+    Object localObject1;
+    if ((paramInt1 != 0) && (paramInt1 != 10) && (paramInt2 == 3))
     {
-      int i;
+      localObject1 = parammyc.a();
+      if ((localObject1 == null) || (!(localObject1 instanceof myn))) {}
+    }
+    for (myn localmyn = (myn)localObject1;; localmyn = null)
+    {
+      Object localObject2 = null;
+      boolean bool2 = false;
+      boolean bool1 = false;
+      ned localned = ndt.b().a();
+      long l1;
+      if ((localmyn != null) && (!TextUtils.isEmpty(localmyn.a.jdField_a_of_type_JavaLangString)))
+      {
+        bool2 = bool1;
+        localObject1 = localObject2;
+        if (localned != null)
+        {
+          localObject1 = localmyn.a.jdField_a_of_type_JavaLangString;
+          localned.a(false);
+          if ((paramInt1 == 3) || (paramInt1 == 4)) {
+            break label342;
+          }
+          long l2 = parammyc.a().d();
+          l1 = l2;
+          if (l2 > localmyn.a.jdField_a_of_type_Int * 1000) {
+            l1 = 0L;
+          }
+          if ((localned.a()) && (TextUtils.equals((CharSequence)localObject1, localned.a()))) {
+            break label268;
+          }
+          if (l1 <= 500L) {
+            break label257;
+          }
+          localned.b((String)localObject1, l1);
+          bool2 = bool1;
+        }
+      }
       for (;;)
       {
-        try
-        {
-          localObject2 = new Submsgtype0x69();
-          ((Submsgtype0x69)localObject2).mergeFrom(paramArrayOfByte);
-          boolean bool = ((Submsgtype0x69)localObject2).bool_test_env.get();
-          if (bool != azbt.a)
-          {
-            wxe.a("TroopRedTouchHandler", "parsePushRedPointInfo env not match!! isTestEnvFromPush = %b, sIsTestEnv = %b", Boolean.valueOf(bool), Boolean.valueOf(azbt.a));
-            if (bool != wrq.a())
-            {
-              wxe.a("TroopRedTouchHandler", "parsePushRedPointInfo env not match!! isTestEnvFromPush = %b, QQStoryNetReqUtils.isDevEnv() = %b", Boolean.valueOf(bool), Boolean.valueOf(wrq.a()));
-              return null;
-            }
-          }
-          paramArrayOfByte = new oidb_0x791.RedDotInfo();
-          paramArrayOfByte.uint32_appid.set(((Submsgtype0x69)localObject2).uint32_appid.get());
-          paramArrayOfByte.bool_display_reddot.set(((Submsgtype0x69)localObject2).bool_display_reddot.get());
-          paramArrayOfByte.uint32_number.set(((Submsgtype0x69)localObject2).uint32_number.get());
-          paramArrayOfByte.uint32_reason.set(((Submsgtype0x69)localObject2).uint32_reason.get());
-          paramArrayOfByte.uint32_last_time.set(((Submsgtype0x69)localObject2).uint32_last_time.get());
-          paramArrayOfByte.uint64_cmd_uin.set(((Submsgtype0x69)localObject2).uint64_cmd_uin.get());
-          paramArrayOfByte.str_face_url.set(((Submsgtype0x69)localObject2).bytes_face_url.get());
-          paramArrayOfByte.str_custom_buffer.set(((Submsgtype0x69)localObject2).bytes_custom_buffer.get());
-          paramArrayOfByte.uint32_expire_time.set(((Submsgtype0x69)localObject2).uint32_expire_time.get());
-          paramArrayOfByte.uint32_cmd_uin_type.set(((Submsgtype0x69)localObject2).uint32_cmd_uin_type.get());
-          paramArrayOfByte.uint32_report_type.set(((Submsgtype0x69)localObject2).uint32_report_type.get());
-          if (QLog.isColorLevel()) {
-            QLog.d("TroopRedTouchHandlerQ.qqstory.redPoint", 2, "parsePushRedPointInfo:" + nan.a(paramArrayOfByte));
-          }
-          i = paramArrayOfByte.uint32_appid.get();
-          if (i != 38) {}
+        if (QLog.isColorLevel()) {
+          QLog.i("GameRoomPresenterImp", 2, "playStarGuessVideo topic:" + localmyn + " url:" + (String)localObject1 + " stop:" + bool2 + " gameStatus:" + paramInt1);
         }
-        catch (Exception paramQQAppInterface)
-        {
-          Object localObject2;
-          int k;
-          int m;
-          long l1;
-          long l2;
-          paramQQAppInterface.printStackTrace();
-          paramQQAppInterface = localObject1;
-        }
-        try
-        {
-          localObject2 = new JSONObject(paramArrayOfByte.str_custom_buffer.get().toStringUtf8());
-          if (((JSONObject)localObject2).optInt("official_topic") != 1) {
-            break label619;
-          }
-          i = 1;
-          k = ((JSONObject)localObject2).optInt("red_content_type");
-          m = ((Integer)auwq.a(paramQQAppInterface.getCurrentAccountUin(), "self_gender", Integer.valueOf(-1))).intValue();
-          if (i != 0)
-          {
-            new azqx(paramQQAppInterface).a("dc00899").b("grp_lbs").c("entry").d("push_red_send").a(new String[] { String.valueOf(m), "0", String.valueOf(k), "0" }).a();
-            Log.i("redreport", "retport push_red_send d1 = " + m + " d3 = " + k);
-          }
-        }
-        catch (Exception localException)
-        {
-          localException.printStackTrace();
-          continue;
-          paramQQAppInterface = localException.a();
-          i = naf.a(paramArrayOfByte, paramQQAppInterface);
-          if (i >= 0) {
-            break label700;
-          }
-          if (!QLog.isColorLevel()) {
-            break label1031;
-          }
-          QLog.d("TroopRedTouchHandlerQ.qqstory.redPoint", 2, "comparePriority:比上一个红点优先级低，current：" + nan.a(paramArrayOfByte) + "|lastRedPoint:" + nan.a(paramQQAppInterface));
-          return null;
-          if ((i != 0) || (paramArrayOfByte.uint32_last_time.get() >= paramQQAppInterface.uint32_last_time.get())) {
-            break label1002;
-          }
-          if (!QLog.isColorLevel()) {
-            break label1031;
-          }
-          QLog.d("TroopRedTouchHandlerQ.qqstory.redPoint", 2, "当前红点比上一个红点旧，current：" + nan.a(paramArrayOfByte) + "|lastRedPoint:" + nan.a(paramQQAppInterface));
-          return null;
-          paramQQAppInterface = localException.a();
-          if ((paramQQAppInterface != null) && (paramQQAppInterface.uint64_cmd_uin.get() == paramArrayOfByte.uint64_cmd_uin.get()) && (paramQQAppInterface.uint32_cmd_uin_type.get() == paramArrayOfByte.uint32_cmd_uin_type.get()) && (paramQQAppInterface.uint32_last_time.get() == paramArrayOfByte.uint32_last_time.get())) {
-            break label1002;
-          }
-          if (!QLog.isColorLevel()) {
-            break label1031;
-          }
-          QLog.d("TroopRedTouchHandlerQ.qqstory.redPoint", 2, "故事的撤回红点需要判断uin和lasttime，强校验，和上一个不一致的话直接返回，不处理，current：" + nan.a(paramArrayOfByte) + "|lastRedPoint:" + nan.a(paramQQAppInterface));
-          return null;
-          if (46 != paramArrayOfByte.uint32_appid.get()) {
-            break label1002;
-          }
-          if (!baic.a(paramQQAppInterface)) {
-            break label1031;
-          }
-          oidb_0x791.RedDotInfo localRedDotInfo = localException.a(46, false);
-          i = j;
-          if (localRedDotInfo == null) {
-            break label941;
-          }
-          i = j;
-          if (!localRedDotInfo.uint32_last_time.has()) {
-            break label941;
-          }
-          i = localRedDotInfo.uint32_last_time.get();
-          if (!QLog.isColorLevel()) {
-            break label979;
-          }
-          QLog.i("TroopRedTouchHandler", 2, "TENCENT_DOCS_ASSISTANT  show redDot" + paramArrayOfByte.bool_display_reddot.get());
-          localException.a(localRedDotInfo, paramArrayOfByte);
-          localException.a(paramArrayOfByte);
-          a(paramQQAppInterface, paramArrayOfByte, i, false);
-          return null;
-          if (naf.c(paramArrayOfByte.uint32_appid.get())) {
-            break label1031;
-          }
-        }
-        localObject2 = (nan)paramQQAppInterface.getManager(70);
-        if (!naf.b(paramArrayOfByte.uint32_appid.get())) {
-          break label883;
-        }
-        if (!paramArrayOfByte.bool_display_reddot.get()) {
-          break label771;
-        }
-        paramQQAppInterface = (uvt)uwa.a(10);
-        l1 = NetConnInfoCenter.getServerTimeMillis();
-        l2 = paramQQAppInterface.a();
-        if (l1 >= l2) {
+        return;
+        label257:
+        localned.b((String)localObject1, 0L);
+        break;
+        label268:
+        if (l1 - localned.a() <= 500L) {
           break;
         }
-        if (!QLog.isColorLevel()) {
-          break label1031;
+        break;
+        bool1 = bool2;
+        if (localned != null)
+        {
+          localned.b();
+          localned.c();
+          bool1 = true;
         }
-        QLog.d("TroopRedTouchHandlerQ.qqstory.redPoint", 2, "故事红点下发到达时间：" + l1 + "小于最近更新刷新时间：" + l2 + nan.a(paramArrayOfByte));
-        return null;
-        wxe.a("TroopRedTouchHandler", "parsePushRedPointInfo() return %s", paramQQAppInterface);
-        return paramQQAppInterface;
-        label619:
-        i = 0;
+        bool2 = bool1;
+        localObject1 = localObject2;
+        if (paramInt2 == 3)
+        {
+          this.jdField_a_of_type_Ndc.a(false);
+          bool2 = bool1;
+          localObject1 = localObject2;
+          continue;
+          label342:
+          bool2 = bool1;
+        }
       }
-      label883:
-      localException.a(paramArrayOfByte);
     }
-    label771:
-    label941:
-    for (paramQQAppInterface = paramArrayOfByte;; paramQQAppInterface = null) {
-      break;
-    }
-    label1031:
-    return null;
   }
   
-  private static void a(QQAppInterface paramQQAppInterface, long paramLong)
+  private void b(int paramInt1, int paramInt2, myc parammyc)
   {
-    if (paramQQAppInterface == null) {
-      return;
+    Object localObject2 = null;
+    boolean bool2 = false;
+    if ((paramInt1 != 0) && (paramInt1 != 10) && (paramInt2 == 4))
+    {
+      localObject1 = parammyc.a();
+      if ((localObject1 == null) || (!(localObject1 instanceof myo))) {}
     }
-    ThreadManager.getSubThreadHandler().post(new TroopRedTouchHandler.4(paramQQAppInterface, paramLong));
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface, oidb_0x791.RedDotInfo paramRedDotInfo)
-  {
-    if ((paramQQAppInterface == null) || (paramRedDotInfo == null)) {}
-    nan localnan;
-    do
+    for (Object localObject1 = (myo)localObject1;; localObject1 = null)
     {
-      return;
-      localnan = (nan)paramQQAppInterface.getManager(70);
-    } while ((localnan == null) || (paramRedDotInfo == null));
-    int i = paramRedDotInfo.uint32_appid.get();
-    if ((i != 56) && (i != 61))
-    {
-      paramRedDotInfo.bool_display_reddot.set(false);
-      paramRedDotInfo.uint32_number.set(0);
-      localnan.a(paramRedDotInfo);
-    }
-    paramQQAppInterface = (nag)paramQQAppInterface.a(43);
-    paramQQAppInterface.a(paramRedDotInfo);
-    paramQQAppInterface.a(paramRedDotInfo.uint32_appid.get());
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface, oidb_0x791.RedDotInfo paramRedDotInfo, int paramInt, boolean paramBoolean)
-  {
-    boolean bool = true;
-    int i;
-    label79:
-    amnz localamnz;
-    if ((paramQQAppInterface != null) && (paramRedDotInfo != null) && (paramRedDotInfo.uint32_appid.has()))
-    {
-      int j = paramRedDotInfo.uint32_appid.get();
-      if (!paramRedDotInfo.uint32_number.has()) {
-        break label181;
-      }
-      i = paramRedDotInfo.uint32_number.get();
-      if (j == 46)
+      ned localned = ndt.b().a();
+      if ((localObject1 != null) && (!TextUtils.isEmpty(((myo)localObject1).a.jdField_a_of_type_JavaLangString)))
       {
-        if ((!paramRedDotInfo.uint32_last_time.has()) || (paramRedDotInfo.uint32_last_time.get() == paramInt)) {
-          break label187;
+        bool1 = bool2;
+        String str;
+        long l1;
+        if (localned != null)
+        {
+          str = ((myo)localObject1).a.jdField_a_of_type_JavaLangString;
+          localned.a(false);
+          localObject2 = str;
+          bool1 = bool2;
+          if (paramInt1 != 3)
+          {
+            localObject2 = str;
+            bool1 = bool2;
+            if (paramInt1 != 4)
+            {
+              long l2 = parammyc.a().d();
+              l1 = l2;
+              if (l2 > ((myo)localObject1).a.jdField_a_of_type_Int * 1000) {
+                l1 = 0L;
+              }
+              if ((localned.a()) && (TextUtils.equals(str, localned.a()))) {
+                break label289;
+              }
+              if (l1 <= 500L) {
+                break label270;
+              }
+              localned.a(str, l1);
+              bool1 = bool2;
+              localObject2 = str;
+            }
+          }
         }
-        paramInt = 1;
-        localamnz = paramQQAppInterface.a().a();
-        if (localamnz.b(alof.aP, 6004) == null) {
-          break label192;
+        for (;;)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.i("GameRoomPresenterImp", 2, "playStarGuessVideo topic:" + localObject1 + " url:" + localObject2 + " stop:" + bool1 + " gameStatus:" + paramInt1);
+          }
+          return;
+          label270:
+          localned.a(str, 0L);
+          localObject2 = str;
+          bool1 = bool2;
+          continue;
+          label289:
+          localObject2 = str;
+          bool1 = bool2;
+          if (l1 - localned.a() > 500L)
+          {
+            localObject2 = str;
+            bool1 = bool2;
+          }
+        }
+      }
+      if (localned != null)
+      {
+        localned.b();
+        localned.c();
+      }
+      for (boolean bool1 = true;; bool1 = false)
+      {
+        if (paramInt2 == 4) {}
+        break;
+      }
+    }
+  }
+  
+  private void c(int paramInt1, int paramInt2, myc parammyc)
+  {
+    Object localObject1 = null;
+    if ((paramInt1 != 0) && (paramInt1 != 10) && (paramInt2 == 3))
+    {
+      localObject1 = parammyc.a();
+      if ((localObject1 != null) && ((localObject1 instanceof myn)))
+      {
+        localObject1 = (myn)localObject1;
+        parammyc = parammyc.b();
+      }
+    }
+    for (;;)
+    {
+      ArrayList localArrayList = new ArrayList();
+      ned localned = ndt.b().a();
+      if ((localObject1 != null) && (localned != null))
+      {
+        nec localnec = new nec();
+        localnec.jdField_a_of_type_JavaLangString = ((myn)localObject1).a.jdField_a_of_type_JavaLangString;
+        localnec.jdField_a_of_type_Long = (((myn)localObject1).a.jdField_a_of_type_Int * 1000);
+        localnec.b = ((myn)localObject1).a.b;
+        localArrayList.add(localnec);
+        if ((parammyc != null) && (!parammyc.isEmpty()))
+        {
+          paramInt1 = 0;
+          while (paramInt1 < parammyc.size())
+          {
+            Object localObject2 = (mxq)parammyc.get(paramInt1);
+            if ((localObject2 != null) && ((localObject2 instanceof myn)))
+            {
+              localnec = new nec();
+              localObject2 = (myn)localObject2;
+              localnec.jdField_a_of_type_JavaLangString = ((myn)localObject2).a.jdField_a_of_type_JavaLangString;
+              localnec.b = ((myn)localObject2).a.b;
+              localnec.jdField_a_of_type_Long = (((myn)localObject2).a.jdField_a_of_type_Int * 1000);
+              localArrayList.add(localnec);
+            }
+            paramInt1 += 1;
+          }
+        }
+        localned.a(localArrayList);
+      }
+      if (QLog.isColorLevel()) {
+        QLog.i("GameRoomPresenterImp", 2, "onNeedCheckAndPreloadAudioVideo  PreloadVideo videoTopic:" + localObject1 + " files:" + localArrayList);
+      }
+      return;
+      localObject1 = null;
+      break;
+      localArrayList = null;
+      parammyc = (myc)localObject1;
+      localObject1 = localArrayList;
+    }
+  }
+  
+  private void d(int paramInt1, int paramInt2, myc parammyc)
+  {
+    Object localObject1 = null;
+    if ((paramInt1 != 0) && (paramInt1 != 10) && (paramInt2 == 4))
+    {
+      localObject1 = parammyc.a();
+      if ((localObject1 != null) && ((localObject1 instanceof myo)))
+      {
+        localObject1 = (myo)localObject1;
+        parammyc = parammyc.b();
+      }
+    }
+    for (;;)
+    {
+      ArrayList localArrayList = new ArrayList();
+      ned localned = ndt.b().a();
+      if ((localObject1 != null) && (localned != null))
+      {
+        nec localnec = new nec();
+        localnec.jdField_a_of_type_JavaLangString = ((myo)localObject1).a.jdField_a_of_type_JavaLangString;
+        localnec.jdField_a_of_type_Long = (((myo)localObject1).a.jdField_a_of_type_Int * 1000);
+        localArrayList.add(localnec);
+        if ((parammyc != null) && (!parammyc.isEmpty()))
+        {
+          paramInt1 = 0;
+          while (paramInt1 < parammyc.size())
+          {
+            Object localObject2 = (mxq)parammyc.get(paramInt1);
+            if ((localObject2 != null) && ((localObject2 instanceof myo)))
+            {
+              localnec = new nec();
+              localObject2 = (myo)localObject2;
+              localnec.jdField_a_of_type_JavaLangString = ((myo)localObject2).a.jdField_a_of_type_JavaLangString;
+              localnec.jdField_a_of_type_Long = (((myo)localObject2).a.jdField_a_of_type_Int * 1000);
+              localArrayList.add(localnec);
+            }
+            paramInt1 += 1;
+          }
+        }
+        localned.a(localArrayList);
+      }
+      if (QLog.isColorLevel()) {
+        QLog.i("GameRoomPresenterImp", 2, "onNeedCheckAndPreloadAudioVideo PreloadAudio videoTopic:" + localObject1 + " files:" + localArrayList);
+      }
+      return;
+      localObject1 = null;
+      break;
+      localArrayList = null;
+      parammyc = (myc)localObject1;
+      localObject1 = localArrayList;
+    }
+  }
+  
+  private void e()
+  {
+    this.jdField_a_of_type_AndroidOsHandler.removeMessages(6);
+    this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(6, 1000L);
+  }
+  
+  private void f()
+  {
+    Object localObject1 = mxl.a().a();
+    int i = ((myc)localObject1).a();
+    boolean bool1 = ((myc)localObject1).c();
+    Player localPlayer = ((myc)localObject1).a();
+    boolean bool2;
+    label66:
+    AVGameUserInfo localAVGameUserInfo1;
+    label82:
+    AVGameUserInfo localAVGameUserInfo2;
+    label98:
+    label113:
+    boolean bool3;
+    label129:
+    boolean bool4;
+    label145:
+    boolean bool5;
+    label161:
+    boolean bool7;
+    boolean bool8;
+    boolean bool9;
+    long l;
+    Object localObject2;
+    boolean bool6;
+    if (bool1)
+    {
+      localObject1 = ((myc)localObject1).b();
+      if ((localPlayer == null) || (localObject1 == null) || (!TextUtils.equals(localPlayer.uin, ((Player)localObject1).uin))) {
+        break label591;
+      }
+      bool2 = true;
+      if (localPlayer == null) {
+        break label596;
+      }
+      localAVGameUserInfo1 = a(localPlayer.uin);
+      if (localObject1 == null) {
+        break label602;
+      }
+      localAVGameUserInfo2 = a(((Player)localObject1).uin);
+      if ((localAVGameUserInfo1 == null) || (localAVGameUserInfo1.mMicOn)) {
+        break label608;
+      }
+      bool1 = true;
+      if ((localAVGameUserInfo1 == null) || (localAVGameUserInfo1.hasCameraVideo())) {
+        break label613;
+      }
+      bool3 = true;
+      if ((localAVGameUserInfo2 == null) || (localAVGameUserInfo2.mMicOn)) {
+        break label619;
+      }
+      bool4 = true;
+      if ((localAVGameUserInfo2 == null) || (localAVGameUserInfo2.hasCameraVideo())) {
+        break label625;
+      }
+      bool5 = true;
+      bool7 = true;
+      bool8 = this.jdField_b_of_type_Boolean;
+      bool9 = this.jdField_a_of_type_Boolean;
+      l = this.jdField_b_of_type_Long;
+      localObject2 = ndt.b().a();
+      bool6 = bool1;
+      if (localObject2 != null) {
+        bool6 = ((AVGameSession)localObject2).e;
+      }
+      bool1 = bool7;
+      if (i != 0)
+      {
+        bool1 = bool7;
+        if (i != 10)
+        {
+          if (!bool2) {
+            break label659;
+          }
+          if (!bool6) {
+            break label631;
+          }
+          bool1 = false;
+          a(1, this.jdField_a_of_type_AndroidContentContext.getString(2131690214));
         }
       }
     }
     for (;;)
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("TroopRedTouchHandler", 2, " hasRecentUser " + bool + " isClicked " + paramBoolean + " redDotInfo.bool_display_reddot" + paramRedDotInfo.bool_display_reddot.get());
+      this.jdField_b_of_type_Boolean = bool6;
+      if (bool1) {
+        b(1);
       }
-      if ((bool) || (paramRedDotInfo.bool_display_reddot.get()) || (paramBoolean)) {
-        break label198;
+      if (QLog.isColorLevel())
+      {
+        localObject2 = new StringBuffer();
+        ((StringBuffer)localObject2).append("gameStatus:").append(i).append("\n");
+        ((StringBuffer)localObject2).append("self:").append(localPlayer).append("\n");
+        ((StringBuffer)localObject2).append("player:").append(localObject1).append("\n");
+        ((StringBuffer)localObject2).append("isSelfPlaying:").append(bool2).append("\n");
+        ((StringBuffer)localObject2).append("selfAV:").append(localAVGameUserInfo1).append("\n");
+        ((StringBuffer)localObject2).append("playerAV:").append(localAVGameUserInfo2).append("\n");
+        ((StringBuffer)localObject2).append("isSelfNoOpenAudio:").append(bool6).append("\n");
+        ((StringBuffer)localObject2).append("isSelfNoOpenCamera:").append(bool3).append("\n");
+        ((StringBuffer)localObject2).append("isPlayerNoOpenAudio:").append(bool4).append("\n");
+        ((StringBuffer)localObject2).append("isPlayerNoOpenCamera:").append(bool5).append("\n");
+        ((StringBuffer)localObject2).append("noPermanentTip:").append(bool1).append("\n");
+        ((StringBuffer)localObject2).append("selfAudioTipShowed:").append(bool9).append("\n");
+        ((StringBuffer)localObject2).append("lastIsSelfAudioNoOpen:").append(bool8).append("\n");
+        ((StringBuffer)localObject2).append("lastOtherAVPlayingTipUin:").append(l).append("\n");
+        QLog.d("GameRoomPresenterImp", 2, "checkAndShowAVStatusTips|" + ((StringBuffer)localObject2).toString());
       }
       return;
-      label181:
+      localObject1 = null;
+      break;
+      label591:
+      bool2 = false;
+      break label66;
+      label596:
+      localAVGameUserInfo1 = null;
+      break label82;
+      label602:
+      localAVGameUserInfo2 = null;
+      break label98;
+      label608:
+      bool1 = false;
+      break label113;
+      label613:
+      bool3 = false;
+      break label129;
+      label619:
+      bool4 = false;
+      break label145;
+      label625:
+      bool5 = false;
+      break label161;
+      label631:
+      bool1 = bool7;
+      if (bool3)
+      {
+        bool1 = false;
+        a(1, this.jdField_a_of_type_AndroidContentContext.getString(2131690215));
+        continue;
+        label659:
+        if ((bool6) && (!this.jdField_b_of_type_Boolean))
+        {
+          this.jdField_a_of_type_Boolean = true;
+          a(this.jdField_a_of_type_AndroidContentContext.getString(2131690211), 3000);
+          bool1 = bool7;
+        }
+        else if ((bool6) && (!this.jdField_a_of_type_Boolean))
+        {
+          this.jdField_a_of_type_Boolean = true;
+          a(this.jdField_a_of_type_AndroidContentContext.getString(2131690211));
+          bool1 = bool7;
+        }
+        else if ((bool4) && (this.jdField_b_of_type_Long != localAVGameUserInfo2.mUin))
+        {
+          this.jdField_b_of_type_Long = localAVGameUserInfo2.mUin;
+          a(this.jdField_a_of_type_AndroidContentContext.getString(2131690212));
+          bool1 = bool7;
+        }
+        else
+        {
+          bool1 = bool7;
+          if (bool5)
+          {
+            bool1 = bool7;
+            if (this.jdField_b_of_type_Long != localAVGameUserInfo2.mUin)
+            {
+              this.jdField_b_of_type_Long = localAVGameUserInfo2.mUin;
+              a(this.jdField_a_of_type_AndroidContentContext.getString(2131690213));
+              bool1 = bool7;
+            }
+          }
+        }
+      }
+    }
+  }
+  
+  private void j()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("GameRoomPresenterImp", 2, "startRefreshGameListRunnable()");
+    }
+    k();
+    long l = mxl.a().a();
+    if (QLog.isColorLevel()) {
+      QLog.i("GameRoomPresenterImp", 2, "startRefreshGameListRunnable() nextRefreshTimeInterval = " + l);
+    }
+    if (l != 9223372036854775807L)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("GameRoomPresenterImp", 2, "startRefreshGameListRunnable() postRunnable and nextRefreshTimeInterval = " + l);
+      }
+      bjda.a().postDelayed(this.jdField_a_of_type_JavaLangRunnable, l * 1000L + 2000L);
+    }
+  }
+  
+  private void k()
+  {
+    bjda.a().removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
+  }
+  
+  private void n(myc parammyc)
+  {
+    Player localPlayer;
+    int i;
+    if ((parammyc.c() == 1) && (System.currentTimeMillis() - this.jdField_a_of_type_Long > 3000L))
+    {
+      localPlayer = parammyc.a();
+      parammyc = parammyc.b();
+      if ((localPlayer == null) || (parammyc == null) || (!TextUtils.equals(localPlayer.uin, parammyc.uin))) {
+        break label177;
+      }
+      i = 1;
+      if (localPlayer == null) {
+        break label182;
+      }
+    }
+    label177:
+    label182:
+    for (parammyc = a(localPlayer.uin);; parammyc = null)
+    {
+      if ((i != 0) && (parammyc != null))
+      {
+        if (!parammyc.hasVideo()) {
+          bcst.b(null, "dc00898", "", "", "0X800B03E", "0X800B03E", 0, 0, "", "", "", "");
+        }
+        parammyc = ndt.b().a();
+        if ((parammyc != null) && (parammyc.e)) {
+          bcst.b(null, "dc00898", "", "", "0X800B03F", "0X800B03F", 0, 0, "", "", "", "");
+        }
+      }
+      this.jdField_a_of_type_Long = System.currentTimeMillis();
+      return;
       i = 0;
       break;
-      label187:
-      paramInt = 0;
-      break label79;
-      label192:
-      bool = false;
-    }
-    label198:
-    RecentUser localRecentUser = localamnz.a(alof.aP, 6004);
-    if ((i > 0) && ((paramRedDotInfo.bool_display_reddot.get()) || (paramBoolean))) {
-      if (!paramRedDotInfo.uint32_last_time.has()) {
-        break label303;
-      }
-    }
-    label303:
-    for (long l = paramRedDotInfo.uint32_last_time.get();; l = NetConnInfoCenter.getServerTimeMillis() / 1000L)
-    {
-      localRecentUser.lastmsgtime = l;
-      localRecentUser.msgType = 0;
-      localRecentUser.displayName = paramQQAppInterface.getApp().getString(2131720741);
-      if (paramInt != 0) {
-        localamnz.a(localRecentUser);
-      }
-      paramQQAppInterface.a().a(localRecentUser);
-      paramQQAppInterface.D();
-      return;
     }
   }
   
-  private static boolean b(QQAppInterface paramQQAppInterface, List<Integer> paramList, byte[] paramArrayOfByte)
+  public Activity a()
   {
-    try
-    {
-      oidb_sso.OIDBSSOPkg localOIDBSSOPkg = new oidb_sso.OIDBSSOPkg();
-      localOIDBSSOPkg.mergeFrom(paramArrayOfByte);
-      if ((localOIDBSSOPkg == null) || (!localOIDBSSOPkg.uint32_result.has()) || (localOIDBSSOPkg.uint32_result.get() != 0) || (!localOIDBSSOPkg.bytes_bodybuffer.has()) || (localOIDBSSOPkg.bytes_bodybuffer.get() == null))
-      {
-        a(paramQQAppInterface, 120L);
-        return false;
-      }
-      paramArrayOfByte = new oidb_0x791.RspBody();
-      paramArrayOfByte.mergeFrom(localOIDBSSOPkg.bytes_bodybuffer.get().toByteArray());
-      paramArrayOfByte = (oidb_0x791.GetRedDotRes)paramArrayOfByte.msg_get_reddot_res.get();
-      if (paramArrayOfByte != null)
-      {
-        a(paramQQAppInterface, paramArrayOfByte.uint32_interval.get());
-        boolean bool = ((nan)paramQQAppInterface.getManager(70)).a(paramList, paramArrayOfByte);
-        return bool;
-      }
-    }
-    catch (Exception paramQQAppInterface)
-    {
-      paramQQAppInterface.printStackTrace();
-    }
-    return false;
+    return this.jdField_a_of_type_Nam.a();
   }
   
-  private void c()
+  public AVGameUserInfo a(String paramString)
   {
-    if (this.jdField_a_of_type_Int != 0)
+    AVGameSession localAVGameSession = ndt.b().a();
+    if (localAVGameSession != null) {
+      return localAVGameSession.a(Long.valueOf(paramString).longValue());
+    }
+    return null;
+  }
+  
+  public String a()
+  {
+    String str = "";
+    myg localmyg = mxl.a().a().a();
+    if (localmyg != null) {
+      str = localmyg.e;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("GameRoomPresenterImp", 2, "getGamePrepareTransparentBgURL = " + str);
+    }
+    return str;
+  }
+  
+  public List<nan> a()
+  {
+    List localList = b();
+    ArrayList localArrayList = new ArrayList();
+    Object localObject1 = this.jdField_a_of_type_Nbb.b();
+    if (localObject1 != null) {
+      localArrayList.addAll((Collection)localObject1);
+    }
+    RectF localRectF = this.jdField_a_of_type_Nbn.a();
+    Object localObject2 = null;
+    localObject1 = null;
+    if (localRectF != null)
     {
-      localObject1 = this.app.getApplication().getSharedPreferences(this.app.getCurrentAccountUin() + "RedTouchExManager_GetTime", 0);
-      long l1 = ((SharedPreferences)localObject1).getLong("last_get_time", 0L);
-      long l2 = ((SharedPreferences)localObject1).getLong("interval_time", 0L);
-      long l3 = Math.abs(System.currentTimeMillis() / 1000L - l1);
-      if (QLog.isDevelopLevel()) {
-        QLog.d("TroopRedTouchHandler", 4, "getRedPointInfo() start getRedPointInfoAsync,last_get_time:" + l1 + " |detal(current_time - last_get_time):" + l3 + " |interval_time:" + l2);
+      int i = 0;
+      for (;;)
+      {
+        localObject2 = localObject1;
+        if (i >= localArrayList.size()) {
+          break;
+        }
+        localObject2 = (nan)localArrayList.get(i);
+        if (((nan)localObject2).jdField_b_of_type_Boolean)
+        {
+          ((nan)localObject2).jdField_a_of_type_Int = Math.round(localRectF.left);
+          ((nan)localObject2).jdField_b_of_type_Int = Math.round(localRectF.top);
+          ((nan)localObject2).jdField_c_of_type_Int = Math.round(localRectF.width());
+          ((nan)localObject2).d = Math.round(localRectF.height());
+          localObject1 = localObject2;
+        }
+        if (((nan)localObject2).jdField_c_of_type_Boolean)
+        {
+          ((nan)localObject2).f = Math.round(localRectF.left);
+          ((nan)localObject2).g = Math.round(localRectF.top);
+          ((nan)localObject2).h = Math.round(localRectF.width());
+          ((nan)localObject2).i = Math.round(localRectF.height());
+        }
+        i += 1;
       }
-      if (l3 < l2) {
-        return;
-      }
     }
-    if (QLog.isDevelopLevel()) {
-      QLog.d("TroopRedTouchHandler", 4, "getRedPointInfo() start");
-    }
-    Object localObject1 = new ArrayList();
-    ((List)localObject1).add(Integer.valueOf(8));
-    ((List)localObject1).add(Integer.valueOf(11));
-    ((List)localObject1).add(Integer.valueOf(52));
-    ((List)localObject1).add(Integer.valueOf(21));
-    ((List)localObject1).add(Integer.valueOf(35));
-    ((List)localObject1).add(Integer.valueOf(23));
-    ((List)localObject1).add(Integer.valueOf(24));
-    ((List)localObject1).add(Integer.valueOf(25));
-    ((List)localObject1).add(Integer.valueOf(26));
-    ((List)localObject1).add(Integer.valueOf(27));
-    ((List)localObject1).add(Integer.valueOf(37));
-    ((List)localObject1).add(Integer.valueOf(38));
-    ((List)localObject1).add(Integer.valueOf(39));
-    ((List)localObject1).add(Integer.valueOf(40));
-    ((List)localObject1).add(Integer.valueOf(41));
-    ((List)localObject1).add(Integer.valueOf(42));
-    ((List)localObject1).add(Integer.valueOf(58));
-    ((List)localObject1).add(Integer.valueOf(56));
-    ((List)localObject1).add(Integer.valueOf(57));
-    ((List)localObject1).add(Integer.valueOf(59));
-    ((List)localObject1).add(Integer.valueOf(60));
-    ((List)localObject1).add(Integer.valueOf(61));
-    ((List)localObject1).add(Integer.valueOf(63));
-    ((List)localObject1).add(Integer.valueOf(54));
-    ((List)localObject1).add(Integer.valueOf(53));
-    ((List)localObject1).add(Integer.valueOf(65));
-    if (baic.a(this.app)) {
-      ((List)localObject1).add(Integer.valueOf(46));
-    }
-    Object localObject3 = new oidb_0x791.GetRedDotOpt();
-    ((oidb_0x791.GetRedDotOpt)localObject3).uint64_uin.set(Long.parseLong(this.app.getCurrentAccountUin()));
-    ((oidb_0x791.GetRedDotOpt)localObject3).rpt_uint32_appid.addAll((Collection)localObject1);
-    Object localObject2 = new oidb_0x791.ReqBody();
-    ((oidb_0x791.ReqBody)localObject2).msg_get_reddot.set((MessageMicro)localObject3);
-    localObject3 = new oidb_sso.OIDBSSOPkg();
-    ((oidb_sso.OIDBSSOPkg)localObject3).uint32_command.set(1937);
-    ((oidb_sso.OIDBSSOPkg)localObject3).uint32_result.set(0);
-    ((oidb_sso.OIDBSSOPkg)localObject3).uint32_service_type.set(0);
-    ((oidb_sso.OIDBSSOPkg)localObject3).bytes_bodybuffer.set(ByteStringMicro.copyFrom(((oidb_0x791.ReqBody)localObject2).toByteArray()));
-    localObject2 = new NewIntent(this.app.getApplication(), mzx.class);
-    ((NewIntent)localObject2).setWithouLogin(true);
-    ((NewIntent)localObject2).putExtra("cmd", "OidbSvc.0x791_0");
-    ((NewIntent)localObject2).putExtra("data", ((oidb_sso.OIDBSSOPkg)localObject3).toByteArray());
-    ((NewIntent)localObject2).setObserver(new nah(this, (List)localObject1));
-    this.app.startServlet((NewIntent)localObject2);
+    QLog.i("GameRoomPresenterImp", 1, "getMemberVideoDisplayInfoList bigVideoInfo:" + localObject2 + "  playingRect:" + localRectF + " displayList:" + localArrayList + " aVList:" + localList);
+    return localArrayList;
+  }
+  
+  public nam a()
+  {
+    return this.jdField_a_of_type_Nam;
+  }
+  
+  public nat a()
+  {
+    return this.jdField_a_of_type_Nat;
+  }
+  
+  public nav a()
+  {
+    return this.jdField_a_of_type_Nav;
+  }
+  
+  public nbb a()
+  {
+    return this.jdField_a_of_type_Nbb;
+  }
+  
+  public nbo a()
+  {
+    return this.jdField_a_of_type_Nbo;
   }
   
   public void a()
   {
-    this.app.addObserver(this.jdField_a_of_type_Alpg);
+    myc localmyc = mxl.a().a();
+    this.jdField_a_of_type_AndroidOsHandler.removeMessages(6);
+    this.jdField_a_of_type_AndroidOsHandler.removeMessages(7);
+    this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(7, 1000L);
+    m(localmyc);
+    k(localmyc);
+    j();
+    QLog.i("GameRoomPresenterImp", 1, "onFragmentStart");
   }
   
   public void a(int paramInt)
   {
-    String str;
-    if (paramInt == 60)
+    if (paramInt >= 0)
     {
-      b(60);
-      str = "7719.771901";
-    }
-    for (;;)
-    {
-      if (str.length() <= 0) {}
-      axlx localaxlx;
-      do
-      {
-        return;
-        if (paramInt == 59)
-        {
-          b(59);
-          str = "7719.771903";
-          break;
-        }
-        if (paramInt == 38)
-        {
-          str = "7719.771904";
-          break;
-        }
-        if ((paramInt != 53) && (paramInt != 54)) {
-          break label112;
-        }
-        str = "7719.771901";
-        break;
-        localaxlx = (axlx)this.app.getManager(36);
-        localaxlx.b(str);
-      } while (localaxlx.a(7719) == null);
-      localaxlx.a(7719, str);
+      this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1, 0L);
       return;
-      label112:
-      str = "";
+    }
+    this.jdField_a_of_type_Nam.a(a());
+    this.jdField_a_of_type_Nbn.b(mxl.a().a());
+  }
+  
+  public void a(int paramInt, String paramString)
+  {
+    this.jdField_a_of_type_Nam.b(paramInt, paramString);
+  }
+  
+  public void a(int paramInt, String paramString1, String paramString2, myc parammyc)
+  {
+    QLog.i("GameRoomPresenterImp", 1, "onRoomOtherMemberExit exitType:" + paramInt + " kickUin:" + paramString1 + " exitRoomTip:" + paramString2 + " engineData:" + parammyc);
+    a(paramString2);
+    i(parammyc);
+    a(-1);
+  }
+  
+  public void a(long paramLong, int paramInt, String paramString1, String paramString2)
+  {
+    if (this.jdField_a_of_type_Nam != null) {
+      this.jdField_a_of_type_Nam.a(paramLong, paramInt, paramString1, paramString2);
     }
   }
   
-  public void a(int paramInt1, int paramInt2)
+  public void a(long paramLong1, long paramLong2)
+  {
+    this.jdField_a_of_type_Nam.a(paramLong1, paramLong2);
+  }
+  
+  public void a(long paramLong, String paramString1, String paramString2)
+  {
+    this.jdField_a_of_type_Nam.a(1, paramString2);
+  }
+  
+  public void a(long paramLong, String paramString1, boolean paramBoolean, String paramString2, int paramInt)
+  {
+    i(mxl.a().a());
+  }
+  
+  public void a(Context paramContext, nat paramnat, nbn paramnbn, nbb paramnbb, nav paramnav, ndc paramndc, nbo paramnbo)
+  {
+    this.jdField_a_of_type_AndroidOsHandler = new Handler(this);
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_Nat = paramnat;
+    this.jdField_a_of_type_Nbn = paramnbn;
+    this.jdField_a_of_type_Nbb = paramnbb;
+    this.jdField_a_of_type_Nav = paramnav;
+    this.jdField_a_of_type_Ndc = paramndc;
+    this.jdField_a_of_type_Nbo = paramnbo;
+    mxl.a().a(this);
+    mxl.a().a(this);
+    ndt.b().a(this.jdField_a_of_type_Mwx);
+    if (this.jdField_a_of_type_Naj == null)
+    {
+      this.jdField_a_of_type_Naj = new naj(this.jdField_a_of_type_AndroidOsHandler);
+      mwu.a().a(this.jdField_a_of_type_Naj, true);
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("GameRoomPresenterImp", 2, "init");
+    }
+  }
+  
+  public void a(String paramString)
+  {
+    this.jdField_a_of_type_Nam.a(paramString);
+  }
+  
+  public void a(String paramString, int paramInt)
+  {
+    this.jdField_a_of_type_Nam.a(paramString, paramInt);
+  }
+  
+  public void a(String paramString, int paramInt1, int paramInt2)
+  {
+    if ((paramInt2 == 3) && ((paramInt1 == 113) || (paramInt1 == 109)))
+    {
+      paramString = a().getResources().getString(2131690380);
+      this.jdField_a_of_type_Nam.a(1, paramString);
+    }
+  }
+  
+  public void a(String paramString, int paramInt, myc parammyc)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("TroopRedTouchHandler", 2, "clearStoryMessageRedPoint");
+      QLog.d("GameRoomPresenterImp", 2, "pushOnChangeUserStatus uin = " + paramString);
     }
-    qqstory_710_message.ReqClearMessage localReqClearMessage = new qqstory_710_message.ReqClearMessage();
-    localReqClearMessage.start_time.set(paramInt1);
-    localReqClearMessage.source.set(paramInt2);
-    localReqClearMessage.version_ctrl.set(775);
-    NewIntent localNewIntent = new NewIntent(this.app.getApplication(), mzx.class);
-    localNewIntent.putExtra("cmd", uqn.a("StorySvc.clr_710_message_list"));
-    localNewIntent.putExtra("data", localReqClearMessage.toByteArray());
-    localNewIntent.setObserver(new nak(this));
-    this.app.startServlet(localNewIntent);
+    if ((paramString.equals(mxl.a().a().getAccount())) && (paramInt == 1)) {
+      this.jdField_a_of_type_Nam.d();
+    }
+    i(parammyc);
   }
   
-  public void a(int paramInt1, boolean paramBoolean1, int paramInt2, boolean paramBoolean2, oidb_0x791.RedDotInfo paramRedDotInfo, boolean paramBoolean3, boolean paramBoolean4)
+  public void a(String paramString1, long paramLong, int paramInt1, int paramInt2, String paramString2)
   {
-    Object localObject1 = new oidb_0x791.SetRedDotOpt();
-    ((oidb_0x791.SetRedDotOpt)localObject1).uint64_cmd_uin.set(Long.parseLong(this.app.getCurrentAccountUin()));
-    Object localObject2 = new ArrayList();
-    ((ArrayList)localObject2).add(Long.valueOf(Long.parseLong(this.app.getCurrentAccountUin())));
-    ((oidb_0x791.SetRedDotOpt)localObject1).rpt_uint64_uin.set((List)localObject2);
-    ((oidb_0x791.SetRedDotOpt)localObject1).bool_clear.set(paramBoolean1);
-    if (paramInt2 >= 0) {
-      ((oidb_0x791.SetRedDotOpt)localObject1).uint32_total_number.set(paramInt2);
+    if (QLog.isColorLevel()) {
+      QLog.i("GameRoomPresenterImp", 2, "onGameStartFail uin:" + paramString1 + " gameType:" + paramInt1 + " roomId:" + paramLong + " errorCode " + paramInt2 + " errMsg:" + paramString2);
     }
-    ((oidb_0x791.SetRedDotOpt)localObject1).bool_keep_unchanged.set(paramBoolean2);
-    ((oidb_0x791.SetRedDotOpt)localObject1).bool_push_to_client.set(paramBoolean3);
-    if (paramRedDotInfo != null)
+    if (paramInt2 == 404)
     {
-      if (paramRedDotInfo.bool_display_reddot.has()) {
-        ((oidb_0x791.SetRedDotOpt)localObject1).bool_display_reddot.set(paramRedDotInfo.bool_display_reddot.get());
-      }
-      if (paramRedDotInfo.uint32_number.has()) {
-        ((oidb_0x791.SetRedDotOpt)localObject1).int32_number.set(paramRedDotInfo.uint32_number.get());
-      }
-      if (paramRedDotInfo.str_custom_buffer.has()) {
-        ((oidb_0x791.SetRedDotOpt)localObject1).str_custom_buffer.set(paramRedDotInfo.str_custom_buffer.get());
-      }
-      if (paramRedDotInfo.str_face_url.has()) {
-        ((oidb_0x791.SetRedDotOpt)localObject1).str_face_url.set(paramRedDotInfo.str_face_url.get());
-      }
-      if (paramRedDotInfo.uint32_expire_time.has()) {
-        ((oidb_0x791.SetRedDotOpt)localObject1).uint32_expire_time.set(paramRedDotInfo.uint32_expire_time.get());
-      }
-      if (paramRedDotInfo.uint64_cmd_uin.has()) {
-        ((oidb_0x791.SetRedDotOpt)localObject1).uint64_cmd_uin.set(paramRedDotInfo.uint64_cmd_uin.get());
-      }
-      if (paramRedDotInfo.uint32_reason.has()) {
-        ((oidb_0x791.SetRedDotOpt)localObject1).uint32_reason.set(paramRedDotInfo.uint32_reason.get());
-      }
-      if (paramRedDotInfo.uint32_last_time.has()) {
-        ((oidb_0x791.SetRedDotOpt)localObject1).uint32_last_time.set(paramRedDotInfo.uint32_last_time.get());
-      }
-    }
-    paramRedDotInfo = new oidb_0x791.ReqBody();
-    paramRedDotInfo.msg_set_reddot.set((MessageMicro)localObject1);
-    localObject1 = new oidb_sso.OIDBSSOPkg();
-    localObject2 = ((oidb_sso.OIDBSSOPkg)localObject1).uint32_command;
-    if (paramBoolean4) {}
-    for (paramInt2 = 2887;; paramInt2 = 1937)
-    {
-      ((PBUInt32Field)localObject2).set(paramInt2);
-      ((oidb_sso.OIDBSSOPkg)localObject1).uint32_result.set(0);
-      ((oidb_sso.OIDBSSOPkg)localObject1).uint32_service_type.set(paramInt1);
-      ((oidb_sso.OIDBSSOPkg)localObject1).bytes_bodybuffer.set(ByteStringMicro.copyFrom(paramRedDotInfo.toByteArray()));
-      paramRedDotInfo = new NewIntent(this.app.getApplication(), mzx.class);
-      paramRedDotInfo.putExtra("cmd", "OidbSvc.0x791_" + String.valueOf(paramInt1));
-      paramRedDotInfo.putExtra("data", ((oidb_sso.OIDBSSOPkg)localObject1).toByteArray());
-      paramRedDotInfo.setObserver(new nal(this));
-      this.app.startServlet(paramRedDotInfo);
-      return;
-    }
-  }
-  
-  public void a(nan paramnan, int paramInt)
-  {
-    paramnan = paramnan.a(paramInt);
-    a(this.app, paramnan);
-  }
-  
-  public void a(oidb_0x791.RedDotInfo paramRedDotInfo)
-  {
-    if (paramRedDotInfo == null) {
-      return;
-    }
-    Object localObject1 = new oidb_0x791.SetRedDotOpt();
-    ((oidb_0x791.SetRedDotOpt)localObject1).uint64_cmd_uin.set(Long.parseLong(this.app.getCurrentAccountUin()));
-    Object localObject2 = new ArrayList();
-    ((ArrayList)localObject2).add(Long.valueOf(Long.parseLong(this.app.getCurrentAccountUin())));
-    ((oidb_0x791.SetRedDotOpt)localObject1).rpt_uint64_uin.set((List)localObject2);
-    ((oidb_0x791.SetRedDotOpt)localObject1).bool_clear.set(true);
-    if (paramRedDotInfo.uint32_appid.get() == 46) {
-      ((oidb_0x791.SetRedDotOpt)localObject1).bool_push_to_client.set(true);
+      paramString1 = a().getResources().getString(2131690252);
+      this.jdField_a_of_type_Nam.a(paramString1, null);
     }
     for (;;)
     {
-      localObject2 = new oidb_0x791.ReqBody();
-      ((oidb_0x791.ReqBody)localObject2).msg_set_reddot.set((MessageMicro)localObject1);
-      localObject1 = new oidb_sso.OIDBSSOPkg();
-      ((oidb_sso.OIDBSSOPkg)localObject1).uint32_command.set(1937);
-      ((oidb_sso.OIDBSSOPkg)localObject1).uint32_result.set(0);
-      ((oidb_sso.OIDBSSOPkg)localObject1).uint32_service_type.set(paramRedDotInfo.uint32_appid.get());
-      ((oidb_sso.OIDBSSOPkg)localObject1).bytes_bodybuffer.set(ByteStringMicro.copyFrom(((oidb_0x791.ReqBody)localObject2).toByteArray()));
-      localObject2 = new NewIntent(this.app.getApplication(), mzx.class);
-      ((NewIntent)localObject2).putExtra("cmd", "OidbSvc.0x791_" + String.valueOf(paramRedDotInfo.uint32_appid.get()));
-      ((NewIntent)localObject2).putExtra("data", ((oidb_sso.OIDBSSOPkg)localObject1).toByteArray());
-      ((NewIntent)localObject2).setObserver(new nai(this));
-      this.app.startServlet((NewIntent)localObject2);
+      this.jdField_a_of_type_Nbn.a(mxl.a().a());
       return;
-      ((oidb_0x791.SetRedDotOpt)localObject1).bool_push_to_client.set(false);
+      if (paramInt2 == 405)
+      {
+        paramString1 = a().getResources().getString(2131690372);
+        this.jdField_a_of_type_Nam.a(1, paramString1);
+        i(mxl.a().a());
+      }
+      else if ((paramInt2 == 406) && (paramString2 != null) && (paramString2.length() > 0))
+      {
+        this.jdField_a_of_type_Nam.a(paramString2, null);
+      }
+      else
+      {
+        this.jdField_a_of_type_Nam.a(1, "开始游戏失败");
+      }
     }
   }
   
-  public boolean a()
+  public void a(String paramString, myc parammyc)
   {
-    QLog.d("TroopRedTouchHandler", 2, "getRedPointInfo<requestedRedPoint:" + this.jdField_a_of_type_Int);
-    if (this.jdField_a_of_type_Int != 1)
+    i(parammyc);
+  }
+  
+  public void a(HashMap<String, String> paramHashMap)
+  {
+    this.jdField_a_of_type_Nbb.a(mxl.a().a());
+  }
+  
+  public void a(myc parammyc)
+  {
+    this.jdField_a_of_type_Nat.a(parammyc);
+    nfu.a().a("param_StepGameReady", 0);
+    if (this.jdField_a_of_type_Nat.a()) {
+      nfu.a().a("param_StepGameCanStart");
+    }
+    j();
+  }
+  
+  public void a(myc parammyc, int paramInt)
+  {
+    if (paramInt == 4) {
+      this.jdField_a_of_type_Nam.d();
+    }
+    i(parammyc);
+  }
+  
+  public void a(myc parammyc, String paramString)
+  {
+    this.jdField_a_of_type_Nbn.a(parammyc);
+    this.jdField_a_of_type_Nbn.a(paramString);
+  }
+  
+  public void a(myc parammyc, boolean paramBoolean)
+  {
+    GameRoomPresenterImp.4 local4 = new GameRoomPresenterImp.4(this);
+    if (paramBoolean)
     {
-      ThreadManager.post(new TroopRedTouchHandler.1(this), 5, null, true);
+      bjda.a().postDelayed(local4, 1560L);
+      i(parammyc);
+    }
+    for (;;)
+    {
+      e();
+      k(parammyc);
+      l(parammyc);
+      return;
+      local4.run();
+    }
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    Player localPlayer = mxl.a().a().a();
+    bcst.b(null, "dc00898", "", "", "0X800B035", "0X800B035", mxb.a().a(localPlayer) + 1, 0, "1", "", "", "");
+    mxb.a().a(a(), paramBoolean, false);
+  }
+  
+  public void a(boolean paramBoolean, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("GameRoomPresenterImp", 2, "exitGameRoom svrAlreadyExit:" + paramBoolean);
+    }
+    this.jdField_a_of_type_Nam.f();
+    mxl.a().a(paramBoolean, paramInt);
+  }
+  
+  public boolean a(int paramInt, String paramString, myc parammyc)
+  {
+    QLog.i("GameRoomPresenterImp", 1, "onRoomSelfExit exitType:" + paramInt + " exitRoomTip:" + paramString + " engineData:" + parammyc);
+    switch (paramInt)
+    {
+    case 0: 
+    default: 
+      a(true, paramInt);
+      this.jdField_a_of_type_Nam.e();
+    case -2: 
+    case -1: 
+    case 1: 
+    case 2: 
+      return true;
+    case 3: 
+    case 4: 
+    case 6: 
+    case 7: 
+      a(true, paramInt);
+      this.jdField_a_of_type_Nam.a(paramString, this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener);
+      return true;
+    case 5: 
+    case 9: 
+    case 10: 
+    case 11: 
+      a(false, paramInt);
+      this.jdField_a_of_type_Nam.a(paramString, this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener);
       return true;
     }
-    return false;
+    a(false, paramInt);
+    this.jdField_a_of_type_Nam.e();
+    return true;
+  }
+  
+  public String b()
+  {
+    String str = "";
+    myg localmyg = mxl.a().a().a();
+    if (localmyg != null) {
+      str = localmyg.d;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("GameRoomPresenterImp", 2, "getGamePrepareBgURL = " + str);
+    }
+    return str;
+  }
+  
+  public List<AVGameUserInfo> b()
+  {
+    AVGameSession localAVGameSession = ndt.b().a();
+    ArrayList localArrayList = new ArrayList();
+    if (localAVGameSession != null) {
+      localAVGameSession.b(localArrayList);
+    }
+    return localArrayList;
   }
   
   public void b()
   {
-    this.app.removeObserver(this.jdField_a_of_type_Alpg);
+    this.jdField_a_of_type_AndroidOsHandler.removeMessages(7);
+    k();
   }
   
   public void b(int paramInt)
   {
-    Object localObject = (nan)this.app.getManager(70);
-    if (localObject != null)
+    this.jdField_a_of_type_Nam.b(paramInt);
+  }
+  
+  public void b(long paramLong, String paramString1, String paramString2) {}
+  
+  public void b(String paramString)
+  {
+    this.jdField_a_of_type_Nam.b(paramString);
+  }
+  
+  public void b(String paramString, myc parammyc)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("GameRoomPresenterImp", 2, "pushOnRoomEnter roomEnterTip = " + paramString);
+    }
+    a().h();
+    a(paramString);
+    i(parammyc);
+  }
+  
+  public void b(myc parammyc)
+  {
+    if (!mxl.a().a()) {
+      this.jdField_a_of_type_Nat.a(parammyc);
+    }
+  }
+  
+  public void b(myc parammyc, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("GameRoomPresenterImp", 2, "onAnswerRightPush scoreThisTime = " + paramInt);
+    }
+    this.jdField_a_of_type_Nbn.a(parammyc);
+    this.jdField_a_of_type_Nbb.a(parammyc);
+  }
+  
+  public void b(boolean paramBoolean)
+  {
+    e();
+  }
+  
+  public List<Player> c()
+  {
+    ArrayList localArrayList = new ArrayList();
+    localArrayList.addAll(mxl.a().a().a().getPlayers());
+    return localArrayList;
+  }
+  
+  public void c()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("GameRoomPresenterImp", 2, "destroy");
+    }
+    this.jdField_a_of_type_Nbb.b();
+    this.jdField_a_of_type_Nbn.c();
+    ndt.b().b(this.jdField_a_of_type_Mwx);
+    mxl.a().b(this);
+    mxl.a().b(this);
+    this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
+    if (this.jdField_a_of_type_Naj != null)
     {
-      oidb_0x791.RedDotInfo localRedDotInfo = ((nan)localObject).a(paramInt, false);
-      if ((localRedDotInfo != null) && (localRedDotInfo.uint32_number.has()) && (localRedDotInfo.uint32_number.get() > 0))
+      mwu.a().b(this.jdField_a_of_type_Naj);
+      this.jdField_a_of_type_Naj = null;
+    }
+  }
+  
+  public void c(String paramString, myc parammyc)
+  {
+    this.jdField_a_of_type_Nbn.a(paramString, parammyc);
+  }
+  
+  public void c(myc parammyc)
+  {
+    this.jdField_a_of_type_Nam.b();
+    i(parammyc);
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_b_of_type_Long = 0L;
+    e();
+    n(parammyc);
+  }
+  
+  public void c(myc parammyc, int paramInt)
+  {
+    i(parammyc);
+  }
+  
+  public void c(boolean paramBoolean)
+  {
+    e();
+  }
+  
+  public void d()
+  {
+    this.jdField_a_of_type_Nam.g();
+  }
+  
+  public void d(String paramString, myc parammyc)
+  {
+    this.jdField_a_of_type_Nbn.b(paramString, parammyc);
+  }
+  
+  public void d(myc parammyc)
+  {
+    this.jdField_a_of_type_Nbn.a(parammyc);
+  }
+  
+  public void d(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Nam.a(paramBoolean);
+  }
+  
+  public void e(myc parammyc)
+  {
+    m(parammyc);
+  }
+  
+  public void f(myc parammyc)
+  {
+    this.jdField_a_of_type_Nam.b();
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_b_of_type_Long = 0L;
+    i(parammyc);
+    e();
+    neq.a().a().post(new GameRoomPresenterImp.5(this));
+    n(parammyc);
+  }
+  
+  public void g()
+  {
+    this.jdField_a_of_type_Nat.a(mxl.a().a());
+  }
+  
+  public void g(myc parammyc)
+  {
+    i(parammyc);
+    e();
+    n(parammyc);
+  }
+  
+  public void h()
+  {
+    if (!mxl.a().a()) {
+      this.jdField_a_of_type_Nat.a(mxl.a().a());
+    }
+  }
+  
+  public void h(myc parammyc)
+  {
+    this.jdField_a_of_type_Nbn.a(parammyc);
+  }
+  
+  public boolean handleMessage(Message paramMessage)
+  {
+    int k = 0;
+    switch (paramMessage.what)
+    {
+    }
+    do
+    {
+      do
       {
-        localRedDotInfo.uint32_number.set(0);
-        ((nan)localObject).a(localRedDotInfo);
-        localObject = new oidb_0x791.RedDotInfo();
-        ((oidb_0x791.RedDotInfo)localObject).uint32_appid.set(paramInt);
-        if (localRedDotInfo.uint32_last_time.has()) {
-          ((oidb_0x791.RedDotInfo)localObject).uint32_last_time.set(localRedDotInfo.uint32_last_time.get());
+        do
+        {
+          return true;
+          a(-1);
+          return true;
+          this.jdField_a_of_type_Nbb.a(mxl.a().a());
+          return true;
+          this.jdField_a_of_type_Nbn.a(mxl.a().a());
+          return true;
+          this.jdField_a_of_type_Nat.a(mxl.a().a());
+          return true;
+          this.jdField_a_of_type_Nat.a(mxl.a().a());
+          this.jdField_a_of_type_Nbb.a(mxl.a().a());
+          this.jdField_a_of_type_Nbn.a(mxl.a().a());
+          return true;
+          f();
+          return true;
+          j(mxl.a().a());
+          a(0);
+          f();
+          return true;
+        } while (leo.b() == 1);
+        a(this.jdField_a_of_type_AndroidContentContext.getString(2131690304));
+        bcst.b(null, "dc00898", "", "", "0X800B040", "0X800B040", 0, 0, "", "", "", "");
+        return true;
+      } while ((this.jdField_a_of_type_AndroidContentContext == null) || (!(this.jdField_a_of_type_AndroidContentContext instanceof AVGameActivity)));
+      paramMessage = (AVGameActivity)this.jdField_a_of_type_AndroidContentContext;
+    } while (paramMessage.c());
+    for (;;)
+    {
+      int j;
+      try
+      {
+        if ((paramMessage.c()) || (ndt.b().a() != 1)) {
+          break label349;
         }
-        a(paramInt, false, 0, true, (oidb_0x791.RedDotInfo)localObject, true, true);
+        i = 1;
+        j = k;
+        if (ndt.b().a() != 0) {
+          break label354;
+        }
+        j = k;
+        if (ndt.b().b()) {
+          break label354;
+        }
+        j = 1;
+      }
+      catch (Exception paramMessage)
+      {
+        paramMessage.printStackTrace();
+        return true;
+      }
+      a(this.jdField_a_of_type_AndroidContentContext.getString(2131690209));
+      return true;
+      label349:
+      int i = 0;
+      continue;
+      label354:
+      if (i == 0) {
+        if (j == 0) {
+          break;
+        }
       }
     }
   }
   
-  protected Class<? extends alpg> observerClass()
+  public void i()
   {
-    return avvb.class;
-  }
-  
-  public void onDestroy()
-  {
-    if (this.jdField_a_of_type_Nam != null) {
-      AppNetConnInfo.unregisterNetInfoHandler(this.jdField_a_of_type_Nam);
+    if (!mxl.a().a()) {
+      this.jdField_a_of_type_Nat.a(mxl.a().a());
     }
-    this.jdField_a_of_type_Int = 0;
-    super.onDestroy();
   }
   
-  public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject) {}
+  public void i(myc parammyc)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("GameRoomPresenterImp", 2, "refreshAll engineData:" + parammyc);
+    }
+    this.jdField_a_of_type_Nbb.a(parammyc);
+    this.jdField_a_of_type_Nat.a(parammyc);
+    this.jdField_a_of_type_Nbn.a(parammyc);
+    j(parammyc);
+    a(50);
+  }
+  
+  public void j(myc parammyc)
+  {
+    Object localObject2 = null;
+    int i = parammyc.a();
+    Player localPlayer1;
+    Object localObject1;
+    if ((i != 0) && (i != 10))
+    {
+      Player localPlayer2 = parammyc.b();
+      localPlayer1 = localPlayer2;
+      localObject1 = localObject2;
+      if (localPlayer2 != null)
+      {
+        localPlayer1 = localPlayer2;
+        localObject1 = localObject2;
+        if (parammyc.b(localPlayer2.uin))
+        {
+          localObject1 = localPlayer2.uin;
+          localPlayer1 = localPlayer2;
+        }
+      }
+    }
+    for (;;)
+    {
+      QLog.i("GameRoomPresenterImp", 1, "playerBigVideoChanged player:" + localPlayer1 + "  gameStatus:" + i + "  gameType:" + parammyc.c());
+      this.jdField_a_of_type_Ndc.a((String)localObject1);
+      return;
+      localPlayer1 = null;
+      localObject1 = localObject2;
+    }
+  }
+  
+  public void k(myc parammyc)
+  {
+    int i = parammyc.a();
+    int j = parammyc.c();
+    if (j == 3) {
+      a(i, j, parammyc);
+    }
+    for (;;)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("GameRoomPresenterImp", 2, "onNeedCheckAndPlayAudioVideo gameStatus:" + i + " gameType:" + j);
+      }
+      return;
+      if (j == 4) {
+        b(i, j, parammyc);
+      }
+    }
+  }
+  
+  public void l(myc parammyc)
+  {
+    parammyc = ndt.b().a();
+    if (parammyc != null) {
+      parammyc.a();
+    }
+    if (QLog.isColorLevel()) {
+      QLog.i("GameRoomPresenterImp", 2, "onNeedCheckAndReleaseAudioVideo");
+    }
+  }
+  
+  public void m(myc parammyc)
+  {
+    int i = parammyc.a();
+    int j = parammyc.c();
+    if ((i != 0) && (i != 10)) {
+      if (j == 3) {
+        c(i, j, parammyc);
+      }
+    }
+    while (!QLog.isColorLevel())
+    {
+      do
+      {
+        return;
+      } while (j != 4);
+      d(i, j, parammyc);
+      return;
+    }
+    QLog.i("GameRoomPresenterImp", 2, "onNeedCheckAndPreloadAudioVideo gameStatus:" + i + " gameType:" + j);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     nag
  * JD-Core Version:    0.7.0.1
  */

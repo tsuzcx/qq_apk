@@ -1,261 +1,185 @@
-import android.graphics.Bitmap;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.CheckBox;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.open.agent.FriendChooser;
-import com.tencent.open.agent.FriendListOpenFrame;
-import com.tencent.open.agent.datamodel.Friend;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Iterator;
-import java.util.LinkedHashMap;
+import java.util.Collections;
 import java.util.List;
-import java.util.Set;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class bfeo
-  extends besd
+  extends bfew
+  implements bfeq
 {
-  protected LinkedHashMap<String, List<Friend>> a;
-  protected int[] a;
-  protected String[] a;
+  public int a;
+  public long a;
+  public bmrl a;
+  public String a;
+  public List<Integer> a;
+  public boolean a;
+  public int b;
+  public String b;
+  public String c;
+  public int d;
+  public String d;
+  public int e;
+  public String e;
+  public int f;
+  public String f;
+  public String g;
   
-  public bfeo(FriendListOpenFrame paramFriendListOpenFrame)
+  public bfeo(JSONObject paramJSONObject)
   {
-    this.jdField_a_of_type_JavaUtilLinkedHashMap = new LinkedHashMap();
-    this.jdField_a_of_type_ArrayOfJavaLangString = new String[0];
-    this.jdField_a_of_type_ArrayOfInt = new int[0];
-    a();
+    this.jdField_b_of_type_Int = 0;
+    this.jdField_a_of_type_JavaUtilList = Collections.EMPTY_LIST;
+    this.jdField_f_of_type_Int = -1;
+    a(paramJSONObject);
+  }
+  
+  public static JSONObject a(bfeo parambfeo)
+  {
+    JSONObject localJSONObject = new JSONObject().put("type", "recite").put("troop_uin", parambfeo.jdField_f_of_type_JavaLangString).put("subtype", 1).put("title", parambfeo.jdField_b_of_type_JavaLangString).put("desc", parambfeo.c).put("kid", parambfeo.jdField_a_of_type_JavaLangString).put("error_count", parambfeo.jdField_d_of_type_Int).put("remind_count", parambfeo.jdField_e_of_type_Int).put("waste_time", parambfeo.jdField_a_of_type_Long).put("grade", parambfeo.jdField_f_of_type_Int).put("lyric", parambfeo.jdField_g_of_type_JavaLangString);
+    if (!TextUtils.isEmpty(parambfeo.jdField_e_of_type_JavaLangString)) {
+      localJSONObject.put("file_url", parambfeo.jdField_e_of_type_JavaLangString);
+    }
+    if (!TextUtils.isEmpty(parambfeo.jdField_d_of_type_JavaLangString)) {
+      localJSONObject.put("file_path", parambfeo.jdField_d_of_type_JavaLangString);
+    }
+    if (parambfeo.jdField_a_of_type_JavaUtilList != null) {
+      localJSONObject.put("pid_list", new JSONArray(parambfeo.jdField_a_of_type_JavaUtilList));
+    }
+    return localJSONObject;
+  }
+  
+  public static JSONObject a(String paramString1, String paramString2, String paramString3, List<Integer> paramList)
+  {
+    StringBuilder localStringBuilder = new StringBuilder(anni.a(2131704480)).append(paramString2);
+    if ((paramList != null) && (!paramList.isEmpty())) {
+      localStringBuilder.append(bfds.a(paramList));
+    }
+    paramString1 = new JSONObject().put("type", "recite").put("troop_uin", paramString1).put("subtype", 2).put("title", paramString2).put("desc", localStringBuilder.toString()).put("kid", paramString3);
+    if (paramList != null) {
+      paramString1.put("pid_list", new JSONArray(paramList));
+    }
+    return paramString1;
+  }
+  
+  public static JSONObject a(String paramString1, String paramString2, String paramString3, List<Integer> paramList, int paramInt)
+  {
+    StringBuilder localStringBuilder = new StringBuilder(anni.a(2131704482)).append(paramString2);
+    if ((paramList != null) && (!paramList.isEmpty()) && (paramList.size() != paramInt)) {
+      localStringBuilder.append(bfds.a(paramList));
+    }
+    paramString1 = new JSONObject().put("type", "recite").put("troop_uin", paramString1).put("subtype", 2).put("title", paramString2).put("desc", localStringBuilder.toString()).put("kid", paramString3);
+    if (paramList != null) {
+      paramString1.put("pid_list", new JSONArray(paramList));
+    }
+    return paramString1;
   }
   
   public int a()
   {
-    return 2131559236;
+    return 0;
   }
   
-  public int a(String paramString)
+  public void a(String paramString)
   {
-    int i;
-    if (this.jdField_a_of_type_ArrayOfJavaLangString != null)
+    super.a(paramString);
+    try
     {
-      i = 0;
-      if (i >= this.jdField_a_of_type_ArrayOfJavaLangString.length) {
-        break label53;
-      }
-      if (!this.jdField_a_of_type_ArrayOfJavaLangString[i].equals(paramString)) {}
-    }
-    for (;;)
-    {
-      if (i >= 0)
-      {
-        return this.jdField_a_of_type_ArrayOfInt[i];
-        i += 1;
-        break;
-      }
-      return -1;
-      return -1;
-      label53:
-      i = -1;
-    }
-  }
-  
-  protected void a()
-  {
-    this.jdField_a_of_type_JavaUtilLinkedHashMap.clear();
-    Object localObject1 = this.jdField_a_of_type_ComTencentOpenAgentFriendListOpenFrame.jdField_a_of_type_Bfhr.a(this.jdField_a_of_type_ComTencentOpenAgentFriendListOpenFrame.jdField_a_of_type_Int);
-    bflp.c("FriendListOpenFrame", "-->start constructHashStruct()");
-    Object localObject2 = ((List)localObject1).iterator();
-    if (((Iterator)localObject2).hasNext())
-    {
-      Friend localFriend = (Friend)((Iterator)localObject2).next();
-      if ((localFriend.f == null) || (localFriend.f.length() == 0))
-      {
-        localObject1 = "#";
-        label87:
-        i = ((String)localObject1).charAt(0);
-        if (((65 > i) || (i > 90)) && ((97 > i) || (i > 122))) {
-          break label192;
-        }
-      }
-      label192:
-      for (localObject1 = ((String)localObject1).toUpperCase();; localObject1 = "#")
-      {
-        if (this.jdField_a_of_type_JavaUtilLinkedHashMap.get(localObject1) == null) {
-          this.jdField_a_of_type_JavaUtilLinkedHashMap.put(localObject1, new ArrayList());
-        }
-        ((List)this.jdField_a_of_type_JavaUtilLinkedHashMap.get(localObject1)).add(localFriend);
-        break;
-        localObject1 = localFriend.f.substring(0, 1);
-        break label87;
-      }
-    }
-    localObject1 = this.jdField_a_of_type_JavaUtilLinkedHashMap;
-    this.jdField_a_of_type_JavaUtilLinkedHashMap = new LinkedHashMap();
-    for (char c = 'A'; c <= 'Z'; c = (char)(c + '\001')) {
-      if (((LinkedHashMap)localObject1).get(String.valueOf(c)) != null) {
-        this.jdField_a_of_type_JavaUtilLinkedHashMap.put(String.valueOf(c), ((LinkedHashMap)localObject1).get(String.valueOf(c)));
-      }
-    }
-    if (((LinkedHashMap)localObject1).get("#") != null) {
-      this.jdField_a_of_type_JavaUtilLinkedHashMap.put("#", ((LinkedHashMap)localObject1).get("#"));
-    }
-    ((LinkedHashMap)localObject1).clear();
-    this.jdField_a_of_type_ArrayOfInt = new int[this.jdField_a_of_type_JavaUtilLinkedHashMap.keySet().size()];
-    this.jdField_a_of_type_ArrayOfJavaLangString = new String[this.jdField_a_of_type_ArrayOfInt.length];
-    localObject1 = this.jdField_a_of_type_JavaUtilLinkedHashMap.keySet().iterator();
-    if (this.jdField_a_of_type_ArrayOfInt.length == 0) {
+      a(new JSONObject(paramString));
       return;
     }
-    this.jdField_a_of_type_ArrayOfInt[0] = 0;
-    int i = 1;
-    while (i < this.jdField_a_of_type_ArrayOfInt.length)
+    catch (JSONException paramString)
     {
-      localObject2 = this.jdField_a_of_type_ArrayOfInt;
-      int j = localObject2[i];
-      int k = this.jdField_a_of_type_ArrayOfInt[(i - 1)];
-      localObject2[i] = (((List)this.jdField_a_of_type_JavaUtilLinkedHashMap.get(((Iterator)localObject1).next())).size() + k + 1 + j);
-      i += 1;
+      paramString.printStackTrace();
     }
-    localObject1 = this.jdField_a_of_type_JavaUtilLinkedHashMap.keySet().iterator();
-    i = 0;
-    while (((Iterator)localObject1).hasNext())
-    {
-      this.jdField_a_of_type_ArrayOfJavaLangString[i] = ((String)((Iterator)localObject1).next());
-      i += 1;
-    }
-    bflp.c("FriendListOpenFrame", "-->end constructHashStruct()");
   }
   
-  public void a(View paramView, int paramInt)
+  public void a(JSONObject paramJSONObject)
   {
-    int i = Arrays.binarySearch(this.jdField_a_of_type_ArrayOfInt, paramInt);
-    paramInt = i;
-    if (i < 0) {
-      paramInt = -(i + 1) - 1;
+    this.jdField_a_of_type_OrgJsonJSONObject = paramJSONObject;
+    this.jdField_a_of_type_Int = paramJSONObject.optInt("subtype");
+    this.jdField_a_of_type_JavaLangString = paramJSONObject.optString("kid");
+    this.jdField_b_of_type_JavaLangString = paramJSONObject.optString("title");
+    this.c = paramJSONObject.optString("desc");
+    this.jdField_d_of_type_Int = paramJSONObject.optInt("error_count");
+    this.jdField_e_of_type_Int = paramJSONObject.optInt("remind_count");
+    this.jdField_a_of_type_Long = paramJSONObject.optLong("waste_time");
+    this.jdField_d_of_type_JavaLangString = paramJSONObject.optString("file_path");
+    this.jdField_e_of_type_JavaLangString = paramJSONObject.optString("file_url");
+    this.jdField_f_of_type_Int = paramJSONObject.optInt("grade", -1);
+    this.jdField_f_of_type_JavaLangString = paramJSONObject.optString("troop_uin");
+    this.jdField_g_of_type_JavaLangString = paramJSONObject.optString("lyric");
+    paramJSONObject = paramJSONObject.optJSONArray("pid_list");
+    if (paramJSONObject != null)
+    {
+      int j = paramJSONObject.length();
+      if (j != 0)
+      {
+        this.jdField_a_of_type_JavaUtilList = new ArrayList(j);
+        int i = 0;
+        while (i < j)
+        {
+          this.jdField_a_of_type_JavaUtilList.add(Integer.valueOf(paramJSONObject.getInt(i)));
+          i += 1;
+        }
+      }
     }
-    if ((paramInt < 0) || (paramInt >= this.jdField_a_of_type_ArrayOfJavaLangString.length)) {
+    else
+    {
+      this.jdField_a_of_type_JavaUtilList = Collections.EMPTY_LIST;
+    }
+    if (this.jdField_a_of_type_Bmrl != null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("HWReciteInfo", 2, "cancel uploadFileTask");
+      }
+      this.jdField_a_of_type_Bmrl.c();
+      this.jdField_a_of_type_Bmrl = null;
+    }
+    if (this.jdField_a_of_type_Int == 1)
+    {
+      if (TextUtils.isEmpty(this.jdField_e_of_type_JavaLangString)) {
+        this.jdField_g_of_type_Int = 0;
+      }
+    }
+    else {
       return;
     }
-    ((TextView)paramView).setText(this.jdField_a_of_type_ArrayOfJavaLangString[paramInt]);
+    this.jdField_g_of_type_Int = 3;
   }
   
-  public boolean a(int paramInt)
+  public int b()
   {
-    return Arrays.binarySearch(this.jdField_a_of_type_ArrayOfInt, paramInt) >= 0;
+    return 4;
   }
   
-  public void b()
+  public void b(String paramString)
   {
-    a();
-    super.notifyDataSetChanged();
-  }
-  
-  public int getCount()
-  {
-    if (this.jdField_a_of_type_ArrayOfInt.length == 0) {
-      return 0;
-    }
-    int i = this.jdField_a_of_type_ArrayOfInt[(this.jdField_a_of_type_ArrayOfInt.length - 1)];
-    return ((List)this.jdField_a_of_type_JavaUtilLinkedHashMap.get(this.jdField_a_of_type_ArrayOfJavaLangString[(this.jdField_a_of_type_ArrayOfJavaLangString.length - 1)])).size() + i + 1;
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    int i = Arrays.binarySearch(this.jdField_a_of_type_ArrayOfInt, paramInt);
-    if (i >= 0) {
-      return null;
-    }
-    i = -(i + 1) - 1;
-    List localList = (List)this.jdField_a_of_type_JavaUtilLinkedHashMap.get(this.jdField_a_of_type_ArrayOfJavaLangString[i]);
-    paramInt = paramInt - this.jdField_a_of_type_ArrayOfInt[i] - 1;
-    if ((paramInt >= 0) && (paramInt < localList.size())) {
-      return localList.get(paramInt);
-    }
-    return null;
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return 0L;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    int i = Arrays.binarySearch(this.jdField_a_of_type_ArrayOfInt, paramInt);
-    Friend localFriend;
-    label185:
-    label211:
-    Bitmap localBitmap;
-    if (paramView == null)
+    this.jdField_e_of_type_JavaLangString = paramString;
+    try
     {
-      paramView = this.jdField_a_of_type_ComTencentOpenAgentFriendListOpenFrame.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131562629, paramViewGroup, false);
-      paramViewGroup = new bfep();
-      paramViewGroup.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131375936));
-      paramViewGroup.c = ((TextView)paramView.findViewById(2131378845));
-      paramViewGroup.jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)paramView.findViewById(2131364256));
-      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131367819));
-      paramViewGroup.d = ((TextView)paramView.findViewById(2131370977));
-      paramView.setTag(paramViewGroup);
-      if (i >= 0) {
-        break label417;
-      }
-      i = -(i + 1) - 1;
-      localFriend = (Friend)((List)this.jdField_a_of_type_JavaUtilLinkedHashMap.get(this.jdField_a_of_type_ArrayOfJavaLangString[i])).get(paramInt - this.jdField_a_of_type_ArrayOfInt[i] - 1);
-      if (!this.jdField_a_of_type_ComTencentOpenAgentFriendListOpenFrame.jdField_a_of_type_Bfhr.a(localFriend.a)) {
-        break label369;
-      }
-      paramViewGroup.jdField_a_of_type_AndroidWidgetCheckBox.setChecked(true);
-      if (!this.jdField_a_of_type_ComTencentOpenAgentFriendListOpenFrame.jdField_a_of_type_Bfhr.a(localFriend.a)) {
-        break label380;
-      }
-      paramViewGroup.jdField_a_of_type_AndroidWidgetCheckBox.setChecked(true);
-      if ((localFriend.d == null) || ("".equals(localFriend.d))) {
-        localFriend.d = bfhy.a(this.jdField_a_of_type_ComTencentOpenAgentFriendListOpenFrame.jdField_a_of_type_ComTencentOpenAgentFriendChooser.a(), localFriend.a);
-      }
-      paramViewGroup.jdField_b_of_type_JavaLangString = localFriend.d;
-      paramViewGroup.jdField_b_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
-      paramViewGroup.c.setVisibility(8);
-      localBitmap = bfhv.a().a(localFriend.d);
-      if (localBitmap != null) {
-        break label391;
-      }
-      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130840085);
-      bfhv.a().a(localFriend.d, this.jdField_a_of_type_ComTencentOpenAgentFriendListOpenFrame);
+      this.jdField_a_of_type_OrgJsonJSONObject.put("file_url", paramString);
+      return;
     }
-    for (;;)
+    catch (JSONException paramString)
     {
-      if ((localFriend.c != null) && (!"".equals(localFriend.c))) {
-        break label403;
-      }
-      paramViewGroup.d.setText(localFriend.jdField_b_of_type_JavaLangString);
-      return paramView;
-      paramViewGroup = (bfep)paramView.getTag();
-      break;
-      label369:
-      paramViewGroup.jdField_a_of_type_AndroidWidgetCheckBox.setChecked(false);
-      break label185;
-      label380:
-      paramViewGroup.jdField_a_of_type_AndroidWidgetCheckBox.setChecked(false);
-      break label211;
-      label391:
-      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(localBitmap);
+      paramString.printStackTrace();
     }
-    label403:
-    paramViewGroup.d.setText(localFriend.c);
-    return paramView;
-    label417:
-    paramViewGroup.jdField_b_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
-    paramViewGroup.c.setVisibility(0);
-    paramViewGroup.c.setText(String.valueOf(this.jdField_a_of_type_ArrayOfJavaLangString[i]));
-    return paramView;
+  }
+  
+  public int d()
+  {
+    if (this.jdField_g_of_type_Int == 3) {
+      return 1;
+    }
+    return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bfeo
  * JD-Core Version:    0.7.0.1
  */

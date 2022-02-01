@@ -1,46 +1,21 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.qqmini.sdk.manager.EngineVersion;
-import com.tencent.qqmini.sdk.manager.InstalledEngine;
+import android.content.Context;
 
-public final class bgxj
-  implements Parcelable.Creator<InstalledEngine>
+class bgxj
+  extends bgpa
 {
-  public InstalledEngine a(Parcel paramParcel)
+  bgxj(bgxg parambgxg, Context paramContext, int paramInt)
   {
-    boolean bool2 = true;
-    InstalledEngine localInstalledEngine = new InstalledEngine();
-    localInstalledEngine.jdField_a_of_type_JavaLangString = paramParcel.readString();
-    localInstalledEngine.jdField_b_of_type_JavaLangString = paramParcel.readString();
-    localInstalledEngine.jdField_a_of_type_ComTencentQqminiSdkManagerEngineVersion = ((EngineVersion)paramParcel.readParcelable(EngineVersion.class.getClassLoader()));
-    localInstalledEngine.jdField_a_of_type_Int = paramParcel.readInt();
-    if (paramParcel.readByte() != 0)
-    {
-      bool1 = true;
-      localInstalledEngine.jdField_a_of_type_Boolean = bool1;
-      if (paramParcel.readByte() == 0) {
-        break label102;
-      }
-    }
-    label102:
-    for (boolean bool1 = bool2;; bool1 = false)
-    {
-      localInstalledEngine.jdField_b_of_type_Boolean = bool1;
-      localInstalledEngine.jdField_b_of_type_Int = paramParcel.readInt();
-      return localInstalledEngine;
-      bool1 = false;
-      break;
-    }
+    super(paramContext, paramInt);
   }
   
-  public InstalledEngine[] a(int paramInt)
+  public void onBackPressed()
   {
-    return new InstalledEngine[paramInt];
+    super.onBackPressed();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bgxj
  * JD-Core Version:    0.7.0.1
  */

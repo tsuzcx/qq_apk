@@ -1,1403 +1,689 @@
-import android.content.ContentValues;
-import android.database.Cursor;
-import com.tencent.mobileqq.data.TroopInfo;
-import com.tencent.mobileqq.persistence.NoColumnError;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
+import android.os.Handler.Callback;
+import android.os.Message;
+import android.text.TextUtils;
+import android.util.SparseArray;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.commonsdk.util.notification.QQNotificationManager;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.activity.QQLSUnlockActivity;
+import com.tencent.mobileqq.activity.RecommendFriendActivity;
+import com.tencent.mobileqq.activity.SplashActivity;
+import com.tencent.mobileqq.activity.recent.RecentBaseData;
+import com.tencent.mobileqq.activity.recent.data.RecentItemNoticeData;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.app.utils.FriendsStatusUtil;
+import com.tencent.mobileqq.data.MayKnowRecommend;
+import com.tencent.mobileqq.data.MessageForText;
+import com.tencent.mobileqq.data.RecentUser;
+import com.tencent.mobileqq.managers.PushNoticeManager.1;
+import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.qphone.base.remote.ToServiceMsg;
+import com.tencent.qphone.base.util.QLog;
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Iterator;
+import java.util.Locale;
+import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.concurrent.atomic.AtomicInteger;
+import mqq.manager.Manager;
+import tencent.im.oidb.cmd0x935.FriendRecommendPushExtData.LockScreenPushExtData;
+import tencent.im.pushsvr.pushsvrExt.ExtData;
+import tencent.im.s2c.msgtype0x210.submsgtype0x101.SubMsgType0x27.ClientReport;
+import tencent.im.s2c.msgtype0x210.submsgtype0x101.SubMsgType0x27.MsgBody;
+import tencent.im.s2c.msgtype0x210.submsgtype0x101.SubMsgType0x27.PushPlatform;
 
 public class awhi
-  extends awgq
+  implements Handler.Callback, Manager
 {
-  public awhi()
+  private long jdField_a_of_type_Long;
+  final SparseArray<Integer> jdField_a_of_type_AndroidUtilSparseArray;
+  private bkgm jdField_a_of_type_Bkgm = new bkgm(ThreadManagerV2.getSubThreadLooper(), this);
+  private RecentItemNoticeData jdField_a_of_type_ComTencentMobileqqActivityRecentDataRecentItemNoticeData;
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private MessageForText jdField_a_of_type_ComTencentMobileqqDataMessageForText;
+  private AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
+  private AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(0);
+  private short jdField_a_of_type_Short;
+  private long b;
+  
+  public awhi(QQAppInterface paramQQAppInterface)
   {
-    this.a = 118;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
   }
   
-  public awge a(awge paramawge, Cursor paramCursor, boolean paramBoolean, awgp paramawgp)
+  public static void a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5)
   {
-    boolean bool2 = true;
-    boolean bool1 = true;
-    paramawge = (TroopInfo)paramawge;
-    if (paramawgp == null)
+    bcso localbcso = new bcso();
+    localbcso.e = paramString4;
+    localbcso.d = paramString5;
+    localbcso.f = paramString1;
+    localbcso.i = paramString2;
+    bcsn.a(paramString3, localbcso);
+    bcsn.a(paramQQAppInterface, localbcso);
+  }
+  
+  private boolean a(SubMsgType0x27.PushPlatform paramPushPlatform, Bundle paramBundle, int paramInt)
+  {
+    byte[] arrayOfByte;
+    switch (paramInt)
     {
-      paramawge.uin = paramCursor.getString(paramCursor.getColumnIndex("uin"));
-      paramawge.timeSec = paramCursor.getLong(paramCursor.getColumnIndex("timeSec"));
-      paramawge.troopuin = paramCursor.getString(paramCursor.getColumnIndex("troopuin"));
-      paramawge.troopcode = paramCursor.getString(paramCursor.getColumnIndex("troopcode"));
-      paramawge.troopowneruin = paramCursor.getString(paramCursor.getColumnIndex("troopowneruin"));
-      paramawge.troopname = paramCursor.getString(paramCursor.getColumnIndex("troopname"));
-      paramawge.newTroopName = paramCursor.getString(paramCursor.getColumnIndex("newTroopName"));
-      paramawge.newTroopNameTimeStamp = paramCursor.getLong(paramCursor.getColumnIndex("newTroopNameTimeStamp"));
-      paramawge.troopface = paramCursor.getShort(paramCursor.getColumnIndex("troopface"));
-      paramawge.troopmemo = paramCursor.getString(paramCursor.getColumnIndex("troopmemo"));
-      paramawge.fingertroopmemo = paramCursor.getString(paramCursor.getColumnIndex("fingertroopmemo"));
-      paramawge.mRichFingerMemo = paramCursor.getString(paramCursor.getColumnIndex("mRichFingerMemo"));
-      paramawge.troopmask = paramCursor.getInt(paramCursor.getColumnIndex("troopmask"));
-      paramawge.trooptype = paramCursor.getInt(paramCursor.getColumnIndex("trooptype"));
-      paramawge.troopCreateTime = paramCursor.getLong(paramCursor.getColumnIndex("troopCreateTime"));
-      paramawge.dwGroupFlag = paramCursor.getLong(paramCursor.getColumnIndex("dwGroupFlag"));
-      paramawge.cGroupOption = paramCursor.getShort(paramCursor.getColumnIndex("cGroupOption"));
-      paramawge.wMemberMax = paramCursor.getInt(paramCursor.getColumnIndex("wMemberMax"));
-      paramawge.maxAdminNum = paramCursor.getInt(paramCursor.getColumnIndex("maxAdminNum"));
-      paramawge.wSpecialClass = paramCursor.getInt(paramCursor.getColumnIndex("wSpecialClass"));
-      paramawge.cGroupLevel = paramCursor.getShort(paramCursor.getColumnIndex("cGroupLevel"));
-      paramawge.wMemberNum = paramCursor.getInt(paramCursor.getColumnIndex("wMemberNum"));
-      paramawge.wMemberNumClient = paramCursor.getInt(paramCursor.getColumnIndex("wMemberNumClient"));
-      paramawge.Administrator = paramCursor.getString(paramCursor.getColumnIndex("Administrator"));
-      paramawge.dwGroupClassExt = paramCursor.getLong(paramCursor.getColumnIndex("dwGroupClassExt"));
-      paramawge.mGroupClassExtText = paramCursor.getString(paramCursor.getColumnIndex("mGroupClassExtText"));
-      paramawge.dwGroupFlagExt = paramCursor.getLong(paramCursor.getColumnIndex("dwGroupFlagExt"));
-      paramawge.dwAuthGroupType = paramCursor.getLong(paramCursor.getColumnIndex("dwAuthGroupType"));
-      paramawge.troopAuthenticateInfo = paramCursor.getString(paramCursor.getColumnIndex("troopAuthenticateInfo"));
-      paramawge.dwGroupInfoSeq = paramCursor.getLong(paramCursor.getColumnIndex("dwGroupInfoSeq"));
-      paramawge.mMemberNumSeq = paramCursor.getLong(paramCursor.getColumnIndex("mMemberNumSeq"));
-      paramawge.mOldMemberNumSeq = paramCursor.getLong(paramCursor.getColumnIndex("mOldMemberNumSeq"));
-      paramawge.mMemberCardSeq = paramCursor.getLong(paramCursor.getColumnIndex("mMemberCardSeq"));
-      paramawge.mOldMemberCardSeq = paramCursor.getLong(paramCursor.getColumnIndex("mOldMemberCardSeq"));
-      paramawge.dwGroupLevelSeq = paramCursor.getLong(paramCursor.getColumnIndex("dwGroupLevelSeq"));
-      paramawge.cGroupRankSysFlag = ((byte)paramCursor.getShort(paramCursor.getColumnIndex("cGroupRankSysFlag")));
-      paramawge.cGroupRankUserFlag = ((byte)paramCursor.getShort(paramCursor.getColumnIndex("cGroupRankUserFlag")));
-      paramawge.troopLevelMap = paramCursor.getString(paramCursor.getColumnIndex("troopLevelMap"));
-      paramawge.joinTroopQuestion = paramCursor.getString(paramCursor.getColumnIndex("joinTroopQuestion"));
-      paramawge.joinTroopAnswer = paramCursor.getString(paramCursor.getColumnIndex("joinTroopAnswer"));
-      paramawge.cAlbumResult = ((byte)paramCursor.getShort(paramCursor.getColumnIndex("cAlbumResult")));
-      paramawge.dwTimeStamp = paramCursor.getLong(paramCursor.getColumnIndex("dwTimeStamp"));
-      paramawge.strQZonePhotoUrls = paramCursor.getString(paramCursor.getColumnIndex("strQZonePhotoUrls"));
-      paramawge.mQZonePhotoNum = paramCursor.getInt(paramCursor.getColumnIndex("mQZonePhotoNum"));
-      paramawge.strLocation = paramCursor.getString(paramCursor.getColumnIndex("strLocation"));
-      paramawge.troopLat = paramCursor.getInt(paramCursor.getColumnIndex("troopLat"));
-      paramawge.troopLon = paramCursor.getInt(paramCursor.getColumnIndex("troopLon"));
-      if (1 == paramCursor.getShort(paramCursor.getColumnIndex("mMemberInvitingFlag")))
-      {
-        paramBoolean = true;
-        paramawge.mMemberInvitingFlag = paramBoolean;
-        paramawge.mComparePartInt = paramCursor.getInt(paramCursor.getColumnIndex("mComparePartInt"));
-        paramawge.mCompareSpell = paramCursor.getString(paramCursor.getColumnIndex("mCompareSpell"));
-        paramawge.mSomeMemberUins = paramCursor.getString(paramCursor.getColumnIndex("mSomeMemberUins"));
-        paramawge.mHeaderUinsOld = paramCursor.getString(paramCursor.getColumnIndex("mHeaderUinsOld"));
-        paramawge.mHeaderUinsNew = paramCursor.getString(paramCursor.getColumnIndex("mHeaderUinsNew"));
-        paramawge.mTags = paramCursor.getString(paramCursor.getColumnIndex("mTags"));
-        paramawge.mTroopAvatarId = paramCursor.getInt(paramCursor.getColumnIndex("mTroopAvatarId"));
-        paramawge.mTroopPicListJson = paramCursor.getString(paramCursor.getColumnIndex("mTroopPicListJson"));
-        paramawge.nTroopGrade = paramCursor.getInt(paramCursor.getColumnIndex("nTroopGrade"));
-        paramawge.isShowInNearbyTroops = paramCursor.getInt(paramCursor.getColumnIndex("isShowInNearbyTroops"));
-        paramawge.dwGagTimeStamp = paramCursor.getLong(paramCursor.getColumnIndex("dwGagTimeStamp"));
-        paramawge.dwGagTimeStamp_me = paramCursor.getLong(paramCursor.getColumnIndex("dwGagTimeStamp_me"));
-        paramawge.dwCmdUinUinFlag = paramCursor.getLong(paramCursor.getColumnIndex("dwCmdUinUinFlag"));
-        paramawge.dwAdditionalFlag = paramCursor.getLong(paramCursor.getColumnIndex("dwAdditionalFlag"));
-        paramawge.troopTypeExt = paramCursor.getInt(paramCursor.getColumnIndex("troopTypeExt"));
-        paramawge.ownerNameShow = paramCursor.getString(paramCursor.getColumnIndex("ownerNameShow"));
-        paramawge.adminNameShow = paramCursor.getString(paramCursor.getColumnIndex("adminNameShow"));
-        paramawge.dwOfficeMode = paramCursor.getLong(paramCursor.getColumnIndex("dwOfficeMode"));
-        paramawge.dwGroupFlagExt3 = paramCursor.getLong(paramCursor.getColumnIndex("dwGroupFlagExt3"));
-        paramawge.cmdUinFlagEx2 = paramCursor.getLong(paramCursor.getColumnIndex("cmdUinFlagEx2"));
-        paramawge.udwCmdUinRingtoneID = paramCursor.getLong(paramCursor.getColumnIndex("udwCmdUinRingtoneID"));
-        paramawge.memberListToShow = paramCursor.getString(paramCursor.getColumnIndex("memberListToShow"));
-        paramawge.troopPrivilegeFlag = paramCursor.getLong(paramCursor.getColumnIndex("troopPrivilegeFlag"));
-        if (1 != paramCursor.getShort(paramCursor.getColumnIndex("isNewTroop"))) {
-          break label2258;
-        }
-        paramBoolean = true;
-        label1343:
-        paramawge.isNewTroop = paramBoolean;
-        if (1 != paramCursor.getShort(paramCursor.getColumnIndex("hasSetNewTroopHead"))) {
-          break label2263;
-        }
-        paramBoolean = true;
-        label1369:
-        paramawge.hasSetNewTroopHead = paramBoolean;
-        if (1 != paramCursor.getShort(paramCursor.getColumnIndex("hasSetNewTroopName"))) {
-          break label2268;
-        }
-        paramBoolean = true;
-        label1395:
-        paramawge.hasSetNewTroopName = paramBoolean;
-        paramawge.maxInviteMemNum = paramCursor.getInt(paramCursor.getColumnIndex("maxInviteMemNum"));
-        paramawge.lastMsgTime = paramCursor.getLong(paramCursor.getColumnIndex("lastMsgTime"));
-        paramawge.allowMemberModifTroopName = paramCursor.getInt(paramCursor.getColumnIndex("allowMemberModifTroopName"));
-        paramawge.allowMemberKick = paramCursor.getInt(paramCursor.getColumnIndex("allowMemberKick"));
-        paramawge.allowMemberAtAll = paramCursor.getInt(paramCursor.getColumnIndex("allowMemberAtAll"));
-        paramawge.oldTroopName = paramCursor.getString(paramCursor.getColumnIndex("oldTroopName"));
-        paramawge.hlGuildAppid = paramCursor.getLong(paramCursor.getColumnIndex("hlGuildAppid"));
-        paramawge.hlGuildSubType = paramCursor.getLong(paramCursor.getColumnIndex("hlGuildSubType"));
-        paramawge.hlGuildOrgid = paramCursor.getInt(paramCursor.getColumnIndex("hlGuildOrgid"));
-        paramawge.hlGuildBinary = paramCursor.getInt(paramCursor.getColumnIndex("hlGuildBinary"));
-        paramawge.gameSwitchStatus = paramCursor.getInt(paramCursor.getColumnIndex("gameSwitchStatus"));
-        paramawge.showGameSwitchStatus = paramCursor.getInt(paramCursor.getColumnIndex("showGameSwitchStatus"));
-        paramawge.lastShareLbsMsgUniseq = paramCursor.getLong(paramCursor.getColumnIndex("lastShareLbsMsgUniseq"));
-        paramawge.mTroopNeedPayNumber = paramCursor.getFloat(paramCursor.getColumnIndex("mTroopNeedPayNumber"));
-        paramawge.troopCreditLevel = paramCursor.getLong(paramCursor.getColumnIndex("troopCreditLevel"));
-        paramawge.troopCreditLevelInfo = paramCursor.getLong(paramCursor.getColumnIndex("troopCreditLevelInfo"));
-        paramawge.dwAppPrivilegeFlag = paramCursor.getLong(paramCursor.getColumnIndex("dwAppPrivilegeFlag"));
-        paramawge.topicId = paramCursor.getString(paramCursor.getColumnIndex("topicId"));
-        paramawge.associatePubAccount = paramCursor.getLong(paramCursor.getColumnIndex("associatePubAccount"));
-        paramawge.mTroopFileVideoReqInterval = paramCursor.getLong(paramCursor.getColumnIndex("mTroopFileVideoReqInterval"));
-        paramawge.mTroopFileVideoIsWhite = paramCursor.getInt(paramCursor.getColumnIndex("mTroopFileVideoIsWhite"));
-        paramawge.mTribeStatus = paramCursor.getInt(paramCursor.getColumnIndex("mTribeStatus"));
-        if (1 != paramCursor.getShort(paramCursor.getColumnIndex("mCanSearchByKeywords"))) {
-          break label2273;
-        }
-        paramBoolean = true;
-        label1839:
-        paramawge.mCanSearchByKeywords = paramBoolean;
-        if (1 != paramCursor.getShort(paramCursor.getColumnIndex("mCanSearchByTroopUin"))) {
-          break label2278;
-        }
-      }
-      label2258:
-      label2263:
-      label2268:
-      label2273:
-      label2278:
-      for (paramBoolean = bool1;; paramBoolean = false)
-      {
-        paramawge.mCanSearchByTroopUin = paramBoolean;
-        paramawge.dwCmdUinJoinTime = paramCursor.getLong(paramCursor.getColumnIndex("dwCmdUinJoinTime"));
-        paramawge.dwLastInsertBAFTipTime = paramCursor.getLong(paramCursor.getColumnIndex("dwLastInsertBAFTipTime"));
-        paramawge.wInsertBAFTipCount = paramCursor.getInt(paramCursor.getColumnIndex("wInsertBAFTipCount"));
-        paramawge.wClickBAFTipCount = paramCursor.getInt(paramCursor.getColumnIndex("wClickBAFTipCount"));
-        paramawge.dwLastBAFTipMsgUniSeq = paramCursor.getLong(paramCursor.getColumnIndex("dwLastBAFTipMsgUniSeq"));
-        paramawge.dwLastBAFTipMsgUniSeq2 = paramCursor.getLong(paramCursor.getColumnIndex("dwLastBAFTipMsgUniSeq2"));
-        paramawge.dailyNewMemberUins = paramCursor.getString(paramCursor.getColumnIndex("dailyNewMemberUins"));
-        paramawge.exitTroopReason = paramCursor.getInt(paramCursor.getColumnIndex("exitTroopReason"));
-        paramawge.eliminated = paramCursor.getInt(paramCursor.getColumnIndex("eliminated"));
-        paramawge.mIsFreezed = paramCursor.getInt(paramCursor.getColumnIndex("mIsFreezed"));
-        paramawge.strLastAnnouncement = paramCursor.getString(paramCursor.getColumnIndex("strLastAnnouncement"));
-        paramawge.nMsgLimitFreq = paramCursor.getInt(paramCursor.getColumnIndex("nMsgLimitFreq"));
-        paramawge.mAtOrReplyMeUins = paramCursor.getString(paramCursor.getColumnIndex("mAtOrReplyMeUins"));
-        paramawge.groupFlagExt4 = paramCursor.getInt(paramCursor.getColumnIndex("groupFlagExt4"));
-        paramawge.groupFreezeReason = paramCursor.getInt(paramCursor.getColumnIndex("groupFreezeReason"));
-        paramawge.troopHonorGrayFlag = paramCursor.getInt(paramCursor.getColumnIndex("troopHonorGrayFlag"));
-        paramawge.isAllowHistoryMsgFlag = paramCursor.getInt(paramCursor.getColumnIndex("isAllowHistoryMsgFlag"));
-        paramawge.troopRepeatType = paramCursor.getInt(paramCursor.getColumnIndex("troopRepeatType"));
-        paramawge.feeds_id = paramCursor.getString(paramCursor.getColumnIndex("feeds_id"));
-        paramawge.myHonorList = paramCursor.getString(paramCursor.getColumnIndex("myHonorList"));
-        return paramawge;
-        paramBoolean = false;
+    default: 
+      return true;
+    case 1041: 
+      arrayOfByte = a(paramPushPlatform);
+      paramPushPlatform = new pushsvrExt.ExtData();
+      if ((arrayOfByte == null) || (arrayOfByte.length <= 0)) {
         break;
-        paramBoolean = false;
-        break label1343;
-        paramBoolean = false;
-        break label1369;
-        paramBoolean = false;
-        break label1395;
-        paramBoolean = false;
-        break label1839;
       }
-    }
-    int i = paramCursor.getColumnIndex("uin");
-    if (i == -1)
-    {
-      paramawgp.a(new NoColumnError("uin", String.class));
-      i = paramCursor.getColumnIndex("timeSec");
-      if (i != -1) {
-        break label6560;
-      }
-      paramawgp.a(new NoColumnError("timeSec", Long.TYPE));
-      label2353:
-      i = paramCursor.getColumnIndex("troopuin");
-      if (i != -1) {
-        break label6575;
-      }
-      paramawgp.a(new NoColumnError("troopuin", String.class));
-      label2388:
-      i = paramCursor.getColumnIndex("troopcode");
-      if (i != -1) {
-        break label6590;
-      }
-      paramawgp.a(new NoColumnError("troopcode", String.class));
-      label2423:
-      i = paramCursor.getColumnIndex("troopowneruin");
-      if (i != -1) {
-        break label6605;
-      }
-      paramawgp.a(new NoColumnError("troopowneruin", String.class));
-      label2458:
-      i = paramCursor.getColumnIndex("troopname");
-      if (i != -1) {
-        break label6620;
-      }
-      paramawgp.a(new NoColumnError("troopname", String.class));
-      label2493:
-      i = paramCursor.getColumnIndex("newTroopName");
-      if (i != -1) {
-        break label6635;
-      }
-      paramawgp.a(new NoColumnError("newTroopName", String.class));
-      label2528:
-      i = paramCursor.getColumnIndex("newTroopNameTimeStamp");
-      if (i != -1) {
-        break label6650;
-      }
-      paramawgp.a(new NoColumnError("newTroopNameTimeStamp", Long.TYPE));
-      label2563:
-      i = paramCursor.getColumnIndex("troopface");
-      if (i != -1) {
-        break label6665;
-      }
-      paramawgp.a(new NoColumnError("troopface", Short.TYPE));
-      label2598:
-      i = paramCursor.getColumnIndex("troopmemo");
-      if (i != -1) {
-        break label6680;
-      }
-      paramawgp.a(new NoColumnError("troopmemo", String.class));
-      label2633:
-      i = paramCursor.getColumnIndex("fingertroopmemo");
-      if (i != -1) {
-        break label6695;
-      }
-      paramawgp.a(new NoColumnError("fingertroopmemo", String.class));
-      label2668:
-      i = paramCursor.getColumnIndex("mRichFingerMemo");
-      if (i != -1) {
-        break label6710;
-      }
-      paramawgp.a(new NoColumnError("mRichFingerMemo", String.class));
-      label2703:
-      i = paramCursor.getColumnIndex("troopmask");
-      if (i != -1) {
-        break label6725;
-      }
-      paramawgp.a(new NoColumnError("troopmask", Integer.TYPE));
-      label2738:
-      i = paramCursor.getColumnIndex("trooptype");
-      if (i != -1) {
-        break label6740;
-      }
-      paramawgp.a(new NoColumnError("trooptype", Integer.TYPE));
-      label2773:
-      i = paramCursor.getColumnIndex("troopCreateTime");
-      if (i != -1) {
-        break label6755;
-      }
-      paramawgp.a(new NoColumnError("troopCreateTime", Long.TYPE));
-      label2808:
-      i = paramCursor.getColumnIndex("dwGroupFlag");
-      if (i != -1) {
-        break label6770;
-      }
-      paramawgp.a(new NoColumnError("dwGroupFlag", Long.TYPE));
-      label2843:
-      i = paramCursor.getColumnIndex("cGroupOption");
-      if (i != -1) {
-        break label6785;
-      }
-      paramawgp.a(new NoColumnError("cGroupOption", Short.TYPE));
-      label2878:
-      i = paramCursor.getColumnIndex("wMemberMax");
-      if (i != -1) {
-        break label6800;
-      }
-      paramawgp.a(new NoColumnError("wMemberMax", Integer.TYPE));
-      label2913:
-      i = paramCursor.getColumnIndex("maxAdminNum");
-      if (i != -1) {
-        break label6815;
-      }
-      paramawgp.a(new NoColumnError("maxAdminNum", Integer.TYPE));
-      label2948:
-      i = paramCursor.getColumnIndex("wSpecialClass");
-      if (i != -1) {
-        break label6830;
-      }
-      paramawgp.a(new NoColumnError("wSpecialClass", Integer.TYPE));
-      label2983:
-      i = paramCursor.getColumnIndex("cGroupLevel");
-      if (i != -1) {
-        break label6845;
-      }
-      paramawgp.a(new NoColumnError("cGroupLevel", Short.TYPE));
-      label3018:
-      i = paramCursor.getColumnIndex("wMemberNum");
-      if (i != -1) {
-        break label6860;
-      }
-      paramawgp.a(new NoColumnError("wMemberNum", Integer.TYPE));
-      label3053:
-      i = paramCursor.getColumnIndex("wMemberNumClient");
-      if (i != -1) {
-        break label6875;
-      }
-      paramawgp.a(new NoColumnError("wMemberNumClient", Integer.TYPE));
-      label3088:
-      i = paramCursor.getColumnIndex("Administrator");
-      if (i != -1) {
-        break label6890;
-      }
-      paramawgp.a(new NoColumnError("Administrator", String.class));
-      label3123:
-      i = paramCursor.getColumnIndex("dwGroupClassExt");
-      if (i != -1) {
-        break label6905;
-      }
-      paramawgp.a(new NoColumnError("dwGroupClassExt", Long.TYPE));
-      label3158:
-      i = paramCursor.getColumnIndex("mGroupClassExtText");
-      if (i != -1) {
-        break label6920;
-      }
-      paramawgp.a(new NoColumnError("mGroupClassExtText", String.class));
-      label3193:
-      i = paramCursor.getColumnIndex("dwGroupFlagExt");
-      if (i != -1) {
-        break label6935;
-      }
-      paramawgp.a(new NoColumnError("dwGroupFlagExt", Long.TYPE));
-      label3228:
-      i = paramCursor.getColumnIndex("dwAuthGroupType");
-      if (i != -1) {
-        break label6950;
-      }
-      paramawgp.a(new NoColumnError("dwAuthGroupType", Long.TYPE));
-      label3263:
-      i = paramCursor.getColumnIndex("troopAuthenticateInfo");
-      if (i != -1) {
-        break label6965;
-      }
-      paramawgp.a(new NoColumnError("troopAuthenticateInfo", String.class));
-      label3298:
-      i = paramCursor.getColumnIndex("dwGroupInfoSeq");
-      if (i != -1) {
-        break label6980;
-      }
-      paramawgp.a(new NoColumnError("dwGroupInfoSeq", Long.TYPE));
-      label3333:
-      i = paramCursor.getColumnIndex("mMemberNumSeq");
-      if (i != -1) {
-        break label6995;
-      }
-      paramawgp.a(new NoColumnError("mMemberNumSeq", Long.TYPE));
-      label3368:
-      i = paramCursor.getColumnIndex("mOldMemberNumSeq");
-      if (i != -1) {
-        break label7010;
-      }
-      paramawgp.a(new NoColumnError("mOldMemberNumSeq", Long.TYPE));
-      label3403:
-      i = paramCursor.getColumnIndex("mMemberCardSeq");
-      if (i != -1) {
-        break label7025;
-      }
-      paramawgp.a(new NoColumnError("mMemberCardSeq", Long.TYPE));
-      label3438:
-      i = paramCursor.getColumnIndex("mOldMemberCardSeq");
-      if (i != -1) {
-        break label7040;
-      }
-      paramawgp.a(new NoColumnError("mOldMemberCardSeq", Long.TYPE));
-      label3473:
-      i = paramCursor.getColumnIndex("dwGroupLevelSeq");
-      if (i != -1) {
-        break label7055;
-      }
-      paramawgp.a(new NoColumnError("dwGroupLevelSeq", Long.TYPE));
-      label3508:
-      i = paramCursor.getColumnIndex("cGroupRankSysFlag");
-      if (i != -1) {
-        break label7070;
-      }
-      paramawgp.a(new NoColumnError("cGroupRankSysFlag", Byte.TYPE));
-      label3543:
-      i = paramCursor.getColumnIndex("cGroupRankUserFlag");
-      if (i != -1) {
-        break label7086;
-      }
-      paramawgp.a(new NoColumnError("cGroupRankUserFlag", Byte.TYPE));
-      label3578:
-      i = paramCursor.getColumnIndex("troopLevelMap");
-      if (i != -1) {
-        break label7102;
-      }
-      paramawgp.a(new NoColumnError("troopLevelMap", String.class));
-      label3613:
-      i = paramCursor.getColumnIndex("joinTroopQuestion");
-      if (i != -1) {
-        break label7117;
-      }
-      paramawgp.a(new NoColumnError("joinTroopQuestion", String.class));
-      label3648:
-      i = paramCursor.getColumnIndex("joinTroopAnswer");
-      if (i != -1) {
-        break label7132;
-      }
-      paramawgp.a(new NoColumnError("joinTroopAnswer", String.class));
-      label3683:
-      i = paramCursor.getColumnIndex("cAlbumResult");
-      if (i != -1) {
-        break label7147;
-      }
-      paramawgp.a(new NoColumnError("cAlbumResult", Byte.TYPE));
-      label3718:
-      i = paramCursor.getColumnIndex("dwTimeStamp");
-      if (i != -1) {
-        break label7163;
-      }
-      paramawgp.a(new NoColumnError("dwTimeStamp", Long.TYPE));
-      label3753:
-      i = paramCursor.getColumnIndex("strQZonePhotoUrls");
-      if (i != -1) {
-        break label7178;
-      }
-      paramawgp.a(new NoColumnError("strQZonePhotoUrls", String.class));
-      label3788:
-      i = paramCursor.getColumnIndex("mQZonePhotoNum");
-      if (i != -1) {
-        break label7193;
-      }
-      paramawgp.a(new NoColumnError("mQZonePhotoNum", Integer.TYPE));
-      label3823:
-      i = paramCursor.getColumnIndex("strLocation");
-      if (i != -1) {
-        break label7208;
-      }
-      paramawgp.a(new NoColumnError("strLocation", String.class));
-      label3858:
-      i = paramCursor.getColumnIndex("troopLat");
-      if (i != -1) {
-        break label7223;
-      }
-      paramawgp.a(new NoColumnError("troopLat", Integer.TYPE));
-      label3893:
-      i = paramCursor.getColumnIndex("troopLon");
-      if (i != -1) {
-        break label7238;
-      }
-      paramawgp.a(new NoColumnError("troopLon", Integer.TYPE));
-      label3928:
-      i = paramCursor.getColumnIndex("mMemberInvitingFlag");
-      if (i != -1) {
-        break label7253;
-      }
-      paramawgp.a(new NoColumnError("mMemberInvitingFlag", Boolean.TYPE));
-      i = paramCursor.getColumnIndex("mComparePartInt");
-      if (i != -1) {
-        break label7280;
-      }
-      paramawgp.a(new NoColumnError("mComparePartInt", Integer.TYPE));
-      label3998:
-      i = paramCursor.getColumnIndex("mCompareSpell");
-      if (i != -1) {
-        break label7295;
-      }
-      paramawgp.a(new NoColumnError("mCompareSpell", String.class));
-      label4033:
-      i = paramCursor.getColumnIndex("mSomeMemberUins");
-      if (i != -1) {
-        break label7310;
-      }
-      paramawgp.a(new NoColumnError("mSomeMemberUins", String.class));
-      label4068:
-      i = paramCursor.getColumnIndex("mHeaderUinsOld");
-      if (i != -1) {
-        break label7325;
-      }
-      paramawgp.a(new NoColumnError("mHeaderUinsOld", String.class));
-      label4103:
-      i = paramCursor.getColumnIndex("mHeaderUinsNew");
-      if (i != -1) {
-        break label7340;
-      }
-      paramawgp.a(new NoColumnError("mHeaderUinsNew", String.class));
-      label4138:
-      i = paramCursor.getColumnIndex("mTags");
-      if (i != -1) {
-        break label7355;
-      }
-      paramawgp.a(new NoColumnError("mTags", String.class));
-      label4175:
-      i = paramCursor.getColumnIndex("mTroopAvatarId");
-      if (i != -1) {
-        break label7370;
-      }
-      paramawgp.a(new NoColumnError("mTroopAvatarId", Integer.TYPE));
-      label4212:
-      i = paramCursor.getColumnIndex("mTroopPicListJson");
-      if (i != -1) {
-        break label7385;
-      }
-      paramawgp.a(new NoColumnError("mTroopPicListJson", String.class));
-      label4249:
-      i = paramCursor.getColumnIndex("nTroopGrade");
-      if (i != -1) {
-        break label7400;
-      }
-      paramawgp.a(new NoColumnError("nTroopGrade", Integer.TYPE));
-      label4286:
-      i = paramCursor.getColumnIndex("isShowInNearbyTroops");
-      if (i != -1) {
-        break label7415;
-      }
-      paramawgp.a(new NoColumnError("isShowInNearbyTroops", Integer.TYPE));
-      label4323:
-      i = paramCursor.getColumnIndex("dwGagTimeStamp");
-      if (i != -1) {
-        break label7430;
-      }
-      paramawgp.a(new NoColumnError("dwGagTimeStamp", Long.TYPE));
-      label4360:
-      i = paramCursor.getColumnIndex("dwGagTimeStamp_me");
-      if (i != -1) {
-        break label7445;
-      }
-      paramawgp.a(new NoColumnError("dwGagTimeStamp_me", Long.TYPE));
-      label4397:
-      i = paramCursor.getColumnIndex("dwCmdUinUinFlag");
-      if (i != -1) {
-        break label7460;
-      }
-      paramawgp.a(new NoColumnError("dwCmdUinUinFlag", Long.TYPE));
-      label4434:
-      i = paramCursor.getColumnIndex("dwAdditionalFlag");
-      if (i != -1) {
-        break label7475;
-      }
-      paramawgp.a(new NoColumnError("dwAdditionalFlag", Long.TYPE));
-      label4471:
-      i = paramCursor.getColumnIndex("troopTypeExt");
-      if (i != -1) {
-        break label7490;
-      }
-      paramawgp.a(new NoColumnError("troopTypeExt", Integer.TYPE));
-      label4508:
-      i = paramCursor.getColumnIndex("ownerNameShow");
-      if (i != -1) {
-        break label7505;
-      }
-      paramawgp.a(new NoColumnError("ownerNameShow", String.class));
-      label4545:
-      i = paramCursor.getColumnIndex("adminNameShow");
-      if (i != -1) {
-        break label7520;
-      }
-      paramawgp.a(new NoColumnError("adminNameShow", String.class));
-      label4582:
-      i = paramCursor.getColumnIndex("dwOfficeMode");
-      if (i != -1) {
-        break label7535;
-      }
-      paramawgp.a(new NoColumnError("dwOfficeMode", Long.TYPE));
-      label4619:
-      i = paramCursor.getColumnIndex("dwGroupFlagExt3");
-      if (i != -1) {
-        break label7550;
-      }
-      paramawgp.a(new NoColumnError("dwGroupFlagExt3", Long.TYPE));
-      label4656:
-      i = paramCursor.getColumnIndex("cmdUinFlagEx2");
-      if (i != -1) {
-        break label7565;
-      }
-      paramawgp.a(new NoColumnError("cmdUinFlagEx2", Long.TYPE));
-      label4693:
-      i = paramCursor.getColumnIndex("udwCmdUinRingtoneID");
-      if (i != -1) {
-        break label7580;
-      }
-      paramawgp.a(new NoColumnError("udwCmdUinRingtoneID", Long.TYPE));
-      label4730:
-      i = paramCursor.getColumnIndex("memberListToShow");
-      if (i != -1) {
-        break label7595;
-      }
-      paramawgp.a(new NoColumnError("memberListToShow", String.class));
-      label4767:
-      i = paramCursor.getColumnIndex("troopPrivilegeFlag");
-      if (i != -1) {
-        break label7610;
-      }
-      paramawgp.a(new NoColumnError("troopPrivilegeFlag", Long.TYPE));
-      label4804:
-      i = paramCursor.getColumnIndex("isNewTroop");
-      if (i != -1) {
-        break label7625;
-      }
-      paramawgp.a(new NoColumnError("isNewTroop", Boolean.TYPE));
-      i = paramCursor.getColumnIndex("hasSetNewTroopHead");
-      if (i != -1) {
-        break label7652;
-      }
-      paramawgp.a(new NoColumnError("hasSetNewTroopHead", Boolean.TYPE));
-      i = paramCursor.getColumnIndex("hasSetNewTroopName");
-      if (i != -1) {
-        break label7679;
-      }
-      paramawgp.a(new NoColumnError("hasSetNewTroopName", Boolean.TYPE));
-      i = paramCursor.getColumnIndex("maxInviteMemNum");
-      if (i != -1) {
-        break label7706;
-      }
-      paramawgp.a(new NoColumnError("maxInviteMemNum", Integer.TYPE));
-      label4952:
-      i = paramCursor.getColumnIndex("lastMsgTime");
-      if (i != -1) {
-        break label7721;
-      }
-      paramawgp.a(new NoColumnError("lastMsgTime", Long.TYPE));
-      label4989:
-      i = paramCursor.getColumnIndex("allowMemberModifTroopName");
-      if (i != -1) {
-        break label7736;
-      }
-      paramawgp.a(new NoColumnError("allowMemberModifTroopName", Integer.TYPE));
-      label5026:
-      i = paramCursor.getColumnIndex("allowMemberKick");
-      if (i != -1) {
-        break label7751;
-      }
-      paramawgp.a(new NoColumnError("allowMemberKick", Integer.TYPE));
-      label5063:
-      i = paramCursor.getColumnIndex("allowMemberAtAll");
-      if (i != -1) {
-        break label7766;
-      }
-      paramawgp.a(new NoColumnError("allowMemberAtAll", Integer.TYPE));
-      label5100:
-      i = paramCursor.getColumnIndex("oldTroopName");
-      if (i != -1) {
-        break label7781;
-      }
-      paramawgp.a(new NoColumnError("oldTroopName", String.class));
-      label5137:
-      i = paramCursor.getColumnIndex("hlGuildAppid");
-      if (i != -1) {
-        break label7796;
-      }
-      paramawgp.a(new NoColumnError("hlGuildAppid", Long.TYPE));
-      label5174:
-      i = paramCursor.getColumnIndex("hlGuildSubType");
-      if (i != -1) {
-        break label7811;
-      }
-      paramawgp.a(new NoColumnError("hlGuildSubType", Long.TYPE));
-      label5211:
-      i = paramCursor.getColumnIndex("hlGuildOrgid");
-      if (i != -1) {
-        break label7826;
-      }
-      paramawgp.a(new NoColumnError("hlGuildOrgid", Integer.TYPE));
-      label5248:
-      i = paramCursor.getColumnIndex("hlGuildBinary");
-      if (i != -1) {
-        break label7841;
-      }
-      paramawgp.a(new NoColumnError("hlGuildBinary", Integer.TYPE));
-      label5285:
-      i = paramCursor.getColumnIndex("gameSwitchStatus");
-      if (i != -1) {
-        break label7856;
-      }
-      paramawgp.a(new NoColumnError("gameSwitchStatus", Integer.TYPE));
-      label5322:
-      i = paramCursor.getColumnIndex("showGameSwitchStatus");
-      if (i != -1) {
-        break label7871;
-      }
-      paramawgp.a(new NoColumnError("showGameSwitchStatus", Integer.TYPE));
-      label5359:
-      i = paramCursor.getColumnIndex("lastShareLbsMsgUniseq");
-      if (i != -1) {
-        break label7886;
-      }
-      paramawgp.a(new NoColumnError("lastShareLbsMsgUniseq", Long.TYPE));
-      label5396:
-      i = paramCursor.getColumnIndex("mTroopNeedPayNumber");
-      if (i != -1) {
-        break label7901;
-      }
-      paramawgp.a(new NoColumnError("mTroopNeedPayNumber", Float.TYPE));
-      label5433:
-      i = paramCursor.getColumnIndex("troopCreditLevel");
-      if (i != -1) {
-        break label7916;
-      }
-      paramawgp.a(new NoColumnError("troopCreditLevel", Long.TYPE));
-      label5470:
-      i = paramCursor.getColumnIndex("troopCreditLevelInfo");
-      if (i != -1) {
-        break label7931;
-      }
-      paramawgp.a(new NoColumnError("troopCreditLevelInfo", Long.TYPE));
-      label5507:
-      i = paramCursor.getColumnIndex("dwAppPrivilegeFlag");
-      if (i != -1) {
-        break label7946;
-      }
-      paramawgp.a(new NoColumnError("dwAppPrivilegeFlag", Long.TYPE));
-      label5544:
-      i = paramCursor.getColumnIndex("topicId");
-      if (i != -1) {
-        break label7961;
-      }
-      paramawgp.a(new NoColumnError("topicId", String.class));
-      label5581:
-      i = paramCursor.getColumnIndex("associatePubAccount");
-      if (i != -1) {
-        break label7976;
-      }
-      paramawgp.a(new NoColumnError("associatePubAccount", Long.TYPE));
-      label5618:
-      i = paramCursor.getColumnIndex("mTroopFileVideoReqInterval");
-      if (i != -1) {
-        break label7991;
-      }
-      paramawgp.a(new NoColumnError("mTroopFileVideoReqInterval", Long.TYPE));
-      label5655:
-      i = paramCursor.getColumnIndex("mTroopFileVideoIsWhite");
-      if (i != -1) {
-        break label8006;
-      }
-      paramawgp.a(new NoColumnError("mTroopFileVideoIsWhite", Integer.TYPE));
-      label5692:
-      i = paramCursor.getColumnIndex("mTribeStatus");
-      if (i != -1) {
-        break label8021;
-      }
-      paramawgp.a(new NoColumnError("mTribeStatus", Integer.TYPE));
-      label5729:
-      i = paramCursor.getColumnIndex("mCanSearchByKeywords");
-      if (i != -1) {
-        break label8036;
-      }
-      paramawgp.a(new NoColumnError("mCanSearchByKeywords", Boolean.TYPE));
-      i = paramCursor.getColumnIndex("mCanSearchByTroopUin");
-      if (i != -1) {
-        break label8063;
-      }
-      paramawgp.a(new NoColumnError("mCanSearchByTroopUin", Boolean.TYPE));
-      i = paramCursor.getColumnIndex("dwCmdUinJoinTime");
-      if (i != -1) {
-        break label8091;
-      }
-      paramawgp.a(new NoColumnError("dwCmdUinJoinTime", Long.TYPE));
-      label5840:
-      i = paramCursor.getColumnIndex("dwLastInsertBAFTipTime");
-      if (i != -1) {
-        break label8106;
-      }
-      paramawgp.a(new NoColumnError("dwLastInsertBAFTipTime", Long.TYPE));
-      label5877:
-      i = paramCursor.getColumnIndex("wInsertBAFTipCount");
-      if (i != -1) {
-        break label8121;
-      }
-      paramawgp.a(new NoColumnError("wInsertBAFTipCount", Integer.TYPE));
-      label5914:
-      i = paramCursor.getColumnIndex("wClickBAFTipCount");
-      if (i != -1) {
-        break label8136;
-      }
-      paramawgp.a(new NoColumnError("wClickBAFTipCount", Integer.TYPE));
-      label5951:
-      i = paramCursor.getColumnIndex("dwLastBAFTipMsgUniSeq");
-      if (i != -1) {
-        break label8151;
-      }
-      paramawgp.a(new NoColumnError("dwLastBAFTipMsgUniSeq", Long.TYPE));
-      label5988:
-      i = paramCursor.getColumnIndex("dwLastBAFTipMsgUniSeq2");
-      if (i != -1) {
-        break label8166;
-      }
-      paramawgp.a(new NoColumnError("dwLastBAFTipMsgUniSeq2", Long.TYPE));
-      label6025:
-      i = paramCursor.getColumnIndex("dailyNewMemberUins");
-      if (i != -1) {
-        break label8181;
-      }
-      paramawgp.a(new NoColumnError("dailyNewMemberUins", String.class));
-      label6062:
-      i = paramCursor.getColumnIndex("exitTroopReason");
-      if (i != -1) {
-        break label8196;
-      }
-      paramawgp.a(new NoColumnError("exitTroopReason", Integer.TYPE));
-      label6099:
-      i = paramCursor.getColumnIndex("eliminated");
-      if (i != -1) {
-        break label8211;
-      }
-      paramawgp.a(new NoColumnError("eliminated", Integer.TYPE));
-      label6136:
-      i = paramCursor.getColumnIndex("mIsFreezed");
-      if (i != -1) {
-        break label8226;
-      }
-      paramawgp.a(new NoColumnError("mIsFreezed", Integer.TYPE));
-      label6173:
-      i = paramCursor.getColumnIndex("strLastAnnouncement");
-      if (i != -1) {
-        break label8241;
-      }
-      paramawgp.a(new NoColumnError("strLastAnnouncement", String.class));
-      label6210:
-      i = paramCursor.getColumnIndex("nMsgLimitFreq");
-      if (i != -1) {
-        break label8256;
-      }
-      paramawgp.a(new NoColumnError("nMsgLimitFreq", Integer.TYPE));
-      label6247:
-      i = paramCursor.getColumnIndex("mAtOrReplyMeUins");
-      if (i != -1) {
-        break label8271;
-      }
-      paramawgp.a(new NoColumnError("mAtOrReplyMeUins", String.class));
-      label6284:
-      i = paramCursor.getColumnIndex("groupFlagExt4");
-      if (i != -1) {
-        break label8286;
-      }
-      paramawgp.a(new NoColumnError("groupFlagExt4", Integer.TYPE));
-      label6321:
-      i = paramCursor.getColumnIndex("groupFreezeReason");
-      if (i != -1) {
-        break label8301;
-      }
-      paramawgp.a(new NoColumnError("groupFreezeReason", Integer.TYPE));
-      label6358:
-      i = paramCursor.getColumnIndex("troopHonorGrayFlag");
-      if (i != -1) {
-        break label8316;
-      }
-      paramawgp.a(new NoColumnError("troopHonorGrayFlag", Integer.TYPE));
-      label6395:
-      i = paramCursor.getColumnIndex("isAllowHistoryMsgFlag");
-      if (i != -1) {
-        break label8331;
-      }
-      paramawgp.a(new NoColumnError("isAllowHistoryMsgFlag", Integer.TYPE));
-      label6432:
-      i = paramCursor.getColumnIndex("troopRepeatType");
-      if (i != -1) {
-        break label8346;
-      }
-      paramawgp.a(new NoColumnError("troopRepeatType", Integer.TYPE));
-      label6469:
-      i = paramCursor.getColumnIndex("feeds_id");
-      if (i != -1) {
-        break label8361;
-      }
-      paramawgp.a(new NoColumnError("feeds_id", String.class));
     }
     for (;;)
     {
-      i = paramCursor.getColumnIndex("myHonorList");
-      if (i != -1) {
-        break label8376;
-      }
-      paramawgp.a(new NoColumnError("myHonorList", String.class));
-      return paramawge;
-      paramawge.uin = paramCursor.getString(i);
-      break;
-      label6560:
-      paramawge.timeSec = paramCursor.getLong(i);
-      break label2353;
-      label6575:
-      paramawge.troopuin = paramCursor.getString(i);
-      break label2388;
-      label6590:
-      paramawge.troopcode = paramCursor.getString(i);
-      break label2423;
-      label6605:
-      paramawge.troopowneruin = paramCursor.getString(i);
-      break label2458;
-      label6620:
-      paramawge.troopname = paramCursor.getString(i);
-      break label2493;
-      label6635:
-      paramawge.newTroopName = paramCursor.getString(i);
-      break label2528;
-      label6650:
-      paramawge.newTroopNameTimeStamp = paramCursor.getLong(i);
-      break label2563;
-      label6665:
-      paramawge.troopface = paramCursor.getShort(i);
-      break label2598;
-      label6680:
-      paramawge.troopmemo = paramCursor.getString(i);
-      break label2633;
-      label6695:
-      paramawge.fingertroopmemo = paramCursor.getString(i);
-      break label2668;
-      label6710:
-      paramawge.mRichFingerMemo = paramCursor.getString(i);
-      break label2703;
-      label6725:
-      paramawge.troopmask = paramCursor.getInt(i);
-      break label2738;
-      label6740:
-      paramawge.trooptype = paramCursor.getInt(i);
-      break label2773;
-      label6755:
-      paramawge.troopCreateTime = paramCursor.getLong(i);
-      break label2808;
-      label6770:
-      paramawge.dwGroupFlag = paramCursor.getLong(i);
-      break label2843;
-      label6785:
-      paramawge.cGroupOption = paramCursor.getShort(i);
-      break label2878;
-      label6800:
-      paramawge.wMemberMax = paramCursor.getInt(i);
-      break label2913;
-      label6815:
-      paramawge.maxAdminNum = paramCursor.getInt(i);
-      break label2948;
-      label6830:
-      paramawge.wSpecialClass = paramCursor.getInt(i);
-      break label2983;
-      label6845:
-      paramawge.cGroupLevel = paramCursor.getShort(i);
-      break label3018;
-      label6860:
-      paramawge.wMemberNum = paramCursor.getInt(i);
-      break label3053;
-      label6875:
-      paramawge.wMemberNumClient = paramCursor.getInt(i);
-      break label3088;
-      label6890:
-      paramawge.Administrator = paramCursor.getString(i);
-      break label3123;
-      label6905:
-      paramawge.dwGroupClassExt = paramCursor.getLong(i);
-      break label3158;
-      label6920:
-      paramawge.mGroupClassExtText = paramCursor.getString(i);
-      break label3193;
-      label6935:
-      paramawge.dwGroupFlagExt = paramCursor.getLong(i);
-      break label3228;
-      label6950:
-      paramawge.dwAuthGroupType = paramCursor.getLong(i);
-      break label3263;
-      label6965:
-      paramawge.troopAuthenticateInfo = paramCursor.getString(i);
-      break label3298;
-      label6980:
-      paramawge.dwGroupInfoSeq = paramCursor.getLong(i);
-      break label3333;
-      label6995:
-      paramawge.mMemberNumSeq = paramCursor.getLong(i);
-      break label3368;
-      label7010:
-      paramawge.mOldMemberNumSeq = paramCursor.getLong(i);
-      break label3403;
-      label7025:
-      paramawge.mMemberCardSeq = paramCursor.getLong(i);
-      break label3438;
-      label7040:
-      paramawge.mOldMemberCardSeq = paramCursor.getLong(i);
-      break label3473;
-      label7055:
-      paramawge.dwGroupLevelSeq = paramCursor.getLong(i);
-      break label3508;
-      label7070:
-      paramawge.cGroupRankSysFlag = ((byte)paramCursor.getShort(i));
-      break label3543;
-      label7086:
-      paramawge.cGroupRankUserFlag = ((byte)paramCursor.getShort(i));
-      break label3578;
-      label7102:
-      paramawge.troopLevelMap = paramCursor.getString(i);
-      break label3613;
-      label7117:
-      paramawge.joinTroopQuestion = paramCursor.getString(i);
-      break label3648;
-      label7132:
-      paramawge.joinTroopAnswer = paramCursor.getString(i);
-      break label3683;
-      label7147:
-      paramawge.cAlbumResult = ((byte)paramCursor.getShort(i));
-      break label3718;
-      label7163:
-      paramawge.dwTimeStamp = paramCursor.getLong(i);
-      break label3753;
-      label7178:
-      paramawge.strQZonePhotoUrls = paramCursor.getString(i);
-      break label3788;
-      label7193:
-      paramawge.mQZonePhotoNum = paramCursor.getInt(i);
-      break label3823;
-      label7208:
-      paramawge.strLocation = paramCursor.getString(i);
-      break label3858;
-      label7223:
-      paramawge.troopLat = paramCursor.getInt(i);
-      break label3893;
-      label7238:
-      paramawge.troopLon = paramCursor.getInt(i);
-      break label3928;
-      label7253:
-      if (1 == paramCursor.getShort(i)) {}
-      for (paramBoolean = true;; paramBoolean = false)
+      try
       {
-        paramawge.mMemberInvitingFlag = paramBoolean;
-        break;
+        paramPushPlatform.mergeFrom(arrayOfByte);
+        if (paramPushPlatform.uint64_to_uin.has())
+        {
+          l = paramPushPlatform.uint64_to_uin.get();
+          if ((l <= 0L) || (!paramPushPlatform.str_remark.has())) {
+            break label565;
+          }
+          paramBundle.putString("uinname", paramPushPlatform.str_remark.get().toStringUtf8());
+          paramBundle.putString("param_fromuin", String.valueOf(l));
+          paramBundle.putString("param_push_fromuin", String.valueOf(l));
+          paramBundle.putInt("param_push_uinType", paramInt);
+          paramBundle.putString("param_push_fromuin", String.valueOf(l));
+          bool1 = true;
+          bool2 = bool1;
+          if (QLog.isColorLevel())
+          {
+            if (!paramPushPlatform.str_remark.has()) {
+              continue;
+            }
+            paramPushPlatform = paramPushPlatform.str_remark.get().toStringUtf8();
+            QLog.i("PushNoticeManager", 2, String.format("handleExtData uin=%d nick=%s", new Object[] { Long.valueOf(l), paramPushPlatform }));
+            bool2 = bool1;
+          }
+          if (QLog.isColorLevel()) {
+            QLog.i("PushNoticeManager", 2, String.format("handleExtData uinType=%d valid=%b", new Object[] { Integer.valueOf(paramInt), Boolean.valueOf(bool2) }));
+          }
+          return bool2;
+        }
       }
-      label7280:
-      paramawge.mComparePartInt = paramCursor.getInt(i);
-      break label3998;
-      label7295:
-      paramawge.mCompareSpell = paramCursor.getString(i);
-      break label4033;
-      label7310:
-      paramawge.mSomeMemberUins = paramCursor.getString(i);
-      break label4068;
-      label7325:
-      paramawge.mHeaderUinsOld = paramCursor.getString(i);
-      break label4103;
-      label7340:
-      paramawge.mHeaderUinsNew = paramCursor.getString(i);
-      break label4138;
-      label7355:
-      paramawge.mTags = paramCursor.getString(i);
-      break label4175;
-      label7370:
-      paramawge.mTroopAvatarId = paramCursor.getInt(i);
-      break label4212;
-      label7385:
-      paramawge.mTroopPicListJson = paramCursor.getString(i);
-      break label4249;
-      label7400:
-      paramawge.nTroopGrade = paramCursor.getInt(i);
-      break label4286;
-      label7415:
-      paramawge.isShowInNearbyTroops = paramCursor.getInt(i);
-      break label4323;
-      label7430:
-      paramawge.dwGagTimeStamp = paramCursor.getLong(i);
-      break label4360;
-      label7445:
-      paramawge.dwGagTimeStamp_me = paramCursor.getLong(i);
-      break label4397;
-      label7460:
-      paramawge.dwCmdUinUinFlag = paramCursor.getLong(i);
-      break label4434;
-      label7475:
-      paramawge.dwAdditionalFlag = paramCursor.getLong(i);
-      break label4471;
-      label7490:
-      paramawge.troopTypeExt = paramCursor.getInt(i);
-      break label4508;
-      label7505:
-      paramawge.ownerNameShow = paramCursor.getString(i);
-      break label4545;
-      label7520:
-      paramawge.adminNameShow = paramCursor.getString(i);
-      break label4582;
-      label7535:
-      paramawge.dwOfficeMode = paramCursor.getLong(i);
-      break label4619;
-      label7550:
-      paramawge.dwGroupFlagExt3 = paramCursor.getLong(i);
-      break label4656;
-      label7565:
-      paramawge.cmdUinFlagEx2 = paramCursor.getLong(i);
-      break label4693;
-      label7580:
-      paramawge.udwCmdUinRingtoneID = paramCursor.getLong(i);
-      break label4730;
-      label7595:
-      paramawge.memberListToShow = paramCursor.getString(i);
-      break label4767;
-      label7610:
-      paramawge.troopPrivilegeFlag = paramCursor.getLong(i);
-      break label4804;
-      label7625:
-      if (1 == paramCursor.getShort(i)) {}
-      for (paramBoolean = true;; paramBoolean = false)
+      catch (Exception localException)
       {
-        paramawge.isNewTroop = paramBoolean;
-        break;
+        localException.printStackTrace();
+        continue;
+        long l = 0L;
+        continue;
+        paramPushPlatform = "";
+        continue;
       }
-      label7652:
-      if (1 == paramCursor.getShort(i)) {}
-      for (paramBoolean = true;; paramBoolean = false)
+      Object localObject = (ajld)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(295);
+      if (localObject != null)
       {
-        paramawge.hasSetNewTroopHead = paramBoolean;
-        break;
+        bool2 = ((ajld)localObject).b();
+        bool1 = bool2;
+        if (bool2)
+        {
+          bool1 = bool2;
+          if (QLog.isColorLevel()) {
+            QLog.i("PushNoticeManager", 2, "getSPSwitchState user closed");
+          }
+        }
       }
-      label7679:
-      if (1 == paramCursor.getShort(i)) {}
-      for (paramBoolean = true;; paramBoolean = false)
+      for (boolean bool1 = bool2;; bool1 = false)
       {
-        paramawge.hasSetNewTroopName = paramBoolean;
-        break;
+        if (!bool1)
+        {
+          paramPushPlatform = a(paramPushPlatform);
+          localObject = new FriendRecommendPushExtData.LockScreenPushExtData();
+          if ((paramPushPlatform != null) && (paramPushPlatform.length > 0)) {
+            try
+            {
+              ((FriendRecommendPushExtData.LockScreenPushExtData)localObject).mergeFrom(paramPushPlatform);
+              if (((FriendRecommendPushExtData.LockScreenPushExtData)localObject).rpt_msg_persons.has())
+              {
+                paramPushPlatform = ((FriendRecommendPushExtData.LockScreenPushExtData)localObject).rpt_msg_persons.get();
+                if (!((FriendRecommendPushExtData.LockScreenPushExtData)localObject).uint32_push_timestamp.has()) {
+                  break label524;
+                }
+                i = ((FriendRecommendPushExtData.LockScreenPushExtData)localObject).uint32_push_timestamp.get();
+                localObject = MayKnowRecommend.covServerDataToLocal(paramPushPlatform, i);
+                if (((ArrayList)localObject).size() <= 0) {
+                  break label547;
+                }
+                paramBundle.putSerializable("may_know_recmmds", (Serializable)localObject);
+                paramBundle.putInt("param_push_uinType", paramInt);
+                bool1 = true;
+                label446:
+                bool2 = bool1;
+                if (!QLog.isColorLevel()) {
+                  break label544;
+                }
+                paramPushPlatform = new StringBuilder("handleExtData pushfrds:");
+                paramBundle = ((ArrayList)localObject).iterator();
+                while (paramBundle.hasNext())
+                {
+                  localObject = (MayKnowRecommend)paramBundle.next();
+                  paramPushPlatform.append(" ").append(((MayKnowRecommend)localObject).uin);
+                }
+              }
+            }
+            catch (Exception paramPushPlatform)
+            {
+              for (;;)
+              {
+                paramPushPlatform.printStackTrace();
+                continue;
+                paramPushPlatform = null;
+                continue;
+                label524:
+                int i = 0;
+              }
+              QLog.i("PushNoticeManager", 2, paramPushPlatform.toString());
+              bool2 = bool1;
+            }
+          }
+        }
+        for (;;)
+        {
+          label544:
+          break;
+          label547:
+          bool1 = false;
+          break label446;
+          bool2 = false;
+        }
       }
-      label7706:
-      paramawge.maxInviteMemNum = paramCursor.getInt(i);
-      break label4952;
-      label7721:
-      paramawge.lastMsgTime = paramCursor.getLong(i);
-      break label4989;
-      label7736:
-      paramawge.allowMemberModifTroopName = paramCursor.getInt(i);
-      break label5026;
-      label7751:
-      paramawge.allowMemberKick = paramCursor.getInt(i);
-      break label5063;
-      label7766:
-      paramawge.allowMemberAtAll = paramCursor.getInt(i);
-      break label5100;
-      label7781:
-      paramawge.oldTroopName = paramCursor.getString(i);
-      break label5137;
-      label7796:
-      paramawge.hlGuildAppid = paramCursor.getLong(i);
-      break label5174;
-      label7811:
-      paramawge.hlGuildSubType = paramCursor.getLong(i);
-      break label5211;
-      label7826:
-      paramawge.hlGuildOrgid = paramCursor.getInt(i);
-      break label5248;
-      label7841:
-      paramawge.hlGuildBinary = paramCursor.getInt(i);
-      break label5285;
-      label7856:
-      paramawge.gameSwitchStatus = paramCursor.getInt(i);
-      break label5322;
-      label7871:
-      paramawge.showGameSwitchStatus = paramCursor.getInt(i);
-      break label5359;
-      label7886:
-      paramawge.lastShareLbsMsgUniseq = paramCursor.getLong(i);
-      break label5396;
-      label7901:
-      paramawge.mTroopNeedPayNumber = paramCursor.getFloat(i);
-      break label5433;
-      label7916:
-      paramawge.troopCreditLevel = paramCursor.getLong(i);
-      break label5470;
-      label7931:
-      paramawge.troopCreditLevelInfo = paramCursor.getLong(i);
-      break label5507;
-      label7946:
-      paramawge.dwAppPrivilegeFlag = paramCursor.getLong(i);
-      break label5544;
-      label7961:
-      paramawge.topicId = paramCursor.getString(i);
-      break label5581;
-      label7976:
-      paramawge.associatePubAccount = paramCursor.getLong(i);
-      break label5618;
-      label7991:
-      paramawge.mTroopFileVideoReqInterval = paramCursor.getLong(i);
-      break label5655;
-      label8006:
-      paramawge.mTroopFileVideoIsWhite = paramCursor.getInt(i);
-      break label5692;
-      label8021:
-      paramawge.mTribeStatus = paramCursor.getInt(i);
-      break label5729;
-      label8036:
-      if (1 == paramCursor.getShort(i)) {}
-      for (paramBoolean = true;; paramBoolean = false)
-      {
-        paramawge.mCanSearchByKeywords = paramBoolean;
-        break;
-      }
-      label8063:
-      if (1 == paramCursor.getShort(i)) {}
-      for (paramBoolean = bool2;; paramBoolean = false)
-      {
-        paramawge.mCanSearchByTroopUin = paramBoolean;
-        break;
-      }
-      label8091:
-      paramawge.dwCmdUinJoinTime = paramCursor.getLong(i);
-      break label5840;
-      label8106:
-      paramawge.dwLastInsertBAFTipTime = paramCursor.getLong(i);
-      break label5877;
-      label8121:
-      paramawge.wInsertBAFTipCount = paramCursor.getInt(i);
-      break label5914;
-      label8136:
-      paramawge.wClickBAFTipCount = paramCursor.getInt(i);
-      break label5951;
-      label8151:
-      paramawge.dwLastBAFTipMsgUniSeq = paramCursor.getLong(i);
-      break label5988;
-      label8166:
-      paramawge.dwLastBAFTipMsgUniSeq2 = paramCursor.getLong(i);
-      break label6025;
-      label8181:
-      paramawge.dailyNewMemberUins = paramCursor.getString(i);
-      break label6062;
-      label8196:
-      paramawge.exitTroopReason = paramCursor.getInt(i);
-      break label6099;
-      label8211:
-      paramawge.eliminated = paramCursor.getInt(i);
-      break label6136;
-      label8226:
-      paramawge.mIsFreezed = paramCursor.getInt(i);
-      break label6173;
-      label8241:
-      paramawge.strLastAnnouncement = paramCursor.getString(i);
-      break label6210;
-      label8256:
-      paramawge.nMsgLimitFreq = paramCursor.getInt(i);
-      break label6247;
-      label8271:
-      paramawge.mAtOrReplyMeUins = paramCursor.getString(i);
-      break label6284;
-      label8286:
-      paramawge.groupFlagExt4 = paramCursor.getInt(i);
-      break label6321;
-      label8301:
-      paramawge.groupFreezeReason = paramCursor.getInt(i);
-      break label6358;
-      label8316:
-      paramawge.troopHonorGrayFlag = paramCursor.getInt(i);
-      break label6395;
-      label8331:
-      paramawge.isAllowHistoryMsgFlag = paramCursor.getInt(i);
-      break label6432;
-      label8346:
-      paramawge.troopRepeatType = paramCursor.getInt(i);
-      break label6469;
-      label8361:
-      paramawge.feeds_id = paramCursor.getString(i);
+      label565:
+      bool1 = false;
+      continue;
+      boolean bool2 = false;
     }
-    label8376:
-    paramawge.myHonorList = paramCursor.getString(i);
-    return paramawge;
   }
   
-  public String a(String paramString)
+  private byte[] a(SubMsgType0x27.PushPlatform paramPushPlatform)
   {
-    StringBuilder localStringBuilder = new StringBuilder("CREATE TABLE IF NOT EXISTS ");
-    localStringBuilder.append(paramString);
-    localStringBuilder.append(" (_id INTEGER PRIMARY KEY AUTOINCREMENT ,uin TEXT ,timeSec INTEGER ,troopuin TEXT UNIQUE ,troopcode TEXT ,troopowneruin TEXT ,troopname TEXT ,newTroopName TEXT ,newTroopNameTimeStamp INTEGER ,troopface INTEGER ,troopmemo TEXT ,fingertroopmemo TEXT ,mRichFingerMemo TEXT ,troopmask INTEGER ,trooptype INTEGER ,troopCreateTime INTEGER ,dwGroupFlag INTEGER ,cGroupOption INTEGER ,wMemberMax INTEGER ,maxAdminNum INTEGER ,wSpecialClass INTEGER ,cGroupLevel INTEGER ,wMemberNum INTEGER ,wMemberNumClient INTEGER ,Administrator TEXT ,dwGroupClassExt INTEGER ,mGroupClassExtText TEXT ,dwGroupFlagExt INTEGER ,dwAuthGroupType INTEGER ,troopAuthenticateInfo TEXT ,dwGroupInfoSeq INTEGER ,mMemberNumSeq INTEGER ,mOldMemberNumSeq INTEGER ,mMemberCardSeq INTEGER ,mOldMemberCardSeq INTEGER ,dwGroupLevelSeq INTEGER ,cGroupRankSysFlag INTEGER ,cGroupRankUserFlag INTEGER ,troopLevelMap TEXT ,joinTroopQuestion TEXT ,joinTroopAnswer TEXT ,cAlbumResult INTEGER ,dwTimeStamp INTEGER ,strQZonePhotoUrls TEXT ,mQZonePhotoNum INTEGER ,strLocation TEXT ,troopLat INTEGER ,troopLon INTEGER ,mMemberInvitingFlag INTEGER ,mComparePartInt INTEGER ,mCompareSpell TEXT ,mSomeMemberUins TEXT ,mHeaderUinsOld TEXT ,mHeaderUinsNew TEXT ,mTags TEXT ,mTroopAvatarId INTEGER ,mTroopPicListJson TEXT ,nTroopGrade INTEGER ,isShowInNearbyTroops INTEGER ,dwGagTimeStamp INTEGER ,dwGagTimeStamp_me INTEGER ,dwCmdUinUinFlag INTEGER ,dwAdditionalFlag INTEGER ,troopTypeExt INTEGER ,ownerNameShow TEXT ,adminNameShow TEXT ,dwOfficeMode INTEGER ,dwGroupFlagExt3 INTEGER ,cmdUinFlagEx2 INTEGER ,udwCmdUinRingtoneID INTEGER ,memberListToShow TEXT ,troopPrivilegeFlag INTEGER ,isNewTroop INTEGER ,hasSetNewTroopHead INTEGER ,hasSetNewTroopName INTEGER ,maxInviteMemNum INTEGER ,lastMsgTime INTEGER ,allowMemberModifTroopName INTEGER ,allowMemberKick INTEGER ,allowMemberAtAll INTEGER ,oldTroopName TEXT ,hlGuildAppid INTEGER ,hlGuildSubType INTEGER ,hlGuildOrgid INTEGER ,hlGuildBinary INTEGER ,gameSwitchStatus INTEGER ,showGameSwitchStatus INTEGER ,lastShareLbsMsgUniseq INTEGER ,mTroopNeedPayNumber REAL ,troopCreditLevel INTEGER ,troopCreditLevelInfo INTEGER ,dwAppPrivilegeFlag INTEGER ,topicId TEXT ,associatePubAccount INTEGER ,mTroopFileVideoReqInterval INTEGER ,mTroopFileVideoIsWhite INTEGER ,mTribeStatus INTEGER ,mCanSearchByKeywords INTEGER ,mCanSearchByTroopUin INTEGER ,dwCmdUinJoinTime INTEGER ,dwLastInsertBAFTipTime INTEGER ,wInsertBAFTipCount INTEGER ,wClickBAFTipCount INTEGER ,dwLastBAFTipMsgUniSeq INTEGER ,dwLastBAFTipMsgUniSeq2 INTEGER ,dailyNewMemberUins TEXT ,exitTroopReason INTEGER ,eliminated INTEGER ,mIsFreezed INTEGER ,strLastAnnouncement TEXT ,nMsgLimitFreq INTEGER ,mAtOrReplyMeUins TEXT ,groupFlagExt4 INTEGER ,groupFreezeReason INTEGER ,troopHonorGrayFlag INTEGER ,isAllowHistoryMsgFlag INTEGER ,troopRepeatType INTEGER ,feeds_id TEXT ,myHonorList TEXT)");
-    return localStringBuilder.toString();
+    Object localObject2 = null;
+    Object localObject1 = localObject2;
+    try
+    {
+      if (paramPushPlatform.bytes_ext_data.has()) {
+        localObject1 = paramPushPlatform.bytes_ext_data.get().toByteArray();
+      }
+      if (QLog.isColorLevel()) {
+        QLog.i("PushNoticeManager", 2, String.format("getExtBytes extBytes=%s", new Object[] { Arrays.toString((byte[])localObject1) }));
+      }
+      return localObject1;
+    }
+    catch (Exception paramPushPlatform)
+    {
+      for (;;)
+      {
+        localObject1 = localObject2;
+        if (QLog.isColorLevel())
+        {
+          QLog.i("PushNoticeManager", 2, paramPushPlatform.getMessage(), paramPushPlatform);
+          localObject1 = localObject2;
+        }
+      }
+    }
   }
   
-  public void a(awge paramawge, ContentValues paramContentValues)
+  private void b(Context paramContext, Intent paramIntent)
   {
-    paramawge = (TroopInfo)paramawge;
-    paramContentValues.put("uin", paramawge.uin);
-    paramContentValues.put("timeSec", Long.valueOf(paramawge.timeSec));
-    paramContentValues.put("troopuin", paramawge.troopuin);
-    paramContentValues.put("troopcode", paramawge.troopcode);
-    paramContentValues.put("troopowneruin", paramawge.troopowneruin);
-    paramContentValues.put("troopname", paramawge.troopname);
-    paramContentValues.put("newTroopName", paramawge.newTroopName);
-    paramContentValues.put("newTroopNameTimeStamp", Long.valueOf(paramawge.newTroopNameTimeStamp));
-    paramContentValues.put("troopface", Short.valueOf(paramawge.troopface));
-    paramContentValues.put("troopmemo", paramawge.troopmemo);
-    paramContentValues.put("fingertroopmemo", paramawge.fingertroopmemo);
-    paramContentValues.put("mRichFingerMemo", paramawge.mRichFingerMemo);
-    paramContentValues.put("troopmask", Integer.valueOf(paramawge.troopmask));
-    paramContentValues.put("trooptype", Integer.valueOf(paramawge.trooptype));
-    paramContentValues.put("troopCreateTime", Long.valueOf(paramawge.troopCreateTime));
-    paramContentValues.put("dwGroupFlag", Long.valueOf(paramawge.dwGroupFlag));
-    paramContentValues.put("cGroupOption", Short.valueOf(paramawge.cGroupOption));
-    paramContentValues.put("wMemberMax", Integer.valueOf(paramawge.wMemberMax));
-    paramContentValues.put("maxAdminNum", Integer.valueOf(paramawge.maxAdminNum));
-    paramContentValues.put("wSpecialClass", Integer.valueOf(paramawge.wSpecialClass));
-    paramContentValues.put("cGroupLevel", Short.valueOf(paramawge.cGroupLevel));
-    paramContentValues.put("wMemberNum", Integer.valueOf(paramawge.wMemberNum));
-    paramContentValues.put("wMemberNumClient", Integer.valueOf(paramawge.wMemberNumClient));
-    paramContentValues.put("Administrator", paramawge.Administrator);
-    paramContentValues.put("dwGroupClassExt", Long.valueOf(paramawge.dwGroupClassExt));
-    paramContentValues.put("mGroupClassExtText", paramawge.mGroupClassExtText);
-    paramContentValues.put("dwGroupFlagExt", Long.valueOf(paramawge.dwGroupFlagExt));
-    paramContentValues.put("dwAuthGroupType", Long.valueOf(paramawge.dwAuthGroupType));
-    paramContentValues.put("troopAuthenticateInfo", paramawge.troopAuthenticateInfo);
-    paramContentValues.put("dwGroupInfoSeq", Long.valueOf(paramawge.dwGroupInfoSeq));
-    paramContentValues.put("mMemberNumSeq", Long.valueOf(paramawge.mMemberNumSeq));
-    paramContentValues.put("mOldMemberNumSeq", Long.valueOf(paramawge.mOldMemberNumSeq));
-    paramContentValues.put("mMemberCardSeq", Long.valueOf(paramawge.mMemberCardSeq));
-    paramContentValues.put("mOldMemberCardSeq", Long.valueOf(paramawge.mOldMemberCardSeq));
-    paramContentValues.put("dwGroupLevelSeq", Long.valueOf(paramawge.dwGroupLevelSeq));
-    paramContentValues.put("cGroupRankSysFlag", Byte.valueOf(paramawge.cGroupRankSysFlag));
-    paramContentValues.put("cGroupRankUserFlag", Byte.valueOf(paramawge.cGroupRankUserFlag));
-    paramContentValues.put("troopLevelMap", paramawge.troopLevelMap);
-    paramContentValues.put("joinTroopQuestion", paramawge.joinTroopQuestion);
-    paramContentValues.put("joinTroopAnswer", paramawge.joinTroopAnswer);
-    paramContentValues.put("cAlbumResult", Byte.valueOf(paramawge.cAlbumResult));
-    paramContentValues.put("dwTimeStamp", Long.valueOf(paramawge.dwTimeStamp));
-    paramContentValues.put("strQZonePhotoUrls", paramawge.strQZonePhotoUrls);
-    paramContentValues.put("mQZonePhotoNum", Integer.valueOf(paramawge.mQZonePhotoNum));
-    paramContentValues.put("strLocation", paramawge.strLocation);
-    paramContentValues.put("troopLat", Integer.valueOf(paramawge.troopLat));
-    paramContentValues.put("troopLon", Integer.valueOf(paramawge.troopLon));
-    paramContentValues.put("mMemberInvitingFlag", Boolean.valueOf(paramawge.mMemberInvitingFlag));
-    paramContentValues.put("mComparePartInt", Integer.valueOf(paramawge.mComparePartInt));
-    paramContentValues.put("mCompareSpell", paramawge.mCompareSpell);
-    paramContentValues.put("mSomeMemberUins", paramawge.mSomeMemberUins);
-    paramContentValues.put("mHeaderUinsOld", paramawge.mHeaderUinsOld);
-    paramContentValues.put("mHeaderUinsNew", paramawge.mHeaderUinsNew);
-    paramContentValues.put("mTags", paramawge.mTags);
-    paramContentValues.put("mTroopAvatarId", Integer.valueOf(paramawge.mTroopAvatarId));
-    paramContentValues.put("mTroopPicListJson", paramawge.mTroopPicListJson);
-    paramContentValues.put("nTroopGrade", Integer.valueOf(paramawge.nTroopGrade));
-    paramContentValues.put("isShowInNearbyTroops", Integer.valueOf(paramawge.isShowInNearbyTroops));
-    paramContentValues.put("dwGagTimeStamp", Long.valueOf(paramawge.dwGagTimeStamp));
-    paramContentValues.put("dwGagTimeStamp_me", Long.valueOf(paramawge.dwGagTimeStamp_me));
-    paramContentValues.put("dwCmdUinUinFlag", Long.valueOf(paramawge.dwCmdUinUinFlag));
-    paramContentValues.put("dwAdditionalFlag", Long.valueOf(paramawge.dwAdditionalFlag));
-    paramContentValues.put("troopTypeExt", Integer.valueOf(paramawge.troopTypeExt));
-    paramContentValues.put("ownerNameShow", paramawge.ownerNameShow);
-    paramContentValues.put("adminNameShow", paramawge.adminNameShow);
-    paramContentValues.put("dwOfficeMode", Long.valueOf(paramawge.dwOfficeMode));
-    paramContentValues.put("dwGroupFlagExt3", Long.valueOf(paramawge.dwGroupFlagExt3));
-    paramContentValues.put("cmdUinFlagEx2", Long.valueOf(paramawge.cmdUinFlagEx2));
-    paramContentValues.put("udwCmdUinRingtoneID", Long.valueOf(paramawge.udwCmdUinRingtoneID));
-    paramContentValues.put("memberListToShow", paramawge.memberListToShow);
-    paramContentValues.put("troopPrivilegeFlag", Long.valueOf(paramawge.troopPrivilegeFlag));
-    paramContentValues.put("isNewTroop", Boolean.valueOf(paramawge.isNewTroop));
-    paramContentValues.put("hasSetNewTroopHead", Boolean.valueOf(paramawge.hasSetNewTroopHead));
-    paramContentValues.put("hasSetNewTroopName", Boolean.valueOf(paramawge.hasSetNewTroopName));
-    paramContentValues.put("maxInviteMemNum", Integer.valueOf(paramawge.maxInviteMemNum));
-    paramContentValues.put("lastMsgTime", Long.valueOf(paramawge.lastMsgTime));
-    paramContentValues.put("allowMemberModifTroopName", Integer.valueOf(paramawge.allowMemberModifTroopName));
-    paramContentValues.put("allowMemberKick", Integer.valueOf(paramawge.allowMemberKick));
-    paramContentValues.put("allowMemberAtAll", Integer.valueOf(paramawge.allowMemberAtAll));
-    paramContentValues.put("oldTroopName", paramawge.oldTroopName);
-    paramContentValues.put("hlGuildAppid", Long.valueOf(paramawge.hlGuildAppid));
-    paramContentValues.put("hlGuildSubType", Long.valueOf(paramawge.hlGuildSubType));
-    paramContentValues.put("hlGuildOrgid", Integer.valueOf(paramawge.hlGuildOrgid));
-    paramContentValues.put("hlGuildBinary", Integer.valueOf(paramawge.hlGuildBinary));
-    paramContentValues.put("gameSwitchStatus", Integer.valueOf(paramawge.gameSwitchStatus));
-    paramContentValues.put("showGameSwitchStatus", Integer.valueOf(paramawge.showGameSwitchStatus));
-    paramContentValues.put("lastShareLbsMsgUniseq", Long.valueOf(paramawge.lastShareLbsMsgUniseq));
-    paramContentValues.put("mTroopNeedPayNumber", Float.valueOf(paramawge.mTroopNeedPayNumber));
-    paramContentValues.put("troopCreditLevel", Long.valueOf(paramawge.troopCreditLevel));
-    paramContentValues.put("troopCreditLevelInfo", Long.valueOf(paramawge.troopCreditLevelInfo));
-    paramContentValues.put("dwAppPrivilegeFlag", Long.valueOf(paramawge.dwAppPrivilegeFlag));
-    paramContentValues.put("topicId", paramawge.topicId);
-    paramContentValues.put("associatePubAccount", Long.valueOf(paramawge.associatePubAccount));
-    paramContentValues.put("mTroopFileVideoReqInterval", Long.valueOf(paramawge.mTroopFileVideoReqInterval));
-    paramContentValues.put("mTroopFileVideoIsWhite", Integer.valueOf(paramawge.mTroopFileVideoIsWhite));
-    paramContentValues.put("mTribeStatus", Integer.valueOf(paramawge.mTribeStatus));
-    paramContentValues.put("mCanSearchByKeywords", Boolean.valueOf(paramawge.mCanSearchByKeywords));
-    paramContentValues.put("mCanSearchByTroopUin", Boolean.valueOf(paramawge.mCanSearchByTroopUin));
-    paramContentValues.put("dwCmdUinJoinTime", Long.valueOf(paramawge.dwCmdUinJoinTime));
-    paramContentValues.put("dwLastInsertBAFTipTime", Long.valueOf(paramawge.dwLastInsertBAFTipTime));
-    paramContentValues.put("wInsertBAFTipCount", Integer.valueOf(paramawge.wInsertBAFTipCount));
-    paramContentValues.put("wClickBAFTipCount", Integer.valueOf(paramawge.wClickBAFTipCount));
-    paramContentValues.put("dwLastBAFTipMsgUniSeq", Long.valueOf(paramawge.dwLastBAFTipMsgUniSeq));
-    paramContentValues.put("dwLastBAFTipMsgUniSeq2", Long.valueOf(paramawge.dwLastBAFTipMsgUniSeq2));
-    paramContentValues.put("dailyNewMemberUins", paramawge.dailyNewMemberUins);
-    paramContentValues.put("exitTroopReason", Integer.valueOf(paramawge.exitTroopReason));
-    paramContentValues.put("eliminated", Integer.valueOf(paramawge.eliminated));
-    paramContentValues.put("mIsFreezed", Integer.valueOf(paramawge.mIsFreezed));
-    paramContentValues.put("strLastAnnouncement", paramawge.strLastAnnouncement);
-    paramContentValues.put("nMsgLimitFreq", Integer.valueOf(paramawge.nMsgLimitFreq));
-    paramContentValues.put("mAtOrReplyMeUins", paramawge.mAtOrReplyMeUins);
-    paramContentValues.put("groupFlagExt4", Integer.valueOf(paramawge.groupFlagExt4));
-    paramContentValues.put("groupFreezeReason", Integer.valueOf(paramawge.groupFreezeReason));
-    paramContentValues.put("troopHonorGrayFlag", Integer.valueOf(paramawge.troopHonorGrayFlag));
-    paramContentValues.put("isAllowHistoryMsgFlag", Integer.valueOf(paramawge.isAllowHistoryMsgFlag));
-    paramContentValues.put("troopRepeatType", Integer.valueOf(paramawge.troopRepeatType));
-    paramContentValues.put("feeds_id", paramawge.feeds_id);
-    paramContentValues.put("myHonorList", paramawge.myHonorList);
+    if (paramIntent.getBooleanExtra("push_notice_unlock", false)) {
+      paramContext.startActivity(new Intent(paramContext, QQLSUnlockActivity.class));
+    }
+  }
+  
+  public RecentBaseData a()
+  {
+    return this.jdField_a_of_type_ComTencentMobileqqActivityRecentDataRecentItemNoticeData;
+  }
+  
+  public MessageForText a()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityRecentDataRecentItemNoticeData == null) {
+      return null;
+    }
+    RecentItemNoticeData localRecentItemNoticeData = this.jdField_a_of_type_ComTencentMobileqqActivityRecentDataRecentItemNoticeData;
+    if (this.jdField_a_of_type_ComTencentMobileqqDataMessageForText == null)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqDataMessageForText = ((MessageForText)bbzh.a(-1000));
+      this.jdField_a_of_type_ComTencentMobileqqDataMessageForText.msgtype = -1000;
+      this.jdField_a_of_type_ComTencentMobileqqDataMessageForText.istroop = this.jdField_a_of_type_ComTencentMobileqqActivityRecentDataRecentItemNoticeData.type;
+      this.jdField_a_of_type_ComTencentMobileqqDataMessageForText.isread = false;
+      this.jdField_a_of_type_ComTencentMobileqqDataMessageForText.selfuin = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
+      this.jdField_a_of_type_ComTencentMobileqqDataMessageForText.senderuin = (this.jdField_a_of_type_Long + "");
+      this.jdField_a_of_type_ComTencentMobileqqDataMessageForText.frienduin = (this.jdField_a_of_type_Long + "");
+      this.jdField_a_of_type_ComTencentMobileqqDataMessageForText.msg = localRecentItemNoticeData.wording;
+      this.jdField_a_of_type_ComTencentMobileqqDataMessageForText.time = localRecentItemNoticeData.time;
+    }
+    if (localRecentItemNoticeData.type == 1035) {}
+    for (String str = localRecentItemNoticeData.mTitleName;; str = localRecentItemNoticeData.wording)
+    {
+      if ((this.jdField_a_of_type_ComTencentMobileqqDataMessageForText.msg == null) || (!this.jdField_a_of_type_ComTencentMobileqqDataMessageForText.msg.equals(str))) {
+        this.jdField_a_of_type_ComTencentMobileqqDataMessageForText.msg = str;
+      }
+      if (this.jdField_a_of_type_ComTencentMobileqqDataMessageForText.time != localRecentItemNoticeData.time) {
+        this.jdField_a_of_type_ComTencentMobileqqDataMessageForText.time = localRecentItemNoticeData.time;
+      }
+      return this.jdField_a_of_type_ComTencentMobileqqDataMessageForText;
+    }
+  }
+  
+  public void a()
+  {
+    if (!this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get())
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("PushNoticeManager", 2, "nothing to show");
+      }
+      return;
+    }
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityRecentDataRecentItemNoticeData == null)
+    {
+      QLog.w("PushNoticeManager", 1, "recent data is null");
+      return;
+    }
+    this.jdField_a_of_type_Bkgm.sendEmptyMessageDelayed(1, 30000L);
+  }
+  
+  public void a(long paramLong, String arg3, String paramString2, String paramString3, int paramInt1, int paramInt2, String paramString4, String paramString5, Bundle paramBundle)
+  {
+    if (!QQNotificationManager.getInstance().areNotificationsEnabled(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp())) {
+      QLog.i("PushNoticeManager", 1, "notifications are disabled");
+    }
+    Intent localIntent;
+    do
+    {
+      do
+      {
+        return;
+        if (SettingCloneUtil.readValue(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c(), null, "qqsetting_show_push_message", true)) {
+          break;
+        }
+      } while (!QLog.isColorLevel());
+      QLog.i("PushNoticeManager", 2, "show push notice switch off");
+      return;
+      if (FriendsStatusUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp()))
+      {
+        QLog.i("PushNoticeManager", 1, "do not disturb");
+        return;
+      }
+      localIntent = new Intent(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), SplashActivity.class);
+      localIntent.putExtra("fragment_id", 1);
+      localIntent.putExtra("main_tab_id", 4);
+      localIntent.setFlags(603979776);
+      localIntent.putExtra("forward", paramInt1);
+      paramInt1 = (Integer.valueOf(paramString4).intValue() - 1000) % 30;
+      if (paramInt1 >= 0) {}
+      for (;;)
+      {
+        paramInt1 += 482;
+        localIntent.putExtra("url", paramString2);
+        localIntent.putExtra("from", "push_notice");
+        localIntent.putExtra("uintype", paramInt2);
+        localIntent.putExtra("param_fromuin", String.valueOf(paramLong));
+        localIntent.putExtra("param_uinType", paramInt2);
+        localIntent.putExtra("param_notifyid", paramInt1);
+        localIntent.putExtra("push_notice_tag", "push_notification_tag");
+        localIntent.putExtra("param_push_notifyid", paramInt1);
+        localIntent.putExtra("push_notice_service_id", paramString4);
+        localIntent.putExtra("push_notice_content_id", paramString5);
+        if (paramBundle != null) {
+          localIntent.putExtras(paramBundle);
+        }
+        if (QLog.isColorLevel()) {
+          QLog.d("PushNoticeManager", 2, new Object[] { "onReceiveNotice notifyid" + paramInt1 + "notifyUI url:", paramString2 });
+        }
+        paramString2 = BaseApplicationImpl.getContext();
+        boolean bool = bgrj.a(paramString2);
+        if ((this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.isBackground_Pause) || (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.isBackground_Stop) || (bool))
+        {
+          this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
+          this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.set(0);
+          if (this.jdField_a_of_type_ComTencentMobileqqActivityRecentDataRecentItemNoticeData != null) {
+            this.jdField_a_of_type_ComTencentMobileqqActivityRecentDataRecentItemNoticeData.a(localIntent);
+          }
+          paramString4 = new ToServiceMsg("mobileqq.service", this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "CMD_SHOW_NOTIFIYCATION");
+          paramString4.extraData.putStringArray("cmds", new String[] { ???, paramString3, ??? });
+          paramString4.extraData.putParcelable("intent", localIntent);
+          paramString4.extraData.putParcelable("bitmap", null);
+          this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.sendToService(paramString4);
+          synchronized (this.jdField_a_of_type_AndroidUtilSparseArray)
+          {
+            this.jdField_a_of_type_AndroidUtilSparseArray.put(paramInt1, Integer.valueOf(paramInt2));
+            if (bool)
+            {
+              ??? = (awhk)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(72);
+              if (SettingCloneUtil.readValue(paramString2, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), paramString2.getString(2131693426), "qqsetting_lock_screen_whenexit_key", true))
+              {
+                if (QLog.isColorLevel()) {
+                  QLog.d("PushNoticeManager", 2, "push notice start lsActivity from appinterface ");
+                }
+                ???.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramLong + "", paramInt2, false, paramInt1);
+              }
+              this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().notifyObservers(a());
+            }
+            azus.a(paramInt2, 1);
+            return;
+            paramInt1 = 0;
+          }
+        }
+      }
+      if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.incrementAndGet() <= 3) {
+        break;
+      }
+    } while (!QLog.isColorLevel());
+    QLog.i("PushNoticeManager", 2, "delay push notice reach the max retry");
+    return;
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityRecentDataRecentItemNoticeData != null) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityRecentDataRecentItemNoticeData.a(localIntent);
+    }
+    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
+  }
+  
+  public void a(Context paramContext, Intent paramIntent)
+  {
+    int i = paramIntent.getIntExtra("forward", -1);
+    int j = paramIntent.getIntExtra("param_push_uinType", -1);
+    int k = paramIntent.getIntExtra("param_push_notifyid", -1);
+    String str1 = paramIntent.getStringExtra("param_push_fromuin");
+    a(null, j);
+    Intent localIntent;
+    switch (i)
+    {
+    default: 
+      i = j;
+    case 3: 
+      for (;;)
+      {
+        ThreadManager.post(new PushNoticeManager.1(this, i), 5, null, true);
+        return;
+        str1 = paramIntent.getStringExtra("url");
+        localIntent = new Intent(paramContext, QQBrowserActivity.class);
+        i = paramIntent.getIntExtra("uintype", -1);
+        localIntent.putExtra("uintype", i);
+        String str2 = paramIntent.getStringExtra("push_notice_service_id");
+        String str3 = paramIntent.getStringExtra("push_notice_content_id");
+        a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, str2, str3, str1, "0X8009241", "点击业务Push");
+        localIntent.putExtra("push_notice_service_id", str2);
+        localIntent.putExtra("push_notice_content_id", str3);
+        if (QLog.isColorLevel()) {
+          QLog.d("PushNoticeManager", 2, "remove push notice");
+        }
+        localIntent.putExtra("url", str1);
+        paramContext.startActivity(localIntent);
+        b(paramContext, paramIntent);
+        paramIntent.removeExtra("forward");
+      }
+    }
+    if (j == 1041)
+    {
+      localIntent = afur.a(new Intent(paramContext, SplashActivity.class), null);
+      localIntent.putExtra("uin", str1);
+      localIntent.putExtra("uintype", 0);
+      localIntent.putExtra("uinname", paramIntent.getStringExtra("uinname"));
+      localIntent.putExtra("param_notifyid", k);
+      localIntent.putExtra("enterchatwin", true);
+      paramContext.startActivity(localIntent);
+    }
+    for (;;)
+    {
+      b(paramContext, paramIntent);
+      paramIntent.removeExtra("forward");
+      i = j;
+      if (!QLog.isColorLevel()) {
+        break;
+      }
+      QLog.i("PushNoticeManager", 2, String.format("forward [uinType,notifyId,uin]=[%d,%d,%s]", new Object[] { Integer.valueOf(j), Integer.valueOf(k), str1 }));
+      i = j;
+      break;
+      if (j == 1042)
+      {
+        localIntent = new Intent(paramContext, RecommendFriendActivity.class);
+        localIntent.putExtra("EntranceId", 9);
+        localIntent.putExtra("param_notifyid", k);
+        localIntent.putExtra("may_know_recmmds", paramIntent.getSerializableExtra("may_know_recmmds"));
+        paramContext.startActivity(localIntent);
+      }
+    }
+  }
+  
+  public void a(QQNotificationManager paramQQNotificationManager, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("PushNoticeManager", 2, "setRead " + paramInt);
+    }
+    this.jdField_a_of_type_Bkgm.removeMessages(1);
+    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
+    this.jdField_a_of_type_ComTencentMobileqqActivityRecentDataRecentItemNoticeData = null;
+    QQNotificationManager localQQNotificationManager = paramQQNotificationManager;
+    if (paramQQNotificationManager == null) {}
+    for (;;)
+    {
+      int i;
+      try
+      {
+        localQQNotificationManager = QQNotificationManager.getInstance();
+        paramQQNotificationManager = this.jdField_a_of_type_AndroidUtilSparseArray;
+        i = 0;
+        try
+        {
+          if (i < this.jdField_a_of_type_AndroidUtilSparseArray.size())
+          {
+            Integer localInteger1 = Integer.valueOf(this.jdField_a_of_type_AndroidUtilSparseArray.keyAt(i));
+            Integer localInteger2 = (Integer)this.jdField_a_of_type_AndroidUtilSparseArray.valueAt(i);
+            if ((localInteger1 == null) || ((paramInt >= 0) && (localInteger2 != null) && (localInteger2.intValue() != paramInt))) {
+              break label233;
+            }
+            if (QLog.isColorLevel()) {
+              QLog.d("PushNoticeManager", 2, String.format(Locale.getDefault(), "cancel push_notice [%d, %s]", new Object[] { Integer.valueOf(localInteger1.intValue()), "push_notification_tag" }));
+            }
+            localQQNotificationManager.cancelUseTag("PushNoticeManager_removeNotification", "push_notification_tag", localInteger1.intValue());
+          }
+        }
+        finally {}
+        this.jdField_a_of_type_AndroidUtilSparseArray.clear();
+      }
+      catch (Exception paramQQNotificationManager)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("PushNoticeManager", 2, "setRead", paramQQNotificationManager);
+        }
+        return;
+      }
+      return;
+      label233:
+      i += 1;
+    }
+  }
+  
+  public void a(SubMsgType0x27.MsgBody paramMsgBody, short paramShort, long paramLong)
+  {
+    if ((paramMsgBody == null) || (paramMsgBody.msg_push_platform == null)) {
+      return;
+    }
+    if ((paramShort == this.jdField_a_of_type_Short) && (paramLong == this.b))
+    {
+      QLog.w("PushNoticeManager", 1, "skip duplicated msg: " + paramShort + ", " + paramLong);
+      return;
+    }
+    this.jdField_a_of_type_Short = paramShort;
+    this.b = paramLong;
+    Object localObject4 = paramMsgBody.msg_push_platform;
+    int i = ((SubMsgType0x27.PushPlatform)localObject4).uint32_forward_type.get();
+    if (i == 0) {
+      i = 3;
+    }
+    while (i == 0)
+    {
+      QLog.w("PushNoticeManager", 1, "unknown forward type: " + i);
+      return;
+      if (i == 1) {
+        i = 4;
+      } else {
+        i = 0;
+      }
+    }
+    Object localObject3 = paramMsgBody.msg_client_report;
+    paramLong = ((SubMsgType0x27.PushPlatform)localObject4).uint64_from_uin.get();
+    this.jdField_a_of_type_Long = paramLong;
+    String str = null;
+    if (((SubMsgType0x27.PushPlatform)localObject4).str_desc.has()) {
+      str = ((SubMsgType0x27.PushPlatform)localObject4).str_desc.get();
+    }
+    paramMsgBody = null;
+    if (((SubMsgType0x27.PushPlatform)localObject4).str_target_url.has())
+    {
+      paramMsgBody = ((SubMsgType0x27.PushPlatform)localObject4).str_target_url.get();
+      if (TextUtils.isEmpty(paramMsgBody)) {
+        break label817;
+      }
+    }
+    label809:
+    label817:
+    for (;;)
+    {
+      Object localObject1;
+      Object localObject2;
+      long l;
+      try
+      {
+        paramMsgBody = new String(awzl.a(paramMsgBody), "UTF-8");
+        localObject1 = null;
+        if (((SubMsgType0x27.PushPlatform)localObject4).str_title.has()) {
+          localObject1 = ((SubMsgType0x27.PushPlatform)localObject4).str_title.get();
+        }
+        localObject2 = localObject1;
+        if (localObject1 == null) {
+          localObject2 = "";
+        }
+        if (QLog.isColorLevel()) {
+          QLog.i("PushNoticeManager", 2, String.format(Locale.getDefault(), "onReceiveNotice [uin: %d wording: %s url: %s from: %s oriUrl:%s", new Object[] { Long.valueOf(paramLong), str, paramMsgBody, localObject2, ((SubMsgType0x27.PushPlatform)localObject4).str_target_url.get() }));
+        }
+        if ((TextUtils.isEmpty(str)) || (TextUtils.isEmpty(paramMsgBody))) {
+          break;
+        }
+        j = 1035;
+        if (4 != i) {
+          break label809;
+        }
+        if (TextUtils.equals(paramMsgBody, "newfrd_add")) {
+          j = 1041;
+        }
+        if (TextUtils.equals(paramMsgBody, "newfrd_recommand")) {
+          j = 1042;
+        }
+        azus.a(j, 0);
+        localObject1 = new Bundle();
+        bool2 = false;
+      }
+      catch (Exception paramMsgBody)
+      {
+        try
+        {
+          bool1 = a((SubMsgType0x27.PushPlatform)localObject4, (Bundle)localObject1, j);
+          if (!bool1) {
+            break;
+          }
+          if (j == 1041)
+          {
+            paramLong = Long.valueOf(((Bundle)localObject1).getString("param_fromuin")).longValue();
+            this.jdField_a_of_type_Long = paramLong;
+          }
+          if (QLog.isColorLevel()) {
+            QLog.i("PushNoticeManager", 2, String.format("onReceiveNotice [uinType,uin]=[%d,%d]", new Object[] { Integer.valueOf(j), Long.valueOf(paramLong) }));
+          }
+          this.jdField_a_of_type_Bkgm.removeMessages(1);
+          localObject4 = new bcso();
+          ((bcso)localObject4).e = "0X800923D";
+          ((bcso)localObject4).d = "收到Push协议";
+          ((bcso)localObject4).f = (((SubMsgType0x27.ClientReport)localObject3).uint32_service_id.get() + "");
+          ((bcso)localObject4).i = ((SubMsgType0x27.ClientReport)localObject3).str_content_id.get();
+          bcsn.a(paramMsgBody, (bcso)localObject4);
+          bcsn.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (bcso)localObject4);
+          l = bbyp.a();
+          localObject3 = new RecentUser();
+          ((RecentUser)localObject3).uin = (paramLong + "");
+          ((RecentUser)localObject3).msgType = j;
+          ((RecentUser)localObject3).setType(j);
+          if (this.jdField_a_of_type_ComTencentMobileqqActivityRecentDataRecentItemNoticeData == null)
+          {
+            this.jdField_a_of_type_ComTencentMobileqqActivityRecentDataRecentItemNoticeData = new RecentItemNoticeData((RecentUser)localObject3);
+            this.jdField_a_of_type_ComTencentMobileqqActivityRecentDataRecentItemNoticeData.a(j, paramLong, str, paramMsgBody, (String)localObject2, l);
+            a(paramLong, str, paramMsgBody, (String)localObject2, i, j, ((bcso)localObject4).f, ((bcso)localObject4).i, (Bundle)localObject1);
+            return;
+            paramMsgBody = paramMsgBody;
+            QLog.e("PushNoticeManager", 1, paramMsgBody, new Object[0]);
+            paramMsgBody = null;
+          }
+        }
+        catch (Exception localException)
+        {
+          boolean bool2;
+          boolean bool1 = bool2;
+          if (!QLog.isColorLevel()) {
+            continue;
+          }
+          QLog.i("PushNoticeManager", 2, localException.getMessage(), localException);
+          bool1 = bool2;
+          continue;
+        }
+      }
+      if (this.jdField_a_of_type_ComTencentMobileqqActivityRecentDataRecentItemNoticeData.a(j, paramLong, str, paramMsgBody, (String)localObject2, l)) {
+        break;
+      }
+      this.jdField_a_of_type_ComTencentMobileqqActivityRecentDataRecentItemNoticeData.a(j, paramLong, str, paramMsgBody, (String)localObject2, l);
+      a(paramLong, str, paramMsgBody, (String)localObject2, i, j, localException.f, localException.i, (Bundle)localObject1);
+      return;
+      int j = 1035;
+    }
+  }
+  
+  public boolean handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    default: 
+      return false;
+    }
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityRecentDataRecentItemNoticeData == null)
+    {
+      QLog.e("PushNoticeManager", 1, "recent data is null");
+      return true;
+    }
+    a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentDataRecentItemNoticeData.uin, this.jdField_a_of_type_ComTencentMobileqqActivityRecentDataRecentItemNoticeData.wording, this.jdField_a_of_type_ComTencentMobileqqActivityRecentDataRecentItemNoticeData.url, this.jdField_a_of_type_ComTencentMobileqqActivityRecentDataRecentItemNoticeData.from, this.jdField_a_of_type_ComTencentMobileqqActivityRecentDataRecentItemNoticeData.intent.getIntExtra("forward", -1), 0, this.jdField_a_of_type_ComTencentMobileqqActivityRecentDataRecentItemNoticeData.intent.getStringExtra("push_notice_service_id"), this.jdField_a_of_type_ComTencentMobileqqActivityRecentDataRecentItemNoticeData.intent.getStringExtra("push_notice_content_id"), null);
+    return true;
+  }
+  
+  public void onDestroy()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("PushNoticeManager", 2, "onDestroy");
+    }
+    a(null, -1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     awhi
  * JD-Core Version:    0.7.0.1
  */

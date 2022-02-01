@@ -1,18 +1,18 @@
-class aluf
-  implements alrb
+import com.tencent.mobileqq.activity.selectmember.TroopDiscussionTroop;
+
+public class aluf
+  extends anqd
 {
-  aluf(alue paramalue) {}
+  public aluf(TroopDiscussionTroop paramTroopDiscussionTroop) {}
   
-  public void a(boolean paramBoolean)
+  protected void a()
   {
-    if (paramBoolean) {
-      this.a.a();
-    }
+    this.a.c();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aluf
  * JD-Core Version:    0.7.0.1
  */

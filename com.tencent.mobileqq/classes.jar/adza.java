@@ -1,44 +1,32 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.activity.SoundAndVibrateActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.widget.FormSwitchItem;
+import android.view.GestureDetector;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.qphone.base.util.QLog;
 
 public class adza
-  implements CompoundButton.OnCheckedChangeListener
+  implements View.OnTouchListener
 {
-  public adza(SoundAndVibrateActivity paramSoundAndVibrateActivity) {}
+  public adza(Conversation paramConversation) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    int i = 1;
-    if (paramBoolean)
+    if (QLog.isColorLevel())
     {
-      SoundAndVibrateActivity.b(this.a, 0);
-      SoundAndVibrateActivity.e(this.a).setBackgroundResource(2130839270);
-      if (this.a.app.b() == 0)
-      {
-        this.a.b.setChecked(false);
-        this.a.app.f(1);
-        label61:
-        paramCompoundButton = this.a.app;
-        if (!paramBoolean) {
-          break label147;
-        }
+      paramView = new StringBuilder().append("statusTitle onTouch event :").append(paramMotionEvent.toString()).append(", mGestureDetector is null ");
+      if (this.a.a == null) {
+        break label81;
       }
     }
-    for (;;)
+    label81:
+    for (boolean bool = true;; bool = false)
     {
-      azqs.b(paramCompoundButton, "CliOper", "", "", "Setting_tab", "Clk_notice_shake", 0, i, "", "", "", "");
-      return;
-      this.a.b.setChecked(true);
-      break;
-      SoundAndVibrateActivity.b(this.a, 8);
-      SoundAndVibrateActivity.e(this.a).setBackgroundResource(2130839254);
-      this.a.app.f(0);
-      break label61;
-      label147:
-      i = 0;
+      QLog.d("Q.recent", 2, bool);
+      if (this.a.a != null) {
+        this.a.a.onTouchEvent(paramMotionEvent);
+      }
+      return true;
     }
   }
 }

@@ -1,179 +1,156 @@
-import android.os.Handler.Callback;
-import android.os.Message;
-import com.tencent.qqmini.sdk.log.QMLog;
-import com.tencent.qqmini.sdk.task.TaskFlowEngine.1;
-import com.tencent.qqmini.sdk.task.TaskFlowEngine.2;
-import com.tencent.qqmini.sdk.utils.DeviceInfoUtil;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import android.os.Bundle;
+import android.util.LruCache;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.qphone.base.util.QLog;
+import tencent.im.oidb.oidb_0xbcb.CheckUrlRsp;
+import tencent.im.oidb.oidb_0xbcb.RspBody;
+import tencent.im.oidb.oidb_0xbcb.UrlCheckResult;
 
-public class bhlx
-  implements Handler.Callback, bhlv
+class bhlx
+  extends niv
 {
-  public static final int MSG_WHAT_BASE = 100;
-  public static final int MSG_WHAT_TASK_DONE = 101;
-  public static final String TAG = "TaskFlow";
-  protected List<bhlu> mAllTasks = new ArrayList();
-  private final List<bhly> mFlows = new ArrayList();
-  private bhlz mTaskThreadPool;
-  private bhlu[] mTasks;
+  bhlx(bhlt parambhlt, bhlz parambhlz, int paramInt) {}
   
-  public bhlx()
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    try
+    if (QLog.isColorLevel()) {
+      QLog.i("urlSecMgr", 2, "receive 0xbcb_0 code=" + paramInt);
+    }
+    if ((paramInt != 0) || (paramArrayOfByte == null))
     {
-      int j = DeviceInfoUtil.getNumberOfCPUCores();
-      QMLog.w("TaskFlow", "create thread pool, cpuCores=" + j);
-      if (j > 0) {
-        i = j + 1;
+      if (!QLog.isColorLevel()) {
+        break label626;
       }
-      this.mTaskThreadPool = new bhlz("TaskFlowEngine", 2, i);
-      return;
+      if (paramArrayOfByte == null) {
+        break label620;
+      }
     }
-    catch (Exception localException)
-    {
-      QMLog.e("TaskFlow", "create thread pool error!", localException);
-    }
-  }
-  
-  private void initCallback(bhlu parambhlu)
-  {
-    if (parambhlu == null) {}
     for (;;)
     {
-      return;
-      parambhlu.a(this);
-      if (!this.mAllTasks.contains(parambhlu)) {
-        this.mAllTasks.add(parambhlu);
-      }
-      parambhlu = parambhlu.a();
-      if ((parambhlu != null) && (parambhlu.size() > 0))
+      Object localObject;
+      try
       {
-        parambhlu = parambhlu.iterator();
-        while (parambhlu.hasNext()) {
-          initCallback((bhlu)parambhlu.next());
+        paramBundle = ((oidb_0xbcb.RspBody)new oidb_0xbcb.RspBody().mergeFrom(paramArrayOfByte)).wording.get();
+        localObject = new StringBuilder().append("req error code=").append(paramInt);
+        if (paramArrayOfByte == null)
+        {
+          paramArrayOfByte = ", data=null";
+          QLog.i("urlSecMgr", 2, paramArrayOfByte);
+          paramArrayOfByte = null;
+          if (this.jdField_a_of_type_Bhlz != null)
+          {
+            paramBundle = new Bundle();
+            if ((this.jdField_a_of_type_Int == 1) && (paramArrayOfByte != null))
+            {
+              paramBundle.putInt("result", paramArrayOfByte.jdField_a_of_type_Int);
+              paramBundle.putInt("jumpResult", paramArrayOfByte.jdField_b_of_type_Int);
+              paramBundle.putString("jumpUrl", paramArrayOfByte.jdField_a_of_type_JavaLangString);
+              paramBundle.putInt("level", paramArrayOfByte.c);
+              paramBundle.putInt("subLevel", paramArrayOfByte.d);
+              paramBundle.putInt("umrType", paramArrayOfByte.e);
+              paramBundle.putInt("retFrom", paramArrayOfByte.f);
+              paramBundle.putLong("operationBit", paramArrayOfByte.jdField_b_of_type_Long);
+            }
+            this.jdField_a_of_type_Bhlz.a(paramBundle);
+          }
+          return;
         }
       }
-    }
-  }
-  
-  public void executeTask(bhlu arg1)
-  {
-    if (??? == null) {
-      return;
-    }
-    List localList = ???.a();
-    if ((localList == null) || (localList.size() <= 0))
-    {
-      ???.g();
-      return;
-    }
-    Object localObject2 = this.mFlows.iterator();
-    do
-    {
-      if (!((Iterator)localObject2).hasNext()) {
-        break;
+      catch (InvalidProtocolBufferMicroException paramBundle)
+      {
+        paramBundle = "";
+        continue;
+        paramArrayOfByte = ", msg=" + paramBundle;
+        continue;
       }
-    } while (((bhly)((Iterator)localObject2).next()).a != ???);
-    for (int i = 1;; i = 0) {
+      oidb_0xbcb.RspBody localRspBody = new oidb_0xbcb.RspBody();
       for (;;)
       {
-        if (i == 0) {
-          localObject2 = new bhly(this, ???, localList);
-        }
-        synchronized (this.mFlows)
+        try
         {
-          this.mFlows.add(localObject2);
-          ??? = localList.iterator();
-          if (!???.hasNext()) {
-            break;
+          localRspBody.mergeFrom(paramArrayOfByte);
+          if (QLog.isColorLevel()) {
+            QLog.i("urlSecMgr", 2, "parse 0xbcb_0 result msg=" + localRspBody.wording.get() + ", count=" + localRspBody.check_url_rsp.results.size());
           }
-          executeTask((bhlu)???.next());
+          l1 = NetConnInfoCenter.getServerTimeMillis();
+          l2 = localRspBody.check_url_rsp.next_req_duration.get();
+          int i = localRspBody.check_url_rsp.results.size();
+          paramArrayOfByte = null;
+          paramInt = 0;
+          if (paramInt < i) {
+            paramBundle = paramArrayOfByte;
+          }
+        }
+        catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException1)
+        {
+          long l1;
+          long l2;
+          oidb_0xbcb.UrlCheckResult localUrlCheckResult;
+          String str;
+          paramBundle = null;
+        }
+        try
+        {
+          localUrlCheckResult = (oidb_0xbcb.UrlCheckResult)localRspBody.check_url_rsp.results.get(paramInt);
+          paramBundle = paramArrayOfByte;
+          str = localUrlCheckResult.url.get();
+          paramBundle = paramArrayOfByte;
+          localObject = new bhly(null);
+          paramBundle = paramArrayOfByte;
+          ((bhly)localObject).jdField_a_of_type_Long = (l2 * 1000L + l1);
+          paramBundle = paramArrayOfByte;
+          ((bhly)localObject).jdField_a_of_type_Int = localUrlCheckResult.result.get();
+          paramBundle = paramArrayOfByte;
+          ((bhly)localObject).jdField_b_of_type_Int = localUrlCheckResult.jump_result.get();
+          paramBundle = paramArrayOfByte;
+          ((bhly)localObject).jdField_a_of_type_JavaLangString = localUrlCheckResult.jump_url.get();
+          paramBundle = paramArrayOfByte;
+          ((bhly)localObject).c = localUrlCheckResult.uint32_level.get();
+          paramBundle = paramArrayOfByte;
+          ((bhly)localObject).d = localUrlCheckResult.uint32_sub_level.get();
+          paramBundle = paramArrayOfByte;
+          ((bhly)localObject).e = localUrlCheckResult.uint32_umrtype.get();
+          paramBundle = paramArrayOfByte;
+          ((bhly)localObject).f = localUrlCheckResult.ret_from.get();
+          paramBundle = paramArrayOfByte;
+          ((bhly)localObject).jdField_b_of_type_Long = localUrlCheckResult.operation_bit.get();
+          if (paramInt == 0) {
+            paramArrayOfByte = (byte[])localObject;
+          }
+          paramBundle = paramArrayOfByte;
+          this.jdField_a_of_type_Bhlt.a.put(str, localObject);
+          paramInt += 1;
+        }
+        catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException2)
+        {
+          label592:
+          break label592;
         }
       }
-    }
-  }
-  
-  public boolean handleMessage(Message paramMessage)
-  {
-    return false;
-  }
-  
-  public final void initTasks(bhlu[] paramArrayOfbhlu)
-  {
-    this.mAllTasks.clear();
-    this.mTasks = paramArrayOfbhlu;
-    if (this.mTasks == null) {}
-    for (;;)
-    {
-      return;
-      paramArrayOfbhlu = this.mTasks;
-      int j = paramArrayOfbhlu.length;
-      int i = 0;
-      while (i < j)
+      continue;
+      paramArrayOfByte = paramBundle;
+      if (QLog.isColorLevel())
       {
-        initCallback(paramArrayOfbhlu[i]);
-        i += 1;
-      }
-    }
-  }
-  
-  public void onTaskBegin(bhlu parambhlu) {}
-  
-  public void onTaskDone(bhlu parambhlu)
-  {
-    if (parambhlu == null) {}
-    while (!parambhlu.d()) {
-      return;
-    }
-    this.mTaskThreadPool.a(new TaskFlowEngine.2(this, parambhlu));
-  }
-  
-  protected void resetTaskAndDepends(bhlu parambhlu)
-  {
-    if (parambhlu == null) {}
-    for (;;)
-    {
-      return;
-      parambhlu.b();
-      Iterator localIterator = this.mAllTasks.iterator();
-      while (localIterator.hasNext())
-      {
-        bhlu localbhlu = (bhlu)localIterator.next();
-        if (localbhlu.a(parambhlu)) {
-          localbhlu.b();
-        }
-      }
-    }
-  }
-  
-  public void start()
-  {
-    if ((this.mTasks == null) || (this.mTasks.length <= 0)) {
-      return;
-    }
-    this.mTaskThreadPool.a(new TaskFlowEngine.1(this));
-  }
-  
-  public void updateFlow(bhlu parambhlu)
-  {
-    synchronized (this.mFlows)
-    {
-      Iterator localIterator = this.mFlows.iterator();
-      while (localIterator.hasNext())
-      {
-        bhly localbhly = (bhly)localIterator.next();
-        if (localbhly.a(parambhlu)) {
-          localbhly.a();
-        }
+        QLog.i("urlSecMgr", 2, "parse error", localInvalidProtocolBufferMicroException1);
+        paramArrayOfByte = paramBundle;
+        continue;
+        label620:
+        paramBundle = "";
+        continue;
+        label626:
+        paramArrayOfByte = null;
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bhlx
  * JD-Core Version:    0.7.0.1
  */

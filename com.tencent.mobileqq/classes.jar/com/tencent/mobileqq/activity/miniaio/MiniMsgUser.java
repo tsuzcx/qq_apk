@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.activity.miniaio;
 
-import aiiw;
-import aiiy;
-import aija;
+import ajzp;
+import ajzr;
+import ajzt;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Handler.Callback;
@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.util.concurrent.atomic.AtomicBoolean;
 import mqq.os.MqqHandler;
 
@@ -65,7 +66,7 @@ public class MiniMsgUser
           }
         }
       }
-      this.mMiniMsgUserParam.unreadCallback = new aiiy(paramActivity, n, i2, i1, j, i, this);
+      this.mMiniMsgUserParam.unreadCallback = new ajzr(paramActivity, n, i2, i1, j, i, this);
     }
     for (;;)
     {
@@ -77,7 +78,7 @@ public class MiniMsgUser
           this.mMiniMsgUserParam.entryView.setOnClickListener(this);
         }
         if (this.mMiniMsgUserParam.unreadCallback == null) {
-          this.mMiniMsgUserParam.unreadCallback = new aiiw(this.mMiniMsgUserParam.entryView, this.mMiniMsgUserParam.unreadView);
+          this.mMiniMsgUserParam.unreadCallback = new ajzp(this.mMiniMsgUserParam.entryView, this.mMiniMsgUserParam.unreadView);
         }
       }
     }
@@ -112,7 +113,7 @@ public class MiniMsgUser
     int j = 0;
     if (this.mIsDetroy.get()) {}
     int k;
-    aija localaija;
+    ajzt localajzt;
     IMiniMsgUnreadCallback localIMiniMsgUnreadCallback;
     do
     {
@@ -123,8 +124,8 @@ public class MiniMsgUser
           QLog.d("mini_msg_User", 2, "msg_what = " + paramMessage.what);
         }
         k = paramMessage.arg1;
-        localaija = MiniMsgIPCClient.getInstance().getBusinessInfo(this.mMiniMsgUserParam.businessName);
-      } while (localaija == null);
+        localajzt = MiniMsgIPCClient.getInstance().getBusinessInfo(this.mMiniMsgUserParam.businessName);
+      } while (localajzt == null);
       localIMiniMsgUnreadCallback = this.mMiniMsgUserParam.unreadCallback;
     } while (localIMiniMsgUnreadCallback == null);
     if ((this.mMiniMsgUserParam.accessType == 0) && ((this.mMiniMsgUserParam.entryType == 0) || (this.mMiniMsgUserParam.entryType == 1))) {}
@@ -139,31 +140,31 @@ public class MiniMsgUser
         {
           return true;
           i = j;
-          if (localaija.jdField_b_of_type_Boolean)
+          if (localajzt.jdField_b_of_type_Boolean)
           {
             i = j;
-            if (localaija.a) {
-              i = localaija.jdField_b_of_type_Int;
+            if (localajzt.a) {
+              i = localajzt.jdField_b_of_type_Int;
             }
           }
           this.mIsAttach = localIMiniMsgUnreadCallback.show(i);
-          localaija.jdField_b_of_type_Boolean = this.mIsAttach;
+          localajzt.jdField_b_of_type_Boolean = this.mIsAttach;
         }
       case 1: 
-        if ((i != 0) && (!localaija.jdField_b_of_type_Boolean))
+        if ((i != 0) && (!localajzt.jdField_b_of_type_Boolean))
         {
           this.mIsAttach = localIMiniMsgUnreadCallback.show(k);
-          localaija.jdField_b_of_type_Boolean = this.mIsAttach;
+          localajzt.jdField_b_of_type_Boolean = this.mIsAttach;
         }
         for (;;)
         {
-          localaija.a = true;
-          localaija.jdField_b_of_type_Int = k;
+          localajzt.a = true;
+          localajzt.jdField_b_of_type_Int = k;
           break;
           localIMiniMsgUnreadCallback.updateUnreadCount(k, false);
         }
       case 2: 
-        if (!localaija.a)
+        if (!localajzt.a)
         {
           bool1 = true;
           label290:
@@ -181,20 +182,20 @@ public class MiniMsgUser
       for (;;)
       {
         localIMiniMsgUnreadCallback.updateUnreadCount(k, bool1);
-        localaija.jdField_b_of_type_Int = k;
+        localajzt.jdField_b_of_type_Int = k;
         break;
         bool1 = false;
         break label290;
         label330:
-        localaija.jdField_b_of_type_Int = k;
+        localajzt.jdField_b_of_type_Int = k;
         return true;
         localIMiniMsgUnreadCallback.hideUnread();
-        localaija.a = false;
+        localajzt.a = false;
         break;
-        localaija.jdField_b_of_type_Boolean = false;
-        localaija.a = false;
+        localajzt.jdField_b_of_type_Boolean = false;
+        localajzt.a = false;
         this.mIsAttach = false;
-        localaija.jdField_b_of_type_Int = 0;
+        localajzt.jdField_b_of_type_Int = 0;
         localIMiniMsgUnreadCallback.hide();
         break;
       }
@@ -234,14 +235,14 @@ public class MiniMsgUser
     {
       if ((this.mMiniMsgUserParam.accessType == 0) && (this.mMiniMsgUserParam.entryType == 0))
       {
-        aija localaija = MiniMsgIPCClient.getInstance().getBusinessInfo(this.mMiniMsgUserParam.businessName);
-        if (localaija != null)
+        ajzt localajzt = MiniMsgIPCClient.getInstance().getBusinessInfo(this.mMiniMsgUserParam.businessName);
+        if (localajzt != null)
         {
-          int[] arrayOfInt = ((aiiy)this.mMiniMsgUserParam.unreadCallback).a();
+          int[] arrayOfInt = ((ajzr)this.mMiniMsgUserParam.unreadCallback).a();
           if (arrayOfInt != null)
           {
-            localaija.c = arrayOfInt[0];
-            localaija.d = arrayOfInt[1];
+            localajzt.c = arrayOfInt[0];
+            localajzt.d = arrayOfInt[1];
           }
         }
       }
@@ -253,23 +254,26 @@ public class MiniMsgUser
   
   public void onClick(View paramView)
   {
-    if (this.mMiniMsgUserParam == null) {
+    if (this.mMiniMsgUserParam == null) {}
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
+      if (this.mMiniMsgUserParam.actionCallback != null) {
+        this.mMiniMsgUserParam.actionCallback.onOpenMiniAIOCallback();
+      }
+      Intent localIntent = new Intent();
+      localIntent.putExtra("key_mini_need_update_unread", true);
+      localIntent.putExtra("key_mini_msgtab_businame", this.mMiniMsgUserParam.businessName);
+      localIntent.putExtra("key_mini_msgtab_type", this.mMiniMsgUserParam.filterMsgType);
+      localIntent.putExtra("key_mini_msgtab_need_full_screen", this.mMiniMsgUserParam.isNeedFullScreen);
+      localIntent.putExtra("key_mini_msgtab_isneed_back_conversation", this.mMiniMsgUserParam.isNeedBackConversation);
+      if (this.mMiniMsgUserParam.isNeedBackConversation) {
+        localIntent.putExtra("key_mini_msgtab_back_pending_intent", this.mMiniMsgUserParam.backConversationIntent);
+      }
+      MiniChatActivity.a(this.mActivity, localIntent, this.mMiniMsgUserParam.requestCode);
+      hideUnread();
     }
-    if (this.mMiniMsgUserParam.actionCallback != null) {
-      this.mMiniMsgUserParam.actionCallback.onOpenMiniAIOCallback();
-    }
-    paramView = new Intent();
-    paramView.putExtra("key_mini_need_update_unread", true);
-    paramView.putExtra("key_mini_msgtab_businame", this.mMiniMsgUserParam.businessName);
-    paramView.putExtra("key_mini_msgtab_type", this.mMiniMsgUserParam.filterMsgType);
-    paramView.putExtra("key_mini_msgtab_need_full_screen", this.mMiniMsgUserParam.isNeedFullScreen);
-    paramView.putExtra("key_mini_msgtab_isneed_back_conversation", this.mMiniMsgUserParam.isNeedBackConversation);
-    if (this.mMiniMsgUserParam.isNeedBackConversation) {
-      paramView.putExtra("key_mini_msgtab_back_pending_intent", this.mMiniMsgUserParam.backConversationIntent);
-    }
-    MiniChatActivity.a(this.mActivity, paramView, this.mMiniMsgUserParam.requestCode);
-    hideUnread();
   }
   
   public void onForeground()
@@ -297,8 +301,8 @@ public class MiniMsgUser
   {
     if ((this.mMiniMsgUserParam != null) && (this.mMiniMsgUserParam.accessType == 0))
     {
-      aija localaija = MiniMsgIPCClient.getInstance().getBusinessInfo(this.mMiniMsgUserParam.businessName);
-      if ((localaija != null) && (localaija.jdField_b_of_type_Boolean) && (!this.mIsAttach))
+      ajzt localajzt = MiniMsgIPCClient.getInstance().getBusinessInfo(this.mMiniMsgUserParam.businessName);
+      if ((localajzt != null) && (localajzt.jdField_b_of_type_Boolean) && (!this.mIsAttach))
       {
         this.mUIHandler.obtainMessage(0).sendToTarget();
         MiniMsgIPCClient.getInstance().syncGetUnread();

@@ -2,13 +2,13 @@ package com.tencent.av.ui;
 
 import com.tencent.av.VideoController;
 import com.tencent.av.app.VideoAppInterface;
-import lid;
-import mdk;
+import ley;
+import mam;
 
 public class AVActivity$1$1
   implements Runnable
 {
-  public AVActivity$1$1(mdk parammdk) {}
+  public AVActivity$1$1(mam parammam) {}
   
   public void run()
   {
@@ -19,7 +19,7 @@ public class AVActivity$1$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.av.ui.AVActivity.1.1
  * JD-Core Version:    0.7.0.1
  */

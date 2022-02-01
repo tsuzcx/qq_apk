@@ -1,29 +1,31 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.graphics.Point;
-import android.view.WindowManager.LayoutParams;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsFloatWindowDragLayout;
+import android.view.ViewGroup;
+import android.view.animation.Animation;
+import com.tencent.qphone.base.util.QLog;
+import kotlin.Metadata;
+import kotlin.jvm.internal.Intrinsics;
+import org.jetbrains.annotations.NotNull;
 
-public class rcl
-  implements ValueAnimator.AnimatorUpdateListener
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"com/tencent/biz/pubaccount/readinjoy/share/watchword/mvp/RIJWatchWordJumpDialog$dismiss$1", "Lcom/tencent/util/AnimateUtils$AnimationAdapter;", "onAnimationEnd", "", "animation", "Landroid/view/animation/Animation;", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class rcl
+  extends bkfi
 {
-  public rcl(VideoFeedsFloatWindowDragLayout paramVideoFeedsFloatWindowDragLayout, int paramInt1, int paramInt2) {}
-  
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void onAnimationEnd(@NotNull Animation paramAnimation)
   {
-    WindowManager.LayoutParams localLayoutParams = (WindowManager.LayoutParams)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsFloatWindowDragLayout.getLayoutParams();
-    int i = this.jdField_a_of_type_Int;
-    localLayoutParams.x = (((Point)paramValueAnimator.getAnimatedValue()).x + i);
-    i = this.b;
-    localLayoutParams.y = (((Point)paramValueAnimator.getAnimatedValue()).y + i);
-    if (VideoFeedsFloatWindowDragLayout.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsFloatWindowDragLayout) != null) {
-      VideoFeedsFloatWindowDragLayout.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsFloatWindowDragLayout).a();
+    Intrinsics.checkParameterIsNotNull(paramAnimation, "animation");
+    try
+    {
+      this.a.a().removeView(this.a.a());
+      return;
+    }
+    catch (Exception paramAnimation)
+    {
+      QLog.d("RIJWatchWordJumpDialog", 2, QLog.getStackTraceString((Throwable)paramAnimation));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     rcl
  * JD-Core Version:    0.7.0.1
  */

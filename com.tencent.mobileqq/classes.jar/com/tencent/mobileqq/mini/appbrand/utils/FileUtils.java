@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.mini.appbrand.utils;
 
 import com.tencent.commonsdk.util.HexUtil;
-import com.tencent.mm.vfs.VFSFile;
-import com.tencent.mm.vfs.VFSFileOutputStream;
 import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 
 public class FileUtils
@@ -12,13 +12,13 @@ public class FileUtils
   public static final String TAG = "MiniAppFileUtils";
   private static char[] hexChar = { 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 97, 98, 99, 100, 101, 102 };
   
-  public static boolean copyFile(VFSFile paramVFSFile1, VFSFile paramVFSFile2)
+  public static boolean copyFile(File paramFile1, File paramFile2)
   {
-    return copyFile(paramVFSFile1, paramVFSFile2, false);
+    return copyFile(paramFile1, paramFile2, false);
   }
   
   /* Error */
-  public static boolean copyFile(VFSFile paramVFSFile1, VFSFile paramVFSFile2, boolean paramBoolean)
+  public static boolean copyFile(File paramFile1, File paramFile2, boolean paramBoolean)
   {
     // Byte code:
     //   0: aconst_null
@@ -32,26 +32,26 @@ public class FileUtils
     //   12: iconst_1
     //   13: istore 5
     //   15: aload_1
-    //   16: invokevirtual 49	com/tencent/mm/vfs/VFSFile:exists	()Z
+    //   16: invokevirtual 49	java/io/File:exists	()Z
     //   19: ifeq +8 -> 27
     //   22: aload_1
-    //   23: invokevirtual 52	com/tencent/mm/vfs/VFSFile:delete	()Z
+    //   23: invokevirtual 52	java/io/File:delete	()Z
     //   26: pop
     //   27: aload_1
-    //   28: invokevirtual 56	com/tencent/mm/vfs/VFSFile:getParentFile	()Lcom/tencent/mm/vfs/VFSFile;
+    //   28: invokevirtual 56	java/io/File:getParentFile	()Ljava/io/File;
     //   31: ifnull +21 -> 52
     //   34: aload_1
-    //   35: invokevirtual 56	com/tencent/mm/vfs/VFSFile:getParentFile	()Lcom/tencent/mm/vfs/VFSFile;
-    //   38: invokevirtual 49	com/tencent/mm/vfs/VFSFile:exists	()Z
+    //   35: invokevirtual 56	java/io/File:getParentFile	()Ljava/io/File;
+    //   38: invokevirtual 49	java/io/File:exists	()Z
     //   41: ifne +11 -> 52
     //   44: aload_1
-    //   45: invokevirtual 56	com/tencent/mm/vfs/VFSFile:getParentFile	()Lcom/tencent/mm/vfs/VFSFile;
-    //   48: invokevirtual 59	com/tencent/mm/vfs/VFSFile:mkdirs	()Z
+    //   45: invokevirtual 56	java/io/File:getParentFile	()Ljava/io/File;
+    //   48: invokevirtual 59	java/io/File:mkdirs	()Z
     //   51: pop
-    //   52: new 61	com/tencent/mm/vfs/VFSFileOutputStream
+    //   52: new 61	java/io/FileOutputStream
     //   55: dup
     //   56: aload_1
-    //   57: invokespecial 64	com/tencent/mm/vfs/VFSFileOutputStream:<init>	(Lcom/tencent/mm/vfs/VFSFile;)V
+    //   57: invokespecial 64	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
     //   60: astore_1
     //   61: aload 7
     //   63: astore 6
@@ -59,10 +59,10 @@ public class FileUtils
     //   66: astore 7
     //   68: new 66	java/io/BufferedInputStream
     //   71: dup
-    //   72: new 68	com/tencent/mm/vfs/VFSFileInputStream
+    //   72: new 68	java/io/FileInputStream
     //   75: dup
     //   76: aload_0
-    //   77: invokespecial 69	com/tencent/mm/vfs/VFSFileInputStream:<init>	(Lcom/tencent/mm/vfs/VFSFile;)V
+    //   77: invokespecial 69	java/io/FileInputStream:<init>	(Ljava/io/File;)V
     //   80: invokespecial 72	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
     //   83: astore_0
     //   84: invokestatic 78	com/tencent/commonsdk/pool/ByteArrayPool:getGenericInstance	()Lcom/tencent/commonsdk/pool/ByteArrayPool;
@@ -80,9 +80,9 @@ public class FileUtils
     //   108: aload 6
     //   110: iconst_0
     //   111: iload_3
-    //   112: invokevirtual 90	com/tencent/mm/vfs/VFSFileOutputStream:write	([BII)V
+    //   112: invokevirtual 90	java/io/FileOutputStream:write	([BII)V
     //   115: aload_1
-    //   116: invokevirtual 93	com/tencent/mm/vfs/VFSFileOutputStream:flush	()V
+    //   116: invokevirtual 93	java/io/FileOutputStream:flush	()V
     //   119: goto -24 -> 95
     //   122: astore 7
     //   124: aload_0
@@ -101,7 +101,7 @@ public class FileUtils
     //   145: aload_0
     //   146: ifnull +7 -> 153
     //   149: aload_0
-    //   150: invokevirtual 104	com/tencent/mm/vfs/VFSFileOutputStream:close	()V
+    //   150: invokevirtual 104	java/io/FileOutputStream:close	()V
     //   153: aload 6
     //   155: ifnull +322 -> 477
     //   158: aload 6
@@ -116,7 +116,7 @@ public class FileUtils
     //   177: aload_1
     //   178: ifnull +7 -> 185
     //   181: aload_1
-    //   182: invokevirtual 104	com/tencent/mm/vfs/VFSFileOutputStream:close	()V
+    //   182: invokevirtual 104	java/io/FileOutputStream:close	()V
     //   185: iload 5
     //   187: istore 4
     //   189: aload_0
@@ -184,7 +184,7 @@ public class FileUtils
     //   296: aload_1
     //   297: ifnull +7 -> 304
     //   300: aload_1
-    //   301: invokevirtual 104	com/tencent/mm/vfs/VFSFileOutputStream:close	()V
+    //   301: invokevirtual 104	java/io/FileOutputStream:close	()V
     //   304: aload 8
     //   306: ifnull +171 -> 477
     //   309: aload 8
@@ -216,7 +216,7 @@ public class FileUtils
     //   352: aload_1
     //   353: ifnull +7 -> 360
     //   356: aload_1
-    //   357: invokevirtual 104	com/tencent/mm/vfs/VFSFileOutputStream:close	()V
+    //   357: invokevirtual 104	java/io/FileOutputStream:close	()V
     //   360: aload 6
     //   362: ifnull +8 -> 370
     //   365: aload 6
@@ -285,8 +285,8 @@ public class FileUtils
     //   478: ireturn
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	479	0	paramVFSFile1	VFSFile
-    //   0	479	1	paramVFSFile2	VFSFile
+    //   0	479	0	paramFile1	File
+    //   0	479	1	paramFile2	File
     //   0	479	2	paramBoolean	boolean
     //   101	11	3	i	int
     //   164	39	4	bool1	boolean
@@ -296,9 +296,9 @@ public class FileUtils
     //   458	1	6	localObject2	Object
     //   463	5	6	localIOException1	IOException
     //   472	1	6	localObject3	Object
-    //   7	60	7	localVFSFile1	VFSFile
+    //   7	60	7	localFile1	File
     //   122	8	7	localIOException2	IOException
-    //   285	123	7	localVFSFile2	VFSFile
+    //   285	123	7	localFile2	File
     //   413	6	7	localObject4	Object
     //   424	5	7	localObject5	Object
     //   10	461	8	localObject6	Object
@@ -344,15 +344,15 @@ public class FileUtils
   public static boolean copyFile(String paramString1, String paramString2)
   {
     if ((paramString1 == null) || (paramString2 == null)) {}
-    VFSFile localVFSFile;
+    File localFile;
     do
     {
       return false;
-      localVFSFile = new VFSFile(paramString1);
-    } while (!localVFSFile.exists());
+      localFile = new File(paramString1);
+    } while (!localFile.exists());
     try
     {
-      boolean bool = copyFile(localVFSFile, createFile(paramString2));
+      boolean bool = copyFile(localFile, createFile(paramString2));
       return bool;
     }
     catch (IOException localIOException)
@@ -362,9 +362,9 @@ public class FileUtils
     return false;
   }
   
-  public static VFSFile createFile(String paramString)
+  public static File createFile(String paramString)
   {
-    paramString = new VFSFile(paramString);
+    paramString = new File(paramString);
     if (!paramString.exists())
     {
       if ((paramString.getParentFile() == null) || (paramString.getParentFile().exists())) {
@@ -380,96 +380,132 @@ public class FileUtils
     return paramString;
   }
   
-  public static void delete(String paramString, boolean paramBoolean)
+  public static long delete(String paramString, boolean paramBoolean)
   {
-    if (paramString == null) {}
+    long l1 = 0L;
+    long l2;
+    if (paramString == null) {
+      l2 = l1;
+    }
     do
     {
-      VFSFile[] arrayOfVFSFile;
+      File[] arrayOfFile;
       do
       {
         do
         {
-          return;
-          paramString = new VFSFile(paramString);
-        } while ((paramString == null) || (!paramString.exists()));
+          do
+          {
+            return l2;
+            paramString = new File(paramString);
+            l2 = l1;
+          } while (paramString == null);
+          l2 = l1;
+        } while (!paramString.exists());
         if (paramString.isFile())
         {
+          l1 = paramString.length();
           paramString.delete();
-          return;
+          return l1;
         }
-        arrayOfVFSFile = paramString.listFiles();
-      } while (arrayOfVFSFile == null);
-      int j = arrayOfVFSFile.length;
+        arrayOfFile = paramString.listFiles();
+        l2 = l1;
+      } while (arrayOfFile == null);
+      int j = arrayOfFile.length;
       int i = 0;
       while (i < j)
       {
-        delete(arrayOfVFSFile[i].getAbsolutePath(), paramBoolean);
+        l2 = delete(arrayOfFile[i].getAbsolutePath(), paramBoolean);
         i += 1;
+        l1 = l2 + l1;
       }
+      l2 = l1;
     } while (paramBoolean);
     paramString.delete();
+    return l1;
   }
   
-  public static void deleteDirectory(String paramString)
+  public static long deleteDirectory(String paramString)
   {
+    long l1 = 0L;
     if ((paramString == null) || (paramString.trim().length() == 0)) {
-      return;
+      return 0L;
     }
-    paramString = new VFSFile(paramString);
-    VFSFile[] arrayOfVFSFile = paramString.listFiles();
-    if ((arrayOfVFSFile != null) && (arrayOfVFSFile.length > 0))
+    paramString = new File(paramString);
+    File[] arrayOfFile = paramString.listFiles();
+    long l2 = l1;
+    if (arrayOfFile != null)
     {
-      int i = 0;
-      if (i < arrayOfVFSFile.length)
+      l2 = l1;
+      if (arrayOfFile.length > 0)
       {
-        if (arrayOfVFSFile[i].isDirectory()) {
-          deleteDirectory(arrayOfVFSFile[i].getAbsolutePath());
-        }
-        for (;;)
+        int i = 0;
+        l2 = l1;
+        if (i < arrayOfFile.length)
         {
-          i += 1;
-          break;
-          arrayOfVFSFile[i].delete();
+          if (arrayOfFile[i].isDirectory()) {
+            l1 += deleteDirectory(arrayOfFile[i].getAbsolutePath());
+          }
+          for (;;)
+          {
+            i += 1;
+            break;
+            l1 += arrayOfFile[i].length();
+            arrayOfFile[i].delete();
+          }
         }
       }
     }
     paramString.delete();
+    return l2;
   }
   
   public static boolean deleteFile(String paramString)
   {
     boolean bool = true;
-    paramString = new VFSFile(paramString);
+    paramString = new File(paramString);
     if (paramString.exists()) {
       bool = paramString.delete();
     }
     return bool;
   }
   
-  public static void deleteFilesInDirectory(String paramString)
+  public static long deleteFilesInDirectory(String paramString)
   {
-    if ((paramString == null) || (paramString.trim().length() == 0)) {}
+    long l1 = 0L;
+    long l2 = l1;
+    if (paramString != null)
+    {
+      if (paramString.trim().length() != 0) {
+        break label25;
+      }
+      l2 = l1;
+    }
+    label25:
+    int i;
     do
     {
-      return;
-      paramString = new VFSFile(paramString).listFiles();
-    } while ((paramString == null) || (paramString.length <= 0));
-    int i = 0;
-    label38:
-    if (i < paramString.length)
-    {
-      if (!paramString[i].isDirectory()) {
-        break label69;
-      }
-      deleteDirectory(paramString[i].getAbsolutePath());
+      do
+      {
+        do
+        {
+          return l2;
+          paramString = new File(paramString).listFiles();
+          l2 = l1;
+        } while (paramString == null);
+        l2 = l1;
+      } while (paramString.length <= 0);
+      i = 0;
+      l2 = l1;
+    } while (i >= paramString.length);
+    if (paramString[i].isDirectory()) {
+      l1 += deleteDirectory(paramString[i].getAbsolutePath());
     }
     for (;;)
     {
       i += 1;
-      break label38;
       break;
-      label69:
+      l1 += paramString[i].length();
       paramString[i].delete();
     }
   }
@@ -478,20 +514,20 @@ public class FileUtils
   public static byte[] encodeFile(String paramString)
   {
     // Byte code:
-    //   0: ldc 185
-    //   2: invokestatic 191	java/security/MessageDigest:getInstance	(Ljava/lang/String;)Ljava/security/MessageDigest;
+    //   0: ldc 189
+    //   2: invokestatic 195	java/security/MessageDigest:getInstance	(Ljava/lang/String;)Ljava/security/MessageDigest;
     //   5: astore_3
-    //   6: new 68	com/tencent/mm/vfs/VFSFileInputStream
+    //   6: new 68	java/io/FileInputStream
     //   9: dup
     //   10: aload_0
-    //   11: invokespecial 192	com/tencent/mm/vfs/VFSFileInputStream:<init>	(Ljava/lang/String;)V
+    //   11: invokespecial 196	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
     //   14: astore_2
     //   15: sipush 16384
     //   18: newarray byte
     //   20: astore_0
     //   21: aload_2
     //   22: aload_0
-    //   23: invokevirtual 193	com/tencent/mm/vfs/VFSFileInputStream:read	([B)I
+    //   23: invokevirtual 197	java/io/FileInputStream:read	([B)I
     //   26: istore_1
     //   27: iload_1
     //   28: iconst_m1
@@ -500,20 +536,20 @@ public class FileUtils
     //   33: aload_0
     //   34: iconst_0
     //   35: iload_1
-    //   36: invokevirtual 196	java/security/MessageDigest:update	([BII)V
+    //   36: invokevirtual 200	java/security/MessageDigest:update	([BII)V
     //   39: goto -18 -> 21
     //   42: astore_0
     //   43: aload_2
-    //   44: invokevirtual 197	com/tencent/mm/vfs/VFSFileInputStream:close	()V
+    //   44: invokevirtual 201	java/io/FileInputStream:close	()V
     //   47: aconst_null
     //   48: astore_0
     //   49: aload_0
     //   50: areturn
     //   51: aload_3
-    //   52: invokevirtual 201	java/security/MessageDigest:digest	()[B
+    //   52: invokevirtual 205	java/security/MessageDigest:digest	()[B
     //   55: astore_0
     //   56: aload_2
-    //   57: invokevirtual 197	com/tencent/mm/vfs/VFSFileInputStream:close	()V
+    //   57: invokevirtual 201	java/io/FileInputStream:close	()V
     //   60: goto -11 -> 49
     //   63: astore_2
     //   64: goto -15 -> 49
@@ -523,7 +559,7 @@ public class FileUtils
     //   70: goto -21 -> 49
     //   73: astore_0
     //   74: aload_2
-    //   75: invokevirtual 197	com/tencent/mm/vfs/VFSFileInputStream:close	()V
+    //   75: invokevirtual 201	java/io/FileInputStream:close	()V
     //   78: aload_0
     //   79: athrow
     //   80: astore_0
@@ -538,7 +574,7 @@ public class FileUtils
     //   start	length	slot	name	signature
     //   0	90	0	paramString	String
     //   26	10	1	i	int
-    //   14	43	2	localVFSFileInputStream	com.tencent.mm.vfs.VFSFileInputStream
+    //   14	43	2	localFileInputStream	java.io.FileInputStream
     //   63	12	2	localIOException1	IOException
     //   83	1	2	localIOException2	IOException
     //   5	47	3	localMessageDigest	java.security.MessageDigest
@@ -576,61 +612,61 @@ public class FileUtils
     do
     {
       return false;
-      paramString = new VFSFile(paramString);
+      paramString = new File(paramString);
     } while ((paramString == null) || (!paramString.exists()));
     return true;
   }
   
   /* Error */
-  public static byte[] fileToBytes(VFSFile paramVFSFile)
+  public static byte[] fileToBytes(File paramFile)
   {
     // Byte code:
     //   0: aload_0
-    //   1: invokevirtual 49	com/tencent/mm/vfs/VFSFile:exists	()Z
+    //   1: invokevirtual 49	java/io/File:exists	()Z
     //   4: ifne +5 -> 9
     //   7: aconst_null
     //   8: areturn
     //   9: new 66	java/io/BufferedInputStream
     //   12: dup
-    //   13: new 68	com/tencent/mm/vfs/VFSFileInputStream
+    //   13: new 68	java/io/FileInputStream
     //   16: dup
     //   17: aload_0
-    //   18: invokespecial 69	com/tencent/mm/vfs/VFSFileInputStream:<init>	(Lcom/tencent/mm/vfs/VFSFile;)V
+    //   18: invokespecial 69	java/io/FileInputStream:<init>	(Ljava/io/File;)V
     //   21: invokespecial 72	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
     //   24: astore 5
     //   26: aload_0
-    //   27: invokevirtual 219	com/tencent/mm/vfs/VFSFile:length	()J
+    //   27: invokevirtual 154	java/io/File:length	()J
     //   30: lstore_3
     //   31: lload_3
-    //   32: ldc2_w 220
+    //   32: ldc2_w 221
     //   35: lcmp
     //   36: ifgt +9 -> 45
     //   39: lload_3
     //   40: lconst_0
     //   41: lcmp
     //   42: ifgt +53 -> 95
-    //   45: invokestatic 224	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   45: invokestatic 225	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   48: ifeq +28 -> 76
-    //   51: ldc 226
+    //   51: ldc 227
     //   53: iconst_2
     //   54: new 121	java/lang/StringBuilder
     //   57: dup
     //   58: invokespecial 122	java/lang/StringBuilder:<init>	()V
-    //   61: ldc 228
+    //   61: ldc 229
     //   63: invokevirtual 128	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   66: lload_3
-    //   67: invokevirtual 231	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   67: invokevirtual 232	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
     //   70: invokevirtual 139	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   73: invokestatic 143	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   76: aload 5
     //   78: ifnull -71 -> 7
     //   81: aload 5
-    //   83: invokevirtual 234	java/io/InputStream:close	()V
+    //   83: invokevirtual 235	java/io/InputStream:close	()V
     //   86: aconst_null
     //   87: areturn
     //   88: astore_0
     //   89: aload_0
-    //   90: invokevirtual 237	java/lang/Throwable:printStackTrace	()V
+    //   90: invokevirtual 238	java/lang/Throwable:printStackTrace	()V
     //   93: aconst_null
     //   94: areturn
     //   95: lload_3
@@ -652,7 +688,7 @@ public class FileUtils
     //   119: arraylength
     //   120: iload_1
     //   121: isub
-    //   122: invokevirtual 240	java/io/InputStream:read	([BII)I
+    //   122: invokevirtual 241	java/io/InputStream:read	([BII)I
     //   125: istore_2
     //   126: iload_2
     //   127: iflt +10 -> 137
@@ -665,54 +701,54 @@ public class FileUtils
     //   138: aload 6
     //   140: arraylength
     //   141: if_icmpge +34 -> 175
-    //   144: invokestatic 224	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   144: invokestatic 225	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   147: ifeq +28 -> 175
-    //   150: ldc 226
+    //   150: ldc 227
     //   152: iconst_2
     //   153: new 121	java/lang/StringBuilder
     //   156: dup
     //   157: invokespecial 122	java/lang/StringBuilder:<init>	()V
-    //   160: ldc 242
+    //   160: ldc 243
     //   162: invokevirtual 128	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   165: aload_0
-    //   166: invokevirtual 245	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   166: invokevirtual 246	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
     //   169: invokevirtual 139	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   172: invokestatic 143	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   175: aload 5
     //   177: ifnull +8 -> 185
     //   180: aload 5
-    //   182: invokevirtual 234	java/io/InputStream:close	()V
+    //   182: invokevirtual 235	java/io/InputStream:close	()V
     //   185: aload 6
     //   187: areturn
     //   188: astore_0
     //   189: aload_0
-    //   190: invokevirtual 237	java/lang/Throwable:printStackTrace	()V
+    //   190: invokevirtual 238	java/lang/Throwable:printStackTrace	()V
     //   193: goto -8 -> 185
     //   196: astore 5
     //   198: aconst_null
     //   199: astore 5
-    //   201: invokestatic 224	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   201: invokestatic 225	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   204: ifeq +28 -> 232
-    //   207: ldc 226
+    //   207: ldc 227
     //   209: iconst_2
     //   210: new 121	java/lang/StringBuilder
     //   213: dup
     //   214: invokespecial 122	java/lang/StringBuilder:<init>	()V
-    //   217: ldc 247
+    //   217: ldc 248
     //   219: invokevirtual 128	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   222: aload_0
-    //   223: invokevirtual 245	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   223: invokevirtual 246	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
     //   226: invokevirtual 139	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   229: invokestatic 143	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   232: aload 5
     //   234: ifnull -227 -> 7
     //   237: aload 5
-    //   239: invokevirtual 234	java/io/InputStream:close	()V
+    //   239: invokevirtual 235	java/io/InputStream:close	()V
     //   242: aconst_null
     //   243: areturn
     //   244: astore_0
     //   245: aload_0
-    //   246: invokevirtual 237	java/lang/Throwable:printStackTrace	()V
+    //   246: invokevirtual 238	java/lang/Throwable:printStackTrace	()V
     //   249: aconst_null
     //   250: areturn
     //   251: astore_0
@@ -721,12 +757,12 @@ public class FileUtils
     //   255: aload 5
     //   257: ifnull +8 -> 265
     //   260: aload 5
-    //   262: invokevirtual 234	java/io/InputStream:close	()V
+    //   262: invokevirtual 235	java/io/InputStream:close	()V
     //   265: aload_0
     //   266: athrow
     //   267: astore 5
     //   269: aload 5
-    //   271: invokevirtual 237	java/lang/Throwable:printStackTrace	()V
+    //   271: invokevirtual 238	java/lang/Throwable:printStackTrace	()V
     //   274: goto -9 -> 265
     //   277: astore_0
     //   278: goto -23 -> 255
@@ -736,7 +772,7 @@ public class FileUtils
     //   287: goto -86 -> 201
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	290	0	paramVFSFile	VFSFile
+    //   0	290	0	paramFile	File
     //   97	45	1	i	int
     //   125	8	2	j	int
     //   30	66	3	l	long
@@ -770,7 +806,7 @@ public class FileUtils
   public static long getFileOrFolderSize(String paramString)
   {
     long l2 = 0L;
-    paramString = new VFSFile(paramString);
+    paramString = new File(paramString);
     long l1 = l2;
     if (paramString.exists())
     {
@@ -842,105 +878,15 @@ public class FileUtils
     return "";
   }
   
-  /* Error */
   public static long getFileSizes(String paramString)
   {
-    // Byte code:
-    //   0: lconst_0
-    //   1: lstore_2
-    //   2: aconst_null
-    //   3: astore 6
-    //   5: new 45	com/tencent/mm/vfs/VFSFile
-    //   8: dup
-    //   9: aload_0
-    //   10: invokespecial 113	com/tencent/mm/vfs/VFSFile:<init>	(Ljava/lang/String;)V
-    //   13: astore_0
-    //   14: aload_0
-    //   15: invokevirtual 49	com/tencent/mm/vfs/VFSFile:exists	()Z
-    //   18: ifeq +37 -> 55
-    //   21: new 68	com/tencent/mm/vfs/VFSFileInputStream
-    //   24: dup
-    //   25: aload_0
-    //   26: invokespecial 69	com/tencent/mm/vfs/VFSFileInputStream:<init>	(Lcom/tencent/mm/vfs/VFSFile;)V
-    //   29: astore_0
-    //   30: aload_0
-    //   31: invokevirtual 267	com/tencent/mm/vfs/VFSFileInputStream:available	()I
-    //   34: istore_1
-    //   35: iload_1
-    //   36: i2l
-    //   37: lstore 4
-    //   39: lload 4
-    //   41: lstore_2
-    //   42: aload_0
-    //   43: ifnull +10 -> 53
-    //   46: aload_0
-    //   47: invokevirtual 197	com/tencent/mm/vfs/VFSFileInputStream:close	()V
-    //   50: lload 4
-    //   52: lstore_2
-    //   53: lload_2
-    //   54: lreturn
-    //   55: iconst_0
-    //   56: ifeq -3 -> 53
-    //   59: new 269	java/lang/NullPointerException
-    //   62: dup
-    //   63: invokespecial 270	java/lang/NullPointerException:<init>	()V
-    //   66: athrow
-    //   67: astore_0
-    //   68: lconst_0
-    //   69: lreturn
-    //   70: astore_0
-    //   71: aconst_null
-    //   72: astore_0
-    //   73: aload_0
-    //   74: ifnull -21 -> 53
-    //   77: aload_0
-    //   78: invokevirtual 197	com/tencent/mm/vfs/VFSFileInputStream:close	()V
-    //   81: lconst_0
-    //   82: lreturn
-    //   83: astore_0
-    //   84: lconst_0
-    //   85: lreturn
-    //   86: astore_0
-    //   87: aload 6
-    //   89: ifnull +8 -> 97
-    //   92: aload 6
-    //   94: invokevirtual 197	com/tencent/mm/vfs/VFSFileInputStream:close	()V
-    //   97: aload_0
-    //   98: athrow
-    //   99: astore_0
-    //   100: lload 4
-    //   102: lreturn
-    //   103: astore 6
-    //   105: goto -8 -> 97
-    //   108: astore 7
-    //   110: aload_0
-    //   111: astore 6
-    //   113: aload 7
-    //   115: astore_0
-    //   116: goto -29 -> 87
-    //   119: astore 6
-    //   121: goto -48 -> 73
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	124	0	paramString	String
-    //   34	2	1	i	int
-    //   1	53	2	l1	long
-    //   37	64	4	l2	long
-    //   3	90	6	localObject1	Object
-    //   103	1	6	localIOException	IOException
-    //   111	1	6	str	String
-    //   119	1	6	localException	Exception
-    //   108	6	7	localObject2	Object
-    // Exception table:
-    //   from	to	target	type
-    //   59	67	67	java/io/IOException
-    //   5	30	70	java/lang/Exception
-    //   77	81	83	java/io/IOException
-    //   5	30	86	finally
-    //   46	50	99	java/io/IOException
-    //   92	97	103	java/io/IOException
-    //   30	35	108	finally
-    //   30	35	119	java/lang/Exception
+    try
+    {
+      long l = new File(paramString).length();
+      return l;
+    }
+    catch (Exception paramString) {}
+    return 0L;
   }
   
   /* Error */
@@ -949,21 +895,21 @@ public class FileUtils
     // Byte code:
     //   0: new 66	java/io/BufferedInputStream
     //   3: dup
-    //   4: new 68	com/tencent/mm/vfs/VFSFileInputStream
+    //   4: new 68	java/io/FileInputStream
     //   7: dup
     //   8: aload_0
-    //   9: invokespecial 192	com/tencent/mm/vfs/VFSFileInputStream:<init>	(Ljava/lang/String;)V
+    //   9: invokespecial 196	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
     //   12: invokespecial 72	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
     //   15: astore_0
     //   16: sipush 4096
     //   19: newarray byte
     //   21: astore_3
     //   22: aload_1
-    //   23: invokestatic 191	java/security/MessageDigest:getInstance	(Ljava/lang/String;)Ljava/security/MessageDigest;
+    //   23: invokestatic 195	java/security/MessageDigest:getInstance	(Ljava/lang/String;)Ljava/security/MessageDigest;
     //   26: astore_1
     //   27: aload_0
     //   28: aload_3
-    //   29: invokevirtual 271	java/io/InputStream:read	([B)I
+    //   29: invokevirtual 265	java/io/InputStream:read	([B)I
     //   32: istore_2
     //   33: iload_2
     //   34: ifle +28 -> 62
@@ -971,7 +917,7 @@ public class FileUtils
     //   38: aload_3
     //   39: iconst_0
     //   40: iload_2
-    //   41: invokevirtual 196	java/security/MessageDigest:update	([BII)V
+    //   41: invokevirtual 200	java/security/MessageDigest:update	([BII)V
     //   44: goto -17 -> 27
     //   47: astore_3
     //   48: aload_0
@@ -981,16 +927,16 @@ public class FileUtils
     //   52: aload_1
     //   53: ifnull +7 -> 60
     //   56: aload_1
-    //   57: invokevirtual 234	java/io/InputStream:close	()V
+    //   57: invokevirtual 235	java/io/InputStream:close	()V
     //   60: aload_0
     //   61: athrow
     //   62: aload_0
     //   63: ifnull +7 -> 70
     //   66: aload_0
-    //   67: invokevirtual 234	java/io/InputStream:close	()V
+    //   67: invokevirtual 235	java/io/InputStream:close	()V
     //   70: aload_1
-    //   71: invokevirtual 201	java/security/MessageDigest:digest	()[B
-    //   74: invokestatic 274	com/tencent/mobileqq/mini/appbrand/utils/FileUtils:toHexString	([B)Ljava/lang/String;
+    //   71: invokevirtual 205	java/security/MessageDigest:digest	()[B
+    //   74: invokestatic 268	com/tencent/mobileqq/mini/appbrand/utils/FileUtils:toHexString	([B)Ljava/lang/String;
     //   77: areturn
     //   78: astore_0
     //   79: goto -9 -> 70
@@ -1023,7 +969,7 @@ public class FileUtils
     do
     {
       return false;
-      paramString1 = new VFSFile(paramString1);
+      paramString1 = new File(paramString1);
     } while (!paramString1.exists());
     try
     {
@@ -1041,9 +987,9 @@ public class FileUtils
     do
     {
       return false;
-      paramString1 = new VFSFile(paramString1);
+      paramString1 = new File(paramString1);
     } while (!paramString1.exists());
-    return paramString1.renameTo(new VFSFile(paramString2));
+    return paramString1.renameTo(new File(paramString2));
   }
   
   public static String toHexString(byte[] paramArrayOfByte)
@@ -1066,7 +1012,7 @@ public class FileUtils
   
   public static boolean writeFile(String paramString1, String paramString2, boolean paramBoolean)
   {
-    paramString1 = new VFSFile(paramString1);
+    paramString1 = new File(paramString1);
     boolean bool2 = true;
     bool1 = bool2;
     if (!paramString1.exists()) {}
@@ -1086,7 +1032,7 @@ public class FileUtils
       {
         for (;;)
         {
-          paramString1 = new VFSFileOutputStream(paramString1, false);
+          paramString1 = new FileOutputStream(paramString1, false);
           str = paramString2;
           if (paramBoolean) {}
           try
@@ -1160,42 +1106,42 @@ public class FileUtils
     //   1: istore 4
     //   3: aconst_null
     //   4: astore 5
-    //   6: new 45	com/tencent/mm/vfs/VFSFile
+    //   6: new 45	java/io/File
     //   9: dup
     //   10: aload_1
-    //   11: invokespecial 113	com/tencent/mm/vfs/VFSFile:<init>	(Ljava/lang/String;)V
+    //   11: invokespecial 113	java/io/File:<init>	(Ljava/lang/String;)V
     //   14: astore_1
     //   15: aload_1
-    //   16: invokevirtual 49	com/tencent/mm/vfs/VFSFile:exists	()Z
+    //   16: invokevirtual 49	java/io/File:exists	()Z
     //   19: ifne +26 -> 45
     //   22: aload_1
-    //   23: invokevirtual 56	com/tencent/mm/vfs/VFSFile:getParentFile	()Lcom/tencent/mm/vfs/VFSFile;
-    //   26: invokevirtual 49	com/tencent/mm/vfs/VFSFile:exists	()Z
+    //   23: invokevirtual 56	java/io/File:getParentFile	()Ljava/io/File;
+    //   26: invokevirtual 49	java/io/File:exists	()Z
     //   29: ifne +11 -> 40
     //   32: aload_1
-    //   33: invokevirtual 56	com/tencent/mm/vfs/VFSFile:getParentFile	()Lcom/tencent/mm/vfs/VFSFile;
-    //   36: invokevirtual 59	com/tencent/mm/vfs/VFSFile:mkdirs	()Z
+    //   33: invokevirtual 56	java/io/File:getParentFile	()Ljava/io/File;
+    //   36: invokevirtual 59	java/io/File:mkdirs	()Z
     //   39: pop
     //   40: aload_1
-    //   41: invokevirtual 146	com/tencent/mm/vfs/VFSFile:createNewFile	()Z
+    //   41: invokevirtual 146	java/io/File:createNewFile	()Z
     //   44: pop
-    //   45: new 61	com/tencent/mm/vfs/VFSFileOutputStream
+    //   45: new 61	java/io/FileOutputStream
     //   48: dup
     //   49: aload_1
     //   50: iload_2
-    //   51: invokespecial 293	com/tencent/mm/vfs/VFSFileOutputStream:<init>	(Lcom/tencent/mm/vfs/VFSFile;Z)V
+    //   51: invokespecial 287	java/io/FileOutputStream:<init>	(Ljava/io/File;Z)V
     //   54: astore_1
     //   55: aload_1
     //   56: aload_0
     //   57: iconst_0
     //   58: iload_3
-    //   59: invokevirtual 90	com/tencent/mm/vfs/VFSFileOutputStream:write	([BII)V
+    //   59: invokevirtual 90	java/io/FileOutputStream:write	([BII)V
     //   62: aload_1
-    //   63: invokevirtual 93	com/tencent/mm/vfs/VFSFileOutputStream:flush	()V
+    //   63: invokevirtual 93	java/io/FileOutputStream:flush	()V
     //   66: aload_1
     //   67: ifnull +7 -> 74
     //   70: aload_1
-    //   71: invokevirtual 104	com/tencent/mm/vfs/VFSFileOutputStream:close	()V
+    //   71: invokevirtual 104	java/io/FileOutputStream:close	()V
     //   74: iconst_1
     //   75: istore_2
     //   76: iload_2
@@ -1208,7 +1154,7 @@ public class FileUtils
     //   84: aload_0
     //   85: ifnull -9 -> 76
     //   88: aload_0
-    //   89: invokevirtual 104	com/tencent/mm/vfs/VFSFileOutputStream:close	()V
+    //   89: invokevirtual 104	java/io/FileOutputStream:close	()V
     //   92: iconst_0
     //   93: ireturn
     //   94: astore_0
@@ -1220,7 +1166,7 @@ public class FileUtils
     //   101: aload_1
     //   102: ifnull +7 -> 109
     //   105: aload_1
-    //   106: invokevirtual 104	com/tencent/mm/vfs/VFSFileOutputStream:close	()V
+    //   106: invokevirtual 104	java/io/FileOutputStream:close	()V
     //   109: aload_0
     //   110: athrow
     //   111: astore_0
@@ -1259,7 +1205,7 @@ public class FileUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.appbrand.utils.FileUtils
  * JD-Core Version:    0.7.0.1
  */

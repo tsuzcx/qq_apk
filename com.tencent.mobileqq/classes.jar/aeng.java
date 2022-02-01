@@ -1,6 +1,22 @@
-public abstract interface aeng
+import android.database.DataSetObserver;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.LebaListMgrActivity;
+
+public class aeng
+  extends DataSetObserver
 {
-  public abstract void a(int paramInt);
+  public aeng(LebaListMgrActivity paramLebaListMgrActivity) {}
+  
+  public void onChanged()
+  {
+    TextView localTextView = LebaListMgrActivity.a(this.a);
+    if (LebaListMgrActivity.a(this.a).getCount() > 0) {}
+    for (int i = 0;; i = 8)
+    {
+      localTextView.setVisibility(i);
+      return;
+    }
+  }
 }
 
 

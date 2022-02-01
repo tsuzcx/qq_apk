@@ -1,31 +1,23 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import cooperation.qzone.util.QZLog;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.widget.AbsListView.SavedState;
 
-class bkhh
-  extends BroadcastReceiver
+public final class bkhh
+  implements Parcelable.Creator<AbsListView.SavedState>
 {
-  bkhh(bkhg parambkhg) {}
-  
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public AbsListView.SavedState a(Parcel paramParcel)
   {
-    try
-    {
-      paramContext = paramIntent.getAction();
-      QZLog.i("BaseTranslucentControll", 4, "reveiver action = " + paramContext);
-      this.a.a(paramIntent);
-      return;
-    }
-    catch (Exception paramContext)
-    {
-      QZLog.e("BaseTranslucentControll", "onReceive error", paramContext);
-    }
+    return new AbsListView.SavedState(paramParcel, null);
+  }
+  
+  public AbsListView.SavedState[] a(int paramInt)
+  {
+    return new AbsListView.SavedState[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bkhh
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import aelt;
+import afrc;
 import android.content.Context;
 import android.widget.TextView;
 
@@ -22,7 +22,7 @@ public class VipProfileCardDiyActivity$DiyDefaultTextView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.VipProfileCardDiyActivity.DiyDefaultTextView
  * JD-Core Version:    0.7.0.1
  */

@@ -1,81 +1,89 @@
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Handler.Callback;
+import android.os.Message;
+import com.tencent.mobileqq.app.ThreadManager;
+
 public class anbu
-  extends anbn
+  implements Handler.Callback
 {
-  public int a;
-  public String a;
-  public anbv[] a;
-  public int b = -1;
-  public String b;
-  public int c;
-  public String c;
-  public int d;
-  public String d;
-  public int e = 0;
+  private int jdField_a_of_type_Int;
+  private final anbv jdField_a_of_type_Anbv;
+  private anbw jdField_a_of_type_Anbw;
+  private final Handler jdField_a_of_type_AndroidOsHandler;
+  private boolean jdField_a_of_type_Boolean = true;
+  private boolean b;
   
-  public anbu()
+  public anbu(anbv paramanbv)
   {
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_c_of_type_JavaLangString = "";
-    this.jdField_d_of_type_JavaLangString = "";
-    this.jdField_a_of_type_ArrayOfAnbv = null;
-    this.jdField_c_of_type_Int = 0;
-    this.jdField_d_of_type_Int = 0;
+    this.jdField_a_of_type_Anbv = paramanbv;
+    this.jdField_a_of_type_AndroidOsHandler = new bkgm(ThreadManager.getSubThreadLooper(), this);
   }
   
-  public static boolean a(anbu paramanbu)
+  public void a()
   {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (paramanbu != null)
+    this.jdField_a_of_type_Boolean = false;
+  }
+  
+  public void a(int paramInt, anbw paramanbw)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_Anbw = paramanbw;
+  }
+  
+  public void a(Bundle paramBundle)
+  {
+    this.b = false;
+    do
     {
-      bool1 = bool2;
-      if (paramanbu.jdField_a_of_type_Int == 0)
-      {
-        bool1 = bool2;
-        if (paramanbu.b == 0)
+      while (!this.b) {
+        switch (this.jdField_a_of_type_Anbv.a(paramBundle))
         {
-          bool1 = bool2;
-          if (paramanbu.jdField_a_of_type_ArrayOfAnbv != null)
+        case 0: 
+        default: 
+          break;
+        case -1: 
+          if (this.jdField_a_of_type_Anbw != null)
           {
-            bool1 = bool2;
-            if (paramanbu.jdField_a_of_type_ArrayOfAnbv[0].jdField_c_of_type_Int == 0)
-            {
-              bool1 = bool2;
-              if (paramanbu.jdField_a_of_type_ArrayOfAnbv[0].a != null) {
-                bool1 = true;
-              }
-            }
+            paramBundle = this.jdField_a_of_type_AndroidOsHandler.obtainMessage(3);
+            this.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(paramBundle, this.jdField_a_of_type_Int);
           }
-        }
-      }
-    }
-    return bool1;
-  }
-  
-  public byte[] a()
-  {
-    return this.jdField_a_of_type_ArrayOfAnbv[0].a;
-  }
-  
-  public String toString()
-  {
-    if (this.jdField_a_of_type_ArrayOfAnbv != null)
-    {
-      String str1 = "ImageTags{";
-      int i = 0;
-      for (;;)
-      {
-        str2 = str1;
-        if (i >= this.jdField_a_of_type_ArrayOfAnbv.length) {
           break;
         }
-        str1 = str1 + ", imageTags[" + i + "] = " + this.jdField_a_of_type_ArrayOfAnbv[i];
-        i += 1;
+      }
+      return;
+    } while (!this.jdField_a_of_type_Boolean);
+    Message localMessage = this.jdField_a_of_type_AndroidOsHandler.obtainMessage(2);
+    localMessage.setData(paramBundle);
+    this.jdField_a_of_type_AndroidOsHandler.sendMessage(localMessage);
+  }
+  
+  public void b()
+  {
+    this.b = true;
+    this.jdField_a_of_type_Anbw = null;
+    this.jdField_a_of_type_AndroidOsHandler.removeMessages(2);
+    this.jdField_a_of_type_AndroidOsHandler.removeMessages(3);
+  }
+  
+  public boolean handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    }
+    for (;;)
+    {
+      return false;
+      if (!this.b) {
+        a(paramMessage.getData());
+      }
+      return true;
+      if (this.jdField_a_of_type_Anbw != null)
+      {
+        this.jdField_a_of_type_Anbw.b();
+        this.jdField_a_of_type_Anbw = null;
       }
     }
-    String str2 = "null";
-    return "ARCloudSceneRecogResult{retCode = " + this.jdField_a_of_type_Int + ", retMsg = " + this.jdField_a_of_type_JavaLangString + ", recogSvrRetCode = " + this.b + ", recogSvrRetMsg = " + this.jdField_c_of_type_JavaLangString + ", sessionId = " + this.jdField_d_of_type_JavaLangString + ", imageTags = " + str2 + ", timeLen = " + this.jdField_c_of_type_Int + ", score = " + this.jdField_d_of_type_Int + ", kptNum = " + this.e + super.toString() + '}';
   }
 }
 

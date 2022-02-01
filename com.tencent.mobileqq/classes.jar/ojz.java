@@ -1,27 +1,30 @@
-import com.tencent.biz.pubaccount.readinjoy.comment.data.BaseCommentData;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoySettingActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class ojz
-  implements ViewBase.OnClickListener
+public class ojz
+  implements CompoundButton.OnCheckedChangeListener
 {
-  ojz(ojn paramojn) {}
+  public ojz(ReadInJoySettingActivity paramReadInJoySettingActivity) {}
   
-  public void onClick(ViewBase paramViewBase)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    if (this.a.jdField_a_of_type_Omt.a == null) {}
-    do
+    String str2 = bmqa.a();
+    if (paramBoolean) {}
+    for (String str1 = "1";; str1 = "0")
     {
+      oat.a(null, "CliOper", "", "", "0X800AFEB", "0X800AFEB", 0, 0, str2, str1, "", pha.e(), false);
+      bmqa.a((QQAppInterface)this.a.getAppInterface(), paramBoolean, new oki(this.a, paramBoolean));
+      EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
       return;
-      paramViewBase = this.a.jdField_a_of_type_Omt.a.medalInfo;
-    } while ((paramViewBase == null) || (this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer == null));
-    ors.a(this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getContext(), paramViewBase);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     ojz
  * JD-Core Version:    0.7.0.1
  */

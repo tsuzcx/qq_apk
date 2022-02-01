@@ -1,29 +1,27 @@
-import com.tencent.mobileqq.activity.phone.PhoneMatchView;
-import com.tencent.mobileqq.activity.phone.PhoneMatchView.1;
+import android.os.Handler.Callback;
+import android.os.Message;
+import com.tencent.mobileqq.colornote.data.ColorNote;
 
-public class aing
-  extends awhw
+class aing
+  implements Handler.Callback
 {
-  public aing(PhoneMatchView.1 param1) {}
+  aing(ainf paramainf) {}
   
-  protected void a(boolean paramBoolean, int paramInt)
+  public boolean handleMessage(Message paramMessage)
   {
-    this.a.this$0.a(paramBoolean, paramInt, "onUploadContact");
-  }
-  
-  protected void b(boolean paramBoolean, int paramInt)
-  {
-    this.a.this$0.a(paramBoolean, paramInt, "onUpdateContact");
-  }
-  
-  protected void e(boolean paramBoolean, int paramInt)
-  {
-    this.a.this$0.a(paramBoolean, paramInt, "onUploadContactNotBind");
-  }
-  
-  protected void f(boolean paramBoolean, int paramInt)
-  {
-    this.a.this$0.a(paramBoolean, paramInt, "onUpdateContactNotBind");
+    switch (paramMessage.what)
+    {
+    }
+    for (;;)
+    {
+      return true;
+      if ((paramMessage.obj instanceof ColorNote))
+      {
+        paramMessage = (ColorNote)paramMessage.obj;
+        ainf.a(this.a, paramMessage);
+        ainf.b(this.a, paramMessage);
+      }
+    }
   }
 }
 

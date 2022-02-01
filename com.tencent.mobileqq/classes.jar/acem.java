@@ -1,13 +1,18 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.AssistantSettingActivity;
+import com.tencent.gamecenter.common.util.GameCenterAPIJavaScript;
+import com.tencent.mobileqq.videoplatform.SDKInitListener;
+import com.tencent.qphone.base.util.QLog;
 
 public class acem
-  implements View.OnClickListener
+  implements SDKInitListener
 {
-  public acem(AssistantSettingActivity paramAssistantSettingActivity) {}
+  public acem(GameCenterAPIJavaScript paramGameCenterAPIJavaScript) {}
   
-  public void onClick(View paramView) {}
+  public void onSDKInited(boolean paramBoolean)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("GCApi", 1, "QQVideo Inited:" + paramBoolean);
+    }
+  }
 }
 
 

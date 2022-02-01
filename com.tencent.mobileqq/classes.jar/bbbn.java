@@ -1,54 +1,43 @@
-import java.util.ArrayList;
+import android.support.v4.app.FragmentActivity;
+import android.text.TextUtils;
+import android.view.View;
+import com.tencent.mobileqq.app.SignatureHandler;
+import com.tencent.mobileqq.richstatus.SignatureHistoryFragment;
+import com.tencent.mobileqq.richstatus.comment.bean.CommentItem;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class bbbn
-  extends bbbz
+  implements bkhw
 {
-  public int a;
-  public long a;
-  public String a;
-  public ArrayList<bawy> a;
-  public boolean a;
-  public int b;
-  public long b;
-  public String b;
-  public boolean b;
-  public String c;
-  public boolean c;
-  public String d = "";
-  public String e = "";
-  public String f = "";
+  public bbbn(SignatureHistoryFragment paramSignatureHistoryFragment, CommentItem paramCommentItem, String paramString, bkho parambkho) {}
   
-  public bbbn()
+  public void OnClick(View paramView, int paramInt)
   {
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_c_of_type_Boolean = false;
-    this.jdField_b_of_type_Long = 0L;
-    this.jdField_b_of_type_JavaLangString = "";
-    this.jdField_c_of_type_JavaLangString = "";
-  }
-  
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(super.toString());
-    localStringBuilder.append(" fileID:");
-    localStringBuilder.append(this.jdField_a_of_type_Long);
-    localStringBuilder.append(" isExist:");
-    localStringBuilder.append(this.jdField_a_of_type_Boolean);
-    localStringBuilder.append(" blockSize:");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
-    localStringBuilder.append(" netChg:");
-    localStringBuilder.append(this.jdField_b_of_type_Boolean);
-    localStringBuilder.append(" downDomain:");
-    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
-    localStringBuilder.append(" thumbDownUrl");
-    localStringBuilder.append(this.jdField_c_of_type_JavaLangString);
-    localStringBuilder.append(" bigDownUrl:");
-    localStringBuilder.append(this.d);
-    localStringBuilder.append(" orgiDownUrl:");
-    localStringBuilder.append(this.e);
-    return localStringBuilder.toString();
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Bkho.e();
+      return;
+      if (!bgnt.d(this.jdField_a_of_type_ComTencentMobileqqRichstatusSignatureHistoryFragment.getActivity()))
+      {
+        QQToast.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusSignatureHistoryFragment.getActivity(), 2131692897, 0).a();
+      }
+      else
+      {
+        SignatureHistoryFragment.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusSignatureHistoryFragment, this.jdField_a_of_type_ComTencentMobileqqRichstatusCommentBeanCommentItem);
+        if ((this.jdField_a_of_type_ComTencentMobileqqRichstatusCommentBeanCommentItem != null) && (!TextUtils.isEmpty(SignatureHistoryFragment.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusSignatureHistoryFragment))) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)))
+        {
+          if (SignatureHistoryFragment.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusSignatureHistoryFragment) == null) {
+            SignatureHistoryFragment.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusSignatureHistoryFragment, new biau(this.jdField_a_of_type_ComTencentMobileqqRichstatusSignatureHistoryFragment.getActivity(), this.jdField_a_of_type_ComTencentMobileqqRichstatusSignatureHistoryFragment.getActivity().getTitleBarHeight()));
+          }
+          SignatureHistoryFragment.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusSignatureHistoryFragment).a(null);
+          SignatureHistoryFragment.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusSignatureHistoryFragment).show();
+          this.jdField_a_of_type_ComTencentMobileqqRichstatusSignatureHistoryFragment.a.a(Long.valueOf(SignatureHistoryFragment.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusSignatureHistoryFragment)).longValue(), this.jdField_a_of_type_ComTencentMobileqqRichstatusCommentBeanCommentItem.feedId, Long.valueOf(this.jdField_a_of_type_JavaLangString).longValue(), this.jdField_a_of_type_ComTencentMobileqqRichstatusCommentBeanCommentItem.id);
+        }
+      }
+    }
   }
 }
 

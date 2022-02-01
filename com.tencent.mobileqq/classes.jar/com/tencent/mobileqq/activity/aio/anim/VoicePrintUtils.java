@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.activity.aio.anim;
 
-import aepi;
-import aeqi;
-import afxu;
-import amca;
+import afur;
+import afwr;
+import aheq;
 import android.content.Context;
 import android.view.View;
 import android.widget.BaseAdapter;
 import android.widget.RelativeLayout;
-import anwi;
-import anwo;
-import anwp;
-import anxo;
-import azmk;
+import anuk;
+import apwn;
+import apwt;
+import apwu;
+import apxt;
+import bcnj;
 import com.tencent.mobileqq.activity.MultiForwardActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.bubble.BubbleManager;
@@ -22,7 +22,7 @@ import com.tencent.util.Pair;
 
 public class VoicePrintUtils
 {
-  public static int a(QQAppInterface paramQQAppInterface, boolean paramBoolean, afxu paramafxu)
+  public static int a(QQAppInterface paramQQAppInterface, boolean paramBoolean, aheq paramaheq)
   {
     int j = 0;
     int i = j;
@@ -32,7 +32,7 @@ public class VoicePrintUtils
       i = j;
       if (paramBoolean)
       {
-        localObject = paramafxu.jdField_a_of_type_Anwo.a(paramQQAppInterface, 7);
+        localObject = paramaheq.jdField_a_of_type_Apwt.a(paramQQAppInterface, 7);
         if (localObject != null) {
           break label39;
         }
@@ -43,21 +43,21 @@ public class VoicePrintUtils
     do
     {
       return i;
-      localObject = (anwp)((Pair)localObject).first;
-      if ((paramafxu.jdField_a_of_type_AndroidViewView == null) || (paramafxu.jdField_a_of_type_AndroidViewView.getHeight() <= 0)) {
+      localObject = (apwu)((Pair)localObject).first;
+      if ((paramaheq.jdField_a_of_type_AndroidViewView == null) || (paramaheq.jdField_a_of_type_AndroidViewView.getHeight() <= 0)) {
         break;
       }
-      j = paramafxu.jdField_a_of_type_AndroidViewView.getHeight() - ((anwp)localObject).a.h - ((anwp)localObject).a.i;
+      j = paramaheq.jdField_a_of_type_AndroidViewView.getHeight() - ((apwu)localObject).a.h - ((apwu)localObject).a.i;
       i = j;
-    } while (j <= paramafxu.jdField_a_of_type_AndroidWidgetRelativeLayout.getHeight());
-    return paramafxu.jdField_a_of_type_AndroidWidgetRelativeLayout.getHeight();
-    return aepi.a(57.0F, paramQQAppInterface.getApp().getResources()) - ((anwp)localObject).a.h - ((anwp)localObject).a.i;
+    } while (j <= paramaheq.jdField_a_of_type_AndroidWidgetRelativeLayout.getHeight());
+    return paramaheq.jdField_a_of_type_AndroidWidgetRelativeLayout.getHeight();
+    return afur.a(57.0F, paramQQAppInterface.getApp().getResources()) - ((apwu)localObject).a.h - ((apwu)localObject).a.i;
   }
   
-  public static boolean a(QQAppInterface paramQQAppInterface, Context paramContext, BaseAdapter paramBaseAdapter, aeqi paramaeqi, MessageForPtt paramMessageForPtt)
+  public static boolean a(QQAppInterface paramQQAppInterface, Context paramContext, BaseAdapter paramBaseAdapter, afwr paramafwr, MessageForPtt paramMessageForPtt)
   {
     boolean bool2 = true;
-    if (azmk.b()) {}
+    if (bcnj.b()) {}
     label133:
     label140:
     for (;;)
@@ -67,7 +67,7 @@ public class VoicePrintUtils
       {
         int i = BubbleManager.a;
         if (i == 0) {
-          i = ((amca)paramQQAppInterface.a(13)).a(paramMessageForPtt);
+          i = ((anuk)paramQQAppInterface.a(13)).a(paramMessageForPtt);
         }
         for (;;)
         {
@@ -78,11 +78,11 @@ public class VoicePrintUtils
           if (!(paramContext instanceof MultiForwardActivity))
           {
             bool1 = true;
-            paramaeqi.jdField_a_of_type_Anwo = anxo.a(i, paramQQAppInterface, paramMessageForPtt, paramBaseAdapter, bool1);
-            if ((paramaeqi.jdField_a_of_type_Anwo == null) || (paramaeqi.jdField_a_of_type_Anwo.a <= 0)) {
+            paramafwr.jdField_a_of_type_Apwt = apxt.a(i, paramQQAppInterface, paramMessageForPtt, paramBaseAdapter, bool1);
+            if ((paramafwr.jdField_a_of_type_Apwt == null) || (paramafwr.jdField_a_of_type_Apwt.a <= 0)) {
               break;
             }
-            paramQQAppInterface = paramaeqi.jdField_a_of_type_Anwo.a(paramQQAppInterface, 7);
+            paramQQAppInterface = paramafwr.jdField_a_of_type_Apwt.a(paramQQAppInterface, 7);
             if ((paramQQAppInterface == null) || (paramQQAppInterface.first == null)) {
               break label133;
             }
@@ -98,7 +98,7 @@ public class VoicePrintUtils
     }
   }
   
-  public static int[] a(QQAppInterface paramQQAppInterface, boolean paramBoolean1, boolean paramBoolean2, int paramInt, afxu paramafxu)
+  public static int[] a(QQAppInterface paramQQAppInterface, boolean paramBoolean1, boolean paramBoolean2, int paramInt, aheq paramaheq)
   {
     int i;
     Object localObject;
@@ -109,24 +109,24 @@ public class VoicePrintUtils
       if (paramBoolean2) {}
       for (float f = 6.0F;; f = 24.0F)
       {
-        i = paramInt + aepi.a(f, paramQQAppInterface.getApp().getResources());
-        localObject = paramafxu.jdField_a_of_type_Anwo.a(paramQQAppInterface, 7);
+        i = paramInt + afur.a(f, paramQQAppInterface.getApp().getResources());
+        localObject = paramaheq.jdField_a_of_type_Apwt.a(paramQQAppInterface, 7);
         if (localObject != null) {
           break;
         }
         return new int[] { i, 0, 0 };
       }
-      localObject = (anwp)((Pair)localObject).first;
-      if (paramafxu.jdField_a_of_type_AndroidWidgetRelativeLayout.getLeft() > 0)
+      localObject = (apwu)((Pair)localObject).first;
+      if (paramaheq.jdField_a_of_type_AndroidWidgetRelativeLayout.getLeft() > 0)
       {
-        paramInt = ((anwp)localObject).a.f - paramafxu.jdField_a_of_type_AndroidWidgetRelativeLayout.getLeft();
+        paramInt = ((apwu)localObject).a.f - paramaheq.jdField_a_of_type_AndroidWidgetRelativeLayout.getLeft();
         j = paramInt;
         if (paramInt < 0) {
           j = 0;
         }
-        m = aepi.a(6.0F, paramQQAppInterface.getApp().getResources());
+        m = afur.a(6.0F, paramQQAppInterface.getApp().getResources());
         i = i - j - m;
-        paramQQAppInterface = ((anwp)localObject).a.c;
+        paramQQAppInterface = ((apwu)localObject).a.c;
         if ((paramQQAppInterface == null) || (paramQQAppInterface.length <= 0)) {
           break label338;
         }
@@ -141,7 +141,7 @@ public class VoicePrintUtils
     for (;;)
     {
       return new int[] { i, paramInt / 2 + j, paramInt / 2 + m };
-      paramInt = ((anwp)localObject).a.f - aepi.a(12.0F, paramQQAppInterface.getApp().getResources());
+      paramInt = ((apwu)localObject).a.f - afur.a(12.0F, paramQQAppInterface.getApp().getResources());
       break;
       label232:
       if (i >= paramQQAppInterface[(paramQQAppInterface.length - 1)])
@@ -176,7 +176,7 @@ public class VoicePrintUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.anim.VoicePrintUtils
  * JD-Core Version:    0.7.0.1
  */

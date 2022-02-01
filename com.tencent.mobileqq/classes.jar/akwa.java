@@ -1,21 +1,8 @@
-import eipc.EIPCResult;
-
-class akwa
-  implements bduh
+public abstract interface akwa
 {
-  akwa(akvv paramakvv, bdug parambdug, int paramInt) {}
+  public abstract void a(int paramInt);
   
-  public void a(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Bdug.a(null);
-    if (paramBoolean) {}
-    for (int i = 0;; i = -1)
-    {
-      EIPCResult localEIPCResult = EIPCResult.createResult(i, null);
-      this.jdField_a_of_type_Akvv.callbackResult(this.jdField_a_of_type_Int, localEIPCResult);
-      return;
-    }
-  }
+  public abstract void b(int paramInt);
 }
 
 

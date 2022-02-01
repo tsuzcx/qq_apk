@@ -1,22 +1,25 @@
 import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import dov.com.qq.im.story.view.AnimationQIMCircleProgress;
-import dov.com.tencent.mobileqq.richmedia.capture.view.QIMCameraSegmentCaptureButtonLayout;
+import android.animation.Animator.AnimatorListener;
+import com.tencent.qphone.base.util.QLog;
+import dov.com.qq.im.ae.camera.ui.panel.AEProviderContainerView;
 
 public class bnmx
-  extends AnimatorListenerAdapter
+  implements Animator.AnimatorListener
 {
-  public bnmx(QIMCameraSegmentCaptureButtonLayout paramQIMCameraSegmentCaptureButtonLayout, boolean paramBoolean, float paramFloat) {}
+  public bnmx(AEProviderContainerView paramAEProviderContainerView) {}
+  
+  public void onAnimationCancel(Animator paramAnimator) {}
   
   public void onAnimationEnd(Animator paramAnimator)
   {
-    if (this.jdField_a_of_type_Boolean)
-    {
-      this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewQIMCameraSegmentCaptureButtonLayout.a.e();
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("AEProviderContainerView", 2, "panel opened");
     }
-    this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewQIMCameraSegmentCaptureButtonLayout.a.a(this.jdField_a_of_type_Float);
   }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

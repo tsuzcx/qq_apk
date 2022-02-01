@@ -1,23 +1,25 @@
-import UserGrowth.stWeishiDengtaReportReq;
-import UserGrowth.stWeishiDengtaReportRsp;
-import java.util.Map;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import com.tencent.biz.pubaccount.readinjoy.view.widget.reddot.ColorBandVideoEntranceButton;
 
 public class tka
-  extends thb<stWeishiDengtaReportRsp>
+  extends AnimatorListenerAdapter
 {
-  public tka(String paramString, Map<String, String> paramMap)
+  public tka(ColorBandVideoEntranceButton paramColorBandVideoEntranceButton) {}
+  
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    super("WeishiDengtaReport");
-    stWeishiDengtaReportReq localstWeishiDengtaReportReq = new stWeishiDengtaReportReq();
-    localstWeishiDengtaReportReq.eventName = paramString;
-    localstWeishiDengtaReportReq.params = paramMap;
-    this.a = localstWeishiDengtaReportReq;
-    tlo.b("BeaconSendRequest", "BeaconSendRequest = " + localstWeishiDengtaReportReq.toString());
+    this.a.a();
+  }
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    this.a.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     tka
  * JD-Core Version:    0.7.0.1
  */

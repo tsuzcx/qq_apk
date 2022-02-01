@@ -13,14 +13,14 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
-import xuj;
-import xuk;
+import znu;
+import znv;
 
 public class EmptySupportViewPager
   extends ViewPager
 {
-  private DataSetObserver jdField_a_of_type_AndroidDatabaseDataSetObserver = new xuj(this);
-  private ViewPager.OnPageChangeListener jdField_a_of_type_AndroidSupportV4ViewViewPager$OnPageChangeListener = new xuk(this);
+  private DataSetObserver jdField_a_of_type_AndroidDatabaseDataSetObserver = new znu(this);
+  private ViewPager.OnPageChangeListener jdField_a_of_type_AndroidSupportV4ViewViewPager$OnPageChangeListener = new znv(this);
   public List<ViewPager.OnPageChangeListener> a;
   public Set<Pair<View, Boolean>> a;
   
@@ -62,7 +62,7 @@ public class EmptySupportViewPager
     }
   }
   
-  public void a(ViewPager.OnPageChangeListener paramOnPageChangeListener)
+  public void addOnPageChangeListener(ViewPager.OnPageChangeListener paramOnPageChangeListener)
   {
     if (this.jdField_a_of_type_JavaUtilList == null) {
       this.jdField_a_of_type_JavaUtilList = new ArrayList();
@@ -70,7 +70,14 @@ public class EmptySupportViewPager
     this.jdField_a_of_type_JavaUtilList.add(paramOnPageChangeListener);
   }
   
-  public void b(ViewPager.OnPageChangeListener paramOnPageChangeListener)
+  public void clearOnPageChangeListeners()
+  {
+    if (this.jdField_a_of_type_JavaUtilList != null) {
+      this.jdField_a_of_type_JavaUtilList.clear();
+    }
+  }
+  
+  public void removeOnPageChangeListener(ViewPager.OnPageChangeListener paramOnPageChangeListener)
   {
     if (this.jdField_a_of_type_JavaUtilList != null) {
       this.jdField_a_of_type_JavaUtilList.remove(paramOnPageChangeListener);
@@ -98,7 +105,7 @@ public class EmptySupportViewPager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.qqstory.view.EmptySupportViewPager
  * JD-Core Version:    0.7.0.1
  */

@@ -1,30 +1,24 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.open.agent.AuthorityAccountView;
-import com.tencent.open.agent.AuthorityActivity;
-import com.tencent.open.agent.QuickLoginAuthorityActivity;
+import android.content.Intent;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
-public class bfbu
-  implements View.OnClickListener
+public abstract interface bfbu
 {
-  public bfbu(AuthorityAccountView paramAuthorityAccountView, String paramString) {}
+  public abstract void a();
   
-  public void onClick(View paramView)
-  {
-    if ((AuthorityAccountView.a(this.jdField_a_of_type_ComTencentOpenAgentAuthorityAccountView) instanceof AuthorityActivity)) {
-      ((AuthorityActivity)AuthorityAccountView.a(this.jdField_a_of_type_ComTencentOpenAgentAuthorityAccountView)).a(this.jdField_a_of_type_JavaLangString, true);
-    }
-    for (;;)
-    {
-      if (AuthorityAccountView.a(this.jdField_a_of_type_ComTencentOpenAgentAuthorityAccountView) != null) {
-        AuthorityAccountView.a(this.jdField_a_of_type_ComTencentOpenAgentAuthorityAccountView).dismiss();
-      }
-      return;
-      if ((AuthorityAccountView.a(this.jdField_a_of_type_ComTencentOpenAgentAuthorityAccountView) instanceof QuickLoginAuthorityActivity)) {
-        ((QuickLoginAuthorityActivity)AuthorityAccountView.a(this.jdField_a_of_type_ComTencentOpenAgentAuthorityAccountView)).a(this.jdField_a_of_type_JavaLangString, true);
-      }
-    }
-  }
+  public abstract void a(int paramInt);
+  
+  public abstract void a(int paramInt1, int paramInt2, Intent paramIntent);
+  
+  public abstract void a(int paramInt, boolean paramBoolean);
+  
+  public abstract void a(JSONArray paramJSONArray);
+  
+  public abstract void a(JSONObject paramJSONObject);
+  
+  public abstract boolean a();
+  
+  public abstract void b(boolean paramBoolean);
 }
 
 

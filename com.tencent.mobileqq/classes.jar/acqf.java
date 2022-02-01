@@ -1,57 +1,38 @@
-import android.content.Intent;
+import android.support.v4.app.FragmentActivity;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.ChatSettingForTroop;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.mini.report.MiniProgramLpReportDC04239;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.troopinfo.TroopInfoData;
-import java.util.ArrayList;
-import tencent.im.oidb.cmd0xaf4.oidb_0xaf4.ManageInfo;
-import tencent.im.oidb.cmd0xaf4.oidb_0xaf4.RspBody;
+import android.widget.Toast;
+import com.tencent.gdtad.jsbridge.GdtInterstitialFragmentForJS;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class acqf
   implements View.OnClickListener
 {
-  public acqf(ChatSettingForTroop paramChatSettingForTroop, oidb_0xaf4.RspBody paramRspBody) {}
+  public acqf(GdtInterstitialFragmentForJS paramGdtInterstitialFragmentForJS) {}
   
   public void onClick(View paramView)
   {
-    paramView = this.jdField_a_of_type_TencentImOidbCmd0xaf4Oidb_0xaf4$RspBody.manage_info.url.get();
-    Intent localIntent;
+    GdtInterstitialFragmentForJS.a(this.a).a = GdtInterstitialFragmentForJS.a(this.a.getActivity());
     String str;
-    if ((paramView.startsWith("http")) || (paramView.startsWith("https")))
+    if (GdtInterstitialFragmentForJS.a(this.a) == null)
     {
-      localIntent = new Intent(this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop, QQBrowserActivity.class);
-      str = paramView.replace("$GCODE$", this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.a.troopUin);
-      paramView = null;
-      int i = 0;
-      while (i < ChatSettingForTroop.a(this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop).size())
-      {
-        Object localObject = paramView;
-        if (paramView == null) {
-          localObject = new StringBuilder("&mini_appids=");
-        }
-        ((StringBuilder)localObject).append(ChatSettingForTroop.a(this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop).get(i));
-        if (i != ChatSettingForTroop.a(this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop).size() - 1) {
-          ((StringBuilder)localObject).append(",");
-        }
-        i += 1;
-        paramView = (View)localObject;
-      }
-      if (paramView == null) {
-        break label233;
-      }
+      str = "ad is not loaded";
+      Toast.makeText(this.a.getActivity().getApplicationContext(), "ad is not loaded", 0).show();
     }
-    label233:
-    for (paramView = str + paramView.toString();; paramView = str)
+    for (;;)
     {
-      localIntent.putExtra("url", paramView);
-      localIntent.putExtra("webStyle", "noBottomBar");
-      localIntent.putExtra("startOpenPageTime", System.currentTimeMillis());
-      this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.startActivity(localIntent);
-      MiniProgramLpReportDC04239.reportByQQqunInfo("qun", "qun_info", "click_set", this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.a.troopUin);
+      Toast.makeText(this.a.getActivity().getApplicationContext(), str, 0).show();
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
+      if (GdtInterstitialFragmentForJS.a(this.a) == null) {
+        str = "ad is loading";
+      } else if (GdtInterstitialFragmentForJS.a(this.a).a() != 0) {
+        str = GdtInterstitialFragmentForJS.a(this.a).a();
+      } else if (GdtInterstitialFragmentForJS.a(this.a).a(this.a.getActivity())) {
+        str = "正在打开插屏";
+      } else {
+        str = "打开插屏错误";
+      }
     }
   }
 }

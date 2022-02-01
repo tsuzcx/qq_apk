@@ -1,32 +1,72 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.ImageView;
-import com.tencent.biz.qqcircle.widgets.QCircleDoublePraiseView;
-import com.tencent.qphone.base.util.QLog;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.OnScrollListener;
+import com.tencent.biz.pubaccount.weishi_new.WSFollowFragment;
 
 public class ucs
-  implements Animation.AnimationListener
+  extends RecyclerView.OnScrollListener
 {
-  public ucs(QCircleDoublePraiseView paramQCircleDoublePraiseView) {}
+  public ucs(WSFollowFragment paramWSFollowFragment) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
   {
-    QCircleDoublePraiseView.a(this.a).setVisibility(8);
-    QCircleDoublePraiseView.a(this.a, false);
-    QLog.d("QCircleDoublePraiseView", 1, "onAnimationEnd");
+    super.onScrollStateChanged(paramRecyclerView, paramInt);
+    if (paramInt == 1) {
+      WSFollowFragment.a(this.a, true);
+    }
+    switch (paramInt)
+    {
+    default: 
+      adcd.a().a("weishi_follow_list");
+      return;
+    }
+    adcd.a().a("weishi_follow_list", false);
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
+  public void onScrolled(RecyclerView paramRecyclerView, int paramInt1, int paramInt2)
   {
-    QCircleDoublePraiseView.a(this.a, true);
-    QLog.d("QCircleDoublePraiseView", 1, "onAnimationStart");
+    boolean bool2 = false;
+    super.onScrolled(paramRecyclerView, paramInt1, paramInt2);
+    if (WSFollowFragment.a(this.a).a == null)
+    {
+      paramInt1 = WSFollowFragment.a(this.a).findFirstVisibleItemPosition();
+      paramRecyclerView = WSFollowFragment.a(this.a, paramInt1, false);
+      upe.d("WSFollowContinuePlayLog", "mAdapter.mPlayingHolder is null. startPosition:" + paramInt1 + ", lastOrNextVideoHolder:" + paramRecyclerView);
+      if (WSFollowFragment.a(this.a, paramRecyclerView))
+      {
+        if (!WSFollowFragment.a(this.a)) {
+          break label149;
+        }
+        upe.d("WSFollowContinuePlayLog", "[WSFollowFragment.java][onScrolled] mIsHandlingBackFromVertical true.");
+      }
+    }
+    else
+    {
+      paramRecyclerView = this.a;
+      localObject = WSFollowFragment.a(this.a).a;
+      if (paramInt2 > 0) {}
+      for (bool1 = true;; bool1 = false)
+      {
+        paramRecyclerView = paramRecyclerView.a((uif)localObject, bool1, false);
+        break;
+      }
+    }
+    label149:
+    upe.g("WSFollowContinuePlayLog", "[WSFollowFragment.java][onScrolled] playVideo title:" + paramRecyclerView.a.d + ", mPlayingHolder:" + paramRecyclerView);
+    WSFollowFragment.a(this.a, paramRecyclerView);
+    Object localObject = this.a;
+    boolean bool1 = bool2;
+    if (paramInt2 > 0) {
+      bool1 = true;
+    }
+    paramRecyclerView = ((WSFollowFragment)localObject).a(paramRecyclerView, bool1, true);
+    upe.a("WS_VIDEO_PRE_PLAY", "[WSFollowFragment.java][onScrolled] setPrePlayingHolder prePlayHolder:" + paramRecyclerView);
+    WSFollowFragment.a(this.a).b(paramRecyclerView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     ucs
  * JD-Core Version:    0.7.0.1
  */

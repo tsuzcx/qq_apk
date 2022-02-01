@@ -1,29 +1,21 @@
-import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.qwallet.SendHbActivity;
 
-class aknu
-  implements INetInfoHandler
+public class aknu
+  implements DialogInterface.OnClickListener
 {
-  public void onNetMobile2None() {}
+  public aknu(SendHbActivity paramSendHbActivity) {}
   
-  public void onNetMobile2Wifi(String paramString)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    alko.a("onNetMobile2Wifi");
+    paramDialogInterface.dismiss();
+    SendHbActivity.a(this.a);
   }
-  
-  public void onNetNone2Mobile(String paramString) {}
-  
-  public void onNetNone2Wifi(String paramString)
-  {
-    alko.a("onNetNone2Wifi");
-  }
-  
-  public void onNetWifi2Mobile(String paramString) {}
-  
-  public void onNetWifi2None() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aknu
  * JD-Core Version:    0.7.0.1
  */

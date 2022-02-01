@@ -5,11 +5,13 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
 import android.widget.BaseAdapter;
 import android.widget.FrameLayout;
 import android.widget.FrameLayout.LayoutParams;
 import android.widget.ImageView;
 import android.widget.TextView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import com.tencent.tencentmap.mapsdk.maps.model.IndoorLevel;
 import java.util.List;
 
@@ -50,48 +52,56 @@ final class ij$a
   @NonNull
   public final View getView(int paramInt, @Nullable View paramView, @NonNull ViewGroup paramViewGroup)
   {
-    if ((this.a == null) || (this.a.size() == 0)) {
-      return null;
+    Object localObject1;
+    if ((this.a == null) || (this.a.size() == 0))
+    {
+      localObject1 = null;
+      EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
+      return localObject1;
     }
-    Object localObject;
+    Object localObject2;
+    ImageView localImageView;
     if (paramView != null)
     {
-      localObject = (ij.a.a)paramView.getTag();
-      paramViewGroup = ((ij.a.a)localObject).a;
-      localObject = ((ij.a.a)localObject).b;
+      localObject1 = (ij.a.a)paramView.getTag();
+      localObject2 = ((ij.a.a)localObject1).a;
+      localImageView = ((ij.a.a)localObject1).b;
+      localObject1 = paramView;
+      label69:
+      ((TextView)localObject2).setText(((IndoorLevel)this.a.get(paramInt)).getName());
+      if (paramInt == ij.e(this.b)) {
+        break label290;
+      }
+      ((TextView)localObject2).setTextColor(ij.c());
+      localImageView.setVisibility(4);
     }
     for (;;)
     {
-      paramViewGroup.setText(((IndoorLevel)this.a.get(paramInt)).getName());
-      if (paramInt == ij.e(this.b)) {
-        break;
-      }
-      paramViewGroup.setTextColor(ij.c());
-      ((ImageView)localObject).setVisibility(4);
-      return paramView;
-      paramView = new FrameLayout(this.c);
-      localObject = new ImageView(this.c);
+      break;
+      localObject1 = new FrameLayout(this.c);
+      localImageView = new ImageView(this.c);
       if (ij.b(this.b) != null) {
-        ((ImageView)localObject).setImageBitmap(ij.b(this.b));
+        localImageView.setImageBitmap(ij.b(this.b));
       }
-      paramViewGroup = new FrameLayout.LayoutParams(ij.c(this.b).getMeasuredWidth(), (int)(ij.d(this.b) * 45.0F));
-      paramViewGroup.gravity = 17;
-      paramView.addView((View)localObject, paramViewGroup);
-      paramViewGroup = new pc(this.c);
-      paramViewGroup.setGravity(17);
+      localObject2 = new FrameLayout.LayoutParams(ij.c(this.b).getMeasuredWidth(), (int)(ij.d(this.b) * 45.0F));
+      ((FrameLayout.LayoutParams)localObject2).gravity = 17;
+      ((FrameLayout)localObject1).addView(localImageView, (ViewGroup.LayoutParams)localObject2);
+      localObject2 = new pc(this.c);
+      ((TextView)localObject2).setGravity(17);
       FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(-2, (int)(ij.d(this.b) * 45.0F));
       localLayoutParams.gravity = 17;
-      paramView.addView(paramViewGroup, localLayoutParams);
-      paramView.setTag(new ij.a.a(this, paramViewGroup, (ImageView)localObject));
+      ((FrameLayout)localObject1).addView((View)localObject2, localLayoutParams);
+      ((FrameLayout)localObject1).setTag(new ij.a.a(this, (TextView)localObject2, localImageView));
+      break label69;
+      label290:
+      ((TextView)localObject2).setTextColor(-1);
+      localImageView.setVisibility(0);
     }
-    paramViewGroup.setTextColor(-1);
-    ((ImageView)localObject).setVisibility(0);
-    return paramView;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.map.sdk.a.ij.a
  * JD-Core Version:    0.7.0.1
  */

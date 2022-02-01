@@ -1,17 +1,17 @@
 package com.tencent.biz.pubaccount.readinjoy.model;
 
-import awgf;
 import com.tencent.biz.pubaccount.readinjoy.struct.ChannelCoverInfo;
-import pfg;
+import com.tencent.mobileqq.persistence.EntityManager;
+import pwl;
 
 public class ChannelCoverInfoModule$2
   implements Runnable
 {
-  public ChannelCoverInfoModule$2(pfg parampfg, ChannelCoverInfo paramChannelCoverInfo) {}
+  public ChannelCoverInfoModule$2(pwl parampwl, ChannelCoverInfo paramChannelCoverInfo) {}
   
   public void run()
   {
-    this.this$0.a.b(this.a);
+    this.this$0.a.remove(this.a);
   }
 }
 

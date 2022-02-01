@@ -1,28 +1,44 @@
-import com.tencent.biz.qqstory.storyHome.memory.model.VideoCollectionItem;
-import java.util.Comparator;
+import android.view.KeyEvent;
+import android.widget.TextView;
+import android.widget.TextView.OnEditorActionListener;
+import com.tencent.biz.qqstory.comment.StoryInputBarView;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.XEditTextEx;
 
 public class wnc
-  implements Comparator<VideoCollectionItem>
+  implements TextView.OnEditorActionListener
 {
-  public int a(VideoCollectionItem paramVideoCollectionItem1, VideoCollectionItem paramVideoCollectionItem2)
+  public wnc(StoryInputBarView paramStoryInputBarView) {}
+  
+  public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
   {
-    if ((paramVideoCollectionItem1.collectionType != paramVideoCollectionItem2.collectionType) && (xqz.a(paramVideoCollectionItem1.collectionTime, paramVideoCollectionItem2.collectionTime))) {
-      if (VideoCollectionItem.TYPE_ORDER[paramVideoCollectionItem1.collectionType] >= VideoCollectionItem.TYPE_ORDER[paramVideoCollectionItem2.collectionType]) {}
-    }
-    do
+    if (paramInt == 4)
     {
-      return -1;
-      return 1;
-      if (paramVideoCollectionItem1.collectionTime < paramVideoCollectionItem2.collectionTime) {
-        return 1;
+      paramTextView = paramTextView.getText().toString();
+      if (paramTextView.length() <= 0) {
+        break label140;
       }
-    } while (paramVideoCollectionItem1.collectionTime > paramVideoCollectionItem2.collectionTime);
-    return 0;
+      this.a.setKeyBoardState(false);
+      if (this.a.jdField_a_of_type_Wmf != null) {
+        this.a.jdField_a_of_type_Wmf.a(paramTextView, this.a.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry);
+      }
+      this.a.c();
+      this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.setText("");
+      if (StoryInputBarView.a(this.a) != null) {
+        StoryInputBarView.a(this.a).a(paramTextView, this.a.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry);
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.qqstory:StoryInputBarView", 2, "onEditorAction vaule=" + paramTextView);
+      }
+    }
+    return false;
+    label140:
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     wnc
  * JD-Core Version:    0.7.0.1
  */

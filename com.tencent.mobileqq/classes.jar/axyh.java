@@ -1,40 +1,40 @@
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
+import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.nearby.profilecard.moment.NearbyMomentFragment;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.richmediabrowser.log.IBrowserLog;
 
 public class axyh
-  implements IBrowserLog
+  implements URLDrawable.URLDrawableListener
 {
-  public void d(String paramString1, int paramInt, String paramString2)
+  public axyh(NearbyMomentFragment paramNearbyMomentFragment) {}
+  
+  public void onLoadCanceled(URLDrawable paramURLDrawable)
   {
-    if (isColorLevel()) {
-      QLog.d(paramString1, paramInt, paramString2);
-    }
+    QLog.i("NearbyMomentFragment", 1, "onLoadCanceled");
   }
   
-  public void e(String paramString1, int paramInt, String paramString2)
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
   {
-    if (isColorLevel()) {
-      QLog.e(paramString1, paramInt, paramString2);
+    if (NearbyMomentFragment.a(this.a) == 1) {
+      NearbyMomentFragment.a(this.a).setVisibility(8);
     }
+    QLog.i("NearbyMomentFragment", 1, "onLoadFialed");
   }
   
-  public void i(String paramString1, int paramInt, String paramString2)
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt)
   {
-    if (isColorLevel()) {
-      QLog.i(paramString1, paramInt, paramString2);
-    }
+    QLog.i("NearbyMomentFragment", 1, "onLoadProgressed");
   }
   
-  public boolean isColorLevel()
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
   {
-    return QLog.isColorLevel();
-  }
-  
-  public void w(String paramString1, int paramInt, String paramString2)
-  {
-    if (isColorLevel()) {
-      QLog.w(paramString1, paramInt, paramString2);
+    if (NearbyMomentFragment.a(this.a) == 1)
+    {
+      NearbyMomentFragment.a(this.a).setImageDrawable(paramURLDrawable);
+      NearbyMomentFragment.a(this.a).setVisibility(0);
     }
+    QLog.i("NearbyMomentFragment", 1, "onLoadSuccessed");
   }
 }
 

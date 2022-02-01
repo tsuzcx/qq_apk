@@ -13,7 +13,7 @@ public class QAPMWebChromeClient
   private static final String TAG = "QAPM_Impl_QAPMWebChromeClient";
   private static int injectMax = 0;
   
-  public static void initJSMonitor(WebView paramWebView, int paramInt)
+  public static void initJsMonitor(WebView paramWebView, int paramInt)
   {
     WebViewX5Proxy.getInstance().setCodeTypeIsX5(false);
     if ((AndroidVersion.isKitKat()) && (paramInt >= 15)) {}
@@ -22,13 +22,16 @@ public class QAPMWebChromeClient
       if (!WebViewX5Proxy.getInstance().getWebViewMonitorState()) {
         return;
       }
-      Logger.INSTANCE.i(new String[] { "QAPM_Impl_QAPMWebChromeClient", "webview  initJSMonitor gather  begin !!" });
-      if (paramWebView.getSettings().getJavaScriptEnabled())
-      {
+      Logger.INSTANCE.i(new String[] { "QAPM_Impl_QAPMWebChromeClient", "webview  initJsMonitor gather  begin !!" });
+      if (paramWebView.getSettings().getJavaScriptEnabled()) {
         Logger.INSTANCE.d(new String[] { "QAPM_Impl_QAPMWebChromeClient", "javascript has enable!" });
-        return;
       }
-      paramWebView.getSettings().setJavaScriptEnabled(true);
+      for (;;)
+      {
+        QAPMJavaScriptBridge.getInstance().initFileJS(paramWebView, paramInt);
+        return;
+        paramWebView.getSettings().setJavaScriptEnabled(true);
+      }
       return;
     }
     catch (Exception paramWebView) {}
@@ -39,7 +42,7 @@ public class QAPMWebChromeClient
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.tencent.qapmsdk.impl.instrumentation.QAPMWebChromeClient
  * JD-Core Version:    0.7.0.1
  */

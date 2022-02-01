@@ -3,8 +3,8 @@ package com.tencent.mobileqq.servlet;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import azbw;
-import azri;
+import bccv;
+import bctj;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
@@ -27,7 +27,7 @@ public class ClearPushReceiver
     localHashMap.put("actiontype", "4");
     localHashMap.put("pushstatkey", paramString);
     localHashMap.put("mergenum", paramInt + "");
-    azri.a(BaseApplicationImpl.getContext()).a(paramQQAppInterface.getAccount(), "actQZPushDataReport", true, 0L, 0L, localHashMap, null);
+    bctj.a(BaseApplicationImpl.getContext()).a(paramQQAppInterface.getAccount(), "actQZPushDataReport", true, 0L, 0L, localHashMap, null);
   }
   
   public void onReceive(Context paramContext, Intent paramIntent)
@@ -45,7 +45,7 @@ public class ClearPushReceiver
     int j = paramIntent.getIntExtra("pushtype", 0);
     if ((j == 1) || (j == 300))
     {
-      paramIntent = (azbw)((QQAppInterface)localObject).getManager(10);
+      paramIntent = (bccv)((QQAppInterface)localObject).getManager(10);
       if (paramIntent != null) {
         paramIntent.a(1, 0);
       }
@@ -55,7 +55,7 @@ public class ClearPushReceiver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.servlet.ClearPushReceiver
  * JD-Core Version:    0.7.0.1
  */

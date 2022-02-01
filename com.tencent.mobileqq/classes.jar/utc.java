@@ -1,25 +1,21 @@
-import com.tencent.biz.qqstory.storyHome.model.CommentLikeFeedItem;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class utc
-  extends vii
+  implements View.OnClickListener
 {
   utc(uta paramuta) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    super.a();
-    usz.a(this.a.a, null);
-  }
-  
-  public void a(int paramInt)
-  {
-    super.a(paramInt);
-    wxj.a("home_page", "suc_share", 1, paramInt, new String[] { wxj.b(this.a.a.a) + "", wxj.a(this.a.a.a) + "", this.a.a.a.feedId });
+    uta.b(this.a);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     utc
  * JD-Core Version:    0.7.0.1
  */

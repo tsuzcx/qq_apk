@@ -37,7 +37,7 @@ public class FaceOff3DFilter
   public static final String VERTEX_SHADER = "attribute vec4 position;\nattribute vec2 inputTextureCoordinate;\nattribute vec2 inputGrayTextureCoordinate;\nattribute float pointsVisValue;\nvarying vec2 canvasCoordinate;\nvarying vec2 textureCoordinate;\nvarying vec2 grayTextureCoordinate;\nvarying float pointVisValue;\n\nuniform vec2 canvasSize;\nuniform float positionRotate;\n\nvoid main(){\n    vec4 framePos = position;\n\n    gl_Position = framePos;\n    canvasCoordinate = vec2(framePos.x * 0.5 + 0.5, framePos.y * 0.5 + 0.5);\n    textureCoordinate = inputTextureCoordinate;\n    grayTextureCoordinate = inputGrayTextureCoordinate;\n    pointVisValue = pointsVisValue;\n}";
   private static final PointF ZERO_POINT = new PointF(0.0F, 0.0F);
   private Frame copyFrame = new Frame();
-  private Cosmetic3DFilter cosmetic3DFilter = new Cosmetic3DFilter();
+  private Face3DCosmeticFilter cosmetic3DFilter = new Face3DCosmeticFilter();
   private byte[] data = null;
   private PTDetectInfo detectInfo;
   private float[] face3dTexCoords = new float[1380];
@@ -255,8 +255,8 @@ public class FaceOff3DFilter
   
   private void update3DFaceImage(int paramInt)
   {
-    if ((this.detectInfo == null) || (this.detectInfo.faceKitFaceVertices == null)) {}
-    while (!AlgoUtils.isFace3DPointsValid(this.detectInfo.faceKitFaceVertices)) {
+    if ((this.detectInfo == null) || (this.detectInfo.face3DVerticesArray == null)) {}
+    while (!AlgoUtils.isFace3DPointsValid(this.detectInfo.face3DVerticesArray)) {
       return;
     }
     boolean bool = GlUtil.curBlendModeEnabled;
@@ -269,8 +269,8 @@ public class FaceOff3DFilter
   
   private void update3DPointParams()
   {
-    if ((this.detectInfo == null) || (this.detectInfo.faceKitFaceVertices == null)) {}
-    while (!AlgoUtils.isFace3DPointsValid(this.detectInfo.faceKitFaceVertices)) {
+    if ((this.detectInfo == null) || (this.detectInfo.face3DVerticesArray == null)) {}
+    while (!AlgoUtils.isFace3DPointsValid(this.detectInfo.face3DVerticesArray)) {
       return;
     }
     if (this.item.disable3DCorrect) {
@@ -280,7 +280,7 @@ public class FaceOff3DFilter
     {
       addAttribParam(new AttributeParam("inputTextureCoordinate", this.face3dTexCoords, 2));
       return;
-      FaceOffUtil.initMaterialFaceTexCoords(FaceOffUtil.getSelectedCorrectPoints(this.detectInfo.faceKitFaceVertices, this.detectInfo.featureIndices, (int)(this.height * this.mFaceDetScale), this.detectInfo.facePoints, 5.0F), (int)(this.width * this.mFaceDetScale), (int)(this.height * this.mFaceDetScale), this.face3dTexCoords);
+      FaceOffUtil.initMaterialFaceTexCoords(FaceOffUtil.getSelectedCorrectPoints(this.detectInfo.face3DVerticesArray, this.detectInfo.face3DRotationArray, this.detectInfo.featureIndices, (int)(this.height * this.mFaceDetScale), this.detectInfo.facePoints, 5.0F), (int)(this.width * this.mFaceDetScale), (int)(this.height * this.mFaceDetScale), this.face3dTexCoords);
     }
   }
   
@@ -435,7 +435,7 @@ public class FaceOff3DFilter
   
   public boolean isRenderReady()
   {
-    return (this.triggered) && (this.isFaceImageReady) && (this.isGrayImageReady) && (this.detectInfo != null) && (AlgoUtils.isFace3DPointsValid(this.detectInfo.faceKitFaceVertices));
+    return (this.triggered) && (this.isFaceImageReady) && (this.isGrayImageReady) && (this.detectInfo != null) && (AlgoUtils.isFace3DPointsValid(this.detectInfo.face3DVerticesArray));
   }
   
   public float[] mat4RotationYXZ(float paramFloat1, float paramFloat2, float paramFloat3)
@@ -668,7 +668,7 @@ public class FaceOff3DFilter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.openapi.filter.FaceOff3DFilter
  * JD-Core Version:    0.7.0.1
  */

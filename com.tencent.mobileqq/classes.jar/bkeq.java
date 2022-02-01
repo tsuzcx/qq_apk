@@ -1,29 +1,16 @@
-import android.opengl.GLSurfaceView.EGLContextFactory;
-import com.tencent.qphone.base.util.QLog;
-import javax.microedition.khronos.egl.EGL10;
-import javax.microedition.khronos.egl.EGLConfig;
-import javax.microedition.khronos.egl.EGLContext;
-import javax.microedition.khronos.egl.EGLDisplay;
+import com.tencent.mobileqq.shortvideo.resource.GestureGameResource;
 
-class bkeq
-  implements GLSurfaceView.EGLContextFactory
+public class bkeq
+  implements GestureGameResource
 {
-  private int jdField_a_of_type_Int = 12440;
-  
-  private bkeq(bkel parambkel) {}
-  
-  public EGLContext createContext(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLConfig paramEGLConfig)
+  public String getGameModelPath()
   {
-    int i = this.jdField_a_of_type_Int;
-    bkel.a(this.jdField_a_of_type_Bkel, paramEGL10.eglCreateContext(paramEGLDisplay, paramEGLConfig, EGL10.EGL_NO_CONTEXT, new int[] { i, 2, 12344 }));
-    return bkel.a(this.jdField_a_of_type_Bkel);
+    return bchn.c();
   }
   
-  public void destroyContext(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLContext paramEGLContext)
+  public boolean isGestureGameEnable()
   {
-    if (!paramEGL10.eglDestroyContext(paramEGLDisplay, paramEGLContext)) {
-      QLog.e("VipARCameraController", 2, new Object[] { "DefaultContextFactory", "display:" + paramEGLDisplay + " context: " + paramEGLContext });
-    }
+    return bchg.a().d();
   }
 }
 

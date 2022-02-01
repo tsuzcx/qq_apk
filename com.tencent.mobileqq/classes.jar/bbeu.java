@@ -1,6 +1,8 @@
 public abstract interface bbeu
 {
-  public abstract void a(int paramInt1, int paramInt2);
+  public abstract void a(int paramInt);
+  
+  public abstract boolean a(String paramString);
 }
 
 

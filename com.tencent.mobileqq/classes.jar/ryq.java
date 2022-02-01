@@ -1,93 +1,114 @@
-import com.tencent.biz.pubaccount.readinjoy.redpacket.widget.RIJRedPacketProgressView;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity.25.1;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity.25.2;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity.25.3;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.AuthorData;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebArticleInfo;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
+import android.content.Context;
+import android.view.LayoutInflater;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsGestureProgressView;
 
 public class ryq
-  extends oxe
 {
-  public ryq(FastWebActivity paramFastWebActivity) {}
+  private int jdField_a_of_type_Int = 0;
+  private ViewGroup jdField_a_of_type_AndroidViewViewGroup;
+  private ImageView jdField_a_of_type_AndroidWidgetImageView;
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private VideoFeedsGestureProgressView jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsGestureProgressView;
+  private ViewGroup jdField_b_of_type_AndroidViewViewGroup;
+  private ImageView jdField_b_of_type_AndroidWidgetImageView;
+  private TextView jdField_b_of_type_AndroidWidgetTextView;
+  private VideoFeedsGestureProgressView jdField_b_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsGestureProgressView;
+  private ViewGroup c;
+  private ViewGroup d;
+  private ViewGroup e;
   
-  public void a(String paramString)
+  public void a()
   {
-    int j = 0;
-    QLog.d("Q.readinjoy.fast_web", 2, " onWebCallback : " + paramString);
-    if (!FastWebActivity.h(this.a)) {
-      return;
+    if (this.c != null) {
+      this.c.setVisibility(8);
     }
-    int i;
-    if ("onPageStarted".equals(paramString)) {
-      i = 300;
+    if (this.d != null) {
+      this.d.setVisibility(8);
+    }
+    if (this.e != null) {
+      this.e.setVisibility(8);
+    }
+  }
+  
+  public void a(int paramInt, float paramFloat, long paramLong1, long paramLong2)
+  {
+    switch (paramInt)
+    {
     }
     for (;;)
     {
-      ThreadManager.getUIHandler().postDelayed(new FastWebActivity.25.2(this), i);
+      this.jdField_a_of_type_Int = paramInt;
       return;
-      i = j;
-      if ("onConversationJumpRestoreStack".equals(paramString)) {
-        i = j;
+      String str1 = ryx.a(paramLong1);
+      String str2 = ryx.a(paramLong2);
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(str1 + "/");
+      this.jdField_b_of_type_AndroidWidgetTextView.setText(str2);
+      if (paramFloat > 0.0F) {
+        this.jdField_b_of_type_AndroidWidgetImageView.setBackgroundResource(2130843094);
+      }
+      while (this.c.getVisibility() == 8)
+      {
+        ryx.a(this.c, 0, 300);
+        break;
+        this.jdField_b_of_type_AndroidWidgetImageView.setBackgroundResource(2130843092);
+      }
+      this.jdField_b_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsGestureProgressView.setProgress(paramFloat);
+      if (paramFloat == 0.0F) {
+        this.jdField_a_of_type_AndroidWidgetImageView.setBackgroundResource(2130843011);
+      }
+      while (this.e.getVisibility() == 8)
+      {
+        ryx.a(this.e, 0, 300);
+        break;
+        this.jdField_a_of_type_AndroidWidgetImageView.setBackgroundResource(2130843012);
+      }
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsGestureProgressView.setProgress(paramFloat);
+      if (this.d.getVisibility() == 8)
+      {
+        ryx.a(this.d, 0, 300);
+        continue;
+        if (this.jdField_a_of_type_Int != 0) {
+          if (this.jdField_a_of_type_Int == 3)
+          {
+            if (this.c.getVisibility() == 0) {
+              ryx.a(this.c, 8, 300);
+            }
+          }
+          else if (this.jdField_a_of_type_Int == 2)
+          {
+            if (this.d.getVisibility() == 0) {
+              ryx.a(this.d, 8, 300);
+            }
+          }
+          else if ((this.jdField_a_of_type_Int == 1) && (this.e.getVisibility() == 0)) {
+            ryx.a(this.e, 8, 300);
+          }
+        }
       }
     }
   }
   
-  public void a(String paramString, int paramInt1, int paramInt2)
+  public void a(Context paramContext, ViewGroup paramViewGroup)
   {
-    if (FastWebActivity.a(this.a) == null) {
-      return;
-    }
-    sda.a(FastWebActivity.a(this.a), paramString, paramInt1, paramInt2);
-    FastWebActivity.a(this.a).notifyDataSetChanged();
-  }
-  
-  public void a(boolean paramBoolean, String paramString)
-  {
-    if (paramBoolean)
-    {
-      int[] arrayOfInt = new int[2];
-      FastWebActivity.a(this.a).postDelayed(new FastWebActivity.25.3(this, arrayOfInt, paramString), 200L);
-      return;
-    }
-    QLog.i(FastWebActivity.a(this.a), 1, " red packet task do not get Tips!");
-  }
-  
-  public void au_()
-  {
-    super.au_();
-    if ((FastWebActivity.f(this.a)) || (FastWebActivity.a(this.a) == null)) {
-      return;
-    }
-    this.a.runOnUiThread(new FastWebActivity.25.1(this));
-  }
-  
-  public void d()
-  {
-    super.d();
-    if ((FastWebActivity.g(this.a)) || (FastWebActivity.a(this.a) == null) || (FastWebActivity.a(this.a) == null) || (FastWebActivity.a(this.a) == null)) {
-      return;
-    }
-    FastWebActivity.a(this.a).a(FastWebActivity.a(this.a).a);
-    FastWebActivity.g(this.a);
-    FastWebActivity.a(this.a).notifyDataSetChanged();
-  }
-  
-  public void e()
-  {
-    if (FastWebActivity.a(this.a) == null) {
-      return;
-    }
-    FastWebActivity.g(this.a);
-    FastWebActivity.a(this.a).notifyDataSetChanged();
+    this.jdField_a_of_type_AndroidViewViewGroup = paramViewGroup;
+    this.jdField_b_of_type_AndroidViewViewGroup = ((ViewGroup)((LayoutInflater)paramContext.getSystemService("layout_inflater")).inflate(2131560299, paramViewGroup));
+    this.c = ((ViewGroup)this.jdField_b_of_type_AndroidViewViewGroup.findViewById(2131372957));
+    this.d = ((ViewGroup)this.jdField_b_of_type_AndroidViewViewGroup.findViewById(2131363648));
+    this.e = ((ViewGroup)this.jdField_b_of_type_AndroidViewViewGroup.findViewById(2131381043));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_b_of_type_AndroidViewViewGroup.findViewById(2131372955));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_b_of_type_AndroidViewViewGroup.findViewById(2131372959));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_b_of_type_AndroidViewViewGroup.findViewById(2131381042));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_b_of_type_AndroidViewViewGroup.findViewById(2131372956));
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsGestureProgressView = ((VideoFeedsGestureProgressView)this.jdField_b_of_type_AndroidViewViewGroup.findViewById(2131363649));
+    this.jdField_b_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsGestureProgressView = ((VideoFeedsGestureProgressView)this.jdField_b_of_type_AndroidViewViewGroup.findViewById(2131381044));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     ryq
  * JD-Core Version:    0.7.0.1
  */

@@ -1,42 +1,20 @@
-import android.graphics.drawable.Drawable;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.base.videoupload.task.StoryVideoUploadTask;
 
-class wjs
-  implements apuc
+public class wjs
+  implements wjl
 {
-  wjs(wjq paramwjq) {}
+  public wjs(StoryVideoUploadTask paramStoryVideoUploadTask, wjr paramwjr) {}
   
-  public void a(apuf paramapuf)
+  public void a(wjk paramwjk)
   {
-    if (((paramapuf instanceof apza)) && (wjq.a(this.a) != null)) {
-      ((apza)paramapuf).a(wjq.a(), wjq.a(this.a), wjq.a(this.a), null);
-    }
+    this.jdField_a_of_type_Wjr.k = ((wjf)paramwjk).b;
+    this.jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadTaskStoryVideoUploadTask.a(1, new ErrorMessage());
   }
-  
-  public void a(apuf paramapuf1, apuf paramapuf2, Drawable paramDrawable) {}
-  
-  public boolean a(apuf paramapuf)
-  {
-    return false;
-  }
-  
-  public void b()
-  {
-    if (wjq.a(this.a) != null) {
-      banh.a(wjq.a(this.a));
-    }
-  }
-  
-  public void b(apuf paramapuf) {}
-  
-  public void c() {}
-  
-  public void d() {}
-  
-  public void setting() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     wjs
  * JD-Core Version:    0.7.0.1
  */

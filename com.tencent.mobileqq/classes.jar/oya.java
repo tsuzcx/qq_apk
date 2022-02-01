@@ -1,85 +1,27 @@
-import android.widget.ListAdapter;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.AbsListView;
-import com.tencent.widget.ListView;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import kotlin.Metadata;
+import kotlin.jvm.internal.Intrinsics;
+import org.jetbrains.annotations.NotNull;
 
-public class oya
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"com/tencent/biz/pubaccount/readinjoy/comment/CommentProteusListenerUtil$Companion$initExposeCommentClickListener$1", "Lcom/tencent/biz/pubaccount/readinjoy/comment/CommentProteusListenerUtil$CommentProteusOnClickListener;", "configClickListener", "", "cmdStrId", "", "container", "Lcom/tencent/biz/pubaccount/readinjoy/view/proteus/virtualview/container/Container;", "adapter", "Lcom/tencent/biz/pubaccount/readinjoy/comment/ReadinjoyCommentListBaseAdapter;", "commentViewItem", "Lcom/tencent/biz/pubaccount/readinjoy/comment/data/CommentViewItem;", "viewBase", "Lcom/tencent/biz/pubaccount/readinjoy/view/proteus/virtualview/core/ViewBase;", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class oya
+  implements owp
 {
-  static int jdField_a_of_type_Int = -1;
-  static long jdField_a_of_type_Long;
-  static int jdField_b_of_type_Int = -1;
-  static long jdField_b_of_type_Long;
-  static int c;
-  
-  public static int a()
+  public void a(int paramInt, @NotNull Container paramContainer, @NotNull pan parampan, @NotNull pay parampay, @NotNull ViewBase paramViewBase)
   {
-    return c;
-  }
-  
-  static void a(AbsListView paramAbsListView)
-  {
-    oyc localoyc = new oyc();
-    int i = paramAbsListView.getLastVisiblePosition();
-    int j = ((ListAdapter)paramAbsListView.getAdapter()).getCount();
-    localoyc.jdField_a_of_type_Int = b();
-    localoyc.jdField_b_of_type_Int = Math.abs(jdField_b_of_type_Int - jdField_a_of_type_Int);
-    localoyc.jdField_a_of_type_Long = (jdField_b_of_type_Long - jdField_a_of_type_Long);
-    localoyc.c = (j - i);
-    localoyc.jdField_b_of_type_Long = jdField_b_of_type_Long;
-    localoyc.d = j;
-    oyb.a(localoyc);
-  }
-  
-  public static void a(AbsListView paramAbsListView, int paramInt)
-  {
-    if ((paramAbsListView == null) || (paramAbsListView.getChildCount() == 0) || (paramAbsListView.getAdapter() == null)) {}
-    do
-    {
-      do
-      {
-        return;
-        b(paramAbsListView, paramInt);
-      } while ((oyb.jdField_a_of_type_Long < 0L) || (oyb.jdField_b_of_type_Long < 0L));
-      switch (paramInt)
-      {
-      default: 
-        return;
-      }
-    } while ((jdField_b_of_type_Int >= 0) || (jdField_b_of_type_Long >= 0L));
-    jdField_b_of_type_Int = paramAbsListView.getFirstVisiblePosition();
-    jdField_b_of_type_Long = NetConnInfoCenter.getServerTimeMillis();
-    a(paramAbsListView);
-    return;
-    jdField_a_of_type_Int = paramAbsListView.getFirstVisiblePosition();
-    jdField_a_of_type_Long = NetConnInfoCenter.getServerTimeMillis();
-    jdField_b_of_type_Int = -1;
-    jdField_b_of_type_Long = -1L;
-  }
-  
-  static int b()
-  {
-    if (jdField_a_of_type_Int > jdField_b_of_type_Int) {
-      return 0;
+    Intrinsics.checkParameterIsNotNull(paramContainer, "container");
+    Intrinsics.checkParameterIsNotNull(parampan, "adapter");
+    Intrinsics.checkParameterIsNotNull(parampay, "commentViewItem");
+    Intrinsics.checkParameterIsNotNull(paramViewBase, "viewBase");
+    if (((paramViewBase instanceof pel)) && ((parampan instanceof ozh))) {
+      ((pel)paramViewBase).a((ozh)parampan);
     }
-    return 1;
-  }
-  
-  private static void b(AbsListView paramAbsListView, int paramInt)
-  {
-    if (paramInt != 0) {
-      return;
-    }
-    c = paramAbsListView.getFirstVisiblePosition() - ((ListView)paramAbsListView).getHeaderViewsCount();
-    if (c < 0) {
-      c = 0;
-    }
-    QLog.d("ReadinjoySPEventReport", 2, new Object[] { "[onScrollStateChanged] record firstItemPos : ", Integer.valueOf(c) });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     oya
  * JD-Core Version:    0.7.0.1
  */

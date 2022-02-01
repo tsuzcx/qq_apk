@@ -22,7 +22,8 @@ class WtloginHelper$HelperThread$17
     }
     async_context localasync_context = t.b(this.this$1.mUserSigInfo._seqence);
     ErrMsg localErrMsg = localasync_context._last_err_msg;
-    WtloginHelper.HelperThread.access$600(this.this$1, localasync_context, this.val$ret);
+    WtloginHelper.HelperThread.access$600(this.this$1, localasync_context);
+    WtloginHelper.HelperThread.access$700(this.this$1, localasync_context, this.val$ret);
     byte[] arrayOfByte = null;
     if (localasync_context.tlv540 != null) {
       arrayOfByte = localasync_context.tlv540.get_data();

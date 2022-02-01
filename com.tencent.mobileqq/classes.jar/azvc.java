@@ -1,499 +1,138 @@
-import android.util.SparseArray;
-import com.tencent.mobileqq.structmsg.view.StructMsgItemTitle;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.text.TextUtils;
+import com.tencent.common.app.AppInterface;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Collection;
 import java.util.HashMap;
+import java.util.Iterator;
+import mqq.app.AppRuntime;
 
 public class azvc
 {
-  private static final SparseArray<Class<? extends azut>> jdField_a_of_type_AndroidUtilSparseArray;
-  private static HashMap<String, Class<? extends azus>> jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  
-  static
+  public static void a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, String paramString3, int paramInt, String paramString4)
   {
-    jdField_a_of_type_JavaUtilHashMap.put("pavideo", azzg.class);
-    jdField_a_of_type_JavaUtilHashMap.put("video", azzv.class);
-    jdField_a_of_type_JavaUtilHashMap.put("picture", azwv.class);
-    jdField_a_of_type_JavaUtilHashMap.put("title", StructMsgItemTitle.class);
-    jdField_a_of_type_JavaUtilHashMap.put("summary", azzm.class);
-    jdField_a_of_type_JavaUtilHashMap.put("timer", azzq.class);
-    jdField_a_of_type_JavaUtilHashMap.put("hr", azwx.class);
-    jdField_a_of_type_JavaUtilHashMap.put("image", azwy.class);
-    jdField_a_of_type_JavaUtilHashMap.put("more", azza.class);
-    jdField_a_of_type_JavaUtilHashMap.put("progress", azzk.class);
-    jdField_a_of_type_JavaUtilHashMap.put("checklist", baae.class);
-    jdField_a_of_type_JavaUtilHashMap.put("vote", baag.class);
-    jdField_a_of_type_JavaUtilHashMap.put("price", azzj.class);
-    jdField_a_of_type_JavaUtilHashMap.put("button", azwp.class);
-    jdField_a_of_type_JavaUtilHashMap.put("remark", azzl.class);
-    jdField_a_of_type_JavaUtilHashMap.put("paaudio", azzb.class);
-    jdField_a_of_type_JavaUtilHashMap.put("textButton", azzo.class);
-    jdField_a_of_type_JavaUtilHashMap.put("content", azwu.class);
-    jdField_a_of_type_JavaUtilHashMap.put("tips", azwh.class);
-    jdField_a_of_type_JavaUtilHashMap.put("live", azwb.class);
-    jdField_a_of_type_JavaUtilHashMap.put("tr", azzt.class);
-    jdField_a_of_type_JavaUtilHashMap.put("td", azzn.class);
-    jdField_a_of_type_JavaUtilHashMap.put("head", azwo.class);
-    jdField_a_of_type_JavaUtilHashMap.put("type", azzu.class);
-    jdField_a_of_type_JavaUtilHashMap.put("tag", azwf.class);
-    jdField_a_of_type_JavaUtilHashMap.put("taglist", azwg.class);
-    jdField_a_of_type_JavaUtilHashMap.put("group", azvv.class);
-    jdField_a_of_type_JavaUtilHashMap.put("groupitem", azvx.class);
-    jdField_a_of_type_JavaUtilHashMap.put("voice", azwi.class);
-    jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
-    jdField_a_of_type_AndroidUtilSparseArray.append(0, azyr.class);
-    jdField_a_of_type_AndroidUtilSparseArray.append(1, azwz.class);
-    jdField_a_of_type_AndroidUtilSparseArray.append(2, azxl.class);
-    jdField_a_of_type_AndroidUtilSparseArray.append(3, azyf.class);
-    jdField_a_of_type_AndroidUtilSparseArray.append(4, azyi.class);
-    jdField_a_of_type_AndroidUtilSparseArray.append(5, azyj.class);
-    jdField_a_of_type_AndroidUtilSparseArray.append(6, azyl.class);
-    jdField_a_of_type_AndroidUtilSparseArray.append(7, azyn.class);
-    jdField_a_of_type_AndroidUtilSparseArray.append(8, azyp.class);
-    jdField_a_of_type_AndroidUtilSparseArray.append(9, azyq.class);
-    jdField_a_of_type_AndroidUtilSparseArray.append(10, azxa.class);
-    jdField_a_of_type_AndroidUtilSparseArray.append(11, azxc.class);
-    jdField_a_of_type_AndroidUtilSparseArray.append(12, azxe.class);
-    jdField_a_of_type_AndroidUtilSparseArray.append(18, azxi.class);
-    jdField_a_of_type_AndroidUtilSparseArray.append(19, azxk.class);
-    jdField_a_of_type_AndroidUtilSparseArray.append(20, azxm.class);
-    jdField_a_of_type_AndroidUtilSparseArray.append(21, azxp.class);
-    jdField_a_of_type_AndroidUtilSparseArray.append(22, azxq.class);
-    jdField_a_of_type_AndroidUtilSparseArray.append(23, azxr.class);
-    jdField_a_of_type_AndroidUtilSparseArray.append(24, azxt.class);
-    jdField_a_of_type_AndroidUtilSparseArray.append(25, azxw.class);
-    jdField_a_of_type_AndroidUtilSparseArray.append(26, azxx.class);
-    jdField_a_of_type_AndroidUtilSparseArray.append(27, azxy.class);
-    jdField_a_of_type_AndroidUtilSparseArray.append(28, azxz.class);
-    jdField_a_of_type_AndroidUtilSparseArray.append(29, azyc.class);
-    jdField_a_of_type_AndroidUtilSparseArray.append(30, azyg.class);
+    for (;;)
+    {
+      try
+      {
+        beaw localbeaw = (beaw)paramQQAppInterface.getManager(193);
+        if (localbeaw.a())
+        {
+          int i = 2;
+          String str = "qboss_splash_ad_res_png";
+          if (paramInt == 2)
+          {
+            i = 1;
+            str = "qboss_splash_ad_res_video";
+            j = 10082;
+            QLog.i("QSplash@QbossSplashUtil", 1, "downloadPicAGifAVideoRes request adid" + paramString1);
+            HashMap localHashMap = new HashMap();
+            localHashMap.put("qbossSplashresAppid", paramString1);
+            a("qbossSplashrequest", localHashMap);
+            localbeaw.a(j, "vas", paramString2, 0, paramString2, paramString3 + ".splashtemp", i, 0, true, new azvd(paramQQAppInterface, str, paramString1, paramString3, paramInt, paramString4, paramString2));
+          }
+        }
+        else
+        {
+          QLog.i("QSplash@QbossSplashUtil", 1, "ctrl.isEnable() = false");
+          return;
+        }
+      }
+      catch (Exception paramQQAppInterface)
+      {
+        return;
+      }
+      int j = 10081;
+    }
   }
   
-  public static azus a(String paramString)
+  public static void a(QQAppInterface paramQQAppInterface, Collection<azvg> paramCollection)
   {
-    return a(paramString, 0);
+    for (;;)
+    {
+      azvg localazvg;
+      try
+      {
+        paramCollection = paramCollection.iterator();
+        if (!paramCollection.hasNext()) {
+          break label156;
+        }
+        localazvg = (azvg)paramCollection.next();
+        if (!localazvg.b())
+        {
+          QLog.i("QSplash@QbossSplashDownloadManager", 1, "adEntry should not requestRes");
+          continue;
+        }
+        switch (localazvg.a)
+        {
+        }
+      }
+      finally {}
+      a(paramQQAppInterface, localazvg.jdField_b_of_type_JavaLangString, localazvg.e, localazvg.h, 0, localazvg.k);
+      continue;
+      a(paramQQAppInterface, localazvg.jdField_b_of_type_JavaLangString, localazvg.e, localazvg.h, 2, localazvg.k);
+      continue;
+      a(paramQQAppInterface, localazvg.jdField_b_of_type_JavaLangString, localazvg.e, localazvg.h, 1, localazvg.k);
+      continue;
+      label156:
+      return;
+    }
   }
   
-  /* Error */
-  public static azus a(String paramString, int paramInt)
+  public static void a(String paramString1, String paramString2)
   {
-    // Byte code:
-    //   0: ldc 210
-    //   2: aload_0
-    //   3: invokevirtual 216	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   6: ifne +72 -> 78
-    //   9: getstatic 18	azvc:jdField_a_of_type_JavaUtilHashMap	Ljava/util/HashMap;
-    //   12: aload_0
-    //   13: invokevirtual 220	java/util/HashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   16: checkcast 222	java/lang/Class
-    //   19: astore_2
-    //   20: aload_2
-    //   21: ifnull +421 -> 442
-    //   24: aload_2
-    //   25: invokevirtual 226	java/lang/Class:newInstance	()Ljava/lang/Object;
-    //   28: checkcast 228	azus
-    //   31: astore_3
-    //   32: aload_2
-    //   33: ifnonnull +59 -> 92
-    //   36: invokestatic 234	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   39: ifeq +37 -> 76
-    //   42: ldc 236
-    //   44: iconst_2
-    //   45: new 238	java/lang/StringBuilder
-    //   48: dup
-    //   49: invokespecial 239	java/lang/StringBuilder:<init>	()V
-    //   52: ldc 241
-    //   54: invokevirtual 244	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   57: aload_0
-    //   58: invokevirtual 244	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   61: ldc 246
-    //   63: invokevirtual 244	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   66: iload_1
-    //   67: invokevirtual 249	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   70: invokevirtual 253	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   73: invokestatic 257	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   76: aload_3
-    //   77: areturn
-    //   78: getstatic 143	azvc:jdField_a_of_type_AndroidUtilSparseArray	Landroid/util/SparseArray;
-    //   81: iload_1
-    //   82: invokevirtual 260	android/util/SparseArray:get	(I)Ljava/lang/Object;
-    //   85: checkcast 222	java/lang/Class
-    //   88: astore_2
-    //   89: goto -69 -> 20
-    //   92: aload_3
-    //   93: ifnonnull -17 -> 76
-    //   96: invokestatic 234	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   99: ifeq -23 -> 76
-    //   102: ldc 236
-    //   104: iconst_2
-    //   105: new 238	java/lang/StringBuilder
-    //   108: dup
-    //   109: invokespecial 239	java/lang/StringBuilder:<init>	()V
-    //   112: ldc_w 262
-    //   115: invokevirtual 244	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   118: aload_2
-    //   119: invokevirtual 265	java/lang/Class:getSimpleName	()Ljava/lang/String;
-    //   122: invokevirtual 244	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   125: ldc_w 267
-    //   128: invokevirtual 244	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   131: invokevirtual 253	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   134: invokestatic 257	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   137: aload_3
-    //   138: areturn
-    //   139: astore_2
-    //   140: aconst_null
-    //   141: astore_2
-    //   142: aload_2
-    //   143: ifnonnull +45 -> 188
-    //   146: invokestatic 234	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   149: ifeq +291 -> 440
-    //   152: ldc 236
-    //   154: iconst_2
-    //   155: new 238	java/lang/StringBuilder
-    //   158: dup
-    //   159: invokespecial 239	java/lang/StringBuilder:<init>	()V
-    //   162: ldc 241
-    //   164: invokevirtual 244	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   167: aload_0
-    //   168: invokevirtual 244	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   171: ldc 246
-    //   173: invokevirtual 244	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   176: iload_1
-    //   177: invokevirtual 249	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   180: invokevirtual 253	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   183: invokestatic 257	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   186: aconst_null
-    //   187: areturn
-    //   188: iconst_0
-    //   189: ifne +251 -> 440
-    //   192: invokestatic 234	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   195: ifeq +245 -> 440
-    //   198: ldc 236
-    //   200: iconst_2
-    //   201: new 238	java/lang/StringBuilder
-    //   204: dup
-    //   205: invokespecial 239	java/lang/StringBuilder:<init>	()V
-    //   208: ldc_w 262
-    //   211: invokevirtual 244	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   214: aload_2
-    //   215: invokevirtual 265	java/lang/Class:getSimpleName	()Ljava/lang/String;
-    //   218: invokevirtual 244	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   221: ldc_w 267
-    //   224: invokevirtual 244	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   227: invokevirtual 253	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   230: invokestatic 257	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   233: aconst_null
-    //   234: areturn
-    //   235: astore_2
-    //   236: aconst_null
-    //   237: astore_2
-    //   238: aload_2
-    //   239: ifnonnull +45 -> 284
-    //   242: invokestatic 234	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   245: ifeq +195 -> 440
-    //   248: ldc 236
-    //   250: iconst_2
-    //   251: new 238	java/lang/StringBuilder
-    //   254: dup
-    //   255: invokespecial 239	java/lang/StringBuilder:<init>	()V
-    //   258: ldc 241
-    //   260: invokevirtual 244	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   263: aload_0
-    //   264: invokevirtual 244	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   267: ldc 246
-    //   269: invokevirtual 244	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   272: iload_1
-    //   273: invokevirtual 249	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   276: invokevirtual 253	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   279: invokestatic 257	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   282: aconst_null
-    //   283: areturn
-    //   284: iconst_0
-    //   285: ifne +155 -> 440
-    //   288: invokestatic 234	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   291: ifeq +149 -> 440
-    //   294: ldc 236
-    //   296: iconst_2
-    //   297: new 238	java/lang/StringBuilder
-    //   300: dup
-    //   301: invokespecial 239	java/lang/StringBuilder:<init>	()V
-    //   304: ldc_w 262
-    //   307: invokevirtual 244	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   310: aload_2
-    //   311: invokevirtual 265	java/lang/Class:getSimpleName	()Ljava/lang/String;
-    //   314: invokevirtual 244	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   317: ldc_w 267
-    //   320: invokevirtual 244	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   323: invokevirtual 253	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   326: invokestatic 257	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   329: aconst_null
-    //   330: areturn
-    //   331: astore_3
-    //   332: aconst_null
-    //   333: astore_2
-    //   334: aload_2
-    //   335: ifnonnull +45 -> 380
-    //   338: invokestatic 234	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   341: ifeq +37 -> 378
-    //   344: ldc 236
-    //   346: iconst_2
-    //   347: new 238	java/lang/StringBuilder
-    //   350: dup
-    //   351: invokespecial 239	java/lang/StringBuilder:<init>	()V
-    //   354: ldc 241
-    //   356: invokevirtual 244	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   359: aload_0
-    //   360: invokevirtual 244	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   363: ldc 246
-    //   365: invokevirtual 244	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   368: iload_1
-    //   369: invokevirtual 249	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   372: invokevirtual 253	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   375: invokestatic 257	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   378: aload_3
-    //   379: athrow
-    //   380: iconst_0
-    //   381: ifne -3 -> 378
-    //   384: invokestatic 234	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   387: ifeq -9 -> 378
-    //   390: ldc 236
-    //   392: iconst_2
-    //   393: new 238	java/lang/StringBuilder
-    //   396: dup
-    //   397: invokespecial 239	java/lang/StringBuilder:<init>	()V
-    //   400: ldc_w 262
-    //   403: invokevirtual 244	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   406: aload_2
-    //   407: invokevirtual 265	java/lang/Class:getSimpleName	()Ljava/lang/String;
-    //   410: invokevirtual 244	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   413: ldc_w 267
-    //   416: invokevirtual 244	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   419: invokevirtual 253	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   422: invokestatic 257	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   425: goto -47 -> 378
-    //   428: astore_3
-    //   429: goto -95 -> 334
-    //   432: astore_3
-    //   433: goto -195 -> 238
-    //   436: astore_3
-    //   437: goto -295 -> 142
-    //   440: aconst_null
-    //   441: areturn
-    //   442: aconst_null
-    //   443: astore_3
-    //   444: goto -412 -> 32
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	447	0	paramString	String
-    //   0	447	1	paramInt	int
-    //   19	100	2	localClass	Class
-    //   139	1	2	localIllegalAccessException1	java.lang.IllegalAccessException
-    //   141	74	2	localObject1	Object
-    //   235	1	2	localInstantiationException1	java.lang.InstantiationException
-    //   237	170	2	localObject2	Object
-    //   31	107	3	localazus	azus
-    //   331	48	3	localObject3	Object
-    //   428	1	3	localObject4	Object
-    //   432	1	3	localInstantiationException2	java.lang.InstantiationException
-    //   436	1	3	localIllegalAccessException2	java.lang.IllegalAccessException
-    //   443	1	3	localObject5	Object
-    // Exception table:
-    //   from	to	target	type
-    //   0	20	139	java/lang/IllegalAccessException
-    //   78	89	139	java/lang/IllegalAccessException
-    //   0	20	235	java/lang/InstantiationException
-    //   78	89	235	java/lang/InstantiationException
-    //   0	20	331	finally
-    //   78	89	331	finally
-    //   24	32	428	finally
-    //   24	32	432	java/lang/InstantiationException
-    //   24	32	436	java/lang/IllegalAccessException
+    Object localObject = azvb.a(BaseApplicationImpl.getContext(), paramString1);
+    paramString1 = ((SharedPreferences)localObject).edit();
+    QLog.i("QSplash@QbossSplashDownloadManager", 1, "pic or gif download succ! MD5 checkok");
+    boolean bool = ((SharedPreferences)localObject).getBoolean("qboss_exposure_is_low_device_limit_", false);
+    QLog.i("QSplash@QbossSplashDownloadManager", 1, "isLowerDeviceLimit = " + bool);
+    if (!bool)
+    {
+      paramString1.putBoolean("qboss_splash_ad_is_limited_" + paramString2, true);
+      localObject = azvf.a;
+      if ((localObject != null) && (((HashMap)localObject).containsKey(paramString2))) {
+        ((azvg)((HashMap)localObject).get(paramString2)).jdField_b_of_type_Boolean = true;
+      }
+    }
+    paramString1.apply();
   }
   
-  /* Error */
-  public static azut a(int paramInt)
+  public static void a(String paramString, HashMap<String, String> paramHashMap)
   {
-    // Byte code:
-    //   0: getstatic 143	azvc:jdField_a_of_type_AndroidUtilSparseArray	Landroid/util/SparseArray;
-    //   3: iload_0
-    //   4: invokevirtual 260	android/util/SparseArray:get	(I)Ljava/lang/Object;
-    //   7: checkcast 222	java/lang/Class
-    //   10: astore_2
-    //   11: aload_2
-    //   12: ifnull +359 -> 371
-    //   15: aload_2
-    //   16: invokevirtual 226	java/lang/Class:newInstance	()Ljava/lang/Object;
-    //   19: checkcast 270	azut
-    //   22: astore_1
-    //   23: aload_2
-    //   24: ifnonnull +37 -> 61
-    //   27: invokestatic 234	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   30: ifeq +339 -> 369
-    //   33: ldc 236
-    //   35: iconst_2
-    //   36: new 238	java/lang/StringBuilder
-    //   39: dup
-    //   40: invokespecial 239	java/lang/StringBuilder:<init>	()V
-    //   43: ldc_w 272
-    //   46: invokevirtual 244	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   49: iload_0
-    //   50: invokevirtual 249	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   53: invokevirtual 253	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   56: invokestatic 257	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   59: aload_1
-    //   60: areturn
-    //   61: aload_1
-    //   62: ifnonnull +307 -> 369
-    //   65: invokestatic 234	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   68: ifeq +301 -> 369
-    //   71: ldc 236
-    //   73: iconst_2
-    //   74: new 238	java/lang/StringBuilder
-    //   77: dup
-    //   78: invokespecial 239	java/lang/StringBuilder:<init>	()V
-    //   81: ldc_w 262
-    //   84: invokevirtual 244	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   87: aload_2
-    //   88: invokevirtual 265	java/lang/Class:getSimpleName	()Ljava/lang/String;
-    //   91: invokevirtual 244	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   94: ldc_w 267
-    //   97: invokevirtual 244	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   100: invokevirtual 253	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   103: invokestatic 257	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   106: aload_1
-    //   107: areturn
-    //   108: astore_1
-    //   109: aload_2
-    //   110: ifnonnull +37 -> 147
-    //   113: invokestatic 234	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   116: ifeq +251 -> 367
-    //   119: ldc 236
-    //   121: iconst_2
-    //   122: new 238	java/lang/StringBuilder
-    //   125: dup
-    //   126: invokespecial 239	java/lang/StringBuilder:<init>	()V
-    //   129: ldc_w 272
-    //   132: invokevirtual 244	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   135: iload_0
-    //   136: invokevirtual 249	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   139: invokevirtual 253	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   142: invokestatic 257	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   145: aconst_null
-    //   146: areturn
-    //   147: iconst_0
-    //   148: ifne +219 -> 367
-    //   151: invokestatic 234	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   154: ifeq +213 -> 367
-    //   157: ldc 236
-    //   159: iconst_2
-    //   160: new 238	java/lang/StringBuilder
-    //   163: dup
-    //   164: invokespecial 239	java/lang/StringBuilder:<init>	()V
-    //   167: ldc_w 262
-    //   170: invokevirtual 244	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   173: aload_2
-    //   174: invokevirtual 265	java/lang/Class:getSimpleName	()Ljava/lang/String;
-    //   177: invokevirtual 244	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   180: ldc_w 267
-    //   183: invokevirtual 244	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   186: invokevirtual 253	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   189: invokestatic 257	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   192: aconst_null
-    //   193: areturn
-    //   194: astore_1
-    //   195: aload_2
-    //   196: ifnonnull +37 -> 233
-    //   199: invokestatic 234	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   202: ifeq +165 -> 367
-    //   205: ldc 236
-    //   207: iconst_2
-    //   208: new 238	java/lang/StringBuilder
-    //   211: dup
-    //   212: invokespecial 239	java/lang/StringBuilder:<init>	()V
-    //   215: ldc_w 272
-    //   218: invokevirtual 244	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   221: iload_0
-    //   222: invokevirtual 249	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   225: invokevirtual 253	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   228: invokestatic 257	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   231: aconst_null
-    //   232: areturn
-    //   233: iconst_0
-    //   234: ifne +133 -> 367
-    //   237: invokestatic 234	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   240: ifeq +127 -> 367
-    //   243: ldc 236
-    //   245: iconst_2
-    //   246: new 238	java/lang/StringBuilder
-    //   249: dup
-    //   250: invokespecial 239	java/lang/StringBuilder:<init>	()V
-    //   253: ldc_w 262
-    //   256: invokevirtual 244	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   259: aload_2
-    //   260: invokevirtual 265	java/lang/Class:getSimpleName	()Ljava/lang/String;
-    //   263: invokevirtual 244	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   266: ldc_w 267
-    //   269: invokevirtual 244	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   272: invokevirtual 253	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   275: invokestatic 257	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   278: aconst_null
-    //   279: areturn
-    //   280: astore_1
-    //   281: aload_2
-    //   282: ifnonnull +37 -> 319
-    //   285: invokestatic 234	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   288: ifeq +29 -> 317
-    //   291: ldc 236
-    //   293: iconst_2
-    //   294: new 238	java/lang/StringBuilder
-    //   297: dup
-    //   298: invokespecial 239	java/lang/StringBuilder:<init>	()V
-    //   301: ldc_w 272
-    //   304: invokevirtual 244	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   307: iload_0
-    //   308: invokevirtual 249	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   311: invokevirtual 253	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   314: invokestatic 257	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   317: aload_1
-    //   318: athrow
-    //   319: iconst_0
-    //   320: ifne -3 -> 317
-    //   323: invokestatic 234	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   326: ifeq -9 -> 317
-    //   329: ldc 236
-    //   331: iconst_2
-    //   332: new 238	java/lang/StringBuilder
-    //   335: dup
-    //   336: invokespecial 239	java/lang/StringBuilder:<init>	()V
-    //   339: ldc_w 262
-    //   342: invokevirtual 244	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   345: aload_2
-    //   346: invokevirtual 265	java/lang/Class:getSimpleName	()Ljava/lang/String;
-    //   349: invokevirtual 244	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   352: ldc_w 267
-    //   355: invokevirtual 244	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   358: invokevirtual 253	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   361: invokestatic 257	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   364: goto -47 -> 317
-    //   367: aconst_null
-    //   368: areturn
-    //   369: aload_1
-    //   370: areturn
-    //   371: aconst_null
-    //   372: astore_1
-    //   373: goto -350 -> 23
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	376	0	paramInt	int
-    //   22	85	1	localazut1	azut
-    //   108	1	1	localIllegalAccessException	java.lang.IllegalAccessException
-    //   194	1	1	localInstantiationException	java.lang.InstantiationException
-    //   280	90	1	localazut2	azut
-    //   372	1	1	localObject	Object
-    //   10	336	2	localClass	Class
-    // Exception table:
-    //   from	to	target	type
-    //   15	23	108	java/lang/IllegalAccessException
-    //   15	23	194	java/lang/InstantiationException
-    //   15	23	280	finally
+    try
+    {
+      if ((BaseApplicationImpl.getApplication() != null) && (BaseApplicationImpl.getApplication().getRuntime() != null) && (!TextUtils.isEmpty(BaseApplicationImpl.getApplication().getRuntime().getAccount())))
+      {
+        bctj.a(BaseApplicationImpl.getContext()).a(BaseApplicationImpl.getApplication().getRuntime().getAccount(), paramString, true, 0L, 0L, paramHashMap, null, false);
+        if (QLog.isColorLevel()) {
+          QLog.i("QSplash@QbossSplashDownloadManager", 2, "reportqbossSplashBeacon, tagName  " + paramString);
+        }
+      }
+      return;
+    }
+    catch (Exception paramString) {}
+  }
+  
+  private static void b(String paramString1, AppInterface paramAppInterface, String paramString2)
+  {
+    if (paramAppInterface == null) {
+      return;
+    }
+    try
+    {
+      paramAppInterface = (beaw)paramAppInterface.getManager(193);
+      if (paramAppInterface.a()) {
+        paramAppInterface.a(paramString1, -1L);
+      }
+      paramString1 = new HashMap();
+      paramString1.put("qbossSplashresAppid", paramString2);
+      a("qbossSplashDownloadFailed", paramString1);
+      return;
+    }
+    catch (Exception paramString1) {}
   }
 }
 

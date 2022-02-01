@@ -1,27 +1,13 @@
-import android.os.Message;
-import com.tencent.mobileqq.activity.contact.troop.TroopSuspiciousFragment;
-import mqq.os.MqqHandler;
+import android.content.Context;
+import android.widget.LinearLayout;
+import com.tencent.mobileqq.data.MessageRecord;
 
 public class ahqb
-  extends MqqHandler
+  implements ahor
 {
-  public ahqb(TroopSuspiciousFragment paramTroopSuspiciousFragment) {}
-  
-  public void handleMessage(Message paramMessage)
+  public void a(agup paramagup, MessageRecord paramMessageRecord, agwc paramagwc, afzq paramafzq, String paramString, LinearLayout paramLinearLayout, Context paramContext)
   {
-    switch (paramMessage.what)
-    {
-    case 1013: 
-    default: 
-    case 1012: 
-      do
-      {
-        return;
-      } while (TroopSuspiciousFragment.a(this.a) == null);
-      TroopSuspiciousFragment.a(this.a).notifyDataSetChanged();
-      return;
-    }
-    this.a.a();
+    paramagup.f(paramagwc, paramString);
   }
 }
 

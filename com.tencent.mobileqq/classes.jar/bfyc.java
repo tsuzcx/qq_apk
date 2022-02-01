@@ -1,26 +1,16 @@
-import android.graphics.SurfaceTexture;
+import android.view.animation.Interpolator;
 
-public abstract interface bfyc
+public class bfyc
+  implements Interpolator
 {
-  public abstract void a();
-  
-  public abstract void a(int paramInt, Throwable paramThrowable);
-  
-  public abstract void a(long paramLong);
-  
-  public abstract void a(SurfaceTexture paramSurfaceTexture);
-  
-  public abstract void b();
-  
-  public abstract void b(long paramLong);
-  
-  public abstract void c();
-  
-  public abstract void d();
+  public float getInterpolation(float paramFloat)
+  {
+    return (float)(Math.pow(paramFloat - 1.0D, 5.0D) + 1.0D);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bfyc
  * JD-Core Version:    0.7.0.1
  */

@@ -1,14 +1,14 @@
 package com.tencent.device.datadef;
 
+import abqg;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import zti;
 
 public class ProductInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<ProductInfo> CREATOR = new zti();
+  public static final Parcelable.Creator<ProductInfo> CREATOR = new abqg();
   public static final int DeviceOSType_Android = 2;
   public static final int DeviceOSType_Linux = 1;
   public static final int DeviceOSType_RTOS = 3;
@@ -98,7 +98,7 @@ public class ProductInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.device.datadef.ProductInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -1,7 +1,7 @@
 package com.tencent.qidian;
 
-import bdhk;
-import bdib;
+import bgmp;
+import bgng;
 import com.tencent.mobileqq.webview.swift.WebViewFragment;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.smtt.sdk.WebView;
@@ -9,15 +9,15 @@ import com.tencent.smtt.sdk.WebView;
 public class QidianWebViewFragment
   extends WebViewFragment
 {
-  public boolean b(WebView paramWebView, String paramString)
+  public boolean shouldOverrideUrlLoading(WebView paramWebView, String paramString)
   {
     if ((paramString.startsWith("mqqwpa://")) && (paramString.contains("request=videochat"))) {
       try
       {
-        bdhk localbdhk = bdib.a(null, getActivity(), paramString);
-        if (localbdhk != null)
+        bgmp localbgmp = bgng.a(null, getActivity(), paramString);
+        if (localbgmp != null)
         {
-          boolean bool = localbdhk.c();
+          boolean bool = localbgmp.a();
           return bool;
         }
       }
@@ -28,12 +28,12 @@ public class QidianWebViewFragment
         }
       }
     }
-    return super.b(paramWebView, paramString);
+    return super.shouldOverrideUrlLoading(paramWebView, paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qidian.QidianWebViewFragment
  * JD-Core Version:    0.7.0.1
  */

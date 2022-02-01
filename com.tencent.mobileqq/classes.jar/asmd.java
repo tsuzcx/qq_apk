@@ -1,34 +1,65 @@
-import android.annotation.SuppressLint;
-import android.graphics.Outline;
-import android.graphics.Rect;
-import android.view.View;
-import android.view.ViewOutlineProvider;
+import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.Config;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.Paint.Style;
+import android.graphics.RectF;
 import com.tencent.qphone.base.util.QLog;
 
-@SuppressLint({"NewApi"})
 public class asmd
-  extends ViewOutlineProvider
 {
-  public int a;
-  public int b;
-  public int c;
-  public int d;
-  
-  public asmd(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public static Bitmap a(int paramInt1, int paramInt2, float paramFloat)
   {
-    this.a = paramInt1;
-    this.b = paramInt2;
-    this.c = paramInt3;
-    this.d = paramInt4;
+    Bitmap localBitmap = Bitmap.createBitmap(paramInt1 * 2, paramInt1 * 2, Bitmap.Config.ARGB_8888);
+    Canvas localCanvas = new Canvas(localBitmap);
+    Paint localPaint = new Paint(1);
+    localPaint.setAlpha((int)(255.0F * paramFloat));
+    localPaint.setColor(paramInt2);
+    localPaint.setStyle(Paint.Style.FILL);
+    localCanvas.drawCircle(paramInt1, paramInt1, paramInt1, localPaint);
+    localCanvas.save();
+    localCanvas.restore();
+    return localBitmap;
   }
   
-  public void getOutline(View paramView, Outline paramOutline)
+  public static Bitmap a(Resources paramResources, Bitmap paramBitmap, int paramInt, float paramFloat, boolean paramBoolean)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("CustomOutlineProvider", 1, "----->getOutline");
+    int i = paramBitmap.getWidth();
+    int j = paramBitmap.getHeight();
+    for (;;)
+    {
+      Canvas localCanvas;
+      try
+      {
+        Bitmap localBitmap = Bitmap.createBitmap(i, j, Bitmap.Config.ARGB_8888);
+        localCanvas = new Canvas(localBitmap);
+        localCanvas.drawBitmap(paramBitmap, 0.0F, 0.0F, null);
+        if (!paramBoolean)
+        {
+          paramBitmap = new RectF(0.0F, 0.0F, i, j);
+          Paint localPaint = new Paint(1);
+          localPaint.setColor(paramInt);
+          localPaint.setAlpha((int)(paramFloat * 255.0F));
+          paramInt = afur.a(2.0F, paramResources);
+          localCanvas.drawRoundRect(paramBitmap, paramInt, paramInt, localPaint);
+          localCanvas.save();
+          localCanvas.restore();
+          return localBitmap;
+        }
+      }
+      catch (OutOfMemoryError paramResources)
+      {
+        QLog.e("BackgroundUtil", 1, "get OOM when create ret, return target");
+        return paramBitmap;
+      }
+      i /= 2;
+      paramResources = new Paint(1);
+      paramResources.setAlpha((int)(paramFloat * 255.0F));
+      paramResources.setColor(paramInt);
+      paramResources.setStyle(Paint.Style.FILL);
+      localCanvas.drawCircle(i, i, i, paramResources);
     }
-    paramView.getGlobalVisibleRect(new Rect());
-    paramOutline.setRoundRect(new Rect(this.c, this.a, this.d, this.b), 0.0F);
   }
 }
 

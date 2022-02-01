@@ -1,12 +1,20 @@
+import com.tencent.image.NativeGifImage;
+import java.io.File;
+
 public class beab
+  extends NativeGifImage
 {
-  public int a;
-  public String a;
-  
-  public beab()
+  public beab(beaa parambeaa, File paramFile, boolean paramBoolean, float paramFloat)
   {
-    this.jdField_a_of_type_Int = 1;
-    this.jdField_a_of_type_JavaLangString = "";
+    super(paramFile, paramBoolean, false, 0, 0, paramFloat);
+  }
+  
+  public void executeNewTask()
+  {
+    if (this.mCurrentFrameIndex >= 1) {
+      return;
+    }
+    super.executeNewTask();
   }
 }
 

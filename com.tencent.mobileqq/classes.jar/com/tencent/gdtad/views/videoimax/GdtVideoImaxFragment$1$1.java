@@ -1,13 +1,13 @@
 package com.tencent.gdtad.views.videoimax;
 
-import aavh;
+import acuf;
 import android.os.ResultReceiver;
 import com.tencent.gdtad.views.video.GdtVideoCommonView;
 
 public class GdtVideoImaxFragment$1$1
   implements Runnable
 {
-  public GdtVideoImaxFragment$1$1(aavh paramaavh) {}
+  public GdtVideoImaxFragment$1$1(acuf paramacuf) {}
   
   public void run()
   {
@@ -17,7 +17,7 @@ public class GdtVideoImaxFragment$1$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.gdtad.views.videoimax.GdtVideoImaxFragment.1.1
  * JD-Core Version:    0.7.0.1
  */

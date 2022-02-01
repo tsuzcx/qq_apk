@@ -1,32 +1,54 @@
-import android.text.Layout.Alignment;
-import android.text.Spanned;
-import android.text.StaticLayout;
-import android.text.TextUtils;
+import NS_USER_ACTION_REPORT.ActionInfo;
+import NS_USER_ACTION_REPORT.ItemInfo;
+import java.util.ArrayList;
 
-class blyo
-  extends bmsw
+public class blyo
 {
-  blyo(blym paramblym, int paramInt)
+  private String jdField_a_of_type_JavaLangString;
+  private ArrayList<ActionInfo> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  private String b = "";
+  private String c;
+  private String d = "";
+  
+  public ItemInfo a()
   {
-    super(paramInt);
+    ItemInfo localItemInfo = new ItemInfo();
+    localItemInfo.item_id = this.jdField_a_of_type_JavaLangString;
+    localItemInfo.action_infos = this.jdField_a_of_type_JavaUtilArrayList;
+    localItemInfo.busi_info = this.c;
+    localItemInfo.module_id = this.d;
+    localItemInfo.item_type = this.b;
+    return localItemInfo;
   }
   
-  public CharSequence filter(CharSequence paramCharSequence, int paramInt1, int paramInt2, Spanned paramSpanned, int paramInt3, int paramInt4)
+  public blyo a(ActionInfo paramActionInfo)
   {
-    String str1 = paramSpanned.subSequence(0, paramInt3).toString() + paramCharSequence.subSequence(paramInt1, paramInt2).toString() + paramSpanned.subSequence(paramInt4, paramSpanned.length()).toString();
-    String str2 = bcnt.b(str1);
-    Object localObject = this.jdField_a_of_type_Blym.a(str2);
-    localObject = this.jdField_a_of_type_Blym.a((String)localObject);
-    localObject = this.jdField_a_of_type_Blym.a((String[])localObject);
-    if (blyu.a((CharSequence)localObject, 0, ((CharSequence)localObject).length(), this.jdField_a_of_type_Blym.a, this.jdField_a_of_type_Blym.b, Layout.Alignment.ALIGN_CENTER, 1.0F, 0.0F, false, null, 0, 4).getLineCount() > 3)
-    {
-      if (!TextUtils.equals("", paramCharSequence)) {
-        a();
-      }
-      return "";
-    }
-    this.jdField_a_of_type_Int = (str1.length() - str2.length() + 20);
-    return super.filter(paramCharSequence, paramInt1, paramInt2, paramSpanned, paramInt3, paramInt4);
+    this.jdField_a_of_type_JavaUtilArrayList.add(paramActionInfo);
+    return this;
+  }
+  
+  public blyo a(String paramString)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+    return this;
+  }
+  
+  public blyo b(String paramString)
+  {
+    this.b = paramString;
+    return this;
+  }
+  
+  public blyo c(String paramString)
+  {
+    this.c = paramString;
+    return this;
+  }
+  
+  public blyo d(String paramString)
+  {
+    this.d = paramString;
+    return this;
   }
 }
 

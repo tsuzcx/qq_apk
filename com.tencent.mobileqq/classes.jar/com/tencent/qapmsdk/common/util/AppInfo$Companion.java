@@ -4,6 +4,9 @@ import android.app.ActivityManager;
 import android.app.ActivityManager.RunningAppProcessInfo;
 import android.app.Application;
 import android.content.Context;
+import android.content.pm.ApplicationInfo;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
 import android.os.Debug.MemoryInfo;
 import android.util.SparseArray;
 import com.tencent.qapmsdk.common.logger.Logger;
@@ -17,7 +20,7 @@ import kotlin.text.StringsKt;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/qapmsdk/common/util/AppInfo$Companion;", "", "()V", "TAG", "", "pid", "", "getPid", "()I", "pid$delegate", "Lkotlin/Lazy;", "processMap", "Landroid/util/SparseArray;", "getPssMemory", "", "app", "Landroid/app/Application;", "pId", "hasPermissions", "", "ctx", "Landroid/content/Context;", "permissionList", "", "(Landroid/content/Context;[Ljava/lang/String;)Z", "obtainProcessName", "obtainProcessNameByCmdline", "obtainProcessNameBySysService", "obtainProcessPackageName", "common_release"}, k=1, mv={1, 1, 15})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/qapmsdk/common/util/AppInfo$Companion;", "", "()V", "TAG", "", "pid", "", "getPid", "()I", "pid$delegate", "Lkotlin/Lazy;", "processMap", "Landroid/util/SparseArray;", "getAppVersion", "context", "Landroid/content/Context;", "getPssMemory", "", "app", "Landroid/app/Application;", "pId", "hasPermissions", "", "ctx", "permissionList", "", "(Landroid/content/Context;[Ljava/lang/String;)Z", "isApkInDebug", "obtainProcessName", "obtainProcessNameByCmdline", "obtainProcessNameBySysService", "obtainProcessPackageName", "common_release"}, k=1, mv={1, 1, 15})
 public final class AppInfo$Companion
 {
   private final String obtainProcessNameByCmdline(int paramInt)
@@ -102,6 +105,29 @@ public final class AppInfo$Companion
     return null;
   }
   
+  @NotNull
+  public final String getAppVersion(@Nullable Context paramContext)
+  {
+    if (paramContext != null) {
+      try
+      {
+        paramContext = paramContext.getPackageManager().getPackageInfo(paramContext.getPackageName(), 0).versionName;
+        if (paramContext != null) {
+          return paramContext;
+        }
+      }
+      catch (Exception paramContext)
+      {
+        for (;;)
+        {
+          Logger.INSTANCE.exception("QAPM_common_AppInfo", (Throwable)paramContext);
+          paramContext = "";
+        }
+      }
+    }
+    return "";
+  }
+  
   public final int getPid()
   {
     Lazy localLazy = AppInfo.access$getPid$cp();
@@ -119,11 +145,11 @@ public final class AppInfo$Companion
     {
       paramApplication = paramApplication.getApplicationContext();
       if (paramApplication == null) {
-        break label93;
+        break label94;
       }
       paramApplication = paramApplication.getSystemService("activity");
       if ((paramApplication instanceof ActivityManager)) {
-        break label126;
+        break label127;
       }
       paramApplication = localObject;
     }
@@ -131,8 +157,8 @@ public final class AppInfo$Companion
     {
       for (;;)
       {
-        label93:
-        label108:
+        label94:
+        label109:
         Logger.INSTANCE.exception("QAPM_common_AppInfo", (Throwable)paramApplication);
         continue;
         continue;
@@ -150,12 +176,12 @@ public final class AppInfo$Companion
         if (paramApplication.length == 0)
         {
           paramInt = 1;
-          break label129;
+          break label130;
         }
         for (;;)
         {
           if (paramInt == 0) {
-            break label108;
+            break label109;
           }
           paramApplication = paramApplication[0];
           Intrinsics.checkExpressionValueIsNotNull(paramApplication, "myMemoryInfo[0]");
@@ -164,7 +190,7 @@ public final class AppInfo$Companion
           paramApplication = null;
           break;
           paramInt = 0;
-          break label129;
+          break label130;
           paramInt = 0;
         }
       }
@@ -184,104 +210,124 @@ public final class AppInfo$Companion
     //   6: iconst_0
     //   7: istore 7
     //   9: aload_2
-    //   10: ldc 253
-    //   12: invokestatic 256	kotlin/jvm/internal/Intrinsics:checkParameterIsNotNull	(Ljava/lang/Object;Ljava/lang/String;)V
-    //   15: aload_1
-    //   16: ifnull +91 -> 107
-    //   19: aload_1
-    //   20: invokevirtual 257	android/content/Context:getApplicationContext	()Landroid/content/Context;
-    //   23: astore 9
-    //   25: aload 9
-    //   27: ldc_w 259
-    //   30: invokestatic 230	kotlin/jvm/internal/Intrinsics:checkExpressionValueIsNotNull	(Ljava/lang/Object;Ljava/lang/String;)V
-    //   33: aload 9
-    //   35: invokevirtual 263	android/content/Context:getPackageManager	()Landroid/content/pm/PackageManager;
-    //   38: astore_1
-    //   39: iload 8
-    //   41: istore 6
-    //   43: aload_1
-    //   44: ifnull +63 -> 107
-    //   47: aload 9
-    //   49: invokevirtual 266	android/content/Context:getPackageName	()Ljava/lang/String;
-    //   52: astore 9
-    //   54: ldc 140
-    //   56: monitorenter
-    //   57: aload_2
-    //   58: arraylength
-    //   59: istore 5
-    //   61: iconst_0
-    //   62: istore 4
-    //   64: iload 4
-    //   66: iload 5
-    //   68: if_icmpge +73 -> 141
-    //   71: aload_2
-    //   72: iload 4
-    //   74: aaload
-    //   75: astore 10
-    //   77: aload_1
-    //   78: aload 10
-    //   80: aload 9
-    //   82: invokevirtual 272	android/content/pm/PackageManager:checkPermission	(Ljava/lang/String;Ljava/lang/String;)I
-    //   85: istore_3
-    //   86: iload_3
-    //   87: ifne +23 -> 110
-    //   90: iconst_1
-    //   91: istore_3
-    //   92: iload_3
-    //   93: ifne +39 -> 132
-    //   96: iload 7
-    //   98: istore 6
-    //   100: getstatic 277	kotlin/Unit:INSTANCE	Lkotlin/Unit;
-    //   103: astore_1
-    //   104: ldc 140
-    //   106: monitorexit
-    //   107: iload 6
-    //   109: ireturn
-    //   110: iconst_0
-    //   111: istore_3
-    //   112: goto -20 -> 92
-    //   115: astore 10
-    //   117: getstatic 241	com/tencent/qapmsdk/common/logger/Logger:INSTANCE	Lcom/tencent/qapmsdk/common/logger/Logger;
-    //   120: ldc 243
-    //   122: aload 10
-    //   124: invokevirtual 249	com/tencent/qapmsdk/common/logger/Logger:exception	(Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   127: iconst_0
-    //   128: istore_3
-    //   129: goto -37 -> 92
-    //   132: iload 4
-    //   134: iconst_1
-    //   135: iadd
-    //   136: istore 4
-    //   138: goto -74 -> 64
-    //   141: iconst_1
-    //   142: istore 6
-    //   144: goto -44 -> 100
-    //   147: astore_1
-    //   148: ldc 140
-    //   150: monitorexit
-    //   151: aload_1
-    //   152: athrow
+    //   10: ldc_w 277
+    //   13: invokestatic 280	kotlin/jvm/internal/Intrinsics:checkParameterIsNotNull	(Ljava/lang/Object;Ljava/lang/String;)V
+    //   16: aload_1
+    //   17: ifnull +91 -> 108
+    //   20: aload_1
+    //   21: invokevirtual 281	android/content/Context:getApplicationContext	()Landroid/content/Context;
+    //   24: astore 9
+    //   26: aload 9
+    //   28: ldc_w 283
+    //   31: invokestatic 270	kotlin/jvm/internal/Intrinsics:checkExpressionValueIsNotNull	(Ljava/lang/Object;Ljava/lang/String;)V
+    //   34: aload 9
+    //   36: invokevirtual 203	android/content/Context:getPackageManager	()Landroid/content/pm/PackageManager;
+    //   39: astore_1
+    //   40: iload 8
+    //   42: istore 6
+    //   44: aload_1
+    //   45: ifnull +63 -> 108
+    //   48: aload 9
+    //   50: invokevirtual 206	android/content/Context:getPackageName	()Ljava/lang/String;
+    //   53: astore 9
+    //   55: ldc 143
+    //   57: monitorenter
+    //   58: aload_2
+    //   59: arraylength
+    //   60: istore 5
+    //   62: iconst_0
+    //   63: istore 4
+    //   65: iload 4
+    //   67: iload 5
+    //   69: if_icmpge +73 -> 142
+    //   72: aload_2
+    //   73: iload 4
+    //   75: aaload
+    //   76: astore 10
+    //   78: aload_1
+    //   79: aload 10
+    //   81: aload 9
+    //   83: invokevirtual 287	android/content/pm/PackageManager:checkPermission	(Ljava/lang/String;Ljava/lang/String;)I
+    //   86: istore_3
+    //   87: iload_3
+    //   88: ifne +23 -> 111
+    //   91: iconst_1
+    //   92: istore_3
+    //   93: iload_3
+    //   94: ifne +39 -> 133
+    //   97: iload 7
+    //   99: istore 6
+    //   101: getstatic 292	kotlin/Unit:INSTANCE	Lkotlin/Unit;
+    //   104: astore_1
+    //   105: ldc 143
+    //   107: monitorexit
+    //   108: iload 6
+    //   110: ireturn
+    //   111: iconst_0
+    //   112: istore_3
+    //   113: goto -20 -> 93
+    //   116: astore 10
+    //   118: getstatic 223	com/tencent/qapmsdk/common/logger/Logger:INSTANCE	Lcom/tencent/qapmsdk/common/logger/Logger;
+    //   121: ldc 225
+    //   123: aload 10
+    //   125: invokevirtual 231	com/tencent/qapmsdk/common/logger/Logger:exception	(Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   128: iconst_0
+    //   129: istore_3
+    //   130: goto -37 -> 93
+    //   133: iload 4
+    //   135: iconst_1
+    //   136: iadd
+    //   137: istore 4
+    //   139: goto -74 -> 65
+    //   142: iconst_1
+    //   143: istore 6
+    //   145: goto -44 -> 101
+    //   148: astore_1
+    //   149: ldc 143
+    //   151: monitorexit
+    //   152: aload_1
+    //   153: athrow
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	153	0	this	Companion
-    //   0	153	1	paramContext	Context
-    //   0	153	2	paramArrayOfString	String[]
-    //   85	44	3	i	int
-    //   62	75	4	j	int
-    //   59	10	5	k	int
-    //   4	139	6	bool1	boolean
-    //   7	90	7	bool2	boolean
-    //   1	39	8	bool3	boolean
-    //   23	58	9	localObject	Object
-    //   75	4	10	str	String
-    //   115	8	10	localThrowable	Throwable
+    //   0	154	0	this	Companion
+    //   0	154	1	paramContext	Context
+    //   0	154	2	paramArrayOfString	String[]
+    //   86	44	3	i	int
+    //   63	75	4	j	int
+    //   60	10	5	k	int
+    //   4	140	6	bool1	boolean
+    //   7	91	7	bool2	boolean
+    //   1	40	8	bool3	boolean
+    //   24	58	9	localObject	Object
+    //   76	4	10	str	String
+    //   116	8	10	localThrowable	Throwable
     // Exception table:
     //   from	to	target	type
-    //   77	86	115	java/lang/Throwable
-    //   57	61	147	finally
-    //   77	86	147	finally
-    //   100	104	147	finally
-    //   117	127	147	finally
+    //   78	87	116	java/lang/Throwable
+    //   58	62	148	finally
+    //   78	87	148	finally
+    //   101	105	148	finally
+    //   118	128	148	finally
+  }
+  
+  @JvmStatic
+  public final boolean isApkInDebug(@NotNull Context paramContext)
+  {
+    boolean bool = false;
+    Intrinsics.checkParameterIsNotNull(paramContext, "context");
+    try
+    {
+      int i = paramContext.getApplicationInfo().flags;
+      if ((i & 0x2) != 0) {
+        bool = true;
+      }
+      return bool;
+    }
+    catch (Throwable paramContext)
+    {
+      Logger.INSTANCE.exception("QAPM_common_AppInfo", paramContext);
+    }
+    return false;
   }
   
   @JvmStatic
@@ -318,7 +364,7 @@ public final class AppInfo$Companion
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.tencent.qapmsdk.common.util.AppInfo.Companion
  * JD-Core Version:    0.7.0.1
  */

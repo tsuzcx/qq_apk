@@ -1,49 +1,27 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.CardVideoInfo;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.NearbyCardInfo;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.NormalCardInfo;
-import com.tencent.biz.qqstory.storyHome.discover.model.CardItem.CardVideoInfo;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.channel.QQStoryCmdHandler.IllegalUinException;
+import com.tribe.async.async.Job;
+import com.tribe.async.async.JobContext;
 
-public class wlk
+class wlk
+  extends Job<Object, Object, Object>
 {
-  private qqstory_struct.NearbyCardInfo jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_struct$NearbyCardInfo;
-  private CardItem.CardVideoInfo jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverModelCardItem$CardVideoInfo;
-  
-  public wlk(qqstory_struct.NearbyCardInfo paramNearbyCardInfo)
+  wlk(wlj paramwlj, String paramString, QQStoryCmdHandler.IllegalUinException paramIllegalUinException)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_struct$NearbyCardInfo = paramNearbyCardInfo;
+    super(paramString);
   }
   
-  public wlk(byte[] paramArrayOfByte)
+  public Object doInBackground(@NonNull JobContext paramJobContext, @Nullable Object... paramVarArgs)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_struct$NearbyCardInfo = new qqstory_struct.NearbyCardInfo();
-    try
-    {
-      this.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_struct$NearbyCardInfo.mergeFrom(paramArrayOfByte);
-      return;
-    }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-    {
-      wxe.e("Q.qqstory.discover.CardItem", paramArrayOfByte.toString());
-    }
-  }
-  
-  public CardItem.CardVideoInfo a()
-  {
-    if (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverModelCardItem$CardVideoInfo == null)
-    {
-      if (this.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_struct$NearbyCardInfo.card_info.story_video_info.size() == 0) {
-        return null;
-      }
-      this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverModelCardItem$CardVideoInfo = new CardItem.CardVideoInfo((qqstory_struct.CardVideoInfo)this.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_struct$NearbyCardInfo.card_info.story_video_info.get(0));
-    }
-    return this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverModelCardItem$CardVideoInfo;
+    yqp.d("Q.qqstory.net:QQStoryCmdHandler", "uin convert error");
+    this.jdField_a_of_type_Wlj.a.a().a(880002, this.jdField_a_of_type_ComTencentBizQqstoryChannelQQStoryCmdHandler$IllegalUinException.getMessage(), null);
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     wlk
  * JD-Core Version:    0.7.0.1
  */

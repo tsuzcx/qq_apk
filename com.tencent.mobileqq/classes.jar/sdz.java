@@ -1,23 +1,50 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.view.headers.ReadInJoyDiandianHeaderController;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.view.ViewGroup;
 
 class sdz
-  implements View.OnClickListener
+  extends AnimatorListenerAdapter
 {
-  sdz(sdy paramsdy) {}
+  sdz(sdu paramsdu) {}
   
-  public void onClick(View paramView)
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    ors.a(paramView.getContext(), this.a.a.a);
-    nrt.a(null, "", "0X8009BA1", "0X8009BA1", 0, 0, ((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getCurrentAccountUin(), "", "", "", false);
+    super.onAnimationCancel(paramAnimator);
+    if (sdu.a(this.a).y != null) {
+      sdu.a(this.a).y.setTag(2131362680, null);
+    }
+    if (sdu.a(this.a) != null) {
+      sdu.a(this.a).b(sdu.a(this.a));
+    }
+  }
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    super.onAnimationEnd(paramAnimator);
+    if (sdu.a(this.a) != null)
+    {
+      paramAnimator = sdu.a(this.a).a();
+      sdu.a(this.a, sdu.a(this.a).h, paramAnimator, sdu.a(this.a), 18, -1);
+    }
+    if (sdu.a(this.a).y != null) {
+      sdu.a(this.a).y.setTag(2131362680, null);
+    }
+    if (sdu.a(this.a) != null) {
+      sdu.a(this.a).c(sdu.a(this.a));
+    }
+  }
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    super.onAnimationStart(paramAnimator);
+    if (sdu.a(this.a) != null) {
+      sdu.a(this.a).a(sdu.a(this.a));
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     sdz
  * JD-Core Version:    0.7.0.1
  */

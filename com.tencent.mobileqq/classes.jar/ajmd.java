@@ -1,64 +1,20 @@
-import android.content.Context;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.contacts.troop.ContactsTroopAdapter;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class ajmd
-  extends ajlr
+  implements View.OnClickListener
 {
-  public ajmd(Context paramContext)
-  {
-    this.jdField_a_of_type_JavaLangString = paramContext.getString(2131697850);
-    this.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
-  }
+  public ajmd(ContactsTroopAdapter paramContactsTroopAdapter, int paramInt) {}
   
-  public void a(byte[] paramArrayOfByte)
+  public void onClick(View paramView)
   {
-    paramArrayOfByte = new String(paramArrayOfByte);
-    try
-    {
-      paramArrayOfByte = new JSONObject(paramArrayOfByte);
-      this.jdField_a_of_type_Long = paramArrayOfByte.getLong("uniseq");
-      this.jdField_b_of_type_Long = paramArrayOfByte.getLong("shmsgseq");
-      this.jdField_a_of_type_JavaLangString = paramArrayOfByte.getString("content");
-      this.jdField_b_of_type_Int = paramArrayOfByte.getInt("color");
-      if (this.jdField_a_of_type_Bbpe == null) {
-        this.jdField_a_of_type_Bbpe = new bbpe();
-      }
-      this.jdField_a_of_type_Bbpe.a(paramArrayOfByte.getString("messageNavInfo"));
-      return;
-    }
-    catch (JSONException paramArrayOfByte)
-    {
-      paramArrayOfByte.printStackTrace();
-    }
-  }
-  
-  public byte[] a()
-  {
-    return b();
-  }
-  
-  public byte[] b()
-  {
-    JSONObject localJSONObject = new JSONObject();
-    try
-    {
-      localJSONObject.put("uniseq", this.jdField_a_of_type_Long);
-      localJSONObject.put("shmsgseq", this.jdField_b_of_type_Long);
-      localJSONObject.put("content", this.jdField_a_of_type_JavaLangString);
-      localJSONObject.put("color", this.jdField_b_of_type_Int);
-      if (this.jdField_a_of_type_Bbpe != null) {
-        localJSONObject.put("messageNavInfo", this.jdField_a_of_type_Bbpe.a());
-      }
-      return localJSONObject.toString().getBytes();
-    }
-    catch (JSONException localJSONException)
-    {
-      for (;;)
-      {
-        localJSONException.printStackTrace();
-      }
-    }
+    this.jdField_a_of_type_ComTencentMobileqqActivityContactsTroopContactsTroopAdapter.jdField_a_of_type_ArrayOfInt[this.jdField_a_of_type_Int] = 2;
+    this.jdField_a_of_type_ComTencentMobileqqActivityContactsTroopContactsTroopAdapter.notifyDataSetChanged();
+    int i = ContactsTroopAdapter.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactsTroopContactsTroopAdapter, this.jdField_a_of_type_Int);
+    new bcsy(this.jdField_a_of_type_ComTencentMobileqqActivityContactsTroopContactsTroopAdapter.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a("dc00899").b("Grp_listNew").c("Grp_contactlist").d("clk_inactive").a(new String[] { "", String.valueOf(i) }).a();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

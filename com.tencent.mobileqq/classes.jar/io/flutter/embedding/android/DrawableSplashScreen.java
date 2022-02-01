@@ -3,11 +3,11 @@ package io.flutter.embedding.android;
 import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import android.view.View;
 import android.view.ViewPropertyAnimator;
 import android.widget.ImageView.ScaleType;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
 public final class DrawableSplashScreen
   implements SplashScreen
@@ -49,7 +49,7 @@ public final class DrawableSplashScreen
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     io.flutter.embedding.android.DrawableSplashScreen
  * JD-Core Version:    0.7.0.1
  */

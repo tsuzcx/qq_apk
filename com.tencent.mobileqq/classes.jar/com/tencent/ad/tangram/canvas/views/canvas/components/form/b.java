@@ -18,6 +18,7 @@ import com.tencent.ad.tangram.canvas.views.canvas.framework.AdCanvasViewListener
 import com.tencent.ad.tangram.log.AdLog;
 import com.tencent.ad.tangram.statistics.a.a;
 import com.tencent.ad.tangram.thread.AdThreadManager;
+import com.tencent.ad.tangram.util.AdUIUtils;
 import java.lang.ref.WeakReference;
 
 public class b
@@ -68,8 +69,8 @@ public class b
     int[] arrayOfInt = new int[2];
     this.mArkView.getLocationOnScreen(arrayOfInt);
     this.lastInputRectBottom = arrayOfInt[1];
-    int j = com.tencent.ad.tangram.canvas.views.a.getValueDependsOnScreenWidth(getContext(), this.mArkView.getWidth(), localRect.bottom) + arrayOfInt[1];
-    int i = com.tencent.ad.tangram.canvas.views.a.getScreenHeight(getContext()) - i;
+    int j = AdUIUtils.getValueDependsOnScreenWidth(getContext(), this.mArkView.getWidth(), localRect.bottom) + arrayOfInt[1];
+    int i = AdUIUtils.getScreenHeight(getContext()) - i;
     if (i < j)
     {
       AdThreadManager.INSTANCE.postDelayed(new b.1(this, i - j, paramView), 0, 5L);
@@ -275,13 +276,13 @@ public class b
   {
     this.focused = paramBoolean;
     if ((!paramBoolean) && (getContext() != null)) {
-      this.mUsableHeightPrevious = com.tencent.ad.tangram.canvas.views.a.getScreenHeight(getContext());
+      this.mUsableHeightPrevious = AdUIUtils.getScreenHeight(getContext());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.ad.tangram.canvas.views.canvas.components.form.b
  * JD-Core Version:    0.7.0.1
  */

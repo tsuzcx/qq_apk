@@ -2,7 +2,7 @@
 <RelativeLayout android:background="@color/br" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
     <RelativeLayout android:paddingBottom="5.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true">
-        <ImageView android:id="@id/m4p" android:layout_width="296.0dip" android:layout_height="379.0dip" android:layout_alignParentTop="true" />
+        <com.tencent.image.URLImageView android:id="@id/m4p" android:layout_width="296.0dip" android:layout_height="379.0dip" android:layout_alignParentTop="true" />
         <LinearLayout android:layout_gravity="center_horizontal" android:orientation="vertical" android:id="@id/m4o" android:layout_width="296.0dip" android:layout_height="379.0dip" android:layout_alignParentTop="true">
             <TextView android:textSize="14.0sp" android:textColor="#fff04638" android:layout_gravity="center_horizontal" android:id="@id/m4t" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="48.0dip" android:includeFontPadding="false" />
             <LinearLayout android:layout_gravity="center_horizontal" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content">

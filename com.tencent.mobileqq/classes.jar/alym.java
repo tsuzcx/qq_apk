@@ -1,33 +1,28 @@
-import com.tencent.mobileqq.app.PhoneContactManagerImp;
-import com.tencent.qphone.base.util.QLog;
+import android.graphics.Bitmap;
+import com.tencent.mobileqq.activity.specialcare.SpecailCareListActivity;
 
 public class alym
-  extends awhx
+  extends alyu
 {
-  public alym(PhoneContactManagerImp paramPhoneContactManagerImp) {}
-  
-  protected void a(boolean paramBoolean)
+  public alym(SpecailCareListActivity paramSpecailCareListActivity)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("PhoneContact.Manager", 2, String.format("onQueryShowBindPhonePage result=%s", new Object[] { Boolean.valueOf(paramBoolean) }));
-    }
-    if (paramBoolean)
-    {
-      paramBoolean = PhoneContactManagerImp.b(this.a, PhoneContactManagerImp.g(this.a));
-      PhoneContactManagerImp.d(this.a, paramBoolean);
-    }
+    super(paramSpecailCareListActivity, null);
   }
   
-  protected void b(boolean paramBoolean)
+  public void a(int paramInt1, int paramInt2, Bitmap paramBitmap)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("PhoneContact.Manager", 2, String.format("onSetShowBindPhonePageResult result=%s", new Object[] { Boolean.valueOf(paramBoolean) }));
+    if (this.a.d != 0) {
+      this.a.b = true;
     }
+    while ((paramInt2 != 200) || (paramBitmap == null)) {
+      return;
+    }
+    this.a.a.notifyDataSetChanged();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     alym
  * JD-Core Version:    0.7.0.1
  */

@@ -1,16 +1,4 @@
-import android.os.Bundle;
-import com.tencent.intervideo.nowproxy.qqshare.CustomizedShareForQQ;
-
-class atdk
-  implements CustomizedShareForQQ
-{
-  atdk(atdh paramatdh) {}
-  
-  public void shareToQQ(Bundle paramBundle)
-  {
-    ateg.a().c(paramBundle);
-  }
-}
+public abstract interface atdk {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar

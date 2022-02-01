@@ -1,23 +1,24 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.qrcode.ipc.ScannerParams;
+import com.tencent.biz.qqstory.base.ErrorMessage;
 
-public final class yav
-  implements Parcelable.Creator<ScannerParams>
+class yav
+  implements yle<Integer>
 {
-  public ScannerParams a(Parcel paramParcel)
+  yav(yas paramyas, wpf paramwpf) {}
+  
+  public void a(ErrorMessage paramErrorMessage)
   {
-    return new ScannerParams(paramParcel);
+    yqp.e("QQStoryTakeVideoHelper", "get vip error.");
   }
   
-  public ScannerParams[] a(int paramInt)
+  public void a(Integer paramInteger)
   {
-    return new ScannerParams[paramInt];
+    yqp.b("QQStoryTakeVideoHelper", "get vip competed, vip:" + paramInteger);
+    this.jdField_a_of_type_Wpf.b("qqstory_i_am_vip", paramInteger);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     yav
  * JD-Core Version:    0.7.0.1
  */

@@ -1,15 +1,15 @@
 package com.tencent.mezs;
 
-import abuy;
+import adbn;
 
 public class a$1
   extends Thread
 {
-  public a$1(abuy paramabuy) {}
+  public a$1(adbn paramadbn) {}
   
   public void run()
   {
-    abuy.a(this.this$0);
+    adbn.a(this.this$0);
   }
 }
 

@@ -1,141 +1,40 @@
-import android.content.Context;
-import android.view.ViewGroup;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout.LayoutParams;
-import com.tencent.biz.pubaccount.readinjoy.proteus.view.impl.NativeMiddleBodyView;
-import com.tencent.biz.pubaccount.readinjoy.proteus.view.impl.NativeSummaryView;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentGridImage;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentUgcImage;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.view.button.NativeButton;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.view.button.NativeButtonImp;
-import org.json.JSONObject;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.widget.pull2refresh.RecyclerViewWithHeaderFooter;
 
-public class plb
-  implements poa
+class plb
+  implements View.OnClickListener
 {
-  private void a(ViewBase paramViewBase, pgd parampgd, ViewBase.OnClickListener paramOnClickListener)
-  {
-    if ((paramViewBase == null) || (parampgd == null) || (parampgd.a() == null)) {}
-    do
-    {
-      return;
-      paramViewBase = paramViewBase.findViewBaseByName("id_middle_body_wrapper");
-    } while ((paramViewBase == null) || (paramViewBase.getNativeView() == null));
-    paramViewBase.setOnClickListener(paramOnClickListener);
-  }
+  plb(pla parampla) {}
   
-  public TemplateBean a(int paramInt, JSONObject paramJSONObject)
+  public void onClick(View paramView)
   {
-    return null;
-  }
-  
-  public JSONObject a(int paramInt, BaseArticleInfo paramBaseArticleInfo)
-  {
-    long l = 0L;
-    if (paramBaseArticleInfo.mSocialFeedInfo.a != null) {
-      l = paramBaseArticleInfo.mSocialFeedInfo.a.a;
-    }
-    JSONObject localJSONObject = new pjo().a(paramBaseArticleInfo).b(paramBaseArticleInfo).a(paramBaseArticleInfo, l).f(paramBaseArticleInfo).g(paramBaseArticleInfo).a(paramBaseArticleInfo, "Biu了").i(paramBaseArticleInfo).j(paramBaseArticleInfo).k(paramBaseArticleInfo).n(paramBaseArticleInfo).m(paramBaseArticleInfo).o(paramBaseArticleInfo).r(paramBaseArticleInfo).v(paramBaseArticleInfo).w(paramBaseArticleInfo).x(paramBaseArticleInfo).D(paramBaseArticleInfo).C(paramBaseArticleInfo).G(paramBaseArticleInfo).a("ReadInjoy_biu_cell").E(paramBaseArticleInfo).s(paramBaseArticleInfo).I(paramBaseArticleInfo).a();
-    if (!opj.a(paramBaseArticleInfo)) {
-      pkv.a(paramBaseArticleInfo, alud.a(2131701534), localJSONObject);
-    }
-    return localJSONObject;
-  }
-  
-  public void a(int paramInt1, Container paramContainer, pgd parampgd, int paramInt2)
-  {
-    ViewBase localViewBase = paramContainer.getVirtualView();
-    Object localObject1 = (prm)localViewBase.findViewBaseByName("id_middle_body_content");
-    Object localObject2;
-    if (localObject1 != null)
-    {
-      localObject2 = (NativeMiddleBodyView)((prm)localObject1).getNativeView();
-      if ((localObject2 != null) && (((NativeMiddleBodyView)localObject2).a() == null))
-      {
-        localObject3 = new RelativeLayout.LayoutParams(-2, -2);
-        LinearLayout localLinearLayout = new LinearLayout(paramContainer.getContext());
-        localLinearLayout.setOrientation(1);
-        localLinearLayout.addView(new ComponentContentGridImage(paramContainer.getContext()));
-        localLinearLayout.addView(new ComponentContentUgcImage(paramContainer.getContext()));
-        paramInt1 = aepi.a(12.0F, paramContainer.getContext().getResources());
-        ((RelativeLayout.LayoutParams)localObject3).setMargins(paramInt1, 0, paramInt1, 0);
-        ((prm)localObject1).a((RelativeLayout.LayoutParams)localObject3);
-        ((NativeMiddleBodyView)localObject2).a(localLinearLayout, (RelativeLayout.LayoutParams)localObject3);
-      }
-      if (localObject2 != null)
-      {
-        localObject1 = (ViewGroup)((NativeMiddleBodyView)localObject2).a();
-        localObject2 = parampgd.a();
-        paramInt1 = pkv.a((ArticleInfo)localObject2);
-        localObject2 = pkv.a((ArticleInfo)localObject2, paramInt1);
-        if (paramInt1 != 0) {
-          break label381;
-        }
-        ((ViewGroup)localObject1).setVisibility(8);
-      }
-    }
-    localObject1 = (pqg)localViewBase.findViewBaseByName("id_info_avator");
-    if (localObject1 != null) {
-      ((pqg)localObject1).a(parampgd);
-    }
-    localObject1 = (pqi)localViewBase.findViewBaseByName("id_biu_comment");
-    if (localObject1 != null) {
-      ((pqi)localObject1).a(parampgd);
-    }
-    localObject1 = (pss)localViewBase.findViewBaseByName("id_summary");
-    paramContainer = new pld(this, parampgd, paramContainer);
-    if (localObject1 != null)
-    {
-      ((pss)localObject1).a(parampgd);
-      ((NativeSummaryView)((pss)localObject1).getNativeView()).setShouldCallClick(true);
-      ((pss)localObject1).setOnClickListener(paramContainer);
-    }
-    localObject1 = (NativeButton)localViewBase.findViewBaseByName("id_super_topic_button");
-    if ((localObject1 != null) && (((NativeButton)localObject1).getNativeView() != null) && ((((NativeButton)localObject1).getNativeView() instanceof NativeButtonImp))) {
-      ((NativeButtonImp)((NativeButton)localObject1).getNativeView()).setTextColor(-1);
-    }
-    psw.a(localViewBase, parampgd.a());
-    pkm.a(localViewBase, parampgd);
-    a(localViewBase, parampgd, paramContainer);
-    pkm.b(localViewBase, parampgd);
-    psw.b(localViewBase, parampgd);
-    return;
-    label381:
-    ((ViewGroup)localObject1).setVisibility(0);
-    Object localObject3 = (ComponentContentGridImage)((ViewGroup)localObject1).getChildAt(0);
-    localObject1 = (ComponentContentUgcImage)((ViewGroup)localObject1).getChildAt(1);
-    if (paramInt1 == 1)
-    {
-      ((ComponentContentGridImage)localObject3).setVisibility(8);
-      ((ComponentContentUgcImage)localObject1).setVisibility(0);
-      ((ComponentContentUgcImage)localObject1).a(parampgd);
+    int i = ((plc)paramView.getTag()).getAdapterPosition() - pla.a(this.a).c();
+    int j = this.a.getItemViewType(i);
+    ArticleInfo localArticleInfo = (ArticleInfo)pla.a(this.a, i);
+    if (localArticleInfo == null) {
+      QLog.d("ReadInJoyDynamicChannelAdapter", 1, "onItemClick onClick articleInfo is null.");
     }
     for (;;)
     {
-      ((ComponentContentUgcImage)localObject1).setPicClickListener(new plc(this, parampgd));
-      break;
-      ((ComponentContentGridImage)localObject3).setVisibility(0);
-      ((ComponentContentGridImage)localObject3).setMIReadInJoyModel(parampgd);
-      ((ComponentContentUgcImage)localObject1).setVisibility(8);
-      ((ComponentContentGridImage)localObject3).a(localObject2);
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      QLog.d("ReadInJoyDynamicChannelAdapter", 2, new Object[] { "onItemClick, position = ", Integer.valueOf(i), ", itemViewType = ", Integer.valueOf(j) });
+      this.a.a(i, paramView);
+      localArticleInfo.invalidateProteusTemplateBean();
+      pha.a = localArticleInfo;
+      pmh.a().a(localArticleInfo.mArticleID, System.currentTimeMillis());
+      this.a.notifyItemChanged(i);
+      pha.b(pla.a(this.a), localArticleInfo, (int)localArticleInfo.mChannelID);
     }
-  }
-  
-  public boolean a(int paramInt, Container paramContainer, pgd parampgd, ViewBase paramViewBase)
-  {
-    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     plb
  * JD-Core Version:    0.7.0.1
  */

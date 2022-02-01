@@ -1,39 +1,74 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
+import android.app.PendingIntent;
+import android.app.PendingIntent.CanceledException;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
 class alak
-  implements View.OnClickListener
+  implements alaf
 {
-  alak(alaj paramalaj) {}
+  @Nullable
+  private alah jdField_a_of_type_Alah;
+  @NonNull
+  private final PendingIntent jdField_a_of_type_AndroidAppPendingIntent;
+  @NonNull
+  private final WeakReference<QQAppInterface> jdField_a_of_type_JavaLangRefWeakReference;
   
-  public void onClick(View paramView)
+  public alak(@NonNull PendingIntent paramPendingIntent, @NonNull QQAppInterface paramQQAppInterface)
   {
-    if (alaj.a(this.a) == null) {
+    this.jdField_a_of_type_AndroidAppPendingIntent = paramPendingIntent;
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramQQAppInterface);
+  }
+  
+  public void a(@Nullable alah paramalah)
+  {
+    this.jdField_a_of_type_Alah = paramalah;
+  }
+  
+  public boolean isNeedAutoCloseWhenAccountChange()
+  {
+    return true;
+  }
+  
+  public void onClose()
+  {
+    if (this.jdField_a_of_type_Alah == null) {}
+    QQAppInterface localQQAppInterface;
+    do
+    {
+      return;
+      localQQAppInterface = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    } while (localQQAppInterface == null);
+    akyh.a(localQQAppInterface, this.jdField_a_of_type_Alah);
+  }
+  
+  public void onEnter()
+  {
+    if (this.jdField_a_of_type_Alah == null) {}
+    QQAppInterface localQQAppInterface;
+    do
+    {
+      return;
+      localQQAppInterface = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    } while (localQQAppInterface == null);
+    try
+    {
+      this.jdField_a_of_type_AndroidAppPendingIntent.send();
+      akyh.a(localQQAppInterface, this.jdField_a_of_type_Alah);
       return;
     }
-    boolean bool = alaj.a(this.a).a();
-    if (bool)
+    catch (PendingIntent.CanceledException localCanceledException)
     {
-      alaj.a(this.a).setImageDrawable(alaj.a(this.a).getContext().getResources().getDrawable(2130838376));
-      paramView = this.a;
-      if (bool) {
-        break label124;
+      for (;;)
+      {
+        QLog.e("Q.recent.banner", 1, "send pending intent fail with " + this.jdField_a_of_type_AndroidAppPendingIntent + "\r\n" + localCanceledException);
       }
     }
-    label124:
-    for (bool = true;; bool = false)
-    {
-      alaj.a(paramView, bool);
-      alaj.a(this.a).a(alaj.a(this.a));
-      return;
-      alaj.a(this.a).setImageDrawable(alaj.a(this.a).getContext().getResources().getDrawable(2130838375));
-      break;
-    }
   }
+  
+  public void onOverride() {}
 }
 
 

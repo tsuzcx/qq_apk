@@ -1,70 +1,36 @@
-import android.os.Handler;
-import com.tencent.biz.qqstory.base.videoupload.StoryVideoUploadProgressManager.ProgressStatus.1;
+import android.app.Activity;
+import com.tencent.biz.pubaccount.weishi_new.download.WSDownloadParams;
+import com.tencent.biz.pubaccount.weishi_new.report.WSPublicAccReport;
 
-public class uoz
+final class uoz
+  implements uos
 {
-  public int a;
-  private Runnable a;
-  public String a;
-  public boolean a;
-  public int b;
-  public String b;
-  private boolean b;
-  
-  private uoz(uoy paramuoy)
-  {
-    this.jdField_a_of_type_JavaLangRunnable = new StoryVideoUploadProgressManager.ProgressStatus.1(this);
-  }
-  
-  private void c()
-  {
-    switch (this.jdField_a_of_type_Int)
-    {
-    default: 
-    case 0: 
-    case 1: 
-    case 2: 
-    case 3: 
-      do
-      {
-        do
-        {
-          do
-          {
-            return;
-            this.jdField_b_of_type_Int = 0;
-            return;
-            this.jdField_b_of_type_Int += 1;
-          } while (this.jdField_b_of_type_Int < 60);
-          this.jdField_b_of_type_Int = 59;
-          return;
-          this.jdField_b_of_type_Int += 1;
-        } while (this.jdField_b_of_type_Int < 95);
-        this.jdField_b_of_type_Int = 94;
-        return;
-        this.jdField_b_of_type_Int += 1;
-      } while (this.jdField_b_of_type_Int < 100);
-      this.jdField_b_of_type_Int = 99;
-      return;
-    }
-    this.jdField_b_of_type_Int = 100;
-  }
+  uoz(Activity paramActivity, String paramString1, WSDownloadParams paramWSDownloadParams, String paramString2, int paramInt) {}
   
   public void a()
   {
-    this.jdField_b_of_type_Boolean = false;
-    uoy.a(this.jdField_a_of_type_Uoy).postDelayed(this.jdField_a_of_type_JavaLangRunnable, 200L);
+    upg.a(this.jdField_a_of_type_AndroidAppActivity, "biz_src_jc_gzh_weishi", this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDownloadWSDownloadParams.mScene, this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDownloadWSDownloadParams.mLinkStrategyType, this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDownloadWSDownloadParams.mEventId);
   }
   
   public void b()
   {
-    this.jdField_b_of_type_Boolean = true;
-    uoy.a(this.jdField_a_of_type_Uoy).removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
+    WSPublicAccReport.getInstance().reportCallDialog("gzh_exposure", "dynamics_" + this.b + this.jdField_a_of_type_Int, 0);
+  }
+  
+  public void c()
+  {
+    WSPublicAccReport.getInstance().reportCallDialog("gzh_click", "dynamics_" + this.b + this.jdField_a_of_type_Int, 1000001);
+    upg.a(this.jdField_a_of_type_AndroidAppActivity, "biz_src_jc_gzh_weishi", this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDownloadWSDownloadParams.mScene, this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDownloadWSDownloadParams.mLinkStrategyType, this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDownloadWSDownloadParams.mEventId);
+  }
+  
+  public void d()
+  {
+    WSPublicAccReport.getInstance().reportCallDialog("gzh_click", "dynamics_" + this.b + this.jdField_a_of_type_Int, 1000005);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     uoz
  * JD-Core Version:    0.7.0.1
  */

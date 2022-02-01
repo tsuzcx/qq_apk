@@ -1,32 +1,35 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.shareGroup.infocard.QQStoryShareGroupProfileActivity;
-import com.tencent.biz.qqstory.shareGroup.infocard.view.ShareGroupsListView;
-import com.tribe.async.dispatch.QQUIEventReceiver;
+import android.support.v7.widget.RecyclerView.OnChildAttachStateChangeListener;
+import android.view.View;
+import dov.com.qq.im.capture.view.SpeedFlexibleRecyclerView;
 
-public class wen
-  extends QQUIEventReceiver<QQStoryShareGroupProfileActivity, vem>
+class wen
+  implements RecyclerView.OnChildAttachStateChangeListener
 {
-  public wen(@NonNull QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity)
-  {
-    super(paramQQStoryShareGroupProfileActivity);
-  }
+  wen(wef paramwef) {}
   
-  public void a(@NonNull QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity, @NonNull vem paramvem)
+  public void onChildViewAttachedToWindow(View paramView)
   {
-    if (paramvem.a.isSuccess()) {
-      paramQQStoryShareGroupProfileActivity.a.a(paramvem);
+    paramView = (wdx)wef.a(this.a).getChildViewHolder(paramView);
+    if ((paramView != null) && (paramView == wef.a(this.a)))
+    {
+      paramView.b();
+      yqp.b("Q.qqstory.recommendAlbum.ui.AlbumGalleryCapturePart", "attach from window , start play!");
     }
   }
   
-  public Class acceptEventClass()
+  public void onChildViewDetachedFromWindow(View paramView)
   {
-    return vem.class;
+    paramView = (wdx)wef.a(this.a).getChildViewHolder(paramView);
+    if ((paramView != null) && (paramView == wef.a(this.a)))
+    {
+      paramView.c();
+      yqp.b("Q.qqstory.recommendAlbum.ui.AlbumGalleryCapturePart", "detach from window , stop play!");
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     wen
  * JD-Core Version:    0.7.0.1
  */

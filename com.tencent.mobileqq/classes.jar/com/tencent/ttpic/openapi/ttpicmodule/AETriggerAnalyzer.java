@@ -1,11 +1,8 @@
 package com.tencent.ttpic.openapi.ttpicmodule;
 
-import android.text.TextUtils;
 import com.tencent.aekit.plugin.core.AIAttr;
 import com.tencent.aekit.plugin.core.IAIDataClassifier;
 import java.util.HashMap;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 public class AETriggerAnalyzer
 {
@@ -29,12 +26,6 @@ public class AETriggerAnalyzer
       return (IAIDataClassifier)this.classifierMap.get(paramString);
     }
     return null;
-  }
-  
-  public boolean isInteger(String paramString)
-  {
-    Pattern localPattern = Pattern.compile("^[-\\+]?[\\d]*$");
-    return (!TextUtils.isEmpty(paramString)) && (localPattern.matcher(paramString).matches());
   }
   
   public boolean isTriggered(String paramString, AIAttr paramAIAttr)
@@ -81,7 +72,7 @@ public class AETriggerAnalyzer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.openapi.ttpicmodule.AETriggerAnalyzer
  * JD-Core Version:    0.7.0.1
  */

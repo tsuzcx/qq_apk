@@ -1,28 +1,26 @@
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import com.tencent.mobileqq.nearby.now.StoryPlayController;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.ImageView;
 
-public class avca
-  implements URLDrawable.URLDrawableListener
+class avca
+  implements Animation.AnimationListener
 {
-  public avca(StoryPlayController paramStoryPlayController, avgh paramavgh) {}
+  avca(avbz paramavbz) {}
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if (this.jdField_a_of_type_Avgh != null) {
-      this.jdField_a_of_type_Avgh.a(paramURLDrawable.getIntrinsicWidth(), paramURLDrawable.getIntrinsicHeight(), true);
+    if (this.a.a == 3) {
+      this.a.d.setVisibility(8);
     }
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     avca
  * JD-Core Version:    0.7.0.1
  */

@@ -1,71 +1,169 @@
-import android.util.SparseIntArray;
-import com.tencent.biz.pubaccount.VideoInfo.ECommerceEntranceInfo;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsShuntBarConfigure.1;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManagerV2;
-import com.tencent.qphone.base.util.QLog;
+import android.text.TextUtils;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.List;
+import tencent.im.oidb.cmd0xbc9.oidb_cmd0xbc9.AdReport;
+import tencent.im.oidb.cmd0xbc9.oidb_cmd0xbc9.BannerItem;
 
 public class rib
 {
-  private static final String jdField_a_of_type_JavaLangString = rib.class.getSimpleName();
-  private SparseIntArray jdField_a_of_type_AndroidUtilSparseIntArray = new SparseIntArray();
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private SparseIntArray jdField_b_of_type_AndroidUtilSparseIntArray = new SparseIntArray();
-  private String jdField_b_of_type_JavaLangString;
+  public final int a;
+  public long a;
+  public String a;
+  public List<ria> a;
+  public boolean a;
+  public String b;
+  public List<ria> b;
+  public String c;
+  public String d;
+  public String e;
   
-  public rib(QQAppInterface paramQQAppInterface)
+  public rib(int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_b_of_type_JavaLangString = ors.a();
+    this.jdField_a_of_type_Int = paramInt;
   }
   
-  public void a()
+  public static rib a(oidb_cmd0xbc9.BannerItem paramBannerItem)
   {
-    ThreadManagerV2.executeOnSubThread(new VideoFeedsShuntBarConfigure.1(this));
-  }
-  
-  public boolean a(VideoInfo.ECommerceEntranceInfo paramECommerceEntranceInfo)
-  {
-    if (paramECommerceEntranceInfo == null) {
-      return false;
-    }
-    try
+    rib localrib = null;
+    if (paramBannerItem.uint32_banner_type.has())
     {
-      boolean bool = bkbq.w(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-      if (!bool) {
-        bkbq.a(this.jdField_b_of_type_JavaLangString + paramECommerceEntranceInfo.g, Integer.valueOf(0));
+      if (paramBannerItem.uint32_banner_type.get() == 2) {
+        localrib = rif.b(paramBannerItem);
       }
-      if (bool) {}
-      for (int i = ((Integer)bkbq.a(this.jdField_b_of_type_JavaLangString + paramECommerceEntranceInfo.g, Integer.valueOf(0))).intValue();; i = 0)
+    }
+    else {
+      return localrib;
+    }
+    return rid.b(paramBannerItem);
+  }
+  
+  protected static void a(rib paramrib, oidb_cmd0xbc9.BannerItem paramBannerItem)
+  {
+    boolean bool = true;
+    if (paramrib != null)
+    {
+      if (paramBannerItem.uint32_is_ad.get() == 1) {}
+      Object localObject;
+      for (;;)
       {
-        int k = this.jdField_a_of_type_AndroidUtilSparseIntArray.get(paramECommerceEntranceInfo.g);
-        int j = this.jdField_b_of_type_AndroidUtilSparseIntArray.get(paramECommerceEntranceInfo.g);
-        if ((i + j >= paramECommerceEntranceInfo.f) || (k >= paramECommerceEntranceInfo.e)) {
+        paramrib.jdField_a_of_type_Boolean = bool;
+        paramrib.jdField_a_of_type_Long = paramBannerItem.uint64_banner_id.get();
+        localObject = paramBannerItem.msg_ad_click_report.get();
+        if ((localObject == null) || (((List)localObject).size() <= 0)) {
           break;
         }
-        k += 1;
-        j += 1;
-        this.jdField_a_of_type_AndroidUtilSparseIntArray.put(paramECommerceEntranceInfo.g, k);
-        this.jdField_b_of_type_AndroidUtilSparseIntArray.put(paramECommerceEntranceInfo.g, j);
-        if (QLog.isColorLevel()) {
-          QLog.d(jdField_a_of_type_JavaLangString, 2, "video_source_id: " + paramECommerceEntranceInfo.g + ", one_day_display_counts: " + paramECommerceEntranceInfo.f + ", session_display_counts: " + paramECommerceEntranceInfo.e + ", session_has_display_counts: " + k + ", one_day_has_display_counts: " + (i + j));
+        paramrib.jdField_a_of_type_JavaUtilList = new ArrayList();
+        localObject = ((List)localObject).iterator();
+        while (((Iterator)localObject).hasNext())
+        {
+          oidb_cmd0xbc9.AdReport localAdReport = (oidb_cmd0xbc9.AdReport)((Iterator)localObject).next();
+          paramrib.jdField_a_of_type_JavaUtilList.add(ria.a(localAdReport));
         }
-        return true;
+        bool = false;
       }
-      return false;
+      paramBannerItem = paramBannerItem.msg_ad_exposure_report.get();
+      if ((paramBannerItem != null) && (paramBannerItem.size() > 0))
+      {
+        paramrib.jdField_b_of_type_JavaUtilList = new ArrayList();
+        paramBannerItem = paramBannerItem.iterator();
+        while (paramBannerItem.hasNext())
+        {
+          localObject = (oidb_cmd0xbc9.AdReport)paramBannerItem.next();
+          paramrib.jdField_b_of_type_JavaUtilList.add(ria.a((oidb_cmd0xbc9.AdReport)localObject));
+        }
+      }
     }
-    catch (Exception paramECommerceEntranceInfo)
+  }
+  
+  public static void a(oidb_cmd0xbc9.BannerItem paramBannerItem, rib paramrib)
+  {
+    if (paramBannerItem.bytes_superscript_color.has()) {
+      paramrib.jdField_a_of_type_JavaLangString = paramBannerItem.bytes_superscript_color.get().toStringUtf8();
+    }
+    if (paramBannerItem.bytes_superscript_text.has()) {
+      paramrib.jdField_b_of_type_JavaLangString = paramBannerItem.bytes_superscript_text.get().toStringUtf8();
+    }
+    if (paramBannerItem.bytes_banner_title.has()) {
+      paramrib.d = paramBannerItem.bytes_banner_title.get().toStringUtf8();
+    }
+  }
+  
+  public List<String> a(List<ria> paramList)
+  {
+    if ((paramList == null) || (paramList.isEmpty())) {
+      return null;
+    }
+    ArrayList localArrayList = new ArrayList(paramList.size());
+    paramList = paramList.iterator();
+    while (paramList.hasNext()) {
+      localArrayList.add(((ria)paramList.next()).jdField_a_of_type_JavaLangString);
+    }
+    return localArrayList;
+  }
+  
+  public oidb_cmd0xbc9.BannerItem a()
+  {
+    oidb_cmd0xbc9.BannerItem localBannerItem = new oidb_cmd0xbc9.BannerItem();
+    if (!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) {
+      localBannerItem.bytes_superscript_text.set(ByteStringMicro.copyFromUtf8(this.jdField_b_of_type_JavaLangString));
+    }
+    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
+      localBannerItem.bytes_superscript_color.set(ByteStringMicro.copyFromUtf8(this.jdField_a_of_type_JavaLangString));
+    }
+    if (!TextUtils.isEmpty(this.d)) {
+      localBannerItem.bytes_banner_title.set(ByteStringMicro.copyFromUtf8(this.d));
+    }
+    localBannerItem.uint32_banner_type.set(this.jdField_a_of_type_Int);
+    a(localBannerItem);
+    return localBannerItem;
+  }
+  
+  protected void a(oidb_cmd0xbc9.BannerItem paramBannerItem)
+  {
+    Object localObject = paramBannerItem.uint32_is_ad;
+    if (this.jdField_a_of_type_Boolean) {}
+    Iterator localIterator;
+    for (int i = 1;; i = 0)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d(jdField_a_of_type_JavaLangString, 2, "解析引流条出现的条件出错: " + paramECommerceEntranceInfo.getMessage());
+      ((PBUInt32Field)localObject).set(i);
+      paramBannerItem.uint64_banner_id.set(this.jdField_a_of_type_Long);
+      if ((this.jdField_a_of_type_JavaUtilList == null) || (this.jdField_a_of_type_JavaUtilList.size() <= 0)) {
+        break label114;
+      }
+      localObject = new ArrayList();
+      localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+      while (localIterator.hasNext()) {
+        ((List)localObject).add(((ria)localIterator.next()).a());
       }
     }
-    return false;
+    paramBannerItem.msg_ad_click_report.addAll((Collection)localObject);
+    label114:
+    if ((this.jdField_b_of_type_JavaUtilList != null) && (this.jdField_b_of_type_JavaUtilList.size() > 0))
+    {
+      localObject = new ArrayList();
+      localIterator = this.jdField_b_of_type_JavaUtilList.iterator();
+      while (localIterator.hasNext()) {
+        ((List)localObject).add(((ria)localIterator.next()).a());
+      }
+      paramBannerItem.msg_ad_exposure_report.addAll((Collection)localObject);
+    }
+  }
+  
+  public String toString()
+  {
+    return "rowkey:" + this.e + " title:" + this.d + "tagText:" + this.jdField_b_of_type_JavaLangString + "tagColor:" + this.jdField_a_of_type_JavaLangString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     rib
  * JD-Core Version:    0.7.0.1
  */

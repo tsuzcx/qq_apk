@@ -2,10 +2,11 @@ package com.tencent.mobileqq.msgbackup.transport;
 
 import android.content.Context;
 import android.os.Build.VERSION;
-import augo;
-import aujl;
-import aujo;
-import aujq;
+import awnr;
+import awqj;
+import awqp;
+import awqs;
+import awqu;
 import com.tencent.commonsdk.soload.SoLoadUtilNew;
 import com.tencent.mobileqq.utils.SoLoadUtil;
 import com.tencent.qphone.base.util.QLog;
@@ -434,17 +435,17 @@ public class MsgBackupJniProxy
     }
     if ((paramBoolean1) && (paramBoolean2))
     {
-      aujo.a();
-      augo.a().a.add(Long.valueOf(paramLong2));
-      aujl localaujl = aujo.a;
-      localaujl.j += 1L;
+      awqs.a();
+      awnr.a().a.add(Long.valueOf(paramLong2));
+      awqp localawqp = awqs.a;
+      localawqp.j += 1L;
     }
     recvFile(paramLong1, paramLong2, paramString1, paramString2, paramBoolean1, paramLong3, 0L);
   }
   
   public void a(long paramLong, String paramString)
   {
-    setEncryptKey(paramLong, paramString, aujq.b);
+    setEncryptKey(paramLong, paramString, awqu.b);
   }
   
   public void b(long paramLong1, long paramLong2, long paramLong3, String paramString)
@@ -463,13 +464,13 @@ public class MsgBackupJniProxy
   
   public native int cancelSendFile(long paramLong1, long paramLong2, long paramLong3);
   
-  public native long createSession(int paramInt, long paramLong, MsgBackupNotifier paramMsgBackupNotifier);
+  public native long createSession(int paramInt1, long paramLong, int paramInt2, MsgBackupNotifier paramMsgBackupNotifier);
   
   public native void destroySession(long paramLong);
   
   public native byte[] getRecvBuffer(long paramLong1, long paramLong2);
   
-  public native int getVersoEndpoint(long paramLong, MsgBackupEndPoint paramMsgBackupEndPoint);
+  public native int getVersoEndpoint(long paramLong, awqj paramawqj);
   
   public native int queryReachability(long paramLong, MsgBackupNetState paramMsgBackupNetState);
   
@@ -487,15 +488,15 @@ public class MsgBackupJniProxy
   
   public native void setEncryptKey(long paramLong, String paramString, boolean paramBoolean);
   
-  public native void setPeerEndpoint(long paramLong, int paramInt1, int paramInt2, int paramInt3);
+  public native void setPeerEndpoint(long paramLong, String[] paramArrayOfString, int paramInt1, int paramInt2);
   
-  public native int start(long paramLong, MsgBackupEndPoint paramMsgBackupEndPoint1, MsgBackupEndPoint paramMsgBackupEndPoint2);
+  public native int start(long paramLong, String[] paramArrayOfString, Integer paramInteger1, Integer paramInteger2);
   
   public native void stop(long paramLong);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.msgbackup.transport.MsgBackupJniProxy
  * JD-Core Version:    0.7.0.1
  */

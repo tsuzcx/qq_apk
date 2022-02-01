@@ -1,27 +1,17 @@
+import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.teamwork.fragment.TeamWorkAuthorizeSettingFragment;
 
-class bdke
-  implements CompoundButton.OnCheckedChangeListener
+public class bdke
+  implements DialogInterface.OnClickListener
 {
-  bdke(bdjz parambdjz, DialogInterface.OnClickListener paramOnClickListener) {}
+  public bdke(TeamWorkAuthorizeSettingFragment paramTeamWorkAuthorizeSettingFragment) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
-  {
-    paramCompoundButton = this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener;
-    bdjz localbdjz = this.jdField_a_of_type_Bdjz;
-    if (paramBoolean) {}
-    for (int i = 1;; i = 0)
-    {
-      paramCompoundButton.onClick(localbdjz, i);
-      return;
-    }
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bdke
  * JD-Core Version:    0.7.0.1
  */

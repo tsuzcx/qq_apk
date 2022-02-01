@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.tencent.mobileqq.emoticonview.SystemAndEmojiUniversalPanel android:id="@id/emoview" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<merge android:background="@drawable/enw" android:layout_width="97.0dip" android:layout_height="35.0dip"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mobileqq.emoticonview.EmotionPanelListView android:id="@id/kmz" android:focusable="true" android:focusableInTouchMode="true" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    <ImageButton android:id="@id/bfq" android:background="@drawable/ho" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="5.0dip" android:layout_marginBottom="7.0dip" android:layout_alignParentRight="true" android:layout_alignParentBottom="true" android:contentDescription="@string/br7" />
-</com.tencent.mobileqq.emoticonview.SystemAndEmojiUniversalPanel>
+    <ImageView android:layout_gravity="center_vertical" android:id="@id/muh" android:layout_width="54.0dip" android:layout_height="35.0dip" android:src="@drawable/enx" />
+    <LinearLayout android:orientation="horizontal" android:paddingLeft="7.0dip" android:paddingRight="7.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <TextView android:textSize="12.0sp" android:gravity="center" android:id="@id/noi" android:layout_width="0.0dip" android:layout_height="fill_parent" android:text="@string/w94" android:layout_weight="1.0" />
+        <TextView android:textSize="12.0sp" android:gravity="center" android:id="@id/nmr" android:layout_width="0.0dip" android:layout_height="fill_parent" android:text="@string/tag" android:layout_weight="1.0" />
+    </LinearLayout>
+</merge>

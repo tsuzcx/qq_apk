@@ -1,27 +1,25 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import androidx.annotation.NonNull;
 
-class bajt
-  implements View.OnClickListener
+public class bajt
 {
-  bajt(bajs parambajs) {}
+  public int a;
+  public String a;
+  public String b = "";
   
-  public void onClick(View paramView)
+  public bajt()
   {
-    baky localbaky;
-    if (bdeu.a("tag_swip_icon_menu_item", paramView.getTag()))
-    {
-      localbaky = (baky)paramView.getTag(-10);
-      if (paramView.getId() != 2131364371) {
-        break label40;
-      }
-      bajs.a(this.a, localbaky);
-    }
-    label40:
-    while (bajs.a(this.a) == null) {
-      return;
-    }
-    bajs.a(this.a).a(paramView.getId(), localbaky);
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_a_of_type_JavaLangString = "";
+  }
+  
+  @NonNull
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder(1024);
+    localStringBuilder.append("actionId").append("=").append(this.jdField_a_of_type_Int).append("|");
+    localStringBuilder.append("actionAndData").append("=").append(this.jdField_a_of_type_JavaLangString).append("|");
+    localStringBuilder.append("plainText").append("=").append(this.b).append("|");
+    return localStringBuilder.toString();
   }
 }
 

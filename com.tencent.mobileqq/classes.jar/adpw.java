@@ -1,13 +1,24 @@
-import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.SplashActivity;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class adpw
-  implements aofp
+  extends anuy
 {
-  public adpw(QQBrowserActivity paramQQBrowserActivity) {}
+  public adpw(BaseChatPie paramBaseChatPie) {}
   
-  public void onColorNoteAnimFinish()
+  public void a(boolean paramBoolean, int paramInt)
   {
-    QQBrowserActivity.a(this.a);
+    if (((this.a.a() instanceof SplashActivity)) && (SplashActivity.a != 2)) {}
+    do
+    {
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.d(this.a.a, 2, "VideoRedbag, onCheckRealNameRsp in aio");
+      }
+    } while ((!paramBoolean) || (paramInt != bckg.a));
+    bglp.a(this.a.a(), 0, null, this.a.a().getString(2131718097), 2131718099, 2131718098, new adpx(this), new adpy(this)).show();
   }
 }
 

@@ -1,35 +1,63 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.app.FriendListHandler;
-import com.tencent.mobileqq.app.MessageHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.aio.helper.AIOLongShotHelper;
+import com.tencent.mobileqq.activity.photo.album.NewPhotoPreviewActivity;
+import com.tencent.mobileqq.activity.photo.album.PhotoCommonBaseData;
+import dov.com.tencent.biz.qqstory.takevideo.EditPicActivity;
+import java.util.ArrayList;
 
 class akkh
-  implements DialogInterface.OnClickListener
+  extends akif
 {
-  akkh(akkd paramakkd) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  protected akkh(NewPhotoPreviewActivity paramNewPhotoPreviewActivity)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("NewFriendMoreSysMsgAdapter", 2, "clear click");
+    super(paramNewPhotoPreviewActivity);
+  }
+  
+  public void initData(Intent paramIntent)
+  {
+    super.initData(paramIntent);
+    this.a.customSendBtnText = ((NewPhotoPreviewActivity)this.mActivity).getString(2131689885);
+  }
+  
+  public void initUI()
+  {
+    super.initUI();
+    ((NewPhotoPreviewActivity)this.mActivity).titleView.setVisibility(8);
+    ((NewPhotoPreviewActivity)this.mActivity).sendBtn.setOnClickListener(new akki(this));
+    ((NewPhotoPreviewActivity)this.mActivity).cancelTv.setVisibility(8);
+  }
+  
+  public void onMagicStickClick(View paramView, int paramInt1, Bundle paramBundle, int paramInt2, Intent paramIntent)
+  {
+    if (((NewPhotoPreviewActivity)this.mActivity).getCurrentSelectedPostion() != -1) {
+      this.a.a = ((String)this.a.paths.get(((NewPhotoPreviewActivity)this.mActivity).getCurrentSelectedPostion()));
     }
-    if (bdin.d(akkd.a(this.a)))
+    super.onMagicStickClick(paramView, 18003, paramBundle, paramInt2, EditPicActivity.a(this.mActivity, this.a.a, true, true, true, true, true, false, false, false, 2, 122, 0, false, null));
+    AIOLongShotHelper.a("0X8009DED");
+  }
+  
+  public void updateButton()
+  {
+    super.updateButton();
+    if ((this.mPhotoCommonData.selectedPhotoList != null) && (this.mPhotoCommonData.selectedPhotoList.size() > 0)) {}
+    for (int i = 1;; i = 0)
     {
-      azqs.b(this.a.a, "dc00898", "", "", "0X800A328", "0X800A328", 2, 0, "", "", "", "");
-      akkd.b(this.a);
-      this.a.a.a().a().f();
-      ((FriendListHandler)this.a.a.a(1)).j();
+      if ((i != 0) && ((this.a.g) || (this.a.isSingleMode)))
+      {
+        ((NewPhotoPreviewActivity)this.mActivity).magicStickBtn.setVisibility(0);
+        ((NewPhotoPreviewActivity)this.mActivity).magicStickBtn.setEnabled(true);
+      }
       return;
     }
-    QQToast.a(akkd.a(this.a), 2131694779, 0).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     akkh
  * JD-Core Version:    0.7.0.1
  */

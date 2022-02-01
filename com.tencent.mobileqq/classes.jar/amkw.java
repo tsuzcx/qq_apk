@@ -1,19 +1,18 @@
-import com.tencent.mobileqq.data.MessageRecord;
-import java.util.Comparator;
+import android.app.Activity;
 
-class amkw
-  implements Comparator<MessageRecord>
+public abstract interface amkw
 {
-  amkw(amkv paramamkv) {}
+  public abstract int a();
   
-  public int a(MessageRecord paramMessageRecord1, MessageRecord paramMessageRecord2)
-  {
-    return (int)((paramMessageRecord1.shmsgseq - paramMessageRecord2.shmsgseq) % 2L);
-  }
+  public abstract amlc a(long paramLong, String paramString1, String paramString2);
+  
+  public abstract void a();
+  
+  public abstract boolean a(Activity paramActivity);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amkw
  * JD-Core Version:    0.7.0.1
  */

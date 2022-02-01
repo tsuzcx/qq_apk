@@ -1,24 +1,24 @@
 package com.tencent.mobileqq.config;
 
-import aojv;
-import awgf;
-import awgg;
+import aqkn;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.QQEntityManagerFactory;
 import com.tencent.mobileqq.data.ResourcePluginInfo;
+import com.tencent.mobileqq.persistence.EntityManager;
 import com.tencent.qphone.base.util.QLog;
 import java.util.List;
 
 public class AboutConfig$1
   implements Runnable
 {
-  public AboutConfig$1(aojv paramaojv, boolean paramBoolean) {}
+  public AboutConfig$1(aqkn paramaqkn, boolean paramBoolean) {}
   
   public void run()
   {
     int i = 0;
-    ??? = aojv.a(this.this$0).getEntityManagerFactory().createEntityManager();
-    List localList = ResourcePluginInfo.getAll((awgf)???, 32, false);
-    ((awgf)???).a();
+    ??? = aqkn.a(this.this$0).a().createEntityManager();
+    List localList = ResourcePluginInfo.getAll((EntityManager)???, 32, false);
+    ((EntityManager)???).close();
     int j;
     if (localList != null)
     {
@@ -26,16 +26,16 @@ public class AboutConfig$1
       i = j;
       if (j <= 0) {}
     }
-    synchronized (aojv.a(this.this$0))
+    synchronized (aqkn.a(this.this$0))
     {
-      aojv.a(this.this$0);
-      aojv.a(this.this$0, localList);
+      aqkn.a(this.this$0);
+      aqkn.a(this.this$0, localList);
       this.this$0.b();
       i = j;
       if (QLog.isColorLevel()) {
-        QLog.d("AboutConfig", 2, "Load about config from DB = " + aojv.a(this.this$0) + ",asynchronous=" + this.a + ",size=" + i);
+        QLog.d("AboutConfig", 2, "Load about config from DB = " + aqkn.a(this.this$0) + ",asynchronous=" + this.a + ",size=" + i);
       }
-      aojv.a(this.this$0, true);
+      aqkn.a(this.this$0, true);
       return;
     }
   }

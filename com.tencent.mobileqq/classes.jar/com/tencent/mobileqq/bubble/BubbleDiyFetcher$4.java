@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.bubble;
 
 import android.text.TextUtils;
-import anwm;
-import anwn;
-import anyh;
+import apwr;
+import apws;
+import apym;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
@@ -14,7 +14,7 @@ import java.util.concurrent.CopyOnWriteArraySet;
 public class BubbleDiyFetcher$4
   implements Runnable
 {
-  public BubbleDiyFetcher$4(anwm paramanwm, QQAppInterface paramQQAppInterface) {}
+  public BubbleDiyFetcher$4(apwr paramapwr, QQAppInterface paramQQAppInterface) {}
   
   public void run()
   {
@@ -26,7 +26,7 @@ public class BubbleDiyFetcher$4
       this.this$0.c(this.a);
       if (!this.this$0.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet.isEmpty())
       {
-        ((anwn)this.a.a(70)).a(new ArrayList(this.this$0.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet), null);
+        ((apws)this.a.a(70)).a(new ArrayList(this.this$0.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet), null);
         this.this$0.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet.clear();
       }
     }
@@ -48,17 +48,17 @@ public class BubbleDiyFetcher$4
     Iterator localIterator = this.this$0.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
     while (localIterator.hasNext())
     {
-      localObject = (anyh)localIterator.next();
-      if ((localObject == null) || (((anyh)localObject).getCallback() == null)) {
+      localObject = (apym)localIterator.next();
+      if ((localObject == null) || (((apym)localObject).getCallback() == null)) {
         this.this$0.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.remove(localObject);
       }
     }
-    anwm.jdField_a_of_type_Long = 0L;
+    apwr.jdField_a_of_type_Long = 0L;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.bubble.BubbleDiyFetcher.4
  * JD-Core Version:    0.7.0.1
  */

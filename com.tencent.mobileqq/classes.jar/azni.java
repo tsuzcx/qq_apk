@@ -1,6 +1,16 @@
-public abstract interface azni
+import com.tencent.mobileqq.app.QQAppInterface;
+
+public class azni
 {
-  public abstract void a(int paramInt);
+  public static void a(QQAppInterface paramQQAppInterface, int paramInt)
+  {
+    bcst.b(paramQQAppInterface, "dc00898", "", "", "0X800B1C8", "0X800B1C8", paramInt, 0, "", "", "", "");
+  }
+  
+  public static void b(QQAppInterface paramQQAppInterface, int paramInt)
+  {
+    bcst.b(paramQQAppInterface, "dc00898", "", "", "0X800B1C9", "0X800B1C9", paramInt, 0, "", "", "", "");
+  }
 }
 
 

@@ -1,6 +1,28 @@
-public abstract interface bdbl
+import com.tencent.mobileqq.activity.photopreview.CountDownTimer.CountDownTimerListener;
+import com.tencent.mobileqq.structmsg.widget.CountdownTextView;
+
+public class bdbl
+  extends CountDownTimer.CountDownTimerListener
 {
-  public abstract void onLoadingStateChanged(int paramInt1, int paramInt2);
+  public bdbl(CountdownTextView paramCountdownTextView, long paramLong, bdbm parambdbm)
+  {
+    super(paramLong);
+  }
+  
+  public void onFinish()
+  {
+    if (this.jdField_a_of_type_Bdbm != null) {
+      this.jdField_a_of_type_Bdbm.a();
+    }
+    this.jdField_a_of_type_ComTencentMobileqqStructmsgWidgetCountdownTextView.a();
+  }
+  
+  public void onTick(long paramLong)
+  {
+    if (this.jdField_a_of_type_Bdbm != null) {
+      this.jdField_a_of_type_Bdbm.a(paramLong);
+    }
+  }
 }
 
 

@@ -1,6 +1,6 @@
 package com.tencent.qg.qq;
 
-import abxc;
+import adei;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.view.Display;
@@ -8,11 +8,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
-import bfxo;
+import bjfa;
 import com.tencent.mobileqq.miniapp.ui.MiniAppBaseFragment;
 import com.tencent.qg.sdk.QGGLSurfaceView;
 import com.tencent.qg.sdk.doraemon.DoraemonApiWrapper;
 import com.tencent.qg.sdk.doraemon.impl.DoraemonApiWrapperMockImpl;
+import com.tencent.qqlive.module.videoreport.inject.fragment.V4FragmentCollector;
 
 public class GameDemoFragment
   extends MiniAppBaseFragment
@@ -27,11 +28,13 @@ public class GameDemoFragment
     this.jdField_a_of_type_ArrayOfJavaLangString = getArguments().getStringArray("key_run_js");
     getActivity().getWindowManager().getDefaultDisplay().getWidth();
     getActivity().getWindowManager().getDefaultDisplay().getHeight();
-    abxc.a(getActivity(), 3, a());
+    adei.a(getActivity(), 3, a());
     this.jdField_a_of_type_ComTencentQgSdkQGGLSurfaceView = new QGGLSurfaceView(getActivity());
     this.jdField_a_of_type_ComTencentQgSdkDoraemonDoraemonApiWrapper = new DoraemonApiWrapperMockImpl(this.jdField_a_of_type_ComTencentQgSdkQGGLSurfaceView);
-    this.jdField_a_of_type_ComTencentQgSdkQGGLSurfaceView.setQGEventListener(new bfxo(this));
-    return this.jdField_a_of_type_ComTencentQgSdkQGGLSurfaceView;
+    this.jdField_a_of_type_ComTencentQgSdkQGGLSurfaceView.setQGEventListener(new bjfa(this));
+    paramLayoutInflater = this.jdField_a_of_type_ComTencentQgSdkQGGLSurfaceView;
+    V4FragmentCollector.onV4FragmentViewCreated(this, paramLayoutInflater);
+    return paramLayoutInflater;
   }
   
   public void onDestroyView()
@@ -46,7 +49,7 @@ public class GameDemoFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qg.qq.GameDemoFragment
  * JD-Core Version:    0.7.0.1
  */

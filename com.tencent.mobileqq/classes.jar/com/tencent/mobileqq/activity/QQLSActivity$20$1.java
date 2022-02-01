@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.activity;
 
-import adqn;
+import aeww;
 import com.tencent.qphone.base.util.QLog;
 
 public class QQLSActivity$20$1
   implements Runnable
 {
-  public QQLSActivity$20$1(adqn paramadqn) {}
+  public QQLSActivity$20$1(aeww paramaeww) {}
   
   public void run()
   {
@@ -19,7 +19,7 @@ public class QQLSActivity$20$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.QQLSActivity.20.1
  * JD-Core Version:    0.7.0.1
  */

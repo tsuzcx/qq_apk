@@ -1,18 +1,31 @@
-import org.json.JSONObject;
+import NS_KING_SOCIALIZE_META.stMetaUgcVideoSeg;
+import UserGrowth.stSimpleMetaFeed;
+import java.util.Arrays;
+import java.util.List;
 
-public class uum
+class uum
+  implements ukm
 {
-  public int a;
-  public String a = "";
-  public JSONObject a;
-  public String b;
-  public String c;
-  public String d;
-  public String e;
+  stSimpleMetaFeed a;
+  
+  uum(stSimpleMetaFeed paramstSimpleMetaFeed)
+  {
+    this.a = paramstSimpleMetaFeed;
+  }
+  
+  public List<ukn> a(int paramInt, boolean paramBoolean)
+  {
+    return Arrays.asList(new ukn[] { new ukn(this.a.video_url, this.a.video.duration) });
+  }
+  
+  public boolean a()
+  {
+    return true;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     uum
  * JD-Core Version:    0.7.0.1
  */

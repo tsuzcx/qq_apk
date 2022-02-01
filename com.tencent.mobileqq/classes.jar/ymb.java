@@ -1,276 +1,81 @@
-import android.app.Activity;
-import android.content.Context;
-import android.os.Build.VERSION;
-import android.os.Handler;
-import android.os.HandlerThread;
-import android.text.TextUtils;
-import com.tencent.biz.subscribe.utils.SubscribeDraftManager.1;
-import com.tencent.biz.subscribe.utils.SubscribeDraftManager.2;
-import com.tencent.biz.subscribe.utils.SubscribeDraftManager.4;
-import com.tencent.biz.subscribe.utils.SubscribeDraftManager.5;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.smtt.utils.Md5Utils;
-import com.tencent.util.Pair;
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
+import com.tribe.async.dispatch.Dispatcher;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
 public class ymb
+  extends QQUIEventReceiver<ymo, wpe>
+  implements ymk
 {
-  public static String a;
-  private static ymb jdField_a_of_type_Ymb;
-  private Handler jdField_a_of_type_AndroidOsHandler;
-  private String b = alof.cV;
-  private String c = alof.cW;
-  private String d = ".draft";
+  protected ymm a;
   
-  static
+  public ymb(ymo paramymo)
   {
-    jdField_a_of_type_JavaLangString = "SubscribeDraftManager";
+    super(paramymo);
   }
   
-  private ymb()
+  public Object a()
   {
-    HandlerThread localHandlerThread = ThreadManager.newFreeHandlerThread("SubscribeDraftManager", 0);
-    localHandlerThread.start();
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(localHandlerThread.getLooper());
-  }
-  
-  private Pair<String, String> a(String paramString)
-  {
-    String str = bflr.d(paramString);
-    paramString = this.b + str;
-    str = this.c + str;
-    QLog.d(jdField_a_of_type_JavaLangString, 2, "createDraftDirectory currentFolder:" + paramString + " currentSimpleFolder:" + str);
-    try
-    {
-      bdhb.b(paramString);
-      bdhb.b(str);
-      paramString = new Pair(paramString, str);
-      return paramString;
-    }
-    catch (Exception paramString)
-    {
-      paramString.printStackTrace();
-    }
     return null;
   }
   
-  private Pair<String, String> a(String paramString1, String paramString2)
+  public String a()
   {
-    if (TextUtils.isEmpty(paramString1))
-    {
-      QLog.d(jdField_a_of_type_JavaLangString, 4, "generate draft failed UID is empty");
-      return null;
-    }
-    Pair localPair = a(paramString1);
-    if (localPair != null)
-    {
-      QLog.d(jdField_a_of_type_JavaLangString, 4, "generate draft id:" + paramString2 + "\n,mUid =" + paramString1 + ", md5 = " + Md5Utils.getMD5(paramString1));
-      return new Pair((String)localPair.first + "/" + paramString2 + this.d, (String)localPair.second + "/" + paramString2 + this.d);
-    }
-    QLog.d(jdField_a_of_type_JavaLangString, 4, "generate draft failed UID ,SDCARD generate folder failed");
-    return null;
+    return "ReportWatchVideoListStep";
   }
   
-  private String a(String paramString)
+  public void a()
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    try
-    {
-      paramString = new BufferedReader(new FileReader(new File(paramString)));
-      for (;;)
-      {
-        String str = paramString.readLine();
-        if (str == null) {
-          break;
-        }
-        localStringBuilder.append(str);
-      }
-      return localStringBuilder.toString();
-    }
-    catch (Exception paramString)
-    {
-      paramString.printStackTrace();
+    wfo.a().registerSubscriber(this);
+    ((wpc)wpm.a(13)).c();
+  }
+  
+  public void a(Object paramObject) {}
+  
+  public void a(yml paramyml) {}
+  
+  public void a(ymm paramymm)
+  {
+    this.a = paramymm;
+  }
+  
+  public void a(ymo paramymo, wpe paramwpe)
+  {
+    wfo.a().unRegisterSubscriber(this);
+    if (this.a != null) {
+      this.a.a(a());
     }
     for (;;)
     {
-      paramString.close();
-    }
-  }
-  
-  public static ymb a()
-  {
-    try
-    {
-      if (jdField_a_of_type_Ymb == null) {
-        jdField_a_of_type_Ymb = new ymb();
-      }
-      ymb localymb = jdField_a_of_type_Ymb;
-      return localymb;
-    }
-    finally {}
-  }
-  
-  public void a(Activity paramActivity, String paramString1, String paramString2, String paramString3, String paramString4, ymf paramymf)
-  {
-    boolean bool = true;
-    if (Build.VERSION.SDK_INT >= 23) {
-      bool = amrk.a(paramActivity);
-    }
-    if (!bool)
-    {
-      bdgm.b(paramActivity);
+      yqp.d("Q.qqstory.home,ReportWatchVideoListStep", "receive event. step is done");
       return;
+      yqp.d("Q.qqstory.home,ReportWatchVideoListStep", "finish callBack is null");
     }
-    if ((!TextUtils.isEmpty(paramString1)) || (!TextUtils.isEmpty(paramString2)) || (!TextUtils.isEmpty(paramString3)) || (!TextUtils.isEmpty(paramString4)))
-    {
-      this.jdField_a_of_type_AndroidOsHandler.post(new SubscribeDraftManager.1(this, paramString1, paramString2, paramString3, paramString4, paramymf));
-      return;
-    }
-    if (paramymf != null) {
-      paramymf.a(3, false, paramString2, new Object[0]);
-    }
-    QLog.d(jdField_a_of_type_JavaLangString, 4, "modifyDraft failed because something is empty");
   }
   
-  public void a(Context paramContext, String paramString1, String paramString2, int paramInt, ymm paramymm)
+  public boolean a()
   {
-    if (paramContext == null) {}
-    do
-    {
-      return;
-      paramContext = bhuf.a(paramContext);
-      paramContext.a(paramInt, 3);
-      paramContext.c(2131690648);
-      paramContext.a(new ymc(this, paramymm, paramString1, paramContext));
-      paramContext.a(new ymd(this, paramString1, paramString2, paramymm, paramContext));
-    } while (paramContext.isShowing());
-    paramContext.show();
-  }
-  
-  public void a(String paramString1, String paramString2, ymf paramymf)
-  {
-    if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2)))
-    {
-      QLog.d(jdField_a_of_type_JavaLangString, 4, "deletDraft failed because uin or draftID is empty");
-      return;
-    }
-    this.jdField_a_of_type_AndroidOsHandler.post(new SubscribeDraftManager.4(this, paramString1, paramString2, paramymf));
-  }
-  
-  public void a(String paramString, ymf paramymf)
-  {
-    if (TextUtils.isEmpty(paramString))
-    {
-      QLog.d(jdField_a_of_type_JavaLangString, 4, "qureyAllSimpleDraft failed because uin is empty");
-      return;
-    }
-    this.jdField_a_of_type_AndroidOsHandler.post(new SubscribeDraftManager.2(this, paramString, paramymf));
-  }
-  
-  public boolean a(String paramString)
-  {
-    paramString = a(paramString);
-    if (paramString != null)
-    {
-      paramString = new File((String)paramString.second);
-      if ((paramString.exists()) && (paramString.isDirectory()))
-      {
-        paramString = paramString.listFiles();
-        return (paramString != null) && (paramString.length > 0);
-      }
-    }
     return false;
   }
   
-  /* Error */
-  public boolean a(String paramString1, String paramString2)
+  public Class acceptEventClass()
   {
-    // Byte code:
-    //   0: iconst_0
-    //   1: istore_3
-    //   2: aconst_null
-    //   3: astore 4
-    //   5: new 147	java/io/File
-    //   8: dup
-    //   9: aload_1
-    //   10: invokespecial 150	java/io/File:<init>	(Ljava/lang/String;)V
-    //   13: astore_1
-    //   14: aload_1
-    //   15: invokevirtual 259	java/io/File:exists	()Z
-    //   18: ifne +35 -> 53
-    //   21: aload_1
-    //   22: invokevirtual 274	java/io/File:createNewFile	()Z
-    //   25: pop
-    //   26: new 276	java/io/FileWriter
-    //   29: dup
-    //   30: aload_1
-    //   31: iconst_0
-    //   32: invokespecial 279	java/io/FileWriter:<init>	(Ljava/io/File;Z)V
-    //   35: astore_1
-    //   36: aload_1
-    //   37: aload_2
-    //   38: invokevirtual 282	java/io/FileWriter:write	(Ljava/lang/String;)V
-    //   41: aload_1
-    //   42: invokevirtual 285	java/io/FileWriter:flush	()V
-    //   45: aload_1
-    //   46: invokevirtual 286	java/io/FileWriter:close	()V
-    //   49: iconst_1
-    //   50: istore_3
-    //   51: iload_3
-    //   52: ireturn
-    //   53: aload_1
-    //   54: invokevirtual 289	java/io/File:delete	()Z
-    //   57: pop
-    //   58: aload_1
-    //   59: invokevirtual 274	java/io/File:createNewFile	()Z
-    //   62: pop
-    //   63: goto -37 -> 26
-    //   66: astore_1
-    //   67: aload 4
-    //   69: astore_1
-    //   70: aload_1
-    //   71: ifnull -20 -> 51
-    //   74: aload_1
-    //   75: invokevirtual 286	java/io/FileWriter:close	()V
-    //   78: iconst_0
-    //   79: ireturn
-    //   80: astore_1
-    //   81: iconst_0
-    //   82: ireturn
-    //   83: astore_2
-    //   84: goto -14 -> 70
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	87	0	this	ymb
-    //   0	87	1	paramString1	String
-    //   0	87	2	paramString2	String
-    //   1	51	3	bool	boolean
-    //   3	65	4	localObject	Object
-    // Exception table:
-    //   from	to	target	type
-    //   5	26	66	java/lang/Throwable
-    //   26	36	66	java/lang/Throwable
-    //   53	63	66	java/lang/Throwable
-    //   74	78	80	java/io/IOException
-    //   36	49	83	java/lang/Throwable
+    return wpe.class;
   }
   
-  public void b(String paramString1, String paramString2, ymf paramymf)
+  public void b()
   {
-    if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2)))
-    {
-      QLog.d(jdField_a_of_type_JavaLangString, 4, "deletDraft failed because uin or draftID is empty");
-      return;
-    }
-    this.jdField_a_of_type_AndroidOsHandler.post(new SubscribeDraftManager.5(this, paramString1, paramString2, paramymf));
+    yqp.a("Q.qqstory.home.qqstory_step", "Q.qqstory.home,ReportWatchVideoListStep", "Q.qqstory.home,ReportWatchVideoListStep");
+  }
+  
+  public void c()
+  {
+    wpc localwpc = (wpc)wpm.a(13);
+    wfo.a().unRegisterSubscriber(this);
+    localwpc.d();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     ymb
  * JD-Core Version:    0.7.0.1
  */

@@ -1,13 +1,12 @@
 package com.tencent.mobileqq.forward;
 
-import asdb;
 import com.tencent.mobileqq.structmsg.AbsStructMsg;
 import com.tencent.mobileqq.structmsg.StructMsgForImageShare;
 
-public class ForwardSdkShareOption$3
+class ForwardSdkShareOption$3
   implements Runnable
 {
-  public ForwardSdkShareOption$3(asdb paramasdb, AbsStructMsg paramAbsStructMsg, String paramString, int paramInt) {}
+  ForwardSdkShareOption$3(ForwardSdkShareOption paramForwardSdkShareOption, AbsStructMsg paramAbsStructMsg, String paramString, int paramInt) {}
   
   public void run()
   {
@@ -16,7 +15,7 @@ public class ForwardSdkShareOption$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.forward.ForwardSdkShareOption.3
  * JD-Core Version:    0.7.0.1
  */

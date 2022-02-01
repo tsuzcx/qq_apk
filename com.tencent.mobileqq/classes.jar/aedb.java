@@ -1,24 +1,19 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.TroopInfoActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.troopinfo.TroopInfoData;
+import android.view.View;
+import android.widget.EditText;
+import com.tencent.mobileqq.activity.EditInfoActivity;
 
-public class aedb
-  implements DialogInterface.OnClickListener
+class aedb
+  extends aedu
 {
-  public aedb(TroopInfoActivity paramTroopInfoActivity) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  aedb(aeda paramaeda, int paramInt1, int paramInt2, String paramString)
   {
-    QQAppInterface localQQAppInterface = this.a.app;
-    String str2 = this.a.a.troopUin;
-    if (this.a.a.bOwner) {}
-    for (String str1 = "0";; str1 = "1")
-    {
-      azqs.b(localQQAppInterface, "P_CliOper", "Grp_manage", "", "manage_grp", "sub_clk", 0, 0, str2, str1, "0", "");
-      paramDialogInterface.dismiss();
-      return;
+    super(paramaeda.a, paramInt1, paramInt2);
+  }
+  
+  public void onClick(View paramView)
+  {
+    if (this.jdField_a_of_type_Aeda.a.a != null) {
+      this.jdField_a_of_type_Aeda.a.a.setText(this.jdField_a_of_type_JavaLangString);
     }
   }
 }

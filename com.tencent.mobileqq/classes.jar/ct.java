@@ -1,36 +1,34 @@
 import android.view.View;
-import com.dataline.activities.PrinterSubOptionActivity;
+import com.dataline.activities.PrinterActivity;
+import com.tencent.widget.ListView;
 import com.tencent.widget.XListView;
-import java.util.List;
 
 public class ct
-  implements di
+  implements bkmq
 {
-  public ct(PrinterSubOptionActivity paramPrinterSubOptionActivity) {}
+  public ct(PrinterActivity paramPrinterActivity) {}
   
-  public void a(int paramInt)
+  public void a(int paramInt, View paramView, ListView paramListView) {}
+  
+  public boolean a(int paramInt, View paramView, ListView paramListView)
   {
-    if (this.a.jdField_a_of_type_Alqo.a != null)
+    paramInt = PrinterActivity.a(this.a).a.a();
+    if (paramInt > 0)
     {
-      List localList = this.a.jdField_a_of_type_Alqo.a.a();
-      if ((localList == null) || (localList.size() > 0)) {
-        break label79;
-      }
-      this.a.findViewById(2131365745).setVisibility(0);
-      this.a.jdField_a_of_type_ComTencentWidgetXListView.setVisibility(8);
+      PrinterActivity.a(this.a).a.a.b();
+      this.a.a.setSelectionFromBottom(paramInt, 0);
+      PrinterActivity.a(this.a).a.a.notifyDataSetChanged();
     }
-    for (;;)
-    {
-      this.a.jdField_a_of_type_Alqo.a.a();
-      return;
-      label79:
-      PrinterSubOptionActivity.a(this.a);
-    }
+    return false;
   }
+  
+  public void b(int paramInt, View paramView, ListView paramListView) {}
+  
+  public void c(int paramInt, View paramView, ListView paramListView) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ct
  * JD-Core Version:    0.7.0.1
  */

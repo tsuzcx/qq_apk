@@ -1,18 +1,26 @@
-import com.tencent.mobileqq.shortvideo.VideoEnvironment;
-import java.util.Properties;
+import android.view.GestureDetector.SimpleOnGestureListener;
+import android.view.MotionEvent;
+import dov.com.qq.im.ae.album.nocropper.AECropperImageView;
 
 public class bngw
+  extends GestureDetector.SimpleOnGestureListener
 {
-  private static int a = 10000;
+  private bngw(AECropperImageView paramAECropperImageView) {}
   
-  public static void a(String paramString, Properties paramProperties)
+  public boolean onScroll(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
   {
-    Properties localProperties = paramProperties;
-    if (paramProperties == null) {
-      localProperties = new Properties();
-    }
-    localProperties.setProperty("shortvideo_business_type", "" + a);
-    azqh.a(VideoEnvironment.a()).reportKVEvent(paramString, localProperties);
+    if (!AECropperImageView.a(this.a)) {}
+    do
+    {
+      return false;
+      if (AECropperImageView.b(this.a))
+      {
+        bnzb.d("AECropperImageView", "Cropping current bitmap. Can't perform this action right now.");
+        return false;
+      }
+    } while ((paramMotionEvent1 == null) || (paramMotionEvent2 == null) || (paramMotionEvent1.getPointerCount() > 1) || (paramMotionEvent2.getPointerCount() > 1));
+    this.a.a(paramFloat1, paramFloat2);
+    return false;
   }
 }
 

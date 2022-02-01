@@ -1,24 +1,22 @@
-import android.support.v7.widget.RecyclerView.Adapter;
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import com.tencent.biz.pubaccount.readinjoy.view.RecyclerViewWithHeaderFooterFix;
+import android.support.v7.widget.RecyclerView.AdapterDataObserver;
 
-public class rxm
-  extends bifb<RecyclerView.Adapter>
+class rxm
+  extends RecyclerView.AdapterDataObserver
 {
-  public rxm(RecyclerViewWithHeaderFooterFix paramRecyclerViewWithHeaderFooterFix, RecyclerView.Adapter paramAdapter)
-  {
-    super(paramAdapter);
-  }
+  private rxm(rwy paramrwy) {}
   
-  protected void a(RecyclerView.ViewHolder paramViewHolder, int paramInt)
+  public void onChanged() {}
+  
+  public void onItemRangeChanged(int paramInt1, int paramInt2) {}
+  
+  public void onItemRangeChanged(int paramInt1, int paramInt2, Object paramObject)
   {
-    super.a(paramViewHolder, paramInt);
-    this.a.a(paramViewHolder, paramInt);
+    onItemRangeChanged(paramInt1, paramInt2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     rxm
  * JD-Core Version:    0.7.0.1
  */

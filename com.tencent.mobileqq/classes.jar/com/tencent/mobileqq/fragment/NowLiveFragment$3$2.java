@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.fragment;
 
-import asgr;
+import aune;
 
 public class NowLiveFragment$3$2
   implements Runnable
 {
-  public NowLiveFragment$3$2(asgr paramasgr) {}
+  public NowLiveFragment$3$2(aune paramaune) {}
   
   public void run()
   {
@@ -14,7 +14,7 @@ public class NowLiveFragment$3$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.fragment.NowLiveFragment.3.2
  * JD-Core Version:    0.7.0.1
  */

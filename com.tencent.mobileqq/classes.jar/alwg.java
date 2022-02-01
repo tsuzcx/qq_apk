@@ -1,30 +1,64 @@
-import com.tencent.mobileqq.app.MayknowRecommendManager.3.1;
-import com.tencent.mobileqq.app.MayknowRecommendManager.3.2;
-import com.tencent.mobileqq.app.ThreadManager;
+import android.widget.SeekBar;
+import android.widget.SeekBar.OnSeekBarChangeListener;
+import com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity;
 import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class alwg
-  extends altm
+  implements SeekBar.OnSeekBarChangeListener
 {
-  alwg(alwd paramalwd) {}
+  public alwg(ShortVideoPlayActivity paramShortVideoPlayActivity) {}
   
-  protected void onAddFriend(String paramString)
+  public void onProgressChanged(SeekBar paramSeekBar, int paramInt, boolean paramBoolean)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("MayknowRecommendManager", 2, "onAddFriend " + paramString);
+      QLog.d("ShortVideoPlayActivity", 2, "onProgressChanged: progress = " + paramInt + ",fromUser=" + paramBoolean);
     }
-    ThreadManager.getSubThreadHandler().post(new MayknowRecommendManager.3.1(this, paramString));
+    this.a.m = true;
+    if (paramBoolean)
+    {
+      paramSeekBar = this.a;
+      paramSeekBar.h += 1;
+      ShortVideoPlayActivity.b(this.a, true);
+      ShortVideoPlayActivity.c(this.a, true);
+    }
+    this.a.b(paramInt * this.a.d / 10000L);
   }
   
-  protected void onAddReqStatesChanged(boolean paramBoolean, String paramString)
+  public void onStartTrackingTouch(SeekBar paramSeekBar)
   {
-    ThreadManager.getSubThreadHandler().post(new MayknowRecommendManager.3.2(this, paramBoolean, paramString));
+    int i = this.a.jdField_a_of_type_AndroidWidgetSeekBar.getProgress();
+    ShortVideoPlayActivity.b(this.a, true);
+    if (QLog.isColorLevel()) {
+      QLog.d("ShortVideoPlayActivity", 2, "onStartTrackingTouch: progress = " + i);
+    }
+  }
+  
+  public void onStopTrackingTouch(SeekBar paramSeekBar)
+  {
+    this.a.l();
+    ShortVideoPlayActivity localShortVideoPlayActivity = this.a;
+    localShortVideoPlayActivity.i += 1;
+    this.a.g = true;
+    int i = this.a.jdField_a_of_type_AndroidWidgetSeekBar.getProgress();
+    int j = (int)(i * this.a.d / 10000L);
+    if (QLog.isColorLevel()) {
+      QLog.d("ShortVideoPlayActivity", 2, "onStopTrackingTouch: seekProgress = " + i + ", mCacheProgress= " + ShortVideoPlayActivity.b(this.a) + ", timestamp = " + j);
+    }
+    if (this.a.jdField_a_of_type_JavaLangRefWeakReference != null)
+    {
+      if (this.a.jdField_a_of_type_Int == 2) {
+        this.a.a();
+      }
+      this.a.a(j);
+    }
+    ShortVideoPlayActivity.b(this.a, false);
+    EventCollector.getInstance().onStopTrackingTouch(paramSeekBar);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     alwg
  * JD-Core Version:    0.7.0.1
  */

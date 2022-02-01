@@ -1,0 +1,16 @@
+{
+  "effects": {
+    "filters": [
+      {
+        "effectId": "",
+        "startOffset": 0,
+        "endOffset": 0,
+        "effectType": "Pag",
+        "parameter": {
+          "filePath": "ae_editor_board_frame.pag",
+          "type": "filter"
+        }
+      }
+    ]
+  }
+}

@@ -1,52 +1,28 @@
-import android.hardware.Sensor;
-import android.hardware.SensorEvent;
-import android.hardware.SensorEventListener;
-import android.view.OrientationListener;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
+import com.tencent.mobileqq.pluginsdk.ipc.RemoteCommand.OnInvokeFinishLinstener;
 
 class bkzm
-  implements SensorEventListener
+  extends aopa
 {
-  bkzm(bkzl parambkzl) {}
-  
-  public void onAccuracyChanged(Sensor paramSensor, int paramInt) {}
-  
-  public void onSensorChanged(SensorEvent paramSensorEvent)
+  bkzm(bkzl parambkzl, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString, Bundle paramBundle, RemoteCommand.OnInvokeFinishLinstener paramOnInvokeFinishLinstener)
   {
-    float[] arrayOfFloat = paramSensorEvent.values;
-    int j = -1;
-    float f1 = -arrayOfFloat[0];
-    float f2 = -arrayOfFloat[1];
-    float f3 = -arrayOfFloat[2];
-    if ((f1 * f1 + f2 * f2) * 35.0F >= f3 * f3)
+    super(paramInt, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString);
+  }
+  
+  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  {
+    if ((paramSosoLbsInfo != null) && (paramSosoLbsInfo.a != null))
     {
-      j = 90 - Math.round(57.29578F * (float)Math.atan2(-f2, f1));
-      int i;
-      for (;;)
-      {
-        i = j;
-        if (j < 360) {
-          break;
-        }
-        j -= 360;
-      }
-      for (;;)
-      {
-        j = i;
-        if (i >= 0) {
-          break;
-        }
-        i += 360;
+      String str = paramSosoLbsInfo.a.d;
+      paramSosoLbsInfo = paramSosoLbsInfo.a.e;
+      this.jdField_a_of_type_AndroidOsBundle.putString("province", str);
+      this.jdField_a_of_type_AndroidOsBundle.putString("city", paramSosoLbsInfo);
+      if (this.jdField_a_of_type_ComTencentMobileqqPluginsdkIpcRemoteCommand$OnInvokeFinishLinstener != null) {
+        this.jdField_a_of_type_ComTencentMobileqqPluginsdkIpcRemoteCommand$OnInvokeFinishLinstener.onInvokeFinish(this.jdField_a_of_type_AndroidOsBundle);
       }
     }
-    if (bkzl.a(this.a) != null) {
-      bkzl.a(this.a).onSensorChanged(1, paramSensorEvent.values);
-    }
-    if (j != bkzl.a(this.a))
-    {
-      bkzl.a(this.a, j);
-      this.a.a(j);
-    }
-    this.a.a((f1 + 9.8F) * 180.0F / 19.6F, (f2 + 9.8F) * 180.0F / 19.6F, (f3 + 9.8F) * 180.0F / 19.6F);
   }
 }
 

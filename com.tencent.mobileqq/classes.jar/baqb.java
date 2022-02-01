@@ -1,16 +1,24 @@
 import android.view.animation.Animation;
 import android.view.animation.Animation.AnimationListener;
-import android.widget.ImageView;
+import com.tencent.mobileqq.richmedia.capture.view.CameraCaptureButtonLayout;
+import com.tencent.mobileqq.richmedia.capture.view.ProviderContainerView;
+import com.tencent.mobileqq.richmedia.capture.view.ProviderView;
 
-class baqb
+public class baqb
   implements Animation.AnimationListener
 {
-  baqb(baqa parambaqa) {}
+  public baqb(ProviderContainerView paramProviderContainerView, boolean paramBoolean) {}
   
   public void onAnimationEnd(Animation paramAnimation)
   {
-    this.a.a.d.setVisibility(8);
-    this.a.a.a = false;
+    if (ProviderContainerView.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewProviderContainerView) != null)
+    {
+      ProviderContainerView.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewProviderContainerView).setAlpha(1.0F);
+      ProviderContainerView.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewProviderContainerView).setVisibility(8);
+    }
+    if ((!this.jdField_a_of_type_Boolean) && (ProviderContainerView.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewProviderContainerView) != null)) {
+      ProviderContainerView.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewProviderContainerView).a(false, 150);
+    }
   }
   
   public void onAnimationRepeat(Animation paramAnimation) {}

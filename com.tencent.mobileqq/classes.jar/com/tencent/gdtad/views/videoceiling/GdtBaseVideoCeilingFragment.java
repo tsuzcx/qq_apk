@@ -1,8 +1,9 @@
 package com.tencent.gdtad.views.videoceiling;
 
-import aase;
-import aatp;
-import adpn;
+import acqx;
+import acqy;
+import acsj;
+import aevv;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -13,17 +14,23 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
+import com.tencent.ad.tangram.process.AdProcessManager;
 import com.tencent.ad.tangram.statistics.AdReporterForAnalysis;
 import com.tencent.gdtad.aditem.GdtAd;
 import com.tencent.mobileqq.activity.PublicFragmentActivity;
 import com.tencent.mobileqq.activity.PublicFragmentActivityForTool;
 import com.tencent.mobileqq.fragment.PublicBaseFragment;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.inject.fragment.V4FragmentCollector;
+import org.json.JSONObject;
+import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo;
 
 public abstract class GdtBaseVideoCeilingFragment
   extends PublicBaseFragment
 {
   public static String a;
   public static String b = "key_ad_position";
+  public static String c = "key_from_process_name";
   private GdtVideoCeilingView a;
   
   static
@@ -31,37 +38,69 @@ public abstract class GdtBaseVideoCeilingFragment
     jdField_a_of_type_JavaLangString = "key_result_receiver";
   }
   
+  public static void a(Activity paramActivity, Class<? extends GdtBaseVideoCeilingFragment> paramClass, GdtVideoCeilingData paramGdtVideoCeilingData)
+  {
+    a(paramActivity, paramClass, paramGdtVideoCeilingData, null);
+  }
+  
   public static void a(Activity paramActivity, Class<? extends GdtBaseVideoCeilingFragment> paramClass, GdtVideoCeilingData paramGdtVideoCeilingData, Bundle paramBundle)
   {
     if ((paramActivity == null) || (paramGdtVideoCeilingData == null) || (!paramGdtVideoCeilingData.isValid()))
     {
-      aase.d("GdtBaseVideoCeilingFragment", "start error");
+      acqy.d("GdtBaseVideoCeilingFragment", "start error");
       return;
     }
-    aase.b("GdtBaseVideoCeilingFragment", "start");
-    Bundle localBundle = new Bundle();
+    acqy.b("GdtBaseVideoCeilingFragment", "start");
+    Object localObject = new Bundle();
     if ((paramBundle != null) && (!paramBundle.isEmpty())) {
-      localBundle.putAll(paramBundle);
+      ((Bundle)localObject).putAll(paramBundle);
     }
-    localBundle.putSerializable("data", paramGdtVideoCeilingData);
-    paramBundle = new Intent();
+    a(paramGdtVideoCeilingData);
+    ((Bundle)localObject).putSerializable("data", paramGdtVideoCeilingData);
+    Intent localIntent = new Intent();
     if ((paramGdtVideoCeilingData.getAd() != null) && (paramGdtVideoCeilingData.getAd().getNocoId() != 0L)) {
-      paramBundle.putExtra("GdtNocoId", paramGdtVideoCeilingData.getAd().getNocoId());
+      localIntent.putExtra("GdtNocoId", paramGdtVideoCeilingData.getAd().getNocoId());
     }
-    paramBundle.putExtra("public_fragment_window_feature", 1);
-    paramBundle.putExtra("big_brother_source_key", "biz_src_ads");
-    paramBundle.putExtras(localBundle);
-    if (TextUtils.isEmpty(paramBundle.getStringExtra("big_brother_ref_source_key"))) {
-      aase.d("GdtBaseVideoCeilingFragment", "start gdt empty refId");
+    localIntent.putExtra("public_fragment_window_feature", 1);
+    localIntent.putExtra("big_brother_source_key", "biz_src_ads");
+    localIntent.putExtras((Bundle)localObject);
+    if (TextUtils.isEmpty(localIntent.getStringExtra("big_brother_ref_source_key"))) {
+      acqy.d("GdtBaseVideoCeilingFragment", "start gdt empty refId");
     }
-    if (paramGdtVideoCeilingData.getStyle() == 4) {
-      adpn.a(paramActivity, paramBundle, PublicFragmentActivity.class, paramClass);
+    localObject = AdProcessManager.INSTANCE.getCurrentProcessName(paramActivity);
+    if (paramGdtVideoCeilingData.getStyle() == 4)
+    {
+      paramBundle = AdProcessManager.INSTANCE.getMainProcessName();
+      if (!TextUtils.isEmpty((CharSequence)localObject)) {
+        localIntent.putExtra(c, (String)localObject);
+      }
+      if (paramGdtVideoCeilingData.getStyle() != 4) {
+        break label240;
+      }
+      aevv.a(paramActivity, localIntent, PublicFragmentActivity.class, paramClass);
     }
     for (;;)
     {
-      AdReporterForAnalysis.reportForStartActivity(paramActivity, paramGdtVideoCeilingData.getAd(), "GdtBaseVideoCeilingFragment");
+      AdReporterForAnalysis.reportForStartActivity(paramActivity, paramGdtVideoCeilingData.getAd(), "GdtBaseVideoCeilingFragment", paramBundle);
       return;
-      adpn.a(paramActivity, paramBundle, PublicFragmentActivityForTool.class, paramClass);
+      paramBundle = AdProcessManager.INSTANCE.getWebProcessName();
+      break;
+      label240:
+      aevv.a(paramActivity, localIntent, PublicFragmentActivityForTool.class, paramClass);
+    }
+  }
+  
+  protected static void a(GdtVideoCeilingData paramGdtVideoCeilingData)
+  {
+    try
+    {
+      String str = acqx.a(paramGdtVideoCeilingData.getAd().info).toString();
+      paramGdtVideoCeilingData.getAd().info = ((qq_ad_get.QQAdGetRsp.AdInfo)qq_ad_get.QQAdGetRsp.AdInfo.class.cast(acqx.a(new qq_ad_get.QQAdGetRsp.AdInfo(), new JSONObject(str))));
+      return;
+    }
+    catch (Exception paramGdtVideoCeilingData)
+    {
+      QLog.e("GdtBaseVideoCeilingFragment", 1, paramGdtVideoCeilingData, new Object[0]);
     }
   }
   
@@ -118,18 +157,23 @@ public abstract class GdtBaseVideoCeilingFragment
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    AdReporterForAnalysis.reportForActivityStatusChanged(getActivity(), null, "GdtBaseVideoCeilingFragment", 1);
-    paramLayoutInflater = paramLayoutInflater.inflate(2131559153, paramViewGroup, false);
-    this.jdField_a_of_type_ComTencentGdtadViewsVideoceilingGdtVideoCeilingView = ((GdtVideoCeilingView)paramLayoutInflater.findViewById(2131379854));
-    aatp.a(this.jdField_a_of_type_ComTencentGdtadViewsVideoceilingGdtVideoCeilingView);
-    this.jdField_a_of_type_ComTencentGdtadViewsVideoceilingGdtVideoCeilingView.a(paramBundle);
-    if ((getArguments() != null) && ((getArguments().getSerializable("data") instanceof GdtVideoCeilingData))) {
-      this.jdField_a_of_type_ComTencentGdtadViewsVideoceilingGdtVideoCeilingView.setData((GdtVideoCeilingData)getArguments().getSerializable("data"));
+    if ((getArguments() != null) && (getArguments().containsKey(c))) {}
+    for (String str = getArguments().getString(c);; str = null)
+    {
+      AdReporterForAnalysis.reportForActivityStatusChanged(getActivity(), null, "GdtBaseVideoCeilingFragment", 1, str);
+      paramLayoutInflater = paramLayoutInflater.inflate(2131559232, paramViewGroup, false);
+      this.jdField_a_of_type_ComTencentGdtadViewsVideoceilingGdtVideoCeilingView = ((GdtVideoCeilingView)paramLayoutInflater.findViewById(2131380809));
+      acsj.a(this.jdField_a_of_type_ComTencentGdtadViewsVideoceilingGdtVideoCeilingView);
+      this.jdField_a_of_type_ComTencentGdtadViewsVideoceilingGdtVideoCeilingView.a(paramBundle);
+      if ((getArguments() != null) && ((getArguments().getSerializable("data") instanceof GdtVideoCeilingData))) {
+        this.jdField_a_of_type_ComTencentGdtadViewsVideoceilingGdtVideoCeilingView.setData((GdtVideoCeilingData)getArguments().getSerializable("data"));
+      }
+      if ((getActivity() != null) && (getActivity().getWindow() != null)) {
+        getActivity().getWindow().setSoftInputMode(16);
+      }
+      V4FragmentCollector.onV4FragmentViewCreated(this, paramLayoutInflater);
+      return paramLayoutInflater;
     }
-    if ((getActivity() != null) && (getActivity().getWindow() != null)) {
-      getActivity().getWindow().setSoftInputMode(16);
-    }
-    return paramLayoutInflater;
   }
   
   public void onDestroy()
@@ -158,7 +202,7 @@ public abstract class GdtBaseVideoCeilingFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.gdtad.views.videoceiling.GdtBaseVideoCeilingFragment
  * JD-Core Version:    0.7.0.1
  */

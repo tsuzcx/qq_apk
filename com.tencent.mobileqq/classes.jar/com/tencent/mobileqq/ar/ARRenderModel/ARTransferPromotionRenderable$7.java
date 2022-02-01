@@ -1,54 +1,63 @@
 package com.tencent.mobileqq.ar.ARRenderModel;
 
-import amtd;
-import amtj;
-import amvj;
-import amvq;
-import amvs;
-import anag;
-import anta;
+import aoru;
+import aosa;
+import aoua;
+import aouh;
+import aouj;
+import aoyx;
+import aptf;
 import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.superplayer.api.ISPlayerPreDownloader;
 import java.util.ArrayList;
 import mqq.os.MqqHandler;
 
 public class ARTransferPromotionRenderable$7
   implements Runnable
 {
-  public ARTransferPromotionRenderable$7(amvq paramamvq) {}
+  public ARTransferPromotionRenderable$7(aouh paramaouh) {}
   
   public void run()
   {
-    if (amvq.a(this.this$0) == 6)
+    if (aouh.a(this.this$0) == 6)
     {
-      if ((amvq.a(this.this$0) != null) && (amvq.a(this.this$0)))
+      if ((aouh.a(this.this$0) != null) && (aouh.a(this.this$0)))
       {
-        amvq.a(this.this$0).b(1, 0);
-        amvq.a(this.this$0, false);
+        aouh.a(this.this$0).b(1, 0);
+        aouh.a(this.this$0, false);
       }
-      if ((amvq.a(this.this$0) != null) && (amvq.b(this.this$0))) {
-        amvq.a(this.this$0).a();
+      if ((aouh.a(this.this$0) != null) && (aouh.b(this.this$0))) {
+        aouh.a(this.this$0).a();
       }
-      if (amvq.a(this.this$0) != null) {
-        amvq.a(this.this$0).a(amvq.a(this.this$0).a);
+      if ((aouh.b(this.this$0) != -1) && (aouh.a(this.this$0) != null))
+      {
+        aouh.a(this.this$0).stopPreDownload(aouh.b(this.this$0));
+        aouh.a(this.this$0, -1);
       }
-      if (amvq.a(this.this$0) == 6) {
-        amvq.a(this.this$0, 7);
+      if (aouh.a(this.this$0) != null) {
+        aouh.a(this.this$0).destory();
       }
-      amvq.a(this.this$0).a();
-      if (amvq.a(this.this$0) != null) {
+      if (aouh.a(this.this$0) != null) {
+        aouh.a(this.this$0).a(aouh.a(this.this$0).a);
+      }
+      if (aouh.a(this.this$0) == 6) {
+        aouh.a(this.this$0, 7);
+      }
+      aouh.a(this.this$0).a();
+      if (aouh.a(this.this$0) != null) {
         ThreadManager.getUIHandler().post(new ARTransferPromotionRenderable.7.1(this));
       }
     }
-    synchronized (amvq.a(this.this$0))
+    synchronized (aouh.a(this.this$0))
     {
-      amvq.a(this.this$0).clear();
-      amvq.a(this.this$0).c();
-      amvq.a(this.this$0);
-      if (amvq.a(this.this$0) != null)
+      aouh.a(this.this$0).clear();
+      aouh.a(this.this$0).c();
+      aouh.a(this.this$0);
+      if (aouh.a(this.this$0) != null)
       {
-        amvq.a(this.this$0).b();
-        amvq.a(this.this$0).a();
-        amvq.a(this.this$0, null);
+        aouh.a(this.this$0).b();
+        aouh.a(this.this$0).a();
+        aouh.a(this.this$0, null);
       }
       return;
     }
@@ -56,7 +65,7 @@ public class ARTransferPromotionRenderable$7
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.ARRenderModel.ARTransferPromotionRenderable.7
  * JD-Core Version:    0.7.0.1
  */

@@ -4,24 +4,24 @@ import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.RecyclerView.Adapter;
 import android.util.AttributeSet;
-import astu;
-import aswi;
+import avbd;
+import avdr;
 import com.tencent.qphone.base.util.QLog;
 
 public class FooterRecyclerView
   extends RecyclerView
 {
-  astu a;
+  avbd a;
   
   public FooterRecyclerView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
   }
   
-  public void a(astu paramastu)
+  public void a(avbd paramavbd)
   {
     if (getAdapter() != null) {}
-    this.a = paramastu;
+    this.a = paramavbd;
   }
   
   public void setAdapter(RecyclerView.Adapter paramAdapter)
@@ -29,7 +29,7 @@ public class FooterRecyclerView
     Object localObject = paramAdapter;
     if (this.a != null)
     {
-      localObject = new aswi(paramAdapter, this.a);
+      localObject = new avdr(paramAdapter, this.a);
       if (QLog.isColorLevel()) {
         QLog.d("FooterRecyclerView", 2, "has footer");
       }
@@ -39,7 +39,7 @@ public class FooterRecyclerView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.hotpic.FooterRecyclerView
  * JD-Core Version:    0.7.0.1
  */

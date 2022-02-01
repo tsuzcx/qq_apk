@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy.view;
 
-import pcv;
+import ptq;
 
 class ReadInJoyListViewGroup$21
   implements Runnable
@@ -10,13 +10,13 @@ class ReadInJoyListViewGroup$21
   public void run()
   {
     if ((this.this$0.a != null) && (!this.this$0.a.a())) {
-      pcv.a(this.this$0.a, true);
+      ptq.a(this.this$0.a, true);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup.21
  * JD-Core Version:    0.7.0.1
  */

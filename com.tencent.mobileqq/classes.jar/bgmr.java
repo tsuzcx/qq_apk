@@ -1,479 +1,85 @@
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
-import com.tencent.qqmini.sdk.core.widget.CapsuleButton;
-import com.tencent.qqmini.sdk.launcher.model.ShareChatModel;
-import com.tencent.qqmini.sdk.launcher.model.ShareState;
-import com.tencent.qqmini.sdk.log.QMLog;
-import java.util.HashMap;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.SplashActivity;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
 
-public class bgmr
-  implements bgmc<Boolean>
+class bgmr
+  extends niv
 {
-  private int jdField_a_of_type_Int;
-  private Bundle jdField_a_of_type_AndroidOsBundle;
+  bgmr(bgmp parambgmp, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6) {}
   
-  private int a(bglv parambglv)
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    return bgml.a(parambglv).a();
-  }
-  
-  public static bgmr a(int paramInt)
-  {
-    return a(paramInt, null);
-  }
-  
-  public static bgmr a(int paramInt, Bundle paramBundle)
-  {
-    bgmr localbgmr = new bgmr();
-    localbgmr.jdField_a_of_type_Int = paramInt;
-    localbgmr.jdField_a_of_type_AndroidOsBundle = paramBundle;
-    return localbgmr;
-  }
-  
-  private String a(bglv parambglv)
-  {
-    return bgml.a(parambglv).a();
-  }
-  
-  private void a(bgls parambgls, CapsuleButton paramCapsuleButton, ShareState paramShareState)
-  {
-    JSONObject localJSONObject = new JSONObject();
-    Object localObject2 = "onShareAppMessage";
-    Object localObject1 = localObject2;
-    for (;;)
+    if (paramInt == 0) {}
+    for (boolean bool = true;; bool = false)
     {
-      try
+      aukw.a("KEY_STAGE_2_CONNECT_MINI_D55", bool);
+      if (this.jdField_a_of_type_Bgmp.h)
       {
-        if (paramShareState.launchFrom == 1)
-        {
-          String str = "showActionSheet";
-          localObject2 = str;
-          localObject1 = str;
-          if (paramCapsuleButton.jdField_a_of_type_JavaUtilHashMap == null) {
-            continue;
-          }
-          localObject1 = str;
-          localJSONObject.put("tapIndex", paramCapsuleButton.jdField_a_of_type_JavaUtilHashMap.get("tapIndexQQ"));
-          localObject1 = "showActionSheet";
-          localObject2 = localObject1;
-        }
+        this.jdField_a_of_type_Bgmp.h = false;
+        this.jdField_a_of_type_Bgmp.c();
       }
-      catch (JSONException localJSONException1) {}
-      try
-      {
-        if (!parambgls.b())
-        {
-          localObject2 = localObject1;
-          if (a(parambgls) != null)
-          {
-            localJSONObject.put("webViewUrl", a(parambgls));
-            localObject2 = localObject1;
-          }
-        }
-        paramShareState.fromShareMenuBtn = 0;
-        if (parambgls.a() != null)
-        {
-          if (paramShareState.launchFrom != 1) {
-            break;
-          }
-          paramShareState = bgop.a((String)localObject2, localJSONObject);
-          if (paramShareState == null) {
-            break label212;
-          }
-          paramShareState = paramShareState.toString();
-          parambgls.a().a(paramCapsuleButton.jdField_a_of_type_Int, paramShareState);
-        }
-        return;
+      if (!this.jdField_a_of_type_Bgmp.g) {
+        break;
       }
-      catch (JSONException localJSONException2)
-      {
-        Object localObject3;
-        break label196;
-      }
-      localObject1 = localObject2;
-      localJSONObject.put("fromShareButton", 0);
-      localObject1 = localObject2;
-      localJSONObject.put("shareTarget", 0);
-      localObject1 = localObject2;
-      continue;
-      label196:
-      QMLog.e("Action", "on forward aio click exception ", localJSONException1);
-      localObject3 = localObject1;
-      continue;
-      label212:
-      paramShareState = "";
-    }
-    parambgls.a().a(localObject3, localJSONObject.toString(), a(parambgls));
-  }
-  
-  private void a(bgls parambgls, ShareState paramShareState, int paramInt)
-  {
-    JSONObject localJSONObject = new JSONObject();
-    try
-    {
-      localJSONObject.put("fromShareButton", 0);
-      localJSONObject.put("shareTarget", paramInt);
-      if ((!parambgls.b()) && (a(parambgls) != null)) {
-        localJSONObject.put("webViewUrl", a(parambgls));
-      }
-      paramShareState.fromShareMenuBtn = paramInt;
-      if (parambgls.a() != null)
-      {
-        parambgls.a().a("onShareAppMessage", localJSONObject.toString(), a(parambgls));
-        return;
-      }
-    }
-    catch (JSONException localJSONException)
-    {
-      for (;;)
-      {
-        QMLog.e("Action", "on forward wechat moment exception ", localJSONException);
-      }
-      QMLog.e("Action", "on forward wechat moments click exception js service==null");
-    }
-  }
-  
-  private void b(bgls parambgls, CapsuleButton paramCapsuleButton, ShareState paramShareState)
-  {
-    JSONObject localJSONObject = new JSONObject();
-    Object localObject2 = "onShareAppMessage";
-    Object localObject1 = localObject2;
-    for (;;)
-    {
-      try
-      {
-        if (paramShareState.launchFrom == 1)
-        {
-          String str = "showActionSheet";
-          localObject2 = str;
-          localObject1 = str;
-          if (paramCapsuleButton.jdField_a_of_type_JavaUtilHashMap == null) {
-            continue;
-          }
-          localObject1 = str;
-          localJSONObject.put("tapIndex", paramCapsuleButton.jdField_a_of_type_JavaUtilHashMap.get("tapIndexQZONE"));
-          localObject1 = "showActionSheet";
-          localObject2 = localObject1;
-        }
-      }
-      catch (JSONException localJSONException1) {}
-      try
-      {
-        if (!parambgls.b())
-        {
-          localObject2 = localObject1;
-          if (a(parambgls) != null)
-          {
-            localJSONObject.put("webViewUrl", a(parambgls));
-            localObject2 = localObject1;
-          }
-        }
-        paramShareState.fromShareMenuBtn = 1;
-        if (parambgls.a() == null) {
-          break label240;
-        }
-        if (paramShareState.launchFrom != 1) {
-          break;
-        }
-        paramShareState = bgop.a((String)localObject2, localJSONObject);
-        if (paramShareState == null) {
-          break label212;
-        }
-        paramShareState = paramShareState.toString();
-        parambgls.a().a(paramCapsuleButton.jdField_a_of_type_Int, paramShareState);
-        return;
-      }
-      catch (JSONException localJSONException2)
-      {
-        Object localObject3;
-        break label196;
-      }
-      localObject1 = localObject2;
-      localJSONObject.put("fromShareButton", 0);
-      localObject1 = localObject2;
-      localJSONObject.put("shareTarget", 1);
-      localObject1 = localObject2;
-      continue;
-      label196:
-      QMLog.e("Action", "on forward qzone click exception ", localJSONException1);
-      localObject3 = localObject1;
-      continue;
-      label212:
-      paramShareState = "";
-    }
-    parambgls.a().a(localObject3, localJSONObject.toString(), a(parambgls));
-    return;
-    label240:
-    QMLog.e("Action", "on forward qzone click exception mGameJsPluginEngine==null");
-  }
-  
-  private void c(bgls parambgls, CapsuleButton paramCapsuleButton, ShareState paramShareState)
-  {
-    JSONObject localJSONObject = new JSONObject();
-    Object localObject = "onShareAppMessage";
-    for (;;)
-    {
-      try
-      {
-        if (paramShareState.launchFrom == 1)
-        {
-          String str = "showActionSheet";
-          localObject = str;
-          if (paramCapsuleButton.jdField_a_of_type_JavaUtilHashMap != null)
-          {
-            localJSONObject.put("tapIndex", paramCapsuleButton.jdField_a_of_type_JavaUtilHashMap.get("tapIndexWX"));
-            localObject = str;
-          }
-          if ((!parambgls.b()) && (a(parambgls) != null)) {
-            localJSONObject.put("webViewUrl", a(parambgls));
-          }
-          paramShareState.fromShareMenuBtn = 3;
-          if (parambgls.a() == null) {
-            break label196;
-          }
-          if (paramShareState.launchFrom != 1) {
-            break;
-          }
-          paramShareState = bgop.a((String)localObject, localJSONObject);
-          if (paramShareState != null)
-          {
-            paramShareState = paramShareState.toString();
-            parambgls.a().a(paramCapsuleButton.jdField_a_of_type_Int, paramShareState);
-          }
-        }
-        else
-        {
-          localJSONObject.put("fromShareButton", 0);
-          localJSONObject.put("shareTarget", 3);
-          continue;
-        }
-        paramShareState = "";
-      }
-      catch (JSONException parambgls)
-      {
-        QMLog.e("Action", "on forward wechat friends click exception ", parambgls);
-        return;
-      }
-    }
-    parambgls.a().a((String)localObject, localJSONObject.toString(), a(parambgls));
-    return;
-    label196:
-    QMLog.e("Action", "on forward wx friends click exception js service==null");
-  }
-  
-  private void d(bgls parambgls, CapsuleButton paramCapsuleButton, ShareState paramShareState)
-  {
-    if (this.jdField_a_of_type_AndroidOsBundle == null) {
+      QQToast.a(this.jdField_a_of_type_Bgmp.jdField_a_of_type_AndroidContentContext, 1, 2131698373, 1).a();
+      paramArrayOfByte = new Intent(this.jdField_a_of_type_Bgmp.jdField_a_of_type_AndroidContentContext, SplashActivity.class);
+      paramArrayOfByte.addFlags(67108864);
+      paramArrayOfByte.addFlags(268435456);
+      this.jdField_a_of_type_Bgmp.jdField_a_of_type_AndroidContentContext.startActivity(paramArrayOfByte);
+      bgmp.c(this.jdField_a_of_type_Bgmp);
       return;
     }
-    Object localObject2 = this.jdField_a_of_type_AndroidOsBundle.getString("key_mini_app_share_chat_uin");
-    int i = this.jdField_a_of_type_AndroidOsBundle.getInt("key_mini_app_share_chat_type");
-    Object localObject1 = this.jdField_a_of_type_AndroidOsBundle.getString("key_mini_app_share_chat_name");
-    long l2 = -1L;
-    long l1 = l2;
-    if (localObject2 != null) {}
-    JSONObject localJSONObject;
-    for (;;)
-    {
-      try
-      {
-        l1 = Long.valueOf((String)localObject2).longValue();
-        localShareChatModel = new ShareChatModel(i, l1, (String)localObject1);
-        localJSONObject = new JSONObject();
-        localObject2 = "onShareAppMessage";
-        localObject1 = localObject2;
-      }
-      catch (Throwable localThrowable)
-      {
-        ShareChatModel localShareChatModel;
-        try
-        {
-          if (paramShareState.launchFrom == 1)
-          {
-            String str = "showActionSheet";
-            localObject2 = str;
-            localObject1 = str;
-            if (paramCapsuleButton.jdField_a_of_type_JavaUtilHashMap == null) {
-              continue;
-            }
-            localObject1 = str;
-            localJSONObject.put("tapIndex", -1);
-            localObject1 = "showActionSheet";
-          }
-        }
-        catch (JSONException localJSONException1) {}
-        try
-        {
-          if ((!parambgls.b()) && (a(parambgls) != null)) {
-            localJSONObject.put("webViewUrl", a(parambgls));
-          }
-          localJSONObject.put("chatDataHash", localShareChatModel.getEntryHash());
-          paramShareState.fromShareMenuBtn = 0;
-          paramShareState.shareChatModel = localShareChatModel;
-          if (parambgls.a() == null) {
-            break label333;
-          }
-          if (paramShareState.launchFrom != 1) {
-            break;
-          }
-          paramShareState = bgop.a((String)localObject1, localJSONObject);
-          if (paramShareState == null) {
-            break label305;
-          }
-          paramShareState = paramShareState.toString();
-          parambgls.a().a(paramCapsuleButton.jdField_a_of_type_Int, paramShareState);
-          return;
-        }
-        catch (JSONException localJSONException2)
-        {
-          break label293;
-        }
-        localThrowable = localThrowable;
-        QMLog.e("Action", "handleShareChatDirectly get an exception ", localThrowable);
-        l1 = l2;
-        continue;
-        localObject1 = localThrowable;
-        localJSONObject.put("fromShareButton", 0);
-        localObject1 = localThrowable;
-        localJSONObject.put("shareTarget", 5);
-        localObject1 = localThrowable;
-        continue;
-      }
-      label293:
-      QMLog.e("Action", "on forward directly click exception ", localJSONException1);
-      continue;
-      label305:
-      paramShareState = "";
+    if (this.jdField_a_of_type_Bgmp.jdField_a_of_type_AndroidOsHandler != null) {
+      this.jdField_a_of_type_Bgmp.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
     }
-    parambgls.a().a((String)localObject1, localJSONObject.toString(), a(parambgls));
-    return;
-    label333:
-    QMLog.e("Action", "on forward directly click exception js service==null");
-  }
-  
-  private void e(bgls parambgls, CapsuleButton paramCapsuleButton, ShareState paramShareState)
-  {
-    JSONObject localJSONObject = new JSONObject();
-    Object localObject2 = "onShareAppMessage";
-    Object localObject1 = localObject2;
-    for (;;)
+    paramBundle = bgmp.a(this.jdField_a_of_type_Bgmp);
+    if (paramInt == 0)
     {
-      try
-      {
-        if (paramShareState.launchFrom == 1)
-        {
-          String str = "showActionSheet";
-          localObject2 = str;
-          localObject1 = str;
-          if (paramCapsuleButton.jdField_a_of_type_JavaUtilHashMap == null) {
-            continue;
-          }
-          localObject1 = str;
-          localJSONObject.put("tapIndex", paramCapsuleButton.jdField_a_of_type_JavaUtilHashMap.get("tapIndexWXMoments"));
-          localObject1 = "showActionSheet";
-          localObject2 = localObject1;
-        }
-      }
-      catch (JSONException localJSONException1) {}
-      try
-      {
-        if (!parambgls.b())
-        {
-          localObject2 = localObject1;
-          if (a(parambgls) != null)
-          {
-            localJSONObject.put("webViewUrl", a(parambgls));
-            localObject2 = localObject1;
-          }
-        }
-        paramShareState.fromShareMenuBtn = 4;
-        if (parambgls.a() == null) {
-          break label240;
-        }
-        if (paramShareState.launchFrom != 1) {
-          break;
-        }
-        paramShareState = bgop.a((String)localObject2, localJSONObject);
-        if (paramShareState == null) {
-          break label212;
-        }
-        paramShareState = paramShareState.toString();
-        parambgls.a().a(paramCapsuleButton.jdField_a_of_type_Int, paramShareState);
-        return;
-      }
-      catch (JSONException localJSONException2)
-      {
-        Object localObject3;
-        break label196;
-      }
-      localObject1 = localObject2;
-      localJSONObject.put("fromShareButton", 0);
-      localObject1 = localObject2;
-      localJSONObject.put("shareTarget", 4);
-      localObject1 = localObject2;
-      continue;
-      label196:
-      QMLog.e("Action", "on forward wechat moment exception ", localJSONException1);
-      localObject3 = localObject1;
-      continue;
-      label212:
-      paramShareState = "";
-    }
-    parambgls.a().a(localObject3, localJSONObject.toString(), a(parambgls));
-    return;
-    label240:
-    QMLog.e("Action", "on forward wechat moments click exception js service==null");
-  }
-  
-  public Boolean a(bgls parambgls)
-  {
-    ShareState localShareState = parambgls.a();
-    if (localShareState == null)
-    {
-      QMLog.e("Action", "Failed to perform " + this + ". shareState is null");
-      return Boolean.valueOf(false);
-    }
-    Object localObject = parambgls.a();
-    if (localObject == null)
-    {
-      QMLog.e("Action", "Failed to perform " + this + ". page is null");
-      return Boolean.valueOf(false);
-    }
-    localObject = ((bglx)localObject).a();
-    if (localObject == null)
-    {
-      QMLog.e("Action", "Failed to perform " + this + ". capsuleButton is null");
-      return Boolean.valueOf(false);
-    }
-    switch (this.jdField_a_of_type_Int)
-    {
+      bcst.b(this.jdField_a_of_type_Bgmp.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc01160", "", "", "0X800A51A", "0X800A51A", 0, 0, "", "", this.jdField_a_of_type_JavaLangString, this.b);
+      paramBundle.putExtra("mini_app_id", this.b);
+      paramBundle.putExtra("mini_app_path", this.c);
+      paramBundle.putExtra("mini_app_type", this.d);
     }
     for (;;)
     {
-      return Boolean.valueOf(true);
-      a(parambgls, (CapsuleButton)localObject, localShareState);
-      continue;
-      b(parambgls, (CapsuleButton)localObject, localShareState);
-      continue;
-      c(parambgls, (CapsuleButton)localObject, localShareState);
-      continue;
-      e(parambgls, (CapsuleButton)localObject, localShareState);
-      continue;
-      d(parambgls, (CapsuleButton)localObject, localShareState);
-      continue;
-      if (this.jdField_a_of_type_AndroidOsBundle == null)
+      this.jdField_a_of_type_Bgmp.jdField_a_of_type_AndroidContentContext.startActivity(paramBundle);
+      bgmp.c(this.jdField_a_of_type_Bgmp);
+      return;
+      if (paramInt == 25501)
       {
-        QMLog.e("Action", "Failed to share to other, data is null");
-        return Boolean.valueOf(false);
+        if (QLog.isColorLevel()) {
+          QLog.i("JumpAction", 2, "Account not the same");
+        }
+        bcst.b(this.jdField_a_of_type_Bgmp.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc01160", "", "", "0X800A51A", "0X800A51A", 0, 0, "", "", this.jdField_a_of_type_JavaLangString, this.b);
+        paramBundle.putExtra("mini_app_id", this.b);
+        paramBundle.putExtra("mini_app_path", this.c);
+        paramBundle.putExtra("mini_app_type", this.d);
+        paramBundle.putExtra("openid", this.e);
+        paramBundle.putExtra("appid", this.jdField_a_of_type_JavaLangString);
+        paramBundle.putExtra("pull_show_open_id_diff_main", true);
       }
-      a(parambgls, localShareState, this.jdField_a_of_type_AndroidOsBundle.getInt("id", 0));
+      else
+      {
+        paramArrayOfByte = anlu.a(paramArrayOfByte);
+        bcst.b(this.jdField_a_of_type_Bgmp.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc01160", "", "", "0X800A51B", "0X800A51B", 0, paramInt, "", "", this.jdField_a_of_type_JavaLangString, this.b);
+        if (paramInt == 25601)
+        {
+          paramBundle.putExtra("pull_mini_app_not_privilege_not_bind", true);
+          paramBundle.putExtra("pull_mini_app_not_privilege_not_bind_app_name", this.f);
+        }
+        paramBundle.putExtra("pull_mini_app_not_privilege", true);
+        paramBundle.putExtra("pull_mini_app_not_privilege_string", paramArrayOfByte);
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bgmr
  * JD-Core Version:    0.7.0.1
  */

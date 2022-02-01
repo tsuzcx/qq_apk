@@ -1,213 +1,138 @@
-import UserGrowth.stFeed;
-import UserGrowth.stSimpleGetFeedListRsp;
-import UserGrowth.stSimpleMetaFeed;
+import android.content.Context;
+import android.graphics.Color;
+import android.graphics.Typeface;
+import android.graphics.drawable.Drawable;
 import android.text.TextUtils;
-import com.qq.taf.jce.JceInputStream;
-import com.qq.taf.jce.JceOutputStream;
-import com.qq.taf.jce.JceStruct;
-import com.tencent.biz.pubaccount.weishi_new.cache.WeiShiCacheManager.1;
-import com.tencent.biz.pubaccount.weishi_new.cache.WeiShiCacheManager.2;
-import com.tencent.biz.pubaccount.weishi_new.cache.WeiShiCacheManager.3;
-import com.tencent.biz.pubaccount.weishi_new.cache.WeiShiCacheManager.4;
-import com.tencent.biz.pubaccount.weishi_new.cache.WeiShiCacheManager.5;
-import com.tencent.biz.pubaccount.weishi_new.cache.WeiShiCacheManager.6;
-import com.tencent.biz.pubaccount.weishi_new.cache.WeiShiCacheManager.8;
-import com.tencent.biz.pubaccount.weishi_new.cache.WeiShiCacheManager.9;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.biz.pubaccount.readinjoy.model.CommunityConfigInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.headers.ReadInJoyDiandianHeaderController;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.ThreadManager;
-import cooperation.qzone.LocalMultiProcConfig;
-import java.io.File;
-import java.util.ArrayList;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.widget.SquareImageView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.util.List;
-import mqq.util.WeakReference;
+import java.util.Set;
 
 public class tcq
+  extends BaseAdapter
 {
-  private stSimpleGetFeedListRsp a(int paramInt)
+  int jdField_a_of_type_Int;
+  List<CommunityConfigInfo> jdField_a_of_type_JavaUtilList;
+  
+  public tcq(List<CommunityConfigInfo> paramList)
   {
-    return (stSimpleGetFeedListRsp)a(new stSimpleGetFeedListRsp(), paramInt);
+    Object localObject;
+    this.jdField_a_of_type_JavaUtilList = localObject;
   }
   
-  private <T extends JceStruct> T a(T paramT, int paramInt)
+  public int getCount()
   {
-    String str = "";
-    if (paramInt == 1) {
-      str = a();
-    }
-    while (TextUtils.isEmpty(str))
-    {
-      return null;
-      if (paramInt == 2) {
-        str = b();
-      } else if (paramInt == 3) {
-        str = c();
-      }
-    }
-    return a(paramT, bdhb.a(str));
+    return this.jdField_a_of_type_JavaUtilList.size() + 1;
   }
   
-  private String a()
+  public Object getItem(int paramInt)
   {
-    return BaseApplicationImpl.getApplication().getCacheDir().getAbsolutePath() + "/file/weishi/ws_recommend_data";
-  }
-  
-  public static tcq a()
-  {
-    return tcr.a();
-  }
-  
-  private boolean a(JceStruct paramJceStruct, String paramString, int paramInt)
-  {
-    if (paramInt <= 0) {}
-    byte[] arrayOfByte;
-    do
-    {
-      return false;
-      arrayOfByte = a(paramJceStruct);
-    } while ((arrayOfByte == null) || (arrayOfByte.length <= 0));
-    boolean bool = bdhb.a(arrayOfByte, paramString, false);
-    paramString = new StringBuilder().append("write cache to ").append(paramString);
-    if (bool) {}
-    for (paramJceStruct = " succeed";; paramJceStruct = " failed")
-    {
-      tlo.d("WeiShiCacheManager", paramJceStruct + ", cache list size = " + paramInt + ", bytes length = " + arrayOfByte.length);
-      return bool;
-    }
-  }
-  
-  private int b()
-  {
-    return tee.a().f();
-  }
-  
-  private String b()
-  {
-    return BaseApplicationImpl.getApplication().getCacheDir().getAbsolutePath() + "/file/weishi/ws_reddot_data";
-  }
-  
-  private int c()
-  {
-    return tel.a().a;
-  }
-  
-  private String c()
-  {
-    return BaseApplicationImpl.getApplication().getCacheDir().getAbsolutePath() + "/file/weishi/ws_follow_data";
-  }
-  
-  public int a()
-  {
-    return LocalMultiProcConfig.getInt("weishi_usergrowth", "key_red_msg_valid_count", 0);
-  }
-  
-  public <T extends JceStruct> T a(T paramT, byte[] paramArrayOfByte)
-  {
-    if ((paramArrayOfByte == null) || (paramArrayOfByte.length == 0)) {
-      return null;
-    }
-    try
-    {
-      paramArrayOfByte = new JceInputStream(paramArrayOfByte);
-      paramArrayOfByte.setServerEncoding("utf8");
-      paramT.readFrom(paramArrayOfByte);
-      return paramT;
-    }
-    catch (Exception paramT)
-    {
-      paramT.printStackTrace();
+    if ((this.jdField_a_of_type_JavaUtilList != null) && (paramInt < getCount() - 1) && (paramInt >= 0)) {
+      return this.jdField_a_of_type_JavaUtilList.get(paramInt);
     }
     return null;
   }
   
-  public void a()
+  public long getItemId(int paramInt)
   {
-    ThreadManager.executeOnFileThread(new WeiShiCacheManager.9(this));
+    return paramInt;
   }
   
-  public void a(List<stFeed> paramList)
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    if (c() == 0) {
-      ThreadManager.executeOnFileThread(new WeiShiCacheManager.3(this));
-    }
-    while (tlf.a(paramList)) {
-      return;
-    }
-    ThreadManager.executeOnFileThread(new WeiShiCacheManager.4(this, paramList));
-  }
-  
-  public void a(List<stSimpleMetaFeed> paramList, int paramInt)
-  {
-    if (b() == 0) {
-      ThreadManager.executeOnFileThread(new WeiShiCacheManager.5(this));
-    }
-    while ((paramList == null) || (paramList.size() <= 0)) {
-      return;
-    }
-    ThreadManager.executeOnFileThread(new WeiShiCacheManager.6(this, new ArrayList(paramList), paramInt));
-  }
-  
-  public void a(List<stSimpleMetaFeed> paramList, long paramLong)
-  {
-    if ((paramList != null) && (paramList.size() > 0))
+    tcs localtcs;
+    if (paramView == null)
     {
-      ArrayList localArrayList = new ArrayList(paramList);
-      stSimpleGetFeedListRsp localstSimpleGetFeedListRsp = new stSimpleGetFeedListRsp();
-      localstSimpleGetFeedListRsp.feeds = localArrayList;
-      ThreadManager.executeOnFileThread(new WeiShiCacheManager.8(this, localstSimpleGetFeedListRsp, localArrayList, paramLong, paramList));
-      return;
-    }
-    a();
-  }
-  
-  public void a(tcm paramtcm)
-  {
-    ThreadManager.post(new WeiShiCacheManager.1(this, paramtcm), 8, null, true);
-  }
-  
-  public boolean a()
-  {
-    long l1 = LocalMultiProcConfig.getLong("weishi_usergrowth", "key_red_msg_valid_timestamp", 0L);
-    long l2 = System.currentTimeMillis();
-    long l3 = l1 - l2;
-    tlo.d("WeiShiCacheManager", "validTimestamp-currentTimestamp = " + l1 + "-" + l2 + " = " + l3);
-    return l3 > 0L;
-  }
-  
-  public byte[] a(JceStruct paramJceStruct)
-  {
-    if (paramJceStruct != null) {
-      try
-      {
-        JceOutputStream localJceOutputStream = new JceOutputStream();
-        localJceOutputStream.setServerEncoding("utf8");
-        paramJceStruct.writeTo(localJceOutputStream);
-        paramJceStruct = localJceOutputStream.toByteArray();
-        return paramJceStruct;
+      localtcs = new tcs(null);
+      paramView = LayoutInflater.from(paramViewGroup.getContext()).inflate(2131560147, null);
+      localtcs.jdField_a_of_type_ComTencentMobileqqWidgetSquareImageView = ((SquareImageView)paramView.findViewById(2131368343));
+      localtcs.b = ((TextView)paramView.findViewById(2131364864));
+      localtcs.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131365109));
+      localtcs.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131369526));
+      localtcs.jdField_a_of_type_Tcu = new tcu(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewHeadersReadInJoyDiandianHeaderController, null);
+      paramView.setTag(localtcs);
+      paramView.setOnClickListener(localtcs.jdField_a_of_type_Tcu);
+      localtcs.jdField_a_of_type_Tcu.jdField_a_of_type_Int = paramInt;
+      if (paramInt >= this.jdField_a_of_type_JavaUtilList.size()) {
+        break label557;
       }
-      catch (Exception paramJceStruct)
-      {
-        paramJceStruct.printStackTrace();
+      CommunityConfigInfo localCommunityConfigInfo = (CommunityConfigInfo)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+      Object localObject = URLDrawable.URLDrawableOptions.obtain();
+      ((URLDrawable.URLDrawableOptions)localObject).mFailedDrawable = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewHeadersReadInJoyDiandianHeaderController.a;
+      ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewHeadersReadInJoyDiandianHeaderController.a;
+      ((URLDrawable.URLDrawableOptions)localObject).mRequestWidth = bggq.a(paramView.getContext(), 60.0F);
+      ((URLDrawable.URLDrawableOptions)localObject).mRequestHeight = bggq.a(paramView.getContext(), 60.0F);
+      ((URLDrawable.URLDrawableOptions)localObject).mPlayGifImage = true;
+      if (TextUtils.isEmpty(localCommunityConfigInfo.picUrl)) {
+        break label495;
       }
+      localObject = URLDrawable.getDrawable(localCommunityConfigInfo.picUrl, (URLDrawable.URLDrawableOptions)localObject);
+      ((URLDrawable)localObject).setTag(bgey.a(bggq.a(paramView.getContext(), 60.0F), bggq.a(paramView.getContext(), 60.0F)));
+      localtcs.jdField_a_of_type_ComTencentMobileqqWidgetSquareImageView.setImageDrawable((Drawable)localObject);
+      localtcs.jdField_a_of_type_ComTencentMobileqqWidgetSquareImageView.setRoundRect(bggq.a(paramView.getContext(), 2.0F));
+      if ((((URLDrawable)localObject).getStatus() != 1) && (((URLDrawable)localObject).getStatus() != 0)) {
+        ((URLDrawable)localObject).restartDownload();
+      }
+      label313:
+      if (localCommunityConfigInfo.dynamicCount <= 0) {
+        break label513;
+      }
+      localtcs.jdField_a_of_type_ComTencentMobileqqWidgetSquareImageView.setFilterColor(Color.parseColor("#7F000000"));
+      int i = localCommunityConfigInfo.dynamicCount;
+      localtcs.jdField_a_of_type_AndroidWidgetTextView.setText(i + "");
+      localObject = Typeface.create(Typeface.createFromAsset(paramView.getContext().getAssets(), "qzone_din.ttf"), 0);
+      localtcs.jdField_a_of_type_AndroidWidgetTextView.setTypeface((Typeface)localObject);
+      localtcs.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+      label406:
+      localtcs.b.setText(localCommunityConfigInfo.name);
+      localtcs.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+      ReadInJoyDiandianHeaderController.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewHeadersReadInJoyDiandianHeaderController).add(Long.valueOf(localCommunityConfigInfo.bid));
+      if (this.jdField_a_of_type_Int <= paramInt) {
+        break label540;
+      }
+      ReadInJoyDiandianHeaderController.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewHeadersReadInJoyDiandianHeaderController, false);
     }
-    return null;
-  }
-  
-  public void b(tcm paramtcm)
-  {
-    ThreadManager.executeOnFileThread(new WeiShiCacheManager.2(this, new WeakReference(paramtcm)));
-  }
-  
-  public boolean b()
-  {
-    String str1 = tlv.c();
-    String str2 = LocalMultiProcConfig.getString("weishi_usergrowth", "key_ws_cache_v", "");
-    tlo.b("CacheResponseLog", "getCachedTrendsWSData versionName = " + str1 + ", cachedVersionName = " + str2);
-    return (!TextUtils.isEmpty(str1)) && (TextUtils.equals(str1, str2));
+    for (;;)
+    {
+      EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
+      return paramView;
+      localtcs = (tcs)paramView.getTag();
+      break;
+      label495:
+      localtcs.jdField_a_of_type_ComTencentMobileqqWidgetSquareImageView.setImageDrawable(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewHeadersReadInJoyDiandianHeaderController.a);
+      break label313;
+      label513:
+      localtcs.jdField_a_of_type_ComTencentMobileqqWidgetSquareImageView.setFilterColor(Color.parseColor("#00000000"));
+      localtcs.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+      break label406;
+      label540:
+      ReadInJoyDiandianHeaderController.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewHeadersReadInJoyDiandianHeaderController, true);
+      this.jdField_a_of_type_Int = paramInt;
+      continue;
+      label557:
+      localtcs.b.setText(anni.a(2131711823));
+      localtcs.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+      localtcs.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+      localtcs.jdField_a_of_type_ComTencentMobileqqWidgetSquareImageView.setFilterColor(Color.parseColor("#F2F2F2"));
+      oat.a(null, "", "0X8009BA2", "0X8009BA2", 0, 0, ((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getCurrentAccountUin(), "", "", "", false);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     tcq
  * JD-Core Version:    0.7.0.1
  */

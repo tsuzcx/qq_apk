@@ -1,21 +1,24 @@
-import com.tencent.mobileqq.pluginsdk.PluginProxyActivity;
-import cooperation.qzone.video.QzoneVerticalVideoGpuProxyActivity;
-import cooperation.qzone.video.QzoneVerticalVideoPluginProxyActivity;
-import cooperation.qzone.video.QzoneVerticalVideoTransparentActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.qqmini.proxyimpl.ColorNotePlugin.1;
+import com.tencent.qqmini.sdk.launcher.core.model.RequestEvent;
 
 public class bjwf
+  implements DialogInterface.OnClickListener
 {
-  public static Class<? extends PluginProxyActivity> a(String paramString)
+  public bjwf(ColorNotePlugin.1 param1) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (QzoneVerticalVideoPluginProxyActivity.a(QzoneVerticalVideoPluginProxyActivity.a(), paramString)) {
-      return QzoneVerticalVideoTransparentActivity.class;
+    if (paramDialogInterface != null) {
+      paramDialogInterface.dismiss();
     }
-    return QzoneVerticalVideoGpuProxyActivity.class;
+    this.a.a.fail();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bjwf
  * JD-Core Version:    0.7.0.1
  */

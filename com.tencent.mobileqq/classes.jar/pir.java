@@ -1,15 +1,54 @@
-import com.tencent.biz.pubaccount.readinjoy.model.SelectPositionModule.PositionData;
-import java.util.List;
+import android.text.TextUtils;
+import com.tencent.aladdin.config.handlers.AladdinConfigHandler;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
 
-public abstract interface pir
+public class pir
+  implements AladdinConfigHandler
 {
-  public abstract void a(List<pio> paramList);
+  public boolean onReceiveConfig(int paramInt1, int paramInt2, String paramString)
+  {
+    paramString = phv.a(paramString);
+    Iterator localIterator = paramString.keySet().iterator();
+    while (localIterator.hasNext())
+    {
+      String str1 = (String)localIterator.next();
+      String str2 = (String)paramString.get(str1);
+      if ((str1.equals("md5")) && (str2 != null))
+      {
+        pfh.a(pha.a(), "sp_key_latest_app_md5", str2.toLowerCase());
+      }
+      else if (str1.equals("version_name"))
+      {
+        pfh.a(pha.a(), "sp_key_latest_app_version_name", str2);
+      }
+      else if ((str1.equals("download_url")) && (str2 != null))
+      {
+        str1 = pgy.a(str2);
+        pfh.a(pha.a(), "sp_key_kb_download_url", str1);
+      }
+      else if (str1.equals("enable_predownload"))
+      {
+        pfh.a(pha.a(), "sp_key_enable_pre_download", TextUtils.equals("1", str2));
+      }
+    }
+    if (!paramString.containsKey("md5")) {
+      pfh.a(pha.a(), "sp_key_latest_app_md5", null);
+    }
+    pfh.a();
+    return true;
+  }
   
-  public abstract void b(SelectPositionModule.PositionData paramPositionData);
+  public void onWipeConfig(int paramInt)
+  {
+    pfh.a(pha.a(), "sp_key_latest_app_md5", null);
+    pfh.a(pha.a(), "sp_key_latest_app_version_name", null);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     pir
  * JD-Core Version:    0.7.0.1
  */

@@ -1,37 +1,90 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.view.View;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.mobileqq.search.mostused.MostUsedSearchItem;
+import com.tencent.mobileqq.search.mostused.MostUsedSearchResultManager.1;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import mqq.manager.Manager;
+import mqq.os.MqqHandler;
 
-class bbop
-  extends AnimatorListenerAdapter
+public class bbop
+  implements Manager
 {
-  bbop(bbon parambbon, boolean paramBoolean, View paramView, int paramInt) {}
+  private bbok jdField_a_of_type_Bbok = new bbok("Cahce_");
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public bbop(QQAppInterface paramQQAppInterface)
   {
-    boolean bool = false;
-    if (this.jdField_a_of_type_Boolean) {
-      this.jdField_a_of_type_AndroidViewView.setVisibility(8);
-    }
-    if (!this.jdField_a_of_type_Boolean)
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+  }
+  
+  public ArrayList<bbon> a(String paramString)
+  {
+    if (this.jdField_a_of_type_Bbok != null)
     {
-      paramAnimator = new int[2];
-      this.jdField_a_of_type_AndroidViewView.getLocationOnScreen(paramAnimator);
-      i = xsm.d(this.jdField_a_of_type_Bbon.jdField_a_of_type_AndroidContentContext) - paramAnimator[1];
-      if (i >= this.jdField_a_of_type_Int) {}
-    }
-    for (int i = this.jdField_a_of_type_Int - i;; i = 0)
-    {
-      if (this.jdField_a_of_type_Bbon.jdField_a_of_type_Bbor != null)
+      paramString = this.jdField_a_of_type_Bbok.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramString);
+      if ((paramString != null) && (paramString.size() > 10))
       {
-        paramAnimator = this.jdField_a_of_type_Bbon.jdField_a_of_type_Bbor;
-        if (!this.jdField_a_of_type_Boolean) {
-          bool = true;
-        }
-        paramAnimator.a(bool, i);
+        ArrayList localArrayList = new ArrayList(paramString.subList(0, 10));
+        QLog.i("MostUsedSearchResultManager", 2, "tmpResult subList 10 ,orglist is " + paramString.size());
+        return localArrayList;
       }
+      return paramString;
+    }
+    QLog.e("MostUsedSearchResultManager", 2, "Match with null cache");
+    return null;
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_Bbok != null)
+    {
+      this.jdField_a_of_type_Bbok.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      QLog.d("MostUsedSearchResultManager", 2, "init");
       return;
     }
+    QLog.e("MostUsedSearchResultManager", 2, "init with null cache ");
+  }
+  
+  public void a(String paramString1, String paramString2, String paramString3, int paramInt)
+  {
+    if ((paramString1 == null) || (TextUtils.isEmpty(paramString1))) {
+      return;
+    }
+    if ((paramString2 != null) && (!TextUtils.isEmpty(paramString2))) {}
+    for (String str = paramString2;; str = paramString1)
+    {
+      QLog.d("MostUsedSearchResultManager", 2, "UpdateItemUsed : key= " + paramString1 + " mostusedKey= " + paramString2);
+      int i = bboj.a(paramInt);
+      if (!a(i)) {
+        break;
+      }
+      paramString1 = new MostUsedSearchItem(str, NetConnInfoCenter.getServerTimeMillis(), paramString3, paramInt, i);
+      ThreadManager.getSubThreadHandler().post(new MostUsedSearchResultManager.1(this, paramString1));
+      return;
+      paramString2 = "";
+    }
+  }
+  
+  boolean a(int paramInt)
+  {
+    return (paramInt == 1) || (paramInt == 2) || (paramInt == 3);
+  }
+  
+  public void b()
+  {
+    if (this.jdField_a_of_type_Bbok != null) {
+      this.jdField_a_of_type_Bbok.a();
+    }
+  }
+  
+  public void onDestroy()
+  {
+    b();
+    this.jdField_a_of_type_Bbok = null;
+    QLog.d("MostUsedSearchResultManager", 2, "onDestroy");
   }
 }
 

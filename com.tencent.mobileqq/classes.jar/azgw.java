@@ -1,13 +1,18 @@
-import com.tencent.mobileqq.shortvideo.hwcodec.SVHwEncoder.HwEncode;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class azgw
+class azgw
+  implements View.OnClickListener
 {
-  public int a;
-  public int b = 0;
+  azgw(azgv paramazgv, int paramInt) {}
   
-  public azgw(SVHwEncoder.HwEncode paramHwEncode)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Int = 0;
+    if (this.jdField_a_of_type_Azgv.a != null) {
+      this.jdField_a_of_type_Azgv.a.a(paramView, this.jdField_a_of_type_Int);
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

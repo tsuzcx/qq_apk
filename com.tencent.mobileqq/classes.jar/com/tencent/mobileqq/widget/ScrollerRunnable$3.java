@@ -15,13 +15,13 @@ class ScrollerRunnable$3
     if (ScrollerRunnable.a(this.this$0) != null) {
       ScrollerRunnable.a(this.this$0).setBackgroundColor(0);
     }
-    this.a.setBackgroundColor(BaseApplicationImpl.getContext().getResources().getColor(2131166928));
+    this.a.setBackgroundColor(BaseApplicationImpl.getContext().getResources().getColor(2131167011));
     ScrollerRunnable.a(this.this$0, this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.widget.ScrollerRunnable.3
  * JD-Core Version:    0.7.0.1
  */

@@ -1,24 +1,34 @@
-import android.support.annotation.Nullable;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.model.DoodleEmojiItem;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.troop_homework.jsp.TroopHWJsPlugin;
+import org.json.JSONObject;
 
 class bmrx
-  extends bmse
+  implements bmry
 {
-  bmrx(bmru parambmru, DoodleEmojiItem paramDoodleEmojiItem)
-  {
-    super(paramDoodleEmojiItem);
-  }
+  bmrx(bmrw parambmrw) {}
   
-  protected void a(@Nullable DoodleEmojiItem arg1)
+  public void a(boolean paramBoolean, String paramString)
   {
-    super.onResult(???);
-    wxe.b("DoodleEmojiManager", "startDownload again");
-    synchronized (this.a.jdField_a_of_type_JavaLangObject)
+    if (paramBoolean)
     {
-      this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleModelDoodleEmojiItem = null;
-      this.a.d();
-      return;
+      JSONObject localJSONObject = this.a.a.jdField_a_of_type_CooperationTroop_homeworkJspTroopHWJsPlugin.a(this.a.a.jdField_a_of_type_Bmru.c, this.a.a.jdField_a_of_type_Int, this.a.a.b, "uploaded", this.a.a.jdField_a_of_type_JavaLangString, 0);
+      try
+      {
+        localJSONObject.put("result", 0);
+        localJSONObject.put("progress", 1.0D);
+        localJSONObject.put("coverurl", paramString);
+        QLog.e("TroopHWJsPlugin", 2, "upload thumb success:" + localJSONObject.toString());
+        this.a.a.jdField_a_of_type_CooperationTroop_homeworkJspTroopHWJsPlugin.callJs(this.a.a.jdField_a_of_type_Bmru.jdField_a_of_type_JavaLangString, new String[] { localJSONObject.toString() });
+        return;
+      }
+      catch (Exception paramString)
+      {
+        QLog.e("TroopHWJsPlugin", 2, "upload thumb exception:", paramString);
+        return;
+      }
     }
+    QLog.e("TroopHWJsPlugin", 1, "upload thumb failed!");
+    this.a.b(-1);
   }
 }
 

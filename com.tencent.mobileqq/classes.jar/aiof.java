@@ -1,19 +1,19 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.photo.PhotoCropActivity;
+import android.support.v7.widget.GridLayoutManager.SpanSizeLookup;
 
 class aiof
-  implements bhuk
+  extends GridLayoutManager.SpanSizeLookup
 {
-  aiof(aioe paramaioe, bhuf parambhuf) {}
+  aiof(aioe paramaioe) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public int getSpanSize(int paramInt)
   {
-    if (paramInt != this.jdField_a_of_type_Aioe.jdField_a_of_type_ArrayOfJavaLangString.length)
+    switch (this.a.getItemViewType(paramInt))
     {
-      this.jdField_a_of_type_Aioe.a(paramInt);
-      this.jdField_a_of_type_Aioe.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropActivity.a();
+    case 1: 
+    default: 
+      return 1;
     }
-    this.jdField_a_of_type_Bhuf.dismiss();
+    return 3;
   }
 }
 

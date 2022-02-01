@@ -1,27 +1,60 @@
-import android.support.annotation.NonNull;
-import javax.microedition.khronos.egl.EGLConfig;
-import javax.microedition.khronos.egl.EGLContext;
+import com.tencent.mobileqq.shortvideo.resource.AVFilterResource;
+import com.tencent.mobileqq.shortvideo.resource.ArtFilterResource;
+import com.tencent.mobileqq.shortvideo.resource.BeautyResource;
+import com.tencent.mobileqq.shortvideo.resource.GestureGameResource;
+import com.tencent.mobileqq.shortvideo.resource.GestureResource;
+import com.tencent.mobileqq.shortvideo.resource.LowLightResource;
+import com.tencent.mobileqq.shortvideo.resource.PtuFilterResource;
+import com.tencent.mobileqq.shortvideo.resource.Resources;
+import com.tencent.mobileqq.shortvideo.resource.SensorResource;
+import com.tencent.mobileqq.shortvideo.resource.SpecialAVFilterResource;
 
 public class bkew
+  implements Resources
 {
-  public int a;
-  public String a;
-  public EGLConfig a;
-  public EGLContext a;
-  public boolean a;
-  public int b;
-  public String b;
-  public String c;
-  
-  public bkew()
+  public SpecialAVFilterResource getAVFilterResource()
   {
-    this.jdField_a_of_type_Boolean = true;
+    return new bkey();
   }
   
-  @NonNull
-  public String toString()
+  public ArtFilterResource getArtFilterResource()
   {
-    return " width = " + this.jdField_a_of_type_Int + " height = " + this.jdField_b_of_type_Int + " isNeedOffScreen = " + this.jdField_a_of_type_Boolean + " resUrl = " + this.jdField_a_of_type_JavaLangString + " resFilePath = " + this.jdField_b_of_type_JavaLangString + " resMD5 = " + this.c;
+    return new bken();
+  }
+  
+  public AVFilterResource getAvFilterResource()
+  {
+    return new bkem();
+  }
+  
+  public BeautyResource getBeautyResource()
+  {
+    return new bkeo();
+  }
+  
+  public GestureResource getGestureResource()
+  {
+    return new bker();
+  }
+  
+  public LowLightResource getLowLightResource()
+  {
+    return new bket();
+  }
+  
+  public PtuFilterResource getPtuFilterResource()
+  {
+    return new bkeu();
+  }
+  
+  public SensorResource getSensorResource()
+  {
+    return new bkex();
+  }
+  
+  public GestureGameResource geteGestureGameResource()
+  {
+    return new bkeq();
   }
 }
 

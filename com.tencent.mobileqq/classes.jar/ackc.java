@@ -1,19 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.gdtad.aditem.GdtAd;
 
 public final class ackc
-  implements DialogInterface.OnClickListener
+  implements Parcelable.Creator<GdtAd>
 {
-  public ackc(acln paramacln) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public GdtAd a(Parcel paramParcel)
   {
-    if (this.a != null) {
-      this.a.a();
-    }
-    if (paramDialogInterface != null) {
-      paramDialogInterface.dismiss();
-    }
+    return new GdtAd(paramParcel);
+  }
+  
+  public GdtAd[] a(int paramInt)
+  {
+    return new GdtAd[paramInt];
   }
 }
 

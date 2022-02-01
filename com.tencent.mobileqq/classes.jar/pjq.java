@@ -1,47 +1,55 @@
 import android.text.TextUtils;
-import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import org.json.JSONObject;
+import com.tencent.TMG.utils.QLog;
+import com.tencent.aladdin.config.handlers.AladdinConfigHandler;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
 
 public class pjq
+  implements AladdinConfigHandler
 {
-  public static JSONObject a(BaseArticleInfo paramBaseArticleInfo)
+  private static void a(int paramInt)
   {
-    JSONObject localJSONObject1 = new JSONObject();
-    if (TextUtils.isEmpty(paramBaseArticleInfo.avatar)) {
-      localJSONObject1.put("avator_url", "default_comment_avatar");
-    }
-    for (;;)
+    QLog.d("WormholeConfigHandler", 0, "update wormhole value: " + paramInt);
+    bmqa.a("wormhole_open", Integer.valueOf(paramInt));
+  }
+  
+  public static boolean a()
+  {
+    return ((Integer)bmqa.a("wormhole_open", Integer.valueOf(0))).intValue() == 1;
+  }
+  
+  public boolean onReceiveConfig(int paramInt1, int paramInt2, String paramString)
+  {
+    QLog.d("WormholeConfigHandler", 0, "[onReceiveConfig] id=" + paramInt1 + ", version=" + paramInt2 + ", content=" + paramString);
+    try
     {
-      pkm.q(paramBaseArticleInfo, localJSONObject1);
-      pkm.a(paramBaseArticleInfo, localJSONObject1, true);
-      oee.b(paramBaseArticleInfo, localJSONObject1);
-      oee.a(paramBaseArticleInfo, localJSONObject1);
-      pkm.l(paramBaseArticleInfo, localJSONObject1);
-      pkm.e(paramBaseArticleInfo, localJSONObject1);
-      pkm.g(paramBaseArticleInfo, localJSONObject1);
-      localJSONObject1.put("style_ID", "ReadInjoy_ad_brand_optimization_cell");
-      pkm.a(localJSONObject1, paramBaseArticleInfo);
-      if (AdvertisementInfo.isAdvertisementInfo(paramBaseArticleInfo))
+      paramString = phv.a(paramString);
+      Iterator localIterator = paramString.keySet().iterator();
+      while (localIterator.hasNext())
       {
-        pkm.d(paramBaseArticleInfo, localJSONObject1);
-        localJSONObject2 = new JSONObject();
-        localJSONObject2.put("article_model", paramBaseArticleInfo);
-        localJSONObject1.put("id_view_AdBanner", localJSONObject2);
+        String str1 = (String)localIterator.next();
+        String str2 = (String)paramString.get(str1);
+        if (TextUtils.equals(str1, "open")) {
+          a(Integer.parseInt(str2));
+        }
       }
-      JSONObject localJSONObject2 = new JSONObject();
-      localJSONObject2.put("article_model", paramBaseArticleInfo);
-      localJSONObject1.put("id_article_brand_optimization", localJSONObject2);
-      localJSONObject1.put("id_info_operate_parent", new JSONObject());
-      localJSONObject1.put("id_ad_brand_container", new JSONObject());
-      return localJSONObject1;
-      localJSONObject1.put("avator_url", paramBaseArticleInfo.avatar);
+      return true;
     }
+    catch (Throwable paramString)
+    {
+      QLog.d("WormholeConfigHandler", 0, "parse wormhole error: " + paramString.getMessage());
+    }
+  }
+  
+  public void onWipeConfig(int paramInt)
+  {
+    a(0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     pjq
  * JD-Core Version:    0.7.0.1
  */

@@ -4,16 +4,16 @@ import android.util.Pair;
 import java.util.Comparator;
 
 final class VideoTemplateParser$10
-  implements Comparator<Pair<Float, Double>>
+  implements Comparator<Pair<Float, Integer>>
 {
-  public int compare(Pair<Float, Double> paramPair1, Pair<Float, Double> paramPair2)
+  public int compare(Pair<Float, Integer> paramPair1, Pair<Float, Integer> paramPair2)
   {
     return ((Float)paramPair1.first).compareTo((Float)paramPair2.first);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.openapi.util.VideoTemplateParser.10
  * JD-Core Version:    0.7.0.1
  */

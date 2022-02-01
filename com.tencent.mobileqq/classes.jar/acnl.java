@@ -1,18 +1,7 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.ChatHistoryFileActivity;
+import kotlin.Metadata;
 
-public class acnl
-  implements bhuk
-{
-  public acnl(ChatHistoryFileActivity paramChatHistoryFileActivity, bhuf parambhuf) {}
-  
-  public void OnClick(View paramView, int paramInt)
-  {
-    if ((!this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryFileActivity.a(3, this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryFileActivity.a, this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryFileActivity.b, this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryFileActivity.c, this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryFileActivity.d)) || (this.jdField_a_of_type_Bhuf.isShowing())) {
-      this.jdField_a_of_type_Bhuf.dismiss();
-    }
-  }
-}
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/gdtad/api/motivebrowsing/RewardedBrowsingCallbackReceiver$Companion;", "", "()V", "ACTION_MOTIVE_BROWSING_END_PLUGIN", "", "ACTION_MOTIVE_BROWSING_END_PROXY", "TAG", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class acnl {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar

@@ -1,11 +1,17 @@
-public class bayl
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.richmediabrowser.log.BrowserLogHelper;
+import com.tencent.richmediabrowser.log.IBrowserLog;
+
+class bayl
+  implements DialogInterface.OnClickListener
 {
-  public int a;
-  public String a;
-  public String b;
-  public String c;
-  public String d;
-  public String e;
+  bayl(bayi parambayi) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    BrowserLogHelper.getInstance().getGalleryLog().d("AIOPictureView", 4, "showSaveFileTips cancel");
+  }
 }
 
 

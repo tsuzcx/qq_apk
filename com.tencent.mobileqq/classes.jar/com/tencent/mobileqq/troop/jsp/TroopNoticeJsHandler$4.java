@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.troop.jsp;
 
-import bcgq;
+import bfhe;
 import com.tencent.smtt.sdk.WebView;
 
 public class TroopNoticeJsHandler$4
   implements Runnable
 {
-  public TroopNoticeJsHandler$4(bcgq parambcgq, WebView paramWebView, String paramString1, String paramString2) {}
+  public TroopNoticeJsHandler$4(bfhe parambfhe, WebView paramWebView, String paramString1, String paramString2) {}
   
   public void run()
   {
@@ -17,7 +17,7 @@ public class TroopNoticeJsHandler$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.troop.jsp.TroopNoticeJsHandler.4
  * JD-Core Version:    0.7.0.1
  */

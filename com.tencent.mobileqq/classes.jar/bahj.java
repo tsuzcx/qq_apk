@@ -1,86 +1,56 @@
-import com.tencent.mobileqq.teamwork.TeamWorkFileImportInfo;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.receipt.ReceiptMessageReadMemberListContainerFragment;
+import com.tencent.mobileqq.receipt.ReceiptMessageReadMemberListContainerFragment.ListProcessHandler.1;
+import com.tencent.mobileqq.receipt.ReceiptMessageReadMemberListContainerFragment.ListProcessHandler.2;
+import java.lang.ref.WeakReference;
 
 public class bahj
-  implements alpg
+  extends Handler
 {
-  public void a(int paramInt) {}
+  private WeakReference<ReceiptMessageReadMemberListContainerFragment> a;
   
-  public void a(TeamWorkFileImportInfo paramTeamWorkFileImportInfo) {}
-  
-  public void a(String paramString, TeamWorkFileImportInfo paramTeamWorkFileImportInfo) {}
-  
-  public void a(String paramString1, String paramString2, TeamWorkFileImportInfo paramTeamWorkFileImportInfo) {}
-  
-  public void a(boolean paramBoolean) {}
-  
-  public void b(TeamWorkFileImportInfo paramTeamWorkFileImportInfo) {}
-  
-  public void c(TeamWorkFileImportInfo paramTeamWorkFileImportInfo) {}
-  
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  private bahj(ReceiptMessageReadMemberListContainerFragment paramReceiptMessageReadMemberListContainerFragment)
   {
-    switch (paramInt)
-    {
-    }
+    this.a = new WeakReference(paramReceiptMessageReadMemberListContainerFragment);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    ReceiptMessageReadMemberListContainerFragment localReceiptMessageReadMemberListContainerFragment = (ReceiptMessageReadMemberListContainerFragment)this.a.get();
+    if ((localReceiptMessageReadMemberListContainerFragment == null) || (!localReceiptMessageReadMemberListContainerFragment.isAdded())) {}
     do
     {
-      do
+      return;
+      switch (paramMessage.what)
       {
-        do
-        {
-          do
-          {
-            do
-            {
-              do
-              {
-                do
-                {
-                  do
-                  {
-                    do
-                    {
-                      do
-                      {
-                        do
-                        {
-                          do
-                          {
-                            return;
-                          } while (paramObject == null);
-                          b((TeamWorkFileImportInfo)paramObject);
-                          return;
-                        } while (paramObject == null);
-                        paramObject = (Object[])paramObject;
-                      } while (paramObject.length != 2);
-                      a((String)paramObject[0], (TeamWorkFileImportInfo)paramObject[1]);
-                      return;
-                    } while (paramObject == null);
-                    a((TeamWorkFileImportInfo)paramObject);
-                    return;
-                  } while (paramObject == null);
-                  paramObject = (Object[])paramObject;
-                } while (paramObject.length != 1);
-                a(((Integer)paramObject[0]).intValue());
-                return;
-              } while (paramObject == null);
-              paramObject = (Object[])paramObject;
-            } while (paramObject.length != 1);
-            if (((Integer)paramObject[0]).intValue() > 0) {}
-            for (paramBoolean = true;; paramBoolean = false)
-            {
-              a(paramBoolean);
-              return;
-            }
-          } while (paramObject == null);
-          paramObject = (Object[])paramObject;
-        } while (paramObject.length != 3);
-        a((String)paramObject[0], (String)paramObject[1], (TeamWorkFileImportInfo)paramObject[2]);
+      case 0: 
+      default: 
         return;
-      } while (paramObject == null);
-      paramObject = (Object[])paramObject;
-    } while (paramObject.length != 1);
-    c((TeamWorkFileImportInfo)paramObject[0]);
+      case -1: 
+        localReceiptMessageReadMemberListContainerFragment.stopTitleProgress();
+        ReceiptMessageReadMemberListContainerFragment.g(localReceiptMessageReadMemberListContainerFragment);
+        return;
+      case 1: 
+        ReceiptMessageReadMemberListContainerFragment.b(localReceiptMessageReadMemberListContainerFragment);
+        return;
+      }
+    } while (this.a.get() == null);
+    if (ReceiptMessageReadMemberListContainerFragment.a(localReceiptMessageReadMemberListContainerFragment)) {
+      ReceiptMessageReadMemberListContainerFragment.c(localReceiptMessageReadMemberListContainerFragment);
+    }
+    for (;;)
+    {
+      ReceiptMessageReadMemberListContainerFragment.d(localReceiptMessageReadMemberListContainerFragment);
+      return;
+      sendEmptyMessage(5);
+    }
+    ReceiptMessageReadMemberListContainerFragment.a(localReceiptMessageReadMemberListContainerFragment, ((Long)paramMessage.obj).longValue());
+    return;
+    ThreadManager.post(new ReceiptMessageReadMemberListContainerFragment.ListProcessHandler.1(this, localReceiptMessageReadMemberListContainerFragment), 8, null, true);
+    return;
+    ThreadManager.post(new ReceiptMessageReadMemberListContainerFragment.ListProcessHandler.2(this, localReceiptMessageReadMemberListContainerFragment), 8, null, true);
   }
 }
 

@@ -1,29 +1,23 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import android.widget.ImageView;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.pubaccount.readinjoy.struct.ColumnInfo;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
-class roz
-  implements Animator.AnimatorListener
+public abstract interface roz
 {
-  roz(rox paramrox) {}
+  @Nullable
+  public abstract ColumnInfo a();
   
-  public void onAnimationCancel(Animator paramAnimator) {}
+  public abstract void a();
   
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    QLog.d("TabBarView", 4, "onAnimationEnd");
-    rox.b(this.a);
-    this.a.b.clearAnimation();
-  }
+  public abstract void a(@NotNull ColumnInfo paramColumnInfo);
   
-  public void onAnimationRepeat(Animator paramAnimator) {}
+  public abstract void a(@NotNull ColumnInfo paramColumnInfo, rox paramrox);
   
-  public void onAnimationStart(Animator paramAnimator) {}
+  public abstract void b(@NotNull ColumnInfo paramColumnInfo, rox paramrox);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     roz
  * JD-Core Version:    0.7.0.1
  */

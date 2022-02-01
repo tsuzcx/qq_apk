@@ -1,16 +1,27 @@
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.contact.newfriend.connections.ConnectionsExplorationFragment;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.view.ViewGroup.MarginLayoutParams;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.aio.item.UnlimitedBladeWorks;
 
 public class ahno
-  implements View.OnClickListener
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public ahno(ConnectionsExplorationFragment paramConnectionsExplorationFragment) {}
+  public ahno(UnlimitedBladeWorks paramUnlimitedBladeWorks) {}
   
-  public void onClick(View paramView)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    this.a.getActivity().finish();
+    int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
+    paramValueAnimator = (ViewGroup.MarginLayoutParams)UnlimitedBladeWorks.a(this.a).getLayoutParams();
+    if (UnlimitedBladeWorks.a(this.a)) {
+      paramValueAnimator.leftMargin = 0;
+    }
+    for (paramValueAnimator.rightMargin = i;; paramValueAnimator.rightMargin = 0)
+    {
+      UnlimitedBladeWorks.a(this.a).setLayoutParams(paramValueAnimator);
+      return;
+      paramValueAnimator.leftMargin = i;
+    }
   }
 }
 

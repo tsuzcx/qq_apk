@@ -1,59 +1,31 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.data.EmoticonPackage;
 import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 
-class aptc
-  extends bead
+final class aptc
+  implements bdvv
 {
-  aptc(aptb paramaptb) {}
-  
-  public void onDone(beae parambeae)
+  public void a(bdws parambdws, bdwt parambdwt)
   {
-    super.onDone(parambeae);
-    apro localapro = this.a.a();
-    Bundle localBundle = parambeae.a();
-    if (parambeae.a() != 3) {}
-    for (boolean bool = true;; bool = false)
+    if ((parambdws == null) || (parambdwt == null)) {}
+    do
     {
-      long l1 = System.currentTimeMillis();
-      long l2 = localBundle.getLong("vas_download_start");
-      localapro.a(localBundle, parambeae, bool, parambeae.a, parambeae.d, l1 - l2, 0);
-      return;
-    }
-  }
-  
-  public void onDoneFile(beae parambeae)
-  {
-    Object localObject = parambeae.a();
-    int i = ((Bundle)localObject).getInt(parambeae.c);
-    localObject = (EmoticonPackage)((Bundle)localObject).getSerializable("emoticonPackage");
-    if (QLog.isColorLevel()) {
-      QLog.d("VasEmojiManager", 2, "emotionDownloadListener | onDoneFile epId=" + ((EmoticonPackage)localObject).epId + ",task:" + parambeae);
-    }
-    if (parambeae.a != 0)
-    {
-      QLog.e("VasEmojiManager", 1, "onDoneFile : ondone error , reportCode = " + parambeae.a);
-      if (apro.a(i)) {
-        apro.a.a((EmoticonPackage)localObject, i, -1, parambeae.a);
-      }
-      bdva.a("emotionType", "emotionActionDownload", "10", ((EmoticonPackage)localObject).epId, "", "", parambeae.a + "", "", "", "");
-    }
-    for (;;)
-    {
-      return;
-      apro localapro = this.a.a();
-      if (apro.a(i)) {
-        apro.a.a((EmoticonPackage)localObject, i, 0, 0);
-      }
-      while ((((EmoticonPackage)localObject).jobType == 3) || (((EmoticonPackage)localObject).jobType == 5))
+      do
       {
-        localapro.b(parambeae);
         return;
-        if (i == 7) {
-          localapro.a(parambeae);
-        }
+      } while (!(parambdws instanceof bdvs));
+      parambdws = (bdvs)parambdws;
+      parambdws.jdField_a_of_type_Long += parambdwt.c;
+      parambdwt.c = 0L;
+      parambdwt = "bytes=" + parambdws.jdField_a_of_type_Long + "-";
+      parambdws.jdField_a_of_type_JavaUtilHashMap.put("Range", parambdwt);
+      parambdwt = parambdws.jdField_a_of_type_JavaLangString;
+      if (parambdwt.contains("range="))
+      {
+        String str = parambdwt.substring(0, parambdwt.lastIndexOf("range="));
+        parambdws.jdField_a_of_type_JavaLangString = (str + "range=" + parambdws.jdField_a_of_type_Long);
       }
-    }
+    } while (!QLog.isColorLevel());
+    QLog.i("ResDownloadManager", 2, "IBreakDownFix, " + parambdwt);
   }
 }
 

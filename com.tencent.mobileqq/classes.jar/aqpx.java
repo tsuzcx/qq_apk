@@ -1,23 +1,87 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.filemanager.activity.localfile.QfileLocalFileAppTabView;
-import com.tencent.mobileqq.filemanager.activity.localfile.QfileLocalFileAppTabView.1;
-import com.tencent.mobileqq.filemanager.activity.localfile.QfileLocalFileAppTabView.1.1;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.qphone.base.util.QLog;
 
 public class aqpx
-  implements DialogInterface.OnClickListener
+  extends aqkz<aqpw>
 {
-  public aqpx(QfileLocalFileAppTabView.1.1 param1) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public static aqpw a()
   {
-    QfileLocalFileAppTabView.a(this.a.a.this$0);
-    this.a.a.this$0.c(true);
+    return (aqpw)aqlk.a().a(489);
+  }
+  
+  @NonNull
+  public aqpw a(int paramInt)
+  {
+    return new aqpw();
+  }
+  
+  @Nullable
+  public aqpw a(aqlg[] paramArrayOfaqlg)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("MsgTabCameraSwitchProcessor", 2, "onParsed ");
+    }
+    if ((paramArrayOfaqlg != null) && (paramArrayOfaqlg.length > 0)) {
+      return aqpw.a(paramArrayOfaqlg);
+    }
+    return null;
+  }
+  
+  public void a(aqpw paramaqpw)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("MsgTabCameraSwitchProcessor", 2, "onUpdate " + paramaqpw.toString());
+    }
+  }
+  
+  public Class<aqpw> clazz()
+  {
+    return aqpw.class;
+  }
+  
+  public boolean isAccountRelated()
+  {
+    return true;
+  }
+  
+  public boolean isNeedCompressed()
+  {
+    return true;
+  }
+  
+  public boolean isNeedStoreLargeFile()
+  {
+    return false;
+  }
+  
+  public int migrateOldVersion()
+  {
+    return 0;
+  }
+  
+  public void onReqFailed(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("MsgTabCameraSwitchProcessor", 2, "onReqFailed " + paramInt);
+    }
+  }
+  
+  public void onReqNoReceive()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("MsgTabCameraSwitchProcessor", 2, "onReqNoReceive ");
+    }
+  }
+  
+  public int type()
+  {
+    return 489;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aqpx
  * JD-Core Version:    0.7.0.1
  */

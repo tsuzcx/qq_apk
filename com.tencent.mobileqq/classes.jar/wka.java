@@ -1,48 +1,31 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-
-class wka
-  extends umf<wjw, whz>
+public class wka
 {
-  wka(wjw paramwjw)
+  public static int a;
+  public static boolean a;
+  public static boolean b;
+  public static boolean c;
+  
+  static
   {
-    super(paramwjw);
+    jdField_a_of_type_Boolean = false;
+    b = false;
+    c = false;
+    jdField_a_of_type_Int = 725;
   }
   
-  public void a(@NonNull wjw paramwjw, @NonNull whz paramwhz)
+  public static boolean a()
   {
-    if ((!paramwhz.jdField_a_of_type_JavaLangString.equals(wjw.a(paramwjw))) || (paramwhz.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isFail()) || (wjw.a(paramwjw) == null)) {
-      wxe.b(this.TAG, "ignore this comment list event. %s.", paramwhz.toString());
-    }
-    boolean bool2;
-    boolean bool1;
-    do
-    {
-      return;
-      wxe.a(this.TAG, "receive comment list event. %s.", paramwhz.toString());
-      bool2 = wjw.a(paramwjw);
-      bool1 = true;
-      if (paramwhz.jdField_a_of_type_Int == 0) {
-        bool1 = false;
-      }
-      wjw.a(paramwjw).a(bool1);
-      wjw.a(paramwjw).a(bool1, paramwhz.b);
-      wjw.a(paramwjw).a(bool1, paramwhz.jdField_a_of_type_Boolean);
-      wjw.a(paramwjw).a(paramwhz.jdField_a_of_type_JavaUtilList, paramwhz.c, bool1);
-    } while (bool2 != bool1);
-    paramwjw.b(paramwhz.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess());
+    return false;
   }
   
-  public Class acceptEventClass()
+  public static boolean b()
   {
-    return whz.class;
+    return true;
   }
-  
-  public void b(@NonNull wjw paramwjw, @NonNull whz paramwhz) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     wka
  * JD-Core Version:    0.7.0.1
  */

@@ -1,72 +1,46 @@
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.networkedmodule.ModuleDownloadListener;
-import cooperation.qzone.networkedmodule.QzoneModuleManager;
-import java.io.File;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.qidian.proto.mobileqq_qidian.GroupItem;
 
-class bjhf
-  implements ModuleDownloadListener
+public class bjhf
 {
-  bjhf(bjhe parambjhe) {}
+  public int a;
+  public long a;
+  public String a;
   
-  public void onDownloadCanceled(String paramString)
+  public bjhf() {}
+  
+  public bjhf(mobileqq_qidian.GroupItem paramGroupItem)
   {
-    bjhe.b(false);
+    a(paramGroupItem);
   }
   
-  public void onDownloadFailed(String paramString)
+  public mobileqq_qidian.GroupItem a()
   {
-    bjhe.b(false);
+    mobileqq_qidian.GroupItem localGroupItem = new mobileqq_qidian.GroupItem();
+    localGroupItem.uint64_groupid.set(this.jdField_a_of_type_Long);
+    localGroupItem.uint32_group_level.set(this.jdField_a_of_type_Int);
+    localGroupItem.str_group_name.set(this.jdField_a_of_type_JavaLangString);
+    return localGroupItem;
   }
   
-  public void onDownloadProgress(String paramString, float paramFloat) {}
-  
-  public void onDownloadSucceed(String paramString)
+  public void a(mobileqq_qidian.GroupItem paramGroupItem)
   {
-    if (!paramString.equals("upload.so")) {
-      return;
+    if (paramGroupItem.uint64_groupid.has()) {
+      this.jdField_a_of_type_Long = paramGroupItem.uint64_groupid.get();
     }
-    bjhe.b(false);
-    String str = bjhe.a().getAbsolutePath();
-    QLog.d("UploadEnv", 1, "upload so download success : " + str);
-    paramString = QzoneModuleManager.getInstance().getModuleFilePath(paramString);
-    File localFile = new File(str);
-    if (!localFile.exists()) {
-      localFile.mkdirs();
+    if (paramGroupItem.uint32_group_level.has()) {
+      this.jdField_a_of_type_Int = paramGroupItem.uint32_group_level.get();
     }
-    if (!bjtz.b(new File(paramString), localFile))
-    {
-      QLog.d("UploadEnv", 1, "upload so unzip fail");
-      bjhe.b(false);
-      return;
-    }
-    if (bjhe.a(this.a, str))
-    {
-      QLog.d("UploadEnv", 1, "upload so save success");
-      bjhe.a(this.a, true);
-      bjhe.a(true);
-    }
-    for (;;)
-    {
-      bjhe.b(false);
-      return;
-      try
-      {
-        localFile.delete();
-        bjhe.a(this.a, false);
-      }
-      catch (Throwable paramString)
-      {
-        for (;;)
-        {
-          paramString.printStackTrace();
-        }
-      }
+    if (paramGroupItem.str_group_name.has()) {
+      this.jdField_a_of_type_JavaLangString = paramGroupItem.str_group_name.get();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bjhf
  * JD-Core Version:    0.7.0.1
  */

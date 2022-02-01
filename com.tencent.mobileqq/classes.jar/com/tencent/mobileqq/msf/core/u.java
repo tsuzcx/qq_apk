@@ -2,97 +2,83 @@ package com.tencent.mobileqq.msf.core;
 
 import android.os.Handler;
 import android.os.HandlerThread;
+import com.tencent.mobileqq.msf.core.net.n;
+import com.tencent.qphone.base.remote.ToServiceMsg;
 
 public class u
 {
-  public static final String a = "MsfCoreMsgSender";
-  public static final String b = "MsfCoreSocketReaderNew";
-  public static final String c = "LightSender";
-  public static final String d = "LightTcpSenderThread";
-  public static final String e = "MSFSubHandlerThread";
-  private static HandlerThread f = null;
-  private static Handler g = null;
-  private static HandlerThread h = null;
-  private static Handler i = null;
-  private static HandlerThread j = null;
-  private static Handler k = null;
+  static final String b = "MSF.C.NetConnTag";
+  MsfCore a;
+  private volatile Handler c;
   
-  public static HandlerThread a()
+  public u(MsfCore paramMsfCore)
   {
-    if (f == null) {}
-    try
-    {
-      HandlerThread localHandlerThread = new HandlerThread("MSF_StatReportThread");
-      localHandlerThread.start();
-      f = localHandlerThread;
-      return f;
-    }
-    finally {}
+    this.a = paramMsfCore;
   }
   
-  public static Handler b()
+  public Runnable a(int paramInt, long paramLong)
   {
-    if (g == null) {}
-    try
-    {
-      if (g == null) {
-        g = new Handler(a().getLooper());
-      }
-      return g;
-    }
-    finally {}
+    u.a locala = new u.a(this, paramInt);
+    this.c.postDelayed(locala, paramLong);
+    return locala;
   }
   
-  public static HandlerThread c()
+  public Runnable a(n paramn, long paramLong)
   {
-    if (j == null) {}
-    try
+    if (paramn != null)
     {
-      HandlerThread localHandlerThread = new HandlerThread("MSFNetHandlerThread");
-      localHandlerThread.start();
-      j = localHandlerThread;
-      return j;
+      paramn = new u.e(this, paramn);
+      this.c.postDelayed(paramn, paramLong);
+      return paramn;
     }
-    finally {}
+    return null;
   }
   
-  public static Handler d()
+  public Runnable a(ToServiceMsg paramToServiceMsg, long paramLong)
   {
-    if (k == null) {}
-    try
-    {
-      if (k == null) {
-        k = new Handler(c().getLooper());
-      }
-      return k;
+    u.d locald = new u.d(this, paramToServiceMsg);
+    if (paramToServiceMsg != null) {
+      this.c.postDelayed(locald, paramLong);
     }
-    finally {}
+    return locald;
   }
   
-  public static HandlerThread e()
+  public void a()
   {
-    if (h == null) {}
-    try
-    {
-      HandlerThread localHandlerThread = new HandlerThread("MSFSubHandlerThread");
-      localHandlerThread.start();
-      h = localHandlerThread;
-      return h;
-    }
-    finally {}
+    HandlerThread localHandlerThread = new HandlerThread("MsfCoreTimeoutChecker", 5);
+    localHandlerThread.start();
+    this.c = new Handler(localHandlerThread.getLooper());
   }
   
-  public static Handler f()
+  public void a(Runnable paramRunnable)
   {
-    if (i == null) {}
-    try
-    {
-      if (i == null) {
-        i = new Handler(e().getLooper());
-      }
-      return i;
+    this.c.removeCallbacks(paramRunnable);
+  }
+  
+  public Handler b()
+  {
+    return this.c;
+  }
+  
+  public Runnable b(int paramInt, long paramLong)
+  {
+    u.c localc = new u.c(this, paramInt);
+    this.c.postDelayed(localc, paramLong);
+    return localc;
+  }
+  
+  public Runnable b(ToServiceMsg paramToServiceMsg, long paramLong)
+  {
+    u.b localb = new u.b(this, paramToServiceMsg);
+    if (paramToServiceMsg != null) {
+      this.c.postDelayed(localb, paramLong);
     }
-    finally {}
+    return localb;
+  }
+  
+  public void b(Runnable paramRunnable)
+  {
+    this.c.removeCallbacks(paramRunnable);
   }
 }
 

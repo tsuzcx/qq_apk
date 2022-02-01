@@ -1,21 +1,85 @@
 import android.view.View;
-import android.view.View.OnLayoutChangeListener;
+import android.widget.RelativeLayout.LayoutParams;
+import com.tencent.mobileqq.utils.AudioHelper;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.immersive.ImmersiveUtils;
+import mqq.app.BaseActivity;
 
-class mjl
-  implements View.OnLayoutChangeListener
+public class mjl
 {
-  mjl(mjk parammjk) {}
+  View a;
+  View b;
   
-  public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
+  public mjl(View paramView)
   {
-    if (paramInt4 - paramInt2 != paramInt8 - paramInt6) {
-      this.a.notifyDataSetChanged();
+    this.a = paramView.findViewById(2131373492);
+    this.b = paramView.getRootView().findViewById(2131373493);
+  }
+  
+  static void a(View paramView, int paramInt)
+  {
+    if (paramView == null) {
+      return;
     }
+    RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)paramView.getLayoutParams();
+    localLayoutParams.height = paramInt;
+    paramView.setLayoutParams(localLayoutParams);
+  }
+  
+  public void a(BaseActivity paramBaseActivity)
+  {
+    if ((paramBaseActivity == null) || (this.a == null)) {}
+    do
+    {
+      do
+      {
+        do
+        {
+          return;
+          if (ImmersiveUtils.isSupporImmersive() == 1) {
+            break;
+          }
+          this.a.setVisibility(8);
+        } while (this.b == null);
+        this.b.setVisibility(8);
+        return;
+        int i = ImmersiveUtils.getStatusBarHeight(paramBaseActivity);
+        QLog.w("QavStatusBar", 1, "adjust, height[" + i + "]");
+        if (i > 0)
+        {
+          a(this.a, i);
+          a(this.b, i);
+        }
+      } while (AudioHelper.a(0) != 1);
+      this.a.setBackgroundColor(2140405971);
+    } while (this.b == null);
+    this.b.setBackgroundColor(2140405971);
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    if (this.a != null)
+    {
+      QLog.w("QavStatusBar", 1, "setBackgroundColor, bDoubleScreen[" + paramBoolean + "]");
+      if (paramBoolean) {
+        this.a.setBackgroundColor(-16777216);
+      }
+    }
+    else
+    {
+      return;
+    }
+    this.a.setBackgroundColor(0);
+  }
+  
+  public boolean a()
+  {
+    return (this.a != null) && (this.a.getVisibility() == 0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     mjl
  * JD-Core Version:    0.7.0.1
  */

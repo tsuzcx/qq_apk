@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.apollo.game;
 
-import aktr;
+import ammx;
 import android.content.Intent;
 import android.text.TextUtils;
 
@@ -30,12 +30,12 @@ class WebGameFakeView$2
       this.this$0.a();
       this.a.putExtra("Director", localDirector);
     }
-    aktr.a().a(this.a, ApolloWebViewFragment.class);
+    ammx.a().a(this.a, ApolloWebViewFragment.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.game.WebGameFakeView.2
  * JD-Core Version:    0.7.0.1
  */

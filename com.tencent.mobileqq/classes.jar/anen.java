@@ -1,13 +1,12 @@
-import java.util.List;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public abstract interface anen
-  extends aneg
+class anen
+  implements View.OnClickListener
 {
-  public abstract void a(long paramLong);
+  anen(anem paramanem) {}
   
-  public abstract void a(List<aned> paramList, long paramLong);
-  
-  public abstract void a(boolean paramBoolean1, String paramString, boolean paramBoolean2);
+  public void onClick(View paramView) {}
 }
 
 

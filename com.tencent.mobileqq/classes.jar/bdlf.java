@@ -1,25 +1,30 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.image.URLDrawable.DownloadListener;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Set;
 
 class bdlf
-  implements View.OnClickListener
+  implements URLDrawable.DownloadListener
 {
-  bdlf(bdle parambdle, QQAppInterface paramQQAppInterface, String paramString1, String paramString2, int paramInt) {}
+  bdlf(bdle parambdle, String paramString) {}
   
-  public void onClick(View paramView)
+  public void onFileDownloadFailed(int paramInt)
   {
-    azqs.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8009BE7", "0X8009BE7", 1, 0, "", "", "", "");
-    this.jdField_a_of_type_Bdle.hideSoftInputFromWindow();
-    paramView = new asbs(this.jdField_a_of_type_Bdle);
-    paramView.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_Bdle.addPreviewView(paramView.b());
-    azqs.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8009AAD", "0X8009AAD", 0, 0, "", "", "", "");
+    if (!bdle.a(this.jdField_a_of_type_Bdle).contains(this.jdField_a_of_type_JavaLangString))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("GroupPadTemplateAdapter", 2, "onFileDownloadFailed url: " + this.jdField_a_of_type_JavaLangString);
+      }
+      bdle.a(this.jdField_a_of_type_Bdle).add(this.jdField_a_of_type_JavaLangString);
+    }
   }
+  
+  public void onFileDownloadStarted() {}
+  
+  public void onFileDownloadSucceed(long paramLong) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bdlf
  * JD-Core Version:    0.7.0.1
  */

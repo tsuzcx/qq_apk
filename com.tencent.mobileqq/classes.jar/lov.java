@@ -1,24 +1,19 @@
 public class lov
 {
-  public static int a(String paramString)
+  public int a;
+  public String a;
+  public String b;
+  
+  public lov(int paramInt, String paramString1, String paramString2)
   {
-    if ((paramString == null) || (paramString.equals("point"))) {}
-    do
-    {
-      return 0;
-      if (paramString.equals("line")) {
-        return 1;
-      }
-      if (paramString.equals("square")) {
-        return 2;
-      }
-    } while (!paramString.equals("ellipse"));
-    return 3;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.b = paramString2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     lov
  * JD-Core Version:    0.7.0.1
  */

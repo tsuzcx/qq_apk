@@ -1,32 +1,32 @@
 package com.tencent.biz.pubaccount.readinjoy.video;
 
-import aepi;
+import afur;
 import android.content.Context;
 import android.view.View;
 import android.view.ViewGroup.MarginLayoutParams;
 import android.view.animation.TranslateAnimation;
 import android.widget.LinearLayout;
-import rlo;
+import sgp;
 
 public class VideofeedsUserGuideController$4
   implements Runnable
 {
-  public VideofeedsUserGuideController$4(rlo paramrlo) {}
+  public VideofeedsUserGuideController$4(sgp paramsgp) {}
   
   public void run()
   {
-    TranslateAnimation localTranslateAnimation = rlo.b(this.this$0);
+    TranslateAnimation localTranslateAnimation = sgp.b(this.this$0);
     if (localTranslateAnimation != null)
     {
-      rlo.a(this.this$0).setVisibility(0);
-      rlo.a(this.this$0).findViewById(2131379437).setVisibility(0);
-      rlo.a(this.this$0).findViewById(2131379431).setVisibility(0);
-      rlo.a(this.this$0).findViewById(2131379432).setVisibility(0);
-      rlo.a(this.this$0).bringToFront();
-      ViewGroup.MarginLayoutParams localMarginLayoutParams = (ViewGroup.MarginLayoutParams)rlo.a(this.this$0).getLayoutParams();
-      localMarginLayoutParams.setMargins(0, 0, 0, aepi.a(187.0F, rlo.a(this.this$0).getResources()));
-      rlo.a(this.this$0).setLayoutParams(localMarginLayoutParams);
-      rlo.a(this.this$0).startAnimation(localTranslateAnimation);
+      sgp.a(this.this$0).setVisibility(0);
+      sgp.a(this.this$0).findViewById(2131380361).setVisibility(0);
+      sgp.a(this.this$0).findViewById(2131380357).setVisibility(0);
+      sgp.a(this.this$0).findViewById(2131380358).setVisibility(0);
+      sgp.a(this.this$0).bringToFront();
+      ViewGroup.MarginLayoutParams localMarginLayoutParams = (ViewGroup.MarginLayoutParams)sgp.a(this.this$0).getLayoutParams();
+      localMarginLayoutParams.setMargins(0, 0, 0, afur.a(187.0F, sgp.a(this.this$0).getResources()));
+      sgp.a(this.this$0).setLayoutParams(localMarginLayoutParams);
+      sgp.a(this.this$0).startAnimation(localTranslateAnimation);
     }
   }
 }

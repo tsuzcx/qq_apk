@@ -1,10 +1,12 @@
-import com.tencent.mobileqq.videoplatform.view.BaseVideoView;
-
 public class ayax
 {
-  public BaseVideoView a;
+  public T a;
   
-  public ayax(ayao paramayao) {}
+  public ayax(T paramT)
+  {
+    Object localObject;
+    this.jdField_a_of_type_JavaLangObject = localObject;
+  }
 }
 
 

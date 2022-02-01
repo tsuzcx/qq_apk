@@ -1,22 +1,23 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.widget.Button;
-import com.tencent.mobileqq.activity.photo.album.NewPhotoPreviewActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.os.MessageQueue.IdleHandler;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.EditText;
+import com.tencent.mobileqq.activity.contact.addcontact.SearchContactsActivity;
 
-class aitk
-  implements DialogInterface.OnClickListener
+public final class aitk
+  implements MessageQueue.IdleHandler
 {
-  aitk(aitg paramaitg) {}
+  final SearchContactsActivity a;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public aitk(SearchContactsActivity paramSearchContactsActivity)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("PhotoPreviewActivity", 2, "cancel shortvideo_mobile_send_confirm dialog");
-    }
-    if (((NewPhotoPreviewActivity)this.a.mActivity).sendBtn != null) {
-      ((NewPhotoPreviewActivity)this.a.mActivity).sendBtn.setClickable(true);
-    }
+    this.a = paramSearchContactsActivity;
+  }
+  
+  public boolean queueIdle()
+  {
+    this.a.a.requestFocus();
+    ((InputMethodManager)this.a.getSystemService("input_method")).showSoftInput(this.a.a, 0);
+    return false;
   }
 }
 

@@ -1,16 +1,21 @@
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnCompletionListener;
+import com.tencent.biz.PoiMapActivity;
 
-class nie
-  implements TVK_IMediaPlayer.OnCompletionListener
+public class nie
+  extends nio
 {
-  nie(nic paramnic) {}
+  public String a;
+  public String b;
+  public String c;
+  public String d;
   
-  public void onCompletion(TVK_IMediaPlayer paramTVK_IMediaPlayer) {}
+  public nie(PoiMapActivity paramPoiMapActivity)
+  {
+    super(paramPoiMapActivity);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     nie
  * JD-Core Version:    0.7.0.1
  */

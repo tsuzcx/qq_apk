@@ -1,43 +1,22 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.storyHome.model.CommentLikeFeedItem;
-
 class wqb
-  extends umf<wpr, wiu>
+  implements wri
 {
-  wqb(wpr paramwpr)
-  {
-    super(paramwpr);
-  }
+  wqb(wqa paramwqa) {}
   
-  public void a(@NonNull wpr paramwpr, @NonNull wiu paramwiu)
+  public void a(boolean paramBoolean, wre paramwre)
   {
-    Object localObject = paramwpr.a(paramwiu.jdField_a_of_type_JavaLangString);
-    if ((localObject == null) || (paramwiu.jdField_a_of_type_Boolean))
+    yqp.b("WeatherDataProvider", "WeatherLbsListener: onLbsUpdate, isSuccess=" + paramBoolean);
+    if ((paramBoolean) && (paramwre != null))
     {
-      wxe.d(this.TAG, "is not my like, %s, isForDetail:%b", new Object[] { paramwiu.jdField_a_of_type_JavaLangString, Boolean.valueOf(paramwiu.jdField_a_of_type_Boolean) });
+      this.a.a(paramwre.b, paramwre.a);
       return;
     }
-    if (!(localObject instanceof woi))
-    {
-      wxe.e(this.TAG, "that is error type!");
-      return;
-    }
-    localObject = (woi)localObject;
-    ((CommentLikeFeedItem)((woi)localObject).a).mLikeCount = paramwiu.b;
-    ((woi)localObject).b(paramwiu.jdField_a_of_type_JavaUtilList, true);
-    wpr.a(paramwpr).b(paramwiu.jdField_a_of_type_JavaLangString);
+    this.a.a(false, null);
   }
-  
-  public Class acceptEventClass()
-  {
-    return wiu.class;
-  }
-  
-  public void b(@NonNull wpr paramwpr, @NonNull wiu paramwiu) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     wqb
  * JD-Core Version:    0.7.0.1
  */

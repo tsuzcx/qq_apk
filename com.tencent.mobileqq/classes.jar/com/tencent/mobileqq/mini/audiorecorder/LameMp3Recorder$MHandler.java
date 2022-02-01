@@ -61,12 +61,6 @@ class LameMp3Recorder$MHandler
                         if ((!TextUtils.isEmpty(paramMessage)) && (LameMp3Recorder.access$000(localLameMp3Recorder) != null)) {
                           LameMp3Recorder.access$000(localLameMp3Recorder).onErrorInfo(paramMessage);
                         }
-                        if (hasMessages(104)) {
-                          removeMessages(104);
-                        }
-                        if ((!TextUtils.isEmpty(paramMessage)) && (LameMp3Recorder.access$000(localLameMp3Recorder) != null)) {
-                          LameMp3Recorder.access$000(localLameMp3Recorder).onErrorInfo(paramMessage);
-                        }
                       } while (!hasMessages(104));
                       removeMessages(104);
                       return;
@@ -164,7 +158,7 @@ class LameMp3Recorder$MHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.audiorecorder.LameMp3Recorder.MHandler
  * JD-Core Version:    0.7.0.1
  */

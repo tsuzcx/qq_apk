@@ -1,27 +1,73 @@
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StComment;
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StReply;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnShowListener;
-import com.tencent.biz.subscribe.event.CommentListShowStateEvent;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.model.item.QQUserUIItem;
+import com.tencent.biz.qqstory.storyHome.memory.model.StoryQQ2UidConverter.1;
+import com.tencent.biz.qqstory.storyHome.memory.model.StoryQQ2UidConverter.2;
+import com.tencent.mobileqq.app.ThreadManager;
+import mqq.os.MqqHandler;
 
-class ygl
-  implements DialogInterface.OnShowListener
+public class ygl
+  implements www
 {
-  ygl(ygg paramygg, CertifiedAccountMeta.StComment paramStComment, CertifiedAccountMeta.StReply paramStReply) {}
+  private ygm a;
   
-  public void onShow(DialogInterface paramDialogInterface)
+  public String a(long paramLong)
   {
-    if (ygg.a(this.jdField_a_of_type_Ygg) != null) {
-      ygg.a(this.jdField_a_of_type_Ygg).a(paramDialogInterface);
+    return ((wpy)wpm.a(2)).b(String.valueOf(paramLong), false);
+  }
+  
+  public void a(long paramLong)
+  {
+    ThreadManager.post(new StoryQQ2UidConverter.1(this, paramLong), 5, null, false);
+  }
+  
+  public void a(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString))
+    {
+      yqp.e("Q.qqstory.memories.StoryQQ2UidConverter", "request valid uid with default uid error. uid : %s.", new Object[] { paramString });
+      return;
     }
-    paramDialogInterface = yma.a().a(ygg.a(this.jdField_a_of_type_Ygg), this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StComment, this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StReply);
-    ygg.a(this.jdField_a_of_type_Ygg).a(paramDialogInterface);
-    yiw.a().a(new CommentListShowStateEvent(true));
+    yqp.a("Q.qqstory.memories.StoryQQ2UidConverter", "request valid uid with default uid: %s.", paramString);
+    paramString = new wqt("", paramString);
+    new wwv(this).a(1, paramString, String.valueOf(hashCode()));
+  }
+  
+  public void a(wwx paramwwx)
+  {
+    if (!TextUtils.equals(paramwwx.jdField_a_of_type_JavaLangString, String.valueOf(hashCode()))) {
+      return;
+    }
+    if ((paramwwx.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess()) && (paramwwx.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem != null)) {
+      yqp.a("Q.qqstory.memories.StoryQQ2UidConverter", "get uid by qq from net. uid = %s.", paramwwx.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem.uid);
+    }
+    for (paramwwx = paramwwx.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem.uid;; paramwwx = null)
+    {
+      ThreadManager.getUIHandler().post(new StoryQQ2UidConverter.2(this, paramwwx));
+      return;
+    }
+  }
+  
+  public void a(ygm paramygm)
+  {
+    this.a = paramygm;
+  }
+  
+  public void b(long paramLong)
+  {
+    if (paramLong <= 0L)
+    {
+      yqp.e("Q.qqstory.memories.StoryQQ2UidConverter", "request valid uid with qq error. qq : %d.", new Object[] { Long.valueOf(paramLong) });
+      return;
+    }
+    yqp.a("Q.qqstory.memories.StoryQQ2UidConverter", "request valid uid with qq: %d.", Long.valueOf(paramLong));
+    wqt localwqt = new wqt(String.valueOf(paramLong), "");
+    new wwv(this).a(0, localwqt, String.valueOf(hashCode()));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     ygl
  * JD-Core Version:    0.7.0.1
  */

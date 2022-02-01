@@ -1,22 +1,41 @@
 package com.tencent.mobileqq.mini.appbrand.ui;
 
-import com.tencent.mobileqq.mini.app.AppLoaderFactory;
-import com.tencent.mobileqq.mini.app.IAppUIProxy;
+import Override;
+import android.content.res.Configuration;
+import android.view.MotionEvent;
+import com.tencent.mobileqq.mini.fake.FakeInternalBrandUI;
+import com.tencent.mobileqq.mini.fake.IFakeBrandUI;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class InternalAppBrandUI
   extends AppBrandUI
 {
-  public IAppUIProxy getAppUIProxy()
+  @Override
+  public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
-    if (this.mAppUIProxy == null) {
-      this.mAppUIProxy = AppLoaderFactory.createInternalAppUIProxy();
+    boolean bool = super.dispatchTouchEvent(paramMotionEvent);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool);
+    return bool;
+  }
+  
+  public IFakeBrandUI getFakeBrandUI()
+  {
+    if (this.mFakeBrandUI == null) {
+      this.mFakeBrandUI = new FakeInternalBrandUI();
     }
-    return this.mAppUIProxy;
+    return this.mFakeBrandUI;
+  }
+  
+  @Override
+  public void onConfigurationChanged(Configuration paramConfiguration)
+  {
+    super.onConfigurationChanged(paramConfiguration);
+    EventCollector.getInstance().onActivityConfigurationChanged(this, paramConfiguration);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.appbrand.ui.InternalAppBrandUI
  * JD-Core Version:    0.7.0.1
  */

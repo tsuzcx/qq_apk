@@ -1,34 +1,18 @@
-import android.os.Handler;
-import android.os.Looper;
-import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
-import dov.com.tencent.mobileqq.activity.richmedia.view.LbsFilterStatusManager.3.1;
+import dov.com.qq.im.capture.view.CountDownView;
+import dov.com.tencent.mobileqq.richmedia.capture.view.AEPituCameraCaptureButtonLayout;
 
-public class bniz
-  implements INetInfoHandler
+class bniz
+  implements bqcm
 {
-  bniz(bniy parambniy) {}
+  bniz(bniy parambniy, bnnv parambnnv) {}
   
-  public void onNetMobile2None() {}
-  
-  public void onNetMobile2Wifi(String paramString)
+  public void a()
   {
-    Thread.currentThread().getId();
-    if (Looper.myLooper() == Looper.getMainLooper()) {
-      bniy.a(this.a);
+    if (bniq.a(this.jdField_a_of_type_Bniy.a) != null) {
+      bniq.a(this.jdField_a_of_type_Bniy.a).a(this.jdField_a_of_type_Bnnv.a(), false);
     }
-    while (bniy.a(this.a) == null) {
-      return;
-    }
-    bniy.a(this.a).post(new LbsFilterStatusManager.3.1(this));
+    bniq.a(this.jdField_a_of_type_Bniy.a).setTouchEnable(false);
   }
-  
-  public void onNetNone2Mobile(String paramString) {}
-  
-  public void onNetNone2Wifi(String paramString) {}
-  
-  public void onNetWifi2Mobile(String paramString) {}
-  
-  public void onNetWifi2None() {}
 }
 
 

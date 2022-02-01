@@ -5,23 +5,23 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.support.annotation.NonNull;
-import apdv;
-import awge;
-import awhp;
-import awhs;
-import bamp;
+import args;
+import bdnt;
+import com.tencent.mobileqq.persistence.Entity;
+import com.tencent.mobileqq.persistence.notColumn;
+import com.tencent.mobileqq.persistence.unique;
 
 public class AutoReplyText
-  extends awge
+  extends Entity
   implements Parcelable, Comparable<AutoReplyText>
 {
-  public static final Parcelable.Creator<AutoReplyText> CREATOR = new apdv();
+  public static final Parcelable.Creator<AutoReplyText> CREATOR = new args();
   public static final int TEXT_NONE = 2147483647;
   public int mCheckFlag;
-  @awhp
+  @notColumn
   private Bundle mExtra;
   public String mRawText;
-  @awhs
+  @unique
   public int mTextId;
   
   public AutoReplyText()
@@ -139,7 +139,7 @@ public class AutoReplyText
   
   public CharSequence getText(int paramInt)
   {
-    return new bamp(getRawText(), 3, paramInt);
+    return new bdnt(getRawText(), 3, paramInt);
   }
   
   public int getTextId()
@@ -172,7 +172,7 @@ public class AutoReplyText
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.AutoReplyText
  * JD-Core Version:    0.7.0.1
  */

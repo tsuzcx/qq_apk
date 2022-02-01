@@ -1,13 +1,17 @@
-public abstract interface wxr
-  extends xam
+public final class wxr
+  extends weu
 {
-  public abstract void a(int paramInt);
-  
-  public abstract void b(int paramInt);
+  public int a;
+  public long a;
+  public String a;
+  public int b;
+  public long b;
+  public String b;
+  public int c;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     wxr
  * JD-Core Version:    0.7.0.1
  */

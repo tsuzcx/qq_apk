@@ -1,48 +1,37 @@
-import android.content.Context;
-import android.media.AudioManager;
-import com.tencent.mobileqq.widget.qqfloatingscreen.listener.IVideoOuterStatusListener;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import com.tencent.qphone.base.util.BaseApplication;
 
 class beyk
-  implements auca
 {
-  beyk(beyi parambeyi) {}
+  private bktt jdField_a_of_type_Bktt = new bktt();
   
-  public void a(int paramInt)
+  public beyk(beyj parambeyj)
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.d("TVKVideoController", 4, new Object[] { "onFocusChange focusType:", Integer.valueOf(paramInt) });
-    }
-    switch (paramInt)
+    this.jdField_a_of_type_Bktt.a();
+  }
+  
+  public int a(long paramLong1, long paramLong2)
+  {
+    int j = this.jdField_a_of_type_Bktt.a(BaseApplication.getContext(), paramLong2, paramLong1, 1048576);
+    int k = bktw.a(BaseApplication.getContext());
+    int i;
+    if (k != 1)
     {
+      i = j;
+      if (k != 2) {}
     }
-    do
+    else
     {
-      do
-      {
-        do
-        {
-          return;
-        } while (beyi.a(this.a) == null);
-        ((AudioManager)((Context)beyi.a(this.a).get()).getSystemService("audio")).requestAudioFocus(null, 3, 2);
-        beyi.a(this.a).c();
-        beyi.a(this.a, 1);
-        if (beyi.a(this.a) != null) {
-          beyi.a(this.a).onVideoStart((int)beyi.a(this.a).c());
-        }
-        beyi.a(this.a).postDelayed(this.a.a, 100L);
-        return;
-      } while (beyi.a(this.a) == null);
-      beyi.a(this.a).b();
-      beyi.a(this.a, 4);
-      if (beyi.a(this.a) != null) {
-        beyi.a(this.a).onVideoStop();
+      i = j;
+      if (j > 16384) {
+        i = 16384;
       }
-      beyi.a(this.a).removeCallbacks(this.a.a);
-      return;
-    } while (beyi.a(this.a) == null);
-    beyi.a(this.a).a(true);
+    }
+    return i;
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_Bktt.b();
   }
 }
 

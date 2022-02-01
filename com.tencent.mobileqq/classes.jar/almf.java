@@ -1,226 +1,151 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
-import android.text.TextUtils;
-import android.widget.EditText;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.apollo.utils.ApolloUtil;
-import com.tencent.mobileqq.apollo.view.ApolloLinearLayout;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ApolloActionData;
-import com.tencent.mobileqq.utils.VipUtils;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.os.Handler;
+import com.tencent.maxvideo.mediadevice.AVCodec;
+import com.tencent.mobileqq.activity.richmedia.state.RMVideoRecordState.1;
+import com.tencent.mobileqq.activity.richmedia.state.RMVideoRecordState.2;
+import com.tencent.mobileqq.activity.richmedia.state.RMVideoRecordState.3;
+import com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
+import com.tencent.mobileqq.shortvideo.mediadevice.AudioCapture;
+import com.tencent.mobileqq.shortvideo.mediadevice.PreviewContext;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.util.concurrent.ConcurrentHashMap;
+import cooperation.qzone.thread.QzoneBaseThread;
+import cooperation.qzone.thread.QzoneHandlerThreadFactory;
 
 public class almf
-  extends allz
+  extends almg
 {
-  public Drawable a;
-  public Drawable b;
+  private long jdField_a_of_type_Long;
+  private boolean jdField_a_of_type_Boolean;
   
-  public almf(String paramString)
+  private void d()
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    if ((this.jdField_a_of_type_AndroidGraphicsDrawableDrawable == null) || (this.jdField_b_of_type_AndroidGraphicsDrawableDrawable == null)) {
-      try
-      {
-        paramString = BaseApplication.getContext().getResources();
-        if (paramString != null)
-        {
-          Bitmap localBitmap1 = (Bitmap)BaseApplicationImpl.sImageHashMap.get("apolloMainInfoDef");
-          Bitmap localBitmap2 = (Bitmap)BaseApplicationImpl.sImageHashMap.get("apolloMainInfoFail");
-          if (localBitmap1 != null) {
-            this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = new BitmapDrawable(localBitmap1);
-          }
-          while (localBitmap2 != null)
-          {
-            this.jdField_b_of_type_AndroidGraphicsDrawableDrawable = new BitmapDrawable(localBitmap2);
-            return;
-            this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramString.getDrawable(2130837907);
-            BaseApplicationImpl.sImageHashMap.put("apolloMainInfoDef", BitmapFactory.decodeResource(paramString, 2130837907));
-          }
-        }
-        return;
-      }
-      catch (Exception paramString)
-      {
-        if (QLog.isColorLevel())
-        {
-          QLog.e("ApolloMainInfo", 2, paramString.getMessage());
-          return;
-          this.jdField_b_of_type_AndroidGraphicsDrawableDrawable = paramString.getDrawable(2130843340);
-          BaseApplicationImpl.sImageHashMap.put("apolloMainInfoFail", BitmapFactory.decodeResource(paramString, 2130843340));
-          return;
-        }
-      }
-      catch (OutOfMemoryError paramString)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.e("ApolloMainInfo", 2, paramString.getMessage());
-        }
-      }
+    RMVideoStateMgr localRMVideoStateMgr = RMVideoStateMgr.a();
+    if (QLog.isColorLevel()) {
+      QLog.d("RMRecordState", 2, "[@] [startRecordVideo]Lock.CAPTURE_LOCK=" + bcje.jdField_a_of_type_Boolean);
     }
-  }
-  
-  public Drawable a(Context paramContext, float paramFloat)
-  {
-    Object localObject = null;
-    paramContext = null;
-    if (this.jdField_a_of_type_ComTencentMobileqqDataApolloActionData == null) {}
-    String str;
-    do
+    if (!bcje.jdField_a_of_type_Boolean) {}
+    synchronized (bcje.jdField_a_of_type_JavaLangObject)
     {
-      do
-      {
-        return paramContext;
-        if (this.jdField_a_of_type_ComTencentMobileqqDataApolloActionData.status == 0) {
-          return this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-        }
-        str = Integer.toString(1);
-        if (TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) {
-          break;
-        }
-        paramContext = URLDrawable.URLDrawableOptions.obtain();
-        localObject = new aldu();
-        ((aldu)localObject).jdField_a_of_type_JavaLangString = (aliu.d + this.jdField_a_of_type_ComTencentMobileqqDataApolloActionData.actionId + File.separator + "txtImg.png");
-        ((aldu)localObject).jdField_b_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqDataApolloActionData.textImg;
-        paramContext.mExtraInfo = localObject;
-        paramContext.mRequestHeight = ApolloLinearLayout.e;
-        paramContext.mRequestWidth = ApolloLinearLayout.e;
-        localObject = aldt.a(true, ((aldu)localObject).jdField_a_of_type_JavaLangString, paramContext, this.jdField_a_of_type_ComTencentMobileqqDataApolloActionData.textImg);
-        paramContext = (Context)localObject;
-      } while (!QLog.isColorLevel());
-      QLog.d("ApolloMainInfo", 2, "decode panel action name =" + this.jdField_a_of_type_ComTencentMobileqqDataApolloActionData.actionName + " mActionText:" + this.jdField_b_of_type_JavaLangString);
-      return localObject;
-      try
-      {
-        paramContext = new URL("apollo_pic", null, a(this.jdField_a_of_type_ComTencentMobileqqDataApolloActionData));
-        if (paramContext == null) {
-          return this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-        }
-      }
-      catch (MalformedURLException localMalformedURLException)
-      {
-        for (;;)
-        {
-          paramContext = (Context)localObject;
-          if (QLog.isColorLevel())
-          {
-            QLog.d("ApolloMainInfo", 2, "getDrawable ,", localMalformedURLException);
-            paramContext = (Context)localObject;
-          }
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d("ApolloMainInfo", 2, "decode panel action name =" + this.jdField_a_of_type_ComTencentMobileqqDataApolloActionData.actionName);
-        }
-        localObject = URLDrawable.URLDrawableOptions.obtain();
-        ((URLDrawable.URLDrawableOptions)localObject).mFailedDrawable = this.jdField_b_of_type_AndroidGraphicsDrawableDrawable;
-        ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-        ((URLDrawable.URLDrawableOptions)localObject).mRequestHeight = ApolloLinearLayout.e;
-        ((URLDrawable.URLDrawableOptions)localObject).mRequestWidth = ApolloLinearLayout.e;
-        ((URLDrawable.URLDrawableOptions)localObject).mPlayGifImage = false;
-        localObject = URLDrawable.getDrawable(paramContext, (URLDrawable.URLDrawableOptions)localObject);
-        paramContext = (Context)localObject;
-      }
-    } while (((URLDrawable)localObject).getStatus() == 1);
-    ((URLDrawable)localObject).setTag(this.jdField_a_of_type_ComTencentMobileqqDataApolloActionData);
-    ((URLDrawable)localObject).addHeader("apollo_uin", this.jdField_a_of_type_JavaLangString);
-    ((URLDrawable)localObject).addHeader("apollo_tasks", str);
-    return localObject;
-  }
-  
-  public String a(ApolloActionData paramApolloActionData)
-  {
-    if (paramApolloActionData == null) {
-      return "action";
-    }
-    return paramApolloActionData.actionId + "_" + paramApolloActionData.actionName;
-  }
-  
-  public void a(QQAppInterface paramQQAppInterface, Context paramContext, EditText paramEditText, SessionInfo paramSessionInfo)
-  {
-    if ((this.jdField_a_of_type_ComTencentMobileqqDataApolloActionData == null) || (paramQQAppInterface == null) || (paramSessionInfo == null)) {}
-    label320:
-    do
-    {
-      return;
+      bcje.jdField_a_of_type_Boolean = true;
+      bcje.jdField_a_of_type_JavaLangObject.notifyAll();
       if (QLog.isColorLevel()) {
-        QLog.d("ApolloMainInfo", 2, "send apolloInfo actionid=" + this.jdField_a_of_type_ComTencentMobileqqDataApolloActionData.actionId + " input =" + paramEditText.getText().toString());
+        QLog.d("RMRecordState", 2, "[@] [startRecordVideo]Lock.CAPTURE_LOCK=" + bcje.jdField_a_of_type_Boolean);
       }
-      acjm.a(paramQQAppInterface, paramContext, paramSessionInfo, this);
-      paramContext = "";
-      if (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqDataApolloActionData.inputText))
-      {
-        paramEditText = "2";
-        paramContext = paramEditText;
-        if (!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString))
-        {
-          if (this.d == 0) {
-            paramContext = "6";
-          }
-        }
-        else
-        {
-          if (paramSessionInfo.jdField_a_of_type_Int != 0) {
-            continue;
-          }
-          paramEditText = paramSessionInfo.jdField_a_of_type_JavaLangString;
-          i = Integer.parseInt(paramContext);
-          paramSessionInfo = "" + this.jdField_a_of_type_ComTencentMobileqqDataApolloActionData.actionId;
-          str = "655_" + this.jdField_a_of_type_Int;
-          if (!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) {
-            break label320;
-          }
-        }
+      AVCodec.get().startCapture();
+      localRMVideoStateMgr.jdField_a_of_type_ComTencentMobileqqShortvideoMediadevicePreviewContext.startCapture();
+      if (localRMVideoStateMgr.b(2)) {
+        localRMVideoStateMgr.f();
       }
-      for (paramContext = "0";; paramContext = this.jdField_b_of_type_JavaLangString)
-      {
-        VipUtils.a(paramQQAppInterface, "cmshow", "Apollo", "action_sent", paramEditText, i, 0, new String[] { paramSessionInfo, str, paramContext, String.valueOf(System.currentTimeMillis() / 1000L) });
-        return;
-        paramContext = paramEditText;
-        if (this.d != 1) {
-          break;
-        }
-        paramContext = "7";
-        break;
-        if (TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString))
-        {
-          paramContext = "3";
-          break;
-        }
-        if (this.d == 0)
-        {
-          paramContext = "4";
-          break;
-        }
-        if (this.d != 1) {
-          break;
-        }
-        paramContext = "5";
-        break;
+      if ((localRMVideoStateMgr.jdField_a_of_type_ComTencentMobileqqShortvideoMediadeviceAudioCapture != null) && (localRMVideoStateMgr.i())) {
+        localRMVideoStateMgr.jdField_a_of_type_ComTencentMobileqqShortvideoMediadeviceAudioCapture.h();
       }
-    } while (((paramSessionInfo.jdField_a_of_type_Int != 1) && (paramSessionInfo.jdField_a_of_type_Int != 3000)) || (this.jdField_a_of_type_ComTencentMobileqqDataApolloActionData.personNum != 0));
-    paramEditText = paramSessionInfo.jdField_a_of_type_JavaLangString;
-    int i = Integer.parseInt(paramContext);
-    int j = ApolloUtil.b(paramSessionInfo.jdField_a_of_type_Int);
-    paramSessionInfo = "" + this.jdField_a_of_type_ComTencentMobileqqDataApolloActionData.actionId;
-    String str = "655_" + this.jdField_a_of_type_Int;
-    if (TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) {}
-    for (paramContext = "0";; paramContext = this.jdField_b_of_type_JavaLangString)
-    {
-      VipUtils.a(paramQQAppInterface, "cmshow", "Apollo", "g_action_single_sent", paramEditText, i, j, new String[] { paramSessionInfo, str, paramContext, String.valueOf(System.currentTimeMillis() / 1000L) });
+      this.jdField_a_of_type_Long = System.currentTimeMillis();
       return;
     }
+  }
+  
+  public void a()
+  {
+    RMVideoStateMgr localRMVideoStateMgr = RMVideoStateMgr.a();
+    localRMVideoStateMgr.jdField_a_of_type_Almo.o();
+    localRMVideoStateMgr.k();
+    if (QLog.isColorLevel()) {
+      QLog.d("RMRecordState", 2, "[@] [RMFileEventNotify]stopWatching");
+    }
+    this.jdField_a_of_type_Boolean = false;
+    d();
+    if (QLog.isColorLevel()) {
+      QLog.d("RMRecordState", 2, "[@] initState end");
+    }
+  }
+  
+  public void a(bchc parambchc, boolean paramBoolean, int paramInt1, int paramInt2)
+  {
+    parambchc = RMVideoStateMgr.a();
+    if (parambchc.jdField_b_of_type_Boolean) {}
+    for (parambchc.jdField_a_of_type_Double = (System.currentTimeMillis() - parambchc.jdField_a_of_type_Long);; parambchc.jdField_a_of_type_Double = paramInt1)
+    {
+      if (!this.jdField_a_of_type_Boolean)
+      {
+        this.jdField_a_of_type_Boolean = paramBoolean;
+        if ((parambchc.h()) && (!parambchc.jdField_a_of_type_ComTencentMobileqqShortvideoMediadeviceAudioCapture.e) && (!parambchc.h)) {
+          parambchc.jdField_a_of_type_AndroidOsHandler.post(new RMVideoRecordState.2(this));
+        }
+        if (QLog.isColorLevel()) {
+          QLog.d("RMRecordState", 2, "[@] timeExpire: mIsRecordOver=" + this.jdField_a_of_type_Boolean + " mStateMgr.mTotalTime=" + parambchc.jdField_a_of_type_Double);
+        }
+        parambchc.jdField_a_of_type_Almo.a((int)(parambchc.jdField_a_of_type_Double + bcjg.a().a().a()), this.jdField_a_of_type_Boolean);
+        if (this.jdField_a_of_type_Boolean) {
+          parambchc.jdField_a_of_type_AndroidOsHandler.post(new RMVideoRecordState.3(this));
+        }
+      }
+      return;
+    }
+  }
+  
+  public void b()
+  {
+    c();
+    RMVideoStateMgr localRMVideoStateMgr = RMVideoStateMgr.a();
+    localRMVideoStateMgr.a(2);
+    localRMVideoStateMgr.j();
+    if (QLog.isColorLevel()) {
+      QLog.d("RMRecordState", 2, "[@] [RMFileEventNotify]startWatching");
+    }
+  }
+  
+  public void c()
+  {
+    RMVideoStateMgr localRMVideoStateMgr = RMVideoStateMgr.a();
+    if (QLog.isColorLevel()) {
+      QLog.d("RMRecordState", 2, "[@] [stopRecordVideo]Lock.CAPTURE_LOCK = " + bcje.jdField_a_of_type_Boolean);
+    }
+    if (bcje.jdField_a_of_type_Boolean)
+    {
+      bcje.jdField_a_of_type_Boolean = false;
+      long l1 = System.currentTimeMillis();
+      this.jdField_a_of_type_Long = (l1 - this.jdField_a_of_type_Long);
+      if (QLog.isColorLevel()) {
+        QLog.d("RMRecordState", 2, "[@] [stopRecordVideo] current=" + l1 + " timestamp=" + this.jdField_a_of_type_Long);
+      }
+      if (this.jdField_a_of_type_Boolean) {
+        localRMVideoStateMgr.jdField_a_of_type_Double = bcjb.c;
+      }
+      localRMVideoStateMgr.jdField_a_of_type_Almo.t();
+      localRMVideoStateMgr.jdField_a_of_type_ComTencentMobileqqShortvideoMediadevicePreviewContext.stopCapture();
+      if (localRMVideoStateMgr.jdField_a_of_type_ComTencentMobileqqShortvideoMediadeviceAudioCapture != null) {
+        localRMVideoStateMgr.jdField_a_of_type_ComTencentMobileqqShortvideoMediadeviceAudioCapture.i();
+      }
+      if (localRMVideoStateMgr.b(3))
+      {
+        if (localRMVideoStateMgr.jdField_a_of_type_Bcku != null) {
+          localRMVideoStateMgr.jdField_b_of_type_JavaLangString = localRMVideoStateMgr.jdField_a_of_type_Bcku.a(localRMVideoStateMgr);
+        }
+        localRMVideoStateMgr.g();
+      }
+      QzoneHandlerThreadFactory.getHandlerThread("Normal_HandlerThread", false).post(new RMVideoRecordState.1(this, localRMVideoStateMgr));
+      AVCodec.get().stopCapture();
+      long l2 = localRMVideoStateMgr.jdField_a_of_type_Almo.d();
+      if (QLog.isColorLevel()) {
+        QLog.d("RMRecordState", 2, "[@] [stopRecordVideo] timeLimit=" + l2 + " timestamp=" + this.jdField_a_of_type_Long);
+      }
+      l1 = l2;
+      if (l2 == -1L) {
+        l1 = this.jdField_a_of_type_Long;
+      }
+      if ((l1 < 500L) && (!this.jdField_a_of_type_Boolean))
+      {
+        localRMVideoStateMgr.jdField_a_of_type_Almo.g(true);
+        localRMVideoStateMgr.a(true);
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("RMRecordState", 2, "[@] stopRecordVideo end Lock.CAPTURE_LOCK = " + bcje.jdField_a_of_type_Boolean);
+      }
+    }
+  }
+  
+  public void f()
+  {
+    b();
   }
 }
 

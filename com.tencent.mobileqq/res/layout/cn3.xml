@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge android:layout_width="wrap_content" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:id="@id/n6n" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <LinearLayout android:orientation="vertical" android:id="@id/lqn" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <ViewStub android:id="@id/n6s" android:layout="@layout/cn2" android:layout_width="fill_parent" android:layout_height="48.0dip" android:layout_marginTop="10.0dip" />
+            <ViewStub android:id="@id/n6q" android:layout="@layout/cn0" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+        </LinearLayout>
+        <com.tencent.biz.qqcircle.widgets.QCircleDoubleClickLayout android:id="@id/n6p" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" android:layout_below="@id/lqn">
+            <ViewStub android:id="@id/n6t" android:layout="@layout/cn4" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+            <ViewStub android:id="@id/n6x" android:layout="@layout/cn7" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+            <ViewStub android:id="@id/n6r" android:layout="@layout/cn1" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+        </com.tencent.biz.qqcircle.widgets.QCircleDoubleClickLayout>
+        <ViewStub android:id="@id/n9b" android:layout="@layout/cn6" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_below="@id/n6p" />
+        <FrameLayout android:id="@id/mm4" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_below="@id/n9b">
+            <ViewStub android:id="@id/n6o" android:layout="@layout/cmy" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+        </FrameLayout>
+        <ViewStub android:id="@id/n6w" android:layout="@layout/cn5" android:inflatedId="@id/n7a" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="10.0dip" android:layout_marginBottom="-10.0dip" android:layout_above="@id/mm4" android:layout_alignParentRight="true" />
+        <ImageView android:background="@drawable/gco" android:layout_width="fill_parent" android:layout_height="8.0dip" android:layout_below="@id/mm4" />
+    </RelativeLayout>
+    <ViewStub android:id="@id/n6m" android:layout="@layout/cmu" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+</merge>

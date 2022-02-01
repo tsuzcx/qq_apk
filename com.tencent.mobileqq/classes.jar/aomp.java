@@ -1,51 +1,49 @@
-import com.tencent.common.app.BaseApplicationImpl;
+import android.content.Context;
+import com.tencent.mobileqq.activity.contact.troop.TroopWithCommonFriendsFragment;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 public class aomp
-  implements aokj<String>
+  extends aojs
 {
-  public boolean a = true;
-  public boolean b = true;
+  public aomp(QQAppInterface paramQQAppInterface, Context paramContext)
+  {
+    super(paramQQAppInterface, paramContext);
+  }
   
-  public void a(String paramString)
+  private void d()
+  {
+    String str = b("buddyuin");
+    if (!str.isEmpty())
+    {
+      long l = Long.parseLong(str);
+      if (QLog.isColorLevel()) {
+        QLog.d("TroopOneWayAction", 2, "grayTip,openTroopWithCommonFriendsFragment:" + l);
+      }
+      TroopWithCommonFriendsFragment.a(str);
+      TroopWithCommonFriendsFragment.a(this.a, 1);
+      bcst.b(null, "dc00898", "", "", "0X800AD20", "0X800AD20", 0, 0, "0", "0", "", "");
+    }
+  }
+  
+  public boolean a()
   {
     try
     {
-      QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-      paramString = new JSONObject(paramString);
-      if (paramString.optInt("ark_app_manage_panel_disable", 1) != 0)
-      {
-        bool = true;
-        this.a = bool;
-        anly.a = this.a;
-        if (paramString.optInt("ark_download_by_yyb_disable", 1) == 0) {
-          break label115;
-        }
-      }
-      label115:
-      for (boolean bool = true;; bool = false)
-      {
-        this.b = bool;
-        anly.f = this.b;
-        QLog.i("ArkMsgAIDisableConfig", 1, "onParse " + ", ark_app_manage_panel_disable=" + this.a + ", ark_download_by_yyb_disable =" + this.b);
-        return;
-        bool = false;
-        break;
-      }
-      return;
+      d();
+      return true;
     }
-    catch (JSONException paramString)
+    catch (Exception localException)
     {
-      QLog.e("ArkMsgAIDisableConfig", 1, "handleArkMsgAIDisableConfig parse config_content exception=" + paramString);
+      QLog.e("TroopOneWayAction", 1, "doAction error: " + localException.getMessage());
+      a("TroopOneWayAction");
     }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aomp
  * JD-Core Version:    0.7.0.1
  */

@@ -5,7 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.text.TextUtils;
 import android.widget.TextView;
-import bcmc;
+import bfqu;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Hashtable;
 import org.json.JSONException;
@@ -56,8 +56,8 @@ public class QLifeCommentActivity$ShopSelectReceiver
             if (this.a.a != null) {
               this.a.a.a = true;
             }
-            bcmc.a.clear();
-            this.a.jdField_e_of_type_JavaLangString = ("http://s.p.qq.com/cgi-bin/coupon_q/social/binary_upload.fcg?&sp=" + this.a.w + "&shopid=" + this.a.u);
+            bfqu.a.clear();
+            this.a.jdField_e_of_type_JavaLangString = ("https://s.p.qq.com/cgi-bin/coupon_q/social/binary_upload.fcg?&sp=" + this.a.w + "&shopid=" + this.a.u);
             return;
           }
         }
@@ -69,7 +69,7 @@ public class QLifeCommentActivity$ShopSelectReceiver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.troop.activity.QLifeCommentActivity.ShopSelectReceiver
  * JD-Core Version:    0.7.0.1
  */

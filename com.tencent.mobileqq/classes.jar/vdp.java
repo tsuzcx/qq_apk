@@ -1,30 +1,25 @@
-import com.tencent.biz.qqstory.base.ErrorMessage;
+import android.view.View;
 
-public class vdp
-  extends uli
+class vdp
+  implements bkhw
 {
-  private vhw a;
-  public boolean a;
+  vdp(vde paramvde) {}
   
-  public vdp(ErrorMessage paramErrorMessage)
+  public void OnClick(View paramView, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = paramErrorMessage;
-  }
-  
-  public vdp(boolean paramBoolean)
-  {
-    this(new ErrorMessage());
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public vhw a()
-  {
-    return this.jdField_a_of_type_Vhw;
+    if (vde.a(this.a) == null) {}
+    do
+    {
+      return;
+      bkif.b(this.a.a(), vde.a(this.a));
+      paramView = vde.a(this.a).a(paramInt);
+    } while (paramView == null);
+    vde.a(this.a, paramView.c, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     vdp
  * JD-Core Version:    0.7.0.1
  */

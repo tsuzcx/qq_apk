@@ -1,32 +1,30 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
+import android.app.Dialog;
 import android.view.View;
-import com.tencent.mobileqq.richmedia.capture.view.ProviderContainerView;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class axrx
-  implements Animator.AnimatorListener
+  implements View.OnClickListener
 {
-  public axrx(ProviderContainerView paramProviderContainerView) {}
+  public axrx(NearbyPeopleProfileActivity paramNearbyPeopleProfileActivity) {}
   
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
+  public void onClick(View paramView)
   {
-    this.a.c.setVisibility(0);
-  }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    if (ProviderContainerView.a(this.a) != null) {
-      ProviderContainerView.a(this.a).a();
+    if ((this.a.a != null) && (!this.a.isFinishing()))
+    {
+      this.a.a.dismiss();
+      this.a.a = null;
     }
+    this.a.c();
+    this.a.b(true);
+    bcst.b(this.a.app, "CliOper", "", "", "0X8004824", "0X8004824", 0, 0, "", "", "", "");
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     axrx
  * JD-Core Version:    0.7.0.1
  */

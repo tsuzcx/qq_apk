@@ -1,28 +1,35 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
-import com.tencent.mobileqq.activity.contact.troop.TroopSuspiciousFragment;
-import com.tencent.mobileqq.pb.PBEnumField;
-import tencent.mobileim.structmsg.structmsg.StructMsg;
+import com.tencent.mobileqq.activity.ChatActivityUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.qphone.base.util.QLog;
 
 public class ahqf
-  implements ahkx
+  implements ahqg
 {
-  public ahqf(TroopSuspiciousFragment paramTroopSuspiciousFragment) {}
-  
-  public void a(View paramView, RecyclerView.ViewHolder paramViewHolder, int paramInt)
+  public void a(QQAppInterface paramQQAppInterface, MessageRecord paramMessageRecord)
   {
-    if (!(paramViewHolder instanceof ahpe)) {}
-    do
+    int i = 1;
+    if (QLog.isColorLevel()) {
+      QLog.d("MessageFoldExposeBusiness", 2, "onMessageExpose");
+    }
+    if (ahcz.a(paramMessageRecord)) {
+      if (paramMessageRecord.istroop != 0) {
+        break label55;
+      }
+    }
+    for (;;)
     {
+      bcst.b(paramQQAppInterface, "dc00898", "", "", "0X800B154", "0X800B154", i, 0, "", "", "", "");
       return;
-      paramView = (ahpe)paramViewHolder;
-    } while (paramView.a.msg_type.get() != 2);
-    TroopSuspiciousFragment.a(this.a, paramView);
-  }
-  
-  public boolean a(View paramView, RecyclerView.ViewHolder paramViewHolder, int paramInt)
-  {
-    return false;
+      label55:
+      if (paramMessageRecord.istroop == 1) {
+        i = 2;
+      } else if (ChatActivityUtils.a(paramMessageRecord.istroop)) {
+        i = 3;
+      } else {
+        i = 4;
+      }
+    }
   }
 }
 

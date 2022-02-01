@@ -1,35 +1,28 @@
-import com.tencent.ark.ArkViewImplement.LoadCallback;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.utils.QQCustomArkDialog.2.1;
-import com.tencent.mobileqq.utils.QQCustomArkDialog.2.2;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import mqq.os.MqqHandler;
+import android.graphics.Bitmap;
+import android.net.Uri;
+import com.tencent.qqlive.module.videoreport.inject.webview.jsinject.JsInjector;
+import com.tencent.smtt.export.external.interfaces.WebResourceRequest;
+import com.tencent.smtt.export.external.interfaces.WebResourceResponse;
+import com.tencent.smtt.sdk.WebView;
 
-public class bdjs
-  implements ArkViewImplement.LoadCallback
+class bdjs
+  extends bdjv
 {
-  bdjs(bdjq parambdjq) {}
-  
-  public void onLoadFailed(int paramInt1, int paramInt2, String paramString, boolean paramBoolean)
+  bdjs(bdjq parambdjq)
   {
-    onLoadState(paramInt1);
+    super(parambdjq);
   }
   
-  public void onLoadState(int paramInt)
+  @Override
+  public void onPageStarted(WebView paramWebView, String paramString, Bitmap paramBitmap)
   {
-    WeakReference localWeakReference = new WeakReference(this.a);
-    ThreadManager.getUIHandler().post(new QQCustomArkDialog.2.1(this, localWeakReference, paramInt));
-    if (paramInt == 0) {}
-    do
-    {
-      return;
-      bdjq.a(this.a, true);
-      if (QLog.isColorLevel()) {
-        QLog.d("QQCustomArkDialog", 2, new Object[] { "arkView init finish,load state = ", Integer.valueOf(paramInt), ";outsideShowDialog = ", Boolean.valueOf(bdjq.a(this.a)), ";alreadyShowDialog:", Boolean.valueOf(bdjq.b(this.a)) });
-      }
-    } while (!bdjq.a(this.a));
-    ThreadManager.getUIHandler().post(new QQCustomArkDialog.2.2(this));
+    JsInjector.getInstance().onPageStarted(paramWebView);
+    super.onPageStarted(paramWebView, paramString, paramBitmap);
+  }
+  
+  public WebResourceResponse shouldInterceptRequest(WebView paramWebView, WebResourceRequest paramWebResourceRequest)
+  {
+    return a(paramWebView, paramWebResourceRequest.getUrl().toString());
   }
 }
 

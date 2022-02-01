@@ -1,24 +1,18 @@
-import android.os.Handler;
-import android.os.Message;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.activity.selectmember.FriendListInnerFrame;
+import android.content.Context;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.view.inputmethod.InputMethodManager;
 
-public class ajzd
-  extends Handler
+class ajzd
+  implements View.OnTouchListener
 {
-  public ajzd(FriendListInnerFrame paramFriendListInnerFrame) {}
+  ajzd(ajyx paramajyx) {}
   
-  public void handleMessage(Message paramMessage)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    case 1: 
-      this.a.a.setPadding(0, 0, 40, 0);
-      return;
-    }
-    this.a.a.setPadding(0, 0, 0, 0);
+    ((InputMethodManager)this.a.a.getSystemService("input_method")).hideSoftInputFromWindow(paramView.getWindowToken(), 0);
+    return false;
   }
 }
 

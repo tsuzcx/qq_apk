@@ -1,50 +1,19 @@
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.OnLogListener;
-
 class pcb
-  implements TVK_SDKMgr.OnLogListener
+  extends pcm
 {
-  public int d(String paramString1, String paramString2)
+  pcb(pbe parampbe, int paramInt1, pay parampay, int paramInt2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(paramString1, 2, paramString2);
-    }
-    return 0;
+    super(parampbe, null);
   }
   
-  public int e(String paramString1, String paramString2)
+  void a(pcp parampcp)
   {
-    QLog.e(paramString1, 1, paramString2);
-    return 0;
-  }
-  
-  public int i(String paramString1, String paramString2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i(paramString1, 2, paramString2);
-    }
-    return 0;
-  }
-  
-  public int v(String paramString1, String paramString2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(paramString1, 2, paramString2);
-    }
-    return 0;
-  }
-  
-  public int w(String paramString1, String paramString2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.w(paramString1, 2, paramString2);
-    }
-    return 0;
+    parampcp.onCommentDelete(this.jdField_a_of_type_Int, true, this.jdField_a_of_type_Pay, this.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     pcb
  * JD-Core Version:    0.7.0.1
  */

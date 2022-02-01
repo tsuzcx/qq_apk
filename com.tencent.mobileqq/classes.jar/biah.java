@@ -1,65 +1,35 @@
-import android.graphics.Camera;
-import android.graphics.Matrix;
-import android.view.animation.Animation;
-import android.view.animation.Transformation;
-import com.tencent.widget.QzoneAutoVerticalScrollTextView;
+import android.view.View;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
+import java.lang.ref.WeakReference;
 
 public class biah
-  extends Animation
+  implements URLDrawable.URLDrawableListener
 {
-  private float jdField_a_of_type_Float;
-  private Camera jdField_a_of_type_AndroidGraphicsCamera;
-  private final boolean jdField_a_of_type_Boolean;
-  private float jdField_b_of_type_Float;
-  private final boolean jdField_b_of_type_Boolean;
+  final WeakReference<View> a;
   
-  public biah(QzoneAutoVerticalScrollTextView paramQzoneAutoVerticalScrollTextView, boolean paramBoolean1, boolean paramBoolean2)
+  public biah(View paramView)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean1;
-    this.jdField_b_of_type_Boolean = paramBoolean2;
+    this.a = new WeakReference(paramView);
   }
   
-  protected void applyTransformation(float paramFloat, Transformation paramTransformation)
-  {
-    float f1 = this.jdField_a_of_type_Float;
-    float f2 = this.jdField_b_of_type_Float;
-    Camera localCamera = this.jdField_a_of_type_AndroidGraphicsCamera;
-    int i;
-    if (this.jdField_b_of_type_Boolean)
-    {
-      i = 1;
-      paramTransformation = paramTransformation.getMatrix();
-      localCamera.save();
-      if (!this.jdField_a_of_type_Boolean) {
-        break label99;
-      }
-      localCamera.translate(0.0F, i * this.jdField_b_of_type_Float * (paramFloat - 1.0F), 0.0F);
-    }
-    for (;;)
-    {
-      localCamera.getMatrix(paramTransformation);
-      localCamera.restore();
-      paramTransformation.preTranslate(-f1, -f2);
-      paramTransformation.postTranslate(f1, f2);
-      return;
-      i = -1;
-      break;
-      label99:
-      localCamera.translate(0.0F, i * this.jdField_b_of_type_Float * paramFloat, 0.0F);
-    }
-  }
+  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
   
-  public void initialize(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
+  
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
   {
-    super.initialize(paramInt1, paramInt2, paramInt3, paramInt4);
-    this.jdField_a_of_type_AndroidGraphicsCamera = new Camera();
-    this.jdField_b_of_type_Float = this.jdField_a_of_type_ComTencentWidgetQzoneAutoVerticalScrollTextView.getHeight();
-    this.jdField_a_of_type_Float = this.jdField_a_of_type_ComTencentWidgetQzoneAutoVerticalScrollTextView.getWidth();
+    paramURLDrawable = (View)this.a.get();
+    if (paramURLDrawable != null) {
+      paramURLDrawable.postInvalidate();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     biah
  * JD-Core Version:    0.7.0.1
  */

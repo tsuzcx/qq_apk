@@ -1,13 +1,14 @@
-import com.tencent.ttpic.video.AECoderFactory.AEDecoderFactory;
-import com.tencent.ttpic.video.AEDecoder;
+import android.view.View;
 
-final class bkor
-  implements AECoderFactory.AEDecoderFactory
+public abstract interface bkor
 {
-  public AEDecoder createDecoder(String paramString)
-  {
-    return new axto(paramString);
-  }
+  public abstract void a(View paramView);
+  
+  public abstract boolean a(View paramView);
+  
+  public abstract void b(boolean paramBoolean);
+  
+  public abstract void d();
 }
 
 

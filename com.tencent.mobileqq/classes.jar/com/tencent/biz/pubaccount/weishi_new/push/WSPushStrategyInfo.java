@@ -3,18 +3,20 @@ package com.tencent.biz.pubaccount.weishi_new.push;
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
 import org.json.JSONObject;
-import tix;
-import tjb;
+import ulq;
+import ulv;
 
 public class WSPushStrategyInfo
-  extends tix
+  extends ulq
   implements IWSPushStrategy
 {
-  public static final Parcelable.Creator<WSPushStrategyInfo> CREATOR = new tjb();
+  public static final Parcelable.Creator<WSPushStrategyInfo> CREATOR = new ulv();
   public String mScheme;
+  public WSPushGloryKingModel mWSPushGloryKingModel;
   public WSPushOpModel mWSPushModel;
   public WSPushOpDialogModel mWSPushOpDialogModel;
   public WSPushPreloadModel mWSPushPreloadModel;
+  public WSPushVideoModel mWSPushVideoModel;
   
   public WSPushStrategyInfo(Parcel paramParcel)
   {
@@ -22,6 +24,8 @@ public class WSPushStrategyInfo
     this.mScheme = paramParcel.readString();
     this.mWSPushOpDialogModel = ((WSPushOpDialogModel)paramParcel.readParcelable(WSPushOpDialogModel.class.getClassLoader()));
     this.mWSPushModel = ((WSPushOpModel)paramParcel.readParcelable(WSPushOpModel.class.getClassLoader()));
+    this.mWSPushGloryKingModel = ((WSPushGloryKingModel)paramParcel.readParcelable(WSPushGloryKingModel.class.getClassLoader()));
+    this.mWSPushVideoModel = ((WSPushVideoModel)paramParcel.readParcelable(WSPushVideoModel.class.getClassLoader()));
   }
   
   private WSPushStrategyInfo(JSONObject paramJSONObject)
@@ -64,6 +68,8 @@ public class WSPushStrategyInfo
     this.mWSPushOpDialogModel = WSPushOpDialogModel.parseJson(paramJSONObject.optJSONObject("op_dialog"));
     this.mWSPushModel = WSPushOpModel.a(paramJSONObject.optJSONObject("op_content"));
     this.mWSPushPreloadModel = WSPushPreloadModel.a(paramJSONObject.optJSONObject("preload"));
+    this.mWSPushGloryKingModel = WSPushGloryKingModel.a(paramJSONObject.optJSONObject("material_info"));
+    this.mWSPushVideoModel = WSPushVideoModel.a(paramJSONObject.optJSONObject("video_abstract"));
   }
   
   public String toString()
@@ -77,11 +83,13 @@ public class WSPushStrategyInfo
     paramParcel.writeString(this.mScheme);
     paramParcel.writeParcelable(this.mWSPushOpDialogModel, paramInt);
     paramParcel.writeParcelable(this.mWSPushModel, paramInt);
+    paramParcel.writeParcelable(this.mWSPushGloryKingModel, paramInt);
+    paramParcel.writeParcelable(this.mWSPushVideoModel, paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.push.WSPushStrategyInfo
  * JD-Core Version:    0.7.0.1
  */

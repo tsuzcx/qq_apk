@@ -1,19 +1,12 @@
-import com.tencent.av.VideoController;
-import java.util.Comparator;
-
-public class lfm
-  implements Comparator<lfu>
+public abstract interface lfm
 {
-  public lfm(VideoController paramVideoController) {}
+  public abstract loa a();
   
-  public int a(lfu paramlfu1, lfu paramlfu2)
-  {
-    return (int)(paramlfu1.d - paramlfu2.d);
-  }
+  public abstract void a(String paramString, loa paramloa);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     lfm
  * JD-Core Version:    0.7.0.1
  */

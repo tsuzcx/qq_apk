@@ -1,28 +1,21 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.FrameLayout;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyNewFeedsActivity;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyNewFeedsActivity.5;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoySkinGuideView;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.pubaccount.PublicAccountJavascriptInterface;
 
 public class nzp
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
-  public nzp(ReadInJoyNewFeedsActivity.5 param5, FrameLayout paramFrameLayout) {}
+  public nzp(PublicAccountJavascriptInterface paramPublicAccountJavascriptInterface, String paramString1, long paramLong, String paramString2, String paramString3) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadInJoyNewFeedsActivity$5.this$0.a.a();
-    this.jdField_a_of_type_AndroidWidgetFrameLayout.removeView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadInJoyNewFeedsActivity$5.this$0.a);
-    if (261 == this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadInJoyNewFeedsActivity$5.a) {
-      bdne.s(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadInJoyNewFeedsActivity$5.this$0, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadInJoyNewFeedsActivity$5.this$0.app.getCurrentAccountUin(), null);
-    }
+    PublicAccountJavascriptInterface.a(this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountJavascriptInterface, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Long);
+    PublicAccountJavascriptInterface.setLocationPermissionGrant(this.b, this.c, 1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     nzp
  * JD-Core Version:    0.7.0.1
  */

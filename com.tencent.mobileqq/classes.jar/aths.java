@@ -1,74 +1,146 @@
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.pluginsdk.PluginManagerHelper;
-import com.tencent.mobileqq.webview.swift.JsBridgeListener;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.liveroom.LiveRoomHelper;
-import cooperation.liveroom.LiveRoomProxyActivity;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.proxy.ProxyManager;
+import com.tencent.mobileqq.data.MessageForReplyText;
+import com.tencent.mobileqq.data.MessageForStructing;
+import com.tencent.mobileqq.data.MessageRecord;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Set;
 
 public class aths
-  extends WebViewPlugin
+  extends atht
 {
-  public aths()
+  private awwd jdField_a_of_type_Awwd;
+  private awws jdField_a_of_type_Awws;
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  HashMap<String, ArrayList<MessageRecord>> jdField_a_of_type_JavaUtilHashMap;
+  private HashMap<String, ArrayList<MessageRecord>> b;
+  
+  public aths(QQAppInterface paramQQAppInterface, awws paramawws, HashMap<String, ArrayList<MessageRecord>> paramHashMap, awwd paramawwd)
   {
-    this.mPluginNameSpace = "gflivesdk";
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_Awws = paramawws;
+    this.jdField_a_of_type_Awwd = paramawwd;
+    this.jdField_a_of_type_JavaUtilHashMap = paramHashMap;
   }
   
-  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  public int a()
   {
-    if ("openView".equals(paramString3)) {
-      try
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("LiveRoomBusinessPlugin", 2, "openView");
-        }
-        paramString1 = new JSONObject(paramVarArgs[0]);
-        paramString2 = paramString1.optString("viewType");
-        paramJsBridgeListener = paramString1.optString("callback");
-        if ("activity".equals(paramString2))
-        {
-          paramString1 = paramString1.optString("url");
-          paramString2 = this.mRuntime.a();
-          if ((paramString2 != null) && (paramString1 != null) && (!paramString1.isEmpty()))
-          {
-            LiveRoomProxyActivity.open(paramString2, paramString1, "BusinessPlugin openView");
-            callJs(paramJsBridgeListener, new String[] { "{\"result\":0}" });
-          }
-        }
-        return true;
-      }
-      catch (JSONException paramJsBridgeListener)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("LiveRoomBusinessPlugin", 2, paramJsBridgeListener.getMessage(), paramJsBridgeListener);
-        }
-      }
+    if (this.jdField_a_of_type_Awws == null) {}
+    while (this.jdField_a_of_type_Awws.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo == null) {
+      return -1;
     }
-    for (;;)
+    return this.jdField_a_of_type_Awws.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int;
+  }
+  
+  public String a()
+  {
+    if (this.jdField_a_of_type_Awws == null) {
+      return "";
+    }
+    if (this.jdField_a_of_type_Awws.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing == null) {
+      return "";
+    }
+    return String.valueOf(this.jdField_a_of_type_Awws.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing.uniseq);
+  }
+  
+  public HashMap<String, ArrayList<MessageRecord>> a()
+  {
+    if (this.b == null)
     {
-      return false;
-      if ("checkSDKInstalled".equals(paramString3))
+      this.b = new HashMap();
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilHashMap.keySet().iterator();
+      if (localIterator.hasNext())
       {
-        try
+        Object localObject = (String)localIterator.next();
+        ArrayList localArrayList = new ArrayList();
+        this.b.put(localObject, localArrayList);
+        localObject = (ArrayList)this.jdField_a_of_type_JavaUtilHashMap.get(localObject);
+        int i = 0;
+        label86:
+        MessageRecord localMessageRecord1;
+        if (i < ((ArrayList)localObject).size())
         {
-          paramJsBridgeListener = new JSONObject(paramVarArgs[0]).optString("callback");
-          if ((!LiveRoomHelper.getPluginInstalledInTool()) || (TextUtils.isEmpty(LiveRoomHelper.getPluginVersionInTool()))) {
-            break;
+          localMessageRecord1 = (MessageRecord)((ArrayList)localObject).get(i);
+          if (!(localMessageRecord1 instanceof MessageForReplyText)) {
+            break label175;
           }
-          callJs(paramJsBridgeListener, new String[] { "{\"result\":0,\"version\":\"" + LiveRoomHelper.getPluginVersionInTool() + "\"}" });
-          return true;
+          MessageForReplyText localMessageForReplyText = (MessageForReplyText)localMessageRecord1;
+          MessageRecord localMessageRecord2 = localMessageForReplyText.getSourceMessage();
+          if ((localMessageRecord2 == null) || (!atvo.a(localMessageRecord2))) {
+            break label165;
+          }
+          localMessageRecord2.isMultiMsg = localMessageForReplyText.isMultiMsg;
+          localArrayList.add(localMessageRecord2);
         }
-        catch (JSONException paramJsBridgeListener) {}
-        if (QLog.isColorLevel()) {
-          QLog.d("LiveRoomBusinessPlugin", 2, paramJsBridgeListener.getMessage(), paramJsBridgeListener);
+        for (;;)
+        {
+          i += 1;
+          break label86;
+          break;
+          label165:
+          localArrayList.add(localMessageRecord1);
+          continue;
+          label175:
+          localArrayList.add(localMessageRecord1);
         }
       }
     }
-    PluginManagerHelper.getPluginInterface(BaseApplicationImpl.getContext(), new atht(this, paramJsBridgeListener));
-    return true;
+    return this.b;
+  }
+  
+  public void a(int paramInt, List<MessageRecord> paramList1, List<MessageRecord> paramList2)
+  {
+    a(this.b, this.jdField_a_of_type_JavaUtilHashMap);
+    paramList2 = new ArrayList();
+    if ((paramList1 != null) && (paramList1.size() > 0))
+    {
+      paramList2.addAll(paramList1);
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a().a(paramList2, null);
+    }
+    if (paramInt == 1)
+    {
+      this.jdField_a_of_type_Awwd.a(1, 2, this.jdField_a_of_type_Awws);
+      return;
+    }
+    this.jdField_a_of_type_Awwd.a(0, 2, this.jdField_a_of_type_Awws);
+  }
+  
+  public void a(String paramString, List<MessageRecord> paramList, MessageRecord paramMessageRecord, int paramInt)
+  {
+    if ((paramList == null) || (paramMessageRecord == null)) {}
+    do
+    {
+      return;
+      paramList = (List)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
+      paramString = null;
+      if (paramList != null) {
+        paramString = (MessageRecord)paramList.get(paramInt);
+      }
+    } while (paramString == null);
+    if ((paramString instanceof MessageForReplyText))
+    {
+      paramList = anni.a(2131705798) + paramMessageRecord.getExtInfoFromExtStr("_m_ForwardFileName");
+      paramList = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a().a(paramMessageRecord, paramList, true);
+      ((MessageForReplyText)paramString).setSourceMessageRecord(paramList);
+      return;
+    }
+    paramString = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardFaildReason");
+    paramList.set(paramInt, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a().a(paramMessageRecord, paramString, true));
+  }
+  
+  public String b()
+  {
+    if (this.jdField_a_of_type_Awws == null) {
+      return "";
+    }
+    if (this.jdField_a_of_type_Awws.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo == null) {
+      return "";
+    }
+    return String.valueOf(this.jdField_a_of_type_Awws.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString);
   }
 }
 

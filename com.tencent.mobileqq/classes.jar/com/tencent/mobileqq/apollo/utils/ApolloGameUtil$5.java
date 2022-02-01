@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.apollo.utils;
 
-import aliw;
+import ancd;
 import android.text.TextUtils;
-import bdug;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.ApolloGameRoamData;
+import com.tencent.mobileqq.vas.VasExtensionHandler;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -23,12 +23,12 @@ final class ApolloGameUtil$5
     if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) {
       QLog.e("ApolloGameUtil", 1, "[highLightGame] app is null");
     }
-    aliw localaliw;
+    ancd localancd;
     do
     {
       return;
-      localaliw = (aliw)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(155);
-      localObject1 = localaliw.g();
+      localancd = (ancd)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(155);
+      localObject1 = localancd.i();
       if ((localObject1 == null) || (((List)localObject1).size() <= 0)) {
         break;
       }
@@ -81,10 +81,10 @@ final class ApolloGameUtil$5
       i = 0;
     }
     if (this.jdField_a_of_type_Boolean) {
-      ((bdug)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(71)).a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (int[])localObject2);
+      ((VasExtensionHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(71)).a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (int[])localObject2);
     }
-    localaliw.c();
-    localaliw.b((ArrayList)localObject1);
+    localancd.c();
+    localancd.b((ArrayList)localObject1);
     ApolloGameUtil.b();
     return;
     QLog.e("ApolloGameUtil", 1, "[highLightGame] no game in list");
@@ -92,7 +92,7 @@ final class ApolloGameUtil$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.utils.ApolloGameUtil.5
  * JD-Core Version:    0.7.0.1
  */

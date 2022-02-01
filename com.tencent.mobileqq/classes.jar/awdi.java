@@ -1,23 +1,23 @@
-import android.text.style.ClickableSpan;
-import android.view.View;
-import android.view.View.AccessibilityDelegate;
-
-class awdi
-  extends View.AccessibilityDelegate
+public class awdi
 {
-  awdi(awcx paramawcx, ClickableSpan paramClickableSpan) {}
+  public int a;
+  public String a;
+  public String b = "https://qzonestyle.gtimg.cn/aoi/sola/20190530121848_eHHesyqska.png";
   
-  public void sendAccessibilityEvent(View paramView, int paramInt)
+  public awdi()
   {
-    super.sendAccessibilityEvent(paramView, paramInt);
-    if ((paramInt == 1) && (this.jdField_a_of_type_AndroidTextStyleClickableSpan != null)) {
-      this.jdField_a_of_type_AndroidTextStyleClickableSpan.onClick(paramView);
-    }
+    this.jdField_a_of_type_JavaLangString = "https://qzonestyle.gtimg.cn/aoi/sola/20190530121837_iSfyMAuKAV.png";
+    this.jdField_a_of_type_Int = 360;
+  }
+  
+  public String toString()
+  {
+    return "popup_url=" + this.jdField_a_of_type_JavaLangString + "\nfixed_entrance_url=" + this.b + "\nrequest_interval=" + this.jdField_a_of_type_Int;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     awdi
  * JD-Core Version:    0.7.0.1
  */

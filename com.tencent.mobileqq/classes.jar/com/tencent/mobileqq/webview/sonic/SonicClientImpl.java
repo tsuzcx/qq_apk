@@ -4,11 +4,11 @@ import android.content.Context;
 import android.content.MutableContextWrapper;
 import android.net.Uri;
 import android.os.Bundle;
-import bdin;
-import begc;
-import beho;
-import behu;
-import beiy;
+import bgnt;
+import bhne;
+import bhos;
+import bhoy;
+import bhqc;
 import com.tencent.biz.pubaccount.CustomWebView;
 import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
 import com.tencent.mobileqq.webview.swift.WebViewFragment;
@@ -97,7 +97,7 @@ public class SonicClientImpl
     if (QLog.isColorLevel()) {
       QLog.d("sonicSdkImpl_SonicClientImpl", 2, "destroy");
     }
-    int i = bdin.a(BaseApplication.getContext());
+    int i = bgnt.a(BaseApplication.getContext());
     int j = i;
     if (i == 0) {
       j = -1;
@@ -112,17 +112,17 @@ public class SonicClientImpl
       if ((localContext instanceof MutableContextWrapper)) {
         localObject = ((MutableContextWrapper)localContext).getBaseContext();
       }
-      if (!(localObject instanceof behu)) {
+      if (!(localObject instanceof bhoy)) {
         break label226;
       }
-      localObject = (beiy)((behu)localObject).b().a(-2);
+      localObject = (bhqc)((bhoy)localObject).getComponentProvider().a(-2);
     }
     for (;;)
     {
       i = k;
       if (localObject != null)
       {
-        if (!((beiy)localObject).w) {
+        if (!((bhqc)localObject).w) {
           break label269;
         }
         i = 2;
@@ -135,17 +135,17 @@ public class SonicClientImpl
         this.webView = null;
         return;
         label226:
-        if (!(localObject instanceof begc)) {
+        if (!(localObject instanceof bhne)) {
           break label285;
         }
-        localObject = ((begc)localObject).b();
+        localObject = ((bhne)localObject).a();
         if (localObject == null) {
           break label285;
         }
-        localObject = (beiy)((WebViewFragment)localObject).b().a(-2);
+        localObject = (bhqc)((WebViewFragment)localObject).getComponentProvider().a(-2);
         break;
         label269:
-        if (beiy.s) {
+        if (bhqc.s) {
           i = 1;
         } else {
           i = 0;
@@ -187,7 +187,7 @@ public class SonicClientImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.webview.sonic.SonicClientImpl
  * JD-Core Version:    0.7.0.1
  */

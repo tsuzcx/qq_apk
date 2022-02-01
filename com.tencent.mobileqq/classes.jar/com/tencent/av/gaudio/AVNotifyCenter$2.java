@@ -11,7 +11,7 @@ class AVNotifyCenter$2
   
   public void run()
   {
-    Iterator localIterator = this.this$0.a.keySet().iterator();
+    Iterator localIterator = AVNotifyCenter.a(this.this$0).keySet().iterator();
     long l;
     while (localIterator.hasNext())
     {
@@ -21,7 +21,7 @@ class AVNotifyCenter$2
       this.this$0.a(21, 2, l, 0L);
       localIterator.remove();
     }
-    localIterator = this.this$0.b.keySet().iterator();
+    localIterator = AVNotifyCenter.b(this.this$0).keySet().iterator();
     while (localIterator.hasNext())
     {
       l = ((Long)localIterator.next()).longValue();

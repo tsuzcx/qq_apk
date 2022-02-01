@@ -1,11 +1,14 @@
 package io.flutter.app;
 
+import Override;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
+import android.view.MotionEvent;
+import androidx.annotation.NonNull;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import io.flutter.plugin.common.PluginRegistry;
 import io.flutter.plugin.common.PluginRegistry.Registrar;
 import io.flutter.view.FlutterNativeView;
@@ -30,6 +33,14 @@ public class FlutterActivity
   public FlutterView createFlutterView(Context paramContext)
   {
     return null;
+  }
+  
+  @Override
+  public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
+  {
+    boolean bool = super.dispatchTouchEvent(paramMotionEvent);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool);
+    return bool;
   }
   
   public FlutterView getFlutterView()
@@ -60,6 +71,7 @@ public class FlutterActivity
   {
     super.onConfigurationChanged(paramConfiguration);
     this.eventDelegate.onConfigurationChanged(paramConfiguration);
+    EventCollector.getInstance().onActivityConfigurationChanged(this, paramConfiguration);
   }
   
   protected void onCreate(Bundle paramBundle)
@@ -146,7 +158,7 @@ public class FlutterActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     io.flutter.app.FlutterActivity
  * JD-Core Version:    0.7.0.1
  */

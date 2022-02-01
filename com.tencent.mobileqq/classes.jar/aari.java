@@ -1,48 +1,57 @@
-import com.tencent.ad.tangram.statistics.AdReporterForAnalysis;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.os.Bundle;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import tencent.im.oidb.cmd0x6d7.oidb_0x6d7.RenameFolderRspBody;
+import tencent.im.oidb.cmd0x6d7.oidb_0x6d7.RspBody;
 
-class aari
-  implements aaru
+public abstract class aari
+  extends niv
 {
-  public boolean a(aarb paramaarb, String paramString, String... paramVarArgs)
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    Object localObject = null;
-    if (paramaarb != null) {}
-    for (paramVarArgs = paramaarb.a(); (paramaarb == null) || (paramVarArgs == null); paramVarArgs = null)
-    {
-      aase.d("GdtCarrierJsCallHandler", "handleJsCallRequest error");
-      return true;
+    b(paramInt, paramArrayOfByte, paramBundle);
+  }
+  
+  protected abstract void a(boolean paramBoolean, int paramInt, String paramString1, String paramString2);
+  
+  protected void b(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  {
+    String str;
+    if (paramBundle != null) {
+      str = paramBundle.getString("folderId");
     }
-    JSONObject localJSONObject = new JSONObject();
-    try
+    for (paramBundle = paramBundle.getString("folderName");; paramBundle = "")
     {
-      localJSONObject.put("carrier", aatg.a(paramVarArgs));
-    }
-    catch (JSONException localJSONException)
-    {
+      if (paramInt != 0)
+      {
+        a(false, paramInt, str, paramBundle);
+        return;
+      }
+      oidb_0x6d7.RspBody localRspBody = new oidb_0x6d7.RspBody();
       try
       {
-        for (;;)
+        localRspBody.mergeFrom(paramArrayOfByte);
+        paramArrayOfByte = (oidb_0x6d7.RenameFolderRspBody)localRspBody.rename_folder_rsp.get();
+        if (!paramArrayOfByte.int32_ret_code.has()) {
+          break label118;
+        }
+        if (paramArrayOfByte.int32_ret_code.get() == 0)
         {
-          paramaarb.callJs(paramString, new String[] { localJSONObject.toString() });
-          paramString = localObject;
-          if (paramaarb != null) {
-            paramString = paramaarb.a();
-          }
-          AdReporterForAnalysis.reportForJSBridgeInvoked(paramVarArgs, false, "getCarrier", paramString);
-          return true;
-          localJSONException = localJSONException;
-          aase.d("GdtCarrierJsCallHandler", "handleJsCallRequest error", localJSONException);
+          a(true, 0, str, paramBundle);
+          return;
         }
       }
-      catch (Throwable paramString)
+      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
       {
-        for (;;)
-        {
-          aase.d("GdtCarrierJsCallHandler", "handleJsCallRequest error", paramString);
-        }
+        a(false, -1, str, paramBundle);
+        return;
       }
+      a(false, paramArrayOfByte.int32_ret_code.get(), str, paramBundle);
+      return;
+      label118:
+      a(false, -1, str, paramBundle);
+      return;
+      str = "";
     }
   }
 }

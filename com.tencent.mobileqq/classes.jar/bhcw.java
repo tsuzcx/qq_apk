@@ -1,104 +1,93 @@
-import NS_COMM.COMM.StCommonExt;
-import NS_MINI_INTERFACE.INTERFACE.StApiAppInfo;
-import NS_MINI_INTERFACE.INTERFACE.StGetAppInfoByIdReq;
-import NS_MINI_INTERFACE.INTERFACE.StGetAppInfoByIdRsp;
-import NS_QWEB_PROTOCAL.PROTOCAL.StQWebRsp;
-import android.os.Handler;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBEnumField;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBInt64Field;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.qqmini.sdk.core.manager.ThreadManager;
-import com.tencent.qqmini.sdk.launcher.AppLoaderFactory;
-import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
-import com.tencent.qqmini.sdk.launcher.shell.IMiniAppEnv;
-import com.tencent.qqmini.sdk.log.QMLog;
-import com.tencent.qqmini.sdk.request.GetAppInfoByIdRequest.1;
-import com.tencent.qqmini.sdk.utils.ProcessUtil;
-import org.json.JSONObject;
+import android.app.Activity;
+import android.content.Context;
+import android.graphics.Bitmap;
+import android.os.Bundle;
+import com.tencent.biz.game.SensorAPIJavaScript;
+import com.tencent.biz.ui.TouchWebView;
+import com.tencent.biz.webviewplugin.PayJsPlugin;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.jsp.MediaApiPlugin;
+import com.tencent.mobileqq.jsp.UiApiPlugin;
+import com.tencent.mobileqq.vaswebviewplugin.QWalletBluetoothJsPlugin;
+import com.tencent.mobileqq.vaswebviewplugin.QWalletCommonJsPlugin;
+import com.tencent.mobileqq.vaswebviewplugin.QWalletMixJsPlugin;
+import com.tencent.mobileqq.vaswebviewplugin.QWalletPayJsPlugin;
+import com.tencent.mobileqq.vaswebviewplugin.VasCommonJsPlugin;
+import com.tencent.mobileqq.vaswebviewplugin.WadlWebViewJsPlugin;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import com.tencent.smtt.sdk.WebView;
+import java.util.ArrayList;
 
 public class bhcw
-  extends bhdw
+  extends bhll
+  implements bhmj
 {
-  private INTERFACE.StGetAppInfoByIdReq a = new INTERFACE.StGetAppInfoByIdReq();
-  
-  public bhcw(COMM.StCommonExt paramStCommonExt, String paramString1, int paramInt1, int paramInt2, String paramString2, String paramString3)
+  public bhcw(Context paramContext, Activity paramActivity, AppInterface paramAppInterface, TouchWebView paramTouchWebView)
   {
-    this.a.appid.set(paramString1);
-    this.a.needVersionInfo.set(paramInt1);
-    this.a.checkDevRight.set(paramInt2);
-    this.a.firstPath.set(paramString2);
-    this.a.envVersion.set(paramString3);
-    if (paramStCommonExt != null) {
-      this.a.extInfo.set(paramStCommonExt);
-    }
+    super(paramContext, paramActivity, paramAppInterface);
+    this.mWebview = paramTouchWebView;
   }
   
-  private void a(MiniAppInfo paramMiniAppInfo)
+  public void a()
   {
-    if (!ProcessUtil.isMainProcess(AppLoaderFactory.g().getMiniAppEnv().getContext())) {
-      return;
-    }
-    ThreadManager.b().post(new GetAppInfoByIdRequest.1(this, paramMiniAppInfo));
+    super.doOnDestroy();
   }
   
-  protected String a()
+  public void bindJavaScript(ArrayList<WebViewPlugin> paramArrayList)
   {
-    return "mini_app_info";
+    super.bindJavaScript(paramArrayList);
+    paramArrayList.add(new WadlWebViewJsPlugin());
+    paramArrayList.add(new auwd());
+    paramArrayList.add(new QWalletPayJsPlugin());
+    paramArrayList.add(new PayJsPlugin());
+    paramArrayList.add(new QWalletCommonJsPlugin());
+    paramArrayList.add(new QWalletBluetoothJsPlugin());
+    paramArrayList.add(new avow());
+    paramArrayList.add(new UiApiPlugin());
+    paramArrayList.add(new SensorAPIJavaScript());
+    paramArrayList.add(new avnu());
+    paramArrayList.add(new MediaApiPlugin());
+    paramArrayList.add(new VasCommonJsPlugin());
+    paramArrayList.add(new bhgd());
+    paramArrayList.add(new QWalletMixJsPlugin());
+    paramArrayList.add(new abcm());
   }
   
-  public JSONObject a(byte[] paramArrayOfByte)
+  public void buildBottomBar() {}
+  
+  public void buildContentView(Bundle paramBundle) {}
+  
+  public void buildData() {}
+  
+  public void buildLayout() {}
+  
+  public void buildTitleBar() {}
+  
+  public void buildWebView(AppInterface paramAppInterface)
   {
-    if (paramArrayOfByte == null) {
-      return null;
-    }
-    PROTOCAL.StQWebRsp localStQWebRsp = new PROTOCAL.StQWebRsp();
-    INTERFACE.StGetAppInfoByIdRsp localStGetAppInfoByIdRsp = new INTERFACE.StGetAppInfoByIdRsp();
-    try
-    {
-      localStQWebRsp.mergeFrom(paramArrayOfByte);
-      localStGetAppInfoByIdRsp.mergeFrom(localStQWebRsp.busiBuff.get().toByteArray());
-      if (localStGetAppInfoByIdRsp != null)
-      {
-        paramArrayOfByte = new JSONObject();
-        MiniAppInfo localMiniAppInfo = MiniAppInfo.from(localStGetAppInfoByIdRsp.appInfo);
-        localMiniAppInfo.firstPath = this.a.firstPath.get();
-        paramArrayOfByte.put("mini_app_info_data", localMiniAppInfo);
-        paramArrayOfByte.put("retCode", localStQWebRsp.retCode.get());
-        paramArrayOfByte.put("errMsg", localStQWebRsp.errMsg.get().toStringUtf8());
-        if (localStGetAppInfoByIdRsp.appInfo.type.get() == 3) {
-          a(localMiniAppInfo);
-        }
-      }
-      else
-      {
-        QMLog.d("GetAppInfoByIdRequest", "onResponse fail.rsp = null");
-        return null;
-      }
-    }
-    catch (Exception paramArrayOfByte)
-    {
-      QMLog.d("GetAppInfoByIdRequest", "onResponse fail." + paramArrayOfByte);
-      return null;
-    }
-    return paramArrayOfByte;
+    super.buildBaseWebView(paramAppInterface);
   }
   
-  public byte[] a()
+  public void onPageFinished(WebView paramWebView, String paramString)
   {
-    return this.a.toByteArray();
+    super.onPageFinished(paramWebView, paramString);
   }
   
-  protected String b()
+  public void onPageStarted(WebView paramWebView, String paramString, Bitmap paramBitmap)
   {
-    return "GetAppInfoById";
+    super.onPageStarted(paramWebView, paramString, paramBitmap);
   }
+  
+  public void onWebViewReady()
+  {
+    super.onWebViewReady();
+  }
+  
+  public void preInitWebviewPlugin() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bhcw
  * JD-Core Version:    0.7.0.1
  */

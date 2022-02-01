@@ -1,23 +1,18 @@
-import android.view.animation.Animation;
-import com.tencent.mobileqq.ptt.LSRecordPanel;
-import com.tencent.qphone.base.util.QLog;
-
-public class awxg
-  extends awxe
+public abstract interface awxg
 {
-  public awxg(LSRecordPanel paramLSRecordPanel) {}
+  public abstract void a();
   
-  public void onAnimationEnd(Animation paramAnimation)
-  {
-    if (QLog.isDevelopLevel()) {
-      QLog.d("LsRecord", 4, "LS startRecordingBarAnimation onAnimationEnd");
-    }
-    this.a.c = null;
-  }
+  public abstract void a(awxe paramawxe);
+  
+  public abstract void a(awxe paramawxe, int paramInt);
+  
+  public abstract void b();
+  
+  public abstract void c();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     awxg
  * JD-Core Version:    0.7.0.1
  */

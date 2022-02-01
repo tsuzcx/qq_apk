@@ -1,32 +1,19 @@
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
-import com.tencent.mobileqq.richmedia.capture.data.MusicItemInfo;
-import dov.com.qq.im.capture.music.humrecognition.HummingActivity;
 
-public class blug
-  extends blts
+public final class blug
+  implements DialogInterface.OnClickListener
 {
-  public blug(HummingActivity paramHummingActivity) {}
+  public blug(Context paramContext, int paramInt, String paramString, Intent paramIntent) {}
   
-  public void a(int paramInt) {}
-  
-  public void a(String paramString) {}
-  
-  public void a(String paramString, int paramInt) {}
-  
-  public void a(String paramString, boolean paramBoolean)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    bflz.a().a(alud.a(2131706058) + HummingActivity.a(this.a), 0);
-  }
-  
-  public void a(String paramString, boolean paramBoolean, int paramInt)
-  {
-    if ((paramBoolean) && (paramString != null) && (HummingActivity.a(this.a).getLocalPath().equals(paramString)))
-    {
-      paramString = new Intent();
-      paramString.putExtra("EXTRA_HUM_RECOGNITION_RESULT", HummingActivity.a(this.a));
-      this.a.setResult(-1, paramString);
-      this.a.finish();
+    if (!blsb.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Int, Long.valueOf(this.jdField_a_of_type_JavaLangString).longValue(), "com.qzonex.app.tab.QZoneTabActivity")) {
+      blsb.a(this.jdField_a_of_type_AndroidContentIntent.getStringExtra("sid"), this.jdField_a_of_type_AndroidContentContext);
     }
+    paramDialogInterface.dismiss();
   }
 }
 

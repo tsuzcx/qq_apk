@@ -1,49 +1,19 @@
 package com.tencent.mobileqq.msf.core;
 
-import com.tencent.mobileqq.msf.core.c.e;
-import com.tencent.qphone.base.util.QLog;
 import java.io.File;
-import java.util.Calendar;
+import java.util.Comparator;
 
-final class m
-  extends Thread
+class m
+  implements Comparator
 {
-  public void run()
+  m(l paraml) {}
+  
+  public int a(File paramFile1, File paramFile2)
   {
-    File localFile = new File(QLog.getLogPath());
-    try
-    {
-      h.j();
+    if (paramFile1.lastModified() > paramFile2.lastModified()) {
+      return 1;
     }
-    catch (Throwable localThrowable2)
-    {
-      for (;;)
-      {
-        try
-        {
-          boolean bool = h.b(localFile);
-          if (!bool) {
-            continue;
-          }
-          return;
-        }
-        catch (Throwable localThrowable1)
-        {
-          localThrowable1.printStackTrace();
-          QLog.e(h.b, 1, "run: failed. ", localThrowable1);
-          Calendar localCalendar = Calendar.getInstance();
-          localCalendar.set(6, localCalendar.get(6) - 7);
-          localCalendar.set(11, 0);
-          localCalendar.set(12, 0);
-          localCalendar.set(13, 0);
-          localCalendar.set(14, 0);
-          e.b(localCalendar.getTimeInMillis());
-        }
-        localThrowable2 = localThrowable2;
-        localThrowable2.printStackTrace();
-        QLog.e(h.b, 1, "run: failed. ", localThrowable2);
-      }
-    }
+    return 0;
   }
 }
 

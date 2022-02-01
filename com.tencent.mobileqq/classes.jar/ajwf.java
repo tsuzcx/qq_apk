@@ -1,24 +1,42 @@
-import com.tencent.mobileqq.activity.richmedia.trimvideo.video.widget.VideoFramesFetcher;
-import java.util.concurrent.ConcurrentHashMap;
+import android.os.Handler;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.SplashActivity;
+import com.tencent.mobileqq.data.OpenID;
+import com.tencent.qphone.base.util.QLog;
 
-public class ajwf
-  implements Comparable<ajwf>
+class ajwf
+  extends nmf
 {
-  public int a;
-  public long a;
-  public int b;
+  ajwf(ajvr paramajvr) {}
   
-  public ajwf(VideoFramesFetcher paramVideoFramesFetcher, long paramLong, int paramInt1, int paramInt2)
+  protected void a(boolean paramBoolean, OpenID paramOpenID)
   {
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = Math.min(paramInt2, VideoFramesFetcher.a(paramVideoFramesFetcher));
-    VideoFramesFetcher.a(paramVideoFramesFetcher).put(Integer.valueOf(paramInt1), this);
-  }
-  
-  public int a(ajwf paramajwf)
-  {
-    return -(int)(this.jdField_a_of_type_Long - paramajwf.jdField_a_of_type_Long);
+    if (QLog.isColorLevel()) {
+      QLog.i("MainAssistObserver", 2, "-->onGetOpenId, isSuccess: " + paramBoolean + " data: " + paramOpenID.toString() + " mOpenId = " + this.a.jdField_b_of_type_JavaLangString);
+    }
+    if ((this.a.jdField_a_of_type_ComTencentMobileqqActivitySplashActivity.isFinishing()) || (this.a.c)) {}
+    do
+    {
+      do
+      {
+        return;
+        if (this.a.jdField_a_of_type_Biau != null) {
+          this.a.jdField_a_of_type_Biau.hide();
+        }
+        if (this.a.jdField_b_of_type_AndroidOsHandler != null) {
+          this.a.jdField_b_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
+        }
+        if ((!paramBoolean) || (paramOpenID == null) || (paramOpenID.openID == null)) {
+          break;
+        }
+        if (QLog.isColorLevel()) {
+          QLog.d("MainAssistObserver", 2, "openIdObserver success");
+        }
+      } while ((TextUtils.isEmpty(this.a.jdField_b_of_type_JavaLangString)) || (paramOpenID.openID.equals(this.a.jdField_b_of_type_JavaLangString)));
+      this.a.i();
+      return;
+    } while (!QLog.isColorLevel());
+    QLog.d("MainAssistObserver", 2, "openIdObserver fail");
   }
 }
 

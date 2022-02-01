@@ -1,16 +1,16 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.richmediabrowser.log.BrowserLogHelper;
-import com.tencent.richmediabrowser.log.IBrowserLog;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.mobileqq.nearby.widget.AutoScrollImageView;
 
-class ayaw
-  implements DialogInterface.OnClickListener
+public class ayaw
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  ayaw(ayao paramayao) {}
+  public ayaw(AutoScrollImageView paramAutoScrollImageView) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    BrowserLogHelper.getInstance().getGalleryLog().d("AIOVideoView", 4, "showSaveFileTips cancel");
+    AutoScrollImageView.a(this.a, ((Integer)paramValueAnimator.getAnimatedValue()).intValue());
+    this.a.invalidate();
   }
 }
 

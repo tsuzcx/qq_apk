@@ -1,667 +1,1591 @@
-import android.content.Context;
+import android.annotation.TargetApi;
 import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
 import android.os.Build.VERSION;
-import android.os.SystemClock;
-import android.preference.PreferenceManager;
+import android.os.Handler;
 import android.text.TextUtils;
-import android.util.SparseIntArray;
+import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.common.app.ToolRuntimePeak;
+import com.tencent.mobileqq.app.PeakAppInterface;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.earlydownload.xmldata.AppleEmojiData;
-import com.tencent.mobileqq.text.EmotcationConstants.1;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.mobileqq.qmcf.QmcfManager;
+import com.tencent.mobileqq.richmedia.capture.data.CapturePtvTemplateManager.1;
+import com.tencent.mobileqq.richmedia.capture.data.CapturePtvTemplateManager.2;
+import com.tencent.mobileqq.richmedia.capture.data.CapturePtvTemplateManager.4;
+import com.tencent.mobileqq.richmedia.capture.data.CapturePtvTemplateManager.6;
+import com.tencent.mobileqq.richmedia.capture.data.CapturePtvTemplateManager.7;
+import com.tencent.mobileqq.richmedia.capture.data.CaptureRedDotConfig;
+import com.tencent.mobileqq.richmedia.capture.data.CaptureRedDotConfig.CategoryRedConfig;
+import com.tencent.mobileqq.richmedia.capture.data.CaptureRedDotConfig.RedDotItemConfig;
+import com.tencent.mobileqq.shortvideo.PtvTemplateManager.PtvTemplateInfo;
+import com.tencent.mobileqq.shortvideo.util.RecentDanceConfigMgr;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
+import java.io.UnsupportedEncodingException;
+import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Map;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+import java.util.Iterator;
+import java.util.List;
+import java.util.concurrent.CopyOnWriteArrayList;
 import mqq.app.AppRuntime;
+import mqq.os.MqqHandler;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class bamd
 {
   public static int a;
-  public static final SparseIntArray a;
-  public static final Map<String, Integer> a;
-  public static final int[] a;
-  public static final String[] a;
-  public static final short[] a;
-  public static int b;
-  public static final int[] b;
-  public static String[] b;
-  public static final short[] b;
-  public static int[] c;
-  public static String[] c;
-  public static int[] d;
-  public static final int[] e;
-  public static final int[] f;
-  public static final int[] g;
+  public static File a;
+  public static final Long a;
+  static Object jdField_a_of_type_JavaLangObject;
+  public static String a;
+  public static File b;
+  public static String b;
+  public static String c;
+  public Handler a;
+  public bamj a;
+  private bamz jdField_a_of_type_Bamz;
+  private bcgy jdField_a_of_type_Bcgy;
+  CaptureRedDotConfig jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataCaptureRedDotConfig;
+  public PtvTemplateManager.PtvTemplateInfo a;
+  HashMap<Integer, bamh> jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  public List<bamz> a;
+  String d;
+  String e;
   
   static
   {
-    jdField_a_of_type_ArrayOfInt = new int[] { 2130837760, 2130837761, 2130837762, 2130837763, 2130837764, 2130837765, 2130837766, 2130837767, 2130837768, 2130837769, 2130837770, 2130837771, 2130837772, 2130837773, 2130837774, 2130837775, 2130837776, 2130837777, 2130837778, 2130837779, 2130837780, 2130837781, 2130837782, 2130837783, 2130837784, 2130837785, 2130837786, 2130837787, 2130837788, 2130837789, 2130837790, 2130837791, 2130837792, 2130837793, 2130837794, 2130837795, 2130837796, 2130837797, 2130837798, 2130837799, 2130837800, 2130837801, 2130837802, 2130837803, 2130837804, 2130837805, 2130837806, 2130837807, 2130837808, 2130837809, 2130837810, 2130837811, 2130837812, 2130837813, 2130837814, 2130837815, 2130837816, 2130837817, 2130837818, 2130837819, 2130838235, 2130837821, 2130837822, 2130837823, 2130837824, 2130837825, 2130837826, 2130837827, 2130837828, 2130837829, 2130837830, 2130837831, 2130837832, 2130838236, 2130837834, 2130837835, 2130837836, 2130837837, 2130837838, 2130837839, 2130837840, 2130837841, 2130837842, 2130837843, 2130837844, 2130837845, 2130837846, 2130837847, 2130837848, 2130837849, 2130837850, 2130837851, 2130837852, 2130837853, 2130838237, 2130837855, 2130837856, 2130837857, 2130837858, 2130837859, 2130837860, 2130837861, 2130837862, 2130837863, 2130837864, 2130837865, 2130837866, 2130837867, 2130837868, 2130837869, 2130837870, 2130837871, 2130837872, 2130837873, 2130837874, 2130837875, 2130837876, 2130837877, 2130837878, 2130837879, 2130837880, 2130837881, 2130837882, 2130837883, 2130837884, 2130837885, 2130837886, 2130837887, 2130837888, 2130837889, 2130837890, 2130837891, 2130837892, 2130837893, 2130837894, 2130837895, 2130837896, 2130837897, 2130837898, 2130837899, 2130837900, 2130837901, 2130837902, 2130839481, 2130839482, 2130839483, 2130839484, 2130839485, 2130839486, 2130839487, 2130839488, 2130839489, 2130839490, 2130839491, 2130839492, 2130839493, 2130839494, 2130839495, 2130839496, 2130839497, 2130839498, 2130839499, 2130839500, 2130839501, 2130839502, 2130839503, 2130839504, 2130839505, 2130839506, 2130839507, 2130839508, 2130839509, 2130839510, 2130839511, 2130839512, 2130839513, 2130839514, 2130839515, 2130839516, 2130839517, 2130839518, 2130839519, 2130839520, 2130839521, 2130839522, 2130839523, 2130839524, 2130839525, 2130839526, 2130839527, 2130839528, 2130839529, 2130839530, 2130839531, 2130839532, 2130839533, 2130839534, 2130839535, 2130839536, 2130839537, 2130839538, 2130839539, 2130839540, 2130839541, 2130839542, 2130839543, 2130839544, 2130839545, 2130839546, 2130839547, 2130839548, 2130839549, 2130839550, 2130839551, 2130839552, 2130839553, 2130839554, 2130839555, 2130839556, 2130839557 };
-    jdField_b_of_type_ArrayOfInt = new int[] { 2130838784, 2130838785, 2130838786, 2130838787, 2130838788, 2130838789, 2130838790, 2130837767, 2130837768, 2130838793, 2130838794, 2130838795, 2130838796, 2130838797, 2130838798, 2130838799, 2130837776, 2130838801, 2130838802, 2130838803, 2130838804, 2130838805, 2130838806, 2130838807, 2130838808, 2130838809, 2130838810, 2130838811, 2130837788, 2130838813, 2130838814, 2130838815, 2130837792, 2130838817, 2130838818, 2130838819, 2130838820, 2130838821, 2130838822, 2130837799, 2130838824, 2130838825, 2130838826, 2130838827, 2130838828, 2130838829, 2130838830, 2130837807, 2130838832, 2130838833, 2130838834, 2130838835, 2130838836, 2130838837, 2130838838, 2130838839, 2130838840, 2130837817, 2130837818, 2130838843, 2130838235, 2130838845, 2130838846, 2130838847, 2130837824, 2130838849, 2130838850, 2130837827, 2130837828, 2130837829, 2130838854, 2130837831, 2130838856, 2130838240, 2130838858, 2130837835, 2130837836, 2130838239, 2130837838, 2130838863, 2130837840, 2130838865, 2130838866, 2130838867, 2130838868, 2130838869, 2130838870, 2130838871, 2130838872, 2130838873, 2130838874, 2130838875, 2130838876, 2130838877, 2130838241, 2130838879, 2130838880, 2130838881, 2130838882, 2130838883, 2130838884, 2130838885, 2130838886, 2130838887, 2130838888, 2130838889, 2130838890, 2130837867, 2130837868, 2130837869, 2130837870, 2130837871, 2130837872, 2130837873, 2130837874, 2130837875, 2130837876, 2130837877, 2130837878, 2130837879, 2130837880, 2130837881, 2130837882, 2130837883, 2130837884, 2130837885, 2130837886, 2130837887, 2130837888, 2130837889, 2130837890, 2130837891, 2130837892, 2130837893, 2130837894, 2130837895, 2130837896, 2130837897, 2130837898, 2130837899, 2130837900, 2130837901, 2130837902, 2130839559, 2130839560, 2130839561, 2130839562, 2130839563, 2130839564, 2130839565, 2130839566, 2130839567, 2130839568, 2130839569, 2130839570, 2130839571, 2130839572, 2130839573, 2130839574, 2130839575, 2130839576, 2130839577, 2130839578, 2130839579, 2130839580, 2130839581, 2130839582, 2130839583, 2130839584, 2130839585, 2130839586, 2130839587, 2130839588, 2130839589, 2130839590, 2130839591, 2130839592, 2130839593, 2130839594, 2130839595, 2130839596, 2130839597, 2130839598, 2130839599, 2130839600, 2130839601, 2130839602, 2130839603, 2130839604, 2130839605, 2130839606, 2130839607, 2130839608, 2130839609, 2130839610, 2130839611, 2130839612, 2130839613, 2130839614, 2130839615, 2130839616, 2130839617, 2130839618, 2130839619, 2130839620, 2130839621, 2130839622, 2130839623, 2130839624, 2130839625, 2130839626, 2130839627, 2130839628, 2130839629, 2130839630, 2130839631, 2130839632, 2130839633, 2130839634, 2130839635 };
-    jdField_c_of_type_ArrayOfInt = new int[] { 133, 121, 142, 136, 131, 125, 122, 129, 139, 124, 111, 135, 115, 137, 134, 132, 138, 128, 113, 114, 126, 127, 107 };
-    jdField_a_of_type_Int = jdField_b_of_type_ArrayOfInt.length;
-    jdField_a_of_type_ArrayOfJavaLangString = new String[] { "/呲牙", "/调皮", "/流汗", "/偷笑", "/再见", "/敲打", "/擦汗", "/猪头", "/玫瑰", "/流泪", "/大哭", "/嘘...", "/酷", "/抓狂", "/委屈", "/便便", "/炸弹", "/菜刀", "/可爱", "/色", "/害羞", "/得意", "/吐", "/微笑", "/发怒", "/尴尬", "/惊恐", "/冷汗", "/爱心", "/示爱", "/白眼", "/傲慢", "/难过", "/惊讶", "/疑问", "/睡", "/亲亲", "/憨笑", "/爱情", "/衰", "/撇嘴", "/阴险", "/奋斗", "/发呆", "/右哼哼", "/拥抱", "/坏笑", "/飞吻", "/鄙视", "/晕", "/悠闲", "/可怜", "/赞", "/踩", "/握手", "/胜利", "/抱拳", "/凋谢", "/饭", "/蛋糕", "/西瓜", "/啤酒", "/瓢虫", "/勾引", "/OK", "/爱你", "/咖啡", "/钱", "/月亮", "/美女", "/刀", "/发抖", "/差劲", "/拳头", "/心碎", "/太阳", "/礼物", "/足球", "/骷髅", "/挥手", "/闪电", "/饥饿", "/困", "/咒骂", "/折磨", "/抠鼻", "/鼓掌", "/糗大了", "/左哼哼", "/哈欠", "/快哭了", "/吓", "/篮球", "/乒乓", "/NO", "/跳跳", "/怄火", "/转圈", "/磕头", "/回头", "/跳绳", "/激动", "/街舞", "/献吻", "/左太极", "/右太极", "/闭嘴", "/招财进宝", "/双喜", "/鞭炮", "/灯笼", "/发财", "/K歌", "/购物", "/邮件", "/帅", "/喝彩", "/祈祷", "/爆筋", "/棒棒糖", "/喝奶", "/下面", "/香蕉", "/飞机", "/开车", "/高铁左车头", "/车厢", "/高铁右车头", "/多云", "/下雨", "/钞票", "/熊猫", "/灯泡", "/风车", "/闹钟", "/打伞", "/彩球", "/钻戒", "/沙发", "/纸巾", "/药", "/手枪", "/青蛙", "/不开心", "/啊", "/惶恐", "/冷漠", "/呃", "/好棒", "/拜托", "/点赞", "/无聊", "/托脸", "/吃", "/送花", "/害怕", "/花痴", "/小样儿", "/脸红", "/飙泪", "/我不看", "/托腮", "/哇哦", "/茶", "/眨眼睛", "/泪奔", "/无奈", "/卖萌", "/小纠结", "/喷血", "/斜眼笑", "/doge", "/惊喜", "/骚扰", "/笑哭", "/我最美", "/河蟹", "/羊驼", "/栗子", "/幽灵", "/蛋", "/马赛克", "/菊花", "/肥皂", "/红包", "/大笑", "/啵啵", "/糊脸", "/拍头", "/扯一扯", "/舔一舔", "/蹭一蹭", "/拽炸天", "/顶呱呱", "/抱抱", "/暴击", "/开枪", "/撩一撩", "/拍桌", "/拍手", "/恭喜", "/干杯", "/嘲讽", "/哼", "/佛系", "/掐一掐", "/惊呆", "/颤抖", "/啃头", "/偷看", "/扇脸", "/原谅", "/喷脸", "/生日快乐", "/头撞击", "/甩头", "/扔狗", "/加油必胜", "/加油抱抱", "/口罩护体" };
-    jdField_b_of_type_Int = 247;
-    d = new int[] { 128522, 128524, 128538, 128531, 128560, 128541, 128513, 128540, 9786, 128521, 128525, 128532, 128516, 128527, 128530, 128563, 128536, 128557, 128561, 128514, 128170, 128074, 128077, 9757, 128079, 9996, 128078, 128591, 128076, 128072, 128073, 128070, 128071, 128064, 128067, 128068, 128066, 127834, 127837, 127836, 127833, 127847, 127843, 127874, 127838, 127828, 127859, 127839, 127866, 127867, 127864, 9749, 127822, 127818, 127827, 127817, 128138, 128684, 127876, 127801, 127881, 127796, 128157, 127872, 127880, 128026, 128141, 128163, 128081, 128276, 11088, 10024, 128168, 128166, 128293, 127942, 128176, 128164, 9889, 128099, 128169, 128137, 9832, 128235, 128273, 128274, 9992, 128644, 128663, 128676, 128690, 128014, 128640, 128652, 9973, 128105, 128104, 128103, 128102, 128053, 128025, 128055, 128128, 128036, 128040, 128046, 128020, 128056, 128123, 128027, 128032, 128054, 128047, 128124, 128039, 128051, 128045, 128082, 128087, 128132, 128096, 128098, 127746, 128092, 128089, 128085, 128095, 9729, 9728, 9748, 127769, 9924, 11093, 10060, 10068, 10069, 9742, 128247, 128241, 128224, 128187, 127909, 127908, 128299, 128191, 128147, 9827, 126980, 12349, 127920, 128677, 128679, 127928, 128136, 128704, 128701, 127968, 9962, 127974, 127973, 127976, 127975, 127978, 128697, 128698, 169, 174, 8482, 9786, 9888, 9917, 9925, 9978, 9989, 9994, 9995, 10052, 12951, 127383, 127804, 127808, 127812, 127815, 127820, 127821, 127824, 127846, 127853, 127868, 127918, 127923, 127925, 127929, 127931, 127934, 127936, 127946, 128009, 128013, 128044, 128126, 128127, 128148, 128162, 128175, 128552, 128201, 128205, 128222, 128512, 128545, 128515, 128516, 128517, 128518, 128519, 128520, 128522, 128523, 128525, 128526, 128528, 128529, 128531, 128533, 128535, 128537, 128539, 128542, 128543, 128544, 128547, 128548, 128550, 128551, 128553, 128554, 128555, 128556, 128558, 128559, 128562, 128565, 128566, 128567, 128534, 128549, 128546, 128114, 128115, 128110, 128119, 128130, 128118, 128116, 128117, 128113, 128120, 128570, 128568, 128571, 128573, 128572, 128576, 128575, 128569, 128574, 128121, 128122, 128584, 128585, 128586, 128125, 127775, 128171, 128165, 128167, 128069, 128075, 128080, 128588, 128694, 127939, 128131, 128107, 128106, 128108, 128109, 128143, 128145, 128111, 128582, 128581, 128129, 128587, 128134, 128135, 128133, 128112, 128590, 128589, 128583, 127913, 128094, 128097, 128084, 128090, 127933, 128086, 128088, 128188, 128093, 128091, 128083, 128155, 128153, 128156, 128154, 10084, 128151, 128149, 128150, 128158, 128152, 128140, 128139, 128142, 128100, 128101, 128172, 128173, 128058, 128049, 128057, 128048, 128059, 128061, 128023, 128018, 128052, 128017, 128024, 128060, 128038, 128037, 128035, 128034, 128029, 128028, 128030, 128012, 128031, 128011, 128004, 128015, 128000, 128003, 128005, 128007, 128016, 128019, 128021, 128022, 128001, 128002, 128050, 128033, 128010, 128043, 128042, 128006, 128008, 128041, 128062, 128144, 127800, 127799, 127803, 127802, 127809, 127811, 127810, 127807, 127806, 127797, 127794, 127795, 127792, 127793, 127760, 127774, 127773, 127770, 127761, 127762, 127763, 127764, 127765, 127766, 127767, 127768, 127772, 127771, 127757, 127758, 127759, 127755, 127756, 127776, 127744, 127745, 127752, 127754, 127885, 127886, 127890, 127891, 127887, 127878, 127879, 127888, 127889, 127875, 127877, 127873, 127883, 127882, 127884, 128302, 128249, 128252, 128192, 128189, 128190, 128223, 128225, 128250, 128251, 128266, 128265, 128264, 128263, 128277, 128226, 128227, 9203, 8987, 9200, 8986, 128275, 128271, 128272, 128270, 128161, 128294, 128262, 128261, 128268, 128267, 128269, 128705, 128703, 128295, 128297, 128296, 128682, 128298, 128180, 128181, 128183, 128182, 128179, 128184, 128242, 128231, 128229, 128228, 9993, 128233, 128232, 128239, 128234, 128236, 128237, 128238, 128230, 128221, 128196, 128195, 128209, 128202, 128220, 128203, 128197, 128198, 128199, 128193, 128194, 9986, 128204, 128206, 10002, 9999, 128207, 128208, 128213, 128215, 128216, 128217, 128211, 128212, 128210, 128218, 128214, 128278, 128219, 128300, 128301, 128240, 127911, 127932, 127926, 127930, 127927, 127183, 127924, 127922, 127919, 127944, 9918, 127921, 127945, 9971, 128693, 128692, 127937, 127943, 127935, 127938, 127940, 127907, 127861, 127862, 127865, 127863, 127860, 127829, 127831, 127830, 127835, 127844, 127857, 127845, 127832, 127858, 127842, 127841, 127849, 127854, 127848, 127856, 127850, 127851, 127852, 127855, 127823, 127819, 127826, 127825, 127816, 127840, 127814, 127813, 127805, 127969, 127979, 127970, 127971, 127977, 128146, 127980, 127972, 127751, 127750, 127983, 127984, 127981, 128508, 128510, 128507, 127748, 127749, 127747, 128509, 127753, 127904, 127905, 9970, 127906, 128674, 128675, 9875, 128186, 128641, 128642, 128650, 128649, 128670, 128646, 128645, 128648, 128647, 128669, 128651, 128643, 128654, 128653, 128665, 128664, 128661, 128662, 128667, 128666, 128680, 128660, 128656, 128673, 128671, 128672, 128668, 128655, 127915, 128678, 128304, 9981, 127982, 128511, 127914, 127917, 128681, 128287, 128290, 128291, 11014, 11015, 11013, 128288, 128289, 128292, 8599, 8598, 8600, 8601, 8596, 8597, 128260, 9664, 9654, 128316, 128317, 8617, 8618, 8505, 9194, 9193, 9195, 9196, 10549, 10548, 128256, 128257, 128258, 127381, 127385, 127378, 127379, 127382, 128246, 127910, 127489, 127535, 127539, 127541, 127540, 127538, 127568, 127545, 127546, 127542, 127514, 128699, 128700, 128702, 128688, 128686, 127359, 9855, 128685, 127543, 127544, 127490, 9410, 128706, 128708, 128709, 128707, 127569, 12953, 127377, 127384, 127380, 128683, 128286, 128245, 128687, 128689, 128691, 128695, 128696, 9940, 10035, 10055, 10062, 10036, 128159, 127386, 128243, 128244, 127344, 127345, 127374, 127358, 128160, 10175, 9851, 9800, 9801, 9802, 9803, 9804, 9805, 9806, 9807, 9808, 9809, 9810, 9811, 9934, 128303, 128185, 128178, 128177, 8252, 8265, 10071, 10067, 128285, 128282, 128281, 128283, 128284, 128359, 128336, 128348, 128337, 128349, 128338, 128350, 128339, 128351, 128340, 128352, 128341, 128342, 128343, 128344, 128345, 128346, 128353, 128354, 128355, 128356, 128357, 128358, 10006, 10133, 10134, 10135, 9824, 9829, 9830, 128174, 10004, 9745, 128280, 128279, 10160, 12336, 128305, 9724, 9723, 9726, 9725, 9642, 9643, 128314, 128306, 128307, 9899, 9898, 128308, 128309, 128315, 11036, 11035, 128310, 128311, 128312, 128313, 128657, 128658, 128659 };
-    jdField_b_of_type_ArrayOfJavaLangString = new String[] { "嘿嘿", "羞涩", "亲亲", "汗", "紧张", "吐舌", "呲牙", "淘气", "可爱", "媚眼", "花痴", "失落", "高兴", "哼哼", "不屑", "瞪眼", "飞吻", "大哭", "害怕", "激动", "肌肉", "拳头", "厉害", "向上", "鼓掌", "胜利", "鄙视", "合十", "好的", "向左", "向右", "向上", "向下", "眼睛", "鼻子", "嘴唇", "耳朵", "米饭", "意面", "拉面", "饭团", "刨冰", "寿司", "蛋糕", "起司", "汉堡", "煎蛋", "薯条", "啤酒", "干杯", "高脚杯", "咖啡", "苹果", "橙子", "草莓", "西瓜", "药丸", "吸烟", "圣诞树", "玫瑰", "庆祝", "椰子树", "礼物", "蝴蝶结", "气球", "海螺", "戒指", "炸弹", "皇冠", "铃铛", "星星", "闪光", "吹气", "水", "火", "奖杯", "钱", "睡觉", "闪电", "脚印", "便便", "打针", "热", "文件", "钥匙", "锁", "飞机", "列车", "汽车", "快艇", "自行车", "骑马", "火箭", "公交", "船", "妈妈", "爸爸", "女孩", "男孩", "猴", "章鱼", "猪", "骷髅", "小鸡", "树懒", "牛", "公鸡", "青蛙", "幽灵", "虫", "鱼", "狗", "老虎", "天使", "企鹅", "海豚", "老鼠", "帽子", "连衣裙", "口红", "高跟鞋", "鞋子", "雨伞", "包", "内衣", "衣服", "鞋子", "云朵", "晴天", "雨天", "月亮", "雪人", "正确", "错误", "问好", "叹号", "电话", "相机", "手机", "传真", "电脑", "摄影机", "话筒", "手枪", "光碟", "爱心", "扑克", "麻将", "股票", "老虎机", "信号灯", "路障", "吉他", "理发厅", "浴缸", "马桶", "家", "教堂", "银行", "医院", "酒店", "取款机", "超市", "男性", "女性" };
-    long l = SystemClock.uptimeMillis();
-    jdField_a_of_type_AndroidUtilSparseIntArray = new SparseIntArray(d.length);
-    jdField_a_of_type_JavaUtilMap = new HashMap(300);
-    int i = 0;
-    while (i < d.length)
-    {
-      int j = d[i];
-      jdField_a_of_type_AndroidUtilSparseIntArray.put(j, i);
-      i += 1;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("AppleEmojiManager", 2, "old init cost:" + (SystemClock.uptimeMillis() - l) + "EMOJI_CODES.length=" + d.length);
-    }
-    a();
-    e = new int[] { 13, 12, 27, 20, 39, 38, 97, 46, 63, 5, 9, 33, 16, 18, 106, 59, 55, 112, 21, 2, 6, 4, 19, 14, 11, 10, 26, 96, 66, 116, 22, 23, 15, 0, 32, 8, 109, 28, 42, 36, 1, 108, 30, 3, 103, 49, 101, 85, 105, 34, 29, 111, 76, 77, 78, 79, 118, 64, 61, 53, 89, 113, 117, 119, 124, 122, 60, 50, 75, 81, 56, 41, 121, 120, 67, 74, 69, 57, 37, 129, 54, 24, 25, 31, 35, 98, 99, 100, 102, 104, 107, 110, 114, 115, 123, 43, 86, 125, 126, 127, 128, 130, 131, 132, 133, 134, 7, 135, 136, 137, 138, 139, 140, 141, 142, 143, 144, 145, 146, 147, 148, 149, 150, 151, 152, 153, 154, 155, 156, 157, 158, 159, 160, 161, 162, 163, 164, 165, 166, 167, 168, 169, 170 };
-    f = new int[] { 33, 40, 19, 43, 21, 9, 20, 106, 35, 10, 25, 24, 1, 0, 23, 32, 12, -1, 13, 22, 3, 18, 30, 31, 81, 82, 26, 2, 37, 50, 42, 83, 34, 11, 49, 84, 39, 78, 5, 4, -1, 71, 38, 95, -1, -1, 7, -1, -1, 45, 67, -1, -1, 59, 80, 16, 70, 77, -1, 15, 66, 58, -1, 8, 57, -1, 28, 74, -1, 76, -1, -1, -1, -1, 75, 68, 52, 53, 54, 55, -1, 69, -1, -1, -1, 47, 96, -1, -1, 60, -1, -1, -1, -1, -1, -1, 27, 6, 85, 86, 87, 46, 88, 44, 89, 48, 14, 90, 41, 36, 91, 51, 17, 61, 92, 93, 29, 62, 56, 63, 73, 72, 65, 94, 64, 97, 98, 99, 100, 79, 101, 102, 103, 104, 105, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 124, 125, 126, 127, 128, 129, 130, 131, 132, 133, 134, 135, 136, 137, 138, 139, 140, 141, 142 };
-    jdField_a_of_type_ArrayOfShort = new short[] { 13, 12, 56, 73, 88, 87, 97, 59, 33, 5, 9, 82, 51, 53, 106, 72, 92, 112, 74, 2, 6, 4, 54, 14, 11, 10, 55, 96, 36, 116, 75, 76, 50, 0, 81, 8, 109, 57, 27, 85, 1, 108, 79, 3, 103, 62, 101, 21, 105, 83, 58, 111, 46, 47, 71, 95, 118, 34, 64, 38, 32, 113, 117, 119, 124, 122, 63, 89, 45, 16, 93, 25, 121, 120, 37, 42, 39, 29, 86, 129, 91, 77, 78, 80, 84, 98, 99, 100, 102, 104, 107, 110, 114, 115, 123, 23, 26, 125, 126, 127, 128, 130, 131, 132, 133, 134, 7, 135, 136, 137, 138, 139, 140, 141, 142, 143, 144, 145, 146, 147, 148, 149, 150, 151, 152, 153, 154, 155, 156, 157, 158, 159, 160, 161, 162, 163, 164, 165, 166, 167, 168, 169, 170 };
-    jdField_b_of_type_ArrayOfShort = new short[] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 34, 41, 20, 44, 22, 10, 21, 107, 36, 11, 26, 25, 2, 1, 24, 0, 70, 0, 0, 0, 0, 48, 0, 96, 0, 72, 97, 39, 0, 78, 0, 0, 61, 9, 58, 0, 29, 75, 60, 77, 0, 0, 76, 0, 0, 69, 53, 54, 0, 0, 33, 13, 0, 14, 23, 27, 3, 38, 51, 8, 0, 0, 46, 67, 59, 0, 0, 0, 0, 0, 0, 55, 16, 4, 19, 31, 32, 82, 83, 43, 84, 35, 12, 50, 85, 40, 79, 6, 5, 68, 0, 81, 17, 71, 0, 56, 28, 7, 86, 87, 88, 47, 89, 45, 90, 49, 15, 91, 42, 37, 92, 52, 18, 62, 93, 94, 30, 63, 57, 64, 74, 73, 66, 95, 65, 98, 99, 100, 101, 80, 102, 103, 104, 105, 106, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 124, 125, 126, 127, 128, 129, 130, 131, 132, 133, 134, 135, 136, 137, 138, 139, 140, 141, 142, 143, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
-    g = new int[] { 23, 40, 19, 43, 21, 9, 20, 106, 35, 10, 25, 24, 1, 0, 33, 32, 12, 27, 13, 22, 3, 18, 30, 31, 81, 82, 26, 2, 37, 50, 42, 83, 34, 11, 49, 84, 39, 78, 5, 4, 6, 85, 86, 87, 46, 88, 44, 89, 48, 14, 90, 41, 36, 91, 51, 17, 60, 61, 92, 93, 66, 58, 7, 8, 57, 29, 28, 74, 59, 80, 16, 70, 77, 62, 15, 68, 75, 76, 45, 52, 53, 54, 55, 56, 63, 73, 72, 65, 94, 64, 38, 47, 95, 71, 96, 97, 98, 99, 100, 79, 101, 102, 103, 104, 105, 67, 69, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 124, 125, 126, 127, 128, 129, 130, 131, 132, 133, 134, 135, 136, 137, 138, 139, 140, 141, 142 };
-    jdField_c_of_type_ArrayOfJavaLangString = new String[] { "f001", "f004", "f005", "f009", "f010", "f013", "f018", "f019", "f020", "f025", "f037", "f043", "f098", "f099", "f100", "f217", "f218", "f219" };
+    jdField_a_of_type_JavaLangLong = Long.valueOf(2000L);
+    jdField_a_of_type_JavaLangString = "ptv_template_usable";
+    jdField_b_of_type_JavaLangString = "ptv_debug";
+    jdField_c_of_type_JavaLangString = "new_ptv_template_usable";
+    jdField_a_of_type_JavaLangObject = new Object();
+    File localFile = BaseApplicationImpl.getApplication().getCacheDir();
+    jdField_a_of_type_JavaIoFile = new File(localFile, "capture_ptv_template");
+    jdField_a_of_type_JavaLangString = jdField_a_of_type_JavaIoFile.getPath() + File.separator + jdField_a_of_type_JavaLangString + File.separator;
+    jdField_b_of_type_JavaLangString = jdField_a_of_type_JavaIoFile.getPath() + File.separator + jdField_b_of_type_JavaLangString;
+    jdField_b_of_type_JavaIoFile = new File(localFile, "new_ptv_template");
+    jdField_c_of_type_JavaLangString = jdField_b_of_type_JavaIoFile.getPath() + File.separator + jdField_c_of_type_JavaLangString + File.separator;
   }
   
-  public static int a(int paramInt)
+  private bamd()
   {
-    int m = 0;
-    int j = -1;
-    int k = 1;
-    if ((paramInt > 8251) && (paramInt < 13056)) {}
-    for (int i = 1;; i = 0)
+    this.jdField_a_of_type_JavaUtilList = new CopyOnWriteArrayList();
+    this.jdField_a_of_type_AndroidOsHandler = new Handler(ThreadManager.getSubThreadLooper());
+  }
+  
+  public static final bamd a()
+  {
+    return bami.a();
+  }
+  
+  private baml a(PtvTemplateManager.PtvTemplateInfo paramPtvTemplateInfo, bcdv parambcdv)
+  {
+    baml localbaml = new baml();
+    localbaml.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo = paramPtvTemplateInfo;
+    localbaml.jdField_a_of_type_Bcdv = parambcdv;
+    parambcdv = new bamk();
+    parambcdv.jdField_a_of_type_JavaLangString = paramPtvTemplateInfo.dgStageName;
+    parambcdv.jdField_b_of_type_JavaLangString = paramPtvTemplateInfo.dgStageResmd5;
+    parambcdv.jdField_c_of_type_JavaLangString = paramPtvTemplateInfo.dgStageResurl;
+    parambcdv.jdField_a_of_type_Boolean = paramPtvTemplateInfo.dgStageUsable;
+    parambcdv.jdField_b_of_type_Boolean = false;
+    localbaml.jdField_a_of_type_JavaUtilArrayList.add(parambcdv);
+    parambcdv = new bamk();
+    parambcdv.jdField_a_of_type_JavaLangString = paramPtvTemplateInfo.dgModelName;
+    parambcdv.jdField_b_of_type_JavaLangString = paramPtvTemplateInfo.dgModelResmd5;
+    parambcdv.jdField_c_of_type_JavaLangString = paramPtvTemplateInfo.dgModelResurl;
+    parambcdv.jdField_a_of_type_Boolean = paramPtvTemplateInfo.dgModelUsable;
+    parambcdv.jdField_b_of_type_Boolean = false;
+    localbaml.jdField_a_of_type_JavaUtilArrayList.add(parambcdv);
+    parambcdv = new bamk();
+    parambcdv.jdField_a_of_type_JavaLangString = paramPtvTemplateInfo.name;
+    parambcdv.jdField_b_of_type_JavaLangString = paramPtvTemplateInfo.md5;
+    parambcdv.jdField_c_of_type_JavaLangString = paramPtvTemplateInfo.resurl;
+    parambcdv.jdField_a_of_type_Boolean = paramPtvTemplateInfo.usable;
+    parambcdv.jdField_b_of_type_Boolean = true;
+    localbaml.jdField_a_of_type_JavaUtilArrayList.add(parambcdv);
+    localbaml.jdField_a_of_type_Int = 3;
+    return localbaml;
+  }
+  
+  public static String a(File paramFile)
+  {
+    paramFile = bgmg.a(paramFile);
+    if ((paramFile == null) || (paramFile.length <= 0)) {
+      return null;
+    }
+    if (Build.VERSION.SDK_INT <= 8) {
+      return new String(paramFile);
+    }
+    try
     {
-      if ((i == 0) && (paramInt > 126979) && (paramInt < 129473)) {
-        if (paramInt > 127461)
-        {
-          i = m;
-          if (paramInt < 127488) {}
-        }
-        else
-        {
-          if ((paramInt <= 41) || (paramInt >= 64)) {
-            break label107;
-          }
-          i = m;
-        }
+      paramFile = new String(paramFile, "UTF-8");
+      return paramFile;
+    }
+    catch (UnsupportedEncodingException paramFile)
+    {
+      if (QLog.isDevelopLevel()) {
+        paramFile.printStackTrace();
       }
-      for (;;)
-      {
-        if ((i == 0) && (paramInt > 65) && (paramInt < 175)) {
-          i = k;
-        }
-        for (;;)
-        {
-          if (i != 0) {
-            j = jdField_a_of_type_AndroidUtilSparseIntArray.get(paramInt, -1);
-          }
-          return j;
-          label107:
-          i = 1;
-          break;
-        }
-      }
     }
+    return null;
   }
   
-  public static int a(int paramInt1, int paramInt2)
+  public static String a(String paramString)
   {
-    if (((paramInt2 > 127994) && (paramInt2 < 128000)) || ((paramInt1 > 127461) && (paramInt1 < 127488)) || ((paramInt1 <= 34) || (paramInt1 >= 64) || (jdField_a_of_type_JavaUtilMap == null))) {
-      return -1;
-    }
-    Integer localInteger = (Integer)jdField_a_of_type_JavaUtilMap.get(paramInt1 + "|" + paramInt2);
-    if (localInteger != null) {}
-    for (paramInt1 = localInteger.intValue();; paramInt1 = -1) {
-      return paramInt1;
-    }
+    return jdField_c_of_type_JavaLangString + paramString + File.separator;
   }
   
-  public static String a(int paramInt)
+  public static String a(String paramString1, String paramString2)
   {
-    if ((paramInt < 0) || (paramInt >= jdField_b_of_type_ArrayOfJavaLangString.length)) {
-      return " 未知 ";
-    }
-    return jdField_b_of_type_ArrayOfJavaLangString[paramInt] + " ";
-  }
-  
-  public static String a(String paramString1, String paramString2, boolean paramBoolean)
-  {
-    if (TextUtils.isEmpty(paramString1)) {}
-    do
-    {
+    String str = jdField_a_of_type_JavaLangString + paramString1;
+    paramString1 = jdField_c_of_type_JavaLangString + paramString2 + File.separator + paramString1;
+    if (new File(paramString1).exists()) {
       return paramString1;
-      if (Character.codePointCount(paramString1, 0, paramString1.length()) != paramString1.length()) {
-        break;
-      }
-    } while (!paramString1.contains(new String(new char[] { '\024' })));
+    }
+    return str;
+  }
+  
+  public static List<bamz> a(bamd parambamd, String paramString, CaptureRedDotConfig paramCaptureRedDotConfig)
+  {
+    int i = 0;
     if (QLog.isColorLevel()) {
-      QLog.i(bamd.class.getSimpleName(), 2, "beforeXml:" + paramString1);
+      QLog.i("CapturePtvTemplateManager", 2, "parseConfigRaw " + paramString);
     }
-    StringBuilder localStringBuilder1 = new StringBuilder("[emoji:0x%05x");
-    StringBuilder localStringBuilder2 = new StringBuilder("[sysEmo:%03d-%03d");
-    if (!TextUtils.isEmpty(paramString2))
+    if (TextUtils.isEmpty(paramString)) {
+      return null;
+    }
+    for (;;)
     {
-      localStringBuilder1.append(paramString2);
-      localStringBuilder2.append(paramString2);
-    }
-    localStringBuilder1.append(']');
-    localStringBuilder2.append(']');
-    paramString2 = null;
-    if (QLog.isColorLevel()) {
-      paramString2 = new StringBuilder(1024).append("beforXml start");
-    }
-    int m = paramString1.length();
-    int k = 0;
-    String str1 = paramString1;
-    if (k < m)
-    {
-      int n = str1.codePointAt(k);
-      String str2;
-      int j;
-      int i;
-      if (n > 65535)
+      try
       {
-        str2 = str1.substring(k, k + 2);
-        paramString1 = String.format(localStringBuilder1.toString(), new Object[] { Integer.valueOf(n) });
-        str1 = str1.replace(str2, paramString1);
-        k += paramString1.length() - 1;
-        m = str1.length();
-        j = k;
-        i = m;
-        paramString1 = str1;
-        if (QLog.isColorLevel())
+        JSONObject localJSONObject = new JSONObject(paramString);
+        if (parambamd != null)
         {
-          paramString2.append("\n").append("unicode").append(":").append(n);
-          paramString1 = str1;
-          i = m;
-          j = k;
+          if (localJSONObject.has("guide_video_url")) {
+            parambamd.d = localJSONObject.getString("guide_video_url");
+          }
+          if (localJSONObject.has("guide_video_md5")) {
+            parambamd.e = localJSONObject.getString("guide_video_md5");
+          }
+          if (localJSONObject.has("gestureGapFrame")) {
+            bker.jdField_a_of_type_JavaLangString = localJSONObject.getString("gestureGapFrame");
+          }
+          if (localJSONObject.has("gestureGapTime")) {
+            bker.jdField_b_of_type_JavaLangString = localJSONObject.getString("gestureGapTime");
+          }
+          if (localJSONObject.has("gesturethreadcoldtime")) {
+            bker.jdField_c_of_type_JavaLangString = localJSONObject.getString("gesturethreadcoldtime");
+          }
+          if (localJSONObject.has("gestureShouldUpload")) {
+            bker.jdField_a_of_type_Boolean = localJSONObject.getBoolean("gestureShouldUpload");
+          }
         }
-      }
-      for (;;)
-      {
-        k = j + 1;
-        m = i;
-        str1 = paramString1;
-        break;
-        j = k;
-        i = m;
-        paramString1 = str1;
-        if (n == 20)
+        Object localObject1 = "";
+        Object localObject2 = "";
+        String str2 = "";
+        String str1 = str2;
+        paramString = (String)localObject2;
+        parambamd = (bamd)localObject1;
+        Object localObject3;
+        if (localJSONObject.has("bigheadCommonRes"))
         {
-          j = k;
-          i = m;
-          paramString1 = str1;
-          if (k + 2 < m)
+          localObject3 = localJSONObject.getJSONObject("bigheadCommonRes");
+          str1 = str2;
+          paramString = (String)localObject2;
+          parambamd = (bamd)localObject1;
+          if (localObject3 != null)
           {
-            j = k;
-            i = m;
-            paramString1 = str1;
-            if (paramBoolean)
+            parambamd = ((JSONObject)localObject3).optString("bighead_model_name", "");
+            str1 = ((JSONObject)localObject3).optString("bighead_model_resurl", "");
+            paramString = ((JSONObject)localObject3).optString("bighead_model_resmd5", "");
+          }
+        }
+        if (paramCaptureRedDotConfig != null)
+        {
+          int j = localJSONObject.optInt("iconRedDotVersion");
+          boolean bool = localJSONObject.optBoolean("needRedDot");
+          int k = localJSONObject.optInt("redDotShowTime", CaptureRedDotConfig.SHOW_TIME_DEFAULT);
+          if (QLog.isColorLevel()) {
+            QLog.d("QIMRedDotConfig_PTV", 2, "parseConfig|oldVer= " + paramCaptureRedDotConfig.iconVersion + ",ver=" + j + ",showRed=" + bool + ",showTime=" + k);
+          }
+          paramCaptureRedDotConfig.showTime = k;
+          if (paramCaptureRedDotConfig.iconVersion != j)
+          {
+            paramCaptureRedDotConfig.iconVersion = j;
+            paramCaptureRedDotConfig.showRedDot = bool;
+            paramCaptureRedDotConfig.hasShow = false;
+            paramCaptureRedDotConfig.firstShowTime = 0L;
+          }
+          j = localJSONObject.optInt("defaultCategoryVersion");
+          k = localJSONObject.optInt("defaultCategoryId", -1);
+          if (QLog.isColorLevel()) {
+            QLog.d("QIMRedDotConfig_PTV", 2, "parseConfig|oldVer= " + paramCaptureRedDotConfig.defaultCategoryVer + ",ver=" + j + ",defaultCategoryId=" + k);
+          }
+          if (paramCaptureRedDotConfig.defaultCategoryVer != j)
+          {
+            paramCaptureRedDotConfig.defaultCategoryVer = j;
+            paramCaptureRedDotConfig.defaultCategoryId = k;
+            paramCaptureRedDotConfig.hasChoose = false;
+          }
+          j = localJSONObject.optInt("defaultUseVersion");
+          localObject1 = localJSONObject.optString("defaultUseId");
+          if (QLog.isColorLevel()) {
+            QLog.d("QIMRedDotConfig_PTV", 2, "parseConfig|oldVer= " + paramCaptureRedDotConfig.defaultUseVer + ",ver=" + j + ",defaultUseId=" + (String)localObject1);
+          }
+          if (paramCaptureRedDotConfig.defaultUseVer != j)
+          {
+            paramCaptureRedDotConfig.defaultUseVer = j;
+            paramCaptureRedDotConfig.defaultUseId = ((String)localObject1);
+            paramCaptureRedDotConfig.hasUse = false;
+          }
+          j = localJSONObject.optInt("itemRedDotVersion");
+          if (paramCaptureRedDotConfig.redDotVersion != j)
+          {
+            paramCaptureRedDotConfig.redDotVersion = j;
+            paramCaptureRedDotConfig.redDotItems.clear();
+            if (localJSONObject.has("itemNeedRedDot"))
             {
-              n = str1.codePointAt(k + 1);
-              int i1 = str1.codePointAt(k + 2);
-              str2 = str1.substring(k, k + 3);
-              paramString1 = String.format(localStringBuilder2.toString(), new Object[] { Integer.valueOf(n), Integer.valueOf(i1) });
-              str1 = str1.replace(str2, paramString1);
-              k += paramString1.length() - 1;
-              m = str1.length();
-              j = k;
-              i = m;
-              paramString1 = str1;
-              if (QLog.isColorLevel())
+              localObject1 = new StringBuilder();
+              ((StringBuilder)localObject1).append("parseConfig|redDotList:");
+              localObject2 = localJSONObject.getJSONArray("itemNeedRedDot");
+              if (i < ((JSONArray)localObject2).length())
               {
-                paramString2.append("\n").append("sysEmo").append(":").append(n).append("|").append(i1);
-                j = k;
-                i = m;
-                paramString1 = str1;
+                str2 = ((JSONArray)localObject2).optString(i);
+                if (TextUtils.isEmpty(str2)) {
+                  break label865;
+                }
+                localObject3 = new CaptureRedDotConfig.RedDotItemConfig();
+                ((CaptureRedDotConfig.RedDotItemConfig)localObject3).filterId = str2;
+                ((StringBuilder)localObject1).append(str2).append(",");
+                paramCaptureRedDotConfig.redDotItems.put(str2, localObject3);
+                break label865;
+              }
+              if (QLog.isColorLevel()) {
+                QLog.d("QIMRedDotConfig_PTV", 2, "parseConfig|redDotItem= " + ((StringBuilder)localObject1).toString());
               }
             }
           }
         }
+        if (!localJSONObject.has("category")) {
+          break;
+        }
+        paramCaptureRedDotConfig = a(localJSONObject.getJSONArray("category"), paramCaptureRedDotConfig);
+        a(paramCaptureRedDotConfig, parambamd, str1, paramString);
+        return paramCaptureRedDotConfig;
       }
+      catch (JSONException parambamd) {}
+      if (!QLog.isColorLevel()) {
+        break;
+      }
+      parambamd.printStackTrace();
+      return null;
+      label865:
+      i += 1;
     }
-    if (QLog.isColorLevel()) {
-      QLog.i("EmotcationConstants", 2, paramString2.toString());
-    }
-    return str1;
   }
   
-  public static void a()
+  static List<bamz> a(JSONArray paramJSONArray, CaptureRedDotConfig paramCaptureRedDotConfig)
   {
-    SystemClock.uptimeMillis();
-    long l = SystemClock.uptimeMillis();
-    File localFile1 = new File(bama.a);
-    File localFile2 = new File(bama.b);
-    Object localObject2 = BaseApplicationImpl.getContext();
-    Object localObject1;
-    if (Build.VERSION.SDK_INT >= 24)
-    {
-      localObject1 = PreferenceManager.getDefaultSharedPreferencesName((Context)localObject2);
-      localObject1 = ((Context)localObject2).getSharedPreferences((String)localObject1, 4);
-      boolean bool = ((SharedPreferences)localObject1).getBoolean("build_emoji_file", false);
-      if (QLog.isColorLevel()) {
-        QLog.d("AppleEmojiManager", 2, "loadEmojiMapFormDisk buildSuccess=" + bool);
-      }
-      if ((!bool) || (!localFile1.exists()) || (!localFile2.exists())) {
-        break label192;
-      }
-      a(localFile1, localFile2);
+    if (QLog.isColorLevel()) {
+      QLog.i("CapturePtvTemplateManager", 2, "parse config: " + paramJSONArray);
     }
-    label408:
+    if (paramJSONArray == null) {
+      return null;
+    }
+    int j = paramJSONArray.length();
+    if (j <= 0) {
+      return null;
+    }
+    ArrayList localArrayList = new ArrayList();
+    int i = 0;
+    if (i < j) {}
     for (;;)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("AppleEmojiManager", 2, "init full emoji index cost:" + (SystemClock.uptimeMillis() - l));
-      }
-      return;
-      localObject1 = ((Context)localObject2).getPackageName() + "_preferences";
-      break;
-      label192:
-      localObject1 = ((SharedPreferences)localObject1).getString("apple_emoji_file", "");
-      if (QLog.isColorLevel()) {
-        QLog.d("AppleEmojiManager", 2, "loadEmojiMapFormDisk filepath=" + (String)localObject1);
-      }
-      if ((localObject1 != null) && (!((String)localObject1).equals("")))
+      bamz localbamz;
+      Object localObject3;
+      int k;
+      Object localObject4;
+      Object localObject5;
+      try
       {
-        localObject2 = new File((String)localObject1);
-        if (((File)localObject2).exists())
+        localbamz = new bamz();
+        localObject3 = paramJSONArray.getJSONObject(i);
+        if (((JSONObject)localObject3).has("content")) {
+          localbamz.jdField_a_of_type_JavaUtilList = PtvTemplateManager.PtvTemplateInfo.convertFrom(((JSONObject)localObject3).getJSONArray("content"));
+        }
+        if (((JSONObject)localObject3).has("categoryName")) {
+          localbamz.jdField_a_of_type_JavaLangString = ((JSONObject)localObject3).getString("categoryName");
+        }
+        if (((JSONObject)localObject3).has("GetRedBag"))
         {
-          ThreadManager.post(new EmotcationConstants.1(localFile1, localFile2, (File)localObject2), 5, null, false);
-          if (QLog.isColorLevel()) {
-            QLog.d("MF", 2, "zipfile path=" + (String)localObject1);
+          if (((JSONObject)localObject3).getInt("GetRedBag") == 1)
+          {
+            bool = true;
+            localbamz.jdField_a_of_type_Boolean = bool;
+            bckg.a((JSONObject)localObject3);
+          }
+        }
+        else
+        {
+          if ((((JSONObject)localObject3).has("TipsVer")) && (((JSONObject)localObject3).has("Tips")))
+          {
+            localbamz.jdField_b_of_type_Int = ((JSONObject)localObject3).getInt("TipsVer");
+            localbamz.jdField_b_of_type_JavaLangString = ((JSONObject)localObject3).getString("Tips");
+          }
+          if (!((JSONObject)localObject3).has("categoryId")) {
+            break label488;
+          }
+          localbamz.jdField_a_of_type_Int = ((JSONObject)localObject3).getInt("categoryId");
+          if (paramCaptureRedDotConfig == null) {
+            break label711;
+          }
+          k = ((JSONObject)localObject3).optInt("redDotVersion");
+          bool = ((JSONObject)localObject3).optBoolean("needRedDot");
+          localObject1 = (CaptureRedDotConfig.CategoryRedConfig)paramCaptureRedDotConfig.categories.get(Integer.valueOf(localbamz.jdField_a_of_type_Int));
+          if (localObject1 == null) {
+            break label425;
+          }
+          if (((CaptureRedDotConfig.CategoryRedConfig)localObject1).version == k) {
+            break label708;
+          }
+          ((CaptureRedDotConfig.CategoryRedConfig)localObject1).version = k;
+          ((CaptureRedDotConfig.CategoryRedConfig)localObject1).showRedDot = bool;
+          ((CaptureRedDotConfig.CategoryRedConfig)localObject1).hasShow = false;
+          ((CaptureRedDotConfig.CategoryRedConfig)localObject1).firstShowTime = 0L;
+          if ((localbamz.jdField_a_of_type_JavaUtilList == null) || (localbamz.jdField_a_of_type_JavaUtilList.isEmpty())) {
+            break label461;
+          }
+          localObject4 = localbamz.jdField_a_of_type_JavaUtilList.iterator();
+          if (!((Iterator)localObject4).hasNext()) {
+            break label461;
+          }
+          localObject5 = (PtvTemplateManager.PtvTemplateInfo)((Iterator)localObject4).next();
+          ((PtvTemplateManager.PtvTemplateInfo)localObject5).categoryId = localbamz.jdField_a_of_type_Int;
+          ((PtvTemplateManager.PtvTemplateInfo)localObject5).categoryName = localbamz.jdField_a_of_type_JavaLangString;
+          continue;
+          return localArrayList;
+        }
+      }
+      catch (JSONException paramJSONArray)
+      {
+        if (QLog.isColorLevel()) {
+          paramJSONArray.printStackTrace();
+        }
+      }
+      boolean bool = false;
+      continue;
+      label425:
+      Object localObject1 = new CaptureRedDotConfig.CategoryRedConfig();
+      ((CaptureRedDotConfig.CategoryRedConfig)localObject1).categoryId = localbamz.jdField_a_of_type_Int;
+      ((CaptureRedDotConfig.CategoryRedConfig)localObject1).version = k;
+      ((CaptureRedDotConfig.CategoryRedConfig)localObject1).showRedDot = bool;
+      continue;
+      label461:
+      if ((paramCaptureRedDotConfig != null) && (localObject1 != null)) {
+        paramCaptureRedDotConfig.categories.put(Integer.valueOf(((CaptureRedDotConfig.CategoryRedConfig)localObject1).categoryId), localObject1);
+      }
+      label488:
+      bool = ((JSONObject)localObject3).has("commonRes");
+      if (bool) {
+        try
+        {
+          Object localObject6 = ((JSONObject)localObject3).getJSONObject("commonRes");
+          localObject1 = ((JSONObject)localObject6).getString("dg_stage_name");
+          RecentDanceConfigMgr.a((String)localObject1);
+          localObject3 = ((JSONObject)localObject6).getString("dg_stage_resurl");
+          localObject4 = ((JSONObject)localObject6).getString("dg_stage_resmd5");
+          localObject5 = ((JSONObject)localObject6).getString("dg_model_name");
+          String str = ((JSONObject)localObject6).getString("dg_model_resurl");
+          localObject6 = ((JSONObject)localObject6).getString("dg_model_resmd5");
+          if (localbamz.jdField_a_of_type_JavaUtilList != null)
+          {
+            Iterator localIterator = localbamz.jdField_a_of_type_JavaUtilList.iterator();
+            while (localIterator.hasNext())
+            {
+              PtvTemplateManager.PtvTemplateInfo localPtvTemplateInfo = (PtvTemplateManager.PtvTemplateInfo)localIterator.next();
+              if ((localPtvTemplateInfo.kind == 3) || (localPtvTemplateInfo.kind == 4))
+              {
+                localPtvTemplateInfo.dgStageName = ((String)localObject1);
+                localPtvTemplateInfo.dgStageResurl = ((String)localObject3);
+                localPtvTemplateInfo.dgStageResmd5 = ((String)localObject4);
+                localPtvTemplateInfo.dgModelName = ((String)localObject5);
+                localPtvTemplateInfo.dgModelResurl = str;
+                localPtvTemplateInfo.dgModelResmd5 = ((String)localObject6);
+              }
+            }
+          }
+          localArrayList.add(localbamz);
+        }
+        catch (Exception localException)
+        {
+          localException.printStackTrace();
+        }
+      }
+      i += 1;
+      break;
+      label708:
+      continue;
+      label711:
+      Object localObject2 = null;
+    }
+  }
+  
+  private void a(baml parambaml)
+  {
+    bamh localbamh2 = (bamh)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(parambaml.jdField_a_of_type_Int));
+    bamh localbamh1 = localbamh2;
+    if (localbamh2 == null)
+    {
+      localbamh1 = new bamh();
+      this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(parambaml.jdField_a_of_type_Int), localbamh1);
+    }
+    localbamh1.b.add(parambaml);
+  }
+  
+  private void a(baml parambaml, bamk parambamk, long paramLong1, long paramLong2)
+  {
+    if ((parambaml == null) || (parambamk == null)) {}
+    do
+    {
+      bamh localbamh;
+      do
+      {
+        return;
+        localbamh = (bamh)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(parambaml.jdField_a_of_type_Int));
+        if (localbamh != null) {
+          break;
+        }
+      } while (!QLog.isColorLevel());
+      QLog.e("CapturePtvTemplateManager", 2, "multiSessionDownloadProcessUpdate: BusinessParam=null  kind=" + parambaml.jdField_a_of_type_Int + " mItem.mName=" + parambamk.jdField_a_of_type_JavaLangString);
+      return;
+      parambamk.jdField_a_of_type_Long = paramLong1;
+      parambamk.jdField_b_of_type_Long = paramLong2;
+      parambamk.jdField_c_of_type_Boolean = true;
+      paramLong2 = 0L;
+      paramLong1 = 1L;
+      parambamk = parambaml.jdField_a_of_type_JavaUtilArrayList.iterator();
+      while (parambamk.hasNext())
+      {
+        bamk localbamk = (bamk)parambamk.next();
+        if (!localbamk.jdField_a_of_type_Boolean)
+        {
+          localbamk = (bamk)localbamh.jdField_a_of_type_JavaUtilHashMap.get(localbamk.jdField_a_of_type_JavaLangString);
+          if (localbamk != null) {
+            if (localbamk.jdField_c_of_type_Boolean)
+            {
+              paramLong2 += localbamk.jdField_a_of_type_Long;
+              paramLong1 += localbamk.jdField_b_of_type_Long;
+            }
+            else
+            {
+              paramLong1 += 1000L;
+            }
           }
         }
       }
+    } while (parambaml.jdField_a_of_type_Bcdv == null);
+    parambaml.jdField_a_of_type_Bcdv.a(parambaml.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo, (int)(paramLong2 * 100L / paramLong1));
+  }
+  
+  private void a(QQAppInterface paramQQAppInterface, String paramString)
+  {
+    synchronized (jdField_a_of_type_JavaLangObject)
+    {
+      if (this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataCaptureRedDotConfig == null)
+      {
+        this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataCaptureRedDotConfig = new CaptureRedDotConfig(2);
+        if (QLog.isColorLevel()) {
+          QLog.d("QIMRedDotConfig_PTV", 2, "parseFilterConfigZip RedDot is null");
+        }
+      }
+      if (TextUtils.isEmpty(paramString))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.w("CapturePtvTemplateManager_PTV", 2, "parseFilterConfigZip TextUtils.isEmpty(config) return");
+        }
+        alkm.a(-1);
+        return;
+      }
+    }
+    if (QLog.isColorLevel()) {
+      QLog.w("CapturePtvTemplateManager_PTV", 2, "parseFilterConfigZip config=" + paramString);
+    }
+    for (;;)
+    {
       for (;;)
       {
+        try
+        {
+          localObject2 = new JSONObject(paramString);
+          paramString = "";
+          str = "";
+          if (((JSONObject)localObject2).has("pendantMD5")) {
+            paramString = ((JSONObject)localObject2).getString("pendantMD5");
+          }
+          if (!((JSONObject)localObject2).has("pendantUrl")) {
+            break label549;
+          }
+          ??? = ((JSONObject)localObject2).getString("pendantUrl");
+          if (((JSONObject)localObject2).has("pendantName")) {
+            str = ((JSONObject)localObject2).getString("pendantName");
+          }
+          if (QLog.isColorLevel()) {
+            QLog.d("CapturePtvTemplateManager_PTV", 2, "parseFilterConfigZip pendantMD5=" + paramString + " pendantUrl=" + (String)???);
+          }
+          if ((!TextUtils.isEmpty(paramString)) && (!TextUtils.isEmpty((CharSequence)???))) {
+            break label279;
+          }
+          if (QLog.isColorLevel()) {
+            QLog.w("CapturePtvTemplateManager_PTV", 2, "zipMd5 or zipUrl empty return!");
+          }
+          alkm.a(-1);
+          return;
+        }
+        catch (JSONException paramQQAppInterface) {}
         if (!QLog.isColorLevel()) {
-          break label408;
+          break;
         }
-        QLog.d("AppleEmojiManager", 2, "emoji index file not exist,load fail");
+        paramQQAppInterface.printStackTrace();
+        return;
+        label279:
+        Object localObject2 = jdField_a_of_type_JavaIoFile + File.separator;
+        String str = jdField_a_of_type_JavaIoFile + File.separator + str;
+        File localFile = new File(jdField_a_of_type_JavaIoFile, "temp_ptv_template_zip");
+        if (localFile.exists())
+        {
+          localFile.delete();
+          if (QLog.isColorLevel()) {
+            QLog.w("CapturePtvTemplateManager_PTV", 2, "parseFilterConfigZip file.delete()");
+          }
+        }
+        Object localObject3 = new File(str);
+        if (((File)localObject3).exists())
+        {
+          ((File)localObject3).delete();
+          if (QLog.isColorLevel()) {
+            QLog.w("CapturePtvTemplateManager_PTV", 2, "parseFilterConfigZip filejson.delete()");
+          }
+        }
+        localObject3 = new bdvs();
+        ((bdvs)localObject3).jdField_a_of_type_Bdvw = new bame(this, paramString, (String)localObject2, paramQQAppInterface, str);
+        ((bdvs)localObject3).jdField_a_of_type_JavaLangString = ((String)???);
+        ((bdvs)localObject3).jdField_a_of_type_Int = 0;
+        ((bdvs)localObject3).jdField_c_of_type_JavaLangString = localFile.getPath();
+        ((bdvs)localObject3).jdField_b_of_type_Int = bgnt.a(bdwu.a().a());
+        try
+        {
+          paramQQAppInterface = BaseApplicationImpl.getApplication().getRuntime();
+          if (!QQAppInterface.class.isInstance(paramQQAppInterface)) {
+            break;
+          }
+          ((QQAppInterface)paramQQAppInterface).getNetEngine(0).a((bdws)localObject3);
+          if (!QLog.isColorLevel()) {
+            break;
+          }
+          QLog.i("CapturePtvTemplateManager", 2, "startDownloadFilterConfigZip, url: " + (String)???);
+          return;
+        }
+        catch (Exception paramQQAppInterface)
+        {
+          return;
+        }
+      }
+      label549:
+      ??? = "";
+    }
+  }
+  
+  private void a(File paramFile, boolean paramBoolean)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("CapturePtvTemplateManager", 2, String.format("rebuildTemplateInfos, cur_runnable[%s]", new Object[] { Integer.valueOf(hashCode()) }));
+    }
+    if (this.jdField_a_of_type_JavaUtilList.size() > 0) {}
+    do
+    {
+      do
+      {
+        return;
+        paramFile = a(paramFile);
+      } while (TextUtils.isEmpty(paramFile));
+      paramFile = a(a(), paramFile, null);
+      if (paramFile != null)
+      {
+        this.jdField_a_of_type_JavaUtilList.clear();
+        this.jdField_a_of_type_JavaUtilList.addAll(paramFile);
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("QIMRedDotConfig_PTV", 2, "rebuildTemplateInfos");
+      }
+      a(paramFile, paramBoolean);
+      a();
+    } while (this.jdField_a_of_type_Bamj == null);
+    this.jdField_a_of_type_Bamj.a();
+  }
+  
+  static void a(String paramString1, String paramString2)
+  {
+    ThreadManager.getFileThreadHandler().post(new CapturePtvTemplateManager.2(paramString2, paramString1));
+  }
+  
+  private static void a(List<bamz> paramList, String paramString1, String paramString2, String paramString3)
+  {
+    if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2)) || (TextUtils.isEmpty(paramString3))) {
+      return;
+    }
+    while ((paramList == null) || (paramList.size() <= 0)) {}
+    paramList = paramList.iterator();
+    while (paramList.hasNext())
+    {
+      Object localObject = (bamz)paramList.next();
+      if ((((bamz)localObject).jdField_a_of_type_JavaUtilList == null) || (((bamz)localObject).jdField_a_of_type_JavaUtilList.size() <= 0)) {
         break;
-        BaseApplication.getContext().getSharedPreferences(new AppleEmojiData().getSharedPreferencesName(), 4).edit().clear().commit();
-        jdField_a_of_type_JavaUtilMap.clear();
-        b();
-        continue;
-        if (QLog.isColorLevel()) {
-          QLog.d("AppleEmojiManager", 2, "apple_emoji_file sp is null reload");
+      }
+      localObject = ((bamz)localObject).jdField_a_of_type_JavaUtilList.iterator();
+      while (((Iterator)localObject).hasNext())
+      {
+        PtvTemplateManager.PtvTemplateInfo localPtvTemplateInfo = (PtvTemplateManager.PtvTemplateInfo)((Iterator)localObject).next();
+        if ((localPtvTemplateInfo != null) && (localPtvTemplateInfo.kind == 20))
+        {
+          localPtvTemplateInfo.bigHeadName = paramString1;
+          localPtvTemplateInfo.bigHeadUrl = paramString2;
+          localPtvTemplateInfo.bigHeadMd5 = paramString3;
         }
-        b();
       }
     }
   }
   
-  /* Error */
-  public static void a(File paramFile1, File paramFile2)
+  public static boolean a()
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: ifnull +7 -> 8
-    //   4: aload_1
-    //   5: ifnonnull +20 -> 25
-    //   8: invokestatic 1919	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   11: ifeq +13 -> 24
-    //   14: ldc_w 1921
-    //   17: iconst_2
-    //   18: ldc_w 2399
-    //   21: invokestatic 1946	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   24: return
-    //   25: invokestatic 1896	android/os/SystemClock:uptimeMillis	()J
-    //   28: lstore 5
-    //   30: invokestatic 2288	com/tencent/common/app/BaseApplicationImpl:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   33: astore 8
-    //   35: getstatic 2293	android/os/Build$VERSION:SDK_INT	I
-    //   38: bipush 24
-    //   40: if_icmplt +220 -> 260
-    //   43: aload 8
-    //   45: invokestatic 2299	android/preference/PreferenceManager:getDefaultSharedPreferencesName	(Landroid/content/Context;)Ljava/lang/String;
-    //   48: astore 7
-    //   50: aload 8
-    //   52: aload 7
-    //   54: iconst_4
-    //   55: invokevirtual 2305	android/content/Context:getSharedPreferences	(Ljava/lang/String;I)Landroid/content/SharedPreferences;
-    //   58: ldc_w 2307
-    //   61: iconst_0
-    //   62: invokeinterface 2313 3 0
-    //   67: ifeq -43 -> 24
-    //   70: aload_0
-    //   71: invokevirtual 2321	java/io/File:exists	()Z
-    //   74: ifeq -50 -> 24
-    //   77: aload_1
-    //   78: invokevirtual 2321	java/io/File:exists	()Z
-    //   81: ifeq -57 -> 24
-    //   84: getstatic 1909	bamd:jdField_a_of_type_JavaUtilMap	Ljava/util/Map;
-    //   87: invokeinterface 2391 1 0
-    //   92: new 2401	java/io/BufferedInputStream
-    //   95: dup
-    //   96: new 2403	java/io/FileInputStream
-    //   99: dup
-    //   100: aload_0
-    //   101: invokespecial 2406	java/io/FileInputStream:<init>	(Ljava/io/File;)V
-    //   104: invokespecial 2409	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
-    //   107: astore_1
-    //   108: aload_1
-    //   109: astore_0
-    //   110: aload_1
-    //   111: invokevirtual 2412	java/io/BufferedInputStream:read	()I
-    //   114: istore_2
-    //   115: iload_2
-    //   116: iconst_m1
-    //   117: if_icmpeq +258 -> 375
-    //   120: iload_2
-    //   121: iconst_1
-    //   122: if_icmpne +167 -> 289
-    //   125: aload_1
-    //   126: astore_0
-    //   127: aload_1
-    //   128: invokestatic 2415	bama:a	(Ljava/io/InputStream;)I
-    //   131: istore_2
-    //   132: aload_1
-    //   133: astore_0
-    //   134: aload_1
-    //   135: invokestatic 2415	bama:a	(Ljava/io/InputStream;)I
-    //   138: istore_3
-    //   139: aload_1
-    //   140: astore_0
-    //   141: getstatic 1904	bamd:jdField_a_of_type_AndroidUtilSparseIntArray	Landroid/util/SparseIntArray;
-    //   144: iload_2
-    //   145: iload_3
-    //   146: sipush 1000
-    //   149: iadd
-    //   150: invokevirtual 1913	android/util/SparseIntArray:put	(II)V
-    //   153: goto -45 -> 108
-    //   156: astore 7
-    //   158: aload_1
-    //   159: astore_0
-    //   160: ldc_w 1921
-    //   163: iconst_1
-    //   164: ldc_w 2340
-    //   167: aload 7
-    //   169: invokestatic 2418	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   172: aload_1
-    //   173: ifnull +7 -> 180
-    //   176: aload_1
-    //   177: invokevirtual 2421	java/io/BufferedInputStream:close	()V
-    //   180: invokestatic 1919	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   183: ifeq -159 -> 24
-    //   186: ldc_w 1921
-    //   189: iconst_2
-    //   190: new 1923	java/lang/StringBuilder
-    //   193: dup
-    //   194: invokespecial 1925	java/lang/StringBuilder:<init>	()V
-    //   197: invokestatic 2329	aepi:a	()Ljava/lang/StringBuilder;
-    //   200: ldc_w 2423
-    //   203: invokevirtual 1931	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   206: invokestatic 1896	android/os/SystemClock:uptimeMillis	()J
-    //   209: lload 5
-    //   211: lsub
-    //   212: invokevirtual 1934	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   215: invokevirtual 1943	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   218: invokevirtual 1931	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   221: ldc_w 2425
-    //   224: invokevirtual 1931	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   227: getstatic 1904	bamd:jdField_a_of_type_AndroidUtilSparseIntArray	Landroid/util/SparseIntArray;
-    //   230: invokevirtual 2428	android/util/SparseIntArray:size	()I
-    //   233: invokevirtual 1939	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   236: ldc_w 2430
-    //   239: invokevirtual 1931	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   242: getstatic 1909	bamd:jdField_a_of_type_JavaUtilMap	Ljava/util/Map;
-    //   245: invokeinterface 2431 1 0
-    //   250: invokevirtual 1939	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   253: invokevirtual 1943	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   256: invokestatic 1946	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   259: return
-    //   260: new 1923	java/lang/StringBuilder
-    //   263: dup
-    //   264: invokespecial 1925	java/lang/StringBuilder:<init>	()V
-    //   267: aload 8
-    //   269: invokevirtual 2334	android/content/Context:getPackageName	()Ljava/lang/String;
-    //   272: invokevirtual 1931	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   275: ldc_w 2336
-    //   278: invokevirtual 1931	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   281: invokevirtual 1943	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   284: astore 7
-    //   286: goto -236 -> 50
-    //   289: aload_1
-    //   290: astore_0
-    //   291: aload_1
-    //   292: invokestatic 2415	bama:a	(Ljava/io/InputStream;)I
-    //   295: istore_2
-    //   296: aload_1
-    //   297: astore_0
-    //   298: aload_1
-    //   299: invokestatic 2415	bama:a	(Ljava/io/InputStream;)I
-    //   302: istore_3
-    //   303: aload_1
-    //   304: astore_0
-    //   305: aload_1
-    //   306: invokestatic 2415	bama:a	(Ljava/io/InputStream;)I
-    //   309: istore 4
-    //   311: aload_1
-    //   312: astore_0
-    //   313: getstatic 1909	bamd:jdField_a_of_type_JavaUtilMap	Ljava/util/Map;
-    //   316: new 1923	java/lang/StringBuilder
-    //   319: dup
-    //   320: invokespecial 1925	java/lang/StringBuilder:<init>	()V
-    //   323: iload_2
-    //   324: invokevirtual 1939	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   327: ldc_w 2181
-    //   330: invokevirtual 1931	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   333: iload_3
-    //   334: invokevirtual 1939	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   337: invokevirtual 1943	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   340: iload 4
-    //   342: sipush 1000
-    //   345: iadd
-    //   346: invokestatic 2254	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   349: invokeinterface 2434 3 0
-    //   354: pop
-    //   355: goto -247 -> 108
-    //   358: astore 7
-    //   360: aload_0
-    //   361: astore_1
-    //   362: aload 7
-    //   364: astore_0
-    //   365: aload_1
-    //   366: ifnull +7 -> 373
-    //   369: aload_1
-    //   370: invokevirtual 2421	java/io/BufferedInputStream:close	()V
-    //   373: aload_0
-    //   374: athrow
-    //   375: aload_1
-    //   376: ifnull -196 -> 180
-    //   379: aload_1
-    //   380: invokevirtual 2421	java/io/BufferedInputStream:close	()V
-    //   383: goto -203 -> 180
-    //   386: astore_0
-    //   387: aload_0
-    //   388: invokevirtual 2437	java/io/IOException:printStackTrace	()V
-    //   391: goto -211 -> 180
-    //   394: astore_0
-    //   395: aload_0
-    //   396: invokevirtual 2437	java/io/IOException:printStackTrace	()V
-    //   399: goto -219 -> 180
-    //   402: astore_1
-    //   403: aload_1
-    //   404: invokevirtual 2437	java/io/IOException:printStackTrace	()V
-    //   407: goto -34 -> 373
-    //   410: astore_0
-    //   411: aconst_null
-    //   412: astore_1
-    //   413: goto -48 -> 365
-    //   416: astore 7
-    //   418: aconst_null
-    //   419: astore_1
-    //   420: goto -262 -> 158
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	423	0	paramFile1	File
-    //   0	423	1	paramFile2	File
-    //   114	210	2	i	int
-    //   138	196	3	j	int
-    //   309	37	4	k	int
-    //   28	182	5	l	long
-    //   48	5	7	str1	String
-    //   156	12	7	localIOException1	java.io.IOException
-    //   284	1	7	str2	String
-    //   358	5	7	localObject	Object
-    //   416	1	7	localIOException2	java.io.IOException
-    //   33	235	8	localBaseApplication	BaseApplication
-    // Exception table:
-    //   from	to	target	type
-    //   110	115	156	java/io/IOException
-    //   127	132	156	java/io/IOException
-    //   134	139	156	java/io/IOException
-    //   141	153	156	java/io/IOException
-    //   291	296	156	java/io/IOException
-    //   298	303	156	java/io/IOException
-    //   305	311	156	java/io/IOException
-    //   313	355	156	java/io/IOException
-    //   110	115	358	finally
-    //   127	132	358	finally
-    //   134	139	358	finally
-    //   141	153	358	finally
-    //   160	172	358	finally
-    //   291	296	358	finally
-    //   298	303	358	finally
-    //   305	311	358	finally
-    //   313	355	358	finally
-    //   379	383	386	java/io/IOException
-    //   176	180	394	java/io/IOException
-    //   369	373	402	java/io/IOException
-    //   92	108	410	finally
-    //   92	108	416	java/io/IOException
+    File localFile1 = new File(jdField_a_of_type_JavaIoFile, "ptv_template_new.cfg");
+    File localFile2 = new File(jdField_a_of_type_JavaIoFile, "temp_ptv_template_zip");
+    return (localFile1.exists()) && (localFile2.exists());
   }
   
-  public static boolean a(int paramInt)
+  private boolean a(baml parambaml)
   {
-    switch (paramInt)
+    bamh localbamh = (bamh)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(parambaml.jdField_a_of_type_Int));
+    if (localbamh != null)
     {
-    default: 
-      return false;
+      if (localbamh.jdField_a_of_type_JavaUtilArrayList.size() == 0) {
+        return true;
+      }
+      parambaml = parambaml.jdField_a_of_type_JavaUtilArrayList.iterator();
+      while (parambaml.hasNext())
+      {
+        bamk localbamk = (bamk)parambaml.next();
+        if (!localbamh.jdField_a_of_type_JavaUtilArrayList.contains(localbamk.jdField_a_of_type_JavaLangString)) {}
+        for (int i = 1; i == 0; i = 0) {
+          return false;
+        }
+      }
     }
     return true;
   }
   
-  public static String b(String paramString1, String paramString2, boolean paramBoolean)
+  private boolean a(baml parambaml, bamk parambamk)
   {
-    if (!TextUtils.isEmpty(paramString1))
+    if ((parambaml == null) || (parambamk == null)) {
+      return false;
+    }
+    bamh localbamh = (bamh)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(parambaml.jdField_a_of_type_Int));
+    if (localbamh != null)
     {
-      j = paramString1.length();
-      if (paramString2 != null) {
-        break label30;
-      }
-    }
-    label30:
-    for (int i = 0; j < i + 15; i = paramString2.length()) {
-      return paramString1;
-    }
-    Object localObject1 = new StringBuilder("\\[emoji:0x[a-fA-F0-9]{5}");
-    Object localObject2 = new StringBuilder("\\[sysEmo:[0-9]{3}-[0-9]{3}");
-    int j = 0;
-    if (!TextUtils.isEmpty(paramString2))
-    {
-      ((StringBuilder)localObject1).append(paramString2);
-      ((StringBuilder)localObject2).append(paramString2);
-      j = paramString2.length();
-    }
-    ((StringBuilder)localObject1).append("\\]");
-    ((StringBuilder)localObject2).append("\\]");
-    Object localObject3 = Pattern.compile(((StringBuilder)localObject1).toString()).matcher(paramString1);
-    localObject1 = new StringBuffer();
-    paramString2 = null;
-    if (QLog.isColorLevel()) {
-      paramString2 = new StringBuilder(1024).append("afterXml src:").append(paramString1).append(" start");
-    }
-    i = 0;
-    int k;
-    int m;
-    while (((Matcher)localObject3).find())
-    {
-      k = 1;
-      m = Integer.valueOf(paramString1.substring(((Matcher)localObject3).start() + 9, ((Matcher)localObject3).end() - 1 - j), 16).intValue();
-      if (m > 65535) {
-        ((Matcher)localObject3).appendReplacement((StringBuffer)localObject1, new String(new int[] { m }, 0, 1));
-      }
-      i = k;
-      if (QLog.isColorLevel())
+      localbamh.jdField_a_of_type_JavaUtilArrayList.remove(parambamk.jdField_a_of_type_JavaLangString);
+      if (a(parambaml))
       {
-        paramString2.append("\n").append("unicode").append(":").append(m);
-        i = k;
-      }
-    }
-    ((Matcher)localObject3).appendTail((StringBuffer)localObject1);
-    if (paramBoolean)
-    {
-      localObject3 = ((StringBuffer)localObject1).toString();
-      localObject2 = Pattern.compile(((StringBuilder)localObject2).toString()).matcher((CharSequence)localObject3);
-      localObject1 = new StringBuffer();
-      if (((Matcher)localObject2).find())
-      {
-        k = 1;
-        String[] arrayOfString = ((String)localObject3).substring(((Matcher)localObject2).start() + 8, ((Matcher)localObject2).end() - 1 - j).split("-");
-        m = Integer.valueOf(arrayOfString[0], 10).intValue();
-        int n = Integer.valueOf(arrayOfString[1], 10).intValue();
-        if (m != 92) {
-          ((Matcher)localObject2).appendReplacement((StringBuffer)localObject1, new String(new char[] { '\024', (char)m }));
-        }
-        for (;;)
+        parambaml.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.usable = a(parambaml.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo);
+        parambamk = this.jdField_a_of_type_JavaUtilList.iterator();
+        while (parambamk.hasNext())
         {
-          ((StringBuffer)localObject1).append((char)n);
-          i = k;
-          if (!QLog.isColorLevel()) {
-            break;
+          Object localObject = (bamz)parambamk.next();
+          if (((bamz)localObject).jdField_a_of_type_JavaUtilList != null)
+          {
+            localObject = ((bamz)localObject).jdField_a_of_type_JavaUtilList.iterator();
+            while (((Iterator)localObject).hasNext())
+            {
+              PtvTemplateManager.PtvTemplateInfo localPtvTemplateInfo = (PtvTemplateManager.PtvTemplateInfo)((Iterator)localObject).next();
+              if (localPtvTemplateInfo.id.equals(parambaml.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.id)) {
+                localPtvTemplateInfo.usable = a(localPtvTemplateInfo);
+              } else if (parambaml.jdField_a_of_type_Int == localPtvTemplateInfo.kind) {
+                localPtvTemplateInfo.usable = a(localPtvTemplateInfo);
+              }
+            }
           }
-          paramString2.append("\n").append("sysEmo").append(":").append(m).append("|").append(n);
-          i = k;
-          break;
-          ((Matcher)localObject2).appendReplacement((StringBuffer)localObject1, new String(new char[] { '\024' }));
-          ((StringBuffer)localObject1).append((char)m);
         }
+        if (parambaml.jdField_a_of_type_Bcdv != null) {
+          parambaml.jdField_a_of_type_Bcdv.a(parambaml.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo, parambaml.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.usable);
+        }
+        if (localbamh.jdField_a_of_type_JavaUtilArrayList.size() == 0) {
+          localbamh.jdField_a_of_type_JavaUtilHashMap.clear();
+        }
+        return true;
       }
-      ((Matcher)localObject2).appendTail((StringBuffer)localObject1);
     }
-    for (;;)
+    return false;
+  }
+  
+  public static boolean a(String paramString1, String paramString2, boolean paramBoolean)
+  {
+    boolean bool2 = true;
+    boolean bool1;
+    if (TextUtils.isEmpty(paramString1))
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("EmotcationConstants", 2, paramString2.toString());
+      bool1 = false;
+      return bool1;
+    }
+    File localFile = new File(jdField_b_of_type_JavaIoFile, paramString2);
+    if (localFile.exists()) {}
+    for (int i = 1;; i = 0)
+    {
+      if (i == 0)
+      {
+        localFile = new File(jdField_a_of_type_JavaIoFile, paramString1);
+        if (!localFile.exists()) {}
       }
-      if (i == 0) {
-        break;
+      for (;;)
+      {
+        try
+        {
+          Object localObject = bgmg.c(localFile.getPath());
+          int j = i;
+          if (!TextUtils.isEmpty((CharSequence)localObject))
+          {
+            bool1 = ((String)localObject).equalsIgnoreCase(paramString2);
+            j = i;
+            if (bool1) {
+              j = 1;
+            }
+          }
+          i = j;
+          if (i != 0)
+          {
+            localObject = a(paramString1, paramString2) + File.separator;
+            paramString1 = new File((String)localObject, "params.json");
+            localObject = new File((String)localObject, "params.dat");
+            long l = paramString1.length();
+            if ((!paramString1.exists()) || (l >= 1L))
+            {
+              bool1 = bool2;
+              if (paramString1.exists()) {
+                break;
+              }
+              if (paramBoolean)
+              {
+                bool1 = bool2;
+                if (((File)localObject).exists()) {
+                  break;
+                }
+              }
+            }
+            try
+            {
+              nmk.a(localFile, a(paramString2));
+              return true;
+            }
+            catch (Exception paramString1)
+            {
+              if (QLog.isColorLevel()) {
+                paramString1.printStackTrace();
+              }
+              return false;
+            }
+            continue;
+          }
+        }
+        catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
+        {
+          if (QLog.isColorLevel()) {
+            localUnsatisfiedLinkError.printStackTrace();
+          }
+        }
+        return false;
       }
-      return ((StringBuffer)localObject1).toString();
     }
   }
   
-  public static void b()
+  private baml b(PtvTemplateManager.PtvTemplateInfo paramPtvTemplateInfo, bcdv parambcdv)
+  {
+    baml localbaml = new baml();
+    localbaml.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo = paramPtvTemplateInfo;
+    localbaml.jdField_a_of_type_Bcdv = parambcdv;
+    parambcdv = new bamk();
+    parambcdv.jdField_a_of_type_JavaLangString = paramPtvTemplateInfo.bigHeadName;
+    parambcdv.jdField_b_of_type_JavaLangString = paramPtvTemplateInfo.bigHeadMd5;
+    parambcdv.jdField_c_of_type_JavaLangString = paramPtvTemplateInfo.bigHeadUrl;
+    parambcdv.jdField_a_of_type_Boolean = paramPtvTemplateInfo.bigHeadModelUsable;
+    parambcdv.jdField_b_of_type_Boolean = false;
+    localbaml.jdField_a_of_type_JavaUtilArrayList.add(parambcdv);
+    parambcdv = new bamk();
+    parambcdv.jdField_a_of_type_JavaLangString = paramPtvTemplateInfo.name;
+    parambcdv.jdField_b_of_type_JavaLangString = paramPtvTemplateInfo.md5;
+    parambcdv.jdField_c_of_type_JavaLangString = paramPtvTemplateInfo.resurl;
+    parambcdv.jdField_a_of_type_Boolean = paramPtvTemplateInfo.usable;
+    parambcdv.jdField_b_of_type_Boolean = true;
+    localbaml.jdField_a_of_type_JavaUtilArrayList.add(parambcdv);
+    localbaml.jdField_a_of_type_Int = 20;
+    return localbaml;
+  }
+  
+  private void b(baml parambaml)
+  {
+    bamh localbamh = (bamh)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(parambaml.jdField_a_of_type_Int));
+    if (localbamh != null) {
+      localbamh.b.remove(parambaml);
+    }
+  }
+  
+  private boolean b()
+  {
+    return (this.jdField_a_of_type_Bamz != null) && (this.jdField_a_of_type_Bamz.jdField_a_of_type_JavaUtilList.size() >= 30);
+  }
+  
+  private ArrayList<bamz> c()
+  {
+    ArrayList localArrayList = new ArrayList();
+    localArrayList.addAll(this.jdField_a_of_type_JavaUtilList);
+    boolean bool1 = bchd.c();
+    boolean bool2 = bckw.c();
+    boolean bool3 = QmcfManager.getInstance().hasQmcfEntrance(3);
+    if ((!bool1) || (!bool2) || (!bool3))
+    {
+      Iterator localIterator1 = localArrayList.iterator();
+      while (localIterator1.hasNext())
+      {
+        bamz localbamz = (bamz)localIterator1.next();
+        List localList = localbamz.jdField_a_of_type_JavaUtilList;
+        Iterator localIterator2 = localList.iterator();
+        while (localIterator2.hasNext())
+        {
+          PtvTemplateManager.PtvTemplateInfo localPtvTemplateInfo = (PtvTemplateManager.PtvTemplateInfo)localIterator2.next();
+          if (((!bool1) && (localPtvTemplateInfo.kind == 3)) || ((!bool2) && (localPtvTemplateInfo.kind == 4)) || ((!bool3) && (localPtvTemplateInfo.kind == 20)))
+          {
+            if (QLog.isColorLevel()) {
+              QLog.d("CapturePtvTemplateManager", 2, "should hide dg item! isQmcfEnableEntry=" + bool1 + " isFaceDanceEnableEntry=" + bool2 + " itemID=" + localPtvTemplateInfo.id);
+            }
+            localIterator2.remove();
+          }
+        }
+        if (localList.size() == 0)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d("CapturePtvTemplateManager", 2, "should hide dg tab! isQmcfEnableEntry=" + bool1 + " isFaceDanceEnableEntry=" + bool2 + " categoryID=" + localbamz.jdField_a_of_type_Int);
+          }
+          localIterator1.remove();
+        }
+      }
+      bano.a().a(bool1, bool2);
+    }
+    return localArrayList;
+  }
+  
+  private void c()
+  {
+    Object localObject1 = new ArrayList();
+    ((List)localObject1).addAll(this.jdField_a_of_type_JavaUtilList);
+    localObject1 = ((List)localObject1).iterator();
+    int i = 0;
+    int j = 0;
+    while (((Iterator)localObject1).hasNext())
+    {
+      Object localObject2 = (bamz)((Iterator)localObject1).next();
+      int k = i;
+      int m = j;
+      if (((bamz)localObject2).jdField_a_of_type_JavaUtilList != null)
+      {
+        Object localObject3 = new ArrayList();
+        ((List)localObject3).addAll(((bamz)localObject2).jdField_a_of_type_JavaUtilList);
+        localObject2 = ((List)localObject3).iterator();
+        for (;;)
+        {
+          k = i;
+          m = j;
+          if (!((Iterator)localObject2).hasNext()) {
+            break;
+          }
+          localObject3 = (PtvTemplateManager.PtvTemplateInfo)((Iterator)localObject2).next();
+          if (localObject3 != null)
+          {
+            k = i + 1;
+            ((PtvTemplateManager.PtvTemplateInfo)localObject3).usable = a((PtvTemplateManager.PtvTemplateInfo)localObject3);
+            i = k;
+            if (((PtvTemplateManager.PtvTemplateInfo)localObject3).usable)
+            {
+              j += 1;
+              i = k;
+            }
+          }
+        }
+      }
+      j = m;
+      i = k;
+    }
+    bgsg.a(j, i);
+  }
+  
+  private static boolean c(String paramString1, String paramString2, boolean paramBoolean)
+  {
+    if (TextUtils.isEmpty(paramString1)) {}
+    do
+    {
+      for (;;)
+      {
+        return false;
+        Object localObject = new File(jdField_a_of_type_JavaIoFile, paramString1);
+        if (((File)localObject).exists()) {
+          try
+          {
+            localObject = bgmg.c(((File)localObject).getPath());
+            if ((!TextUtils.isEmpty((CharSequence)localObject)) && (((String)localObject).equalsIgnoreCase(paramString2)))
+            {
+              localObject = jdField_a_of_type_JavaLangString + paramString1 + File.separator;
+              paramString2 = new File((String)localObject, "params.json");
+              localObject = new File((String)localObject, "params.dat");
+              long l = paramString2.length();
+              if (((!paramString2.exists()) || (l >= 1L)) && ((paramString2.exists()) || ((paramBoolean) && (((File)localObject).exists())))) {
+                break label194;
+              }
+              if (!QLog.isColorLevel()) {}
+            }
+          }
+          catch (UnsatisfiedLinkError paramString1)
+          {
+            try
+            {
+              nmk.a(new File(jdField_a_of_type_JavaIoFile, paramString1), jdField_a_of_type_JavaLangString);
+              return true;
+            }
+            catch (Exception paramString1) {}
+            paramString1 = paramString1;
+          }
+        }
+      }
+      paramString1.printStackTrace();
+      return false;
+    } while (!QLog.isColorLevel());
+    paramString1.printStackTrace();
+    return false;
+    label194:
+    return true;
+  }
+  
+  public int a()
+  {
+    synchronized (jdField_a_of_type_JavaLangObject)
+    {
+      if ((this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataCaptureRedDotConfig != null) && (!this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataCaptureRedDotConfig.hasChoose))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("QIMRedDotConfig_PTV", 2, "getDefaultCategoryId=" + this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataCaptureRedDotConfig.defaultCategoryId);
+        }
+        int i = this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataCaptureRedDotConfig.defaultCategoryId;
+        return i;
+      }
+      return -1;
+    }
+  }
+  
+  public bamz a(bamz parambamz)
+  {
+    Object localObject1 = BaseApplicationImpl.getApplication().getSharedPreferences("recent_template_setting", 0);
+    Object localObject2 = BaseApplicationImpl.getApplication().getRuntime().getAccount();
+    localObject1 = ((SharedPreferences)localObject1).getString("recent_template_list" + (String)localObject2, null);
+    if (QLog.isColorLevel()) {
+      QLog.d("CapturePtvTemplateManager", 2, "getRecentTemplate list=" + (String)localObject1);
+    }
+    if (localObject1 == null) {}
+    for (;;)
+    {
+      return parambamz;
+      localObject1 = ((String)localObject1).split("\\$");
+      int i = 0;
+      while (i < localObject1.length)
+      {
+        localObject2 = localObject1[i].split("\\|");
+        if ((localObject2 != null) && (localObject2.length == 2))
+        {
+          int j = Integer.valueOf(localObject2[1]).intValue();
+          localObject2 = a(localObject2[0], j);
+          if (localObject2 != null) {
+            parambamz.jdField_a_of_type_JavaUtilList.add(localObject2);
+          }
+        }
+        i += 1;
+      }
+    }
+  }
+  
+  public PtvTemplateManager.PtvTemplateInfo a()
+  {
+    return this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo;
+  }
+  
+  public PtvTemplateManager.PtvTemplateInfo a(String paramString, int paramInt)
+  {
+    PtvTemplateManager.PtvTemplateInfo localPtvTemplateInfo;
+    do
+    {
+      Iterator localIterator = a().iterator();
+      Object localObject;
+      while (!((Iterator)localObject).hasNext())
+      {
+        do
+        {
+          if (!localIterator.hasNext()) {
+            break;
+          }
+          localObject = (bamz)localIterator.next();
+        } while ((((bamz)localObject).jdField_a_of_type_Int != paramInt) || (((bamz)localObject).jdField_a_of_type_JavaUtilList == null));
+        localObject = ((bamz)localObject).jdField_a_of_type_JavaUtilList.iterator();
+      }
+      localPtvTemplateInfo = (PtvTemplateManager.PtvTemplateInfo)((Iterator)localObject).next();
+    } while (!localPtvTemplateInfo.id.equals(paramString));
+    if (QLog.isColorLevel()) {
+      QLog.d("CapturePtvTemplateManager", 2, "QIMPtvTemplateManager existTemplateInfo id=" + paramString + " tagId=" + paramInt);
+    }
+    return localPtvTemplateInfo;
+    return null;
+  }
+  
+  public ArrayList<bamz> a()
+  {
+    ArrayList localArrayList = c();
+    if (!bckg.a(jdField_a_of_type_Int))
+    {
+      List localList = a();
+      if ((localList != null) && (!localList.isEmpty())) {
+        localArrayList.removeAll(localList);
+      }
+    }
+    return localArrayList;
+  }
+  
+  public List<bamz> a()
+  {
+    ArrayList localArrayList = new ArrayList();
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext())
+    {
+      bamz localbamz = (bamz)localIterator.next();
+      if (localbamz.jdField_a_of_type_Boolean) {
+        localArrayList.add(localbamz);
+      }
+    }
+    return localArrayList;
+  }
+  
+  public void a()
+  {
+    ThreadManager.getSubThreadHandler().postDelayed(new CapturePtvTemplateManager.4(this), jdField_a_of_type_JavaLangLong.longValue());
+  }
+  
+  public void a(int paramInt1, int paramInt2, String paramString)
+  {
+    for (;;)
+    {
+      StringBuilder localStringBuilder;
+      synchronized (jdField_a_of_type_JavaLangObject)
+      {
+        if (this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataCaptureRedDotConfig == null) {
+          return;
+        }
+        if (this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataCaptureRedDotConfig.updateRedDotInfo(paramInt1, paramInt2, paramString))
+        {
+          if (QLog.isColorLevel())
+          {
+            localStringBuilder = new StringBuilder();
+            localStringBuilder.append("updateRedDotInfo==> type=");
+            if (paramInt1 == 2)
+            {
+              localStringBuilder.append(",categoryId=").append(paramInt2);
+              QLog.d("QIMRedDotConfig_PTV", 2, localStringBuilder.toString());
+            }
+          }
+          else
+          {
+            this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(null);
+            this.jdField_a_of_type_AndroidOsHandler.post(new CapturePtvTemplateManager.7(this));
+          }
+        }
+        else {
+          return;
+        }
+      }
+      if (paramInt1 == 3) {
+        localStringBuilder.append(",id=").append(paramString);
+      } else if (paramInt1 == 4) {
+        localStringBuilder.append(",defaultId=").append(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataCaptureRedDotConfig.defaultUseId);
+      } else if (paramInt1 == 5) {
+        localStringBuilder.append(",defaultCategoryId=").append(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataCaptureRedDotConfig.defaultCategoryId);
+      }
+    }
+  }
+  
+  public void a(int paramInt, Object paramObject)
+  {
+    if (this.jdField_a_of_type_Bcgy != null)
+    {
+      this.jdField_a_of_type_Bcgy.a(paramInt, new Object[] { paramObject });
+      if (QLog.isColorLevel()) {
+        QLog.d("CapturePtvTemplateManager", 2, "notifyEventId eventId" + paramInt);
+      }
+    }
+  }
+  
+  public void a(bamj parambamj)
+  {
+    this.jdField_a_of_type_Bamj = parambamj;
+  }
+  
+  public void a(bcha parambcha, int paramInt)
   {
     try
     {
-      Object localObject = (apks)BaseApplicationImpl.getApplication().getRuntime().getManager(77);
-      if (localObject != null)
+      if (this.jdField_a_of_type_Bcgy == null) {
+        this.jdField_a_of_type_Bcgy = new bcgy();
+      }
+      this.jdField_a_of_type_Bcgy.a(parambcha, new int[] { paramInt });
+      return;
+    }
+    finally {}
+  }
+  
+  public void a(AppInterface paramAppInterface, baml parambaml)
+  {
+    if ((parambaml.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo == null) || (paramAppInterface == null)) {}
+    label98:
+    label99:
+    for (;;)
+    {
+      return;
+      if ((parambaml.jdField_a_of_type_JavaUtilArrayList != null) && (parambaml.jdField_a_of_type_JavaUtilArrayList.size() > 0))
       {
-        localObject = (apkz)((apks)localObject).a("qq.android.appleemoji");
-        if (localObject != null) {
-          ((apkz)localObject).a(true);
+        a(parambaml);
+        Iterator localIterator = parambaml.jdField_a_of_type_JavaUtilArrayList.iterator();
+        int i = 0;
+        if (localIterator.hasNext())
+        {
+          bamk localbamk = (bamk)localIterator.next();
+          if (localbamk.jdField_a_of_type_Boolean) {
+            break label98;
+          }
+          a(paramAppInterface, parambaml, localbamk);
+          i = 1;
+        }
+        for (;;)
+        {
+          break;
+          if (i != 0) {
+            break label99;
+          }
+          b(parambaml);
+          return;
         }
       }
+    }
+  }
+  
+  public void a(AppInterface paramAppInterface, baml parambaml, bamk parambamk)
+  {
+    Object localObject = (bamh)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(parambaml.jdField_a_of_type_Int));
+    if (localObject == null) {
       if (QLog.isColorLevel()) {
-        QLog.d("AppleEmojiManager", 2, "clear sharePreference info,zipfile path is null restartDownload");
+        QLog.e("CapturePtvTemplateManager", 2, "[BG]downloadSessionTemplateItem url: businessParam = null kind=" + parambaml.jdField_a_of_type_Int);
+      }
+    }
+    for (;;)
+    {
+      return;
+      if (TextUtils.isEmpty(parambamk.jdField_a_of_type_JavaLangString)) {
+        continue;
+      }
+      if (((bamh)localObject).jdField_a_of_type_JavaUtilHashMap.get(parambamk.jdField_a_of_type_JavaLangString) != null)
+      {
+        if (!QLog.isColorLevel()) {
+          break;
+        }
+        QLog.i("CapturePtvTemplateManager", 2, "[BG]downloadSessionTemplateItem[no need download] url: " + parambamk.jdField_c_of_type_JavaLangString + " item.mName=" + parambamk.jdField_a_of_type_JavaLangString);
+        return;
+      }
+      ((bamh)localObject).jdField_a_of_type_JavaUtilHashMap.put(parambamk.jdField_a_of_type_JavaLangString, parambamk);
+      ((bamh)localObject).jdField_a_of_type_JavaUtilArrayList.add(parambamk.jdField_a_of_type_JavaLangString);
+      localObject = new bdvs();
+      ((bdvs)localObject).jdField_a_of_type_Bdvw = new bamm(this, parambaml, parambamk);
+      ((bdvs)localObject).jdField_a_of_type_JavaLangString = parambamk.jdField_c_of_type_JavaLangString;
+      ((bdvs)localObject).jdField_a_of_type_Int = 0;
+      ((bdvs)localObject).jdField_c_of_type_JavaLangString = new File(jdField_a_of_type_JavaIoFile, parambamk.jdField_a_of_type_JavaLangString).getPath();
+      ((bdvs)localObject).a(parambamk);
+      ((bdvs)localObject).jdField_b_of_type_Int = bgnt.a(bdwu.a().a());
+      try
+      {
+        paramAppInterface.getNetEngine(0).a((bdws)localObject);
+        if (!QLog.isColorLevel()) {
+          continue;
+        }
+        QLog.i("CapturePtvTemplateManager", 2, "downloadSessionTemplateItem url: " + parambamk.jdField_c_of_type_JavaLangString);
+        return;
+      }
+      catch (Exception paramAppInterface)
+      {
+        for (;;)
+        {
+          if (QLog.isColorLevel()) {
+            paramAppInterface.printStackTrace();
+          }
+        }
+      }
+    }
+  }
+  
+  public void a(AppInterface paramAppInterface, PtvTemplateManager.PtvTemplateInfo paramPtvTemplateInfo, bcdv parambcdv)
+  {
+    if (paramPtvTemplateInfo == null) {
+      return;
+    }
+    if ((paramPtvTemplateInfo.kind == 3) || (paramPtvTemplateInfo.kind == 4))
+    {
+      a(paramAppInterface, a(paramPtvTemplateInfo, parambcdv));
+      return;
+    }
+    if (paramPtvTemplateInfo.kind == 20)
+    {
+      a(paramAppInterface, b(paramPtvTemplateInfo, parambcdv));
+      return;
+    }
+    b(paramAppInterface, paramPtvTemplateInfo, parambcdv);
+  }
+  
+  public void a(QQAppInterface paramQQAppInterface, String paramString, int paramInt)
+  {
+    a(paramQQAppInterface, paramString);
+  }
+  
+  public void a(PtvTemplateManager.PtvTemplateInfo paramPtvTemplateInfo)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo = paramPtvTemplateInfo;
+  }
+  
+  public void a(PtvTemplateManager.PtvTemplateInfo paramPtvTemplateInfo, int paramInt)
+  {
+    if (this.jdField_a_of_type_Bamz == null)
+    {
+      this.jdField_a_of_type_Bamz = new bamz(anni.a(2131700170));
+      this.jdField_a_of_type_Bamz.jdField_a_of_type_JavaUtilList = new ArrayList(30);
+      a(this.jdField_a_of_type_Bamz);
+    }
+    for (;;)
+    {
+      return;
+      int i = 0;
+      int j = -1;
+      while (i < this.jdField_a_of_type_Bamz.jdField_a_of_type_JavaUtilList.size())
+      {
+        if (((PtvTemplateManager.PtvTemplateInfo)this.jdField_a_of_type_Bamz.jdField_a_of_type_JavaUtilList.get(i)).id.equals(paramPtvTemplateInfo.id)) {
+          j = i;
+        }
+        i += 1;
+      }
+      if (j == -1) {
+        if (!b())
+        {
+          this.jdField_a_of_type_Bamz.jdField_a_of_type_JavaUtilList.add(0, paramPtvTemplateInfo);
+          a(paramInt, this.jdField_a_of_type_Bamz);
+          if (QLog.isColorLevel()) {
+            QLog.d("CapturePtvTemplateManager", 2, "setCurrentTemplateInfoToRecent not isRecentTemplateFull ");
+          }
+        }
+      }
+      while (QLog.isColorLevel())
+      {
+        QLog.d("CapturePtvTemplateManager", 2, "setCurrentTemplateInfoToRecent index=" + j);
+        return;
+        this.jdField_a_of_type_Bamz.jdField_a_of_type_JavaUtilList.remove(29);
+        this.jdField_a_of_type_Bamz.jdField_a_of_type_JavaUtilList.add(0, paramPtvTemplateInfo);
+        a(paramInt, this.jdField_a_of_type_Bamz);
+        continue;
+        if (j != 0)
+        {
+          this.jdField_a_of_type_Bamz.jdField_a_of_type_JavaUtilList.remove(j);
+          this.jdField_a_of_type_Bamz.jdField_a_of_type_JavaUtilList.add(0, paramPtvTemplateInfo);
+          a(paramInt, this.jdField_a_of_type_Bamz);
+        }
+      }
+    }
+  }
+  
+  public void a(List<bamz> paramList)
+  {
+    if ((paramList == null) || (paramList.isEmpty())) {}
+    label21:
+    List localList;
+    do
+    {
+      return;
+      while (!paramList.hasNext()) {
+        paramList = paramList.iterator();
+      }
+      localList = ((bamz)paramList.next()).jdField_a_of_type_JavaUtilList;
+    } while (localList == null);
+    int i = 0;
+    label51:
+    PtvTemplateManager.PtvTemplateInfo localPtvTemplateInfo;
+    if (i < localList.size())
+    {
+      localPtvTemplateInfo = (PtvTemplateManager.PtvTemplateInfo)localList.get(i);
+      if ((localPtvTemplateInfo != null) && (localPtvTemplateInfo.predownload) && (!TextUtils.isEmpty(localPtvTemplateInfo.resurl))) {
+        break label106;
+      }
+    }
+    for (;;)
+    {
+      i += 1;
+      break label51;
+      break label21;
+      label106:
+      if (a(localPtvTemplateInfo))
+      {
+        localPtvTemplateInfo.usable = true;
+      }
+      else
+      {
+        localPtvTemplateInfo.usable = false;
+        int j = (int)(bgmg.a() / 1024.0F / 1024.0F);
+        int k = (int)(localPtvTemplateInfo.sizeFree * 1024.0D);
+        if (QLog.isColorLevel()) {
+          QLog.d("CapturePtvTemplateManager", 2, "preDownloadTemplates getAvailableInnernalMemorySize: " + j + " mSizeFree: " + k);
+        }
+        if (j < k)
+        {
+          if (!QLog.isColorLevel()) {
+            break;
+          }
+          QLog.i("CapturePtvTemplateManager", 2, "preDownloadTemplates return getAvailableInnernalMemorySize: " + j + " mSizeFree: " + k);
+          return;
+        }
+        bdvs localbdvs = new bdvs();
+        localbdvs.jdField_a_of_type_Bdvw = new bamf(this, localPtvTemplateInfo);
+        localbdvs.jdField_a_of_type_JavaLangString = localPtvTemplateInfo.resurl;
+        localbdvs.jdField_a_of_type_Int = 0;
+        localbdvs.jdField_c_of_type_JavaLangString = new File(jdField_b_of_type_JavaIoFile, localPtvTemplateInfo.md5).getPath();
+        localbdvs.jdField_b_of_type_Int = bgnt.a(bdwu.a().a());
+        try
+        {
+          AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
+          if ((localAppRuntime != null) && ((localAppRuntime instanceof ToolRuntimePeak)))
+          {
+            localAppRuntime = ((ToolRuntimePeak)localAppRuntime).onGetSubRuntime("peak");
+            if (localAppRuntime != null)
+            {
+              ((PeakAppInterface)localAppRuntime).getNetEngine(0).a(localbdvs);
+              if (QLog.isColorLevel()) {
+                QLog.i("CapturePtvTemplateManager", 2, "startDownloadFilterConfigZip, url: " + localPtvTemplateInfo.resurl);
+              }
+            }
+          }
+        }
+        catch (Exception localException) {}
+      }
+    }
+  }
+  
+  public void a(List<bamz> paramList, boolean paramBoolean)
+  {
+    if ((paramList == null) || (paramList.isEmpty())) {}
+    for (;;)
+    {
+      return;
+      if (paramBoolean) {
+        c();
+      }
+      while (QLog.isColorLevel())
+      {
+        QLog.d("CapturePtvTemplateManager", 2, "updateFaceuTemplateConfigInfo size=" + this.jdField_a_of_type_JavaUtilList.size());
+        return;
+        ThreadManager.getSubThreadHandler().post(new CapturePtvTemplateManager.6(this));
+      }
+    }
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    ThreadManager.postImmediately(new CapturePtvTemplateManager.1(this, paramBoolean), null, false);
+  }
+  
+  public boolean a(int paramInt1, int paramInt2, String paramString)
+  {
+    for (;;)
+    {
+      StringBuilder localStringBuilder;
+      synchronized (jdField_a_of_type_JavaLangObject)
+      {
+        if (this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataCaptureRedDotConfig == null) {
+          return false;
+        }
+        boolean bool = this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataCaptureRedDotConfig.needShowRedDot(paramInt1, paramInt2, paramString);
+        if ((bool) && (QLog.isColorLevel()))
+        {
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append("ShowRedDot ==> type=");
+          localStringBuilder.append(paramInt1);
+          if (paramInt1 == 2)
+          {
+            localStringBuilder.append(",categoryId=").append(paramInt2);
+            QLog.d("QIMRedDotConfig_PTV", 2, localStringBuilder.toString());
+          }
+        }
+        else
+        {
+          return bool;
+        }
+      }
+      if (paramInt1 == 3) {
+        localStringBuilder.append(",id=").append(paramString);
+      } else if (paramInt1 == 4) {
+        localStringBuilder.append(",defaultId=").append(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataCaptureRedDotConfig.defaultUseId);
+      } else if (paramInt1 == 5) {
+        localStringBuilder.append(",defaultCategoryId=").append(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataCaptureRedDotConfig.defaultCategoryId);
+      }
+    }
+  }
+  
+  public boolean a(PtvTemplateManager.PtvTemplateInfo paramPtvTemplateInfo)
+  {
+    if (paramPtvTemplateInfo == null) {}
+    do
+    {
+      boolean bool;
+      do
+      {
+        do
+        {
+          return false;
+          if (paramPtvTemplateInfo.kind != 3) {
+            break;
+          }
+          paramPtvTemplateInfo.dgStageUsable = c(paramPtvTemplateInfo.dgStageName, paramPtvTemplateInfo.dgStageResmd5, false);
+          paramPtvTemplateInfo.dgModelUsable = c(paramPtvTemplateInfo.dgModelName, paramPtvTemplateInfo.dgModelResmd5, false);
+          bool = c(paramPtvTemplateInfo.name, paramPtvTemplateInfo.md5, false);
+          if (QLog.isColorLevel()) {
+            QLog.d("CapturePtvTemplateManager", 2, String.format("isDGTemplateUsage stage[%s], model[%s], total[%s], id[%s]", new Object[] { Boolean.valueOf(paramPtvTemplateInfo.dgStageUsable), Boolean.valueOf(paramPtvTemplateInfo.dgModelUsable), Boolean.valueOf(bool), paramPtvTemplateInfo.id }));
+          }
+        } while ((!paramPtvTemplateInfo.dgStageUsable) || (!paramPtvTemplateInfo.dgModelUsable));
+        return bool;
+        if (paramPtvTemplateInfo.kind != 20) {
+          break;
+        }
+        if (!paramPtvTemplateInfo.bigHeadModelUsable) {
+          paramPtvTemplateInfo.bigHeadModelUsable = c(paramPtvTemplateInfo.bigHeadName, paramPtvTemplateInfo.bigHeadMd5, false);
+        }
+        bool = c(paramPtvTemplateInfo.name, paramPtvTemplateInfo.md5, false);
+        if (QLog.isColorLevel()) {
+          QLog.d("CapturePtvTemplateManager", 2, String.format("isDGTemplateUsage stage[%s], model[%s], total[%s], id[%s]", new Object[] { Boolean.valueOf(paramPtvTemplateInfo.dgStageUsable), Boolean.valueOf(paramPtvTemplateInfo.dgModelUsable), Boolean.valueOf(bool), paramPtvTemplateInfo.id }));
+        }
+      } while (!paramPtvTemplateInfo.bigHeadModelUsable);
+      return bool;
+      if (paramPtvTemplateInfo.kind != 4) {
+        break;
+      }
+      paramPtvTemplateInfo.dgStageUsable = c(paramPtvTemplateInfo.dgStageName, paramPtvTemplateInfo.dgStageResmd5, false);
+    } while (!paramPtvTemplateInfo.dgStageUsable);
+    return c(paramPtvTemplateInfo.name, paramPtvTemplateInfo.md5, false);
+    return a(paramPtvTemplateInfo.name, paramPtvTemplateInfo.md5, true);
+  }
+  
+  public ArrayList<bamz> b()
+  {
+    ArrayList localArrayList = a();
+    if (this.jdField_a_of_type_Bamz == null)
+    {
+      this.jdField_a_of_type_Bamz = new bamz(anni.a(2131700169));
+      this.jdField_a_of_type_Bamz.jdField_a_of_type_JavaUtilList = new ArrayList(30);
+      a(this.jdField_a_of_type_Bamz);
+    }
+    localArrayList.add(0, this.jdField_a_of_type_Bamz);
+    if (QLog.isColorLevel()) {
+      QLog.d("CapturePtvTemplateManager", 2, "getRecentTemplateAndConfigTemplate al size = " + localArrayList.size());
+    }
+    return localArrayList;
+  }
+  
+  public void b()
+  {
+    CaptureRedDotConfig localCaptureRedDotConfig = CaptureRedDotConfig.getRedDotConfigFromFile(jdField_a_of_type_JavaIoFile.getAbsolutePath(), "_PTV");
+    if (localCaptureRedDotConfig != null) {
+      synchronized (jdField_a_of_type_JavaLangObject)
+      {
+        if (this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataCaptureRedDotConfig == null) {
+          this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataCaptureRedDotConfig = localCaptureRedDotConfig;
+        }
+        return;
+      }
+    }
+  }
+  
+  public void b(AppInterface paramAppInterface, PtvTemplateManager.PtvTemplateInfo paramPtvTemplateInfo, bcdv parambcdv)
+  {
+    if ((paramPtvTemplateInfo == null) || (paramAppInterface == null)) {}
+    for (;;)
+    {
+      return;
+      bdvs localbdvs = new bdvs();
+      localbdvs.jdField_a_of_type_Bdvw = new bamg(this, paramPtvTemplateInfo, parambcdv);
+      localbdvs.jdField_a_of_type_JavaLangString = paramPtvTemplateInfo.resurl;
+      localbdvs.jdField_a_of_type_Int = 0;
+      localbdvs.jdField_c_of_type_JavaLangString = new File(jdField_b_of_type_JavaIoFile, paramPtvTemplateInfo.md5).getPath();
+      localbdvs.jdField_b_of_type_Int = bgnt.a(bdwu.a().a());
+      try
+      {
+        paramAppInterface.getNetEngine(0).a(localbdvs);
+        if (!QLog.isColorLevel()) {
+          continue;
+        }
+        QLog.i("CapturePtvTemplateManager", 2, "startDownloadTemplate url: " + paramPtvTemplateInfo.resurl);
+        return;
+      }
+      catch (Exception paramAppInterface)
+      {
+        for (;;)
+        {
+          if (QLog.isColorLevel()) {
+            paramAppInterface.printStackTrace();
+          }
+        }
+      }
+    }
+  }
+  
+  @TargetApi(9)
+  public void b(boolean paramBoolean)
+  {
+    b();
+    File localFile = new File(jdField_a_of_type_JavaIoFile, "ptv_template_new.cfg");
+    if (!localFile.exists())
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("CapturePtvTemplateManager", 2, "initLocalTemplateConfigInfo config file not exist.");
+      }
+      a(false);
+      return;
+    }
+    a(localFile, paramBoolean);
+  }
+  
+  public void c(boolean paramBoolean)
+  {
+    if (paramBoolean)
+    {
+      if ((this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataCaptureRedDotConfig != null) && (this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataCaptureRedDotConfig.update))
+      {
+        this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataCaptureRedDotConfig.update = false;
+        CaptureRedDotConfig.saveRedDotConfig(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataCaptureRedDotConfig, jdField_a_of_type_JavaIoFile.getAbsolutePath(), "_PTV");
       }
       return;
     }
-    catch (Exception localException)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.d("AppleEmojiManager", 2, "reDownloadAppleEmoji e=" + localException);
-    }
+    CaptureRedDotConfig.saveRedDotConfig(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataCaptureRedDotConfig, jdField_a_of_type_JavaIoFile.getAbsolutePath(), "_PTV");
   }
 }
 

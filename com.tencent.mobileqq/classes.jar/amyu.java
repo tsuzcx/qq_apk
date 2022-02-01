@@ -1,23 +1,26 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.ar.ScanningSurfaceView;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.util.List;
 
-public class amyu
-  implements View.OnTouchListener
+class amyu
+  implements amjk
 {
-  public amyu(ScanningSurfaceView paramScanningSurfaceView) {}
+  amyu(amyt paramamyt, String paramString) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void a(boolean paramBoolean, String paramString1, List<amjh> paramList, String paramString2)
   {
-    switch (paramMotionEvent.getAction())
+    QLog.i("ApolloPluginRscLoader", 1, "downloadApolloRes onDownLoadFinish success:" + paramBoolean);
+    if (paramBoolean)
     {
+      if (this.jdField_a_of_type_Amyt.jdField_a_of_type_JavaIoFile.exists())
+      {
+        this.jdField_a_of_type_Amyt.jdField_a_of_type_Amyl.a(this.jdField_a_of_type_JavaLangString, 0, this.jdField_a_of_type_Amyt.jdField_a_of_type_Int + anni.a(2131699306));
+        return;
+      }
+      this.jdField_a_of_type_Amyt.jdField_a_of_type_Amyl.a(this.jdField_a_of_type_JavaLangString, 2, this.jdField_a_of_type_Amyt.jdField_a_of_type_Int + anni.a(2131699317));
+      return;
     }
-    for (;;)
-    {
-      return true;
-      ScanningSurfaceView.a(this.a, paramMotionEvent);
-    }
+    this.jdField_a_of_type_Amyt.jdField_a_of_type_Amyl.a(this.jdField_a_of_type_JavaLangString, 2, this.jdField_a_of_type_Amyt.jdField_a_of_type_Int + anni.a(2131699314));
   }
 }
 

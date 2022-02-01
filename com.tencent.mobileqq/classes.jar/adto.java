@@ -1,21 +1,26 @@
-import QQService.SvcDevLoginInfo;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.activity.RecentLoginDevActivity;
-import java.util.ArrayList;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.ChatHistory;
 
 public class adto
-  implements View.OnClickListener
+  extends Handler
 {
-  public adto(RecentLoginDevActivity paramRecentLoginDevActivity, RelativeLayout paramRelativeLayout, int paramInt) {}
+  public adto(ChatHistory paramChatHistory) {}
   
-  public void onClick(View paramView)
+  public void handleMessage(Message paramMessage)
   {
-    paramView = (SvcDevLoginInfo)this.jdField_a_of_type_AndroidWidgetRelativeLayout.getTag();
-    ArrayList localArrayList = new ArrayList();
-    localArrayList.add(paramView.stDeviceItemDes);
-    RecentLoginDevActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentLoginDevActivity, paramView.strDeviceName, localArrayList, RecentLoginDevActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentLoginDevActivity), this.jdField_a_of_type_Int);
+    if (paramMessage.what == 1)
+    {
+      if ((this.a.a != null) && (this.a.a.isShowing()) && (!this.a.isFinishing())) {
+        this.a.a.dismiss();
+      }
+      this.a.a = new biau(this.a, this.a.getTitleBarHeight());
+      this.a.a.setCancelable(false);
+      this.a.a.c(2131691339);
+      if (!this.a.isFinishing()) {
+        this.a.a.show();
+      }
+    }
   }
 }
 

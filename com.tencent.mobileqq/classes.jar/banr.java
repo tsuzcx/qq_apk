@@ -1,8 +1,6 @@
 public abstract interface banr
 {
-  public abstract void onCancel();
-  
-  public abstract void onConfirm();
+  public abstract void a(boolean paramBoolean);
 }
 
 

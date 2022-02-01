@@ -1,10 +1,9 @@
 package com.tencent.gdtad.views.form;
 
-import aase;
-import aatw;
-import aatx;
-import aauc;
-import alud;
+import acqy;
+import acsq;
+import acsr;
+import acsw;
 import android.content.Context;
 import android.content.res.Resources;
 import android.text.TextUtils;
@@ -14,7 +13,8 @@ import android.view.ViewGroup.LayoutParams;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
-import bety;
+import anni;
+import biau;
 import com.tencent.ad.tangram.canvas.views.form.AdFormData;
 import com.tencent.ad.tangram.canvas.views.form.AdFormError;
 import com.tencent.ad.tangram.canvas.views.form.AdFormViewListener;
@@ -33,8 +33,8 @@ public class GdtFormView
   implements AdFormCommitListener, AdFormErrorListener
 {
   private int jdField_a_of_type_Int = -1;
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new aatw(this);
-  private bety jdField_a_of_type_Bety;
+  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new acsq(this);
+  private biau jdField_a_of_type_Biau;
   private AdFormData jdField_a_of_type_ComTencentAdTangramCanvasViewsFormAdFormData;
   private GdtAd jdField_a_of_type_ComTencentGdtadAditemGdtAd;
   private GdtFormTableView jdField_a_of_type_ComTencentGdtadViewsFormFrameworkGdtFormTableView;
@@ -51,7 +51,7 @@ public class GdtFormView
   {
     if (this.jdField_a_of_type_ComTencentGdtadViewsFormFrameworkGdtFormTableView == null)
     {
-      aase.d("GdtFormView", "reset error");
+      acqy.d("GdtFormView", "reset error");
       return;
     }
     this.jdField_a_of_type_ComTencentGdtadViewsFormFrameworkGdtFormTableView.a();
@@ -61,7 +61,7 @@ public class GdtFormView
   {
     if ((this.jdField_a_of_type_ComTencentAdTangramCanvasViewsFormAdFormData == null) || (!this.jdField_a_of_type_ComTencentAdTangramCanvasViewsFormAdFormData.isValid()))
     {
-      aase.d("GdtFormView", "initViews error");
+      acqy.d("GdtFormView", "initViews error");
       return;
     }
     setFocusable(true);
@@ -101,19 +101,19 @@ public class GdtFormView
   {
     if ((paramGdtAd == null) || (!paramGdtAd.isValid()) || (paramGdtAd.actionSetId == -2147483648L) || (paramAdFormData == null) || (!paramAdFormData.isValid()))
     {
-      aase.d("GdtFormView", "init error");
+      acqy.d("GdtFormView", "init error");
       return;
     }
     this.jdField_a_of_type_ComTencentGdtadAditemGdtAd = paramGdtAd;
     this.jdField_a_of_type_ComTencentAdTangramCanvasViewsFormAdFormData = paramAdFormData;
-    aauc.a(new WeakReference(a()));
+    acsw.a(new WeakReference(a()));
     a(paramContext);
   }
   
   private void a(boolean paramBoolean)
   {
     if ((a() == null) || (!a().isValid())) {
-      aase.d("GdtFormView", "showLoading error");
+      acqy.d("GdtFormView", "showLoading error");
     }
     do
     {
@@ -123,25 +123,25 @@ public class GdtFormView
         if (!paramBoolean) {
           break;
         }
-      } while ((this.jdField_a_of_type_Bety != null) && (this.jdField_a_of_type_Bety.isShowing()));
-      this.jdField_a_of_type_Bety = new bety(getContext(), getResources().getDimensionPixelSize(2131298914));
-      this.jdField_a_of_type_Bety.setCancelable(false);
-      this.jdField_a_of_type_Bety.a(alud.a(2131705566) + a().button.text.text);
-      this.jdField_a_of_type_Bety.show();
+      } while ((this.jdField_a_of_type_Biau != null) && (this.jdField_a_of_type_Biau.isShowing()));
+      this.jdField_a_of_type_Biau = new biau(getContext(), getResources().getDimensionPixelSize(2131298998));
+      this.jdField_a_of_type_Biau.setCancelable(false);
+      this.jdField_a_of_type_Biau.a(anni.a(2131703962) + a().button.text.text);
+      this.jdField_a_of_type_Biau.show();
       return;
-    } while ((paramBoolean) || (this.jdField_a_of_type_Bety == null));
-    if (this.jdField_a_of_type_Bety.isShowing()) {}
+    } while ((paramBoolean) || (this.jdField_a_of_type_Biau == null));
+    if (this.jdField_a_of_type_Biau.isShowing()) {}
     try
     {
-      this.jdField_a_of_type_Bety.dismiss();
-      this.jdField_a_of_type_Bety = null;
+      this.jdField_a_of_type_Biau.dismiss();
+      this.jdField_a_of_type_Biau = null;
       return;
     }
     catch (Throwable localThrowable)
     {
       for (;;)
       {
-        aase.d("GdtFormView", "showLoading", localThrowable);
+        acqy.d("GdtFormView", "showLoading", localThrowable);
       }
     }
   }
@@ -157,13 +157,13 @@ public class GdtFormView
   {
     if ((a() == null) || (!a().isValid()))
     {
-      aase.d("GdtFormView", "validate error");
+      acqy.d("GdtFormView", "validate error");
       return false;
     }
     AdFormError localAdFormError = a().validate();
     if (localAdFormError == null)
     {
-      aase.d("GdtFormView", "validate error");
+      acqy.d("GdtFormView", "validate error");
       return false;
     }
     if (localAdFormError.type == 2) {
@@ -175,7 +175,7 @@ public class GdtFormView
   
   private void b()
   {
-    aatx.a(getContext(), a(), a(), new WeakReference(this));
+    acsr.a(getContext(), a(), a(), new WeakReference(this));
   }
   
   protected AdFormData a()
@@ -213,7 +213,7 @@ public class GdtFormView
   public void onError(AdFormError paramAdFormError)
   {
     if ((paramAdFormError == null) || (a() == null) || (!a().isValid())) {
-      aase.d("GdtFormView", "onError error");
+      acqy.d("GdtFormView", "onError error");
     }
     do
     {
@@ -232,7 +232,7 @@ public class GdtFormView
               this.jdField_a_of_type_Int = -1;
               this.jdField_a_of_type_ComTencentGdtadViewsFormFrameworkGdtFormTableView.a(-1);
             } while ((this.jdField_a_of_type_ComTencentMobileqqWidgetQQToast != null) && (this.jdField_a_of_type_ComTencentMobileqqWidgetQQToast.c()));
-            this.jdField_a_of_type_ComTencentMobileqqWidgetQQToast = QQToast.a(getContext(), 2, a().button.text.text + alud.a(2131705565), 0);
+            this.jdField_a_of_type_ComTencentMobileqqWidgetQQToast = QQToast.a(getContext(), 2, a().button.text.text + anni.a(2131703961), 0);
             this.jdField_a_of_type_ComTencentMobileqqWidgetQQToast.a();
             return;
             if (paramAdFormError.type != 4) {
@@ -241,7 +241,7 @@ public class GdtFormView
             this.jdField_a_of_type_Int = -1;
             this.jdField_a_of_type_ComTencentGdtadViewsFormFrameworkGdtFormTableView.a(-1);
           } while ((this.jdField_a_of_type_ComTencentMobileqqWidgetQQToast != null) && (this.jdField_a_of_type_ComTencentMobileqqWidgetQQToast.c()));
-          this.jdField_a_of_type_ComTencentMobileqqWidgetQQToast = QQToast.a(getContext(), 1, a().button.text.text + alud.a(2131705568), 0);
+          this.jdField_a_of_type_ComTencentMobileqqWidgetQQToast = QQToast.a(getContext(), 1, a().button.text.text + anni.a(2131703964), 0);
           this.jdField_a_of_type_ComTencentMobileqqWidgetQQToast.a();
           return;
           if (paramAdFormError.type != 7) {
@@ -250,7 +250,7 @@ public class GdtFormView
           this.jdField_a_of_type_Int = -1;
           this.jdField_a_of_type_ComTencentGdtadViewsFormFrameworkGdtFormTableView.a(-1);
         } while ((this.jdField_a_of_type_ComTencentMobileqqWidgetQQToast != null) && (this.jdField_a_of_type_ComTencentMobileqqWidgetQQToast.c()));
-        this.jdField_a_of_type_ComTencentMobileqqWidgetQQToast = QQToast.a(getContext(), 1, alud.a(2131705567), 0);
+        this.jdField_a_of_type_ComTencentMobileqqWidgetQQToast = QQToast.a(getContext(), 1, anni.a(2131703963), 0);
         this.jdField_a_of_type_ComTencentMobileqqWidgetQQToast.a();
         return;
         if (paramAdFormError.type != 2) {
@@ -269,7 +269,7 @@ public class GdtFormView
     this.jdField_a_of_type_ComTencentMobileqqWidgetQQToast = QQToast.a(getContext(), 1, paramAdFormError.toString(), 0);
     this.jdField_a_of_type_ComTencentMobileqqWidgetQQToast.a();
     return;
-    aase.d("GdtFormView", "onError error");
+    acqy.d("GdtFormView", "onError error");
   }
   
   public void setListener(WeakReference<AdFormViewListener> paramWeakReference)
@@ -279,7 +279,7 @@ public class GdtFormView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.gdtad.views.form.GdtFormView
  * JD-Core Version:    0.7.0.1
  */

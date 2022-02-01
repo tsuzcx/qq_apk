@@ -1,25 +1,15 @@
-import com.tencent.common.app.BaseApplicationImpl;
+import android.os.Bundle;
+import com.tencent.biz.troop.TroopMemberApiService;
 
 class aaov
-  implements aaol
+  extends bhhe
 {
-  aaov(aaot paramaaot) {}
+  aaov(aaor paramaaor, Bundle paramBundle) {}
   
-  public void a(aaoi paramaaoi)
+  public void onDone(bhhf parambhhf)
   {
-    aase.b("GdtInterstitialPreDownloader", String.format("onPreDownloaded appName:%s view:%s minVersion:%s", new Object[] { paramaaoi.a, paramaaoi.b, paramaaoi.c }));
-    aasr.a(BaseApplicationImpl.getApplication(), aaot.a(aaot.a()), 0, -2147483648);
-  }
-  
-  public void a(aaoi paramaaoi, int paramInt)
-  {
-    aase.b("GdtInterstitialPreDownloader", String.format("onStatusChanged appName:%s view:%s minVersion:%s status:%d", new Object[] { paramaaoi.a, paramaaoi.b, paramaaoi.c, Integer.valueOf(paramInt) }));
-  }
-  
-  public void a(aaoi paramaaoi, int paramInt1, int paramInt2)
-  {
-    aase.d("GdtInterstitialPreDownloader", String.format("onFailedToPreDownload appName:%s view:%s minVersion:%s error:%d arkError:%d", new Object[] { paramaaoi.a, paramaaoi.b, paramaaoi.c, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) }));
-    aasr.a(BaseApplicationImpl.getApplication(), aaot.a(aaot.a()), paramInt1, paramInt2);
+    this.jdField_a_of_type_AndroidOsBundle.putBoolean("down", true);
+    this.jdField_a_of_type_Aaor.a.a(86, this.jdField_a_of_type_AndroidOsBundle);
   }
 }
 

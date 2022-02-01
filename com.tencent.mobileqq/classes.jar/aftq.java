@@ -1,17 +1,27 @@
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.data.ChatMessage;
+import android.widget.EditText;
+import com.tencent.mobileqq.activity.activateFriend.SendBirthdayWishesActivity;
+import com.tencent.widget.XPanelContainer;
+import mqq.os.MqqHandler;
 
-class aftq
-  extends afuf
+public class aftq
+  extends anyu
 {
-  aftq(afpy paramafpy)
-  {
-    super(paramafpy, null);
-  }
+  public aftq(SendBirthdayWishesActivity paramSendBirthdayWishesActivity) {}
   
-  protected aeqy a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
+  public void a(int paramInt)
   {
-    return new afif(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner);
+    this.a.e();
+    SendBirthdayWishesActivity.a(this.a, paramInt);
+    this.a.jdField_a_of_type_AndroidWidgetEditText.removeTextChangedListener(this.a);
+    this.a.jdField_a_of_type_AndroidWidgetEditText.setText("");
+    if (this.a.jdField_a_of_type_ComTencentWidgetXPanelContainer.a() != 0) {
+      this.a.jdField_a_of_type_ComTencentWidgetXPanelContainer.a();
+    }
+    if (paramInt != 2)
+    {
+      SendBirthdayWishesActivity.a(this.a).removeCallbacks(SendBirthdayWishesActivity.a(this.a));
+      SendBirthdayWishesActivity.a(this.a).postDelayed(SendBirthdayWishesActivity.a(this.a), 600L);
+    }
   }
 }
 

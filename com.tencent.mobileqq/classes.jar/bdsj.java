@@ -1,16 +1,27 @@
-import android.content.Context;
-
-class bdsj
-  extends bdjz
+public class bdsj
 {
-  bdsj(bdsg parambdsg, Context paramContext, int paramInt)
-  {
-    super(paramContext, paramInt);
-  }
+  long jdField_a_of_type_Long;
+  String jdField_a_of_type_JavaLangString;
+  boolean jdField_a_of_type_Boolean;
+  long jdField_b_of_type_Long;
+  String jdField_b_of_type_JavaLangString;
+  String c;
+  String d;
+  String e;
+  String f;
+  String g;
+  String h;
   
-  public void onBackPressed()
+  public bdsj(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, long paramLong, String paramString7)
   {
-    super.onBackPressed();
+    this.a = paramString1;
+    this.jdField_b_of_type_JavaLangString = paramString2;
+    this.c = paramString3;
+    this.d = paramString4;
+    this.e = paramString5;
+    this.f = paramString6;
+    this.jdField_b_of_type_Long = paramLong;
+    this.h = paramString7;
   }
 }
 

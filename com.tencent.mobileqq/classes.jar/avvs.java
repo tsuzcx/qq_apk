@@ -1,94 +1,82 @@
-import android.text.TextUtils;
-import android.util.Pair;
-import com.tencent.mobileqq.ocr.data.OcrConfig;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map.Entry;
-import java.util.Set;
+import com.tencent.mobileqq.listentogether.player.QQMusicPlayService;
+import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
+import java.lang.ref.WeakReference;
 
 public class avvs
+  implements INetInfoHandler
 {
-  public String a;
-  public HashMap<String, String> a;
-  public List<String> a;
-  public String b;
-  public List<String> b;
-  public String c;
-  public List<String> c;
+  long jdField_a_of_type_Long = 0L;
+  private final WeakReference<QQMusicPlayService> jdField_a_of_type_JavaLangRefWeakReference;
   
-  public avvs()
+  public avvs(QQMusicPlayService paramQQMusicPlayService)
   {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_b_of_type_JavaLangString = "";
-    this.jdField_c_of_type_JavaLangString = "";
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramQQMusicPlayService);
   }
   
-  public Pair<String, String> a(String paramString)
+  private void a(int paramInt)
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilHashMap.entrySet().iterator();
-    while (localIterator.hasNext())
+    boolean bool2 = true;
+    QQMusicPlayService localQQMusicPlayService = (QQMusicPlayService)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (localQQMusicPlayService == null) {}
+    while (System.currentTimeMillis() - this.jdField_a_of_type_Long < 500L) {
+      return;
+    }
+    this.jdField_a_of_type_Long = System.currentTimeMillis();
+    boolean bool1 = bool2;
+    if (paramInt != 1)
     {
-      Map.Entry localEntry = (Map.Entry)localIterator.next();
-      if (((String)localEntry.getKey()).equalsIgnoreCase(paramString)) {
-        return new Pair(localEntry.getKey(), localEntry.getValue());
+      bool1 = bool2;
+      if (paramInt != 2)
+      {
+        bool1 = bool2;
+        if (paramInt != 3) {
+          if (paramInt != 6) {
+            break label78;
+          }
+        }
       }
     }
-    return null;
-  }
-  
-  public String a()
-  {
-    String str1 = "ocrLan:" + this.jdField_a_of_type_JavaLangString + ", ocrLanOptions:" + this.jdField_a_of_type_JavaUtilList.toString();
-    String str2 = "srcLan:" + this.jdField_b_of_type_JavaLangString + ", srcLanOptions:" + this.jdField_b_of_type_JavaUtilList.toString();
-    String str3 = "dstLan:" + this.jdField_c_of_type_JavaLangString + ", dstLanOptions:" + this.jdField_c_of_type_JavaUtilList.toString();
-    return str1 + "\n" + str2 + "\n" + str3;
-  }
-  
-  public String a(String paramString)
-  {
-    return OcrConfig.getDefaultLanguageName(paramString);
-  }
-  
-  public void a(String paramString)
-  {
-    if (!TextUtils.isEmpty(paramString))
+    label78:
+    for (bool1 = bool2;; bool1 = false)
     {
-      this.jdField_b_of_type_JavaLangString = paramString;
-      this.jdField_c_of_type_JavaUtilList = avvq.a(this.jdField_b_of_type_JavaLangString);
-      this.jdField_c_of_type_JavaLangString = ((String)this.jdField_c_of_type_JavaUtilList.get(0));
+      QQMusicPlayService.a(localQQMusicPlayService, bool1);
+      return;
     }
   }
   
-  public boolean a(List<String> paramList, String paramString)
+  public void onNetMobile2None()
   {
-    paramList = paramList.iterator();
-    while (paramList.hasNext()) {
-      if (((String)paramList.next()).trim().equalsIgnoreCase(paramString)) {
-        return true;
-      }
-    }
-    return false;
+    a(4);
   }
   
-  public String b(String paramString)
+  public void onNetMobile2Wifi(String paramString)
   {
-    if (paramString.equalsIgnoreCase("zh")) {
-      return "en/ja/ko/fr/es/it/de/tr/ru/pt/vi/id/ms/th".trim().split("/")[0];
-    }
-    return "zh";
+    a(3);
   }
   
-  public void b(String paramString)
+  public void onNetNone2Mobile(String paramString)
   {
-    if (!TextUtils.isEmpty(paramString)) {
-      this.jdField_c_of_type_JavaLangString = paramString;
-    }
+    a(1);
+  }
+  
+  public void onNetNone2Wifi(String paramString)
+  {
+    a(2);
+  }
+  
+  public void onNetWifi2Mobile(String paramString)
+  {
+    a(6);
+  }
+  
+  public void onNetWifi2None()
+  {
+    a(5);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     avvs
  * JD-Core Version:    0.7.0.1
  */

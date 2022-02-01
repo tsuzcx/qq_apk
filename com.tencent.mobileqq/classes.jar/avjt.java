@@ -1,68 +1,93 @@
-import android.content.Context;
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.LinearLayout.LayoutParams;
-import com.tencent.mobileqq.nearby.profilecard.LabelContainer;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.intervideo.now.ShareToQQActivity;
+import java.util.List;
 
 public class avjt
-  extends avjs
+  extends anuw
 {
-  protected View a;
+  public avjt(ShareToQQActivity paramShareToQQActivity) {}
   
-  protected int a()
+  protected void a(boolean paramBoolean, List<Long> paramList)
   {
-    return 2131561048;
-  }
-  
-  protected LabelContainer a(View paramView, int paramInt1, avau paramavau, int paramInt2)
-  {
-    paramavau = (ImageView)paramView.findViewById(2131379226);
-    if (paramInt1 == 7) {
-      paramavau.setVisibility(8);
+    if (this.a.a == null)
+    {
+      this.a.finish();
+      return;
+    }
+    String str = this.a.a.a;
+    if (ProfileActivity.AllInOne.i(this.a.a)) {
+      str = this.a.a();
     }
     for (;;)
     {
-      if (this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildCount() != 0)
+      if (paramList == null) {}
+      int k;
+      for (int i = 0;; i = paramList.size())
       {
-        paramavau = (LinearLayout.LayoutParams)paramView.getLayoutParams();
-        paramavau.topMargin = xin.b(this.jdField_a_of_type_AndroidContentContext, 16.0F);
-        paramView.setLayoutParams(paramavau);
+        int j = 0;
+        k = 0;
+        while ((k == 0) && (j < i))
+        {
+          if (bgjw.a(String.valueOf(paramList.get(j)), str)) {
+            k = 1;
+          }
+          j += 1;
+        }
       }
-      paramInt1 = xin.b(this.jdField_a_of_type_AndroidContentContext, 7.0F);
-      paramInt2 = xin.b(this.jdField_a_of_type_AndroidContentContext, 7.0F);
-      paramView = (LabelContainer)paramView.findViewById(2131369120);
-      paramView.setSpace(paramInt1, paramInt2);
-      return paramView;
-      paramavau.setImageResource(b[paramInt1]);
+      if (k != 0)
+      {
+        paramList = new Intent();
+        paramList.putExtra("isSuccess", paramBoolean);
+        paramList.putExtra("isCancelShield", false);
+        this.a.setResult(-1, paramList);
+      }
+      this.a.finish();
+      return;
     }
   }
   
-  public void a(Context paramContext, LinearLayout paramLinearLayout, View paramView)
+  protected void b(boolean paramBoolean, List<Long> paramList)
   {
-    super.a(paramContext, paramLinearLayout);
-    this.jdField_a_of_type_AndroidViewView = paramView;
-    this.jdField_a_of_type_AndroidViewView.setVisibility(8);
-  }
-  
-  public boolean a(avau[] paramArrayOfavau)
-  {
-    if (super.a(paramArrayOfavau))
+    int k = 0;
+    if (this.a.a == null)
     {
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
-      this.jdField_a_of_type_AndroidViewView.setVisibility(0);
+      this.a.finish();
+      return;
+    }
+    String str = this.a.a.a;
+    if (ProfileActivity.AllInOne.i(this.a.a)) {
+      str = this.a.a();
     }
     for (;;)
     {
-      return true;
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
-      this.jdField_a_of_type_AndroidViewView.setVisibility(8);
+      if (paramList == null) {}
+      for (int i = 0;; i = paramList.size())
+      {
+        int j = 0;
+        while ((k == 0) && (j < i))
+        {
+          if (bgjw.a(String.valueOf(paramList.get(j)), str)) {
+            k = 1;
+          }
+          j += 1;
+        }
+      }
+      if (k != 0)
+      {
+        paramList = new Intent();
+        paramList.putExtra("isSuccess", paramBoolean);
+        paramList.putExtra("isCancelShield", true);
+        this.a.setResult(-1, paramList);
+      }
+      this.a.finish();
+      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     avjt
  * JD-Core Version:    0.7.0.1
  */

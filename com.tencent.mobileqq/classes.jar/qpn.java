@@ -1,124 +1,205 @@
-import android.content.Context;
-import android.graphics.drawable.Drawable;
 import android.text.TextUtils;
-import android.view.LayoutInflater;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.ImageView.ScaleType;
-import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyDeliverUGCActivity;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.mobileqq.hotpic.HotPicData;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.pts.utils.PTSFileUtil;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 
 public class qpn
-  extends sjk
-  implements View.OnTouchListener
 {
-  private qpq jdField_a_of_type_Qpq;
-  private qpr jdField_a_of_type_Qpr;
+  private static volatile qpn jdField_a_of_type_Qpn;
+  private static final String[] jdField_a_of_type_ArrayOfJavaLangString = { "native_article", "default_feeds" };
+  private HashMap<String, List<String>> jdField_a_of_type_JavaUtilHashMap = new HashMap();
   
-  public qpn(Context paramContext, int paramInt)
+  private String a(String paramString)
   {
-    super(paramContext, paramInt);
-  }
-  
-  private Drawable a(String paramString)
-  {
-    if (!TextUtils.isEmpty(paramString))
-    {
-      File localFile = new File(paramString);
-      if (localFile.exists())
-      {
-        URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-        localURLDrawableOptions.mPlayGifImage = awkr.a(paramString);
-        localURLDrawableOptions.mLoadingDrawable = ReadInJoyDeliverUGCActivity.a;
-        localURLDrawableOptions.mFailedDrawable = ReadInJoyDeliverUGCActivity.a;
-        localURLDrawableOptions.mUseAutoScaleParams = false;
-        localURLDrawableOptions.mRequestWidth = bdoo.b(114.0F);
-        localURLDrawableOptions.mRequestHeight = bdoo.b(114.0F);
-        return URLDrawable.getDrawable(localFile, localURLDrawableOptions);
-      }
+    String str = "";
+    if (TextUtils.equals(paramString, "native_article")) {
+      str = bmqa.a("native_proteus_offline_bid");
     }
-    return null;
-  }
-  
-  public void a(qpq paramqpq)
-  {
-    this.jdField_a_of_type_Qpq = paramqpq;
-  }
-  
-  public void a(qpr paramqpr)
-  {
-    this.jdField_a_of_type_Qpr = paramqpr;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    Object localObject;
-    if (paramView == null)
-    {
-      paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131560136, null);
-      paramViewGroup = new qpp(this, null);
-      paramViewGroup.a = ((ImageView)paramView.findViewById(2131379238));
-      paramViewGroup.b = ((ImageView)paramView.findViewById(2131379235));
-      paramView.setTag(paramViewGroup);
-      localObject = this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
-      if (!(localObject instanceof HotPicData)) {
-        break label177;
-      }
-      localObject = ReadInJoyDeliverUGCActivity.a((HotPicData)localObject);
-      if (localObject != null)
-      {
-        paramViewGroup.b.setImageDrawable((Drawable)localObject);
-        paramViewGroup.b.setScaleType(ImageView.ScaleType.CENTER_CROP);
-        paramViewGroup.a.setVisibility(0);
-      }
+    if (TextUtils.equals(paramString, "default_feeds")) {
+      str = bmqa.a("default_feeds_proteus_offline_bid");
     }
+    return str;
+  }
+  
+  public static qpn a()
+  {
+    if (jdField_a_of_type_Qpn == null) {}
+    try
+    {
+      if (jdField_a_of_type_Qpn == null) {
+        jdField_a_of_type_Qpn = new qpn();
+      }
+      return jdField_a_of_type_Qpn;
+    }
+    finally {}
+  }
+  
+  private void a(String paramString)
+  {
+    BaseApplication localBaseApplication = BaseApplicationImpl.getContext();
+    if ((localBaseApplication == null) || (TextUtils.isEmpty(paramString))) {}
     for (;;)
     {
-      paramViewGroup.b.setTag(Integer.valueOf(paramInt));
-      paramViewGroup.a.setTag(Integer.valueOf(paramInt));
-      paramViewGroup.b.setOnTouchListener(this);
-      paramViewGroup.a.setOnClickListener(new qpo(this));
-      return paramView;
-      paramViewGroup = (qpp)paramView.getTag();
-      break;
-      label177:
-      if ("".equals(localObject))
-      {
-        paramViewGroup.b.setImageResource(2130841399);
-        paramViewGroup.b.setScaleType(ImageView.ScaleType.CENTER);
-        paramViewGroup.a.setVisibility(8);
+      return;
+      String str1 = "proteus" + File.separator + paramString + File.separator + "pages";
+      QLog.i("PTSStyleManager", 1, "[loadLocalStyleFileImp], businessName = " + paramString + ", path = " + str1);
+      Object localObject = str1 + File.separator + "manifest";
+      String str2 = PTSFileUtil.getFileContent((String)localObject, localBaseApplication, true);
+      QLog.i("PTSStyleManager", 1, "[loadLocalStyleFileImp], manifestFilePath = " + (String)localObject + ", manifest content = " + str2);
+      if (TextUtils.isEmpty(str2)) {
+        break;
       }
-      else
+      localObject = str2.split("\n");
+      int j = localObject.length;
+      int i = 0;
+      while (i < j)
       {
-        localObject = a((String)localObject);
-        if (localObject != null)
+        str2 = localObject[i];
+        QLog.i("PTSStyleManager", 1, "[loadLocalStyleFileImp] manifest pageName = " + str2);
+        String str3 = PTSFileUtil.getFilePath(str2, str1, ".frametree");
+        PTSFileUtil.loadFile(str3, localBaseApplication, true);
+        if (PTSFileUtil.isFileInMap(str3))
         {
-          paramViewGroup.b.setImageDrawable((Drawable)localObject);
-          paramViewGroup.b.setScaleType(ImageView.ScaleType.CENTER_CROP);
-          paramViewGroup.a.setVisibility(0);
+          a(str2, paramString);
+          if ((QLog.isColorLevel()) || (QLog.isDebugVersion())) {
+            QLog.i("PTSStyleManager", 2, "[loadLocalStyleFileImp] load style succeed, pageName = " + str2 + ", frameTreeJsonPath = " + str3);
+          }
         }
+        i += 1;
       }
+    }
+    QLog.i("PTSStyleManager", 1, "[loadLocalStyleFileImp], manifestContent is empty.");
+  }
+  
+  private void a(String paramString1, String paramString2)
+  {
+    if (this.jdField_a_of_type_JavaUtilHashMap == null) {
+      return;
+    }
+    List localList = (List)this.jdField_a_of_type_JavaUtilHashMap.get(paramString2);
+    Object localObject = localList;
+    if (localList == null)
+    {
+      localObject = new ArrayList();
+      this.jdField_a_of_type_JavaUtilHashMap.put(paramString2, localObject);
+    }
+    ((List)localObject).add(paramString1);
+  }
+  
+  private void b(String paramString)
+  {
+    int i = 0;
+    String str1 = a(paramString);
+    if ((TextUtils.isEmpty(str1)) || (str1.equals("0")))
+    {
+      QLog.i("PTSStyleManager", 1, "[loadOfflineStyleFileImp], bid is null or empty.");
+      return;
+    }
+    str1 = nku.a(str1) + str1;
+    str1 = str1 + File.separator + "pages";
+    QLog.i("PTSStyleManager", 1, "[loadOfflineStyleFileImp], businessName = " + paramString + ", path = " + str1);
+    for (;;)
+    {
+      try
+      {
+        Object localObject = new File(str1);
+        if ((((File)localObject).exists()) && (((File)localObject).isDirectory()))
+        {
+          localObject = ((File)localObject).listFiles();
+          int j = localObject.length;
+          if (i >= j) {
+            break;
+          }
+          String str2 = localObject[i].getName();
+          QLog.i("PTSStyleManager", 1, "[loadOfflineStyleFileImp], pageName = " + str2);
+          String str3 = PTSFileUtil.getFilePath(str2, str1, ".frametree");
+          PTSFileUtil.loadFile(str3, null, false);
+          if (!PTSFileUtil.isFileInMap(str3)) {
+            break label323;
+          }
+          a(str2, paramString);
+          if ((!QLog.isColorLevel()) && (!QLog.isDebugVersion())) {
+            break label323;
+          }
+          QLog.i("PTSStyleManager", 2, "[loadOfflineStyleFileImp] load style succeed, pageName = " + str2 + ", frameTreeJsonPath = " + str3);
+          break label323;
+        }
+        QLog.i("PTSStyleManager", 1, "[loadOfflineStyleFileImp], pages directory does not exists.");
+        return;
+      }
+      catch (Exception paramString)
+      {
+        QLog.e("PTSStyleManager", 1, "[loadOfflineStyleFileImp], e = " + paramString);
+        return;
+      }
+      label323:
+      i += 1;
     }
   }
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public String a(String paramString1, String paramString2)
   {
-    if (this.jdField_a_of_type_Qpr != null) {
-      return this.jdField_a_of_type_Qpr.a(paramView, paramMotionEvent);
+    Object localObject1;
+    if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2)))
+    {
+      QLog.e("PTSStyleManager", 1, "[getFrameTreeJson], businessName or pageName is null.");
+      localObject1 = "";
     }
-    return false;
+    Object localObject2;
+    do
+    {
+      return localObject1;
+      localObject1 = "";
+      localObject2 = a(paramString1);
+      localObject2 = PTSFileUtil.getFilePath(paramString2, nku.a((String)localObject2) + (String)localObject2 + File.separator + "pages", ".frametree");
+      if (PTSFileUtil.isFileInMap((String)localObject2)) {
+        localObject1 = PTSFileUtil.getFileContent((String)localObject2, null, false);
+      }
+      localObject2 = localObject1;
+      if (TextUtils.isEmpty((CharSequence)localObject1))
+      {
+        String str = PTSFileUtil.getFilePath(paramString2, "proteus" + File.separator + paramString1 + File.separator + "pages", ".frametree");
+        localObject2 = localObject1;
+        if (PTSFileUtil.isFileInMap(str)) {
+          localObject2 = PTSFileUtil.getFileContent(str, BaseApplicationImpl.getContext(), true);
+        }
+      }
+      localObject1 = localObject2;
+    } while (!TextUtils.isEmpty((CharSequence)localObject2));
+    QLog.e("PTSStyleManager", 1, "[getFrameTreeJson], frameTreeJson is empty, businessName = " + paramString1 + ", pageName = " + paramString2);
+    return localObject2;
+  }
+  
+  public List<String> a(String paramString)
+  {
+    if (this.jdField_a_of_type_JavaUtilHashMap == null) {
+      return null;
+    }
+    return (List)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
+  }
+  
+  public void a()
+  {
+    String[] arrayOfString = jdField_a_of_type_ArrayOfJavaLangString;
+    int j = arrayOfString.length;
+    int i = 0;
+    while (i < j)
+    {
+      String str = arrayOfString[i];
+      a(str);
+      b(str);
+      i += 1;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     qpn
  * JD-Core Version:    0.7.0.1
  */

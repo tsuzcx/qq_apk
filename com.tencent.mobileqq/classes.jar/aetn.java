@@ -1,14 +1,16 @@
 import android.content.DialogInterface;
-import com.tencent.mobileqq.activity.aio.PlusPanel;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.PhoneUnityBindInfoActivity;
 
-public class aetn
-  extends bdgx
+class aetn
+  implements DialogInterface.OnClickListener
 {
-  public aetn(PlusPanel paramPlusPanel) {}
+  aetn(aetm paramaetm) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramDialogInterface.dismiss();
+    this.a.a.setResult(4003);
+    this.a.a.finish();
   }
 }
 

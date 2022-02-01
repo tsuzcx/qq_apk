@@ -1,55 +1,65 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.AuthorData;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebArticleInfo;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.BaseApplication;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.graphics.Canvas;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsLikeAnimate;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsLikeAnimate.LikeExplosionCenterView;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsLikeAnimate.LikeExplosionView;
+import java.util.Random;
 
 public class rzz
-  implements phj
 {
-  public rzz(AuthorData paramAuthorData) {}
+  public float a;
+  public int a;
+  public float b;
+  public int b;
+  public float c;
+  public float d;
+  public float e;
+  public float f;
+  public float g = 0.8F;
+  public float h = 0.4F;
   
-  public void a(boolean paramBoolean, String paramString, int paramInt)
+  public rzz(VideoFeedsLikeAnimate.LikeExplosionView paramLikeExplosionView)
   {
-    this.a.a(true);
-    BaseApplication localBaseApplication = BaseApplicationImpl.getContext();
-    ArticleInfo localArticleInfo = this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo;
-    if (this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebUtilFastWebArticleInfo.c()) {
-      paramString = "2";
-    }
-    for (;;)
+    this.jdField_a_of_type_Int = 360;
+    b();
+  }
+  
+  private void b()
+  {
+    c();
+    a();
+  }
+  
+  private void c()
+  {
+    if (this.jdField_b_of_type_Int == this.jdField_a_of_type_Int) {}
+    for (int i = this.jdField_b_of_type_Int;; i = VideoFeedsLikeAnimate.LikeExplosionView.a(this.jdField_b_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsLikeAnimate$LikeExplosionView).nextInt() * (this.jdField_a_of_type_Int - this.jdField_b_of_type_Int) + this.jdField_b_of_type_Int)
     {
-      paramString = ors.a(localBaseApplication, localArticleInfo, 0, paramString);
-      if (paramBoolean) {
-        paramInt = 1;
-      }
-      try
-      {
-        for (;;)
-        {
-          paramString.put("is_done", paramInt);
-          sdn.a(this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, "0X800898B", paramString.toString());
-          return;
-          paramString = "1";
-          break;
-          paramInt = 2;
-        }
-      }
-      catch (JSONException localJSONException)
-      {
-        for (;;)
-        {
-          localJSONException.printStackTrace();
-        }
-      }
+      double d1 = Math.toRadians(i);
+      this.e = ((float)(0.9F * Math.cos(d1)));
+      this.f = ((float)(0.9F * Math.sin(d1)));
+      return;
     }
   }
+  
+  protected void a()
+  {
+    this.jdField_a_of_type_Float = (VideoFeedsLikeAnimate.a(this.jdField_b_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsLikeAnimate$LikeExplosionView.a) - VideoFeedsLikeAnimate.a(this.jdField_b_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsLikeAnimate$LikeExplosionView.a).getWidth() / 2);
+    this.jdField_b_of_type_Float = (VideoFeedsLikeAnimate.b(this.jdField_b_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsLikeAnimate$LikeExplosionView.a) - VideoFeedsLikeAnimate.a(this.jdField_b_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsLikeAnimate$LikeExplosionView.a).getHeight() / 2);
+    this.c = this.jdField_a_of_type_Float;
+    this.d = this.jdField_b_of_type_Float;
+  }
+  
+  public void a(float paramFloat)
+  {
+    this.c = (this.jdField_a_of_type_Float + this.e * (float)VideoFeedsLikeAnimate.LikeExplosionView.a(this.jdField_b_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsLikeAnimate$LikeExplosionView) * paramFloat);
+    this.d = (this.jdField_b_of_type_Float + this.f * (float)VideoFeedsLikeAnimate.LikeExplosionView.a(this.jdField_b_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsLikeAnimate$LikeExplosionView) * paramFloat);
+  }
+  
+  public void a(Canvas paramCanvas) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     rzz
  * JD-Core Version:    0.7.0.1
  */

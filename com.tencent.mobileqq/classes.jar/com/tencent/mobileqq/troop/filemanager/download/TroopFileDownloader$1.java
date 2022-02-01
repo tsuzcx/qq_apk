@@ -1,19 +1,19 @@
 package com.tencent.mobileqq.troop.filemanager.download;
 
-import bbvl;
-import bbwm;
-import bdin;
+import bevx;
+import bewx;
+import bgnt;
 import com.tencent.qphone.base.util.BaseApplication;
 
 public class TroopFileDownloader$1
   implements Runnable
 {
-  public TroopFileDownloader$1(bbwm parambbwm) {}
+  public TroopFileDownloader$1(bewx parambewx) {}
   
   public void run()
   {
     if (this.this$0.a) {
-      bbvl.b("TroopFileDownloader", bbvl.a, "[" + this.this$0.b + "] download. had stoped");
+      bevx.b("TroopFileDownloader", bevx.a, "[" + this.this$0.b + "] download. had stoped");
     }
     while (this.this$0.a()) {
       return;
@@ -23,7 +23,7 @@ public class TroopFileDownloader$1
       this.this$0.a(true, -5001, "file open exception", "");
       return;
     }
-    if (!bdin.d(BaseApplication.getContext()))
+    if (!bgnt.d(BaseApplication.getContext()))
     {
       this.this$0.a(true, 9004, "no network", "");
       return;
@@ -33,7 +33,7 @@ public class TroopFileDownloader$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.troop.filemanager.download.TroopFileDownloader.1
  * JD-Core Version:    0.7.0.1
  */

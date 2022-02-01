@@ -1,23 +1,23 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.pubaccount.readinjoy.capture.ReadInJoyUgcVideoReportItem;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyFeedsActivity.1;
+import com.tencent.qphone.base.util.QLog;
 
-public final class oiv
-  implements Parcelable.Creator<ReadInJoyUgcVideoReportItem>
+public class oiv
+  implements nkl
 {
-  public ReadInJoyUgcVideoReportItem a(Parcel paramParcel)
+  public oiv(ReadInJoyFeedsActivity.1 param1) {}
+  
+  public void loaded(String paramString, int paramInt)
   {
-    return new ReadInJoyUgcVideoReportItem(paramParcel);
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadInJoyBaseActivity", 2, "load 3256 html web resource finish");
+    }
   }
   
-  public ReadInJoyUgcVideoReportItem[] a(int paramInt)
-  {
-    return new ReadInJoyUgcVideoReportItem[paramInt];
-  }
+  public void progress(int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     oiv
  * JD-Core Version:    0.7.0.1
  */

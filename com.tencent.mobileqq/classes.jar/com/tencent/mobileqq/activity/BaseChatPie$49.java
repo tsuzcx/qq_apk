@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity;
 
-import android.view.View;
-import android.widget.TextView;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.widget.QQToast;
 
 class BaseChatPie$49
   implements Runnable
@@ -10,17 +10,12 @@ class BaseChatPie$49
   
   public void run()
   {
-    if (this.this$0.i != null) {
-      this.this$0.i.setVisibility(8);
-    }
-    if (BaseChatPie.a(this.this$0) != null) {
-      BaseChatPie.a(this.this$0).setVisibility(8);
-    }
+    QQToast.a(this.this$0.a.getApp(), 2131689966, 1).b(this.this$0.a());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.BaseChatPie.49
  * JD-Core Version:    0.7.0.1
  */

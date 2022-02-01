@@ -1,30 +1,22 @@
-import android.content.Context;
-import android.net.Uri;
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.util.ArrayList;
-import java.util.Iterator;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.NotifyPushSettingActivity;
+import com.tencent.mobileqq.activity.TroopAssisSettingActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public final class aesc
-  implements arrh
+public class aesc
+  implements View.OnClickListener
 {
-  public aesc(ArrayList paramArrayList, Context paramContext, int paramInt, QQAppInterface paramQQAppInterface, String paramString1, String paramString2) {}
+  public aesc(NotifyPushSettingActivity paramNotifyPushSettingActivity) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-    while (localIterator.hasNext())
-    {
-      Object localObject = (Uri)localIterator.next();
-      localObject = arzt.a(this.jdField_a_of_type_AndroidContentContext, (Uri)localObject);
-      if (this.jdField_a_of_type_Int == 1) {
-        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a((String)localObject, this.jdField_a_of_type_JavaLangString);
-      } else {
-        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a((String)localObject, this.b, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, true);
-      }
-    }
+    Intent localIntent = new Intent(this.a, TroopAssisSettingActivity.class);
+    this.a.startActivity(localIntent);
+    bcst.b(this.a.app, "CliOper", "", "", "Setting_tab", "Clk_msginfor_grp", 0, 0, "", "", "", "");
+    EventCollector.getInstance().onViewClicked(paramView);
   }
-  
-  public void b() {}
 }
 
 

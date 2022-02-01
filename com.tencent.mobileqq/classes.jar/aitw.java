@@ -1,15 +1,12 @@
-import android.app.Dialog;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-
-class aitw
-  implements DialogInterface.OnClickListener
+public class aitw
 {
-  aitw(aitu paramaitu) {}
+  public int a;
+  public int b;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public aitw(int paramInt1, int paramInt2)
   {
-    aitt.a(this.a.a).dismiss();
+    this.a = paramInt1;
+    this.b = paramInt2;
   }
 }
 

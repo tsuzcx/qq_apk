@@ -1,20 +1,15 @@
-import android.annotation.TargetApi;
-import android.hardware.Camera;
-import android.hardware.Camera.PreviewCallback;
-import android.os.Handler;
-import com.tencent.mobileqq.camera.CameraManagerImpl.PreviewCallbackForward.1;
+import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
+import com.tencent.mobileqq.widget.share.ShareActionSheet;
+import com.tencent.mobileqq.widget.share.ShareActionSheet.OnItemClickListener;
 
-public class aoaz
-  implements Camera.PreviewCallback
+class aoaz
+  implements ShareActionSheet.OnItemClickListener
 {
-  private final Handler jdField_a_of_type_AndroidOsHandler;
-  private final aoap jdField_a_of_type_Aoap;
-  private final aoaq jdField_a_of_type_Aoaq;
+  aoaz(aoay paramaoay) {}
   
-  @TargetApi(8)
-  public void onPreviewFrame(byte[] paramArrayOfByte, Camera paramCamera)
+  public void onItemClick(ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem, ShareActionSheet paramShareActionSheet)
   {
-    this.jdField_a_of_type_AndroidOsHandler.post(new CameraManagerImpl.PreviewCallbackForward.1(this, paramArrayOfByte));
+    this.a.a(paramActionSheetItem);
   }
 }
 

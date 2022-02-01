@@ -1,32 +1,42 @@
 import android.view.View;
-import android.widget.ImageView;
+import android.widget.FrameLayout;
+import android.widget.GridView;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
+import com.tencent.mobileqq.activity.aio.item.view.AioMiniProfileLabelFlowLayout;
+import com.tencent.mobileqq.avatar.dynamicavatar.DynamicAvatarView;
+import com.tencent.mobileqq.vas.avatar.AvatarLayout;
+import com.tencent.mobileqq.widget.RoundCorneredRelativeLayout;
 
 public class ahlg
-  extends ahlp
+  extends afuv
 {
-  public View a;
-  public ImageView a;
-  public TextView a;
+  private amau jdField_a_of_type_Amau;
+  private amef jdField_a_of_type_Amef;
+  private FrameLayout jdField_a_of_type_AndroidWidgetFrameLayout;
+  private GridView jdField_a_of_type_AndroidWidgetGridView;
+  private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
+  private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
+  private AioMiniProfileLabelFlowLayout jdField_a_of_type_ComTencentMobileqqActivityAioItemViewAioMiniProfileLabelFlowLayout;
+  private DynamicAvatarView jdField_a_of_type_ComTencentMobileqqAvatarDynamicavatarDynamicAvatarView;
+  private AvatarLayout jdField_a_of_type_ComTencentMobileqqVasAvatarAvatarLayout;
+  private RoundCorneredRelativeLayout jdField_a_of_type_ComTencentMobileqqWidgetRoundCorneredRelativeLayout;
   public String a;
-  public View b;
-  public ImageView b;
-  public TextView b;
-  public String b;
-  public View c;
-  public ImageView c;
-  public TextView c;
-  public String c;
-  public View d;
-  public ImageView d;
-  public TextView d;
-  public String d;
-  public View e;
-  public ImageView e;
-  public TextView e;
-  public String e;
-  public TextView f;
-  public TextView g;
+  public boolean a;
+  private View jdField_b_of_type_AndroidViewView;
+  private LinearLayout jdField_b_of_type_AndroidWidgetLinearLayout;
+  private TextView jdField_b_of_type_AndroidWidgetTextView;
+  private View jdField_c_of_type_AndroidViewView;
+  private LinearLayout jdField_c_of_type_AndroidWidgetLinearLayout;
+  private TextView jdField_c_of_type_AndroidWidgetTextView;
+  private View jdField_d_of_type_AndroidViewView;
+  private TextView jdField_d_of_type_AndroidWidgetTextView;
+  private View jdField_e_of_type_AndroidViewView;
+  private TextView jdField_e_of_type_AndroidWidgetTextView;
+  private TextView f;
+  private TextView g;
+  private TextView h;
 }
 
 

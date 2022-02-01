@@ -1,12 +1,24 @@
-import java.util.Map;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
 
-public abstract interface twd
+class twd
+  implements Animation.AnimationListener
 {
-  public abstract void a(boolean paramBoolean, Map<String, twb> paramMap);
+  twd(tvx paramtvx) {}
+  
+  public void onAnimationEnd(Animation paramAnimation)
+  {
+    this.a.a(tvx.a(this.a));
+    this.a.c();
+  }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     twd
  * JD-Core Version:    0.7.0.1
  */

@@ -7,7 +7,7 @@ import android.os.Handler;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.ImageView;
 import android.widget.RelativeLayout.LayoutParams;
-import bcoq;
+import bftg;
 
 class TroopGiftActionButton$2
   implements Runnable
@@ -26,7 +26,7 @@ class TroopGiftActionButton$2
     {
       Object localObject;
       if (i < 7) {
-        localObject = String.format("%sInteractGiftButton/image_0%d.png", new Object[] { bcoq.a(this.a), Integer.valueOf(i) });
+        localObject = String.format("%sInteractGiftButton/image_0%d.png", new Object[] { bftg.a(this.a), Integer.valueOf(i) });
       }
       try
       {
@@ -53,7 +53,7 @@ class TroopGiftActionButton$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.troopgift.TroopGiftActionButton.2
  * JD-Core Version:    0.7.0.1
  */

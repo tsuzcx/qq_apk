@@ -1,16 +1,12 @@
 package com.tencent.mobileqq.minigame.data;
 
-import android.text.TextUtils;
 import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
-import com.tencent.mobileqq.mini.appbrand.utils.MiniAppFileManager;
 import com.tencent.qphone.base.util.QLog;
 import common.config.service.QzoneConfig;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.StringTokenizer;
-import org.json.JSONArray;
-import org.json.JSONObject;
 
 public class PublishMoodInfo
 {
@@ -22,8 +18,10 @@ public class PublishMoodInfo
   public static final int MOOD_MAX_VIDEO_COUNT;
   private static final String TAG = "[minigame] PublishMoodInfo";
   public ArrayList<String> mAllImageAndVideo = new ArrayList();
+  public String mFootnote;
   public ArrayList<PublishMoodInfo.MediaInfo> mMediaInfo = new ArrayList();
   public HashMap<String, LocalMediaInfo> mMediaInfoHashMap = new HashMap();
+  public String mPath;
   public String mTag;
   public String mText;
   
@@ -82,94 +80,6 @@ public class PublishMoodInfo
     return "";
   }
   
-  public static PublishMoodInfo parseJsonToMoodInfo(String paramString)
-  {
-    Object localObject1;
-    if (TextUtils.isEmpty(paramString))
-    {
-      localObject1 = null;
-      return localObject1;
-    }
-    PublishMoodInfo localPublishMoodInfo = new PublishMoodInfo();
-    for (;;)
-    {
-      int i;
-      String str2;
-      String str3;
-      try
-      {
-        Object localObject2 = new JSONObject(paramString);
-        if (!((JSONObject)localObject2).has("text")) {
-          break label378;
-        }
-        localObject1 = ((JSONObject)localObject2).getString("text");
-        localPublishMoodInfo.mText = ((String)localObject1);
-        if (!((JSONObject)localObject2).has("tag")) {
-          break label384;
-        }
-        localObject1 = ((JSONObject)localObject2).getString("tag");
-        localPublishMoodInfo.mTag = ((String)localObject1);
-        localObject1 = localPublishMoodInfo;
-        if (!((JSONObject)localObject2).has("media")) {
-          break;
-        }
-        localObject1 = localPublishMoodInfo;
-        if (TextUtils.isEmpty(((JSONObject)localObject2).getString("media"))) {
-          break;
-        }
-        localObject1 = new ArrayList();
-        localObject2 = ((JSONObject)localObject2).getJSONArray("media");
-        int j = ((JSONArray)localObject2).length();
-        i = 0;
-        if (i >= j) {
-          break label362;
-        }
-        localObject3 = ((JSONArray)localObject2).getJSONObject(i);
-        if ((!((JSONObject)localObject3).has("type")) || (!((JSONObject)localObject3).has("path")))
-        {
-          QLog.i("[minigame] PublishMoodInfo", 2, "invalid mediaItem, " + localObject3);
-        }
-        else
-        {
-          str2 = ((JSONObject)localObject3).getString("type");
-          str3 = ((JSONObject)localObject3).getString("path");
-          if ((TextUtils.isEmpty(str2)) || (TextUtils.isEmpty(str3))) {
-            QLog.i("[minigame] PublishMoodInfo", 2, "invalid mediaItem, " + localObject3);
-          }
-        }
-      }
-      catch (Exception localException)
-      {
-        QLog.i("[minigame] PublishMoodInfo", 2, "parseJsonToMoodInfo error " + paramString, localException);
-        return localPublishMoodInfo;
-      }
-      Object localObject3 = new PublishMoodInfo.MediaInfo();
-      ((PublishMoodInfo.MediaInfo)localObject3).mPath = MiniAppFileManager.getInstance().getAbsolutePath(str3);
-      if ("photo".equalsIgnoreCase(str2))
-      {
-        ((PublishMoodInfo.MediaInfo)localObject3).mType = 1;
-        localException.add(localObject3);
-      }
-      else if ("video".equalsIgnoreCase(str2))
-      {
-        ((PublishMoodInfo.MediaInfo)localObject3).mType = 2;
-        localException.add(localObject3);
-        break label371;
-        label362:
-        localPublishMoodInfo.mMediaInfo = localException;
-        return localPublishMoodInfo;
-      }
-      label371:
-      i += 1;
-      continue;
-      label378:
-      String str1 = "";
-      continue;
-      label384:
-      str1 = "";
-    }
-  }
-  
   public String toString()
   {
     int j = 0;
@@ -179,10 +89,10 @@ public class PublishMoodInfo
       i = this.mMediaInfo.size();
       localStringBuilder = localStringBuilder.append(i).append(", mAllImageAndVideo.size = ");
       if (this.mAllImageAndVideo == null) {
-        break label127;
+        break label122;
       }
     }
-    label127:
+    label122:
     for (int i = this.mAllImageAndVideo.size();; i = 0)
     {
       localStringBuilder = localStringBuilder.append(i).append(", mMediaInfoHashMap.size = ");
@@ -198,7 +108,7 @@ public class PublishMoodInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.minigame.data.PublishMoodInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -1,34 +1,30 @@
-import android.graphics.drawable.Drawable;
-import android.widget.ImageView;
-import android.widget.ImageView.ScaleType;
-import android.widget.RelativeLayout.LayoutParams;
-import com.tencent.mobileqq.forward.ForwardShortVideoOption.PressDarkImageView;
-import com.tencent.qphone.base.util.QLog;
+import android.graphics.Color;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.Emoticon;
+import com.tencent.mobileqq.emotionintegrate.AIOEmotionFragment;
+import com.tencent.mobileqq.vaswebviewplugin.EmojiHomeUiPlugin;
 
 public class aseg
+  implements View.OnTouchListener
 {
-  public ImageView a;
-  public ForwardShortVideoOption.PressDarkImageView a;
+  public aseg(AIOEmotionFragment paramAIOEmotionFragment) {}
   
-  public void a(Drawable paramDrawable)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    this.jdField_a_of_type_ComTencentMobileqqForwardForwardShortVideoOption$PressDarkImageView.setVisibility(0);
-    this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-    if (paramDrawable == null)
+    if (paramMotionEvent.getAction() == 1)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("ForwardOption.ForwardShortVideoOption", 2, "setPreviewImage null");
-      }
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130837969);
-      return;
+      this.a.b.setBackgroundColor(Color.parseColor("#F7F7F7"));
+      EmojiHomeUiPlugin.openEmojiDetailPage(this.a.getActivity(), this.a.a().getAccount(), 8, this.a.a.epId, false, false);
+      this.a.a("0X800997F");
     }
-    RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
-    localLayoutParams.addRule(13);
-    this.jdField_a_of_type_AndroidWidgetImageView.setLayoutParams(localLayoutParams);
-    this.jdField_a_of_type_AndroidWidgetImageView.setAdjustViewBounds(true);
-    this.jdField_a_of_type_AndroidWidgetImageView.setMaxHeight(bdoo.a(140.0F));
-    this.jdField_a_of_type_AndroidWidgetImageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(paramDrawable);
+    while (paramMotionEvent.getAction() != 0) {
+      return false;
+    }
+    this.a.b.setBackgroundColor(Color.parseColor("#DEDEDE"));
+    return false;
   }
 }
 

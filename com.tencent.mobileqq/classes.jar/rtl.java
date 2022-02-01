@@ -1,23 +1,12 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup;
-import com.tencent.widget.AdapterView;
-
-public class rtl
-  extends pdi
+public abstract interface rtl
 {
-  public rtl(ReadInJoyListViewGroup paramReadInJoyListViewGroup, String paramString, AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
-  {
-    super(paramString);
-  }
+  public abstract void a(float paramFloat);
   
-  public void a(pdc parampdc)
-  {
-    parampdc.a(this.jdField_a_of_type_ComTencentWidgetAdapterView, this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_Int, this.jdField_a_of_type_Long);
-  }
+  public abstract void a(int paramInt, long paramLong1, long paramLong2, String paramString1, String paramString2, long paramLong3);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     rtl
  * JD-Core Version:    0.7.0.1
  */

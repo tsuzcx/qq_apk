@@ -1,27 +1,33 @@
-import com.tencent.mobileqq.confess.ConfessMsgListFragment;
+import android.content.Context;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class aoix
-  extends aoiz
+  extends aojt
 {
-  public aoix(ConfessMsgListFragment paramConfessMsgListFragment) {}
-  
-  public void a(aoiq paramaoiq)
+  public aojs a(QQAppInterface paramQQAppInterface, Context paramContext, String paramString, aojw paramaojw)
   {
-    ConfessMsgListFragment.a(this.a);
-  }
-  
-  public void a(boolean paramBoolean, Object paramObject)
-  {
-    if (this.a.isResumed()) {
-      this.a.b();
+    paramQQAppInterface = new aoiw(paramQQAppInterface, paramContext);
+    paramQQAppInterface.a = paramString;
+    paramQQAppInterface.b = "contact";
+    paramQQAppInterface.c = "add";
+    paramContext = paramString.split("\\?");
+    if (paramContext.length != 2) {
+      return paramQQAppInterface;
     }
-  }
-  
-  public void b(boolean paramBoolean, Object paramObject)
-  {
-    if (this.a.isResumed()) {
-      this.a.b();
+    paramContext = paramContext[1].split("&");
+    if (paramContext != null)
+    {
+      int i = 0;
+      while (i < paramContext.length)
+      {
+        paramString = paramContext[i].split("=");
+        if ((paramString != null) && (paramString.length == 2)) {
+          paramQQAppInterface.a(paramString[0], paramString[1]);
+        }
+        i += 1;
+      }
     }
+    return paramQQAppInterface;
   }
 }
 

@@ -1,60 +1,101 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.statistics.thread.SuspendThreadManager;
-import java.util.ArrayList;
+import android.annotation.TargetApi;
+import android.content.Context;
+import android.os.Build.VERSION;
+import java.io.InputStream;
+import java.io.PipedInputStream;
+import java.io.PipedOutputStream;
 
 public class azuh
-  extends Handler
+  extends InputStream
+  implements azue
 {
-  private azug jdField_a_of_type_Azug;
-  private Thread jdField_a_of_type_JavaLangThread;
-  private boolean jdField_a_of_type_Boolean;
+  protected int a;
+  protected Context a;
+  protected azuf a;
+  protected PipedInputStream a;
+  protected PipedOutputStream a;
+  protected byte[] a;
+  protected byte[] b;
+  protected byte[] c;
+  protected byte[] d = new byte[1];
   
-  public azuh(SuspendThreadManager paramSuspendThreadManager, Looper paramLooper, Thread paramThread, azug paramazug)
+  public azuh(Context paramContext)
   {
-    super(paramLooper);
-    this.jdField_a_of_type_JavaLangThread = paramThread;
-    this.jdField_a_of_type_Azug = paramazug;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+  }
+  
+  public int a(byte[] paramArrayOfByte, int paramInt)
+  {
+    return read(paramArrayOfByte, paramInt, paramArrayOfByte.length);
+  }
+  
+  public azuf a(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
+  {
+    this.jdField_a_of_type_Azuf.jdField_a_of_type_Int = 0;
+    int j = paramInt2;
+    int i = paramInt1;
+    paramInt1 = j;
+    while (paramInt2 > 0)
+    {
+      if (paramInt2 > 1920 - this.jdField_a_of_type_JavaIoPipedInputStream.available()) {
+        paramInt1 = 1920 - this.jdField_a_of_type_JavaIoPipedInputStream.available();
+      }
+      a(paramArrayOfByte, i, paramInt1);
+      i += paramInt1;
+      paramInt1 = paramInt2 - paramInt1;
+      paramInt2 = paramInt1;
+    }
+    return this.jdField_a_of_type_Azuf;
   }
   
   public void a()
   {
-    Message localMessage = Message.obtain();
-    localMessage.what = 1;
-    sendMessageDelayed(localMessage, 200L);
-  }
-  
-  public void b()
-  {
-    removeMessages(1);
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    switch (paramMessage.what)
+    if (this.jdField_a_of_type_JavaIoPipedOutputStream != null)
     {
+      this.jdField_a_of_type_JavaIoPipedOutputStream.close();
+      this.jdField_a_of_type_JavaIoPipedOutputStream = null;
     }
-    do
+    close();
+  }
+  
+  @TargetApi(9)
+  public void a(int paramInt1, int paramInt2, int paramInt3)
+  {
+    this.jdField_a_of_type_JavaIoPipedOutputStream = new PipedOutputStream();
+    if (Build.VERSION.SDK_INT <= 8)
     {
+      this.jdField_a_of_type_JavaIoPipedInputStream = new bgoq(this.jdField_a_of_type_JavaIoPipedOutputStream, 1920);
       return;
-      if (this.jdField_a_of_type_JavaLangThread.getState() == Thread.State.BLOCKED)
-      {
-        if (this.jdField_a_of_type_Boolean == true)
-        {
-          SuspendThreadManager.a(this.jdField_a_of_type_ComTencentMobileqqStatisticsThreadSuspendThreadManager, SuspendThreadManager.a());
-          SuspendThreadManager.a(1);
-          b();
-          this.jdField_a_of_type_Azug.a();
-          return;
-        }
-        this.jdField_a_of_type_Boolean = true;
-        a();
-        return;
-      }
-    } while (SuspendThreadManager.a().isEmpty());
-    this.jdField_a_of_type_Boolean = false;
-    a();
+    }
+    this.jdField_a_of_type_JavaIoPipedInputStream = new PipedInputStream(this.jdField_a_of_type_JavaIoPipedOutputStream, 1920);
+  }
+  
+  protected void a(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
+  {
+    this.jdField_a_of_type_JavaIoPipedOutputStream.write(paramArrayOfByte, paramInt1, paramInt2);
+    while (this.jdField_a_of_type_JavaIoPipedInputStream.available() >= this.jdField_a_of_type_Int)
+    {
+      paramInt1 = a(this.c, this.jdField_a_of_type_Azuf.jdField_a_of_type_Int);
+      paramArrayOfByte = this.jdField_a_of_type_Azuf;
+      paramArrayOfByte.jdField_a_of_type_Int = (paramInt1 + paramArrayOfByte.jdField_a_of_type_Int);
+    }
+  }
+  
+  public void close()
+  {
+    if (this.jdField_a_of_type_JavaIoPipedInputStream != null)
+    {
+      this.jdField_a_of_type_JavaIoPipedInputStream.close();
+      this.jdField_a_of_type_JavaIoPipedInputStream = null;
+    }
+  }
+  
+  public int read()
+  {
+    if (read(this.d, 0, 1) == 1) {
+      return this.d[0] & 0xFF;
+    }
+    return -1;
   }
 }
 

@@ -1,16 +1,18 @@
-import java.util.ArrayList;
-import java.util.List;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.IBuilder;
 
-class qkc
+public class qkc
+  implements ViewBase.IBuilder
 {
-  int jdField_a_of_type_Int = 0;
-  List<String> jdField_a_of_type_JavaUtilList = new ArrayList();
-  
-  qkc(qjz paramqjz) {}
+  public ViewBase build(VafContext paramVafContext)
+  {
+    return new qjt(paramVafContext, null);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     qkc
  * JD-Core Version:    0.7.0.1
  */

@@ -1,23 +1,15 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.av.service.AVRedPacketConfig.ExpressionInfo;
+import com.tencent.av.smallscreen.SmallScreenService;
 
-public final class lyr
-  implements Parcelable.Creator<AVRedPacketConfig.ExpressionInfo>
+public class lyr
+  extends ldy
 {
-  public AVRedPacketConfig.ExpressionInfo a(Parcel paramParcel)
-  {
-    return new AVRedPacketConfig.ExpressionInfo(paramParcel);
-  }
+  public lyr(SmallScreenService paramSmallScreenService) {}
   
-  public AVRedPacketConfig.ExpressionInfo[] a(int paramInt)
-  {
-    return new AVRedPacketConfig.ExpressionInfo[paramInt];
-  }
+  protected void a(long paramLong, int paramInt, String paramString) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     lyr
  * JD-Core Version:    0.7.0.1
  */

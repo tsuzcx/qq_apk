@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.filemanager.core;
 
-import aqwn;
-import aqyp;
-import aqyt;
+import atcx;
+import atfe;
+import atfi;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 import com.tencent.qphone.base.util.QLog;
@@ -10,7 +10,7 @@ import com.tencent.qphone.base.util.QLog;
 public class OnlineFileSessionWorker$3
   implements Runnable
 {
-  public OnlineFileSessionWorker$3(aqyp paramaqyp, float paramFloat) {}
+  public OnlineFileSessionWorker$3(atfe paramatfe, float paramFloat) {}
   
   public void run()
   {
@@ -42,13 +42,13 @@ public class OnlineFileSessionWorker$3
         }
       }
     } while ((localFileManagerEntity.fProgress < 1.0F) || (this.this$0.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity == null));
-    QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + localFileManagerEntity.nSessionId + "] state:" + aqyp.a(this.this$0).a() + " make progress. direct pass to 1.0 and notify make done");
+    QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + localFileManagerEntity.nSessionId + "] state:" + atfe.a(this.this$0).a() + " make progress. direct pass to 1.0 and notify make done");
     this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(true, 41, new Object[] { Long.valueOf(localFileManagerEntity.nSessionId) });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.core.OnlineFileSessionWorker.3
  * JD-Core Version:    0.7.0.1
  */

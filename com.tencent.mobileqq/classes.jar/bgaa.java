@@ -1,31 +1,36 @@
-import android.content.Intent;
-import android.os.Bundle;
 import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.data.MessageForDeliverGiftTips;
+import com.tencent.mobileqq.troopgift.TroopGiftActionButton;
+import com.tencent.mobileqq.troopgift.TroopInteractGiftAnimationController.1;
+import com.tencent.mobileqq.troopgift.TroopInteractGiftAnimationController.1.1;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class bgaa
-  implements bhuk
+public class bgaa
+  implements View.OnClickListener
 {
-  bgaa(bfzz parambfzz, Intent paramIntent, bhuf parambhuf) {}
+  public bgaa(TroopInteractGiftAnimationController.1.1 param1) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView)
   {
-    switch (paramInt)
+    this.a.a.this$0.b();
+    bfzz localbfzz = this.a.a.this$0;
+    localbfzz.jdField_a_of_type_Int += 1;
+    if (this.a.a.this$0.jdField_a_of_type_Boolean)
     {
+      this.a.a.this$0.jdField_a_of_type_Boolean = false;
+      this.a.a.this$0.a(this.a.a.a, this.a.a.a.frienduin, this.a.a.a.interactId, this.a.a.a.animationPackageId, this.a.a.this$0.jdField_a_of_type_Int, false);
     }
-    for (;;)
-    {
-      this.jdField_a_of_type_Bhuf.dismiss();
-      return;
-      paramView = this.jdField_a_of_type_AndroidContentIntent.getExtras();
-      if ((paramView.containsKey("request_type")) && (paramView.containsKey("uin")) && (paramView.containsKey("sigt")) && (paramView.containsKey("nickname"))) {
-        bfzy.a(this.jdField_a_of_type_Bfzz.a, paramView);
-      }
+    if (this.a.a.this$0.jdField_a_of_type_Int % 5 == 0) {
+      this.a.a.this$0.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftActionButton.a(this.a.a.a.animationPackageId + "");
     }
+    bcst.b(null, "dc00899", "Grp_flower", "", "inter_gift", "clk_ball", 0, 0, this.a.a.a.frienduin, "", "", "");
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bgaa
  * JD-Core Version:    0.7.0.1
  */

@@ -4,9 +4,9 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.text.TextUtils;
-import bfkr;
-import bflg;
-import bflp;
+import bisa;
+import bisp;
+import bisy;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.open.downloadnew.DownloadInfo;
 import java.util.Iterator;
@@ -19,25 +19,25 @@ public class InstallStateReceiver
   
   private void a(String paramString, int paramInt)
   {
-    List localList = bfkr.a().b(paramString, 4);
+    List localList = bisa.a().b(paramString, 4);
     Object localObject = localList;
     if (localList.size() == 0) {
-      localObject = bfkr.a().a(paramString, 4);
+      localObject = bisa.a().a(paramString, 4);
     }
-    bflp.c("InstallStateReceiver", ">notifyInstalled " + paramString + ", info:" + localObject);
+    bisy.c("InstallStateReceiver", ">notifyInstalled " + paramString + ", info:" + localObject);
     paramString = ((List)localObject).iterator();
     while (paramString.hasNext())
     {
       localObject = (DownloadInfo)paramString.next();
       if ((localObject != null) && (((DownloadInfo)localObject).a() == 4))
       {
-        bflp.c("InstallStateReceiver", ">notifyInstalled " + localObject);
+        bisy.c("InstallStateReceiver", ">notifyInstalled " + localObject);
         if (1 == paramInt) {
-          bfkr.a().f((DownloadInfo)localObject);
+          bisa.a().f((DownloadInfo)localObject);
         } else if (2 == paramInt) {
-          bfkr.a().e((DownloadInfo)localObject);
+          bisa.a().e((DownloadInfo)localObject);
         } else {
-          bflp.e("InstallStateReceiver", ">notifyInstalled bad notifyType:" + paramInt);
+          bisy.e("InstallStateReceiver", ">notifyInstalled bad notifyType:" + paramInt);
         }
       }
     }
@@ -45,10 +45,10 @@ public class InstallStateReceiver
   
   public void onReceive(Context paramContext, Intent paramIntent)
   {
-    bflp.c("InstallStateReceiver", "[onReceive] action=" + paramIntent.getAction());
+    bisy.c("InstallStateReceiver", "[onReceive] action=" + paramIntent.getAction());
     paramContext = paramIntent.getDataString();
     if (TextUtils.isEmpty(paramContext)) {
-      bflp.e("InstallStateReceiver", "[onReceive] intentPkgNameString == null ");
+      bisy.e("InstallStateReceiver", "[onReceive] intentPkgNameString == null ");
     }
     Object localObject;
     String str;
@@ -66,12 +66,12 @@ public class InstallStateReceiver
       }
       else
       {
-        bflp.e("InstallStateReceiver", "[onReceive] packageName == null " + paramIntent.getDataString());
+        bisy.e("InstallStateReceiver", "[onReceive] packageName == null " + paramIntent.getDataString());
         return;
       }
       if (TextUtils.equals(str, "android.intent.action.PACKAGE_REPLACED"))
       {
-        bflg.a((String)localObject, true);
+        bisp.a((String)localObject, true);
         ThreadManager.excute(new InstallStateReceiver.2(this, paramContext, (String)localObject), 16, null, true);
         return;
       }
@@ -81,7 +81,7 @@ public class InstallStateReceiver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.open.appstore.receiver.InstallStateReceiver
  * JD-Core Version:    0.7.0.1
  */

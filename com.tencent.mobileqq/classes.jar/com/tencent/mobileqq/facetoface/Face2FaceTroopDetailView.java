@@ -1,8 +1,6 @@
 package com.tencent.mobileqq.facetoface;
 
-import aepi;
-import alto;
-import alud;
+import afur;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
@@ -13,16 +11,19 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import aqko;
-import aqkt;
-import aqkw;
-import aqkx;
-import azqs;
-import bdhj;
+import anmw;
+import anni;
+import asqo;
+import asqt;
+import asqw;
+import asqx;
+import bcst;
+import bgmo;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.Friends;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import com.tencent.widget.immersive.ImmersiveUtils;
 import mqq.app.MobileQQ;
 
@@ -33,7 +34,7 @@ public class Face2FaceTroopDetailView
   protected Button a;
   protected ImageView a;
   protected TextView a;
-  public aqkw a;
+  public asqw a;
   protected TextView b;
   protected TextView c;
   
@@ -44,16 +45,16 @@ public class Face2FaceTroopDetailView
   
   protected void a()
   {
-    this.jdField_a_of_type_AndroidViewView = super.findViewById(2131378369);
-    this.jdField_b_of_type_AndroidViewView = super.findViewById(2131377188);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131378468));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131378515));
-    this.c = ((TextView)super.findViewById(2131378475));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)super.findViewById(2131362130));
+    this.jdField_a_of_type_AndroidViewView = super.findViewById(2131379219);
+    this.jdField_b_of_type_AndroidViewView = super.findViewById(2131377993);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131379323));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131379369));
+    this.c = ((TextView)super.findViewById(2131379330));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)super.findViewById(2131362190));
     this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView);
-    this.e = super.findViewById(2131375746);
+    this.e = super.findViewById(2131376473);
     if (ImmersiveUtils.isSupporImmersive() == 1) {
-      this.e.setPadding(aepi.a(10.0F, this.e.getResources()), aepi.a(15.0F, this.e.getResources()) + ImmersiveUtils.getStatusBarHeight(this.e.getContext()), aepi.a(10.0F, this.e.getResources()), aepi.a(15.0F, this.e.getResources()));
+      this.e.setPadding(afur.a(10.0F, this.e.getResources()), afur.a(15.0F, this.e.getResources()) + ImmersiveUtils.getStatusBarHeight(this.e.getContext()), afur.a(10.0F, this.e.getResources()), afur.a(15.0F, this.e.getResources()));
     }
     this.e.setOnClickListener(this);
     super.setOnClickListener(this);
@@ -65,21 +66,21 @@ public class Face2FaceTroopDetailView
     if (QLog.isColorLevel())
     {
       StringBuilder localStringBuilder = new StringBuilder().append("onJoinTroopSucc, ret=").append(paramInt).append(",errInfo=").append(paramString1).append(",troopUin=").append(paramString2).append(",mUserData.nearbyUin=");
-      if (this.jdField_a_of_type_Aqkw != null)
+      if (this.jdField_a_of_type_Asqw != null)
       {
-        str = this.jdField_a_of_type_Aqkw.e;
+        str = this.jdField_a_of_type_Asqw.e;
         QLog.d("Face2FaceTroopDetailView", 2, str);
       }
     }
-    else if ((this.jdField_a_of_type_Boolean) && ((this.jdField_a_of_type_Aqkw instanceof aqkt)) && (paramString2 != null) && (paramString2.equals(this.jdField_a_of_type_Aqkw.e)))
+    else if ((this.jdField_a_of_type_Boolean) && ((this.jdField_a_of_type_Asqw instanceof asqt)) && (paramString2 != null) && (paramString2.equals(this.jdField_a_of_type_Asqw.e)))
     {
       if (paramInt != 0) {
         break label166;
       }
       setBtnEnabled(false);
-      this.jdField_a_of_type_AndroidWidgetButton.setText(2131692383);
+      this.jdField_a_of_type_AndroidWidgetButton.setText(2131691973);
       if (!paramBoolean) {
-        QQToast.a(super.getContext(), 2, alud.a(2131704670), 1).a();
+        QQToast.a(super.getContext(), 2, anni.a(2131703067), 1).a();
       }
       super.c();
     }
@@ -91,13 +92,13 @@ public class Face2FaceTroopDetailView
       break;
       if (paramInt == -5)
       {
-        this.jdField_a_of_type_Aqko.a((aqkt)this.jdField_a_of_type_Aqkw);
+        this.jdField_a_of_type_Asqo.a((asqt)this.jdField_a_of_type_Asqw);
         super.c();
       }
     } while (paramBoolean);
     paramString2 = paramString1;
     if (TextUtils.isEmpty(paramString1)) {
-      paramString2 = alud.a(2131704687);
+      paramString2 = anni.a(2131703084);
     }
     QQToast.a(super.getContext(), 1, paramString2, 1).a();
   }
@@ -107,72 +108,77 @@ public class Face2FaceTroopDetailView
     if (paramView == this.e) {
       super.c();
     }
-    while ((paramView != this.jdField_a_of_type_AndroidWidgetButton) || (this.jdField_a_of_type_Aqko == null) || (!(this.jdField_a_of_type_Aqkw instanceof aqkt))) {
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
+      if ((paramView == this.jdField_a_of_type_AndroidWidgetButton) && (this.jdField_a_of_type_Asqo != null) && ((this.jdField_a_of_type_Asqw instanceof asqt)))
+      {
+        asqt localasqt = (asqt)this.jdField_a_of_type_Asqw;
+        this.jdField_a_of_type_Asqo.a(localasqt, 1);
+        bcst.b(null, "P_CliOper", "Grp_set", "", "Radar_grp_guest", "Clk_join", 0, 0, localasqt.e, this.jdField_a_of_type_Asqo.a().getCurrentAccountUin(), "", "");
+      }
     }
-    paramView = (aqkt)this.jdField_a_of_type_Aqkw;
-    this.jdField_a_of_type_Aqko.a(paramView, 1);
-    azqs.b(null, "P_CliOper", "Grp_set", "", "Radar_grp_guest", "Clk_join", 0, 0, paramView.e, this.jdField_a_of_type_Aqko.a().getCurrentAccountUin(), "", "");
   }
   
-  public void setBindData(aqkw paramaqkw, View.OnClickListener paramOnClickListener)
+  public void setBindData(asqw paramasqw, View.OnClickListener paramOnClickListener)
   {
-    this.jdField_a_of_type_Aqkw = paramaqkw;
-    QQAppInterface localQQAppInterface = this.jdField_a_of_type_Aqko.a();
-    if ((paramaqkw instanceof aqkt))
+    this.jdField_a_of_type_Asqw = paramasqw;
+    QQAppInterface localQQAppInterface = this.jdField_a_of_type_Asqo.a();
+    if ((paramasqw instanceof asqt))
     {
-      localObject2 = (aqkt)paramaqkw;
-      localObject1 = this.jdField_a_of_type_Aqko.a().a(paramaqkw.e, (byte)3, false, false);
-      paramaqkw = (aqkw)localObject1;
+      localObject2 = (asqt)paramasqw;
+      localObject1 = this.jdField_a_of_type_Asqo.a().a(paramasqw.e, (byte)3, false, false);
+      paramasqw = (asqw)localObject1;
       if (localObject1 == null) {
-        paramaqkw = bdhj.f();
+        paramasqw = bgmo.f();
       }
-      this.jdField_a_of_type_AndroidWidgetImageView.setBackgroundDrawable(new BitmapDrawable(paramaqkw));
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(((aqkt)localObject2).a);
-      this.jdField_b_of_type_AndroidWidgetTextView.setText("(" + ((aqkt)localObject2).e + ")");
-      localObject1 = ((aqkt)localObject2).c;
-      paramaqkw = (aqkw)localObject1;
+      this.jdField_a_of_type_AndroidWidgetImageView.setBackgroundDrawable(new BitmapDrawable(paramasqw));
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(((asqt)localObject2).a);
+      this.jdField_b_of_type_AndroidWidgetTextView.setText("(" + ((asqt)localObject2).e + ")");
+      localObject1 = ((asqt)localObject2).c;
+      paramasqw = (asqw)localObject1;
       if (TextUtils.isEmpty((CharSequence)localObject1)) {
-        paramaqkw = ((aqkt)localObject2).b;
+        paramasqw = ((asqt)localObject2).b;
       }
-      paramaqkw = localQQAppInterface.getApplication().getString(2131692391, new Object[] { paramaqkw });
-      this.c.setText(paramaqkw);
+      paramasqw = localQQAppInterface.getApplication().getString(2131691981, new Object[] { paramasqw });
+      this.c.setText(paramasqw);
       this.c.setVisibility(0);
       this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
-      if (this.jdField_a_of_type_Aqko.a(((aqkt)localObject2).e))
+      if (this.jdField_a_of_type_Asqo.a(((asqt)localObject2).e))
       {
         setBtnEnabled(false);
-        this.jdField_a_of_type_AndroidWidgetButton.setText(2131692383);
+        this.jdField_a_of_type_AndroidWidgetButton.setText(2131691973);
       }
     }
-    while (!(paramaqkw instanceof aqkx)) {
+    while (!(paramasqw instanceof asqx)) {
       for (;;)
       {
         this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(paramOnClickListener);
         return;
         setBtnEnabled(true);
-        this.jdField_a_of_type_AndroidWidgetButton.setText(2131692382);
+        this.jdField_a_of_type_AndroidWidgetButton.setText(2131691972);
       }
     }
-    Object localObject2 = localQQAppInterface.a(paramaqkw.e, (byte)3, true);
+    Object localObject2 = localQQAppInterface.a(paramasqw.e, (byte)3, true);
     Object localObject1 = localObject2;
     if (localObject2 == null) {
-      localObject1 = bdhj.a();
+      localObject1 = bgmo.a();
     }
     this.jdField_a_of_type_AndroidWidgetImageView.setBackgroundDrawable(new BitmapDrawable((Bitmap)localObject1));
-    localObject1 = (aqkx)paramaqkw;
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(((aqkx)localObject1).a);
-    paramaqkw = ((alto)localQQAppInterface.getManager(51)).e(paramaqkw.e);
-    if ((paramaqkw != null) && (!TextUtils.isEmpty(paramaqkw.remark)))
+    localObject1 = (asqx)paramasqw;
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(((asqx)localObject1).a);
+    paramasqw = ((anmw)localQQAppInterface.getManager(51)).e(paramasqw.e);
+    if ((paramasqw != null) && (!TextUtils.isEmpty(paramasqw.remark)))
     {
-      this.jdField_b_of_type_AndroidWidgetTextView.setText("(" + paramaqkw.remark + ")");
+      this.jdField_b_of_type_AndroidWidgetTextView.setText("(" + paramasqw.remark + ")");
       this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
     }
     for (;;)
     {
       this.c.setVisibility(8);
       setBtnEnabled(false);
-      this.jdField_a_of_type_AndroidWidgetButton.setText(2131692384);
+      this.jdField_a_of_type_AndroidWidgetButton.setText(2131691974);
       break;
       this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
     }
@@ -182,17 +188,17 @@ public class Face2FaceTroopDetailView
   {
     if (paramBoolean)
     {
-      this.jdField_a_of_type_AndroidWidgetButton.setBackgroundResource(2130839108);
+      this.jdField_a_of_type_AndroidWidgetButton.setBackgroundResource(2130839283);
       this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
       return;
     }
-    this.jdField_a_of_type_AndroidWidgetButton.setBackgroundResource(2130839124);
+    this.jdField_a_of_type_AndroidWidgetButton.setBackgroundResource(2130839299);
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.facetoface.Face2FaceTroopDetailView
  * JD-Core Version:    0.7.0.1
  */

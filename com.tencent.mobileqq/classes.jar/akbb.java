@@ -1,93 +1,141 @@
-import android.view.LayoutInflater;
+import android.content.Intent;
+import android.os.Build;
+import android.os.Build.VERSION;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.CheckBox;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.selectmember.SelectMemberFromFriendGroup;
-import com.tencent.mobileqq.data.Groups;
-import java.util.ArrayList;
-import java.util.List;
+import com.tencent.mobileqq.activity.ProfileActivity;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.activity.pendant.AvatarPendantActivity;
+import com.tencent.mobileqq.activity.pendant.AvatarPendantActivity.13.2;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.avatar.dynamicavatar.DynamicAvatarRecordActivity;
+import com.tencent.mobileqq.shortvideo.VideoEnvironment;
+import com.tencent.mobileqq.utils.AudioHelper;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class akbb
-  extends BaseAdapter
+  implements bkhw
 {
-  public akbb(SelectMemberFromFriendGroup paramSelectMemberFromFriendGroup) {}
+  public akbb(AvatarPendantActivity paramAvatarPendantActivity, boolean paramBoolean, bkho parambkho) {}
   
-  public int getCount()
+  public void OnClick(View paramView, int paramInt)
   {
-    return SelectMemberFromFriendGroup.a(this.a).size();
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    return SelectMemberFromFriendGroup.a(this.a).get(paramInt);
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    if (paramView == null)
+    switch (paramInt)
     {
-      paramView = LayoutInflater.from(this.a.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity).inflate(2131560251, null);
-      paramViewGroup = new akbd(this);
-      paramViewGroup.jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)paramView.findViewById(2131364256));
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131367316));
-      paramViewGroup.b = ((TextView)paramView.findViewById(2131367317));
-      paramView.setTag(paramViewGroup);
-      paramView.setOnClickListener(new akbc(this));
-      paramViewGroup.jdField_a_of_type_Int = paramInt;
-      paramViewGroup.jdField_a_of_type_ComTencentMobileqqDataGroups = ((Groups)getItem(paramInt));
-      int i = paramViewGroup.jdField_a_of_type_ComTencentMobileqqDataGroups.group_friend_count;
-      paramViewGroup.b.setText("" + i);
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText(paramViewGroup.jdField_a_of_type_ComTencentMobileqqDataGroups.group_name);
-      paramViewGroup.jdField_a_of_type_AndroidWidgetCheckBox.setTag(paramViewGroup);
-      if (!this.a.a(paramViewGroup.jdField_a_of_type_ComTencentMobileqqDataGroups)) {
-        break label224;
-      }
-      paramViewGroup.jdField_a_of_type_AndroidWidgetCheckBox.setEnabled(false);
-      paramViewGroup.jdField_a_of_type_AndroidWidgetCheckBox.setChecked(false);
     }
     for (;;)
     {
-      if (SelectMemberFromFriendGroup.a(this.a).size() != 1) {
-        break label258;
-      }
-      paramView.setBackgroundResource(2130839261);
-      return paramView;
-      paramViewGroup = (akbd)paramView.getTag();
-      break;
-      label224:
-      paramViewGroup.jdField_a_of_type_AndroidWidgetCheckBox.setEnabled(true);
-      paramViewGroup.jdField_a_of_type_AndroidWidgetCheckBox.setChecked(this.a.jdField_a_of_type_JavaUtilList.contains(paramViewGroup.jdField_a_of_type_ComTencentMobileqqDataGroups));
-    }
-    label258:
-    if (SelectMemberFromFriendGroup.a(this.a).size() == 2)
-    {
-      if (paramInt == 0)
+      try
       {
-        paramView.setBackgroundResource(2130839270);
-        return paramView;
+        this.jdField_a_of_type_Bkho.dismiss();
+        return;
       }
-      paramView.setBackgroundResource(2130839261);
-      return paramView;
+      catch (Exception paramView)
+      {
+        boolean bool;
+        int i;
+        int j;
+        paramView.printStackTrace();
+      }
+      bool = VideoEnvironment.e();
+      if ((AudioHelper.b()) || (Build.MODEL.contains("Redmi 3")) || (Build.MODEL.contains("M3S")))
+      {
+        QQToast.a(this.jdField_a_of_type_ComTencentMobileqqActivityPendantAvatarPendantActivity, anni.a(2131699678), 0).a();
+      }
+      else if (bool)
+      {
+        if (Build.VERSION.SDK_INT >= 23)
+        {
+          if (this.jdField_a_of_type_ComTencentMobileqqActivityPendantAvatarPendantActivity.checkSelfPermission("android.permission.CAMERA") != 0)
+          {
+            paramInt = 1;
+            if (this.jdField_a_of_type_ComTencentMobileqqActivityPendantAvatarPendantActivity.checkSelfPermission("android.permission.RECORD_AUDIO") != 0)
+            {
+              i = 1;
+              if (this.jdField_a_of_type_ComTencentMobileqqActivityPendantAvatarPendantActivity.checkSelfPermission("android.permission.WRITE_EXTERNAL_STORAGE") == 0) {
+                continue;
+              }
+              j = 1;
+              if ((paramInt == 0) && (i == 0) && (j == 0)) {
+                continue;
+              }
+              this.jdField_a_of_type_ComTencentMobileqqActivityPendantAvatarPendantActivity.requestPermissions(new akbc(this), 1, new String[] { "android.permission.CAMERA", "android.permission.RECORD_AUDIO", "android.permission.WRITE_EXTERNAL_STORAGE" });
+            }
+          }
+          else
+          {
+            paramInt = 0;
+            continue;
+          }
+          i = 0;
+          continue;
+          j = 0;
+          continue;
+          DynamicAvatarRecordActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityPendantAvatarPendantActivity, 1, 1);
+          bcst.b(this.jdField_a_of_type_ComTencentMobileqqActivityPendantAvatarPendantActivity.app, "dc00898", "", "", "0X8007100", "0X8007100", 0, 0, "", "", "", "");
+        }
+        else
+        {
+          DynamicAvatarRecordActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityPendantAvatarPendantActivity, 1, 1);
+          bcst.b(this.jdField_a_of_type_ComTencentMobileqqActivityPendantAvatarPendantActivity.app, "dc00898", "", "", "0X8007100", "0X8007100", 0, 0, "", "", "", "");
+        }
+      }
+      else
+      {
+        if (!this.jdField_a_of_type_ComTencentMobileqqActivityPendantAvatarPendantActivity.e)
+        {
+          ThreadManager.postImmediately(new AvatarPendantActivity.13.2(this), null, true);
+          this.jdField_a_of_type_ComTencentMobileqqActivityPendantAvatarPendantActivity.e = true;
+        }
+        QQToast.a(this.jdField_a_of_type_ComTencentMobileqqActivityPendantAvatarPendantActivity, anni.a(2131699682), 0).a();
+        continue;
+        this.jdField_a_of_type_ComTencentMobileqqActivityPendantAvatarPendantActivity.g();
+        AvatarPendantActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityPendantAvatarPendantActivity);
+        continue;
+        this.jdField_a_of_type_ComTencentMobileqqActivityPendantAvatarPendantActivity.g();
+        if (Build.VERSION.SDK_INT >= 23)
+        {
+          if (this.jdField_a_of_type_ComTencentMobileqqActivityPendantAvatarPendantActivity.checkSelfPermission("android.permission.CAMERA") != 0)
+          {
+            paramInt = 1;
+            if (this.jdField_a_of_type_ComTencentMobileqqActivityPendantAvatarPendantActivity.checkSelfPermission("android.permission.WRITE_EXTERNAL_STORAGE") != 0)
+            {
+              i = 1;
+              if ((paramInt == 0) && (i == 0)) {
+                continue;
+              }
+              this.jdField_a_of_type_ComTencentMobileqqActivityPendantAvatarPendantActivity.requestPermissions(new akbd(this), 2, new String[] { "android.permission.CAMERA", "android.permission.WRITE_EXTERNAL_STORAGE" });
+            }
+          }
+          else
+          {
+            paramInt = 0;
+            continue;
+          }
+          i = 0;
+          continue;
+          this.jdField_a_of_type_ComTencentMobileqqActivityPendantAvatarPendantActivity.jdField_a_of_type_AndroidNetUri = ProfileActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityPendantAvatarPendantActivity, 5);
+          bcst.b(this.jdField_a_of_type_ComTencentMobileqqActivityPendantAvatarPendantActivity.app, "CliOper", "", "", "0X8004176", "0X8004176", this.jdField_a_of_type_ComTencentMobileqqActivityPendantAvatarPendantActivity.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.h, 0, "", "", "", "");
+        }
+        else
+        {
+          this.jdField_a_of_type_ComTencentMobileqqActivityPendantAvatarPendantActivity.jdField_a_of_type_AndroidNetUri = ProfileActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityPendantAvatarPendantActivity, 5);
+          bcst.b(this.jdField_a_of_type_ComTencentMobileqqActivityPendantAvatarPendantActivity.app, "CliOper", "", "", "0X8004176", "0X8004176", this.jdField_a_of_type_ComTencentMobileqqActivityPendantAvatarPendantActivity.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.h, 0, "", "", "", "");
+          continue;
+          if (this.jdField_a_of_type_Boolean)
+          {
+            paramView = new Intent(this.jdField_a_of_type_ComTencentMobileqqActivityPendantAvatarPendantActivity, QQBrowserActivity.class);
+            paramView.putExtra("url", "https://ti.qq.com/avatarlist/public/index.html?_wv=3&_wwv=4");
+            this.jdField_a_of_type_ComTencentMobileqqActivityPendantAvatarPendantActivity.startActivity(paramView);
+            bcst.b(this.jdField_a_of_type_ComTencentMobileqqActivityPendantAvatarPendantActivity.app, "dc00898", "", "", "0X8007C10", "0X8007C10", 0, 0, "", "", "", "");
+          }
+          else
+          {
+            bghy.a(this.jdField_a_of_type_ComTencentMobileqqActivityPendantAvatarPendantActivity.app, this.jdField_a_of_type_ComTencentMobileqqActivityPendantAvatarPendantActivity, this.jdField_a_of_type_ComTencentMobileqqActivityPendantAvatarPendantActivity.jdField_a_of_type_ComTencentMobileqqAvatarDynamicavatarDynamicAvatarView, this.jdField_a_of_type_ComTencentMobileqqActivityPendantAvatarPendantActivity.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.a, 0, 0);
+          }
+        }
+      }
     }
-    if (paramInt == 0)
-    {
-      paramView.setBackgroundResource(2130839270);
-      return paramView;
-    }
-    if (paramInt == SelectMemberFromFriendGroup.a(this.a).size() - 1)
-    {
-      paramView.setBackgroundResource(2130839261);
-      return paramView;
-    }
-    paramView.setBackgroundResource(2130839264);
-    return paramView;
   }
 }
 

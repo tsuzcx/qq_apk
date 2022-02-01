@@ -1,74 +1,51 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import android.annotation.TargetApi;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.Matrix;
+import android.graphics.Paint;
+import android.graphics.Point;
+import android.graphics.Rect;
+import android.view.View;
+import android.view.View.DragShadowBuilder;
+import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
 
-public class axvy
-  extends Handler
+@TargetApi(11)
+class axvy
+  extends View.DragShadowBuilder
 {
-  protected WeakReference<axvw> a;
+  public int a;
   
-  public axvy(axvw paramaxvw1, Looper paramLooper, axvw paramaxvw2)
+  public axvy(axuv paramaxuv, View paramView)
   {
-    super(paramLooper);
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramaxvw2);
+    super(paramView);
+    this.jdField_a_of_type_Int = ((int)(this.jdField_a_of_type_Axuv.a.f * 1.4D));
   }
   
-  public void handleMessage(Message paramMessage)
+  public void onDrawShadow(Canvas paramCanvas)
   {
-    int i = paramMessage.what;
-    axvw localaxvw = (axvw)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (localaxvw == null) {
-      if (QLog.isColorLevel()) {
-        QLog.w("HWVideoRecorder", 2, "RecodeHandler.handleMessage: encoder is null");
-      }
-    }
-    label187:
-    do
-    {
-      do
-      {
-        return;
-        switch (i)
-        {
-        default: 
-          throw new RuntimeException("Unhandled msg what=" + i);
-        case 0: 
-          if (paramMessage.obj != null)
-          {
-            axvw.a(localaxvw, (axvz)paramMessage.obj);
-            return;
-          }
-          throw new RuntimeException("bundle == null");
-        case 1: 
-          if ((axvw.a(this.jdField_a_of_type_Axvw)) || (axvw.a(this.jdField_a_of_type_Axvw) == null) || (!axvw.a(this.jdField_a_of_type_Axvw).a)) {
-            break label187;
-          }
-          sendEmptyMessageDelayed(1, 100L);
-        }
-      } while ((!QLog.isColorLevel()) || (!QLog.isColorLevel()));
-      QLog.d("HWVideoRecorder", 2, "Thumbnail is not ready. Wait 100ms and retry.");
-      return;
-      axvw.a(localaxvw);
-      return;
-      if (paramMessage.obj != null)
-      {
-        paramMessage = (Object[])paramMessage.obj;
-        if ((paramMessage == null) || (paramMessage.length != 5)) {
-          throw new IllegalArgumentException("args == null || args.length != 6");
-        }
-        localaxvw.b(((Integer)paramMessage[0]).intValue(), ((Integer)paramMessage[1]).intValue(), (float[])paramMessage[2], (float[])paramMessage[3], ((Long)paramMessage[4]).longValue());
-        return;
-      }
-      throw new RuntimeException("bundle == null");
-    } while (axvw.a(this.jdField_a_of_type_Axvw) == null);
-    axvw.a(this.jdField_a_of_type_Axvw).a();
+    getView().setDrawingCacheEnabled(false);
+    getView().setDrawingCacheEnabled(true);
+    Object localObject = new Paint();
+    ((Paint)localObject).setShadowLayer(10.0F, 0.0F, 0.0F, -16777216);
+    paramCanvas.drawRect(new Rect(10, 10, this.jdField_a_of_type_Int + 10, this.jdField_a_of_type_Int + 10), (Paint)localObject);
+    localObject = getView().getDrawingCache();
+    Matrix localMatrix = new Matrix();
+    float f = this.jdField_a_of_type_Int / ((Bitmap)localObject).getWidth();
+    localMatrix.postScale(f, f);
+    paramCanvas.drawBitmap(Bitmap.createBitmap((Bitmap)localObject, 0, 0, ((Bitmap)localObject).getWidth(), ((Bitmap)localObject).getHeight(), localMatrix, true), 10.0F, 10.0F, null);
+  }
+  
+  public void onProvideShadowMetrics(Point paramPoint1, Point paramPoint2)
+  {
+    int i = this.jdField_a_of_type_Int + 20;
+    int j = this.jdField_a_of_type_Int + 20;
+    paramPoint1.set(i, j);
+    paramPoint2.set(i / 2, j / 2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     axvy
  * JD-Core Version:    0.7.0.1
  */

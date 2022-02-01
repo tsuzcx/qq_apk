@@ -1,16 +1,33 @@
-import com.tencent.qphone.base.util.MsfSocketInputBuffer;
+import android.graphics.Color;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.qwallet.redpacket.draw.DrawRedpacketPannelPreviewFragment;
+import com.tencent.qphone.base.util.QLog;
 
-public abstract interface akvg
+public class akvg
+  implements akul
 {
-  public abstract void a(MsfSocketInputBuffer paramMsfSocketInputBuffer);
+  public akvg(DrawRedpacketPannelPreviewFragment paramDrawRedpacketPannelPreviewFragment) {}
   
-  public abstract void a(boolean paramBoolean);
+  public void a()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(DrawRedpacketPannelPreviewFragment.a, 2, "---onLineBegin---");
+    }
+    DrawRedpacketPannelPreviewFragment.a(this.a, false);
+    DrawRedpacketPannelPreviewFragment.a(this.a);
+    DrawRedpacketPannelPreviewFragment.d(this.a).setTextColor(Color.parseColor("#878B99"));
+    DrawRedpacketPannelPreviewFragment.d(this.a).setText(anni.a(2131702324));
+  }
   
-  public abstract byte[] a();
+  public void a(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(DrawRedpacketPannelPreviewFragment.a, 2, "---onLineFinish---");
+    }
+    DrawRedpacketPannelPreviewFragment.c(this.a);
+  }
   
-  public abstract void c();
-  
-  public abstract void d();
+  public void a(int paramInt1, int paramInt2) {}
 }
 
 

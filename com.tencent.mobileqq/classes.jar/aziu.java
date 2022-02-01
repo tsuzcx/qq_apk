@@ -1,130 +1,30 @@
-import com.tencent.qphone.base.util.QLog;
+import android.app.Activity;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.profile.stickynote.vas.StickyNoteShopLayout;
 
-public class aziu
+class aziu
+  implements DialogInterface.OnClickListener
 {
-  public static aziu a;
-  private final int jdField_a_of_type_Int = 20;
-  private long jdField_a_of_type_Long;
-  private boolean jdField_a_of_type_Boolean;
-  private int jdField_b_of_type_Int;
-  private long jdField_b_of_type_Long;
-  private boolean jdField_b_of_type_Boolean;
-  private long jdField_c_of_type_Long;
-  private boolean jdField_c_of_type_Boolean;
-  private long jdField_d_of_type_Long;
-  private volatile boolean jdField_d_of_type_Boolean;
-  private long e;
-  private long f;
-  private long g;
+  aziu(azir paramazir, Context paramContext, String paramString1, String paramString2, String paramString3) {}
   
-  public static aziu a()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (jdField_a_of_type_Aziu == null) {}
-    try
-    {
-      if (jdField_a_of_type_Aziu == null) {
-        jdField_a_of_type_Aziu = new aziu();
-      }
-      return jdField_a_of_type_Aziu;
-    }
-    finally {}
-  }
-  
-  private void f()
-  {
-    this.jdField_d_of_type_Boolean = false;
-    this.jdField_b_of_type_Int = 0;
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_c_of_type_Boolean = false;
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_b_of_type_Long = 0L;
-    this.jdField_c_of_type_Long = 0L;
-    this.jdField_d_of_type_Long = 0L;
-    this.e = 0L;
-  }
-  
-  public void a()
-  {
-    if (this.jdField_d_of_type_Boolean) {
-      this.f = System.currentTimeMillis();
-    }
-  }
-  
-  public void a(boolean paramBoolean1, boolean paramBoolean2)
-  {
-    int i = 1;
-    if ((this.jdField_d_of_type_Boolean) && (this.jdField_b_of_type_Int <= 20))
-    {
-      this.jdField_b_of_type_Int += 1;
-      if (QLog.isColorLevel()) {
-        QLog.i("GestureMonitorManager", 2, "start " + this.jdField_b_of_type_Int + "");
-      }
-    }
-    do
-    {
-      return;
-      if ((this.jdField_d_of_type_Boolean) && (this.jdField_b_of_type_Int > 20))
-      {
-        e();
-        f();
-        return;
-      }
-    } while (this.jdField_d_of_type_Boolean);
-    if ((paramBoolean1) && (paramBoolean2))
-    {
-      paramBoolean1 = true;
-      this.jdField_d_of_type_Boolean = paramBoolean1;
-      if (!this.jdField_d_of_type_Boolean) {
-        break label133;
-      }
+    String str;
+    if (azir.a(this.jdField_a_of_type_Azir).a == 1) {
+      str = "&g_ch=suixintie&actId=460973&isAskFriendPay=0";
     }
     for (;;)
     {
-      this.jdField_b_of_type_Int = i;
+      bgzo.a((Activity)this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString + str, this.b, this.c, 0);
+      paramDialogInterface.dismiss();
       return;
-      paramBoolean1 = false;
-      break;
-      label133:
-      i = 0;
-    }
-  }
-  
-  public void b()
-  {
-    if (this.jdField_d_of_type_Boolean)
-    {
-      this.f = (System.currentTimeMillis() - this.f);
-      this.jdField_a_of_type_Long += this.f;
-      if (QLog.isColorLevel()) {
-        QLog.i("GestureMonitorManager", 2, "GestureMonitorManager TotalDetetcorConsumer[startPreview] " + this.f + "ms");
+      if (azir.a(this.jdField_a_of_type_Azir).a == 2) {
+        str = "&g_ch=扩列装扮&actId=466499&isAskFriendPay=0";
+      } else {
+        str = "";
       }
-    }
-  }
-  
-  public void c()
-  {
-    if (this.jdField_d_of_type_Boolean) {
-      this.g = System.currentTimeMillis();
-    }
-  }
-  
-  public void d()
-  {
-    if (this.jdField_d_of_type_Boolean)
-    {
-      this.g = (System.currentTimeMillis() - this.g);
-      this.jdField_d_of_type_Long += this.g;
-      if (QLog.isColorLevel()) {
-        QLog.i("GestureMonitorManager", 2, "GestureMonitorManager GestureDrawConsumer[GestureDraw] " + this.g + "ms");
-      }
-    }
-  }
-  
-  public void e()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("GestureMonitorManagerdoReport", 2, "GestureMonitorManager check Frame numbers[+20],[StartPreview:" + this.jdField_a_of_type_Long + "ms],[FaceDetector Aysn childThread:" + this.jdField_c_of_type_Long + "ms],ms],[FaceDraw:" + this.jdField_b_of_type_Long + "ms],[GestureDetector Aysn childThread:" + this.e + "ms],ms],[GestureDraw:" + this.jdField_d_of_type_Long + "ms]");
     }
   }
 }

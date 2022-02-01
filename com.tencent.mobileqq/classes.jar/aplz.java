@@ -1,17 +1,69 @@
-import java.lang.annotation.Annotation;
-import java.lang.annotation.Documented;
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
-import java.lang.annotation.Target;
+import KQQ.BatchResponse;
+import KQQ.RespBatchProcess;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.TroopManager;
+import com.tencent.mobileqq.data.TroopInfo;
+import com.tencent.mobileqq.troopinfo.TroopInfoData;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
-@Documented
-@Retention(RetentionPolicy.RUNTIME)
-@Target({java.lang.annotation.ElementType.FIELD})
-public @interface aplz
+class aplz
+  extends anxg
 {
-  boolean a() default false;
+  aplz(aplx paramaplx) {}
   
-  boolean b() default false;
+  protected void a(boolean paramBoolean, long paramLong, RespBatchProcess paramRespBatchProcess, Bundle paramBundle)
+  {
+    this.a.a().removeObserver(this);
+    paramBundle = new TroopInfoData();
+    paramBundle.isMember = true;
+    Object localObject;
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder().append("onBatchGetTroopInfoResp, isSucc=").append(paramBoolean).append(", resp IsNull=");
+      if (paramRespBatchProcess == null)
+      {
+        paramBoolean = true;
+        QLog.d("ark.Troop", 2, paramBoolean);
+      }
+    }
+    else
+    {
+      if ((paramRespBatchProcess != null) && (paramRespBatchProcess.batch_response_list != null) && (paramRespBatchProcess.batch_response_list.size() != 0)) {
+        break label121;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.w("ark.Troop", 2, "onBatchGetTroopInfoResp, return");
+      }
+    }
+    label121:
+    int j;
+    do
+    {
+      return;
+      paramBoolean = false;
+      break;
+      j = paramRespBatchProcess.batch_response_list.size();
+      int i = 0;
+      if (i < j)
+      {
+        localObject = (BatchResponse)paramRespBatchProcess.batch_response_list.get(i);
+        if ((localObject == null) || (((BatchResponse)localObject).result != 0)) {}
+        for (;;)
+        {
+          i += 1;
+          break;
+          if (((BatchResponse)localObject).type == 1)
+          {
+            TroopInfo localTroopInfo = ((TroopManager)this.a.a().getManager(52)).b(this.a.a);
+            this.a.a((BatchResponse)localObject, paramBundle, localTroopInfo);
+          }
+        }
+      }
+    } while (j <= 0);
+    aplx.a(this.a, this.a.a, paramBundle);
+  }
 }
 
 

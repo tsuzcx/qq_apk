@@ -1,7 +1,7 @@
 package dov.com.qq.im.capture.text;
 
 import android.text.TextUtils;
-import blxg;
+import boqk;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -11,7 +11,7 @@ import org.json.JSONObject;
 
 public class DynamicTextConfigManager$DynamicTextConfigBean
 {
-  public ArrayList<blxg> fontInfos = new ArrayList();
+  public ArrayList<boqk> fontInfos = new ArrayList();
   public int iconDrawableId;
   public int predownload;
   public int text_id;
@@ -44,8 +44,8 @@ public class DynamicTextConfigManager$DynamicTextConfigBean
             i = 0;
             while (i < j)
             {
-              localObject2 = blxg.a((JSONObject)paramJSONObject.get(i));
-              ((blxg)localObject2).jdField_a_of_type_Int = localDynamicTextConfigBean.text_id;
+              localObject2 = boqk.a((JSONObject)paramJSONObject.get(i));
+              ((boqk)localObject2).jdField_a_of_type_Int = localDynamicTextConfigBean.text_id;
               if (localObject2 != null) {
                 localDynamicTextConfigBean.fontInfos.add(localObject2);
               }
@@ -79,7 +79,7 @@ public class DynamicTextConfigManager$DynamicTextConfigBean
     }
     int k = this.fontInfos.size();
     Iterator localIterator = this.fontInfos.iterator();
-    for (int i = 0;; i = ((blxg)localIterator.next()).b * 1 / k + i)
+    for (int i = 0;; i = ((boqk)localIterator.next()).b * 1 / k + i)
     {
       j = i;
       if (!localIterator.hasNext()) {
@@ -96,8 +96,8 @@ public class DynamicTextConfigManager$DynamicTextConfigBean
     Iterator localIterator = this.fontInfos.iterator();
     while (localIterator.hasNext())
     {
-      blxg localblxg = (blxg)localIterator.next();
-      if ((localblxg != null) && (paramString.equals(localblxg.jdField_a_of_type_JavaLangString))) {
+      boqk localboqk = (boqk)localIterator.next();
+      if ((localboqk != null) && (paramString.equals(localboqk.jdField_a_of_type_JavaLangString))) {
         return true;
       }
     }
@@ -106,7 +106,7 @@ public class DynamicTextConfigManager$DynamicTextConfigBean
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     dov.com.qq.im.capture.text.DynamicTextConfigManager.DynamicTextConfigBean
  * JD-Core Version:    0.7.0.1
  */

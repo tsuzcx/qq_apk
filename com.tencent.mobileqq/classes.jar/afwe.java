@@ -1,22 +1,11 @@
-import android.widget.TextView;
-import com.etrump.mixlayout.ETTextView;
-import com.tencent.mobileqq.widget.MixedMsgLinearLayout;
+import android.graphics.drawable.Drawable;
 
 public class afwe
-  extends aeqi
 {
-  private long jdField_a_of_type_Long;
-  public ajxp a;
-  public TextView a;
-  public ETTextView a;
-  private MixedMsgLinearLayout jdField_a_of_type_ComTencentMobileqqWidgetMixedMsgLinearLayout;
+  public int a;
+  public Drawable a;
+  public String a;
   public boolean a;
-  public TextView b;
-  public ETTextView b;
-  private String b = "0";
-  public int e = -1;
-  
-  public afwe(afwa paramafwa) {}
 }
 
 

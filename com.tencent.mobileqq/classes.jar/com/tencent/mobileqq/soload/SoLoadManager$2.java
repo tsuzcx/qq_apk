@@ -1,22 +1,21 @@
 package com.tencent.mobileqq.soload;
 
-import azms;
-import azmw;
-import azmy;
+import bcob;
+import bcof;
 
 public class SoLoadManager$2
   implements Runnable
 {
-  public SoLoadManager$2(azmy paramazmy, azms paramazms, azmw paramazmw) {}
+  public SoLoadManager$2(bcof parambcof, LoadParam paramLoadParam, bcob parambcob) {}
   
   public void run()
   {
-    azmy.b(this.this$0, this.jdField_a_of_type_Azms, this.jdField_a_of_type_Azmw);
+    bcof.b(this.this$0, this.jdField_a_of_type_ComTencentMobileqqSoloadLoadParam, this.jdField_a_of_type_Bcob);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.soload.SoLoadManager.2
  * JD-Core Version:    0.7.0.1
  */

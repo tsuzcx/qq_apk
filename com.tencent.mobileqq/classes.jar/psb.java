@@ -1,135 +1,54 @@
-import android.graphics.drawable.Drawable;
-import android.text.TextUtils;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.RecommendFollowInfo;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import java.util.HashMap;
-import java.util.List;
+import android.os.Handler;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyViolaChannelFragment;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyViolaChannelFragment.3.1;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyViolaChannelFragment.3.2;
+import com.tencent.qphone.base.util.QLog;
 
 public class psb
-  extends BaseAdapter
+  implements tsu
 {
-  private List<RecommendFollowInfo> jdField_a_of_type_JavaUtilList;
+  public psb(ReadInJoyViolaChannelFragment paramReadInJoyViolaChannelFragment) {}
   
-  private psb(prr paramprr) {}
-  
-  public void a(List<RecommendFollowInfo> paramList)
+  public void a()
   {
-    this.jdField_a_of_type_JavaUtilList = paramList;
-    notifyDataSetChanged();
-  }
-  
-  public int getCount()
-  {
-    if (this.jdField_a_of_type_JavaUtilList != null) {
-      return this.jdField_a_of_type_JavaUtilList.size();
+    if (this.a.getActivity() != null) {
+      new Handler(this.a.getActivity().getMainLooper()).postDelayed(new ReadInJoyViolaChannelFragment.3.2(this), 200L);
     }
-    return 0;
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    return null;
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    int i = 8;
-    RecommendFollowInfo localRecommendFollowInfo;
-    Object localObject;
-    if (paramView == null)
-    {
-      paramView = LayoutInflater.from(paramViewGroup.getContext()).inflate(2131560098, paramViewGroup, false);
-      paramViewGroup = new psc(this.jdField_a_of_type_Prr, null);
-      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131367538));
-      paramViewGroup.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131367547));
-      paramViewGroup.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131379485));
-      paramViewGroup.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131376979));
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131371167));
-      paramViewGroup.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131377448));
-      paramViewGroup.jdField_c_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131366651));
-      paramViewGroup.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131366642));
-      paramView.setTag(paramViewGroup);
-      paramView.setBackgroundResource(2130842590);
-      paramView.setOnClickListener(paramViewGroup);
-      paramViewGroup.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnClickListener(paramViewGroup);
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(paramViewGroup);
-      paramViewGroup.jdField_a_of_type_AndroidWidgetLinearLayout.setOnClickListener(paramViewGroup);
-      localRecommendFollowInfo = (RecommendFollowInfo)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-      paramViewGroup.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructRecommendFollowInfo = localRecommendFollowInfo;
-      prr.a(this.jdField_a_of_type_Prr).mRecommendFollowInfos.a.put(Long.valueOf(localRecommendFollowInfo.uin), localRecommendFollowInfo);
-      if (TextUtils.isEmpty(localRecommendFollowInfo.headUrl)) {
-        break label500;
-      }
-      localObject = URLDrawable.URLDrawableOptions.obtain();
-      Drawable localDrawable = bdhj.b();
-      ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = localDrawable;
-      ((URLDrawable.URLDrawableOptions)localObject).mFailedDrawable = localDrawable;
-      localObject = URLDrawable.getDrawable(localRecommendFollowInfo.headUrl, (URLDrawable.URLDrawableOptions)localObject);
-      ((URLDrawable)localObject).setDecodeHandler(bcyz.a);
-      ((URLDrawable)localObject).setFadeInImage(true);
-      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localObject);
-      label298:
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText(localRecommendFollowInfo.nickName);
-      paramViewGroup.jdField_b_of_type_AndroidWidgetTextView.setText(localRecommendFollowInfo.recommendReason);
-      if (!localRecommendFollowInfo.isFollowed) {
-        break label513;
-      }
-      paramViewGroup.jdField_c_of_type_AndroidWidgetTextView.setText(alud.a(2131713382));
-      paramViewGroup.jdField_c_of_type_AndroidWidgetTextView.setTextColor(-8947849);
-      paramViewGroup.jdField_a_of_type_AndroidWidgetLinearLayout.setBackgroundResource(2130848929);
-      label360:
-      localObject = paramViewGroup.jdField_b_of_type_AndroidWidgetImageView;
-      if (!localRecommendFollowInfo.isVip) {
-        break label547;
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadInJoyViolaChannelFragment", 2, "reloadPage success!");
     }
-    label513:
-    label547:
-    for (paramInt = 0;; paramInt = 8)
-    {
-      ((ImageView)localObject).setVisibility(paramInt);
-      paramViewGroup = paramViewGroup.jdField_c_of_type_AndroidWidgetImageView;
-      paramInt = i;
-      if (localRecommendFollowInfo.isStar) {
-        paramInt = 0;
-      }
-      paramViewGroup.setVisibility(paramInt);
-      if (!localRecommendFollowInfo.hasReport)
-      {
-        localRecommendFollowInfo.hasReport = true;
-        nrt.a(null, ors.a() + "", "0X8009848", "0X8009848", 0, 0, "1", localRecommendFollowInfo.uin + "", "", "", false);
-      }
-      return paramView;
-      paramViewGroup = (psc)paramView.getTag();
-      break;
-      label500:
-      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(bdhj.b());
-      break label298;
-      paramViewGroup.jdField_c_of_type_AndroidWidgetTextView.setText(alud.a(2131713384));
-      paramViewGroup.jdField_c_of_type_AndroidWidgetTextView.setTextColor(-1);
-      paramViewGroup.jdField_a_of_type_AndroidWidgetLinearLayout.setBackgroundResource(2130848898);
-      break label360;
+  }
+  
+  public void a(int paramInt)
+  {
+    if (this.a.getActivity() != null) {
+      new Handler(this.a.getActivity().getMainLooper()).postDelayed(new ReadInJoyViolaChannelFragment.3.1(this), 1000L);
+    }
+    if (QLog.isColorLevel()) {
+      QLog.e("ReadInJoyViolaChannelFragment", 2, "reloadPage error,error code=" + paramInt);
+    }
+  }
+  
+  public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, boolean paramBoolean) {}
+  
+  public void a(String paramString, int paramInt)
+  {
+    if ((1 == paramInt) && (pih.a())) {
+      pmk.a().l();
+    }
+  }
+  
+  public void b(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadInJoyViolaChannelFragment", 2, "reloadPage process,process code=" + paramInt);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     psb
  * JD-Core Version:    0.7.0.1
  */

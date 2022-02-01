@@ -1,18 +1,25 @@
+import UserGrowth.stFollowFeedsReq;
+import UserGrowth.stFollowFeedsRsp;
+
 public class unl
-  implements ulj
+  extends ujr<stFollowFeedsRsp>
 {
-  public String a;
-  
-  public void copy(Object paramObject)
+  public unl(String paramString1, boolean paramBoolean1, boolean paramBoolean2, String paramString2, int paramInt)
   {
-    if ((paramObject instanceof unl)) {
-      this.a = ((unl)paramObject).a;
-    }
+    super("FollowFeeds", paramInt);
+    stFollowFeedsReq localstFollowFeedsReq = new stFollowFeedsReq();
+    localstFollowFeedsReq.attatch_info = paramString1;
+    localstFollowFeedsReq.is_refresh = paramBoolean2;
+    localstFollowFeedsReq.is_first = paramBoolean1;
+    localstFollowFeedsReq.push_info = paramString2;
+    localstFollowFeedsReq.scene = paramInt;
+    this.a = localstFollowFeedsReq;
+    upe.d("FollowRequest", localstFollowFeedsReq.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     unl
  * JD-Core Version:    0.7.0.1
  */

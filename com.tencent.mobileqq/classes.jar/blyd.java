@@ -1,18 +1,17 @@
-import android.text.Spanned;
+import java.io.File;
+import java.io.FileFilter;
 
 class blyd
-  extends bmsw
+  implements FileFilter
 {
-  blyd(blyb paramblyb, int paramInt)
-  {
-    super(paramInt);
-  }
+  blyd(blya paramblya) {}
   
-  public CharSequence filter(CharSequence paramCharSequence, int paramInt1, int paramInt2, Spanned paramSpanned, int paramInt3, int paramInt4)
+  public boolean accept(File paramFile)
   {
-    String str = paramSpanned.subSequence(0, paramInt3).toString() + paramCharSequence.subSequence(paramInt1, paramInt2).toString() + paramSpanned.subSequence(paramInt4, paramSpanned.length()).toString();
-    this.jdField_a_of_type_Int = (str.length() - bcnt.b(str).length() + 20);
-    return super.filter(paramCharSequence, paramInt1, paramInt2, paramSpanned, paramInt3, paramInt4);
+    paramFile = paramFile.getName();
+    boolean bool1 = paramFile.endsWith(".ftf");
+    boolean bool2 = paramFile.endsWith(".ttf");
+    return (bool1) || (bool2);
   }
 }
 

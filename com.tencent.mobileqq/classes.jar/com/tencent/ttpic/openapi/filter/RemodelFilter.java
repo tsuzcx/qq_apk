@@ -2,14 +2,19 @@ package com.tencent.ttpic.openapi.filter;
 
 import android.graphics.PointF;
 import com.tencent.aekit.api.standard.GLCapabilities;
+import com.tencent.aekit.openrender.internal.AEFilterI;
 import com.tencent.aekit.openrender.internal.Frame;
 import com.tencent.aekit.openrender.internal.FrameBufferCache;
+import com.tencent.aekit.openrender.util.GlUtil;
+import com.tencent.aekit.plugin.core.AIAttr;
 import com.tencent.filter.BaseFilter;
-import com.tencent.ttpic.baseutils.fps.BenchUtil;
 import com.tencent.ttpic.facedetect.FaceStatus;
 import com.tencent.ttpic.filter.ReshapeEyeNoseLips;
 import com.tencent.ttpic.filter.ReshapeWholeFace;
+import com.tencent.ttpic.model.FaceBeautyItem;
 import com.tencent.ttpic.offlineset.beans.AIBeautyParamsJsonBean;
+import com.tencent.ttpic.openapi.PTDetectInfo;
+import com.tencent.ttpic.openapi.PTFaceAttr;
 import com.tencent.ttpic.openapi.config.BeautyRealConfig.TYPE;
 import com.tencent.ttpic.openapi.model.CameraBeautyParams;
 import com.tencent.ttpic.openapi.util.FaceDetectUtil;
@@ -22,8 +27,8 @@ import java.util.List;
 import java.util.Map;
 
 public class RemodelFilter
+  implements AEFilterI
 {
-  private static final String PERF_LOG = "[showPreview]";
   private String[] GPU_LIST = { "Mali", "PowerVR Rogue G6200" };
   private int age = 0;
   private CameraBeautyParams cameraBeautyParams = new CameraBeautyParams();
@@ -33,14 +38,20 @@ public class RemodelFilter
   private Frame cropFrame = new Frame();
   private BaseFilter drawFilter = new BaseFilter("precision highp float;\nvarying vec2 textureCoordinate;\nuniform sampler2D inputImageTexture;\nvoid main() \n{\ngl_FragColor = texture2D (inputImageTexture, textureCoordinate);\n}\n");
   private Frame eyesFrame = new Frame();
+  private PTFaceAttr faceAttr;
   private int[][] faceOutline = (int[][])null;
   private List<PointF> facePoints = new ArrayList();
   private boolean isFemale = true;
+  private FaceBeautyItem item;
   private int mCropWidth;
+  private boolean needReCaculateFace = false;
   private Frame noseFrame = new Frame();
   private ReshapeCombineFilter reshapeCombineFilter = new ReshapeCombineFilter();
   private Frame reshapeCombineFrame = new Frame();
+  private float reshapeCropWidth = 0.0F;
   private ReshapeEyeNoseLips reshapeEyeNoseLipsFilter;
+  private float reshapeLeft = 0.0F;
+  private float reshapeTop = 0.0F;
   private ReshapeWholeFace reshapeWholeFaceFilter;
   private int singleItemStartIndex = 2;
   private ReshapeType useMeshType;
@@ -187,6 +198,9 @@ public class RemodelFilter
       this.faceOutline[i][1] = ((int)(((PointF)paramList.get(i)).y - i2));
       i += 1;
     }
+    this.reshapeCropWidth = j;
+    this.reshapeLeft = i1;
+    this.reshapeTop = i2;
     paramList = this.cameraBeautyParams.param;
     paramList.clear();
     paramList.put("size", new float[] { paramInt1, paramInt2 });
@@ -527,26 +541,22 @@ public class RemodelFilter
   private Frame processReshape4(Frame paramFrame, List<List<PointF>> paramList, List<FaceStatus> paramList1, List<float[]> paramList2, double paramDouble, boolean paramBoolean)
   {
     if (!isFilterValid(this.useMeshType)) {}
-    do
-    {
+    while (!this.cameraBeautyParams.needRender()) {
       return paramFrame;
-      BenchUtil.benchStart("[showPreview]processReshape4 prepare");
-    } while (!this.cameraBeautyParams.needRender());
+    }
     Object localObject1 = FrameBufferCache.getInstance().get(128, 128);
-    BenchUtil.benchEnd("[showPreview]processReshape4 prepare");
     int i = 0;
     Object localObject2 = paramFrame;
     paramFrame = (Frame)localObject1;
     Map localMap;
     if (i < paramList.size())
     {
-      BenchUtil.benchStart("[showPreview]processReshape4 initFilter 0");
       if ((paramList1 != null) && (paramList1.size() > i)) {
         if (((FaceStatus)paramList1.get(i)).gender != 1) {
-          break label278;
+          break label259;
         }
       }
-      label278:
+      label259:
       for (boolean bool = true;; bool = false)
       {
         this.isFemale = bool;
@@ -566,46 +576,281 @@ public class RemodelFilter
           localPointF.y = ((float)(localPointF.y / paramDouble));
         }
       }
-      BenchUtil.benchEnd("[showPreview]processReshape4 initFilter 0");
-      BenchUtil.benchStart("[showPreview]processReshape4 initFilter4");
       initFilter4((List)localObject1, (float[])paramList2.get(i), ((Frame)localObject2).width, ((Frame)localObject2).height);
-      BenchUtil.benchEnd("[showPreview]processReshape4 initFilter4");
       FrameUtil.clearFrame(paramFrame, 0.4980392F, 0.4980392F, 0.5019608F, 0.5019608F, 128, 128);
       localObject1 = paramFrame;
       if (this.cameraBeautyParams.needRenderEyeNoseLips())
       {
-        BenchUtil.benchStart("[showPreview]processReshape4 reshapeEyeNoseLipsFilter");
         localObject1 = this.reshapeEyeNoseLipsFilter.RenderProcess(paramFrame.getTextureId(), 128, 128);
         paramFrame.unlock();
-        BenchUtil.benchEnd("[showPreview]processReshape4 reshapeEyeNoseLipsFilter");
       }
       if (!this.cameraBeautyParams.needRenderWholeFace()) {
-        break label589;
+        break label563;
       }
-      BenchUtil.benchStart("[showPreview]processReshape4 reshapeWholeFaceFilter");
       paramFrame = this.reshapeWholeFaceFilter.RenderProcess(((Frame)localObject1).getTextureId(), 128, 128);
       ((Frame)localObject1).unlock();
-      BenchUtil.benchEnd("[showPreview]processReshape4 reshapeWholeFaceFilter");
     }
     for (;;)
     {
-      BenchUtil.benchStart("[showPreview]processReshape4 copyFilter 0");
       localMap.clear();
       localMap.put("inputImageTexture2", Integer.valueOf(paramFrame.getTextureId()));
       localObject1 = this.copyFilter.RenderProcess(((Frame)localObject2).getTextureId(), ((Frame)localObject2).width, ((Frame)localObject2).height);
-      BenchUtil.benchEnd("[showPreview]processReshape4 copyFilter 0");
-      BenchUtil.benchStart("[showPreview]processReshape4 reshapeCombineFilter");
       this.reshapeCombineFilter.setParam(localMap);
       this.reshapeCombineFilter.RenderProcess(((Frame)localObject2).getTextureId(), ((Frame)localObject2).width, ((Frame)localObject2).height, -1, 0.0D, (Frame)localObject1);
       ((Frame)localObject2).unlock();
-      BenchUtil.benchEnd("[showPreview]processReshape4 reshapeCombineFilter");
+      if ((this.needReCaculateFace) && (this.faceAttr != null) && (this.faceAttr.getTransformFacePoints().size() > i)) {
+        this.faceAttr.setTransformFacePoints(i, calFacePointAfterTransform(paramFrame, (List)this.faceAttr.getTransformFacePoints().get(i), (float)paramDouble));
+      }
       i += 1;
       localObject2 = localObject1;
       break;
       paramFrame.unlock();
       return localObject2;
-      label589:
+      label563:
       paramFrame = (Frame)localObject1;
+    }
+  }
+  
+  public Frame RenderProcess(Frame paramFrame)
+  {
+    if (this.faceAttr == null) {
+      return paramFrame;
+    }
+    return process(paramFrame, this.faceAttr.getAllFacePoints(), this.faceAttr.getFaceStatusList(), this.faceAttr.getAllFaceAngles(), this.faceAttr.getFaceDetectScale(), false);
+  }
+  
+  public List<PointF> calFacePointAfterTransform(Frame paramFrame, List<PointF> paramList, float paramFloat)
+  {
+    int i6 = paramFrame.width;
+    int i7 = paramFrame.height;
+    float f3 = this.reshapeCropWidth / (i6 - 1);
+    float f4 = this.reshapeCropWidth / (i7 - 1);
+    Object localObject1 = new byte[i6 * i7 * 4];
+    GlUtil.saveTextureToRgbaBuffer(paramFrame.getTextureId(), 0, 0, i6, i7, (byte[])localObject1, paramFrame.getFBO());
+    paramFrame = (float[][][])Array.newInstance(Float.TYPE, new int[] { i7, i6, 2 });
+    int i = 0;
+    while (i < i7)
+    {
+      j = 0;
+      while (j < i6)
+      {
+        paramFrame[i][j][0] = (getPixel((byte[])localObject1, i, j, i6).x * this.reshapeCropWidth + j * f3);
+        paramFrame[i][j][1] = (getPixel((byte[])localObject1, i, j, i6).y * this.reshapeCropWidth + i * f4);
+        j += 1;
+      }
+      i += 1;
+    }
+    localObject1 = new ArrayList();
+    int i3 = 0;
+    float f5;
+    float f6;
+    int i4;
+    int n;
+    label325:
+    int k;
+    int m;
+    label381:
+    Object localObject2;
+    int i1;
+    float f1;
+    if (i3 < paramList.size())
+    {
+      f5 = ((PointF)paramList.get(i3)).x / paramFloat - this.reshapeLeft;
+      f6 = ((PointF)paramList.get(i3)).y / paramFloat - this.reshapeTop;
+      int i8 = (int)(f6 / f4);
+      int i9 = (int)(f5 / f3);
+      int i10 = Math.max(Math.max(i8, i7 - i8), Math.max(i9, i6 - i9));
+      j = 0;
+      i4 = 0;
+      i = -1;
+      n = -1;
+      if (i4 >= i10) {
+        break label1460;
+      }
+      int i2 = i8 - i4;
+      k = i;
+      i = j;
+      j = n;
+      if (i2 > i8 + i4) {
+        break label1445;
+      }
+      if (i2 < 0) {
+        break label1434;
+      }
+      if (i2 >= i7)
+      {
+        m = i;
+        i = k;
+      }
+      label847:
+      do
+      {
+        i2 += 1;
+        k = i;
+        i = m;
+        break;
+        m = i9 - i4;
+        if (m > i9 + i4) {
+          break label1423;
+        }
+        if ((m < 0) || (m >= i6)) {}
+        do
+        {
+          do
+          {
+            m += 1;
+            break;
+          } while ((i2 > i8 - i4) && (i2 < i8 + i4) && (m > i9 - i4) && (m < i9 + i4));
+          localObject2 = new float[4][];
+          localObject2[0] = { paramFrame[i2][m][0], paramFrame[i2][m][1] };
+          localObject2[1] = { paramFrame[i2][(m + 1)][0], paramFrame[i2][(m + 1)][1] };
+          localObject2[2] = { paramFrame[(i2 + 1)][(m + 1)][0], paramFrame[(i2 + 1)][(m + 1)][1] };
+          localObject2[3] = { paramFrame[(i2 + 1)][m][0], paramFrame[(i2 + 1)][m][1] };
+          i1 = 0;
+          n = 0;
+          if (n < 4)
+          {
+            float[] arrayOfFloat1 = new float[2];
+            arrayOfFloat1[0] = localObject2[n][0];
+            arrayOfFloat1[1] = localObject2[n][1];
+            float[] arrayOfFloat2 = new float[2];
+            arrayOfFloat2[0] = localObject2[((n + 1) % 4)][0];
+            arrayOfFloat2[1] = localObject2[((n + 1) % 4)][1];
+            int i5;
+            if (arrayOfFloat1[1] == arrayOfFloat2[1]) {
+              i5 = i1;
+            }
+            for (;;)
+            {
+              n += 1;
+              i1 = i5;
+              break;
+              if (f6 < arrayOfFloat1[1])
+              {
+                i5 = i1;
+                if (f6 < arrayOfFloat2[1]) {}
+              }
+              else if (f6 >= arrayOfFloat1[1])
+              {
+                i5 = i1;
+                if (f6 >= arrayOfFloat2[1]) {}
+              }
+              else
+              {
+                f1 = (f6 - arrayOfFloat1[1]) * (arrayOfFloat2[0] - arrayOfFloat1[0]) / (arrayOfFloat2[1] - arrayOfFloat1[1]);
+                i5 = i1;
+                if (arrayOfFloat1[0] + f1 > f5) {
+                  i5 = i1 + 1;
+                }
+              }
+            }
+          }
+        } while (i1 % 2 != 1);
+        i1 = 1;
+        k = m;
+        n = i2;
+        i = k;
+        j = n;
+        m = i1;
+      } while (i1 == 0);
+      i = k;
+      label868:
+      if (i1 == 0) {}
+    }
+    label1026:
+    label1423:
+    label1434:
+    label1445:
+    label1460:
+    for (int j = n;; j = n)
+    {
+      float f7;
+      float f8;
+      float f9;
+      float f10;
+      float f2;
+      float f11;
+      if ((j != -1) && (i != -1))
+      {
+        localObject2 = new float[4];
+        tmp896_894 = localObject2;
+        tmp896_894[0] = 0.0F;
+        tmp900_896 = tmp896_894;
+        tmp900_896[1] = 0.0F;
+        tmp904_900 = tmp900_896;
+        tmp904_900[2] = 0.0F;
+        tmp908_904 = tmp904_900;
+        tmp908_904[3] = 0.0F;
+        tmp908_904;
+        f7 = paramFrame[j][(i + 1)][0];
+        f8 = paramFrame[j][(i + 1)][1];
+        f9 = paramFrame[(j + 1)][i][0];
+        f10 = paramFrame[(j + 1)][i][1];
+        f2 = paramFrame[(j + 1)][(i + 1)][0];
+        f1 = paramFrame[(j + 1)][(i + 1)][1];
+        if ((f9 - f5) * (f8 - f6) - (f10 - f6) * (f7 - f5) > 0.0F) {
+          break label1396;
+        }
+        k = 1;
+        if (k != 0)
+        {
+          f2 = paramFrame[j][i][0];
+          f1 = paramFrame[j][i][1];
+        }
+        f11 = Math.abs((f9 - f7) * (f1 - f8) - (f10 - f8) * (f2 - f7));
+        if (f11 > 1.0E-007D)
+        {
+          f2 -= f5;
+          f1 -= f6;
+          localObject2[1] = (Math.abs((f9 - f5) * f1 - (f10 - f6) * f2) / f11);
+          localObject2[2] = (Math.abs(f1 * (f7 - f5) - f2 * (f8 - f6)) / f11);
+          if (k == 0) {
+            break label1402;
+          }
+          localObject2[0] = (1.0F - localObject2[1] - localObject2[2]);
+        }
+      }
+      for (;;)
+      {
+        f1 = i;
+        f2 = j;
+        f5 = i + 1;
+        f6 = j;
+        f7 = i + 1;
+        f8 = j + 1;
+        f9 = i;
+        f10 = j + 1;
+        f11 = localObject2[0];
+        float f12 = localObject2[1];
+        float f13 = localObject2[2];
+        float f14 = localObject2[3];
+        float f15 = localObject2[0];
+        float f16 = localObject2[1];
+        float f17 = localObject2[2];
+        float f18 = localObject2[3];
+        ((List)localObject1).add(new PointF((f1 * f3 * f11 + f5 * f3 * f12 + f13 * (f9 * f3) + f14 * (f7 * f3) + this.reshapeLeft) * paramFloat, (f2 * f4 * f15 + f16 * (f6 * f4) + f17 * (f10 * f4) + f18 * (f8 * f4) + this.reshapeTop) * paramFloat));
+        i3 += 1;
+        break;
+        i4 += 1;
+        j = i1;
+        break label325;
+        label1396:
+        k = 0;
+        break label1026;
+        label1402:
+        localObject2[3] = (1.0F - localObject2[1] - localObject2[2]);
+      }
+      return localObject1;
+      n = j;
+      i1 = i;
+      break label847;
+      m = i;
+      i = k;
+      break label381;
+      i1 = i;
+      i = k;
+      n = j;
+      break label868;
     }
   }
   
@@ -644,11 +889,27 @@ public class RemodelFilter
     if (this.copyFrame != null) {
       this.copyFrame.clear();
     }
+    this.needReCaculateFace = false;
   }
   
   public void closeAIBeautyConfig()
   {
     this.cameraBeautyParams.closeAIBeautyConfig();
+  }
+  
+  public FaceBeautyItem getFaceBeautyItem()
+  {
+    return this.item;
+  }
+  
+  public PointF getPixel(byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3)
+  {
+    int i = (paramInt1 * paramInt3 + paramInt2) * 4;
+    paramInt1 = setColor(paramArrayOfByte[i] & 0xFF);
+    paramInt2 = setColor(paramArrayOfByte[(i + 1)] & 0xFF);
+    paramInt3 = setColor(paramArrayOfByte[(i + 2)] & 0xFF);
+    i = setColor(paramArrayOfByte[(i + 3)] & 0xFF);
+    return new PointF((float)(1.0D * paramInt1 / 127.5D + paramInt3 * 1.0D / 255.0D / 127.5D - 1.0D), (float)(paramInt2 * 1.0D / 127.5D + i * 1.0D / 255.0D / 127.5D - 1.0D));
   }
   
   public void init()
@@ -676,6 +937,7 @@ public class RemodelFilter
       this.copyFilter.apply();
       this.cropFilter.apply();
       this.drawFilter.apply();
+      this.needReCaculateFace = false;
       return;
       this.useMeshType = ReshapeType.NORMAL;
     }
@@ -694,6 +956,20 @@ public class RemodelFilter
     this.cameraBeautyParams.setAIBeautyValid(paramBoolean);
   }
   
+  public int setColor(int paramInt)
+  {
+    int i = paramInt;
+    if (paramInt < 0) {
+      i = paramInt + 255;
+    }
+    return i;
+  }
+  
+  public void setFaceBeautyItem(FaceBeautyItem paramFaceBeautyItem)
+  {
+    this.item = paramFaceBeautyItem;
+  }
+  
   public void setFemalePercent(float paramFloat)
   {
     this.cameraBeautyParams.setFemalePercent(paramFloat);
@@ -702,6 +978,11 @@ public class RemodelFilter
   public void setMalePercent(float paramFloat)
   {
     this.cameraBeautyParams.setMalePercent(paramFloat);
+  }
+  
+  public void setNeedReCaculateFace(boolean paramBoolean)
+  {
+    this.needReCaculateFace = paramBoolean;
   }
   
   public void setParam(BeautyRealConfig.TYPE paramTYPE, float paramFloat)
@@ -739,10 +1020,25 @@ public class RemodelFilter
   {
     this.cameraBeautyParams.updateAgeSexBeautyConfig(paramString);
   }
+  
+  public void updatePreview(Object paramObject)
+  {
+    if ((paramObject instanceof PTDetectInfo))
+    {
+      paramObject = (PTDetectInfo)paramObject;
+      if (paramObject.aiAttr != null) {
+        this.faceAttr = ((PTFaceAttr)paramObject.aiAttr.getFaceAttr());
+      }
+    }
+    while (!(paramObject instanceof PTFaceAttr)) {
+      return;
+    }
+    this.faceAttr = ((PTFaceAttr)paramObject);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.openapi.filter.RemodelFilter
  * JD-Core Version:    0.7.0.1
  */

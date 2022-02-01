@@ -1,35 +1,47 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.capture.view.QIMCircleProgress;
+import android.os.Message;
+import com.tencent.component.network.downloader.DownloadResult;
+import com.tencent.component.network.downloader.Downloader.DownloadListener;
+import java.util.Map;
 
-public class bmay
-  extends AnimatorListenerAdapter
+class bmay
+  implements Downloader.DownloadListener
 {
-  public bmay(QIMCircleProgress paramQIMCircleProgress) {}
+  bmay(bmax parambmax) {}
   
-  public void onAnimationCancel(Animator paramAnimator)
+  public void onDownloadCanceled(String paramString)
   {
-    this.a.b = false;
-    if (QLog.isColorLevel()) {
-      QLog.d("QIMCircleProgress", 2, "[segmentCapture] nextSegmentBlinkAnimator cancel");
-    }
+    Message localMessage = Message.obtain(bmax.a(this.a));
+    localMessage.what = 5;
+    localMessage.obj = paramString;
+    localMessage.sendToTarget();
   }
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public void onDownloadFailed(String paramString, DownloadResult paramDownloadResult)
   {
-    this.a.b = false;
-    if (QLog.isColorLevel()) {
-      QLog.d("QIMCircleProgress", 2, "[segmentCapture] nextSegmentBlinkAnimator end");
-    }
+    paramDownloadResult = Message.obtain(bmax.a(this.a));
+    paramDownloadResult.what = 3;
+    paramDownloadResult.obj = paramString;
+    paramDownloadResult.sendToTarget();
   }
   
-  public void onAnimationStart(Animator paramAnimator)
+  public void onDownloadProgress(String paramString, long paramLong, float paramFloat)
   {
-    this.a.b = true;
-    if (QLog.isColorLevel()) {
-      QLog.d("QIMCircleProgress", 2, "[segmentCapture] nextSegmentBlinkAnimator start");
+    paramString = (bmaz)bmax.a(this.a).get(paramString);
+    if (paramString != null) {
+      paramString.a = Float.valueOf(paramFloat);
     }
+    Message localMessage = Message.obtain(bmax.a(this.a));
+    localMessage.what = 6;
+    localMessage.obj = paramString;
+    localMessage.sendToTarget();
+  }
+  
+  public void onDownloadSucceed(String paramString, DownloadResult paramDownloadResult)
+  {
+    paramDownloadResult = Message.obtain(bmax.a(this.a));
+    paramDownloadResult.what = 2;
+    paramDownloadResult.obj = paramString;
+    paramDownloadResult.sendToTarget();
   }
 }
 

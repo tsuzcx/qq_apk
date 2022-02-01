@@ -1,28 +1,13 @@
-import android.view.View;
-import com.tencent.mobileqq.app.ThreadExcutor.IThreadListener;
-import dov.com.tencent.biz.qqstory.takevideo.EditPicSave.1.1;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoParams;
+import java.io.File;
+import java.io.FileFilter;
+import java.util.regex.Pattern;
 
 public class bmjp
-  implements ThreadExcutor.IThreadListener
+  implements FileFilter
 {
-  bmjp(bmjo parambmjo) {}
-  
-  public void onAdded() {}
-  
-  public void onPostRun()
+  public boolean accept(File paramFile)
   {
-    if ((this.a.jdField_a_of_type_Bmor == null) || (this.a.jdField_a_of_type_Bmor.getActivity() == null)) {
-      return;
-    }
-    this.a.jdField_a_of_type_Bmor.a().postDelayed(new EditPicSave.1.1(this), 500L);
-  }
-  
-  public void onPreRun()
-  {
-    if (this.a.jdField_a_of_type_Bmnj.a.a() == 14) {
-      bmjo.a(this.a, false);
-    }
+    return Pattern.matches("cpu[0-9]+", paramFile.getName());
   }
 }
 

@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.vaswebviewplugin;
 
 import android.app.Activity;
-import bdgm;
+import bglp;
 import com.tencent.qphone.base.util.QLog;
 import mqq.app.QQPermissionCallback;
 
@@ -12,7 +12,7 @@ class ApolloJsPlugin$2
   
   public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    bdgm.a(this.val$activity, paramArrayOfString, paramArrayOfInt);
+    bglp.a(this.val$activity, paramArrayOfString, paramArrayOfInt);
   }
   
   public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
@@ -22,7 +22,7 @@ class ApolloJsPlugin$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.vaswebviewplugin.ApolloJsPlugin.2
  * JD-Core Version:    0.7.0.1
  */

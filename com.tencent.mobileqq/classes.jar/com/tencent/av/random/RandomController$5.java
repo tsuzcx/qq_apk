@@ -2,12 +2,12 @@ package com.tencent.av.random;
 
 import android.content.Context;
 import android.os.Handler;
-import azqs;
+import bcst;
 import com.tencent.av.app.VideoAppInterface;
 import com.tencent.av.utils.PopupDialog;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import lvd;
+import lsf;
 
 public class RandomController$5
   implements Runnable
@@ -19,7 +19,7 @@ public class RandomController$5
     if (!this.this$0.c)
     {
       Context localContext = RandomController.a(this.this$0).getApp().getApplicationContext();
-      PopupDialog.b(localContext, 230, localContext.getString(2131696203), localContext.getString(2131696204), 0, 2131696090, new lvd(this), null);
+      PopupDialog.b(localContext, 230, localContext.getString(2131695083), localContext.getString(2131695084), 0, 2131694970, new lsf(this), null);
       this.this$0.c = true;
     }
   }
@@ -31,14 +31,14 @@ public class RandomController$5
     }
     RandomController.a(this.this$0).b();
     a();
-    azqs.b(null, "CliOper", "", "", "0X8007430", "0X8007430", 0, 0, "", "", "", "");
+    bcst.b(null, "CliOper", "", "", "0X8007430", "0X8007430", 0, 0, "", "", "", "");
     RandomController.a(this.this$0).a().removeCallbacks(RandomController.a(this.this$0));
     RandomController.a(this.this$0, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.av.random.RandomController.5
  * JD-Core Version:    0.7.0.1
  */

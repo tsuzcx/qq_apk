@@ -1,19 +1,24 @@
-import android.os.Bundle;
-import com.tencent.intervideo.nowproxy.customized_interface.CustomizedDownloader;
-import com.tencent.intervideo.nowproxy.customized_interface.DownloadCallback;
-
-class atdy
-  extends CustomizedDownloader
+public abstract interface atdy
 {
-  atdy(atdh paramatdh) {}
+  public abstract int a();
   
-  public void onDownload(boolean paramBoolean, String paramString1, String paramString2, Bundle paramBundle, DownloadCallback paramDownloadCallback)
-  {
-    paramBundle = new Bundle();
-    paramBundle.putString("url", paramString1);
-    paramBundle.putString("path", paramString2);
-    ateg.a().a(paramBundle, paramDownloadCallback);
-  }
+  public abstract long a();
+  
+  public abstract String a();
+  
+  public abstract void a();
+  
+  public abstract void a(atdo paramatdo);
+  
+  public abstract void a(byte[] paramArrayOfByte);
+  
+  public abstract boolean a();
+  
+  public abstract boolean a(long paramLong);
+  
+  public abstract int b();
+  
+  public abstract long b();
 }
 
 

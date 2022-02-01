@@ -1,23 +1,21 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
+import android.os.Handler.Callback;
+import android.os.Message;
+import com.tencent.mobileqq.activity.contacts.publicaccount.PublicAccountFragment;
 
-class ajke
-  implements View.OnTouchListener
+public class ajke
+  implements Handler.Callback
 {
-  ajke(ajkd paramajkd) {}
+  public ajke(PublicAccountFragment paramPublicAccountFragment) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public boolean handleMessage(Message paramMessage)
   {
-    switch (paramMotionEvent.getAction())
+    switch (paramMessage.what)
     {
     }
     for (;;)
     {
-      return false;
-      paramView.setAlpha(0.5F);
-      continue;
-      paramView.setAlpha(1.0F);
+      return true;
+      this.a.i();
     }
   }
 }

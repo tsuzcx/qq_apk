@@ -1,19 +1,18 @@
-import com.tencent.mobileqq.activity.Leba;
-import com.tencent.qphone.base.util.QLog;
+import android.support.annotation.NonNull;
+import org.json.JSONObject;
 
 public class adgi
-  extends aqbl
+  extends adee
 {
-  public adgi(Leba paramLeba) {}
-  
-  protected void a(int paramInt)
+  public boolean a(int paramInt, String paramString, JSONObject paramJSONObject, @NonNull adea paramadea)
   {
-    if (QLog.isColorLevel()) {
-      QLog.e("Q.lebatab.leba", 2, "onUpdateRedPoint " + paramInt);
+    switch (paramInt)
+    {
+    default: 
+      return false;
     }
-    if (Leba.a(this.a) != null) {
-      Leba.a(this.a).b();
-    }
+    adhh.a(paramadea, adec.a);
+    return true;
   }
 }
 

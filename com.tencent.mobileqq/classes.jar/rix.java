@@ -1,34 +1,59 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
-class rix
-  extends Handler
+public class rix
 {
-  rix(riw paramriw, Looper paramLooper)
+  public static <T> int a(Iterable<T> paramIterable, riz<T> paramriz)
   {
-    super(paramLooper);
+    if (paramIterable != null)
+    {
+      int i = 0;
+      paramIterable = paramIterable.iterator();
+      while (paramIterable.hasNext())
+      {
+        if (paramriz.a(paramIterable.next())) {
+          return i;
+        }
+        i += 1;
+      }
+    }
+    return -1;
   }
   
-  public void handleMessage(Message paramMessage)
+  public static <T, E> List<E> a(Iterable<T> paramIterable, riy<T, E> paramriy)
   {
-    switch (paramMessage.what)
+    ArrayList localArrayList = new ArrayList();
+    if ((paramIterable != null) && (paramriy != null))
     {
-    }
-    do
-    {
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d("VideoFeedsVideoUIDelegate", 2, "mUiHandler.postDelayed() innerChangePlayButton(SHOW_LOADING_BTN) mIsNeedShowLoading = " + riw.a(this.a));
+      paramIterable = paramIterable.iterator();
+      while (paramIterable.hasNext()) {
+        localArrayList.add(paramriy.a(paramIterable.next()));
       }
-    } while (!riw.a(this.a));
-    this.a.a(1);
+    }
+    return localArrayList;
+  }
+  
+  public static <T> List<T> a(Iterable<T> paramIterable, riz<T> paramriz)
+  {
+    ArrayList localArrayList = new ArrayList();
+    if ((paramIterable != null) && (paramriz != null))
+    {
+      paramIterable = paramIterable.iterator();
+      while (paramIterable.hasNext())
+      {
+        Object localObject = paramIterable.next();
+        if (paramriz.a(localObject)) {
+          localArrayList.add(localObject);
+        }
+      }
+    }
+    return localArrayList;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     rix
  * JD-Core Version:    0.7.0.1
  */

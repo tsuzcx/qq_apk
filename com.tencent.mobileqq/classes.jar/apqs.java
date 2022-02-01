@@ -1,24 +1,16 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.emosm.web.MessengerService;
-import com.tencent.mobileqq.emosm.web.MessengerService.IncomingHandler.30;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.qphone.base.util.QLog;
 
-public class apqs
-  implements algq
+class apqs
+  implements DialogInterface.OnDismissListener
 {
-  public apqs(MessengerService.IncomingHandler.30 param30) {}
+  apqs(apqq paramapqq) {}
   
-  public void a(long paramLong, String paramString)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    Bundle localBundle = new Bundle();
-    if (paramLong == 0L) {}
-    for (int i = 0;; i = 1)
-    {
-      localBundle.putInt("result", i);
-      localBundle.putString("message", paramString);
-      this.a.jdField_a_of_type_AndroidOsBundle.putBundle("response", localBundle);
-      this.a.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.a(this.a.jdField_a_of_type_AndroidOsBundle);
-      return;
-    }
+    apqq.a(this.a, false);
+    QLog.d("ark.download.ctrl", 1, "ark.dctrl [showDownloadDialog] onDismiss");
   }
 }
 

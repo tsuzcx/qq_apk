@@ -1,20 +1,24 @@
-import android.view.animation.Animation;
-import android.view.animation.Transformation;
-import com.tencent.mobileqq.widget.ShaderAnimLayout;
+import com.tencent.mobileqq.app.proxy.ProxyListener;
+import java.util.UUID;
 
-public class bevf
-  extends Animation
+class bevf
+  implements ProxyListener
 {
-  public bevf(ShaderAnimLayout paramShaderAnimLayout) {}
+  bevf(bevc parambevc, UUID paramUUID) {}
   
-  protected void applyTransformation(float paramFloat, Transformation paramTransformation)
+  public void onDeleteFinish(String paramString, int paramInt)
   {
-    if (this.a.jdField_a_of_type_Boolean == true) {}
-    for (this.a.jdField_a_of_type_Float = (1.0F - paramFloat);; this.a.jdField_a_of_type_Float = paramFloat)
-    {
-      this.a.invalidate();
-      return;
-    }
+    bevx.d("TroopFileDataBaseProxy", bevx.c, "[" + this.jdField_a_of_type_JavaUtilUUID.toString() + "] deleteItem finish. table:" + paramString);
+  }
+  
+  public void onInsertFinish(String paramString)
+  {
+    bevx.d("TroopFileDataBaseProxy", bevx.c, "[" + this.jdField_a_of_type_JavaUtilUUID.toString() + "] deleteItem finish[add]. table:" + paramString);
+  }
+  
+  public void onUpdateFinish(String paramString, int paramInt)
+  {
+    bevx.d("TroopFileDataBaseProxy", bevx.c, "[" + this.jdField_a_of_type_JavaUtilUUID.toString() + "] deleteItem finish[up]. table:" + paramString);
   }
 }
 

@@ -1,14 +1,17 @@
-import android.widget.ImageView;
-import android.widget.ProgressBar;
-import android.widget.TextView;
+import com.tencent.mobileqq.Doraemon.test.TestAppFragment;
+import org.json.JSONObject;
 
-class adgz
+public class adgz
+  extends adhb
 {
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  ProgressBar jdField_a_of_type_AndroidWidgetProgressBar;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
+  public adgz(TestAppFragment paramTestAppFragment) {}
   
-  adgz(adgy paramadgy) {}
+  public void onSuccess(JSONObject paramJSONObject)
+  {
+    super.onSuccess(paramJSONObject);
+    paramJSONObject.optString("openid", "");
+    this.a.a.a("getAppFriends", null, new adha(this));
+  }
 }
 
 

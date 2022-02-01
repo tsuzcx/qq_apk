@@ -1,19 +1,29 @@
-import android.os.Build.VERSION;
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import android.widget.LinearLayout;
+import android.view.View;
+import java.util.ArrayList;
 
-class asbp
-  implements ViewTreeObserver.OnGlobalLayoutListener
+public class asbp
 {
-  asbp(asbo paramasbo) {}
+  private ArrayList<View> a = new ArrayList();
   
-  public void onGlobalLayout()
+  public View a()
   {
-    if (Build.VERSION.SDK_INT >= 16) {
-      this.a.a.getViewTreeObserver().removeOnGlobalLayoutListener(this);
+    if (this.a.size() > 0) {
+      return (View)this.a.remove(0);
     }
-    asbo.a(this.a);
+    return null;
+  }
+  
+  public void a()
+  {
+    this.a.clear();
+  }
+  
+  public void a(View paramView)
+  {
+    if (this.a.size() >= 3) {
+      return;
+    }
+    this.a.add(paramView);
   }
 }
 

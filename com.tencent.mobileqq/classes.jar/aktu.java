@@ -1,6 +1,9 @@
-public abstract interface aktu
+import com.tencent.mobileqq.activity.qwallet.redpacket.IRedPacket;
+import com.tencent.mobileqq.activity.qwallet.redpacket.RedPacketManager;
+
+public class aktu
 {
-  public static final String[] a = { "busId", "gameId", "gameid" };
+  public static final IRedPacket a = new RedPacketManager();
 }
 
 

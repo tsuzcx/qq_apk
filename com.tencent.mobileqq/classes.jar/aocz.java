@@ -1,21 +1,26 @@
-import android.content.Context;
-import com.tencent.mobileqq.colornote.data.ColorNote;
+import android.os.Handler.Callback;
+import android.os.Looper;
+import android.os.Message;
+import java.lang.ref.WeakReference;
+import mqq.os.MqqHandler;
 
 public class aocz
-  implements aocw
+  extends MqqHandler
 {
-  public void a(Context paramContext, ColorNote paramColorNote)
+  private WeakReference<Handler.Callback> a;
+  
+  private aocz(Looper paramLooper, Handler.Callback paramCallback)
   {
-    String str = paramColorNote.getSubType();
-    Object localObject = str.split("-");
-    if (localObject.length > 0) {
-      str = localObject[0];
+    super(paramLooper);
+    this.a = new WeakReference(paramCallback);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    Handler.Callback localCallback = (Handler.Callback)this.a.get();
+    if (localCallback != null) {
+      localCallback.handleMessage(paramMessage);
     }
-    if (localObject.length > 1) {
-      localObject = localObject[1];
-    }
-    paramColorNote = paramColorNote.getReserve();
-    bivc.a(paramContext, "", Long.parseLong(str), paramColorNote);
   }
 }
 

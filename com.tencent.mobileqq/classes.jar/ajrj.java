@@ -1,23 +1,10 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
-
-public class ajrj
-  implements Animation.AnimationListener
+public abstract interface ajrj
 {
-  public ajrj(NewFlowCameraActivity paramNewFlowCameraActivity) {}
+  public abstract void a();
   
-  public void onAnimationEnd(Animation paramAnimation)
-  {
-    if (NewFlowCameraActivity.b(this.a) != null) {
-      NewFlowCameraActivity.b(this.a).setVisibility(4);
-    }
-  }
+  public abstract void b();
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
+  public abstract void c();
 }
 
 

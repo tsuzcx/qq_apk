@@ -9,34 +9,32 @@ import com.tencent.tavkit.composition.video.TAVVideoEffect.Filter;
 public class AEKitNode
   implements TAVVideoEffect
 {
+  private static final String TAG = "AEKitNode";
   private AEKitModel mAEKitModel;
-  protected String reportKey = "AEKitNode";
-  private final String sEffectId = "AIFilterNode" + Integer.toHexString(hashCode());
+  private final String mEffectId = "AIFilterNode" + Integer.toHexString(hashCode());
+  private String reportKey = "AEKitNode";
   
   public TAVVideoEffect.Filter createFilter()
   {
-    Logger.i("TAVAIFilter", "creating");
+    Logger.i("AEKitNode", "createFilter---");
     return new AEKitNode.AEKitFilter(this, null);
   }
   
   @Nullable
   public String effectId()
   {
-    if (this.mAEKitModel == null) {
-      return "";
-    }
-    return this.sEffectId;
+    return this.mEffectId;
   }
   
   public void setAEKitModel(AEKitModel paramAEKitModel)
   {
-    Logger.i("AEKitNode", "set aekit model");
+    Logger.i("AEKitNode", "setAEKitModel---: " + paramAEKitModel);
     this.mAEKitModel = paramAEKitModel;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.weseevideo.composition.effectnode.AEKitNode
  * JD-Core Version:    0.7.0.1
  */

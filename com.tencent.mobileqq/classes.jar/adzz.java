@@ -1,15 +1,14 @@
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.activity.SubLoginActivity;
+import android.content.DialogInterface.OnClickListener;
 
-public class adzz
-  implements DialogInterface.OnDismissListener
+class adzz
+  implements DialogInterface.OnClickListener
 {
-  public adzz(SubLoginActivity paramSubLoginActivity) {}
+  adzz(adzx paramadzx) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.b = false;
+    paramDialogInterface.dismiss();
   }
 }
 

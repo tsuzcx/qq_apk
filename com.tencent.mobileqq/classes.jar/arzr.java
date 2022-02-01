@@ -1,71 +1,60 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.aio.ForwardUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
+import com.tencent.mobileqq.data.Emoticon;
 import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.List;
 
-final class arzr
-  implements DialogInterface.OnClickListener
+class arzr
+  implements URLDrawable.URLDrawableListener
 {
-  arzr(Intent paramIntent, int paramInt, Activity paramActivity, QQAppInterface paramQQAppInterface) {}
+  arzr(arzp paramarzp) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onLoadCanceled(URLDrawable paramURLDrawable)
   {
-    long l = this.jdField_a_of_type_AndroidContentIntent.getLongExtra("sdk_mult_share_source_app_id", 0L);
-    int i = this.jdField_a_of_type_AndroidContentIntent.getIntExtra("sdk_mult_share_msg_service_id", 0);
-    switch (paramInt)
+    this.a.jdField_a_of_type_JavaUtilArrayList.remove(paramURLDrawable);
+    if (QLog.isColorLevel())
     {
+      paramURLDrawable = paramURLDrawable.getTag();
+      if ((paramURLDrawable != null) && ((paramURLDrawable instanceof Emoticon)))
+      {
+        paramURLDrawable = (Emoticon)paramURLDrawable;
+        QLog.d("EmotionKeywordAdapter", 2, "firstScreenListener onLoadCanceled eId = " + paramURLDrawable.eId);
+      }
     }
-    do
+  }
+  
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
+  {
+    this.a.jdField_a_of_type_JavaUtilArrayList.remove(paramURLDrawable);
+    if (QLog.isColorLevel())
     {
-      do
+      paramURLDrawable = paramURLDrawable.getTag();
+      if ((paramURLDrawable != null) && ((paramURLDrawable instanceof Emoticon)))
       {
-        return;
-        if (QLog.isColorLevel()) {
-          QLog.i("ForwardDialogMgr", 2, "-->showMultShareDialog--back");
-        }
-        if (this.jdField_a_of_type_Int == 2) {
-          asdt.a(this.jdField_a_of_type_AndroidAppActivity, "shareToQQ", l, 0, asdt.a);
-        }
-        while (this.jdField_a_of_type_Int == 1)
-        {
-          ForwardUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "0X800A740", new String[0]);
-          return;
-          asdt.a(l, i, this.jdField_a_of_type_AndroidAppActivity, null);
-        }
-        if (this.jdField_a_of_type_Int == 0)
-        {
-          ForwardUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "0X800A73C", new String[0]);
-          return;
-        }
-      } while ((this.jdField_a_of_type_Int != 2) && (this.jdField_a_of_type_Int != 901503));
-      ForwardUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "0X800A73E", new String[0]);
-      return;
+        paramURLDrawable = (Emoticon)paramURLDrawable;
+        QLog.d("EmotionKeywordAdapter", 2, "firstScreenListener onLoadFialed eId = " + paramURLDrawable.eId);
+      }
+    }
+  }
+  
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  {
+    this.a.jdField_a_of_type_JavaUtilArrayList.remove(paramURLDrawable);
+    paramURLDrawable = paramURLDrawable.getTag();
+    if ((paramURLDrawable != null) && ((paramURLDrawable instanceof Emoticon)))
+    {
+      paramURLDrawable = (Emoticon)paramURLDrawable;
+      if (!this.a.jdField_a_of_type_JavaUtilList.contains(paramURLDrawable)) {
+        this.a.jdField_a_of_type_JavaUtilList.add(paramURLDrawable);
+      }
+      this.a.a();
       if (QLog.isColorLevel()) {
-        QLog.d("ForwardDialogMgr", 2, "-->showMultShareDialog--stay");
+        QLog.d("EmotionKeywordAdapter", 2, "firstScreenListener downloadSucess eId = " + paramURLDrawable.eId);
       }
-      if (this.jdField_a_of_type_Int == 901503) {
-        asdt.a(this.jdField_a_of_type_AndroidAppActivity, "shareToQQ", l, 0, asdt.a);
-      }
-      while (this.jdField_a_of_type_Int == 1)
-      {
-        ForwardUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "0X800A73F", new String[0]);
-        return;
-        if (this.jdField_a_of_type_Int == 3) {
-          asdt.a(l, i, this.jdField_a_of_type_AndroidAppActivity, null);
-        } else {
-          asdt.a(l, i, this.jdField_a_of_type_AndroidAppActivity);
-        }
-      }
-      if (this.jdField_a_of_type_Int == 0)
-      {
-        ForwardUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "0X800A73B", new String[0]);
-        return;
-      }
-    } while ((this.jdField_a_of_type_Int != 2) && (this.jdField_a_of_type_Int != 901503));
-    ForwardUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "0X800A73D", new String[0]);
+    }
   }
 }
 

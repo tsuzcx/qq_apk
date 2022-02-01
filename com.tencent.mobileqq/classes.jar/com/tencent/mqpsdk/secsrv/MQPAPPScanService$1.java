@@ -1,18 +1,18 @@
 package com.tencent.mqpsdk.secsrv;
 
-import bfbc;
+import biid;
 
 public class MQPAPPScanService$1
   extends Thread
 {
-  public MQPAPPScanService$1(bfbc parambfbc, byte[] paramArrayOfByte) {}
+  public MQPAPPScanService$1(biid parambiid, byte[] paramArrayOfByte) {}
   
   public void run()
   {
     try
     {
-      bfbc.a += 1;
-      bfbc.a(this.this$0, this.a);
+      biid.a += 1;
+      biid.a(this.this$0, this.a);
       return;
     }
     finally {}
@@ -20,7 +20,7 @@ public class MQPAPPScanService$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mqpsdk.secsrv.MQPAPPScanService.1
  * JD-Core Version:    0.7.0.1
  */

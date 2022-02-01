@@ -1,31 +1,20 @@
-import com.jakewharton.disklrucache.DiskLruCache.Snapshot;
-import java.io.InputStream;
+import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
 
 public class yzx
+  implements zap
 {
-  private DiskLruCache.Snapshot jdField_a_of_type_ComJakewhartonDisklrucacheDiskLruCache$Snapshot;
-  private InputStream jdField_a_of_type_JavaIoInputStream;
+  public yzx(DoodleLayout paramDoodleLayout) {}
   
-  public yzx(yzw paramyzw) {}
-  
-  public InputStream a()
+  public void a()
   {
-    return this.jdField_a_of_type_JavaIoInputStream;
-  }
-  
-  public void a(DiskLruCache.Snapshot paramSnapshot)
-  {
-    this.jdField_a_of_type_ComJakewhartonDisklrucacheDiskLruCache$Snapshot = paramSnapshot;
-  }
-  
-  public void a(InputStream paramInputStream)
-  {
-    this.jdField_a_of_type_JavaIoInputStream = paramInputStream;
+    if (this.a.a != null) {
+      this.a.a.f();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     yzx
  * JD-Core Version:    0.7.0.1
  */

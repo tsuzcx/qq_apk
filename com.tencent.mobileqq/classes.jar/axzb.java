@@ -1,10 +1,9 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.pb.now.ilive_feeds_read.FeedsInfo;
+import java.util.List;
 
-final class axzb
-  implements DialogInterface.OnClickListener
+public abstract interface axzb
 {
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public abstract void a(boolean paramBoolean1, List<ilive_feeds_read.FeedsInfo> paramList, boolean paramBoolean2, int paramInt);
 }
 
 

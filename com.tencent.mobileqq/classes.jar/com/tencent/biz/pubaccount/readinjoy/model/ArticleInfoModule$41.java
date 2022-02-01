@@ -1,17 +1,17 @@
 package com.tencent.biz.pubaccount.readinjoy.model;
 
 import com.tencent.qphone.base.util.QLog;
-import oxb;
-import pew;
+import pmk;
+import pwb;
 
 public class ArticleInfoModule$41
   implements Runnable
 {
-  public ArticleInfoModule$41(pew parampew) {}
+  public ArticleInfoModule$41(pwb parampwb) {}
   
   public void run()
   {
-    oxb.a().b();
+    pmk.a().b();
     if (QLog.isColorLevel()) {
       QLog.d("ArticleInfoModule", 2, "8c8 response refresh ui ");
     }

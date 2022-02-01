@@ -1,10 +1,14 @@
-class amvv
+import com.tencent.mobileqq.apollo.sdk.CmShowTest.1.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import mqq.os.MqqHandler;
+
+public final class amvv
+  implements andx
 {
-  float jdField_a_of_type_Float;
-  boolean jdField_a_of_type_Boolean = true;
-  float b;
-  
-  amvv(amvu paramamvu) {}
+  public void a(int paramInt)
+  {
+    ThreadManager.getUIHandler().post(new CmShowTest.1.1(this));
+  }
 }
 
 

@@ -1,151 +1,61 @@
 package com.tencent.theme;
 
-import android.content.res.Resources;
-import android.os.AsyncTask.Status;
-import android.os.Process;
-import android.os.SystemClock;
-import android.text.TextUtils;
-import android.util.TypedValue;
-import java.io.File;
-import java.util.HashMap;
-import java.util.HashSet;
+import android.util.Log;
 
 public class h
 {
-  Resources a = null;
-  SkinEngine b;
-  h.a c = null;
-  int d = 0;
-  HashMap<String, Integer> e = new HashMap();
-  HashSet<String> f = new HashSet();
+  public static ISkinEngineLog a;
+  public static final int b = 4;
+  public static final int c = 2;
+  public static final int d = 1;
   
-  public h(SkinEngine paramSkinEngine, Resources paramResources)
+  public static void a(String paramString1, int paramInt, String paramString2)
   {
-    this.a = paramResources;
-    this.d = 0;
-    this.b = paramSkinEngine;
-    this.c = new h.a(this, null);
+    d(paramString1, paramInt, paramString2, null);
   }
   
-  public Integer a(String paramString)
+  public static void a(String paramString1, int paramInt, String paramString2, Throwable paramThrowable)
   {
-    return (Integer)this.e.get(paramString);
-  }
-  
-  public boolean a()
-  {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (this.c != null)
-    {
-      bool1 = bool2;
-      if (this.c.getStatus() == AsyncTask.Status.RUNNING) {
-        bool1 = true;
-      }
+    if (a != null) {
+      a.trace(6, paramString1, paramInt, paramString2, paramThrowable);
     }
-    return bool1;
-  }
-  
-  public void b()
-  {
-    if (this.c != null)
-    {
-      if (this.c.getStatus() == AsyncTask.Status.PENDING)
-      {
-        d();
-        this.c.execute(new Void[0]);
-      }
-      do
-      {
-        return;
-        if (this.c.getStatus() == AsyncTask.Status.RUNNING)
-        {
-          this.c.cancel(true);
-          d();
-          this.c = new h.a(this, null);
-          this.c.execute(new Void[0]);
-          return;
-        }
-      } while (this.c.getStatus() != AsyncTask.Status.FINISHED);
-      this.c = new h.a(this, null);
-      d();
-      this.c.execute(new Void[0]);
+    while ((!SkinEngine.DEBUG) && (!SkinEngine.SWITCH_DEBUG)) {
       return;
     }
-    this.c = new h.a(this, null);
-    d();
-    this.c.execute(new Void[0]);
+    Log.e(paramString1, paramString2, paramThrowable);
   }
   
-  public boolean b(String paramString)
+  public static void b(String paramString1, int paramInt, String paramString2, Throwable paramThrowable)
   {
-    if (TextUtils.isEmpty(paramString)) {
-      return false;
+    if (a != null) {
+      a.trace(5, paramString1, paramInt, paramString2, paramThrowable);
     }
-    return this.f.contains(paramString);
-  }
-  
-  public void c()
-  {
-    new TypedValue();
-    long l1 = SystemClock.uptimeMillis();
-    i.d("SkinEngine", 2, "[record]start,  pid:" + Process.myPid(), null);
-    this.d = 0;
-    File localFile = this.b.getThemeDirFile();
-    if ((localFile != null) && (localFile.exists()))
-    {
-      String[] arrayOfString = localFile.list();
-      if ((arrayOfString != null) && (arrayOfString.length != 0))
-      {
-        int k = arrayOfString.length;
-        int i = 0;
-        while (i < k)
-        {
-          String str1 = arrayOfString[i];
-          Object localObject = new File(localFile, str1 + "/");
-          if (((File)localObject).exists())
-          {
-            localObject = ((File)localObject).list();
-            if (localObject != null)
-            {
-              int m = localObject.length;
-              int j = 0;
-              if (j < m)
-              {
-                String str2 = localObject[j];
-                str2 = str2.substring(str2.lastIndexOf("/") + 1);
-                int n = this.b.getDrawableDpi(str1 + "/");
-                if (-1 == n) {}
-                for (;;)
-                {
-                  j += 1;
-                  break;
-                  if (-2 == n)
-                  {
-                    this.f.add(str2);
-                    this.d += 1;
-                  }
-                  else
-                  {
-                    this.e.put(str2, Integer.valueOf(n));
-                    this.d += 1;
-                  }
-                }
-              }
-            }
-          }
-          i += 1;
-        }
-      }
+    while ((!SkinEngine.DEBUG) && (!SkinEngine.SWITCH_DEBUG)) {
+      return;
     }
-    long l2 = SystemClock.uptimeMillis();
-    i.d("SkinEngine", 2, "[record]end, mCacheEntry:" + this.d + " pid:" + Process.myPid() + " touchCacheDuration:" + (l2 - l1), null);
+    Log.w(paramString1, paramString2, paramThrowable);
   }
   
-  protected void d()
+  public static void c(String paramString1, int paramInt, String paramString2, Throwable paramThrowable)
   {
-    this.e.clear();
-    this.d = 0;
+    if (a != null) {
+      a.trace(4, paramString1, paramInt, paramString2, paramThrowable);
+    }
+    while ((!SkinEngine.DEBUG) && (!SkinEngine.SWITCH_DEBUG)) {
+      return;
+    }
+    Log.i(paramString1, paramString2, paramThrowable);
+  }
+  
+  public static void d(String paramString1, int paramInt, String paramString2, Throwable paramThrowable)
+  {
+    if (a != null) {
+      a.trace(3, paramString1, paramInt, paramString2, paramThrowable);
+    }
+    while ((!SkinEngine.DEBUG) && (!SkinEngine.SWITCH_DEBUG)) {
+      return;
+    }
+    Log.d(paramString1, paramString2, paramThrowable);
   }
 }
 

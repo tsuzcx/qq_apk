@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.hotpic;
 
 import android.util.Log;
-import asvt;
+import avdc;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
@@ -62,7 +62,7 @@ public class DiskStorageManager
   
   private void b(File paramFile)
   {
-    a(asvt.a(paramFile.getParentFile()));
+    a(avdc.a(paramFile.getParentFile()));
   }
   
   public void a(File paramFile)
@@ -77,7 +77,7 @@ public class DiskStorageManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.hotpic.DiskStorageManager
  * JD-Core Version:    0.7.0.1
  */

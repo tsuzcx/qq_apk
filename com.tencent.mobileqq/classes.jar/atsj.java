@@ -1,127 +1,158 @@
-import com.tencent.lbssearch.httpresponse.BaseObject;
-import com.tencent.lbssearch.httpresponse.HttpResponseListener;
-import com.tencent.lbssearch.httpresponse.Poi;
-import com.tencent.lbssearch.object.result.Geo2AddressResultObject;
-import com.tencent.lbssearch.object.result.Geo2AddressResultObject.ReverseAddressResult;
-import com.tencent.lbssearch.object.result.SearchResultObject;
-import com.tencent.lbssearch.object.result.SearchResultObject.SearchResultData;
-import com.tencent.lbssearch.object.result.SuggestionResultObject;
-import com.tencent.lbssearch.object.result.SuggestionResultObject.SuggestionData;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.location.data.LocationRoom.Venue;
-import com.tencent.mobileqq.location.ui.LocationPoiDataFromMapHelper.1.1;
-import com.tencent.mobileqq.location.ui.LocationPoiDataFromMapHelper.1.2;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.List;
-import mqq.os.MqqHandler;
+import android.app.Activity;
+import android.graphics.Rect;
+import android.os.Bundle;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 
-public class atsj
-  implements HttpResponseListener<BaseObject>
+public abstract class atsj
 {
-  atsj(atsi paramatsi) {}
+  public Activity a;
+  protected Bundle a;
+  public View a;
+  protected ViewGroup a;
+  protected ProgressBar a;
+  protected RelativeLayout a;
+  protected TextView a;
+  protected atsk a;
+  protected View b;
+  protected TextView b;
+  protected TextView c;
   
-  public void a(int paramInt, BaseObject paramBaseObject)
+  public atsj(Activity paramActivity)
   {
-    boolean bool2 = true;
-    boolean bool1 = true;
-    atsi.a(this.a, false);
-    Object localObject2;
-    if ((paramBaseObject instanceof Geo2AddressResultObject))
-    {
-      paramBaseObject = (Geo2AddressResultObject)paramBaseObject;
-      if ((paramBaseObject.result != null) && (paramBaseObject.result.pois != null))
-      {
-        atsi.a(this.a);
-        localObject1 = paramBaseObject.result.pois.iterator();
-        while (((Iterator)localObject1).hasNext())
-        {
-          localObject2 = (Poi)((Iterator)localObject1).next();
-          localObject2 = LocationRoom.Venue.a(atsi.a(this.a).app.c(), (Poi)localObject2);
-          atsi.a(this.a).add(localObject2);
-        }
-        localObject1 = this.a;
-        if (paramBaseObject.result.poi_count < 20) {
-          break label235;
-        }
-        bool1 = true;
-        atsi.b((atsi)localObject1, bool1);
-      }
+    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
+  }
+  
+  public Rect a()
+  {
+    if (this.jdField_a_of_type_AndroidOsBundle != null) {
+      return (Rect)this.jdField_a_of_type_AndroidOsBundle.getParcelable("file_browser_params_thumb_bound");
     }
-    label235:
-    label368:
-    do
-    {
-      do
-      {
-        do
-        {
-          if (QLog.isDevelopLevel()) {
-            QLog.i("LocationPoiDataFromMapHelper", 4, "[venue][poi-data] fetch onSuccess: mVenueList size = " + atsi.a(this.a).size() + ", mHashMore = " + atsi.a(this.a));
-          }
-          if (atsi.a(this.a) != null) {
-            ThreadManager.getUIHandler().post(new LocationPoiDataFromMapHelper.1.1(this));
-          }
-          return;
-          bool1 = false;
-          break;
-          if (!(paramBaseObject instanceof SuggestionResultObject)) {
-            break label368;
-          }
-          paramBaseObject = (SuggestionResultObject)paramBaseObject;
-        } while (paramBaseObject.data == null);
-        atsi.a(this.a);
-        localObject1 = paramBaseObject.data.iterator();
-        while (((Iterator)localObject1).hasNext())
-        {
-          localObject2 = (SuggestionResultObject.SuggestionData)((Iterator)localObject1).next();
-          localObject2 = LocationRoom.Venue.a(atsi.a(this.a).app.c(), (SuggestionResultObject.SuggestionData)localObject2);
-          atsi.a(this.a).add(localObject2);
-        }
-        localObject1 = this.a;
-        if (paramBaseObject.count >= 20) {}
-        for (;;)
-        {
-          atsi.b((atsi)localObject1, bool1);
-          break;
-          bool1 = false;
-        }
-      } while (!(paramBaseObject instanceof SearchResultObject));
-      paramBaseObject = (SearchResultObject)paramBaseObject;
-    } while (paramBaseObject.data == null);
-    atsi.a(this.a);
-    Object localObject1 = paramBaseObject.data.iterator();
-    while (((Iterator)localObject1).hasNext())
-    {
-      localObject2 = (SearchResultObject.SearchResultData)((Iterator)localObject1).next();
-      localObject2 = LocationRoom.Venue.a(atsi.a(this.a).app.c(), (SearchResultObject.SearchResultData)localObject2);
-      atsi.a(this.a).add(localObject2);
-    }
-    localObject1 = this.a;
-    if (paramBaseObject.count >= 20) {}
-    for (bool1 = bool2;; bool1 = false)
-    {
-      atsi.b((atsi)localObject1, bool1);
-      break;
+    return null;
+  }
+  
+  public View a()
+  {
+    return this.jdField_a_of_type_AndroidViewView;
+  }
+  
+  public abstract void a();
+  
+  public void a(int paramInt)
+  {
+    if (this.jdField_a_of_type_AndroidWidgetRelativeLayout != null) {
+      this.jdField_a_of_type_AndroidWidgetProgressBar.setProgress(paramInt);
     }
   }
   
-  public void onFailure(int paramInt, String paramString, Throwable paramThrowable)
+  public void a(Bundle paramBundle)
   {
-    atsi.a(this.a, false);
-    if (QLog.isDevelopLevel()) {
-      QLog.i("LocationPoiDataFromMapHelper", 4, "[venue][poi-data] fetch onFailure: mVenueList size = " + atsi.a(this.a).size() + ", mHashMore = " + atsi.a(this.a));
+    this.jdField_a_of_type_AndroidOsBundle = paramBundle;
+  }
+  
+  public void a(View.OnClickListener paramOnClickListener)
+  {
+    if ((this.jdField_a_of_type_AndroidViewView != null) && (this.jdField_a_of_type_AndroidWidgetRelativeLayout == null))
+    {
+      this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131379123));
+      this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)this.jdField_a_of_type_AndroidViewView.findViewById(2131379089));
+      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131379099));
+      this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131366115));
+      this.jdField_b_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131379087);
     }
-    if (atsi.a(this.a) != null) {
-      ThreadManager.getUIHandler().post(new LocationPoiDataFromMapHelper.1.2(this));
+    this.jdField_b_of_type_AndroidViewView.setOnClickListener(paramOnClickListener);
+  }
+  
+  public void a(atsk paramatsk)
+  {
+    this.jdField_a_of_type_Atsk = paramatsk;
+  }
+  
+  public void a(String paramString)
+  {
+    if (this.jdField_a_of_type_AndroidWidgetRelativeLayout != null) {
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(paramString);
+    }
+  }
+  
+  public void a(String paramString, View.OnClickListener paramOnClickListener)
+  {
+    if (this.c == null) {
+      this.c = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131371966));
+    }
+    if (this.c != null)
+    {
+      this.c.setText(paramString);
+      this.c.setOnClickListener(paramOnClickListener);
+      this.c.setVisibility(0);
+      a(true);
+    }
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    TextView localTextView;
+    if (this.c != null)
+    {
+      localTextView = this.c;
+      if (!paramBoolean) {
+        break label24;
+      }
+    }
+    label24:
+    for (int i = 0;; i = 8)
+    {
+      localTextView.setVisibility(i);
+      return;
+    }
+  }
+  
+  public void b()
+  {
+    if (this.jdField_b_of_type_AndroidViewView != null) {
+      this.jdField_b_of_type_AndroidViewView.setVisibility(8);
+    }
+  }
+  
+  public void b(int paramInt)
+  {
+    if (this.jdField_b_of_type_AndroidWidgetTextView != null) {
+      this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(paramInt);
+    }
+  }
+  
+  public void b(String paramString)
+  {
+    if (this.jdField_a_of_type_AndroidWidgetRelativeLayout != null) {
+      this.jdField_b_of_type_AndroidWidgetTextView.setText(paramString);
+    }
+  }
+  
+  public void b(boolean paramBoolean)
+  {
+    RelativeLayout localRelativeLayout;
+    if (this.jdField_a_of_type_AndroidWidgetRelativeLayout != null)
+    {
+      localRelativeLayout = this.jdField_a_of_type_AndroidWidgetRelativeLayout;
+      if (!paramBoolean) {
+        break label24;
+      }
+    }
+    label24:
+    for (int i = 0;; i = 8)
+    {
+      localRelativeLayout.setVisibility(i);
+      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     atsj
  * JD-Core Version:    0.7.0.1
  */

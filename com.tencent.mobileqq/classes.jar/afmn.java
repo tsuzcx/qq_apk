@@ -1,73 +1,57 @@
-import android.content.Context;
-import android.text.method.LinkMovementMethod;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.widget.BaseAdapter;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.item.FileTimDocGrayTipsItemBuilder.1;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.data.MessageRecord;
+import android.app.Dialog;
+import com.tencent.mobileqq.activity.TroopMemberListActivity;
+import com.tencent.mobileqq.activity.TroopMemberListActivity.39.1;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class afmn
-  extends afnq
-  implements arsg
+  extends ankx
 {
-  private String b;
+  public afmn(TroopMemberListActivity paramTroopMemberListActivity) {}
   
-  public afmn(QQAppInterface paramQQAppInterface, BaseAdapter paramBaseAdapter, Context paramContext, SessionInfo paramSessionInfo)
+  protected void a(boolean paramBoolean, Long paramLong)
   {
-    super(paramQQAppInterface, paramBaseAdapter, paramContext, paramSessionInfo);
-  }
-  
-  protected aepm a()
-  {
-    return new afmo(this);
-  }
-  
-  protected View a(MessageRecord paramMessageRecord, aepm paramaepm, View paramView, LinearLayout paramLinearLayout, aetk paramaetk)
-  {
-    paramaepm = (afmo)paramaepm;
-    paramMessageRecord = paramView;
-    if (paramView == null)
-    {
-      paramMessageRecord = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131560706, null);
-      paramaepm.b = ((TextView)paramMessageRecord.findViewById(2131367292));
+    if (this.a.jdField_a_of_type_AndroidAppDialog != null) {
+      this.a.jdField_a_of_type_AndroidAppDialog.dismiss();
     }
-    paramView = paramaepm.a.getExtInfoFromExtStr("tim_aio_show");
-    this.b = paramaepm.a.getExtInfoFromExtStr("tim_aio_tips_type");
-    if (!paramView.equalsIgnoreCase("showed"))
+  }
+  
+  protected void a(boolean paramBoolean, Long paramLong1, Long paramLong2)
+  {
+    if (paramBoolean)
     {
-      if (!this.b.equalsIgnoreCase("keyword")) {
-        break label184;
+      bcst.b(this.a.app, "CliOper", "", "", "0X80040F5", "0X80040F5", 0, 0, "", "", "", "");
+      this.a.a(paramLong2 + "");
+      if (this.a.jdField_a_of_type_Afnc != null) {
+        this.a.jdField_a_of_type_Afnc.a();
       }
-      azqs.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X8009077", "0X8009077", 0, 0, "", "", "", "");
+      if (this.a.h)
+      {
+        this.a.b(paramLong2 + "");
+        if (this.a.jdField_a_of_type_Afne != null) {
+          this.a.jdField_a_of_type_Afne.notifyDataSetChanged();
+        }
+      }
     }
     for (;;)
     {
-      paramaepm.a.saveExtInfoToExtStr("tim_aio_show", "showed");
-      ThreadManager.executeOnSubThread(new FileTimDocGrayTipsItemBuilder.1(this, paramaepm));
-      paramView = arrr.a(paramaepm.a.getExtInfoFromExtStr("tim_aio_file_tips"), paramaepm.a.getExtInfoFromExtStr("tim_aio_file_link"), this);
-      paramaepm.b.setText(paramView);
-      paramaepm.b.setMovementMethod(LinkMovementMethod.getInstance());
-      paramaepm.b.setHighlightColor(17170445);
-      return paramMessageRecord;
-      label184:
-      if (this.b.equalsIgnoreCase("precent")) {
-        azqs.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800907A", "0X800907A", 0, 0, "", "", "", "");
-      } else if (this.b.equalsIgnoreCase("text_keyword")) {
-        azqs.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X8009071", "0X800907A", 0, 0, "", "", "", "");
+      if (this.a.jdField_a_of_type_AndroidAppDialog != null) {
+        this.a.jdField_a_of_type_AndroidAppDialog.dismiss();
       }
+      return;
+      QQToast.a(this.a, 1, this.a.getString(2131693171), 0).b(this.a.getTitleBarHeight());
     }
   }
   
-  public void onClick(View paramView)
+  protected void a(boolean paramBoolean1, String paramString, boolean paramBoolean2, int paramInt1, int paramInt2, boolean paramBoolean3)
   {
-    ChatMessage localChatMessage = aepi.a(paramView);
-    ((bajc)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(272)).a(localChatMessage, paramView.getContext(), this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
+    this.a.runOnUiThread(new TroopMemberListActivity.39.1(this, paramBoolean1, paramString, paramBoolean2, paramInt1, paramInt2, paramBoolean3));
+  }
+  
+  protected void b(boolean paramBoolean, Long paramLong)
+  {
+    if (this.a.jdField_a_of_type_AndroidAppDialog != null) {
+      this.a.jdField_a_of_type_AndroidAppDialog.dismiss();
+    }
   }
 }
 

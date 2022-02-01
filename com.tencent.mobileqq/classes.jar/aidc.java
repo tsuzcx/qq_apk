@@ -1,17 +1,13 @@
-import android.support.v4.app.FragmentActivity;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment;
 
-public class aidc
-  implements View.OnClickListener
+class aidc
+  implements bkhw
 {
-  public aidc(ChatHistoryTroopMemberFragment paramChatHistoryTroopMemberFragment) {}
+  aidc(aicv paramaicv, bkho parambkho) {}
   
-  public void onClick(View paramView)
+  public void OnClick(View paramView, int paramInt)
   {
-    this.a.getActivity().setResult(0, this.a.getActivity().getIntent());
-    this.a.getActivity().finish();
+    aicv.a(this.jdField_a_of_type_Aicv, paramView, paramInt, this.jdField_a_of_type_Bkho);
   }
 }
 

@@ -1,23 +1,21 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.multicard.MultiCardFragment;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.ui.RefreshView;
+import com.tencent.mobileqq.fragment.NowLiveFragment;
+import com.tencent.mobileqq.fragment.NowLiveFragment.NowLiveWebView;
 
 public class aunf
-  implements View.OnClickListener
+  implements aauu
 {
-  public aunf(MultiCardFragment paramMultiCardFragment) {}
+  public aunf(NowLiveFragment paramNowLiveFragment) {}
   
-  public void onClick(View paramView)
+  public void a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("MultiCardFragment", 2, "onClick() called with: v = [" + paramView + "]");
-    }
+    this.a.jdField_a_of_type_ComTencentMobileqqFragmentNowLiveFragment$NowLiveWebView.refresh();
+    this.a.jdField_a_of_type_ComTencentBizUiRefreshView.b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aunf
  * JD-Core Version:    0.7.0.1
  */

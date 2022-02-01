@@ -1,116 +1,197 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.database.PublishVideoEntry;
+import com.tencent.biz.qqstory.app.QQStoryContext;
+import com.tencent.biz.qqstory.database.TagEntry;
 import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.JobSegment;
+import com.tencent.mobileqq.persistence.Entity;
+import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.mobileqq.persistence.EntityManagerFactory;
+import com.tencent.mobileqq.persistence.EntityTransaction;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
-import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.List<Ljava.lang.String;>;
+import java.util.Set;
 
 public class wpp
-  extends JobSegment<Integer, wov>
+  implements wou
 {
-  private int jdField_a_of_type_Int;
-  private uxs jdField_a_of_type_Uxs;
-  private wou jdField_a_of_type_Wou;
+  private long jdField_a_of_type_Long;
+  private EntityManager jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager;
+  private Set<String> jdField_a_of_type_JavaUtilSet = Collections.synchronizedSet(new HashSet());
   
-  public wpp(@NonNull wou paramwou, uxs paramuxs)
+  private QQStoryContext a()
   {
-    this.jdField_a_of_type_Wou = paramwou;
-    this.jdField_a_of_type_Uxs = paramuxs;
+    return QQStoryContext.a();
   }
   
-  public static boolean a(@Nullable vgb paramvgb, AtomicBoolean paramAtomicBoolean)
+  public static List<? extends Entity> a(EntityManager paramEntityManager, Class<? extends Entity> paramClass, String paramString1, String paramString2, String[] paramArrayOfString)
   {
-    Object localObject2 = "";
-    Object localObject1 = null;
-    List localList = ((uvx)uwa.a(5)).a(true);
-    Iterator localIterator = paramvgb.a.iterator();
-    paramvgb = (vgb)localObject1;
-    if (localIterator.hasNext())
-    {
-      woq localwoq = (woq)localIterator.next();
-      localObject1 = localObject2;
-      if (!((String)localObject2).equals(localwoq.c)) {
-        localObject1 = localwoq.c;
-      }
-      if (!a(localwoq, localList)) {
-        break label121;
-      }
-      localwoq.jdField_b_of_type_Boolean = true;
-      paramAtomicBoolean.set(true);
-      paramvgb = localwoq;
+    return paramEntityManager.query(paramClass, paramString1, false, paramString2, paramArrayOfString, null, null, null, null, null);
+  }
+  
+  public List<zhq> a(String paramString)
+  {
+    Object localObject = a(this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager, TagEntry.class, TagEntry.class.getSimpleName(), "feedId=?", new String[] { paramString });
+    paramString = (String)localObject;
+    if (localObject == null) {
+      paramString = new ArrayList();
     }
-    label121:
+    localObject = new ArrayList();
+    paramString = paramString.iterator();
+    while (paramString.hasNext()) {
+      ((List)localObject).add(new zhq((TagEntry)paramString.next()));
+    }
+    return localObject;
+  }
+  
+  public List<zhq> a(String paramString, List<StoryVideoItem> paramList)
+  {
+    try
+    {
+      paramString = a(paramList, a(paramString));
+      return paramString;
+    }
+    finally
+    {
+      paramString = finally;
+      throw paramString;
+    }
+  }
+  
+  public List<zhq> a(List<StoryVideoItem> paramList, List<zhq> paramList1)
+  {
+    ArrayList localArrayList;
+    HashSet localHashSet;
+    try
+    {
+      localArrayList = new ArrayList();
+      localHashSet = new HashSet();
+      if (paramList != null)
+      {
+        paramList = paramList.iterator();
+        while (paramList.hasNext())
+        {
+          StoryVideoItem localStoryVideoItem = (StoryVideoItem)paramList.next();
+          if ((localStoryVideoItem.mTagInfoBase != null) && (!localHashSet.contains(localStoryVideoItem.mTagInfoBase)))
+          {
+            localArrayList.add(localStoryVideoItem.mTagInfoBase);
+            localHashSet.add(localStoryVideoItem.mTagInfoBase);
+          }
+        }
+      }
+      if (paramList1 == null) {
+        break label167;
+      }
+    }
+    finally {}
+    paramList = paramList1.iterator();
+    while (paramList.hasNext())
+    {
+      paramList1 = (zhq)paramList.next();
+      if (!localHashSet.contains(paramList1))
+      {
+        localArrayList.add(paramList1);
+        localHashSet.add(paramList1);
+      }
+    }
+    label167:
+    return localArrayList;
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager = a().a().createEntityManager();
+  }
+  
+  public void a(String paramString, List<zhq> paramList)
+  {
+    if (paramList == null) {}
     for (;;)
     {
-      localObject2 = localObject1;
-      break;
-      return (paramvgb != null) && (((String)localObject2).equals(paramvgb.c));
+      return;
+      try
+      {
+        Object localObject = a(this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager, TagEntry.class, TagEntry.class.getSimpleName(), "feedId=?", new String[] { paramString });
+        if (localObject != null)
+        {
+          localObject = ((List)localObject).iterator();
+          while (((Iterator)localObject).hasNext())
+          {
+            TagEntry localTagEntry = (TagEntry)((Iterator)localObject).next();
+            localTagEntry.setStatus(1001);
+            this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.remove(localTagEntry);
+          }
+        }
+      }
+      finally
+      {
+        try
+        {
+          this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.getTransaction().end();
+          throw paramString;
+        }
+        finally {}
+        this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.getTransaction().begin();
+        paramList = paramList.iterator();
+        while (paramList.hasNext())
+        {
+          localObject = ((zhq)paramList.next()).a();
+          ((TagEntry)localObject).feedId = paramString;
+          this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.persistOrReplace((Entity)localObject);
+        }
+        this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.getTransaction().commit();
+        this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.getTransaction().end();
+      }
     }
   }
   
-  private static boolean a(woq paramwoq, List<StoryVideoItem> paramList)
+  public void a(List<String> paramList)
   {
-    Object localObject2;
-    do
-    {
-      paramList = paramList.iterator();
-      Object localObject1;
-      while (!((Iterator)localObject1).hasNext())
-      {
-        do
-        {
-          do
-          {
-            if (!paramList.hasNext()) {
-              break;
-            }
-            localObject1 = (StoryVideoItem)paramList.next();
-          } while (!paramwoq.c.equals(((StoryVideoItem)localObject1).mPublishDate));
-          if ((((StoryVideoItem)localObject1).isLocalAddShareGroupVideo()) && (paramwoq.jdField_b_of_type_JavaLangString.equals(((StoryVideoItem)localObject1).shareGroupId)))
-          {
-            wxe.d("Q.qqstory.home.data.HomeFeedListPageLoader", "this share group feed has *add* fail video:%s", new Object[] { paramwoq });
-            return true;
-          }
-          localObject2 = uqf.a(((StoryVideoItem)localObject1).mVid);
-          if ((localObject2 != null) && (((PublishVideoEntry)localObject2).getBooleanExtra("ignorePersonalPublish", false))) {}
-          for (int i = 1; (i == 0) && (paramwoq.jdField_b_of_type_JavaLangString.equals(((StoryVideoItem)localObject1).mOwnerUid)); i = 0)
-          {
-            wxe.d("Q.qqstory.home.data.HomeFeedListPageLoader", "this personal feed  has fail video:%s", new Object[] { paramwoq });
-            return true;
-          }
-          localObject1 = ((StoryVideoItem)localObject1).mVideoSpreadGroupList;
-        } while ((localObject1 == null) || (((uxr)localObject1).b == null));
-        localObject1 = ((uxr)localObject1).b.iterator();
-      }
-      localObject2 = (String)((Iterator)localObject1).next();
-    } while (!paramwoq.jdField_b_of_type_JavaLangString.equals(localObject2));
-    wxe.d("Q.qqstory.home.data.HomeFeedListPageLoader", "this share group feed has fail video:%s", new Object[] { paramwoq });
-    return true;
-    return false;
-  }
-  
-  protected void a(JobContext paramJobContext, Integer paramInteger)
-  {
-    Object localObject = this.jdField_a_of_type_Wou.a(paramInteger.intValue(), 5);
-    if ((((wov)localObject).a.size() > 0) || (((wov)localObject).jdField_b_of_type_Boolean))
-    {
-      wxe.b("Q.qqstory.home.data.HomeFeedListPageLoader", "hit feed id cache");
-      notifyResult(localObject);
+    if (paramList == null) {
       return;
     }
-    localObject = new AtomicBoolean(false);
-    vga localvga = new vga();
-    localvga.jdField_a_of_type_Uxs = this.jdField_a_of_type_Uxs;
-    localvga.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_Wou.a();
-    urp.a().a(localvga, new wpq(this, paramJobContext, (AtomicBoolean)localObject, paramInteger));
+    Object localObject = new ArrayList();
+    ArrayList localArrayList = new ArrayList();
+    if (Math.abs(this.jdField_a_of_type_Long - System.currentTimeMillis()) > 60000L) {
+      this.jdField_a_of_type_JavaUtilSet.clear();
+    }
+    for (;;)
+    {
+      if (localArrayList.size() > 0) {
+        yqp.d("Q.qqstory:TagManager", "request still waiting , %s", new Object[] { localArrayList });
+      }
+      if (paramList.size() == 0) {
+        break;
+      }
+      this.jdField_a_of_type_Long = System.currentTimeMillis();
+      localObject = new wyw();
+      ((wyw)localObject).a = paramList;
+      wlb.a().a((wlf)localObject, new wpq(this));
+      yqp.d("Q.qqstory:TagManager", "request tag list :%s", new Object[] { paramList });
+      return;
+      paramList = paramList.iterator();
+      while (paramList.hasNext())
+      {
+        String str = (String)paramList.next();
+        if (this.jdField_a_of_type_JavaUtilSet.contains(str)) {
+          localArrayList.add(str);
+        } else {
+          ((List)localObject).add(str);
+        }
+      }
+      paramList = (List<String>)localObject;
+    }
+  }
+  
+  public void b()
+  {
+    this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.close();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     wpp
  * JD-Core Version:    0.7.0.1
  */

@@ -1,22 +1,17 @@
-import com.tencent.mobileqq.data.MayKnowRecommend;
-import java.util.Comparator;
+import android.app.Activity;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
 
 class ahsg
-  implements Comparator<MayKnowRecommend>
+  implements EIPCResultCallback
 {
-  ahsg(ahse paramahse) {}
+  ahsg(ahsd paramahsd) {}
   
-  public int a(MayKnowRecommend paramMayKnowRecommend1, MayKnowRecommend paramMayKnowRecommend2)
+  public void onCallback(EIPCResult paramEIPCResult)
   {
-    long l1 = paramMayKnowRecommend1.cardDisplayTimestamp;
-    long l2 = paramMayKnowRecommend2.cardDisplayTimestamp;
-    if (l1 < l2) {
-      return 1;
+    if (-102 == paramEIPCResult.code) {
+      ahsd.r(this.a).finish();
     }
-    if (l1 == l2) {
-      return 0;
-    }
-    return -1;
   }
 }
 

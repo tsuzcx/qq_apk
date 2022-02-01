@@ -1,101 +1,73 @@
-import com.tencent.biz.pubaccount.AccountDetail.view.AccountDetailXListView;
-import com.tencent.widget.AbsListView;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.os.Bundle;
+import com.tencent.biz.AuthorizeConfig.2;
+import com.tencent.biz.AuthorizeConfig.2.1.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.mp.mobileqq_mp.WebviewWhiteListResponse;
+import com.tencent.mobileqq.mp.mobileqq_mp.WebviewWhiteListResponse.RetInfo;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.util.QLog;
+import java.util.concurrent.atomic.AtomicInteger;
+import mqq.observer.BusinessObserver;
+import mqq.os.MqqHandler;
 
-class nhf
-  implements bhtv
+public class nhf
+  implements BusinessObserver
 {
-  int jdField_a_of_type_Int;
-  int b = (int)(2.0F * this.jdField_a_of_type_Ngw.jdField_a_of_type_Float);
+  public nhf(AuthorizeConfig.2 param2) {}
   
-  nhf(ngw paramngw) {}
-  
-  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    if (this.jdField_a_of_type_Ngw.jdField_a_of_type_ComTencentBizPubaccountAccountDetailViewAccountDetailXListView.getFirstVisiblePosition() == 0)
+    if (QLog.isColorLevel()) {
+      QLog.d("AuthorizeConfig", 2, "onReceive whitelist:" + paramBoolean);
+    }
+    if (paramBoolean)
     {
-      paramInt1 = -this.jdField_a_of_type_Ngw.b();
-      paramAbsListView = this.jdField_a_of_type_Ngw.jdField_a_of_type_ComTencentBizPubaccountAccountDetailViewAccountDetailXListView.getChildAt(0);
-      if (this.jdField_a_of_type_Ngw.c) {
-        if (this.jdField_a_of_type_Ngw.b)
+      paramBundle = paramBundle.getByteArray("data");
+      if (paramBundle != null)
+      {
+        mobileqq_mp.WebviewWhiteListResponse localWebviewWhiteListResponse = new mobileqq_mp.WebviewWhiteListResponse();
+        try
         {
-          paramInt2 = (int)(paramInt1 - 262.0F * this.jdField_a_of_type_Ngw.jdField_a_of_type_Float);
-          this.jdField_a_of_type_Ngw.b(paramInt2, paramAbsListView);
-          if ((this.jdField_a_of_type_Ngw.jdField_a_of_type_Nic != null) && (paramInt1 != 0))
+          localWebviewWhiteListResponse.mergeFrom(paramBundle);
+          paramInt = localWebviewWhiteListResponse.ret_info.ret_code.get();
+          if (QLog.isColorLevel()) {
+            QLog.d("AuthorizeConfig", 2, "sso status code: " + String.valueOf(paramInt));
+          }
+          if (paramInt == 0)
           {
-            if (paramInt1 >= this.jdField_a_of_type_Ngw.o - 75.0F * this.jdField_a_of_type_Ngw.jdField_a_of_type_Float) {
-              break label224;
-            }
-            this.jdField_a_of_type_Ngw.jdField_a_of_type_Nic.a(false);
+            ThreadManager.getSubThreadHandler().post(new AuthorizeConfig.2.1.1(this, localWebviewWhiteListResponse));
+            bcst.b(null, "P_CliOper", "Pb_account_lifeservice", "", "webview_whitelist", "update_success", 0, 1, 0, "", "", "", "");
+            return;
           }
-          label128:
-          paramInt2 = this.jdField_a_of_type_Ngw.b();
-          if (Math.abs(this.jdField_a_of_type_Int - paramInt2) <= this.b) {
-            break label267;
+          if (paramInt == 304)
+          {
+            this.a.this$0.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.set(2);
+            this.a.this$0.jdField_a_of_type_AndroidContentSharedPreferences.edit().putLong("lastUpdate", System.currentTimeMillis()).commit();
+            this.a.this$0.g();
+            this.a.this$0.i();
+            bcst.b(null, "P_CliOper", "Pb_account_lifeservice", "", "webview_whitelist", "update_not_modify", 0, 1, 0, "", "", "", "");
+            return;
           }
-          paramInt1 = 1;
-          label154:
-          if (paramInt1 != 0) {
-            if (this.jdField_a_of_type_Int <= paramInt2) {
-              break label272;
-            }
+        }
+        catch (Exception paramBundle)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d("AuthorizeConfig", 2, "update error: " + paramBundle);
           }
         }
       }
     }
-    label267:
-    label272:
-    for (this.jdField_a_of_type_Ngw.e = true;; this.jdField_a_of_type_Ngw.e = false)
-    {
-      this.jdField_a_of_type_Int = paramInt2;
-      return;
-      this.jdField_a_of_type_Ngw.c(paramInt1, paramAbsListView);
-      break;
-      if ((this.jdField_a_of_type_Ngw.jdField_a_of_type_ComTencentMobileqqDataAccountDetail == null) && (this.jdField_a_of_type_Ngw.jdField_a_of_type_ComTencentMobileqqDataEqqDetail == null)) {
-        break;
-      }
-      this.jdField_a_of_type_Ngw.a(paramInt1, paramAbsListView);
-      break;
-      label224:
-      this.jdField_a_of_type_Ngw.jdField_a_of_type_Nic.a();
-      break label128;
-      this.jdField_a_of_type_Ngw.c();
-      if (this.jdField_a_of_type_Ngw.jdField_a_of_type_Nic == null) {
-        break label128;
-      }
-      this.jdField_a_of_type_Ngw.jdField_a_of_type_Nic.a();
-      break label128;
-      paramInt1 = 0;
-      break label154;
-    }
-  }
-  
-  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
-  {
-    if (paramInt == 0)
-    {
-      sff.a().c();
-      if (!this.jdField_a_of_type_Ngw.e) {
-        break label89;
-      }
-      ngw.a(this.jdField_a_of_type_Ngw, paramAbsListView.getLastVisiblePosition(), ngw.d());
-    }
-    for (;;)
-    {
-      if ((this.jdField_a_of_type_Ngw.getCount() - paramAbsListView.getLastVisiblePosition() < ngw.e()) && (this.jdField_a_of_type_Ngw.jdField_a_of_type_ComTencentBizPubaccountAccountDetailViewAccountDetailXListView.a)) {
-        ngw.a(this.jdField_a_of_type_Ngw);
-      }
-      if ((paramAbsListView instanceof AccountDetailXListView)) {
-        ((AccountDetailXListView)paramAbsListView).onScrollStateChanged(paramAbsListView, paramInt);
-      }
-      return;
-      label89:
-      ngw.a(this.jdField_a_of_type_Ngw, paramAbsListView.getFirstVisiblePosition() - ngw.d(), ngw.d());
-    }
+    this.a.this$0.g();
+    this.a.this$0.i();
+    this.a.this$0.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.set(0);
+    bcst.b(null, "P_CliOper", "Pb_account_lifeservice", "", "webview_whitelist", "update_failed", 0, 1, 0, "", "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     nhf
  * JD-Core Version:    0.7.0.1
  */

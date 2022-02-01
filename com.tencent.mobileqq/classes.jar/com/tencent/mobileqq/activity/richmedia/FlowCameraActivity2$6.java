@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.activity.richmedia;
 
 import android.content.Intent;
-import axnh;
-import axnn;
-import axns;
+import bali;
+import balo;
+import balt;
 
 class FlowCameraActivity2$6
   implements Runnable
@@ -12,9 +12,9 @@ class FlowCameraActivity2$6
   
   public void run()
   {
-    Object localObject = axnn.a().a().a(this.this$0.a);
+    Object localObject = balo.a().a().a(this.this$0.a);
     if (localObject != null) {
-      ((axnh)localObject).a(103);
+      ((bali)localObject).a(103);
     }
     for (;;)
     {
@@ -29,7 +29,7 @@ class FlowCameraActivity2$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.activity.richmedia.FlowCameraActivity2.6
  * JD-Core Version:    0.7.0.1
  */

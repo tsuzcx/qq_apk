@@ -1,89 +1,93 @@
+import android.content.ContentResolver;
+import android.content.ContentValues;
+import android.content.Context;
+import android.database.Cursor;
+import android.net.Uri;
+import android.os.SystemClock;
 import android.text.TextUtils;
-import com.tencent.qqmini.sdk.core.proxy.MiniAppProxy;
-import com.tencent.qqmini.sdk.core.proxy.ProxyManager;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.HashSet;
-import java.util.Set;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.AppRuntime;
+import mqq.app.MobileQQ;
 
-public class bhal
+public final class bhal
 {
-  public static final Set<String> a = new HashSet();
-  public static final Set<String> b = new HashSet(Arrays.asList(new String[] { "__TT__GLOBAL__", "createAudioInstance", "setAudioState", "getAudioState", "operateAudio", "destroyAudioInstance", "onAudioStateChange", "setInnerAudioOptionQGame", "getAvailableAudioSources", "loadFont", "getTextLineHeight", "getSystemInfo", "getSystemInfoSync" }));
-  private static Set<String> c;
-  private static Set<String> d;
-  
-  public static Set<String> a()
+  public static String a(AppRuntime paramAppRuntime, String paramString)
   {
-    if (c == null)
-    {
-      c = new HashSet(a);
-      Object localObject = bgpx.a("qqtriton", "MiniGameAPILogWhiteList");
-      bhaj.a().i("LogFilterUtil", "wns config white list: " + (String)localObject);
-      localObject = a((String)localObject);
-      if (localObject != null) {
-        c.addAll((Collection)localObject);
-      }
-      localObject = (MiniAppProxy)ProxyManager.get(MiniAppProxy.class);
-      if ((localObject != null) && (((MiniAppProxy)localObject).isDebugVersion())) {
-        c.add("__jsBridge_all_log__");
-      }
+    Object localObject2 = null;
+    Object localObject1 = null;
+    long l = SystemClock.uptimeMillis();
+    if (QLog.isColorLevel()) {
+      QLog.d("VasUserData", 2, "get, key=" + paramString);
     }
-    return c;
-  }
-  
-  private static Set<String> a(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {
-      paramString = null;
+    if ((paramAppRuntime == null) || (TextUtils.isEmpty(paramString))) {
+      QLog.d("VasUserData", 1, "get, app and key MUST NOT be null, context=" + paramAppRuntime + ", key=" + paramString);
     }
-    HashSet localHashSet;
-    String[] arrayOfString;
     do
     {
+      Context localContext;
       do
       {
-        return paramString;
-        localHashSet = new HashSet();
-        arrayOfString = paramString.split(",");
-        paramString = localHashSet;
-      } while (arrayOfString == null);
-      paramString = localHashSet;
-    } while (arrayOfString.length <= 0);
-    int j = arrayOfString.length;
-    int i = 0;
-    for (;;)
-    {
-      paramString = localHashSet;
-      if (i >= j) {
-        break;
+        return localObject1;
+        localContext = paramAppRuntime.getApplication().getApplicationContext();
+      } while (localContext == null);
+      paramAppRuntime = Uri.parse("content://qq.friendlist/individuationUserData/" + paramAppRuntime.getAccount());
+      paramString = localContext.getContentResolver().query(paramAppRuntime, null, "key=?", new String[] { paramString }, null);
+      paramAppRuntime = localObject2;
+      if (paramString != null)
+      {
+        paramAppRuntime = localObject2;
+        if (paramString.moveToFirst()) {
+          paramAppRuntime = paramString.getString(paramString.getColumnIndex("value"));
+        }
       }
-      paramString = arrayOfString[i].trim();
-      if (!TextUtils.isEmpty(paramString)) {
-        localHashSet.add(paramString);
+      if (paramString != null) {
+        paramString.close();
       }
-      i += 1;
-    }
+      localObject1 = paramAppRuntime;
+    } while (!QLog.isColorLevel());
+    QLog.d("VasUserData", 2, "[Performance] get, duration=" + (SystemClock.uptimeMillis() - l));
+    return paramAppRuntime;
   }
   
-  public static Set<String> b()
+  public static boolean a(AppRuntime paramAppRuntime, String paramString1, String paramString2)
   {
-    if (d == null)
-    {
-      d = new HashSet(b);
-      Object localObject = bgpx.a("qqtriton", "MiniGameAPILogBlackList");
-      bhaj.a().i("LogFilterUtil", "wns config black list: " + (String)localObject);
-      localObject = a((String)localObject);
-      if (localObject != null) {
-        d.addAll((Collection)localObject);
-      }
+    boolean bool = true;
+    long l = SystemClock.uptimeMillis();
+    if (QLog.isColorLevel()) {
+      QLog.d("VasUserData", 2, "set, key=" + paramString1 + ", value=" + paramString2);
     }
-    return d;
+    if ((paramAppRuntime == null) || (TextUtils.isEmpty(paramString1))) {
+      QLog.d("VasUserData", 1, "get, app and key MUST NOT be null, context=" + paramAppRuntime + ", key=" + paramString1);
+    }
+    Context localContext;
+    do
+    {
+      return false;
+      localContext = paramAppRuntime.getApplication().getApplicationContext();
+    } while (localContext == null);
+    Uri localUri = Uri.parse("content://qq.friendlist/individuationUserData/" + paramAppRuntime.getAccount());
+    ContentValues localContentValues = new ContentValues();
+    localContentValues.put("key", paramString1);
+    paramAppRuntime = paramString2;
+    if (TextUtils.isEmpty(paramString2)) {
+      paramAppRuntime = "";
+    }
+    localContentValues.put("value", paramAppRuntime);
+    int i = localContext.getContentResolver().update(localUri, localContentValues, null, null);
+    if (QLog.isColorLevel()) {
+      QLog.d("VasUserData", 2, "[Performance] set, duration=" + (SystemClock.uptimeMillis() - l) + ", result=" + i);
+    }
+    if (i >= 1) {}
+    for (;;)
+    {
+      return bool;
+      bool = false;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bhal
  * JD-Core Version:    0.7.0.1
  */

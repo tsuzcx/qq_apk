@@ -1,15 +1,15 @@
 package com.tencent.biz.pubaccount.readinjoy.pts.loader;
 
-import pvw;
+import qog;
 
 public class PTSAppLoader$1
   implements Runnable
 {
-  public PTSAppLoader$1(pvw parampvw) {}
+  public PTSAppLoader$1(qog paramqog) {}
   
   public void run()
   {
-    pvw.a(this.this$0, "3978");
+    qog.a(this.this$0, "3978");
   }
 }
 

@@ -1,14 +1,16 @@
-public class bdtb
+import com.tencent.mobileqq.highway.netprobe.WeakNetCallback;
+import com.tencent.qphone.base.util.BaseApplication;
+import java.util.HashMap;
+
+final class bdtb
+  implements WeakNetCallback
 {
-  public static int b = 2;
-  public static int c = 1;
-  public int a;
-  public bdsy a;
-  public String a;
-  public bdsy b;
-  public bdsy c;
-  public int d;
-  public int e;
+  private bctj a = bctj.a(BaseApplication.getContext());
+  
+  public void onResultOverflow(HashMap<String, String> paramHashMap)
+  {
+    this.a.a(bgrj.a(), "actWeaknetProbe", true, 0L, paramHashMap.size(), paramHashMap, "");
+  }
 }
 
 

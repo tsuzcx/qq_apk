@@ -1,56 +1,68 @@
-import android.graphics.Bitmap;
-import android.os.Bundle;
-import com.tencent.biz.pubaccount.readinjoy.common.WxShareHelperFromReadInjoy;
-import com.tencent.biz.pubaccount.util.ReadInjoyWebShareHelper.4;
-import com.tencent.mobileqq.wxapi.WXShareHelper;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.ProteusItemData;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.RecommendAdData;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.ViewFactory;
+import org.json.JSONObject;
 
-public class szg
-  implements yrb
+class szg
+  extends syj
 {
-  public szg(ReadInjoyWebShareHelper.4 param4, Bitmap paramBitmap) {}
+  private ProteusItemData jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataProteusItemData;
+  private Container jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer;
   
-  public void callback(Bundle paramBundle)
+  public szg(szf paramszf, View paramView, BaseData paramBaseData)
   {
-    int j = 0;
-    int i = 0;
-    int k = paramBundle.getInt("readinjoy_to_wx_config");
-    if (QLog.isColorLevel()) {
-      QLog.d("WebShareHelper", 2, "config = " + k);
+    super(paramView, paramBaseData);
+    if ((paramView instanceof Container)) {
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer = ((Container)paramView);
     }
-    if (k == 0)
+  }
+  
+  private void a(Context paramContext, JSONObject paramJSONObject)
+  {
+    ViewFactory.findClickableViewListener(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getVirtualView(), new szh(this, paramContext));
+  }
+  
+  public void a(BaseData paramBaseData1, BaseData paramBaseData2, boolean paramBoolean)
+  {
+    if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer == null) || (paramBaseData2 == null)) {}
+    do
     {
-      paramBundle = WxShareHelperFromReadInjoy.a();
-      str1 = this.jdField_a_of_type_ComTencentBizPubaccountUtilReadInjoyWebShareHelper$4.this$0.jdField_a_of_type_JavaLangString;
-      str2 = this.jdField_a_of_type_ComTencentBizPubaccountUtilReadInjoyWebShareHelper$4.jdField_a_of_type_JavaLangString;
-      localBitmap = this.jdField_a_of_type_AndroidGraphicsBitmap;
-      str3 = this.jdField_a_of_type_ComTencentBizPubaccountUtilReadInjoyWebShareHelper$4.b;
-      str4 = this.jdField_a_of_type_ComTencentBizPubaccountUtilReadInjoyWebShareHelper$4.c;
-      if (this.jdField_a_of_type_ComTencentBizPubaccountUtilReadInjoyWebShareHelper$4.jdField_a_of_type_Boolean) {}
+      do
+      {
+        return;
+      } while (!(paramBaseData2 instanceof ProteusItemData));
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataProteusItemData = ((ProteusItemData)paramBaseData2);
+      paramBaseData1 = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataProteusItemData.a;
+    } while (paramBaseData1 == null);
+    szf.a(this.jdField_a_of_type_Szf, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer);
+    if ((paramBaseData2 instanceof RecommendAdData)) {
+      szf.a(this.jdField_a_of_type_Szf, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer, (RecommendAdData)paramBaseData2);
+    }
+    try
+    {
+      paramBaseData1.bindData(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataProteusItemData.c);
+      pfr.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getVirtualView(), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataProteusItemData.a.getViewBean());
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataBaseData = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataProteusItemData;
+      a(szf.a(this.jdField_a_of_type_Szf), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataProteusItemData.c);
+      return;
+    }
+    catch (Exception paramBaseData1)
+    {
       for (;;)
       {
-        paramBundle.a(str1, str2, localBitmap, str3, str4, i);
-        return;
-        i = 1;
+        oqh.a("WebFastProteusViewAdCreator", paramBaseData1.getMessage());
       }
-    }
-    paramBundle = WXShareHelper.a();
-    String str1 = this.jdField_a_of_type_ComTencentBizPubaccountUtilReadInjoyWebShareHelper$4.this$0.jdField_a_of_type_JavaLangString;
-    String str2 = this.jdField_a_of_type_ComTencentBizPubaccountUtilReadInjoyWebShareHelper$4.jdField_a_of_type_JavaLangString;
-    Bitmap localBitmap = this.jdField_a_of_type_AndroidGraphicsBitmap;
-    String str3 = this.jdField_a_of_type_ComTencentBizPubaccountUtilReadInjoyWebShareHelper$4.b;
-    String str4 = this.jdField_a_of_type_ComTencentBizPubaccountUtilReadInjoyWebShareHelper$4.c;
-    if (this.jdField_a_of_type_ComTencentBizPubaccountUtilReadInjoyWebShareHelper$4.jdField_a_of_type_Boolean) {}
-    for (i = j;; i = 1)
-    {
-      paramBundle.b(str1, str2, localBitmap, str3, str4, i);
-      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     szg
  * JD-Core Version:    0.7.0.1
  */

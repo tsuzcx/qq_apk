@@ -1,33 +1,13 @@
 import android.view.View;
-import android.widget.FrameLayout;
 
-public class bewe
+class bewe
+  implements atwb
 {
-  private static long jdField_a_of_type_Long = 400L;
-  private static boolean jdField_a_of_type_Boolean;
+  bewe(bewa parambewa) {}
   
-  public static void a()
+  public void onClick(View paramView)
   {
-    jdField_a_of_type_Boolean = false;
-  }
-  
-  public static void a(FrameLayout paramFrameLayout)
-  {
-    if (jdField_a_of_type_Boolean) {
-      return;
-    }
-    jdField_a_of_type_Boolean = true;
-    paramFrameLayout.invalidate();
-    View localView = paramFrameLayout.getChildAt(1);
-    paramFrameLayout = paramFrameLayout.getChildAt(0);
-    beon localbeon = new beon(localView);
-    localbeon.setDuration(jdField_a_of_type_Long);
-    localbeon.setFillAfter(true);
-    beoo localbeoo = new beoo(paramFrameLayout);
-    localbeoo.setDuration(jdField_a_of_type_Long);
-    localbeoo.setFillAfter(true);
-    localView.startAnimation(localbeon);
-    paramFrameLayout.startAnimation(localbeoo);
+    this.a.c(paramView);
   }
 }
 

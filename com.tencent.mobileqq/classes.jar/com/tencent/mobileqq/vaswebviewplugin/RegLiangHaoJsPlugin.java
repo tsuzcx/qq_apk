@@ -2,8 +2,8 @@ package com.tencent.mobileqq.vaswebviewplugin;
 
 import android.app.Activity;
 import android.content.Intent;
-import becg;
-import begz;
+import bhji;
+import bhod;
 import com.tencent.mobileqq.vip.lianghao.fragment.LiangHaoBuyFragment;
 import com.tencent.mobileqq.webview.swift.JsBridgeListener;
 import com.tencent.mobileqq.webview.swift.WebViewPlugin;
@@ -69,7 +69,7 @@ public class RegLiangHaoJsPlugin
     }
     paramString1 = paramJsBridgeListener.optString("uin", "");
     paramJsBridgeListener = paramJsBridgeListener.optString("highlight", "");
-    LiangHaoBuyFragment.a(this.mActivity, this.mActivity.getIntent(), new becg(paramString1, paramJsBridgeListener));
+    LiangHaoBuyFragment.a(this.mActivity, this.mActivity.getIntent(), new bhji(paramString1, paramJsBridgeListener));
     return true;
   }
   
@@ -81,7 +81,7 @@ public class RegLiangHaoJsPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.vaswebviewplugin.RegLiangHaoJsPlugin
  * JD-Core Version:    0.7.0.1
  */

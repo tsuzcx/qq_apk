@@ -1,53 +1,47 @@
+import android.text.TextUtils;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.model.DiandianTopConfig;
-import com.tencent.biz.pubaccount.readinjoy.view.headers.ReadInJoyDiandianHeaderController;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.biz.pubaccount.VideoInfo;
+import com.tencent.biz.pubaccount.VideoInfo.ChannelInfo;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsTopicViewGroup;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class seg
   implements View.OnClickListener
 {
-  public int a;
-  
-  private seg(ReadInJoyDiandianHeaderController paramReadInJoyDiandianHeaderController) {}
+  public seg(VideoFeedsTopicViewGroup paramVideoFeedsTopicViewGroup, VideoInfo.ChannelInfo paramChannelInfo) {}
   
   public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadInJoyDiandianHeaderController", 2, "onItemClick: " + this.jdField_a_of_type_Int);
-    }
-    DiandianTopConfig localDiandianTopConfig = (DiandianTopConfig)ReadInJoyDiandianHeaderController.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewHeadersReadInJoyDiandianHeaderController).get(this.jdField_a_of_type_Int);
-    ors.a(paramView.getContext(), localDiandianTopConfig.jumpUrl);
-    try
+    String str;
+    if (VideoFeedsTopicViewGroup.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsTopicViewGroup).a(VideoFeedsTopicViewGroup.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsTopicViewGroup)))
     {
-      paramView = new JSONObject();
-      paramView.put("folder_status", ors.d);
-      if (localDiandianTopConfig.type == 5) {
-        paramView.put("list_URL", localDiandianTopConfig.jumpUrl);
+      if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo$ChannelInfo.c)) {
+        pha.a(VideoFeedsTopicViewGroup.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsTopicViewGroup), this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo$ChannelInfo.c);
       }
-      for (;;)
-      {
-        paramView.put("type", localDiandianTopConfig.type);
-        nrt.a(null, "", "0X80092FD", "0X80092FD", 0, 0, ReadInJoyDiandianHeaderController.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewHeadersReadInJoyDiandianHeaderController).size() + "", this.jdField_a_of_type_Int + 1 + "", localDiandianTopConfig.topicId + "", paramView.toString(), false);
-        return;
-        paramView.put("list_URL", "0");
+    }
+    else
+    {
+      str = new skc("", "", VideoFeedsTopicViewGroup.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsTopicViewGroup).jdField_a_of_type_JavaLangString, VideoFeedsTopicViewGroup.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsTopicViewGroup).g).t(this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo$ChannelInfo.jdField_a_of_type_Int).u(ryx.a(this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo$ChannelInfo)).a(VideoFeedsTopicViewGroup.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsTopicViewGroup).B).a().a();
+      if (!VideoFeedsTopicViewGroup.a()) {
+        break label192;
       }
+      oat.a(null, "", "0X8009331", "0X8009331", 0, 0, "3", "", "", str, false);
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
-    }
-    catch (JSONException paramView)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("ReadInJoyDiandianHeaderController", 2, paramView.toString());
-      }
+      ohp.b(VideoFeedsTopicViewGroup.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsTopicViewGroup), this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo$ChannelInfo.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo$ChannelInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo$ChannelInfo.b, 8, null);
+      break;
+      label192:
+      oat.a(null, "", "0X80092F9", "0X80092F9", 0, 0, "3", "", "", str, false);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     seg
  * JD-Core Version:    0.7.0.1
  */

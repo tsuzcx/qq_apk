@@ -5,27 +5,41 @@ import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.text.TextUtils;
+import com.tencent.qapmsdk.base.config.DefaultPluginConfig;
+import com.tencent.qapmsdk.base.config.PluginCombination;
 import com.tencent.qapmsdk.base.listener.IInspectorListener;
+import com.tencent.qapmsdk.base.listener.IMemoryDumpListener;
 import com.tencent.qapmsdk.base.meta.BaseInfo;
+import com.tencent.qapmsdk.base.meta.DumpResult;
+import com.tencent.qapmsdk.base.meta.UserMeta;
+import com.tencent.qapmsdk.base.monitorplugin.PluginController;
+import com.tencent.qapmsdk.base.reporter.ReporterMachine;
+import com.tencent.qapmsdk.base.reporter.uploaddata.data.ResultObject;
 import com.tencent.qapmsdk.common.logcat.ILogcat;
 import com.tencent.qapmsdk.common.logcat.LogcatManager;
 import com.tencent.qapmsdk.common.logger.Logger;
 import com.tencent.qapmsdk.common.util.AppInfo;
 import com.tencent.qapmsdk.common.util.InspectUUID;
 import com.tencent.qapmsdk.common.util.RecyclablePool;
+import com.tencent.qapmsdk.memory.DumpMemInfoHandler;
+import java.io.File;
 import java.lang.ref.WeakReference;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import java.util.UUID;
+import org.json.JSONObject;
 
 public class LeakInspector
 {
   private static final int CHECK_PIVOT = 5000;
-  public static int LOOP_MAX_COUNT = 100;
   private static final String TAG = "QAPM_memory_LeakInspector";
   private static final int TIME_UNIT = 1000;
   private static boolean autoDump = false;
   private static long lastTimeGC = 0L;
   private static LeakInspector leakInspector;
+  private static int loopMaxCount = 100;
+  private static boolean sKeepUuidWhenLeaked = false;
   private static RecyclablePool sPool;
   private IInspectorListener inspectorListener;
   private Handler leakHandler;
@@ -36,7 +50,7 @@ public class LeakInspector
     this.inspectorListener = paramIInspectorListener;
   }
   
-  private void addLogcat(List<String> paramList)
+  private static void addLogcat(List<String> paramList)
   {
     if (Build.VERSION.SDK_INT < 16)
     {
@@ -53,7 +67,7 @@ public class LeakInspector
     }
   }
   
-  private static void doGC()
+  private static void doGc()
   {
     long l = System.currentTimeMillis();
     if (l - lastTimeGC >= 5000L)
@@ -64,13 +78,58 @@ public class LeakInspector
     }
   }
   
+  public static DumpResult dumpMemory(String paramString, boolean paramBoolean, IMemoryDumpListener paramIMemoryDumpListener)
+  {
+    int i = 0;
+    DumpResult localDumpResult = new DumpResult();
+    ArrayList localArrayList = new ArrayList();
+    Object localObject1 = paramIMemoryDumpListener.onPrepareDump(paramString);
+    String str = paramString + "_leak";
+    if (paramBoolean)
+    {
+      Object localObject2 = DumpMemInfoHandler.generateHprof(paramString);
+      paramIMemoryDumpListener.onHprofDumped(paramString);
+      paramBoolean = ((Boolean)localObject2[0]).booleanValue();
+      localDumpResult.success = paramBoolean;
+      if (!paramBoolean) {
+        break label326;
+      }
+      localObject2 = (String)localObject2[1];
+      localDumpResult.hprofFileSize = new File((String)localObject2).length();
+      localArrayList.add(localObject2);
+      if ((localObject1 != null) && (((List)localObject1).size() > 0)) {
+        localArrayList.addAll((Collection)localObject1);
+      }
+    }
+    addLogcat(localArrayList);
+    localObject1 = DumpMemInfoHandler.zipFiles(localArrayList, str);
+    localDumpResult.success = ((Boolean)localObject1[0]).booleanValue();
+    localObject1 = (String)localObject1[1];
+    localDumpResult.zipFilePath = ((String)localObject1);
+    Logger.INSTANCE.d(new String[] { "QAPM_memory_LeakInspector", "leakFlag=true", ",ZipFile=", String.valueOf(localDumpResult.success), ",leakName=", paramString, ",dumpPath=", localObject1 });
+    paramIMemoryDumpListener.onFinishDump(localDumpResult.success, paramString, (String)localObject1);
+    while (i < localArrayList.size())
+    {
+      paramString = new File((String)localArrayList.get(i));
+      if ((paramString != null) && (paramString.isFile()) && (paramString.exists())) {
+        paramString.delete();
+      }
+      i += 1;
+    }
+    label326:
+    paramIMemoryDumpListener.onFinishDump(false, paramString, "");
+    Logger.INSTANCE.e(new String[] { "QAPM_memory_LeakInspector", "generateHprof error ", paramString });
+    return localDumpResult;
+    return localDumpResult;
+  }
+  
   public static void enableAutoDump(boolean paramBoolean)
   {
     autoDump = paramBoolean;
   }
   
   @Nullable
-  private InspectUUID generateInspectUUID(@NonNull Object paramObject, String paramString)
+  private InspectUUID generateInspectUuid(@NonNull Object paramObject, String paramString)
   {
     try
     {
@@ -103,10 +162,31 @@ public class LeakInspector
     do
     {
       return;
-      paramObject = generateInspectUUID(paramObject, paramString);
+      paramObject = generateInspectUuid(paramObject, paramString);
     } while (paramObject == null);
     paramObject = new LeakInspector.InspectorRunner(this, paramObject, 0);
     this.leakHandler.post(paramObject);
+  }
+  
+  public static void report(long paramLong, String paramString)
+  {
+    JSONObject localJSONObject = new JSONObject();
+    localJSONObject.put("processname", AppInfo.obtainProcessName(BaseInfo.app));
+    localJSONObject.put("event_time", paramLong);
+    localJSONObject.put("fileObj", paramString);
+    localJSONObject.put("plugin", PluginCombination.leakPlugin.plugin);
+    paramString = new ResultObject(0, "MemoryLeak single", true, 1L, 1L, localJSONObject, true, true, BaseInfo.userMeta.uin);
+    ReporterMachine.INSTANCE.addResultObj(paramString);
+  }
+  
+  public static void setKeepUuidWhenLeak(boolean paramBoolean)
+  {
+    sKeepUuidWhenLeaked = paramBoolean;
+  }
+  
+  public static void setLooperMaxCount(int paramInt)
+  {
+    loopMaxCount = paramInt;
   }
   
   public static void startInspect(@NonNull Object paramObject, String paramString)
@@ -121,12 +201,17 @@ public class LeakInspector
       Logger.INSTANCE.e(new String[] { "QAPM_memory_LeakInspector", "Please init a listener first!" });
       return;
     }
+    if (!PluginController.INSTANCE.whetherPluginSampling(PluginCombination.leakPlugin.plugin))
+    {
+      Logger.INSTANCE.i(new String[] { "QAPM_memory_LeakInspector", "leakSampleLost" });
+      return;
+    }
     leakInspector.newInspect(paramObject, paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.tencent.qapmsdk.memory.leakdetect.LeakInspector
  * JD-Core Version:    0.7.0.1
  */

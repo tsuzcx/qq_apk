@@ -22,6 +22,8 @@ public abstract interface TicketManager
   
   public abstract byte[] getDA2(String paramString);
   
+  public abstract String getOpenSdkKey(String paramString, int paramInt);
+  
   public abstract String getPskey(String paramString1, String paramString2);
   
   public abstract String getPt4Token(String paramString1, String paramString2);

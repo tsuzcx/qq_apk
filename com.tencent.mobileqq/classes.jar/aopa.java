@@ -1,69 +1,51 @@
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.os.SystemClock;
+import android.util.AndroidRuntimeException;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
 
-public class aopa
+public abstract class aopa
 {
-  private boolean a;
+  public boolean askGPS;
+  protected String callerRoute;
+  protected long geoCacheInterval;
+  protected long globalCacheInterval;
+  public boolean goonListener;
+  private boolean isRemoved;
+  public int level;
+  protected long levelCacheInterval;
+  public long maxCacheInterval;
+  protected int maxFailCount = 3;
+  public boolean reqLocation;
+  private boolean requesting;
+  public long sTime;
+  public String tag;
+  public boolean uiThread;
   
-  public static aopa a(aoko[] paramArrayOfaoko)
+  public aopa(int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString)
   {
-    aopa localaopa = new aopa();
-    StringBuilder localStringBuilder = new StringBuilder();
-    for (;;)
+    if ((paramInt == 0) || (paramInt == 1) || (paramInt == 3) || (paramInt == 4))
     {
-      try
-      {
-        int j = paramArrayOfaoko.length;
-        int i = 0;
-        if (i < j)
-        {
-          String str = paramArrayOfaoko[i].a;
-          QLog.d("OpenSdkD55Processor", 1, new Object[] { "content=", str });
-          JSONObject localJSONObject = new JSONObject(str);
-          if (localJSONObject.has("enable_d55"))
-          {
-            if (localJSONObject.optInt("enable_d55", 0) == 1)
-            {
-              bool = true;
-              localaopa.a = bool;
-            }
-          }
-          else
-          {
-            localStringBuilder.append("config: ").append(str).append(",");
-            i += 1;
-          }
-        }
-        else
-        {
-          QLog.d("OpenSdkD55Processor", 1, "parse, content:" + localStringBuilder.toString());
-          return localaopa;
-        }
-      }
-      catch (JSONException paramArrayOfaoko)
-      {
-        QLog.e("OpenSdkD55Processor", 1, "JSONException", paramArrayOfaoko);
-        return null;
-      }
-      boolean bool = false;
+      this.tag = paramString;
+      this.level = paramInt;
+      this.askGPS = paramBoolean2;
+      this.reqLocation = paramBoolean1;
+      this.goonListener = paramBoolean4;
+      this.uiThread = paramBoolean3;
+      this.maxCacheInterval = paramLong;
+      this.sTime = SystemClock.elapsedRealtime();
+      return;
     }
+    throw new AndroidRuntimeException("invalid level=" + paramInt);
   }
   
-  public boolean a()
-  {
-    return this.a;
-  }
+  public void onConsecutiveFailure(int paramInt1, int paramInt2) {}
   
-  public String toString()
-  {
-    new StringBuilder().append("isSwitchOpen:").append(this.a);
-    return super.toString();
-  }
+  public abstract void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo);
+  
+  public void onStatusUpdate(String paramString1, int paramInt, String paramString2) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aopa
  * JD-Core Version:    0.7.0.1
  */

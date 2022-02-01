@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.teamwork.spread;
 
-import bajo;
+import bdks;
 import com.tencent.mobileqq.data.DataLineMsgRecord;
 import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.qphone.base.util.QLog;
@@ -10,7 +10,7 @@ import java.util.TimerTask;
 public class DataLineMessageSpreadManager$3
   extends TimerTask
 {
-  public DataLineMessageSpreadManager$3(bajo parambajo) {}
+  public DataLineMessageSpreadManager$3(bdks parambdks) {}
   
   public void run()
   {
@@ -23,15 +23,15 @@ public class DataLineMessageSpreadManager$3
         if (QLog.isColorLevel()) {
           QLog.i("DataLineMessageSpreadManager", 1, "lastInsertTime[" + this.this$0.a + "],now[" + l1 + "], dur[" + l2 + "],timeOut start check!");
         }
-        i = bajo.a(this.this$0).size() - 1;
+        i = bdks.a(this.this$0).size() - 1;
         while (i >= 0)
         {
-          localMessageRecord = (MessageRecord)bajo.a(this.this$0).get(i);
+          localMessageRecord = (MessageRecord)bdks.a(this.this$0).get(i);
           this.this$0.a((DataLineMsgRecord)localMessageRecord);
           i -= 1;
         }
         this.this$0.a = 0L;
-        bajo.a(this.this$0).clear();
+        bdks.a(this.this$0).clear();
       }
       while (!QLog.isColorLevel())
       {
@@ -45,7 +45,7 @@ public class DataLineMessageSpreadManager$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.teamwork.spread.DataLineMessageSpreadManager.3
  * JD-Core Version:    0.7.0.1
  */

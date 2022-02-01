@@ -1,48 +1,92 @@
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.troop.homework.recite.data.ArticleInfo;
-import com.tencent.mobileqq.troop.homework.recite.ui.SelectReciteParagraphFragment;
+import NS_MOBILE_QBOSS_PROTO.tMobileQbossFeedBackInfo;
+import android.content.Intent;
+import android.os.Bundle;
+import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
-import java.util.List;
-import java.util.Set;
-import org.json.JSONException;
+import mqq.app.MSFServlet;
+import mqq.app.Packet;
 
 public class bcdc
-  implements View.OnClickListener
+  extends MSFServlet
 {
-  public bcdc(SelectReciteParagraphFragment paramSelectReciteParagraphFragment) {}
-  
-  public void onClick(View paramView)
+  private tMobileQbossFeedBackInfo a(String paramString1, int paramInt1, int paramInt2, String paramString2, long paramLong, String paramString3, int paramInt3)
   {
-    try
+    tMobileQbossFeedBackInfo localtMobileQbossFeedBackInfo = new tMobileQbossFeedBackInfo();
+    localtMobileQbossFeedBackInfo.uiUin = paramLong;
+    localtMobileQbossFeedBackInfo.sQBosstrace = paramString1;
+    localtMobileQbossFeedBackInfo.iOperType = paramInt1;
+    localtMobileQbossFeedBackInfo.iOperSource = paramInt2;
+    localtMobileQbossFeedBackInfo.sQua = paramString3;
+    localtMobileQbossFeedBackInfo.sUserID = paramString2;
+    localtMobileQbossFeedBackInfo.iOperTimes = paramInt3;
+    return localtMobileQbossFeedBackInfo;
+  }
+  
+  private ArrayList<tMobileQbossFeedBackInfo> a(String paramString1, int paramInt, String paramString2, long paramLong, String paramString3)
+  {
+    paramString1 = a(paramString1, paramInt, 2, paramString2, paramLong, paramString3, 1);
+    paramString2 = new ArrayList(1);
+    paramString2.add(paramString1);
+    return paramString2;
+  }
+  
+  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
+  {
+    if (paramFromServiceMsg != null) {}
+    for (int i = paramFromServiceMsg.getResultCode();; i = -1)
     {
-      if (!this.a.jdField_a_of_type_JavaUtilSet.isEmpty())
-      {
-        paramView = new ArrayList(this.a.jdField_a_of_type_JavaUtilSet);
-        SelectReciteParagraphFragment.a(this.a, bcea.a(this.a.c, this.a.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteDataArticleInfo.title, this.a.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteDataArticleInfo.kid, paramView, this.a.jdField_a_of_type_Bcdd.getCount()));
-        this.a.getActivity().finish();
-        bdes.a("Grp_edu", "Grp_recite", "Clk_Success", 0, 0, new String[] { this.a.c, String.valueOf(this.a.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteDataArticleInfo.type - 1) });
-        String str1 = this.a.c;
-        String str2 = this.a.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteDataArticleInfo.title;
-        if (paramView != null) {}
-        int i;
-        for (paramView = String.valueOf(paramView.size());; paramView = String.valueOf(i))
-        {
-          bdes.a("Grp_edu", "Grp_recite", "Section_Count", 0, 0, new String[] { str1, str2, paramView });
-          return;
-          i = this.a.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteDataArticleInfo.paragraphs.size();
-        }
+      paramIntent = new Bundle();
+      paramIntent.putString("msg", "servlet result code is " + i);
+      QLog.d("QbossReportServlet", 2, "qboss onReceive onSend");
+      if (i != 1000) {
+        break label152;
       }
+      paramFromServiceMsg = bmew.a(paramFromServiceMsg.getWupBuffer());
+      if (paramFromServiceMsg == null) {
+        break;
+      }
+      paramIntent.putInt("ret", 0);
+      paramIntent.putSerializable("data", paramFromServiceMsg);
+      QLog.d("QbossReportServlet", 2, "qboss onReceive ret");
+      notifyObserver(null, 1008, true, paramIntent, ayev.class);
       return;
     }
-    catch (JSONException paramView)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("SelectReciteParagraphFragment", 2, paramView, new Object[0]);
-      }
+    QLog.d("QbossReportServlet", 2, "qboss onReceive ok");
+    if (QLog.isColorLevel()) {
+      QLog.d("QbossReportServlet", 2, "QZONE_REPORT_QBOSS fail, decode result is null");
     }
+    paramIntent.putInt("ret", -2);
+    notifyObserver(null, 1008, false, paramIntent, ayev.class);
+    return;
+    label152:
+    if (QLog.isColorLevel()) {
+      QLog.d("QbossReportServlet", 2, "QZONE_REPORT_QBOSS fail, resultCode=" + i);
+    }
+    QLog.d("QbossReportServlet", 2, "qboss onReceive not ok");
+    paramIntent.putInt("ret", -3);
+    notifyObserver(null, 1008, false, paramIntent, ayev.class);
+  }
+  
+  public void onSend(Intent paramIntent, Packet paramPacket)
+  {
+    Object localObject1 = paramIntent.getStringExtra("sQBosstrace");
+    int i = paramIntent.getIntExtra("iOperType", 0);
+    Object localObject2 = paramIntent.getStringExtra("sUserID");
+    long l = paramIntent.getLongExtra("uin", 0L);
+    paramIntent = paramIntent.getStringExtra("qua");
+    QLog.d("QbossReportServlet", 2, "qboss onSend");
+    localObject2 = new bmew(a((String)localObject1, i, (String)localObject2, l, paramIntent));
+    localObject1 = ((bmew)localObject2).encode();
+    paramIntent = (Intent)localObject1;
+    if (localObject1 == null)
+    {
+      QLog.e("QbossReportServlet", 1, "onSend request encode result is null.cmd=" + ((bmew)localObject2).uniKey());
+      paramIntent = new byte[4];
+    }
+    paramPacket.setTimeout(60000L);
+    paramPacket.setSSOCommand("SQQzoneSvc." + ((bmew)localObject2).uniKey());
+    paramPacket.putSendData(paramIntent);
   }
 }
 

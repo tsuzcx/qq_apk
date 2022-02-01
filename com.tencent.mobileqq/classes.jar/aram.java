@@ -1,53 +1,83 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
-class aram
-  implements artx
+public class aram
 {
-  aram(araj paramaraj) {}
+  private float jdField_a_of_type_Float = 1.0F;
+  private int jdField_a_of_type_Int;
+  private String jdField_a_of_type_JavaLangString = "";
+  private int jdField_b_of_type_Int;
+  private String jdField_b_of_type_JavaLangString = "";
+  private String c = "";
+  private String d = "";
+  private String e = "";
+  private String f = "";
   
-  public void a(int paramInt, Bundle paramBundle) {}
-  
-  public void a(int paramInt, String paramString, Bundle paramBundle)
+  public static aram a(JSONObject paramJSONObject)
   {
-    araj.a(this.a);
+    if (paramJSONObject == null) {
+      return null;
+    }
+    aram localaram = new aram();
+    localaram.jdField_a_of_type_Int = paramJSONObject.getInt("type");
+    localaram.jdField_a_of_type_JavaLangString = paramJSONObject.getString("color");
+    localaram.jdField_a_of_type_Float = ((float)paramJSONObject.getDouble("alpha"));
+    localaram.jdField_b_of_type_JavaLangString = paramJSONObject.getString("text");
+    localaram.c = paramJSONObject.getString("tcolor");
+    localaram.d = paramJSONObject.getString("icon");
+    localaram.f = paramJSONObject.getString("tshow");
+    localaram.e = paramJSONObject.getString("tpress");
+    localaram.jdField_b_of_type_Int = paramJSONObject.getInt("click");
+    return localaram;
   }
   
-  public void a(String paramString, long paramLong, Bundle paramBundle)
+  public float a()
   {
-    azqs.b(null, "P_CliOper", "webview", "", "webview_apk_download", "download_success", 0, 1, 0, "", "", "", "");
-    paramBundle.getInt("_CB_SID");
-    String str = paramBundle.getString("_CB_URL");
-    paramBundle = paramBundle.getBundle("_CB_USERDATA");
-    araj.a(this.a, str);
-    QLog.i("UniformDownloadMgr<FileAssistant>", 1, "[UniformDL] >>>insertFM and install. PH:" + paramString + " SZ:" + paramLong);
-    if (this.a.a != null) {
-      this.a.a.a().a(null, -1, paramString, paramLong, 16, null, paramBundle);
-    }
-    for (;;)
-    {
-      if (paramBundle != null) {
-        artp.a(paramString, paramBundle.getString("big_brother_source_key"));
-      }
-      araj.a(this.a);
-      if ("http://qqwx.qq.com/s?aid=index&g_f=429&mType=QQSpaceClean".equals(str)) {
-        azqs.b(null, "P_CliOper", "Safe_SpaceClean", "", "SpaceClean_", "download secure apk sucess", 0, 0, "", "", "", "");
-      }
-      return;
-      arrr.c(paramString);
-    }
+    return this.jdField_a_of_type_Float;
   }
   
-  public void b(int paramInt, Bundle paramBundle) {}
+  public int a()
+  {
+    return this.jdField_a_of_type_Int;
+  }
   
-  public void c(int paramInt, Bundle paramBundle) {}
+  public String a()
+  {
+    return this.jdField_a_of_type_JavaLangString;
+  }
   
-  public void d(int paramInt, Bundle paramBundle) {}
+  public int b()
+  {
+    return this.jdField_b_of_type_Int;
+  }
+  
+  public String b()
+  {
+    return this.jdField_b_of_type_JavaLangString;
+  }
+  
+  public String c()
+  {
+    return this.c;
+  }
+  
+  public String d()
+  {
+    return this.d;
+  }
+  
+  public String e()
+  {
+    return this.e;
+  }
+  
+  public String f()
+  {
+    return this.f;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aram
  * JD-Core Version:    0.7.0.1
  */

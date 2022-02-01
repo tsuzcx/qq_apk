@@ -1,39 +1,12 @@
-import android.graphics.Bitmap;
-import com.tencent.image.NativeGifImage;
-import java.io.File;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ChatMessage;
 
-public class agxb
-  extends NativeGifImage
+final class agxb
+  implements ahbm
 {
-  public agxb(File paramFile, boolean paramBoolean)
+  public int a(QQAppInterface paramQQAppInterface, ChatMessage paramChatMessage)
   {
-    super(paramFile, paramBoolean);
-  }
-  
-  public int a()
-  {
-    return this.mMetaData[POST_INVALIDATION_TIME_INDEX];
-  }
-  
-  public Bitmap a()
-  {
-    return this.mCurrentFrameBitmap;
-  }
-  
-  public void a()
-  {
-    getNextFrame();
-    applyNextFrame();
-  }
-  
-  public int b()
-  {
-    return this.mMetaData[FRAME_COUNT_INDEX];
-  }
-  
-  public int c()
-  {
-    return this.mCurrentFrameIndex;
+    return 18;
   }
 }
 

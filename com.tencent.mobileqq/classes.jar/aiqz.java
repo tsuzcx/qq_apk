@@ -1,36 +1,17 @@
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
-import com.tencent.mobileqq.activity.photo.PhotoSendParams;
-import com.tencent.mobileqq.activity.photo.album.PhotoListBaseData;
-import java.util.HashMap;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.tencent.mobileqq.widget.ColorNickTextView;
 
 public class aiqz
-  extends PhotoListBaseData
 {
-  public int a;
-  public long a = -1L;
-  public SessionInfo a;
-  public String a;
-  public HashMap<String, PhotoSendParams> a;
-  public xne a;
-  public boolean a;
-  public String b;
-  public HashMap<String, byte[]> b;
-  public boolean b;
-  public String c;
-  public HashMap<LocalMediaInfo, LocalMediaInfo> c = new HashMap();
-  public boolean c;
-  public String d;
-  public boolean d = true;
-  public boolean e;
-  public boolean f;
-  public boolean g;
-  public boolean h;
-  public boolean i;
-  public boolean j;
-  public boolean k;
-  public boolean l;
-  public boolean m;
+  public View a;
+  public ImageView a;
+  public RelativeLayout a;
+  public TextView a;
+  public ColorNickTextView a;
+  public TextView b;
 }
 
 

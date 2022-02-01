@@ -1,29 +1,25 @@
-import com.tencent.qphone.base.util.QLog;
+import android.app.Activity;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import com.tencent.smtt.export.external.interfaces.JsResult;
 
 class nvx
-  extends oxe
+  implements DialogInterface.OnCancelListener
 {
-  nvx(nvp paramnvp) {}
+  nvx(nvu paramnvu, JsResult paramJsResult, Context paramContext) {}
   
-  public void a(boolean paramBoolean)
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    QLog.i("DailyHeaderViewController", 1, "[onDailyDynamicHeaderDataUpdated] " + paramBoolean);
-    if (!paramBoolean)
-    {
-      if ((nvp.a(this.a) == -1) || (nvp.a(this.a) == 0))
-      {
-        nvp.a(this.a, 0);
-        return;
-      }
-      nvp.a(this.a, 4);
-      return;
+    this.jdField_a_of_type_ComTencentSmttExportExternalInterfacesJsResult.cancel();
+    if (this.jdField_a_of_type_Nvu.a > 2) {
+      ((Activity)this.jdField_a_of_type_AndroidContentContext).finish();
     }
-    nvp.a(this.a, 1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     nvx
  * JD-Core Version:    0.7.0.1
  */

@@ -1,10 +1,14 @@
-import com.tencent.mobileqq.data.QQAlbumInfo;
+import android.view.View;
 
 public abstract interface bkqk
 {
-  public abstract void a(QQAlbumInfo paramQQAlbumInfo, int paramInt, boolean paramBoolean);
+  public abstract View a(int paramInt);
   
-  public abstract void b();
+  public abstract void a(int paramInt1, int paramInt2);
+  
+  public abstract boolean a(int paramInt);
+  
+  public abstract void s();
 }
 
 

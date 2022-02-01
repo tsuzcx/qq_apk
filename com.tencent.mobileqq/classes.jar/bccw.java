@@ -1,8 +1,21 @@
-import android.view.View;
+import android.database.ContentObserver;
+import android.os.Handler;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.servlet.QZoneManagerImp.1.1;
 
-public abstract interface bccw
+public class bccw
+  extends ContentObserver
 {
-  public abstract void a(View paramView, int paramInt);
+  bccw(bccv parambccv, Handler paramHandler)
+  {
+    super(paramHandler);
+  }
+  
+  public void onChange(boolean paramBoolean)
+  {
+    super.onChange(paramBoolean);
+    ThreadManager.post(new QZoneManagerImp.1.1(this), 8, null, true);
+  }
 }
 
 

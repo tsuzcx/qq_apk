@@ -1,41 +1,30 @@
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
-import android.text.TextUtils;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.widget.QQToast;
-import java.util.ArrayList;
-import java.util.Iterator;
+import com.tencent.biz.qqstory.storyHome.model.CommentLikeFeedItem;
 
 class yek
-  implements ymm
+  extends xbu
 {
-  yek(yei paramyei, CertifiedAccountMeta.StFeed paramStFeed) {}
+  yek(yeh paramyeh) {}
   
-  public void a(boolean paramBoolean1, String paramString, boolean paramBoolean2)
+  public void a()
   {
-    if (paramBoolean1)
-    {
-      zaj.b(this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.poster.id.get(), "auth_follow", "clk_unfollow", 0, 0, new String[0]);
-      paramString = this.jdField_a_of_type_Yei.getDataList().iterator();
-      while (paramString.hasNext()) {
-        if (TextUtils.equals(((CertifiedAccountMeta.StFeed)paramString.next()).poster.id.get(), this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.poster.id.get())) {
-          paramString.remove();
-        }
-      }
-      this.jdField_a_of_type_Yei.notifyDataSetChanged();
-      QQToast.a(yei.a(this.jdField_a_of_type_Yei), 2, alud.a(2131690715), 0).a();
-      if (this.jdField_a_of_type_Yei.getDataList().size() < 5) {
-        this.jdField_a_of_type_Yei.onRefreshData();
-      }
-    }
-    if (paramBoolean2) {
-      zaj.b(this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.poster.id.get(), "auth_follow", "clk_cancel", 0, 0, new String[0]);
-    }
+    super.a();
+    yeh.a(this.a, null);
+  }
+  
+  public void a(int paramInt)
+  {
+    super.a(paramInt);
+    yqu.a("home_page", "suc_share", 2, paramInt, new String[] { yqu.b(yeh.a(this.a).a) + "", yqu.a(yeh.a(this.a).a) + "", yeh.a(this.a).a.feedId });
+  }
+  
+  public void b(int paramInt)
+  {
+    yqu.a("home_page", "share_chanel", 2, paramInt, new String[] { yqu.b(yeh.a(this.a).a) + "", yqu.a(yeh.a(this.a).a) + "", yeh.a(this.a).a.feedId });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     yek
  * JD-Core Version:    0.7.0.1
  */

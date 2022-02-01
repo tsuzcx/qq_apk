@@ -1,25 +1,25 @@
 package com.tencent.biz.pubaccount.readinjoy.struct;
 
-import awge;
-import awhp;
+import com.tencent.mobileqq.persistence.Entity;
+import com.tencent.mobileqq.persistence.notColumn;
 import com.tencent.qphone.base.util.QLog;
 
 public class ChannelCoverInfo
-  extends awge
+  extends Entity
   implements Cloneable
 {
   public static final String FILTER_COLOR = "filterColor";
   public static final String TABLE_NAME = ChannelCoverInfo.class.getSimpleName();
-  public final String TAG = "ChannelCoverInfo";
+  public static final String TAG = "ChannelCoverInfo";
   public String externalExposureBackgroundUrl = "";
   public int filterColor;
   public boolean hasFilterColor;
-  @awhp
+  @notColumn
   public boolean isCurrent;
   public boolean isExternalExposure;
   public boolean isExternalExposurePersist;
   public boolean isReport;
-  @awhp
+  @notColumn
   public boolean isSelected;
   public long mArticleId = -1L;
   public String mChannelCoverIcon = "";
@@ -43,7 +43,7 @@ public class ChannelCoverInfo
   public String mTipsText = "";
   public int mTipsType = -1;
   public long mUpdateTime;
-  @awhp
+  @notColumn
   public int position;
   
   public ChannelCoverInfo clone()

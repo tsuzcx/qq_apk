@@ -1,20 +1,22 @@
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.readinjoy.engine.KandianMergeManager;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-class plt
-  implements ViewBase.OnClickListener
+public class plt
+  extends anmu
 {
-  plt(plq paramplq, pgd parampgd, Container paramContainer) {}
+  public plt(KandianMergeManager paramKandianMergeManager) {}
   
-  public void onClick(ViewBase paramViewBase)
+  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
   {
-    this.jdField_a_of_type_Plq.a(this.jdField_a_of_type_Pgd, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer);
+    if ((paramBoolean) && (TextUtils.equals(KandianMergeManager.b(this.a), paramString)) && (!TextUtils.equals(paramString, anhk.aA))) {
+      KandianMergeManager.a(this.a).a(1).notifyUI(4, true, new Object[] { anhk.aA });
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     plt
  * JD-Core Version:    0.7.0.1
  */

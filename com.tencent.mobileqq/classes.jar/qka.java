@@ -1,28 +1,29 @@
-import java.util.Deque;
-import java.util.LinkedList;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
 
 class qka
+  implements Animator.AnimatorListener
 {
-  int jdField_a_of_type_Int;
-  String jdField_a_of_type_JavaLangString;
-  Deque<qkc> jdField_a_of_type_JavaUtilDeque = new LinkedList();
-  int b;
-  int c = 0;
-  private final int d = 50;
+  qka(qjt paramqjt, boolean paramBoolean) {}
   
-  qka(qjz paramqjz) {}
+  public void onAnimationCancel(Animator paramAnimator) {}
   
-  boolean a(qkc paramqkc)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    if (this.jdField_a_of_type_JavaUtilDeque.size() >= 50) {
-      this.jdField_a_of_type_JavaUtilDeque.poll();
+    if (!this.jdField_a_of_type_Boolean)
+    {
+      qjt.a(this.jdField_a_of_type_Qjt).isShowRecommendList = false;
+      qjt.a(this.jdField_a_of_type_Qjt);
     }
-    return this.jdField_a_of_type_JavaUtilDeque.offer(paramqkc);
   }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     qka
  * JD-Core Version:    0.7.0.1
  */

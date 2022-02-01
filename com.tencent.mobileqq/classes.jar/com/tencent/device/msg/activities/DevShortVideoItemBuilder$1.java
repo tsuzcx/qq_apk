@@ -1,21 +1,21 @@
 package com.tencent.device.msg.activities;
 
-import arri;
-import zxg;
+import abue;
+import atvf;
 
 public class DevShortVideoItemBuilder$1
   implements Runnable
 {
-  public DevShortVideoItemBuilder$1(zxg paramzxg) {}
+  public DevShortVideoItemBuilder$1(abue paramabue) {}
   
   public void run()
   {
-    arri.a(2131694063);
+    atvf.a(2131693359);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.device.msg.activities.DevShortVideoItemBuilder.1
  * JD-Core Version:    0.7.0.1
  */

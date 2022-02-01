@@ -1,75 +1,62 @@
-import android.os.Bundle;
-import android.support.v4.view.AccessibilityDelegateCompat;
-import android.support.v4.view.PagerAdapter;
-import android.support.v4.view.accessibility.AccessibilityNodeInfoCompat;
+import android.app.Dialog;
+import android.support.v4.app.FragmentActivity;
+import android.text.TextUtils;
 import android.view.View;
-import android.view.accessibility.AccessibilityEvent;
-import com.tencent.mobileqq.multiaio.widget.MultiAIOBaseViewPager;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.fragment.DeleteFaceFragment;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import mqq.manager.TicketManager;
 
 public class aulu
-  extends AccessibilityDelegateCompat
+  implements View.OnClickListener
 {
-  public aulu(MultiAIOBaseViewPager paramMultiAIOBaseViewPager) {}
+  public aulu(DeleteFaceFragment paramDeleteFaceFragment, FragmentActivity paramFragmentActivity) {}
   
-  private boolean a()
+  public void onClick(View paramView)
   {
-    return (this.a.a != null) && (this.a.a.getCount() > 1);
-  }
-  
-  public void onInitializeAccessibilityEvent(View paramView, AccessibilityEvent paramAccessibilityEvent)
-  {
-    super.onInitializeAccessibilityEvent(paramView, paramAccessibilityEvent);
-    paramAccessibilityEvent.setClassName(MultiAIOBaseViewPager.class.getName());
-    paramAccessibilityEvent.setScrollable(a());
-    if ((paramAccessibilityEvent.getEventType() == 4096) && (this.a.a != null))
+    bcst.b(null, "dc00898", "", "", "0X800A320", "0X800A320", 0, 0, "", "", "", "");
+    if ((DeleteFaceFragment.a(this.jdField_a_of_type_ComTencentMobileqqFragmentDeleteFaceFragment) != null) && (DeleteFaceFragment.a(this.jdField_a_of_type_ComTencentMobileqqFragmentDeleteFaceFragment).isShowing())) {
+      DeleteFaceFragment.a(this.jdField_a_of_type_ComTencentMobileqqFragmentDeleteFaceFragment).dismiss();
+    }
+    if (!bgnt.d(this.jdField_a_of_type_ComTencentMobileqqFragmentDeleteFaceFragment.getActivity())) {
+      QQToast.a(this.jdField_a_of_type_ComTencentMobileqqFragmentDeleteFaceFragment.getActivity(), this.jdField_a_of_type_ComTencentMobileqqFragmentDeleteFaceFragment.getString(2131691985), 0).b(this.jdField_a_of_type_ComTencentMobileqqFragmentDeleteFaceFragment.a());
+    }
+    for (;;)
     {
-      paramAccessibilityEvent.setItemCount(this.a.a.getCount());
-      paramAccessibilityEvent.setFromIndex(this.a.b);
-      paramAccessibilityEvent.setToIndex(this.a.b);
-    }
-  }
-  
-  public void onInitializeAccessibilityNodeInfo(View paramView, AccessibilityNodeInfoCompat paramAccessibilityNodeInfoCompat)
-  {
-    super.onInitializeAccessibilityNodeInfo(paramView, paramAccessibilityNodeInfoCompat);
-    paramAccessibilityNodeInfoCompat.setClassName(MultiAIOBaseViewPager.class.getName());
-    paramAccessibilityNodeInfoCompat.setScrollable(a());
-    if (this.a.canScrollHorizontally(1)) {
-      paramAccessibilityNodeInfoCompat.addAction(4096);
-    }
-    if (this.a.canScrollHorizontally(-1)) {
-      paramAccessibilityNodeInfoCompat.addAction(8192);
-    }
-  }
-  
-  public boolean performAccessibilityAction(View paramView, int paramInt, Bundle paramBundle)
-  {
-    if (super.performAccessibilityAction(paramView, paramInt, paramBundle)) {
-      return true;
-    }
-    switch (paramInt)
-    {
-    default: 
-      return false;
-    case 4096: 
-      if (this.a.canScrollHorizontally(1))
-      {
-        this.a.setCurrentItem(this.a.b + 1);
-        return true;
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.d("DeleteFaceFragment", 2, "user confirm delete");
       }
-      return false;
+      if ((this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity == null) || (this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.app == null))
+      {
+        QLog.d("DeleteFaceFragment", 1, "delete face, but activity is null or app is null");
+      }
+      else
+      {
+        this.jdField_a_of_type_ComTencentMobileqqFragmentDeleteFaceFragment.a();
+        TicketManager localTicketManager = (TicketManager)this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.app.getManager(2);
+        String str1 = this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.app.getAccount();
+        String str2 = localTicketManager.getSkey(str1);
+        if (TextUtils.isEmpty(str2))
+        {
+          QLog.d("DeleteFaceFragment", 1, "skey is null");
+          localTicketManager.GetSkey(str1, 16L, new aulv(this, str1));
+        }
+        else
+        {
+          DeleteFaceFragment.a(this.jdField_a_of_type_ComTencentMobileqqFragmentDeleteFaceFragment, str1, str2);
+        }
+      }
     }
-    if (this.a.canScrollHorizontally(-1))
-    {
-      this.a.setCurrentItem(this.a.b - 1);
-      return true;
-    }
-    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aulu
  * JD-Core Version:    0.7.0.1
  */

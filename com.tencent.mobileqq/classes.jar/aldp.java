@@ -1,31 +1,24 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.Button;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.apollo.store.ApolloGuestsStateActivity;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.recent.cur.DragTextView;
+import com.tencent.widget.SingleLineTextView;
 
 public class aldp
-  implements View.OnTouchListener
+  extends alcf
 {
-  public aldp(ApolloGuestsStateActivity paramApolloGuestsStateActivity) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
-  {
-    switch (paramMotionEvent.getAction())
-    {
-    }
-    for (;;)
-    {
-      return true;
-      this.a.jdField_a_of_type_AndroidWidgetRelativeLayout.setAlpha(1.0F);
-      this.a.jdField_a_of_type_AndroidWidgetButton.performClick();
-      continue;
-      this.a.jdField_a_of_type_AndroidWidgetRelativeLayout.setAlpha(0.5F);
-      continue;
-      this.a.jdField_a_of_type_AndroidWidgetRelativeLayout.setAlpha(1.0F);
-    }
-  }
+  public ImageView a;
+  public LinearLayout a;
+  public TextView a;
+  public DragTextView a;
+  public SingleLineTextView a;
+  public ImageView b;
+  public TextView b;
+  public TextView c;
+  public TextView d;
+  public TextView e;
+  public TextView f;
+  public TextView g;
 }
 
 

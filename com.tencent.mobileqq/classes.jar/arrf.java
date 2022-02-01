@@ -1,14 +1,31 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.os.Handler.Callback;
+import android.os.Message;
+import com.tencent.mobileqq.data.EmoticonFromGroupEntity;
+import com.tencent.mobileqq.widget.QQToast;
 
-final class arrf
-  implements DialogInterface.OnClickListener
+class arrf
+  implements Handler.Callback
 {
-  arrf(arrh paramarrh) {}
+  arrf(arre paramarre) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public boolean handleMessage(Message paramMessage)
   {
-    this.a.a();
+    switch (paramMessage.what)
+    {
+    default: 
+      return true;
+    case 1: 
+      QQToast.a(arre.a(this.a), 2131692439, 0).b(2131298998);
+      return true;
+    }
+    if (paramMessage.obj != null)
+    {
+      paramMessage = (EmoticonFromGroupEntity)paramMessage.obj;
+      this.a.a(paramMessage);
+      return true;
+    }
+    QQToast.a(arre.a(this.a), 1, 2131689606, 0).b(2131298998);
+    return true;
   }
 }
 

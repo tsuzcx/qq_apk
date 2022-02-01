@@ -4,7 +4,7 @@ import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
 import android.text.TextUtils;
 import android.view.View.OnClickListener;
-import bibv;
+import bkpg;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Arrays;
@@ -17,22 +17,34 @@ public class ShareActionSheetBuilder$ActionSheetItem
   public static final int ACTION_ADD_COLOR_NOTE = 70;
   public static final int ACTION_ADD_FAVORITER = 6;
   public static final int ACTION_ADD_FRIEND = 35;
+  public static final int ACTION_ADD_GOODS = 156;
+  public static final int ACTION_ADD_MINIAPP_TO_CURRENT_TROOP = 159;
   public static final int ACTION_ADD_SHORTCUT = 14;
   public static final int ACTION_ADD_TROOP_APP = 15;
+  public static final int ACTION_ADD_VIDEO_TO_TOPIC = 134;
   public static final int ACTION_ADJUST_FONT_SIZE = 7;
+  public static final int ACTION_BARRAGE_CLOSE = 143;
+  public static final int ACTION_BARRAGE_OPEN = 142;
   public static final int ACTION_CANCEL_ONLY_SEE_FRIEND = 103;
   public static final int ACTION_CARTON_DETAIL = 125;
   public static final int ACTION_CHANNEL_FACE2FACE_SHARE_TROOP = 24;
   public static final int ACTION_CHANNEL_QR_CODE = 23;
   public static final int ACTION_CHOOSE_FACE = 106;
+  public static final int ACTION_COLORNOTE_UPCOMING = 139;
   public static final int ACTION_COMIC_SWITCH_SECRET_MODE_ = 33;
   public static final int ACTION_COPYLINK = 1;
+  public static final int ACTION_COPY_AVGAME_ROOM_ID = 160;
   public static final int ACTION_DELETE = 40;
+  public static final int ACTION_DELETE_FANS = 137;
+  public static final int ACTION_DELETE_HAS_PUSH = 140;
   public static final int ACTION_DIRECT_SEND_TO_FRIEND = 41;
   public static final int ACTION_DIRECT_SEND_TO_STORY = 42;
   public static final int ACTION_DOWNLOAD = 124;
   public static final int ACTION_EDIT = 94;
   public static final int ACTION_EXPORT_TENCENT_DOCS = 68;
+  public static final int ACTION_FAN_GROUP_MANAGER = 152;
+  public static final int ACTION_FAV_DETAIL = 130;
+  public static final int ACTION_FAV_GROUP = 129;
   public static final int ACTION_FILE_CREATE_LINK = 122;
   public static final int ACTION_FILE_CREATE_QR = 123;
   public static final int ACTION_FILE_IMPORT_READER = 118;
@@ -40,6 +52,7 @@ public class ShareActionSheetBuilder$ActionSheetItem
   public static final int ACTION_FILE_PRINT = 121;
   public static final int ACTION_FILE_SAFE_FORWARD = 120;
   public static final int ACTION_FOLLOW = 87;
+  public static final int ACTION_FOLLOW_MANAGE = 144;
   public static final int ACTION_GALLERY_EMOTION_LIST = 65;
   public static final int ACTION_GALLERY_FILE_FORWARD_TO_PC = 67;
   public static final int ACTION_GALLERY_PIC_ADD_TO_EMO = 48;
@@ -67,6 +80,7 @@ public class ShareActionSheetBuilder$ActionSheetItem
   public static final int ACTION_GO_SUBSCRIPT_AIO = 30;
   public static final int ACTION_HIDE_FEED = 85;
   public static final int ACTION_HIDE_HIM = 86;
+  public static final int ACTION_HIDE_THIS_WORK = 141;
   public static final int ACTION_LAUNCH_CHAT = 92;
   public static final int ACTION_MINIAPP_ABOUT = 78;
   public static final int ACTION_MINIAPP_ADD_TO_MINE = 76;
@@ -80,11 +94,14 @@ public class ShareActionSheetBuilder$ActionSheetItem
   public static final int ACTION_NOT_CARE = 38;
   public static final int ACTION_ONLY_SEE_FRIEND = 102;
   public static final int ACTION_OPEN_APP_DETAIL = 16;
+  public static final int ACTION_OPEN_FILE_WITHOUT_DEFAULT_APP = 132;
   public static final int ACTION_OPEN_IN_QQ_BROWSER = 5;
   public static final int ACTION_OPEN_IN_SYS_BROWSER = 4;
   public static final int ACTION_OPEN_WEISHI_ACCOUNT = 45;
+  public static final int ACTION_ORDER_LIST = 155;
   public static final int ACTION_PA_REPORT = 36;
   public static final int ACTION_PITU = 105;
+  public static final int ACTION_PRIVATE_MESSAGE = 138;
   public static final int ACTION_PROMOTION = 89;
   public static final int ACTION_PUPU_ADD_SHELF = 109;
   public static final int ACTION_PUPU_BOOKMARK = 110;
@@ -96,14 +113,18 @@ public class ShareActionSheetBuilder$ActionSheetItem
   public static final int ACTION_PUPU_PRIVACY = 116;
   public static final int ACTION_PUPU_PRIVACY_CANCEL = 117;
   public static final int ACTION_PUPU_SHOW_OPINION = 113;
+  public static final int ACTION_QCIRCLE_PRIVATE_MESSAGE = 162;
   public static final int ACTION_REFRESH_TROOP_APP_VIEW = 18;
   public static final int ACTION_REMOVE_COLOR_NOTE = 82;
   public static final int ACTION_REMOVE_FAVORITE = 84;
+  public static final int ACTION_REMOVE_VIDEO_FROM_TOPIC = 136;
   public static final int ACTION_REPORT = 11;
   public static final int ACTION_REPORT_DIS_LIKE = 44;
   public static final int ACTION_REPORT_VIDEO_NOT_LIKE = 22;
   public static final int ACTION_REPRINT_BLOG = 101;
   public static final int ACTION_REPRINT_PHOTO = 100;
+  public static final int ACTION_RIJ_DELETE_TOPIC = 135;
+  public static final int ACTION_RIJ_WATCH_WORD = 133;
   public static final int ACTION_SAVE = 39;
   public static final int ACTION_SAVE_PIC = 43;
   public static final int ACTION_SAVE_TO_PICTURE = 47;
@@ -128,13 +149,26 @@ public class ShareActionSheetBuilder$ActionSheetItem
   public static final int ACTION_SETTING = 83;
   public static final int ACTION_SET_BACKGROUND = 107;
   public static final int ACTION_SET_DRESS = 98;
+  public static final int ACTION_SET_MINIAPP_TO_TROOP = 158;
   public static final int ACTION_SET_PRIVATE = 95;
   public static final int ACTION_SET_TOP = 96;
+  public static final int ACTION_SHARE_PICTURE = 153;
   public static final int ACTION_SHARE_TROOP_APP = 17;
   public static final int ACTION_SHOW_MORE_INFO = 31;
+  public static final int ACTION_SHOW_ORIGINALURL = 131;
+  public static final int ACTION_STORE_MANAGER = 157;
+  public static final int ACTION_SYNC_QZONE = 154;
   public static final int ACTION_TAKE_SCREEN_SHOT = 21;
+  public static final int ACTION_TRIBE_ADD_TO_DIGEST = 145;
+  public static final int ACTION_TRIBE_CANCEL_DIGEST = 146;
+  public static final int ACTION_TRIBE_FEEDBACK = 151;
+  public static final int ACTION_TRIBE_INTEREST = 147;
+  public static final int ACTION_TRIBE_LOOK_OWNER = 148;
+  public static final int ACTION_TRIBE_PULL_BLACK = 150;
+  public static final int ACTION_TRIBE_PUSH_TOPIC = 149;
   public static final int ACTION_UNFOLLOW = 32;
   public static final int ACTION_UN_SET_TOP = 97;
+  public static final int ACTION_VIDEO_PLAY_FEEDBACK = 161;
   public static final int ACTION_VIEW_DRESS = 99;
   public static final int ACTION_VIEW_PUB_ACCOUNT = 8;
   public static final int ACTION_WATCH_ON_TV = 104;
@@ -160,7 +194,7 @@ public class ShareActionSheetBuilder$ActionSheetItem
   static
   {
     int j = 0;
-    jdField_a_of_type_ArrayOfInt = new int[] { 2130845851, 2130845852, 2130845813, 2130845814, 2130845819, 2130845820, 2130845807, 2130845808, 2130845804, 2130845805, 2130845857, 2130845858, 2130845842, 2130845843, 2130845849, 2130845850, 2130845823, 2130845824, 2130845825, 2130845826, 2130845881, 2130845882, 2130845832, 2130845833, 2130845817, 2130845818, 2130843255, 2130843257, 2130843260, 2130843259, 2130844026, 2130844027, 2130842298, 2130845883, 2130845884, 2130838914, 2130839128, 2130839161, 2130845827, 2130845828, 2130845811, 2130845812, 2130842299, 2130842309, 2130842294, 2130842300, 2130842296, 2130845853, 2130845854, 2130846219, 2130846463, 2130838919, 2130842282, 2130845900, 2130842778, 2130845838, 2130845839, 2130845821, 2130845822, 2130845815, 2130845816, 2130845897, 2130845898, 2130845800, 2130845865, 2130845866, 2130845869, 2130845801, 2130845802, 2130845871, 2130845872, 2130845847, 2130845848, 2130843917, 2130849939, 2130849940, 2130845836, 2130845837, 2130845845, 2130845846, 2130845867, 2130845868, 2130840085, 2130849151, 2130849152, 2130839741, 2130840991, 2130840992, 2130841003, 2130845841, 2130841004, 2130841005, 2130841006, 2130841007, 2130845903, 2130845882, 2130840993, 2130840994, 2130840998, 2130840999, 2130840995, 2130840996, 2130841001, 2130841002, 2130842291, 2130847402, 2130847399, 2130847397, 2130847396, 2130847395, 2130847388, 2130847389, 2130847386, 2130847387, 2130847400, 2130847390, 2130847398, 2130847401, 2130847945, 2130847385, 2130847392, 2130847948, 2130847944, 2130845873, 2130845874, 2130842291, 2130841478, 2130841476, 2130841480, 2130841481, 2130841488, 2130841494, 2130841484, 2130841485, 2130841490, 2130841491, 2130839742, 2130843845, 2130837566, 2130837567, 2130839733, 2130843841, 2130843854, 2130843855, 2130843843, 2130843844, 2130843846, 2130843847 };
+    jdField_a_of_type_ArrayOfInt = new int[] { 2130846288, 2130846289, 2130846248, 2130846249, 2130846254, 2130846255, 2130846242, 2130846243, 2130846239, 2130846240, 2130846294, 2130846295, 2130846277, 2130846278, 2130846284, 2130846285, 2130846258, 2130846259, 2130846260, 2130846261, 2130846320, 2130846321, 2130846267, 2130846268, 2130846252, 2130846253, 2130843616, 2130843618, 2130843621, 2130843620, 2130844423, 2130844424, 2130842608, 2130846322, 2130846323, 2130839080, 2130839303, 2130839336, 2130846262, 2130846263, 2130846246, 2130846247, 2130842609, 2130842619, 2130842604, 2130842610, 2130842606, 2130846290, 2130846291, 2130846658, 2130846901, 2130839085, 2130842592, 2130846339, 2130843120, 2130846273, 2130846274, 2130846256, 2130846257, 2130846250, 2130846251, 2130846336, 2130846337, 2130846235, 2130846302, 2130846303, 2130846306, 2130846236, 2130846237, 2130846308, 2130846309, 2130846282, 2130846283, 2130844308, 2130850531, 2130850532, 2130846271, 2130846272, 2130846280, 2130846281, 2130846304, 2130846305, 2130849507, 2130846340, 2130849506, 2130846279, 2130840264, 2130849700, 2130849701, 2130840147, 2130841241, 2130841242, 2130841253, 2130846276, 2130841254, 2130841255, 2130841256, 2130841257, 2130846342, 2130846321, 2130846312, 2130846313, 2130846286, 2130846287, 2130841243, 2130841244, 2130841248, 2130841249, 2130841245, 2130841246, 2130841251, 2130841252, 2130842601, 2130847861, 2130847858, 2130847856, 2130847855, 2130847854, 2130847847, 2130847848, 2130847845, 2130847846, 2130847859, 2130847849, 2130846300, 2130846301, 2130847857, 2130847860, 2130848421, 2130847844, 2130847851, 2130848424, 2130848420, 2130846310, 2130846311, 2130842601, 2130841793, 2130841791, 2130841795, 2130841796, 2130841803, 2130841809, 2130841799, 2130841800, 2130841805, 2130841806, 2130840148, 2130844233, 2130837578, 2130837579, 2130840139, 2130844229, 2130844242, 2130844243, 2130844231, 2130844232, 2130844234, 2130844235, 2130844206, 2130844207, 2130844202, 2130844203, 2130844208, 2130844209, 2130844227, 2130844228, 2130840190, 2130840191, 2130840186, 2130840187, 2130849485, 2130849484, 2130849499, 2130849498, 2130849481, 2130849480, 2130849505, 2130849504, 2130849493, 2130849492, 2130849497, 2130849496, 2130849489, 2130849488, 2130849495, 2130849494, 2130840901, 2130840902, 2130843910, 2130843911, 2130849494, 2130849483, 2130849482, 2130849501, 2130849500, 2130849487, 2130849486, 2130849503, 2130849502, 2130849491, 2130849490, 2130849479, 2130849478, 2130846300, 2130846301, 2130843527, 2130843526, 2130843529, 2130843528, 2130843531, 2130843530, 2130843535, 2130843534, 2130843537, 2130843536, 2130843525, 2130843524, 2130843533, 2130843532, 2130849256, 2130844033, 2130844032 };
     HashSet localHashSet = new HashSet();
     int i = 0;
     if (i < jdField_a_of_type_ArrayOfInt.length)
@@ -176,7 +210,7 @@ public class ShareActionSheetBuilder$ActionSheetItem
       }
     }
     Arrays.sort(jdField_a_of_type_ArrayOfInt);
-    b = new int[] { 2131719978, 2131719998, 2131719999, 2131719937, 2131719938, 2131719939, 2131719970, 2131720003, 2131720028, 2131719975, 2131720025, 2131720026, 2131720027, 2131720016, 2131719936, 2131719982, 2131719997, 2131719977, 2131719979, 2131720021, 2131719945, 2131719981, 2131720009, 2131720007, 2131720008, 2131719946, 2131720000, 2131719954, 2131720004, 2131719951, 2131719949, 2131719952, 2131719950, 2131719953, 2131719964, 2131719959, 2131719960, 2131719935, 2131719948, 2131719983, 2131720006, 2131719947, 2131720010, 2131719961, 2131719940, 2131719944, 2131719943, 2131719941, 2131720020, 2131720001, 2131719958, 2131719973, 2131719974, 2131720005, 2131719985, 2131719962, 2131719963, 2131697674, 2131697677, 2131697680, 2131697679, 2131696878, 2131695767, 2131720018, 2131719971, 2131719972, 2131719969, 2131720019, 2131720024, 2131719986, 2131719942, 2131719968, 2131719976, 2131719967, 2131720013, 2131720014, 2131720017, 2131720012, 2131720022, 2131720002, 2131719980, 2131719955, 2131719965, 2131720023, 2131719984, 2131719957, 2131720011, 2131695767, 2131719988, 2131719987, 2131719989, 2131719990, 2131719993, 2131719996, 2131719991, 2131719992, 2131719994, 2131719995 };
+    b = new int[] { 2131717953, 2131717974, 2131717975, 2131717904, 2131717905, 2131717906, 2131717944, 2131717979, 2131718004, 2131717950, 2131718001, 2131718002, 2131718003, 2131717992, 2131717903, 2131717958, 2131717973, 2131717952, 2131717954, 2131717997, 2131717912, 2131717956, 2131717985, 2131717983, 2131717984, 2131717913, 2131717976, 2131717923, 2131717980, 2131717915, 2131717914, 2131717920, 2131717918, 2131717921, 2131717919, 2131717922, 2131717934, 2131717929, 2131717930, 2131717902, 2131717917, 2131717959, 2131717982, 2131717916, 2131717986, 2131717931, 2131717907, 2131717911, 2131717910, 2131717908, 2131717996, 2131717977, 2131717957, 2131717927, 2131717928, 2131717948, 2131717949, 2131717981, 2131717961, 2131717932, 2131717933, 2131696516, 2131696519, 2131696522, 2131696521, 2131695700, 2131694650, 2131717994, 2131717946, 2131717945, 2131717947, 2131717942, 2131717995, 2131718000, 2131717962, 2131717909, 2131717938, 2131717951, 2131717937, 2131717989, 2131717990, 2131717993, 2131717988, 2131717998, 2131717978, 2131717955, 2131717924, 2131717935, 2131717999, 2131717960, 2131717926, 2131717987, 2131694650, 2131717964, 2131717963, 2131717965, 2131717966, 2131717969, 2131717972, 2131717967, 2131717968, 2131717970, 2131717971, 2131717940, 2131717939, 2131717941, 2131697393, 2131717971, 2131717962, 2131717909, 2131717971, 2131717880, 2131717901, 2131717883, 2131717889, 2131717900, 2131717882, 2131717886, 2131717881, 2131717887, 2131717886, 2131717884, 2131717890, 2131717892, 2131717885, 2131717879, 2131717891, 2131717943, 2131717893, 2131717894, 2131717896, 2131717897, 2131717899, 2131717898, 2131717895 };
     localHashSet = new HashSet();
     i = j;
     if (i < b.length)
@@ -205,217 +239,217 @@ public class ShareActionSheetBuilder$ActionSheetItem
   
   private static ActionSheetItem A()
   {
-    return a(2130847395, 2131719976, "open_aio");
+    return a(2130847854, 2131717951, "open_aio");
   }
   
   private static ActionSheetItem B()
   {
-    return a(2130847387, 2131719968, "Evernote");
+    return a(2130847846, 2131717938, "Evernote");
   }
   
   private static ActionSheetItem C()
   {
-    return a(2130847945, 2131719965, "delete");
+    return a(2130848421, 2131717935, "delete");
   }
   
   private static ActionSheetItem D()
   {
-    int i = 2130845849;
-    if (bibv.a()) {
-      i = 2130845850;
+    int i = 2130846284;
+    if (bkpg.a()) {
+      i = 2130846285;
     }
-    return a(i, 2131696898, "check_profile");
+    return a(i, 2131695720, "check_profile");
   }
   
   private static ActionSheetItem E()
   {
-    int i = 2130848778;
-    if (bibv.a()) {
-      i = 2130848779;
+    int i = 2130849256;
+    if (bkpg.a()) {
+      i = 2130849257;
     }
-    return a(i, 2131720024, "orignal");
+    return a(i, 2131718000, "orignal");
   }
   
   private static ActionSheetItem F()
   {
-    return a(2130847401, 2131720019, "unfollow");
+    return a(2130847860, 2131717995, "unfollow");
   }
   
   private static ActionSheetItem G()
   {
-    return a(2130847398, 2131719969, "follow");
+    return a(2130847857, 2131717942, "follow");
   }
   
   private static ActionSheetItem H()
   {
-    return a(2130847390, 2131719972, "hide_him");
+    return a(2130847849, 2131717947, "hide_him");
   }
   
   private static ActionSheetItem I()
   {
-    int i = 2130845863;
-    if (bibv.a()) {
-      i = 2130845864;
+    int i = 2130846300;
+    if (bkpg.a()) {
+      i = 2130846301;
     }
-    return a(i, 2131719971, "hide_this_feed");
+    return a(i, 2131717946, "hide_this_feed");
   }
   
   private static ActionSheetItem J()
   {
-    return a(2130847400, 2131720018, "collect_cancel");
+    int i = 2130846300;
+    if (bkpg.a()) {
+      i = 2130846301;
+    }
+    return a(i, 2131717945, "hide_works");
   }
   
   private static ActionSheetItem K()
   {
-    int i = 2130845845;
-    if (bibv.a()) {
-      i = 2130845846;
-    }
-    return a(i, 2131719960, "colornote_cancel");
+    return a(2130847859, 2131717994, "collect_cancel");
   }
   
   private static ActionSheetItem L()
   {
-    int i = 2130840993;
-    if (bibv.a()) {
-      i = 2130840994;
+    int i = 2130846280;
+    if (bkpg.a()) {
+      i = 2130846281;
     }
-    return a(i, 2131719954, "backtohome");
+    return a(i, 2131717930, "colornote_cancel");
   }
   
   private static ActionSheetItem M()
   {
-    int i = 2130840998;
-    if (bibv.a()) {
-      i = 2130840999;
+    int i = 2130844206;
+    if (bkpg.a()) {
+      i = 2130844207;
     }
-    return a(i, 2131720004, "restart_applet");
+    return a(i, 2131717940, "fav_group");
   }
   
   private static ActionSheetItem N()
   {
-    int i = 2130841006;
-    if (bibv.a()) {
-      i = 2130841007;
+    int i = 2130844202;
+    if (bkpg.a()) {
+      i = 2130844203;
     }
-    return a(i, 2131720000, "remove_my");
+    return a(i, 2131717939, "fav_detail");
   }
   
   private static ActionSheetItem O()
   {
-    int i = 2130841004;
-    if (bibv.a()) {
-      i = 2130841005;
+    int i = 2130844208;
+    if (bkpg.a()) {
+      i = 2130844209;
     }
-    return a(i, 2131719946, "add_my");
+    return a(i, 2131717941, "fav_show_originalurl");
   }
   
   private static ActionSheetItem P()
   {
-    int i = 2130840991;
-    if (bibv.a()) {
-      i = 2130840992;
+    int i = 2130841243;
+    if (bkpg.a()) {
+      i = 2130841244;
     }
-    return a(i, 2131719941, "about");
+    return a(i, 2131717923, "backtohome");
   }
   
   private static ActionSheetItem Q()
   {
-    int i = 2130840995;
-    if (bibv.a()) {
-      i = 2130840996;
+    int i = 2130841248;
+    if (bkpg.a()) {
+      i = 2130841249;
     }
-    return a(i, 2131719950, "applet_closeperformance");
+    return a(i, 2131717980, "restart_applet");
   }
   
   private static ActionSheetItem R()
   {
-    int i = 2130840995;
-    if (bibv.a()) {
-      i = 2130840996;
+    int i = 2130841256;
+    if (bkpg.a()) {
+      i = 2130841257;
     }
-    return a(i, 2131719952, "applet_openperformance");
+    return a(i, 2131717976, "remove_my");
   }
   
   private static ActionSheetItem S()
   {
-    int i = 2130840995;
-    if (bibv.a()) {
-      i = 2130840996;
+    int i = 2130841254;
+    if (bkpg.a()) {
+      i = 2130841255;
     }
-    return a(i, 2131719949, "applet_closedebug");
+    return a(i, 2131717913, "add_my");
   }
   
   private static ActionSheetItem T()
   {
-    int i = 2130840995;
-    if (bibv.a()) {
-      i = 2130840996;
+    int i = 2130841241;
+    if (bkpg.a()) {
+      i = 2130841242;
     }
-    return a(i, 2131719951, "applet_opendebug");
+    return a(i, 2131717908, "about");
   }
   
   private static ActionSheetItem U()
   {
-    int i = 2130845867;
-    if (bibv.a()) {
-      i = 2130845868;
+    int i = 2130841245;
+    if (bkpg.a()) {
+      i = 2130841246;
     }
-    return a(i, 2131719977, "long_screenshot");
+    return a(i, 2131717919, "applet_closeperformance");
   }
   
   private static ActionSheetItem V()
   {
-    int i = 2130845836;
-    if (bibv.a()) {
-      i = 2130845837;
+    int i = 2130841245;
+    if (bkpg.a()) {
+      i = 2130841246;
     }
-    return a(i, 2131719959, "colornote");
+    return a(i, 2131717921, "applet_openperformance");
   }
   
   private static ActionSheetItem W()
   {
-    int i = 2130849939;
-    if (bibv.a()) {
-      i = 2130849940;
+    int i = 2130841245;
+    if (bkpg.a()) {
+      i = 2130841246;
     }
-    return a(i, 2131720021, "url_to_txdoc");
+    return a(i, 2131717918, "applet_closedebug");
   }
   
   private static ActionSheetItem X()
   {
-    int i = 2130845847;
-    if (bibv.a()) {
-      i = 2130845848;
+    int i = 2130841245;
+    if (bkpg.a()) {
+      i = 2130841246;
     }
-    return a(i, 2131720009, "search_emotion");
+    return a(i, 2131717920, "applet_opendebug");
   }
   
   private static ActionSheetItem Y()
   {
-    int i = 2130845871;
-    if (bibv.a()) {
-      i = 2130845872;
+    int i = 2130846304;
+    if (bkpg.a()) {
+      i = 2130846305;
     }
-    return a(i, 2131719982, "other_app");
+    return a(i, 2131717952, "long_screenshot");
   }
   
   private static ActionSheetItem Z()
   {
-    int i = 2130845869;
-    if (bibv.a()) {
-      i = 2130845870;
+    int i = 2130846271;
+    if (bkpg.a()) {
+      i = 2130846272;
     }
-    return a(i, 2131720007, "scan_appletcode");
+    return a(i, 2131717929, "colornote");
   }
   
   private static ActionSheetItem a()
   {
-    int i = 2130850174;
-    if (bibv.a()) {
-      i = 2130850175;
+    int i = 2130850770;
+    if (bkpg.a()) {
+      i = 2130850771;
     }
-    return a(i, 2131719966, "download");
+    return a(i, 2131717936, "download");
   }
   
   private static ActionSheetItem a(int paramInt1, int paramInt2, String paramString)
@@ -434,332 +468,624 @@ public class ShareActionSheetBuilder$ActionSheetItem
   
   private static ActionSheetItem aA()
   {
-    int i = 2130845857;
-    if (bibv.a()) {
-      i = 2130845858;
+    int i = 2130846320;
+    if (bkpg.a()) {
+      i = 2130846321;
     }
-    return a(i, 2131719958, "collect");
+    return a(i, 2131717977, "report");
   }
   
   private static ActionSheetItem aB()
   {
-    int i = 2130845804;
-    if (bibv.a()) {
-      i = 2130845805;
+    int i = 2130846286;
+    if (bkpg.a()) {
+      i = 2130846287;
     }
-    return a(i, 2131719936, "Qbrowser");
+    return a(i, 2131717957, "open_barrage");
   }
   
   private static ActionSheetItem aC()
   {
-    int i = 2130845807;
-    if (bibv.a()) {
-      i = 2130845808;
+    int i = 2130846312;
+    if (bkpg.a()) {
+      i = 2130846313;
     }
-    return a(i, 2131720016, "browser");
+    return a(i, 2131717927, "close_barrage");
   }
   
   private static ActionSheetItem aD()
   {
-    int i = 2130845819;
-    if (bibv.a()) {
-      i = 2130845820;
+    int i = 2130846260;
+    if (bkpg.a()) {
+      i = 2130846261;
     }
-    return a(i, 2131719938, "Qzone");
+    return a(i, 2131718002, "wechat_");
   }
   
   private static ActionSheetItem aE()
   {
-    int i = 2130845813;
-    if (bibv.a()) {
-      i = 2130845814;
+    int i = 2130846258;
+    if (bkpg.a()) {
+      i = 2130846259;
     }
-    return a(i, 2131719937, "Qfriend");
+    return a(i, 2131718001, "wechat");
   }
   
   private static ActionSheetItem aF()
   {
-    int i = 2130845851;
-    if (bibv.a()) {
-      i = 2130845852;
+    int i = 2130846277;
+    if (bkpg.a()) {
+      i = 2130846278;
     }
-    return a(i, 2131719961, "copy_link");
+    return a(i, 2131717916, "adjust_font");
   }
   
   private static ActionSheetItem aG()
   {
-    int i = 2130839742;
-    if (bibv.a()) {
-      i = 2130843845;
+    int i = 2130846294;
+    if (bkpg.a()) {
+      i = 2130846295;
     }
-    return a(i, 2131719973, "Import_reader");
+    return a(i, 2131717928, "collect");
   }
   
   private static ActionSheetItem aH()
   {
-    int i = 2130837566;
-    if (bibv.a()) {
-      i = 2130837567;
+    int i = 2130846239;
+    if (bkpg.a()) {
+      i = 2130846240;
     }
-    return a(i, 2131719974, "edit_online");
+    return a(i, 2131717903, "Qbrowser");
   }
   
   private static ActionSheetItem aI()
   {
-    int i = 2130839733;
-    if (bibv.a()) {
-      i = 2130843841;
+    int i = 2130846242;
+    if (bkpg.a()) {
+      i = 2130846243;
     }
-    return a(i, 2131720005, "safe_share");
+    return a(i, 2131717992, "browser");
   }
   
   private static ActionSheetItem aJ()
   {
-    int i = 2130843854;
-    if (bibv.a()) {
-      i = 2130843855;
+    int i = 2130846254;
+    if (bkpg.a()) {
+      i = 2130846255;
     }
-    return a(i, 2131719985, "print");
+    return a(i, 2131717905, "Qzone");
   }
   
   private static ActionSheetItem aK()
   {
-    int i = 2130843843;
-    if (bibv.a()) {
-      i = 2130843844;
+    int i = 2130846248;
+    if (bkpg.a()) {
+      i = 2130846249;
     }
-    return a(i, 2131719962, "generate_link");
+    return a(i, 2131717904, "Qfriend");
   }
   
   private static ActionSheetItem aL()
   {
-    int i = 2130843846;
-    if (bibv.a()) {
-      i = 2130843847;
+    int i = 2130846288;
+    if (bkpg.a()) {
+      i = 2130846289;
     }
-    return a(i, 2131719963, "generate_QRcode");
+    return a(i, 2131717931, "copy_link");
+  }
+  
+  private static ActionSheetItem aM()
+  {
+    int i = 2130840148;
+    if (bkpg.a()) {
+      i = 2130844233;
+    }
+    return a(i, 2131717948, "Import_reader");
+  }
+  
+  private static ActionSheetItem aN()
+  {
+    int i = 2130837578;
+    if (bkpg.a()) {
+      i = 2130837579;
+    }
+    return a(i, 2131717949, "edit_online");
+  }
+  
+  private static ActionSheetItem aO()
+  {
+    int i = 2130840139;
+    if (bkpg.a()) {
+      i = 2130844229;
+    }
+    return a(i, 2131717981, "safe_share");
+  }
+  
+  private static ActionSheetItem aP()
+  {
+    int i = 2130844242;
+    if (bkpg.a()) {
+      i = 2130844243;
+    }
+    return a(i, 2131717961, "print");
+  }
+  
+  private static ActionSheetItem aQ()
+  {
+    int i = 2130844231;
+    if (bkpg.a()) {
+      i = 2130844232;
+    }
+    return a(i, 2131717932, "generate_link");
+  }
+  
+  private static ActionSheetItem aR()
+  {
+    int i = 2130844227;
+    if (bkpg.a()) {
+      i = 2130844228;
+    }
+    return a(i, 2131697393, "other_app");
+  }
+  
+  private static ActionSheetItem aS()
+  {
+    int i = 2130844234;
+    if (bkpg.a()) {
+      i = 2130844235;
+    }
+    return a(i, 2131717933, "generate_QRcode");
+  }
+  
+  private static ActionSheetItem aT()
+  {
+    int i = 2130840186;
+    if (bkpg.a()) {
+      i = 2130840187;
+    }
+    return a(i, 2131717962, "ad_promotion");
+  }
+  
+  private static ActionSheetItem aU()
+  {
+    int i = 2130840190;
+    if (bkpg.a()) {
+      i = 2130840191;
+    }
+    return a(i, 2131717909, "ad_block");
+  }
+  
+  private static ActionSheetItem aV()
+  {
+    if (bkpg.a()) {}
+    for (int i = 2130849480;; i = 2130849481) {
+      return a(i, 2131717880, "addto_section");
+    }
+  }
+  
+  private static ActionSheetItem aW()
+  {
+    if (bkpg.a()) {}
+    for (int i = 2130849498;; i = 2130849499) {
+      return a(i, 2131717889, "delete_section");
+    }
+  }
+  
+  private static ActionSheetItem aX()
+  {
+    if (bkpg.a()) {}
+    for (int i = 2130849484;; i = 2130849485) {
+      return a(i, 2131717883, "delete_from_section");
+    }
+  }
+  
+  private static ActionSheetItem aY()
+  {
+    if (bkpg.a()) {}
+    for (int i = 2130849504;; i = 2130849505) {
+      return a(i, 2131717901, "kouling_share");
+    }
+  }
+  
+  private static ActionSheetItem aZ()
+  {
+    if (bkpg.a()) {}
+    for (int i = 2130849492;; i = 2130849493) {
+      return a(i, 2131717900, "play_feedback");
+    }
   }
   
   private static ActionSheetItem aa()
   {
-    int i = 2130845883;
-    if (bibv.a()) {
-      i = 2130845884;
+    int i = 2130850531;
+    if (bkpg.a()) {
+      i = 2130850532;
     }
-    return a(i, 2131720008, "scan_qrcode");
+    return a(i, 2131717997, "url_to_txdoc");
   }
   
   private static ActionSheetItem ab()
   {
-    int i = 2130845865;
-    if (bibv.a()) {
-      i = 2130845866;
+    int i = 2130846282;
+    if (bkpg.a()) {
+      i = 2130846283;
     }
-    return a(i, 2131719948, "aio_position");
+    return a(i, 2131717985, "search_emotion");
   }
   
   private static ActionSheetItem ac()
   {
-    int i = 2130845897;
-    if (bibv.a()) {
-      i = 2130845898;
+    int i = 2130846308;
+    if (bkpg.a()) {
+      i = 2130846309;
     }
-    return a(i, 2131719983, "pick_words");
+    return a(i, 2131717958, "other_app");
   }
   
   private static ActionSheetItem ad()
   {
-    int i = 2130845815;
-    if (bibv.a()) {
-      i = 2130845816;
+    int i = 2130846306;
+    if (bkpg.a()) {
+      i = 2130846307;
     }
-    return a(i, 2131719970, "group_album");
+    return a(i, 2131717983, "scan_appletcode");
   }
   
   private static ActionSheetItem ae()
   {
-    int i = 2130845821;
-    if (bibv.a()) {
-      i = 2130845822;
+    int i = 2130846322;
+    if (bkpg.a()) {
+      i = 2130846323;
     }
-    return a(i, 2131719939, "Qzone_album");
+    return a(i, 2131717984, "scan_qrcode");
   }
   
   private static ActionSheetItem af()
   {
-    int i = 2130845838;
-    if (bibv.a()) {
-      i = 2130845839;
+    int i = 2130846302;
+    if (bkpg.a()) {
+      i = 2130846303;
     }
-    return a(i, 2131719944, "add_emotion");
+    return a(i, 2131717917, "aio_position");
   }
   
   private static ActionSheetItem ag()
   {
-    int i = 2130841001;
-    if (bibv.a()) {
-      i = 2130841002;
+    int i = 2130846336;
+    if (bkpg.a()) {
+      i = 2130846337;
     }
-    return a(i, 2131719997, "push_setup");
+    return a(i, 2131717959, "pick_words");
   }
   
   private static ActionSheetItem ah()
   {
-    int i = 2130845900;
-    if (bibv.a()) {
-      i = 2130845901;
+    int i = 2130846250;
+    if (bkpg.a()) {
+      i = 2130846251;
     }
-    return a(i, 2131720020, "uninterested");
+    return a(i, 2131717944, "group_album");
   }
   
   private static ActionSheetItem ai()
   {
-    int i = 2130845853;
-    if (bibv.a()) {
-      i = 2130845854;
+    int i = 2130846256;
+    if (bkpg.a()) {
+      i = 2130846257;
     }
-    return a(i, 2131720006, "save");
+    return a(i, 2131717906, "Qzone_album");
   }
   
   private static ActionSheetItem aj()
   {
-    if (bibv.a()) {}
-    return a(2130842296, 2131719979, "not_care");
+    int i = 2130846273;
+    if (bkpg.a()) {
+      i = 2130846274;
+    }
+    return a(i, 2131717911, "add_emotion");
   }
   
   private static ActionSheetItem ak()
   {
-    if (bibv.a()) {}
-    return a(2130842299, 2131695706, "open_aio");
+    int i = 2130841251;
+    if (bkpg.a()) {
+      i = 2130841252;
+    }
+    return a(i, 2131717973, "push_setup");
   }
   
   private static ActionSheetItem al()
   {
-    if (bibv.a()) {}
-    return a(2130842300, 2131719945, "add_friend");
+    int i = 2130846339;
+    if (bkpg.a()) {
+      i = 2130846340;
+    }
+    return a(i, 2131717996, "uninterested");
   }
   
   private static ActionSheetItem am()
   {
-    if (bibv.a()) {}
-    return a(2130842299, 2131719981, "open_aio");
+    int i = 2130846290;
+    if (bkpg.a()) {
+      i = 2130846291;
+    }
+    return a(i, 2131717982, "save");
   }
   
   private static ActionSheetItem an()
   {
-    int i = 2130845827;
-    if (bibv.a()) {
-      i = 2130845828;
+    int i = 2130849506;
+    if (bkpg.a()) {
+      i = 2130846279;
     }
-    return a(i, 2131720028, "weiyun");
+    return a(i, 2131717954, "not_care");
   }
   
   private static ActionSheetItem ao()
   {
-    int i = 2130845811;
-    if (bibv.a()) {
-      i = 2130845812;
-    }
-    return a(i, 2131720010, "sent_pc");
+    if (bkpg.a()) {}
+    return a(2130842609, 2131694598, "open_aio");
   }
   
   private static ActionSheetItem ap()
   {
-    int i = 2130845883;
-    if (bibv.a()) {
-      i = 2130845884;
-    }
-    return a(i, 2131719935, "QRcode");
+    if (bkpg.a()) {}
+    return a(2130842610, 2131717912, "add_friend");
   }
   
   private static ActionSheetItem aq()
   {
-    if (bibv.a()) {}
-    return a(2130842298, 2131719940, "Screenshot_share");
+    if (bkpg.a()) {}
+    return a(2130842609, 2131717956, "open_aio");
   }
   
   private static ActionSheetItem ar()
   {
-    if (bibv.a()) {}
-    return a(2130844027, 2131719999, "qiyeqq");
+    int i = 2130846262;
+    if (bkpg.a()) {
+      i = 2130846263;
+    }
+    return a(i, 2131718004, "weiyun");
   }
   
   private static ActionSheetItem as()
   {
-    if (bibv.a()) {}
-    return a(2130844026, 2131719998, "qidian");
+    int i = 2130846246;
+    if (bkpg.a()) {
+      i = 2130846247;
+    }
+    return a(i, 2131717986, "sent_pc");
   }
   
   private static ActionSheetItem at()
   {
-    int i = 2130841003;
-    if (bibv.a()) {
-      i = 2130845841;
+    int i = 2130846322;
+    if (bkpg.a()) {
+      i = 2130846323;
     }
-    return a(i, 2131719943, "add_desktop");
+    return a(i, 2131717902, "QRcode");
   }
   
   private static ActionSheetItem au()
   {
-    int i = 2130845817;
-    if (bibv.a()) {
-      i = 2130845818;
-    }
-    return a(i, 2131719975, "kandian");
+    if (bkpg.a()) {}
+    return a(2130842608, 2131717907, "Screenshot_share");
   }
   
   private static ActionSheetItem av()
   {
-    int i = 2130845832;
-    if (bibv.a()) {
-      i = 2130845833;
-    }
-    return a(i, 2131720027, "weibo");
+    if (bkpg.a()) {}
+    return a(2130844424, 2131717975, "qiyeqq");
   }
   
   private static ActionSheetItem aw()
   {
-    int i = 2130845881;
-    if (bibv.a()) {
-      i = 2130845882;
-    }
-    return a(i, 2131720001, "report");
+    if (bkpg.a()) {}
+    return a(2130844423, 2131717974, "qidian");
   }
   
   private static ActionSheetItem ax()
   {
-    int i = 2130845825;
-    if (bibv.a()) {
-      i = 2130845826;
+    int i = 2130841253;
+    if (bkpg.a()) {
+      i = 2130846276;
     }
-    return a(i, 2131720026, "wechat_");
+    return a(i, 2131717910, "add_desktop");
   }
   
   private static ActionSheetItem ay()
   {
-    int i = 2130845823;
-    if (bibv.a()) {
-      i = 2130845824;
+    int i = 2130846252;
+    if (bkpg.a()) {
+      i = 2130846253;
     }
-    return a(i, 2131720025, "wechat");
+    return a(i, 2131717950, "kandian");
   }
   
   private static ActionSheetItem az()
   {
-    int i = 2130845842;
-    if (bibv.a()) {
-      i = 2130845843;
+    int i = 2130846267;
+    if (bkpg.a()) {
+      i = 2130846268;
     }
-    return a(i, 2131719947, "adjust_font");
+    return a(i, 2131718003, "weibo");
   }
   
   private static ActionSheetItem b()
   {
-    int i = 2130850172;
-    if (bibv.a()) {
-      i = 2130850173;
+    int i = 2130850768;
+    if (bkpg.a()) {
+      i = 2130850769;
     }
-    return a(i, 2131719956, "carton_detail");
+    return a(i, 2131717925, "carton_detail");
+  }
+  
+  private static ActionSheetItem ba()
+  {
+    if (bkpg.a()) {}
+    for (int i = 2130849496;; i = 2130849497) {
+      return a(i, 2131717882, "delete_fans");
+    }
+  }
+  
+  private static ActionSheetItem bb()
+  {
+    if (bkpg.a()) {}
+    for (int i = 2130849488;; i = 2130849489) {
+      return a(i, 2131694650, "share_more");
+    }
+  }
+  
+  private static ActionSheetItem bc()
+  {
+    if (bkpg.a()) {}
+    for (int i = 2130849494;; i = 2130849495) {
+      return a(i, 2131717886, "private_chat");
+    }
+  }
+  
+  private static ActionSheetItem bd()
+  {
+    if (bkpg.a()) {}
+    for (int i = 2130849494;; i = 2130849495) {
+      return a(i, 2131717881, "copy_roomid");
+    }
+  }
+  
+  private static ActionSheetItem be()
+  {
+    if (bkpg.a()) {}
+    for (int i = 2130840902;; i = 2130840901) {
+      return a(i, 2131717915, "group_app");
+    }
+  }
+  
+  private static ActionSheetItem bf()
+  {
+    if (bkpg.a()) {}
+    for (int i = 2130840902;; i = 2130840901) {
+      return a(i, 2131717914, "add_to_group");
+    }
+  }
+  
+  private static ActionSheetItem bg()
+  {
+    if (bkpg.a()) {}
+    for (int i = 2130843911;; i = 2130843910) {
+      return a(i, 2131717887, "delete_launch");
+    }
+  }
+  
+  private static ActionSheetItem bh()
+  {
+    if (bkpg.a()) {}
+    for (int i = 2130844033;; i = 2130844032) {
+      return a(i, 2131717888, "qcircle_private_message");
+    }
+  }
+  
+  private static ActionSheetItem bi()
+  {
+    if (bkpg.a()) {}
+    for (int i = 2130849500;; i = 2130849501) {
+      return a(i, 2131717891, "store_manage");
+    }
+  }
+  
+  private static ActionSheetItem bj()
+  {
+    if (bkpg.a()) {}
+    for (int i = 2130849486;; i = 2130849487) {
+      return a(i, 2131717884, "fan_group_manage");
+    }
+  }
+  
+  private static ActionSheetItem bk()
+  {
+    if (bkpg.a()) {}
+    for (int i = 2130849482;; i = 2130849483) {
+      return a(i, 2131717890, "sharepicture");
+    }
+  }
+  
+  private static ActionSheetItem bl()
+  {
+    if (bkpg.a()) {}
+    for (int i = 2130849502;; i = 2130849503) {
+      return a(i, 2131717892, "Sync_zone");
+    }
+  }
+  
+  private static ActionSheetItem bm()
+  {
+    if (bkpg.a()) {}
+    for (int i = 2130849490;; i = 2130849491) {
+      return a(i, 2131717885, "orderlist");
+    }
+  }
+  
+  private static ActionSheetItem bn()
+  {
+    if (bkpg.a()) {}
+    for (int i = 2130849478;; i = 2130849479) {
+      return a(i, 2131717879, "adding goods");
+    }
+  }
+  
+  private static ActionSheetItem bo()
+  {
+    if (bkpg.a()) {}
+    for (int i = 2130841252;; i = 2130841251) {
+      return a(i, 2131717943, "follow_manage");
+    }
+  }
+  
+  private static ActionSheetItem bp()
+  {
+    if (bkpg.a()) {}
+    for (int i = 2130843524;; i = 2130843525) {
+      return a(i, 2131717893, "add_to_digest");
+    }
+  }
+  
+  private static ActionSheetItem bq()
+  {
+    if (bkpg.a()) {}
+    for (int i = 2130843532;; i = 2130843533) {
+      return a(i, 2131717894, "cancel_digest");
+    }
+  }
+  
+  private static ActionSheetItem br()
+  {
+    if (bkpg.a()) {}
+    for (int i = 2130843536;; i = 2130843537) {
+      return a(i, 2131717896, "interest");
+    }
+  }
+  
+  private static ActionSheetItem bs()
+  {
+    if (bkpg.a()) {}
+    for (int i = 2130843528;; i = 2130843529) {
+      return a(i, 2131717897, "look_owner");
+    }
+  }
+  
+  private static ActionSheetItem bt()
+  {
+    if (bkpg.a()) {}
+    for (int i = 2130843530;; i = 2130843531) {
+      return a(i, 2131717899, "push_topics");
+    }
+  }
+  
+  private static ActionSheetItem bu()
+  {
+    if (bkpg.a()) {}
+    for (int i = 2130843534;; i = 2130843535) {
+      return a(i, 2131717898, "pull_black");
+    }
   }
   
   public static ActionSheetItem build(int paramInt)
@@ -767,7 +1093,6 @@ public class ShareActionSheetBuilder$ActionSheetItem
     ActionSheetItem localActionSheetItem1;
     switch (paramInt)
     {
-    case 22: 
     case 24: 
     case 25: 
     case 28: 
@@ -790,9 +1115,8 @@ public class ShareActionSheetBuilder$ActionSheetItem
     case 63: 
     case 67: 
     case 69: 
-    case 89: 
-    case 90: 
     case 93: 
+    case 139: 
     default: 
       localActionSheetItem1 = new ActionSheetItem();
       QLog.e("ShareActionSheetBuilder", 1, "build: notSupportAction = [" + paramInt + "]", new IllegalArgumentException());
@@ -807,21 +1131,33 @@ public class ShareActionSheetBuilder$ActionSheetItem
       }
       localActionSheetItem2.action = paramInt;
       return localActionSheetItem2;
+      localActionSheetItem1 = aL();
+      continue;
+      localActionSheetItem1 = aK();
+      continue;
+      localActionSheetItem1 = aJ();
+      continue;
+      localActionSheetItem1 = aI();
+      continue;
+      localActionSheetItem1 = aH();
+      continue;
+      localActionSheetItem1 = aG();
+      continue;
       localActionSheetItem1 = aF();
+      continue;
+      localActionSheetItem1 = D();
       continue;
       localActionSheetItem1 = aE();
       continue;
       localActionSheetItem1 = aD();
       continue;
-      localActionSheetItem1 = aC();
+      localActionSheetItem1 = aA();
       continue;
       localActionSheetItem1 = aB();
       continue;
-      localActionSheetItem1 = aA();
+      localActionSheetItem1 = aC();
       continue;
       localActionSheetItem1 = az();
-      continue;
-      localActionSheetItem1 = D();
       continue;
       localActionSheetItem1 = ay();
       continue;
@@ -871,15 +1207,19 @@ public class ShareActionSheetBuilder$ActionSheetItem
       continue;
       localActionSheetItem1 = ab();
       continue;
+      localActionSheetItem1 = aA();
+      continue;
       localActionSheetItem1 = aa();
       continue;
       localActionSheetItem1 = Z();
       continue;
       localActionSheetItem1 = Y();
       continue;
-      localActionSheetItem1 = X();
+      localActionSheetItem1 = a(2130840264, 2131717904, "");
       continue;
-      localActionSheetItem1 = aw();
+      localActionSheetItem1 = a(2130849700, 2131717953, "");
+      continue;
+      localActionSheetItem1 = X();
       continue;
       localActionSheetItem1 = W();
       continue;
@@ -887,55 +1227,51 @@ public class ShareActionSheetBuilder$ActionSheetItem
       continue;
       localActionSheetItem1 = U();
       continue;
-      localActionSheetItem1 = a(2130840085, 2131719937, "");
-      continue;
-      localActionSheetItem1 = a(2130849151, 2131719978, "");
-      continue;
       localActionSheetItem1 = T();
       continue;
       localActionSheetItem1 = S();
       continue;
       localActionSheetItem1 = R();
       continue;
-      localActionSheetItem1 = Q();
-      continue;
       localActionSheetItem1 = P();
-      continue;
-      localActionSheetItem1 = O();
-      continue;
-      localActionSheetItem1 = N();
       continue;
       localActionSheetItem1 = L();
       continue;
+      localActionSheetItem1 = M();
+      continue;
+      localActionSheetItem1 = N();
+      continue;
+      localActionSheetItem1 = O();
+      continue;
+      localActionSheetItem1 = aM();
+      continue;
+      localActionSheetItem1 = aN();
+      continue;
+      localActionSheetItem1 = aO();
+      continue;
+      localActionSheetItem1 = aP();
+      continue;
+      localActionSheetItem1 = aQ();
+      continue;
+      localActionSheetItem1 = aS();
+      continue;
+      localActionSheetItem1 = a(2130843616, 2131696516, "add_troop_app");
+      continue;
+      localActionSheetItem1 = a(2130843618, 2131696519, "open_app_detail");
+      continue;
+      localActionSheetItem1 = a(2130843621, 2131696522, "share_troop_app");
+      continue;
+      localActionSheetItem1 = a(2130843620, 2131696521, "refresh_troop_app_view");
+      continue;
+      localActionSheetItem1 = a(2130842604, 2131695700, "share_diandian");
+      continue;
+      localActionSheetItem1 = bb();
+      continue;
       localActionSheetItem1 = K();
       continue;
-      localActionSheetItem1 = aG();
-      continue;
-      localActionSheetItem1 = aH();
-      continue;
-      localActionSheetItem1 = aI();
-      continue;
-      localActionSheetItem1 = aJ();
-      continue;
-      localActionSheetItem1 = aK();
-      continue;
-      localActionSheetItem1 = aL();
-      continue;
-      localActionSheetItem1 = a(2130843255, 2131697674, "add_troop_app");
-      continue;
-      localActionSheetItem1 = a(2130843257, 2131697677, "open_app_detail");
-      continue;
-      localActionSheetItem1 = a(2130843260, 2131697680, "share_troop_app");
-      continue;
-      localActionSheetItem1 = a(2130843259, 2131697679, "refresh_troop_app_view");
-      continue;
-      localActionSheetItem1 = a(2130842294, 2131696878, "share_diandian");
-      continue;
-      localActionSheetItem1 = a(2130842291, 2131695767, "share_more");
+      localActionSheetItem1 = I();
       continue;
       localActionSheetItem1 = J();
-      continue;
-      localActionSheetItem1 = I();
       continue;
       localActionSheetItem1 = H();
       continue;
@@ -1003,172 +1339,240 @@ public class ShareActionSheetBuilder$ActionSheetItem
       continue;
       localActionSheetItem1 = l();
       continue;
-      localActionSheetItem1 = M();
+      localActionSheetItem1 = Q();
+      continue;
+      localActionSheetItem1 = aR();
+      continue;
+      localActionSheetItem1 = aU();
+      continue;
+      localActionSheetItem1 = aT();
+      continue;
+      localActionSheetItem1 = aV();
+      continue;
+      localActionSheetItem1 = aW();
+      continue;
+      localActionSheetItem1 = aX();
+      continue;
+      localActionSheetItem1 = aY();
+      continue;
+      localActionSheetItem1 = aZ();
+      continue;
+      localActionSheetItem1 = ba();
+      continue;
+      localActionSheetItem1 = bc();
+      continue;
+      localActionSheetItem1 = bd();
+      continue;
+      localActionSheetItem1 = be();
+      continue;
+      localActionSheetItem1 = bf();
+      continue;
+      localActionSheetItem1 = bi();
+      continue;
+      localActionSheetItem1 = bj();
+      continue;
+      localActionSheetItem1 = bk();
+      continue;
+      localActionSheetItem1 = bl();
+      continue;
+      localActionSheetItem1 = bm();
+      continue;
+      localActionSheetItem1 = bn();
+      continue;
+      localActionSheetItem1 = bo();
+      continue;
+      localActionSheetItem1 = bp();
+      continue;
+      localActionSheetItem1 = bq();
+      continue;
+      localActionSheetItem1 = br();
+      continue;
+      localActionSheetItem1 = bs();
+      continue;
+      localActionSheetItem1 = bt();
+      continue;
+      localActionSheetItem1 = bu();
+      continue;
+      localActionSheetItem1 = bv();
+      continue;
+      localActionSheetItem1 = bg();
+      continue;
+      localActionSheetItem1 = aZ();
+      continue;
+      localActionSheetItem1 = bh();
+    }
+  }
+  
+  private static ActionSheetItem bv()
+  {
+    if (bkpg.a()) {}
+    for (int i = 2130843526;; i = 2130843527) {
+      return a(i, 2131717895, "feedback");
     }
   }
   
   private static ActionSheetItem c()
   {
-    int i = 2130841478;
-    if (bibv.a()) {
-      i = 2130841479;
+    int i = 2130841793;
+    if (bkpg.a()) {
+      i = 2130841794;
     }
-    return a(i, 2131719988, "book_detail");
+    return a(i, 2131717964, "book_detail");
   }
   
   private static ActionSheetItem d()
   {
-    int i = 2130841476;
-    if (bibv.a()) {
-      i = 2130841477;
+    int i = 2130841791;
+    if (bkpg.a()) {
+      i = 2130841792;
     }
-    return a(i, 2131719987, "add_shelf");
+    return a(i, 2131717963, "add_shelf");
   }
   
   private static ActionSheetItem e()
   {
-    int i = 2130841480;
-    if (bibv.a()) {
-      i = 2130841483;
+    int i = 2130841795;
+    if (bkpg.a()) {
+      i = 2130841798;
     }
-    return a(i, 2131719989, "bookmark");
+    return a(i, 2131717965, "bookmark");
   }
   
   private static ActionSheetItem f()
   {
-    int i = 2130841481;
-    if (bibv.a()) {
-      i = 2130841482;
+    int i = 2130841796;
+    if (bkpg.a()) {
+      i = 2130841797;
     }
-    return a(i, 2131719990, "bookmark_cancel");
+    return a(i, 2131717966, "bookmark_cancel");
   }
   
   private static ActionSheetItem g()
   {
-    int i = 2130841488;
-    if (bibv.a()) {
-      i = 2130841489;
+    int i = 2130841803;
+    if (bkpg.a()) {
+      i = 2130841804;
     }
-    return a(i, 2131719993, "hide_opinion");
+    return a(i, 2131717969, "hide_opinion");
   }
   
   private static ActionSheetItem h()
   {
-    int i = 2130841494;
-    if (bibv.a()) {
-      i = 2130841495;
+    int i = 2130841809;
+    if (bkpg.a()) {
+      i = 2130841810;
     }
-    return a(i, 2131719996, "show_opinion");
+    return a(i, 2131717972, "show_opinion");
   }
   
   private static ActionSheetItem i()
   {
-    int i = 2130841484;
-    if (bibv.a()) {
-      i = 2130841487;
+    int i = 2130841799;
+    if (bkpg.a()) {
+      i = 2130841802;
     }
-    return a(i, 2131719991, "continue_purchase");
+    return a(i, 2131717967, "continue_purchase");
   }
   
   private static ActionSheetItem j()
   {
-    int i = 2130841485;
-    if (bibv.a()) {
-      i = 2130841486;
+    int i = 2130841800;
+    if (bkpg.a()) {
+      i = 2130841801;
     }
-    return a(i, 2131719992, "continue_purchase_cancel");
+    return a(i, 2131717968, "continue_purchase_cancel");
   }
   
   private static ActionSheetItem k()
   {
-    int i = 2130841490;
-    if (bibv.a()) {
-      i = 2130841493;
+    int i = 2130841805;
+    if (bkpg.a()) {
+      i = 2130841808;
     }
-    return a(i, 2131719994, "privacy");
+    return a(i, 2131717970, "privacy");
   }
   
   private static ActionSheetItem l()
   {
-    int i = 2130841491;
-    if (bibv.a()) {
-      i = 2130841492;
+    int i = 2130841806;
+    if (bkpg.a()) {
+      i = 2130841807;
     }
-    return a(i, 2131719995, "privacy_cancel");
+    return a(i, 2131717971, "privacy_cancel");
   }
   
   private static ActionSheetItem m()
   {
-    return a(2130847944, 2131720011, "set_background");
+    return a(2130848420, 2131717987, "set_background");
   }
   
   private static ActionSheetItem n()
   {
-    return a(2130847948, 2131719957, "rec_face");
+    return a(2130848424, 2131717926, "rec_face");
   }
   
   private static ActionSheetItem o()
   {
-    return a(2130847392, 2131719984, "psapp");
+    return a(2130847851, 2131717960, "psapp");
   }
   
   private static ActionSheetItem p()
   {
-    return a(2130847385, 2131720023, "watch_on_tv");
+    return a(2130847844, 2131717999, "watch_on_tv");
   }
   
   private static ActionSheetItem q()
   {
-    return a(2130847388, 2131719955, "no_only_friend");
+    return a(2130847847, 2131717924, "no_only_friend");
   }
   
   private static ActionSheetItem r()
   {
-    int i = 2130845873;
-    if (bibv.a()) {
-      i = 2130845874;
+    int i = 2130846310;
+    if (bkpg.a()) {
+      i = 2130846311;
     }
-    return a(i, 2131719980, "only_friend");
+    return a(i, 2131717955, "only_friend");
   }
   
   private static ActionSheetItem s()
   {
-    return a(2130847389, 2131720002, "reprint_diary");
+    return a(2130847848, 2131717978, "reprint_diary");
   }
   
   private static ActionSheetItem t()
   {
-    return a(2130847389, 2131720003, "reprint_photo");
+    return a(2130847848, 2131717979, "reprint_photo");
   }
   
   private static ActionSheetItem u()
   {
-    return a(2130847396, 2131720022, "look_dress");
+    return a(2130847855, 2131717998, "look_dress");
   }
   
   private static ActionSheetItem v()
   {
-    return a(2130847396, 2131720012, "set_card");
+    return a(2130847855, 2131717988, "set_card");
   }
   
   private static ActionSheetItem w()
   {
-    return a(2130847402, 2131720017, "unstick");
+    return a(2130847861, 2131717993, "unstick");
   }
   
   private static ActionSheetItem x()
   {
-    return a(2130847399, 2131720014, "stick");
+    return a(2130847858, 2131717990, "stick");
   }
   
   private static ActionSheetItem y()
   {
-    return a(2130847397, 2131720013, "privacy");
+    return a(2130847856, 2131717989, "privacy");
   }
   
   private static ActionSheetItem z()
   {
-    return a(2130847386, 2131719967, "edit");
+    return a(2130847845, 2131717937, "edit");
   }
   
   public boolean isValidCreate()
@@ -1220,7 +1624,7 @@ public class ShareActionSheetBuilder$ActionSheetItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem
  * JD-Core Version:    0.7.0.1
  */

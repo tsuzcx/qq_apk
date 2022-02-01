@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.apollo.activity;
 
-import ajit;
+import albc;
 
 class HotChatCenterFragment$6$1
   implements Runnable
@@ -20,7 +20,7 @@ class HotChatCenterFragment$6$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.activity.HotChatCenterFragment.6.1
  * JD-Core Version:    0.7.0.1
  */

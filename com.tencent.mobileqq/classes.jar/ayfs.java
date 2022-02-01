@@ -1,12 +1,17 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
 import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.ocr.OCRResultActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class ayfs
-  extends RecyclerView.ViewHolder
+public class ayfs
+  implements View.OnClickListener
 {
-  ayfs(ayfq paramayfq, View paramView)
+  public ayfs(OCRResultActivity paramOCRResultActivity) {}
+  
+  public void onClick(View paramView)
   {
-    super(paramView);
+    this.a.doOnBackPressed();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

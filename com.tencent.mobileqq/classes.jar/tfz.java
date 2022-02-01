@@ -1,56 +1,62 @@
-import UserGrowth.stSimpleMetaFeed;
-import android.text.TextUtils;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.TextView;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.ColorFilter;
+import android.graphics.drawable.Drawable;
 
 public class tfz
-  extends tfj
+  extends Drawable
 {
-  private TextView a;
+  private Bitmap a;
   
-  private tfz(ViewGroup paramViewGroup, tby paramtby)
+  public tfz(Bitmap paramBitmap)
   {
-    super(paramViewGroup, paramtby, 2131560226);
+    this.a = paramBitmap;
   }
   
-  public static tfz a(ViewGroup paramViewGroup, tby paramtby)
+  public Bitmap a()
   {
-    return new tfz(paramViewGroup, paramtby);
+    return this.a;
   }
   
-  protected void a()
+  public void draw(Canvas paramCanvas)
   {
-    this.a = ((TextView)a(1).findViewById(2131379846));
-  }
-  
-  protected void a(int paramInt)
-  {
-    super.a(paramInt);
-    this.a.setVisibility(paramInt);
-  }
-  
-  public void a(stSimpleMetaFeed paramstSimpleMetaFeed)
-  {
-    super.a(paramstSimpleMetaFeed);
-    if (paramstSimpleMetaFeed == null) {
-      return;
-    }
-    TextView localTextView = this.a;
-    if (TextUtils.isEmpty(paramstSimpleMetaFeed.feed_desc)) {}
-    for (int i = 8;; i = 0)
-    {
-      localTextView.setVisibility(i);
-      this.a.setText(paramstSimpleMetaFeed.feed_desc);
-      a(1, paramstSimpleMetaFeed);
-      a(2, 2, paramstSimpleMetaFeed);
-      return;
+    if ((this.a != null) && (!this.a.isRecycled())) {
+      paramCanvas.drawBitmap(this.a, 0.0F, 0.0F, null);
     }
   }
+  
+  public int getIntrinsicHeight()
+  {
+    return this.a.getHeight();
+  }
+  
+  public int getIntrinsicWidth()
+  {
+    return this.a.getWidth();
+  }
+  
+  public int getMinimumHeight()
+  {
+    return this.a.getHeight();
+  }
+  
+  public int getMinimumWidth()
+  {
+    return this.a.getWidth();
+  }
+  
+  public int getOpacity()
+  {
+    return -3;
+  }
+  
+  public void setAlpha(int paramInt) {}
+  
+  public void setColorFilter(ColorFilter paramColorFilter) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     tfz
  * JD-Core Version:    0.7.0.1
  */

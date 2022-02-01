@@ -1,90 +1,45 @@
-import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.mobileqq.pb.PBField;
-import com.tencent.qphone.base.remote.FromServiceMsg;
+import android.content.BroadcastReceiver;
+import android.content.IntentFilter;
+import com.tencent.av.app.VideoAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import java.nio.ByteBuffer;
-import mqq.app.MSFServlet;
-import mqq.app.Packet;
-import org.json.JSONObject;
-import tencent.gdt.qq_ad_get.QQAdGetRsp;
+import mqq.app.MobileQQ;
 
 public class ldu
-  extends MSFServlet
 {
-  private byte[] a(byte[] paramArrayOfByte)
+  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver;
+  private VideoAppInterface jdField_a_of_type_ComTencentAvAppVideoAppInterface;
+  private boolean jdField_a_of_type_Boolean;
+  
+  public ldu(VideoAppInterface paramVideoAppInterface)
   {
-    byte[] arrayOfByte = new byte[paramArrayOfByte.length + 4];
-    bdqa.a(arrayOfByte, 0, paramArrayOfByte.length + 4);
-    System.arraycopy(paramArrayOfByte, 0, arrayOfByte, 4, paramArrayOfByte.length);
-    return arrayOfByte;
+    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface = paramVideoAppInterface;
+    this.jdField_a_of_type_AndroidContentBroadcastReceiver = new ldv(this);
   }
   
-  public String[] getPreferSSOCommands()
-  {
-    return new String[] { "QqAd.getAd" };
-  }
-  
-  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
+  public void a()
   {
     if (QLog.isColorLevel()) {
-      QLog.d("GdtSSOLoadAD", 2, paramFromServiceMsg.isSuccess() + " onReceive with code: " + paramFromServiceMsg.getResultCode());
+      QLog.d("GAudioExitMonitor", 2, "regist QQ Process Exit Receiver1");
     }
-    if (paramFromServiceMsg.isSuccess())
-    {
-      Object localObject = new qq_ad_get.QQAdGetRsp();
-      try
-      {
-        paramFromServiceMsg = ByteBuffer.wrap(paramFromServiceMsg.getWupBuffer());
-        byte[] arrayOfByte = new byte[paramFromServiceMsg.getInt() - 4];
-        paramFromServiceMsg.get(arrayOfByte);
-        ((qq_ad_get.QQAdGetRsp)localObject).mergeFrom(arrayOfByte);
-        paramFromServiceMsg = aasd.a((PBField)localObject);
-        if ((paramFromServiceMsg != null) && (paramFromServiceMsg != JSONObject.NULL))
-        {
-          paramFromServiceMsg = paramFromServiceMsg.toString();
-          localObject = new Bundle();
-          ((Bundle)localObject).putString("sso_GdtLoadAd_rsp_json", paramFromServiceMsg);
-          notifyObserver(paramIntent, 1, true, (Bundle)localObject, ldv.class);
-          return;
-        }
-        notifyObserver(paramIntent, 1, false, null, ldv.class);
-        return;
-      }
-      catch (Exception paramFromServiceMsg)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.i("GdtSSOLoadAD", 2, paramFromServiceMsg.getMessage());
-        }
-        notifyObserver(paramIntent, 1, false, null, ldv.class);
-        return;
-      }
+    IntentFilter localIntentFilter = new IntentFilter();
+    localIntentFilter.addAction("com.tencent.av.EXIT_VIDEO_PROCESS");
+    if (this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApplication().registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, localIntentFilter) != null) {
+      this.jdField_a_of_type_Boolean = true;
     }
-    notifyObserver(paramIntent, 1, false, null, ldv.class);
   }
   
-  public void onSend(Intent paramIntent, Packet paramPacket)
+  public void b()
   {
-    if (paramIntent == null) {
-      return;
-    }
-    String str = paramIntent.getStringExtra("GdtLoadAdServletCMD");
-    paramPacket.setSSOCommand(str);
-    if (QLog.isColorLevel()) {
-      QLog.d("GdtSSOLoadAD", 2, "onSend with cmd: " + str);
-    }
-    paramIntent = paramIntent.getByteArrayExtra("sso_GdtLoadAd_rquest_bytes");
-    if (paramIntent != null)
+    if (this.jdField_a_of_type_Boolean)
     {
-      paramPacket.putSendData(a(paramIntent));
-      return;
+      this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApplication().unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
+      this.jdField_a_of_type_Boolean = false;
     }
-    QLog.e("GdtSSOLoadAD", 1, "no bytes to send" + str);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ldu
  * JD-Core Version:    0.7.0.1
  */

@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.mini.activity;
 
 import android.support.v4.app.FragmentActivity;
-import awge;
-import awgf;
-import awgg;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.mini.entry.MiniAppSettingSwitchInfoEntity;
+import com.tencent.mobileqq.persistence.Entity;
+import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.mobileqq.persistence.EntityManagerFactory;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Iterator;
 import java.util.List;
@@ -36,7 +36,7 @@ class MiniAppEntrySettingFragment$4
         localObject2 = MiniAppSettingSwitchInfoEntity.class.getSimpleName();
         Object localObject3 = this.val$entity.key;
         String str = this.val$entity.key;
-        localObject2 = ((awgf)localObject1).a(MiniAppSettingSwitchInfoEntity.class, (String)localObject2, false, "key = ?", new String[] { localObject3 }, null, null, null, str);
+        localObject2 = ((EntityManager)localObject1).query(MiniAppSettingSwitchInfoEntity.class, (String)localObject2, false, "key = ?", new String[] { localObject3 }, null, null, null, str);
         if ((localObject2 == null) || (((List)localObject2).size() <= 0)) {
           break;
         }
@@ -44,17 +44,17 @@ class MiniAppEntrySettingFragment$4
         while (((Iterator)localObject2).hasNext())
         {
           localObject3 = (MiniAppSettingSwitchInfoEntity)((Iterator)localObject2).next();
-          MiniAppEntrySettingFragment.access$500(this.this$0, (awgf)localObject1, (awge)localObject3);
+          MiniAppEntrySettingFragment.access$500(this.this$0, (EntityManager)localObject1, (Entity)localObject3);
         }
       }
     }
     Object localObject2 = new MiniAppSettingSwitchInfoEntity(this.val$entity.key, this.val$entity.title, this.val$entity.subTitle, this.val$entity.value);
-    MiniAppEntrySettingFragment.access$500(this.this$0, (awgf)localObject1, (awge)localObject2);
+    MiniAppEntrySettingFragment.access$500(this.this$0, (EntityManager)localObject1, (Entity)localObject2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mini.activity.MiniAppEntrySettingFragment.4
  * JD-Core Version:    0.7.0.1
  */

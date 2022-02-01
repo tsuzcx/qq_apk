@@ -1,5 +1,6 @@
 package com.tencent.sonic.sdk;
 
+import android.os.Looper;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
 import java.util.Collection;
@@ -16,7 +17,7 @@ public class SonicEngine
   private final ConcurrentHashMap<String, SonicSession> preloadSessionPool = new ConcurrentHashMap(5);
   private final ConcurrentHashMap<String, SonicSession> runningSessionHashMap = new ConcurrentHashMap(5);
   private final SonicRuntime runtime;
-  private final SonicSession.Callback sessionCallback = new SonicEngine.1(this);
+  private final SonicSession.Callback sessionCallback = new SonicEngine.2(this);
   
   private SonicEngine(SonicRuntime paramSonicRuntime, SonicConfig paramSonicConfig)
   {
@@ -263,7 +264,13 @@ public class SonicEngine
   {
     try
     {
-      SonicDBHelper.createInstance(getRuntime().getContext()).getWritableDatabase();
+      SonicDBHelper localSonicDBHelper = SonicDBHelper.createInstance(getRuntime().getContext());
+      if (Looper.getMainLooper() == Looper.myLooper())
+      {
+        getRuntime().postTaskToSessionThread(new SonicEngine.1(this, localSonicDBHelper));
+        return;
+      }
+      localSonicDBHelper.getWritableDatabase();
       return;
     }
     catch (Throwable localThrowable)
@@ -345,15 +352,15 @@ public class SonicEngine
     //   14: getfield 243	com/tencent/sonic/sdk/SonicSessionConfig:IS_ACCOUNT_RELATED	Z
     //   17: invokestatic 244	com/tencent/sonic/sdk/SonicEngine:makeSessionId	(Ljava/lang/String;Z)Ljava/lang/String;
     //   20: astore 9
-    //   22: new 310	java/io/File
+    //   22: new 328	java/io/File
     //   25: dup
     //   26: aload 9
-    //   28: invokestatic 316	com/tencent/sonic/sdk/SonicFileUtils:getSonicHtmlPath	(Ljava/lang/String;)Ljava/lang/String;
-    //   31: invokespecial 317	java/io/File:<init>	(Ljava/lang/String;)V
-    //   34: invokevirtual 320	java/io/File:exists	()Z
+    //   28: invokestatic 334	com/tencent/sonic/sdk/SonicFileUtils:getSonicHtmlPath	(Ljava/lang/String;)Ljava/lang/String;
+    //   31: invokespecial 335	java/io/File:<init>	(Ljava/lang/String;)V
+    //   34: invokevirtual 338	java/io/File:exists	()Z
     //   37: ifeq +33 -> 70
     //   40: aload 9
-    //   42: invokestatic 323	com/tencent/sonic/sdk/SonicDataHelper:getTemplateUpdateTime	(Ljava/lang/String;)J
+    //   42: invokestatic 341	com/tencent/sonic/sdk/SonicDataHelper:getTemplateUpdateTime	(Ljava/lang/String;)J
     //   45: lstore 6
     //   47: lload 6
     //   49: lload_3
@@ -366,7 +373,7 @@ public class SonicEngine
     //   59: aload_0
     //   60: aload_1
     //   61: aload_2
-    //   62: invokevirtual 325	com/tencent/sonic/sdk/SonicEngine:preCreateSession	(Ljava/lang/String;Lcom/tencent/sonic/sdk/SonicSessionConfig;)Z
+    //   62: invokevirtual 343	com/tencent/sonic/sdk/SonicEngine:preCreateSession	(Ljava/lang/String;Lcom/tencent/sonic/sdk/SonicSessionConfig;)Z
     //   65: istore 8
     //   67: goto -13 -> 54
     //   70: iload 5
@@ -374,14 +381,14 @@ public class SonicEngine
     //   75: aload_0
     //   76: aload_1
     //   77: aload_2
-    //   78: invokevirtual 325	com/tencent/sonic/sdk/SonicEngine:preCreateSession	(Ljava/lang/String;Lcom/tencent/sonic/sdk/SonicSessionConfig;)Z
+    //   78: invokevirtual 343	com/tencent/sonic/sdk/SonicEngine:preCreateSession	(Ljava/lang/String;Lcom/tencent/sonic/sdk/SonicSessionConfig;)Z
     //   81: istore 8
     //   83: goto -29 -> 54
     //   86: aload_0
     //   87: getfield 43	com/tencent/sonic/sdk/SonicEngine:runtime	Lcom/tencent/sonic/sdk/SonicRuntime;
     //   90: ldc 8
     //   92: bipush 6
-    //   94: ldc_w 307
+    //   94: ldc_w 325
     //   97: invokevirtual 122	com/tencent/sonic/sdk/SonicRuntime:log	(Ljava/lang/String;ILjava/lang/String;)V
     //   100: goto -46 -> 54
     //   103: astore_1
@@ -456,7 +463,7 @@ public class SonicEngine
     //   47: invokevirtual 112	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   50: aload_1
     //   51: invokevirtual 112	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   54: ldc_w 358
+    //   54: ldc_w 376
     //   57: invokevirtual 112	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   60: invokevirtual 118	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   63: invokevirtual 122	com/tencent/sonic/sdk/SonicRuntime:log	(Ljava/lang/String;ILjava/lang/String;)V
@@ -476,12 +483,12 @@ public class SonicEngine
     //   93: invokevirtual 112	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   96: aload_1
     //   97: invokevirtual 112	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   100: ldc_w 360
+    //   100: ldc_w 378
     //   103: invokevirtual 112	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   106: invokevirtual 118	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   109: invokevirtual 122	com/tencent/sonic/sdk/SonicRuntime:log	(Ljava/lang/String;ILjava/lang/String;)V
     //   112: aload_1
-    //   113: invokestatic 362	com/tencent/sonic/sdk/SonicUtils:removeSessionCache	(Ljava/lang/String;)V
+    //   113: invokestatic 380	com/tencent/sonic/sdk/SonicUtils:removeSessionCache	(Ljava/lang/String;)V
     //   116: iconst_1
     //   117: istore_2
     //   118: aload_0
@@ -499,7 +506,7 @@ public class SonicEngine
     //   139: invokevirtual 112	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   142: aload_1
     //   143: invokevirtual 112	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   146: ldc_w 364
+    //   146: ldc_w 382
     //   149: invokevirtual 112	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   152: invokevirtual 118	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   155: invokevirtual 122	com/tencent/sonic/sdk/SonicRuntime:log	(Ljava/lang/String;ILjava/lang/String;)V
@@ -533,7 +540,7 @@ public class SonicEngine
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.sonic.sdk.SonicEngine
  * JD-Core Version:    0.7.0.1
  */

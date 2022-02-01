@@ -1,8 +1,6 @@
 public abstract interface bkek
 {
-  public abstract void a(aosf paramaosf);
-  
-  public abstract void a(String paramString);
+  public abstract void a(long paramLong);
 }
 
 

@@ -1,40 +1,43 @@
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import com.tencent.mobileqq.ocr.ui.SearchSougouResultItemBuilder.UrlDownloadListener.1;
+import com.tencent.mobileqq.location.ui.PoiSlideBottomPanel;
 import com.tencent.qphone.base.util.QLog;
-import java.net.URL;
+import com.tencent.widget.AbsListView;
 
-public class avyu
-  implements URLDrawable.URLDrawableListener
+class avyu
+  implements bkhe
 {
-  avyu(avyt paramavyt) {}
+  private int jdField_a_of_type_Int;
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
+  avyu(avys paramavys) {}
   
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
+  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
   {
-    if ((this.a.a == null) || (paramURLDrawable == null) || (paramURLDrawable.getURL() == null)) {}
-    do
+    paramInt = paramAbsListView.getFirstVisiblePosition();
+    if (paramInt > this.jdField_a_of_type_Int)
     {
-      return;
-      paramThrowable = this.a.a.findViewWithTag(paramURLDrawable.getURL().toString());
-      if ((paramThrowable != null) && ((paramThrowable instanceof ImageView))) {
-        paramThrowable.post(new SearchSougouResultItemBuilder.UrlDownloadListener.1(this, paramThrowable));
+      if (!avys.a(this.jdField_a_of_type_Avys).b()) {
+        avys.a(this.jdField_a_of_type_Avys).a();
       }
-    } while (!QLog.isColorLevel());
-    QLog.e("Q.ocr.SearchSougouResultItemBuilder", 2, "UrlDownloadListener image fail," + paramURLDrawable.getURL());
+      if (paramAbsListView.getLastVisiblePosition() == paramAbsListView.getCount() - 1)
+      {
+        if (QLog.isDevelopLevel()) {
+          QLog.i("LocationShareController", 4, "onScrollStateChanged");
+        }
+        avys.a(this.jdField_a_of_type_Avys).a();
+      }
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Int = paramInt;
+      return;
+      if (paramInt >= this.jdField_a_of_type_Int) {}
+    }
   }
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     avyu
  * JD-Core Version:    0.7.0.1
  */

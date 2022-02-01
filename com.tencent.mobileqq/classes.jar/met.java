@@ -1,42 +1,45 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.av.config.ConfigInfo;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 
-class met
-  extends BroadcastReceiver
+public class met
 {
-  met(mes parammes) {}
+  int jdField_a_of_type_Int = 0;
+  long jdField_a_of_type_Long;
+  ViewGroup jdField_a_of_type_AndroidViewViewGroup = null;
+  public ImageView a;
+  public RelativeLayout a;
+  public TextView a;
+  boolean jdField_a_of_type_Boolean = false;
+  public int b;
+  public ImageView b;
+  public TextView b;
+  public boolean b;
+  public ImageView c;
+  public boolean c;
+  public ImageView d;
+  public boolean d;
+  public ImageView e = null;
+  public ImageView f;
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public met()
   {
-    paramIntent = paramIntent.getAction();
-    if (paramIntent.equals("com.tencent.av.ui.ConfigInfoTips.ACTION_IS_WRITE_CONFIG_INFO_TO_FILE"))
-    {
-      if (!mes.a(this.a))
-      {
-        mes.a(this.a, true);
-        if (mes.b(this.a)) {
-          mes.a(this.a);
-        }
-      }
-      int i = ConfigInfo.getSharpConfigVersionFromFile(paramContext);
-      lyf.a().a("update", i);
-    }
-    do
-    {
-      do
-      {
-        return;
-      } while ((!paramIntent.equals("com.tencent.av.ui.ConfigInfoTips.ACTION_IS_GETTED_SHARP_CONFIG_PAYLOAD")) || (mes.b(this.a)));
-      mes.b(this.a, true);
-    } while (!mes.a(this.a));
-    mes.a(this.a);
+    this.jdField_a_of_type_AndroidWidgetImageView = null;
+    this.jdField_b_of_type_AndroidWidgetImageView = null;
+    this.jdField_c_of_type_AndroidWidgetImageView = null;
+    this.jdField_d_of_type_AndroidWidgetImageView = null;
+    this.jdField_a_of_type_AndroidWidgetTextView = null;
+    this.jdField_b_of_type_AndroidWidgetTextView = null;
+    this.jdField_b_of_type_Boolean = true;
+    this.jdField_c_of_type_Boolean = false;
+    this.jdField_b_of_type_Int = 0;
+    this.jdField_d_of_type_Boolean = true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     met
  * JD-Core Version:    0.7.0.1
  */

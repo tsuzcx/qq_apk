@@ -1,35 +1,39 @@
-import com.tencent.widget.AuthorizationItem;
+import android.text.Editable;
+import android.text.TextWatcher;
+import com.tencent.mobileqq.widget.ConfigClearableEditText;
 
-public final class bhvh
+public class bhvh
+  implements TextWatcher
 {
-  public final int a;
-  public final String a;
-  public final String b;
+  public bhvh(ConfigClearableEditText paramConfigClearableEditText) {}
   
-  public bhvh(String paramString1, String paramString2, int paramInt)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
-    this.jdField_a_of_type_Int = paramInt;
-  }
+  public void afterTextChanged(Editable paramEditable) {}
   
-  public static bhvh a(int paramInt)
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
   {
-    switch (paramInt)
+    paramCharSequence = this.a.getText().toString();
+    if (this.a.isFocused())
     {
-    default: 
-      return AuthorizationItem.d;
-    case 0: 
-      return AuthorizationItem.a;
-    case 1: 
-      return AuthorizationItem.b;
+      if ((paramCharSequence == null) || (paramCharSequence.length() == 0)) {
+        this.a.setClearButtonVisible(false);
+      }
     }
-    return AuthorizationItem.c;
+    else {
+      return;
+    }
+    if ((ConfigClearableEditText.b(this.a)) || (ConfigClearableEditText.c(this.a)))
+    {
+      this.a.setClearButtonVisible(true);
+      return;
+    }
+    this.a.setClearButtonVisible(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bhvh
  * JD-Core Version:    0.7.0.1
  */

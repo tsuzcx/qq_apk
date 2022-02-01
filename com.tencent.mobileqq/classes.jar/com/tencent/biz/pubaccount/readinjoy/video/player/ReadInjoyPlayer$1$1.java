@@ -2,37 +2,53 @@ package com.tencent.biz.pubaccount.readinjoy.video.player;
 
 import android.text.TextUtils;
 import com.tencent.qphone.base.util.QLog;
-import osl;
-import rod;
-import roe;
-import rof;
+import sfb;
+import sik;
+import sil;
+import sim;
+import slr;
 
 public class ReadInjoyPlayer$1$1
   implements Runnable
 {
-  public ReadInjoyPlayer$1$1(roe paramroe, osl paramosl) {}
+  public ReadInjoyPlayer$1$1(sil paramsil, slr paramslr) {}
   
   public void run()
   {
-    int i = 1;
-    if ((this.jdField_a_of_type_Osl.jdField_b_of_type_JavaLangString.equals(this.jdField_a_of_type_Roe.jdField_a_of_type_JavaLangString)) && (rod.a(this.jdField_a_of_type_Roe.jdField_a_of_type_Rod, this.jdField_a_of_type_Roe.jdField_a_of_type_JavaLangString, ""))) {
-      if (TextUtils.isEmpty(this.jdField_a_of_type_Osl.jdField_a_of_type_JavaLangString)) {
-        this.jdField_a_of_type_Roe.jdField_a_of_type_Rod.a(123, 107, 0, "UUIDToUrlCallback vid2url ERROR ");
+    if ((this.jdField_a_of_type_Slr.jdField_b_of_type_JavaLangString.equals(this.jdField_a_of_type_Sil.jdField_a_of_type_JavaLangString)) && (sik.a(this.jdField_a_of_type_Sil.jdField_a_of_type_Sik, this.jdField_a_of_type_Sil.jdField_a_of_type_JavaLangString, ""))) {
+      if (this.jdField_a_of_type_Slr.d == 2) {
+        this.jdField_a_of_type_Sil.jdField_a_of_type_Sik.a(202, 108, 0, "vid2url failed, video deleted");
       }
     }
+    label223:
     while (!QLog.isColorLevel())
     {
       return;
-      if (this.jdField_a_of_type_Osl.jdField_a_of_type_Int == 1) {}
-      for (;;)
+      if (TextUtils.isEmpty(this.jdField_a_of_type_Slr.jdField_a_of_type_JavaLangString))
       {
-        this.jdField_a_of_type_Roe.jdField_a_of_type_Rod.a(this.jdField_a_of_type_Osl.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_Osl.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Osl.f, this.jdField_a_of_type_Osl.jdField_b_of_type_Boolean, i, this.jdField_a_of_type_Roe.jdField_a_of_type_Long, this.jdField_a_of_type_Roe.jdField_a_of_type_Int);
-        this.jdField_a_of_type_Roe.jdField_a_of_type_Rod.a.a(this.jdField_a_of_type_Osl);
+        this.jdField_a_of_type_Sil.jdField_a_of_type_Sik.a(202, 107, 0, "vid2url failed, get null");
         return;
-        i = 2;
+      }
+      sfb localsfb;
+      if (this.jdField_a_of_type_Slr.jdField_a_of_type_Int == 1)
+      {
+        i = 102;
+        this.jdField_a_of_type_Sil.jdField_a_of_type_Sik.a(this.jdField_a_of_type_Slr.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_Slr.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Slr.e, this.jdField_a_of_type_Slr.jdField_b_of_type_Boolean, i, this.jdField_a_of_type_Sil.jdField_a_of_type_Long, this.jdField_a_of_type_Sil.jdField_a_of_type_Int);
+        localsfb = this.jdField_a_of_type_Sil.jdField_a_of_type_Sik.jdField_a_of_type_Sfb;
+        if (!this.jdField_a_of_type_Slr.jdField_a_of_type_Boolean) {
+          break label223;
+        }
+      }
+      for (int i = 1;; i = 0)
+      {
+        localsfb.b = i;
+        this.jdField_a_of_type_Sil.jdField_a_of_type_Sik.jdField_a_of_type_Sim.a(this.jdField_a_of_type_Slr);
+        return;
+        i = 101;
+        break;
       }
     }
-    QLog.d(rod.a(this.jdField_a_of_type_Roe.jdField_a_of_type_Rod), 2, "vid2url换回来后，当前视频已经不再播放，vid:" + this.jdField_a_of_type_Osl.jdField_b_of_type_JavaLangString + " url:" + this.jdField_a_of_type_Osl.jdField_a_of_type_JavaLangString);
+    QLog.d(sik.a(this.jdField_a_of_type_Sil.jdField_a_of_type_Sik), 2, "vid2url换回来后，当前视频已经不再播放，vid:" + this.jdField_a_of_type_Slr.jdField_b_of_type_JavaLangString + " url:" + this.jdField_a_of_type_Slr.jdField_a_of_type_JavaLangString);
   }
 }
 

@@ -1,24 +1,23 @@
 package com.tencent.weseevideo.editor.sticker;
 
-import com.tencent.tavcut.session.callback.StickerStateCallback;
+import com.tencent.tavsticker.core.TAVStickerContext;
+import java.util.concurrent.CountDownLatch;
 
 class StickerController$5
   implements Runnable
 {
-  StickerController$5(StickerController paramStickerController) {}
+  StickerController$5(StickerController paramStickerController, TAVStickerContext paramTAVStickerContext, CountDownLatch paramCountDownLatch) {}
   
   public void run()
   {
-    if (StickerController.access$700(this.this$0) == 0) {}
-    while (StickerController.access$400(this.this$0) == null) {
-      return;
-    }
-    StickerController.access$400(this.this$0).onStatusChanged(true);
+    StickerController.access$800(this.this$0, this.val$stickerContext);
+    StickerController.access$702(this.this$0, this.val$stickerContext);
+    this.val$countDownLatch.countDown();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.weseevideo.editor.sticker.StickerController.5
  * JD-Core Version:    0.7.0.1
  */

@@ -1,9 +1,14 @@
-import com.tencent.widget.ThemeImageView;
+import com.tencent.mobileqq.activity.contacts.friend.FriendFragment;
 
 public class ajji
-  extends ajjw
+  extends aywi
 {
-  public ThemeImageView a;
+  private ajji(FriendFragment paramFriendFragment) {}
+  
+  protected void b(boolean paramBoolean)
+  {
+    FriendFragment.a(this.a);
+  }
 }
 
 

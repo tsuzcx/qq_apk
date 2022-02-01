@@ -1,33 +1,15 @@
-import android.media.SoundPool;
-import android.media.SoundPool.OnLoadCompleteListener;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashSet;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
 class amsy
-  implements SoundPool.OnLoadCompleteListener
+  implements DialogInterface.OnClickListener
 {
-  amsy(amsu paramamsu) {}
+  amsy(amsv paramamsv, amtd paramamtd) {}
   
-  public void onLoadComplete(SoundPool paramSoundPool, int paramInt1, int paramInt2)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramInt2 != 0) {}
-    try
-    {
-      QLog.e("ARMusicController", 2, "load fire music failed. id=" + paramInt1);
-      return;
-    }
-    catch (Exception paramSoundPool)
-    {
-      paramSoundPool.printStackTrace();
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("ARMusicController", 2, "load fire music success. id=" + paramInt1);
-    }
-    amsu.a(this.a).add(Integer.valueOf(paramInt1));
-    if (amsu.b(this.a).contains(Integer.valueOf(paramInt1)))
-    {
-      paramSoundPool.play(paramInt1, 1.0F, 1.0F, 1, 0, 1.0F);
-      return;
+    if (this.jdField_a_of_type_Amtd != null) {
+      this.jdField_a_of_type_Amtd.a(this.jdField_a_of_type_Amsv.a(), "sc.xy_alert_show_success.local", "{\"cancel\":1}");
     }
   }
 }

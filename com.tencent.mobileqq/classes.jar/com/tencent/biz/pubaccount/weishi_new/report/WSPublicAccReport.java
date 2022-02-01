@@ -8,6 +8,7 @@ import UserGrowth.stVideoTag;
 import android.text.TextUtils;
 import com.google.gson.Gson;
 import com.tencent.biz.pubaccount.weishi_new.push.IWSPushBaseStrategy;
+import com.tencent.biz.pubaccount.weishi_new.push.WSPushGloryKingModel;
 import com.tencent.biz.pubaccount.weishi_new.push.WSPushPreloadModel;
 import com.tencent.biz.pubaccount.weishi_new.push.WSPushStrategyInfo;
 import com.tencent.biz.pubaccount.weishi_new.push.WSRedDotPushMsg;
@@ -18,11 +19,13 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
-import tee;
-import tjr;
-import tlo;
-import tlv;
-import tmv;
+import ugb;
+import umq;
+import ums;
+import umv;
+import upe;
+import ups;
+import uru;
 
 public class WSPublicAccReport
 {
@@ -30,46 +33,35 @@ public class WSPublicAccReport
   private static final String KEY_SESSION_STAMP = "key_session_stamp";
   private static final String SCENE_FROM_PUBLIC_ACC = "QQ_official_account";
   private static final String SCENE_FROM_TRENDS_TAB = "weishi_share_trendstab";
-  private static final String SOP_NAME_FEEDS = "feeds";
+  public static final String SOP_NAME_FEEDS = "feeds";
   public static final String SOP_NAME_FOCUS = "focus";
   public static final String SOP_NAME_FOCUS_FALLBACK = "focus_fallback";
   public static final String SOP_NAME_VIDEO_PLAY = "fullscreen_videoplay";
   private static volatile WSPublicAccReport instance;
   private String mPushId;
+  private umv mRecommendFullScreenInfo;
   private String mSessionId;
   private String mSessionStamp;
-  private String mTestId;
   private Map<String, Long> pageVisitTimeMap = new HashMap();
   private long publicAccEnterTime;
   private long toForegroundTime;
   
-  private void baseActionReport(String paramString1, String paramString2, Map<String, String> paramMap, String paramString3)
-  {
-    baseActionReport(paramString1, paramString2, paramMap, null, paramString3);
-  }
-  
   private void baseActionReport(String paramString1, String paramString2, Map<String, String> paramMap1, Map<String, String> paramMap2, String paramString3)
   {
-    new WSStatisticsReporter.Builder().addParams(paramMap1).addExtParams(paramMap2).setSceneFrom("QQ_official_account").setSopName(paramString2).setTestId(this.mTestId).setPushId(this.mPushId).setOperationId(paramString3).setFlush(true).build(paramString1).report();
+    baseActionReport(paramString1, paramString2, paramMap1, paramMap2, paramString3, "");
   }
   
-  public static String getEntryPositionId(String paramString)
+  private void baseActionReport(String paramString1, String paramString2, Map<String, String> paramMap1, Map<String, String> paramMap2, String paramString3, String paramString4)
   {
-    if ("fullscreen_videoplay".equals(paramString)) {
-      return "comment_entry";
-    }
-    if ("focus".equals(paramString)) {
-      return "dynamics_comment_entry";
-    }
-    if ("focus_fallback".equals(paramString)) {
-      return "dynamics_comment_entry";
-    }
-    return "dynamics_comment_entry";
+    new WSStatisticsReporter.Builder().addParams(paramMap1).addExtParams(paramMap2).setSceneFrom("QQ_official_account").setSopName(paramString2).setTestId(paramString4).setPushId(this.mPushId).setOperationId(paramString3).setFlush(true).setImmediatelyUpload(ups.c()).build(paramString1).report();
   }
   
-  private Map<String, String> getFeedsBaseParamsWithoutFeed(String paramString, int paramInt)
+  private String getFeedOpVideoType(stSimpleMetaFeed paramstSimpleMetaFeed)
   {
-    return getFeedsBaseParams(paramString, paramInt, null);
+    if ((paramstSimpleMetaFeed != null) && (paramstSimpleMetaFeed.opVideo != null)) {
+      return String.valueOf(paramstSimpleMetaFeed.opVideo.videoType);
+    }
+    return String.valueOf(0);
   }
   
   private Map<String, String> getFeedsItemReportExtMap(stSimpleMetaFeed paramstSimpleMetaFeed, stReportItem paramstReportItem)
@@ -81,22 +73,14 @@ public class WSPublicAccReport
     localHashMap.put("ratioH", String.valueOf(paramstReportItem.ratioH));
     localHashMap.put("isFullSpan", String.valueOf(paramstReportItem.isFullSpan));
     localHashMap.put("type", String.valueOf(paramstReportItem.video_type));
-    if ((paramstSimpleMetaFeed != null) && (paramstSimpleMetaFeed.opVideo != null))
-    {
-      paramstReportItem = String.valueOf(paramstSimpleMetaFeed.opVideo.videoType);
-      localHashMap.put("opvideo_type", paramstReportItem);
-      localHashMap.put("cover_type", tlv.a(paramstSimpleMetaFeed));
-      if ((paramstSimpleMetaFeed == null) || (paramstSimpleMetaFeed.videoTag == null)) {
-        break label189;
-      }
-    }
-    label189:
+    localHashMap.put("opvideo_type", getFeedOpVideoType(paramstSimpleMetaFeed));
+    localHashMap.put("material_type", getFeedOpVideoType(paramstSimpleMetaFeed));
+    localHashMap.put("cover_type", ups.a(paramstSimpleMetaFeed));
+    if ((paramstSimpleMetaFeed != null) && (paramstSimpleMetaFeed.videoTag != null)) {}
     for (paramstSimpleMetaFeed = String.valueOf(paramstSimpleMetaFeed.videoTag.tagId);; paramstSimpleMetaFeed = "")
     {
       localHashMap.put("tag_id", paramstSimpleMetaFeed);
       return localHashMap;
-      paramstReportItem = "";
-      break;
     }
   }
   
@@ -113,47 +97,19 @@ public class WSPublicAccReport
     finally {}
   }
   
-  public static String getPagePositionId(String paramString)
-  {
-    if ("fullscreen_videoplay".equals(paramString)) {
-      return "comment_page";
-    }
-    if ("focus".equals(paramString)) {
-      return "dynamics_comment_page";
-    }
-    if ("focus_fallback".equals(paramString)) {
-      return "dynamics_comment_page";
-    }
-    return "dynamics_comment_page";
-  }
-  
-  public static String getTagPositionId(String paramString)
-  {
-    if ("fullscreen_videoplay".equals(paramString)) {
-      return "comment_tag";
-    }
-    if ("focus".equals(paramString)) {
-      return "dynamics_comment_tag";
-    }
-    if ("focus_fallback".equals(paramString)) {
-      return "dynamics_comment_tag";
-    }
-    return "dynamics_comment_tag";
-  }
-  
   private void publicAccActionReport(String paramString1, int paramInt1, String paramString2, String paramString3, int paramInt2, long paramLong, int paramInt3, Map<String, String> paramMap)
   {
     HashMap localHashMap = new HashMap();
     localHashMap.put("event_type", paramString1);
     localHashMap.put("push_count", String.valueOf(paramInt1));
-    localHashMap.put("row_key", tlv.b());
+    localHashMap.put("row_key", ups.b());
     localHashMap.put("push_extra", paramString2);
     localHashMap.put("app_extra", "");
     localHashMap.put("push_entry", paramString3);
     localHashMap.put("click_to", String.valueOf(paramInt2));
     localHashMap.put("app_live_time", String.valueOf(paramLong));
     localHashMap.put("operation_or_not", String.valueOf(paramInt3));
-    baseActionReport("gzh_action", "", localHashMap, paramMap, "");
+    baseActionReport("gzh_action", "", localHashMap, paramMap, "", ups.a(1));
   }
   
   private void reportPageVisited(String paramString, int paramInt, long paramLong)
@@ -162,6 +118,15 @@ public class WSPublicAccReport
     localHashMap.put("event_type", String.valueOf(paramInt));
     localHashMap.put("page_live_time", String.valueOf(paramLong));
     baseActionReport("gzh_pagevisit", paramString, localHashMap, null, "");
+  }
+  
+  private void reset()
+  {
+    this.mRecommendFullScreenInfo = null;
+    this.mPushId = "";
+    this.pageVisitTimeMap.clear();
+    ups.d("");
+    umz.a = false;
   }
   
   private void setSessionId(String paramString)
@@ -176,25 +141,35 @@ public class WSPublicAccReport
     LocalMultiProcConfig.putString("weishi_usergrowth", "key_session_stamp", paramString);
   }
   
+  private String switchTabSopName(int paramInt, boolean paramBoolean)
+  {
+    if (paramInt == 0) {
+      return "focus";
+    }
+    if (paramBoolean) {
+      return "feeds_fullscreen";
+    }
+    return "feeds";
+  }
+  
   private void trendsTabActionReport(String paramString1, int paramInt1, String paramString2, String paramString3, int paramInt2, long paramLong, int paramInt3)
   {
     HashMap localHashMap = new HashMap();
     localHashMap.put("event_type", paramString1);
     localHashMap.put("push_count", String.valueOf(paramInt1));
-    localHashMap.put("row_key", tlv.b());
+    localHashMap.put("row_key", ups.b());
     localHashMap.put("push_extra", paramString2);
     localHashMap.put("app_extra", "");
     localHashMap.put("push_entry", paramString3);
     localHashMap.put("click_to", String.valueOf(paramInt2));
     localHashMap.put("app_live_time", String.valueOf(paramLong));
     localHashMap.put("operation_or_not", String.valueOf(paramInt3));
-    new WSStatisticsReporter.Builder().addParams(localHashMap).setSceneFrom("weishi_share_trendstab").setSopName("").setTestId(this.mTestId).setPushId(this.mPushId).setOperationId("").setFlush(true).build("gzh_action").report();
+    new WSStatisticsReporter.Builder().addParams(localHashMap).setSceneFrom("weishi_share_trendstab").setSopName("").setTestId(ups.a(6)).setPushId(this.mPushId).setOperationId("").setFlush(true).setImmediatelyUpload(ups.c()).build("gzh_action").report();
   }
   
   public void backgroundPublicAccReport()
   {
     long l = 0L;
-    this.mTestId = tlv.a(1);
     if (this.toForegroundTime == 0L) {
       this.toForegroundTime = this.publicAccEnterTime;
     }
@@ -207,16 +182,14 @@ public class WSPublicAccReport
   public void closePublicAccReport(int paramInt)
   {
     long l = 0L;
-    this.mTestId = tlv.a(1);
     if (this.toForegroundTime > 0L) {
       l = System.currentTimeMillis() - this.toForegroundTime;
     }
     for (;;)
     {
       publicAccActionReport("2", 0, "", "", 0, l, paramInt, null);
-      this.mPushId = "";
-      this.pageVisitTimeMap.clear();
-      tlv.c("");
+      ums.a(paramInt);
+      reset();
       return;
       if (this.publicAccEnterTime > 0L) {
         l = System.currentTimeMillis() - this.publicAccEnterTime;
@@ -231,7 +204,6 @@ public class WSPublicAccReport
     this.toForegroundTime = this.publicAccEnterTime;
     setSessionId(String.valueOf(this.publicAccEnterTime));
     setSessionStamp(String.valueOf(this.publicAccEnterTime));
-    this.mTestId = tlv.a(1);
     Object localObject = "";
     String str1 = "2";
     HashMap localHashMap = new HashMap();
@@ -243,21 +215,26 @@ public class WSPublicAccReport
       localObject = str2;
       if ((paramWSRedDotPushMsg.mStrategyInfo instanceof WSPushStrategyInfo))
       {
-        paramWSRedDotPushMsg = ((WSPushStrategyInfo)paramWSRedDotPushMsg.mStrategyInfo).mWSPushPreloadModel;
-        localObject = str2;
-        if (paramWSRedDotPushMsg != null)
+        localObject = ((WSPushStrategyInfo)paramWSRedDotPushMsg.mStrategyInfo).mWSPushPreloadModel;
+        WSPushGloryKingModel localWSPushGloryKingModel = ((WSPushStrategyInfo)paramWSRedDotPushMsg.mStrategyInfo).mWSPushGloryKingModel;
+        if (localObject != null)
         {
-          if (!paramWSRedDotPushMsg.a) {
-            break label190;
+          if (!((WSPushPreloadModel)localObject).a) {
+            break label218;
           }
           paramWSRedDotPushMsg = String.valueOf(1);
           localHashMap.put("preload_status", paramWSRedDotPushMsg);
+        }
+        localObject = str2;
+        if (localWSPushGloryKingModel != null)
+        {
+          localHashMap.put("material_type", String.valueOf(localWSPushGloryKingModel.a));
           localObject = str2;
         }
       }
     }
     paramWSRedDotPushMsg = str1;
-    if (tlv.a(tlv.a())) {
+    if (ups.a(ups.a())) {
       paramWSRedDotPushMsg = "1";
     }
     if (paramInt == 3) {
@@ -265,9 +242,9 @@ public class WSPublicAccReport
     }
     for (;;)
     {
-      publicAccActionReport("1", tlv.a(), (String)localObject, paramWSRedDotPushMsg, paramInt, 0L, 0, localHashMap);
+      publicAccActionReport("1", ups.a(), (String)localObject, paramWSRedDotPushMsg, paramInt, 0L, 0, localHashMap);
       return;
-      label190:
+      label218:
       paramWSRedDotPushMsg = String.valueOf(0);
       break;
     }
@@ -278,7 +255,6 @@ public class WSPublicAccReport
     long l = System.currentTimeMillis();
     setSessionId(String.valueOf(l));
     setSessionStamp(String.valueOf(l));
-    this.mTestId = tlv.a(6);
     String str = "";
     this.mPushId = "";
     int i;
@@ -289,10 +265,10 @@ public class WSPublicAccReport
       i = paramWSRedDotPushMsg.mStrategyInfo.getType();
       paramWSRedDotPushMsg = str;
       if (!paramBoolean) {
-        break label112;
+        break label103;
       }
     }
-    label112:
+    label103:
     for (str = "1";; str = "2")
     {
       trendsTabActionReport("1", 0, paramWSRedDotPushMsg, str, i, 0L, 0);
@@ -317,7 +293,6 @@ public class WSPublicAccReport
   
   public void feedsItemReport(String paramString1, String paramString2, stSimpleMetaFeed paramstSimpleMetaFeed, stReportItem paramstReportItem, int paramInt)
   {
-    this.mTestId = paramString2;
     HashMap localHashMap = new HashMap();
     localHashMap.put("position", "feeds_video" + paramstReportItem.upos);
     localHashMap.put("feed_id", paramstReportItem.feedid);
@@ -325,19 +300,18 @@ public class WSPublicAccReport
     if (paramInt != 0) {
       localHashMap.put("action_id", String.valueOf(paramInt));
     }
-    localHashMap.put("global_key", tee.a().a(paramstSimpleMetaFeed.traceId));
+    localHashMap.put("global_key", ugb.a().a(paramstSimpleMetaFeed.traceId));
     if (paramstSimpleMetaFeed.map_ext != null) {}
-    for (paramString2 = new Gson().toJson(paramstSimpleMetaFeed.map_ext);; paramString2 = "")
+    for (String str = new Gson().toJson(paramstSimpleMetaFeed.map_ext);; str = "")
     {
-      localHashMap.put("feed_pass_key", paramString2);
-      baseActionReport(paramString1, "feeds", localHashMap, getFeedsItemReportExtMap(paramstSimpleMetaFeed, paramstReportItem), "");
+      localHashMap.put("feed_pass_key", str);
+      baseActionReport(paramString1, "feeds", localHashMap, getFeedsItemReportExtMap(paramstSimpleMetaFeed, paramstReportItem), "", paramString2);
       return;
     }
   }
   
   public void foregroundPublicAccReport()
   {
-    this.mTestId = tlv.a(1);
     this.toForegroundTime = System.currentTimeMillis();
     setSessionStamp(String.valueOf(this.toForegroundTime));
     publicAccActionReport("4", 0, "", "", 0, 0L, 0, null);
@@ -355,7 +329,7 @@ public class WSPublicAccReport
     {
       str = paramstSimpleMetaFeed.id;
       localObject = paramstSimpleMetaFeed.poster_id;
-      localHashMap.put("global_key", tee.a().a(paramstSimpleMetaFeed.traceId));
+      localHashMap.put("global_key", ugb.a().a(paramstSimpleMetaFeed.traceId));
       if (paramstSimpleMetaFeed.map_ext == null) {
         break label154;
       }
@@ -371,6 +345,19 @@ public class WSPublicAccReport
       localHashMap.put("owner_id", localObject);
       return localHashMap;
     }
+  }
+  
+  public Map<String, String> getFeedsBaseParamsWithoutFeed(String paramString, int paramInt)
+  {
+    return getFeedsBaseParams(paramString, paramInt, null);
+  }
+  
+  public umv getRecommendFullScreenInfo()
+  {
+    if (this.mRecommendFullScreenInfo == null) {
+      this.mRecommendFullScreenInfo = new umv(this);
+    }
+    return this.mRecommendFullScreenInfo;
   }
   
   public String getSessionId()
@@ -389,16 +376,16 @@ public class WSPublicAccReport
     return this.mSessionStamp;
   }
   
-  public void reportAttentionClick(int paramInt)
+  public void reportAttentionClick(int paramInt, String paramString)
   {
     HashMap localHashMap = new HashMap();
     localHashMap.put("red_dot_quantity", String.valueOf(paramInt));
-    baseActionReport("gzh_click", "focus", getFeedsBaseParamsWithoutFeed("follow_tab", 1000001), localHashMap, "");
+    baseActionReport("gzh_click", paramString, getFeedsBaseParamsWithoutFeed("follow_tab", 1000001), localHashMap, "");
   }
   
-  public void reportAvatarViewClick()
+  public void reportAvatarViewClick(int paramInt, boolean paramBoolean)
   {
-    baseActionReport("gzh_click", "focus", getFeedsBaseParamsWithoutFeed("profile_tab", 1000001), null, "");
+    baseActionReport("gzh_click", switchTabSopName(paramInt, paramBoolean), getFeedsBaseParamsWithoutFeed("profile_tab", 1000001), null, "");
   }
   
   public void reportCallDialog(String paramString1, String paramString2, int paramInt)
@@ -408,133 +395,37 @@ public class WSPublicAccReport
     baseActionReport(paramString1, "focus", getFeedsBaseParamsWithoutFeed("jump_window", paramInt), localHashMap, "");
   }
   
-  public void reportClickRichBlockPop(int paramInt1, int paramInt2, String paramString)
+  public void reportCallDialog(String paramString1, String paramString2, String paramString3, int paramInt)
   {
-    this.mTestId = tlv.a(1);
-    Map localMap = getFeedsBaseParamsWithoutFeed("popup", paramInt1);
-    localMap.put("global_key", tee.a().a(paramString));
-    baseActionReport("gzh_click", "feeds", localMap, String.valueOf(paramInt2));
+    baseActionReport(paramString1, paramString2, getFeedsBaseParamsWithoutFeed(paramString3, paramInt), null, "");
   }
   
-  public void reportCommentDing(String paramString, int paramInt1, int paramInt2, stSimpleMetaFeed paramstSimpleMetaFeed)
+  public void reportClickRichBlockPop(int paramInt1, int paramInt2, String paramString1, String paramString2)
   {
-    Map localMap = getFeedsBaseParams("dynamics_comment_like" + paramInt1, paramInt2, paramstSimpleMetaFeed);
-    HashMap localHashMap = new HashMap();
-    if (TextUtils.equals(paramString, "focus")) {}
-    for (paramstSimpleMetaFeed = "focus";; paramstSimpleMetaFeed = "feeds")
+    if (TextUtils.equals(paramString2, "feeds")) {}
+    for (String str = ups.a(1);; str = ups.a(2))
     {
-      localHashMap.put("play_scene", paramstSimpleMetaFeed);
-      baseActionReport("gzh_click", paramString, localMap, localHashMap, "");
-      return;
-    }
-  }
-  
-  public void reportCommentEntryClick(String paramString1, String paramString2, int paramInt, stSimpleMetaFeed paramstSimpleMetaFeed)
-  {
-    paramstSimpleMetaFeed = getFeedsBaseParams(paramString2, paramInt, paramstSimpleMetaFeed);
-    HashMap localHashMap = new HashMap();
-    if (TextUtils.equals(paramString1, "focus")) {}
-    for (paramString2 = "focus";; paramString2 = "feeds")
-    {
-      localHashMap.put("play_scene", paramString2);
-      baseActionReport("gzh_click", paramString1, paramstSimpleMetaFeed, localHashMap, "");
-      return;
-    }
-  }
-  
-  public void reportCommentEntryTextClick(String paramString, int paramInt1, int paramInt2, stSimpleMetaFeed paramstSimpleMetaFeed)
-  {
-    Map localMap = getFeedsBaseParams("dynamics_comment_entry_text" + paramInt1, paramInt2, paramstSimpleMetaFeed);
-    HashMap localHashMap = new HashMap();
-    if (TextUtils.equals(paramString, "focus")) {}
-    for (paramstSimpleMetaFeed = "focus";; paramstSimpleMetaFeed = "feeds")
-    {
-      localHashMap.put("play_scene", paramstSimpleMetaFeed);
-      baseActionReport("gzh_click", paramString, localMap, localHashMap, "");
-      return;
-    }
-  }
-  
-  public void reportCommentPageClick(String paramString1, String paramString2, int paramInt1, int paramInt2, stSimpleMetaFeed paramstSimpleMetaFeed)
-  {
-    paramstSimpleMetaFeed = getFeedsBaseParams(paramString2, paramInt1, paramstSimpleMetaFeed);
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("object", String.valueOf(paramInt2));
-    if (TextUtils.equals(paramString1, "focus")) {}
-    for (paramString2 = "focus";; paramString2 = "feeds")
-    {
-      localHashMap.put("play_scene", paramString2);
-      baseActionReport("gzh_click", paramString1, paramstSimpleMetaFeed, localHashMap, "");
-      return;
-    }
-  }
-  
-  public void reportCommentPageExposure(String paramString1, String paramString2, stSimpleMetaFeed paramstSimpleMetaFeed)
-  {
-    paramstSimpleMetaFeed = getFeedsBaseParams(paramString2, 0, paramstSimpleMetaFeed);
-    HashMap localHashMap = new HashMap();
-    if (TextUtils.equals(paramString1, "focus")) {}
-    for (paramString2 = "focus";; paramString2 = "feeds")
-    {
-      localHashMap.put("play_scene", paramString2);
-      baseActionReport("gzh_exposure", paramString1, paramstSimpleMetaFeed, localHashMap, "");
-      return;
-    }
-  }
-  
-  public void reportCommentReply(String paramString, int paramInt1, int paramInt2, stSimpleMetaFeed paramstSimpleMetaFeed)
-  {
-    Map localMap = getFeedsBaseParams("dynamics_comment_page_reply" + paramInt1, paramInt2, paramstSimpleMetaFeed);
-    HashMap localHashMap = new HashMap();
-    if (TextUtils.equals(paramString, "focus")) {}
-    for (paramstSimpleMetaFeed = "focus";; paramstSimpleMetaFeed = "feeds")
-    {
-      localHashMap.put("play_scene", paramstSimpleMetaFeed);
-      baseActionReport("gzh_click", paramString, localMap, localHashMap, "");
-      return;
-    }
-  }
-  
-  public void reportCommentTagClick(String paramString1, String paramString2, int paramInt, stSimpleMetaFeed paramstSimpleMetaFeed)
-  {
-    paramstSimpleMetaFeed = getFeedsBaseParams(paramString2, paramInt, paramstSimpleMetaFeed);
-    HashMap localHashMap = new HashMap();
-    if (TextUtils.equals(paramString1, "focus")) {}
-    for (paramString2 = "focus";; paramString2 = "feeds")
-    {
-      localHashMap.put("play_scene", paramString2);
-      baseActionReport("gzh_click", paramString1, paramstSimpleMetaFeed, localHashMap, "");
-      return;
-    }
-  }
-  
-  public void reportCommentTagExposure(String paramString1, String paramString2, stSimpleMetaFeed paramstSimpleMetaFeed)
-  {
-    paramstSimpleMetaFeed = getFeedsBaseParams(paramString2, 0, paramstSimpleMetaFeed);
-    HashMap localHashMap = new HashMap();
-    if (TextUtils.equals(paramString1, "focus")) {}
-    for (paramString2 = "focus";; paramString2 = "feeds")
-    {
-      localHashMap.put("play_scene", paramString2);
-      baseActionReport("gzh_exposure", paramString1, paramstSimpleMetaFeed, localHashMap, "");
+      Map localMap = getFeedsBaseParamsWithoutFeed("popup", paramInt1);
+      localMap.put("global_key", ugb.a().a(paramString1));
+      baseActionReport("gzh_click", paramString2, localMap, null, String.valueOf(paramInt2), str);
       return;
     }
   }
   
   public void reportDownload(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
   {
-    this.mTestId = tlv.a(1);
+    String str = ups.a(1);
     HashMap localHashMap = new HashMap();
     localHashMap.put("position", String.valueOf(paramInt1));
     localHashMap.put("event_type", String.valueOf(paramInt2));
     localHashMap.put("dl_status", String.valueOf(paramInt3));
     localHashMap.put("dl_method", String.valueOf(paramInt4));
     localHashMap.put("install_status", String.valueOf(paramInt5));
-    tlo.c("beacon-download", paramInt1 + " - " + paramInt2 + " - " + paramInt3 + " - " + paramInt4 + " - " + paramInt5);
-    baseActionReport("gzh_download", "", localHashMap, "");
+    upe.c("beacon-download", paramInt1 + " - " + paramInt2 + " - " + paramInt3 + " - " + paramInt4 + " - " + paramInt5);
+    baseActionReport("gzh_download", "", localHashMap, null, "", str);
   }
   
-  public void reportEnterVerticalVideo(List<tmv> paramList, int paramInt1, boolean paramBoolean, int paramInt2)
+  public void reportEnterVerticalVideo(List<uru> paramList, int paramInt1, boolean paramBoolean, int paramInt2)
   {
     HashMap localHashMap = new HashMap();
     localHashMap.put("trigger_type", String.valueOf(paramInt1));
@@ -543,19 +434,22 @@ public class WSPublicAccReport
     {
       localHashMap.put("request_result", localObject);
       if (!paramBoolean) {
-        break label223;
+        break label252;
       }
-      if (!(((tmv)paramList.get(0)).a() instanceof stSimpleMetaFeed)) {
-        break label201;
+      if ((paramList == null) || (paramList.size() <= 0)) {
+        break label236;
+      }
+      if (!(((uru)paramList.get(0)).a() instanceof stSimpleMetaFeed)) {
+        break label214;
       }
       localObject = new StringBuilder();
       Iterator localIterator = paramList.iterator();
       while (localIterator.hasNext())
       {
-        tmv localtmv = (tmv)localIterator.next();
-        if (!TextUtils.isEmpty(((stSimpleMetaFeed)localtmv.a()).id))
+        uru localuru = (uru)localIterator.next();
+        if (!TextUtils.isEmpty(((stSimpleMetaFeed)localuru.a()).id))
         {
-          ((StringBuilder)localObject).append(((stSimpleMetaFeed)localtmv.a()).id);
+          ((StringBuilder)localObject).append(((stSimpleMetaFeed)localuru.a()).id);
           ((StringBuilder)localObject).append("_");
         }
       }
@@ -566,20 +460,27 @@ public class WSPublicAccReport
     localHashMap.put("feedid_list", ((StringBuilder)localObject).toString());
     for (;;)
     {
-      label201:
+      label214:
       baseActionReport("gzh_exposure", "fullscreen_videoplay", getFeedsBaseParamsWithoutFeed("floating_layer_request", 0), localHashMap, "");
       return;
-      label223:
+      label236:
+      localHashMap.put("feedid_list", "");
+      continue;
+      label252:
       localHashMap.put("failure_type", String.valueOf(paramInt2));
     }
   }
   
-  public void reportExposeRichBlockPop(int paramInt, String paramString)
+  public void reportExposeRichBlockPop(int paramInt, String paramString1, String paramString2)
   {
-    this.mTestId = tlv.a(1);
-    Map localMap = getFeedsBaseParamsWithoutFeed("popup", 0);
-    localMap.put("global_key", tee.a().a(paramString));
-    baseActionReport("gzh_exposure", "feeds", localMap, String.valueOf(paramInt));
+    if (TextUtils.equals(paramString2, "feeds")) {}
+    for (String str = ups.a(1);; str = ups.a(2))
+    {
+      Map localMap = getFeedsBaseParamsWithoutFeed("popup", 0);
+      localMap.put("global_key", ugb.a().a(paramString1));
+      baseActionReport("gzh_exposure", paramString2, localMap, null, String.valueOf(paramInt), str);
+      return;
+    }
   }
   
   public void reportFallList(HashMap<Integer, stSimpleMetaFeed> paramHashMap)
@@ -592,66 +493,68 @@ public class WSPublicAccReport
         Object localObject2 = (Map.Entry)paramHashMap.next();
         Object localObject1 = (Integer)((Map.Entry)localObject2).getKey();
         localObject2 = (stSimpleMetaFeed)((Map.Entry)localObject2).getValue();
-        localObject1 = tjr.a((stSimpleMetaFeed)localObject2, ((Integer)localObject1).intValue());
+        localObject1 = umq.a((stSimpleMetaFeed)localObject2, ((Integer)localObject1).intValue());
         if ((((stReportItem)localObject1).video_type != 1) && (((stReportItem)localObject1).video_type != 6)) {
-          feedsItemReport("gzh_exposure", tlv.a(1), (stSimpleMetaFeed)localObject2, (stReportItem)localObject1, 0);
+          feedsItemReport("gzh_exposure", ups.a(1), (stSimpleMetaFeed)localObject2, (stReportItem)localObject1, 0);
         }
       }
     }
   }
   
-  public void reportMessageBubblePopupClick()
+  public void reportMessageBubblePopupClick(int paramInt, boolean paramBoolean)
   {
-    baseActionReport("gzh_click", "focus", getFeedsBaseParamsWithoutFeed("news_popup", 1000001), null, "");
+    baseActionReport("gzh_click", switchTabSopName(paramInt, paramBoolean), getFeedsBaseParamsWithoutFeed("news_popup", 1000001), null, "");
   }
   
-  public void reportMessageBubblePopupExposure()
+  public void reportMessageBubblePopupExposure(int paramInt, boolean paramBoolean)
   {
-    baseActionReport("gzh_exposure", "focus", getFeedsBaseParamsWithoutFeed("news_popup", 0), null, "");
+    baseActionReport("gzh_exposure", switchTabSopName(paramInt, paramBoolean), getFeedsBaseParamsWithoutFeed("news_popup", 0), null, "");
   }
   
   public void reportMsgEntry(String paramString1, int paramInt1, int paramInt2, int paramInt3, String paramString2)
   {
-    this.mTestId = tlv.a(4);
+    String str = ups.a(4);
     Map localMap = getFeedsBaseParamsWithoutFeed("msg_extry", paramInt2);
-    localMap.put("global_key", tee.a().a(paramString2));
+    localMap.put("global_key", ugb.a().a(paramString2));
     paramString2 = new HashMap();
     paramString2.put("type", String.valueOf(paramInt1));
-    baseActionReport(paramString1, "feeds", localMap, paramString2, String.valueOf(paramInt3));
+    baseActionReport(paramString1, "feeds", localMap, paramString2, String.valueOf(paramInt3), str);
   }
   
-  public void reportNotificationClick()
+  public void reportNotificationClick(int paramInt, boolean paramBoolean)
   {
-    baseActionReport("gzh_click", "focus", getFeedsBaseParamsWithoutFeed("message_notification", 1000001), null, "");
+    baseActionReport("gzh_click", switchTabSopName(paramInt, paramBoolean), getFeedsBaseParamsWithoutFeed("message_notification", 1000001), null, "");
   }
   
   public void reportOperationCard(String paramString, int paramInt, stSimpleMetaFeed paramstSimpleMetaFeed)
   {
-    Object localObject2 = null;
-    this.mTestId = tlv.a(1);
+    String str = ups.a(1);
     Map localMap = getFeedsBaseParams("opcard", paramInt, paramstSimpleMetaFeed);
-    Object localObject1;
-    if ((paramstSimpleMetaFeed != null) && (paramstSimpleMetaFeed.h5_op_info != null)) {
-      localObject1 = paramstSimpleMetaFeed.h5_op_info;
+    Object localObject;
+    if ((paramstSimpleMetaFeed != null) && (paramstSimpleMetaFeed.h5_op_info != null))
+    {
+      localObject = paramstSimpleMetaFeed.h5_op_info;
+      paramstSimpleMetaFeed = ((stH5OpInfo)localObject).exp;
     }
-    for (paramstSimpleMetaFeed = ((stH5OpInfo)localObject1).exp;; paramstSimpleMetaFeed = localObject2)
+    for (;;)
     {
       if ((paramstSimpleMetaFeed != null) && (paramstSimpleMetaFeed.size() > 0))
       {
-        if (localObject1 != null) {}
-        for (localObject1 = String.valueOf(((stH5OpInfo)localObject1).id);; localObject1 = "")
+        if (localObject != null) {}
+        for (localObject = String.valueOf(((stH5OpInfo)localObject).id);; localObject = "")
         {
-          baseActionReport(paramString, "feeds", localMap, paramstSimpleMetaFeed, (String)localObject1);
+          baseActionReport(paramString, "feeds", localMap, paramstSimpleMetaFeed, (String)localObject, str);
           return;
         }
       }
-      if (localObject1 != null) {}
-      for (paramstSimpleMetaFeed = String.valueOf(((stH5OpInfo)localObject1).id);; paramstSimpleMetaFeed = "")
+      if (localObject != null) {}
+      for (paramstSimpleMetaFeed = String.valueOf(((stH5OpInfo)localObject).id);; paramstSimpleMetaFeed = "")
       {
-        baseActionReport(paramString, "feeds", localMap, paramstSimpleMetaFeed);
+        baseActionReport(paramString, "feeds", localMap, null, paramstSimpleMetaFeed, str);
         return;
       }
-      localObject1 = null;
+      paramstSimpleMetaFeed = null;
+      localObject = null;
     }
   }
   
@@ -675,9 +578,9 @@ public class WSPublicAccReport
     }
   }
   
-  public void reportPersonHomeClick()
+  public void reportPersonHomeClick(int paramInt, boolean paramBoolean)
   {
-    baseActionReport("gzh_click", "focus", getFeedsBaseParamsWithoutFeed("my_homepage", 1000001), null, "");
+    baseActionReport("gzh_click", switchTabSopName(paramInt, paramBoolean), getFeedsBaseParamsWithoutFeed("my_homepage", 1000001), null, "");
   }
   
   public void reportPublicAccDataExposure(stSimpleMetaFeed paramstSimpleMetaFeed, int paramInt1, int paramInt2, int paramInt3)
@@ -687,17 +590,19 @@ public class WSPublicAccReport
     localHashMap.put("feeds_list_type", String.valueOf(paramInt2));
     localHashMap.put("preload_count", String.valueOf(paramInt3));
     baseActionReport("gzh_exposure", "feeds", getFeedsBaseParams("feeds_data", 0, paramstSimpleMetaFeed), localHashMap, "");
+    ums.a(paramstSimpleMetaFeed, localHashMap);
   }
   
   public void reportPublicAccDetailClick()
   {
-    this.mTestId = tlv.a(1);
-    baseActionReport("gzh_click", "feeds", getFeedsBaseParamsWithoutFeed("wesee_info", 1000001), "");
+    String str = ups.a(1);
+    baseActionReport("gzh_click", "feeds", getFeedsBaseParamsWithoutFeed("wesee_info", 1000001), null, "", str);
   }
   
   public void reportPublisher(String paramString1, String paramString2, String paramString3, int paramInt)
   {
-    baseActionReport(paramString1, paramString2, getFeedsBaseParamsWithoutFeed(paramString3, paramInt), "");
+    String str = ups.a(10004);
+    baseActionReport(paramString1, paramString2, getFeedsBaseParamsWithoutFeed(paramString3, paramInt), null, "", str);
   }
   
   public void reportRecommendClick()
@@ -705,9 +610,14 @@ public class WSPublicAccReport
     baseActionReport("gzh_click", "focus", getFeedsBaseParamsWithoutFeed("recommend_tab", 1000001), null, "");
   }
   
-  public void reportShareClick(String paramString1, int paramInt, String paramString2, stSimpleMetaFeed paramstSimpleMetaFeed)
+  public void reportShareClick(String paramString1, int paramInt, String paramString2, String paramString3, stSimpleMetaFeed paramstSimpleMetaFeed)
   {
-    baseActionReport("gzh_click", paramString2, getFeedsBaseParams(paramString1, paramInt, paramstSimpleMetaFeed), null, "");
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("material_type", getFeedOpVideoType(paramstSimpleMetaFeed));
+    if (!TextUtils.isEmpty(paramString3)) {
+      localHashMap.put("play_scene", paramString3);
+    }
+    baseActionReport("gzh_click", paramString2, getFeedsBaseParams(paramString1, paramInt, paramstSimpleMetaFeed), localHashMap, "");
   }
   
   public void reportVideoPlayUpdateExp(int paramInt)
@@ -718,7 +628,7 @@ public class WSPublicAccReport
     }
     for (;;)
     {
-      new WSStatisticsReporter.Builder().addParams(getFeedsBaseParamsWithoutFeed("videoplay_update", 0)).setSceneFrom(str).setSopName("fullscreen_videoplay").setTestId(this.mTestId).setPushId(this.mPushId).setFlush(true).build("gzh_exposure").report();
+      new WSStatisticsReporter.Builder().addParams(getFeedsBaseParamsWithoutFeed("videoplay_update", 0)).setSceneFrom(str).setSopName("fullscreen_videoplay").setTestId(ups.a(1)).setPushId(this.mPushId).setFlush(true).setImmediatelyUpload(ups.c()).build("gzh_exposure").report();
       return;
       if (paramInt == 6) {
         str = "weishi_share_trendstab";
@@ -728,7 +638,7 @@ public class WSPublicAccReport
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.report.WSPublicAccReport
  * JD-Core Version:    0.7.0.1
  */

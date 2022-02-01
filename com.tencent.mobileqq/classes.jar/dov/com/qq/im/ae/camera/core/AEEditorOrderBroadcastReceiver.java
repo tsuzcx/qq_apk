@@ -4,18 +4,18 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
-import bkta;
-import bljn;
+import bnia;
+import bnzb;
 
 public class AEEditorOrderBroadcastReceiver
   extends BroadcastReceiver
 {
-  private bkta jdField_a_of_type_Bkta;
+  private bnia jdField_a_of_type_Bnia;
   private boolean jdField_a_of_type_Boolean;
   
-  public AEEditorOrderBroadcastReceiver(bkta parambkta)
+  public AEEditorOrderBroadcastReceiver(bnia parambnia)
   {
-    this.jdField_a_of_type_Bkta = parambkta;
+    this.jdField_a_of_type_Bnia = parambnia;
   }
   
   private IntentFilter a()
@@ -49,26 +49,20 @@ public class AEEditorOrderBroadcastReceiver
   {
     paramContext = paramIntent.getAction();
     paramIntent = paramIntent.getStringExtra("generate_mission");
-    bljn.b("AEEditorOrderBroadcastReceiver", "[onReceive] action :" + paramContext);
-    bljn.b("AEEditorOrderBroadcastReceiver", "[onReceive] mission :" + paramIntent);
+    bnzb.b("AEEditorOrderBroadcastReceiver", "[onReceive] action :" + paramContext);
+    bnzb.b("AEEditorOrderBroadcastReceiver", "[onReceive] mission :" + paramIntent);
     if ("AEEDITOR_ORDER_CANCEL".equals(paramContext)) {
-      this.jdField_a_of_type_Bkta.a(paramIntent);
+      this.jdField_a_of_type_Bnia.a(paramIntent);
     }
-    do
-    {
+    while (!"AEEDITOR_ORDER_REMOVE_MISSION".equals(paramContext)) {
       return;
-      if ("AEEDITOR_ORDER_SAVE".equals(paramContext))
-      {
-        this.jdField_a_of_type_Bkta.b(paramIntent);
-        return;
-      }
-    } while (!"AEEDITOR_ORDER_REMOVE_MISSION".equals(paramContext));
-    this.jdField_a_of_type_Bkta.c(paramIntent);
+    }
+    this.jdField_a_of_type_Bnia.b(paramIntent);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     dov.com.qq.im.ae.camera.core.AEEditorOrderBroadcastReceiver
  * JD-Core Version:    0.7.0.1
  */

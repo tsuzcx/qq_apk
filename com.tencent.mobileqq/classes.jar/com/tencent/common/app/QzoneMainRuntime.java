@@ -1,7 +1,7 @@
 package com.tencent.common.app;
 
 import android.os.Bundle;
-import bjdt;
+import blsb;
 import com.tencent.qphone.base.util.QLog;
 import mqq.app.AppRuntime;
 import mqq.app.MobileQQ;
@@ -32,12 +32,12 @@ public class QzoneMainRuntime
       QLog.i(TAG, 2, "QzoneMainRuntime.onGetSubRuntime() moduleId " + paramString);
     }
     if (paramString.equals("qzone_plugin.apk")) {
-      localAppRuntime = bjdt.a(BaseApplicationImpl.getApplication(), MobileQQ.processName);
+      localAppRuntime = blsb.a(BaseApplicationImpl.getApplication(), MobileQQ.processName);
     }
     while (!paramString.equals("qzone_vertical_video_plugin.apk")) {
       return localAppRuntime;
     }
-    return bjdt.c(BaseApplicationImpl.getApplication());
+    return blsb.c(BaseApplicationImpl.getApplication());
   }
 }
 

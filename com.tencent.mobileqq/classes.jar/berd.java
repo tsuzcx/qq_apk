@@ -1,8 +1,12 @@
-import android.view.View;
-
-public abstract interface berd
+public class berd
 {
-  public abstract void setMotionView(View paramView, int paramInt);
+  public int a;
+  public long a;
+  public beqy a;
+  public String a;
+  public int b;
+  public String b;
+  public String c;
 }
 
 

@@ -1,53 +1,48 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.qphone.base.util.QLog;
+import java.lang.reflect.Type;
+import java.util.ArrayList;
+import java.util.List;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-class aqsq
-  extends aqtd
+public class aqsq
 {
-  protected long a;
-  protected String a;
-  protected String b;
-  protected String c;
-  protected String d;
-  protected String e;
-  protected String f;
-  protected String g;
+  public List<aqss> a = new ArrayList();
   
-  public aqsq(aqsf paramaqsf, MessageRecord paramMessageRecord)
+  public static aqsq a(String paramString)
   {
-    super(paramaqsf);
-    this.jdField_a_of_type_JavaLangString = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardFileName");
-    this.jdField_a_of_type_Long = Long.parseLong(paramMessageRecord.getExtInfoFromExtStr("_m_ForwardSize"));
-    this.b = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardUuid");
-    this.c = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardMd5");
-    this.d = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardReceiverUin");
-    this.e = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardImgWidth");
-    this.f = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardImgHeight");
-    this.g = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardStatusPaused");
-  }
-  
-  void a(String paramString, int paramInt) {}
-  
-  void a(String paramString, int paramInt, aqtc paramaqtc)
-  {
-    if ("1".equals(this.g))
+    aqsq localaqsq = new aqsq();
+    try
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("FileMultiMsgManager<FileAssistant>", 1, "start Disc2BuddyTaskExcuter:" + this.jdField_a_of_type_JavaLangString + " faild, file is upload paused");
+      paramString = new JSONObject(paramString);
+      if (paramString.has("QRCodeList"))
+      {
+        paramString = paramString.optJSONArray("QRCodeList");
+        Type localType = new aqsr().getClass().getGenericSuperclass();
+        localaqsq.a.addAll(avnn.a(paramString, localType));
+        if (localaqsq.a.size() > 0)
+        {
+          paramString = new aqss();
+          paramString.jdField_a_of_type_JavaLangString = "default_bg";
+          paramString.c = 1;
+          paramString.jdField_b_of_type_Int = 0;
+          paramString.jdField_a_of_type_Int = 0;
+          paramString.jdField_b_of_type_JavaLangString = "";
+          localaqsq.a.add(paramString);
+        }
       }
-      paramaqtc.a(aqsf.a(this.jdField_a_of_type_Long, false), false);
-      return;
+      if (QLog.isColorLevel()) {
+        QLog.d("QrCodeDisplay.QrCodeConfBean", 2, "parse: " + localaqsq.a.size());
+      }
+      return localaqsq;
     }
-    if ((this.b == null) || (this.b.length() == 0))
+    catch (JSONException paramString)
     {
-      if (QLog.isColorLevel()) {
-        QLog.e("FileMultiMsgManager<FileAssistant>", 1, this.jdField_a_of_type_JavaLangString + " Disc2BuddyTaskExcuter send faild uuid is null");
+      for (;;)
+      {
+        paramString.printStackTrace();
       }
-      paramaqtc.a(aqsf.a(this.jdField_a_of_type_Long, true), false);
-      return;
     }
-    aqsf.a(this.jdField_a_of_type_Aqsf).a().a().a(paramString, paramInt, this.d, 3, this.b, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Long, this.c, new aqsr(this, paramString, paramaqtc));
   }
 }
 

@@ -1,7 +1,7 @@
 package com.tencent.biz.pubaccount.readinjoy.view.fastweb;
 
-import aoft;
-import ryu;
+import aqge;
+import sws;
 
 public class FastWebActivity$3
   implements Runnable
@@ -10,12 +10,12 @@ public class FastWebActivity$3
   
   public void run()
   {
-    aoft.a(this.this$0, new ryu(this));
+    aqge.a(this.this$0, new sws(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity.3
  * JD-Core Version:    0.7.0.1
  */

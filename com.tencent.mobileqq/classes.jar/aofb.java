@@ -1,33 +1,25 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import android.view.ViewPropertyAnimator;
-import android.widget.LinearLayout;
-import com.tencent.mobileqq.colornote.data.ColorNote;
-import com.tencent.mobileqq.colornote.smallscreen.ColorNoteSmallScreenRelativeLayout;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class aofb
-  implements Animator.AnimatorListener
+  extends aofa
 {
-  public aofb(ColorNoteSmallScreenRelativeLayout paramColorNoteSmallScreenRelativeLayout, LinearLayout paramLinearLayout) {}
-  
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
+  public aofb(QQAppInterface paramQQAppInterface, QQMessageFacade paramQQMessageFacade)
   {
-    ColorNoteSmallScreenRelativeLayout.c(this.jdField_a_of_type_ComTencentMobileqqColornoteSmallscreenColorNoteSmallScreenRelativeLayout, false);
-    paramAnimator = ColorNoteSmallScreenRelativeLayout.a(this.jdField_a_of_type_ComTencentMobileqqColornoteSmallscreenColorNoteSmallScreenRelativeLayout).iterator();
-    while (paramAnimator.hasNext()) {
-      ((ColorNote)paramAnimator.next()).animate = false;
-    }
-    this.jdField_a_of_type_ComTencentMobileqqColornoteSmallscreenColorNoteSmallScreenRelativeLayout.f();
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.animate().setListener(null).translationX(0.0F).setDuration(200L).start();
+    super(paramQQAppInterface, paramQQMessageFacade);
+    this.jdField_a_of_type_JavaLangString = anhk.z;
+    this.jdField_a_of_type_Int = 6000;
   }
   
-  public void onAnimationRepeat(Animator paramAnimator) {}
+  protected aonc a()
+  {
+    return this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(0);
+  }
   
-  public void onAnimationStart(Animator paramAnimator) {}
+  protected void a()
+  {
+    ((anjx)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(8)).a(false);
+  }
 }
 
 

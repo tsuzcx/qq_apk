@@ -16,13 +16,17 @@ public abstract interface IReportDelegate
   
   public abstract void reportJsError(boolean paramBoolean, int paramInt, String paramString);
   
+  public abstract void reportNVProcess(String paramString1, String paramString2, String paramString3);
+  
+  public abstract void reportNativeVueError(String paramString1, String paramString2);
+  
   public abstract void reportPageProcess(String paramString1, String paramString2, String paramString3);
   
   public abstract void reportRunningData(HashMap<String, String> paramHashMap, String paramString);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.viola.commons.IReportDelegate
  * JD-Core Version:    0.7.0.1
  */

@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.vaswebviewplugin;
 
-import aeol;
-import aeom;
+import aftu;
+import aftv;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -11,11 +11,11 @@ import android.os.Handler;
 import android.os.Looper;
 import android.text.TextUtils;
 import android.util.SparseArray;
-import apmh;
-import apml;
-import aprh;
-import bdnn;
-import begz;
+import arpd;
+import arph;
+import arui;
+import bgsp;
+import bhod;
 import com.tencent.biz.pubaccount.CustomWebView;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.activity.activateFriend.QQNotifySettingInnerFragment;
@@ -42,7 +42,7 @@ public class QWalletMixJsPlugin
   private Context mContext;
   private FakeUrl mFakeUrl;
   private Handler mMainHandler = new Handler(Looper.getMainLooper());
-  private aeom mReminderDataManager;
+  private aftv mReminderDataManager;
   
   public QWalletMixJsPlugin()
   {
@@ -53,12 +53,12 @@ public class QWalletMixJsPlugin
   {
     String str = paramJSONObject.optString("msgid");
     paramJSONObject = paramJSONObject.optString("busiid");
-    if ((bdnn.a(str)) || (bdnn.a(str)))
+    if ((bgsp.a(str)) || (bgsp.a(str)))
     {
       handJsError("4", "params error");
       return;
     }
-    aeol.a(str, new QWalletMixJsPlugin.1(this, new Handler(Looper.getMainLooper()), paramJSONObject, str));
+    aftu.a(str, new QWalletMixJsPlugin.1(this, new Handler(Looper.getMainLooper()), paramJSONObject, str));
   }
   
   private void doCallback(String paramString)
@@ -129,8 +129,8 @@ public class QWalletMixJsPlugin
     Bundle localBundle = new Bundle();
     localBundle.putString("busiid", paramString1);
     localBundle.putString("msgid", paramString2);
-    paramString1 = apml.a("ipc_cmd_is_qq_notify_all_notify", this.mCallback, this.mOnRemoteResp.key, localBundle);
-    aprh.a().a(paramString1);
+    paramString1 = arph.a("ipc_cmd_is_qq_notify_all_notify", this.mCallback, this.mOnRemoteResp.key, localBundle);
+    arui.a().a(paramString1);
   }
   
   private void parseCallback(String paramString)
@@ -153,7 +153,7 @@ public class QWalletMixJsPlugin
   {
     String str1 = paramJSONObject.optString("msgid");
     paramJSONObject = paramJSONObject.optString("busiid");
-    if ((bdnn.a(str1)) || (bdnn.a(str1))) {
+    if ((bgsp.a(str1)) || (bgsp.a(str1))) {
       handJsError("4", "params error");
     }
     while (this.mRuntime == null) {
@@ -220,8 +220,8 @@ public class QWalletMixJsPlugin
         if (QLog.isColorLevel()) {
           QLog.d(TAG, 2, "is QQAppInterface: " + (this.app instanceof QQAppInterface));
         }
-        this.mReminderDataManager = new aeom(this.app);
-        aeol.a(this.app);
+        this.mReminderDataManager = new aftv(this.app);
+        aftu.a(this.app);
         this.mContext = localActivity.getApplicationContext();
       }
     }
@@ -238,7 +238,7 @@ public class QWalletMixJsPlugin
     if (this.mMainHandler != null) {
       this.mMainHandler.removeCallbacksAndMessages(null);
     }
-    aeol.a();
+    aftu.a();
     super.onDestroy();
   }
   
@@ -267,7 +267,7 @@ public class QWalletMixJsPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.vaswebviewplugin.QWalletMixJsPlugin
  * JD-Core Version:    0.7.0.1
  */

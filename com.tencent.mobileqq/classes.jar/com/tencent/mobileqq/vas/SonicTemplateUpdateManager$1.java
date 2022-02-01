@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.vas;
 
-import bdty;
+import bgzb;
 
 public class SonicTemplateUpdateManager$1
   implements Runnable
 {
-  public SonicTemplateUpdateManager$1(bdty parambdty) {}
+  public SonicTemplateUpdateManager$1(bgzb parambgzb) {}
   
   public void run()
   {
@@ -14,7 +14,7 @@ public class SonicTemplateUpdateManager$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.vas.SonicTemplateUpdateManager.1
  * JD-Core Version:    0.7.0.1
  */

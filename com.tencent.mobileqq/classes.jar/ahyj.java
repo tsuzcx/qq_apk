@@ -1,8 +1,17 @@
-import com.tencent.mobileqq.activity.history.tendoc.TencentDocItem;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public abstract interface ahyj
+class ahyj
+  implements View.OnClickListener
 {
-  public abstract boolean a(TencentDocItem paramTencentDocItem);
+  ahyj(ahxt paramahxt) {}
+  
+  public void onClick(View paramView)
+  {
+    paramView.setVisibility(8);
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

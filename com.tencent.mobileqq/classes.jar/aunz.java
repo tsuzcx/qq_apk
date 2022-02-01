@@ -1,36 +1,31 @@
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.OnScrollListener;
-import com.tencent.mobileqq.multicard.MultiCardRecommendFragment;
+import android.widget.RadioGroup;
+import android.widget.RadioGroup.OnCheckedChangeListener;
+import com.tencent.mobileqq.fragment.SimpleDebugFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class aunz
-  extends RecyclerView.OnScrollListener
+  implements RadioGroup.OnCheckedChangeListener
 {
-  public aunz(MultiCardRecommendFragment paramMultiCardRecommendFragment) {}
+  public aunz(SimpleDebugFragment paramSimpleDebugFragment, RadioGroup paramRadioGroup) {}
   
-  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
+  public void onCheckedChanged(RadioGroup paramRadioGroup, int paramInt)
   {
-    if (MultiCardRecommendFragment.a(this.a) != null)
+    switch (this.jdField_a_of_type_AndroidWidgetRadioGroup.getCheckedRadioButtonId())
     {
-      if ((paramInt == 0) || (paramInt == 1)) {
-        break label38;
-      }
-      MultiCardRecommendFragment.a(this.a);
     }
     for (;;)
     {
-      if (paramInt == 0) {
-        MultiCardRecommendFragment.d(this.a);
-      }
+      EventCollector.getInstance().onCheckedChanged(paramRadioGroup, paramInt);
       return;
-      label38:
-      MultiCardRecommendFragment.b(this.a);
-      MultiCardRecommendFragment.c(this.a);
+      bcnj.a(0);
+      continue;
+      bcnj.a(1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aunz
  * JD-Core Version:    0.7.0.1
  */

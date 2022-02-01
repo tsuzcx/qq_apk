@@ -1,6 +1,6 @@
 package io.flutter.embedding.engine.plugins.shim;
 
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 import io.flutter.Log;
 import io.flutter.embedding.engine.FlutterEngine;
 import io.flutter.plugin.common.PluginRegistry.Registrar;
@@ -55,7 +55,7 @@ public class ShimPluginRegistry
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     io.flutter.embedding.engine.plugins.shim.ShimPluginRegistry
  * JD-Core Version:    0.7.0.1
  */

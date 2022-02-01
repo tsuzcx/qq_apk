@@ -1,62 +1,63 @@
-import org.json.JSONException;
-import org.json.JSONObject;
+import kotlin.Metadata;
 
-public class uam
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/util/ReadInJoyShareHelperV2$ShareReport;", "", "()V", "action", "", "from", "isSharing", "", "reportClick", "", "reportExp", "reportResult", "success", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class uam
 {
-  int a;
-  public String a;
-  int jdField_b_of_type_Int;
-  private final String jdField_b_of_type_JavaLangString = "image_url";
-  private final String c = "image_width";
-  private final String d = "image_height";
+  private static int jdField_a_of_type_Int;
+  public static final uam a;
+  private static boolean jdField_a_of_type_Boolean;
+  private static int b;
   
-  public uam() {}
-  
-  public uam(String paramString, int paramInt1, int paramInt2)
+  static
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_Int = paramInt2;
+    jdField_a_of_type_Uam = new uam();
   }
   
-  public String a()
+  public final void a(int paramInt)
   {
-    JSONObject localJSONObject = new JSONObject();
-    try
+    jdField_a_of_type_Int = paramInt;
+    phi localphi = new phi();
+    phm.a(localphi, "from", Integer.valueOf(paramInt));
+    oat.a("0X800AD75", localphi.a());
+  }
+  
+  public final void a(boolean paramBoolean)
+  {
+    int i = 0;
+    phi localphi;
+    if (jdField_a_of_type_Boolean)
     {
-      localJSONObject.put("image_url", this.jdField_a_of_type_JavaLangString);
-      localJSONObject.put("image_width", this.jdField_a_of_type_Int);
-      localJSONObject.put("image_height", this.jdField_b_of_type_Int);
-      return localJSONObject.toString();
-    }
-    catch (JSONException localJSONException)
-    {
-      for (;;)
-      {
-        localJSONException.printStackTrace();
+      jdField_a_of_type_Boolean = false;
+      localphi = new phi();
+      phm.a(localphi, "from", Integer.valueOf(jdField_a_of_type_Int));
+      phm.a(localphi, "share_unit", Integer.valueOf(uai.a.a(b)));
+      if (!paramBoolean) {
+        break label74;
       }
     }
+    for (;;)
+    {
+      phm.a(localphi, "result", Integer.valueOf(i));
+      oat.a("0X800AD77", localphi.a());
+      return;
+      label74:
+      i = 1;
+    }
   }
   
-  public void a(String paramString)
+  public final void b(int paramInt)
   {
-    try
-    {
-      paramString = new JSONObject(paramString);
-      this.jdField_a_of_type_JavaLangString = paramString.getString("image_url");
-      this.jdField_a_of_type_Int = paramString.getInt("image_width");
-      this.jdField_b_of_type_Int = paramString.getInt("image_height");
-      return;
-    }
-    catch (JSONException paramString)
-    {
-      paramString.printStackTrace();
-    }
+    b = paramInt;
+    jdField_a_of_type_Boolean = true;
+    phi localphi = new phi();
+    phm.a(localphi, "from", Integer.valueOf(jdField_a_of_type_Int));
+    phm.a(localphi, "share_unit", Integer.valueOf(uai.a.a(paramInt)));
+    oat.a("0X800AD76", localphi.a());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     uam
  * JD-Core Version:    0.7.0.1
  */

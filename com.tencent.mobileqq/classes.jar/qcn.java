@@ -1,20 +1,26 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentNoteCard;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
 
-public class qcn
-  implements View.OnClickListener
+class qcn
+  implements ViewBase.OnClickListener
 {
-  public qcn(ComponentContentNoteCard paramComponentContentNoteCard) {}
+  qcn(qcl paramqcl, pxk parampxk, Container paramContainer) {}
   
-  public void onClick(View paramView)
+  public void onClick(ViewBase paramViewBase)
   {
-    ComponentContentNoteCard.a(this.a);
+    paramViewBase = this.jdField_a_of_type_Pxk.a();
+    String str = paramViewBase.mSocialFeedInfo.a.f;
+    pha.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getContext(), str, null);
+    snh.a(paramViewBase, (int)paramViewBase.mChannelID);
+    ube.a(paramViewBase);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     qcn
  * JD-Core Version:    0.7.0.1
  */

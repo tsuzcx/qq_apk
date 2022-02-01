@@ -1,73 +1,18 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
-public final class aoyy
-  extends aokh<aoyx>
+public abstract interface aoyy
 {
-  public static void b()
-  {
-    QLog.d("TdsReaderView_TdsReaderConfigProcessor", 1, "initConfig");
-    aoyx.a(false, (aoyx)aoks.a().a(482));
-  }
+  public abstract String a();
   
-  public int a()
-  {
-    return 482;
-  }
+  public abstract List<String> a();
   
-  @NonNull
-  public aoyx a(int paramInt)
-  {
-    QLog.w("TdsReaderView_TdsReaderConfigProcessor", 1, "migrateOldOrDefaultContent type:" + paramInt);
-    return new aoyx();
-  }
+  public abstract String b();
   
-  @Nullable
-  public aoyx a(aoko[] paramArrayOfaoko)
-  {
-    return aoyx.a(paramArrayOfaoko);
-  }
-  
-  public Class<aoyx> a()
-  {
-    return aoyx.class;
-  }
-  
-  public void a(int paramInt)
-  {
-    QLog.e("TdsReaderView_TdsReaderConfigProcessor", 1, "onReqFailed: " + paramInt);
-  }
-  
-  public void a(aoyx paramaoyx)
-  {
-    QLog.w("TdsReaderView_TdsReaderConfigProcessor", 1, "onUpdate");
-    aoyx.a(true, paramaoyx);
-  }
-  
-  public boolean a()
-  {
-    return false;
-  }
-  
-  public int b()
-  {
-    return 0;
-  }
-  
-  public boolean b()
-  {
-    return true;
-  }
-  
-  public boolean c()
-  {
-    return true;
-  }
+  public abstract String c();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aoyy
  * JD-Core Version:    0.7.0.1
  */
